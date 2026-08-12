@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PolicyFocus — Obligation Register</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="masthead"><div class="wrap">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"></span>
+    <h1><span class="lo">Policy</span>Focus</h1>
+  </div>
+  <p class="tagline">What EU policy means</p>
+  <p class="standfirst">European policy intelligence, economic impact and market insight.</p>
+  <div class="sources" id="sources"></div>
+</div></header>
+
+<section class="section"><div class="wrap">
+  <h2>Start with your size</h2>
+  <p class="section-note">This file's duties trigger on company size, not sector &mdash; employee count and turnover, not what you make. Choose your band to see, per duty, whether you're in scope, newly out of scope, or unaffected.</p>
+  <div class="sectors" id="bands"></div>
+  <div class="result" id="bandresult"></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <h2>Start with your industry</h2>
+  <p class="section-note">Choose what your company does. You get the duties that name your sector, and separately the ones that reach you without naming you.</p>
+  <div class="sectors" id="sectors"></div>
+  <div class="result" id="result"></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <h2>Who carries the burden</h2>
+  <p class="section-note">Duties added and removed, by who has to carry them.</p>
+  <div class="ledger" id="ledger"></div>
+  <div class="key"><span><i class="a"></i>Duties added or widened</span><span><i class="r"></i>Duties removed, merged or waived</span></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <h2>Full register</h2>
+  <p class="section-note">Select any row for the exact provision, the deadline, who checks, and the burden drivers behind it.</p>
+  <div class="controls">
+    <div class="group" id="f-file"></div><div class="group" id="f-dir"></div><div class="group" id="f-addr"></div>
+    <input class="search" id="q" type="search" placeholder="Search duties" aria-label="Search duties">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="reg" id="reg"></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <h2>Method and limits</h2>
+  <div class="method">
+    <p><b>The unit is the duty, not the provision.</b> One provision can carry several duties, and one duty can sit across several provisions.</p>
+    <p><b>Named and not named.</b> A sector is named when the text addresses it directly. It is reached without being named when the duty lands on a public buyer, a supplier, or an input it depends on. This run covers a horizontal corporate-reporting file that does not name industry sectors at all &mdash; it applies by company size, not by sector &mdash; so the sector picker below will legitimately return few or no hits for every sector.</p>
+    <p><b>Burden drivers.</b> Seven yes-or-no marks read off the text, shown as the strip on each row: D1 new document, D2 accredited outside verification, D3 approval needed before you proceed, D4 new measurement or data systems, D5 recurring, D6 money attached to failure, D7 you are newly inside the regime altogether.</p>
+    <p><b>No euro figures.</b> None are given here except where they are operative text in the file &mdash; a threshold that decides who is in scope.</p>
+    <p><b>Counts are unweighted.</b> One narrow duty counts the same as one duty reaching thousands of companies. Adding the number of affected companies is the next step and will change the picture.</p>
+    <p><b>Two extraction passes.</b> Every duty below was extracted twice, independently, and mechanically checked for verbatim source text and driver/direction consistency. Rows where the two passes disagreed were resolved by editorial judgement and are called out in the accompanying report, not silently merged.</p>
+    <p><b>Rule as a diff.</b> Each row states the prior rule and the new rule side by side, plus who gains or loses the obligation (the affected-population delta), rather than asserting a weight in isolation. Weight (Relief / Burden) is derived from that diff&rsquo;s nature, not stored independently &mdash; a duty removed or narrowed is Relief, a duty created or extended is Burden.</p>
+    <p><b>Prior rule, honestly sourced.</b> An amending act carries only the new text. Where this proposal's own recitals describe the rule it is replacing, that description is quoted verbatim and labelled <i>recital</i> &mdash; a real quote from this file, but not the original statute's own wording. Where neither this file nor a local copy of the underlying directive states the prior rule, it is marked <i>unresolved</i> rather than guessed.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Prototype. All counts computed from the register, not entered by hand.</div></footer>
+
+<script>
+const D=["D1","D2","D3","D4","D5","D6","D7"];
+const CLASSES={business:"Businesses",state:"Governments",investor:"Foreign investors",commission:"European Commission"};
+const SECTORS={steel:"Steel",cement:"Cement and concrete",alu:"Aluminium and metals",chem:"Chemicals and refining",
+ glass:"Glass, ceramics, paper",power:"Power and heat",waste:"Waste and landfill",ship:"Shipping",air:"Aviation",
+ auto:"Automotive",build:"Construction",batsol:"Batteries and solar",clean:"Wind, heat pumps, hydrogen",ccs:"Carbon capture and fuels"};
+const FILES={omnibus:{name:"Omnibus I — CSRD / CSDDD / Taxonomy simplification",code:"COM(2025) 81, 2025/0045 (COD)"}};
+const BANDS={};
+const NATURE_LABEL={new_obligation:"New obligation",extension:"Extension",reduction:"Reduction",exemption:"Exemption",unchanged:"Unchanged"};
+
+let OBS=[];
+let activeSector=null;
+let activeBand=null;
+
+function strip(o){return `<span class="strip ${o.direction==='rem'?'rem':''}" aria-hidden="true">`+
+  D.map(k=>`<i class="${o.drivers.includes(k)?'on':''}"></i>`).join("")+`</span>`}
+
+function priorPane(o){
+  const p=o.prior_rule;
+  if(!p){
+    return `<div class="diff-pane"><span class="diff-label">Prior rule</span><p class="diff-quote unresolved">No predecessor &mdash; this is a genuinely new obligation with no prior rule to diff against.</p></div>`;
+  }
+  const statusNote=p.status==="unresolved"
+    ? `<p class="diff-quote unresolved">Unresolved: not stated in this file, and the pre-amendment consolidated text isn't available locally.${p.note?" "+p.note:""}</p>`
+    : `<p class="diff-quote">&ldquo;${p.source_text}&rdquo;<br><span class="unresolved">&mdash; from this proposal's own recital, describing (not quoting) the prior statute.</span></p>`;
+  return `<div class="diff-pane">
+    <span class="diff-label">Prior rule</span>
+    <dl><dt>Trigger</dt><dd>${p.trigger||"&mdash;"}</dd></dl>
+    ${statusNote}
+  </div>`;
+}
+function newPane(o){
+  const n=o.new_rule;
+  return `<div class="diff-pane is-new">
+    <span class="diff-label">New rule</span>
+    <dl><dt>Trigger</dt><dd>${n.trigger}</dd></dl>
+    <p class="diff-quote">${n.obligation}</p>
+  </div>`;
+}
+
+function row(o){return `
+  <div class="item" data-id="${o.id}">
+    <button class="item-btn" aria-expanded="false">
+      <span class="oid">${o.id}</span>
+      <span class="otitle">${o.duty}<span class="oaddr">${o.addressee}</span></span>
+      <span class="right"><span class="tag ${o.direction}">${o.direction==="add"?"added":"removed"}</span>${strip(o)}</span>
+    </button>
+    <div class="panel">
+      <p class="rhead" style="margin-top:.95rem">${o.duty}</p>
+      <p class="oaddr" style="font-size:13px">${o.addressee}</p>
+      <dl class="dl">
+        <dt>File</dt><dd>${FILES[o.file].name}, ${FILES[o.file].code}</dd>
+        <dt>Provision</dt><dd>${o.article}</dd>
+        <dt>When</dt><dd>${o.when}</dd>
+        <dt>How often</dt><dd>${o.frequency}</dd>
+        <dt>Who checks</dt><dd>${o.verification}</dd>
+        <dt>Nature</dt><dd>${NATURE_LABEL[o.nature]||o.nature}</dd>
+        <dt>Weight</dt><dd>${o.weight}${o.weight_intensity?` (${o.weight_intensity})`:""}</dd>
+      </dl>
+      <div class="diff">${priorPane(o)}${newPane(o)}</div>
+      <div class="delta"><b>Who this changes for</b>${o.affected_delta}</div>
+      <div class="source">
+        <span class="source-label">Source text</span>
+        <p class="source-text">${o.source_text}</p>
+        <a class="source-link" href="${o.source_url}" target="_blank" rel="noopener">View source &rarr;</a>
+      </div>
+      <p class="drv">Drivers: ${o.drivers.length?o.drivers.map(k=>`<b>${k}</b>`).join(" · "):"none recorded"}</p>
+      ${o.size_scope_note?`<p class="drv">Size band: ${o.size_scope_note}</p>`:""}
+      ${o.pending?`<p class="pending">Settled later in secondary legislation. ${o.pending}</p>`:""}
+    </div>
+  </div>`}
+
+function buildBands(){
+  document.getElementById("bands").innerHTML=Object.keys(BANDS).map(k=>{
+    const n=OBS.filter(o=>o.size_scope[k]==="in").length;
+    return `<button class="sec" data-band="${k}" aria-pressed="false"><b>${BANDS[k]}</b><span class="n">${n} in scope</span></button>`}).join("");
+}
+function showBand(k){
+  const inscope=OBS.filter(o=>o.size_scope[k]==="in");
+  const outscope=OBS.filter(o=>o.size_scope[k]==="out");
+  const na=OBS.filter(o=>o.size_scope[k]==="na");
+  document.getElementById("bandresult").className="result on";
+  document.getElementById("bandresult").innerHTML=`
+    <p class="rhead">${BANDS[k]}</p>
+    <p class="rnote">${inscope.length} of ${OBS.length} duties bind a company in this band directly. ${outscope.length} name a different size band and do not reach you. ${na.length} bind a government body, the Commission, or an auditor rather than a sized company.</p>
+    <div class="block"><p class="blabel">In scope for this band</p>
+      ${inscope.length?inscope.map(row).join(""):`<div class="empty-note">No duty in this file binds a company in this band directly.</div>`}</div>
+    <div class="block"><p class="blabel">Out of scope for this band</p>
+      ${outscope.length?outscope.map(row).join(""):`<div class="empty-note">Nothing is explicitly out of scope for this band.</div>`}</div>`;
+}
+
+function buildSectors(){
+  document.getElementById("sectors").innerHTML=Object.keys(SECTORS).map(k=>{
+    const n=OBS.filter(o=>o.sectors_named.includes(k)||o.sectors_reached.includes(k)).length;
+    return `<button class="sec" data-sec="${k}" aria-pressed="false"><b>${SECTORS[k]}</b><span class="n">${n}</span></button>`}).join("");
+}
+function showSector(k){
+  const named=OBS.filter(o=>o.sectors_named.includes(k)), reach=OBS.filter(o=>!o.sectors_named.includes(k)&&o.sectors_reached.includes(k));
+  const adds=named.filter(o=>o.direction==="add").length, rems=named.filter(o=>o.direction==="rem").length;
+  document.getElementById("result").className="result on";
+  document.getElementById("result").innerHTML=`
+    <p class="rhead">${SECTORS[k]}</p>
+    <p class="rnote">${named.length} ${named.length===1?"duty names":"duties name"} this sector directly, ${adds} added and ${rems} removed. ${reach.length} more reach it without naming it.</p>
+    <div class="block"><p class="blabel">Named in the text</p>
+      ${named.length?named.map(row).join(""):`<div class="empty-note">Nothing in this file addresses this sector directly.</div>`}</div>
+    <div class="block"><p class="blabel">Reaches you without naming you</p>
+      ${reach.length?reach.map(row).join(""):`<div class="empty-note">Nothing in this file reaches this sector indirectly.</div>`}</div>`;
+}
+function buildLedger(){
+  const order=["business","state","investor","commission"];let max=0;const data={};
+  for(const key of Object.keys(FILES)){data[key]={};
+    for(const c of order){const r=OBS.filter(o=>o.file===key&&o.class===c);
+      const add=r.filter(o=>o.direction==="add").length,rem=r.filter(o=>o.direction==="rem").length;
+      data[key][c]={add,rem};max=Math.max(max,add,rem);}}
+  document.getElementById("ledger").innerHTML=Object.keys(FILES).map(key=>{
+    const f=FILES[key];
+    const rows=order.map(c=>{const {add,rem}=data[key][c];
+      if(!add&&!rem)return "";
+      return `<div class="led-row"><div class="led-label">${CLASSES[c]}</div>
+        <div class="led-track"><div class="led-axis"></div>
+        <div class="led-bar rem ${rem?'':'empty'}" style="width:${max?rem/max*50:0}%">${rem?`<span>${rem}</span>`:''}</div>
+        <div class="led-bar add ${add?'':'empty'}" style="width:${max?add/max*50:0}%">${add?`<span>${add}</span>`:''}</div>
+        </div></div>`}).join("");
+    return `<div class="led-file"><h3>${f.name}</h3><div class="led-meta">${f.code}</div>${rows}</div>`}).join("");
+}
+const state={file:"all",dir:"all",addr:"all",q:""};
+function chips(el,items,key){el.innerHTML=items.map(i=>`<button class="chip" data-k="${key}" data-v="${i.v}" aria-pressed="${state[key]===i.v}">${i.l}</button>`).join("")}
+function matches(o){
+  if(state.file!=="all"&&o.file!==state.file)return false;
+  if(state.dir!=="all"&&o.direction!==state.dir)return false;
+  if(state.addr!=="all"&&o.class!==state.addr)return false;
+  if(state.q&&!(o.id+" "+o.duty+" "+o.addressee+" "+o.article+" "+o.when).toLowerCase().includes(state.q))return false;
+  return true;}
+function render(){
+  const list=OBS.filter(matches);
+  document.getElementById("count").textContent=`${list.length} of ${OBS.length} duties`;
+  document.getElementById("reg").innerHTML=list.length?list.map(row).join(""):
+    `<div class="item"><div style="padding:2rem .85rem;color:var(--ink-55);font-size:14px">Nothing matches these filters. Clear the search or widen a filter to see everything.</div></div>`;
+}
+function init(){
+  document.getElementById("sources").innerHTML=Object.values(FILES).map(f=>`<span>${f.name}, ${f.code}</span>`).join("");
+  buildBands();
+  buildSectors();
+  chips(document.getElementById("f-file"),[{v:"all",l:"All files"}].concat(Object.keys(FILES).map(k=>({v:k,l:FILES[k].code.split(",")[0]}))),"file");
+  chips(document.getElementById("f-dir"),[{v:"all",l:"All"},{v:"add",l:"Added"},{v:"rem",l:"Removed"}],"dir");
+  chips(document.getElementById("f-addr"),[{v:"all",l:"Everyone"},{v:"business",l:"Businesses"},{v:"state",l:"Governments"},{v:"investor",l:"Investors"},{v:"commission",l:"Commission"}],"addr");
+  buildLedger();render();
+}
+document.addEventListener("click",e=>{
+  const bd=e.target.closest("#bands .sec");
+  if(bd){const k=bd.dataset.band;
+    if(activeBand===k){activeBand=null;document.getElementById("bandresult").className="result";}
+    else{activeBand=k;showBand(k);}
+    document.querySelectorAll("#bands .sec").forEach(b=>b.setAttribute("aria-pressed",b.dataset.band===activeBand));return;}
+  const s=e.target.closest("#sectors .sec");
+  if(s){const k=s.dataset.sec;
+    if(activeSector===k){activeSector=null;document.getElementById("result").className="result";}
+    else{activeSector=k;showSector(k);}
+    document.querySelectorAll("#sectors .sec").forEach(b=>b.setAttribute("aria-pressed",b.dataset.sec===activeSector));return;}
+  const c=e.target.closest(".chip");
+  if(c){state[c.dataset.k]=c.dataset.v;
+    document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",state[b.dataset.k]===b.dataset.v));
+    render();return;}
+  const b=e.target.closest(".item-btn");
+  if(b){const it=b.parentElement;b.setAttribute("aria-expanded",it.classList.toggle("open"));}
+});
+document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();render();});
+
+Promise.all([fetch("data/omnibus.json").then(r=>r.json()),fetch("data/size_bands.json").then(r=>r.json())])
+ .then(([data,bands])=>{OBS=data;Object.assign(BANDS,bands);init();})
+ .catch(err=>{document.getElementById("reg").innerHTML=`<div class="item"><div style="padding:2rem .85rem;color:var(--claret);font-size:14px">Could not load data/omnibus.json (${err.message}). If you opened this file directly (file://), serve the folder over local HTTP instead, e.g. <code>python3 -m http.server</code>, then open http://localhost:8000/index.html.</div></div>`;});
+</script>
+</body>
+</html>

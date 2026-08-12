@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obligation Register</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,600;7..72,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15171c;--ink-60:#5a5f68;--ink-40:#8b9099;--paper:#eceee9;--card:#fff;
+ --rule:#cdd0ca;--rule-soft:#e2e4df;--added:#7a2e3f;--added-soft:#e8d7da;
+ --removed:#1f5c55;--removed-soft:#d3e2df;--flag:#a8781a;--focus:#1f4f8f;--sp:clamp(1rem,3vw,2rem)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;
+ font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Literata,Georgia,serif;font-weight:700;letter-spacing:-.015em;margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--sp)}
+.masthead{border-bottom:1px solid var(--rule);padding:clamp(2rem,6vw,3.5rem) 0 1.5rem}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-40)}
+.masthead h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.02;margin:.5rem 0 0}
+.standfirst{max-width:56ch;margin:1rem 0 0;color:var(--ink-60);font-size:clamp(15px,2vw,17px)}
+.sources{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;margin-top:1.5rem;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-60)}
+.section{padding:clamp(1.75rem,4vw,3rem) 0;border-bottom:1px solid var(--rule)}
+.section h2{font-size:clamp(1.15rem,3vw,1.5rem)}
+.section-note{max-width:62ch;color:var(--ink-60);font-size:14px;margin:.5rem 0 1.5rem}
+.sectors{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.5rem}
+.sec{background:var(--card);border:1px solid var(--rule-soft);padding:.85rem .9rem;text-align:left;cursor:pointer;
+ font:inherit;color:inherit;display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.sec:hover{border-color:var(--ink-40)}
+.sec[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sec b{font-weight:500;font-size:14px}
+.sec span{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-40)}
+.sec[aria-pressed="true"] span{color:#b9bec4}
+.result{margin-top:1.75rem;display:none}.result.on{display:block}
+.rhead{font-family:Literata,serif;font-size:1.05rem;font-weight:700;margin:0 0 .2rem}
+.rnote{font-size:13.5px;color:var(--ink-60);margin:0 0 .85rem;max-width:60ch}
+.block{margin-bottom:1.75rem}
+.blabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+ color:var(--ink-40);padding-bottom:.4rem;border-bottom:1px solid var(--rule);margin:0}
+.empty-note{background:var(--card);padding:1.1rem .85rem;font-size:13.5px;color:var(--ink-60);border-bottom:1px solid var(--rule-soft)}
+.ledger{display:grid;gap:1.5rem}
+.led-file{background:var(--card);border:1px solid var(--rule-soft);padding:clamp(1rem,3vw,1.4rem)}
+.led-file h3{font-size:1rem;margin-bottom:.15rem}
+.led-meta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-40);margin-bottom:1.1rem}
+.led-row{display:grid;grid-template-columns:12rem 1fr;gap:.75rem;align-items:center;margin-bottom:.55rem}
+.led-label{font-size:13px;color:var(--ink-60);text-align:right}
+.led-track{position:relative;height:22px}
+.led-axis{position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--rule)}
+.led-bar{position:absolute;top:3px;height:16px;display:flex;align-items:center}
+.led-bar.rem{right:50%;background:var(--removed);justify-content:flex-start;padding-left:5px}
+.led-bar.add{left:50%;background:var(--added);justify-content:flex-end;padding-right:5px}
+.led-bar span{font-family:"IBM Plex Mono",monospace;font-size:11px;color:#fff;font-weight:500}
+.led-bar.empty{background:transparent}
+.key{display:flex;gap:1.25rem;flex-wrap:wrap;font-size:12.5px;color:var(--ink-60);margin-top:1.1rem}
+.key i{display:inline-block;width:10px;height:10px;margin-right:.4rem;vertical-align:-1px}
+.key .a{background:var(--added)}.key .r{background:var(--removed)}
+.controls{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:1.1rem}
+.group{display:flex;gap:.25rem;flex-wrap:wrap;background:var(--card);border:1px solid var(--rule-soft);padding:.25rem}
+.chip{font:500 12.5px/1 "Public Sans",sans-serif;padding:.5rem .7rem;border:0;background:transparent;color:var(--ink-60);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.search{flex:1 1 180px;min-width:160px;padding:.62rem .75rem;border:1px solid var(--rule-soft);
+ background:var(--card);font:400 13px "Public Sans",sans-serif;color:var(--ink)}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-40);margin-left:auto;white-space:nowrap}
+.reg{border-top:1px solid var(--rule)}
+.item{border-bottom:1px solid var(--rule-soft);background:var(--card)}
+.item-btn{width:100%;display:grid;grid-template-columns:4.6rem 1fr auto;gap:.9rem;align-items:start;padding:.9rem .85rem;
+ background:none;border:0;text-align:left;cursor:pointer;font:inherit;color:inherit}
+.item-btn:hover{background:#f7f8f6}
+.oid{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-40);padding-top:2px}
+.otitle{font-size:14px;line-height:1.45}
+.oaddr{display:block;font-size:12px;color:var(--ink-60);margin-top:.25rem}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .4rem;white-space:nowrap}
+.tag.add{background:var(--added-soft);color:var(--added)}
+.tag.rem{background:var(--removed-soft);color:var(--removed)}
+.right{display:flex;flex-direction:column;align-items:flex-end;gap:.4rem}
+.strip{display:flex;gap:2px}
+.strip i{width:7px;height:14px;background:var(--rule-soft);display:block}
+.strip i.on{background:var(--ink)}
+.strip.rem i.on{background:var(--removed)}
+.panel{display:none;padding:0 .85rem 1.1rem;border-top:1px dashed var(--rule-soft)}
+.item.open .panel{display:block}
+.dl{display:grid;grid-template-columns:8.5rem 1fr;gap:.35rem 1rem;margin:.9rem 0 0;font-size:13px}
+.dl dt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-40);padding-top:2px}
+.dl dd{margin:0}
+.drv{margin-top:.9rem;font-size:12.5px;color:var(--ink-60)}
+.drv b{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--ink)}
+.pending{margin-top:.75rem;font-size:12.5px;color:var(--flag);border-left:2px solid var(--flag);padding-left:.6rem}
+.method{columns:2;column-gap:2.5rem;font-size:13.5px;color:var(--ink-60)}
+.method p{margin:0 0 .9rem;break-inside:avoid}
+.method b{color:var(--ink);font-weight:600}
+footer{padding:2rem 0 3rem;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-40)}
+@media (max-width:720px){
+ .led-row{grid-template-columns:1fr}.led-label{text-align:left;font-size:12px}
+ .item-btn{grid-template-columns:1fr;gap:.5rem}.oid{padding-top:0}
+ .right{flex-direction:row;align-items:center;justify-content:space-between;width:100%}
+ .dl{grid-template-columns:1fr;gap:.1rem .5rem}.dl dd{margin-bottom:.5rem}.method{columns:1}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="masthead"><div class="wrap">
+  <p class="eyebrow">Reporting duties in EU legislative proposals</p>
+  <h1>Obligation Register</h1>
+  <p class="standfirst">What a proposal actually requires you to do: who must report, by when, who checks, and whether the file adds the duty or takes it away. Counted, not costed.</p>
+  <div class="sources"><span>Built from the enacting articles and annexes</span><span>COM(2026) 616, ETS revision</span><span>COM(2026) 100, Industrial Accelerator Act</span></div>
+</div></header>
+
+<section class="section"><div class="wrap">
+  <h2>Start with your industry</h2>
+  <p class="section-note">Choose what your company does. You get the duties that name your sector, and separately the ones that reach you without naming you.</p>
+  <div class="sectors" id="sectors"></div>
+  <div class="result" id="result"></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <h2>Who carries the burden</h2>
+  <p class="section-note">Duties added and removed, by who has to carry them. Both files were presented under the same competitiveness framing. The profiles are not the same.</p>
+  <div class="ledger" id="ledger"></div>
+  <div class="key"><span><i class="a"></i>Duties added or widened</span><span><i class="r"></i>Duties removed, merged or waived</span></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <h2>Full register</h2>
+  <p class="section-note">Select any row for the exact provision, the deadline, who checks, and the burden drivers behind it.</p>
+  <div class="controls">
+    <div class="group" id="f-file"></div><div class="group" id="f-dir"></div><div class="group" id="f-addr"></div>
+    <input class="search" id="q" type="search" placeholder="Search duties" aria-label="Search duties">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="reg" id="reg"></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <h2>Method and limits</h2>
+  <div class="method">
+    <p><b>The unit is the duty, not the provision.</b> One provision can carry several duties, and one duty can sit across several provisions.</p>
+    <p><b>Named and not named.</b> A sector is named when the text addresses it directly. It is reached without being named when the duty lands on a public buyer, a supplier, or an input it depends on.</p>
+    <p><b>Burden drivers.</b> Seven yes-or-no marks read off the text, shown as the strip on each row: D1 new document, D2 accredited outside verification, D3 approval needed before you proceed, D4 new measurement or data systems, D5 recurring, D6 money attached to failure, D7 you are newly inside the regime altogether.</p>
+    <p><b>No euro figures.</b> None are given here. Percentage and tonnage thresholds are quoted because they are operative text, not estimates.</p>
+    <p><b>Counts are unweighted.</b> One duty on every recipient of free allowances counts the same as one waiver for small aircraft operators. Adding the number of affected companies is the next step and will change the picture.</p>
+    <p><b>Coverage.</b> Enacting articles and annexes of both files. Still outstanding: the Accelerator Act's own Annexes I to IV, which set the product-level low-carbon and origin requirements for steel, concrete, aluminium and vehicles.</p>
+    <p><b>Ochre flags</b> mark duties whose substance is settled later, in delegated or implementing acts not yet drafted.</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Prototype. All counts computed from the register, not entered by hand.</div></footer>
+
+<script>
+const D=["D1","D2","D3","D4","D5","D6","D7"];
+const FILES={ets:{name:"EU ETS revision",code:"COM(2026) 616",date:"17 July 2026"},
+             iaa:{name:"Industrial Accelerator Act",code:"COM(2026) 100",date:"4 March 2026"}};
+const CLASSES={business:"Businesses",state:"Governments and public buyers",investor:"Foreign investors",commission:"European Commission"};
+const SECTORS={steel:"Steel",cement:"Cement and concrete",alu:"Aluminium and metals",chem:"Chemicals and refining",
+ glass:"Glass, ceramics, paper",power:"Power and heat",waste:"Waste and landfill",ship:"Shipping",air:"Aviation",
+ auto:"Automotive",build:"Construction",batsol:"Batteries and solar",clean:"Wind, heat pumps, hydrogen",ccs:"Carbon capture and fuels"};
+const EII=["steel","cement","alu","chem","glass"];
+const MFG=["steel","cement","alu","chem","glass","batsol","clean","auto","ccs"];
+
+const OBS=[
+{id:"S-01",f:"ets",t:"Establish, publish and submit an Invest in EU decarbonisation plan covering measures, investments and intermediate targets",a:"Operators applying for free allowances",c:"business",freq:"By 30 September 2029, then every five years",v:"Verified under Art. 15, approved by the competent authority",b:"Art. 10a(3b)",w:"First plans due 30 September 2029",dir:"add",d:["D1","D2","D3","D5","D6"],burden:"High",s:EII,i:["build","auto"]},
+{id:"S-02",f:"ets",t:"Invest at least the economic value of 100% of your free allocation, in the EU, with significant emission reductions at the installation",a:"Operators applying for free allowances",c:"business",freq:"Each five-year period",v:"Competent authority confirmation",b:"Art. 10a(3b), fifth subparagraph",w:"Per five-year period from 2031",dir:"add",d:["D5","D6"],burden:"High",s:EII,i:["build","auto"]},
+{id:"S-03",f:"ets",t:"80% of free allocation released annually on a verified and approved plan; the last 20% only once investments are confirmed",a:"Operators applying for free allowances",c:"business",freq:"Confirmation within two years of the period ending",v:"Competent authority",b:"Art. 10a(3c)",w:"From 2031",dir:"add",d:["D2","D3","D5","D6"],burden:"High",s:EII,i:[]},
+{id:"S-04",f:"ets",t:"Reimburse allowances if production capacity or the activity moves outside the Union; otherwise deducted from future years",a:"Operators receiving free allowances",c:"business",freq:"If it happens",v:"Member State",b:"Art. 10a(3c), second subparagraph",w:"From 2031",dir:"add",d:["D6"],burden:"Medium",s:EII,i:[]},
+{id:"S-05",f:"ets",t:"Exemption from the plan and the conditionality for the 10% most efficient installations in a sector, and for zero or low-carbon installations",a:"Operators applying for free allowances",c:"business",freq:"n/a",v:"None",b:"Art. 10a(3c), final subparagraph",w:"From 2031",dir:"rem",d:["D1","D2","D3"],burden:"Relief",s:EII,i:[]},
+{id:"S-06",f:"ets",t:"Exemption from the plan where an Industrial Decarbonisation Bank, Booster or Innovation Fund project is running at the installation",a:"Operators applying for free allowances",c:"business",freq:"n/a",v:"None",b:"Art. 10a(3c), sixth subparagraph",w:"From 2031",dir:"rem",d:["D1","D2"],burden:"Relief",s:EII,i:[]},
+{id:"S-07",f:"ets",t:"Option to pool installations under a joint decarbonisation investment agreement to meet the investment requirement together",a:"Operators applying for free allowances",c:"business",freq:"Per five-year period",v:"Competent authority",b:"Art. 10a(3d)",w:"Agreement concluded before applying",dir:"rem",d:["D1"],burden:"Relief",s:EII,i:[]},
+{id:"S-08",f:"ets",t:"Carbon leakage list not updated for 2031-2040, so no reapplication",a:"Operators receiving free allowances",c:"business",freq:"n/a",v:"None",b:"Art. 10b",w:"2031-2040",dir:"rem",d:["D1"],burden:"Relief",s:EII,i:[]},
+{id:"S-09",f:"ets",t:"Offset your own fossil emissions with certified bio-CCS removals you generate yourself",a:"Industrial, shipping and aviation operators (optional)",c:"business",freq:"Annual",v:"CRCF certification",b:"Art. 14(1a)",w:"On entry into force",dir:"add",d:["D1","D2"],burden:"Medium",s:EII.concat(["ship","air","ccs"]),i:[]},
+{id:"S-10",f:"ets",t:"Stay in the system for two more allocation periods after changing processes and dropping below the 20 MW threshold",a:"Industrial operators",c:"business",freq:"Per period",v:"Existing monitoring",b:"Art. 2(1), Annex I",w:"From 2031",dir:"add",d:["D5"],burden:"Low",s:EII.concat(["power"]),i:[]},
+{id:"S-11",f:"ets",t:"Hydrogen production above 5 tonnes a day now covered even where hydrogen is only a by-product",a:"Hydrogen and chemicals operators",c:"business",freq:"Annual",v:"Accredited verifier",b:"Annex I, row 24",w:"On entry into force",dir:"add",d:["D5","D7"],burden:"High",s:["chem","clean"],i:[]},
+{id:"W-01",f:"ets",t:"Permit, monitoring and verified reporting for incineration and co-incineration of non-hazardous waste above 3 tonnes an hour, chemical recycling excluded",a:"Waste incineration plants",c:"business",freq:"Annual",v:"Accredited verifier",b:"Annex I, new row; Arts. 14, 15",w:"From 1 January 2031",dir:"add",d:["D1","D2","D4","D5","D7"],burden:"High",s:["waste"],i:["build"]},
+{id:"W-02",f:"ets",t:"Surrender 25% of verified emissions for 2031, 50% for 2032, 75% for 2033, then 100% from 2034",a:"Waste incineration and co-incineration plants",c:"business",freq:"Annual",v:"Accredited verifier",b:"Art. 12a",w:"2031 to 2034",dir:"add",d:["D5","D6","D7"],burden:"High",s:["waste"],i:["build"]},
+{id:"W-03",f:"ets",t:"National opt-out from surrender until 2035 where the Member State shows two of three conditions, including a national carbon tax",a:"Waste incineration plants, via their Member State",c:"business",freq:"Per reference year",v:"Competent authority",b:"Art. 12b",w:"Up to 2035",dir:"rem",d:["D6"],burden:"Relief",s:["waste"],i:[]},
+{id:"W-04",f:"ets",t:"Outermost region plants may be exempted from surrender until 31 December 2035",a:"Waste incineration plants in outermost regions",c:"business",freq:"n/a",v:"Member State",b:"Art. 12a, second paragraph",w:"Until 31 December 2035",dir:"rem",d:["D6"],burden:"Relief",s:["waste"],i:[]},
+{id:"W-05",f:"ets",t:"Monitoring, reporting and verification for landfilling of non-hazardous waste, with no allowances to surrender",a:"Landfill operators",c:"business",freq:"Annual",v:"Accredited verifier",b:"Annex I, new row; Arts. 14, 15",w:"From 2031 if a landfill register and BAT conclusions are in place, otherwise 2034",dir:"add",d:["D1","D2","D4","D5","D7"],burden:"High",s:["waste"],i:[],p:"Start date depends on the landfill register under the Circular Economy Act and on Best Available Techniques conclusions being published. The Commission reports by 31 July 2029 on whether both conditions are met."},
+{id:"C-01",f:"ets",t:"Capture of carbon dioxide from covered activities brought into the system",a:"Capture operators",c:"business",freq:"Annual",v:"Accredited verifier",b:"Annex I, row 26",w:"On entry into force",dir:"add",d:["D5","D7"],burden:"High",s:["ccs"],i:["steel","cement","chem"]},
+{id:"C-02",f:"ets",t:"Processing of captured carbon dioxide, including purification, liquefaction, gasification and temporary storage",a:"CO2 processing operators",c:"business",freq:"Annual",v:"Accredited verifier",b:"Annex I, new row",w:"On entry into force",dir:"add",d:["D5","D7"],burden:"High",s:["ccs"],i:["steel","cement","chem"]},
+{id:"C-03",f:"ets",t:"Utilisation of captured carbon dioxide by chemically binding it into other carbon-based molecules",a:"Chemical and CCU operators",c:"business",freq:"Annual",v:"Accredited verifier",b:"Annex I, new row",w:"On entry into force",dir:"add",d:["D5","D7"],burden:"High",s:["ccs","chem"],i:[]},
+{id:"C-04",f:"ets",t:"Distribution of synthetic fuels containing captured carbon becomes the accounting point",a:"Fuel distributors",c:"business",freq:"Annual",v:"Accredited verifier",b:"Annex I, new row",w:"On entry into force",dir:"add",d:["D1","D4","D5","D7"],burden:"High",s:["ccs"],i:["air","ship"]},
+{id:"C-05",f:"ets",t:"Surrender deferred for carbon held in listed products until it is released downstream",a:"Industrial operators",c:"business",freq:"If it happens",v:"None",b:"Art. 12(3b)",w:"On entry into force",dir:"rem",d:["D6"],burden:"Relief",s:["chem","ccs"],i:["waste"],p:"The Commission will set the list of products from which carbon is expected to be re-emitted."},
+{id:"M-01",f:"ets",t:"Maritime monitoring widened to energy use alongside emissions and efficiency data",a:"Shipping companies",c:"business",freq:"Annual",v:"Accredited verifier",b:"MRV Reg. Arts. 2, 9, 10",w:"On entry into force",dir:"add",d:["D4","D5"],burden:"Medium",s:["ship"],i:[]},
+{id:"M-02",f:"ets",t:"Methane and nitrous oxide added to covered maritime gases",a:"Shipping companies",c:"business",freq:"Annual",v:"Accredited verifier",b:"Annex I, maritime row",w:"From 1 January 2026",dir:"add",d:["D4","D5","D6"],burden:"Medium",s:["ship"],i:[]},
+{id:"M-03",f:"ets",t:"One monitoring plan and one report covering both the ETS and FuelEU, in a single cycle",a:"Shipping companies",c:"business",freq:"Annual",v:"Accredited verifier",b:"MRV Reg. Arts. 6, 11",w:"On entry into force",dir:"rem",d:["D1"],burden:"Relief",s:["ship"],i:[]},
+{id:"M-04",f:"ets",t:"Ships between 400 and 5 000 gross tonnage brought into scope",a:"Shipping companies",c:"business",freq:"Annual",v:"Accredited verifier",b:"Annex I, maritime row; MRV Reg. Art. 2",w:"From 1 January 2031",dir:"add",d:["D1","D4","D5","D7"],burden:"High",s:["ship"],i:[],p:"Monitoring rules for these ships come in delegated and implementing acts."},
+{id:"M-05",f:"ets",t:"Offshore worksites count as ports of call, and the transhipment test tightens from 65% to 50%",a:"Shipping companies",c:"business",freq:"If it happens",v:"None",b:"Arts. 3, 3ga(1)",w:"On entry into force",dir:"add",d:["D5"],burden:"Medium",s:["ship"],i:[]},
+{id:"M-06",f:"ets",t:"One responsible authority per company, with a clear attribution rule",a:"Shipping companies",c:"business",freq:"One-off",v:"None",b:"MRV Reg. Art. 4a",w:"On entry into force",dir:"rem",d:[],burden:"Relief",s:["ship"],i:[]},
+{id:"M-07",f:"ets",t:"Transhipment port list reviewed every year instead of every two",a:"European Commission",c:"commission",freq:"Annual",v:"None",b:"Art. 3ga(2)",w:"On entry into force",dir:"add",d:["D5"],burden:"Low",s:["ship"],i:[]},
+{id:"A-01",f:"ets",t:"Flights departing an EEA aerodrome brought into scope, with operators under 10 000 tonnes between two different States excluded",a:"Aircraft operators",c:"business",freq:"Annual",v:"Accredited verifier",b:"Annex I, aviation row",w:"From 1 January 2029",dir:"add",d:["D5","D6"],burden:"Medium",s:["air"],i:[]},
+{id:"A-02",f:"ets",t:"Commercial status test replaced by a flat 1 000 tonne annual emissions threshold",a:"Aircraft operators",c:"business",freq:"n/a",v:"None",b:"Annex I, points (j) and (k)",w:"From 2029",dir:"rem",d:[],burden:"Relief",s:["air"],i:[]},
+{id:"A-03",f:"ets",t:"Simplified reporting and no verification required for low-activity operators",a:"Aircraft operators",c:"business",freq:"Annual",v:"Waived",b:"Art. 28a(4)",w:"From 2029",dir:"rem",d:["D2"],burden:"Relief",s:["air"],i:[]},
+{id:"A-04",f:"ets",t:"Claim process for ETS-funded support for cleaner fuels and propulsion",a:"Aircraft operators (optional)",c:"business",freq:"If applying",v:"None",b:"Art. 3c(6)",w:"To 2040",dir:"add",d:["D1"],burden:"Low",s:["air"],i:[],p:"The list of aircraft treated as business aircraft comes in an implementing act."},
+{id:"P-01",f:"ets",t:"At least half of auction revenue must go to named priority areas",a:"Member States",c:"state",freq:"Annual",v:"None",b:"Art. 10(3)",w:"From entry into force",dir:"add",d:["D5","D6"],burden:"High",s:[],i:["steel","cement","chem","power","waste"]},
+{id:"P-02",f:"ets",t:"No spending that creates or extends dependence on carbon-intensive technology",a:"Member States",c:"state",freq:"Annual",v:"None",b:"Art. 10(3)",w:"From entry into force",dir:"add",d:["D5"],burden:"Medium",s:[],i:["power"]},
+{id:"P-03",f:"ets",t:"Publicly identify ETS-funded measures, using a standard EU label",a:"Member States",c:"state",freq:"If it happens",v:"None",b:"Art. 30m",w:"From entry into force",dir:"add",d:["D1","D5"],burden:"Medium",s:[],i:[]},
+{id:"P-04",f:"ets",t:"Set out planned use of auction revenue in national energy and climate plans, in advance",a:"Member States",c:"state",freq:"Per plan cycle",v:"None",b:"Governance Regulation amendment",w:"Next plan cycle",dir:"add",d:["D1","D3"],burden:"High",s:[],i:["steel","cement","chem","power"],p:"Depends on the forthcoming amendment to the Governance Regulation."},
+{id:"P-05",f:"ets",t:"Indirect cost compensation reporting folded into general revenue reporting",a:"Member States",c:"state",freq:"Annual",v:"None",b:"Art. 10(6)",w:"From entry into force",dir:"rem",d:["D1"],burden:"Relief",s:[],i:["steel","alu","chem"]},
+{id:"P-06",f:"ets",t:"Carbon market report and Member State reporting brought into line with each other",a:"Member States and Commission",c:"state",freq:"Annual",v:"None",b:"Arts. 10(5), 21",w:"From entry into force",dir:"rem",d:[],burden:"Relief",s:[],i:[]},
+{id:"P-07",f:"ets",t:"Approve or reject Invest in EU decarbonisation plans and confirm the investments were made",a:"National competent authorities",c:"state",freq:"Per five-year period",v:"None",b:"Arts. 10a(3b), 10a(3c)",w:"From 2029",dir:"add",d:["D3","D5"],burden:"High",s:[],i:EII},
+{id:"P-08",f:"ets",t:"Publish the Union-wide quantity of allowances reflecting the waste phase-in",a:"European Commission",c:"commission",freq:"One-off",v:"None",b:"Art. 9",w:"By September 2028",dir:"add",d:["D1"],burden:"Low",s:["waste"],i:[]},
+{id:"P-09",f:"ets",t:"Report on whether a landfill register and Best Available Techniques conclusions are in place",a:"European Commission",c:"commission",freq:"One-off",v:"None",b:"Annex I, landfill row",w:"By 31 July 2029",dir:"add",d:["D1"],burden:"Low",s:["waste"],i:[]},
+{id:"P-10",f:"ets",t:"Annual public reporting on the Innovation Fund",a:"European Commission",c:"commission",freq:"Annual",v:"None",b:"Art. 10cb",w:"From entry into force",dir:"add",d:["D1","D5"],burden:"Low",s:[],i:["steel","cement","chem","clean"]},
+{id:"F-01",f:"ets",t:"Completion bonds and hard deadlines for Investment Booster support",a:"Companies receiving support",c:"business",freq:"If applying",v:"Independent verification of emissions avoided",b:"Art. 10cd",w:"2028 to 2031",dir:"add",d:["D2","D6"],burden:"High",s:EII.concat(["waste"]),i:[]},
+{id:"F-02",f:"ets",t:"Bid and completion bonds under the competitive phase of the Industrial Decarbonisation Bank",a:"Companies receiving support",c:"business",freq:"If applying",v:"Independent verification",b:"Art. 10ce",w:"From 2031",dir:"add",d:["D2","D6"],burden:"High",s:EII.concat(["waste"]),i:[]},
+
+{id:"PM-01",f:"iaa",t:"Set up a national single access point that routes permit applications and tracks deadlines, built on the European Business Wallet",a:"Member States",c:"state",freq:"One-off, then ongoing",v:"None",b:"Art. 4",w:"One year after entry into force",dir:"add",d:["D1","D4"],burden:"High",s:[],i:MFG,p:"Depends on the proposed Regulation on European Business Wallets, and on implementing acts setting interoperability standards."},
+{id:"PM-02",f:"iaa",t:"One application covering every permit a manufacturing project needs",a:"Project developers",c:"business",freq:"Per project",v:"Competent authority",b:"Art. 5(1)",w:"One year after entry into force",dir:"rem",d:["D1"],burden:"Relief",s:MFG,i:[]},
+{id:"PM-03",f:"iaa",t:"Confirm the application is complete or ask for what is missing within 45 days, with only one further request allowed within 30 days",a:"Member States",c:"state",freq:"Per project",v:"None",b:"Art. 5(3)",w:"One year after entry into force",dir:"add",d:["D3","D5"],burden:"High",s:[],i:MFG},
+{id:"PM-04",f:"iaa",t:"Energy-intensive decarbonisation projects get Net-Zero Industry Act permitting and count as strategic projects for environmental assessment",a:"Project developers",c:"business",freq:"Per project",v:"None",b:"Art. 6",w:"On entry into force",dir:"rem",d:["D5"],burden:"Relief",s:EII,i:[],p:"Depends on the proposed Regulation on speeding up environmental assessments."},
+{id:"PM-05",f:"iaa",t:"A baseline permit covering the whole acceleration area, leaving only site-specific permits such as industrial emissions and grid connection",a:"Project developers",c:"business",freq:"Per project",v:"Competent authority",b:"Art. 27",w:"After area designation",dir:"rem",d:["D1"],burden:"Relief",s:MFG,i:[]},
+{id:"LM-01",f:"iaa",t:"Declare yourself that what you supply meets the low-carbon and EU origin rules; checked only if you win",a:"Companies bidding for public contracts",c:"business",freq:"Per tender",v:"Self-declaration",b:"Art. 11(4)",w:"On entry into force",dir:"add",d:["D1","D5"],burden:"Medium",s:["build","auto","steel","cement","alu"],i:[]},
+{id:"LM-02",f:"iaa",t:"Tenders from operators owned or controlled by entities in countries without an agreement with the EU are excluded outright",a:"Companies bidding for public contracts",c:"business",freq:"Per tender",v:"Contracting authority",b:"Art. 11(1)",w:"On entry into force",dir:"add",d:["D6","D7"],burden:"High",s:["build","auto","steel","cement","alu","batsol","clean"],i:[]},
+{id:"LM-03",f:"iaa",t:"Content from customs union, free trade agreement and Government Procurement Agreement partners counts as EU origin",a:"Companies bidding for public contracts",c:"business",freq:"Per tender",v:"Customs rules of origin",b:"Arts. 7, 8",w:"On entry into force",dir:"rem",d:["D1"],burden:"Relief",s:["steel","cement","alu","auto"],i:["build"],p:"The Commission may exclude a third country from this equivalence by delegated act."},
+{id:"LM-04",f:"iaa",t:"Only free trade agreement and customs union content counts as EU origin outside procurement, with no Government Procurement Agreement route",a:"Companies under public support schemes",c:"business",freq:"Per scheme",v:"Customs rules of origin",b:"Art. 9",w:"On entry into force",dir:"add",d:["D1"],burden:"Medium",s:["auto","batsol","clean"],i:["steel","alu"]},
+{id:"LM-05",f:"iaa",t:"Issue a document certifying EU origin alongside the certificate of conformity",a:"Vehicle manufacturers",c:"business",freq:"Per certificate",v:"Equivalent to self-declaration",b:"Art. 15",w:"Six months after entry into force",dir:"add",d:["D1","D5"],burden:"Medium",s:["auto"],i:["steel","alu","batsol"]},
+{id:"LM-06",f:"iaa",t:"Apply the low-carbon and EU origin specifications in procurement above the Directive thresholds",a:"Public buyers",c:"state",freq:"Per procedure",v:"None",b:"Art. 11(2)",w:"On entry into force",dir:"add",d:["D3","D5"],burden:"High",s:[],i:["steel","cement","alu","build","auto"]},
+{id:"LM-07",f:"iaa",t:"Apply the requirements to schemes covering at least 45% of the national budget for covered products, and 100% for vehicles",a:"Member States",c:"state",freq:"Per scheme",v:"None",b:"Art. 12(1)",w:"On entry into force",dir:"add",d:["D3","D5","D6"],burden:"High",s:[],i:["auto","steel","cement","alu","batsol"]},
+{id:"LM-08",f:"iaa",t:"Requirements can be set aside where costs rise more than 25% in procurement, or more than 30% in support schemes, or delivery slips more than seven months",a:"Public buyers and Member States",c:"state",freq:"If it happens",v:"Objective and transparent data",b:"Arts. 11(3), 12(3)",w:"On entry into force",dir:"rem",d:["D1"],burden:"Relief",s:[],i:["build","auto","steel","cement","alu"]},
+{id:"LM-09",f:"iaa",t:"Low-carbon status determined by construction products and ecodesign delegated acts, using data already reported under the ETS and CBAM",a:"Manufacturers",c:"business",freq:"Per product",v:"ETS and CBAM accredited verifiers",b:"Art. 10(1) and (2)",w:"When the delegated acts land",dir:"rem",d:["D4"],burden:"Relief",s:["steel","cement","alu"],i:["build","auto"],p:"The low-carbon definitions themselves sit in delegated acts under the Construction Products Regulation and the Ecodesign Regulation."},
+{id:"LM-10",f:"iaa",t:"Optional greenhouse gas performance class for industrial products not yet covered by ecodesign rules",a:"Manufacturers (optional)",c:"business",freq:"If applying",v:"ETS or CBAM accredited verifier",b:"Art. 10(2)",w:"When the delegated act lands",dir:"add",d:["D1","D2"],burden:"Low",s:["steel","cement","alu","chem"],i:[],p:"Classification systems, system boundaries and performance classes all come by delegated act."},
+{id:"NZ-01",f:"iaa",t:"Battery storage systems in public contracts must be EU origin, adding battery cells, a management system and one further component after three years",a:"Battery storage suppliers",c:"business",freq:"Per tender",v:"Self-declaration",b:"NZIA Annex II, Part I(a)",w:"One year, tightening at three years, after entry into force",dir:"add",d:["D1","D5","D6"],burden:"High",s:["batsol"],i:["power"]},
+{id:"NZ-02",f:"iaa",t:"Solar inverters and cells in public contracts must be EU origin",a:"Solar suppliers",c:"business",freq:"Per tender",v:"Self-declaration",b:"NZIA Annex II, Part I(b)",w:"Three years after entry into force",dir:"add",d:["D1","D5","D6"],burden:"High",s:["batsol"],i:["power"]},
+{id:"NZ-03",f:"iaa",t:"Hydronic heat pumps in public contracts must be EU origin",a:"Heat pump suppliers",c:"business",freq:"Per tender",v:"Self-declaration",b:"NZIA Annex II, Part I(c)",w:"Three years after entry into force",dir:"add",d:["D1","D5","D6"],burden:"High",s:["clean"],i:["build"]},
+{id:"NZ-04",f:"iaa",t:"One main wind turbine component of EU origin, rising to two after three years",a:"Wind suppliers",c:"business",freq:"Per tender or auction",v:"Self-declaration",b:"NZIA Annex II, Parts I(d), II(d)",w:"One year, tightening at three years",dir:"add",d:["D1","D5","D6"],burden:"High",s:["clean"],i:["power"]},
+{id:"NZ-05",f:"iaa",t:"Two main components of EU origin for new-build nuclear, rising to three after six years; research and first deployment exempt",a:"Nuclear suppliers",c:"business",freq:"Per tender",v:"Self-declaration",b:"NZIA Annex II, Parts I(e), IV(b)",w:"Four years, tightening at six years",dir:"add",d:["D1","D5","D6"],burden:"High",s:["clean"],i:["power"]},
+{id:"NZ-06",f:"iaa",t:"Electrolysers in hydrogen auctions must be EU origin, with the stack and one further component, rising to two after three years",a:"Electrolyser suppliers",c:"business",freq:"Per auction",v:"Self-declaration",b:"NZIA Annex II, Part II(c)",w:"One year, tightening at three years",dir:"add",d:["D1","D5","D6"],burden:"High",s:["clean"],i:["chem","power"]},
+{id:"NZ-07",f:"iaa",t:"Origin criteria apply to at least 40% of auctioned volume a year, or 8 gigawatts, per Member State",a:"Member States",c:"state",freq:"Annual",v:"None",b:"NZIA Art. 26(7)",w:"On entry into force",dir:"add",d:["D3","D5"],burden:"High",s:[],i:["batsol","clean","power"]},
+{id:"NZ-08",f:"iaa",t:"Suppliers flagged as high risk under the cybersecurity framework are barred from control and monitoring systems, across all auctioned volume",a:"Auction bidders and scheme beneficiaries",c:"business",freq:"Per auction or scheme",v:"Member State",b:"NZIA Arts. 26(1)(a)(iv), 28b, 28c(3)",w:"On entry into force",dir:"add",d:["D1","D5","D6"],burden:"High",s:["batsol","clean","power"],i:[],p:"Turns on the high-risk supplier designation under the proposed revised Cybersecurity Act."},
+{id:"NZ-09",f:"iaa",t:"Extra financial compensation for meeting origin rules is capped at 15% of the product cost, or 20% for energy poverty schemes",a:"Member States",c:"state",freq:"Per scheme",v:"None",b:"NZIA Art. 28a(3)",w:"On entry into force",dir:"add",d:["D5"],burden:"Medium",s:[],i:["batsol","clean"]},
+{id:"NZ-10",f:"iaa",t:"Report on the use of exemptions from the origin and resilience requirements",a:"Member States and public buyers",c:"state",freq:"Every three years",v:"None",b:"NZIA Art. 42(2a) and (3)",w:"By 15 March 2027, then every three years",dir:"add",d:["D1","D5"],burden:"Medium",s:[],i:["batsol","clean","power"]},
+{id:"FDI-01",f:"iaa",t:"Notify before taking 30% or more, where the deal exceeds EUR 100 million in batteries, electric vehicles, solar or critical raw materials",a:"Foreign investors and their EU subsidiaries",c:"investor",freq:"Per deal",v:"Investment Authority",b:"Arts. 17, 19",w:"On entry into force",dir:"add",d:["D1","D3","D6","D7"],burden:"High",s:["batsol","clean","auto"],i:[]},
+{id:"FDI-02",f:"iaa",t:"Do not proceed until the authority approves; decision within 60 days, or 75 if extended, plus 30 more where justified",a:"Foreign investors",c:"investor",freq:"Per deal",v:"Investment Authority",b:"Arts. 17(1), 20",w:"On entry into force",dir:"add",d:["D3","D6"],burden:"High",s:["batsol","clean","auto"],i:[]},
+{id:"FDI-03",f:"iaa",t:"Meet at least four of six conditions, with the 50% Union workforce condition mandatory in every case",a:"Foreign investors",c:"investor",freq:"Per deal",v:"Investment Authority",b:"Art. 18(2) and (3)",w:"Twelve months after entry into force",dir:"add",d:["D1","D3","D6"],burden:"High",s:["batsol","clean","auto"],i:[],p:"Detailed rules for verifying the conditions come in an implementing act due six months after entry into force."},
+{id:"FDI-04",f:"iaa",t:"Spend at least 1% of the target's gross annual revenue on research and development in the Union each year",a:"Foreign investors",c:"investor",freq:"Annual",v:"Investment Authority",b:"Art. 18(2)(d)",w:"Throughout the investment",dir:"add",d:["D5","D6"],burden:"High",s:["batsol","clean","auto"],i:[]},
+{id:"FDI-05",f:"iaa",t:"Publish a strategy for strengthening EU value chains and aim to source 30% of inputs from the Union",a:"Foreign investors",c:"investor",freq:"Ongoing",v:"Investment Authority",b:"Art. 18(2)(f)",w:"Throughout the investment",dir:"add",d:["D1","D5"],burden:"Medium",s:["batsol","clean","auto"],i:["steel","alu","chem"]},
+{id:"FDI-06",f:"iaa",t:"License your intellectual property and know-how to the EU target, with pre-existing EU rights staying exclusively with it",a:"Foreign investors",c:"investor",freq:"Per deal",v:"Investment Authority",b:"Art. 18(2)(c)",w:"Before approval",dir:"add",d:["D1","D3"],burden:"High",s:["batsol","clean","auto"],i:[]},
+{id:"FDI-07",f:"iaa",t:"Report regularly on continued compliance, on terms set in the approval decision",a:"Foreign investors",c:"investor",freq:"Recurring",v:"Investment Authority",b:"Arts. 20(5), 22(1)",w:"Throughout the investment",dir:"add",d:["D1","D5","D6"],burden:"High",s:["batsol","clean","auto"],i:[]},
+{id:"FDI-08",f:"iaa",t:"Penalties of at least 5% of average daily turnover for failing to notify, or 5% of the investment value for individuals",a:"Foreign investors",c:"investor",freq:"If it happens",v:"Investment Authority",b:"Art. 22(4)",w:"On entry into force",dir:"add",d:["D6"],burden:"High",s:["batsol","clean","auto"],i:[]},
+{id:"FDI-09",f:"iaa",t:"Interests are added together where investors act in concert or invest through affiliates and ownership chains",a:"Foreign investors",c:"investor",freq:"Per deal",v:"Investment Authority",b:"Art. 19(5)",w:"On entry into force",dir:"add",d:["D1"],burden:"Medium",s:["batsol","clean","auto"],i:[]},
+{id:"FDI-10",f:"iaa",t:"Investors covered by EU trade agreements, service investments and portfolio investments are outside the regime",a:"Foreign investors",c:"investor",freq:"n/a",v:"None",b:"Art. 17(3)",w:"On entry into force",dir:"rem",d:["D1","D3"],burden:"Relief",s:["batsol","clean","auto"],i:[]},
+{id:"FDI-11",f:"iaa",t:"Designate an Investment Authority with the legal and administrative resources to run the regime",a:"Member States",c:"state",freq:"One-off",v:"None",b:"Art. 18(1)",w:"One month after entry into force",dir:"add",d:["D7"],burden:"High",s:[],i:["batsol","clean","auto"]},
+{id:"FDI-12",f:"iaa",t:"Rule on admissibility within 30 days, pass the file to the Commission, and monitor compliance thereafter",a:"Investment Authorities",c:"state",freq:"Per deal",v:"None",b:"Arts. 20(1), 22",w:"On entry into force",dir:"add",d:["D3","D5"],burden:"High",s:[],i:["batsol","clean","auto"]},
+{id:"FDI-13",f:"iaa",t:"Add two months and justify the decision when departing from a Commission opinion",a:"Investment Authorities",c:"state",freq:"If it happens",v:"None",b:"Art. 20(4)",w:"On entry into force",dir:"add",d:["D1","D5"],burden:"Medium",s:[],i:["batsol","clean","auto"]},
+{id:"FDI-14",f:"iaa",t:"Opinion on individual deals within 30 days, and own-initiative review of deals above EUR 1 billion",a:"European Commission",c:"commission",freq:"Per deal",v:"None",b:"Arts. 20(2), 21",w:"On entry into force",dir:"add",d:["D5"],burden:"Medium",s:[],i:["batsol","clean","auto"]},
+{id:"FDI-15",f:"iaa",t:"Track and publish who holds what share of global manufacturing capacity in the covered sectors",a:"European Commission",c:"commission",freq:"Annual",v:"None",b:"Art. 23",w:"On entry into force",dir:"add",d:["D1","D5"],burden:"Medium",s:[],i:["batsol","clean","auto"]},
+{id:"AA-01",f:"iaa",t:"Designate at least one industrial manufacturing acceleration area, prioritising brownfield sites and avoiding protected areas",a:"Member States",c:"state",freq:"One-off, revisable",v:"None",b:"Art. 25(1) to (3)",w:"Twelve months after entry into force",dir:"add",d:["D1","D3"],burden:"High",s:[],i:MFG},
+{id:"AA-02",f:"iaa",t:"Run a strategic environmental assessment, and a habitats assessment where Natura 2000 sites could be affected, before designating",a:"Member States",c:"state",freq:"Per area",v:"None",b:"Art. 25(5)",w:"Before designation",dir:"add",d:["D1","D3"],burden:"High",s:[],i:MFG},
+{id:"AA-03",f:"iaa",t:"Analyse each area's energy needs against 2030, 2040 and 2050, and review at least every three years",a:"Member States",c:"state",freq:"At least every three years",v:"None",b:"Art. 26(c)",w:"From designation",dir:"add",d:["D1","D4","D5"],burden:"High",s:[],i:MFG.concat(["power"])},
+{id:"AA-04",f:"iaa",t:"Make sure transmission and distribution network development plans take that energy analysis into account",a:"Member States and network operators",c:"state",freq:"Per planning cycle",v:"None",b:"Art. 26(d)",w:"Next planning cycle",dir:"add",d:["D5"],burden:"Medium",s:[],i:["power"].concat(MFG)},
+{id:"AA-05",f:"iaa",t:"Tell the Commission within 30 days of designating an area",a:"Member States",c:"state",freq:"Per area",v:"None",b:"Art. 25(6)",w:"Within 30 days of the decision",dir:"add",d:["D1"],burden:"Low",s:[],i:[]},
+{id:"AA-06",f:"iaa",t:"Support skills, training and apprenticeships, and exchange information on shortages through the Industrial Forum",a:"Member States",c:"state",freq:"Ongoing",v:"None",b:"Art. 26(g) and (h)",w:"From designation",dir:"add",d:["D5"],burden:"Medium",s:[],i:MFG},
+{id:"G-01",f:"iaa",t:"Put effective, proportionate and dissuasive penalties into national law and notify the Commission",a:"Member States",c:"state",freq:"One-off",v:"None",b:"Art. 32",w:"On entry into force",dir:"add",d:["D1"],burden:"Medium",s:[],i:MFG},
+{id:"G-02",f:"iaa",t:"Evaluate the Regulation, including administrative costs and effects on downstream sectors and small firms",a:"European Commission",c:"commission",freq:"Every three years",v:"None",b:"Art. 28",w:"Two years after entry into force, then every three",dir:"add",d:["D1"],burden:"Low",s:[],i:MFG},
+{id:"G-03",f:"iaa",t:"Review whether the lead market and investment chapters should change, including extending origin rules to shipbuilding and rail rolling stock",a:"European Commission",c:"commission",freq:"Every three years",v:"None",b:"Art. 29",w:"Three years after entry into force, then every three",dir:"add",d:["D1"],burden:"Low",s:[],i:MFG}
+];
+
+function strip(o){return `<span class="strip ${o.dir==='rem'?'rem':''}" aria-hidden="true">`+
+  D.map(k=>`<i class="${o.d.includes(k)?'on':''}"></i>`).join("")+`</span>`}
+function row(o){return `
+  <div class="item" data-id="${o.id}">
+    <button class="item-btn" aria-expanded="false">
+      <span class="oid">${o.id}</span>
+      <span class="otitle">${o.t}<span class="oaddr">${o.a}</span></span>
+      <span class="right"><span class="tag ${o.dir}">${o.dir==="add"?"added":"removed"}</span>${strip(o)}</span>
+    </button>
+    <div class="panel">
+      <dl class="dl">
+        <dt>File</dt><dd>${FILES[o.f].name}, ${FILES[o.f].code}</dd>
+        <dt>Provision</dt><dd>${o.b}</dd>
+        <dt>When</dt><dd>${o.w}</dd>
+        <dt>How often</dt><dd>${o.freq}</dd>
+        <dt>Who checks</dt><dd>${o.v}</dd>
+        <dt>Weight</dt><dd>${o.burden}</dd>
+      </dl>
+      <p class="drv">Drivers: ${o.d.length?o.d.map(k=>`<b>${k}</b>`).join(" · "):"none recorded"}</p>
+      ${o.p?`<p class="pending">Settled later in secondary legislation. ${o.p}</p>`:""}
+    </div>
+  </div>`}
+
+let activeSector=null;
+function buildSectors(){
+  document.getElementById("sectors").innerHTML=Object.keys(SECTORS).map(k=>{
+    const n=OBS.filter(o=>o.s.includes(k)||o.i.includes(k)).length;
+    return `<button class="sec" data-sec="${k}" aria-pressed="false"><b>${SECTORS[k]}</b><span>${n}</span></button>`}).join("");
+}
+function showSector(k){
+  const named=OBS.filter(o=>o.s.includes(k)), reach=OBS.filter(o=>!o.s.includes(k)&&o.i.includes(k));
+  const adds=named.filter(o=>o.dir==="add").length, rems=named.filter(o=>o.dir==="rem").length;
+  document.getElementById("result").className="result on";
+  document.getElementById("result").innerHTML=`
+    <p class="rhead">${SECTORS[k]}</p>
+    <p class="rnote">${named.length} ${named.length===1?"duty names":"duties name"} this sector directly, ${adds} added and ${rems} removed. ${reach.length} more reach it without naming it.</p>
+    <div class="block"><p class="blabel">Named in the text</p>
+      ${named.length?named.map(row).join(""):`<div class="empty-note">Nothing in these two files addresses this sector directly.</div>`}</div>
+    <div class="block"><p class="blabel">Reaches you without naming you</p>
+      ${reach.length?reach.map(row).join(""):`<div class="empty-note">Nothing in these two files reaches this sector indirectly.</div>`}</div>`;
+}
+function buildLedger(){
+  const order=["business","state","investor","commission"];let max=0;const data={};
+  for(const key of Object.keys(FILES)){data[key]={};
+    for(const c of order){const r=OBS.filter(o=>o.f===key&&o.c===c);
+      const add=r.filter(o=>o.dir==="add").length,rem=r.filter(o=>o.dir==="rem").length;
+      data[key][c]={add,rem};max=Math.max(max,add,rem);}}
+  document.getElementById("ledger").innerHTML=Object.keys(FILES).map(key=>{
+    const f=FILES[key];
+    const rows=order.map(c=>{const {add,rem}=data[key][c];
+      return `<div class="led-row"><div class="led-label">${CLASSES[c]}</div>
+        <div class="led-track"><div class="led-axis"></div>
+        <div class="led-bar rem ${rem?'':'empty'}" style="width:${rem/max*50}%">${rem?`<span>${rem}</span>`:''}</div>
+        <div class="led-bar add ${add?'':'empty'}" style="width:${add/max*50}%">${add?`<span>${add}</span>`:''}</div>
+        </div></div>`}).join("");
+    return `<div class="led-file"><h3>${f.name}</h3><div class="led-meta">${f.code} &nbsp;·&nbsp; ${f.date}</div>${rows}</div>`}).join("");
+}
+const state={file:"all",dir:"all",addr:"all",q:""};
+function chips(el,items,key){el.innerHTML=items.map(i=>`<button class="chip" data-k="${key}" data-v="${i.v}" aria-pressed="${state[key]===i.v}">${i.l}</button>`).join("")}
+function matches(o){
+  if(state.file!=="all"&&o.f!==state.file)return false;
+  if(state.dir!=="all"&&o.dir!==state.dir)return false;
+  if(state.addr!=="all"&&o.c!==state.addr)return false;
+  if(state.q&&!(o.id+" "+o.t+" "+o.a+" "+o.b+" "+o.w).toLowerCase().includes(state.q))return false;
+  return true;}
+function render(){
+  const list=OBS.filter(matches);
+  document.getElementById("count").textContent=`${list.length} of ${OBS.length} duties`;
+  document.getElementById("reg").innerHTML=list.length?list.map(row).join(""):
+    `<div class="item"><div style="padding:2rem .85rem;color:var(--ink-60);font-size:14px">Nothing matches these filters. Clear the search or widen a filter to see everything.</div></div>`;
+}
+buildSectors();
+chips(document.getElementById("f-file"),[{v:"all",l:"Both files"},{v:"ets",l:"ETS"},{v:"iaa",l:"Accelerator Act"}],"file");
+chips(document.getElementById("f-dir"),[{v:"all",l:"All"},{v:"add",l:"Added"},{v:"rem",l:"Removed"}],"dir");
+chips(document.getElementById("f-addr"),[{v:"all",l:"Everyone"},{v:"business",l:"Businesses"},{v:"state",l:"Governments"},{v:"investor",l:"Investors"},{v:"commission",l:"Commission"}],"addr");
+document.addEventListener("click",e=>{
+  const s=e.target.closest(".sec");
+  if(s){const k=s.dataset.sec;
+    if(activeSector===k){activeSector=null;document.getElementById("result").className="result";}
+    else{activeSector=k;showSector(k);}
+    document.querySelectorAll(".sec").forEach(b=>b.setAttribute("aria-pressed",b.dataset.sec===activeSector));return;}
+  const c=e.target.closest(".chip");
+  if(c){state[c.dataset.k]=c.dataset.v;
+    document.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",state[b.dataset.k]===b.dataset.v));
+    render();return;}
+  const b=e.target.closest(".item-btn");
+  if(b){const it=b.parentElement;b.setAttribute("aria-expanded",it.classList.toggle("open"));}
+});
+document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();render();});
+buildLedger();render();
+</script>
+</body>
+</html>
