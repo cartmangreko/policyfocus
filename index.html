@@ -60,7 +60,8 @@
     <p><b>Counts are unweighted.</b> One narrow duty counts the same as one duty reaching thousands of companies. Adding the number of affected companies is the next step and will change the picture.</p>
     <p><b>Two extraction passes.</b> Every duty below was extracted twice, independently, and mechanically checked for verbatim source text and driver/direction consistency. Rows where the two passes disagreed were resolved by editorial judgement and are called out in the accompanying report, not silently merged.</p>
     <p><b>Rule as a diff.</b> Each row states the prior rule and the new rule side by side, plus who gains or loses the obligation (the affected-population delta), rather than asserting a weight in isolation. Weight (Relief / Burden) is derived from that diff&rsquo;s nature, not stored independently &mdash; a duty removed or narrowed is Relief, a duty created or extended is Burden.</p>
-    <p><b>Prior rule, honestly sourced.</b> An amending act carries only the new text. Where this proposal's own recitals describe the rule it is replacing, that description is quoted verbatim and labelled <i>recital</i> &mdash; a real quote from this file, but not the original statute's own wording. Where neither this file nor a local copy of the underlying directive states the prior rule, it is marked <i>unresolved</i> rather than guessed.</p>
+    <p><b>Prior rule, honestly sourced.</b> An amending act carries only the new text. Where this proposal's own recitals describe the rule it is replacing, that description is quoted verbatim and labelled <i>recital</i> &mdash; a real quote from this file, but not the original statute's own wording. Where a source document unaffected by this Omnibus states the actual pre-existing rule verbatim, it is labelled <i>sourced</i> &mdash; the strongest tier. Where none of this is available locally, it is marked <i>unresolved</i> rather than guessed.</p>
+    <p><b>Status: adopted, not pending.</b> A consolidated text of Directive (EU) 2024/1760 confirms this proposal was formally adopted as Directive (EU) 2026/470 of 24 February 2026 &mdash; cross-checked verbatim against three of this register's rows. The duties below describe current, in-force law, not a draft that could still change in negotiation. A consolidated text only carries the current wording, though, not what it replaced &mdash; so eight CSDDD-side rows still cite this proposal's recitals (or are marked unresolved) for their prior rule, pending an earlier snapshot of the directive.</p>
   </div>
 </div></section>
 
@@ -90,6 +91,8 @@ function priorPane(o){
   }
   const statusNote=p.status==="unresolved"
     ? `<p class="diff-quote unresolved">Unresolved: not stated in this file, and the pre-amendment consolidated text isn't available locally.${p.note?" "+p.note:""}</p>`
+    : p.status==="sourced"
+    ? `<p class="diff-quote">&ldquo;${p.source_text}&rdquo;<br><span class="unresolved">&mdash; verbatim from ${p.source_document||"the pre-existing in-force text"}.</span></p>`
     : `<p class="diff-quote">&ldquo;${p.source_text}&rdquo;<br><span class="unresolved">&mdash; from this proposal's own recital, describing (not quoting) the prior statute.</span></p>`;
   return `<div class="diff-pane">
     <span class="diff-label">Prior rule</span>
