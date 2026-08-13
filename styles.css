@@ -46,6 +46,7 @@
   --ochre:#a8781a;
   --ochre-soft:#f0e4c9;
   --focus:#1f4f8f;
+  --focus-soft:#d9e3ee;
 
   --display:'Archivo',system-ui,-apple-system,sans-serif;
   --sans:'Public Sans',system-ui,-apple-system,sans-serif;
@@ -243,6 +244,9 @@ a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
 }
 .tag.add{background:var(--claret-soft);color:var(--claret)}
 .tag.rem{background:var(--pine-soft);color:var(--pine)}
+/* four-way valence (v2): obligation keeps add/rem; incentive rows get their own pair */
+.tag.opportunity{background:var(--focus-soft);color:var(--focus)}
+.tag.loss{background:var(--ochre-soft);color:var(--ochre)}
 .right{display:flex;flex-direction:column;align-items:flex-end;gap:.45rem}
 
 /* ---- the signature: the seven-mark burden strip ---- */
@@ -252,6 +256,12 @@ a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
 .strip.rem i.on{background:var(--pine)}
 .item-btn:hover .strip i.on{background:var(--claret)}
 .item-btn:hover .strip.rem i.on{background:var(--pine)}
+/* value/friction strips (v2, incentive rows) — mirror the driver strip's marks */
+.strip.value i.on{background:var(--focus)}
+.strip.friction i.on{background:var(--ochre)}
+.item-btn:hover .strip.value i.on{background:var(--focus)}
+.item-btn:hover .strip.friction i.on{background:var(--ochre)}
+.microlabel{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-40);margin-right:.4rem}
 
 /* ---- expanded panel ---- */
 .panel{display:none;padding:0 .9rem 1.15rem;border-top:1px dashed var(--rule-soft)}

@@ -62,6 +62,7 @@
     <p><b>Rule as a diff.</b> Each row states the prior rule and the new rule side by side, plus who gains or loses the obligation (the affected-population delta), rather than asserting a weight in isolation. Weight (Relief / Burden) is derived from that diff&rsquo;s nature, not stored independently &mdash; a duty removed or narrowed is Relief, a duty created or extended is Burden.</p>
     <p><b>Prior rule, honestly sourced.</b> An amending act carries only the new text. Where this proposal's own recitals describe the rule it is replacing, that description is quoted verbatim and labelled <i>recital</i> &mdash; a real quote from this file, but not the original statute's own wording. Where a source document unaffected by this Omnibus states the actual pre-existing rule verbatim, it is labelled <i>sourced</i> &mdash; the strongest tier. Where none of this is available locally, it is marked <i>unresolved</i> rather than guessed.</p>
     <p><b>Status: adopted, not pending.</b> A consolidated text of Directive (EU) 2024/1760 confirms this proposal was formally adopted as Directive (EU) 2026/470 of 24 February 2026 &mdash; cross-checked verbatim against three of this register's rows. The duties below describe current, in-force law, not a draft that could still change in negotiation. A consolidated text only carries the current wording, though, not what it replaced &mdash; so eight CSDDD-side rows still cite this proposal's recitals (or are marked unresolved) for their prior rule, pending an earlier snapshot of the directive.</p>
+    <p><b>Two-sided: what you owe and what you can get.</b> Every measure is either an <i>obligation</i> (a duty, read against the seven burden drivers) or an <i>incentive</i> (funding, demand, credit, or protection, read against four value drivers and five access frictions). The tag on each row reads a four-way <i>valence</i>: Burden and Relief for obligations, Opportunity and Loss for incentives, derived from measure type and direction rather than set by hand. The Omnibus is a reporting and due-diligence simplification file with no funding or demand-creation mechanism in it, so every row here is obligation-side &mdash; that is the correct read for this file, not a gap in the model. The infrastructure for incentive rows (value/friction strip, benefit statement, Opportunity/Loss tags) is built and validated; it activates once a file with a benefit side, such as the Industrial Accelerator Act, is extracted.</p>
   </div>
 </div></section>
 
@@ -69,20 +70,45 @@
 
 <script>
 const D=["D1","D2","D3","D4","D5","D6","D7"];
-const CLASSES={business:"Businesses",state:"Governments",investor:"Foreign investors",commission:"European Commission"};
+const V=["V1","V2","V3","V4"];
+const F=["F1","F2","F3","F4","F5"];
+const CLASSES={business:"Businesses",state:"Governments",investor:"Foreign investors",commission:"European Commission",household:"Households"};
 const SECTORS={steel:"Steel",cement:"Cement and concrete",alu:"Aluminium and metals",chem:"Chemicals and refining",
  glass:"Glass, ceramics, paper",power:"Power and heat",waste:"Waste and landfill",ship:"Shipping",air:"Aviation",
  auto:"Automotive",build:"Construction",batsol:"Batteries and solar",clean:"Wind, heat pumps, hydrogen",ccs:"Carbon capture and fuels"};
-const FILES={omnibus:{name:"Omnibus I — CSRD / CSDDD / Taxonomy simplification",code:"COM(2025) 81, 2025/0045 (COD)"}};
+const FILES={
+  omnibus:{name:"Omnibus I — CSRD / CSDDD / Taxonomy simplification",code:"COM(2025) 81, 2025/0045 (COD)"},
+  ets:{name:"EU ETS revision",code:"COM(2026) 616 final, 2026/0212 (COD)"},
+  iaa:{name:"Industrial Accelerator Act",code:"COM(2026) 100 final, 2026/0068 (COD)"},
+};
+const DATA_FILES=["data/omnibus.json","data/ets.json","data/iaa.json"];
 const BANDS={};
 const NATURE_LABEL={new_obligation:"New obligation",extension:"Extension",reduction:"Reduction",exemption:"Exemption",unchanged:"Unchanged"};
+// valence: the four-way user-facing read. Derived, never stored — recomputed from measure_type + direction every time.
+const VALENCE_LABEL={Burden:"Burden",Relief:"Relief",Opportunity:"Opportunity",Loss:"Loss",Neutral:"Neutral"};
+function valence(o){
+  const t=o.measure_type||"obligation", d=o.direction;
+  if(t==="obligation"&&d==="add")return "Burden";
+  if(t==="obligation"&&d==="rem")return "Relief";
+  if(t==="incentive"&&d==="add")return "Opportunity";
+  if(t==="incentive"&&d==="rem")return "Loss";
+  return "Neutral";
+}
+function valenceClass(v){return {Burden:"add",Relief:"rem",Opportunity:"opportunity",Loss:"loss",Neutral:""}[v]||""}
 
 let OBS=[];
 let activeSector=null;
 let activeBand=null;
 
 function strip(o){return `<span class="strip ${o.direction==='rem'?'rem':''}" aria-hidden="true">`+
-  D.map(k=>`<i class="${o.drivers.includes(k)?'on':''}"></i>`).join("")+`</span>`}
+  D.map(k=>`<i class="${(o.drivers||[]).includes(k)?'on':''}"></i>`).join("")+`</span>`}
+function valueFrictionStrip(o){
+  const vd=o.value_drivers||[], af=o.access_frictions||[];
+  return `<span class="strip value" aria-hidden="true" title="Value drivers">`+
+    V.map(k=>`<i class="${vd.includes(k)?'on':''}"></i>`).join("")+`</span>`+
+    `<span class="strip friction" aria-hidden="true" title="Access frictions">`+
+    F.map(k=>`<i class="${af.includes(k)?'on':''}"></i>`).join("")+`</span>`;
+}
 
 function priorPane(o){
   const p=o.prior_rule;
@@ -109,15 +135,24 @@ function newPane(o){
   </div>`;
 }
 
-function row(o){return `
+function isIncentive(o){return o.measure_type==="incentive"}
+function titleText(o){return isIncentive(o)?o.benefit:o.duty}
+
+function row(o){
+  const val=valence(o), vcls=valenceClass(val);
+  const hasDiff=!!(o.nature||o.prior_rule||o.new_rule);
+  const driverLine=isIncentive(o)
+    ? `<p class="drv">Value: ${(o.value_drivers||[]).length?o.value_drivers.map(k=>`<b>${k}</b>`).join(" · "):"none recorded"} &nbsp;|&nbsp; Friction: ${(o.access_frictions||[]).length?o.access_frictions.map(k=>`<b>${k}</b>`).join(" · "):"none recorded"}</p>`
+    : `<p class="drv">Drivers: ${(o.drivers||[]).length?o.drivers.map(k=>`<b>${k}</b>`).join(" · "):"none recorded"}</p>`;
+  return `
   <div class="item" data-id="${o.id}">
     <button class="item-btn" aria-expanded="false">
       <span class="oid">${o.id}</span>
-      <span class="otitle">${o.duty}<span class="oaddr">${o.addressee}</span></span>
-      <span class="right"><span class="tag ${o.direction}">${o.direction==="add"?"added":"removed"}</span>${strip(o)}</span>
+      <span class="otitle">${titleText(o)}<span class="oaddr">${o.addressee}</span></span>
+      <span class="right"><span class="tag ${vcls}">${VALENCE_LABEL[val]}</span>${isIncentive(o)?valueFrictionStrip(o):strip(o)}</span>
     </button>
     <div class="panel">
-      <p class="rhead" style="margin-top:.95rem">${o.duty}</p>
+      <p class="rhead" style="margin-top:.95rem">${titleText(o)}</p>
       <p class="oaddr" style="font-size:13px">${o.addressee}</p>
       <dl class="dl">
         <dt>File</dt><dd>${FILES[o.file].name}, ${FILES[o.file].code}</dd>
@@ -125,17 +160,17 @@ function row(o){return `
         <dt>When</dt><dd>${o.when}</dd>
         <dt>How often</dt><dd>${o.frequency}</dd>
         <dt>Who checks</dt><dd>${o.verification}</dd>
-        <dt>Nature</dt><dd>${NATURE_LABEL[o.nature]||o.nature}</dd>
-        <dt>Weight</dt><dd>${o.weight}${o.weight_intensity?` (${o.weight_intensity})`:""}</dd>
+        <dt>Measure</dt><dd>${isIncentive(o)?"Incentive":"Obligation"}</dd>
+        ${hasDiff?`<dt>Nature</dt><dd>${NATURE_LABEL[o.nature]||o.nature}</dd><dt>Weight</dt><dd>${o.weight}${o.weight_intensity?` (${o.weight_intensity})`:""}</dd>`:""}
       </dl>
-      <div class="diff">${priorPane(o)}${newPane(o)}</div>
-      <div class="delta"><b>Who this changes for</b>${o.affected_delta}</div>
+      ${hasDiff?`<div class="diff">${priorPane(o)}${newPane(o)}</div>`:""}
+      ${o.affected_delta?`<div class="delta"><b>Who this changes for</b>${o.affected_delta}</div>`:""}
       <div class="source">
         <span class="source-label">Source text</span>
         <p class="source-text">${o.source_text}</p>
         <a class="source-link" href="${o.source_url}" target="_blank" rel="noopener">View source &rarr;</a>
       </div>
-      <p class="drv">Drivers: ${o.drivers.length?o.drivers.map(k=>`<b>${k}</b>`).join(" · "):"none recorded"}</p>
+      ${driverLine}
       ${o.size_scope_note?`<p class="drv">Size band: ${o.size_scope_note}</p>`:""}
       ${o.pending?`<p class="pending">Settled later in secondary legislation. ${o.pending}</p>`:""}
     </div>
@@ -143,13 +178,13 @@ function row(o){return `
 
 function buildBands(){
   document.getElementById("bands").innerHTML=Object.keys(BANDS).map(k=>{
-    const n=OBS.filter(o=>o.size_scope[k]==="in").length;
+    const n=OBS.filter(o=>o.size_scope&&o.size_scope[k]==="in").length;
     return `<button class="sec" data-band="${k}" aria-pressed="false"><b>${BANDS[k]}</b><span class="n">${n} in scope</span></button>`}).join("");
 }
 function showBand(k){
-  const inscope=OBS.filter(o=>o.size_scope[k]==="in");
-  const outscope=OBS.filter(o=>o.size_scope[k]==="out");
-  const na=OBS.filter(o=>o.size_scope[k]==="na");
+  const inscope=OBS.filter(o=>o.size_scope&&o.size_scope[k]==="in");
+  const outscope=OBS.filter(o=>o.size_scope&&o.size_scope[k]==="out");
+  const na=OBS.filter(o=>!o.size_scope||o.size_scope[k]==="na");
   document.getElementById("bandresult").className="result on";
   document.getElementById("bandresult").innerHTML=`
     <p class="rhead">${BANDS[k]}</p>
@@ -162,11 +197,11 @@ function showBand(k){
 
 function buildSectors(){
   document.getElementById("sectors").innerHTML=Object.keys(SECTORS).map(k=>{
-    const n=OBS.filter(o=>o.sectors_named.includes(k)||o.sectors_reached.includes(k)).length;
+    const n=OBS.filter(o=>(o.sectors_named||[]).includes(k)||(o.sectors_reached||[]).includes(k)).length;
     return `<button class="sec" data-sec="${k}" aria-pressed="false"><b>${SECTORS[k]}</b><span class="n">${n}</span></button>`}).join("");
 }
 function showSector(k){
-  const named=OBS.filter(o=>o.sectors_named.includes(k)), reach=OBS.filter(o=>!o.sectors_named.includes(k)&&o.sectors_reached.includes(k));
+  const named=OBS.filter(o=>(o.sectors_named||[]).includes(k)), reach=OBS.filter(o=>!(o.sectors_named||[]).includes(k)&&(o.sectors_reached||[]).includes(k));
   const adds=named.filter(o=>o.direction==="add").length, rems=named.filter(o=>o.direction==="rem").length;
   document.getElementById("result").className="result on";
   document.getElementById("result").innerHTML=`
@@ -178,12 +213,13 @@ function showSector(k){
       ${reach.length?reach.map(row).join(""):`<div class="empty-note">Nothing in this file reaches this sector indirectly.</div>`}</div>`;
 }
 function buildLedger(){
-  const order=["business","state","investor","commission"];let max=0;const data={};
-  for(const key of Object.keys(FILES)){data[key]={};
+  const order=["business","state","investor","commission","household"];let max=0;const data={};
+  const loadedFiles=Object.keys(FILES).filter(k=>OBS.some(o=>o.file===k));
+  for(const key of loadedFiles){data[key]={};
     for(const c of order){const r=OBS.filter(o=>o.file===key&&o.class===c);
       const add=r.filter(o=>o.direction==="add").length,rem=r.filter(o=>o.direction==="rem").length;
       data[key][c]={add,rem};max=Math.max(max,add,rem);}}
-  document.getElementById("ledger").innerHTML=Object.keys(FILES).map(key=>{
+  document.getElementById("ledger").innerHTML=loadedFiles.map(key=>{
     const f=FILES[key];
     const rows=order.map(c=>{const {add,rem}=data[key][c];
       if(!add&&!rem)return "";
@@ -194,27 +230,28 @@ function buildLedger(){
         </div></div>`}).join("");
     return `<div class="led-file"><h3>${f.name}</h3><div class="led-meta">${f.code}</div>${rows}</div>`}).join("");
 }
-const state={file:"all",dir:"all",addr:"all",q:""};
+const state={file:"all",val:"all",addr:"all",q:""};
 function chips(el,items,key){el.innerHTML=items.map(i=>`<button class="chip" data-k="${key}" data-v="${i.v}" aria-pressed="${state[key]===i.v}">${i.l}</button>`).join("")}
 function matches(o){
   if(state.file!=="all"&&o.file!==state.file)return false;
-  if(state.dir!=="all"&&o.direction!==state.dir)return false;
+  if(state.val!=="all"&&valence(o)!==state.val)return false;
   if(state.addr!=="all"&&o.class!==state.addr)return false;
-  if(state.q&&!(o.id+" "+o.duty+" "+o.addressee+" "+o.article+" "+o.when).toLowerCase().includes(state.q))return false;
+  if(state.q&&!(o.id+" "+titleText(o)+" "+o.addressee+" "+o.article+" "+o.when).toLowerCase().includes(state.q))return false;
   return true;}
 function render(){
   const list=OBS.filter(matches);
-  document.getElementById("count").textContent=`${list.length} of ${OBS.length} duties`;
+  document.getElementById("count").textContent=`${list.length} of ${OBS.length} measures`;
   document.getElementById("reg").innerHTML=list.length?list.map(row).join(""):
     `<div class="item"><div style="padding:2rem .85rem;color:var(--ink-55);font-size:14px">Nothing matches these filters. Clear the search or widen a filter to see everything.</div></div>`;
 }
 function init(){
-  document.getElementById("sources").innerHTML=Object.values(FILES).map(f=>`<span>${f.name}, ${f.code}</span>`).join("");
+  const loadedFiles=new Set(OBS.map(o=>o.file));
+  document.getElementById("sources").innerHTML=Object.keys(FILES).filter(k=>loadedFiles.has(k)).map(k=>`<span>${FILES[k].name}, ${FILES[k].code}</span>`).join("");
   buildBands();
   buildSectors();
   chips(document.getElementById("f-file"),[{v:"all",l:"All files"}].concat(Object.keys(FILES).map(k=>({v:k,l:FILES[k].code.split(",")[0]}))),"file");
-  chips(document.getElementById("f-dir"),[{v:"all",l:"All"},{v:"add",l:"Added"},{v:"rem",l:"Removed"}],"dir");
-  chips(document.getElementById("f-addr"),[{v:"all",l:"Everyone"},{v:"business",l:"Businesses"},{v:"state",l:"Governments"},{v:"investor",l:"Investors"},{v:"commission",l:"Commission"}],"addr");
+  chips(document.getElementById("f-dir"),[{v:"all",l:"All"},{v:"Burden",l:"Burden"},{v:"Relief",l:"Relief"},{v:"Opportunity",l:"Opportunity"},{v:"Loss",l:"Loss"}],"val");
+  chips(document.getElementById("f-addr"),[{v:"all",l:"Everyone"},{v:"business",l:"Businesses"},{v:"state",l:"Governments"},{v:"investor",l:"Investors"},{v:"commission",l:"Commission"},{v:"household",l:"Households"}],"addr");
   buildLedger();render();
 }
 document.addEventListener("click",e=>{
@@ -237,9 +274,13 @@ document.addEventListener("click",e=>{
 });
 document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();render();});
 
-Promise.all([fetch("data/omnibus.json").then(r=>r.json()),fetch("data/size_bands.json").then(r=>r.json())])
- .then(([data,bands])=>{OBS=data;Object.assign(BANDS,bands);init();})
- .catch(err=>{document.getElementById("reg").innerHTML=`<div class="item"><div style="padding:2rem .85rem;color:var(--claret);font-size:14px">Could not load data/omnibus.json (${err.message}). If you opened this file directly (file://), serve the folder over local HTTP instead, e.g. <code>python3 -m http.server</code>, then open http://localhost:8000/index.html.</div></div>`;});
+Promise.all(DATA_FILES.map(f=>fetch(f).then(r=>r.ok?r.json():[]).catch(()=>[])))
+ .then(datasets=>{
+   OBS=datasets.flat();
+   return fetch("data/size_bands.json").then(r=>r.json()).catch(()=>({}));
+ })
+ .then(bands=>{Object.assign(BANDS,bands);init();})
+ .catch(err=>{document.getElementById("reg").innerHTML=`<div class="item"><div style="padding:2rem .85rem;color:var(--claret);font-size:14px">Could not load register data (${err.message}). If you opened this file directly (file://), serve the folder over local HTTP instead, e.g. <code>python3 -m http.server</code>, then open http://localhost:8000/index.html.</div></div>`;});
 </script>
 </body>
 </html>
