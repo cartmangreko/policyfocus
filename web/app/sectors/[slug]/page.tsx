@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import SectorExposure from "@/components/SectorExposure";
 import SignalRow from "@/components/SignalRow";
 import StatsStrip from "@/components/StatsStrip";
 import {
@@ -10,6 +11,7 @@ import {
   getSectorSlugs,
   getSectorStats,
 } from "@/lib/data";
+import { getExposure } from "@/lib/exposure";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
 import type { Measure, SectorSlug } from "@/lib/types";
 
@@ -61,6 +63,8 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
   const stats = getSectorStats(sectorSlug);
   const { pressure, support } = meters(named, reached);
   const relatedSectors = getRelatedSectors(sectorSlug);
+  // Null for sectors outside the FIGARO mapping — the panel is then omitted.
+  const exposure = getExposure(sectorSlug);
 
   // Channel mix for the reached-without-naming cohort.
   const channels = new Map<string, number>();
@@ -166,6 +170,8 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
           )}
         </div>
       </section>
+
+      {exposure && <SectorExposure exposure={exposure} sectorName={name} />}
 
       {relatedSectors.length > 0 && (
         <section className="band band-ruled">

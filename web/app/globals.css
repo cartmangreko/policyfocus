@@ -1411,11 +1411,138 @@ a.minibar-name:hover {
   color: var(--ink-40);
 }
 
+/* ---------- sector exposure ---------- */
+
+.exp-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.exp-note {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-55);
+  max-width: 62ch;
+  margin: 10px 0 0;
+}
+.exp-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.exp-select-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+}
+.exp-select select {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 7px 10px;
+}
+.exp-select select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 30px;
+}
+.exp-block-head {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 8px 0 0;
+}
+.exp-headline {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--claret);
+}
+.exp-caption {
+  font-size: 12px;
+  color: var(--ink-55);
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+
+.exp-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+.exp-row {
+  display: grid;
+  grid-template-columns: 1fr 64px 3.2rem;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 13px;
+}
+.exp-row-label {
+  color: var(--ink-70);
+}
+.exp-row-bar {
+  height: 5px;
+  background: var(--paper);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.exp-row-fill {
+  display: block;
+  height: 100%;
+  background: var(--ink-40);
+}
+.exp-row-share {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-55);
+  text-align: right;
+}
+/* The balance-to-100 row. Lighter, and it carries no bar — it is a remainder,
+   not an industry link. */
+.exp-row.is-other {
+  border-bottom: 0;
+  color: var(--ink-40);
+}
+.exp-row.is-other .exp-row-label {
+  color: var(--ink-40);
+  font-style: italic;
+}
+.exp-row.is-other .exp-row-fill {
+  background: var(--rule);
+}
+
+.exp-source {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+  line-height: 1.6;
+  max-width: 88ch;
+  margin: 28px 0 0;
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 1000px) {
   .site-nav {
     display: none;
+  }
+  .exp-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
   .burden-grid,
   .detail-grid,

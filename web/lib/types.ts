@@ -75,3 +75,39 @@ export interface FileMeta {
   name: string;
   code: string;
 }
+
+// ---------------------------------------------------------------------------
+// Supply-chain and country exposure — data/exposure/<slug>.json. A separate
+// concern from the measures above: no field here feeds valence or the register.
+// Kept in this (dependency-free) module so the client panel can import the
+// shapes without pulling in the fs loader.
+// ---------------------------------------------------------------------------
+
+export interface ExposureRow {
+  code: string;
+  label: string;
+  share: number;
+}
+
+export interface ExposureView {
+  /** Share of this sector's inputs bought from outside the home area. */
+  import_dependency_pct: number;
+  /** Industries this sector buys from; last row is OTHER. */
+  suppliers: ExposureRow[];
+  /** Industries that buy from this sector; last row is OTHER. */
+  customers: ExposureRow[];
+  /** Countries the imported inputs come from; may include "rest of world". */
+  foreign_input_origins: ExposureRow[];
+}
+
+export interface Exposure {
+  slug: string;
+  figaro_code: string;
+  figaro_label: string;
+  shares_basis: string;
+  /** Set where two sectors share one FIGARO code, else null. */
+  note: string | null;
+  eu: ExposureView;
+  /** Keyed by ISO 3166-1 alpha-2, the 27 EU members. */
+  by_country: Record<string, ExposureView>;
+}
