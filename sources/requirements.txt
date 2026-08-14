@@ -1,0 +1,9 @@
+# Fetcher dependencies (sources/fetch_eurlex.py).
+requests>=2.31
+
+# PDF text extraction. Load-bearing, not optional: Commission proposals are
+# frequently PDF-only in Cellar (the Industrial Accelerator Act, 52026PC0100,
+# has no XHTML or Formex manifestation), and those are exactly the new
+# proposals the pipeline exists to catch. pypdf or poppler's pdftotext work as
+# substitutes -- fetch_eurlex.pdf_to_text tries all three in that order.
+pymupdf>=1.24
