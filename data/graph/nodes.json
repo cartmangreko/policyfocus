@@ -63,6 +63,15 @@
   }
  },
  {
+  "id": "act:32015R2446",
+  "kind": "act",
+  "label": "Union Customs Code Delegated Regulation",
+  "attrs": {
+   "celex": "32015R2446",
+   "status": "adopted"
+  }
+ },
+ {
   "id": "act:32018R0858",
   "kind": "act",
   "label": "Motor Vehicle Type-Approval Regulation",
@@ -650,6 +659,695 @@
    "iso2": "US",
    "aggregate": false,
    "in_eu": false
+  }
+ },
+ {
+  "id": "measure:cbam:ANTI-01",
+  "kind": "measure",
+  "label": "Refrain from practices whose purpose is to gain a benefit by unduly avoiding, wholly or partly, the CBAM financial liability.",
+  "attrs": {
+   "register_id": "ANTI-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(3), adding point (35) to Art. 3 of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:ANTI-02",
+  "kind": "measure",
+  "label": "Refrain from artificially adjusting supply chains so that goods qualify for lower default values; doing so is circumvention.",
+  "attrs": {
+   "register_id": "ANTI-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(16), adding point (c) to Art. 27(2) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:ANTI-03",
+  "kind": "measure",
+  "label": "Monitor the CBAM's internal-market impact, warn importers, declarants, competent and customs authorities of high-risk goods/origin combinations, and legislate the conditions for using actual emissions for them.",
+  "attrs": {
+   "register_id": "ANTI-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(5)(c), adding Art. 6(7) to Regulation (EU) 2023/956",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:cbam:ANTI-04",
+  "kind": "measure",
+  "label": "Adopt the high-risk delegated acts within three months of finding sufficient evidence of a high risk of abusive practices.",
+  "attrs": {
+   "register_id": "ANTI-04",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(5)(c), adding Art. 6(7) to Regulation (EU) 2023/956",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:cbam:CALC-01",
+  "kind": "measure",
+  "label": "Count the embedded emissions of Annex VIII input materials (precursors) when determining the embedded emissions of the goods.",
+  "attrs": {
+   "register_id": "CALC-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(6)(a), inserting Art. 7(2a) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:CALC-02",
+  "kind": "measure",
+  "label": "Apply the complex-goods calculation counting precursors from both Annex I and the new Annex VIII, excluding those from exempted third countries.",
+  "attrs": {
+   "register_id": "CALC-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(22); Annex II, point (2) replacing point 3 of Annex IV of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:CALC-03",
+  "kind": "measure",
+  "label": "For iron and steel, aluminium and combined metal goods, derive the precursor mass from the content of input goods in the finished product rather than from a directly measured mass.",
+  "attrs": {
+   "register_id": "CALC-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(22); Annex II, point (2) replacing point 3 of Annex IV of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:CALC-04",
+  "kind": "measure",
+  "label": "Treat ferrous waste and scrap, other than post-consumer scrap, as a precursor whose embedded emissions count towards the goods.",
+  "attrs": {
+   "register_id": "CALC-04",
+   "provision_id": "cbam-annex-viii",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(24); Annex III adding Annex VIII to Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:CALC-05",
+  "kind": "measure",
+  "label": "Treat aluminium waste and scrap, other than post-consumer scrap, as a precursor whose embedded emissions count towards the goods.",
+  "attrs": {
+   "register_id": "CALC-05",
+   "provision_id": "cbam-annex-viii",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(24); Annex III adding Annex VIII to Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:CALC-06",
+  "kind": "measure",
+  "label": "Bear the mark-up added to default values when declaring downstream goods with complex supply chains.",
+  "attrs": {
+   "register_id": "CALC-06",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(6)(c), adding a subparagraph to Art. 7(7) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:CUST-01",
+  "kind": "measure",
+  "label": "Communicate import data to the Commission automatically, now including bills of discharge, re-export declarations and equivalent customs documentation, and the importer's identity where there is no EORI number.",
+  "attrs": {
+   "register_id": "CUST-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(15)(a), replacing Art. 25(2) of Regulation (EU) 2023/956",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:cbam:CUST-02",
+  "kind": "measure",
+  "label": "Accept that the CBAM account number entered in the customs declaration fixes which authorised CBAM declarant assumes the obligations for that consignment.",
+  "attrs": {
+   "register_id": "CUST-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(15)(a), replacing Art. 25(2) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:CUST-03",
+  "kind": "measure",
+  "label": "Verify, on a competent authority's request, the correctness or accuracy of communicated customs information.",
+  "attrs": {
+   "register_id": "CUST-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(15)(b), adding a subparagraph to Art. 25(3) of Regulation (EU) 2023/956",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:cbam:CUST-04",
+  "kind": "measure",
+  "label": "Apply the material and chemical compositions that the Commission fixes by implementing act for Annex I goods.",
+  "attrs": {
+   "register_id": "CUST-04",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(15)(d), adding Art. 25(7) to Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DATA-01",
+  "kind": "measure",
+  "label": "DATA-01",
+  "attrs": {
+   "register_id": "DATA-01",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 1(8)(c), replacing the first sentence of Art. 10(7) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DATA-02",
+  "kind": "measure",
+  "label": "DATA-02",
+  "attrs": {
+   "register_id": "DATA-02",
+   "provision_id": "cbam-10-7-summary",
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 1(8)(d), replacing the second sentence of Art. 10(7) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DATA-03",
+  "kind": "measure",
+  "label": "Remain responsible for surrendering the correct number of CBAM certificates even where the declaration was built on information disclosed by the operator.",
+  "attrs": {
+   "register_id": "DATA-03",
+   "provision_id": "cbam-10-7-summary",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(8)(d), replacing the second sentence of Art. 10(7) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DATA-04",
+  "kind": "measure",
+  "label": "Ensure that the conditions laid down for using actual emissions are met for the relevant combinations of goods and origins.",
+  "attrs": {
+   "register_id": "DATA-04",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(8)(b), adding point (e) to Art. 10(5) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DATA-05",
+  "kind": "measure",
+  "label": "DATA-05",
+  "attrs": {
+   "register_id": "DATA-05",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 1(8)(a), replacing Art. 10(1) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DECL-01",
+  "kind": "measure",
+  "label": "Include in the CBAM declaration evidence that the imported goods were actually produced at the declared installation and at the declared time of production.",
+  "attrs": {
+   "register_id": "DECL-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(5)(a)(2), adding point (e) to Art. 6(2) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DECL-02",
+  "kind": "measure",
+  "label": "Where a goods/origin combination is designated high-risk for abusive practices and actual emissions are claimed, prove in the declaration that the abuse risk has not materialised.",
+  "attrs": {
+   "register_id": "DECL-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(5)(a)(2), adding point (f) to Art. 6(2) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DECL-03",
+  "kind": "measure",
+  "label": "Report total embedded emissions per tonne of goods (or per MWh for electricity), and have them verified where actual emissions are supplied by the operator through the CBAM registry.",
+  "attrs": {
+   "register_id": "DECL-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(5)(a)(1), replacing point (b) of Art. 6(2) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DECL-04",
+  "kind": "measure",
+  "label": "Identify in the authorisation application, by EORI or national identification number, every person on whose behalf the applicant acts.",
+  "attrs": {
+   "register_id": "DECL-04",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(4), replacing point (h) of Art. 5(5) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DECL-05",
+  "kind": "measure",
+  "label": "Produce, on request during review of the CBAM declaration, evidence that the imported goods were produced at the installation named in the declaration.",
+  "attrs": {
+   "register_id": "DECL-05",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(11), inserting Art. 19(2a) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:DECL-06",
+  "kind": "measure",
+  "label": "Keep the full underlying records required to calculate embedded emissions, rather than the information actually disclosed to the declarant under Art. 10(7).",
+  "attrs": {
+   "register_id": "DECL-06",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(6)(b), replacing Art. 7(5) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:ELEC-01",
+  "kind": "measure",
+  "label": "Accept default values for imported electricity that reflect fossil generation only, regardless of the exporting country's actual generation mix.",
+  "attrs": {
+   "register_id": "ELEC-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(22); Annex II, point (3) replacing point 4.2.1 of Annex IV of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:ELEC-02",
+  "kind": "measure",
+  "label": "ELEC-02",
+  "attrs": {
+   "register_id": "ELEC-02",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 1(22); Annex II, point (4) replacing point 4.2.2 of Annex IV of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:ELEC-03",
+  "kind": "measure",
+  "label": "Accept the standard default value for indirect emissions where the exporting country's actual electricity mix is cleaner than that default.",
+  "attrs": {
+   "register_id": "ELEC-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(22); Annex II, point (5) replacing the second paragraph of point 4.3 of Annex IV of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:ELEC-04",
+  "kind": "measure",
+  "label": "Hold a power purchase agreement directly with the third-country electricity producer, with no intermediary in the chain, in order to claim actual emissions.",
+  "attrs": {
+   "register_id": "ELEC-04",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(22); Annex II, point (6)(a) replacing point (a) of point 5 of Annex IV of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:ELEC-05",
+  "kind": "measure",
+  "label": "Satisfy the deleted point (b) condition of Annex IV point 5 in order to claim actual emissions for imported electricity.",
+  "attrs": {
+   "register_id": "ELEC-05",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(22); Annex II, point (6)(b) deleting point (b) of point 5 of Annex IV of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:ELEC-06",
+  "kind": "measure",
+  "label": "Firmly nominate the claimed electricity to allocated interconnection capacity across origin, destination and transit, matching production within the same hour, and forgo the claim where capacity is allocated implicitly.",
+  "attrs": {
+   "register_id": "ELEC-06",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(22); Annex II, point (6)(c) replacing point (d) of point 5 of Annex IV of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:ELEC-07",
+  "kind": "measure",
+  "label": "Conclude, and then honour, a Memorandum of Understanding setting the timeline for the Art. 2(7) exemption and for putting an EU ETS-equivalent carbon price on electricity generation.",
+  "attrs": {
+   "register_id": "ELEC-07",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(1)(c), inserting Art. 2(7a) of Regulation (EU) 2023/956",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:cbam:ELEC-08",
+  "kind": "measure",
+  "label": "Assess third-country listing for the electricity exemption against the Memorandum of Understanding timeline as well as the paragraph 7 conditions.",
+  "attrs": {
+   "register_id": "ELEC-08",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(1)(d), replacing Art. 2(8) of Regulation (EU) 2023/956",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:cbam:FIN-01",
+  "kind": "measure",
+  "label": "Provide a bank guarantee payable at first demand, sized on the certificates that would have to be surrendered, where the competent authority finds financial capacity is not demonstrated.",
+  "attrs": {
+   "register_id": "FIN-01",
+   "provision_id": "cbam-17-guarantee",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(9)(a), inserting Art. 17(5a) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:FIN-02",
+  "kind": "measure",
+  "label": "Leave the guarantee in place until after 30 September of the second surrender year, and for longer where the competent authority justifies an extension.",
+  "attrs": {
+   "register_id": "FIN-02",
+   "provision_id": "cbam-17-guarantee",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(9)(b), replacing Art. 17(7) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:FIN-03",
+  "kind": "measure",
+  "label": "From 2028, satisfy the quarterly certificate-holding requirement using only certificates bought in the same year, so certificates carried over from earlier years no longer count.",
+  "attrs": {
+   "register_id": "FIN-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(13), adding a subparagraph to Art. 22(2) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:FIN-04",
+  "kind": "measure",
+  "label": "Pay the CBAM certificate price as fixed by the fallback rules for weeks with no auction or a single auction.",
+  "attrs": {
+   "register_id": "FIN-04",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(12)(a), replacing the second subparagraph of Art. 21(1) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:FIN-05",
+  "kind": "measure",
+  "label": "Repurchase the excess CBAM certificates through the common central platform on behalf of the Member State where the authorised CBAM declarant is established.",
+  "attrs": {
+   "register_id": "FIN-05",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(14), replacing the first sentence of the second subparagraph of Art. 23(1) of Regulation (EU) 2023/956",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:cbam:FIN-06",
+  "kind": "measure",
+  "label": "Have the documentation evidencing a carbon price paid in a third country certified by a person independent of that country's authorities.",
+  "attrs": {
+   "register_id": "FIN-06",
+   "provision_id": "cbam-9-2",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(7)(a)(1), replacing the third sentence of Art. 9(2) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:FIN-07",
+  "kind": "measure",
+  "label": "Find a certifying person meeting the independence test without the benefit of an express route through national accreditation.",
+  "attrs": {
+   "register_id": "FIN-07",
+   "provision_id": "cbam-9-2",
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(7)(a)(2), adding a subparagraph to Art. 9(2) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:FIN-08",
+  "kind": "measure",
+  "label": "Apply the Commission's conversion rules when turning a carbon price paid abroad into a reduction in CBAM certificates, including the evidence of actual payment and any deduction of Paris Agreement Article 6 carbon credits.",
+  "attrs": {
+   "register_id": "FIN-08",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(7)(b)(1), replacing the first subparagraph of Art. 9(5) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:GOV-01",
+  "kind": "measure",
+  "label": "Base the 2027 assessment due by 30 April 2027 on import data for the goods in both the existing and the newly extended Annex I.",
+  "attrs": {
+   "register_id": "GOV-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(2), adding a subparagraph to Art. 2a(3) of Regulation (EU) 2023/956",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:cbam:GOV-02",
+  "kind": "measure",
+  "label": "Report to Parliament and Council before 1 January 2028 and biennially thereafter on CBAM's operation, covering carbon leakage, internal-market and price effects, governance, circumvention practices, penalties and per-country emission intensity.",
+  "attrs": {
+   "register_id": "GOV-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(20), replacing the second subparagraph of Art. 30(6) of Regulation (EU) 2023/956",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:cbam:GOV-03",
+  "kind": "measure",
+  "label": "Report the material composition of each downstream good in the information supplied for the CBAM declaration.",
+  "attrs": {
+   "register_id": "GOV-03",
+   "provision_id": "cbam-annex-vi-2",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(23)(b), inserting point (ka) in point 2 of Annex VI of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:GOV-04",
+  "kind": "measure",
+  "label": "Report the information required by points (g) to (j) of point 2 of Annex VI.",
+  "attrs": {
+   "register_id": "GOV-04",
+   "provision_id": "cbam-annex-vi-2",
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(23)(a), deleting points (g) to (j) of point 2 of Annex VI of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:GOV-05",
+  "kind": "measure",
+  "label": "Publish the CBAM certificate price on the first working day of the following calendar week.",
+  "attrs": {
+   "register_id": "GOV-05",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(12)(b), replacing the first sentence of Art. 21(2) of Regulation (EU) 2023/956",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:cbam:SCP-01",
+  "kind": "measure",
+  "label": "CBAM applies to processed products made from Annex I goods under inward processing where they are re-exported to Norway or Iceland, bringing those consignments into the CBAM regime.",
+  "attrs": {
+   "register_id": "SCP-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(1)(a), inserting Art. 2(2a) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:SCP-02",
+  "kind": "measure",
+  "label": "Comply with the CBAM regime for goods originating in third countries that were previously released for free circulation in the customs territory of an EFTA State that has incorporated the CBAM.",
+  "attrs": {
+   "register_id": "SCP-02",
+   "provision_id": "cbam-2-4",
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(1)(b), adding a subparagraph to Art. 2(4) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:SCP-03",
+  "kind": "measure",
+  "label": "Bear responsibility for having documentation proving prior release for free circulation in an EFTA State available at the moment the customs declaration is lodged.",
+  "attrs": {
+   "register_id": "SCP-03",
+   "provision_id": "cbam-2-4",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(1)(b), adding a subparagraph to Art. 2(4) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:SCP-04",
+  "kind": "measure",
+  "label": "A new 'Combined metal products' category enters CBAM scope, pulling downstream steel- and aluminium-containing manufactured goods into the embedded-emissions declaration and certificate-surrender regime for the first time.",
+  "attrs": {
+   "register_id": "SCP-04",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(21); Annex I, point (2) adding the 'Combined metal products' table to Annex I of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:SCP-05",
+  "kind": "measure",
+  "label": "Prefabricated buildings containing steel or aluminium are named in CBAM scope, carrying the embedded-emissions declaration and surrender duty into construction products.",
+  "attrs": {
+   "register_id": "SCP-05",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(21); Annex I, point (2) adding the 'Combined metal products' table to Annex I of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:SCP-06",
+  "kind": "measure",
+  "label": "Comply with CBAM for a good whose inclusion in Annex I is causing severe harm to the Union internal market through serious and unforeseen price effects.",
+  "attrs": {
+   "register_id": "SCP-06",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 1(17), inserting Art. 27a of Regulation (EU) 2023/956",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:cbam:VER-01",
+  "kind": "measure",
+  "label": "Follow the verification procedures the Commission specifies by delegated act.",
+  "attrs": {
+   "register_id": "VER-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(10), adding a sentence to Art. 18(3) of Regulation (EU) 2023/956",
+   "addressee_class": "business"
   }
  },
  {

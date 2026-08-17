@@ -19,7 +19,8 @@ from collections import Counter
 from textnorm import canonical
 from benefit_axis import assert_benefit_basis, derive_valence, load_fulltext
 
-DATA_FILES = [("ets", "../data/ets.json"), ("iaa", "../data/iaa.json"), ("omnibus", "../data/omnibus.json")]
+DATA_FILES = [("ets", "../data/ets.json"), ("iaa", "../data/iaa.json"), ("omnibus", "../data/omnibus.json"),
+              ("cbam", "../data/cbam.json")]
 
 # The commit that first applied the object rule and moved these rows off the
 # benefit axis. Recorded in each reclass_from so the provenance points at a real

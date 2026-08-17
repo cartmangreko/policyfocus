@@ -21,6 +21,7 @@ DATA_FILES = [
     ("omnibus", "../data/omnibus.json"),
     ("ets", "../data/ets.json"),
     ("iaa", "../data/iaa.json"),
+    ("cbam", "../data/cbam.json"),
 ]
 
 # Fields that assert a support movement or a conferred faculty. An obligation

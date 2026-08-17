@@ -86,7 +86,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = DATA / "graph"
 
-REGISTER_FILES = ["ets", "iaa", "omnibus"]
+REGISTER_FILES = ["ets", "iaa", "omnibus", "cbam"]
 
 # The 14 app sectors, mirroring web/lib/types.ts SectorSlug. Three of them
 # (batsol, clean, ccs) have no FIGARO exposure file: they are policy
@@ -129,6 +129,7 @@ CITED_ACTS = {
     ("Directive", "2014/23"): ("32014L0023", "Concessions Directive"),
     ("Directive", "2024/1760"): ("32024L1760", "CSDDD"),
     ("Regulation", "952/2013"): ("32013R0952", "Union Customs Code"),
+    ("Regulation", "2015/2446"): ("32015R2446", "Union Customs Code Delegated Regulation"),
     ("Regulation", "2018/858"): ("32018R0858", "Motor Vehicle Type-Approval Regulation"),
     ("Regulation", "2018/1724"): ("32018R1724", "Single Digital Gateway Regulation"),
     ("Regulation", "2018/2067"): ("32018R2067", "ETS Verification and Accreditation Regulation"),

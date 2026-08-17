@@ -9,6 +9,7 @@ Produced by `sources/build_benefit_axis.py`. The rule applied is documented in `
 | ets | 51 | Opportunity 18, Requirement 19, Simplification 5, Support cut 9 | Entitlement 2, Opportunity 17, Requirement 19, Simplification 12, Support cut 1 |
 | iaa | 65 | Entitlement 1, Opportunity 16, Requirement 44, Simplification 4 | Entitlement 4, Opportunity 16, Requirement 44, Simplification 1 |
 | omnibus | 35 | Requirement 14, Simplification 21 | Requirement 14, Simplification 21 |
+| cbam | 53 | Entitlement 4, Requirement 38, Simplification 11 | Entitlement 4, Requirement 38, Simplification 11 |
 
 ## Reclassified (no verbatim quantum basis available)
 

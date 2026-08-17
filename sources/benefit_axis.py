@@ -158,6 +158,13 @@ FILE_SOURCES = {
     "ets": ["ets.txt", "ets_annexes.txt"],
     "iaa": ["iaa.txt", "iaa_annexes.txt"],
     "omnibus": ["COM2025_81.txt", "COM2025_80.txt"],
+    # The CBAM extension proposal. cbam_base.txt / the prior consolidation are
+    # deliberately NOT listed: they are the rule this act amends, not the act
+    # itself, and a span counts if it matches ANY listed file -- so including
+    # them would let a quote from the existing CBAM Regulation pass as evidence
+    # for something this proposal says. Same reasoning that removed the
+    # pre-baked iaa_norm copies above.
+    "cbam": ["cbam_ext.txt", "cbam_ext_annexes.txt"],
 }
 
 

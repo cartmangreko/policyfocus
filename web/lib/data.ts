@@ -5,7 +5,7 @@ import { isPositiveValence, valenceLabel } from "./valence";
 
 // data/ lives one level up from web/ at the repo root. Untouched, read-only.
 const DATA_DIR = path.join(process.cwd(), "..", "data");
-const DATA_FILES = ["omnibus.json", "ets.json", "iaa.json"];
+const DATA_FILES = ["omnibus.json", "ets.json", "iaa.json", "cbam.json"];
 
 export const FILES: Record<string, FileMeta> = {
   omnibus: {
@@ -19,6 +19,10 @@ export const FILES: Record<string, FileMeta> = {
   iaa: {
     name: "Industrial Accelerator Act",
     code: "COM(2026) 100 final, 2026/0068 (COD)",
+  },
+  cbam: {
+    name: "CBAM extension — downstream goods and anti-circumvention",
+    code: "COM(2025) 989 final, 2025/0419 (COD)",
   },
 };
 
