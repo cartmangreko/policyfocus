@@ -186,7 +186,6 @@
   {
     "id": "FRE-04",
     "measure_type": "obligation",
-    "benefit": "Installations already implementing an Industrial Decarbonisation Bank, Investment Booster or Innovation Fund-supported project are excused from drawing up the Invest in EU decarbonisation plan and automatically receive 80% of their free allocation without additional verification.",
     "addressee": "Operators with an installation-level project already awarded IDB/Investment Booster/Innovation Fund support",
     "class": "business",
     "trigger": "a project selected for award of support under Art. 10cc, 10cd, 10ce or the Innovation Fund (Art. 10cb) is being implemented at the installation during the relevant five-year period",
@@ -196,12 +195,6 @@
     "article": "Art. 1(15)(d), inserting Art. 10a(3c), fourth subparagraph of Directive 2003/87/EC",
     "when": "from 2031",
     "source_text": "By way of derogation from the first subparagraph, where a project that was selected for the award of support under the Industrial Decarbonisation Bank and Investment Booster established under Articles 10cc, 10cd and 10ce or the Innovation Fund referred to in Article 10cb is being implemented in the installation during the five-year period under which it applies for free allocation, the operator of that installation shall be exempted from the obligation to establish a plan in accordance with paragraph 3b and shall receive 80 % of the amount of free allocation as referred to in the first subparagraph without additional verification.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [],
     "sectors_reached": [],
     "file": "ets",
@@ -209,12 +202,16 @@
     "drivers": [],
     "provision_id": null,
     "duty": "Draw up an Invest in EU decarbonisation plan and pass the additional verification gating the final 20% tranche of free allocation.",
-    "benefit_axis_note": "No quantum basis. The object is the decarbonisation-plan duty and its verification step, not the allocation; the allocation itself is unchanged (indeed protected). Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "No quantum basis. The object is the decarbonisation-plan duty and its verification step, not the allocation; the allocation itself is unchanged (indeed protected). Object rule -> obligation side, direction rem.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "The object is the decarbonisation-plan duty and its verification step, not the allocation; the allocation itself is unchanged (indeed protected). Object rule -> obligation side, direction rem"
+    }
   },
   {
     "id": "FRE-05",
     "measure_type": "obligation",
-    "benefit": "The most efficient 10% of installations in a sector, zero-emission/low-carbon installations, and installations that voluntarily remain in the ETS after falling below the combustion threshold are excused entirely from the Invest in EU decarbonisation plan and the 80/20 tranching conditionality.",
     "addressee": "Top-10%-most-efficient, zero-/low-carbon, and voluntarily-remaining installations",
     "class": "business",
     "trigger": "installation is among the 10% most efficient in its sector, or is zero-emissions/low-carbon, or has opted to remain in the EU ETS under Art. 2(1)",
@@ -224,13 +221,6 @@
     "article": "Art. 1(15)(d), inserting Art. 10a(3c), sixth subparagraph of Directive 2003/87/EC",
     "when": "from 2031",
     "source_text": "The requirements set out in paragraph 3b and in the first and third subparagraphs of this paragraph shall not apply to the 10 % most efficient installations in a sector or subsector in the Union referred to in the first subparagraph of Article 10a(2) and in respect of the years used to determine the revised benchmark values pursuant to the third subparagraph of that Article for the relevant five-year free allocation period, to zero emissions or low-carbon installations, to installations for which the operators, following a change in their production processes in accordance with Article 2(1), decide that they are is to remain within the scope of the EU ETS.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1",
-      "F4"
-    ],
     "sectors_named": [],
     "sectors_reached": [],
     "pending": "Detailed criteria for what qualifies as a 'zero emissions or low carbon installation' are left to a delegated act under Art. 10a(3e)(g), not yet adopted.",
@@ -239,18 +229,23 @@
     "drivers": [],
     "provision_id": null,
     "duty": "Draw up an Invest in EU decarbonisation plan and satisfy the 80/20 tranching conditionality attached to free allocation.",
-    "benefit_axis_note": "No quantum basis. A condition attached to the support is removed, not the support. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "No quantum basis. A condition attached to the support is removed, not the support. Object rule -> obligation side, direction rem.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "A condition attached to the support is removed, not the support. Object rule -> obligation side, direction rem"
+    }
   },
   {
     "id": "FRE-06",
-    "measure_type": "obligation",
+    "measure_type": "right",
     "benefit": "Operators may pool multiple installations under a joint decarbonisation investment agreement to satisfy the mandatory decarbonisation-investment volume jointly rather than installation-by-installation.",
     "addressee": "Operators of installations applying for free allocation",
     "class": "business",
     "trigger": "operators wish to jointly fulfil the investment requirement across multiple installations",
     "frequency": "per five-year period",
     "verification": "competent authority",
-    "direction": "rem",
+    "direction": "add",
     "article": "Art. 1(15)(d), inserting Art. 10a(3d) of Directive 2003/87/EC",
     "when": "from 2031",
     "source_text": "Operators of installations applying for free allocation in accordance with this Article may request to form a pool of installations for the purposes of fulfilling jointly the investment requirements under paragraph 3b, fifth subparagraph.",
@@ -267,8 +262,16 @@
     "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0616",
     "drivers": [],
     "provision_id": null,
-    "duty": "Meet the mandatory decarbonisation-investment volume under Art. 10a(3b), fifth subparagraph, installation by installation.",
-    "benefit_axis_note": "No quantum basis. Pooling changes how an investment REQUIREMENT may be discharged; the free allocation it conditions is untouched. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "Operators 'may request to form a pool' — a faculty for discharging the investment requirement jointly that no operator previously held. The requirement itself is unchanged, which is why this is not a Simplification: nothing shrank, something was granted.",
+    "right_basis": {
+      "text": "may request to form a pool of installations for the purposes of fulfilling jointly the investment requirements",
+      "kind": "procedure"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "FRE-07",
@@ -919,7 +922,6 @@
   {
     "id": "SHIP-03",
     "measure_type": "obligation",
-    "benefit": "Large containerships (10,000+ TEU) on long inbound voyages (over 300 nautical miles) from outside the EU can surrender fewer allowances than their actual verified emissions until 2035, reduced pro-rata by the share of containers transhipped onward.",
     "addressee": "Shipping companies operating containerships of 10,000 TEU and above",
     "class": "business",
     "trigger": "containership of 10,000 TEU or above on a voyage from a non-EU port of call to an EU port of call exceeding 300 nautical miles",
@@ -929,12 +931,6 @@
     "article": "Art. 1(22)(a)(ii), inserting Art. 12(3-g) of Directive 2003/87/EC",
     "when": "until 31 December 2035",
     "source_text": "By way of derogation from paragraph 3, first subparagraph, point (c), shipping companies may surrender fewer allowances than their verified emissions in respect of emissions released until 31 December 2035 from voyages from a port of call outside the jurisdiction of a Member State to a port of call under the jurisdiction of a Member State if performed by containerships of 10 000 TEU and above, if the distance of the voyage exceeds 300 nautical miles.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [
       "ship"
     ],
@@ -944,12 +940,16 @@
     "drivers": [],
     "provision_id": null,
     "duty": "Surrender allowances equal to full verified emissions from long inbound voyages, including the transhipped share.",
-    "benefit_axis_note": "No quantum basis. The object is the surrender obligation and how much of it applies, not any support. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "No quantum basis. The object is the surrender obligation and how much of it applies, not any support. Object rule -> obligation side, direction rem.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "The object is the surrender obligation and how much of it applies, not any support. Object rule -> obligation side, direction rem"
+    }
   },
   {
     "id": "SHIP-04",
     "measure_type": "obligation",
-    "benefit": "The temporary exclusion of container transhipment at listed neighbouring non-EU ports from the EU ETS surrender scope is extended eight years, to 31 December 2038.",
     "addressee": "Shipping companies performing container transhipment via listed neighbouring ports",
     "class": "business",
     "trigger": "containers transhipped via a neighbouring container transhipment port listed under Art. 3ga(2)",
@@ -959,12 +959,6 @@
     "article": "Art. 1(4)(c)(i), amending Art. 3ga(3) of Directive 2003/87/EC",
     "when": "until 31 December 2038",
     "source_text": "the date “31 December 2030” is replaced by “31 December 2038”.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [
       "ship"
     ],
@@ -974,7 +968,12 @@
     "drivers": [],
     "provision_id": null,
     "duty": "Surrender allowances for containers transhipped via listed neighbouring non-EU ports, once the temporary exclusion lapses.",
-    "benefit_axis_note": "No quantum basis. Extending an exclusion from ETS surrender scope postpones a duty; it creates no support. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "No quantum basis. Extending an exclusion from ETS surrender scope postpones a duty; it creates no support. Object rule -> obligation side, direction rem.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "Extending an exclusion from ETS surrender scope postpones a duty; it creates no support. Object rule -> obligation side, direction rem"
+    }
   },
   {
     "id": "AVI-01",
@@ -1072,7 +1071,6 @@
   {
     "id": "AVI-04",
     "measure_type": "obligation",
-    "benefit": "Aircraft operators flying to/from listed least-developed and small island developing states are excused from surrendering any allowances for those flights' emissions through 2035.",
     "addressee": "Aircraft operators flying to/from listed LDC/SIDS states",
     "class": "business",
     "trigger": "flight to or from a State listed in the Art. 25a(3) implementing act (LDCs/SIDS below EU-average GDP per capita)",
@@ -1082,12 +1080,6 @@
     "article": "Art. 1(29)(a), replacing Art. 25a(4) of Directive 2003/87/EC",
     "when": "until 31 December 2035",
     "source_text": "In respect of emissions released until 31 December 2035 from flights to or from States that are listed in the implementing act adopted pursuant to paragraph 3 of this Article, aircraft operators shall not be required to surrender allowances in accordance with Article 12(3) in respect of those emissions.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F4"
-    ],
     "sectors_named": [
       "air"
     ],
@@ -1097,12 +1089,16 @@
     "drivers": [],
     "provision_id": null,
     "duty": "Surrender allowances under Art. 12(3) for emissions from flights to or from listed LDC/SIDS states.",
-    "benefit_axis_note": "No quantum basis. An exemption from the surrender duty is a duty removal, not a support cut. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "No quantum basis. An exemption from the surrender duty is a duty removal, not a support cut. Object rule -> obligation side, direction rem.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "An exemption from the surrender duty is a duty removal, not a support cut. Object rule -> obligation side, direction rem"
+    }
   },
   {
     "id": "CCS-01",
     "measure_type": "obligation",
-    "benefit": "Operators who capture and permanently store their CO2 (in an EU-permitted storage facility, or from 2031 reciprocally in a linked third country's permitted facility) are excused entirely from surrendering allowances for those captured emissions.",
     "addressee": "Operators capturing and permanently storing CO2 emissions",
     "class": "business",
     "trigger": "emissions verified as captured and transported for permanent storage to a permitted CCS facility",
@@ -1112,12 +1108,6 @@
     "article": "Art. 1(22)(c), replacing Art. 12(3a) of Directive 2003/87/EC",
     "when": "third-country reciprocity from 2031",
     "source_text": "An obligation to surrender allowances shall not arise in respect of emissions verified as captured and transported for permanent storage to a facility for which a permit is in force in accordance with Directive 2009/31/EC of the European Parliament and of the Council *, or on a reciprocal basis from 2031 to a facility with a valid permit for geological storage in a third country with a greenhouse gas emissions trading system which is linked to the EU ETS pursuant to Article 25 of this Directive and in respect of which the Commission adopts an implementing decision confirming sufficient safeguards with respect to the rules set out in Directive 2009/31/EC are in place and provided the facility is not used for enhanced oil or gas recovery.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F5"
-    ],
     "sectors_named": [
       "ccs"
     ],
@@ -1127,12 +1117,16 @@
     "drivers": [],
     "provision_id": null,
     "duty": "Surrender allowances for emissions that are captured and transported for permanent storage in a permitted facility.",
-    "benefit_axis_note": "No quantum basis. The provision extinguishes a surrender obligation; it moves no support. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "No quantum basis. The provision extinguishes a surrender obligation; it moves no support. Object rule -> obligation side, direction rem.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "The provision extinguishes a surrender obligation; it moves no support. Object rule -> obligation side, direction rem"
+    }
   },
   {
     "id": "CCS-02",
     "measure_type": "obligation",
-    "benefit": "CO2 that is captured and permanently chemically bound into a product (carbon capture and utilisation) is excused from the surrender obligation.",
     "addressee": "Operators using carbon capture and utilisation (CCU) technology",
     "class": "business",
     "trigger": "CO2 emissions captured and utilised in a way that becomes permanently chemically bound",
@@ -1142,13 +1136,6 @@
     "article": "Art. 1(22)(d), replacing Art. 12(3b) of Directive 2003/87/EC",
     "when": "n/a",
     "source_text": "An obligation to surrender allowances shall not arise in respect of carbon dioxide emissions which are considered to have been captured and utilised in such a way that they have become:",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F4",
-      "F5"
-    ],
     "sectors_named": [
       "ccs"
     ],
@@ -1159,18 +1146,23 @@
     "drivers": [],
     "provision_id": null,
     "duty": "Surrender allowances for CO2 captured and utilised so as to become permanently chemically bound in a product.",
-    "benefit_axis_note": "No quantum basis. The provision extinguishes a surrender obligation. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "No quantum basis. The provision extinguishes a surrender obligation. Object rule -> obligation side, direction rem.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "The provision extinguishes a surrender obligation. Object rule -> obligation side, direction rem"
+    }
   },
   {
     "id": "CCS-03",
-    "measure_type": "obligation",
+    "measure_type": "right",
     "benefit": "Operators, aircraft operators and shipping companies will be able to offset their fossil CO2 emissions using their own certified domestic permanent carbon removal units (from storage of biogenic emissions), reducing the number of allowances they must surrender.",
     "addressee": "Operators, aircraft operators and shipping companies generating certified permanent carbon removal units",
     "class": "business",
     "trigger": "generation of domestic permanent carbon removal units certified under Regulation (EU) 2024/3012 from biogenic emissions storage",
     "frequency": "annual",
     "verification": "accredited third party",
-    "direction": "rem",
+    "direction": "add",
     "article": "Art. 1(24)(b), inserting Art. 14(1a) of Directive 2003/87/EC",
     "when": "n/a",
     "source_text": "The acts referred to in paragraph 1 shall provide for the possibility for operators, aircraft operators and shipping companies to compensate their fossil emissions with domestic permanent carbon removal units generated from the storage of their biogenic emissions under the scope of this Directive and certified under Regulation (EU) 2024/3012, while avoiding the double counting of those negative emissions.",
@@ -1190,8 +1182,16 @@
     "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0616",
     "drivers": [],
     "provision_id": null,
-    "duty": "Surrender allowances for fossil emissions without the option of compensating them with own certified permanent carbon removal units.",
-    "benefit_axis_note": "No quantum basis. A new way to discharge the surrender obligation eases the duty; no support amount, rate, eligibility or existence changes. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "The implementing acts 'shall provide for the possibility for operators ... to compensate' — an entitlement to discharge surrender with own certified removal units. A new instrument in the operator's hands, not a narrower duty.",
+    "right_basis": {
+      "text": "shall provide for the possibility for operators, aircraft operators and shipping companies to compensate their fossil emissions with domestic permanent carbon removal units",
+      "kind": "conferral"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "WST-01",
@@ -1226,7 +1226,6 @@
   {
     "id": "WST-02",
     "measure_type": "obligation",
-    "benefit": "Member States may fully exempt waste incineration/co-incineration installations located in outermost regions from any surrender obligation until the end of 2035.",
     "addressee": "Waste incineration and waste co-incineration installations in outermost regions",
     "class": "business",
     "trigger": "installation located in an outermost region within the meaning of Article 349 TFEU",
@@ -1236,12 +1235,6 @@
     "article": "Art. 1(23), inserting Art. 12a, second paragraph of Directive 2003/87/EC",
     "when": "until 31 December 2035",
     "source_text": "By way of derogation from the first paragraph of this Article, Member States may exempt waste incineration and waste co-incineration installations located in outermost regions within the meaning of Article 349 TFEU from the obligation to surrender allowances until 31 December 2035.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [
       "waste"
     ],
@@ -1251,12 +1244,16 @@
     "drivers": [],
     "provision_id": null,
     "duty": "Surrender allowances for emissions from waste incineration and co-incineration installations in outermost regions.",
-    "benefit_axis_note": "No quantum basis. A Member State option to exempt installations from the surrender duty is a duty removal. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "No quantum basis. A Member State option to exempt installations from the surrender duty is a duty removal. Object rule -> obligation side, direction rem.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "A Member State option to exempt installations from the surrender duty is a duty removal. Object rule -> obligation side, direction rem"
+    }
   },
   {
     "id": "WST-03",
     "measure_type": "obligation",
-    "benefit": "Waste incineration/co-incineration installations can be fully exempted from surrendering ETS allowances (up to 2035) if their Member State meets at least two of three conditions: an equivalent national carbon tax, being on track for EU recycling targets, or being on track for landfill-diversion targets.",
     "addressee": "Waste incineration and co-incineration installations in qualifying Member States",
     "class": "business",
     "trigger": "Member State demonstrates it meets at least two of three conditions (national carbon tax above ETS price / on track for recycling targets / on track for landfill diversion target)",
@@ -1266,13 +1263,6 @@
     "article": "Art. 1(23), inserting Art. 12b(1) of Directive 2003/87/EC",
     "when": "up to 2035",
     "source_text": "By way of derogation from Articles 12 and 12a, the competent authority of a Member State may exempt installations under the activity ‘Waste incineration and waste co-incineration’ referred to in Annex I, from the obligation to surrender allowances for the emissions of a given reference year up to 2035, provided that the Member State demonstrates that at least two out of the following three conditions are met:",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1",
-      "F2"
-    ],
     "sectors_named": [
       "waste"
     ],
@@ -1282,7 +1272,12 @@
     "drivers": [],
     "provision_id": null,
     "duty": "Surrender allowances for the emissions of a given reference year from waste incineration and co-incineration installations.",
-    "benefit_axis_note": "No quantum basis. A conditional exemption from the surrender duty is a duty removal. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "No quantum basis. A conditional exemption from the surrender duty is a duty removal. Object rule -> obligation side, direction rem.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "A conditional exemption from the surrender duty is a duty removal. Object rule -> obligation side, direction rem"
+    }
   },
   {
     "id": "MST-05",

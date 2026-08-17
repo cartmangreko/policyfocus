@@ -75,6 +75,15 @@ export default async function MeasurePage({
   // statement is often a paragraph rather than a title — see headlineStep.
   const statement = measure.duty ?? measure.benefit ?? "";
 
+  // What the rule pane calls the provision's statement. A right row states an
+  // entitlement and an incentive row a benefit; only an obligation states a duty.
+  const statementLabel =
+    measure.measure_type === "right"
+      ? "Entitlement"
+      : measure.measure_type === "incentive"
+        ? "Benefit"
+        : "Obligation";
+
   // Fields stored as "n/a" are omitted rather than printed — a row that says
   // "Frequency: n/a" tells the reader nothing the missing row doesn't.
   const keyFacts: [string, string][] = [
@@ -131,6 +140,9 @@ export default async function MeasurePage({
               </>
             )}
 
+            {/* The rule pane's statement label follows the row's side. Calling a
+                right row's statement an "Obligation" contradicts the tag two
+                inches above it, which reads Entitlement. */}
             <h2 className="rule-head">{before ? "Prior rule vs new rule" : "The rule"}</h2>
             <div className={`diff ${before ? "" : "diff-single"}`}>
               {before && (
@@ -142,7 +154,7 @@ export default async function MeasurePage({
                       <p>{before.trigger}</p>
                     </>
                   )}
-                  <div className="diff-field">Obligation</div>
+                  <div className="diff-field">{statementLabel}</div>
                   <p>{before.statement}</p>
                   {before.status === "unresolved" && (
                     <p className="diff-unresolved">Prior wording not available in the source file.</p>
@@ -157,7 +169,7 @@ export default async function MeasurePage({
                     <p>{after.trigger}</p>
                   </>
                 )}
-                <div className="diff-field">Obligation</div>
+                <div className="diff-field">{statementLabel}</div>
                 <p>{after.statement}</p>
               </div>
             </div>

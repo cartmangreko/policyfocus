@@ -5,7 +5,11 @@
 
 export type MeasureClass = "business" | "state" | "investor" | "commission" | "household";
 export type Direction = "add" | "rem";
-export type MeasureType = "obligation" | "incentive";
+// `right` is benefit-side, alongside `incentive`: it marks a provision that
+// confers a faculty the addressee did not hold (priority permitting, an option
+// to pool, a status that unlocks a procedure) rather than one that eases a
+// duty. See sources/benefit_axis.py for the operative-verb test that decides it.
+export type MeasureType = "obligation" | "incentive" | "right";
 export type DDriver = "D1" | "D2" | "D3" | "D4" | "D5" | "D6" | "D7";
 export type VDriver = "V1" | "V2" | "V3" | "V4";
 export type FFriction = "F1" | "F2" | "F3" | "F4" | "F5";

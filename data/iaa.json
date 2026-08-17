@@ -91,14 +91,14 @@
   },
   {
     "id": "PRM-04",
-    "measure_type": "obligation",
+    "measure_type": "right",
     "benefit": "Automatic classification as a 'strategic project' contributing to resilience and decarbonisation or resource efficiency, granting access to the priority/streamlined treatment of the future Environmental Assessment Regulation.",
     "addressee": "Promoters of energy-intensive industry decarbonisation projects",
     "class": "business",
     "trigger": "Project qualifies as an 'energy-intensive industry decarbonisation project' under Art. 3(3)/Annex I",
     "frequency": "per project",
     "verification": "competent authority",
-    "direction": "rem",
+    "direction": "add",
     "article": "Art. 6(2)",
     "when": "From entry into force",
     "source_text": "All energy-intensive industry decarbonisation projects shall be considered strategic\nprojects contributing to resilience and decarbonisation or resource efficiency for the\npurposes of [Article 14 of Proposal for a Regulation on speeding-up environmental\nassessment].",
@@ -121,8 +121,16 @@
     "file": "iaa",
     "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0100",
     "drivers": [],
-    "duty": "Run the ordinary (non-priority) environmental assessment and permitting track for an energy-intensive industry decarbonisation project.",
-    "benefit_axis_note": "No quantum basis. Strategic-project status buys priority/streamlined PROCEDURE, not money. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "Confers strategic-project STATUS on a whole class of project, which unlocks the priority permitting track. The conferral is the status; kind 'scope' records which projects it reaches.",
+    "right_basis": {
+      "text": "All energy-intensive industry decarbonisation projects shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency",
+      "kind": "scope"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "PRM-05",
@@ -186,14 +194,14 @@
   },
   {
     "id": "PRM-06",
-    "measure_type": "obligation",
+    "measure_type": "right",
     "benefit": "Automatic 'strategic project' status for all net-zero technology manufacturing projects, granting streamlined treatment under the future Environmental Assessment Regulation.",
     "addressee": "Promoters of net-zero technology manufacturing projects",
     "class": "business",
     "trigger": "Project is a net-zero technology manufacturing project under Regulation (EU) 2024/1735",
     "frequency": "per project",
     "verification": "competent authority",
-    "direction": "rem",
+    "direction": "add",
     "article": "Art. 34(2) (new Art. 9(14) of Regulation (EU) 2024/1735)",
     "when": "From entry into force",
     "source_text": "All net-zero technology manufacturing projects shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency for the purpose of Article 14(1) of [Proposal for a Regulation on speeding-up environmental assessment]",
@@ -216,8 +224,16 @@
     "file": "iaa",
     "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0100",
     "drivers": [],
-    "duty": "Run the ordinary (non-priority) environmental assessment and permitting track for a net-zero technology manufacturing project.",
-    "benefit_axis_note": "No quantum basis. Strategic-project status buys priority/streamlined PROCEDURE, not money. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "Same conferral as PRM-04, for net-zero technology manufacturing projects.",
+    "right_basis": {
+      "text": "All net-zero technology manufacturing projects shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency",
+      "kind": "scope"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "AA-01",
@@ -352,14 +368,14 @@
   },
   {
     "id": "AA-04b",
-    "measure_type": "obligation",
+    "measure_type": "right",
     "benefit": "Project promoters within an acceleration area only need to obtain additional permits that fall outside the scope of the aggregated baseline permit, cutting the permitting burden.",
     "addressee": "Industrial manufacturing project promoters located in acceleration areas",
     "class": "business",
     "trigger": "Project located within a designated acceleration area",
     "frequency": "per project",
     "verification": "competent authority",
-    "direction": "rem",
+    "direction": "add",
     "article": "Art. 27(3)",
     "when": "After designation of each acceleration area",
     "source_text": "3. Industrial manufacturing projects located within an industrial manufacturing\nacceleration area shall be required to obtain only those additional permits or\nauthorisations that fall outside the scope of the aggregated baseline permit referred to\nin paragraph 1.",
@@ -383,8 +399,16 @@
     "file": "iaa",
     "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0100",
     "drivers": [],
-    "duty": "Obtain the full set of permits and authorisations for a project, including those inside the scope of the aggregated baseline permit.",
-    "benefit_axis_note": "No quantum basis. The object is the permitting procedure. Object rule -> obligation side, direction rem."
+    "benefit_axis_note": "Projects inside an acceleration area may rely on the area's aggregated baseline permit — the streamlined-permitting privilege the acceleration-area regime exists to confer. Phrased as 'shall be required to obtain only', so it reads as a duty narrowing; the object is the conferred baseline permit, and the narrowing is its consequence. Flagged in the report as the one genuinely two-faced row of the five.",
+    "right_basis": {
+      "text": "shall be required to obtain only those additional permits or authorisations that fall outside the scope of the aggregated baseline permit",
+      "kind": "scope"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "LM-01",
@@ -706,7 +730,7 @@
     "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0100",
     "drivers": [],
     "opportunity_basis": {
-      "text": "at least 25% of the total volume of steel used in the product or project that receives support shall be low-carbon",
+      "text": "(a) steel, and any product the performance of which depends primarily on steel : at\nleast 25% of the total volume of steel used in the product or project that\nreceives support shall be low-carbon;",
       "kind": "eligibility"
     }
   },
@@ -1371,7 +1395,9 @@
     "drivers": [],
     "opportunity_basis": {
       "text": "the ‘made in the EU’ criterion for small zero- emission vehicles shall comply with the criteria set out in Part III of Annex III to this Regulation",
-      "kind": "eligibility"
+      "kind": "eligibility",
+      "basis_status": "external",
+      "pointer": "Quantum (the super-credit multiplier) is set by Regulation (EU) 2019/631 on CO2 emission standards for new light duty vehicles, CELEX 32019R0631, as amended by the proposal of 16 December 2025 cited in this Article. Not yet ingested."
     }
   },
   {
@@ -1407,7 +1433,9 @@
     "drivers": [],
     "opportunity_basis": {
       "text": "‘low-carbon steel made in the EU’ shall be understood as follows",
-      "kind": "eligibility"
+      "kind": "eligibility",
+      "basis_status": "external",
+      "pointer": "Quantum (the super-credit multiplier) is set by Regulation (EU) 2019/631 on CO2 emission standards for new light duty vehicles, CELEX 32019R0631, as amended by the proposal of 16 December 2025 cited in this Article. Not yet ingested."
     }
   },
   {
@@ -1890,7 +1918,9 @@
     "drivers": [],
     "opportunity_basis": {
       "text": "laying down Union-level demand-side measures for products from the chemical industry in order to promote the following activities",
-      "kind": "existence"
+      "kind": "existence",
+      "basis_status": "announced",
+      "pointer": "Announced: an empowerment for the Commission to lay down Union-level demand-side measures for chemical-industry products. No delegated or implementing act adopted, so no amount, rate or eligibility exists to cite. Revisit when the instrument lands."
     }
   }
 ]

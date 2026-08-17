@@ -11,11 +11,45 @@ Run from sources/:  python3 build_benefit_axis.py
 Writes:  ../data/ets.json, ../data/iaa.json, benefit_axis_report.md
 """
 import json
+import os
+import subprocess
+import sys
 from collections import Counter
 
+from textnorm import canonical
 from benefit_axis import assert_benefit_basis, derive_valence, load_fulltext
 
 DATA_FILES = [("ets", "../data/ets.json"), ("iaa", "../data/iaa.json"), ("omnibus", "../data/omnibus.json")]
+
+# The commit that first applied the object rule and moved these rows off the
+# benefit axis. Recorded in each reclass_from so the provenance points at a real
+# place in the history rather than at "some build".
+RECLASS_COMMIT = "f1bd6f1"
+
+# Fields that assert a support movement. An obligation row must carry none of
+# them (the validate_v2 invariant); a row reclassified onto the obligation side
+# sheds them into reclass_from.
+BENEFIT_SIDE_FIELDS = ("benefit", "value_drivers", "access_frictions",
+                       "support_cut_basis", "opportunity_basis")
+
+# Fields that assert a duty. A benefit-side row -- incentive or right -- must
+# carry none of them.
+OBLIGATION_SIDE_FIELDS = ("duty",)
+
+
+def _shed(rec, fields):
+    """Drop fields that contradict the row's new side. Returns the names dropped.
+
+    Values are not preserved in the row. The provenance key plus git history is
+    the audit trail, per Ruling 2 -- keeping a shadow copy of a field the schema
+    says must not be there just relocates the contradiction.
+    """
+    dropped = []
+    for f in fields:
+        if rec.get(f):
+            dropped.append(f)
+        rec.pop(f, None)
+    return dropped
 
 # ---------------------------------------------------------------------------
 # RECLASSIFY: rows the object rule moves off the benefit axis.
@@ -103,6 +137,45 @@ RECLASSIFY = {
 }
 
 # ---------------------------------------------------------------------------
+# CONFERS_RIGHT: rows the two-sided rule sent to the obligation side, which
+# actually confer a faculty. See benefit_axis.py, "THE THIRD SIDE".
+#
+# Each was re-read against its own source span rather than taken from a list.
+# The test is the operative verb: does the addressee hold something they did
+# not hold before? Six rows were proposed; five confer, one does not --
+#
+#   SHIP-04 stays Simplification. Its entire operative text is 'the date
+#   "31 December 2030" is replaced by "31 December 2038"'. That postpones the
+#   lapse of an existing exclusion. Nobody is handed anything; a duty simply
+#   stays away for longer. Welcome, but not a right.
+#
+# These rows move to the benefit side, so they shed `duty` and keep `benefit`,
+# symmetric with incentive rows.
+# ---------------------------------------------------------------------------
+CONFERS_RIGHT = {
+"FRE-06": dict(
+    kind="procedure",
+    basis="may request to form a pool of installations for the purposes of fulfilling jointly the investment requirements",
+    reason="Operators 'may request to form a pool' — a faculty for discharging the investment requirement jointly that no operator previously held. The requirement itself is unchanged, which is why this is not a Simplification: nothing shrank, something was granted."),
+"CCS-03": dict(
+    kind="conferral",
+    basis="shall provide for the possibility for operators, aircraft operators and shipping companies to compensate their fossil emissions with domestic permanent carbon removal units",
+    reason="The implementing acts 'shall provide for the possibility for operators ... to compensate' — an entitlement to discharge surrender with own certified removal units. A new instrument in the operator's hands, not a narrower duty."),
+"PRM-04": dict(
+    kind="scope",
+    basis="All energy-intensive industry decarbonisation projects shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency",
+    reason="Confers strategic-project STATUS on a whole class of project, which unlocks the priority permitting track. The conferral is the status; kind 'scope' records which projects it reaches."),
+"PRM-06": dict(
+    kind="scope",
+    basis="All net-zero technology manufacturing projects shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency",
+    reason="Same conferral as PRM-04, for net-zero technology manufacturing projects."),
+"AA-04b": dict(
+    kind="scope",
+    basis="shall be required to obtain only those additional permits or authorisations that fall outside the scope of the aggregated baseline permit",
+    reason="Projects inside an acceleration area may rely on the area's aggregated baseline permit — the streamlined-permitting privilege the acceleration-area regime exists to confer. Phrased as 'shall be required to obtain only', so it reads as a duty narrowing; the object is the conferred baseline permit, and the narrowing is its consequence. Flagged in the report as the one genuinely two-faced row of the five."),
+}
+
+# ---------------------------------------------------------------------------
 # BASIS: rows that stay on the benefit axis, each pointing at the verbatim span
 # naming the quantum it moves. kind is amount | rate | eligibility | existence.
 # Every text below is asserted to appear verbatim in the row's own source file.
@@ -133,7 +206,10 @@ BASIS = {
 "LM-03b": ("rate", "at least 25% of the total volume of steel used shall be low-carbon"),
 "LM-03c": ("eligibility", "the ratio between the total ex-works price of vehicle components - excluding the vehicle battery - originating in the Union and the total ex-works price of all components – excluding the battery – is at least 70%"),
 "LM-06b": ("rate", "at least 25% of the total volume of steel used in the product or project that receives support shall be low-carbon"),
-"LM-06c": ("eligibility", "at least 25% of the total volume of steel used in the product or project that receives support shall be low-carbon"),
+# LM-06c's basis was quoted from the middle of the Annex II Part II sentence,
+# which left it standing on a fragment. Extended to the full sentence, so it is
+# verbatim on its own terms and needs no status.
+"LM-06c": ("eligibility", "(a) steel, and any product the performance of which depends primarily on steel : at\nleast 25% of the total volume of steel used in the product or project that\nreceives support shall be low-carbon;"),
 "LM-15b": ("eligibility", "the battery energy storage systems shall originate in the Union"),
 "LM-18b": ("rate", "shall apply to at least 40% of the volume auctioned per year per Member State or alternatively to at least 8 Gigawatt per year per Member State"),
 "LM-20b": ("eligibility", "the PV inverter and the PV cells or equivalent shall originate in the Union"),
@@ -141,9 +217,24 @@ BASIS = {
 "LM-23b": ("eligibility", "Member States shall ensure that the electrolyser originates in the Union and the stack and at least one additional main specific component of the electrolyser originate in the Union"),
 "LM-26b": ("eligibility", "shall ensure that only vehicles that comply with the below minimum Union origin requirements are eligible under the scheme"),
 "LM-26c": ("eligibility", "the ratio between the total ex-works price of vehicle components - excluding the vehicle battery - originating in the Union and the total ex-works price of all vehicle components – excluding the battery – is equal to or greater than 70%"),
-"SC-01": ("eligibility", "the ‘made in the EU’ criterion for small zero- emission vehicles shall comply with the criteria set out in Part III of Annex III to this Regulation"),
-"SC-02": ("eligibility", "‘low-carbon steel made in the EU’ shall be understood as follows"),
-"IAAB-CHEM-01": ("existence", "laying down Union-level demand-side measures for products from the chemical industry in order to promote the following activities"),
+# SC-01 and SC-02 define who qualifies for a super-credit whose size is set by
+# the CO2-standards regulation. The eligibility hook is here; the quantum is
+# there. `external` with a CELEX pointer says exactly that, rather than
+# paraphrasing a number this act does not contain. The pointer is enough until
+# that regulation is ingested, at which point the basis can become verbatim
+# against it.
+"SC-01": ("eligibility", "the ‘made in the EU’ criterion for small zero- emission vehicles shall comply with the criteria set out in Part III of Annex III to this Regulation",
+          {"basis_status": "external",
+           "pointer": "Quantum (the super-credit multiplier) is set by Regulation (EU) 2019/631 on CO2 emission standards for new light duty vehicles, CELEX 32019R0631, as amended by the proposal of 16 December 2025 cited in this Article. Not yet ingested."}),
+"SC-02": ("eligibility", "‘low-carbon steel made in the EU’ shall be understood as follows",
+          {"basis_status": "external",
+           "pointer": "Quantum (the super-credit multiplier) is set by Regulation (EU) 2019/631 on CO2 emission standards for new light duty vehicles, CELEX 32019R0631, as amended by the proposal of 16 December 2025 cited in this Article. Not yet ingested."}),
+# IAAB-CHEM-01 is an empowerment to adopt demand-side measures. There is no
+# instrument yet, so there is no quantum anywhere to point at -- only a stated
+# intent. `announced` is the honest floor.
+"IAAB-CHEM-01": ("existence", "laying down Union-level demand-side measures for products from the chemical industry in order to promote the following activities",
+                 {"basis_status": "announced",
+                  "pointer": "Announced: an empowerment for the Commission to lay down Union-level demand-side measures for chemical-industry products. No delegated or implementing act adopted, so no amount, rate or eligibility exists to cite. Revisit when the instrument lands."}),
 }
 
 # Rows whose benefit label survives but whose basis is a judgement call worth a
@@ -166,32 +257,87 @@ def main():
         fulltext = load_fulltext(key)
 
         by_id = {r["id"]: r for r in rows}
-        seen.update(k for k in list(RECLASSIFY) + list(BASIS) if k in by_id)
+        seen.update(
+            k for k in list(RECLASSIFY) + list(BASIS) + list(CONFERS_RIGHT) if k in by_id
+        )
 
         out = []
         for r in rows:
             rec = dict(r)  # additive: every existing field survives
 
-            if rec["id"] in RECLASSIFY:
+            if rec["id"] in CONFERS_RIGHT:
+                # Checked before RECLASSIFY: five of these rows are in that table
+                # too, having been sent to the obligation side by the two-sided
+                # rule. The right ruling supersedes it, and the row moves back to
+                # the benefit side rather than staying a Simplification.
+                m = CONFERS_RIGHT[rec["id"]]
+                was = derive_valence(
+                    RECLASSIFY[rec["id"]]["measure_type"], RECLASSIFY[rec["id"]]["direction"]
+                ) if rec["id"] in RECLASSIFY else derive_valence(
+                    rec.get("measure_type"), rec.get("direction")
+                )
+                rec["measure_type"] = "right"
+                rec["direction"] = "add"
+                rec["right_basis"] = {"text": m["basis"], "kind": m["kind"]}
+                # Benefit-side row: it carries `benefit`, never `duty`. The duty
+                # here was written by the earlier obligation-side ruling and is
+                # now a statement of something the provision does not do.
+                shed = _shed(rec, OBLIGATION_SIDE_FIELDS)
+                # Same provenance discipline as Ruling 2's obligation-side moves:
+                # this row was an obligation in the committed data and is not one
+                # now, and the `duty` it shed said the opposite of what the
+                # provision does. Recorded so the move is legible without git.
+                if rec["id"] in RECLASSIFY:
+                    rec["reclass_from"] = {
+                        "measure_type": RECLASSIFY[rec["id"]]["measure_type"],
+                        "commit": RECLASS_COMMIT,
+                        "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right.",
+                    }
+                rec["benefit_axis_note"] = m["reason"]
+                report_rows.append({
+                    "file": key, "id": rec["id"], "old": was, "new": "Entitlement",
+                    "affected_delta": rec.get("benefit"),
+                    "reason": m["reason"], "shed": shed, "to_right": True,
+                })
+
+            elif rec["id"] in RECLASSIFY:
                 m = RECLASSIFY[rec["id"]]
                 rec["measure_type"] = m["measure_type"]
                 rec["direction"] = m["direction"]
                 rec.setdefault("duty", m["duty"])
                 new_label = derive_valence(rec["measure_type"], rec["direction"])
                 rec["benefit_axis_note"] = m["reason"]
+                delta = rec.get("affected_delta") or rec.get("benefit") or rec.get("duty")
+                # RULING 2. The validate_v2 invariant holds: an obligation row
+                # carries no benefit-side field. These rows arrived as incentive
+                # rows, so they carry `benefit`, `value_drivers`,
+                # `access_frictions` -- fields that assert a support movement the
+                # object rule has just found there isn't. They are shed, and
+                # `reclass_from` records that they were, so the row is not
+                # silently thinner than it was. Git holds the values themselves.
+                shed = _shed(rec, BENEFIT_SIDE_FIELDS)
+                rec["reclass_from"] = {
+                    "measure_type": m.get("from_measure_type", "incentive"),
+                    "commit": RECLASS_COMMIT,
+                    "note": m["reason"].split(". ", 1)[-1].rstrip("."),
+                }
                 report_rows.append({
                     "file": key, "id": rec["id"], "old": m["was"], "new": new_label,
-                    "affected_delta": rec.get("affected_delta") or rec.get("benefit") or rec.get("duty"),
-                    "reason": m["reason"],
+                    "affected_delta": delta, "reason": m["reason"], "shed": shed,
                 })
+
             elif rec["id"] in BASIS:
-                kind, text = BASIS[rec["id"]]
+                entry = BASIS[rec["id"]]
+                kind, text = entry[0], entry[1]
+                extra = entry[2] if len(entry) > 2 else {}
                 label = derive_valence(rec.get("measure_type"), rec.get("direction"))
                 field = "support_cut_basis" if label == "Support cut" else "opportunity_basis"
-                rec[field] = {"text": text, "kind": kind}
+                rec[field] = {"text": text, "kind": kind, **extra}
                 if rec["id"] in CONFIRM:
                     confirmed.append({
                         "file": key, "id": rec["id"], "label": label, "kind": kind,
+                        "status": extra.get("basis_status", "verbatim"),
+                        "pointer": extra.get("pointer"),
                         "note": CONFIRM[rec["id"]],
                     })
 
@@ -213,16 +359,51 @@ def main():
         before = Counter({k: v for k, v in before.items() if v})
         per_file_counts[key] = (len(out), before, after)
 
-        # verbatim re-check of the pre-existing discipline, unchanged
-        stale = [r["id"] for r in out if r["source_text"] not in fulltext]
+        # Verbatim re-check of the pre-existing discipline. Canonicalised, like
+        # every other verbatim check in the pipeline (verify_pass, benefit_axis):
+        # this was the one place still doing a raw substring test, which stopped
+        # holding the moment the IAA source became PDF-derived and acquired line
+        # wrapping. It failed 48 of 62 IAA rows on untouched data -- not because
+        # any quote was wrong, but because the check could not see through a line
+        # break. Same discipline, applied the way the rest of the pipeline
+        # applies it.
+        canon_fulltext = canonical(fulltext)
+        stale = [r["id"] for r in out if canonical(r["source_text"]) not in canon_fulltext]
         assert not stale, f"source_text no longer verbatim in {path}: {stale}"
 
         pending_writes.append((path, out))
 
     # No hand-authored id may reference a row that does not exist, in the style
     # of build_data_v2.py's set(META.keys()) == set(by_id.keys()).
-    orphans = (set(RECLASSIFY) | set(BASIS)) - seen
-    assert not orphans, f"RECLASSIFY/BASIS ids not present in any data file: {sorted(orphans)}"
+    orphans = (set(RECLASSIFY) | set(BASIS) | set(CONFERS_RIGHT)) - seen
+    assert not orphans, (
+        f"RECLASSIFY/BASIS/CONFERS_RIGHT ids not present in any data file: {sorted(orphans)}"
+    )
+
+    # A row on the benefit side may not also assert a duty, and an obligation row
+    # may not assert a benefit. This is the validate_v2 invariant, enforced here
+    # too so the build cannot write a file that validate_v2 will reject.
+    for path, out in pending_writes:
+        crossed = []
+        for r in out:
+            t = r.get("measure_type")
+            if t == "obligation":
+                bad = [f for f in BENEFIT_SIDE_FIELDS if r.get(f)]
+            else:
+                bad = [f for f in OBLIGATION_SIDE_FIELDS if r.get(f)]
+            if bad:
+                crossed.append((r["id"], t, bad))
+        assert not crossed, f"rows carrying fields from the wrong side in {path}: {crossed}"
+
+    # The two derivations of the valence rule must agree before anything is
+    # written. If they don't, the build would produce data labelled one way and
+    # a site rendering it another, which is worse than not building.
+    parity = subprocess.run([sys.executable, "check_valence_parity.py"],
+                            cwd=os.path.dirname(os.path.abspath(__file__)))
+    assert parity.returncode == 0, (
+        "valence parity check failed — benefit_axis.derive_valence and "
+        "web/lib/valence.ts disagree; see the diff above"
+    )
 
     # Nothing is written until every file has passed, so a failure never leaves
     # half the register migrated.
