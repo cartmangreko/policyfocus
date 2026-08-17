@@ -7,3 +7,13 @@ requests>=2.31
 # proposals the pipeline exists to catch. pypdf or poppler's pdftotext work as
 # substitutes -- fetch_eurlex.pdf_to_text tries all three in that order.
 pymupdf>=1.24
+
+# Watch-agent triage (sources/watch.py). The floor is set by messages.parse()
+# and the output_config parameter, which is how the classifier's verdict comes
+# back as a validated object instead of prose to be regex'd.
+#
+# Discovery needs nothing: watch.py talks to the CELLAR SPARQL endpoint over
+# urllib, so a run with --no-triage has no dependency beyond the standard
+# library and can be debugged without a key.
+anthropic>=0.69
+pydantic>=2.7

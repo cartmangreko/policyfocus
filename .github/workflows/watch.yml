@@ -1,0 +1,114 @@
+name: watch
+
+# Mondays and Thursdays, early UTC. Twice a week rather than daily because the
+# Official Journal does not move faster than that for this material, and every
+# run costs triage tokens.
+#
+# workflow_dispatch is here so the agent can be exercised on demand -- after a
+# scope.md edit, after widening the EuroVoc list, or to reproduce a failed run.
+on:
+  schedule:
+    - cron: "17 5 * * 1"
+    - cron: "17 5 * * 4"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Discover and triage, but write nothing and open no PR"
+        type: boolean
+        default: false
+
+concurrency:
+  # Two runs ingesting at once would race on manifest.json and seen.json.
+  group: watch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r sources/requirements.txt
+
+      - name: Verify the PDF extractor is real
+        # The fetcher's PDF path is load-bearing: proposal-only PDFs are exactly
+        # the new documents this agent exists to catch. If the extractor is
+        # missing, the agent would fetch them, fail verification, and report a
+        # quiet nothing -- so fail here instead, where the cause is legible.
+        run: |
+          python -c "
+          import sys
+          sys.path.insert(0, 'sources')
+          import fetch_eurlex
+          if not fetch_eurlex.has_pdf_extractor():
+              raise SystemExit('no PDF text extractor available; check sources/requirements.txt')
+          print('PDF extractor present')
+          "
+
+      - name: Run the watch agent
+        id: watch
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python sources/watch.py \
+            --report "$RUNNER_TEMP/watch-report.md" \
+            ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Open a pull request
+        # Only when the agent changed something. Skipped on a dry run, on a
+        # no-op run, and on a failed run -- a failure should show up as a red
+        # run, not as a PR that looks like ordinary work.
+        if: success() && !inputs.dry_run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "no changes; checked, nothing new"
+            exit 0
+          fi
+
+          BRANCH="watch/$(date -u +%Y-%m-%d-%H%M)"
+          git config user.name  "policyfocus-watch"
+          git config user.email "watch@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -F - <<'EOF'
+          Watch run: new EUR-Lex documents for review
+
+          Opened by sources/watch.py. Discovery, triage reasoning, and anything
+          left borderline are in the pull request body.
+
+          Nothing here is merged automatically. Every ingested row changes what
+          the site states the law requires, so a human rules on it first.
+          EOF
+          git push origin "$BRANCH"
+
+          gh pr create \
+            --base "${{ github.ref_name }}" \
+            --head "$BRANCH" \
+            --title "Watch run $(date -u +%Y-%m-%d): new EUR-Lex documents for review" \
+            --body-file "$RUNNER_TEMP/watch-report.md"
+
+      - name: Upload the run report
+        # Kept even on failure -- a failed run's report is the thing you need
+        # in order to see how far it got.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: watch-report
+          path: ${{ runner.temp }}/watch-report.md
+          if-no-files-found: ignore
