@@ -14,7 +14,7 @@ import {
   measureHref,
 } from "@/lib/data";
 import { getAfterState, getBeforeState } from "@/lib/ruleDiff";
-import { isStated } from "@/lib/text";
+import { headlineStep, isStated } from "@/lib/text";
 import { isPositiveValence, valenceLabel } from "@/lib/valence";
 import type { Measure } from "@/lib/types";
 
@@ -70,6 +70,11 @@ export default async function MeasurePage({
   const related = getRelatedMeasures(measure);
   const drivers = measure.drivers ?? [];
 
+  // The headline is the provision's own statement: the duty for an obligation
+  // row, the benefit for an incentive one. It sets the display step, since a
+  // statement is often a paragraph rather than a title — see headlineStep.
+  const statement = measure.duty ?? measure.benefit ?? "";
+
   // Fields stored as "n/a" are omitted rather than printed — a row that says
   // "Frequency: n/a" tells the reader nothing the missing row doesn't.
   const keyFacts: [string, string][] = [
@@ -97,7 +102,7 @@ export default async function MeasurePage({
             direction={measure.direction}
             suffix={measure.id}
           />
-          <h1 className="detail-title">{measure.duty ?? measure.benefit}</h1>
+          <h1 className={`detail-title${headlineStep(statement)}`}>{statement}</h1>
           <div className="detail-meta">
             <span>
               <span className="detail-meta-label">Addressee</span> {measure.addressee}

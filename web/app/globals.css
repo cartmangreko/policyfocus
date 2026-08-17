@@ -765,7 +765,7 @@ h3 {
 .swatch {
   width: 10px;
   height: 10px;
-  border-radius: 1px;
+  border-radius: 2px;
   display: block;
 }
 .swatch-add {
@@ -996,7 +996,7 @@ a.minibar-name:hover {
 .minibar-fill {
   height: 10px;
   background: var(--claret);
-  border-radius: 1px;
+  border-radius: 2px;
   min-width: 2px;
 }
 .minibar-fill-alt {
@@ -1089,6 +1089,30 @@ a.minibar-name:hover {
   margin: 16px 0 0;
   max-width: 26ch;
   text-wrap: balance;
+}
+
+/* A register row's headline is its duty statement, and those are written to be
+   precise rather than short (median 188 characters). At the step above, a
+   median row runs seven lines of 900-weight display and the page stops reading
+   as a hierarchy. These two steps bring long statements down the scale and let
+   the measure widen, so the headline is still the largest thing on the page but
+   a paragraph is set at a size a paragraph can be read at.
+
+   Weight and tracking stay put: the step down is in size and measure only, so
+   the headline keeps its voice. See headlineStep() in lib/text.ts for which
+   step a given statement gets and why the thresholds sit where they do. */
+.detail-title.is-long {
+  font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+  line-height: 1.14;
+  letter-spacing: -0.022em;
+  max-width: 34ch;
+}
+.detail-title.is-xlong {
+  font-size: clamp(1.3rem, 2vw, 1.55rem);
+  line-height: 1.24;
+  letter-spacing: -0.015em;
+  max-width: 46ch;
+  text-wrap: pretty;
 }
 .detail-meta {
   display: flex;
@@ -1372,7 +1396,7 @@ a.minibar-name:hover {
 .meter-track {
   height: 8px;
   background: var(--paper);
-  border-radius: 4px;
+  border-radius: 3px;
   margin-top: 16px;
   overflow: hidden;
 }
