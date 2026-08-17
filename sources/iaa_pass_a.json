@@ -166,7 +166,15 @@
       "chem",
       "auto"
     ],
-    "provision_id": "PRM-P1"
+    "provision_id": "PRM-P1",
+    "prior_rule": {
+      "trigger": "Member State maintaining the Single Digital Gateway Annex II catalogue of online procedures",
+      "obligation": "Annex II of Regulation (EU) 2018/1724 carried separate catalogue rows for 'Net-zero technology manufacturing projects' and 'Critical raw materials projects', each obliging Member States to offer the listed permit procedures fully online. The net-zero row covered all permits to build, expand, convert and operate net-zero technology manufacturing and net-zero strategic projects, including building, chemical and grid-connection permits and environmental assessments.",
+      "source_text": "Procedures for all relevant permits to build, expand, convert and operate net-zero technology manufacturing projects, and net-zero strategic projects, including building, chemical and grid connection permits, environmental assessments and authorisations where required, and encompassing all applications and procedures.",
+      "status": "sourced",
+      "source_document": "Regulation (EU) 2018/1724 (Single Digital Gateway) as consolidated at 2026-05-20, CELEX 02018R1724-20260520, Annex II, row 'Net-zero technology manufacturing projects'",
+      "note": "Resolving the before-state changes how this row reads. The two deleted rows are not a withdrawal of online access: IAA Annex IV point 2(a) folds the same procedures into the broader 'Starting, running, and closing business' entry, which is the companion row PRM-05 under provision_id PRM-P1. So the Member State duty to publish these procedures survives; what is removed is the duty to maintain two separate catalogue rows for them. Simplification is the correct label, but only because the consolidating entry exists -- read alone the deletion would look like a loss of a business-facing entitlement."
+    }
   },
   {
     "id": "PRM-06",

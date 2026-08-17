@@ -47,6 +47,13 @@ ACT = "cbam_ext.txt"
 ANNEX = "cbam_ext_annexes.txt"
 SOURCE_URL = "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0989"
 
+# The act being amended, for prior_rule spans only. Deliberately NOT in
+# benefit_axis.FILE_SOURCES: a source_text must be evidence for what THIS act
+# says, and a span counts if it matches any file listed there. prior_rule sits
+# outside that check and carries `status` and `source_document` instead.
+PRIOR = "cbam_ext_prior_02023R0956-20251020.txt"
+PRIOR_DOC = "Regulation (EU) 2023/956 as consolidated at 2025-10-20, CELEX 02023R0956-20251020"
+
 # Where the operative part starts, so an anchor cannot accidentally match the
 # explanatory memorandum, which paraphrases the same provisions in similar
 # words. Article 1 begins at the "Amendments to Regulation (EU) 2023/956"
@@ -526,14 +533,21 @@ ROWS: list[tuple] = [
      "(b)\n\xa0\xa0\xa0point (b) is deleted;",
      "",
      dict(measure_type="obligation", direction="rem",
-          duty="Satisfy the deleted point (b) condition of Annex IV point 5 in order to claim actual emissions for imported electricity.",
+          duty="Demonstrate that the generating installation is directly connected to the Union transmission system, or that no physical network congestion existed at the time of export, in order to claim actual emissions for imported electricity.",
           addressee="Importers and authorised CBAM declarants of electricity claiming actual emissions",
           cls=B, trigger="claim to use actual embedded emissions for imported electricity",
-          frequency="annual", verification="none",
+          frequency="annual", verification="accredited third party",
           article="Art. 1(22); Annex II, point (6)(b) deleting point (b) of point 5 of Annex IV of Regulation (EU) 2023/956",
           when="from entry into force",
           drivers=[], named=["power"], reached=[],
-          note="A bare deletion. The span is the amending instruction itself, because that is all the proposal contains -- the deleted condition lives in the consolidated CBAM Regulation (32023R0956), not in this act. Flagged in the report: the substance requires reading the prior rule.")),
+          prior=dict(
+              start="the installation producing electricity is either directly connected to the Union transmission system",
+              end="between the installation and the Union transmission system;",
+              trigger="authorised CBAM declarant applying actual embedded emissions instead of default values for imported electricity",
+              obligation="One of the cumulative criteria in Annex IV point 5 required the generating installation to be directly connected to the Union transmission system, or required a demonstration that no physical network congestion existed anywhere between the installation and the Union transmission system at the time of export.",
+              source_document=PRIOR_DOC + ", Annex IV, point 5, point (b)",
+              note="Resolving the deleted text is what makes the label defensible. The grid-connection and no-congestion test is a cumulative criterion a declarant had to satisfy, so removing it removes a condition and the row is a Simplification. Note what survives: point (c), the 550 g CO2/kWh cap on the generating installation, is untouched, so this is a relaxation of the physical-delivery proof and not of the emissions standard."),
+          note="The span this act supplies is only the amending instruction '(b) point (b) is deleted;'. Everything that decides the valence lives in the prior rule, which is attached rather than inferred.")),
 
     ("ELEC-06", ANNEX,
      "‘(d) the amount of electricity for which the use of actual embedded emissions is claimed has been firmly nominated to the allocated interconnection capacity",
@@ -748,9 +762,9 @@ ROWS: list[tuple] = [
      "‘(ka) material composition of each downstream good;",
      "",
      dict(measure_type="obligation", direction="add",
-          duty="Report the material composition of each downstream good in the information supplied for the CBAM declaration.",
-          addressee="Operators and authorised CBAM declarants of downstream goods",
-          cls=B, trigger="reporting of information under Annex VI point 2 for a downstream good",
+          duty="State the material composition of each downstream good in the verification report.",
+          addressee="Accredited verifiers preparing CBAM verification reports",
+          cls=B, trigger="preparation of a verification report covering a downstream good",
           frequency="annual", verification="accredited third party",
           article="Art. 1(23)(b), inserting point (ka) in point 2 of Annex VI of Regulation (EU) 2023/956",
           when="applies from 1 January 2028 per Art. 2",
@@ -762,15 +776,22 @@ ROWS: list[tuple] = [
      "(a)points (g) to (j) are deleted;",
      "",
      dict(measure_type="obligation", direction="rem",
-          duty="Report the information required by points (g) to (j) of point 2 of Annex VI.",
-          addressee="Operators and authorised CBAM declarants",
-          cls=B, trigger="reporting of information under Annex VI point 2",
-          frequency="annual", verification="none",
+          duty="Set out in the verification report the quantities of each type of goods produced, the quantification of the installation's direct emissions, how those emissions are attributed across goods, and the energy and emissions flows not associated with those goods.",
+          addressee="Accredited verifiers preparing CBAM verification reports",
+          cls=B, trigger="preparation of a verification report under Article 8",
+          frequency="annual", verification="accredited third party",
           article="Art. 1(23)(a), deleting points (g) to (j) of point 2 of Annex VI of Regulation (EU) 2023/956",
           when="applies from 1 January 2028 per Art. 2",
           drivers=[], named=["steel", "alu", "cement", "chem"], reached=[],
           provision_id="cbam-annex-vi-2",
-          note="A bare deletion: four reporting fields go. As with ELEC-05 the span is the amending instruction, because the deleted content is in the consolidated CBAM Regulation and not in this act. Flagged in the report.")),
+          prior=dict(
+              start="quantities of each type of declared goods produced in the reporting period;",
+              end="quantitative information on the goods, emissions and energy flows not associated with those goods;",
+              trigger="verifier preparing a verification report establishing the embedded emissions of the goods",
+              obligation="Points (g) to (j) of Annex VI point 2 required the verification report to state the quantities of each type of declared goods produced in the reporting period, the quantification of the installation's direct emissions, a description of how those emissions are attributed to different types of goods, and quantitative information on goods, emissions and energy flows not associated with those goods.",
+              source_document=PRIOR_DOC + ", Annex VI, point 2, points (g) to (j)",
+              note="Resolving the prior text corrected the addressee as well as substantiating the label. Annex VI point 2 is headed 'CONTENT OF A VERIFICATION REPORT', so these duties fall on the accredited verifier, not on the operator or the declarant as first extracted. Four required contents of that report are removed, so the row is a Simplification for the verifier."),
+          note="The span this act supplies is only the amending instruction '(a)points (g) to (j) are deleted;'. The prior rule carries what was actually removed.")),
 
     ("GOV-05", ACT,
      "‘The Commission shall publish the price of CBAM certificates on its website or in any other appropriate manner on the first working day of the following calendar week.",
@@ -804,7 +825,7 @@ def slice_span(text: str, start: str, end: str, rid: str) -> str:
 
 def build() -> tuple[list[dict], list[str]]:
     sources = {}
-    for name in (ACT, ANNEX):
+    for name in (ACT, ANNEX, PRIOR):
         raw = (HERE / name).read_text(encoding="utf-8")
         if name == ACT:
             # Confine matching to the operative part. The explanatory memorandum
@@ -858,6 +879,25 @@ def build() -> tuple[list[dict], list[str]]:
             row["benefit_axis_note"] = meta["note"]
         if meta.get("right_basis"):
             row["right_basis"] = meta["right_basis"]
+
+        # A deletion amendment has no legible before-state in its own span, so
+        # the text it removes is sliced out of the amended act and attached as
+        # prior_rule. Enforced by benefit_axis.deletion_prior_ok.
+        if meta.get("prior"):
+            p = meta["prior"]
+            try:
+                pspan = slice_span(sources[PRIOR], p["start"], p.get("end", ""), rid + " (prior)")
+            except LookupError as exc:
+                errors.append(str(exc))
+                continue
+            row["prior_rule"] = {
+                "trigger": p["trigger"],
+                "obligation": p["obligation"],
+                "source_text": pspan,
+                "status": "sourced",
+                "source_document": p["source_document"],
+                "note": p["note"],
+            }
         rows.append(row)
 
     return rows, errors

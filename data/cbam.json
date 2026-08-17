@@ -999,12 +999,12 @@
   {
     "id": "ELEC-05",
     "measure_type": "obligation",
-    "duty": "Satisfy the deleted point (b) condition of Annex IV point 5 in order to claim actual emissions for imported electricity.",
+    "duty": "Demonstrate that the generating installation is directly connected to the Union transmission system, or that no physical network congestion existed at the time of export, in order to claim actual emissions for imported electricity.",
     "addressee": "Importers and authorised CBAM declarants of electricity claiming actual emissions",
     "class": "business",
     "trigger": "claim to use actual embedded emissions for imported electricity",
     "frequency": "annual",
-    "verification": "none",
+    "verification": "accredited third party",
     "direction": "rem",
     "article": "Art. 1(22); Annex II, point (6)(b) deleting point (b) of point 5 of Annex IV of Regulation (EU) 2023/956",
     "when": "from entry into force",
@@ -1019,7 +1019,15 @@
     "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0989",
     "value_drivers": [],
     "access_frictions": [],
-    "benefit_axis_note": "A bare deletion. The span is the amending instruction itself, because that is all the proposal contains -- the deleted condition lives in the consolidated CBAM Regulation (32023R0956), not in this act. Flagged in the report: the substance requires reading the prior rule."
+    "benefit_axis_note": "The span this act supplies is only the amending instruction '(b) point (b) is deleted;'. Everything that decides the valence lives in the prior rule, which is attached rather than inferred.",
+    "prior_rule": {
+      "trigger": "authorised CBAM declarant applying actual embedded emissions instead of default values for imported electricity",
+      "obligation": "One of the cumulative criteria in Annex IV point 5 required the generating installation to be directly connected to the Union transmission system, or required a demonstration that no physical network congestion existed anywhere between the installation and the Union transmission system at the time of export.",
+      "source_text": "the installation producing electricity is either directly connected to the Union transmission system or it can be demonstrated that at the time of export there was no physical network congestion at any point in the network between the installation and the Union transmission system;",
+      "status": "sourced",
+      "source_document": "Regulation (EU) 2023/956 as consolidated at 2025-10-20, CELEX 02023R0956-20251020, Annex IV, point 5, point (b)",
+      "note": "Resolving the deleted text is what makes the label defensible. The grid-connection and no-congestion test is a cumulative criterion a declarant had to satisfy, so removing it removes a condition and the row is a Simplification. Note what survives: point (c), the 550 g CO2/kWh cap on the generating installation, is untouched, so this is a relaxation of the physical-delivery proof and not of the emissions standard."
+    }
   },
   {
     "id": "ELEC-06",
@@ -1470,10 +1478,10 @@
   {
     "id": "GOV-03",
     "measure_type": "obligation",
-    "duty": "Report the material composition of each downstream good in the information supplied for the CBAM declaration.",
-    "addressee": "Operators and authorised CBAM declarants of downstream goods",
+    "duty": "State the material composition of each downstream good in the verification report.",
+    "addressee": "Accredited verifiers preparing CBAM verification reports",
     "class": "business",
-    "trigger": "reporting of information under Annex VI point 2 for a downstream good",
+    "trigger": "preparation of a verification report covering a downstream good",
     "frequency": "annual",
     "verification": "accredited third party",
     "direction": "add",
@@ -1502,12 +1510,12 @@
   {
     "id": "GOV-04",
     "measure_type": "obligation",
-    "duty": "Report the information required by points (g) to (j) of point 2 of Annex VI.",
-    "addressee": "Operators and authorised CBAM declarants",
+    "duty": "Set out in the verification report the quantities of each type of goods produced, the quantification of the installation's direct emissions, how those emissions are attributed across goods, and the energy and emissions flows not associated with those goods.",
+    "addressee": "Accredited verifiers preparing CBAM verification reports",
     "class": "business",
-    "trigger": "reporting of information under Annex VI point 2",
+    "trigger": "preparation of a verification report under Article 8",
     "frequency": "annual",
-    "verification": "none",
+    "verification": "accredited third party",
     "direction": "rem",
     "article": "Art. 1(23)(a), deleting points (g) to (j) of point 2 of Annex VI of Regulation (EU) 2023/956",
     "when": "applies from 1 January 2028 per Art. 2",
@@ -1525,7 +1533,15 @@
     "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0989",
     "value_drivers": [],
     "access_frictions": [],
-    "benefit_axis_note": "A bare deletion: four reporting fields go. As with ELEC-05 the span is the amending instruction, because the deleted content is in the consolidated CBAM Regulation and not in this act. Flagged in the report."
+    "benefit_axis_note": "The span this act supplies is only the amending instruction '(a)points (g) to (j) are deleted;'. The prior rule carries what was actually removed.",
+    "prior_rule": {
+      "trigger": "verifier preparing a verification report establishing the embedded emissions of the goods",
+      "obligation": "Points (g) to (j) of Annex VI point 2 required the verification report to state the quantities of each type of declared goods produced in the reporting period, the quantification of the installation's direct emissions, a description of how those emissions are attributed to different types of goods, and quantitative information on goods, emissions and energy flows not associated with those goods.",
+      "source_text": "quantities of each type of declared goods produced in the reporting period;\n\n(h) \n\nquantification of direct emissions of the installation during the reporting period;\n\n(i) \n\na description on how the installation’s emissions are attributed to different types of goods;\n\n(j) \n\nquantitative information on the goods, emissions and energy flows not associated with those goods;",
+      "status": "sourced",
+      "source_document": "Regulation (EU) 2023/956 as consolidated at 2025-10-20, CELEX 02023R0956-20251020, Annex VI, point 2, points (g) to (j)",
+      "note": "Resolving the prior text corrected the addressee as well as substantiating the label. Annex VI point 2 is headed 'CONTENT OF A VERIFICATION REPORT', so these duties fall on the accredited verifier, not on the operator or the declarant as first extracted. Four required contents of that report are removed, so the row is a Simplification for the verifier."
+    }
   },
   {
     "id": "GOV-05",

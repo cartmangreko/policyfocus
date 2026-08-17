@@ -17,7 +17,8 @@ import sys
 from collections import Counter
 
 from textnorm import canonical
-from benefit_axis import assert_benefit_basis, derive_valence, load_fulltext
+from benefit_axis import (assert_benefit_basis, assert_deletion_prior,
+                          derive_valence, load_fulltext, load_prior_fulltext)
 
 DATA_FILES = [("ets", "../data/ets.json"), ("iaa", "../data/iaa.json"), ("omnibus", "../data/omnibus.json"),
               ("cbam", "../data/cbam.json")]
@@ -347,6 +348,10 @@ def main():
         # THE GUARDRAIL -- build fails here, naming ids, if any benefit label on
         # this file cannot point at a verbatim quantum.
         assert_benefit_basis(out, fulltext, where=f" in {path}")
+        # The deletion guardrail, alongside the basis one. A deletion's
+        # valence is decided by what was deleted, which its own span never
+        # says, so a non-Neutral label needs a resolved prior_rule.
+        assert_deletion_prior(out, load_prior_fulltext(key), where=f" in {path}")
 
         after = Counter(derive_valence(r.get("measure_type"), r.get("direction")) for r in out)
         # "before" is reconstructed from each reclassified row's recorded `was`,

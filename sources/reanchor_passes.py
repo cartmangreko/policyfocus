@@ -92,6 +92,13 @@ SYNCED_FIELDS = (
     "opportunity_basis",
     "right_basis",
     "reclass_from",
+    # prior_rule is here for the same reason the basis fields are: it is
+    # evidence the register is authoritative for, and the gate now refuses a
+    # deletion amendment that carries a valence without it. A pass row quoting
+    # "point (b) is deleted;" cannot resolve its own before-state, so without
+    # this the register would hold the ruling and the passes would keep failing
+    # on a question they were never in a position to answer.
+    "prior_rule",
 )
 
 # Fields that must not survive on the wrong side once measure_type is synced.

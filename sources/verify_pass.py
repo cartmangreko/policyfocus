@@ -32,9 +32,29 @@ between two passes means nothing once one of them has been corrected to agree.
 """
 import sys, json
 
+import os
+
 from textnorm import canonical
-from benefit_axis import (BASIS_FIELD, MEASURE_TYPES, benefit_basis_ok,
-                          derive_valence)
+from benefit_axis import (BASIS_FIELD, FILE_SOURCES, MEASURE_TYPES,
+                          benefit_basis_ok, deletion_prior_ok, derive_valence,
+                          is_deletion_amendment, load_prior_fulltext)
+
+
+def resolve_file_key(rows, source_paths):
+    """Which register file these rows belong to, for the PRIOR corpus lookup.
+
+    Two ways, because the two kinds of input carry the answer differently: a
+    register row states it in `file`, while a pass row does not carry the field
+    at all and is instead always invoked with its act's sources. Returning None
+    is allowed -- it only matters if a deletion row is present, and the caller
+    reports that case rather than guessing a corpus.
+    """
+    keys = {r.get("file") for r in rows if r.get("file")}
+    if len(keys) == 1:
+        return keys.pop()
+    given = {os.path.basename(p) for p in source_paths}
+    matches = [k for k, v in FILE_SOURCES.items() if set(v) == given]
+    return matches[0] if len(matches) == 1 else None
 
 # Kept here rather than imported from build_benefit_axis: that module is the
 # migration, this one is the gate, and the gate should not depend on the thing
@@ -55,6 +75,11 @@ def main():
             # source format without changing a word. See textnorm.
             sources.append((p, canonical(f.read())))
     all_text = "\n".join(text for _, text in sources)
+
+    # The PRIOR corpus, loaded separately and never folded into all_text: it is
+    # evidence for what an amendment removed, not for what this act says.
+    file_key = resolve_file_key(rows, source_paths)
+    prior_text = load_prior_fulltext(file_key) if file_key else ""
 
     ok, fail = [], []
     for r in rows:
@@ -94,6 +119,18 @@ def main():
         if not benefit_basis_ok(r, all_text):
             label = derive_valence(r.get('measure_type'), r.get('direction'))
             errs.append(f"{label} without a verbatim quantum basis in {BASIS_FIELD[label]}")
+        if is_deletion_amendment(r):
+            if file_key is None:
+                errs.append(
+                    "deletion amendment, but the prior corpus could not be "
+                    "resolved: rows carry no single `file` and the given sources "
+                    "match no FILE_SOURCES entry")
+            elif not deletion_prior_ok(r, prior_text):
+                label = derive_valence(r.get('measure_type'), r.get('direction'))
+                errs.append(
+                    f"deletion amendment labelled {label} with no resolved "
+                    "prior_rule (needs status sourced|recital, an obligation, a "
+                    "source_document, and a source_text verbatim in the prior corpus)")
         if errs:
             fail.append((rid, errs, found_in))
         else:

@@ -11,6 +11,26 @@
  },
  {
   "rel": "amends",
+  "from": "act:52026PC0100",
+  "to": "act:32018R1724",
+  "since": "2026",
+  "evidence": {
+   "source": "sources/manifest.json",
+   "path": "iaa.amends"
+  }
+ },
+ {
+  "rel": "amends",
+  "from": "act:52026PC0100",
+  "to": "act:32024R1735",
+  "since": "2026",
+  "evidence": {
+   "source": "sources/manifest.json",
+   "path": "iaa.amends"
+  }
+ },
+ {
+  "rel": "amends",
   "from": "act:52026PC0616",
   "to": "act:32003L0087",
   "since": "2026",
@@ -4965,7 +4985,7 @@
   "evidence": {
    "source": "data/cbam.json",
    "path": "[id=ELEC-05]",
-   "quote": "1(22); Annex II, point (6)(b) deleting point (b) of point 5 of Annex IV of Regulation (EU) 2023/956 Satisfy the deleted point (b) condition of Annex IV point 5 in order to claim actual emissions for imported electricity."
+   "quote": "1(22); Annex II, point (6)(b) deleting point (b) of point 5 of Annex IV of Regulation (EU) 2023/956 Demonstrate that the generating installation is directly connected to the Union transmission system, or that no physical network congestion existed at the time of export, in order to claim actual emissions for imported electricity."
   }
  },
  {
@@ -5119,7 +5139,7 @@
   "evidence": {
    "source": "data/cbam.json",
    "path": "[id=GOV-03]",
-   "quote": "1(23)(b), inserting point (ka) in point 2 of Annex VI of Regulation (EU) 2023/956 Report the material composition of each downstream good in the information supplied for the CBAM declaration."
+   "quote": "1(23)(b), inserting point (ka) in point 2 of Annex VI of Regulation (EU) 2023/956 State the material composition of each downstream good in the verification report."
   }
  },
  {
@@ -5130,7 +5150,7 @@
   "evidence": {
    "source": "data/cbam.json",
    "path": "[id=GOV-04]",
-   "quote": "1(23)(a), deleting points (g) to (j) of point 2 of Annex VI of Regulation (EU) 2023/956 Report the information required by points (g) to (j) of point 2 of Annex VI."
+   "quote": "1(23)(a), deleting points (g) to (j) of point 2 of Annex VI of Regulation (EU) 2023/956 Set out in the verification report the quantities of each type of goods produced, the quantification of the installation's direct emissions, how those emissions are attributed across goods, and the energy and emissions flows not associated with those goods."
   }
  },
  {
