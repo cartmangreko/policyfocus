@@ -79,7 +79,7 @@
   },
   {
     "id": "PRM-04",
-    "measure_type": "incentive",
+    "measure_type": "right",
     "benefit": "Automatic classification as a 'strategic project' contributing to resilience and decarbonisation or resource efficiency, granting access to the priority/streamlined treatment of the future Environmental Assessment Regulation.",
     "addressee": "Promoters of energy-intensive industry decarbonisation projects",
     "class": "business",
@@ -105,7 +105,16 @@
     ],
     "sectors_reached": [],
     "pending": "Benefit operationalised via the not-yet-adopted Proposal for a Regulation on speeding-up environmental assessment (Article 14 and its Annex).",
-    "provision_id": null
+    "provision_id": null,
+    "right_basis": {
+      "text": "All energy-intensive industry decarbonisation projects shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency",
+      "kind": "scope"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "PRM-05",
@@ -161,7 +170,7 @@
   },
   {
     "id": "PRM-06",
-    "measure_type": "incentive",
+    "measure_type": "right",
     "benefit": "Automatic 'strategic project' status for all net-zero technology manufacturing projects, granting streamlined treatment under the future Environmental Assessment Regulation.",
     "addressee": "Promoters of net-zero technology manufacturing projects",
     "class": "business",
@@ -187,7 +196,16 @@
       "power"
     ],
     "pending": "Benefit operationalised via the not-yet-adopted Proposal for a Regulation on speeding-up environmental assessment.",
-    "provision_id": null
+    "provision_id": null,
+    "right_basis": {
+      "text": "All net-zero technology manufacturing projects shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency",
+      "kind": "scope"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "AA-01",
@@ -306,7 +324,7 @@
   },
   {
     "id": "AA-04b",
-    "measure_type": "incentive",
+    "measure_type": "right",
     "benefit": "Project promoters within an acceleration area only need to obtain additional permits that fall outside the scope of the aggregated baseline permit, cutting the permitting burden.",
     "addressee": "Industrial manufacturing project promoters located in acceleration areas",
     "class": "business",
@@ -333,7 +351,16 @@
       "batsol",
       "clean"
     ],
-    "provision_id": "AA-P1"
+    "provision_id": "AA-P1",
+    "right_basis": {
+      "text": "shall be required to obtain only those additional permits or authorisations that fall outside the scope of the aggregated baseline permit",
+      "kind": "scope"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "LM-01",
@@ -443,7 +470,11 @@
       "build",
       "auto"
     ],
-    "provision_id": "LM-P1"
+    "provision_id": "LM-P1",
+    "opportunity_basis": {
+      "text": "at least 25% of the total volume of steel used shall be low-carbon",
+      "kind": "rate"
+    }
   },
   {
     "id": "LM-03c",
@@ -469,7 +500,11 @@
       "batsol"
     ],
     "sectors_reached": [],
-    "provision_id": "LM-P1"
+    "provision_id": "LM-P1",
+    "opportunity_basis": {
+      "text": "the ratio between the total ex-works price of vehicle components - excluding the vehicle battery - originating in the Union and the total ex-works price of all components – excluding the battery – is at least 70%",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "LM-04",
@@ -576,7 +611,11 @@
     "sectors_reached": [
       "build"
     ],
-    "provision_id": "LM-P2"
+    "provision_id": "LM-P2",
+    "opportunity_basis": {
+      "text": "at least 25% of the total volume of steel used in the product or project that receives support shall be low-carbon",
+      "kind": "rate"
+    }
   },
   {
     "id": "LM-06c",
@@ -605,7 +644,11 @@
       "cement",
       "alu"
     ],
-    "provision_id": "LM-P2"
+    "provision_id": "LM-P2",
+    "opportunity_basis": {
+      "text": "(a) steel, and any product the performance of which depends primarily on steel : at\nleast 25% of the total volume of steel used in the product or project that\nreceives support shall be low-carbon;",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "LM-08",
@@ -778,7 +821,11 @@
       "power"
     ],
     "sectors_reached": [],
-    "provision_id": "LM-P6"
+    "provision_id": "LM-P6",
+    "opportunity_basis": {
+      "text": "the battery energy storage systems shall originate in the Union",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "LM-16",
@@ -854,7 +901,11 @@
       "power"
     ],
     "sectors_reached": [],
-    "provision_id": "LM-P7"
+    "provision_id": "LM-P7",
+    "opportunity_basis": {
+      "text": "shall apply to at least 40% of the volume auctioned per year per Member State or alternatively to at least 8 Gigawatt per year per Member State",
+      "kind": "rate"
+    }
   },
   {
     "id": "LM-19",
@@ -929,7 +980,11 @@
     "sectors_reached": [
       "build"
     ],
-    "provision_id": "LM-P8"
+    "provision_id": "LM-P8",
+    "opportunity_basis": {
+      "text": "the PV inverter and the PV cells or equivalent shall originate in the Union",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "LM-21a",
@@ -978,7 +1033,11 @@
       "batsol",
       "clean"
     ],
-    "provision_id": "LM-P9"
+    "provision_id": "LM-P9",
+    "opportunity_basis": {
+      "text": "it shall not exceed 15% of the cost of the final product for the consumer",
+      "kind": "rate"
+    }
   },
   {
     "id": "LM-22",
@@ -1053,7 +1112,11 @@
       "clean"
     ],
     "sectors_reached": [],
-    "provision_id": "LM-P10"
+    "provision_id": "LM-P10",
+    "opportunity_basis": {
+      "text": "Member States shall ensure that the electrolyser originates in the Union and the stack and at least one additional main specific component of the electrolyser originate in the Union",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "LM-26a",
@@ -1103,7 +1166,11 @@
       "auto"
     ],
     "sectors_reached": [],
-    "provision_id": "LM-P11"
+    "provision_id": "LM-P11",
+    "opportunity_basis": {
+      "text": "shall ensure that only vehicles that comply with the below minimum Union origin requirements are eligible under the scheme",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "LM-26c",
@@ -1129,7 +1196,11 @@
       "batsol"
     ],
     "sectors_reached": [],
-    "provision_id": "LM-P11"
+    "provision_id": "LM-P11",
+    "opportunity_basis": {
+      "text": "the ratio between the total ex-works price of vehicle components - excluding the vehicle battery - originating in the Union and the total ex-works price of all vehicle components – excluding the battery – is equal to or greater than 70%",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "SC-01",
@@ -1157,7 +1228,13 @@
     ],
     "sectors_reached": [],
     "pending": "The super-credit mechanism itself is set out in the separate, not-yet-adopted Proposal of 16 December 2025 amending Regulation (EU) 2019/631.",
-    "provision_id": null
+    "provision_id": null,
+    "opportunity_basis": {
+      "text": "the ‘made in the EU’ criterion for small zero- emission vehicles shall comply with the criteria set out in Part III of Annex III to this Regulation",
+      "kind": "eligibility",
+      "basis_status": "external",
+      "pointer": "Quantum (the super-credit multiplier) is set by Regulation (EU) 2019/631 on CO2 emission standards for new light duty vehicles, CELEX 32019R0631, as amended by the proposal of 16 December 2025 cited in this Article. Not yet ingested."
+    }
   },
   {
     "id": "SC-02",
@@ -1186,7 +1263,13 @@
     ],
     "sectors_reached": [],
     "pending": "The compensation mechanism itself is set out in the separate, not-yet-adopted Proposal of 16 December 2025 amending Regulation (EU) 2019/631.",
-    "provision_id": null
+    "provision_id": null,
+    "opportunity_basis": {
+      "text": "‘low-carbon steel made in the EU’ shall be understood as follows",
+      "kind": "eligibility",
+      "basis_status": "external",
+      "pointer": "Quantum (the super-credit multiplier) is set by Regulation (EU) 2019/631 on CO2 emission standards for new light duty vehicles, CELEX 32019R0631, as amended by the proposal of 16 December 2025 cited in this Article. Not yet ingested."
+    }
   },
   {
     "id": "FDI-01",

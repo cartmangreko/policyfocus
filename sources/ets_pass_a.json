@@ -150,8 +150,7 @@
   },
   {
     "id": "FRE-04",
-    "measure_type": "incentive",
-    "benefit": "Installations already implementing an Industrial Decarbonisation Bank, Investment Booster or Innovation Fund-supported project are excused from drawing up the Invest in EU decarbonisation plan and automatically receive 80% of their free allocation without additional verification.",
+    "measure_type": "obligation",
     "addressee": "Operators with an installation-level project already awarded IDB/Investment Booster/Innovation Fund support",
     "class": "business",
     "trigger": "a project selected for award of support under Art. 10cc, 10cd, 10ce or the Innovation Fund (Art. 10cb) is being implemented at the installation during the relevant five-year period",
@@ -161,19 +160,18 @@
     "article": "Art. 1(15)(d), inserting Art. 10a(3c), fourth subparagraph of Directive 2003/87/EC",
     "when": "from 2031",
     "source_text": "By way of derogation from the first subparagraph, where a project that was selected for the award of support under the Industrial Decarbonisation Bank and Investment Booster established under Articles 10cc, 10cd and 10ce or the Innovation Fund referred to in Article 10cb is being implemented in the installation during the five-year period under which it applies for free allocation, the operator of that installation shall be exempted from the obligation to establish a plan in accordance with paragraph 3b and shall receive 80 % of the amount of free allocation as referred to in the first subparagraph without additional verification.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "The object is the decarbonisation-plan duty and its verification step, not the allocation; the allocation itself is unchanged (indeed protected). Object rule -> obligation side, direction rem"
+    },
+    "duty": "Draw up an Invest in EU decarbonisation plan and pass the additional verification gating the final 20% tranche of free allocation."
   },
   {
     "id": "FRE-05",
-    "measure_type": "incentive",
-    "benefit": "The most efficient 10% of installations in a sector, zero-emission/low-carbon installations, and installations that voluntarily remain in the ETS after falling below the combustion threshold are excused entirely from the Invest in EU decarbonisation plan and the 80/20 tranching conditionality.",
+    "measure_type": "obligation",
     "addressee": "Top-10%-most-efficient, zero-/low-carbon, and voluntarily-remaining installations",
     "class": "business",
     "trigger": "installation is among the 10% most efficient in its sector, or is zero-emissions/low-carbon, or has opted to remain in the EU ETS under Art. 2(1)",
@@ -183,20 +181,19 @@
     "article": "Art. 1(15)(d), inserting Art. 10a(3c), sixth subparagraph of Directive 2003/87/EC",
     "when": "from 2031",
     "source_text": "The requirements set out in paragraph 3b and in the first and third subparagraphs of this paragraph shall not apply to the 10 % most efficient installations in a sector or subsector in the Union referred to in the first subparagraph of Article 10a(2) and in respect of the years used to determine the revised benchmark values pursuant to the third subparagraph of that Article for the relevant five-year free allocation period, to zero emissions or low-carbon installations, to installations for which the operators, following a change in their production processes in accordance with Article 2(1), decide that they are is to remain within the scope of the EU ETS.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1",
-      "F4"
-    ],
     "sectors_named": [],
     "sectors_reached": [],
-    "pending": "Detailed criteria for what qualifies as a 'zero emissions or low carbon installation' are left to a delegated act under Art. 10a(3e)(g), not yet adopted."
+    "pending": "Detailed criteria for what qualifies as a 'zero emissions or low carbon installation' are left to a delegated act under Art. 10a(3e)(g), not yet adopted.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "A condition attached to the support is removed, not the support. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Draw up an Invest in EU decarbonisation plan and satisfy the 80/20 tranching conditionality attached to free allocation."
   },
   {
     "id": "FRE-06",
-    "measure_type": "incentive",
+    "measure_type": "right",
     "benefit": "Operators may pool multiple installations under a joint decarbonisation investment agreement to satisfy the mandatory decarbonisation-investment volume jointly rather than installation-by-installation.",
     "addressee": "Operators of installations applying for free allocation",
     "class": "business",
@@ -215,7 +212,16 @@
       "F5"
     ],
     "sectors_named": [],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "right_basis": {
+      "text": "may request to form a pool of installations for the purposes of fulfilling jointly the investment requirements",
+      "kind": "procedure"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "FRE-07",
@@ -257,7 +263,11 @@
       "F1"
     ],
     "sectors_named": [],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "in paragraph 1, second sentence, ‘2030’ is replaced by ‘2040’;",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "FRE-09",
@@ -277,7 +287,11 @@
     ],
     "access_frictions": [],
     "sectors_named": [],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "Free allocation to district heating shall decrease by equal amounts after 2030 so as to reach a level of no free allocation in 2040.",
+      "kind": "rate"
+    }
   },
   {
     "id": "CBAM-01",
@@ -352,7 +366,11 @@
     ],
     "sectors_named": [],
     "sectors_reached": [],
-    "pending": "Availability is subject to a Commission report (by 31 January 2033) on the international credits market; if credits are not available, the linear reduction factor reverts to 2.7% from 2036 instead."
+    "pending": "Availability is subject to a Commission report (by 31 January 2033) on the international credits market; if credits are not available, the linear reduction factor reverts to 2.7% from 2036 instead.",
+    "opportunity_basis": {
+      "text": "Up to 260 million allowances from the Union-wide quantity of allowances referred to in Article 9 shall be made available to the facility for the purchase of up to 260 Mt of high quality and high integrity international credits",
+      "kind": "amount"
+    }
   },
   {
     "id": "FND-02",
@@ -379,7 +397,11 @@
       "ccs"
     ],
     "sectors_reached": [],
-    "pending": "Detailed purchase modalities, selection criteria and payment mechanisms are left to a delegated act under Art. 9c(4), not yet adopted."
+    "pending": "Detailed purchase modalities, selection criteria and payment mechanisms are left to a delegated act under Art. 9c(4), not yet adopted.",
+    "opportunity_basis": {
+      "text": "The Union-wide quantity of allowances referred to in Article 9 shall be increased by 250 million allowances.",
+      "kind": "amount"
+    }
   },
   {
     "id": "FND-03",
@@ -408,7 +430,11 @@
       "air",
       "clean"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "A fund (the ‘Innovation Fund’) is hereby established to support bringing innovation to market",
+      "kind": "existence"
+    }
   },
   {
     "id": "FND-04",
@@ -435,7 +461,11 @@
     "sectors_named": [
       "waste"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "An instrument to support the scaling up and deployment of the technologies, processes and techniques to decarbonise industries (the ‘Industrial Decarbonisation Bank) is established starting from 2028.",
+      "kind": "existence"
+    }
   },
   {
     "id": "FND-05",
@@ -459,7 +489,11 @@
       "F5"
     ],
     "sectors_named": [],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "the Commission shall support under the Industrial Decarbonisation Bank projects through allocating allowances based on a fixed carbon premium to eligible projects within the Union",
+      "kind": "rate"
+    }
   },
   {
     "id": "FND-06",
@@ -484,7 +518,11 @@
       "F5"
     ],
     "sectors_named": [],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "reserving 400 million allowances to support industrial decarbonisation projects within the Union through competitive bidding procedures",
+      "kind": "amount"
+    }
   },
   {
     "id": "FND-07",
@@ -506,7 +544,11 @@
       "F1"
     ],
     "sectors_named": [],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "Member States with a GDP per capita at market prices below 75 % of the Union average in the period 2022 to 2024",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "MST-01",
@@ -584,7 +626,11 @@
       "build"
     ],
     "sectors_reached": [],
-    "provision_id": "ets-10-3"
+    "provision_id": "ets-10-3",
+    "opportunity_basis": {
+      "text": "Member States shall use at least 50% of those revenues",
+      "kind": "rate"
+    }
   },
   {
     "id": "MST-03",
@@ -644,7 +690,11 @@
       "F5"
     ],
     "sectors_named": [],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "in favour of sectors or subsectors which are exposed to a genuine risk of carbon leakage due to significant indirect costs that are actually incurred from greenhouse gas emission costs passed on in electricity prices",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "FND-10",
@@ -666,7 +716,11 @@
       "F1"
     ],
     "sectors_named": [],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "together with 200 million allowances placed in the market stability reserve pursuant to Article 1(3) of Decision (EU) 2015/1814 and 50 million allowances from the quantity of allowances resulting from the reduction of free allocation",
+      "kind": "amount"
+    }
   },
   {
     "id": "SHIP-01",
@@ -691,7 +745,11 @@
     "sectors_named": [
       "ship"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "a maximum of 110 million of the Union-wide quantity of allowances referred to in Article 9 shall be reserved for the use of sustainable maritime fuels or the deployment and operation of zero-emission propulsion technologies",
+      "kind": "amount"
+    }
   },
   {
     "id": "SHIP-02",
@@ -716,12 +774,15 @@
       "ship"
     ],
     "sectors_reached": [],
-    "pending": "Rules for the use and disbursement of the reserved allowances are left to a delegated act, not yet adopted."
+    "pending": "Rules for the use and disbursement of the reserved allowances are left to a delegated act, not yet adopted.",
+    "opportunity_basis": {
+      "text": "An amount of 0.9 million of the Union-wide quantity of allowances referred to in Article 9 shall be reserved for the decarbonisation of the maritime sector in least developed countries and small island developing States",
+      "kind": "amount"
+    }
   },
   {
     "id": "SHIP-03",
-    "measure_type": "incentive",
-    "benefit": "Large containerships (10,000+ TEU) on long inbound voyages (over 300 nautical miles) from outside the EU can surrender fewer allowances than their actual verified emissions until 2035, reduced pro-rata by the share of containers transhipped onward.",
+    "measure_type": "obligation",
     "addressee": "Shipping companies operating containerships of 10,000 TEU and above",
     "class": "business",
     "trigger": "containership of 10,000 TEU or above on a voyage from a non-EU port of call to an EU port of call exceeding 300 nautical miles",
@@ -731,40 +792,39 @@
     "article": "Art. 1(22)(a)(ii), inserting Art. 12(3-g) of Directive 2003/87/EC",
     "when": "until 31 December 2035",
     "source_text": "By way of derogation from paragraph 3, first subparagraph, point (c), shipping companies may surrender fewer allowances than their verified emissions in respect of emissions released until 31 December 2035 from voyages from a port of call outside the jurisdiction of a Member State to a port of call under the jurisdiction of a Member State if performed by containerships of 10 000 TEU and above, if the distance of the voyage exceeds 300 nautical miles.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [
       "ship"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "The object is the surrender obligation and how much of it applies, not any support. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Surrender allowances equal to full verified emissions from long inbound voyages, including the transhipped share."
   },
   {
     "id": "SHIP-04",
-    "measure_type": "incentive",
-    "benefit": "The temporary exclusion of container transhipment at listed neighbouring non-EU ports from the EU ETS surrender scope is extended eight years, to 31 December 2038.",
+    "measure_type": "obligation",
     "addressee": "Shipping companies performing container transhipment via listed neighbouring ports",
     "class": "business",
     "trigger": "containers transhipped via a neighbouring container transhipment port listed under Art. 3ga(2)",
     "frequency": "n/a",
     "verification": "none",
-    "direction": "add",
+    "direction": "rem",
     "article": "Art. 1(4)(c)(i), amending Art. 3ga(3) of Directive 2003/87/EC",
     "when": "until 31 December 2038",
     "source_text": "the date “31 December 2030” is replaced by “31 December 2038”.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [
       "ship"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "Extending an exclusion from ETS surrender scope postpones a duty; it creates no support. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Surrender allowances for containers transhipped via listed neighbouring non-EU ports, once the temporary exclusion lapses."
   },
   {
     "id": "AVI-01",
@@ -789,7 +849,11 @@
     "sectors_named": [
       "air"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "shall be allocated by the Member States to cover part of or all of the price differential between the use of fossil kerosene and the use of the relevant eligible aviation fuels",
+      "kind": "rate"
+    }
   },
   {
     "id": "AVI-02",
@@ -813,7 +877,11 @@
     "sectors_named": [
       "air"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "opportunity_basis": {
+      "text": "a further maximum 110 million allowances of the allowances referred to in third subparagraph of paragraph 1 shall be reserved for the purposes laid down in Article 3c(6) until 31 December 2040.",
+      "kind": "amount"
+    }
   },
   {
     "id": "AVI-03",
@@ -840,8 +908,7 @@
   },
   {
     "id": "AVI-04",
-    "measure_type": "incentive",
-    "benefit": "Aircraft operators flying to/from listed least-developed and small island developing states are excused from surrendering any allowances for those flights' emissions through 2035.",
+    "measure_type": "obligation",
     "addressee": "Aircraft operators flying to/from listed LDC/SIDS states",
     "class": "business",
     "trigger": "flight to or from a State listed in the Art. 25a(3) implementing act (LDCs/SIDS below EU-average GDP per capita)",
@@ -851,21 +918,20 @@
     "article": "Art. 1(29)(a), replacing Art. 25a(4) of Directive 2003/87/EC",
     "when": "until 31 December 2035",
     "source_text": "In respect of emissions released until 31 December 2035 from flights to or from States that are listed in the implementing act adopted pursuant to paragraph 3 of this Article, aircraft operators shall not be required to surrender allowances in accordance with Article 12(3) in respect of those emissions.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F4"
-    ],
     "sectors_named": [
       "air"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "An exemption from the surrender duty is a duty removal, not a support cut. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Surrender allowances under Art. 12(3) for emissions from flights to or from listed LDC/SIDS states."
   },
   {
     "id": "CCS-01",
-    "measure_type": "incentive",
-    "benefit": "Operators who capture and permanently store their CO2 (in an EU-permitted storage facility, or from 2031 reciprocally in a linked third country's permitted facility) are excused entirely from surrendering allowances for those captured emissions.",
+    "measure_type": "obligation",
     "addressee": "Operators capturing and permanently storing CO2 emissions",
     "class": "business",
     "trigger": "emissions verified as captured and transported for permanent storage to a permitted CCS facility",
@@ -875,21 +941,20 @@
     "article": "Art. 1(22)(c), replacing Art. 12(3a) of Directive 2003/87/EC",
     "when": "third-country reciprocity from 2031",
     "source_text": "An obligation to surrender allowances shall not arise in respect of emissions verified as captured and transported for permanent storage to a facility for which a permit is in force in accordance with Directive 2009/31/EC of the European Parliament and of the Council *, or on a reciprocal basis from 2031 to a facility with a valid permit for geological storage in a third country with a greenhouse gas emissions trading system which is linked to the EU ETS pursuant to Article 25 of this Directive and in respect of which the Commission adopts an implementing decision confirming sufficient safeguards with respect to the rules set out in Directive 2009/31/EC are in place and provided the facility is not used for enhanced oil or gas recovery.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F5"
-    ],
     "sectors_named": [
       "ccs"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "The provision extinguishes a surrender obligation; it moves no support. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Surrender allowances for emissions that are captured and transported for permanent storage in a permitted facility."
   },
   {
     "id": "CCS-02",
-    "measure_type": "incentive",
-    "benefit": "CO2 that is captured and permanently chemically bound into a product (carbon capture and utilisation) is excused from the surrender obligation.",
+    "measure_type": "obligation",
     "addressee": "Operators using carbon capture and utilisation (CCU) technology",
     "class": "business",
     "trigger": "CO2 emissions captured and utilised in a way that becomes permanently chemically bound",
@@ -899,22 +964,21 @@
     "article": "Art. 1(22)(d), replacing Art. 12(3b) of Directive 2003/87/EC",
     "when": "n/a",
     "source_text": "An obligation to surrender allowances shall not arise in respect of carbon dioxide emissions which are considered to have been captured and utilised in such a way that they have become:",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F4",
-      "F5"
-    ],
     "sectors_named": [
       "ccs"
     ],
     "sectors_reached": [],
-    "pending": "Requirements for what counts as 'permanently chemically bound' are left to a delegated act under the second subparagraph of Art. 12(3b), not yet adopted."
+    "pending": "Requirements for what counts as 'permanently chemically bound' are left to a delegated act under the second subparagraph of Art. 12(3b), not yet adopted.",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "The provision extinguishes a surrender obligation. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Surrender allowances for CO2 captured and utilised so as to become permanently chemically bound in a product."
   },
   {
     "id": "CCS-03",
-    "measure_type": "incentive",
+    "measure_type": "right",
     "benefit": "Operators, aircraft operators and shipping companies will be able to offset their fossil CO2 emissions using their own certified domestic permanent carbon removal units (from storage of biogenic emissions), reducing the number of allowances they must surrender.",
     "addressee": "Operators, aircraft operators and shipping companies generating certified permanent carbon removal units",
     "class": "business",
@@ -936,7 +1000,16 @@
       "ccs"
     ],
     "sectors_reached": [],
-    "pending": "Implementing act detail on how this compensation mechanism operates is to be set under Art. 14(1), not yet finalised."
+    "pending": "Implementing act detail on how this compensation mechanism operates is to be set under Art. 14(1), not yet finalised.",
+    "right_basis": {
+      "text": "shall provide for the possibility for operators, aircraft operators and shipping companies to compensate their fossil emissions with domestic permanent carbon removal units",
+      "kind": "conferral"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "WST-01",
@@ -965,8 +1038,7 @@
   },
   {
     "id": "WST-02",
-    "measure_type": "incentive",
-    "benefit": "Member States may fully exempt waste incineration/co-incineration installations located in outermost regions from any surrender obligation until the end of 2035.",
+    "measure_type": "obligation",
     "addressee": "Waste incineration and waste co-incineration installations in outermost regions",
     "class": "business",
     "trigger": "installation located in an outermost region within the meaning of Article 349 TFEU",
@@ -976,21 +1048,20 @@
     "article": "Art. 1(23), inserting Art. 12a, second paragraph of Directive 2003/87/EC",
     "when": "until 31 December 2035",
     "source_text": "By way of derogation from the first paragraph of this Article, Member States may exempt waste incineration and waste co-incineration installations located in outermost regions within the meaning of Article 349 TFEU from the obligation to surrender allowances until 31 December 2035.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [
       "waste"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "A Member State option to exempt installations from the surrender duty is a duty removal. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Surrender allowances for emissions from waste incineration and co-incineration installations in outermost regions."
   },
   {
     "id": "WST-03",
-    "measure_type": "incentive",
-    "benefit": "Waste incineration/co-incineration installations can be fully exempted from surrendering ETS allowances (up to 2035) if their Member State meets at least two of three conditions: an equivalent national carbon tax, being on track for EU recycling targets, or being on track for landfill-diversion targets.",
+    "measure_type": "obligation",
     "addressee": "Waste incineration and co-incineration installations in qualifying Member States",
     "class": "business",
     "trigger": "Member State demonstrates it meets at least two of three conditions (national carbon tax above ETS price / on track for recycling targets / on track for landfill diversion target)",
@@ -1000,17 +1071,16 @@
     "article": "Art. 1(23), inserting Art. 12b(1) of Directive 2003/87/EC",
     "when": "up to 2035",
     "source_text": "By way of derogation from Articles 12 and 12a, the competent authority of a Member State may exempt installations under the activity ‘Waste incineration and waste co-incineration’ referred to in Annex I, from the obligation to surrender allowances for the emissions of a given reference year up to 2035, provided that the Member State demonstrates that at least two out of the following three conditions are met:",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1",
-      "F2"
-    ],
     "sectors_named": [
       "waste"
     ],
-    "sectors_reached": []
+    "sectors_reached": [],
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "A conditional exemption from the surrender duty is a duty removal. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Surrender allowances for the emissions of a given reference year from waste incineration and co-incineration installations."
   },
   {
     "id": "MST-05",
@@ -1120,6 +1190,10 @@
       "ship"
     ],
     "sectors_reached": [],
-    "pending": "Detailed operating rules for 'ETS as a service' are left to a delegated act under Art. 25b(7), not yet adopted."
+    "pending": "Detailed operating rules for 'ETS as a service' are left to a delegated act under Art. 25b(7), not yet adopted.",
+    "opportunity_basis": {
+      "text": "The corresponding revenues generated from the auctioning of these allowances shall be transferred to the third country.",
+      "kind": "amount"
+    }
   }
 ]

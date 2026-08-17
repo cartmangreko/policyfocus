@@ -1,11 +1,20 @@
 import json
 
+from textnorm import canonical
+
 with open('../data/omnibus.json', encoding='utf-8') as f:
     rows = json.load(f)
 with open('extracted_prior.json', encoding='utf-8') as f:
     PRIOR_SRC = json.load(f)
+# The proposal is where a row's own source_text and most prior rules live.
+# Taxonomy_2020_852.txt is here because two prior rules (TAX-01, TAX-02) are
+# quoted from the act being amended rather than from this proposal's recitals.
+# It has to be in the corpus the verbatim re-check runs against, or those two
+# spans would be emitted as "sourced" without anything ever checking them.
 with open('COM2025_81.txt', encoding='utf-8') as f:
     FULLTEXT = f.read()
+with open('Taxonomy_2020_852.txt', encoding='utf-8') as f:
+    FULLTEXT += "\n" + f.read()
 
 by_id = {r['id']: r for r in rows}
 
@@ -48,13 +57,25 @@ META = {
     affected_delta="Third-country groups whose EU turnover sits between the old (EUR 150m parent / EUR 40m branch) and new (EUR 450m parent / EUR 50m branch) thresholds lose the group-level sustainability-disclosure duty entirely."),
 "RPT-10": dict(nature="exemption", prior_trigger="Credit institution or insurance undertaking that is a large undertaking, or an SME with securities on an EU regulated market", prior_obligation=None,
     affected_delta="Credit institutions and insurance undertakings below 1000 employees (previously caught via the broader large-undertaking/listed-SME test) lose the sustainability-reporting duty entirely."),
+# TAX-01/TAX-02: prior rule sourced from the Taxonomy Regulation itself, not
+# from this proposal's recitals. Resolved in 21d6c23, which added
+# Taxonomy_2020_852.txt and edited data/omnibus.json directly without updating
+# this table -- so the builder regenerated them as "unresolved" and silently
+# undid the resolution. The spans below are verified against that file by the
+# verbatim re-check, same as every other span here.
 "TAX-01": dict(nature="exemption",
-    prior_trigger="n/a — every undertaking in scope of Art. 19a/29a claiming Taxonomy alignment had to report the full Article 8 Taxonomy Regulation KPI set, with no turnover-based flexibility",
-    prior_obligation=None, prior_status="unresolved",
-    prior_note="Art. 19b is a wholly new insertion; the 'prior rule' is simply Article 8 of Regulation (EU) 2020/852 applying without modification. That Regulation is not among the supplied source files, so this cannot be verbatim-sourced from local files.",
+    prior_trigger="Any undertaking subject to Art. 19a or 29a of Directive 2013/34/EU non-financial reporting, regardless of size or turnover",
+    prior_obligation="Full mandatory Article 8 Taxonomy Regulation disclosure applied to every undertaking in scope of Art. 19a/29a — no turnover-based opt-in or flexibility existed.",
+    prior_status="sourced",
+    prior_source_text="Any undertaking which is subject to an obligation to publish non-financial information pursuant to Article 19a or Article 29a of Directive 2013/34/EU shall include in its non-financial statement or consolidated non-financial statement information on how and to what extent the undertaking’s activities are associated with economic activities that qualify as environmentally sustainable under Articles 3 and 9 of this Regulation.",
+    prior_source_document="Regulation (EU) 2020/852, Article 8 (as in force, unaffected by this Omnibus)",
     affected_delta="Large undertakings with turnover not exceeding EUR 450 000 000 gain an opt-in, lighter Taxonomy disclosure track instead of full Article 8 reporting."),
-"TAX-02": dict(nature="new_obligation", prior_trigger="n/a", prior_obligation=None, prior_status="unresolved",
-    prior_note="Supersedes full mandatory Article 8 Taxonomy Regulation KPI reporting for this population; that Regulation's text is not among the supplied source files.",
+"TAX-02": dict(nature="new_obligation",
+    prior_trigger="Any undertaking subject to Art. 19a or 29a of Directive 2013/34/EU non-financial reporting",
+    prior_obligation="Mandatory disclosure of turnover AND capital expenditure AND operating expenditure proportions (all three, not turnover/CapEx with OpEx optional) associated with Taxonomy-aligned activities.",
+    prior_status="sourced",
+    prior_source_text="In particular, non-financial undertakings shall disclose the following: (a) the proportion of their turnover derived from products or services associated with economic activities that qualify as environmentally sustainable under Articles 3 and 9; and (b) the proportion of their capital expenditure and the proportion of their operating expenditure related to assets or processes associated with economic activities that qualify as environmentally sustainable under Articles 3 and 9.",
+    prior_source_document="Regulation (EU) 2020/852, Article 8 (as in force, unaffected by this Omnibus)",
     affected_delta="Undertakings using the opt-in track that claim Taxonomy alignment must still disclose turnover/CapEx KPIs (OpEx optional) — a lighter but real, newly-conditioned duty replacing the old blanket Article 8 duty."),
 "STD-01": dict(nature="new_obligation", prior_trigger="n/a", prior_obligation=None,
     affected_delta="The European Commission gains a new delegated-act drafting duty; out-of-scope undertakings gain access to a voluntary reporting standard that did not exist before."),
@@ -125,7 +146,11 @@ for r in rows:
     if derived_weight == "Burden" and not old_is_burden:
         mismatches.append((r['id'], old_burden, derived_weight))
 
-    prior_source_text = PRIOR_SRC.get(r['id'])
+    # A prior rule normally comes from this proposal's own recitals, via
+    # extracted_prior.json. A META override supplies the ones that live in the
+    # amended act instead -- the Taxonomy Regulation for TAX-01/TAX-02 -- which
+    # extracted_prior.json cannot carry, since it is keyed to this proposal.
+    prior_source_text = m.get('prior_source_text') or PRIOR_SRC.get(r['id'])
     prior_status = m.get('prior_status')
     if prior_source_text and not prior_status:
         prior_status = "recital"  # verbatim quote from this proposal's own recital describing pre-amendment law
@@ -141,6 +166,11 @@ for r in rows:
             "source_text": prior_source_text,
             "status": prior_status,
         }
+        if m.get('prior_source_document'):
+            # Names the act the span was taken from, when that is not this
+            # proposal. Without it a reader has no way to tell that a "sourced"
+            # prior rule was quoted from a different instrument.
+            prior_rule["source_document"] = m['prior_source_document']
         if m.get('prior_note'):
             prior_rule["note"] = m['prior_note']
 
@@ -171,14 +201,24 @@ print("\nBy nature:", Counter(r["nature"] for r in out))
 print("By weight:", Counter(r["weight"] for r in out))
 print("Prior rule status:", Counter((r["prior_rule"]["status"] if r["prior_rule"] else "null (genuinely new)") for r in out))
 
-with open('../data/omnibus.json', 'w', encoding='utf-8') as f:
-    json.dump(out, f, ensure_ascii=False, indent=2)
-
-# re-verify verbatim for both source_text and any prior_rule.source_text
+# Re-verify verbatim for both source_text and any prior_rule.source_text.
+# Canonicalised, like every other verbatim check in the pipeline: the Taxonomy
+# text is PDF-derived and line-wrapped, so a raw substring test reports two real
+# spans as missing. See textnorm.canonical.
+CANON_FULLTEXT = canonical(FULLTEXT)
 fail = []
 for r in out:
-    if r['source_text'] not in FULLTEXT:
+    if canonical(r['source_text']) not in CANON_FULLTEXT:
         fail.append((r['id'], 'new source_text FAIL'))
-    if r['prior_rule'] and r['prior_rule']['source_text'] and r['prior_rule']['source_text'] not in FULLTEXT:
+    prior = r['prior_rule']
+    if prior and prior['source_text'] and canonical(prior['source_text']) not in CANON_FULLTEXT:
         fail.append((r['id'], 'prior source_text FAIL'))
 print("\nVerbatim re-check:", "ALL PASS" if not fail else fail)
+
+# Nothing is written until the spans check out, so a failed re-check cannot
+# leave a half-verified register on disk.
+if fail:
+    raise SystemExit(1)
+
+with open('../data/omnibus.json', 'w', encoding='utf-8') as f:
+    json.dump(out, f, ensure_ascii=False, indent=2)
