@@ -6,8 +6,8 @@ Produced by `sources/build_benefit_axis.py`. The rule applied is documented in `
 
 | file | rows | before | after |
 |---|---|---|---|
-| ets | 49 | Opportunity 18, Requirement 19, Simplification 4, Support cut 8 | Entitlement 2, Opportunity 17, Requirement 19, Simplification 11 |
-| iaa | 62 | Opportunity 14, Requirement 44, Simplification 4 | Entitlement 3, Opportunity 14, Requirement 44, Simplification 1 |
+| ets | 51 | Opportunity 18, Requirement 19, Simplification 5, Support cut 9 | Entitlement 2, Opportunity 17, Requirement 19, Simplification 12, Support cut 1 |
+| iaa | 65 | Entitlement 1, Opportunity 16, Requirement 44, Simplification 4 | Entitlement 4, Opportunity 16, Requirement 44, Simplification 1 |
 | omnibus | 35 | Requirement 14, Simplification 21 | Requirement 14, Simplification 21 |
 
 ## Reclassified (no verbatim quantum basis available)

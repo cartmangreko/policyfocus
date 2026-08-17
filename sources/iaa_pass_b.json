@@ -23,7 +23,13 @@
       "auto"
     ],
     "sectors_reached": [],
-    "provision_id": "LM-07"
+    "provision_id": "LM-07",
+    "opportunity_basis": {
+      "text": "the ‘made in the European Union’ criterion for providing financial support for the uptake of corporate cars and vans shall comply with the criteria set out in Part II of Annex III to this Regulation.",
+      "kind": "eligibility",
+      "basis_status": "external",
+      "pointer": "Quantum (the amount and rate of financial support for corporate-fleet uptake) is set by Article 4 of the Proposal for a Regulation of 16 December 2025 on clean corporate vehicles. No CELEX assigned yet and not ingested; the span here is the origin-criterion hook, not the number."
+    }
   },
   {
     "id": "SC-01",
@@ -140,7 +146,13 @@
     ],
     "sectors_reached": [],
     "provision_id": null,
-    "pending": "Substance of the chemical-industry demand-side measures sits entirely in a delegated act not yet adopted under Article 16(1)."
+    "pending": "Substance of the chemical-industry demand-side measures sits entirely in a delegated act not yet adopted under Article 16(1).",
+    "opportunity_basis": {
+      "text": "laying down Union-level demand-side measures for products from the chemical industry in order to promote the following activities",
+      "kind": "existence",
+      "basis_status": "announced",
+      "pointer": "Announced: an empowerment for the Commission to lay down Union-level demand-side measures for chemical-industry products. No delegated or implementing act adopted, so no amount, rate or eligibility exists to cite. Revisit when the instrument lands."
+    }
   },
   {
     "id": "LM-09a",
@@ -198,7 +210,11 @@
       "build",
       "auto"
     ],
-    "provision_id": "LM-09"
+    "provision_id": "LM-09",
+    "opportunity_basis": {
+      "text": "at least 25% of the total volume of steel used shall be low-carbon",
+      "kind": "rate"
+    }
   },
   {
     "id": "LM-10a",
@@ -283,7 +299,11 @@
       "build",
       "auto"
     ],
-    "provision_id": "LM-10"
+    "provision_id": "LM-10",
+    "opportunity_basis": {
+      "text": "(a) steel, and any product the performance of which depends primarily on steel : at\nleast 25% of the total volume of steel used in the product or project that\nreceives support shall be low-carbon;",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "LM-11a",
@@ -335,7 +355,11 @@
     "sectors_reached": [
       "batsol"
     ],
-    "provision_id": "LM-11"
+    "provision_id": "LM-11",
+    "opportunity_basis": {
+      "text": "the ratio between the total ex-works price of vehicle components - excluding the vehicle battery - originating in the Union and the total ex-works price of all components – excluding the battery – is at least 70%",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "LM-13",
@@ -747,7 +771,7 @@
   },
   {
     "id": "AA-05b",
-    "measure_type": "incentive",
+    "measure_type": "right",
     "benefit": "Projects located in an acceleration area only need installation-specific permits, since non-installation-specific permits are pre-cleared by the aggregated baseline permit",
     "addressee": "Industrial manufacturing project promoters located in an acceleration area",
     "class": "business",
@@ -770,11 +794,20 @@
       "chem",
       "auto"
     ],
-    "provision_id": "AA-05"
+    "provision_id": "AA-05",
+    "right_basis": {
+      "text": "shall be required to obtain only those additional permits or authorisations that fall outside the scope of the aggregated baseline permit",
+      "kind": "scope"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "AA-06",
-    "measure_type": "incentive",
+    "measure_type": "right",
     "benefit": "Automatic 'strategic project' status giving priority/accelerated environmental assessment treatment for all projects in acceleration areas",
     "addressee": "Industrial manufacturing project promoters in acceleration areas",
     "class": "business",
@@ -799,7 +832,15 @@
       "chem",
       "auto"
     ],
-    "provision_id": null
+    "provision_id": null,
+    "right_basis": {
+      "text": "All industrial manufacturing projects located within an acceleration area shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency",
+      "kind": "scope"
+    },
+    "reclass_from": {
+      "measure_type": "incentive",
+      "note": "Pass B typed this incentive on the pre-object-rule default. No support amount, rate or eligibility moves; a status is conferred. Object rule sends it off the incentive side, and the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "PEN-01",
@@ -852,7 +893,7 @@
   },
   {
     "id": "NZT-01",
-    "measure_type": "incentive",
+    "measure_type": "right",
     "benefit": "Automatic 'strategic project' status giving priority/accelerated environmental assessment treatment for net-zero technology manufacturing projects",
     "addressee": "Net-zero technology manufacturers",
     "class": "business",
@@ -875,7 +916,16 @@
       "power",
       "clean"
     ],
-    "provision_id": null
+    "provision_id": null,
+    "right_basis": {
+      "text": "All net-zero technology manufacturing projects shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency",
+      "kind": "scope"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "NZT-02a",
@@ -904,8 +954,7 @@
   },
   {
     "id": "NZT-02b",
-    "measure_type": "incentive",
-    "benefit": "Guaranteed baseline demand for diversified/alternative (including Union) suppliers who fill the portion a winning tenderer is barred from sourcing from any single dominant third country",
+    "measure_type": "obligation",
     "addressee": "Alternative and Union suppliers of net-zero technology final products",
     "class": "business",
     "trigger": "Public procurement contract with net-zero technologies as subject matter",
@@ -915,19 +964,14 @@
     "article": "Article 34(3)(c) (Regulation (EU) 2024/1735, Article 25(7)(a))",
     "when": "From entry into force",
     "source_text": "an obligation for the duration of the contract not to supply more than 50 % of the value of the specific net-zero technology final product referred to in this paragraph from each individual third country as determined by the Commission;",
-    "value_drivers": [
-      "V2"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [],
     "sectors_reached": [
       "batsol",
       "power",
       "clean"
     ],
-    "provision_id": "NZT-02"
+    "provision_id": "NZT-02",
+    "duty": "Not supply more than 50% of the value of the contracted net-zero technology product from any single individual third country for the duration of the contract."
   },
   {
     "id": "NZT-03a",
@@ -956,8 +1000,7 @@
   },
   {
     "id": "NZT-03b",
-    "measure_type": "incentive",
-    "benefit": "Elimination of tender competition from non-qualifying third-country-linked operators in net-zero technology procurement, securing access to procurement demand",
+    "measure_type": "obligation",
     "addressee": "Union and qualifying-country net-zero technology suppliers",
     "class": "business",
     "trigger": "Procurement procedures referred to in Annex II of Regulation (EU) 2024/1735",
@@ -967,19 +1010,14 @@
     "article": "Article 34(4) (Regulation (EU) 2024/1735, Article 25a(1))",
     "when": "From entry into force",
     "source_text": "For public procurement procedures referred to in Annex II, contracting authorities and contracting entities shall exclude from access to such procurement procedures tenders submitted by economic operators owned or controlled by an entity established in third countries which have not concluded an international agreement with the Union guaranteeing such access.",
-    "value_drivers": [
-      "V2"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [],
     "sectors_reached": [
       "batsol",
       "power",
       "clean"
     ],
-    "provision_id": "NZT-03"
+    "provision_id": "NZT-03",
+    "duty": "Exclude tenders from economic operators owned/controlled by entities in third countries without a guaranteeing international agreement, for net-zero technology procurement covered by the new Annex II."
   },
   {
     "id": "NZT-04",
@@ -1051,7 +1089,11 @@
       "batsol"
     ],
     "sectors_reached": [],
-    "provision_id": "NZT-05"
+    "provision_id": "NZT-05",
+    "opportunity_basis": {
+      "text": "the battery energy storage systems shall originate in the Union",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "NZT-06a",
@@ -1099,7 +1141,11 @@
       "clean"
     ],
     "sectors_reached": [],
-    "provision_id": "NZT-06"
+    "provision_id": "NZT-06",
+    "opportunity_basis": {
+      "text": "the electrolysers used to produce the hydrogen shall originate in the Union",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "NZT-07",
@@ -1178,8 +1224,7 @@
   },
   {
     "id": "NZT-09b",
-    "measure_type": "incentive",
-    "benefit": "Preferential access to control-system supply, design, management and software contracts once high-risk suppliers are excluded",
+    "measure_type": "obligation",
     "addressee": "Non-high-risk (largely Union) suppliers of control systems for net-zero technologies",
     "class": "business",
     "trigger": "Support schemes under Articles 28/28a involving control systems, SCADA, remote access systems or firewalls",
@@ -1189,14 +1234,6 @@
     "article": "Article 34(6) (Regulation (EU) 2024/1735, Article 28b)",
     "when": "From entry into force",
     "source_text": "For support schemes within the scope of Articles 28 and 28a that include control systems, management control systems, supervisory control and data acquisition systems, remote access systems or firewalls, Member States shall design those schemes in such a way as to ensure that beneficiaries shall be eligible to the scheme only where suppliers identified as high-risk suppliers in accordance with Regulation xxxx/xxxx [CSA2] are not be involved in the following processes:",
-    "value_drivers": [
-      "V2",
-      "V4"
-    ],
-    "access_frictions": [
-      "F1",
-      "F4"
-    ],
     "sectors_named": [],
     "sectors_reached": [
       "batsol",
@@ -1204,7 +1241,8 @@
       "clean"
     ],
     "provision_id": "NZT-09",
-    "pending": "The definition of 'high-risk supplier' depends on Regulation xxxx/xxxx [CSA2], which has not yet been adopted."
+    "pending": "The definition of 'high-risk supplier' depends on Regulation xxxx/xxxx [CSA2], which has not yet been adopted.",
+    "duty": "Design net-zero technology support schemes involving control systems/SCADA/remote access/firewalls so that beneficiaries are eligible only where high-risk suppliers (per the future Cyber Security Act instrument) are excluded from key processes."
   },
   {
     "id": "NZT-10a",
@@ -1284,7 +1322,11 @@
       "build",
       "clean"
     ],
-    "provision_id": "NZT-10"
+    "provision_id": "NZT-10",
+    "opportunity_basis": {
+      "text": "the PV inverter and the PV cells or equivalent shall originate in the Union",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "NZT-11",
@@ -1357,7 +1399,11 @@
       "clean"
     ],
     "sectors_reached": [],
-    "provision_id": "NZT-13"
+    "provision_id": "NZT-13",
+    "opportunity_basis": {
+      "text": "Member States shall ensure that the electrolyser originates in the Union and the stack and at least one additional main specific component of the electrolyser originate in the Union",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "NZT-15",

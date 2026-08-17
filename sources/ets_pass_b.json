@@ -73,28 +73,26 @@
   },
   {
     "id": "AVI-06",
-    "measure_type": "incentive",
-    "benefit": "Flights within the same outermost region/Member State are deemed compliant with surrender, MRV and registry rules, sparing operators the compliance burden",
+    "measure_type": "obligation",
     "addressee": "Aircraft operators flying between aerodromes in the same outermost region or Member State",
     "class": "business",
     "trigger": "Flight between an aerodrome in an outermost region of a Member State and another aerodrome in the same Member State/region",
     "frequency": "if it happens",
     "verification": "none",
-    "direction": "add",
+    "direction": "rem",
     "article": "Proposal Art.1(3)(b) amending Directive 2003/87/EC Art.3c(8)",
     "when": "Emissions released until 31 December 2035",
     "source_text": "Member States shall consider the requirements set out in those provisions to be satisfied and shall take no action against aircraft operators in respect of emissions released until 31 December 2035 from flights between an aerodrome located in an outermost region of a Member State and an aerodrome located in the same Member State",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [
       "air"
     ],
     "sectors_reached": [],
-    "provision_id": null
+    "provision_id": null,
+    "reclass_from": {
+      "measure_type": "incentive",
+      "note": "Pass B typed this incentive on the pre-object-rule default. A deemed-compliance carve-out from the surrender duty is a duty removal, not a support movement. Object rule -> obligation side, direction rem."
+    },
+    "duty": "Comply with the surrender, monitoring, reporting and registry requirements of the EU ETS for emissions from flights between an aerodrome in an outermost region and another aerodrome in the same Member State."
   },
   {
     "id": "SHIP-01",
@@ -349,8 +347,7 @@
   },
   {
     "id": "ALC-01",
-    "measure_type": "incentive",
-    "benefit": "CBAM-covered producers keep a shrinking share of free allocation on a fixed annual schedule, phasing out to zero by 2038",
+    "measure_type": "obligation",
     "addressee": "Producers of CBAM Annex I goods (e.g. steel, cement, aluminium, fertilisers, electricity)",
     "class": "business",
     "trigger": "Production of goods listed in CBAM Regulation (EU) 2023/956 Annex I",
@@ -360,12 +357,6 @@
     "article": "Proposal Art.1(15)(b)(i) amending Directive 2003/87/EC Art.10a(1a)",
     "when": "2026 to 2038",
     "source_text": "The CBAM factor shall be equal to 100 % for the period between the entry into force of that Regulation and the end of 2025 and, subject to the application of provisions referred to in Article 36(2), point (b), of that Regulation, shall be equal to 97,5 % in 2026, 95 % in 2027, 91.5 % in 2028, 81 % in 2029, 59% in 2030, 48% in 2031, 37,5% in 2032 and 27% in 2033, 15% from 2034 to 2037. From 2038, a CBAM factor of 0 % shall apply.",
-    "value_drivers": [
-      "V1"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [
       "steel",
       "cement",
@@ -374,7 +365,8 @@
       "power"
     ],
     "sectors_reached": [],
-    "provision_id": null
+    "provision_id": null,
+    "duty": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods."
   },
   {
     "id": "OBL-01",
@@ -403,8 +395,7 @@
   },
   {
     "id": "ALC-02",
-    "measure_type": "incentive",
-    "benefit": "Operators receive 80% of their free allocation annually once their Invest in EU decarbonisation plan is verified and approved; the remaining 20% follows confirmation of implemented investment",
+    "measure_type": "obligation",
     "addressee": "Operators of installations with an approved Invest in EU decarbonisation plan",
     "class": "business",
     "trigger": "Verified and competent-authority-approved Invest in EU decarbonisation plan",
@@ -414,17 +405,10 @@
     "article": "Proposal Art.1(15)(d) inserting Directive 2003/87/EC Art.10a(3c)",
     "when": "From the five-year period beginning 2031",
     "source_text": "Upon submission of an Invest in EU decarbonisation plan that has been verified in accordance with Article 15 and approved by the competent authority, 80 % of the amount of free allocation to be received under the relevant five-year period shall be allocated annually to the installation.",
-    "value_drivers": [
-      "V1",
-      "V3"
-    ],
-    "access_frictions": [
-      "F1",
-      "F5"
-    ],
     "sectors_named": [],
     "sectors_reached": [],
-    "provision_id": null
+    "provision_id": null,
+    "duty": "Free allocation is split into tranches: 80% is paid annually once the decarbonisation plan is verified and approved; the remaining 20% is withheld until the competent authority confirms, within two years after the five-year period, that the required investments were actually implemented and delivered significant emissions reductions."
   },
   {
     "id": "PEN-02",
@@ -448,56 +432,52 @@
   },
   {
     "id": "ALC-03",
-    "measure_type": "incentive",
-    "benefit": "Installations already implementing a project funded under the Industrial Decarbonisation Bank/Investment Booster or Innovation Fund are exempt from drawing up an investment plan and get 80% of free allocation without extra verification",
+    "measure_type": "obligation",
     "addressee": "Operators of installations implementing an Innovation Fund or Industrial Decarbonisation Bank/Investment Booster-funded project",
     "class": "business",
     "trigger": "Project selected for Innovation Fund or Industrial Decarbonisation Bank/Investment Booster support being implemented in the installation during the relevant five-year period",
     "frequency": "per period",
     "verification": "none",
-    "direction": "add",
+    "direction": "rem",
     "article": "Proposal Art.1(15)(d) inserting Directive 2003/87/EC Art.10a(3c), fifth subparagraph",
     "when": "From the five-year period beginning 2031",
     "source_text": "the operator of that installation shall be exempted from the obligation to establish a plan in accordance with paragraph 3b and shall receive 80 % of the amount of free allocation as referred to in the first subparagraph without additional verification",
-    "value_drivers": [
-      "V1",
-      "V3"
-    ],
-    "access_frictions": [
-      "F1"
-    ],
     "sectors_named": [],
     "sectors_reached": [],
-    "provision_id": null
+    "provision_id": null,
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "The object is the decarbonisation-plan duty and its verification step, not the allocation; the allocation itself is unchanged (indeed protected). Object rule -> obligation side, direction rem"
+    },
+    "duty": "Draw up an Invest in EU decarbonisation plan and pass the additional verification gating the final 20% tranche of free allocation."
   },
   {
     "id": "ALC-04",
-    "measure_type": "incentive",
-    "benefit": "The 10% most efficient installations in a sector, zero-emission/low-carbon installations, and installations voluntarily staying in scope after falling below the 20 MW threshold are exempt from the Invest in EU decarbonisation plan requirements",
+    "measure_type": "obligation",
     "addressee": "Top-decile efficient installations and zero-emission/low-carbon installations",
     "class": "business",
     "trigger": "Installation ranks in top 10% efficiency of its sector/subsector, or qualifies as zero-emission/low-carbon, or voluntarily remains in scope under Art.2(1)",
     "frequency": "per period",
     "verification": "none",
-    "direction": "add",
+    "direction": "rem",
     "article": "Proposal Art.1(15)(d) inserting Directive 2003/87/EC Art.10a(3c), sixth subparagraph",
     "when": "From the five-year period beginning 2031",
     "source_text": "The requirements set out in paragraph 3b and in the first and third subparagraphs of this paragraph shall not apply to the 10 % most efficient installations in a sector or subsector in the Union referred to in the first subparagraph of Article 10a(2) and in respect of the years used to determine the revised benchmark values pursuant to the third subparagraph of that Article for the relevant five-year free allocation period, to zero emissions or low-carbon installations, to installations for which the operators, following a change in their production processes in accordance with Article 2(1), decide that they are is to remain within the scope of the EU ETS.",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1",
-      "F4"
-    ],
     "sectors_named": [],
     "sectors_reached": [],
     "pending": "Criteria for installations to qualify as 'zero-emissions or low carbon' to be set by Commission delegated act under Art.10a(3e)(g)",
-    "provision_id": null
+    "provision_id": null,
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "A condition attached to the support is removed, not the support. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Draw up an Invest in EU decarbonisation plan and satisfy the 80/20 tranching conditionality attached to free allocation."
   },
   {
     "id": "FLX-01",
-    "measure_type": "incentive",
+    "measure_type": "right",
     "benefit": "Operators can pool multiple installations under a joint decarbonisation investment agreement to satisfy the investment requirement collectively rather than per installation",
     "addressee": "Operators of installations applying for free allocation",
     "class": "business",
@@ -516,7 +496,16 @@
     ],
     "sectors_named": [],
     "sectors_reached": [],
-    "provision_id": null
+    "provision_id": null,
+    "right_basis": {
+      "text": "may request to form a pool of installations for the purposes of fulfilling jointly the investment requirements",
+      "kind": "procedure"
+    },
+    "reclass_from": {
+      "measure_type": "obligation",
+      "commit": "f1bd6f1",
+      "note": "Object rule sent it to the obligation side; the operative verb confers a faculty, so it is a right."
+    }
   },
   {
     "id": "PEN-03",
@@ -590,7 +579,11 @@
       "power"
     ],
     "sectors_reached": [],
-    "provision_id": null
+    "provision_id": null,
+    "support_cut_basis": {
+      "text": "shall decrease by equal amounts after 2026 so as to reach a level of no free allocation in 2030",
+      "kind": "rate"
+    }
   },
   {
     "id": "FND-07",
@@ -751,7 +744,11 @@
       "chem"
     ],
     "sectors_reached": [],
-    "provision_id": null
+    "provision_id": null,
+    "opportunity_basis": {
+      "text": "Member States with a GDP per capita at market prices below 75 % of the Union average in the period 2022 to 2024",
+      "kind": "eligibility"
+    }
   },
   {
     "id": "PEN-04",
@@ -861,30 +858,29 @@
   },
   {
     "id": "CCU-01",
-    "measure_type": "incentive",
-    "benefit": "No allowance surrender obligation arises for CO2 permanently or chemically bound through carbon capture and utilisation",
+    "measure_type": "obligation",
     "addressee": "Operators using carbon capture and utilisation (CCU)",
     "class": "business",
     "trigger": "CO2 captured and utilised such that it becomes permanently chemically bound, per criteria to be set by delegated act",
     "frequency": "annual",
     "verification": "none",
-    "direction": "add",
+    "direction": "rem",
     "article": "Proposal Art.1(22)(d) replacing Directive 2003/87/EC Art.12(3b)",
     "when": "From transposition (general application 1 January 2029)",
     "source_text": "An obligation to surrender allowances shall not arise in respect of carbon dioxide emissions which are considered to have been captured and utilised in such a way that they have become:",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F4"
-    ],
     "sectors_named": [
       "ccs",
       "chem"
     ],
     "sectors_reached": [],
     "pending": "Requirements for CO2 to be considered permanently/chemically bound, and de minimis thresholds, to be set by Commission delegated act under Art.12(3b)",
-    "provision_id": null
+    "provision_id": null,
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "The provision extinguishes a surrender obligation. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Surrender allowances for CO2 captured and utilised so as to become permanently chemically bound in a product."
   },
   {
     "id": "MRV-02",
@@ -986,29 +982,27 @@
   },
   {
     "id": "WST-03b",
-    "measure_type": "incentive",
-    "benefit": "Waste incineration/co-incineration installations in an opted-out Member State are exempted from the obligation to surrender allowances for a given reference year, up to 2035",
+    "measure_type": "obligation",
     "addressee": "Waste incineration/co-incineration installations in a Member State granted the opt-out",
     "class": "business",
     "trigger": "Member State demonstrates at least two of three conditions: national carbon tax above ETS auction price, on track for EU waste-hierarchy targets, on track for landfill diversion targets",
     "frequency": "annual",
     "verification": "competent authority",
-    "direction": "add",
+    "direction": "rem",
     "article": "Proposal Art.1(23) inserting Directive 2003/87/EC Art.12b(1)",
     "when": "Reference years up to 2035",
     "source_text": "the competent authority of a Member State may exempt installations under the activity ‘Waste incineration and waste co-incineration’ referred to in Annex I, from the obligation to surrender allowances for the emissions of a given reference year up to 2035, provided that the Member State demonstrates that at least two out of the following three conditions are met:",
-    "value_drivers": [
-      "V3"
-    ],
-    "access_frictions": [
-      "F1",
-      "F4"
-    ],
     "sectors_named": [
       "waste"
     ],
     "sectors_reached": [],
-    "provision_id": "ets-wasteoptout-1"
+    "provision_id": "ets-wasteoptout-1",
+    "reclass_from": {
+      "measure_type": "incentive",
+      "commit": "f1bd6f1",
+      "note": "A conditional exemption from the surrender duty is a duty removal. Object rule -> obligation side, direction rem"
+    },
+    "duty": "Surrender allowances for the emissions of a given reference year from waste incineration and co-incineration installations."
   },
   {
     "id": "AVI-02",
@@ -1066,7 +1060,11 @@
     ],
     "sectors_reached": [],
     "pending": "Operating rules for 'ETS as a service' to be set by Commission delegated acts under Art.25b(6) and (7)",
-    "provision_id": null
+    "provision_id": null,
+    "opportunity_basis": {
+      "text": "The corresponding revenues generated from the auctioning of these allowances shall be transferred to the third country.",
+      "kind": "amount"
+    }
   },
   {
     "id": "AVI-03",
@@ -1142,7 +1140,11 @@
       "air"
     ],
     "sectors_reached": [],
-    "provision_id": null
+    "provision_id": null,
+    "opportunity_basis": {
+      "text": "a further maximum 110 million allowances of the allowances referred to in third subparagraph of paragraph 1 shall be reserved for the purposes laid down in Article 3c(6) until 31 December 2040.",
+      "kind": "amount"
+    }
   },
   {
     "id": "TRANS-01",

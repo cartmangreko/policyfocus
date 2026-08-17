@@ -1,9 +1,29 @@
 """
 Reconcile two independent extraction passes for one file.
 
-Matches records by overlapping article reference (normalised), then flags
-disagreements on direction/measure_type and lists Pass-B-only finds. Writes
-`<prefix>_disagreements.json` for human review.
+Matches records by the Pass B crosswalk first and by overlapping article
+reference second, then flags disagreements on direction/measure_type and lists
+Pass-B-only finds. Writes `<prefix>_disagreements.json` for human review.
+
+WHY THE CROSSWALK COMES FIRST
+=============================
+Article overlap alone cannot identify a provision. Four ETS register rows share
+"Art. 1(15)(d)", so the matcher paired whatever it reached first and produced
+confident nonsense -- it reported AVI-02 against AVI-03, and LM-15b against
+NZT-04, as measure_type disagreements between rows that are not the same
+provision. Worse, every B row it failed to pair was filed under "Pass-B-only
+finds", which reads as "the register is missing this". It was not: 22 of the 27
+so listed were provisions the register already carried under a Pass A id, and
+that list was acted on as if it were a coverage gap.
+
+reanchor_passes.PASS_B_CROSSWALK states which Pass B id and which register id
+name one provision. Pass A's ids are the register's, so the same map resolves
+A-to-B pairing exactly, and only the genuinely unmapped rows fall through to
+article overlap. Pass-B-only is now split in two: rows ruled into the register
+with no Pass A counterpart (already handled, listed so the count stays legible)
+and rows nobody has ruled on yet. The second list is a CANDIDATE list -- the
+crosswalk is not exhaustive, so a row on it may still turn out to be registered.
+Confirming one means comparing spans against data/, not trusting the id.
 
 WHAT THIS DOES NOT DO
 =====================
@@ -32,6 +52,7 @@ Usage: python3 reconcile.py <pass_a.json> <pass_b.json> <prefix>
 import json, os, re, subprocess, sys
 
 from benefit_axis import FILE_SOURCES
+from reanchor_passes import PASS_B_CROSSWALK
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -93,11 +114,25 @@ def main():
     a_rows = load(file_a)
     b_rows = load(file_b)
 
-    b_matched = set()
-    disagreements = []
-    b_only = []
+    # Pass A's ids ARE the register's, so a crosswalk entry pointing at a Pass A
+    # id identifies the two rows that read the same provision. Matching on that
+    # first is strictly better than article overlap, which cannot tell four rows
+    # sharing "Art. 1(15)(d)" apart and pairs whatever it reaches first.
+    crosswalk = PASS_B_CROSSWALK.get(os.path.basename(file_b), {})
+    a_by_id = {ra['id']: i for i, ra in enumerate(a_rows)}
 
-    for ra in a_rows:
+    b_matched = {}          # b index -> a index
+    matched_by = {}         # b index -> "crosswalk" | "article"
+    for j, rb in enumerate(b_rows):
+        target = crosswalk.get(rb['id'])
+        if target is not None and target in a_by_id:
+            b_matched[j] = a_by_id[target]
+            matched_by[j] = 'crosswalk'
+
+    a_taken = set(b_matched.values())
+    for i, ra in enumerate(a_rows):
+        if i in a_taken:
+            continue
         na = norm_article(ra.get('article', ''))
         best = None
         best_overlap = 0
@@ -110,31 +145,66 @@ def main():
                 best_overlap = overlap
                 best = j
         if best is not None and best_overlap > 0:
-            rb = b_rows[best]
-            b_matched.add(best)
-            if ra['measure_type'] != rb['measure_type'] or ra['direction'] != rb['direction']:
-                disagreements.append({
-                    'a_id': ra['id'], 'b_id': rb['id'], 'article': ra['article'],
-                    'a': {'measure_type': ra['measure_type'], 'direction': ra['direction'], 'addressee': ra['addressee']},
-                    'b': {'measure_type': rb['measure_type'], 'direction': rb['direction'], 'addressee': rb['addressee']},
-                })
-    for j, rb in enumerate(b_rows):
-        if j not in b_matched:
-            b_only.append({'id': rb['id'], 'article': rb['article'], 'measure_type': rb['measure_type'],
-                            'direction': rb['direction'], 'addressee': rb['addressee'],
-                            'benefit_or_duty': rb.get('benefit') or rb.get('duty')})
+            b_matched[best] = i
+            matched_by[best] = 'article'
 
+    disagreements = []
+    for j, i in sorted(b_matched.items()):
+        ra, rb = a_rows[i], b_rows[j]
+        if ra['measure_type'] != rb['measure_type'] or ra['direction'] != rb['direction']:
+            disagreements.append({
+                'a_id': ra['id'], 'b_id': rb['id'], 'article': ra['article'],
+                'matched_by': matched_by[j],
+                'a': {'measure_type': ra['measure_type'], 'direction': ra['direction'], 'addressee': ra['addressee']},
+                'b': {'measure_type': rb['measure_type'], 'direction': rb['direction'], 'addressee': rb['addressee']},
+            })
+
+    # A B-row with no Pass A partner is not automatically a gap in the register.
+    # It is a gap only if no register row rules on its provision at all -- and
+    # the crosswalk is what knows the difference. Reporting the two together as
+    # "Pass-B-only finds" is what made 22 already-registered provisions read as
+    # missing, so they are split and counted separately.
+    #
+    # THE REMAINING LIST IS A CANDIDATE LIST, NOT A GAP LIST. The crosswalk
+    # covers the 27 rows that were blocked plus ETSB-MRV-02, and no more, so a
+    # row can land below simply because nobody has ruled on it yet. Id identity
+    # deliberately does NOT count as a ruling: Pass B reused ids for different
+    # provisions (its LM-13, LM-14, LM-15b and AVI-04 each name a provision the
+    # register files under that id or another), and matching on the coincidence
+    # would manufacture exactly the false certainty this split exists to end.
+    # Each row below needs the same span-level check the crosswalk entries got.
+    b_only, b_registered = [], []
+    for j, rb in enumerate(b_rows):
+        if j in b_matched:
+            continue
+        entry = {'id': rb['id'], 'article': rb['article'], 'measure_type': rb['measure_type'],
+                 'direction': rb['direction'], 'addressee': rb['addressee'],
+                 'benefit_or_duty': rb.get('benefit') or rb.get('duty')}
+        target = crosswalk.get(rb['id'])
+        if target is None:
+            b_only.append(entry)
+        else:
+            # Ruled on, but the register row has no Pass A counterpart -- these
+            # are the promotions (ETSB-/IAAB-) and rows only one pass caught.
+            b_registered.append({**entry, 'register_id': target})
+
+    n_cross = sum(1 for v in matched_by.values() if v == 'crosswalk')
     print(f"Pass A: {len(a_rows)} rows, Pass B: {len(b_rows)} rows")
-    print(f"Matched (by article overlap): {len(b_matched)}")
+    print(f"Matched: {len(b_matched)} ({n_cross} by crosswalk, "
+          f"{len(b_matched) - n_cross} by article overlap)")
     print(f"Disagreements (measure_type/direction): {len(disagreements)}")
     for d in disagreements:
-        print(f"  {d['a_id']} vs {d['b_id']} [{d['article']}]: A={d['a']} B={d['b']}")
-    print(f"\nPass-B-only finds (no article-overlap match in A): {len(b_only)}")
+        print(f"  [{d['matched_by']}] {d['a_id']} vs {d['b_id']} [{d['article']}]: A={d['a']} B={d['b']}")
+    print(f"\nPass-B rows ruled into the register, no Pass A counterpart: {len(b_registered)}")
+    for o in b_registered:
+        print(f"  {o['id']} -> {o['register_id']} [{o['article']}]")
+    print(f"\nPass-B rows not yet ruled on (candidates, not confirmed gaps): {len(b_only)}")
     for o in b_only:
         print(f"  {o['id']} [{o['article']}] {o['measure_type']}/{o['direction']}: {o['benefit_or_duty'][:80]}")
 
     with open(f'{out_prefix}_disagreements.json', 'w', encoding='utf-8') as f:
-        json.dump({'disagreements': disagreements, 'b_only': b_only}, f, ensure_ascii=False, indent=2)
+        json.dump({'disagreements': disagreements, 'b_only': b_only,
+                   'b_registered': b_registered}, f, ensure_ascii=False, indent=2)
 
 if __name__ == '__main__':
     main()

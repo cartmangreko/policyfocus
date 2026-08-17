@@ -218,6 +218,17 @@
  },
  {
   "rel": "applies_to",
+  "from": "measure:ets:ETSB-AVI-06",
+  "to": "sector:air",
+  "since": "2026",
+  "evidence": {
+   "source": "data/ets.json",
+   "path": "[id=ETSB-AVI-06].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
   "from": "measure:ets:ETSB-MRV-02",
   "to": "sector:air",
   "since": "2026",
@@ -1417,6 +1428,83 @@
  },
  {
   "rel": "applies_to",
+  "from": "measure:iaa:IAAB-AA-06",
+  "to": "sector:alu",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-AA-06].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:iaa:IAAB-AA-06",
+  "to": "sector:auto",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-AA-06].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:iaa:IAAB-AA-06",
+  "to": "sector:batsol",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-AA-06].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:iaa:IAAB-AA-06",
+  "to": "sector:cement",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-AA-06].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:iaa:IAAB-AA-06",
+  "to": "sector:chem",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-AA-06].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:iaa:IAAB-AA-06",
+  "to": "sector:clean",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-AA-06].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:iaa:IAAB-AA-06",
+  "to": "sector:steel",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-AA-06].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
   "from": "measure:iaa:IAAB-CHEM-01",
   "to": "sector:chem",
   "since": "2026",
@@ -1425,6 +1513,50 @@
    "path": "[id=IAAB-CHEM-01].sectors_named"
   },
   "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:iaa:IAAB-LM-07b",
+  "to": "sector:auto",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-LM-07b].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:iaa:IAAB-LM-07b",
+  "to": "sector:batsol",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-LM-07b].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:iaa:IAAB-NZT-06b",
+  "to": "sector:clean",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-NZT-06b].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:iaa:IAAB-NZT-06b",
+  "to": "sector:power",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-NZT-06b].sectors_reached"
+  },
+  "basis": "reached"
  },
  {
   "rel": "applies_to",
@@ -2957,6 +3089,28 @@
  },
  {
   "rel": "cites",
+  "from": "measure:ets:ETSB-ALC-05",
+  "to": "act:32003L0087",
+  "since": "2026",
+  "evidence": {
+   "source": "data/ets.json",
+   "path": "[id=ETSB-ALC-05]",
+   "quote": "10b(4), first subparagraph of Directive 2003/87/EC Other sectors and subsectors are considered to be able to pass on more of the costs of allowances in product prices, and shall be allocated allowances free of charge at 30 % of the quantity determined pursuant to Article 10a."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:ets:ETSB-AVI-06",
+  "to": "act:32003L0087",
+  "since": "2026",
+  "evidence": {
+   "source": "data/ets.json",
+   "path": "[id=ETSB-AVI-06]",
+   "quote": "3c(8) of Directive 2003/87/EC Comply with the surrender, monitoring, reporting and registry requirements of the EU ETS for emissions from flights between an aerodrome in an outermost region and another aerodrome in the same Member State."
+  }
+ },
+ {
+  "rel": "cites",
   "from": "measure:ets:ETSB-MRV-02",
   "to": "act:32003L0087",
   "since": "2026",
@@ -3514,6 +3668,17 @@
    "source": "data/iaa.json",
    "path": "[id=GOV-05]",
    "quote": "42(3) of Regulation (EU) 2024/1735) Submit to the Commission a report setting out data on the application of net-zero technology exemptions and related requirements."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:iaa:IAAB-NZT-06b",
+  "to": "act:32024R1735",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-NZT-06b]",
+   "quote": "34(8); new Annex II, Part II of Regulation (EU) 2024/1735 For auctions published after [OP: Please insert the date = 1 year after the entry into force of this Regulation], the electrolysers used to produce the hydrogen shall originate in the Union, and the stacks as well as one additional main specific component shall originate in the Union."
   }
  },
  {
@@ -4794,11 +4959,41 @@
  {
   "rel": "contains",
   "from": "act:52026PC0100",
+  "to": "measure:iaa:IAAB-AA-06",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-AA-06]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52026PC0100",
   "to": "measure:iaa:IAAB-CHEM-01",
   "since": "2026",
   "evidence": {
    "source": "data/iaa.json",
    "path": "[id=IAAB-CHEM-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52026PC0100",
+  "to": "measure:iaa:IAAB-LM-07b",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-LM-07b]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52026PC0100",
+  "to": "measure:iaa:IAAB-NZT-06b",
+  "since": "2026",
+  "evidence": {
+   "source": "data/iaa.json",
+   "path": "[id=IAAB-NZT-06b]"
   }
  },
  {
@@ -5289,6 +5484,26 @@
   "evidence": {
    "source": "data/ets.json",
    "path": "[id=CCS-03]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52026PC0616",
+  "to": "measure:ets:ETSB-ALC-05",
+  "since": "2026",
+  "evidence": {
+   "source": "data/ets.json",
+   "path": "[id=ETSB-ALC-05]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52026PC0616",
+  "to": "measure:ets:ETSB-AVI-06",
+  "since": "2026",
+  "evidence": {
+   "source": "data/ets.json",
+   "path": "[id=ETSB-AVI-06]"
   }
  },
  {

@@ -411,6 +411,52 @@
     }
   },
   {
+    "id": "IAAB-AA-06",
+    "measure_type": "right",
+    "benefit": "Automatic 'strategic project' status for every industrial manufacturing project sited in an acceleration area, granting priority and accelerated treatment under the future Environmental Assessment Regulation.",
+    "addressee": "Promoters of industrial manufacturing projects located within an acceleration area",
+    "class": "business",
+    "trigger": "project located within a designated industrial manufacturing acceleration area",
+    "frequency": "per project",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 27(4)",
+    "when": "From entry into force",
+    "source_text": "All industrial manufacturing projects located within an acceleration area shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency for the purposes of [Article 14 of Proposal for a Regulation on speeding-up environmental assessment]. Points 1, 2 and 3 of the Annex to that Regulation shall apply.",
+    "drivers": [],
+    "sectors_named": [],
+    "sectors_reached": [
+      "steel",
+      "cement",
+      "alu",
+      "chem",
+      "auto",
+      "batsol",
+      "clean"
+    ],
+    "provision_id": null,
+    "file": "iaa",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0100",
+    "value_drivers": [
+      "V3"
+    ],
+    "access_frictions": [
+      "F1",
+      "F4"
+    ],
+    "pending": "Benefit operationalised via the not-yet-adopted Proposal for a Regulation on speeding-up environmental assessment.",
+    "pass_origin": "iaa_pass_b:AA-06",
+    "benefit_axis_note": "The acceleration-area counterpart of PRM-06, which confers the same status on net-zero technology manufacturing projects under Art. 34(2). 'shall be considered strategic projects' confers a status the promoter did not hold, so it is a right, not a duty being eased. Companion of the Art. 27 acceleration-area regime (AA-04a/AA-04b), but a distinct provision: provision_id groups facets of one provision, and Art. 27(4) is not the aggregated-baseline-permit provision AA-P1 covers.",
+    "right_basis": {
+      "text": "All industrial manufacturing projects located within an acceleration area shall be considered strategic projects contributing to resilience and decarbonisation or resource efficiency",
+      "kind": "scope"
+    },
+    "reclass_from": {
+      "measure_type": "incentive",
+      "note": "Pass B typed this incentive on the pre-object-rule default. No support amount, rate or eligibility moves; a status is conferred. Object rule sends it off the incentive side, and the operative verb confers a faculty, so it is a right."
+    }
+  },
+  {
     "id": "LM-01",
     "measure_type": "obligation",
     "duty": "Have emissions and other data used to calculate a product's greenhouse gas intensity verified by accredited verifiers before it can be classified/labelled as low-carbon.",
@@ -732,6 +778,46 @@
     "opportunity_basis": {
       "text": "(a) steel, and any product the performance of which depends primarily on steel : at\nleast 25% of the total volume of steel used in the product or project that\nreceives support shall be low-carbon;",
       "kind": "eligibility"
+    }
+  },
+  {
+    "id": "IAAB-LM-07b",
+    "measure_type": "incentive",
+    "benefit": "Corporate cars and vans meeting the Annex III Part II Union-origin criteria qualify as 'made in the European Union' for the purposes of financial support for corporate-fleet uptake under the clean corporate vehicles Regulation.",
+    "addressee": "EU vehicle manufacturers supplying corporate cars and vans",
+    "class": "business",
+    "trigger": "financial support provided for the uptake of corporate cars and vans under Article 4 of the clean corporate vehicles Regulation",
+    "frequency": "per vehicle model",
+    "verification": "self-declaration",
+    "direction": "add",
+    "article": "Art. 13; Annex III, Part II",
+    "when": "From entry into force, contingent on the clean corporate vehicles Regulation",
+    "source_text": "For the purposes of Article 4 of the [Proposal for a Regulation of 16 December 2025 on clean corporate vehicles], the ‘made in the European Union’ criterion for providing financial support for the uptake of corporate cars and vans shall comply with the criteria set out in Part II of Annex III to this Regulation.",
+    "drivers": [],
+    "sectors_named": [
+      "auto"
+    ],
+    "sectors_reached": [
+      "batsol"
+    ],
+    "provision_id": null,
+    "file": "iaa",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0100",
+    "value_drivers": [
+      "V2"
+    ],
+    "access_frictions": [
+      "F1",
+      "F4"
+    ],
+    "pending": "The financial support itself, and its quantum, sit in the not-yet-adopted Proposal of 16 December 2025 on clean corporate vehicles.",
+    "pass_origin": "iaa_pass_b:LM-07b",
+    "benefit_axis_note": "Structurally identical to SC-01, which does the same job for Article 5(1)-(2) of Regulation (EU) 2019/631: an Article of the IAA fixes what 'made in the EU' means for a support scheme carried by another instrument. LM-26a/b/c cite Art. 13 in their article field but quote Annex III Part II scheme text; this hook into the corporate-vehicles Regulation was itself unquoted. The weakest of the five promotions -- flagged in the report.",
+    "opportunity_basis": {
+      "text": "the ‘made in the European Union’ criterion for providing financial support for the uptake of corporate cars and vans shall comply with the criteria set out in Part II of Annex III to this Regulation.",
+      "kind": "eligibility",
+      "basis_status": "external",
+      "pointer": "Quantum (the amount and rate of financial support for corporate-fleet uptake) is set by Article 4 of the Proposal for a Regulation of 16 December 2025 on clean corporate vehicles. No CELEX assigned yet and not ingested; the span here is the origin-criterion hook, not the number."
     }
   },
   {
@@ -1116,6 +1202,42 @@
     "drivers": [],
     "opportunity_basis": {
       "text": "the PV inverter and the PV cells or equivalent shall originate in the Union",
+      "kind": "eligibility"
+    }
+  },
+  {
+    "id": "IAAB-NZT-06b",
+    "measure_type": "incentive",
+    "benefit": "Created demand for EU-origin electrolysers: renewable-hydrogen auctions must require that the electrolyser, its stacks and one further main specific component originate in the Union.",
+    "addressee": "EU manufacturers of electrolysers, stacks and main specific components",
+    "class": "business",
+    "trigger": "auction published after [1 year after entry into force] whose supported hydrogen is produced with electrolysers",
+    "frequency": "per auction",
+    "verification": "self-declaration",
+    "direction": "add",
+    "article": "Art. 34(8); new Annex II, Part II of Regulation (EU) 2024/1735",
+    "when": "From [1 year after entry into force]; stricter rule from [3 years after entry into force]",
+    "source_text": "For auctions published after [OP: Please insert the date = 1 year after the entry into force of this Regulation], the electrolysers used to produce the hydrogen shall originate in the Union, and the stacks as well as one additional main specific component shall originate in the Union.",
+    "drivers": [],
+    "sectors_named": [
+      "clean"
+    ],
+    "sectors_reached": [
+      "power"
+    ],
+    "provision_id": null,
+    "file": "iaa",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0100",
+    "value_drivers": [
+      "V2"
+    ],
+    "access_frictions": [
+      "F1"
+    ],
+    "pass_origin": "iaa_pass_b:NZT-06b",
+    "benefit_axis_note": "Part II of the new NZIA Annex II (renewable-energy auctions) was the one Part of that Annex with no register row; Parts I, III and IV are LM-15b, LM-20b and LM-23b. Same shape as those: the Union-origin condition is what makes an EU manufacturer's product the only qualifying supply, so the object is eligibility for the auctioned support. The duty facet on the auctioning authority (Pass B NZT-06a) is deliberately not promoted -- see report.",
+    "opportunity_basis": {
+      "text": "the electrolysers used to produce the hydrogen shall originate in the Union",
       "kind": "eligibility"
     }
   },

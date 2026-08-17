@@ -1,114 +1,42 @@
 {
   "disagreements": [
     {
-      "a_id": "SCP-01",
-      "b_id": "SCP-01",
-      "article": "Art. 1(1), replacing the first subparagraph of Art. 2(1) of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "obligation",
-        "direction": "add",
-        "addressee": "Member States (competent authorities) / operators of installations falling below the 20MW threshold"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Operator of an installation falling below the 20 MW thermal input threshold"
-      }
-    },
-    {
-      "a_id": "FRE-02",
-      "b_id": "ALC-02",
-      "article": "Art. 1(15)(d), inserting Art. 10a(3c), first subparagraph of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "obligation",
-        "direction": "add",
-        "addressee": "Operators applying for free allocation"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Operators of installations with an approved Invest in EU decarbonisation plan"
-      }
-    },
-    {
-      "a_id": "FRE-04",
-      "b_id": "ALC-03",
-      "article": "Art. 1(15)(d), inserting Art. 10a(3c), fourth subparagraph of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "incentive",
-        "direction": "rem",
-        "addressee": "Operators with an installation-level project already awarded IDB/Investment Booster/Innovation Fund support"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Operators of installations implementing an Innovation Fund or Industrial Decarbonisation Bank/Investment Booster-funded project"
-      }
-    },
-    {
-      "a_id": "FRE-05",
-      "b_id": "ALC-04",
-      "article": "Art. 1(15)(d), inserting Art. 10a(3c), sixth subparagraph of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "incentive",
-        "direction": "rem",
-        "addressee": "Top-10%-most-efficient, zero-/low-carbon, and voluntarily-remaining installations"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Top-decile efficient installations and zero-emission/low-carbon installations"
-      }
-    },
-    {
-      "a_id": "FRE-08",
-      "b_id": "ALC-05",
-      "article": "Art. 1(16)(a), amending Art. 10b(1) of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Sectors and subsectors deemed exposed to carbon leakage risk"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "rem",
-        "addressee": "Sectors and subsectors classified as able to pass on carbon costs (e.g. district heating)"
-      }
-    },
-    {
-      "a_id": "CBAM-01",
-      "b_id": "ALC-01",
-      "article": "Art. 1(15)(b)(i), replacing Art. 10a(1a), second subparagraph of Directive 2003/87/EC",
+      "a_id": "SHIP-04",
+      "b_id": "SHIP-01",
+      "article": "Art. 1(4)(c)(i), amending Art. 3ga(3) of Directive 2003/87/EC",
+      "matched_by": "article",
       "a": {
         "measure_type": "obligation",
         "direction": "rem",
-        "addressee": "Operators of installations producing goods covered by the Carbon Border Adjustment Mechanism"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "rem",
-        "addressee": "Producers of CBAM Annex I goods (e.g. steel, cement, aluminium, fertilisers, electricity)"
-      }
-    },
-    {
-      "a_id": "CBAM-02",
-      "b_id": "FND-06",
-      "article": "Art. 1(15)(b)(ii), inserting a subparagraph after Art. 10a(1a), second subparagraph of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "obligation",
-        "direction": "rem",
-        "addressee": "Operators producing goods newly added to CBAM Annex I"
+        "addressee": "Shipping companies performing container transhipment via listed neighbouring ports"
       },
       "b": {
         "measure_type": "incentive",
         "direction": "add",
-        "addressee": "Sectors/subsectors exposed to genuine indirect carbon leakage risk via electricity prices"
+        "addressee": "Shipping companies operating vessels performing/supporting offshore operations"
+      }
+    },
+    {
+      "a_id": "CCS-03",
+      "b_id": "FND-05",
+      "article": "Art. 1(24)(b), inserting Art. 14(1a) of Directive 2003/87/EC",
+      "matched_by": "article",
+      "a": {
+        "measure_type": "right",
+        "direction": "add",
+        "addressee": "Operators, aircraft operators and shipping companies generating certified permanent carbon removal units"
+      },
+      "b": {
+        "measure_type": "incentive",
+        "direction": "add",
+        "addressee": "Operators, aircraft operators and shipping companies generating certified domestic carbon removals"
       }
     },
     {
       "a_id": "FND-08",
       "b_id": "REV-01",
       "article": "Art. 1(14)(c), replacing Art. 10(3) of Directive 2003/87/EC",
+      "matched_by": "article",
       "a": {
         "measure_type": "incentive",
         "direction": "add",
@@ -121,71 +49,60 @@
       }
     },
     {
+      "a_id": "CBAM-02",
+      "b_id": "FND-06",
+      "article": "Art. 1(15)(b)(ii), inserting a subparagraph after Art. 10a(1a), second subparagraph of Directive 2003/87/EC",
+      "matched_by": "article",
+      "a": {
+        "measure_type": "obligation",
+        "direction": "rem",
+        "addressee": "Operators producing goods newly added to CBAM Annex I"
+      },
+      "b": {
+        "measure_type": "incentive",
+        "direction": "add",
+        "addressee": "Sectors/subsectors exposed to genuine indirect carbon leakage risk via electricity prices"
+      }
+    },
+    {
+      "a_id": "FRE-08",
+      "b_id": "ALC-05",
+      "article": "Art. 1(16)(a), amending Art. 10b(1) of Directive 2003/87/EC",
+      "matched_by": "article",
+      "a": {
+        "measure_type": "incentive",
+        "direction": "add",
+        "addressee": "Sectors and subsectors deemed exposed to carbon leakage risk"
+      },
+      "b": {
+        "measure_type": "incentive",
+        "direction": "rem",
+        "addressee": "Sectors and subsectors classified as able to pass on carbon costs (e.g. district heating)"
+      }
+    },
+    {
       "a_id": "SHIP-03",
       "b_id": "AVI-01",
       "article": "Art. 1(22)(a)(ii), inserting Art. 12(3-g) of Directive 2003/87/EC",
+      "matched_by": "article",
       "a": {
-        "measure_type": "incentive",
+        "measure_type": "obligation",
         "direction": "rem",
         "addressee": "Shipping companies operating containerships of 10,000 TEU and above"
       },
       "b": {
-        "measure_type": "obligation",
-        "direction": "rem",
+        "measure_type": "incentive",
+        "direction": "add",
         "addressee": "Aircraft operators subject to both EU ETS surrender and CORSIA offsetting requirements"
-      }
-    },
-    {
-      "a_id": "SHIP-04",
-      "b_id": "SHIP-01",
-      "article": "Art. 1(4)(c)(i), amending Art. 3ga(3) of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Shipping companies performing container transhipment via listed neighbouring ports"
-      },
-      "b": {
-        "measure_type": "obligation",
-        "direction": "add",
-        "addressee": "Shipping companies operating vessels performing/supporting offshore operations"
-      }
-    },
-    {
-      "a_id": "AVI-02",
-      "b_id": "AVI-03",
-      "article": "Art. 1(31)(d), inserting paragraph 6 in Art. 28a of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Aircraft operators"
-      },
-      "b": {
-        "measure_type": "obligation",
-        "direction": "add",
-        "addressee": "Aircraft operators flying extra-EEA routes"
-      }
-    },
-    {
-      "a_id": "AVI-03",
-      "b_id": "AVI-04",
-      "article": "Art. 1(31)(a)(II), inserting point (d) in Art. 28a(1) of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "obligation",
-        "direction": "add",
-        "addressee": "Aircraft operators flying to/from non-EEA states"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Aircraft operators flying to/from eligible LDCs/SIDS"
       }
     },
     {
       "a_id": "AVI-04",
       "b_id": "AVI-02",
       "article": "Art. 1(29)(a), replacing Art. 25a(4) of Directive 2003/87/EC",
+      "matched_by": "article",
       "a": {
-        "measure_type": "incentive",
+        "measure_type": "obligation",
         "direction": "rem",
         "addressee": "Aircraft operators flying to/from listed LDC/SIDS states"
       },
@@ -194,100 +111,24 @@
         "direction": "add",
         "addressee": "Aircraft operators flying to/from listed equivalent-measure third countries"
       }
-    },
-    {
-      "a_id": "CCS-01",
-      "b_id": "CCS-01",
-      "article": "Art. 1(22)(c), replacing Art. 12(3a) of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "incentive",
-        "direction": "rem",
-        "addressee": "Operators capturing and permanently storing CO2 emissions"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Operators using carbon capture and geological storage"
-      }
-    },
-    {
-      "a_id": "CCS-02",
-      "b_id": "CCU-01",
-      "article": "Art. 1(22)(d), replacing Art. 12(3b) of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "incentive",
-        "direction": "rem",
-        "addressee": "Operators using carbon capture and utilisation (CCU) technology"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Operators using carbon capture and utilisation (CCU)"
-      }
-    },
-    {
-      "a_id": "WST-02",
-      "b_id": "WST-02",
-      "article": "Art. 1(23), inserting Art. 12a, second paragraph of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "incentive",
-        "direction": "rem",
-        "addressee": "Waste incineration and waste co-incineration installations in outermost regions"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Waste incineration/co-incineration installations in outermost regions"
-      }
-    },
-    {
-      "a_id": "WST-03",
-      "b_id": "WST-03b",
-      "article": "Art. 1(23), inserting Art. 12b(1) of Directive 2003/87/EC",
-      "a": {
-        "measure_type": "incentive",
-        "direction": "rem",
-        "addressee": "Waste incineration and co-incineration installations in qualifying Member States"
-      },
-      "b": {
-        "measure_type": "incentive",
-        "direction": "add",
-        "addressee": "Waste incineration/co-incineration installations in a Member State granted the opt-out"
-      }
     }
   ],
   "b_only": [
     {
-      "id": "AVI-06",
-      "article": "Proposal Art.1(3)(b) amending Directive 2003/87/EC Art.3c(8)",
-      "measure_type": "incentive",
-      "direction": "add",
-      "addressee": "Aircraft operators flying between aerodromes in the same outermost region or Member State",
-      "benefit_or_duty": "Flights within the same outermost region/Member State are deemed compliant with surrender, MRV and registry rules, sparing operators the compliance burden"
-    },
-    {
       "id": "SHIP-02",
       "article": "Proposal Art.1(22)(a)(ii) inserting Directive 2003/87/EC Art.12(3-g)",
-      "measure_type": "obligation",
-      "direction": "rem",
-      "addressee": "Shipping companies operating containerships of 10,000 TEU and above",
-      "benefit_or_duty": "Large containerships (10,000 TEU+) on long transhipment voyages may surrender fewer allowances than their verified emissions, cutting their compliance cost"
-    },
-    {
-      "id": "MRV-02",
-      "article": "Proposal Art.1(22)(e) replacing Directive 2003/87/EC Art.12(9)",
-      "measure_type": "obligation",
-      "direction": "add",
-      "addressee": "Aircraft operators subject to CORSIA offsetting",
-      "benefit_or_duty": "Aircraft operators must cancel their notified quantity of CORSIA-eligible units by fixed statutory deadlines for each CORSIA compliance period"
-    },
-    {
-      "id": "AVI-05",
-      "article": "Proposal Art.1(31)(d) inserting Directive 2003/87/EC Art.28a(6)",
       "measure_type": "incentive",
       "direction": "add",
-      "addressee": "Aircraft operators using eligible aviation fuels/electricity on EEA-departing flights",
-      "benefit_or_duty": "A further 110 million allowances are reserved to fund eligible aviation fuel/electricity use, extended to all flights departing the EEA from 2029"
+      "addressee": "Shipping companies operating containerships of 10,000 TEU and above",
+      "benefit_or_duty": "0.9 million allowances per year (until 2035) are set aside to fund maritime-sector decarbonisation projects in least developed countries and small island developing states."
+    },
+    {
+      "id": "AVI-04",
+      "article": "Proposal Art.1(31)(a)(II) inserting Directive 2003/87/EC Art.28a(1)(c)",
+      "measure_type": "obligation",
+      "direction": "rem",
+      "addressee": "Aircraft operators flying to/from eligible LDCs/SIDS",
+      "benefit_or_duty": "Surrender allowances under Art. 12(3) for emissions from flights to or from listed LDC/SIDS states."
     },
     {
       "id": "MSR-02",
@@ -296,6 +137,26 @@
       "direction": "add",
       "addressee": "Commission/Member States administering the Market Stability Reserve",
       "benefit_or_duty": "The Market Stability Reserve release thresholds (400 million / 300 million allowances, 100 million release amount) that return allowances to auction also tighten by 4% each year from 2029, restricting the supply released back to the market"
+    }
+  ],
+  "b_registered": [
+    {
+      "id": "AVI-06",
+      "article": "Proposal Art.1(3)(b) amending Directive 2003/87/EC Art.3c(8)",
+      "measure_type": "obligation",
+      "direction": "rem",
+      "addressee": "Aircraft operators flying between aerodromes in the same outermost region or Member State",
+      "benefit_or_duty": "Comply with the surrender, monitoring, reporting and registry requirements of the EU ETS for emissions from flights between an aerodrome in an outermost region and another aerodrome in the same Member State.",
+      "register_id": "ETSB-AVI-06"
+    },
+    {
+      "id": "MRV-02",
+      "article": "Proposal Art.1(22)(e) replacing Directive 2003/87/EC Art.12(9)",
+      "measure_type": "obligation",
+      "direction": "add",
+      "addressee": "Aircraft operators subject to CORSIA offsetting",
+      "benefit_or_duty": "Aircraft operators must cancel their notified quantity of CORSIA-eligible units by fixed statutory deadlines for each CORSIA compliance period",
+      "register_id": "ETSB-MRV-02"
     }
   ]
 }
