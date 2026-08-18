@@ -22,8 +22,8 @@ the watch agent, neither of which runs here).
 
 ## Deploying
 
-The site is deployed on Vercel from this directory. Three things about that
-arrangement are load-bearing, and all three are easy to break silently:
+The site is deployed on Vercel from this directory. Four things about that
+arrangement are load-bearing, and all four are easy to break silently:
 
 **Root Directory is `web`, and files outside it must be included.** The data
 this site renders lives at the repo root — `../data`, `../sources` — and is
@@ -43,6 +43,15 @@ route ever needs request-time data, that read has to move inside `web/` (or the
 files have to be traced into the function) before the route is allowed to be
 dynamic.
 
+**The site is closed to crawlers until someone opens it.** `lib/launch.ts`
+holds one boolean, and `next.config.ts` (the `X-Robots-Tag: noindex, nofollow`
+header), `app/robots.ts` (robots.txt) and `app/layout.tsx` (the `robots` meta
+tag) all read it, so the site cannot end up half-hidden. It is closed unless
+`SITE_LAUNCHED=1` is set in Vercel → Settings → Environment Variables for
+Production, and preview deployments stay closed whatever that variable says.
+The switch is read at build time — every page is prerendered, so opening the
+site means redeploying it.
+
 **The build reads committed JSON, not the FIGARO flatfile.** The 65 MB
 `data/flatfile_eu-ic-io_ind-by-ind_26ed_2024.zip` is an input to
 `sources/build_exposure.py`, which is run by hand; the site reads only the
@@ -50,6 +59,7 @@ dynamic.
 gitignored, and a clean checkout plus `npm ci && npm run build` reproduces the
 deployment.
 
-There is no `vercel.json`: the framework preset detects Next.js, and install,
-build and output settings are all defaults. Add one only when a setting genuinely
-cannot be expressed in the project itself.
+There is no `vercel.json`: the framework preset detects Next.js, install, build
+and output settings are all defaults, and the one header the site sets is set in
+`next.config.ts`, where the launch switch that decides it already lives. Add one
+only when a setting genuinely cannot be expressed in the project itself.
