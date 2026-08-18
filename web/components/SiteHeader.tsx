@@ -2,18 +2,15 @@ import Link from "next/link";
 import SearchBar from "./SearchBar";
 import Wordmark from "./Wordmark";
 
-import { PRIORITIES } from "@/lib/priorities";
-import { ANALYSIS } from "@/lib/analysis";
-
-// The home page leads with findings now, and the register sits behind the
-// doors block, so the nav points at what exists rather than at the anchors the
-// old home page carried.
+// Four doors, each a directory page of its own: the two spines (sectors and
+// legislation), the conclusions layer, and the methods page. The flat measure
+// browse is deliberately NOT here — it anchors /measures and is reachable
+// from /coverage and from search, but a register-wide list is a working view,
+// not a front door.
 const NAV = [
+  { label: "Sectors", href: "/sectors" },
+  { label: "Legislation", href: "/acts" },
   { label: "Findings", href: "/findings" },
-  { label: "Topics", href: `/priorities/${PRIORITIES[0].slug}` },
-  { label: "Sectors", href: "/#doors" },
-  { label: "Measures", href: "/measures" },
-  { label: "Analysis", href: `/analysis/${ANALYSIS[0].slug}` },
   { label: "Coverage", href: "/coverage" },
 ];
 

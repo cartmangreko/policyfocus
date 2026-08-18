@@ -10,14 +10,11 @@ import type { SectorSlug } from "@/lib/types";
 // "no simplification at all" is a finding, and hiding the row would turn it
 // into an absence the reader has to notice for themselves.
 //
-// A weight line was here and is now SUPPRESSED, not deleted. weight_intensity
-// is recorded on omnibus rows only, and omnibus rows name no sector, so the
-// line read "weight not recorded" on all fourteen sectors — fourteen copies of
-// one fact about the register, printed where a reader is looking for a fact
-// about their sector. The fact itself is now stated once, on /coverage, where
-// it belongs. lib/netPosition.ts still computes the distribution and
-// intensityLine() still formats it, so restoring the line when weight is
-// extracted for the other files is uncommenting one element.
+// There is deliberately no weight line here. Weight stays on the rows that
+// carry it, and the state of weight data across files is stated once, on
+// /coverage, computed from the register at build time (getWeightNote). The
+// underlying fields are untouched — lib/netPosition.ts still computes the
+// distribution for anything that needs it.
 export default function NetPositionStrip({ slug }: { slug: SectorSlug }) {
   const net = getNetPosition(slug);
   if (!net.total) {
@@ -43,9 +40,6 @@ export default function NetPositionStrip({ slug }: { slug: SectorSlug }) {
               <span>Proposed {row.proposed}</span>
               {row.mixed > 0 && <span>Mixed basis {row.mixed}</span>}
             </div>
-            {/* Suppressed until weight_intensity exists on rows that name a
-                sector — see the note at the top of this file.
-                <div className="netpos-intensity">{intensityLine(row)}</div> */}
           </div>
         ))}
       </div>
