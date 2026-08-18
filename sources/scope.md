@@ -122,3 +122,64 @@ ingested. **Prefer borderline to a confident wrong call in either direction** �
 a false "out" silently drops a measure and nobody finds out; a false "in"
 produces a bad register row that has to be unwound. Borderline costs one human
 minute.
+
+## STANDING RULINGS
+
+Decisions taken once and binding on later work. They are here rather than in a
+commit message because the next person to touch this needs them before they
+start, not after they have guessed.
+
+### Edges are evidenced claims about the world; filing decisions are not edges
+
+The graph's edge set holds assertions that something is true outside this
+repository: this act amends that one, this act repeals that one from that date,
+this sector supplies that one. Every edge carries `since` and an evidence
+pointer because every edge is defensible against a source.
+
+How this register *files* things is a different kind of fact. That plastics
+converting sits under chemicals is a choice about presentation, revisable at
+any time without anything in the world changing. So sector parentage is a node
+**attribute**, not an edge. Making it an edge would put a taxonomy decision on
+the same footing as a repeal clause, and a reader walking the edge set would
+have no way to tell the two apart.
+
+The general form: if the relation would survive this repository being deleted,
+it is an edge. If it would not, it is an attribute.
+
+### The exposure methodology is reconstructed, and proved by reproduction
+
+`data/exposure/*.json` is built by `sources/build_exposure.py` from the raw
+FIGARO flatfile. The first eleven files predate the builder — they were
+delivered from outside the repo — so the builder had to recover their
+methodology rather than define one. `--check` rebuilds those eleven and diffs
+them against what is on disk, and it passed exactly before any new sector was
+written. That gate is the licence to trust the new files: they come out of the
+same arithmetic, not out of a plausible-looking guess. **Do not add a sector
+whose exposure file was produced any other way, and do not change the builder
+without `--check` still passing.**
+
+Four corrections were forced by mismatches during the reconstruction. Each is
+load-bearing and none is cosmetic:
+
+1. **Value added is not a supplier.** FIGARO's `rowIi` includes compensation of
+   employees (`D1`), gross operating surplus (`B2A3G`) and the tax rows. Left
+   in, they are read as industries selling into the sector: `D1` ranked second
+   on the chemicals supplier list, and **chemicals' import dependency came out
+   at 42.7 % against the delivered 21.9 %** — a number that would have been
+   published, looked plausible, and been wrong by a factor of two.
+2. **`refArea` `W2` is a world aggregate**, restating rows already present in
+   the file. It double-counts, and before exclusion it accounted for 62 % of
+   chemicals' foreign inputs.
+3. **Final demand is outside the customers denominator.** Household, government
+   and NPISH consumption and capital formation are final uses, not customers.
+   With them in the denominator every customer share was understated by about a
+   fifth; with them out, all eight chemicals rows matched to the decimal.
+4. **`OTHER` is the remainder taken before rounding**, not the remainder of the
+   rounded shares. The difference is a tenth of a point on roughly a third of
+   the views. It was found because every named row already matched and only
+   `OTHER` did not.
+
+A fifth correction was a genuine tie rather than a methodology error: Malta
+buys exactly 0.546 of basic metals from each of `GB` and `ES`, so the sort
+breaks ties on value descending, then code **ascending**. A tiebreak is not
+cosmetic when it silently reorders a published row.
