@@ -18,6 +18,16 @@
   }
  },
  {
+  "id": "act:31994L0062",
+  "kind": "act",
+  "label": "Packaging and Packaging Waste Directive",
+  "attrs": {
+   "celex": "31994L0062",
+   "status": "repealed",
+   "repealed_from": "2026-08-12"
+  }
+ },
+ {
   "id": "act:32000L0060",
   "kind": "act",
   "label": "Water Framework Directive",
@@ -216,11 +226,29 @@
   }
  },
  {
+  "id": "act:32019L0904",
+  "kind": "act",
+  "label": "Single-Use Plastics Directive",
+  "attrs": {
+   "celex": "32019L0904",
+   "status": "adopted"
+  }
+ },
+ {
   "id": "act:32019R0631",
   "kind": "act",
   "label": "CO2 Standards for Cars and Vans",
   "attrs": {
    "celex": "32019R0631",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32019R1020",
+  "kind": "act",
+  "label": "Market Surveillance Regulation",
+  "attrs": {
+   "celex": "32019R1020",
    "status": "adopted"
   }
  },
@@ -336,6 +364,19 @@
   }
  },
  {
+  "id": "act:32025R0040",
+  "kind": "act",
+  "label": "32025R0040",
+  "attrs": {
+   "celex": "32025R0040",
+   "kind_of_act": "adopted",
+   "status": "adopted",
+   "procedure": null,
+   "manifest_slug": "ppwr",
+   "consolidated_celex": null
+  }
+ },
+ {
   "id": "act:52025PC0081",
   "kind": "act",
   "label": "52025PC0081",
@@ -423,6 +464,16 @@
    "iso2": "BG",
    "aggregate": false,
    "in_eu": true
+  }
+ },
+ {
+  "id": "country:BR",
+  "kind": "country",
+  "label": "BR",
+  "attrs": {
+   "iso2": "BR",
+   "aggregate": false,
+   "in_eu": false
   }
  },
  {
@@ -5884,7 +5935,8 @@
   "label": "Aviation",
   "attrs": {
    "figaro_code": "H51",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
   }
  },
  {
@@ -5893,7 +5945,8 @@
   "label": "Aluminium",
   "attrs": {
    "figaro_code": "C24",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
   }
  },
  {
@@ -5902,7 +5955,8 @@
   "label": "Automotive",
   "attrs": {
    "figaro_code": "C29",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
   }
  },
  {
@@ -5911,7 +5965,8 @@
   "label": "Batteries and solar",
   "attrs": {
    "figaro_code": null,
-   "has_exposure": false
+   "has_exposure": false,
+   "parent": null
   }
  },
  {
@@ -5920,7 +5975,8 @@
   "label": "Construction",
   "attrs": {
    "figaro_code": "F",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
   }
  },
  {
@@ -5929,7 +5985,8 @@
   "label": "Carbon capture and storage",
   "attrs": {
    "figaro_code": null,
-   "has_exposure": false
+   "has_exposure": false,
+   "parent": null
   }
  },
  {
@@ -5938,7 +5995,8 @@
   "label": "Cement",
   "attrs": {
    "figaro_code": "C23",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
   }
  },
  {
@@ -5947,7 +6005,18 @@
   "label": "Chemicals",
   "attrs": {
    "figaro_code": "C20",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
+  }
+ },
+ {
+  "id": "sector:chem/plastics",
+  "kind": "sector",
+  "label": "Plastics converting",
+  "attrs": {
+   "figaro_code": "C22",
+   "has_exposure": true,
+   "parent": "chem"
   }
  },
  {
@@ -5956,7 +6025,18 @@
   "label": "Clean tech",
   "attrs": {
    "figaro_code": null,
-   "has_exposure": false
+   "has_exposure": false,
+   "parent": null
+  }
+ },
+ {
+  "id": "sector:foodbev",
+  "kind": "sector",
+  "label": "Food and drink",
+  "attrs": {
+   "figaro_code": "C10T12",
+   "has_exposure": true,
+   "parent": null
   }
  },
  {
@@ -5965,7 +6045,28 @@
   "label": "Glass",
   "attrs": {
    "figaro_code": "C23",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
+  }
+ },
+ {
+  "id": "sector:horeca",
+  "kind": "sector",
+  "label": "Hotels and restaurants",
+  "attrs": {
+   "figaro_code": "I",
+   "has_exposure": true,
+   "parent": null
+  }
+ },
+ {
+  "id": "sector:paper",
+  "kind": "sector",
+  "label": "Paper and board",
+  "attrs": {
+   "figaro_code": "C17",
+   "has_exposure": true,
+   "parent": null
   }
  },
  {
@@ -5974,7 +6075,18 @@
   "label": "Power",
   "attrs": {
    "figaro_code": "D35",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
+  }
+ },
+ {
+  "id": "sector:retail",
+  "kind": "sector",
+  "label": "Retail",
+  "attrs": {
+   "figaro_code": "G47",
+   "has_exposure": true,
+   "parent": null
   }
  },
  {
@@ -5983,7 +6095,8 @@
   "label": "Shipping",
   "attrs": {
    "figaro_code": "H50",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
   }
  },
  {
@@ -5992,7 +6105,8 @@
   "label": "Steel",
   "attrs": {
    "figaro_code": "C24",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
   }
  },
  {
@@ -6001,7 +6115,18 @@
   "label": "Waste",
   "attrs": {
    "figaro_code": "E37T39",
-   "has_exposure": true
+   "has_exposure": true,
+   "parent": null
+  }
+ },
+ {
+  "id": "sector:wood",
+  "kind": "sector",
+  "label": "Wood",
+  "attrs": {
+   "figaro_code": "C16",
+   "has_exposure": true,
+   "parent": null
   }
  }
 ]

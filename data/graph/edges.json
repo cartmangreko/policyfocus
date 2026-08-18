@@ -1,6 +1,26 @@
 [
  {
   "rel": "amends",
+  "from": "act:32025R0040",
+  "to": "act:32019L0904",
+  "since": "2025",
+  "evidence": {
+   "source": "sources/manifest.json",
+   "path": "ppwr.amends"
+  }
+ },
+ {
+  "rel": "amends",
+  "from": "act:32025R0040",
+  "to": "act:32019R1020",
+  "since": "2025",
+  "evidence": {
+   "source": "sources/manifest.json",
+   "path": "ppwr.amends"
+  }
+ },
+ {
+  "rel": "amends",
   "from": "act:52025PC0989",
   "to": "act:32023R0956",
   "since": "2025",
@@ -14274,6 +14294,17 @@
  },
  {
   "rel": "cites",
+  "from": "measure:crma:CRMAB-CNF-02",
+  "to": "act:32019R1020",
+  "since": "2024",
+  "evidence": {
+   "source": "data/crma.json",
+   "path": "[id=CRMAB-CNF-02]",
+   "quote": "4 of Regulation (EU) 2019/1020 before placing it on the market."
+  }
+ },
+ {
+  "rel": "cites",
   "from": "measure:crma:CRMAB-PLAN-02",
   "to": "act:31992L0043",
   "since": "2024",
@@ -20855,6 +20886,230 @@
  },
  {
   "rel": "imports_from",
+  "from": "sector:chem/plastics",
+  "to": "country:CH",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.foreign_input_origins[3]"
+  },
+  "view": "EU",
+  "share_pct": 11.4,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:chem/plastics",
+  "to": "country:CN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.foreign_input_origins[1]"
+  },
+  "view": "EU",
+  "share_pct": 12.6,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:chem/plastics",
+  "to": "country:GB",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.foreign_input_origins[4]"
+  },
+  "view": "EU",
+  "share_pct": 7.7,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:chem/plastics",
+  "to": "country:IN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.foreign_input_origins[7]"
+  },
+  "view": "EU",
+  "share_pct": 3.6,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:chem/plastics",
+  "to": "country:KR",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.foreign_input_origins[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.9,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:chem/plastics",
+  "to": "country:ROW",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.foreign_input_origins[0]"
+  },
+  "view": "EU",
+  "share_pct": 29.4,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:chem/plastics",
+  "to": "country:TR",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.foreign_input_origins[6]"
+  },
+  "view": "EU",
+  "share_pct": 3.8,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:chem/plastics",
+  "to": "country:US",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.foreign_input_origins[2]"
+  },
+  "view": "EU",
+  "share_pct": 12.5,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:foodbev",
+  "to": "country:BR",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.foreign_input_origins[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.7,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:foodbev",
+  "to": "country:CH",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.foreign_input_origins[3]"
+  },
+  "view": "EU",
+  "share_pct": 6.2,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:foodbev",
+  "to": "country:CN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.foreign_input_origins[4]"
+  },
+  "view": "EU",
+  "share_pct": 6.1,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:foodbev",
+  "to": "country:GB",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.foreign_input_origins[2]"
+  },
+  "view": "EU",
+  "share_pct": 8.2,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:foodbev",
+  "to": "country:NO",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.foreign_input_origins[6]"
+  },
+  "view": "EU",
+  "share_pct": 3.7,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:foodbev",
+  "to": "country:ROW",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.foreign_input_origins[0]"
+  },
+  "view": "EU",
+  "share_pct": 41.6,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:foodbev",
+  "to": "country:TR",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.foreign_input_origins[7]"
+  },
+  "view": "EU",
+  "share_pct": 2.6,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:foodbev",
+  "to": "country:US",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.foreign_input_origins[1]"
+  },
+  "view": "EU",
+  "share_pct": 15.4,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
   "from": "sector:glass",
   "to": "country:CH",
   "since": "2024",
@@ -20967,6 +21222,230 @@
  },
  {
   "rel": "imports_from",
+  "from": "sector:horeca",
+  "to": "country:CH",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.foreign_input_origins[3]"
+  },
+  "view": "EU",
+  "share_pct": 8.1,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:horeca",
+  "to": "country:CN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.foreign_input_origins[4]"
+  },
+  "view": "EU",
+  "share_pct": 7.0,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:horeca",
+  "to": "country:GB",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.foreign_input_origins[2]"
+  },
+  "view": "EU",
+  "share_pct": 12.1,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:horeca",
+  "to": "country:IN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.foreign_input_origins[6]"
+  },
+  "view": "EU",
+  "share_pct": 3.2,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:horeca",
+  "to": "country:NO",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.foreign_input_origins[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.7,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:horeca",
+  "to": "country:ROW",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.foreign_input_origins[0]"
+  },
+  "view": "EU",
+  "share_pct": 34.6,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:horeca",
+  "to": "country:TR",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.foreign_input_origins[7]"
+  },
+  "view": "EU",
+  "share_pct": 2.5,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:horeca",
+  "to": "country:US",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.foreign_input_origins[1]"
+  },
+  "view": "EU",
+  "share_pct": 15.7,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:paper",
+  "to": "country:BR",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.foreign_input_origins[6]"
+  },
+  "view": "EU",
+  "share_pct": 4.5,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:paper",
+  "to": "country:CH",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.foreign_input_origins[4]"
+  },
+  "view": "EU",
+  "share_pct": 6.8,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:paper",
+  "to": "country:CN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.foreign_input_origins[2]"
+  },
+  "view": "EU",
+  "share_pct": 10.4,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:paper",
+  "to": "country:GB",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.foreign_input_origins[3]"
+  },
+  "view": "EU",
+  "share_pct": 7.7,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:paper",
+  "to": "country:IN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.foreign_input_origins[7]"
+  },
+  "view": "EU",
+  "share_pct": 2.8,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:paper",
+  "to": "country:NO",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.foreign_input_origins[5]"
+  },
+  "view": "EU",
+  "share_pct": 4.9,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:paper",
+  "to": "country:ROW",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.foreign_input_origins[0]"
+  },
+  "view": "EU",
+  "share_pct": 31.6,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:paper",
+  "to": "country:US",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.foreign_input_origins[1]"
+  },
+  "view": "EU",
+  "share_pct": 15.2,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
   "from": "sector:power",
   "to": "country:CH",
   "since": "2024",
@@ -21074,6 +21553,118 @@
   },
   "view": "EU",
   "share_pct": 13.6,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:retail",
+  "to": "country:CH",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/retail.json",
+   "path": "eu.foreign_input_origins[3]"
+  },
+  "view": "EU",
+  "share_pct": 9.4,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:retail",
+  "to": "country:CN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/retail.json",
+   "path": "eu.foreign_input_origins[4]"
+  },
+  "view": "EU",
+  "share_pct": 8.2,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:retail",
+  "to": "country:GB",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/retail.json",
+   "path": "eu.foreign_input_origins[2]"
+  },
+  "view": "EU",
+  "share_pct": 11.9,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:retail",
+  "to": "country:IN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/retail.json",
+   "path": "eu.foreign_input_origins[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.9,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:retail",
+  "to": "country:MX",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/retail.json",
+   "path": "eu.foreign_input_origins[6]"
+  },
+  "view": "EU",
+  "share_pct": 2.6,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:retail",
+  "to": "country:ROW",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/retail.json",
+   "path": "eu.foreign_input_origins[0]"
+  },
+  "view": "EU",
+  "share_pct": 28.7,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:retail",
+  "to": "country:TR",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/retail.json",
+   "path": "eu.foreign_input_origins[7]"
+  },
+  "view": "EU",
+  "share_pct": 2.2,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:retail",
+  "to": "country:US",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/retail.json",
+   "path": "eu.foreign_input_origins[1]"
+  },
+  "view": "EU",
+  "share_pct": 21.5,
   "share_basis": "percent of the sector's foreign inputs",
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
  },
@@ -21414,6 +22005,152 @@
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
  },
  {
+  "rel": "imports_from",
+  "from": "sector:wood",
+  "to": "country:BR",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.foreign_input_origins[7]"
+  },
+  "view": "EU",
+  "share_pct": 2.9,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:wood",
+  "to": "country:CH",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.foreign_input_origins[3]"
+  },
+  "view": "EU",
+  "share_pct": 7.1,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:wood",
+  "to": "country:CN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.foreign_input_origins[1]"
+  },
+  "view": "EU",
+  "share_pct": 15.1,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:wood",
+  "to": "country:GB",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.foreign_input_origins[4]"
+  },
+  "view": "EU",
+  "share_pct": 6.1,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:wood",
+  "to": "country:IN",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.foreign_input_origins[6]"
+  },
+  "view": "EU",
+  "share_pct": 2.9,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:wood",
+  "to": "country:MX",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.foreign_input_origins[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.0,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:wood",
+  "to": "country:ROW",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.foreign_input_origins[0]"
+  },
+  "view": "EU",
+  "share_pct": 34.7,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "imports_from",
+  "from": "sector:wood",
+  "to": "country:US",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.foreign_input_origins[2]"
+  },
+  "view": "EU",
+  "share_pct": 12.1,
+  "share_basis": "percent of the sector's foreign inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "repeals",
+  "from": "act:32025R0040",
+  "to": "act:31994L0062",
+  "since": "2026-08-12",
+  "evidence": {
+   "source": "sources/manifest.json",
+   "path": "ppwr.repeals.31994L0062",
+   "quote": "Directive 94/62/EC is repealed with effect from 12 August 2026"
+  },
+  "survivals": [
+   {
+    "provision": "Art. 8(2)",
+    "until": "30 months from entry into force of the implementing act under Art. 12(6) PPWR",
+    "quote": "Article 8(2) of Directive 94/62/EC, which shall continue to apply until 30 months from the date of entry into force of the implementing act adopted pursuant to Article 12(6) of this Regulation"
+   },
+   {
+    "provision": "Art. 9(1) and (2)",
+    "until": "2029-12-31",
+    "quote": "Article 9(1) and (2) of Directive 94/62/EC, which shall continue to apply with regard to the essential requirements pursuant to point 1, first indent, of Annex II to that Directive until 31 December 2029"
+   },
+   {
+    "provision": "Art. 5(2) and (3), Art. 6(1)(d) and (e), Art. 6a",
+    "until": "2028-12-31",
+    "quote": "Article 5(2) and (3), Article 6(1), points (d) and (e), and Article 6a of Directive 94/62/EC, which shall continue to apply until 31 December 2028"
+   },
+   {
+    "provision": "Art. 12(3a), (3b), (3c) and (4)",
+    "until": "2028-12-31, except data transmission to the Commission which runs to 2029-12-31",
+    "quote": "Article 12(3a), (3b), (3c) and (4) of Directive 94/62/EC, which shall continue to apply until 31 December 2028, except as regards the transmission of data to the Commission, in respect of which it shall continue to apply until 31 December 2029"
+   }
+  ],
+  "correlation_table": "Annex XIII; Art. 70(5): References to the repealed Directive 94/62/EC shall be construed as references to this Regulation and shall be read in accordance with the correlation table in Annex XIII to this Regulation."
+ },
+ {
   "rel": "supplies",
   "from": "sector:air",
   "to": "sector:auto",
@@ -21573,6 +22310,20 @@
  {
   "rel": "supplies",
   "from": "sector:cement",
+  "to": "sector:foodbev",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/cement.json",
+   "path": "eu.customers[1]"
+  },
+  "view": "EU",
+  "share_pct": 3.5,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:cement",
   "to": "sector:steel",
   "since": "2024",
   "evidence": {
@@ -21644,6 +22395,34 @@
  {
   "rel": "supplies",
   "from": "sector:chem",
+  "to": "sector:chem/plastics",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem.json",
+   "path": "eu.customers[0]"
+  },
+  "view": "EU",
+  "share_pct": 11.3,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:chem",
+  "to": "sector:foodbev",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem.json",
+   "path": "eu.customers[5]"
+  },
+  "view": "EU",
+  "share_pct": 2.7,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:chem",
   "to": "sector:glass",
   "since": "2024",
   "evidence": {
@@ -21652,6 +22431,20 @@
   },
   "view": "EU",
   "share_pct": 4.3,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:chem",
+  "to": "sector:paper",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.suppliers[2]"
+  },
+  "view": "EU",
+  "share_pct": 5.4,
   "share_basis": "percent of the receiving sector's total inputs",
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
  },
@@ -21667,6 +22460,118 @@
   "view": "EU",
   "share_pct": 2.1,
   "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:chem",
+  "to": "sector:wood",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.suppliers[3]"
+  },
+  "view": "EU",
+  "share_pct": 3.9,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:chem/plastics",
+  "to": "sector:auto",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/auto.json",
+   "path": "eu.suppliers[5]"
+  },
+  "view": "EU",
+  "share_pct": 4.2,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:chem/plastics",
+  "to": "sector:build",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/build.json",
+   "path": "eu.suppliers[4]"
+  },
+  "view": "EU",
+  "share_pct": 3.4,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:chem/plastics",
+  "to": "sector:chem",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.customers[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.2,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:chem/plastics",
+  "to": "sector:foodbev",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.customers[2]"
+  },
+  "view": "EU",
+  "share_pct": 6.7,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:foodbev",
+  "to": "sector:chem",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem.json",
+   "path": "eu.suppliers[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.1,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:foodbev",
+  "to": "sector:horeca",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.customers[0]"
+  },
+  "view": "EU",
+  "share_pct": 22.3,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:foodbev",
+  "to": "sector:retail",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.customers[6]"
+  },
+  "view": "EU",
+  "share_pct": 1.5,
+  "share_basis": "percent of the supplying sector's total output",
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
  },
  {
@@ -21730,6 +22635,20 @@
  {
   "rel": "supplies",
   "from": "sector:glass",
+  "to": "sector:foodbev",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/glass.json",
+   "path": "eu.customers[1]"
+  },
+  "view": "EU",
+  "share_pct": 3.5,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:glass",
   "to": "sector:steel",
   "since": "2024",
   "evidence": {
@@ -21741,6 +22660,76 @@
   "share_basis": "percent of the supplying sector's total output",
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26",
   "shared_figaro_code": "C24"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:horeca",
+  "to": "sector:air",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/air.json",
+   "path": "eu.suppliers[7]"
+  },
+  "view": "EU",
+  "share_pct": 3.3,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:horeca",
+  "to": "sector:build",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.customers[2]"
+  },
+  "view": "EU",
+  "share_pct": 5.4,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:paper",
+  "to": "sector:chem",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.customers[4]"
+  },
+  "view": "EU",
+  "share_pct": 2.8,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:paper",
+  "to": "sector:foodbev",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.customers[0]"
+  },
+  "view": "EU",
+  "share_pct": 11.7,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:paper",
+  "to": "sector:retail",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.customers[5]"
+  },
+  "view": "EU",
+  "share_pct": 2.6,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
  },
  {
   "rel": "supplies",
@@ -21801,6 +22790,34 @@
  {
   "rel": "supplies",
   "from": "sector:power",
+  "to": "sector:chem/plastics",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.suppliers[2]"
+  },
+  "view": "EU",
+  "share_pct": 4.0,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:power",
+  "to": "sector:foodbev",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.suppliers[4]"
+  },
+  "view": "EU",
+  "share_pct": 2.5,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:power",
   "to": "sector:glass",
   "since": "2024",
   "evidence": {
@@ -21810,6 +22827,48 @@
   "view": "EU",
   "share_pct": 8.1,
   "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:power",
+  "to": "sector:horeca",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.suppliers[3]"
+  },
+  "view": "EU",
+  "share_pct": 4.5,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:power",
+  "to": "sector:paper",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.suppliers[1]"
+  },
+  "view": "EU",
+  "share_pct": 7.0,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:power",
+  "to": "sector:retail",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/power.json",
+   "path": "eu.customers[2]"
+  },
+  "view": "EU",
+  "share_pct": 3.6,
+  "share_basis": "percent of the supplying sector's total output",
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
  },
  {
@@ -21838,6 +22897,202 @@
   },
   "view": "EU",
   "share_pct": 3.5,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:power",
+  "to": "sector:wood",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.suppliers[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.4,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:alu",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/alu.json",
+   "path": "eu.suppliers[7]"
+  },
+  "view": "EU",
+  "share_pct": 1.7,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:auto",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/retail.json",
+   "path": "eu.customers[4]"
+  },
+  "view": "EU",
+  "share_pct": 4.1,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:build",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/retail.json",
+   "path": "eu.customers[1]"
+  },
+  "view": "EU",
+  "share_pct": 7.1,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:cement",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/cement.json",
+   "path": "eu.suppliers[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.1,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:chem",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem.json",
+   "path": "eu.suppliers[7]"
+  },
+  "view": "EU",
+  "share_pct": 2.5,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:chem/plastics",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.suppliers[4]"
+  },
+  "view": "EU",
+  "share_pct": 2.9,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:foodbev",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/foodbev.json",
+   "path": "eu.suppliers[3]"
+  },
+  "view": "EU",
+  "share_pct": 3.0,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:glass",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/glass.json",
+   "path": "eu.suppliers[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.1,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:horeca",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/horeca.json",
+   "path": "eu.suppliers[4]"
+  },
+  "view": "EU",
+  "share_pct": 4.1,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:paper",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.suppliers[6]"
+  },
+  "view": "EU",
+  "share_pct": 2.7,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:ship",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/ship.json",
+   "path": "eu.suppliers[5]"
+  },
+  "view": "EU",
+  "share_pct": 2.7,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:steel",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/steel.json",
+   "path": "eu.suppliers[7]"
+  },
+  "view": "EU",
+  "share_pct": 1.7,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:retail",
+  "to": "sector:wood",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.suppliers[4]"
+  },
+  "view": "EU",
+  "share_pct": 3.6,
   "share_basis": "percent of the receiving sector's total inputs",
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
  },
@@ -21988,6 +23243,48 @@
  {
   "rel": "supplies",
   "from": "sector:waste",
+  "to": "sector:chem/plastics",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/chem__plastics.json",
+   "path": "eu.suppliers[7]"
+  },
+  "view": "EU",
+  "share_pct": 2.3,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:waste",
+  "to": "sector:foodbev",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/waste.json",
+   "path": "eu.customers[4]"
+  },
+  "view": "EU",
+  "share_pct": 3.2,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:waste",
+  "to": "sector:paper",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.suppliers[5]"
+  },
+  "view": "EU",
+  "share_pct": 3.8,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:waste",
   "to": "sector:steel",
   "since": "2024",
   "evidence": {
@@ -21997,6 +23294,62 @@
   "view": "EU",
   "share_pct": 5.8,
   "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:wood",
+  "to": "sector:build",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.customers[0]"
+  },
+  "view": "EU",
+  "share_pct": 33.0,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:wood",
+  "to": "sector:foodbev",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.customers[3]"
+  },
+  "view": "EU",
+  "share_pct": 2.9,
+  "share_basis": "percent of the supplying sector's total output",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:wood",
+  "to": "sector:paper",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/paper.json",
+   "path": "eu.suppliers[7]"
+  },
+  "view": "EU",
+  "share_pct": 2.7,
+  "share_basis": "percent of the receiving sector's total inputs",
+  "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supplies",
+  "from": "sector:wood",
+  "to": "sector:power",
+  "since": "2024",
+  "evidence": {
+   "source": "data/exposure/wood.json",
+   "path": "eu.customers[4]"
+  },
+  "view": "EU",
+  "share_pct": 2.4,
+  "share_basis": "percent of the supplying sector's total output",
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
  }
 ]

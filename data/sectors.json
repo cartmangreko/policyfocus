@@ -1,0 +1,31 @@
+{
+  "_comment": "The sector spine, read by sources/build_graph.py and by web/lib/data.ts so the two sides cannot drift — the same arrangement register_files.json uses. Two levels only: a sector is a parent (parent null) or a child of exactly one parent. A child exists ONLY where at least one measure applies to the child and not to the parent; `evidence` records which measures forced it, and a child without that evidence should be folded back into its parent. `name` is the short graph label; `label` is the longer display label the app renders. `figaro` is informational — data/exposure/_manifest.json is authoritative for whether an exposure file exists, and a child NEVER inherits its parent's exposure: it has its own file or it shows none.",
+  "sectors": {
+    "steel": { "name": "Steel", "label": "Steel", "parent": null, "figaro": "C24" },
+    "cement": { "name": "Cement", "label": "Cement and concrete", "parent": null, "figaro": "C23" },
+    "alu": { "name": "Aluminium", "label": "Aluminium and metals", "parent": null, "figaro": "C24" },
+    "chem": { "name": "Chemicals", "label": "Chemicals and refining", "parent": null, "figaro": "C20" },
+    "chem/plastics": {
+      "name": "Plastics converting",
+      "label": "Plastics converting",
+      "parent": "chem",
+      "figaro": "C22",
+      "evidence": "PPWR Arts. 6 (recyclability grades), 7 (recycled-content minimums), 9 (compostables), 25 and Annex V (format bans) and 34 (carrier bags) fall on the conversion of polymer into packaging, not on chemicals manufacture. FIGARO separates the two as C22 and C20, so the child carries its own exposure rather than inheriting C20."
+    },
+    "glass": { "name": "Glass", "label": "Glass and ceramics", "parent": null, "figaro": "C23" },
+    "paper": { "name": "Paper and board", "label": "Paper and board", "parent": null, "figaro": "C17" },
+    "wood": { "name": "Wood", "label": "Wood and wood products", "parent": null, "figaro": "C16" },
+    "foodbev": { "name": "Food and drink", "label": "Food, drink and tobacco", "parent": null, "figaro": "C10T12" },
+    "retail": { "name": "Retail", "label": "Retail and distribution", "parent": null, "figaro": "G47" },
+    "horeca": { "name": "Hotels and restaurants", "label": "Hotels, restaurants and catering", "parent": null, "figaro": "I" },
+    "power": { "name": "Power", "label": "Power and heat", "parent": null, "figaro": "D35" },
+    "waste": { "name": "Waste", "label": "Waste and landfill", "parent": null, "figaro": "E37T39" },
+    "ship": { "name": "Shipping", "label": "Shipping", "parent": null, "figaro": "H50" },
+    "air": { "name": "Aviation", "label": "Aviation", "parent": null, "figaro": "H51" },
+    "auto": { "name": "Automotive", "label": "Automotive", "parent": null, "figaro": "C29" },
+    "build": { "name": "Construction", "label": "Construction", "parent": null, "figaro": "F" },
+    "batsol": { "name": "Batteries and solar", "label": "Batteries and solar", "parent": null, "figaro": null },
+    "clean": { "name": "Clean tech", "label": "Wind, heat pumps, hydrogen", "parent": null, "figaro": null },
+    "ccs": { "name": "Carbon capture and storage", "label": "Carbon capture and fuels", "parent": null, "figaro": null }
+  }
+}

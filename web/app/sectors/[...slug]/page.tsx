@@ -18,16 +18,20 @@ import { getFindingsForSector, withEvidence } from "@/lib/findings";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
 import type { SectorSlug } from "@/lib/types";
 
+// A catch-all route, because a child sector's URL has two segments:
+// /sectors/chem is the parent, /sectors/chem/plastics the child. The slug and
+// the path are the same string — "chem/plastics" — so nothing has to translate
+// between an id and a URL.
 export function generateStaticParams() {
-  return getSectorSlugs().map((slug) => ({ slug }));
+  return getSectorSlugs().map((slug) => ({ slug: slug.split("/") }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const slug = (await params).slug.join("/");
   if (!(slug in SECTORS)) return { title: "Sector not found" };
   const name = SECTORS[slug as SectorSlug];
   const stats = getSectorStats(slug as SectorSlug);
@@ -37,8 +41,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function SectorPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function SectorPage({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}) {
+  const slug = (await params).slug.join("/");
   if (!(slug in SECTORS)) notFound();
 
   const sectorSlug = slug as SectorSlug;

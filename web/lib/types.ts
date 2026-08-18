@@ -14,9 +14,23 @@ export type DDriver = "D1" | "D2" | "D3" | "D4" | "D5" | "D6" | "D7";
 export type VDriver = "V1" | "V2" | "V3" | "V4";
 export type FFriction = "F1" | "F2" | "F3" | "F4" | "F5";
 
+// The sector spine. Two levels: every slug here is a parent, except the one
+// carrying a slash, which is a child of the segment before it. Defined in
+// data/sectors.json; this union mirrors it so slugs stay literal types, and
+// lib/data.ts throws at build time if the two ever disagree.
 export type SectorSlug =
-  | "steel" | "cement" | "alu" | "chem" | "glass" | "power" | "waste"
-  | "ship" | "air" | "auto" | "build" | "batsol" | "clean" | "ccs";
+  | "steel" | "cement" | "alu" | "chem" | "chem/plastics" | "glass"
+  | "paper" | "wood" | "foodbev" | "retail" | "horeca"
+  | "power" | "waste" | "ship" | "air" | "auto" | "build"
+  | "batsol" | "clean" | "ccs";
+
+export interface SectorMeta {
+  name: string;
+  label: string;
+  parent: SectorSlug | null;
+  figaro: string | null;
+  evidence?: string;
+}
 
 export interface RuleState {
   trigger: string;

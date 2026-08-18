@@ -797,10 +797,20 @@ def process(slug, entry, formats, refresh, overwrite, dry_run, log):
         log(f"    verified -> sources/{name} ({size} chars)")
     record["annexes"] = has_annex_doc
 
-    # An amending proposal needs the text it amends, or the before/after delta
-    # has no prior-rule source. This is what the manifest's amends list is for.
-    if declared_status == "proposed":
-        for amended in entry.get("amends", []):
+    # An act needs the text it changes, or the before/after delta has no
+    # prior-rule source.
+    #
+    # This used to run only for proposals, on the assumption that a delta is
+    # always a proposal amending something. An adopted regulation that REPEALS
+    # a directive breaks that assumption: PPWR replaces 94/62/EC outright, and
+    # the deletion guardrail cannot resolve a single prior_rule without the
+    # directive's text -- but PPWR is adopted, so it got nothing. The condition
+    # is therefore about whether the act changes an earlier one, not about its
+    # own status.
+    prior_targets = list(entry.get("amends", []))
+    prior_targets += [t for t in entry.get("repeals", {}) if t not in prior_targets]
+    if prior_targets:
+        for amended in prior_targets:
             log(f"  prior rule: {amended}")
             resolved, date = resolve_consolidated(amended, lang, log)
             prior_celex = resolved or amended

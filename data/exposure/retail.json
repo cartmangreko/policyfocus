@@ -1,0 +1,4041 @@
+{
+  "slug": "retail",
+  "figaro_code": "G47",
+  "figaro_label": "retail trade",
+  "shares_basis": "percent of sector's total inputs (suppliers) / total output (customers); OTHER row carries the remainder to 100",
+  "note": null,
+  "eu": {
+    "import_dependency_pct": 6.6,
+    "suppliers": [
+      {
+        "code": "L",
+        "label": "real estate",
+        "share": 16.7
+      },
+      {
+        "code": "G46",
+        "label": "wholesale trade",
+        "share": 8.2
+      },
+      {
+        "code": "M69_70",
+        "label": "legal, accounting & consulting",
+        "share": 7.8
+      },
+      {
+        "code": "K64",
+        "label": "finance",
+        "share": 5.4
+      },
+      {
+        "code": "N80T82",
+        "label": "security & facilities",
+        "share": 5.2
+      },
+      {
+        "code": "H52",
+        "label": "warehousing",
+        "share": 4.8
+      },
+      {
+        "code": "D35",
+        "label": "electricity & gas",
+        "share": 4.8
+      },
+      {
+        "code": "H49",
+        "label": "land transport",
+        "share": 4.7
+      },
+      {
+        "code": "OTHER",
+        "label": "everything else",
+        "share": 42.3
+      }
+    ],
+    "customers": [
+      {
+        "code": "C10T12",
+        "label": "food, drink & tobacco",
+        "share": 9.6
+      },
+      {
+        "code": "F",
+        "label": "construction",
+        "share": 7.1
+      },
+      {
+        "code": "Q86",
+        "label": "health",
+        "share": 6.5
+      },
+      {
+        "code": "I",
+        "label": "hotels & restaurants",
+        "share": 5.3
+      },
+      {
+        "code": "C29",
+        "label": "vehicles",
+        "share": 4.1
+      },
+      {
+        "code": "G46",
+        "label": "wholesale trade",
+        "share": 3.5
+      },
+      {
+        "code": "A01",
+        "label": "crop & animal farming",
+        "share": 3.1
+      },
+      {
+        "code": "C20",
+        "label": "chemicals",
+        "share": 2.9
+      },
+      {
+        "code": "OTHER",
+        "label": "everything else",
+        "share": 57.9
+      }
+    ],
+    "foreign_input_origins": [
+      {
+        "code": "FIGW1",
+        "label": "rest of world",
+        "share": 28.7
+      },
+      {
+        "code": "US",
+        "label": "US",
+        "share": 21.5
+      },
+      {
+        "code": "GB",
+        "label": "GB",
+        "share": 11.9
+      },
+      {
+        "code": "CH",
+        "label": "CH",
+        "share": 9.4
+      },
+      {
+        "code": "CN",
+        "label": "CN",
+        "share": 8.2
+      },
+      {
+        "code": "IN",
+        "label": "IN",
+        "share": 3.9
+      },
+      {
+        "code": "MX",
+        "label": "MX",
+        "share": 2.6
+      },
+      {
+        "code": "TR",
+        "label": "TR",
+        "share": 2.2
+      },
+      {
+        "code": "OTHER",
+        "label": "everything else",
+        "share": 11.5
+      }
+    ]
+  },
+  "by_country": {
+    "AT": {
+      "import_dependency_pct": 19.5,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 23.4
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 11.6
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 11.5
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 6.9
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 5.4
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 3.5
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 3.1
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 3.0
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 31.5
+        }
+      ],
+      "customers": [
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 9.2
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 6.3
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 6.2
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 5.9
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 5.5
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 3.6
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 3.3
+        },
+        {
+          "code": "C28",
+          "label": "machinery",
+          "share": 2.9
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 57.0
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 28.0
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 8.7
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 7.2
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 4.6
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 4.6
+        },
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 4.2
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 3.9
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 3.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 35.3
+        }
+      ]
+    },
+    "BE": {
+      "import_dependency_pct": 19.6,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 18.5
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 12.4
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 10.3
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 6.9
+        },
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 4.4
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 4.1
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 3.6
+        },
+        {
+          "code": "H51",
+          "label": "air transport",
+          "share": 3.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 36.7
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 10.8
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 10.0
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 6.5
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 5.4
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 4.8
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 3.8
+        },
+        {
+          "code": "C20",
+          "label": "chemicals",
+          "share": 3.3
+        },
+        {
+          "code": "C28",
+          "label": "machinery",
+          "share": 2.8
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 52.6
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 17.4
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 14.6
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 10.2
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 8.8
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 7.1
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 5.6
+        },
+        {
+          "code": "ES",
+          "label": "ES",
+          "share": 3.9
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 3.9
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 28.5
+        }
+      ]
+    },
+    "BG": {
+      "import_dependency_pct": 20.2,
+      "suppliers": [
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 8.7
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 8.0
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 7.0
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 6.4
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 6.2
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 6.0
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 5.5
+        },
+        {
+          "code": "C22",
+          "label": "rubber & plastics",
+          "share": 5.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 47.1
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 8.6
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 6.9
+        },
+        {
+          "code": "C24",
+          "label": "basic metals (steel & aluminium)",
+          "share": 5.9
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 4.8
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 4.3
+        },
+        {
+          "code": "C19",
+          "label": "refined petroleum",
+          "share": 3.3
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 3.2
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 2.7
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 60.3
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 16.6
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 11.2
+        },
+        {
+          "code": "TR",
+          "label": "TR",
+          "share": 7.6
+        },
+        {
+          "code": "CN",
+          "label": "CN",
+          "share": 5.9
+        },
+        {
+          "code": "RO",
+          "label": "RO",
+          "share": 4.8
+        },
+        {
+          "code": "IT",
+          "label": "IT",
+          "share": 4.1
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 3.6
+        },
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 3.5
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 42.7
+        }
+      ]
+    },
+    "CY": {
+      "import_dependency_pct": 35.7,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 23.4
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 12.2
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 11.9
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 7.6
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 6.0
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 3.8
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 3.5
+        },
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 2.6
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 29.1
+        }
+      ],
+      "customers": [
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 16.3
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 13.4
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 13.0
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 9.2
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 5.3
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 3.9
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 3.5
+        },
+        {
+          "code": "C21",
+          "label": "pharmaceuticals",
+          "share": 3.3
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 32.1
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 29.5
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 15.1
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 7.1
+        },
+        {
+          "code": "RU",
+          "label": "RU",
+          "share": 6.0
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 4.5
+        },
+        {
+          "code": "TR",
+          "label": "TR",
+          "share": 4.1
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 3.0
+        },
+        {
+          "code": "IN",
+          "label": "IN",
+          "share": 2.8
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 28.0
+        }
+      ]
+    },
+    "CZ": {
+      "import_dependency_pct": 17.0,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 18.7
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 13.2
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 10.2
+        },
+        {
+          "code": "M73",
+          "label": "advertising",
+          "share": 6.2
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 4.9
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 3.8
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 3.7
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 3.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 36.0
+        }
+      ],
+      "customers": [
+        {
+          "code": "C29",
+          "label": "vehicles",
+          "share": 15.1
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 6.4
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 6.2
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 4.4
+        },
+        {
+          "code": "C28",
+          "label": "machinery",
+          "share": 4.1
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 3.9
+        },
+        {
+          "code": "C26",
+          "label": "electronics",
+          "share": 3.7
+        },
+        {
+          "code": "C27",
+          "label": "electrical equipment",
+          "share": 3.5
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 52.7
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 21.2
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 10.7
+        },
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 6.7
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 5.7
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 5.3
+        },
+        {
+          "code": "CN",
+          "label": "CN",
+          "share": 5.1
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 4.1
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 4.0
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 37.2
+        }
+      ]
+    },
+    "DE": {
+      "import_dependency_pct": 10.8,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 16.7
+        },
+        {
+          "code": "H53",
+          "label": "postal",
+          "share": 11.0
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 8.9
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 7.0
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 5.8
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 5.8
+        },
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 3.6
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 3.5
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 37.6
+        }
+      ],
+      "customers": [
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 13.3
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 8.5
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 8.3
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 7.8
+        },
+        {
+          "code": "Q87_88",
+          "label": "social work",
+          "share": 5.9
+        },
+        {
+          "code": "C29",
+          "label": "vehicles",
+          "share": 4.3
+        },
+        {
+          "code": "C26",
+          "label": "electronics",
+          "share": 4.2
+        },
+        {
+          "code": "O84",
+          "label": "public administration",
+          "share": 3.2
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 44.4
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 13.3
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 11.8
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 8.5
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 7.0
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 7.0
+        },
+        {
+          "code": "AT",
+          "label": "AT",
+          "share": 5.1
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 4.8
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 4.7
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 37.7
+        }
+      ]
+    },
+    "DK": {
+      "import_dependency_pct": 18.8,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 29.7
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 8.7
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 7.1
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 4.5
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 3.7
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 3.6
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 3.5
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 3.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 36.1
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 36.7
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 11.9
+        },
+        {
+          "code": "Q87_88",
+          "label": "social work",
+          "share": 7.9
+        },
+        {
+          "code": "J61",
+          "label": "telecoms",
+          "share": 6.2
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 6.0
+        },
+        {
+          "code": "O84",
+          "label": "public administration",
+          "share": 3.3
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 2.5
+        },
+        {
+          "code": "M72",
+          "label": "R&D",
+          "share": 2.3
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 23.1
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "US",
+          "label": "US",
+          "share": 17.2
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 17.1
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 8.5
+        },
+        {
+          "code": "SE",
+          "label": "SE",
+          "share": 7.6
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 5.6
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 5.0
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 4.4
+        },
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 4.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 30.3
+        }
+      ]
+    },
+    "EE": {
+      "import_dependency_pct": 10.1,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 30.7
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 9.7
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 9.4
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 5.6
+        },
+        {
+          "code": "M73",
+          "label": "advertising",
+          "share": 5.1
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 4.7
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 4.5
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 3.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 27.2
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 13.1
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 7.6
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 4.6
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 4.4
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 4.0
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 3.9
+        },
+        {
+          "code": "C25",
+          "label": "fabricated metal products",
+          "share": 3.8
+        },
+        {
+          "code": "C16",
+          "label": "wood products",
+          "share": 3.6
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 54.8
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 13.8
+        },
+        {
+          "code": "FI",
+          "label": "FI",
+          "share": 10.5
+        },
+        {
+          "code": "LT",
+          "label": "LT",
+          "share": 8.8
+        },
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 8.3
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 7.4
+        },
+        {
+          "code": "SE",
+          "label": "SE",
+          "share": 5.6
+        },
+        {
+          "code": "LV",
+          "label": "LV",
+          "share": 5.2
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 4.3
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 36.1
+        }
+      ]
+    },
+    "ES": {
+      "import_dependency_pct": 6.6,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 24.0
+        },
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 9.3
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 7.1
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 6.3
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 6.2
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 5.8
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 4.8
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 3.5
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 32.9
+        }
+      ],
+      "customers": [
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 14.6
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 6.2
+        },
+        {
+          "code": "C20",
+          "label": "chemicals",
+          "share": 5.4
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 4.3
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 4.3
+        },
+        {
+          "code": "C29",
+          "label": "vehicles",
+          "share": 4.0
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 3.9
+        },
+        {
+          "code": "C25",
+          "label": "fabricated metal products",
+          "share": 3.3
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 54.1
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 16.1
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 14.6
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 9.3
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 8.4
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 7.1
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 5.9
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 4.8
+        },
+        {
+          "code": "IT",
+          "label": "IT",
+          "share": 3.8
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 30.0
+        }
+      ]
+    },
+    "FI": {
+      "import_dependency_pct": 21.0,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 15.9
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 12.4
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 8.0
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 6.1
+        },
+        {
+          "code": "N78",
+          "label": "employment agencies",
+          "share": 5.0
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 4.9
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 4.8
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 4.3
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 38.6
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 13.0
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 5.7
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 4.5
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 3.3
+        },
+        {
+          "code": "O84",
+          "label": "public administration",
+          "share": 3.2
+        },
+        {
+          "code": "C26",
+          "label": "electronics",
+          "share": 2.7
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 2.4
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 2.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 62.7
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "SE",
+          "label": "SE",
+          "share": 15.1
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 10.5
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 8.9
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 6.6
+        },
+        {
+          "code": "DK",
+          "label": "DK",
+          "share": 6.1
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 5.7
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 5.6
+        },
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 4.8
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 36.8
+        }
+      ]
+    },
+    "FR": {
+      "import_dependency_pct": 16.0,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 14.6
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 9.7
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 8.0
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 6.4
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 5.8
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 4.4
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 3.9
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 3.9
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 43.4
+        }
+      ],
+      "customers": [
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 8.6
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 8.2
+        },
+        {
+          "code": "C29",
+          "label": "vehicles",
+          "share": 6.2
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 5.8
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 3.8
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 3.8
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 3.3
+        },
+        {
+          "code": "C33",
+          "label": "machinery repair",
+          "share": 2.7
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 57.6
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 14.7
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 10.8
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 8.8
+        },
+        {
+          "code": "ES",
+          "label": "ES",
+          "share": 6.9
+        },
+        {
+          "code": "IT",
+          "label": "IT",
+          "share": 6.7
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 6.1
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 5.2
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 5.2
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 35.6
+        }
+      ]
+    },
+    "GR": {
+      "import_dependency_pct": 16.7,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 25.3
+        },
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 15.4
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 7.7
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 6.5
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 6.3
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 6.1
+        },
+        {
+          "code": "C27",
+          "label": "electrical equipment",
+          "share": 3.0
+        },
+        {
+          "code": "C22",
+          "label": "rubber & plastics",
+          "share": 3.0
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 26.8
+        }
+      ],
+      "customers": [
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 12.5
+        },
+        {
+          "code": "O84",
+          "label": "public administration",
+          "share": 7.6
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 6.6
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 6.3
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 6.1
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 5.6
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 4.8
+        },
+        {
+          "code": "C20",
+          "label": "chemicals",
+          "share": 3.0
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 47.5
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 39.6
+        },
+        {
+          "code": "CN",
+          "label": "CN",
+          "share": 9.6
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 5.4
+        },
+        {
+          "code": "IT",
+          "label": "IT",
+          "share": 4.9
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 4.1
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 3.7
+        },
+        {
+          "code": "TR",
+          "label": "TR",
+          "share": 3.1
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 2.7
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 26.9
+        }
+      ]
+    },
+    "HR": {
+      "import_dependency_pct": 18.2,
+      "suppliers": [
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 26.4
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 12.4
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 6.4
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 4.4
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 4.0
+        },
+        {
+          "code": "P85",
+          "label": "education",
+          "share": 2.8
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 2.3
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 2.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 39.2
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 8.1
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 7.1
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 5.7
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 5.6
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 5.5
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 4.4
+        },
+        {
+          "code": "O84",
+          "label": "public administration",
+          "share": 4.4
+        },
+        {
+          "code": "C13T15",
+          "label": "textiles & clothing",
+          "share": 3.0
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 56.4
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 14.6
+        },
+        {
+          "code": "SI",
+          "label": "SI",
+          "share": 13.8
+        },
+        {
+          "code": "IT",
+          "label": "IT",
+          "share": 9.4
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 9.0
+        },
+        {
+          "code": "HU",
+          "label": "HU",
+          "share": 6.0
+        },
+        {
+          "code": "AT",
+          "label": "AT",
+          "share": 5.1
+        },
+        {
+          "code": "RS",
+          "label": "RS",
+          "share": 4.5
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 3.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 34.1
+        }
+      ]
+    },
+    "HU": {
+      "import_dependency_pct": 23.1,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 18.6
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 8.1
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 7.3
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 6.0
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 5.9
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 5.8
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 5.4
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 3.8
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 39.0
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 16.0
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 10.3
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 6.6
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 6.4
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 5.9
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 5.9
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 4.7
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 3.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 41.1
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 17.0
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 10.0
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 8.1
+        },
+        {
+          "code": "AT",
+          "label": "AT",
+          "share": 7.1
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 6.7
+        },
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 4.6
+        },
+        {
+          "code": "SK",
+          "label": "SK",
+          "share": 4.0
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 3.7
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 38.8
+        }
+      ]
+    },
+    "IE": {
+      "import_dependency_pct": 51.9,
+      "suppliers": [
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 16.0
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 11.5
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 7.5
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 7.4
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 6.9
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 6.2
+        },
+        {
+          "code": "M73",
+          "label": "advertising",
+          "share": 5.3
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 4.3
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 34.9
+        }
+      ],
+      "customers": [
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 5.2
+        },
+        {
+          "code": "H51",
+          "label": "air transport",
+          "share": 4.3
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 3.6
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 2.8
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 2.5
+        },
+        {
+          "code": "C20",
+          "label": "chemicals",
+          "share": 2.5
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 2.5
+        },
+        {
+          "code": "N79",
+          "label": "travel agencies",
+          "share": 2.2
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 74.4
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "US",
+          "label": "US",
+          "share": 40.0
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 14.1
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 10.6
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 5.1
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 4.0
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 3.9
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 2.5
+        },
+        {
+          "code": "BE",
+          "label": "BE",
+          "share": 2.2
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 17.7
+        }
+      ]
+    },
+    "IT": {
+      "import_dependency_pct": 7.3,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 16.8
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 10.2
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 8.4
+        },
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 8.2
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 6.1
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 6.0
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 5.0
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 4.9
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 34.4
+        }
+      ],
+      "customers": [
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 12.0
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 7.2
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 5.9
+        },
+        {
+          "code": "C28",
+          "label": "machinery",
+          "share": 4.9
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 3.9
+        },
+        {
+          "code": "C13T15",
+          "label": "textiles & clothing",
+          "share": 3.8
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 3.7
+        },
+        {
+          "code": "C20",
+          "label": "chemicals",
+          "share": 2.8
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 55.9
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 14.1
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 12.7
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 8.7
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 7.8
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 6.1
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 5.9
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 5.5
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 5.3
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 33.8
+        }
+      ]
+    },
+    "LT": {
+      "import_dependency_pct": 24.4,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 20.2
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 10.3
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 9.6
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 6.0
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 4.5
+        },
+        {
+          "code": "M73",
+          "label": "advertising",
+          "share": 4.5
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 4.3
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 4.2
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 36.5
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 12.6
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 8.1
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 6.7
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 6.0
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 5.6
+        },
+        {
+          "code": "C31_32",
+          "label": "furniture & other manufacturing",
+          "share": 4.6
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 4.5
+        },
+        {
+          "code": "G45",
+          "label": "vehicle trade",
+          "share": 4.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 47.5
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 14.7
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 10.5
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 9.1
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 6.1
+        },
+        {
+          "code": "LV",
+          "label": "LV",
+          "share": 5.7
+        },
+        {
+          "code": "SE",
+          "label": "SE",
+          "share": 5.4
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 5.3
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 4.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 39.0
+        }
+      ]
+    },
+    "LU": {
+      "import_dependency_pct": 36.3,
+      "suppliers": [
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 18.9
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 18.7
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 15.4
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 10.8
+        },
+        {
+          "code": "N77",
+          "label": "leasing",
+          "share": 7.7
+        },
+        {
+          "code": "J59_60",
+          "label": "film & broadcasting",
+          "share": 4.7
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 3.1
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 1.5
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 19.2
+        }
+      ],
+      "customers": [
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 20.9
+        },
+        {
+          "code": "J59_60",
+          "label": "film & broadcasting",
+          "share": 14.5
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 6.7
+        },
+        {
+          "code": "N77",
+          "label": "leasing",
+          "share": 4.5
+        },
+        {
+          "code": "J61",
+          "label": "telecoms",
+          "share": 4.4
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 4.4
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 2.9
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 2.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 39.4
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "US",
+          "label": "US",
+          "share": 21.0
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 14.7
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 12.6
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 7.7
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 5.6
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 5.4
+        },
+        {
+          "code": "ES",
+          "label": "ES",
+          "share": 5.2
+        },
+        {
+          "code": "IT",
+          "label": "IT",
+          "share": 4.6
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 23.2
+        }
+      ]
+    },
+    "LV": {
+      "import_dependency_pct": 18.4,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 23.5
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 10.9
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 7.6
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 6.6
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 5.9
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 4.9
+        },
+        {
+          "code": "M73",
+          "label": "advertising",
+          "share": 4.7
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 4.2
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 31.7
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 10.9
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 7.2
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 5.5
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 4.5
+        },
+        {
+          "code": "C16",
+          "label": "wood products",
+          "share": 4.0
+        },
+        {
+          "code": "C25",
+          "label": "fabricated metal products",
+          "share": 3.4
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 3.3
+        },
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 2.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 59.1
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 14.9
+        },
+        {
+          "code": "LT",
+          "label": "LT",
+          "share": 10.0
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 9.3
+        },
+        {
+          "code": "EE",
+          "label": "EE",
+          "share": 6.2
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 5.8
+        },
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 4.9
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 3.7
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 3.6
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 41.6
+        }
+      ]
+    },
+    "MT": {
+      "import_dependency_pct": 25.1,
+      "suppliers": [
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 16.7
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 15.9
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 12.6
+        },
+        {
+          "code": "H51",
+          "label": "air transport",
+          "share": 6.8
+        },
+        {
+          "code": "M73",
+          "label": "advertising",
+          "share": 5.2
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 4.7
+        },
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 4.5
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 4.5
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 29.0
+        }
+      ],
+      "customers": [
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 12.7
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 10.8
+        },
+        {
+          "code": "H51",
+          "label": "air transport",
+          "share": 7.7
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 6.3
+        },
+        {
+          "code": "R90T92",
+          "label": "arts",
+          "share": 5.9
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 5.0
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 4.0
+        },
+        {
+          "code": "C26",
+          "label": "electronics",
+          "share": 2.7
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 44.9
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 25.0
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 7.5
+        },
+        {
+          "code": "IT",
+          "label": "IT",
+          "share": 6.9
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 5.8
+        },
+        {
+          "code": "SE",
+          "label": "SE",
+          "share": 4.6
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 4.2
+        },
+        {
+          "code": "ES",
+          "label": "ES",
+          "share": 4.1
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 4.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 37.7
+        }
+      ]
+    },
+    "NL": {
+      "import_dependency_pct": 18.1,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 18.0
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 15.5
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 13.2
+        },
+        {
+          "code": "N78",
+          "label": "employment agencies",
+          "share": 6.4
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 4.8
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 4.7
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 4.2
+        },
+        {
+          "code": "M73",
+          "label": "advertising",
+          "share": 2.8
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 30.4
+        }
+      ],
+      "customers": [
+        {
+          "code": "C31_32",
+          "label": "furniture & other manufacturing",
+          "share": 9.2
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 7.1
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 7.0
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 5.6
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 4.7
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 4.6
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 4.2
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 3.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 54.3
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "US",
+          "label": "US",
+          "share": 13.2
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 12.2
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 11.9
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 9.9
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 6.5
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 6.5
+        },
+        {
+          "code": "BE",
+          "label": "BE",
+          "share": 5.7
+        },
+        {
+          "code": "ES",
+          "label": "ES",
+          "share": 5.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 29.1
+        }
+      ]
+    },
+    "PL": {
+      "import_dependency_pct": 15.9,
+      "suppliers": [
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 12.5
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 9.5
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 8.6
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 8.0
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 4.9
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 4.1
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 3.9
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 3.5
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 45.0
+        }
+      ],
+      "customers": [
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 8.0
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 6.4
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 5.3
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 4.5
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 3.6
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 2.5
+        },
+        {
+          "code": "C27",
+          "label": "electrical equipment",
+          "share": 2.3
+        },
+        {
+          "code": "C20",
+          "label": "chemicals",
+          "share": 2.2
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 65.2
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 21.5
+        },
+        {
+          "code": "CN",
+          "label": "CN",
+          "share": 10.3
+        },
+        {
+          "code": "ES",
+          "label": "ES",
+          "share": 9.9
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 8.5
+        },
+        {
+          "code": "IT",
+          "label": "IT",
+          "share": 6.2
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 5.4
+        },
+        {
+          "code": "MX",
+          "label": "MX",
+          "share": 3.1
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 3.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 32.0
+        }
+      ]
+    },
+    "PT": {
+      "import_dependency_pct": 13.7,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 10.1
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 9.9
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 9.6
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 6.8
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 6.7
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 6.5
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 5.2
+        },
+        {
+          "code": "N77",
+          "label": "leasing",
+          "share": 4.2
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 40.9
+        }
+      ],
+      "customers": [
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 9.3
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 9.0
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 7.9
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 6.7
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 6.5
+        },
+        {
+          "code": "Q86",
+          "label": "health",
+          "share": 4.8
+        },
+        {
+          "code": "H51",
+          "label": "air transport",
+          "share": 3.5
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 3.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 48.9
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "ES",
+          "label": "ES",
+          "share": 23.9
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 12.4
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 9.3
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 9.2
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 5.7
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 5.7
+        },
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 5.0
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 4.8
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 24.1
+        }
+      ]
+    },
+    "RO": {
+      "import_dependency_pct": 18.8,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 10.1
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 7.1
+        },
+        {
+          "code": "G45",
+          "label": "vehicle trade",
+          "share": 5.7
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 5.6
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 5.3
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 5.2
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 5.2
+        },
+        {
+          "code": "C20",
+          "label": "chemicals",
+          "share": 4.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 51.8
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 26.0
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 17.4
+        },
+        {
+          "code": "A01",
+          "label": "crop & animal farming",
+          "share": 7.6
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 6.7
+        },
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 4.3
+        },
+        {
+          "code": "C16",
+          "label": "wood products",
+          "share": 4.1
+        },
+        {
+          "code": "A02",
+          "label": "forestry",
+          "share": 3.7
+        },
+        {
+          "code": "C29",
+          "label": "vehicles",
+          "share": 2.8
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 27.4
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 14.2
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 10.4
+        },
+        {
+          "code": "IT",
+          "label": "IT",
+          "share": 6.9
+        },
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 6.1
+        },
+        {
+          "code": "HU",
+          "label": "HU",
+          "share": 6.1
+        },
+        {
+          "code": "CN",
+          "label": "CN",
+          "share": 5.8
+        },
+        {
+          "code": "TR",
+          "label": "TR",
+          "share": 4.9
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 4.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 41.3
+        }
+      ]
+    },
+    "SE": {
+      "import_dependency_pct": 24.4,
+      "suppliers": [
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 21.1
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 10.1
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 9.6
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 6.4
+        },
+        {
+          "code": "H52",
+          "label": "warehousing",
+          "share": 6.1
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 5.0
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 4.3
+        },
+        {
+          "code": "M73",
+          "label": "advertising",
+          "share": 3.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 33.9
+        }
+      ],
+      "customers": [
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 5.2
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 4.6
+        },
+        {
+          "code": "C29",
+          "label": "vehicles",
+          "share": 4.4
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 4.2
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 3.7
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 2.9
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 2.8
+        },
+        {
+          "code": "C28",
+          "label": "machinery",
+          "share": 2.7
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 69.5
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "GB",
+          "label": "GB",
+          "share": 9.8
+        },
+        {
+          "code": "US",
+          "label": "US",
+          "share": 9.3
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 8.5
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 8.0
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 7.9
+        },
+        {
+          "code": "DK",
+          "label": "DK",
+          "share": 7.6
+        },
+        {
+          "code": "NL",
+          "label": "NL",
+          "share": 6.3
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 5.0
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 37.6
+        }
+      ]
+    },
+    "SI": {
+      "import_dependency_pct": 22.2,
+      "suppliers": [
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 9.9
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 8.9
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 6.0
+        },
+        {
+          "code": "K64",
+          "label": "finance",
+          "share": 5.8
+        },
+        {
+          "code": "M73",
+          "label": "advertising",
+          "share": 5.6
+        },
+        {
+          "code": "H49",
+          "label": "land transport",
+          "share": 5.3
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 5.1
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 5.0
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 48.4
+        }
+      ],
+      "customers": [
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 7.6
+        },
+        {
+          "code": "C27",
+          "label": "electrical equipment",
+          "share": 6.6
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 6.4
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 5.7
+        },
+        {
+          "code": "C21",
+          "label": "pharmaceuticals",
+          "share": 4.5
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 4.1
+        },
+        {
+          "code": "I",
+          "label": "hotels & restaurants",
+          "share": 3.9
+        },
+        {
+          "code": "C29",
+          "label": "vehicles",
+          "share": 3.7
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 57.7
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 11.7
+        },
+        {
+          "code": "AT",
+          "label": "AT",
+          "share": 11.3
+        },
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 8.5
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 7.6
+        },
+        {
+          "code": "IT",
+          "label": "IT",
+          "share": 6.8
+        },
+        {
+          "code": "HR",
+          "label": "HR",
+          "share": 6.0
+        },
+        {
+          "code": "IE",
+          "label": "IE",
+          "share": 5.4
+        },
+        {
+          "code": "IN",
+          "label": "IN",
+          "share": 4.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 38.3
+        }
+      ]
+    },
+    "SK": {
+      "import_dependency_pct": 24.9,
+      "suppliers": [
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 20.0
+        },
+        {
+          "code": "L",
+          "label": "real estate",
+          "share": 12.0
+        },
+        {
+          "code": "N80T82",
+          "label": "security & facilities",
+          "share": 9.4
+        },
+        {
+          "code": "D35",
+          "label": "electricity & gas",
+          "share": 6.3
+        },
+        {
+          "code": "M69_70",
+          "label": "legal, accounting & consulting",
+          "share": 5.4
+        },
+        {
+          "code": "M73",
+          "label": "advertising",
+          "share": 4.0
+        },
+        {
+          "code": "J62_63",
+          "label": "IT services",
+          "share": 3.5
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 3.4
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 36.1
+        }
+      ],
+      "customers": [
+        {
+          "code": "C29",
+          "label": "vehicles",
+          "share": 21.4
+        },
+        {
+          "code": "F",
+          "label": "construction",
+          "share": 6.3
+        },
+        {
+          "code": "C27",
+          "label": "electrical equipment",
+          "share": 4.9
+        },
+        {
+          "code": "C10T12",
+          "label": "food, drink & tobacco",
+          "share": 4.6
+        },
+        {
+          "code": "C28",
+          "label": "machinery",
+          "share": 4.4
+        },
+        {
+          "code": "G46",
+          "label": "wholesale trade",
+          "share": 4.2
+        },
+        {
+          "code": "C25",
+          "label": "fabricated metal products",
+          "share": 4.0
+        },
+        {
+          "code": "C26",
+          "label": "electronics",
+          "share": 3.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 47.1
+        }
+      ],
+      "foreign_input_origins": [
+        {
+          "code": "DE",
+          "label": "DE",
+          "share": 17.0
+        },
+        {
+          "code": "FIGW1",
+          "label": "rest of world",
+          "share": 8.9
+        },
+        {
+          "code": "CZ",
+          "label": "CZ",
+          "share": 7.4
+        },
+        {
+          "code": "PL",
+          "label": "PL",
+          "share": 7.2
+        },
+        {
+          "code": "AT",
+          "label": "AT",
+          "share": 6.8
+        },
+        {
+          "code": "FR",
+          "label": "FR",
+          "share": 5.6
+        },
+        {
+          "code": "CH",
+          "label": "CH",
+          "share": 4.5
+        },
+        {
+          "code": "HU",
+          "label": "HU",
+          "share": 4.1
+        },
+        {
+          "code": "OTHER",
+          "label": "everything else",
+          "share": 38.4
+        }
+      ]
+    }
+  }
+}

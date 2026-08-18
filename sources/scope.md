@@ -15,12 +15,19 @@ incentive, with the source sentence quoted verbatim, the addressee named, and
 the sector reach recorded.
 
 The register currently covers the EU ETS revision, the Industrial Accelerator
-Act, the CBAM extension, the Omnibus simplification of CSRD/CSDDD, and two
+Act, the CBAM extension, the Omnibus simplification of CSRD/CSDDD, and three
 standing acts read at their current consolidation: the Net-Zero Industry Act
-(Regulation (EU) 2024/1735) and the Critical Raw Materials Act (Regulation (EU)
-2024/1252). Those last two are the baseline the Industrial Accelerator Act
-amends and the input-side boundary NZIA's own scope provision defers to, so a
-new consolidation of either moves what the register measures against.
+(Regulation (EU) 2024/1735), the Critical Raw Materials Act (Regulation (EU)
+2024/1252) and the Packaging and Packaging Waste Regulation (Regulation (EU)
+2025/40). The first two of those are the baseline the Industrial Accelerator
+Act amends and the input-side boundary NZIA's own scope provision defers to,
+so a new consolidation of either moves what the register measures against.
+
+**PPWR has been read once.** It is a single-pass file: one independent
+extraction, no second pass, and therefore not reconciled. The reconciliation
+docket says so and `reconciliation_gate.py` reports it that way. A single-pass
+file is honest, not finished — treat its classifications as unconfirmed until
+a second read disagrees with them or does not.
 
 ## IN scope
 
@@ -36,9 +43,36 @@ A document is in scope when **all three** hold.
    free-allocation rule, a fund, a procurement condition, an exemption.
 
 3. **It reaches one of the tracked sectors** — steel, aluminium, cement, glass,
-   chemicals, power, waste, shipping, aviation, automotive, construction,
-   batteries and solar, clean tech, or carbon capture and storage — through
-   emissions, energy, industrial products, or the trade rules that govern them.
+   paper and board, wood, food and drink, retail, hotels and restaurants,
+   chemicals (and its child, plastics converting), power, waste, shipping,
+   aviation, automotive, construction, batteries and solar, clean tech, or
+   carbon capture and storage — through emissions, energy, industrial
+   products, or the trade rules that govern them.
+
+   ### The sector spine, and when a child exists
+
+   The spine lives in `data/sectors.json`, read by both `sources/build_graph.py`
+   and `web/lib/data.ts` so the two sides cannot drift. It is **two levels and
+   no more**: a sector is a parent, or a child of exactly one parent, written
+   `<parent>/<child>` — which is also its URL.
+
+   **The evidence rule.** A child exists only where at least one measure
+   applies to the child and *not* to the parent. The `evidence` field on the
+   child records which measures forced it. A child that cannot point to such a
+   measure is not a finer view of the parent, it is a duplicate of it, and it
+   should be folded back in. `chem/plastics` qualifies because PPWR's
+   recyclability grades, recycled-content minimums and format bans fall on
+   converting polymer into packaging, not on chemicals manufacture.
+
+   Two consequences follow and are enforced:
+
+   - **Parents roll up, children do not roll down.** A measure on
+     `chem/plastics` appears on the chemicals page, in whichever list it
+     earned on the child. The child shows only what applies to the child.
+   - **No exposure inheritance.** A child gets an exposure panel only where
+     FIGARO resolves a code of its own — `chem/plastics` is C22, distinct from
+     chemicals' C20. A child with no code of its own shows no panel rather than
+     borrowing one that describes a different industry.
 
 Specific things that ARE in scope, because they have been missed before:
 

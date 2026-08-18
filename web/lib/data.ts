@@ -1,6 +1,13 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { DDriver, FileMeta, Measure, MeasureClass, SectorSlug } from "./types";
+import type {
+  DDriver,
+  FileMeta,
+  Measure,
+  MeasureClass,
+  SectorMeta,
+  SectorSlug,
+} from "./types";
 import { isPositiveValence, valenceLabel } from "./valence";
 
 // data/ lives one level up from web/ at the repo root. Untouched, read-only.
@@ -37,25 +44,88 @@ export const FILES: Record<string, FileMeta> = {
   },
 };
 
-export const SECTORS: Record<SectorSlug, string> = {
-  steel: "Steel",
-  cement: "Cement and concrete",
-  alu: "Aluminium and metals",
-  chem: "Chemicals and refining",
-  glass: "Glass, ceramics, paper",
-  power: "Power and heat",
-  waste: "Waste and landfill",
-  ship: "Shipping",
-  air: "Aviation",
-  auto: "Automotive",
-  build: "Construction",
-  batsol: "Batteries and solar",
-  clean: "Wind, heat pumps, hydrogen",
-  ccs: "Carbon capture and fuels",
+// The sector spine comes from data/sectors.json, the same file
+// sources/build_graph.py reads, so the Python and TypeScript sides cannot
+// drift — the arrangement sources/register_files.json already uses.
+//
+// It is two levels deep. A slug is a parent, or a child of exactly one parent,
+// and a child's slug is "<parent>/<child>" — which is also its URL. A child
+// exists only where a measure applies to the child and NOT to the parent; the
+// `evidence` field on each child records which measures forced it.
+//
+// SectorSlug in types.ts has to restate these keys, because a union of string
+// literals cannot be read out of a file the compiler never sees. So the union
+// is restated once more here as a Record — which TypeScript checks for
+// exhaustiveness — and the JSON is compared against it at build time. A slug
+// added to one side and not the other fails the build instead of quietly
+// producing a page nobody linked to, or a link to a page that 404s.
+const EXPECTED_SLUGS: Record<SectorSlug, true> = {
+  steel: true, cement: true, alu: true, chem: true, "chem/plastics": true,
+  glass: true, paper: true, wood: true, foodbev: true, retail: true,
+  horeca: true, power: true, waste: true, ship: true, air: true, auto: true,
+  build: true, batsol: true, clean: true, ccs: true,
 };
 
+const SECTOR_SPINE: Record<SectorSlug, SectorMeta> = (() => {
+  const raw = JSON.parse(
+    fs.readFileSync(path.join(DATA_DIR, "sectors.json"), "utf-8")
+  ) as { sectors: Record<string, SectorMeta> };
+
+  const fromJson = Object.keys(raw.sectors).sort();
+  const fromUnion = Object.keys(EXPECTED_SLUGS).sort();
+  const onlyJson = fromJson.filter((s) => !(s in EXPECTED_SLUGS));
+  const onlyUnion = fromUnion.filter((s) => !fromJson.includes(s));
+  if (onlyJson.length || onlyUnion.length) {
+    throw new Error(
+      "sector spine drift between data/sectors.json and SectorSlug: " +
+        `only in JSON [${onlyJson}], only in the union [${onlyUnion}]`
+    );
+  }
+
+  // Two levels, not three: a child's parent must itself be a parent.
+  for (const [slug, meta] of Object.entries(raw.sectors)) {
+    if (meta.parent && raw.sectors[meta.parent]?.parent) {
+      throw new Error(`sector ${slug} nests under ${meta.parent}, which is itself a child`);
+    }
+    if (meta.parent && !raw.sectors[meta.parent]) {
+      throw new Error(`sector ${slug} names a parent that does not exist: ${meta.parent}`);
+    }
+    if (meta.parent && slug !== `${meta.parent}/${slug.split("/").pop()}`) {
+      throw new Error(`child slug ${slug} does not start with its parent ${meta.parent}`);
+    }
+  }
+
+  return raw.sectors as Record<SectorSlug, SectorMeta>;
+})();
+
+export const SECTORS: Record<SectorSlug, string> = Object.fromEntries(
+  Object.entries(SECTOR_SPINE).map(([slug, meta]) => [slug, meta.label])
+) as Record<SectorSlug, string>;
+
+// Every child slug, by parent. Empty for a leaf.
+const CHILDREN: Record<string, SectorSlug[]> = {};
+for (const [slug, meta] of Object.entries(SECTOR_SPINE)) {
+  if (meta.parent) (CHILDREN[meta.parent] ??= []).push(slug as SectorSlug);
+}
+
+export function getSectorMeta(slug: SectorSlug): SectorMeta {
+  return SECTOR_SPINE[slug];
+}
+
+export function getChildren(slug: SectorSlug): SectorSlug[] {
+  return CHILDREN[slug] ?? [];
+}
+
+export function getParent(slug: SectorSlug): SectorSlug | null {
+  return SECTOR_SPINE[slug]?.parent ?? null;
+}
+
+export function isChild(slug: SectorSlug): boolean {
+  return getParent(slug) !== null;
+}
+
 export function getSectorSlugs(): SectorSlug[] {
-  return Object.keys(SECTORS) as SectorSlug[];
+  return Object.keys(SECTOR_SPINE) as SectorSlug[];
 }
 
 let cachedMeasures: Measure[] | null = null;
@@ -80,12 +150,19 @@ export interface SectorMeasures {
   reached: Measure[];
 }
 
+// A parent rolls its children up: a measure on chem/plastics is a measure the
+// chemicals page must show, or the parent under-reports itself. It rolls up
+// into whichever list the measure earned on the child — a row that NAMES
+// chem/plastics names it on the chemicals page too. A child does NOT roll
+// down: it shows only what applies to the child, which is the whole reason it
+// is a separate slug.
 export function getMeasuresForSector(slug: SectorSlug): SectorMeasures {
   const all = getAllMeasures();
-  const named = all.filter((m) => m.sectors_named?.includes(slug));
-  const reached = all.filter(
-    (m) => !m.sectors_named?.includes(slug) && m.sectors_reached?.includes(slug)
-  );
+  const own = [slug, ...getChildren(slug)];
+  const hits = (list: SectorSlug[] | undefined) =>
+    list?.some((s) => own.includes(s)) ?? false;
+  const named = all.filter((m) => hits(m.sectors_named));
+  const reached = all.filter((m) => !hits(m.sectors_named) && hits(m.sectors_reached));
   return { named, reached };
 }
 
