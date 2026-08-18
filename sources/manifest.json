@@ -57,5 +57,64 @@
     "consolidated_date": "latest",
     "status": "adopted",
     "amends": []
+  },
+  "ppwr": {
+    "celex": "32025R0040",
+    "kind": "adopted",
+    "lang": "EN",
+    "status": "adopted",
+    "amends": [
+      "32019R1020",
+      "32019L0904"
+    ],
+    "note": "A consolidated family member 02025R0040-20250122 is announced in the branch notice but Cellar serves it in no format (xhtml/fmx4/pdf all 404, checked 2026-08-18). Base 32025R0040 is used instead, per the brief's stated fallback. Revisit when Cellar publishes the consolidation.",
+    "cites": [
+      "32008L0098",
+      "32019L0904",
+      "32024R1781",
+      "32006R1907",
+      "32004R1935",
+      "32019R1020"
+    ],
+    "relationship_evidence": {
+      "32019R1020": "Art. 66 'Regulation (EU) 2019/1020 is amended as follows:' (adds PPWR and SUPD to Annex I; deletes Annex II point 8).",
+      "32019L0904": "Art. 67 'Directive (EU) 2019/904 is amended as follows:' (Art. 2(2) replaced, Art. 2(3) added, Art. 6(5)(a)/(b) and 13(1)(e) deleted, Annex Part B points 7-9 replaced and 10-12 added).",
+      "31994L0062": "Art. 70(1) repeal from 12 August 2026 with four express survivals; Art. 70(5) correlation table in Annex XIII. Modelled as a `repeals` edge (the eighth relation), not as `amends`.",
+      "32008L0098": "Art. 1(3) 'in line with the waste hierarchy set out in Article 4 of Directive 2008/98/EC'; Art. 2(2) applies without prejudice to it. 31 enacting-part references.",
+      "32024R1781": "Art. 3(1) adopts the ESPR definitions of 'substance of concern' and 'data carrier' from Art. 2 points (27) and (29).",
+      "32006R1907": "Art. 5(4) 'Without prejudice to the restrictions on chemicals set out in Annex XVII to Regulation (EC) No 1907/2006'; Art. 5(2)(a) points to the Art. 68(1)/(2) REACH restriction procedure; Art. 5(5)(c) uses its Art. 3 definitions.",
+      "32004R1935": "Art. 5(4) and Art. 5(5) final subparagraph - food-contact materials restrictions kept without prejudice."
+    },
+    "prior_rule_sources_note": "sources/ppwr_prior_01994L0062-20180704.txt was fetched out of band (fetch_eurlex.py only pulls priors for status=='proposed'); it is the 94/62/EC baseline needed to resolve prior_rule on the recycling-target and labelling deltas.",
+    "repeals": {
+      "31994L0062": {
+        "since": "2026-08-12",
+        "quote": "Directive 94/62/EC is repealed with effect from 12 August 2026",
+        "article": "Art. 70(1)",
+        "survivals": [
+          {
+            "provision": "Art. 8(2)",
+            "until": "30 months from entry into force of the implementing act under Art. 12(6) PPWR",
+            "quote": "Article 8(2) of Directive 94/62/EC, which shall continue to apply until 30 months from the date of entry into force of the implementing act adopted pursuant to Article 12(6) of this Regulation"
+          },
+          {
+            "provision": "Art. 9(1) and (2)",
+            "until": "2029-12-31",
+            "quote": "Article 9(1) and (2) of Directive 94/62/EC, which shall continue to apply with regard to the essential requirements pursuant to point 1, first indent, of Annex II to that Directive until 31 December 2029"
+          },
+          {
+            "provision": "Art. 5(2) and (3), Art. 6(1)(d) and (e), Art. 6a",
+            "until": "2028-12-31",
+            "quote": "Article 5(2) and (3), Article 6(1), points (d) and (e), and Article 6a of Directive 94/62/EC, which shall continue to apply until 31 December 2028"
+          },
+          {
+            "provision": "Art. 12(3a), (3b), (3c) and (4)",
+            "until": "2028-12-31, except data transmission to the Commission which runs to 2029-12-31",
+            "quote": "Article 12(3a), (3b), (3c) and (4) of Directive 94/62/EC, which shall continue to apply until 31 December 2028, except as regards the transmission of data to the Commission, in respect of which it shall continue to apply until 31 December 2029"
+          }
+        ],
+        "correlation_table": "Annex XIII; Art. 70(5): References to the repealed Directive 94/62/EC shall be construed as references to this Regulation and shall be read in accordance with the correlation table in Annex XIII to this Regulation."
+      }
+    }
   }
 }

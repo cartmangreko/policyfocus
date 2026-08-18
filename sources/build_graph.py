@@ -42,9 +42,18 @@ provision_id is preserved as a node attribute, which is what makes the
 "which rows came from one provision" query answerable without it being the id.
 
 
-EDGE RELATIONS  (exactly seven, closed)
+EDGE RELATIONS  (exactly eight, closed)
 =======================================
   amends       act -> act         an act amends an earlier act
+  repeals      act -> act         an act repeals an earlier act outright. Kept
+                                  apart from `amends` because the two say
+                                  opposite things about whether the target is
+                                  still law, and a reader walking `amends`
+                                  would otherwise see a repealed directive as
+                                  a live act being modified. A repeal is rarely
+                                  total, so the edge carries `survivals` and
+                                  `correlation_table` and does not assert that
+                                  nothing of the target remains.
   cites        measure -> act     a measure's text names another act
   depends_on   measure -> act     a measure cannot be applied until the target
                                   act exists (definitional dependency)
@@ -89,26 +98,29 @@ OUT = DATA / "graph"
 
 REGISTER_FILES = ["ets", "iaa", "omnibus", "cbam", "nzia", "crma"]
 
-# The 14 app sectors, mirroring web/lib/types.ts SectorSlug. Three of them
-# (batsol, clean, ccs) have no FIGARO exposure file: they are policy
-# categories, not FIGARO industries. They still get sector nodes -- measures
-# name them -- they just carry no economic edges.
-SECTORS = {
-    "steel": "Steel",
-    "alu": "Aluminium",
-    "cement": "Cement",
-    "glass": "Glass",
-    "chem": "Chemicals",
-    "power": "Power",
-    "waste": "Waste",
-    "ship": "Shipping",
-    "air": "Aviation",
-    "auto": "Automotive",
-    "build": "Construction",
-    "batsol": "Batteries and solar",
-    "clean": "Clean tech",
-    "ccs": "Carbon capture and storage",
-}
+# The sector spine is NOT defined here. It lives in data/sectors.json, read by
+# this builder and by web/lib/data.ts, so the two sides cannot drift -- the
+# arrangement sources/register_files.json already uses. It is two levels deep:
+# a sector is a parent, or a child of exactly one parent, and a child exists
+# only where a measure applies to the child and not to the parent.
+#
+# A child does NOT inherit its parent's exposure file. FIGARO separates C22
+# (rubber & plastics) from C20 (chemicals), so chem/plastics has its own
+# economic profile; a child without a FIGARO code of its own carries no
+# exposure at all rather than borrowing one that describes something else.
+SECTOR_SPINE = json.loads((DATA / "sectors.json").read_text(encoding="utf-8"))["sectors"]
+SECTORS = {slug: meta["name"] for slug, meta in SECTOR_SPINE.items()}
+PARENT_OF = {slug: meta["parent"] for slug, meta in SECTOR_SPINE.items()}
+
+
+def exposure_filename(slug: str) -> str:
+    """
+    Child slugs carry a slash ("chem/plastics") because that is their URL and
+    their identity in the register. Directories do not: the exposure layer is
+    one flat folder, so the separator is flattened to "__" for the filename and
+    nowhere else. web/lib/exposure.ts does the same, deliberately.
+    """
+    return f"{slug.replace('/', '__')}.json"
 
 # ---------------------------------------------------------------------------
 # CELEX resolution.
@@ -133,6 +145,12 @@ CITED_ACTS = {
     ("Regulation", "2015/2446"): ("32015R2446", "Union Customs Code Delegated Regulation"),
     ("Regulation", "2018/858"): ("32018R0858", "Motor Vehicle Type-Approval Regulation"),
     ("Regulation", "2018/1724"): ("32018R1724", "Single Digital Gateway Regulation"),
+    ("Regulation", "2019/1020"): ("32019R1020", "Market Surveillance Regulation"),
+    ("Directive", "2019/904"): ("32019L0904", "Single-Use Plastics Directive"),
+    ("Directive", "94/62"): ("31994L0062", "Packaging and Packaging Waste Directive"),
+    ("Directive", "2008/98"): ("32008L0098", "Waste Framework Directive"),
+    ("Regulation", "1907/2006"): ("32006R1907", "REACH"),
+    ("Regulation", "1935/2004"): ("32004R1935", "Food Contact Materials Regulation"),
     ("Regulation", "2018/2067"): ("32018R2067", "ETS Verification and Accreditation Regulation"),
     ("Regulation", "2019/631"): ("32019R0631", "CO2 Standards for Cars and Vans"),
     ("Regulation", "2019/2088"): ("32019R2088", "SFDR"),
@@ -352,10 +370,14 @@ def build() -> Graph:
             consolidated_celex=(entry["celex"] if consolidated else None),
         )
 
-    # -- act nodes, from acts the manifest amends -------------------------
+    # -- act nodes, from acts the manifest amends or repeals ---------------
     # These are the prior rules. They are not tracked acts in their own right
     # (the pipeline does not fetch them as primary), but they are real
-    # endpoints and the amends edge needs them.
+    # endpoints and the amends and repeals edges need them.
+    #
+    # `repeals` is spelled out in the manifest rather than derived, because the
+    # facts it carries -- the date the repeal bites, which provisions survive
+    # it and for how long -- are in the repealing article and nowhere else.
     for slug, entry in sorted(manifest.items()):
         celex, _ = base_celex(entry["celex"])
         for raw in sorted(entry.get("amends", [])):
@@ -370,6 +392,29 @@ def build() -> Graph:
                 f"act:{target}",
                 celex_year(celex),
                 {"source": "sources/manifest.json", "path": f"{slug}.amends"},
+            )
+
+        for target_raw, rec in sorted(entry.get("repeals", {}).items()):
+            target, _c = base_celex(target_raw)
+            known = next(
+                (name for (_, _), (cx, name) in CITED_ACTS.items() if cx == target), target
+            )
+            # status "repealed" from the date, not "adopted": the node is the
+            # one place a reader learns the target stops being law.
+            g.add_node(f"act:{target}", "act", known, celex=target,
+                       status="repealed", repealed_from=rec["since"])
+            g.add_edge(
+                "repeals",
+                f"act:{celex}",
+                f"act:{target}",
+                rec["since"],
+                {
+                    "source": "sources/manifest.json",
+                    "path": f"{slug}.repeals.{target_raw}",
+                    "quote": rec["quote"],
+                },
+                survivals=rec.get("survivals", []),
+                correlation_table=rec.get("correlation_table"),
             )
 
     # -- act node for the register files ----------------------------------
@@ -423,12 +468,18 @@ def build() -> Graph:
     exposure_manifest = load(DATA / "exposure" / "_manifest.json")
     for slug, name in sorted(SECTORS.items()):
         entry = exposure_manifest.get(slug)
+        # Parentage is a node ATTRIBUTE, not an edge. The edge set is a set of
+        # claims about the world -- who amends whom, who supplies whom -- and
+        # "plastics converting is filed under chemicals" is not a claim of that
+        # kind, it is how this register files things. Making it an edge would
+        # put a taxonomy decision on the same footing as a repeal clause.
         g.add_node(
             f"sector:{slug}",
             "sector",
             name,
             figaro_code=(entry or {}).get("code"),
             has_exposure=entry is not None,
+            parent=PARENT_OF[slug],
         )
 
     # -- measure nodes and the contains edge ------------------------------
@@ -590,10 +641,10 @@ def _economic_edges(g: Graph, exposure_manifest: dict):
     imports: dict[tuple[str, str], dict] = {}
 
     for slug in sorted(exposure_manifest):
-        path = DATA / "exposure" / f"{slug}.json"
+        path = DATA / "exposure" / exposure_filename(slug)
         data = load(path)
         eu = data["eu"]
-        src = f"data/exposure/{slug}.json"
+        src = f"data/exposure/{exposure_filename(slug)}"
 
         for i, r in enumerate(eu.get("suppliers", [])):
             if r["code"] in NON_INDUSTRY_CODES:
@@ -638,7 +689,7 @@ def _economic_edges(g: Graph, exposure_manifest: dict):
     # build lands as pure edge addition against nodes that already exist.
     countries: dict[str, tuple[str, bool]] = {"ROW": ("Rest of world", False)}
     for slug in sorted(exposure_manifest):
-        data = load(DATA / "exposure" / f"{slug}.json")
+        data = load(DATA / "exposure" / exposure_filename(slug))
         for r in data["eu"].get("foreign_input_origins", []):
             if r["code"] not in NON_INDUSTRY_CODES and r["code"] != ROW_CODE:
                 countries.setdefault(r["code"], (r.get("label") or r["code"], False))
@@ -725,6 +776,7 @@ def gate(g: Graph):
 
     allowed = {
         "amends": ("act", "act"),
+        "repeals": ("act", "act"),
         "cites": ("measure", "act"),
         "depends_on": ("measure", "act"),
         "contains": ("act", "measure"),
