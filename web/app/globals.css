@@ -1959,6 +1959,65 @@ a.minibar-name:hover {
   color: var(--ink-40);
 }
 
+/* ---------- header search row ---------- */
+
+/* SearchBar renders on every page now, in a second header row. Its markup and
+   behaviour are untouched — everything below is scale: the field was drawn at
+   hero size for a page that no longer exists, and the example chips are a
+   teaching aid that belongs on wide viewports rather than in a 62px chrome. */
+
+.site-header-search {
+  border-top: 1px solid var(--rule-soft);
+  background: var(--chrome);
+}
+.site-header-search .site-header-inner {
+  height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: block;
+}
+.site-header-search .searchbar {
+  margin-top: 0;
+  max-width: none;
+  border-width: 1px;
+  border-radius: 6px;
+}
+.site-header-search .searchbar-input {
+  font-size: 14px;
+  padding: 9px 8px 9px 0;
+}
+.site-header-search .searchbar-glyph {
+  padding: 0 12px;
+  font-size: 16px;
+}
+.site-header-search .searchbar-submit {
+  border-left-width: 1px;
+  font-size: 11px;
+  padding: 0 16px;
+}
+.site-header-search .query-chips {
+  margin-top: 8px;
+  gap: 8px;
+}
+.site-header-search .query-chip {
+  padding: 4px 9px;
+  font-size: 12px;
+}
+
+/* ---------- measures page ---------- */
+
+.measures-ledger {
+  max-width: 720px;
+  margin-top: 22px;
+}
+
+/* ---------- coverage: driver chart ---------- */
+
+.coverage-chart {
+  max-width: 560px;
+  margin-top: 22px;
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 1000px) {
@@ -2055,6 +2114,13 @@ a.minibar-name:hover {
     gap: 8px 16px;
   }
   .coverage-head {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  /* The examples are a teaching aid; the field is the instrument. */
+  .site-header-search .query-chips {
     display: none;
   }
 }

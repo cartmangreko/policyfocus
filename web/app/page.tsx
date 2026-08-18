@@ -8,10 +8,13 @@ import { BASIS_LABEL } from "@/lib/findings";
 import { getRecentFindings, withEvidence } from "@/lib/findings";
 
 // The home page leads with conclusions. Five blocks, in this order:
-// wordmark, findings, recently added, doors, coverage line. Everything the old
-// home page carried that is not one of those five — the signals feed, the
-// burden ledger, the driver chart, the priorities, the analysis grid — still
-// exists on its own page; it is demoted off the front, not deleted.
+// wordmark, findings, recently added, doors, coverage line.
+//
+// Everything the old home page carried that is not one of those five was
+// demoted, not deleted, and each piece now has an address: the signals feed and
+// the burden ledger are /measures, the driver chart is /coverage, the search
+// field is in the site header on every page, and the priorities and analysis
+// grids keep their own pages behind the nav.
 
 // TODO-GEORGE: tagline.
 const TAGLINE = "TODO-GEORGE — one line saying what a reader gets here.";
@@ -99,7 +102,7 @@ export default function Home() {
               <div className="doors-label">By legislation</div>
               <div className="chips">
                 {Object.entries(FILES).map(([slug, meta]) => (
-                  <Link key={slug} href={`/coverage#${slug}`} className="chip">
+                  <Link key={slug} href={`/measures#${slug}`} className="chip">
                     {meta.name.split(" — ")[0]}
                   </Link>
                 ))}

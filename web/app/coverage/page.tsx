@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import DriverChart from "@/components/DriverChart";
 import { getCoverage, getQueuedItems } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
 
@@ -87,6 +88,29 @@ export default function CoveragePage() {
             disagreement report comparing it with the first, and a frozen ruling docket. A file read
             once says so.
           </p>
+          {/* The gap that the sector pages would otherwise each have to report
+              for themselves. Stated once, here, because it is a fact about the
+              register's coverage rather than about any one sector. */}
+          <p className="section-note">
+            One field is not yet comparable across files: weight intensity is recorded on Omnibus I
+            rows only, and no Omnibus I row names a sector, so no sector-level view of weight is
+            possible today. Sector pages therefore show the net position without it.
+          </p>
+        </div>
+      </section>
+
+      <section className="band band-ruled">
+        <div className="wrap">
+          <p className="eyebrow">What the rows carry</p>
+          <h2>Burden drivers across the corpus</h2>
+          <p className="section-note section-note-wide">
+            Seven yes-or-no marks are read off every provision in the register. How often each one
+            fires characterises what has actually been extracted — which is a statement about
+            coverage, not about any one measure.
+          </p>
+          <div className="coverage-chart">
+            <DriverChart />
+          </div>
         </div>
       </section>
 

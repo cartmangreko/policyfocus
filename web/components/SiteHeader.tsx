@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SearchBar from "./SearchBar";
 import Wordmark from "./Wordmark";
 
 import { PRIORITIES } from "@/lib/priorities";
@@ -11,7 +12,7 @@ const NAV = [
   { label: "Findings", href: "/findings" },
   { label: "Topics", href: `/priorities/${PRIORITIES[0].slug}` },
   { label: "Sectors", href: "/#doors" },
-  { label: "Measures", href: "/#doors" },
+  { label: "Measures", href: "/measures" },
   { label: "Analysis", href: `/analysis/${ANALYSIS[0].slug}` },
   { label: "Coverage", href: "/coverage" },
 ];
@@ -29,12 +30,15 @@ export default function SiteHeader() {
           ))}
         </nav>
         <div className="site-header-actions">
-          <Link href="/#search" className="header-search">
-            <span className="header-search-glyph">⌕</span>
-            <span>Search</span>
-            <span className="keycap">/</span>
-          </Link>
+          {/* The search field itself now sits in the row below, on every page,
+              so the link that used to stand in for it here is gone rather than
+              pointing at the thing next to it. */}
           <span className="signin">Sign in</span>
+        </div>
+      </div>
+      <div className="site-header-search">
+        <div className="site-header-inner">
+          <SearchBar />
         </div>
       </div>
     </header>

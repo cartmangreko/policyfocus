@@ -143,7 +143,7 @@ export default async function FindingPage({ params }: { params: Promise<{ id: st
           <h2>Where this came from</h2>
           <div className="chips">
             {finding.files.map((f) => (
-              <Link key={f} href={`/coverage#${f}`} className="chip">
+              <Link key={f} href={`/measures#${f}`} className="chip">
                 {FILES[f]?.name.split(" — ")[0] ?? f}
                 <span className="chip-count">file</span>
               </Link>
