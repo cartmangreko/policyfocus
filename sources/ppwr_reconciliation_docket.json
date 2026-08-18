@@ -10,11 +10,11 @@
   "what_this_means": "Every classification in data/ppwr.json is unconfirmed. The four reconciled files each moved substantially on their second read — CRMA went from 54 rows to 90, and CBAM's second pass disagreed with the first twelve times — so the expectation is that this file is wrong in the same proportion, not that it is right.",
   "known_open_questions": [
     "The Art. 36/37 presumption of conformity is split into two linked measures (CNF-02 Simplification, CNF-03 narrowing). Whether that split is the right reading is exactly the kind of call a second pass exists to test.",
-    "Art. 34(1) is split into BAG-01 (the recurrence delta, add) and BAG-02 (the carried-over 40-per-capita level, unchanged). One sentence doing two things is a judgement call a second read should re-make independently.",
-    "9 rows name a sector that also appears in sectors_reached (LAB-04, LAB-06, OPS-04, OPS-05, OPS-06, EPR-02, EPR-03, EPR-04 and one more, all on `retail`). Harmless to display, since named wins, but it is a data defect and no validator catches it. crma has 6 of the same. Out of scope for the valence PR; fix separately."
+    "Art. 34(1) is split into BAG-01 (the recurrence delta, add) and BAG-02 (the carried-over 40-per-capita level, unchanged). One sentence doing two things is a judgement call a second read should re-make independently."
   ],
   "resolved_since_first_publication": [
     "prohibition-type-pending — CLOSED. `prohibition` is now a first-class measure_type and SUB-04, MIN-02, LAB-03 and BAN-01 carry it, each with reclass_from provenance.",
-    "carry-over-renders-as-requirement — CLOSED. `unchanged` is now a direction value deriving Neutral, and SUB-02, RCT-01 and the new BAG-02 carry it. Art. 52's recycling targets no longer render Requirement."
+    "carry-over-renders-as-requirement — CLOSED. `unchanged` is now a direction value deriving Neutral, and SUB-02, RCT-01 and the new BAG-02 carry it. Art. 52's recycling targets no longer render Requirement.",
+    "named-reached-overlap — CLOSED by PR #4. The nine PPWR rows (LAB-04, LAB-06, OPS-04, OPS-05, OPS-06, EPR-02, EPR-03, EPR-04, INF-01) and the six in CRMA no longer name a sector they also reach, and validate_v2 fails on the overlap, so the defect cannot come back the next time an extractor composes the two lists from shared constants."
   ]
 }
