@@ -165,10 +165,11 @@ PASS_B_CROSSWALK = {
     # (B-21, B-53, B-54, B-56) with the register's answers. Re-run the extractor
     # instead.
     #
-    # Every one of the register's 53 rows has exactly one counterpart here. The
-    # nine B rows with no entry -- B-06, B-07, B-14, B-15, B-24, B-41, B-48,
-    # B-51, B-52 -- are provisions this pass found and the register does not
-    # carry, and they land in reconcile's candidate list.
+    # All nine of those have since been ruled on (see cbam_rulings.py): eight
+    # promoted into the register under the CBAMB- prefix, and B-24 rejected
+    # because the rule it states is already inside FIN-08's span. So every B row
+    # but the rejected one has an entry, and the register's 61 rows each have
+    # exactly one counterpart.
     "cbam_pass_b.json": {
         "B-01": "SCP-01",   "B-02": "SCP-02",   "B-03": "SCP-03",
         "B-04": "ELEC-07",  "B-05": "ELEC-08",  "B-08": "GOV-01",
@@ -188,6 +189,13 @@ PASS_B_CROSSWALK = {
         "B-55": "ELEC-01",  "B-56": "ELEC-02",  "B-57": "ELEC-03",
         "B-58": "ELEC-04",  "B-59": "ELEC-05",  "B-60": "ELEC-06",
         "B-61": "CALC-04",  "B-62": "CALC-05",
+        # Promotions. B-24 is deliberately absent: it was ruled on and REJECTED,
+        # which is not the same as unmapped, and cbam_rulings.py is where that
+        # distinction is recorded and enforced.
+        "B-06": "CBAMB-SCP-08",   "B-07": "CBAMB-VER-02",
+        "B-14": "CBAMB-DECL-07",  "B-15": "CBAMB-ANTI-05",
+        "B-41": "CBAMB-CUST-05",  "B-48": "CBAMB-SCP-07",
+        "B-51": "CBAMB-ELEC-09",  "B-52": "CBAMB-ELEC-10",
     },
 }
 

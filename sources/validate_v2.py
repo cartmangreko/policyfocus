@@ -70,12 +70,29 @@ def validate(key, rows):
                 fail.append((rid, "right row has no right_basis"))
 
         # reclass_from, where present, must actually say something
+        # reclass_from must record a note and a classification that ACTUALLY
+        # MOVED. It used to demand measure_type specifically, which assumed
+        # every reclassification crosses the benefit axis. It does not: CBAM
+        # FIN-06 stayed an obligation and flipped direction add -> rem, turning
+        # the user-facing valence from Requirement to Simplification without
+        # changing measure_type at all. Under the old rule that correction could
+        # not be recorded in the field built to record corrections, so the only
+        # way to pass the gate was to drop the audit trail. Either field may
+        # carry the movement now; at least one must, and each given must differ
+        # from what the row says today.
         rf = r.get("reclass_from")
         if rf is not None:
-            if not isinstance(rf, dict) or not rf.get("measure_type") or not rf.get("note"):
-                fail.append((rid, f"reclass_from must carry measure_type and note: {rf!r}"))
-            elif rf.get("measure_type") == r["measure_type"]:
-                fail.append((rid, "reclass_from records the same measure_type the row now has"))
+            if not isinstance(rf, dict) or not rf.get("note"):
+                fail.append((rid, f"reclass_from must carry a note: {rf!r}"))
+            elif not (rf.get("measure_type") or rf.get("direction")):
+                fail.append((rid, f"reclass_from records no prior measure_type or "
+                                  f"direction, so nothing is said to have moved: {rf!r}"))
+            else:
+                unmoved = [f for f in ("measure_type", "direction")
+                           if rf.get(f) is not None and rf[f] == r[f]]
+                if unmoved:
+                    fail.append((rid, f"reclass_from records the same {', '.join(unmoved)} "
+                                      "the row now has"))
 
     # provision_id: any row sharing one must have >=2 siblings (a real split)
     by_pid = defaultdict(list)

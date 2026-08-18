@@ -370,6 +370,347 @@
  },
  {
   "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-ANTI-05",
+  "to": "sector:alu",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ANTI-05].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-ANTI-05",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ANTI-05].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-ANTI-05",
+  "to": "sector:chem",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ANTI-05].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-ANTI-05",
+  "to": "sector:steel",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ANTI-05].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-CUST-05",
+  "to": "sector:alu",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-CUST-05].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-CUST-05",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-CUST-05].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-CUST-05",
+  "to": "sector:chem",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-CUST-05].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-CUST-05",
+  "to": "sector:steel",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-CUST-05].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-DECL-07",
+  "to": "sector:alu",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-DECL-07].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-DECL-07",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-DECL-07].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-DECL-07",
+  "to": "sector:chem",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-DECL-07].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-DECL-07",
+  "to": "sector:power",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-DECL-07].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-DECL-07",
+  "to": "sector:steel",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-DECL-07].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-ELEC-09",
+  "to": "sector:alu",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ELEC-09].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-ELEC-09",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ELEC-09].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-ELEC-09",
+  "to": "sector:chem",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ELEC-09].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-ELEC-09",
+  "to": "sector:power",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ELEC-09].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-ELEC-09",
+  "to": "sector:steel",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ELEC-09].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-ELEC-10",
+  "to": "sector:power",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ELEC-10].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-SCP-07",
+  "to": "sector:auto",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-07].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-SCP-07",
+  "to": "sector:build",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-07].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-SCP-07",
+  "to": "sector:steel",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-07].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-SCP-08",
+  "to": "sector:alu",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-08].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-SCP-08",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-08].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-SCP-08",
+  "to": "sector:chem",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-08].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-SCP-08",
+  "to": "sector:power",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-08].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-SCP-08",
+  "to": "sector:steel",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-08].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-VER-02",
+  "to": "sector:alu",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-VER-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-VER-02",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-VER-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-VER-02",
+  "to": "sector:chem",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-VER-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:cbam:CBAMB-VER-02",
+  "to": "sector:steel",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-VER-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
   "from": "measure:cbam:CUST-01",
   "to": "sector:alu",
   "since": "2025",
@@ -4748,6 +5089,94 @@
  },
  {
   "rel": "cites",
+  "from": "measure:cbam:CBAMB-ANTI-05",
+  "to": "act:32023R0956",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ANTI-05]",
+   "quote": "6(6a) to Regulation (EU) 2023/956 Designate, by implementing act, the goods or goods/origin combinations for which traceability evidence must accompany the declaration, and the type of evidence required."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:cbam:CBAMB-CUST-05",
+  "to": "act:32023R0956",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-CUST-05]",
+   "quote": "25(6) of Regulation (EU) 2023/956 Communicate customs information at the scope, periodicity, timing and by the means the implementing acts prescribe, for the competent-authority flow under Art."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:cbam:CBAMB-DECL-07",
+  "to": "act:32023R0956",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-DECL-07]",
+   "quote": "6(6) of Regulation (EU) 2023/956 Report, in the standard declaration format, the detail supporting each total -- per installation and per country of origin -- including the carbon price paid and the default carbon price for the purposes of Art."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:cbam:CBAMB-ELEC-09",
+  "to": "act:32023R0956",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ELEC-09]",
+   "quote": "1(22); Annex II, point (1) replacing point (e) of point 1 of Annex IV of Regulation (EU) 2023/956 Use, as the emission factor for electricity, the weighted average CO2 intensity of all electricity produced in the geographic area, in place of a factor representing the emission intensity of the electricity consumed in producing the goods."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:cbam:CBAMB-ELEC-10",
+  "to": "act:32023R0956",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ELEC-10]",
+   "quote": "1(22); Annex II, point (1) replacing point (f) of point 1 of Annex IV of Regulation (EU) 2023/956 Hold a power purchase agreement that involves the physical delivery of electricity, not merely a direct contractual purchase, in order to claim actual embedded emissions for imported electricity."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:cbam:CBAMB-SCP-07",
+  "to": "act:32023R0956",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-07]",
+   "quote": "1(21); Annex I, point (1) replacing the 'Iron and Steel' table in point 2 of Annex I of Regulation (EU) 2023/956 Declare embedded emissions and surrender certificates for goods added to the existing 'Iron and steel' table -- agglomerated iron ore, stranded wire and cables, unplated welded grill and netting, springs, enamelled and other household articles, and other cast articles of iron or steel."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:cbam:CBAMB-SCP-08",
+  "to": "act:32023R0956",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-08]",
+   "quote": "2(11) of Regulation (EU) 2023/956 A third country or territory may be added to or removed from the Annex III exemption lists by delegated act, including as a consequence of CBAM incorporation into the EEA Agreement, and under urgency where imperative grounds require it."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:cbam:CBAMB-VER-02",
+  "to": "act:32023R0956",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-VER-02]",
+   "quote": "2(12) of Regulation (EU) 2023/956 Use a verifier accredited by a Member State national accreditation body, there being no route to recognition of a third-country accreditation body."
+  }
+ },
+ {
+  "rel": "cites",
   "from": "measure:cbam:CUST-01",
   "to": "act:32013R0952",
   "since": "2025",
@@ -4952,7 +5381,7 @@
   "evidence": {
    "source": "data/cbam.json",
    "path": "[id=ELEC-02]",
-   "quote": "2 of Annex IV of Regulation (EU) 2023/956 Where it can be demonstrated, on the basis of reliable data, that the emission factor for electricity in a third country, a group of third countries or a region within a third country is lower than the specific default value determined by the Commission or lower than the emission factor for electricity in the Union, an alternative default value based on th"
+   "quote": "2 of Annex IV of Regulation (EU) 2023/956 Take the alternative default value from the CO2 emission factor, rather than from the emission factor for electricity, when demonstrating that the exporting area's electricity is cleaner than the applicable default."
   }
  },
  {
@@ -5084,7 +5513,7 @@
   "evidence": {
    "source": "data/cbam.json",
    "path": "[id=FIN-06]",
-   "quote": "9(2) of Regulation (EU) 2023/956 Have the documentation evidencing a carbon price paid in a third country certified by a person independent of that country's authorities."
+   "quote": "9(2) of Regulation (EU) 2023/956 Have the documentation evidencing a carbon price paid in a third country certified by a person independent from the authorised CBAM declarant AS WELL AS from that country's authorities."
   }
  },
  {
@@ -7141,6 +7570,86 @@
   "evidence": {
    "source": "data/cbam.json",
    "path": "[id=CALC-06]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52025PC0989",
+  "to": "measure:cbam:CBAMB-ANTI-05",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ANTI-05]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52025PC0989",
+  "to": "measure:cbam:CBAMB-CUST-05",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-CUST-05]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52025PC0989",
+  "to": "measure:cbam:CBAMB-DECL-07",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-DECL-07]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52025PC0989",
+  "to": "measure:cbam:CBAMB-ELEC-09",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ELEC-09]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52025PC0989",
+  "to": "measure:cbam:CBAMB-ELEC-10",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-ELEC-10]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52025PC0989",
+  "to": "measure:cbam:CBAMB-SCP-07",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-07]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52025PC0989",
+  "to": "measure:cbam:CBAMB-SCP-08",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-SCP-08]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:52025PC0989",
+  "to": "measure:cbam:CBAMB-VER-02",
+  "since": "2025",
+  "evidence": {
+   "source": "data/cbam.json",
+   "path": "[id=CBAMB-VER-02]"
   }
  },
  {

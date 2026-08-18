@@ -7,7 +7,8 @@ re-run: given the same inputs it writes byte-identical output.
 
 Inputs
 ------
-  data/ets.json, data/iaa.json, data/omnibus.json   the measure register
+  data/ets.json, data/iaa.json, data/omnibus.json,
+  data/cbam.json                                    the measure register
   data/exposure/<slug>.json + _manifest.json        the FIGARO exposure layer
   sources/manifest.json                             the CELEX/act manifest
 
@@ -25,7 +26,7 @@ NODE KINDS  (exactly four, closed)
   act:<CELEX>                 a legal act. CELEX is the identifier; there is no
                               other. One placeholder is allowed, see below.
   measure:<file>:<id>         one row of the register. <file> is the register
-                              file slug (ets|iaa|omnibus), <id> the row id
+                              file slug (ets|iaa|omnibus|cbam), <id> the row id
                               (SCP-01, LM-03a, ...).
   sector:<slug>               one of the 14 app sectors.
   country:<ISO2>              a country, plus the single non-country member
