@@ -12,6 +12,13 @@ import {
 } from "@/lib/priorities";
 import type { Measure, MeasureClass, SectorSlug } from "@/lib/types";
 
+// Every path this route serves is enumerated below, so an unlisted one is a
+// 404 rather than a render on demand. That is load-bearing on Vercel: the
+// register JSON lives outside web/ and is read at build time only, so a
+// function rendering an unknown slug would have nothing to read. See
+// README.md, "Deploying".
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return PRIORITIES.map((p) => ({ slug: p.slug }));
 }

@@ -85,9 +85,22 @@ export default function CoveragePage() {
           </div>
           <p className="section-note">
             The reads column is derived from what is on disk: a second extraction pass, a
-            disagreement report comparing it with the first, and a frozen ruling docket. A file read
-            once says so.
+            disagreement report comparing it with the first, and a docket. A docket is one of two
+            documents. Three of them freeze the disagreements between two reads and record a ruling
+            on each. The fourth declares the opposite — that no second read exists and that nothing
+            in the file has been confirmed — and a file carrying one says so here rather than being
+            left to look like a file nobody has got round to yet.
           </p>
+          {/* The declaration itself, in the docket's own words, for every file
+              that has one. A warning a reader has to go to sources/ to find is
+              a warning the page is keeping to itself. */}
+          {files
+            .filter((f) => f.reads.note)
+            .map((f) => (
+              <p className="section-note" key={f.slug}>
+                <strong>{f.title} — read once.</strong> {f.reads.note}
+              </p>
+            ))}
           {/* The gap that the sector pages would otherwise each have to report
               for themselves. Stated once, here, because it is a fact about the
               register's coverage rather than about any one sector. */}

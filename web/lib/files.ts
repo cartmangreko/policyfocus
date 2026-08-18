@@ -90,6 +90,15 @@ export interface ReadHistory {
   reconciled: boolean;
   /** True when the disagreements were frozen into a docket and ruled on. */
   docketed: boolean;
+  /**
+   * True when a docket declares the file stands on ONE read. Not the same
+   * thing as `docketed` and not a weaker version of it: it is a file with no
+   * second pass whose standing has been written down rather than left to be
+   * inferred from an absence.
+   */
+  declaredSinglePass: boolean;
+  /** The docket's own account of what its standing means, when it has one. */
+  note: string | null;
   label: string;
 }
 
@@ -97,22 +106,53 @@ export interface ReadHistory {
 //
 //   <key>_pass_b.json               a second, independent read exists
 //   <key>_disagreements.json        the two reads were compared
-//   <key>_reconciliation_docket.json  the disagreements were frozen and ruled
+//   <key>_reconciliation_docket.json  a docket, of one of two kinds
 //
-// The register file itself is the first read. A file with no pass_b has had
-// one read, and the coverage page says so — that is the point of the column.
+// THE TWO KINDS OF DOCKET. Three of the four dockets freeze the disagreements
+// between two reads and record a ruling on each. PPWR's does not, and says so
+// in its own `status`: single_pass, a declaration that the file has been read
+// once and that every classification in it is unconfirmed. Reading the file's
+// mere existence as "reconciled, ruled" would turn that declaration into its
+// opposite, so the status is read and the two kinds are kept apart — the same
+// distinction sources/reconciliation_gate.py draws with its SINGLE_PASS table.
+//
+// A single-pass declaration used to be invisible here: PPWR fell through to
+// "Single read", which is true but is exactly what the docket exists to stop
+// a reader concluding on their own — that an unreconciled file is merely one
+// nobody has got round to, rather than one carrying a written warning.
+//
+// The register file itself is the first read.
+interface DocketDeclaration {
+  status?: string;
+  what_this_means?: string;
+}
+
 export function getReadHistory(file: string): ReadHistory {
   const has = (suffix: string) => fs.existsSync(path.join(SOURCES_DIR, `${file}${suffix}`));
+  const docket = readJson<DocketDeclaration>(
+    path.join(SOURCES_DIR, `${file}_reconciliation_docket.json`)
+  );
+  const singlePassDocket = docket?.status === "single_pass";
+
   const second = has("_pass_b.json");
   const reconciled = second && has("_disagreements.json");
-  const docketed = reconciled && has("_reconciliation_docket.json");
+  const docketed = reconciled && docket !== null && !singlePassDocket;
+  const declaredSinglePass = !second && singlePassDocket;
 
   let label = "Single read";
   if (docketed) label = "Two independent reads, reconciled, rulings docketed";
   else if (reconciled) label = "Two independent reads, reconciled";
   else if (second) label = "Two independent reads, not yet reconciled";
+  else if (declaredSinglePass) label = "One read — declared unconfirmed";
 
-  return { reads: second ? 2 : 1, reconciled, docketed, label };
+  return {
+    reads: second ? 2 : 1,
+    reconciled,
+    docketed,
+    declaredSinglePass,
+    note: declaredSinglePass ? docket?.what_this_means ?? null : null,
+    label,
+  };
 }
 
 export interface FileCelex {

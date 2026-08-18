@@ -3,6 +3,7 @@ import { Archivo, IBM_Plex_Mono, Public_Sans } from "next/font/google";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import Ticker from "@/components/Ticker";
+import { INDEXABLE } from "@/lib/launch";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -31,6 +32,10 @@ export const metadata: Metadata = {
   },
   description:
     "PolicyFocus turns complex European policy and regulation into structured intelligence on sectors, companies, markets, investment and strategic priorities.",
+  // The same launch switch as the X-Robots-Tag header and robots.txt, in the
+  // head of every page: a saved or proxied copy of this HTML carries the
+  // instruction even when the header does not travel with it.
+  robots: INDEXABLE ? undefined : { index: false, follow: false },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
