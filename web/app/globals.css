@@ -1217,6 +1217,30 @@ a.minibar-name:hover {
 .dir-card-child-title:hover {
   color: var(--claret);
 }
+.dir-card-code {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+  margin: -4px 0 0;
+}
+.reach-list {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.reach-row {
+  font-size: 14px;
+  color: var(--ink-70);
+  margin: 0;
+}
+.reach-row-name {
+  font-weight: 600;
+  color: var(--claret);
+}
+.reach-row-name:hover {
+  text-decoration: underline;
+}
 .named-child-group {
   margin-top: 34px;
 }
