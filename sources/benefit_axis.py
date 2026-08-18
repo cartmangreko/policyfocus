@@ -166,6 +166,11 @@ FILE_SOURCES = {
     # for something this proposal says. Same reasoning that removed the
     # pre-baked iaa_norm copies above.
     "cbam": ["cbam_ext.txt", "cbam_ext_annexes.txt"],
+    # Two standing acts read at their current consolidation rather than
+    # amending proposals. Each is its own single evidence base: there is no
+    # prior corpus below them, because neither deletes anything.
+    "nzia": ["nzia.txt"],
+    "crma": ["crma.txt"],
 }
 
 

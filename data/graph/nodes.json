@@ -1,10 +1,64 @@
 [
  {
+  "id": "act:31992L0043",
+  "kind": "act",
+  "label": "Habitats Directive",
+  "attrs": {
+   "celex": "31992L0043",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:31994L0022",
+  "kind": "act",
+  "label": "Hydrocarbons Licensing Directive",
+  "attrs": {
+   "celex": "31994L0022",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32000L0060",
+  "kind": "act",
+  "label": "Water Framework Directive",
+  "attrs": {
+   "celex": "32000L0060",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32001L0042",
+  "kind": "act",
+  "label": "Strategic Environmental Assessment Directive",
+  "attrs": {
+   "celex": "32001L0042",
+   "status": "adopted"
+  }
+ },
+ {
   "id": "act:32003L0087",
   "kind": "act",
   "label": "EU ETS Directive",
   "attrs": {
    "celex": "32003L0087",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32004R0139",
+  "kind": "act",
+  "label": "EU Merger Regulation",
+  "attrs": {
+   "celex": "32004R0139",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32006L0021",
+  "kind": "act",
+  "label": "Extractive Waste Directive",
+  "attrs": {
+   "celex": "32006L0021",
    "status": "adopted"
   }
  },
@@ -18,11 +72,56 @@
   }
  },
  {
+  "id": "act:32008L0098",
+  "kind": "act",
+  "label": "Waste Framework Directive",
+  "attrs": {
+   "celex": "32008L0098",
+   "status": "adopted"
+  }
+ },
+ {
   "id": "act:32009L0031",
   "kind": "act",
   "label": "CCS Directive",
   "attrs": {
    "celex": "32009L0031",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32009L0147",
+  "kind": "act",
+  "label": "Birds Directive",
+  "attrs": {
+   "celex": "32009L0147",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32010L0075",
+  "kind": "act",
+  "label": "Industrial Emissions Directive",
+  "attrs": {
+   "celex": "32010L0075",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32011L0092",
+  "kind": "act",
+  "label": "Environmental Impact Assessment Directive",
+  "attrs": {
+   "celex": "32011L0092",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32012L0018",
+  "kind": "act",
+  "label": "Seveso III Directive",
+  "attrs": {
+   "celex": "32012L0018",
    "status": "adopted"
   }
  },
@@ -50,6 +149,24 @@
   "label": "Concessions Directive",
   "attrs": {
    "celex": "32014L0023",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32014L0024",
+  "kind": "act",
+  "label": "Public Procurement Directive",
+  "attrs": {
+   "celex": "32014L0024",
+   "status": "adopted"
+  }
+ },
+ {
+  "id": "act:32014L0025",
+  "kind": "act",
+  "label": "Utilities Procurement Directive",
+  "attrs": {
+   "celex": "32014L0025",
    "status": "adopted"
   }
  },
@@ -155,7 +272,7 @@
  {
   "id": "act:32023R0956",
   "kind": "act",
-  "label": "32023R0956",
+  "label": "CBAM Regulation",
   "attrs": {
    "celex": "32023R0956",
    "kind_of_act": "consolidated",
@@ -175,12 +292,29 @@
   }
  },
  {
+  "id": "act:32024R1252",
+  "kind": "act",
+  "label": "Critical Raw Materials Act",
+  "attrs": {
+   "celex": "32024R1252",
+   "kind_of_act": "consolidated",
+   "status": "adopted",
+   "procedure": null,
+   "manifest_slug": "crma",
+   "consolidated_celex": "02024R1252"
+  }
+ },
+ {
   "id": "act:32024R1735",
   "kind": "act",
   "label": "Net-Zero Industry Act",
   "attrs": {
    "celex": "32024R1735",
-   "status": "adopted"
+   "kind_of_act": "consolidated",
+   "status": "adopted",
+   "procedure": null,
+   "manifest_slug": "nzia",
+   "consolidated_celex": "02024R1735"
   }
  },
  {
@@ -1452,6 +1586,708 @@
    "direction": "add",
    "article": "Art. 1(10), adding a sentence to Art. 18(3) of Regulation (EU) 2023/956",
    "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CBEN-01",
+  "kind": "measure",
+  "label": "Build Union capacity towards extracting 10%, processing 40% and recycling 25% of the Union's annual consumption of each strategic raw material by 2030.",
+  "attrs": {
+   "register_id": "CBEN-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 5(1)(a)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CBEN-02",
+  "kind": "measure",
+  "label": "Diversify imports so that no single third country supplies more than 65% of the Union's annual consumption of any strategic raw material by 2030.",
+  "attrs": {
+   "register_id": "CBEN-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 5(1)(b)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CCIR-01",
+  "kind": "measure",
+  "label": "Adopt and run national circularity programmes: incentivise resource efficiency, promote re-use and repair, raise collection and processing of critical-raw-material-bearing waste including metal scrap, use recycled content in procurement award criteria or financial incentives, mature recycling technologies, build workforce skills, modulate extended producer responsibility fees, police waste exports, and support Union recycling quality standards.",
+  "attrs": {
+   "register_id": "CCIR-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 26(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CCIR-02",
+  "kind": "measure",
+  "label": "Identify and report separately the quantities of critical-raw-material-bearing components removed from waste electrical and electronic equipment, and the quantities of critical raw materials recovered from it.",
+  "attrs": {
+   "register_id": "CCIR-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 26(5)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CCNF-01",
+  "kind": "measure",
+  "label": "Run the applicable conformity assessment, draw up the technical documentation and the EU declaration of conformity, and affix the CE marking, before placing a magnet-labelling or recycled-content product on the market.",
+  "attrs": {
+   "register_id": "CCNF-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 33(1)-(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CENV-01",
+  "kind": "measure",
+  "label": "Request a scoping opinion on the environmental impact assessment report within 30 days of being notified of Strategic Project recognition, and before filing the permit application.",
+  "attrs": {
+   "register_id": "CENV-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 12(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CENV-02",
+  "kind": "measure",
+  "label": "Where two or more environmental assessment duties arise at once for a Strategic Project, run a coordinated or joint procedure satisfying all of them.",
+  "attrs": {
+   "register_id": "CENV-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 12(2)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CENV-03",
+  "kind": "measure",
+  "label": "Issue the reasoned conclusion on a Strategic Project's environmental impact assessment within 90 days of receiving all necessary information and completing consultations.",
+  "attrs": {
+   "register_id": "CENV-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 12(3)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CEXW-01",
+  "kind": "measure",
+  "label": "Produce and file a preliminary economic assessment study of the potential to recover critical raw materials from the extractive waste stored in the facility and from waste being generated, estimating quantities and concentrations and assessing technical and economic recoverability.",
+  "attrs": {
+   "register_id": "CEXW-01",
+   "provision_id": "crma-27",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 27(1)-(3)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CEXW-02",
+  "kind": "measure",
+  "label": "Produce the preliminary economic assessment study on recovering critical raw materials from extractive waste.",
+  "attrs": {
+   "register_id": "CEXW-02",
+   "provision_id": "crma-27",
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 27(1), second subparagraph",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CEXW-03",
+  "kind": "measure",
+  "label": "Build a public database of closed and abandoned extractive waste facilities carrying location, extent and waste volume, the operator or successor, and the quantities and concentrations of raw materials held -- backed by permit-file review, geochemical sampling and detailed characterisation.",
+  "attrs": {
+   "register_id": "CEXW-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 27(4), with Art. 27(6)-(7)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CFIN-01",
+  "kind": "measure",
+  "label": "CFIN-01",
+  "attrs": {
+   "register_id": "CFIN-01",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 16(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CFM-01",
+  "kind": "measure",
+  "label": "Do not prohibit, restrict or impede the marketing or putting into service of compliant products containing permanent magnets, or of compliant critical raw materials, on magnet-information, recycled-content or environmental-footprint grounds.",
+  "attrs": {
+   "register_id": "CFM-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 32(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CFP-01",
+  "kind": "measure",
+  "label": "Publish an environmental footprint declaration for each critical raw material type placed on the market once calculation rules exist for it, naming the responsible person, the material type, the countries and regions of extraction, processing, refining and recycling, the calculated footprint, its performance class, and a link to the supporting study.",
+  "attrs": {
+   "register_id": "CFP-01",
+   "provision_id": "crma-31",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 31(6)-(7)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CFP-02",
+  "kind": "measure",
+  "label": "Give customers access to the environmental footprint declaration before they are bound by a sales contract, and display nothing likely to mislead or confuse them about what it says.",
+  "attrs": {
+   "register_id": "CFP-02",
+   "provision_id": "crma-31",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 31(11)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CJP-01",
+  "kind": "measure",
+  "label": "CJP-01",
+  "attrs": {
+   "register_id": "CJP-01",
+   "provision_id": "crma-25",
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 25(5)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CJP-02",
+  "kind": "measure",
+  "label": "Stay out of demand aggregation and joint purchasing, as participant, supplier or service provider, where sanctioned under Art. 215 TFEU or owned, controlled by or acting for a sanctioned person.",
+  "attrs": {
+   "register_id": "CJP-02",
+   "provision_id": "crma-25",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 25(6)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CMAG-01",
+  "kind": "measure",
+  "label": "Label MRI devices, wind generators, industrial robots, motor vehicles, light means of transport, cooling generators, heat pumps, electric motors, washing machines, driers, microwaves, vacuum cleaners and dishwashers with a conspicuous, legible and indelible statement of whether they contain permanent magnets and of which of the four magnet types.",
+  "attrs": {
+   "register_id": "CMAG-01",
+   "provision_id": "crma-28",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 28(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CMAG-02",
+  "kind": "measure",
+  "label": "Put a data carrier on or in every listed product containing a permanent magnet, linked to a unique product identifier giving the responsible person's identity, the weight, location and chemical composition of each magnet including coatings, glues and additives, and the steps, tools and technologies for accessing and safely removing them.",
+  "attrs": {
+   "register_id": "CMAG-02",
+   "provision_id": "crma-28",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 28(3)-(4)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CMAG-03",
+  "kind": "measure",
+  "label": "Keep the magnet information complete, current and accurate, and available for the product's typical lifetime plus ten years -- surviving insolvency, liquidation or exit from the Union -- and accessible to repairers, recyclers, market surveillance and customs.",
+  "attrs": {
+   "register_id": "CMAG-03",
+   "provision_id": "crma-28",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 28(7)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CMAG-04",
+  "kind": "measure",
+  "label": "Carry the permanent-magnet label, data carrier and magnet information.",
+  "attrs": {
+   "register_id": "CMAG-04",
+   "provision_id": "crma-28",
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 28(9) and 28(11)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CMAG-05",
+  "kind": "measure",
+  "label": "Publish, on a free-access website, the share of neodymium, dysprosium, praseodymium, terbium, boron, samarium, nickel and cobalt recovered from post-consumer waste in the product's permanent magnets, once the total magnet weight passes 0.2 kg.",
+  "attrs": {
+   "register_id": "CMAG-05",
+   "provision_id": "crma-29",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 29(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CMAG-06",
+  "kind": "measure",
+  "label": "Meet minimum recycled shares of neodymium, dysprosium, praseodymium, terbium, boron, samarium, nickel and cobalt in the permanent magnets of listed products.",
+  "attrs": {
+   "register_id": "CMAG-06",
+   "provision_id": "crma-29",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 29(3)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CMAG-07",
+  "kind": "measure",
+  "label": "Give customers access to the recycled-content information before they are bound by a sales contract, including in distance selling, and display no label, mark, symbol or inscription likely to mislead or confuse them about it.",
+  "attrs": {
+   "register_id": "CMAG-07",
+   "provision_id": "crma-29",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 29(5)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CMON-01",
+  "kind": "measure",
+  "label": "Identify the key market operators in the critical raw materials value chain on the territory, monitor them through public data and proportionate surveys, report the results, and notify the Commission without delay of major events disrupting them.",
+  "attrs": {
+   "register_id": "CMON-01",
+   "provision_id": "crma-21-2",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 21(2)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CMON-02",
+  "kind": "measure",
+  "label": "Answer a Member State's monitoring survey with the data already held, and give reasons for any refusal or claim that the data is unavailable.",
+  "attrs": {
+   "register_id": "CMON-02",
+   "provision_id": "crma-21-2",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 21(2), third subparagraph",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CMON-03",
+  "kind": "measure",
+  "label": "CMON-03",
+  "attrs": {
+   "register_id": "CMON-03",
+   "provision_id": "crma-21-2",
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 21(2), third subparagraph",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:COFF-01",
+  "kind": "measure",
+  "label": "COFF-01",
+  "attrs": {
+   "register_id": "COFF-01",
+   "provision_id": null,
+   "measure_type": "incentive",
+   "direction": "add",
+   "article": "Art. 17(1)-(4)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CPEN-01",
+  "kind": "measure",
+  "label": "Lay down effective, proportionate and dissuasive penalties for infringements of the Regulation, put them into effect, and notify them and any amendment to the Commission without delay.",
+  "attrs": {
+   "register_id": "CPEN-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 47",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CPRM-01",
+  "kind": "measure",
+  "label": "CPRM-01",
+  "attrs": {
+   "register_id": "CPRM-01",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 10(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CPRM-02",
+  "kind": "measure",
+  "label": "CPRM-02",
+  "attrs": {
+   "register_id": "CPRM-02",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 10(4)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CPRM-03",
+  "kind": "measure",
+  "label": "CPRM-03",
+  "attrs": {
+   "register_id": "CPRM-03",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 10(5)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CPRM-04",
+  "kind": "measure",
+  "label": "Complete the permit-granting process for a Strategic Project within 27 months where it involves extraction, or 15 months where it involves only processing or recycling.",
+  "attrs": {
+   "register_id": "CPRM-04",
+   "provision_id": "crma-11",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 11(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CPRM-05",
+  "kind": "measure",
+  "label": "Where the project was already in permitting before recognition, or is an extension of a permitted Strategic Project, finish within 24 months for extraction or 12 months for processing or recycling, counted from recognition.",
+  "attrs": {
+   "register_id": "CPRM-05",
+   "provision_id": "crma-11",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 11(2)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CPRM-06",
+  "kind": "measure",
+  "label": "Acknowledge completeness of a Strategic Project permit application within 45 days or state exactly what is missing, and on a second pass ask only for evidence completing what was already identified.",
+  "attrs": {
+   "register_id": "CPRM-06",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 11(6)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CPRM-07",
+  "kind": "measure",
+  "label": "Publish the permit-granting schedule drawn up by the single point of contact on the project's own free-access website.",
+  "attrs": {
+   "register_id": "CPRM-07",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 11(7)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CREC-01",
+  "kind": "measure",
+  "label": "CREC-01",
+  "attrs": {
+   "register_id": "CREC-01",
+   "provision_id": "crma-30",
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 30(1)-(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CREC-02",
+  "kind": "measure",
+  "label": "Tell the Commission without delay of any change or update to a recognised scheme bearing on the Annex IV criteria.",
+  "attrs": {
+   "register_id": "CREC-02",
+   "provision_id": "crma-30",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 30(5)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CRSK-01",
+  "kind": "measure",
+  "label": "Identify the large companies on the territory that use strategic raw materials to make batteries, hydrogen equipment, renewable generation equipment, aircraft, traction motors, heat pumps, data and mobile equipment, additive manufacturing and robotics equipment, drones, rocket launchers, satellites or advanced chips.",
+  "attrs": {
+   "register_id": "CRSK-01",
+   "provision_id": "crma-24",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 24(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CRSK-02",
+  "kind": "measure",
+  "label": "Carry out, at least every three years, a supply-chain risk assessment mapping where the strategic raw materials used are extracted, processed or recycled, analysing what could affect their supply, and assessing the company's vulnerability to disruption.",
+  "attrs": {
+   "register_id": "CRSK-02",
+   "provision_id": "crma-24",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 24(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CRSK-03",
+  "kind": "measure",
+  "label": "Obtain supply-chain information from suppliers in order to carry out the risk assessment.",
+  "attrs": {
+   "register_id": "CRSK-03",
+   "provision_id": "crma-24",
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 24(3)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CRSK-04",
+  "kind": "measure",
+  "label": "Where the risk assessment finds significant vulnerabilities, take mitigating action, including assessing whether supply chains can be diversified or the strategic raw materials substituted.",
+  "attrs": {
+   "register_id": "CRSK-04",
+   "provision_id": "crma-24",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 24(4)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CRSK-05",
+  "kind": "measure",
+  "label": "Present the risk-assessment report, and the information requests made to suppliers, to the board of directors.",
+  "attrs": {
+   "register_id": "CRSK-05",
+   "provision_id": "crma-24",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 24(6)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CSP-01",
+  "kind": "measure",
+  "label": "CSP-01",
+  "attrs": {
+   "register_id": "CSP-01",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 6(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CSP-02",
+  "kind": "measure",
+  "label": "File a Strategic Project application carrying ten items: evidence against the criteria, a UN Framework Classification, a permitting timetable, a public-acceptance plan, ownership and control information, a business plan, a jobs and skills estimate, a post-exploitation environmental restoration plan, an alternative-locations assessment in protected areas, and an indigenous-peoples consultation plan.",
+  "attrs": {
+   "register_id": "CSP-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 7(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CSP-03",
+  "kind": "measure",
+  "label": "Decide on Strategic Project recognition within 90 days of acknowledging a complete application, give reasons, and notify the applicant, the Board and the territory concerned.",
+  "attrs": {
+   "register_id": "CSP-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 7(9)",
+   "addressee_class": "commission"
+  }
+ },
+ {
+  "id": "measure:crma:CSP-04",
+  "kind": "measure",
+  "label": "CSP-04",
+  "attrs": {
+   "register_id": "CSP-04",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "rem",
+   "article": "Art. 7(12)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CSP-05",
+  "kind": "measure",
+  "label": "CSP-05",
+  "attrs": {
+   "register_id": "CSP-05",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 7(13)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CSP-06",
+  "kind": "measure",
+  "label": "Report to the Commission every two years on implementation progress and permitting, on any slippage against the timetable and how it will be recovered, and on progress in financing including public support received.",
+  "attrs": {
+   "register_id": "CSP-06",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 8(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CSP-07",
+  "kind": "measure",
+  "label": "Supply additional information on the project when the Commission asks for it to check that the recognition criteria are still met.",
+  "attrs": {
+   "register_id": "CSP-07",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 8(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CSP-08",
+  "kind": "measure",
+  "label": "Notify the Commission of changes to the project that affect the recognition criteria, and of any lasting change of control over the undertakings involved.",
+  "attrs": {
+   "register_id": "CSP-08",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 8(3)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CSP-09",
+  "kind": "measure",
+  "label": "Run a free-access project website, in a language the local population understands and requiring no personal data to read, carrying at least the environmental, social and economic impacts and benefits of the project, and keep it updated.",
+  "attrs": {
+   "register_id": "CSP-09",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 8(5)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:crma:CSPC-01",
+  "kind": "measure",
+  "label": "Establish or designate single points of contact, with at most one per administrative level and stage of the critical raw materials value chain, and list them on an accessible website.",
+  "attrs": {
+   "register_id": "CSPC-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 9(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:crma:CSTK-01",
+  "kind": "measure",
+  "label": "Report the state of national strategic stocks -- levels in tonnes and as a share of annual consumption, chemical form and purity, five-year evolution, and the rules for release and distribution -- or give a justified notice for withholding it on defence or national security grounds.",
+  "attrs": {
+   "register_id": "CSTK-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 22(1)-(2)",
+   "addressee_class": "state"
   }
  },
  {
@@ -2959,6 +3795,734 @@
    "measure_type": "incentive",
    "direction": "add",
    "article": "Art. 14(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:ADM-01",
+  "kind": "measure",
+  "label": "Provide administrative support to net-zero technology manufacturing projects, including help with compliance, with informing the public, and with the permit-granting process, with particular attention to SMEs.",
+  "attrs": {
+   "register_id": "ADM-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 8",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:AUC-01",
+  "kind": "measure",
+  "label": "Build responsible business conduct, cyber and data security, and delivery-capability pre-qualification into renewable energy auctions, plus pre-qualification or award criteria for the auction's sustainability and resilience contribution.",
+  "attrs": {
+   "register_id": "AUC-01",
+   "provision_id": "nzia-26",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 26(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:AUC-02",
+  "kind": "measure",
+  "label": "AUC-02",
+  "attrs": {
+   "register_id": "AUC-02",
+   "provision_id": "nzia-26",
+   "measure_type": "incentive",
+   "direction": "add",
+   "article": "Art. 26(4), with Art. 26(7)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:AUC-03",
+  "kind": "measure",
+  "label": "Apply the auction pre-qualification and award criteria where doing so would cost disproportionately -- presumed above a 15% cost difference per auction.",
+  "attrs": {
+   "register_id": "AUC-03",
+   "provision_id": "nzia-26",
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 26(5)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:BEN-01",
+  "kind": "measure",
+  "label": "Support net-zero manufacturing projects so that Union manufacturing capacity reaches at least 40% of the Union's annual deployment needs for net-zero technologies by 2030.",
+  "attrs": {
+   "register_id": "BEN-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 5(1)(a)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:CO2-01",
+  "kind": "measure",
+  "label": "Publish, on a non-reliance basis, the geological data on decommissioned production sites -- and any economic assessment of the cost of enabling CO2 injection -- covering whether the site can safely and permanently store CO2 and what transport it would need.",
+  "attrs": {
+   "register_id": "CO2-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 21(1)(b)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:CO2-02",
+  "kind": "measure",
+  "label": "Deliver an individual share of the Union's 50 Mt/year CO2 injection capacity target by 2030, calculated pro-rata on the entity's share of Union crude oil and natural gas production over 2020-2023, as permitted capacity available to the market.",
+  "attrs": {
+   "register_id": "CO2-02",
+   "provision_id": "nzia-23",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 23(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:CO2-03",
+  "kind": "measure",
+  "label": "Submit a plan to the Commission confirming the targeted volume of new CO2 storage and injection capacity to be commissioned by 2030, and the means and milestones for reaching it.",
+  "attrs": {
+   "register_id": "CO2-03",
+   "provision_id": "nzia-23",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 23(4)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:CO2-04",
+  "kind": "measure",
+  "label": "Report annually to the Commission on progress towards the individual CO2 injection-capacity contribution; the reports are published.",
+  "attrs": {
+   "register_id": "CO2-04",
+   "provision_id": "nzia-23",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 23(6)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:CO2-05",
+  "kind": "measure",
+  "label": "CO2-05",
+  "attrs": {
+   "register_id": "CO2-05",
+   "provision_id": "nzia-23",
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 23(5)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:CO2-06",
+  "kind": "measure",
+  "label": "Deliver an individual CO2 injection-capacity contribution for production carried out in a Member State whose permitted, FID-reached storage capacity already exceeds the sum of those contributions.",
+  "attrs": {
+   "register_id": "CO2-06",
+   "provision_id": "nzia-23",
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 23(7)-(8)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:CO2-07",
+  "kind": "measure",
+  "label": "Report annually, publicly, on CO2 capture, storage and transport projects in progress, the injection and storage capacity they need, national support measures, capture targets, and cross-border cooperation.",
+  "attrs": {
+   "register_id": "CO2-07",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 21(2)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:CO2-08",
+  "kind": "measure",
+  "label": "Identify the authorised oil and gas producers on the territory and report their 2020-2023 crude oil and natural gas production volumes to the Commission.",
+  "attrs": {
+   "register_id": "CO2-08",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 23(2)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:CO2-09",
+  "kind": "measure",
+  "label": "Lay down effective, proportionate and dissuasive penalties for producers that infringe their CO2 injection-capacity obligations.",
+  "attrs": {
+   "register_id": "CO2-09",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 23(13)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:CO2-10",
+  "kind": "measure",
+  "label": "Take the measures needed to open access to CO2 transport networks and storage sites for geological storage, as far as it is economically feasible or where a potential customer is willing to pay.",
+  "attrs": {
+   "register_id": "CO2-10",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 22(2)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:ENV-01",
+  "kind": "measure",
+  "label": "Where two or more environmental assessment duties arise at once, run a coordinated or joint procedure that satisfies all of them.",
+  "attrs": {
+   "register_id": "ENV-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 10(2)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:ENV-02",
+  "kind": "measure",
+  "label": "Issue the reasoned conclusion on the environmental impact assessment within 90 days of receiving all necessary information and completing consultations.",
+  "attrs": {
+   "register_id": "ENV-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 10(3)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:FIN-01",
+  "kind": "measure",
+  "label": "FIN-01",
+  "attrs": {
+   "register_id": "FIN-01",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 19(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:INF-01",
+  "kind": "measure",
+  "label": "Publish online, centrally, the single points of contact, the permit-granting process, financing and investment services, funding possibilities and business support services.",
+  "attrs": {
+   "register_id": "INF-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 7",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:MON-01",
+  "kind": "measure",
+  "label": "Collect and report, at least every three years, data on trade obstacles, market and price developments, manufacturing capacity and employment, SME participation, permit-granting outcomes and durations, sandboxes, and CO2 stored underground.",
+  "attrs": {
+   "register_id": "MON-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 42(2)-(3)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:PP-01",
+  "kind": "measure",
+  "label": "Apply the Commission's minimum mandatory environmental sustainability requirements in every procurement whose subject matter includes solar, wind, battery, heat pump, hydrogen, biogas, CCS, grid, nuclear or sustainable-fuel technology, and in works contracts including it.",
+  "attrs": {
+   "register_id": "PP-01",
+   "provision_id": "nzia-25-1",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 25(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:PP-02",
+  "kind": "measure",
+  "label": "Attach to net-zero works contracts at least one of: a social or employment contract-performance clause, a cybersecurity compliance requirement, or a hard on-time delivery obligation backed by a charge.",
+  "attrs": {
+   "register_id": "PP-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 25(3)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:PP-03a",
+  "kind": "measure",
+  "label": "Where the Commission has found a third country supplies more than 50% of a net-zero technology in the Union, hold supply from each such country below 50% of contract value -- for the technology and for its main components -- prove it on request, and pay at least 10% of the contract value if the cap is breached.",
+  "attrs": {
+   "register_id": "PP-03a",
+   "provision_id": "nzia-25-7",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 25(7), second subparagraph",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:PP-03b",
+  "kind": "measure",
+  "label": "PP-03b",
+  "attrs": {
+   "register_id": "PP-03b",
+   "provision_id": "nzia-25-7",
+   "measure_type": "incentive",
+   "direction": "add",
+   "article": "Art. 25(7)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:PP-04",
+  "kind": "measure",
+  "label": "Apply the minimum environmental sustainability requirements where there is a single possible supplier, where a comparable earlier tender drew no suitable bids, or where compliance would cost disproportionately or break technical compatibility.",
+  "attrs": {
+   "register_id": "PP-04",
+   "provision_id": "nzia-25-1",
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 25(9)-(10)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:PRM-01",
+  "kind": "measure",
+  "label": "Complete the permit-granting process for a net-zero technology manufacturing project within 12 months below 1 GW of yearly manufacturing capacity, or 18 months at 1 GW or more.",
+  "attrs": {
+   "register_id": "PRM-01",
+   "provision_id": "nzia-9-1",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 9(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:PRM-02",
+  "kind": "measure",
+  "label": "Acknowledge that a permit application is complete, or state exactly what is missing, within 45 days; a second request for information may be made within 30 days and may not open new subjects.",
+  "attrs": {
+   "register_id": "PRM-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 9(10)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:PRM-03",
+  "kind": "measure",
+  "label": "Draw up a detailed schedule for the permit-granting process within two months of the application and publish it on a free-access website.",
+  "attrs": {
+   "register_id": "PRM-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 9(11)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:PRM-04",
+  "kind": "measure",
+  "label": "PRM-04",
+  "attrs": {
+   "register_id": "PRM-04",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 9(3)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:PRM-05",
+  "kind": "measure",
+  "label": "PRM-05",
+  "attrs": {
+   "register_id": "PRM-05",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 10(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:PRM-06",
+  "kind": "measure",
+  "label": "Complete the permit-granting process for a net-zero strategic project within 9 months below 1 GW, 12 months at 1 GW or more, and 18 months for the permits to operate a CO2 storage site.",
+  "attrs": {
+   "register_id": "PRM-06",
+   "provision_id": "nzia-9-1",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 16(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:SBX-01",
+  "kind": "measure",
+  "label": "Establish or designate contact points for net-zero regulatory sandboxes, with one sole contact point responsible for each request.",
+  "attrs": {
+   "register_id": "SBX-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 33(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:SBX-02",
+  "kind": "measure",
+  "label": "SBX-02",
+  "attrs": {
+   "register_id": "SBX-02",
+   "provision_id": "nzia-33",
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 33(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SBX-03",
+  "kind": "measure",
+  "label": "Carry full liability under Union and national law for any material harm caused to third parties by testing inside the sandbox.",
+  "attrs": {
+   "register_id": "SBX-03",
+   "provision_id": "nzia-33",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 33(6)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SCH-01",
+  "kind": "measure",
+  "label": "Design any new or updated scheme that subsidises the purchase of net-zero technology final products so that it favours products with a high sustainability and resilience contribution, either by paying more for them or by making them the eligibility condition.",
+  "attrs": {
+   "register_id": "SCH-01",
+   "provision_id": "nzia-28",
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 28(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:SCH-02",
+  "kind": "measure",
+  "label": "SCH-02",
+  "attrs": {
+   "register_id": "SCH-02",
+   "provision_id": "nzia-28",
+   "measure_type": "incentive",
+   "direction": "add",
+   "article": "Art. 28(2)",
+   "addressee_class": "household"
+  }
+ },
+ {
+  "id": "measure:nzia:SCH-03",
+  "kind": "measure",
+  "label": "SCH-03",
+  "attrs": {
+   "register_id": "SCH-03",
+   "provision_id": "nzia-28",
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 28(3)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SCH-04",
+  "kind": "measure",
+  "label": "Publish, on one free-access website, all information on purchase-support schemes for each relevant net-zero technology final product.",
+  "attrs": {
+   "register_id": "SCH-04",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 28(5)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:SDG-01",
+  "kind": "measure",
+  "label": "Carry net-zero technology manufacturing projects in the Single Digital Gateway: a new information area, the permit procedures and their outputs, and the single points of contact as assistance services.",
+  "attrs": {
+   "register_id": "SDG-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 48, amending Annexes I, II and III of Regulation (EU) 2018/1724",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:SKL-01",
+  "kind": "measure",
+  "label": "Assess whether an Academy's learning programmes are equivalent to the national qualifications required for regulated professions of interest to the net-zero industry, publish the results, and report the reasons to the Platform where equivalence is not found or not sought.",
+  "attrs": {
+   "register_id": "SKL-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 31(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:SME-01",
+  "kind": "measure",
+  "label": "SME-01",
+  "attrs": {
+   "register_id": "SME-01",
+   "provision_id": "nzia-33",
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 34(1)(a)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SP-01",
+  "kind": "measure",
+  "label": "SP-01",
+  "attrs": {
+   "register_id": "SP-01",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 13(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SP-02",
+  "kind": "measure",
+  "label": "File an application for strategic-project recognition containing evidence against the criteria, a business plan evaluating financial viability, and a draft timetable showing when the project contributes to the Union benchmark.",
+  "attrs": {
+   "register_id": "SP-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 14(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SP-03",
+  "kind": "measure",
+  "label": "Assess a strategic-project application within one month of completeness, request missing information once only, and give a reasoned decision to the promoter and the Platform.",
+  "attrs": {
+   "register_id": "SP-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 14(3)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:SP-04",
+  "kind": "measure",
+  "label": "SP-04",
+  "attrs": {
+   "register_id": "SP-04",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 14(5)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SP-05",
+  "kind": "measure",
+  "label": "SP-05",
+  "attrs": {
+   "register_id": "SP-05",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 13(5)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SP-06",
+  "kind": "measure",
+  "label": "SP-06",
+  "attrs": {
+   "register_id": "SP-06",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "rem",
+   "article": "Art. 14(8)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SP-07",
+  "kind": "measure",
+  "label": "SP-07",
+  "attrs": {
+   "register_id": "SP-07",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 15(3)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SP-08",
+  "kind": "measure",
+  "label": "SP-08",
+  "attrs": {
+   "register_id": "SP-08",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 15(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SP-09",
+  "kind": "measure",
+  "label": "SP-09",
+  "attrs": {
+   "register_id": "SP-09",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 15(4)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SPC-01",
+  "kind": "measure",
+  "label": "Establish or designate one or more single points of contact responsible for facilitating and coordinating the permit-granting process for net-zero technology manufacturing projects.",
+  "attrs": {
+   "register_id": "SPC-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 6(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:SPC-02",
+  "kind": "measure",
+  "label": "SPC-02",
+  "attrs": {
+   "register_id": "SPC-02",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 6(4)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SPC-03",
+  "kind": "measure",
+  "label": "Re-run studies or re-obtain permits and authorisations already carried out or issued for the same project.",
+  "attrs": {
+   "register_id": "SPC-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 6(5)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:nzia:SPC-04",
+  "kind": "measure",
+  "label": "Specify and hand to the single point of contact the requirements and the extent of the information that will be demanded of a project promoter, before the permit-granting process starts.",
+  "attrs": {
+   "register_id": "SPC-04",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 6(9)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:VAL-01",
+  "kind": "measure",
+  "label": "Accompany any designation of a net-zero Acceleration Valley with a plan carrying at least four support schemes: infrastructure, private investment, reskilling, and online information.",
+  "attrs": {
+   "register_id": "VAL-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 17(3)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:nzia:VAL-02",
+  "kind": "measure",
+  "label": "VAL-02",
+  "attrs": {
+   "register_id": "VAL-02",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 18(4)",
    "addressee_class": "business"
   }
  },

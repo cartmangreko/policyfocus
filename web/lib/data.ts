@@ -5,7 +5,7 @@ import { isPositiveValence, valenceLabel } from "./valence";
 
 // data/ lives one level up from web/ at the repo root. Untouched, read-only.
 const DATA_DIR = path.join(process.cwd(), "..", "data");
-const DATA_FILES = ["omnibus.json", "ets.json", "iaa.json", "cbam.json"];
+const DATA_FILES = ["omnibus.json", "ets.json", "iaa.json", "cbam.json", "nzia.json", "crma.json"];
 
 export const FILES: Record<string, FileMeta> = {
   omnibus: {
@@ -23,6 +23,17 @@ export const FILES: Record<string, FileMeta> = {
   cbam: {
     name: "CBAM extension — downstream goods and anti-circumvention",
     code: "COM(2025) 989 final, 2025/0419 (COD)",
+  },
+  // The two standing acts. `code` carries the dated consolidation the rows
+  // were read from, not a procedure number: these are law in force, and which
+  // consolidation was read is the fact a reader needs to place them.
+  nzia: {
+    name: "Net-Zero Industry Act",
+    code: "Regulation (EU) 2024/1735, consolidated 17.08.2025",
+  },
+  crma: {
+    name: "Critical Raw Materials Act",
+    code: "Regulation (EU) 2024/1252, consolidated 03.05.2024",
   },
 };
 

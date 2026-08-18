@@ -22,6 +22,8 @@ DATA_FILES = [
     ("ets", "../data/ets.json"),
     ("iaa", "../data/iaa.json"),
     ("cbam", "../data/cbam.json"),
+    ("nzia", "../data/nzia.json"),
+    ("crma", "../data/crma.json"),
 ]
 
 # Fields that assert a support movement or a conferred faculty. An obligation

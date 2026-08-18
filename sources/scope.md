@@ -15,7 +15,12 @@ incentive, with the source sentence quoted verbatim, the addressee named, and
 the sector reach recorded.
 
 The register currently covers the EU ETS revision, the Industrial Accelerator
-Act, the CBAM extension, and the Omnibus simplification of CSRD/CSDDD.
+Act, the CBAM extension, the Omnibus simplification of CSRD/CSDDD, and two
+standing acts read at their current consolidation: the Net-Zero Industry Act
+(Regulation (EU) 2024/1735) and the Critical Raw Materials Act (Regulation (EU)
+2024/1252). Those last two are the baseline the Industrial Accelerator Act
+amends and the input-side boundary NZIA's own scope provision defers to, so a
+new consolidation of either moves what the register measures against.
 
 ## IN scope
 

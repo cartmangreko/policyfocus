@@ -87,7 +87,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = DATA / "graph"
 
-REGISTER_FILES = ["ets", "iaa", "omnibus", "cbam"]
+REGISTER_FILES = ["ets", "iaa", "omnibus", "cbam", "nzia", "crma"]
 
 # The 14 app sectors, mirroring web/lib/types.ts SectorSlug. Three of them
 # (batsol, clean, ccs) have no FIGARO exposure file: they are policy
@@ -141,6 +141,24 @@ CITED_ACTS = {
     ("Regulation", "2021/1119"): ("32021R1119", "European Climate Law"),
     ("Regulation", "2023/955"): ("32023R0955", "Social Climate Fund Regulation"),
     ("Regulation", "2023/956"): ("32023R0956", "CBAM Regulation"),
+    # The environmental and procurement acts the two standing acts' permitting
+    # and market-access articles run through. Added when NZIA and CRMA entered
+    # the register: 13 citations were being reported unmapped, and every one of
+    # them is a real dependency of a permitting or product row.
+    ("Directive", "92/43"): ("31992L0043", "Habitats Directive"),
+    ("Directive", "94/22"): ("31994L0022", "Hydrocarbons Licensing Directive"),
+    ("Directive", "2000/60"): ("32000L0060", "Water Framework Directive"),
+    ("Directive", "2001/42"): ("32001L0042", "Strategic Environmental Assessment Directive"),
+    ("Directive", "2006/21"): ("32006L0021", "Extractive Waste Directive"),
+    ("Directive", "2008/98"): ("32008L0098", "Waste Framework Directive"),
+    ("Directive", "2009/147"): ("32009L0147", "Birds Directive"),
+    ("Directive", "2010/75"): ("32010L0075", "Industrial Emissions Directive"),
+    ("Directive", "2011/92"): ("32011L0092", "Environmental Impact Assessment Directive"),
+    ("Directive", "2012/18"): ("32012L0018", "Seveso III Directive"),
+    ("Directive", "2014/24"): ("32014L0024", "Public Procurement Directive"),
+    ("Directive", "2014/25"): ("32014L0025", "Utilities Procurement Directive"),
+    ("Regulation", "139/2004"): ("32004R0139", "EU Merger Regulation"),
+    ("Regulation", "2024/1252"): ("32024R1252", "Critical Raw Materials Act"),
     ("Regulation", "2024/1735"): ("32024R1735", "Net-Zero Industry Act"),
     ("Regulation", "2024/1781"): ("32024R1781", "Ecodesign for Sustainable Products Regulation"),
     ("Regulation", "2024/2509"): ("32024R2509", "Financial Regulation (2024 recast)"),
@@ -299,6 +317,14 @@ class Graph:
         self.edges.append(edge)
 
 
+def act_name(celex: str) -> str | None:
+    """The human name CITED_ACTS carries for a CELEX, if it carries one."""
+    for cx, name in CITED_ACTS.values():
+        if cx == celex:
+            return name
+    return None
+
+
 def build() -> Graph:
     g = Graph()
     manifest = load(ROOT / "sources" / "manifest.json")
@@ -308,10 +334,16 @@ def build() -> Graph:
     # CELEX, their status, and what they amend.
     for slug, entry in sorted(manifest.items()):
         celex, consolidated = base_celex(entry["celex"])
+        # A proposal is known by its COM number; a standing act has none, and
+        # falling straight through to the bare CELEX would have relabelled
+        # act:32024R1735 from "Net-Zero Industry Act" to "32024R1735" the
+        # moment NZIA entered the manifest -- add_node keeps the FIRST label it
+        # is given, and the manifest pass runs before the citation pass that
+        # used to supply the name. CITED_ACTS is consulted here for that reason.
         g.add_node(
             f"act:{celex}",
             "act",
-            entry.get("com") or celex,
+            entry.get("com") or act_name(celex) or celex,
             celex=celex,
             kind_of_act=entry["kind"],
             status=entry["status"],
