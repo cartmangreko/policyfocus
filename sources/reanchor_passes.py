@@ -155,6 +155,40 @@ PASS_B_CROSSWALK = {
         "NZT-10c": "LM-20b",       # new Annex II Part III household schemes
         "NZT-13b": "LM-23b",       # new Annex II Part IV electrolyser support
     },
+    # CBAM's second pass. It differs from the two above in how it was produced:
+    # ets_pass_b and iaa_pass_b are frozen snapshots, while cbam_pass_b.json is
+    # regenerated from live sources by extract_cbam_pass_b.py, so it never goes
+    # stale and never needs re-anchoring. That is also why cbam is deliberately
+    # ABSENT from PAIRS below: reanchor copies measure_type, direction and
+    # prior_rule down from the register onto the pass row, and running it over
+    # this pass would overwrite the four disagreements it was written to record
+    # (B-21, B-53, B-54, B-56) with the register's answers. Re-run the extractor
+    # instead.
+    #
+    # Every one of the register's 53 rows has exactly one counterpart here. The
+    # nine B rows with no entry -- B-06, B-07, B-14, B-15, B-24, B-41, B-48,
+    # B-51, B-52 -- are provisions this pass found and the register does not
+    # carry, and they land in reconcile's candidate list.
+    "cbam_pass_b.json": {
+        "B-01": "SCP-01",   "B-02": "SCP-02",   "B-03": "SCP-03",
+        "B-04": "ELEC-07",  "B-05": "ELEC-08",  "B-08": "GOV-01",
+        "B-09": "ANTI-01",  "B-10": "DECL-04",  "B-11": "DECL-03",
+        "B-12": "DECL-01",  "B-13": "DECL-02",  "B-16": "ANTI-03",
+        "B-17": "ANTI-04",  "B-18": "CALC-01",  "B-19": "DECL-06",
+        "B-20": "CALC-06",  "B-21": "FIN-06",   "B-22": "FIN-07",
+        "B-23": "FIN-08",   "B-25": "DATA-05",  "B-26": "DATA-04",
+        "B-27": "DATA-01",  "B-28": "DATA-02",  "B-29": "DATA-03",
+        "B-30": "FIN-01",   "B-31": "FIN-02",   "B-32": "VER-01",
+        "B-33": "DECL-05",  "B-34": "FIN-04",   "B-35": "GOV-05",
+        "B-36": "FIN-03",   "B-37": "FIN-05",   "B-38": "CUST-01",
+        "B-39": "CUST-02",  "B-40": "CUST-03",  "B-42": "CUST-04",
+        "B-43": "ANTI-02",  "B-44": "SCP-06",   "B-45": "GOV-02",
+        "B-46": "GOV-04",   "B-47": "GOV-03",   "B-49": "SCP-04",
+        "B-50": "SCP-05",   "B-53": "CALC-02",  "B-54": "CALC-03",
+        "B-55": "ELEC-01",  "B-56": "ELEC-02",  "B-57": "ELEC-03",
+        "B-58": "ELEC-04",  "B-59": "ELEC-05",  "B-60": "ELEC-06",
+        "B-61": "CALC-04",  "B-62": "CALC-05",
+    },
 }
 
 PAIRS = [

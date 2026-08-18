@@ -1,0 +1,1639 @@
+[
+  {
+    "id": "B-01",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of processed products re-exported to Norway or Iceland",
+    "class": "business",
+    "trigger": "processed products from Annex I goods under inward processing are re-exported to and imported in Norway or Iceland",
+    "frequency": "per consignment",
+    "verification": "customs authorities",
+    "direction": "add",
+    "article": "Art. 1(1)(a), inserting Art. 2(2a) of Regulation (EU) 2023/956",
+    "when": "upon incorporation of the Regulation in the EEA Agreement",
+    "source_text": "‘2a. Upon its incorporation in the EEA Agreement, this Regulation also applies to processed products from goods listed in Annex I originating in a third country that are resulting from the inward processing procedure referred to in Article 256 of Regulation (EU) No 952/2013, where they are re-exported to the customs territory of Norway or Iceland, provided that they are imported to those countries.",
+    "drivers": [
+      "D7",
+      "D1"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu"
+    ],
+    "sectors_reached": [],
+    "duty": "Account for CBAM on processed products made from Annex I goods under inward processing that are re-exported to Norway or Iceland.",
+    "pending": "The detailed conditions are left to implementing acts under the new Art. 2(2a); nothing is operable until they exist."
+  },
+  {
+    "id": "B-02",
+    "measure_type": "obligation",
+    "addressee": "Customs declarants importing goods previously released for free circulation in a CBAM-integrated EFTA State",
+    "class": "business",
+    "trigger": "goods previously released for free circulation in the customs territory of an EFTA State that incorporated the CBAM",
+    "frequency": "per consignment",
+    "verification": "customs authorities",
+    "direction": "rem",
+    "article": "Art. 1(1)(b), adding a subparagraph to Art. 2(4) of Regulation (EU) 2023/956",
+    "when": "upon incorporation of the Regulation into the EEA Agreement",
+    "source_text": "‘Upon its incorporation into the EEA Agreement, by way of derogation from paragraphs 1 and 2, this Regulation shall not apply to goods originating in third countries previously released for free circulation in the customs territory of the EFTA States that incorporated the CBAM, provided that the customs declarant indicates in the subsequent customs declaration lodged in the customs territory of the Union that the goods have been previously released for free circulation in the customs territory of those EFTA States and provided that, at the request of the customs authority, the customs declarant makes available documentation or information proving that the goods have been previously released for free circulation within the customs territory of the respective EFTA States.",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Comply with CBAM for third-country goods that were already released for free circulation in an EFTA State that has incorporated the CBAM.",
+    "provision_id": "cbam-2-4",
+    "note": "A duty switched off inside an integrated CBAM area, so no consignment is charged twice. No support moves: obligation side, direction rem. B-03 is the evidence condition attached to it."
+  },
+  {
+    "id": "B-03",
+    "measure_type": "obligation",
+    "addressee": "Customs declarants relying on the EFTA prior-free-circulation exemption",
+    "class": "business",
+    "trigger": "declarant claims the Art. 2(4) EFTA exemption in a customs declaration",
+    "frequency": "per consignment",
+    "verification": "customs authorities",
+    "direction": "add",
+    "article": "Art. 1(1)(b), adding a subparagraph to Art. 2(4) of Regulation (EU) 2023/956",
+    "when": "upon incorporation of the Regulation into the EEA Agreement",
+    "source_text": "The customs declarant shall bear responsibility for the availability of this proof at the time of lodging of the customs declaration.",
+    "drivers": [
+      "D1",
+      "D6"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Have the documentation proving prior release for free circulation in an EFTA State available at the moment the customs declaration is lodged.",
+    "provision_id": "cbam-2-4"
+  },
+  {
+    "id": "B-04",
+    "measure_type": "obligation",
+    "addressee": "Third countries seeking electricity market coupling with the Union, and the Commission",
+    "class": "state",
+    "trigger": "third country requests to integrate its electricity market with the Union's under an international agreement",
+    "frequency": "if it happens",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(1)(c), inserting Art. 2(7a) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘Where a third country has requested to integrate its electricity market into that of the Union through market coupling pursuant to an international agreement, the Commission may, when establishing that the relevant third country has fully transposed the electricity market acquis, conclude a Memorandum of Understanding with that third country.\n\nThe Memorandum of Understanding referred to in the first subparagraph shall set the timeline for the application of the exemption foreseen in Article 2(7) and the timeline for the implementation of a carbon pricing instrument equivalent to the EU ETS, insofar as electricity generation is concerned.",
+    "drivers": [],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Conclude and then honour a Memorandum of Understanding fixing the timeline for the Art. 2(7) electricity exemption and for an EU ETS-equivalent carbon price on generation.",
+    "note": "The gateway to the Art. 2(7) exemption. State class: no firm can invoke it, but it decides whether electricity from that country is charged at all."
+  },
+  {
+    "id": "B-05",
+    "measure_type": "obligation",
+    "addressee": "European Commission",
+    "class": "state",
+    "trigger": "assessment of a third country against the Art. 2(7) conditions",
+    "frequency": "if it happens",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(1)(d), replacing Art. 2(8) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "When assessing whether the conditions set out in paragraph 7 of this Article are fulfilled, the Commission shall take into account advancements in accordance with the timeline laid down in a Memorandum of Understanding under Article 2(7a).",
+    "drivers": [],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Take the Memorandum of Understanding timeline into account when assessing whether a third country qualifies for the Annex III point 2 exemption."
+  },
+  {
+    "id": "B-06",
+    "measure_type": "obligation",
+    "addressee": "European Commission; importers of goods originating in third countries listed in Annex III",
+    "class": "state",
+    "trigger": "conditions in Art. 2(6), (7) or (9) are or cease to be fulfilled for a third country, or the CBAM is incorporated into the EEA Agreement",
+    "frequency": "if it happens",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(1)(e), replacing Art. 2(11) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘11. The Commission is empowered to adopt delegated acts in accordance with Article 28 in order to amend the lists of third countries or territories listed in point 1 or 2 of Annex III by adding or removing a third country or territory, depending on whether the conditions set out in paragraph 6, 7 or 9 of this Article are fulfilled in respect of that third country or territory, or as a consequence of the incorporation of the CBAM into the EEA Agreement. Where, in the case of adding a third country to the list of third countries or territories listed in point 2 of Annex III, imperative grounds of urgency so require, the procedure provided for in Article 28a shall apply to delegated acts adopted pursuant to this paragraph.",
+    "drivers": [],
+    "sectors_named": [
+      "power",
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "A third country or territory may be added to or removed from the Annex III exemption lists by delegated act, including as a consequence of CBAM incorporation into the EEA Agreement, and under urgency where imperative grounds require it.",
+    "note": "NOT IN PASS A. Annex III listing is what switches the CBAM off for a country's goods, so the power to amend the list is a scope power, not a procedural one. Two things are new against the prior Art. 2(11): the EEA-incorporation ground, and the Art. 28a urgency procedure, which lets a country be ADDED to the exemption list with immediate effect."
+  },
+  {
+    "id": "B-07",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants and third-country operators procuring verification",
+    "class": "state",
+    "trigger": "Union concludes an agreement with a third country covering accreditation bodies",
+    "frequency": "if it happens",
+    "verification": "accredited third party",
+    "direction": "rem",
+    "article": "Art. 1(1)(e), replacing Art. 2(12) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "The Union may conclude agreements with third countries or territories with a view to taking into account carbon pricing mechanisms in such countries or territories for the purposes of the application of Article 9 as well as the mutual recognition of third-country accreditation bodies for the accreditation of a legal person to be a verifier pursuant to Article 18.",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Use a verifier accredited by a national accreditation body of a Member State, there being no route to recognition of a third-country accreditation body.",
+    "pending": "No such agreement exists; the provision is an enabling power, and until one is concluded nothing changes for a declarant.",
+    "note": "NOT IN PASS A. The prior Art. 2(12) stopped at carbon pricing mechanisms 'for the purposes of the application of Article 9'. The mutual-recognition limb is new and its object is the verification condition, which is why it is filed rem rather than as an Art. 9 row."
+  },
+  {
+    "id": "B-08",
+    "measure_type": "obligation",
+    "addressee": "European Commission",
+    "class": "state",
+    "trigger": "the Art. 2a(3) assessment falling due in 2027",
+    "frequency": "one-off",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(2), adding a subparagraph to Art. 2a(3) of Regulation (EU) 2023/956",
+    "when": "by 30 April 2027",
+    "source_text": "‘For its 2027 assessment due by 30 April 2027, the Commission shall use the import data of goods contained in Annex I to this Regulation and in Annex I to Regulation (EU) XX/XX [Amending Regulation]’;",
+    "drivers": [
+      "D5"
+    ],
+    "sectors_named": [],
+    "sectors_reached": [
+      "steel",
+      "alu",
+      "auto",
+      "build"
+    ],
+    "duty": "Base the 2027 threshold assessment on import data for the goods in both the existing Annex I and the Annex I of this amending Regulation.",
+    "note": "Reads the new downstream scope back into the mass-based de minimis threshold: the assessment that sets the threshold must count the newly covered goods."
+  },
+  {
+    "id": "B-09",
+    "measure_type": "obligation",
+    "addressee": "Importers, authorised CBAM declarants and third-country operators",
+    "class": "business",
+    "trigger": "any conduct bearing on the CBAM financial liability",
+    "frequency": "continuous",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(3), adding point (35) to Art. 3 of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘(35) ‘abusive practices’ are practices pursued by an actor for the purpose of gaining a benefit by unduly avoiding, wholly or partially, the CBAM financial liability and thereby undermining the effectiveness of the CBAM to address the risk of carbon leakage in the EU.’;",
+    "drivers": [
+      "D6"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Avoid practices whose purpose is to gain a benefit by unduly avoiding, wholly or partly, the CBAM financial liability.",
+    "note": "A definition, filed as a row because three operative duties hang off it -- Art. 6(2)(f) evidence, Art. 6(7) delegated acts and the Art. 27 circumvention regime -- and its breadth ('unduly avoiding') is what fixes their reach."
+  },
+  {
+    "id": "B-10",
+    "measure_type": "obligation",
+    "addressee": "Applicants for authorised CBAM declarant status acting on behalf of others",
+    "class": "business",
+    "trigger": "application for authorisation as a CBAM declarant on behalf of other persons",
+    "frequency": "one-off",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(4), replacing point (h) of Art. 5(5) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘(h) EORI number or other national identification number, names and contact information of the persons on behalf of whom the applicant is acting, if applicable.’;",
+    "drivers": [
+      "D1"
+    ],
+    "sectors_named": [],
+    "sectors_reached": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "duty": "Identify by EORI or national identification number every person on whose behalf the applicant acts, in the authorisation application.",
+    "note": "Anti-circumvention through the indirect-representation route: the prior point (h) named the represented persons, this adds their identification numbers so a chain of representatives can be traced."
+  },
+  {
+    "id": "B-11",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants",
+    "class": "business",
+    "trigger": "submission of the annual CBAM declaration",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(5)(a)(1), replacing point (b) of Art. 6(2) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘(b) the total embedded emissions in the goods referred to in point (a) of this paragraph, expressed in tonnes of CO2e emissions per megawatt-hour of electricity or, for other goods, in tonnes of CO2e emissions per tonne of each type of goods, calculated in accordance with Article 7 and, where the embedded emissions are determined on the basis of actual emissions provided by the operator via the CBAM registry in accordance with Article 10, verified in accordance with Article 8;’;",
+    "drivers": [
+      "D1",
+      "D2",
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem",
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Declare total embedded emissions per MWh for electricity or per tonne for other goods, and have them verified where they rest on actual emissions supplied by the operator through the CBAM registry.",
+    "note": "The verification duty is newly conditioned on the emissions being 'provided by the operator via the CBAM registry in accordance with Article 10', which ties Art. 8 verification to the Art. 10 registry channel rather than to any actual-emissions claim."
+  },
+  {
+    "id": "B-12",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants for goods flagged for supply-chain traceability risk",
+    "class": "business",
+    "trigger": "goods identified by implementing act as carrying a misdeclaration risk from lack of supply chain traceability",
+    "frequency": "annual",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(5)(a)(2), adding point (e) to Art. 6(2) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘(e) where applicable for the purpose of addressing the risk of misdeclaration resulting from the lack of supply chain traceability, evidence that the goods imported during the preceding calendar year were produced at the declared installation and at the actual time of production referred to in the CBAM declaration;",
+    "drivers": [
+      "D1",
+      "D4",
+      "D6"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Include in the CBAM declaration evidence that the goods imported in the preceding calendar year were produced at the declared installation and at the declared time of production.",
+    "pending": "Which goods, and which specific evidence, are set by implementing acts under the new Art. 6(6a)."
+  },
+  {
+    "id": "B-13",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants claiming actual emissions for high-risk goods/origin combinations",
+    "class": "business",
+    "trigger": "delegated act designates a combination of goods and origins as high risk of abusive practices and the declarant claims actual emissions for it",
+    "frequency": "annual",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(5)(a)(2), adding point (f) to Art. 6(2) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "(f) where, in accordance with a delegated act adopted in accordance with paragraph 7, the embedded emissions are determined on the basis of actual emissions for a combination of goods and origins that are subject to a high risk of abusive practices, evidence demonstrating that the high risk of abusive practices has not materialised.’;",
+    "drivers": [
+      "D1",
+      "D4",
+      "D6"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Where a goods/origin combination is designated high-risk for abusive practices and actual emissions are claimed, prove in the declaration that the risk has not materialised.",
+    "pending": "The high-risk combinations, and the evidence that discharges the duty, are set by delegated acts under the new Art. 6(7).",
+    "note": "A reversed burden of proof: the declarant must demonstrate a negative, and the only alternative is to abandon the actual-emissions claim and take the default value with its mark-up."
+  },
+  {
+    "id": "B-14",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants; European Commission as the act's author",
+    "class": "business",
+    "trigger": "submission of the CBAM declaration in the standard format",
+    "frequency": "annual",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(5)(b), replacing the first sentence of Art. 6(6) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘The Commission is empowered to adopt implementing acts concerning the standard format of the CBAM declaration, including detailed information for each installation and country of origin or other third country and type of goods to be reported, which supports the totals referred to in paragraph 2 of this Article, in particular as regards embedded emissions, the carbon price paid, the default carbon price for the purpose of Article 9(4), the procedure for submitting the CBAM declaration via the CBAM registry, including procedures for the review of CBAM declarations in accordance with Article 19, and the arrangements for surrendering the CBAM certificates referred to in paragraph 2, point (c), of this Article, in accordance with Article 22(1), in particular as regards the process and the selection by the authorised CBAM declarant of certificates to be surrendered.’;",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem",
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Report, in the standard declaration format, the detail supporting each total -- per installation and country of origin -- including the carbon price paid and the default carbon price for the purposes of Art. 9(4).",
+    "pending": "The format itself is the implementing act; the declaration content follows it.",
+    "note": "NOT IN PASS A. The empowerment is not new, but its content is extended: the format must now carry information 'for each installation and country of origin or other third country and type of goods', the carbon price paid, and the Art. 9(4) default carbon price. That is a per-installation reporting granularity the prior sentence did not demand."
+  },
+  {
+    "id": "B-15",
+    "measure_type": "obligation",
+    "addressee": "European Commission",
+    "class": "state",
+    "trigger": "identification of a supply-chain traceability risk",
+    "frequency": "if it happens",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(5)(c), adding Art. 6(6a) to Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘6a. The Commission is empowered to adopt implementing acts concerning the identification of goods or combination of goods and origins for which evidence is to be included in the CBAM declaration pursuant to paragraph 2, point (e), as well as the specific type of evidence to be provided. Those implementing acts shall be adopted in accordance with the examination procedure referred to in Article 29(2).",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Designate, by implementing act, the goods or goods/origin combinations for which traceability evidence must accompany the declaration, and the type of evidence required.",
+    "note": "NOT IN PASS A, where it appears only as B-12's `pending`. Carried as a row because it is the instrument that decides the reach of the Art. 6(2)(e) duty, and until it is adopted that duty binds nobody."
+  },
+  {
+    "id": "B-16",
+    "measure_type": "obligation",
+    "addressee": "European Commission",
+    "class": "state",
+    "trigger": "sufficient evidence pointing towards a high risk of abusive practices for a combination of goods and origins",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(5)(c), adding Art. 6(7) to Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "7. The Commission shall monitor at Union level the impact of the CBAM on the Union internal market. Where the Commission, taking into account relevant information, including from customs import declarations and CBAM declarations, finds that there is sufficient evidence pointing towards a high risk of abusive practices for a combination of goods and origins, it may inform importers and authorised CBAM declarants about these risks, it may inform competent authorities and customs aurhoties about these risks with a view of increasing their level of control, and it is empowered to adopt delegated acts in accordance with Article 28 to supplement this Regulation by laying down the methods for the identification of the combination of goods and origins, the information to be declared for the use of actual emissions for those combinations of goods and origins as well as the evidence to be provided to demonstrate that no abuse has taken place.",
+    "drivers": [
+      "D5"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Monitor the CBAM's internal-market impact, warn importers, declarants, competent and customs authorities where a goods/origin combination shows a high risk of abusive practices, and set by delegated act the identification method, the information to be declared and the evidence required.",
+    "note": "The engine behind B-13 and B-26. Note the informing limb: the Commission 'may inform importers and authorised CBAM declarants about these risks' -- a designation that is public before any delegated act exists."
+  },
+  {
+    "id": "B-17",
+    "measure_type": "obligation",
+    "addressee": "European Commission",
+    "class": "state",
+    "trigger": "Commission finds sufficient evidence of a high risk of abusive practices",
+    "frequency": "if it happens",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(5)(c), adding Art. 6(7), second subparagraph, to Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "The Commission shall adopt the delegated acts referred to in the first subparagraph within three months of finding that there is sufficient evidence pointing towards a high risk of abusive practices",
+    "drivers": [
+      "D5"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Adopt the abusive-practices delegated act within three months of finding sufficient evidence of a high risk.",
+    "note": "A hard deadline on the Commission, filed separately from B-16 because it is the only thing in Art. 6(7) that is not discretionary: everything else in that paragraph is 'may'."
+  },
+  {
+    "id": "B-18",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants and third-country operators of installations producing Annex I goods",
+    "class": "business",
+    "trigger": "determination of embedded emissions in goods produced from Annex VIII input materials",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(6)(a), inserting Art. 7(2a) of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "‘2a. Embedded emissions in input materials (precursors) listed in Annex VIII shall be considered in the determination of embedded emissions in goods.",
+    "drivers": [
+      "D4",
+      "D1",
+      "D2"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Count the embedded emissions of Annex VIII input materials -- ferrous and aluminium waste and scrap other than post-consumer scrap -- in the embedded emissions of the goods.",
+    "note": "Closes the scrap route. Under the prior rule only Annex I precursors counted, and scrap sat outside Annex I, so an EAF route through imported scrap carried no precursor emissions. The carve-out for post-consumer scrap is what keeps genuine recycling out."
+  },
+  {
+    "id": "B-19",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants",
+    "class": "business",
+    "trigger": "calculation of embedded emissions for the CBAM declaration",
+    "frequency": "annual",
+    "verification": "competent authority",
+    "direction": "rem",
+    "article": "Art. 1(6)(b), replacing Art. 7(5) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘5. The authorised CBAM declarant shall keep records of the information disclosed in accordance with Article 10(7) that is required to calculate the embedded emissions in accordance with the requirements laid down in Annex V. Those records shall be sufficiently detailed to enable the Commission and the competent authority to review the CBAM declaration in accordance with Article 19(2).’;",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Keep records detailed enough to let an accredited verifier verify the embedded emissions under Art. 8 and Annex VI, over the full information required to calculate them rather than over what the operator disclosed under Art. 10(7).",
+    "note": "Two limbs move together. The record set narrows to what was disclosed under Art. 10(7), which the declarant actually holds, and the verifier-enablement limb of the prior sentence is dropped, leaving only Commission and competent-authority review. Both are relief; the second is the larger one and is invisible from this act's text alone."
+  },
+  {
+    "id": "B-20",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of listed downstream goods",
+    "class": "business",
+    "trigger": "implementing act lists a downstream good as exempt from the mark-up",
+    "frequency": "annual",
+    "verification": "none",
+    "direction": "rem",
+    "article": "Art. 1(6)(c), adding a subparagraph to Art. 7(7) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "The implementing acts referred to in the first subparagraph may provide a list of downstream goods for which, due to the complexity of the supply chain and without prejudice to the environmental integrity of the CBAM, no mark-up is to apply.’;",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Carry the default-value mark-up on downstream goods whose supply-chain complexity makes actual emissions impractical to establish.",
+    "pending": "The list is a Commission implementing act and does not exist; no good benefits until it is adopted.",
+    "note": "The object is the basis on which the CBAM liability is computed, not any support -- so obligation side, direction rem, per the object rule. This is the main relief offered to the downstream importers B-49 pulls in."
+  },
+  {
+    "id": "B-21",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants claiming a carbon price paid in a third country",
+    "class": "business",
+    "trigger": "claim to deduct a carbon price effectively paid in a third country",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "rem",
+    "article": "Art. 1(7)(a)(1), replacing the third sentence of Art. 9(2) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘The information contained in that documentation shall be certified by a person that is independent from the authorities of the third country.’;",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Have the carbon-price documentation certified by a person independent from the authorised CBAM declarant AS WELL AS from the authorities of the third country.",
+    "provision_id": "cbam-9-2",
+    "note": "The span is a replacement, not a deletion, so nothing in the pipeline forces the prior text to be resolved. It is attached anyway, because the direction is unreadable without it.",
+    "prior_rule": {
+      "status": "sourced",
+      "trigger": "authorised CBAM declarant keeping documentation to demonstrate a carbon price effectively paid in a third country",
+      "obligation": "The prior third sentence of Art. 9(2) required the certifying person to be independent from the authorised CBAM declarant AND from the authorities of the third country. The replacement keeps only the second limb.",
+      "source_document": "Regulation (EU) 2023/956 as consolidated at 2025-10-20, CELEX 02023R0956-20251020, Article 9(2), third sentence",
+      "source_text": "The information contained in that documentation shall be certified by a person that is independent from the authorised CBAM declarant and from the authorities of the third country.",
+      "note": "DISAGREES WITH PASS A FIN-06, which files this as direction 'add' and states the duty as 'have the documentation certified by a person independent of that country's authorities'. That duty is not new -- it is the surviving half of a two-limb test. What this provision actually does is DELETE the requirement that the certifier be independent of the declarant itself, which is the limb that stopped a declarant certifying through a person it controls. Read from this act alone the row looks like a fresh requirement; read against the consolidation it is a relaxation."
+    }
+  },
+  {
+    "id": "B-22",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants claiming a carbon price paid in a third country",
+    "class": "business",
+    "trigger": "selection of the person certifying carbon-price documentation",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "rem",
+    "article": "Art. 1(7)(a)(2), adding a subparagraph to Art. 9(2) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘The independent person referred to in the first subparagraph may be a legal person accredited by a national accreditation body for the relevant scope of accreditation.’;",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Establish that a certifying person meets the Art. 9(2) independence test without an express route through national accreditation.",
+    "provision_id": "cbam-9-2",
+    "note": "Reads 'may be', which is permissive about WHO QUALIFIES rather than conferring anything on the addressee, so it fails the operative-verb test for `right` and stays obligation/rem. Same conclusion as Pass A FIN-07."
+  },
+  {
+    "id": "B-23",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants claiming a carbon price paid in a third country; European Commission",
+    "class": "business",
+    "trigger": "claim to reduce the number of CBAM certificates on account of a carbon price paid in a third country",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(7)(b)(1), replacing the first subparagraph of Art. 9(5) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘The Commission is empowered to adopt implementing acts, based on the principle of equivalence, concerning the conversion of the yearly average carbon price effectively paid in accordance with paragraph 1 of this Article and of the yearly default carbon prices determined in accordance with paragraph 4 of this Article into a corresponding reduction of the number of CBAM certificates to be surrendered.Those acts shall also govern the conversion of the carbon price expressed in foreign currency into euro at the yearly average exchange rate, the evidence required of the actual payment of the carbon price, examples of any relevant rebate or other form of compensation referred to in paragraph 1 of this Article, the qualifications of the independent person referred to in paragraph 2 of this Article and the conditions to ascertain that person’s qualifications and independence. The qualifications mentioned in the previous paragraph shall include the granting of accreditation by a national accreditation body, the specification of the certification procedures, and the appropriate exchanges of information between the independent person, national accreditation bodies, the European Commission and competent authorities. The Commission is also empowered to regulate the conditions for deducting carbon credits under Article 6 of the Paris Agreement.",
+    "drivers": [
+      "D1",
+      "D2"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Convert a carbon price paid abroad into a reduction in certificates to be surrendered on the terms the implementing act sets, and satisfy the evidence, currency-conversion and certifier-qualification conditions it lays down.",
+    "pending": "The conversion implementing act does not exist. The Paris Article 6 limb is an empowerment only -- no carbon credit is deductible until it is used.",
+    "note": "Two substantive additions against the prior subparagraph: the yearly DEFAULT carbon prices under Art. 9(4) are brought into the conversion, and the Commission is empowered to regulate deduction of Paris Art. 6 credits, which the prior text did not contemplate at all."
+  },
+  {
+    "id": "B-24",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants claiming a carbon price paid in a third country",
+    "class": "business",
+    "trigger": "selection of the person certifying carbon-price documentation",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(7)(b)(2), adding a subparagraph to Art. 9(5) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘The qualifications referred to in the first subparagraph shall include the granting of accreditation by a national accreditation body, the specification of the certification procedures and the appropriate exchanges of information between the independent person, national accreditation bodies, the Commission and competent authorities.’;",
+    "drivers": [
+      "D2"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Use a certifying person holding accreditation from a national accreditation body, following specified certification procedures and subject to information exchange with accreditation bodies, the Commission and competent authorities.",
+    "provision_id": "cbam-9-2",
+    "note": "NOT IN PASS A. It matters despite reading as boilerplate: taken with B-22, accreditation stops being one permitted route to independence ('may be') and becomes a mandatory element of the qualifications ('shall include'). The proposal states the same sentence twice -- once inside the Art. 9(5) first subparagraph replaced by B-23 and again as this free-standing subparagraph -- which looks like a drafting slip and is recorded rather than silently merged."
+  },
+  {
+    "id": "B-25",
+    "measure_type": "right",
+    "addressee": "Operators of installations located in third countries",
+    "class": "business",
+    "trigger": "request by an operator of an installation located in a third country",
+    "frequency": "one-off",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(8)(a), replacing Art. 10(1) of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "‘1. To allow the verification of embedded emissions on the basis of actual emissions as well as the determination, where applicable, of the carbon price paid in a third country, the Commission shall, upon request by an operator of an installation located in a third country, register the information on that operator and on its installation in the CBAM registry referred to in Article 14.’;",
+    "drivers": [
+      "D1"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "benefit": "An operator of a third-country installation may have its installation registered in the CBAM registry for the purpose of establishing the carbon price it paid, not only its actual emissions.",
+    "right_basis": {
+      "text": "as well as the determination, where applicable, of the carbon price paid in a third country",
+      "kind": "scope"
+    },
+    "note": "The registration faculty existed; its purpose is widened to carbon-price determination, so what is conferred is extent, not the faculty itself -- hence a `scope` basis rather than `conferral`. Same conclusion as Pass A DATA-05."
+  },
+  {
+    "id": "B-26",
+    "measure_type": "obligation",
+    "addressee": "Operators of installations located in third countries registered in the CBAM registry",
+    "class": "business",
+    "trigger": "goods/origin combination designated under Art. 6(7) and actual emissions used",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(8)(b), adding point (e) to Art. 10(5) of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "‘(e) ensure, where applicable pursuant to Article 6(7), that the conditions laid down for the use of actual emissions, for relevant combinations of goods and origins, are met.’;",
+    "drivers": [
+      "D4",
+      "D1"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Ensure that the conditions laid down for the use of actual emissions are met for the relevant goods/origin combinations.",
+    "note": "Pushes the abuse-risk conditions upstream onto the third-country operator, where the prior Art. 10(5) list stopped at emissions data and verification reports."
+  },
+  {
+    "id": "B-27",
+    "measure_type": "right",
+    "addressee": "Operators of installations located in third countries",
+    "class": "business",
+    "trigger": "operator holds Art. 10(5) information another operator needs",
+    "frequency": "if it happens",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(8)(c), replacing the first sentence of Art. 10(7) of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "‘An operator may disclose the information on the conditions for the use of actual emissions, for the relevant combinations of goods and origins pursuant to Article 6(7), the verification of embedded emissions and the carbon price paid in a third country referred to in paragraph 5 of this Article to an authorised CBAM declarant or to another operator.",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "benefit": "An operator may disclose its verified emissions, carbon-price and actual-emissions-condition information to another operator, not only to an authorised CBAM declarant.",
+    "right_basis": {
+      "text": "to an authorised CBAM declarant or to another operator.",
+      "kind": "conferral"
+    },
+    "note": "A channel that did not exist: the prior sentence allowed disclosure to the declarant only, which broke the chain for a precursor producer supplying a downstream operator. Operative verb 'may disclose' confers. Same conclusion as Pass A DATA-01."
+  },
+  {
+    "id": "B-28",
+    "measure_type": "right",
+    "addressee": "Operators of third-country installations and the authorised CBAM declarants they supply",
+    "class": "business",
+    "trigger": "operator discloses Art. 10(5) information to a declarant",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(8)(d), replacing the second sentence of Art. 10(7) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘The operator may disclose to the authorised CBAM declarant only a summary of the information contained in paragraph 5, points (a), (b), (c) and (e). The authorised CBAM declarant shall be entitled to use that disclosed information in order to fulfil the obligation referred to in Article 8.",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "benefit": "The operator may hand over only a summary of its Art. 10(5) information, and the declarant is entitled to use that summary to discharge its Art. 8 verification obligation.",
+    "right_basis": {
+      "text": "shall be entitled to use that disclosed information in order to fulfil the obligation referred to in Article 8",
+      "kind": "conferral"
+    },
+    "note": "Confidentiality relief for the operator and a usable evidence base for the declarant, in one sentence. Two-sided with B-29, which is the price of it."
+  },
+  {
+    "id": "B-29",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants relying on operator-disclosed summaries",
+    "class": "business",
+    "trigger": "declaration submitted on the basis of information disclosed by the operator",
+    "frequency": "annual",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(8)(d), replacing the second sentence of Art. 10(7) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "Where the authorised CBAM declarant chooses to submit the CBAM declaration on the basis of this disclosed information, the authorised CBAM declarant shall remain responsible for surrendering the correct number of CBAM certificates pursuant to Article 22(1).’;",
+    "drivers": [
+      "D6"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Remain responsible for surrendering the correct number of CBAM certificates even where the declaration rests on a summary disclosed by the operator.",
+    "note": "The liability that makes B-28 less generous than it reads: the declarant may rely on a summary it cannot check, and still carries the shortfall."
+  },
+  {
+    "id": "B-30",
+    "measure_type": "obligation",
+    "addressee": "Applicants for and holders of authorised CBAM declarant status",
+    "class": "business",
+    "trigger": "competent authority finds the applicant or declarant does not demonstrate financial capacity, including by failing the Art. 22(2) holding requirement",
+    "frequency": "if it happens",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(9)(a), inserting Art. 17(5a) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘5a. By way of derogation from paragraph 5, where the competent authority finds that the applicant or the authorised CBAM declarant does not demonstrate its financial capacity to fulfil its obligations under this Regulation, including by failing to comply with the requirement set out in Article 22(2), the competent authority may require the provision of a guarantee.\n\nThe competent authority shall fix the amount of such guarantee at the amount, calculated as the aggregate value of the number of CBAM certificates that the authorised CBAM declarant would have to surrender in accordance with Article 22 in respect of one of the following:\n\n(a)\n   imports of goods reported in accordance with Article 5(5), point (g);\n\n(b)\n   the amount of imported goods declared in the customs declaration and other relevant information available to the competent authority from the previous two calendar years; or\n\n(c)\n   an estimation as if the single mass-based threshold were exceeded by an average corresponding to the relevant sectors covered by this Regulation.\n\nThe guarantee provided shall be a bank guarantee, payable at first demand, by a financial institution operating in the Union or another form of guarantee which provides equivalent assurance.’;",
+    "drivers": [
+      "D6",
+      "D3",
+      "D1"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Provide a first-demand bank guarantee, or equivalent, sized on the certificates that would have to be surrendered, where the competent authority finds financial capacity is not demonstrated.",
+    "note": "The heaviest business row in the proposal. Note the third sizing basis: 'an estimation as if the single mass-based threshold were exceeded', which lets an authority size a guarantee against imports that have not happened. Prior Art. 17(5) allowed a guarantee only for a declarant not established for two financial years."
+  },
+  {
+    "id": "B-31",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants that have provided a guarantee",
+    "class": "business",
+    "trigger": "guarantee required under Art. 17(5) or the new Art. 17(5a)",
+    "frequency": "if it happens",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(9)(b), replacing Art. 17(7) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘7. Where a guarantee is required in accordance with paragraph 5, the competent authority shall release the guarantee immediately after 30 September of the second year in which the authorised CBAM declarant has surrendered CBAM certificates in accordance with Article 22.\n\nWhere a guarantee is required in accordance with paragraph 5a, the competent authority shall release the guarantee immediately after 30 September of the second year in which the authorised CBAM declarant has surrendered CBAM certificates in accordance with Article 22. Notwithstanding the foregoing, the competent authority may decide to extend the duration of the guarantee where such extension is duly justified.\n\nWhere the authorised CBAM declarant does not surrender the sufficient amount of CBAM certificates in accordance with Article 22 and following a decision in accordance with Article 19(5), the competent authority shall use the provided guarantee to recover the outstanding financial adjustment.\n\nThe competent authority shall determine the amount to recover based on the number of certificates that should have been surrendered and the price of certificates on the date where the decision was taken.’;",
+    "drivers": [
+      "D6"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Leave the guarantee outstanding until after 30 September of the second surrender year, and for longer where the authority duly justifies an extension; the authority may draw on it to recover an unpaid adjustment.",
+    "note": "Filed 'add' on the discretionary extension and the recovery mechanism, both of which are new. The release rule for paragraph-5 guarantees is carried over unchanged, so nothing is relieved."
+  },
+  {
+    "id": "B-32",
+    "measure_type": "obligation",
+    "addressee": "Accredited verifiers, and the European Commission as the act's author",
+    "class": "state",
+    "trigger": "verification of embedded emissions under Art. 8",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(10), adding a sentence to Art. 18(3) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘Those delegated acts shall also specify the verification procedures to be used by verifiers.’;",
+    "drivers": [
+      "D2"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Follow the verification procedures the Art. 18(3) delegated acts specify.",
+    "pending": "The delegated acts specifying the procedures do not exist yet.",
+    "note": "Reads as procedural, but it is the counterweight to B-46: the verification-report content requirements deleted from Annex VI move into delegated acts that have not been written."
+  },
+  {
+    "id": "B-33",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants using actual emissions",
+    "class": "business",
+    "trigger": "Commission or competent authority reviews a CBAM declaration based on actual emissions",
+    "frequency": "if it happens",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(11), inserting Art. 19(2a) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘2a. Where the embedded emissions are determined on the basis of actual emissions, the Commission or the competent authority of the Member State where the CBAM declarant is established may, as part of the review of the CBAM declaration, request the authorised CBAM declarant to provide evidence that the goods imported were produced at the installation referred to in the CBAM declaration.’;",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Produce, on request during review of the declaration, evidence that the imported goods were produced at the installation named in it.",
+    "note": "The review-stage twin of B-12: the same installation-of-production evidence, but demandable from any actual-emissions declarant rather than only for goods designated as traceability risks."
+  },
+  {
+    "id": "B-34",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants purchasing CBAM certificates",
+    "class": "business",
+    "trigger": "calendar week with no auction, or with only one auction, on the auction platform",
+    "frequency": "weekly",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(12)(a), replacing the second subparagraph of Art. 21(1) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘For those calendar weeks in which there is no auction on the auction platform, the price of CBAM certificates shall be the average of the closing prices of EU ETS allowances of the last week in which auctions on the auction platform took place. For those calendar weeks in which only one auction takes place on the auction platform, the price of CBAM certificates shall be the average of that closing price and the closing prices of the last week in which several auctions took place on the auction platform.’;",
+    "drivers": [
+      "D5"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem",
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Pay the certificate price fixed by the fallback rule in weeks with no auction or a single auction, computed off the last week in which auctions (or several auctions) took place.",
+    "note": "A pricing-basis change, filed 'add' because it introduces a determinate rule where the prior subparagraph left the single-auction week unaddressed. It moves the price a declarant pays, not any support, so it stays obligation side."
+  },
+  {
+    "id": "B-35",
+    "measure_type": "obligation",
+    "addressee": "European Commission",
+    "class": "state",
+    "trigger": "close of each calendar week's certificate pricing",
+    "frequency": "weekly",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(12)(b), replacing the first sentence of Art. 21(2) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘The Commission shall publish the price of CBAM certificates on its website or in any other appropriate manner on the first working day of the following calendar week.’;",
+    "drivers": [
+      "D5"
+    ],
+    "sectors_named": [],
+    "sectors_reached": [
+      "steel",
+      "alu",
+      "cement",
+      "chem",
+      "power"
+    ],
+    "duty": "Publish the CBAM certificate price on the first working day of the following calendar week.",
+    "note": "Companion to B-34: the fallback price rules are only usable if the resulting price appears on a predictable day."
+  },
+  {
+    "id": "B-36",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants",
+    "class": "business",
+    "trigger": "quarterly assessment of the Art. 22(2) certificate holding",
+    "frequency": "quarterly",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(13), adding a subparagraph to Art. 22(2) of Regulation (EU) 2023/956",
+    "when": "from 2028",
+    "source_text": "‘From 2028, the calculation referred to in the first subparagraph shall be based only on CBAM certificates purchased by the authorised CBAM declarant during that same year.’;",
+    "drivers": [
+      "D6",
+      "D5"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "From 2028, satisfy the quarterly certificate-holding requirement out of certificates purchased in that same year, with no carry-over from earlier holdings.",
+    "note": "A working-capital tightening: banking certificates bought cheaply in an earlier year no longer counts toward the holding requirement. It also feeds B-30, because failing Art. 22(2) is an express ground for demanding a guarantee."
+  },
+  {
+    "id": "B-37",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants requesting repurchase of excess certificates",
+    "class": "business",
+    "trigger": "request to repurchase excess CBAM certificates after surrender",
+    "frequency": "annual",
+    "verification": "none",
+    "direction": "rem",
+    "article": "Art. 1(14), replacing the first sentence of the second subparagraph of Art. 23(1) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘The excess CBAM certificates shall be repurchased through the common central platform referred to in Article 20.’;",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Direct the repurchase request to the Commission acting on behalf of the Member State of establishment.",
+    "note": "WEAK ROW, recorded as weak. Against the consolidated text the change is that the sentence stops naming the Commission as the actor repurchasing 'on behalf of the Member State' and states the repurchase passively. The platform was already the channel. Pass A FIN-05 also files it rem; both of us are labelling a drafting tidy-up, and it is closer to Neutral than to Simplification."
+  },
+  {
+    "id": "B-38",
+    "measure_type": "obligation",
+    "addressee": "Member State customs authorities",
+    "class": "state",
+    "trigger": "importation of goods listed in Annex I or processed products obtained from them",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(15)(a), replacing Art. 25(2) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘2. The customs authorities shall periodically and automatically, in particular by means of the surveillance mechanism established pursuant to Article 56(5) of Regulation (EU) No 952/2013, communicate to the Commission specific information on the goods declared for importation. That information shall include the EORI number or the form of identification declared in accordance with Article 6(2) of Delegated Regulation (EU) 2015/2446, of the importer or of the authorised CBAM declarant as well as the CBAM account number of the authorised CBAM declarant, the eight-digit CN code of the goods, the quantity, the country of origin, the date of the customs declaration and the customs procedure, as well as any other data relevant for compliance with this Regulation, including, where applicable, bills of discharge, re-export declarations and equivalent customs documentation. Where the importer has no EORI number, the customs authorities shall also communicate the name, address and, where available, contact information of the importer to the Commission.",
+    "drivers": [
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Communicate to the Commission, periodically and automatically, the CBAM account number, customs procedure, bills of discharge, re-export declarations and equivalent customs documentation alongside the existing import data, and the importer's name and address where there is no EORI number.",
+    "note": "The data spine of the anti-circumvention package: bills of discharge and re-export declarations are what make the inward-processing route in B-01 auditable."
+  },
+  {
+    "id": "B-39",
+    "measure_type": "obligation",
+    "addressee": "Authorised CBAM declarants and importers quoting a CBAM account number",
+    "class": "business",
+    "trigger": "a CBAM account number is provided in a customs declaration or accompanying document",
+    "frequency": "per consignment",
+    "verification": "customs authorities",
+    "direction": "add",
+    "article": "Art. 1(15)(a), replacing Art. 25(2) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "The CBAM account number provided in the customs declaration or any other relevant document when declaring goods listed in Annex I or processed products obtained from such goods for importation, shall determine the authorised CBAM declarant assuming the obligations set out in this Regulation.’;",
+    "drivers": [
+      "D6"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Accept that the CBAM account number quoted in the customs declaration fixes which authorised declarant carries the obligations for that consignment.",
+    "note": "An attribution rule with real consequences: liability follows the account number quoted at the border, so a misquoted or borrowed number lands the obligation on its holder."
+  },
+  {
+    "id": "B-40",
+    "measure_type": "obligation",
+    "addressee": "Member State customs authorities and the European Commission",
+    "class": "state",
+    "trigger": "competent authority considers communicated information incorrect or inaccurate",
+    "frequency": "if it happens",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(15)(b), adding a subparagraph to Art. 25(3) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘Where the competent authority considers that the information is incorrect or inaccurate, the competent authority may request the customs authorities or the Commission to verify the correctness or the accuracy of that information.’;",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Verify, on a competent authority's request, the correctness or accuracy of communicated customs information."
+  },
+  {
+    "id": "B-41",
+    "measure_type": "obligation",
+    "addressee": "Member State customs authorities",
+    "class": "state",
+    "trigger": "adoption of the Art. 25(6) implementing acts",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(15)(c), replacing the first sentence of Art. 25(6) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘The Commission is empowered to adopt implementing acts defining the scope of information and the periodicity, timing and means for communicating that information pursuant to paragraphs 2 and 3 of this Article.’;",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "Communicate customs information at the scope, periodicity, timing and by the means the implementing acts prescribe.",
+    "note": "NOT IN PASS A. Thin on its own -- the empowerment existed and is extended to cover paragraph 3 as well as paragraph 2 -- and carried so the Art. 25 amendments are complete rather than three of four."
+  },
+  {
+    "id": "B-42",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of Annex I goods, in particular downstream goods",
+    "class": "business",
+    "trigger": "adoption of implementing acts identifying material and chemical compositions",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(15)(d), adding Art. 25(7) to Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘7. The Commission is empowered to adopt implementing acts to identify the material and chemical compositions of goods listed in Annex I. Those implementing acts shall be adopted in accordance with the examination procedure referred to in Article 29(2).’;",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Determine the embedded emissions of downstream goods against the material and chemical compositions the Commission identifies by implementing act.",
+    "pending": "The composition implementing acts do not exist. Without them the mass-of-precursor rule in B-54 cannot be applied to a combined metal product.",
+    "note": "The hinge between the scope extension and the calculation rules: a combined metal product's CBAM liability turns on how much steel or aluminium it is deemed to contain, and this is where that number will come from."
+  },
+  {
+    "id": "B-43",
+    "measure_type": "obligation",
+    "addressee": "Importers, authorised CBAM declarants and third-country operators",
+    "class": "business",
+    "trigger": "restructuring of a supply chain that changes which default value applies",
+    "frequency": "continuous",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 1(16), adding point (c) to Art. 27(2) of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘(c) artificially adjusting the supply chains to make the goods benefit from lower default values.’;",
+    "drivers": [
+      "D6"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Refrain from artificially adjusting supply chains so that goods qualify for lower default values.",
+    "note": "Named circumvention practice, so it carries the Art. 27 consequences. It bites hardest on the country-specific default values in B-55 and B-56: routing output through a lower-factor country is now nameable as circumvention."
+  },
+  {
+    "id": "B-44",
+    "measure_type": "obligation",
+    "addressee": "Importers of goods withdrawn from Annex I under the safeguard",
+    "class": "business",
+    "trigger": "Commission finds that a good's inclusion in Annex I causes severe harm to the internal market due to serious and unforeseen circumstances affecting prices",
+    "frequency": "if it happens",
+    "verification": "none",
+    "direction": "rem",
+    "article": "Art. 1(17), inserting Art. 27a of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "Where the Commission, taking into account the relevant evidence, considers that the inclusion of a good in Annex I causes severe harm to the Union internal market due to serious and unforeseen circumstances related to the impact on the prices of goods, it is empowered to adopt delegated acts in accordance with Article 28 to remove this good from Annex I until those serious and unforeseeable circumstances have passed.’;",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Comply with CBAM for a good whose inclusion in Annex I is causing severe harm to the internal market through serious and unforeseen price effects.",
+    "pending": "An empowerment to adopt delegated acts, with no good yet removed.",
+    "note": "A safeguard valve on scope: the object is the reach of the CBAM duty, so obligation side, direction rem. Nothing is conferred on any firm -- no operator can trigger it."
+  },
+  {
+    "id": "B-45",
+    "measure_type": "obligation",
+    "addressee": "European Commission",
+    "class": "state",
+    "trigger": "the biennial reporting cycle",
+    "frequency": "biennial",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 1(20), replacing the second subparagraph of Art. 30(6) of Regulation (EU) 2023/956",
+    "when": "before 1 January 2028, then every two years",
+    "source_text": "‘Before 1 January 2028, as well as every two years thereafter, the Commission shall present a report to the European Parliament and to the Council on the application of this Regulation and functioning of the CBAM. This report may, where appropriate, be accompanied by a legislative proposal or implementing or delegated acts adopted pursuant to this Regulation. The report shall contain at least the following:\n\n(a) an assessment of the impact of the CBAM on:\n\n(i) carbon leakage, including in relation to exports;\n\n(ii) the sectors covered;\n\n(iii) internal market, economic and territorial impact throughout the Union;\n\n(iv) inflation and the price of commodities;\n\n(v) the effect on industries using goods listed in Annex I;\n\n(vi) international trade, including resource shuffling; and\n\n(vii) LDCs.\n\n(b) an assessment of:\n\n(i) the governance system, including an assessment of the implementation and administration of the guarantees and the authorisation of CBAM declarants by Member States;\n\n(ii) the scope of this Regulation, including of the possibility to extend the scope of this Regulation to additional goods at risk of carbon leakage;\n\n(iia) the suitability of implementing acts and delegated acts adopted pursuant to this Regulation;\n\n(iib) the suitability of the methods for setting default values and the mark-up applied to the default values;\n\n(iii) practices of circumvention;\n\n(iv) the application of penalties in Member States;\n\n(v) the application of the single mass-based threshold, including the possibility of increasing that threshold and of introducing a supplementary consignment-based threshold;\n\n(c) results of investigations and penalties imposed;\n\n(d) aggregated information on the emission intensity for each country of origin for the different goods listed in Annex I.;’",
+    "drivers": [
+      "D5"
+    ],
+    "sectors_named": [],
+    "sectors_reached": [
+      "steel",
+      "alu",
+      "cement",
+      "chem",
+      "auto",
+      "build"
+    ],
+    "duty": "Report to the Parliament and Council before 1 January 2028 and every two years after, covering internal-market and territorial impact, inflation and commodity prices, downstream user industries, the suitability of the default-value and mark-up methods, guarantee administration, and the mass-based threshold.",
+    "note": "The review hooks worth tracking are the new ones: mark-up suitability, guarantee administration, and 'the possibility of increasing that threshold and of introducing a supplementary consignment-based threshold' -- the route by which the de minimis could move again."
+  },
+  {
+    "id": "B-46",
+    "measure_type": "obligation",
+    "addressee": "Accredited verifiers preparing CBAM verification reports",
+    "class": "business",
+    "trigger": "preparation of a verification report under Art. 8",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "rem",
+    "article": "Art. 1(23)(a), deleting points (g) to (j) of point 2 of Annex VI of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "(a)points (g) to (j) are deleted;",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [],
+    "duty": "State in the verification report the quantities of each type of declared goods produced, the quantification of the installation's direct emissions, how those emissions are attributed across types of goods, and the goods, emissions and energy flows not associated with them.",
+    "provision_id": "cbam-annex-vi-2",
+    "note": "The act supplies only the amending instruction. Everything deciding the valence is in the prior rule. See B-32: the same detail may return via Art. 18(3) delegated acts.",
+    "prior_rule": {
+      "status": "sourced",
+      "trigger": "verifier preparing a verification report establishing the embedded emissions of the goods",
+      "obligation": "Points (g) to (j) of Annex VI point 2 required the verification report to state the quantities of each type of declared goods produced in the reporting period, the quantification of the installation's direct emissions during the reporting period, a description of how the installation's emissions are attributed to different types of goods, and quantitative information on the goods, emissions and energy flows not associated with those goods.",
+      "source_document": "Regulation (EU) 2023/956 as consolidated at 2025-10-20, CELEX 02023R0956-20251020, Annex VI, point 2, points (g) to (j)",
+      "source_text": "quantities of each type of declared goods produced in the reporting period;\n\n(h) \n\nquantification of direct emissions of the installation during the reporting period;\n\n(i) \n\na description on how the installation’s emissions are attributed to different types of goods;\n\n(j) \n\nquantitative information on the goods, emissions and energy flows not associated with those goods;",
+      "note": "RE-CHECKED AGAINST THE PRIOR CORPUS INDEPENDENTLY. Confirms Pass A GOV-04 on all three counts. The four points are at lines 2715-2733 of the prior consolidation, under the heading '2. CONTENT OF A VERIFICATION REPORT', whose chapeau reads 'The verifier shall prepare a verification report ... including, at least, the following information'. So the addressee is the accredited verifier, not the operator or the declarant; the deleted contents are exactly the four described; and removing four mandatory report contents is relief, so direction rem is right. Nothing to correct."
+    }
+  },
+  {
+    "id": "B-47",
+    "measure_type": "obligation",
+    "addressee": "Accredited verifiers preparing CBAM verification reports",
+    "class": "business",
+    "trigger": "preparation of a verification report covering downstream goods",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(23)(b), inserting point (ka) in point 2 of Annex VI of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "‘(ka) material composition of each downstream good;’;",
+    "drivers": [
+      "D4",
+      "D1"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "State the material composition of each downstream good in the verification report.",
+    "provision_id": "cbam-annex-vi-2",
+    "note": "The new content that replaces what B-46 deletes, and it is the harder one for a combined metal product: it requires a bill of materials for goods whose producer may be several tiers away from the steel mill."
+  },
+  {
+    "id": "B-48",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of the newly listed iron and steel goods",
+    "class": "business",
+    "trigger": "importation of goods under the CN codes added to the Annex I 'Iron and steel' table",
+    "frequency": "per consignment",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(21); Annex I, point (1) replacing the 'Iron and Steel' table in point 2 of Annex I of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "2601 12 00 – Agglomerated iron ores and concentrates, other than roasted iron pyrites",
+    "drivers": [
+      "D7",
+      "D1",
+      "D4",
+      "D2",
+      "D6"
+    ],
+    "sectors_named": [
+      "steel"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Declare embedded emissions and surrender certificates for goods newly added to the 'Iron and steel' table -- agglomerated iron ore, stranded wire and cables, unplated welded grill and netting, springs, enamelled and other household articles, and other cast articles of iron or steel.",
+    "note": "NOT IN PASS A, which carries the new 'Combined metal products' table (Annex I point (2)) as SCP-04/SCP-05 but nothing for the REPLACEMENT of the existing 'Iron and steel' table. The replacement is not cosmetic. Diffed against the prior Annex I it adds 2601 12 00 (agglomerated iron ores and concentrates), 7312 10 (stranded wire, ropes and cables), 7314 39 00 (unplated welded grill, netting and fencing), 7320 20 89 and 7320 90 90 (springs), 7323 94 00 and 7323 99 00 (household articles) and 7325 (other cast articles). Agglomerated iron ore is the significant one: it is an upstream input, not a downstream good, and it reaches the sintering and pelletising trade that the downstream story does not describe. The row anchors on the iron-ore line as the clearest single instance."
+  },
+  {
+    "id": "B-49",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of downstream steel- and aluminium-containing goods",
+    "class": "business",
+    "trigger": "importation of goods listed in the new 'Combined metal products' table of Annex I",
+    "frequency": "per consignment",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(21); Annex I, point (2) adding the 'Combined metal products' table to Annex I of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "‘[Combined metal products\n\nCN code\n\nGreenhouse gas\n\n7314 31 00 – Other grill, netting and fencing, of iron or steel wire, welded at the intersection, plated or coated with zinc\n\nCarbon dioxide\n\n7314 41 00 – Grill, netting and fencing, of iron or steel wire, not welded at the intersection, plated or coated with zinc\n\nCarbon dioxide\n\n7314 49 00 – Grill, netting and fencing, of iron or steel wire, not welded at the intersection (excl. plated or coated with zinc or coated with plastics)",
+    "drivers": [
+      "D7",
+      "D1",
+      "D4",
+      "D2",
+      "D6"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Declare embedded emissions and surrender certificates for the new 'Combined metal products' category -- downstream manufactured goods containing steel or aluminium, which were outside the CBAM entirely.",
+    "note": "The headline measure. Scope extension is the strongest form of 'add' -- D7, newly inside the regime. The table runs from fencing wire to prefabricated buildings, trailer parts and medical instruments, so the addressee is usually a manufacturer or distributor with no prior CBAM exposure and no relationship with the mill that made the metal."
+  },
+  {
+    "id": "B-50",
+    "measure_type": "obligation",
+    "addressee": "Importers of prefabricated buildings containing steel or aluminium",
+    "class": "business",
+    "trigger": "importation of prefabricated buildings under CN ex- 9406 90 90 containing steel or aluminium",
+    "frequency": "per consignment",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(21); Annex I, point (2) adding the 'Combined metal products' table to Annex I of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "ex- 9406 90 90 – Prefabricated buildings, containing steel or aluminium",
+    "drivers": [
+      "D7",
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "build"
+    ],
+    "sectors_reached": [
+      "steel",
+      "alu"
+    ],
+    "duty": "Declare embedded emissions and surrender certificates for imported prefabricated buildings containing steel or aluminium.",
+    "note": "Kept as its own row for the same reason Pass A does: it is the clearest case of the extension reaching a sector CBAM has never touched, and the addressee is a construction-products importer rather than a metals importer."
+  },
+  {
+    "id": "B-51",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of electricity and of goods with indirect emissions",
+    "class": "business",
+    "trigger": "determination of default values for imported electricity or for embedded indirect emissions",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(22); Annex II, point (1) replacing point (e) of point 1 of Annex IV of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2026 per Art. 2 (points 1 and 6 of Annex II)",
+    "source_text": "‘(e) ‘emission factor for electricity’ means the weighted average of the CO2 intensity of the electricity produced within a geographic area;",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "duty": "Use, as the emission factor for electricity, the weighted average CO2 intensity of all electricity produced in the geographic area, in place of a factor representing the emission intensity of the electricity consumed in producing the goods.",
+    "provision_id": "cbam-annex-iv-1",
+    "note": "NOT IN PASS A, and it is load-bearing rather than definitional. The prior point (e) defined the term as 'the default value, expressed in CO2e, representing the emission intensity of electricity consumed in production of goods'. Two things change: the basis moves from electricity CONSUMED in production to electricity PRODUCED in a geographic area, and it becomes a weighted average of CO2 intensity. Every one of Pass A's ELEC-01, ELEC-02 and ELEC-03 turns on the substitution of this term for 'CO2 emission factor' in points 4.2.1, 4.2.2 and 4.3 -- so the register currently states the effect of those substitutions without carrying the definition that produces it. Filed 'add' because it imposes a new measurement basis, and it applies from 1 January 2026, before any of them."
+  },
+  {
+    "id": "B-52",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of electricity claiming actual emissions",
+    "class": "business",
+    "trigger": "claim to use actual embedded emissions for imported electricity under Annex IV point 5",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(22); Annex II, point (1) replacing point (f) of point 1 of Annex IV of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2026 per Art. 2 (points 1 and 6 of Annex II)",
+    "source_text": "(f) ‘power purchase agreement’ means a contract under which a person agrees to purchase electricity directly from an electricity producer and that involves the physical delivery of electricity;’;",
+    "drivers": [
+      "D4",
+      "D1"
+    ],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Hold a power purchase agreement that involves the physical delivery of electricity, not merely a direct contractual purchase, in order to claim actual embedded emissions for imported electricity.",
+    "provision_id": "cbam-annex-iv-1",
+    "note": "NOT IN PASS A. This cuts the opposite way from ELEC-04's relaxation on intermediaries, and it is the tighter of the two: intermediated chains are now allowed, but only if physical delivery runs through them. Filed as a definition row because the condition it changes lives in Annex IV point 5(a), which Pass A reads as relief without this qualification.",
+    "prior_rule": {
+      "status": "sourced",
+      "trigger": "authorised CBAM declarant relying on a power purchase agreement to claim actual embedded emissions",
+      "obligation": "The prior Annex IV point 1(f) defined a power purchase agreement as 'a contract under which a person agrees to purchase electricity directly from an electricity producer', with no delivery requirement.",
+      "source_document": "Regulation (EU) 2023/956 as consolidated at 2025-10-20, CELEX 02023R0956-20251020, Annex IV, point 1, point (f)",
+      "source_text": "‘power purchase agreement’ means a contract under which a person agrees to purchase electricity directly from an electricity producer;",
+      "note": "The added words are 'and that involves the physical delivery of electricity'. A financial or virtual PPA satisfied the prior definition and does not satisfy this one."
+    }
+  },
+  {
+    "id": "B-53",
+    "measure_type": "obligation",
+    "addressee": "Third-country operators and authorised CBAM declarants for complex goods",
+    "class": "business",
+    "trigger": "determination of specific actual embedded emissions of complex goods",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(22); Annex II, point (2) replacing point 3 of Annex IV of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "Only input materials (precursors) listed in Annex I and Annex VIII and originating in third countries and territories that are not exempted pursuant to Annex III, Section 1 are to be considered.",
+    "drivers": [
+      "D4",
+      "D1"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Compute complex-goods emissions counting precursors from Annex VIII as well as Annex I, excluding those originating in exempted third countries.",
+    "provision_id": "cbam-annex-iv-3",
+    "note": "Operationalises B-18. DISAGREES WITH PASS A CALC-02 ON `when` ONLY: CALC-02 reads '1 January 2026 per Art. 2 (Annex II point 1)', but this provision is Annex II point (2), and Art. 2 puts point 2 of Annex II in the 2028 sentence, not the 2026 one. Points 1 and 6 of Annex II are the 2026 ones."
+  },
+  {
+    "id": "B-54",
+    "measure_type": "obligation",
+    "addressee": "Third-country operators and authorised CBAM declarants for iron, steel, aluminium and combined metal goods",
+    "class": "business",
+    "trigger": "determination of specific actual embedded emissions for goods in those three Annex I sections",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(22); Annex II, point (2) replacing point 3 of Annex IV of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "However, for goods listed in sections ‘Iron and Steel’, ‘Aluminium’ and ‘Combined Metal Goods’ of Annex I, Mi is a function of the content of goods used as input materials (precursors) in the manufacturing of the good.",
+    "drivers": [
+      "D4",
+      "D1"
+    ],
+    "sectors_named": [
+      "steel",
+      "alu"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "For iron and steel, aluminium and combined metal goods, derive the precursor mass from the content of input goods in the finished product rather than from a directly measured input mass.",
+    "provision_id": "cbam-annex-iv-3",
+    "note": "The only route by which a downstream importer can compute anything: it will rarely know the mass of steel consumed at the mill, but it can be attributed the metal content of what it imports. Depends entirely on B-42's composition implementing acts. DISAGREES WITH PASS A CALC-03 ON `when`: CALC-03 reads 'from entry into force', but Art. 2 puts point 2 of Annex II at 1 January 2028. Note also that the section is named 'Combined Metal Goods' here while Annex I creates a table called 'Combined metal products'; the two names do not match, which is a defect in the proposal and is recorded, not smoothed over."
+  },
+  {
+    "id": "B-55",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of electricity",
+    "class": "business",
+    "trigger": "determination of specific default values for imported electricity",
+    "frequency": "annual",
+    "verification": "none",
+    "direction": "rem",
+    "article": "Art. 1(22); Annex II, point (3) replacing point 4.2.1 of Annex IV of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "Specific default values shall be set at the emission factor for electricity in the third country, group of third countries or region within a third country, based on the best data available to the Commission.",
+    "drivers": [],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Take specific default values for imported electricity from the CO2 emission factor in the exporting country, rather than from the weighted average CO2 intensity of the electricity produced there.",
+    "provision_id": "cbam-annex-iv-4-2-1",
+    "note": "Agrees with Pass A ELEC-01 on direction. Recorded with a caveat Pass A does not carry: the ONLY textual change is 'CO2 emission factor' -> 'emission factor for electricity', and the relief comes entirely from B-51's redefinition of that term. Read against this act alone the sentence says nothing about fossil generation either way, and the register presently asserts the effect without holding the definition."
+  },
+  {
+    "id": "B-56",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of electricity",
+    "class": "business",
+    "trigger": "reliable data show the exporting area's electricity emission factor is below the applicable default",
+    "frequency": "annual",
+    "verification": "none",
+    "direction": "rem",
+    "article": "Art. 1(22); Annex II, point (4) replacing point 4.2.2 of Annex IV of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "Where it can be demonstrated, on the basis of reliable data, that the emission factor for electricity in a third country, a group of third countries or a region within a third country is lower than the specific default value determined by the Commission or lower than the emission factor for electricity in the Union, an alternative default value based on that emission factor for electricity may be used for that third country, group of third countries or region within a third country.’;",
+    "drivers": [],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Accept the specific or Union default value where the exporting country's electricity emissions are lower, measured as a CO2 emission factor rather than as an emission factor for electricity.",
+    "provision_id": "cbam-annex-iv-4-2-2",
+    "note": "Filed obligation/rem: the object is the basis on which the liability is computed, and the new metric is the lower one for a clean grid. That is Simplification, not Entitlement.",
+    "prior_rule": {
+      "status": "sourced",
+      "trigger": "declarant demonstrating a lower electricity emission factor for the exporting area",
+      "obligation": "The prior point 4.2.2 already provided that where reliable data show the CO2 emission factor in a third country, group of third countries or region is lower than the specific default value or than the Union CO2 emission factor, 'an alternative default value based on that CO2 emission factor may be used'. The faculty is word-for-word the prior faculty with the metric changed.",
+      "source_document": "Regulation (EU) 2023/956 as consolidated at 2025-10-20, CELEX 02023R0956-20251020, Annex IV, point 4.2.2, second paragraph",
+      "source_text": "Where it can be demonstrated, on the basis of reliable data, that the CO2 emission factor in a third country, a group of third countries or a region within a third country is lower than the specific default value determined by the Commission or lower than the CO2 emission factor in the Union, an alternative default value based on that CO2 emission factor may be used",
+      "note": "DISAGREES WITH PASS A ELEC-02, which files this as measure_type 'right', direction 'add', valence Entitlement, on a `scope` basis quoting the demonstration sentence. Nothing is conferred: the demonstration route, the 'may be used' verb and the comparison against both benchmarks are all in the prior text. Only the metric changes, from 'CO2 emission factor' to 'emission factor for electricity'. Under the operative-verb test a faculty the addressee already held cannot be an Entitlement, and the guardrail did not catch it because a prior faculty is invisible to a basis check run against this act alone."
+    }
+  },
+  {
+    "id": "B-57",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of goods carrying embedded indirect emissions",
+    "class": "business",
+    "trigger": "third country demonstrates a lower factor than the default value for indirect emissions",
+    "frequency": "annual",
+    "verification": "none",
+    "direction": "rem",
+    "article": "Art. 1(22); Annex II, point (5) replacing the second paragraph of point 4.3 of Annex IV of Regulation (EU) 2023/956",
+    "when": "from entry into force (third day after publication), Art. 2",
+    "source_text": "‘Where a third country, or a group of third countries, demonstrates to the Commission, on the basis of reliable data, that the average electricity mix emission factor or CO2 emission factor of price-setting sources in the third country or group of third countries is lower than the default value for indirect emissions, an alternative default value based on that average electricity mix emission factor or on that average CO2 emission factor shall be established for this country or group of countries.’;",
+    "drivers": [],
+    "sectors_named": [
+      "steel",
+      "alu",
+      "cement",
+      "chem"
+    ],
+    "sectors_reached": [
+      "power"
+    ],
+    "duty": "Take the alternative default value for indirect emissions from the average CO2 emission factor alone, with no route through the average electricity mix emission factor.",
+    "provision_id": "cbam-annex-iv-4-3",
+    "note": "Agrees with Pass A ELEC-03 on direction, with the prior text attached so the mechanism is legible: the relief is that the demonstrated electricity-mix factor can now actually be used.",
+    "prior_rule": {
+      "status": "sourced",
+      "trigger": "third country demonstrating a lower indirect-emissions factor",
+      "obligation": "The prior second paragraph of point 4.3 let a country demonstrate a lower average electricity mix emission factor OR CO2 emission factor of price-setting sources, but then established the alternative default value 'based on that average CO2 emission factor' only.",
+      "source_document": "Regulation (EU) 2023/956 as consolidated at 2025-10-20, CELEX 02023R0956-20251020, Annex IV, point 4.3, second paragraph",
+      "source_text": "an alternative default value based on that average CO2 emission factor shall be established for this country or group of countries.",
+      "note": "A gap in the prior drafting: the two things a country could demonstrate were not the two things the value could be based on. The replacement closes it by allowing either."
+    }
+  },
+  {
+    "id": "B-58",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of electricity claiming actual emissions",
+    "class": "business",
+    "trigger": "claim to use actual embedded emissions for imported electricity",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "rem",
+    "article": "Art. 1(22); Annex II, point (6)(a) replacing point (a) of point 5 of Annex IV of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2026 per Art. 2 (points 1 and 6 of Annex II)",
+    "source_text": "Power purchase agreements involving intermediaries shall also be allowed, as long as a verifiable contractual relationship between the producer of electricity, the intermediaries, and the importer, or CBAM declarant, can be demonstrated, in relation to the electricity for which the use of actual emissions is claimed;’;",
+    "drivers": [],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Hold the power purchase agreement directly between the authorised CBAM declarant and the third-country producer, with no intermediary in the chain.",
+    "provision_id": "cbam-annex-iv-5",
+    "note": "Agrees with Pass A ELEC-04 on direction, DISAGREES ON `when`: ELEC-04 reads 'from entry into force', but Art. 2 says 'Points 1 and 6 of Annex II, shall apply from 1 January 2026' and this is Annex II point 6(a). Recital 53 confirms the intent -- the conditions for applying actual embedded emissions in imported electricity 'should apply to imports of electricity that occurred as of 1 January 2026'. The relief is also narrower than it looks: B-52 adds a physical-delivery requirement to the same PPA in the same Annex II point 1, so an intermediated chain qualifies only if the electricity physically moves through it."
+  },
+  {
+    "id": "B-59",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of electricity claiming actual emissions",
+    "class": "business",
+    "trigger": "claim to use actual embedded emissions for imported electricity",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "rem",
+    "article": "Art. 1(22); Annex II, point (6)(b) deleting point (b) of point 5 of Annex IV of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2026 per Art. 2 (points 1 and 6 of Annex II)",
+    "source_text": "(b)\n   point (b) is deleted;",
+    "drivers": [],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Demonstrate that the generating installation is directly connected to the Union transmission system, or that no physical network congestion existed anywhere between it and that system at the time of export, in order to claim actual emissions for imported electricity.",
+    "provision_id": "cbam-annex-iv-5",
+    "note": "The act supplies only the instruction '(b) point (b) is deleted;'. Everything deciding the valence is in the prior rule.",
+    "prior_rule": {
+      "status": "sourced",
+      "trigger": "authorised CBAM declarant applying actual embedded emissions instead of default values for imported electricity",
+      "obligation": "Point (b) of Annex IV point 5 was one of the cumulative criteria for applying actual embedded emissions: the generating installation had to be either directly connected to the Union transmission system, or it had to be demonstrated that at the time of export there was no physical network congestion at any point in the network between the installation and the Union transmission system.",
+      "source_document": "Regulation (EU) 2023/956 as consolidated at 2025-10-20, CELEX 02023R0956-20251020, Annex IV, point 5, point (b)",
+      "source_text": "the installation producing electricity is either directly connected to the Union transmission system or it can be demonstrated that at the time of export there was no physical network congestion at any point in the network between the installation and the Union transmission system;",
+      "note": "RE-CHECKED AGAINST THE PRIOR CORPUS INDEPENDENTLY. Confirms Pass A ELEC-05. The deleted point is at line 2567 of the prior consolidation, inside '5. CONDITIONS FOR APPLYING ACTUAL EMBEDDED EMISSIONS IN IMPORTED ELECTRICITY', whose chapeau reads 'may apply actual embedded emissions instead of default values ... if the following cumulative criteria are met'. Cumulative is the word that decides it: removing one of five criteria relieves, so direction rem is right. Pass A's observation that the surviving point (c) keeps the 550 g CO2/kWh cap also checks out -- Annex II point (6) touches only (a), (b) and (d), so (c) and (e) stand. Nothing to correct in the reading. The one thing to correct is next to it: `when`, which Pass A gives as 'from entry into force' and Art. 2 puts at 1 January 2026."
+    }
+  },
+  {
+    "id": "B-60",
+    "measure_type": "obligation",
+    "addressee": "Importers and authorised CBAM declarants of electricity claiming actual emissions",
+    "class": "business",
+    "trigger": "claim to use actual embedded emissions for imported electricity",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(22); Annex II, point (6)(c) replacing point (d) of point 5 of Annex IV of Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2026 per Art. 2 (points 1 and 6 of Annex II)",
+    "source_text": "‘(d) the amount of electricity for which the use of actual embedded emissions is claimed has been firmly nominated to the allocated interconnection capacity by all responsible transmission system operators in the country of origin, the country of destination and, if relevant, each country of transit, and the nominated capacity and the production of electricity by the installation refer to the same period of time, which shall not be longer than one hour. This criterion shall not be fulfilled in cases where transmission capacity for the import of electricity is allocated through implicit capacity allocation;’.",
+    "drivers": [
+      "D4",
+      "D1"
+    ],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [],
+    "duty": "Firmly nominate the claimed electricity to allocated interconnection capacity in the countries of origin, destination and transit, match nomination to production within the same hour, and forgo the claim entirely where capacity is allocated implicitly.",
+    "provision_id": "cbam-annex-iv-5",
+    "note": "The nomination and hourly-matching test was already in the prior point (d); what is new is the final sentence excluding implicit capacity allocation, which shuts the actual-emissions route for market-coupled borders outright. Agrees with Pass A ELEC-06 on direction, DISAGREES ON `when` for the same reason as B-58 and B-59."
+  },
+  {
+    "id": "B-61",
+    "measure_type": "obligation",
+    "addressee": "Third-country operators and authorised CBAM declarants for steel goods produced from imported scrap",
+    "class": "business",
+    "trigger": "ferrous waste or scrap used as an input material in producing an Annex I good",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(24); Annex III adding Annex VIII to Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "ex 7204 Ferrous waste and scrap; remelting scrap ingots and steel except post-consumer scrap",
+    "drivers": [
+      "D4",
+      "D1"
+    ],
+    "sectors_named": [
+      "steel"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Count the embedded emissions of imported ferrous waste and scrap, other than post-consumer scrap, as a precursor in the embedded emissions of the goods produced from it.",
+    "note": "Annex VIII is a list of NON-CBAM goods treated as precursors: the scrap itself is not chargeable on import, but its emissions now travel into whatever is made from it. The post-consumer carve-out keeps genuine recycling outside."
+  },
+  {
+    "id": "B-62",
+    "measure_type": "obligation",
+    "addressee": "Third-country operators and authorised CBAM declarants for aluminium goods produced from imported scrap",
+    "class": "business",
+    "trigger": "aluminium waste or scrap used as an input material in producing an Annex I good",
+    "frequency": "annual",
+    "verification": "accredited third party",
+    "direction": "add",
+    "article": "Art. 1(24); Annex III adding Annex VIII to Regulation (EU) 2023/956",
+    "when": "applies from 1 January 2028 per Art. 2",
+    "source_text": "ex 7602 Aluminium waste and scrap except post-consumer scrap",
+    "drivers": [
+      "D4",
+      "D1"
+    ],
+    "sectors_named": [
+      "alu"
+    ],
+    "sectors_reached": [
+      "auto",
+      "build"
+    ],
+    "duty": "Count the embedded emissions of imported aluminium waste and scrap, other than post-consumer scrap, as a precursor in the embedded emissions of the goods produced from it.",
+    "note": "The aluminium twin of B-61, and the more consequential of the two: secondary aluminium is a much larger share of the trade than secondary steel."
+  }
+]

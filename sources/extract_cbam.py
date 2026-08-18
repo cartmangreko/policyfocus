@@ -26,12 +26,22 @@ hold, on the same test as the register's other right rows: the operative verb.
 "An operator may disclose ... to another operator" confers; "shall not apply to"
 does not.
 
-The one thing this file cannot claim is a second read. ETS and IAA each have two
-independent extraction passes that reconcile.py compares; CBAM has one. So the
-disagreement signal that backs those two files does not exist here, and
-reconcile cannot be run for cbam until a second pass is written. Said plainly
-because a register file that looks like the others should not be assumed to
-carry the same evidence behind it.
+THE SECOND READ NOW EXISTS, AND IT DISAGREES
+============================================
+This file used to say it could not claim a second read. extract_cbam_pass_b.py
+is that read, and `python3 reconcile.py ../data/cbam.json cbam_pass_b.json cbam`
+now runs: 53 rows matched by crosswalk, 2 classification disagreements, 10
+application-date disagreements, 9 provisions Pass B found that these ROWS do not
+carry.
+
+None of that is fixed here yet, deliberately -- a pass is a proposal and this
+file is the ruling, and the ruling on cbam_disagreements.json is its own step.
+What is fixed here is the claim: the rows below are ONE read of the act, two of
+them are contradicted by a second read that resolved the prior text (FIN-06,
+ELEC-02), and nine carry an application date that Art. 2 does not support
+(DECL-06, CALC-06, DATA-02, DATA-03, CALC-02, CALC-03, ELEC-04, ELEC-05,
+ELEC-06). A tenth, DECL-01, states the right date in wording that reads as the
+wrong one. Read cbam_disagreements.json before trusting a row.
 """
 
 from __future__ import annotations

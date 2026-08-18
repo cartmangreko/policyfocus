@@ -25,6 +25,27 @@ and rows nobody has ruled on yet. The second list is a CANDIDATE list -- the
 crosswalk is not exhaustive, so a row on it may still turn out to be registered.
 Confirming one means comparing spans against data/, not trusting the id.
 
+THE DATE CHECK, AND HOW FAR TO TRUST IT
+=======================================
+Two passes can agree on measure_type and direction and still disagree about
+when the provision bites, and until now nothing looked. That is not a small
+field: for an amending act the application date is set by a separate article
+that lists amending points by number, so it is read off a different sentence
+from everything else on the row and gets its own chance to be wrong. The CBAM
+pass found ten such rows, seven of them a plain misreading of Art. 2's three
+application dates.
+
+`when` is prose, so the comparison is on the SET OF DATES a row commits to --
+calendar dates, bare years, and whether it falls back on entry into force --
+not on the wording. Rows where either side commits to no date at all are
+skipped rather than reported as disagreeing with the one that does.
+
+It is a candidate list, and a noisier one than the classification list, for a
+reason that is not about dates: a pair matched by ARTICLE OVERLAP may not be
+the same provision at all, and then its dates differ because the rows differ.
+Every crosswalk-matched date disagreement is real; an article-matched one has
+to be read against the two rows before it means anything.
+
 WHAT THIS DOES NOT DO
 =====================
 It does not write data/. The docstring here used to promise "a canonical merged
@@ -90,6 +111,30 @@ def norm_article(a):
     tokens = re.findall(r'\d+[a-z]{1,3}(?:\(\d+[a-z]?\))?|\d+\(\d+[a-z]?\)', a.lower())
     return set(tokens)
 
+_MONTH = ("january|february|march|april|may|june|july|august|september|"
+          "october|november|december")
+_DATE_RE = re.compile(r"\b\d{1,2}\s+(?:" + _MONTH + r")\s+(?:19|20)\d{2}", re.I)
+_YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")
+_EIF_RE = re.compile(r"entry into force|entering into force|on adoption", re.I)
+
+
+def when_signature(when):
+    """The dates a `when` string commits to, as a comparable set.
+
+    `when` is prose and the two passes never phrase it alike, so a string
+    compare would flag every row and mean nothing. What is comparable is the
+    set of dates the row asserts: full calendar dates, bare years, and whether
+    it falls back on entry into force. Two rows reading the same provision
+    should commit to the same set however they word it.
+    """
+    text = when or ""
+    sig = {m.group(0).lower() for m in _DATE_RE.finditer(text)}
+    sig |= {"y" + y for y in _YEAR_RE.findall(text)}
+    if _EIF_RE.search(text):
+        sig.add("entry-into-force")
+    return sig
+
+
 def load(path):
     with open(path, encoding='utf-8') as f:
         return json.load(f)
@@ -149,8 +194,25 @@ def main():
             matched_by[best] = 'article'
 
     disagreements = []
+    # Kept separate from the classification disagreements above rather than
+    # folded into them. `when` is not a classification: a row can be correctly
+    # typed and still cite the wrong application date, and the two failures are
+    # found and fixed by different means. Merging them would also move the
+    # headline disagreement count for reasons that have nothing to do with the
+    # benefit axis.
+    date_disagreements = []
     for j, i in sorted(b_matched.items()):
         ra, rb = a_rows[i], b_rows[j]
+        sa, sb = when_signature(ra.get('when')), when_signature(rb.get('when'))
+        # Both sides must actually commit to a date. A row that says only
+        # "annually" or "n/a" has nothing to disagree with, and reporting it
+        # against one that does would fill the list with absences.
+        if sa and sb and sa != sb:
+            date_disagreements.append({
+                'a_id': ra['id'], 'b_id': rb['id'], 'article': ra['article'],
+                'matched_by': matched_by[j],
+                'a_when': ra.get('when'), 'b_when': rb.get('when'),
+            })
         if ra['measure_type'] != rb['measure_type'] or ra['direction'] != rb['direction']:
             disagreements.append({
                 'a_id': ra['id'], 'b_id': rb['id'], 'article': ra['article'],
@@ -195,6 +257,12 @@ def main():
     print(f"Disagreements (measure_type/direction): {len(disagreements)}")
     for d in disagreements:
         print(f"  [{d['matched_by']}] {d['a_id']} vs {d['b_id']} [{d['article']}]: A={d['a']} B={d['b']}")
+    print(f"\nApplication-date disagreements (`when`): {len(date_disagreements)}")
+    for d in date_disagreements:
+        print(f"  [{d['matched_by']}] {d['a_id']} vs {d['b_id']} [{d['article']}]")
+        print(f"      A: {d['a_when']}")
+        print(f"      B: {d['b_when']}")
+
     print(f"\nPass-B rows ruled into the register, no Pass A counterpart: {len(b_registered)}")
     for o in b_registered:
         print(f"  {o['id']} -> {o['register_id']} [{o['article']}]")
@@ -203,7 +271,9 @@ def main():
         print(f"  {o['id']} [{o['article']}] {o['measure_type']}/{o['direction']}: {o['benefit_or_duty'][:80]}")
 
     with open(f'{out_prefix}_disagreements.json', 'w', encoding='utf-8') as f:
-        json.dump({'disagreements': disagreements, 'b_only': b_only,
+        json.dump({'disagreements': disagreements,
+                   'date_disagreements': date_disagreements,
+                   'b_only': b_only,
                    'b_registered': b_registered}, f, ensure_ascii=False, indent=2)
 
 if __name__ == '__main__':
