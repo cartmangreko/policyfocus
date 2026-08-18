@@ -29,7 +29,7 @@ export default function ActsPage() {
             verbatim. Every file below links to its own page: what it does, which sectors it names,
             and which it reaches without naming.
           </p>
-          <SummaryStrip cuts={site} />
+          <SummaryStrip cuts={site} subject="the tracked corpus" />
         </div>
       </section>
 

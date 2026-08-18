@@ -6,6 +6,7 @@ import SignalRow from "@/components/SignalRow";
 import SummaryStrip from "@/components/SummaryStrip";
 import { getActMeasuresBySector, getActReach } from "@/lib/acts";
 import { FILES, SECTORS } from "@/lib/data";
+import { reachProse } from "@/lib/prose";
 import { getActSummary } from "@/lib/summaries";
 
 // One act, in the same grammar as a sector page: summary strip, then the
@@ -29,10 +30,11 @@ export async function generateMetadata({
   const { file } = await params;
   const meta = FILES[file];
   if (!meta) return { title: "File not found" };
-  const reach = getActReach(file);
+  // The description is the reach strip's prose form — same template, same
+  // computed object as the page body.
   return {
     title: meta.name,
-    description: `${meta.code} — names ${reach.named.length} sectors, reaches ${reach.totalReach}, read provision by provision.`,
+    description: `${meta.code} — ${reachProse(meta.name.split(" — ")[0], getActReach(file))}`,
   };
 }
 
@@ -58,7 +60,7 @@ export default async function ActPage({ params }: { params: Promise<{ file: stri
           />
           <h1 className="sector-title">{meta.name}</h1>
           <p className="sector-intro">{meta.code}</p>
-          <SummaryStrip cuts={summary} />
+          <SummaryStrip cuts={summary} subject={meta.name.split(" — ")[0]} />
         </div>
       </section>
 
@@ -69,6 +71,7 @@ export default async function ActPage({ params }: { params: Promise<{ file: stri
             Names {reach.named.length} {reach.named.length === 1 ? "sector" : "sectors"}, reaches{" "}
             {reach.totalReach}
           </h2>
+          <p className="strip-prose">{reachProse(meta.name.split(" — ")[0], reach)}</p>
           <div className="chips">
             {reach.named.map((s) => (
               <Link key={s} href={`/sectors/${s}`} className="chip">

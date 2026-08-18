@@ -31,7 +31,7 @@ export default function SectorsPage() {
             the full sector spine: {parents.length} parent sectors, with a child nested under a
             parent only where measures apply to the child and not to the parent.
           </p>
-          <SummaryStrip cuts={site} />
+          <SummaryStrip cuts={site} subject="the tracked corpus" />
         </div>
       </section>
 

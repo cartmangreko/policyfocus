@@ -4,11 +4,15 @@ import DriverChart from "@/components/DriverChart";
 import { getCoverage, getQueuedItems, getWeightNote } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
 
-export const metadata: Metadata = {
-  title: "Coverage",
-  description:
-    "What PolicyFocus reads, how many measures each file yields, how many times each was read, and what is queued.",
-};
+export function generateMetadata(): Metadata {
+  const files = getCoverage();
+  const total = files.reduce((n, f) => n + f.measures, 0);
+  const twice = files.filter((f) => f.reads.reads > 1).length;
+  return {
+    title: "Coverage",
+    description: `${files.length} files read, ${total} measures extracted, ${twice} of ${files.length} files read twice and reconciled — plus what is queued and not yet read.`,
+  };
+}
 
 // TODO-GEORGE: perimeter statement.
 const PERIMETER =

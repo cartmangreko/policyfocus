@@ -175,6 +175,20 @@ shape, there is no editorial template, and `check_template_set` fails the
 build if one is ever added back. Connecting prose that a human must write is
 carried as an explicit TODO on a draft, never generated.
 
+### No free-generated text on the site
+
+Every readable sentence on the site is one of two things: template-rendered
+from the register (the summary strips and their prose forms, the reach and
+arrival sentences, the computed titles and meta descriptions — all worded
+once, in `web/lib/prose.ts` and the metadata templates, and fed only
+gate-checked objects), or George-reviewed content stored as data (findings
+past their draft TODOs, the tagline and perimeter lines once written). No
+model-generated paragraph ships as page copy, and no generic explanatory
+paragraphs about what the ETS or CBAM is — a reader who needs a primer is one
+link from EUR-Lex, and a primer is where drift and error live. A sentence
+that cannot point at the data it renders or the human who signed it off does
+not go on a page.
+
 ### The exposure methodology is reconstructed, and proved by reproduction
 
 `data/exposure/*.json` is built by `sources/build_exposure.py` from the raw
