@@ -174,8 +174,9 @@ same arithmetic, not out of a plausible-looking guess. **Do not add a sector
 whose exposure file was produced any other way, and do not change the builder
 without `--check` still passing.**
 
-Four corrections were forced by mismatches during the reconstruction. Each is
-load-bearing and none is cosmetic:
+Four things were changed during the reconstruction. Three are load-bearing;
+the second turned out on later checking to be redundant, and is recorded as
+such rather than quietly dropped:
 
 1. **Value added is not a supplier.** FIGARO's `rowIi` includes compensation of
    employees (`D1`), gross operating surplus (`B2A3G`) and the tax rows. Left
@@ -183,9 +184,16 @@ load-bearing and none is cosmetic:
    on the chemicals supplier list, and **chemicals' import dependency came out
    at 42.7 % against the delivered 21.9 %** — a number that would have been
    published, looked plausible, and been wrong by a factor of two.
-2. **`refArea` `W2` is a world aggregate**, restating rows already present in
-   the file. It double-counts, and before exclusion it accounted for 62 % of
-   chemicals' foreign inputs.
+2. **`refArea` `W2` is where value added is filed** — *not* a world aggregate.
+   This entry originally read "a world aggregate, restating rows already
+   present", which was wrong about the mechanism and is corrected here.
+   Verified against the flatfile on 2026-08-18: `W2` carries exactly and only
+   the six value-added codes, and those codes appear under no other area. The
+   62 % of chemicals' foreign inputs it accounted for was value added being
+   read as an import — correction 1 restated. The `W2` skip is therefore
+   **redundant**, and `--check` reproduces all eleven delivered files without
+   it. It is kept as a cheap guard against a future edition filing something
+   else there. **Three corrections do the work, not four.**
 3. **Final demand is outside the customers denominator.** Household, government
    and NPISH consumption and capital formation are final uses, not customers.
    With them in the denominator every customer share was understated by about a
@@ -238,3 +246,50 @@ and the TypeScript implementation — 42 combinations including the nonsensical
 ones — and fails the build on any disagreement. A row whose classification
 moves after first publication keeps its id and records the move in
 `reclass_from`; ids are permanent, so that field is the only trace.
+
+
+### Named and reached are disjoint
+
+A sector is NAMED by a provision or REACHED by it, never both. The two lists
+answer different questions, and a slug in both makes the row assert both at
+once. `validate_v2` fails the build on it.
+
+It needed a gate rather than a convention because the defect is **invisible in
+the product**: `web/lib/data.ts` puts a row in `named` if it is named and only
+otherwise in `reached`, so a duplicate is silently discarded at render and
+every count still looks right. Fifteen rows carried it — nine in PPWR, six in
+CRMA, all from row definitions that composed the two lists out of shared
+constants which legitimately overlap. Extractors now subtract `named` from
+`reached` where the two meet, so the class cannot recur; the validator holds
+the line for any file built another way.
+
+### Carry-overs come from repeal, not from amendment
+
+`direction: "unchanged"` was added for PPWR, and the obvious worry was that the
+gap had been silently forcing rows into "Requirement" across the whole
+register. It had not. All 31 rows in the other six files carrying a resolved
+`prior_rule` — omnibus 22, CBAM 8, IAA 1 — state a before that genuinely
+DIFFERS from the after.
+
+The reason is structural and worth keeping in mind when the next act lands.
+**An amending act writes deltas by construction**: it exists to change
+particular words, and every row it produces is a change. **A repealing act
+restates**, and a replacement text carries its predecessor's numbers forward
+untouched wherever policy did not move. PPWR is the first act in this register
+that repeals rather than amends, which is why it is the first to contain a
+carry-over at all. Expect the question again at the next repeal-and-replace,
+and not before.
+
+### `unchanged` needs a resolved prior_rule
+
+"Nothing changed" is a claim about the PRIOR law, so a row may not make it
+without quoting that law. `direction: "unchanged"` is admissible only on a
+duty-side row whose `prior_rule` is resolved — status `sourced` or `recital`,
+a stated prior obligation, and a span verbatim in the prior corpus.
+`benefit_axis.assert_unchanged_prior` enforces it.
+
+This is the same shape as the deletion guardrail and rests on the same
+reasoning: a classification that cannot be substantiated does not get to
+render as a confident label. A row that cannot reach the prior text is
+entitled to say `add` and be read as a requirement — the honest default when
+the before-state is unknown.

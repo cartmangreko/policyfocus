@@ -78,6 +78,21 @@ def validate(key, rows):
             if mt == "right" and not r.get("right_basis"):
                 fail.append((rid, "right row has no right_basis"))
 
+        # NAMED AND REACHED ARE DISJOINT.
+        #
+        # The two lists answer different questions -- which sectors the
+        # provision ADDRESSES, and which it reaches without naming -- and a
+        # slug in both makes the row assert both at once. Nothing downstream
+        # notices: web/lib/data.ts puts a row in `named` if it is named and
+        # only otherwise in `reached`, so the duplicate is silently discarded
+        # at render and the count still looks right. That is exactly why it
+        # needs a gate rather than a convention: the defect is invisible in the
+        # product and only visible in the data.
+        both = sorted(set(r.get("sectors_named") or []) & set(r.get("sectors_reached") or []))
+        if both:
+            fail.append((rid, f"sector(s) in BOTH sectors_named and sectors_reached: {both}. "
+                              "A sector is named or reached, never both -- drop it from reached."))
+
         # reclass_from, where present, must actually say something
         # reclass_from must record a note and a classification that ACTUALLY
         # MOVED. It used to demand measure_type specifically, which assumed

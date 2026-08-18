@@ -129,6 +129,14 @@ export interface ExposureView {
   suppliers: ExposureRow[];
   /** Industries that buy from this sector; last row is OTHER. */
   customers: ExposureRow[];
+  /**
+   * Share of this sector's total output going to FINAL use — households,
+   * government, NPISH, capital formation — rather than to another industry.
+   * `customers` covers intermediate sales ONLY, so this is the share of the
+   * sector's sales that list does not describe. Absent on exposure files
+   * written before the field existed.
+   */
+  final_demand_share_pct?: number;
   /** Countries the imported inputs come from; may include "rest of world". */
   foreign_input_origins: ExposureRow[];
 }
