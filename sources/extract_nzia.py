@@ -68,9 +68,28 @@ register on the same test -- they produce voluntary learning content, and the
 one provision there that does bind a Member State (Art. 31(1), identify
 equivalence and report the reasons if not) is carried as SKL-01.
 
-This is ONE pass. ETS, IAA and CBAM each carry two reads that reconcile.py
-compares; this file does not, and no claim of a reconciled reading is made for
-it here or in the register.
+RECONCILED, AND WHAT THAT COST
+==============================
+This file was one pass when it was written. extract_nzia_pass_b.py is the second
+read -- a paragraph-by-paragraph sweep of Arts. 5 to 48 -- and
+reconciliation_gate.py certifies the result. What the second read did:
+
+  * 3 classification disagreements, ALL HELD FOR THIS FILE. Each was the same
+    argument (a provision binding a Member State in order to confer something on
+    a firm), and the object rule decides it the way this file already read it.
+    Ruled, not merely outlived: nzia_rulings.CLASSIFICATION records all three.
+  * 2 application dates WRONG HERE and corrected. Art. 49(3) confines Art. 25(1)
+    and nothing else, and this file had applied that carve-out across the whole
+    procurement family. PP-03b moved with PP-03a as a consequential ruling.
+  * 33 provisions promoted, which is why this file is 89 rows and not 56. The
+    promotions are built from the pass rows rather than retyped -- see
+    promoted_rows() -- so a promoted row cannot drift from what the second read
+    said. Six candidates were rejected with reasons.
+
+The two disagreements that remain live are SPC-02/N-06 and SP-01/N-30, both
+ruled for this file. A fresh reconcile.py run will report them for as long as
+both files exist; that is a recorded decision, not unfinished work, and the gate
+checks that every live disagreement is one of the rulings that held.
 """
 from __future__ import annotations
 
@@ -96,6 +115,12 @@ OPERATIVE_ANCHOR = "Article 1 Subject matter"
 
 # Article 49. The general date, and the two carve-outs that displace it.
 WHEN_GENERAL = "Applies from 29 June 2024 (Art. 49(2))"
+# Art. 49(3) names Art. 25(1) AND NOTHING ELSE. This constant therefore belongs
+# only to rows that are about Art. 25(1) -- PP-01, and PP-04 which disapplies
+# Art. 25(1) to (4). It was originally applied to the whole procurement family
+# by theme, which dated PP-02, PP-03a and PP-03b as if a EUR 25 million floor
+# stood in front of them until mid-2026. The second pass caught all three;
+# nzia_rulings.DATES and CONSEQUENTIAL_DATES rule on them.
 WHEN_PROCUREMENT = ("Applies from 29 June 2024; until 30 June 2026 Art. 25(1) reaches only "
                     "central purchasing bodies and contracts of EUR 25 million or more (Art. 49(3))")
 WHEN_AUCTIONS = "From 30 December 2025 (Art. 49(4))"
@@ -565,7 +590,7 @@ ROWS: list[tuple] = [
           addressee="Contracting authorities and contracting entities",
           cls=S, trigger="works contracts and works concessions including Art. 4(1)(a)-(k) net-zero technologies",
           frequency="per tender", verification="none",
-          article="Art. 25(3)", when=WHEN_PROCUREMENT,
+          article="Art. 25(3)", when=WHEN_GENERAL,
           drivers=["D1", "D6"], named=NZT, reached=["build"])),
 
     ("PP-03a", "an obligation for the duration of the contract not to supply more than 50 % of the value of the specific net-zero technology referred to in this paragraph from each individual third country as determined by the Commission;",
@@ -575,7 +600,7 @@ ROWS: list[tuple] = [
           addressee="Tenderers and successful contractors supplying net-zero technologies to public buyers",
           cls=B, trigger="a Commission determination under Art. 29(2) that one third country exceeds 50% of Union supply, or has gained 10 percentage points over two years and reaches 40%",
           frequency="per contract", verification="self-declaration",
-          article="Art. 25(7), second subparagraph", when=WHEN_PROCUREMENT,
+          article="Art. 25(7), second subparagraph", when=WHEN_GENERAL,
           drivers=["D1", "D6"], named=NZT, reached=["build"],
           provision_id="nzia-25-7")),
 
@@ -586,7 +611,7 @@ ROWS: list[tuple] = [
           addressee="Union and diversified non-dominant producers of net-zero technologies and their main components",
           cls=B, trigger="a Commission determination under Art. 29(2) on the concentration of Union supply of a specific net-zero technology",
           frequency="per tender", verification="self-declaration",
-          article="Art. 25(7)", when=WHEN_PROCUREMENT,
+          article="Art. 25(7)", when=WHEN_GENERAL,
           value_drivers=["V2"], frictions=["F1"],
           named=NZT, reached=["build"],
           provision_id="nzia-25-7",
@@ -784,6 +809,55 @@ ROWS: list[tuple] = [
 ]
 
 
+# ---------------------------------------------------------------------------
+# PROMOTIONS FROM THE SECOND PASS
+#
+# 33 provisions the paragraph sweep in extract_nzia_pass_b.py found and this
+# file did not carry, each ruled `promote` in nzia_rulings.PASS_B_ONLY.
+#
+# They are BUILT FROM THE PASS ROW, not retyped from it. Retyping is how a
+# promoted row drifts from what the second read actually said, and the drift is
+# invisible: the row still verifies, because the span is still verbatim, while
+# the classification or the addressee has quietly become this file's opinion of
+# the provision rather than the pass's. Importing the row makes that impossible
+# and makes the provenance mechanical -- pass_origin names the row, and the row
+# is the row.
+#
+# What promotion changes, and nothing else: the id (NZIAB- prefix, matching the
+# ETSB-/IAAB-/CBAMB- convention), pass_origin, and provision_id where the ruling
+# pairs the promoted row with one already here.
+PROMOTED_PROVISION_IDS = {
+    "NZIAB-AUC-04": "nzia-26",   # the Member State duty half of AUC-02's pair
+}
+
+
+def promoted_rows() -> list[dict]:
+    import extract_nzia_pass_b as passb
+    import nzia_rulings as rulings
+
+    b_rows, b_errors = passb.build()
+    if b_errors:
+        raise LookupError(f"pass B does not build, so nothing can be promoted from it: {b_errors}")
+    by_id = {r["id"]: r for r in b_rows}
+
+    out = []
+    for pass_id, ruling in sorted(rulings.PASS_B_ONLY.items()):
+        if ruling["ruling"] != "promote":
+            continue
+        src = by_id.get(pass_id)
+        if src is None:
+            raise LookupError(f"ruling promotes {pass_id}, which pass B does not produce")
+        row = dict(src)
+        row["id"] = ruling["register_id"]
+        # Same key shape the CBAM promotions use: the pass file stem, not its
+        # filename. reconciliation_gate.py builds the same key to check that a
+        # promoted row exists and a rejected one does not.
+        row["pass_origin"] = f"{rulings.PASS_FILE.removesuffix('.json')}:{pass_id}"
+        row["provision_id"] = PROMOTED_PROVISION_IDS.get(ruling["register_id"])
+        out.append(row)
+    return out
+
+
 def slice_span(text: str, start: str, end: str, rid: str) -> str:
     i = text.find(start)
     if i == -1:
@@ -856,6 +930,9 @@ def build() -> tuple[list[dict], list[str]]:
         if meta.get("support_cut_basis"):
             row["support_cut_basis"] = meta["support_cut_basis"]
         rows.append(row)
+
+    if not errors:
+        rows.extend(promoted_rows())
 
     return rows, errors
 

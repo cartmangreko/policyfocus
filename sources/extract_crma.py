@@ -61,7 +61,26 @@ market-surveillance and type-approval hooks for Arts. 28-29; the duties those
 hooks enforce are carried here at their source, and the amendments themselves
 are procedural.
 
-This is ONE pass, and no claim of a reconciled reading is made for it.
+RECONCILED
+==========
+This file was one pass when written. extract_crma_pass_b.py is the second read
+and reconciliation_gate.py certifies the result:
+
+  * 2 classification disagreements, both HELD FOR THIS FILE (Art. 6(1)
+    recognition, Art. 17 offtake) on the object rule.
+  * 3 application dates corrected here. Two were real: Art. 5(1)'s benchmarks
+    are 2030 targets and this file dated them to entry into force. The third
+    was a wording defect -- Art. 28(1) said "entry into force of the labelling
+    implementing act", which reads to the date extractor as a commitment to the
+    REGULATION's entry into force.
+  * 36 provisions promoted, which is why this file is 90 rows and not 54,
+    including three whole articles it had missed: Art. 9(3)-(8), Art. 18 and
+    Art. 19. One candidate rejected.
+
+The second pass has holes of its own -- it missed Arts. 11(2), 27(4), 31(11),
+32(1), 33 and 47, all of which this file carries. That asymmetry is recorded in
+crma_rulings.py and in the crosswalk, and it is the best evidence available
+that the two reads were genuinely separate.
 """
 from __future__ import annotations
 
@@ -104,7 +123,7 @@ ROWS: list[tuple] = [
           addressee="The Commission and Member States",
           cls=S, trigger="the strategic raw materials listed in Annex I",
           frequency="continuous", verification="none",
-          article="Art. 5(1)(a)", when=WHEN_GENERAL,
+          article="Art. 5(1)(a)", when="By 2030 (Art. 5(1))",
           drivers=[], named=UPSTREAM, reached=DOWNSTREAM)),
 
     ("CBEN-02", "diversify the Union’s imports of strategic raw materials with a view to ensuring that, by 2030",
@@ -114,7 +133,7 @@ ROWS: list[tuple] = [
           addressee="The Commission and Member States",
           cls=S, trigger="Union consumption of a strategic raw material at any relevant stage of processing",
           frequency="continuous", verification="none",
-          article="Art. 5(1)(b)", when=WHEN_GENERAL,
+          article="Art. 5(1)(b)", when="By 2030 (Art. 5(1))",
           drivers=[], named=UPSTREAM, reached=DOWNSTREAM)),
 
     # ------------------------------------------------------ strategic projects
@@ -571,7 +590,7 @@ ROWS: list[tuple] = [
           addressee="Anyone placing the listed products on the Union market",
           cls=B, trigger="placing a listed product on the Union market",
           frequency="per product model", verification="self-declaration",
-          article="Art. 28(1)", when="Two years after entry into force of the labelling implementing act; for MRI devices, motor vehicles and category L vehicles from 24 May 2029",
+          article="Art. 28(1)", when="Two years after the labelling implementing act; 24 May 2029 for MRI devices, motor vehicles and category L vehicles",
           drivers=["D1", "D7"], named=["auto", "clean"], reached=["batsol"],
           provision_id="crma-28",
           pending="The label format is set by implementing act under Art. 28(2), and the two-year clock runs from that act's entry into force.")),
@@ -583,7 +602,7 @@ ROWS: list[tuple] = [
           addressee="Anyone placing listed products containing permanent magnets on the Union market",
           cls=B, trigger="placing a listed product incorporating a neodymium-iron-boron, samarium-cobalt, aluminium-nickel-cobalt or ferrite magnet on the market",
           frequency="per product model", verification="self-declaration",
-          article="Art. 28(3)-(4)", when="Two years after entry into force of the labelling implementing act",
+          article="Art. 28(3)-(4)", when="Two years after the labelling implementing act",
           drivers=["D1", "D4", "D7"], named=["auto", "clean"], reached=["batsol"],
           provision_id="crma-28")),
 
@@ -594,7 +613,7 @@ ROWS: list[tuple] = [
           addressee="Anyone placing listed products containing permanent magnets on the Union market",
           cls=B, trigger="a listed product incorporating a permanent magnet placed on the market",
           frequency="continuous", verification="competent authority",
-          article="Art. 28(7)", when="Two years after entry into force of the labelling implementing act",
+          article="Art. 28(7)", when="Two years after the labelling implementing act",
           drivers=["D1", "D5"], named=["auto", "clean"], reached=["batsol"],
           provision_id="crma-28")),
 
@@ -729,6 +748,37 @@ ROWS: list[tuple] = [
 ]
 
 
+# ---------------------------------------------------------------------------
+# PROMOTIONS FROM THE SECOND PASS
+#
+# 36 provisions extract_crma_pass_b.py found and this file did not carry, each
+# ruled `promote` in crma_rulings.PASS_B_ONLY. Built from the pass row rather
+# than retyped, for the reason set out in extract_nzia.py: a retyped promotion
+# drifts into this file's opinion of the provision while still verifying, and
+# the drift is invisible.
+def promoted_rows() -> list[dict]:
+    import extract_crma_pass_b as passb
+    import crma_rulings as rulings
+
+    b_rows, b_errors = passb.build()
+    if b_errors:
+        raise LookupError(f"pass B does not build, so nothing can be promoted from it: {b_errors}")
+    by_id = {r["id"]: r for r in b_rows}
+
+    out = []
+    for pass_id, ruling in sorted(rulings.PASS_B_ONLY.items()):
+        if ruling["ruling"] != "promote":
+            continue
+        src = by_id.get(pass_id)
+        if src is None:
+            raise LookupError(f"ruling promotes {pass_id}, which pass B does not produce")
+        row = dict(src)
+        row["id"] = ruling["register_id"]
+        row["pass_origin"] = f"{rulings.PASS_FILE.removesuffix('.json')}:{pass_id}"
+        out.append(row)
+    return out
+
+
 def slice_span(text: str, start: str, end: str, rid: str) -> str:
     i = text.find(start)
     if i == -1:
@@ -795,6 +845,9 @@ def build() -> tuple[list[dict], list[str]]:
         if meta.get("support_cut_basis"):
             row["support_cut_basis"] = meta["support_cut_basis"]
         rows.append(row)
+
+    if not errors:
+        rows.extend(promoted_rows())
 
     return rows, errors
 

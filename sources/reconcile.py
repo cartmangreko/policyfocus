@@ -67,8 +67,27 @@ verify_pass.py first, and a failing input stops the run before anything is
 written.
 
 Usage: python3 reconcile.py <pass_a.json> <pass_b.json> <prefix>
-       prefix is the file key (ets | iaa) and selects the sources to verify
-       against, via benefit_axis.FILE_SOURCES.
+       prefix is the file key. It does two things: it selects the sources both
+       passes are verified against, via benefit_axis.FILE_SOURCES, and it names
+       the report written as <prefix>_disagreements.json.
+
+       Any key in FILE_SOURCES is accepted -- currently ets, iaa, omnibus,
+       cbam, nzia and crma -- but a run is only meaningful for a file that
+       HAS a second pass. Those are:
+
+           ets    ets_pass_a.json    ets_pass_b.json     (frozen snapshots)
+           iaa    iaa_pass_a.json    iaa_pass_b.json     (frozen snapshots)
+           cbam   ../data/cbam.json  cbam_pass_b.json    (B regenerated live)
+           nzia   ../data/nzia.json  nzia_pass_b.json    (B regenerated live)
+
+       omnibus has no second pass and never had one. The line above used to say
+       "(ets | iaa)", which was true when it was written and stopped being true
+       when CBAM got a second read, was wired into PASS_B_CROSSWALK and
+       FILE_SOURCES, and became the file reconciliation_gate.py certifies.
+
+       Pass A is the REGISTER file for cbam and nzia, and a frozen pass_a
+       snapshot for ets and iaa. Either way Pass A's ids are the register's,
+       which is what makes the crosswalk resolve A-to-B pairing exactly.
 """
 import json, os, re, subprocess, sys
 

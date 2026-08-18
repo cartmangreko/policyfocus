@@ -197,7 +197,124 @@ PASS_B_CROSSWALK = {
         "B-41": "CBAMB-CUST-05",  "B-48": "CBAMB-SCP-07",
         "B-51": "CBAMB-ELEC-09",  "B-52": "CBAMB-ELEC-10",
     },
+    # NZIA's second pass. Like cbam_pass_b.json it is regenerated from live
+    # sources (extract_nzia_pass_b.py) rather than frozen, so it never goes
+    # stale and is deliberately ABSENT from PAIRS below -- reanchor copies
+    # measure_type and direction down from the register onto the pass row, and
+    # running it here would erase the four classification disagreements this
+    # pass exists to record (N-06, N-30, N-46, N-76) by overwriting them with
+    # the register's answers.
+    #
+    # 55 entries for 93 pass rows. The other 38 are provisions Pass A does not
+    # carry: the paragraph-by-paragraph sweep reached them and the thematic
+    # read did not. They are candidates, not confirmed gaps -- reconcile.py
+    # lists them and a ruling decides each one.
+    "nzia_pass_b.json": {
+        "N-01": "BEN-01",  "N-03": "SPC-01",  "N-06": "SPC-02",
+        "N-07": "SPC-03",  "N-10": "SPC-04",  "N-11": "INF-01",
+        "N-12": "ADM-01",  "N-13": "PRM-01",  "N-15": "PRM-04",
+        "N-20": "PRM-02",  "N-21": "PRM-03",  "N-22": "PRM-05",
+        "N-23": "ENV-01",  "N-24": "ENV-02",  "N-30": "SP-01",
+        "N-33": "SP-05",   "N-35": "SP-02",   "N-36": "SP-03",
+        "N-38": "SP-04",   "N-40": "SP-06",   "N-43": "SP-08",
+        "N-44": "SP-07",   "N-45": "SP-09",   "N-47": "PRM-06",
+        "N-49": "VAL-01",  "N-52": "VAL-02",  "N-53": "FIN-01",
+        "N-56": "CO2-01",  "N-57": "CO2-07",  "N-59": "CO2-10",
+        "N-60": "CO2-02",  "N-61": "CO2-08",  "N-62": "CO2-03",
+        "N-63": "CO2-05",  "N-64": "CO2-04",  "N-65": "CO2-06",
+        "N-67": "CO2-09",  "N-68": "PP-01",   "N-69": "PP-02",
+        "N-71": "PP-03a",  "N-73": "PP-04",   "N-75": "AUC-01",
+        "N-77": "AUC-03",  "N-79": "SCH-01",
+        "N-80": "SCH-02",  "N-81": "SCH-03",  "N-82": "SCH-04",
+        "N-83": "SKL-01",  "N-84": "SBX-01",  "N-85": "SBX-02",
+        "N-87": "SBX-03",  "N-89": "SME-01",  "N-91": "MON-01",
+        "N-93": "SDG-01",
+        # Promotions, added when nzia_rulings.py disposed of the 38 candidates.
+        # N-76 moves here from the block above: it was crosswalked to AUC-02 to
+        # report the classification disagreement, and the ruling kept AUC-02's
+        # reading AND promoted N-76 as the duty half of the same provision_id,
+        # so the row it now names is its own.
+        "N-02": "NZIAB-BEN-02",  "N-14": "NZIAB-PRM-07",
+        "N-16": "NZIAB-PRM-08",  "N-17": "NZIAB-PRM-09",
+        "N-18": "NZIAB-PRM-10",  "N-25": "NZIAB-ENV-03",
+        "N-27": "NZIAB-PLAN-01",  "N-28": "NZIAB-PLAN-02",
+        "N-29": "NZIAB-INF-02",  "N-31": "NZIAB-SP-10",
+        "N-32": "NZIAB-SP-11",  "N-34": "NZIAB-SP-12",
+        "N-37": "NZIAB-SP-13",  "N-39": "NZIAB-SP-14",
+        "N-41": "NZIAB-SP-15",  "N-42": "NZIAB-SP-16",
+        "N-46": "NZIAB-SP-17",  "N-48": "NZIAB-VAL-03",
+        "N-50": "NZIAB-VAL-04",  "N-51": "NZIAB-VAL-05",
+        "N-54": "NZIAB-CO2-11",  "N-55": "NZIAB-CO2-12",
+        "N-58": "NZIAB-CO2-13",  "N-66": "NZIAB-CO2-14",
+        "N-70": "NZIAB-PP-05",  "N-72": "NZIAB-PP-06",
+        "N-74": "NZIAB-PP-07",  "N-76": "NZIAB-AUC-04",
+        "N-78": "NZIAB-AUC-05",  "N-86": "NZIAB-SBX-04",
+        "N-88": "NZIAB-SBX-05",  "N-90": "NZIAB-SME-02",
+        "N-92": "NZIAB-CNF-01",
+    },
+    # CRMA's second pass. Regenerated from live sources by
+    # extract_crma_pass_b.py, and out of PAIRS below for the same reason as the
+    # CBAM and NZIA passes: reanchor would copy the register's classifications
+    # down onto it and erase the disagreements.
+    #
+    # 47 entries for 84 pass rows. Note what is NOT here: six REGISTER rows have
+    # no pass counterpart -- CPRM-05, CEXW-03, CFP-02, CCNF-01, CFM-01 and
+    # CPEN-01. The paragraph sweep missed Art. 11(2), Art. 27(4), Art. 31(11),
+    # Art. 33, Art. 32(1) and Art. 47 outright. A second pass that misses six
+    # provisions the first pass caught is the clearest evidence available that
+    # the two reads are actually independent, and it is left visible here rather
+    # than quietly patched into the pass after the fact.
+    # CRMA's second pass. Regenerated from live sources by
+    # extract_crma_pass_b.py, and out of PAIRS below for the same reason as the
+    # CBAM and NZIA passes: reanchor would copy the register's classifications
+    # down onto it and erase the disagreements.
+    #
+    # 47 entries for 84 pass rows. Note what is NOT here: six REGISTER rows have
+    # no pass counterpart -- CPRM-05, CEXW-03, CFP-02, CCNF-01, CFM-01 and
+    # CPEN-01. The paragraph sweep missed Art. 11(2), Art. 27(4), Art. 31(11),
+    # Art. 33, Art. 32(1) and Art. 47 outright. A second pass that misses six
+    # provisions the first pass caught is the clearest evidence available that
+    # the two reads are actually independent, and it is left visible here rather
+    # than quietly patched into the pass after the fact.
+    "crma_pass_b.json": {
+        "C-01": "CBEN-01",  "C-02": "CBEN-02",  "C-04": "CSP-01",
+        "C-06": "CSP-02",   "C-09": "CSP-03",   "C-12": "CSP-04",
+        "C-13": "CSP-05",   "C-14": "CSP-06",   "C-15": "CSP-07",
+        "C-16": "CSP-08",   "C-17": "CSP-09",   "C-18": "CSPC-01",
+        "C-25": "CPRM-01",  "C-27": "CPRM-02",  "C-28": "CPRM-03",
+        "C-29": "CPRM-04",  "C-32": "CPRM-06",  "C-33": "CPRM-07",
+        "C-34": "CENV-01",  "C-35": "CENV-02",  "C-41": "CFIN-01",
+        "C-42": "COFF-01",  "C-49": "CMON-01",  "C-50": "CMON-02",
+        "C-51": "CMON-03",  "C-53": "CSTK-01",  "C-55": "CRSK-01",
+        "C-56": "CRSK-02",  "C-57": "CRSK-03",  "C-58": "CRSK-04",
+        "C-60": "CRSK-05",  "C-62": "CJP-01",   "C-63": "CJP-02",
+        "C-64": "CCIR-01",  "C-66": "CCIR-02",  "C-67": "CEXW-01",
+        "C-68": "CEXW-02",  "C-71": "CMAG-01",  "C-72": "CMAG-02",
+        "C-74": "CMAG-03",  "C-75": "CMAG-04",  "C-76": "CMAG-05",
+        "C-77": "CMAG-06",  "C-78": "CMAG-07",  "C-79": "CREC-01",
+        "C-80": "CREC-02",  "C-81": "CFP-01",
+        # Promotions, added when crma_rulings.py disposed of the 37 candidates.
+        "C-03": "CRMAB-BEN-03",  "C-05": "CRMAB-SP-10",
+        "C-07": "CRMAB-SP-11",  "C-08": "CRMAB-SP-12",
+        "C-10": "CRMAB-SP-13",  "C-11": "CRMAB-SP-14",
+        "C-20": "CRMAB-SPC-02",  "C-21": "CRMAB-SPC-03",
+        "C-22": "CRMAB-SPC-04",  "C-23": "CRMAB-SPC-05",
+        "C-24": "CRMAB-SPC-06",  "C-26": "CRMAB-PRM-08",
+        "C-30": "CRMAB-PRM-09",  "C-31": "CRMAB-PRM-10",
+        "C-36": "CRMAB-ENV-04",  "C-37": "CRMAB-PLAN-01",
+        "C-38": "CRMAB-PLAN-02",  "C-39": "CRMAB-INF-03",
+        "C-40": "CRMAB-SP-15",  "C-43": "CRMAB-INF-01",
+        "C-44": "CRMAB-INF-02",  "C-45": "CRMAB-EXP-01",
+        "C-46": "CRMAB-EXP-02",  "C-47": "CRMAB-MON-04",
+        "C-48": "CRMAB-MON-05",  "C-52": "CRMAB-MON-06",
+        "C-54": "CRMAB-STK-02",  "C-59": "CRMAB-RSK-06",
+        "C-61": "CRMAB-JP-03",  "C-65": "CRMAB-CIR-03",
+        "C-69": "CRMAB-EXW-04",  "C-70": "CRMAB-EXW-05",
+        "C-73": "CRMAB-MAG-08",  "C-82": "CRMAB-FM-02",
+        "C-83": "CRMAB-CNF-02",  "C-84": "CRMAB-REP-01",
+    },
 }
+
 
 PAIRS = [
     ("ets_pass_a.json", "ets.json", ("ets.txt", "ets_annexes.txt")),
