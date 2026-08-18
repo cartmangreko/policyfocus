@@ -63,3 +63,5 @@ There is no `vercel.json`: the framework preset detects Next.js, install, build
 and output settings are all defaults, and the one header the site sets is set in
 `next.config.ts`, where the launch switch that decides it already lives. Add one
 only when a setting genuinely cannot be expressed in the project itself.
+
+<!-- Smoke test: does a preview deployment carry the noindex header? Not for merge. -->
