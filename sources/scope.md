@@ -189,6 +189,26 @@ link from EUR-Lex, and a primer is where drift and error live. A sentence
 that cannot point at the data it renders or the human who signed it off does
 not go on a page.
 
+### Snapshots are append-only
+
+Each release archives the register state and all fetched source versions
+under a dated path — `snapshots/<date>/`, written by `sources/snapshot.py`
+with a SHA-256 manifest. Ingestion and rebuilds never overwrite a prior
+snapshot: the tool refuses an existing path and has no force flag. A wrong
+snapshot is deleted by a human with git, where the deletion stays visible in
+history; it is never replaced in place. The archive is what makes every
+published number reconstructible after the register has moved on.
+
+### Measure ids are permanent
+
+A measure id, and the URL built from it (`/measures/<file>/<id>`), never
+changes meaning. A row whose classification moves keeps its id and records
+the move in `reclass_from`; a row that is withdrawn stays resolvable rather
+than being reused. Any future change to an id or a URL shape requires a
+redirect from the old address — that is policy, not preference, and it is
+stated publicly on /coverage. Citations are the product: an id that cannot be
+cited into next year is not worth extracting.
+
 ### The exposure methodology is reconstructed, and proved by reproduction
 
 `data/exposure/*.json` is built by `sources/build_exposure.py` from the raw
