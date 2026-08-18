@@ -18,6 +18,13 @@ import { headlineStep, isStated } from "@/lib/text";
 import { isPositiveValence, valenceLabel } from "@/lib/valence";
 import type { Measure } from "@/lib/types";
 
+// Every path this route serves is enumerated below, so an unlisted one is a
+// 404 rather than a render on demand. That is load-bearing on Vercel: the
+// register JSON lives outside web/ and is read at build time only, so a
+// function rendering an unknown slug would have nothing to read. See
+// README.md, "Deploying".
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getAllMeasures().map((m) => ({ file: m.file, id: m.id.toLowerCase() }));
 }

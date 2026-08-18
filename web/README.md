@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# policyfocus — web
 
-## Getting Started
+The front end. A Next.js App Router site that renders the measure register,
+the sector spine, the exposure layer and the findings — all of it read from
+`../data` and `../sources` at build time, none of it fetched at request time.
 
-First, run the development server:
+## Running it locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # runs the findings gate first, then a full static build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`npm run build` has a `prebuild` step: `python3 ../sources/build_findings.py`.
+That gate validates every hand-authored finding against the register and
+rewrites `data/findings/index.json`, which is the only list of findings the
+site reads. A finding that fails the gate fails the build. It needs `python3`
+and nothing else — the gate is standard library only, so no pip install is
+required to build the site (`sources/requirements.txt` is for the fetcher and
+the watch agent, neither of which runs here).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploying
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The site is deployed on Vercel from this directory. Three things about that
+arrangement are load-bearing, and all three are easy to break silently:
 
-## Learn More
+**Root Directory is `web`, and files outside it must be included.** The data
+this site renders lives at the repo root — `../data`, `../sources` — and is
+read with `fs` at build time (`lib/data.ts`, `lib/exposure.ts`, `lib/files.ts`,
+`lib/findings.ts`). Setting a Root Directory alone does not give the build
+access to its parent, so in Vercel → Settings → Build and Deployment, **Include
+files outside the Root Directory in the Build Step** has to be on. With it off,
+the build fails in `prebuild` on a missing `../sources/build_findings.py`.
 
-To learn more about Next.js, take a look at the following resources:
+**Every page is prerendered, and every dynamic route sets
+`dynamicParams = false`.** The data is present during the build and absent from
+anything Vercel runs afterwards: a deployed function has no `../data` to read.
+So no route may render on demand. Each of the five dynamic routes enumerates
+its paths in `generateStaticParams` and refuses the rest, which makes an
+unknown slug a 404 instead of a function that crashes on a missing file. If a
+route ever needs request-time data, that read has to move inside `web/` (or the
+files have to be traced into the function) before the route is allowed to be
+dynamic.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**The build reads committed JSON, not the FIGARO flatfile.** The 65 MB
+`data/flatfile_eu-ic-io_ind-by-ind_26ed_2024.zip` is an input to
+`sources/build_exposure.py`, which is run by hand; the site reads only the
+`data/exposure/*.json` that script commits. Nothing the site build needs is
+gitignored, and a clean checkout plus `npm ci && npm run build` reproduces the
+deployment.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+There is no `vercel.json`: the framework preset detects Next.js, and install,
+build and output settings are all defaults. Add one only when a setting genuinely
+cannot be expressed in the project itself.
