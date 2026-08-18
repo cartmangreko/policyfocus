@@ -395,6 +395,15 @@ def main() -> int:
             f"Read once on {docket.get('declared_at')}; every classification is unconfirmed."
             if ok else f"{key.upper()} single-pass docket does not match the register file.")
 
+    # SECTOR COVERAGE. --strict fails only on a SUSPECTED GAP: a FIGARO-backed
+    # sector that no business duty reaches. An expected-sectorless slug is a
+    # policy category with no industry behind it and must not fail anything --
+    # that distinction is the whole reason the report has two buckets.
+    print("\nSECTOR COVERAGE")
+    rc, out = run(["sector_coverage.py", "--strict"])
+    tail = [l for l in out.splitlines() if l.startswith(("EXPECTED SECTORLESS", "SUSPECTED GAPS"))]
+    check(rc == 0, f"sector_coverage: no suspected gaps ({'; '.join(tail)})", out[-500:])
+
     print("\n7. THE FINDINGS LAYER RESOLVES AGAINST THE REGISTER")
     rc, out = run(["build_findings.py"])
     check(rc == 0, f"build_findings: {out.strip().splitlines()[0] if out.strip() else ''}",

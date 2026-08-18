@@ -44,14 +44,21 @@ single member state. For a sector with FIGARO code T and view area A:
   origins      those foreign inputs, grouped by refArea, as a percent of
                foreign inputs.
 
-Four exclusions carry the whole result, and each was forced by the numbers:
+Three exclusions carry the result, plus one redundant guard. Each was forced
+by the numbers rather than assumed:
 
 1. NON_INDUSTRY rows (D1 compensation of employees, B2A3G operating surplus,
    the tax rows, the OP_ rows) are value added, not a supplier. Leaving them in
    put D1 second on the chemicals supplier list and moved import dependency
    from 21.9 to 42.7.
-2. refArea W2 is a world aggregate that restates rows already present, so it
-   double-counts. It was 62 % of chemicals' foreign inputs before exclusion.
+2. refArea W2 is where value added is filed, NOT a world aggregate. This was
+   originally recorded here as "a world aggregate that restates rows already
+   present, so it double-counts", which was wrong about the mechanism. Checked
+   against the flatfile on 2026-08-18: W2 carries exactly and only the six
+   NON_INDUSTRY codes, and those codes appear under no other area. The 62 % of
+   chemicals' foreign inputs it accounted for was value added being read as an
+   import, which is correction 1 restated -- so the W2 skip is redundant and
+   --check passes without it. Three corrections do the work here, not four.
 3. FINAL_DEMAND columns (household, government and NPISH consumption, capital
    formation) are excluded from the customers denominator. With them in, every
    customer share was understated by a fifth; without them, all eight
@@ -86,7 +93,9 @@ EU27 = frozenset("AT BE BG HR CY CZ DK EE FI FR DE GR HU IE IT LV LT LU MT NL "
 
 # Value added and the operating-surplus rows: not industries, not suppliers.
 NON_INDUSTRY = frozenset({"B2A3G", "D1", "D21X31", "D29X39", "OP_NRES", "OP_RES"})
-# A world aggregate that restates rows already in the file.
+# Where FIGARO files value added. Not a world aggregate -- see the note in the
+# docstring. Skipping it is redundant with NON_INDUSTRY and kept only as a
+# guard against a future edition filing something else here.
 AGGREGATE_AREA = "W2"
 # Final uses. Excluded from the customers denominator.
 FINAL_DEMAND = frozenset({"P3_S13", "P3_S14", "P3_S15", "P51G", "P5M", "P3"})
@@ -193,6 +202,7 @@ def accumulate(codes):
     """
     codes = set(codes)
     sup = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))
+    final = defaultdict(lambda: defaultdict(float))
     cus = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))
     org = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))
     tot_in = defaultdict(lambda: defaultdict(float))
@@ -200,6 +210,13 @@ def accumulate(codes):
     foreign = defaultdict(lambda: defaultdict(float))
 
     for ref, row, cp, col, val in stream_rows():
+        # refArea W2 is where FIGARO files VALUE ADDED. Checked against the
+        # 2026-edition flatfile: W2 carries exactly and only the six
+        # NON_INDUSTRY codes, and those codes appear under no other area. So
+        # this skip is REDUNDANT -- NON_INDUSTRY already removes everything W2
+        # holds, and --check reproduces all eleven delivered files with this
+        # line deleted. It is kept as a cheap structural guard in case a future
+        # edition files something else under W2, not because it is load-bearing.
         if ref == AGGREGATE_AREA:
             continue
 
@@ -217,12 +234,19 @@ def accumulate(codes):
                     org[col][view][ref] += val
 
         # output: industry `row` in `ref` sold to industry `col`
-        if row in codes and ref in EU27 and col not in FINAL_DEMAND:
-            for view in ("EU", ref):
-                cus[row][view][col] += val
-                tot_out[row][view] += val
+        if row in codes and ref in EU27:
+            if col in FINAL_DEMAND:
+                # Final uses -- households, government, NPISH, capital
+                # formation. Outside the customers denominator by design, and
+                # counted here so the panel can say how much it is leaving out.
+                for view in ("EU", ref):
+                    final[row][view] += val
+            elif col != AGGREGATE_AREA:
+                for view in ("EU", ref):
+                    cus[row][view][col] += val
+                    tot_out[row][view] += val
 
-    return sup, cus, org, tot_in, tot_out, foreign
+    return sup, cus, org, tot_in, tot_out, foreign, final
 
 
 # ---------------------------------------------------------------------------
@@ -256,31 +280,53 @@ def top_rows(totals, denominator, drop):
     return rows
 
 
-def build_view(code, view, sup, cus, org, tot_in, tot_out, foreign):
+def build_view(code, view, sup, cus, org, tot_in, tot_out, foreign, final):
     ti = tot_in[code][view]
     fo = foreign[code][view]
+    inter = tot_out[code][view]
+    fd = final[code][view]
     return {
         "import_dependency_pct": round(100 * fo / ti, 1) if ti else 0.0,
+        # What share of everything this sector sells goes to FINAL use rather
+        # than to another industry. The customers list is intermediate sales
+        # only, so without this a reader of a retail or hotels panel sees the
+        # 20 % of the business that is B2B and none of the 80 % that is not.
+        "final_demand_share_pct": round(100 * fd / (fd + inter), 1) if (fd + inter) else 0.0,
         "suppliers": top_rows(sup[code][view], ti, code),
-        "customers": top_rows(cus[code][view], tot_out[code][view], code),
+        "customers": top_rows(cus[code][view], inter, code),
         "foreign_input_origins": top_rows(org[code][view], fo, None),
     }
 
 
 def build_sector(slug, code, acc):
-    sup, cus, org, tot_in, tot_out, foreign = acc
+    sup, cus, org, tot_in, tot_out, foreign, final = acc
     return {
         "slug": slug,
         "figaro_code": code,
         "figaro_label": label_for(code),
         "shares_basis": SHARES_BASIS,
         "note": SHARED_CODE_NOTE.get(code),
-        "eu": build_view(code, "EU", sup, cus, org, tot_in, tot_out, foreign),
+        "eu": build_view(code, "EU", sup, cus, org, tot_in, tot_out, foreign, final),
         "by_country": {
-            c: build_view(code, c, sup, cus, org, tot_in, tot_out, foreign)
+            c: build_view(code, c, sup, cus, org, tot_in, tot_out, foreign, final)
             for c in sorted(EU27)
         },
     }
+
+
+# Fields this repo added AFTER the eleven files were delivered. --check exists
+# to prove the reconstructed methodology reproduces the delivered numbers, so
+# it compares the delivered surface only; a field invented here would otherwise
+# turn a real proof into a tautology about our own output.
+ADDED_FIELDS = ("final_demand_share_pct",)
+
+
+def strip_added_fields(sector):
+    out = json.loads(json.dumps(sector))
+    for view in [out["eu"], *out["by_country"].values()]:
+        for f in ADDED_FIELDS:
+            view.pop(f, None)
+    return out
 
 
 def path_for(slug):
@@ -318,8 +364,8 @@ def main():
     if args.check:
         bad = []
         for slug in slugs:
-            built = build_sector(slug, SECTOR_CODES[slug], acc)
-            on_disk = json.loads(path_for(slug).read_text(encoding="utf-8"))
+            built = strip_added_fields(build_sector(slug, SECTOR_CODES[slug], acc))
+            on_disk = strip_added_fields(json.loads(path_for(slug).read_text(encoding="utf-8")))
             if built == on_disk:
                 print(f"  MATCH  {slug}")
             else:

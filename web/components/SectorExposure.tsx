@@ -10,6 +10,14 @@ const EU = "EU";
 const EXPOSURE_SOURCE =
   "Eurostat FIGARO 2026 edition, 2024 reference year (EU inter-country input-output tables, industry by industry).";
 
+// Above this share of output going to final use, the customers list is
+// describing a minority of the sector's sales and saying so becomes necessary
+// rather than merely informative. 25% is a judgement, not a statistic: it sits
+// in the wide empty band between paper/chem (~18%) and waste (25.3%), so no
+// sector sits marginally on either side of it. Nine of seventeen sectors are
+// above it, hotels & restaurants highest at 79.6%.
+const FINAL_DEMAND_NOTE_THRESHOLD = 25;
+
 // The remainder row closing the suppliers and customers lists. It is a balance
 // to 100, not an industry link, and is rendered as such.
 const OTHER_CODE = "OTHER";
@@ -99,11 +107,22 @@ export default function SectorExposure({
             heading="What this sector buys"
             rows={view.suppliers}
           />
-          <Block
-            eyebrow="Goods go to"
-            heading="Who buys from this sector"
-            rows={view.customers}
-          />
+          <div className="exp-block">
+            <Block
+              eyebrow="Goods go to"
+              heading="Who buys from this sector"
+              rows={view.customers}
+            />
+            {typeof view.final_demand_share_pct === "number" &&
+              view.final_demand_share_pct >= FINAL_DEMAND_NOTE_THRESHOLD && (
+                <p className="exp-caption">
+                  This list covers sales to other industries only. A further{" "}
+                  {view.final_demand_share_pct}% of what this sector sells goes straight to
+                  final use — households, government and capital formation — and so appears
+                  nowhere above.
+                </p>
+              )}
+          </div>
           <div className="exp-block">
             <p className="eyebrow">Import exposure</p>
             <h3 className="exp-block-head">

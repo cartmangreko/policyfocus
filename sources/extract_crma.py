@@ -794,6 +794,28 @@ def slice_span(text: str, start: str, end: str, rid: str) -> str:
     return text[i:j + len(end)]
 
 
+def drop_reached_duplicates(rows):
+    """A sector is NAMED or REACHED, never both.
+
+    The two lists answer different questions, and a slug in both makes the row
+    assert both at once. It is invisible in the product -- web/lib/data.ts puts
+    a row in `named` if named and only otherwise in `reached`, so the duplicate
+    is discarded at render -- which is exactly why it survived: nothing that
+    looked at a page could have shown it.
+
+    Fixed here rather than by editing the emitted JSON, because the JSON is a
+    build artefact. The rows above compose `named` and `reached` from shared
+    lists (UPSTREAM, CONVERTERS and so on) that legitimately overlap, so the
+    subtraction belongs at the point the two lists meet, not in every row.
+    validate_v2 asserts the invariant independently, so a file that stops using
+    this helper still cannot ship the defect.
+    """
+    for r in rows:
+        named = set(r.get("sectors_named") or [])
+        r["sectors_reached"] = [s for s in (r.get("sectors_reached") or []) if s not in named]
+    return rows
+
+
 def build() -> tuple[list[dict], list[str]]:
     raw = canonical((HERE / ACT).read_text(encoding="utf-8"))
     cut = raw.find(OPERATIVE_ANCHOR)
@@ -849,7 +871,7 @@ def build() -> tuple[list[dict], list[str]]:
     if not errors:
         rows.extend(promoted_rows())
 
-    return rows, errors
+    return drop_reached_duplicates(rows), errors
 
 
 def main() -> int:
