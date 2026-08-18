@@ -21,13 +21,16 @@ import type { Measure, SectorSlug } from "./types";
 //      decision.
 const FINDINGS_DIR = path.join(process.cwd(), "..", "data", "findings");
 
+// Mirrors build_findings.TEMPLATES. Every template names an arithmetic shape;
+// there is deliberately no editorial value — findings are arithmetic-only
+// (sources/scope.md, "A finding states arithmetic"), and the gate fails the
+// build if an editorial template is ever added back.
 export type FindingTemplate =
   | "reach"
   | "indirect_exposure"
   | "support_mismatch"
   | "net_position"
-  | "country_concentration"
-  | "editorial";
+  | "country_concentration";
 
 export type ExposureRelation = "supplier" | "customer" | "import_origin";
 
