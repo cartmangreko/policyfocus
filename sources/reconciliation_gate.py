@@ -53,6 +53,11 @@ So the check on exposure is a join check -- every sector a CBAM row names must
 exist in the exposure manifest, or the row reaches a page that cannot show it.
 Said here because "rebuild the exposure layer" is a reasonable thing to ask for
 and the honest answer is that there is nothing to rebuild.
+
+A seventh check runs once for the whole suite rather than per file: the
+findings layer (build_findings.py) must resolve every published claim against
+the register as it now stands. It is not a per-file check because a finding
+cites rows across files.
 """
 from __future__ import annotations
 
@@ -352,6 +357,17 @@ def main() -> int:
         before = len(failures)
         _, verdict = gate(k)
         verdicts.append((k, verdict, len(failures) == before))
+
+    # THE FINDINGS LAYER. Run once, after the files, rather than inside gate():
+    # a finding cites rows across several register files, so it can only be
+    # checked against the whole register, and running it per key would ask the
+    # same question three times. It is here because a finding is the only thing
+    # on the site that restates the register in its own words -- if a ruling
+    # moved a row out from under a published claim, this is where that shows up.
+    print("\n7. THE FINDINGS LAYER RESOLVES AGAINST THE REGISTER")
+    rc, out = run(["build_findings.py"])
+    check(rc == 0, f"build_findings: {out.strip().splitlines()[0] if out.strip() else ''}",
+          out[-600:])
 
     print()
     if failures:

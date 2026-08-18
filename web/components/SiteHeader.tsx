@@ -4,13 +4,16 @@ import Wordmark from "./Wordmark";
 import { PRIORITIES } from "@/lib/priorities";
 import { ANALYSIS } from "@/lib/analysis";
 
+// The home page leads with findings now, and the register sits behind the
+// doors block, so the nav points at what exists rather than at the anchors the
+// old home page carried.
 const NAV = [
+  { label: "Findings", href: "/findings" },
   { label: "Topics", href: `/priorities/${PRIORITIES[0].slug}` },
-  { label: "Measures", href: "/#signals" },
-  { label: "Sectors", href: "/#sectors" },
-  { label: "Companies", href: "/#sectors" },
+  { label: "Sectors", href: "/#doors" },
+  { label: "Measures", href: "/#doors" },
   { label: "Analysis", href: `/analysis/${ANALYSIS[0].slug}` },
-  { label: "Data", href: "/#stats" },
+  { label: "Coverage", href: "/coverage" },
 ];
 
 export default function SiteHeader() {

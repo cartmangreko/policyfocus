@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import BurdenStrip from "@/components/BurdenStrip";
+import RuleDiff, { ruleDiffHeading } from "@/components/RuleDiff";
 import ValenceTag from "@/components/ValenceTag";
 import {
   CLASS_LABELS,
@@ -13,7 +14,6 @@ import {
   getRelatedMeasures,
   measureHref,
 } from "@/lib/data";
-import { getAfterState, getBeforeState } from "@/lib/ruleDiff";
 import { headlineStep, isStated } from "@/lib/text";
 import { isPositiveValence, valenceLabel } from "@/lib/valence";
 import type { Measure } from "@/lib/types";
@@ -64,8 +64,6 @@ export default async function MeasurePage({
   if (!measure) notFound();
 
   const fileMeta = FILES[measure.file];
-  const after = getAfterState(measure);
-  const before = getBeforeState(measure);
   const positive = isPositiveValence(measure.measure_type, measure.direction);
   const related = getRelatedMeasures(measure);
   const drivers = measure.drivers ?? [];
@@ -74,15 +72,6 @@ export default async function MeasurePage({
   // row, the benefit for an incentive one. It sets the display step, since a
   // statement is often a paragraph rather than a title — see headlineStep.
   const statement = measure.duty ?? measure.benefit ?? "";
-
-  // What the rule pane calls the provision's statement. A right row states an
-  // entitlement and an incentive row a benefit; only an obligation states a duty.
-  const statementLabel =
-    measure.measure_type === "right"
-      ? "Entitlement"
-      : measure.measure_type === "incentive"
-        ? "Benefit"
-        : "Obligation";
 
   // Fields stored as "n/a" are omitted rather than printed — a row that says
   // "Frequency: n/a" tells the reader nothing the missing row doesn't.
@@ -99,8 +88,8 @@ export default async function MeasurePage({
       <section className="detail-head">
         <div className="wrap">
           <div className="crumbs">
-            <Link href="/#signals" className="backlink">
-              ← Back to signals
+            <Link href="/#doors" className="backlink">
+              ← Browse the register
             </Link>
             <span className="crumb">
               Measures / {fileMeta ? fileMeta.name.split(" — ")[0] : measure.file}
@@ -140,39 +129,8 @@ export default async function MeasurePage({
               </>
             )}
 
-            {/* The rule pane's statement label follows the row's side. Calling a
-                right row's statement an "Obligation" contradicts the tag two
-                inches above it, which reads Entitlement. */}
-            <h2 className="rule-head">{before ? "Prior rule vs new rule" : "The rule"}</h2>
-            <div className={`diff ${before ? "" : "diff-single"}`}>
-              {before && (
-                <div className="diff-pane diff-prior">
-                  <div className="diff-label">Prior rule</div>
-                  {isStated(before.trigger) && (
-                    <>
-                      <div className="diff-field">Trigger</div>
-                      <p>{before.trigger}</p>
-                    </>
-                  )}
-                  <div className="diff-field">{statementLabel}</div>
-                  <p>{before.statement}</p>
-                  {before.status === "unresolved" && (
-                    <p className="diff-unresolved">Prior wording not available in the source file.</p>
-                  )}
-                </div>
-              )}
-              <div className="diff-pane diff-new">
-                <div className="diff-label">{before ? "New rule" : "New — no predecessor"}</div>
-                {isStated(after.trigger) && (
-                  <>
-                    <div className="diff-field">Trigger</div>
-                    <p>{after.trigger}</p>
-                  </>
-                )}
-                <div className="diff-field">{statementLabel}</div>
-                <p>{after.statement}</p>
-              </div>
-            </div>
+            <h2 className="rule-head">{ruleDiffHeading(measure)}</h2>
+            <RuleDiff measure={measure} />
 
             <h2 className="rule-head">Who is affected</h2>
             <div className="factgrid">

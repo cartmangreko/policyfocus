@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "id": "ets-reach-beyond-named-sectors",
+  "template": "reach",
+  "headline": "The ETS revision names eight sectors and reaches eleven — aluminium, cement and power are covered without being named once",
+  "body": "Read row by row, the ETS revision names eight of the register's fourteen sectors in its own text: aviation, construction, carbon capture, chemicals, clean tech, shipping, steel and waste. Counting the sectors its provisions actually reach brings the total to eleven. The three that appear only in the reach column — aluminium, cement and power — are never named by any provision in the file.\n\nThey arrive through free allocation. The CBAM factor schedule shrinks free allocation for producers of CBAM-covered goods on a fixed annual path, and does the same automatically for any product category later added to the CBAM goods list. Neither provision lists an industry: it inherits one from the CBAM goods annex, which is where aluminium, cement and power enter.\n\nThe practical consequence is that a search of the ETS text for your sector's name is not a test of whether the ETS revision applies to you.",
+  "sectors": ["alu", "cement", "power"],
+  "files": ["ets"],
+  "basis_status": "proposed",
+  "date": "2026-08-18",
+  "evidence": {
+    "measures": [
+      { "file": "ets", "row_id": "CBAM-01" },
+      { "file": "ets", "row_id": "CBAM-02" },
+      { "file": "ets", "row_id": "MST-02" },
+      { "file": "ets", "row_id": "FND-08" }
+    ],
+    "notes": "The two counts are taken across every row in data/ets.json: eight distinct slugs appear in sectors_named, and eleven distinct slugs appear across sectors_named and sectors_reached together. CBAM-01 and CBAM-02 are the only two rows in the file that carry a reached sector without naming one; MST-02 and FND-08 are shown as the contrast, naming six sectors each."
+  }
+}

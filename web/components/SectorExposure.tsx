@@ -71,7 +71,8 @@ export default function SectorExposure({
   );
 
   return (
-    <section className="band band-ruled">
+    // The findings layer links straight at this panel, so it carries an id.
+    <section className="band band-ruled" id="exposure">
       <div className="wrap">
         <div className="exp-head">
           <div>

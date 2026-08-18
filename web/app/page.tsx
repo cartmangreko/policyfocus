@@ -1,149 +1,126 @@
 import Link from "next/link";
-import DriverChart from "@/components/DriverChart";
-import Ledger from "@/components/Ledger";
-import SearchBar from "@/components/SearchBar";
+import FindingCard from "@/components/FindingCard";
 import SectorGrid from "@/components/SectorGrid";
-import SignalRow from "@/components/SignalRow";
-import StatsStrip from "@/components/StatsStrip";
-import { ANALYSIS } from "@/lib/analysis";
-import { FILES, getRegisterStats, getSignals } from "@/lib/data";
-import { getPriorityCounts } from "@/lib/priorities";
+import Wordmark from "@/components/Wordmark";
+import { FILES } from "@/lib/data";
+import { getRecentlyAdded } from "@/lib/coverage";
+import { BASIS_LABEL } from "@/lib/findings";
+import { getRecentFindings, withEvidence } from "@/lib/findings";
+
+// The home page leads with conclusions. Five blocks, in this order:
+// wordmark, findings, recently added, doors, coverage line. Everything the old
+// home page carried that is not one of those five — the signals feed, the
+// burden ledger, the driver chart, the priorities, the analysis grid — still
+// exists on its own page; it is demoted off the front, not deleted.
+
+// TODO-GEORGE: tagline.
+const TAGLINE = "TODO-GEORGE — one line saying what a reader gets here.";
+
+// TODO-GEORGE: coverage line.
+const COVERAGE_LINE =
+  "TODO-GEORGE — one sentence stating the perimeter: what body of law this covers and what it does not.";
 
 export default function Home() {
-  const stats = getRegisterStats();
-  const signals = getSignals(6);
-  const priorities = getPriorityCounts();
-  const fileNames = Object.values(FILES)
-    .map((f) => f.name.split(" — ")[0])
-    .join(" · ");
+  const findings = withEvidence(getRecentFindings(5));
+  const recent = getRecentlyAdded(4);
 
   return (
     <main className="rise">
-      <section className="hero">
+      <section className="home-head">
         <div className="wrap">
-          <p className="eyebrow">European policy intelligence · Economic impact</p>
-          <h1 className="hero-title">European policy, decoded into economic impact.</h1>
-          <p className="hero-standfirst">
-            PolicyFocus turns complex European policy and regulation into structured intelligence on
-            sectors, companies, markets, investment and strategic priorities.
-          </p>
-          <SearchBar />
+          <div className="home-wordmark">
+            <Wordmark />
+          </div>
+          <p className="home-tagline">{TAGLINE}</p>
         </div>
       </section>
 
-      <section className="band band-tight" id="stats">
-        <div className="wrap">
-          <StatsStrip
-            stats={[
-              { value: String(stats.measures), label: "Measures in the register" },
-              { value: String(stats.sectors), label: "Sectors mapped" },
-              { value: String(stats.classes), label: "Who-is-affected classes" },
-              { value: String(stats.sourceChecked), suffix: "%", label: "Rows source-checked" },
-            ]}
-          />
-        </div>
-      </section>
-
-      <section className="band" id="signals">
+      <section className="band" id="findings">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="eyebrow">Policy signals</p>
-              <h2>What changed, and who now carries it</h2>
+              <p className="eyebrow">Findings</p>
+              <h2>What the tracked measures mean</h2>
             </div>
-            <Link href="#sectors" className="section-link">
-              Open the full register →
+            <Link href="/findings" className="section-link">
+              All findings →
             </Link>
           </div>
-          <p className="section-note">
-            Each item is a single measure, extracted from the source file and marked added or
-            removed, with its seven-point burden strip. Every row traces to verbatim text.
-          </p>
-          <div className="signals">
-            {signals.map((m, i) => (
-              <SignalRow
-                key={`${m.file}-${m.id}`}
-                measure={m}
-                last={i === signals.length - 1}
-              />
-            ))}
-          </div>
+          {findings.length === 0 ? (
+            <p className="section-note">No findings published yet.</p>
+          ) : (
+            <div className="finding-grid">
+              {findings.map((f) => (
+                <FindingCard key={f.id} finding={f} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="band band-paper" id="burden">
+      <section className="band band-paper" id="recent">
         <div className="wrap">
-          <p className="eyebrow">Who carries the burden</p>
-          <h2>Duties added and removed, by who has to carry them</h2>
-          <p className="section-note section-note-wide">
-            A centred axis: relief runs left, new burden runs right. Read across the classes to see
-            where a simplification package actually lands — and which duties it moves onto
-            governments and the Commission rather than removing.
-          </p>
-          <div className="burden-grid">
-            <Ledger caption={fileNames} />
-            <DriverChart />
-          </div>
-        </div>
-      </section>
-
-      <section className="band" id="sectors">
-        <div className="wrap">
-          <p className="eyebrow">Explore by sector</p>
-          <h2>Which industries the corpus touches</h2>
-          <p className="section-note">
-            Measures that name a sector, and those that reach it through its supply chain,
-            procurement or regulatory dependencies. Counts across the tracked corpus.
-          </p>
-          <SectorGrid />
-        </div>
-      </section>
-
-      <section className="band band-ruled" id="priorities">
-        <div className="wrap">
-          <p className="eyebrow">Strategic priorities</p>
-          <h2>What the agenda is advancing</h2>
-          <p className="section-note">
-            Four lenses over the same register. Each count is the number of measures matching that
-            lens, computed at build time.
-          </p>
-          <div className="priorities">
-            {priorities.map((p) => (
-              <Link key={p.slug} href={`/priorities/${p.slug}`} className="priority">
-                <div>
-                  <div className="priority-title">{p.title}</div>
-                  <div className="priority-desc">{p.description}</div>
-                </div>
-                <div className="priority-count">{p.count} measures</div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="band band-ruled" id="analysis">
-        <div className="wrap">
-          <div className="section-head section-head-spaced">
+          <div className="section-head">
             <div>
-              <p className="eyebrow">Analysis</p>
-              <h2>Reading the change</h2>
+              <p className="eyebrow">Recently added</p>
+              <h2>What the register last took in</h2>
             </div>
-            <Link href={`/analysis/${ANALYSIS[0].slug}`} className="section-link">
-              All analysis →
+            <Link href="/coverage" className="section-link">
+              Full coverage →
             </Link>
           </div>
-          <div className="hairline-grid analysis-grid">
-            {ANALYSIS.map((a) => (
-              <Link key={a.slug} href={`/analysis/${a.slug}`} className="analysis-card">
-                <div className="analysis-kicker">{a.kicker}</div>
-                <h3 className="analysis-title">{a.title}</h3>
-                <p className="analysis-dek">{a.dek}</p>
-                <div className="analysis-meta">
-                  {a.readingTime} · {a.date}
-                </div>
-              </Link>
+          {/* Derived from sources/manifest.json and the .fetch.json sidecars.
+              This is when the DOCUMENT was fetched, not when anything in it
+              changed — said plainly, because the two get confused. */}
+          <ul className="recent-list">
+            {recent.map((f) => (
+              <li key={f.slug} className="recent-item">
+                <span className="recent-name">{f.title}</span>
+                <span className="recent-meta">
+                  {f.basis ? BASIS_LABEL[f.basis] : "—"} · {f.measures} measures · fetched{" "}
+                  {f.lastUpdated}
+                </span>
+              </li>
             ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="band band-ruled" id="doors">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Evidence</p>
+              <h2>Browse the register</h2>
+            </div>
           </div>
+          <div className="doors">
+            <div className="doors-col">
+              <div className="doors-label">By legislation</div>
+              <div className="chips">
+                {Object.entries(FILES).map(([slug, meta]) => (
+                  <Link key={slug} href={`/coverage#${slug}`} className="chip">
+                    {meta.name.split(" — ")[0]}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div className="doors-col">
+              <div className="doors-label">By sector</div>
+              <SectorGrid />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="band band-tight" id="coverage">
+        <div className="wrap">
+          <p className="coverage-line">
+            {COVERAGE_LINE}{" "}
+            <Link href="/coverage" className="section-link">
+              What is covered →
+            </Link>
+          </p>
         </div>
       </section>
     </main>

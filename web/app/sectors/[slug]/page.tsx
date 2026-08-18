@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import FindingCard from "@/components/FindingCard";
+import NetPositionStrip from "@/components/NetPositionStrip";
 import SectorExposure from "@/components/SectorExposure";
 import SignalRow from "@/components/SignalRow";
 import StatsStrip from "@/components/StatsStrip";
@@ -12,8 +14,9 @@ import {
   getSectorStats,
 } from "@/lib/data";
 import { getExposure } from "@/lib/exposure";
+import { getFindingsForSector, withEvidence } from "@/lib/findings";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
-import type { Measure, SectorSlug } from "@/lib/types";
+import type { SectorSlug } from "@/lib/types";
 
 export function generateStaticParams() {
   return getSectorSlugs().map((slug) => ({ slug }));
@@ -34,25 +37,6 @@ export async function generateMetadata({
   };
 }
 
-// Pressure and support are read off the sector's own measures: pressure is the
-// share of duties that add, support the share that remove or grant. Both are
-// bounded 0-100 by construction, so the meters are honest, not decorative.
-function meters(named: Measure[], reached: Measure[]) {
-  const all = [...named, ...reached];
-  if (!all.length) return { pressure: 0, support: 0 };
-  const added = all.filter((m) => m.direction === "add").length;
-  return {
-    pressure: Math.round((added / all.length) * 100),
-    support: Math.round(((all.length - added) / all.length) * 100),
-  };
-}
-
-function band(pct: number): string {
-  if (pct >= 70) return "Elevated";
-  if (pct >= 40) return "Moderate";
-  return "Low";
-}
-
 export default async function SectorPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   if (!(slug in SECTORS)) notFound();
@@ -61,10 +45,10 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
   const name = SECTORS[sectorSlug];
   const { named, reached } = getMeasuresForSector(sectorSlug);
   const stats = getSectorStats(sectorSlug);
-  const { pressure, support } = meters(named, reached);
   const relatedSectors = getRelatedSectors(sectorSlug);
   // Null for sectors outside the FIGARO mapping — the panel is then omitted.
   const exposure = getExposure(sectorSlug);
+  const findings = withEvidence(getFindingsForSector(sectorSlug));
 
   // Channel mix for the reached-without-naming cohort.
   const channels = new Map<string, number>();
@@ -100,34 +84,39 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
         </div>
       </section>
 
-      <section className="detail-body">
-        <div className="wrap meter-grid">
-          <div className="card">
-            <div className="meter-head">
-              <span className="card-label">Regulatory pressure</span>
-              <span className="meter-value is-neg">{band(pressure)}</span>
+      {findings.length > 0 && (
+        <section className="band" id="findings">
+          <div className="wrap">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Findings</p>
+                <h2>What this means for {name.toLowerCase()}</h2>
+              </div>
+              <Link href="/findings" className="section-link">
+                All findings →
+              </Link>
             </div>
-            <div className="meter-track">
-              <div className="meter-fill meter-fill-neg" style={{ width: `${pressure}%` }} />
+            <div className="finding-grid">
+              {findings.map((f) => (
+                <FindingCard key={f.id} finding={f} />
+              ))}
             </div>
-            <p className="card-note">
-              {pressure}% of the measures reaching this sector add or widen a duty.
-            </p>
           </div>
-          <div className="card">
-            <div className="meter-head">
-              <span className="card-label">Policy support</span>
-              <span className="meter-value is-pos">{band(support)}</span>
-            </div>
-            <div className="meter-track">
-              <div className="meter-fill meter-fill-pos" style={{ width: `${support}%` }} />
-            </div>
-            <p className="card-note">
-              {support}% remove, narrow or waive a duty, or grant a benefit.
-            </p>
-          </div>
+        </section>
+      )}
+
+      <section className="band band-tight" id="net-position">
+        <div className="wrap">
+          <p className="eyebrow">Net position</p>
+          <h2>What the corpus does to this sector, in total</h2>
+          {/* Computed from the register at build time: no stored totals, and
+              the pressure/support meters this replaces are gone rather than
+              kept alongside — two numbers for one fact is one too many. */}
+          <NetPositionStrip slug={sectorSlug} />
         </div>
       </section>
+
+      {exposure && <SectorExposure exposure={exposure} sectorName={name} />}
 
       <section className="band band-ruled">
         <div className="wrap">
@@ -170,8 +159,6 @@ export default async function SectorPage({ params }: { params: Promise<{ slug: s
           )}
         </div>
       </section>
-
-      {exposure && <SectorExposure exposure={exposure} sectorName={name} />}
 
       {relatedSectors.length > 0 && (
         <section className="band band-ruled">

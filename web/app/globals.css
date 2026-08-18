@@ -1558,6 +1558,407 @@ a.minibar-name:hover {
   margin: 28px 0 0;
 }
 
+/* ---------- findings ---------- */
+
+/* The findings layer leads the site, so its type is the largest thing below a
+   page title, and its evidence strip is set in mono at the same size the
+   register uses for provenance elsewhere. A headline never appears without
+   the strip — the two are one block, not a title with an optional subtitle. */
+
+.home-head {
+  padding: 56px 0 28px;
+}
+.home-wordmark {
+  transform: scale(1.35);
+  transform-origin: left center;
+  width: fit-content;
+}
+.home-tagline {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2.2vw, 1.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  color: var(--ink-70);
+  max-width: 44ch;
+  margin: 30px 0 0;
+}
+
+.finding-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  margin-top: 22px;
+}
+.finding-card {
+  background: #fff;
+  padding: 22px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background var(--dur) var(--ease);
+}
+.finding-card:hover {
+  background: var(--card-hover);
+}
+.finding-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+}
+.finding-basis {
+  border: 1px solid var(--ochre);
+  color: var(--ochre);
+  border-radius: 3px;
+  padding: 1px 7px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+.finding-headline {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.32rem;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  margin: 0;
+}
+.finding-headline.is-long {
+  font-size: 1.12rem;
+}
+.finding-headline.is-xlong {
+  font-size: 1rem;
+  line-height: 1.28;
+}
+.finding-evidence {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-55);
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 10px;
+}
+.finding-sectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+.finding-sector {
+  font-size: 11.5px;
+  color: var(--ink-55);
+  border: 1px solid var(--rule-soft);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+.finding-sectors-lg {
+  margin-top: 18px;
+}
+.finding-sectors-lg .finding-sector {
+  font-size: 12.5px;
+  padding: 4px 10px;
+}
+.finding-sectors-lg .finding-sector:hover {
+  border-color: var(--ink-40);
+}
+
+/* The proposed-basis banner. Ochre, the register's own "not settled" colour,
+   and above the body: a caveat printed under the claim is read after the
+   claim has been believed. */
+.basis-banner {
+  border-left: 3px solid var(--ochre);
+  background: var(--paper);
+  padding: 12px 16px;
+  margin: 22px 0 0;
+  font-size: 13px;
+  color: var(--ink-70);
+  max-width: 78ch;
+}
+.basis-banner-review {
+  border-left-color: var(--claret);
+}
+
+.finding-body {
+  max-width: 72ch;
+}
+.finding-body .prose + .prose {
+  margin-top: 16px;
+}
+
+/* ---------- finding evidence ---------- */
+
+.evidence-list {
+  margin-top: 24px;
+  border-top: 1px solid var(--rule-soft);
+}
+.evidence-measure {
+  padding: 24px 0 28px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.evidence-measure-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.evidence-measure-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+.evidence-measure-link:hover {
+  color: var(--claret);
+}
+.evidence-statement {
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 14px 0 0;
+  max-width: 78ch;
+}
+.evidence-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+  margin-top: 10px;
+}
+.evidence-measure .diff,
+.evidence-measure .source {
+  margin-top: 18px;
+}
+.evidence-exposure {
+  margin-top: 30px;
+}
+.evidence-exposure-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.evidence-exposure-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 14px;
+  color: var(--ink-70);
+  max-width: 78ch;
+}
+.evidence-notes {
+  font-size: 12.5px;
+  color: var(--ink-40);
+  line-height: 1.6;
+  max-width: 82ch;
+  margin: 26px 0 0;
+}
+
+/* ---------- net position strip ---------- */
+
+/* Numbers and hairlines. The valence accent is the only colour, and it is the
+   same accent the register uses for the same word. */
+.netpos {
+  margin-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+.netpos-total {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.netpos-total-value {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+}
+.netpos-total-label {
+  font-size: 13px;
+  color: var(--ink-55);
+}
+.netpos-rows {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+}
+.netpos-row {
+  background: #fff;
+  padding: 16px 16px 18px;
+  border-top: 2px solid var(--rule);
+}
+.netpos-row.is-pos {
+  border-top-color: var(--pine);
+}
+.netpos-row.is-neg {
+  border-top-color: var(--claret);
+}
+.netpos-valence {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+.netpos-count {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.9rem;
+  line-height: 1.1;
+  margin-top: 6px;
+}
+.netpos-split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+  margin-top: 8px;
+}
+.netpos-intensity {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-40);
+  margin-top: 6px;
+}
+
+/* ---------- home: recently added, doors, coverage line ---------- */
+
+.recent-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.recent-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.recent-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+.recent-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+}
+
+.doors {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) 2fr;
+  gap: 32px;
+  margin-top: 20px;
+  align-items: start;
+}
+.doors-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  margin-bottom: 4px;
+}
+.doors-col .chips {
+  margin-top: 12px;
+}
+
+.coverage-line {
+  font-size: 13.5px;
+  color: var(--ink-55);
+  max-width: 92ch;
+  margin: 0;
+}
+
+/* ---------- coverage page ---------- */
+
+.coverage-table {
+  margin-top: 22px;
+  border-top: 1px solid var(--rule);
+}
+.coverage-row {
+  display: grid;
+  grid-template-columns: 2fr 1.4fr 0.8fr 0.6fr 1.4fr 0.8fr;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 13px;
+  align-items: baseline;
+  scroll-margin-top: 90px;
+}
+.coverage-head {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  padding: 10px 0;
+}
+.coverage-file {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.coverage-file-name {
+  font-weight: 500;
+}
+.coverage-file-code,
+.coverage-celex {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.coverage-muted {
+  color: var(--ink-25);
+}
+.coverage-num {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+.coverage-reads {
+  color: var(--ink-70);
+}
+
+.queued-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.queued-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.queued-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+.queued-celex,
+.queued-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 1000px) {
@@ -1641,6 +2042,19 @@ a.minibar-name:hover {
     padding: 0 14px;
   }
   .header-search span:not(.header-search-glyph) {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .doors {
+    grid-template-columns: 1fr;
+  }
+  .coverage-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+  }
+  .coverage-head {
     display: none;
   }
 }

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "python3 ../sources/build_findings.py",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
