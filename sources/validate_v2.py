@@ -15,7 +15,7 @@ import json
 import sys
 from collections import Counter, defaultdict
 
-from benefit_axis import BENEFIT_SIDE_TYPES, MEASURE_TYPES
+from benefit_axis import BENEFIT_SIDE_TYPES, DIRECTIONS, DUTY_SIDE_TYPES, MEASURE_TYPES
 
 DATA_FILES = [
     ("omnibus", "../data/omnibus.json"),
@@ -45,21 +45,27 @@ def validate(key, rows):
         if r.get("measure_type") not in MEASURE_TYPES:
             fail.append((rid, f"missing/invalid measure_type: {r.get('measure_type')!r}"))
             continue
-        if r.get("direction") not in ("add", "rem"):
-            fail.append((rid, f"direction not add/rem, valence not computable: {r.get('direction')!r}"))
+        if r.get("direction") not in DIRECTIONS:
+            fail.append((rid, f"direction not one of {DIRECTIONS}, valence not computable: {r.get('direction')!r}"))
+        # `unchanged` is a claim about the prior law, so it needs one. The
+        # verbatim half is checked by benefit_axis.assert_unchanged_prior
+        # against the prior corpus; here we only insist the field is present,
+        # because this validator has no corpus to check against.
+        if r.get("direction") == "unchanged" and not isinstance(r.get("prior_rule"), dict):
+            fail.append((rid, "direction 'unchanged' asserts nothing moved but carries no prior_rule"))
 
         mt = r["measure_type"]
 
-        if mt == "obligation":
+        if mt in DUTY_SIDE_TYPES:
             if not r.get("duty"):
-                fail.append((rid, "obligation row missing duty"))
+                fail.append((rid, f"{mt} row missing duty"))
             # THE INVARIANT, unrelaxed. A row reclassified off the benefit side
             # sheds these fields; `reclass_from` records that it did. The
             # provenance key is metadata about a past classification, not a live
             # claim, so it is permitted here -- the fields themselves are not.
             crossed = [f for f in BENEFIT_SIDE_FIELDS if r.get(f)]
             if crossed:
-                fail.append((rid, f"obligation row has benefit-side fields set: {crossed}"))
+                fail.append((rid, f"{mt} row has benefit-side fields set: {crossed}"))
 
         else:  # incentive | right -- the benefit side
             if not r.get("benefit"):

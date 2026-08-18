@@ -13678,6 +13678,39 @@
  },
  {
   "rel": "applies_to",
+  "from": "measure:ppwr:BAG-02",
+  "to": "sector:chem/plastics",
+  "since": "2025",
+  "evidence": {
+   "source": "data/ppwr.json",
+   "path": "[id=BAG-02].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:ppwr:BAG-02",
+  "to": "sector:retail",
+  "since": "2025",
+  "evidence": {
+   "source": "data/ppwr.json",
+   "path": "[id=BAG-02].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:ppwr:BAG-02",
+  "to": "sector:waste",
+  "since": "2025",
+  "evidence": {
+   "source": "data/ppwr.json",
+   "path": "[id=BAG-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
   "from": "measure:ppwr:BAN-01",
   "to": "sector:chem/plastics",
   "since": "2025",
@@ -24547,6 +24580,16 @@
   "evidence": {
    "source": "data/ppwr.json",
    "path": "[id=BAG-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32025R0040",
+  "to": "measure:ppwr:BAG-02",
+  "since": "2025",
+  "evidence": {
+   "source": "data/ppwr.json",
+   "path": "[id=BAG-02]"
   }
  },
  {

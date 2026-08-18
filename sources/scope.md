@@ -199,3 +199,42 @@ A fifth correction was a genuine tie rather than a methodology error: Malta
 buys exactly 0.546 of basic metals from each of `GB` and `ES`, so the sort
 breaks ties on value descending, then code **ascending**. A tiebreak is not
 cosmetic when it silently reorders a published row.
+
+
+### The valence matrix says what the act does, or it says Neutral
+
+Valence is derived from `(measure_type, direction)` and never stored. Two
+values were added because the matrix could not express what PPWR contains.
+
+**`direction: "unchanged"` derives Neutral.** It is not a third movement, it is
+the explicit assertion that there is NO movement. Before it existed, a rule
+carried over verbatim from a repealed act had to be filed as `add` and rendered
+"Requirement" however plainly its `prior_rule` said the level was identical —
+which is the precise misreading the delta model exists to prevent. PPWR's
+Art. 52 recycling targets are the case that forced it: every figure is
+identical to 94/62/EC Art. 6(1)(f)–(i) as amended, and the site was calling
+them a new requirement.
+
+`unchanged` is admissible **only** on a duty-side row carrying a RESOLVED
+`prior_rule`. "Nothing changed" is a claim about the prior law, and a row that
+cannot quote the prior law is not entitled to make it — it is entitled to say
+`add` and be read as a requirement, which is the honest default when the
+before-state is unknown. `benefit_axis.assert_unchanged_prior` enforces this,
+in the same shape as the deletion guardrail and for the same reason.
+
+**`prohibition` is a first-class measure_type**, duty-side alongside
+`obligation`, rendering "Prohibition" / "Prohibition lifted". "Do not place
+this on the market" and "keep this below 100 mg/kg" are different instruments:
+one closes a route, the other conditions it. Collapsing them made four PPWR
+bans — the PFAS limit, the Annex V formats, false bottoms, misleading labels —
+read as ordinary requirements.
+
+Both label pairs are scoped to a single type, on the rule that sank the earlier
+Cost/Saving pair: **no label may mean two different movements depending on the
+type it lands on.**
+
+`check_valence_parity.py` walks the full cross product through both the Python
+and the TypeScript implementation — 42 combinations including the nonsensical
+ones — and fails the build on any disagreement. A row whose classification
+moves after first publication keeps its id and records the move in
+`reclass_from`; ids are permanent, so that field is the only trace.

@@ -188,7 +188,7 @@
     "trigger": "packaging or a packaging component placed on the market",
     "frequency": "continuous",
     "verification": "technical documentation (Annex VII)",
-    "direction": "add",
+    "direction": "unchanged",
     "article": "Art. 5(4)",
     "when": "From 12 August 2026 (Art. 71)",
     "source_text": "the sum of the concentrations of lead, cadmium, mercury and hexavalent chromium resulting from substances present in packaging or packaging components shall not exceed 100 mg/kg.",
@@ -234,7 +234,10 @@
       "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
     },
     "benefit_axis_note": "Carried as a row rather than omitted because the duty is live under this act and an operator has to comply with it; the delta model is what says it is not new.",
-    "q": "carry-over-renders-as-requirement"
+    "reclass_from": {
+      "direction": "add",
+      "note": "Filed as 'add' in the single-pass extraction because the direction enum had only add|rem, so a restated rule had to be recorded as an addition and rendered Requirement. `unchanged` now exists and this row takes it: 100 ppm and 100 mg/kg are the same concentration and the limit has bound since 2001."
+    }
   },
   {
     "id": "SUB-03",
@@ -289,7 +292,7 @@
   },
   {
     "id": "SUB-04",
-    "measure_type": "obligation",
+    "measure_type": "prohibition",
     "duty": "Do not place food-contact packaging on the market at or above 25 ppb for any single PFAS, 250 ppb for the sum of targeted PFAS, or 50 ppm for total PFAS including polymeric.",
     "addressee": "Manufacturers and importers of food-contact packaging",
     "class": "business",
@@ -333,8 +336,11 @@
     "size_scope_note": "No size threshold.",
     "prior_rule": null,
     "pending": "Art. 5(5) applies only 'to the extent that the placing on the market of packaging containing such a concentration of PFAS is not prohibited pursuant to another Union legal act', and Art. 5(5) final subparagraph has the Commission evaluate by 12 August 2030 whether to amend or repeal the paragraph to avoid overlap with REACH, 1935/2004 and the POPs Regulation.",
-    "benefit_axis_note": "A prohibition on the object rule -- the provision acts on the placing on the market of a defined product. Encoded as obligation/add because the live enum has no prohibition type; see q.",
-    "q": "prohibition-type-pending"
+    "benefit_axis_note": "A prohibition on the object rule: the provision acts on the placing on the market of a defined product, closing the route rather than conditioning it.",
+    "reclass_from": {
+      "measure_type": "obligation",
+      "note": "Art. 5(5) forbids placing food-contact packaging containing PFAS above the limit values on the market. Recorded as obligation/add in the single-pass extraction only because the enum had no prohibition value."
+    }
   },
   {
     "id": "SUB-05",
@@ -872,7 +878,7 @@
   },
   {
     "id": "MIN-02",
-    "measure_type": "obligation",
+    "measure_type": "prohibition",
     "duty": "Do not place on the market packaging failing the Annex IV performance criteria, or packaging whose features exist only to increase perceived product volume -- double walls, false bottoms, unnecessary layers.",
     "addressee": "Manufacturers and importers of packaging",
     "class": "business",
@@ -913,8 +919,11 @@
       "D": "in"
     },
     "size_scope_note": "No size threshold.",
-    "benefit_axis_note": "A prohibition on the object rule. Encoded as obligation/add because the live enum has no prohibition type; see q.",
-    "q": "prohibition-type-pending"
+    "benefit_axis_note": "A prohibition on the object rule: it closes a route rather than conditioning it.",
+    "reclass_from": {
+      "measure_type": "obligation",
+      "note": "Art. 10(2) forbids placing volume-inflating packaging on the market. Recorded as obligation/add in the single-pass extraction only because the enum had no prohibition value."
+    }
   },
   {
     "id": "REU-01",
@@ -1067,7 +1076,7 @@
   },
   {
     "id": "LAB-03",
-    "measure_type": "obligation",
+    "measure_type": "prohibition",
     "duty": "Do not display labels, marks, symbols or inscriptions likely to mislead or confuse consumers about packaging sustainability, other packaging characteristics, or waste-management options where this Regulation has harmonised the labelling.",
     "addressee": "Economic operators",
     "class": "business",
@@ -1106,8 +1115,11 @@
       "D": "in"
     },
     "size_scope_note": "No size threshold.",
-    "benefit_axis_note": "A prohibition on the object rule. Encoded as obligation/add because the live enum has no prohibition type; see q.",
-    "q": "prohibition-type-pending"
+    "benefit_axis_note": "A prohibition on the object rule: it closes a route rather than conditioning it.",
+    "reclass_from": {
+      "measure_type": "obligation",
+      "note": "Art. 12(8) forbids displaying misleading sustainability labels. Recorded as obligation/add in the single-pass extraction only because the enum had no prohibition value."
+    }
   },
   {
     "id": "LAB-04",
@@ -1694,7 +1706,7 @@
   },
   {
     "id": "BAN-01",
-    "measure_type": "obligation",
+    "measure_type": "prohibition",
     "duty": "Do not place on the market any packaging in the formats and for the uses listed in Annex V -- single-use grouped packaging for multipacks, single-use packaging for unprocessed fresh fruit and vegetables, single-use packaging for food and drink consumed on premises in the HORECA sector, single-use condiment and sauce sachets, hotel miniature toiletries, and very light plastic carrier bags outside hygiene or loose-food use.",
     "addressee": "Economic operators placing packaging on the market",
     "class": "business",
@@ -1734,8 +1746,11 @@
     },
     "size_scope_note": "No size band is removed, but Art. 25(4) lets Member States allow MICRO-ENTERPRISES as defined in Recommendation 2003/361/EC to keep using the Annex V point 3 formats where it is demonstrably not technically feasible to avoid them or to reach re-use infrastructure. An eligibility carve-out on this duty, not a separate benefit.",
     "prior_rule": null,
-    "benefit_axis_note": "A prohibition on the object rule -- the provision acts on the placing on the market of named formats. Encoded as obligation/add because the live enum has no prohibition type; see q.",
-    "q": "prohibition-type-pending"
+    "benefit_axis_note": "A prohibition on the object rule: the provision acts on the placing on the market of named formats, closing the route rather than conditioning it.",
+    "reclass_from": {
+      "measure_type": "obligation",
+      "note": "Art. 25(1) forbids placing the Annex V formats on the market. Recorded as obligation/add in the single-pass extraction only because the enum had no prohibition value."
+    }
   },
   {
     "id": "RSY-01",
@@ -2484,15 +2499,15 @@
   {
     "id": "BAG-01",
     "measure_type": "obligation",
-    "duty": "Keep annual consumption of lightweight plastic carrier bags at or below 40 per capita, by 31 December 2025 and in every year thereafter.",
+    "duty": "Meet the 40-bags-per-capita ceiling in EVERY year after 2025, not only in 2025, and lose the alternative route of discharging the duty by ensuring bags are not supplied free of charge.",
     "addressee": "Member States",
     "class": "state",
-    "trigger": "annual national consumption of lightweight plastic carrier bags",
+    "trigger": "annual national consumption of lightweight plastic carrier bags, in each year after 2025",
     "frequency": "annual",
     "verification": "reporting to the Commission under Art. 56(1)(b)",
     "direction": "add",
-    "article": "Art. 34(1)",
-    "when": "By 31 December 2025 and each year thereafter (Art. 34(1))",
+    "article": "Art. 34(1), second subparagraph",
+    "when": "Each year from 31 December 2026 (Art. 34(1))",
     "source_text": "A sustained reduction is considered to be achieved if the annual consumption does not exceed 40 lightweight plastic carrier bags per capita, or the equivalent target in weight, by 31 December 2025 and subsequently by 31 December each year thereafter.",
     "drivers": [
       "D5"
@@ -2504,13 +2519,13 @@
       "chem/plastics",
       "retail"
     ],
-    "provision_id": null,
+    "provision_id": "ppwr-art34-carrier-bags",
     "file": "ppwr",
     "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
     "value_drivers": [],
     "access_frictions": [],
     "nature": "extension",
-    "affected_delta": "THE NUMBER DOES NOT MOVE -- 40 per capita is 94/62/EC Art. 4(1a)(a) unchanged. THE LIVE DELTA IS RECURRENCE: the directive set 2025 as an endpoint, and this makes 40 a standing annual ceiling with no terminal date. That is the one genuine change in the carry-over cluster.",
+    "affected_delta": "This row is the DELTA only. The directive set 2025 as an endpoint; PPWR makes 40 a standing annual ceiling with no terminal date, and drops the alternative compliance route in Art. 4(1a)(b) under which a Member State could instead ensure bags were not supplied free of charge. Both are real new burdens on the Member State, so this row is `add` and renders Requirement. The 40 itself is BAG-02 and is unchanged.",
     "weight": "Burden",
     "size_scope": {
       "A": "na",
@@ -2530,8 +2545,57 @@
       "status": "sourced",
       "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
     },
-    "benefit_axis_note": "Also dropped: the directive's alternative compliance route in Art. 4(1a)(b), under which a Member State could instead ensure bags were not provided free of charge at the point of sale. PPWR keeps only the consumption ceiling, so the pricing route is no longer a way to discharge the duty.",
-    "q": "carry-over-renders-as-requirement"
+    "benefit_axis_note": "Split from BAG-02 on the multi-perspective rule. Art. 34(1) states one sentence that does two things, and a single row would have to lie about one of them."
+  },
+  {
+    "id": "BAG-02",
+    "measure_type": "obligation",
+    "duty": "Keep annual consumption of lightweight plastic carrier bags at or below 40 per capita -- the level itself, unchanged from the repealed directive.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "annual national consumption of lightweight plastic carrier bags",
+    "frequency": "annual",
+    "verification": "reporting to the Commission under Art. 56(1)(b)",
+    "direction": "unchanged",
+    "article": "Art. 34(1), first subparagraph",
+    "when": "By 31 December 2025 (Art. 34(1))",
+    "source_text": "Member States shall take measures to achieve a sustained reduction in the consumption of lightweight plastic carrier bags on their territory.",
+    "drivers": [
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "retail"
+    ],
+    "provision_id": "ppwr-art34-carrier-bags",
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "carry_over",
+    "affected_delta": "THE NUMBER DOES NOT MOVE. 40 per capita is 94/62/EC Art. 4(1a)(a) unchanged, and has bound since 2015. This row exists so the level can be recorded as carried over while BAG-01 records what actually changed around it.",
+    "weight": "Neutral",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size.",
+    "new_rule": {
+      "trigger": "annual national consumption of lightweight plastic carrier bags",
+      "obligation": "Annual consumption not to exceed 40 lightweight plastic carrier bags per capita, or the equivalent target in weight."
+    },
+    "prior_rule": {
+      "trigger": "annual national consumption of lightweight plastic carrier bags",
+      "obligation": "Measures ensuring the annual consumption level does not exceed 40 lightweight plastic carrier bags per person by 31 December 2025, or an equivalent target set in weight.",
+      "source_text": "the adoption of measures ensuring that the annual consumption level does not exceed 90 lightweight plastic carrier bags per person by 31 December 2019 and 40 lightweight plastic carrier bags per person by 31 December 2025, or equivalent targets set in weight.",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    }
   },
   {
     "id": "CNF-01",
@@ -3579,7 +3643,7 @@
     "trigger": "packaging waste generated on the national territory",
     "frequency": "continuous, measured at 2025 and 2030",
     "verification": "reporting to the Commission under Art. 56(1)(a)",
-    "direction": "add",
+    "direction": "unchanged",
     "article": "Art. 52(1)",
     "when": "31 December 2025 and 31 December 2030 (Art. 52(1))",
     "source_text": "Member States shall take the necessary measures to achieve the following recycling targets covering the whole of their territory: (a) by 31 December 2025, a minimum of 65 % by weight of all packaging waste generated; (b) by 31 December 2025, the following minimum percentages by weight of the following specific materials contained in packaging waste generated: (i) 50 % of plastic; (ii) 25 % of wood; (iii) 70 % of ferrous metals; (iv) 50 % of aluminium; (v) 70 % of glass; (vi) 75 % of paper and cardboard; (c) by 31 December 2030, a minimum of 70 % by weight of all packaging waste generated; (d) by 31 December 2030, the following minimum percentages by weight of the following specific materials contained in packaging waste generated: (i) 55 % of plastic; (ii) 30 % of wood; (iii) 80 % of ferrous metals; (iv) 60 % of aluminium; (v) 75 % of glass; (vi) 85 % of paper and cardboard.",
@@ -3625,7 +3689,10 @@
       "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
     },
     "benefit_axis_note": "Carried as a row because the duty is live under this act and Member States comply with it under this act, not under a repealed directive. The delta model is what prevents it reading as a new burden. See the file docstring on why it cannot be RENDERED neutral.",
-    "q": "carry-over-renders-as-requirement"
+    "reclass_from": {
+      "direction": "add",
+      "note": "Filed as 'add' in the single-pass extraction because the direction enum had only add|rem, which forced the register's most-quoted carry-over to render Requirement. Every figure is identical to 94/62/EC Art. 6(1)(f)-(i) as amended, so the row now takes `unchanged` and renders Neutral."
+    }
   },
   {
     "id": "RCT-02",

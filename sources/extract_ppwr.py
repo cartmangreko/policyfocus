@@ -76,8 +76,8 @@ Four candidates were REJECTED at the gate and carry no benefit row:
   * Art. 31(7) re-use observatory and Art. 48(2) priority access. Institutional
     and permissive; no basis object to quote.
 
-THE CARRY-OVERS, AND WHAT THE ENUM CANNOT SAY
-=============================================
+THE CARRY-OVERS
+===============
 Three of this act's headline numbers are NOT new. Checked line by line against
 sources/ppwr_prior_01994L0062-20180704.txt:
 
@@ -86,33 +86,31 @@ sources/ppwr_prior_01994L0062-20180704.txt:
     and every material line -- plastic 50/55, wood 25/30, ferrous 70/80,
     aluminium 50/60, glass 70/75, paper and board 75/85.
   * Art. 5(4)'s 100 mg/kg heavy-metals limit is 94/62/EC Art. 11(1), third
-    indent, restated.
-  * Art. 34's 40 bags per capita is 94/62/EC Art. 4(1a)(a). The live delta is
-    the added recurrence -- "and subsequently by 31 December each year
-    thereafter" -- which turns a one-off 2025 target into a standing one, and
-    that is its own row.
+    indent, restated. 100 ppm and 100 mg/kg are the same concentration.
+  * Art. 34's 40 bags per capita is 94/62/EC Art. 4(1a)(a).
 
-Each carries a resolved prior_rule quoted from the directive, a new_rule, and
-an affected_delta that says the level does not move.
+Each carries direction "unchanged", which derives Neutral, plus a resolved
+prior_rule quoted from the directive and an affected_delta saying the level
+does not move. Each also carries reclass_from: they were filed as "add" in the
+first extraction, when the enum had only add|rem and a restated rule had no way
+to say it was restated.
 
-They cannot be RENDERED neutral, and this is a real gap rather than an
-oversight. valence derives from (measure_type, direction) alone, direction is
-constrained to add|rem by validate_v2, and no combination of the two produces
-Neutral for an obligation. So a carry-over renders "Requirement" -- exactly the
-misreading the delta work exists to prevent. Every affected row carries
-q="carry-over-renders-as-requirement". Reaching Neutral needs a third direction
-value or a stored override; that is a schema change and is not being done
-inside an extraction.
+Art. 34 is the one that had to SPLIT. Its single sentence carries a level that
+did not move and a recurrence clause that did -- "and subsequently by
+31 December each year thereafter" turns a 2025 endpoint into a standing annual
+ceiling, and the directive's alternative route of not supplying bags free of
+charge is gone. BAG-02 is the carried-over level, unchanged and Neutral;
+BAG-01 is the delta, add and Requirement. One row would have had to misstate
+one of the two.
 
-THE PROHIBITION GAP
-===================
-The live enum is obligation|incentive|right. PPWR's four bans -- Art. 5(5)
-PFAS in food-contact packaging, Art. 25(1) and Annex V formats, Art. 10(2)
-false bottoms and double walls, Art. 12(8) misleading labels -- are encoded as
-obligation with direction add and carry q="prohibition-type-pending".
-Promoting `prohibition` to a first-class type means two new display labels and
-a re-run of the valence parity check; it is a schema project, not a thing to do
-mid-file.
+THE PROHIBITIONS
+================
+Four provisions forbid conduct outright rather than conditioning it: Art. 5(5)
+PFAS in food-contact packaging, Art. 25(1) and the Annex V formats, Art. 10(2)
+false bottoms and double walls, and Art. 12(8) misleading labels. They are
+measure_type "prohibition", which renders "Prohibition". Each carries
+reclass_from recording that it was an obligation in the first extraction,
+because the enum had no prohibition value then and the id may not change.
 
 SIZE BANDS
 ==========
@@ -165,6 +163,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+from benefit_axis import DUTY_SIDE_TYPES
 from textnorm import canonical
 
 HERE = Path(__file__).resolve().parent
@@ -268,7 +267,7 @@ ROWS: list[tuple] = [
           pending="Art. 5(2) requires a Commission report by 31 December 2026, assisted by ECHA, which may list the substances of concern actually caught. Until it lands, 'minimised' has no operative list behind it.")),
 
     ("SUB-02", "the sum of the concentrations of lead, cadmium, mercury and hexavalent chromium resulting from substances present in packaging or packaging components shall not exceed 100 mg/kg.", "",
-     dict(measure_type="obligation", direction="add",
+     dict(measure_type="obligation", direction="unchanged",
           duty="Keep the sum of lead, cadmium, mercury and hexavalent chromium in packaging or packaging components at or below 100 mg/kg.",
           addressee="Manufacturers and importers of packaging",
           cls=B, trigger="packaging or a packaging component placed on the market",
@@ -276,7 +275,8 @@ ROWS: list[tuple] = [
           article="Art. 5(4)", when=WHEN_GENERAL,
           drivers=["D1", "D4"], named=CONVERTERS, reached=["waste", "chem"],
           nature="carry_over", weight="Neutral",
-          q="carry-over-renders-as-requirement",
+          reclass_from=dict(direction="add",
+              note="Filed as 'add' in the single-pass extraction because the direction enum had only add|rem, so a restated rule had to be recorded as an addition and rendered Requirement. `unchanged` now exists and this row takes it: 100 ppm and 100 mg/kg are the same concentration and the limit has bound since 2001."),
           size_scope=ALL_BANDS,
           size_scope_note="No size threshold.",
           prior_rule=dict(
@@ -313,7 +313,7 @@ ROWS: list[tuple] = [
           affected_delta="Glass packaging in particular: 94/62/EC gave lead crystal glass a standing statutory exemption in Art. 11(2), and PPWR carries no equivalent. Any continuing relief now has to come through a delegated act with conditions attached.")),
 
     ("SUB-04", "From 12 August 2026, food-contact packaging shall not be placed on the market if it contains per", "250 ppb for the sum of PFAS measured as the sum of targeted PFAS analysis, where applicable with prior degradation of precursors (polymeric PFAS excluded from quantification); and",
-     dict(measure_type="obligation", direction="add",
+     dict(measure_type="prohibition", direction="add",
           duty="Do not place food-contact packaging on the market at or above 25 ppb for any single PFAS, 250 ppb for the sum of targeted PFAS, or 50 ppm for total PFAS including polymeric.",
           addressee="Manufacturers and importers of food-contact packaging",
           cls=B, trigger="food-contact packaging placed on the market",
@@ -323,12 +323,13 @@ ROWS: list[tuple] = [
           drivers=["D1", "D4", "D7"], named=["chem/plastics", "paper", "foodbev"],
           reached=["chem", "retail", "horeca", "waste"],
           nature="new_obligation", weight="Burden",
-          q="prohibition-type-pending",
+          reclass_from=dict(measure_type="obligation",
+              note="Art. 5(5) forbids placing food-contact packaging containing PFAS above the limit values on the market. Recorded as obligation/add in the single-pass extraction only because the enum had no prohibition value."),
           size_scope=ALL_BANDS,
           size_scope_note="No size threshold.",
           prior_rule=None,
           affected_delta="Food-contact packaging across the board, and hardest on fibre-based packaging where PFAS is the standard grease barrier. Genuinely new: 94/62/EC restricted only the four heavy metals, and no PFAS limit existed for packaging.",
-          note="A prohibition on the object rule -- the provision acts on the placing on the market of a defined product. Encoded as obligation/add because the live enum has no prohibition type; see q.",
+          note="A prohibition on the object rule: the provision acts on the placing on the market of a defined product, closing the route rather than conditioning it.",
           pending="Art. 5(5) applies only 'to the extent that the placing on the market of packaging containing such a concentration of PFAS is not prohibited pursuant to another Union legal act', and Art. 5(5) final subparagraph has the Commission evaluate by 12 August 2030 whether to amend or repeal the paragraph to avoid overlap with REACH, 1935/2004 and the POPs Regulation.")),
 
     ("SUB-05", "if total fluorine exceeds 50 mg/kg the manufacturer, importer or downstream user as defined respectively in Article 3, points (9), (11) and (13) of Regulation (EC) No 1907/2006 shall, upon request, provide", "in order for them to draw up the technical documentation as referred to in Annex VII to this Regulation.",
@@ -503,7 +504,7 @@ ROWS: list[tuple] = [
           pending="Art. 10(3) has the Commission request harmonised standards by 12 February 2027 specifying maximum weight and volume limits and, where appropriate, wall thickness and maximum empty space for common formats.")),
 
     ("MIN-02", "packaging with characteristics that aim only to increase the perceived volume of the product, including double walls, false bottoms and unnecessary layers, is not placed on the market", "",
-     dict(measure_type="obligation", direction="add",
+     dict(measure_type="prohibition", direction="add",
           duty="Do not place on the market packaging failing the Annex IV performance criteria, or packaging whose features exist only to increase perceived product volume -- double walls, false bottoms, unnecessary layers.",
           addressee="Manufacturers and importers of packaging",
           cls=B, trigger="packaging design with volume-inflating features",
@@ -511,10 +512,11 @@ ROWS: list[tuple] = [
           article="Art. 10(2)", when="By 1 January 2030 (Art. 10(1))",
           drivers=["D4"], named=CONVERTERS + FILLERS, reached=["waste"],
           nature="new_obligation", weight="Burden",
-          q="prohibition-type-pending",
+          reclass_from=dict(measure_type="obligation",
+              note="Art. 10(2) forbids placing volume-inflating packaging on the market. Recorded as obligation/add in the single-pass extraction only because the enum had no prohibition value."),
           size_scope=ALL_BANDS, size_scope_note="No size threshold.",
           affected_delta="Cosmetics, confectionery and gift packaging most directly. Art. 10(2) exempts designs protected as a Community design or trademark before 11 February 2025 where compliance would destroy the novelty or distinctiveness, and packaging for geographical-indication or quality-scheme products.",
-          note="A prohibition on the object rule. Encoded as obligation/add because the live enum has no prohibition type; see q.")),
+          note="A prohibition on the object rule: it closes a route rather than conditioning it.")),
 
     ("REU-01", "Packaging placed on the market from 11 February 2025 shall be considered to be reusable where it fulfils all of the following requirements:", "it fulfils the requirements specific to recyclable packaging set out in Article 6, so that it can be recycled when it becomes waste.",
      dict(measure_type="obligation", direction="add",
@@ -567,7 +569,7 @@ ROWS: list[tuple] = [
           affected_delta="Anyone using reusable packaging. Genuinely new: 94/62/EC had no reusability labelling at all. Art. 12(3) exempts open-loop systems with no system operator under Annex VI.")),
 
     ("LAB-03", "economic operators shall not provide or display labels, marks, symbols or inscriptions that are likely to mislead or confuse consumers or other end users with respect to the sustainability requirements for packaging", "",
-     dict(measure_type="obligation", direction="add",
+     dict(measure_type="prohibition", direction="add",
           duty="Do not display labels, marks, symbols or inscriptions likely to mislead or confuse consumers about packaging sustainability, other packaging characteristics, or waste-management options where this Regulation has harmonised the labelling.",
           addressee="Economic operators",
           cls=B, trigger="any label, mark, symbol or inscription on packaging",
@@ -575,10 +577,11 @@ ROWS: list[tuple] = [
           article="Art. 12(8)", when=WHEN_GENERAL,
           drivers=[], named=CONVERTERS + FILLERS, reached=["waste"],
           nature="new_obligation", weight="Burden",
-          q="prohibition-type-pending",
+          reclass_from=dict(measure_type="obligation",
+              note="Art. 12(8) forbids displaying misleading sustainability labels. Recorded as obligation/add in the single-pass extraction only because the enum had no prohibition value."),
           size_scope=ALL_BANDS, size_scope_note="No size threshold.",
           affected_delta="All operators using on-pack environmental marks. Bites hardest on voluntary eco-labels and recyclability claims that duplicate or contradict the harmonised label.",
-          note="A prohibition on the object rule. Encoded as obligation/add because the live enum has no prohibition type; see q.")),
+          note="A prohibition on the object rule: it closes a route rather than conditioning it.")),
 
     ("LAB-04", "Packaging as referred to in paragraphs 1, 2 and 4 that is manufactured in the Union or imported before the deadlines referred in those paragraphs and that does not comply with the criteria laid down in those paragraphs may be made available on the market until 3 years from the date of entry into force of the labelling requirements laid down in those paragraphs.", "",
      dict(measure_type="right", direction="add",
@@ -747,7 +750,7 @@ ROWS: list[tuple] = [
           affected_delta="Food, drink and consumer-goods fillers. No fixed ratio here, unlike Art. 24(1): the standard is qualitative, which makes it harder to plan against and easier to dispute.")),
 
     ("BAN-01", "From 1 January 2030, economic operators shall not place on the market packaging in the formats and for the uses listed in Annex V.", "",
-     dict(measure_type="obligation", direction="add",
+     dict(measure_type="prohibition", direction="add",
           duty="Do not place on the market any packaging in the formats and for the uses listed in Annex V -- single-use grouped packaging for multipacks, single-use packaging for unprocessed fresh fruit and vegetables, single-use packaging for food and drink consumed on premises in the HORECA sector, single-use condiment and sauce sachets, hotel miniature toiletries, and very light plastic carrier bags outside hygiene or loose-food use.",
           addressee="Economic operators placing packaging on the market",
           cls=B, trigger="packaging in an Annex V format placed on the market",
@@ -756,12 +759,13 @@ ROWS: list[tuple] = [
           drivers=["D7"], named=["chem/plastics", "foodbev", "retail", "horeca"],
           reached=["paper", "waste"],
           nature="new_obligation", weight="Burden",
-          q="prohibition-type-pending",
+          reclass_from=dict(measure_type="obligation",
+              note="Art. 25(1) forbids placing the Annex V formats on the market. Recorded as obligation/add in the single-pass extraction only because the enum had no prohibition value."),
           size_scope=ALL_BANDS,
           size_scope_note="No size band is removed, but Art. 25(4) lets Member States allow MICRO-ENTERPRISES as defined in Recommendation 2003/361/EC to keep using the Annex V point 3 formats where it is demonstrably not technically feasible to avoid them or to reach re-use infrastructure. An eligibility carve-out on this duty, not a separate benefit.",
           prior_rule=None,
           affected_delta="HORECA, retail and fresh-produce packers most directly. Genuinely new as EU-wide law: 94/62/EC had no format bans at all, only the carrier-bag reduction duty. Art. 70(4) lets Member States keep pre-2025 national restrictions on the Annex V point 2 and 3 formats until 1 January 2030, and suspends Art. 4(3) for them until then.",
-          note="A prohibition on the object rule -- the provision acts on the placing on the market of named formats. Encoded as obligation/add because the live enum has no prohibition type; see q.")),
+          note="A prohibition on the object rule: the provision acts on the placing on the market of named formats, closing the route rather than conditioning it.")),
 
     ("RSY-01", "Economic operators who make reusable packaging available on the territory of a Member State for the first time shall ensure that a system is in place in that Member State for the re-use of that packaging which includes an incentive to ensure the collection of that packaging and which meets the requirements laid down in Annex VI.", "",
      dict(measure_type="obligation", direction="add",
@@ -993,16 +997,22 @@ ROWS: list[tuple] = [
           size_scope_note="Art. 33(4) exempts final distributors falling within the micro-enterprise definition in Recommendation 2003/361/EC as applicable on 11 February 2025. An eligibility carve-out on this duty, not a separate benefit -- and note it does NOT extend to the Art. 32 bring-your-own-container duty.",
           affected_delta="HORECA above micro size. Heavier than Art. 32 because it requires an actual re-use system -- collection, washing, logistics -- not merely accepting a customer's container.")),
 
+    # Art. 34(1) carries TWO things and they move in opposite directions: a
+    # consumption level that is carried over untouched, and a recurrence clause
+    # that is genuinely new. Marking the whole provision `unchanged` would
+    # assert the recurrence did not happen; marking it all `add` reads the 40
+    # as a new ceiling. So it splits, on the same multi-perspective rule that
+    # splits Art. 4 -- BAG-02 is the carried-over level, BAG-01 the delta.
     ("BAG-01", "A sustained reduction is considered to be achieved if the annual consumption does not exceed 40 lightweight plastic carrier bags per capita, or the equivalent target in weight, by 31 December 2025 and subsequently by 31 December each year thereafter.", "",
      dict(measure_type="obligation", direction="add",
-          duty="Keep annual consumption of lightweight plastic carrier bags at or below 40 per capita, by 31 December 2025 and in every year thereafter.",
+          duty="Meet the 40-bags-per-capita ceiling in EVERY year after 2025, not only in 2025, and lose the alternative route of discharging the duty by ensuring bags are not supplied free of charge.",
           addressee="Member States",
-          cls=S, trigger="annual national consumption of lightweight plastic carrier bags",
+          cls=S, trigger="annual national consumption of lightweight plastic carrier bags, in each year after 2025",
           frequency="annual", verification="reporting to the Commission under Art. 56(1)(b)",
-          article="Art. 34(1)", when="By 31 December 2025 and each year thereafter (Art. 34(1))",
+          article="Art. 34(1), second subparagraph", when="Each year from 31 December 2026 (Art. 34(1))",
           drivers=["D5"], named=["waste"], reached=["chem/plastics", "retail"],
+          provision_id="ppwr-art34-carrier-bags",
           nature="extension", weight="Burden",
-          q="carry-over-renders-as-requirement",
           size_scope=NO_BANDS, size_scope_note="Binds a Member State, not a company by size.",
           prior_rule=dict(
               trigger="annual national consumption of lightweight plastic carrier bags",
@@ -1012,8 +1022,29 @@ ROWS: list[tuple] = [
           new_rule=dict(
               trigger="annual national consumption of lightweight plastic carrier bags",
               obligation="Consumption not to exceed 40 lightweight plastic carrier bags per capita by 31 December 2025 AND subsequently by 31 December each year thereafter."),
-          affected_delta="THE NUMBER DOES NOT MOVE -- 40 per capita is 94/62/EC Art. 4(1a)(a) unchanged. THE LIVE DELTA IS RECURRENCE: the directive set 2025 as an endpoint, and this makes 40 a standing annual ceiling with no terminal date. That is the one genuine change in the carry-over cluster.",
-          note="Also dropped: the directive's alternative compliance route in Art. 4(1a)(b), under which a Member State could instead ensure bags were not provided free of charge at the point of sale. PPWR keeps only the consumption ceiling, so the pricing route is no longer a way to discharge the duty.")),
+          affected_delta="This row is the DELTA only. The directive set 2025 as an endpoint; PPWR makes 40 a standing annual ceiling with no terminal date, and drops the alternative compliance route in Art. 4(1a)(b) under which a Member State could instead ensure bags were not supplied free of charge. Both are real new burdens on the Member State, so this row is `add` and renders Requirement. The 40 itself is BAG-02 and is unchanged.",
+          note="Split from BAG-02 on the multi-perspective rule. Art. 34(1) states one sentence that does two things, and a single row would have to lie about one of them.")),
+
+    ("BAG-02", "Member States shall take measures to achieve a sustained reduction in the consumption of lightweight plastic carrier bags on their territory.", "",
+     dict(measure_type="obligation", direction="unchanged",
+          duty="Keep annual consumption of lightweight plastic carrier bags at or below 40 per capita -- the level itself, unchanged from the repealed directive.",
+          addressee="Member States",
+          cls=S, trigger="annual national consumption of lightweight plastic carrier bags",
+          frequency="annual", verification="reporting to the Commission under Art. 56(1)(b)",
+          article="Art. 34(1), first subparagraph", when="By 31 December 2025 (Art. 34(1))",
+          drivers=["D5"], named=["waste"], reached=["chem/plastics", "retail"],
+          provision_id="ppwr-art34-carrier-bags",
+          nature="carry_over", weight="Neutral",
+          size_scope=NO_BANDS, size_scope_note="Binds a Member State, not a company by size.",
+          prior_rule=dict(
+              trigger="annual national consumption of lightweight plastic carrier bags",
+              obligation="Measures ensuring the annual consumption level does not exceed 40 lightweight plastic carrier bags per person by 31 December 2025, or an equivalent target set in weight.",
+              source_text="the adoption of measures ensuring that the annual consumption level does not exceed 90 lightweight plastic carrier bags per person by 31 December 2019 and 40 lightweight plastic carrier bags per person by 31 December 2025, or equivalent targets set in weight.",
+              status="sourced", source_document=PRIOR_DOC),
+          new_rule=dict(
+              trigger="annual national consumption of lightweight plastic carrier bags",
+              obligation="Annual consumption not to exceed 40 lightweight plastic carrier bags per capita, or the equivalent target in weight."),
+          affected_delta="THE NUMBER DOES NOT MOVE. 40 per capita is 94/62/EC Art. 4(1a)(a) unchanged, and has bound since 2015. This row exists so the level can be recorded as carried over while BAG-01 records what actually changed around it.")),
 
     # ===========================  Ch. VII  conformity (Arts. 35-39)
     ("CNF-01", "tests, measurements and calculations shall be made using reliable, accurate and reproducible methods which take into account the generally recognised state-of-the art methods and whose results are considered to be of low uncertainty.", "",
@@ -1338,7 +1369,7 @@ ROWS: list[tuple] = [
           note="Art. 51(2)'s menu of measures -- deposit systems, economic incentives, single-use charges, obligations to sell a percentage in reusable packaging -- was REJECTED as a benefit row. It is a list of things a Member State MAY do; nothing is conferred on anyone until one is chosen.")),
 
     ("RCT-01", "Member States shall take the necessary measures to achieve the following recycling targets covering the whole of their territory:", "85 % of paper and cardboard.",
-     dict(measure_type="obligation", direction="add",
+     dict(measure_type="obligation", direction="unchanged",
           duty="Achieve recycling of at least 65% of all packaging waste by weight by 31 December 2025 and 70% by 31 December 2030, with material lines of 50/55% plastic, 25/30% wood, 70/80% ferrous metals, 50/60% aluminium, 70/75% glass and 75/85% paper and cardboard.",
           addressee="Member States",
           cls=S, trigger="packaging waste generated on the national territory",
@@ -1347,7 +1378,8 @@ ROWS: list[tuple] = [
           article="Art. 52(1)", when="31 December 2025 and 31 December 2030 (Art. 52(1))",
           drivers=["D4", "D5"], named=["waste"], reached=MATERIALS,
           nature="carry_over", weight="Neutral",
-          q="carry-over-renders-as-requirement",
+          reclass_from=dict(direction="add",
+              note="Filed as 'add' in the single-pass extraction because the direction enum had only add|rem, which forced the register's most-quoted carry-over to render Requirement. Every figure is identical to 94/62/EC Art. 6(1)(f)-(i) as amended, so the row now takes `unchanged` and renders Neutral."),
           size_scope=NO_BANDS, size_scope_note="Binds a Member State, not a company by size.",
           prior_rule=dict(
               trigger="packaging waste generated on the national territory",
@@ -1533,7 +1565,7 @@ def build() -> tuple[list[dict], list[str]]:
             continue
 
         row = {"id": rid, "measure_type": meta["measure_type"]}
-        if meta["measure_type"] == "obligation":
+        if meta["measure_type"] in DUTY_SIDE_TYPES:
             row["duty"] = meta["duty"]
         else:
             row["benefit"] = meta["benefit"]
@@ -1580,6 +1612,11 @@ def build() -> tuple[list[dict], list[str]]:
         # Review flags. `q` is a question this pass could not close, not a note.
         if meta.get("q"):
             row["q"] = meta["q"]
+        # Provenance for a classification that MOVED after first publication.
+        # The id does not change -- ids are permanent -- so this is the only
+        # record that the row used to say something else.
+        if meta.get("reclass_from"):
+            row["reclass_from"] = meta["reclass_from"]
 
         # A prior_rule that claims to be sourced has to actually be in the
         # prior corpus. Checking it here rather than trusting the author is the

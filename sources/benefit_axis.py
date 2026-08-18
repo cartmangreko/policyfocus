@@ -138,8 +138,25 @@ BASIS_STATUSES = ("verbatim", "external", "announced")
 
 # The measure_type vocabulary. `right` is benefit-side: right rows carry
 # `benefit`, never `duty`.
-MEASURE_TYPES = ("obligation", "incentive", "right")
+# `prohibition` is duty-side, alongside `obligation`: it marks a provision that
+# forbids conduct outright rather than requiring something of the addressee.
+# The two are kept apart because "do not place this on the market" and "keep
+# this below 100 mg/kg" are different instruments -- one closes a route, the
+# other conditions it -- and collapsing them made four PPWR rows read as
+# ordinary requirements.
+MEASURE_TYPES = ("obligation", "prohibition", "incentive", "right")
 BENEFIT_SIDE_TYPES = ("incentive", "right")
+# Types that assert a duty and therefore carry `duty`, never `benefit`.
+DUTY_SIDE_TYPES = ("obligation", "prohibition")
+
+# add | rem | unchanged. `unchanged` is not a third movement -- it is the
+# explicit assertion that there is NO movement, which the register previously
+# had no way to make. A restated rule had to be filed as `add`, and rendered
+# "Requirement" however carefully the prior_rule said the level had not moved.
+# It is admissible ONLY on a duty-side row carrying a resolved prior_rule: the
+# claim "nothing changed" needs a before-state for exactly the same reason a
+# deletion does. See assert_unchanged_prior below.
+DIRECTIONS = ("add", "rem", "unchanged")
 
 # Every source file a given data file's rows may be quoted from. Matching the
 # verify_pass.py convention: a span counts as verbatim if it is an exact
@@ -264,10 +281,19 @@ def derive_valence(measure_type, direction):
     # "Requirement"; the parity check caught exactly that. A present-but-invalid
     # type falls through to Neutral, where it is visible instead of disguised.
     t = "obligation" if measure_type is None else measure_type
+    # `unchanged` resolves to Neutral for every type, and is checked before the
+    # type table so no combination can produce a movement label out of an
+    # explicit assertion that nothing moved.
+    if direction == "unchanged":
+        return "Neutral"
     if t == "obligation" and direction == "add":
         return "Requirement"
     if t == "obligation" and direction == "rem":
         return "Simplification"
+    if t == "prohibition" and direction == "add":
+        return "Prohibition"
+    if t == "prohibition" and direction == "rem":
+        return "Prohibition lifted"
     if t == "incentive" and direction == "add":
         return "Opportunity"
     if t == "incentive" and direction == "rem":
@@ -280,6 +306,32 @@ def derive_valence(measure_type, direction):
     if t == "right" and direction == "rem":
         return "Entitlement withdrawn"
     return "Neutral"
+
+
+def is_unchanged(row):
+    return row.get("direction") == "unchanged"
+
+
+def unchanged_prior_ok(row, prior_fulltext):
+    """True unless the row claims nothing moved without evidence of a before.
+
+    Same shape as deletion_prior_ok, and for the same reason. "This rule is
+    carried over unchanged" is a claim about the PRIOR law, and a row that
+    cannot quote the prior law is not entitled to make it -- it is entitled to
+    say `add` and be read as a requirement, which is the honest default when
+    the before-state is unknown.
+    """
+    if not is_unchanged(row):
+        return True
+    if row.get("measure_type") not in DUTY_SIDE_TYPES and row.get("measure_type") is not None:
+        return False
+    return prior_rule_resolved(row, prior_fulltext)
+
+
+def assert_unchanged_prior(rows, prior_fulltext, where=""):
+    bad = [r["id"] for r in rows if not unchanged_prior_ok(r, prior_fulltext)]
+    assert not bad, (
+        f"direction 'unchanged' with no resolved prior_rule{where}: {bad}")
 
 
 def basis_ok(basis, field, fulltext):

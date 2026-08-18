@@ -386,7 +386,9 @@ def main() -> int:
                    f"{key}: docket row count matches the register file",
                    f"docket says {docket.get('register_rows')}, file has {len(rows)}")
         for q in docket.get("known_open_questions", []):
-            print(f"        open: {q.split(':')[0]}")
+            print(f"        open: {q.split('.')[0][:88]}")
+        for r in docket.get("resolved_since_first_publication", []):
+            print(f"        closed: {r.split('—')[0].strip()}")
         single_pass_lines.append(
             f"{key.upper()} NOT RECONCILED — single-pass, {len(rows)} register rows, "
             f"{len(docket.get('known_open_questions', []))} open question(s). "
