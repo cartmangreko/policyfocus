@@ -1,0 +1,4057 @@
+[
+  {
+    "id": "FREE-01",
+    "measure_type": "obligation",
+    "duty": "Place packaging on the market only if it complies with this Regulation.",
+    "addressee": "Any economic operator placing packaging on the market",
+    "class": "business",
+    "trigger": "placing packaging on the market",
+    "frequency": "continuous",
+    "verification": "self-assessment",
+    "direction": "add",
+    "article": "Art. 4(1)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Packaging shall only be placed on the market if it complies with this Regulation.",
+    "drivers": [
+      "D7"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Every operator placing packaging on the EU market, whatever the material. 94/62/EC Art. 9(1) had the same gate against its Annex II essential requirements; what changes is the content of the requirements, carried by the Art. 5-12 rows.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold: the duty attaches to the packaging, not to the operator's size."
+  },
+  {
+    "id": "FREE-02",
+    "measure_type": "obligation",
+    "duty": "Do not prohibit, restrict or impede the placing on the market of packaging that complies with Arts. 5 to 12, and do not enforce additional national requirements against compliant packaging.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "compliant packaging offered on the national market",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 4(2) and (3)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Member States shall not prohibit, restrict or impede the placing on the market of packaging that complies with the sustainability, labelling and information requirements laid down in or pursuant to Articles 5 to 12.",
+    "drivers": [],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": "ppwr-art4-free-movement",
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States. Art. 70(4) suspends this for national restrictions on the Annex V point 2 and 3 formats until 1 January 2030.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "FREE-03",
+    "measure_type": "right",
+    "benefit": "Packaging that meets Arts. 5 to 12 may be placed on the market anywhere in the Union: no Member State may block it, and no additional national sustainability or information requirement may be enforced against it. One compliance route replaces 27.",
+    "addressee": "Economic operators placing compliant packaging on the market",
+    "class": "business",
+    "trigger": "packaging compliant with Arts. 5 to 12",
+    "frequency": "continuous",
+    "verification": "self-assessment",
+    "direction": "add",
+    "article": "Art. 4(2) and (3)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Member States shall not prohibit, restrict or impede the placing on the market of packaging that complies with the sustainability, labelling and information requirements laid down in or pursuant to Articles 5 to 12.",
+    "drivers": [],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": "ppwr-art4-free-movement",
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [
+      "V1"
+    ],
+    "access_frictions": [
+      "F1"
+    ],
+    "nature": "new_right",
+    "affected_delta": "Every operator selling packaging across more than one Member State. Suspended for the Annex V point 2 and 3 formats until 1 January 2030 by Art. 70(4).",
+    "weight": "Relief",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "benefit_axis_note": "The object rule splits this provision. Art. 4(2) acts on Member State conduct, which is FREE-02; the market access it creates is a faculty the operator did not hold against a divergent national rule, which is this row. Kept as two linked measures rather than one, because neither reading contains the other.",
+    "right_basis": {
+      "text": "Member States shall not prohibit, restrict or impede the placing on the market of packaging that complies with the sustainability, labelling and information requirements laid down in or pursuant to Articles 5 to 12.",
+      "kind": "existence"
+    }
+  },
+  {
+    "id": "SUB-01",
+    "measure_type": "obligation",
+    "duty": "Manufacture packaging so that the presence and concentration of substances of concern is minimised, including in emissions and in waste-management outputs such as secondary raw materials and ashes.",
+    "addressee": "Manufacturers of packaging",
+    "class": "business",
+    "trigger": "manufacturing packaging placed on the market",
+    "frequency": "continuous",
+    "verification": "self-assessment",
+    "direction": "add",
+    "article": "Art. 5(1)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Packaging placed on the market shall be so manufactured that the presence and concentration of substances of concern as constituents of the packaging material or of any of the packaging components is minimised, including with regard to their presence in emissions and any outcomes of waste management, such as secondary raw materials, ashes or other material for final disposal, and to the adverse impact on the environment due to microplastics.",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "chem"
+    ],
+    "sectors_reached": [
+      "waste",
+      "paper",
+      "glass",
+      "alu"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All packaging manufacturers. 'Substances of concern' takes the ESPR definition via Art. 3(1); what counts is therefore set outside this act.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "pending": "Art. 5(2) requires a Commission report by 31 December 2026, assisted by ECHA, which may list the substances of concern actually caught. Until it lands, 'minimised' has no operative list behind it."
+  },
+  {
+    "id": "SUB-02",
+    "measure_type": "obligation",
+    "duty": "Keep the sum of lead, cadmium, mercury and hexavalent chromium in packaging or packaging components at or below 100 mg/kg.",
+    "addressee": "Manufacturers and importers of packaging",
+    "class": "business",
+    "trigger": "packaging or a packaging component placed on the market",
+    "frequency": "continuous",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 5(4)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "the sum of the concentrations of lead, cadmium, mercury and hexavalent chromium resulting from substances present in packaging or packaging components shall not exceed 100 mg/kg.",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "waste",
+      "chem"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "carry_over",
+    "affected_delta": "THE LEVEL DOES NOT MOVE. 100 ppm and 100 mg/kg are the same concentration, and the limit has bound since 2001 under 94/62/EC Art. 11(1). Reading this row as a new restriction would be wrong. What does move is the exemption regime, which is SUB-03.",
+    "weight": "Neutral",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "new_rule": {
+      "trigger": "packaging or a packaging component placed on the market",
+      "obligation": "Sum of lead, cadmium, mercury and hexavalent chromium not to exceed 100 mg/kg."
+    },
+    "prior_rule": {
+      "trigger": "packaging or packaging components placed on the market",
+      "obligation": "Sum of lead, cadmium, mercury and hexavalent chromium not to exceed 100 ppm by weight, five years from the date in Art. 22(1) of the Directive.",
+      "source_text": "100 ppm by weight five years after the date referred to in Article 22 (i).",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    },
+    "benefit_axis_note": "Carried as a row rather than omitted because the duty is live under this act and an operator has to comply with it; the delta model is what says it is not new.",
+    "q": "carry-over-renders-as-requirement"
+  },
+  {
+    "id": "SUB-03",
+    "measure_type": "obligation",
+    "duty": "Rely on a heavy-metals exemption only where a Commission delegated act grants it; the exemptions are now time-limited, subject to marking, information and regular reporting requirements, and reviewable.",
+    "addressee": "Manufacturers relying on a heavy-metals derogation",
+    "class": "business",
+    "trigger": "packaging claiming an exemption from the 100 mg/kg limit",
+    "frequency": "per derogation",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 5(8)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Delegated acts adopted in accordance with this paragraph shall only be adopted to amend derogations es",
+    "drivers": [
+      "D1",
+      "D5"
+    ],
+    "sectors_named": [
+      "glass",
+      "chem/plastics"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "reduction",
+    "affected_delta": "Glass packaging in particular: 94/62/EC gave lead crystal glass a standing statutory exemption in Art. 11(2), and PPWR carries no equivalent. Any continuing relief now has to come through a delegated act with conditions attached.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "new_rule": {
+      "trigger": "packaging claiming an exemption from the 100 mg/kg limit",
+      "obligation": "Exemptions exist only via delegated act amending Decisions 2001/171/EC and 2009/292/EC, must be justified case by case, time-limited, marked, reported on and regularly reviewed."
+    },
+    "prior_rule": {
+      "trigger": "packaging entirely made of lead crystal glass",
+      "obligation": "The heavy-metals concentration limits did not apply at all to packaging entirely made of lead crystal glass, with no time limit, no marking duty and no review.",
+      "source_text": "The concentration levels referred to in paragraph 1 shall not apply to packaging entirely made of lead crystal glass as defined in Directive 69/493/EEC",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    }
+  },
+  {
+    "id": "SUB-04",
+    "measure_type": "obligation",
+    "duty": "Do not place food-contact packaging on the market at or above 25 ppb for any single PFAS, 250 ppb for the sum of targeted PFAS, or 50 ppm for total PFAS including polymeric.",
+    "addressee": "Manufacturers and importers of food-contact packaging",
+    "class": "business",
+    "trigger": "food-contact packaging placed on the market",
+    "frequency": "continuous",
+    "verification": "technical documentation (Annex VII), targeted PFAS analysis",
+    "direction": "add",
+    "article": "Art. 5(5)",
+    "when": "From 12 August 2026 (Art. 5(5))",
+    "source_text": "From 12 August 2026, food-contact packaging shall not be placed on the market if it contains perand polyfluorinated alkyl substances (PFAS) in a concentration equal to or above the following limit values to the extent that the placing on the market of packaging containing such a concentration of PFAS is not prohibited pursuant to another Union legal act: (a) 25 ppb for any PFAS as measured with targeted PFAS analysis (polymeric PFAS excluded from quantification); (b) 250 ppb for the sum of PFAS measured as the sum of targeted PFAS analysis, where applicable with prior degradation of precursors (polymeric PFAS excluded from quantification); and",
+    "drivers": [
+      "D1",
+      "D4",
+      "D7"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "chem",
+      "retail",
+      "horeca",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Food-contact packaging across the board, and hardest on fibre-based packaging where PFAS is the standard grease barrier. Genuinely new: 94/62/EC restricted only the four heavy metals, and no PFAS limit existed for packaging.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "prior_rule": null,
+    "pending": "Art. 5(5) applies only 'to the extent that the placing on the market of packaging containing such a concentration of PFAS is not prohibited pursuant to another Union legal act', and Art. 5(5) final subparagraph has the Commission evaluate by 12 August 2030 whether to amend or repeal the paragraph to avoid overlap with REACH, 1935/2004 and the POPs Regulation.",
+    "benefit_axis_note": "A prohibition on the object rule -- the provision acts on the placing on the market of a defined product. Encoded as obligation/add because the live enum has no prohibition type; see q.",
+    "q": "prohibition-type-pending"
+  },
+  {
+    "id": "SUB-05",
+    "measure_type": "obligation",
+    "duty": "Where total fluorine exceeds 50 mg/kg, supply on request proof of whether the measured fluorine is PFAS or non-PFAS, so the packaging manufacturer or importer can complete its technical documentation.",
+    "addressee": "Manufacturers, importers and downstream users under REACH supplying materials to packaging makers",
+    "class": "business",
+    "trigger": "a request where total fluorine in the material exceeds 50 mg/kg",
+    "frequency": "per request",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 5(5)(c)",
+    "when": "From 12 August 2026 (Art. 5(5))",
+    "source_text": "if total fluorine exceeds 50 mg/kg the manufacturer, importer or downstream user as defined respectively in Article 3, points (9), (11) and (13) of Regulation (EC) No 1907/2006 shall, upon request, provide to the manufacturer or the importer as defined respectively in Article 3(1), points (13) and (17), of this Regulation proof of the quantity of fluorine measured as content of either PFAS or non-PFAS in order for them to draw up the technical documentation as referred to in Annex VII to this Regulation.",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "chem"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "paper",
+      "foodbev"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Chemicals suppliers upstream of food-contact packaging. This is the supply-chain limb of the PFAS restriction: the duty to prove the content sits one step back from the operator who has to document it.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "REC-01",
+    "measure_type": "obligation",
+    "duty": "Make all packaging recyclable: designed for material recycling, and collectable, sortable and recycled at scale when it becomes waste.",
+    "addressee": "Manufacturers of packaging",
+    "class": "business",
+    "trigger": "packaging placed on the market",
+    "frequency": "continuous",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 6(1) and (2)",
+    "when": "Design for recycling from 1 January 2030 or 24 months after the Art. 6(4) delegated acts, whichever is later; recycled-at-scale from 1 January 2035 (Art. 6(2))",
+    "source_text": "All packaging placed on the market shall be recyclable.",
+    "drivers": [
+      "D1",
+      "D4",
+      "D7"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "waste",
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All packaging manufacturers. 94/62/EC Annex II required packaging to be 'recoverable' in general terms; a binary recyclability gate with design criteria behind it is new.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "prior_rule": null,
+    "pending": "The design-for-recycling criteria are set by delegated act due 1 January 2028 (Art. 6(4)) and the recycled-at-scale methodology by implementing act due 1 January 2030 (Art. 6(5)). Until both land, the substantive content of this duty is not knowable.",
+    "benefit_axis_note": "Art. 6(11) excludes immediate and outer packaging of medicines and medical devices, contact-sensitive infant formula and medical-food packaging, dangerous-goods transport packaging, and sales packaging of lightweight wood, cork, textile, rubber, ceramic, porcelain or wax."
+  },
+  {
+    "id": "REC-02",
+    "measure_type": "obligation",
+    "duty": "Assess and grade each packaging unit A, B or C for recyclability; from 2030 do not place packaging below grade C on the market, and from 1 January 2038 do not place packaging below grade B.",
+    "addressee": "Manufacturers of packaging",
+    "class": "business",
+    "trigger": "assessing packaging before placing it on the market",
+    "frequency": "per packaging unit",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 6(3)",
+    "when": "Grade C floor from 1 January 2030 or 24 months after the Art. 6(4) delegated acts, whichever is later; grade B floor from 1 January 2038 (Art. 6(3))",
+    "source_text": "Packaging recyclability shall be expressed in the recyclability performance grades A, B or C as described in Table 3 of Annex II.",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "waste",
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "extension",
+    "affected_delta": "All packaging manufacturers, on a rising floor: grade C from 2030, grade B from 2038. The 2038 step removes an entire performance grade from the market.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "REC-03",
+    "measure_type": "obligation",
+    "duty": "Re-comply with design-for-recycling criteria within 3 years each time the Commission adopts or updates them by delegated act.",
+    "addressee": "Economic operators placing packaging on the market",
+    "class": "business",
+    "trigger": "entry into force of a new or updated design-for-recycling delegated act",
+    "frequency": "per delegated act",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 6(4), final subparagraph",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Economic operators shall comply with new or updated design for recycling criteria within 3 years of the date of entry into force of the relevant delegated act.",
+    "drivers": [
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "A standing re-tooling obligation with no end date: every future revision of the criteria restarts a three-year clock for every affected format.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "REC-04",
+    "measure_type": "obligation",
+    "duty": "Pay EPR financial contributions modulated by the packaging's recyclability performance grade.",
+    "addressee": "Producers subject to extended producer responsibility",
+    "class": "business",
+    "trigger": "EPR contributions falling due on packaging with a recyclability grade",
+    "frequency": "annual",
+    "verification": "producer responsibility organisation",
+    "direction": "add",
+    "article": "Art. 6(8)",
+    "when": "18 months after the Art. 6(4) and 6(5) acts enter into force (Art. 6(8))",
+    "source_text": "the financial contributions paid by producers in order to comply with their extended producer responsibility obligations as laid down in Article 45 shall be modulated in accordance with the recyclability performance grades",
+    "drivers": [
+      "D5",
+      "D6"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Every producer paying EPR fees. Better-graded packaging pays less and worse-graded pays more, so the effect is dispersed rather than uniform.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "benefit_axis_note": "REJECTED as a benefit row. Fee modulation looks like an incentive and is written as one in the recitals, but the object rule cuts support only where a support's amount, rate, eligibility or existence moves. This is a graduated LEVY on the producer, so it stays on the obligation side whichever way an individual producer's bill goes."
+  },
+  {
+    "id": "REC-05",
+    "measure_type": "right",
+    "benefit": "Packaging that qualifies as innovative may be sold for up to five years from the end of the year it was first placed on the market even though it does not meet the recyclability requirement -- a run-in period no other packaging gets.",
+    "addressee": "Economic operators placing innovative packaging on the market",
+    "class": "business",
+    "trigger": "packaging notified to the competent authority as innovative, with technical details and a timeline for reaching the recycled-at-scale requirement",
+    "frequency": "per packaging",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 6(10)",
+    "when": "From 1 January 2030 (Art. 6(10))",
+    "source_text": "innovative packaging that does not comply with the requirements under paragraph 2 may be made available on the market up to 5 years from the end of the calendar year in which it was placed on the market.",
+    "drivers": [],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [
+      "V2"
+    ],
+    "access_frictions": [
+      "F1",
+      "F4"
+    ],
+    "nature": "new_right",
+    "affected_delta": "Operators bringing genuinely novel formats to market. The competent authority decides whether the packaging is innovative; if it says no, the operator must comply with the existing criteria.",
+    "weight": "Relief",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "right_basis": {
+      "text": "innovative packaging that does not comply with the requirements under paragraph 2 may be made available on the market up to 5 years from the end of the calendar year in which it was placed on the market.",
+      "kind": "existence"
+    }
+  },
+  {
+    "id": "RCY-01",
+    "measure_type": "obligation",
+    "duty": "Meet minimum recycled content in every plastic part of packaging, averaged per manufacturing plant per year: 30% for contact-sensitive PET, 10% for other contact-sensitive plastics, 30% for single-use plastic beverage bottles, 35% for all other plastic packaging.",
+    "addressee": "Manufacturers and importers of plastic packaging",
+    "class": "business",
+    "trigger": "a plastic part of packaging placed on the market",
+    "frequency": "annual, averaged per manufacturing plant",
+    "verification": "technical documentation (Annex VII), third-party audit possible under Art. 7(8)",
+    "direction": "add",
+    "article": "Art. 7(1)",
+    "when": "From 1 January 2030 or 3 years after the Art. 7(8) implementing act, whichever is later (Art. 7(1))",
+    "source_text": "By 1 January 2030 or 3 years from the date of entry into force of the implementing act referred to in paragraph 8 of this Article, whichever is the latest, any plastic part of packaging placed on the market shall contain the following minimum percentage of recycled content recovered from post-consumer plastic waste, per packaging type and format as referred to in Table 1 of Annex II, calculated as an average per manufacturing plant and year: (a) 30 % for contact-sensitive packaging made from polyethylene terephthalate (PET) as the major component, except single-use plastic beverage bottles; (b) 10 % for contact-sensitive packaging made from plastic materials other than PET, except single-use plastic beverage bottles; (c) 30 % for single-use plastic beverage bottles; (d) 35 % for plastic packaging other than those referred to in points (a), (b) and (c) of this paragraph.",
+    "drivers": [
+      "D1",
+      "D2",
+      "D4",
+      "D5",
+      "D7"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "waste",
+      "chem",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All plastic packaging converters and their importers. Genuinely new: 94/62/EC set recycling targets for the waste stream but never required recycled content in the product. The feedstock must also be post-consumer, collected in the Union or to equivalent standards, and recycled in an installation meeting Directive 2010/75/EU-equivalent emission rules.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "prior_rule": null,
+    "pending": "Art. 7(13) lets the Commission lower the percentages by delegated act where recycled plastic is unavailable or excessively priced, but only in exceptional cases with severe adverse effects for health, food security or the environment.",
+    "benefit_axis_note": "Art. 7(4) and (5) exclude medicinal and veterinary immediate and outer packaging, contact-sensitive medical-device packaging, compostable plastic packaging, dangerous-goods packaging, infant and young-child food packaging, food-contact plastic where recycled content would breach Regulation (EC) No 1935/2004, and any plastic part under 5% of the unit's weight."
+  },
+  {
+    "id": "RCY-02",
+    "measure_type": "obligation",
+    "duty": "Meet the 2040 recycled-content step: 50% for contact-sensitive PET, 25% for other contact-sensitive plastics, 65% for single-use plastic beverage bottles, 65% for all other plastic packaging.",
+    "addressee": "Manufacturers and importers of plastic packaging",
+    "class": "business",
+    "trigger": "a plastic part of packaging placed on the market",
+    "frequency": "annual, averaged per manufacturing plant",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 7(2)",
+    "when": "From 1 January 2040 (Art. 7(2))",
+    "source_text": "By 1 January 2040, any plastic part of packaging placed on the market shall contain the following minimum percentage of recycled content recovered from post-consumer plastic waste, per packaging type and format as referred to in Table 1 of Annex II, calculated as an average per manufacturing plant and year: (a) 50 % for contact-sensitive packaging made from PET as the major component, except single-use plastic beverage bottles; (b) 25 % for contact-sensitive packaging made from plastic materials other than PET, except single-use plastic beverage bottles; (c) 65 % for single-use plastic beverage bottles; (d) 65 % for plastic packaging other than those referred to in points (a), (b) and (c) of this paragraph.",
+    "drivers": [
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "waste",
+      "chem",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "extension",
+    "affected_delta": "The same population as RCY-01 at roughly double the level. Kept as its own row rather than folded into the 2030 duty because the two bind at different dates and an operator planning capital spend needs them separable.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "pending": "Art. 7(14) has the Commission report by 12 February 2032 on the 2030 percentages and on the feasibility of these, possibly with a legislative proposal amending them."
+  },
+  {
+    "id": "RCY-03",
+    "measure_type": "obligation",
+    "duty": "Calculate and verify recycled-content percentages by the Commission's methodology, and where the methodology requires it submit to independent third-party audit.",
+    "addressee": "Manufacturers of recycled content and of plastic packaging placed on the market",
+    "class": "business",
+    "trigger": "claiming a recycled-content percentage",
+    "frequency": "annual",
+    "verification": "independent third-party audit where the implementing act requires it",
+    "direction": "add",
+    "article": "Art. 7(11), with Art. 7(8)",
+    "when": "From 1 January 2029 or 24 months after the Art. 7(8) implementing act, whichever is later (Art. 7(11))",
+    "source_text": "the calculation and verification of the percentage of recycled content contained in packaging under paragraph 1 shall comply with the rules laid down in the implementing act adopted pursuant to paragraph 8.",
+    "drivers": [
+      "D1",
+      "D2",
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "chem/plastics"
+    ],
+    "sectors_reached": [
+      "waste",
+      "chem"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Plastic packaging converters and the recyclers supplying them. This is the verification limb of RCY-01 and binds a year earlier than the content requirement itself.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "CMP-01",
+    "measure_type": "obligation",
+    "duty": "Make the packaging listed in Art. 3(1) point (1)(f) and sticky labels on fruit and vegetables compostable in industrially controlled conditions, and home-compostable where the Member State requires it.",
+    "addressee": "Manufacturers of the listed packaging and of fruit and vegetable labels",
+    "class": "business",
+    "trigger": "placing the listed packaging or sticky labels on the market",
+    "frequency": "continuous",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 9(1)",
+    "when": "By 12 February 2028 (Art. 9(1))",
+    "source_text": "sticky labels affixed to fruit and vegetables are placed on the market, that packaging and sticky labels shall be compatible with the standard for composting in industrially controlled conditions",
+    "drivers": [
+      "D1",
+      "D4",
+      "D7"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "waste",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "A narrow set of formats -- tea and coffee singles, sticky fruit labels -- but for those it reverses the general rule: they must be compostable rather than recyclable, by derogation from Art. 6(1).",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "pending": "Art. 9(6) has the Commission request harmonised standards for industrial and home compostability by 12 February 2026. The duty bites in 2028 whether or not those standards exist."
+  },
+  {
+    "id": "CMP-02",
+    "measure_type": "obligation",
+    "duty": "Design biodegradable-polymer and other biodegradable packaging for material recycling under Art. 6, without affecting the recyclability of other waste streams.",
+    "addressee": "Manufacturers of biodegradable packaging",
+    "class": "business",
+    "trigger": "biodegradable packaging outside the Art. 9(1) and 9(2) lists",
+    "frequency": "continuous",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 9(3)",
+    "when": "By 12 February 2028 (Art. 9(3))",
+    "source_text": "packaging other than that referred to in paragraphs 1 and 2, including packaging made of biodegradable plastic polymers and other biodegradable materials, shall be designed for material recycling in accordance with Article 6",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Closes the route of claiming biodegradability instead of recyclability: outside the two listed cases, biodegradable packaging is held to the same recycling design duty as everything else.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "MIN-01",
+    "measure_type": "obligation",
+    "duty": "Design packaging so weight and volume are reduced to the minimum necessary for functionality, and document the assessment against the Annex IV performance criteria.",
+    "addressee": "Manufacturers and importers of packaging",
+    "class": "business",
+    "trigger": "packaging placed on the market",
+    "frequency": "per packaging design",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 10(1) and (4)",
+    "when": "By 1 January 2030 (Art. 10(1))",
+    "source_text": "the manufacturer or importer shall ensure that the packaging placed on the market is designed so that its weight and volume is reduced to the minimum necessary to ensure its functionality",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All packaging designers. The documentation limb is the heavy one: Art. 10(4) requires the technical specifications used, the design requirement that prevents further reduction for each Annex IV criterion, and any test results, studies, modelling or simulations relied on.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "pending": "Art. 10(3) has the Commission request harmonised standards by 12 February 2027 specifying maximum weight and volume limits and, where appropriate, wall thickness and maximum empty space for common formats."
+  },
+  {
+    "id": "MIN-02",
+    "measure_type": "obligation",
+    "duty": "Do not place on the market packaging failing the Annex IV performance criteria, or packaging whose features exist only to increase perceived product volume -- double walls, false bottoms, unnecessary layers.",
+    "addressee": "Manufacturers and importers of packaging",
+    "class": "business",
+    "trigger": "packaging design with volume-inflating features",
+    "frequency": "continuous",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 10(2)",
+    "when": "By 1 January 2030 (Art. 10(1))",
+    "source_text": "packaging with characteristics that aim only to increase the perceived volume of the product, including double walls, false bottoms and unnecessary layers, is not placed on the market",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Cosmetics, confectionery and gift packaging most directly. Art. 10(2) exempts designs protected as a Community design or trademark before 11 February 2025 where compliance would destroy the novelty or distinctiveness, and packaging for geographical-indication or quality-scheme products.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "benefit_axis_note": "A prohibition on the object rule. Encoded as obligation/add because the live enum has no prohibition type; see q.",
+    "q": "prohibition-type-pending"
+  },
+  {
+    "id": "REU-01",
+    "measure_type": "obligation",
+    "duty": "Meet all nine reusability criteria before packaging counts as reusable: designed for multiple rotations, emptiable and refillable without damage, reconditionable per Annex VI Part B, labellable, safe to handle, and recyclable at end of life.",
+    "addressee": "Manufacturers of reusable packaging",
+    "class": "business",
+    "trigger": "packaging claimed or counted as reusable",
+    "frequency": "per packaging design",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 11(1)",
+    "when": "From 11 February 2025 (Art. 11(1))",
+    "source_text": "Packaging placed on the market from 11 February 2025 shall be considered to be reusable where it fulfils all of the following requirements: (a) it has been conceived, designed and placed on the market with the objective to be re-used multiple times; (b) it has been conceived and designed to accomplish as many rotations as possible under normally predictable conditions of use; (c) it fulfils applicable requirements regarding consumer health, safety and hygiene; (d) it can be emptied or unloaded without being damaged in a way that would prevent its further function and re-use; (e) it is capable of being emptied, unloaded, refilled or reloaded while maintaining the quality and safety of the packaged product and ensuring compliance with the applicable safety and hygiene requirements, including those on food safety; (f) it is capable of being reconditioned in accordance with Part B of Annex VI, while maintaining its ability to perform its intended function; (g) it allows for affixing of labels and the provision of information on the properties of that product and on the packaging itself, including any relevant instructions and information for ensuring safety, adequate use, traceability and shelf-life of the product; (h) it can be emptied, unloaded, refilled or reloaded without risk to the health and safety of those responsible for doing so; and (i) it fulfils the requirements specific to recyclable packaging set out in Article 6, so that it can be recycled when it becomes waste.",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Anyone counting packaging towards the Art. 29 re-use targets. Note the date: this definition binds from 11 February 2025, well before the Regulation generally applies on 12 August 2026, so packaging placed on the market in the interim is already being measured against it.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "pending": "The minimum number of rotations for the most-used reusable formats is set by delegated act due 12 February 2027 (Art. 11(2)). Until then criterion (b) has no number behind it."
+  },
+  {
+    "id": "LAB-01",
+    "measure_type": "obligation",
+    "duty": "Mark packaging with the harmonised material-composition label, pictogram-based and understandable including for people with disabilities; mark compostable packaging as compostable, not home-compostable and not for disposal in nature.",
+    "addressee": "Economic operators placing packaging on the market",
+    "class": "business",
+    "trigger": "packaging placed on the market",
+    "frequency": "per packaging unit",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 12(1)",
+    "when": "From 12 August 2028 or 24 months after the Art. 12(6) or 12(7) implementing acts, whichever is later (Art. 12(1))",
+    "source_text": "packaging placed on the market shall be marked with a harmonised label containing information on its material composition in order to facilitate consumer sorting.",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "extension",
+    "affected_delta": "A real change of addressee, not just of format: 94/62/EC's marking was for identification by industry, and this is a sorting instruction for the consumer. Transport packaging and packaging in a deposit and return system are excluded, e-commerce packaging is not.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "new_rule": {
+      "trigger": "packaging placed on the market",
+      "obligation": "A harmonised, pictogram-based label aimed at CONSUMER SORTING, set by Commission implementing act, with digital marking for packaging containing substances of concern."
+    },
+    "prior_rule": {
+      "trigger": "packaging placed on the market",
+      "obligation": "Packaging had to indicate the nature of the packaging material used for identification and classification by industry, on the basis of Commission Decision 97/129/EC, marked clearly, visibly, legibly and durably on the packaging or the label.",
+      "source_text": "To facilitate collection, reuse and recovery including recycling, packaging shall indicate for the purposes of its identification and classification by the industry concerned the nature of the packaging material(s) used on the basis of Commission Decision 97/129/EC",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    },
+    "benefit_axis_note": "Art. 12(1), second subparagraph, separately requires packaging containing substances of concern to be marked by standardised open digital-marking technologies. Carried in this row's duty rather than split, because it is the same marking obligation with a second trigger."
+  },
+  {
+    "id": "LAB-02",
+    "measure_type": "obligation",
+    "duty": "Label reusable packaging as reusable, carry a QR code or open digital data carrier giving re-use system and collection-point information and enabling trip and rotation counting, and distinguish reusable from single-use packaging at the point of sale.",
+    "addressee": "Economic operators placing reusable packaging on the market",
+    "class": "business",
+    "trigger": "reusable packaging placed on the market",
+    "frequency": "per packaging unit",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 12(2)",
+    "when": "From 12 February 2029 or 30 months after the Art. 12(6) implementing act, whichever is later (Art. 12(2))",
+    "source_text": "Reusable packaging placed on the market from 12 February 2029 or 30 months from the date of entry into force of the implementing act adopted pursuant to paragraph 6, whichever is the latest, shall bear a label informing users that the packaging is reusable.",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Anyone using reusable packaging. Genuinely new: 94/62/EC had no reusability labelling at all. Art. 12(3) exempts open-loop systems with no system operator under Annex VI.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "prior_rule": null
+  },
+  {
+    "id": "LAB-03",
+    "measure_type": "obligation",
+    "duty": "Do not display labels, marks, symbols or inscriptions likely to mislead or confuse consumers about packaging sustainability, other packaging characteristics, or waste-management options where this Regulation has harmonised the labelling.",
+    "addressee": "Economic operators",
+    "class": "business",
+    "trigger": "any label, mark, symbol or inscription on packaging",
+    "frequency": "continuous",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 12(8)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "economic operators shall not provide or display labels, marks, symbols or inscriptions that are likely to mislead or confuse consumers or other end users with respect to the sustainability requirements for packaging",
+    "drivers": [],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All operators using on-pack environmental marks. Bites hardest on voluntary eco-labels and recyclability claims that duplicate or contradict the harmonised label.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "benefit_axis_note": "A prohibition on the object rule. Encoded as obligation/add because the live enum has no prohibition type; see q.",
+    "q": "prohibition-type-pending"
+  },
+  {
+    "id": "LAB-04",
+    "measure_type": "right",
+    "benefit": "Packaging made or imported before the labelling deadlines may still be sold for three years after those requirements enter into force, so existing stock and pre-printed material do not have to be written off on the deadline.",
+    "addressee": "Economic operators holding pre-deadline packaging stock",
+    "class": "business",
+    "trigger": "packaging manufactured in the Union or imported before the Art. 12(1), (2) or (4) deadlines",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 12(12)",
+    "when": "From the Art. 12 labelling deadlines (Art. 12(12))",
+    "source_text": "Packaging as referred to in paragraphs 1, 2 and 4 that is manufactured in the Union or imported before the deadlines referred in those paragraphs and that does not comply with the criteria laid down in those paragraphs may be made available on the market until 3 years from the date of entry into force of the labelling requirements laid down in those paragraphs.",
+    "drivers": [],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "retail",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [
+      "V1"
+    ],
+    "access_frictions": [],
+    "nature": "exemption",
+    "affected_delta": "Everyone holding packaging stock or pre-printed film at the labelling deadlines. A sell-through window, not a permanent exemption.",
+    "weight": "Relief",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "right_basis": {
+      "text": "may be made available on the market until 3 years from the date of entry into force of the labelling requirements laid down in those paragraphs.",
+      "kind": "existence"
+    }
+  },
+  {
+    "id": "LAB-05",
+    "measure_type": "obligation",
+    "duty": "Ensure harmonised labels enabling separate collection of each material fraction are affixed visibly, legibly and indelibly on all packaging-waste receptacles.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "waste receptacles for the collection of packaging waste",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 13(1)",
+    "when": "From 12 August 2028 or 30 months after the Art. 13(2) implementing acts, whichever is later (Art. 13(1))",
+    "source_text": "Member States shall ensure that harmonised labels that enable the separate collection of each material specific fraction of packaging waste that is intended to be discarded in separate receptacles are affixed, printed or engraved visibly, legibly and indelibly on all waste receptacles for collection of packaging waste.",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States, and through Art. 45(2)(a) the cost falls on producers via EPR fees. Receptacles under a deposit and return system are excluded.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "LAB-06",
+    "measure_type": "obligation",
+    "duty": "Make an environmental claim about a packaging property regulated here only where the packaging exceeds the applicable minimum requirement, and state whether the claim covers the unit, part of it, or all the operator's packaging.",
+    "addressee": "Economic operators making environmental claims about packaging",
+    "class": "business",
+    "trigger": "an environmental claim about a packaging property regulated by this Regulation",
+    "frequency": "per claim",
+    "verification": "technical documentation (Annex VII)",
+    "direction": "add",
+    "article": "Art. 14",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Environmental claims as defined in Article 2, point (o), of Directive 2005/29/EC concerning packaging properties for which legal requirements are set out in this Regulation may be made in relation to packaging placed on the market if they fulfil the following requirements: (a) the claims are made only in relation to packaging properties exceeding the applicable minimum requirements set out in this Regulation, in accordance with the criteria, methodologies and calculation rules set out therein; and (b) the claims specify whether they relate to the packaging unit, part of the packaging unit or all packaging placed on the market by the economic operator.",
+    "drivers": [
+      "D1"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Brand owners and retailers making on-pack green claims. The bar is 'exceeding the applicable minimum requirements' -- claiming compliance with the law is no longer a claim that may be made.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "OPS-01",
+    "measure_type": "obligation",
+    "duty": "Carry out the Annex VII conformity assessment, draw up the technical documentation and the EU declaration of conformity, and keep both for 5 years for single-use and 10 years for reusable packaging.",
+    "addressee": "Manufacturers of packaging",
+    "class": "business",
+    "trigger": "before placing packaging on the market",
+    "frequency": "per packaging type",
+    "verification": "self-assessment against Annex VII",
+    "direction": "add",
+    "article": "Art. 15(2) and (3)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Before placing packaging on the market, manufacturers shall carry out the conformity assessment procedure referred to in Article 38 or have it carried out on their behalf, and shall draw up the technical documentation referred to in Annex VII.",
+    "drivers": [
+      "D1",
+      "D3",
+      "D5",
+      "D7"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "retail",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Every packaging manufacturer selling into the EU. This is the single largest new administrative burden in the act: 94/62/EC had a presumption-of-conformity mechanism but no conformity assessment procedure, no technical documentation file and no EU declaration of conformity for packaging.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "prior_rule": null
+  },
+  {
+    "id": "OPS-02",
+    "measure_type": "obligation",
+    "duty": "Keep series production in conformity, tracking changes in packaging design and characteristics and in harmonised standards, common specifications and other technical specifications.",
+    "addressee": "Manufacturers of packaging",
+    "class": "business",
+    "trigger": "series production of packaging",
+    "frequency": "continuous",
+    "verification": "self-assessment",
+    "direction": "add",
+    "article": "Art. 15(4)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Manufacturers shall ensure that procedures are in place for series production of packaging to remain in conformity with this Regulation.",
+    "drivers": [
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All packaging manufacturers running series production. A standing quality-system duty rather than a one-off assessment.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "OPS-03",
+    "measure_type": "obligation",
+    "duty": "Give the packaging manufacturer all information and documentation it needs to demonstrate conformity, including the Annex VII technical documentation, in a language the manufacturer easily understands.",
+    "addressee": "Suppliers of packaging or packaging materials",
+    "class": "business",
+    "trigger": "supplying packaging or packaging materials to a manufacturer",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 16",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Suppliers shall provide the manufacturer with all the information and documentation necessary for the manufacturer to demonstrate the conformity of the packaging and the packaging materials with this Regulation, including the technical documentation referred to in Annex VII and required under or pursuant to Articles 5 to 11, in one or more languages which can be easily understood by the manufacturer. That information and documentation shall be provided in either paper or electronic form.",
+    "drivers": [
+      "D1"
+    ],
+    "sectors_named": [
+      "chem",
+      "paper",
+      "chem/plastics",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Material suppliers one step upstream of the packaging manufacturer -- resin producers, paper mills, glass and metal suppliers -- who were not previously in a packaging compliance chain at all.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "OPS-04",
+    "measure_type": "obligation",
+    "duty": "Before placing packaging on the market, verify that the manufacturer carried out the conformity assessment and drew up the technical documentation, that the packaging is labelled under Art. 12 and accompanied by the required documents, and mark your own name, trade name and contact address on the packaging.",
+    "addressee": "Importers of packaging",
+    "class": "business",
+    "trigger": "before placing imported packaging on the market",
+    "frequency": "per consignment",
+    "verification": "documentary check on the manufacturer",
+    "direction": "add",
+    "article": "Art. 18(1) to (3)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Importers shall only place on the market packaging which is in conformity with the requirements laid down in or pursuant to Articles 5 to 12.",
+    "drivers": [
+      "D1",
+      "D3",
+      "D5",
+      "D7"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "retail",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All importers of packaging and packaged goods. Art. 21 turns an importer or distributor into a manufacturer for Art. 15 purposes where it sells under its own name or trademark, or modifies packaging in a way affecting compliance.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "OPS-05",
+    "measure_type": "obligation",
+    "duty": "Before making packaging available, verify that the producer is registered in the Art. 44 register, that the packaging carries its Art. 12 labelling, and that the manufacturer and importer have marked their identification; do not make it available until any non-compliance is corrected.",
+    "addressee": "Distributors of packaging",
+    "class": "business",
+    "trigger": "before making packaging available on the market",
+    "frequency": "continuous",
+    "verification": "documentary check on the producer register",
+    "direction": "add",
+    "article": "Art. 19(1) to (3)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Before making packaging available on the market, distributors shall verify that: (a) the producer that is subject to the obligations on extended producer responsibility for the packaging is registered in the register of producers referred to in Article 44; (b) the packaging is labelled in accordance with Article 12; and (c) the manufacturer and the importer have complied with the requirements set out in Article 15(5) and (6) and Article 18(3), respectively.",
+    "drivers": [
+      "D1",
+      "D5"
+    ],
+    "sectors_named": [
+      "retail"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Wholesalers and retailers. A due-diligence duty over the register and the labelling of everything they stock, plus a duty to protect conformity during their own storage and transport.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "OPS-06",
+    "measure_type": "obligation",
+    "duty": "Ensure warehousing, handling, packing, addressing and dispatch conditions do not jeopardise the packaging's compliance with Arts. 5 to 12.",
+    "addressee": "Fulfilment service providers",
+    "class": "business",
+    "trigger": "handling packaging in the course of a fulfilment service",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 20",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Fulfilment service providers shall ensure that for packaging, whether empty or with a product, that they handle, the conditions during warehousing, handling and packing, addressing or dispatching do not jeopardise the packaging’s compliance",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "retail"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Third-party logistics and e-commerce fulfilment operators, newly inside a packaging compliance regime.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "OPS-07",
+    "measure_type": "obligation",
+    "duty": "On request, identify to market surveillance authorities every operator that supplied you with packaging or packaged products and every operator you supplied, retaining the ability to do so for 5 years for single-use and 10 years for reusable packaging.",
+    "addressee": "Economic operators",
+    "class": "business",
+    "trigger": "a market surveillance authority request",
+    "frequency": "per request",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 22",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Economic operators shall, upon request, provide information to the market surveillance authorities on the following: (a) the identity of any economic operator that has supplied them with packaging or packaged products; (b) the identity of any economic operator to which they have supplied packaging or packaged products. 2. Economic operators shall be able to provide the information referred to in paragraph 1, point (a), as follows: (a) as regards single use packaging: for 5 years from the date they supplied or were supplied with the packaging; (b) as regards reusable packaging: for 10 years from the date they have supplied or been supplied with the reusable packaging.",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Every operator in the packaging chain. A ten-year traceability record for reusable packaging is a data-retention duty, not just a reporting one.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "OPS-08",
+    "measure_type": "obligation",
+    "duty": "Report the Annex XII Table 3 packaging-waste information to the competent authority annually through the Art. 35(1) electronic registry, and give producers or their producer responsibility organisation everything they need for their own Art. 44(10) reporting.",
+    "addressee": "Packaging waste management operators",
+    "class": "business",
+    "trigger": "each calendar year of packaging waste managed",
+    "frequency": "annual",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 23",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Packaging waste management operators shall, on an annual basis, provide the competent authorities with the information on packaging waste listed in Table 3 of Annex XII",
+    "drivers": [
+      "D1",
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Waste management operators across the Union. Their reporting is what the Member State's Art. 56 return to the Commission is built from, so the data duty is load-bearing for the whole targets regime.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "EXC-01",
+    "measure_type": "obligation",
+    "duty": "Keep empty space in grouped, transport and e-commerce packaging at or below 50%, counting filling materials such as paper cuttings, air cushions, bubble wrap and foam chips as empty space.",
+    "addressee": "Economic operators who fill grouped, transport or e-commerce packaging",
+    "class": "business",
+    "trigger": "filling grouped, transport or e-commerce packaging",
+    "frequency": "continuous",
+    "verification": "self-assessment against the Art. 24(2) methodology",
+    "direction": "add",
+    "article": "Art. 24(1)",
+    "when": "From 1 January 2030 or 3 years after the Art. 24(2) implementing acts, whichever is later (Art. 24(1))",
+    "source_text": "economic operators who fill grouped packaging, transport packaging or e-commerce packaging shall ensure that the maximum empty space ratio, expressed as a percentage, is 50 %.",
+    "drivers": [
+      "D4",
+      "D7"
+    ],
+    "sectors_named": [
+      "retail",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "paper",
+      "chem/plastics",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "E-commerce and distribution most of all. Genuinely new: 94/62/EC's Annex II required packaging volume and weight to be the minimum needed, but set no ratio and no measurable test. Art. 24(5) exempts operators using sales packaging as e-commerce packaging or reusable packaging within a re-use system.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "prior_rule": null
+  },
+  {
+    "id": "EXC-02",
+    "measure_type": "obligation",
+    "duty": "Reduce empty space in sales packaging to the minimum necessary for functionality and product protection, assessed at the time of filling for products subject to settlement or requiring headspace.",
+    "addressee": "Economic operators who fill sales packaging",
+    "class": "business",
+    "trigger": "filling sales packaging",
+    "frequency": "continuous",
+    "verification": "self-assessment",
+    "direction": "add",
+    "article": "Art. 24(4)",
+    "when": "By 12 February 2028 (Art. 24(4))",
+    "source_text": "the economic operators who fill sales packaging shall ensure that empty space is reduced to the minimum necessary for ensuring the packaging functionality, including product protection.",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "paper",
+      "chem/plastics",
+      "glass",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Food, drink and consumer-goods fillers. No fixed ratio here, unlike Art. 24(1): the standard is qualitative, which makes it harder to plan against and easier to dispute.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "BAN-01",
+    "measure_type": "obligation",
+    "duty": "Do not place on the market any packaging in the formats and for the uses listed in Annex V -- single-use grouped packaging for multipacks, single-use packaging for unprocessed fresh fruit and vegetables, single-use packaging for food and drink consumed on premises in the HORECA sector, single-use condiment and sauce sachets, hotel miniature toiletries, and very light plastic carrier bags outside hygiene or loose-food use.",
+    "addressee": "Economic operators placing packaging on the market",
+    "class": "business",
+    "trigger": "packaging in an Annex V format placed on the market",
+    "frequency": "continuous",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 25(1)",
+    "when": "From 1 January 2030 (Art. 25(1))",
+    "source_text": "From 1 January 2030, economic operators shall not place on the market packaging in the formats and for the uses listed in Annex V.",
+    "drivers": [
+      "D7"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "foodbev",
+      "retail",
+      "horeca"
+    ],
+    "sectors_reached": [
+      "paper",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "HORECA, retail and fresh-produce packers most directly. Genuinely new as EU-wide law: 94/62/EC had no format bans at all, only the carrier-bag reduction duty. Art. 70(4) lets Member States keep pre-2025 national restrictions on the Annex V point 2 and 3 formats until 1 January 2030, and suspends Art. 4(3) for them until then.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size band is removed, but Art. 25(4) lets Member States allow MICRO-ENTERPRISES as defined in Recommendation 2003/361/EC to keep using the Annex V point 3 formats where it is demonstrably not technically feasible to avoid them or to reach re-use infrastructure. An eligibility carve-out on this duty, not a separate benefit.",
+    "prior_rule": null,
+    "benefit_axis_note": "A prohibition on the object rule -- the provision acts on the placing on the market of named formats. Encoded as obligation/add because the live enum has no prohibition type; see q.",
+    "q": "prohibition-type-pending"
+  },
+  {
+    "id": "RSY-01",
+    "measure_type": "obligation",
+    "duty": "Ensure a re-use system meeting Annex VI, including a collection incentive, exists in each Member State where you first make reusable packaging available, and document the system's compliance in the technical documentation with written confirmations from system participants.",
+    "addressee": "Economic operators first making reusable packaging available in a Member State",
+    "class": "business",
+    "trigger": "making reusable packaging available in a Member State for the first time",
+    "frequency": "per Member State",
+    "verification": "technical documentation (Annex VII), written confirmations from participants",
+    "direction": "add",
+    "article": "Art. 26",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Economic operators who make reusable packaging available on the territory of a Member State for the first time shall ensure that a system is in place in that Member State for the re-use of that packaging which includes an incentive to ensure the collection of that packaging and which meets the requirements laid down in Annex VI.",
+    "drivers": [
+      "D1",
+      "D3",
+      "D4",
+      "D7"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste",
+      "horeca"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Anyone introducing reusable packaging into a new national market. Using an existing re-use system already in place satisfies the duty, so the burden falls hardest where no system exists yet.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "RSY-02",
+    "measure_type": "obligation",
+    "duty": "Participate in one or more Annex VI Part A re-use systems, recondition reusable packaging per Annex VI Part B before offering it again, and in closed-loop systems return packaging to an approved collection point.",
+    "addressee": "Economic operators using reusable packaging",
+    "class": "business",
+    "trigger": "use of reusable packaging",
+    "frequency": "continuous",
+    "verification": "re-use system operator",
+    "direction": "add",
+    "article": "Art. 27",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Economic operators that make use of reusable packaging shall participate in one or more re-use systems and shall ensure that the re-use systems within which the reusable packaging can be re-used comply with the requirements laid down in Part A of Annex VI.",
+    "drivers": [
+      "D3",
+      "D5"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste",
+      "horeca"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All users of reusable packaging. Art. 27(3) allows a third party to be appointed to run mutualised systems and to carry these obligations on the operator's behalf.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "RFL-01",
+    "measure_type": "obligation",
+    "duty": "Publish and keep updated the rules for refill -- permitted container types, hygiene standards, and the end user's own health and safety responsibility -- displayed on the premises or otherwise provided.",
+    "addressee": "Economic operators offering refill",
+    "class": "business",
+    "trigger": "offering products for purchase through refill",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 28(1)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Economic operators who offer the possibility to purchase products through refill shall inform end users of the following (‘rules for refill’): (a) the types of containers that can be used to purchase the products on offer through refill; (b) the hygiene standards for refill; (c) the responsibility of the end user in relation to health and safety regarding the use of the containers referred to in point (a). The rules for refill shall be regularly updated and shall be either clearly displayed on the premises or otherwise provided to end users.",
+    "drivers": [
+      "D1",
+      "D5"
+    ],
+    "sectors_named": [
+      "retail",
+      "horeca"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Retailers and HORECA operating refill stations.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "RFL-02",
+    "measure_type": "obligation",
+    "duty": "Make refill stations comply with Annex VI Part C and with other Union requirements for selling through refill, and do not give away free packaging or containers at refill stations unless they meet Annex VI or sit in a deposit and return system.",
+    "addressee": "Economic operators offering refill",
+    "class": "business",
+    "trigger": "operating a refill station",
+    "frequency": "continuous",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 28(2) and (3)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Economic operators who offer the possibility to purchase products through refill shall ensure that refill stations comply with the requirements laid down in Part C of Annex VI",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "retail",
+      "horeca"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Retail and HORECA refill operators. Art. 28(3) closes the loophole of handing out free single-use containers at the refill point.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "RFL-03",
+    "measure_type": "right",
+    "benefit": "An operator may refuse to fill a customer's own container where the refill rules are not met -- in particular where the container is unhygienic or unsuitable for food or drink -- and bears no liability for hygiene or food-safety problems arising from a container the customer supplied.",
+    "addressee": "Economic operators offering refill",
+    "class": "business",
+    "trigger": "an end user presenting a container that does not meet the published rules for refill",
+    "frequency": "per refill",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 28(4)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Economic operators may refuse to refill a container provided by the end user if the end user does not comply with the rules for refill communicated by the economic operator pursuant to paragraph 1, in particular if the economic operators consider the container to be unhygienic or unsuitable for the sale of food or drink. Economic operators shall bear no liability for hygiene or food safety issues that arise from the use of containers provided by the end user.",
+    "drivers": [],
+    "sectors_named": [
+      "retail",
+      "horeca"
+    ],
+    "sectors_reached": [
+      "foodbev"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [
+      "V1"
+    ],
+    "access_frictions": [],
+    "nature": "new_right",
+    "affected_delta": "Retail and HORECA refill operators. The liability shield is the operative half: without it the refill duties in Arts. 32 and 33 would carry an uninsurable food-safety exposure.",
+    "weight": "Relief",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "right_basis": {
+      "text": "Economic operators shall bear no liability for hygiene or food safety issues that arise from the use of containers provided by the end user.",
+      "kind": "existence"
+    }
+  },
+  {
+    "id": "RFL-04",
+    "measure_type": "obligation",
+    "duty": "Endeavour to dedicate 10% of sales area to refill stations for food and non-food products.",
+    "addressee": "Final distributors with a sales area over 400 m2",
+    "class": "business",
+    "trigger": "a sales area of more than 400 m2",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 28(5)",
+    "when": "From 1 January 2030 (Art. 28(5))",
+    "source_text": "final distributors with a sales area of more than 400 m2 shall endeavour to dedicate 10 % of that sales area to refill stations for both food and non-food products.",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "retail"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Large-format grocery and general retail. An endeavour obligation, not a hard target -- it carries no measurement or reporting duty and no penalty limb under Art. 68(2).",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Banded by SALES AREA, not by employees or turnover: only final distributors above 400 m2 are in scope. The A-D bands cannot express that, so they record only that the duty is not employee-banded.",
+    "benefit_axis_note": "Carried as an obligation despite 'shall endeavour' because the addressee, trigger and content are all fixed; the softness is in the standard of compliance, which `duty` states rather than hides."
+  },
+  {
+    "id": "RTG-01",
+    "measure_type": "obligation",
+    "duty": "Ensure at least 40% of transport packaging -- pallets, foldable plastic boxes, trays, crates, IBCs, pails, drums, canisters, pallet wrappings and straps -- is reusable within a re-use system, rising to an endeavour of 70% from 2040.",
+    "addressee": "Economic operators using transport packaging in the Union",
+    "class": "business",
+    "trigger": "use of transport or transport-purpose sales packaging within the Union",
+    "frequency": "annual, per calendar year",
+    "verification": "competent authority, on the Art. 31 report",
+    "direction": "add",
+    "article": "Art. 29(1)",
+    "when": "From 1 January 2030; 70% endeavour from 1 January 2040 (Art. 29(1))",
+    "source_text": "economic operators that use transport packaging, or sales packaging used for transporting products, including for products distributed via e-commerce, within the territory of the Union, in the form of pallets, foldable-plastic boxes, boxes, trays, plastic crates, intermediate bulk containers, pails, drums and canisters of any size or material, including flexible formats or pallet wrappings or straps for stabilisation and protection of products put on pallets during transport, shall ensure that at least 40 % of such packaging in total is reusable packaging within a re-use system.",
+    "drivers": [
+      "D4",
+      "D5",
+      "D7"
+    ],
+    "sectors_named": [
+      "retail",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "wood",
+      "paper",
+      "waste",
+      "auto",
+      "build"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Manufacturing and distribution across every sector that ships on pallets. Genuinely new: 94/62/EC set no re-use targets at all -- its Art. 5 merely permitted Member States to encourage re-use. Art. 29(4) excludes dangerous-goods packaging, custom packaging for large machinery, flexible food-contact transport packaging, and cardboard boxes.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Art. 29(13) exempts an operator that in a calendar year both made available not more than 1 000 kg of packaging in the Member State and falls within the micro-enterprise definition in Recommendation 2003/361/EC. Both limbs must be met. An eligibility carve-out on this duty, not a separate benefit.",
+    "prior_rule": null
+  },
+  {
+    "id": "RTG-02",
+    "measure_type": "obligation",
+    "duty": "Use only reusable transport packaging within a re-use system for movements between your own sites and those of linked or partner enterprises.",
+    "addressee": "Economic operators moving goods between their own or linked sites",
+    "class": "business",
+    "trigger": "transport between sites of the operator or of a linked or partner enterprise",
+    "frequency": "continuous",
+    "verification": "competent authority, on the Art. 31 report",
+    "direction": "add",
+    "article": "Art. 29(2)",
+    "when": "From 1 January 2030 (Art. 29(2))",
+    "source_text": "economic operators that use transport packaging or sales packaging used for transporting products, in the forms as listed in paragraph 1 of this Article, within the territory of the Union, between different sites on which the operator performs its activity, or between any of the sites on which the operator performs its activity and the sites of any other linked enterprise or partner enterprise, as defined in Article 3 of the Annex to Recommendation 2003/361/EC as applicable on 11 February 2025, shall ensure that such packaging is reusable within a re-use system.",
+    "drivers": [
+      "D4",
+      "D7"
+    ],
+    "sectors_named": [
+      "retail",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "wood",
+      "paper",
+      "waste",
+      "auto",
+      "build"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "A 100% requirement, not a percentage target: intra-group and inter-site movements must be fully reusable. Much sharper than the 40% in Art. 29(1) and easy to miss because it sits as a derogation.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Same Art. 29(13) micro-enterprise and 1 000 kg carve-out as RTG-01."
+  },
+  {
+    "id": "RTG-03",
+    "measure_type": "obligation",
+    "duty": "Use only reusable transport packaging within a re-use system for deliveries to another economic operator inside the same Member State.",
+    "addressee": "Economic operators delivering to another operator in the same Member State",
+    "class": "business",
+    "trigger": "B2B delivery within a single Member State",
+    "frequency": "continuous",
+    "verification": "competent authority, on the Art. 31 report",
+    "direction": "add",
+    "article": "Art. 29(3)",
+    "when": "From 1 January 2030 (Art. 29(3))",
+    "source_text": "economic operators that use transport packaging or sales packaging used for transporting products, including for products distributed via e-commerce, in the forms as listed in paragraph 1, to deliver products to another economic operator within the same Member State shall ensure that such packaging is reusable within a re-use system.",
+    "drivers": [
+      "D4",
+      "D7"
+    ],
+    "sectors_named": [
+      "retail",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "wood",
+      "paper",
+      "waste",
+      "auto",
+      "build"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Domestic B2B distribution, again at 100% rather than a percentage. Cross-border B2B stays on the 40% target in Art. 29(1), so the duty differs by whether a delivery crosses a national border.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Same Art. 29(13) micro-enterprise and 1 000 kg carve-out as RTG-01."
+  },
+  {
+    "id": "RTG-04",
+    "measure_type": "obligation",
+    "duty": "Ensure at least 10% of grouped packaging in the form of boxes, excluding cardboard, is reusable within a re-use system, rising to an endeavour of 25% from 2040.",
+    "addressee": "Economic operators using grouped packaging boxes",
+    "class": "business",
+    "trigger": "use of non-cardboard grouped packaging boxes",
+    "frequency": "annual, per calendar year",
+    "verification": "competent authority, on the Art. 31 report",
+    "direction": "add",
+    "article": "Art. 29(5)",
+    "when": "From 1 January 2030; 25% endeavour from 1 January 2040 (Art. 29(5))",
+    "source_text": "economic operators that use grouped packaging in the form of boxes, excluding cardboard, outside of sales packaging to group a certain number of products to create a stock-keeping or distribution unit shall ensure that at least 10 % of such packaging is reusable packaging within a re-use system.",
+    "drivers": [
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "retail",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Note the cardboard exclusion: this target pushes against plastic crates and boxes specifically, and leaves fibre-based grouped packaging outside it.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Same Art. 29(13) micro-enterprise and 1 000 kg carve-out as RTG-01."
+  },
+  {
+    "id": "RTG-05",
+    "measure_type": "obligation",
+    "duty": "Make at least 10% of alcoholic and non-alcoholic beverages available in reusable packaging within a re-use system, rising to an endeavour of 40% from 2040, and ensure own-brand packaged products contribute fairly and proportionately.",
+    "addressee": "Final distributors of beverages",
+    "class": "business",
+    "trigger": "making beverages in sales packaging available to consumers in a Member State",
+    "frequency": "annual, per calendar year",
+    "verification": "competent authority, on the Art. 31 report",
+    "direction": "add",
+    "article": "Art. 29(6)",
+    "when": "From 1 January 2030; 40% endeavour from 1 January 2040 (Art. 29(6))",
+    "source_text": "final distributors that make alcoholic and non-alcoholic beverages in sales packaging available on the territory of a Member State to consumers shall ensure that at least 10 % of those products are made available in reusable packaging within a re-use system.",
+    "drivers": [
+      "D4",
+      "D5",
+      "D7"
+    ],
+    "sectors_named": [
+      "retail",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "glass",
+      "chem/plastics",
+      "alu",
+      "waste",
+      "horeca"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Beverage producers and grocery retail, and the single most commercially significant target in the act. Art. 29(7) excludes highly perishable beverages, milk and milk products, most grapevine products, aromatised wine, similar fruit and vegetable fermented drinks, and spirits -- so the target lands on water, soft drinks and beer.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Three carve-outs, all eligibility attributes on this duty: Art. 29(10) exempts a final distributor with a sales area of not more than 100 m2 in that year; Art. 29(11) lets Member States exempt sales areas on islands under 2 000 inhabitants or in municipalities under 54 persons/km2, except population centres over 5 000; Art. 29(13) exempts micro-enterprises under the 1 000 kg limb."
+  },
+  {
+    "id": "RTG-06",
+    "measure_type": "obligation",
+    "duty": "Take back free of charge all reusable packaging of the same type, form and size you made available, at or close to the point of handover, and fully redeem or notify the associated deposit.",
+    "addressee": "Final distributors subject to the beverage re-use target",
+    "class": "business",
+    "trigger": "a consumer returning reusable beverage packaging",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 29(9)",
+    "when": "From 1 January 2030 (Art. 29(6))",
+    "source_text": "Final distributors as referred to in paragraph 6 shall take back, free of charge, all reusable packaging of the same type, form and size as the packaging made available on the market by them, within that specific re-use system at the point of sale, ensuring the recovery and return of such packaging through the entire distribution chain. Final distributors shall ensure that end users are able to return the packaging at the location where the actual handover of such packaging takes place or in close proximity thereto. The final distributor shall fully redeem associated deposits or notify the return of the packaging according to the governance rules of the specific re-use system in order that any associated deposits be redeemed, as the case may be.",
+    "drivers": [
+      "D4",
+      "D6",
+      "D7"
+    ],
+    "sectors_named": [
+      "retail"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "glass",
+      "waste",
+      "horeca"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Grocery retail. Take-back requires physical space, handling and deposit reconciliation at every store, and it survives the target exemptions.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Applies even to distributors exempted from the target itself: Art. 29(11) requires an exempted distributor that nonetheless sells in reusable packaging to arrange take-back under this paragraph."
+  },
+  {
+    "id": "RTG-07",
+    "measure_type": "right",
+    "benefit": "Where the Member State allows it, final distributors may pool to meet the beverage re-use target together rather than each hitting 10% alone -- up to five members, up to 40% of the relevant beverage category's market share.",
+    "addressee": "Final distributors subject to the Art. 29(6) beverage target",
+    "class": "business",
+    "trigger": "a Member State that has allowed pooling, and a pool within the 40% market-share and five-member limits (the member limit not applying to distributors under one brand)",
+    "frequency": "per calendar year",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 29(12)",
+    "when": "From 1 January 2030 (Art. 29(6))",
+    "source_text": "Member States may allow final distributors to form pools for the purpose of meeting their obligations laid down in paragraph 6, provided that each pool: (a) does not exceed more than 40 % of the market share of the relevant beverage category; (b) consists of no more than five final distributors; and (c) only covers beverage categories made available on the territory of a Member State by all pool members.",
+    "drivers": [],
+    "sectors_named": [
+      "retail"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [
+      "V1"
+    ],
+    "access_frictions": [
+      "F1",
+      "F4"
+    ],
+    "nature": "new_right",
+    "affected_delta": "Smaller grocery chains in Member States that switch pooling on. The conditionality is real and is carried in `trigger`: this faculty does not exist unless the Member State creates it, so its availability differs across the internal market.",
+    "weight": "Relief",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "pending": "The detailed conditions and reporting requirements for pooling are set by delegated act due 1 January 2028 (Art. 29(12), final subparagraph). Pool members must also satisfy Arts. 101 and 102 TFEU and must not share prospective sales data.",
+    "benefit_axis_note": "Kept on the benefit side despite the Member State gate because the basis object is verbatim and the object acted on is the distributor's compliance route. The gate is recorded in `trigger` rather than dropped, which is the honest way to carry a conditional conferral.",
+    "right_basis": {
+      "text": "Member States may allow final distributors to form pools for the purpose of meeting their obligations laid down in paragraph 6",
+      "kind": "existence"
+    }
+  },
+  {
+    "id": "RTG-08",
+    "measure_type": "obligation",
+    "duty": "Calculate achievement of each re-use target separately, in equivalent units of the listed formats for transport and grouped packaging, and in sales units or volume of beverages for the final-distributor targets.",
+    "addressee": "Economic operators and final distributors subject to the Art. 29 targets",
+    "class": "business",
+    "trigger": "demonstrating achievement of an Art. 29 or Art. 33 target",
+    "frequency": "annual, per calendar year",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 30(1) and (2)",
+    "when": "From 1 January 2030 (Art. 29)",
+    "source_text": "For the purpose of demonstrating the achievement of the targets set out in Article 29(1) and (5), the economic operator using the packaging shall calculate, for each target separately, the following: (a) the number of equivalent units of any of the packaging formats listed in Article 29(1) or (5), as applicable, constituting reusable packaging within a re-use system that it used in a calendar year; (b) the number of equivalent units of any of the packaging formats listed in Article 29(1) or (5), as applicable, other than those indicated in point (a) of this paragraph, that it used in a calendar year. 2. For the purpose of demonstrating the achievement of the targets set out in Article 29(6) and Article 33, the final distributor making available such products to consumers on the territory of a Member State shall calculate, for each target separately, the following: (a) the total number of sales units or total volume of beverages in reusable packaging within a re-use system made available on the territory of a Member State in a calendar year; (b) the total number of sales units or total volume of beverages made available on the territory of a Member State in packaging other than that referred to in point (a) in a calendar year.",
+    "drivers": [
+      "D1",
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "retail",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "wood",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Everyone inside an Art. 29 target. The counting unit differs by target, so an operator caught by several of them runs several parallel calculations.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Follows the carve-outs on the underlying targets."
+  },
+  {
+    "id": "RTG-09",
+    "measure_type": "obligation",
+    "duty": "Report re-use target achievement to the competent authority within 6 months of each reporting year's end, through its electronic system and in its format, with further information on request.",
+    "addressee": "Economic operators subject to the Art. 29 re-use targets",
+    "class": "business",
+    "trigger": "the end of a reporting year, first year 2030",
+    "frequency": "annual",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 31",
+    "when": "First reporting year 2030 (Art. 31(3))",
+    "source_text": "Economic operators as referred to in Article 29(1) to (8) shall submit a report containing data concerning the achievement of the re-use targets set out in Article 29 for each calendar year to the competent authority referred to in Article 40.",
+    "drivers": [
+      "D1",
+      "D5"
+    ],
+    "sectors_named": [
+      "retail",
+      "foodbev"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "wood",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "The report is made public by the Member State under Art. 31(6), so this is a disclosure duty as well as a reporting one.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Follows the carve-outs on the underlying targets."
+  },
+  {
+    "id": "TKA-01",
+    "measure_type": "obligation",
+    "duty": "Provide a system letting consumers bring their own container to be filled with take-away hot or cold beverages and with ready-prepared food, at no higher cost and on no less favourable terms than the same product in single-use packaging, and inform consumers of the option at the point of sale.",
+    "addressee": "Final distributors in the HORECA sector selling take-away food and drink",
+    "class": "business",
+    "trigger": "making take-away beverages or ready-prepared food available",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 32",
+    "when": "By 12 February 2027 (Art. 32(1))",
+    "source_text": "final distributors that conduct their business activity in the HORECA sector and that make available on the territory of a Member State hot or cold beverages in take-away packaging shall provide a system for consumers to bring their own container to be filled;",
+    "drivers": [
+      "D4",
+      "D7"
+    ],
+    "sectors_named": [
+      "horeca",
+      "retail"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "chem/plastics",
+      "paper",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "The whole HORECA take-away trade, and the earliest hard operational date in the act at 12 February 2027. The no-higher-cost rule removes the option of pricing the behaviour away. Genuinely new -- no equivalent in 94/62/EC.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No micro-enterprise exemption here, unlike Art. 33(4). Every HORECA final distributor selling take-away is in scope regardless of size.",
+    "prior_rule": null
+  },
+  {
+    "id": "TKA-02",
+    "measure_type": "obligation",
+    "duty": "Offer consumers the option of take-away food and drink in reusable packaging within a re-use system, at no higher cost and on no less favourable terms than single-use, informed at the point of sale; from 2030 endeavour to offer 10% of products in a reusable format.",
+    "addressee": "Final distributors in the HORECA sector selling take-away food and drink",
+    "class": "business",
+    "trigger": "making take-away beverages or ready-prepared food available",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 33",
+    "when": "By 12 February 2028; 10% endeavour from 2030 (Art. 33(1) and (5))",
+    "source_text": "final distributors that conduct their business activity in the HORECA sector and that make available on the territory of a Member State hot or cold beverages or ready-prepared food in take-away packaging shall give consumers the option of obtaining the products in re-useable packaging within a system for re-use.",
+    "drivers": [
+      "D3",
+      "D4",
+      "D7"
+    ],
+    "sectors_named": [
+      "horeca",
+      "retail"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "chem/plastics",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "HORECA above micro size. Heavier than Art. 32 because it requires an actual re-use system -- collection, washing, logistics -- not merely accepting a customer's container.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Art. 33(4) exempts final distributors falling within the micro-enterprise definition in Recommendation 2003/361/EC as applicable on 11 February 2025. An eligibility carve-out on this duty, not a separate benefit -- and note it does NOT extend to the Art. 32 bring-your-own-container duty."
+  },
+  {
+    "id": "BAG-01",
+    "measure_type": "obligation",
+    "duty": "Keep annual consumption of lightweight plastic carrier bags at or below 40 per capita, by 31 December 2025 and in every year thereafter.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "annual national consumption of lightweight plastic carrier bags",
+    "frequency": "annual",
+    "verification": "reporting to the Commission under Art. 56(1)(b)",
+    "direction": "add",
+    "article": "Art. 34(1)",
+    "when": "By 31 December 2025 and each year thereafter (Art. 34(1))",
+    "source_text": "A sustained reduction is considered to be achieved if the annual consumption does not exceed 40 lightweight plastic carrier bags per capita, or the equivalent target in weight, by 31 December 2025 and subsequently by 31 December each year thereafter.",
+    "drivers": [
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "extension",
+    "affected_delta": "THE NUMBER DOES NOT MOVE -- 40 per capita is 94/62/EC Art. 4(1a)(a) unchanged. THE LIVE DELTA IS RECURRENCE: the directive set 2025 as an endpoint, and this makes 40 a standing annual ceiling with no terminal date. That is the one genuine change in the carry-over cluster.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size.",
+    "new_rule": {
+      "trigger": "annual national consumption of lightweight plastic carrier bags",
+      "obligation": "Consumption not to exceed 40 lightweight plastic carrier bags per capita by 31 December 2025 AND subsequently by 31 December each year thereafter."
+    },
+    "prior_rule": {
+      "trigger": "annual national consumption of lightweight plastic carrier bags",
+      "obligation": "Measures ensuring the annual consumption level does not exceed 90 lightweight plastic carrier bags per person by 31 December 2019 and 40 by 31 December 2025, or equivalent targets in weight -- a one-off endpoint with no obligation stated for the years after 2025.",
+      "source_text": "the adoption of measures ensuring that the annual consumption level does not exceed 90 lightweight plastic carrier bags per person by 31 December 2019 and 40 lightweight plastic carrier bags per person by 31 December 2025, or equivalent targets set in weight.",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    },
+    "benefit_axis_note": "Also dropped: the directive's alternative compliance route in Art. 4(1a)(b), under which a Member State could instead ensure bags were not provided free of charge at the point of sale. PPWR keeps only the consumption ceiling, so the pricing route is no longer a way to discharge the duty.",
+    "q": "carry-over-renders-as-requirement"
+  },
+  {
+    "id": "CNF-01",
+    "measure_type": "obligation",
+    "duty": "Demonstrate compliance with Arts. 5 to 12, 24 and 26 using reliable, accurate and reproducible test, measurement and calculation methods reflecting the state of the art, with results of low uncertainty.",
+    "addressee": "Economic operators demonstrating conformity",
+    "class": "business",
+    "trigger": "testing, measuring or calculating for conformity",
+    "frequency": "per assessment",
+    "verification": "self-assessment or accredited conformity assessment body",
+    "direction": "add",
+    "article": "Art. 35",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "tests, measurements and calculations shall be made using reliable, accurate and reproducible methods which take into account the generally recognised state-of-the art methods and whose results are considered to be of low uncertainty.",
+    "drivers": [
+      "D2",
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "retail",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All operators demonstrating conformity. The standard is qualitative until harmonised standards exist under Art. 36 or common specifications under Art. 37.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "CNF-02",
+    "measure_type": "obligation",
+    "duty": "No longer required to prove conformity from first principles where a harmonised standard covers the requirement: conformity is presumed, and Art. 37 adds a Commission common-specification fallback where no standard exists or the standard is inadequate.",
+    "addressee": "Economic operators demonstrating conformity of packaging",
+    "class": "business",
+    "trigger": "packaging conforming to a harmonised standard, a part of one, or a common specification",
+    "frequency": "per assessment",
+    "verification": "self-assessment",
+    "direction": "rem",
+    "article": "Arts. 36(1)-(3) and 37",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Packaging which is in conformity with harmonised standards or parts thereof, the references of which have been published in the Official Journal of the European Union, shall be presumed to be in conformity with the requirements laid down in or pursuant to Articles 5 to 12, 24 and 26 covered by those standards or parts thereof.",
+    "drivers": [],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "retail",
+      "waste"
+    ],
+    "provision_id": "ppwr-presumption-of-conformity",
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "reduction",
+    "affected_delta": "All packaging manufacturers. The presumption now covers substances, recyclability, recycled content, compostability, minimisation, reusability, labelling, empty space and re-use systems, where before it covered only the Annex II essential requirements. The common-specification fallback is new: under the directive, an absent standard simply left the operator to prove compliance itself.",
+    "weight": "Relief",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "new_rule": {
+      "trigger": "packaging conforming to a harmonised standard or a Commission common specification",
+      "obligation": "Conformity is presumed against the whole of Arts. 5 to 12, 24 and 26 -- a far wider requirement set than the old Annex II essential requirements -- and Art. 36(2) additionally presumes conformity for methods performed by accredited conformity assessment bodies. Where no harmonised standard exists or an existing one is inadequate, Art. 37 lets the Commission adopt common specifications that carry the same presumption."
+    },
+    "prior_rule": {
+      "trigger": "packaging complying with relevant harmonised standards, or with national standards where no harmonised standard existed",
+      "obligation": "Member States presumed compliance with the essential requirements in Annex II for packaging complying with relevant harmonised standards published in the Official Journal, or with notified national standards in areas where no harmonised standard existed.",
+      "source_text": "Member States shall, from the date set out in Article 22 (1), presume compliance with all essential requirements set out in this Directive including Annex II in the case of packaging which complies:",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    },
+    "benefit_axis_note": "This provision is genuinely mixed, so it is carried as TWO linked measures rather than one averaged row. This is the Simplification limb -- broader presumption plus a fallback where standardisation fails. CNF-03 is the narrowing limb. The split is clean because the two move in opposite directions on different populations and each has its own prior state in 94/62/EC Art. 9(2)."
+  },
+  {
+    "id": "CNF-03",
+    "measure_type": "obligation",
+    "duty": "Prove conformity without relying on a national standard: the route by which a notified national standard conferred a presumption of conformity where no harmonised standard existed is not carried over.",
+    "addressee": "Economic operators in Member States that had notified national packaging standards",
+    "class": "business",
+    "trigger": "a requirement covered by a national standard but by no harmonised standard or common specification",
+    "frequency": "per assessment",
+    "verification": "self-assessment",
+    "direction": "add",
+    "article": "Art. 36(1), by omission of the 94/62/EC Art. 9(2)(b) route",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Test, measurement or calculation methods referred to in Article 35 which are in conformity with harmonised standards or parts thereof, the references of which have been published in the Official Journal of the European Union, shall be presumed to be in conformity with the requirements covered by those standards or parts thereof set out in that Article.",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": "ppwr-presumption-of-conformity",
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "reduction",
+    "affected_delta": "Operators in Member States with an established national packaging standards estate, who lose a compliance route they had under the directive. The Art. 37 common-specification power is the intended replacement, but it is a Commission power rather than an operator's entitlement and nothing obliges the Commission to exercise it.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "new_rule": {
+      "trigger": "a requirement covered by no harmonised standard and no common specification",
+      "obligation": "No presumption is available. The operator demonstrates conformity directly under Art. 35, using state-of-the-art methods of low uncertainty."
+    },
+    "prior_rule": {
+      "trigger": "packaging complying with a notified national standard in an area where no harmonised standard existed",
+      "obligation": "Compliance with a relevant national standard, communicated to the Commission and published in the Official Journal, conferred a presumption of conformity with the essential requirements wherever no harmonised standard covered the area.",
+      "source_text": "with the relevant national standards referred to in paragraph 3 in so far as, in the areas covered by such standards, no harmonized standards exist.",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    },
+    "benefit_axis_note": "The narrowing limb of the Art. 36/37 split; CNF-02 is the Simplification limb. A route that is NOT carried over has no sentence of its own in the new act, so source_text anchors on Art. 36(1) -- which lists the presumption routes that do survive, and is therefore where the omission is visible. The before-state is carried by a resolved, sourced prior_rule quoted from the directive, which is exactly the shape the deletion guardrail demands."
+  },
+  {
+    "id": "CNF-04",
+    "measure_type": "obligation",
+    "duty": "Run the Annex VII internal production control conformity assessment procedure for the Arts. 5 to 12 requirements.",
+    "addressee": "Manufacturers of packaging",
+    "class": "business",
+    "trigger": "conformity assessment of packaging",
+    "frequency": "per packaging type",
+    "verification": "self-assessment against Annex VII",
+    "direction": "add",
+    "article": "Art. 38",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Conformity assessment of packaging as regards the requirements laid down in or pursuant to Articles 5 to 12 shall be carried out in accordance with the procedure set out in Annex VII.",
+    "drivers": [
+      "D1",
+      "D3",
+      "D5"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All packaging manufacturers. New in kind: packaging had no conformity assessment procedure under 94/62/EC.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "CNF-05",
+    "measure_type": "obligation",
+    "duty": "Draw up, continuously update and keep the EU declaration of conformity in the Annex VIII model, translated as the Member State of marketing requires, and assume responsibility for the packaging's compliance by drawing it up.",
+    "addressee": "Manufacturers of packaging",
+    "class": "business",
+    "trigger": "packaging placed on the market",
+    "frequency": "per packaging type, continuously updated",
+    "verification": "competent authority risk-based checks under Art. 39(5)",
+    "direction": "add",
+    "article": "Art. 39",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "The EU declaration of conformity shall state that the fulfilment of the requirements laid down in or pursuant to Articles 5 to 12 has been demonstrated.",
+    "drivers": [
+      "D1",
+      "D5",
+      "D6"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All packaging manufacturers. Where packaging or the packaged product falls under several Union acts requiring a declaration, a single combined declaration may be drawn up.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "AUT-01",
+    "measure_type": "obligation",
+    "duty": "Designate competent authorities for this Chapter and for Arts. 6(10), 29(1)-(7) and (9) and 30 to 34, lay down their organisation and the administrative and procedural rules for registration, reporting oversight, EPR supervision, EPR authorisation and information, and notify the Commission by 12 July 2025.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "implementation of this Regulation",
+    "frequency": "once, then on change",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 40",
+    "when": "Notification by 12 July 2025 (Art. 40(3))",
+    "source_text": "Member States shall designate one or more competent authorities to be responsible for implementation and enforcement of the obligations set out in this Chapter and in Article 6(10), Article 29(1) to (7) and (9) and Articles 30 to34.",
+    "drivers": [
+      "D1"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States, and the earliest deadline in the act -- 12 July 2025, before the Regulation generally applies.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "AUT-02",
+    "measure_type": "obligation",
+    "duty": "Add a dedicated packaging chapter to the Directive 2008/98/EC waste management plan covering Arts. 48, 50 and 52 measures, and a dedicated packaging chapter to the waste prevention programme covering Arts. 43 and 51 measures and litter.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "waste management plans and waste prevention programmes under Directive 2008/98/EC",
+    "frequency": "per plan revision",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 42",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Member States shall include in the waste management plans required pursuant to Article 28 of Directive 2008/98/EC a dedicated chapter on the management of packaging and packaging waste, including measures taken pursuant to Articles 48, 50 and 52 of this Regulation. 2. Member States shall include in the waste prevention programmes required pursuant to Article 29 of Directive 2008/98/EC a dedicated chapter on the prevention of packaging, packaging waste and packaging discarded as litter, including measures taken pursuant to Articles 43 and 51 of this Regulation.",
+    "drivers": [
+      "D1",
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States, folded into planning machinery that already exists under the Waste Framework Directive.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "PRV-01",
+    "measure_type": "obligation",
+    "duty": "Reduce packaging waste generated per capita against a 2018 baseline by at least 5% by 2030, 10% by 2035 and 15% by 2040, and endeavour to reduce plastic packaging waste specifically.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "national packaging waste generated per capita",
+    "frequency": "continuous, measured against 2030, 2035 and 2040",
+    "verification": "reporting to the Commission under Art. 56",
+    "direction": "add",
+    "article": "Art. 43(1) and (4)",
+    "when": "2030, 2035 and 2040 (Art. 43(1))",
+    "source_text": "Each Member State shall reduce the packaging waste generated per capita, as compared to the packaging waste generated per capita in 2018 as reported to the Commission in accordance with Decision 2005/270/EC, by at least: (a) 5 % by 2030; (b) 10 % by 2035; (c) 15 % by 2040.",
+    "drivers": [
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics",
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States, and the first absolute waste-reduction target in EU packaging law. 94/62/EC Art. 4 required only that preventive measures be implemented, with no quantified reduction. Art. 43(8) let a Member State request a base year other than 2018 by 31 December 2025 on evidence of a reporting-driven distortion.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size.",
+    "prior_rule": null,
+    "pending": "The tourism correction factor, which materially changes the target for high-tourism Member States, is set by implementing act due 12 February 2027 (Art. 43(2))."
+  },
+  {
+    "id": "REG-01",
+    "measure_type": "obligation",
+    "duty": "Register in the national producer register of every Member State where you first make packaging or packaged products available, or where you unpack packaged products without being an end user, supplying the Annex IX Part A information; do not make packaging available at all until registered.",
+    "addressee": "Producers of packaging and packaged products",
+    "class": "business",
+    "trigger": "first making packaging or packaged products available in a Member State, or unpacking without being an end user",
+    "frequency": "per Member State, then on change",
+    "verification": "competent authority, within 12 weeks",
+    "direction": "add",
+    "article": "Art. 44(2), (4) and (5)",
+    "when": "18 months after the first Art. 44(14) implementing act (Art. 44(1))",
+    "source_text": "Producers shall be obliged to register in the register referred to in paragraph 1 of this Article in each Member State where they make packaging or packaged products available on the territory of the Member State for the first time",
+    "drivers": [
+      "D1",
+      "D3",
+      "D7"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste",
+      "horeca"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Every producer selling packaged goods into more than one Member State faces up to 27 separate registrations. Genuinely new at Union level: 94/62/EC had no producer register, only the Art. 7(2) requirement that EPR schemes exist by end-2024. Art. 44(11)(d) lets competent authorities charge cost-based registration fees.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No exemption from registration by size. The 10-tonne threshold in Art. 44(8) reduces what must be REPORTED, not whether registration is required -- see REG-02.",
+    "prior_rule": null
+  },
+  {
+    "id": "REG-02",
+    "measure_type": "obligation",
+    "duty": "Report the Annex IX Part B information to the register by 1 June each year for the preceding calendar year, with a lighter Part B point 2 return for producers under 10 tonnes; submit quarterly instead where the Member State requires it for budgetary reasons, and notify changes and cessation without undue delay.",
+    "addressee": "Producers, their authorised representatives, or their producer responsibility organisation",
+    "class": "business",
+    "trigger": "the close of a calendar year in which packaging was made available",
+    "frequency": "annual by 1 June, quarterly where required",
+    "verification": "competent authority; Member States may require independent audit and certification",
+    "direction": "add",
+    "article": "Art. 44(7) to (9) and (12)",
+    "when": "Following registration under Art. 44(1)",
+    "source_text": "shall submit the information set out in Part B, point 1, of Annex IX to the competent authority responsible for the register, by 1 June for each full preceding calendar year.",
+    "drivers": [
+      "D1",
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Every registered producer. Member States may require the figures to be audited and certified by independent auditors, which turns an annual return into an assurance engagement.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Art. 44(8) gives a producer that made available under 10 tonnes in a calendar year a lighter Annex IX Part B point 2 return instead of the full point 1 return. A Member State may set a LOWER threshold where it would otherwise lack data. An eligibility carve-out on the reporting duty, not a separate benefit."
+  },
+  {
+    "id": "EPR-01",
+    "measure_type": "obligation",
+    "duty": "Carry extended producer responsibility for all packaging first made available or unpacked in a Member State, with financial contributions additionally covering the cost of labelling waste receptacles under Art. 13 and of compositional surveys of mixed municipal waste.",
+    "addressee": "Producers of packaging and packaged products",
+    "class": "business",
+    "trigger": "packaging first made available in a Member State, or unpacked without being an end user",
+    "frequency": "continuous",
+    "verification": "producer responsibility organisation and competent authority",
+    "direction": "add",
+    "article": "Art. 45(1) and (2)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Producers shall have extended producer responsibility under the schemes established in accordance with Articles 8 and 8a of Directive 2008/98/EC and with this Section for the packaging, including packaging of packaged products, that they make available for the first time on the territory of a Member State or that they unpack without being end users.",
+    "drivers": [
+      "D5",
+      "D6"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste",
+      "horeca"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "extension",
+    "affected_delta": "EPR itself is not new -- it has been required since 31 December 2024 under 94/62/EC Art. 7(2). What moves is the addressee, now the producer directly, and the cost base, which grows by two new categories.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "new_rule": {
+      "trigger": "packaging first made available in a Member State, or unpacked without being an end user",
+      "obligation": "EPR is imposed directly on the producer by the Regulation rather than through a Member State duty to set up a scheme, and the cost base is widened to include receptacle labelling and mixed-municipal-waste compositional surveys."
+    },
+    "prior_rule": {
+      "trigger": "all packaging placed on the national market",
+      "obligation": "Member States had to ensure that extended producer responsibility schemes were established for all packaging by 31 December 2024, in accordance with Arts. 8 and 8a of Directive 2008/98/EC.",
+      "source_text": "Member States shall ensure that, by 31 December of 2024, extended producer responsibility schemes are established for all packaging in accordance with Articles 8 and 8a of Directive 2008/98/EC.",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    }
+  },
+  {
+    "id": "EPR-02",
+    "measure_type": "obligation",
+    "duty": "Before allowing a producer to use the platform, obtain its Art. 44 registration details and registration number for the consumer's Member State and a self-certification of EPR compliance, and make best efforts to assess whether that information is complete and reliable.",
+    "addressee": "Providers of online platforms allowing distance contracts with producers",
+    "class": "business",
+    "trigger": "a producer seeking to offer packaging or packaged products to EU consumers via the platform",
+    "frequency": "per producer onboarding",
+    "verification": "platform due diligence",
+    "direction": "add",
+    "article": "Art. 45(4) and (6)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "providers of online platforms that fall within the scope of Section 4 of Chapter III of that Regulation and that allow consumers to conclude distance contracts with producers shall obtain the following information from producers that offer packaging or packaged products to consumers located in the Union prior to allowing those producers to use their services: (a) information on the registration of the producers referred to in Article 44 of this Regulation in the Member State where the consumer is located and the registration number(s) of the producer in that register; (b) a self-certification by the producer confirming that it only offers packaging with regard to which the extended producer responsibility requirements referred to in paragraphs 1, 2 and3 of this Article are complied with in the Member State where the consumer is located.",
+    "drivers": [
+      "D1",
+      "D3",
+      "D5"
+    ],
+    "sectors_named": [
+      "retail"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Online marketplaces, as the enforcement point for EPR against non-EU and hard-to-reach producers. Free-riding on EPR is largely a distance-selling problem, and this is how the act reaches it.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "Scoped to platforms within Section 4 of Chapter III of Regulation (EU) 2022/2065, not by employee or turnover band."
+  },
+  {
+    "id": "EPR-03",
+    "measure_type": "obligation",
+    "duty": "Check the producer's registration and EPR self-certification against an official database or the public register, require correction where the information looks inaccurate, incomplete or out of date, and suspend the service until it is corrected, giving reasons.",
+    "addressee": "Fulfilment service providers",
+    "class": "business",
+    "trigger": "concluding a contract with a producer offering packaging to EU consumers",
+    "frequency": "per producer contract",
+    "verification": "fulfilment provider due diligence",
+    "direction": "add",
+    "article": "Art. 45(8)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "the fulfilment service provider shall, through the use of any freely accessible official online database or online interface made available by a Member State or the Union or by means of the publicly available registration list under Article 44(13) of this Regulation or requests to the producer to provide supporting documents from reliable sources, make best efforts to assess whether the information referred to in paragraph 7 of this Article is reliable and complete. For the purposes of this Regulation, producers shall be responsible for the accuracy of the information provided. Where the fulfilment service provider obtains sufficient indications or has reason to believe that any item of information referred to in paragraph 7 obtained from the producer concerned is inaccurate, incomplete or not up-to-date, that fulfilment service provider shall request that the producer remedies that situation without delay or within the period set by Union or national law, as applicable. Where the producer fails to correct or complete that information, the fulfilment service provider shall swiftly suspend the provision of its service to that producer in relation to the offering of packaging or packaged products to consumers located in the Union until the request has been fully complied with. The fulfilment service provider shall provide the producer with the reasons for the suspension.",
+    "drivers": [
+      "D1",
+      "D3",
+      "D5"
+    ],
+    "sectors_named": [
+      "retail"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail",
+      "waste"
+    ],
+    "provision_id": "ppwr-art45-fulfilment-suspension",
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Logistics and fulfilment operators, made responsible for policing their customers' EPR compliance and required to cut off service where it fails.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "EPR-04",
+    "measure_type": "right",
+    "benefit": "A producer whose fulfilment service is suspended for an EPR information failure may challenge that decision before a court in the Member State where the fulfilment service provider is established.",
+    "addressee": "Producers whose fulfilment service has been suspended",
+    "class": "business",
+    "trigger": "suspension of a fulfilment service under Art. 45(8)",
+    "frequency": "per suspension",
+    "verification": "national court",
+    "direction": "add",
+    "article": "Art. 45(9)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "the producer concerned shall have the right to challenge the decision of the fulfilment service provider before a court in a Member State in which the fulfilment service provider is established.",
+    "drivers": [],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "retail"
+    ],
+    "provision_id": "ppwr-art45-fulfilment-suspension",
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [
+      "V1"
+    ],
+    "access_frictions": [
+      "F3"
+    ],
+    "nature": "new_right",
+    "affected_delta": "Producers dependent on third-party fulfilment. Linked to EPR-03 by provision_id: the same provision creates a private enforcement power and the remedy against it, and neither reading contains the other.",
+    "weight": "Relief",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold.",
+    "benefit_axis_note": "An express right in the act's own words -- 'shall have the right' -- so the basis object needed no construction. It is the counterweight to a duty the act places on a private party rather than an authority, which is why it exists at all.",
+    "right_basis": {
+      "text": "the producer concerned shall have the right to challenge the decision of the fulfilment service provider before a court in a Member State in which the fulfilment service provider is established.",
+      "kind": "existence"
+    }
+  },
+  {
+    "id": "EPR-05",
+    "measure_type": "obligation",
+    "duty": "Apply to the competent authority for authorisation to fulfil extended producer responsibility, individually or through a producer responsibility organisation, and notify changes or cessation without undue delay.",
+    "addressee": "Producers fulfilling EPR individually, and producer responsibility organisations",
+    "class": "business",
+    "trigger": "fulfilment of extended producer responsibility obligations",
+    "frequency": "once, then on change",
+    "verification": "competent authority or independent expert, within 18 weeks of a complete dossier",
+    "direction": "add",
+    "article": "Art. 47(1) and (4)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "The producer, in the case of individual fulfilment of extended producer responsibility obligations, or the producer responsibility organisation entrusted with carrying out those obligations, in the case of collective fulfilment of extended producer responsibility obligations, shall apply for an authorisation on fulfilment of extended producer responsibility from the competent authority.",
+    "drivers": [
+      "D1",
+      "D3"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Producers and PROs in all 27 Member States. The authorisation may be revoked under Art. 47(5), which makes it a licence to trade in packaged goods rather than a formality.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "EPR-06",
+    "measure_type": "obligation",
+    "duty": "Provide an adequate financial guarantee covering waste management costs owed in the event of non-compliance, permanent cessation of operations or insolvency.",
+    "addressee": "Producers fulfilling EPR individually, and producer responsibility organisations",
+    "class": "business",
+    "trigger": "fulfilment of extended producer responsibility obligations",
+    "frequency": "continuous",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 47(6)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "shall provide an adequate guarantee intended to cover the costs related to waste management operations owed by the producer or the producer responsibility organisation, in the event of non-compliance with the extended producer responsibility obligations",
+    "drivers": [
+      "D6"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "A balance-sheet duty, not an administrative one: capital or an instrument has to stand behind the EPR obligation. Member States may add requirements, and the guarantee may take the form of a public fund financed by producers' fees.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "COL-01",
+    "measure_type": "obligation",
+    "duty": "Set up return and separate collection covering the whole territory and all packaging waste, open to operators, authorities and third parties and to imported products on non-discriminatory terms; collect design-for-recycling-compliant packaging for recycling and prohibit its incineration and landfill.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "packaging waste arising from end users",
+    "frequency": "continuous",
+    "verification": "reporting to the Commission under Art. 56",
+    "direction": "add",
+    "article": "Arts. 48(1) and (5)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Member States shall ensure that systems and infrastructures are set up to provide for the return and separate collection of all packaging waste from the end users, in order to ensure that it is treated in accordance with Articles 4, 10 and 13 of Directive 2008/98/EC, and to facilitate its preparation for re-use and high-quality recycling. Packaging that complies with design for recycling criteria as established in delegated acts adopted pursuant to Article 6(4) of this Regulation shall be collected for recycling. Incineration and landfill of such packaging shall be prohibited, with the exception of waste resulting from subsequent treatment operations of separately collected packaging waste for which recycling is not feasible or does not deliver the best environmental outcome.",
+    "drivers": [
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "extension",
+    "affected_delta": "The material change is the landfill and incineration ban on recyclable packaging, which has no equivalent in the directive, plus the shift from 'return and/or collection' to mandatory separate collection. Art. 48(3) allows derogations for formats where co-collection does not damage output quality.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size.",
+    "new_rule": {
+      "trigger": "all packaging waste from end users",
+      "obligation": "Return and SEPARATE collection of all packaging waste, covering the whole territory including public spaces, business premises and residential areas, with an outright prohibition on incinerating or landfilling packaging that meets the design-for-recycling criteria."
+    },
+    "prior_rule": {
+      "trigger": "used packaging and packaging waste from consumers and other final users",
+      "obligation": "Member States had to ensure systems were set up for the return and/or collection of used packaging and packaging waste in order to channel it to the most appropriate waste management alternative, and for its reuse or recovery including recycling. Collection did not have to be separate.",
+      "source_text": "the return and/or collection of used packaging and/or packaging waste from the consumer, other final user, or from the waste stream in order to channel it to the most appropriate waste management alternatives;",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    }
+  },
+  {
+    "id": "COL-02",
+    "measure_type": "obligation",
+    "duty": "Set mandatory national collection objectives for the Art. 52 materials, consistent with the recycling targets and with the Art. 7 recycled-content requirements.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "the material streams listed in Art. 52",
+    "frequency": "continuous",
+    "verification": "reporting to the Commission under Art. 56",
+    "direction": "add",
+    "article": "Art. 49",
+    "when": "By 1 January 2029 (Art. 49)",
+    "source_text": "Member States shall set mandatory collection objectives and take the necessary measures to ensure that the collection of the materials listed in Article 52 is consistent with the recycling targets set out in that Article and with the mandatory recycled content targets set out in Article 7.",
+    "drivers": [
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States. This is the provision that links collection to the recycled-content duty on converters: without enough collected feedstock, Art. 7 cannot be met, and this makes that a Member State obligation rather than a market problem.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "DRS-01",
+    "measure_type": "obligation",
+    "duty": "Separately collect at least 90% by weight per year of single-use plastic beverage bottles and single-use metal beverage containers up to three litres.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "single-use plastic beverage bottles and metal beverage containers up to three litres",
+    "frequency": "annual",
+    "verification": "reporting to the Commission under Art. 56(1)(c)",
+    "direction": "add",
+    "article": "Art. 50(1)",
+    "when": "By 1 January 2029 (Art. 50(1))",
+    "source_text": "Member States shall take the necessary measures to ensure the separate collection of at least 90 % per year by weight of the following packaging formats made available on the market for the first time in that Member State in a given calendar year: (a) single-use plastic beverage bottles with a capacity of up to three litres; and (b) single-use metal beverage containers with a capacity of up to three litres.",
+    "drivers": [
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "alu",
+      "steel",
+      "foodbev",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States. Genuinely new in PPWR terms -- 94/62/EC set no format-specific collection rate. The 90% figure matches the Single-Use Plastics Directive's bottle target but extends it to metal beverage containers, which is the new reach.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size.",
+    "prior_rule": null
+  },
+  {
+    "id": "DRS-02",
+    "measure_type": "obligation",
+    "duty": "Set up deposit and return systems for single-use plastic beverage bottles and metal beverage containers, with a deposit charged at the point of sale, meeting the Annex X minimum requirements.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "the packaging formats in Art. 50(1)",
+    "frequency": "continuous",
+    "verification": "reporting to the Commission under Art. 56(1)(c)",
+    "direction": "add",
+    "article": "Art. 50(2) and (11)",
+    "when": "By 1 January 2029 (Art. 50(1) and (11))",
+    "source_text": "Member States shall take the necessary measures to ensure that deposit and return systems are set up for the relevant packaging formats referred to in paragraph 1 and that a deposit is charged at the point of sale.",
+    "drivers": [
+      "D4",
+      "D5",
+      "D6"
+    ],
+    "sectors_named": [
+      "waste",
+      "retail"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "alu",
+      "steel",
+      "foodbev",
+      "horeca"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Member States without a DRS today face building national return infrastructure, and retail carries the return points. Art. 50(5) exempts a Member State that already reached 80% separate collection of the format in 2026 and notifies an implementation plan by 1 January 2028 -- but Art. 50(7) withdraws the exemption if the rate stays below 90% for three consecutive years.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size, though the retail take-back it forces reaches every point of sale.",
+    "benefit_axis_note": "Art. 50(3) lets Member States exempt HORECA from charging the deposit where the packaging is opened, consumed and returned on the premises. Art. 50(4) excludes wine and grapevine products, aromatised wine, similar fermented fruit and vegetable drinks, spirits, and milk and milk products. Both are eligibility carve-outs on this duty."
+  },
+  {
+    "id": "DRS-03",
+    "measure_type": "obligation",
+    "duty": "Ensure return points for reusable packaging are as convenient for end users as the return points for single-use packaging in a deposit and return system.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "reusable packaging of similar purpose and format to DRS single-use formats",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 50(10)",
+    "when": "By 1 January 2029 (Art. 50(1))",
+    "source_text": "Member States shall ensure that return points and opportunities for reusable packaging with a similar purpose and format to those established under paragraph 1 are as convenient for end users as return points and opportunities are to return single-use packaging to a deposit and return system.",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "waste",
+      "retail"
+    ],
+    "sectors_reached": [
+      "glass",
+      "foodbev"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Stops a well-run single-use DRS from making single-use more convenient than re-use -- the perverse outcome the re-use targets would otherwise run into.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "RRF-01",
+    "measure_type": "obligation",
+    "duty": "Take measures encouraging re-use and refill systems that comply with Arts. 27 and 28 and Annex VI without compromising food hygiene or consumer safety, and ensure EPR schemes and deposit and return systems allocate a minimum share of their budget to reduction and prevention.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "national re-use and refill systems",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 51(1) and (3)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Member States shall take measures to encourage the establishment of re-use systems for packaging with sufficient incentives for return and of refill systems in an environmentally sound manner. Those systems shall comply with the requirements laid down in Articles 27 and 28 and Annex VI and shall not compromise food hygiene or the safety of consumers.",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "foodbev",
+      "retail",
+      "horeca",
+      "glass",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States. The budget-allocation limb in Art. 51(3) is the operative one: it directs EPR and DRS money towards prevention rather than only towards collection.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size.",
+    "benefit_axis_note": "Art. 51(2)'s menu of measures -- deposit systems, economic incentives, single-use charges, obligations to sell a percentage in reusable packaging -- was REJECTED as a benefit row. It is a list of things a Member State MAY do; nothing is conferred on anyone until one is chosen."
+  },
+  {
+    "id": "RCT-01",
+    "measure_type": "obligation",
+    "duty": "Achieve recycling of at least 65% of all packaging waste by weight by 31 December 2025 and 70% by 31 December 2030, with material lines of 50/55% plastic, 25/30% wood, 70/80% ferrous metals, 50/60% aluminium, 70/75% glass and 75/85% paper and cardboard.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "packaging waste generated on the national territory",
+    "frequency": "continuous, measured at 2025 and 2030",
+    "verification": "reporting to the Commission under Art. 56(1)(a)",
+    "direction": "add",
+    "article": "Art. 52(1)",
+    "when": "31 December 2025 and 31 December 2030 (Art. 52(1))",
+    "source_text": "Member States shall take the necessary measures to achieve the following recycling targets covering the whole of their territory: (a) by 31 December 2025, a minimum of 65 % by weight of all packaging waste generated; (b) by 31 December 2025, the following minimum percentages by weight of the following specific materials contained in packaging waste generated: (i) 50 % of plastic; (ii) 25 % of wood; (iii) 70 % of ferrous metals; (iv) 50 % of aluminium; (v) 70 % of glass; (vi) 75 % of paper and cardboard; (c) by 31 December 2030, a minimum of 70 % by weight of all packaging waste generated; (d) by 31 December 2030, the following minimum percentages by weight of the following specific materials contained in packaging waste generated: (i) 55 % of plastic; (ii) 30 % of wood; (iii) 80 % of ferrous metals; (iv) 60 % of aluminium; (v) 75 % of glass; (vi) 85 % of paper and cardboard.",
+    "drivers": [
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "carry_over",
+    "affected_delta": "NOTHING MOVES. Every figure in Art. 52(1) is identical to 94/62/EC Art. 6(1)(f) to (i) as amended by Directive (EU) 2018/852: 65/70 overall, plastic 50/55, wood 25/30, ferrous 70/80, aluminium 50/60, glass 70/75, paper and cardboard 75/85. Anything presenting PPWR as raising the recycling targets is wrong. The postponement mechanism in Art. 52(2) is likewise carried over from Art. 6(1a).",
+    "weight": "Neutral",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size.",
+    "new_rule": {
+      "trigger": "packaging waste generated on the national territory",
+      "obligation": "65% by 31 December 2025 and 70% by 31 December 2030, with the same six material lines at the same percentages."
+    },
+    "prior_rule": {
+      "trigger": "packaging waste generated on the national territory",
+      "obligation": "Identical targets: 65% of all packaging waste recycled by 31 December 2025 and 70% by 31 December 2030, with the same six material lines at the same percentages -- plastic 50/55, wood 25/30, ferrous metals 70/80, aluminium 50/60, glass 70/75, paper and cardboard 75/85.",
+      "source_text": "no later than 31 December 2025 a minimum of 65 % by weight of all packaging waste will be recycled;",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    },
+    "benefit_axis_note": "Carried as a row because the duty is live under this act and Member States comply with it under this act, not under a repealed directive. The delta model is what prevents it reading as a new burden. See the file docstring on why it cannot be RENDERED neutral.",
+    "q": "carry-over-renders-as-requirement"
+  },
+  {
+    "id": "RCT-02",
+    "measure_type": "obligation",
+    "duty": "Calculate packaging waste generated and packaging waste recycled each calendar year on the Art. 53 rules, exhaustively, adjusted for comparability, reliability and completeness under the Art. 56(7) implementing act.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "each calendar year of packaging waste",
+    "frequency": "annual",
+    "verification": "reporting to the Commission under Art. 56",
+    "direction": "add",
+    "article": "Art. 53",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Member States shall calculate the weight of packaging waste generated in a given calendar year.",
+    "drivers": [
+      "D1",
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States. The calculation point rules decide whether a target is met, so this is where the recycling targets are really enforced.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "RCT-03",
+    "measure_type": "obligation",
+    "duty": "Where an adjusted recycling target is claimed for re-use, calculate it by subtracting the three-year average share of reusable sales packaging, capped at five percentage points, and account separately for wooden packaging repaired for re-use.",
+    "addressee": "Member States claiming a re-use adjustment",
+    "class": "state",
+    "trigger": "a decision to achieve an adjusted target level",
+    "frequency": "annual",
+    "verification": "reporting to the Commission under Art. 56",
+    "direction": "add",
+    "article": "Art. 54",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "A Member State may decide to achieve an adjusted level of the targets set out in Article 52(1) for a given year by taking into account the average share, in the preceding 3 years, of reusable sales packaging placed on the market for the first time and re-used within a re-use system.",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "wood",
+      "glass",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "reduction",
+    "affected_delta": "Carried over from 94/62/EC Art. 6a with no change of substance. Recorded because it is the mechanism by which a Member State's headline recycling obligation can legitimately fall.",
+    "weight": "Relief",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size.",
+    "new_rule": {
+      "trigger": "a decision to achieve an adjusted target level for reusable sales packaging",
+      "obligation": "Unchanged in substance: three-year average share of reusable sales packaging subtracted from the Art. 52(1) targets, capped at five percentage points, with a separate limb for wooden packaging repaired for re-use."
+    },
+    "prior_rule": {
+      "trigger": "a decision to achieve an adjusted target level for reusable sales packaging",
+      "obligation": "The same adjustment existed, on the same three-year average and the same five-percentage-point cap, against the targets in Art. 6(1)(f) to (i).",
+      "source_text": "No more than five percentage points of such share shall be taken into account for the calculation of the respective adjusted target level.",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    }
+  },
+  {
+    "id": "INF-01",
+    "measure_type": "obligation",
+    "duty": "Make available to end users information on their role in waste prevention, the re-use arrangements available, their role in separate collection including for packaging containing hazardous products, the meaning of on-pack labels and symbols, and the impact of littering and of discarding packaging in mixed municipal waste.",
+    "addressee": "Producers, producer responsibility organisations, or appointed public authorities",
+    "class": "business",
+    "trigger": "packaging supplied on the territory of a Member State",
+    "frequency": "continuous",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 55",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "shall make available to end users, in particular consumers, the following information regarding the prevention and management of packaging waste with respect to the packaging that the producers supply on the territory of a Member State:",
+    "drivers": [
+      "D1",
+      "D5"
+    ],
+    "sectors_named": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail"
+    ],
+    "sectors_reached": [
+      "retail",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Producers, on top of the Art. 8a(2) Waste Framework Directive information duty and the Art. 12 labelling duty. A consumer-communication obligation distinct from what goes on the pack.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "in",
+      "B": "in",
+      "C": "in",
+      "D": "in"
+    },
+    "size_scope_note": "No size threshold."
+  },
+  {
+    "id": "INF-02",
+    "measure_type": "obligation",
+    "duty": "Report to the Commission each calendar year on recycling target implementation and reusable packaging, per-capita consumption of each carrier-bag category, the DRS separate collection rate, and the quantities of packaging made available, collected and recycled by category.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "the close of a calendar year",
+    "frequency": "annual",
+    "verification": "Commission review",
+    "direction": "add",
+    "article": "Art. 56(1) and (2)",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Article 56 Reporting to the Commission 1. Member States shall submit the following data to the Commission for each calendar year: (a) data on the implementation of Article 52(1), points (a) to (d), and data pursuant to Table 2 of Annex XII on reusable packaging; (b) the annual consumption of very lightweight plastic carrier bags, lightweight plastic carrier bags, thick plastic carrier bags and very thick plastic carrier bags per capita, separately for each category as listed in Table 4 of Annex XII;",
+    "drivers": [
+      "D1",
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "extension",
+    "affected_delta": "Reporting existed under 94/62/EC Art. 12; its granularity roughly triples. The carrier-bag return alone goes from one figure to four.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size.",
+    "new_rule": {
+      "trigger": "each calendar year",
+      "obligation": "Reporting extended to four separate carrier-bag categories rather than one, to the DRS separate collection rate, to reusable packaging data, and to packaging made available, collected and recycled per Annex XII category."
+    },
+    "prior_rule": {
+      "trigger": "each calendar year",
+      "obligation": "Member States reported data on packaging and packaging waste to the Commission, including annual lightweight plastic carrier bag consumption from 27 May 2018.",
+      "source_text": "From 27 May 2018 Member States shall report on the annual consumption of lightweight plastic carrier bags when providing data on packaging and packaging waste to the Commission in accordance with Article 12.",
+      "status": "sourced",
+      "source_document": "Directive 94/62/EC, consolidated 4 July 2018 (01994L0062-20180704)"
+    }
+  },
+  {
+    "id": "INF-03",
+    "measure_type": "obligation",
+    "duty": "Establish harmonised packaging and packaging waste databases carrying the Annex XII data and information on flows, made publicly accessible in a machine-readable, interoperable and re-usable format.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "the reporting obligations in Art. 56",
+    "frequency": "continuous",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 57",
+    "when": "12 months after the Art. 56(7) implementing acts (Art. 57(1))",
+    "source_text": "Member States shall take the necessary measures to ensure that databases on packaging and packaging waste are established, where not already in place, on a harmonised basis",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "glass",
+      "alu",
+      "steel",
+      "paper",
+      "wood",
+      "chem/plastics"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States. The public-accessibility requirement is what makes the packaging data auditable from outside the Member State reporting it.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "MSV-01",
+    "measure_type": "obligation",
+    "duty": "Lay down effective, proportionate and dissuasive penalties for infringements, including administrative fines for breaches of Arts. 24 to 29, and notify the Commission of the rules and of any later amendment.",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "infringement of this Regulation",
+    "frequency": "once, then on amendment",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 68",
+    "when": "By 12 February 2027 (Art. 68(1) and (3))",
+    "source_text": "Member States shall lay down the rules on penalties applicable to infringements of this Regulation and shall take all measures necessary to ensure that they are implemented.",
+    "drivers": [
+      "D6"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail",
+      "retail",
+      "horeca"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States, and through them every operator. Note which duties carry MANDATORY administrative fines under Art. 68(2): Arts. 24 to 29 -- excessive packaging, format bans, re-use systems, refill and the re-use targets. That is the act's enforcement priority stated in its own structure.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "MSV-02",
+    "measure_type": "obligation",
+    "duty": "Where there is sufficient reason to believe packaging presents a risk to the environment or human health, evaluate it against all relevant requirements, require the operator to take corrective action, and where the operator does not act, prohibit or restrict the packaging or withdraw or recall it.",
+    "addressee": "Member State market surveillance authorities",
+    "class": "state",
+    "trigger": "sufficient reason to believe packaging presents a risk",
+    "frequency": "per case",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Arts. 58 to 60",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "where the market surveillance authorities of a Member State have sufficient reason to believe that packaging covered by this Regulation presents a risk to the environment or human health",
+    "drivers": [
+      "D3",
+      "D6"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "All 27 Member States, with the Union safeguard procedure in Art. 59 escalating a contested national measure to the Commission. For operators, the practical exposure is withdrawal or recall, which is new for packaging.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "MSV-03",
+    "measure_type": "obligation",
+    "duty": "Communicate national non-compliance measures without delay to the Art. 25(1) authorities under Regulation (EU) 2019/1020 so they feed the border risk analysis, and act on formal non-compliance under Art. 62.",
+    "addressee": "Member State market surveillance and designated border authorities",
+    "class": "state",
+    "trigger": "a national measure against non-compliant packaging whose effect is not restricted to one territory",
+    "frequency": "per case",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Arts. 61 and 62",
+    "when": "From 12 August 2026 (Art. 71)",
+    "source_text": "Market surveillance authorities shall, without delay, communicate to the authorities designated pursuant to Article 25(1) of Regulation (EU) 2019/1020 the measures referred to in Article 58(5) of this Regulation where the non-compliance is not restricted to their territory.",
+    "drivers": [
+      "D3"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Border authorities in all 27 Member States, and importers of packaged goods, who now face release being suspended for a packaging documentation failure. This is the limb PPWR's Art. 66 amendment to Regulation (EU) 2019/1020 switches on by adding the act to its Annex I.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a Member State, not a company by size."
+  },
+  {
+    "id": "GPP-01",
+    "measure_type": "obligation",
+    "duty": "Apply the Commission's minimum mandatory green public procurement requirements when awarding contracts where packaging or packaged products represent more than 30% of the estimated contract value or of the value of products used by the contracted services.",
+    "addressee": "Contracting authorities and contracting entities under Directives 2014/24/EU and 2014/25/EU",
+    "class": "state",
+    "trigger": "a public contract where packaging exceeds 30% of the estimated value",
+    "frequency": "per procurement",
+    "verification": "procurement procedure",
+    "direction": "add",
+    "article": "Art. 63",
+    "when": "Implementing acts by 12 February 2030, applying to procedures started 12 months later (Art. 63(1) and (2))",
+    "source_text": "the Commission shall, by 12 February 2030, adopt implementing acts specifying minimum mandatory requirements for public contracts",
+    "drivers": [
+      "D1",
+      "D3"
+    ],
+    "sectors_named": [
+      "waste"
+    ],
+    "sectors_reached": [
+      "chem/plastics",
+      "paper",
+      "glass",
+      "alu",
+      "wood",
+      "foodbev",
+      "retail",
+      "retail"
+    ],
+    "provision_id": null,
+    "file": "ppwr",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R0040",
+    "value_drivers": [],
+    "access_frictions": [],
+    "nature": "new_obligation",
+    "affected_delta": "Public buyers across the Union, and through them their packaging suppliers, for whom the requirements become a condition of bidding. Contracting authorities may derogate in duly justified cases on public security or public health grounds, or for unresolvable technical difficulties.",
+    "weight": "Burden",
+    "size_scope": {
+      "A": "na",
+      "B": "na",
+      "C": "na",
+      "D": "na"
+    },
+    "size_scope_note": "Binds a contracting authority, not a company by size.",
+    "benefit_axis_note": "REJECTED as a benefit row. Art. 63(1) opens 'In order to incentivise the supply and demand for environmentally sustainable packaging', which is exactly the rhetorical opportunity language the basis gate exists to catch. The operative content is a Commission rulemaking duty and a condition on contracting authorities: no amount, rate, eligibility or existence is conferred on any supplier."
+  }
+]

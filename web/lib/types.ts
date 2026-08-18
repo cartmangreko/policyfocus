@@ -78,6 +78,12 @@ export interface Measure {
   pending?: string;
   provision_id?: string | null;
 
+  // An open question this extraction pass could not close — not a note, a
+  // flag. Present on ppwr rows where the schema cannot yet say what the act
+  // says: a ban with no `prohibition` measure_type, or a carry-over that has
+  // no way to render Neutral. See sources/ppwr_reconciliation_docket.json.
+  q?: string;
+
   // diff-model fields (currently omnibus.json only)
   nature?: string;
   new_rule?: RuleState;
