@@ -5,7 +5,7 @@ import FindingCard from "@/components/FindingCard";
 import NetPositionStrip from "@/components/NetPositionStrip";
 import SectorExposure from "@/components/SectorExposure";
 import SignalRow from "@/components/SignalRow";
-import StatsStrip from "@/components/StatsStrip";
+import SummaryStrip from "@/components/SummaryStrip";
 import {
   SECTORS,
   getMeasuresForSector,
@@ -14,6 +14,7 @@ import {
   getSectorStats,
 } from "@/lib/data";
 import { getExposure } from "@/lib/exposure";
+import { getSectorSummary } from "@/lib/summaries";
 import { getFindingsForSector, withEvidence } from "@/lib/findings";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
 import type { SectorSlug } from "@/lib/types";
@@ -89,14 +90,9 @@ export default async function SectorPage({
             {reached.length} more reach it through supply-chain, procurement or
             regulatory-dependency channels.
           </p>
-          <StatsStrip
-            stats={[
-              { value: String(stats.total), label: "Measures reaching sector" },
-              { value: String(stats.added), label: "Added / burden", tone: "add" },
-              { value: String(stats.removed), label: "Removed / relief", tone: "rem" },
-              { value: String(stats.named), label: "Naming the sector" },
-            ]}
-          />
+          {/* The gate-checked summary object for this node, rendered dumbly.
+              Same three cuts as every other node on the site. */}
+          <SummaryStrip cuts={getSectorSummary(sectorSlug)} />
         </div>
       </section>
 
