@@ -4,12 +4,21 @@
 // model; only ets.json/iaa.json carry the benefit-side incentive fields).
 
 export type MeasureClass = "business" | "state" | "investor" | "commission" | "household";
-export type Direction = "add" | "rem";
+// add | rem | unchanged. `unchanged` asserts that a restated rule did NOT
+// move -- it derives Neutral, and is admissible only on a duty-side row with a
+// resolved prior_rule. Before it existed, a carry-over had to be filed as
+// `add` and rendered "Requirement" however plainly the prior_rule said the
+// level was identical.
+export type Direction = "add" | "rem" | "unchanged";
+// `prohibition` is duty-side, alongside `obligation`: it forbids conduct
+// outright rather than conditioning it. "Do not place this on the market" and
+// "keep this below 100 mg/kg" are different instruments, and collapsing them
+// made four PPWR bans read as ordinary requirements.
 // `right` is benefit-side, alongside `incentive`: it marks a provision that
 // confers a faculty the addressee did not hold (priority permitting, an option
 // to pool, a status that unlocks a procedure) rather than one that eases a
 // duty. See sources/benefit_axis.py for the operative-verb test that decides it.
-export type MeasureType = "obligation" | "incentive" | "right";
+export type MeasureType = "obligation" | "prohibition" | "incentive" | "right";
 export type DDriver = "D1" | "D2" | "D3" | "D4" | "D5" | "D6" | "D7";
 export type VDriver = "V1" | "V2" | "V3" | "V4";
 export type FFriction = "F1" | "F2" | "F3" | "F4" | "F5";
@@ -77,6 +86,12 @@ export interface Measure {
 
   pending?: string;
   provision_id?: string | null;
+
+  // An open question this extraction pass could not close — not a note, a
+  // flag. Present on ppwr rows where the schema cannot yet say what the act
+  // says: a ban with no `prohibition` measure_type, or a carry-over that has
+  // no way to render Neutral. See sources/ppwr_reconciliation_docket.json.
+  q?: string;
 
   // diff-model fields (currently omnibus.json only)
   nature?: string;

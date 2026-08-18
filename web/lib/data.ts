@@ -12,7 +12,7 @@ import { isPositiveValence, valenceLabel } from "./valence";
 
 // data/ lives one level up from web/ at the repo root. Untouched, read-only.
 const DATA_DIR = path.join(process.cwd(), "..", "data");
-const DATA_FILES = ["omnibus.json", "ets.json", "iaa.json", "cbam.json", "nzia.json", "crma.json"];
+const DATA_FILES = ["omnibus.json", "ets.json", "iaa.json", "cbam.json", "nzia.json", "crma.json", "ppwr.json"];
 
 export const FILES: Record<string, FileMeta> = {
   omnibus: {
@@ -41,6 +41,12 @@ export const FILES: Record<string, FileMeta> = {
   crma: {
     name: "Critical Raw Materials Act",
     code: "Regulation (EU) 2024/1252, consolidated 03.05.2024",
+  },
+  // Read at the BASE act, not a consolidation: Cellar announces
+  // 02025R0040-20250122 and then serves it in no format. Single-pass.
+  ppwr: {
+    name: "Packaging and Packaging Waste Regulation",
+    code: "Regulation (EU) 2025/40, base act (read once, not reconciled)",
   },
 };
 

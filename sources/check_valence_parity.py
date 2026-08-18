@@ -42,8 +42,8 @@ WEB = os.path.join(os.path.dirname(_HERE), "web")
 # unrepresented combination that disagrees across the two implementations is a
 # bug already written, just not yet triggered. None/"" cover a row whose
 # measure_type is absent, which deriveValence defaults to obligation.
-MEASURE_TYPES = ["obligation", "incentive", "right", None, "", "bogus"]
-DIRECTIONS = ["add", "rem", None, "", "bogus"]
+MEASURE_TYPES = ["obligation", "prohibition", "incentive", "right", None, "", "bogus"]
+DIRECTIONS = ["add", "rem", "unchanged", None, "", "bogus"]
 
 # valence.ts names the stored valence in the data's vocabulary and maps it to a
 # display label; Python returns the label directly. The parity that matters is

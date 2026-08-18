@@ -86,6 +86,14 @@ FILES = {
     "crma": dict(rulings=crma_rulings, docket="crma_reconciliation_docket.json"),
 }
 
+# Files that have been read ONCE. They cannot pass the six checks -- there is
+# no second pass to check anything against -- and the point of listing them is
+# that silence would be indistinguishable from reconciliation. A reader of this
+# report has to be able to see which files are standing on one read.
+SINGLE_PASS = {
+    "ppwr": "ppwr_reconciliation_docket.json",
+}
+
 failures: list[str] = []
 notes: list[str] = []
 
@@ -364,6 +372,29 @@ def main() -> int:
     # same question three times. It is here because a finding is the only thing
     # on the site that restates the register in its own words -- if a ruling
     # moved a row out from under a published claim, this is where that shows up.
+    # SINGLE-PASS FILES. Not a verdict on quality -- a statement of standing.
+    # The only thing checkable here is that the declaration matches the file it
+    # describes, so a docket cannot go stale while the register moves under it.
+    single_pass_lines = []
+    for key, docket_name in sorted(SINGLE_PASS.items()):
+        print(f"\nSINGLE-PASS FILE: {key}")
+        docket = json.loads((HERE / docket_name).read_text(encoding="utf-8"))
+        rows = json.loads((DATA / f"{key}.json").read_text(encoding="utf-8"))
+        check(docket.get("reconciled") is False,
+              f"{key}: docket declares the file NOT reconciled")
+        ok = check(docket.get("register_rows") == len(rows),
+                   f"{key}: docket row count matches the register file",
+                   f"docket says {docket.get('register_rows')}, file has {len(rows)}")
+        for q in docket.get("known_open_questions", []):
+            print(f"        open: {q.split('.')[0][:88]}")
+        for r in docket.get("resolved_since_first_publication", []):
+            print(f"        closed: {r.split('—')[0].strip()}")
+        single_pass_lines.append(
+            f"{key.upper()} NOT RECONCILED — single-pass, {len(rows)} register rows, "
+            f"{len(docket.get('known_open_questions', []))} open question(s). "
+            f"Read once on {docket.get('declared_at')}; every classification is unconfirmed."
+            if ok else f"{key.upper()} single-pass docket does not match the register file.")
+
     print("\n7. THE FINDINGS LAYER RESOLVES AGAINST THE REGISTER")
     rc, out = run(["build_findings.py"])
     check(rc == 0, f"build_findings: {out.strip().splitlines()[0] if out.strip() else ''}",
@@ -381,6 +412,8 @@ def main() -> int:
         print()
     for _, verdict, _ok in verdicts:
         print(verdict)
+    for line in single_pass_lines:
+        print(line)
     return 0
 
 

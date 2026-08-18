@@ -5,7 +5,6 @@
     "configuration beyond the dossier guard. The topic channel is the query that",
     "finds acts nobody told us to look for, and it is the one that needs tuning."
   ],
-
   "watchlist": {
     "enabled": true,
     "_comment": [
@@ -24,7 +23,6 @@
     "max_dossier_members": 25,
     "follow_consolidations": true
   },
-
   "topic": {
     "enabled": true,
     "_comment": [
@@ -35,18 +33,66 @@
       "",
       "Widen deliberately and one concept at a time, watching the in/out ratio in",
       "the run report. If a run returns dozens of candidates and almost all triage",
-      "as out, the last concept added was too broad."
+      "Widen deliberately and one concept at a time, watching the in/out ratio in",
+      "the run report. If a run returns dozens of candidates and almost all triage",
+      "as out, the last concept added was too broad.",
+      "",
+      "2026-08-18: four circularity concepts added at once, which breaks the",
+      "one-at-a-time rule deliberately and for a stated reason. The register now",
+      "carries PPWR, and the Circular Economy Act is the named capture priority --",
+      "but the five emissions concepts above would not have surfaced either. Yield",
+      "since 2025 is 106 works under circular economy, 83 waste management, 68",
+      "waste recycling, 38 packaging; overlapping heavily, and roughly 6 a month",
+      "against a 40-per-run breaker. Watch the in/out ratio and cut back if it is",
+      "poor.",
+      "",
+      "KNOWN LIMIT, and it is the important one: CELLAR had indexed 32025R0040",
+      "under NO EuroVoc concept at all when this was checked, seven months after",
+      "publication. The topic channel would therefore have missed PPWR however it",
+      "was tuned. EuroVoc indexing lags publication, so this channel cannot be the",
+      "only defence for an act we already know is coming -- see the CEA entry in",
+      "queued.json."
     ],
     "eurovoc_concepts": [
-      { "uri": "http://eurovoc.europa.eu/434880", "label": "EU Emissions Trading Scheme" },
-      { "uri": "http://eurovoc.europa.eu/5782", "label": "tradeable emission permit" },
-      { "uri": "http://eurovoc.europa.eu/435007", "label": "EU emission allowance" },
-      { "uri": "http://eurovoc.europa.eu/6400", "label": "reduction of gas emissions" },
-      { "uri": "http://eurovoc.europa.eu/2507", "label": "industrial policy" }
+      {
+        "uri": "http://eurovoc.europa.eu/434880",
+        "label": "EU Emissions Trading Scheme"
+      },
+      {
+        "uri": "http://eurovoc.europa.eu/5782",
+        "label": "tradeable emission permit"
+      },
+      {
+        "uri": "http://eurovoc.europa.eu/435007",
+        "label": "EU emission allowance"
+      },
+      {
+        "uri": "http://eurovoc.europa.eu/6400",
+        "label": "reduction of gas emissions"
+      },
+      {
+        "uri": "http://eurovoc.europa.eu/2507",
+        "label": "industrial policy"
+      },
+      {
+        "uri": "http://eurovoc.europa.eu/c_1138d9d2",
+        "label": "circular economy"
+      },
+      {
+        "uri": "http://eurovoc.europa.eu/1158",
+        "label": "waste management"
+      },
+      {
+        "uri": "http://eurovoc.europa.eu/2947",
+        "label": "waste recycling"
+      },
+      {
+        "uri": "http://eurovoc.europa.eu/720",
+        "label": "packaging"
+      }
     ],
     "lookback_days": 30
   },
-
   "celex": {
     "_comment": [
       "Which CELEX shapes are candidates at all. This is a cheap structural",
@@ -64,12 +110,23 @@
       "the first live run surfaced two methane-regulation recommendations that",
       "sailed past an unfiltered sector 3."
     ],
-    "allowed_sectors": ["3", "5"],
-    "allowed_sector3_types": ["L", "R", "D"],
-    "allowed_sector5_types": ["PC"],
-    "exclude_patterns": ["^[0-9]{5}XC", "R\\(0[1-9]\\)$"]
+    "allowed_sectors": [
+      "3",
+      "5"
+    ],
+    "allowed_sector3_types": [
+      "L",
+      "R",
+      "D"
+    ],
+    "allowed_sector5_types": [
+      "PC"
+    ],
+    "exclude_patterns": [
+      "^[0-9]{5}XC",
+      "R\\(0[1-9]\\)$"
+    ]
   },
-
   "triage": {
     "_comment": [
       "effort is medium rather than low because the judgment is legal, not",

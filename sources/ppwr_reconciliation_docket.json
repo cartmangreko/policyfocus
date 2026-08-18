@@ -1,0 +1,20 @@
+{
+  "_comment": "PPWR's entry in the reconciliation docket. It is NOT a reconciliation docket in the sense the other three are: there is no Pass B, so there are no disagreements to freeze and nothing to rule on. It exists so reconciliation_gate.py can state PPWR's standing out loud rather than leave it off the report, where a reader would have no way to tell an unreconciled file from a reconciled one.",
+  "file": "ppwr",
+  "status": "single_pass",
+  "reads": 1,
+  "reconciled": false,
+  "register_rows": 89,
+  "declared_at": "2026-08-18",
+  "reason": "One independent hand-authored read of Regulation (EU) 2025/40. No second extraction pass was run, and none was manufactured by re-running the same model over the same text — that would produce agreement rather than a second read, which is worse than nothing because it looks like corroboration.",
+  "what_this_means": "Every classification in data/ppwr.json is unconfirmed. The four reconciled files each moved substantially on their second read — CRMA went from 54 rows to 90, and CBAM's second pass disagreed with the first twelve times — so the expectation is that this file is wrong in the same proportion, not that it is right.",
+  "known_open_questions": [
+    "The Art. 36/37 presumption of conformity is split into two linked measures (CNF-02 Simplification, CNF-03 narrowing). Whether that split is the right reading is exactly the kind of call a second pass exists to test.",
+    "Art. 34(1) is split into BAG-01 (the recurrence delta, add) and BAG-02 (the carried-over 40-per-capita level, unchanged). One sentence doing two things is a judgement call a second read should re-make independently.",
+    "9 rows name a sector that also appears in sectors_reached (LAB-04, LAB-06, OPS-04, OPS-05, OPS-06, EPR-02, EPR-03, EPR-04 and one more, all on `retail`). Harmless to display, since named wins, but it is a data defect and no validator catches it. crma has 6 of the same. Out of scope for the valence PR; fix separately."
+  ],
+  "resolved_since_first_publication": [
+    "prohibition-type-pending — CLOSED. `prohibition` is now a first-class measure_type and SUB-04, MIN-02, LAB-03 and BAN-01 carry it, each with reclass_from provenance.",
+    "carry-over-renders-as-requirement — CLOSED. `unchanged` is now a direction value deriving Neutral, and SUB-02, RCT-01 and the new BAG-02 carry it. Art. 52's recycling targets no longer render Requirement."
+  ]
+}

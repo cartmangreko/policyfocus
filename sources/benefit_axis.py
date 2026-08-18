@@ -138,8 +138,25 @@ BASIS_STATUSES = ("verbatim", "external", "announced")
 
 # The measure_type vocabulary. `right` is benefit-side: right rows carry
 # `benefit`, never `duty`.
-MEASURE_TYPES = ("obligation", "incentive", "right")
+# `prohibition` is duty-side, alongside `obligation`: it marks a provision that
+# forbids conduct outright rather than requiring something of the addressee.
+# The two are kept apart because "do not place this on the market" and "keep
+# this below 100 mg/kg" are different instruments -- one closes a route, the
+# other conditions it -- and collapsing them made four PPWR rows read as
+# ordinary requirements.
+MEASURE_TYPES = ("obligation", "prohibition", "incentive", "right")
 BENEFIT_SIDE_TYPES = ("incentive", "right")
+# Types that assert a duty and therefore carry `duty`, never `benefit`.
+DUTY_SIDE_TYPES = ("obligation", "prohibition")
+
+# add | rem | unchanged. `unchanged` is not a third movement -- it is the
+# explicit assertion that there is NO movement, which the register previously
+# had no way to make. A restated rule had to be filed as `add`, and rendered
+# "Requirement" however carefully the prior_rule said the level had not moved.
+# It is admissible ONLY on a duty-side row carrying a resolved prior_rule: the
+# claim "nothing changed" needs a before-state for exactly the same reason a
+# deletion does. See assert_unchanged_prior below.
+DIRECTIONS = ("add", "rem", "unchanged")
 
 # Every source file a given data file's rows may be quoted from. Matching the
 # verify_pass.py convention: a span counts as verbatim if it is an exact
@@ -171,6 +188,12 @@ FILE_SOURCES = {
     # prior corpus below them, because neither deletes anything.
     "nzia": ["nzia.txt"],
     "crma": ["crma.txt"],
+    # PPWR, read at the base act: Cellar announces a consolidation
+    # (02025R0040-20250122) but serves it in no format, so 32025R0040 is the
+    # text. The three ppwr_prior_* files are NOT listed here for the same
+    # reason cbam_base is not: they are what this Regulation repeals and
+    # amends, not what it says.
+    "ppwr": ["ppwr.txt"],
 }
 
 
@@ -202,6 +225,15 @@ PRIOR_SOURCES = {
     "iaa": ["iaa_prior_02024R1735-20250817.txt", "iaa_prior_02018R1724-20260520.txt"],
     "omnibus": ["COM2025_81.txt", "COM2025_80.txt", "Taxonomy_2020_852.txt"],
     "cbam": ["cbam_ext_prior_02023R0956-20251020.txt"],
+    # 94/62/EC is the repealed baseline PPWR's deltas are measured against --
+    # the recycling targets, the heavy-metals limit, the carrier-bag figure and
+    # the presumption of conformity all have a prior state only because this
+    # file exists. The other two are the acts PPWR amends.
+    "ppwr": [
+        "ppwr_prior_01994L0062-20180704.txt",
+        "ppwr_prior_02019L0904-20260812.txt",
+        "ppwr_prior_02019R1020-20260812.txt",
+    ],
 }
 
 # A prior_rule counts as RESOLVED when it says what the prior state was and can
@@ -249,10 +281,19 @@ def derive_valence(measure_type, direction):
     # "Requirement"; the parity check caught exactly that. A present-but-invalid
     # type falls through to Neutral, where it is visible instead of disguised.
     t = "obligation" if measure_type is None else measure_type
+    # `unchanged` resolves to Neutral for every type, and is checked before the
+    # type table so no combination can produce a movement label out of an
+    # explicit assertion that nothing moved.
+    if direction == "unchanged":
+        return "Neutral"
     if t == "obligation" and direction == "add":
         return "Requirement"
     if t == "obligation" and direction == "rem":
         return "Simplification"
+    if t == "prohibition" and direction == "add":
+        return "Prohibition"
+    if t == "prohibition" and direction == "rem":
+        return "Prohibition lifted"
     if t == "incentive" and direction == "add":
         return "Opportunity"
     if t == "incentive" and direction == "rem":
@@ -265,6 +306,32 @@ def derive_valence(measure_type, direction):
     if t == "right" and direction == "rem":
         return "Entitlement withdrawn"
     return "Neutral"
+
+
+def is_unchanged(row):
+    return row.get("direction") == "unchanged"
+
+
+def unchanged_prior_ok(row, prior_fulltext):
+    """True unless the row claims nothing moved without evidence of a before.
+
+    Same shape as deletion_prior_ok, and for the same reason. "This rule is
+    carried over unchanged" is a claim about the PRIOR law, and a row that
+    cannot quote the prior law is not entitled to make it -- it is entitled to
+    say `add` and be read as a requirement, which is the honest default when
+    the before-state is unknown.
+    """
+    if not is_unchanged(row):
+        return True
+    if row.get("measure_type") not in DUTY_SIDE_TYPES and row.get("measure_type") is not None:
+        return False
+    return prior_rule_resolved(row, prior_fulltext)
+
+
+def assert_unchanged_prior(rows, prior_fulltext, where=""):
+    bad = [r["id"] for r in rows if not unchanged_prior_ok(r, prior_fulltext)]
+    assert not bad, (
+        f"direction 'unchanged' with no resolved prior_rule{where}: {bad}")
 
 
 def basis_ok(basis, field, fulltext):
