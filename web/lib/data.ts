@@ -172,6 +172,32 @@ export function getMeasuresForSector(slug: SectorSlug): SectorMeasures {
   return { named, reached };
 }
 
+// The named list, split for a parent with children: rows naming the parent
+// itself apply to the sector as a whole; rows that arrive by rollup apply to
+// one child and are listed under that child's name rather than blended in.
+// A row naming both parent and child counts as whole-sector — the parent tag
+// is the broader claim. For a childless sector `whole` is the entire named
+// list and `byChild` is empty.
+export interface NamedSplit {
+  whole: Measure[];
+  byChild: Array<{ child: SectorSlug; rows: Measure[] }>;
+}
+
+export function splitNamed(slug: SectorSlug): NamedSplit {
+  const { named } = getMeasuresForSector(slug);
+  const children = getChildren(slug);
+  const whole = named.filter((m) => m.sectors_named?.includes(slug));
+  const byChild = children
+    .map((child) => ({
+      child,
+      rows: named.filter(
+        (m) => !m.sectors_named?.includes(slug) && m.sectors_named?.includes(child)
+      ),
+    }))
+    .filter((g) => g.rows.length > 0);
+  return { whole, byChild };
+}
+
 export function getSectorCount(slug: SectorSlug): number {
   const { named, reached } = getMeasuresForSector(slug);
   return named.length + reached.length;
