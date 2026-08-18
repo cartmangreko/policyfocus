@@ -1,0 +1,16 @@
+{
+  "_comment": "PPWR's entry in the reconciliation docket. It is NOT a reconciliation docket in the sense the other three are: there is no Pass B, so there are no disagreements to freeze and nothing to rule on. It exists so reconciliation_gate.py can state PPWR's standing out loud rather than leave it off the report, where a reader would have no way to tell an unreconciled file from a reconciled one.",
+  "file": "ppwr",
+  "status": "single_pass",
+  "reads": 1,
+  "reconciled": false,
+  "register_rows": 88,
+  "declared_at": "2026-08-18",
+  "reason": "One independent hand-authored read of Regulation (EU) 2025/40. No second extraction pass was run, and none was manufactured by re-running the same model over the same text — that would produce agreement rather than a second read, which is worse than nothing because it looks like corroboration.",
+  "what_this_means": "Every classification in data/ppwr.json is unconfirmed. The four reconciled files each moved substantially on their second read — CRMA went from 54 rows to 90, and CBAM's second pass disagreed with the first twelve times — so the expectation is that this file is wrong in the same proportion, not that it is right.",
+  "known_open_questions": [
+    "prohibition-type-pending: 4 rows encode a ban as obligation/add because the live measure_type enum has no prohibition value (SUB-04 PFAS, BAN-01 Annex V formats, MIN-02 volume-inflating features, LAB-03 misleading labels).",
+    "carry-over-renders-as-requirement: 3 rows carry a resolved prior_rule showing the level does not move, but still render as Requirement because valence derives from (measure_type, direction) and no combination yields Neutral for an obligation (RCT-01 recycling targets, SUB-02 heavy metals, BAG-01 carrier bags).",
+    "The Art. 36/37 presumption of conformity is split into two linked measures (CNF-02 Simplification, CNF-03 narrowing). Whether that split is the right reading is exactly the kind of call a second pass exists to test."
+  ]
+}

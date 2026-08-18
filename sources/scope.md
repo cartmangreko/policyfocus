@@ -23,11 +23,27 @@ standing acts read at their current consolidation: the Net-Zero Industry Act
 Act amends and the input-side boundary NZIA's own scope provision defers to,
 so a new consolidation of either moves what the register measures against.
 
-**PPWR has been read once.** It is a single-pass file: one independent
-extraction, no second pass, and therefore not reconciled. The reconciliation
-docket says so and `reconciliation_gate.py` reports it that way. A single-pass
-file is honest, not finished — treat its classifications as unconfirmed until
-a second read disagrees with them or does not.
+**PPWR has been read once.** It is a single-pass file: 88 rows from one
+independent extraction, no second pass, and therefore not reconciled.
+`sources/ppwr_reconciliation_docket.json` declares that and
+`reconciliation_gate.py` prints it as `PPWR NOT RECONCILED — single-pass`
+alongside the three reconciled verdicts, so a reader cannot mistake one for
+the other. A single-pass file is honest, not finished: the four reconciled
+files each moved substantially on their second read, and the expectation is
+that this one is wrong in the same proportion.
+
+Three open questions are carried on the rows themselves as a `q` flag rather
+than resolved silently:
+
+- `prohibition-type-pending` — four rows encode a ban as `obligation`/`add`
+  because the live `measure_type` enum has no `prohibition` value.
+- `carry-over-renders-as-requirement` — three rows carry a resolved
+  `prior_rule` proving the level does not move, but still render as
+  "Requirement", because valence derives from `(measure_type, direction)`
+  alone and no combination of the two yields Neutral for an obligation.
+- The Art. 36/37 presumption of conformity is split into two linked measures,
+  one Simplification and one narrowing. Whether that is the right reading is
+  exactly what a second pass exists to test.
 
 ## IN scope
 

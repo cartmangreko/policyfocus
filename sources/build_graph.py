@@ -96,7 +96,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = DATA / "graph"
 
-REGISTER_FILES = ["ets", "iaa", "omnibus", "cbam", "nzia", "crma"]
+REGISTER_FILES = ["ets", "iaa", "omnibus", "cbam", "nzia", "crma", "ppwr"]
 
 # The sector spine is NOT defined here. It lives in data/sectors.json, read by
 # this builder and by web/lib/data.ts, so the two sides cannot drift -- the
@@ -430,7 +430,13 @@ def build() -> Graph:
         celexes = {
             m.group(1)
             for r in rows
-            if (m := re.search(r"CELEX[:%3A]*([0-9A-Z]+)", r.get("source_url") or ""))
+            # The separator is a literal ":" or its percent-encoding "%3A" --
+            # an ALTERNATION, not a character class. As a class, [:%3A] also
+            # matches "3", so it swallowed the leading sector digit of any
+            # CELEX beginning with 3 and turned "CELEX:32025R0040" into
+            # "2025R0040". No act in the register started with 3 until PPWR,
+            # which is why this survived six files.
+            if (m := re.search(r"CELEX(?::|%3A)?([0-9A-Z]+)", r.get("source_url") or ""))
         }
         if len(celexes) != 1:
             raise BuildError(

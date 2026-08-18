@@ -171,6 +171,12 @@ FILE_SOURCES = {
     # prior corpus below them, because neither deletes anything.
     "nzia": ["nzia.txt"],
     "crma": ["crma.txt"],
+    # PPWR, read at the base act: Cellar announces a consolidation
+    # (02025R0040-20250122) but serves it in no format, so 32025R0040 is the
+    # text. The three ppwr_prior_* files are NOT listed here for the same
+    # reason cbam_base is not: they are what this Regulation repeals and
+    # amends, not what it says.
+    "ppwr": ["ppwr.txt"],
 }
 
 
@@ -202,6 +208,15 @@ PRIOR_SOURCES = {
     "iaa": ["iaa_prior_02024R1735-20250817.txt", "iaa_prior_02018R1724-20260520.txt"],
     "omnibus": ["COM2025_81.txt", "COM2025_80.txt", "Taxonomy_2020_852.txt"],
     "cbam": ["cbam_ext_prior_02023R0956-20251020.txt"],
+    # 94/62/EC is the repealed baseline PPWR's deltas are measured against --
+    # the recycling targets, the heavy-metals limit, the carrier-bag figure and
+    # the presumption of conformity all have a prior state only because this
+    # file exists. The other two are the acts PPWR amends.
+    "ppwr": [
+        "ppwr_prior_01994L0062-20180704.txt",
+        "ppwr_prior_02019L0904-20260812.txt",
+        "ppwr_prior_02019R1020-20260812.txt",
+    ],
 }
 
 # A prior_rule counts as RESOLVED when it says what the prior state was and can
