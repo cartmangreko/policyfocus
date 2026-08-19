@@ -20,9 +20,31 @@ target: "12 measures cite the CSDDD" is one spoke with count 12, and the
 evidence trail is one hop away on the act page's own measure list. What is
 NEVER rolled away is absence: a file whose measures apply to no sector at all
 (the omnibus — its duties bind by company size and status, not by industry)
-gets an explicit computed `note` saying exactly that, instead of a sector ring
-that quietly is not there. Silence and absence look identical in a picture;
-the note is what tells them apart.
+carries an explicit `note` instead of a sector ring that quietly is not there.
+Silence and absence look identical in a picture; the note is what tells them
+apart.
+
+THE NOTE IS REVIEWED PROSE, AND IT IS REQUIRED. The count in the note is
+computed here; the sentences around it are not. They live in data/prose.json
+under `ego_notes`, with a review status and date — tier 2 of the three-tier
+rule in sources/scope.md — because what a missing sector ring MEANS is a
+judgment no aggregation can make. The composed-here version of this note said
+only that no measure names a sector, which a reader can fairly read as "this
+act does not affect anyone", and for a horizontal act that is precisely wrong.
+A sectorless file with no reviewed note is a hard failure rather than a
+fallback: the next horizontal act to enter the register stops the build until
+somebody says what its zero means.
+
+This is a patch over a data-model gap, and it is meant to read as one. The
+register has no way to say that an act's scope IS horizontal — the omnibus is
+sectorless in the same way a file nobody has mapped yet would be, and the two
+are indistinguishable here. The fix is a scope attribute on the act, display
+strings derived from it, and economy-wide measures surfaced on sector pages as
+their own note rather than folded into a sector's counts; it touches the
+schema, the gates and every sector page, so it is queued as its own stack
+rather than smuggled in with a note change. Until then, one reviewed sentence
+per horizontal act is the honest stopgap, and the hard failure above is what
+stops it from being quietly forgotten.
 
 DETERMINISM. Groups are in fixed order, spokes sorted by weight descending
 then label, JSON written with sorted layout — byte-identical output for the
@@ -32,6 +54,7 @@ alongside build_graph.py --check.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -42,6 +65,7 @@ HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data"
 GRAPH = DATA / "graph"
 OUT = GRAPH / "ego"
+PROSE_PATH = DATA / "prose.json"
 
 # Fixed group order: what the act does to other law first, then what its
 # measures rest on, then who it lands on.
@@ -62,12 +86,42 @@ def load_graph() -> tuple[dict[str, dict], list[dict]]:
     return nodes, edges
 
 
+def load_ego_notes() -> dict[str, str]:
+    """The reviewed note templates, keyed by register file. Same store and same
+    status discipline as every other tier-2 text (web/lib/sitetext.ts reads the
+    site-wide blocks out of this file); only an approved block is used, so a
+    note still being drafted cannot reach a page by accident."""
+    doc = json.loads(PROSE_PATH.read_text(encoding="utf-8"))
+    block = doc.get("ego_notes") or {}
+    if block.get("status") not in ("approved", "final"):
+        raise SystemExit(
+            f"EGO VIEWS NOT BUILT — data/prose.json ego_notes status is "
+            f"{block.get('status')!r}; a note renders only once reviewed"
+        )
+    return dict(block.get("files") or {})
+
+
+def render_note(file: str, template: str, slots: dict[str, int]) -> str:
+    """Slot substitution and nothing else — the same contract as the perimeter
+    paragraph in web/lib/sitetext.ts. An unknown slot stops the build rather
+    than rendering a brace or a guess."""
+    def sub(match: re.Match[str]) -> str:
+        name = match.group(1)
+        if name not in slots:
+            raise SystemExit(
+                f"EGO VIEWS NOT BUILT — {file!r} note slot {{{name}}} has no computed counterpart; "
+                f"known slots: {sorted(slots)}"
+            )
+        return str(slots[name])
+    return re.sub(r"\{([a-z_]+)\}", sub, template)
+
+
 def plural(n: int, word: str) -> str:
     return f"{n} {word}" if n == 1 else f"{n} {word}s"
 
 
 def build_view(file: str, nodes: dict[str, dict], edges: list[dict],
-               act_to_file: dict[str, str]) -> dict:
+               act_to_file: dict[str, str], ego_notes: dict[str, str]) -> dict:
     prefix = f"measure:{file}:"
     own_measures = {e["to"] for e in edges if e["rel"] == "contains" and e["to"].startswith(prefix)}
     centers = sorted({e["from"] for e in edges if e["rel"] == "contains" and e["to"].startswith(prefix)})
@@ -145,21 +199,36 @@ def build_view(file: str, nodes: dict[str, dict], edges: list[dict],
         "groups": groups,
     }
 
-    # The honesty note: a file that applies to no sector states so as a
-    # computed fact, because on a drawing "no sector ring" and "sectors not
-    # drawn" are indistinguishable.
+    # The honesty note. A drawing cannot distinguish "no sector ring" from
+    # "sectors not drawn", so a file with no sector spokes says which it is —
+    # and says what that means, which is the part no aggregation can compute.
+    # The count is computed here and slotted into the reviewed sentence; the
+    # sentence itself comes from data/prose.json. See the module docstring.
     if not spokes["sectors"]:
-        n_acts = len({s["id"] for g in groups for s in g["spokes"] if s["kind"] == "act"})
-        view["note"] = (
-            f"0 of this file's {view['measure_count']} measures names or reaches a sector. "
-            f"Every connection shown is one of the {plural(n_acts, 'act')} its measures "
-            "amend, cite or depend on."
+        template = ego_notes.get(file)
+        if not template:
+            raise SystemExit(
+                f"EGO VIEWS NOT BUILT — {file!r} names and reaches no sector and has no reviewed "
+                f"note in data/prose.json under ego_notes.files. A missing sector ring reads as "
+                f"'this act affects nobody' unless a reviewed sentence says otherwise, so the "
+                f"note is required rather than composed."
+            )
+        view["note"] = render_note(file, template, {"measure_count": view["measure_count"]})
+    elif file in ego_notes:
+        # The mirror. A stored note explains an absence; a file that does have
+        # sector spokes would render one over a sector ring that is plainly
+        # there, which is a stale note shipping as fact.
+        raise SystemExit(
+            f"EGO VIEWS NOT BUILT — {file!r} carries a reviewed sector note in data/prose.json "
+            f"but its measures do reach {len(spokes['sectors'])} sector(s); remove the note or "
+            f"the sectors are wrong"
         )
     return view
 
 
 def build(write: bool = True) -> int:
     nodes, edges = load_graph()
+    ego_notes = load_ego_notes()
     act_to_file: dict[str, str] = {}
     for e in edges:
         if e["rel"] == "contains":
@@ -167,7 +236,7 @@ def build(write: bool = True) -> int:
 
     rendered: dict[str, str] = {}
     for file in REGISTER_FILES:
-        view = build_view(file, nodes, edges, act_to_file)
+        view = build_view(file, nodes, edges, act_to_file, ego_notes)
         rendered[file] = json.dumps(view, ensure_ascii=False, indent=2) + "\n"
 
     if write:

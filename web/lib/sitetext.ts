@@ -23,6 +23,15 @@ interface ProseDoc {
     reviewed?: string;
   };
   coverage_line: { status: ProseStatus; template: string; reviewed?: string };
+  /** Read by sources/build_ego_views.py, not here: the note is rendered at
+   *  build time into data/graph/ego/<file>.json, so the page reads a finished
+   *  sentence. Declared so this interface stays the one description of the
+   *  store's shape. */
+  ego_notes: {
+    status: ProseStatus;
+    files: Record<string, string>;
+    reviewed?: string;
+  };
 }
 
 let cached: ProseDoc | null = null;
