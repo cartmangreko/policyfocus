@@ -98,9 +98,8 @@ export default function CoveragePage() {
             ))}
           </div>
           {/* A file whose classifications stand on a preliminary reading says
-              so here in one sentence — reviewed prose from data/prose.json,
-              draft-pending-george-edit. The dockets in sources/ that this
-              condenses are unchanged. */}
+              so here in one sentence — reviewed prose from data/prose.json.
+              The dockets in sources/ that this condenses are unchanged. */}
           {files
             .filter((f) => f.reads.declaredSinglePass && getCoverageDeclaration(f.slug))
             .map((f) => (

@@ -4,19 +4,24 @@ import { getSiteSummary } from "./summaries";
 
 // Reviewed prose — tier 2 of the three-tier rule in sources/scope.md ("No
 // free-generated text on the site"). The text lives in data/prose.json with a
-// recorded review status and renders unchanged until deliberately edited; the
-// only thing computed here is the slot substitution, and every slot resolves
-// to a field of the gate-checked site summary object. An unknown slot is a
-// build failure, never an approximation.
+// recorded review status — one review pass per text, then "approved" — and
+// renders unchanged until deliberately edited; the only thing computed here is
+// the slot substitution, and every slot resolves to a field of the
+// gate-checked site summary object. An unknown slot is a build failure, never
+// an approximation.
 
 const PROSE_PATH = path.join(process.cwd(), "..", "data", "prose.json");
 
-export type ProseStatus = "final" | "draft-pending-george-edit";
+export type ProseStatus = "final" | "approved" | "draft-pending-george-edit";
 
 interface ProseDoc {
   masthead: { status: ProseStatus; tagline: string; subline: string };
-  perimeter: { status: ProseStatus; template: string };
-  coverage_declarations: { status: ProseStatus; files: Record<string, string> };
+  perimeter: { status: ProseStatus; template: string; reviewed?: string };
+  coverage_declarations: {
+    status: ProseStatus;
+    files: Record<string, string>;
+    reviewed?: string;
+  };
 }
 
 let cached: ProseDoc | null = null;
