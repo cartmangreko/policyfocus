@@ -11,7 +11,7 @@ import { getActSummary, getSiteSummary } from "@/lib/summaries";
 export const metadata: Metadata = {
   title: "Legislation",
   description:
-    "The EU files the register reads provision by provision, each with its burden/benefit, status and sector-reach summary.",
+    "The EU acts the platform decodes provision by provision, each with its burden/benefit, status and sector-reach summary.",
 };
 
 export default function ActsPage() {
@@ -24,10 +24,10 @@ export default function ActsPage() {
           <Crumbs trail={[{ label: "Home", href: "/" }, { label: "Legislation" }]} />
           <h1 className="sector-title">Legislation</h1>
           <p className="sector-intro">
-            The register reads {site.files} EU files provision by provision — {site.measures}{" "}
-            measures in all, each row one duty or one incentive with its source sentence quoted
-            verbatim. Every file below links to its own page: what it does, which sectors it names,
-            and which it reaches without naming.
+            The platform decodes {site.files} EU acts provision by provision — {site.measures}{" "}
+            measures in all, each one a requirement, a support measure or a right with its source
+            sentence quoted verbatim. Every act below links to its own page: what it does, which
+            sectors it names, and which it reaches without naming.
           </p>
           <SummaryStrip cuts={site} subject="the tracked corpus" />
         </div>
@@ -36,7 +36,7 @@ export default function ActsPage() {
       <section className="band">
         <div className="wrap">
           <p className="eyebrow">Directory</p>
-          <h2>Files in the register</h2>
+          <h2>Acts on the platform</h2>
           <div className="dir-cards">
             {Object.entries(FILES).map(([slug, meta]) => {
               const summary = getActSummary(slug);

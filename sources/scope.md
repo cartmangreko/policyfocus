@@ -197,6 +197,20 @@ stakes. (3) Banned: prose generated at build or request time that no one
 reviewed, or reviewed prose regenerated silently. Per-act overview paragraphs
 are tier 2, and are expected to be added one per act in a future PR.
 
+### Display vocabulary: internal terms never reach an audience surface
+
+Audience-facing surfaces — pages, components, computed-prose templates,
+titles, meta descriptions, structured data — never use the pipeline's internal
+vocabulary: no "row", "register", "duty-side", "benefit-side", "FIGARO",
+"docket", "pass", "reconciled", "valence", "slug". The display layer says:
+measure, requirement, prohibition, support measure, right, the act's display
+name, the sector's display name, and "Eurostat input-output data" for
+FIGARO-derived figures. The translation happens at render time only: data
+files, gates, ids, field names, and internal documentation keep the internal
+vocabulary unchanged, because the internal terms are the precise ones and the
+gates are written against them. A reviewed tier-2 text is authored in display
+vocabulary from the start; a computed template translates at the template.
+
 ### Snapshots are append-only
 
 Each release archives the register state and all fetched source versions

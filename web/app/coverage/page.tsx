@@ -23,7 +23,7 @@ export function generateMetadata(): Metadata {
   const verified = files.filter(isVerified).length;
   return {
     title: "Coverage",
-    description: `${files.length} legislative acts in the register, ${total} measures — ${verified} of ${files.length} acts verified by an independent second reading — plus what is queued and not yet read.`,
+    description: `${files.length} legislative acts on the platform, ${total} measures — ${verified} of ${files.length} acts verified by an independent second reading — plus what is queued and not yet read.`,
   };
 }
 
@@ -58,10 +58,10 @@ export default function CoveragePage() {
       <section className="band">
         <div className="wrap">
           <p className="eyebrow">What is read</p>
-          <h2>Files in the register</h2>
+          <h2>Acts covered</h2>
           <div className="coverage-table">
             <div className="coverage-row coverage-head">
-              <div>File</div>
+              <div>Act</div>
               <div>Source</div>
               <div>Standing</div>
               <div>Measures</div>
@@ -114,8 +114,7 @@ export default function CoveragePage() {
               version of this sentence was already at risk of rotting. */}
           <p className="section-note">{getWeightNote()}</p>
           <p className="section-note">
-            To read the whole register flat — every row across all files, with the burden ledger
-            above it —{" "}
+            To read every measure across all acts, with the burden ledger above them —{" "}
             <Link href="/measures" className="section-link">
               open the measure browse →
             </Link>
@@ -125,11 +124,11 @@ export default function CoveragePage() {
 
       <section className="band band-ruled">
         <div className="wrap">
-          <p className="eyebrow">What the rows carry</p>
+          <p className="eyebrow">What the measures carry</p>
           <h2>Burden drivers across the corpus</h2>
           <p className="section-note section-note-wide">
-            Seven yes-or-no marks are read off every provision in the register. How often each one
-            fires characterises what has actually been extracted — which is a statement about
+            Seven yes-or-no marks are read off every measure on the platform. How often each one
+            fires characterises what has actually been decoded — which is a statement about
             coverage, not about any one measure.
           </p>
           <div className="coverage-chart">
@@ -163,10 +162,10 @@ export default function CoveragePage() {
           <p className="eyebrow">Permanence</p>
           <h2>Measure ids do not change</h2>
           <p className="section-note section-note-wide">
-            A measure id, and the address built from it (/measures/&lt;file&gt;/&lt;id&gt;), is
-            permanent. A row whose classification moves keeps its id and records the move in its{" "}
-            <code>reclass_from</code> field; any future change to an id or a URL shape ships with a
-            redirect from the old address. Each release is archived in full — register state and
+            A measure id, and the address built from it (/measures/&lt;act&gt;/&lt;id&gt;), is
+            permanent. A measure whose classification changes keeps its id, and the change is
+            recorded on the measure itself; any future change to an id or a URL shape ships with a
+            redirect from the old address. Each release is archived in full — every measure and
             every fetched source version — under a dated snapshot that is never overwritten, so a
             citation made today stays checkable against exactly what was published today. Every
             measure page carries a &ldquo;cite this measure&rdquo; block with its permanent address.

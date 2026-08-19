@@ -10,7 +10,7 @@ export function generateMetadata(): Metadata {
   const stats = getRegisterStats();
   return {
     title: "Measures",
-    description: `The register, flat: all ${stats.measures} extracted provisions across ${Object.keys(FILES).length} files, with who carries each and which direction it moves.`,
+    description: `Every measure on the platform: all ${stats.measures} across ${Object.keys(FILES).length} acts, with who carries each and which direction it moves.`,
   };
 }
 
@@ -51,16 +51,16 @@ export default function MeasuresPage() {
           </div>
           <h1 className="sector-title">Measures</h1>
           <p className="sector-intro">
-            Every provision extracted from the tracked corpus, in one list. Each row is one duty,
-            one incentive or one entitlement, marked added or removed, with its seven-point burden
-            strip. Open a row for the verbatim source text and the prior rule where there is one.
+            Every measure on the platform, in one list. Each is one requirement, one support
+            measure or one right, marked added or removed, with its seven-point burden strip. Open
+            a measure for the verbatim source text and the prior rule where there is one.
           </p>
           <StatsStrip
             stats={[
-              { value: String(stats.measures), label: "Measures in the register" },
+              { value: String(stats.measures), label: "Measures on the platform" },
               { value: String(stats.sectors), label: "Sectors mapped" },
               { value: String(stats.classes), label: "Who-is-affected classes" },
-              { value: String(stats.sourceChecked), suffix: "%", label: "Rows source-checked" },
+              { value: String(stats.sourceChecked), suffix: "%", label: "Measures source-checked" },
             ]}
           />
         </div>
@@ -90,7 +90,7 @@ export default function MeasuresPage() {
                 <h2>{FILES[slug].name}</h2>
               </div>
               <Link href={`/coverage#${slug}`} className="section-link">
-                How this file was read →
+                How this act was read →
               </Link>
             </div>
             <p className="section-note">

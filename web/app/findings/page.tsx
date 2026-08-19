@@ -7,7 +7,7 @@ export function generateMetadata(): Metadata {
   const findings = getAllFindings();
   return {
     title: "Findings",
-    description: `${findings.length} findings — arithmetic-only claims about the tracked measures, every number resolving to a register row or a stored exposure share.`,
+    description: `${findings.length} findings — plain claims about the tracked measures, every number checked against the underlying data before publication.`,
   };
 }
 
@@ -26,9 +26,9 @@ export default function FindingsIndexPage() {
           </div>
           <h1 className="sector-title">Findings</h1>
           <p className="sector-intro">
-            Short claims about what the tracked measures mean for a sector. Each one resolves
-            against the register: the measures it cites, and any exposure figure it prints, are
-            checked at build time before the finding can be published.
+            Short claims about what the tracked measures mean for a sector. Every measure a
+            finding cites, and every figure it prints, is checked against the underlying data
+            before the finding can be published.
           </p>
         </div>
       </section>
