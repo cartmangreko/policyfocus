@@ -1,32 +1,21 @@
 import Link from "next/link";
 import Wordmark from "./Wordmark";
-import { ANALYSIS } from "@/lib/analysis";
-import { PRIORITIES } from "@/lib/priorities";
 
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
     heading: "Product",
     links: [
-      { label: "Topics", href: `/priorities/${PRIORITIES[0].slug}` },
-      { label: "Measures", href: "/#signals" },
-      { label: "Sectors", href: "/#sectors" },
-      { label: "Companies", href: "/#sectors" },
+      { label: "Measures", href: "/measures" },
+      { label: "Sectors", href: "/sectors" },
+      { label: "Acts", href: "/acts" },
+      { label: "Findings", href: "/findings" },
     ],
   },
   {
     heading: "Method",
     links: [
-      { label: "How it works", href: "/#stats" },
-      { label: "Sources", href: "/#signals" },
-      { label: "Coverage & limits", href: "/#stats" },
-    ],
-  },
-  {
-    heading: "About",
-    links: [
-      { label: "Analysis", href: `/analysis/${ANALYSIS[0].slug}` },
-      { label: "Data & API", href: "/#stats" },
-      { label: "Contact", href: "/#stats" },
+      { label: "Coverage & limits", href: "/coverage" },
+      { label: "Sources", href: "/coverage" },
     ],
   },
 ];

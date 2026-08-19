@@ -13,9 +13,9 @@ import type { BasisStatus, FileCelex, QueuedItem, ReadHistory } from "./files";
 // the manifest answers "what document and what standing", the sources
 // directory answers "how many times was it read".
 //
-// The reads column is the deliberately unflattering one. Two files have been
-// read once; four have been read twice and reconciled. Publishing that is
-// cheaper than being asked.
+// The read history stays in the object even though the page now states it as
+// a two-value verification badge: the badge is derived from `reads`, and the
+// dockets and pass artifacts behind it are unchanged in sources/.
 
 export interface CoverageFile {
   slug: string;

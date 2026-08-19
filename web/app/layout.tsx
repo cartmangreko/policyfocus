@@ -5,6 +5,7 @@ import SiteHeader from "@/components/SiteHeader";
 import Ticker from "@/components/Ticker";
 import { INDEXABLE } from "@/lib/launch";
 import { datasetJsonLd } from "@/lib/schema";
+import { getMasthead } from "@/lib/sitetext";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -31,8 +32,9 @@ export const metadata: Metadata = {
     default: "PolicyFocus — European policy, decoded into economic impact",
     template: "%s · PolicyFocus",
   },
-  description:
-    "PolicyFocus turns complex European policy and regulation into structured intelligence on sectors, companies, markets, investment and strategic priorities.",
+  // The George-approved masthead pair doubles as the default description, so
+  // the fallback tag carries no claim the reviewed prose does not.
+  description: `${getMasthead().tagline} ${getMasthead().subline}`,
   // The same launch switch as the X-Robots-Tag header and robots.txt, in the
   // head of every page: a saved or proxied copy of this HTML carries the
   // instruction even when the header does not travel with it.

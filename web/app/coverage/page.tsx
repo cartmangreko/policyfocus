@@ -2,31 +2,36 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import DriverChart from "@/components/DriverChart";
 import { getCoverage, getQueuedItems, getWeightNote } from "@/lib/coverage";
+import type { CoverageFile } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
+import { getCoverageDeclaration, getPerimeterProse } from "@/lib/sitetext";
+
+// The verification badge, in audience terms. The underlying dockets, gates
+// and pass artifacts in sources/ are untouched; this is only how their result
+// is stated to a reader — verified once a second, independent reading has
+// been made and compared against the first, preliminary until then.
+function isVerified(f: CoverageFile): boolean {
+  return f.reads.reads > 1 && f.reads.reconciled;
+}
+
+const VERIFIED_LABEL = "Verified — confirmed by independent second reading";
+const PRELIMINARY_LABEL = "Preliminary reading";
 
 export function generateMetadata(): Metadata {
   const files = getCoverage();
   const total = files.reduce((n, f) => n + f.measures, 0);
-  const twice = files.filter((f) => f.reads.reads > 1).length;
+  const verified = files.filter(isVerified).length;
   return {
     title: "Coverage",
-    description: `${files.length} files read, ${total} measures extracted, ${twice} of ${files.length} files read twice and reconciled — plus what is queued and not yet read.`,
+    description: `${files.length} legislative acts in the register, ${total} measures — ${verified} of ${files.length} acts verified by an independent second reading — plus what is queued and not yet read.`,
   };
 }
-
-// TODO-GEORGE: perimeter statement.
-const PERIMETER =
-  "TODO-GEORGE — one paragraph stating the perimeter: what body of law the register covers, what it measures each provision against, and what a reader may conclude from a sector page as a result.";
-
-// TODO-GEORGE: out-of-scope line.
-const OUT_OF_SCOPE =
-  "TODO-GEORGE — one line on what is deliberately out of scope, and where a reader should look instead.";
 
 export default function CoveragePage() {
   const files = getCoverage();
   const queued = getQueuedItems();
   const totalMeasures = files.reduce((n, f) => n + f.measures, 0);
-  const twice = files.filter((f) => f.reads.reads > 1).length;
+  const verified = files.filter(isVerified).length;
 
   return (
     <main className="rise">
@@ -39,10 +44,13 @@ export default function CoveragePage() {
             <span className="crumb">Coverage</span>
           </div>
           <h1 className="sector-title">Coverage</h1>
-          <p className="sector-intro">{PERIMETER}</p>
+          {/* The perimeter paragraph — reviewed prose from data/prose.json,
+              its counts rendered from the gate-checked site summary. Its last
+              sentence states what is out of scope, so the page no longer
+              carries a separate out-of-scope section. */}
+          <p className="sector-intro">{getPerimeterProse()}</p>
           <p className="section-note">
-            {files.length} files · {totalMeasures} measures · {twice} of {files.length} read twice
-            and reconciled.
+            {files.length} acts · {totalMeasures} measures · {verified} of {files.length} verified.
           </p>
         </div>
       </section>
@@ -57,7 +65,7 @@ export default function CoveragePage() {
               <div>Source</div>
               <div>Standing</div>
               <div>Measures</div>
-              <div>Reads</div>
+              <div>Verification</div>
               <div>Last fetched</div>
             </div>
             {files.map((f) => (
@@ -82,27 +90,21 @@ export default function CoveragePage() {
                 </div>
                 <div>{f.basis ? BASIS_LABEL[f.basis] : "—"}</div>
                 <div className="coverage-num">{f.measures}</div>
-                <div className="coverage-reads">{f.reads.label}</div>
+                <div className="coverage-reads">
+                  {isVerified(f) ? VERIFIED_LABEL : PRELIMINARY_LABEL}
+                </div>
                 <div className="coverage-num">{f.lastUpdated ?? "—"}</div>
               </div>
             ))}
           </div>
-          <p className="section-note">
-            The reads column is derived from what is on disk: a second extraction pass, a
-            disagreement report comparing it with the first, and a docket. A docket is one of two
-            documents. Three of them freeze the disagreements between two reads and record a ruling
-            on each. The fourth declares the opposite — that no second read exists and that nothing
-            in the file has been confirmed — and a file carrying one says so here rather than being
-            left to look like a file nobody has got round to yet.
-          </p>
-          {/* The declaration itself, in the docket's own words, for every file
-              that has one. A warning a reader has to go to sources/ to find is
-              a warning the page is keeping to itself. */}
+          {/* A file whose classifications stand on a preliminary reading says
+              so here in one sentence — reviewed prose from data/prose.json.
+              The dockets in sources/ that this condenses are unchanged. */}
           {files
-            .filter((f) => f.reads.note)
+            .filter((f) => f.reads.declaredSinglePass && getCoverageDeclaration(f.slug))
             .map((f) => (
               <p className="section-note" key={f.slug}>
-                <strong>{f.title} — read once.</strong> {f.reads.note}
+                {getCoverageDeclaration(f.slug)}
               </p>
             ))}
           {/* The gap that the sector pages would otherwise each have to report
@@ -169,13 +171,6 @@ export default function CoveragePage() {
             citation made today stays checkable against exactly what was published today. Every
             measure page carries a &ldquo;cite this measure&rdquo; block with its permanent address.
           </p>
-        </div>
-      </section>
-
-      <section className="band band-ruled">
-        <div className="wrap">
-          <p className="eyebrow">Out of scope</p>
-          <p className="section-note section-note-wide">{OUT_OF_SCOPE}</p>
         </div>
       </section>
     </main>
