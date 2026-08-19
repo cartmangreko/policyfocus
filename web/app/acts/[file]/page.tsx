@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crumbs from "@/components/Crumbs";
+import EgoGraph from "@/components/EgoGraph";
 import SignalRow from "@/components/SignalRow";
 import SummaryStrip from "@/components/SummaryStrip";
 import { getActMeasuresBySector, getActReach } from "@/lib/acts";
 import { FILES, SECTORS } from "@/lib/data";
+import { getEgoView } from "@/lib/ego";
 import { reachProse } from "@/lib/prose";
 import { getActSummary } from "@/lib/summaries";
 
@@ -46,6 +48,7 @@ export default async function ActPage({ params }: { params: Promise<{ file: stri
   const summary = getActSummary(file);
   const reach = getActReach(file);
   const groups = getActMeasuresBySector(file);
+  const ego = getEgoView(file);
 
   return (
     <main className="rise">
@@ -100,6 +103,21 @@ export default async function ActPage({ params }: { params: Promise<{ file: stri
           )}
         </div>
       </section>
+
+      {ego && (
+        <section className="band band-tight" id="connections">
+          <div className="wrap">
+            <p className="eyebrow">Connections</p>
+            <h2>This file in the graph</h2>
+            <p className="section-note">
+              Every line is an edge in the register&apos;s knowledge graph — acts this
+              file amends or its measures cite, and the sectors those measures apply
+              to. Counts are computed at build time and checked against the graph.
+            </p>
+            <EgoGraph view={ego} centerLabel={meta.name.split(" — ")[0]} />
+          </div>
+        </section>
+      )}
 
       {groups.map((g) => (
         <section className="band band-ruled" id={g.slug ?? "no-sector"} key={g.slug ?? "none"}>
