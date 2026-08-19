@@ -4,6 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import Ticker from "@/components/Ticker";
 import { INDEXABLE } from "@/lib/launch";
+import { datasetJsonLd } from "@/lib/schema";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -45,6 +46,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${archivo.variable} ${publicSans.variable} ${plexMono.variable}`}
     >
       <body>
+        {/* schema.org Dataset markup, site-wide: the register described as
+            the dataset it is. Computed from the site summary object — see
+            lib/schema.ts for the documented type choices. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: datasetJsonLd() }}
+        />
         <div className="brand-rule" />
         <Ticker />
         <SiteHeader />

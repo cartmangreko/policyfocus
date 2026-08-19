@@ -14,6 +14,7 @@ import {
   getRelatedMeasures,
   measureHref,
 } from "@/lib/data";
+import { measureJsonLd } from "@/lib/schema";
 import { headlineStep, isStated } from "@/lib/text";
 import { isPositiveValence, valenceLabel } from "@/lib/valence";
 import type { Measure } from "@/lib/types";
@@ -92,6 +93,12 @@ export default async function MeasurePage({
 
   return (
     <main className="rise">
+      {/* schema.org Legislation markup for this provision, nested in the act
+          it was read from — see lib/schema.ts for the documented choice. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: measureJsonLd(measure) }}
+      />
       <section className="detail-head">
         <div className="wrap">
           <div className="crumbs">

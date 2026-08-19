@@ -21,6 +21,7 @@ import {
   splitNamed,
 } from "@/lib/data";
 import { getExposure } from "@/lib/exposure";
+import { arrivalProse, summaryProse } from "@/lib/prose";
 import { getSectorSummary } from "@/lib/summaries";
 import { getFindingsForSector, withEvidence } from "@/lib/findings";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
@@ -55,10 +56,11 @@ export async function generateMetadata({
   const slug = (await params).slug.join("/");
   if (!(slug in SECTORS)) return { title: "Sector not found" };
   const name = SECTORS[slug as SectorSlug];
-  const stats = getSectorStats(slug as SectorSlug);
+  // The description is the strip's prose form — the same template, the same
+  // gate-checked object, so the tag and the page cannot disagree.
   return {
     title: `European ${name}`,
-    description: `${stats.total} tracked EU measures reach ${name.toLowerCase()} — ${stats.added} adding a duty, ${stats.removed} removing one.`,
+    description: summaryProse(`European ${name.toLowerCase()}`, getSectorSummary(slug as SectorSlug)),
   };
 }
 
@@ -123,7 +125,7 @@ export default async function SectorPage({
           </p>
           {/* The gate-checked summary object for this node, rendered dumbly.
               Same three cuts as every other node on the site. */}
-          <SummaryStrip cuts={getSectorSummary(sectorSlug)} />
+          <SummaryStrip cuts={getSectorSummary(sectorSlug)} subject={`European ${name.toLowerCase()}`} />
         </div>
       </section>
 
@@ -215,6 +217,7 @@ export default async function SectorPage({
             {arrival.indirect.length > 0 &&
               `, ${arrival.indirect.length} more without ever naming it`}
           </h2>
+          <p className="strip-prose">{arrivalProse(`European ${name.toLowerCase()}`, arrival)}</p>
           <div className="reach-list">
             {arrival.direct.map((a) => (
               <p key={a.file} className="reach-row">

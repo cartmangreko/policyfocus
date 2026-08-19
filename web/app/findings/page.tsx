@@ -3,11 +3,13 @@ import Link from "next/link";
 import FindingCard from "@/components/FindingCard";
 import { getAllFindings } from "@/lib/findings";
 
-export const metadata: Metadata = {
-  title: "Findings",
-  description:
-    "What the tracked measures mean, sector by sector. Every finding carries the measures it rests on.",
-};
+export function generateMetadata(): Metadata {
+  const findings = getAllFindings();
+  return {
+    title: "Findings",
+    description: `${findings.length} findings — arithmetic-only claims about the tracked measures, every number resolving to a register row or a stored exposure share.`,
+  };
+}
 
 export default function FindingsIndexPage() {
   const findings = getAllFindings();

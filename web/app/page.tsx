@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import FindingCard from "@/components/FindingCard";
 import SectorGrid from "@/components/SectorGrid";
@@ -25,6 +26,15 @@ const TAGLINE = "TODO-GEORGE — one line saying what a reader gets here.";
 // TODO-GEORGE: coverage line.
 const COVERAGE_LINE =
   "TODO-GEORGE — one sentence stating the perimeter: what body of law this covers and what it does not.";
+
+// The default title stays in the layout; the description is computed from
+// the site summary so the tag moves with the register.
+export function generateMetadata(): Metadata {
+  const site = getSiteSummary();
+  return {
+    description: `${site.measures} measures extracted from ${site.files} EU files, mapped to the ${site.sectors.total_reach} sectors they name or reach — every count computed from the register.`,
+  };
+}
 
 export default function Home() {
   const findings = withEvidence(getRecentFindings(5));

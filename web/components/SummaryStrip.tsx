@@ -1,3 +1,4 @@
+import { summaryProse } from "@/lib/prose";
 import type { SummaryCuts } from "@/lib/summaries";
 
 // Renders one summary object, dumbly. Every number here was computed and
@@ -22,9 +23,14 @@ function join(parts: Array<string | null>): string {
 export default function SummaryStrip({
   cuts,
   variant = "full",
+  subject,
 }: {
   cuts: SummaryCuts;
   variant?: "full" | "mini";
+  /** The node's name in running text. When set, the strip also emits its
+   *  prose form — the same numbers as template-rendered sentences, crawlable
+   *  on the page and identical to the strip by construction. */
+  subject?: string;
 }) {
   const { direction: d, status: s, channel: c } = cuts;
 
@@ -58,6 +64,7 @@ export default function SummaryStrip({
   }
 
   return (
+    <>
     <div className="summary-strip">
       <div className="summary-cell">
         <div className="summary-cell-label">Direction</div>
@@ -81,5 +88,7 @@ export default function SummaryStrip({
         )}
       </div>
     </div>
+    {subject && <p className="strip-prose">{summaryProse(subject, cuts)}</p>}
+    </>
   );
 }

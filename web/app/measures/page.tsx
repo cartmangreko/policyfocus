@@ -6,11 +6,13 @@ import StatsStrip from "@/components/StatsStrip";
 import { FILES, getAllMeasures, getRegisterStats } from "@/lib/data";
 import type { Measure } from "@/lib/types";
 
-export const metadata: Metadata = {
-  title: "Measures",
-  description:
-    "The register, flat: every extracted provision across all six files, with who carries it and which direction it moves.",
-};
+export function generateMetadata(): Metadata {
+  const stats = getRegisterStats();
+  return {
+    title: "Measures",
+    description: `The register, flat: all ${stats.measures} extracted provisions across ${Object.keys(FILES).length} files, with who carries each and which direction it moves.`,
+  };
+}
 
 // The cross-file browse view. /measures/<file>/<id> is the audit view of one
 // provision; this is the whole register at once, which is a different question
