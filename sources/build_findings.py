@@ -30,8 +30,12 @@ provisions at once. So the honesty has to be structural. Six checks:
      files are register file slugs.
   5. BASIS STATUS. What the finding claims about the legal standing of its
      evidence must be what the manifest says. See STATUS_RULE below.
-  6. TEMPLATE. One of the known templates; `editorial` is the escape hatch for
-     a hand-written finding that fits none of them, and is still bound by 1-5.
+  6. TEMPLATE. One of the known templates, every one of which names an
+     arithmetic shape. There is deliberately NO editorial template: a finding
+     may only state what the data computes (counts, shares, chains,
+     before/after deltas) — no judgment about importance, no recommendations.
+     `check_template_set` holds that line structurally, so the escape hatch
+     cannot be quietly re-added.
 
 WHY THE INDEX IS AN OUTPUT AND NOT A DIRECTORY READ. data/findings/index.json is
 written here, by the gate, after every check passes. The front end reads the
@@ -64,8 +68,28 @@ TEMPLATES = (
     "support_mismatch",
     "net_position",
     "country_concentration",
-    "editorial",
 )
+
+# Templates that must never be in the set. `editorial` existed as an escape
+# hatch for hand-written prose and was removed under the arithmetic-only rule
+# in sources/scope.md ("A finding states arithmetic"): every template has to
+# name a computable shape, and a template whose content is judgment cannot be
+# checked by this gate at all. The check runs on every build so the hatch
+# cannot be re-added without deleting this line and its reason.
+EDITORIAL_TEMPLATES = ("editorial",)
+
+
+def check_template_set() -> None:
+    """The documented no-editorial-template check. Fails the build, not just
+    the finding: a bad template SET is a defect in the gate itself."""
+    banned = [t for t in TEMPLATES if t in EDITORIAL_TEMPLATES]
+    if banned:
+        print(
+            f"FINDINGS NOT BUILT — template set contains editorial template(s) {banned}; "
+            "findings are arithmetic-only (sources/scope.md, 'A finding states arithmetic')",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
 BASIS_STATUSES = ("adopted", "proposed", "mixed")
 RELATIONS = ("supplier", "customer", "import_origin")
@@ -137,7 +161,10 @@ def load_exposure_manifest() -> dict:
 
 
 def load_exposure(sector: str) -> dict | None:
-    path = DATA / "exposure" / f"{sector}.json"
+    # A child slug contains a slash; the exposure directory is flat and
+    # flattens it to "__" — the same rule as web/lib/exposure.ts and
+    # build_graph.exposure_filename, so all three resolve the same file.
+    path = DATA / "exposure" / f"{sector.replace('/', '__')}.json"
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
 
 
@@ -349,6 +376,7 @@ def check_basis(fid: str, doc: dict, manifest: dict) -> None:
 # ---------------------------------------------------------------------------
 
 def build(write: bool = True) -> int:
+    check_template_set()
     if not FINDINGS_DIR.exists():
         print(f"build_findings: no {FINDINGS_DIR.relative_to(DATA.parent)} directory; nothing to do")
         return 0

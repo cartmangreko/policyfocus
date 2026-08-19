@@ -162,6 +162,19 @@ have no way to tell the two apart.
 The general form: if the relation would survive this repository being deleted,
 it is an edge. If it would not, it is an attribute.
 
+### A finding states arithmetic
+
+A finding may only state what the data computes — counts, shares, chains,
+before/after deltas. No judgment about importance and no recommendations: the
+moment a finding says what a number *means* rather than what it *is*, it stops
+being checkable against the register, and checkability is the only licence a
+finding has to exist. Findings are a small fixed set, not a feed.
+
+Structurally: every template in `build_findings.TEMPLATES` names an arithmetic
+shape, there is no editorial template, and `check_template_set` fails the
+build if one is ever added back. Connecting prose that a human must write is
+carried as an explicit TODO on a draft, never generated.
+
 ### The exposure methodology is reconstructed, and proved by reproduction
 
 `data/exposure/*.json` is built by `sources/build_exposure.py` from the raw
