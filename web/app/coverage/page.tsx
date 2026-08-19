@@ -156,6 +156,22 @@ export default function CoveragePage() {
         </div>
       </section>
 
+      <section className="band band-ruled" id="permanence">
+        <div className="wrap">
+          <p className="eyebrow">Permanence</p>
+          <h2>Measure ids do not change</h2>
+          <p className="section-note section-note-wide">
+            A measure id, and the address built from it (/measures/&lt;file&gt;/&lt;id&gt;), is
+            permanent. A row whose classification moves keeps its id and records the move in its{" "}
+            <code>reclass_from</code> field; any future change to an id or a URL shape ships with a
+            redirect from the old address. Each release is archived in full — register state and
+            every fetched source version — under a dated snapshot that is never overwritten, so a
+            citation made today stays checkable against exactly what was published today. Every
+            measure page carries a &ldquo;cite this measure&rdquo; block with its permanent address.
+          </p>
+        </div>
+      </section>
+
       <section className="band band-ruled">
         <div className="wrap">
           <p className="eyebrow">Out of scope</p>

@@ -210,6 +210,20 @@ export default async function MeasurePage({
                 ))}
               </dl>
 
+              {/* The citation affordance. Ids are permanent policy — stated
+                  on /coverage and in sources/scope.md — so the path is the
+                  durable half of the citation; the site's domain prefixes it
+                  at launch. Everything here is composed from row fields. */}
+              <div className="rail-label rail-label-divided">Cite this measure</div>
+              <div className="cite-block">
+                <code className="cite-url">{measureHref(measure)}</code>
+                <p className="cite-string">
+                  {measure.id}, {fileMeta ? fileMeta.name.split(" — ")[0] : measure.file} (
+                  {fileMeta ? fileMeta.code : measure.file}), {measure.article} — PolicyFocus
+                  register, permanent id.
+                </p>
+              </div>
+
               {related.length > 0 && (
                 <>
                   <div className="rail-label rail-label-divided">Related measures</div>
