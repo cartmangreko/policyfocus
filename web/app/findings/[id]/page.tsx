@@ -103,12 +103,16 @@ export default async function FindingPage({ params }: { params: Promise<{ id: st
 
       <section className="detail-body">
         <div className="wrap finding-body">
+          {/* The diagram leads. A finding's claim is a shape — this act, that
+              sector, this many measures — and the picture carries the shape
+              faster than the sentence does; reading the prose first makes the
+              diagram a restatement instead of the thing it explains. */}
+          {diagram && <FindingDiagram diagram={diagram} />}
           {paragraphs.map((p, i) => (
             <p key={i} className="prose">
               {p}
             </p>
           ))}
-          {diagram && <FindingDiagram diagram={diagram} />}
         </div>
       </section>
 
