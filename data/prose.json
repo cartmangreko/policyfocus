@@ -1,5 +1,5 @@
 {
-  "_comment": "Reviewed prose stored as data — tier 2 of the three-tier rule in sources/scope.md ('No free-generated text on the site'). Each block carries a status: every tier-2 text passes through one review before flipping to 'approved', with the review date recorded in 'reviewed'; 'final' marks the masthead pair George signed off as-is. Slots in {braces} are filled at build time from the gate-checked site summary object (data/summaries/site.json) by web/lib/sitetext.ts — never hardcoded here.",
+  "_comment": "Reviewed prose stored as data — tier 2 of the three-tier rule in sources/scope.md ('No free-generated text on the site'). Each block carries a status: every tier-2 text passes through one review before flipping to 'approved', with the review date recorded in 'reviewed'; 'final' marks the masthead pair George signed off as-is. Slots in {braces} are filled at build time from gate-checked objects — never hardcoded here. The site-wide blocks resolve their slots against the site summary object (data/summaries/site.json) in web/lib/sitetext.ts; 'ego_notes' resolves its slots against the computed ego view in sources/build_ego_views.py, which bakes the rendered sentence into data/graph/ego/<file>.json.",
   "masthead": {
     "status": "final",
     "tagline": "EU legislation, decoded into data: each measure, every sector it affects, every supply chain it reaches.",
@@ -22,5 +22,13 @@
     "status": "approved",
     "reviewed": "2026-08-19",
     "template": "{acts_count} acts decoded so far; the platform grows as new legislation is adopted."
+  },
+  "ego_notes": {
+    "status": "approved",
+    "reviewed": "2026-08-19",
+    "_comment": "One note per register file whose measures name and reach no sector at all. A note is REQUIRED for such a file: build_ego_views.py fails rather than composing one, because the sentence has to say what a missing sector ring means, and only a person can decide that. Slots are computed by the builder from the view it has just built — {measure_count} is the file's own measure count, {act_count} the number of distinct acts its spokes point at. Both are filled the same way; nothing in the sentence is a typed-in number.",
+    "files": {
+      "omnibus": "None of the omnibus's {measure_count} measures names a specific sector. The act applies horizontally, to companies across the whole economy based on size and activity. Zero named sectors means no sector-specific provisions, not zero impact. Every connection shown is one of the {act_count} acts its measures amend, cite or depend on."
+    }
   }
 }

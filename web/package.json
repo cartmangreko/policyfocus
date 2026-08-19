@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "python3 ../sources/build_findings.py && python3 ../sources/build_summaries.py --check && python3 ../sources/build_graph.py --check",
+    "prebuild": "python3 ../sources/build_findings.py && python3 ../sources/build_summaries.py --check && python3 ../sources/build_graph.py --check && python3 ../sources/build_ego_views.py --check",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

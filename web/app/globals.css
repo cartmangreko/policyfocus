@@ -1746,6 +1746,133 @@ h3 {
   margin: 0;
 }
 
+/* The ego graph. One act's neighbourhood drawn radially from the gate-built
+   view — relation colours match the register's own palette: sectors pine
+   (economy), amends/repeals claret (law changing law), cites neutral,
+   depends_on ochre (not applicable until the target exists). */
+.ego {
+  margin: 26px 0 0;
+  max-width: 720px;
+}
+.ego-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.ego-line {
+  stroke-width: 1;
+}
+.ego-line.ego-sectors {
+  stroke: var(--pine-soft);
+  stroke-width: 1.4;
+}
+.ego-line.ego-amends,
+.ego-line.ego-repeals {
+  stroke: var(--claret-soft);
+  stroke-width: 1.4;
+}
+.ego-line.ego-cites {
+  stroke: var(--rule-soft);
+}
+.ego-line.ego-depends_on {
+  stroke: var(--ochre);
+  stroke-dasharray: 3 3;
+  opacity: 0.5;
+}
+.ego-dot.ego-sectors {
+  fill: var(--pine);
+}
+.ego-dot.ego-amends,
+.ego-dot.ego-repeals {
+  fill: var(--claret);
+}
+.ego-dot.ego-cites {
+  fill: var(--ink-40);
+}
+.ego-dot.ego-depends_on {
+  fill: var(--ochre);
+}
+.ego-center-dot {
+  fill: var(--ink);
+}
+.ego-center-label {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 13px;
+  fill: var(--ink);
+}
+.ego-label {
+  font-size: 11.5px;
+  fill: var(--ink);
+}
+.ego-detail {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  fill: var(--ink-55);
+}
+.ego-link .ego-label {
+  cursor: pointer;
+}
+.ego-link:hover .ego-label {
+  text-decoration: underline;
+}
+.ego-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+.ego-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ego-swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.ego-swatch.ego-sectors {
+  background: var(--pine);
+}
+.ego-swatch.ego-amends,
+.ego-swatch.ego-repeals {
+  background: var(--claret);
+}
+.ego-swatch.ego-cites {
+  background: var(--ink-40);
+}
+.ego-swatch.ego-depends_on {
+  background: var(--ochre);
+}
+.ego-toggle {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-70);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease);
+}
+.ego-toggle:hover {
+  border-color: var(--ink-40);
+}
+.ego-note {
+  border-left: 3px solid var(--rule);
+  padding: 10px 14px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--ink-70);
+  max-width: 66ch;
+}
+
 /* The proposed-basis banner. Ochre, the register's own "not settled" colour,
    and above the body: a caveat printed under the claim is read after the
    claim has been believed. */

@@ -1,0 +1,128 @@
+{
+  "file": "cbam",
+  "center": {
+    "id": "act:52025PC0989",
+    "label": "COM(2025) 989",
+    "file": "cbam"
+  },
+  "measure_count": 61,
+  "groups": [
+    {
+      "rel": "amends",
+      "title": "Amends",
+      "spokes": [
+        {
+          "id": "act:32023R0956",
+          "kind": "act",
+          "label": "CBAM Regulation",
+          "file": null,
+          "href": null,
+          "detail": "since 2025",
+          "weight": 0
+        }
+      ]
+    },
+    {
+      "rel": "cites",
+      "title": "Cites",
+      "spokes": [
+        {
+          "id": "act:32013R0952",
+          "kind": "act",
+          "label": "Union Customs Code",
+          "file": null,
+          "href": null,
+          "detail": "2 measures cite it",
+          "weight": 2
+        },
+        {
+          "id": "act:32015R2446",
+          "kind": "act",
+          "label": "Union Customs Code Delegated Regulation",
+          "file": null,
+          "href": null,
+          "detail": "1 measure cites it",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rel": "sectors",
+      "title": "Sectors",
+      "spokes": [
+        {
+          "id": "sector:steel",
+          "kind": "sector",
+          "label": "Steel",
+          "file": null,
+          "href": "/sectors/steel",
+          "detail": "named by 41 measures · reached by 3 measures",
+          "weight": 44
+        },
+        {
+          "id": "sector:alu",
+          "kind": "sector",
+          "label": "Aluminium",
+          "file": null,
+          "href": "/sectors/alu",
+          "detail": "named by 40 measures · reached by 3 measures",
+          "weight": 43
+        },
+        {
+          "id": "sector:cement",
+          "kind": "sector",
+          "label": "Cement",
+          "file": null,
+          "href": "/sectors/cement",
+          "detail": "named by 29 measures · reached by 2 measures",
+          "weight": 31
+        },
+        {
+          "id": "sector:chem",
+          "kind": "sector",
+          "label": "Chemicals",
+          "file": null,
+          "href": "/sectors/chem",
+          "detail": "named by 29 measures · reached by 2 measures",
+          "weight": 31
+        },
+        {
+          "id": "sector:power",
+          "kind": "sector",
+          "label": "Power",
+          "file": null,
+          "href": "/sectors/power",
+          "detail": "named by 16 measures",
+          "weight": 16
+        },
+        {
+          "id": "sector:build",
+          "kind": "sector",
+          "label": "Construction",
+          "file": null,
+          "href": "/sectors/build",
+          "detail": "named by 1 measure · reached by 7 measures",
+          "weight": 8
+        },
+        {
+          "id": "sector:auto",
+          "kind": "sector",
+          "label": "Automotive",
+          "file": null,
+          "href": "/sectors/auto",
+          "detail": "reached by 7 measures",
+          "weight": 7
+        },
+        {
+          "id": "sector:waste",
+          "kind": "sector",
+          "label": "Waste",
+          "file": null,
+          "href": "/sectors/waste",
+          "detail": "reached by 2 measures",
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}
