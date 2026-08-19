@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import DriverChart from "@/components/DriverChart";
-import { getCoverage, getQueuedItems } from "@/lib/coverage";
+import { getCoverage, getQueuedItems, getWeightNote } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
 
 export const metadata: Metadata = {
@@ -103,11 +103,16 @@ export default function CoveragePage() {
             ))}
           {/* The gap that the sector pages would otherwise each have to report
               for themselves. Stated once, here, because it is a fact about the
-              register's coverage rather than about any one sector. */}
+              register's coverage rather than about any one sector — and
+              computed from the rows as built, because the previous hardcoded
+              version of this sentence was already at risk of rotting. */}
+          <p className="section-note">{getWeightNote()}</p>
           <p className="section-note">
-            One field is not yet comparable across files: weight intensity is recorded on Omnibus I
-            rows only, and no Omnibus I row names a sector, so no sector-level view of weight is
-            possible today. Sector pages therefore show the net position without it.
+            To read the whole register flat — every row across all files, with the burden ledger
+            above it —{" "}
+            <Link href="/measures" className="section-link">
+              open the measure browse →
+            </Link>
           </p>
         </div>
       </section>

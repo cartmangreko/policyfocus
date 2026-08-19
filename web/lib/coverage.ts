@@ -63,3 +63,49 @@ export function getRecentlyAdded(limit = 4): CoverageFile[] {
 export function getQueuedItems(): QueuedItem[] {
   return getQueued();
 }
+
+/**
+ * The weight-data situation, stated once and computed from the rows as built
+ * — never asserted. The old hardcoded line claimed weight intensity exists
+ * only on omnibus rows; that was true when written and is the kind of claim
+ * that rots silently, so whatever this note says is derived from the register
+ * at build time and moves when the data does.
+ */
+export function getWeightNote(): string {
+  const all = getAllMeasures();
+  const perFile = Object.entries(FILES).map(([slug, meta]) => {
+    const rows = all.filter((m) => m.file === slug);
+    return {
+      title: meta.name.split(" — ")[0],
+      rows: rows.length,
+      weight: rows.filter((m) => m.weight).length,
+      intensity: rows.filter((m) => m.weight_intensity).length,
+      intensityNaming: rows.filter((m) => m.weight_intensity && (m.sectors_named?.length ?? 0) > 0)
+        .length,
+    };
+  });
+
+  const withIntensity = perFile.filter((f) => f.intensity > 0);
+  const withWeight = perFile.filter((f) => f.weight > 0);
+  const list = (fs: typeof perFile, count: (f: (typeof perFile)[number]) => number) =>
+    fs.map((f) => `${f.title} (${count(f)} of ${f.rows} rows)`).join(", ");
+
+  let intensityPart: string;
+  if (withIntensity.length === 0) {
+    intensityPart = "No file in the register records weight intensity yet.";
+  } else {
+    const naming = withIntensity.reduce((n, f) => n + f.intensityNaming, 0);
+    intensityPart =
+      `Weight intensity is recorded on ${list(withIntensity, (f) => f.intensity)} only` +
+      (naming === 0
+        ? ", and none of those rows names a sector — so no sector-level view of weight is possible, and sector pages show the net position without one."
+        : `, of which ${naming} name a sector.`);
+  }
+
+  const weightPart =
+    withWeight.length > 0
+      ? ` The coarser categorical weight field is present on ${list(withWeight, (f) => f.weight)}; it stays on the rows and is not aggregated on any summary surface.`
+      : "";
+
+  return intensityPart + weightPart;
+}

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import FindingCard from "@/components/FindingCard";
 import SectorGrid from "@/components/SectorGrid";
+import StatsStrip from "@/components/StatsStrip";
 import Wordmark from "@/components/Wordmark";
 import { FILES } from "@/lib/data";
+import { getSiteSummary } from "@/lib/summaries";
 import { getRecentlyAdded } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
 import { getRecentFindings, withEvidence } from "@/lib/findings";
@@ -11,10 +13,11 @@ import { getRecentFindings, withEvidence } from "@/lib/findings";
 // wordmark, findings, recently added, doors, coverage line.
 //
 // Everything the old home page carried that is not one of those five was
-// demoted, not deleted, and each piece now has an address: the signals feed and
-// the burden ledger are /measures, the driver chart is /coverage, the search
-// field is in the site header on every page, and the priorities and analysis
-// grids keep their own pages behind the nav.
+// demoted, not deleted, and each piece now has an address: the signals feed
+// and the burden ledger are /measures (reachable from /coverage and search),
+// the driver chart is /coverage, and the search field is in the site header
+// on every page. The priorities and analysis pages still render at their URLs
+// but no longer sit in the nav.
 
 // TODO-GEORGE: tagline.
 const TAGLINE = "TODO-GEORGE — one line saying what a reader gets here.";
@@ -25,6 +28,7 @@ const COVERAGE_LINE =
 
 export default function Home() {
   const findings = withEvidence(getRecentFindings(5));
+  const site = getSiteSummary();
   const recent = getRecentlyAdded(4);
 
   return (
@@ -35,6 +39,19 @@ export default function Home() {
             <Wordmark />
           </div>
           <p className="home-tagline">{TAGLINE}</p>
+          {/* The masthead statistic: the site-wide summary object, recomputed
+              each build and gate-checked against the register. The strip is
+              one link into the sector directory. */}
+          <Link href="/sectors" className="home-stats-link" aria-label="Browse sectors">
+            <StatsStrip
+              stats={[
+                { value: String(site.files), label: "Files read" },
+                { value: String(site.measures), label: "Measures extracted" },
+                { value: String(site.sectors.named), label: "Sectors named" },
+                { value: String(site.sectors.total_reach), label: "Sectors reached" },
+              ]}
+            />
+          </Link>
         </div>
       </section>
 
@@ -102,7 +119,7 @@ export default function Home() {
               <div className="doors-label">By legislation</div>
               <div className="chips">
                 {Object.entries(FILES).map(([slug, meta]) => (
-                  <Link key={slug} href={`/measures#${slug}`} className="chip">
+                  <Link key={slug} href={`/acts/${slug}`} className="chip">
                     {meta.name.split(" — ")[0]}
                   </Link>
                 ))}

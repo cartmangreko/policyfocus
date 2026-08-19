@@ -566,6 +566,16 @@ h3 {
   margin-top: 8px;
 }
 
+/* ---------- home masthead stats ---------- */
+
+.home-stats-link {
+  display: block;
+  margin-top: 34px;
+}
+.home-stats-link:hover .stat-value {
+  color: var(--claret);
+}
+
 /* ---------- summary strip ---------- */
 
 .summary-strip {
