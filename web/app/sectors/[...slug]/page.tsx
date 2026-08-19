@@ -8,7 +8,9 @@ import SectorCard from "@/components/SectorCard";
 import SectorExposure from "@/components/SectorExposure";
 import SignalRow from "@/components/SignalRow";
 import SummaryStrip from "@/components/SummaryStrip";
+import { getArrival } from "@/lib/acts";
 import {
+  FILES,
   SECTORS,
   getChildren,
   getMeasuresForSector,
@@ -90,6 +92,9 @@ export default async function SectorPage({
   // A child never borrows its parent's panel; see lib/exposure.ts.
   const exposure = getExposure(sectorSlug);
   const findings = withEvidence(getFindingsForSector(sectorSlug));
+  // The inverse of an act page's reach strip: which files arrive here, and
+  // whether they name the sector or only ever reach it.
+  const arrival = getArrival(sectorSlug);
 
   // Channel mix for the reached-without-naming cohort.
   const channels = new Map<string, number>();
@@ -197,6 +202,42 @@ export default async function SectorPage({
           </div>
         </section>
       )}
+
+      <section className="band band-tight" id="arrival">
+        <div className="wrap">
+          <p className="eyebrow">Where the pressure comes from</p>
+          <h2>
+            Pressure arrives from {arrival.direct.length}{" "}
+            {arrival.direct.length === 1 ? "act" : "acts"} directly
+            {/* The channel wording stays on the per-act lines below, where it
+                is computed per row — a heading claiming "supply chains" would
+                overstate a file that arrives by regulatory dependency. */}
+            {arrival.indirect.length > 0 &&
+              `, ${arrival.indirect.length} more without ever naming it`}
+          </h2>
+          <div className="reach-list">
+            {arrival.direct.map((a) => (
+              <p key={a.file} className="reach-row">
+                <Link href={`/acts/${a.file}`} className="reach-row-name">
+                  {FILES[a.file].name.split(" — ")[0]}
+                </Link>{" "}
+                — names the sector in {a.named} {a.named === 1 ? "row" : "rows"}
+                {a.reached > 0 &&
+                  `, reaches it in ${a.reached} more via ${a.channels.join(" and ").toLowerCase()}`}
+              </p>
+            ))}
+            {arrival.indirect.map((a) => (
+              <p key={a.file} className="reach-row">
+                <Link href={`/acts/${a.file}`} className="reach-row-name">
+                  {FILES[a.file].name.split(" — ")[0]}
+                </Link>{" "}
+                — never names the sector; reaches it in {a.reached}{" "}
+                {a.reached === 1 ? "row" : "rows"} via {a.channels.join(" and ").toLowerCase()}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="band band-tight" id="net-position">
         <div className="wrap">
