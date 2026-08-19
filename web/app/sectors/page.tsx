@@ -3,6 +3,7 @@ import Crumbs from "@/components/Crumbs";
 import SectorCard from "@/components/SectorCard";
 import SummaryStrip from "@/components/SummaryStrip";
 import { getSectorCounts, isChild } from "@/lib/data";
+import { getPerimeterProse } from "@/lib/sitetext";
 import { getSiteSummary } from "@/lib/summaries";
 
 // The directory root — the same template as every level below it: summary
@@ -25,11 +26,12 @@ export default function SectorsPage() {
         <div className="wrap">
           <Crumbs trail={[{ label: "Home", href: "/" }, { label: "Sectors" }]} />
           <h1 className="sector-title">Sectors</h1>
-          <p className="sector-intro">
-            The register reads {site.files} EU files provision by provision — {site.measures}{" "}
-            measures in all — and maps each provision to the sectors it names or reaches. This is
-            the full sector spine: {parents.length} parent sectors, with a child nested under a
-            parent only where measures apply to the child and not to the parent.
+          {/* The perimeter paragraph — reviewed prose from data/prose.json,
+              its counts rendered from the gate-checked site summary. */}
+          <p className="sector-intro">{getPerimeterProse()}</p>
+          <p className="section-note">
+            This is the full sector spine: {parents.length} parent sectors, with a child nested
+            under a parent only where measures apply to the child and not to the parent.
           </p>
           <SummaryStrip cuts={site} subject="the tracked corpus" />
         </div>

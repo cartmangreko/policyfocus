@@ -1,0 +1,18 @@
+{
+  "_comment": "Reviewed prose stored as data — tier 2 of the three-tier rule in sources/scope.md ('No free-generated text on the site'). Each block carries a status: 'final' renders as George signed it off; 'draft-pending-george-edit' renders as drafted and is awaiting his edit. Slots in {braces} are filled at build time from the gate-checked site summary object (data/summaries/site.json) by web/lib/sitetext.ts — never hardcoded here.",
+  "masthead": {
+    "status": "final",
+    "tagline": "EU legislation, decoded into data: each measure, every sector it affects, every supply chain it reaches.",
+    "subline": "The intelligence layer between EU legislation and the real economy."
+  },
+  "perimeter": {
+    "status": "draft-pending-george-edit",
+    "template": "PolicyFocus decodes EU legislation into data. Each act is read provision by provision into a register of individual measures: obligations, prohibitions, incentives, and rights, every one carrying the verbatim source text and a link to the official version. Measures are mapped to sectors in two ways: sectors an act names directly, and sectors it reaches through supply chains, regulatory dependencies, or procurement channels, with supply-chain reach computed from Eurostat input-output data. The measures are then aggregated per sector, so each sector page shows its full position across all legislation in the register: what binds it directly, what reaches it indirectly, and through which channel. The register currently holds {measures_count} measures from {acts_count} legislative acts across {sectors_count} sectors, and it grows as new legislation is adopted. Every act's verification status is stated on the coverage page. The register does not cover national implementing measures or guidance documents, and nothing on this site is legal advice."
+  },
+  "coverage_declarations": {
+    "status": "draft-pending-george-edit",
+    "files": {
+      "ppwr": "The packaging regulation's classifications are from a preliminary reading and have not yet been independently confirmed."
+    }
+  }
+}

@@ -9,6 +9,7 @@ import { getSiteSummary } from "@/lib/summaries";
 import { getRecentlyAdded } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
 import { getRecentFindings, withEvidence } from "@/lib/findings";
+import { getMasthead } from "@/lib/sitetext";
 
 // The home page leads with conclusions. Five blocks, in this order:
 // wordmark, findings, recently added, doors, coverage line.
@@ -17,11 +18,11 @@ import { getRecentFindings, withEvidence } from "@/lib/findings";
 // demoted, not deleted, and each piece now has an address: the signals feed
 // and the burden ledger are /measures (reachable from /coverage and search),
 // the driver chart is /coverage, and the search field is in the site header
-// on every page. The priorities and analysis pages still render at their URLs
-// but no longer sit in the nav.
-
-// TODO-GEORGE: tagline.
-const TAGLINE = "TODO-GEORGE — one line saying what a reader gets here.";
+// on every page. The priorities and analysis pages are gone: their editorial
+// framing predated the arithmetic-only rule, and nothing else read their code.
+//
+// The masthead pair (tagline + subline) is George-approved final text, read
+// from data/prose.json — reviewed prose stored as data, per sources/scope.md.
 
 // TODO-GEORGE: coverage line.
 const COVERAGE_LINE =
@@ -40,6 +41,7 @@ export default function Home() {
   const findings = withEvidence(getRecentFindings(5));
   const site = getSiteSummary();
   const recent = getRecentlyAdded(4);
+  const masthead = getMasthead();
 
   return (
     <main className="rise">
@@ -48,7 +50,8 @@ export default function Home() {
           <div className="home-wordmark">
             <Wordmark />
           </div>
-          <p className="home-tagline">{TAGLINE}</p>
+          <p className="home-tagline">{masthead.tagline}</p>
+          <p className="home-subline">{masthead.subline}</p>
           {/* The masthead statistic: the site-wide summary object, recomputed
               each build and gate-checked against the register. The strip is
               one link into the sector directory. */}

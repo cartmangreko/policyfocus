@@ -189,6 +189,14 @@ link from EUR-Lex, and a primer is where drift and error live. A sentence
 that cannot point at the data it renders or the human who signed it off does
 not go on a page.
 
+Three tiers. (1) Computed prose: template-rendered sentences from gate-checked
+data, generated every build, unlimited. (2) Reviewed prose: drafted text (by
+anyone, including an LLM) stored as data with a recorded review status;
+renders unchanged until deliberately edited; review depth proportionate to
+stakes. (3) Banned: prose generated at build or request time that no one
+reviewed, or reviewed prose regenerated silently. Per-act overview paragraphs
+are tier 2, and are expected to be added one per act in a future PR.
+
 ### Snapshots are append-only
 
 Each release archives the register state and all fetched source versions
