@@ -1,0 +1,35 @@
+{
+  "id": "cbam-combined-metals-reach-automotive",
+  "nodes": [
+    {
+      "id": "act:cbam",
+      "kind": "act",
+      "label": "CBAM extension",
+      "href": "/acts/cbam"
+    },
+    {
+      "id": "sector:auto",
+      "kind": "sector",
+      "label": "Automotive",
+      "href": "/sectors/auto"
+    },
+    {
+      "id": "sector:steel",
+      "kind": "sector",
+      "label": "Basic metals (steel & aluminium)",
+      "href": "/sectors/steel"
+    }
+  ],
+  "edges": [
+    {
+      "from": "act:cbam",
+      "to": "sector:auto",
+      "label": "reaches it in 7 measures — names it in none"
+    },
+    {
+      "from": "sector:steel",
+      "to": "sector:auto",
+      "label": "5.1% of inputs"
+    }
+  ]
+}

@@ -57,6 +57,7 @@ HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data"
 FINDINGS_DIR = DATA / "findings"
 INDEX_PATH = FINDINGS_DIR / "index.json"
+DIAGRAMS_DIR = FINDINGS_DIR / "diagrams"
 MANIFEST_PATH = HERE / "manifest.json"
 
 SCHEMA_VERSION = 1
@@ -374,6 +375,200 @@ def check_basis(fid: str, doc: dict, manifest: dict) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Diagrams. A finding may carry a `diagram` spec: nodes (acts and sectors) and
+# edges whose labels are COMPUTED here from the register and the exposure
+# files — the same gate-checked sources the graph is built from, with
+# build_graph.py --check holding data/graph in sync. Nothing in a label is
+# typed in: the spec names a quantity, this gate computes it, and a computed
+# value that contradicts the finding fails the build. Written to
+# data/findings/diagrams/<id>.json only after every check passes.
+# ---------------------------------------------------------------------------
+
+from benefit_axis import derive_valence
+
+# Duty-side valences — the same set the support-gap finding's notes state:
+# Requirement or Prohibition, plus benefit-side movements withdrawn.
+DUTY_VALENCES = {"Requirement", "Prohibition", "Support cut", "Entitlement withdrawn"}
+
+DIAGRAM_QUANTITY_KINDS = ("duty_count", "named_count", "reach_count", "exposure_share")
+
+
+def load_register_rows() -> dict[str, list[dict]]:
+    """Register file slug -> its full rows, for the diagram quantity checks."""
+    out: dict[str, list[dict]] = {}
+    for slug in FILE_MANIFEST_KEYS:
+        path = DATA / f"{slug}.json"
+        if path.exists():
+            out[slug] = json.loads(path.read_text(encoding="utf-8"))
+    return out
+
+
+def _attributed(row: dict, sector: str) -> bool:
+    return sector in (row.get("sectors_named") or []) or sector in (row.get("sectors_reached") or [])
+
+
+def _fmt(value) -> str:
+    """A count prints plain; a share prints as stored (21.6, not 21.60)."""
+    if isinstance(value, float) and value == int(value):
+        return str(int(value))
+    return str(value)
+
+
+def resolve_stored_share(sector: str, partner: str, relation: str, view: str, exp_manifest: dict):
+    """The stored share for one exposure reference, or (None, reason)."""
+    exposure = load_exposure(sector)
+    if exposure is None:
+        return None, f"sector {sector!r} has no exposure file"
+    views = {"EU": exposure.get("eu"), **exposure.get("by_country", {})}
+    if view not in views:
+        return None, f"view {view!r} not in {sector!r}'s exposure file"
+    v = views[view]
+    if relation == "import_origin":
+        rows, code = v.get("foreign_input_origins") or [], partner
+    else:
+        entry = exp_manifest.get(partner)
+        if not entry:
+            return None, f"partner_sector {partner!r} is not in the exposure manifest"
+        rows = v.get("suppliers" if relation == "supplier" else "customers") or []
+        code = entry["code"]
+    row = next((r for r in rows if r.get("code") == code), None)
+    if row is None:
+        return None, f"{partner!r} (code {code!r}) is not a {relation} of {sector!r} in the {view} view"
+    return float(row["share"]), None
+
+
+def compute_diagram_quantity(fid: str, where: str, q: dict, doc: dict,
+                             rows_by_file: dict[str, list[dict]], exp_manifest: dict):
+    """Returns the computed value, or None after recording a failure."""
+    kind = q.get("kind")
+    if kind not in DIAGRAM_QUANTITY_KINDS:
+        fail(fid, "diagram", f"{where} quantity kind must be one of {list(DIAGRAM_QUANTITY_KINDS)}, got {kind!r}")
+        return None
+
+    if kind in ("duty_count", "named_count", "reach_count"):
+        file, sector = q.get("file"), q.get("sector")
+        rows = rows_by_file.get(file)
+        if rows is None:
+            fail(fid, "diagram", f"{where} names unknown register file {file!r}")
+            return None
+        if sector not in APP_SECTORS:
+            fail(fid, "diagram", f"{where} names unknown sector {sector!r}")
+            return None
+        if kind == "duty_count":
+            return sum(
+                1 for r in rows
+                if _attributed(r, sector)
+                and derive_valence(r.get("measure_type"), r.get("direction")) in DUTY_VALENCES
+            )
+        named = sum(1 for r in rows if sector in (r.get("sectors_named") or []))
+        # named_count is the mirror of reach_count and exists for the same
+        # reason: an act naming a sector in its own text and an act arriving at
+        # it through a chain are different claims, and a diagram that blurs
+        # them is the confusion these findings exist to remove. Named and
+        # reached are disjoint by ruling (sources/scope.md), so the two counts
+        # never double-count a row.
+        if kind == "named_count":
+            return named
+        if q.get("require_named_zero") and named != 0:
+            fail(fid, "diagram", f"{where} claims the act never names {sector!r}, but {named} row(s) name it")
+            return None
+        return sum(1 for r in rows if sector in (r.get("sectors_reached") or []))
+
+    # exposure_share
+    share, reason = resolve_stored_share(
+        q.get("sector"), q.get("partner_sector"), q.get("relation"), q.get("view"), exp_manifest
+    )
+    if share is None:
+        fail(fid, "diagram", f"{where} {reason}")
+        return None
+    # If the finding's evidence carries the same reference, the two must agree
+    # — one figure, one source, stated once.
+    for e in doc["evidence"].get("exposure") or []:
+        if (e.get("sector"), e.get("partner_sector"), e.get("relation"), e.get("view")) == (
+            q.get("sector"), q.get("partner_sector"), q.get("relation"), q.get("view")
+        ):
+            if abs(float(e.get("share_pct", 0)) - share) > 0.1:
+                fail(fid, "diagram", f"{where} stored share {share} disagrees with evidence.exposure {e.get('share_pct')}")
+                return None
+    return share
+
+
+def check_diagram(fid: str, doc: dict, rows_by_file: dict[str, list[dict]], exp_manifest: dict):
+    """Validate one finding's diagram spec and return the resolved diagram
+    (nodes with labels and hrefs, edges with computed labels), or None."""
+    spec = doc.get("diagram")
+    if spec is None:
+        return None
+    before = len(failures)
+
+    nodes_out, node_ids = [], set()
+    for i, n in enumerate(spec.get("nodes") or []):
+        nid = n.get("id") or ""
+        kind, _, slug = nid.partition(":")
+        if kind == "act":
+            if slug not in FILE_MANIFEST_KEYS:
+                fail(fid, "diagram", f"nodes[{i}] {nid!r} is not a register file")
+                continue
+            label, href = n.get("label"), f"/acts/{slug}"
+            if not label:
+                fail(fid, "diagram", f"nodes[{i}] act node needs a display label")
+                continue
+        elif kind == "sector":
+            if slug not in APP_SECTORS:
+                fail(fid, "diagram", f"nodes[{i}] {nid!r} is not an app sector slug")
+                continue
+            # Default label is the canonical sector name; an override is
+            # allowed for a stated reason (e.g. steel/alu sharing one
+            # exposure code) but must contain the canonical name so it can
+            # never point at a different industry.
+            label, href = n.get("label") or APP_SECTORS[slug], f"/sectors/{slug}"
+            if APP_SECTORS[slug].lower() not in label.lower():
+                fail(fid, "diagram", f"nodes[{i}] label {label!r} does not contain {APP_SECTORS[slug]!r}")
+                continue
+        else:
+            fail(fid, "diagram", f"nodes[{i}] id {nid!r} must be act:<file> or sector:<slug>")
+            continue
+        node_ids.add(nid)
+        nodes_out.append({"id": nid, "kind": kind, "label": label, "href": href})
+
+    if not (3 <= len(nodes_out) <= 5):
+        fail(fid, "diagram", f"a diagram is a 3-5 node flow, got {len(nodes_out)}")
+
+    edges_out = []
+    for i, e in enumerate(spec.get("edges") or []):
+        where = f"diagram.edges[{i}]"
+        if e.get("from") not in node_ids or e.get("to") not in node_ids:
+            fail(fid, "diagram", f"{where} references an undeclared node")
+            continue
+        template = e.get("label_template") or ""
+        if "{n}" not in template:
+            fail(fid, "diagram", f"{where} label_template must carry the {{n}} slot")
+            continue
+        value = compute_diagram_quantity(fid, where, e.get("quantity") or {}, doc, rows_by_file, exp_manifest)
+        if value is None:
+            continue
+        rendered = _fmt(value)
+        if (e.get("quantity") or {}).get("body_check") and rendered not in doc["body"]:
+            fail(fid, "diagram", f"{where} computes {rendered}, which the finding body never states")
+            continue
+        edges_out.append({"from": e["from"], "to": e["to"], "label": template.replace("{n}", rendered)})
+
+    # The renderer draws a vertical flow: every node after the first must
+    # connect to exactly one earlier node, so any passing diagram is
+    # guaranteed to lay out.
+    for i, n in enumerate(nodes_out[1:], start=1):
+        prior = {m["id"] for m in nodes_out[:i]}
+        links = [e for e in edges_out if
+                 (e["from"] == n["id"] and e["to"] in prior) or (e["to"] == n["id"] and e["from"] in prior)]
+        if len(links) != 1:
+            fail(fid, "diagram", f"node {n['id']} must connect to exactly one earlier node, has {len(links)}")
+
+    if len(failures) > before:
+        return None
+    return {"id": doc["id"], "nodes": nodes_out, "edges": edges_out}
+
+
+# ---------------------------------------------------------------------------
 
 def build(write: bool = True) -> int:
     check_template_set()
@@ -384,6 +579,8 @@ def build(write: bool = True) -> int:
     register = load_register()
     manifest = load_manifest()
     exp_manifest = load_exposure_manifest()
+    rows_by_file = load_register_rows()
+    diagrams: list[dict] = []
 
     paths = sorted(p for p in FINDINGS_DIR.glob("*.json") if p.name != "index.json")
     docs: list[dict] = []
@@ -412,6 +609,9 @@ def build(write: bool = True) -> int:
         check_exposure(fid, doc, exp_manifest)
         check_vocabularies(fid, doc, register)
         check_basis(fid, doc, manifest)
+        diagram = check_diagram(fid, doc, rows_by_file, exp_manifest)
+        if diagram is not None:
+            diagrams.append(diagram)
         docs.append(doc)
 
     if failures:
@@ -441,13 +641,28 @@ def build(write: bool = True) -> int:
 
     if write:
         INDEX_PATH.write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        # Diagrams are outputs of this gate exactly like the index: written only
+        # after every check passes, stale files removed so the directory always
+        # mirrors the findings that carry a diagram.
+        DIAGRAMS_DIR.mkdir(exist_ok=True)
+        wanted = {d["id"] for d in diagrams}
+        for stale in DIAGRAMS_DIR.glob("*.json"):
+            if stale.stem not in wanted:
+                stale.unlink()
+        for d in diagrams:
+            (DIAGRAMS_DIR / f"{d['id']}.json").write_text(
+                json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+            )
 
     n_measures = sum(len(d["evidence"]["measures"]) for d in docs)
     n_exposure = sum(len(d["evidence"].get("exposure") or []) for d in docs)
     print(f"build_findings: {len(docs)} finding(s) pass — {n_measures} measure reference(s) and "
           f"{n_exposure} exposure reference(s) resolved against the register")
+    print(f"build_findings: {len(diagrams)} diagram(s) computed"
+          + ("" if not diagrams else " — " + ", ".join(sorted(d["id"] for d in diagrams))))
     if write:
-        print(f"build_findings: wrote {INDEX_PATH.relative_to(DATA.parent)}")
+        print(f"build_findings: wrote {INDEX_PATH.relative_to(DATA.parent)} and "
+              f"{len(diagrams)} file(s) in {DIAGRAMS_DIR.relative_to(DATA.parent)}/")
     else:
         print("build_findings: --check, index not written")
     return 0

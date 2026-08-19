@@ -1,0 +1,46 @@
+{
+  "id": "ppwr-names-food-and-beverage-directly",
+  "nodes": [
+    {
+      "id": "act:ppwr",
+      "kind": "act",
+      "label": "Packaging and Packaging Waste Regulation",
+      "href": "/acts/ppwr"
+    },
+    {
+      "id": "sector:foodbev",
+      "kind": "sector",
+      "label": "Food and drink",
+      "href": "/sectors/foodbev"
+    },
+    {
+      "id": "sector:chem/plastics",
+      "kind": "sector",
+      "label": "Plastics converting",
+      "href": "/sectors/chem/plastics"
+    },
+    {
+      "id": "sector:chem",
+      "kind": "sector",
+      "label": "Chemicals",
+      "href": "/sectors/chem"
+    }
+  ],
+  "edges": [
+    {
+      "from": "act:ppwr",
+      "to": "sector:foodbev",
+      "label": "named directly by 36 measures"
+    },
+    {
+      "from": "act:ppwr",
+      "to": "sector:chem/plastics",
+      "label": "74 requirements and prohibitions"
+    },
+    {
+      "from": "sector:chem",
+      "to": "sector:chem/plastics",
+      "label": "supplies 21.6% of their inputs"
+    }
+  ]
+}

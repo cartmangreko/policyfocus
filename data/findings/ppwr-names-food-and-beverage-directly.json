@@ -6,17 +6,38 @@
   "body": "36 of the packaging regulation's measures name the food and beverage sector directly. The chemicals industry, by contrast, is affected mainly as a supplier to the companies that make packaging.",
   "prose_status": "approved",
   "prose_reviewed": "2026-08-19",
-  "sectors": ["foodbev", "chem/plastics", "chem"],
-  "files": ["ppwr"],
+  "sectors": [
+    "foodbev",
+    "chem/plastics",
+    "chem"
+  ],
+  "files": [
+    "ppwr"
+  ],
   "basis_status": "adopted",
   "date": "2026-08-19",
   "evidence": {
     "measures": [
-      { "file": "ppwr", "row_id": "FREE-01" },
-      { "file": "ppwr", "row_id": "MIN-01" },
-      { "file": "ppwr", "row_id": "BAN-01" },
-      { "file": "ppwr", "row_id": "RCY-01" },
-      { "file": "ppwr", "row_id": "EPR-01" }
+      {
+        "file": "ppwr",
+        "row_id": "FREE-01"
+      },
+      {
+        "file": "ppwr",
+        "row_id": "MIN-01"
+      },
+      {
+        "file": "ppwr",
+        "row_id": "BAN-01"
+      },
+      {
+        "file": "ppwr",
+        "row_id": "RCY-01"
+      },
+      {
+        "file": "ppwr",
+        "row_id": "EPR-01"
+      }
     ],
     "exposure": [
       {
@@ -29,5 +50,60 @@
     ],
     "notes": "Counts are taken across every row in data/ppwr.json (89 rows). foodbev appears in sectors_named on 36 rows and in sectors_reached on a further 32; the two sets do not overlap, so 68 of the file's 89 rows carry the sector one way or the other. The 36 named rows are FREE-01, FREE-03, SUB-04, REC-04, RCY-01, RCY-02, CMP-01, MIN-01, MIN-02, REU-01, LAB-01, LAB-02, LAB-03, LAB-04, LAB-06, OPS-04, OPS-07, EXC-01, EXC-02, BAN-01, RSY-01, RSY-02, RTG-01, RTG-02, RTG-03, RTG-04, RTG-05, RTG-08, RTG-09, REG-01, REG-02, EPR-01, EPR-04, EPR-05, EPR-06 and INF-01. The five cited rows are drawn from that set: FREE-01 is the market-access gate, MIN-01 the minimisation duty, BAN-01 the Annex V format prohibitions, RCY-01 the recycled-content minimums and EPR-01 the extended-producer-responsibility duty, which addresses producers of packaged products rather than of packaging. The chemicals comparison is the supply route: the stored FIGARO figure has C20 (chemicals) supplying 21.6% of chem/plastics inputs in the EU view. The body says 'mainly' rather than 'only' because chem is not absent from the regulation's own text -- it is named on 3 rows (the substance provisions, SUB-01 among them) and reached on 5, against 36 named rows for foodbev. This finding replaces the withdrawn chemicals-led one, which led on that supplier share and did not state the sector the regulation names most often after the packaging makers themselves."
   },
-  "review": { "status": "resolved", "since": "2026-08-19" }
+  "review": {
+    "status": "resolved",
+    "since": "2026-08-19"
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "id": "act:ppwr",
+        "label": "Packaging and Packaging Waste Regulation"
+      },
+      {
+        "id": "sector:foodbev"
+      },
+      {
+        "id": "sector:chem/plastics"
+      },
+      {
+        "id": "sector:chem"
+      }
+    ],
+    "edges": [
+      {
+        "from": "act:ppwr",
+        "to": "sector:foodbev",
+        "label_template": "named directly by {n} measures",
+        "quantity": {
+          "kind": "named_count",
+          "file": "ppwr",
+          "sector": "foodbev",
+          "body_check": true
+        }
+      },
+      {
+        "from": "act:ppwr",
+        "to": "sector:chem/plastics",
+        "label_template": "{n} requirements and prohibitions",
+        "quantity": {
+          "kind": "duty_count",
+          "file": "ppwr",
+          "sector": "chem/plastics"
+        }
+      },
+      {
+        "from": "sector:chem",
+        "to": "sector:chem/plastics",
+        "label_template": "supplies {n}% of their inputs",
+        "quantity": {
+          "kind": "exposure_share",
+          "sector": "chem/plastics",
+          "partner_sector": "chem",
+          "relation": "supplier",
+          "view": "EU"
+        }
+      }
+    ]
+  }
 }
