@@ -38,14 +38,14 @@ export async function generateMetadata({
   return { title: finding.headline, description: evidenceStrip(finding) };
 }
 
-// "4 measures from the register, and 1 figure from the exposure data. Every
-// one is checked against its source file before this page is built."
+// "4 measures, and 1 figure from Eurostat input-output data. Every one is
+// checked against its source before this page is built."
 function evidenceSentence(measures: number, exposure: number): string {
-  const parts = [`${measures} ${measures === 1 ? "measure" : "measures"} from the register`];
+  const parts = [`${measures} ${measures === 1 ? "measure" : "measures"}`];
   if (exposure > 0) {
-    parts.push(`${exposure} ${exposure === 1 ? "figure" : "figures"} from the exposure data`);
+    parts.push(`${exposure} ${exposure === 1 ? "figure" : "figures"} from Eurostat input-output data`);
   }
-  return `${parts.join(", and ")}. Every one is checked against its source file before this page is built.`;
+  return `${parts.join(", and ")}. Every one is checked against its source before this page is built.`;
 }
 
 export default async function FindingPage({ params }: { params: Promise<{ id: string }> }) {

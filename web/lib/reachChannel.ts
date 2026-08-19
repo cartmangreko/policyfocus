@@ -8,10 +8,13 @@ import type { Measure } from "./types";
 
 export type ReachChannel = "supply chain" | "procurement" | "regulatory dependency";
 
+// Display labels follow the display-vocabulary ruling (sources/scope.md):
+// the regulatory-dependency channel reads "another act" to an audience. The
+// internal channel names above are unchanged.
 export const REACH_CHANNEL_LABEL: Record<ReachChannel, string> = {
   "supply chain": "Supply chain",
   procurement: "Procurement",
-  "regulatory dependency": "Regulatory dependency",
+  "regulatory dependency": "Another act",
 };
 
 export function inferReachChannel(measure: Measure): ReachChannel {

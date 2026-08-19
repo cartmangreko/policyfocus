@@ -45,7 +45,7 @@ export default function SiteFooter() {
           ))}
         </div>
         <div className="footer-colophon">
-          Prototype. All counts computed from the register, not entered by hand.
+          Prototype. Every count is computed from the source legislation, not entered by hand.
         </div>
       </div>
     </footer>

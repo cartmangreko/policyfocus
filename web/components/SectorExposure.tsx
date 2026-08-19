@@ -6,9 +6,10 @@ import type { Exposure, ExposureRow } from "@/lib/types";
 
 const EU = "EU";
 
-// Provenance for every figure in this panel.
+// Provenance for every figure in this panel. Display vocabulary: the dataset
+// is FIGARO internally, "Eurostat input-output data" to the audience.
 const EXPOSURE_SOURCE =
-  "Eurostat FIGARO 2026 edition, 2024 reference year (EU inter-country input-output tables, industry by industry).";
+  "Eurostat input-output data, 2026 edition, 2024 reference year (EU inter-country tables, industry by industry).";
 
 // Above this share of output going to final use, the customers list is
 // describing a minority of the sector's sales and saying so becomes necessary

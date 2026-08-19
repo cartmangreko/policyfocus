@@ -33,7 +33,7 @@ const COVERAGE_LINE =
 export function generateMetadata(): Metadata {
   const site = getSiteSummary();
   return {
-    description: `${site.measures} measures extracted from ${site.files} EU files, mapped to the ${site.sectors.total_reach} sectors they name or reach — every count computed from the register.`,
+    description: `${site.measures} measures decoded from ${site.files} EU acts, mapped to the ${site.sectors.total_reach} sectors they affect — every count computed from the source legislation.`,
   };
 }
 
@@ -96,7 +96,7 @@ export default function Home() {
           <div className="section-head">
             <div>
               <p className="eyebrow">Recently added</p>
-              <h2>What the register last took in</h2>
+              <h2>What the platform last took in</h2>
             </div>
             <Link href="/coverage" className="section-link">
               Full coverage →
@@ -124,7 +124,7 @@ export default function Home() {
           <div className="section-head">
             <div>
               <p className="eyebrow">Evidence</p>
-              <h2>Browse the register</h2>
+              <h2>Browse the measures</h2>
             </div>
           </div>
           <div className="doors">

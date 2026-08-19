@@ -27,7 +27,7 @@ function list(parts: Array<string | null>): string {
 export function summaryProse(subject: string, cuts: SummaryCuts): string {
   const { direction: d, status: s, channel: c } = cuts;
   const first =
-    `The register holds ${n(cuts.measures, "measure")} for ${subject}: ` +
+    `The platform holds ${n(cuts.measures, "measure")} for ${subject}: ` +
     list([
       `${d.burden} imposing a burden`,
       `${d.benefit} conferring a benefit`,

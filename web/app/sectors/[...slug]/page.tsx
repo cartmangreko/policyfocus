@@ -119,9 +119,9 @@ export default async function SectorPage({
           <Crumbs trail={trail} />
           <h1 className="sector-title">European {name}</h1>
           <p className="sector-intro">
-            How the tracked corpus reaches the sector — {stats.named} measures name it directly, and{" "}
-            {reached.length} more reach it through supply-chain, procurement or
-            regulatory-dependency channels.
+            How the tracked legislation reaches the sector — {stats.named} measures name it
+            directly, and {reached.length} more reach it through supply chains, procurement or
+            other acts.
           </p>
           {/* The gate-checked summary object for this node, rendered dumbly.
               Same three cuts as every other node on the site. */}
@@ -135,8 +135,8 @@ export default async function SectorPage({
             <p className="eyebrow">Within this sector</p>
             <h2>Child sectors with rules of their own</h2>
             <p className="section-note">
-              A child exists only where measures apply to it and not to the parent; its rows roll up
-              into this page, and this page&apos;s whole-sector measures do not roll down.
+              A child exists only where measures apply to it and not to the parent; its measures
+              roll up into this page, and this page&apos;s whole-sector measures do not roll down.
             </p>
             <div className="dir-cards">
               {children.map((c) => (
@@ -224,7 +224,7 @@ export default async function SectorPage({
                 <Link href={`/acts/${a.file}`} className="reach-row-name">
                   {FILES[a.file].name.split(" — ")[0]}
                 </Link>{" "}
-                — names the sector in {a.named} {a.named === 1 ? "row" : "rows"}
+                — names the sector in {a.named} {a.named === 1 ? "measure" : "measures"}
                 {a.reached > 0 &&
                   `, reaches it in ${a.reached} more via ${a.channels.join(" and ").toLowerCase()}`}
               </p>
@@ -235,7 +235,7 @@ export default async function SectorPage({
                   {FILES[a.file].name.split(" — ")[0]}
                 </Link>{" "}
                 — never names the sector; reaches it in {a.reached}{" "}
-                {a.reached === 1 ? "row" : "rows"} via {a.channels.join(" and ").toLowerCase()}
+                {a.reached === 1 ? "measure" : "measures"} via {a.channels.join(" and ").toLowerCase()}
               </p>
             ))}
           </div>

@@ -89,7 +89,7 @@ export default async function ActPage({ params }: { params: Promise<{ file: stri
                   <Link href={`/sectors/${r.slug}`} className="reach-row-name">
                     {r.name}
                   </Link>{" "}
-                  — reached by {r.rows.length} {r.rows.length === 1 ? "row" : "rows"}, via{" "}
+                  — reached by {r.rows.length} {r.rows.length === 1 ? "measure" : "measures"}, via{" "}
                   {r.channels.join(" and ").toLowerCase()}
                   {r.intermediatingActs.length > 0 && (
                     <> · through {r.intermediatingActs.join(", ")}</>
@@ -127,9 +127,9 @@ export default async function ActPage({ params }: { params: Promise<{ file: stri
         <div className="wrap">
           <p className="eyebrow">Audit view</p>
           <p className="section-note section-note-wide">
-            A row naming several sectors is filed above under the first sector its named list
-            carries; the full list is on each measure page. To read the file in register order
-            instead — every row, article by article —{" "}
+            A measure naming several sectors is filed above under the first of them; the full list
+            is on each measure page. To read the act from start to finish instead — every measure,
+            article by article —{" "}
             <Link href={`/measures#${file}`} className="section-link">
               open the audit view →
             </Link>

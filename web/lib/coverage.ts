@@ -88,23 +88,23 @@ export function getWeightNote(): string {
   const withIntensity = perFile.filter((f) => f.intensity > 0);
   const withWeight = perFile.filter((f) => f.weight > 0);
   const list = (fs: typeof perFile, count: (f: (typeof perFile)[number]) => number) =>
-    fs.map((f) => `${f.title} (${count(f)} of ${f.rows} rows)`).join(", ");
+    fs.map((f) => `${f.title} (${count(f)} of ${f.rows} measures)`).join(", ");
 
   let intensityPart: string;
   if (withIntensity.length === 0) {
-    intensityPart = "No file in the register records weight intensity yet.";
+    intensityPart = "No act on the platform records weight intensity yet.";
   } else {
     const naming = withIntensity.reduce((n, f) => n + f.intensityNaming, 0);
     intensityPart =
       `Weight intensity is recorded on ${list(withIntensity, (f) => f.intensity)} only` +
       (naming === 0
-        ? ", and none of those rows names a sector — so no sector-level view of weight is possible, and sector pages show the net position without one."
+        ? ", and none of those measures names a sector — so no sector-level view of weight is possible, and sector pages show the net position without one."
         : `, of which ${naming} name a sector.`);
   }
 
   const weightPart =
     withWeight.length > 0
-      ? ` The coarser categorical weight field is present on ${list(withWeight, (f) => f.weight)}; it stays on the rows and is not aggregated on any summary surface.`
+      ? ` The coarser categorical weight field is present on ${list(withWeight, (f) => f.weight)}; it stays on the individual measures and is not aggregated on any summary surface.`
       : "";
 
   return intensityPart + weightPart;

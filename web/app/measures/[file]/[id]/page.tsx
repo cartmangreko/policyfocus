@@ -103,7 +103,7 @@ export default async function MeasurePage({
         <div className="wrap">
           <div className="crumbs">
             <Link href="/#doors" className="backlink">
-              ← Browse the register
+              ← All measures
             </Link>
             <span className="crumb">
               Measures / {fileMeta ? fileMeta.name.split(" — ")[0] : measure.file}
@@ -120,7 +120,7 @@ export default async function MeasurePage({
               <span className="detail-meta-label">Addressee</span> {measure.addressee}
             </span>
             <span>
-              <span className="detail-meta-label">File</span>{" "}
+              <span className="detail-meta-label">Act</span>{" "}
               {fileMeta ? fileMeta.code : measure.file}
             </span>
             <span>
@@ -219,8 +219,8 @@ export default async function MeasurePage({
                 <code className="cite-url">{measureHref(measure)}</code>
                 <p className="cite-string">
                   {measure.id}, {fileMeta ? fileMeta.name.split(" — ")[0] : measure.file} (
-                  {fileMeta ? fileMeta.code : measure.file}), {measure.article} — PolicyFocus
-                  register, permanent id.
+                  {fileMeta ? fileMeta.code : measure.file}), {measure.article} — PolicyFocus,
+                  permanent id.
                 </p>
               </div>
 

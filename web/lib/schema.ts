@@ -27,11 +27,11 @@ export function datasetJsonLd(): string {
   const doc = {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    name: "PolicyFocus register of EU industrial-decarbonisation measures",
+    name: "PolicyFocus — EU industrial-decarbonisation measures, decoded",
     description:
-      `${site.measures} provisions extracted from ${site.files} EU files, ` +
-      `each one duty or incentive with its source sentence quoted verbatim, ` +
-      `mapped to the ${site.sectors.total_reach} sectors it names or reaches.`,
+      `${site.measures} measures decoded from ${site.files} EU acts, ` +
+      `each one a requirement, prohibition, support measure or right with its source ` +
+      `sentence quoted verbatim, mapped to the ${site.sectors.total_reach} sectors it affects.`,
     keywords: Object.values(FILES).map((f) => f.name.split(" — ")[0]),
   };
   return JSON.stringify(doc);
