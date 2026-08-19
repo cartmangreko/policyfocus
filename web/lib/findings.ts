@@ -70,6 +70,32 @@ export interface Finding extends FindingIndexEntry {
   review?: { status: "open" | "resolved"; q?: string; since?: string };
 }
 
+// A diagram is an OUTPUT of the gate, not part of the hand-authored finding:
+// build_findings.py resolves the finding's diagram spec, computes every edge
+// label from the register and the exposure files, and writes the result to
+// data/findings/diagrams/<id>.json only when every check passes. This module
+// reads that file as-is — the labels are already computed and verified, so
+// nothing here composes a number.
+export interface DiagramNode {
+  id: string;
+  kind: "act" | "sector";
+  label: string;
+  href: string;
+}
+
+export interface DiagramEdge {
+  from: string;
+  to: string;
+  /** Fully rendered by the gate, computed quantity included. */
+  label: string;
+}
+
+export interface FindingDiagram {
+  id: string;
+  nodes: DiagramNode[];
+  edges: DiagramEdge[];
+}
+
 let cachedIndex: FindingIndexEntry[] | null = null;
 
 /** Newest first — the order the gate wrote, not a re-sort. */
@@ -98,6 +124,23 @@ export function getFinding(id: string): Finding | null {
       : null;
   cache.set(id, finding);
   return finding;
+}
+
+const diagramCache = new Map<string, FindingDiagram | null>();
+
+export function getFindingDiagram(id: string): FindingDiagram | null {
+  const cached = diagramCache.get(id);
+  if (cached !== undefined) return cached;
+
+  // Same guard as getFinding: only ids the index carries reach the filesystem.
+  const known = getFindingsIndex().some((f) => f.id === id);
+  const filePath = path.join(FINDINGS_DIR, "diagrams", `${id}.json`);
+  const diagram =
+    known && fs.existsSync(filePath)
+      ? (JSON.parse(fs.readFileSync(filePath, "utf-8")) as FindingDiagram)
+      : null;
+  diagramCache.set(id, diagram);
+  return diagram;
 }
 
 export function getAllFindings(): Finding[] {

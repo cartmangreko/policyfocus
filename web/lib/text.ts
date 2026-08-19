@@ -10,6 +10,15 @@ export function isStated(value: string | null | undefined): value is string {
 }
 
 /**
+ * The first sentence of a body, for card-length surfaces. Findings bodies are
+ * plain prose without abbreviations, so a period followed by whitespace is a
+ * sentence boundary; figures like "21.6%" carry no period-space and survive.
+ */
+export function firstSentence(body: string): string {
+  return body.trim().split(/(?<=\.)\s/)[0];
+}
+
+/**
  * Which display step a measure's headline should be set at.
  *
  * Hierarchy by type size only works when the thing at the top of it is short.

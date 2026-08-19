@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SECTORS } from "@/lib/data";
 import { BASIS_LABEL, evidenceStrip, findingHref } from "@/lib/findings";
 import type { Finding } from "@/lib/findings";
-import { headlineStep } from "@/lib/text";
+import { firstSentence, headlineStep } from "@/lib/text";
 import type { SectorSlug } from "@/lib/types";
 
 // A finding, everywhere it appears in short form: the home page, the findings
@@ -20,6 +20,7 @@ export default function FindingCard({ finding }: { finding: Finding }) {
         )}
       </div>
       <h3 className={`finding-headline${headlineStep(finding.headline)}`}>{finding.headline}</h3>
+      <p className="finding-lede">{firstSentence(finding.body)}</p>
       <div className="finding-evidence">{evidenceStrip(finding)}</div>
       <div className="finding-sectors">
         {finding.sectors.map((s) => (

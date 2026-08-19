@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import FindingDiagram from "@/components/FindingDiagram";
 import MeasureEvidence from "@/components/MeasureEvidence";
 import { FILES, SECTORS } from "@/lib/data";
 import {
@@ -8,6 +9,7 @@ import {
   BASIS_NOTE,
   evidenceStrip,
   getFinding,
+  getFindingDiagram,
   getFindingsIndex,
   hasExposurePanel,
   resolveExposure,
@@ -55,6 +57,7 @@ export default async function FindingPage({ params }: { params: Promise<{ id: st
 
   const measures = resolveMeasures(finding);
   const exposure = resolveExposure(finding);
+  const diagram = getFindingDiagram(finding.id);
   const banner = BASIS_NOTE[finding.basis_status];
   const paragraphs = finding.body.split("\n").filter((p) => p.trim().length > 0);
 
@@ -105,6 +108,7 @@ export default async function FindingPage({ params }: { params: Promise<{ id: st
               {p}
             </p>
           ))}
+          {diagram && <FindingDiagram diagram={diagram} />}
         </div>
       </section>
 
