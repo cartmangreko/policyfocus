@@ -1149,6 +1149,89 @@ a.minibar-name:hover {
   text-transform: uppercase;
   color: var(--ink-40);
 }
+.crumb-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.crumb-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--claret);
+}
+.crumb-link:hover {
+  text-decoration: underline;
+}
+.crumb-sep {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+}
+
+/* ---------- directory cards ---------- */
+
+.dir-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  margin-top: 22px;
+}
+.dir-card {
+  background: #fff;
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dir-card-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+.dir-card-title:hover {
+  color: var(--claret);
+}
+.dir-card-children {
+  border-top: 1px solid var(--rule-soft);
+  margin-top: 6px;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dir-card-child {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.dir-card-child-title {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+}
+.dir-card-child-title:hover {
+  color: var(--claret);
+}
+.named-child-group {
+  margin-top: 34px;
+}
+.named-child-head {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  margin: 0 0 8px;
+}
+.named-child-head a {
+  color: var(--claret);
+}
+
 .detail-title {
   font-weight: 900;
   letter-spacing: -0.03em;
