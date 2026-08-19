@@ -9,6 +9,7 @@ import { getSiteSummary } from "@/lib/summaries";
 import { getRecentlyAdded } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
 import { getRecentFindings, withEvidence } from "@/lib/findings";
+import { getConnectionCount } from "@/lib/graphStats";
 import { getCoverageLine, getMasthead } from "@/lib/sitetext";
 
 // The home page leads with conclusions. Five blocks, in this order:
@@ -37,7 +38,7 @@ export function generateMetadata(): Metadata {
 export default function Home() {
   const findings = withEvidence(getRecentFindings(5));
   const site = getSiteSummary();
-  const recent = getRecentlyAdded(4);
+  const latest = getRecentlyAdded(1)[0];
   const masthead = getMasthead();
 
   return (
@@ -49,16 +50,20 @@ export default function Home() {
           </div>
           <p className="home-tagline">{masthead.tagline}</p>
           <p className="home-subline">{masthead.subline}</p>
-          {/* The masthead statistic: the site-wide summary object, recomputed
-              each build and gate-checked against the register. The strip is
-              one link into the sector directory. */}
+          {/* The masthead statistic: exactly three figures. Measures and
+              sectors come from the gate-checked site summary; connections is
+              the graph's total edge count, guarded by build_graph.py --check
+              in prebuild so it moves with every ingestion and can never go
+              stale. Files-read and named/reached live on /coverage now. */}
           <Link href="/sectors" className="home-stats-link" aria-label="Browse sectors">
             <StatsStrip
               stats={[
-                { value: String(site.files), label: "Files read" },
-                { value: String(site.measures), label: "Measures extracted" },
-                { value: String(site.sectors.named), label: "Sectors named" },
-                { value: String(site.sectors.total_reach), label: "Sectors reached" },
+                { value: site.measures.toLocaleString("en-US"), label: "Measures decoded" },
+                {
+                  value: getConnectionCount().toLocaleString("en-US"),
+                  label: "Connections mapped",
+                },
+                { value: String(site.sectors.total_reach), label: "Sectors" },
               ]}
             />
           </Link>
@@ -93,7 +98,7 @@ export default function Home() {
           <div className="section-head">
             <div>
               <p className="eyebrow">Recently added</p>
-              <h2>What the platform last took in</h2>
+              <h2>Latest addition: {latest.title.split(" — ")[0]}</h2>
             </div>
             <Link href="/coverage" className="section-link">
               Full coverage →
@@ -102,17 +107,10 @@ export default function Home() {
           {/* Derived from sources/manifest.json and the .fetch.json sidecars.
               This is when the DOCUMENT was fetched, not when anything in it
               changed — said plainly, because the two get confused. */}
-          <ul className="recent-list">
-            {recent.map((f) => (
-              <li key={f.slug} className="recent-item">
-                <span className="recent-name">{f.title}</span>
-                <span className="recent-meta">
-                  {f.basis ? BASIS_LABEL[f.basis] : "—"} · {f.measures} measures · fetched{" "}
-                  {f.lastUpdated}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <p className="section-note">
+            {latest.basis ? BASIS_LABEL[latest.basis] : "—"} · {latest.measures} measures · added{" "}
+            {latest.lastUpdated}
+          </p>
         </div>
       </section>
 
