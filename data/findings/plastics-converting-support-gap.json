@@ -2,23 +2,26 @@
   "schema_version": 1,
   "id": "plastics-converting-support-gap",
   "template": "support_mismatch",
-  "headline": "Seven sectors carry more than 70 duty-side rows; six of them get 30 to 51 benefit-side rows — plastics converting gets 5",
-  "body": "Count every row in the register by what it does to a sector. Seven of the twenty sectors carry more than 70 duty-side rows: aluminium (165), waste (136), steel (127), batteries and solar (106), clean tech (97), power (75) and plastics converting (74). For six of the seven, the corpus also carries a substantial benefit side — between 30 benefit-side rows (waste) and 51 (aluminium).\n\nPlastics converting carries 5. All five come from the Packaging and Packaging Waste Regulation itself — three transitional or mutual-recognition rights, one conformity simplification, one procedural right — and none of the register's other six files carries a single benefit-side row that names or reaches the sector. Three further PPWR rows are carry-overs whose level does not move; they are neutral and counted in neither column.\n\nAcross the seven files in the register, plastics converting carries 74 duty-side measures (obligations and prohibitions), attributed where a measure names or reaches it. Its complete benefit side is the five rows cited above — three transitional or mutual-recognition rights, one conformity simplification, and one procedural right — rights and a simplification, attributed the same way. No incentive measure in the register names the sector directly, and none reaches it: the count is zero. The comparison is arithmetic: 74 burden-side measures against 5 benefit-side measures for the same slug, computed from the same rows that produce the sector's summary strip. Sectors with comparable burden counts carry between 30 (waste) and 51 (aluminium) rows on the benefit side. The register records what each act states; this finding records the difference between two of those counts.",
+  "headline": "74 new obligations for plastic packaging makers, with no support to match.",
+  "body": "The packaging regulation places 74 requirements and prohibitions on the companies that make plastic packaging. Not one support or funding measure is directed at them, even though 30 support measures across the legislation reach other sectors.",
   "prose_status": "approved",
-  "prose_reviewed": "2026-08-18",
+  "prose_reviewed": "2026-08-19",
   "sectors": ["chem/plastics"],
   "files": ["ppwr"],
   "basis_status": "adopted",
   "date": "2026-08-18",
   "evidence": {
     "measures": [
+      { "file": "ppwr", "row_id": "MIN-01" },
+      { "file": "ppwr", "row_id": "RCY-01" },
+      { "file": "ppwr", "row_id": "BAN-01" },
       { "file": "ppwr", "row_id": "FREE-03" },
       { "file": "ppwr", "row_id": "REC-05" },
       { "file": "ppwr", "row_id": "LAB-04" },
       { "file": "ppwr", "row_id": "CNF-02" },
       { "file": "ppwr", "row_id": "EPR-04" }
     ],
-    "notes": "Counts are taken across every row of all seven register files, attributing a row to a sector where the slug appears in sectors_named or sectors_reached. Duty-side means valence Requirement or Prohibition plus benefit-side movements withdrawn (Support cut, Entitlement withdrawn); benefit-side means Simplification, Opportunity, Entitlement or Prohibition lifted; rows with direction 'unchanged' (Neutral) are excluded from both columns and reported separately (3 for chem/plastics). Sectors with more than 70 duty-side rows and their benefit-side counts: alu 165/51, waste 136/30, steel 127/48, batsol 106/47, clean 97/44, power 75/38, chem/plastics 74/5. The five cited rows are the complete benefit-side set for chem/plastics; a by-file split of the sector's rows puts all 74 duty-side and all 5 benefit-side rows in data/ppwr.json. A direct check across all seven files finds no measure typed 'incentive' carrying chem/plastics in sectors_named or sectors_reached, which is the zero-incentives sentence in the closing paragraph."
+    "notes": "All three counts are taken across every row of all seven register files, attributing a row to a sector where the slug appears in sectors_named or sectors_reached.\n\n74: rows touching chem/plastics whose derived valence is Requirement, Prohibition, Support cut or Entitlement withdrawn. All 74 sit in data/ppwr.json; no other register file carries a duty-side row for the sector. MIN-01, RCY-01 and BAN-01 are cited from that set as the minimisation duty, the recycled-content minimums and the Annex V format prohibitions.\n\nZero: no row typed 'incentive' anywhere in the register carries chem/plastics in sectors_named or sectors_reached, and no row touching the sector derives the valence Opportunity. The sector's entire favourable side is the five further cited rows -- FREE-03, REC-05, LAB-04, CNF-02 and EPR-04 -- three transitional or mutual-recognition rights, one conformity simplification and one procedural right. None of them moves an amount, a rate, an eligibility or the existence of any funding, which is what the incentive type requires; that is the sense in which the count is zero. Three further PPWR rows carry direction 'unchanged' and are counted on neither side.\n\n30: rows typed 'incentive' anywhere in the register that carry at least one slug in sectors_named or sectors_reached -- iaa 16, ets 9, nzia 3, crma 2. Of the register's 39 incentive rows, 9 attach to no sector at all. The same 30 rows are returned by the stricter test of derived valence Opportunity, because the one incentive row typed as a Support cut is among the 9 that name and reach no sector. None of the 30 touches chem/plastics."
   },
-  "review": { "status": "resolved", "since": "2026-08-18" }
+  "review": { "status": "resolved", "since": "2026-08-19" }
 }
