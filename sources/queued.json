@@ -2,12 +2,16 @@
   {
     "title": "TODO-GEORGE — ESPR delegated acts defining 'low-carbon' for steel, cement and aluminium",
     "note": "Named in sources/scope.md as in scope; the register carries a placeholder node waiting on them.",
-    "celex": null
+    "celex": null,
+    "display_title": "Ecodesign delegated acts defining 'low-carbon' steel, cement and aluminium — awaiting adoption",
+    "display_note": "Named as in scope; the platform holds a placeholder awaiting them."
   },
   {
     "title": "TODO-GEORGE — CPR delegated acts on construction-product environmental declarations",
     "note": "Same dependency as the ESPR acts: they fix a term tracked measures already reference.",
-    "celex": null
+    "celex": null,
+    "display_title": "Construction Products Regulation delegated acts on environmental declarations — awaiting adoption",
+    "display_note": "They fix a term that tracked measures already reference."
   },
   {
     "title": "CAPTURE PRIORITY — Circular Economy Act (CEA)",
@@ -15,6 +19,8 @@
     "note": "Not published as at 2026-08-18. Cellar carries no CEA proposal or adopted text: a SPARQL sweep for 2025+ works titled 'circular economy' returns only COM(2025) 805, a Communication on a plastics circularity pilot, which scope.md rules out by document type. Checked directly, not assumed.",
     "capture_priority": "First structured read on publication. Fetch and extract from the first XHTML or Formex manifestation rather than waiting for a consolidation, and do not wait for EuroVoc indexing -- see below.",
     "why_the_watch_agent_may_miss_it": "The topic channel matches on EuroVoc concepts, and CELLAR had indexed PPWR (32025R0040) under NO EuroVoc concept at all seven months after publication. Four circularity concepts were added to watch_config.json so the channel CAN catch a CEA, but indexing lag means it may not catch it quickly. Check for the CEA by CELEX directly around publication.",
-    "known_extractor_gap": "If the CEA lands PDF-only, as Commission proposals often do, fetch_eurlex.py can retrieve it but the PDF path hard-wraps text and breaks verbatim span anchoring. That is a known gap and must not be hacked around at extraction time."
+    "known_extractor_gap": "If the CEA lands PDF-only, as Commission proposals often do, fetch_eurlex.py can retrieve it but the PDF path hard-wraps text and breaks verbatim span anchoring. That is a known gap and must not be hacked around at extraction time.",
+    "display_title": "Circular Economy Act — not yet published",
+    "display_note": "Checked directly against the EU's official publication channels as of 2026-08-18; no proposal or adopted text exists yet. It will be read on publication."
   }
 ]

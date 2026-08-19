@@ -147,9 +147,11 @@ export default function CoveragePage() {
             <ul className="queued-list">
               {queued.map((q, i) => (
                 <li key={i}>
-                  <span className="queued-title">{q.title}</span>
+                  <span className="queued-title">{q.display_title ?? q.title}</span>
                   {q.celex && <span className="queued-celex">{q.celex}</span>}
-                  {q.note && <span className="queued-note">{q.note}</span>}
+                  {(q.display_note ?? q.note) && (
+                    <span className="queued-note">{q.display_note ?? q.note}</span>
+                  )}
                 </li>
               ))}
             </ul>
