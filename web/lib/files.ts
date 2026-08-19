@@ -201,6 +201,11 @@ export interface QueuedItem {
   title: string;
   note?: string;
   celex?: string | null;
+  /** Audience wording per the display-vocabulary ruling. The internal title
+   *  and note stay for the pipeline; the page renders these when present.
+   *  A new queued entry should always carry them. */
+  display_title?: string;
+  display_note?: string;
 }
 
 /** sources/queued.json — what is known to be coming and not yet read. */

@@ -9,7 +9,7 @@ import { getSiteSummary } from "@/lib/summaries";
 import { getRecentlyAdded } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
 import { getRecentFindings, withEvidence } from "@/lib/findings";
-import { getMasthead } from "@/lib/sitetext";
+import { getCoverageLine, getMasthead } from "@/lib/sitetext";
 
 // The home page leads with conclusions. Five blocks, in this order:
 // wordmark, findings, recently added, doors, coverage line.
@@ -24,9 +24,6 @@ import { getMasthead } from "@/lib/sitetext";
 // The masthead pair (tagline + subline) is George-approved final text, read
 // from data/prose.json — reviewed prose stored as data, per sources/scope.md.
 
-// TODO-GEORGE: coverage line.
-const COVERAGE_LINE =
-  "TODO-GEORGE — one sentence stating the perimeter: what body of law this covers and what it does not.";
 
 // The default title stays in the layout; the description is computed from
 // the site summary so the tag moves with the register.
@@ -149,7 +146,7 @@ export default function Home() {
       <section className="band band-tight" id="coverage">
         <div className="wrap">
           <p className="coverage-line">
-            {COVERAGE_LINE}{" "}
+            {getCoverageLine()}{" "}
             <Link href="/coverage" className="section-link">
               What is covered →
             </Link>

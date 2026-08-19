@@ -22,6 +22,7 @@ interface ProseDoc {
     files: Record<string, string>;
     reviewed?: string;
   };
+  coverage_line: { status: ProseStatus; template: string; reviewed?: string };
 }
 
 let cached: ProseDoc | null = null;
@@ -67,4 +68,11 @@ export function getPerimeterProse(): string {
  *  null when the file carries none. */
 export function getCoverageDeclaration(file: string): string | null {
   return readProse().coverage_declarations.files[file] ?? null;
+}
+
+/** The home page's one-line coverage statement, its act count rendered from
+ *  the site summary — same slot discipline as the perimeter paragraph. */
+export function getCoverageLine(): string {
+  const site = getSiteSummary();
+  return readProse().coverage_line.template.replace(/\{acts_count\}/g, String(site.files));
 }

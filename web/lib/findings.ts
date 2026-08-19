@@ -218,13 +218,15 @@ export function withEvidence(entries: FindingIndexEntry[]): Finding[] {
   return entries.map((e) => getFinding(e.id)).filter((f): f is Finding => f !== null);
 }
 
+// Banner copy in display vocabulary (sources/scope.md, display-vocabulary
+// ruling): the content each banner states was already fixed by the basis
+// machinery; only the wording was open.
 export const BASIS_NOTE: Record<BasisStatus, string | null> = {
   adopted: null,
-  // TODO-GEORGE: exact banner copy.
   proposed:
-    "TODO-GEORGE — Based on proposed legislation. The provisions cited here are not in force and may change before adoption.",
+    "Based on proposed legislation. The measures cited here are not yet in force and may change before adoption.",
   mixed:
-    "TODO-GEORGE — Based in part on proposed legislation. Some provisions cited here are in force and some are not yet adopted and may change.",
+    "Based in part on proposed legislation. Some measures cited here are in force; others are not yet adopted and may change.",
 };
 
 export const BASIS_LABEL: Record<BasisStatus, string> = {

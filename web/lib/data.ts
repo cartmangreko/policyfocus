@@ -46,7 +46,7 @@ export const FILES: Record<string, FileMeta> = {
   // 02025R0040-20250122 and then serves it in no format. Single-pass.
   ppwr: {
     name: "Packaging and Packaging Waste Regulation",
-    code: "Regulation (EU) 2025/40, base act (read once, not reconciled)",
+    code: "Regulation (EU) 2025/40, base act",
   },
 };
 
