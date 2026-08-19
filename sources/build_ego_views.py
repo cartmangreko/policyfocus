@@ -24,8 +24,10 @@ carries an explicit `note` instead of a sector ring that quietly is not there.
 Silence and absence look identical in a picture; the note is what tells them
 apart.
 
-THE NOTE IS REVIEWED PROSE, AND IT IS REQUIRED. The count in the note is
-computed here; the sentences around it are not. They live in data/prose.json
+THE NOTE IS REVIEWED PROSE, AND IT IS REQUIRED. Every number in the note is
+computed here — the file's measure count and the number of acts its spokes
+point at, filled into slots the same way — and the sentences around them are
+not. They live in data/prose.json
 under `ego_notes`, with a review status and date — tier 2 of the three-tier
 rule in sources/scope.md — because what a missing sector ring MEANS is a
 judgment no aggregation can make. The composed-here version of this note said
@@ -213,7 +215,21 @@ def build_view(file: str, nodes: dict[str, dict], edges: list[dict],
                 f"'this act affects nobody' unless a reviewed sentence says otherwise, so the "
                 f"note is required rather than composed."
             )
-        view["note"] = render_note(file, template, {"measure_count": view["measure_count"]})
+        n_acts = len({s["id"] for g in groups for s in g["spokes"] if s["kind"] == "act"})
+        # The reviewed sentence writes "acts" in the plural, because the slot
+        # carries the number and not the noun. One connected act would render
+        # "1 acts", so it stops here for a review pass instead of shipping the
+        # grammar. Same shape as every other failure in this file: the case
+        # nobody wrote prose for does not get prose composed for it.
+        if n_acts == 1:
+            raise SystemExit(
+                f"EGO VIEWS NOT BUILT — {file!r} connects to 1 act, and its reviewed note in "
+                f"data/prose.json is written for the plural; reword the note for the singular"
+            )
+        view["note"] = render_note(file, template, {
+            "measure_count": view["measure_count"],
+            "act_count": n_acts,
+        })
     elif file in ego_notes:
         # The mirror. A stored note explains an absence; a file that does have
         # sector spokes would render one over a sector ring that is plainly

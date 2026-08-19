@@ -26,9 +26,9 @@
   "ego_notes": {
     "status": "approved",
     "reviewed": "2026-08-19",
-    "_comment": "One note per register file whose measures name and reach no sector at all. A note is REQUIRED for such a file: build_ego_views.py fails rather than composing one, because the sentence has to say what a missing sector ring means, and only a person can decide that. Slot {measure_count} is the file's own measure count, computed by the builder.",
+    "_comment": "One note per register file whose measures name and reach no sector at all. A note is REQUIRED for such a file: build_ego_views.py fails rather than composing one, because the sentence has to say what a missing sector ring means, and only a person can decide that. Slots are computed by the builder from the view it has just built — {measure_count} is the file's own measure count, {act_count} the number of distinct acts its spokes point at. Both are filled the same way; nothing in the sentence is a typed-in number.",
     "files": {
-      "omnibus": "None of the omnibus's {measure_count} measures names a specific sector. The act applies horizontally, to companies across the whole economy based on size and activity. Zero named sectors means no sector-specific provisions, not zero impact."
+      "omnibus": "None of the omnibus's {measure_count} measures names a specific sector. The act applies horizontally, to companies across the whole economy based on size and activity. Zero named sectors means no sector-specific provisions, not zero impact. Every connection shown is one of the {act_count} acts its measures amend, cite or depend on."
     }
   }
 }
