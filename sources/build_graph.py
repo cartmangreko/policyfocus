@@ -835,6 +835,32 @@ def write(g: Graph):
     return nodes, edges
 
 
+def check_against_disk(g: Graph) -> int:
+    """--check: rebuild in memory and diff against data/graph/ without
+    writing. The web build runs this in prebuild so a graph that has gone
+    stale against the register — including the masthead's connections count,
+    which is len(edges.json) — fails the build instead of rendering."""
+    want = {
+        "nodes.json": sorted(g.nodes.values(), key=lambda n: (n["kind"], n["id"])),
+        "edges.json": sorted(g.edges, key=lambda e: (e["rel"], e["from"], e["to"], str(e.get("basis") or ""))),
+    }
+    for name, payload in want.items():
+        on_disk_path = OUT / name
+        if not on_disk_path.exists():
+            print(f"build_graph: --check failed, {on_disk_path} missing", file=sys.stderr)
+            return 1
+        on_disk = json.loads(on_disk_path.read_text(encoding="utf-8"))
+        if on_disk != payload:
+            print(
+                f"build_graph: --check failed, {name} on disk does not match the register "
+                f"(disk {len(on_disk)}, rebuilt {len(payload)}) — re-run build_graph.py",
+                file=sys.stderr,
+            )
+            return 1
+    print(f"build_graph: --check, {len(want['nodes.json'])} nodes and {len(want['edges.json'])} edges match the register")
+    return 0
+
+
 def main() -> int:
     try:
         g = build()
@@ -842,6 +868,9 @@ def main() -> int:
     except BuildError as exc:
         print(f"build_graph: {exc}", file=sys.stderr)
         return 1
+
+    if "--check" in sys.argv[1:]:
+        return check_against_disk(g)
 
     nodes, edges = write(g)
 
