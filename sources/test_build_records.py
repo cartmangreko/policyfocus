@@ -135,6 +135,19 @@ def main() -> int:
              "no before to show against the after",
              lambda d: d.__setitem__("measures", [{"file": "ppwr", "row_id": "FREE-01"}]),
              target=AMEND),
+        # THE EVENT DATE (sources/scope.md, "A record's event date is the date
+        # of the event it describes"). Both halves: a date that contradicts the
+        # manifest, and a relationship the manifest records no date for, which
+        # must fail rather than fall back to the day the file was ingested.
+        case("an amendment record dated to the reading rather than the event",
+             "is not the date of the event",
+             lambda d: d.__setitem__("event_date", "2026-08-18"),
+             target=AMEND),
+        case("an amendment record whose event date has no basis in the manifest",
+             "records no date for",
+             lambda d: (d.__setitem__("prior_act", "32019R1020"),
+                        d.__setitem__("event_date", "2026-08-18")),
+             target=AMEND),
         case("a diagram scoped to a different measure set than the prose",
              "[diagram]",
              lambda d: d["diagram"]["edges"][0]["quantity"].pop("scope"),

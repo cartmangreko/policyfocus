@@ -366,6 +366,34 @@ The suppression lifts when reach is computed against the consolidated base act
 as amended by the proposal, at which point the number means what a reader
 would take it to mean and the clause can render for every family.
 
+### A record's event date is the date of the event it describes
+
+Not the date the platform found out. The two coincide often enough that the
+difference is easy to miss, and a change record is permanent, so a page dated
+to our reading rather than to the event is a small lie with no expiry.
+
+Which date that is follows from what the record is about, per family:
+
+- `new_act_ingested` describes the platform reading an act. The reading IS the
+  event, so the date is the ingestion date from git history.
+- `amendment` describes something that happened in law, so the date comes from
+  the law. PPWR replaces Directive 94/62/EC on 12 August 2026 — Art. 70(1),
+  "Directive 94/62/EC is repealed with effect from 12 August 2026", recorded in
+  `manifest.json` under `repeals.<celex>.since` — so the record is dated the
+  12th, not the 18th, when the file was read.
+- `delegated_act` takes the date of the delegated act, and `status_change` the
+  date of the procedural step, on the same principle, when those families are
+  first exercised.
+
+`build_records.py` fails an amendment record whose event date is not the date
+the manifest records for the relationship, AND fails one where the manifest
+records no date at all — the manifest today says WHICH acts a file amends but
+not WHEN each amendment took effect, so an amendment record against an amended
+(rather than repealed) act cannot be dated until an ingestion records it. The
+failure is the point: falling back to the ingestion date would produce a record
+that looks right and is wrong, which is the class of defect every gate here
+exists to make impossible.
+
 ### Carry-overs come from repeal, not from amendment
 
 `direction: "unchanged"` was added for PPWR, and the obvious worry was that the

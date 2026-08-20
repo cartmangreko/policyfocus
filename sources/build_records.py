@@ -277,10 +277,19 @@ def prior_act(rid: str, doc: dict, manifest: dict, node_labels: dict) -> dict | 
     for key in bf.FILE_MANIFEST_KEYS.get(doc["file"], ()):
         entry = manifest.get(key) or {}
         if celex in (entry.get("repeals") or {}):
+            record = entry["repeals"][celex]
             relationship = "replaces"
+            # The date the repeal takes effect, quoted from the act itself.
+            basis_date = record.get("since")
+            basis_note = " ".join(x for x in (record.get("article"), record.get("quote")) if x)
             break
         if celex in (entry.get("amends") or []):
             relationship = "amends"
+            # manifest.json records WHICH acts a file amends, not WHEN each
+            # amendment takes effect. Until an ingestion records that date, an
+            # amendment record against this act has no basis for its event
+            # date and must fail rather than fall back.
+            basis_date, basis_note = None, ""
             break
     else:
         fail(rid, "references", f"prior_act {celex!r} is not recorded in sources/manifest.json as "
@@ -291,7 +300,35 @@ def prior_act(rid: str, doc: dict, manifest: dict, node_labels: dict) -> dict | 
         fail(rid, "references", f"prior_act {celex!r} has no display name in data/graph/nodes.json; "
                                 "a record may not print a CELEX number at a reader")
         return None
-    return {"celex": celex, "relationship": relationship, "name": label}
+    return {"celex": celex, "relationship": relationship, "name": label,
+            "event_date": basis_date, "basis": basis_note}
+
+
+def check_event_date_basis(rid: str, doc: dict, prior: dict) -> bool:
+    """THE EVENT DATE IS THE DATE OF THE EVENT (sources/scope.md, "A record's
+    event date is the date of the event it describes").
+
+    A new_act_ingested record describes the platform reading an act, so its
+    date is the reading. An amendment record describes something that happened
+    in law, so its date has to come from the law -- and if the manifest does
+    not record one, the record fails here rather than quietly inheriting the
+    day the file was ingested. A permanent page dated to our reading rather
+    than to the event is a small lie that never expires.
+    """
+    basis = prior.get("event_date")
+    if not basis:
+        fail(rid, "event_date", f"the manifest records no date for {doc['file']} "
+                                f"{prior['relationship']} {prior['celex']}, so this record has no "
+                                "basis for its event date. Record the date at ingestion; do not "
+                                "fall back to the date the file was read.")
+        return False
+    if doc["event_date"] != basis:
+        fail(rid, "event_date", f"event_date {doc['event_date']} is not the date of the event: the "
+                                f"manifest has {doc['file']} {prior['relationship']} "
+                                f"{prior['celex']} on {basis}"
+                                + (f" ({prior['basis']})" if prior.get("basis") else ""))
+        return False
+    return True
 
 
 def act_identifiers(file: str, manifest: dict) -> dict:
@@ -542,6 +579,8 @@ def check_template(rid: str, doc: dict, facts: dict, prose: dict, manifest: dict
     if family == "amendment":
         prior = prior_act(rid, doc, manifest, node_labels)
         if prior is None:
+            return None
+        if not check_event_date_basis(rid, doc, prior):
             return None
         if facts["prior_resolved_count"] == 0:
             fail(rid, "template", "no measure on this record has the earlier wording on file, so "
