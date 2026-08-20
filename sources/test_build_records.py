@@ -152,6 +152,13 @@ def main() -> int:
              "[diagram]",
              lambda d: d["diagram"]["edges"][0]["quantity"].pop("scope"),
              target=AMEND),
+        # The field the whole review discipline hangs on. Now that it reads
+        # 'approved', the only thing standing between a quiet edit and unreviewed
+        # prose rendering is that this gate refuses any other value.
+        case("a template status that is neither approved nor draft",
+             "must be 'approved' or",
+             None,
+             lambda p: p["record_templates"].__setitem__("status", "looks-fine-to-me")),
         case("a status note missing for the record's legal standing",
              "no status note for basis_status",
              None,
