@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import FindingDiagram from "@/components/FindingDiagram";
 import MeasureEvidence from "@/components/MeasureEvidence";
+import SectorIcon from "@/components/SectorIcon";
 import { BASIS_LABEL, BASIS_NOTE } from "@/lib/findings";
 import {
   TEMPLATE_LABEL,
@@ -122,6 +123,7 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
           <div className="chips">
             {record.sectors_named.map((s) => (
               <Link key={s} href={`/sectors/${s}`} className="chip">
+                <SectorIcon slug={s} size={14} />
                 {sectorName(s)}
               </Link>
             ))}
@@ -145,6 +147,7 @@ export default async function RecordPage({ params }: { params: Promise<{ id: str
                 <ul className="reach-list">
                   {reached.map((r) => (
                     <li key={r.slug}>
+                      <SectorIcon slug={r.slug} size={14} />
                       <Link href={`/sectors/${r.slug}`} className="reach-sector">
                         {r.name}
                       </Link>

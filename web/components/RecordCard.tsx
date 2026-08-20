@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SectorIcon from "./SectorIcon";
 import { BASIS_LABEL } from "@/lib/findings";
 import {
   TEMPLATE_LABEL,
@@ -34,6 +35,7 @@ export default function RecordCard({ record }: { record: ChangeRecord }) {
         <span className="record-act">{actShortName(record.file)}</span>
         {sectors.map((s) => (
           <span key={s} className="record-sector">
+            <SectorIcon slug={s} size={13} />
             {sectorName(s)}
           </span>
         ))}

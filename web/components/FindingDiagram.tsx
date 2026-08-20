@@ -1,5 +1,7 @@
 import Link from "next/link";
+import SectorIcon from "./SectorIcon";
 import type { DiagramEdge, DiagramNode, FindingDiagram as Diagram } from "@/lib/findings";
+import type { SectorSlug } from "@/lib/types";
 
 // The finding's diagram: 3-5 nodes (acts and sectors) in a vertical flow, with
 // every edge label computed and verified by the gate — this component only
@@ -39,8 +41,12 @@ function buildTree(diagram: Diagram): TreeNode | null {
 }
 
 function NodeChip({ node }: { node: DiagramNode }) {
+  // The node id is "sector:<slug>" or "act:<file>", by the gate's own rule, so
+  // the mark comes off the id rather than off a second field nobody maintains.
+  const slug = node.kind === "sector" ? (node.id.slice("sector:".length) as SectorSlug) : null;
   return (
     <Link href={node.href} className={`diagram-node diagram-node-${node.kind}`}>
+      {slug && <SectorIcon slug={slug} size={15} />}
       {node.label}
     </Link>
   );

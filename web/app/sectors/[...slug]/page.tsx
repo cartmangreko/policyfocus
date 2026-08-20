@@ -6,6 +6,7 @@ import FindingCard from "@/components/FindingCard";
 import NetPositionStrip from "@/components/NetPositionStrip";
 import SectorCard from "@/components/SectorCard";
 import SectorExposure from "@/components/SectorExposure";
+import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import SignalRow from "@/components/SignalRow";
 import SummaryStrip from "@/components/SummaryStrip";
 import { getArrival } from "@/lib/acts";
@@ -24,6 +25,7 @@ import { getExposure } from "@/lib/exposure";
 import { arrivalProse, summaryProse } from "@/lib/prose";
 import { getSectorSummary } from "@/lib/summaries";
 import { getFindingsForSector, withEvidence } from "@/lib/findings";
+import { getRecordsForSector, recordHref } from "@/lib/records";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
 import type { Measure, SectorSlug } from "@/lib/types";
 
@@ -64,6 +66,10 @@ export async function generateMetadata({
   };
 }
 
+// Enough to show the sector is moving, few enough that the panel stays a
+// panel rather than becoming the page.
+const RECENT_CHANGES = 5;
+
 function MeasureList({ rows }: { rows: Measure[] }) {
   return (
     <div className="signals">
@@ -97,6 +103,10 @@ export default async function SectorPage({
   // The inverse of an act page's reach strip: which files arrive here, and
   // whether they name the sector or only ever reach it.
   const arrival = getArrival(sectorSlug);
+  // The change feed, filtered to this sector. Capped, with the rest a click
+  // away: a sector page is a standing description of a position, and an
+  // uncapped feed at the top of it would turn it into a news page.
+  const changes = getRecordsForSector(sectorSlug).slice(0, RECENT_CHANGES);
 
   // Channel mix for the reached-without-naming cohort.
   const channels = new Map<string, number>();
@@ -117,7 +127,13 @@ export default async function SectorPage({
       <section className="detail-head">
         <div className="wrap">
           <Crumbs trail={trail} />
-          <h1 className="sector-title">European {name}</h1>
+          <div className="sector-head">
+            <SectorIcon slug={sectorSlug} size={30} />
+            <h1 className="sector-title">European {name}</h1>
+          </div>
+          {/* The page's one piece of sector colour, and the only place the
+              accent appears at more than hairline width. */}
+          <hr className="sector-rule" style={{ color: `var(${accentVar(sectorSlug)})` }} />
           <p className="sector-intro">
             How the tracked legislation reaches the sector — {stats.named} measures name it
             directly, and {reached.length} more reach it through supply chains, procurement or
@@ -128,6 +144,30 @@ export default async function SectorPage({
           <SummaryStrip cuts={getSectorSummary(sectorSlug)} subject={`European ${name.toLowerCase()}`} />
         </div>
       </section>
+
+      {changes.length > 0 && (
+        <section className="band band-tight" id="changes">
+          <div className="wrap">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Recent changes</p>
+                <h2>What moved in this sector</h2>
+              </div>
+              <Link href="/changes" className="section-link">
+                All records →
+              </Link>
+            </div>
+            <div className="sector-changes">
+              {changes.map((r) => (
+                <Link key={r.id} href={recordHref(r.id)} className="sector-change">
+                  <span className="sector-change-date">{r.event_date}</span>
+                  <span className="sector-change-headline">{r.headline}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {children.length > 0 && (
         <section className="band band-tight" id="children">
