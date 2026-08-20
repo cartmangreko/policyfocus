@@ -2314,3 +2314,160 @@ h3 {
     display: none;
   }
 }
+
+/* ---------- change records ----------
+
+   A record is an event, and the feed is a list of events, so the feed is set
+   as rows rather than as the card grid the findings use: a grid says these
+   things are alternatives to each other, and a dated list says one came after
+   another. The card itself borrows the findings' internals — headline steps,
+   evidence strip, sector tags — because a record and a finding are the same
+   kind of object to a reader, one about an event and one about a claim, and
+   two visual languages for that would be a distinction without a difference.
+
+   The slim home head is the same block as .home-head at less height: the
+   masthead pair still reads first, it just stops being the whole screen. */
+.home-head-slim {
+  padding: 40px 0 22px;
+}
+.home-head-slim .home-wordmark {
+  transform: scale(1.15);
+}
+.home-head-slim .home-tagline {
+  margin-top: 22px;
+  font-size: clamp(1rem, 1.8vw, 1.28rem);
+}
+
+.record-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.record-card {
+  background: #fff;
+  padding: 22px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  transition: background var(--dur) var(--ease);
+}
+.record-card:hover {
+  background: var(--card-hover);
+}
+.record-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+}
+.record-date {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-55);
+}
+/* The event kind is the one thing on the card that is not a number or a name,
+   so it is the one thing set in the signal colour. */
+.record-kind {
+  color: var(--claret);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.record-basis {
+  color: var(--ochre);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.record-headline {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.32rem;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  margin: 0;
+  max-width: 46ch;
+  text-wrap: balance;
+}
+.record-headline.is-long {
+  font-size: 1.12rem;
+}
+.record-headline.is-xlong {
+  font-size: 1rem;
+  line-height: 1.28;
+}
+.record-lede {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-70);
+  margin: 0;
+  max-width: 68ch;
+}
+.record-evidence {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-55);
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 10px;
+}
+.record-sectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.record-act,
+.record-sector {
+  font-size: 11.5px;
+  color: var(--ink-55);
+  border: 1px solid var(--rule-soft);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+/* The act is the record's subject, not one tag among the sectors. */
+.record-act {
+  color: var(--ink-70);
+  border-color: var(--rule);
+}
+
+/* Reach on a record page: the sector, then the channels it arrives by. The
+   channel is a display inference (lib/reachChannel.ts), never a stored fact,
+   so it is set quieter than the sector name it qualifies. */
+.reach-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.reach-list li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.reach-sector {
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+}
+.reach-sector:hover {
+  border-bottom-color: var(--ink-40);
+}
+.reach-channel {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+  background: var(--paper);
+  border-radius: 3px;
+  padding: 2px 7px;
+}
+/* Why a reach section is absent, where it is absent. Set as a note rather than
+   as a warning: nothing is wrong, the number is simply not sayable yet. */
+.reach-note {
+  max-width: 68ch;
+  margin-top: 14px;
+  padding-left: 12px;
+  border-left: 2px solid var(--rule);
+}

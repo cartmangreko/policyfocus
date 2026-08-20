@@ -66,7 +66,21 @@ function Branch({ tree }: { tree: TreeNode }) {
   );
 }
 
-export default function FindingDiagram({ diagram }: { diagram: Diagram }) {
+// The caption is a prop because a record diagram is the same species drawn
+// from different sources: a finding's edges can carry a figure from the
+// input-output data, and a record's are counts from the act alone. A single
+// hardcoded caption would overstate one or the other.
+const DEFAULT_CAPTION =
+  "Every figure on this diagram is computed from the register and the " +
+  "input-output data, and checked before the page is built.";
+
+export default function FindingDiagram({
+  diagram,
+  caption = DEFAULT_CAPTION,
+}: {
+  diagram: Diagram;
+  caption?: string;
+}) {
   const tree = buildTree(diagram);
   if (!tree) return null;
   return (
@@ -75,10 +89,7 @@ export default function FindingDiagram({ diagram }: { diagram: Diagram }) {
       {tree.children.map((c) => (
         <Branch key={c.node.id} tree={c} />
       ))}
-      <figcaption className="diagram-caption">
-        Every figure on this diagram is computed from the register and the
-        input-output data, and checked before the page is built.
-      </figcaption>
+      <figcaption className="diagram-caption">{caption}</figcaption>
     </figure>
   );
 }
