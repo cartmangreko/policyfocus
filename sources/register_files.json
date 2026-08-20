@@ -1,41 +1,48 @@
 {
-  "_comment": "Register file slug -> the manifest entries it was read from. Read by sources/build_findings.py and by web/lib/files.ts, so the two sides cannot drift. `manifest_keys` is not the identity mapping: cbam is ONE register file read from TWO manifest entries, the extension proposal and the consolidated base it amends, which is why a CBAM finding is entitled to say 'mixed'. `declared_status` is only for a file the manifest cannot answer for, and must carry the reason.",
+  "_comment": "Register file slug -> the manifest entries it was read from. Read by sources/build_findings.py, sources/build_records.py and by web/lib/files.ts, so the sides cannot drift. `manifest_keys` is not the identity mapping: cbam is ONE register file read from TWO manifest entries, the extension proposal and the consolidated base it amends, which is why a CBAM finding is entitled to say 'mixed'. `declared_status` is only for a file the manifest cannot answer for, and must carry the reason. `display_name` is the act's audience-facing name, the one string a change record is allowed to print for the act; it is the same name web/lib/data.ts FILES holds, and build_records.py checks the two agree rather than letting a rename land on one side only.",
   "files": {
     "omnibus": {
       "manifest_keys": [],
       "declared_status": "proposed",
-      "declared_status_reason": "Predates manifest.json — built by build_data.py from the local COM(2025) 81 text, before the fetcher existed. COM(2025) 81, 2025/0045(COD) is a Commission proposal."
+      "declared_status_reason": "Predates manifest.json — built by build_data.py from the local COM(2025) 81 text, before the fetcher existed. COM(2025) 81, 2025/0045(COD) is a Commission proposal.",
+      "display_name": "Omnibus I — CSRD / CSDDD / Taxonomy simplification"
     },
     "ets": {
       "manifest_keys": [
         "ets"
-      ]
+      ],
+      "display_name": "EU ETS revision"
     },
     "iaa": {
       "manifest_keys": [
         "iaa"
-      ]
+      ],
+      "display_name": "Industrial Accelerator Act"
     },
     "cbam": {
       "manifest_keys": [
         "cbam_ext",
         "cbam_base"
-      ]
+      ],
+      "display_name": "CBAM extension — downstream goods and anti-circumvention"
     },
     "nzia": {
       "manifest_keys": [
         "nzia"
-      ]
+      ],
+      "display_name": "Net-Zero Industry Act"
     },
     "crma": {
       "manifest_keys": [
         "crma"
-      ]
+      ],
+      "display_name": "Critical Raw Materials Act"
     },
     "ppwr": {
       "manifest_keys": [
         "ppwr"
-      ]
+      ],
+      "display_name": "Packaging and Packaging Waste Regulation"
     }
   }
 }

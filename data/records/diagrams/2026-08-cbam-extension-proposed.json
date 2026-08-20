@@ -1,0 +1,35 @@
+{
+  "id": "2026-08-cbam-extension-proposed",
+  "nodes": [
+    {
+      "id": "act:cbam",
+      "kind": "act",
+      "label": "CBAM extension — downstream goods and anti-circumvention",
+      "href": "/acts/cbam"
+    },
+    {
+      "id": "sector:steel",
+      "kind": "sector",
+      "label": "Steel",
+      "href": "/sectors/steel"
+    },
+    {
+      "id": "sector:alu",
+      "kind": "sector",
+      "label": "Aluminium",
+      "href": "/sectors/alu"
+    }
+  ],
+  "edges": [
+    {
+      "from": "act:cbam",
+      "to": "sector:steel",
+      "label": "named directly by 41 measures"
+    },
+    {
+      "from": "act:cbam",
+      "to": "sector:alu",
+      "label": "named directly by 40 measures"
+    }
+  ]
+}

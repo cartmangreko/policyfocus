@@ -30,5 +30,34 @@
     "files": {
       "omnibus": "None of the omnibus's {measure_count} measures names a specific sector. The act applies horizontally, to companies across the whole economy based on size and activity. Zero named sectors means no sector-specific provisions, not zero impact. Every connection shown is one of the {act_count} acts its measures amend, cite or depend on."
     }
+  },
+  "record_templates": {
+    "status": "draft-pending-george-review",
+    "reviewed": null,
+    "_comment": "One template family per legislative-event shape. Slots in {braces} are computed by sources/build_records.py from the register and the manifest and filled at build time; a slot the builder cannot compute fails the build rather than rendering empty, and a record whose event fits no family here fails the build rather than being composed. Written in display vocabulary from the start, per the display-vocabulary ruling in sources/scope.md: measures and sectors, never rows or register. STATUS IS DRAFT: build_records.py will build these records and warn, and the page layer must refuse to render a family whose status is not 'approved'. George flips the status after reading the three backfilled records.",
+    "families": {
+      "new_act_ingested": {
+        "headline": "{act_name}: {measure_count} measures now on the platform, naming {named_count} sectors",
+        "body": "{act_name} is now on the platform. Its {measure_count} measures have been read one provision at a time. The act names {named_count} sectors in its own text — most often {top_sector}, on {top_sector_named_count} measures — and reaches {reached_count} more through supply chains, dependencies on other acts, or procurement."
+      },
+      "amendment": {
+        "headline": "{act_name} amended: {measure_count} measures change",
+        "body": "{act_name} has been amended. {measure_count} measures change, affecting {named_count} sectors named in the act's own text and {reached_count} more reached through supply chains, dependencies on other acts, or procurement. Where the wording of the earlier rule could be sourced, each measure below shows what it said before and what it says now."
+      },
+      "delegated_act": {
+        "headline": "{act_name}: {measure_count} measures set by a delegated act",
+        "body": "A delegated act has landed under {act_name}. It settles {measure_count} measures that the parent act left to be filled in later, affecting {named_count} sectors named in the act's own text and {reached_count} more reached through supply chains, dependencies on other acts, or procurement."
+      },
+      "status_change": {
+        "headline": "{act_name} moves from proposal to adopted law",
+        "body": "{act_name} is no longer a proposal. Its {measure_count} measures are adopted law, binding {named_count} sectors named in the act's own text and reaching {reached_count} more through supply chains, dependencies on other acts, or procurement."
+      }
+    },
+    "status_notes": {
+      "_comment": "Appended to every record body, chosen by the legal standing of the act the record is about — the same STATUS_RULE the findings gate applies. A record about a proposal has to say so on its own face: the record is permanent and will outlive the proposal.",
+      "adopted": "This act is adopted. It is law, not a proposal.",
+      "proposed": "This is a Commission proposal, {com}, under procedure {procedure}. It is not law yet, and it can change before it is.",
+      "mixed": "The proposal {com}, under procedure {procedure}, would change an act already in force. What it adds is not law yet; the act it changes is."
+    }
   }
 }

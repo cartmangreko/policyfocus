@@ -1,0 +1,35 @@
+{
+  "id": "2026-08-ets-revision-proposed",
+  "nodes": [
+    {
+      "id": "act:ets",
+      "kind": "act",
+      "label": "EU ETS revision",
+      "href": "/acts/ets"
+    },
+    {
+      "id": "sector:air",
+      "kind": "sector",
+      "label": "Aviation",
+      "href": "/sectors/air"
+    },
+    {
+      "id": "sector:ship",
+      "kind": "sector",
+      "label": "Shipping",
+      "href": "/sectors/ship"
+    }
+  ],
+  "edges": [
+    {
+      "from": "act:ets",
+      "to": "sector:air",
+      "label": "named directly by 10 measures"
+    },
+    {
+      "from": "act:ets",
+      "to": "sector:ship",
+      "label": "named directly by 8 measures"
+    }
+  ]
+}

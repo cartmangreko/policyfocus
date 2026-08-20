@@ -1,0 +1,35 @@
+{
+  "id": "2026-08-ppwr-ingested",
+  "nodes": [
+    {
+      "id": "act:ppwr",
+      "kind": "act",
+      "label": "Packaging and Packaging Waste Regulation",
+      "href": "/acts/ppwr"
+    },
+    {
+      "id": "sector:retail",
+      "kind": "sector",
+      "label": "Retail",
+      "href": "/sectors/retail"
+    },
+    {
+      "id": "sector:chem/plastics",
+      "kind": "sector",
+      "label": "Plastics converting",
+      "href": "/sectors/chem/plastics"
+    }
+  ],
+  "edges": [
+    {
+      "from": "act:ppwr",
+      "to": "sector:retail",
+      "label": "named directly by 46 measures"
+    },
+    {
+      "from": "act:ppwr",
+      "to": "sector:chem/plastics",
+      "label": "named directly by 44 measures"
+    }
+  ]
+}
