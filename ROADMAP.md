@@ -51,3 +51,37 @@ simplification, due-diligence style acts, anything binding by size or turnover
 — so the attribute pays for itself on the next such act rather than on a
 hypothetical one, and every act ingested before it exists is an act that will
 need backfilling afterwards.
+
+---
+
+## Effect dates recorded at ingestion for every act a file amends
+
+**Rides along with the next ingestion.** Touches `sources/manifest.json`,
+`sources/fetch_eurlex.py`, and the date basis in `sources/build_records.py`.
+
+The manifest records WHICH acts a file amends and, separately, WHEN a repeal
+takes effect. `repeals.<celex>` carries `since`, the article and the quote —
+PPWR's repeal of 94/62/EC is dated 12 August 2026 from Art. 70(1) — while
+`amends` is a bare list of CELEX numbers with no date against any of them.
+
+The consequence shows up on change records. A record's event date is the date
+of the event it describes (`sources/scope.md`), so an `amendment` record has to
+take its date from the law rather than from the day the file was read.
+`build_records.py` can date a record against a REPEALED act, because the date
+is there, and fails outright against an AMENDED one, because it is not — the
+failure is deliberate, since falling back to the ingestion date would produce a
+record that looks right and is wrong. PPWR is the only amendment record that
+can exist today, and it exists only because PPWR repeals rather than amends.
+
+The fix is to give each amended act the shape `repeals` already has: the date
+the amendment takes effect, the article it comes from, and the verbatim span,
+recorded at ingestion and required rather than defaulted, so an act cannot be
+filed with an amendment nobody dated. `build_records.py` reads the new field
+where it already reads `repeals.<celex>.since`, and the check that fails today
+starts passing on its own.
+
+Why it earns its place ahead of other backlog work: the next amending act to be
+ingested cannot have a change record at all until this exists, and the feed is
+the product. It is also cheapest at ingestion, when someone is already reading
+the act's final articles — reconstructing effect dates for acts ingested
+earlier is the same work done later with less context.

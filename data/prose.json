@@ -43,7 +43,7 @@
       },
       "amendment": {
         "_comment": "The verb is computed, not written: {relationship} comes from what the manifest records between the two acts — an act that repeals its predecessor replaces it, and an act that amends one amends it. PPWR is the live case for the first (sources/scope.md, 'Carry-overs come from repeal, not from amendment'), and a family template that hardcoded 'amended' would state the wrong relationship on its first record.",
-        "headline": "{act_name} {relationship} the {prior_act_name} on {measure_count} measures",
+        "headline": "{act_name} {relationship} {prior_act_name}: {measure_count} measures change",
         "body": "{act_name} {relationship} the {prior_act_name}. {measure_count} measures change, and the earlier wording is on file for {prior_resolved_count} of them, shown against what each requires now. These measures name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them — and reach {reached_count} more through supply chains, dependencies on other acts, or procurement.",
         "body_no_reach": "{act_name} {relationship} the {prior_act_name}. {measure_count} measures change, and the earlier wording is on file for {prior_resolved_count} of them, shown against what each requires now. These measures name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them."
       },
