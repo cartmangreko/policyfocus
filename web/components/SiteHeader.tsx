@@ -2,12 +2,15 @@ import Link from "next/link";
 import SearchBar from "./SearchBar";
 import Wordmark from "./Wordmark";
 
-// Four doors, each a directory page of its own: the two spines (sectors and
-// legislation), the conclusions layer, and the methods page. The flat measure
-// browse is deliberately NOT here — it anchors /measures and is reachable
-// from /coverage and from search, but a register-wide list is a working view,
-// not a front door.
+// Five doors, each a directory page of its own: the change feed, the two
+// spines (sectors and legislation), the conclusions layer, and the methods
+// page. Latest leads because the feed is what changes — the spines are how you
+// look something up, and the feed is why you came back. The flat measure
+// browse is deliberately NOT here — it anchors /measures and is reachable from
+// /coverage and from search, but a register-wide list is a working view, not a
+// front door.
 const NAV = [
+  { label: "Latest", href: "/changes" },
   { label: "Sectors", href: "/sectors" },
   { label: "Legislation", href: "/acts" },
   { label: "Findings", href: "/findings" },
