@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SectorIcon from "./SectorIcon";
 import { SECTORS } from "@/lib/data";
 import { BASIS_LABEL, evidenceStrip, findingHref } from "@/lib/findings";
 import type { Finding } from "@/lib/findings";
@@ -25,6 +26,7 @@ export default function FindingCard({ finding }: { finding: Finding }) {
       <div className="finding-sectors">
         {finding.sectors.map((s) => (
           <span key={s} className="finding-sector">
+            <SectorIcon slug={s as SectorSlug} size={13} />
             {SECTORS[s as SectorSlug] ?? s}
           </span>
         ))}

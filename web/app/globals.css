@@ -37,6 +37,42 @@
   --ochre: #a8781a;
   --focus: #1f4f8f;
 
+  /* sector accents — wayfinding, not decoration.
+
+     One hue per sector, and the rule on them is a hard one: hairlines, chips
+     and icon strokes ONLY. Never a background, never a large fill. The site
+     stays white Swiss and these are how a reader tells one sector's row from
+     another's at a glance, not how a page gets colourful.
+
+     They are cut to one narrow band deliberately — every value sits between
+     roughly 38% and 48% lightness at low-to-mid saturation, so no sector
+     shouts louder than its neighbour and none of them competes with --claret,
+     which is the site's own signal colour and has to stay the loudest thing
+     on any page it appears on. They are grouped by material family, so the
+     heavy industries read as cousins and the transport modes as another set,
+     and a child sector (plastics converting) is a lighter cut of its parent
+     (chemicals) rather than a hue of its own. */
+  --acc-steel: #566270;
+  --acc-cement: #7b7365;
+  --acc-alu: #6a7885;
+  --acc-glass: #4d777d;
+  --acc-chem: #78506d;
+  --acc-chem-plastics: #96637f;
+  --acc-paper: #877a52;
+  --acc-wood: #7a5c3c;
+  --acc-foodbev: #7a6a30;
+  --acc-retail: #675d99;
+  --acc-horeca: #98695a;
+  --acc-power: #96731f;
+  --acc-waste: #4f6b4c;
+  --acc-ship: #3f6188;
+  --acc-air: #4a6ea3;
+  --acc-auto: #7c414a;
+  --acc-build: #6c6252;
+  --acc-batsol: #5d7a44;
+  --acc-clean: #2f6f5e;
+  --acc-ccs: #45666b;
+
   /* type */
   --display: var(--font-display), "Archivo", system-ui, sans-serif;
   --sans: var(--font-sans), "Public Sans", system-ui, sans-serif;
@@ -2470,4 +2506,200 @@ h3 {
   margin-top: 14px;
   padding-left: 12px;
   border-left: 2px solid var(--rule);
+}
+
+/* ---------- sector icons ----------
+
+   The icon is set at the cap height of the label it sits with and carries the
+   sector's accent as its stroke. On a tag it is the only colour in the row:
+   the label stays ink, the border stays hairline, and the accent enters the
+   page as about twenty pixels of line. That is the whole budget, and it is
+   enough because it is consistent — the same mark in the same colour on the
+   feed card, the sector header, the diagram node and the reach row means a
+   reader learns it once. */
+.sector-icon {
+  flex: none;
+  display: block;
+}
+
+/* A tag carrying an icon. The border picks up a tint of the accent rather than
+   the accent itself — colour-mix keeps it a hairline that belongs to the
+   sector without becoming a coloured box. */
+.record-sector,
+.finding-sector {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* The sector page header. The icon is set large enough to read as a mark
+   rather than as a bullet, and the accent hairline under the title is the
+   page's one piece of sector colour. */
+.sector-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sector-head .sector-icon {
+  width: 30px;
+  height: 30px;
+}
+.sector-rule {
+  height: 2px;
+  width: 64px;
+  margin: 14px 0 0;
+  border: 0;
+  background: currentColor;
+}
+
+/* Directory cards and diagram nodes: same mark, smaller, same rule. */
+.dir-card-title,
+.dir-card-child-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.diagram-node-sector {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* ---------- net position, drawn ----------
+
+   The same computed inputs the strip always had, as proportion rather than as
+   a column of figures. One bar per valence, width set from that valence's
+   share of the sector's total, pressing measures to the left of the baseline
+   and relieving ones to the right — so "what does this sector actually carry"
+   is answered by the shape before any number is read.
+
+   Zero rows keep their line. A valence with nothing in it is information —
+   "no simplification at all" is a finding — and a bar of zero width with its
+   label still in place says that more plainly than a missing row. */
+.netpos-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0 0;
+}
+.netpos-bar-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 44px;
+  align-items: center;
+  gap: 14px;
+}
+.netpos-bar-label {
+  font-size: 12.5px;
+  color: var(--ink-70);
+  text-align: right;
+}
+.netpos-bar-track {
+  position: relative;
+  height: 14px;
+  background: var(--paper);
+  border: 1px solid var(--rule-soft);
+}
+.netpos-bar-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+/* The two directions take the register's own valence colours, the same pair
+   the measure rows use, so nothing here invents a third vocabulary. */
+.netpos-bar-row.is-neg .netpos-bar-fill {
+  background: var(--claret);
+}
+.netpos-bar-row.is-pos .netpos-bar-fill {
+  background: var(--pine);
+}
+/* The in-force portion is solid and the proposed portion is hatched: a bar
+   that drew them the same would say this sector already carries something it
+   does not yet carry. */
+.netpos-bar-proposed {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    currentColor 0 1.5px,
+    transparent 1.5px 5px
+  );
+  opacity: 0.55;
+}
+.netpos-bar-row.is-neg .netpos-bar-proposed {
+  color: var(--claret);
+}
+.netpos-bar-row.is-pos .netpos-bar-proposed {
+  color: var(--pine);
+}
+.netpos-bar-count {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-55);
+}
+.netpos-key {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+.netpos-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.netpos-key i {
+  width: 18px;
+  height: 10px;
+  border: 1px solid var(--rule);
+}
+.netpos-key i.solid {
+  background: var(--ink-40);
+}
+.netpos-key i.hatched {
+  color: var(--ink-40);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    currentColor 0 1.5px,
+    transparent 1.5px 5px
+  );
+}
+
+/* Recent changes on a sector page: the feed, filtered, above everything else
+   the page holds. Rows rather than cards, for the reason the main feed is
+   rows — these are dated events, not alternatives. */
+.sector-changes {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  margin-top: 16px;
+}
+.sector-change {
+  background: #fff;
+  padding: 14px 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  transition: background var(--dur) var(--ease);
+}
+.sector-change:hover {
+  background: var(--card-hover);
+}
+.sector-change-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-40);
+  flex: none;
+}
+.sector-change-headline {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink);
 }
