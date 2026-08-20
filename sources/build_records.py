@@ -82,6 +82,7 @@ INDEX_PATH = RECORDS_DIR / "index.json"
 DIAGRAMS_DIR = RECORDS_DIR / "diagrams"
 PROSE_PATH = Path(os.environ["PF_PROSE_PATH"]) if os.environ.get("PF_PROSE_PATH") else DATA / "prose.json"
 MANIFEST_PATH = HERE / "manifest.json"
+GRAPH_NODES_PATH = DATA / "graph" / "nodes.json"
 REGISTER_FILES_PATH = HERE / "register_files.json"
 DATA_TS_PATH = HERE.parent / "web" / "lib" / "data.ts"
 
@@ -106,6 +107,11 @@ WHOLE_FILE_FAMILIES = ("new_act_ingested", "status_change")
 BASIS_STATUSES = ("adopted", "proposed", "mixed")
 RENDERABLE_PROSE_STATUS = "approved"
 DRAFT_PROSE_STATUS = "draft-pending-george-review"
+
+# The prior_rule statuses that count as RESOLVED — the wording of the earlier
+# rule is on file and can be shown. Same set benefit_axis.assert_unchanged_prior
+# admits (sources/scope.md, "`unchanged` needs a resolved prior_rule").
+RESOLVED_PRIOR_STATUSES = ("sourced", "recital")
 
 ID_RE = re.compile(r"^(\d{4})-(\d{2})-[a-z0-9]+(?:-[a-z0-9]+)*$")
 SLOT_RE = re.compile(r"\{([a-z0-9_]+)\}")
@@ -140,6 +146,15 @@ def load_register_rows() -> dict[str, list[dict]]:
         if path.exists():
             out[slug] = json.loads(path.read_text(encoding="utf-8"))
     return out
+
+
+def load_node_labels() -> dict[str, str]:
+    """Act node id -> display label, from the graph. The graph is the one place
+    the acts a register file points at already carry audience-facing names."""
+    if not GRAPH_NODES_PATH.exists():
+        return {}
+    return {n["id"]: n.get("label") or "" for n in
+            json.loads(GRAPH_NODES_PATH.read_text(encoding="utf-8")) if n.get("kind") == "act"}
 
 
 def check_display_name_parity() -> None:
@@ -181,6 +196,12 @@ def compute_facts(file: str, rows: list[dict], family: str, measures: list[dict]
         wanted = {m["row_id"] for m in measures}
         subject = [r for r in rows if r.get("id") in wanted]
 
+    prior_resolved = sum(
+        1 for r in subject
+        if isinstance(r.get("prior_rule"), dict)
+        and r["prior_rule"].get("status") in RESOLVED_PRIOR_STATUSES
+    )
+
     named_counts: dict[str, int] = {}
     named: set[str] = set()
     reached: set[str] = set()
@@ -197,6 +218,7 @@ def compute_facts(file: str, rows: list[dict], family: str, measures: list[dict]
     top = sorted(named_counts.items(), key=lambda kv: (-kv[1], kv[0]))
     return {
         "measure_count": len(subject),
+        "prior_resolved_count": prior_resolved,
         "sectors_named": sorted(named),
         "sectors_reached": reached_only,
         "named_count": len(named),
@@ -204,6 +226,72 @@ def compute_facts(file: str, rows: list[dict], family: str, measures: list[dict]
         "top_sector": top[0][0] if top else None,
         "top_sector_named_count": top[0][1] if top else 0,
     }
+
+
+def reach_suppression(file: str, manifest: dict) -> tuple[bool, str]:
+    """Whether this act's reach may be STATED, and why not when it may not.
+
+    Reach is computed against the act as ingested. For an amending proposal
+    that is the proposal text alone, so the sectors it is recorded as reaching
+    include sectors of the BASE regime it amends rather than of the change it
+    makes — the ETS revision comes out reaching aluminium, cement and power,
+    which the ETS already reaches and the proposal does not extend it to.
+    Publishing that on a permanent page repeats the error that withdrew the
+    first ETS finding, so the clause is suppressed until reach is computed
+    against the consolidated base as amended. sources/scope.md, "Reach is not
+    stated on a record about an amending proposal".
+
+    The condition is structural rather than a list of files, so the next
+    amending proposal inherits it without anyone remembering the ruling.
+    """
+    keys = bf.FILE_MANIFEST_KEYS.get(file, ())
+    for key in keys:
+        entry = manifest.get(key) or {}
+        if entry.get("status") == "proposed" and (entry.get("amends") or []):
+            return True, (f"{file} is read from {key}, a proposal amending "
+                          f"{', '.join(entry['amends'])}; its reach is computed against the "
+                          "proposal rather than the act it amends")
+    if not keys and "proposed" in bf.DECLARED_STATUS.get(file, ()):
+        # No manifest entry, so what it amends cannot be read. Suppression is
+        # the safe direction: the cost of omitting a true reach clause is a
+        # thinner sentence, and the cost of printing a false one is permanent.
+        return True, (f"{file} declares itself a proposal but has no manifest entry, so what it "
+                      "amends cannot be checked")
+    return False, ""
+
+
+def prior_act(rid: str, doc: dict, manifest: dict, node_labels: dict) -> dict | None:
+    """The act a record's measures change, and the verb for what they do to it.
+
+    Both come from the manifest and the graph, never from the record: an act
+    that REPEALS its predecessor replaces it, and one that AMENDS it amends it,
+    and a template that hardcoded either would state the wrong relationship on
+    the other. PPWR is the live case for the first (sources/scope.md,
+    "Carry-overs come from repeal, not from amendment").
+    """
+    celex = doc.get("prior_act")
+    if not celex:
+        fail(rid, "references", f"template {doc.get('template')!r} states what an earlier rule "
+                                "said, so the record must name the act it changes in `prior_act`")
+        return None
+    for key in bf.FILE_MANIFEST_KEYS.get(doc["file"], ()):
+        entry = manifest.get(key) or {}
+        if celex in (entry.get("repeals") or {}):
+            relationship = "replaces"
+            break
+        if celex in (entry.get("amends") or []):
+            relationship = "amends"
+            break
+    else:
+        fail(rid, "references", f"prior_act {celex!r} is not recorded in sources/manifest.json as "
+                                f"an act {doc['file']} repeals or amends")
+        return None
+    label = node_labels.get(f"act:{celex}")
+    if not label or label == celex:
+        fail(rid, "references", f"prior_act {celex!r} has no display name in data/graph/nodes.json; "
+                                "a record may not print a CELEX number at a reader")
+        return None
+    return {"celex": celex, "relationship": relationship, "name": label}
 
 
 def act_identifiers(file: str, manifest: dict) -> dict:
@@ -405,8 +493,9 @@ def render(rid: str, where: str, template: str, ctx: dict) -> str | None:
     return SLOT_RE.sub(lambda m: str(ctx[m.group(1)]), template)
 
 
-def check_template(rid: str, doc: dict, facts: dict, prose: dict, manifest: dict) -> dict | None:
-    """Returns {"headline", "body"} rendered, or None."""
+def check_template(rid: str, doc: dict, facts: dict, prose: dict, manifest: dict,
+                   node_labels: dict) -> dict | None:
+    """Returns {"headline", "body", "reach"} rendered, or None."""
     family = doc.get("template")
     if family not in FAMILIES:
         fail(rid, "template", f"event shape {family!r} fits no template family. Known families: "
@@ -427,22 +516,53 @@ def check_template(rid: str, doc: dict, facts: dict, prose: dict, manifest: dict
                               "template — the same guard build_ego_views.py applies to a sectorless "
                               "act's note.")
         return None
-    if facts["reached_count"] == 0:
-        fail(rid, "template", "this act reaches no sector beyond the ones it names, and every "
-                              "family template states a reach count. That shape needs its own "
-                              "reviewed template rather than a sentence saying 'and 0 more'.")
+    suppressed, reason = reach_suppression(doc["file"], manifest)
+
+    if not suppressed and facts["reached_count"] == 0:
+        fail(rid, "template", "this act reaches no sector beyond the ones it names, and the "
+                              "reach-stating template states a reach count. That shape needs its "
+                              "own reviewed template rather than a sentence saying 'and 0 more'.")
         return None
 
     ctx = {
         "act_name": doc["act_label"],
         "measure_count": facts["measure_count"],
         "named_count": facts["named_count"],
-        "reached_count": facts["reached_count"],
         "top_sector": APP_SECTORS[facts["top_sector"]],
         "top_sector_named_count": facts["top_sector_named_count"],
     }
+    # THE SUPPRESSION, AND WHY IT IS A MISSING SLOT RATHER THAN AN IF. Dropping
+    # reached_count from the computable slots means a template that mentions
+    # reach fails the build as an unknown slot. A conditional in the renderer
+    # would silently pick the safe variant and leave the unsafe one one edit
+    # away from rendering; this way the failure is the default.
+    if not suppressed:
+        ctx["reached_count"] = facts["reached_count"]
+
+    if family == "amendment":
+        prior = prior_act(rid, doc, manifest, node_labels)
+        if prior is None:
+            return None
+        if facts["prior_resolved_count"] == 0:
+            fail(rid, "template", "no measure on this record has the earlier wording on file, so "
+                                  "there is no before to show against the after. A change with an "
+                                  "unresolved before renders single-state, which needs its own "
+                                  "reviewed template — the register's own rule (sources/scope.md, "
+                                  "\"`unchanged` needs a resolved prior_rule\").")
+            return None
+        ctx["prior_act_name"] = prior["name"]
+        ctx["relationship"] = prior["relationship"]
+        ctx["prior_resolved_count"] = facts["prior_resolved_count"]
+
+    body_key = "body_no_reach" if suppressed else "body"
+    if not fam.get(body_key):
+        fail(rid, "template", f"family {family!r} has no {body_key!r} template in data/prose.json, "
+                              + ("and this act's reach may not be stated: " + reason if suppressed
+                                 else "which every family must carry"))
+        return None
+
     headline = render(rid, "headline", fam["headline"], ctx)
-    body = render(rid, "body", fam["body"], ctx)
+    body = render(rid, "body", fam[body_key], ctx)
 
     note_template = (prose.get("status_notes") or {}).get(doc["basis_status"])
     if not note_template:
@@ -456,7 +576,11 @@ def check_template(rid: str, doc: dict, facts: dict, prose: dict, manifest: dict
     if len(headline) > MAX_HEADLINE:
         fail(rid, "template", f"rendered headline is {len(headline)} chars, limit {MAX_HEADLINE}")
         return None
-    return {"headline": headline, "body": f"{body} {note}"}
+    return {
+        "headline": headline,
+        "body": f"{body} {note}",
+        "reach": {"suppressed": suppressed, "reason": reason} if suppressed else {"suppressed": False},
+    }
 
 
 def check_diagram(rid: str, doc: dict, prose_text: dict, rows_by_file: dict, exp_manifest: dict,
@@ -466,10 +590,25 @@ def check_diagram(rid: str, doc: dict, prose_text: dict, rows_by_file: dict, exp
     expects. Importing it is the point: a record diagram IS a finding diagram
     with a record's counts, and two copies of the label arithmetic would be two
     places for a number to be wrong."""
+    # A record about particular measures counts over those measures. The ids
+    # come from the record's own `measures` list rather than being repeated in
+    # the diagram spec: one list, checked once, so the picture cannot be scoped
+    # to a different set than the prose.
+    spec = json.loads(json.dumps(doc["diagram"]))
+    row_ids = [m["row_id"] for m in (doc.get("measures") or [])]
+    for edge in spec.get("edges") or []:
+        quantity = edge.get("quantity") or {}
+        if quantity.pop("scope", None) == "record_measures":
+            if not row_ids:
+                fail(rid, "diagram", "an edge is scoped to this record's measures, but the record "
+                                     "lists none")
+                return None
+            quantity["row_ids"] = row_ids
+
     shim = {
         "id": doc["id"],
         "body": prose_text["body"],
-        "diagram": doc["diagram"],
+        "diagram": spec,
         "evidence": {"exposure": []},
     }
     before = len(bf.failures)
@@ -521,6 +660,7 @@ def build(write: bool = True) -> int:
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
     rows_by_file = load_register_rows()
     exp_manifest = bf.load_exposure_manifest()
+    node_labels = load_node_labels()
 
     paths = sorted(p for p in RECORDS_DIR.glob("*.json") if p.name != "index.json")
     built: list[dict] = []
@@ -553,14 +693,21 @@ def build(write: bool = True) -> int:
         facts = compute_facts(doc["file"], rows_by_file[doc["file"]], doc["template"],
                               doc.get("measures") or [])
         check_counts(rid, doc, facts)
-        text = check_template(rid, doc, facts, prose, manifest)
+        text = check_template(rid, doc, facts, prose, manifest, node_labels)
         if text is None:
             continue
         diagram = check_diagram(rid, doc, text, rows_by_file, exp_manifest, facts)
         if diagram is not None:
             diagrams.append(diagram)
 
-        built.append({
+        # A SUPPRESSED RECORD SHIPS WITHOUT ITS REACH FIELDS. The authored file
+        # keeps them, and they are still checked against the register above --
+        # they are true, they are just not sayable yet. What the front end gets
+        # is the sentence and the data it is allowed to draw: leaving the
+        # sectors in the index would put a reach strip one component away from
+        # rendering exactly what the prose is forbidden to state.
+        counts = dict(doc["counts"])
+        entry = {
             "id": doc["id"],
             "template": doc["template"],
             "event_date": doc["event_date"],
@@ -570,13 +717,20 @@ def build(write: bool = True) -> int:
             "headline": text["headline"],
             "body": text["body"],
             "prose_status": prose_status,
-            "counts": doc["counts"],
             "top_sector": doc["top_sector"],
             "sectors_named": doc["sectors_named"],
-            "sectors_reached": doc["sectors_reached"],
             "measures": doc.get("measures") or [],
             "review": doc.get("review") or {},
-        })
+            "reach": text["reach"],
+        }
+        if text["reach"]["suppressed"]:
+            counts.pop("sectors_reached", None)
+        else:
+            entry["sectors_reached"] = doc["sectors_reached"]
+        if doc.get("prior_act"):
+            entry["prior_act"] = doc["prior_act"]
+        entry["counts"] = counts
+        built.append(entry)
 
     if failures:
         print(f"RECORDS NOT BUILT — {len(failures)} check(s) failed:", file=sys.stderr)
@@ -601,6 +755,10 @@ def build(write: bool = True) -> int:
 
     for w in warnings:
         print(f"build_records: WARNING — {w}")
+    suppressed = sorted(r["id"] for r in built if r["reach"]["suppressed"])
+    if suppressed:
+        print(f"build_records: reach clause suppressed on {len(suppressed)} record(s) — "
+              + ", ".join(suppressed) + " (amending proposals; see sources/scope.md)")
     families = sorted({r["template"] for r in built})
     print(f"build_records: {len(built)} record(s) pass — families {families}, "
           f"{len(diagrams)} diagram(s) computed")

@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "id": "2026-08-ppwr-replaces-packaging-directive",
+  "template": "amendment",
+  "event_date": "2026-08-18",
+  "file": "ppwr",
+  "act_label": "Packaging and Packaging Waste Regulation",
+  "prior_act": "31994L0062",
+  "basis_status": "adopted",
+  "counts": {
+    "measures": 12,
+    "sectors_named": 8,
+    "sectors_reached": 3,
+    "top_sector_named": 6
+  },
+  "top_sector": "chem/plastics",
+  "sectors_named": [
+    "alu",
+    "chem/plastics",
+    "foodbev",
+    "glass",
+    "paper",
+    "retail",
+    "waste",
+    "wood"
+  ],
+  "sectors_reached": [
+    "chem",
+    "horeca",
+    "steel"
+  ],
+  "measures": [
+    {
+      "file": "ppwr",
+      "row_id": "SUB-02"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "SUB-03"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "LAB-01"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "BAG-01"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "BAG-02"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "CNF-02"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "CNF-03"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "EPR-01"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "COL-01"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "RCT-01"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "RCT-03"
+    },
+    {
+      "file": "ppwr",
+      "row_id": "INF-02"
+    }
+  ],
+  "review": {
+    "status": "draft-pending-george-review",
+    "since": "2026-08-20"
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "id": "act:ppwr",
+        "label": "Packaging and Packaging Waste Regulation"
+      },
+      {
+        "id": "sector:chem/plastics"
+      },
+      {
+        "id": "sector:glass"
+      }
+    ],
+    "edges": [
+      {
+        "from": "act:ppwr",
+        "to": "sector:chem/plastics",
+        "label_template": "named by {n} of the changed measures",
+        "quantity": {
+          "kind": "named_count",
+          "file": "ppwr",
+          "sector": "chem/plastics",
+          "scope": "record_measures",
+          "body_check": true
+        }
+      },
+      {
+        "from": "act:ppwr",
+        "to": "sector:glass",
+        "label_template": "named by {n} of the changed measures",
+        "quantity": {
+          "kind": "named_count",
+          "file": "ppwr",
+          "sector": "glass",
+          "scope": "record_measures"
+        }
+      }
+    ]
+  }
+}

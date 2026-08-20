@@ -454,6 +454,25 @@ def compute_diagram_quantity(fid: str, where: str, q: dict, doc: dict,
         if sector not in APP_SECTORS:
             fail(fid, "diagram", f"{where} names unknown sector {sector!r}")
             return None
+        # OPTIONAL ROW SCOPING. Without `row_ids` a count is over the whole
+        # file, which is what a finding about an act wants. A change record
+        # about PARTICULAR measures needs the same arithmetic over just those
+        # measures, or its diagram would print the act's total beside prose
+        # stating the subset's — the disagreement the label checks exist to
+        # prevent. build_records.py fills the ids from the record itself, so
+        # they cannot be typed in wrong.
+        row_ids = q.get("row_ids")
+        if row_ids is not None:
+            if not isinstance(row_ids, list) or not row_ids:
+                fail(fid, "diagram", f"{where} row_ids must be a non-empty list when present")
+                return None
+            have = {r.get("id") for r in rows}
+            missing = sorted(set(row_ids) - have)
+            if missing:
+                fail(fid, "diagram", f"{where} row_ids not in data/{file}.json: {missing}")
+                return None
+            wanted = set(row_ids)
+            rows = [r for r in rows if r.get("id") in wanted]
         if kind == "duty_count":
             return sum(
                 1 for r in rows

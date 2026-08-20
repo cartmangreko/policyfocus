@@ -1,0 +1,35 @@
+{
+  "id": "2026-08-ppwr-replaces-packaging-directive",
+  "nodes": [
+    {
+      "id": "act:ppwr",
+      "kind": "act",
+      "label": "Packaging and Packaging Waste Regulation",
+      "href": "/acts/ppwr"
+    },
+    {
+      "id": "sector:chem/plastics",
+      "kind": "sector",
+      "label": "Plastics converting",
+      "href": "/sectors/chem/plastics"
+    },
+    {
+      "id": "sector:glass",
+      "kind": "sector",
+      "label": "Glass",
+      "href": "/sectors/glass"
+    }
+  ],
+  "edges": [
+    {
+      "from": "act:ppwr",
+      "to": "sector:chem/plastics",
+      "label": "named by 6 of the changed measures"
+    },
+    {
+      "from": "act:ppwr",
+      "to": "sector:glass",
+      "label": "named by 6 of the changed measures"
+    }
+  ]
+}

@@ -332,6 +332,40 @@ constants which legitimately overlap. Extractors now subtract `named` from
 `reached` where the two meet, so the class cannot recur; the validator holds
 the line for any file built another way.
 
+### Reach is not stated on a record about an amending proposal
+
+**Temporary suppression, until the reach model reads the consolidated base.**
+
+Reach is computed against the act as ingested. For an amending proposal that is
+the proposal text alone, so the sectors the proposal is recorded as reaching
+include sectors that belong to the BASE regime it amends, not to the change it
+makes. The ETS revision is the clear case: aluminium, cement and power come out
+as reached, and they are reached by the ETS as it already stands — the proposal
+does not extend the system to them. Stating that on a change record would
+publish the same error that withdrew the first ETS finding, on a page that is
+permanent by design.
+
+So `sources/build_records.py` renders the named-sectors sentence only, and omits
+the reach clause entirely, for any record whose act is an amending proposal:
+a register file with at least one manifest entry that is `status: proposed` and
+carries a non-empty `amends` list. A file with no manifest entry at all that
+declares itself proposed is treated the same way, because the check cannot see
+what it amends and suppression is the safe direction. CBAM's extension is
+covered too — all twelve of its rows that carry reach are sourced to
+`52025PC0989`, the proposal, so none of its reach derives from the consolidated
+base. PPWR is adopted law and keeps the full sentence.
+
+It is a gate, not a convention, for the reason every rule here is: the builder
+drops `reached_count` from the slots it computes for a suppressed act, so a
+template that mentions reach fails the build as an unknown slot rather than
+rendering. The suppressed record also ships without its reach fields, so no
+page can render what the prose is forbidden to say. The next amending proposal
+inherits the suppression without anyone remembering this ruling.
+
+The suppression lifts when reach is computed against the consolidated base act
+as amended by the proposal, at which point the number means what a reader
+would take it to mean and the clause can render for every family.
+
 ### Carry-overs come from repeal, not from amendment
 
 `direction: "unchanged"` was added for PPWR, and the obvious worry was that the

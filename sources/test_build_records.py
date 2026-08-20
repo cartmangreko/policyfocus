@@ -24,6 +24,8 @@ HERE = Path(__file__).resolve().parent
 DATA = HERE.parent / "data"
 RECORDS = DATA / "records"
 PPWR = "2026-08-ppwr-ingested"
+AMEND = "2026-08-ppwr-replaces-packaging-directive"
+ETS = "2026-08-ets-revision-proposed"
 
 
 def run(records_dir: Path, prose_path: Path | None = None) -> tuple[int, str]:
@@ -35,13 +37,14 @@ def run(records_dir: Path, prose_path: Path | None = None) -> tuple[int, str]:
     return p.returncode, p.stdout + p.stderr
 
 
-def case(name: str, expect: str, mutate_record=None, mutate_prose=None) -> bool:
+def case(name: str, expect: str, mutate_record=None, mutate_prose=None,
+         target: str = PPWR) -> bool:
     with tempfile.TemporaryDirectory() as tmp:
         d = Path(tmp) / "records"
         shutil.copytree(RECORDS, d)
         prose_path = None
         if mutate_record:
-            path = d / f"{PPWR}.json"
+            path = d / f"{target}.json"
             doc = json.loads(path.read_text(encoding="utf-8"))
             mutate_record(doc)
             path.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -104,6 +107,38 @@ def main() -> int:
              "has no headline+body template",
              None,
              lambda p: p["record_templates"]["families"].pop("new_act_ingested")),
+        # THE REACH SUPPRESSION (sources/scope.md, "Reach is not stated on a
+        # record about an amending proposal"). Three ways it could be lost: the
+        # template regaining a reach slot, the no-reach variant going missing,
+        # and the suppressed record's sectors surviving into the index.
+        case("a reach clause rendering for an amending proposal",
+             "this gate does not compute",
+             None,
+             lambda p: p["record_templates"]["families"]["new_act_ingested"].__setitem__(
+                 "body_no_reach",
+                 "{act_name} names {named_count} sectors and reaches {reached_count} more."),
+             target=ETS),
+        case("an amending proposal whose family has no suppressed variant",
+             "reach may not be stated",
+             None,
+             lambda p: p["record_templates"]["families"]["new_act_ingested"].pop("body_no_reach"),
+             target=ETS),
+        case("an amendment record naming an act the manifest does not link to",
+             "is not recorded in sources/manifest.json",
+             lambda d: d.__setitem__("prior_act", "32003L0087"),
+             target=AMEND),
+        case("an amendment record with no act it changes",
+             "must name the act it changes",
+             lambda d: d.pop("prior_act"),
+             target=AMEND),
+        case("an amendment record whose measures have no earlier wording on file",
+             "no before to show against the after",
+             lambda d: d.__setitem__("measures", [{"file": "ppwr", "row_id": "FREE-01"}]),
+             target=AMEND),
+        case("a diagram scoped to a different measure set than the prose",
+             "[diagram]",
+             lambda d: d["diagram"]["edges"][0]["quantity"].pop("scope"),
+             target=AMEND),
         case("a status note missing for the record's legal standing",
              "no status note for basis_status",
              None,

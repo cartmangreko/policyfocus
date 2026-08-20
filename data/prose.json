@@ -34,23 +34,28 @@
   "record_templates": {
     "status": "draft-pending-george-review",
     "reviewed": null,
-    "_comment": "One template family per legislative-event shape. Slots in {braces} are computed by sources/build_records.py from the register and the manifest and filled at build time; a slot the builder cannot compute fails the build rather than rendering empty, and a record whose event fits no family here fails the build rather than being composed. Written in display vocabulary from the start, per the display-vocabulary ruling in sources/scope.md: measures and sectors, never rows or register. STATUS IS DRAFT: build_records.py will build these records and warn, and the page layer must refuse to render a family whose status is not 'approved'. George flips the status after reading the three backfilled records.",
+    "_comment": "One template family per legislative-event shape. Slots in {braces} are computed by sources/build_records.py from the register and the manifest and filled at build time; a slot the builder cannot compute fails the build rather than rendering empty, and a record whose event fits no family here fails the build rather than being composed. Every family carries TWO bodies: 'body', and 'body_no_reach' for an act whose reach may not be stated — an amending proposal, whose reach is computed against the proposal rather than the consolidated base it amends (sources/scope.md, 'Reach is not stated on a record about an amending proposal'). The builder drops the reach slot for such an act, so a body that mentions reach fails the build instead of rendering. Written in display vocabulary from the start, per the display-vocabulary ruling in sources/scope.md: measures and sectors, never rows or register. STATUS IS DRAFT: build_records.py builds these and warns, and the page layer must refuse to render a family whose status is not 'approved'. George flips the status after reading the four backfilled records.",
     "families": {
       "new_act_ingested": {
         "headline": "{act_name}: {measure_count} measures now on the platform, naming {named_count} sectors",
-        "body": "{act_name} is now on the platform. Its {measure_count} measures have been read one provision at a time. The act names {named_count} sectors in its own text — most often {top_sector}, on {top_sector_named_count} measures — and reaches {reached_count} more through supply chains, dependencies on other acts, or procurement."
+        "body": "{act_name} is now on the platform. Its {measure_count} measures have been read one provision at a time. The act names {named_count} sectors in its own text — most often {top_sector}, on {top_sector_named_count} measures — and reaches {reached_count} more through supply chains, dependencies on other acts, or procurement.",
+        "body_no_reach": "{act_name} is now on the platform. Its {measure_count} measures have been read one provision at a time. The act names {named_count} sectors in its own text — most often {top_sector}, on {top_sector_named_count} measures."
       },
       "amendment": {
-        "headline": "{act_name} amended: {measure_count} measures change",
-        "body": "{act_name} has been amended. {measure_count} measures change, affecting {named_count} sectors named in the act's own text and {reached_count} more reached through supply chains, dependencies on other acts, or procurement. Where the wording of the earlier rule could be sourced, each measure below shows what it said before and what it says now."
+        "_comment": "The verb is computed, not written: {relationship} comes from what the manifest records between the two acts — an act that repeals its predecessor replaces it, and an act that amends one amends it. PPWR is the live case for the first (sources/scope.md, 'Carry-overs come from repeal, not from amendment'), and a family template that hardcoded 'amended' would state the wrong relationship on its first record.",
+        "headline": "{act_name} {relationship} the {prior_act_name} on {measure_count} measures",
+        "body": "{act_name} {relationship} the {prior_act_name}. {measure_count} measures change, and the earlier wording is on file for {prior_resolved_count} of them, shown against what each requires now. These measures name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them — and reach {reached_count} more through supply chains, dependencies on other acts, or procurement.",
+        "body_no_reach": "{act_name} {relationship} the {prior_act_name}. {measure_count} measures change, and the earlier wording is on file for {prior_resolved_count} of them, shown against what each requires now. These measures name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them."
       },
       "delegated_act": {
         "headline": "{act_name}: {measure_count} measures set by a delegated act",
-        "body": "A delegated act has landed under {act_name}. It settles {measure_count} measures that the parent act left to be filled in later, affecting {named_count} sectors named in the act's own text and {reached_count} more reached through supply chains, dependencies on other acts, or procurement."
+        "body": "A delegated act has landed under {act_name}. It settles {measure_count} measures the parent act left to be filled in later. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them — and reach {reached_count} more through supply chains, dependencies on other acts, or procurement.",
+        "body_no_reach": "A delegated act has landed under {act_name}. It settles {measure_count} measures the parent act left to be filled in later. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them."
       },
       "status_change": {
         "headline": "{act_name} moves from proposal to adopted law",
-        "body": "{act_name} is no longer a proposal. Its {measure_count} measures are adopted law, binding {named_count} sectors named in the act's own text and reaching {reached_count} more through supply chains, dependencies on other acts, or procurement."
+        "body": "{act_name} is no longer a proposal. Its {measure_count} measures are adopted law. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them — and reach {reached_count} more through supply chains, dependencies on other acts, or procurement.",
+        "body_no_reach": "{act_name} is no longer a proposal. Its {measure_count} measures are adopted law. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them."
       }
     },
     "status_notes": {
