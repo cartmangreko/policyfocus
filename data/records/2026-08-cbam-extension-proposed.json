@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "2026-08-cbam-extension-proposed",
+  "template": "new_act_ingested",
+  "event_date": "2026-08-17",
+  "file": "cbam",
+  "act_label": "CBAM extension — downstream goods and anti-circumvention",
+  "basis_status": "mixed",
+  "counts": {
+    "measures": 61,
+    "sectors_named": 6,
+    "sectors_reached": 2,
+    "top_sector_named": 41
+  },
+  "top_sector": "steel",
+  "sectors_named": [
+    "alu",
+    "build",
+    "cement",
+    "chem",
+    "power",
+    "steel"
+  ],
+  "sectors_reached": [
+    "auto",
+    "waste"
+  ],
+  "review": {
+    "status": "draft-pending-george-review",
+    "since": "2026-08-20"
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "id": "act:cbam",
+        "label": "CBAM extension — downstream goods and anti-circumvention"
+      },
+      {
+        "id": "sector:steel"
+      },
+      {
+        "id": "sector:alu"
+      }
+    ],
+    "edges": [
+      {
+        "from": "act:cbam",
+        "to": "sector:steel",
+        "label_template": "named directly by {n} measures",
+        "quantity": {
+          "kind": "named_count",
+          "file": "cbam",
+          "sector": "steel",
+          "body_check": true
+        }
+      },
+      {
+        "from": "act:cbam",
+        "to": "sector:alu",
+        "label_template": "named directly by {n} measures",
+        "quantity": {
+          "kind": "named_count",
+          "file": "cbam",
+          "sector": "alu"
+        }
+      }
+    ]
+  }
+}

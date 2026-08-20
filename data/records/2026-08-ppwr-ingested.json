@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "2026-08-ppwr-ingested",
+  "template": "new_act_ingested",
+  "event_date": "2026-08-18",
+  "file": "ppwr",
+  "act_label": "Packaging and Packaging Waste Regulation",
+  "basis_status": "adopted",
+  "counts": {
+    "measures": 89,
+    "sectors_named": 10,
+    "sectors_reached": 3,
+    "top_sector_named": 46
+  },
+  "top_sector": "retail",
+  "sectors_named": [
+    "alu",
+    "chem",
+    "chem/plastics",
+    "foodbev",
+    "glass",
+    "horeca",
+    "paper",
+    "retail",
+    "waste",
+    "wood"
+  ],
+  "sectors_reached": [
+    "auto",
+    "build",
+    "steel"
+  ],
+  "review": {
+    "status": "draft-pending-george-review",
+    "since": "2026-08-20"
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "id": "act:ppwr",
+        "label": "Packaging and Packaging Waste Regulation"
+      },
+      {
+        "id": "sector:retail"
+      },
+      {
+        "id": "sector:chem/plastics"
+      }
+    ],
+    "edges": [
+      {
+        "from": "act:ppwr",
+        "to": "sector:retail",
+        "label_template": "named directly by {n} measures",
+        "quantity": {
+          "kind": "named_count",
+          "file": "ppwr",
+          "sector": "retail",
+          "body_check": true
+        }
+      },
+      {
+        "from": "act:ppwr",
+        "to": "sector:chem/plastics",
+        "label_template": "named directly by {n} measures",
+        "quantity": {
+          "kind": "named_count",
+          "file": "ppwr",
+          "sector": "chem/plastics"
+        }
+      }
+    ]
+  }
+}

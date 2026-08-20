@@ -409,6 +409,19 @@ def main() -> int:
     check(rc == 0, f"build_findings: {out.strip().splitlines()[0] if out.strip() else ''}",
           out[-600:])
 
+    # THE RECORDS LAYER. Same reason as check 7, one step further out. A finding
+    # restates the register in its own words; a record does that AND fixes a date
+    # to it. The date is the part the register cannot re-derive, so a ruling that
+    # moves a row out from under a published record is invisible everywhere
+    # except here.
+    print("\n8. THE RECORDS LAYER RESOLVES AGAINST THE REGISTER")
+    rc, out = run(["build_records.py", "--check"])
+    check(rc == 0, f"build_records: {out.strip().splitlines()[-1] if out.strip() else ''}",
+          out[-600:])
+    rc, out = run(["test_build_records.py"])
+    check(rc == 0, f"test_build_records: {out.strip().splitlines()[-1] if out.strip() else ''}",
+          out[-600:])
+
     print()
     if failures:
         print(f"NOT RECONCILED — {len(failures)} check(s) failed:")

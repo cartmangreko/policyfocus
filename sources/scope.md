@@ -332,6 +332,68 @@ constants which legitimately overlap. Extractors now subtract `named` from
 `reached` where the two meet, so the class cannot recur; the validator holds
 the line for any file built another way.
 
+### Reach is not stated on a record about an amending proposal
+
+**Temporary suppression, until the reach model reads the consolidated base.**
+
+Reach is computed against the act as ingested. For an amending proposal that is
+the proposal text alone, so the sectors the proposal is recorded as reaching
+include sectors that belong to the BASE regime it amends, not to the change it
+makes. The ETS revision is the clear case: aluminium, cement and power come out
+as reached, and they are reached by the ETS as it already stands — the proposal
+does not extend the system to them. Stating that on a change record would
+publish the same error that withdrew the first ETS finding, on a page that is
+permanent by design.
+
+So `sources/build_records.py` renders the named-sectors sentence only, and omits
+the reach clause entirely, for any record whose act is an amending proposal:
+a register file with at least one manifest entry that is `status: proposed` and
+carries a non-empty `amends` list. A file with no manifest entry at all that
+declares itself proposed is treated the same way, because the check cannot see
+what it amends and suppression is the safe direction. CBAM's extension is
+covered too — all twelve of its rows that carry reach are sourced to
+`52025PC0989`, the proposal, so none of its reach derives from the consolidated
+base. PPWR is adopted law and keeps the full sentence.
+
+It is a gate, not a convention, for the reason every rule here is: the builder
+drops `reached_count` from the slots it computes for a suppressed act, so a
+template that mentions reach fails the build as an unknown slot rather than
+rendering. The suppressed record also ships without its reach fields, so no
+page can render what the prose is forbidden to say. The next amending proposal
+inherits the suppression without anyone remembering this ruling.
+
+The suppression lifts when reach is computed against the consolidated base act
+as amended by the proposal, at which point the number means what a reader
+would take it to mean and the clause can render for every family.
+
+### A record's event date is the date of the event it describes
+
+Not the date the platform found out. The two coincide often enough that the
+difference is easy to miss, and a change record is permanent, so a page dated
+to our reading rather than to the event is a small lie with no expiry.
+
+Which date that is follows from what the record is about, per family:
+
+- `new_act_ingested` describes the platform reading an act. The reading IS the
+  event, so the date is the ingestion date from git history.
+- `amendment` describes something that happened in law, so the date comes from
+  the law. PPWR replaces Directive 94/62/EC on 12 August 2026 — Art. 70(1),
+  "Directive 94/62/EC is repealed with effect from 12 August 2026", recorded in
+  `manifest.json` under `repeals.<celex>.since` — so the record is dated the
+  12th, not the 18th, when the file was read.
+- `delegated_act` takes the date of the delegated act, and `status_change` the
+  date of the procedural step, on the same principle, when those families are
+  first exercised.
+
+`build_records.py` fails an amendment record whose event date is not the date
+the manifest records for the relationship, AND fails one where the manifest
+records no date at all — the manifest today says WHICH acts a file amends but
+not WHEN each amendment took effect, so an amendment record against an amended
+(rather than repealed) act cannot be dated until an ingestion records it. The
+failure is the point: falling back to the ingestion date would produce a record
+that looks right and is wrong, which is the class of defect every gate here
+exists to make impossible.
+
 ### Carry-overs come from repeal, not from amendment
 
 `direction: "unchanged"` was added for PPWR, and the obvious worry was that the

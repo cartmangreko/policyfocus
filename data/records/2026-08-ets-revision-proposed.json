@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "2026-08-ets-revision-proposed",
+  "template": "new_act_ingested",
+  "event_date": "2026-08-13",
+  "file": "ets",
+  "act_label": "EU ETS revision",
+  "basis_status": "proposed",
+  "counts": {
+    "measures": 51,
+    "sectors_named": 8,
+    "sectors_reached": 3,
+    "top_sector_named": 10
+  },
+  "top_sector": "air",
+  "sectors_named": [
+    "air",
+    "build",
+    "ccs",
+    "chem",
+    "clean",
+    "ship",
+    "steel",
+    "waste"
+  ],
+  "sectors_reached": [
+    "alu",
+    "cement",
+    "power"
+  ],
+  "review": {
+    "status": "draft-pending-george-review",
+    "since": "2026-08-20"
+  },
+  "diagram": {
+    "nodes": [
+      {
+        "id": "act:ets",
+        "label": "EU ETS revision"
+      },
+      {
+        "id": "sector:air"
+      },
+      {
+        "id": "sector:ship"
+      }
+    ],
+    "edges": [
+      {
+        "from": "act:ets",
+        "to": "sector:air",
+        "label_template": "named directly by {n} measures",
+        "quantity": {
+          "kind": "named_count",
+          "file": "ets",
+          "sector": "air",
+          "body_check": true
+        }
+      },
+      {
+        "from": "act:ets",
+        "to": "sector:ship",
+        "label_template": "named directly by {n} measures",
+        "quantity": {
+          "kind": "named_count",
+          "file": "ets",
+          "sector": "ship"
+        }
+      }
+    ]
+  }
+}
