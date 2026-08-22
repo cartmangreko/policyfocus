@@ -53,6 +53,14 @@ publishes nothing until it has been through this gate, and no rendering of a
 reviewed template happens at request time (sources/scope.md, "No free-generated
 text on the site" -- tier 2 renders unchanged or not at all).
 
+NO PER-RECORD REVIEW FIELD. Records carried a `review` block for a while, on
+the model of a finding's. It is gone by ruling: a record is generated when a
+watch-agent PR is merged, and the merge IS the approval of both the data and
+the record, so a second per-record status was a checkbox recording something
+the git history already recorded. What still gates rendering is the TEMPLATE
+status below -- the wording, reviewed once, not the individual record. A record
+that turns out to be wrong is corrected in place, like any other page.
+
 DRAFT TEMPLATES. data/prose.json's record_templates block carries a status. This
 gate builds on 'draft-pending-george-review' and prints a loud warning, because
 the three backfilled records exist precisely so George can read them rendered.
@@ -83,6 +91,7 @@ DIAGRAMS_DIR = RECORDS_DIR / "diagrams"
 PROSE_PATH = Path(os.environ["PF_PROSE_PATH"]) if os.environ.get("PF_PROSE_PATH") else DATA / "prose.json"
 MANIFEST_PATH = HERE / "manifest.json"
 GRAPH_NODES_PATH = DATA / "graph" / "nodes.json"
+SECTORS_PATH = DATA / "sectors.json"
 REGISTER_FILES_PATH = HERE / "register_files.json"
 DATA_TS_PATH = HERE.parent / "web" / "lib" / "data.ts"
 
@@ -146,6 +155,22 @@ def load_register_rows() -> dict[str, list[dict]]:
         if path.exists():
             out[slug] = json.loads(path.read_text(encoding="utf-8"))
     return out
+
+
+def load_sector_labels() -> dict[str, str]:
+    """Sector slug -> the name an audience sees.
+
+    data/sectors.json carries TWO strings per sector and they are not the same
+    string: `name` is the short internal one the gates and the graph are
+    written against, and `label` is what the site prints -- "Retail" against
+    "Retail and distribution", "Chemicals" against "Chemicals and refining",
+    twelve of the twenty differing. Record prose is an audience surface, so it
+    takes `label` (sources/scope.md, display vocabulary: the display layer says
+    the sector's display name). Printing `name` would put one name in the
+    sentence and a different one on the chip beside it, on the same page.
+    """
+    spine = json.loads(SECTORS_PATH.read_text(encoding="utf-8"))["sectors"]
+    return {slug: meta.get("label") or meta["name"] for slug, meta in spine.items()}
 
 
 def load_node_labels() -> dict[str, str]:
@@ -415,11 +440,6 @@ def check_schema(rid: str, doc: dict, stem: str) -> bool:
         fail(rid, "schema", "diagram missing; every record carries one")
         ok = False
 
-    review = doc.get("review")
-    if review is not None and (not isinstance(review, dict) or not review.get("status")):
-        fail(rid, "schema", f"review must be an object with a status, got {review!r}")
-        ok = False
-
     return ok
 
 
@@ -531,7 +551,7 @@ def render(rid: str, where: str, template: str, ctx: dict) -> str | None:
 
 
 def check_template(rid: str, doc: dict, facts: dict, prose: dict, manifest: dict,
-                   node_labels: dict) -> dict | None:
+                   node_labels: dict, sector_labels: dict) -> dict | None:
     """Returns {"headline", "body", "reach"} rendered, or None."""
     family = doc.get("template")
     if family not in FAMILIES:
@@ -565,7 +585,7 @@ def check_template(rid: str, doc: dict, facts: dict, prose: dict, manifest: dict
         "act_name": doc["act_label"],
         "measure_count": facts["measure_count"],
         "named_count": facts["named_count"],
-        "top_sector": APP_SECTORS[facts["top_sector"]],
+        "top_sector": sector_labels[facts["top_sector"]],
         "top_sector_named_count": facts["top_sector_named_count"],
     }
     # THE SUPPRESSION, AND WHY IT IS A MISSING SLOT RATHER THAN AN IF. Dropping
@@ -700,6 +720,7 @@ def build(write: bool = True) -> int:
     rows_by_file = load_register_rows()
     exp_manifest = bf.load_exposure_manifest()
     node_labels = load_node_labels()
+    sector_labels = load_sector_labels()
 
     paths = sorted(p for p in RECORDS_DIR.glob("*.json") if p.name != "index.json")
     built: list[dict] = []
@@ -732,7 +753,7 @@ def build(write: bool = True) -> int:
         facts = compute_facts(doc["file"], rows_by_file[doc["file"]], doc["template"],
                               doc.get("measures") or [])
         check_counts(rid, doc, facts)
-        text = check_template(rid, doc, facts, prose, manifest, node_labels)
+        text = check_template(rid, doc, facts, prose, manifest, node_labels, sector_labels)
         if text is None:
             continue
         diagram = check_diagram(rid, doc, text, rows_by_file, exp_manifest, facts)
@@ -759,7 +780,6 @@ def build(write: bool = True) -> int:
             "top_sector": doc["top_sector"],
             "sectors_named": doc["sectors_named"],
             "measures": doc.get("measures") or [],
-            "review": doc.get("review") or {},
             "reach": text["reach"],
         }
         if text["reach"]["suppressed"]:
