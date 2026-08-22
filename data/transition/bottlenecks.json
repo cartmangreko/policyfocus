@@ -112,6 +112,8 @@
       "name": "Retrofit cost against plant economics",
       "description": "A capture retrofit costs a large fraction of what the plant it sits on is worth, and the projects that have gone ahead in Europe have all done so with public money in the stack rather than on the plant's own cash flow.",
       "quantified_by": [
+        "ccs-retrofit-capex-post-combustion",
+        "ccs-retrofit-capex-oxyfuel",
         "go4zero-investment",
         "gezero-grant",
         "anrav-grant"
@@ -132,6 +134,12 @@
           "title": "First fully decarbonised cement plant in Germany: EU Innovation Fund backs Heidelberg Materials' GeZero project with €191 million",
           "publisher": "Heidelberg Materials",
           "date": "2023-12-15"
+        },
+        {
+          "url": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+          "title": "Carbon sequestration and reuse — capital and operating cost estimates (archived)",
+          "publisher": "CEMBUREAU",
+          "date": "2025-12-07"
         }
       ],
       "measures": [
@@ -193,14 +201,16 @@
       "type": "market",
       "name": "Green premium against willingness to pay",
       "description": "Captured-carbon cement costs more to make than the cement it replaces, and the buyer of the concrete is usually not the party that carries the climate commitment, so the premium has to be pulled through the chain by procurement rules rather than by demand.",
-      "quantified_by": [],
+      "quantified_by": [
+        "near-zero-cement-cost-premium"
+      ],
       "addressed_by": [],
       "sources": [
         {
-          "url": "https://www.weforum.org/publications/net-zero-industry-tracker-2023/in-full/cement-industry-net-zero-tracker/",
-          "title": "Cement industry net-zero tracker",
-          "publisher": "World Economic Forum",
-          "date": "2024-01-01"
+          "url": "https://www.iea.org/reports/breakthrough-agenda-report-2025/cement-and-concrete",
+          "title": "Cement and concrete — Breakthrough Agenda Report 2025",
+          "publisher": "International Energy Agency",
+          "date": "2025-01-01"
         },
         {
           "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0100",

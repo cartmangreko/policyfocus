@@ -82,15 +82,37 @@ ATTENTION_WINDOW_MONTHS = 24
 # missing" is a result the page prints, not an error the build swallows.
 # ---------------------------------------------------------------------------
 
-def _money(value, scale, model, inputs, formula, missing=(), context=None):
+def _money(value, scale, model, inputs, formula, missing=(), *,
+           direction=None, bearer=None, per_tonne=None, annual_total=None,
+           context=None, caveats=()):
+    """One money score, the same shape whether or not it computed.
+
+    DIRECTION AND BEARER. A withdrawn allowance and a grant are both money
+    attached to a measure, and a ranking that shows only magnitude says the same
+    thing about both. `direction` is cost or support, from the point of view of
+    the sector; `bearer` is who actually pays or receives -- an EU producer, an
+    importer, a project developer. The pair is what lets the sector view net a
+    column instead of adding unlike things, and it is why the CBAM certificate
+    cost can rank first without implying it lands on a European kiln.
+
+    TWO FIGURES, DELIBERATELY. `per_tonne` is what the ranking sorts on, because
+    cement is thought about in euros per tonne and because it survives the
+    missing sector-output scalar. `annual_total` is the number an investor
+    quotes, and exists only where a volume parameter makes it real.
+    """
     return {
         "value": value,
         "scale": scale,
         "model": model,
+        "direction": direction,
+        "bearer": bearer,
+        "per_tonne": per_tonne,
+        "annual_total": annual_total,
         "computable": value is not None,
         "inputs": list(inputs),
         "formula": formula,
         "missing": list(missing),
+        "caveats": list(caveats),
         "context": context or [],
     }
 
@@ -110,54 +132,136 @@ def model_free_allocation_phaseout(params: dict, year: int) -> dict:
     formula = "(1 - cbam_factor) x clinker_benchmark x eua_price"
     if missing:
         return _money(None, "eur_per_tonne_clinker", "free_allocation_phaseout",
-                      [n for n in needed if n not in missing], formula, missing)
+                      [n for n in needed if n not in missing], formula, missing,
+                      direction="cost", bearer="eu_producer")
     withdrawn = 1 - (factor["value"] / 100)
     value = round(withdrawn * bench["value"] * price["value"], 2)
     return _money(value, "eur_per_tonne_clinker", "free_allocation_phaseout",
-                  needed, formula)
+                  needed, formula, direction="cost", bearer="eu_producer",
+                  per_tonne=value,
+                  caveats=[
+                      "The figure is the cost of the WITHDRAWN benchmark allocation, not the full "
+                      "carbon cost of a plant: a kiln emitting above the benchmark pays for its "
+                      "excess on top of this, and always did.",
+                      "The carbon price is held flat at today's level across the whole schedule. "
+                      "That is an assumption, not a forecast, and the model is linear in it.",
+                  ])
 
 
-def model_cbam_certificates(params: dict) -> dict:
-    """Embedded emissions x carbon price x import volume.
+def model_cbam_certificates(params: dict, year: int) -> dict:
+    """Embedded emissions net of the free-allocation adjustment, x carbon price,
+    x import volume. Two CN lines: clinker and grey Portland cement.
 
-    Declared and not computable: neither the cement import volume nor the CBAM
-    default embedded-emissions value for cement has been sourced yet. The model
-    is written out anyway so that the missing parameters are named on the page
-    rather than left as an absence.
+    THE ADJUSTMENT IS THE WHOLE POINT. Gross embedded emissions times the carbon
+    price overstates the obligation by an order of magnitude in 2026, because the
+    certificates to surrender are reduced to reflect the free allocation EU
+    producers still get -- an importer in 2026 pays for the sliver the CBAM
+    factor has opened, the same sliver ets:CBAM-01 charges a European kiln for.
+    Modelled here as benchmark x CBAM factor, which is the shape of the
+    adjustment; Commission Implementing Regulation (EU) 2025/2620 sets its exact
+    form and has not been read, so the figure is carried as an approximation and
+    says so.
+
+    The clinker line maps onto the clinker benchmark one to one. The cement line
+    does not -- a tonne of cement contains less than a tonne of clinker -- so the
+    same benchmark is applied to it, which UNDERSTATES the adjustment and
+    therefore overstates the cost of that line. Stated rather than fudged.
     """
-    needed = ["cement-import-volume", "cbam-cement-embedded-emissions", "eua-price-spot"]
+    needed = ["cbam-default-grey-clinker-2026", "cbam-default-grey-cement-2026",
+              "cement-imports-clinker-2025", "cement-imports-grey-cement-2025",
+              "clinker-benchmark-2026-2030", f"cbam-factor-{year}", "eua-price-spot"]
     missing = [n for n in needed if n not in params]
-    formula = "embedded_emissions x eua_price x import_volume"
+    formula = ("(default_embedded_emissions - clinker_benchmark x cbam_factor) "
+               "x eua_price x import_volume, per CN line")
     if missing:
         return _money(None, "eur_per_year", "cbam_certificates",
-                      [n for n in needed if n not in missing], formula, missing)
-    value = (params["cbam-cement-embedded-emissions"]["value"]
-             * params["eua-price-spot"]["value"]
-             * params["cement-import-volume"]["value"])
-    return _money(round(value, 2), "eur_per_year", "cbam_certificates", needed, formula)
+                      [n for n in needed if n not in missing], formula, missing,
+                      direction="cost", bearer="importer")
+
+    price = params["eua-price-spot"]["value"]
+    bench = params["clinker-benchmark-2026-2030"]["value"]
+    factor = params[f"cbam-factor-{year}"]["value"] / 100
+    free = bench * factor
+
+    lines = []
+    total = 0.0
+    for label, dflt, vol in (
+        ("CN 2523 10 clinker", "cbam-default-grey-clinker-2026", "cement-imports-clinker-2025"),
+        ("CN 2523 29 grey cement", "cbam-default-grey-cement-2026", "cement-imports-grey-cement-2025"),
+    ):
+        chargeable = max(0.0, params[dflt]["value"] - free)
+        per_t = chargeable * price
+        line_total = per_t * params[vol]["value"] * 1e6
+        total += line_total
+        lines.append({"label": label,
+                      "chargeable_tco2_per_t": round(chargeable, 3),
+                      "eur_per_tonne": round(per_t, 2),
+                      "volume_mt": params[vol]["value"],
+                      "eur_per_year": round(line_total, 0)})
+
+    # The ranking figure is the clinker line: it is the one whose adjustment maps
+    # cleanly onto the benchmark, and it is the number an analyst compares with
+    # the free-allocation cost on a European kiln.
+    per_tonne = lines[0]["eur_per_tonne"]
+    return _money(round(total, 0), "eur_per_year", "cbam_certificates", needed, formula,
+                  direction="cost", bearer="importer",
+                  per_tonne=per_tonne, annual_total=round(total, 0),
+                  context=[{"label": l["label"],
+                            "value": l["eur_per_tonne"],
+                            "scale": "eur_per_tonne_of_goods",
+                            "detail": f"{l['volume_mt']} Mt imported, "
+                                      f"{l['chargeable_tco2_per_t']} tCO2/t chargeable"}
+                           for l in lines],
+                  caveats=[
+                      "The free-allocation adjustment is modelled as benchmark x CBAM factor. "
+                      "IR (EU) 2025/2620 sets its exact form and has not been read, so this is an "
+                      "approximation of the right shape rather than the statutory calculation.",
+                      "The cement line applies the clinker benchmark to a tonne of cement, which "
+                      "understates its adjustment and so overstates that line's cost.",
+                      "Volumes are 2025 full-year imports, which ran about 23% above 2024 ahead of "
+                      "the definitive period. A repeat of 2025 is an assumption, not a projection.",
+                  ])
 
 
 def model_grant_programme(measure_id: str, projects: list[dict]) -> dict:
     """Public money awarded to this sector's projects UNDER THIS MEASURE.
 
-    A funding line counts only where it names a register measure. The Innovation
-    Fund grants in projects.json name a programme and not a measure, because the
-    register has read the ETS revision and not the Fund's own decisions -- so
-    this model correctly returns nothing today, and will start returning
-    something the moment a Fund provision is ingested.
+    A funding line counts only where it names a register measure, and the notes
+    on those lines are part of the result: the Innovation Fund awards below were
+    made under the Fund as it stands, while the register knows the Fund through
+    the ETS revision's Art. 10cb. The total is real money into real plants either
+    way, which is why it is counted, and the caveat travels with it.
+
+    This is a STOCK, not a rate: grants awarded to date, not euros per year and
+    not euros per tonne. It therefore never competes with a per-tonne figure in
+    the ranking, and the sector view nets it separately or not at all.
     """
     total = 0
     contributing = []
+    caveats = []
+    unpriced = 0
     for p in projects:
         for f in p.get("public_funding") or []:
-            if f.get("measure") == measure_id and f.get("amount_eur"):
+            if f.get("measure") != measure_id:
+                continue
+            if f.get("amount_eur"):
                 total += f["amount_eur"]
                 contributing.append(p["id"])
+            else:
+                unpriced += 1
+            if f.get("measure_note") and f["measure_note"] not in caveats:
+                caveats.append(f["measure_note"])
     formula = "sum of public_funding.amount_eur where public_funding.measure = this measure"
     if not contributing:
         return _money(None, "eur_awarded", "grant_programme", [], formula,
-                      ["no project funding line names this measure"])
-    return _money(total, "eur_awarded", "grant_programme", contributing, formula)
+                      ["no project funding line names this measure"],
+                      direction="support", bearer="project_developer")
+    if unpriced:
+        caveats.append(f"{unpriced} further funding line(s) under this measure carry no published "
+                       f"amount and are not in the total, which is therefore a floor.")
+    return _money(total, "eur_awarded", "grant_programme", contributing, formula,
+                  direction="support", bearer="project_developer",
+                  annual_total=None, caveats=caveats)
 
 
 # Which model applies to which measure. Keyed by `<file>:<id>` so it is explicit
@@ -168,11 +272,15 @@ def model_grant_programme(measure_id: str, projects: list[dict]) -> dict:
 # categories ADDED to the CBAM list later, on the same schedule -- pricing it at
 # the cement clinker benchmark today would double-count the same euro against
 # cement and rank a measure about future goods second in a cement view.
+#
+# Only ONE of the CBAM rows carries the certificate model. The obligation to hold
+# and surrender certificates is what costs money; the reporting and verification
+# rows around it are how that obligation is administered, and pricing each of
+# them at the full certificate bill would state the same euro four times.
 MODELS = {
     "ets:CBAM-01": "free_allocation_phaseout",
+    "ets:FND-03": "grant_programme",
     "cbam:FIN-03": "cbam_certificates",
-    "cbam:DECL-03": "cbam_certificates",
-    "cbam:FIN-01": "cbam_certificates",
 }
 
 
@@ -183,13 +291,13 @@ def money_for(measure_id: str, params: dict, projects: list[dict], year: int) ->
         later = model_free_allocation_phaseout(params, 2030)
         if later["computable"]:
             score["context"] = [{
-                "label": f"the same model at 2030",
+                "label": "the same model at 2030",
                 "value": later["value"],
                 "scale": later["scale"],
             }]
         return score
     if model == "cbam_certificates":
-        return model_cbam_certificates(params)
+        return model_cbam_certificates(params, year)
     if model == "grant_programme":
         return model_grant_programme(measure_id, projects)
     return _money(None, None, None, [], None,
@@ -219,7 +327,31 @@ def load_overrides() -> dict:
     return json.loads(OVERRIDES_FILE.read_text(encoding="utf-8")).get("overrides", {})
 
 
-def register_rows(sector: str) -> list[dict]:
+def register_rows(sector: str, projects: list[dict]) -> list[dict]:
+    """The measures this sector's ranking considers, and how each one got here.
+
+    TWO WAYS IN, and the second one is new. The first is the register's own
+    reading: the measure names the sector or reaches it. The second is MONEY --
+    a measure that has demonstrably paid for plants in this sector reaches it
+    through the grant, whatever its text names.
+
+    The Innovation Fund is why the second exists. Its provision names ccs,
+    shipping, aviation and clean tech, and not cement; on the register's reading
+    it does not reach cement at all. It has also put €381 million into European
+    cement plants, which is the largest single support figure on this page. A
+    ranking that dropped it because the article does not say "cement" would be
+    obeying the letter of the register against the evidence in its own project
+    file.
+
+    The route is recorded on the row as `reach`, so the sector page can say why a
+    measure is there rather than leaving a reader to assume the text names them.
+    """
+    funded_by: dict[str, list[str]] = {}
+    for p in projects:
+        for f in p.get("public_funding") or []:
+            if f.get("measure"):
+                funded_by.setdefault(f["measure"], []).append(p["id"])
+
     rows = []
     files = json.loads((sm.ROOT / "sources" / "register_files.json").read_text(encoding="utf-8"))
     for slug in files["files"]:
@@ -227,9 +359,13 @@ def register_rows(sector: str) -> list[dict]:
         if not path.exists():
             continue
         for r in json.loads(path.read_text(encoding="utf-8")):
+            mid = f"{slug}:{r['id']}"
             reach = set(r.get("sectors_reached") or []) | set(r.get("sectors_named") or [])
             if sector in reach:
-                rows.append({"file": slug, "row": r})
+                rows.append({"file": slug, "row": r, "reach": "register", "via": []})
+            elif mid in funded_by:
+                rows.append({"file": slug, "row": r, "reach": "funding",
+                             "via": sorted(funded_by[mid])})
     return rows
 
 
@@ -256,7 +392,7 @@ def build(sector: str, year: int) -> dict:
             })
 
     scored = []
-    for entry in register_rows(sector):
+    for entry in register_rows(sector, projects):
         slug, row = entry["file"], entry["row"]
         mid = f"{slug}:{row['id']}"
         money = money_for(mid, params, projects, year)
@@ -268,6 +404,8 @@ def build(sector: str, year: int) -> dict:
             "file": slug,
             "id": row["id"],
             "measure_type": row.get("measure_type"),
+            "reach": entry["reach"],
+            "reached_via": entry["via"],
             "article": row.get("article"),
             "when": row.get("when"),
             "duty": row.get("duty") or row.get("entitlement") or "",
@@ -285,8 +423,18 @@ def build(sector: str, year: int) -> dict:
         })
 
     def sort_key(s):
+        # Per-tonne first, and only against other per-tonne figures. A stock of
+        # grants awarded and a cost per tonne of clinker are both money, and
+        # sorting one list by their raw magnitudes would rank €381 000 000 above
+        # €1.36 for no reason except that euros are bigger than euros-per-tonne.
+        # So the key is (has a rate, the rate), then (has a stock, the stock).
+        money = s["money"]
+        rate = money["per_tonne"]
+        stock = money["value"] if rate is None else None
         return (
-            -(s["money"]["value"] or 0),
+            0 if rate is not None else 1,
+            -(rate or 0),
+            -(stock or 0),
             -s["bottleneck_linkage"]["weight"],
             -(s["attention"]["count"] or 0),
             s["measure"],
@@ -323,7 +471,48 @@ def build(sector: str, year: int) -> dict:
                                   if p in params}),
             "attention_available": attention["available"],
         },
+        "net": net_position(scored),
         "measures": scored,
+    }
+
+
+def net_position(scored: list[dict]) -> dict:
+    """What the measures add up to, netted per bearer and per scale.
+
+    Netting is only ever done inside one (scale, bearer) pair. A euro per tonne
+    of clinker charged to a European kiln and a euro of grant paid to a project
+    developer do not cancel: they are different units landing on different
+    balance sheets, and a single headline number that mixed them would be the
+    most confidently wrong figure on the page.
+
+    So the output is a small table rather than a total, and the sector view
+    renders it as one. Where a bearer has only costs or only support, that is
+    itself the finding.
+    """
+    buckets: dict[tuple[str, str], dict] = {}
+    for s in scored:
+        m = s["money"]
+        if not m["computable"] or not m["direction"]:
+            continue
+        rate_scale = "eur_per_tonne" if m["per_tonne"] is not None else m["scale"]
+        key = (rate_scale, m["bearer"])
+        b = buckets.setdefault(key, {"scale": rate_scale, "bearer": m["bearer"],
+                                     "cost": 0.0, "support": 0.0, "measures": []})
+        amount = m["per_tonne"] if m["per_tonne"] is not None else m["value"]
+        b[m["direction"]] += amount
+        b["measures"].append({"measure": s["measure"], "direction": m["direction"],
+                              "amount": amount})
+    out = []
+    for b in sorted(buckets.values(), key=lambda x: (x["scale"], x["bearer"])):
+        b["net"] = round(b["support"] - b["cost"], 2)
+        b["cost"] = round(b["cost"], 2)
+        b["support"] = round(b["support"], 2)
+        out.append(b)
+    return {
+        "_note": ("Netted within one scale and one bearer only. Costs per tonne on an EU "
+                  "producer and grants awarded to a developer are different units on "
+                  "different balance sheets and are never summed together."),
+        "buckets": out,
     }
 
 
@@ -338,10 +527,22 @@ def sanity_report(doc: dict) -> list[str]:
     lines.append("  top five by score:")
     for m in top:
         money = m["money"]
-        money_str = (f"{money['value']} {money['scale']}" if money["computable"]
-                     else f"no money ({', '.join(money['missing'])})")
+        if money["computable"]:
+            rate = (f"€{money['per_tonne']}/t " if money["per_tonne"] is not None else "")
+            money_str = (f"{rate}[{money['direction']} → {money['bearer']}] "
+                         f"{money['value']:,.0f} {money['scale']}"
+                         if money["scale"] != "eur_per_tonne_clinker"
+                         else f"€{money['value']}/t clinker [{money['direction']} → {money['bearer']}]")
+        else:
+            money_str = f"no money ({', '.join(money['missing'])})"
+        via = "" if m["reach"] == "register" else f"  (reached via funding: {', '.join(m['reached_via'])})"
         lines.append(f"    {m['rank']}. {m['measure']} — {money_str}"
-                     f", linkage {m['bottleneck_linkage']['weight']}")
+                     f", linkage {m['bottleneck_linkage']['weight']}{via}")
+    lines.append("  net, per scale and bearer (never across):")
+    for b in doc["net"]["buckets"]:
+        lines.append(f"    {b['bearer']:<18} {b['scale']:<16} "
+                     f"cost {b['cost']:>14,.2f}  support {b['support']:>14,.2f}  "
+                     f"net {b['net']:>14,.2f}")
     if not doc["built_from"]["attention_available"]:
         lines.append("  top five by attention: NOT AVAILABLE — the watch agent's project")
         lines.append("    channel has not written data/transition/attention.json yet, so the")

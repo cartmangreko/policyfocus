@@ -37,8 +37,12 @@
         "date": "2025-06-18",
         "note": "The Brevik installation captures half the plant's emissions; it is a single-line retrofit, not a design ceiling for the technology."
       },
-      "dependency": ["co2-transport-storage"],
-      "sectors": ["cement"],
+      "dependency": [
+        "co2-transport-storage"
+      ],
+      "sectors": [
+        "cement"
+      ],
       "sources": [
         {
           "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
@@ -47,7 +51,16 @@
           "date": "2025-06-18",
           "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
         }
-      ]
+      ],
+      "cost": {
+        "low": 100,
+        "high": 300,
+        "unit": "EUR million per plant retrofit",
+        "source": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+        "date": "2025-12-07",
+        "parameter": "ccs-retrofit-capex-post-combustion",
+        "note": "CEMBUREAU's own estimate, read from the Internet Archive; the live page serves a self-signed certificate."
+      }
     },
     {
       "id": "ccs-oxyfuel",
@@ -60,8 +73,12 @@
         "date": "2024-05-16",
         "note": "Two full-scale oxyfuel kilns are under construction in Europe — GO4ZERO at Obourg and Carbon2Business at Lägerdorf — and none is operating. Under construction is demonstration."
       },
-      "dependency": ["co2-transport-storage"],
-      "sectors": ["cement"],
+      "dependency": [
+        "co2-transport-storage"
+      ],
+      "sectors": [
+        "cement"
+      ],
       "sources": [
         {
           "url": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
@@ -77,7 +94,16 @@
           "date": "2024-04-22",
           "verbatim": "On April 22, 2024, we officially launched our Carbon2Business carbon capture"
         }
-      ]
+      ],
+      "cost": {
+        "low": 100,
+        "high": 360,
+        "unit": "EUR million per plant",
+        "source": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+        "date": "2025-12-07",
+        "parameter": "ccs-retrofit-capex-oxyfuel",
+        "note": "€100 million to retrofit an existing kiln, €330-360 million for a new 1 Mt/year plant — the range spans two different projects, not one uncertainty."
+      }
     },
     {
       "id": "co2-transport-storage",
@@ -91,7 +117,11 @@
         "note": "Captured CO2 from Brevik is shipped and stored under the Norwegian Longship chain, which is the first full chain in Europe to take third-party industrial CO2. One chain in service is early-commercial."
       },
       "dependency": [],
-      "sectors": ["cement", "steel", "chem"],
+      "sectors": [
+        "cement",
+        "steel",
+        "chem"
+      ],
       "sources": [
         {
           "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
@@ -121,7 +151,9 @@
         "note": "Substitution rates are set as ordinary operating targets in plant investment plans rather than trialled; EQIOM's Lumbres line is built around 80% substitution by 2027."
       },
       "dependency": [],
-      "sectors": ["cement"],
+      "sectors": [
+        "cement"
+      ],
       "sources": [
         {
           "url": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",

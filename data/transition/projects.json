@@ -16,10 +16,12 @@
     "announcement, because no primary source for the earlier event has been read yet. The",
     "file records what was verified, not what is likely to have happened.",
     "",
-    "`public_funding.measure` points at a register measure where the programme IS one — a",
-    "specific Innovation Fund provision, say — and is omitted where the programme exists in",
-    "law the register has not read. The Innovation Fund grants below are all in the second",
-    "category today: the register covers the ETS revision, not the Fund's own decisions."
+    "`public_funding.measure` points at the register measure that IS the programme, and carries",
+    "`measure_note` saying how tight the fit is. The Innovation Fund lines are the live case: the",
+    "grants were awarded under the Fund as it stands (Art. 10a(8) of the ETS Directive), while the",
+    "register knows the Fund through the revision's Art. 10cb, which re-establishes it. Linking them",
+    "is what lets the money model total public support for the sector; the note is what stops the",
+    "link from being read as a claim that the award was made under the proposed article."
   ],
   "projects": [
     {
@@ -30,8 +32,15 @@
       "country": "NO",
       "sector": "cement",
       "transition": "decarbonisation",
-      "technology": ["ccs-post-combustion", "co2-transport-storage"],
-      "capacity": {"value": 400000, "unit": "tonnes CO2 captured per year", "parameter": "brevik-capture-capacity"},
+      "technology": [
+        "ccs-post-combustion",
+        "co2-transport-storage"
+      ],
+      "capacity": {
+        "value": 400000,
+        "unit": "tonnes CO2 captured per year",
+        "parameter": "brevik-capture-capacity"
+      },
       "status": "operating",
       "status_history": [
         {
@@ -78,8 +87,15 @@
       "country": "DE",
       "sector": "cement",
       "transition": "decarbonisation",
-      "technology": ["ccs-post-combustion", "co2-transport-storage"],
-      "capacity": {"value": 700000, "unit": "tonnes CO2 captured per year", "parameter": "gezero-capture-capacity"},
+      "technology": [
+        "ccs-post-combustion",
+        "co2-transport-storage"
+      ],
+      "capacity": {
+        "value": 700000,
+        "unit": "tonnes CO2 captured per year",
+        "parameter": "gezero-capture-capacity"
+      },
       "status": "funded",
       "status_history": [
         {
@@ -94,7 +110,9 @@
           "programme": "EU Innovation Fund",
           "amount_eur": 191000000,
           "source_url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
-          "parameter": "gezero-grant"
+          "parameter": "gezero-grant",
+          "measure": "ets:FND-03",
+          "measure_note": "Grant awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on this programme and not the provision this particular award was made under."
         }
       ],
       "sources": [
@@ -114,8 +132,15 @@
       "country": "BG",
       "sector": "cement",
       "transition": "decarbonisation",
-      "technology": ["ccs-post-combustion", "co2-transport-storage"],
-      "capacity": {"value": 800000, "unit": "tonnes CO2 captured per year", "parameter": "anrav-capture-capacity"},
+      "technology": [
+        "ccs-post-combustion",
+        "co2-transport-storage"
+      ],
+      "capacity": {
+        "value": 800000,
+        "unit": "tonnes CO2 captured per year",
+        "parameter": "anrav-capture-capacity"
+      },
       "status": "funded",
       "status_history": [
         {
@@ -130,7 +155,9 @@
           "programme": "EU Innovation Fund",
           "amount_eur": 190000000,
           "source_url": "https://www.heidelbergmaterials.com/en/eu-backs-heidelberg-materials-pioneering-ccus-project-in-bulgaria",
-          "parameter": "anrav-grant"
+          "parameter": "anrav-grant",
+          "measure": "ets:FND-03",
+          "measure_note": "Grant awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on this programme and not the provision this particular award was made under."
         }
       ],
       "sources": [
@@ -150,8 +177,15 @@
       "country": "BE",
       "sector": "cement",
       "transition": "decarbonisation",
-      "technology": ["ccs-oxyfuel", "co2-transport-storage"],
-      "investment_total": {"value": 500000000, "unit": "EUR", "parameter": "go4zero-investment"},
+      "technology": [
+        "ccs-oxyfuel",
+        "co2-transport-storage"
+      ],
+      "investment_total": {
+        "value": 500000000,
+        "unit": "EUR",
+        "parameter": "go4zero-investment"
+      },
       "status": "construction",
       "status_history": [
         {
@@ -166,7 +200,9 @@
           "programme": "EU Innovation Fund",
           "amount_eur": null,
           "source_url": "https://www.holcim.com/media/media-releases/eu-innovation-fund-selection-projects",
-          "note": "Holcim's release records selection for an Innovation Fund grant; the amount is not stated there and is not carried here."
+          "note": "Holcim's release records selection for an Innovation Fund grant; the amount is not stated there and is not carried here.",
+          "measure": "ets:FND-03",
+          "measure_note": "Grant awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on this programme and not the provision this particular award was made under."
         }
       ],
       "sources": [
@@ -186,8 +222,14 @@
       "country": "DE",
       "sector": "cement",
       "transition": "decarbonisation",
-      "technology": ["ccs-oxyfuel"],
-      "capacity": {"value": 1.2, "unit": "Mt CO2 captured per year", "parameter": "carbon2business-capture-capacity"},
+      "technology": [
+        "ccs-oxyfuel"
+      ],
+      "capacity": {
+        "value": 1.2,
+        "unit": "Mt CO2 captured per year",
+        "parameter": "carbon2business-capture-capacity"
+      },
       "status": "construction",
       "status_history": [
         {
@@ -208,7 +250,9 @@
           "programme": "EU Innovation Fund",
           "amount_eur": null,
           "source_url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
-          "note": "Grant confirmed by the company, amount not stated on the page read."
+          "note": "Grant confirmed by the company, amount not stated on the page read.",
+          "measure": "ets:FND-03",
+          "measure_note": "Grant awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on this programme and not the provision this particular award was made under."
         }
       ],
       "sources": [
@@ -228,7 +272,10 @@
       "country": "SE",
       "sector": "cement",
       "transition": "decarbonisation",
-      "technology": ["ccs-post-combustion", "co2-transport-storage"],
+      "technology": [
+        "ccs-post-combustion",
+        "co2-transport-storage"
+      ],
       "status": "paused",
       "status_history": [
         {
@@ -262,8 +309,15 @@
       "country": "GR",
       "sector": "cement",
       "transition": "decarbonisation",
-      "technology": ["ccs-post-combustion", "co2-transport-storage"],
-      "capacity": {"value": 1.9, "unit": "Mt CO2 avoided per year", "parameter": "ifestos-capture-capacity"},
+      "technology": [
+        "ccs-post-combustion",
+        "co2-transport-storage"
+      ],
+      "capacity": {
+        "value": 1.9,
+        "unit": "Mt CO2 avoided per year",
+        "parameter": "ifestos-capture-capacity"
+      },
       "status": "announced",
       "status_history": [
         {
@@ -291,7 +345,10 @@
       "country": "FR",
       "sector": "cement",
       "transition": "decarbonisation",
-      "technology": ["alternative-fuels", "ccs-post-combustion"],
+      "technology": [
+        "alternative-fuels",
+        "ccs-post-combustion"
+      ],
       "status": "construction",
       "status_history": [
         {

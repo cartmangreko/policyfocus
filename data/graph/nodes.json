@@ -7201,6 +7201,28 @@
   }
  },
  {
+  "id": "parameter:cbam-default-grey-cement-2026",
+  "kind": "parameter",
+  "label": "CBAM default embedded emissions, grey Portland cement, 2026 (incl. mark-up)",
+  "attrs": {
+   "unit": "tonnes CO2 per tonne of goods",
+   "scope": "global",
+   "confidence": "primary",
+   "date_of_value": "2025-12-16"
+  }
+ },
+ {
+  "id": "parameter:cbam-default-grey-clinker-2026",
+  "kind": "parameter",
+  "label": "CBAM default embedded emissions, grey clinker, 2026 (incl. mark-up)",
+  "attrs": {
+   "unit": "tonnes CO2 per tonne of goods",
+   "scope": "global",
+   "confidence": "primary",
+   "date_of_value": "2025-12-16"
+  }
+ },
+ {
   "id": "parameter:cbam-factor-2026",
   "kind": "parameter",
   "label": "CBAM factor 2026 — share of free allocation that survives",
@@ -7220,6 +7242,50 @@
    "scope": "eu",
    "confidence": "primary",
    "date_of_value": "2024-03-01"
+  }
+ },
+ {
+  "id": "parameter:ccs-retrofit-capex-oxyfuel",
+  "kind": "parameter",
+  "label": "Capital cost of retrofitting oxyfuel capture to an existing cement plant",
+  "attrs": {
+   "unit": "EUR million per plant",
+   "scope": "eu",
+   "confidence": "estimate",
+   "date_of_value": "2025-12-07"
+  }
+ },
+ {
+  "id": "parameter:ccs-retrofit-capex-post-combustion",
+  "kind": "parameter",
+  "label": "Capital cost of retrofitting post-combustion capture to an existing cement plant",
+  "attrs": {
+   "unit": "EUR million per plant",
+   "scope": "eu",
+   "confidence": "estimate",
+   "date_of_value": "2025-12-07"
+  }
+ },
+ {
+  "id": "parameter:cement-imports-clinker-2025",
+  "kind": "parameter",
+  "label": "Extra-EU imports of cement clinker (CN 2523 10), 2025",
+  "attrs": {
+   "unit": "Mt",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2025"
+  }
+ },
+ {
+  "id": "parameter:cement-imports-grey-cement-2025",
+  "kind": "parameter",
+  "label": "Extra-EU imports of grey Portland cement (CN 2523 29), 2025",
+  "attrs": {
+   "unit": "Mt",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2025"
   }
  },
  {
@@ -7297,6 +7363,17 @@
    "scope": "plant:lumbres",
    "confidence": "primary",
    "date_of_value": "2024-02-15"
+  }
+ },
+ {
+  "id": "parameter:near-zero-cement-cost-premium",
+  "kind": "parameter",
+  "label": "Production cost premium of near-zero emissions cement using CCS",
+  "attrs": {
+   "unit": "% above a conventional plant",
+   "scope": "global",
+   "confidence": "estimate",
+   "date_of_value": "2025"
   }
  },
  {

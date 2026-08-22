@@ -27879,6 +27879,50 @@
   }
  },
  {
+  "rel": "funded_by",
+  "from": "project:anrav-devnya",
+  "to": "measure:ets:FND-03",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=anrav-devnya].public_funding[EU Innovation Fund]"
+  },
+  "basis": "EU Innovation Fund"
+ },
+ {
+  "rel": "funded_by",
+  "from": "project:carbon2business-lagerdorf",
+  "to": "measure:ets:FND-03",
+  "since": "2023",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=carbon2business-lagerdorf].public_funding[EU Innovation Fund]"
+  },
+  "basis": "EU Innovation Fund"
+ },
+ {
+  "rel": "funded_by",
+  "from": "project:gezero-geseke",
+  "to": "measure:ets:FND-03",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gezero-geseke].public_funding[EU Innovation Fund]"
+  },
+  "basis": "EU Innovation Fund"
+ },
+ {
+  "rel": "funded_by",
+  "from": "project:go4zero-obourg",
+  "to": "measure:ets:FND-03",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=go4zero-obourg].public_funding[EU Innovation Fund]"
+  },
+  "basis": "EU Innovation Fund"
+ },
+ {
   "rel": "imports_from",
   "from": "sector:air",
   "to": "country:CH",
@@ -30035,6 +30079,28 @@
  },
  {
   "rel": "quantifies",
+  "from": "parameter:cbam-default-grey-cement-2026",
+  "to": "sector:cement",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=cbam-default-grey-cement-2026].sector",
+   "quote": "2523 29 00 Grey Portland cement 1,360 0,080 1,440 1,584 1,728 1,872"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:cbam-default-grey-clinker-2026",
+  "to": "sector:cement",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=cbam-default-grey-clinker-2026].sector",
+   "quote": "2523 10 00 Grey clinker 1,370 0,050 1,410 1,551 1,692 1,833 (A)"
+  }
+ },
+ {
+  "rel": "quantifies",
   "from": "parameter:cbam-factor-2026",
   "to": "sector:cement",
   "since": "2024-03-01",
@@ -30053,6 +30119,70 @@
    "source": "data/transition/parameters.json",
    "path": "[id=cbam-factor-2030].sector",
    "quote": "The CBAM factor shall be equal to 100 % for the period between the entry into force of that Regulation and the end of 2025 and, subject to the application of provisions referred to in Article 36(2), point (b), of that Regulation, shall be equal to 97,5 % in 2026, 95 % in 2027, 90 % in 2028, 77,5 % in 2029, 51,5 % in 2030, 39 % in 2031, 26,5 % in 2032 and 14 % in 2033. From 2034, no CBAM factor sha"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:ccs-retrofit-capex-oxyfuel",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:ccs-retrofit-capex-oxyfuel",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2025-12-07",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=ccs-retrofit-capex-oxyfuel].technology",
+   "quote": "The exact capital expenditure needed per plant is hard to determine at present, but is estimated to be around €330-360 million to deploy oxyfuel technology at a new 1 million tonne/year plant, about 100 million for retrofitting oxyfuel technology and €100-300 million to retrofit an existing plant with post-combustion technology"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:ccs-retrofit-capex-post-combustion",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:ccs-retrofit-capex-post-combustion",
+  "to": "technology:ccs-post-combustion",
+  "since": "2025-12-07",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=ccs-retrofit-capex-post-combustion].technology",
+   "quote": "The exact capital expenditure needed per plant is hard to determine at present, but is estimated to be around €330-360 million to deploy oxyfuel technology at a new 1 million tonne/year plant, about 100 million for retrofitting oxyfuel technology and €100-300 million to retrofit an existing plant with post-combustion technology"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:cement-imports-clinker-2025",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=cement-imports-clinker-2025].sector",
+   "quote": "\"value\":{\"0\":71478908.93}"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:cement-imports-grey-cement-2025",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=cement-imports-grey-cement-2025].sector",
+   "quote": "\"value\":{\"0\":57658565.6}"
   }
  },
  {
@@ -30143,6 +30273,27 @@
  },
  {
   "rel": "quantifies",
+  "from": "parameter:near-zero-cement-cost-premium",
+  "to": "bottleneck:cement-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-green-premium].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:near-zero-cement-cost-premium",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=near-zero-cement-cost-premium].sector",
+   "quote": "Production costs for early commercial plants for near-zero emissions cement using CCS are estimated to be 75-150% higher than today's conventional plants"
+  }
+ },
+ {
+  "rel": "quantifies",
   "from": "parameter:nzia-injection-capacity-2030",
   "to": "bottleneck:co2-transport-storage-network",
   "since": "2024-06-13",
@@ -30155,7 +30306,7 @@
   "rel": "relieves",
   "from": "measure:cbam:FIN-03",
   "to": "bottleneck:cement-green-premium",
-  "since": "2024-01-01",
+  "since": "2025-01-01",
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=cement-green-premium].measures[cbam:FIN-03]",
@@ -30167,7 +30318,7 @@
   "rel": "relieves",
   "from": "measure:ets:CBAM-01",
   "to": "bottleneck:cement-green-premium",
-  "since": "2024-01-01",
+  "since": "2025-01-01",
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=cement-green-premium].measures[ets:CBAM-01]",
@@ -30179,7 +30330,7 @@
   "rel": "relieves",
   "from": "measure:iaa:LM-03a",
   "to": "bottleneck:cement-green-premium",
-  "since": "2024-01-01",
+  "since": "2025-01-01",
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=cement-green-premium].measures[iaa:LM-03a]",
@@ -30191,7 +30342,7 @@
   "rel": "relieves",
   "from": "measure:iaa:LM-06a",
   "to": "bottleneck:cement-green-premium",
-  "since": "2024-01-01",
+  "since": "2025-01-01",
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=cement-green-premium].measures[iaa:LM-06a]",

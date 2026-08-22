@@ -1,0 +1,99 @@
+{
+  "_comment": [
+    "SNAPSHOT of the Eurostat Comext query the CBAM money model rests on. Written by hand,",
+    "re-runnable: each row carries the exact request URL that produced it, so the figure can",
+    "be reproduced or refreshed without reconstructing the query.",
+    "",
+    "Extra-EU imports into EU27, annual, quantity in 100 kg as Comext reports it. The Mt",
+    "conversion is arithmetic (value_100kg / 1e7) and is recorded here rather than done in the",
+    "model, so that the number the parameter file states is the number this file shows.",
+    "",
+    "2025 is the last full year. Volumes rose about 23% on 2024 across HS 2523, which is the",
+    "kind of movement worth knowing before it is read as a trend: the CBAM definitive period",
+    "began on 1 January 2026, and importers had an obvious reason to bring goods in first."
+  ],
+  "retrieved": "2026-08-22",
+  "source": "Eurostat Comext, dataset ds-045409 (EU trade since 1988 by HS2-4-6 and CN8)",
+  "series": {
+    "2523:2024": {
+      "product": "2523",
+      "label": "HS 2523 — cement, all lines",
+      "year": "2024",
+      "value_100kg": 115956789.91,
+      "value_mt": 11.5957,
+      "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=2523&time=2024",
+      "dataset": "EU trade since 1988 by HS2-4-6 and CN8",
+      "updated": "2026-08-14T11:00:00+0200"
+    },
+    "2523:2025": {
+      "product": "2523",
+      "label": "HS 2523 — cement, all lines",
+      "year": "2025",
+      "value_100kg": 142352135.45,
+      "value_mt": 14.2352,
+      "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=2523&time=2025",
+      "dataset": "EU trade since 1988 by HS2-4-6 and CN8",
+      "updated": "2026-08-14T11:00:00+0200"
+    },
+    "252310:2024": {
+      "product": "252310",
+      "label": "CN 2523 10 — cement clinker",
+      "year": "2024",
+      "value_100kg": 56762467.04,
+      "value_mt": 5.6762,
+      "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252310&time=2024",
+      "dataset": "EU trade since 1988 by HS2-4-6 and CN8",
+      "updated": "2026-08-14T11:00:00+0200"
+    },
+    "252310:2025": {
+      "product": "252310",
+      "label": "CN 2523 10 — cement clinker",
+      "year": "2025",
+      "value_100kg": 71478908.93,
+      "value_mt": 7.1479,
+      "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252310&time=2025",
+      "dataset": "EU trade since 1988 by HS2-4-6 and CN8",
+      "updated": "2026-08-14T11:00:00+0200"
+    },
+    "252329:2024": {
+      "product": "252329",
+      "label": "CN 2523 29 — grey Portland cement",
+      "year": "2024",
+      "value_100kg": 46636249.72,
+      "value_mt": 4.6636,
+      "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252329&time=2024",
+      "dataset": "EU trade since 1988 by HS2-4-6 and CN8",
+      "updated": "2026-08-14T11:00:00+0200"
+    },
+    "252329:2025": {
+      "product": "252329",
+      "label": "CN 2523 29 — grey Portland cement",
+      "year": "2025",
+      "value_100kg": 57658565.6,
+      "value_mt": 5.7659,
+      "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252329&time=2025",
+      "dataset": "EU trade since 1988 by HS2-4-6 and CN8",
+      "updated": "2026-08-14T11:00:00+0200"
+    },
+    "252390:2024": {
+      "product": "252390",
+      "label": "CN 2523 90 — other hydraulic cements",
+      "year": "2024",
+      "value_100kg": 5181556.59,
+      "value_mt": 0.5182,
+      "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252390&time=2024",
+      "dataset": "EU trade since 1988 by HS2-4-6 and CN8",
+      "updated": "2026-08-14T11:00:00+0200"
+    },
+    "252390:2025": {
+      "product": "252390",
+      "label": "CN 2523 90 — other hydraulic cements",
+      "year": "2025",
+      "value_100kg": 5075519.52,
+      "value_mt": 0.5076,
+      "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252390&time=2025",
+      "dataset": "EU trade since 1988 by HS2-4-6 and CN8",
+      "updated": "2026-08-14T11:00:00+0200"
+    }
+  }
+}

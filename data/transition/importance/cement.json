@@ -10,18 +10,149 @@
   "priced_year": 2026,
   "built_from": {
     "parameters": [
+      "cbam-default-grey-cement-2026",
+      "cbam-default-grey-clinker-2026",
       "cbam-factor-2026",
+      "cement-imports-clinker-2025",
+      "cement-imports-grey-cement-2025",
       "clinker-benchmark-2026-2030",
       "eua-price-spot"
     ],
     "attention_available": false
   },
+  "net": {
+    "_note": "Netted within one scale and one bearer only. Costs per tonne on an EU producer and grants awarded to a developer are different units on different balance sheets and are never summed together.",
+    "buckets": [
+      {
+        "scale": "eur_awarded",
+        "bearer": "project_developer",
+        "cost": 0.0,
+        "support": 381000000.0,
+        "measures": [
+          {
+            "measure": "ets:FND-03",
+            "direction": "support",
+            "amount": 381000000
+          }
+        ],
+        "net": 381000000.0
+      },
+      {
+        "scale": "eur_per_tonne",
+        "bearer": "eu_producer",
+        "cost": 1.36,
+        "support": 0.0,
+        "measures": [
+          {
+            "measure": "ets:CBAM-01",
+            "direction": "cost",
+            "amount": 1.36
+          }
+        ],
+        "net": -1.36
+      },
+      {
+        "scale": "eur_per_tonne",
+        "bearer": "importer",
+        "cost": 75.46,
+        "support": 0.0,
+        "measures": [
+          {
+            "measure": "cbam:FIN-03",
+            "direction": "cost",
+            "amount": 75.46
+          }
+        ],
+        "net": -75.46
+      }
+    ]
+  },
   "measures": [
+    {
+      "measure": "cbam:FIN-03",
+      "file": "cbam",
+      "id": "FIN-03",
+      "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(13), adding a subparagraph to Art. 22(2) of Regulation (EU) 2023/956",
+      "when": "from 2028",
+      "duty": "From 2028, satisfy the quarterly certificate-holding requirement using only certificates bought in the same year, so certificates carried over from earlier years no longer count.",
+      "money": {
+        "value": 990280715.0,
+        "scale": "eur_per_year",
+        "model": "cbam_certificates",
+        "direction": "cost",
+        "bearer": "importer",
+        "per_tonne": 75.46,
+        "annual_total": 990280715.0,
+        "computable": true,
+        "inputs": [
+          "cbam-default-grey-clinker-2026",
+          "cbam-default-grey-cement-2026",
+          "cement-imports-clinker-2025",
+          "cement-imports-grey-cement-2025",
+          "clinker-benchmark-2026-2030",
+          "cbam-factor-2026",
+          "eua-price-spot"
+        ],
+        "formula": "(default_embedded_emissions - clinker_benchmark x cbam_factor) x eua_price x import_volume, per CN line",
+        "missing": [],
+        "caveats": [
+          "The free-allocation adjustment is modelled as benchmark x CBAM factor. IR (EU) 2025/2620 sets its exact form and has not been read, so this is an approximation of the right shape rather than the statutory calculation.",
+          "The cement line applies the clinker benchmark to a tonne of cement, which understates its adjustment and so overstates that line's cost.",
+          "Volumes are 2025 full-year imports, which ran about 23% above 2024 ahead of the definitive period. A repeat of 2025 is an assumption, not a projection."
+        ],
+        "context": [
+          {
+            "label": "CN 2523 10 clinker",
+            "value": 75.46,
+            "scale": "eur_per_tonne_of_goods",
+            "detail": "7.1479 Mt imported, 0.911 tCO2/t chargeable"
+          },
+          {
+            "label": "CN 2523 29 grey cement",
+            "value": 78.2,
+            "scale": "eur_per_tonne_of_goods",
+            "detail": "5.7659 Mt imported, 0.944 tCO2/t chargeable"
+          }
+        ]
+      },
+      "bottleneck_linkage": {
+        "count": 1,
+        "weight": 0.5,
+        "edges": [
+          {
+            "bottleneck": "cement-green-premium",
+            "bottleneck_name": "Green premium against willingness to pay",
+            "type": "market",
+            "rel": "relieves",
+            "weight": 0.5,
+            "note": "Same-year certificates stop importers hedging the carbon cost forward, holding imported and domestic carbon costs closer together.",
+            "evidence": {
+              "source": "data/cbam.json",
+              "path": "FIN-03.duty",
+              "quote": "From 2028, satisfy the quarterly certificate-holding requirement using only certificates bought in the same year, so certificates carried over from earlier years no longer count.",
+              "article": "Art. 1(13), adding a subparagraph to Art. 22(2) of Regulation (EU) 2023/956"
+            }
+          }
+        ]
+      },
+      "attention": {
+        "available": false,
+        "count": null,
+        "window_months": 24
+      },
+      "rank": 1,
+      "in_sector_view": true
+    },
     {
       "measure": "ets:CBAM-01",
       "file": "ets",
       "id": "CBAM-01",
       "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
       "article": "Art. 1(15)(b)(i), replacing Art. 10a(1a), second subparagraph of Directive 2003/87/EC",
       "when": "2026-2038, applies from 30 September 2027",
       "duty": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods.",
@@ -29,6 +160,10 @@
         "value": 1.36,
         "scale": "eur_per_tonne_clinker",
         "model": "free_allocation_phaseout",
+        "direction": "cost",
+        "bearer": "eu_producer",
+        "per_tonne": 1.36,
+        "annual_total": null,
         "computable": true,
         "inputs": [
           "cbam-factor-2026",
@@ -37,6 +172,10 @@
         ],
         "formula": "(1 - cbam_factor) x clinker_benchmark x eua_price",
         "missing": [],
+        "caveats": [
+          "The figure is the cost of the WITHDRAWN benchmark allocation, not the full carbon cost of a plant: a kiln emitting above the benchmark pays for its excess on top of this, and always did.",
+          "The carbon price is held flat at today's level across the whole schedule. That is an assumption, not a forecast, and the model is linear in it."
+        ],
         "context": [
           {
             "label": "the same model at 2030",
@@ -84,7 +223,56 @@
         "count": null,
         "window_months": 24
       },
-      "rank": 1,
+      "rank": 2,
+      "in_sector_view": true
+    },
+    {
+      "measure": "ets:FND-03",
+      "file": "ets",
+      "id": "FND-03",
+      "measure_type": "incentive",
+      "reach": "funding",
+      "reached_via": [
+        "anrav-devnya",
+        "carbon2business-lagerdorf",
+        "gezero-geseke",
+        "go4zero-obourg"
+      ],
+      "article": "Art. 1(17), inserting Art. 10cb of Directive 2003/87/EC",
+      "when": "ongoing",
+      "duty": "",
+      "money": {
+        "value": 381000000,
+        "scale": "eur_awarded",
+        "model": "grant_programme",
+        "direction": "support",
+        "bearer": "project_developer",
+        "per_tonne": null,
+        "annual_total": null,
+        "computable": true,
+        "inputs": [
+          "gezero-geseke",
+          "anrav-devnya"
+        ],
+        "formula": "sum of public_funding.amount_eur where public_funding.measure = this measure",
+        "missing": [],
+        "caveats": [
+          "Grant awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on this programme and not the provision this particular award was made under.",
+          "2 further funding line(s) under this measure carry no published amount and are not in the total, which is therefore a floor."
+        ],
+        "context": []
+      },
+      "bottleneck_linkage": {
+        "count": 0,
+        "weight": 0,
+        "edges": []
+      },
+      "attention": {
+        "available": false,
+        "count": null,
+        "window_months": 24
+      },
+      "rank": 3,
       "in_sector_view": true
     },
     {
@@ -92,6 +280,8 @@
       "file": "iaa",
       "id": "LM-03a",
       "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
       "article": "Art. 11(2)",
       "when": "From 1 January 2029 (Annex II) / [6 months after entry into force] (Annex III)",
       "duty": "Apply the Union-origin and low-carbon requirements laid down in Annex II Part I (steel, concrete/mortar, aluminium) and Annex III Part I (electric vehicles) in covered public procurement.",
@@ -99,12 +289,17 @@
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -132,7 +327,7 @@
         "count": null,
         "window_months": 24
       },
-      "rank": 2,
+      "rank": 4,
       "in_sector_view": true
     },
     {
@@ -140,6 +335,8 @@
       "file": "nzia",
       "id": "CO2-02",
       "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
       "article": "Art. 23(1)",
       "when": "Contribution to be available to the market by 2030",
       "duty": "Deliver an individual share of the Union's 50 Mt/year CO2 injection capacity target by 2030, calculated pro-rata on the entity's share of Union crude oil and natural gas production over 2020-2023, as permitted capacity available to the market.",
@@ -147,12 +344,17 @@
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -180,58 +382,7 @@
         "count": null,
         "window_months": 24
       },
-      "rank": 3,
-      "in_sector_view": true
-    },
-    {
-      "measure": "cbam:FIN-03",
-      "file": "cbam",
-      "id": "FIN-03",
-      "measure_type": "obligation",
-      "article": "Art. 1(13), adding a subparagraph to Art. 22(2) of Regulation (EU) 2023/956",
-      "when": "from 2028",
-      "duty": "From 2028, satisfy the quarterly certificate-holding requirement using only certificates bought in the same year, so certificates carried over from earlier years no longer count.",
-      "money": {
-        "value": null,
-        "scale": "eur_per_year",
-        "model": "cbam_certificates",
-        "computable": false,
-        "inputs": [
-          "eua-price-spot"
-        ],
-        "formula": "embedded_emissions x eua_price x import_volume",
-        "missing": [
-          "cement-import-volume",
-          "cbam-cement-embedded-emissions"
-        ],
-        "context": []
-      },
-      "bottleneck_linkage": {
-        "count": 1,
-        "weight": 0.5,
-        "edges": [
-          {
-            "bottleneck": "cement-green-premium",
-            "bottleneck_name": "Green premium against willingness to pay",
-            "type": "market",
-            "rel": "relieves",
-            "weight": 0.5,
-            "note": "Same-year certificates stop importers hedging the carbon cost forward, holding imported and domestic carbon costs closer together.",
-            "evidence": {
-              "source": "data/cbam.json",
-              "path": "FIN-03.duty",
-              "quote": "From 2028, satisfy the quarterly certificate-holding requirement using only certificates bought in the same year, so certificates carried over from earlier years no longer count.",
-              "article": "Art. 1(13), adding a subparagraph to Art. 22(2) of Regulation (EU) 2023/956"
-            }
-          }
-        ]
-      },
-      "attention": {
-        "available": false,
-        "count": null,
-        "window_months": 24
-      },
-      "rank": 4,
+      "rank": 5,
       "in_sector_view": true
     },
     {
@@ -239,6 +390,8 @@
       "file": "iaa",
       "id": "LM-06a",
       "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
       "article": "Art. 12(1)",
       "when": "From 1 January 2029",
       "duty": "Design public support schemes so that the Union-origin/low-carbon requirements of Annex II Part II and Annex III Part II apply to at least 45% of the national budget for Annex II Part II-type schemes and 100% of the budget for Annex III Part II-type schemes.",
@@ -246,12 +399,17 @@
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -279,7 +437,7 @@
         "count": null,
         "window_months": 24
       },
-      "rank": 5,
+      "rank": 6,
       "in_sector_view": true
     },
     {
@@ -287,6 +445,8 @@
       "file": "nzia",
       "id": "CO2-10",
       "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
       "article": "Art. 22(2)",
       "when": "Applies from 29 June 2024 (Art. 49(2))",
       "duty": "Take the measures needed to open access to CO2 transport networks and storage sites for geological storage, as far as it is economically feasible or where a potential customer is willing to pay.",
@@ -294,12 +454,17 @@
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -327,7 +492,7 @@
         "count": null,
         "window_months": 24
       },
-      "rank": 6,
+      "rank": 7,
       "in_sector_view": true
     },
     {
@@ -335,6 +500,8 @@
       "file": "nzia",
       "id": "SP-02",
       "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
       "article": "Art. 14(2)",
       "when": "Applies from 29 June 2024 (Art. 49(2))",
       "duty": "File an application for strategic-project recognition containing evidence against the criteria, a business plan evaluating financial viability, and a draft timetable showing when the project contributes to the Union benchmark.",
@@ -342,12 +509,17 @@
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -375,7 +547,7 @@
         "count": null,
         "window_months": 24
       },
-      "rank": 7,
+      "rank": 8,
       "in_sector_view": true
     },
     {
@@ -383,6 +555,8 @@
       "file": "cbam",
       "id": "ANTI-01",
       "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
       "article": "Art. 1(3), adding point (35) to Art. 3 of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
       "duty": "Refrain from practices whose purpose is to gain a benefit by unduly avoiding, wholly or partly, the CBAM financial liability.",
@@ -390,45 +564,17 @@
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
-        "context": []
-      },
-      "bottleneck_linkage": {
-        "count": 0,
-        "weight": 0,
-        "edges": []
-      },
-      "attention": {
-        "available": false,
-        "count": null,
-        "window_months": 24
-      },
-      "rank": 8,
-      "in_sector_view": false
-    },
-    {
-      "measure": "cbam:ANTI-02",
-      "file": "cbam",
-      "id": "ANTI-02",
-      "measure_type": "obligation",
-      "article": "Art. 1(16), adding point (c) to Art. 27(2) of Regulation (EU) 2023/956",
-      "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Refrain from artificially adjusting supply chains so that goods qualify for lower default values; doing so is circumvention.",
-      "money": {
-        "value": null,
-        "scale": null,
-        "model": null,
-        "computable": false,
-        "inputs": [],
-        "formula": null,
-        "missing": [
-          "no money model applies to this measure"
-        ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -445,23 +591,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:ANTI-03",
+      "measure": "cbam:ANTI-02",
       "file": "cbam",
-      "id": "ANTI-03",
+      "id": "ANTI-02",
       "measure_type": "obligation",
-      "article": "Art. 1(5)(c), adding Art. 6(7) to Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(16), adding point (c) to Art. 27(2) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Monitor the CBAM's internal-market impact, warn importers, declarants, competent and customs authorities of high-risk goods/origin combinations, and legislate the conditions for using actual emissions for them.",
+      "duty": "Refrain from artificially adjusting supply chains so that goods qualify for lower default values; doing so is circumvention.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -478,23 +631,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:CBAMB-ANTI-05",
+      "measure": "cbam:ANTI-03",
       "file": "cbam",
-      "id": "CBAMB-ANTI-05",
+      "id": "ANTI-03",
       "measure_type": "obligation",
-      "article": "Art. 1(5)(c), adding Art. 6(6a) to Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(5)(c), adding Art. 6(7) to Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Designate, by implementing act, the goods or goods/origin combinations for which traceability evidence must accompany the declaration, and the type of evidence required.",
+      "duty": "Monitor the CBAM's internal-market impact, warn importers, declarants, competent and customs authorities of high-risk goods/origin combinations, and legislate the conditions for using actual emissions for them.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -511,23 +671,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:CBAMB-CUST-05",
+      "measure": "cbam:CBAMB-ANTI-05",
       "file": "cbam",
-      "id": "CBAMB-CUST-05",
+      "id": "CBAMB-ANTI-05",
       "measure_type": "obligation",
-      "article": "Art. 1(15)(c), replacing the first sentence of Art. 25(6) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(5)(c), adding Art. 6(6a) to Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Communicate customs information at the scope, periodicity, timing and by the means the implementing acts prescribe, for the competent-authority flow under Art. 25(3) as well as the customs flow under Art. 25(2).",
+      "duty": "Designate, by implementing act, the goods or goods/origin combinations for which traceability evidence must accompany the declaration, and the type of evidence required.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -544,23 +711,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:CBAMB-DECL-07",
+      "measure": "cbam:CBAMB-CUST-05",
       "file": "cbam",
-      "id": "CBAMB-DECL-07",
+      "id": "CBAMB-CUST-05",
       "measure_type": "obligation",
-      "article": "Art. 1(5)(b), replacing the first sentence of Art. 6(6) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(15)(c), replacing the first sentence of Art. 25(6) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Report, in the standard declaration format, the detail supporting each total -- per installation and per country of origin -- including the carbon price paid and the default carbon price for the purposes of Art. 9(4).",
+      "duty": "Communicate customs information at the scope, periodicity, timing and by the means the implementing acts prescribe, for the competent-authority flow under Art. 25(3) as well as the customs flow under Art. 25(2).",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -577,23 +751,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:CBAMB-ELEC-09",
+      "measure": "cbam:CBAMB-DECL-07",
       "file": "cbam",
-      "id": "CBAMB-ELEC-09",
+      "id": "CBAMB-DECL-07",
       "measure_type": "obligation",
-      "article": "Art. 1(22); Annex II, point (1) replacing point (e) of point 1 of Annex IV of Regulation (EU) 2023/956",
-      "when": "applies from 1 January 2026 per Art. 2 (points 1 and 6 of Annex II)",
-      "duty": "Use, as the emission factor for electricity, the weighted average CO2 intensity of all electricity produced in the geographic area, in place of a factor representing the emission intensity of the electricity consumed in producing the goods.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(5)(b), replacing the first sentence of Art. 6(6) of Regulation (EU) 2023/956",
+      "when": "from entry into force (third day after publication), Art. 2",
+      "duty": "Report, in the standard declaration format, the detail supporting each total -- per installation and per country of origin -- including the carbon price paid and the default carbon price for the purposes of Art. 9(4).",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -610,23 +791,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:CBAMB-SCP-08",
+      "measure": "cbam:CBAMB-ELEC-09",
       "file": "cbam",
-      "id": "CBAMB-SCP-08",
+      "id": "CBAMB-ELEC-09",
       "measure_type": "obligation",
-      "article": "Art. 1(1)(e), replacing Art. 2(11) of Regulation (EU) 2023/956",
-      "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "A third country or territory may be added to or removed from the Annex III exemption lists by delegated act, including as a consequence of CBAM incorporation into the EEA Agreement, and under urgency where imperative grounds require it.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(22); Annex II, point (1) replacing point (e) of point 1 of Annex IV of Regulation (EU) 2023/956",
+      "when": "applies from 1 January 2026 per Art. 2 (points 1 and 6 of Annex II)",
+      "duty": "Use, as the emission factor for electricity, the weighted average CO2 intensity of all electricity produced in the geographic area, in place of a factor representing the emission intensity of the electricity consumed in producing the goods.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -643,23 +831,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:CBAMB-VER-02",
+      "measure": "cbam:CBAMB-SCP-08",
       "file": "cbam",
-      "id": "CBAMB-VER-02",
+      "id": "CBAMB-SCP-08",
       "measure_type": "obligation",
-      "article": "Art. 1(1)(e), replacing Art. 2(12) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(1)(e), replacing Art. 2(11) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Use a verifier accredited by a Member State national accreditation body, there being no route to recognition of a third-country accreditation body.",
+      "duty": "A third country or territory may be added to or removed from the Annex III exemption lists by delegated act, including as a consequence of CBAM incorporation into the EEA Agreement, and under urgency where imperative grounds require it.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -676,23 +871,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:CUST-01",
+      "measure": "cbam:CBAMB-VER-02",
       "file": "cbam",
-      "id": "CUST-01",
+      "id": "CBAMB-VER-02",
       "measure_type": "obligation",
-      "article": "Art. 1(15)(a), replacing Art. 25(2) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(1)(e), replacing Art. 2(12) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Communicate import data to the Commission automatically, now including bills of discharge, re-export declarations and equivalent customs documentation, and the importer's identity where there is no EORI number.",
+      "duty": "Use a verifier accredited by a Member State national accreditation body, there being no route to recognition of a third-country accreditation body.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -709,23 +911,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:CUST-02",
+      "measure": "cbam:CUST-01",
       "file": "cbam",
-      "id": "CUST-02",
+      "id": "CUST-01",
       "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
       "article": "Art. 1(15)(a), replacing Art. 25(2) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Accept that the CBAM account number entered in the customs declaration fixes which authorised CBAM declarant assumes the obligations for that consignment.",
+      "duty": "Communicate import data to the Commission automatically, now including bills of discharge, re-export declarations and equivalent customs documentation, and the importer's identity where there is no EORI number.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -742,23 +951,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:DATA-01",
+      "measure": "cbam:CUST-02",
       "file": "cbam",
-      "id": "DATA-01",
-      "measure_type": "right",
-      "article": "Art. 1(8)(c), replacing the first sentence of Art. 10(7) of Regulation (EU) 2023/956",
-      "when": "applies from 1 January 2028 per Art. 2",
-      "duty": "",
+      "id": "CUST-02",
+      "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(15)(a), replacing Art. 25(2) of Regulation (EU) 2023/956",
+      "when": "from entry into force (third day after publication), Art. 2",
+      "duty": "Accept that the CBAM account number entered in the customs declaration fixes which authorised CBAM declarant assumes the obligations for that consignment.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -775,23 +991,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:DATA-02",
+      "measure": "cbam:DATA-01",
       "file": "cbam",
-      "id": "DATA-02",
+      "id": "DATA-01",
       "measure_type": "right",
-      "article": "Art. 1(8)(d), replacing the second sentence of Art. 10(7) of Regulation (EU) 2023/956",
-      "when": "from entry into force (third day after publication), Art. 2",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(8)(c), replacing the first sentence of Art. 10(7) of Regulation (EU) 2023/956",
+      "when": "applies from 1 January 2028 per Art. 2",
       "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -808,23 +1031,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:DATA-03",
+      "measure": "cbam:DATA-02",
       "file": "cbam",
-      "id": "DATA-03",
-      "measure_type": "obligation",
+      "id": "DATA-02",
+      "measure_type": "right",
+      "reach": "register",
+      "reached_via": [],
       "article": "Art. 1(8)(d), replacing the second sentence of Art. 10(7) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Remain responsible for surrendering the correct number of CBAM certificates even where the declaration was built on information disclosed by the operator.",
+      "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -841,23 +1071,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:DATA-04",
+      "measure": "cbam:DATA-03",
       "file": "cbam",
-      "id": "DATA-04",
+      "id": "DATA-03",
       "measure_type": "obligation",
-      "article": "Art. 1(8)(b), adding point (e) to Art. 10(5) of Regulation (EU) 2023/956",
-      "when": "applies from 1 January 2028 per Art. 2",
-      "duty": "Ensure that the conditions laid down for using actual emissions are met for the relevant combinations of goods and origins.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(8)(d), replacing the second sentence of Art. 10(7) of Regulation (EU) 2023/956",
+      "when": "from entry into force (third day after publication), Art. 2",
+      "duty": "Remain responsible for surrendering the correct number of CBAM certificates even where the declaration was built on information disclosed by the operator.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -874,23 +1111,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:DATA-05",
+      "measure": "cbam:DATA-04",
       "file": "cbam",
-      "id": "DATA-05",
-      "measure_type": "right",
-      "article": "Art. 1(8)(a), replacing Art. 10(1) of Regulation (EU) 2023/956",
+      "id": "DATA-04",
+      "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(8)(b), adding point (e) to Art. 10(5) of Regulation (EU) 2023/956",
       "when": "applies from 1 January 2028 per Art. 2",
-      "duty": "",
+      "duty": "Ensure that the conditions laid down for using actual emissions are met for the relevant combinations of goods and origins.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -907,23 +1151,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:DECL-01",
+      "measure": "cbam:DATA-05",
       "file": "cbam",
-      "id": "DECL-01",
-      "measure_type": "obligation",
-      "article": "Art. 1(5)(a)(2), adding point (e) to Art. 6(2) of Regulation (EU) 2023/956",
-      "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Include in the CBAM declaration evidence that the imported goods were actually produced at the declared installation and at the declared time of production.",
+      "id": "DATA-05",
+      "measure_type": "right",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(8)(a), replacing Art. 10(1) of Regulation (EU) 2023/956",
+      "when": "applies from 1 January 2028 per Art. 2",
+      "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -940,23 +1191,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:DECL-02",
+      "measure": "cbam:DECL-01",
       "file": "cbam",
-      "id": "DECL-02",
+      "id": "DECL-01",
       "measure_type": "obligation",
-      "article": "Art. 1(5)(a)(2), adding point (f) to Art. 6(2) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(5)(a)(2), adding point (e) to Art. 6(2) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Where a goods/origin combination is designated high-risk for abusive practices and actual emissions are claimed, prove in the declaration that the abuse risk has not materialised.",
+      "duty": "Include in the CBAM declaration evidence that the imported goods were actually produced at the declared installation and at the declared time of production.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -973,26 +1231,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:DECL-03",
+      "measure": "cbam:DECL-02",
       "file": "cbam",
-      "id": "DECL-03",
+      "id": "DECL-02",
       "measure_type": "obligation",
-      "article": "Art. 1(5)(a)(1), replacing point (b) of Art. 6(2) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(5)(a)(2), adding point (f) to Art. 6(2) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Report total embedded emissions per tonne of goods (or per MWh for electricity), and have them verified where actual emissions are supplied by the operator through the CBAM registry.",
+      "duty": "Where a goods/origin combination is designated high-risk for abusive practices and actual emissions are claimed, prove in the declaration that the abuse risk has not materialised.",
       "money": {
         "value": null,
-        "scale": "eur_per_year",
-        "model": "cbam_certificates",
+        "scale": null,
+        "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
-        "inputs": [
-          "eua-price-spot"
-        ],
-        "formula": "embedded_emissions x eua_price x import_volume",
+        "inputs": [],
+        "formula": null,
         "missing": [
-          "cement-import-volume",
-          "cbam-cement-embedded-emissions"
+          "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1009,23 +1271,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:DECL-05",
+      "measure": "cbam:DECL-03",
       "file": "cbam",
-      "id": "DECL-05",
+      "id": "DECL-03",
       "measure_type": "obligation",
-      "article": "Art. 1(11), inserting Art. 19(2a) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(5)(a)(1), replacing point (b) of Art. 6(2) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Produce, on request during review of the CBAM declaration, evidence that the imported goods were produced at the installation named in the declaration.",
+      "duty": "Report total embedded emissions per tonne of goods (or per MWh for electricity), and have them verified where actual emissions are supplied by the operator through the CBAM registry.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1042,23 +1311,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:DECL-06",
+      "measure": "cbam:DECL-05",
       "file": "cbam",
-      "id": "DECL-06",
+      "id": "DECL-05",
       "measure_type": "obligation",
-      "article": "Art. 1(6)(b), replacing Art. 7(5) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(11), inserting Art. 19(2a) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Keep the full underlying records required to calculate embedded emissions, rather than the information actually disclosed to the declarant under Art. 10(7).",
+      "duty": "Produce, on request during review of the CBAM declaration, evidence that the imported goods were produced at the installation named in the declaration.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1075,23 +1351,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:ELEC-03",
+      "measure": "cbam:DECL-06",
       "file": "cbam",
-      "id": "ELEC-03",
+      "id": "DECL-06",
       "measure_type": "obligation",
-      "article": "Art. 1(22); Annex II, point (5) replacing the second paragraph of point 4.3 of Annex IV of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(6)(b), replacing Art. 7(5) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Accept the standard default value for indirect emissions where the exporting country's actual electricity mix is cleaner than that default.",
+      "duty": "Keep the full underlying records required to calculate embedded emissions, rather than the information actually disclosed to the declarant under Art. 10(7).",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1108,26 +1391,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:FIN-01",
+      "measure": "cbam:ELEC-03",
       "file": "cbam",
-      "id": "FIN-01",
+      "id": "ELEC-03",
       "measure_type": "obligation",
-      "article": "Art. 1(9)(a), inserting Art. 17(5a) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(22); Annex II, point (5) replacing the second paragraph of point 4.3 of Annex IV of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Provide a bank guarantee payable at first demand, sized on the certificates that would have to be surrendered, where the competent authority finds financial capacity is not demonstrated.",
+      "duty": "Accept the standard default value for indirect emissions where the exporting country's actual electricity mix is cleaner than that default.",
       "money": {
         "value": null,
-        "scale": "eur_per_year",
-        "model": "cbam_certificates",
+        "scale": null,
+        "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
-        "inputs": [
-          "eua-price-spot"
-        ],
-        "formula": "embedded_emissions x eua_price x import_volume",
+        "inputs": [],
+        "formula": null,
         "missing": [
-          "cement-import-volume",
-          "cbam-cement-embedded-emissions"
+          "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1144,23 +1431,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:FIN-04",
+      "measure": "cbam:FIN-01",
       "file": "cbam",
-      "id": "FIN-04",
+      "id": "FIN-01",
       "measure_type": "obligation",
-      "article": "Art. 1(12)(a), replacing the second subparagraph of Art. 21(1) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(9)(a), inserting Art. 17(5a) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Pay the CBAM certificate price as fixed by the fallback rules for weeks with no auction or a single auction.",
+      "duty": "Provide a bank guarantee payable at first demand, sized on the certificates that would have to be surrendered, where the competent authority finds financial capacity is not demonstrated.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1177,23 +1471,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:FIN-06",
+      "measure": "cbam:FIN-04",
       "file": "cbam",
-      "id": "FIN-06",
+      "id": "FIN-04",
       "measure_type": "obligation",
-      "article": "Art. 1(7)(a)(1), replacing the third sentence of Art. 9(2) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(12)(a), replacing the second subparagraph of Art. 21(1) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Have the documentation evidencing a carbon price paid in a third country certified by a person independent from the authorised CBAM declarant AS WELL AS from that country's authorities.",
+      "duty": "Pay the CBAM certificate price as fixed by the fallback rules for weeks with no auction or a single auction.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1210,23 +1511,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:FIN-08",
+      "measure": "cbam:FIN-06",
       "file": "cbam",
-      "id": "FIN-08",
+      "id": "FIN-06",
       "measure_type": "obligation",
-      "article": "Art. 1(7)(b)(1), replacing the first subparagraph of Art. 9(5) of Regulation (EU) 2023/956",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(7)(a)(1), replacing the third sentence of Art. 9(2) of Regulation (EU) 2023/956",
       "when": "from entry into force (third day after publication), Art. 2",
-      "duty": "Apply the Commission's conversion rules when turning a carbon price paid abroad into a reduction in CBAM certificates, including the evidence of actual payment and any deduction of Paris Agreement Article 6 carbon credits.",
+      "duty": "Have the documentation evidencing a carbon price paid in a third country certified by a person independent from the authorised CBAM declarant AS WELL AS from that country's authorities.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1243,23 +1551,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:GOV-02",
+      "measure": "cbam:FIN-08",
       "file": "cbam",
-      "id": "GOV-02",
+      "id": "FIN-08",
       "measure_type": "obligation",
-      "article": "Art. 1(20), replacing the second subparagraph of Art. 30(6) of Regulation (EU) 2023/956",
-      "when": "before 1 January 2028, then every two years",
-      "duty": "Report to Parliament and Council before 1 January 2028 and biennially thereafter on CBAM's operation, covering carbon leakage, internal-market and price effects, governance, circumvention practices, penalties and per-country emission intensity.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(7)(b)(1), replacing the first subparagraph of Art. 9(5) of Regulation (EU) 2023/956",
+      "when": "from entry into force (third day after publication), Art. 2",
+      "duty": "Apply the Commission's conversion rules when turning a carbon price paid abroad into a reduction in CBAM certificates, including the evidence of actual payment and any deduction of Paris Agreement Article 6 carbon credits.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1276,23 +1591,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:GOV-04",
+      "measure": "cbam:GOV-02",
       "file": "cbam",
-      "id": "GOV-04",
+      "id": "GOV-02",
       "measure_type": "obligation",
-      "article": "Art. 1(23)(a), deleting points (g) to (j) of point 2 of Annex VI of Regulation (EU) 2023/956",
-      "when": "applies from 1 January 2028 per Art. 2",
-      "duty": "Set out in the verification report the quantities of each type of goods produced, the quantification of the installation's direct emissions, how those emissions are attributed across goods, and the energy and emissions flows not associated with those goods.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(20), replacing the second subparagraph of Art. 30(6) of Regulation (EU) 2023/956",
+      "when": "before 1 January 2028, then every two years",
+      "duty": "Report to Parliament and Council before 1 January 2028 and biennially thereafter on CBAM's operation, covering carbon leakage, internal-market and price effects, governance, circumvention practices, penalties and per-country emission intensity.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1309,23 +1631,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:SCP-02",
+      "measure": "cbam:GOV-04",
       "file": "cbam",
-      "id": "SCP-02",
+      "id": "GOV-04",
       "measure_type": "obligation",
-      "article": "Art. 1(1)(b), adding a subparagraph to Art. 2(4) of Regulation (EU) 2023/956",
-      "when": "upon incorporation of the Regulation into the EEA Agreement",
-      "duty": "Comply with the CBAM regime for goods originating in third countries that were previously released for free circulation in the customs territory of an EFTA State that has incorporated the CBAM.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(23)(a), deleting points (g) to (j) of point 2 of Annex VI of Regulation (EU) 2023/956",
+      "when": "applies from 1 January 2028 per Art. 2",
+      "duty": "Set out in the verification report the quantities of each type of goods produced, the quantification of the installation's direct emissions, how those emissions are attributed across goods, and the energy and emissions flows not associated with those goods.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1342,23 +1671,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "cbam:SCP-03",
+      "measure": "cbam:SCP-02",
       "file": "cbam",
-      "id": "SCP-03",
+      "id": "SCP-02",
       "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
       "article": "Art. 1(1)(b), adding a subparagraph to Art. 2(4) of Regulation (EU) 2023/956",
       "when": "upon incorporation of the Regulation into the EEA Agreement",
-      "duty": "Bear responsibility for having documentation proving prior release for free circulation in an EFTA State available at the moment the customs declaration is lodged.",
+      "duty": "Comply with the CBAM regime for goods originating in third countries that were previously released for free circulation in the customs territory of an EFTA State that has incorporated the CBAM.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1375,23 +1711,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "ets:CBAM-02",
-      "file": "ets",
-      "id": "CBAM-02",
+      "measure": "cbam:SCP-03",
+      "file": "cbam",
+      "id": "SCP-03",
       "measure_type": "obligation",
-      "article": "Art. 1(15)(b)(ii), inserting a subparagraph after Art. 10a(1a), second subparagraph of Directive 2003/87/EC",
-      "when": "from the next five-year period following inclusion in CBAM Annex I",
-      "duty": "When new product categories are added to the CBAM goods list, their free allocation also starts phasing down on a set CBAM-factor schedule (97.9% then 95.8%, then the general schedule from 2028).",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(1)(b), adding a subparagraph to Art. 2(4) of Regulation (EU) 2023/956",
+      "when": "upon incorporation of the Regulation into the EEA Agreement",
+      "duty": "Bear responsibility for having documentation proving prior release for free circulation in an EFTA State available at the moment the customs declaration is lodged.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1408,23 +1751,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:AA-01",
-      "file": "iaa",
-      "id": "AA-01",
+      "measure": "ets:CBAM-02",
+      "file": "ets",
+      "id": "CBAM-02",
       "measure_type": "obligation",
-      "article": "Art. 25(1)",
-      "when": "By [12 months after entry into force]",
-      "duty": "Designate at least one industrial manufacturing acceleration area to cluster industrial manufacturing projects in one or more strategic sectors listed in Annex I.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 1(15)(b)(ii), inserting a subparagraph after Art. 10a(1a), second subparagraph of Directive 2003/87/EC",
+      "when": "from the next five-year period following inclusion in CBAM Annex I",
+      "duty": "When new product categories are added to the CBAM goods list, their free allocation also starts phasing down on a set CBAM-factor schedule (97.9% then 95.8%, then the general schedule from 2028).",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1441,23 +1791,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:AA-02",
+      "measure": "iaa:AA-01",
       "file": "iaa",
-      "id": "AA-02",
+      "id": "AA-01",
       "measure_type": "obligation",
-      "article": "Art. 25(6)",
-      "when": "Ongoing from designation of each area",
-      "duty": "Notify the Commission of the designation of an industrial manufacturing acceleration area.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 25(1)",
+      "when": "By [12 months after entry into force]",
+      "duty": "Designate at least one industrial manufacturing acceleration area to cluster industrial manufacturing projects in one or more strategic sectors listed in Annex I.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1474,23 +1831,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:AA-03",
+      "measure": "iaa:AA-02",
       "file": "iaa",
-      "id": "AA-03",
+      "id": "AA-02",
       "measure_type": "obligation",
-      "article": "Art. 26(c)",
-      "when": "Ongoing, milestones 2030/2040/2050",
-      "duty": "Conduct, and review, a comprehensive analysis of the energy needs of each acceleration area and the required energy infrastructure capacity.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 25(6)",
+      "when": "Ongoing from designation of each area",
+      "duty": "Notify the Commission of the designation of an industrial manufacturing acceleration area.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1507,23 +1871,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:AA-04a",
+      "measure": "iaa:AA-03",
       "file": "iaa",
-      "id": "AA-04a",
+      "id": "AA-03",
       "measure_type": "obligation",
-      "article": "Art. 27(1)-(2)",
-      "when": "After designation of each acceleration area",
-      "duty": "Prepare and issue an aggregated baseline permit authorising industrial activities within each designated acceleration area, covering permits required for projects located there.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 26(c)",
+      "when": "Ongoing, milestones 2030/2040/2050",
+      "duty": "Conduct, and review, a comprehensive analysis of the energy needs of each acceleration area and the required energy infrastructure capacity.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1540,23 +1911,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:AA-04b",
+      "measure": "iaa:AA-04a",
       "file": "iaa",
-      "id": "AA-04b",
-      "measure_type": "right",
-      "article": "Art. 27(3)",
+      "id": "AA-04a",
+      "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 27(1)-(2)",
       "when": "After designation of each acceleration area",
-      "duty": "",
+      "duty": "Prepare and issue an aggregated baseline permit authorising industrial activities within each designated acceleration area, covering permits required for projects located there.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1573,23 +1951,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:GOV-01",
+      "measure": "iaa:AA-04b",
       "file": "iaa",
-      "id": "GOV-01",
-      "measure_type": "obligation",
-      "article": "Art. 28",
-      "when": "By [2 years after entry into force] and every three years thereafter",
-      "duty": "Carry out a periodic evaluation of the Regulation and its contribution to the internal market's functioning, covering resilience, economic security, decarbonisation and the industrialisation objective.",
+      "id": "AA-04b",
+      "measure_type": "right",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 27(3)",
+      "when": "After designation of each acceleration area",
+      "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1606,23 +1991,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:GOV-03",
+      "measure": "iaa:GOV-01",
       "file": "iaa",
-      "id": "GOV-03",
+      "id": "GOV-01",
       "measure_type": "obligation",
-      "article": "Art. 32",
-      "when": "From entry into force",
-      "duty": "Lay down effective, proportionate and dissuasive penalty rules for infringements of the Regulation and notify the Commission of those rules without delay.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 28",
+      "when": "By [2 years after entry into force] and every three years thereafter",
+      "duty": "Carry out a periodic evaluation of the Regulation and its contribution to the internal market's functioning, covering resilience, economic security, decarbonisation and the industrialisation objective.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1639,23 +2031,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:IAAB-AA-06",
+      "measure": "iaa:GOV-03",
       "file": "iaa",
-      "id": "IAAB-AA-06",
-      "measure_type": "right",
-      "article": "Art. 27(4)",
+      "id": "GOV-03",
+      "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 32",
       "when": "From entry into force",
-      "duty": "",
+      "duty": "Lay down effective, proportionate and dissuasive penalty rules for infringements of the Regulation and notify the Commission of those rules without delay.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1672,23 +2071,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:LM-01",
+      "measure": "iaa:IAAB-AA-06",
       "file": "iaa",
-      "id": "LM-01",
-      "measure_type": "obligation",
-      "article": "Art. 10(2)",
-      "when": "Once the underlying delegated acts on classification are adopted",
-      "duty": "Have emissions and other data used to calculate a product's greenhouse gas intensity verified by accredited verifiers before it can be classified/labelled as low-carbon.",
+      "id": "IAAB-AA-06",
+      "measure_type": "right",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 27(4)",
+      "when": "From entry into force",
+      "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1705,23 +2111,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:LM-02",
+      "measure": "iaa:LM-01",
       "file": "iaa",
-      "id": "LM-02",
+      "id": "LM-01",
       "measure_type": "obligation",
-      "article": "Art. 11(1)",
-      "when": "From 1 January 2029 (Annex II) / [6 months after entry into force] (Annex III)",
-      "duty": "Exclude tenders from economic operators owned/controlled by entities in third countries that have no international agreement guaranteeing access, for the lead-market procurement procedures.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 10(2)",
+      "when": "Once the underlying delegated acts on classification are adopted",
+      "duty": "Have emissions and other data used to calculate a product's greenhouse gas intensity verified by accredited verifiers before it can be classified/labelled as low-carbon.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1738,23 +2151,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:LM-03b",
+      "measure": "iaa:LM-02",
       "file": "iaa",
-      "id": "LM-03b",
-      "measure_type": "incentive",
-      "article": "Art. 11(2); Annex II, Part I",
-      "when": "From 1 January 2029",
-      "duty": "",
+      "id": "LM-02",
+      "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 11(1)",
+      "when": "From 1 January 2029 (Annex II) / [6 months after entry into force] (Annex III)",
+      "duty": "Exclude tenders from economic operators owned/controlled by entities in third countries that have no international agreement guaranteeing access, for the lead-market procurement procedures.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1771,23 +2191,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:LM-04",
+      "measure": "iaa:LM-03b",
       "file": "iaa",
-      "id": "LM-04",
-      "measure_type": "obligation",
-      "article": "Art. 11(3)",
-      "when": "From 1 January 2029 / [6 months after entry into force]",
-      "duty": "May waive the Union-origin/low-carbon procurement requirements where only one supplier exists, no suitable tenders were received, or compliance would be disproportionately costly.",
+      "id": "LM-03b",
+      "measure_type": "incentive",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 11(2); Annex II, Part I",
+      "when": "From 1 January 2029",
+      "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1804,23 +2231,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:LM-05",
+      "measure": "iaa:LM-04",
       "file": "iaa",
-      "id": "LM-05",
+      "id": "LM-04",
       "measure_type": "obligation",
-      "article": "Art. 11(4)",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 11(3)",
       "when": "From 1 January 2029 / [6 months after entry into force]",
-      "duty": "Require suppliers to submit a self-declaration or equivalent document demonstrating compliance with the Union-origin/low-carbon procurement requirements.",
+      "duty": "May waive the Union-origin/low-carbon procurement requirements where only one supplier exists, no suitable tenders were received, or compliance would be disproportionately costly.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1837,23 +2271,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:LM-06b",
+      "measure": "iaa:LM-05",
       "file": "iaa",
-      "id": "LM-06b",
-      "measure_type": "incentive",
-      "article": "Art. 12; Annex II, Part II",
-      "when": "From 1 January 2029",
-      "duty": "",
+      "id": "LM-05",
+      "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 11(4)",
+      "when": "From 1 January 2029 / [6 months after entry into force]",
+      "duty": "Require suppliers to submit a self-declaration or equivalent document demonstrating compliance with the Union-origin/low-carbon procurement requirements.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1870,23 +2311,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:LM-06c",
+      "measure": "iaa:LM-06b",
       "file": "iaa",
-      "id": "LM-06c",
+      "id": "LM-06b",
       "measure_type": "incentive",
-      "article": "Art. 12(1); Annex II, Part II",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 12; Annex II, Part II",
       "when": "From 1 January 2029",
       "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1903,23 +2351,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:LM-08",
+      "measure": "iaa:LM-06c",
       "file": "iaa",
-      "id": "LM-08",
-      "measure_type": "obligation",
-      "article": "Art. 12(3)",
+      "id": "LM-06c",
+      "measure_type": "incentive",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 12(1); Annex II, Part II",
       "when": "From 1 January 2029",
-      "duty": "May still run support schemes that do not meet the Annex II/III Part II requirements where compliance would cause significant delay or disproportionate cost.",
+      "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1936,23 +2391,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:PRM-01",
+      "measure": "iaa:LM-08",
       "file": "iaa",
-      "id": "PRM-01",
+      "id": "LM-08",
       "measure_type": "obligation",
-      "article": "Art. 4(1)",
-      "when": "Applies from [1 year after entry into force] per Art. 36",
-      "duty": "Establish a national single access point through which project promoters submit the single application for industrial manufacturing projects, using the European Business Wallet.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 12(3)",
+      "when": "From 1 January 2029",
+      "duty": "May still run support schemes that do not meet the Annex II/III Part II requirements where compliance would cause significant delay or disproportionate cost.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -1969,23 +2431,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:PRM-02",
+      "measure": "iaa:PRM-01",
       "file": "iaa",
-      "id": "PRM-02",
+      "id": "PRM-01",
       "measure_type": "obligation",
-      "article": "Art. 5(1)-(2)",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 4(1)",
       "when": "Applies from [1 year after entry into force] per Art. 36",
-      "duty": "Establish a single permit-granting procedure based on a single application covering all permits required for industrial manufacturing projects, coordinated by a designated competent authority.",
+      "duty": "Establish a national single access point through which project promoters submit the single application for industrial manufacturing projects, using the European Business Wallet.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2002,23 +2471,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:PRM-03",
+      "measure": "iaa:PRM-02",
       "file": "iaa",
-      "id": "PRM-03",
+      "id": "PRM-02",
       "measure_type": "obligation",
-      "article": "Art. 5(3)",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 5(1)-(2)",
       "when": "Applies from [1 year after entry into force] per Art. 36",
-      "duty": "Acknowledge completeness of a permit application, or request missing information, within a fixed deadline; a further deadline applies to a second request for missing information.",
+      "duty": "Establish a single permit-granting procedure based on a single application covering all permits required for industrial manufacturing projects, coordinated by a designated competent authority.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2035,23 +2511,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:PRM-04",
+      "measure": "iaa:PRM-03",
       "file": "iaa",
-      "id": "PRM-04",
-      "measure_type": "right",
-      "article": "Art. 6(2)",
-      "when": "From entry into force",
-      "duty": "",
+      "id": "PRM-03",
+      "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 5(3)",
+      "when": "Applies from [1 year after entry into force] per Art. 36",
+      "duty": "Acknowledge completeness of a permit application, or request missing information, within a fixed deadline; a further deadline applies to a second request for missing information.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2068,23 +2551,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:PRM-05",
+      "measure": "iaa:PRM-04",
       "file": "iaa",
-      "id": "PRM-05",
-      "measure_type": "obligation",
-      "article": "Art. 33; Annex IV (amending Annex I of Regulation (EU) 2018/1724)",
+      "id": "PRM-04",
+      "measure_type": "right",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 6(2)",
       "when": "From entry into force",
-      "duty": "Publish, via the Single Digital Gateway national single points of contact, a new information category on permit-granting procedures for industrial manufacturing projects, replacing separate entries.",
+      "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2101,23 +2591,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "iaa:PRM-07",
+      "measure": "iaa:PRM-05",
       "file": "iaa",
-      "id": "PRM-07",
+      "id": "PRM-05",
       "measure_type": "obligation",
-      "article": "Art. 33; Annex IV, point 2(b) (amending Annex II of Regulation (EU) 2018/1724)",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 33; Annex IV (amending Annex I of Regulation (EU) 2018/1724)",
       "when": "From entry into force",
-      "duty": "Remove the separate 'Critical raw materials projects' and 'Net-zero technology manufacturing projects' rows from the Single Digital Gateway Annex II catalogue, consolidating them into the unified business-permission entry.",
+      "duty": "Publish, via the Single Digital Gateway national single points of contact, a new information category on permit-granting procedures for industrial manufacturing projects, replacing separate entries.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2134,23 +2631,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:CO2-07",
-      "file": "nzia",
-      "id": "CO2-07",
+      "measure": "iaa:PRM-07",
+      "file": "iaa",
+      "id": "PRM-07",
       "measure_type": "obligation",
-      "article": "Art. 21(2)",
-      "when": "By 30 December 2024, annually thereafter",
-      "duty": "Report annually, publicly, on CO2 capture, storage and transport projects in progress, the injection and storage capacity they need, national support measures, capture targets, and cross-border cooperation.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 33; Annex IV, point 2(b) (amending Annex II of Regulation (EU) 2018/1724)",
+      "when": "From entry into force",
+      "duty": "Remove the separate 'Critical raw materials projects' and 'Net-zero technology manufacturing projects' rows from the Single Digital Gateway Annex II catalogue, consolidating them into the unified business-permission entry.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2167,23 +2671,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:NZIAB-CO2-11",
+      "measure": "nzia:CO2-07",
       "file": "nzia",
-      "id": "NZIAB-CO2-11",
+      "id": "CO2-07",
       "measure_type": "obligation",
-      "article": "Art. 20(2)",
-      "when": "Applies from 29 June 2024 (Art. 49(2))",
-      "duty": "Design every CO2 storage site to operate for at least five years, and run it on fair and open access, transparently and without discrimination.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 21(2)",
+      "when": "By 30 December 2024, annually thereafter",
+      "duty": "Report annually, publicly, on CO2 capture, storage and transport projects in progress, the injection and storage capacity they need, national support measures, capture targets, and cross-border cooperation.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2200,23 +2711,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:NZIAB-CO2-12",
+      "measure": "nzia:NZIAB-CO2-11",
       "file": "nzia",
-      "id": "NZIAB-CO2-12",
+      "id": "NZIAB-CO2-11",
       "measure_type": "obligation",
-      "article": "Art. 21(1)(a)",
-      "when": "By 30 December 2024",
-      "duty": "Publish the data on every area where a CO2 storage site could be permitted, saline aquifers included, to at least the detail the national energy and climate plan guidance asks for.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 20(2)",
+      "when": "Applies from 29 June 2024 (Art. 49(2))",
+      "duty": "Design every CO2 storage site to operate for at least five years, and run it on fair and open access, transparently and without discrimination.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2233,23 +2751,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:NZIAB-CO2-13",
+      "measure": "nzia:NZIAB-CO2-12",
       "file": "nzia",
-      "id": "NZIAB-CO2-13",
+      "id": "NZIAB-CO2-12",
       "measure_type": "obligation",
-      "article": "Art. 21(3)",
-      "when": "Applies from 29 June 2024 (Art. 49(2))",
-      "duty": "Where no storage projects are in progress, report instead on the plans to decarbonise industry, including cross-border transport to stores in other Member States and CO2 utilisation projects.",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 21(1)(a)",
+      "when": "By 30 December 2024",
+      "duty": "Publish the data on every area where a CO2 storage site could be permitted, saline aquifers included, to at least the detail the national energy and climate plan guidance asks for.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2266,23 +2791,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:NZIAB-PRM-07",
+      "measure": "nzia:NZIAB-CO2-13",
       "file": "nzia",
-      "id": "NZIAB-PRM-07",
+      "id": "NZIAB-CO2-13",
       "measure_type": "obligation",
-      "article": "Art. 9(2)",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 21(3)",
       "when": "Applies from 29 June 2024 (Art. 49(2))",
-      "duty": "Complete permitting within 18 months where the project's yearly manufacturing capacity is not measured in GW.",
+      "duty": "Where no storage projects are in progress, report instead on the plans to decarbonise industry, including cross-border transport to stores in other Member States and CO2 utilisation projects.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2299,23 +2831,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:NZIAB-SP-10",
+      "measure": "nzia:NZIAB-PRM-07",
       "file": "nzia",
-      "id": "NZIAB-SP-10",
-      "measure_type": "right",
-      "article": "Art. 13(3)",
+      "id": "NZIAB-PRM-07",
+      "measure_type": "obligation",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 9(2)",
       "when": "Applies from 29 June 2024 (Art. 49(2))",
-      "duty": "",
+      "duty": "Complete permitting within 18 months where the project's yearly manufacturing capacity is not measured in GW.",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2332,23 +2871,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:NZIAB-SP-11",
+      "measure": "nzia:NZIAB-SP-10",
       "file": "nzia",
-      "id": "NZIAB-SP-11",
+      "id": "NZIAB-SP-10",
       "measure_type": "right",
-      "article": "Art. 13(4)",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 13(3)",
       "when": "Applies from 29 June 2024 (Art. 49(2))",
       "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2365,23 +2911,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:PRM-04",
+      "measure": "nzia:NZIAB-SP-11",
       "file": "nzia",
-      "id": "PRM-04",
+      "id": "NZIAB-SP-11",
       "measure_type": "right",
-      "article": "Art. 9(3)",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 13(4)",
       "when": "Applies from 29 June 2024 (Art. 49(2))",
       "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2398,23 +2951,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:SP-01",
+      "measure": "nzia:PRM-04",
       "file": "nzia",
-      "id": "SP-01",
+      "id": "PRM-04",
       "measure_type": "right",
-      "article": "Art. 13(1)",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 9(3)",
       "when": "Applies from 29 June 2024 (Art. 49(2))",
       "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2431,23 +2991,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:SP-05",
+      "measure": "nzia:SP-01",
       "file": "nzia",
-      "id": "SP-05",
+      "id": "SP-01",
       "measure_type": "right",
-      "article": "Art. 13(5)",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 13(1)",
       "when": "Applies from 29 June 2024 (Art. 49(2))",
       "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2464,23 +3031,30 @@
       "in_sector_view": false
     },
     {
-      "measure": "nzia:SP-07",
+      "measure": "nzia:SP-05",
       "file": "nzia",
-      "id": "SP-07",
+      "id": "SP-05",
       "measure_type": "right",
-      "article": "Art. 15(3)",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 13(5)",
       "when": "Applies from 29 June 2024 (Art. 49(2))",
       "duty": "",
       "money": {
         "value": null,
         "scale": null,
         "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
         "computable": false,
         "inputs": [],
         "formula": null,
         "missing": [
           "no money model applies to this measure"
         ],
+        "caveats": [],
         "context": []
       },
       "bottleneck_linkage": {
@@ -2494,6 +3068,46 @@
         "window_months": 24
       },
       "rank": 71,
+      "in_sector_view": false
+    },
+    {
+      "measure": "nzia:SP-07",
+      "file": "nzia",
+      "id": "SP-07",
+      "measure_type": "right",
+      "reach": "register",
+      "reached_via": [],
+      "article": "Art. 15(3)",
+      "when": "Applies from 29 June 2024 (Art. 49(2))",
+      "duty": "",
+      "money": {
+        "value": null,
+        "scale": null,
+        "model": null,
+        "direction": null,
+        "bearer": null,
+        "per_tonne": null,
+        "annual_total": null,
+        "computable": false,
+        "inputs": [],
+        "formula": null,
+        "missing": [
+          "no money model applies to this measure"
+        ],
+        "caveats": [],
+        "context": []
+      },
+      "bottleneck_linkage": {
+        "count": 0,
+        "weight": 0,
+        "edges": []
+      },
+      "attention": {
+        "available": false,
+        "count": null,
+        "window_months": 24
+      },
+      "rank": 72,
       "in_sector_view": false
     }
   ]

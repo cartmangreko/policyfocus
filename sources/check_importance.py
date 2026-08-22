@@ -18,6 +18,11 @@ being a computed ranking:
                  reason is the model being quietly overruled, which is the thing
                  this whole layer is built to avoid.
 
+  DIRECTION      every computed money figure carries a direction (cost or
+                 support) and a bearer. Magnitude alone says the same thing
+                 about a grant and a withdrawn allowance, and the sector view
+                 nets per bearer, so a figure without one cannot be placed.
+
   SECTOR VIEW    every measure marked in_sector_view has money > 0 or
                  bottleneck_linkage > 0, and no measure outside the view has
                  either. Attention alone never admits a measure -- it is a
@@ -56,6 +61,14 @@ def main() -> int:
             where = f"{sector} {m['measure']}"
             if m.get("override_rank") is not None and not m.get("override_reason"):
                 failures.append(f"{where}: override_rank without override_reason")
+
+            mm = m["money"]
+            if mm["computable"] and not (mm["direction"] and mm["bearer"]):
+                failures.append(f"{where}: a computed money figure with no direction or bearer — "
+                                f"a ranking that shows magnitude without saying which way it "
+                                f"points says the same thing about a grant and a levy")
+            if m["reach"] == "funding" and not m["reached_via"]:
+                failures.append(f"{where}: reach=funding with no project naming it")
 
             money = (m["money"]["value"] or 0) > 0
             linkage = m["bottleneck_linkage"]["weight"] > 0

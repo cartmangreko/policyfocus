@@ -290,6 +290,143 @@
         "publisher": "EQIOM",
         "verbatim": "le Gouvernement d'accorder un financement de quarante millions d'euros"
       }
+    },
+    {
+      "id": "cbam-default-grey-clinker-2026",
+      "name": "CBAM default embedded emissions, grey clinker, 2026 (incl. mark-up)",
+      "value": 1.551,
+      "unit": "tonnes CO2 per tonne of goods",
+      "scope": "global",
+      "sector": "cement",
+      "date_of_value": "2025-12-16",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 24,
+      "confidence": "primary",
+      "verbatim_note": "The annex prints six columns per line — direct, indirect, total, then the total with the statutory mark-up for 2026, 2027 and 2028 onwards. The value here is the 2026 column, which is the total plus the 10% mark-up.",
+      "source": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R2621",
+        "publisher": "EUR-Lex — Commission Implementing Regulation (EU) 2025/2621, Annex I, 'Other Countries and Territories'",
+        "verbatim": "2523 10 00 Grey clinker 1,370 0,050 1,410 1,551 1,692 1,833 (A)",
+        "snapshot": "sources/cbam_defaults_2025_2621_cement.txt"
+      },
+      "note": "Türkiye, the largest single origin of EU cement imports, is listed in Annex I with no cement values, and the annex's own rule sends such a line to this fallback table. The fallback is therefore the operative default for the dominant origin, not a residual."
+    },
+    {
+      "id": "cbam-default-grey-cement-2026",
+      "name": "CBAM default embedded emissions, grey Portland cement, 2026 (incl. mark-up)",
+      "value": 1.584,
+      "unit": "tonnes CO2 per tonne of goods",
+      "scope": "global",
+      "sector": "cement",
+      "date_of_value": "2025-12-16",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 24,
+      "confidence": "primary",
+      "verbatim_note": "The annex prints six columns per line — direct, indirect, total, then the total with the statutory mark-up for 2026, 2027 and 2028 onwards. The value here is the 2026 column, which is the total plus the 10% mark-up.",
+      "source": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R2621",
+        "publisher": "EUR-Lex — Commission Implementing Regulation (EU) 2025/2621, Annex I, 'Other Countries and Territories'",
+        "verbatim": "2523 29 00 Grey Portland cement 1,360 0,080 1,440 1,584 1,728 1,872",
+        "snapshot": "sources/cbam_defaults_2025_2621_cement.txt"
+      }
+    },
+    {
+      "id": "cement-imports-clinker-2025",
+      "name": "Extra-EU imports of cement clinker (CN 2523 10), 2025",
+      "value": 7.1479,
+      "unit": "Mt",
+      "scope": "eu",
+      "sector": "cement",
+      "date_of_value": "2025",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 12,
+      "confidence": "primary",
+      "verbatim_note": "Comext reports quantity in 100 kg; 71 478 908,93 units of 100 kg is 7,1479 Mt. The conversion is arithmetic and is recorded in the snapshot alongside the request URL that produced the figure.",
+      "source": {
+        "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252310&time=2025",
+        "publisher": "Eurostat Comext, dataset ds-045409 — extra-EU imports into EU27, annual, quantity in 100 kg",
+        "verbatim": "\"value\":{\"0\":71478908.93}",
+        "snapshot": "sources/comext_2523_imports.json"
+      }
+    },
+    {
+      "id": "cement-imports-grey-cement-2025",
+      "name": "Extra-EU imports of grey Portland cement (CN 2523 29), 2025",
+      "value": 5.7659,
+      "unit": "Mt",
+      "scope": "eu",
+      "sector": "cement",
+      "date_of_value": "2025",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 12,
+      "confidence": "primary",
+      "verbatim_note": "Comext reports quantity in 100 kg; 57 658 565,6 units of 100 kg is 5,7659 Mt.",
+      "source": {
+        "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252329&time=2025",
+        "publisher": "Eurostat Comext, dataset ds-045409 — extra-EU imports into EU27, annual, quantity in 100 kg",
+        "verbatim": "\"value\":{\"0\":57658565.6}",
+        "snapshot": "sources/comext_2523_imports.json"
+      }
+    },
+    {
+      "id": "ccs-retrofit-capex-post-combustion",
+      "name": "Capital cost of retrofitting post-combustion capture to an existing cement plant",
+      "value": "100-300",
+      "unit": "EUR million per plant",
+      "scope": "eu",
+      "sector": "cement",
+      "technology": "ccs-post-combustion",
+      "date_of_value": "2025-12-07",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 36,
+      "confidence": "estimate",
+      "source": {
+        "url": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+        "publisher": "CEMBUREAU — Low Carbon Economy, 'Carbon sequestration and reuse' (read from the Internet Archive)",
+        "verbatim": "The exact capital expenditure needed per plant is hard to determine at present, but is estimated to be around €330-360 million to deploy oxyfuel technology at a new 1 million tonne/year plant, about 100 million for retrofitting oxyfuel technology and €100-300 million to retrofit an existing plant with post-combustion technology",
+        "archived": true,
+        "snapshot": "sources/cembureau_ccs_capex_20251207.txt"
+      },
+      "note": "The live page serves a self-signed certificate, so the text is cited from the Internet Archive capture of 7 December 2025 and marked archived. Provenance and the certificate fingerprint are in the snapshot."
+    },
+    {
+      "id": "ccs-retrofit-capex-oxyfuel",
+      "name": "Capital cost of retrofitting oxyfuel capture to an existing cement plant",
+      "value": 100,
+      "unit": "EUR million per plant",
+      "scope": "eu",
+      "sector": "cement",
+      "technology": "ccs-oxyfuel",
+      "date_of_value": "2025-12-07",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 36,
+      "confidence": "estimate",
+      "source": {
+        "url": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+        "publisher": "CEMBUREAU — Low Carbon Economy, 'Carbon sequestration and reuse' (read from the Internet Archive)",
+        "verbatim": "The exact capital expenditure needed per plant is hard to determine at present, but is estimated to be around €330-360 million to deploy oxyfuel technology at a new 1 million tonne/year plant, about 100 million for retrofitting oxyfuel technology and €100-300 million to retrofit an existing plant with post-combustion technology",
+        "archived": true,
+        "snapshot": "sources/cembureau_ccs_capex_20251207.txt"
+      },
+      "note": "The same sentence puts a NEW oxyfuel plant at €330-360 million; this parameter is the retrofit figure only. The live page serves a self-signed certificate, so the text is cited from the Internet Archive capture of 7 December 2025 and marked archived. Provenance and the certificate fingerprint are in the snapshot."
+    },
+    {
+      "id": "near-zero-cement-cost-premium",
+      "name": "Production cost premium of near-zero emissions cement using CCS",
+      "value": "75-150",
+      "unit": "% above a conventional plant",
+      "scope": "global",
+      "sector": "cement",
+      "date_of_value": "2025",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 24,
+      "confidence": "estimate",
+      "source": {
+        "url": "https://www.iea.org/reports/breakthrough-agenda-report-2025/cement-and-concrete",
+        "publisher": "International Energy Agency — Breakthrough Agenda Report 2025",
+        "verbatim": "Production costs for early commercial plants for near-zero emissions cement using CCS are estimated to be 75-150% higher than today's conventional plants"
+      },
+      "note": "Replaces the WEF Net-Zero Industry Tracker as the green-premium source: the WEF page returns 403 to this repository's link checker, and a source that cannot be read is a source that has not been read."
     }
   ]
 }
