@@ -1,0 +1,20 @@
+{
+  "_comment": [
+    "Reviewer overrides on the computed measure ranking, per sector.",
+    "",
+    "The model is not the last word, and it should not pretend to be: a reviewer reading",
+    "the sector reads things the model has no parameter for. An override is therefore",
+    "allowed and is never silent — `rank` and `reason` are both rendered on the measure",
+    "page, next to the computed components they displace, so a reader can see exactly",
+    "where the machine stopped and a person started.",
+    "",
+    "sources/check_importance.py fails the build on a rank without a reason. That is the",
+    "only rule: an override with a stated reason is legitimate, an override without one is",
+    "the ranking being quietly edited.",
+    "",
+    "Shape:  { \"<sector>\": { \"<file>:<id>\": { \"rank\": 1, \"reason\": \"...\" } } }",
+    "",
+    "Empty on purpose. Cement's first ranking has not been reviewed yet."
+  ],
+  "overrides": {}
+}

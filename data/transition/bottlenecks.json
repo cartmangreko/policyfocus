@@ -1,0 +1,264 @@
+{
+  "_comment": [
+    "What is actually stopping the transition in a sector, typed and sourced. A bottleneck",
+    "is not a risk register entry and not an opinion: it is a named constraint that at",
+    "least one technology addresses and at least one measure worsens or relieves, and the",
+    "edges saying so are what the sector diagram draws.",
+    "",
+    "Schema and vocabularies: sources/sector_map.py. Gate: sources/check_sector_schema.py.",
+    "",
+    "THE TYPE IS THE ARGUMENT. `technical` means no technology exists that removes the",
+    "constraint; `financial` means one exists and nobody will fund it; `infrastructure`",
+    "means one exists, is funded, and has nowhere to send its output; `market` means the",
+    "output exists and nobody will pay for it; `political` means the support it rests on is",
+    "revocable. A reader who disagrees with the type is disagreeing with something",
+    "specific, which is the point of typing it at all.",
+    "",
+    "`description` states no number that is not in parameters.json. Where the quantification",
+    "is missing, `quantified_by` is short and data/transition/GAPS.md says what would fill",
+    "it — a bottleneck stated without a number is still a real constraint, and pretending",
+    "otherwise would push the file towards numbers nobody sourced."
+  ],
+  "bottlenecks": [
+    {
+      "id": "cement-process-emissions",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "type": "technical",
+      "name": "Process emissions from calcination",
+      "description": "The majority of a kiln's CO2 comes out of the limestone itself when it is calcined, not out of the fuel, so no amount of fuel switching or efficiency reaches it and capture is the only route that does.",
+      "quantified_by": [
+        "brevik-abatement-share"
+      ],
+      "addressed_by": [
+        "ccs-post-combustion",
+        "ccs-oxyfuel"
+      ],
+      "sources": [
+        {
+          "url": "https://www.iea.org/energy-system/industry/cement",
+          "title": "Cement — Energy System",
+          "publisher": "International Energy Agency",
+          "date": "2025-01-01"
+        },
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+          "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway",
+          "publisher": "Heidelberg Materials",
+          "date": "2025-06-18"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "id": "co2-transport-storage-network",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "type": "infrastructure",
+      "name": "CO2 transport and storage network",
+      "description": "A captured tonne is only abated once it is stored, and the pipelines, terminals and permitted stores that get it there are built by other parties on other timetables than the capture plant that depends on them.",
+      "quantified_by": [
+        "nzia-injection-capacity-2030"
+      ],
+      "addressed_by": [
+        "co2-transport-storage"
+      ],
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735",
+          "title": "Regulation (EU) 2024/1735 (Net-Zero Industry Act), Art. 20 and 23",
+          "publisher": "EUR-Lex",
+          "date": "2024-06-13"
+        },
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+          "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway",
+          "publisher": "Heidelberg Materials",
+          "date": "2025-06-18"
+        }
+      ],
+      "measures": [
+        {
+          "measure": "nzia:CO2-02",
+          "rel": "relieves",
+          "weight": 1.0,
+          "note": "Puts a dated, pro-rata injection-capacity duty on oil and gas entities, which is the only measure in the register that obliges anyone to build the store a capture plant needs.",
+          "evidence": {
+            "source": "data/nzia.json",
+            "path": "CO2-02.duty",
+            "quote": "Deliver an individual share of the Union's 50 Mt/year CO2 injection capacity target by 2030, calculated pro-rata on the entity's share of Union crude oil and natural gas production over 2020-2023, as permitted capacity available to the market.",
+            "article": "Art. 23(1)"
+          }
+        },
+        {
+          "measure": "nzia:CO2-10",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "Third-party access is what makes somebody else's store usable by a cement plant, but it is qualified by economic feasibility.",
+          "evidence": {
+            "source": "data/nzia.json",
+            "path": "CO2-10.duty",
+            "quote": "Take the measures needed to open access to CO2 transport networks and storage sites for geological storage, as far as it is economically feasible or where a potential customer is willing to pay.",
+            "article": "Art. 22(2)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cement-retrofit-finance",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "type": "financial",
+      "name": "Retrofit cost against plant economics",
+      "description": "A capture retrofit costs a large fraction of what the plant it sits on is worth, and the projects that have gone ahead in Europe have all done so with public money in the stack rather than on the plant's own cash flow.",
+      "quantified_by": [
+        "go4zero-investment",
+        "gezero-grant",
+        "anrav-grant"
+      ],
+      "addressed_by": [
+        "ccs-post-combustion",
+        "ccs-oxyfuel"
+      ],
+      "sources": [
+        {
+          "url": "https://www.globalcement.com/news/item/19500-heidelberg-materials-pauses-slite-ccs-project",
+          "title": "Heidelberg Materials pauses Slite CCS project",
+          "publisher": "Global Cement",
+          "date": "2025-11-19"
+        },
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
+          "title": "First fully decarbonised cement plant in Germany: EU Innovation Fund backs Heidelberg Materials' GeZero project with €191 million",
+          "publisher": "Heidelberg Materials",
+          "date": "2023-12-15"
+        }
+      ],
+      "measures": [
+        {
+          "measure": "ets:CBAM-01",
+          "rel": "worsens",
+          "weight": 0.5,
+          "note": "The same schedule that improves the case for a retrofit raises the plant's running cost before the retrofit exists, on plants whose margins are what the retrofit has to be financed from.",
+          "evidence": {
+            "source": "data/ets.json",
+            "path": "CBAM-01.duty",
+            "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods.",
+            "article": "Art. 1(15)(b)(i), replacing Art. 10a(1a), second subparagraph of Directive 2003/87/EC"
+          }
+        },
+        {
+          "measure": "nzia:SP-02",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "Strategic-project recognition shortens permitting and improves access to support, without providing capital.",
+          "evidence": {
+            "source": "data/nzia.json",
+            "path": "SP-02.duty",
+            "quote": "File an application for strategic-project recognition containing evidence against the criteria, a business plan evaluating financial viability, and a draft timetable showing when the project contributes to the Union benchmark.",
+            "article": "Art. 14(2)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cement-subsidy-dependence",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "type": "political",
+      "name": "Dependence on revocable public support",
+      "description": "Where the business case rests on a national or EU support decision, a change of position by the funder stops the project outright, and it stops it after the engineering is done rather than before it starts.",
+      "quantified_by": [],
+      "addressed_by": [],
+      "sources": [
+        {
+          "url": "https://www.globalcement.com/news/item/19500-heidelberg-materials-pauses-slite-ccs-project",
+          "title": "Heidelberg Materials pauses Slite CCS project",
+          "publisher": "Global Cement",
+          "date": "2025-11-19"
+        },
+        {
+          "url": "https://www.globalcement.com/news/20531-heidelberg-materials-withdraws-slite-ccs-permit-application",
+          "title": "Heidelberg Materials withdraws Slite CCS permit application",
+          "publisher": "Global Cement",
+          "date": "2026-01-01"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "id": "cement-green-premium",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "type": "market",
+      "name": "Green premium against willingness to pay",
+      "description": "Captured-carbon cement costs more to make than the cement it replaces, and the buyer of the concrete is usually not the party that carries the climate commitment, so the premium has to be pulled through the chain by procurement rules rather than by demand.",
+      "quantified_by": [],
+      "addressed_by": [],
+      "sources": [
+        {
+          "url": "https://www.weforum.org/publications/net-zero-industry-tracker-2023/in-full/cement-industry-net-zero-tracker/",
+          "title": "Cement industry net-zero tracker",
+          "publisher": "World Economic Forum",
+          "date": "2024-01-01"
+        },
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0100",
+          "title": "Industrial Accelerator Act proposal, lead-market provisions (Annex II)",
+          "publisher": "EUR-Lex",
+          "date": "2026-01-01"
+        }
+      ],
+      "measures": [
+        {
+          "measure": "ets:CBAM-01",
+          "rel": "relieves",
+          "weight": 1.0,
+          "note": "Withdrawing free allocation raises the cost of unabated clinker, which narrows the gap the low-carbon product has to close.",
+          "evidence": {
+            "source": "data/ets.json",
+            "path": "CBAM-01.duty",
+            "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods.",
+            "article": "Art. 1(15)(b)(i), replacing Art. 10a(1a), second subparagraph of Directive 2003/87/EC"
+          }
+        },
+        {
+          "measure": "iaa:LM-03a",
+          "rel": "relieves",
+          "weight": 1.0,
+          "note": "Procurement rules pull low-carbon concrete through public demand rather than leaving it to willingness to pay.",
+          "evidence": {
+            "source": "data/iaa.json",
+            "path": "LM-03a.duty",
+            "quote": "Apply the Union-origin and low-carbon requirements laid down in Annex II Part I (steel, concrete/mortar, aluminium) and Annex III Part I (electric vehicles) in covered public procurement.",
+            "article": "Art. 11(2)"
+          }
+        },
+        {
+          "measure": "iaa:LM-06a",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "Support schemes carry the same requirements, widening the pull beyond procurement.",
+          "evidence": {
+            "source": "data/iaa.json",
+            "path": "LM-06a.duty",
+            "quote": "Design public support schemes so that the Union-origin/low-carbon requirements of Annex II Part II and Annex III Part II apply to at least 45% of the national budget for Annex II Part II-type schemes and 100% of the budget for Annex III Part II-type schemes.",
+            "article": "Art. 12(1)"
+          }
+        },
+        {
+          "measure": "cbam:FIN-03",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "Same-year certificates stop importers hedging the carbon cost forward, holding imported and domestic carbon costs closer together.",
+          "evidence": {
+            "source": "data/cbam.json",
+            "path": "FIN-03.duty",
+            "quote": "From 2028, satisfy the quarterly certificate-holding requirement using only certificates bought in the same year, so certificates carried over from earlier years no longer count.",
+            "article": "Art. 1(13), adding a subparagraph to Art. 22(2) of Regulation (EU) 2023/956"
+          }
+        }
+      ]
+    }
+  ]
+}

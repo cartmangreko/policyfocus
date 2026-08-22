@@ -446,6 +446,56 @@
   }
  },
  {
+  "id": "bottleneck:cement-green-premium",
+  "kind": "bottleneck",
+  "label": "Green premium against willingness to pay",
+  "attrs": {
+   "transition": "decarbonisation",
+   "type": "market",
+   "sector": "cement"
+  }
+ },
+ {
+  "id": "bottleneck:cement-process-emissions",
+  "kind": "bottleneck",
+  "label": "Process emissions from calcination",
+  "attrs": {
+   "transition": "decarbonisation",
+   "type": "technical",
+   "sector": "cement"
+  }
+ },
+ {
+  "id": "bottleneck:cement-retrofit-finance",
+  "kind": "bottleneck",
+  "label": "Retrofit cost against plant economics",
+  "attrs": {
+   "transition": "decarbonisation",
+   "type": "financial",
+   "sector": "cement"
+  }
+ },
+ {
+  "id": "bottleneck:cement-subsidy-dependence",
+  "kind": "bottleneck",
+  "label": "Dependence on revocable public support",
+  "attrs": {
+   "transition": "decarbonisation",
+   "type": "political",
+   "sector": "cement"
+  }
+ },
+ {
+  "id": "bottleneck:co2-transport-storage-network",
+  "kind": "bottleneck",
+  "label": "CO2 transport and storage network",
+  "attrs": {
+   "transition": "decarbonisation",
+   "type": "infrastructure",
+   "sector": "cement"
+  }
+ },
+ {
   "id": "country:AT",
   "kind": "country",
   "label": "AT",
@@ -7096,6 +7146,267 @@
   }
  },
  {
+  "id": "parameter:anrav-capture-capacity",
+  "kind": "parameter",
+  "label": "ANRAV capture capacity",
+  "attrs": {
+   "unit": "tonnes CO2 per year",
+   "scope": "plant:devnya",
+   "confidence": "primary",
+   "date_of_value": "2023-01-20"
+  }
+ },
+ {
+  "id": "parameter:anrav-grant",
+  "kind": "parameter",
+  "label": "ANRAV — EU Innovation Fund grant",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:devnya",
+   "confidence": "primary",
+   "date_of_value": "2023-01-20"
+  }
+ },
+ {
+  "id": "parameter:brevik-abatement-share",
+  "kind": "parameter",
+  "label": "Brevik CCS share of the plant's emissions captured",
+  "attrs": {
+   "unit": "% of plant CO2 emissions",
+   "scope": "plant:brevik",
+   "confidence": "primary",
+   "date_of_value": "2025-06-18"
+  }
+ },
+ {
+  "id": "parameter:brevik-capture-capacity",
+  "kind": "parameter",
+  "label": "Brevik CCS capture capacity",
+  "attrs": {
+   "unit": "tonnes CO2 per year",
+   "scope": "plant:brevik",
+   "confidence": "primary",
+   "date_of_value": "2025-06-18"
+  }
+ },
+ {
+  "id": "parameter:carbon2business-capture-capacity",
+  "kind": "parameter",
+  "label": "Carbon2Business capture capacity",
+  "attrs": {
+   "unit": "Mt CO2 per year",
+   "scope": "plant:lagerdorf",
+   "confidence": "primary",
+   "date_of_value": "2024-04-22"
+  }
+ },
+ {
+  "id": "parameter:cbam-factor-2026",
+  "kind": "parameter",
+  "label": "CBAM factor 2026 — share of free allocation that survives",
+  "attrs": {
+   "unit": "% of the free allocation otherwise due",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2024-03-01"
+  }
+ },
+ {
+  "id": "parameter:cbam-factor-2030",
+  "kind": "parameter",
+  "label": "CBAM factor 2030 — share of free allocation that survives",
+  "attrs": {
+   "unit": "% of the free allocation otherwise due",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2024-03-01"
+  }
+ },
+ {
+  "id": "parameter:clinker-benchmark-2026-2030",
+  "kind": "parameter",
+  "label": "EU ETS free-allocation benchmark, grey cement clinker, 2026-2030",
+  "attrs": {
+   "unit": "allowances per tonne of grey cement clinker",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2026-06-26"
+  }
+ },
+ {
+  "id": "parameter:eua-price-spot",
+  "kind": "parameter",
+  "label": "EU allowance price, spot",
+  "attrs": {
+   "unit": "EUR per tonne CO2",
+   "scope": "eu",
+   "confidence": "secondary",
+   "date_of_value": "2026-08-21"
+  }
+ },
+ {
+  "id": "parameter:gezero-capture-capacity",
+  "kind": "parameter",
+  "label": "GeZero capture capacity",
+  "attrs": {
+   "unit": "tonnes CO2 per year",
+   "scope": "plant:geseke",
+   "confidence": "primary",
+   "date_of_value": "2023-12-15"
+  }
+ },
+ {
+  "id": "parameter:gezero-grant",
+  "kind": "parameter",
+  "label": "GeZero — EU Innovation Fund grant",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:geseke",
+   "confidence": "primary",
+   "date_of_value": "2023-12-15"
+  }
+ },
+ {
+  "id": "parameter:go4zero-investment",
+  "kind": "parameter",
+  "label": "GO4ZERO — total investment",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:obourg",
+   "confidence": "primary",
+   "date_of_value": "2024-05-16"
+  }
+ },
+ {
+  "id": "parameter:ifestos-capture-capacity",
+  "kind": "parameter",
+  "label": "IFESTOS annual emissions avoidance",
+  "attrs": {
+   "unit": "Mt CO2 per year",
+   "scope": "plant:kamari",
+   "confidence": "secondary",
+   "date_of_value": "2023-07-14"
+  }
+ },
+ {
+  "id": "parameter:k6-state-funding",
+  "kind": "parameter",
+  "label": "K6 Lumbres — French state funding, phase one",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:lumbres",
+   "confidence": "primary",
+   "date_of_value": "2024-02-15"
+  }
+ },
+ {
+  "id": "parameter:nzia-injection-capacity-2030",
+  "kind": "parameter",
+  "label": "Union CO2 injection capacity objective for 2030",
+  "attrs": {
+   "unit": "Mt CO2 per year",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2024-06-13"
+  }
+ },
+ {
+  "id": "project:anrav-devnya",
+  "kind": "project",
+  "label": "ANRAV",
+  "attrs": {
+   "company": "Heidelberg Materials (Devnya Cement)",
+   "plant": "Devnya",
+   "country": "BG",
+   "status": "funded",
+   "transition": "decarbonisation"
+  }
+ },
+ {
+  "id": "project:brevik-ccs",
+  "kind": "project",
+  "label": "Brevik CCS",
+  "attrs": {
+   "company": "Heidelberg Materials",
+   "plant": "Brevik",
+   "country": "NO",
+   "status": "operating",
+   "transition": "decarbonisation"
+  }
+ },
+ {
+  "id": "project:carbon2business-lagerdorf",
+  "kind": "project",
+  "label": "Carbon2Business",
+  "attrs": {
+   "company": "Holcim",
+   "plant": "Lägerdorf",
+   "country": "DE",
+   "status": "construction",
+   "transition": "decarbonisation"
+  }
+ },
+ {
+  "id": "project:gezero-geseke",
+  "kind": "project",
+  "label": "GeZero",
+  "attrs": {
+   "company": "Heidelberg Materials",
+   "plant": "Geseke",
+   "country": "DE",
+   "status": "funded",
+   "transition": "decarbonisation"
+  }
+ },
+ {
+  "id": "project:go4zero-obourg",
+  "kind": "project",
+  "label": "GO4ZERO",
+  "attrs": {
+   "company": "Holcim",
+   "plant": "Obourg",
+   "country": "BE",
+   "status": "construction",
+   "transition": "decarbonisation"
+  }
+ },
+ {
+  "id": "project:ifestos-kamari",
+  "kind": "project",
+  "label": "IFESTOS",
+  "attrs": {
+   "company": "TITAN Cement",
+   "plant": "Kamari",
+   "country": "GR",
+   "status": "announced",
+   "transition": "decarbonisation"
+  }
+ },
+ {
+  "id": "project:k6-lumbres",
+  "kind": "project",
+  "label": "K6",
+  "attrs": {
+   "company": "EQIOM (CRH)",
+   "plant": "Lumbres",
+   "country": "FR",
+   "status": "construction",
+   "transition": "decarbonisation"
+  }
+ },
+ {
+  "id": "project:slite-ccs",
+  "kind": "project",
+  "label": "Slite CCS",
+  "attrs": {
+   "company": "Heidelberg Materials",
+   "plant": "Slite",
+   "country": "SE",
+   "status": "paused",
+   "transition": "decarbonisation"
+  }
+ },
+ {
   "id": "sector:air",
   "kind": "sector",
   "label": "Aviation",
@@ -7293,6 +7604,56 @@
    "figaro_code": "C16",
    "has_exposure": true,
    "parent": null
+  }
+ },
+ {
+  "id": "technology:alternative-fuels",
+  "kind": "technology",
+  "label": "Alternative fuels in the kiln",
+  "attrs": {
+   "transition": "decarbonisation",
+   "readiness": "commercial",
+   "sectors": [
+    "cement"
+   ]
+  }
+ },
+ {
+  "id": "technology:ccs-oxyfuel",
+  "kind": "technology",
+  "label": "Oxyfuel carbon capture",
+  "attrs": {
+   "transition": "decarbonisation",
+   "readiness": "demonstration",
+   "sectors": [
+    "cement"
+   ]
+  }
+ },
+ {
+  "id": "technology:ccs-post-combustion",
+  "kind": "technology",
+  "label": "Post-combustion carbon capture",
+  "attrs": {
+   "transition": "decarbonisation",
+   "readiness": "early-commercial",
+   "sectors": [
+    "cement"
+   ]
+  }
+ },
+ {
+  "id": "technology:co2-transport-storage",
+  "kind": "technology",
+  "label": "CO2 transport and storage",
+  "attrs": {
+   "transition": "decarbonisation",
+   "readiness": "early-commercial",
+   "sectors": [
+    "cement",
+    "steel",
+    "chem"
+   ]
   }
  }
 ]
