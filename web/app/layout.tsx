@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Archivo, IBM_Plex_Mono, Public_Sans } from "next/font/google";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { INDEXABLE } from "@/lib/launch";
@@ -7,24 +6,12 @@ import { datasetJsonLd } from "@/lib/schema";
 import { getMasthead } from "@/lib/sitetext";
 import "./globals.css";
 
-const archivo = Archivo({
-  subsets: ["latin"],
-  weight: ["600", "700", "800", "900"],
-  variable: "--font-display",
-  display: "swap",
-});
-const publicSans = Public_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-sans",
-  display: "swap",
-});
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-mono",
-  display: "swap",
-});
+// NO WEBFONTS (brief 3). Archivo, Public Sans and IBM Plex Mono were three
+// Google families — sixty-odd kilobytes and a flash of fallback text on every
+// cold load — to say in a borrowed face what the identity is drawn in. The
+// stack is Helvetica where it is installed, Arial and Liberation Sans behind
+// it, and the hierarchy is carried by weight and tracking instead. See the
+// type block in globals.css.
 
 export const metadata: Metadata = {
   title: {
@@ -42,10 +29,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${archivo.variable} ${publicSans.variable} ${plexMono.variable}`}
-    >
+    <html lang="en">
       <body>
         {/* schema.org Dataset markup, site-wide: the register described as
             the dataset it is. Computed from the site summary object — see

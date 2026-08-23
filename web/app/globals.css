@@ -1,82 +1,133 @@
 /* Eufabric — design system.
 
-   Ported from the repo's styles.css tokens. All presentation lives here;
-   components carry no visual choices, so a restyle is a change to this file,
-   not a restructure of the JSX.
+   All presentation lives here; components carry no visual choices, so a
+   restyle is a change to this file, not a restructure of the JSX.
 
-   The one deliberate departure from styles.css: the page ground is pure white.
-   --paper is retained for inset wells only — ledger cards, the source block,
-   the prior-rule pane, and the "who carries the burden" band. */
+   THE GROUND IS WARM PAPER, NEVER PURE WHITE (brief 3). The old sheet was
+   white with paper wells inset into it, which is the arrangement a screen
+   defaults to rather than one anybody chose. Paper is now the ground and white
+   is gone from the palette: cards sit a shade above the page, wells a shade
+   below it, and the whole sheet reads as a printed object.
+
+   FOUR COLOUR LAYERS, EACH CONFINED (brief 3, and enforced by
+   sources/check_colour_layers.py):
+
+     1  SIGNAL BLUE     brand and chrome. The seam in the logotype, the brand
+                        rule, focus rings, interactive accents. Never data.
+     2  CLARET / PINE   direction, and nothing else. Cost and support on a euro
+                        figure; burden and relief on a duty — one axis, whatever
+                        the unit. A selector may only emit these if it NAMES the
+                        direction it is showing, which is what the gate checks.
+     3  DIAGRAM PALETTE inside diagrams only, disjoint from the three reserved
+                        colours by measurement rather than by eye. A diagram
+                        element showing money direction borrows claret or pine
+                        for that element alone.
+     4  SECTOR ACCENTS  page identity: the photo wash, a section marker, the
+                        what-moved marks on that sector's own page. Never on a
+                        figure, never on a diagram node.
+
+   Ochre is gone. Once the focus token became signal blue it had no chrome role
+   left, and every other use was data — a pending flag, an unresolved diff, an
+   override note — which is a layer it is not allowed in. Those all read as ink
+   weights now, which is what an editorial flag should have been. */
 
 :root {
-  /* ink */
-  --ink: #14171c;
-  --ink-70: #3f444c;
-  --ink-55: #5a5f68;
-  --ink-40: #868b93;
-  --ink-25: #b6bab4;
+  /* ink — brief 3's warm near-black, not a neutral grey */
+  --ink: #211f1b;
+  --ink-70: #3a3833;
+  --ink-55: #6e6a60;
+  --ink-40: #8d8879;
+  --ink-25: #b3ae9f;
 
-  /* grounds */
-  --paper: #f4f4f1;
-  --paper-2: #e6e8e2;
-  --card: #ffffff;
-  --card-hover: #f7f8f5;
-  --chrome: #fbfbf9;
+  /* grounds. Paper is the page; card sits above it, well below it. */
+  --paper: #f4f2ea;
+  --paper-2: #e9e6db;
+  --card: #faf9f4;
+  --card-hover: #efece2;
+  --well: #e9e6db;
+  --chrome: #f7f5ee;
 
-  /* rules */
-  --rule: #cdd0ca;
-  --rule-soft: #e0e2dc;
-  --rule-dark: #2b2f36;
+  /* rules — one hairline weight, per brief 3 */
+  --rule: #ddd9cf;
+  --rule-soft: #e7e3d9;
+  --rule-dark: #38352e;
 
-  /* signal */
+  /* ---- layer 1: brand and chrome ------------------------------------
+     One accent thread. A line, never a fill: the seam in the logotype,
+     the brand rule, the focus ring, a link's mark. No gradients, ever. */
+  --signal: #2b54d8;
+  --signal-light: #7f9bff;
+  --focus: var(--signal);
+
+  /* ---- layer 2: direction -------------------------------------------
+     Something lands on the firm, or it comes to it. Cost and support on a
+     euro figure, burden and relief on a duty — one axis, two colours, and
+     no third meaning. A selector emitting these has to name its side. */
   --claret: #7a2e3f;
   --claret-soft: #ecdadd;
   --claret-lift: #a5495e;
   --pine: #1f5c55;
   --pine-soft: #d4e2df;
-  --ochre: #a8781a;
-  --focus: #1f4f8f;
 
-  /* sector accents — wayfinding, not decoration.
+  /* ---- layer 3: the diagram palette ----------------------------------
+     Four hues for four node kinds, chosen by measurement: every one of
+     them clears claret, pine, signal and ink by at least 30 deltaE, and
+     each other by at least 46. The diagram is the one place on this site
+     where categorical colour does real work, so these carry slightly more
+     chroma than the sector accents — deliberately, and only here. */
+  --dg-measure: #a1662f;
+  --dg-bottleneck: #8a3a93;
+  --dg-technology: #417f33;
+  --dg-project: #3a6a9e;
 
-     One hue per sector, and the rule on them is a hard one: hairlines, chips
-     and icon strokes ONLY. Never a background, never a large fill. The site
-     stays white Swiss and these are how a reader tells one sector's row from
-     another's at a glance, not how a page gets colourful.
+  /* ---- layer 4: sector accents ---------------------------------------
+     One hue per sector, for page identity: the duotone wash on that
+     sector's photograph, its section marker, its what-moved marks. Never a
+     figure, never a diagram node, never a background block.
 
-     They are cut to one narrow band deliberately — every value sits between
-     roughly 38% and 48% lightness at low-to-mid saturation, so no sector
-     shouts louder than its neighbour and none of them competes with --claret,
-     which is the site's own signal colour and has to stay the loudest thing
-     on any page it appears on. They are grouped by material family, so the
-     heavy industries read as cousins and the transport modes as another set,
-     and a child sector (plastics converting) is a lighter cut of its parent
-     (chemicals) rather than a hue of its own. */
-  --acc-steel: #566270;
-  --acc-cement: #7b7365;
-  --acc-alu: #6a7885;
-  --acc-glass: #4d777d;
-  --acc-chem: #78506d;
-  --acc-chem-plastics: #96637f;
+     RE-CUT ONCE, BY MEASUREMENT. The first cut put all twenty in one
+     narrow band so that none shouted — which walked twelve of them
+     straight into claret's and pine's neighbourhoods. --acc-auto was
+     #7c414a, nine deltaE from claret: a claret marker on the automotive
+     page, beside figures where claret means cost. Each one is now the
+     NEAREST colour to the original that clears all four anchors by 33, so
+     the family grouping the first cut was for — heavy industry as cousins,
+     a child sector a lighter cut of its parent — survives the move. */
+  --acc-steel: #69637e;
+  --acc-cement: #897667;
+  --acc-alu: #807b8e;
+  --acc-glass: #6285a7;
+  --acc-chem: #766085;
+  --acc-chem-plastics: #967394;
   --acc-paper: #877a52;
   --acc-wood: #7a5c3c;
   --acc-foodbev: #7a6a30;
   --acc-retail: #675d99;
-  --acc-horeca: #98695a;
+  --acc-horeca: #a1755e;
   --acc-power: #96731f;
-  --acc-waste: #4f6b4c;
-  --acc-ship: #3f6188;
+  --acc-waste: #6d7642;
+  --acc-ship: #3c618b;
   --acc-air: #4a6ea3;
-  --acc-auto: #7c414a;
-  --acc-build: #6c6252;
-  --acc-batsol: #5d7a44;
-  --acc-clean: #2f6f5e;
-  --acc-ccs: #45666b;
+  --acc-auto: #867069;
+  --acc-build: #7c6550;
+  --acc-batsol: #617e44;
+  --acc-clean: #7d9a6b;
+  --acc-ccs: #737691;
 
-  /* type */
-  --display: var(--font-display), "Archivo", system-ui, sans-serif;
-  --sans: var(--font-sans), "Public Sans", system-ui, sans-serif;
-  --mono: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;
+  /* type — one neo-grotesque, no webfonts (brief 3).
+
+     Helvetica where it is installed, Arial and Liberation Sans behind it.
+     Nothing is downloaded: three Google families were 60-odd KB and a flash
+     of fallback text on every cold load, to say in Archivo what this says in
+     the family the identity is drawn in. Weight and tracking carry the
+     hierarchy instead — the display face is the same family, tightened. */
+  --sans: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+  --display: var(--sans);
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Helvetica stops at bold. The scale is carried by SIZE and TRACKING, which
+     is how a single-family Swiss system has always carried it. */
+  --track-display: -0.045em;
 
   /* metrics */
   --maxw: 1200px;
@@ -85,13 +136,14 @@
   --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #ffffff;
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 15px;
@@ -105,8 +157,8 @@ a {
   text-decoration: none;
 }
 ::selection {
-  background: var(--claret);
-  color: #fff;
+  background: var(--signal);
+  color: var(--paper);
 }
 :focus-visible {
   outline: 2px solid var(--focus);
@@ -155,7 +207,7 @@ a {
 
 .brand-rule {
   height: 3px;
-  background: var(--claret);
+  background: var(--signal);
 }
 
 .ticker {
@@ -173,7 +225,7 @@ a {
   gap: 8px;
   height: 100%;
   padding: 0 16px;
-  background: #fff;
+  background: var(--card);
   border-right: 1px solid var(--rule-soft);
   font-family: var(--mono);
   font-size: 10.5px;
@@ -184,7 +236,7 @@ a {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--claret);
+  background: var(--signal);
 }
 .ticker-track {
   flex: 1;
@@ -232,65 +284,40 @@ a {
   gap: 24px;
 }
 
-/* wordmark + logomark */
+/* the lockup: mark + logotype.
+
+   The four-bar logomark is gone. It was built from the burden strip, which
+   made the site's identity a picture of its oldest data component — and two of
+   its four bars were claret and pine, spending the direction colours on a
+   brand. The weave replaces it, and the only accent left in the name is the
+   seam. */
 .wordmark {
   display: flex;
   align-items: center;
-  gap: 10px;
+  /* ~14px at a 20px logotype, per the identity, scaled to this 15px setting */
+  gap: 11px;
 }
-.logomark {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 17px;
-}
-.logomark i {
-  width: 3px;
-  display: block;
-}
-.logomark i:nth-child(1) {
-  height: 10px;
-  background: var(--pine);
-}
-.logomark i:nth-child(2) {
-  height: 17px;
-  background: var(--ink);
-}
-.logomark i:nth-child(3) {
-  height: 13px;
-  background: var(--ink);
-}
-.logomark i:nth-child(4) {
-  height: 17px;
-  background: var(--claret);
-}
-.logomark-dark i:nth-child(2) {
-  background: var(--paper);
-}
-.logomark-dark i:nth-child(3) {
-  background: var(--ink-40);
-}
-.logomark-dark i:nth-child(4) {
-  background: var(--claret-lift);
-}
-
 .wordmark-text {
-  font-family: var(--mono);
-  font-size: 15px;
-  letter-spacing: 0.02em;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.045em;
   line-height: 1;
-  text-transform: uppercase;
-}
-.wordmark-lo {
-  font-weight: 500;
-  color: var(--ink-40);
-}
-.wordmark-hi {
-  font-weight: 600;
   color: var(--ink);
 }
-.wordmark-dark .wordmark-hi {
-  color: #fff;
+/* One pipe, regular weight, signal blue. The single place the accent colour
+   touches the name, and the reason it is confined everywhere else. */
+.wordmark-seam {
+  font-weight: 400;
+  color: var(--signal);
+  letter-spacing: 0;
+  padding: 0 0.02em;
+}
+.wordmark-dark .wordmark-text {
+  color: var(--paper);
+}
+.wordmark-dark .wordmark-seam {
+  color: var(--signal-light);
 }
 
 .site-nav {
@@ -366,7 +393,7 @@ a {
   font-size: 1.2rem;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: var(--paper);
   max-width: 24ch;
   margin: 20px 0 0;
 }
@@ -385,7 +412,7 @@ a {
   font-size: 13px;
 }
 .footer-links a:hover {
-  color: #fff;
+  color: var(--paper);
 }
 .footer-colophon {
   font-family: var(--mono);
@@ -411,7 +438,7 @@ h3 {
   margin: 0;
 }
 .band h2 {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.65rem;
   letter-spacing: -0.02em;
   margin: 10px 0 0;
@@ -443,7 +470,7 @@ h3 {
 .section-link {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--claret);
+  color: var(--signal);
 }
 .section-link:hover {
   text-decoration: underline;
@@ -465,7 +492,7 @@ h3 {
 }
 .hero-title {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.02;
   font-size: clamp(2.6rem, 6vw, 4.5rem);
@@ -492,7 +519,7 @@ h3 {
   align-items: center;
   border: 1.5px solid var(--ink);
   border-radius: 8px;
-  background: #fff;
+  background: var(--card);
   overflow: hidden;
 }
 .searchbar-glyph {
@@ -516,7 +543,7 @@ h3 {
   border: 0;
   border-left: 1.5px solid var(--ink);
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.08em;
@@ -529,7 +556,7 @@ h3 {
   transition: background var(--dur) var(--ease);
 }
 .searchbar-submit:hover {
-  background: var(--claret);
+  background: var(--ink);
 }
 
 .query-chips {
@@ -554,7 +581,7 @@ h3 {
   color: var(--ink);
 }
 .query-arrow {
-  color: var(--claret);
+  color: var(--signal);
   font-family: var(--mono);
 }
 
@@ -578,7 +605,7 @@ h3 {
 }
 .stat-value {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 700;
   font-size: 2.4rem;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -609,7 +636,7 @@ h3 {
   margin-top: 34px;
 }
 .home-stats-link:hover .stat-value {
-  color: var(--claret);
+  color: var(--ink);
 }
 
 /* ---------- summary strip ---------- */
@@ -785,7 +812,7 @@ h3 {
   background: var(--pine);
 }
 .signal:hover .strip i.on {
-  background: var(--claret);
+  background: var(--ink);
 }
 
 /* ---------- who carries the burden ---------- */
@@ -797,7 +824,7 @@ h3 {
   align-items: start;
 }
 .card {
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--rule-soft);
   border-radius: 8px;
   padding: 26px 24px;
@@ -866,7 +893,7 @@ h3 {
 .led-count {
   font-family: var(--mono);
   font-size: 11px;
-  color: #fff;
+  color: var(--paper);
 }
 
 .legend {
@@ -946,7 +973,7 @@ h3 {
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
 }
 .sector-cell {
-  background: #fff;
+  background: var(--card);
   padding: 18px;
   display: flex;
   justify-content: space-between;
@@ -985,7 +1012,7 @@ h3 {
 .backlink {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--claret);
+  color: var(--signal);
 }
 .backlink:hover {
   text-decoration: underline;
@@ -1007,7 +1034,7 @@ h3 {
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--claret);
+  color: var(--signal);
 }
 .crumb-link:hover {
   text-decoration: underline;
@@ -1047,7 +1074,7 @@ h3 {
   margin-top: 22px;
 }
 .dir-card {
-  background: #fff;
+  background: var(--card);
   padding: 20px 22px 22px;
   display: flex;
   flex-direction: column;
@@ -1055,12 +1082,12 @@ h3 {
 }
 .dir-card-title {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: -0.02em;
 }
 .dir-card-title:hover {
-  color: var(--claret);
+  color: var(--ink);
 }
 .dir-card-children {
   border-top: 1px solid var(--rule-soft);
@@ -1081,7 +1108,7 @@ h3 {
   font-weight: 600;
 }
 .dir-card-child-title:hover {
-  color: var(--claret);
+  color: var(--ink);
 }
 .dir-card-code {
   font-family: var(--mono);
@@ -1102,7 +1129,7 @@ h3 {
 }
 .reach-row-name {
   font-weight: 600;
-  color: var(--claret);
+  color: var(--ink);
 }
 .reach-row-name:hover {
   text-decoration: underline;
@@ -1119,11 +1146,11 @@ h3 {
   margin: 0 0 8px;
 }
 .named-child-head a {
-  color: var(--claret);
+  color: var(--ink);
 }
 
 .detail-title {
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.05;
   font-size: clamp(1.9rem, 3.8vw, 2.7rem);
@@ -1220,7 +1247,7 @@ h3 {
   border: 1px solid var(--rule-soft);
 }
 .diff-new {
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--rule);
 }
 .diff-label {
@@ -1245,7 +1272,7 @@ h3 {
   margin: 4px 0 0;
 }
 .diff-unresolved {
-  color: var(--ochre) !important;
+  color: var(--ink-55) !important;
 }
 
 .factgrid {
@@ -1314,7 +1341,7 @@ h3 {
 .pending {
   margin-top: 24px;
   font-size: 13px;
-  color: var(--ochre);
+  color: var(--ink-55);
 }
 
 .rail {
@@ -1339,7 +1366,7 @@ h3 {
 }
 .rail-head-value {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: -0.01em;
   margin-top: 4px;
@@ -1388,7 +1415,7 @@ h3 {
   color: var(--ink-70);
 }
 .rail-related a:hover {
-  color: var(--claret);
+  color: var(--ink);
 }
 .rail-related-id {
   font-family: var(--mono);
@@ -1399,7 +1426,7 @@ h3 {
 /* ---------- sector page ---------- */
 
 .sector-title {
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
   font-size: clamp(2.2rem, 4.5vw, 3.2rem);
@@ -1425,7 +1452,7 @@ h3 {
 }
 .meter-value {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.3rem;
 }
 .meter-value.is-pos {
@@ -1508,7 +1535,7 @@ h3 {
   font-family: var(--sans);
   font-size: 13px;
   color: var(--ink);
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--rule);
   border-radius: 5px;
   padding: 7px 10px;
@@ -1532,8 +1559,8 @@ h3 {
 }
 .exp-headline {
   font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--claret);
+  font-weight: 700;
+  color: var(--ink);
 }
 .exp-caption {
   font-size: 12px;
@@ -1640,7 +1667,7 @@ h3 {
   margin-top: 22px;
 }
 .finding-card {
-  background: #fff;
+  background: var(--card);
   padding: 22px 22px 26px;
   display: flex;
   flex-direction: column;
@@ -1660,8 +1687,8 @@ h3 {
   color: var(--ink-40);
 }
 .finding-basis {
-  border: 1px solid var(--ochre);
-  color: var(--ochre);
+  border: 1px solid var(--ink-55);
+  color: var(--ink-55);
   border-radius: 3px;
   padding: 1px 7px;
   letter-spacing: 0.04em;
@@ -1670,7 +1697,7 @@ h3 {
 }
 .finding-headline {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.32rem;
   line-height: 1.2;
   letter-spacing: -0.018em;
@@ -1765,7 +1792,7 @@ h3 {
   margin: 0 0 8px;
 }
 .diagram-arrow {
-  color: var(--ochre);
+  color: var(--ink-40);
   margin-right: 6px;
 }
 .diagram-caption {
@@ -1804,34 +1831,34 @@ h3 {
   stroke-width: 1;
 }
 .ego-line.ego-sectors {
-  stroke: var(--pine-soft);
+  stroke: color-mix(in srgb, var(--dg-project) 40%, var(--paper));
   stroke-width: 1.4;
 }
 .ego-line.ego-amends,
 .ego-line.ego-repeals {
-  stroke: var(--claret-soft);
+  stroke: color-mix(in srgb, var(--dg-measure) 40%, var(--paper));
   stroke-width: 1.4;
 }
 .ego-line.ego-cites {
   stroke: var(--rule-soft);
 }
 .ego-line.ego-depends_on {
-  stroke: var(--ochre);
+  stroke: var(--dg-technology);
   stroke-dasharray: 3 3;
   opacity: 0.5;
 }
 .ego-dot.ego-sectors {
-  fill: var(--pine);
+  fill: var(--dg-project);
 }
 .ego-dot.ego-amends,
 .ego-dot.ego-repeals {
-  fill: var(--claret);
+  fill: var(--dg-measure);
 }
 .ego-dot.ego-cites {
   fill: var(--ink-40);
 }
 .ego-dot.ego-depends_on {
-  fill: var(--ochre);
+  fill: var(--dg-technology);
 }
 .ego-center-dot {
   fill: var(--ink);
@@ -1878,17 +1905,17 @@ h3 {
   display: inline-block;
 }
 .ego-swatch.ego-sectors {
-  background: var(--pine);
+  background: var(--dg-project);
 }
 .ego-swatch.ego-amends,
 .ego-swatch.ego-repeals {
-  background: var(--claret);
+  background: var(--dg-measure);
 }
 .ego-swatch.ego-cites {
   background: var(--ink-40);
 }
 .ego-swatch.ego-depends_on {
-  background: var(--ochre);
+  background: var(--dg-technology);
 }
 .ego-toggle {
   margin-top: 14px;
@@ -1918,7 +1945,7 @@ h3 {
    and above the body: a caveat printed under the claim is read after the
    claim has been believed. */
 .basis-banner {
-  border-left: 3px solid var(--ochre);
+  border-left: 3px solid var(--ink-25);
   background: var(--paper);
   padding: 12px 16px;
   margin: 22px 0 0;
@@ -1927,7 +1954,7 @@ h3 {
   max-width: 78ch;
 }
 .basis-banner-review {
-  border-left-color: var(--claret);
+  border-left-color: var(--ink-55);
 }
 
 .finding-body {
@@ -1959,7 +1986,7 @@ h3 {
   color: var(--ink-55);
 }
 .evidence-measure-link:hover {
-  color: var(--claret);
+  color: var(--ink);
 }
 .evidence-statement {
   font-size: 15.5px;
@@ -2022,7 +2049,7 @@ h3 {
 }
 .netpos-total-value {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.6rem;
   letter-spacing: -0.02em;
 }
@@ -2037,7 +2064,7 @@ h3 {
   background: var(--rule-soft);
 }
 .netpos-row {
-  background: #fff;
+  background: var(--card);
   padding: 16px 16px 18px;
   border-top: 2px solid var(--rule);
 }
@@ -2056,7 +2083,7 @@ h3 {
 }
 .netpos-count {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.9rem;
   line-height: 1.1;
   margin-top: 6px;
@@ -2385,7 +2412,7 @@ h3 {
   border: 1px solid var(--rule-soft);
 }
 .record-card {
-  background: #fff;
+  background: var(--card);
   padding: 22px 22px 24px;
   display: flex;
   flex-direction: column;
@@ -2410,18 +2437,18 @@ h3 {
 /* The event kind is the one thing on the card that is not a number or a name,
    so it is the one thing set in the signal colour. */
 .record-kind {
-  color: var(--claret);
+  color: var(--ink-55);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 .record-basis {
-  color: var(--ochre);
+  color: var(--ink-55);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 .record-headline {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.32rem;
   line-height: 1.2;
   letter-spacing: -0.018em;
@@ -2684,7 +2711,7 @@ h3 {
   margin-top: 16px;
 }
 .sector-change {
-  background: #fff;
+  background: var(--card);
   padding: 14px 16px;
   display: flex;
   align-items: baseline;
@@ -2938,6 +2965,14 @@ h3 {
   font-weight: 500;
   fill: var(--ink);
 }
+/* The one element inside a diagram allowed the direction colours: a measure
+   node's second line, which states a euro figure and which way it points. */
+.tnode-sub.tdir-cost {
+  fill: var(--claret);
+}
+.tnode-sub.tdir-support {
+  fill: var(--pine);
+}
 .tnode-sub {
   font-family: var(--mono);
   font-size: 10.5px;
@@ -3021,7 +3056,7 @@ h3 {
   margin-top: 14px;
 }
 .tmaterial {
-  background: #fff;
+  background: var(--card);
   padding: 16px 18px;
 }
 .tmaterial h3 {
@@ -3073,17 +3108,17 @@ h3 {
   color: var(--ink-55);
 }
 .tmat-type.intermediate {
-  color: var(--pine);
+  color: var(--ink-55);
 }
 .tmat-type.feedstock,
 .tmat-type.energy_carrier {
   color: var(--focus);
 }
 .tmat-type.by_product {
-  color: var(--ochre);
+  color: var(--ink-55);
 }
 .tmat-type.waste_stream {
-  color: var(--claret);
+  color: var(--ink-55);
 }
 
 .tfunding-total {
@@ -3135,10 +3170,10 @@ h3 {
 }
 .tstatus.signed,
 .tstatus.disbursed {
-  color: var(--pine);
+  color: var(--ink);
 }
 .tstatus.withdrawn {
-  color: var(--claret);
+  color: var(--ink-40);
 }
 
 /* --- ranked measures --------------------------------------------- */
@@ -3154,7 +3189,7 @@ h3 {
   border: 1px solid var(--rule-soft);
 }
 .tmeasures > li {
-  background: #fff;
+  background: var(--card);
   padding: 18px 20px;
 }
 .tmeasure-head {
@@ -3184,8 +3219,8 @@ h3 {
   color: var(--ink-40);
 }
 .treach {
-  color: var(--pine);
-  border: 1px solid var(--pine);
+  color: var(--ink-55);
+  border: 1px solid var(--ink-55);
   padding: 1px 6px;
 }
 .tmeasure-duty {
@@ -3202,7 +3237,7 @@ h3 {
 .toverride {
   margin: 8px 0 0;
   font-size: 12.5px;
-  color: var(--ochre);
+  color: var(--ink-55);
   max-width: 70ch;
 }
 
@@ -3232,7 +3267,7 @@ h3 {
   font-family: var(--mono);
   font-size: 21px;
   font-variant-numeric: tabular-nums;
-  color: var(--claret);
+  color: var(--ink);
 }
 .tscore-figure.none {
   color: var(--ink-25);
@@ -3249,7 +3284,7 @@ h3 {
   color: var(--ink-40);
 }
 .tscore-caveat {
-  color: var(--ochre);
+  color: var(--ink-55);
 }
 .tscore-edges {
   list-style: none;
@@ -3359,7 +3394,7 @@ h3 {
 }
 .tbottleneck,
 .ttech {
-  background: #fff;
+  background: var(--card);
   padding: 18px 20px;
 }
 .tbottleneck h3,
@@ -3413,8 +3448,8 @@ h3 {
   color: var(--ink-40);
 }
 .tconf.primary {
-  background: var(--pine-soft);
-  color: var(--pine);
+  background: var(--paper-2);
+  color: var(--ink-55);
 }
 .tconf.secondary {
   background: var(--paper-2);
@@ -3472,8 +3507,8 @@ h3 {
 }
 .tready.commercial,
 .tready.early-commercial {
-  border-color: var(--pine);
-  color: var(--pine);
+  border-color: var(--ink);
+  color: var(--ink);
 }
 
 /* --- projects ----------------------------------------------------- */
@@ -3486,7 +3521,7 @@ h3 {
   width: 100%;
   min-width: 900px;
   border-collapse: collapse;
-  background: #fff;
+  background: var(--card);
 }
 .tprojects th {
   text-align: left;
@@ -3523,9 +3558,9 @@ h3 {
   color: var(--ink-55);
 }
 .tstatus.operating {
-  background: var(--pine-soft);
+  background: var(--paper-2);
   border-color: transparent;
-  color: var(--pine);
+  color: var(--ink);
 }
 .tstatus.construction {
   background: var(--paper-2);
@@ -3534,9 +3569,9 @@ h3 {
 }
 .tstatus.paused,
 .tstatus.cancelled {
-  background: var(--claret-soft);
+  background: var(--paper-2);
   border-color: transparent;
-  color: var(--claret);
+  color: var(--ink-40);
 }
 
 /* --- sources ------------------------------------------------------ */
@@ -3572,8 +3607,8 @@ h3 {
 }
 .tarchived {
   align-self: flex-start;
-  border: 1px solid var(--ochre);
-  color: var(--ochre);
+  border: 1px solid var(--ink-55);
+  color: var(--ink-55);
 }
 
 /* --- the project page --------------------------------------------- */
@@ -3644,11 +3679,11 @@ h3 {
   background: var(--rule);
 }
 .proj-rail li.on .dot {
-  background: var(--accent, var(--pine));
+  background: var(--accent, var(--ink));
 }
 .proj-rail li.paused.on .dot,
 .proj-rail li.cancelled.on .dot {
-  background: var(--claret);
+  background: var(--ink-40);
 }
 .proj-rail .label {
   font-size: 12.5px;
@@ -3679,7 +3714,7 @@ h3 {
 .proj-tech li,
 .proj-funding li,
 .proj-sources li {
-  background: #fff;
+  background: var(--card);
   padding: 12px 14px;
   display: flex;
   flex-wrap: wrap;
@@ -3731,7 +3766,7 @@ h3 {
   border: 1px solid var(--rule-soft);
 }
 .pchange {
-  background: #fff;
+  background: var(--card);
   padding: 16px 18px;
   display: flex;
   align-items: baseline;
@@ -3793,8 +3828,8 @@ h3 {
   font-size: 9.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--pine);
-  border: 1px solid var(--pine);
+  color: var(--signal);
+  border: 1px solid var(--signal);
   padding: 1px 6px;
   white-space: nowrap;
 }

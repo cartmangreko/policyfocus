@@ -1,3 +1,9 @@
+> **Superseded.** This is the 13 August 2026 handoff for the pre-Next.js static
+> site, kept for its component and token specifications. Amendment brief 2 §6
+> (photography, and the turned-up Swiss direction) and brief 3 (the eufabric
+> logo and identity) overrule it wherever they disagree — most of all on assets,
+> where this document bans images outright. Nothing structural is taken from it.
+
 # Handoff: PolicyFocus Homepage
 
 ## Overview

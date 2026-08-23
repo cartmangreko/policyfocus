@@ -11,11 +11,18 @@ import { useMemo, useRef, useState } from "react";
 // same in the export as on the page. A component that laid out its own nodes
 // would make the argument a function of the browser.
 //
-// ONE HUE PER NODE KIND, and they are the site's own accents rather than a
-// palette invented here: claret for the law, ochre for what is blocking,
-// pine for the route past it, blue for the thing actually being built. Edges
-// take the hue of the relation, which is why worsens and relieves read apart
-// at a glance even before the arrowhead is legible.
+// ONE HUE PER NODE KIND, from the diagram's own palette. It used to borrow the
+// site's signal colours — claret for the law, pine for the route past it — and
+// that is exactly what brief 3 stopped: claret and pine mean which way the
+// money points, and a diagram that spent them on node kinds spent the only
+// reading that has to survive. The four hues here are measured against claret,
+// pine, signal and ink and clear all of them; sources/check_colour_layers.py
+// fails the build if one drifts back.
+//
+// THE ONE BORROWING THAT IS ALLOWED. A measure node's second line states a euro
+// figure and its direction. That element — and nothing else in the picture —
+// takes claret or pine, because it is showing money direction and that is what
+// those two colours are for.
 
 export interface DiagramNode {
   id: string;
@@ -27,6 +34,9 @@ export interface DiagramNode {
   y: number;
   w: number;
   h: number;
+  /** Measure nodes only: cost or support, where the money is computable. The
+   *  one place in the picture allowed to take claret or pine. */
+  direction?: "cost" | "support" | null;
   /** Measure nodes only: the register id the label replaced. It is not the
    *  headline any more and it has not gone anywhere — the hover detail prints
    *  it, so a reader who wants to look the measure up still can. */
@@ -56,10 +66,10 @@ export interface NodeSource {
 }
 
 const KIND_HUE: Record<DiagramNode["kind"], string> = {
-  measure: "var(--claret)",
-  bottleneck: "var(--ochre)",
-  technology: "var(--pine)",
-  project: "var(--focus)",
+  measure: "var(--dg-measure)",
+  bottleneck: "var(--dg-bottleneck)",
+  technology: "var(--dg-technology)",
+  project: "var(--dg-project)",
 };
 
 const KIND_LABEL: Record<string, string> = {
@@ -69,11 +79,16 @@ const KIND_LABEL: Record<string, string> = {
   project: "Projects",
 };
 
+// An edge takes the hue of what it comes OUT of, so a reader follows a line
+// back to its kind without a legend. worsens and relieves both leave a measure
+// and so share a hue; they are told apart by the dash, which is now the sign of
+// the relation rather than its weight — sign is categorical and deserves a
+// pattern, weight is ordinal and gets the stroke width it always had.
 const REL_HUE: Record<DiagramEdge["rel"], string> = {
-  worsens: "var(--claret)",
-  relieves: "var(--pine)",
-  addresses: "var(--ochre)",
-  deploys: "var(--focus)",
+  worsens: "var(--dg-measure)",
+  relieves: "var(--dg-measure)",
+  addresses: "var(--dg-technology)",
+  deploys: "var(--dg-project)",
 };
 
 // Entry motion: the columns arrive left to right, and the whole sequence is
@@ -215,7 +230,7 @@ export default function TransitionDiagram({
                   fill="none"
                   stroke={REL_HUE[e.rel]}
                   strokeWidth={e.weight >= 1 ? 1.6 : 1}
-                  strokeDasharray={e.weight < 1 ? "4 3" : undefined}
+                  strokeDasharray={e.rel === "relieves" ? "5 3" : undefined}
                   markerEnd={`url(#arrow-${e.rel})`}
                   className="tedge"
                   opacity={on ? 0.85 : 0.08}
@@ -255,7 +270,11 @@ export default function TransitionDiagram({
                   <text x={n.x + 12} y={n.y + 16} className="tnode-label">
                     {n.label.length > 30 ? `${n.label.slice(0, 29)}…` : n.label}
                   </text>
-                  <text x={n.x + 12} y={n.y + 29} className="tnode-sub">
+                  <text
+                    x={n.x + 12}
+                    y={n.y + 29}
+                    className={`tnode-sub${n.direction ? ` tdir-${n.direction}` : ""}`}
+                  >
                     {n.sub}
                   </text>
                 </a>
@@ -290,7 +309,8 @@ export default function TransitionDiagram({
         ) : (
           <p className="muted">
             Hover a node to light its edges and list its sources. Click one to open it.
-            Solid lines carry full weight, dashed lines half.
+            Dashed lines relieve a constraint, solid lines worsen or feed one; thicker
+            lines carry full weight.
           </p>
         )}
       </figcaption>
@@ -301,7 +321,9 @@ export default function TransitionDiagram({
 // Inlined into the exported file only. The page itself is styled from
 // globals.css; this exists because an SVG saved to disk has no stylesheet.
 const EXPORT_CSS = [
-  ".tnode-label{font:500 12px 'Public Sans',system-ui,sans-serif;fill:#14171c}",
-  ".tnode-sub{font:11px 'IBM Plex Mono',monospace;fill:#5a5f68}",
+  ".tnode-label{font:500 12px 'Helvetica Neue',Helvetica,Arial,sans-serif;fill:#211f1b}",
+  ".tnode-sub{font:11px ui-monospace,Menlo,monospace;fill:#6e6a60}",
+  ".tnode-sub.tdir-cost{fill:#7a2e3f}",
+  ".tnode-sub.tdir-support{fill:#1f5c55}",
   "a{text-decoration:none}",
 ].join("");

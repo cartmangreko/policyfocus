@@ -5,6 +5,10 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    // lib/mark.test.mts and scripts/build-mark-assets.mjs are run by node
+    // directly (type stripping), which requires the explicit .ts extension on
+    // their imports. Next compiles neither.
+    "allowImportingTsExtensions": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
