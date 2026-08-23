@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    :root{
+      --ink:#211f1b; --ink-70:#3a3833; --ink-55:#6e6a60; --ink-25:#b3ae9f;
+      --paper:#fbfaf7; --paper-2:#f2f0e8; --card:#ffffff;
+      --rule:#ddd9cf; --rule-soft:#e7e3d9;
+      --signal:#2b54d8; --claret:#7a2e3f; --pine:#1f5c55;
+      --dg-measure:#a1662f; --dg-bottleneck:#8a3a93; --dg-technology:#417f33; --dg-project:#3a6a9e;
+      --acc:#897667;
+      --sans:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+      --cond:"Helvetica Neue Condensed","HelveticaNeue-CondensedBold","Arial Narrow","Helvetica Neue",Helvetica,Arial,sans-serif;
+      --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    }
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+    a{color:var(--ink);text-decoration:none} a:hover{color:var(--signal)}
+    .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-55);margin:0}
+    .sect{padding:56px 56px 0;border-top:1px solid var(--rule)}
+    .sect h2{font-family:var(--cond);font-weight:700;font-size:44px;letter-spacing:-.035em;margin:0 0 6px;line-height:1}
+    .sub{margin:0 0 26px;font-size:14.5px;color:var(--ink-55);max-width:80ch}
+    .rise{animation:rise .4s cubic-bezier(.2,.7,.3,1) backwards}
+    @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion:reduce){.rise{animation:none}}
+  </style>
+</helmet>
+
+<div style="width:1440px;background:var(--paper)">
+  <div style="height:3px;background:var(--signal)"></div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:86px;border-bottom:1px solid var(--rule)">
+    <div style="display:flex;align-items:center;gap:15px">
+      <svg width="42" height="42" viewBox="0 0 120 120" fill="none" style="display:block;overflow:visible">
+        <g stroke="#211f1b" stroke-width="4" stroke-linecap="butt">
+          <line x1="16" y1="24" x2="43" y2="24"/><line x1="53" y1="24" x2="91" y2="24"/><line x1="101" y1="24" x2="104" y2="24"/>
+          <line x1="16" y1="48" x2="19" y2="48"/><line x1="29" y1="48" x2="67" y2="48"/><line x1="77" y1="48" x2="104" y2="48"/>
+          <line x1="16" y1="72" x2="43" y2="72"/><line x1="53" y1="72" x2="91" y2="72"/><line x1="101" y1="72" x2="104" y2="72"/>
+          <line x1="16" y1="96" x2="19" y2="96"/><line x1="29" y1="96" x2="67" y2="96"/><line x1="77" y1="96" x2="104" y2="96"/>
+          <line x1="24" y1="16" x2="24" y2="43"/><line x1="24" y1="53" x2="24" y2="67"/><line x1="24" y1="77" x2="24" y2="104"/>
+          <line x1="48" y1="16" x2="48" y2="19"/><line x1="48" y1="29" x2="48" y2="67"/><line x1="48" y1="77" x2="48" y2="104"/>
+          <line x1="72" y1="16" x2="72" y2="43"/><line x1="72" y1="53" x2="72" y2="67"/><line x1="72" y1="77" x2="72" y2="104"/>
+          <line x1="96" y1="16" x2="96" y2="19"/><line x1="96" y1="29" x2="96" y2="67"/><line x1="96" y1="77" x2="96" y2="104"/>
+        </g>
+      </svg>
+      <span style="font-family:var(--sans);font-weight:700;font-size:30px;letter-spacing:-.045em;line-height:1">eu<span style="font-weight:400;color:var(--signal)">|</span>fabric</span>
+    </div>
+    <span style="font-family:var(--mono);font-size:11.5px;color:var(--ink-55)">Sectors / Cement and concrete</span>
+  </div>
+
+  <div class="rise" style="display:grid;grid-template-columns:1fr 460px;gap:56px;padding:56px 56px 44px">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+        <span style="width:12px;height:44px;background:var(--acc);display:block"></span>
+        <h1 style="font-family:var(--cond);font-weight:700;font-size:64px;letter-spacing:-.04em;margin:0;line-height:.98">Cement and concrete</h1>
+        <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);border:1px solid var(--acc);padding:3px 9px;align-self:center">Decarbonisation</span>
+      </div>
+
+      <p style="font-family:var(--cond);font-weight:700;font-size:56px;line-height:1.04;letter-spacing:-.035em;margin:0;max-width:22ch;text-wrap:balance">European cement carries <span style="color:var(--claret)">&euro;75.46 per tonne</span> of cost from CBAM certificates on the importer, and its binding constraint is the green premium against willingness to pay.</p>
+
+      <div style="margin-top:34px;max-width:64ch">
+        <p class="eyebrow" style="margin-bottom:7px">Why it matters</p>
+        <p style="margin:0;font-size:18px;line-height:1.45;color:var(--ink-70)">The largest gap the sector&#39;s own numbers state is 75&ndash;150% above a conventional plant. 8 projects are building against it, 4 at or past a final investment decision, and the most recent move was Slite CCS to paused on 19 November 2025.</p>
+      </div>
+    </div>
+
+    <div>
+      <div style="position:relative;height:320px;background:var(--ink);overflow:hidden">
+        <div style="position:absolute;inset:0;background:var(--acc);opacity:.34"></div>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:18px">
+          <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);border:1px solid var(--paper);padding:3px 8px;align-self:flex-start">Press image &mdash; not yet licensed</span>
+          <span style="font-family:var(--cond);font-weight:700;font-size:34px;line-height:1.05;letter-spacing:-.03em;color:var(--paper);max-width:14ch">Brevik CCS, Porsgrunn</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:16px;margin-top:9px;font-family:var(--mono);font-size:11px;color:var(--ink-55)">
+        <span>The first industrial-scale capture plant in the cement industry.</span>
+        <span style="white-space:nowrap">&copy; Heidelberg Materials</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:0 56px 44px">
+    <dl style="margin:0;border-top:2px solid var(--ink)">
+      <sc-for list="{{facts}}" as="f" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:230px 1fr 120px;gap:28px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--rule-soft)">
+          <dt style="font-weight:700;font-size:15px;margin:0">{{f.label}}</dt>
+          <dd style="margin:0;font-size:16px;line-height:1.45;color:var(--ink-70)">{{f.text}}</dd>
+          <dd style="margin:0;font-family:var(--mono);font-size:11.5px;color:var(--ink-55);text-align:right">{{f.asof}}</dd>
+        </div>
+      </sc-for>
+    </dl>
+  </div>
+
+  <div style="margin:0 56px 8px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:13px 0;display:flex;align-items:baseline;gap:24px">
+    <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-55);border-left:2px solid var(--acc);padding-left:8px">What moved</span>
+    <span style="font-size:14px;color:var(--ink-55)">Nothing in the last 30 days. <span style="color:var(--signal)">See the pipeline &rarr;</span></span>
+  </div>
+
+  <div class="sect" style="margin-top:44px">
+    <h2>How it connects</h2>
+    <p class="sub">Measures rank left, then what is blocking, then the route past it, then what is being built.</p>
+    <div style="display:flex;gap:26px;margin-bottom:16px;font-family:var(--mono);font-size:11px;color:var(--ink-55)">
+      <sc-for list="{{legend}}" as="l" hint-placeholder-count="4">
+        <span style="display:flex;align-items:center;gap:7px"><i style="width:9px;height:9px;background:{{l.hue}};display:block"></i>{{l.name}} <b style="color:var(--ink)">{{l.count}}</b></span>
+      </sc-for>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--rule);padding:22px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px">
+      <sc-for list="{{columns}}" as="c" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{c.nodes}}" as="n" hint-placeholder-count="5">
+            <div style="border:1px solid var(--rule);background:var(--paper);padding:9px 11px 9px 13px;position:relative">
+              <span style="position:absolute;left:0;top:0;bottom:0;width:3px;background:{{c.hue}}"></span>
+              <div style="font-size:13px;font-weight:500;letter-spacing:-.005em">{{n.label}}</div>
+              <div style="font-family:var(--mono);font-size:11px;color:{{n.tone}};margin-top:2px">{{n.sub}}</div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div class="sect">
+    <h2>The measures that decide whether it pays</h2>
+    <p class="sub">8 of 72 measures reaching the sector carry money or a named constraint. Ranked on money first, then linkage; priced at 2026.</p>
+    <div style="border-top:2px solid var(--ink)">
+      <sc-for list="{{measures}}" as="m" hint-placeholder-count="4">
+        <div style="display:grid;grid-template-columns:44px 1fr 330px;gap:28px;align-items:center;padding:22px 0;border-bottom:1px solid var(--rule-soft)">
+          <span style="font-family:var(--mono);font-size:24px;color:var(--ink-25)">{{m.rank}}</span>
+          <div>
+            <div style="font-family:var(--cond);font-weight:700;font-size:30px;letter-spacing:-.03em;line-height:1.05">{{m.name}}</div>
+            <div style="font-family:var(--mono);font-size:11.5px;color:var(--ink-55);margin-top:5px">{{m.id}} &middot; {{m.article}}</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:var(--mono);font-size:46px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:{{m.tone}}">{{m.figure}}</div>
+            <div style="font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:{{m.tone}};margin-top:7px">{{m.direction}}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div class="sect">
+    <h2>Where it nets out</h2>
+    <p class="sub">Netted within one scale and one bearer only. Costs per tonne on an EU producer and grants awarded to a developer are different units on different balance sheets, and are never summed together.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:8px">
+      <sc-for list="{{net}}" as="n" hint-placeholder-count="3">
+        <div style="background:var(--card);padding:24px">
+          <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-55)">{{n.bearer}}</div>
+          <div style="font-family:var(--mono);font-size:52px;line-height:1.05;letter-spacing:-.035em;font-variant-numeric:tabular-nums;color:{{n.tone}};margin-top:12px">{{n.value}}</div>
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:{{n.tone}};margin-top:6px">{{n.direction}}</div>
+          <div style="font-size:13px;color:var(--ink-55);margin-top:10px">{{n.scale}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div class="sect">
+    <h2>What is in the way</h2>
+    <p class="sub">Five named constraints, each typed, each carrying the measures that worsen or relieve it.</p>
+    <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)">
+      <sc-for list="{{bottlenecks}}" as="b" hint-placeholder-count="5">
+        <div style="background:var(--card);padding:20px 18px">
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dg-bottleneck);border:1px solid var(--dg-bottleneck);padding:2px 6px;display:inline-block">{{b.type}}</div>
+          <div style="font-family:var(--cond);font-weight:700;font-size:22px;letter-spacing:-.02em;line-height:1.1;margin-top:12px">{{b.name}}</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--ink-55);margin-top:10px">{{b.weight}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div class="sect" style="padding-bottom:64px">
+    <h2>Capital</h2>
+    <p class="sub">Every allocation that finances a project here, with the basis it was made under and how far it has got.</p>
+    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:18px">
+      <span style="font-family:var(--mono);font-size:64px;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:var(--pine)">&euro;421 m</span>
+      <span style="font-size:15px;color:var(--ink-55)">recorded across 6 allocations, 3 of them undisclosed.</span>
+    </div>
+    <div style="border-top:1px solid var(--ink)">
+      <sc-for list="{{funding}}" as="f" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:120px 1fr 150px 130px 110px;gap:20px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--rule-soft);font-size:14px">
+          <span style="font-family:var(--mono);font-weight:600;color:{{f.tone}}">{{f.amount}}</span>
+          <span style="font-weight:500">{{f.programme}}</span>
+          <span style="color:var(--ink-55)">{{f.project}}</span>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--ink-55)">{{f.under}}</span>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--ink-55);text-align:right">{{f.date}}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":3020}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const CLARET="#7a2e3f", PINE="#1f5c55", INK55="#6e6a60";
+    return {
+      facts: [
+        {label:"Binding constraint", asof:"2026-01-01", text:"Green premium against willingness to pay — a market constraint, acted on by 4 ranked measures at 3 of combined weight."},
+        {label:"Decisive exposure", asof:"2026-08-21", text:"CBAM certificates — €75.46 per tonne of cost, borne by the importer."},
+        {label:"Pipeline", asof:"2025-11-19", text:"8 projects, the furthest of them operating (Brevik CCS); 4 at or past a final investment decision."},
+        {label:"The gap", asof:"2025", text:"Production cost premium of near-zero emissions cement using CCS: 75–150% above a conventional plant."},
+        {label:"The latest", asof:"2025-11-19", text:"Slite CCS moved to paused on 19 November 2025."}
+      ],
+      legend: [
+        {name:"Measures", count:"8", hue:"#a1662f"},
+        {name:"Bottlenecks", count:"5", hue:"#8a3a93"},
+        {name:"Technologies", count:"4", hue:"#417f33"},
+        {name:"Projects", count:"8", hue:"#3a6a9e"}
+      ],
+      columns: [
+        {hue:"#a1662f", nodes:[
+          {label:"CBAM certificates", sub:"€75.46/t · cost", tone:CLARET},
+          {label:"Free allocation phase-out", sub:"€1.36/t · cost", tone:CLARET},
+          {label:"Innovation Fund grants", sub:"€381m · support", tone:PINE},
+          {label:"Procurement requirements", sub:"linkage 1.0", tone:INK55},
+          {label:"CO2 storage obligation", sub:"linkage 1.0", tone:INK55}
+        ]},
+        {hue:"#8a3a93", nodes:[
+          {label:"Green premium", sub:"market", tone:INK55},
+          {label:"CO2 transport and storage", sub:"infrastructure", tone:INK55},
+          {label:"Retrofit cost", sub:"financial", tone:INK55},
+          {label:"Process emissions", sub:"technical", tone:INK55},
+          {label:"Subsidy dependence", sub:"political", tone:INK55}
+        ]},
+        {hue:"#417f33", nodes:[
+          {label:"Post-combustion capture", sub:"early-commercial", tone:INK55},
+          {label:"Oxyfuel capture", sub:"demonstration", tone:INK55},
+          {label:"CO2 transport and storage", sub:"early-commercial", tone:INK55},
+          {label:"Alternative fuels", sub:"commercial", tone:INK55}
+        ]},
+        {hue:"#3a6a9e", nodes:[
+          {label:"Brevik CCS", sub:"NO · operating", tone:INK55},
+          {label:"GO4ZERO", sub:"BE · construction", tone:INK55},
+          {label:"Carbon2Business", sub:"DE · construction", tone:INK55},
+          {label:"K6", sub:"FR · construction", tone:INK55},
+          {label:"GeZero", sub:"DE · funded", tone:INK55}
+        ]}
+      ],
+      measures: [
+        {rank:"1", name:"CBAM certificates", id:"cbam:FIN-03", article:"Art. 1(13), Reg. (EU) 2023/956", figure:"€75.46", direction:"cost / t · importer", tone:CLARET},
+        {rank:"2", name:"Free allocation phase-out", id:"ets:CBAM-01", article:"Art. 1(15)(b)(i), Dir. 2003/87/EC", figure:"€1.36", direction:"cost / t · EU producer", tone:CLARET},
+        {rank:"3", name:"Innovation Fund grants", id:"ets:FND-03", article:"Art. 1(17), inserting Art. 10cb", figure:"€381 m", direction:"support · developer", tone:PINE},
+        {rank:"4", name:"Procurement requirements", id:"iaa:LM-03a", article:"Art. 11(2)", figure:"—", direction:"linkage 1.0", tone:INK55}
+      ],
+      net: [
+        {bearer:"Importer", value:"−€75.46", direction:"net cost", scale:"per tonne of goods", tone:CLARET},
+        {bearer:"EU producer", value:"−€1.36", direction:"net cost", scale:"per tonne of clinker", tone:CLARET},
+        {bearer:"Project developer", value:"+€381 m", direction:"net support", scale:"awarded to date", tone:PINE}
+      ],
+      bottlenecks: [
+        {type:"market", name:"Green premium against willingness to pay", weight:"4 measures · weight 3.0"},
+        {type:"infrastructure", name:"CO2 transport and storage network", weight:"2 measures · weight 1.5"},
+        {type:"financial", name:"Retrofit cost against plant economics", weight:"2 measures · weight 1.0"},
+        {type:"technical", name:"Process emissions from calcination", weight:"no measure moves this one"},
+        {type:"political", name:"Dependence on revocable public support", weight:"no measure moves this one"}
+      ],
+      funding: [
+        {amount:"€191 m", programme:"EU Innovation Fund", project:"GeZero", under:"ets:FND-03", date:"2023-12-15", tone:PINE},
+        {amount:"€190 m", programme:"EU Innovation Fund", project:"ANRAV", under:"ets:FND-03", date:"2023-01-20", tone:PINE},
+        {amount:"€40 m", programme:"France Relance / ADEME", project:"K6", under:"—", date:"2024-02-15", tone:PINE},
+        {amount:"undisclosed", programme:"EU Innovation Fund", project:"GO4ZERO", under:"ets:FND-03", date:"2024-05-16", tone:INK55},
+        {amount:"undisclosed", programme:"EU Innovation Fund", project:"Carbon2Business", under:"ets:FND-03", date:"2024-04-22", tone:INK55},
+        {amount:"undisclosed", programme:"Longship (Norwegian State)", project:"Brevik CCS", under:"—", date:"2025-06-18", tone:INK55}
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -3,11 +3,12 @@
    All presentation lives here; components carry no visual choices, so a
    restyle is a change to this file, not a restructure of the JSX.
 
-   THE GROUND IS WARM PAPER, NEVER PURE WHITE (brief 3). The old sheet was
-   white with paper wells inset into it, which is the arrangement a screen
-   defaults to rather than one anybody chose. Paper is now the ground and white
-   is gone from the palette: cards sit a shade above the page, wells a shade
-   below it, and the whole sheet reads as a printed object.
+   THE GROUND IS WARM PAPER (brief 3, lightened 23 August 2026). The old sheet
+   was white with paper wells inset into it, which is the arrangement a screen
+   defaults to rather than one anybody chose. Paper is the ground now: cards sit
+   a shade above the page, wells a shade below it, and the sheet reads as a
+   printed object rather than a screen default. See the grounds block for what
+   the design session changed and what survived it.
 
    FOUR COLOUR LAYERS, EACH CONFINED (brief 3, and enforced by
    sources/check_colour_layers.py):
@@ -55,13 +56,24 @@
                         inverts: --ink-55 is 3.05:1 on ink and this is 7.4:1,
                         so muted type there is this and only there. */
 
-  /* grounds. Paper is the page; card sits above it, well below it. */
-  --paper: #f4f2ea;
-  --paper-2: #e9e6db;
-  --card: #faf9f4;
-  --card-hover: #efece2;
-  --well: #e9e6db;
-  --chrome: #f7f5ee;
+  /* grounds. Paper is the page; card sits above it, well below it.
+
+     LIGHTENED IN THE DESIGN SESSION, 23 August 2026. Brief 3 set the ground at
+     #f4f2ea and worded the rule "warm, never pure white"; George asked for it
+     whiter on the direction boards and it moved to #fbfaf7 — still warm, and
+     noticeably lighter. The rule survives the change; the value it was written
+     against did not.
+
+     THE WHOLE LADDER MOVES TOGETHER. Lightening only the page would have put
+     the cards below it and inverted every surface on the site, so card goes to
+     white, the wells come up to meet it, and the order — well, page, card — is
+     what it always was. */
+  --paper: #fbfaf7;
+  --paper-2: #f2f0e8;
+  --card: #ffffff;
+  --card-hover: #f5f3ee;
+  --well: #f2f0e8;
+  --chrome: #fdfcfa;
 
   /* rules — one hairline weight, per brief 3 */
   --rule: #ddd9cf;
@@ -293,7 +305,8 @@ a {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 var(--gutter);
-  height: 62px;
+  /* Deepened from 62px to carry the larger lockup without crowding it. */
+  height: 86px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -310,13 +323,13 @@ a {
 .wordmark {
   display: flex;
   align-items: center;
-  /* ~14px at a 20px logotype, per the identity, scaled to this 15px setting */
-  gap: 11px;
+  /* ~14px at a 20px logotype, per the identity, scaled to this setting */
+  gap: 15px;
 }
 .wordmark-text {
   font-family: var(--sans);
   font-weight: 700;
-  font-size: 19px;
+  font-size: 30px;
   letter-spacing: -0.045em;
   line-height: 1;
   color: var(--ink);
@@ -328,6 +341,14 @@ a {
   color: var(--signal);
   letter-spacing: 0;
   padding: 0 0.02em;
+}
+/* The footer lockup is a step down from the header's: the same lockup, not a
+   second logo, and the footer is not where a reader is being told the name. */
+.wordmark-sm {
+  gap: 13px;
+}
+.wordmark-sm .wordmark-text {
+  font-size: 26px;
 }
 .wordmark-dark .wordmark-text {
   color: var(--paper);

@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    :root{
+      --ink:#211f1b; --ink-70:#3a3833; --ink-55:#6e6a60; --ink-25:#b3ae9f;
+      --paper:#fbfaf7; --card:#ffffff; --rule:#ddd9cf; --rule-soft:#e7e3d9;
+      --signal:#2b54d8; --claret:#7a2e3f; --pine:#1f5c55; --acc:#897667;
+      --sans:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+      --cond:"Helvetica Neue Condensed","HelveticaNeue-CondensedBold","Arial Narrow","Helvetica Neue",Helvetica,Arial,sans-serif;
+      --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    }
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+    a{color:var(--ink);text-decoration:none} a:hover{color:var(--signal)}
+    .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-55);margin:0}
+  </style>
+</helmet>
+
+<div style="width:390px;background:var(--paper)">
+  <div style="height:3px;background:var(--signal)"></div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:66px;border-bottom:1px solid var(--rule)">
+    <span style="font-weight:700;font-size:24px;letter-spacing:-.045em">eu<span style="font-weight:400;color:var(--signal)">|</span>fabric</span>
+    <span style="font-family:var(--mono);font-size:11px;color:var(--ink-55)">Sectors</span>
+  </div>
+
+  <!-- photo runs full-bleed above the lead on a phone -->
+  <div style="position:relative;height:200px;background:var(--ink);overflow:hidden">
+    <div style="position:absolute;inset:0;background:var(--acc);opacity:.34"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px">
+      <span style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);border:1px solid var(--paper);padding:2px 7px;align-self:flex-start">Press image &mdash; not yet licensed</span>
+      <span style="font-family:var(--cond);font-weight:700;font-size:26px;line-height:1.05;letter-spacing:-.03em;color:var(--paper)">Brevik CCS</span>
+    </div>
+  </div>
+
+  <div style="padding:22px 20px 0">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+      <span style="width:8px;height:26px;background:var(--acc);display:block"></span>
+      <h1 style="font-family:var(--cond);font-weight:700;font-size:32px;letter-spacing:-.035em;margin:0;line-height:1">Cement and concrete</h1>
+    </div>
+
+    <p style="font-family:var(--cond);font-weight:700;font-size:30px;line-height:1.08;letter-spacing:-.03em;margin:0">European cement carries <span style="color:var(--claret)">&euro;75.46 per tonne</span> of cost from CBAM certificates on the importer, and its binding constraint is the green premium against willingness to pay.</p>
+
+    <div style="margin-top:22px">
+      <p class="eyebrow" style="margin-bottom:6px">Why it matters</p>
+      <p style="margin:0;font-size:15.5px;line-height:1.45;color:var(--ink-70)">The largest gap the sector&#39;s own numbers state is 75&ndash;150% above a conventional plant. 8 projects are building against it, 4 at or past a final investment decision.</p>
+    </div>
+
+    <dl style="margin:24px 0 0;border-top:2px solid var(--ink)">
+      <sc-for list="{{facts}}" as="f" hint-placeholder-count="5">
+        <div style="padding:13px 0;border-bottom:1px solid var(--rule-soft)">
+          <dt style="font-weight:700;font-size:13.5px;margin:0 0 3px">{{f.label}}</dt>
+          <dd style="margin:0;font-size:14.5px;line-height:1.45;color:var(--ink-70)">{{f.text}}
+            <span style="font-family:var(--mono);font-size:11px;color:var(--ink-55);white-space:nowrap;margin-left:6px">{{f.asof}}</span>
+          </dd>
+        </div>
+      </sc-for>
+    </dl>
+
+    <div style="border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:11px 0;margin-top:22px">
+      <span style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-55);border-left:2px solid var(--acc);padding-left:8px">What moved</span>
+      <div style="font-size:14px;color:var(--ink-55);margin-top:7px">Nothing in the last 30 days. <span style="color:var(--signal)">See the pipeline &rarr;</span></div>
+    </div>
+  </div>
+
+  <!-- the diagram, flat: the ruling this artboard exists to show -->
+  <div style="padding:32px 20px 0">
+    <h2 style="font-family:var(--cond);font-weight:700;font-size:30px;letter-spacing:-.03em;margin:0 0 12px;line-height:1">How it connects</h2>
+    <div style="border:1px solid var(--rule);background:var(--card);padding:14px">
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px">
+        <sc-for list="{{mini}}" as="c" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <sc-for list="{{c.rows}}" as="r" hint-placeholder-count="5">
+              <div style="height:13px;background:{{c.hue}};opacity:{{r.o}}"></div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:11px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-55)">
+        <span>Measures</span><span>Blocking</span><span>Routes</span><span>Built</span>
+      </div>
+    </div>
+    <p style="margin:9px 0 0;font-family:var(--mono);font-size:11px;color:var(--ink-55)">Tap to open full size. The hover detail is on the desktop view.</p>
+  </div>
+
+  <div style="padding:32px 20px 40px">
+    <h2 style="font-family:var(--cond);font-weight:700;font-size:30px;letter-spacing:-.03em;margin:0 0 14px;line-height:1">The measures</h2>
+    <div style="border-top:2px solid var(--ink)">
+      <sc-for list="{{measures}}" as="m" hint-placeholder-count="3">
+        <div style="padding:16px 0;border-bottom:1px solid var(--rule-soft)">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px">
+            <span style="font-family:var(--cond);font-weight:700;font-size:22px;letter-spacing:-.025em;line-height:1.1">{{m.name}}</span>
+            <span style="font-family:var(--mono);font-size:28px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:{{m.tone}};white-space:nowrap">{{m.figure}}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:14px;margin-top:6px;font-family:var(--mono);font-size:10.5px;color:var(--ink-55)">
+            <span>{{m.id}}</span>
+            <span style="color:{{m.tone}};letter-spacing:.08em;text-transform:uppercase">{{m.direction}}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":390,"height":1580}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const CLARET="#7a2e3f", PINE="#1f5c55", INK55="#6e6a60";
+    const rows = (n) => Array.from({length:n}, (_,i) => ({o: 1 - i*0.14}));
+    return {
+      facts: [
+        {label:"Binding constraint", asof:"2026-01-01", text:"Green premium against willingness to pay — a market constraint, acted on by 4 ranked measures."},
+        {label:"Decisive exposure", asof:"2026-08-21", text:"CBAM certificates — €75.46 per tonne of cost, borne by the importer."},
+        {label:"Pipeline", asof:"2025-11-19", text:"8 projects, the furthest of them operating (Brevik CCS); 4 at or past a final investment decision."},
+        {label:"The gap", asof:"2025", text:"Near-zero cement using CCS: 75–150% above a conventional plant."},
+        {label:"The latest", asof:"2025-11-19", text:"Slite CCS moved to paused on 19 November 2025."}
+      ],
+      mini: [
+        {hue:"#a1662f", rows: rows(5)},
+        {hue:"#8a3a93", rows: rows(5)},
+        {hue:"#417f33", rows: rows(4)},
+        {hue:"#3a6a9e", rows: rows(5)}
+      ],
+      measures: [
+        {name:"CBAM certificates", id:"cbam:FIN-03", figure:"€75.46", direction:"cost / t", tone:CLARET},
+        {name:"Free allocation phase-out", id:"ets:CBAM-01", figure:"€1.36", direction:"cost / t", tone:CLARET},
+        {name:"Innovation Fund grants", id:"ets:FND-03", figure:"€381 m", direction:"support", tone:PINE}
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

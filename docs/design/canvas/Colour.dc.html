@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    :root{
+      --ink:#211f1b; --ink-70:#3a3833; --ink-55:#6e6a60; --ink-25:#b3ae9f;
+      --paper:#fbfaf7; --paper-2:#f2f0e8; --card:#ffffff;
+      --rule:#ddd9cf; --rule-soft:#e7e3d9;
+      --sans:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+      --cond:"Helvetica Neue Condensed","HelveticaNeue-CondensedBold","Arial Narrow","Helvetica Neue",Helvetica,Arial,sans-serif;
+      --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    }
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+    a{color:var(--ink);text-decoration:none} a:hover{color:#2b54d8}
+    .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-55)}
+  </style>
+</helmet>
+
+<div style="width:1040px;background:var(--paper);padding:52px 48px 56px">
+  <p class="lbl" style="margin:0 0 16px">Colour, in four confined layers</p>
+  <h1 style="font-family:var(--cond);font-weight:700;font-size:62px;letter-spacing:-.04em;line-height:.98;margin:0 0 14px;max-width:19ch">One colour, one meaning</h1>
+  <p style="margin:0 0 40px;font-size:17px;line-height:1.5;color:var(--ink-70);max-width:74ch">Claret was burden, the brand rule, the link accent and every hover state. When one colour means four things it means nothing, and the casualty is the reading that has to survive: which way the money points.</p>
+
+  <div style="display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule)">
+    <sc-for list="{{layers}}" as="l" hint-placeholder-count="4">
+      <div style="background:var(--card);padding:26px 28px;display:grid;grid-template-columns:230px 1fr;gap:32px">
+        <div>
+          <div class="lbl" style="margin-bottom:9px">Layer {{l.n}}</div>
+          <div style="font-family:var(--cond);font-weight:700;font-size:27px;letter-spacing:-.025em;line-height:1.08">{{l.name}}</div>
+          <div style="display:flex;gap:6px;margin-top:14px">
+            <sc-for list="{{l.swatches}}" as="s" hint-placeholder-count="4">
+              <div style="width:48px">
+                <div style="height:48px;background:{{s.hex}};border:1px solid var(--rule)"></div>
+                <div style="font-family:var(--mono);font-size:8.5px;color:var(--ink-55);margin-top:5px;letter-spacing:-.02em">{{s.hex}}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:16px;line-height:1.5;color:var(--ink-70)">{{l.rule}}</div>
+          <div style="display:flex;gap:34px;margin-top:16px">
+            <div>
+              <div class="lbl" style="color:#1f5c55;margin-bottom:6px">Allowed</div>
+              <div style="font-size:13.5px;color:var(--ink-70);white-space:pre-line;line-height:1.55">{{l.allowed}}</div>
+            </div>
+            <div>
+              <div class="lbl" style="color:#7a2e3f;margin-bottom:6px">Refused by the gate</div>
+              <div style="font-size:13.5px;color:var(--ink-70);white-space:pre-line;line-height:1.55">{{l.refused}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="margin-top:44px;border-top:2px solid var(--ink);padding-top:22px">
+    <p class="lbl" style="margin:0 0 14px">How disjointness is decided</p>
+    <p style="margin:0 0 20px;font-size:16px;line-height:1.5;color:var(--ink-70);max-width:78ch">Not by eye. Every diagram hue and every sector accent is measured against claret, pine, signal and ink in CIE L*a*b*, and has to clear 30 &Delta;E. Twelve of the twenty sector accents failed the first time this ran &mdash; <span style="font-family:var(--mono);font-size:14px">--acc-auto</span> was nine &Delta;E from claret, which would have put a claret marker on the automotive page beside figures where claret means cost.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)">
+      <sc-for list="{{deltas}}" as="d" hint-placeholder-count="4">
+        <div style="background:var(--card);padding:18px 20px">
+          <div style="display:flex;align-items:center;gap:9px">
+            <span style="width:15px;height:15px;background:{{d.hex}};display:block"></span>
+            <span style="font-family:var(--mono);font-size:11.5px">{{d.name}}</span>
+          </div>
+          <div style="margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--ink-55);white-space:pre-line;line-height:1.7">{{d.table}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="margin-top:38px;border-top:1px solid var(--rule);padding-top:20px">
+    <p class="lbl" style="margin:0 0 12px">Type has to be readable, which the layers do not decide</p>
+    <div style="display:flex;gap:1px;background:var(--rule);border:1px solid var(--rule)">
+      <sc-for list="{{contrast}}" as="c" hint-placeholder-count="5">
+        <div style="background:var(--card);padding:16px 20px;flex:1">
+          <div style="font-size:15px;color:{{c.hex}}">{{c.sample}}</div>
+          <div style="font-family:var(--mono);font-size:10.5px;color:var(--ink-55);margin-top:8px">{{c.name}}</div>
+          <div style="font-family:var(--mono);font-size:15px;color:{{c.verdictTone}};margin-top:3px">{{c.ratio}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1040,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      layers: [
+        {n:"1", name:"Signal blue", swatches:[{hex:"#2b54d8"},{hex:"#7f9bff"}],
+         rule:"Brand and chrome. One accent thread, a line and never a fill.",
+         allowed:"the seam in eu|fabric\nthe 3px brand rule\nfocus rings\ninteractive accents",
+         refused:"any data value\na background block\na sector or a status"},
+        {n:"2", name:"Claret and pine", swatches:[{hex:"#7a2e3f"},{hex:"#ecdadd"},{hex:"#1f5c55"},{hex:"#d4e2df"}],
+         rule:"Direction, and nothing else. Something lands on the firm, or it comes to it — whatever the unit.",
+         allowed:"cost and support on a euro figure\nburden and relief on a duty\nthe ledger, the strip, the net position",
+         refused:"a status, a readiness, a confidence\na material type\na link, a hover, a brand rule"},
+        {n:"3", name:"The diagram palette", swatches:[{hex:"#a1662f"},{hex:"#8a3a93"},{hex:"#417f33"},{hex:"#3a6a9e"}],
+         rule:"Inside diagrams only. Measure, bottleneck, technology, project — and an edge takes the hue of what it comes out of.",
+         allowed:"node kinds and their edges\nthe ego graph\nthe finding diagrams",
+         refused:"anywhere outside a picture\ntype of any size"},
+        {n:"4", name:"Sector accents", swatches:[{hex:"#897667"},{hex:"#3c618b"},{hex:"#7a5c3c"},{hex:"#617e44"}],
+         rule:"Page-level identity, one hue per sector. Twenty of them, re-cut by measurement.",
+         allowed:"the duotone wash on that sector's photograph\na section marker\nthe what-moved marks on its own page",
+         refused:"a figure, a diagram node\ntype of any size\na background block"}
+      ],
+      deltas: [
+        {name:"--dg-measure", hex:"#a1662f", table:"claret   41\npine     59\nsignal  113\nink      55"},
+        {name:"--dg-bottleneck", hex:"#8a3a93", table:"claret   43\npine     75\nsignal   40\nink      66"},
+        {name:"--dg-technology", hex:"#417f33", table:"claret   78\npine     41\nsignal  127\nink      60"},
+        {name:"--dg-project", hex:"#3a6a9e", table:"claret   54\npine     39\nsignal   51\nink      48"}
+      ],
+      contrast: [
+        {name:"--ink", hex:"#211f1b", sample:"Type", ratio:"14.7 : 1", verdictTone:"#1f5c55"},
+        {name:"--ink-70", hex:"#3a3833", sample:"Body copy", ratio:"10.5 : 1", verdictTone:"#1f5c55"},
+        {name:"--ink-55", hex:"#6e6a60", sample:"Muted, as-of dates", ratio:"4.8 : 1", verdictTone:"#1f5c55"},
+        {name:"--claret", hex:"#7a2e3f", sample:"Cost", ratio:"8.2 : 1", verdictTone:"#1f5c55"},
+        {name:"--pine", hex:"#1f5c55", sample:"Support", ratio:"6.9 : 1", verdictTone:"#1f5c55"}
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

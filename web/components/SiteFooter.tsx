@@ -32,7 +32,7 @@ export default function SiteFooter() {
       <div className="site-footer-inner">
         <div className="site-footer-grid">
           <div>
-            <Wordmark tone="dark" />
+            <Wordmark tone="dark" size="sm" />
             {/* The same reviewed descriptor the home head carries, read from
                 data/prose.json rather than written twice. The footer used to
                 have a statement of its own, which is how a product ends up
