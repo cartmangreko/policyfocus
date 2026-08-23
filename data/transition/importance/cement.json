@@ -32,7 +32,7 @@
           {
             "measure": "ets:FND-03",
             "direction": "support",
-            "amount": 381000000
+            "amount": 381000000.0
           }
         ],
         "net": 381000000.0
@@ -242,7 +242,7 @@
       "when": "ongoing",
       "duty": "",
       "money": {
-        "value": 381000000,
+        "value": 381000000.0,
         "scale": "eur_awarded",
         "model": "grant_programme",
         "direction": "support",
@@ -251,13 +251,13 @@
         "annual_total": null,
         "computable": true,
         "inputs": [
-          "gezero-geseke",
-          "anrav-devnya"
+          "innovation-fund-gezero",
+          "innovation-fund-anrav"
         ],
-        "formula": "sum of public_funding.amount_eur where public_funding.measure = this measure",
+        "formula": "sum of funding.amount where funding.under = this measure",
         "missing": [],
         "caveats": [
-          "Grant awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on this programme and not the provision this particular award was made under.",
+          "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
           "2 further funding line(s) under this measure carry no published amount and are not in the total, which is therefore a floor."
         ],
         "context": []

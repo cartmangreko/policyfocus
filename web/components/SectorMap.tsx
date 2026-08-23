@@ -14,17 +14,24 @@ import {
   TRANSITION_LABEL,
   byLastChange,
   eur,
+  fundingAmount,
+  fundingForProject,
   getBottlenecks,
+  getFunding,
+  getMaterials,
   getImportance,
   getLead,
   getParameters,
   getProjects,
+  getProject,
   getTechnologies,
+  getTechnology,
   getTransitions,
   lastChange,
   measureHref,
   projectHref,
   sourcesForSector,
+  type Material,
   type Parameter,
   type RankedMeasure,
 } from "@/lib/transition";
@@ -38,8 +45,9 @@ import type { SectorSlug } from "@/lib/types";
 //   3  key measures, ranked, with the score components visible
 //   4  bottlenecks, typed, with their parameters and the technologies that address them
 //   5  technologies, with readiness, cost and who is deploying them
-//   6  projects, sorted by last status change
-//   7  every source used on the page, grouped by publisher
+//   6  materials — what the sector makes, consumes and throws off
+//   7  projects, sorted by last status change, with the funding rollup
+//   8  every source used on the page, grouped by publisher
 //
 // The order is the argument: law, then what the law is up against, then what
 // gets past it, then who is actually building. Sections 3-6 repeat per
@@ -139,6 +147,26 @@ function ParameterChip({ p }: { p: Parameter }) {
   );
 }
 
+/** A material edge's endpoint, said in the reader's words rather than the
+ *  graph's. `project:brevik-ccs` is an id; "Brevik CCS" is what it is called. */
+function nodeLabel(node: string): string {
+  const [kind, id] = node.split(":");
+  if (kind === "sector") return SECTORS[id as SectorSlug] ?? id;
+  if (kind === "project") return getProject(id)?.name ?? id;
+  if (kind === "technology") return getTechnology(id)?.name ?? id;
+  return id;
+}
+
+/** Every sourced volume attached to a material's edges, deduplicated. The
+ *  material states no number of its own — each one is a parameter id, and the
+ *  chip renders the parameter with its quote and its source. */
+function volumes(m: Material): string[] {
+  const ids = [...m.produced_by, ...m.consumed_by, ...m.required_by]
+    .map((e) => e.volume)
+    .filter((v): v is string => Boolean(v));
+  return [...new Set(ids)];
+}
+
 export default function SectorMap({ slug }: { slug: SectorSlug }) {
   const name = SECTORS[slug];
   const imp = getImportance(slug)!;
@@ -146,6 +174,14 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   const technologies = getTechnologies(slug);
   const projects = byLastChange(getProjects(slug));
   const params = getParameters();
+  const materials = getMaterials(slug);
+  const funding = getFunding(slug);
+  // The rollup, derived here and stored nowhere. `undisclosed` is counted
+  // separately rather than folded in as zero: a grant nobody published is not
+  // a grant of nothing, and a total that pretended otherwise would read as
+  // complete.
+  const fundingTotal = funding.reduce((a, f) => a + (fundingAmount(f, params) ?? 0), 0);
+  const undisclosed = funding.filter((f) => fundingAmount(f, params) === null).length;
   const transitions = getTransitions(slug);
   const inView = imp.measures.filter((m) => m.in_sector_view);
 
@@ -419,6 +455,106 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
         </div>
       </section>
 
+      <section className="tmap-section" id="materials">
+        <h2>Materials</h2>
+        <p className="tmap-sub">
+          What the sector makes, consumes and throws off, and the volumes anybody has
+          published. Every edge names the document it was read from.
+        </p>
+        {materials.length === 0 ? (
+          <p className="tscore-note">No material recorded for this sector yet.</p>
+        ) : (
+          <div className="tmaterials">
+            {materials.map((m) => (
+              <article key={m.id} id={`material-${m.id}`} className="tmaterial">
+                <h3>
+                  {m.name} <span className={`tmat-type ${m.type}`}>{m.type.replace("_", " ")}</span>
+                </h3>
+                <p>{m.description}</p>
+                <dl>
+                  {m.cn_code ? (
+                    <>
+                      <dt>CN code</dt>
+                      <dd className="mono">{m.cn_code}</dd>
+                    </>
+                  ) : null}
+                  {m.produced_by.length > 0 ? (
+                    <>
+                      <dt>Produced by</dt>
+                      <dd>{m.produced_by.map((e) => nodeLabel(e.node)).join(", ")}</dd>
+                    </>
+                  ) : null}
+                  {m.consumed_by.length > 0 ? (
+                    <>
+                      <dt>Consumed by</dt>
+                      <dd>{m.consumed_by.map((e) => nodeLabel(e.node)).join(", ")}</dd>
+                    </>
+                  ) : null}
+                  {volumes(m).length > 0 ? (
+                    <>
+                      <dt>Volumes</dt>
+                      <dd>
+                        <ul className="tparams">
+                          {volumes(m).map((id) => {
+                            const q = params.get(id);
+                            return q ? <ParameterChip key={id} p={q} /> : null;
+                          })}
+                        </ul>
+                      </dd>
+                    </>
+                  ) : null}
+                </dl>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section className="tmap-section" id="funding">
+        <h2>Capital</h2>
+        <p className="tmap-sub">
+          Every allocation that finances a project here, with the basis it was made under
+          and how far it has got. Amounts are the published ones; an undisclosed amount is
+          shown as undisclosed rather than as nothing.
+        </p>
+        {funding.length === 0 ? (
+          <p className="tscore-note">No public capital recorded for this sector yet.</p>
+        ) : (
+          <>
+            <p className="tfunding-total">
+              {eur(fundingTotal)} recorded across {funding.length} allocations
+              {undisclosed > 0 ? `, ${undisclosed} of them undisclosed` : ""}.
+            </p>
+            <ul className="tfundings">
+              {funding.map((f) => {
+                const amount = fundingAmount(f, params);
+                return (
+                  <li key={f.id} id={`funding-${f.id}`}>
+                    <span className="amount">{amount ? eur(amount) : "undisclosed"}</span>
+                    <span className="programme">{f.programme}</span>
+                    <span className={`tstatus ${f.status}`}>{f.status}</span>
+                    <span className="tfunding-to">
+                      {f.finances.map((n, i) => (
+                        <span key={n}>
+                          {i > 0 ? ", " : ""}
+                          <Link href={projectHref(n.split(":")[1])}>{nodeLabel(n)}</Link>
+                        </span>
+                      ))}
+                    </span>
+                    {f.under ? (
+                      <Link href={measureHref(f.under)} className="measure">
+                        {f.under}
+                      </Link>
+                    ) : null}
+                    <span className="tfunding-date">{f.date}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        )}
+      </section>
+
       <section className="tmap-section" id="projects">
         <h2>Projects</h2>
         <p className="tmap-sub">Sorted by last status change. Every change carries its source.</p>
@@ -428,7 +564,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
               <tr>
                 <th>Project</th>
                 <th>Company</th>
-                <th>Plant</th>
+                <th>Site</th>
                 <th>Country</th>
                 <th>Technology</th>
                 <th>Status</th>
@@ -439,7 +575,8 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
             <tbody>
               {projects.map((p) => {
                 const last = lastChange(p);
-                const funded = p.public_funding.reduce((a, f) => a + (f.amount_eur ?? 0), 0);
+                const rows = fundingForProject(p.id);
+                const funded = rows.reduce((a, f) => a + (fundingAmount(f, params) ?? 0), 0);
                 return (
                   <tr key={p.id}>
                     <td>
@@ -453,7 +590,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                       <span className={`tstatus ${p.status}`}>{STATUS_LABEL[p.status]}</span>
                     </td>
                     <td className="num">
-                      {funded ? eur(funded) : p.public_funding.length ? "undisclosed" : "—"}
+                      {funded ? eur(funded) : rows.length ? "undisclosed" : "—"}
                     </td>
                     <td className="num">{last?.date ?? "—"}</td>
                   </tr>

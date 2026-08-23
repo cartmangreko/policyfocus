@@ -8,6 +8,8 @@ import {
   STATUS_LABEL,
   TRANSITION_LABEL,
   eur,
+  fundingAmount,
+  fundingForProject,
   getParameters,
   getProject,
   getProjects,
@@ -17,7 +19,7 @@ import {
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
 
-// One plant, and what has happened to it. Five blocks and nothing else:
+// One installation, and what has happened to it. Five blocks and nothing else:
 // header, status timeline, technology and measures, funding, sources.
 //
 // THE TIMELINE IS THE PAGE. Everything else here is also on the sector page in
@@ -62,6 +64,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
   const sector = project.sector as SectorSlug;
   const allParams = getParameters();
+  const funding = fundingForProject(project.id);
   const reached = new Set(project.status_history.map((h) => h.status));
   // The rail shows the ordinary forward path, with anything off it — paused,
   // cancelled — appended, so a stopped project reads as stopped rather than as
@@ -154,33 +157,37 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
         <section className="proj-section">
           <h2>Funding</h2>
-          {project.public_funding.length === 0 ? (
-            <p className="tscore-note">No public funding line recorded for this project.</p>
+          {/* Derived from data/transition/funding.json, never stored here: the
+              same award can finance several projects, so it is a node with an
+              edge to each of them rather than a line copied onto each one. */}
+          {funding.length === 0 ? (
+            <p className="tscore-note">No public capital recorded for this project.</p>
           ) : (
             <ul className="proj-funding">
-              {project.public_funding.map((f) => (
-                <li key={`${f.programme}-${f.source_url}`}>
-                  <span className="amount">
-                    {f.amount_eur ? eur(f.amount_eur) : "undisclosed"}
-                  </span>
-                  <span className="programme">{f.programme}</span>
-                  {f.measure ? (
-                    <Link href={measureHref(f.measure)} className="measure">
-                      {f.measure}
-                    </Link>
-                  ) : null}
-                  {f.measure_note ? <span className="note">{f.measure_note}</span> : null}
-                  {f.note ? <span className="note">{f.note}</span> : null}
-                  {f.parameter && allParams.get(f.parameter) ? (
-                    <span className="quote">
-                      “{allParams.get(f.parameter)!.source.verbatim}”
-                    </span>
-                  ) : null}
-                  <a href={f.source_url} target="_blank" rel="noreferrer">
-                    source
-                  </a>
-                </li>
-              ))}
+              {funding.map((f) => {
+                const amount = fundingAmount(f, allParams);
+                const quote = f.amount ? allParams.get(f.amount)?.source.verbatim : undefined;
+                return (
+                  <li key={f.id}>
+                    <span className="amount">{amount ? eur(amount) : "undisclosed"}</span>
+                    <span className="programme">{f.programme}</span>
+                    <span className={`tstatus ${f.status}`}>{f.status}</span>
+                    {f.under ? (
+                      <Link href={measureHref(f.under)} className="measure">
+                        {f.under}
+                      </Link>
+                    ) : null}
+                    {f.under_note ? <span className="note">{f.under_note}</span> : null}
+                    {f.amount_note ? <span className="note">{f.amount_note}</span> : null}
+                    {quote ? <span className="quote">&ldquo;{quote}&rdquo;</span> : null}
+                    {f.sources.map((src) => (
+                      <a key={src.url} href={src.url} target="_blank" rel="noreferrer">
+                        source
+                      </a>
+                    ))}
+                  </li>
+                );
+              })}
             </ul>
           )}
         </section>

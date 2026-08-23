@@ -48,6 +48,7 @@ def main() -> int:
         return 1
 
     params = sm.index(sm.load("parameter"))
+    funding_ids = {f["id"] for f in sm.load("funding")}
 
     for sector in sectors:
         path = bi.OUT_DIR / f"{sector}.json"
@@ -79,13 +80,15 @@ def main() -> int:
                     f"never attention")
 
             for pid in m["money"]["inputs"]:
-                if pid not in params and not pid.startswith(("cement-", "cbam-cement-")):
-                    # Project ids appear as inputs on the grant model; parameter ids
-                    # on the others. Anything else is a typo that would otherwise
-                    # show as a missing figure rather than as an error.
-                    if pid not in {p["id"] for p in sm.load("project")}:
-                        failures.append(f"{where}: money input {pid!r} is neither a "
-                                        f"parameter nor a project")
+                if pid in params or pid.startswith(("cement-", "cbam-cement-")):
+                    continue
+                # Funding ids appear as inputs on the grant model -- one input per
+                # award that contributed to the total; parameter ids on the others.
+                # Anything else is a typo that would otherwise show as a missing
+                # figure rather than as an error.
+                if pid not in funding_ids:
+                    failures.append(f"{where}: money input {pid!r} is neither a "
+                                    f"parameter nor a funding row")
 
     if failures:
         print(f"check_importance: {len(failures)} failures\n")

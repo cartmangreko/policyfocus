@@ -20,6 +20,8 @@ THE FILES
   data/transition/bottlenecks.json    one sector + one transition each
   data/transition/parameters.json     every number that any surface states
   data/transition/projects.json       real installations, append-only history
+  data/transition/materials.json      what a sector makes, consumes and throws off
+  data/transition/funding.json        capital allocated, and what it was allocated under
   data/transition/measure_labels.json what a measure is CALLED on a diagram
 
 Each file is {"_comment": [...], "<kind>s": [ ... ]} -- the same arrangement
@@ -138,6 +140,45 @@ INSTRUMENTS = (
 # is worse than no label at all.
 MAX_SHORT_LABEL = 26
 
+# What a material IS in the chain, which is the only thing that decides where it
+# is drawn. `by_product` and `waste_stream` are kept apart on purpose: a
+# by-product has a buyer (granulated slag is sold into cement), a waste stream
+# does not yet (captured CO2 has to be paid to take away), and a sector page
+# that grouped them would be asserting a market that may not exist.
+MATERIAL_TYPES = (
+    "feedstock",
+    "intermediate",
+    "energy_carrier",
+    "by_product",
+    "waste_stream",
+)
+
+# How the money arrives. Capital allocation is a first-class object here rather
+# than a field on a project, because the same decision often finances several
+# projects, and a field on one of them cannot say so.
+FUNDING_INSTRUMENTS = (
+    "grant",
+    "state_aid",
+    "eib_financing",
+    "ipcei",
+    "auction_support",
+    "equity",
+    "project_finance",
+    "guarantee",
+)
+
+# Where the money has got to. A press release announcing a grant, a Commission
+# decision approving it, a signed agreement and a disbursement are four
+# different facts, and a page that showed them as one would let an announcement
+# read as money in the ground.
+FUNDING_STATUSES = (
+    "announced",
+    "approved",
+    "signed",
+    "disbursed",
+    "withdrawn",
+)
+
 CONFIDENCE = ("primary", "secondary", "estimate")
 
 # Scope of a parameter value. `country:XX` and `plant:<id>` are checked by
@@ -157,6 +198,8 @@ _FILES = {
     "bottleneck": ("bottlenecks.json", "bottlenecks"),
     "parameter": ("parameters.json", "parameters"),
     "project": ("projects.json", "projects"),
+    "material": ("materials.json", "materials"),
+    "funding": ("funding.json", "funding"),
 }
 
 

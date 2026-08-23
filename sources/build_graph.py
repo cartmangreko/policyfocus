@@ -41,7 +41,10 @@ that starts on an act and ends on a plant.
   technology:<slug>           a way of making the product differently
   bottleneck:<slug>           a named constraint on one sector's transition
   parameter:<slug>            one sourced number, with the sentence it came from
-  project:<slug>              one real plant, with an append-only status history
+  project:<slug>              one real installation, append-only status history
+  material:<slug>             what a sector makes, consumes or throws off
+  funding:<slug>              one capital allocation, with the basis it was made
+                              under
 
 A NOTE ON MEASURE IDS.  The original spec said measure:<file>:<provision_id>.
 provision_id cannot carry that role: it is set on only 25 of 146 rows, and it
@@ -53,7 +56,7 @@ provision_id is preserved as a node attribute, which is what makes the
 "which rows came from one provision" query answerable without it being the id.
 
 
-EDGE RELATIONS  (exactly fifteen, closed)
+EDGE RELATIONS  (closed)
 =========================================
   amends       act -> act         an act amends an earlier act
   repeals      act -> act         an act repeals an earlier act outright. Kept
@@ -88,21 +91,27 @@ so that country-level views can be added later without moving these.
                parameter -> measure
                parameter -> sector
   deploys      project -> technology    this plant is building it
-  funded_by    project -> measure       public money flowing under a measure the
-                                        register carries. Empty today: the
-                                        Innovation Fund grants in the data name a
-                                        programme, and the register has read the
-                                        ETS revision rather than the Fund's own
-                                        decisions.
-  in           project -> sector        where the plant sits
+  finances     funding -> project       the money arrives here
+  supports     funding -> technology    what it is being spent on
+  under        funding -> measure       the legal basis, where the register
+                                        carries one. Norway's Longship does not
+                                        get one: it is a national decision
+                                        outside the register's perimeter, and an
+                                        edge asserting otherwise would be an
+                                        invented legal basis.
+  produces     sector -> material       ... or project -> material
+  consumes     sector -> material       ... or technology -> material
+  substitutes  material -> material     this one can stand in for that one
+  in           project -> sector        where the installation sits
                project -> country
+               funding -> country        where the money lands
   depends_on   technology -> technology one technology cannot run without another
                                         (capture without transport and storage).
                                         Shares its name with the measure -> act
                                         dependency deliberately: it is the same
                                         relation about a different object.
 
-These eight are the TRANSITION edges. They come from data/transition/*.json and
+These are the TRANSITION edges. They come from data/transition/*.json and
 carry the same since/evidence discipline as everything else: an edge whose
 evidence pointer does not resolve to a curated file is a build failure.
 
@@ -698,6 +707,14 @@ def _transition_edges(g: Graph):
                    company=pr["company"], plant=pr.get("plant"),
                    country=pr["country"], status=pr["status"],
                    transition=pr["transition"])
+    for m in kinds["material"]:
+        g.add_node(f"material:{m['id']}", "material", m["name"],
+                   type=m["type"], cn_code=m.get("cn_code"),
+                   prodcom_code=m.get("prodcom_code"), sectors=m["sectors"])
+    for f in kinds["funding"]:
+        g.add_node(f"funding:{f['id']}", "funding", f["name"],
+                   instrument=f["instrument"], programme=f["programme"],
+                   status=f["status"], date=f["date"], country=f["country"])
 
     # technology -> technology, technology -> bottleneck
     for t in kinds["technology"]:
@@ -754,14 +771,6 @@ def _transition_edges(g: Graph):
             g.add_edge("deploys", src, f"technology:{tid}", first,
                        {"source": "data/transition/projects.json",
                         "path": f"[id={pr['id']}].technology"})
-        for f in pr.get("public_funding") or []:
-            if not f.get("measure"):
-                continue
-            file_slug, row_id = f["measure"].split(":", 1)
-            g.add_edge("funded_by", src, f"measure:{file_slug}:{row_id}", first,
-                       {"source": "data/transition/projects.json",
-                        "path": f"[id={pr['id']}].public_funding[{f['programme']}]"},
-                       basis=f["programme"])
         g.add_edge("in", src, f"sector:{pr['sector']}", first,
                    {"source": "data/transition/projects.json",
                     "path": f"[id={pr['id']}].sector"},
@@ -774,6 +783,58 @@ def _transition_edges(g: Graph):
         g.add_edge("in", src, f"country:{pr['country']}", first,
                    {"source": "data/transition/projects.json",
                     "path": f"[id={pr['id']}].country"},
+                   basis="country")
+
+    # material edges. Every one of them is recorded on the material row, so the
+    # direction here is a re-read rather than a decision: `produced_by` becomes
+    # `produces` pointing the other way, and so on.
+    for m in kinds["material"]:
+        dst = f"material:{m['id']}"
+        for edge in m.get("produced_by") or []:
+            g.add_edge("produces", edge["node"], dst, edge["since"],
+                       {"source": "data/transition/materials.json",
+                        "path": f"[id={m['id']}].produced_by[{edge['node']}]",
+                        "quote": (edge.get("evidence") or {}).get("quote", "")[:400]},
+                       volume=edge.get("volume"))
+        for edge in m.get("consumed_by") or []:
+            g.add_edge("consumes", edge["node"], dst, edge["since"],
+                       {"source": "data/transition/materials.json",
+                        "path": f"[id={m['id']}].consumed_by[{edge['node']}]",
+                        "quote": (edge.get("evidence") or {}).get("quote", "")[:400]},
+                       volume=edge.get("volume"))
+        for edge in m.get("required_by") or []:
+            g.add_edge("depends_on", edge["node"], dst, edge["since"],
+                       {"source": "data/transition/materials.json",
+                        "path": f"[id={m['id']}].required_by[{edge['node']}]"})
+        for edge in m.get("substitutes") or []:
+            g.add_edge("substitutes", dst, f"material:{edge['material']}", edge["since"],
+                       {"source": "data/transition/materials.json",
+                        "path": f"[id={m['id']}].substitutes[{edge['material']}]"})
+
+    # funding edges. `under` is the one that earns the kind its place: it is the
+    # first time this graph can walk from a euro in a plant back to the article
+    # it was paid under.
+    for f in kinds["funding"]:
+        src = f"funding:{f['id']}"
+        for node in f.get("finances") or []:
+            g.add_edge("finances", src, node, f["date"],
+                       {"source": "data/transition/funding.json",
+                        "path": f"[id={f['id']}].finances"},
+                       instrument=f["instrument"], status=f["status"])
+        for node in f.get("supports") or []:
+            g.add_edge("supports", src, node, f["date"],
+                       {"source": "data/transition/funding.json",
+                        "path": f"[id={f['id']}].supports"})
+        if f.get("under"):
+            file_slug, row_id = f["under"].split(":", 1)
+            g.add_edge("under", src, f"measure:{file_slug}:{row_id}", f["date"],
+                       {"source": "data/transition/funding.json",
+                        "path": f"[id={f['id']}].under"},
+                       programme=f["programme"])
+        g.add_node(f"country:{f['country']}", "country", f["country"])
+        g.add_edge("in", src, f"country:{f['country']}", f["date"],
+                   {"source": "data/transition/funding.json",
+                    "path": f"[id={f['id']}].country"},
                    basis="country")
 
 
@@ -932,7 +993,8 @@ def gate(g: Graph):
     problems: list[str] = []
 
     kinds = {"act", "measure", "sector", "country",
-             "technology", "bottleneck", "parameter", "project"}
+             "technology", "bottleneck", "parameter", "project",
+             "material", "funding"}
     for node in g.nodes.values():
         if node["kind"] not in kinds:
             problems.append(f"node {node['id']} has kind {node['kind']!r}, outside the closed set")
@@ -950,7 +1012,8 @@ def gate(g: Graph):
         "amends": {("act", "act")},
         "repeals": {("act", "act")},
         "cites": {("measure", "act")},
-        "depends_on": {("measure", "act"), ("technology", "technology")},
+        "depends_on": {("measure", "act"), ("technology", "technology"),
+                       ("technology", "material")},
         "contains": {("act", "measure")},
         "applies_to": {("measure", "sector")},
         "supplies": {("sector", "sector")},
@@ -962,8 +1025,19 @@ def gate(g: Graph):
         "quantifies": {("parameter", "technology"), ("parameter", "bottleneck"),
                        ("parameter", "measure"), ("parameter", "sector")},
         "deploys": {("project", "technology")},
-        "funded_by": {("project", "measure")},
-        "in": {("project", "sector"), ("project", "country")},
+        # funded_by is gone. It said "this plant took public money under that
+        # article", which is one fact split across two objects: the money itself
+        # had no node, so the edge had to carry the programme as an attribute
+        # and could not say that one award financed several plants. The funding
+        # node says both, and `finances` + `under` are the same walk in two hops.
+        "finances": {("funding", "project")},
+        "supports": {("funding", "technology")},
+        "under": {("funding", "measure")},
+        "produces": {("sector", "material"), ("project", "material")},
+        "consumes": {("sector", "material"), ("technology", "material")},
+        "substitutes": {("material", "material")},
+        "in": {("project", "sector"), ("project", "country"),
+               ("funding", "country")},
     }
     for e in g.edges:
         if e["rel"] not in allowed:

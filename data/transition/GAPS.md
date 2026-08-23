@@ -1,4 +1,4 @@
-# What the cement transition map is missing
+# What the cement layer is missing
 
 This file is part of the data. Everything in `data/transition/` is sourced to a
 quoted sentence, which means everything that could not be sourced is *absent* —
@@ -75,6 +75,43 @@ production of 179.5 Mt/a — secondary, and old enough to want checking.
 
 ---
 
+## Materials
+
+### Slag and fly ash — the clinker substitute
+
+The material layer carries clinker and captured CO2 and not the third material
+the brief asks for. The reason is the rule rather than the effort: an edge here
+carries `since` and `evidence` like every other edge in this repository, and no
+source stating the substitution has been read. Nothing in the fetched texts
+mentions granulated blast-furnace slag or fly ash — CBAM's cement annex lists
+clinker, Portland cement and calcined clay, and the IAA's low-carbon procurement
+annex names concrete without naming what goes into it.
+
+What would fill it: CEN EN 197-1, which defines the cement types by their
+clinker share and is the document the substitution ratio actually lives in; or
+the IEA cement technology roadmap for the EU average clinker-to-cement ratio.
+Either gives the material, its `substitutes` edge to clinker, and the number
+that makes the edge worth drawing.
+
+It is worth more than its size suggests. Slag is the one material that would
+join two sectors honestly — it leaves steel as a by-product and arrives in
+cement as a feedstock, one node with an edge on each side — and the bottleneck
+the original brief names, SCM supply falling as blast furnaces close, cannot be
+stated until it exists.
+
+### The CRMA strategic raw materials list, as stub nodes
+
+Amendment brief 2 asks for the Critical Raw Materials Act's strategic list
+ingested as stubs, for the sectors that come after cement — storage needs
+lithium, graphite and black mass on day one. `sources/crma.txt` carries the
+articles and not the annexes: Art. 3 says the list is in Annex I, Section 1,
+and Annex I is not in the fetched text. `sources/fetch_eurlex.py` against CELEX
+32024R1252 with the annexes included is the whole of the work, and it is
+ingestion rather than schema — the material kind is built and takes them as
+they are.
+
+---
+
 ## Technologies
 
 Four of the seven in the brief are absent, each for the same reason: no source
@@ -102,11 +139,14 @@ projects.
 
 Two project-level facts are missing from rows that exist:
 
-- **Brevik's public funding share.** The Heidelberg release places the plant
-  inside Longship without an amount, so `amount_eur` is null with a note. The
-  Norwegian government's own Longship documents carry the figure, and it matters
-  more than most: Brevik is the worked example, and the state's share of it is
-  the number the `cement-subsidy-dependence` bottleneck is really about.
+- **Brevik's share of Longship.** The Heidelberg release places the plant
+  inside Longship without an amount, so the funding row's `amount` is null with
+  a note. The Norwegian government's own Longship documents carry the figure,
+  and it matters more than most: Brevik is the worked example, and the state's
+  share of it is the number the `cement-subsidy-dependence` bottleneck is really
+  about. Two of the four Innovation Fund rows are undisclosed for the same
+  reason — the company announced the award and not the size — and the
+  Commission's own award tables would close all three at once.
 - **Status histories start late.** Several histories begin at the grant or the
   groundbreaking rather than at the announcement, because no primary source for
   the earlier event has been read. The watch agent's project channel will extend

@@ -22813,6 +22813,18 @@
   }
  },
  {
+  "rel": "consumes",
+  "from": "technology:co2-transport-storage",
+  "to": "material:captured-co2",
+  "since": "2024-06-13",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].consumed_by[technology:co2-transport-storage]",
+   "quote": "Member States shall take the necessary measures to enable access to CO2 transport networks and to storage sites for the purposes of geological storage of the produced and captured CO2 as far as it is economically feasible to do so or when a potential customer is willing to pay, in accordance with Article 21 of Directive 2009/31/EC."
+  },
+  "volume": null
+ },
+ {
   "rel": "contains",
   "from": "act:32024R1252",
   "to": "measure:crma:CBEN-01",
@@ -27879,48 +27891,76 @@
   }
  },
  {
-  "rel": "funded_by",
-  "from": "project:anrav-devnya",
-  "to": "measure:ets:FND-03",
+  "rel": "finances",
+  "from": "funding:france-relance-k6",
+  "to": "project:k6-lumbres",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=france-relance-k6].finances"
+  },
+  "instrument": "state_aid",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-anrav",
+  "to": "project:anrav-devnya",
   "since": "2023-01-20",
   "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=anrav-devnya].public_funding[EU Innovation Fund]"
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-anrav].finances"
   },
-  "basis": "EU Innovation Fund"
+  "instrument": "grant",
+  "status": "approved"
  },
  {
-  "rel": "funded_by",
-  "from": "project:carbon2business-lagerdorf",
-  "to": "measure:ets:FND-03",
-  "since": "2023",
+  "rel": "finances",
+  "from": "funding:innovation-fund-carbon2business",
+  "to": "project:carbon2business-lagerdorf",
+  "since": "2024-04-22",
   "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=carbon2business-lagerdorf].public_funding[EU Innovation Fund]"
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-carbon2business].finances"
   },
-  "basis": "EU Innovation Fund"
+  "instrument": "grant",
+  "status": "approved"
  },
  {
-  "rel": "funded_by",
-  "from": "project:gezero-geseke",
-  "to": "measure:ets:FND-03",
+  "rel": "finances",
+  "from": "funding:innovation-fund-gezero",
+  "to": "project:gezero-geseke",
   "since": "2023-12-15",
   "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=gezero-geseke].public_funding[EU Innovation Fund]"
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-gezero].finances"
   },
-  "basis": "EU Innovation Fund"
+  "instrument": "grant",
+  "status": "approved"
  },
  {
-  "rel": "funded_by",
-  "from": "project:go4zero-obourg",
-  "to": "measure:ets:FND-03",
+  "rel": "finances",
+  "from": "funding:innovation-fund-go4zero",
+  "to": "project:go4zero-obourg",
   "since": "2024-05-16",
   "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=go4zero-obourg].public_funding[EU Innovation Fund]"
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-go4zero].finances"
   },
-  "basis": "EU Innovation Fund"
+  "instrument": "grant",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:longship-brevik",
+  "to": "project:brevik-ccs",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=longship-brevik].finances"
+  },
+  "instrument": "state_aid",
+  "status": "approved"
  },
  {
   "rel": "imports_from",
@@ -29828,6 +29868,72 @@
  },
  {
   "rel": "in",
+  "from": "funding:france-relance-k6",
+  "to": "country:FR",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=france-relance-k6].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-anrav",
+  "to": "country:BG",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-anrav].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-carbon2business",
+  "to": "country:DE",
+  "since": "2024-04-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-carbon2business].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-gezero",
+  "to": "country:DE",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-gezero].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-go4zero",
+  "to": "country:BE",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-go4zero].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:longship-brevik",
+  "to": "country:NO",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=longship-brevik].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
   "from": "project:anrav-devnya",
   "to": "country:BG",
   "since": "2023-01-20",
@@ -30001,6 +30107,78 @@
    "path": "[id=slite-ccs].sector"
   },
   "basis": "sector"
+ },
+ {
+  "rel": "produces",
+  "from": "project:anrav-devnya",
+  "to": "material:captured-co2",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:anrav-devnya]",
+   "quote": "will have a capture capacity of about 800,000 t CO₂ per year"
+  },
+  "volume": "anrav-capture-capacity"
+ },
+ {
+  "rel": "produces",
+  "from": "project:brevik-ccs",
+  "to": "material:captured-co2",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:brevik-ccs]",
+   "quote": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
+  },
+  "volume": "brevik-capture-capacity"
+ },
+ {
+  "rel": "produces",
+  "from": "project:carbon2business-lagerdorf",
+  "to": "material:captured-co2",
+  "since": "2024-04-22",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:carbon2business-lagerdorf]",
+   "quote": "capture more than 1.2 million tons of CO2 emissions annually"
+  },
+  "volume": "carbon2business-capture-capacity"
+ },
+ {
+  "rel": "produces",
+  "from": "project:gezero-geseke",
+  "to": "material:captured-co2",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:gezero-geseke]",
+   "quote": "capturing 700,000 tonnes of CO₂ annually from 2029."
+  },
+  "volume": "gezero-capture-capacity"
+ },
+ {
+  "rel": "produces",
+  "from": "project:ifestos-kamari",
+  "to": "material:captured-co2",
+  "since": "2023-07-14",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:ifestos-kamari]",
+   "quote": "an absolute annual GHG emissions avoidance of more than 1.9 million tons of CO2"
+  },
+  "volume": "ifestos-capture-capacity"
+ },
+ {
+  "rel": "produces",
+  "from": "sector:cement",
+  "to": "material:clinker",
+  "since": "2026-06-26",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=clinker].produced_by[sector:cement]",
+   "quote": "Grey cement clinker | 0,689 | 0,656"
+  },
+  "volume": null
  },
  {
   "rel": "quantifies",
@@ -31621,6 +31799,110 @@
   "share_pct": 2.4,
   "share_basis": "percent of the supplying sector's total output",
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supports",
+  "from": "funding:france-relance-k6",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=france-relance-k6].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-anrav",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-anrav].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-carbon2business",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-04-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-carbon2business].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-gezero",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-gezero].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-go4zero",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-go4zero].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:longship-brevik",
+  "to": "technology:ccs-post-combustion",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=longship-brevik].supports"
+  }
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-anrav",
+  "to": "measure:ets:FND-03",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-anrav].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-carbon2business",
+  "to": "measure:ets:FND-03",
+  "since": "2024-04-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-carbon2business].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-gezero",
+  "to": "measure:ets:FND-03",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-gezero].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-go4zero",
+  "to": "measure:ets:FND-03",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-go4zero].under"
+  },
+  "programme": "EU Innovation Fund"
  },
  {
   "rel": "worsens",

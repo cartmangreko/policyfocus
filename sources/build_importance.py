@@ -223,7 +223,34 @@ def model_cbam_certificates(params: dict, year: int) -> dict:
                   ])
 
 
-def model_grant_programme(measure_id: str, projects: list[dict]) -> dict:
+# What a euro parameter is denominated in. Explicit and closed: a funding row
+# names the sourced parameter rather than restating its number, so the code has
+# to do the conversion, and a conversion inferred from a string it has never
+# seen is how a €191 million grant becomes €191.
+EUR_UNITS = {
+    "EUR": 1,
+    "EUR million": 1_000_000,
+    "EUR billion": 1_000_000_000,
+}
+
+
+def _eur(param: dict | None) -> float | None:
+    """A sourced amount in euros, or None. Raises on a unit nobody has ruled on."""
+    if not param:
+        return None
+    scale = EUR_UNITS.get(param["unit"])
+    if scale is None:
+        raise SystemExit(
+            f"build_importance: parameter {param['id']!r} is a funding amount in "
+            f"{param['unit']!r}, which is not in EUR_UNITS {list(EUR_UNITS)} — add the "
+            f"unit deliberately rather than letting the total be wrong by a factor of a "
+            f"million"
+        )
+    return float(param["value"]) * scale
+
+
+def model_grant_programme(measure_id: str, funding: list[dict], params: dict,
+                          project_ids: set[str]) -> dict:
     """Public money awarded to this sector's projects UNDER THIS MEASURE.
 
     A funding line counts only where it names a register measure, and the notes
@@ -240,21 +267,26 @@ def model_grant_programme(measure_id: str, projects: list[dict]) -> dict:
     contributing = []
     caveats = []
     unpriced = 0
-    for p in projects:
-        for f in p.get("public_funding") or []:
-            if f.get("measure") != measure_id:
-                continue
-            if f.get("amount_eur"):
-                total += f["amount_eur"]
-                contributing.append(p["id"])
-            else:
-                unpriced += 1
-            if f.get("measure_note") and f["measure_note"] not in caveats:
-                caveats.append(f["measure_note"])
-    formula = "sum of public_funding.amount_eur where public_funding.measure = this measure"
+    for f in funding:
+        if f.get("under") != measure_id:
+            continue
+        # Money that lands outside this sector's projects is somebody else's
+        # fact. The funding node is shared across sectors by design, so the
+        # filter is here rather than in the loader.
+        if not any(n.split(":", 1)[1] in project_ids for n in f.get("finances", [])):
+            continue
+        amount = _eur(params.get(f["amount"])) if f.get("amount") else None
+        if amount:
+            total += amount
+            contributing.append(f["id"])
+        else:
+            unpriced += 1
+        if f.get("under_note") and f["under_note"] not in caveats:
+            caveats.append(f["under_note"])
+    formula = "sum of funding.amount where funding.under = this measure"
     if not contributing:
         return _money(None, "eur_awarded", "grant_programme", [], formula,
-                      ["no project funding line names this measure"],
+                      ["no funding row names this measure as its legal basis"],
                       direction="support", bearer="project_developer")
     if unpriced:
         caveats.append(f"{unpriced} further funding line(s) under this measure carry no published "
@@ -284,7 +316,8 @@ MODELS = {
 }
 
 
-def money_for(measure_id: str, params: dict, projects: list[dict], year: int) -> dict:
+def money_for(measure_id: str, params: dict, funding: list[dict],
+              project_ids: set[str], year: int) -> dict:
     model = MODELS.get(measure_id)
     if model == "free_allocation_phaseout":
         score = model_free_allocation_phaseout(params, year)
@@ -299,7 +332,7 @@ def money_for(measure_id: str, params: dict, projects: list[dict], year: int) ->
     if model == "cbam_certificates":
         return model_cbam_certificates(params, year)
     if model == "grant_programme":
-        return model_grant_programme(measure_id, projects)
+        return model_grant_programme(measure_id, funding, params, project_ids)
     return _money(None, None, None, [], None,
                   ["no money model applies to this measure"])
 
@@ -327,7 +360,7 @@ def load_overrides() -> dict:
     return json.loads(OVERRIDES_FILE.read_text(encoding="utf-8")).get("overrides", {})
 
 
-def register_rows(sector: str, projects: list[dict]) -> list[dict]:
+def register_rows(sector: str, funding: list[dict], project_ids: set[str]) -> list[dict]:
     """The measures this sector's ranking considers, and how each one got here.
 
     TWO WAYS IN, and the second one is new. The first is the register's own
@@ -347,10 +380,13 @@ def register_rows(sector: str, projects: list[dict]) -> list[dict]:
     measure is there rather than leaving a reader to assume the text names them.
     """
     funded_by: dict[str, list[str]] = {}
-    for p in projects:
-        for f in p.get("public_funding") or []:
-            if f.get("measure"):
-                funded_by.setdefault(f["measure"], []).append(p["id"])
+    for f in funding:
+        if not f.get("under"):
+            continue
+        for node in f.get("finances", []):
+            pid = node.split(":", 1)[1]
+            if pid in project_ids:
+                funded_by.setdefault(f["under"], []).append(pid)
 
     rows = []
     files = json.loads((sm.ROOT / "sources" / "register_files.json").read_text(encoding="utf-8"))
@@ -373,6 +409,8 @@ def build(sector: str, year: int) -> dict:
     params = sm.index(sm.load("parameter"))
     bottlenecks = sm.load("bottleneck")
     projects = [p for p in sm.load("project") if p["sector"] == sector]
+    project_ids = {p["id"] for p in projects}
+    funding = sm.load("funding")
     attention = load_attention()
     overrides = load_overrides().get(sector, {})
 
@@ -392,10 +430,10 @@ def build(sector: str, year: int) -> dict:
             })
 
     scored = []
-    for entry in register_rows(sector, projects):
+    for entry in register_rows(sector, funding, project_ids):
         slug, row = entry["file"], entry["row"]
         mid = f"{slug}:{row['id']}"
-        money = money_for(mid, params, projects, year)
+        money = money_for(mid, params, funding, project_ids, year)
         edges = linkage.get(mid, [])
         weight_sum = round(sum(e["weight"] for e in edges), 3)
         count = attention["counts"].get(mid, 0) if attention["available"] else None

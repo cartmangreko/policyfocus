@@ -4,13 +4,16 @@ import {
   STATUS_LABEL,
   byLastChange,
   eur,
+  fundingAmount,
+  fundingForProject,
+  getParameters,
   getProjects,
   lastChange,
   projectHref,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
 
-// The home page's feed: what moved at a real plant, most recent first.
+// The home page's feed: what moved, most recent first.
 //
 // WHY THIS AND NOT THE LEGISLATIVE FEED. Both are real, and only one of them
 // is evidence that the law is doing anything. A proposal moving through
@@ -23,6 +26,7 @@ import type { SectorSlug } from "@/lib/types";
 // append-only data the project page draws as a timeline.
 
 export default function ProjectChanges({ limit = 6 }: { limit?: number }) {
+  const params = getParameters();
   const rows = byLastChange(getProjects())
     .map((p) => ({ project: p, event: lastChange(p) }))
     .filter((r) => r.event)
@@ -33,7 +37,12 @@ export default function ProjectChanges({ limit = 6 }: { limit?: number }) {
   return (
     <ol className="pchanges">
       {rows.map(({ project: p, event }) => {
-        const funded = p.public_funding.reduce((a, f) => a + (f.amount_eur ?? 0), 0);
+        // Derived, never stored: the project's funding rollup is summed from
+        // the funding rows that name it, every time it is shown.
+        const funded = fundingForProject(p.id).reduce(
+          (a, f) => a + (fundingAmount(f, params) ?? 0),
+          0,
+        );
         return (
           <li key={p.id} className={`pchange ${event!.status}`}>
             <span className="pchange-date">{event!.date}</span>

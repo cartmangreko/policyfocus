@@ -111,6 +111,7 @@ export interface Bottleneck {
   sources: Source[];
 }
 
+/** @deprecated Replaced by the funding node. Kept only until nothing imports it. */
 export interface FundingLine {
   programme: string;
   amount_eur: number | null;
@@ -141,7 +142,78 @@ export interface Project {
   investment_total?: { value: number; unit: string; parameter?: string };
   status: ProjectStatus;
   status_history: StatusEvent[];
-  public_funding: FundingLine[];
+  sources: Source[];
+}
+
+// --- materials and funding ------------------------------------------------
+//
+// Two node kinds added in amendment brief 2 §2. Both are read the same way as
+// everything else here: the file is curated, sources/check_sector_schema.py
+// gates it, and nothing in this module validates or derives.
+
+export type MaterialType =
+  | "feedstock"
+  | "intermediate"
+  | "energy_carrier"
+  | "by_product"
+  | "waste_stream";
+
+export interface MaterialEdge {
+  node: string;
+  since: string;
+  volume: string | null;
+  volume_note?: string;
+  evidence: { source: string; path?: string; quote?: string; note?: string };
+}
+
+export interface Material {
+  id: string;
+  name: string;
+  type: MaterialType;
+  cn_code: string | null;
+  prodcom_code: string | null;
+  sectors: string[];
+  description: string;
+  produced_by: MaterialEdge[];
+  consumed_by: MaterialEdge[];
+  substitutes: { material: string; since: string; evidence: MaterialEdge["evidence"] }[];
+  required_by: MaterialEdge[];
+  sources: Source[];
+}
+
+export type FundingInstrument =
+  | "grant"
+  | "state_aid"
+  | "eib_financing"
+  | "ipcei"
+  | "auction_support"
+  | "equity"
+  | "project_finance"
+  | "guarantee";
+
+export type FundingStatus =
+  | "announced"
+  | "approved"
+  | "signed"
+  | "disbursed"
+  | "withdrawn";
+
+export interface Funding {
+  id: string;
+  name: string;
+  instrument: FundingInstrument;
+  programme: string;
+  under: string | null;
+  under_note?: string;
+  /** A parameter id, never a number: the amount exists in parameters.json with
+   *  the sentence it was read from, or it does not exist. */
+  amount: string | null;
+  amount_note?: string | null;
+  date: string;
+  status: FundingStatus;
+  finances: string[];
+  supports: string[];
+  country: string;
   sources: Source[];
 }
 
@@ -220,6 +292,8 @@ let cache: {
   bottlenecks: Bottleneck[];
   parameters: Parameter[];
   projects: Project[];
+  materials: Material[];
+  funding: Funding[];
 } | null = null;
 
 function all() {
@@ -229,6 +303,8 @@ function all() {
       bottlenecks: read<Bottleneck>("bottlenecks.json", "bottlenecks"),
       parameters: read<Parameter>("parameters.json", "parameters"),
       projects: read<Project>("projects.json", "projects"),
+      materials: read<Material>("materials.json", "materials"),
+      funding: read<Funding>("funding.json", "funding"),
     };
   }
   return cache;
@@ -245,6 +321,38 @@ export function getProjects(sector?: string): Project[] {
 
 export function getProject(id: string): Project | undefined {
   return all().projects.find((p) => p.id === id);
+}
+
+/** Materials a sector makes, consumes or throws off. Shared nodes, like
+ *  technologies: slag leaving steel and arriving in cement is one row. */
+export function getMaterials(sector: string): Material[] {
+  return all().materials.filter((m) => m.sectors.includes(sector));
+}
+
+/** Every capital allocation that finances a project in this sector. */
+export function getFunding(sector: string): Funding[] {
+  const ids = new Set(getProjects(sector).map((p) => `project:${p.id}`));
+  return all().funding.filter((f) => f.finances.some((n) => ids.has(n)));
+}
+
+/** One project's funding rows. THE ROLLUP IS DERIVED, always: the total is
+ *  computed from these wherever it is shown and never stored back on the
+ *  project, because a stored total is a second copy of a number and a second
+ *  copy is a number that will eventually disagree with the first. */
+export function fundingForProject(id: string): Funding[] {
+  return all().funding.filter((f) => f.finances.includes(`project:${id}`));
+}
+
+/** A funding row's amount in euros, from its sourced parameter. `null` covers
+ *  both "no amount recorded" and "recorded as unpublished" — the caller shows
+ *  amount_note for the difference. */
+export function fundingAmount(f: Funding, params: Map<string, Parameter>): number | null {
+  if (!f.amount) return null;
+  const p = params.get(f.amount);
+  if (!p) return null;
+  const scale =
+    p.unit === "EUR" ? 1 : p.unit === "EUR million" ? 1e6 : p.unit === "EUR billion" ? 1e9 : null;
+  return scale === null ? null : Number(p.value) * scale;
 }
 
 export function getBottlenecks(sector: string): Bottleneck[] {

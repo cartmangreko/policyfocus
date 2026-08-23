@@ -3005,6 +3005,142 @@ h3 {
   font-size: 12px;
 }
 
+/* --- materials and capital ------------------------------------------
+   Two node kinds added in amendment brief 2 §2. They reuse the panel grammar
+   the technologies and bottlenecks already use — article, heading, definition
+   list — rather than inventing a third, because a reader who has learned one
+   panel on this page should not have to learn another.
+   -------------------------------------------------------------------- */
+
+.tmaterials {
+  display: grid;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-top: 14px;
+}
+.tmaterial {
+  background: #fff;
+  padding: 16px 18px;
+}
+.tmaterial h3 {
+  font-family: var(--display);
+  font-size: 17px;
+  margin: 0 0 6px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.tmaterial p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-70);
+}
+.tmaterial dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 4px 12px;
+  font-size: 13.5px;
+}
+.tmaterial dt {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  padding-top: 2px;
+}
+.tmaterial dd {
+  margin: 0;
+  color: var(--ink-70);
+}
+.tmaterial dd.mono {
+  font-family: var(--mono);
+}
+/* One hue per material type, on the same four accents the rest of the page
+   uses. by_product and waste_stream read apart deliberately: one has a buyer
+   and the other has to be paid to take away. */
+.tmat-type {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  padding: 1px 6px;
+  color: var(--ink-55);
+}
+.tmat-type.intermediate {
+  color: var(--pine);
+}
+.tmat-type.feedstock,
+.tmat-type.energy_carrier {
+  color: var(--focus);
+}
+.tmat-type.by_product {
+  color: var(--ochre);
+}
+.tmat-type.waste_stream {
+  color: var(--claret);
+}
+
+.tfunding-total {
+  font-family: var(--display);
+  font-size: clamp(20px, 2.4vw, 28px);
+  margin: 14px 0 10px;
+}
+.tfundings {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.tfundings li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 14px;
+}
+.tfundings .amount {
+  font-family: var(--mono);
+  font-weight: 600;
+  min-width: 8ch;
+}
+.tfundings .programme {
+  font-weight: 500;
+}
+.tfundings .measure,
+.tfundings .tfunding-date {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-40);
+}
+.tfunding-to {
+  color: var(--ink-70);
+}
+.tfundings .tfunding-date {
+  margin-left: auto;
+}
+
+/* Funding statuses share the shape of the project status marks and not their
+   vocabulary: approved money and an operating installation are different
+   facts. */
+.tstatus.approved {
+  color: var(--ink-55);
+}
+.tstatus.signed,
+.tstatus.disbursed {
+  color: var(--pine);
+}
+.tstatus.withdrawn {
+  color: var(--claret);
+}
+
 /* --- ranked measures --------------------------------------------- */
 
 .tmeasures {

@@ -1,11 +1,12 @@
 {
   "_comment": [
-    "Configuration for sources/watch.py. Three discovery channels, each switchable.",
+    "Configuration for sources/watch.py. Four discovery channels, each switchable.",
     "The watchlist channel is derived from sources/manifest.json and needs no",
     "configuration beyond the dossier guard. The topic channel is the query that",
     "finds acts nobody told us to look for, and it is the one that needs tuning.",
-    "The projects channel watches plants rather than law and is off until its runner",
-    "exists; its entry at the foot of this file says what it is for."
+    "The projects channel watches installations rather than law, and the funding",
+    "channel watches the money; both are off until their runners exist, and their",
+    "entries at the foot of this file say what each is for."
   ],
   "watchlist": {
     "enabled": true,
@@ -235,5 +236,66 @@
       "An item that is none of the three is out, and the reason is one line."
     ],
     "attention_window_months": 24
+  },
+  "funding": {
+    "enabled": false,
+    "_comment": [
+      "CHANNEL THREE OF THE PRODUCT. The law channels watch what is required; the projects",
+      "channel watches what is being built; this one watches what is being paid for.",
+      "",
+      "It answers one question per item: does this add a row to data/transition/funding.json,",
+      "move an existing row's status along the ladder (announced -> approved -> signed ->",
+      "disbursed, or withdrawn), or attach an amount to a row that carries none? The third is",
+      "the most valuable and the least glamorous: half the funding rows in the file today are",
+      "'undisclosed' because the company release stated a programme and no figure, and the",
+      "awarding body's own decision usually carries it.",
+      "",
+      "DISABLED until channel two's runner is proven. Same discipline, same reason: an",
+      "appended funding row changes what the site says about public money in a named",
+      "company's project, and a wrong one is a false statement about a state aid decision.",
+      "Nothing here is merged automatically.",
+      "",
+      "THE AWARDING BODY WINS. Where a company release and the decision disagree on an",
+      "amount or a date, the decision is the fact and the release is the pointer that sent",
+      "us there — the mirror of the projects channel's rule, where the company's own",
+      "announcement of its own plant wins."
+    ],
+    "sources": [
+      {
+        "name": "EU Innovation Fund project portal",
+        "url": "https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund/innovation-fund-projects_en",
+        "carries": "grant awards, amounts, and the call each was made under"
+      },
+      {
+        "name": "Commission competition — state aid decisions",
+        "url": "https://competition-cases.ec.europa.eu/search?caseInstrument=SA",
+        "carries": "state aid approvals, with the decision date and the approved amount"
+      },
+      {
+        "name": "European Investment Bank — financed projects",
+        "url": "https://www.eib.org/en/projects/all/index.htm",
+        "carries": "signed and approved financing, by project and country"
+      },
+      {
+        "name": "IPCEI decisions",
+        "url": "https://competition-policy.ec.europa.eu/state-aid/ipcei_en",
+        "carries": "consortium-level approvals covering several member states at once"
+      },
+      {
+        "name": "European Hydrogen Bank — auction results",
+        "url": "https://cinea.ec.europa.eu/programmes/innovation-fund/european-hydrogen-bank_en",
+        "carries": "auction_support awards, with the clearing price and the volume"
+      }
+    ],
+    "triage_question": [
+      "Given one item, answer three things and nothing else:",
+      "1. Does it allocate capital to a project in data/transition/projects.json? If so: the",
+      "   instrument from the closed vocabulary, the amount and its currency, the date, the",
+      "   status, and the sentence that says so, quoted.",
+      "2. Does it move an existing row in data/transition/funding.json along the status",
+      "   ladder, or attach an amount to one that carries none?",
+      "3. Does it state a legal basis the register carries, as a measure id?",
+      "An item that is none of the three is out, and the reason is one line."
+    ]
   }
 }

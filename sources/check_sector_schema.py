@@ -250,22 +250,9 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
         for tid in r.get("technology", []):
             if tid not in tech_ids:
                 e.add(w, f"deploys {tid!r}, which is not a technology id")
-        for i, f in enumerate(r.get("public_funding") or []):
-            fw = f"{w} public_funding[{i}]"
-            _req(e, fw, f, "programme", "source_url")
-            _url(e, fw, f.get("source_url"), "source_url")
-            # An amount is required to be RECORDED, not to be known: a grant whose
-            # size the company never published is a real funding line, and dropping
-            # it would understate the public money in the project. `null` is allowed
-            # and must carry a note saying so, which is what stops an amount from
-            # going missing by accident rather than by decision.
-            if "amount_eur" not in f:
-                e.add(fw, "no amount_eur; use null with a note if the amount is unpublished")
-            elif f["amount_eur"] is None and not f.get("note"):
-                e.add(fw, "amount_eur is null with no note explaining why")
-            mid = f.get("measure")
-            if mid and mid not in measure_ids:
-                e.add(fw, f"measure={mid!r} is not a register measure id")
+        if "public_funding" in r:
+            e.add(w, "public_funding moved to data/transition/funding.json — the project "
+                     "carries a derived rollup, never a stored copy")
         history = r.get("status_history") or []
         dates = []
         for i, h in enumerate(history):
@@ -281,6 +268,109 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
             e.add(w, f"status={r.get('status')!r} but the last history entry is "
                      f"{history[-1].get('status')!r}")
         _source_list(e, w, r)
+
+
+def check_materials(e: Errors, rows: list[dict], sectors: dict, tech_ids: set,
+                    project_ids: set, param_ids: set, material_ids: set) -> None:
+    """Materials, and the four kinds of edge that hang off them.
+
+    Every edge endpoint is a prefixed graph id -- `sector:cement`,
+    `project:brevik-ccs`, `technology:ccs-oxyfuel` -- rather than a bare slug,
+    because the prefix is what makes an edge into the wrong kind of node a typo
+    the gate can see rather than a lookup that quietly finds nothing.
+    """
+    for r in rows:
+        w = f"material {r.get('id', '?')}"
+        _req(e, w, r, "id", "name", "type", "sectors", "description", "sources")
+        _vocab(e, w, r, "type", sm.MATERIAL_TYPES)
+        _source_list(e, w, r)
+        for slug in r.get("sectors", []):
+            if slug not in sectors:
+                e.add(w, f"sector {slug!r} is not in data/sectors.json")
+
+        def endpoint(where: str, node: str, allowed: tuple[str, ...]) -> None:
+            kind, _, tail = node.partition(":")
+            if kind not in allowed:
+                e.add(where, f"{node!r} is a {kind or '?'} where {list(allowed)} is allowed")
+                return
+            known = {"sector": set(sectors), "technology": tech_ids,
+                     "project": project_ids}[kind]
+            if tail not in known:
+                e.add(where, f"{node!r} names no {kind} that exists")
+
+        def edges(field: str, allowed: tuple[str, ...]) -> None:
+            for i, edge in enumerate(r.get(field) or []):
+                ew = f"{w} {field}[{i}]"
+                _req(e, ew, edge, "node", "since", "evidence")
+                _date(e, ew, edge, "since")
+                if not (edge.get("evidence") or {}).get("source"):
+                    e.add(ew, "no evidence.source — an edge you cannot trace is an edge "
+                              "you cannot defend")
+                if edge.get("node"):
+                    endpoint(ew, edge["node"], allowed)
+                # `volume` names a parameter rather than restating a number, so a
+                # material cannot state a figure that has no quoted sentence.
+                vol = edge.get("volume")
+                if vol is not None and vol not in param_ids:
+                    e.add(ew, f"volume={vol!r} is not a parameter id")
+                if vol is None and "volume" in edge and not edge.get("volume_note") \
+                        and field == "produced_by":
+                    e.add(ew, "volume is null with no volume_note saying why")
+
+        edges("produced_by", ("sector", "project"))
+        edges("consumed_by", ("sector", "technology"))
+        edges("required_by", ("technology",))
+        for i, sub in enumerate(r.get("substitutes") or []):
+            sw = f"{w} substitutes[{i}]"
+            _req(e, sw, sub, "material", "since", "evidence")
+            if sub.get("material") not in material_ids:
+                e.add(sw, f"material={sub.get('material')!r} names no material that exists")
+            if sub.get("material") == r["id"]:
+                e.add(sw, "substitutes itself")
+
+
+def check_funding(e: Errors, rows: list[dict], tech_ids: set, project_ids: set,
+                  measure_ids: set, param_ids: set) -> None:
+    """Capital allocation, and the four things every euro has to be able to say:
+    what instrument it arrived as, how far it has got, what it finances, and what
+    it was decided under."""
+    for r in rows:
+        w = f"funding {r.get('id', '?')}"
+        _req(e, w, r, "id", "name", "instrument", "programme", "date", "status",
+             "finances", "country", "sources")
+        _vocab(e, w, r, "instrument", sm.FUNDING_INSTRUMENTS)
+        _vocab(e, w, r, "status", sm.FUNDING_STATUSES)
+        _date(e, w, r, "date")
+        _source_list(e, w, r)
+
+        # An amount is required to be RECORDED, not to be known: a grant whose
+        # size nobody published is real money and dropping it would understate
+        # the public capital in a project. null is allowed and must carry a note,
+        # which is what stops an amount going missing by accident.
+        if "amount" not in r:
+            e.add(w, "no amount; use null with an amount_note if it is unpublished")
+        elif r["amount"] is None and not r.get("amount_note"):
+            e.add(w, "amount is null with no amount_note explaining why")
+        elif r["amount"] is not None and r["amount"] not in param_ids:
+            e.add(w, f"amount={r['amount']!r} is not a parameter id — an amount names the "
+                     f"sourced number rather than restating it")
+
+        if "under" not in r:
+            e.add(w, "no under; use null with an under_note where the register carries no "
+                     "legal basis for this money")
+        elif r["under"] is None and not r.get("under_note"):
+            e.add(w, "under is null with no under_note explaining why")
+        elif r["under"] is not None and r["under"] not in measure_ids:
+            e.add(w, f"under={r['under']!r} is not a register measure id")
+
+        if not (r.get("finances") or []):
+            e.add(w, "finances nothing — money with no recipient is not a fact about a sector")
+        for node in r.get("finances") or []:
+            if not node.startswith("project:") or node.split(":", 1)[1] not in project_ids:
+                e.add(w, f"finances {node!r}, which names no project that exists")
+        for node in r.get("supports") or []:
+            if not node.startswith("technology:") or node.split(":", 1)[1] not in tech_ids:
+                e.add(w, f"supports {node!r}, which names no technology that exists")
 
 
 def check_measure_labels(e: Errors, measure_ids: set[str]) -> None:
@@ -360,6 +450,11 @@ def main() -> int:
     check_parameters(e, rows["parameter"], tech_ids, sectors)
     check_bottlenecks(e, rows["bottleneck"], tech_ids, param_ids, measure_ids, sectors)
     check_projects(e, rows["project"], tech_ids, measure_ids, sectors)
+    project_ids = {r["id"] for r in rows["project"]}
+    material_ids = {r["id"] for r in rows["material"]}
+    check_materials(e, rows["material"], sectors, tech_ids, project_ids, param_ids,
+                    material_ids)
+    check_funding(e, rows["funding"], tech_ids, project_ids, measure_ids, param_ids)
     check_measure_labels(e, measure_ids)
 
     drafts = check_prose(e)

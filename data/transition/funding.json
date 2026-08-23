@@ -1,0 +1,178 @@
+{
+  "_comment": [
+    "Capital allocation, as its own object.",
+    "",
+    "WHY NOT A FIELD ON THE PROJECT. It was one: `public_funding` on each row of",
+    "projects.json. That shape can only say what one project received, and the facts do not",
+    "arrange themselves that way — one Innovation Fund call finances several projects at",
+    "once, an IPCEI decision covers a consortium, and a state aid approval is a decision",
+    "about a country before it is a decision about a plant. A field on the recipient cannot",
+    "say any of that without repeating itself once per recipient, and repeated facts drift.",
+    "",
+    "So funding is a node with edges out of it:",
+    "",
+    "  finances   -> project:      the money arrives here",
+    "  supports   -> technology:   what it is being spent on",
+    "  under      -> <file>:<id>   the legal basis, as a register measure",
+    "  in         -> country:      where it lands",
+    "",
+    "The project keeps a rollup, and the rollup is DERIVED — computed from these rows",
+    "wherever it is shown, never stored on the project. A stored total is a second copy of",
+    "a number, and a second copy is a number that will eventually disagree with the first.",
+    "",
+    "STATUS IS NOT AMOUNT. `announced`, `approved`, `signed`, `disbursed` and `withdrawn`",
+    "are five different facts about the same euro figure, and a page that showed only the",
+    "figure would let a press release read as money in the ground. Everything here is",
+    "`approved`: a grant award or a government financing decision, stated by a party to it,",
+    "with no signature or disbursement reported in the document read.",
+    "",
+    "`amount` names a parameter id rather than restating a number, so an amount cannot exist",
+    "here without the sentence it was read from existing in parameters.json. Where the",
+    "source states a programme but no figure, `amount` is null and `amount_note` says so —",
+    "an undisclosed amount and a zero are different states and this file distinguishes them.",
+    "",
+    "`programme` is the measure id where the register carries the legal basis, and a named",
+    "string where it does not. Norway's Longship is the live case: it is a national decision",
+    "outside the register's perimeter, so it names itself and points at no measure."
+  ],
+  "funding": [
+    {
+      "id": "innovation-fund-gezero",
+      "name": "Innovation Fund grant — GeZero",
+      "instrument": "grant",
+      "programme": "EU Innovation Fund",
+      "under": "ets:FND-03",
+      "under_note": "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
+      "amount": "gezero-grant",
+      "amount_note": null,
+      "date": "2023-12-15",
+      "status": "approved",
+      "finances": ["project:gezero-geseke"],
+      "supports": ["technology:ccs-post-combustion"],
+      "country": "DE",
+      "sources": [
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
+          "title": "Heidelberg Materials receives EU Innovation Fund grant for GeZero",
+          "publisher": "Heidelberg Materials",
+          "date": "2023-12-15"
+        }
+      ]
+    },
+    {
+      "id": "innovation-fund-anrav",
+      "name": "Innovation Fund grant — ANRAV",
+      "instrument": "grant",
+      "programme": "EU Innovation Fund",
+      "under": "ets:FND-03",
+      "under_note": "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
+      "amount": "anrav-grant",
+      "amount_note": null,
+      "date": "2023-01-20",
+      "status": "approved",
+      "finances": ["project:anrav-devnya"],
+      "supports": ["technology:ccs-post-combustion"],
+      "country": "BG",
+      "sources": [
+        {
+          "url": "https://www.heidelbergmaterials.com/en/eu-backs-heidelberg-materials-pioneering-ccus-project-in-bulgaria",
+          "title": "EU backs Heidelberg Materials' pioneering CCUS project in Bulgaria",
+          "publisher": "Heidelberg Materials",
+          "date": "2023-01-20"
+        }
+      ]
+    },
+    {
+      "id": "innovation-fund-go4zero",
+      "name": "Innovation Fund grant — GO4ZERO",
+      "instrument": "grant",
+      "programme": "EU Innovation Fund",
+      "under": "ets:FND-03",
+      "under_note": "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
+      "amount": null,
+      "amount_note": "Holcim's release records selection for an Innovation Fund grant and states no figure. The Commission's own award tables would carry it.",
+      "date": "2024-05-16",
+      "status": "approved",
+      "finances": ["project:go4zero-obourg"],
+      "supports": ["technology:ccs-oxyfuel"],
+      "country": "BE",
+      "sources": [
+        {
+          "url": "https://www.holcim.com/media/media-releases/eu-innovation-fund-selection-projects",
+          "title": "Holcim projects selected under the EU Innovation Fund",
+          "publisher": "Holcim",
+          "date": "2024-05-16"
+        }
+      ]
+    },
+    {
+      "id": "innovation-fund-carbon2business",
+      "name": "Innovation Fund grant — Carbon2Business",
+      "instrument": "grant",
+      "programme": "EU Innovation Fund",
+      "under": "ets:FND-03",
+      "under_note": "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
+      "amount": null,
+      "amount_note": "Confirmed by the company; the amount is not stated on the page read.",
+      "date": "2024-04-22",
+      "status": "approved",
+      "finances": ["project:carbon2business-lagerdorf"],
+      "supports": ["technology:ccs-oxyfuel"],
+      "country": "DE",
+      "sources": [
+        {
+          "url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+          "title": "Carbon2Business",
+          "publisher": "Holcim",
+          "date": "2024-04-22"
+        }
+      ]
+    },
+    {
+      "id": "france-relance-k6",
+      "name": "France Relance / ADEME financing — K6",
+      "instrument": "state_aid",
+      "programme": "France Relance / ADEME (NextGenerationEU)",
+      "under": null,
+      "under_note": "A national decision under a French recovery programme. The register has read no act that carries it, so the funding names its programme and points at no measure.",
+      "amount": "k6-state-funding",
+      "amount_note": null,
+      "date": "2024-02-15",
+      "status": "approved",
+      "finances": ["project:k6-lumbres"],
+      "supports": ["technology:ccs-oxyfuel"],
+      "country": "FR",
+      "sources": [
+        {
+          "url": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
+          "title": "Projet K6 : lancement de la première phase",
+          "publisher": "EQIOM",
+          "date": "2024-02-15"
+        }
+      ]
+    },
+    {
+      "id": "longship-brevik",
+      "name": "Longship — Brevik CCS",
+      "instrument": "state_aid",
+      "programme": "Longship (Norwegian State)",
+      "under": null,
+      "under_note": "A Norwegian government programme, outside the register's perimeter.",
+      "amount": null,
+      "amount_note": "The release places Brevik inside the Longship chain and states no amount. The Norwegian government's own Longship documents carry the figure, and it matters more than most — Brevik is the worked example, and the state's share of it is what the subsidy-dependence constraint is really about. See GAPS.md.",
+      "date": "2025-06-18",
+      "status": "approved",
+      "finances": ["project:brevik-ccs"],
+      "supports": ["technology:ccs-post-combustion"],
+      "country": "NO",
+      "sources": [
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+          "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway",
+          "publisher": "Heidelberg Materials",
+          "date": "2025-06-18"
+        }
+      ]
+    }
+  ]
+}
