@@ -3833,3 +3833,96 @@ h3 {
   padding: 1px 6px;
   white-space: nowrap;
 }
+
+/* --- the mobile diagram, and the per-sector what-moved strip ---------
+   Two additions from amendment brief 2 §5. The breakpoint is the width at
+   which the diagram's four columns stop fitting without the reader scrolling
+   the page sideways to read one node — measured against the widest built
+   diagram rather than picked off a device list.
+   -------------------------------------------------------------------- */
+
+.tdiagram-static {
+  display: none;
+  margin: 14px 0 0;
+}
+.tdiagram-static img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule-soft);
+}
+.tdiagram-static figcaption {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-40);
+}
+
+@media (max-width: 860px) {
+  .tdiagram-interactive {
+    display: none;
+  }
+  .tdiagram-static {
+    display: block;
+  }
+}
+
+.tmoved {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 0;
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 22px;
+}
+.tmoved h2 {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  margin: 0;
+  /* The sector's own accent, on the sector's own page: layer four, and one of
+     the few marks it is allowed. */
+  border-left: 2px solid var(--accent, var(--ink-25));
+  padding-left: 8px;
+}
+.tmoved ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  font-size: 14px;
+}
+.tmoved li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.tmoved a {
+  border-bottom: 1px solid var(--rule);
+}
+.tmoved a:hover {
+  border-bottom-color: var(--ink);
+}
+.tmoved-date {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-40);
+}
+.tmoved-to {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+.tmoved-quiet {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-55);
+}

@@ -48,6 +48,19 @@ review: the label exists for every measure in the view, it is unique within this
 diagram (two nodes reading alike is a picture that lies), and it carries no word
 from sources/display_vocabulary.py.
 
+THE STATIC COPY, AND WHO IT IS FOR
+==================================
+The same picture is also written as a standalone SVG under web/public/diagrams/.
+On a phone the interactive diagram is not worth its weight -- there is no hover,
+the columns do not fit, and a reader pinching at a 1160-unit canvas inside a
+375-point viewport is fighting the page. So small screens get the flat file,
+linked so a tap opens it full size, and the component is not rendered at all.
+
+It carries literal hexes because a file served on its own has no stylesheet.
+They come from sources/design_tokens.py, which reads them out of globals.css, so
+there is still exactly one definition of the diagram palette and the colour gate
+still governs it.
+
 STABILITY
 =========
 Ties break on id, never on dict order, so adding a project cannot silently
@@ -61,11 +74,13 @@ import argparse
 import json
 import sys
 
+import design_tokens as dt
 import display_vocabulary as dv
 import sector_map as sm
 import build_importance as bi
 
 OUT_DIR = sm.ROOT / "data" / "transition" / "diagrams"
+STATIC_DIR = sm.ROOT / "web" / "public" / "diagrams"
 
 # Geometry. One place, because the component reads the numbers rather than
 # recomputing them: node boxes are positioned here and drawn there.
@@ -229,6 +244,93 @@ def build(sector: str) -> dict:
     }
 
 
+# What the standalone file needs as literals. Fails loudly rather than falling
+# back to a colour, because a diagram drawn in a default grey is a diagram that
+# has silently stopped saying which kind each node is.
+STATIC_TOKENS = ("--ink", "--ink-55", "--paper", "--card", "--rule",
+                 "--claret", "--pine",
+                 "--dg-measure", "--dg-bottleneck", "--dg-technology", "--dg-project")
+
+KIND_TOKEN = {"measure": "--dg-measure", "bottleneck": "--dg-bottleneck",
+              "technology": "--dg-technology", "project": "--dg-project"}
+REL_TOKEN = {"worsens": "--dg-measure", "relieves": "--dg-measure",
+             "addresses": "--dg-technology", "deploys": "--dg-project"}
+
+
+def _edge_path(a: dict, b: dict) -> str:
+    """The same curve web/components/TransitionDiagram.tsx draws. Duplicated
+    deliberately and kept to four lines: the alternative is a layout engine
+    shared across two languages, and this is a cubic with one control offset."""
+    forward = a["x"] < b["x"]
+    x1 = a["x"] + a["w"] if forward else a["x"]
+    x2 = b["x"] if forward else b["x"] + b["w"]
+    y1, y2 = a["y"] + a["h"] / 2, b["y"] + b["h"] / 2
+    dx = max(40, abs(x2 - x1) * 0.45) * (1 if forward else -1)
+    return f"M {x1} {y1} C {x1 + dx} {y1}, {x2 - dx} {y2}, {x2} {y2}"
+
+
+def static_svg(doc: dict) -> str:
+    """The diagram as a file that stands on its own: no CSS, no script, no
+    hover. What a phone gets, and what the export button has always produced."""
+    c = dt.require(*STATIC_TOKENS)
+    by_id = {n["id"]: n for n in doc["nodes"]}
+    pad_bottom = 34
+    out = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {doc["width"]} '
+        f'{doc["height"] + pad_bottom}" width="{doc["width"]}" '
+        f'height="{doc["height"] + pad_bottom}" fill="none" '
+        f'role="img" aria-label="{doc["sector"]}: measures, bottlenecks, technologies '
+        f'and projects, and how they connect">',
+        f'<rect width="{doc["width"]}" height="{doc["height"] + pad_bottom}" '
+        f'fill="{c["--paper"]}"/>',
+        "<defs>",
+    ]
+    for rel, token in sorted(set(REL_TOKEN.items())):
+        out.append(
+            f'<marker id="a-{rel}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" '
+            f'markerHeight="7" orient="auto-start-reverse">'
+            f'<path d="M 0 1 L 7 4 L 0 7 z" fill="{c[token]}"/></marker>')
+    out.append("</defs>")
+
+    for e in doc["edges"]:
+        a, b = by_id.get(e["from"]), by_id.get(e["to"])
+        if not a or not b:
+            continue
+        dash = ' stroke-dasharray="5 3"' if e["rel"] == "relieves" else ""
+        out.append(
+            f'<path d="{_edge_path(a, b)}" stroke="{c[REL_TOKEN[e["rel"]]]}" '
+            f'stroke-width="{1.6 if e["weight"] >= 1 else 1}"{dash} opacity="0.85" '
+            f'marker-end="url(#a-{e["rel"]})" fill="none"/>')
+
+    for n in doc["nodes"]:
+        hue = c[KIND_TOKEN[n["kind"]]]
+        sub_fill = c["--ink-55"]
+        if n.get("direction") == "cost":
+            sub_fill = c["--claret"]
+        elif n.get("direction") == "support":
+            sub_fill = c["--pine"]
+        label = n["label"] if len(n["label"]) <= 30 else n["label"][:29] + "\u2026"
+        out.append(
+            f'<g><rect x="{n["x"]}" y="{n["y"]}" width="{n["w"]}" height="{n["h"]}" rx="2" '
+            f'fill="{c["--card"]}" stroke="{c["--rule"]}" stroke-width="1"/>'
+            f'<rect x="{n["x"]}" y="{n["y"]}" width="3" height="{n["h"]}" fill="{hue}"/>'
+            f'<text x="{n["x"] + 12}" y="{n["y"] + 16}" font-family="Helvetica Neue,Helvetica,'
+            f'Arial,sans-serif" font-size="12" font-weight="500" fill="{c["--ink"]}">'
+            f'{_xml(label)}</text>'
+            f'<text x="{n["x"] + 12}" y="{n["y"] + 29}" font-family="ui-monospace,Menlo,'
+            f'monospace" font-size="11" fill="{sub_fill}">{_xml(n["sub"])}</text></g>')
+
+    out.append(
+        f'<text x="12" y="{doc["height"] + 22}" font-family="ui-monospace,Menlo,monospace" '
+        f'font-size="12" fill="{c["--ink-55"]}">eufabric \u00b7 {_xml(doc["sector"])}</text>')
+    out.append("</svg>")
+    return "".join(out) + "\n"
+
+
+def _xml(text: str) -> str:
+    return (text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
@@ -237,22 +339,29 @@ def main() -> int:
 
     sectors = args.sector or ["cement"]
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    STATIC_DIR.mkdir(parents=True, exist_ok=True)
     failed = False
     for sector in sectors:
         doc = build(sector)
         text = json.dumps(doc, indent=2, ensure_ascii=False) + "\n"
         path = OUT_DIR / f"{sector.replace('/', '__')}.json"
+        svg_path = STATIC_DIR / f"{sector.replace('/', '__')}.svg"
+        svg = static_svg(doc)
         if args.check:
-            if not path.exists() or path.read_text(encoding="utf-8") != text:
-                print(f"build_sector_diagram: {path} is stale or missing — rebuild it",
-                      file=sys.stderr)
+            stale = [p for p, want in ((path, text), (svg_path, svg))
+                     if not p.exists() or p.read_text(encoding="utf-8") != want]
+            if stale:
+                for p in stale:
+                    print(f"build_sector_diagram: {p} is stale or missing — rebuild it",
+                          file=sys.stderr)
                 failed = True
                 continue
             print(f"build_sector_diagram: --check, {sector} matches "
-                  f"({len(doc['nodes'])} nodes, {len(doc['edges'])} edges)")
+                  f"({len(doc['nodes'])} nodes, {len(doc['edges'])} edges, + static SVG)")
         else:
             path.write_text(text, encoding="utf-8")
-            print(f"build_sector_diagram: wrote {path} — "
+            svg_path.write_text(svg, encoding="utf-8")
+            print(f"build_sector_diagram: wrote {path} and {svg_path.name} — "
                   f"{len(doc['nodes'])} nodes, {len(doc['edges'])} edges, "
                   f"{doc['width']}x{doc['height']}")
     return 1 if failed else 0

@@ -64,6 +64,7 @@ import sys
 from pathlib import Path
 
 import colour
+import design_tokens
 
 ROOT = Path(__file__).resolve().parent.parent
 CSS = ROOT / "web" / "app" / "globals.css"
@@ -117,27 +118,6 @@ INLINE_ALLOWED = {
 }
 
 
-def read_tokens(css: str) -> dict[str, str]:
-    """The :root custom properties, as a name -> hex map. Only literal hex
-    values: an alias (`--focus: var(--signal)`) is resolved by following it."""
-    root = re.search(r":root\s*\{(.*?)\n\}", css, re.S)
-    if not root:
-        raise SystemExit("check_colour_layers: no :root block in globals.css")
-    raw: dict[str, str] = {}
-    for name, value in re.findall(r"(--[\w-]+)\s*:\s*([^;]+);", root.group(1)):
-        raw[name] = value.strip()
-    tokens: dict[str, str] = {}
-    for name, value in raw.items():
-        seen = set()
-        while value.startswith("var(") and name not in seen:
-            seen.add(name)
-            inner = value[4:].split(",")[0].strip().rstrip(")")
-            value = raw.get(inner, "").strip()
-        if re.fullmatch(r"#[0-9a-fA-F]{3,8}", value):
-            tokens[name] = value
-    return tokens
-
-
 def rules(css: str) -> list[tuple[str, str]]:
     """(selector, body) for every rule, comments stripped. At-rule blocks are
     flattened, which is fine here: the question is which selector emits which
@@ -153,7 +133,7 @@ def uses(body: str, token: str) -> bool:
 
 def main() -> int:
     css = CSS.read_text(encoding="utf-8")
-    tokens = read_tokens(css)
+    tokens = design_tokens.tokens()
     problems: list[str] = []
 
     # ---- ochre is retired -------------------------------------------------

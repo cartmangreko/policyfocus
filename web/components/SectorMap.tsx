@@ -33,6 +33,7 @@ import {
   sourcesForSector,
   type Material,
   type Parameter,
+  type StatusEvent,
   type RankedMeasure,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
@@ -132,6 +133,19 @@ function ScoreComponents({ m }: { m: RankedMeasure }) {
   );
 }
 
+// Thirty days, per amendment brief 2 §5. Long enough that a quiet fortnight
+// does not empty the strip, short enough that "moved" still means recently.
+const MOVED_WINDOW_DAYS = 30;
+
+// Evaluated once when this module loads, which for a statically generated page
+// is build time. The window is therefore the thirty days before THIS BUILD, not
+// before the reader's clock — the right basis for a page whose every other
+// figure carries an as-of date from the same build, and the only one that does
+// not quietly change what a cached page claims as it ages.
+const MOVED_CUTOFF = new Date(Date.now() - MOVED_WINDOW_DAYS * 86_400_000)
+  .toISOString()
+  .slice(0, 10);
+
 function ParameterChip({ p }: { p: Parameter }) {
   return (
     <li className="tparam">
@@ -183,6 +197,19 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   const fundingTotal = funding.reduce((a, f) => a + (fundingAmount(f, params) ?? 0), 0);
   const undisclosed = funding.filter((f) => fundingAmount(f, params) === null).length;
   const transitions = getTransitions(slug);
+
+  // Status changes in this sector inside the window, most recent first, and
+  // the most recent change of any age for the empty state. `lastChange` is the
+  // same helper the home feed uses, so the two strips cannot disagree about
+  // what the latest event is.
+  const changes = projects
+    .map((p) => ({ project: p, event: lastChange(p) }))
+    .filter((r): r is { project: (typeof projects)[number]; event: StatusEvent } =>
+      Boolean(r.event),
+    )
+    .sort((a, b) => b.event.date.localeCompare(a.event.date));
+  const moved = changes.filter((r) => r.event.date >= MOVED_CUTOFF);
+  const latestMove = changes[0] ?? null;
   const inView = imp.measures.filter((m) => m.in_sector_view);
 
   // The lead. A built artifact where one exists; otherwise the sentence this
@@ -254,14 +281,75 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
         {lead ? <LeadBlock lead={lead} /> : <p className="tmap-lede">{opening}</p>}
       </header>
 
+      {/* WHAT MOVED HERE, last 30 days. The home strip says what moved anywhere;
+          this says what moved in this sector, which is the question somebody on
+          this page is actually asking.
+
+          AN EMPTY WINDOW IS A FACT AND IT IS PRINTED. Most sectors will have
+          nothing in thirty days most of the time, and a strip that vanished
+          when empty would leave a reader unable to tell "nothing happened" from
+          "we stopped looking". So the empty state names the last thing that did
+          happen, and dates it. */}
+      <section className="tmoved" aria-label="What moved in this sector">
+        <h2>What moved</h2>
+        {moved.length > 0 ? (
+          <ul>
+            {moved.map(({ project, event }) => (
+              <li key={project.id}>
+                <span className="tmoved-date">{event.date}</span>
+                <Link href={projectHref(project.id)}>{project.name}</Link>
+                <span className="tmoved-to">{STATUS_LABEL[event.status]}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="tmoved-quiet">
+            Nothing in the last {MOVED_WINDOW_DAYS} days.
+            {latestMove ? (
+              <>
+                {" "}
+                The last change was{" "}
+                <Link href={projectHref(latestMove.project.id)}>
+                  {latestMove.project.name}
+                </Link>{" "}
+                to {STATUS_LABEL[latestMove.event.status]} on{" "}
+                <span className="tmoved-date">{latestMove.event.date}</span>.
+              </>
+            ) : null}
+          </p>
+        )}
+      </section>
+
       {diagram ? (
         <section className="tmap-section" id="map">
           <h2>How it connects</h2>
-          <TransitionDiagram
-            diagram={diagram}
-            sources={nodeSources}
-            pageUrl={`eufabric.eu/sectors/${slug}`}
-          />
+          {/* TWO DIAGRAMS, ONE PICTURE. Above the breakpoint the interactive
+              component; below it the flat SVG the same builder writes, linked
+              so a tap opens it full size. A phone gets no hover, cannot fit
+              four columns, and would be pinching at a 1160-unit canvas inside a
+              375-point viewport — so it gets the file instead of the widget,
+              and the widget is not rendered there at all. */}
+          <div className="tdiagram-interactive">
+            <TransitionDiagram
+              diagram={diagram}
+              sources={nodeSources}
+              pageUrl={`eufabric.eu/sectors/${slug}`}
+            />
+          </div>
+          <figure className="tdiagram-static">
+            <a href={`/diagrams/${slug.replace("/", "__")}.svg`}>
+              {/* eslint-disable-next-line @next/next/no-img-element -- a built
+                  SVG of known size; the optimiser has nothing to add and would
+                  rasterise it. */}
+              <img
+                src={`/diagrams/${slug.replace("/", "__")}.svg`}
+                width={diagram.width}
+                height={diagram.height + 34}
+                alt={`${name}: the measures, bottlenecks, technologies and projects on this page, and how they connect`}
+              />
+            </a>
+            <figcaption>Tap to open full size. The hover detail is on the desktop view.</figcaption>
+          </figure>
         </section>
       ) : null}
 
