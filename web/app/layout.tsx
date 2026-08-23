@@ -28,12 +28,12 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "PolicyFocus — European policy, decoded into economic impact",
-    template: "%s · PolicyFocus",
+    default: "Eufabric — Intelligence on what Europe builds next",
+    template: "%s · Eufabric",
   },
-  // The George-approved masthead pair doubles as the default description, so
-  // the fallback tag carries no claim the reviewed prose does not.
-  description: `${getMasthead().tagline} ${getMasthead().subline}`,
+  // The George-approved pair doubles as the default description, so the
+  // fallback tag carries no claim the reviewed prose does not.
+  description: `${getMasthead().descriptor} ${getMasthead().positioning}`,
   // The same launch switch as the X-Robots-Tag header and robots.txt, in the
   // head of every page: a saved or proxied copy of this HTML carries the
   // instruction even when the header does not travel with it.

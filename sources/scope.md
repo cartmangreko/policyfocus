@@ -1,4 +1,4 @@
-# PolicyFocus scope
+# Eufabric scope
 
 This file is the triage standard. The watch agent shows it to a model along with
 one candidate document and asks: does this belong in the register?
@@ -9,7 +9,7 @@ CELEX, and a short extract — the triage step does not have the full text.
 
 ## What the register is
 
-PolicyFocus tracks **what EU industrial-decarbonisation law requires of firms,
+Eufabric's register layer tracks **what EU industrial-decarbonisation law requires of firms,
 and what it offers them** — provision by provision. Each row is one duty or one
 incentive, with the source sentence quoted verbatim, the addressee named, and
 the sector reach recorded.
@@ -201,15 +201,34 @@ are tier 2, and are expected to be added one per act in a future PR.
 
 Audience-facing surfaces — pages, components, computed-prose templates,
 titles, meta descriptions, structured data — never use the pipeline's internal
-vocabulary: no "row", "register", "duty-side", "benefit-side", "FIGARO",
-"docket", "pass", "reconciled", "valence", "slug". The display layer says:
-measure, requirement, prohibition, support measure, right, the act's display
-name, the sector's display name, and "Eurostat input-output data" for
-FIGARO-derived figures. The translation happens at render time only: data
-files, gates, ids, field names, and internal documentation keep the internal
-vocabulary unchanged, because the internal terms are the precise ones and the
-gates are written against them. A reviewed tier-2 text is authored in display
-vocabulary from the start; a computed template translates at the template.
+vocabulary: no "row", "duty-side", "benefit-side", "FIGARO", "docket",
+"reconciled", "valence", "slug". The display layer says: measure, requirement,
+prohibition, support measure, right, the act's display name, the sector's
+display name, and "Eurostat input-output data" for FIGARO-derived figures. The
+translation happens at render time only: data files, gates, ids, field names,
+and internal documentation keep the internal vocabulary unchanged, because the
+internal terms are the precise ones and the gates are written against them. A
+reviewed tier-2 text is authored in display vocabulary from the start; a
+computed template translates at the template.
+
+A second list is banned for a different reason. "Reference", "tracker",
+"register", "record", "plant", "map" and "transition" are ordinary English and
+several of them are accurate; what they are wrong about is positioning. A
+platform that calls itself a register or a tracker has told the reader it is a
+place where things are written down, and Eufabric's claim is that it is
+intelligence — signal, ranking, exposure, pipeline, readiness, linkage. Two of
+them are banned in framing and legitimate in fact: an installation's name may
+contain "plant", and a diagram is a diagram, but neither word describes the
+product. "Change record" survives as the name of one content tier and nowhere
+else.
+
+Both lists live in `sources/display_vocabulary.py`, which is the enforcement
+point rather than this paragraph: every generated label and every generated
+sentence is checked against them at the moment it is made, and a violation
+fails the build. Hand-written surface copy is reported by
+`sources/check_display_vocabulary.py` and left to a reviewer, because the
+framing-versus-fact distinction is a judgement about the sentence and not
+about the word.
 
 ### Snapshots are append-only
 

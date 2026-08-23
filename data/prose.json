@@ -2,12 +2,24 @@
   "_comment": "Reviewed prose stored as data — tier 2 of the three-tier rule in sources/scope.md ('No free-generated text on the site'). Each block carries a status: every tier-2 text passes through one review before flipping to 'approved', with the review date recorded in 'reviewed'; 'final' marks the masthead pair George signed off as-is. Slots in {braces} are filled at build time from gate-checked objects — never hardcoded here. The site-wide blocks resolve their slots against the site summary object (data/summaries/site.json) in web/lib/sitetext.ts; 'ego_notes' resolves its slots against the computed ego view in sources/build_ego_views.py, which bakes the rendered sentence into data/graph/ego/<file>.json.",
   "masthead": {
     "status": "final",
-    "tagline": "EU legislation, decoded into data: each measure, every sector it affects, every supply chain it reaches.",
-    "subline": "The intelligence layer between EU legislation and the real economy."
+    "_comment": [
+      "The two lines under the logo, in the order they render.",
+      "",
+      "`descriptor` is the line that sits under the wordmark on every surface that carries",
+      "one. `positioning` is the sentence that says what the platform is; it is George's",
+      "wording, reviewed, and it is locked — no surface paraphrases it, and nothing computes",
+      "a variant of it.",
+      "",
+      "They were `tagline` and `subline` and said what the register did. The rename is not",
+      "cosmetic: the old pair described a decoding pipeline, and the platform's claim is now",
+      "that it connects technologies, policy, projects and capital. See amendment brief 2 §1."
+    ],
+    "descriptor": "Intelligence on what Europe builds next.",
+    "positioning": "Eufabric is the intelligence platform that connects Europe's industrial technologies, the policies that shape them, and the projects and capital that bring them to life."
   },
   "perimeter": {
     "status": "approved",
-    "template": "PolicyFocus decodes EU legislation into data. Each act is read provision by provision into individual measures: obligations, prohibitions, incentives, and rights, every one carrying the verbatim source text and a link to the official version. Measures are mapped to sectors in two ways: sectors an act names directly, and sectors it reaches through supply chains, regulatory dependencies, or procurement channels, with supply-chain reach computed from Eurostat input-output data. The measures are then aggregated per sector, so each sector page shows its full position across all legislation on the platform: what binds it directly, what reaches it indirectly, and through which channel. The platform currently holds {measures_count} measures from {acts_count} legislative acts across {sectors_count} sectors, and it grows as new legislation is adopted. Every act's verification status is stated on the coverage page. The platform does not cover national implementing measures or guidance documents, and nothing on this site is legal advice.",
+    "template": "Eufabric decodes EU legislation into data. Each act is read provision by provision into individual measures: obligations, prohibitions, incentives, and rights, every one carrying the verbatim source text and a link to the official version. Measures are mapped to sectors in two ways: sectors an act names directly, and sectors it reaches through supply chains, regulatory dependencies, or procurement channels, with supply-chain reach computed from Eurostat input-output data. The measures are then aggregated per sector, so each sector page shows its full position across all legislation on the platform: what binds it directly, what reaches it indirectly, and through which channel. The platform currently holds {measures_count} measures from {acts_count} legislative acts across {sectors_count} sectors, and it grows as new legislation is adopted. Every act's verification status is stated on the coverage page. The platform does not cover national implementing measures or guidance documents, and nothing on this site is legal advice.",
     "reviewed": "2026-08-18",
     "vocabulary_sweep": "2026-08-19"
   },

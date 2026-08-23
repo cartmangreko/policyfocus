@@ -27,6 +27,10 @@ export interface DiagramNode {
   y: number;
   w: number;
   h: number;
+  /** Measure nodes only: the register id the label replaced. It is not the
+   *  headline any more and it has not gone anywhere — the hover detail prints
+   *  it, so a reader who wants to look the measure up still can. */
+  measure_id?: string;
 }
 
 export interface DiagramEdge {
@@ -143,7 +147,7 @@ export default function TransitionDiagram({
     caption.setAttribute("font-size", "13");
     caption.setAttribute("fill", "#5a5f68");
     caption.setAttribute("font-family", "IBM Plex Mono, monospace");
-    caption.textContent = `PolicyFocus · ${diagram.sector} transition map · ${pageUrl}`;
+    caption.textContent = `Eufabric · ${diagram.sector} · ${pageUrl}`;
     clone.appendChild(caption);
     clone.setAttribute("viewBox", `0 0 ${diagram.width} ${diagram.height + 40}`);
     const blob = new Blob([new XMLSerializer().serializeToString(clone)], {
@@ -151,7 +155,7 @@ export default function TransitionDiagram({
     });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = `policyfocus-${diagram.sector}-transition-map.svg`;
+    a.download = `eufabric-${diagram.sector}.svg`;
     a.click();
     URL.revokeObjectURL(a.href);
   }
@@ -265,6 +269,9 @@ export default function TransitionDiagram({
         {activeNode ? (
           <div className="tdiagram-detail">
             <strong>{activeNode.label}</strong> <span className="kind">{activeNode.kind}</span>
+            {activeNode.measure_id && (
+              <span className="tdiagram-id">{activeNode.measure_id}</span>
+            )}
             {activeSources.length > 0 ? (
               <ul>
                 {activeSources.map((s) => (

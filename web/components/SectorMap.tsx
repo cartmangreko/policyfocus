@@ -214,11 +214,11 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
 
       {diagram ? (
         <section className="tmap-section" id="map">
-          <h2>The map</h2>
+          <h2>How it connects</h2>
           <TransitionDiagram
             diagram={diagram}
             sources={nodeSources}
-            pageUrl={`policyfocus.eu/sectors/${slug}`}
+            pageUrl={`eufabric.eu/sectors/${slug}`}
           />
         </section>
       ) : null}
@@ -311,7 +311,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                 </ul>
               ) : (
                 <p className="tscore-note">
-                  Not quantified yet — see data/transition/GAPS.md for what would fill it.
+                  Not quantified yet.
                 </p>
               )}
               {b.addressed_by.length > 0 ? (
@@ -337,7 +337,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                   ))}
                 </ul>
               ) : (
-                <p className="tscore-note">No measure in the register moves this one.</p>
+                <p className="tscore-note">Nothing on the platform moves this one.</p>
               )}
             </article>
           ))}

@@ -59,6 +59,7 @@ import re
 import sys
 from datetime import date
 
+import display_vocabulary as dv
 import sector_map as sm
 
 DATE_RE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
@@ -282,6 +283,41 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
         _source_list(e, w, r)
 
 
+def check_measure_labels(e: Errors, measure_ids: set[str]) -> None:
+    """The short labels the diagram draws instead of measure ids.
+
+    Checked here as well as in build_sector_diagram.py, and the duplication is
+    deliberate: the builder only ever sees the measures that made one sector's
+    view, so an entry written today for a measure that enters the view next
+    month would sit unchecked until the day it is drawn. This runs over the
+    whole file.
+
+    What is NOT checked here is uniqueness. Two measures may legitimately share
+    a label as long as they never appear in the same picture, and only the
+    builder knows which measures share a picture — so that gate lives there.
+    """
+    labels = sm.measure_labels()
+    for measure_id, entry in sorted(labels.items()):
+        where = f"measure label {measure_id}"
+        if measure_id not in measure_ids:
+            e.add(where, "names a measure that is not in the register")
+        if not (entry.get("object") or "").strip():
+            e.add(where, "no object — the label has nothing to be about")
+            continue
+        instrument = entry.get("instrument")
+        if instrument is not None and instrument not in sm.INSTRUMENTS:
+            e.add(where, f"instrument {instrument!r} is not in {list(sm.INSTRUMENTS)}")
+            continue
+        label = sm.short_label(entry)
+        if len(label) > sm.MAX_SHORT_LABEL:
+            e.add(where, f"{label!r} is {len(label)} characters, over the "
+                         f"{sm.MAX_SHORT_LABEL} a node draws without an ellipsis")
+        bad = dv.violations(label)
+        if bad:
+            e.add(where, f"{label!r} uses {sorted(set(bad))} — see "
+                         f"sources/display_vocabulary.py")
+
+
 def check_prose(e: Errors) -> list[str]:
     """The sector's one reviewed sentence, and whether anyone has read it.
 
@@ -324,6 +360,7 @@ def main() -> int:
     check_parameters(e, rows["parameter"], tech_ids, sectors)
     check_bottlenecks(e, rows["bottleneck"], tech_ids, param_ids, measure_ids, sectors)
     check_projects(e, rows["project"], tech_ids, measure_ids, sectors)
+    check_measure_labels(e, measure_ids)
 
     drafts = check_prose(e)
 

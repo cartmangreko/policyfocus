@@ -34,6 +34,20 @@ be. What it buys is that neighbours in the graph are neighbours on the page,
 which is the only property a reader actually uses. A second pass moved nothing
 on cement and is not run.
 
+WHAT A MEASURE NODE SAYS
+========================
+Its short label, not its id. `cbam:FIN-03` is how the register, the graph and
+the gates name a measure and it tells a reader nothing; the label is computed
+from data/transition/measure_labels.json by one template shared across sectors.
+The id is still on the node, in `measure_id`, and the component prints it in the
+hover detail -- so the thing you can look up has not been hidden, it has stopped
+being the headline.
+
+Three gates run here, at the point the label is made rather than on a page
+review: the label exists for every measure in the view, it is unique within this
+diagram (two nodes reading alike is a picture that lies), and it carries no word
+from sources/display_vocabulary.py.
+
 STABILITY
 =========
 Ties break on id, never on dict order, so adding a project cannot silently
@@ -47,6 +61,7 @@ import argparse
 import json
 import sys
 
+import display_vocabulary as dv
 import sector_map as sm
 import build_importance as bi
 
@@ -63,8 +78,34 @@ PAD = 12
 KIND_ORDER = ["measure", "bottleneck", "technology", "project"]
 
 
+def measure_label(measure_id: str, labels: dict) -> str:
+    """One measure's short label, or a build failure saying which entry to add."""
+    entry = labels.get(measure_id)
+    if entry is None:
+        raise SystemExit(
+            f"build_sector_diagram: {measure_id} is in a sector view and has no entry in "
+            f"data/transition/measure_labels.json — a node cannot be drawn without a name, "
+            f"and the id is not a name"
+        )
+    instrument = entry.get("instrument")
+    if instrument is not None and instrument not in sm.INSTRUMENTS:
+        raise SystemExit(
+            f"build_sector_diagram: {measure_id} instrument {instrument!r} is not in "
+            f"sector_map.INSTRUMENTS {sm.INSTRUMENTS}"
+        )
+    label = sm.short_label(entry)
+    if len(label) > sm.MAX_SHORT_LABEL:
+        raise SystemExit(
+            f"build_sector_diagram: {measure_id} label {label!r} is {len(label)} characters, "
+            f"over the {sm.MAX_SHORT_LABEL} a node can draw without an ellipsis"
+        )
+    dv.check(label, f"build_sector_diagram: {measure_id}")
+    return label
+
+
 def build(sector: str) -> dict:
     imp = bi.build(sector, bi.date.today().year)
+    labels = sm.measure_labels()
     bottlenecks = [b for b in sm.load("bottleneck") if b["sector"] == sector]
     technologies = [t for t in sm.load("technology") if sector in t["sectors"]]
     projects = [p for p in sm.load("project") if p["sector"] == sector]
@@ -86,9 +127,9 @@ def build(sector: str) -> dict:
         else:
             sub = f"linkage {m['bottleneck_linkage']['weight']}"
         file_slug, row_id = m["measure"].split(":", 1)
-        add(f"measure:{m['measure']}", "measure", m["measure"], sub,
+        add(f"measure:{m['measure']}", "measure", measure_label(m["measure"], labels), sub,
             f"/measures/{file_slug}/{row_id}",
-            rank=m["rank"], direction=money["direction"])
+            rank=m["rank"], direction=money["direction"], measure_id=m["measure"])
 
     for b in bottlenecks:
         add(f"bottleneck:{b['id']}", "bottleneck", b["name"], b["type"],
@@ -117,6 +158,17 @@ def build(sector: str) -> dict:
     # Drop edges whose endpoints did not make the picture. A technology that
     # addresses a bottleneck in another sector, a measure below the view gate:
     # the edge is real in the graph and has nothing to join here.
+    seen: dict[str, str] = {}
+    for n in nodes.values():
+        if n["kind"] != "measure":
+            continue
+        if n["label"] in seen:
+            raise SystemExit(
+                f"build_sector_diagram: {sector}: {n['measure_id']} and {seen[n['label']]} both "
+                f"label as {n['label']!r} — two nodes reading alike is a picture that lies"
+            )
+        seen[n["label"]] = n["measure_id"]
+
     edges = [e for e in edges if e["from"] in nodes and e["to"] in nodes]
     edges.sort(key=lambda e: (e["from"], e["to"], e["rel"]))
 

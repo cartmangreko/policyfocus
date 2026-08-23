@@ -67,7 +67,7 @@ export async function generateMetadata({
     const inView = imp.measures.filter((m) => m.in_sector_view).length;
     const priced = imp.measures.filter((m) => m.money.computable).length;
     return {
-      title: `${name} — the transition map`,
+      title: `${name} — exposure, constraints and pipeline`,
       description:
         `What European ${name.toLowerCase()} is under: ${inView} of ${imp.measures.length} EU ` +
         `measures that decide whether it pays (${priced} priced), the constraints in the way, ` +
@@ -177,7 +177,7 @@ export default async function SectorPage({
                 <h2>What moved in this sector</h2>
               </div>
               <Link href="/changes" className="section-link">
-                All records →
+                All changes →
               </Link>
             </div>
             <div className="sector-changes">

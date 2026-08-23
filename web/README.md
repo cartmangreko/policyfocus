@@ -1,4 +1,4 @@
-# policyfocus — web
+# eufabric — web
 
 The front end. A Next.js App Router site that renders the measure register,
 the sector spine, the exposure layer and the findings — all of it read from

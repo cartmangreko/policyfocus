@@ -27,7 +27,7 @@ export function datasetJsonLd(): string {
   const doc = {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    name: "PolicyFocus — EU industrial-decarbonisation measures, decoded",
+    name: "Eufabric — EU industrial-decarbonisation measures, decoded",
     description:
       `${site.measures} measures decoded from ${site.files} EU acts, ` +
       `each one a requirement, prohibition, support measure or right with its source ` +

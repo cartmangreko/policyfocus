@@ -112,7 +112,7 @@ export default async function ActPage({ params }: { params: Promise<{ file: stri
             <p className="eyebrow">Connections</p>
             <h2>This file in the graph</h2>
             <p className="section-note">
-              Every line is an edge in the register&apos;s knowledge graph — acts this
+              Every line is an edge in the platform&apos;s knowledge graph — acts this
               file amends or its measures cite, and the sectors those measures apply
               to. Counts are computed at build time and checked against the graph.
             </p>

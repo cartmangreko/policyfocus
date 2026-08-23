@@ -77,7 +77,7 @@ function Branch({ tree }: { tree: TreeNode }) {
 // input-output data, and a record's are counts from the act alone. A single
 // hardcoded caption would overstate one or the other.
 const DEFAULT_CAPTION =
-  "Every figure on this diagram is computed from the register and the " +
+  "Every figure on this diagram is computed from the measures and the " +
   "input-output data, and checked before the page is built.";
 
 export default function FindingDiagram({

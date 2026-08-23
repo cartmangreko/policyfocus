@@ -19,7 +19,8 @@ THE FILES
   data/transition/technologies.json   shared across sectors, never duplicated
   data/transition/bottlenecks.json    one sector + one transition each
   data/transition/parameters.json     every number that any surface states
-  data/transition/projects.json       real plants, with append-only history
+  data/transition/projects.json       real installations, append-only history
+  data/transition/measure_labels.json what a measure is CALLED on a diagram
 
 Each file is {"_comment": [...], "<kind>s": [ ... ]} -- the same arrangement
 data/sectors.json uses, for the same reason: a data file that cannot say what
@@ -115,6 +116,28 @@ PROJECT_STATUSES = (
     "cancelled",
 )
 
+# The legal device a measure acts with, as a diagram says it. Closed for the
+# usual reason and one extra: these words are the only part of a measure label
+# that repeats across sectors, so an open list would give every sector its own
+# word for the same device and quietly break the comparison the labels exist to
+# make. `None` is a legitimate value -- see data/transition/measure_labels.json.
+INSTRUMENTS = (
+    "obligation",
+    "prohibition",
+    "requirements",
+    "phase-out",
+    "grants",
+    "levy",
+    "target",
+    "threshold",
+    "access rule",
+)
+
+# A diagram node is 236 units wide and the label sits at 12px. Past this it is
+# an ellipsis, and an ellipsis on the one word that says what the measure does
+# is worse than no label at all.
+MAX_SHORT_LABEL = 26
+
 CONFIDENCE = ("primary", "secondary", "estimate")
 
 # Scope of a parameter value. `country:XX` and `plant:<id>` are checked by
@@ -180,3 +203,20 @@ def register_measure_ids() -> set[str]:
         for row in rows:
             ids.add(f"{slug}:{row['id']}")
     return ids
+
+
+def measure_labels() -> dict[str, dict]:
+    """The {object, instrument} pair per register measure id."""
+    doc = json.loads((DATA / "measure_labels.json").read_text(encoding="utf-8"))
+    return doc["labels"]
+
+
+def short_label(entry: dict) -> str:
+    """The template. One line, one place, so twenty sectors read alike.
+
+    Kept deliberately dumb: the judgement is in the two authored fields, and a
+    template with a branch per measure would be the free labels this replaced.
+    """
+    obj = entry["object"].strip()
+    instrument = entry.get("instrument")
+    return obj if not instrument else f"{obj} {instrument.strip()}"

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Wordmark from "./Wordmark";
+import { getMasthead } from "@/lib/sitetext";
 
 // The footer is chrome, and chrome advertises. So it carries the product and
 // the method, and no longer carries the register's own directories: the flat
@@ -32,9 +33,11 @@ export default function SiteFooter() {
         <div className="site-footer-grid">
           <div>
             <Wordmark tone="dark" />
-            <p className="footer-statement">
-              The intelligence layer between European policy and the real economy.
-            </p>
+            {/* The same reviewed descriptor the home head carries, read from
+                data/prose.json rather than written twice. The footer used to
+                have a statement of its own, which is how a product ends up
+                with two descriptions of itself that drift apart. */}
+            <p className="footer-statement">{getMasthead().descriptor}</p>
           </div>
           {COLUMNS.map((col) => (
             <div key={col.heading}>

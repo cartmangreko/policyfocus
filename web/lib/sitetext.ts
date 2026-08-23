@@ -21,7 +21,7 @@ export function isReviewed(status: ProseStatus): boolean {
 }
 
 interface ProseDoc {
-  masthead: { status: ProseStatus; tagline: string; subline: string };
+  masthead: { status: ProseStatus; descriptor: string; positioning: string };
   perimeter: { status: ProseStatus; template: string; reviewed?: string };
   coverage_declarations: {
     status: ProseStatus;
@@ -57,9 +57,12 @@ function readProse(): ProseDoc {
   return cached;
 }
 
-export function getMasthead(): { tagline: string; subline: string } {
-  const { tagline, subline } = readProse().masthead;
-  return { tagline, subline };
+/** The two lines under the wordmark: the descriptor, then the positioning
+ *  sentence. Locked text — George's wording, reviewed — so nothing here
+ *  templates, truncates or recombines them. */
+export function getMasthead(): { descriptor: string; positioning: string } {
+  const { descriptor, positioning } = readProse().masthead;
+  return { descriptor, positioning };
 }
 
 /**
