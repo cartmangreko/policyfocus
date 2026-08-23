@@ -267,6 +267,47 @@ export function getImportance(sector: string): Importance | null {
   return JSON.parse(fs.readFileSync(full, "utf8")) as Importance;
 }
 
+/** The first screen: one sentence, why it matters, and the facts under both.
+ *  Built and gated by sources/build_lead.py — see that file for the rules the
+ *  sentences pass before they are written. Nothing is generated here. */
+export interface LeadFact {
+  id: string;
+  label: string;
+  text: string;
+  as_of: string;
+  numbers: string[];
+  parts: Record<string, string>;
+  sourced: string[];
+  href: string | null;
+}
+
+export interface LeadBlock {
+  text: string;
+  from: string[];
+  /** `override` is a sentence a reviewer wrote; `generated` came from the
+   *  templates. The page does not distinguish them — both are unsigned, per
+   *  amendment brief 2 §4 — but the build report does. */
+  source: "generated" | "override";
+  reviewed?: string;
+}
+
+export interface Lead {
+  sector: string;
+  template_version: number;
+  fingerprint: string;
+  sentence: LeadBlock;
+  why_it_matters: LeadBlock | null;
+  facts: LeadFact[];
+  override_stale: boolean;
+  notes: string[];
+}
+
+export function getLead(sector: string): Lead | null {
+  const full = path.join(DIR, "lead", `${sector.replace("/", "__")}.json`);
+  if (!fs.existsSync(full)) return null;
+  return JSON.parse(fs.readFileSync(full, "utf8")) as Lead;
+}
+
 /** Whether this sector has a transition map at all. The sector route reads it
  *  to choose a template, so it has to be cheap and total: no throw, no
  *  half-answer. A sector has a map when it has a ranking AND something for the

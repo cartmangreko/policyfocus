@@ -22,7 +22,9 @@
     "CONFIDENCE is about who is speaking, not about how much we like the number. `primary`",
     "is the body that produced the figure — the Official Journal for a statutory value, the",
     "company for its own plant. `secondary` is somebody reporting it. A price scraped from",
-    "a market data site is secondary, however accurate it is."
+    "a market data site is secondary, however accurate it is.",
+    "",
+    "`states_gap` marks a number that measures a SHORTFALL rather than a level, and it is what sources/build_lead.py ranks to find a sector's largest gap. A capture retrofit's capital cost is a level; the premium near-zero cement carries over conventional cement is a gap. All of a sector's gap parameters must share a unit — build_lead.py fails otherwise, because picking the 'largest' across a percentage and a euro figure is not a comparison."
   ],
   "parameters": [
     {
@@ -415,6 +417,7 @@
       "name": "Production cost premium of near-zero emissions cement using CCS",
       "value": "75-150",
       "unit": "% above a conventional plant",
+      "states_gap": true,
       "scope": "global",
       "sector": "cement",
       "date_of_value": "2025",

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import Crumbs from "@/components/Crumbs";
+import LeadBlock from "@/components/LeadBlock";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import TransitionDiagram, { type Diagram, type NodeSource } from "@/components/TransitionDiagram";
 import { SECTORS } from "@/lib/data";
@@ -15,6 +16,7 @@ import {
   eur,
   getBottlenecks,
   getImportance,
+  getLead,
   getParameters,
   getProjects,
   getTechnologies,
@@ -31,7 +33,7 @@ import type { SectorSlug } from "@/lib/types";
 // The sector page: the product, and the only template that answers the whole
 // question. Seven sections, in this order and no other:
 //
-//   1  what transition this sector is under, in one sentence
+//   1  the lead block — the sentence, why it matters, and the five facts
 //   2  the diagram — the same seven sections as a picture
 //   3  key measures, ranked, with the score components visible
 //   4  bottlenecks, typed, with their parameters and the technologies that address them
@@ -147,9 +149,13 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   const transitions = getTransitions(slug);
   const inView = imp.measures.filter((m) => m.in_sector_view);
 
-  const reviewed = getTransitionNote(slug);
+  // The lead. A built artifact where one exists; otherwise the sentence this
+  // page opened with before amendment brief 2 §4, which is still a correct
+  // computed sentence and is the right thing to fall back to for a sector whose
+  // lead has not been built yet.
+  const lead = getLead(slug);
   const opening =
-    reviewed ??
+    getTransitionNote(slug) ??
     transitionProse({
       subject: name.toLowerCase(),
       transitions: transitions.map((t) => TRANSITION_LABEL[t]),
@@ -204,12 +210,12 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
         <h1>
           <SectorIcon slug={slug} size={28} /> {name}
         </h1>
-        <p className="tmap-lede">{opening}</p>
         <ul className="tmap-transitions">
           {transitions.map((t) => (
             <li key={t}>{TRANSITION_LABEL[t]}</li>
           ))}
         </ul>
+        {lead ? <LeadBlock lead={lead} /> : <p className="tmap-lede">{opening}</p>}
       </header>
 
       {diagram ? (

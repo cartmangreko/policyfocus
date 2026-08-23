@@ -98,21 +98,32 @@ _INTERNAL_RE = _pattern(INTERNAL)
 _BRAND_RE = _pattern(BRAND)
 
 
-def violations(text: str, *, brand: bool = True) -> list[str]:
+def violations(text: str, *, brand: bool = True, exempt: tuple = ()) -> list[str]:
     """Every banned word in `text`, lowercased, in the order they appear.
 
     `brand=False` checks the internal list only -- for a surface where the
-    brand ruling is not the question being asked."""
+    brand ruling is not the question being asked.
+
+    `exempt` is a list of fragments that came from somewhere else: a source's
+    own wording, a name it published, a unit it wrote. They are spliced out
+    before the check, because the ruling is about how the PLATFORM frames
+    itself and a quantity the IEA states as "% above a conventional plant" is
+    the IEA's sentence, not Eufabric's positioning. Nothing else gets an
+    exemption -- an exempt fragment has to be traceable to a sourced field.
+    """
+    for fragment in exempt:
+        if fragment:
+            text = text.replace(fragment, " ")
     found = [m.group(0).lower() for m in _INTERNAL_RE.finditer(text)]
     if brand:
         found += [m.group(0).lower() for m in _BRAND_RE.finditer(text)]
     return found
 
 
-def check(text: str, where: str, *, brand: bool = True) -> None:
+def check(text: str, where: str, *, brand: bool = True, exempt: tuple = ()) -> None:
     """Raise on any violation. Used by the generators, where a banned word is
     a bug in a template rather than a sentence somebody chose."""
-    bad = violations(text, brand=brand)
+    bad = violations(text, brand=brand, exempt=exempt)
     if bad:
         raise ValueError(
             f"{where}: display-vocabulary violation {sorted(set(bad))} in {text!r} — "

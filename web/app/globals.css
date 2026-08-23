@@ -2762,6 +2762,94 @@ h3 {
   padding: 2px 9px;
 }
 
+/* --- the lead block ------------------------------------------------
+   The first screen, per amendment brief 2 §4: the sentence, why it matters,
+   and the facts under both. Every string is a built artifact — see
+   components/LeadBlock.tsx. The shape is Axios's and the type is this site's:
+   one large sentence, a short second block, then a labelled list where the
+   label carries the weight and the as-of date sits in monospace at the end of
+   its own line. No badges, no boxes of equal weight.
+   ------------------------------------------------------------------- */
+
+.lead-block {
+  margin-top: 22px;
+}
+.lead-sentence {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  max-width: 24ch;
+}
+@media (min-width: 720px) {
+  .lead-sentence {
+    max-width: 34ch;
+  }
+}
+.lead-why {
+  max-width: 62ch;
+  margin-top: 20px;
+}
+.lead-why h2 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  margin: 0 0 6px;
+}
+.lead-why p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-70);
+}
+.lead-facts {
+  margin: 26px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.lead-fact {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+@media (min-width: 720px) {
+  .lead-fact {
+    grid-template-columns: 190px 1fr;
+    gap: 20px;
+    align-items: baseline;
+  }
+}
+.lead-fact dt {
+  font-weight: 700;
+  font-size: 14px;
+}
+.lead-fact dd {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink-70);
+}
+.lead-fact dd a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.lead-fact dd a:hover {
+  border-bottom-color: var(--accent, var(--ink));
+}
+.lead-asof {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
 .tmap-section {
   padding: 40px 0 8px;
   border-top: 1px solid var(--rule-soft);
