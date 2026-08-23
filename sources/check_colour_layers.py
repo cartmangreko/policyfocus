@@ -75,6 +75,33 @@ COMPONENTS = (ROOT / "web" / "components", ROOT / "web" / "app")
 # value somebody nudged without re-reading this file.
 MIN_DELTA = 30.0
 
+# WCAG AA for body text. Not 3.0: almost everything measured here is small —
+# 11px monospace as-of dates, 13px captions — and the large-text allowance does
+# not apply to any of it.
+MIN_CONTRAST = 4.5
+
+# The ground type is read against. Everything defaults to the page; the
+# selectors below sit on a fill of their own and are measured against that.
+#
+# A DECLARED LIST RATHER THAN A RESOLVER. Working out which ancestor painted
+# the background behind a given rule is a layout question, and this file should
+# not pretend to answer one. Six selectors put type on something other than
+# paper; they are named here, and a seventh that appears without being added
+# will be measured against paper and fail loudly, which is the right way round.
+KNOCKOUT_GROUNDS: tuple[tuple[tuple[str, ...], str], ...] = (
+    (("site-footer", "footer-", "wordmark-dark"), "--ink"),
+    (("searchbar-submit",), "--ink"),
+    (("led-count",), "--claret"),          # the lighter of the two bar fills
+    (("diagram-node-act",), "--rule-dark"),
+    (("selection",), "--signal"),
+)
+
+# Rungs that are no longer type. They are hairlines, hover borders, timeline
+# dots and fill bars — a contrast ratio is not the question being asked of
+# them, and the moment one is used as a `color:` it becomes the question and
+# the answer is no. See the ink block in globals.css.
+NON_TEXT_TOKENS = ("--ink-40", "--ink-25")
+
 RESERVED = ("--claret", "--pine", "--signal")
 
 # A selector may emit claret or pine only if it names the direction it is
@@ -171,11 +198,11 @@ def main() -> int:
                 problems.append(f"{a} and {b} are {d:.0f} apart; the diagram needs its "
                                 f"kinds told apart at a glance")
 
-    # ---- layer confinement in CSS ----------------------------------------
     def confined(sel: str, markers: tuple[str, ...]) -> bool:
         low = sel.lower()
         return any(m in low for m in markers)
 
+    # ---- layer confinement in CSS ----------------------------------------
     for sel, body in rules(css):
         if sel.strip().startswith(("@", ":root")):
             continue
@@ -195,6 +222,53 @@ def main() -> int:
                 problems.append(f"{sel}: emits {name} outside a diagram")
             if name.startswith("--acc-") and confined(sel, DIAGRAM_MARKERS):
                 problems.append(f"{sel}: puts a sector accent on a diagram element")
+
+    # ---- contrast -------------------------------------------------------
+    # Every colour set as type has to be readable on the ground it is set on.
+    # This is the check that would have caught --ink-40 carrying every as-of
+    # date on the site at 3.16:1, which no amount of palette discipline does:
+    # the four layers are about what a colour MEANS, and this is about whether
+    # anybody can read it.
+    if "--paper" in tokens:
+        for sel, body in rules(css):
+            if sel.strip().startswith(("@", ":root")):
+                continue
+            # `color` exactly — not border-color, not outline-color, both of
+            # which end in the same six letters and are not type.
+            if "currentcolor" in body.lower():
+                # The rule is setting `color` as a carrier for something else to
+                # inherit — a gradient, a border, an SVG stroke. Nothing here is
+                # read as words.
+                continue
+            for m in re.finditer(r"(?:^|[;{\s])color\s*:\s*[^;]*var\((--[\w-]+)\)", body):
+                name = m.group(1)
+                ground_token = "--paper"
+                for markers, token in KNOCKOUT_GROUNDS:
+                    if confined(sel, markers):
+                        ground_token = token
+                        break
+                knockout = ground_token != "--paper"
+                if name in NON_TEXT_TOKENS and not knockout:
+                    problems.append(
+                        f"{sel}: sets type in {name}, which is not a type colour. Muted "
+                        f"type is --ink-55, and there is one of it")
+                    continue
+                if name.startswith(("--acc-", "--dg-")) or name == "--accent":
+                    problems.append(
+                        f"{sel}: sets type in {name}. A sector accent is a mark and a "
+                        f"diagram hue is a fill; neither is a colour to read words in")
+                    continue
+                if name not in tokens:
+                    continue
+                if ground_token not in tokens:
+                    problems.append(f"{sel}: declared ground {ground_token} is not a token")
+                    continue
+                got = colour.contrast(tokens[name], tokens[ground_token])
+                if got < MIN_CONTRAST:
+                    problems.append(
+                        f"{sel}: {name} ({tokens[name]}) is {got:.2f}:1 on "
+                        f"{ground_token.lstrip('-')}, under the {MIN_CONTRAST} AA wants "
+                        f"for small text")
 
     # ---- inline colour in components -------------------------------------
     for directory in COMPONENTS:
@@ -219,7 +293,8 @@ def main() -> int:
 
     print(f"check_colour_layers: OK — {len(dg)} diagram hues and "
           f"{len(measured) - len(dg)} sector accents, all clear of claret, pine, "
-          f"signal and ink by {MIN_DELTA:.0f} deltaE")
+          f"signal and ink by {MIN_DELTA:.0f} deltaE; every type colour clears "
+          f"{MIN_CONTRAST}:1 on its ground")
     return 0
 
 

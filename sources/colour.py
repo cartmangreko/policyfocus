@@ -48,6 +48,23 @@ def distance(a: str, b: str) -> float:
     return ((la - lb) ** 2 + (aa - ab) ** 2 + (ba - bb) ** 2) ** 0.5
 
 
+def relative_luminance(value: str) -> float:
+    """WCAG 2.x relative luminance. Its own transfer function, deliberately:
+    the Lab lightness above is for judging whether two colours look different,
+    and this is for judging whether type can be read. They disagree, and using
+    one for the other is how a palette passes the wrong test."""
+    def channel(c: float) -> float:
+        return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+    r, g, b = (channel(c) for c in hex_to_rgb(value))
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+
+def contrast(a: str, b: str) -> float:
+    """WCAG contrast ratio, 1:1 to 21:1. AA wants 4.5 for body text."""
+    la, lb = sorted((relative_luminance(a), relative_luminance(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
+
 def hue_degrees(value: str) -> float:
     """Lab hue angle, for reporting. Not used as a gate: two colours can share a
     hue angle and be told apart by lightness, and the gate should say so in the
