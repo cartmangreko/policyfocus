@@ -1,0 +1,512 @@
+{
+  "_comment": [
+    "BUILT FILE — do not edit. sources/build_sector_diagram.py computes the layout;",
+    "web/components/TransitionDiagram.tsx draws it and adds nothing but hover.",
+    "Coordinates are in the diagram's own units; the component scales the viewBox."
+  ],
+  "sector": "cement",
+  "width": 1160,
+  "height": 440,
+  "columns": [
+    {
+      "kind": "measure",
+      "x": 0,
+      "count": 8
+    },
+    {
+      "kind": "bottleneck",
+      "x": 300,
+      "count": 5
+    },
+    {
+      "kind": "technology",
+      "x": 600,
+      "count": 4
+    },
+    {
+      "kind": "project",
+      "x": 900,
+      "count": 8
+    }
+  ],
+  "nodes": [
+    {
+      "id": "measure:cbam:FIN-03",
+      "kind": "measure",
+      "label": "cbam:FIN-03",
+      "sub": "€75.46/t · cost",
+      "href": "/measures/cbam/FIN-03",
+      "rank": 1,
+      "direction": "cost",
+      "x": 0,
+      "y": 12.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:ets:CBAM-01",
+      "kind": "measure",
+      "label": "ets:CBAM-01",
+      "sub": "€1.36/t · cost",
+      "href": "/measures/ets/CBAM-01",
+      "rank": 2,
+      "direction": "cost",
+      "x": 0,
+      "y": 66.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:ets:FND-03",
+      "kind": "measure",
+      "label": "ets:FND-03",
+      "sub": "€381m · support",
+      "href": "/measures/ets/FND-03",
+      "rank": 3,
+      "direction": "support",
+      "x": 0,
+      "y": 120.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:iaa:LM-03a",
+      "kind": "measure",
+      "label": "iaa:LM-03a",
+      "sub": "linkage 1.0",
+      "href": "/measures/iaa/LM-03a",
+      "rank": 4,
+      "direction": null,
+      "x": 0,
+      "y": 174.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:nzia:CO2-02",
+      "kind": "measure",
+      "label": "nzia:CO2-02",
+      "sub": "linkage 1.0",
+      "href": "/measures/nzia/CO2-02",
+      "rank": 5,
+      "direction": null,
+      "x": 0,
+      "y": 228.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:iaa:LM-06a",
+      "kind": "measure",
+      "label": "iaa:LM-06a",
+      "sub": "linkage 0.5",
+      "href": "/measures/iaa/LM-06a",
+      "rank": 6,
+      "direction": null,
+      "x": 0,
+      "y": 282.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:nzia:CO2-10",
+      "kind": "measure",
+      "label": "nzia:CO2-10",
+      "sub": "linkage 0.5",
+      "href": "/measures/nzia/CO2-10",
+      "rank": 7,
+      "direction": null,
+      "x": 0,
+      "y": 336.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:nzia:SP-02",
+      "kind": "measure",
+      "label": "nzia:SP-02",
+      "sub": "linkage 0.5",
+      "href": "/measures/nzia/SP-02",
+      "rank": 8,
+      "direction": null,
+      "x": 0,
+      "y": 390.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:co2-transport-storage-network",
+      "kind": "bottleneck",
+      "label": "CO2 transport and storage network",
+      "sub": "infrastructure",
+      "href": "#bottleneck-co2-transport-storage-network",
+      "type": "infrastructure",
+      "x": 300,
+      "y": 93.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:cement-process-emissions",
+      "kind": "bottleneck",
+      "label": "Process emissions from calcination",
+      "sub": "technical",
+      "href": "#bottleneck-cement-process-emissions",
+      "type": "technical",
+      "x": 300,
+      "y": 147.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:cement-retrofit-finance",
+      "kind": "bottleneck",
+      "label": "Retrofit cost against plant economics",
+      "sub": "financial",
+      "href": "#bottleneck-cement-retrofit-finance",
+      "type": "financial",
+      "x": 300,
+      "y": 201.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:cement-subsidy-dependence",
+      "kind": "bottleneck",
+      "label": "Dependence on revocable public support",
+      "sub": "political",
+      "href": "#bottleneck-cement-subsidy-dependence",
+      "type": "political",
+      "x": 300,
+      "y": 255.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:cement-green-premium",
+      "kind": "bottleneck",
+      "label": "Green premium against willingness to pay",
+      "sub": "market",
+      "href": "#bottleneck-cement-green-premium",
+      "type": "market",
+      "x": 300,
+      "y": 309.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:ccs-oxyfuel",
+      "kind": "technology",
+      "label": "Oxyfuel carbon capture",
+      "sub": "demonstration",
+      "href": "#technology-ccs-oxyfuel",
+      "readiness": "demonstration",
+      "x": 600,
+      "y": 120.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:co2-transport-storage",
+      "kind": "technology",
+      "label": "CO2 transport and storage",
+      "sub": "early-commercial",
+      "href": "#technology-co2-transport-storage",
+      "readiness": "early-commercial",
+      "x": 600,
+      "y": 174.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:ccs-post-combustion",
+      "kind": "technology",
+      "label": "Post-combustion carbon capture",
+      "sub": "early-commercial",
+      "href": "#technology-ccs-post-combustion",
+      "readiness": "early-commercial",
+      "x": 600,
+      "y": 228.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:alternative-fuels",
+      "kind": "technology",
+      "label": "Alternative fuels in the kiln",
+      "sub": "commercial",
+      "href": "#technology-alternative-fuels",
+      "readiness": "commercial",
+      "x": 600,
+      "y": 282.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:go4zero-obourg",
+      "kind": "project",
+      "label": "GO4ZERO",
+      "sub": "BE · construction",
+      "href": "/projects/go4zero-obourg",
+      "status": "construction",
+      "x": 900,
+      "y": 12.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:anrav-devnya",
+      "kind": "project",
+      "label": "ANRAV",
+      "sub": "BG · funded",
+      "href": "/projects/anrav-devnya",
+      "status": "funded",
+      "x": 900,
+      "y": 66.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:brevik-ccs",
+      "kind": "project",
+      "label": "Brevik CCS",
+      "sub": "NO · operating",
+      "href": "/projects/brevik-ccs",
+      "status": "operating",
+      "x": 900,
+      "y": 120.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:carbon2business-lagerdorf",
+      "kind": "project",
+      "label": "Carbon2Business",
+      "sub": "DE · construction",
+      "href": "/projects/carbon2business-lagerdorf",
+      "status": "construction",
+      "x": 900,
+      "y": 174.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:gezero-geseke",
+      "kind": "project",
+      "label": "GeZero",
+      "sub": "DE · funded",
+      "href": "/projects/gezero-geseke",
+      "status": "funded",
+      "x": 900,
+      "y": 228.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:ifestos-kamari",
+      "kind": "project",
+      "label": "IFESTOS",
+      "sub": "GR · announced",
+      "href": "/projects/ifestos-kamari",
+      "status": "announced",
+      "x": 900,
+      "y": 282.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:slite-ccs",
+      "kind": "project",
+      "label": "Slite CCS",
+      "sub": "SE · paused",
+      "href": "/projects/slite-ccs",
+      "status": "paused",
+      "x": 900,
+      "y": 336.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:k6-lumbres",
+      "kind": "project",
+      "label": "K6",
+      "sub": "FR · construction",
+      "href": "/projects/k6-lumbres",
+      "status": "construction",
+      "x": 900,
+      "y": 390.0,
+      "w": 236,
+      "h": 38
+    }
+  ],
+  "edges": [
+    {
+      "from": "measure:cbam:FIN-03",
+      "to": "bottleneck:cement-green-premium",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:ets:CBAM-01",
+      "to": "bottleneck:cement-green-premium",
+      "rel": "relieves",
+      "weight": 1.0
+    },
+    {
+      "from": "measure:ets:CBAM-01",
+      "to": "bottleneck:cement-retrofit-finance",
+      "rel": "worsens",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:iaa:LM-03a",
+      "to": "bottleneck:cement-green-premium",
+      "rel": "relieves",
+      "weight": 1.0
+    },
+    {
+      "from": "measure:iaa:LM-06a",
+      "to": "bottleneck:cement-green-premium",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:nzia:CO2-02",
+      "to": "bottleneck:co2-transport-storage-network",
+      "rel": "relieves",
+      "weight": 1.0
+    },
+    {
+      "from": "measure:nzia:CO2-10",
+      "to": "bottleneck:co2-transport-storage-network",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:nzia:SP-02",
+      "to": "bottleneck:cement-retrofit-finance",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "project:anrav-devnya",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:anrav-devnya",
+      "to": "technology:co2-transport-storage",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:brevik-ccs",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:brevik-ccs",
+      "to": "technology:co2-transport-storage",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:carbon2business-lagerdorf",
+      "to": "technology:ccs-oxyfuel",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:gezero-geseke",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:gezero-geseke",
+      "to": "technology:co2-transport-storage",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:go4zero-obourg",
+      "to": "technology:ccs-oxyfuel",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:go4zero-obourg",
+      "to": "technology:co2-transport-storage",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:ifestos-kamari",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:ifestos-kamari",
+      "to": "technology:co2-transport-storage",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:k6-lumbres",
+      "to": "technology:alternative-fuels",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:k6-lumbres",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:slite-ccs",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:slite-ccs",
+      "to": "technology:co2-transport-storage",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "technology:ccs-oxyfuel",
+      "to": "bottleneck:cement-process-emissions",
+      "rel": "addresses",
+      "weight": 1
+    },
+    {
+      "from": "technology:ccs-oxyfuel",
+      "to": "bottleneck:cement-retrofit-finance",
+      "rel": "addresses",
+      "weight": 1
+    },
+    {
+      "from": "technology:ccs-post-combustion",
+      "to": "bottleneck:cement-process-emissions",
+      "rel": "addresses",
+      "weight": 1
+    },
+    {
+      "from": "technology:ccs-post-combustion",
+      "to": "bottleneck:cement-retrofit-finance",
+      "rel": "addresses",
+      "weight": 1
+    },
+    {
+      "from": "technology:co2-transport-storage",
+      "to": "bottleneck:co2-transport-storage-network",
+      "rel": "addresses",
+      "weight": 1
+    }
+  ]
+}

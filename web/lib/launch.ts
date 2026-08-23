@@ -22,3 +22,19 @@ const LAUNCHED = ["1", "true", "yes"].includes((process.env.SITE_LAUNCHED ?? "")
 const ENV = process.env.VERCEL_ENV; // "production" | "preview" | "development" | undefined
 
 export const INDEXABLE: boolean = LAUNCHED && (ENV === undefined || ENV === "production");
+
+// THE DEMOTED SURFACES. The register is no longer the product: it is the
+// candidate pool behind the sector pages. Its own surfaces — the act pages,
+// the flat measure browse, the findings, the coverage page and the legislative
+// change feed — keep their routes and their content, lose their links from the
+// header and the home page, and carry this tag.
+//
+// Kept rather than deleted, deliberately. Every one of them is the evidence a
+// sector page's ranking rests on, and a reader who follows a measure link into
+// the register should land on something finished. What they should not be is
+// the thing a search engine offers a stranger as the product.
+//
+// `follow: true` on purpose: the crawler should still walk through to the
+// measure pages, which ARE product surfaces — the sector page links them by
+// name and they carry the register's own evidence.
+export const DEMOTED = { index: false, follow: true } as const;

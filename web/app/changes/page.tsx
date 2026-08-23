@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import RecordCard from "@/components/RecordCard";
 import { getRecords } from "@/lib/records";
+import { DEMOTED } from "@/lib/launch";
 
 // The full record feed, reverse chronological. The home page leads with the
 // same records; this is where they all live, and where the feed keeps going
@@ -9,6 +10,7 @@ import { getRecords } from "@/lib/records";
 export function generateMetadata(): Metadata {
   const records = getRecords();
   return {
+    robots: DEMOTED,
     title: "Latest",
     description:
       `${records.length} change ${records.length === 1 ? "record" : "records"} — one per legislative event, ` +

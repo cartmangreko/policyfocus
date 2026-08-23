@@ -282,6 +282,30 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
         _source_list(e, w, r)
 
 
+def check_prose(e: Errors) -> list[str]:
+    """The sector's one reviewed sentence, and whether anyone has read it.
+
+    Same discipline as the ego notes: a sector that has a map must have a
+    sentence written for it, and the build fails if it does not. It does NOT
+    fail on the sentence being unreviewed — the page renders a computed
+    sentence until the block is approved, so a draft is a state the site
+    handles rather than a defect. What would be a defect is a draft nobody
+    remembers writing, which is why every run prints them.
+    """
+    import json as _json
+    doc = _json.loads((sm.ROOT / "data" / "prose.json").read_text(encoding="utf-8"))
+    block = doc.get("transition_notes") or {}
+    notes = block.get("sectors", {})
+    mapped = {b["sector"] for b in sm.load("bottleneck")}
+    for sector in sorted(mapped):
+        if sector not in notes:
+            e.add(f"prose {sector}", "has a transition map and no note in "
+                                     "data/prose.json transition_notes")
+    if block.get("status") in ("approved", "final"):
+        return []
+    return [f"  {s}: {notes[s]['sentence'][:88]}…" for s in sorted(notes)]
+
+
 def main() -> int:
     rows = sm.load_all()
     sectors = sm.sectors()
@@ -301,6 +325,8 @@ def main() -> int:
     check_bottlenecks(e, rows["bottleneck"], tech_ids, param_ids, measure_ids, sectors)
     check_projects(e, rows["project"], tech_ids, measure_ids, sectors)
 
+    drafts = check_prose(e)
+
     counts = ", ".join(f"{len(v)} {k}" for k, v in rows.items())
     if e.errors:
         print(f"check_sector_schema: {len(e.errors)} problems in {counts}\n")
@@ -308,6 +334,10 @@ def main() -> int:
         return 1
 
     print(f"check_sector_schema: OK — {counts}")
+    if drafts:
+        print(f"\ndraft prose awaiting review ({len(drafts)}) — the page renders the computed "
+              f"sentence until the block in data/prose.json is approved:")
+        print("\n".join(drafts))
     if e.stale:
         print(f"\nstale parameters ({len(e.stale)}) — reported, not failed:")
         print("\n".join(e.stale))

@@ -5,10 +5,12 @@ import SignalRow from "@/components/SignalRow";
 import StatsStrip from "@/components/StatsStrip";
 import { FILES, getAllMeasures, getRegisterStats } from "@/lib/data";
 import type { Measure } from "@/lib/types";
+import { DEMOTED } from "@/lib/launch";
 
 export function generateMetadata(): Metadata {
   const stats = getRegisterStats();
   return {
+    robots: DEMOTED,
     title: "Measures",
     description: `Every measure on the platform: all ${stats.measures} across ${Object.keys(FILES).length} acts, with who carries each and which direction it moves.`,
   };

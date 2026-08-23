@@ -2703,3 +2703,863 @@ h3 {
   line-height: 1.45;
   color: var(--ink);
 }
+
+/* ===================================================================
+   THE SECTOR TRANSITION MAP
+
+   The product template. Everything below serves one page shape — sector
+   map, project page, and the home feed that points at both — and it is
+   written to the same rule as the rest of this file: components carry no
+   visual choices, so all of it is here.
+
+   The four node kinds have one hue each, and they are the site's own
+   accents rather than a new palette: claret for the law, ochre for what
+   is blocking, pine for the route past it, focus blue for what is being
+   built. The same four appear in the diagram, on the chips, and on the
+   status marks, so a reader learns them once.
+   =================================================================== */
+
+.sector-map .tmap-head,
+.project-page .proj-head {
+  padding: 28px 0 20px;
+  border-bottom: 2px solid var(--ink);
+}
+.tmap-head h1,
+.proj-head h1 {
+  font-family: var(--display);
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 0;
+}
+.tmap-lede {
+  max-width: 68ch;
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-70);
+}
+.tmap-transitions {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.tmap-transitions li {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent, var(--ink-55));
+  border: 1px solid currentColor;
+  padding: 2px 9px;
+}
+
+.tmap-section {
+  padding: 40px 0 8px;
+  border-top: 1px solid var(--rule-soft);
+}
+.tmap-section:first-of-type {
+  border-top: 0;
+}
+.tmap-section > h2 {
+  font-family: var(--display);
+  font-size: 22px;
+  margin: 0 0 6px;
+}
+.tmap-sub {
+  font-size: 13.5px;
+  color: var(--ink-55);
+  max-width: 70ch;
+  margin: 0 0 18px;
+}
+
+/* --- the diagram ------------------------------------------------- */
+
+.tdiagram {
+  margin: 0;
+}
+.tdiagram-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.tdiagram-key {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+.tdiagram-key li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--ink-70);
+}
+.tdiagram-key .swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 1px;
+}
+.tdiagram-key .count {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+}
+.tdiagram-export {
+  margin-left: auto;
+  font: inherit;
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  padding: 4px 12px;
+  cursor: pointer;
+  color: var(--ink-70);
+}
+.tdiagram-export:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+/* The diagram is wide by design; it scrolls in its own box rather than
+   letting the page scroll sideways. */
+.tdiagram-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--rule-soft);
+  background: var(--chrome);
+  padding: 8px;
+}
+.tdiagram-scroll svg {
+  max-width: 100%;
+  height: auto;
+}
+.tnode-label {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  fill: var(--ink);
+}
+.tnode-sub {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  fill: var(--ink-55);
+}
+.tnode,
+.tedge {
+  transition: opacity var(--dur) var(--ease);
+}
+/* Entry motion: one pass, left to right, done inside 600ms including the
+   longest stagger. The reduced-motion guard at the top of this file
+   flattens it to nothing. */
+@keyframes tnode-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+@keyframes tedge-in {
+  from {
+    opacity: 0;
+  }
+}
+.tnode {
+  animation: tnode-in 0.26s var(--ease) backwards;
+}
+.tedge {
+  animation: tedge-in 0.24s var(--ease) backwards;
+}
+.tdiagram-caption {
+  margin-top: 12px;
+  min-height: 78px;
+  font-size: 13px;
+  color: var(--ink-55);
+}
+.tdiagram-detail strong {
+  color: var(--ink);
+}
+.tdiagram-detail .kind {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-40);
+  margin-left: 8px;
+}
+.tdiagram-detail ul {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.tdiagram-detail .pub {
+  color: var(--ink-40);
+  font-size: 12px;
+}
+
+/* --- ranked measures --------------------------------------------- */
+
+.tmeasures {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.tmeasures > li {
+  background: #fff;
+  padding: 18px 20px;
+}
+.tmeasure-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.trank {
+  font-family: var(--display);
+  font-size: 22px;
+  color: var(--ink-25);
+  line-height: 1;
+}
+.tmeasure-id {
+  font-family: var(--mono);
+  font-size: 13px;
+  border: 1px solid var(--rule);
+  padding: 1px 7px;
+}
+.tmtype,
+.treach {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+}
+.treach {
+  color: var(--pine);
+  border: 1px solid var(--pine);
+  padding: 1px 6px;
+}
+.tmeasure-duty {
+  margin: 10px 0 0;
+  max-width: 74ch;
+  color: var(--ink-70);
+}
+.tmeasure-cite {
+  margin: 6px 0 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-40);
+}
+.toverride {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--ochre);
+  max-width: 70ch;
+}
+
+.tscore {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  margin-top: 16px;
+}
+.tscore-cell {
+  background: var(--chrome);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tscore-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+}
+.tscore-figure {
+  font-family: var(--mono);
+  font-size: 21px;
+  font-variant-numeric: tabular-nums;
+  color: var(--claret);
+}
+.tscore-figure.none {
+  color: var(--ink-25);
+}
+.tscore-note,
+.tscore-formula,
+.tscore-caveat {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--ink-55);
+}
+.tscore-formula {
+  font-family: var(--mono);
+  color: var(--ink-40);
+}
+.tscore-caveat {
+  color: var(--ochre);
+}
+.tscore-edges {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12.5px;
+}
+.tscore-edges li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+}
+.tdir,
+.trel,
+.ttype,
+.tready,
+.tconf,
+.tstatus,
+.tarchived {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+.tdir.cost,
+.trel.worsens {
+  background: var(--claret-soft);
+  color: var(--claret);
+}
+.tdir.support,
+.trel.relieves {
+  background: var(--pine-soft);
+  color: var(--pine);
+}
+.ttype {
+  border: 1px solid var(--rule);
+  color: var(--ink-55);
+}
+.tweight {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+}
+
+.tnet {
+  margin-top: 22px;
+  border: 1px solid var(--rule-soft);
+  padding: 16px 18px;
+  background: var(--paper);
+}
+.tnet h3 {
+  font-family: var(--display);
+  font-size: 15px;
+  margin: 0 0 10px;
+}
+.tnet table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.tnet th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  font-weight: 400;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.tnet td {
+  padding: 8px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 13px;
+  vertical-align: top;
+}
+.tnet td .tscore-note {
+  display: block;
+}
+.tnet .num {
+  text-align: right;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+.tnet .neg {
+  color: var(--claret);
+}
+.tnet .pos {
+  color: var(--pine);
+}
+
+/* --- bottlenecks and technologies -------------------------------- */
+
+.tbottlenecks,
+.ttechs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.tbottleneck,
+.ttech {
+  background: #fff;
+  padding: 18px 20px;
+}
+.tbottleneck h3,
+.ttech h3 {
+  font-family: var(--display);
+  font-size: 16px;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tbottleneck p,
+.ttech p {
+  margin: 0;
+  color: var(--ink-70);
+  font-size: 13.5px;
+  max-width: 62ch;
+}
+.tparams {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tparam {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  border-left: 2px solid var(--accent, var(--rule));
+  padding-left: 10px;
+}
+.tparam-value {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.tparam-unit {
+  font-size: 11px;
+  color: var(--ink-40);
+}
+.tparam-name {
+  font-size: 12.5px;
+  color: var(--ink-70);
+}
+.tparam-src {
+  font-size: 11.5px;
+  color: var(--ink-40);
+}
+.tconf.primary {
+  background: var(--pine-soft);
+  color: var(--pine);
+}
+.tconf.secondary {
+  background: var(--paper-2);
+  color: var(--ink-55);
+}
+.tconf.estimate {
+  border: 1px solid var(--rule);
+  color: var(--ink-40);
+}
+.taddressed,
+.tbmeasures {
+  margin-top: 12px;
+  font-size: 12.5px;
+}
+.tbmeasures {
+  list-style: none;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--rule-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tbmeasures li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+}
+.tbmeasures .tscore-note,
+.tscore-edges .tscore-note {
+  flex-basis: 100%;
+}
+.ttech dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 14px;
+  margin: 14px 0 0;
+  font-size: 12.5px;
+}
+.ttech dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  padding-top: 2px;
+}
+.ttech dd {
+  margin: 0;
+  color: var(--ink-70);
+}
+.tready {
+  border: 1px solid var(--rule);
+  color: var(--ink-55);
+}
+.tready.commercial,
+.tready.early-commercial {
+  border-color: var(--pine);
+  color: var(--pine);
+}
+
+/* --- projects ----------------------------------------------------- */
+
+.tprojects-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--rule-soft);
+}
+.tprojects {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  background: #fff;
+}
+.tprojects th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  font-weight: 400;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--chrome);
+}
+.tprojects td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 13px;
+}
+.tprojects tr:last-child td {
+  border-bottom: 0;
+}
+.tprojects .num {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.tprojects .ttech-cell {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+.tstatus {
+  border: 1px solid var(--rule);
+  color: var(--ink-55);
+}
+.tstatus.operating {
+  background: var(--pine-soft);
+  border-color: transparent;
+  color: var(--pine);
+}
+.tstatus.construction {
+  background: var(--paper-2);
+  border-color: transparent;
+  color: var(--ink-70);
+}
+.tstatus.paused,
+.tstatus.cancelled {
+  background: var(--claret-soft);
+  border-color: transparent;
+  color: var(--claret);
+}
+
+/* --- sources ------------------------------------------------------ */
+
+.tsources {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px 32px;
+}
+.tsources h3 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.tsources ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12.5px;
+}
+.tsources li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.tarchived {
+  align-self: flex-start;
+  border: 1px solid var(--ochre);
+  color: var(--ochre);
+}
+
+/* --- the project page --------------------------------------------- */
+
+.proj-who {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-55);
+}
+.proj-who a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.proj-figures {
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.proj-figure {
+  font-family: var(--mono);
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+}
+.proj-figure span {
+  font-size: 11px;
+  color: var(--ink-40);
+  margin-left: 4px;
+}
+.proj-section {
+  padding: 32px 0 4px;
+  border-top: 1px solid var(--rule-soft);
+}
+.proj-section h2 {
+  font-family: var(--display);
+  font-size: 20px;
+  margin: 0 0 14px;
+}
+/* The rail is the ordinary forward path with the reached steps lit. A
+   project that stopped shows its stop at the end rather than a gap in
+   the middle, because a gap reads as missing data. */
+.proj-rail {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0;
+  margin: 0 0 20px;
+  border: 1px solid var(--rule-soft);
+}
+.proj-rail li {
+  flex: 1 1 120px;
+  padding: 12px 14px;
+  border-right: 1px solid var(--rule-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.proj-rail li:last-child {
+  border-right: 0;
+}
+.proj-rail .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rule);
+}
+.proj-rail li.on .dot {
+  background: var(--accent, var(--pine));
+}
+.proj-rail li.paused.on .dot,
+.proj-rail li.cancelled.on .dot {
+  background: var(--claret);
+}
+.proj-rail .label {
+  font-size: 12.5px;
+  color: var(--ink-25);
+}
+.proj-rail li.on .label {
+  color: var(--ink);
+}
+.proj-rail .date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-40);
+}
+.proj-history,
+.proj-tech,
+.proj-funding,
+.proj-sources {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.proj-history li,
+.proj-tech li,
+.proj-funding li,
+.proj-sources li {
+  background: #fff;
+  padding: 12px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 13px;
+}
+.proj-history .date,
+.proj-funding .amount {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+.proj-funding .amount {
+  font-size: 15px;
+}
+.proj-funding .measure {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  border: 1px solid var(--rule);
+  padding: 1px 6px;
+}
+.proj-history .note,
+.proj-tech .note,
+.proj-funding .note,
+.proj-sources .note {
+  flex-basis: 100%;
+  font-size: 12px;
+  color: var(--ink-55);
+  line-height: 1.45;
+}
+.proj-funding .quote {
+  flex-basis: 100%;
+  font-size: 12px;
+  color: var(--ink-70);
+  border-left: 2px solid var(--rule);
+  padding-left: 10px;
+}
+
+/* --- the home feed ------------------------------------------------ */
+
+.pchanges {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.pchange {
+  background: #fff;
+  padding: 16px 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  transition: background var(--dur) var(--ease);
+}
+.pchange:hover {
+  background: var(--card-hover);
+}
+.pchange-date {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-40);
+  flex: none;
+}
+.pchange-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1 1 260px;
+}
+.pchange-name {
+  font-family: var(--display);
+  font-size: 17px;
+  color: var(--ink);
+}
+.pchange-who {
+  font-size: 12.5px;
+  color: var(--ink-55);
+}
+.pchange-note {
+  font-size: 12.5px;
+  color: var(--ink-70);
+  max-width: 68ch;
+}
+.pchange-figures {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.pchange-figures em {
+  font-style: normal;
+  font-size: 10.5px;
+  color: var(--ink-40);
+  margin-left: 4px;
+}
+.pchange-src {
+  font-size: 11.5px;
+  color: var(--ink-40);
+}
+.sector-mapped {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pine);
+  border: 1px solid var(--pine);
+  padding: 1px 6px;
+  white-space: nowrap;
+}

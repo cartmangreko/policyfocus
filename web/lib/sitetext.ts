@@ -12,7 +12,13 @@ import { getSiteSummary } from "./summaries";
 
 const PROSE_PATH = path.join(process.cwd(), "..", "data", "prose.json");
 
-export type ProseStatus = "final" | "approved" | "draft-pending-george-edit";
+export type ProseStatus = "final" | "approved" | "draft" | "draft-pending-george-edit";
+
+/** A block renders only once someone has read it. Everything else falls back
+ *  to computed text, which is tier 1 and needs no review. */
+export function isReviewed(status: ProseStatus): boolean {
+  return status === "approved" || status === "final";
+}
 
 interface ProseDoc {
   masthead: { status: ProseStatus; tagline: string; subline: string };
@@ -31,6 +37,15 @@ interface ProseDoc {
     status: ProseStatus;
     files: Record<string, string>;
     reviewed?: string;
+  };
+  /** One sentence per sector that has a transition map, naming the transitions
+   *  it covers. Rendered by the sector page THROUGH getTransitionNote below,
+   *  which returns null until the block is reviewed — an unreviewed sentence
+   *  is a sentence nobody has read, and the page has a computed fallback. */
+  transition_notes: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    sectors: Record<string, { transitions: string[]; sentence: string }>;
   };
 }
 
@@ -84,4 +99,14 @@ export function getCoverageDeclaration(file: string): string | null {
 export function getCoverageLine(): string {
   const site = getSiteSummary();
   return readProse().coverage_line.template.replace(/\{acts_count\}/g, String(site.files));
+}
+
+/** The reviewed sentence for a sector's transition map, or null while the block
+ *  is still a draft. Null is not an error: web/lib/prose.ts renders the
+ *  computed sentence instead, and the draft sits in data/prose.json where
+ *  sources/check_sector_schema.py prints it on every run. */
+export function getTransitionNote(sector: string): string | null {
+  const block = readProse().transition_notes;
+  if (!block || !isReviewed(block.status)) return null;
+  return block.sectors[sector]?.sentence ?? null;
 }

@@ -10,6 +10,7 @@ import { FILES, SECTORS } from "@/lib/data";
 import { getEgoView } from "@/lib/ego";
 import { reachProse } from "@/lib/prose";
 import { getActSummary } from "@/lib/summaries";
+import { DEMOTED } from "@/lib/launch";
 
 // One act, in the same grammar as a sector page: summary strip, then the
 // reach strip (which sectors the file names, which it reaches and through
@@ -35,6 +36,7 @@ export async function generateMetadata({
   // The description is the reach strip's prose form — same template, same
   // computed object as the page body.
   return {
+    robots: DEMOTED,
     title: meta.name,
     description: `${meta.code} — ${reachProse(meta.name.split(" — ")[0], getActReach(file))}`,
   };

@@ -17,6 +17,7 @@ import {
 } from "@/lib/findings";
 import { headlineStep } from "@/lib/text";
 import type { SectorSlug } from "@/lib/types";
+import { DEMOTED } from "@/lib/launch";
 
 // Every path this route serves is enumerated below, so an unlisted one is a
 // 404 rather than a render on demand. That is load-bearing on Vercel: the
@@ -37,7 +38,7 @@ export async function generateMetadata({
   const { id } = await params;
   const finding = getFinding(id);
   if (!finding) return { title: "Finding not found" };
-  return { title: finding.headline, description: evidenceStrip(finding) };
+  return { title: finding.headline, description: evidenceStrip(finding), robots: DEMOTED };
 }
 
 // "4 measures, and 1 figure from Eurostat input-output data. Every one is

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono, Public_Sans } from "next/font/google";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import Ticker from "@/components/Ticker";
 import { INDEXABLE } from "@/lib/launch";
 import { datasetJsonLd } from "@/lib/schema";
 import { getMasthead } from "@/lib/sitetext";
@@ -56,7 +55,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: datasetJsonLd() }}
         />
         <div className="brand-rule" />
-        <Ticker />
+        {/* The register ticker is gone from the chrome. It scrolled measure
+            text across the top of every page — the register advertising
+            itself, above a product whose first job is to say what a sector is
+            under. components/Ticker.tsx is kept: the strip is good, and it
+            belongs to a register surface rather than to the site frame. */}
         <SiteHeader />
         {children}
         <SiteFooter />

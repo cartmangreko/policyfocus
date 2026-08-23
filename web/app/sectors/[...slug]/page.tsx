@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crumbs from "@/components/Crumbs";
+import SectorMap from "@/components/SectorMap";
 import FindingCard from "@/components/FindingCard";
 import NetPositionStrip from "@/components/NetPositionStrip";
 import SectorCard from "@/components/SectorCard";
@@ -26,6 +27,7 @@ import { arrivalProse, summaryProse } from "@/lib/prose";
 import { getSectorSummary } from "@/lib/summaries";
 import { getFindingsForSector, withEvidence } from "@/lib/findings";
 import { getRecordsForSector, recordHref } from "@/lib/records";
+import { getImportance, hasMap } from "@/lib/transition";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
 import type { Measure, SectorSlug } from "@/lib/types";
 
@@ -58,6 +60,20 @@ export async function generateMetadata({
   const slug = (await params).slug.join("/");
   if (!(slug in SECTORS)) return { title: "Sector not found" };
   const name = SECTORS[slug as SectorSlug];
+  // A sector with a map is a different page and needs a different tag: the
+  // register's measure counts describe what the OLD template shows.
+  if (hasMap(slug)) {
+    const imp = getImportance(slug)!;
+    const inView = imp.measures.filter((m) => m.in_sector_view).length;
+    const priced = imp.measures.filter((m) => m.money.computable).length;
+    return {
+      title: `${name} — the transition map`,
+      description:
+        `What European ${name.toLowerCase()} is under: ${inView} of ${imp.measures.length} EU ` +
+        `measures that decide whether it pays (${priced} priced), the constraints in the way, ` +
+        `the technologies past them, and every project building one.`,
+    };
+  }
   // The description is the strip's prose form — the same template, the same
   // gate-checked object, so the tag and the page cannot disagree.
   return {
@@ -86,6 +102,13 @@ export default async function SectorPage({
   params: Promise<{ slug: string[] }>;
 }) {
   const slug = (await params).slug.join("/");
+  // THE BRANCH. A sector with a transition map renders the map: the product
+  // template, seven sections, the register demoted to a source of ranked
+  // measures. A sector without one renders the register directory it has
+  // always rendered. Cement is the only sector on the first side today, and
+  // the condition is data rather than a list of slugs, so the second sector
+  // arrives by adding data.
+  if (slug in SECTORS && hasMap(slug)) return <SectorMap slug={slug as SectorSlug} />;
   if (!(slug in SECTORS)) notFound();
 
   const sectorSlug = slug as SectorSlug;

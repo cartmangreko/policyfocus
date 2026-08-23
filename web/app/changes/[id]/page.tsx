@@ -18,6 +18,7 @@ import {
   sectorName,
 } from "@/lib/records";
 import { headlineStep } from "@/lib/text";
+import { DEMOTED } from "@/lib/launch";
 
 // Every path this route serves is enumerated below, so an unlisted one is a
 // 404 rather than a render on demand — the same reason the finding route does
@@ -36,7 +37,7 @@ export async function generateMetadata({
   const { id } = await params;
   const record = getRecord(id);
   if (!record) return { title: "Record not found" };
-  return { title: record.headline, description: evidenceStrip(record) };
+  return { title: record.headline, description: evidenceStrip(record), robots: DEMOTED };
 }
 
 // The measures a record about a whole act stands for are all of them, and a

@@ -5,6 +5,7 @@ import { getCoverage, getQueuedItems, getWeightNote } from "@/lib/coverage";
 import type { CoverageFile } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
 import { getCoverageDeclaration, getPerimeterProse } from "@/lib/sitetext";
+import { DEMOTED } from "@/lib/launch";
 
 // The verification badge, in audience terms. The underlying dockets, gates
 // and pass artifacts in sources/ are untouched; this is only how their result
@@ -22,6 +23,7 @@ export function generateMetadata(): Metadata {
   const total = files.reduce((n, f) => n + f.measures, 0);
   const verified = files.filter(isVerified).length;
   return {
+    robots: DEMOTED,
     title: "Coverage",
     description: `${files.length} legislative acts on the platform, ${total} measures — ${verified} of ${files.length} acts verified by an independent second reading — plus what is queued and not yet read.`,
   };

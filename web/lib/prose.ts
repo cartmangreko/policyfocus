@@ -81,3 +81,36 @@ export function arrivalProse(sectorName: string, arrival: Arrival): string {
   const files = arrival.indirect.map((a) => FILES[a.file].name.split(" — ")[0]);
   return `${direct}, and from ${n(arrival.indirect.length, "more that never does", "more that never do")}: ${files.join(", ")}.`;
 }
+
+/** The sector transition map's opening sentence, computed. Used until the
+ *  reviewed sentence in data/prose.json is approved — see
+ *  lib/sitetext.ts:getTransitionNote. Every number is read from the built
+ *  ranking and the transition files, so this sentence cannot disagree with the
+ *  sections below it. */
+export function transitionProse(cuts: {
+  subject: string;
+  transitions: string[];
+  measuresInView: number;
+  measuresTotal: number;
+  bottlenecks: number;
+  projects: number;
+  operating: number;
+  paused: number;
+}): string {
+  const t =
+    cuts.transitions.length === 1
+      ? `one transition, ${cuts.transitions[0]}`
+      : `${n(cuts.transitions.length, "transition")} — ${list(cuts.transitions)}`;
+  const built = list([
+    cuts.operating > 0 ? `${cuts.operating} operating` : null,
+    cuts.paused > 0 ? `${cuts.paused} paused` : null,
+  ]);
+  return (
+    `European ${cuts.subject} is under ${t}. ` +
+    `Of ${n(cuts.measuresTotal, "tracked measure")} reaching the sector, ` +
+    `${cuts.measuresInView} carry money or a named constraint; ` +
+    `${n(cuts.bottlenecks, "bottleneck")} stand in the way, and ` +
+    `${n(cuts.projects, "project")} ${cuts.projects === 1 ? "is" : "are"} building past them` +
+    `${built ? ` (${built})` : ""}.`
+  );
+}

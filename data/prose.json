@@ -64,5 +64,30 @@
       "proposed": "This is a Commission proposal, {com}, under procedure {procedure}. It is not law yet, and it can change before it is.",
       "mixed": "The proposal {com}, under procedure {procedure}, would change an act already in force. What it adds is not law yet; the act it changes is."
     }
+  },
+  "transition_notes": {
+    "status": "draft",
+    "_comment": [
+      "One reviewed sentence per sector that has a transition map, naming the transitions it",
+      "covers. Same discipline as ego_notes: reviewed prose stored as data, tier 2 of the",
+      "three-tier rule in sources/scope.md.",
+      "",
+      "WHILE THE STATUS IS `draft`, NOTHING HERE RENDERS. web/lib/prose.ts falls back to the",
+      "computed sentence — counts of measures, bottlenecks and projects, template-rendered from",
+      "the data — which is tier 1 and needs no review. The sentence below is what the page",
+      "SHOULD say and cannot say yet. Flip the status to `approved` and the page takes it.",
+      "",
+      "sources/check_sector_schema.py prints the pending drafts on every run so that a sentence",
+      "written and forgotten stays visible."
+    ],
+    "reviewed": null,
+    "sectors": {
+      "cement": {
+        "transitions": [
+          "decarbonisation"
+        ],
+        "sentence": "European cement is under one transition, decarbonisation, and it turns on a fact no energy choice can reach: most of a kiln's CO2 comes out of the limestone rather than the fuel, which is why the sector's future runs through capture, the pipes and stores that capture depends on, and whoever is willing to pay for the result."
+      }
+    }
   }
 }
