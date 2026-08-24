@@ -85,3 +85,92 @@ ingested cannot have a change record at all until this exists, and the feed is
 the product. It is also cheapest at ingestion, when someone is already reading
 the act's final articles — reconstructing effect dates for acts ingested
 earlier is the same work done later with less context.
+
+---
+
+## Ecosystem as a node kind, with the six tiles rendered from its edges
+
+**Its own stack, small.** Touches `sources/sector_map.py` (the schema),
+`sources/build_graph.py`, `sources/check_sector_schema.py`, a new data file,
+`web/lib/transition.ts` and the home page.
+
+The homepage the specification describes opens on six ecosystem tiles — green
+steel, low-carbon cement, batteries, hydrogen, carbon capture, circular
+materials. Four of those six are not sectors and cannot become sectors.
+
+`data/sectors.json` is keyed on FIGARO industries, and that keying is what the
+Eurostat input-output joins run on. Hydrogen, carbon capture and circular
+materials are not FIGARO industries. Adding pseudo-keys for them would give the
+join three rows it cannot match, which is worse than not having the tiles: it
+corrupts a table that other work depends on being clean, and it does so quietly.
+
+So the ecosystem is a node kind above the spine, six instances, with two edge
+types out of it — `ecosystem -> sector` and `ecosystem -> technology`. Where an
+ecosystem maps 1:1 to a sector, the tile opens that sector page and no new
+surface exists. Where it is cross-cutting, the sector template renders with the
+query scoped by the ecosystem's edges rather than by a sector key: one template,
+so a reader learns the page once and a maintainer keeps one of them.
+
+Why it earns its place: it is the cheapest of the page prerequisites and the
+only one the homepage cannot open without. It is also the point at which the
+FIGARO keying either survives contact with the product taxonomy or is quietly
+broken, and that decision is much more expensive to reverse after six pseudo-
+keys are in the spine and someone has joined against them.
+
+---
+
+## The steel dataset, through the same gates as cement
+
+**Rides with nothing; it is a dataset, not a change.** Touches
+`data/transition/projects.json`, `bottlenecks.json`, `technologies.json`,
+`funding.json`, `parameters.json`, and the built files under
+`data/transition/importance/` and `data/transition/lead/`.
+
+Cement is the only sector with a map. `hasMap()` asks for an importance file and
+at least one bottleneck, and steel has neither; all eight rows of
+`projects.json` are cement. Every worked example in the page specification is
+green steel, which means the sector template cannot be rebuilt against a second
+sector until a second sector exists.
+
+That second sector is the point. A template with one instance is a page with
+extra steps — cement's shape and the template's shape are indistinguishable
+until something else has to fit in it, and the sections most likely to be
+cement-shaped (Companies, Related sectors, the constraint column) are exactly
+the ones the specification adds.
+
+It goes through the gates cement went through, without exception:
+`check_sector_schema.py` on the hand-written files, `check_importance.py` and
+the rebuild-and-diff on the built ones, a source and a date on every readiness
+value, an append-only status history with a link on every entry. A dataset
+hurried past its gates is not a faster second sector, it is a first sector that
+can no longer be trusted either.
+
+---
+
+## Downstream reach channel from the Eurostat input-output data
+
+**Its own stack.** Touches `web/lib/reachChannel.ts`, the reach data behind
+`data/exposure/`, `data/flatfile_eu-ic-io_ind-by-ind_26ed_2024.zip` as an
+ingestion input, and the sector template.
+
+Reach walks suppliers. A measure that lands on steel is recorded as reaching
+steel's inputs, and nothing walks the other way: the automotive, machinery and
+construction industries that buy the steel and carry the cost forward are absent
+from the model, and `reachChannel.ts` infers a channel from stored fields
+precisely because the channel was never stored.
+
+The consequence is a section that cannot be built. Supply-chain exposure — what
+a carbon price on cement does to the people who pour concrete — is the question
+the sector pages are most often going to be asked, and answering it from a
+supplier-side graph would produce a confident picture pointing the wrong way.
+
+The fix is a second channel built from the input-output table, downstream rather
+than upstream, with the same provenance discipline as the rest: the coefficient,
+its year, and the table it came from, displayed wherever a propagated figure is.
+Until it exists the supply-chain section does not appear on any sector page, and
+no placeholder stands in for it — see `eufabric-page-specifications.md` §2.
+
+Why it earns its place last: it is the largest of the outstanding channels and
+the only one whose absence is currently honest. Everything above it is a surface
+that cannot be drawn; this is a surface deliberately left undrawn, and it stays
+that way until the data supports it.
