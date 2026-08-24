@@ -436,6 +436,98 @@ def check_status_groups(e: Errors) -> None:
                                            f"{tuple(members)}")
 
 
+# The icon set is keyed by the noun it draws, not by a sector slug — four of the
+# six ecosystems borrow a sector's drawing and two have their own. Read from the
+# component rather than duplicated here, the same way the vocabulary parity
+# check reads web/lib/transition.ts: a list of icon names in Python would be a
+# second source of truth for what has actually been drawn.
+_ICON_KEY = re.compile(r'^  "?([a-z0-9/-]+)"?: \(', re.MULTILINE)
+
+
+def icon_keys() -> set[str]:
+    src = (sm.ROOT / "web" / "components" / "SectorIcon.tsx").read_text(encoding="utf-8")
+    return set(_ICON_KEY.findall(src))
+
+
+def check_ecosystems(e: Errors, rows: list[dict], sectors: dict, tech_ids: set,
+                     project_ids: set, material_ids: set, measure_ids: set) -> None:
+    """The six, and the boundary rule — page specifications §4.2.
+
+    WHAT IS CHECKED AND WHAT IS NOT. Every edge resolves, every icon has been
+    drawn, and a sector edge names a slug that exists. What is NOT checked is
+    that an instance has any edges at all: hydrogen and circular materials have
+    no sector key and no dataset yet, and that is the state the node kind was
+    introduced to be able to hold. An instance with nothing behind it renders no
+    page and its tile opens /coverage; it does not fail a build.
+    """
+    icons = icon_keys()
+    for r in rows:
+        w = f"ecosystem {r.get('id', '?')}"
+        _req(e, w, r, "id", "name", "icon")
+        # `sectors` is required as a FIELD and allowed to be empty: an instance
+        # with no sector key is the case this node kind exists for, and _req
+        # cannot tell an empty list from an absent one.
+        if "sectors" not in r:
+            e.add(w, "no sectors field — an instance with no sector edge says so "
+                     "with an empty list, which is a statement, rather than by "
+                     "leaving the field out, which is an omission")
+        if r.get("icon") and r["icon"] not in icons:
+            e.add(w, f"icon {r['icon']!r} is not drawn in "
+                     f"web/components/SectorIcon.tsx (drawn: {len(icons)})")
+        for slug in r.get("sectors", []):
+            if slug not in sectors:
+                e.add(w, f"sectors names {slug!r}, which is not in data/sectors.json")
+        # A scope note says the sector edge is WIDER than the instance. On an
+        # instance with no sector edge there is nothing for it to be wider than.
+        if r.get("sector_scope") and not r.get("sectors"):
+            e.add(w, "carries a sector_scope and no sector edge — a scope note "
+                     "narrows a sector key, and there is none to narrow")
+        for field, known in (("technology", tech_ids), ("project", project_ids),
+                             ("material", material_ids), ("measure", measure_ids)):
+            for edge in r.get(field, []):
+                if edge not in known:
+                    e.add(w, f"{field} names {edge!r}, which is not a {field} id")
+
+    check_project_boundary(e, rows)
+
+
+def check_project_boundary(e: Errors, ecosystems: list[dict]) -> None:
+    """A project belongs to the ecosystem whose product it makes (§4.2).
+
+    A project is claimed by an ecosystem two ways: through the sector it is
+    filed under, or by a direct edge. One claim is the rule; two is either a
+    boundary that has been drawn twice or a genuinely shared node — a CO2 store,
+    a hydrogen pipeline — and the difference is a judgement somebody has to make
+    and record. So two claims fail the build unless the project says `shared`.
+
+    Read the failure as a question rather than as a bug: which ecosystem's
+    product does this project make? A recycling plant makes recovered material
+    and belongs to circular materials; a cement plant with a recycled-content
+    obligation on it makes cement and stays in cement, with an edge to circular
+    materials from the obligation rather than from the plant.
+    """
+    by_sector: dict[str, list[str]] = {}
+    for eco in ecosystems:
+        for slug in eco.get("sectors", []):
+            by_sector.setdefault(slug, []).append(eco["id"])
+
+    claims: dict[str, set[str]] = {}
+    for eco in ecosystems:
+        for pid in eco.get("project", []):
+            claims.setdefault(pid, set()).add(eco["id"])
+    for p in sm.load("project"):
+        for eid in by_sector.get(p["sector"], []):
+            claims.setdefault(p["id"], set()).add(eid)
+
+    shared = {p["id"] for p in sm.load("project") if p.get("shared")}
+    for pid, owners in sorted(claims.items()):
+        if len(owners) > 1 and pid not in shared:
+            e.add(f"project {pid}", f"claimed by {sorted(owners)} — a project belongs to "
+                                    f"the ecosystem whose product it makes. If it genuinely "
+                                    f"serves several, mark it \"shared\": true and say so "
+                                    f"in its note")
+
+
 def check_measure_labels(e: Errors, measure_ids: set[str]) -> None:
     """The short labels the diagram draws instead of measure ids.
 
@@ -584,6 +676,31 @@ def check_prose(e: Errors) -> list[str]:
             e.add(f"prose {sector}", "has a transition map and no orientation paragraph in "
                                      "data/prose.json sector_orientation")
 
+    # One description per ecosystem instance (page specifications §4.2). An
+    # instance must HAVE a slot — a missing key is an instance nobody has
+    # thought about — and the text is allowed to be empty, which is the state
+    # every one of them is in until George supplies the words. What is checked
+    # about a written one is that it is the two sentences the specification
+    # asks for: a description that runs to a paragraph is the perimeter
+    # argument moving onto the tile's hover text.
+    descriptions = (doc.get("ecosystem_descriptions") or {}).get("ecosystems", {})
+    outstanding: list[str] = []
+    for eco in sm.load("ecosystem"):
+        entry = descriptions.get(eco["id"])
+        if entry is None:
+            e.add(f"prose {eco['id']}", "is an ecosystem instance with no description slot "
+                                        "in data/prose.json ecosystem_descriptions")
+            continue
+        text = (entry.get("description") or "").strip()
+        if not text:
+            outstanding.append(eco["id"])
+            continue
+        count = len([x for x in re.split(r"(?<=[.!?]) +", text) if x])
+        if count != 2:
+            e.add(f"prose {eco['id']}", f"the ecosystem description is {count} sentences; "
+                                        f"§4.2 asks for two — what it contains, and where "
+                                        f"its boundary runs")
+
     # The regenerated lead, held for review (brief 4 §6). It is a COPY of the
     # built lead rather than an input to it, so an unapproved one changes
     # nothing on the site — but a copy that has drifted from what the page says
@@ -612,6 +729,9 @@ def check_prose(e: Errors) -> list[str]:
         pending += [f"  {s} (orientation): {paras[s]['paragraph'][:76]}…" for s in sorted(paras)]
     if held and held.get("status") not in ("approved", "final"):
         pending += [f"  {s} (lead): {leads[s]['sentence'][:76]}…" for s in sorted(leads)]
+    if outstanding:
+        pending += [f"  {i} (ecosystem description): not written — the tile has no hover "
+                    f"text and the coverage page lists nothing for it" for i in outstanding]
     return pending
 
 
@@ -639,6 +759,8 @@ def main() -> int:
                     material_ids)
     check_funding(e, rows["funding"], tech_ids, project_ids, measure_ids, param_ids)
     check_measure_labels(e, measure_ids)
+    check_ecosystems(e, rows["ecosystem"], sectors, tech_ids, project_ids, material_ids,
+                     measure_ids)
     check_status_groups(e)
 
     drafts = check_prose(e)

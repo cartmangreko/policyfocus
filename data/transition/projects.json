@@ -23,7 +23,14 @@
     "is what lets the money model total public support for the sector; the note is what stops the",
     "link from being read as a claim that the award was made under the proposed article.",
     "",
-    "`public_funding` used to sit on each row. It moved to data/transition/funding.json, where capital allocation is a node with edges out of it: one Innovation Fund call finances several projects, and a field on the recipient could only say so by repeating itself once per recipient. The project keeps a rollup and the rollup is DERIVED — computed from the funding rows wherever it is shown, never stored back here."
+    "`public_funding` used to sit on each row. It moved to data/transition/funding.json, where capital allocation is a node with edges out of it: one Innovation Fund call finances several projects, and a field on the recipient could only say so by repeating itself once per recipient. The project keeps a rollup and the rollup is DERIVED — computed from the funding rows wherever it is shown, never stored back here.",
+    "",
+    "`shared`: OPTIONAL, AND ONLY EVER TRUE. A project is claimed by the ecosystem whose",
+    "product it makes (page specifications §4.2), and two claims on one project fail the",
+    "build — a boundary drawn twice is a boundary somebody has to redraw. A CO2 store or a",
+    "hydrogen pipeline serving three industries is the exception the rule needs, and it",
+    "says so with \"shared\": true and a note giving the industries it serves. A plant making",
+    "one product never carries it."
   ],
   "projects": [
     {

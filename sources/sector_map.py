@@ -222,6 +222,7 @@ _FILES = {
     "project": ("projects.json", "projects"),
     "material": ("materials.json", "materials"),
     "funding": ("funding.json", "funding"),
+    "ecosystem": ("ecosystems.json", "ecosystems"),
 }
 
 

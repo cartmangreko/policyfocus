@@ -1010,6 +1010,42 @@ h3 {
   border: 1px solid var(--rule-soft);
 }
 
+/* The six on the coverage page: name and boundary, set as a definition list
+   because that is what it is. It renders only once somebody has written a
+   description; until then the coverage page shows the tiles themselves. */
+.eco-list {
+  margin: 22px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.eco-entry {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+@media (min-width: 720px) {
+  .eco-entry {
+    grid-template-columns: 200px 1fr;
+    gap: 20px;
+    align-items: baseline;
+  }
+}
+.eco-entry dt {
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+.eco-entry dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-70);
+  max-width: 72ch;
+}
+
 /* ---------- the six tiles ----------
 
    The twenty-cell sector grid is gone (brief 4 §3 and §4). It ordered the
@@ -1032,7 +1068,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: 132px;
+  min-height: 118px;
   transition: background var(--dur) var(--ease);
 }
 .tile:hover {
@@ -1045,14 +1081,6 @@ h3 {
   letter-spacing: -0.018em;
   line-height: 1.2;
   color: var(--ink);
-}
-/* What the tile contains, where the name alone would leave it open. One
-   phrase, no numbers — it draws the perimeter, it does not measure it. */
-.tile-scope {
-  font-size: 13px;
-  line-height: 1.45;
-  color: var(--ink-55);
-  margin-top: auto;
 }
 
 /* ---------- detail pages ---------- */

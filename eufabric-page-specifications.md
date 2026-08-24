@@ -155,11 +155,14 @@ presentational — three hardcoded example chips, no index of any kind behind it
 Result rows state the node kind. Empty state: a computed "nothing tracked
 matches [query]" line plus the six ecosystem links, never a dead end.
 
-**Ecosystem tiles.** Six tiles: green steel, low-carbon cement, batteries,
-hydrogen, carbon capture, circular materials. Each tile carries the ecosystem
-name and one computed count line ([N] projects, [M] measures, as-of date). The
-counts make uneven depth visible on the first screen; the coverage page states
-what each ecosystem contains at its current tier.
+**Ecosystem tiles.** Six tiles. **Superseded twice since this was written:**
+§4.2 settles the instances — cement, steel, chemicals, batteries, hydrogen,
+circular-materials, with carbon capture a technology rather than an ecosystem —
+and brief 4 §3 rules the count line off the tile face. No tile carries a number
+of any kind: the six are at six different depths of build, and a count on each
+would invite a comparison about the state of our data rather than about the
+industries. What each ecosystem contains is stated on the coverage page and in
+the tile's hover text, in its reviewed description (§4.2).
 
 Ecosystems are their own node kind, not sector keys — see §4.2 for why, and for
 what a tile opens.
@@ -320,22 +323,80 @@ nowhere else on the page to look.
    repository today, so the dedup rule currently has nothing to dedup. Ingestion
    of at least one of them is inside this prerequisite, not before it.
 
-2. **Ecosystem node kind.** Six instances: green steel, low-carbon cement,
-   batteries, hydrogen, carbon capture, circular materials. Edges: ecosystem →
-   sector, ecosystem → technology.
+2. **Ecosystem node kind.** **This section supersedes its own first statement
+   of the six instances and of carbon capture's place among them; where an
+   earlier reading of §1 or §4.2 disagrees with what follows, what follows is
+   the ruling.**
+
+   Six instances: `cement`, `steel`, `chemicals`, `batteries`, `hydrogen`,
+   `circular-materials`. They are the front of the platform — the front page
+   and `/sectors` render these and nothing else (brief 4 §§1, 3, 4).
+
+   **Carbon capture is not an instance.** It is a technology node, with edges
+   from cement, steel and chemicals — the industries that deploy it — and the
+   CO2 transport and storage projects that serve them (Northern Lights,
+   Porthos, Greensand) are shared project nodes reachable from each. It was
+   listed as an ecosystem when the six were first written down, and it is the
+   one entry on that list that is not an industry: it is an abatement route
+   several industries take, and an ecosystem tile for it would have put a
+   technology beside five sectors and invited the reader to compare them.
 
    Why a node kind and not six sector keys. The sector spine in
    `data/sectors.json` is keyed on FIGARO industries because the input-output
-   joins depend on that keying. Hydrogen, carbon capture and circular materials
-   are not FIGARO industries; adding pseudo-keys for them would corrupt the
-   join. So the ecosystem sits above the spine and points into it.
+   joins depend on that keying. Hydrogen and circular materials are not FIGARO
+   industries; adding pseudo-keys for them would corrupt the join. So the
+   ecosystem sits above the spine and points into it.
 
-   Rendering rule. Where an ecosystem maps 1:1 to a sector (low-carbon cement,
-   green steel), the tile opens the sector page directly. Where it is
-   cross-cutting (hydrogen, carbon capture, circular materials), the same
-   eleven-section template of §2 renders with the query scoped by the
-   ecosystem's edges instead of by a sector key. One template, learned once,
-   either way.
+   **Sector edges, instance by instance.** The mapping is not one-to-one for
+   half of them, which is the whole reason the node kind exists:
+
+   | Instance | Sector edges |
+   |---|---|
+   | `cement` | `cement` |
+   | `steel` | `steel` |
+   | `chemicals` | `chem` and `chem/plastics` (FIGARO C20 and C22). Fertilisers are excluded; ammonia is read under `hydrogen` |
+   | `batteries` | `batsol`, **scoped to batteries only**. Solar stays in the register and carries no ecosystem edge |
+   | `hydrogen` | none. Production, including ammonia and the fertiliser line |
+   | `circular-materials` | none. The recovery industry: battery recycling, chemical and mechanical plastics recycling, scrap processing, critical raw material recovery |
+
+   The two without a sector key are defined by their edges to technologies,
+   projects, measures and materials. That is not a lesser definition — it is the
+   definition the node kind was introduced for, and the reason a sector key
+   could not have carried them.
+
+   `batsol` is the sharp case. The slug covers batteries *and* solar because
+   FIGARO does; the ecosystem instance covers batteries. A scoped edge says so
+   in the data rather than leaving a reader of the tile to assume the sector
+   page behind it is about the same thing.
+
+   **The boundary rule, as a gate.** A project belongs to the ecosystem whose
+   product it makes. A recycling plant is `circular-materials`. A
+   recycled-content obligation on a producing sector stays in that sector, with
+   an edge to `circular-materials`. Two ecosystem edges on one project fail the
+   build unless the project is flagged shared — which is what a CO2 store or a
+   hydrogen pipeline serving three industries is, and what a plant making one
+   product is not.
+
+   **Rendering rule.** Where an ecosystem maps 1:1 to a sector that has been
+   built, the tile opens that sector page directly. Where it is cross-cutting
+   (`hydrogen`, `circular-materials`), the same sector template renders with the
+   query scoped by the ecosystem's edges instead of by a sector key, with the
+   lead block and the `sector_context` slot empty until there is data to fill
+   them. One template, learned once, either way.
+
+   Until an instance has data behind it — a cross-cutting one with no edges, or
+   a 1:1 one whose sector still renders the directory template — **the tile
+   opens `/coverage`**, which states what is covered and what is not. This
+   reconciles the rule above with brief 4 §3: a tile never opens a page with
+   nothing on it, and an instance arrives at its own page by having a dataset,
+   not by an edit here.
+
+   **Each instance carries a reviewed two-sentence description** in
+   `data/prose.json` — what the ecosystem contains and where its boundary runs.
+   It renders on the coverage page and as the tile's hover text. **Never on the
+   tile face:** the tile carries the name and the icon, and a paragraph on it
+   would be the perimeter argument competing with the six names it exists to
+   present.
 
    Sequenced before the homepage tiles. Does not block the steel dataset.
 

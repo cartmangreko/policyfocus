@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import DriverChart from "@/components/DriverChart";
+import { getEcosystems } from "@/lib/ecosystems";
 import { getCoverage, getQueuedItems, getWeightNote } from "@/lib/coverage";
 import type { CoverageFile } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
-import { getCoverageDeclaration, getLaunchPerimeter, getPerimeterProse } from "@/lib/sitetext";
+import {
+  getCoverageDeclaration,
+  getEcosystemDescription,
+  getLaunchPerimeter,
+  getPerimeterProse,
+} from "@/lib/sitetext";
 
 // The verification badge, in audience terms. The underlying dockets, gates
 // and pass artifacts in sources/ are untouched; this is only how their result
@@ -66,6 +72,38 @@ export default function CoveragePage() {
           </p>
         </div>
       </section>
+
+      {/* THE SIX, AND WHAT EACH CONTAINS. Five of the six tiles on the front
+          page open this page, so this is where a reader who clicked Hydrogen
+          arrives — and what they came for is the boundary: what is inside the
+          name, and what a reasonable person might expect to be inside it and is
+          not. The descriptions are reviewed prose (page specifications §4.2).
+
+          NOTHING RENDERS UNTIL ONE IS WRITTEN, and no placeholder stands in.
+          The perimeter paragraph above already names all six and states what is
+          excluded from each; a second block repeating the names with no text
+          under them would be this page saying it has something to add and then
+          not adding it. Six tiles here would be worse still — five of them
+          would link back to this page. */}
+      {getEcosystems().some((e) => getEcosystemDescription(e.id)) ? (
+        <section className="band band-paper" id="ecosystems">
+          <div className="wrap">
+            <p className="eyebrow">The six</p>
+            <h2>What each one contains</h2>
+            <dl className="eco-list">
+              {getEcosystems().map((e) => {
+                const description = getEcosystemDescription(e.id);
+                return description ? (
+                  <div key={e.id} className="eco-entry">
+                    <dt>{e.name}</dt>
+                    <dd>{description}</dd>
+                  </div>
+                ) : null;
+              })}
+            </dl>
+          </div>
+        </section>
+      ) : null}
 
       <section className="band">
         <div className="wrap">
