@@ -7,7 +7,7 @@ import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import TransitionDiagram, { type Diagram, type NodeSource } from "@/components/TransitionDiagram";
 import { SECTORS } from "@/lib/data";
 import { transitionProse } from "@/lib/prose";
-import { getTransitionNote } from "@/lib/sitetext";
+import { getSectorOrientation, getTransitionNote } from "@/lib/sitetext";
 import {
   BEARER_LABEL,
   STATUS_LABEL,
@@ -216,6 +216,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   // page opened with before amendment brief 2 §4, which is still a correct
   // computed sentence and is the right thing to fall back to for a sector whose
   // lead has not been built yet.
+  const orientation = getSectorOrientation(slug);
   const lead = getLead(slug);
   const opening =
     getTransitionNote(slug) ??
@@ -278,6 +279,14 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
             <li key={t}>{TRANSITION_LABEL[t]}</li>
           ))}
         </ul>
+        {/* Standing context first, then the computed lead. The paragraph is
+            reviewed prose from data/prose.json and does not move when the data
+            does; everything below it is computed and does. A reader who has
+            never met this sector needs the first before the second means
+            anything, and a reader who has can skip it — which is why it is one
+            paragraph and not a page. Absent (unreviewed, or unwritten for this
+            sector) the header renders exactly as it did before. */}
+        {orientation ? <p className="tmap-orientation">{orientation}</p> : null}
         {lead ? <LeadBlock lead={lead} /> : <p className="tmap-lede">{opening}</p>}
       </header>
 
