@@ -1,5 +1,55 @@
 [
  {
+  "rel": "addresses",
+  "from": "technology:ccs-oxyfuel",
+  "to": "bottleneck:cement-process-emissions",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-process-emissions].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:ccs-oxyfuel",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:ccs-post-combustion",
+  "to": "bottleneck:cement-process-emissions",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-process-emissions].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:ccs-post-combustion",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:co2-transport-storage",
+  "to": "bottleneck:co2-transport-storage-network",
+  "since": "2024-06-13",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=co2-transport-storage-network].addressed_by"
+  }
+ },
+ {
   "rel": "amends",
   "from": "act:32025R0040",
   "to": "act:32019L0904",
@@ -22763,6 +22813,18 @@
   }
  },
  {
+  "rel": "consumes",
+  "from": "technology:co2-transport-storage",
+  "to": "material:captured-co2",
+  "since": "2024-06-13",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].consumed_by[technology:co2-transport-storage]",
+   "quote": "Member States shall take the necessary measures to enable access to CO2 transport networks and to storage sites for the purposes of geological storage of the produced and captured CO2 as far as it is economically feasible to do so or when a potential customer is willing to pay, in accordance with Article 21 of Directive 2009/31/EC."
+  },
+  "volume": null
+ },
+ {
   "rel": "contains",
   "from": "act:32024R1252",
   "to": "measure:crma:CBEN-01",
@@ -27659,6 +27721,248 @@
   "basis": "low-carbon threshold not yet defined"
  },
  {
+  "rel": "depends_on",
+  "from": "technology:ccs-oxyfuel",
+  "to": "technology:co2-transport-storage",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/technologies.json",
+   "path": "[id=ccs-oxyfuel].dependency"
+  }
+ },
+ {
+  "rel": "depends_on",
+  "from": "technology:ccs-post-combustion",
+  "to": "technology:co2-transport-storage",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/technologies.json",
+   "path": "[id=ccs-post-combustion].dependency"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:anrav-devnya",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=anrav-devnya].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:anrav-devnya",
+  "to": "technology:co2-transport-storage",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=anrav-devnya].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:brevik-ccs",
+  "to": "technology:ccs-post-combustion",
+  "since": "2024-12-02",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=brevik-ccs].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:brevik-ccs",
+  "to": "technology:co2-transport-storage",
+  "since": "2024-12-02",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=brevik-ccs].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:carbon2business-lagerdorf",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2023",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=carbon2business-lagerdorf].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:gezero-geseke",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gezero-geseke].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:gezero-geseke",
+  "to": "technology:co2-transport-storage",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gezero-geseke].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:go4zero-obourg",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=go4zero-obourg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:go4zero-obourg",
+  "to": "technology:co2-transport-storage",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=go4zero-obourg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:ifestos-kamari",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-07-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ifestos-kamari].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:ifestos-kamari",
+  "to": "technology:co2-transport-storage",
+  "since": "2023-07-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ifestos-kamari].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:k6-lumbres",
+  "to": "technology:alternative-fuels",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=k6-lumbres].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:k6-lumbres",
+  "to": "technology:ccs-post-combustion",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=k6-lumbres].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:slite-ccs",
+  "to": "technology:ccs-post-combustion",
+  "since": "2025-11-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=slite-ccs].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:slite-ccs",
+  "to": "technology:co2-transport-storage",
+  "since": "2025-11-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=slite-ccs].technology"
+  }
+ },
+ {
+  "rel": "finances",
+  "from": "funding:france-relance-k6",
+  "to": "project:k6-lumbres",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=france-relance-k6].finances"
+  },
+  "instrument": "state_aid",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-anrav",
+  "to": "project:anrav-devnya",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-anrav].finances"
+  },
+  "instrument": "grant",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-carbon2business",
+  "to": "project:carbon2business-lagerdorf",
+  "since": "2024-04-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-carbon2business].finances"
+  },
+  "instrument": "grant",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-gezero",
+  "to": "project:gezero-geseke",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-gezero].finances"
+  },
+  "instrument": "grant",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-go4zero",
+  "to": "project:go4zero-obourg",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-go4zero].finances"
+  },
+  "instrument": "grant",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:longship-brevik",
+  "to": "project:brevik-ccs",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=longship-brevik].finances"
+  },
+  "instrument": "state_aid",
+  "status": "approved"
+ },
+ {
   "rel": "imports_from",
   "from": "sector:air",
   "to": "country:CH",
@@ -29563,6 +29867,704 @@
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
  },
  {
+  "rel": "in",
+  "from": "funding:france-relance-k6",
+  "to": "country:FR",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=france-relance-k6].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-anrav",
+  "to": "country:BG",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-anrav].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-carbon2business",
+  "to": "country:DE",
+  "since": "2024-04-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-carbon2business].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-gezero",
+  "to": "country:DE",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-gezero].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-go4zero",
+  "to": "country:BE",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-go4zero].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:longship-brevik",
+  "to": "country:NO",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=longship-brevik].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:anrav-devnya",
+  "to": "country:BG",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=anrav-devnya].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:anrav-devnya",
+  "to": "sector:cement",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=anrav-devnya].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:brevik-ccs",
+  "to": "country:NO",
+  "since": "2024-12-02",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=brevik-ccs].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:brevik-ccs",
+  "to": "sector:cement",
+  "since": "2024-12-02",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=brevik-ccs].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:carbon2business-lagerdorf",
+  "to": "country:DE",
+  "since": "2023",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=carbon2business-lagerdorf].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:carbon2business-lagerdorf",
+  "to": "sector:cement",
+  "since": "2023",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=carbon2business-lagerdorf].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:gezero-geseke",
+  "to": "country:DE",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gezero-geseke].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:gezero-geseke",
+  "to": "sector:cement",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gezero-geseke].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:go4zero-obourg",
+  "to": "country:BE",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=go4zero-obourg].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:go4zero-obourg",
+  "to": "sector:cement",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=go4zero-obourg].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:ifestos-kamari",
+  "to": "country:GR",
+  "since": "2023-07-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ifestos-kamari].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:ifestos-kamari",
+  "to": "sector:cement",
+  "since": "2023-07-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ifestos-kamari].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:k6-lumbres",
+  "to": "country:FR",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=k6-lumbres].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:k6-lumbres",
+  "to": "sector:cement",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=k6-lumbres].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:slite-ccs",
+  "to": "country:SE",
+  "since": "2025-11-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=slite-ccs].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:slite-ccs",
+  "to": "sector:cement",
+  "since": "2025-11-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=slite-ccs].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "produces",
+  "from": "project:anrav-devnya",
+  "to": "material:captured-co2",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:anrav-devnya]",
+   "quote": "will have a capture capacity of about 800,000 t CO₂ per year"
+  },
+  "volume": "anrav-capture-capacity"
+ },
+ {
+  "rel": "produces",
+  "from": "project:brevik-ccs",
+  "to": "material:captured-co2",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:brevik-ccs]",
+   "quote": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
+  },
+  "volume": "brevik-capture-capacity"
+ },
+ {
+  "rel": "produces",
+  "from": "project:carbon2business-lagerdorf",
+  "to": "material:captured-co2",
+  "since": "2024-04-22",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:carbon2business-lagerdorf]",
+   "quote": "capture more than 1.2 million tons of CO2 emissions annually"
+  },
+  "volume": "carbon2business-capture-capacity"
+ },
+ {
+  "rel": "produces",
+  "from": "project:gezero-geseke",
+  "to": "material:captured-co2",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:gezero-geseke]",
+   "quote": "capturing 700,000 tonnes of CO₂ annually from 2029."
+  },
+  "volume": "gezero-capture-capacity"
+ },
+ {
+  "rel": "produces",
+  "from": "project:ifestos-kamari",
+  "to": "material:captured-co2",
+  "since": "2023-07-14",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:ifestos-kamari]",
+   "quote": "an absolute annual GHG emissions avoidance of more than 1.9 million tons of CO2"
+  },
+  "volume": "ifestos-capture-capacity"
+ },
+ {
+  "rel": "produces",
+  "from": "sector:cement",
+  "to": "material:clinker",
+  "since": "2026-06-26",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=clinker].produced_by[sector:cement]",
+   "quote": "Grey cement clinker | 0,689 | 0,656"
+  },
+  "volume": null
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:anrav-capture-capacity",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=anrav-capture-capacity].technology",
+   "quote": "will have a capture capacity of about 800,000 t CO₂ per year"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:anrav-grant",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:anrav-grant",
+  "to": "sector:cement",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=anrav-grant].sector",
+   "quote": "The Innovation Fund will provide a total of around 190 million euros in financing to Heidelberg Materials and partner PetroCeltic"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:brevik-abatement-share",
+  "to": "bottleneck:cement-process-emissions",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-process-emissions].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:brevik-abatement-share",
+  "to": "technology:ccs-post-combustion",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=brevik-abatement-share].technology",
+   "quote": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:brevik-capture-capacity",
+  "to": "technology:ccs-post-combustion",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=brevik-capture-capacity].technology",
+   "quote": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:carbon2business-capture-capacity",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-04-22",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=carbon2business-capture-capacity].technology",
+   "quote": "capture more than 1.2 million tons of CO2 emissions annually"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:cbam-default-grey-cement-2026",
+  "to": "sector:cement",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=cbam-default-grey-cement-2026].sector",
+   "quote": "2523 29 00 Grey Portland cement 1,360 0,080 1,440 1,584 1,728 1,872"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:cbam-default-grey-clinker-2026",
+  "to": "sector:cement",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=cbam-default-grey-clinker-2026].sector",
+   "quote": "2523 10 00 Grey clinker 1,370 0,050 1,410 1,551 1,692 1,833 (A)"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:cbam-factor-2026",
+  "to": "sector:cement",
+  "since": "2024-03-01",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=cbam-factor-2026].sector",
+   "quote": "The CBAM factor shall be equal to 100 % for the period between the entry into force of that Regulation and the end of 2025 and, subject to the application of provisions referred to in Article 36(2), point (b), of that Regulation, shall be equal to 97,5 % in 2026, 95 % in 2027, 90 % in 2028, 77,5 % in 2029, 51,5 % in 2030, 39 % in 2031, 26,5 % in 2032 and 14 % in 2033. From 2034, no CBAM factor sha"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:cbam-factor-2030",
+  "to": "sector:cement",
+  "since": "2024-03-01",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=cbam-factor-2030].sector",
+   "quote": "The CBAM factor shall be equal to 100 % for the period between the entry into force of that Regulation and the end of 2025 and, subject to the application of provisions referred to in Article 36(2), point (b), of that Regulation, shall be equal to 97,5 % in 2026, 95 % in 2027, 90 % in 2028, 77,5 % in 2029, 51,5 % in 2030, 39 % in 2031, 26,5 % in 2032 and 14 % in 2033. From 2034, no CBAM factor sha"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:ccs-retrofit-capex-oxyfuel",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:ccs-retrofit-capex-oxyfuel",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2025-12-07",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=ccs-retrofit-capex-oxyfuel].technology",
+   "quote": "The exact capital expenditure needed per plant is hard to determine at present, but is estimated to be around €330-360 million to deploy oxyfuel technology at a new 1 million tonne/year plant, about 100 million for retrofitting oxyfuel technology and €100-300 million to retrofit an existing plant with post-combustion technology"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:ccs-retrofit-capex-post-combustion",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:ccs-retrofit-capex-post-combustion",
+  "to": "technology:ccs-post-combustion",
+  "since": "2025-12-07",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=ccs-retrofit-capex-post-combustion].technology",
+   "quote": "The exact capital expenditure needed per plant is hard to determine at present, but is estimated to be around €330-360 million to deploy oxyfuel technology at a new 1 million tonne/year plant, about 100 million for retrofitting oxyfuel technology and €100-300 million to retrofit an existing plant with post-combustion technology"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:cement-imports-clinker-2025",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=cement-imports-clinker-2025].sector",
+   "quote": "\"value\":{\"0\":71478908.93}"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:cement-imports-grey-cement-2025",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=cement-imports-grey-cement-2025].sector",
+   "quote": "\"value\":{\"0\":57658565.6}"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:clinker-benchmark-2026-2030",
+  "to": "sector:cement",
+  "since": "2026-06-26",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=clinker-benchmark-2026-2030].sector",
+   "quote": "Grey cement clinker | 0,689 | 0,656"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:gezero-capture-capacity",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=gezero-capture-capacity].technology",
+   "quote": "capturing 700,000 tonnes of CO₂ annually from 2029."
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:gezero-grant",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:gezero-grant",
+  "to": "sector:cement",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=gezero-grant].sector",
+   "quote": "the Innovation Fund will provide a total of €191 million in financing to Heidelberg Materials to realise the project."
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:go4zero-investment",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:go4zero-investment",
+  "to": "sector:cement",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=go4zero-investment].sector",
+   "quote": "With a planned investment of over EUR 500 million, the GO4ZERO project will put innovation to work to advance Europe's decarbonization."
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:ifestos-capture-capacity",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-07-14",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=ifestos-capture-capacity].technology",
+   "quote": "an absolute annual GHG emissions avoidance of more than 1.9 million tons of CO2"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:k6-state-funding",
+  "to": "sector:cement",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=k6-state-funding].sector",
+   "quote": "le Gouvernement d'accorder un financement de quarante millions d'euros"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:near-zero-cement-cost-premium",
+  "to": "bottleneck:cement-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-green-premium].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:near-zero-cement-cost-premium",
+  "to": "sector:cement",
+  "since": "2025",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=near-zero-cement-cost-premium].sector",
+   "quote": "Production costs for early commercial plants for near-zero emissions cement using CCS are estimated to be 75-150% higher than today's conventional plants"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:nzia-injection-capacity-2030",
+  "to": "bottleneck:co2-transport-storage-network",
+  "since": "2024-06-13",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=co2-transport-storage-network].quantified_by"
+  }
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:cbam:FIN-03",
+  "to": "bottleneck:cement-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-green-premium].measures[cbam:FIN-03]",
+   "quote": "From 2028, satisfy the quarterly certificate-holding requirement using only certificates bought in the same year, so certificates carried over from earlier years no longer count."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:ets:CBAM-01",
+  "to": "bottleneck:cement-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-green-premium].measures[ets:CBAM-01]",
+   "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:iaa:LM-03a",
+  "to": "bottleneck:cement-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-green-premium].measures[iaa:LM-03a]",
+   "quote": "Apply the Union-origin and low-carbon requirements laid down in Annex II Part I (steel, concrete/mortar, aluminium) and Annex III Part I (electric vehicles) in covered public procurement."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:iaa:LM-06a",
+  "to": "bottleneck:cement-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-green-premium].measures[iaa:LM-06a]",
+   "quote": "Design public support schemes so that the Union-origin/low-carbon requirements of Annex II Part II and Annex III Part II apply to at least 45% of the national budget for Annex II Part II-type schemes and 100% of the budget for Annex III Part II-type schemes."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:nzia:CO2-02",
+  "to": "bottleneck:co2-transport-storage-network",
+  "since": "2024-06-13",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=co2-transport-storage-network].measures[nzia:CO2-02]",
+   "quote": "Deliver an individual share of the Union's 50 Mt/year CO2 injection capacity target by 2030, calculated pro-rata on the entity's share of Union crude oil and natural gas production over 2020-2023, as permitted capacity available to the market."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:nzia:CO2-10",
+  "to": "bottleneck:co2-transport-storage-network",
+  "since": "2024-06-13",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=co2-transport-storage-network].measures[nzia:CO2-10]",
+   "quote": "Take the measures needed to open access to CO2 transport networks and storage sites for geological storage, as far as it is economically feasible or where a potential customer is willing to pay."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:nzia:SP-02",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].measures[nzia:SP-02]",
+   "quote": "File an application for strategic-project recognition containing evidence against the criteria, a business plan evaluating financial viability, and a draft timetable showing when the project contributes to the Union benchmark."
+  },
+  "weight": 0.5
+ },
+ {
   "rel": "repeals",
   "from": "act:32025R0040",
   "to": "act:31994L0062",
@@ -30797,5 +31799,121 @@
   "share_pct": 2.4,
   "share_basis": "percent of the supplying sector's total output",
   "vintage": "FIGARO ind-by-ind, 2024 reference year, ed. 26"
+ },
+ {
+  "rel": "supports",
+  "from": "funding:france-relance-k6",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-02-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=france-relance-k6].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-anrav",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-anrav].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-carbon2business",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-04-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-carbon2business].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-gezero",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-gezero].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-go4zero",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-go4zero].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:longship-brevik",
+  "to": "technology:ccs-post-combustion",
+  "since": "2025-06-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=longship-brevik].supports"
+  }
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-anrav",
+  "to": "measure:ets:FND-03",
+  "since": "2023-01-20",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-anrav].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-carbon2business",
+  "to": "measure:ets:FND-03",
+  "since": "2024-04-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-carbon2business].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-gezero",
+  "to": "measure:ets:FND-03",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-gezero].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-go4zero",
+  "to": "measure:ets:FND-03",
+  "since": "2024-05-16",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-go4zero].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "worsens",
+  "from": "measure:ets:CBAM-01",
+  "to": "bottleneck:cement-retrofit-finance",
+  "since": "2023-12-15",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=cement-retrofit-finance].measures[ets:CBAM-01]",
+   "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods."
+  },
+  "weight": 0.5
  }
 ]

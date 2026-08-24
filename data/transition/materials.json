@@ -1,0 +1,170 @@
+{
+  "_comment": [
+    "What a sector makes, consumes and throws off.",
+    "",
+    "WHY MATERIALS ARE A NODE KIND. The layer could already say that a technology addresses",
+    "a constraint and that a project deploys the technology. It could not say what any of it",
+    "is made of. That gap is not academic: the prices that decide whether a route pays —",
+    "the allowance price, scrap, hydrogen, electricity — are prices OF MATERIALS, and with",
+    "nowhere to hang them they were sitting on measures and technologies as if they belonged",
+    "to the instrument rather than to the thing being bought. Materials are also the only",
+    "object that joins two sectors honestly: blast-furnace slag leaving steel and arriving in",
+    "cement is one node with an edge on each side, not a sentence on two pages.",
+    "",
+    "THE FIVE TYPES. `by_product` and `waste_stream` are kept apart deliberately — a",
+    "by-product has a buyer, a waste stream has to be paid to take away — because a page that",
+    "grouped them would assert a market that may not exist. Captured CO2 is a waste stream",
+    "today and would move to by_product the day somebody is reliably paid for it.",
+    "",
+    "EDGES LIVE ON THE MATERIAL. Every edge incident to a material is recorded here, the same",
+    "arrangement bottlenecks.json uses, so there is one file to read and one place to gate:",
+    "",
+    "  produced_by    sector: | project:   -> this material comes out of it",
+    "  consumed_by    sector: | technology: -> this material goes into it",
+    "  substitutes    another material id   -> this one can stand in for that one",
+    "  required_by    technology:           -> the technology cannot run without it, and does",
+    "                                          not consume it (an energy carrier, a catalyst).",
+    "                                          Empty on cement: everything here is consumed.",
+    "",
+    "Each edge carries `since` and `evidence`, as every edge in this repository does, and",
+    "`volume` where a sourced parameter states one. `volume` names a parameter id rather than",
+    "restating a number, so a material cannot carry a figure that is not in parameters.json",
+    "with the sentence it was read from.",
+    "",
+    "WHAT IS MISSING. Slag and fly ash — the clinker substitute the brief asks for third —",
+    "are not here, and the reason is the rule rather than the effort: no source stating the",
+    "substitution has been read, and an edge without evidence is the one thing this layer",
+    "does not ship. See GAPS.md, which names the document that would fill it."
+  ],
+  "materials": [
+    {
+      "id": "clinker",
+      "name": "Clinker",
+      "type": "intermediate",
+      "cn_code": "2523 10 00",
+      "prodcom_code": null,
+      "sectors": ["cement"],
+      "description": "The calcined intermediate that carries almost all of cement's process CO2. A tonne of cement is a tonne of clinker plus additions, which is why every carbon instrument that reaches this sector is written per tonne of clinker rather than per tonne of the product sold.",
+      "produced_by": [
+        {
+          "node": "sector:cement",
+          "since": "2026-06-26",
+          "volume": null,
+          "volume_note": "EU clinker output is unsourced and is the gap blocking every sector total on this page — see GAPS.md, 'EU clinker output'.",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=clinker-benchmark-2026-2030]",
+            "quote": "Grey cement clinker | 0,689 | 0,656",
+            "note": "The ETS free-allocation benchmark is set per tonne of grey cement clinker produced, which is the Commission stating what this sector's benchmarked output is."
+          }
+        }
+      ],
+      "consumed_by": [],
+      "substitutes": [],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1412",
+          "title": "Commission Implementing Regulation (EU) 2026/1412, Annex — free-allocation benchmarks",
+          "publisher": "EUR-Lex",
+          "date": "2026-06-26"
+        },
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R2621",
+          "title": "Commission Implementing Regulation (EU) 2025/2621, Annex I — CBAM default values",
+          "publisher": "EUR-Lex",
+          "date": "2025-12-16"
+        }
+      ]
+    },
+    {
+      "id": "captured-co2",
+      "name": "Captured CO2",
+      "type": "waste_stream",
+      "cn_code": null,
+      "prodcom_code": null,
+      "sectors": ["cement"],
+      "description": "What a capture plant produces and cannot sell. It is abated only once it is stored, so every tonne recorded here is a tonne owed to a transport and storage chain built by other parties on other timetables.",
+      "produced_by": [
+        {
+          "node": "project:brevik-ccs",
+          "since": "2025-06-18",
+          "volume": "brevik-capture-capacity",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=brevik-capture-capacity]",
+            "quote": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
+          }
+        },
+        {
+          "node": "project:gezero-geseke",
+          "since": "2023-12-15",
+          "volume": "gezero-capture-capacity",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=gezero-capture-capacity]",
+            "quote": "capturing 700,000 tonnes of CO₂ annually from 2029."
+          }
+        },
+        {
+          "node": "project:anrav-devnya",
+          "since": "2023-01-20",
+          "volume": "anrav-capture-capacity",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=anrav-capture-capacity]",
+            "quote": "will have a capture capacity of about 800,000 t CO₂ per year"
+          }
+        },
+        {
+          "node": "project:carbon2business-lagerdorf",
+          "since": "2024-04-22",
+          "volume": "carbon2business-capture-capacity",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=carbon2business-capture-capacity]",
+            "quote": "capture more than 1.2 million tons of CO2 emissions annually"
+          }
+        },
+        {
+          "node": "project:ifestos-kamari",
+          "since": "2023-07-14",
+          "volume": "ifestos-capture-capacity",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=ifestos-capture-capacity]",
+            "quote": "an absolute annual GHG emissions avoidance of more than 1.9 million tons of CO2"
+          }
+        }
+      ],
+      "consumed_by": [
+        {
+          "node": "technology:co2-transport-storage",
+          "since": "2024-06-13",
+          "volume": null,
+          "evidence": {
+            "source": "data/nzia.json",
+            "path": "CO2-10.source_text",
+            "quote": "Member States shall take the necessary measures to enable access to CO2 transport networks and to storage sites for the purposes of geological storage of the produced and captured CO2 as far as it is economically feasible to do so or when a potential customer is willing to pay, in accordance with Article 21 of Directive 2009/31/EC."
+          }
+        }
+      ],
+      "substitutes": [],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735",
+          "title": "Regulation (EU) 2024/1735 (Net-Zero Industry Act), Art. 22",
+          "publisher": "EUR-Lex",
+          "date": "2024-06-13"
+        },
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+          "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway",
+          "publisher": "Heidelberg Materials",
+          "date": "2025-06-18"
+        }
+      ]
+    }
+  ]
+}

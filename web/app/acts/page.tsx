@@ -4,11 +4,13 @@ import Crumbs from "@/components/Crumbs";
 import SummaryStrip from "@/components/SummaryStrip";
 import { FILES } from "@/lib/data";
 import { getActSummary, getSiteSummary } from "@/lib/summaries";
+import { DEMOTED } from "@/lib/launch";
 
 // The legislation directory — same grammar as /sectors: the site-wide summary
 // strip, then each act as a sub-card carrying its own miniature strip. The
 // act page below holds the reach strip and the grouped measures.
 export const metadata: Metadata = {
+  robots: DEMOTED,
   title: "Legislation",
   description:
     "The EU acts the platform decodes provision by provision, each with its burden/benefit, status and sector-reach summary.",

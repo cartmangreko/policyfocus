@@ -362,7 +362,7 @@ def structurally_eligible(celex: str, cfg: dict, manifest: dict) -> tuple[bool, 
 # triage
 # ---------------------------------------------------------------------------
 
-TRIAGE_SYSTEM = """You triage EU legal documents for the PolicyFocus register.
+TRIAGE_SYSTEM = """You triage EU legal documents for the Eufabric register.
 
 You are shown the scope standard, then one candidate document. Decide whether it
 belongs in the register: "in", "borderline", or "out".

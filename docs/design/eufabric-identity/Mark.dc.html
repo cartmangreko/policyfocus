@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<svg width="{{ size }}" height="{{ size }}" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block; overflow:visible">
+  <sc-for list="{{ segments }}" as="s" hint-placeholder-count="18">
+    <line x1="{{ s.x1 }}" y1="{{ s.y1 }}" x2="{{ s.x2 }}" y2="{{ s.y2 }}" stroke="{{ ink }}" stroke-width="{{ stroke }}" stroke-linecap="butt"></line>
+  </sc-for>
+  <sc-if value="{{ showNodes }}" hint-placeholder-val="{{ true }}">
+    <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="8">
+      <rect x="{{ n.rx }}" y="{{ n.ry }}" width="{{ n.rs }}" height="{{ n.rs }}" fill="{{ nodeColor }}"></rect>
+    </sc-for>
+  </sc-if>
+</svg>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:220,&quot;height&quot;:220},&quot;size&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:200,&quot;tsType&quot;:&quot;number&quot;},&quot;ink&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#211F1B&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;stroke&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:4,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:1,&quot;max&quot;:8,&quot;step&quot;:0.5},&quot;showNodes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;nodeColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2B54D8&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;node&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:7,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const P = [24, 48, 72, 96], S = 16, E = 104, h = 5;
+    const segs = [];
+    // weft (horizontal threads) — under where (i+j) even
+    P.forEach((Y, j) => {
+      const unders = [];
+      P.forEach((X, i) => { if ((i + j) % 2 === 0) unders.push(X); });
+      let x = S;
+      unders.sort((a, b) => a - b).forEach(ux => {
+        segs.push({ x1: x, y1: Y, x2: ux - h, y2: Y });
+        x = ux + h;
+      });
+      segs.push({ x1: x, y1: Y, x2: E, y2: Y });
+    });
+    // warp (vertical threads) — under where (i+j) odd
+    P.forEach((X, i) => {
+      const unders = [];
+      P.forEach((Y, j) => { if ((i + j) % 2 === 1) unders.push(Y); });
+      let y = S;
+      unders.sort((a, b) => a - b).forEach(uy => {
+        segs.push({ x1: X, y1: y, x2: X, y2: uy - h });
+        y = uy + h;
+      });
+      segs.push({ x1: X, y1: y, x2: X, y2: E });
+    });
+    const rs = Number(this.props.node ?? 7);
+    const nodes = [];
+    P.forEach((X, i) => P.forEach((Y, j) => {
+      if ((i + j) % 2 === 0) nodes.push({ rx: X - rs / 2, ry: Y - rs / 2, rs });
+    }));
+    return {
+      size: this.props.size ?? 200,
+      ink: this.props.ink ?? "#211F1B",
+      stroke: this.props.stroke ?? 4,
+      segments: segs,
+      nodes,
+      showNodes: !!this.props.showNodes,
+      nodeColor: this.props.nodeColor ?? this.props.ink ?? "#211F1B"
+    };
+  }
+}
+</script>
+</body>
+</html>

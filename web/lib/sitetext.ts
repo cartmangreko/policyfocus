@@ -12,10 +12,16 @@ import { getSiteSummary } from "./summaries";
 
 const PROSE_PATH = path.join(process.cwd(), "..", "data", "prose.json");
 
-export type ProseStatus = "final" | "approved" | "draft-pending-george-edit";
+export type ProseStatus = "final" | "approved" | "draft" | "draft-pending-george-edit";
+
+/** A block renders only once someone has read it. Everything else falls back
+ *  to computed text, which is tier 1 and needs no review. */
+export function isReviewed(status: ProseStatus): boolean {
+  return status === "approved" || status === "final";
+}
 
 interface ProseDoc {
-  masthead: { status: ProseStatus; tagline: string; subline: string };
+  masthead: { status: ProseStatus; descriptor: string; positioning: string };
   perimeter: { status: ProseStatus; template: string; reviewed?: string };
   coverage_declarations: {
     status: ProseStatus;
@@ -32,6 +38,25 @@ interface ProseDoc {
     files: Record<string, string>;
     reviewed?: string;
   };
+  /** One sentence per sector that has a transition map, naming the transitions
+   *  it covers. Rendered by the sector page THROUGH getTransitionNote below,
+   *  which returns null until the block is reviewed — an unreviewed sentence
+   *  is a sentence nobody has read, and the page has a computed fallback. */
+  transition_notes: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    sectors: Record<string, { transitions: string[]; sentence: string }>;
+  };
+  /** The standing orientation paragraph, one per mapped sector: what the sector
+   *  is, why it is hard, the technology paths, how policy frames it, and the
+   *  question the page then answers. Reviewed prose, four fixed beats, nearly
+   *  number-free — see the _comment in data/prose.json. Returned by
+   *  getSectorOrientation below, which is null until the block is reviewed. */
+  sector_orientation?: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    sectors: Record<string, { paragraph: string }>;
+  };
 }
 
 let cached: ProseDoc | null = null;
@@ -42,9 +67,12 @@ function readProse(): ProseDoc {
   return cached;
 }
 
-export function getMasthead(): { tagline: string; subline: string } {
-  const { tagline, subline } = readProse().masthead;
-  return { tagline, subline };
+/** The two lines under the wordmark: the descriptor, then the positioning
+ *  sentence. Locked text — George's wording, reviewed — so nothing here
+ *  templates, truncates or recombines them. */
+export function getMasthead(): { descriptor: string; positioning: string } {
+  const { descriptor, positioning } = readProse().masthead;
+  return { descriptor, positioning };
 }
 
 /**
@@ -84,4 +112,26 @@ export function getCoverageDeclaration(file: string): string | null {
 export function getCoverageLine(): string {
   const site = getSiteSummary();
   return readProse().coverage_line.template.replace(/\{acts_count\}/g, String(site.files));
+}
+
+/** The reviewed sentence for a sector's transition map, or null while the block
+ *  is still a draft. Null is not an error: web/lib/prose.ts renders the
+ *  computed sentence instead, and the draft sits in data/prose.json where
+ *  sources/check_sector_schema.py prints it on every run. */
+/** The sector's orientation paragraph, or null. Null covers both an unreviewed
+ *  block and a sector nobody has written one for; the page renders nothing
+ *  extra in either case and opens on the lead block, exactly as it did before
+ *  this paragraph existed. Unlike the transition note there is no computed
+ *  fallback, and there should not be: standing context is the one thing on this
+ *  page that cannot be derived from the panels. */
+export function getSectorOrientation(sector: string): string | null {
+  const block = readProse().sector_orientation;
+  if (!block || !isReviewed(block.status)) return null;
+  return block.sectors[sector]?.paragraph ?? null;
+}
+
+export function getTransitionNote(sector: string): string | null {
+  const block = readProse().transition_notes;
+  if (!block || !isReviewed(block.status)) return null;
+  return block.sectors[sector]?.sentence ?? null;
 }

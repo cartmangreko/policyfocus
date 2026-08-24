@@ -1,46 +1,161 @@
-/* PolicyFocus — design system.
+/* Eufabric — design system.
 
-   Ported from the repo's styles.css tokens. All presentation lives here;
-   components carry no visual choices, so a restyle is a change to this file,
-   not a restructure of the JSX.
+   All presentation lives here; components carry no visual choices, so a
+   restyle is a change to this file, not a restructure of the JSX.
 
-   The one deliberate departure from styles.css: the page ground is pure white.
-   --paper is retained for inset wells only — ledger cards, the source block,
-   the prior-rule pane, and the "who carries the burden" band. */
+   THE GROUND IS WARM PAPER (brief 3, lightened 23 August 2026). The old sheet
+   was white with paper wells inset into it, which is the arrangement a screen
+   defaults to rather than one anybody chose. Paper is the ground now: cards sit
+   a shade above the page, wells a shade below it, and the sheet reads as a
+   printed object rather than a screen default. See the grounds block for what
+   the design session changed and what survived it.
+
+   FOUR COLOUR LAYERS, EACH CONFINED (brief 3, and enforced by
+   sources/check_colour_layers.py):
+
+     1  SIGNAL BLUE     brand and chrome. The seam in the logotype, the brand
+                        rule, focus rings, interactive accents. Never data.
+     2  CLARET / PINE   direction, and nothing else. Cost and support on a euro
+                        figure; burden and relief on a duty — one axis, whatever
+                        the unit. A selector may only emit these if it NAMES the
+                        direction it is showing, which is what the gate checks.
+     3  DIAGRAM PALETTE inside diagrams only, disjoint from the three reserved
+                        colours by measurement rather than by eye. A diagram
+                        element showing money direction borrows claret or pine
+                        for that element alone.
+     4  SECTOR ACCENTS  page identity: the photo wash, a section marker, the
+                        what-moved marks on that sector's own page. Never on a
+                        figure, never on a diagram node.
+
+   Ochre is gone. Once the focus token became signal blue it had no chrome role
+   left, and every other use was data — a pending flag, an unresolved diff, an
+   override note — which is a layer it is not allowed in. Those all read as ink
+   weights now, which is what an editorial flag should have been. */
 
 :root {
-  /* ink */
-  --ink: #14171c;
-  --ink-70: #3f444c;
-  --ink-55: #5a5f68;
-  --ink-40: #868b93;
-  --ink-25: #b6bab4;
+  /* ink — brief 3's warm near-black, not a neutral grey.
 
-  /* grounds */
-  --paper: #f4f4f1;
-  --paper-2: #e6e8e2;
+     THREE RUNGS ARE TYPE, TWO ARE NOT. The identity names exactly three ink
+     values — ink, body, muted — and --ink-55 is the muted one it specifies.
+     The two below it were extrapolations, and the lighter of them was carrying
+     every as-of date on the site at 3.16:1, under AA on a ground it was never
+     measured against.
+
+     So they stop being type. --ink-40 and --ink-25 are hairlines, hover
+     borders, timeline dots and fill bars, where a contrast ratio is not the
+     question being asked; sources/check_colour_layers.py fails the build if
+     either one turns up as a `color:` again. Muted type is --ink-55 and there
+     is one of it, so a design session that wants a different muted value
+     changes one token. */
+  --ink: #211f1b; /* type          14.7:1 on paper */
+  --ink-70: #3a3833; /* body type     10.5:1 */
+  --ink-55: #6e6a60; /* muted type     4.8:1 — the identity's muted value */
+  --ink-40: #8d8879; /* NOT TYPE: borders, dots, fills */
+  --ink-25: #b3ae9f; /* NOT TYPE on paper: left rules, dividers.
+                        The one exception is the dark footer, where the ladder
+                        inverts: --ink-55 is 3.05:1 on ink and this is 7.4:1,
+                        so muted type there is this and only there. */
+
+  /* grounds. Paper is the page; card sits above it, well below it.
+
+     LIGHTENED IN THE DESIGN SESSION, 23 August 2026. Brief 3 set the ground at
+     #f4f2ea and worded the rule "warm, never pure white"; George asked for it
+     whiter on the direction boards and it moved to #fbfaf7 — still warm, and
+     noticeably lighter. The rule survives the change; the value it was written
+     against did not.
+
+     THE WHOLE LADDER MOVES TOGETHER. Lightening only the page would have put
+     the cards below it and inverted every surface on the site, so card goes to
+     white, the wells come up to meet it, and the order — well, page, card — is
+     what it always was. */
+  --paper: #fbfaf7;
+  --paper-2: #f2f0e8;
   --card: #ffffff;
-  --card-hover: #f7f8f5;
-  --chrome: #fbfbf9;
+  --card-hover: #f5f3ee;
+  --well: #f2f0e8;
+  --chrome: #fdfcfa;
 
-  /* rules */
-  --rule: #cdd0ca;
-  --rule-soft: #e0e2dc;
-  --rule-dark: #2b2f36;
+  /* rules — one hairline weight, per brief 3 */
+  --rule: #ddd9cf;
+  --rule-soft: #e7e3d9;
+  --rule-dark: #38352e;
 
-  /* signal */
+  /* ---- layer 1: brand and chrome ------------------------------------
+     One accent thread. A line, never a fill: the seam in the logotype,
+     the brand rule, the focus ring, a link's mark. No gradients, ever. */
+  --signal: #2b54d8;
+  --signal-light: #7f9bff;
+  --focus: var(--signal);
+
+  /* ---- layer 2: direction -------------------------------------------
+     Something lands on the firm, or it comes to it. Cost and support on a
+     euro figure, burden and relief on a duty — one axis, two colours, and
+     no third meaning. A selector emitting these has to name its side. */
   --claret: #7a2e3f;
   --claret-soft: #ecdadd;
   --claret-lift: #a5495e;
   --pine: #1f5c55;
   --pine-soft: #d4e2df;
-  --ochre: #a8781a;
-  --focus: #1f4f8f;
 
-  /* type */
-  --display: var(--font-display), "Archivo", system-ui, sans-serif;
-  --sans: var(--font-sans), "Public Sans", system-ui, sans-serif;
-  --mono: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;
+  /* ---- layer 3: the diagram palette ----------------------------------
+     Four hues for four node kinds, chosen by measurement: every one of
+     them clears claret, pine, signal and ink by at least 30 deltaE, and
+     each other by at least 46. The diagram is the one place on this site
+     where categorical colour does real work, so these carry slightly more
+     chroma than the sector accents — deliberately, and only here. */
+  --dg-measure: #a1662f;
+  --dg-bottleneck: #8a3a93;
+  --dg-technology: #417f33;
+  --dg-project: #3a6a9e;
+
+  /* ---- layer 4: sector accents ---------------------------------------
+     One hue per sector, for page identity: the duotone wash on that
+     sector's photograph, its section marker, its what-moved marks. Never a
+     figure, never a diagram node, never a background block.
+
+     RE-CUT ONCE, BY MEASUREMENT. The first cut put all twenty in one
+     narrow band so that none shouted — which walked twelve of them
+     straight into claret's and pine's neighbourhoods. --acc-auto was
+     #7c414a, nine deltaE from claret: a claret marker on the automotive
+     page, beside figures where claret means cost. Each one is now the
+     NEAREST colour to the original that clears all four anchors by 33, so
+     the family grouping the first cut was for — heavy industry as cousins,
+     a child sector a lighter cut of its parent — survives the move. */
+  --acc-steel: #69637e;
+  --acc-cement: #897667;
+  --acc-alu: #807b8e;
+  --acc-glass: #6285a7;
+  --acc-chem: #766085;
+  --acc-chem-plastics: #967394;
+  --acc-paper: #877a52;
+  --acc-wood: #7a5c3c;
+  --acc-foodbev: #7a6a30;
+  --acc-retail: #675d99;
+  --acc-horeca: #a1755e;
+  --acc-power: #96731f;
+  --acc-waste: #6d7642;
+  --acc-ship: #3c618b;
+  --acc-air: #4a6ea3;
+  --acc-auto: #867069;
+  --acc-build: #7c6550;
+  --acc-batsol: #617e44;
+  --acc-clean: #7d9a6b;
+  --acc-ccs: #737691;
+
+  /* type — one neo-grotesque, no webfonts (brief 3).
+
+     Helvetica where it is installed, Arial and Liberation Sans behind it.
+     Nothing is downloaded: three Google families were 60-odd KB and a flash
+     of fallback text on every cold load, to say in Archivo what this says in
+     the family the identity is drawn in. Weight and tracking carry the
+     hierarchy instead — the display face is the same family, tightened. */
+  --sans: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+  --display: var(--sans);
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Helvetica stops at bold. The scale is carried by SIZE and TRACKING, which
+     is how a single-family Swiss system has always carried it. */
+  --track-display: -0.045em;
 
   /* metrics */
   --maxw: 1200px;
@@ -49,13 +164,14 @@
   --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #ffffff;
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 15px;
@@ -69,8 +185,8 @@ a {
   text-decoration: none;
 }
 ::selection {
-  background: var(--claret);
-  color: #fff;
+  background: var(--signal);
+  color: var(--paper);
 }
 :focus-visible {
   outline: 2px solid var(--focus);
@@ -119,7 +235,7 @@ a {
 
 .brand-rule {
   height: 3px;
-  background: var(--claret);
+  background: var(--signal);
 }
 
 .ticker {
@@ -137,7 +253,7 @@ a {
   gap: 8px;
   height: 100%;
   padding: 0 16px;
-  background: #fff;
+  background: var(--card);
   border-right: 1px solid var(--rule-soft);
   font-family: var(--mono);
   font-size: 10.5px;
@@ -148,7 +264,7 @@ a {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--claret);
+  background: var(--signal);
 }
 .ticker-track {
   flex: 1;
@@ -189,72 +305,56 @@ a {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 var(--gutter);
-  height: 62px;
+  /* Deepened from 62px to carry the larger lockup without crowding it. */
+  height: 86px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
 
-/* wordmark + logomark */
+/* the lockup: mark + logotype.
+
+   The four-bar logomark is gone. It was built from the burden strip, which
+   made the site's identity a picture of its oldest data component — and two of
+   its four bars were claret and pine, spending the direction colours on a
+   brand. The weave replaces it, and the only accent left in the name is the
+   seam. */
 .wordmark {
   display: flex;
   align-items: center;
-  gap: 10px;
+  /* ~14px at a 20px logotype, per the identity, scaled to this setting */
+  gap: 15px;
 }
-.logomark {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 17px;
-}
-.logomark i {
-  width: 3px;
-  display: block;
-}
-.logomark i:nth-child(1) {
-  height: 10px;
-  background: var(--pine);
-}
-.logomark i:nth-child(2) {
-  height: 17px;
-  background: var(--ink);
-}
-.logomark i:nth-child(3) {
-  height: 13px;
-  background: var(--ink);
-}
-.logomark i:nth-child(4) {
-  height: 17px;
-  background: var(--claret);
-}
-.logomark-dark i:nth-child(2) {
-  background: var(--paper);
-}
-.logomark-dark i:nth-child(3) {
-  background: var(--ink-40);
-}
-.logomark-dark i:nth-child(4) {
-  background: var(--claret-lift);
-}
-
 .wordmark-text {
-  font-family: var(--mono);
-  font-size: 15px;
-  letter-spacing: 0.02em;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -0.045em;
   line-height: 1;
-  text-transform: uppercase;
-}
-.wordmark-lo {
-  font-weight: 500;
-  color: var(--ink-40);
-}
-.wordmark-hi {
-  font-weight: 600;
   color: var(--ink);
 }
-.wordmark-dark .wordmark-hi {
-  color: #fff;
+/* One pipe, regular weight, signal blue. The single place the accent colour
+   touches the name, and the reason it is confined everywhere else. */
+.wordmark-seam {
+  font-weight: 400;
+  color: var(--signal);
+  letter-spacing: 0;
+  padding: 0 0.02em;
+}
+/* The footer lockup is a step down from the header's: the same lockup, not a
+   second logo, and the footer is not where a reader is being told the name. */
+.wordmark-sm {
+  gap: 13px;
+}
+.wordmark-sm .wordmark-text {
+  font-size: 26px;
+}
+.wordmark-dark .wordmark-text {
+  color: var(--paper);
+}
+.wordmark-dark .wordmark-seam {
+  color: var(--signal-light);
 }
 
 .site-nav {
@@ -282,12 +382,12 @@ a {
   border: 1px solid var(--rule);
   border-radius: 6px;
   padding: 6px 10px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   font-family: var(--mono);
   font-size: 11.5px;
 }
 .header-search:hover {
-  border-color: var(--ink-40);
+  border-color: var(--ink-55);
 }
 .header-search-glyph {
   font-size: 13px;
@@ -297,7 +397,7 @@ a {
   border-radius: 3px;
   padding: 1px 5px;
   font-size: 10px;
-  color: var(--ink-25);
+  color: var(--ink-55);
 }
 .signin {
   font-size: 13.5px;
@@ -330,7 +430,7 @@ a {
   font-size: 1.2rem;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: var(--paper);
   max-width: 24ch;
   margin: 20px 0 0;
 }
@@ -339,7 +439,7 @@ a {
   font-size: 10.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-55);
+  color: var(--ink-25);
   margin-bottom: 14px;
 }
 .footer-links {
@@ -349,12 +449,12 @@ a {
   font-size: 13px;
 }
 .footer-links a:hover {
-  color: #fff;
+  color: var(--paper);
 }
 .footer-colophon {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-55);
+  color: var(--ink-25);
   margin-top: 22px;
 }
 
@@ -365,7 +465,7 @@ a {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin: 0;
 }
 h1,
@@ -375,7 +475,7 @@ h3 {
   margin: 0;
 }
 .band h2 {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.65rem;
   letter-spacing: -0.02em;
   margin: 10px 0 0;
@@ -407,7 +507,7 @@ h3 {
 .section-link {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--claret);
+  color: var(--signal);
 }
 .section-link:hover {
   text-decoration: underline;
@@ -429,7 +529,7 @@ h3 {
 }
 .hero-title {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.02;
   font-size: clamp(2.6rem, 6vw, 4.5rem);
@@ -456,12 +556,12 @@ h3 {
   align-items: center;
   border: 1.5px solid var(--ink);
   border-radius: 8px;
-  background: #fff;
+  background: var(--card);
   overflow: hidden;
 }
 .searchbar-glyph {
   padding: 0 16px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   font-size: 19px;
 }
 .searchbar-input {
@@ -480,7 +580,7 @@ h3 {
   border: 0;
   border-left: 1.5px solid var(--ink);
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.08em;
@@ -493,7 +593,7 @@ h3 {
   transition: background var(--dur) var(--ease);
 }
 .searchbar-submit:hover {
-  background: var(--claret);
+  background: var(--ink);
 }
 
 .query-chips {
@@ -514,11 +614,11 @@ h3 {
   align-items: center;
 }
 .query-chip:hover {
-  border-color: var(--ink-40);
+  border-color: var(--ink-55);
   color: var(--ink);
 }
 .query-arrow {
-  color: var(--claret);
+  color: var(--signal);
   font-family: var(--mono);
 }
 
@@ -542,7 +642,7 @@ h3 {
 }
 .stat-value {
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: 700;
   font-size: 2.4rem;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -562,7 +662,7 @@ h3 {
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin-top: 8px;
 }
 
@@ -573,7 +673,7 @@ h3 {
   margin-top: 34px;
 }
 .home-stats-link:hover .stat-value {
-  color: var(--claret);
+  color: var(--ink);
 }
 
 /* ---------- summary strip ---------- */
@@ -599,7 +699,7 @@ h3 {
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin-bottom: 8px;
 }
 .summary-cell-value {
@@ -618,7 +718,7 @@ h3 {
 .summary-cell-sub {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin-top: 6px;
 }
 .strip-prose {
@@ -630,7 +730,7 @@ h3 {
 .summary-mini {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   font-variant-numeric: tabular-nums;
 }
 .summary-mini-sep {
@@ -673,7 +773,7 @@ h3 {
 .signal-id {
   font-family: var(--mono);
   font-size: 11.5px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   padding-top: 3px;
 }
 .signal-body {
@@ -703,7 +803,7 @@ h3 {
   font-size: 10.5px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin-top: 8px;
 }
 .signal-marks {
@@ -749,7 +849,7 @@ h3 {
   background: var(--pine);
 }
 .signal:hover .strip i.on {
-  background: var(--claret);
+  background: var(--ink);
 }
 
 /* ---------- who carries the burden ---------- */
@@ -761,7 +861,7 @@ h3 {
   align-items: start;
 }
 .card {
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--rule-soft);
   border-radius: 8px;
   padding: 26px 24px;
@@ -769,7 +869,7 @@ h3 {
 .card-label {
   font-family: var(--mono);
   font-size: 11.5px;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 .card-note {
   font-size: 12.5px;
@@ -830,7 +930,7 @@ h3 {
 .led-count {
   font-family: var(--mono);
   font-size: 11px;
-  color: #fff;
+  color: var(--paper);
 }
 
 .legend {
@@ -879,7 +979,7 @@ h3 {
 .dchart-count {
   font-family: var(--mono);
   font-size: 10px;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 .dchart-bar {
   width: 100%;
@@ -895,7 +995,7 @@ h3 {
   text-align: center;
   font-family: var(--mono);
   font-size: 10px;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 
 /* ---------- hairline grids ---------- */
@@ -910,7 +1010,7 @@ h3 {
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
 }
 .sector-cell {
-  background: #fff;
+  background: var(--card);
   padding: 18px;
   display: flex;
   justify-content: space-between;
@@ -925,10 +1025,13 @@ h3 {
   font-size: 14px;
   font-weight: 500;
 }
-.sector-count {
+/* The nineteen sectors without a page of their own. Muted on purpose: it is a
+   state, not a claim, and it should not compete with the sector's name. */
+.sector-pending {
   font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-40);
+  font-size: 10.5px;
+  color: var(--ink-55);
+  white-space: nowrap;
 }
 
 /* ---------- detail pages ---------- */
@@ -946,7 +1049,7 @@ h3 {
 .backlink {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--claret);
+  color: var(--signal);
 }
 .backlink:hover {
   text-decoration: underline;
@@ -956,7 +1059,7 @@ h3 {
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 .crumb-item {
   display: inline-flex;
@@ -968,7 +1071,7 @@ h3 {
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--claret);
+  color: var(--signal);
 }
 .crumb-link:hover {
   text-decoration: underline;
@@ -976,7 +1079,7 @@ h3 {
 .crumb-sep {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 
 .cite-block {
@@ -1008,7 +1111,7 @@ h3 {
   margin-top: 22px;
 }
 .dir-card {
-  background: #fff;
+  background: var(--card);
   padding: 20px 22px 22px;
   display: flex;
   flex-direction: column;
@@ -1016,12 +1119,12 @@ h3 {
 }
 .dir-card-title {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: -0.02em;
 }
 .dir-card-title:hover {
-  color: var(--claret);
+  color: var(--ink);
 }
 .dir-card-children {
   border-top: 1px solid var(--rule-soft);
@@ -1042,12 +1145,12 @@ h3 {
   font-weight: 600;
 }
 .dir-card-child-title:hover {
-  color: var(--claret);
+  color: var(--ink);
 }
 .dir-card-code {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin: -4px 0 0;
 }
 .reach-list {
@@ -1063,7 +1166,7 @@ h3 {
 }
 .reach-row-name {
   font-weight: 600;
-  color: var(--claret);
+  color: var(--ink);
 }
 .reach-row-name:hover {
   text-decoration: underline;
@@ -1076,15 +1179,15 @@ h3 {
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin: 0 0 8px;
 }
 .named-child-head a {
-  color: var(--claret);
+  color: var(--ink);
 }
 
 .detail-title {
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.05;
   font-size: clamp(1.9rem, 3.8vw, 2.7rem);
@@ -1126,7 +1229,7 @@ h3 {
   color: var(--ink-55);
 }
 .detail-meta-label {
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 
 .detail-body {
@@ -1145,7 +1248,7 @@ h3 {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   padding-bottom: 10px;
   border-bottom: 1px solid var(--rule);
   margin-top: 40px;
@@ -1181,7 +1284,7 @@ h3 {
   border: 1px solid var(--rule-soft);
 }
 .diff-new {
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--rule);
 }
 .diff-label {
@@ -1189,14 +1292,14 @@ h3 {
   font-size: 10px;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin-bottom: 10px;
 }
 .diff-field {
   font-family: var(--mono);
   font-size: 10.5px;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin-top: 10px;
 }
 .diff-pane p {
@@ -1206,7 +1309,7 @@ h3 {
   margin: 4px 0 0;
 }
 .diff-unresolved {
-  color: var(--ochre) !important;
+  color: var(--ink-55) !important;
 }
 
 .factgrid {
@@ -1219,7 +1322,7 @@ h3 {
   font-family: var(--mono);
   font-size: 10.5px;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 .fact-value {
   font-size: 14px;
@@ -1251,7 +1354,7 @@ h3 {
   font-size: 10px;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin-bottom: 8px;
 }
 .source-quote {
@@ -1275,7 +1378,7 @@ h3 {
 .pending {
   margin-top: 24px;
   font-size: 13px;
-  color: var(--ochre);
+  color: var(--ink-55);
 }
 
 .rail {
@@ -1296,11 +1399,11 @@ h3 {
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 .rail-head-value {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: -0.01em;
   margin-top: 4px;
@@ -1331,7 +1434,7 @@ h3 {
   margin: 0;
 }
 .keyfacts dt {
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 .keyfacts dd {
   color: var(--ink-70);
@@ -1349,18 +1452,18 @@ h3 {
   color: var(--ink-70);
 }
 .rail-related a:hover {
-  color: var(--claret);
+  color: var(--ink);
 }
 .rail-related-id {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 
 /* ---------- sector page ---------- */
 
 .sector-title {
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
   font-size: clamp(2.2rem, 4.5vw, 3.2rem);
@@ -1386,7 +1489,7 @@ h3 {
 }
 .meter-value {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.3rem;
 }
 .meter-value.is-pos {
@@ -1429,12 +1532,12 @@ h3 {
   color: var(--ink-70);
 }
 .chip:hover {
-  border-color: var(--ink-40);
+  border-color: var(--ink-55);
 }
 .chip-count {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 
 /* ---------- sector exposure ---------- */
@@ -1463,13 +1566,13 @@ h3 {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 .exp-select select {
   font-family: var(--sans);
   font-size: 13px;
   color: var(--ink);
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--rule);
   border-radius: 5px;
   padding: 7px 10px;
@@ -1493,8 +1596,8 @@ h3 {
 }
 .exp-headline {
   font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--claret);
+  font-weight: 700;
+  color: var(--ink);
 }
 .exp-caption {
   font-size: 12px;
@@ -1541,10 +1644,10 @@ h3 {
    not an industry link. */
 .exp-row.is-other {
   border-bottom: 0;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 .exp-row.is-other .exp-row-label {
-  color: var(--ink-40);
+  color: var(--ink-55);
   font-style: italic;
 }
 .exp-row.is-other .exp-row-fill {
@@ -1554,7 +1657,7 @@ h3 {
 .exp-source {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   line-height: 1.6;
   max-width: 88ch;
   margin: 28px 0 0;
@@ -1601,7 +1704,7 @@ h3 {
   margin-top: 22px;
 }
 .finding-card {
-  background: #fff;
+  background: var(--card);
   padding: 22px 22px 26px;
   display: flex;
   flex-direction: column;
@@ -1618,11 +1721,11 @@ h3 {
   gap: 12px;
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 .finding-basis {
-  border: 1px solid var(--ochre);
-  color: var(--ochre);
+  border: 1px solid var(--ink-55);
+  color: var(--ink-55);
   border-radius: 3px;
   padding: 1px 7px;
   letter-spacing: 0.04em;
@@ -1631,7 +1734,7 @@ h3 {
 }
 .finding-headline {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.32rem;
   line-height: 1.2;
   letter-spacing: -0.018em;
@@ -1672,7 +1775,7 @@ h3 {
   padding: 4px 10px;
 }
 .finding-sectors-lg .finding-sector:hover {
-  border-color: var(--ink-40);
+  border-color: var(--ink-55);
 }
 
 /* The finding diagram. A vertical flow of 3-5 linked nodes whose edge labels
@@ -1712,7 +1815,7 @@ h3 {
   background: var(--card);
 }
 .diagram-node-sector:hover {
-  border-color: var(--ink-40);
+  border-color: var(--ink-55);
 }
 .diagram-branch {
   margin: 0 0 0 14px;
@@ -1726,13 +1829,13 @@ h3 {
   margin: 0 0 8px;
 }
 .diagram-arrow {
-  color: var(--ochre);
+  color: var(--ink-55);
   margin-right: 6px;
 }
 .diagram-caption {
   font-family: var(--mono);
   font-size: 10.5px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   border-top: 1px solid var(--rule-soft);
   margin-top: 18px;
   padding-top: 10px;
@@ -1765,34 +1868,34 @@ h3 {
   stroke-width: 1;
 }
 .ego-line.ego-sectors {
-  stroke: var(--pine-soft);
+  stroke: color-mix(in srgb, var(--dg-project) 40%, var(--paper));
   stroke-width: 1.4;
 }
 .ego-line.ego-amends,
 .ego-line.ego-repeals {
-  stroke: var(--claret-soft);
+  stroke: color-mix(in srgb, var(--dg-measure) 40%, var(--paper));
   stroke-width: 1.4;
 }
 .ego-line.ego-cites {
   stroke: var(--rule-soft);
 }
 .ego-line.ego-depends_on {
-  stroke: var(--ochre);
+  stroke: var(--dg-technology);
   stroke-dasharray: 3 3;
   opacity: 0.5;
 }
 .ego-dot.ego-sectors {
-  fill: var(--pine);
+  fill: var(--dg-project);
 }
 .ego-dot.ego-amends,
 .ego-dot.ego-repeals {
-  fill: var(--claret);
+  fill: var(--dg-measure);
 }
 .ego-dot.ego-cites {
   fill: var(--ink-40);
 }
 .ego-dot.ego-depends_on {
-  fill: var(--ochre);
+  fill: var(--dg-technology);
 }
 .ego-center-dot {
   fill: var(--ink);
@@ -1839,17 +1942,17 @@ h3 {
   display: inline-block;
 }
 .ego-swatch.ego-sectors {
-  background: var(--pine);
+  background: var(--dg-project);
 }
 .ego-swatch.ego-amends,
 .ego-swatch.ego-repeals {
-  background: var(--claret);
+  background: var(--dg-measure);
 }
 .ego-swatch.ego-cites {
   background: var(--ink-40);
 }
 .ego-swatch.ego-depends_on {
-  background: var(--ochre);
+  background: var(--dg-technology);
 }
 .ego-toggle {
   margin-top: 14px;
@@ -1864,7 +1967,7 @@ h3 {
   transition: border-color var(--dur) var(--ease);
 }
 .ego-toggle:hover {
-  border-color: var(--ink-40);
+  border-color: var(--ink-55);
 }
 .ego-note {
   border-left: 3px solid var(--rule);
@@ -1879,7 +1982,7 @@ h3 {
    and above the body: a caveat printed under the claim is read after the
    claim has been believed. */
 .basis-banner {
-  border-left: 3px solid var(--ochre);
+  border-left: 3px solid var(--ink-25);
   background: var(--paper);
   padding: 12px 16px;
   margin: 22px 0 0;
@@ -1888,7 +1991,7 @@ h3 {
   max-width: 78ch;
 }
 .basis-banner-review {
-  border-left-color: var(--claret);
+  border-left-color: var(--ink-55);
 }
 
 .finding-body {
@@ -1920,7 +2023,7 @@ h3 {
   color: var(--ink-55);
 }
 .evidence-measure-link:hover {
-  color: var(--claret);
+  color: var(--ink);
 }
 .evidence-statement {
   font-size: 15.5px;
@@ -1935,7 +2038,7 @@ h3 {
   gap: 6px 18px;
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin-top: 10px;
 }
 .evidence-measure .diff,
@@ -1960,7 +2063,7 @@ h3 {
 }
 .evidence-notes {
   font-size: 12.5px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   line-height: 1.6;
   max-width: 82ch;
   margin: 26px 0 0;
@@ -1983,7 +2086,7 @@ h3 {
 }
 .netpos-total-value {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.6rem;
   letter-spacing: -0.02em;
 }
@@ -1998,7 +2101,7 @@ h3 {
   background: var(--rule-soft);
 }
 .netpos-row {
-  background: #fff;
+  background: var(--card);
   padding: 16px 16px 18px;
   border-top: 2px solid var(--rule);
 }
@@ -2017,7 +2120,7 @@ h3 {
 }
 .netpos-count {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.9rem;
   line-height: 1.1;
   margin-top: 6px;
@@ -2034,7 +2137,7 @@ h3 {
 .netpos-intensity {
   font-family: var(--mono);
   font-size: 10.5px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin-top: 6px;
 }
 
@@ -2062,7 +2165,7 @@ h3 {
 .recent-meta {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 
 .doors {
@@ -2077,7 +2180,7 @@ h3 {
   font-size: 10.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   margin-bottom: 4px;
 }
 .doors-col .chips {
@@ -2112,7 +2215,7 @@ h3 {
   font-size: 10.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-40);
+  color: var(--ink-55);
   padding: 10px 0;
 }
 .coverage-file {
@@ -2127,13 +2230,13 @@ h3 {
 .coverage-celex {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-40);
+  color: var(--ink-55);
   display: flex;
   flex-direction: column;
   gap: 3px;
 }
 .coverage-muted {
-  color: var(--ink-25);
+  color: var(--ink-55);
 }
 .coverage-num {
   font-family: var(--mono);
@@ -2164,7 +2267,7 @@ h3 {
 .queued-note {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ink-40);
+  color: var(--ink-55);
 }
 
 /* ---------- header search row ---------- */
@@ -2313,4 +2416,1565 @@ h3 {
   .site-header-search .query-chips {
     display: none;
   }
+}
+
+/* ---------- change records ----------
+
+   A record is an event, and the feed is a list of events, so the feed is set
+   as rows rather than as the card grid the findings use: a grid says these
+   things are alternatives to each other, and a dated list says one came after
+   another. The card itself borrows the findings' internals — headline steps,
+   evidence strip, sector tags — because a record and a finding are the same
+   kind of object to a reader, one about an event and one about a claim, and
+   two visual languages for that would be a distinction without a difference.
+
+   The slim home head is the same block as .home-head at less height: the
+   masthead pair still reads first, it just stops being the whole screen. */
+.home-head-slim {
+  padding: 40px 0 22px;
+}
+.home-head-slim .home-wordmark {
+  transform: scale(1.15);
+}
+.home-head-slim .home-tagline {
+  margin-top: 22px;
+  font-size: clamp(1rem, 1.8vw, 1.28rem);
+}
+
+.record-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.record-card {
+  background: var(--card);
+  padding: 22px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  transition: background var(--dur) var(--ease);
+}
+.record-card:hover {
+  background: var(--card-hover);
+}
+.record-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+.record-date {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-55);
+}
+/* The event kind is the one thing on the card that is not a number or a name,
+   so it is the one thing set in the signal colour. */
+.record-kind {
+  color: var(--ink-55);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.record-basis {
+  color: var(--ink-55);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.record-headline {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.32rem;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  margin: 0;
+  max-width: 46ch;
+  text-wrap: balance;
+}
+.record-headline.is-long {
+  font-size: 1.12rem;
+}
+.record-headline.is-xlong {
+  font-size: 1rem;
+  line-height: 1.28;
+}
+.record-lede {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-70);
+  margin: 0;
+  max-width: 68ch;
+}
+.record-evidence {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-55);
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 10px;
+}
+.record-sectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.record-act,
+.record-sector {
+  font-size: 11.5px;
+  color: var(--ink-55);
+  border: 1px solid var(--rule-soft);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+/* The act is the record's subject, not one tag among the sectors. */
+.record-act {
+  color: var(--ink-70);
+  border-color: var(--rule);
+}
+
+/* Reach on a record page: the sector, then the channels it arrives by. The
+   channel is a display inference (lib/reachChannel.ts), never a stored fact,
+   so it is set quieter than the sector name it qualifies. */
+.reach-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.reach-list li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.reach-sector {
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+}
+.reach-sector:hover {
+  border-bottom-color: var(--ink-55);
+}
+.reach-channel {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+  background: var(--paper);
+  border-radius: 3px;
+  padding: 2px 7px;
+}
+/* Why a reach section is absent, where it is absent. Set as a note rather than
+   as a warning: nothing is wrong, the number is simply not sayable yet. */
+.reach-note {
+  max-width: 68ch;
+  margin-top: 14px;
+  padding-left: 12px;
+  border-left: 2px solid var(--rule);
+}
+
+/* ---------- sector icons ----------
+
+   The icon is set at the cap height of the label it sits with and carries the
+   sector's accent as its stroke. On a tag it is the only colour in the row:
+   the label stays ink, the border stays hairline, and the accent enters the
+   page as about twenty pixels of line. That is the whole budget, and it is
+   enough because it is consistent — the same mark in the same colour on the
+   feed card, the sector header, the diagram node and the reach row means a
+   reader learns it once. */
+.sector-icon {
+  flex: none;
+  display: block;
+}
+
+/* A tag carrying an icon. The border picks up a tint of the accent rather than
+   the accent itself — colour-mix keeps it a hairline that belongs to the
+   sector without becoming a coloured box. */
+.record-sector,
+.finding-sector {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* The sector page header. The icon is set large enough to read as a mark
+   rather than as a bullet, and the accent hairline under the title is the
+   page's one piece of sector colour. */
+.sector-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sector-head .sector-icon {
+  width: 30px;
+  height: 30px;
+}
+.sector-rule {
+  height: 2px;
+  width: 64px;
+  margin: 14px 0 0;
+  border: 0;
+  background: currentColor;
+}
+
+/* Directory cards and diagram nodes: same mark, smaller, same rule. */
+.dir-card-title,
+.dir-card-child-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.diagram-node-sector {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* ---------- net position, drawn ----------
+
+   The same computed inputs the strip always had, as proportion rather than as
+   a column of figures. One bar per valence, width set from that valence's
+   share of the sector's total, pressing measures to the left of the baseline
+   and relieving ones to the right — so "what does this sector actually carry"
+   is answered by the shape before any number is read.
+
+   Zero rows keep their line. A valence with nothing in it is information —
+   "no simplification at all" is a finding — and a bar of zero width with its
+   label still in place says that more plainly than a missing row. */
+.netpos-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0 0;
+}
+.netpos-bar-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 44px;
+  align-items: center;
+  gap: 14px;
+}
+.netpos-bar-label {
+  font-size: 12.5px;
+  color: var(--ink-70);
+  text-align: right;
+}
+.netpos-bar-track {
+  position: relative;
+  height: 14px;
+  background: var(--paper);
+  border: 1px solid var(--rule-soft);
+}
+.netpos-bar-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+/* The two directions take the register's own valence colours, the same pair
+   the measure rows use, so nothing here invents a third vocabulary. */
+.netpos-bar-row.is-neg .netpos-bar-fill {
+  background: var(--claret);
+}
+.netpos-bar-row.is-pos .netpos-bar-fill {
+  background: var(--pine);
+}
+/* The in-force portion is solid and the proposed portion is hatched: a bar
+   that drew them the same would say this sector already carries something it
+   does not yet carry. */
+.netpos-bar-proposed {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    currentColor 0 1.5px,
+    transparent 1.5px 5px
+  );
+  opacity: 0.55;
+}
+.netpos-bar-row.is-neg .netpos-bar-proposed {
+  color: var(--claret);
+}
+.netpos-bar-row.is-pos .netpos-bar-proposed {
+  color: var(--pine);
+}
+.netpos-bar-count {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-55);
+}
+.netpos-key {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+.netpos-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.netpos-key i {
+  width: 18px;
+  height: 10px;
+  border: 1px solid var(--rule);
+}
+.netpos-key i.solid {
+  background: var(--ink-40);
+}
+.netpos-key i.hatched {
+  color: var(--ink-55);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    currentColor 0 1.5px,
+    transparent 1.5px 5px
+  );
+}
+
+/* Recent changes on a sector page: the feed, filtered, above everything else
+   the page holds. Rows rather than cards, for the reason the main feed is
+   rows — these are dated events, not alternatives. */
+.sector-changes {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  margin-top: 16px;
+}
+.sector-change {
+  background: var(--card);
+  padding: 14px 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  transition: background var(--dur) var(--ease);
+}
+.sector-change:hover {
+  background: var(--card-hover);
+}
+.sector-change-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-55);
+  flex: none;
+}
+.sector-change-headline {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+/* ===================================================================
+   THE SECTOR TRANSITION MAP
+
+   The product template. Everything below serves one page shape — sector
+   map, project page, and the home feed that points at both — and it is
+   written to the same rule as the rest of this file: components carry no
+   visual choices, so all of it is here.
+
+   The four node kinds have one hue each, and they are the site's own
+   accents rather than a new palette: claret for the law, ochre for what
+   is blocking, pine for the route past it, focus blue for what is being
+   built. The same four appear in the diagram, on the chips, and on the
+   status marks, so a reader learns them once.
+   =================================================================== */
+
+.sector-map .tmap-head,
+.project-page .proj-head {
+  padding: 28px 0 20px;
+  border-bottom: 2px solid var(--ink);
+}
+.tmap-head h1,
+.proj-head h1 {
+  font-family: var(--display);
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 0;
+}
+/* The standing orientation paragraph. Set wider and quieter than the lead
+   block under it: it is context to be read once, not a figure to be checked,
+   so it reads as body copy and the computed lead keeps the emphasis. */
+.tmap-orientation {
+  max-width: 68ch;
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.62;
+  color: var(--ink-70);
+}
+
+.tmap-lede {
+  max-width: 68ch;
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-70);
+}
+.tmap-transitions {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.tmap-transitions li {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  /* The accent is the MARK, not the type. It was both — 11px uppercase set in
+     a sector hue, twelve of which land under 4.5:1 on paper — so the letters
+     are muted ink and the identity is carried by the rule around them, which
+     is what a layer-four mark is for. */
+  color: var(--ink-55);
+  border: 1px solid var(--accent, var(--rule));
+  padding: 2px 9px;
+}
+
+/* --- the lead block ------------------------------------------------
+   The first screen, per amendment brief 2 §4: the sentence, why it matters,
+   and the facts under both. Every string is a built artifact — see
+   components/LeadBlock.tsx. The shape is Axios's and the type is this site's:
+   one large sentence, a short second block, then a labelled list where the
+   label carries the weight and the as-of date sits in monospace at the end of
+   its own line. No badges, no boxes of equal weight.
+   ------------------------------------------------------------------- */
+
+.lead-block {
+  margin-top: 22px;
+}
+.lead-sentence {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  max-width: 24ch;
+}
+@media (min-width: 720px) {
+  .lead-sentence {
+    max-width: 34ch;
+  }
+}
+.lead-why {
+  max-width: 62ch;
+  margin-top: 20px;
+}
+.lead-why h2 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  margin: 0 0 6px;
+}
+.lead-why p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-70);
+}
+.lead-facts {
+  margin: 26px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.lead-fact {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+@media (min-width: 720px) {
+  .lead-fact {
+    grid-template-columns: 190px 1fr;
+    gap: 20px;
+    align-items: baseline;
+  }
+}
+.lead-fact dt {
+  font-weight: 700;
+  font-size: 14px;
+}
+.lead-fact dd {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink-70);
+}
+.lead-fact dd a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.lead-fact dd a:hover {
+  border-bottom-color: var(--accent, var(--ink));
+}
+.lead-asof {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.tmap-section {
+  padding: 40px 0 8px;
+  border-top: 1px solid var(--rule-soft);
+}
+.tmap-section:first-of-type {
+  border-top: 0;
+}
+.tmap-section > h2 {
+  font-family: var(--display);
+  font-size: 22px;
+  margin: 0 0 6px;
+}
+.tmap-sub {
+  font-size: 13.5px;
+  color: var(--ink-55);
+  max-width: 70ch;
+  margin: 0 0 18px;
+}
+
+/* --- the diagram ------------------------------------------------- */
+
+.tdiagram {
+  margin: 0;
+}
+.tdiagram-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.tdiagram-key {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+.tdiagram-key li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--ink-70);
+}
+.tdiagram-key .swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 1px;
+}
+.tdiagram-key .count {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+.tdiagram-export {
+  margin-left: auto;
+  font: inherit;
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  padding: 4px 12px;
+  cursor: pointer;
+  color: var(--ink-70);
+}
+.tdiagram-export:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+/* The diagram is wide by design; it scrolls in its own box rather than
+   letting the page scroll sideways. */
+.tdiagram-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--rule-soft);
+  background: var(--chrome);
+  padding: 8px;
+}
+.tdiagram-scroll svg {
+  max-width: 100%;
+  height: auto;
+}
+.tnode-label {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  fill: var(--ink);
+}
+/* The one element inside a diagram allowed the direction colours: a measure
+   node's second line, which states a euro figure and which way it points. */
+.tnode-sub.tdir-cost {
+  fill: var(--claret);
+}
+.tnode-sub.tdir-support {
+  fill: var(--pine);
+}
+.tnode-sub {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  fill: var(--ink-55);
+}
+.tnode,
+.tedge {
+  transition: opacity var(--dur) var(--ease);
+}
+/* Entry motion: one pass, left to right, done inside 600ms including the
+   longest stagger. The reduced-motion guard at the top of this file
+   flattens it to nothing. */
+@keyframes tnode-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+@keyframes tedge-in {
+  from {
+    opacity: 0;
+  }
+}
+.tnode {
+  animation: tnode-in 0.26s var(--ease) backwards;
+}
+.tedge {
+  animation: tedge-in 0.24s var(--ease) backwards;
+}
+.tdiagram-caption {
+  margin-top: 12px;
+  min-height: 78px;
+  font-size: 13px;
+  color: var(--ink-55);
+}
+.tdiagram-detail strong {
+  color: var(--ink);
+}
+.tdiagram-detail .kind {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-55);
+  margin-left: 8px;
+}
+/* The register id, demoted from the node label to the hover line. Monospace
+   and quiet: it is a lookup key, not a name. */
+.tdiagram-id {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+  margin-left: 8px;
+}
+.tdiagram-detail ul {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.tdiagram-detail .pub {
+  color: var(--ink-55);
+  font-size: 12px;
+}
+
+/* --- materials and capital ------------------------------------------
+   Two node kinds added in amendment brief 2 §2. They reuse the panel grammar
+   the technologies and bottlenecks already use — article, heading, definition
+   list — rather than inventing a third, because a reader who has learned one
+   panel on this page should not have to learn another.
+   -------------------------------------------------------------------- */
+
+.tmaterials {
+  display: grid;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-top: 14px;
+}
+.tmaterial {
+  background: var(--card);
+  padding: 16px 18px;
+}
+.tmaterial h3 {
+  font-family: var(--display);
+  font-size: 17px;
+  margin: 0 0 6px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.tmaterial p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-70);
+}
+.tmaterial dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 4px 12px;
+  font-size: 13.5px;
+}
+.tmaterial dt {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  padding-top: 2px;
+}
+.tmaterial dd {
+  margin: 0;
+  color: var(--ink-70);
+}
+.tmaterial dd.mono {
+  font-family: var(--mono);
+}
+/* One hue per material type, on the same four accents the rest of the page
+   uses. by_product and waste_stream read apart deliberately: one has a buyer
+   and the other has to be paid to take away. */
+.tmat-type {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  padding: 1px 6px;
+  color: var(--ink-55);
+}
+.tmat-type.intermediate {
+  color: var(--ink-55);
+}
+.tmat-type.feedstock,
+.tmat-type.energy_carrier {
+  color: var(--focus);
+}
+.tmat-type.by_product {
+  color: var(--ink-55);
+}
+.tmat-type.waste_stream {
+  color: var(--ink-55);
+}
+
+.tfunding-total {
+  font-family: var(--display);
+  font-size: clamp(20px, 2.4vw, 28px);
+  margin: 14px 0 10px;
+}
+.tfundings {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.tfundings li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 14px;
+}
+.tfundings .amount {
+  font-family: var(--mono);
+  font-weight: 600;
+  min-width: 8ch;
+}
+.tfundings .programme {
+  font-weight: 500;
+}
+.tfundings .measure,
+.tfundings .tfunding-date {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-55);
+}
+.tfunding-to {
+  color: var(--ink-70);
+}
+.tfundings .tfunding-date {
+  margin-left: auto;
+}
+
+/* Funding statuses share the shape of the project status marks and not their
+   vocabulary: approved money and an operating installation are different
+   facts. */
+.tstatus.approved {
+  color: var(--ink-55);
+}
+.tstatus.signed,
+.tstatus.disbursed {
+  color: var(--ink);
+}
+.tstatus.withdrawn {
+  color: var(--ink-55);
+}
+
+/* --- ranked measures --------------------------------------------- */
+
+.tmeasures {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.tmeasures > li {
+  background: var(--card);
+  padding: 18px 20px;
+}
+.tmeasure-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.trank {
+  font-family: var(--display);
+  font-size: 22px;
+  color: var(--ink-55);
+  line-height: 1;
+}
+.tmeasure-id {
+  font-family: var(--mono);
+  font-size: 13px;
+  border: 1px solid var(--rule);
+  padding: 1px 7px;
+}
+.tmtype,
+.treach {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+.treach {
+  color: var(--ink-55);
+  border: 1px solid var(--ink-55);
+  padding: 1px 6px;
+}
+.tmeasure-duty {
+  margin: 10px 0 0;
+  max-width: 74ch;
+  color: var(--ink-70);
+}
+.tmeasure-cite {
+  margin: 6px 0 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-55);
+}
+.toverride {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--ink-55);
+  max-width: 70ch;
+}
+
+.tscore {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  margin-top: 16px;
+}
+.tscore-cell {
+  background: var(--chrome);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tscore-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+.tscore-figure {
+  font-family: var(--mono);
+  font-size: 21px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.tscore-figure.none {
+  color: var(--ink-55);
+}
+.tscore-note,
+.tscore-formula,
+.tscore-caveat {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--ink-55);
+}
+.tscore-formula {
+  font-family: var(--mono);
+  color: var(--ink-55);
+}
+.tscore-caveat {
+  color: var(--ink-55);
+}
+.tscore-edges {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12.5px;
+}
+.tscore-edges li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+}
+.tdir,
+.trel,
+.ttype,
+.tready,
+.tconf,
+.tstatus,
+.tarchived {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+.tdir.cost,
+.trel.worsens {
+  background: var(--claret-soft);
+  color: var(--claret);
+}
+.tdir.support,
+.trel.relieves {
+  background: var(--pine-soft);
+  color: var(--pine);
+}
+.ttype {
+  border: 1px solid var(--rule);
+  color: var(--ink-55);
+}
+.tweight {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+
+.tnet {
+  margin-top: 22px;
+  border: 1px solid var(--rule-soft);
+  padding: 16px 18px;
+  background: var(--paper);
+}
+.tnet h3 {
+  font-family: var(--display);
+  font-size: 15px;
+  margin: 0 0 10px;
+}
+.tnet table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.tnet th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  font-weight: 400;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.tnet td {
+  padding: 8px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 13px;
+  vertical-align: top;
+}
+.tnet td .tscore-note {
+  display: block;
+}
+.tnet .num {
+  text-align: right;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+.tnet .neg {
+  color: var(--claret);
+}
+.tnet .pos {
+  color: var(--pine);
+}
+
+/* --- bottlenecks and technologies -------------------------------- */
+
+.tbottlenecks,
+.ttechs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.tbottleneck,
+.ttech {
+  background: var(--card);
+  padding: 18px 20px;
+}
+.tbottleneck h3,
+.ttech h3 {
+  font-family: var(--display);
+  font-size: 16px;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tbottleneck p,
+.ttech p {
+  margin: 0;
+  color: var(--ink-70);
+  font-size: 13.5px;
+  max-width: 62ch;
+}
+.tparams {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tparam {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  border-left: 2px solid var(--accent, var(--rule));
+  padding-left: 10px;
+}
+.tparam-value {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.tparam-unit {
+  font-size: 11px;
+  color: var(--ink-55);
+}
+.tparam-name {
+  font-size: 12.5px;
+  color: var(--ink-70);
+}
+.tparam-src {
+  font-size: 11.5px;
+  color: var(--ink-55);
+}
+.tconf.primary {
+  background: var(--paper-2);
+  color: var(--ink-55);
+}
+.tconf.secondary {
+  background: var(--paper-2);
+  color: var(--ink-55);
+}
+.tconf.estimate {
+  border: 1px solid var(--rule);
+  color: var(--ink-55);
+}
+.taddressed,
+.tbmeasures {
+  margin-top: 12px;
+  font-size: 12.5px;
+}
+.tbmeasures {
+  list-style: none;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--rule-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tbmeasures li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+}
+.tbmeasures .tscore-note,
+.tscore-edges .tscore-note {
+  flex-basis: 100%;
+}
+.ttech dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 14px;
+  margin: 14px 0 0;
+  font-size: 12.5px;
+}
+.ttech dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  padding-top: 2px;
+}
+.ttech dd {
+  margin: 0;
+  color: var(--ink-70);
+}
+.tready {
+  border: 1px solid var(--rule);
+  color: var(--ink-55);
+}
+.tready.commercial,
+.tready.early-commercial {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* --- projects ----------------------------------------------------- */
+
+.tprojects-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--rule-soft);
+}
+.tprojects {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  background: var(--card);
+}
+.tprojects th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  font-weight: 400;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--chrome);
+}
+.tprojects td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 13px;
+}
+.tprojects tr:last-child td {
+  border-bottom: 0;
+}
+.tprojects .num {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.tprojects .ttech-cell {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+.tstatus {
+  border: 1px solid var(--rule);
+  color: var(--ink-55);
+}
+.tstatus.operating {
+  background: var(--paper-2);
+  border-color: transparent;
+  color: var(--ink);
+}
+.tstatus.construction {
+  background: var(--paper-2);
+  border-color: transparent;
+  color: var(--ink-70);
+}
+.tstatus.paused,
+.tstatus.cancelled {
+  background: var(--paper-2);
+  border-color: transparent;
+  color: var(--ink-55);
+}
+
+/* --- sources ------------------------------------------------------ */
+
+.tsources {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px 32px;
+}
+.tsources h3 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.tsources ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12.5px;
+}
+.tsources li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.tarchived {
+  align-self: flex-start;
+  border: 1px solid var(--ink-55);
+  color: var(--ink-55);
+}
+
+/* --- the project page --------------------------------------------- */
+
+.proj-who {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  color: var(--ink-55);
+}
+.proj-who a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.proj-figures {
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.proj-figure {
+  font-family: var(--mono);
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+}
+.proj-figure span {
+  font-size: 11px;
+  color: var(--ink-55);
+  margin-left: 4px;
+}
+.proj-section {
+  padding: 32px 0 4px;
+  border-top: 1px solid var(--rule-soft);
+}
+.proj-section h2 {
+  font-family: var(--display);
+  font-size: 20px;
+  margin: 0 0 14px;
+}
+/* The rail is the ordinary forward path with the reached steps lit. A
+   project that stopped shows its stop at the end rather than a gap in
+   the middle, because a gap reads as missing data. */
+.proj-rail {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0;
+  margin: 0 0 20px;
+  border: 1px solid var(--rule-soft);
+}
+.proj-rail li {
+  flex: 1 1 120px;
+  padding: 12px 14px;
+  border-right: 1px solid var(--rule-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.proj-rail li:last-child {
+  border-right: 0;
+}
+.proj-rail .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rule);
+}
+.proj-rail li.on .dot {
+  background: var(--accent, var(--ink));
+}
+.proj-rail li.paused.on .dot,
+.proj-rail li.cancelled.on .dot {
+  background: var(--ink-40);
+}
+.proj-rail .label {
+  font-size: 12.5px;
+  color: var(--ink-55);
+}
+.proj-rail li.on .label {
+  color: var(--ink);
+}
+.proj-rail .date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+.proj-history,
+.proj-tech,
+.proj-funding,
+.proj-sources {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.proj-history li,
+.proj-tech li,
+.proj-funding li,
+.proj-sources li {
+  background: var(--card);
+  padding: 12px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 13px;
+}
+.proj-history .date,
+.proj-funding .amount {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+.proj-funding .amount {
+  font-size: 15px;
+}
+.proj-funding .measure {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  border: 1px solid var(--rule);
+  padding: 1px 6px;
+}
+.proj-history .note,
+.proj-tech .note,
+.proj-funding .note,
+.proj-sources .note {
+  flex-basis: 100%;
+  font-size: 12px;
+  color: var(--ink-55);
+  line-height: 1.45;
+}
+.proj-funding .quote {
+  flex-basis: 100%;
+  font-size: 12px;
+  color: var(--ink-70);
+  border-left: 2px solid var(--rule);
+  padding-left: 10px;
+}
+
+/* --- the home feed ------------------------------------------------ */
+
+.pchanges {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+.pchange {
+  background: var(--card);
+  padding: 16px 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  transition: background var(--dur) var(--ease);
+}
+.pchange:hover {
+  background: var(--card-hover);
+}
+.pchange-date {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-55);
+  flex: none;
+}
+.pchange-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1 1 260px;
+}
+.pchange-name {
+  font-family: var(--display);
+  font-size: 17px;
+  color: var(--ink);
+}
+.pchange-who {
+  font-size: 12.5px;
+  color: var(--ink-55);
+}
+.pchange-note {
+  font-size: 12.5px;
+  color: var(--ink-70);
+  max-width: 68ch;
+}
+.pchange-figures {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.pchange-figures em {
+  font-style: normal;
+  font-size: 10.5px;
+  color: var(--ink-55);
+  margin-left: 4px;
+}
+.pchange-src {
+  font-size: 11.5px;
+  color: var(--ink-55);
+}
+.sector-live {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--signal);
+  border: 1px solid var(--signal);
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+/* --- the mobile diagram, and the per-sector what-moved strip ---------
+   Two additions from amendment brief 2 §5. The breakpoint is the width at
+   which the diagram's four columns stop fitting without the reader scrolling
+   the page sideways to read one node — measured against the widest built
+   diagram rather than picked off a device list.
+   -------------------------------------------------------------------- */
+
+.tdiagram-static {
+  display: none;
+  margin: 14px 0 0;
+}
+.tdiagram-static img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule-soft);
+}
+.tdiagram-static figcaption {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-55);
+}
+
+@media (max-width: 860px) {
+  .tdiagram-interactive {
+    display: none;
+  }
+  .tdiagram-static {
+    display: block;
+  }
+}
+
+.tmoved {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 0;
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 22px;
+}
+.tmoved h2 {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  margin: 0;
+  /* The sector's own accent, on the sector's own page: layer four, and one of
+     the few marks it is allowed. */
+  border-left: 2px solid var(--accent, var(--ink-25));
+  padding-left: 8px;
+}
+.tmoved ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  font-size: 14px;
+}
+.tmoved li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.tmoved a {
+  border-bottom: 1px solid var(--rule);
+}
+.tmoved a:hover {
+  border-bottom-color: var(--ink);
+}
+.tmoved-date {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-55);
+}
+.tmoved-to {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+.tmoved-quiet {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-55);
 }

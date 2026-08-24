@@ -1,154 +1,108 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import FindingCard from "@/components/FindingCard";
+import ProjectChanges from "@/components/ProjectChanges";
 import SectorGrid from "@/components/SectorGrid";
-import StatsStrip from "@/components/StatsStrip";
 import Wordmark from "@/components/Wordmark";
-import { FILES } from "@/lib/data";
 import { getSiteSummary } from "@/lib/summaries";
-import { getRecentlyAdded } from "@/lib/coverage";
-import { BASIS_LABEL } from "@/lib/findings";
-import { getRecentFindings, withEvidence } from "@/lib/findings";
-import { getConnectionCount } from "@/lib/graphStats";
-import { getCoverageLine, getMasthead } from "@/lib/sitetext";
+import { getSectorCounts } from "@/lib/data";
+import { getMasthead } from "@/lib/sitetext";
+import { hasMap } from "@/lib/transition";
 
-// The home page leads with conclusions. Five blocks, in this order:
-// wordmark, findings, recently added, doors, coverage line.
+// The home page is a front page, not a masthead. Three blocks: the slim head,
+// what moved, and the sectors.
 //
-// Everything the old home page carried that is not one of those five was
-// demoted, not deleted, and each piece now has an address: the signals feed
-// and the burden ledger are /measures (reachable from /coverage and search),
-// the driver chart is /coverage, and the search field is in the site header
-// on every page. The priorities and analysis pages are gone: their editorial
-// framing predated the arithmetic-only rule, and nothing else read their code.
+// THE SECOND INVERSION. The feed used to be the legislative record — an act
+// proposed, an act amended. Both feeds are real, and only one of them is
+// evidence that any of this law is doing something: a kiln reaching mechanical
+// completion, or a project pausing because a national agency declined to
+// co-fund it. So the project feed leads and the legislative change records keep
+// their pages at /changes, unlinked from here.
 //
-// The masthead pair (tagline + subline) is George-approved final text, read
-// from data/prose.json — reviewed prose stored as data, per sources/scope.md.
-
+// What went with it: the three-figure stats strip, the findings band, the
+// legislation chips and the coverage line. They were the register presenting
+// itself as the product. The register is now the candidate pool behind the
+// sector pages, and its surfaces are reachable rather than advertised.
+//
+// THE INVERSION, AND WHAT IT COST. The head used to be the page: wordmark,
+// tagline, and three big figures above the fold, with the conclusions below
+// them. It read as an identity rather than as something that had happened
+// recently. So the head compresses — the masthead pair and the same three
+// figures, now one slim strip — and the feed takes the lead. What was the
+// "Recently added" band is gone rather than demoted: it said which act was
+// added last, which is exactly what the first record in the feed says, at
+// greater length and with a page behind it. Its one fact that the feed does
+// not carry, the date the document was fetched, moved into the strip.
+//
+// The pair under the wordmark (descriptor + positioning sentence) is
+// George-approved final text, read from data/prose.json — reviewed prose stored
+// as data, per sources/scope.md.
 
 // The default title stays in the layout; the description is computed from
 // the site summary so the tag moves with the register.
 export function generateMetadata(): Metadata {
   const site = getSiteSummary();
   return {
-    description: `${site.measures} measures decoded from ${site.files} EU acts, mapped to the ${site.sectors.total_reach} sectors they affect — every count computed from the source legislation.`,
+    // Computed, so the tag moves with the data. Said in the platform's own
+    // vocabulary rather than the pipeline's — see sources/display_vocabulary.py.
+    description:
+      `Intelligence on what Europe builds next: ${site.measures} EU measures across ` +
+      `${site.files} acts, scored for the ${site.sectors.total_reach} sectors they reach, ` +
+      `with the technologies, projects and capital behind them.`,
   };
 }
 
+// Enough to read as a feed rather than as a teaser, and few enough that the
+// sectors stay above the fold on a laptop.
+const FEED_ON_HOME = 6;
+
 export default function Home() {
-  const findings = withEvidence(getRecentFindings(5));
-  const site = getSiteSummary();
-  const latest = getRecentlyAdded(1)[0];
   const masthead = getMasthead();
+  // Computed, not written: how many sectors are live and what the rest say
+  // instead. The sentence changes on the day steel lands, with nobody editing
+  // a page.
+  const counts = getSectorCounts();
+  const live = counts.filter((s) => hasMap(s.slug)).length;
+  const sectorLine =
+    `${live} of ${counts.length} sectors is live: the measures that decide whether it ` +
+    `pays, what is blocking it, and everything being built. The rest are in preparation.`;
 
   return (
     <main className="rise">
-      <section className="home-head">
+      <section className="home-head home-head-slim">
         <div className="wrap">
           <div className="home-wordmark">
             <Wordmark />
           </div>
-          <p className="home-tagline">{masthead.tagline}</p>
-          <p className="home-subline">{masthead.subline}</p>
-          {/* The masthead statistic: exactly three figures. Measures and
-              sectors come from the gate-checked site summary; connections is
-              the graph's total edge count, guarded by build_graph.py --check
-              in prebuild so it moves with every ingestion and can never go
-              stale. Files-read and named/reached live on /coverage now. */}
-          <Link href="/sectors" className="home-stats-link" aria-label="Browse sectors">
-            <StatsStrip
-              stats={[
-                { value: site.measures.toLocaleString("en-US"), label: "Measures decoded" },
-                {
-                  value: getConnectionCount().toLocaleString("en-US"),
-                  label: "Connections mapped",
-                },
-                { value: String(site.sectors.total_reach), label: "Sectors" },
-              ]}
-            />
-          </Link>
+          <p className="home-tagline">{masthead.descriptor}</p>
+          <p className="home-subline">{masthead.positioning}</p>
         </div>
       </section>
 
-      <section className="band" id="findings">
+      <section className="band" id="latest">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="eyebrow">Findings</p>
-              <h2>What the tracked measures mean</h2>
+              <p className="eyebrow">Latest</p>
+              <h2>What moved</h2>
             </div>
-            <Link href="/findings" className="section-link">
-              All findings →
-            </Link>
           </div>
-          {findings.length === 0 ? (
-            <p className="section-note">No findings published yet.</p>
-          ) : (
-            <div className="finding-grid">
-              {findings.map((f) => (
-                <FindingCard key={f.id} finding={f} />
-              ))}
-            </div>
-          )}
+          <ProjectChanges limit={FEED_ON_HOME} />
         </div>
       </section>
 
-      <section className="band band-paper" id="recent">
+      <section className="band band-paper" id="sectors">
         <div className="wrap">
           <div className="section-head">
             <div>
-              <p className="eyebrow">Recently added</p>
-              <h2>Latest addition: {latest.title.split(" — ")[0]}</h2>
+              <p className="eyebrow">Sectors</p>
+              <h2>What each sector is under</h2>
+              <p className="section-note">{sectorLine}</p>
             </div>
-            <Link href="/coverage" className="section-link">
-              Full coverage →
+            <Link href="/sectors" className="section-link">
+              All sectors &rarr;
             </Link>
           </div>
-          {/* Derived from sources/manifest.json and the .fetch.json sidecars.
-              This is when the DOCUMENT was fetched, not when anything in it
-              changed — said plainly, because the two get confused. */}
-          <p className="section-note">
-            {latest.basis ? BASIS_LABEL[latest.basis] : "—"} · {latest.measures} measures · added{" "}
-            {latest.lastUpdated}
-          </p>
-        </div>
-      </section>
-
-      <section className="band band-ruled" id="doors">
-        <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Evidence</p>
-              <h2>Browse the measures</h2>
-            </div>
-          </div>
-          <div className="doors">
-            <div className="doors-col">
-              <div className="doors-label">By legislation</div>
-              <div className="chips">
-                {Object.entries(FILES).map(([slug, meta]) => (
-                  <Link key={slug} href={`/acts/${slug}`} className="chip">
-                    {meta.name.split(" — ")[0]}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div className="doors-col">
-              <div className="doors-label">By sector</div>
-              <SectorGrid />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="band band-tight" id="coverage">
-        <div className="wrap">
-          <p className="coverage-line">
-            {getCoverageLine()}{" "}
-            <Link href="/coverage" className="section-link">
-              What is covered →
-            </Link>
-          </p>
+          <SectorGrid />
         </div>
       </section>
     </main>

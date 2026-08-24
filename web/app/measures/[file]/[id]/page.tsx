@@ -219,7 +219,7 @@ export default async function MeasurePage({
                 <code className="cite-url">{measureHref(measure)}</code>
                 <p className="cite-string">
                   {measure.id}, {fileMeta ? fileMeta.name.split(" — ")[0] : measure.file} (
-                  {fileMeta ? fileMeta.code : measure.file}), {measure.article} — PolicyFocus,
+                  {fileMeta ? fileMeta.code : measure.file}), {measure.article} — Eufabric,
                   permanent id.
                 </p>
               </div>

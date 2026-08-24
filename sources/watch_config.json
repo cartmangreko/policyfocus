@@ -1,9 +1,12 @@
 {
   "_comment": [
-    "Configuration for sources/watch.py. Two discovery channels, each switchable.",
+    "Configuration for sources/watch.py. Four discovery channels, each switchable.",
     "The watchlist channel is derived from sources/manifest.json and needs no",
     "configuration beyond the dossier guard. The topic channel is the query that",
-    "finds acts nobody told us to look for, and it is the one that needs tuning."
+    "finds acts nobody told us to look for, and it is the one that needs tuning.",
+    "The projects channel watches installations rather than law, and the funding",
+    "channel watches the money; both are off until their runners exist, and their",
+    "entries at the foot of this file say what each is for."
   ],
   "watchlist": {
     "enabled": true,
@@ -141,5 +144,158 @@
     "model": "claude-opus-5",
     "effort": "medium",
     "max_candidates_per_run": 40
+  },
+  "projects": {
+    "enabled": false,
+    "_comment": [
+      "CHANNEL TWO OF THE PRODUCT, CHANNEL THREE OF THIS FILE. The other channels watch the",
+      "law; this one watches what the law is supposed to be causing — the plants. It answers",
+      "one question per item: does this change the status of a project in",
+      "data/transition/projects.json, announce a new project in a tracked sector, or mention",
+      "a measure the register carries?",
+      "",
+      "Output is a PR that appends to a project's status_history, adds a project stub, or",
+      "increments the attention counts in data/transition/attention.json. Nothing is merged",
+      "automatically, for the same reason nothing on the register side is: an appended status",
+      "changes what the site says a company is doing.",
+      "",
+      "DISABLED until the runner exists. The source list lives here rather than in the code so",
+      "that adding a producer is a data change, and so that this file stays the one place that",
+      "says where the project layer's facts come from.",
+      "",
+      "The company newsrooms are the primary sources: a status change is the company's own",
+      "announcement, and the trade press is how we find out that it happened. Where the two",
+      "disagree the newsroom wins, and the trade item is the pointer that sent us there."
+    ],
+    "company_newsrooms": [
+      {
+        "company": "Heidelberg Materials",
+        "url": "https://www.heidelbergmaterials.com/en/press-releases"
+      },
+      {
+        "company": "Holcim",
+        "url": "https://www.holcim.com/media/media-releases"
+      },
+      {
+        "company": "Cemex",
+        "url": "https://www.cemex.com/w/press-releases"
+      },
+      {
+        "company": "TITAN Cement",
+        "url": "https://www.titancement.com/media/press-releases/"
+      },
+      {
+        "company": "Buzzi",
+        "url": "https://www.buzzi.com/en/media/press-releases"
+      },
+      {
+        "company": "Vicat",
+        "url": "https://www.vicat.com/news"
+      },
+      {
+        "company": "CRH",
+        "url": "https://www.crh.com/media/press-releases"
+      }
+    ],
+    "programme_databases": [
+      {
+        "name": "EU Innovation Fund project portal",
+        "url": "https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund/innovation-fund-projects_en"
+      },
+      {
+        "name": "Global CCS Institute — CO2RE facilities database",
+        "url": "https://co2re.co/FacilityData"
+      },
+      {
+        "name": "NZIA strategic projects",
+        "url": "https://single-market-economy.ec.europa.eu/industry/sustainability/net-zero-industry-act_en"
+      }
+    ],
+    "trade_press": [
+      {
+        "name": "Global Cement",
+        "url": "https://www.globalcement.com/news"
+      },
+      {
+        "name": "World Cement",
+        "url": "https://www.worldcement.com/europe-cis/"
+      },
+      {
+        "name": "Argus — cement",
+        "url": "https://www.argusmedia.com/en/commodities/petroleum-coke-cement"
+      }
+    ],
+    "triage_question": [
+      "Given one item, answer three things and nothing else:",
+      "1. Does it change the status of a project already in data/transition/projects.json? If",
+      "   so: which project, to which status of the closed vocabulary, on what date, and the",
+      "   sentence that says so, quoted.",
+      "2. Does it announce a project in a tracked sector that is not in the file yet?",
+      "3. Does it name a measure the register carries? One attention count per item per",
+      "   measure, never one per mention.",
+      "An item that is none of the three is out, and the reason is one line."
+    ],
+    "attention_window_months": 24
+  },
+  "funding": {
+    "enabled": false,
+    "_comment": [
+      "CHANNEL THREE OF THE PRODUCT. The law channels watch what is required; the projects",
+      "channel watches what is being built; this one watches what is being paid for.",
+      "",
+      "It answers one question per item: does this add a row to data/transition/funding.json,",
+      "move an existing row's status along the ladder (announced -> approved -> signed ->",
+      "disbursed, or withdrawn), or attach an amount to a row that carries none? The third is",
+      "the most valuable and the least glamorous: half the funding rows in the file today are",
+      "'undisclosed' because the company release stated a programme and no figure, and the",
+      "awarding body's own decision usually carries it.",
+      "",
+      "DISABLED until channel two's runner is proven. Same discipline, same reason: an",
+      "appended funding row changes what the site says about public money in a named",
+      "company's project, and a wrong one is a false statement about a state aid decision.",
+      "Nothing here is merged automatically.",
+      "",
+      "THE AWARDING BODY WINS. Where a company release and the decision disagree on an",
+      "amount or a date, the decision is the fact and the release is the pointer that sent",
+      "us there — the mirror of the projects channel's rule, where the company's own",
+      "announcement of its own plant wins."
+    ],
+    "sources": [
+      {
+        "name": "EU Innovation Fund project portal",
+        "url": "https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund/innovation-fund-projects_en",
+        "carries": "grant awards, amounts, and the call each was made under"
+      },
+      {
+        "name": "Commission competition — state aid decisions",
+        "url": "https://competition-cases.ec.europa.eu/search?caseInstrument=SA",
+        "carries": "state aid approvals, with the decision date and the approved amount"
+      },
+      {
+        "name": "European Investment Bank — financed projects",
+        "url": "https://www.eib.org/en/projects/all/index.htm",
+        "carries": "signed and approved financing, by project and country"
+      },
+      {
+        "name": "IPCEI decisions",
+        "url": "https://competition-policy.ec.europa.eu/state-aid/ipcei_en",
+        "carries": "consortium-level approvals covering several member states at once"
+      },
+      {
+        "name": "European Hydrogen Bank — auction results",
+        "url": "https://cinea.ec.europa.eu/programmes/innovation-fund/european-hydrogen-bank_en",
+        "carries": "auction_support awards, with the clearing price and the volume"
+      }
+    ],
+    "triage_question": [
+      "Given one item, answer three things and nothing else:",
+      "1. Does it allocate capital to a project in data/transition/projects.json? If so: the",
+      "   instrument from the closed vocabulary, the amount and its currency, the date, the",
+      "   status, and the sentence that says so, quoted.",
+      "2. Does it move an existing row in data/transition/funding.json along the status",
+      "   ladder, or attach an amount to one that carries none?",
+      "3. Does it state a legal basis the register carries, as a measure id?",
+      "An item that is none of the three is out, and the reason is one line."
+    ]
   }
 }

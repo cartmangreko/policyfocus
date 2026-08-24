@@ -13,7 +13,7 @@ import { getSiteSummary } from "@/lib/summaries";
 export const metadata: Metadata = {
   title: "Sectors",
   description:
-    "Every sector the platform maps, with the burden/benefit, status and channel summary for each — parents first, children nested under the parent that files them.",
+    "Every sector the platform covers, with the burden/benefit, status and channel summary for each — parents first, children nested under the parent that files them.",
 };
 
 export default function SectorsPage() {

@@ -2,12 +2,24 @@
   "_comment": "Reviewed prose stored as data — tier 2 of the three-tier rule in sources/scope.md ('No free-generated text on the site'). Each block carries a status: every tier-2 text passes through one review before flipping to 'approved', with the review date recorded in 'reviewed'; 'final' marks the masthead pair George signed off as-is. Slots in {braces} are filled at build time from gate-checked objects — never hardcoded here. The site-wide blocks resolve their slots against the site summary object (data/summaries/site.json) in web/lib/sitetext.ts; 'ego_notes' resolves its slots against the computed ego view in sources/build_ego_views.py, which bakes the rendered sentence into data/graph/ego/<file>.json.",
   "masthead": {
     "status": "final",
-    "tagline": "EU legislation, decoded into data: each measure, every sector it affects, every supply chain it reaches.",
-    "subline": "The intelligence layer between EU legislation and the real economy."
+    "_comment": [
+      "The two lines under the logo, in the order they render.",
+      "",
+      "`descriptor` is the line that sits under the wordmark on every surface that carries",
+      "one. `positioning` is the sentence that says what the platform is; it is George's",
+      "wording, reviewed, and it is locked — no surface paraphrases it, and nothing computes",
+      "a variant of it.",
+      "",
+      "They were `tagline` and `subline` and said what the register did. The rename is not",
+      "cosmetic: the old pair described a decoding pipeline, and the platform's claim is now",
+      "that it connects technologies, policy, projects and capital. See amendment brief 2 §1."
+    ],
+    "descriptor": "Intelligence on what Europe builds next.",
+    "positioning": "Eufabric is the intelligence platform that connects Europe's industrial technologies, the policies that shape them, and the projects and capital that bring them to life."
   },
   "perimeter": {
     "status": "approved",
-    "template": "PolicyFocus decodes EU legislation into data. Each act is read provision by provision into individual measures: obligations, prohibitions, incentives, and rights, every one carrying the verbatim source text and a link to the official version. Measures are mapped to sectors in two ways: sectors an act names directly, and sectors it reaches through supply chains, regulatory dependencies, or procurement channels, with supply-chain reach computed from Eurostat input-output data. The measures are then aggregated per sector, so each sector page shows its full position across all legislation on the platform: what binds it directly, what reaches it indirectly, and through which channel. The platform currently holds {measures_count} measures from {acts_count} legislative acts across {sectors_count} sectors, and it grows as new legislation is adopted. Every act's verification status is stated on the coverage page. The platform does not cover national implementing measures or guidance documents, and nothing on this site is legal advice.",
+    "template": "Eufabric decodes EU legislation into data. Each act is read provision by provision into individual measures: obligations, prohibitions, incentives, and rights, every one carrying the verbatim source text and a link to the official version. Measures are mapped to sectors in two ways: sectors an act names directly, and sectors it reaches through supply chains, regulatory dependencies, or procurement channels, with supply-chain reach computed from Eurostat input-output data. The measures are then aggregated per sector, so each sector page shows its full position across all legislation on the platform: what binds it directly, what reaches it indirectly, and through which channel. The platform currently holds {measures_count} measures from {acts_count} legislative acts across {sectors_count} sectors, and it grows as new legislation is adopted. Every act's verification status is stated on the coverage page. The platform does not cover national implementing measures or guidance documents, and nothing on this site is legal advice.",
     "reviewed": "2026-08-18",
     "vocabulary_sweep": "2026-08-19"
   },
@@ -63,6 +75,65 @@
       "adopted": "This act is adopted. It is law, not a proposal.",
       "proposed": "This is a Commission proposal, {com}, under procedure {procedure}. It is not law yet, and it can change before it is.",
       "mixed": "The proposal {com}, under procedure {procedure}, would change an act already in force. What it adds is not law yet; the act it changes is."
+    }
+  },
+  "transition_notes": {
+    "status": "draft",
+    "_comment": [
+      "One reviewed sentence per sector that has a transition map, naming the transitions it",
+      "covers. Same discipline as ego_notes: reviewed prose stored as data, tier 2 of the",
+      "three-tier rule in sources/scope.md.",
+      "",
+      "WHILE THE STATUS IS `draft`, NOTHING HERE RENDERS. web/lib/prose.ts falls back to the",
+      "computed sentence — counts of measures, bottlenecks and projects, template-rendered from",
+      "the data — which is tier 1 and needs no review. The sentence below is what the page",
+      "SHOULD say and cannot say yet. Flip the status to `approved` and the page takes it.",
+      "",
+      "sources/check_sector_schema.py prints the pending drafts on every run so that a sentence",
+      "written and forgotten stays visible."
+    ],
+    "reviewed": null,
+    "sectors": {
+      "cement": {
+        "transitions": [
+          "decarbonisation"
+        ],
+        "sentence": "European cement is under one transition, decarbonisation, and it turns on a fact no energy choice can reach: most of a kiln's CO2 comes out of the limestone rather than the fuel, which is why the sector's future runs through capture, the pipes and stores that capture depends on, and whoever is willing to pay for the result."
+      }
+    }
+  },
+  "sector_orientation": {
+    "status": "approved",
+    "_comment": [
+      "One reviewed paragraph per sector that has a transition map: the orientation a reader",
+      "needs before the page's own numbers mean anything. Tier 2 of the three-tier rule in",
+      "sources/scope.md — reviewed prose stored as data, never generated, never per-page free",
+      "text.",
+      "",
+      "IT SITS ABOVE THE COMPUTED LEAD AND REPLACES NOTHING. The lead block below it is",
+      "unchanged and still computed from the panels; this paragraph is the standing context",
+      "that does not move when the data does, which is exactly why it is written once and",
+      "reviewed rather than templated.",
+      "",
+      "FOUR BEATS, THE SAME ORDER EVERY TIME, so a reader who has read one sector can read any",
+      "other: what the sector is and its weight in Europe; why decarbonising it is structurally",
+      "hard; the technology paths; how EU policy frames it. It closes on the question the",
+      "page's data answers, so the handoff into the detail below is deliberate.",
+      "",
+      "NEARLY NUMBER-FREE ON PURPOSE. Every figure on this site carries a source link and an",
+      "as-of date (§0.1 of eufabric-page-specifications.md). A number in standing prose would",
+      "need both and would go stale silently, and the sourced figures are one line further down",
+      "the page in any case.",
+      "",
+      "While the status is `draft` nothing here renders and the page opens on the lead block as",
+      "before. sources/check_sector_schema.py fails for a mapped sector with no paragraph and",
+      "prints the drafts on every run."
+    ],
+    "reviewed": "2026-08-24",
+    "sectors": {
+      "cement": {
+        "paragraph": "Cement is the binding agent of the built environment. Concrete is the most used man-made material on earth, and European construction depends on a domestic industry that operates on thin margins with high energy and carbon intensity. Most of the sector's emissions come not from burning fuel but from the chemistry of clinker, the limestone-derived core of cement, which releases CO2 as it is processed. That makes cement one of the hardest sectors to decarbonise: efficiency and clean electricity cannot remove process emissions, so the transition runs through carbon capture, clinker substitution and alternative fuels. EU policy treats it accordingly: carbon pricing raises the cost of conventional production, a border adjustment shields producers from unpriced imports, and public funding underwrites the first capture projects. The open question is who pays for low-carbon cement while it costs more than conventional supply."
+      }
     }
   }
 }

@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crumbs from "@/components/Crumbs";
+import SectorMap from "@/components/SectorMap";
 import FindingCard from "@/components/FindingCard";
 import NetPositionStrip from "@/components/NetPositionStrip";
 import SectorCard from "@/components/SectorCard";
 import SectorExposure from "@/components/SectorExposure";
+import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import SignalRow from "@/components/SignalRow";
 import SummaryStrip from "@/components/SummaryStrip";
 import { getArrival } from "@/lib/acts";
@@ -24,6 +26,8 @@ import { getExposure } from "@/lib/exposure";
 import { arrivalProse, summaryProse } from "@/lib/prose";
 import { getSectorSummary } from "@/lib/summaries";
 import { getFindingsForSector, withEvidence } from "@/lib/findings";
+import { getRecordsForSector, recordHref } from "@/lib/records";
+import { getImportance, hasMap } from "@/lib/transition";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
 import type { Measure, SectorSlug } from "@/lib/types";
 
@@ -56,6 +60,20 @@ export async function generateMetadata({
   const slug = (await params).slug.join("/");
   if (!(slug in SECTORS)) return { title: "Sector not found" };
   const name = SECTORS[slug as SectorSlug];
+  // A sector with a map is a different page and needs a different tag: the
+  // register's measure counts describe what the OLD template shows.
+  if (hasMap(slug)) {
+    const imp = getImportance(slug)!;
+    const inView = imp.measures.filter((m) => m.in_sector_view).length;
+    const priced = imp.measures.filter((m) => m.money.computable).length;
+    return {
+      title: `${name} — exposure, constraints and pipeline`,
+      description:
+        `What European ${name.toLowerCase()} is under: ${inView} of ${imp.measures.length} EU ` +
+        `measures that decide whether it pays (${priced} priced), the constraints in the way, ` +
+        `the technologies past them, and every project building one.`,
+    };
+  }
   // The description is the strip's prose form — the same template, the same
   // gate-checked object, so the tag and the page cannot disagree.
   return {
@@ -63,6 +81,10 @@ export async function generateMetadata({
     description: summaryProse(`European ${name.toLowerCase()}`, getSectorSummary(slug as SectorSlug)),
   };
 }
+
+// Enough to show the sector is moving, few enough that the panel stays a
+// panel rather than becoming the page.
+const RECENT_CHANGES = 5;
 
 function MeasureList({ rows }: { rows: Measure[] }) {
   return (
@@ -80,6 +102,13 @@ export default async function SectorPage({
   params: Promise<{ slug: string[] }>;
 }) {
   const slug = (await params).slug.join("/");
+  // THE BRANCH. A sector with a transition map renders the map: the product
+  // template, seven sections, the register demoted to a source of ranked
+  // measures. A sector without one renders the register directory it has
+  // always rendered. Cement is the only sector on the first side today, and
+  // the condition is data rather than a list of slugs, so the second sector
+  // arrives by adding data.
+  if (slug in SECTORS && hasMap(slug)) return <SectorMap slug={slug as SectorSlug} />;
   if (!(slug in SECTORS)) notFound();
 
   const sectorSlug = slug as SectorSlug;
@@ -97,6 +126,10 @@ export default async function SectorPage({
   // The inverse of an act page's reach strip: which files arrive here, and
   // whether they name the sector or only ever reach it.
   const arrival = getArrival(sectorSlug);
+  // The change feed, filtered to this sector. Capped, with the rest a click
+  // away: a sector page is a standing description of a position, and an
+  // uncapped feed at the top of it would turn it into a news page.
+  const changes = getRecordsForSector(sectorSlug).slice(0, RECENT_CHANGES);
 
   // Channel mix for the reached-without-naming cohort.
   const channels = new Map<string, number>();
@@ -117,7 +150,13 @@ export default async function SectorPage({
       <section className="detail-head">
         <div className="wrap">
           <Crumbs trail={trail} />
-          <h1 className="sector-title">European {name}</h1>
+          <div className="sector-head">
+            <SectorIcon slug={sectorSlug} size={30} />
+            <h1 className="sector-title">European {name}</h1>
+          </div>
+          {/* The page's one piece of sector colour, and the only place the
+              accent appears at more than hairline width. */}
+          <hr className="sector-rule" style={{ color: `var(${accentVar(sectorSlug)})` }} />
           <p className="sector-intro">
             How the tracked legislation reaches the sector — {stats.named} measures name it
             directly, and {reached.length} more reach it through supply chains, procurement or
@@ -128,6 +167,30 @@ export default async function SectorPage({
           <SummaryStrip cuts={getSectorSummary(sectorSlug)} subject={`European ${name.toLowerCase()}`} />
         </div>
       </section>
+
+      {changes.length > 0 && (
+        <section className="band band-tight" id="changes">
+          <div className="wrap">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Recent changes</p>
+                <h2>What moved in this sector</h2>
+              </div>
+              <Link href="/changes" className="section-link">
+                All changes →
+              </Link>
+            </div>
+            <div className="sector-changes">
+              {changes.map((r) => (
+                <Link key={r.id} href={recordHref(r.id)} className="sector-change">
+                  <span className="sector-change-date">{r.event_date}</span>
+                  <span className="sector-change-headline">{r.headline}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {children.length > 0 && (
         <section className="band band-tight" id="children">

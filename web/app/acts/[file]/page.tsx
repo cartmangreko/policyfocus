@@ -10,6 +10,7 @@ import { FILES, SECTORS } from "@/lib/data";
 import { getEgoView } from "@/lib/ego";
 import { reachProse } from "@/lib/prose";
 import { getActSummary } from "@/lib/summaries";
+import { DEMOTED } from "@/lib/launch";
 
 // One act, in the same grammar as a sector page: summary strip, then the
 // reach strip (which sectors the file names, which it reaches and through
@@ -35,6 +36,7 @@ export async function generateMetadata({
   // The description is the reach strip's prose form — same template, same
   // computed object as the page body.
   return {
+    robots: DEMOTED,
     title: meta.name,
     description: `${meta.code} — ${reachProse(meta.name.split(" — ")[0], getActReach(file))}`,
   };
@@ -110,7 +112,7 @@ export default async function ActPage({ params }: { params: Promise<{ file: stri
             <p className="eyebrow">Connections</p>
             <h2>This file in the graph</h2>
             <p className="section-note">
-              Every line is an edge in the register&apos;s knowledge graph — acts this
+              Every line is an edge in the platform&apos;s knowledge graph — acts this
               file amends or its measures cite, and the sectors those measures apply
               to. Counts are computed at build time and checked against the graph.
             </p>

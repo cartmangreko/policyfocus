@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FindingCard from "@/components/FindingCard";
 import { getAllFindings } from "@/lib/findings";
+import { DEMOTED } from "@/lib/launch";
 
 export function generateMetadata(): Metadata {
   const findings = getAllFindings();
   return {
+    robots: DEMOTED,
     title: "Findings",
     description: `${findings.length} findings — plain claims about the tracked measures, every number checked against the underlying data before publication.`,
   };

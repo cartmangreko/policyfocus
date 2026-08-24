@@ -1,0 +1,168 @@
+{
+  "_comment": [
+    "Technologies, SHARED across sectors and never duplicated per sector. A technology",
+    "that cement and steel both deploy is one row with two entries in `sectors`; two rows",
+    "would drift the moment one of them was updated.",
+    "",
+    "Schema and vocabularies: sources/sector_map.py. Gate: sources/check_sector_schema.py.",
+    "",
+    "`readiness` is where this layer is most easily wrong, so it carries a source and a",
+    "date rather than a judgement. The level is read off what is actually running: a",
+    "technology is early-commercial when a full-scale plant is operating commercially,",
+    "demonstration when one is being built, pilot when one is being tested. Brevik is why",
+    "post-combustion capture on cement is early-commercial and not demonstration, and the",
+    "date on the readiness field is the date that evidence was published, not today.",
+    "",
+    "`cost` is omitted rather than estimated where no source states one. An absent cost",
+    "reads as a gap on the sector page, which is true; an invented range reads as a fact,",
+    "which is not. See data/transition/GAPS.md for what is missing and what would fill it."
+  ],
+  "technologies": [
+    {
+      "id": "ccs-post-combustion",
+      "transition": "decarbonisation",
+      "name": "Post-combustion carbon capture",
+      "description": "CO2 is separated from the kiln's flue gas after combustion, using an amine or solvent process bolted onto an existing plant, which is what makes it the retrofit route for kilns that are not being rebuilt.",
+      "readiness": {
+        "level": "early-commercial",
+        "source": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+        "date": "2025-06-18",
+        "note": "Brevik, the first industrial-scale capture plant in the cement industry, opened on 18 June 2025 and is capturing at full scale. One operating plant is early-commercial, not commercial."
+      },
+      "abatement_share": {
+        "low": 50,
+        "high": 50,
+        "unit": "% of plant CO2 emissions",
+        "source": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+        "date": "2025-06-18",
+        "note": "The Brevik installation captures half the plant's emissions; it is a single-line retrofit, not a design ceiling for the technology."
+      },
+      "dependency": [
+        "co2-transport-storage"
+      ],
+      "sectors": [
+        "cement"
+      ],
+      "sources": [
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+          "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway marks new era of sustainable construction",
+          "publisher": "Heidelberg Materials",
+          "date": "2025-06-18",
+          "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
+        }
+      ],
+      "cost": {
+        "low": 100,
+        "high": 300,
+        "unit": "EUR million per plant retrofit",
+        "source": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+        "date": "2025-12-07",
+        "parameter": "ccs-retrofit-capex-post-combustion",
+        "note": "CEMBUREAU's own estimate, read from the Internet Archive; the live page serves a self-signed certificate."
+      }
+    },
+    {
+      "id": "ccs-oxyfuel",
+      "transition": "decarbonisation",
+      "name": "Oxyfuel carbon capture",
+      "description": "The kiln is fired with oxygen rather than air, so the flue gas is concentrated CO2 and needs far less separation, at the price of rebuilding the kiln rather than bolting equipment onto it.",
+      "readiness": {
+        "level": "demonstration",
+        "source": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
+        "date": "2024-05-16",
+        "note": "Two full-scale oxyfuel kilns are under construction in Europe — GO4ZERO at Obourg and Carbon2Business at Lägerdorf — and none is operating. Under construction is demonstration."
+      },
+      "dependency": [
+        "co2-transport-storage"
+      ],
+      "sectors": [
+        "cement"
+      ],
+      "sources": [
+        {
+          "url": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
+          "title": "Holcim breaks ground of state-of-the-art GO4ZERO plant in Belgium for net zero cement",
+          "publisher": "Holcim",
+          "date": "2024-05-16",
+          "verbatim": "With a planned investment of over EUR 500 million, the GO4ZERO project will put innovation to work to advance Europe's decarbonization."
+        },
+        {
+          "url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+          "title": "Carbon2Business CCUS project",
+          "publisher": "Holcim",
+          "date": "2024-04-22",
+          "verbatim": "On April 22, 2024, we officially launched our Carbon2Business carbon capture"
+        }
+      ],
+      "cost": {
+        "low": 100,
+        "high": 360,
+        "unit": "EUR million per plant",
+        "source": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+        "date": "2025-12-07",
+        "parameter": "ccs-retrofit-capex-oxyfuel",
+        "note": "€100 million to retrofit an existing kiln, €330-360 million for a new 1 Mt/year plant — the range spans two different projects, not one uncertainty."
+      }
+    },
+    {
+      "id": "co2-transport-storage",
+      "transition": "decarbonisation",
+      "name": "CO2 transport and storage",
+      "description": "The pipelines, ships, terminals and permitted geological stores that a captured tonne has to reach before it counts as abated, and which no single cement plant can build for itself.",
+      "readiness": {
+        "level": "early-commercial",
+        "source": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+        "date": "2025-06-18",
+        "note": "Captured CO2 from Brevik is shipped and stored under the Norwegian Longship chain, which is the first full chain in Europe to take third-party industrial CO2. One chain in service is early-commercial."
+      },
+      "dependency": [],
+      "sectors": [
+        "cement",
+        "steel",
+        "chem"
+      ],
+      "sources": [
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+          "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway marks new era of sustainable construction",
+          "publisher": "Heidelberg Materials",
+          "date": "2025-06-18",
+          "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
+        },
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735",
+          "title": "Regulation (EU) 2024/1735 (Net-Zero Industry Act), Article 20",
+          "publisher": "EUR-Lex",
+          "date": "2024-06-13",
+          "verbatim": "An annual injection capacity of at least 50 million tonnes of CO2 shall be achieved by 2030 in storage sites"
+        }
+      ]
+    },
+    {
+      "id": "alternative-fuels",
+      "transition": "decarbonisation",
+      "name": "Alternative fuels in the kiln",
+      "description": "Waste-derived and biomass fuels replace coal and petcoke in the kiln, which cuts combustion emissions and nothing else — the calcination CO2 is untouched, so this route has a ceiling below half the plant's emissions.",
+      "readiness": {
+        "level": "commercial",
+        "source": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
+        "date": "2024-02-15",
+        "note": "Substitution rates are set as ordinary operating targets in plant investment plans rather than trialled; EQIOM's Lumbres line is built around 80% substitution by 2027."
+      },
+      "dependency": [],
+      "sectors": [
+        "cement"
+      ],
+      "sources": [
+        {
+          "url": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
+          "title": "Projet K6 : lancement de la première phase",
+          "publisher": "EQIOM",
+          "date": "2024-02-15",
+          "verbatim": "EQIOM construira une nouvelle ligne de production de clinker, innovante, qui augmentera de manière significative l'efficacité thermique"
+        }
+      ]
+    }
+  ]
+}

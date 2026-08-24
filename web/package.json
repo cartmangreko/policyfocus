@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "python3 ../sources/build_findings.py && python3 ../sources/build_records.py && python3 ../sources/build_summaries.py --check && python3 ../sources/build_graph.py --check && python3 ../sources/build_ego_views.py --check",
+    "prebuild": "node --test lib/*.test.mts && node scripts/build-mark-assets.mjs --check && python3 ../sources/check_colour_layers.py && python3 ../sources/build_findings.py && python3 ../sources/build_records.py && python3 ../sources/build_summaries.py --check && python3 ../sources/build_graph.py --check && python3 ../sources/build_ego_views.py --check && python3 ../sources/check_sector_schema.py && python3 ../sources/build_importance.py --check && python3 ../sources/check_importance.py && python3 ../sources/build_sector_diagram.py --check && python3 ../sources/build_lead.py --check && python3 ../sources/check_display_vocabulary.py && python3 ../sources/check_links.py",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --test lib/*.test.mts"
   },
   "dependencies": {
     "next": "16.3.0",

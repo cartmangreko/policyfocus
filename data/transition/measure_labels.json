@@ -1,0 +1,67 @@
+{
+  "_comment": [
+    "What each measure is CALLED on a diagram, in two fields and a template.",
+    "",
+    "WHY NOT THE ID. The diagram used to label its measure nodes `cbam:FIN-03`. That is",
+    "the right thing to store and the wrong thing to draw: the id is how the register, the",
+    "graph and the gates refer to a measure, and it tells a reader nothing about what the",
+    "measure does. The id has not gone anywhere — it is in the hover detail and it is the",
+    "heading of the measure's own page — but the node now says what it is.",
+    "",
+    "WHY NOT A LABEL FIELD. A free label per measure would drift: twenty sectors written",
+    "months apart, each phrasing its own nodes, and no two diagrams reading alike. So the",
+    "label is COMPUTED from two fields by one template in sources/sector_map.py:",
+    "",
+    "    object      the thing the measure acts on, as a noun phrase",
+    "    instrument  the legal device it acts with, from the closed list in sector_map.py",
+    "",
+    "    short_label = object                 where instrument is null",
+    "                = object + ' ' + instrument   otherwise",
+    "",
+    "`instrument` is null where the object already names the device — 'CBAM certificates'",
+    "is the instrument, and 'CBAM certificates obligation' is the same fact said twice and",
+    "four characters over the limit. Null is therefore allowed and is not a gap.",
+    "",
+    "THE GATES (sources/check_sector_schema.py): every measure in a sector view has an",
+    "entry; every instrument is in the vocabulary; every computed label is at most 26",
+    "characters, is unique within the sector's diagram, and carries no word from",
+    "sources/display_vocabulary.py.",
+    "",
+    "Keyed by the register id, `<file>:<id>`, so an entry cannot name a measure that does",
+    "not exist. Entries are shared across sectors: a measure keeps its label everywhere."
+  ],
+  "labels": {
+    "cbam:FIN-03": {
+      "object": "CBAM certificates",
+      "instrument": null
+    },
+    "ets:CBAM-01": {
+      "object": "Free allocation",
+      "instrument": "phase-out"
+    },
+    "ets:FND-03": {
+      "object": "Innovation Fund",
+      "instrument": "grants"
+    },
+    "iaa:LM-03a": {
+      "object": "Procurement",
+      "instrument": "requirements"
+    },
+    "iaa:LM-06a": {
+      "object": "Support scheme budgets",
+      "instrument": null
+    },
+    "nzia:CO2-02": {
+      "object": "CO2 storage",
+      "instrument": "obligation"
+    },
+    "nzia:CO2-10": {
+      "object": "CO2 network access",
+      "instrument": null
+    },
+    "nzia:SP-02": {
+      "object": "Strategic project status",
+      "instrument": null
+    }
+  }
+}

@@ -35,3 +35,10 @@ dist/
 build/
 .cache/
 *.log
+
+# The seeded design canvas: ~2 MB of editor payload wrapped around the artboards
+# next to it. The artboards and canvas.json ARE the source and are tracked; this
+# file is rebuilt from them by the design skill's seeder on every change, and
+# the published copy lives at the artifact URL.
+docs/design/canvas/*.html
+!docs/design/canvas/*.dc.html

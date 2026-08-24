@@ -1,0 +1,323 @@
+{
+  "_comment": [
+    "Real plants, with an append-only status history. This is the file the watch agent's",
+    "second channel writes to, and the reason its shape is strict.",
+    "",
+    "Schema and vocabularies: sources/sector_map.py. Gate: sources/check_sector_schema.py.",
+    "",
+    "STATUS_HISTORY IS APPEND-ONLY AND EVERY ENTRY CARRIES A SOURCE. A status that changed",
+    "without a link is a status nobody can check, and the history is the one part of this",
+    "layer that is meant to be read as a record rather than as an analysis. Entries are in",
+    "date order and the last one equals `status`; the gate fails on either being untrue,",
+    "because a header and a timeline that disagree put two different facts on one page.",
+    "",
+    "A SHORT HISTORY IS HONEST. Several of these projects start their history at the event",
+    "this repository first sourced — the grant, the groundbreaking — rather than at their",
+    "announcement, because no primary source for the earlier event has been read yet. The",
+    "file records what was verified, not what is likely to have happened.",
+    "",
+    "`public_funding.measure` points at the register measure that IS the programme, and carries",
+    "`measure_note` saying how tight the fit is. The Innovation Fund lines are the live case: the",
+    "grants were awarded under the Fund as it stands (Art. 10a(8) of the ETS Directive), while the",
+    "register knows the Fund through the revision's Art. 10cb, which re-establishes it. Linking them",
+    "is what lets the money model total public support for the sector; the note is what stops the",
+    "link from being read as a claim that the award was made under the proposed article.",
+    "",
+    "`public_funding` used to sit on each row. It moved to data/transition/funding.json, where capital allocation is a node with edges out of it: one Innovation Fund call finances several projects, and a field on the recipient could only say so by repeating itself once per recipient. The project keeps a rollup and the rollup is DERIVED — computed from the funding rows wherever it is shown, never stored back here."
+  ],
+  "projects": [
+    {
+      "id": "brevik-ccs",
+      "name": "Brevik CCS",
+      "company": "Heidelberg Materials",
+      "plant": "Brevik",
+      "country": "NO",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "technology": [
+        "ccs-post-combustion",
+        "co2-transport-storage"
+      ],
+      "capacity": {
+        "value": 400000,
+        "unit": "tonnes CO2 captured per year",
+        "parameter": "brevik-capture-capacity"
+      },
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2024-12-02",
+          "source_url": "https://www.heidelbergmaterials.com/en/pr-2024-12-02",
+          "note": "Mechanical completion reached on schedule."
+        },
+        {
+          "status": "operating",
+          "date": "2025-06-18",
+          "source_url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+          "note": "Opening of the facility; the first industrial-scale capture plant in the cement industry."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+          "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway marks new era of sustainable construction",
+          "publisher": "Heidelberg Materials",
+          "date": "2025-06-18"
+        },
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2024-12-02",
+          "title": "Brevik CCS achieves milestone in net zero journey",
+          "publisher": "Heidelberg Materials",
+          "date": "2024-12-02"
+        }
+      ]
+    },
+    {
+      "id": "gezero-geseke",
+      "name": "GeZero",
+      "company": "Heidelberg Materials",
+      "plant": "Geseke",
+      "country": "DE",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "technology": [
+        "ccs-post-combustion",
+        "co2-transport-storage"
+      ],
+      "capacity": {
+        "value": 700000,
+        "unit": "tonnes CO2 captured per year",
+        "parameter": "gezero-capture-capacity"
+      },
+      "status": "funded",
+      "status_history": [
+        {
+          "status": "funded",
+          "date": "2023-12-15",
+          "source_url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
+          "note": "Innovation Fund grant of €191 million; construction stated to start in 2026 and commissioning in 2029."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
+          "title": "First fully decarbonised cement plant in Germany: EU Innovation Fund backs Heidelberg Materials' GeZero project with €191 million",
+          "publisher": "Heidelberg Materials",
+          "date": "2023-12-15"
+        }
+      ]
+    },
+    {
+      "id": "anrav-devnya",
+      "name": "ANRAV",
+      "company": "Heidelberg Materials (Devnya Cement)",
+      "plant": "Devnya",
+      "country": "BG",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "technology": [
+        "ccs-post-combustion",
+        "co2-transport-storage"
+      ],
+      "capacity": {
+        "value": 800000,
+        "unit": "tonnes CO2 captured per year",
+        "parameter": "anrav-capture-capacity"
+      },
+      "status": "funded",
+      "status_history": [
+        {
+          "status": "funded",
+          "date": "2023-01-20",
+          "source_url": "https://www.heidelbergmaterials.com/en/eu-backs-heidelberg-materials-pioneering-ccus-project-in-bulgaria",
+          "note": "Innovation Fund grant of around €190 million to Heidelberg Materials and PetroCeltic; first full CCUS chain in Eastern Europe, expected operational as early as 2028."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.heidelbergmaterials.com/en/eu-backs-heidelberg-materials-pioneering-ccus-project-in-bulgaria",
+          "title": "EU backs Heidelberg Materials' pioneering CCUS project in Bulgaria",
+          "publisher": "Heidelberg Materials",
+          "date": "2023-01-20"
+        }
+      ]
+    },
+    {
+      "id": "go4zero-obourg",
+      "name": "GO4ZERO",
+      "company": "Holcim",
+      "plant": "Obourg",
+      "country": "BE",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "technology": [
+        "ccs-oxyfuel",
+        "co2-transport-storage"
+      ],
+      "investment_total": {
+        "value": 500000000,
+        "unit": "EUR",
+        "parameter": "go4zero-investment"
+      },
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2024-05-16",
+          "source_url": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
+          "note": "Groundbreaking on phase one; plant engineered to produce 2 million tons of net-zero cement per annum by 2029."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
+          "title": "Holcim breaks ground of state-of-the-art GO4ZERO plant in Belgium for net zero cement",
+          "publisher": "Holcim",
+          "date": "2024-05-16"
+        }
+      ]
+    },
+    {
+      "id": "carbon2business-lagerdorf",
+      "name": "Carbon2Business",
+      "company": "Holcim",
+      "plant": "Lägerdorf",
+      "country": "DE",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "technology": [
+        "ccs-oxyfuel"
+      ],
+      "capacity": {
+        "value": 1.2,
+        "unit": "Mt CO2 captured per year",
+        "parameter": "carbon2business-capture-capacity"
+      },
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "funded",
+          "date": "2023",
+          "source_url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+          "note": "The project page states a grant from the EU Innovation Fund received in 2023; no month is given, so the date is the year."
+        },
+        {
+          "status": "construction",
+          "date": "2024-04-22",
+          "source_url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+          "note": "Official launch of the project; net-zero cement production at Lägerdorf stated from 2029."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+          "title": "Carbon2Business CCUS project",
+          "publisher": "Holcim",
+          "date": "2024-04-22"
+        }
+      ]
+    },
+    {
+      "id": "slite-ccs",
+      "name": "Slite CCS",
+      "company": "Heidelberg Materials",
+      "plant": "Slite",
+      "country": "SE",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "technology": [
+        "ccs-post-combustion",
+        "co2-transport-storage"
+      ],
+      "status": "paused",
+      "status_history": [
+        {
+          "status": "paused",
+          "date": "2025-11-19",
+          "source_url": "https://www.globalcement.com/news/item/19500-heidelberg-materials-pauses-slite-ccs-project",
+          "note": "Paused after the Swedish Energy Agency rejected the co-financing application under the Industrial Step programme."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.globalcement.com/news/item/19500-heidelberg-materials-pauses-slite-ccs-project",
+          "title": "Heidelberg Materials pauses Slite CCS project",
+          "publisher": "Global Cement",
+          "date": "2025-11-19"
+        },
+        {
+          "url": "https://www.globalcement.com/news/20531-heidelberg-materials-withdraws-slite-ccs-permit-application",
+          "title": "Heidelberg Materials withdraws Slite CCS permit application",
+          "publisher": "Global Cement",
+          "date": "2026-01-01"
+        }
+      ]
+    },
+    {
+      "id": "ifestos-kamari",
+      "name": "IFESTOS",
+      "company": "TITAN Cement",
+      "plant": "Kamari",
+      "country": "GR",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "technology": [
+        "ccs-post-combustion",
+        "co2-transport-storage"
+      ],
+      "capacity": {
+        "value": 1.9,
+        "unit": "Mt CO2 avoided per year",
+        "parameter": "ifestos-capture-capacity"
+      },
+      "status": "announced",
+      "status_history": [
+        {
+          "status": "announced",
+          "date": "2023-07-14",
+          "source_url": "https://www.worldcement.com/europe-cis/14072023/titan-groups-large-scale-carbon-capture-project-selected-by-the-eu-innovation-fund/",
+          "note": "Selected by the EU Innovation Fund. Selection is not yet a signed grant, so the status is announced rather than funded until the grant agreement is sourced."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.worldcement.com/europe-cis/14072023/titan-groups-large-scale-carbon-capture-project-selected-by-the-eu-innovation-fund/",
+          "title": "TITAN Group's large-scale carbon capture project selected by the EU Innovation Fund",
+          "publisher": "World Cement",
+          "date": "2023-07-14"
+        }
+      ]
+    },
+    {
+      "id": "k6-lumbres",
+      "name": "K6",
+      "company": "EQIOM (CRH)",
+      "plant": "Lumbres",
+      "country": "FR",
+      "sector": "cement",
+      "transition": "decarbonisation",
+      "technology": [
+        "alternative-fuels",
+        "ccs-post-combustion"
+      ],
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2024-02-15",
+          "source_url": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
+          "note": "Phase one launched: a new clinker line at Lumbres, supported by €40 million of French state funding through ADEME under NextGenerationEU. Capture is a stated second phase."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
+          "title": "Projet K6 : lancement de la première phase",
+          "publisher": "EQIOM",
+          "date": "2024-02-15"
+        }
+      ]
+    }
+  ]
+}

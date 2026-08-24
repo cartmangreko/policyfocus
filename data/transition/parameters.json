@@ -1,0 +1,435 @@
+{
+  "_comment": [
+    "Every number any surface in this layer is allowed to state, with the sentence it was",
+    "read from. A figure that is not in this file cannot be rendered on a page — that is",
+    "the whole point of the file, and it is why it is longer than it looks like it should",
+    "be.",
+    "",
+    "Schema and vocabularies: sources/sector_map.py. Gate: sources/check_sector_schema.py.",
+    "",
+    "THE VERBATIM RULE. `source.verbatim` is the sentence containing the number, copied.",
+    "The gate checks that the value's digits actually occur in the quote, which catches the",
+    "failure that a URL alone does not: a real source, a real sentence, and a number from",
+    "somewhere else. Where the value genuinely is not a literal in the sentence — a figure",
+    "written out in words, a share computed from two others — `verbatim_note` says so and",
+    "the check stands down. The note is printed, so the exception stays visible.",
+    "",
+    "STALENESS. `stale_after` is in months and defaults to 12. It is set per parameter",
+    "because the numbers age at wildly different rates: a carbon price is stale in a month,",
+    "a statutory schedule in the ETS Directive is not stale until the Directive is amended.",
+    "Staleness is reported by the gate and never fails it.",
+    "",
+    "CONFIDENCE is about who is speaking, not about how much we like the number. `primary`",
+    "is the body that produced the figure — the Official Journal for a statutory value, the",
+    "company for its own plant. `secondary` is somebody reporting it. A price scraped from",
+    "a market data site is secondary, however accurate it is.",
+    "",
+    "`states_gap` marks a number that measures a SHORTFALL rather than a level, and it is what sources/build_lead.py ranks to find a sector's largest gap. A capture retrofit's capital cost is a level; the premium near-zero cement carries over conventional cement is a gap. All of a sector's gap parameters must share a unit — build_lead.py fails otherwise, because picking the 'largest' across a percentage and a euro figure is not a comparison."
+  ],
+  "parameters": [
+    {
+      "id": "cbam-factor-2026",
+      "name": "CBAM factor 2026 — share of free allocation that survives",
+      "value": 97.5,
+      "unit": "% of the free allocation otherwise due",
+      "scope": "eu",
+      "sector": "cement",
+      "date_of_value": "2024-03-01",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://eur-lex.europa.eu/eli/dir/2003/87/2024-03-01",
+        "publisher": "EUR-Lex — Directive 2003/87/EC, consolidated 1 March 2024, Art. 10a(1a)",
+        "verbatim": "The CBAM factor shall be equal to 100 % for the period between the entry into force of that Regulation and the end of 2025 and, subject to the application of provisions referred to in Article 36(2), point (b), of that Regulation, shall be equal to 97,5 % in 2026, 95 % in 2027, 90 % in 2028, 77,5 % in 2029, 51,5 % in 2030, 39 % in 2031, 26,5 % in 2032 and 14 % in 2033. From 2034, no CBAM factor shall apply.",
+        "snapshot": "sources/ets_prior_02003L0087-20240301.txt"
+      }
+    },
+    {
+      "id": "cbam-factor-2030",
+      "name": "CBAM factor 2030 — share of free allocation that survives",
+      "value": 51.5,
+      "unit": "% of the free allocation otherwise due",
+      "scope": "eu",
+      "sector": "cement",
+      "date_of_value": "2024-03-01",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://eur-lex.europa.eu/eli/dir/2003/87/2024-03-01",
+        "publisher": "EUR-Lex — Directive 2003/87/EC, consolidated 1 March 2024, Art. 10a(1a)",
+        "verbatim": "The CBAM factor shall be equal to 100 % for the period between the entry into force of that Regulation and the end of 2025 and, subject to the application of provisions referred to in Article 36(2), point (b), of that Regulation, shall be equal to 97,5 % in 2026, 95 % in 2027, 90 % in 2028, 77,5 % in 2029, 51,5 % in 2030, 39 % in 2031, 26,5 % in 2032 and 14 % in 2033. From 2034, no CBAM factor shall apply.",
+        "snapshot": "sources/ets_prior_02003L0087-20240301.txt"
+      }
+    },
+    {
+      "id": "clinker-benchmark-2026-2030",
+      "name": "EU ETS free-allocation benchmark, grey cement clinker, 2026-2030",
+      "value": 0.656,
+      "unit": "allowances per tonne of grey cement clinker",
+      "scope": "eu",
+      "sector": "cement",
+      "date_of_value": "2026-06-26",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "verbatim_note": "The annex prints two columns per product; 0,656 is the benchmark for the 2026-2030 period and 0,689 the value it replaces.",
+      "source": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1412",
+        "publisher": "EUR-Lex — Commission Implementing Regulation (EU) 2026/1412, Annex",
+        "verbatim": "Grey cement clinker | 0,689 | 0,656"
+      }
+    },
+    {
+      "id": "nzia-injection-capacity-2030",
+      "name": "Union CO2 injection capacity objective for 2030",
+      "value": 50,
+      "unit": "Mt CO2 per year",
+      "scope": "eu",
+      "date_of_value": "2024-06-13",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735",
+        "publisher": "EUR-Lex — Regulation (EU) 2024/1735 (Net-Zero Industry Act), Art. 20(1)",
+        "verbatim": "An annual injection capacity of at least 50 million tonnes of CO2 shall be achieved by 2030 in storage sites, meaning geological storage sites permitted under Directive 2009/31/EC including depleted oil and gas fields and saline aquifers, located in the territory of the Union",
+        "snapshot": "sources/nzia.txt"
+      }
+    },
+    {
+      "id": "eua-price-spot",
+      "name": "EU allowance price, spot",
+      "value": 82.8,
+      "unit": "EUR per tonne CO2",
+      "scope": "eu",
+      "date_of_value": "2026-08-21",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 1,
+      "confidence": "secondary",
+      "source": {
+        "url": "https://tradingeconomics.com/commodity/carbon",
+        "publisher": "Trading Economics (EUA front-year contract)",
+        "verbatim": "EU Carbon Permits rose to 82.80 EUR on August 21, 2026, up 0.42% from the previous day."
+      },
+      "note": "The money model is linear in this number, so it is the single parameter most able to move a measure's rank. A settled auction series from EEX would be a primary replacement; see data/transition/GAPS.md."
+    },
+    {
+      "id": "brevik-capture-capacity",
+      "name": "Brevik CCS capture capacity",
+      "value": 400000,
+      "unit": "tonnes CO2 per year",
+      "scope": "plant:brevik",
+      "sector": "cement",
+      "technology": "ccs-post-combustion",
+      "date_of_value": "2025-06-18",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 36,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+        "publisher": "Heidelberg Materials",
+        "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
+      }
+    },
+    {
+      "id": "brevik-abatement-share",
+      "name": "Brevik CCS share of the plant's emissions captured",
+      "value": 50,
+      "unit": "% of plant CO2 emissions",
+      "scope": "plant:brevik",
+      "sector": "cement",
+      "technology": "ccs-post-combustion",
+      "date_of_value": "2025-06-18",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 36,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+        "publisher": "Heidelberg Materials",
+        "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
+      }
+    },
+    {
+      "id": "gezero-grant",
+      "name": "GeZero — EU Innovation Fund grant",
+      "value": 191,
+      "unit": "EUR million",
+      "scope": "plant:geseke",
+      "sector": "cement",
+      "date_of_value": "2023-12-15",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
+        "publisher": "Heidelberg Materials",
+        "verbatim": "the Innovation Fund will provide a total of €191 million in financing to Heidelberg Materials to realise the project."
+      }
+    },
+    {
+      "id": "gezero-capture-capacity",
+      "name": "GeZero capture capacity",
+      "value": 700000,
+      "unit": "tonnes CO2 per year",
+      "scope": "plant:geseke",
+      "sector": "cement",
+      "technology": "ccs-post-combustion",
+      "date_of_value": "2023-12-15",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
+        "publisher": "Heidelberg Materials",
+        "verbatim": "capturing 700,000 tonnes of CO₂ annually from 2029."
+      }
+    },
+    {
+      "id": "anrav-grant",
+      "name": "ANRAV — EU Innovation Fund grant",
+      "value": 190,
+      "unit": "EUR million",
+      "scope": "plant:devnya",
+      "sector": "cement",
+      "date_of_value": "2023-01-20",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.heidelbergmaterials.com/en/eu-backs-heidelberg-materials-pioneering-ccus-project-in-bulgaria",
+        "publisher": "Heidelberg Materials",
+        "verbatim": "The Innovation Fund will provide a total of around 190 million euros in financing to Heidelberg Materials and partner PetroCeltic"
+      }
+    },
+    {
+      "id": "anrav-capture-capacity",
+      "name": "ANRAV capture capacity",
+      "value": 800000,
+      "unit": "tonnes CO2 per year",
+      "scope": "plant:devnya",
+      "sector": "cement",
+      "technology": "ccs-post-combustion",
+      "date_of_value": "2023-01-20",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.heidelbergmaterials.com/en/eu-backs-heidelberg-materials-pioneering-ccus-project-in-bulgaria",
+        "publisher": "Heidelberg Materials",
+        "verbatim": "will have a capture capacity of about 800,000 t CO₂ per year"
+      }
+    },
+    {
+      "id": "go4zero-investment",
+      "name": "GO4ZERO — total investment",
+      "value": 500,
+      "unit": "EUR million",
+      "scope": "plant:obourg",
+      "sector": "cement",
+      "date_of_value": "2024-05-16",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
+        "publisher": "Holcim",
+        "verbatim": "With a planned investment of over EUR 500 million, the GO4ZERO project will put innovation to work to advance Europe's decarbonization."
+      },
+      "note": "The release says 'over EUR 500 million'; the value is the floor it states, not a point estimate."
+    },
+    {
+      "id": "carbon2business-capture-capacity",
+      "name": "Carbon2Business capture capacity",
+      "value": 1.2,
+      "unit": "Mt CO2 per year",
+      "scope": "plant:lagerdorf",
+      "sector": "cement",
+      "technology": "ccs-oxyfuel",
+      "date_of_value": "2024-04-22",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+        "publisher": "Holcim",
+        "verbatim": "capture more than 1.2 million tons of CO2 emissions annually"
+      }
+    },
+    {
+      "id": "ifestos-capture-capacity",
+      "name": "IFESTOS annual emissions avoidance",
+      "value": 1.9,
+      "unit": "Mt CO2 per year",
+      "scope": "plant:kamari",
+      "sector": "cement",
+      "technology": "ccs-post-combustion",
+      "date_of_value": "2023-07-14",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "secondary",
+      "source": {
+        "url": "https://www.worldcement.com/europe-cis/14072023/titan-groups-large-scale-carbon-capture-project-selected-by-the-eu-innovation-fund/",
+        "publisher": "World Cement",
+        "verbatim": "an absolute annual GHG emissions avoidance of more than 1.9 million tons of CO2"
+      }
+    },
+    {
+      "id": "k6-state-funding",
+      "name": "K6 Lumbres — French state funding, phase one",
+      "value": 40,
+      "unit": "EUR million",
+      "scope": "plant:lumbres",
+      "sector": "cement",
+      "date_of_value": "2024-02-15",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 60,
+      "confidence": "primary",
+      "verbatim_note": "The amount is written out in words in the French original ('quarante millions d'euros'), so the digits do not occur in the quote.",
+      "source": {
+        "url": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
+        "publisher": "EQIOM",
+        "verbatim": "le Gouvernement d'accorder un financement de quarante millions d'euros"
+      }
+    },
+    {
+      "id": "cbam-default-grey-clinker-2026",
+      "name": "CBAM default embedded emissions, grey clinker, 2026 (incl. mark-up)",
+      "value": 1.551,
+      "unit": "tonnes CO2 per tonne of goods",
+      "scope": "global",
+      "sector": "cement",
+      "date_of_value": "2025-12-16",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 24,
+      "confidence": "primary",
+      "verbatim_note": "The annex prints six columns per line — direct, indirect, total, then the total with the statutory mark-up for 2026, 2027 and 2028 onwards. The value here is the 2026 column, which is the total plus the 10% mark-up.",
+      "source": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R2621",
+        "publisher": "EUR-Lex — Commission Implementing Regulation (EU) 2025/2621, Annex I, 'Other Countries and Territories'",
+        "verbatim": "2523 10 00 Grey clinker 1,370 0,050 1,410 1,551 1,692 1,833 (A)",
+        "snapshot": "sources/cbam_defaults_2025_2621_cement.txt"
+      },
+      "note": "Türkiye, the largest single origin of EU cement imports, is listed in Annex I with no cement values, and the annex's own rule sends such a line to this fallback table. The fallback is therefore the operative default for the dominant origin, not a residual."
+    },
+    {
+      "id": "cbam-default-grey-cement-2026",
+      "name": "CBAM default embedded emissions, grey Portland cement, 2026 (incl. mark-up)",
+      "value": 1.584,
+      "unit": "tonnes CO2 per tonne of goods",
+      "scope": "global",
+      "sector": "cement",
+      "date_of_value": "2025-12-16",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 24,
+      "confidence": "primary",
+      "verbatim_note": "The annex prints six columns per line — direct, indirect, total, then the total with the statutory mark-up for 2026, 2027 and 2028 onwards. The value here is the 2026 column, which is the total plus the 10% mark-up.",
+      "source": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32025R2621",
+        "publisher": "EUR-Lex — Commission Implementing Regulation (EU) 2025/2621, Annex I, 'Other Countries and Territories'",
+        "verbatim": "2523 29 00 Grey Portland cement 1,360 0,080 1,440 1,584 1,728 1,872",
+        "snapshot": "sources/cbam_defaults_2025_2621_cement.txt"
+      }
+    },
+    {
+      "id": "cement-imports-clinker-2025",
+      "name": "Extra-EU imports of cement clinker (CN 2523 10), 2025",
+      "value": 7.1479,
+      "unit": "Mt",
+      "scope": "eu",
+      "sector": "cement",
+      "date_of_value": "2025",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 12,
+      "confidence": "primary",
+      "verbatim_note": "Comext reports quantity in 100 kg; 71 478 908,93 units of 100 kg is 7,1479 Mt. The conversion is arithmetic and is recorded in the snapshot alongside the request URL that produced the figure.",
+      "source": {
+        "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252310&time=2025",
+        "publisher": "Eurostat Comext, dataset ds-045409 — extra-EU imports into EU27, annual, quantity in 100 kg",
+        "verbatim": "\"value\":{\"0\":71478908.93}",
+        "snapshot": "sources/comext_2523_imports.json"
+      }
+    },
+    {
+      "id": "cement-imports-grey-cement-2025",
+      "name": "Extra-EU imports of grey Portland cement (CN 2523 29), 2025",
+      "value": 5.7659,
+      "unit": "Mt",
+      "scope": "eu",
+      "sector": "cement",
+      "date_of_value": "2025",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 12,
+      "confidence": "primary",
+      "verbatim_note": "Comext reports quantity in 100 kg; 57 658 565,6 units of 100 kg is 5,7659 Mt.",
+      "source": {
+        "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252329&time=2025",
+        "publisher": "Eurostat Comext, dataset ds-045409 — extra-EU imports into EU27, annual, quantity in 100 kg",
+        "verbatim": "\"value\":{\"0\":57658565.6}",
+        "snapshot": "sources/comext_2523_imports.json"
+      }
+    },
+    {
+      "id": "ccs-retrofit-capex-post-combustion",
+      "name": "Capital cost of retrofitting post-combustion capture to an existing cement plant",
+      "value": "100-300",
+      "unit": "EUR million per plant",
+      "scope": "eu",
+      "sector": "cement",
+      "technology": "ccs-post-combustion",
+      "date_of_value": "2025-12-07",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 36,
+      "confidence": "estimate",
+      "source": {
+        "url": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+        "publisher": "CEMBUREAU — Low Carbon Economy, 'Carbon sequestration and reuse' (read from the Internet Archive)",
+        "verbatim": "The exact capital expenditure needed per plant is hard to determine at present, but is estimated to be around €330-360 million to deploy oxyfuel technology at a new 1 million tonne/year plant, about 100 million for retrofitting oxyfuel technology and €100-300 million to retrofit an existing plant with post-combustion technology",
+        "archived": true,
+        "snapshot": "sources/cembureau_ccs_capex_20251207.txt"
+      },
+      "note": "The live page serves a self-signed certificate, so the text is cited from the Internet Archive capture of 7 December 2025 and marked archived. Provenance and the certificate fingerprint are in the snapshot."
+    },
+    {
+      "id": "ccs-retrofit-capex-oxyfuel",
+      "name": "Capital cost of retrofitting oxyfuel capture to an existing cement plant",
+      "value": 100,
+      "unit": "EUR million per plant",
+      "scope": "eu",
+      "sector": "cement",
+      "technology": "ccs-oxyfuel",
+      "date_of_value": "2025-12-07",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 36,
+      "confidence": "estimate",
+      "source": {
+        "url": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+        "publisher": "CEMBUREAU — Low Carbon Economy, 'Carbon sequestration and reuse' (read from the Internet Archive)",
+        "verbatim": "The exact capital expenditure needed per plant is hard to determine at present, but is estimated to be around €330-360 million to deploy oxyfuel technology at a new 1 million tonne/year plant, about 100 million for retrofitting oxyfuel technology and €100-300 million to retrofit an existing plant with post-combustion technology",
+        "archived": true,
+        "snapshot": "sources/cembureau_ccs_capex_20251207.txt"
+      },
+      "note": "The same sentence puts a NEW oxyfuel plant at €330-360 million; this parameter is the retrofit figure only. The live page serves a self-signed certificate, so the text is cited from the Internet Archive capture of 7 December 2025 and marked archived. Provenance and the certificate fingerprint are in the snapshot."
+    },
+    {
+      "id": "near-zero-cement-cost-premium",
+      "name": "Production cost premium of near-zero emissions cement using CCS",
+      "value": "75-150",
+      "unit": "% above a conventional plant",
+      "states_gap": true,
+      "scope": "global",
+      "sector": "cement",
+      "date_of_value": "2025",
+      "retrieved_date": "2026-08-22",
+      "stale_after": 24,
+      "confidence": "estimate",
+      "source": {
+        "url": "https://www.iea.org/reports/breakthrough-agenda-report-2025/cement-and-concrete",
+        "publisher": "International Energy Agency — Breakthrough Agenda Report 2025",
+        "verbatim": "Production costs for early commercial plants for near-zero emissions cement using CCS are estimated to be 75-150% higher than today's conventional plants"
+      },
+      "note": "Replaces the WEF Net-Zero Industry Tracker as the green-premium source: the WEF page returns 403 to this repository's link checker, and a source that cannot be read is a source that has not been read."
+    }
+  ]
+}

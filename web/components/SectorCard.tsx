@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SectorIcon from "./SectorIcon";
 import SummaryStrip from "./SummaryStrip";
 import { SECTORS, getChildren } from "@/lib/data";
 import { getSectorSummary } from "@/lib/summaries";
@@ -14,6 +15,7 @@ export default function SectorCard({ slug }: { slug: SectorSlug }) {
   return (
     <div className="dir-card">
       <Link href={`/sectors/${slug}`} className="dir-card-title">
+        <SectorIcon slug={slug} size={16} />
         {SECTORS[slug]}
       </Link>
       <SummaryStrip cuts={getSectorSummary(slug)} variant="mini" />
@@ -22,6 +24,7 @@ export default function SectorCard({ slug }: { slug: SectorSlug }) {
           {children.map((child) => (
             <div key={child} className="dir-card-child">
               <Link href={`/sectors/${child}`} className="dir-card-child-title">
+                <SectorIcon slug={child} size={14} />
                 {SECTORS[child]}
               </Link>
               <SummaryStrip cuts={getSectorSummary(child)} variant="mini" />

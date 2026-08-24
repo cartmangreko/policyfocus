@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    :root{
+      --ink:#211f1b; --ink-70:#3a3833; --ink-55:#6e6a60; --ink-25:#b3ae9f;
+      --paper:#fbfaf7; --paper-2:#f2f0e8; --card:#ffffff;
+      --rule:#ddd9cf; --rule-soft:#e7e3d9; --rule-dark:#38352e;
+      --signal:#2b54d8; --signal-light:#7f9bff;
+      --claret:#7a2e3f; --pine:#1f5c55;
+      --sans:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+      --cond:"Helvetica Neue Condensed","HelveticaNeue-CondensedBold","Arial Narrow","Helvetica Neue",Helvetica,Arial,sans-serif;
+      --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    }
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+      font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+    a{color:var(--ink);text-decoration:none}
+    a:hover{color:var(--signal)}
+    .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;
+      text-transform:uppercase;color:var(--ink-55);margin:0}
+    .rise{animation:rise .4s cubic-bezier(.2,.7,.3,1) backwards}
+    @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion:reduce){.rise{animation:none}}
+  </style>
+</helmet>
+
+<div style="width:1440px;background:var(--paper)">
+
+  <div style="height:3px;background:var(--signal)"></div>
+
+  <!-- chrome -->
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:32px;
+    padding:0 56px;height:86px;border-bottom:1px solid var(--rule)">
+    <div style="display:flex;align-items:center;gap:15px">
+      <svg width="42" height="42" viewBox="0 0 120 120" fill="none" style="display:block;overflow:visible">
+        <g stroke="#211f1b" stroke-width="6" stroke-linecap="butt">
+          <line x1="16" y1="24" x2="43" y2="24"/><line x1="53" y1="24" x2="91" y2="24"/><line x1="101" y1="24" x2="104" y2="24"/>
+          <line x1="16" y1="48" x2="19" y2="48"/><line x1="29" y1="48" x2="67" y2="48"/><line x1="77" y1="48" x2="104" y2="48"/>
+          <line x1="16" y1="72" x2="43" y2="72"/><line x1="53" y1="72" x2="91" y2="72"/><line x1="101" y1="72" x2="104" y2="72"/>
+          <line x1="16" y1="96" x2="19" y2="96"/><line x1="29" y1="96" x2="67" y2="96"/><line x1="77" y1="96" x2="104" y2="96"/>
+          <line x1="24" y1="16" x2="43" y2="16"/><line x1="53" y1="16" x2="67" y2="16"/><line x1="77" y1="16" x2="104" y2="16"/>
+          <line x1="48" y1="16" x2="19" y2="16"/>
+          <line x1="24" y1="53" x2="24" y2="67"/><line x1="24" y1="77" x2="24" y2="104"/><line x1="24" y1="16" x2="24" y2="43"/>
+          <line x1="48" y1="16" x2="48" y2="19"/><line x1="48" y1="29" x2="48" y2="67"/><line x1="48" y1="77" x2="48" y2="104"/>
+          <line x1="72" y1="16" x2="72" y2="43"/><line x1="72" y1="53" x2="72" y2="67"/><line x1="72" y1="77" x2="72" y2="104"/>
+          <line x1="96" y1="16" x2="96" y2="19"/><line x1="96" y1="29" x2="96" y2="67"/><line x1="96" y1="77" x2="96" y2="104"/>
+        </g>
+      </svg>
+      <span style="font-family:var(--sans);font-weight:700;font-size:30px;letter-spacing:-.045em;line-height:1">eu<span style="font-weight:400;color:var(--signal)">|</span>fabric</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:26px;font-size:13.5px;color:var(--ink-55)">
+      <span style="color:var(--ink)">Sectors</span>
+      <span>Technologies</span>
+      <span>Measures</span>
+      <span>Analysis</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px">
+      <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--rule);
+        padding:6px 10px;font-family:var(--mono);font-size:11.5px;color:var(--ink-55)">
+        <span>&#9906;</span><span>Search</span>
+      </div>
+      <span style="font-size:13.5px;color:var(--ink-55)">Sign in</span>
+    </div>
+  </div>
+
+  <!-- head: the descriptor at display scale, the positioning line beneath -->
+  <div class="rise" style="padding:76px 56px 56px;border-bottom:1px solid var(--rule)">
+    <p class="eyebrow" style="margin-bottom:26px">European industrial intelligence</p>
+    <h1 style="font-family:var(--cond);font-weight:700;font-size:132px;line-height:.92;
+      letter-spacing:-.045em;margin:0;max-width:15ch;text-wrap:balance">Intelligence on what Europe builds next.</h1>
+    <p style="margin:32px 0 0;max-width:62ch;font-size:19px;line-height:1.42;color:var(--ink-70)">Eufabric is the intelligence platform that connects Europe&#39;s industrial technologies, the policies that shape them, and the projects and capital that bring them to life.</p>
+  </div>
+
+  <!-- what moved -->
+  <div style="padding:52px 56px 8px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px">
+      <div style="display:flex;align-items:baseline;gap:20px">
+        <p class="eyebrow">Latest</p>
+        <h2 style="font-family:var(--cond);font-weight:700;font-size:46px;letter-spacing:-.035em;margin:0;line-height:1">What moved</h2>
+      </div>
+      <span style="font-family:var(--mono);font-size:11.5px;color:var(--signal)">All changes &rarr;</span>
+    </div>
+
+    <div style="display:flex;flex-direction:column;border-top:1px solid var(--ink)">
+      <sc-for list="{{moved}}" as="m" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:104px 118px 1fr 250px;gap:24px;
+          align-items:baseline;padding:16px 0;border-bottom:1px solid var(--rule-soft)">
+          <span style="font-family:var(--mono);font-size:12px;color:var(--ink-55)">{{m.date}}</span>
+          <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+            text-transform:uppercase;color:{{m.tone}}">{{m.status}}</span>
+          <div>
+            <span style="font-size:17px;font-weight:600;letter-spacing:-.01em">{{m.name}}</span>
+            <span style="font-size:13.5px;color:var(--ink-55);margin-left:10px">{{m.who}}</span>
+            <div style="font-size:13.5px;color:var(--ink-70);margin-top:3px;max-width:66ch">{{m.note}}</div>
+          </div>
+          <span style="font-family:var(--mono);font-size:11.5px;color:var(--ink-55);text-align:right">{{m.sector}}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- sectors -->
+  <div style="padding:52px 56px 64px;background:var(--paper-2);margin-top:44px;border-top:1px solid var(--rule)">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px">
+      <div style="display:flex;align-items:baseline;gap:20px">
+        <p class="eyebrow">Sectors</p>
+        <h2 style="font-family:var(--cond);font-weight:700;font-size:46px;letter-spacing:-.035em;margin:0;line-height:1">What each sector is under</h2>
+      </div>
+      <span style="font-family:var(--mono);font-size:11.5px;color:var(--signal)">All sectors &rarr;</span>
+    </div>
+    <p style="margin:0 0 26px;font-size:14.5px;color:var(--ink-55);max-width:78ch">1 of 20 sectors is live: the measures that decide whether it pays, what is blocking it, and everything being built. The rest are in preparation.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)">
+      <sc-for list="{{sectors}}" as="s" hint-placeholder-count="20">
+        <div style="background:var(--card);padding:18px;display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+          <span style="font-size:14px;font-weight:500">{{s.name}}</span>
+          <span style="font-family:var(--mono);font-size:10.5px;color:{{s.tone}}">{{s.state}}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div style="background:var(--ink);color:var(--ink-25);padding:52px 56px 36px">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;
+      border-bottom:1px solid var(--rule-dark);padding-bottom:32px">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+          <svg width="36" height="36" viewBox="0 0 120 120" fill="none" style="display:block;overflow:visible">
+            <g stroke="#f4f2ea" stroke-width="6" stroke-linecap="butt">
+              <line x1="16" y1="24" x2="43" y2="24"/><line x1="53" y1="24" x2="91" y2="24"/><line x1="101" y1="24" x2="104" y2="24"/>
+              <line x1="16" y1="48" x2="19" y2="48"/><line x1="29" y1="48" x2="67" y2="48"/><line x1="77" y1="48" x2="104" y2="48"/>
+              <line x1="16" y1="72" x2="43" y2="72"/><line x1="53" y1="72" x2="91" y2="72"/><line x1="101" y1="72" x2="104" y2="72"/>
+              <line x1="16" y1="96" x2="19" y2="96"/><line x1="29" y1="96" x2="67" y2="96"/><line x1="77" y1="96" x2="104" y2="96"/>
+              <line x1="24" y1="16" x2="24" y2="43"/><line x1="24" y1="53" x2="24" y2="67"/><line x1="24" y1="77" x2="24" y2="104"/>
+              <line x1="48" y1="16" x2="48" y2="19"/><line x1="48" y1="29" x2="48" y2="67"/><line x1="48" y1="77" x2="48" y2="104"/>
+              <line x1="72" y1="16" x2="72" y2="43"/><line x1="72" y1="53" x2="72" y2="67"/><line x1="72" y1="77" x2="72" y2="104"/>
+              <line x1="96" y1="16" x2="96" y2="19"/><line x1="96" y1="29" x2="96" y2="67"/><line x1="96" y1="77" x2="96" y2="104"/>
+            </g>
+          </svg>
+          <span style="font-family:var(--sans);font-weight:700;font-size:27px;letter-spacing:-.045em;color:var(--paper)">eu<span style="font-weight:400;color:var(--signal-light)">|</span>fabric</span>
+        </div>
+        <p style="margin:0;font-family:var(--cond);font-weight:700;font-size:26px;line-height:1.1;
+          letter-spacing:-.03em;color:var(--paper);max-width:20ch">Intelligence on what Europe builds next.</p>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-25);margin-bottom:14px">Product</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:13px"><span>Sectors</span><span>Technologies</span><span>Measures</span></div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-25);margin-bottom:14px">Method</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:13px"><span>Coverage &amp; limits</span><span>Sources</span></div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-25);margin-bottom:14px">Analysis</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:13px"><span>Change records</span><span>Notes</span><span>Essays</span></div>
+      </div>
+    </div>
+    <div style="font-family:var(--mono);font-size:11px;color:var(--ink-25);margin-top:22px">Prototype. Every count is computed from the source legislation, not entered by hand.</div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":2000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const CLARET = "#7a2e3f", PINE = "#1f5c55", INK55 = "#6e6a60", SIGNAL = "#2b54d8";
+    return {
+      moved: [
+        {date:"2025-11-19",status:"Paused",tone:INK55,name:"Slite CCS",who:"Heidelberg Materials · Slite",sector:"Cement and concrete",
+         note:"Paused after the Swedish Energy Agency rejected the co-financing application under the Industrial Step programme."},
+        {date:"2025-06-18",status:"Operating",tone:INK55,name:"Brevik CCS",who:"Heidelberg Materials · Brevik",sector:"Cement and concrete",
+         note:"Opening of the facility; the first industrial-scale capture plant in the cement industry."},
+        {date:"2024-05-16",status:"In construction",tone:INK55,name:"GO4ZERO",who:"Holcim · Obourg",sector:"Cement and concrete",
+         note:"Groundbreaking on phase one; engineered to produce 2 million tons of net-zero cement per annum by 2029."},
+        {date:"2024-04-22",status:"In construction",tone:INK55,name:"Carbon2Business",who:"Holcim · Lägerdorf",sector:"Cement and concrete",
+         note:"Official launch of the project; net-zero cement production at Lägerdorf stated from 2029."},
+        {date:"2024-02-15",status:"In construction",tone:INK55,name:"K6",who:"EQIOM (CRH) · Lumbres",sector:"Cement and concrete",
+         note:"Phase one launched: a new clinker line at Lumbres, supported by €40 million of French state funding through ADEME."},
+        {date:"2023-12-15",status:"Funded",tone:INK55,name:"GeZero",who:"Heidelberg Materials · Geseke",sector:"Cement and concrete",
+         note:"Innovation Fund grant of €191 million; construction stated to start in 2026 and commissioning in 2029."}
+      ],
+      sectors: [
+        {name:"Cement and concrete",state:"Live",tone:SIGNAL},
+        {name:"Aluminium and metals",state:"In preparation",tone:INK55},
+        {name:"Automotive",state:"In preparation",tone:INK55},
+        {name:"Aviation",state:"In preparation",tone:INK55},
+        {name:"Batteries and solar",state:"In preparation",tone:INK55},
+        {name:"Carbon capture and fuels",state:"In preparation",tone:INK55},
+        {name:"Chemicals and refining",state:"In preparation",tone:INK55},
+        {name:"Construction",state:"In preparation",tone:INK55},
+        {name:"Food, drink and tobacco",state:"In preparation",tone:INK55},
+        {name:"Glass and ceramics",state:"In preparation",tone:INK55},
+        {name:"Hotels, restaurants, catering",state:"In preparation",tone:INK55},
+        {name:"Paper and board",state:"In preparation",tone:INK55},
+        {name:"Plastics converting",state:"In preparation",tone:INK55},
+        {name:"Power and heat",state:"In preparation",tone:INK55},
+        {name:"Retail and distribution",state:"In preparation",tone:INK55},
+        {name:"Shipping",state:"In preparation",tone:INK55},
+        {name:"Steel",state:"In preparation",tone:INK55},
+        {name:"Waste and landfill",state:"In preparation",tone:INK55},
+        {name:"Wind, heat pumps, hydrogen",state:"In preparation",tone:INK55},
+        {name:"Wood and furniture",state:"In preparation",tone:INK55}
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

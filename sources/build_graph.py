@@ -21,8 +21,8 @@ Both are deterministically sorted. Nothing is written until every edge endpoint
 resolves to a node that exists (see THE RESOLVE GATE below).
 
 
-NODE KINDS  (exactly four, closed)
-==================================
+NODE KINDS  (exactly eight, closed)
+===================================
   act:<CELEX>                 a legal act. CELEX is the identifier; there is no
                               other. One placeholder is allowed, see below.
   measure:<file>:<id>         one row of the register. <file> is the register
@@ -31,6 +31,20 @@ NODE KINDS  (exactly four, closed)
   sector:<slug>               one of the 14 app sectors.
   country:<ISO2>              a country, plus the single non-country member
                               country:ROW for rest-of-world.
+
+The four below are the SECTOR TRANSITION MAP, read from data/transition/ and
+curated by hand under sources/check_sector_schema.py. They are in this graph
+rather than in one of their own because the question they exist to answer --
+which measure decides whether this technology gets built, and where -- is a walk
+that starts on an act and ends on a plant.
+
+  technology:<slug>           a way of making the product differently
+  bottleneck:<slug>           a named constraint on one sector's transition
+  parameter:<slug>            one sourced number, with the sentence it came from
+  project:<slug>              one real installation, append-only status history
+  material:<slug>             what a sector makes, consumes or throws off
+  funding:<slug>              one capital allocation, with the basis it was made
+                              under
 
 A NOTE ON MEASURE IDS.  The original spec said measure:<file>:<provision_id>.
 provision_id cannot carry that role: it is set on only 25 of 146 rows, and it
@@ -42,8 +56,8 @@ provision_id is preserved as a node attribute, which is what makes the
 "which rows came from one provision" query answerable without it being the id.
 
 
-EDGE RELATIONS  (exactly eight, closed)
-=======================================
+EDGE RELATIONS  (closed)
+=========================================
   amends       act -> act         an act amends an earlier act
   repeals      act -> act         an act repeals an earlier act outright. Kept
                                   apart from `amends` because the two say
@@ -63,8 +77,43 @@ EDGE RELATIONS  (exactly eight, closed)
   imports_from sector -> country  the sector draws foreign inputs from there
 
 The first five are legal edges: they come from the register and the manifest.
-The last two are ECONOMIC edges: they come from FIGARO and carry view="EU",
+The next two are ECONOMIC edges: they come from FIGARO and carry view="EU",
 so that country-level views can be added later without moving these.
+
+  worsens      measure -> bottleneck    the measure makes the constraint bite
+  relieves     measure -> bottleneck    ... or eases it. Two relations rather
+                                        than one signed relation, because a walk
+                                        that forgot to read the sign would state
+                                        the opposite of the truth.
+  addresses    technology -> bottleneck the technology is a route past it
+  quantifies   parameter -> technology  a sourced number about the target
+               parameter -> bottleneck
+               parameter -> measure
+               parameter -> sector
+  deploys      project -> technology    this plant is building it
+  finances     funding -> project       the money arrives here
+  supports     funding -> technology    what it is being spent on
+  under        funding -> measure       the legal basis, where the register
+                                        carries one. Norway's Longship does not
+                                        get one: it is a national decision
+                                        outside the register's perimeter, and an
+                                        edge asserting otherwise would be an
+                                        invented legal basis.
+  produces     sector -> material       ... or project -> material
+  consumes     sector -> material       ... or technology -> material
+  substitutes  material -> material     this one can stand in for that one
+  in           project -> sector        where the installation sits
+               project -> country
+               funding -> country        where the money lands
+  depends_on   technology -> technology one technology cannot run without another
+                                        (capture without transport and storage).
+                                        Shares its name with the measure -> act
+                                        dependency deliberately: it is the same
+                                        relation about a different object.
+
+These are the TRANSITION edges. They come from data/transition/*.json and
+carry the same since/evidence discipline as everything else: an edge whose
+evidence pointer does not resolve to a curated file is a build failure.
 
 
 EVERY EDGE CARRIES
@@ -91,6 +140,8 @@ import json
 import re
 import sys
 from pathlib import Path
+
+import sector_map
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -615,7 +666,176 @@ def build() -> Graph:
     # -- economic edges ----------------------------------------------------
     _economic_edges(g, exposure_manifest)
 
+    # -- the transition layer ----------------------------------------------
+    _transition_edges(g)
+
     return g
+
+
+def _transition_edges(g: Graph):
+    """Nodes and edges for the sector transition map: data/transition/*.json.
+
+    This is the same additive discipline as everything above it. The files are
+    hand-curated and gated by sources/check_sector_schema.py; this function
+    flattens them and invents nothing. It runs LAST so that every measure and
+    sector node it points at already exists -- a transition edge into a measure
+    the register does not carry is a curation error, and the resolve gate is
+    where it should surface.
+
+    Why these objects belong in the same graph as the acts rather than in one of
+    their own: the question the sector page asks -- which measure decides whether
+    this technology gets built -- is a walk that starts on an act and ends on a
+    plant. Two graphs would make that walk a join, and a join is where the two
+    halves start disagreeing about what exists.
+    """
+    kinds = sector_map.load_all()
+
+    for t in kinds["technology"]:
+        g.add_node(f"technology:{t['id']}", "technology", t["name"],
+                   transition=t["transition"],
+                   readiness=(t.get("readiness") or {}).get("level"),
+                   sectors=t["sectors"])
+    for b in kinds["bottleneck"]:
+        g.add_node(f"bottleneck:{b['id']}", "bottleneck", b["name"],
+                   transition=b["transition"], type=b["type"], sector=b["sector"])
+    for p in kinds["parameter"]:
+        g.add_node(f"parameter:{p['id']}", "parameter", p["name"],
+                   unit=p["unit"], scope=p["scope"], confidence=p["confidence"],
+                   date_of_value=p["date_of_value"])
+    for pr in kinds["project"]:
+        g.add_node(f"project:{pr['id']}", "project", pr["name"],
+                   company=pr["company"], plant=pr.get("plant"),
+                   country=pr["country"], status=pr["status"],
+                   transition=pr["transition"])
+    for m in kinds["material"]:
+        g.add_node(f"material:{m['id']}", "material", m["name"],
+                   type=m["type"], cn_code=m.get("cn_code"),
+                   prodcom_code=m.get("prodcom_code"), sectors=m["sectors"])
+    for f in kinds["funding"]:
+        g.add_node(f"funding:{f['id']}", "funding", f["name"],
+                   instrument=f["instrument"], programme=f["programme"],
+                   status=f["status"], date=f["date"], country=f["country"])
+
+    # technology -> technology, technology -> bottleneck
+    for t in kinds["technology"]:
+        src = f"technology:{t['id']}"
+        since = (t.get("readiness") or {}).get("date", "")
+        for dep in t.get("dependency", []):
+            g.add_edge("depends_on", src, f"technology:{dep}", since,
+                       {"source": "data/transition/technologies.json",
+                        "path": f"[id={t['id']}].dependency"})
+
+    for b in kinds["bottleneck"]:
+        dst = f"bottleneck:{b['id']}"
+        b_since = min((s["date"] for s in b["sources"]), default="")
+        for tid in b.get("addressed_by", []):
+            g.add_edge("addresses", f"technology:{tid}", dst, b_since,
+                       {"source": "data/transition/bottlenecks.json",
+                        "path": f"[id={b['id']}].addressed_by"})
+        for pid in b.get("quantified_by", []):
+            g.add_edge("quantifies", f"parameter:{pid}", dst, b_since,
+                       {"source": "data/transition/bottlenecks.json",
+                        "path": f"[id={b['id']}].quantified_by"})
+        # measure -> bottleneck. The relation IS the verb: worsens and relieves
+        # say opposite things about the same pair, and folding them into one
+        # relation with a sign would make every walk read the sign or be wrong.
+        for m in b.get("measures") or []:
+            file_slug, row_id = m["measure"].split(":", 1)
+            g.add_edge(m["rel"], f"measure:{file_slug}:{row_id}", dst, b_since,
+                       {"source": "data/transition/bottlenecks.json",
+                        "path": f"[id={b['id']}].measures[{m['measure']}]",
+                        "quote": m["evidence"]["quote"]},
+                       weight=m["weight"])
+
+    # parameter -> technology / sector
+    for p in kinds["parameter"]:
+        src = f"parameter:{p['id']}"
+        if p.get("technology"):
+            g.add_edge("quantifies", src, f"technology:{p['technology']}",
+                       p["date_of_value"],
+                       {"source": "data/transition/parameters.json",
+                        "path": f"[id={p['id']}].technology",
+                        "quote": p["source"]["verbatim"][:400]})
+        if p.get("sector") and not p.get("technology"):
+            g.add_edge("quantifies", src, f"sector:{p['sector']}",
+                       p["date_of_value"],
+                       {"source": "data/transition/parameters.json",
+                        "path": f"[id={p['id']}].sector",
+                        "quote": p["source"]["verbatim"][:400]})
+
+    # project -> technology / measure / sector / country
+    for pr in kinds["project"]:
+        src = f"project:{pr['id']}"
+        first = pr["status_history"][0]["date"] if pr.get("status_history") else ""
+        for tid in pr.get("technology", []):
+            g.add_edge("deploys", src, f"technology:{tid}", first,
+                       {"source": "data/transition/projects.json",
+                        "path": f"[id={pr['id']}].technology"})
+        g.add_edge("in", src, f"sector:{pr['sector']}", first,
+                   {"source": "data/transition/projects.json",
+                    "path": f"[id={pr['id']}].sector"},
+                   basis="sector")
+        # A country node may or may not already exist: the FIGARO pass creates
+        # only the countries a tracked sector imports from, and a project can
+        # sit in a country nobody imports from. add_node keeps the first label,
+        # so creating it here cannot rename an existing one.
+        g.add_node(f"country:{pr['country']}", "country", pr["country"])
+        g.add_edge("in", src, f"country:{pr['country']}", first,
+                   {"source": "data/transition/projects.json",
+                    "path": f"[id={pr['id']}].country"},
+                   basis="country")
+
+    # material edges. Every one of them is recorded on the material row, so the
+    # direction here is a re-read rather than a decision: `produced_by` becomes
+    # `produces` pointing the other way, and so on.
+    for m in kinds["material"]:
+        dst = f"material:{m['id']}"
+        for edge in m.get("produced_by") or []:
+            g.add_edge("produces", edge["node"], dst, edge["since"],
+                       {"source": "data/transition/materials.json",
+                        "path": f"[id={m['id']}].produced_by[{edge['node']}]",
+                        "quote": (edge.get("evidence") or {}).get("quote", "")[:400]},
+                       volume=edge.get("volume"))
+        for edge in m.get("consumed_by") or []:
+            g.add_edge("consumes", edge["node"], dst, edge["since"],
+                       {"source": "data/transition/materials.json",
+                        "path": f"[id={m['id']}].consumed_by[{edge['node']}]",
+                        "quote": (edge.get("evidence") or {}).get("quote", "")[:400]},
+                       volume=edge.get("volume"))
+        for edge in m.get("required_by") or []:
+            g.add_edge("depends_on", edge["node"], dst, edge["since"],
+                       {"source": "data/transition/materials.json",
+                        "path": f"[id={m['id']}].required_by[{edge['node']}]"})
+        for edge in m.get("substitutes") or []:
+            g.add_edge("substitutes", dst, f"material:{edge['material']}", edge["since"],
+                       {"source": "data/transition/materials.json",
+                        "path": f"[id={m['id']}].substitutes[{edge['material']}]"})
+
+    # funding edges. `under` is the one that earns the kind its place: it is the
+    # first time this graph can walk from a euro in a plant back to the article
+    # it was paid under.
+    for f in kinds["funding"]:
+        src = f"funding:{f['id']}"
+        for node in f.get("finances") or []:
+            g.add_edge("finances", src, node, f["date"],
+                       {"source": "data/transition/funding.json",
+                        "path": f"[id={f['id']}].finances"},
+                       instrument=f["instrument"], status=f["status"])
+        for node in f.get("supports") or []:
+            g.add_edge("supports", src, node, f["date"],
+                       {"source": "data/transition/funding.json",
+                        "path": f"[id={f['id']}].supports"})
+        if f.get("under"):
+            file_slug, row_id = f["under"].split(":", 1)
+            g.add_edge("under", src, f"measure:{file_slug}:{row_id}", f["date"],
+                       {"source": "data/transition/funding.json",
+                        "path": f"[id={f['id']}].under"},
+                       programme=f["programme"])
+        g.add_node(f"country:{f['country']}", "country", f["country"])
+        g.add_edge("in", src, f"country:{f['country']}", f["date"],
+                   {"source": "data/transition/funding.json",
+                    "path": f"[id={f['id']}].country"},
+                   basis="country")
 
 
 def _require_sector(slug: str, file_slug: str, row_id: str):
@@ -772,7 +992,9 @@ def gate(g: Graph):
     """Nothing is written until this passes."""
     problems: list[str] = []
 
-    kinds = {"act", "measure", "sector", "country"}
+    kinds = {"act", "measure", "sector", "country",
+             "technology", "bottleneck", "parameter", "project",
+             "material", "funding"}
     for node in g.nodes.values():
         if node["kind"] not in kinds:
             problems.append(f"node {node['id']} has kind {node['kind']!r}, outside the closed set")
@@ -780,29 +1002,57 @@ def gate(g: Graph):
         if prefix != node["kind"]:
             problems.append(f"node {node['id']} is prefixed {prefix!r} but typed {node['kind']!r}")
 
+    # rel -> the endpoint kinds it may join. A SET of pairs, not one pair,
+    # because depends_on is legitimately two relations that mean the same thing
+    # about different objects: a measure cannot be applied until an act exists,
+    # and a technology cannot be deployed until another one does. Splitting them
+    # into two relation names would make the walk ask which flavour it wanted at
+    # every hop, for no gain.
     allowed = {
-        "amends": ("act", "act"),
-        "repeals": ("act", "act"),
-        "cites": ("measure", "act"),
-        "depends_on": ("measure", "act"),
-        "contains": ("act", "measure"),
-        "applies_to": ("measure", "sector"),
-        "supplies": ("sector", "sector"),
-        "imports_from": ("sector", "country"),
+        "amends": {("act", "act")},
+        "repeals": {("act", "act")},
+        "cites": {("measure", "act")},
+        "depends_on": {("measure", "act"), ("technology", "technology"),
+                       ("technology", "material")},
+        "contains": {("act", "measure")},
+        "applies_to": {("measure", "sector")},
+        "supplies": {("sector", "sector")},
+        "imports_from": {("sector", "country")},
+        # the transition layer
+        "worsens": {("measure", "bottleneck")},
+        "relieves": {("measure", "bottleneck")},
+        "addresses": {("technology", "bottleneck")},
+        "quantifies": {("parameter", "technology"), ("parameter", "bottleneck"),
+                       ("parameter", "measure"), ("parameter", "sector")},
+        "deploys": {("project", "technology")},
+        # funded_by is gone. It said "this plant took public money under that
+        # article", which is one fact split across two objects: the money itself
+        # had no node, so the edge had to carry the programme as an attribute
+        # and could not say that one award financed several plants. The funding
+        # node says both, and `finances` + `under` are the same walk in two hops.
+        "finances": {("funding", "project")},
+        "supports": {("funding", "technology")},
+        "under": {("funding", "measure")},
+        "produces": {("sector", "material"), ("project", "material")},
+        "consumes": {("sector", "material"), ("technology", "material")},
+        "substitutes": {("material", "material")},
+        "in": {("project", "sector"), ("project", "country"),
+               ("funding", "country")},
     }
     for e in g.edges:
         if e["rel"] not in allowed:
             problems.append(f"edge relation {e['rel']!r} is outside the closed set")
             continue
-        want_src, want_dst = allowed[e["rel"]]
-        for end, want in (("from", want_src), ("to", want_dst)):
-            node = g.nodes.get(e[end])
+        pairs = allowed[e["rel"]]
+        src_node, dst_node = g.nodes.get(e["from"]), g.nodes.get(e["to"])
+        for end, node in (("from", src_node), ("to", dst_node)):
             if node is None:
                 problems.append(f"edge {e['rel']} {e['from']} -> {e['to']}: {end} {e[end]} does not resolve")
-            elif node["kind"] != want:
-                problems.append(
-                    f"edge {e['rel']} {e['from']} -> {e['to']}: {end} is a {node['kind']}, expected {want}"
-                )
+        if src_node and dst_node and (src_node["kind"], dst_node["kind"]) not in pairs:
+            problems.append(
+                f"edge {e['rel']} {e['from']} -> {e['to']}: joins "
+                f"{src_node['kind']} -> {dst_node['kind']}, which {e['rel']} does not"
+            )
         if not e.get("since"):
             problems.append(f"edge {e['rel']} {e['from']} -> {e['to']} carries no since")
         if not e.get("evidence", {}).get("source"):

@@ -2,17 +2,16 @@ import Link from "next/link";
 import SearchBar from "./SearchBar";
 import Wordmark from "./Wordmark";
 
-// Four doors, each a directory page of its own: the two spines (sectors and
-// legislation), the conclusions layer, and the methods page. The flat measure
-// browse is deliberately NOT here — it anchors /measures and is reachable
-// from /coverage and from search, but a register-wide list is a working view,
-// not a front door.
-const NAV = [
-  { label: "Sectors", href: "/sectors" },
-  { label: "Legislation", href: "/acts" },
-  { label: "Findings", href: "/findings" },
-  { label: "Coverage", href: "/coverage" },
-];
+// ONE DOOR. The product is the sector page, and the header should not offer a
+// reader four other things to be instead.
+//
+// The five links this replaced — the change feed, legislation, findings,
+// coverage — were the register presenting itself as the product. Those routes
+// still exist and still work; they are reachable from a measure page, from
+// search, and from any link already in the wild, and they carry a noindex tag
+// (lib/launch.ts, DEMOTED). Removing a nav link is not deleting a page, and
+// this is the difference between the two.
+const NAV = [{ label: "Sectors", href: "/sectors" }];
 
 export default function SiteHeader() {
   return (
