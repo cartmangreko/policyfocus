@@ -5,7 +5,9 @@ import { notFound } from "next/navigation";
 import BurdenStrip from "@/components/BurdenStrip";
 import RuleDiff, { ruleDiffHeading } from "@/components/RuleDiff";
 import ValenceTag from "@/components/ValenceTag";
-import { DEMOTED } from "@/lib/launch";
+import LeadBlock from "@/components/LeadBlock";
+import { DEMOTED, SITE_ROBOTS } from "@/lib/launch";
+import { getMeasureLead } from "@/lib/objectLeads";
 import {
   CLASS_LABELS,
   FILES,
@@ -43,15 +45,17 @@ export async function generateMetadata({
   return {
     title: `${measure.id} — ${title}`,
     description: measure.affected_delta ?? measure.trigger,
-    // DEMOTED UNTIL THE MEASURE LEAD BLOCK LANDS (page specifications §5,
-    // pre-launch item). §0.8 qualifies a measure page by kind and its
-    // build-gap clause kept it indexable while its lead block was outstanding;
-    // the index-opening brief supersedes that clause for this route. What the
-    // page renders today is the decoded provision and its verbatim source,
-    // which is the evidence under a sector page's ranking rather than a page
-    // written to be arrived at. It returns to indexable by rendering a lead
-    // block, which is the rule §0.8 states, not by anyone re-opening this.
-    robots: DEMOTED,
+    // INDEXABLE ONCE IT RENDERS A LEAD BLOCK, and not before — §0.8, and the
+    // exit the index opening left open for this route class. The condition is
+    // the lead itself rather than a date or a list of ids: a measure whose lead
+    // could not be built (its act carries no date on which anything about it
+    // was true) stays demoted, and arrives in the index on the day the build
+    // can answer for it. lib/siteRoutes.ts reads the same store to decide
+    // whether to publish the URL, so the tag and the sitemap cannot disagree.
+    // SITE_ROBOTS, not undefined: page metadata replaces the layout's rather
+    // than merging with it, so `undefined` would clear the site-wide tag rather
+    // than inherit it. See the same note on the sector route.
+    robots: getMeasureLead(file, id) ? SITE_ROBOTS : DEMOTED,
   };
 }
 
@@ -81,6 +85,7 @@ export default async function MeasurePage({
   const measure = getMeasure(file, id);
   if (!measure) notFound();
 
+  const lead = getMeasureLead(file, id);
   const fileMeta = FILES[measure.file];
   const positive = isPositiveValence(measure.measure_type, measure.direction);
   const related = getRelatedMeasures(measure);
@@ -125,6 +130,13 @@ export default async function MeasurePage({
             suffix={measure.id}
           />
           <h1 className={`detail-title${headlineStep(statement)}`}>{statement}</h1>
+          {/* THE LEAD BLOCK (§0.2), and what it deliberately does not repeat.
+              The heading above is the decoded provision — this page's whole
+              subject — so the lead says the five things the provision itself
+              does not: who it lands on, whether it is law yet, when it bites,
+              which industries it names, and what it costs wherever somebody has
+              priced it. Built and gated in Python; this draws it. */}
+          {lead ? <LeadBlock lead={lead} /> : null}
           <div className="detail-meta">
             <span>
               <span className="detail-meta-label">Addressee</span> {measure.addressee}

@@ -1,5 +1,23 @@
 import Link from "next/link";
-import type { Lead } from "@/lib/transition";
+
+// WHAT THIS COMPONENT NEEDS, which is less than any one of its callers has.
+// A sector lead carries a fingerprint, an override flag and a `parts` block per
+// fact; a measure lead carries none of them. The prop type is the intersection
+// — the three things that are drawn — so the same block renders for a sector, a
+// measure and a project without any of them having to pretend to be the others.
+// §0.2 asks for one mechanism on every page type, and one mechanism means one
+// component rather than three that look alike.
+export interface LeadView {
+  sentence: { text: string };
+  why_it_matters: { text: string } | null;
+  facts: {
+    id: string;
+    text: string;
+    as_of: string;
+    href: string | null;
+    surface: boolean;
+  }[];
+}
 
 // The first screen of a sector page: the sentence, why it matters, and the
 // facts both rest on.
@@ -22,7 +40,7 @@ import type { Lead } from "@/lib/transition";
 // source line on the panel itself. Since brief 4 §5 the labels are gone from
 // the surface altogether: they are in the built artifact, where the report and
 // anything downstream can name a fact, and a reader gets the sentence.
-export default function LeadBlock({ lead }: { lead: Lead }) {
+export default function LeadBlock({ lead }: { lead: LeadView }) {
   return (
     <div className="lead-block">
       <p className="lead-sentence">{lead.sentence.text}</p>

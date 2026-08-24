@@ -114,6 +114,8 @@ test("the sitemap never lists a demoted route", () => {
     mappedSectors: ["cement"],
     unmappedSectors: ["steel", "chem/plastics"],
     projectIds: ["brevik-ccs"],
+    measuresWithLead: ["/measures/cbam/fin-03"],
+    measuresWithoutLead: ["/measures/omnibus/rpt-01"],
   });
   for (const path of routes.indexable) {
     assert.equal(isDemoted(path, routes.demoted), false, `${path} is in both lists`);
@@ -127,10 +129,28 @@ test("the sitemap never lists a demoted route", () => {
   );
 });
 
+test("a measure page follows its own lead block, not the browse page above it", () => {
+  // The one classification that is not a prefix. /measures is a thin list and
+  // is demoted; the 445 measure pages under it that render a lead block are
+  // indexable, and the 35 that cannot be built are not. Putting "/measures"
+  // back in DEMOTED_PREFIXES would take all 480 down with it, which is what
+  // this test is here to catch.
+  const routes = classify({
+    mappedSectors: [],
+    unmappedSectors: [],
+    projectIds: [],
+    measuresWithLead: ["/measures/cbam/fin-03"],
+    measuresWithoutLead: ["/measures/omnibus/rpt-01"],
+  });
+  assert.equal(routes.demoted.includes("/measures"), true);
+  assert.equal(isDemoted("/measures/cbam/fin-03", routes.demoted), false);
+  assert.equal(isDemoted("/measures/omnibus/rpt-01", routes.demoted), true);
+});
+
 test("demotion matches on segment boundaries", () => {
-  assert.equal(isDemoted("/measures", DEMOTED_PREFIXES), true);
-  assert.equal(isDemoted("/measures/cbam/FIN-03", DEMOTED_PREFIXES), true);
-  assert.equal(isDemoted("/measurements", DEMOTED_PREFIXES), false);
+  assert.equal(isDemoted("/acts", DEMOTED_PREFIXES), true);
+  assert.equal(isDemoted("/acts/cbam", DEMOTED_PREFIXES), true);
+  assert.equal(isDemoted("/actsomething", DEMOTED_PREFIXES), false);
   assert.equal(isDemoted("/under-construction/steel", DEMOTED_PREFIXES), true);
   assert.equal(isDemoted("/", DEMOTED_PREFIXES), false);
 });

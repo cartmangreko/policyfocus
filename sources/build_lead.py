@@ -242,6 +242,23 @@ MODEL_LINE = {
 # is computed and kept, and does not appear on the page.
 SURFACE_ORDER = ("the_gap", "pipeline_state", "decisive_exposure", "the_latest")
 
+# Abbreviations that end in a full stop and do not end a sentence. Without this
+# list "Art. 1(13), adding a subparagraph to Art. 22(2)" counts as three
+# sentences, and a fact line carrying a legal citation — which is most of them
+# on a measure page — fails a rule it has not broken.
+_ABBREV = ("Art.", "Arts.", "No.", "Nos.", "para.", "paras.", "pt.", "Reg.", "Dir.",
+           "cf.", "e.g.", "i.e.", "Ann.")
+_SENTENCE_SPLIT = re.compile(r"(?<=[.!?]) +")
+
+
+def sentences(text: str) -> list[str]:
+    """Split into sentences, honouring the abbreviations above."""
+    masked = text
+    for i, abbr in enumerate(_ABBREV):
+        masked = masked.replace(abbr, f"\x00{i}\x00")
+    return [p for p in _SENTENCE_SPLIT.split(masked.strip()) if p]
+
+
 _DATE_LONG = re.compile(rf"\b(\d{{1,2}}) ({'|'.join(MONTHS)}) (\d{{4}})\b")
 _ISO = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
 _NUMBER = re.compile(r"\d[\d–.,-]*")
@@ -539,7 +556,7 @@ def gate_fact(fact: dict) -> list[str]:
     """
     problems: list[str] = []
     text = fact["text"]
-    if len([s for s in re.split(r"(?<=[.!?]) +", text.strip()) if s]) != 1:
+    if len(sentences(text)) != 1:
         problems.append("more than one sentence")
     if not fact["as_of"]:
         problems.append("no as-of date, and every figure on this block carries one")
@@ -562,11 +579,31 @@ def gate(block: dict, facts: dict[str, dict], *, max_sentences: int = 1) -> list
     if not text:
         return ["empty"]
 
-    sentences = [s for s in re.split(r"(?<=[.!?]) +", text.strip()) if s]
-    if len(sentences) > max_sentences:
-        problems.append(f"{len(sentences)} sentences, at most {max_sentences} allowed")
+    # FRAGMENTS THAT CAME FROM SOMEBODY ELSE'S DOCUMENT are struck out before
+    # the number, adjective and vocabulary checks — the same exemption a fact
+    # line already carries, for the same reason. A measure's addressee is the
+    # register's own wording ("Large companies subject to the Art. 24(2) risk
+    # assessment", "products with more than 0.2 kg of rare-earth magnets"), and
+    # the numbers inside it are the act's, not figures this template computed
+    # and owes a fact for. `critical raw material` is the same case one word
+    # down: a judgment adjective in this file's vocabulary and a legal term of
+    # art in the Critical Raw Materials Act.
+    #
+    # THE RULE ON DECLARING ONE. A sourced fragment has to be traceable to a
+    # stored field that somebody else wrote. A template that declared its own
+    # sentence sourced would be exempting itself from every check below, which
+    # is the one way this mechanism can be abused, and the reason it is spelled
+    # out here rather than left as a parameter.
+    checked = text
+    for fragment in block.get("sourced") or ():
+        if fragment:
+            checked = checked.replace(fragment, " ")
 
-    problems += [f"the schema word {w!r}" for w in schema_words(text)]
+    count = len(sentences(text))
+    if count > max_sentences:
+        problems.append(f"{count} sentences, at most {max_sentences} allowed")
+
+    problems += [f"the schema word {w!r}" for w in schema_words(checked)]
 
     if not block["from"]:
         problems.append("no fact id — a sentence nothing maps to")
@@ -578,7 +615,7 @@ def gate(block: dict, facts: dict[str, dict], *, max_sentences: int = 1) -> list
     # CO2 is a name, not a figure. Digits welded to letters are struck out
     # before the number check, the same rule sources/check_sector_schema.py
     # applies to an authored key-measure sentence.
-    stripped = re.sub(r"[A-Za-z]\d+", " ", _DATE_LONG.sub(" ", _ISO.sub(" ", text)))
+    stripped = re.sub(r"[A-Za-z]\d+", " ", _DATE_LONG.sub(" ", _ISO.sub(" ", checked)))
     for token in _NUMBER.findall(stripped):
         if _norm_number(token) not in known:
             problems.append(f"the number {token!r} is in no fact")
@@ -589,14 +626,14 @@ def gate(block: dict, facts: dict[str, dict], *, max_sentences: int = 1) -> list
         if iso not in as_ofs:
             problems.append(f"the date {m.group(0)!r} is no fact's as-of date")
 
-    lowered = text.lower()
+    lowered = checked.lower()
     for adjective in JUDGMENT_ADJECTIVES:
         if re.search(rf"\b{adjective}\b", lowered):
             problems.append(f"the judgment adjective {adjective!r}")
 
     exempt = tuple(frag for f in facts.values() for frag in f["sourced"])
     problems += [f"the banned word {w!r}"
-                 for w in dv.violations(text, exempt=exempt)]
+                 for w in dv.violations(checked, exempt=exempt)]
     return problems
 
 

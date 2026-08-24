@@ -1,0 +1,652 @@
+{
+  "_comment": [
+    "BUILT FILE — do not edit. sources/build_object_leads.py computes it; the pages draw",
+    "it through web/components/LeadBlock.tsx and add nothing.",
+    "",
+    "Keyed by object id. An object with no entry has no lead block, which by §0.8 of the",
+    "page specifications means its page is not indexable — so an absence here is a",
+    "decision the gate made, and `skipped` says how many were made and why."
+  ],
+  "kind": "project",
+  "skipped": 0,
+  "leads": {
+    "brevik-ccs": {
+      "id": "brevik-ccs",
+      "template_version": 1,
+      "fingerprint": "af1ef01e85c3a9e0",
+      "sentence": {
+        "text": "Brevik CCS is Heidelberg Materials' cement project at Brevik, Norway.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Brevik CCS",
+          "Heidelberg Materials",
+          "Brevik, Norway"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Brevik CCS started operating on 18 June 2025.",
+          "as_of": "2025-06-18",
+          "numbers": [],
+          "sourced": [
+            "Brevik CCS"
+          ],
+          "href": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Brevik, Norway.",
+          "as_of": "2025-06-18",
+          "numbers": [],
+          "sourced": [
+            "Brevik, Norway"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses post-combustion carbon capture and CO2 transport and storage.",
+          "as_of": "2025-06-18",
+          "numbers": [],
+          "sourced": [
+            "post-combustion carbon capture",
+            "CO2 transport and storage"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 400,000 tonnes CO2 captured per year.",
+          "as_of": "2025-06-18",
+          "numbers": [
+            "400000"
+          ],
+          "sourced": [
+            "tonnes CO2 captured per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2025-06-18",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "gezero-geseke": {
+      "id": "gezero-geseke",
+      "template_version": 1,
+      "fingerprint": "d0aba7e39877f5ed",
+      "sentence": {
+        "text": "GeZero is Heidelberg Materials' cement project at Geseke, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "GeZero",
+          "Heidelberg Materials",
+          "Geseke, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It has money awarded and has not taken a final investment decision.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "GeZero was awarded public funding on 15 December 2023.",
+          "as_of": "2023-12-15",
+          "numbers": [],
+          "sourced": [
+            "GeZero"
+          ],
+          "href": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Geseke, Germany.",
+          "as_of": "2023-12-15",
+          "numbers": [],
+          "sourced": [
+            "Geseke, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses post-combustion carbon capture and CO2 transport and storage.",
+          "as_of": "2023-12-15",
+          "numbers": [],
+          "sourced": [
+            "post-combustion carbon capture",
+            "CO2 transport and storage"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 700,000 tonnes CO2 captured per year.",
+          "as_of": "2023-12-15",
+          "numbers": [
+            "700000"
+          ],
+          "sourced": [
+            "tonnes CO2 captured per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "€0 million of public money has been committed to it.",
+          "as_of": "2023-12-15",
+          "numbers": [
+            "0"
+          ],
+          "sourced": [],
+          "href": "#funding",
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "anrav-devnya": {
+      "id": "anrav-devnya",
+      "template_version": 1,
+      "fingerprint": "095d3cf704ea9190",
+      "sentence": {
+        "text": "ANRAV is Heidelberg Materials (Devnya Cement)'s cement project at Devnya, Bulgaria.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "ANRAV",
+          "Heidelberg Materials (Devnya Cement)",
+          "Devnya, Bulgaria"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It has money awarded and has not taken a final investment decision.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "ANRAV was awarded public funding on 20 January 2023.",
+          "as_of": "2023-01-20",
+          "numbers": [],
+          "sourced": [
+            "ANRAV"
+          ],
+          "href": "https://www.heidelbergmaterials.com/en/eu-backs-heidelberg-materials-pioneering-ccus-project-in-bulgaria",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Devnya, Bulgaria.",
+          "as_of": "2023-01-20",
+          "numbers": [],
+          "sourced": [
+            "Devnya, Bulgaria"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses post-combustion carbon capture and CO2 transport and storage.",
+          "as_of": "2023-01-20",
+          "numbers": [],
+          "sourced": [
+            "post-combustion carbon capture",
+            "CO2 transport and storage"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 800,000 tonnes CO2 captured per year.",
+          "as_of": "2023-01-20",
+          "numbers": [
+            "800000"
+          ],
+          "sourced": [
+            "tonnes CO2 captured per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "€0 million of public money has been committed to it.",
+          "as_of": "2023-01-20",
+          "numbers": [
+            "0"
+          ],
+          "sourced": [],
+          "href": "#funding",
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "go4zero-obourg": {
+      "id": "go4zero-obourg",
+      "template_version": 1,
+      "fingerprint": "b27a64d5784b438c",
+      "sentence": {
+        "text": "GO4ZERO is Holcim's cement project at Obourg, Belgium.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "GO4ZERO",
+          "Holcim",
+          "Obourg, Belgium"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "GO4ZERO went into construction on 16 May 2024.",
+          "as_of": "2024-05-16",
+          "numbers": [],
+          "sourced": [
+            "GO4ZERO"
+          ],
+          "href": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Obourg, Belgium.",
+          "as_of": "2024-05-16",
+          "numbers": [],
+          "sourced": [
+            "Obourg, Belgium"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses oxyfuel carbon capture and CO2 transport and storage.",
+          "as_of": "2024-05-16",
+          "numbers": [],
+          "sourced": [
+            "oxyfuel carbon capture",
+            "CO2 transport and storage"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2024-05-16",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "carbon2business-lagerdorf": {
+      "id": "carbon2business-lagerdorf",
+      "template_version": 1,
+      "fingerprint": "7f8fcec9d0ca1dab",
+      "sentence": {
+        "text": "Carbon2Business is Holcim's cement project at Lägerdorf, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Carbon2Business",
+          "Holcim",
+          "Lägerdorf, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Carbon2Business went into construction on 22 April 2024.",
+          "as_of": "2024-04-22",
+          "numbers": [],
+          "sourced": [
+            "Carbon2Business"
+          ],
+          "href": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Lägerdorf, Germany.",
+          "as_of": "2024-04-22",
+          "numbers": [],
+          "sourced": [
+            "Lägerdorf, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses oxyfuel carbon capture.",
+          "as_of": "2024-04-22",
+          "numbers": [],
+          "sourced": [
+            "oxyfuel carbon capture"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 1.2 Mt CO2 captured per year.",
+          "as_of": "2024-04-22",
+          "numbers": [
+            "1.2"
+          ],
+          "sourced": [
+            "Mt CO2 captured per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2024-04-22",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "slite-ccs": {
+      "id": "slite-ccs",
+      "template_version": 1,
+      "fingerprint": "a8d3387e7633f2c3",
+      "sentence": {
+        "text": "Slite CCS is Heidelberg Materials' cement project at Slite, Sweden.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Slite CCS",
+          "Heidelberg Materials",
+          "Slite, Sweden"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Work has stopped, and the reason is in its history below.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Slite CCS was paused on 19 November 2025.",
+          "as_of": "2025-11-19",
+          "numbers": [],
+          "sourced": [
+            "Slite CCS"
+          ],
+          "href": "https://www.globalcement.com/news/item/19500-heidelberg-materials-pauses-slite-ccs-project",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Slite, Sweden.",
+          "as_of": "2026-01-01",
+          "numbers": [],
+          "sourced": [
+            "Slite, Sweden"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses post-combustion carbon capture and CO2 transport and storage.",
+          "as_of": "2026-01-01",
+          "numbers": [],
+          "sourced": [
+            "post-combustion carbon capture",
+            "CO2 transport and storage"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-01-01",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "ifestos-kamari": {
+      "id": "ifestos-kamari",
+      "template_version": 1,
+      "fingerprint": "b5b55ef0641a6a56",
+      "sentence": {
+        "text": "IFESTOS is TITAN Cement's cement project at Kamari, Greece.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "IFESTOS",
+          "TITAN Cement",
+          "Kamari, Greece"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Nothing has been committed to it yet.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "IFESTOS was announced on 14 July 2023.",
+          "as_of": "2023-07-14",
+          "numbers": [],
+          "sourced": [
+            "IFESTOS"
+          ],
+          "href": "https://www.worldcement.com/europe-cis/14072023/titan-groups-large-scale-carbon-capture-project-selected-by-the-eu-innovation-fund/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Kamari, Greece.",
+          "as_of": "2023-07-14",
+          "numbers": [],
+          "sourced": [
+            "Kamari, Greece"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses post-combustion carbon capture and CO2 transport and storage.",
+          "as_of": "2023-07-14",
+          "numbers": [],
+          "sourced": [
+            "post-combustion carbon capture",
+            "CO2 transport and storage"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 1.9 Mt CO2 avoided per year.",
+          "as_of": "2023-07-14",
+          "numbers": [
+            "1.9"
+          ],
+          "sourced": [
+            "Mt CO2 avoided per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2023-07-14",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "k6-lumbres": {
+      "id": "k6-lumbres",
+      "template_version": 1,
+      "fingerprint": "2d17b36e8849a475",
+      "sentence": {
+        "text": "K6 is EQIOM (CRH)'s cement project at Lumbres, France.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "K6",
+          "EQIOM (CRH)",
+          "Lumbres, France"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "K6 went into construction on 15 February 2024.",
+          "as_of": "2024-02-15",
+          "numbers": [],
+          "sourced": [
+            "K6"
+          ],
+          "href": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Lumbres, France.",
+          "as_of": "2024-02-15",
+          "numbers": [],
+          "sourced": [
+            "Lumbres, France"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses alternative fuels in the kiln and post-combustion carbon capture.",
+          "as_of": "2024-02-15",
+          "numbers": [],
+          "sourced": [
+            "alternative fuels in the kiln",
+            "post-combustion carbon capture"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "€0 million of public money has been committed to it.",
+          "as_of": "2024-02-15",
+          "numbers": [
+            "0"
+          ],
+          "sourced": [],
+          "href": "#funding",
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    }
+  }
+}
