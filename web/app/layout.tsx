@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import { INDEXABLE } from "@/lib/launch";
+import { SITE_ROBOTS } from "@/lib/launch";
 import { datasetJsonLd } from "@/lib/schema";
 import { getMasthead } from "@/lib/sitetext";
 import "./globals.css";
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   // The same launch switch as the X-Robots-Tag header and robots.txt, in the
   // head of every page: a saved or proxied copy of this HTML carries the
   // instruction even when the header does not travel with it.
-  robots: INDEXABLE ? undefined : { index: false, follow: false },
+  robots: SITE_ROBOTS,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
