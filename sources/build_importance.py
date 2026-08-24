@@ -456,6 +456,13 @@ def build(sector: str, year: int) -> dict:
                 "evidence": m["evidence"],
             })
 
+    # The authored plain block per measure — what it requires or grants, in a
+    # title and one sentence, with its figures slotted in here. Brief 4 §5: the
+    # key-measures list is read by somebody who has not read the act, and
+    # neither `duty` (the decoded provision) nor the diagram's 26-character
+    # label is written for them.
+    labels = sm.measure_labels()
+
     scored = []
     for entry in register_rows(sector, funding, project_ids):
         slug, row = entry["file"], entry["row"]
@@ -474,6 +481,10 @@ def build(sector: str, year: int) -> dict:
             "article": row.get("article"),
             "when": row.get("when"),
             "duty": row.get("duty") or row.get("entitlement") or "",
+            # Absent for a measure nobody has written one for, which is every
+            # measure outside a sector view. The gate requires one for every
+            # measure that has a label, and a measure in the view has a label.
+            "plain": sm.plain_measure(labels[mid], money) if mid in labels else None,
             "money": money,
             "bottleneck_linkage": {
                 "count": len(edges),

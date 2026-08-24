@@ -17,9 +17,11 @@ import type { Lead } from "@/lib/transition";
 // would invite a reader to trust it more.
 //
 // DATES ON EVERYTHING, LABELS ON NOTHING. Each fact carries the as-of date of
-// the number under it, in monospace. No stale badge, no confidence chip — the
+// the number in it, in monospace. No stale badge, no confidence chip — the
 // staleness report is build-side and confidence lives inside the expanded
-// source line on the panel itself.
+// source line on the panel itself. Since brief 4 §5 the labels are gone from
+// the surface altogether: they are in the built artifact, where the report and
+// anything downstream can name a fact, and a reader gets the sentence.
 export default function LeadBlock({ lead }: { lead: Lead }) {
   return (
     <div className="lead-block">
@@ -32,21 +34,26 @@ export default function LeadBlock({ lead }: { lead: Lead }) {
         </div>
       ) : null}
 
-      <dl className="lead-facts">
-        {lead.facts.map((f) => (
-          <div key={f.id} className="lead-fact">
-            <dt>{f.label}</dt>
-            <dd>
-              {f.href ? (
-                <Link href={f.href}>{f.text}</Link>
-              ) : (
-                f.text
-              )}
-              <span className="lead-asof">{f.as_of}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
+      {/* THE FACTS, AS SENTENCES (brief 4 §5). This was a definition list:
+          a schema label — "Binding constraint", "Decisive exposure" — and a
+          clause under it. The label was the schema introducing itself, and the
+          clause under it had no subject of its own, so a reader met four
+          fragments and had to assemble the sentence themselves.
+
+          Each line is now one sentence with its own subject, and the date
+          belongs to the number in it: an as-of on a figure is part of the
+          claim, not provenance to be tucked away. Facts the builder did not
+          surface are not here — see the `surface` flag. */}
+      <ul className="lead-facts">
+        {lead.facts
+          .filter((f) => f.surface)
+          .map((f) => (
+            <li key={f.id} className="lead-fact">
+              {f.href ? <Link href={f.href}>{f.text}</Link> : f.text}{" "}
+              <span className="lead-asof">as of {f.as_of}</span>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 }

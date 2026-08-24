@@ -58,6 +58,28 @@ interface ProseDoc {
    *  question the page then answers. Reviewed prose, four fixed beats, nearly
    *  number-free — see the _comment in data/prose.json. Returned by
    *  getSectorOrientation below, which is null until the block is reviewed. */
+  /** The regenerated lead block, held for review — brief 4 §6. NOT READ BY THE
+   *  SITE, and there is no getter below on purpose: the sector page renders the
+   *  BUILT lead in data/transition/lead/<sector>.json, which is computed and
+   *  gated (tier 1). This block is a copy of that text, put where prose is
+   *  reviewed so the register can be read and edited as words; an approval
+   *  moves the edited sentence into data/transition/overrides.json, which is
+   *  where a reviewed lead has always gone. Declared here so this interface
+   *  stays the one description of the store's shape. */
+  sector_lead?: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    sectors: Record<
+      string,
+      {
+        fingerprint: string;
+        template_version: number;
+        sentence: string;
+        why_it_matters: string;
+        facts: { id: string; text: string; as_of: string }[];
+      }
+    >;
+  };
   sector_orientation?: {
     status: ProseStatus;
     reviewed?: string | null;

@@ -253,6 +253,13 @@ export interface RankedMeasure {
   article: string | null;
   when: string | null;
   duty: string;
+  /** What the measure requires or grants, said to somebody who has not read
+   *  the act: an authored title and one sentence with its figures slotted in
+   *  at build time. Written in data/transition/measure_labels.json, filled by
+   *  sources/build_importance.py, gated by sources/check_sector_schema.py.
+   *  Null for a measure nobody has written one for — which is every measure
+   *  outside a sector view. */
+  plain: { title: string; sentence: string } | null;
   money: MoneyScore;
   bottleneck_linkage: {
     count: number;
@@ -438,6 +445,11 @@ export interface LeadFact {
   parts: Record<string, string>;
   sourced: string[];
   href: string | null;
+  /** Whether the fact is drawn. Every fact is computed and kept; the binding
+   *  constraint is deliberately not shown, because it is what the opening
+   *  sentence is about — see sources/build_lead.py. A surfaced fact that fails
+   *  its own gate is unsurfaced by the builder rather than dropped. */
+  surface: boolean;
 }
 
 export interface LeadBlock {
