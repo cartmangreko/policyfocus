@@ -16,6 +16,7 @@
 // THE RULE, APPLIED
 // -----------------
 //   indexable  /                    the front page
+//              /measures/<act>/<id> where the measure renders a lead block
 //              /sectors             the six
 //              /coverage            what is covered and what is not — the page
 //                                   that states the perimeter (brief 4 §1),
@@ -24,8 +25,8 @@
 //                                   template, i.e. where it has a lead block
 //              /projects/<id>       object pages; lead blocks outstanding
 //
-//   demoted    /measures, /measures/<act>/<id>   until the measure lead blocks
-//                                                land (§5, pre-launch item)
+//   demoted    /measures            the browse surface, a thin list page
+//              /measures/<act>/<id> where its lead block could not be built
 //              /under-construction/<id>           the holding page a tile opens
 //                                                where its industry is not built
 //              /sectors/<slug>      where the sector still renders the
@@ -53,15 +54,26 @@ export const DEMOTED_PREFIXES = [
   "/acts",
   "/changes",
   "/findings",
-  "/measures",
   "/under-construction",
 ];
+
+/** The measure browse page, demoted as a thin list — and NOT a prefix, which is
+ *  the difference this constant exists to hold. Measure object pages under it
+ *  are classified one at a time, by whether they render a lead block (§0.8),
+ *  so "/measures" could not stay in the list above without taking 445 pages
+ *  down with it. */
+export const MEASURE_BROWSE = "/measures";
 
 /** The two lists, from the sector and project ids the caller has read. */
 export function classify(input: {
   mappedSectors: string[];
   unmappedSectors: string[];
   projectIds: string[];
+  /** Measure pages that render a lead block, and those that do not. Both come
+   *  from the same store — data/lead/measures.json — so a page's own robots tag
+   *  and its presence in the sitemap are two readings of one file. */
+  measuresWithLead?: string[];
+  measuresWithoutLead?: string[];
 }): { indexable: string[]; demoted: string[] } {
   return {
     indexable: [
@@ -69,11 +81,14 @@ export function classify(input: {
       "/sectors",
       ...input.mappedSectors.map((s) => `/sectors/${s}`),
       ...input.projectIds.map((id) => `/projects/${id}`),
+      ...(input.measuresWithLead ?? []),
       "/coverage",
     ],
     demoted: [
       ...DEMOTED_PREFIXES,
+      MEASURE_BROWSE,
       ...input.unmappedSectors.map((s) => `/sectors/${s}`),
+      ...(input.measuresWithoutLead ?? []),
     ],
   };
 }
@@ -100,9 +115,18 @@ export function robotsRules(indexable: boolean): {
     : { userAgent: "*", disallow: "/" };
 }
 
+/** Routes that are demoted THEMSELVES and do not demote what is under them.
+ *  One entry, and it is the whole reason this distinction exists: /measures is
+ *  a thin list page, and the measure pages beneath it are classified one at a
+ *  time by whether they render a lead block. Prefix-matching it would take 445
+ *  indexable pages down with the list page above them. */
+export const EXACT_ONLY = [MEASURE_BROWSE];
+
 /** Whether a path falls under any demoted route. Prefix matching on segment
- *  boundaries: "/measures" covers "/measures/cbam/FIN-03" and must not cover a
- *  future "/measurements". */
+ *  boundaries — "/acts" covers "/acts/cbam" and must not cover a future
+ *  "/actsomething" — except for the exact-only routes above. */
 export function isDemoted(path: string, demoted: string[]): boolean {
-  return demoted.some((p) => path === p || path.startsWith(`${p}/`));
+  return demoted.some(
+    (p) => path === p || (!EXACT_ONLY.includes(p) && path.startsWith(`${p}/`)),
+  );
 }

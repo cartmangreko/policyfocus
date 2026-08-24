@@ -20,6 +20,14 @@ vocabulary are unchanged and bind everything below.
    the underlying facts change. This is the existing sector-page mechanism
    (`sources/build_lead.py` → `data/transition/lead/<sector>.json` →
    `web/components/LeadBlock.tsx`) extended to home and company pages.
+
+   **Measure and project pages have it** (`sources/build_object_leads.py` →
+   `data/lead/{measures,projects}.json` → the same component). The gate is
+   imported from `build_lead.py`, not reimplemented: one set of rules for three
+   page types. A measure lead deliberately does not restate the provision — that
+   is already the page's heading — and answers instead what the provision does
+   not say: who it lands on, whether it is law yet, when it bites, which
+   industries it names, and what it costs where it has been priced.
 3. **No written judgements on surfaces.** No adjectives (High, Early mover,
    Mature), no composite scores, no /100 anywhere. Where the current data
    carries a qualitative attribute (technology readiness), display the attribute
@@ -96,11 +104,20 @@ vocabulary are unchanged and bind everything below.
 
    - **Measure pages carry `DEMOTED` until their lead blocks land.** They
      qualify by kind and they keep the exit the rule gives them — they return to
-     indexable by rendering a lead block, which is the pre-launch item in §5,
-     and nobody re-opens the question to let them. What the clause did not
-     anticipate is the size of the class: 480-odd pages, each a decoded
-     provision beside its verbatim source, opening the index with the evidence
-     under the product rather than the product.
+     indexable by rendering a lead block, and nobody re-opens the question to
+     let them. What the clause did not anticipate is the size of the class:
+     480-odd pages, each a decoded provision beside its verbatim source, opening
+     the index with the evidence under the product rather than the product.
+
+     **The exit has been taken** (`sources/build_object_leads.py`, 25 August
+     2026). 445 of the 480 measure pages render a lead block and are indexable;
+     the 35 that do not are the omnibus measures, whose act was read from a
+     local text before the fetcher existed and therefore carries no date on
+     which anything about it was true. They return the day it is fetched
+     properly. The condition is the lead store itself — `data/lead/measures.json`
+     — read both by the page, for its own `robots` tag, and by
+     `web/lib/siteRoutes.ts`, for whether the URL is published, so the two
+     cannot disagree.
    - **A sector page without its dataset carries `DEMOTED` too.** Indexability
      follows the lead block, and a sector that has no transition data renders
      the directory template, which has none. It arrives in the index by having
@@ -473,12 +490,18 @@ nowhere else on the page to look.
 7. Search index across the four node kinds (§4.4).
 8. Downstream reach channel (§4.7) → supply-chain section. `ROADMAP.md` only.
 
-**Before `SITE_LAUNCHED` is set:** measure and project lead blocks, so that
-§0.8's literal test and the practice coincide at launch and the build-gap clause
-there becomes vestigial rather than a standing exemption. Since the index
-opening this item has a second consequence, stated in §0.8: the measure lead
-block is what returns measure pages to the index. They are demoted until it
-lands, and they return by rendering it. Sequenced against the
+**~~Before `SITE_LAUNCHED` is set:~~ Done, 25 August 2026, after it was set.**
+Measure and project lead blocks, so that §0.8's literal test and the practice
+coincide and the build-gap clause becomes vestigial rather than a standing
+exemption. It shipped a day late relative to this sentence — the site launched
+on 24 August — and the sequencing note it was written against still holds for
+the next page type: the global noindex meant the clause did no work until the
+switch was thrown, and after it was thrown the clause did work, which is why
+this stopped being deferrable.
+
+Built by `sources/build_object_leads.py`, which imports the gate from
+`sources/build_lead.py` rather than copying it, so a rule added to one applies
+to all three page types. §0.8 records what the measure leads did to the index. Sequenced against the
 flag, not against any merge — the global noindex means the clause does no work
 until then, and nothing in the eight steps above waits on it.
 

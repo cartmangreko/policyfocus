@@ -23,7 +23,7 @@ import {
   splitNamed,
 } from "@/lib/data";
 import { getExposure } from "@/lib/exposure";
-import { DEMOTED } from "@/lib/launch";
+import { DEMOTED, SITE_ROBOTS } from "@/lib/launch";
 import { sectorIsIndexable } from "@/lib/siteRoutes";
 import { arrivalProse, summaryProse } from "@/lib/prose";
 import { getSectorSummary } from "@/lib/summaries";
@@ -69,7 +69,14 @@ export async function generateMetadata({
   // until its data is built. It arrives in the index by having a dataset, not
   // by anyone adding its slug to a list: lib/siteRoutes.ts reads the same
   // condition to decide whether to publish the URL.
-  const robots = sectorIsIndexable(slug) ? undefined : DEMOTED;
+  // SITE_ROBOTS rather than undefined for the indexable case. Page metadata
+  // does not merge with the layout's — it REPLACES it — so `robots: undefined`
+  // cleared the site-wide tag instead of inheriting it, and pre-launch this
+  // page was the one page on the site with no robots meta in its head. The
+  // header and robots.txt still closed it, so nothing was ever exposed; what
+  // was wrong is the guarantee lib/launch.ts opens with, that all three signals
+  // say the same thing in every state.
+  const robots = sectorIsIndexable(slug) ? SITE_ROBOTS : DEMOTED;
   // A sector with a map is a different page and needs a different tag: the
   // register's measure counts describe what the OLD template shows.
   if (hasMap(slug)) {

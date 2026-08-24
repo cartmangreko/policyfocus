@@ -1,4 +1,5 @@
-import { getSectorSlugs } from "./data";
+import { getAllMeasures, getSectorSlugs } from "./data";
+import { measurePathsWithLead } from "./objectLeads";
 import { getProjects, hasMap } from "./transition";
 import { classify } from "./routes";
 
@@ -13,10 +14,16 @@ import { classify } from "./routes";
 // whether the URL is published.
 export function siteRoutes(): { indexable: string[]; demoted: string[] } {
   const slugs = getSectorSlugs();
+  const withLead = new Set(measurePathsWithLead());
+  const allMeasures = getAllMeasures().map(
+    (m) => `/measures/${m.file}/${m.id.toLowerCase()}`,
+  );
   return classify({
     mappedSectors: slugs.filter((s) => hasMap(s)),
     unmappedSectors: slugs.filter((s) => !hasMap(s)),
     projectIds: getProjects().map((p) => p.id),
+    measuresWithLead: allMeasures.filter((p) => withLead.has(p)),
+    measuresWithoutLead: allMeasures.filter((p) => !withLead.has(p)),
   });
 }
 

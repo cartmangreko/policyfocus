@@ -1,5 +1,11 @@
 # Roadmap
 
+**Eufabric launched on 24 August 2026.** `SITE_LAUNCHED` is set in Vercel
+production; robots.txt serves `Allow: /` with the sitemap line, sitemap.xml
+serves 12 URLs, and the domain is verified in Google Search Console with the
+sitemap submitted. Everything below is post-launch work, and `web/lib/launch.ts`
+is done: the switch it exists to hold has been thrown.
+
 The backlog. Work that is agreed in principle, scoped enough to start, and not
 yet started. An entry leaves this file when its PR opens.
 
@@ -10,31 +16,21 @@ entry that cannot say what it touches is not ready to be an entry.
 
 ---
 
-## Deployment protection for the production custom domain
+## ~~Deployment protection for the production custom domain~~ — closed by the launch
 
-**One dashboard setting.** Touches nothing in this repository: Vercel → the
-`eufabric` project → Settings → Deployment Protection, "Protection for
-production domains".
+**Closed 24 August 2026, by the site launching rather than by anything being
+changed.** The entry asked whether `https://www.eufabric.eu` should sit behind
+the Vercel SSO wall while the site was closed to crawlers: deployment protection
+covers `*.vercel.app` deployment URLs and Vercel exempts the production custom
+domain, so the domain answered 200 to anybody with the address while noindex was
+the only closure. That gap has no meaning now — the site is public on purpose,
+and being reachable by a person who has the link is the point rather than the
+risk.
 
-The production custom domain is human-visible pre-launch. Deployment protection
-is on, and it covers what it covers: `*.vercel.app` deployment URLs return the
-Vercel SSO wall to anyone unauthenticated. It does not cover
-`https://www.eufabric.eu`, which Vercel exempts by default, and which returns
-200 to anybody who has the address.
-
-So **noindex is the only closure the site currently has**, and it is a closure
-against crawlers, not against people. All three signals hold — the X-Robots-Tag
-header, the robots metadata in every page's head, and `Disallow: /` in
-robots.txt — and none of them stops a person who was sent the link. That is
-survivable while nothing here is confidential and every figure is sourced; it is
-worth knowing before the first time a URL is shared with somebody outside the
-project.
-
-Two ways to close it, and the choice is George's: turn protection on for the
-production domain, which puts the SSO wall in front of eufabric.eu and means
-signing in to look at it, or leave it open and treat the domain as a private
-preview that happens to be reachable. Nothing in the codebase can decide this,
-which is why it is a roadmap entry rather than a task.
+Kept rather than deleted, because the fact behind it is still true and will
+matter again the next time something is staged on this project: a Vercel
+production custom domain is not covered by deployment protection by default, and
+noindex is a closure against crawlers, not against people.
 
 ## Horizontal / economy-wide scope as a data-model attribute
 

@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crumbs from "@/components/Crumbs";
+import LeadBlock from "@/components/LeadBlock";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import { SECTORS } from "@/lib/data";
+import { getProjectLead } from "@/lib/objectLeads";
 import {
   STATUS_LABEL,
   TRANSITION_LABEL,
@@ -62,6 +64,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   const project = getProject((await params).id);
   if (!project) notFound();
 
+  const lead = getProjectLead(project.id);
+
   const sector = project.sector as SectorSlug;
   const allParams = getParameters();
   const funding = fundingForProject(project.id);
@@ -109,6 +113,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               </span>
             ) : null}
           </div>
+          {/* THE LEAD BLOCK (§0.2). The strip above is the figures; this is the
+              sentence they add up to, plus the four or five facts underneath it
+              with the date each was true on. Built and gated in Python by
+              sources/build_object_leads.py — the same gate the sector lead
+              passes, imported rather than copied — and drawn by the same
+              component. Absent only where the build could not answer, which for
+              a project means it has no status history at all. */}
+          {lead ? <LeadBlock lead={lead} /> : null}
         </header>
 
         <section className="proj-section">
