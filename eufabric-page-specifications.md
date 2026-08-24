@@ -90,6 +90,41 @@ vocabulary are unchanged and bind everything below.
    remove the largest class of object pages on the site from the index, which is
    the opposite of what this rule exists to protect.
 
+   **Superseded for two route classes at the index opening.** The build-gap
+   clause above is what would have carried measure pages and unbuilt sector
+   pages into the index on the day the switch is thrown. It does not:
+
+   - **Measure pages carry `DEMOTED` until their lead blocks land.** They
+     qualify by kind and they keep the exit the rule gives them — they return to
+     indexable by rendering a lead block, which is the pre-launch item in §5,
+     and nobody re-opens the question to let them. What the clause did not
+     anticipate is the size of the class: 480-odd pages, each a decoded
+     provision beside its verbatim source, opening the index with the evidence
+     under the product rather than the product.
+   - **A sector page without its dataset carries `DEMOTED` too.** Indexability
+     follows the lead block, and a sector that has no transition data renders
+     the directory template, which has none. It arrives in the index by having
+     its data built — `web/lib/siteRoutes.ts` reads the same condition the
+     sector route branches on — so steel needs no edit here, only a dataset.
+
+   Project pages are untouched by this and stay indexable on the build-gap
+   clause: eight substantive object pages is the case the clause was written
+   for.
+
+   **`/coverage` is not demoted.** §0.8 listed it with the browse surfaces as a
+   thin list page. Brief 4 §1 made it the page that states the perimeter — what
+   Eufabric covers, what it does not, and why — and the front-page tiles for the
+   five industries without a page of their own open it. It is a destination.
+
+   **A published route list, and a disallowed one.** `sitemap.xml` carries the
+   indexable routes and nothing else; `robots.txt`, once launched, allows
+   everything and disallows the demoted routes. The two are one classification
+   in `web/lib/routes.ts` rendered twice, and `web/lib/launch.test.mts` fails
+   the build if a route appears in both. Note what disallowing a demoted route
+   costs: a page that is not fetched is a page whose `follow: true` is never
+   read, so the crawl-through this rule describes is carried by the links on
+   indexable pages rather than by the demoted pages themselves.
+
    **This section is the authority for the route list.** The list in
    `web/lib/launch.ts` predates it and is reviewed against this section; where
    they disagree, this section is what the implementation is wrong about.
@@ -365,7 +400,10 @@ nowhere else on the page to look.
 
 **Before `SITE_LAUNCHED` is set:** measure and project lead blocks, so that
 §0.8's literal test and the practice coincide at launch and the build-gap clause
-there becomes vestigial rather than a standing exemption. Sequenced against the
+there becomes vestigial rather than a standing exemption. Since the index
+opening this item has a second consequence, stated in §0.8: the measure lead
+block is what returns measure pages to the index. They are demoted until it
+lands, and they return by rendering it. Sequenced against the
 flag, not against any merge — the global noindex means the clause does no work
 until then, and nothing in the eight steps above waits on it.
 

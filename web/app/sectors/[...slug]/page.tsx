@@ -23,6 +23,8 @@ import {
   splitNamed,
 } from "@/lib/data";
 import { getExposure } from "@/lib/exposure";
+import { DEMOTED } from "@/lib/launch";
+import { sectorIsIndexable } from "@/lib/siteRoutes";
 import { arrivalProse, summaryProse } from "@/lib/prose";
 import { getSectorSummary } from "@/lib/summaries";
 import { getFindingsForSector, withEvidence } from "@/lib/findings";
@@ -60,6 +62,14 @@ export async function generateMetadata({
   const slug = (await params).slug.join("/");
   if (!(slug in SECTORS)) return { title: "Sector not found" };
   const name = SECTORS[slug as SectorSlug];
+  // INDEXABILITY FOLLOWS THE TEMPLATE, which is the same thing as saying it
+  // follows the lead block (§0.8). A sector with a map renders the product
+  // page and is indexable; a sector without one renders the directory template
+  // — measure lists and summary strips, no lead block — and carries DEMOTED
+  // until its data is built. It arrives in the index by having a dataset, not
+  // by anyone adding its slug to a list: lib/siteRoutes.ts reads the same
+  // condition to decide whether to publish the URL.
+  const robots = sectorIsIndexable(slug) ? undefined : DEMOTED;
   // A sector with a map is a different page and needs a different tag: the
   // register's measure counts describe what the OLD template shows.
   if (hasMap(slug)) {
@@ -67,6 +77,7 @@ export async function generateMetadata({
     const inView = imp.measures.filter((m) => m.in_sector_view).length;
     const priced = imp.measures.filter((m) => m.money.computable).length;
     return {
+      robots,
       title: `${name} — exposure, constraints and pipeline`,
       description:
         `What European ${name.toLowerCase()} is under: ${inView} of ${imp.measures.length} EU ` +
@@ -77,6 +88,7 @@ export async function generateMetadata({
   // The description is the strip's prose form — the same template, the same
   // gate-checked object, so the tag and the page cannot disagree.
   return {
+    robots,
     title: `European ${name}`,
     description: summaryProse(`European ${name.toLowerCase()}`, getSectorSummary(slug as SectorSlug)),
   };

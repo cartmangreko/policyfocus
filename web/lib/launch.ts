@@ -27,9 +27,18 @@ export const INDEXABLE: boolean = LAUNCHED && (ENV === undefined || ENV === "pro
 
 // THE DEMOTED SURFACES. The register is no longer the product: it is the
 // candidate pool behind the sector pages. Its own surfaces — the act pages,
-// the flat measure browse, the findings, the coverage page and the legislative
-// change feed — keep their routes and their content, lose their links from the
-// header and the home page, and carry this tag.
+// the measure browse AND the measure pages themselves, the findings and the
+// legislative change feed — keep their routes and their content, lose their
+// links from the header and the home page, and carry this tag.
+//
+// WHICH ROUTES THOSE ARE is not decided here. lib/routes.ts holds the classes
+// and lib/siteRoutes.ts applies them to the data, because whether a sector page
+// is demoted is a question about whether that sector has been built. This file
+// decides whether anything is indexable at all; that pair decides which pages
+// are, once it is open. Two changes since §0.8 was written, both recorded in
+// the specification: measure pages are demoted until their lead blocks land,
+// and /coverage is not demoted at all — it states the perimeter (brief 4 §1),
+// and the front-page tiles without a page of their own open it.
 //
 // Kept rather than deleted, deliberately. Every one of them is the evidence a
 // sector page's ranking rests on, and a reader who follows a measure link into
