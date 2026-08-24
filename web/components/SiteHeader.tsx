@@ -1,5 +1,4 @@
 import Link from "next/link";
-import SearchBar from "./SearchBar";
 import Wordmark from "./Wordmark";
 
 // ONE DOOR. The product is the sector page, and the header should not offer a
@@ -13,6 +12,18 @@ import Wordmark from "./Wordmark";
 // this is the difference between the two.
 const NAV = [{ label: "Sectors", href: "/sectors" }];
 
+// TWO THINGS LEFT THIS HEADER (brief 4 §3), and both for the same reason: they
+// were promises the platform does not keep yet.
+//
+//   Sign in    there is nothing to sign in to. No replacement control — an
+//              account door that opens on nothing is worse than no door.
+//   Search     the field was presentational, with three example chips and no
+//              index behind it. It returns with the index, page
+//              specifications §5 step 6; components/SearchBar.tsx is kept for
+//              that, unrendered, rather than rewritten from nothing later.
+//
+// The lockup is now the only place on the site where the name is set, which is
+// why it is set larger here and no longer repeated on the home page.
 export default function SiteHeader() {
   return (
     <header className="site-header">
@@ -25,17 +36,6 @@ export default function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <div className="site-header-actions">
-          {/* The search field itself now sits in the row below, on every page,
-              so the link that used to stand in for it here is gone rather than
-              pointing at the thing next to it. */}
-          <span className="signin">Sign in</span>
-        </div>
-      </div>
-      <div className="site-header-search">
-        <div className="site-header-inner">
-          <SearchBar />
-        </div>
       </div>
     </header>
   );

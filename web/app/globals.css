@@ -141,6 +141,13 @@
   --acc-batsol: #617e44;
   --acc-clean: #7d9a6b;
   --acc-ccs: #737691;
+  /* Two of the six front-page tiles are ecosystems rather than sectors (brief
+     4 §2), and they take their accent from the same measured family: hydrogen
+     a cousin of shipping and aviation, circular materials a cousin of waste,
+     which is the industry it recovers from. Both clear all four anchors by
+     more than 33, like everything above them. */
+  --acc-hydrogen: #3f6f9c;
+  --acc-circular: #7f8452;
 
   /* type — one neo-grotesque, no webfonts (brief 3).
 
@@ -305,8 +312,11 @@ a {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 var(--gutter);
-  /* Deepened from 62px to carry the larger lockup without crowding it. */
-  height: 86px;
+  /* Deepened again with the lockup: the header is now the ONLY place the name
+     is set (brief 4 §3 — the home page no longer repeats it, which is what was
+     drawing the wordmark twice on a phone), so it is set at the size the front
+     page used to set it at. */
+  height: 98px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -329,7 +339,7 @@ a {
 .wordmark-text {
   font-family: var(--sans);
   font-weight: 700;
-  font-size: 30px;
+  font-size: 38px;
   letter-spacing: -0.045em;
   line-height: 1;
   color: var(--ink);
@@ -399,13 +409,6 @@ a {
   font-size: 10px;
   color: var(--ink-55);
 }
-.signin {
-  font-size: 13.5px;
-  font-weight: 500;
-  color: var(--ink);
-  cursor: pointer;
-}
-
 /* footer */
 .site-footer {
   background: var(--ink);
@@ -1006,32 +1009,50 @@ h3 {
   background: var(--rule-soft);
   border: 1px solid var(--rule-soft);
 }
-.sector-grid {
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+
+/* ---------- the six tiles ----------
+
+   The twenty-cell sector grid is gone (brief 4 §3 and §4). It ordered the
+   whole spine by how much of the corpus happened to point at each sector,
+   which is a fact about the corpus, and it made the front page an inventory.
+   Six tiles replace it, and they carry NO NUMBER OF ANY KIND: a count on a
+   tile invites the reader to compare six things that are at six different
+   depths of build, and the comparison would be about us rather than about
+   them.
+
+   The icon is the tile's only colour, at the same hairline weight it has
+   everywhere else. */
+.tile-grid {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  margin-top: 22px;
 }
-.sector-cell {
+.tile {
   background: var(--card);
-  padding: 18px;
+  padding: 26px 22px 24px;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  flex-direction: column;
   gap: 12px;
+  min-height: 132px;
   transition: background var(--dur) var(--ease);
 }
-.sector-cell:hover {
+.tile:hover {
   background: var(--paper);
 }
-.sector-name {
-  font-size: 14px;
-  font-weight: 500;
+.tile-name {
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  color: var(--ink);
 }
-/* The nineteen sectors without a page of their own. Muted on purpose: it is a
-   state, not a claim, and it should not compete with the sector's name. */
-.sector-pending {
-  font-family: var(--mono);
-  font-size: 10.5px;
+/* What the tile contains, where the name alone would leave it open. One
+   phrase, no numbers — it draws the perimeter, it does not measure it. */
+.tile-scope {
+  font-size: 13px;
+  line-height: 1.45;
   color: var(--ink-55);
-  white-space: nowrap;
+  margin-top: auto;
 }
 
 /* ---------- detail pages ---------- */
@@ -1673,11 +1694,6 @@ h3 {
 .home-head {
   padding: 56px 0 28px;
 }
-.home-wordmark {
-  transform: scale(1.35);
-  transform-origin: left center;
-  width: fit-content;
-}
 .home-tagline {
   font-family: var(--display);
   font-weight: 600;
@@ -2270,50 +2286,11 @@ h3 {
   color: var(--ink-55);
 }
 
-/* ---------- header search row ---------- */
-
-/* SearchBar renders on every page now, in a second header row. Its markup and
-   behaviour are untouched — everything below is scale: the field was drawn at
-   hero size for a page that no longer exists, and the example chips are a
-   teaching aid that belongs on wide viewports rather than in a 62px chrome. */
-
-.site-header-search {
-  border-top: 1px solid var(--rule-soft);
-  background: var(--chrome);
-}
-.site-header-search .site-header-inner {
-  height: auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: block;
-}
-.site-header-search .searchbar {
-  margin-top: 0;
-  max-width: none;
-  border-width: 1px;
-  border-radius: 6px;
-}
-.site-header-search .searchbar-input {
-  font-size: 14px;
-  padding: 9px 8px 9px 0;
-}
-.site-header-search .searchbar-glyph {
-  padding: 0 12px;
-  font-size: 16px;
-}
-.site-header-search .searchbar-submit {
-  border-left-width: 1px;
-  font-size: 11px;
-  padding: 0 16px;
-}
-.site-header-search .query-chips {
-  margin-top: 8px;
-  gap: 8px;
-}
-.site-header-search .query-chip {
-  padding: 4px 9px;
-  font-size: 12px;
-}
+/* The header search row is gone with the field itself (brief 4 §3): there is
+   no search index yet, and a field that cannot find anything is a promise the
+   platform does not keep. web/components/SearchBar.tsx is kept, unrendered,
+   for the index in the page specifications §5 step 6; its own styles are still
+   below, and only the header row's scale rules have been removed. */
 
 /* ---------- measures page ---------- */
 
@@ -2411,13 +2388,6 @@ h3 {
   }
 }
 
-@media (max-width: 900px) {
-  /* The examples are a teaching aid; the field is the instrument. */
-  .site-header-search .query-chips {
-    display: none;
-  }
-}
-
 /* ---------- change records ----------
 
    A record is an event, and the feed is a list of events, so the feed is set
@@ -2429,16 +2399,21 @@ h3 {
    two visual languages for that would be a distinction without a difference.
 
    The slim home head is the same block as .home-head at less height: the
-   masthead pair still reads first, it just stops being the whole screen. */
+   descriptor still reads first, it just stops being the whole screen. The
+   wordmark rules that used to sit here went with the wordmark (brief 4 §3) —
+   the descriptor is now the first thing in the block, so it does not need the
+   margin that cleared the lockup. */
 .home-head-slim {
   padding: 40px 0 22px;
 }
-.home-head-slim .home-wordmark {
-  transform: scale(1.15);
-}
 .home-head-slim .home-tagline {
-  margin-top: 22px;
-  font-size: clamp(1rem, 1.8vw, 1.28rem);
+  margin-top: 0;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+}
+/* The one-line source note at the foot of the front page. */
+.home-sources {
+  font-size: 13.5px;
+  color: var(--ink-55);
 }
 
 .record-feed {
@@ -3874,16 +3849,6 @@ h3 {
 .pchange-src {
   font-size: 11.5px;
   color: var(--ink-55);
-}
-.sector-live {
-  font-family: var(--mono);
-  font-size: 9.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--signal);
-  border: 1px solid var(--signal);
-  padding: 1px 6px;
-  white-space: nowrap;
 }
 
 /* --- the mobile diagram, and the per-sector what-moved strip ---------

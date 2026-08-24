@@ -23,6 +23,12 @@ export function isReviewed(status: ProseStatus): boolean {
 interface ProseDoc {
   masthead: { status: ProseStatus; descriptor: string; positioning: string };
   perimeter: { status: ProseStatus; template: string; reviewed?: string };
+  /** The launch perimeter — which industries are covered and which are
+   *  deliberately not. Rendered beside the perimeter paragraph on the coverage
+   *  page THROUGH getLaunchPerimeter below, which returns null until the block
+   *  is reviewed: an unread claim about scope is the one claim on this site
+   *  that should not appear before somebody has read it. */
+  launch_perimeter?: { status: ProseStatus; paragraph: string; reviewed?: string };
   coverage_declarations: {
     status: ProseStatus;
     files: Record<string, string>;
@@ -99,6 +105,16 @@ export function getPerimeterProse(): string {
     }
     return String(value);
   });
+}
+
+/** Which industries the platform covers at launch, and which it does not, or
+ *  null while the block is unreviewed. The coverage page renders nothing extra
+ *  in that case — it is a paragraph the page did not carry at all until
+ *  brief 4 §1. */
+export function getLaunchPerimeter(): string | null {
+  const block = readProse().launch_perimeter;
+  if (!block || !isReviewed(block.status)) return null;
+  return block.paragraph;
 }
 
 /** The stored single-pass declaration for one file, in audience terms, or

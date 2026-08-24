@@ -4,7 +4,7 @@ import DriverChart from "@/components/DriverChart";
 import { getCoverage, getQueuedItems, getWeightNote } from "@/lib/coverage";
 import type { CoverageFile } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
-import { getCoverageDeclaration, getPerimeterProse } from "@/lib/sitetext";
+import { getCoverageDeclaration, getLaunchPerimeter, getPerimeterProse } from "@/lib/sitetext";
 import { DEMOTED } from "@/lib/launch";
 
 // The verification badge, in audience terms. The underlying dockets, gates
@@ -51,6 +51,13 @@ export default function CoveragePage() {
               sentence states what is out of scope, so the page no longer
               carries a separate out-of-scope section. */}
           <p className="sector-intro">{getPerimeterProse()}</p>
+          {/* What the platform covers at launch and what it does not — brief 4
+              §1, which rules that this page is where the perimeter is stated
+              explicitly. Reviewed prose from data/prose.json; absent while the
+              block is unreviewed. */}
+          {getLaunchPerimeter() ? (
+            <p className="sector-intro">{getLaunchPerimeter()}</p>
+          ) : null}
           <p className="section-note">
             {files.length} acts · {totalMeasures} measures · {verified} of {files.length} verified.
           </p>
