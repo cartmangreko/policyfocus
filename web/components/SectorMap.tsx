@@ -15,6 +15,7 @@ import {
   byLastChange,
   eur,
   fundingAmount,
+  fundingTotals,
   fundingForProject,
   getBottlenecks,
   getFunding,
@@ -194,8 +195,10 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   // separately rather than folded in as zero: a grant nobody published is not
   // a grant of nothing, and a total that pretended otherwise would read as
   // complete.
-  const fundingTotal = funding.reduce((a, f) => a + (fundingAmount(f, params) ?? 0), 0);
-  const undisclosed = funding.filter((f) => fundingAmount(f, params) === null).length;
+  // Three figures, never one: committed money, announced money and withdrawn
+  // lines. See lib/transition.ts:fundingTotals and sources/sector_map.py.
+  const totals = fundingTotals(funding, params);
+  const undisclosed = totals.undisclosed;
   const transitions = getTransitions(slug);
 
   // Status changes in this sector inside the window, most recent first, and
@@ -603,16 +606,30 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
         <p className="tmap-sub">
           Every allocation that finances a project here, with the basis it was made under
           and how far it has got. Amounts are the published ones; an undisclosed amount is
-          shown as undisclosed rather than as nothing.
+          shown as undisclosed rather than as nothing. Committed money — approved, signed
+          or disbursed — is totalled on its own; announcements and withdrawals are stated
+          separately and never folded into it.
         </p>
         {funding.length === 0 ? (
           <p className="tscore-note">No public capital recorded for this sector yet.</p>
         ) : (
           <>
             <p className="tfunding-total">
-              {eur(fundingTotal)} recorded across {funding.length} allocations
+              {eur(totals.committed)} committed across {totals.committedCount} allocations
               {undisclosed > 0 ? `, ${undisclosed} of them undisclosed` : ""}.
             </p>
+            {totals.announcedCount > 0 ? (
+              <p className="tfunding-total tfunding-announced">
+                A further {eur(totals.announced)} announced across {totals.announcedCount}{" "}
+                allocations, not counted above: an announcement is not an award.
+              </p>
+            ) : null}
+            {totals.withdrawnCount > 0 ? (
+              <p className="tfunding-total tfunding-withdrawn">
+                {totals.withdrawnCount} withdrawn allocation
+                {totals.withdrawnCount === 1 ? " is" : "s are"} listed below and in no total.
+              </p>
+            ) : null}
             <ul className="tfundings">
               {funding.map((f) => {
                 const amount = fundingAmount(f, params);
@@ -664,7 +681,11 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
               {projects.map((p) => {
                 const last = lastChange(p);
                 const rows = fundingForProject(p.id);
-                const funded = rows.reduce((a, f) => a + (fundingAmount(f, params) ?? 0), 0);
+                // The same rule as the Capital section: this cell says committed
+                // money only, so a column of awards never quietly includes an
+                // announcement. The announced figure has one home, above.
+                const pt = fundingTotals(rows, params);
+                const funded = pt.committed;
                 return (
                   <tr key={p.id}>
                     <td>
@@ -678,7 +699,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                       <span className={`tstatus ${p.status}`}>{STATUS_LABEL[p.status]}</span>
                     </td>
                     <td className="num">
-                      {funded ? eur(funded) : rows.length ? "undisclosed" : "—"}
+                      {funded ? eur(funded) : pt.committedCount ? "undisclosed" : "—"}
                     </td>
                     <td className="num">{last?.date ?? "—"}</td>
                   </tr>

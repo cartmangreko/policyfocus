@@ -262,11 +262,20 @@ def model_grant_programme(measure_id: str, funding: list[dict], params: dict,
     This is a STOCK, not a rate: grants awarded to date, not euros per year and
     not euros per tonne. It therefore never competes with a per-tonne figure in
     the ranking, and the sector view nets it separately or not at all.
+
+    ONLY COMMITTED MONEY IS IN THE TOTAL. The scale is called eur_awarded, so it
+    may hold approved, signed and disbursed lines and nothing else
+    (sm.FUNDING_COMMITTED). An announcement is not an award and a withdrawal is
+    not money; both are counted, named in the caveats, and left out of the sum.
+    Today every cement line is approved, so this changes no number — which is
+    the point of doing it before the watch channel starts writing announcements.
     """
     total = 0
     contributing = []
     caveats = []
     unpriced = 0
+    announced = 0
+    withdrawn = 0
     for f in funding:
         if f.get("under") != measure_id:
             continue
@@ -274,6 +283,13 @@ def model_grant_programme(measure_id: str, funding: list[dict], params: dict,
         # fact. The funding node is shared across sectors by design, so the
         # filter is here rather than in the loader.
         if not any(n.split(":", 1)[1] in project_ids for n in f.get("finances", [])):
+            continue
+        status = f.get("status")
+        if status in sm.FUNDING_EXCLUDED:
+            withdrawn += 1
+            continue
+        if status in sm.FUNDING_ANNOUNCED:
+            announced += 1
             continue
         amount = _eur(params.get(f["amount"])) if f.get("amount") else None
         if amount:
@@ -283,14 +299,25 @@ def model_grant_programme(measure_id: str, funding: list[dict], params: dict,
             unpriced += 1
         if f.get("under_note") and f["under_note"] not in caveats:
             caveats.append(f["under_note"])
-    formula = "sum of funding.amount where funding.under = this measure"
+    formula = ("sum of funding.amount where funding.under = this measure "
+               "and funding.status is committed (approved, signed, disbursed)")
     if not contributing:
+        why = ["no funding row names this measure as its legal basis"]
+        if announced or withdrawn:
+            why = [f"no committed funding under this measure: {announced} announced, "
+                   f"{withdrawn} withdrawn"]
         return _money(None, "eur_awarded", "grant_programme", [], formula,
-                      ["no funding row names this measure as its legal basis"],
+                      why,
                       direction="support", bearer="project_developer")
     if unpriced:
         caveats.append(f"{unpriced} further funding line(s) under this measure carry no published "
                        f"amount and are not in the total, which is therefore a floor.")
+    if announced:
+        caveats.append(f"{announced} announced funding line(s) under this measure are not in the "
+                       f"total: an announcement is not an award.")
+    if withdrawn:
+        caveats.append(f"{withdrawn} withdrawn funding line(s) under this measure are not in the "
+                       f"total.")
     return _money(total, "eur_awarded", "grant_programme", contributing, formula,
                   direction="support", bearer="project_developer",
                   annual_total=None, caveats=caveats)
