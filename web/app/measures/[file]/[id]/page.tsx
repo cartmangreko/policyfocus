@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import BurdenStrip from "@/components/BurdenStrip";
 import RuleDiff, { ruleDiffHeading } from "@/components/RuleDiff";
 import ValenceTag from "@/components/ValenceTag";
+import { DEMOTED } from "@/lib/launch";
 import {
   CLASS_LABELS,
   FILES,
@@ -42,6 +43,15 @@ export async function generateMetadata({
   return {
     title: `${measure.id} — ${title}`,
     description: measure.affected_delta ?? measure.trigger,
+    // DEMOTED UNTIL THE MEASURE LEAD BLOCK LANDS (page specifications §5,
+    // pre-launch item). §0.8 qualifies a measure page by kind and its
+    // build-gap clause kept it indexable while its lead block was outstanding;
+    // the index-opening brief supersedes that clause for this route. What the
+    // page renders today is the decoded provision and its verbatim source,
+    // which is the evidence under a sector page's ranking rather than a page
+    // written to be arrived at. It returns to indexable by rendering a lead
+    // block, which is the rule §0.8 states, not by anyone re-opening this.
+    robots: DEMOTED,
   };
 }
 

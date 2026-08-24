@@ -5,7 +5,6 @@ import { getCoverage, getQueuedItems, getWeightNote } from "@/lib/coverage";
 import type { CoverageFile } from "@/lib/coverage";
 import { BASIS_LABEL } from "@/lib/findings";
 import { getCoverageDeclaration, getLaunchPerimeter, getPerimeterProse } from "@/lib/sitetext";
-import { DEMOTED } from "@/lib/launch";
 
 // The verification badge, in audience terms. The underlying dockets, gates
 // and pass artifacts in sources/ are untouched; this is only how their result
@@ -23,7 +22,11 @@ export function generateMetadata(): Metadata {
   const total = files.reduce((n, f) => n + f.measures, 0);
   const verified = files.filter(isVerified).length;
   return {
-    robots: DEMOTED,
+    // NOT DEMOTED any more. §0.8 demoted this page as a thin list; brief 4 §1
+    // made it the page that states the perimeter — what Eufabric covers, what
+    // it does not, and why — and the six front-page tiles that have no page
+    // yet open it. A page every sector without a page of its own points at is
+    // not a list surface.
     title: "Coverage",
     description: `${files.length} legislative acts on the platform, ${total} measures — ${verified} of ${files.length} acts verified by an independent second reading — plus what is queued and not yet read.`,
   };

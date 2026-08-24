@@ -10,6 +10,32 @@ entry that cannot say what it touches is not ready to be an entry.
 
 ---
 
+## Deployment protection for the production custom domain
+
+**One dashboard setting.** Touches nothing in this repository: Vercel → the
+`eufabric` project → Settings → Deployment Protection, "Protection for
+production domains".
+
+The production custom domain is human-visible pre-launch. Deployment protection
+is on, and it covers what it covers: `*.vercel.app` deployment URLs return the
+Vercel SSO wall to anyone unauthenticated. It does not cover
+`https://www.eufabric.eu`, which Vercel exempts by default, and which returns
+200 to anybody who has the address.
+
+So **noindex is the only closure the site currently has**, and it is a closure
+against crawlers, not against people. All three signals hold — the X-Robots-Tag
+header, the robots metadata in every page's head, and `Disallow: /` in
+robots.txt — and none of them stops a person who was sent the link. That is
+survivable while nothing here is confidential and every figure is sourced; it is
+worth knowing before the first time a URL is shared with somebody outside the
+project.
+
+Two ways to close it, and the choice is George's: turn protection on for the
+production domain, which puts the SSO wall in front of eufabric.eu and means
+signing in to look at it, or leave it open and treat the domain as a private
+preview that happens to be reachable. Nothing in the codebase can decide this,
+which is why it is a roadmap entry rather than a task.
+
 ## Horizontal / economy-wide scope as a data-model attribute
 
 **Its own stack.** Touches the schema, the gates, and every sector page.
