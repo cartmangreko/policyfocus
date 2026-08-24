@@ -2802,6 +2802,17 @@ h3 {
   gap: 12px;
   margin: 6px 0 0;
 }
+/* The standing orientation paragraph. Set wider and quieter than the lead
+   block under it: it is context to be read once, not a figure to be checked,
+   so it reads as body copy and the computed lead keeps the emphasis. */
+.tmap-orientation {
+  max-width: 68ch;
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.62;
+  color: var(--ink-70);
+}
+
 .tmap-lede {
   max-width: 68ch;
   margin-top: 14px;

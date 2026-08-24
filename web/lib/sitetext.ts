@@ -47,6 +47,16 @@ interface ProseDoc {
     reviewed?: string | null;
     sectors: Record<string, { transitions: string[]; sentence: string }>;
   };
+  /** The standing orientation paragraph, one per mapped sector: what the sector
+   *  is, why it is hard, the technology paths, how policy frames it, and the
+   *  question the page then answers. Reviewed prose, four fixed beats, nearly
+   *  number-free — see the _comment in data/prose.json. Returned by
+   *  getSectorOrientation below, which is null until the block is reviewed. */
+  sector_orientation?: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    sectors: Record<string, { paragraph: string }>;
+  };
 }
 
 let cached: ProseDoc | null = null;
@@ -108,6 +118,18 @@ export function getCoverageLine(): string {
  *  is still a draft. Null is not an error: web/lib/prose.ts renders the
  *  computed sentence instead, and the draft sits in data/prose.json where
  *  sources/check_sector_schema.py prints it on every run. */
+/** The sector's orientation paragraph, or null. Null covers both an unreviewed
+ *  block and a sector nobody has written one for; the page renders nothing
+ *  extra in either case and opens on the lead block, exactly as it did before
+ *  this paragraph existed. Unlike the transition note there is no computed
+ *  fallback, and there should not be: standing context is the one thing on this
+ *  page that cannot be derived from the panels. */
+export function getSectorOrientation(sector: string): string | null {
+  const block = readProse().sector_orientation;
+  if (!block || !isReviewed(block.status)) return null;
+  return block.sectors[sector]?.paragraph ?? null;
+}
+
 export function getTransitionNote(sector: string): string | null {
   const block = readProse().transition_notes;
   if (!block || !isReviewed(block.status)) return null;

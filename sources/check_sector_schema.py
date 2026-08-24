@@ -472,9 +472,24 @@ def check_prose(e: Errors) -> list[str]:
         if sector not in notes:
             e.add(f"prose {sector}", "has a transition map and no note in "
                                      "data/prose.json transition_notes")
-    if block.get("status") in ("approved", "final"):
-        return []
-    return [f"  {s}: {notes[s]['sentence'][:88]}…" for s in sorted(notes)]
+    # The orientation paragraph, same discipline one level up: a mapped sector
+    # must have one, and an unreviewed block is a state rather than a defect.
+    # It has no computed fallback — standing context is the one thing on the
+    # page that cannot be derived from the panels — so an unwritten paragraph
+    # means the page simply opens on its lead block, as it did before.
+    orient = doc.get("sector_orientation") or {}
+    paras = orient.get("sectors", {})
+    for sector in sorted(mapped):
+        if sector not in paras:
+            e.add(f"prose {sector}", "has a transition map and no orientation paragraph in "
+                                     "data/prose.json sector_orientation")
+
+    pending = []
+    if block.get("status") not in ("approved", "final"):
+        pending += [f"  {s}: {notes[s]['sentence'][:88]}…" for s in sorted(notes)]
+    if orient and orient.get("status") not in ("approved", "final"):
+        pending += [f"  {s} (orientation): {paras[s]['paragraph'][:76]}…" for s in sorted(paras)]
+    return pending
 
 
 def main() -> int:
