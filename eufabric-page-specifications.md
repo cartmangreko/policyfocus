@@ -320,16 +320,39 @@ nowhere else on the page to look.
 5. **Change-record template family** feeding the homepage and sector feeds from
    watch channel two output.
 
-6. **Funding record attribute** `awarded | announced`, carried on every funding
-   node and displayed wherever sums appear.
+6. **Funding status groups honoured by every sum.** The attribute exists and is
+   richer than an earlier draft of this section assumed: `status` on every
+   funding node, required by the gate, from the vocabulary `announced |
+   approved | signed | disbursed | withdrawn` (`sources/sector_map.py`).
+
+   What the totals must do with it, stated once and read by both the Python and
+   the app:
+
+   - **Committed** — `approved`, `signed`, `disbursed`. This and nothing else is
+     what a figure labelled awarded may contain.
+   - **Announced** — `announced`, alone. Its own figure, never folded into the
+     committed one.
+   - **Withdrawn** — `withdrawn`. In no total, and named where it is left out
+     rather than dropped silently.
+
+   This supersedes `awarded | announced` as this section first stated it. The
+   schema already carried the finer distinction, and adding a two-value
+   attribute beside it would have created a second source of truth for the same
+   fact — so the specification defers to the repository on what exists. Recorded
+   here so the next reader sees a decision rather than suspects drift.
 
 7. **Downstream reach channel** from the Eurostat input-output data, required
    before the supply-chain section exists (§2, excluded item).
 
 ## 5. Build order
 
-1. Funding `awarded | announced` attribute (§4.6). Smallest, gates every sum on
-   all three page types, rides along with anything.
+0. **The `sector-map` merge.** Not a build step, but everything below waits on
+   it: the transition layer — `data/transition/`, the funding node, the sector
+   template — exists only on that branch. `main` has no transition layer at all,
+   so step 1 has nothing to act on until it lands. That puts the `sector-map`
+   review at the front of this queue.
+1. Funding status groups honoured by every sum (§4.6). Smallest, gates every sum
+   on all three page types. Depends on step 0.
 2. Change-record template family (§4.5). The homepage and sector feeds are dead
    without it.
 3. Steel dataset (§4.3). Unblocks the §2 rebuild and makes the tile counts
