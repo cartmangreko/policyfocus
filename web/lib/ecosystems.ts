@@ -49,12 +49,29 @@ export function getEcosystems(): Ecosystem[] {
 /** Where a tile goes.
  *
  *  An instance that maps 1:1 onto a sector that has been BUILT opens that
- *  sector page. Everything else opens /coverage: a cross-cutting instance with
- *  no dataset behind it yet, and a 1:1 instance whose sector still renders the
- *  directory template. §4.2's rendering rule and brief 4 §3 meet here — a tile
- *  never opens a page with nothing on it, and an instance arrives at its own
- *  page by having data, not by an edit to this function. */
+ *  sector page. Everything else opens its holding page under
+ *  /under-construction: a cross-cutting instance with no dataset behind it yet,
+ *  and a 1:1 instance whose sector still renders the directory template.
+ *
+ *  It used to be /coverage, which is a page about the platform rather than
+ *  about the industry the reader asked for. A tile never opens a page with
+ *  nothing on it, and an instance arrives at its own page by having data rather
+ *  than by an edit to this function. */
 export function ecosystemHref(e: Ecosystem): string {
+  return isUnderConstruction(e) ? `/under-construction/${e.id}` : `/sectors/${builtSector(e)}`;
+}
+
+/** The sector a 1:1 instance opens, or null. An instance opens a sector page
+ *  only where it maps onto exactly one sector AND that sector renders the
+ *  product template — one edge, and a dataset behind it. */
+function builtSector(e: Ecosystem): string | null {
   const only = e.sectors.length === 1 ? e.sectors[0] : null;
-  return only && hasMap(only) ? `/sectors/${only}` : "/coverage";
+  return only && hasMap(only) ? only : null;
+}
+
+/** Whether an instance has no page of its own yet: a cross-cutting one with no
+ *  dataset, or a 1:1 one whose sector still renders the directory template.
+ *  Five of the six today. */
+export function isUnderConstruction(e: Ecosystem): boolean {
+  return builtSector(e) === null;
 }

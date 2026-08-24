@@ -26,6 +26,8 @@
 //
 //   demoted    /measures, /measures/<act>/<id>   until the measure lead blocks
 //                                                land (§5, pre-launch item)
+//              /under-construction/<id>           the holding page a tile opens
+//                                                where its industry is not built
 //              /sectors/<slug>      where the sector still renders the
 //                                   directory template and has no lead block
 //              /acts, /acts/<file>  near-duplicates of EUR-Lex
@@ -42,8 +44,18 @@ export const SITE_URL = "https://www.eufabric.eu";
 
 /** Route trees demoted whole. Prefixes rather than paths: every page under one
  *  of these is demoted for the reason its index page is, so the prefix is the
- *  honest statement and an enumeration would be 480 lines of the same fact. */
-export const DEMOTED_PREFIXES = ["/acts", "/changes", "/findings", "/measures"];
+ *  honest statement and an enumeration would be 480 lines of the same fact.
+ *
+ *  THIS LIST NO LONGER DRIVES robots.txt — see `robotsRules` below. It is the
+ *  classification the pages themselves implement with `DEMOTED`, and what the
+ *  sitemap is checked against. */
+export const DEMOTED_PREFIXES = [
+  "/acts",
+  "/changes",
+  "/findings",
+  "/measures",
+  "/under-construction",
+];
 
 /** The two lists, from the sector and project ids the caller has read. */
 export function classify(input: {
@@ -64,6 +76,28 @@ export function classify(input: {
       ...input.unmappedSectors.map((s) => `/sectors/${s}`),
     ],
   };
+}
+
+/** robots.txt, as a rule object, in each of the two states.
+ *
+ *  LAUNCHED, IT ALLOWS EVERYTHING. The disallow list this used to carry —
+ *  every demoted route — has been removed, and the reason is that the two
+ *  mechanisms were working against each other. A disallowed page is never
+ *  fetched, so the `noindex, follow` in its head is never read: robots.txt was
+ *  keeping the crawler out of exactly the pages whose tag exists to let it walk
+ *  through them. Now the tag is the only closure for a demoted route, which is
+ *  what it was designed to be — noindex keeps the page out of the index, follow
+ *  carries the crawler on to the indexable pages it links.
+ *
+ *  PRE-LAUNCH the switch dominates and nothing is allowed. */
+export function robotsRules(indexable: boolean): {
+  userAgent: string;
+  allow?: string;
+  disallow?: string;
+} {
+  return indexable
+    ? { userAgent: "*", allow: "/" }
+    : { userAgent: "*", disallow: "/" };
 }
 
 /** Whether a path falls under any demoted route. Prefix matching on segment

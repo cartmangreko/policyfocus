@@ -18,7 +18,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { classify, isDemoted, DEMOTED_PREFIXES } from "./routes.ts";
+import { classify, isDemoted, robotsRules, DEMOTED_PREFIXES } from "./routes.ts";
 
 const HERE = new URL(".", import.meta.url).pathname;
 
@@ -95,7 +95,21 @@ test("the switch is read in exactly one module", () => {
   }
 });
 
-test("no route is both published and disallowed", () => {
+test("robots.txt closes everything before launch and nothing after it", () => {
+  assert.deepEqual(robotsRules(false), { userAgent: "*", disallow: "/" });
+
+  // LAUNCHED, ROBOTS.TXT DISALLOWS NOTHING. A demoted route is closed by the
+  // `noindex, follow` in its own head, and a crawler has to be allowed to fetch
+  // the page to read it. The disallow list this file used to assert was
+  // shutting the crawler out of exactly the pages whose tag exists to walk it
+  // through — so the absence of a disallow is the assertion now, and it is
+  // load-bearing rather than an omission.
+  const open = robotsRules(true);
+  assert.deepEqual(open, { userAgent: "*", allow: "/" });
+  assert.equal("disallow" in open, false);
+});
+
+test("the sitemap never lists a demoted route", () => {
   const routes = classify({
     mappedSectors: ["cement"],
     unmappedSectors: ["steel", "chem/plastics"],
@@ -104,8 +118,9 @@ test("no route is both published and disallowed", () => {
   for (const path of routes.indexable) {
     assert.equal(isDemoted(path, routes.demoted), false, `${path} is in both lists`);
   }
-  // The sitemap is the positive list and robots.txt the negative one; a URL in
-  // both would be a site asking to be indexed and refusing to be read.
+  // robots.txt no longer says which routes are demoted, so the sitemap is the
+  // one published statement of what this site asks to have indexed. A demoted
+  // URL in it would be the site asking for the page its own head refuses.
   assert.deepEqual(
     routes.indexable.filter((p) => routes.demoted.includes(p)),
     [],
@@ -116,5 +131,6 @@ test("demotion matches on segment boundaries", () => {
   assert.equal(isDemoted("/measures", DEMOTED_PREFIXES), true);
   assert.equal(isDemoted("/measures/cbam/FIN-03", DEMOTED_PREFIXES), true);
   assert.equal(isDemoted("/measurements", DEMOTED_PREFIXES), false);
+  assert.equal(isDemoted("/under-construction/steel", DEMOTED_PREFIXES), true);
   assert.equal(isDemoted("/", DEMOTED_PREFIXES), false);
 });

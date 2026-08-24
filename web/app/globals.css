@@ -1046,6 +1046,37 @@ h3 {
   max-width: 72ch;
 }
 
+/* ---------- the holding page ----------
+
+   One sentence and a way back. It is set as a single centred block with a lot
+   of air around it, because the page has one thing to say and a layout that
+   filled the screen would imply there was more. The icon carries the sector's
+   accent, which is the only colour on it. */
+.building {
+  padding: 120px 0 160px;
+}
+.building-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 44ch;
+}
+.building h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: var(--track-display);
+  line-height: 1.05;
+  margin: 0;
+}
+.building-line {
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink-70);
+  margin: 0;
+}
+
 /* ---------- the six tiles ----------
 
    The twenty-cell sector grid is gone (brief 4 §3 and §4). It ordered the
@@ -1058,9 +1089,29 @@ h3 {
 
    The icon is the tile's only colour, at the same hairline weight it has
    everywhere else. */
+/* THREE BY TWO, TWO BY THREE, ONE COLUMN. The count is set explicitly at each
+   width rather than left to auto-fill, because auto-fill answers a different
+   question — how many 240px cells fit — and at a few hundred pixels of viewport
+   its answer is four, which renders the six as four plus two. Six things
+   presented as four plus two reads as a first rank and an afterthought, and the
+   whole point of the grid is that the six are one set.
+
+   The breakpoints are the existing ones in this file (1000px, 680px), not a new
+   pair: the header nav collapses at the first and the gutter narrows at the
+   second, so the tiles change shape where the rest of the page already does. */
 .tile-grid {
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 22px;
+}
+@media (max-width: 1000px) {
+  .tile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 680px) {
+  .tile-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .tile {
   background: var(--card);
