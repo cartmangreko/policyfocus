@@ -204,5 +204,47 @@
         ]
       }
     }
+  },
+  "ecosystem_descriptions": {
+    "status": "draft",
+    "reviewed": null,
+    "_comment": [
+      "One reviewed description per ecosystem instance — page specifications §4.2. Two",
+      "sentences: what the ecosystem contains, and where its boundary runs. The boundaries",
+      "are the whole point of the block — that chemicals excludes fertilisers, that ammonia",
+      "is read under hydrogen, that batteries does not mean solar — and none of them can be",
+      "computed from the edges, because a boundary is a decision rather than a fact about",
+      "the data.",
+      "",
+      "WHERE IT RENDERS: the coverage page, and the tile's hover text. NEVER on the tile",
+      "face (§4.2): the tile carries the name and the icon, and a paragraph on it would be",
+      "the perimeter argument competing with the six names the grid exists to present.",
+      "",
+      "EMPTY UNTIL GEORGE SUPPLIES THE TEXT. The slot, the getter and the gate are built;",
+      "the words are not written here. web/lib/sitetext.ts returns null for an empty or",
+      "unreviewed entry, and every surface renders nothing rather than a placeholder — the",
+      "same discipline as the orientation paragraph. sources/check_sector_schema.py lists",
+      "which instances are still outstanding on every run."
+    ],
+    "ecosystems": {
+      "cement": {
+        "description": ""
+      },
+      "steel": {
+        "description": ""
+      },
+      "chemicals": {
+        "description": ""
+      },
+      "batteries": {
+        "description": ""
+      },
+      "hydrogen": {
+        "description": ""
+      },
+      "circular-materials": {
+        "description": ""
+      }
+    }
   }
 }

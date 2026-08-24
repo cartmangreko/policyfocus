@@ -80,6 +80,17 @@ interface ProseDoc {
       }
     >;
   };
+  /** One reviewed two-sentence description per ecosystem instance — what it
+   *  contains and where its boundary runs (page specifications §4.2). Returned
+   *  by getEcosystemDescription below, which is null until the block is
+   *  reviewed AND the instance has text: the tile then has no hover text and
+   *  the coverage page lists no description, which is the right thing for a
+   *  boundary nobody has written down yet. */
+  ecosystem_descriptions?: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    ecosystems: Record<string, { description: string }>;
+  };
   sector_orientation?: {
     status: ProseStatus;
     reviewed?: string | null;
@@ -137,6 +148,17 @@ export function getLaunchPerimeter(): string | null {
   const block = readProse().launch_perimeter;
   if (!block || !isReviewed(block.status)) return null;
   return block.paragraph;
+}
+
+/** What one ecosystem contains, or null. Null covers three states that are the
+ *  same state to a reader — the block is unreviewed, the instance has no entry,
+ *  or its entry is still empty — and every surface renders nothing in all
+ *  three. Nothing falls back to `sector_scope` in the ecosystem data: that is a
+ *  note to whoever maintains the edges, not a sentence written for a reader. */
+export function getEcosystemDescription(id: string): string | null {
+  const block = readProse().ecosystem_descriptions;
+  if (!block || !isReviewed(block.status)) return null;
+  return block.ecosystems[id]?.description?.trim() || null;
 }
 
 /** The stored single-pass declaration for one file, in audience terms, or
