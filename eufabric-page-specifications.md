@@ -116,14 +116,22 @@ vocabulary are unchanged and bind everything below.
    Eufabric covers, what it does not, and why — and the front-page tiles for the
    five industries without a page of their own open it. It is a destination.
 
-   **A published route list, and a disallowed one.** `sitemap.xml` carries the
-   indexable routes and nothing else; `robots.txt`, once launched, allows
-   everything and disallows the demoted routes. The two are one classification
-   in `web/lib/routes.ts` rendered twice, and `web/lib/launch.test.mts` fails
-   the build if a route appears in both. Note what disallowing a demoted route
-   costs: a page that is not fetched is a page whose `follow: true` is never
-   read, so the crawl-through this rule describes is carried by the links on
-   indexable pages rather than by the demoted pages themselves.
+   **One published route list, and robots.txt disallows nothing.** `sitemap.xml`
+   carries the indexable routes and nothing else. `robots.txt`, once launched,
+   **allows everything**, demoted routes included: the `noindex, follow` in a
+   demoted page's own head is its only closure, and it is the right one, because
+   a crawler has to be allowed to fetch the page to read the tag at all. A
+   disallow list — which this section briefly carried — shut the crawler out of
+   exactly the pages whose `follow` exists to walk it through to the object
+   pages they link. The two mechanisms were working against each other and only
+   one of them can carry a crawler onward.
+
+   The classification still exists, in `web/lib/routes.ts`: it is what the pages
+   implement with `DEMOTED` and what the sitemap is checked against.
+   `web/lib/launch.test.mts` fails the build if the launched `robots.txt` grows
+   a disallow, or if the sitemap lists a demoted route — with robots.txt silent
+   on the question, the sitemap is the site's one published statement of what it
+   asks to have indexed.
 
    **This section is the authority for the route list.** The list in
    `web/lib/launch.ts` predates it and is reviewed against this section; where
@@ -386,10 +394,16 @@ nowhere else on the page to look.
 
    Until an instance has data behind it — a cross-cutting one with no edges, or
    a 1:1 one whose sector still renders the directory template — **the tile
-   opens `/coverage`**, which states what is covered and what is not. This
-   reconciles the rule above with brief 4 §3: a tile never opens a page with
-   nothing on it, and an instance arrives at its own page by having a dataset,
-   not by an edit here.
+   opens `/under-construction/<id>`**: one route, one template, the industry's
+   name and icon, the sentence "This sector is being built", and a link back to
+   the front page. No date and no progress claim, because we do not have the
+   first and the second is what makes a holding page unbelievable the next time
+   it is read. The page is demoted (`noindex, follow`).
+
+   It opened `/coverage` when the tiles were first built, which handed a reader
+   who asked about hydrogen a page about our methodology. A tile never opens a
+   page with nothing on it, and an instance arrives at its own page by having a
+   dataset, not by an edit here.
 
    **Each instance carries a reviewed two-sentence description** in
    `data/prose.json` — what the ecosystem contains and where its boundary runs.
