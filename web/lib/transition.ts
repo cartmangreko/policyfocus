@@ -198,6 +198,16 @@ export type FundingStatus =
   | "disbursed"
   | "withdrawn";
 
+// WHICH STATUSES A TOTAL MAY ADD UP. The same three groups as
+// sources/sector_map.py (FUNDING_COMMITTED / FUNDING_ANNOUNCED /
+// FUNDING_EXCLUDED), which is the authority; check_sector_schema.py fails the
+// build if these lists and that file disagree, because a total computed one way
+// in Python and another way in TypeScript is two different numbers with one
+// label.
+export const FUNDING_COMMITTED: readonly FundingStatus[] = ["approved", "signed", "disbursed"];
+export const FUNDING_ANNOUNCED: readonly FundingStatus[] = ["announced"];
+export const FUNDING_EXCLUDED: readonly FundingStatus[] = ["withdrawn"];
+
 export interface Funding {
   id: string;
   name: string;
@@ -353,6 +363,47 @@ export function fundingAmount(f: Funding, params: Map<string, Parameter>): numbe
   const scale =
     p.unit === "EUR" ? 1 : p.unit === "EUR million" ? 1e6 : p.unit === "EUR billion" ? 1e9 : null;
   return scale === null ? null : Number(p.value) * scale;
+}
+
+/** Funding split by what its status permits a total to say. Never one number:
+ *  committed money, announced money and withdrawn lines are three different
+ *  facts, and the Capital section shows them as three. `undisclosed` counts
+ *  committed rows whose amount is not published, which is why `committed` is a
+ *  floor rather than a total. */
+export interface FundingTotals {
+  committed: number;
+  committedCount: number;
+  announced: number;
+  announcedCount: number;
+  withdrawnCount: number;
+  undisclosed: number;
+}
+
+export function fundingTotals(rows: Funding[], params: Map<string, Parameter>): FundingTotals {
+  const t: FundingTotals = {
+    committed: 0,
+    committedCount: 0,
+    announced: 0,
+    announcedCount: 0,
+    withdrawnCount: 0,
+    undisclosed: 0,
+  };
+  for (const f of rows) {
+    if (FUNDING_EXCLUDED.includes(f.status)) {
+      t.withdrawnCount += 1;
+      continue;
+    }
+    const amount = fundingAmount(f, params);
+    if (FUNDING_ANNOUNCED.includes(f.status)) {
+      t.announcedCount += 1;
+      t.announced += amount ?? 0;
+      continue;
+    }
+    t.committedCount += 1;
+    if (amount === null) t.undisclosed += 1;
+    else t.committed += amount;
+  }
+  return t;
 }
 
 export function getBottlenecks(sector: string): Bottleneck[] {

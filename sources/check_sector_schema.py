@@ -373,6 +373,51 @@ def check_funding(e: Errors, rows: list[dict], tech_ids: set, project_ids: set,
                 e.add(w, f"supports {node!r}, which names no technology that exists")
 
 
+def check_status_groups(e: Errors) -> None:
+    """Every funding status belongs to exactly one arithmetic group, and the app
+    agrees with this file about which.
+
+    Two failures are possible and both are silent without this check. A status
+    added to FUNDING_STATUSES and to no group would be dropped from every total
+    and from every "not counted" line at once — invisible rather than wrong,
+    which is worse. And web/lib/transition.ts computes the same totals for the
+    Capital section: if its lists drift from these, one number gets one label
+    from two definitions."""
+    groups = {
+        "FUNDING_COMMITTED": sm.FUNDING_COMMITTED,
+        "FUNDING_ANNOUNCED": sm.FUNDING_ANNOUNCED,
+        "FUNDING_EXCLUDED": sm.FUNDING_EXCLUDED,
+    }
+    seen: dict[str, str] = {}
+    for name, members in groups.items():
+        for status in members:
+            if status in seen:
+                e.add("sector_map.py", f"funding status {status!r} is in both {seen[status]} "
+                                       f"and {name}; it belongs to exactly one")
+            seen[status] = name
+    for status in sm.FUNDING_STATUSES:
+        if status not in seen:
+            e.add("sector_map.py", f"funding status {status!r} is in no arithmetic group; add it "
+                                   f"to FUNDING_COMMITTED, FUNDING_ANNOUNCED or FUNDING_EXCLUDED "
+                                   f"so a total knows what to do with it")
+
+    ts = sm.ROOT / "web" / "lib" / "transition.ts"
+    if not ts.exists():
+        return
+    text = ts.read_text(encoding="utf-8")
+    for name, members in groups.items():
+        m = re.search(rf"export const {name}: readonly FundingStatus\[\] = \[(.*?)\];",
+                      text, re.S)
+        if not m:
+            e.add("web/lib/transition.ts", f"{name} is not declared; it must mirror "
+                                           f"sector_map.py")
+            continue
+        found = tuple(re.findall(r'"([a-z_]+)"', m.group(1)))
+        if found != tuple(members):
+            e.add("web/lib/transition.ts", f"{name} is {found} but sector_map.py says "
+                                           f"{tuple(members)}")
+
+
 def check_measure_labels(e: Errors, measure_ids: set[str]) -> None:
     """The short labels the diagram draws instead of measure ids.
 
@@ -456,6 +501,7 @@ def main() -> int:
                     material_ids)
     check_funding(e, rows["funding"], tech_ids, project_ids, measure_ids, param_ids)
     check_measure_labels(e, measure_ids)
+    check_status_groups(e)
 
     drafts = check_prose(e)
 

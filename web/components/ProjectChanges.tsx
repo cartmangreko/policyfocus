@@ -4,7 +4,7 @@ import {
   STATUS_LABEL,
   byLastChange,
   eur,
-  fundingAmount,
+  fundingTotals,
   fundingForProject,
   getParameters,
   getProjects,
@@ -38,11 +38,10 @@ export default function ProjectChanges({ limit = 6 }: { limit?: number }) {
     <ol className="pchanges">
       {rows.map(({ project: p, event }) => {
         // Derived, never stored: the project's funding rollup is summed from
-        // the funding rows that name it, every time it is shown.
-        const funded = fundingForProject(p.id).reduce(
-          (a, f) => a + (fundingAmount(f, params) ?? 0),
-          0,
-        );
+        // the funding rows that name it, every time it is shown. Committed money
+        // only — an announcement is not an award, and this figure sits next to a
+        // status change where the two would be easiest to confuse.
+        const funded = fundingTotals(fundingForProject(p.id), params).committed;
         return (
           <li key={p.id} className={`pchange ${event!.status}`}>
             <span className="pchange-date">{event!.date}</span>

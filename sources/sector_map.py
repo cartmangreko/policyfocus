@@ -179,6 +179,27 @@ FUNDING_STATUSES = (
     "withdrawn",
 )
 
+# WHICH STATUSES A TOTAL MAY ADD UP. The vocabulary above records where the
+# money has got to; these three groups record what that means for arithmetic,
+# in one place, because a total that quietly spans them is the failure the
+# vocabulary exists to prevent.
+#
+#   COMMITTED   a decision has been taken and the money is attached to a
+#               project: approved, signed, disbursed. This is what a figure
+#               labelled "awarded" may contain and nothing else.
+#   ANNOUNCED   said out loud and not yet decided. Shown as its own figure,
+#               never folded into the committed one.
+#   EXCLUDED    withdrawn. Out of every total, shown as its own line, because a
+#               withdrawal that vanishes silently reads as money that was never
+#               promised.
+#
+# Every status is in exactly one group; the gate checks that, so adding a
+# status to FUNDING_STATUSES without deciding what it means for a sum fails
+# rather than defaulting into invisibility.
+FUNDING_COMMITTED = ("approved", "signed", "disbursed")
+FUNDING_ANNOUNCED = ("announced",)
+FUNDING_EXCLUDED = ("withdrawn",)
+
 CONFIDENCE = ("primary", "secondary", "estimate")
 
 # Scope of a parameter value. `country:XX` and `plant:<id>` are checked by
