@@ -56,6 +56,51 @@ vocabulary are unchanged and bind everything below.
    text. Display vocabulary rules hold ("Eurostat input-output data", never
    register/row/reached) — `sources/display_vocabulary.py`.
 
+8. **Indexability follows the lead block.** A page is indexable when it renders
+   a lead block (§0.2). An evidence page without one carries `DEMOTED` —
+   `index: false, follow: true` — which is unlinking plus noindex, never
+   deletion: the page keeps its route and its content, and a crawler still walks
+   through it to the object pages it links.
+
+   The point of stating it this way is that indexability then tracks this
+   specification's own definition of a first-class object page, rather than a
+   route list that has to be re-decided every time a route is added.
+
+   **Qualifying today:** measures, sectors, projects. **Qualifying as they are
+   built:** companies (§3), technologies, ecosystems (§4.2).
+
+   **Demoted today,** each for its own reason rather than by category: act file
+   pages, because they substantially mirror EUR-Lex and indexing near-duplicates
+   of official texts helps nobody; change records, because they are dated diffs;
+   findings, because as currently built they are single computed statements. The
+   browse surfaces — `/acts`, `/measures`, `/findings`, `/changes` — and
+   `/coverage` are demoted as thin list pages, with `follow: true` carrying the
+   crawler through to the objects beneath them.
+
+   **Every demoted route has its exit, stated by the rule rather than reserved
+   to a future decision.** If findings grow into analytical objects that render
+   a lead block, they become indexable because the rule says so, not because
+   somebody re-opens the question.
+
+   **An owed lead block is a build gap, never grounds to demote.** Today only
+   the sector page renders one; measure and project pages qualify by kind and
+   their lead blocks are outstanding (§0.2 extends the mechanism to the page
+   types §1 and §3 define). A page that qualifies and has not yet been given its
+   lead block is indexable and owes one. Reading the test the other way would
+   remove the largest class of object pages on the site from the index, which is
+   the opposite of what this rule exists to protect.
+
+   **This section is the authority for the route list.** The list in
+   `web/lib/launch.ts` predates it and is reviewed against this section; where
+   they disagree, this section is what the implementation is wrong about.
+
+   **One source of truth per state.** The global switch (`web/lib/launch.ts`,
+   closed by default) decides whether anything is indexable at all; this rule
+   decides which pages are, once it is open. Where both speak — a demoted page
+   before launch — the robots output must state one `follow` value, not two
+   overlapping ones from two sources. Nothing in this section opens any page:
+   pre-launch, the switch dominates and everything stays out.
+
 ## 1. Homepage
 
 Order above the fold: descriptor, search, six ecosystem tiles, what-changed
@@ -275,16 +320,39 @@ nowhere else on the page to look.
 5. **Change-record template family** feeding the homepage and sector feeds from
    watch channel two output.
 
-6. **Funding record attribute** `awarded | announced`, carried on every funding
-   node and displayed wherever sums appear.
+6. **Funding status groups honoured by every sum.** The attribute exists and is
+   richer than an earlier draft of this section assumed: `status` on every
+   funding node, required by the gate, from the vocabulary `announced |
+   approved | signed | disbursed | withdrawn` (`sources/sector_map.py`).
+
+   What the totals must do with it, stated once and read by both the Python and
+   the app:
+
+   - **Committed** — `approved`, `signed`, `disbursed`. This and nothing else is
+     what a figure labelled awarded may contain.
+   - **Announced** — `announced`, alone. Its own figure, never folded into the
+     committed one.
+   - **Withdrawn** — `withdrawn`. In no total, and named where it is left out
+     rather than dropped silently.
+
+   This supersedes `awarded | announced` as this section first stated it. The
+   schema already carried the finer distinction, and adding a two-value
+   attribute beside it would have created a second source of truth for the same
+   fact — so the specification defers to the repository on what exists. Recorded
+   here so the next reader sees a decision rather than suspects drift.
 
 7. **Downstream reach channel** from the Eurostat input-output data, required
    before the supply-chain section exists (§2, excluded item).
 
 ## 5. Build order
 
-1. Funding `awarded | announced` attribute (§4.6). Smallest, gates every sum on
-   all three page types, rides along with anything.
+0. **The `sector-map` merge.** Not a build step, but everything below waits on
+   it: the transition layer — `data/transition/`, the funding node, the sector
+   template — exists only on that branch. `main` has no transition layer at all,
+   so step 1 has nothing to act on until it lands. That puts the `sector-map`
+   review at the front of this queue.
+1. Funding status groups honoured by every sum (§4.6). Smallest, gates every sum
+   on all three page types. Depends on step 0.
 2. Change-record template family (§4.5). The homepage and sector feeds are dead
    without it.
 3. Steel dataset (§4.3). Unblocks the §2 rebuild and makes the tile counts
@@ -294,6 +362,12 @@ nowhere else on the page to look.
 6. Company node kind, ingestion and dedup (§4.1), then the company page.
 7. Search index across the four node kinds (§4.4).
 8. Downstream reach channel (§4.7) → supply-chain section. `ROADMAP.md` only.
+
+**Before `SITE_LAUNCHED` is set:** measure and project lead blocks, so that
+§0.8's literal test and the practice coincide at launch and the build-gap clause
+there becomes vestigial rather than a standing exemption. Sequenced against the
+flag, not against any merge — the global noindex means the clause does no work
+until then, and nothing in the eight steps above waits on it.
 
 The launch gate is unchanged. `web/lib/launch.ts` stays closed by default and
 nothing in this specification touches it; every surface here ships noindex until
