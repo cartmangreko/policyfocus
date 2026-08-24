@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import EcosystemTiles from "@/components/EcosystemTiles";
-import ProjectChanges from "@/components/ProjectChanges";
 import { getCoverageLine, getMasthead } from "@/lib/sitetext";
 
 // The front page, cut back to what it can stand behind (brief 4 §3): the name,
-// what the platform is, the six industries it covers, what moved, and one line
-// saying where the material comes from.
+// what the platform is, the six industries it covers, and one line saying where
+// the material comes from.
 //
 // WHAT LEFT, AND WHY EACH ONE LEFT
 // --------------------------------
@@ -26,11 +25,19 @@ import { getCoverageLine, getMasthead } from "@/lib/sitetext";
 //
 // Sign in, and the search field. See components/SiteHeader.tsx.
 //
-// WHAT STAYED. The project feed. Both feeds on this platform are real, and only
-// one of them is evidence that any of this law is doing something: a kiln
-// reaching mechanical completion, or a project pausing because a national
-// agency declined to co-fund it. The legislative change records keep their
-// pages at /changes, unlinked from here.
+// The project feed. It was the one thing on this page that was evidence rather
+// than description — a kiln reaching mechanical completion, a project pausing
+// because a national agency declined to co-fund it — and it went last, on
+// George's call. What it left behind is the reason it went: six industries and
+// one feed, on a platform where five of the six have no projects yet, is a feed
+// about cement standing under a page that claims six. It belongs here when the
+// other five have something to put in it, and until then the movement is on the
+// sector page, where a reader knows what it is movement IN. components/
+// ProjectChanges.tsx is kept for that, unrendered; the change records keep
+// their pages at /changes.
+//
+// WHAT STAYED is what the page can stand behind on the day it ships: the name,
+// the claim, the perimeter, and where the material comes from.
 //
 // The descriptor and the positioning sentence are George-approved final text,
 // read from data/prose.json — reviewed prose stored as data, per
@@ -44,10 +51,6 @@ export function generateMetadata(): Metadata {
   // tags.
   return { description: `${masthead.descriptor} ${masthead.positioning}` };
 }
-
-// Enough to read as a feed rather than as a teaser, and few enough that the
-// page stays one screen of tiles and one of movement.
-const FEED_ON_HOME = 6;
 
 export default function Home() {
   const masthead = getMasthead();
@@ -64,18 +67,6 @@ export default function Home() {
       <section className="band band-paper" id="sectors">
         <div className="wrap">
           <EcosystemTiles />
-        </div>
-      </section>
-
-      <section className="band" id="latest">
-        <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Latest</p>
-              <h2>What moved</h2>
-            </div>
-          </div>
-          <ProjectChanges limit={FEED_ON_HOME} />
         </div>
       </section>
 
