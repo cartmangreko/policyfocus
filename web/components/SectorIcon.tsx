@@ -17,7 +17,15 @@ import type { SectorSlug } from "@/lib/types";
 // the rule they obey is the brief's: hairlines, chips and icon strokes only,
 // never a background, never a large fill.
 
-const PATHS: Record<SectorSlug, React.ReactNode> = {
+// Two of the six tiles on the front page are not sectors and never will be:
+// hydrogen production and the recovery industry are ecosystems (brief 4 §2),
+// and until the ecosystem node kind exists they need an icon on the same terms
+// as everything else here — one hand, one grid, a noun from the industry's own
+// world. They are keyed by their ecosystem id rather than a sector slug, which
+// is why the record below is keyed by IconKey and not by SectorSlug.
+export type IconKey = SectorSlug | "hydrogen" | "circular";
+
+const PATHS: Record<IconKey, React.ReactNode> = {
   // An I-beam, end on: the section every steel catalogue opens with.
   steel: (
     <>
@@ -166,6 +174,26 @@ const PATHS: Record<SectorSlug, React.ReactNode> = {
       <path d="M9.6 21h4.8l-1.2-6.9h-2.4z" />
     </>
   ),
+  // An electrolyser stack, gas coming off both ends: the plates in the middle
+  // and the two offtakes are what separates it from a battery.
+  hydrogen: (
+    <>
+      <path d="M5 7h14v11H5z" />
+      <path d="M9 7v11M12 7v11M15 7v11" />
+      <path d="M7 7V3M17 7V3" />
+      <path d="M2 12.5h3M19 12.5h3" />
+    </>
+  ),
+  // A bale: scrap, film or fibre compressed into a cube and strapped, which is
+  // the form every recovered material moves in before it is anything else.
+  circular: (
+    <>
+      <path d="M4 8 12 4l8 4v8l-8 4-8-4z" />
+      <path d="M4 8l8 4 8-4" />
+      <path d="M12 12v8" />
+      <path d="M7.4 10.3v7.4M16.6 10.3v7.4" />
+    </>
+  ),
   // Carbon going down into the strata.
   ccs: (
     <>
@@ -191,7 +219,7 @@ export default function SectorIcon({
   size = 16,
   className,
 }: {
-  slug: SectorSlug;
+  slug: IconKey;
   size?: number;
   className?: string;
 }) {

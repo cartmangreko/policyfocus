@@ -118,7 +118,11 @@ CHROME_MARKERS = (
     "brand", "focus-visible", "focus", "wordmark", "mark-", "logomark",
     "source-link", "section-link", "backlink", "crumb", "seam", "ticker-dot",
     "selection",
-    "searchbar", "query-arrow", "skip-link", "sector-live", "signin",
+    # `searchbar` keeps its entry while the component is unrendered: the field
+    # returns with the search index, and its styles never left. `sector-live`
+    # and `signin` were dropped with the twenty-sector grid and the sign-in
+    # control (brief 4 §3).
+    "searchbar", "query-arrow", "skip-link",
 )
 
 # Where the diagram palette is allowed. The diagram, the ego graph, the finding

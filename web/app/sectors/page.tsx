@@ -1,51 +1,49 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Crumbs from "@/components/Crumbs";
-import SectorCard from "@/components/SectorCard";
-import SummaryStrip from "@/components/SummaryStrip";
-import { getSectorCounts, isChild } from "@/lib/data";
-import { getPerimeterProse } from "@/lib/sitetext";
-import { getSiteSummary } from "@/lib/summaries";
+import EcosystemTiles from "@/components/EcosystemTiles";
 
-// The directory root — the same template as every level below it: summary
-// strip, then children as sub-cards, each with a miniature strip of its own.
-// At this depth the children are the parent sectors and there are no measure
-// lists or panels; those belong to the sector the reader descends into.
+// The six, and nothing else (brief 4 §4).
+//
+// WHAT THIS REPLACED. A directory of twenty parent sectors, each a card with a
+// miniature burden/relief strip, children nested under it, and the whole
+// corpus summarised at the top. Every figure on it was correct and every one
+// of them was the old product: a reader arriving here wanted to know which
+// industries this platform covers, and was given a measure inventory instead.
+//
+// The rest of the spine has not gone anywhere. Every sector the corpus reaches
+// still has its page, still renders its own directory template, and is reached
+// from the coverage page — which is the page whose job is to say what is on
+// the platform and what is not. This one says what the platform is FOR.
+//
+// It draws the same component as the front page, deliberately: two lists of
+// six maintained in two places is two lists of six that will disagree.
 export const metadata: Metadata = {
   title: "Sectors",
   description:
-    "Every sector the platform covers, with the burden/benefit, status and channel summary for each — parents first, children nested under the parent that files them.",
+    "The six industries Eufabric covers: cement, steel, chemicals, batteries, hydrogen and circular materials.",
 };
 
 export default function SectorsPage() {
-  const site = getSiteSummary();
-  const parents = getSectorCounts().filter((s) => !isChild(s.slug));
-
   return (
     <main className="rise">
       <section className="detail-head">
         <div className="wrap">
           <Crumbs trail={[{ label: "Home", href: "/" }, { label: "Sectors" }]} />
           <h1 className="sector-title">Sectors</h1>
-          {/* The perimeter paragraph — reviewed prose from data/prose.json,
-              its counts rendered from the gate-checked site summary. */}
-          <p className="sector-intro">{getPerimeterProse()}</p>
-          <p className="section-note">
-            This is the full sector spine: {parents.length} parent sectors, with a child nested
-            under a parent only where measures apply to the child and not to the parent.
-          </p>
-          <SummaryStrip cuts={site} subject="the tracked corpus" />
         </div>
       </section>
 
       <section className="band">
         <div className="wrap">
-          <p className="eyebrow">Directory</p>
-          <h2>Every sector the corpus reaches</h2>
-          <div className="dir-cards">
-            {parents.map((s) => (
-              <SectorCard key={s.slug} slug={s.slug} />
-            ))}
-          </div>
+          <EcosystemTiles />
+          <p className="section-note">
+            Eufabric covers Europe&rsquo;s energy-intensive industries and the materials they
+            make.{" "}
+            <Link href="/coverage" className="section-link">
+              What is covered, and what is not &rarr;
+            </Link>
+          </p>
         </div>
       </section>
     </main>

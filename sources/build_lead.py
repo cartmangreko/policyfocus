@@ -50,6 +50,58 @@ THE FIVE FACTS
 A fact that cannot be computed is omitted rather than faked, and the templates
 that would have used it are skipped -- which is what the fallback path is for.
 
+WHAT BRIEF 4 §5 CHANGED, AND WHY IT WAS A REWRITE RATHER THAN AN EDIT
+=====================================================================
+The first version of these templates composed the facts in the SCHEMA'S OWN
+WORDS, and the result was unreadable to anybody who had not read the schema:
+
+    European cement carries EUR75.46 per tonne of cost from CBAM certificates on
+    the importer, and its binding constraint is the green premium against
+    willingness to pay.
+
+Four things are wrong with that sentence and only one of them is style. It
+opens on a per-tonne cost that falls on IMPORTERS, which is not what European
+cement pays. It states a percentage ("75-150% above a conventional plant") whose
+base is somewhere else on the page. It labels a constraint instead of describing
+one. And it does all of it in two clauses, so a reader who loses the thread has
+nowhere to pick it up.
+
+The rules now, one per sentence on the surface:
+
+  * The FIRST SENTENCE states the sector's situation, one idea: what it is doing
+    and what the open question about it is. No figures.
+  * WHY IT MATTERS is one sentence, and it has to work for somebody who does not
+    know what a bottleneck is.
+  * EACH FACT LINE is one plain sentence with its own subject. Every number says
+    what it is a number OF, and carries the as-of date of the value under it.
+  * SCHEMA VOCABULARY DOES NOT APPEAR: no constraint, no gap, no exposure, no
+    bearer, no willingness to pay. The thing gets described instead of labelled,
+    and SCHEMA_WORDS below fails the build if one gets through.
+
+The facts themselves did not change -- the same five are computed from the same
+panels by the same selection rules. What changed is that four of them are now
+written as sentences and the fifth, the binding constraint, no longer surfaces
+at all: it is what the opening sentence is ABOUT, and printing it twice, once as
+a sentence and once as a label, was most of what made the block unreadable.
+
+THE THREE AUTHORED VOCABULARIES
+===============================
+Three maps below turn a closed schema list into English. They are authored, they
+are small, and each is keyed to a vocabulary that fails loudly when it grows:
+
+  TRANSITION_VERB   what a sector under this transition is doing
+  OPEN_QUESTION     what the open question is, by the type of its binding
+                    constraint
+  STATUS_VERB       what a project did, by the status it moved to
+
+A missing key raises. That is the point: the day a sixth transition or an eighth
+project status is added, this file stops rather than printing a sentence with a
+schema word wedged into it.
+
+The fourth vocabulary is not here. `plain_action` -- "capturing the CO2 its kilns
+emit" -- is a per-technology field in data/transition/technologies.json, because
+it is a fact about that technology rather than about this template.
+
 WHAT "LARGEST GAP" MEANS, AND THE UNIT RULE
 ===========================================
 A gap parameter is one flagged `states_gap` -- a number that measures a shortfall
@@ -80,7 +132,7 @@ OUT_DIR = sm.ROOT / "data" / "transition" / "lead"
 
 # Bumped when a template changes. It is in the output so a diff shows whether a
 # sentence moved because the data moved or because the template did.
-TEMPLATE_VERSION = 1
+TEMPLATE_VERSION = 2
 
 # A project at or past this point has committed the money. `funded` is a grant
 # award and is deliberately below the line: an Innovation Fund letter is not a
@@ -103,6 +155,92 @@ JUDGMENT_ADJECTIVES = (
 
 MONTHS = ("January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December")
+
+# The schema's own words, banned on this surface by brief 4 §5. They are not in
+# sources/display_vocabulary.py because they are not a positioning problem and
+# they are legitimate everywhere else in this repository -- a bottleneck is
+# called a bottleneck in every file that builds one. What they cannot do is
+# appear in the four sentences a reader meets first.
+#
+# `importer` is deliberately NOT here, and the brief's own example is why: "the
+# importer" as a bearer label is the schema talking, and "importers of cement
+# pay for its carbon" is a sentence with a subject. The ban is on the label, and
+# a label is what a template produces; the phrase survives because a person
+# wrote it into a template as English.
+SCHEMA_WORDS = (
+    "binding constraint", "constraint", "the gap", "exposure", "bearer",
+    "borne by", "willingness to pay", "linkage", "in view", "sector view",
+    "attention count", "score", "weight",
+)
+
+# What a sector under this transition is DOING, as a present participle. See the
+# module docstring: a missing key raises rather than degrading.
+TRANSITION_VERB = {
+    "decarbonisation": "decarbonising",
+    "circularity": "moving on to recycled material",
+    "supply_security": "trying to secure its own supply",
+    "digital": "digitising how it runs",
+    "defence": "rebuilding for defence demand",
+}
+
+# The open question, by the type of the constraint the most measure weight lands
+# on. Keyed to sector_map.BOTTLENECK_TYPES.
+OPEN_QUESTION = {
+    "market": "who pays for it",
+    "financial": "who pays for it",
+    "infrastructure": "whether what it depends on gets built in time",
+    "technical": "whether the technology does what it has to at full scale",
+    "political": "whether the public money behind it holds",
+}
+
+# One sentence's worth of why-it-matters, by the same key. Each says what the
+# constraint MEANS for somebody outside the industry, and none of them says
+# "constraint".
+WHY_BY_TYPE = {
+    "market": "{Sector} made this way costs more than the {sector} it replaces, so whether "
+              "Europe gets it depends on who covers the difference.",
+    "financial": "Converting a site costs a large fraction of what the site is worth, so "
+                 "whether {sector} is made this way depends on who covers the difference.",
+    "infrastructure": "What is being built depends on pipelines, grids and sites that "
+                      "other parties own, so the two have to arrive together or neither "
+                      "works.",
+    "technical": "The difficulty is not only the money: the technology still has to do "
+                 "at full scale what it has done at demonstration scale.",
+    "political": "Most of the money behind these projects is public and revocable, so a "
+                 "funder changing its position stops a project outright.",
+}
+
+# What a project DID, by the status it moved to. Keyed to
+# sector_map.PROJECT_STATUSES.
+STATUS_VERB = {
+    "announced": "was announced",
+    "funded": "was awarded public funding",
+    "fid": "took a final investment decision",
+    "construction": "went into construction",
+    "operating": "started operating",
+    "paused": "was paused",
+    "cancelled": "was cancelled",
+}
+
+# How the top priced measure reads as a sentence, by the money model that
+# produced the figure. The model is what the number MEANS -- a certificate price
+# on an import, an allowance being withdrawn, a grant that has landed -- so it is
+# the right key, and a model without a line here raises.
+MODEL_LINE = {
+    "cbam_certificates":
+        "Importers of {sector} pay for the carbon in what they bring into Europe, "
+        "currently {figure}.",
+    "free_allocation_phaseout":
+        "European {sector} makers are losing the free carbon allowances they used to "
+        "get, worth {figure} at today's carbon price.",
+    "grant_programme":
+        "{figure} of EU grant money has been awarded to {sector} projects in Europe.",
+}
+
+# The order the surfaced facts read in: how big the problem is, what is being
+# built about it, what it costs today, what moved last. Anything not listed here
+# is computed and kept, and does not appear on the page.
+SURFACE_ORDER = ("the_gap", "pipeline_state", "decisive_exposure", "the_latest")
 
 _DATE_LONG = re.compile(rf"\b(\d{{1,2}}) ({'|'.join(MONTHS)}) (\d{{4}})\b")
 _ISO = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
@@ -147,6 +285,11 @@ def _fact(fid, label, text, as_of, numbers, parts, sourced=(), href=None) -> dic
     """
     return {
         "id": fid,
+        # The label is what the fact IS, and it is kept for the build report and
+        # for anything downstream that has to name a fact. It is not drawn:
+        # brief 4 §5 rules that a fact line is a sentence with its own subject,
+        # and a sentence under a label saying the same thing in schema words is
+        # the thing the label was doing wrong.
         "label": label,
         "text": text,
         "as_of": as_of,
@@ -154,6 +297,10 @@ def _fact(fid, label, text, as_of, numbers, parts, sourced=(), href=None) -> dic
         "parts": parts,
         "sourced": list(sourced),
         "href": href,
+        # Computed for everything, drawn for SURFACE_ORDER. The binding
+        # constraint is the one fact that is computed and not drawn: it is what
+        # the opening sentence is about.
+        "surface": fid in SURFACE_ORDER,
     }
 
 
@@ -190,7 +337,7 @@ def fact_binding_constraint(bottlenecks: list[dict]) -> dict | None:
     )
 
 
-def fact_decisive_exposure(imp: dict, params: dict, labels: dict) -> dict | None:
+def fact_decisive_exposure(imp: dict, params: dict, labels: dict, sector: str) -> dict | None:
     """The top-ranked measure that has a euro figure, with its direction.
 
     Direction is not decoration here. The ranking sorts on magnitude, and a
@@ -211,24 +358,30 @@ def fact_decisive_exposure(imp: dict, params: dict, labels: dict) -> dict | None
         figure = f"€{money['per_tonne']:,.2f} per tonne"
         numbers = [f"{money['per_tonne']:,.2f}"]
     else:
-        figure = f"€{money['value'] / 1e6:,.0f}m"
+        figure = f"€{money['value'] / 1e6:,.0f} million"
         numbers = [f"{money['value'] / 1e6:,.0f}"]
 
     bearer = money["bearer"].replace("_", " ")
     as_of = max((params[p]["date_of_value"] for p in money["inputs"] if p in params),
                 default="")
+    model = money["model"]
+    if model not in MODEL_LINE:
+        raise SystemExit(
+            f"build_lead: money model {model!r} has no sentence in MODEL_LINE — the "
+            f"number cannot be stated without saying what it is a number of"
+        )
     return _fact(
         "decisive_exposure", "Decisive exposure",
-        f"{name} — {figure} of {money['direction']}, borne by the {bearer}.",
+        MODEL_LINE[model].format(sector=sector, figure=figure),
         as_of, numbers,
         {"name": name, "figure": figure, "direction": money["direction"],
-         "bearer": bearer},
+         "bearer": bearer, "model": model},
         sourced=(name,),
         href=f"#measure-{m['file']}-{m['id']}",
     )
 
 
-def fact_pipeline_state(projects: list[dict]) -> dict | None:
+def fact_pipeline_state(projects: list[dict], sector: str) -> dict | None:
     """How far the pipeline has got, and how much of it has committed money."""
     live = [p for p in projects if p["status"] in ADVANCE]
     if not live:
@@ -238,8 +391,8 @@ def fact_pipeline_state(projects: list[dict]) -> dict | None:
     as_of = max((h["date"] for p in projects for h in p["status_history"]), default="")
     return _fact(
         "pipeline_state", "Pipeline",
-        f"{len(projects)} projects, the furthest of them {furthest['status']} "
-        f"({furthest['name']}); {committed} at or past a final investment decision.",
+        f"{len(projects)} European {sector} projects are under way, and "
+        f"{committed} of them have taken a final investment decision.",
         as_of, [f"{len(projects)}", f"{committed}"],
         {"total": str(len(projects)), "committed": str(committed),
          "furthest": furthest["name"], "furthest_status": furthest["status"]},
@@ -248,7 +401,8 @@ def fact_pipeline_state(projects: list[dict]) -> dict | None:
     )
 
 
-def fact_the_gap(params: dict, sector: str, bottlenecks: list[dict]) -> dict | None:
+def fact_the_gap(params: dict, sector: str, bottlenecks: list[dict],
+                 sector_name: str) -> dict | None:
     """The largest sourced gap parameter. See the module docstring on units."""
     gaps = [p for p in params.values()
             if p.get("states_gap") and p.get("sector") == sector]
@@ -262,6 +416,7 @@ def fact_the_gap(params: dict, sector: str, bottlenecks: list[dict]) -> dict | N
             f"page cannot rank them, the same rule the money score enforces with `scale`."
         )
     p = max(gaps, key=lambda p: (_upper_bound(p["value"]), p["id"]))
+    sector_word = sector_name
     # A percentage sits against its number; every other unit stands off it.
     if p["unit"].startswith("%"):
         figure, rest = f"{p['value']}%", p["unit"][1:].strip()
@@ -270,12 +425,18 @@ def fact_the_gap(params: dict, sector: str, bottlenecks: list[dict]) -> dict | N
     # Parameters have no anchor of their own -- they render as chips inside the
     # bottleneck they quantify, so the link goes there.
     owner = next((b for b in bottlenecks if p["id"] in b.get("quantified_by", [])), None)
+    # The publisher, without the report it was published in: "International
+    # Energy Agency — Breakthrough Agenda Report 2025" is a citation, and the
+    # sentence needs the name of whoever is saying it. The citation is intact on
+    # the parameter chip, which is what the fact links to.
+    publisher = p["source"]["publisher"].split(" — ")[0].strip()
     return _fact(
         "the_gap", "The gap",
-        f"{p['name']}: {figure}{' ' + rest if rest else ''}.",
+        f"Low-carbon {sector_word} costs {figure}{' ' + rest if rest else ''} to make, "
+        f"on the {publisher}'s figures.",
         p["date_of_value"], [str(p["value"])],
-        {"figure": figure, "rest": rest, "name": p["name"]},
-        sourced=(p["name"], p["unit"], rest),
+        {"figure": figure, "rest": rest, "name": p["name"], "publisher": publisher},
+        sourced=(p["name"], p["unit"], rest, publisher),
         href=f"#bottleneck-{owner['id']}" if owner else "#bottlenecks",
     )
 
@@ -286,9 +447,13 @@ def fact_the_latest(projects: list[dict]) -> dict | None:
     if not events:
         return None
     _, p, h = max(events, key=lambda e: (e[0], e[1]["id"]))
+    if h["status"] not in STATUS_VERB:
+        raise SystemExit(
+            f"build_lead: project status {h['status']!r} has no verb in STATUS_VERB"
+        )
     return _fact(
         "the_latest", "The latest",
-        f"{p['name']} moved to {h['status']} on {_long_date(h['date'])}.",
+        f"{p['name']} {STATUS_VERB[h['status']]} on {_long_date(h['date'])}.",
         h["date"], [],
         {"project": p["name"], "status": h["status"], "date": _long_date(h["date"])},
         sourced=(p["name"],),
@@ -300,68 +465,58 @@ def fact_the_latest(projects: list[dict]) -> dict | None:
 # the sentences
 # ---------------------------------------------------------------------------
 
-def compose(sector_name: str, facts: dict[str, dict]) -> tuple[dict, dict | None]:
+def compose(sector_name: str, facts: dict[str, dict], lead_action: str | None,
+            transition: str | None) -> tuple[dict, dict | None]:
     """The two generated blocks, as templates over the facts and nothing else.
 
     Each names the fact ids it drew on, so a reader following a claim back has a
     path and the gate has something to check. Everything comes out of `parts`:
     no template reads another template's output.
+
+    THE OPENING SENTENCE CARRIES NO NUMBER. It says what the sector is doing and
+    what the open question about it is, and both halves come from a closed
+    vocabulary keyed to the schema -- the transition it is under, the technology
+    most of its projects are building, and the type of the constraint the most
+    measure weight lands on. A reader who stops after this sentence has the
+    situation; a reader who goes on gets the figures, one per line, each with a
+    date on it.
     """
-    exposure = facts.get("decisive_exposure")
     constraint = facts.get("binding_constraint")
-    gap = facts.get("the_gap")
-    pipeline = facts.get("pipeline_state")
-    latest = facts.get("the_latest")
     sector = sector_name.lower()
 
-    # THE SENTENCE. What the sector is under: the priced measure and the
-    # constraint, in one line, with no verb doing more work than "is".
-    if exposure and constraint:
-        e = exposure["parts"]
+    verb = TRANSITION_VERB.get(transition or "")
+    ctype = (constraint or {}).get("parts", {}).get("type")
+    question = OPEN_QUESTION.get(ctype or "")
+
+    if verb and lead_action and question:
         sentence = {
-            "text": f"European {sector} carries {e['figure']} of {e['direction']} from "
-                    f"{e['name']} on the {e['bearer']}, and its binding constraint is the "
-                    f"{constraint['parts']['name'].lower()}.",
-            "from": ["decisive_exposure", "binding_constraint"],
-        }
-    elif exposure:
-        e = exposure["parts"]
-        sentence = {
-            "text": f"European {sector} carries {e['figure']} of {e['direction']} from "
-                    f"{e['name']} on the {e['bearer']}.",
-            "from": ["decisive_exposure"],
-        }
-    elif constraint:
-        sentence = {
-            "text": f"European {sector}'s binding constraint is the "
-                    f"{constraint['parts']['name'].lower()}.",
+            "text": f"European {sector} is {verb} by {lead_action}, and the main "
+                    f"question is {question}.",
             "from": ["binding_constraint"],
         }
+    elif verb and lead_action:
+        sentence = {
+            "text": f"European {sector} is {verb} by {lead_action}.",
+            "from": [],
+        }
+    elif verb:
+        sentence = {"text": f"European {sector} is {verb}.", "from": []}
     else:
+        # Nothing to say that is not a schema word. The caller's fallback path
+        # takes it from here.
         return {"text": "", "from": []}, None
 
-    # WHY IT MATTERS. Two sentences at most: how big the gap is, then what is
-    # being built against it and when that last moved.
-    parts: list[str] = []
-    used: list[str] = []
-    if gap:
-        g = gap["parts"]
-        parts.append(
-            f"The largest gap the sector's own numbers state is {g['figure']}"
-            f"{' ' + g['rest'] if g['rest'] else ''}"
-        )
-        used.append("the_gap")
-    if pipeline and latest:
-        pp, ll = pipeline["parts"], latest["parts"]
-        parts.append(
-            f"{pp['total']} projects are building against it, {pp['committed']} at or past "
-            f"a final investment decision, and the most recent move was {ll['project']} to "
-            f"{ll['status']} on {ll['date']}"
-        )
-        used += ["pipeline_state", "the_latest"]
-    if not parts:
-        return sentence, None
-    why = {"text": ". ".join(parts) + ".", "from": used}
+    # WHY IT MATTERS. One sentence, keyed to the same constraint type, and only
+    # where the sector's own numbers state a shortfall that the sentence can be
+    # about -- the gap fact is what makes "costs more than what it replaces" a
+    # claim this page can stand behind rather than a general remark about
+    # industrial decarbonisation.
+    why = None
+    if facts.get("the_gap") and ctype in WHY_BY_TYPE:
+        why = {
+            "text": WHY_BY_TYPE[ctype].format(sector=sector, Sector=sector.capitalize()),
+            "from": ["the_gap", "binding_constraint"],
+        }
     return sentence, why
 
 
@@ -369,16 +524,49 @@ def compose(sector_name: str, facts: dict[str, dict]) -> tuple[dict, dict | None
 # the gate
 # ---------------------------------------------------------------------------
 
-def gate(block: dict, facts: dict[str, dict]) -> list[str]:
-    """Every rule from amendment brief 2 §4, applied to one generated block."""
+def schema_words(text: str) -> list[str]:
+    """The schema's own words, where brief 4 §5 does not allow them."""
+    lowered = text.lower()
+    return [w for w in SCHEMA_WORDS if re.search(rf"\b{re.escape(w)}\b", lowered)]
+
+
+def gate_fact(fact: dict) -> list[str]:
+    """One surfaced fact line: one sentence, its own subject, no schema words.
+
+    Only surfaced facts are checked for vocabulary. The binding constraint is
+    computed, kept and never drawn, and its text is allowed to say what it is —
+    the ruling is about what a reader is shown, not about what the build knows.
+    """
+    problems: list[str] = []
+    text = fact["text"]
+    if len([s for s in re.split(r"(?<=[.!?]) +", text.strip()) if s]) != 1:
+        problems.append("more than one sentence")
+    if not fact["as_of"]:
+        problems.append("no as-of date, and every figure on this block carries one")
+    problems += [f"the schema word {w!r}" for w in schema_words(text)]
+    exempt = tuple(fact["sourced"])
+    problems += [f"the banned word {w!r}" for w in dv.violations(text, exempt=exempt)]
+    return problems
+
+
+def gate(block: dict, facts: dict[str, dict], *, max_sentences: int = 1) -> list[str]:
+    """Amendment brief 2 §4 and brief 4 §5, applied to one generated block.
+
+    `max_sentences` is 1 now rather than 2. Brief 4 §5 gives the opening
+    sentence one idea and why-it-matters one sentence, and the two-sentence
+    allowance is what let the first version of this template pack a cost, a
+    constraint and a project count into a block nobody could parse.
+    """
     problems: list[str] = []
     text = block["text"]
     if not text:
         return ["empty"]
 
     sentences = [s for s in re.split(r"(?<=[.!?]) +", text.strip()) if s]
-    if len(sentences) > 2:
-        problems.append(f"{len(sentences)} sentences, at most 2 allowed")
+    if len(sentences) > max_sentences:
+        problems.append(f"{len(sentences)} sentences, at most {max_sentences} allowed")
+
+    problems += [f"the schema word {w!r}" for w in schema_words(text)]
 
     if not block["from"]:
         problems.append("no fact id — a sentence nothing maps to")
@@ -387,7 +575,10 @@ def gate(block: dict, facts: dict[str, dict]) -> list[str]:
             problems.append(f"names fact {fid!r}, which was not computed")
 
     known = {n for f in facts.values() for n in f["numbers"]}
-    stripped = _DATE_LONG.sub(" ", _ISO.sub(" ", text))
+    # CO2 is a name, not a figure. Digits welded to letters are struck out
+    # before the number check, the same rule sources/check_sector_schema.py
+    # applies to an authored key-measure sentence.
+    stripped = re.sub(r"[A-Za-z]\d+", " ", _DATE_LONG.sub(" ", _ISO.sub(" ", text)))
     for token in _NUMBER.findall(stripped):
         if _norm_number(token) not in known:
             problems.append(f"the number {token!r} is in no fact")
@@ -419,6 +610,30 @@ def fingerprint(facts: list[dict]) -> str:
 # build
 # ---------------------------------------------------------------------------
 
+def lead_technology(sector: str) -> dict | None:
+    """The technology the sector is actually building, for the opening sentence.
+
+    Most projects wins, and a technology that another one DEPENDS ON is out of
+    the running however many projects touch it. CO2 transport and storage is on
+    every capture project in cement, and it is not what cement is doing — it is
+    what cement is waiting for. Naming it in the opening sentence would say the
+    sector is decarbonising by moving CO2 around, which is the shared enabler
+    describing itself as the industry.
+    """
+    techs = [t for t in sm.load("technology") if sector in t.get("sectors", [])]
+    depended_on = {d for t in techs for d in t.get("dependency", [])}
+    own = [t for t in techs if t["id"] not in depended_on] or techs
+    if not own:
+        return None
+    counts: dict[str, int] = {}
+    for p in sm.load("project"):
+        if p["sector"] != sector:
+            continue
+        for tid in p.get("technology", []):
+            counts[tid] = counts.get(tid, 0) + 1
+    return max(own, key=lambda t: (counts.get(t["id"], 0), t["id"]))
+
+
 def build(sector: str) -> dict:
     imp = bi.build(sector, bi.date.today().year)
     params = sm.index(sm.load("parameter"))
@@ -426,37 +641,57 @@ def build(sector: str) -> dict:
     projects = [p for p in sm.load("project") if p["sector"] == sector]
     labels = sm.measure_labels()
     sector_name = sm.sectors()[sector]["name"]
+    sector_word = sector_name.lower()
+
+    lead_tech = lead_technology(sector)
+    lead_action = (lead_tech or {}).get("plain_action")
+    transition = (lead_tech or {}).get("transition")
 
     computed = [
         fact_binding_constraint(bottlenecks),
-        fact_decisive_exposure(imp, params, labels),
-        fact_pipeline_state(projects),
-        fact_the_gap(params, sector, bottlenecks),
+        fact_decisive_exposure(imp, params, labels, sector_word),
+        fact_pipeline_state(projects, sector_word),
+        fact_the_gap(params, sector, bottlenecks, sector_word),
         fact_the_latest(projects),
     ]
     facts = [f for f in computed if f]
+    # In reading order, with the facts nobody sees after the ones they do.
+    facts.sort(key=lambda f: (SURFACE_ORDER.index(f["id"]) if f["surface"]
+                              else len(SURFACE_ORDER)))
     by_id = {f["id"]: f for f in facts}
     for f in facts:
         dv.check(f["text"], f"build_lead: {sector} fact {f['id']}",
                  exempt=tuple(f["sourced"]))
 
-    sentence, why = compose(sector_name, by_id)
     notes: list[str] = []
+    # A surfaced fact that fails its own gate is not shown. It is still built,
+    # still in this file and still printed on every run — what it is not is a
+    # sentence in front of a reader that nobody checked.
+    for f in facts:
+        if not f["surface"]:
+            continue
+        problems = gate_fact(f)
+        if problems:
+            f["surface"] = False
+            notes.append(f"the fact {f['id']} failed its gate "
+                         f"({'; '.join(problems)}) — computed, not shown")
+
+    sentence, why = compose(sector_name, by_id, lead_action, transition)
 
     problems = gate(sentence, by_id)
     if problems:
         notes.append(f"the sentence failed its gate ({'; '.join(problems)}) — "
                      f"fell back to the template")
-        exposure = by_id.get("decisive_exposure")
-        constraint = by_id.get("binding_constraint")
-        # The dullest sentence the facts support: the top measure and the
-        # binding constraint, named, with nothing composed around them.
-        priced = (f"{exposure['parts']['figure']} of {exposure['parts']['direction']} from "
-                  f"{exposure['parts']['name']}" if exposure else "no priced measure")
-        held = (constraint["parts"]["name"].lower() if constraint else "nothing recorded")
+        # The dullest sentence the facts support. It used to name the priced
+        # measure and the binding constraint, which meant the fallback for a
+        # block that had failed its vocabulary gate was a sentence built out of
+        # schema words. It now says the one thing that is always true and always
+        # plain: what the sector is under, and nothing else.
+        verb = TRANSITION_VERB.get(transition or "")
         sentence = {
-            "text": f"European {sector_name.lower()}: {priced}, against {held}.",
-            "from": [f for f in ("decisive_exposure", "binding_constraint") if f in by_id],
+            "text": (f"European {sector_word} is {verb}." if verb
+                     else f"European {sector_word}."),
+            "from": [],
         }
         why = None
 

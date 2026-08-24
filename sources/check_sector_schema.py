@@ -55,6 +55,7 @@ What it prints and does NOT fail on:
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from datetime import date
@@ -153,7 +154,24 @@ def check_technologies(e: Errors, rows: list[dict], sectors: dict) -> None:
     ids = {r["id"] for r in rows}
     for r in rows:
         w = f"technology {r.get('id', '?')}"
-        _req(e, w, r, "id", "transition", "name", "description", "readiness", "sectors")
+        # `plain_action` is what the sector is DOING with this technology, as a
+        # gerund phrase that finishes "European cement is decarbonising by
+        # ___" — the opening sentence of the lead block (brief 4 §5). Required
+        # of every technology, not only of the one that currently leads its
+        # sector: which technology leads is a fact about today's project count,
+        # and a field that only the leader had to fill in would go missing the
+        # week the count changed.
+        _req(e, w, r, "id", "transition", "name", "description", "plain_action",
+             "readiness", "sectors")
+        action = (r.get("plain_action") or "").strip()
+        if action:
+            if action[0].isupper() or action.endswith("."):
+                e.add(w, "plain_action is a phrase inside a sentence, not a sentence: "
+                         "lower case, no full stop")
+            bad = dv.violations(action)
+            if bad:
+                e.add(w, f"plain_action uses {sorted(set(bad))} — see "
+                         f"sources/display_vocabulary.py")
         _vocab(e, w, r, "transition", sm.TRANSITIONS)
         for slug in r.get("sectors", []):
             if slug not in sectors:
@@ -451,6 +469,88 @@ def check_measure_labels(e: Errors, measure_ids: set[str]) -> None:
         if bad:
             e.add(where, f"{label!r} uses {sorted(set(bad))} — see "
                          f"sources/display_vocabulary.py")
+        check_plain_block(e, where, entry, measure_id)
+
+
+# A four-digit year, which is the one number an authored sentence is allowed to
+# write out — and only where the measure's own `when` field says it.
+_YEAR = re.compile(r"\b\d{4}\b")
+# A number STANDING ON ITS OWN. Digits welded to letters are part of a name —
+# CO2, PM2.5, R290 — and are no more a figure than the letters around them.
+_DIGITS = re.compile(r"(?<![A-Za-z0-9])\d+(?![A-Za-z0-9])")
+
+# Long enough to say what a measure requires, short enough that it is a title
+# and not the sentence under it.
+MAX_PLAIN_TITLE = 72
+
+
+def check_plain_block(e: Errors, where: str, entry: dict, measure_id: str) -> None:
+    """The key-measures list's title and sentence — brief 4 §5.
+
+    THE RULE THIS ENFORCES is that the words are authored and the figures are
+    not. An authored sentence with €75.46 typed into it is a number nobody
+    gated, and it is wrong the next time the carbon price moves; the same
+    sentence with {money_per_tonne} in it is wrong never, because
+    sources/build_importance.py fills it from the measure's own money block on
+    every build and fails if it cannot.
+
+    So: no bare numbers, with one exception. A YEAR is a date rather than a
+    figure, it is what makes 'from 2028' readable, and it is checkable against
+    the measure's own `when` field — which is exactly what happens below. Any
+    other run of digits is a figure that should have been a slot.
+    """
+    plain = entry.get("plain") or {}
+    title = (plain.get("title") or "").strip()
+    sentence = (plain.get("sentence") or "").strip()
+    if not title or not sentence:
+        e.add(where, "no plain block — every measure that has a label is one a sector "
+                     "page may list, and the list says what a measure requires or grants "
+                     "in a title and one sentence")
+        return
+
+    if len(title) > MAX_PLAIN_TITLE:
+        e.add(where, f"the plain title is {len(title)} characters, over {MAX_PLAIN_TITLE}")
+    if title.endswith("."):
+        e.add(where, "the plain title ends in a full stop; it is a title, not a sentence")
+    if _DIGITS.search(title):
+        e.add(where, "the plain title carries a number — numbers belong in the sentence, "
+                     "where they can be computed and dated")
+    for field, text in (("title", title), ("sentence", sentence)):
+        bad = dv.violations(text)
+        if bad:
+            e.add(where, f"the plain {field} uses {sorted(set(bad))} — see "
+                         f"sources/display_vocabulary.py")
+
+    if len([s for s in re.split(r"(?<=[.!?]) +", sentence) if s]) > 1:
+        e.add(where, "the plain sentence is more than one sentence")
+    if not sentence.endswith("."):
+        e.add(where, "the plain sentence does not end in a full stop")
+
+    for name in sm.slots_named(sentence):
+        if name not in sm.MEASURE_SLOTS:
+            e.add(where, f"the plain sentence names {{{name}}}, which is not one of "
+                         f"{list(sm.MEASURE_SLOTS)}")
+
+    when = _measure_when(measure_id)
+    years = set(_YEAR.findall(when or ""))
+    for token in _DIGITS.findall(sm._SLOT_RE.sub(" ", sentence)):
+        if len(token) == 4 and token in years:
+            continue
+        e.add(where, f"the plain sentence writes {token!r} out. A figure belongs in a "
+                     f"{{slot}}; a year is allowed only where the measure's own `when` "
+                     f"says it, and this one says {when!r}")
+
+
+def _measure_when(measure_id: str) -> str:
+    """The measure's own `when`, read from the register it lives in."""
+    slug, mid = measure_id.split(":", 1)
+    path = sm.ROOT / "data" / f"{slug}.json"
+    if not path.exists():
+        return ""
+    for row in json.loads(path.read_text(encoding="utf-8")):
+        if row.get("id") == mid:
+            return row.get("when") or ""
+    return ""
 
 
 def check_prose(e: Errors) -> list[str]:
@@ -484,11 +584,34 @@ def check_prose(e: Errors) -> list[str]:
             e.add(f"prose {sector}", "has a transition map and no orientation paragraph in "
                                      "data/prose.json sector_orientation")
 
+    # The regenerated lead, held for review (brief 4 §6). It is a COPY of the
+    # built lead rather than an input to it, so an unapproved one changes
+    # nothing on the site — but a copy that has drifted from what the page says
+    # is worse than no copy, so it is checked against the built file and
+    # printed until somebody has read it.
+    held = doc.get("sector_lead") or {}
+    leads = held.get("sectors", {})
+    for sector in sorted(leads):
+        path = sm.DATA / "lead" / f"{sector.replace('/', '__')}.json"
+        if not path.exists():
+            e.add(f"prose {sector}", "sector_lead holds a lead for a sector with no built "
+                                     "lead in data/transition/lead")
+            continue
+        built = _json.loads(path.read_text(encoding="utf-8"))
+        if leads[sector].get("fingerprint") != built["fingerprint"]:
+            e.add(f"prose {sector}", "the lead held in data/prose.json was copied from facts "
+                                     f"{leads[sector].get('fingerprint')!r} and the built lead "
+                                     f"is now {built['fingerprint']!r} — regenerate the held "
+                                     f"copy, or it records a sentence the site has stopped "
+                                     f"saying")
+
     pending = []
     if block.get("status") not in ("approved", "final"):
         pending += [f"  {s}: {notes[s]['sentence'][:88]}…" for s in sorted(notes)]
     if orient and orient.get("status") not in ("approved", "final"):
         pending += [f"  {s} (orientation): {paras[s]['paragraph'][:76]}…" for s in sorted(paras)]
+    if held and held.get("status") not in ("approved", "final"):
+        pending += [f"  {s} (lead): {leads[s]['sentence'][:76]}…" for s in sorted(leads)]
     return pending
 
 

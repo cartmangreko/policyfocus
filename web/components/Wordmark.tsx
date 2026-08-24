@@ -28,7 +28,7 @@ export default function Wordmark({
       className={`wordmark wordmark-${tone}${size === "sm" ? " wordmark-sm" : ""}`}
       aria-label="eufabric, home"
     >
-      <Mark size={size === "sm" ? 36 : 42} tone={tone === "dark" ? "paper" : "ink"} />
+      <Mark size={size === "sm" ? 36 : 52} tone={tone === "dark" ? "paper" : "ink"} />
       <span className="wordmark-text" aria-hidden="true">
         eu<span className="wordmark-seam">|</span>fabric
       </span>

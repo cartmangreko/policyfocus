@@ -23,6 +23,22 @@
     "reviewed": "2026-08-18",
     "vocabulary_sweep": "2026-08-19"
   },
+  "launch_perimeter": {
+    "status": "approved",
+    "reviewed": "2026-08-24",
+    "_comment": [
+      "The launch perimeter, stated on the coverage page. George's ruling in brief 4 §1,",
+      "transcribed rather than composed: what the platform covers at launch, what it does",
+      "not, and why electricity is a parameter on every page rather than a tile of its own.",
+      "",
+      "It sits beside the perimeter paragraph rather than inside it. That paragraph is",
+      "about METHOD — how an act becomes measures and how a measure reaches a sector — and",
+      "it was reviewed as such on 2026-08-18. This one is about SCOPE, it will move when",
+      "the seventh industry lands, and folding the two together would put a sentence with a",
+      "short life inside a paragraph with a long one."
+    ],
+    "paragraph": "Eufabric launches narrow: Europe's energy-intensive industries and the materials they make. Six are covered at launch — cement, steel, chemicals (organic chemicals and plastics), batteries, hydrogen production including ammonia, and circular materials, meaning the recovery industry that turns used material back into feedstock. Semiconductors, automotive and defence are out of scope for launch. They are a different genre: nothing at their centre carries a carbon cost, and what they need built is capability rather than cleaner ways of making the same thing. Electricity and grids are not one of the six either. Power prices and grid connection decide what happens in all of them, so they are stated on each industry's own page rather than given a heading of their own. Every other sector listed on this page is one the legislation reaches without being one of the six."
+  },
   "coverage_declarations": {
     "status": "approved",
     "files": {
@@ -133,6 +149,59 @@
     "sectors": {
       "cement": {
         "paragraph": "Cement is the binding agent of the built environment. Concrete is the most used man-made material on earth, and European construction depends on a domestic industry that operates on thin margins with high energy and carbon intensity. Most of the sector's emissions come not from burning fuel but from the chemistry of clinker, the limestone-derived core of cement, which releases CO2 as it is processed. That makes cement one of the hardest sectors to decarbonise: efficiency and clean electricity cannot remove process emissions, so the transition runs through carbon capture, clinker substitution and alternative fuels. EU policy treats it accordingly: carbon pricing raises the cost of conventional production, a border adjustment shields producers from unpriced imports, and public funding underwrites the first capture projects. The open question is who pays for low-carbon cement while it costs more than conventional supply."
+      }
+    }
+  },
+  "sector_lead": {
+    "status": "draft",
+    "reviewed": null,
+    "_comment": [
+      "THE REGENERATED LEAD, HELD FOR REVIEW — brief 4 §6, step 2.",
+      "",
+      "What the sector page actually renders is the BUILT lead in",
+      "data/transition/lead/<sector>.json: computed from the panels, gated, tier 1 of the",
+      "three-tier rule in sources/scope.md, and needing no review by that rule. This block",
+      "is a copy of what the rewritten templates produce, put where George reads prose so",
+      "that the new register can be read, edited and approved as words rather than as a",
+      "build artifact.",
+      "",
+      "IT IS NOT A SECOND SOURCE OF TRUTH AND MUST NOT BECOME ONE. Nothing in web/ reads",
+      "it. Editing a sentence here changes nothing on the site: what an approval does is",
+      "move the edited text into data/transition/overrides.json under summary_overrides,",
+      "with the fact fingerprint recorded beside it, at which point sources/build_lead.py",
+      "renders the reviewed sentence and flags it the day the facts move under it.",
+      "",
+      "Regenerate this block from the built file after any template change, or it becomes a",
+      "record of a sentence the site stopped saying."
+    ],
+    "sectors": {
+      "cement": {
+        "fingerprint": "b46a43f79fcc866e",
+        "template_version": 2,
+        "sentence": "European cement is decarbonising by capturing the CO2 its kilns emit, and the main question is who pays for it.",
+        "why_it_matters": "Cement made this way costs more than the cement it replaces, so whether Europe gets it depends on who covers the difference.",
+        "facts": [
+          {
+            "id": "the_gap",
+            "text": "Low-carbon cement costs 75-150% above a conventional plant to make, on the International Energy Agency's figures.",
+            "as_of": "2025"
+          },
+          {
+            "id": "pipeline_state",
+            "text": "8 European cement projects are under way, and 4 of them have taken a final investment decision.",
+            "as_of": "2025-11-19"
+          },
+          {
+            "id": "decisive_exposure",
+            "text": "Importers of cement pay for the carbon in what they bring into Europe, currently €75.46 per tonne.",
+            "as_of": "2026-08-21"
+          },
+          {
+            "id": "the_latest",
+            "text": "Slite CCS was paused on 19 November 2025.",
+            "as_of": "2025-11-19"
+          }
+        ]
       }
     }
   }

@@ -1,108 +1,86 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ProjectChanges from "@/components/ProjectChanges";
-import SectorGrid from "@/components/SectorGrid";
-import Wordmark from "@/components/Wordmark";
-import { getSiteSummary } from "@/lib/summaries";
-import { getSectorCounts } from "@/lib/data";
-import { getMasthead } from "@/lib/sitetext";
-import { hasMap } from "@/lib/transition";
+import EcosystemTiles from "@/components/EcosystemTiles";
+import { getCoverageLine, getMasthead } from "@/lib/sitetext";
 
-// The home page is a front page, not a masthead. Three blocks: the slim head,
-// what moved, and the sectors.
+// The front page, cut back to what it can stand behind (brief 4 §3): the name,
+// what the platform is, the six industries it covers, and one line saying where
+// the material comes from.
 //
-// THE SECOND INVERSION. The feed used to be the legislative record — an act
-// proposed, an act amended. Both feeds are real, and only one of them is
-// evidence that any of this law is doing something: a kiln reaching mechanical
-// completion, or a project pausing because a national agency declined to
-// co-fund it. So the project feed leads and the legislative change records keep
-// their pages at /changes, unlinked from here.
+// WHAT LEFT, AND WHY EACH ONE LEFT
+// --------------------------------
+// The wordmark. It was here AND in the header, which on a phone drew the logo
+// twice on the first screen. One instance survives, in the header, set larger
+// — see components/SiteHeader.tsx.
 //
-// What went with it: the three-figure stats strip, the findings band, the
-// legislation chips and the coverage line. They were the register presenting
-// itself as the product. The register is now the candidate pool behind the
-// sector pages, and its surfaces are reachable rather than advertised.
+// The twenty-sector grid. Eufabric launches narrow (brief 4 §1), and a grid of
+// twenty tiles with one live sector in it advertises the nineteen that are
+// not. The six tiles are the perimeter; every other sector the corpus reaches
+// is reachable from the coverage page, which is where a claim about what is
+// covered belongs.
 //
-// THE INVERSION, AND WHAT IT COST. The head used to be the page: wordmark,
-// tagline, and three big figures above the fold, with the conclusions below
-// them. It read as an identity rather than as something that had happened
-// recently. So the head compresses — the masthead pair and the same three
-// figures, now one slim strip — and the feed takes the lead. What was the
-// "Recently added" band is gone rather than demoted: it said which act was
-// added last, which is exactly what the first record in the feed says, at
-// greater length and with a page behind it. Its one fact that the feed does
-// not carry, the date the document was fetched, moved into the strip.
+// The sector count sentence ("1 of 20 sectors is live"). Same reason. It was a
+// computed sentence about our own build progress standing where a statement
+// about the industries should be.
 //
-// The pair under the wordmark (descriptor + positioning sentence) is
-// George-approved final text, read from data/prose.json — reviewed prose stored
-// as data, per sources/scope.md.
+// Sign in, and the search field. See components/SiteHeader.tsx.
+//
+// The project feed. It was the one thing on this page that was evidence rather
+// than description — a kiln reaching mechanical completion, a project pausing
+// because a national agency declined to co-fund it — and it went last, on
+// George's call. What it left behind is the reason it went: six industries and
+// one feed, on a platform where five of the six have no projects yet, is a feed
+// about cement standing under a page that claims six. It belongs here when the
+// other five have something to put in it, and until then the movement is on the
+// sector page, where a reader knows what it is movement IN. components/
+// ProjectChanges.tsx is kept for that, unrendered; the change records keep
+// their pages at /changes.
+//
+// WHAT STAYED is what the page can stand behind on the day it ships: the name,
+// the claim, the perimeter, and where the material comes from.
+//
+// The descriptor and the positioning sentence are George-approved final text,
+// read from data/prose.json — reviewed prose stored as data, per
+// sources/scope.md. Nothing on this page composes a sentence of its own.
 
-// The default title stays in the layout; the description is computed from
-// the site summary so the tag moves with the register.
 export function generateMetadata(): Metadata {
-  const site = getSiteSummary();
-  return {
-    // Computed, so the tag moves with the data. Said in the platform's own
-    // vocabulary rather than the pipeline's — see sources/display_vocabulary.py.
-    description:
-      `Intelligence on what Europe builds next: ${site.measures} EU measures across ` +
-      `${site.files} acts, scored for the ${site.sectors.total_reach} sectors they reach, ` +
-      `with the technologies, projects and capital behind them.`,
-  };
+  const masthead = getMasthead();
+  // The two reviewed lines, in the order they render on the page. It used to
+  // be a computed inventory — measures, acts, sectors reached — which is the
+  // old product describing itself, and which now disagrees with the page it
+  // tags.
+  return { description: `${masthead.descriptor} ${masthead.positioning}` };
 }
-
-// Enough to read as a feed rather than as a teaser, and few enough that the
-// sectors stay above the fold on a laptop.
-const FEED_ON_HOME = 6;
 
 export default function Home() {
   const masthead = getMasthead();
-  // Computed, not written: how many sectors are live and what the rest say
-  // instead. The sentence changes on the day steel lands, with nobody editing
-  // a page.
-  const counts = getSectorCounts();
-  const live = counts.filter((s) => hasMap(s.slug)).length;
-  const sectorLine =
-    `${live} of ${counts.length} sectors is live: the measures that decide whether it ` +
-    `pays, what is blocking it, and everything being built. The rest are in preparation.`;
 
   return (
     <main className="rise">
       <section className="home-head home-head-slim">
         <div className="wrap">
-          <div className="home-wordmark">
-            <Wordmark />
-          </div>
           <p className="home-tagline">{masthead.descriptor}</p>
           <p className="home-subline">{masthead.positioning}</p>
         </div>
       </section>
 
-      <section className="band" id="latest">
+      <section className="band band-paper" id="sectors">
         <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Latest</p>
-              <h2>What moved</h2>
-            </div>
-          </div>
-          <ProjectChanges limit={FEED_ON_HOME} />
+          <EcosystemTiles />
         </div>
       </section>
 
-      <section className="band band-paper" id="sectors">
+      {/* The one line about the material, and the one link out of this page.
+          The sentence is reviewed prose with its act count computed, so it
+          moves when the coverage does. */}
+      <section className="band band-tight" id="sources">
         <div className="wrap">
-          <div className="section-head">
-            <div>
-              <p className="eyebrow">Sectors</p>
-              <h2>What each sector is under</h2>
-              <p className="section-note">{sectorLine}</p>
-            </div>
-            <Link href="/sectors" className="section-link">
-              All sectors &rarr;
+          <p className="home-sources">
+            {getCoverageLine()}{" "}
+            <Link href="/coverage" className="section-link">
+              What is covered, and what is not &rarr;
             </Link>
-          </div>
-          <SectorGrid />
+          </p>
         </div>
       </section>
     </main>

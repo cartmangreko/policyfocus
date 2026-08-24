@@ -6,26 +6,106 @@
     "summary_override, never here."
   ],
   "sector": "cement",
-  "template_version": 1,
-  "fingerprint": "7f7b352af5328381",
+  "template_version": 2,
+  "fingerprint": "b46a43f79fcc866e",
   "sentence": {
-    "text": "European cement carries €75.46 per tonne of cost from CBAM certificates on the importer, and its binding constraint is the green premium against willingness to pay.",
+    "text": "European cement is decarbonising by capturing the CO2 its kilns emit, and the main question is who pays for it.",
     "from": [
-      "decisive_exposure",
       "binding_constraint"
     ],
     "source": "generated"
   },
   "why_it_matters": {
-    "text": "The largest gap the sector's own numbers state is 75-150% above a conventional plant. 8 projects are building against it, 4 at or past a final investment decision, and the most recent move was Slite CCS to paused on 19 November 2025.",
+    "text": "Cement made this way costs more than the cement it replaces, so whether Europe gets it depends on who covers the difference.",
     "from": [
       "the_gap",
-      "pipeline_state",
-      "the_latest"
+      "binding_constraint"
     ],
     "source": "generated"
   },
   "facts": [
+    {
+      "id": "the_gap",
+      "label": "The gap",
+      "text": "Low-carbon cement costs 75-150% above a conventional plant to make, on the International Energy Agency's figures.",
+      "as_of": "2025",
+      "numbers": [
+        "75-150"
+      ],
+      "parts": {
+        "figure": "75-150%",
+        "rest": "above a conventional plant",
+        "name": "Production cost premium of near-zero emissions cement using CCS",
+        "publisher": "International Energy Agency"
+      },
+      "sourced": [
+        "Production cost premium of near-zero emissions cement using CCS",
+        "% above a conventional plant",
+        "above a conventional plant",
+        "International Energy Agency"
+      ],
+      "href": "#bottleneck-cement-green-premium",
+      "surface": true
+    },
+    {
+      "id": "pipeline_state",
+      "label": "Pipeline",
+      "text": "8 European cement projects are under way, and 4 of them have taken a final investment decision.",
+      "as_of": "2025-11-19",
+      "numbers": [
+        "8",
+        "4"
+      ],
+      "parts": {
+        "total": "8",
+        "committed": "4",
+        "furthest": "Brevik CCS",
+        "furthest_status": "operating"
+      },
+      "sourced": [
+        "Brevik CCS"
+      ],
+      "href": "#projects",
+      "surface": true
+    },
+    {
+      "id": "decisive_exposure",
+      "label": "Decisive exposure",
+      "text": "Importers of cement pay for the carbon in what they bring into Europe, currently €75.46 per tonne.",
+      "as_of": "2026-08-21",
+      "numbers": [
+        "75.46"
+      ],
+      "parts": {
+        "name": "CBAM certificates",
+        "figure": "€75.46 per tonne",
+        "direction": "cost",
+        "bearer": "importer",
+        "model": "cbam_certificates"
+      },
+      "sourced": [
+        "CBAM certificates"
+      ],
+      "href": "#measure-cbam-FIN-03",
+      "surface": true
+    },
+    {
+      "id": "the_latest",
+      "label": "The latest",
+      "text": "Slite CCS was paused on 19 November 2025.",
+      "as_of": "2025-11-19",
+      "numbers": [],
+      "parts": {
+        "project": "Slite CCS",
+        "status": "paused",
+        "date": "19 November 2025"
+      },
+      "sourced": [
+        "Slite CCS"
+      ],
+      "href": "/projects/slite-ccs",
+      "surface": true
+    },
     {
       "id": "binding_constraint",
       "label": "Binding constraint",
@@ -44,82 +124,8 @@
       "sourced": [
         "Green premium against willingness to pay"
       ],
-      "href": "#bottleneck-cement-green-premium"
-    },
-    {
-      "id": "decisive_exposure",
-      "label": "Decisive exposure",
-      "text": "CBAM certificates — €75.46 per tonne of cost, borne by the importer.",
-      "as_of": "2026-08-21",
-      "numbers": [
-        "75.46"
-      ],
-      "parts": {
-        "name": "CBAM certificates",
-        "figure": "€75.46 per tonne",
-        "direction": "cost",
-        "bearer": "importer"
-      },
-      "sourced": [
-        "CBAM certificates"
-      ],
-      "href": "#measure-cbam-FIN-03"
-    },
-    {
-      "id": "pipeline_state",
-      "label": "Pipeline",
-      "text": "8 projects, the furthest of them operating (Brevik CCS); 4 at or past a final investment decision.",
-      "as_of": "2025-11-19",
-      "numbers": [
-        "8",
-        "4"
-      ],
-      "parts": {
-        "total": "8",
-        "committed": "4",
-        "furthest": "Brevik CCS",
-        "furthest_status": "operating"
-      },
-      "sourced": [
-        "Brevik CCS"
-      ],
-      "href": "#projects"
-    },
-    {
-      "id": "the_gap",
-      "label": "The gap",
-      "text": "Production cost premium of near-zero emissions cement using CCS: 75-150% above a conventional plant.",
-      "as_of": "2025",
-      "numbers": [
-        "75-150"
-      ],
-      "parts": {
-        "figure": "75-150%",
-        "rest": "above a conventional plant",
-        "name": "Production cost premium of near-zero emissions cement using CCS"
-      },
-      "sourced": [
-        "Production cost premium of near-zero emissions cement using CCS",
-        "% above a conventional plant",
-        "above a conventional plant"
-      ],
-      "href": "#bottleneck-cement-green-premium"
-    },
-    {
-      "id": "the_latest",
-      "label": "The latest",
-      "text": "Slite CCS moved to paused on 19 November 2025.",
-      "as_of": "2025-11-19",
-      "numbers": [],
-      "parts": {
-        "project": "Slite CCS",
-        "status": "paused",
-        "date": "19 November 2025"
-      },
-      "sourced": [
-        "Slite CCS"
-      ],
-      "href": "/projects/slite-ccs"
+      "href": "#bottleneck-cement-green-premium",
+      "surface": false
     }
   ],
   "override_stale": false,

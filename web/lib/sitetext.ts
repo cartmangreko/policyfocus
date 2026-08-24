@@ -23,6 +23,12 @@ export function isReviewed(status: ProseStatus): boolean {
 interface ProseDoc {
   masthead: { status: ProseStatus; descriptor: string; positioning: string };
   perimeter: { status: ProseStatus; template: string; reviewed?: string };
+  /** The launch perimeter — which industries are covered and which are
+   *  deliberately not. Rendered beside the perimeter paragraph on the coverage
+   *  page THROUGH getLaunchPerimeter below, which returns null until the block
+   *  is reviewed: an unread claim about scope is the one claim on this site
+   *  that should not appear before somebody has read it. */
+  launch_perimeter?: { status: ProseStatus; paragraph: string; reviewed?: string };
   coverage_declarations: {
     status: ProseStatus;
     files: Record<string, string>;
@@ -52,6 +58,28 @@ interface ProseDoc {
    *  question the page then answers. Reviewed prose, four fixed beats, nearly
    *  number-free — see the _comment in data/prose.json. Returned by
    *  getSectorOrientation below, which is null until the block is reviewed. */
+  /** The regenerated lead block, held for review — brief 4 §6. NOT READ BY THE
+   *  SITE, and there is no getter below on purpose: the sector page renders the
+   *  BUILT lead in data/transition/lead/<sector>.json, which is computed and
+   *  gated (tier 1). This block is a copy of that text, put where prose is
+   *  reviewed so the register can be read and edited as words; an approval
+   *  moves the edited sentence into data/transition/overrides.json, which is
+   *  where a reviewed lead has always gone. Declared here so this interface
+   *  stays the one description of the store's shape. */
+  sector_lead?: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    sectors: Record<
+      string,
+      {
+        fingerprint: string;
+        template_version: number;
+        sentence: string;
+        why_it_matters: string;
+        facts: { id: string; text: string; as_of: string }[];
+      }
+    >;
+  };
   sector_orientation?: {
     status: ProseStatus;
     reviewed?: string | null;
@@ -99,6 +127,16 @@ export function getPerimeterProse(): string {
     }
     return String(value);
   });
+}
+
+/** Which industries the platform covers at launch, and which it does not, or
+ *  null while the block is unreviewed. The coverage page renders nothing extra
+ *  in that case — it is a paragraph the page did not carry at all until
+ *  brief 4 §1. */
+export function getLaunchPerimeter(): string | null {
+  const block = readProse().launch_perimeter;
+  if (!block || !isReviewed(block.status)) return null;
+  return block.paragraph;
 }
 
 /** The stored single-pass declaration for one file, in audience terms, or

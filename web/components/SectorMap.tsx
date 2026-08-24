@@ -5,11 +5,10 @@ import Crumbs from "@/components/Crumbs";
 import LeadBlock from "@/components/LeadBlock";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import TransitionDiagram, { type Diagram, type NodeSource } from "@/components/TransitionDiagram";
-import { SECTORS } from "@/lib/data";
+import { FILES, SECTORS } from "@/lib/data";
 import { transitionProse } from "@/lib/prose";
 import { getSectorOrientation, getTransitionNote } from "@/lib/sitetext";
 import {
-  BEARER_LABEL,
   STATUS_LABEL,
   TRANSITION_LABEL,
   byLastChange,
@@ -35,7 +34,6 @@ import {
   type Material,
   type Parameter,
   type StatusEvent,
-  type RankedMeasure,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
 
@@ -61,78 +59,24 @@ import type { SectorSlug } from "@/lib/types";
 // file decides what is shown and in what order, which is enough
 // responsibility for one component.
 
-function ScoreComponents({ m }: { m: RankedMeasure }) {
-  const money = m.money;
-  return (
-    <div className="tscore">
-      <div className="tscore-cell">
-        <span className="tscore-label">Money</span>
-        {money.computable ? (
-          <>
-            <span className={`tdir ${money.direction}`}>
-              {money.direction} → {BEARER_LABEL[money.bearer ?? ""] ?? money.bearer}
-            </span>
-            <span className="tscore-figure">
-              {money.per_tonne !== null ? `${eur(money.per_tonne)} / t` : eur(money.value ?? 0)}
-            </span>
-            {money.annual_total ? (
-              <span className="tscore-note">{eur(money.annual_total)} a year</span>
-            ) : null}
-            {money.context.map((c) => (
-              <span key={c.label} className="tscore-note">
-                {c.label}: {eur(c.value)}
-                {c.detail ? ` — ${c.detail}` : ""}
-              </span>
-            ))}
-            <span className="tscore-formula">{money.formula}</span>
-            {money.caveats.map((c) => (
-              <span key={c} className="tscore-caveat">
-                {c}
-              </span>
-            ))}
-          </>
-        ) : (
-          <>
-            <span className="tscore-figure none">—</span>
-            <span className="tscore-note">
-              {money.model
-                ? `${money.model}: needs ${money.missing.join(", ")}`
-                : "no money model applies"}
-            </span>
-          </>
-        )}
-      </div>
+// THE SCORE PANEL IS GONE FROM THIS PAGE, and it is worth saying where it
+// went. `ScoreComponents` drew three columns under every measure: the money
+// model with its formula and caveats, every bottleneck edge with its weight
+// and quote, and the attention count. Brief 4 §5 rules the key-measures list
+// down to a title and a sentence, and a panel of weights under each one is
+// exactly the schema-facing surface it rules off.
+//
+// Nothing about the ranking has changed. It is still computed and gated in
+// Python, and all of it — formula, caveats, edges, weights, attention — is in
+// data/transition/importance/<sector>.json and printed by
+// `python3 sources/build_importance.py` on every run. What has changed is that
+// the reader is no longer shown the working before the conclusion.
 
-      <div className="tscore-cell">
-        <span className="tscore-label">Bottleneck linkage</span>
-        <span className="tscore-figure">{m.bottleneck_linkage.weight}</span>
-        <ul className="tscore-edges">
-          {m.bottleneck_linkage.edges.map((e) => (
-            <li key={e.bottleneck}>
-              <span className={`trel ${e.rel}`}>{e.rel}</span>{" "}
-              <a href={`#bottleneck-${e.bottleneck}`}>{e.bottleneck_name}</a>
-              <span className="tweight">×{e.weight}</span>
-              <span className="tscore-note">{e.note}</span>
-            </li>
-          ))}
-          {m.bottleneck_linkage.edges.length === 0 ? (
-            <li className="tscore-note">No bottleneck edge.</li>
-          ) : null}
-        </ul>
-      </div>
-
-      <div className="tscore-cell">
-        <span className="tscore-label">Attention</span>
-        <span className="tscore-figure none">{m.attention.available ? m.attention.count : "—"}</span>
-        <span className="tscore-note">
-          {m.attention.available
-            ? `mentions in ${m.attention.window_months} months`
-            : "the watch agent's project channel has not run, so this ranking has no cross-check"}
-        </span>
-      </div>
-    </div>
-  );
-}
+// Five is the top of the three-to-five brief 4 §5 allows, and it is the number
+// at which the list stops being a list a reader finishes. It caps what is
+// DRAWN and nothing else: the ranking is built over every measure in the sector
+// view, and the ones below the cut are on their own pages with their scores.
+const KEY_MEASURES = 5;
 
 // Thirty days, per amendment brief 2 §5. Long enough that a quiet fortnight
 // does not empty the strip, short enough that "moved" still means recently.
@@ -367,72 +311,51 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
 
       <section className="tmap-section" id="measures">
         <h2>Key measures</h2>
-        <p className="tmap-sub">
-          {inView.length} of {imp.measures.length} measures reaching the sector carry money or a
-          named constraint. Ranked on money first, then linkage; priced at {imp.priced_year}.
-        </p>
+        {/* THE TOP FIVE, AND WHAT THEY SAY (brief 4 §5).
+            
+            This list used to be every measure in the sector view — eight for
+            cement — each with its register id as the heading, the decoded
+            provision under it, and a three-column panel showing the money
+            model, every bottleneck edge with its weight, and the attention
+            count. That is the ranking showing its working, and it is the right
+            thing to be able to see; it is the wrong thing to open with. A
+            reader who has not read the act cannot tell from `cbam:FIN-03` and
+            'satisfy the quarterly certificate-holding requirement' what the
+            measure would do to them.
+
+            So: five entries at most, in the ranking's own order, and each one
+            says what it requires or grants in a title and one sentence. The
+            words are authored and reviewed in
+            data/transition/measure_labels.json; the figures inside them are
+            computed at build time from the same money block the ranking sorts
+            on, so the sentence and the score cannot disagree. The working has
+            not been deleted — every measure keeps its own page, linked from
+            its title, and the score components are on it. */}
         <ol className="tmeasures">
-          {inView.map((m) => (
+          {inView.slice(0, KEY_MEASURES).map((m) => (
             <li key={m.measure} id={`measure-${m.file}-${m.id}`}>
-              <div className="tmeasure-head">
-                <span className="trank">{m.override_rank ?? m.rank}</span>
-                <Link href={measureHref(m.measure)} className="tmeasure-id">
-                  {m.measure}
+              <h3 className="tmeasure-title">
+                <Link href={measureHref(m.measure)}>
+                  {m.plain ? m.plain.title : m.measure}
                 </Link>
-                <span className="tmtype">{m.measure_type}</span>
-                {m.reach === "funding" ? (
-                  <span className="treach">
-                    reaches the sector through funding: {m.reached_via.join(", ")}
-                  </span>
-                ) : null}
-              </div>
-              <p className="tmeasure-duty">{m.duty}</p>
+              </h3>
+              {m.plain ? <p className="tmeasure-plain">{m.plain.sentence}</p> : null}
               <p className="tmeasure-cite">
-                {m.article}
+                {FILES[m.file]?.name ?? m.file}
+                {m.article ? ` · ${m.article}` : ""}
                 {m.when ? ` · ${m.when}` : ""}
               </p>
-              {m.override_reason ? (
-                <p className="toverride">
-                  Ranked by hand at {m.override_rank}: {m.override_reason}
-                </p>
-              ) : null}
-              <ScoreComponents m={m} />
             </li>
           ))}
         </ol>
-        {imp.net.buckets.length > 0 ? (
-          <div className="tnet">
-            <h3>Net position</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Bearer</th>
-                  <th>Cost</th>
-                  <th>Support</th>
-                  <th>Net</th>
-                </tr>
-              </thead>
-              <tbody>
-                {imp.net.buckets.map((b) => (
-                  <tr key={`${b.scale}-${b.bearer}`}>
-                    <td>
-                      {BEARER_LABEL[b.bearer] ?? b.bearer}
-                      <span className="tscore-note">
-                        {b.scale === "eur_per_tonne" ? "per tonne" : "awarded, cumulative"}
-                      </span>
-                    </td>
-                    <td className="num">{b.cost ? eur(b.cost) : "—"}</td>
-                    <td className="num">{b.support ? eur(b.support) : "—"}</td>
-                    <td className={`num ${b.net < 0 ? "neg" : "pos"}`}>
-                      {eur(Math.abs(b.net))} {b.net < 0 ? "out" : "in"}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="tscore-note">{imp.net._note}</p>
-          </div>
-        ) : null}
+        {/* NET POSITION IS BUILT AND NOT DRAWN (brief 4 §5). The table lived
+            here: cost, support and net per bearer and per scale, out of
+            imp.net. It is still computed by sources/build_importance.py, still
+            gated by sources/check_importance.py, and still in
+            data/transition/importance/<sector>.json — this page does not
+            render it. What it showed was a netting a reader cannot check
+            without the schema in front of them, at the top of the page,
+            immediately after four sentences written so they would not need it. */}
       </section>
 
       <section className="tmap-section" id="bottlenecks">

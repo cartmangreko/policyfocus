@@ -28,40 +28,100 @@
     "sources/display_vocabulary.py.",
     "",
     "Keyed by the register id, `<file>:<id>`, so an entry cannot name a measure that does",
-    "not exist. Entries are shared across sectors: a measure keeps its label everywhere."
+    "not exist. Entries are shared across sectors: a measure keeps its label everywhere.",
+    "",
+    "THE PLAIN BLOCK (brief 4 §5). The diagram label says what a measure is ABOUT in 26",
+    "characters. The sector page's key-measures list has to say what it REQUIRES OR",
+    "GRANTS, to somebody who has never read the act, in a title and one sentence — and",
+    "neither can be computed from `object` and `instrument`, because neither of those",
+    "fields knows whether the measure obliges, permits or pays.",
+    "",
+    "    title     what it requires or grants. Never the act's name, never its article,",
+    "              no numbers: the numbers are in the sentence, where they can carry a",
+    "              date.",
+    "    sentence  one sentence, no jargon, with every FIGURE in a {slot} that",
+    "              sources/build_importance.py fills from the measure's own money block.",
+    "",
+    "WHY THE SLOTS. An authored sentence with a number typed into it is a number nobody",
+    "gated, and it rots the day the carbon price moves. The slots are the same discipline",
+    "the perimeter paragraph uses in data/prose.json: the words are written once and",
+    "reviewed, the figures are computed on every build. A slot that cannot be filled for",
+    "the measure it is written on fails the build rather than rendering a blank.",
+    "",
+    "    {money_per_tonne}  the per-tonne figure, e.g. '€75.46 per tonne'",
+    "    {money_annual}     the annual total, e.g. '€990 million a year'",
+    "    {money_awarded}    money awarded to date, e.g. '€381 million'",
+    "",
+    "THE GATES (sources/check_sector_schema.py): every entry has a plain block; the title",
+    "carries no digits and no word from sources/display_vocabulary.py; the sentence is one",
+    "sentence, names only known slots, and any bare number in it appears in the measure's",
+    "own `when` field — which is how a date is allowed to be written out and a euro figure",
+    "is not."
   ],
   "labels": {
     "cbam:FIN-03": {
       "object": "CBAM certificates",
-      "instrument": null
+      "instrument": null,
+      "plain": {
+        "title": "Importers pay for the carbon in the cement they bring in",
+        "sentence": "The carbon in imported cement is charged at {money_per_tonne} at today's carbon price, and from 2028 the certificates covering it have to be bought in the same year they are used."
+      }
     },
     "ets:CBAM-01": {
       "object": "Free allocation",
-      "instrument": "phase-out"
+      "instrument": "phase-out",
+      "plain": {
+        "title": "Free carbon allowances for European kilns are being withdrawn",
+        "sentence": "European cement makers lose their free allowances on a fixed schedule that reaches zero in 2038, which costs {money_per_tonne} of clinker at today's carbon price and more every year after that."
+      }
     },
     "ets:FND-03": {
       "object": "Innovation Fund",
-      "instrument": "grants"
+      "instrument": "grants",
+      "plain": {
+        "title": "EU grants for cutting industrial emissions",
+        "sentence": "{money_awarded} has been awarded from the Innovation Fund to European cement projects that capture their CO2."
+      }
     },
     "iaa:LM-03a": {
       "object": "Procurement",
-      "instrument": "requirements"
+      "instrument": "requirements",
+      "plain": {
+        "title": "Public contracts must buy low-carbon concrete",
+        "sentence": "From 2029, public buyers have to require concrete that meets the low-carbon and Union-origin rules the act sets, in the contracts the act covers."
+      }
     },
     "iaa:LM-06a": {
       "object": "Support scheme budgets",
-      "instrument": null
+      "instrument": null,
+      "plain": {
+        "title": "Public support schemes must favour low-carbon materials",
+        "sentence": "From 2029, public schemes that pay for construction have to be built around the same low-carbon and Union-origin requirements as public contracts."
+      }
     },
     "nzia:CO2-02": {
       "object": "CO2 storage",
-      "instrument": "obligation"
+      "instrument": "obligation",
+      "plain": {
+        "title": "Oil and gas producers must provide somewhere to put the CO2",
+        "sentence": "Europe's oil and gas producers have to open, between them, enough permanent CO2 storage to meet the Union's target for 2030, each taking a share in proportion to what it produces."
+      }
     },
     "nzia:CO2-10": {
       "object": "CO2 network access",
-      "instrument": null
+      "instrument": null,
+      "plain": {
+        "title": "CO2 pipelines and stores must be open to whoever needs them",
+        "sentence": "Whoever owns a CO2 pipeline or a storage site has to let others use it on fair and open terms, so that a capture project is not stopped by the party that owns the route to the ground."
+      }
     },
     "nzia:SP-02": {
       "object": "Strategic project status",
-      "instrument": null
+      "instrument": null,
+      "plain": {
+        "title": "Faster permits for projects recognised as strategic",
+        "sentence": "A project can apply to be recognised as strategic, which shortens its permitting, by filing evidence against the criteria together with a business plan and a financing outline."
+      }
     }
   }
 }

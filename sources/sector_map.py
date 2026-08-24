@@ -71,6 +71,7 @@ projection.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -284,3 +285,69 @@ def short_label(entry: dict) -> str:
     obj = entry["object"].strip()
     instrument = entry.get("instrument")
     return obj if not instrument else f"{obj} {instrument.strip()}"
+
+
+# The figures an authored key-measure sentence may ask for, and nothing else.
+# Closed, because a sentence that could name any field would be a template over
+# the whole money block and would break silently the day one of those fields
+# changed shape. See the plain block in data/transition/measure_labels.json.
+MEASURE_SLOTS = ("money_per_tonne", "money_annual", "money_awarded")
+
+_SLOT_RE = re.compile(r"\{([a-z_]+)\}")
+
+
+def slots_named(text: str) -> list[str]:
+    """Every {slot} in an authored sentence, in the order it appears."""
+    return _SLOT_RE.findall(text or "")
+
+
+def money_slots(money: dict) -> dict[str, str]:
+    """The slot values a measure's own money block can answer for.
+
+    Only what is computable: a measure with no per-tonne figure has no
+    `money_per_tonne`, and a sentence that asks for one fails rather than
+    printing an empty string where a euro figure was promised.
+
+    Rounding is by scale, not by taste. A rate is quoted to the cent because
+    that is how a carbon price is quoted; a stock is quoted in millions because
+    the last six digits of a grant total are noise a reader cannot use.
+    """
+    out: dict[str, str] = {}
+    if not money or not money.get("computable"):
+        return out
+    if money.get("per_tonne") is not None:
+        out["money_per_tonne"] = f"€{money['per_tonne']:,.2f} per tonne"
+    if money.get("annual_total"):
+        out["money_annual"] = f"€{money['annual_total'] / 1e6:,.0f} million a year"
+    if money.get("value") and money.get("scale") == "eur_awarded":
+        out["money_awarded"] = f"€{money['value'] / 1e6:,.0f} million"
+    return out
+
+
+def plain_measure(entry: dict, money: dict) -> dict:
+    """The authored title and the slot-filled sentence, for one measure.
+
+    The words are reviewed and stored; the figures are computed on every build.
+    An unfillable slot raises, because the alternative is a sentence that says
+    a measure costs nothing when what happened is that a parameter went
+    missing.
+    """
+    plain = entry.get("plain") or {}
+    title, sentence = plain.get("title", ""), plain.get("sentence", "")
+    values = money_slots(money)
+    for name in slots_named(sentence):
+        if name not in MEASURE_SLOTS:
+            raise SystemExit(
+                f"sector_map: key-measure sentence names {{{name}}}, which is not one of "
+                f"{list(MEASURE_SLOTS)} — see data/transition/measure_labels.json"
+            )
+        if name not in values:
+            raise SystemExit(
+                f"sector_map: key-measure sentence asks for {{{name}}} and this measure's "
+                f"money block cannot answer for it — either the sentence is about a figure "
+                f"the measure does not carry, or the figure has gone missing"
+            )
+    return {
+        "title": title,
+        "sentence": _SLOT_RE.sub(lambda m: values[m.group(1)], sentence),
+    }
