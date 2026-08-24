@@ -340,6 +340,12 @@ nowhere else on the page to look.
 7. Search index across the four node kinds (§4.4).
 8. Downstream reach channel (§4.7) → supply-chain section. `ROADMAP.md` only.
 
+**Before `SITE_LAUNCHED` is set:** measure and project lead blocks, so that
+§0.8's literal test and the practice coincide at launch and the build-gap clause
+there becomes vestigial rather than a standing exemption. Sequenced against the
+flag, not against any merge — the global noindex means the clause does no work
+until then, and nothing in the eight steps above waits on it.
+
 The launch gate is unchanged. `web/lib/launch.ts` stays closed by default and
 nothing in this specification touches it; every surface here ships noindex until
 `SITE_LAUNCHED` is set out loud.
