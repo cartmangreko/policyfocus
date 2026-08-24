@@ -56,6 +56,51 @@ vocabulary are unchanged and bind everything below.
    text. Display vocabulary rules hold ("Eurostat input-output data", never
    register/row/reached) — `sources/display_vocabulary.py`.
 
+8. **Indexability follows the lead block.** A page is indexable when it renders
+   a lead block (§0.2). An evidence page without one carries `DEMOTED` —
+   `index: false, follow: true` — which is unlinking plus noindex, never
+   deletion: the page keeps its route and its content, and a crawler still walks
+   through it to the object pages it links.
+
+   The point of stating it this way is that indexability then tracks this
+   specification's own definition of a first-class object page, rather than a
+   route list that has to be re-decided every time a route is added.
+
+   **Qualifying today:** measures, sectors, projects. **Qualifying as they are
+   built:** companies (§3), technologies, ecosystems (§4.2).
+
+   **Demoted today,** each for its own reason rather than by category: act file
+   pages, because they substantially mirror EUR-Lex and indexing near-duplicates
+   of official texts helps nobody; change records, because they are dated diffs;
+   findings, because as currently built they are single computed statements. The
+   browse surfaces — `/acts`, `/measures`, `/findings`, `/changes` — and
+   `/coverage` are demoted as thin list pages, with `follow: true` carrying the
+   crawler through to the objects beneath them.
+
+   **Every demoted route has its exit, stated by the rule rather than reserved
+   to a future decision.** If findings grow into analytical objects that render
+   a lead block, they become indexable because the rule says so, not because
+   somebody re-opens the question.
+
+   **An owed lead block is a build gap, never grounds to demote.** Today only
+   the sector page renders one; measure and project pages qualify by kind and
+   their lead blocks are outstanding (§0.2 extends the mechanism to the page
+   types §1 and §3 define). A page that qualifies and has not yet been given its
+   lead block is indexable and owes one. Reading the test the other way would
+   remove the largest class of object pages on the site from the index, which is
+   the opposite of what this rule exists to protect.
+
+   **This section is the authority for the route list.** The list in
+   `web/lib/launch.ts` predates it and is reviewed against this section; where
+   they disagree, this section is what the implementation is wrong about.
+
+   **One source of truth per state.** The global switch (`web/lib/launch.ts`,
+   closed by default) decides whether anything is indexable at all; this rule
+   decides which pages are, once it is open. Where both speak — a demoted page
+   before launch — the robots output must state one `follow` value, not two
+   overlapping ones from two sources. Nothing in this section opens any page:
+   pre-launch, the switch dominates and everything stays out.
+
 ## 1. Homepage
 
 Order above the fold: descriptor, search, six ecosystem tiles, what-changed
