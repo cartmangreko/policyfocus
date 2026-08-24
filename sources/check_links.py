@@ -28,6 +28,15 @@ WHAT IS AND IS NOT A FAILURE
 Requests are sequential and slow on purpose: this is a gate that runs at build,
 against a few dozen URLs, and hammering a trade-press site to save nine seconds
 would be a good way to earn a permanent block.
+
+STANDARD LIBRARY ONLY, like every other gate in the prebuild chain. This one
+used `requests` and was the single exception, which held until the chain ran
+somewhere that installs Node dependencies and not Python ones: the deployment
+build failed on ModuleNotFoundError after every other gate had passed. The
+fetching this does is a GET with a header and a timeout, which urllib does, so
+the dependency bought nothing and cost a build. sources/requirements.txt still
+lists requests for the fetcher, which runs on a machine where someone has
+installed it.
 """
 
 from __future__ import annotations
@@ -35,9 +44,9 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import urllib.error
+import urllib.request
 from urllib.parse import urlparse
-
-import requests
 
 import sector_map as sm
 
@@ -98,13 +107,24 @@ def main() -> int:
 
     dead: list[str] = []
     soft: list[str] = []
+
+    def status_of(url: str) -> int:
+        """The response code, following redirects. urlopen raises on 4xx/5xx
+        rather than returning them, so the error carries the code we want and
+        is unwrapped here; everything else that goes wrong is a network problem
+        and reaches the caller as OSError."""
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        try:
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+                return r.status
+        except urllib.error.HTTPError as exc:
+            return exc.code
+
     for url in sorted(seen):
         host = urlparse(url).netloc
         try:
-            r = requests.get(url, timeout=TIMEOUT, allow_redirects=True,
-                             headers={"User-Agent": UA})
-            code = r.status_code
-        except requests.RequestException as exc:
+            code = status_of(url)
+        except OSError as exc:
             soft.append(f"{url} — {type(exc).__name__}: {exc}")
             continue
         if code == 403 and host in BOT_HOSTILE:
