@@ -3889,10 +3889,10 @@ h3 {
    else. `--accent` is set once on `.sector-map` from the sector's own
    `--acc-*` token, so neither rule below names a sector.
 
-   INACTIVE LABELS ARE --ink-55, NOT --ink-40. Brief 5 §3 asks for --ink-40 and
-   this is the one place it is not followed, for a reason the identity already
-   settled: --ink-40 stopped being a type colour when the ink ladder was rewritten
-   (see the ink block at the top of this file), it measures 3.2:1 on paper, and
+   INACTIVE LABELS ARE --ink-55, which is what brief 5 §3 says. It asked for
+   --ink-40 when it was first written and was amended to this: --ink-40 stopped
+   being a type colour when the ink ladder was rewritten (see the ink block at
+   the top of this file), it measures 3.2:1 on paper, and
    sources/check_colour_layers.py fails the build on any rule that sets type in
    it. Muted type is --ink-55 and there is one of it. The distinction the brief
    wants — quiet until you are in it — is carried by weight and by the bar. */
@@ -4007,6 +4007,19 @@ h3 {
   border-bottom: 1px solid var(--rule);
 }
 .tmatlist a:hover {
+  border-bottom-color: var(--ink);
+}
+/* The basis behind an item: "5 plants", or the sector-level edge. It links to
+   the set the count is of, on the material's own page. */
+.tmat-basis {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+}
+a.tmat-basis {
+  border-bottom: 1px solid var(--rule);
+}
+a.tmat-basis:hover {
   border-bottom-color: var(--ink);
 }
 .tmat-crma {

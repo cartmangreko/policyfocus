@@ -22,6 +22,7 @@ import {
   getFunding,
   getImportance,
   getLead,
+  getMaterial,
   getParameters,
   getProjects,
   getProject,
@@ -132,34 +133,76 @@ function nodeLabel(node: string): string {
   return id;
 }
 
-/** One of the three material lists. Ordered by how many of this sector's edges
- *  the material carries — the ordering is not displayed, because a count of
- *  edges is a fact about the graph rather than about the industry, and §0.1
- *  would then owe it a source link to a set of edges nobody wants to read. */
-function MaterialList({ title, rows }: { title: string; rows: MaterialFlow[] }) {
+/** One of the three material lists.
+ *
+ *  EVERY ITEM SHOWS ITS BASIS (brief 5 §2 as amended): the count of plants
+ *  behind the edge, or the sector-level edge where the claim is about the
+ *  industry as a whole, linking to the set that count is of.
+ *
+ *  The link goes to the material's own page rather than to this page's project
+ *  table, and the difference matters: the table lists all eight cement plants,
+ *  and a reader who clicks "5 plants" has to land on the five, each with the
+ *  edge evidence that put it there. That is §0.1's rule for a computed figure —
+ *  it links to the set of records behind it — and the plant list it asks for is
+ *  the one on /materials/{id}, not the one here.
+ *
+ *  Ordering is by edge count and is not itself displayed: a count of edges is a
+ *  fact about the graph, where a count of plants is a fact about the industry. */
+function MaterialList({
+  title,
+  rows,
+  anchor,
+}: {
+  title: string;
+  rows: MaterialFlow[];
+  /** Which block on the material page the basis link opens. Null for
+   *  substitutes, which rest on no endpoint and carry no count. */
+  anchor: string | null;
+}) {
   if (rows.length === 0) return null;
   return (
     <div className="tmatlist">
       <h3>{title}</h3>
       <ul>
-        {rows.map(({ material: m }) => (
-          <li key={m.id}>
-            <Link href={`/materials/${m.id}`}>{m.name}</Link>
-            <span className={`tmat-type ${m.type}`}>{m.type.replace("_", " ")}</span>
-            {/* A fact about the material, read off Annex I of the CRMA, never a
-                judgement about the sector that handles it. */}
-            {m.crma_annex_i ? (
-              <a
-                className="tmat-crma"
-                href={m.crma_annex_i.source.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                CRMA Annex I
-              </a>
-            ) : null}
-          </li>
-        ))}
+        {rows.map((row) => {
+          const m = row.material;
+          const basis: string[] = [];
+          if (row.plants > 0) basis.push(`${row.plants} ${row.plants === 1 ? "plant" : "plants"}`);
+          if (row.sectorWide) basis.push("sector-wide");
+          return (
+            <li key={m.id}>
+              <Link href={`/materials/${m.id}`}>{m.name}</Link>
+              <span className={`tmat-type ${m.type}`}>{m.type.replace("_", " ")}</span>
+              {basis.length > 0 && anchor ? (
+                <Link className="tmat-basis" href={`/materials/${m.id}#${anchor}`}>
+                  {basis.join(" · ")}
+                </Link>
+              ) : null}
+              {/* A substitution names what it stands in for, which is the basis
+                  a reader wants where there is no count to give them. */}
+              {anchor === null ? (
+                <span className="tmat-basis">
+                  for{" "}
+                  {m.substitutes
+                    .map((sub) => getMaterial(sub.material)?.name ?? sub.material)
+                    .join(", ")}
+                </span>
+              ) : null}
+              {/* A fact about the material, read off Annex I of the CRMA, never a
+                  judgement about the sector that handles it. */}
+              {m.crma_annex_i ? (
+                <a
+                  className="tmat-crma"
+                  href={m.crma_annex_i.source.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  CRMA Annex I
+                </a>
+              ) : null}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
@@ -447,9 +490,9 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
             sector&apos;s copy of it.
           </p>
           <div className="tmatlists">
-            <MaterialList title="Inputs" rows={flows.inputs} />
-            <MaterialList title="Outputs and by-products" rows={flows.outputs} />
-            <MaterialList title="Substitutes" rows={flows.substitutes} />
+            <MaterialList title="Inputs" rows={flows.inputs} anchor="consumed-by" />
+            <MaterialList title="Outputs and by-products" rows={flows.outputs} anchor="produced-by" />
+            <MaterialList title="Substitutes" rows={flows.substitutes} anchor={null} />
           </div>
         </section>
       ) : null}

@@ -67,11 +67,14 @@ function Endpoint({ node }: { node: string }) {
   return <>{id}</>;
 }
 
-function Edges({ title, edges }: { title: string; edges: MaterialEdge[] }) {
+/** `id` is what a sector page's basis count links to — "5 plants" opens the
+ *  five, each with the edge evidence that put it there. §0.1: a computed figure
+ *  links to the set of records behind it. */
+function Edges({ id, title, edges }: { id: string; title: string; edges: MaterialEdge[] }) {
   if (edges.length === 0) return null;
   const params = getParameters();
   return (
-    <div className="mat-edges">
+    <div className="mat-edges" id={id}>
       <h3>{title}</h3>
       <ul>
         {edges.map((e) => {
@@ -147,12 +150,12 @@ export default async function MaterialPage({ params }: { params: Promise<{ id: s
           </p>
         </header>
 
-        <Edges title="Produced by" edges={material.produced_by} />
-        <Edges title="Consumed by" edges={material.consumed_by} />
-        <Edges title="Required by" edges={material.required_by} />
+        <Edges id="produced-by" title="Produced by" edges={material.produced_by} />
+        <Edges id="consumed-by" title="Consumed by" edges={material.consumed_by} />
+        <Edges id="required-by" title="Required by" edges={material.required_by} />
 
         {material.substitutes.length > 0 ? (
-          <div className="mat-edges">
+          <div className="mat-edges" id="substitutes">
             <h3>Substitutes for</h3>
             <ul>
               {material.substitutes.map((s) => (
