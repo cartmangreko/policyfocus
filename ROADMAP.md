@@ -141,6 +141,32 @@ keys are in the spine and someone has joined against them.
 
 ---
 
+## A lead block for the material page, and its way into the index
+
+**Rides along with any material work.** Touches
+`sources/build_object_leads.py`, `data/lead/`, `web/app/materials/[id]/page.tsx`
+and `web/lib/routes.ts`.
+
+Brief 5 §2 gives the sector page a Materials section and brief 5 §6 makes
+`/materials/{id}` its spoke — materials are cross-sector, so there is no
+per-sector list page and the material's own page is where the whole of it is
+read. The route is built (step 1) and carries `DEMOTED`, because §0.8 makes
+indexability follow the lead block and this page renders none.
+
+That is the rule working, not a hole in it: the page keeps `follow`, so a
+crawler walks through it to the sectors and projects its edges name. The exit
+is the one §0.8 gives every demoted route — it renders a lead block and becomes
+indexable, and nobody re-opens the question to let it.
+
+What the lead block needs is the mechanism measure and project pages already
+have: a generator in `build_object_leads.py` writing `data/lead/materials.json`,
+the same gate imported rather than reimplemented, and `web/lib/siteRoutes.ts`
+reading that store for whether the URL is published — so the page's own robots
+tag and the sitemap stay two readings of one file. Two materials today, which
+is small enough that the shape of the sentence is the whole of the work: what a
+material is, which sectors it moves between, and what anybody has published
+about the volumes.
+
 ## The steel dataset, through the same gates as cement
 
 **Rides with nothing; it is a dataset, not a change.** Touches

@@ -3,11 +3,13 @@ import path from "node:path";
 import Link from "next/link";
 import Crumbs from "@/components/Crumbs";
 import LeadBlock from "@/components/LeadBlock";
+import SectionNav from "@/components/SectionNav";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import TransitionDiagram, { type Diagram, type NodeSource } from "@/components/TransitionDiagram";
-import { FILES, SECTORS } from "@/lib/data";
+import { FILES, SECTORS, getRelatedSectors } from "@/lib/data";
 import { transitionProse } from "@/lib/prose";
-import { getSectorOrientation, getTransitionNote } from "@/lib/sitetext";
+import { renderedSections, sectorH1 } from "@/lib/sectorSections";
+import { getSectorOrientation, getTransitionNote, getUnnumberedH2 } from "@/lib/sitetext";
 import {
   STATUS_LABEL,
   TRANSITION_LABEL,
@@ -18,7 +20,6 @@ import {
   fundingForProject,
   getBottlenecks,
   getFunding,
-  getMaterials,
   getImportance,
   getLead,
   getParameters,
@@ -28,36 +29,51 @@ import {
   getTechnology,
   getTransitions,
   lastChange,
+  materialFlows,
   measureHref,
   projectHref,
   sourcesForSector,
-  type Material,
+  type MaterialFlow,
   type Parameter,
   type StatusEvent,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
 
-// The sector page: the product, and the only template that answers the whole
-// question. Seven sections, in this order and no other:
+// THE SECTOR PAGE: the product, and the only template that answers the whole
+// question. Brief 5 restructures it around a fixed sequence of QUESTIONS —
+// every section heading is one, every sector asks them in the same order, so
+// the interface is learned once and never re-learned on the second sector.
 //
-//   1  the lead block — the sentence, why it matters, and the five facts
-//   2  the diagram — the same seven sections as a picture
-//   3  key measures, ranked, with the score components visible
-//   4  bottlenecks, typed, with their parameters and the technologies that address them
-//   5  technologies, with readiness, cost and who is deploying them
-//   6  materials — what the sector makes, consumes and throws off
-//   7  projects, sorted by last status change, with the funding rollup
-//   8  every source used on the page, grouped by publisher
+//   0  the lead block — the sentence, why it matters, the facts. No H2, not in
+//      the nav: it is the answer to "what am I looking at", which is not one of
+//      the questions the sequence asks.
+//   1  what is being built            projects
+//   2  which technologies could change it
+//   3  which materials flow through it
+//   4  what rules and money support it   opportunity
+//   5  what constrains it              bottlenecks
+//   6  which rules matter              policies
+//   7  who the companies are           (omitted everywhere: no company node kind yet)
+//   8  what changed                    feed
+//   9  how it connects                 the diagram and the related sectors
+//      sources — §0.5's page-level register, unnumbered and outside the nav
 //
-// The order is the argument: law, then what the law is up against, then what
-// gets past it, then who is actually building. Sections 3-6 repeat per
-// transition where a sector carries more than one; cement carries one, so the
-// loop runs once and the heading says so rather than the layout implying it.
+// THE ORDER IS NOT WRITTEN HERE. It is data/prose.json → sector_sections, read
+// through lib/sectorSections.ts, and sources/check_section_order.py fails the
+// build if this file renders the sections in any other order or under any other
+// id. The headings are not written here either: they are templates in the same
+// block with the sector's two name slots substituted in, so the wording is
+// reviewed in one place and cannot drift between sectors.
+//
+// AN EMPTY SECTION IS OMITTED, from the page and from the nav both (brief 5 §2)
+// — which amends the fixed-presence rule at page specifications §0.5 for this
+// page type. `present` below is the whole of that decision, one boolean per
+// section, and it is the only place a section's existence is decided.
 //
 // NOTHING HERE COMPUTES A RANKING OR A EURO. Both come from
 // data/transition/importance/<sector>.json, built and gated in Python. This
-// file decides what is shown and in what order, which is enough
-// responsibility for one component.
+// file decides what is shown and in what order, which is enough responsibility
+// for one component.
 
 // THE SCORE PANEL IS GONE FROM THIS PAGE, and it is worth saying where it
 // went. `ScoreComponents` drew three columns under every measure: the money
@@ -116,14 +132,37 @@ function nodeLabel(node: string): string {
   return id;
 }
 
-/** Every sourced volume attached to a material's edges, deduplicated. The
- *  material states no number of its own — each one is a parameter id, and the
- *  chip renders the parameter with its quote and its source. */
-function volumes(m: Material): string[] {
-  const ids = [...m.produced_by, ...m.consumed_by, ...m.required_by]
-    .map((e) => e.volume)
-    .filter((v): v is string => Boolean(v));
-  return [...new Set(ids)];
+/** One of the three material lists. Ordered by how many of this sector's edges
+ *  the material carries — the ordering is not displayed, because a count of
+ *  edges is a fact about the graph rather than about the industry, and §0.1
+ *  would then owe it a source link to a set of edges nobody wants to read. */
+function MaterialList({ title, rows }: { title: string; rows: MaterialFlow[] }) {
+  if (rows.length === 0) return null;
+  return (
+    <div className="tmatlist">
+      <h3>{title}</h3>
+      <ul>
+        {rows.map(({ material: m }) => (
+          <li key={m.id}>
+            <Link href={`/materials/${m.id}`}>{m.name}</Link>
+            <span className={`tmat-type ${m.type}`}>{m.type.replace("_", " ")}</span>
+            {/* A fact about the material, read off Annex I of the CRMA, never a
+                judgement about the sector that handles it. */}
+            {m.crma_annex_i ? (
+              <a
+                className="tmat-crma"
+                href={m.crma_annex_i.source.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                CRMA Annex I
+              </a>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default function SectorMap({ slug }: { slug: SectorSlug }) {
@@ -133,8 +172,9 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   const technologies = getTechnologies(slug);
   const projects = byLastChange(getProjects(slug));
   const params = getParameters();
-  const materials = getMaterials(slug);
+  const flows = materialFlows(slug);
   const funding = getFunding(slug);
+  const related = getRelatedSectors(slug);
   // The rollup, derived here and stored nowhere. `undisclosed` is counted
   // separately rather than folded in as zero: a grant nobody published is not
   // a grant of nothing, and a total that pretended otherwise would read as
@@ -212,14 +252,51 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
       projectsByTech.get(t)!.push(p);
     }
 
+  // WHICH SECTIONS EXIST ON THIS SECTOR'S PAGE. One boolean each, and every one
+  // of them is a question about the data rather than about the sector: steel
+  // gets its sections by having rows, not by an edit here.
+  //
+  // `companies` is false on every sector and will be until the company node
+  // kind is built (brief 5 §2). It is listed rather than omitted so the day it
+  // arrives is a one-word change and so the sequence in this map is the
+  // sequence in the specification, readable side by side.
+  const present: Record<string, boolean> = {
+    projects: projects.length > 0,
+    technologies: technologies.length > 0,
+    materials:
+      flows.inputs.length + flows.outputs.length + flows.substitutes.length > 0,
+    opportunity: funding.length > 0,
+    bottlenecks: bottlenecks.length > 0,
+    policies: inView.length > 0,
+    companies: false,
+    feed: changes.length > 0,
+    connections: Boolean(diagram) || related.length > 0,
+  };
+  const sections = renderedSections(slug, present);
+  const headings = new Map(sections.map((s) => [s.id, s.h2]));
+  /** The heading for a section that is being rendered. Throws for a section
+   *  `present` says is absent, which is the one way this file could put a
+   *  section on the page without the nav knowing about it. */
+  const h2 = (id: string): string => {
+    const text = headings.get(id);
+    if (!text) {
+      throw new Error(
+        `section "${id}" is rendering but "present" says it has no data, so it has ` +
+          `no heading and no nav entry — the two have to be one decision`,
+      );
+    }
+    return text;
+  };
+
   return (
     <main className="rise sector-map" style={{ ["--accent" as string]: `var(${accentVar(slug)})` }}>
+      <SectionNav sections={sections} />
       <div className="wrap">
       <Crumbs trail={[{ label: "Sectors", href: "/sectors" }, { label: name }]} />
 
       <header className="tmap-head">
         <h1>
-          <SectorIcon slug={slug} size={28} /> {name}
+          <SectorIcon slug={slug} size={28} /> {sectorH1(slug)}
         </h1>
         <ul className="tmap-transitions">
           {transitions.map((t) => (
@@ -237,413 +314,421 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
         {lead ? <LeadBlock lead={lead} /> : <p className="tmap-lede">{opening}</p>}
       </header>
 
-      {/* WHAT MOVED HERE, last 30 days. The home strip says what moved anywhere;
-          this says what moved in this sector, which is the question somebody on
-          this page is actually asking.
-
-          AN EMPTY WINDOW IS A FACT AND IT IS PRINTED. Most sectors will have
-          nothing in thirty days most of the time, and a strip that vanished
-          when empty would leave a reader unable to tell "nothing happened" from
-          "we stopped looking". So the empty state names the last thing that did
-          happen, and dates it. */}
-      <section className="tmoved" aria-label="What moved in this sector">
-        <h2>What moved</h2>
-        {moved.length > 0 ? (
-          <ul>
-            {moved.map(({ project, event }) => (
-              <li key={project.id}>
-                <span className="tmoved-date">{event.date}</span>
-                <Link href={projectHref(project.id)}>{project.name}</Link>
-                <span className="tmoved-to">{STATUS_LABEL[event.status]}</span>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="tmoved-quiet">
-            Nothing in the last {MOVED_WINDOW_DAYS} days.
-            {latestMove ? (
-              <>
-                {" "}
-                The last change was{" "}
-                <Link href={projectHref(latestMove.project.id)}>
-                  {latestMove.project.name}
-                </Link>{" "}
-                to {STATUS_LABEL[latestMove.event.status]} on{" "}
-                <span className="tmoved-date">{latestMove.event.date}</span>.
-              </>
-            ) : null}
-          </p>
-        )}
-      </section>
-
-      {diagram ? (
-        <section className="tmap-section" id="map">
-          <h2>How it connects</h2>
-          {/* TWO DIAGRAMS, ONE PICTURE. Above the breakpoint the interactive
-              component; below it the flat SVG the same builder writes, linked
-              so a tap opens it full size. A phone gets no hover, cannot fit
-              four columns, and would be pinching at a 1160-unit canvas inside a
-              375-point viewport — so it gets the file instead of the widget,
-              and the widget is not rendered there at all. */}
-          <div className="tdiagram-interactive">
-            <TransitionDiagram
-              diagram={diagram}
-              sources={nodeSources}
-              pageUrl={`eufabric.eu/sectors/${slug}`}
-            />
+      {present.projects ? (
+        <section className="tmap-section" id="projects">
+          <h2 className="sectionhead">{h2("projects")}</h2>
+          <p className="tmap-sub">Sorted by last status change. Every change carries its source.</p>
+          <div className="tprojects-scroll">
+            <table className="tprojects">
+              <thead>
+                <tr>
+                  <th>Project</th>
+                  <th>Company</th>
+                  <th>Site</th>
+                  <th>Country</th>
+                  <th>Technology</th>
+                  <th>Status</th>
+                  <th>Public funding</th>
+                  <th>Last change</th>
+                </tr>
+              </thead>
+              <tbody>
+                {projects.map((p) => {
+                  const last = lastChange(p);
+                  const rows = fundingForProject(p.id);
+                  // The same rule as the money section: this cell says committed
+                  // money only, so a column of awards never quietly includes an
+                  // announcement. The announced figure has one home, above.
+                  const pt = fundingTotals(rows, params);
+                  const funded = pt.committed;
+                  return (
+                    <tr key={p.id}>
+                      <td>
+                        <Link href={projectHref(p.id)}>{p.name}</Link>
+                      </td>
+                      <td>{p.company}</td>
+                      <td>{p.plant ?? "—"}</td>
+                      <td>{p.country}</td>
+                      <td className="ttech-cell">{p.technology.join(", ")}</td>
+                      <td>
+                        <span className={`tstatus ${p.status}`}>{STATUS_LABEL[p.status]}</span>
+                      </td>
+                      <td className="num">
+                        {funded ? eur(funded) : pt.committedCount ? "undisclosed" : "—"}
+                      </td>
+                      <td className="num">{last?.date ?? "—"}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
-          <figure className="tdiagram-static">
-            <a href={`/diagrams/${slug.replace("/", "__")}.svg`}>
-              {/* eslint-disable-next-line @next/next/no-img-element -- a built
-                  SVG of known size; the optimiser has nothing to add and would
-                  rasterise it. */}
-              <img
-                src={`/diagrams/${slug.replace("/", "__")}.svg`}
-                width={diagram.width}
-                height={diagram.height + 34}
-                alt={`${name}: the measures, bottlenecks, technologies and projects on this page, and how they connect`}
-              />
-            </a>
-            <figcaption>Tap to open full size. The hover detail is on the desktop view.</figcaption>
-          </figure>
         </section>
       ) : null}
 
-      <section className="tmap-section" id="measures">
-        <h2>Key measures</h2>
-        {/* THE TOP FIVE, AND WHAT THEY SAY (brief 4 §5).
-            
-            This list used to be every measure in the sector view — eight for
-            cement — each with its register id as the heading, the decoded
-            provision under it, and a three-column panel showing the money
-            model, every bottleneck edge with its weight, and the attention
-            count. That is the ranking showing its working, and it is the right
-            thing to be able to see; it is the wrong thing to open with. A
-            reader who has not read the act cannot tell from `cbam:FIN-03` and
-            'satisfy the quarterly certificate-holding requirement' what the
-            measure would do to them.
-
-            So: five entries at most, in the ranking's own order, and each one
-            says what it requires or grants in a title and one sentence. The
-            words are authored and reviewed in
-            data/transition/measure_labels.json; the figures inside them are
-            computed at build time from the same money block the ranking sorts
-            on, so the sentence and the score cannot disagree. The working has
-            not been deleted — every measure keeps its own page, linked from
-            its title, and the score components are on it. */}
-        <ol className="tmeasures">
-          {inView.slice(0, KEY_MEASURES).map((m) => (
-            <li key={m.measure} id={`measure-${m.file}-${m.id}`}>
-              <h3 className="tmeasure-title">
-                <Link href={measureHref(m.measure)}>
-                  {m.plain ? m.plain.title : m.measure}
-                </Link>
-              </h3>
-              {m.plain ? <p className="tmeasure-plain">{m.plain.sentence}</p> : null}
-              <p className="tmeasure-cite">
-                {FILES[m.file]?.name ?? m.file}
-                {m.article ? ` · ${m.article}` : ""}
-                {m.when ? ` · ${m.when}` : ""}
-              </p>
-            </li>
-          ))}
-        </ol>
-        {/* NET POSITION IS BUILT AND NOT DRAWN (brief 4 §5). The table lived
-            here: cost, support and net per bearer and per scale, out of
-            imp.net. It is still computed by sources/build_importance.py, still
-            gated by sources/check_importance.py, and still in
-            data/transition/importance/<sector>.json — this page does not
-            render it. What it showed was a netting a reader cannot check
-            without the schema in front of them, at the top of the page,
-            immediately after four sentences written so they would not need it. */}
-      </section>
-
-      <section className="tmap-section" id="bottlenecks">
-        <h2>Bottlenecks</h2>
-        <div className="tbottlenecks">
-          {bottlenecks.map((b) => (
-            <article key={b.id} id={`bottleneck-${b.id}`} className="tbottleneck">
-              <h3>
-                <span className={`ttype ${b.type}`}>{b.type}</span> {b.name}
-              </h3>
-              <p>{b.description}</p>
-              {b.quantified_by.length > 0 ? (
-                <ul className="tparams">
-                  {b.quantified_by.map((id) => {
-                    const p = params.get(id);
-                    return p ? <ParameterChip key={id} p={p} /> : null;
-                  })}
-                </ul>
-              ) : (
-                <p className="tscore-note">
-                  Not quantified yet.
-                </p>
-              )}
-              {b.addressed_by.length > 0 ? (
-                <p className="taddressed">
-                  Addressed by{" "}
-                  {b.addressed_by.map((id, i) => (
-                    <span key={id}>
-                      {i > 0 ? ", " : ""}
-                      <a href={`#technology-${id}`}>{id}</a>
-                    </span>
-                  ))}
-                </p>
-              ) : null}
-              {b.measures.length > 0 ? (
-                <ul className="tbmeasures">
-                  {b.measures.map((m) => (
-                    <li key={m.measure}>
-                      <span className={`trel ${m.rel}`}>{m.rel}</span>{" "}
-                      <Link href={measureHref(m.measure)}>{m.measure}</Link>
-                      <span className="tweight">×{m.weight}</span>
-                      <span className="tscore-note">{m.note}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="tscore-note">Nothing on the platform moves this one.</p>
-              )}
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="tmap-section" id="technologies">
-        <h2>Technologies</h2>
-        <div className="ttechs">
-          {technologies.map((t) => (
-            <article key={t.id} id={`technology-${t.id}`} className="ttech">
-              <h3>
-                {t.name} <span className={`tready ${t.readiness.level}`}>{t.readiness.level}</span>
-              </h3>
-              <p>{t.description}</p>
-              <dl>
-                <dt>Readiness</dt>
-                <dd>
-                  {t.readiness.level} — {t.readiness.note}{" "}
-                  <a href={t.readiness.source} target="_blank" rel="noreferrer">
-                    source
-                  </a>{" "}
-                  ({t.readiness.date})
-                </dd>
-                {t.abatement_share ? (
-                  <>
-                    <dt>Abatement</dt>
-                    <dd>
-                      {t.abatement_share.low === t.abatement_share.high
-                        ? t.abatement_share.low
-                        : `${t.abatement_share.low}–${t.abatement_share.high}`}{" "}
-                      {t.abatement_share.unit}
-                      {t.abatement_share.note ? ` — ${t.abatement_share.note}` : ""}
-                    </dd>
-                  </>
-                ) : null}
-                {t.cost ? (
-                  <>
-                    <dt>Cost</dt>
-                    <dd>
-                      {t.cost.low}–{t.cost.high} {t.cost.unit}
-                      {t.cost.note ? ` — ${t.cost.note}` : ""}
-                    </dd>
-                  </>
-                ) : null}
-                {t.dependency.length > 0 ? (
-                  <>
-                    <dt>Depends on</dt>
-                    <dd>
-                      {t.dependency.map((d, i) => (
-                        <span key={d}>
-                          {i > 0 ? ", " : ""}
-                          <a href={`#technology-${d}`}>{d}</a>
-                        </span>
-                      ))}
-                    </dd>
-                  </>
-                ) : null}
-                <dt>Deployed by</dt>
-                <dd>
-                  {(projectsByTech.get(t.id) ?? []).length > 0
-                    ? (projectsByTech.get(t.id) ?? []).map((p, i) => (
-                        <span key={p.id}>
-                          {i > 0 ? ", " : ""}
-                          <Link href={projectHref(p.id)}>{p.name}</Link>
-                        </span>
-                      ))
-                    : "no tracked project in this sector"}
-                </dd>
-              </dl>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="tmap-section" id="materials">
-        <h2>Materials</h2>
-        <p className="tmap-sub">
-          What the sector makes, consumes and throws off, and the volumes anybody has
-          published. Every edge names the document it was read from.
-        </p>
-        {materials.length === 0 ? (
-          <p className="tscore-note">No material recorded for this sector yet.</p>
-        ) : (
-          <div className="tmaterials">
-            {materials.map((m) => (
-              <article key={m.id} id={`material-${m.id}`} className="tmaterial">
+      {present.technologies ? (
+        <section className="tmap-section" id="technologies">
+          <h2 className="sectionhead">{h2("technologies")}</h2>
+          <div className="ttechs">
+            {technologies.map((t) => (
+              <article key={t.id} id={`technology-${t.id}`} className="ttech">
                 <h3>
-                  {m.name} <span className={`tmat-type ${m.type}`}>{m.type.replace("_", " ")}</span>
+                  {t.name} <span className={`tready ${t.readiness.level}`}>{t.readiness.level}</span>
                 </h3>
-                <p>{m.description}</p>
+                <p>{t.description}</p>
                 <dl>
-                  {m.cn_code ? (
+                  <dt>Readiness</dt>
+                  <dd>
+                    {t.readiness.level} — {t.readiness.note}{" "}
+                    <a href={t.readiness.source} target="_blank" rel="noreferrer">
+                      source
+                    </a>{" "}
+                    ({t.readiness.date})
+                  </dd>
+                  {t.abatement_share ? (
                     <>
-                      <dt>CN code</dt>
-                      <dd className="mono">{m.cn_code}</dd>
-                    </>
-                  ) : null}
-                  {m.produced_by.length > 0 ? (
-                    <>
-                      <dt>Produced by</dt>
-                      <dd>{m.produced_by.map((e) => nodeLabel(e.node)).join(", ")}</dd>
-                    </>
-                  ) : null}
-                  {m.consumed_by.length > 0 ? (
-                    <>
-                      <dt>Consumed by</dt>
-                      <dd>{m.consumed_by.map((e) => nodeLabel(e.node)).join(", ")}</dd>
-                    </>
-                  ) : null}
-                  {volumes(m).length > 0 ? (
-                    <>
-                      <dt>Volumes</dt>
+                      <dt>Abatement</dt>
                       <dd>
-                        <ul className="tparams">
-                          {volumes(m).map((id) => {
-                            const q = params.get(id);
-                            return q ? <ParameterChip key={id} p={q} /> : null;
-                          })}
-                        </ul>
+                        {t.abatement_share.low === t.abatement_share.high
+                          ? t.abatement_share.low
+                          : `${t.abatement_share.low}–${t.abatement_share.high}`}{" "}
+                        {t.abatement_share.unit}
+                        {t.abatement_share.note ? ` — ${t.abatement_share.note}` : ""}
                       </dd>
                     </>
                   ) : null}
+                  {t.cost ? (
+                    <>
+                      <dt>Cost</dt>
+                      <dd>
+                        {t.cost.low}–{t.cost.high} {t.cost.unit}
+                        {t.cost.note ? ` — ${t.cost.note}` : ""}
+                      </dd>
+                    </>
+                  ) : null}
+                  {t.dependency.length > 0 ? (
+                    <>
+                      <dt>Depends on</dt>
+                      <dd>
+                        {t.dependency.map((d, i) => (
+                          <span key={d}>
+                            {i > 0 ? ", " : ""}
+                            <a href={`#technology-${d}`}>{d}</a>
+                          </span>
+                        ))}
+                      </dd>
+                    </>
+                  ) : null}
+                  <dt>Deployed by</dt>
+                  <dd>
+                    {(projectsByTech.get(t.id) ?? []).length > 0
+                      ? (projectsByTech.get(t.id) ?? []).map((p, i) => (
+                          <span key={p.id}>
+                            {i > 0 ? ", " : ""}
+                            <Link href={projectHref(p.id)}>{p.name}</Link>
+                          </span>
+                        ))
+                      : "no tracked project in this sector"}
+                  </dd>
                 </dl>
               </article>
             ))}
           </div>
-        )}
-      </section>
+        </section>
+      ) : null}
 
-      <section className="tmap-section" id="funding">
-        <h2>Capital</h2>
-        <p className="tmap-sub">
-          Every allocation that finances a project here, with the basis it was made under
-          and how far it has got. Amounts are the published ones; an undisclosed amount is
-          shown as undisclosed rather than as nothing. Committed money — approved, signed
-          or disbursed — is totalled on its own; announcements and withdrawals are stated
-          separately and never folded into it.
-        </p>
-        {funding.length === 0 ? (
-          <p className="tscore-note">No public capital recorded for this sector yet.</p>
-        ) : (
-          <>
-            <p className="tfunding-total">
-              {eur(totals.committed)} committed across {totals.committedCount} allocations
-              {undisclosed > 0 ? `, ${undisclosed} of them undisclosed` : ""}.
+      {present.materials ? (
+        <section className="tmap-section" id="materials">
+          <h2 className="sectionhead">{h2("materials")}</h2>
+          <p className="tmap-sub">
+            What arrives, what leaves, and what could stand in for it. Every material is a
+            cross-sector node — clinker leaves cement, captured CO2 leaves it and arrives at
+            a storage route — so each one opens its own page rather than a list of this
+            sector&apos;s copy of it.
+          </p>
+          <div className="tmatlists">
+            <MaterialList title="Inputs" rows={flows.inputs} />
+            <MaterialList title="Outputs and by-products" rows={flows.outputs} />
+            <MaterialList title="Substitutes" rows={flows.substitutes} />
+          </div>
+        </section>
+      ) : null}
+
+      {present.opportunity ? (
+        <section className="tmap-section" id="opportunity">
+          <h2 className="sectionhead">{h2("opportunity")}</h2>
+          {/* STEP 1 RENDERS THE MONEY AND NOTHING ELSE. Brief 5 §4 makes this
+              section four computed views — money flowing in, rules that pay,
+              rules that create demand, open windows — and step 2 of §9 builds
+              the first two while step 3 builds the third. What is here today is
+              §4.1's source, the capital allocations, which is the one of the
+              four that already had its data: it moved from the section it used
+              to head rather than being dropped for a release and put back. */}
+          <p className="tmap-sub">
+            Every allocation that finances a project here, with the basis it was made under
+            and how far it has got. Amounts are the published ones; an undisclosed amount is
+            shown as undisclosed rather than as nothing. Committed money — approved, signed
+            or disbursed — is totalled on its own; announcements and withdrawals are stated
+            separately and never folded into it.
+          </p>
+          <p className="tfunding-total">
+            {eur(totals.committed)} committed across {totals.committedCount} allocations
+            {undisclosed > 0 ? `, ${undisclosed} of them undisclosed` : ""}.
+          </p>
+          {totals.announcedCount > 0 ? (
+            <p className="tfunding-total tfunding-announced">
+              A further {eur(totals.announced)} announced across {totals.announcedCount}{" "}
+              allocations, not counted above: an announcement is not an award.
             </p>
-            {totals.announcedCount > 0 ? (
-              <p className="tfunding-total tfunding-announced">
-                A further {eur(totals.announced)} announced across {totals.announcedCount}{" "}
-                allocations, not counted above: an announcement is not an award.
-              </p>
-            ) : null}
-            {totals.withdrawnCount > 0 ? (
-              <p className="tfunding-total tfunding-withdrawn">
-                {totals.withdrawnCount} withdrawn allocation
-                {totals.withdrawnCount === 1 ? " is" : "s are"} listed below and in no total.
-              </p>
-            ) : null}
-            <ul className="tfundings">
-              {funding.map((f) => {
-                const amount = fundingAmount(f, params);
-                return (
-                  <li key={f.id} id={`funding-${f.id}`}>
-                    <span className="amount">{amount ? eur(amount) : "undisclosed"}</span>
-                    <span className="programme">{f.programme}</span>
-                    <span className={`tstatus ${f.status}`}>{f.status}</span>
-                    <span className="tfunding-to">
-                      {f.finances.map((n, i) => (
-                        <span key={n}>
-                          {i > 0 ? ", " : ""}
-                          <Link href={projectHref(n.split(":")[1])}>{nodeLabel(n)}</Link>
-                        </span>
-                      ))}
-                    </span>
-                    {f.under ? (
-                      <Link href={measureHref(f.under)} className="measure">
-                        {f.under}
-                      </Link>
-                    ) : null}
-                    <span className="tfunding-date">{f.date}</span>
-                  </li>
-                );
-              })}
+          ) : null}
+          {totals.withdrawnCount > 0 ? (
+            <p className="tfunding-total tfunding-withdrawn">
+              {totals.withdrawnCount} withdrawn allocation
+              {totals.withdrawnCount === 1 ? " is" : "s are"} listed below and in no total.
+            </p>
+          ) : null}
+          <ul className="tfundings">
+            {funding.map((f) => {
+              const amount = fundingAmount(f, params);
+              return (
+                <li key={f.id} id={`funding-${f.id}`}>
+                  <span className="amount">{amount ? eur(amount) : "undisclosed"}</span>
+                  <span className="programme">{f.programme}</span>
+                  <span className={`tstatus ${f.status}`}>{f.status}</span>
+                  <span className="tfunding-to">
+                    {f.finances.map((n, i) => (
+                      <span key={n}>
+                        {i > 0 ? ", " : ""}
+                        <Link href={projectHref(n.split(":")[1])}>{nodeLabel(n)}</Link>
+                      </span>
+                    ))}
+                  </span>
+                  {f.under ? (
+                    <Link href={measureHref(f.under)} className="measure">
+                      {f.under}
+                    </Link>
+                  ) : null}
+                  <span className="tfunding-date">{f.date}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ) : null}
+
+      {present.bottlenecks ? (
+        <section className="tmap-section" id="bottlenecks">
+          <h2 className="sectionhead">{h2("bottlenecks")}</h2>
+          <div className="tbottlenecks">
+            {bottlenecks.map((b) => (
+              <article key={b.id} id={`bottleneck-${b.id}`} className="tbottleneck">
+                <h3>
+                  <span className={`ttype ${b.type}`}>{b.type}</span> {b.name}
+                </h3>
+                <p>{b.description}</p>
+                {b.quantified_by.length > 0 ? (
+                  <ul className="tparams">
+                    {b.quantified_by.map((id) => {
+                      const p = params.get(id);
+                      return p ? <ParameterChip key={id} p={p} /> : null;
+                    })}
+                  </ul>
+                ) : (
+                  <p className="tscore-note">Not quantified yet.</p>
+                )}
+                {b.addressed_by.length > 0 ? (
+                  <p className="taddressed">
+                    Addressed by{" "}
+                    {b.addressed_by.map((id, i) => (
+                      <span key={id}>
+                        {i > 0 ? ", " : ""}
+                        <a href={`#technology-${id}`}>{id}</a>
+                      </span>
+                    ))}
+                  </p>
+                ) : null}
+                {/* A measure appears here as a clause under the constraint it
+                    bears on and never as an entry of its own — brief 5 §5, the
+                    overlap rule. Its standard one-liner is the Policies
+                    section's alone. */}
+                {b.measures.length > 0 ? (
+                  <ul className="tbmeasures">
+                    {b.measures.map((m) => (
+                      <li key={m.measure}>
+                        <span className={`trel ${m.rel}`}>{m.rel}</span>{" "}
+                        <Link href={measureHref(m.measure)}>{m.measure}</Link>
+                        <span className="tweight">×{m.weight}</span>
+                        <span className="tscore-note">{m.note}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="tscore-note">Nothing on the platform moves this one.</p>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {present.policies ? (
+        <section className="tmap-section" id="policies">
+          <h2 className="sectionhead">{h2("policies")}</h2>
+          {/* THE TOP FIVE, AND WHAT THEY SAY (brief 4 §5).
+
+              This list used to be every measure in the sector view — eight for
+              cement — each with its register id as the heading, the decoded
+              provision under it, and a three-column panel showing the money
+              model, every bottleneck edge with its weight, and the attention
+              count. That is the ranking showing its working, and it is the right
+              thing to be able to see; it is the wrong thing to open with. A
+              reader who has not read the act cannot tell from `cbam:FIN-03` and
+              'satisfy the quarterly certificate-holding requirement' what the
+              measure would do to them.
+
+              So: five entries at most, in the ranking's own order, and each one
+              says what it requires or grants in a title and one sentence. The
+              words are authored and reviewed in
+              data/transition/measure_labels.json; the figures inside them are
+              computed at build time from the same money block the ranking sorts
+              on, so the sentence and the score cannot disagree. The working has
+              not been deleted — every measure keeps its own page, linked from
+              its title, and the score components are on it.
+
+              THIS IS THE ONLY SECTION THAT RENDERS THE STANDARD ONE-LINER
+              (brief 5 §5, gated by sources/check_one_liner_scope.py in step 2).
+              Opportunity says what a measure pays with a support template;
+              Bottlenecks says what it bears on in a clause. The same measure may
+              appear in all three; the same sentence may not appear twice. */}
+          <ol className="tmeasures">
+            {inView.slice(0, KEY_MEASURES).map((m) => (
+              <li key={m.measure} id={`measure-${m.file}-${m.id}`}>
+                <h3 className="tmeasure-title">
+                  <Link href={measureHref(m.measure)}>{m.plain ? m.plain.title : m.measure}</Link>
+                </h3>
+                {m.plain ? <p className="tmeasure-plain">{m.plain.sentence}</p> : null}
+                <p className="tmeasure-cite">
+                  {FILES[m.file]?.name ?? m.file}
+                  {m.article ? ` · ${m.article}` : ""}
+                  {m.when ? ` · ${m.when}` : ""}
+                </p>
+              </li>
+            ))}
+          </ol>
+          {/* NET POSITION IS BUILT AND NOT DRAWN (brief 4 §5, and it stays
+              hidden under brief 5 §2). The table lived here: cost, support and
+              net per bearer and per scale, out of imp.net. It is still computed
+              by sources/build_importance.py, still gated by
+              sources/check_importance.py, and still in
+              data/transition/importance/<sector>.json — this page does not
+              render it. What it showed was a netting a reader cannot check
+              without the schema in front of them, at the top of the page,
+              immediately after four sentences written so they would not need
+              it. */}
+        </section>
+      ) : null}
+
+      {present.feed ? (
+        <section className="tmap-section" id="feed">
+          <h2 className="sectionhead">{h2("feed")}</h2>
+          {/* WHAT MOVED HERE, last 30 days. The home strip says what moved
+              anywhere; this says what moved in this sector, which is the
+              question somebody on this page is actually asking.
+
+              AN EMPTY WINDOW IS A FACT AND IT IS PRINTED — and note what that
+              is not. Brief 5 §2 omits a section with NO DATA; a sector with a
+              status history and a quiet month has data, and the fact that
+              nothing has happened in thirty days is one of the more useful
+              things this page can tell a reader. So the section renders
+              whenever the sector has ever moved, and says when it last did. */}
+          {moved.length > 0 ? (
+            <ul className="tmoved-list">
+              {moved.map(({ project, event }) => (
+                <li key={project.id}>
+                  <span className="tmoved-date">{event.date}</span>
+                  <Link href={projectHref(project.id)}>{project.name}</Link>
+                  <span className="tmoved-to">{STATUS_LABEL[event.status]}</span>
+                </li>
+              ))}
             </ul>
-          </>
-        )}
-      </section>
+          ) : (
+            <p className="tmoved-quiet">
+              Nothing in the last {MOVED_WINDOW_DAYS} days.
+              {latestMove ? (
+                <>
+                  {" "}
+                  The last change was{" "}
+                  <Link href={projectHref(latestMove.project.id)}>{latestMove.project.name}</Link>{" "}
+                  to {STATUS_LABEL[latestMove.event.status]} on{" "}
+                  <span className="tmoved-date">{latestMove.event.date}</span>.
+                </>
+              ) : null}
+            </p>
+          )}
+        </section>
+      ) : null}
 
-      <section className="tmap-section" id="projects">
-        <h2>Projects</h2>
-        <p className="tmap-sub">Sorted by last status change. Every change carries its source.</p>
-        <div className="tprojects-scroll">
-          <table className="tprojects">
-            <thead>
-              <tr>
-                <th>Project</th>
-                <th>Company</th>
-                <th>Site</th>
-                <th>Country</th>
-                <th>Technology</th>
-                <th>Status</th>
-                <th>Public funding</th>
-                <th>Last change</th>
-              </tr>
-            </thead>
-            <tbody>
-              {projects.map((p) => {
-                const last = lastChange(p);
-                const rows = fundingForProject(p.id);
-                // The same rule as the Capital section: this cell says committed
-                // money only, so a column of awards never quietly includes an
-                // announcement. The announced figure has one home, above.
-                const pt = fundingTotals(rows, params);
-                const funded = pt.committed;
-                return (
-                  <tr key={p.id}>
-                    <td>
-                      <Link href={projectHref(p.id)}>{p.name}</Link>
-                    </td>
-                    <td>{p.company}</td>
-                    <td>{p.plant ?? "—"}</td>
-                    <td>{p.country}</td>
-                    <td className="ttech-cell">{p.technology.join(", ")}</td>
-                    <td>
-                      <span className={`tstatus ${p.status}`}>{STATUS_LABEL[p.status]}</span>
-                    </td>
-                    <td className="num">
-                      {funded ? eur(funded) : pt.committedCount ? "undisclosed" : "—"}
-                    </td>
-                    <td className="num">{last?.date ?? "—"}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </section>
+      {present.connections ? (
+        <section className="tmap-section" id="connections">
+          <h2 className="sectionhead">{h2("connections")}</h2>
+          {diagram ? (
+            <>
+              {/* TWO DIAGRAMS, ONE PICTURE. Above the breakpoint the interactive
+                  component; below it the flat SVG the same builder writes, linked
+                  so a tap opens it full size. A phone gets no hover, cannot fit
+                  four columns, and would be pinching at a 1160-unit canvas inside a
+                  375-point viewport — so it gets the file instead of the widget,
+                  and the widget is not rendered there at all. */}
+              <div className="tdiagram-interactive">
+                <TransitionDiagram
+                  diagram={diagram}
+                  sources={nodeSources}
+                  pageUrl={`eufabric.eu/sectors/${slug}`}
+                />
+              </div>
+              <figure className="tdiagram-static">
+                <a href={`/diagrams/${slug.replace("/", "__")}.svg`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element -- a built
+                      SVG of known size; the optimiser has nothing to add and would
+                      rasterise it. */}
+                  <img
+                    src={`/diagrams/${slug.replace("/", "__")}.svg`}
+                    width={diagram.width}
+                    height={diagram.height + 34}
+                    alt={`${name}: the measures, bottlenecks, technologies and projects on this page, and how they connect`}
+                  />
+                </a>
+                <figcaption>Tap to open full size. The hover detail is on the desktop view.</figcaption>
+              </figure>
+            </>
+          ) : null}
+          {related.length > 0 ? (
+            <div className="trelated">
+              <h3>Most often caught by the same measure</h3>
+              {/* Computed from the register, not curated: two sectors are
+                  related here because the corpus keeps naming them together. */}
+              <div className="chips">
+                {related.map((s) => (
+                  <Link key={s.slug} href={`/sectors/${s.slug}`} className="chip">
+                    {s.name}
+                    <span className="chip-count">{s.count}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </section>
+      ) : null}
 
+      {/* SOURCES IS NOT ONE OF THE NUMBERED SECTIONS and is not in the nav.
+          Page specifications §0.5 makes it the final section of every sector
+          page; brief 5 §2 numbers nine questions and this is not one of them —
+          it answers "what does this page stand on", which is a question about
+          the page rather than about the industry. So it renders last on the
+          same footing as the lead block renders first, and §2 is amended to say
+          so in step 6 of the order of work. */}
       <section className="tmap-section" id="sources">
-        <h2>Sources</h2>
+        <h2 className="sectionhead">{getUnnumberedH2("sources")}</h2>
         <p className="tmap-sub">
           Every outbound URL on this page, grouped by publisher. The build fails on a dead one.
         </p>

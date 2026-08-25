@@ -28,9 +28,19 @@ So each layer is confined, and the confinement is checked:
                    direction -- a measure node's cost line, an edge badge --
                    borrows claret or pine FOR THAT ELEMENT and nothing else.
 
-  SECTOR ACCENTS   page-level identity: the photo duotone wash, a section
-                   marker, the what-moved marks on that sector's own page.
-                   Never on a figure, never on a diagram node.
+  SECTOR ACCENTS   page-level identity: the photo duotone wash, the rule under
+                   every section heading on a sector page, the active item in
+                   that page's section nav. Never on a figure, never on a
+                   diagram node.
+
+                   Brief 5 §7 names exactly where the accent appears on a sector
+                   page, and ACCENT_SURFACES below asserts it: those selectors
+                   must emit an accent and must emit none of the reserved three.
+                   Every other layer here is checked by confinement -- a colour
+                   may not appear outside its layer -- and this is the one place
+                   the check runs the other way, because a heading rule that
+                   quietly stopped being the sector's colour would break no
+                   confinement rule at all and would still be wrong.
 
 Ochre is gone. It had no chrome role left once the focus token became signal
 blue, and every remaining use was data -- a pending flag, an unresolved diff, an
@@ -104,6 +114,15 @@ NON_TEXT_TOKENS = ("--ink-40", "--ink-25")
 
 RESERVED = ("--claret", "--pine", "--signal")
 
+# Brief 5 §7. Selector -> what it draws, for the error message. Each one has to
+# emit a sector accent (`--accent`, which components/SectorMap.tsx sets from the
+# sector's own `--acc-*` token, or an `--acc-*` directly) and none of the
+# reserved three.
+ACCENT_SURFACES = {
+    ".sectionhead::after": "the rule under every section heading on a sector page",
+    ".sectionnav-link.is-here": "the active item in the section nav",
+}
+
 # A selector may emit claret or pine only if it names the direction it is
 # showing. Kept explicit rather than clever: every entry is a word that appears
 # in a class name and means one side of the axis.
@@ -133,6 +152,11 @@ DIAGRAM_MARKERS = ("tdiagram", "tnode", "tedge", "ego-", "diagram", "fdiag")
 ACCENT_MARKERS = (
     "sector-icon", "sector-map", "accent", "acc-", "tmap-head", "wash",
     "moved", "band-accent", "tmap-transitions",
+    # Brief 5 §7's two surfaces: the rule under every section H2 and the active
+    # item in the section nav. They are also asserted positively below -- being
+    # ALLOWED an accent is not the same as HAVING one, and §7 is a statement
+    # about where the accent appears, not only about where it may.
+    "sectionhead", "sectionnav",
 )
 
 # Files allowed to name a colour token inline rather than through a class. Each
@@ -226,6 +250,30 @@ def main() -> int:
                 problems.append(f"{sel}: emits {name} outside a diagram")
             if name.startswith("--acc-") and confined(sel, DIAGRAM_MARKERS):
                 problems.append(f"{sel}: puts a sector accent on a diagram element")
+
+    # ---- brief 5 §7: the accent surfaces, asserted ------------------------
+    for selector, what in ACCENT_SURFACES.items():
+        bodies = [body for sel, body in rules(css)
+                  if selector in [part.strip() for part in sel.split(",")]]
+        if not bodies:
+            problems.append(
+                f"{selector} is not in the stylesheet, and it is {what} — brief 5 §7 "
+                f"puts the sector accent there")
+            continue
+        joined = " ".join(bodies)
+        # `var(--accent, var(--ink))` counts: the fallback is what a page that is
+        # not a sector page gets, and the rule is still emitting the accent.
+        accented = (re.search(r"var\(\s*--accent\b", joined) is not None
+                    or any(f"var({n})" in joined for n in measured if n.startswith("--acc-")))
+        if not accented:
+            problems.append(
+                f"{selector} draws {what} and emits no sector accent. §7 gives the "
+                f"accent exactly three homes on a sector page and this is one of them")
+        for token in RESERVED:
+            if uses(joined, token):
+                problems.append(
+                    f"{selector} emits {token}. Signal blue, claret and pine are not "
+                    f"used on the headers or the nav (§7)")
 
     # ---- contrast -------------------------------------------------------
     # Every colour set as type has to be readable on the ground it is set on.

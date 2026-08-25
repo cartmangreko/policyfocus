@@ -167,6 +167,15 @@
   /* metrics */
   --maxw: 1200px;
   --gutter: 32px;
+  /* THE TWO STICKY HEIGHTS, tokens rather than numbers because four places have
+     to agree about them: the header sets its own height, the section nav sticks
+     below it, every anchor target on a sector page reserves both as
+     scroll-margin-top so a jump lands under the bar rather than behind it, and
+     components/SectionNav.tsx reads them back to work out where the top of the
+     viewport effectively is. A literal in any one of the four is a bar that
+     covers the heading a reader just clicked. */
+  --header-h: 98px;
+  --sectionnav-h: 46px;
   --dur: 0.45s;
   --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
 }
@@ -316,7 +325,7 @@ a {
      is set (brief 4 §3 — the home page no longer repeats it, which is what was
      drawing the wordmark twice on a phone), so it is set at the size the front
      page used to set it at. */
-  height: 98px;
+  height: var(--header-h);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3830,29 +3839,12 @@ h3 {
   }
 }
 
-.tmoved {
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 12px 0;
-  margin-top: 26px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px 22px;
-}
-.tmoved h2 {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-55);
-  margin: 0;
-  /* The sector's own accent, on the sector's own page: layer four, and one of
-     the few marks it is allowed. */
-  border-left: 2px solid var(--accent, var(--ink-25));
-  padding-left: 8px;
-}
-.tmoved ul {
+/* The feed, brief 5 §2 row 8. It was a strip of its own above the diagram with
+   a mono eyebrow for a heading and an accent bar down its left edge; it is a
+   numbered section now, so it takes the same H2 and the same accent rule under
+   it as the other eight and stops carrying a second, different mark of its own.
+   One accent per section, and §7 says where it goes. */
+.tmoved-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -3861,15 +3853,15 @@ h3 {
   gap: 6px 22px;
   font-size: 14px;
 }
-.tmoved li {
+.tmoved-list li {
   display: flex;
   align-items: baseline;
   gap: 8px;
 }
-.tmoved a {
+.tmoved-list a {
   border-bottom: 1px solid var(--rule);
 }
-.tmoved a:hover {
+.tmoved-list a:hover {
   border-bottom-color: var(--ink);
 }
 .tmoved-date {
@@ -3888,4 +3880,247 @@ h3 {
   margin: 0;
   font-size: 14px;
   color: var(--ink-55);
+}
+
+/* ---------- the section nav and the section headings (brief 5 §3, §7) ------
+
+   TWO PLACES THE SECTOR ACCENT APPEARS ON THIS PAGE, and §7 names them both:
+   the rule under every H2, and the bar under the active nav item. Nowhere
+   else. `--accent` is set once on `.sector-map` from the sector's own
+   `--acc-*` token, so neither rule below names a sector.
+
+   INACTIVE LABELS ARE --ink-55, NOT --ink-40. Brief 5 §3 asks for --ink-40 and
+   this is the one place it is not followed, for a reason the identity already
+   settled: --ink-40 stopped being a type colour when the ink ladder was rewritten
+   (see the ink block at the top of this file), it measures 3.2:1 on paper, and
+   sources/check_colour_layers.py fails the build on any rule that sets type in
+   it. Muted type is --ink-55 and there is one of it. The distinction the brief
+   wants — quiet until you are in it — is carried by weight and by the bar. */
+
+.sectionnav {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+  height: var(--sectionnav-h);
+}
+.sectionnav-list {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  height: 100%;
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+  gap: 26px;
+  /* One row, always. On a phone it scrolls sideways rather than wrapping into
+     two rows that change the height the anchors are offset by. */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.sectionnav-list::-webkit-scrollbar {
+  display: none;
+}
+.sectionnav-link {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  color: var(--ink-55);
+  border-bottom: 3px solid transparent;
+  /* The bar sits ON the section's own boundary line, so an inactive item
+     reserves the same three pixels an active one paints and nothing moves when
+     the active item changes. */
+  margin-bottom: -1px;
+  transition: color var(--dur) var(--ease);
+}
+.sectionnav-link:hover {
+  color: var(--ink);
+}
+.sectionnav-link.is-here {
+  color: var(--ink);
+  border-bottom-color: var(--accent, var(--ink));
+}
+
+/* Every anchor target clears the header and the bar both, so a jump lands with
+   the heading at the top of the readable area rather than underneath the two
+   sticky strips. */
+.sector-map [id] {
+  scroll-margin-top: calc(var(--header-h) + var(--sectionnav-h) + 12px);
+}
+
+/* THE RULE UNDER EVERY H2 (§7). Forty-four pixels, three thick, left-aligned
+   under the first word, the sector's accent. The same rule on every heading of
+   every sector page: no per-section variation, because a mark that varies is a
+   mark that is saying something, and this one is saying only "this is a section
+   of the cement page". */
+.sectionhead::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin-top: 10px;
+  background: var(--accent, var(--ink));
+}
+.sector-map .tmap-section > h2.sectionhead {
+  margin-bottom: 14px;
+}
+
+/* ---------- materials (brief 5 §2 row 3) ---------- */
+
+.tmatlists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 26px;
+  margin-top: 18px;
+}
+.tmatlist h3 {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.tmatlist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.tmatlist li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 14px;
+}
+.tmatlist a {
+  border-bottom: 1px solid var(--rule);
+}
+.tmatlist a:hover {
+  border-bottom-color: var(--ink);
+}
+.tmat-crma {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+/* Related sectors, inside Connections. */
+.trelated {
+  margin-top: 30px;
+}
+.trelated h3 {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  margin: 0;
+}
+
+/* ---------- one material, on its own page ---------- */
+
+.mat-head {
+  padding: 28px 0 20px;
+  border-bottom: 2px solid var(--ink);
+}
+.mat-head h1 {
+  font-family: var(--display);
+  font-size: clamp(28px, 3.6vw, 38px);
+  line-height: 1.08;
+  margin: 6px 0 10px;
+}
+.mat-kind {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-size: 12px;
+  color: var(--ink-55);
+}
+.mat-crma {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+.mat-description {
+  max-width: 62ch;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-70);
+  margin: 0 0 12px;
+}
+.mat-sectors {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-55);
+}
+.mat-edges {
+  padding: 24px 0 4px;
+  border-top: 1px solid var(--rule-soft);
+}
+.mat-edges h3 {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  margin: 0 0 12px;
+}
+.mat-edges ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.mat-edges li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 14px;
+  max-width: 78ch;
+}
+.mat-edges a {
+  border-bottom: 1px solid var(--rule);
+}
+.mat-edges a:hover {
+  border-bottom-color: var(--ink);
+}
+.mat-since,
+.mat-volume,
+.mat-volume-gap,
+.mat-evidence {
+  font-size: 12px;
+  color: var(--ink-55);
+}
+.mat-evidence {
+  flex-basis: 100%;
+  line-height: 1.5;
+}
+.mat-volume {
+  font-family: var(--mono);
 }

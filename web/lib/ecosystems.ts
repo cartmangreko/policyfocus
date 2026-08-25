@@ -75,3 +75,15 @@ function builtSector(e: Ecosystem): string | null {
 export function isUnderConstruction(e: Ecosystem): boolean {
   return builtSector(e) === null;
 }
+
+/** The instance a sector slug belongs to, or null for a slug outside the six.
+ *
+ *  The inverse of the `sectors` edge list, and the resolution every heading on
+ *  a sector page depends on: the name slots in data/prose.json are keyed on
+ *  instance, because chemicals spans two slugs and batteries covers part of
+ *  one. `chem` and `chem/plastics` both answer `chemicals`, which is the point
+ *  — a child sector is the same industry as its parent and is named the same
+ *  way in a heading. */
+export function ecosystemForSector(slug: string): Ecosystem | null {
+  return getEcosystems().find((e) => e.sectors.includes(slug)) ?? null;
+}

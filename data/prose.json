@@ -152,6 +152,147 @@
       }
     }
   },
+  "sector_names": {
+    "status": "approved",
+    "reviewed": "2026-08-25",
+    "_comment": [
+      "THE TWO NAME SLOTS, brief 5 §2.1. Every heading on a sector page is a",
+      "template, and a template needs the sector's name in two grammatical shapes:",
+      "",
+      "    short   the bare noun, used inside a sentence — 'cement', 'circular",
+      "            materials'. Never carries 'European': the templates that want it",
+      "            say it themselves, which is why the projects heading reads 'in",
+      "            European {short}' and the feed heading reads 'in {short}'.",
+      "    phrase  the full noun phrase for a heading about the sector as a whole —",
+      "            'the European cement industry'. Lower case as stored; the",
+      "            renderer capitalises the first letter only where the slot OPENS a",
+      "            heading, which no template does today.",
+      "",
+      "KEYED ON ECOSYSTEM ID, NOT SECTOR SLUG. The keys are the six instances in",
+      "data/transition/ecosystems.json. The chemicals ecosystem spans two FIGARO",
+      "slugs (chem, chem/plastics) and batteries covers part of one (batsol), so a",
+      "slug-keyed store would have to say the chemicals name twice and would have no",
+      "key at all for hydrogen or circular materials. web/lib/ecosystems.ts resolves",
+      "a sector slug to its instance; a slug that belongs to no instance has no",
+      "name slots and cannot render the template, which is a build failure rather",
+      "than a fallback.",
+      "",
+      "BOTH SLOTS ARE REQUIRED for all six, and sources/check_h2_templates.py fails",
+      "the build on an empty one. Unlike the ecosystem descriptions these are not",
+      "optional prose a surface can omit — a heading with an unfilled slot is not a",
+      "heading."
+    ],
+    "sectors": {
+      "cement": {
+        "short": "cement",
+        "phrase": "the European cement industry"
+      },
+      "steel": {
+        "short": "steel",
+        "phrase": "the European steel industry"
+      },
+      "chemicals": {
+        "short": "chemicals",
+        "phrase": "the European chemicals industry"
+      },
+      "batteries": {
+        "short": "batteries",
+        "phrase": "European battery manufacturing"
+      },
+      "hydrogen": {
+        "short": "hydrogen",
+        "phrase": "European hydrogen"
+      },
+      "circular-materials": {
+        "short": "circular materials",
+        "phrase": "circular materials in Europe"
+      }
+    }
+  },
+  "sector_sections": {
+    "status": "approved",
+    "reviewed": "2026-08-25",
+    "_comment": [
+      "THE FIXED SEQUENCE, brief 5 §2. The sector page answers the same questions in",
+      "the same order on every sector, so the interface is learned once. The order of",
+      "the `sections` array below IS the render order and the nav order —",
+      "sources/check_section_order.py reads this array and fails the build if the",
+      "template disagrees with it.",
+      "",
+      "EVERY HEADING IS A QUESTION, and every question is stored here rather than",
+      "written in the component, so the wording is reviewable in one place and cannot",
+      "drift between sectors. Slots are {short} and {phrase} from sector_names above.",
+      "",
+      "A SECTION WITH NO DATA IS OMITTED, from the page and from the nav both — brief",
+      "5 §2, which amends the fixed-presence rule in page specifications §0.5 for",
+      "this page type. An empty section is not rendered with a 'none tracked' line",
+      "here: nine sections of which four say nothing is a worse page than five that",
+      "say something. Which sections have data is a question for the data, not for",
+      "this file, so no entry below is marked optional.",
+      "",
+      "NOT IN THE LIST. The lead block, which opens the page with no H2 and is",
+      "excluded from the nav (row 0). Sources, which page specifications §0.5 makes",
+      "the final section of every sector page and which brief 5 §2 does not number —",
+      "it renders last, unnumbered, outside the nav, on the same footing as the lead",
+      "block, and §2 is amended to say so in step 6."
+    ],
+    "h1": "{Short} in Europe's industrial transition",
+    "h1_comment": "`phrase` is deliberately not used in the H1: it already carries 'European', and 'The European cement industry in Europe's industrial transition' says Europe twice.",
+    "sections": [
+      {
+        "id": "projects",
+        "nav": "Projects",
+        "h2": "What is being built in European {short}"
+      },
+      {
+        "id": "technologies",
+        "nav": "Technologies",
+        "h2": "Which technologies could change {short}"
+      },
+      {
+        "id": "materials",
+        "nav": "Materials",
+        "h2": "Which materials flow through {short}"
+      },
+      {
+        "id": "opportunity",
+        "nav": "Opportunity",
+        "h2": "What EU rules and money support in {short}"
+      },
+      {
+        "id": "bottlenecks",
+        "nav": "Bottlenecks",
+        "h2": "What constrains {phrase}"
+      },
+      {
+        "id": "policies",
+        "nav": "Policies",
+        "h2": "Which EU rules matter for {short}"
+      },
+      {
+        "id": "companies",
+        "nav": "Companies",
+        "h2": "Who are the companies in {phrase}"
+      },
+      {
+        "id": "feed",
+        "nav": "Feed",
+        "h2": "What changed in {short}"
+      },
+      {
+        "id": "connections",
+        "nav": "Connections",
+        "h2": "How {short} connects"
+      }
+    ],
+    "unnumbered": [
+      {
+        "id": "sources",
+        "h2": "Sources",
+        "why": "Page specifications §0.5 makes this the final section of every sector page. Brief 5 §2 numbers nine questions and this is not one of them: it answers what the page stands on rather than anything about the industry, so it renders last, outside the nav, on the same footing as the lead block renders first. Stored here anyway, because the gate's rule is that no heading on this page is free text and an exception carved for one heading is an exception somebody will widen."
+      }
+    ]
+  },
   "sector_lead": {
     "status": "draft",
     "reviewed": null,

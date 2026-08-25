@@ -172,6 +172,10 @@ export interface Material {
   type: MaterialType;
   cn_code: string | null;
   prodcom_code: string | null;
+  /** The Annex I entry of the Critical Raw Materials Act, where the material is
+   *  a strategic raw material, and null where it is not. Explicit rather than
+   *  optional: see the note in data/transition/materials.json. */
+  crma_annex_i: { entry: string; source: Source } | null;
   sectors: string[];
   description: string;
   produced_by: MaterialEdge[];
@@ -577,4 +581,68 @@ export function eur(n: number): string {
   if (Math.abs(n) >= 1e9) return `€${(n / 1e9).toFixed(1)} bn`;
   if (Math.abs(n) >= 1e6) return `€${Math.round(n / 1e6).toLocaleString("en-US")} m`;
   return `€${n.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+}
+
+/** The three lists the Materials section renders, brief 5 §2.
+ *
+ *  WHAT COUNTS AS THIS SECTOR'S EDGE. Not only `sector:cement`. A material
+ *  edge's endpoint can be a sector, a project or a technology, and a captured
+ *  CO2 stream produced by five cement plants is a cement output whether or not
+ *  anybody also wrote the sector-level edge. So membership is the transitive
+ *  one a reader means: the endpoint is this sector, or a project in it, or a
+ *  technology in it. Reading it narrowly would have left the one waste stream
+ *  on the platform in none of the three lists while sitting in the sector's
+ *  own material set, which is the sort of quiet omission a section like this
+ *  exists to prevent.
+ *
+ *  A material can appear in two lists — captured CO2 is produced by the plants
+ *  and consumed by the transport-and-storage route — and that is a fact about
+ *  the material rather than a double count. Nothing here is summed.
+ *
+ *  Each list is ordered by how many of this sector's edges the material carries,
+ *  which is the only ordering available that is not a judgement. */
+export interface MaterialFlow {
+  material: Material;
+  /** This sector's edges of that kind, and the ordering basis. */
+  edges: number;
+}
+
+export interface MaterialFlows {
+  inputs: MaterialFlow[];
+  outputs: MaterialFlow[];
+  substitutes: MaterialFlow[];
+}
+
+export function materialFlows(sector: string): MaterialFlows {
+  const here = new Set<string>([
+    `sector:${sector}`,
+    ...getProjects(sector).map((p) => `project:${p.id}`),
+    ...getTechnologies(sector).map((t) => `technology:${t.id}`),
+  ]);
+  const mine = (edges: MaterialEdge[]) => edges.filter((e) => here.has(e.node)).length;
+  const rank = (rows: MaterialFlow[]) =>
+    rows.filter((r) => r.edges > 0).sort((a, b) => b.edges - a.edges || a.material.name.localeCompare(b.material.name));
+
+  const materials = getMaterials(sector);
+  return {
+    inputs: rank(materials.map((m) => ({ material: m, edges: mine(m.consumed_by) }))),
+    outputs: rank(materials.map((m) => ({ material: m, edges: mine(m.produced_by) }))),
+    // A substitution is a claim about one material standing in for another and
+    // carries no sector endpoint of its own; a substitute is in this sector's
+    // list because the material it substitutes for is.
+    substitutes: rank(
+      materials.map((m) => ({ material: m, edges: m.substitutes.length })),
+    ),
+  };
+}
+
+/** One material by id, for its own page. */
+export function getMaterial(id: string): Material | undefined {
+  return all().materials.find((m) => m.id === id);
+}
+
+/** Every material on the platform. Materials are cross-sector, so the spoke is
+ *  /materials/{id} rather than a per-sector list (brief 5 §6). */
+export function allMaterials(): Material[] {
+  return all().materials;
 }

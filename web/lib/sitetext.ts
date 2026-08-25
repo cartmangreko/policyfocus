@@ -91,6 +91,30 @@ interface ProseDoc {
     reviewed?: string | null;
     ecosystems: Record<string, { description: string }>;
   };
+  /** The two name slots per ecosystem instance — brief 5 §2.1. Required for
+   *  all six and gated by sources/check_h2_templates.py: unlike every other
+   *  block here there is no null-until-reviewed path, because a heading with an
+   *  unfilled slot is not a heading. Keyed on ecosystem id; see
+   *  lib/ecosystems.ts for the slug → instance resolution. */
+  sector_names: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    sectors: Record<string, { short: string; phrase: string }>;
+  };
+  /** The fixed section sequence and the H1/H2 templates that head it — brief 5
+   *  §2. The array's order is the render order and the nav order both, and
+   *  sources/check_section_order.py fails the build where the template
+   *  disagrees with it. */
+  sector_sections: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    h1: string;
+    sections: { id: string; nav: string; h2: string }[];
+    /** Headings that are not one of the numbered questions — Sources, and
+     *  nothing else today. Stored here so the no-free-text rule has no
+     *  exception to be widened later. */
+    unnumbered: { id: string; h2: string; why?: string }[];
+  };
   sector_orientation?: {
     status: ProseStatus;
     reviewed?: string | null;
@@ -194,4 +218,70 @@ export function getTransitionNote(sector: string): string | null {
   const block = readProse().transition_notes;
   if (!block || !isReviewed(block.status)) return null;
   return block.sectors[sector]?.sentence ?? null;
+}
+
+/** The sector's two name slots, by ecosystem id.
+ *
+ *  THIS ONE THROWS. Every other getter in this file returns null for an
+ *  unreviewed or unwritten block, because every other block is prose a surface
+ *  can do without. These slots are not: they are the subject of every heading
+ *  on the page, and a page that fell back would head nine sections with a hole
+ *  in them. A missing instance or an empty slot is a build failure, and
+ *  sources/check_h2_templates.py catches it before the build gets here. */
+export function getSectorNames(ecosystem: string): { short: string; phrase: string } {
+  const block = readProse().sector_names;
+  const row = block.sectors[ecosystem];
+  if (!row || !row.short.trim() || !row.phrase.trim()) {
+    throw new Error(
+      `sector_names has no filled short and phrase for ecosystem "${ecosystem}"`
+    );
+  }
+  return row;
+}
+
+/** The section sequence, in order. The array is the specification: a section
+ *  renders where this says it renders, or the gate fails. */
+export function getSectionSpecs(): { id: string; nav: string; h2: string }[] {
+  return readProse().sector_sections.sections;
+}
+
+/** A heading with its slots filled.
+ *
+ *  Two slots, {short} and {phrase}, and the capitalisation rule from brief 5
+ *  §2.1: `phrase` is stored lower case and is capitalised only where it OPENS
+ *  the heading. No template does that today; the rule is implemented anyway,
+ *  because the alternative is storing a second capitalised copy of the phrase
+ *  and letting the two drift. An unknown slot throws rather than rendering the
+ *  braces. */
+export function renderHeading(template: string, names: { short: string; phrase: string }): string {
+  return template.replace(/\{([A-Za-z_]+)\}/g, (_, slot: string, at: number) => {
+    const key = slot.toLowerCase();
+    if (key !== "short" && key !== "phrase") {
+      throw new Error(
+        `heading template "${template}" has slot {${slot}}, and the only slots a ` +
+          `heading takes are {short} and {phrase}`
+      );
+    }
+    const value = names[key];
+    const capital = at === 0 || slot[0] === slot[0].toUpperCase();
+    return capital ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+  });
+}
+
+/** The page's H1. One template for every sector, `short` capitalised into it. */
+export function getSectorH1(names: { short: string; phrase: string }): string {
+  return renderHeading(readProse().sector_sections.h1, names);
+}
+
+/** An unnumbered heading — Sources — by section id. Throws for an id the block
+ *  does not carry, on the same reasoning as the name slots: a heading with no
+ *  reviewed wording behind it is free text, and this page does not have any. */
+export function getUnnumberedH2(id: string): string {
+  const row = readProse().sector_sections.unnumbered.find((u) => u.id === id);
+  if (!row) {
+    throw new Error(
+      `data/prose.json -> sector_sections.unnumbered has no heading for "${id}"`
+    );
+  }
+  return row.h2;
 }
