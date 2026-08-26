@@ -58,6 +58,14 @@ export interface Source {
   verbatim?: string;
   snapshot?: string;
   archived?: boolean;
+  /** What kind of thing is at the other end. Absent means a document, which is
+   *  what almost everything is. `api` and `dataset` are cited from the query
+   *  the call was made with rather than by a title they do not have — see
+   *  lib/citation.ts. */
+  kind?: "document" | "api" | "dataset";
+  /** Required for an api or dataset source: what it is, so the citation has a
+   *  subject. The id is the dataset's own, where it has one. */
+  dataset?: { name: string; id?: string };
 }
 
 export interface Parameter {

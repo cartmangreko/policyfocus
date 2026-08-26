@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import Crumbs from "@/components/Crumbs";
+import { citation } from "@/lib/citation";
 import LeadBlock from "@/components/LeadBlock";
 import SectionNav from "@/components/SectionNav";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
@@ -277,9 +278,13 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   // here rather than in the layout script because they are page data, not
   // geometry — the picture would be identical without them.
   const nodeSources: Record<string, NodeSource[]> = {};
-  for (const b of bottlenecks) nodeSources[`bottleneck:${b.id}`] = b.sources;
-  for (const t of technologies) nodeSources[`technology:${t.id}`] = t.sources;
-  for (const p of projects) nodeSources[`project:${p.id}`] = p.sources;
+  // The panel is drawn in the browser and lib/citation.ts reads the register off
+  // disk, so the wording happens here and the component is handed finished text.
+  const cited = (rows: typeof bottlenecks[number]["sources"]): NodeSource[] =>
+    rows.map((s) => ({ ...s, title: citation(s) }));
+  for (const b of bottlenecks) nodeSources[`bottleneck:${b.id}`] = cited(b.sources);
+  for (const t of technologies) nodeSources[`technology:${t.id}`] = cited(t.sources);
+  for (const p of projects) nodeSources[`project:${p.id}`] = cited(p.sources);
   for (const m of inView) {
     const q = m.bottleneck_linkage.edges[0]?.evidence;
     nodeSources[`measure:${m.measure}`] = q
@@ -782,10 +787,16 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
               <ul>
                 {g.sources.map((s) => (
                   <li key={s.url}>
+                    {/* THE URL IS IN href AND NOWHERE ELSE. The anchor text is a
+                        citation — a title for a document, what was asked of a
+                        dataset for an api — and never the address it was asked
+                        at. See lib/citation.ts. */}
                     <a href={s.url} target="_blank" rel="noreferrer">
-                      {s.title ?? s.url}
+                      {citation(s)}
                     </a>
-                    {s.date ? <span className="tscore-note">{s.date}</span> : null}
+                    {/* A separator a reader can see and a copy keeps, rather
+                        than two strings run together. */}
+                    {s.date ? <span className="tscore-note">{` · ${s.date}`}</span> : null}
                     {s.archived ? <span className="tarchived">archived</span> : null}
                   </li>
                 ))}

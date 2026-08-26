@@ -3582,10 +3582,15 @@ h3 {
   gap: 8px;
   font-size: 12.5px;
 }
+/* One line, with a separator you can see and a copy keeps. It was a column —
+   citation above, date below — which read as two facts rather than one
+   citation, and glued the two together in any rendering that flattens the
+   layout. */
 .tsources li {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 6px;
 }
 .tarchived {
   align-self: flex-start;
