@@ -28,6 +28,25 @@ import { allMaterials, type Source } from "./transition";
 // data error, and it fails the build (sources/check_anchor_text.py reads the
 // rendered pages and fails on any anchor whose text starts with http or carries
 // a query string) rather than rendering a row a reader cannot read.
+//
+// THE SEPARATOR IS A COMMA OR A MIDDLE DOT, NEVER AN EM DASH. The standing rule
+// is in sources/scope.md under "A citation separates with a comma or a middle
+// dot"; SEPARATOR below is the only place this module emits one, so the rule is
+// enforced by there being one of it rather than by everybody remembering.
+//
+// The rule is about the separator a citation EMITS. An em dash inside a title —
+// "Cement — Energy System", "Carbon sequestration and reuse — capital and
+// operating cost estimates" — is how the publisher wrote it, and a citation
+// quotes a title rather than editing it. Only the joins this file makes are
+// this file's business.
+
+/** Every join this module makes. A middle dot rather than an em dash: an em
+ *  dash reads as a publisher's own punctuation — half the titles on the cement
+ *  page contain one — so a citation that also joined with it gave a reader no
+ *  way to see where the title stopped and the citation's own structure began.
+ *  Clauses inside a single fact are separated with a comma; facts are separated
+ *  with this. */
+export const SEPARATOR = " · ";
 
 /** Comext flow codes. 1 and 2 are the whole vocabulary. */
 const FLOW: Record<string, string> = { "1": "imports", "2": "exports" };
@@ -104,7 +123,7 @@ export function citation(s: Source): string {
     }
     const named = s.dataset.id ? `${s.dataset.name} ${s.dataset.id}` : s.dataset.name;
     const asked = askedFor(s.url);
-    return asked.length > 0 ? `${named} — ${asked.join(", ")}` : named;
+    return asked.length > 0 ? `${named}${SEPARATOR}${asked.join(", ")}` : named;
   }
   const text = s.title?.trim() || descriptor(s.publisher) || s.publisher.trim();
   if (!text) {

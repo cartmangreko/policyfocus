@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crumbs from "@/components/Crumbs";
-import { citation } from "@/lib/citation";
+import { SEPARATOR, citation } from "@/lib/citation";
 import { SECTORS } from "@/lib/data";
 import { DEMOTED } from "@/lib/launch";
 import {
@@ -184,7 +184,9 @@ export default async function MaterialPage({ params }: { params: Promise<{ id: s
                   {citation(s)}
                 </a>
                 <span className="mat-since">{s.publisher}</span>
-                {s.date ? <span className="mat-since">{`· ${s.date}`}</span> : null}
+                {s.date ? (
+                  <span className="mat-since">{`${SEPARATOR.trimStart()}${s.date}`}</span>
+                ) : null}
               </li>
             ))}
           </ul>

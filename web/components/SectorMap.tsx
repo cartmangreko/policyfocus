@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import Crumbs from "@/components/Crumbs";
-import { citation } from "@/lib/citation";
+import { SEPARATOR, citation } from "@/lib/citation";
 import LeadBlock from "@/components/LeadBlock";
 import SectionNav from "@/components/SectionNav";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
@@ -796,7 +796,9 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                     </a>
                     {/* A separator a reader can see and a copy keeps, rather
                         than two strings run together. */}
-                    {s.date ? <span className="tscore-note">{` · ${s.date}`}</span> : null}
+                    {s.date ? (
+                      <span className="tscore-note">{`${SEPARATOR}${s.date}`}</span>
+                    ) : null}
                     {s.archived ? <span className="tarchived">archived</span> : null}
                   </li>
                 ))}

@@ -197,6 +197,28 @@ stakes. (3) Banned: prose generated at build or request time that no one
 reviewed, or reviewed prose regenerated silently. Per-act overview paragraphs
 are tier 2, and are expected to be added one per act in a future PR.
 
+### A citation separates with a comma or a middle dot, never an em dash
+
+Every source on the site renders a citation, and `web/lib/citation.ts` is the
+one place one is worded. It joins with a middle dot; clauses inside a single
+fact are joined with a comma. It never joins with an em dash.
+
+The reason is that the em dash is already taken, twice over. Publishers use it
+inside their own titles — "Cement — Energy System", "Carbon sequestration and
+reuse — capital and operating cost estimates" — and the `publisher` field uses
+it to hold a group heading and a citation in one string, which is the split the
+Sources block makes to get its headings. A citation that also joined with an em
+dash left a reader no way to see where a publisher's punctuation stopped and the
+citation's own structure began.
+
+The rule is about the separator a citation EMITS. A title keeps whatever
+punctuation it was published with: a citation quotes a title, it does not edit
+one.
+
+The URL is not part of a citation at all. It belongs in `href` and nowhere else,
+which is the standing rule `sources/check_anchor_text.py` enforces over the
+built pages: no anchor's text may begin with `http` or contain a query string.
+
 ### Display vocabulary: internal terms never reach an audience surface
 
 Audience-facing surfaces — pages, components, computed-prose templates,

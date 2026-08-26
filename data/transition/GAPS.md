@@ -99,6 +99,33 @@ cement as a feedstock, one node with an edge on each side — and the bottleneck
 the original brief names, SCM supply falling as blast furnaces close, cannot be
 stated until it exists.
 
+### CN 252329 — Portland cement, non-white, has no material node
+
+The Comext citations on the cement page name what was asked of the dataset,
+including the product code and the register's name for it. One of the two calls
+resolves and one does not: CN 252310 matches clinker's `cn_code` and renders
+"CN 252310 (clinker)"; CN 252329 — Portland cement other than white, which is
+the ordinary grey product the sector sells — matches nothing, and the citation
+renders the bare code.
+
+That is the right output rather than a bug. `web/lib/citation.ts` names a
+product only where the register knows it, and a name invented at render time
+would be the citation asserting something the data does not hold. But the
+absence is real: the platform tracks the intermediate that carries the CO2 and
+not the product that leaves the gate, so the import figure the parameter states
+has no node to hang off.
+
+What would fill it: a material row for Portland cement with `cn_code`
+"2523 29 00", a `produced_by` edge from the sector, and a `substitutes` edge
+from nothing yet — the clinker-to-cement ratio is what makes that edge worth
+drawing and it is the same document the slag entry above is waiting on
+(CEN EN 197-1). CBAM's cement annex lists the code, and IR (EU) 2025/2621
+Annex I quotes it against a default value already in `parameters.json`
+("2523 29 00 Grey Portland cement 1,360 …"), so the sourcing is in hand; what
+is missing is the node, not the evidence.
+
+Until it lands, the citation renders the code alone, and this entry is why.
+
 ### The CRMA strategic raw materials list, as stub nodes
 
 Amendment brief 2 asks for the Critical Raw Materials Act's strategic list
