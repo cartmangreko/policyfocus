@@ -33,6 +33,7 @@
 //                                   directory template and has no lead block
 //              /acts, /acts/<file>  near-duplicates of EUR-Lex
 //              /changes, /changes/<id>            dated diffs
+//              /materials/<id>      cross-sector nodes; lead blocks outstanding
 //              /findings, /findings/<id>          single computed statements
 //
 // A sector arrives in the index by having its data built. Nothing here is
@@ -55,6 +56,10 @@ export const DEMOTED_PREFIXES = [
   "/changes",
   "/findings",
   "/under-construction",
+  // Material pages. Brief 5 §6: indexable under §0.8 once they render a lead
+  // block, demoted until they do. The exit is the rule's own, and taking it is
+  // a build gap on the ROADMAP rather than a decision anybody re-opens here.
+  "/materials",
 ];
 
 /** The measure browse page, demoted as a thin list — and NOT a prefix, which is

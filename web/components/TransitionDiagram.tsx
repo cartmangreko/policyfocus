@@ -295,8 +295,13 @@ export default function TransitionDiagram({
               <ul>
                 {activeSources.map((s) => (
                   <li key={s.url}>
+                    {/* `title` arrives already worded: SectorMap runs every
+                        node source through lib/citation.ts, which cannot be
+                        imported here — it reads the register off disk and this
+                        component runs in the browser. The fallback is the
+                        publisher, never the address. */}
                     <a href={s.url} target="_blank" rel="noreferrer">
-                      {s.title ?? s.url}
+                      {s.title ?? s.publisher}
                     </a>{" "}
                     <span className="pub">{s.publisher}</span>
                   </li>

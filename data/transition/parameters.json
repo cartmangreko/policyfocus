@@ -110,7 +110,11 @@
       "confidence": "secondary",
       "source": {
         "url": "https://tradingeconomics.com/commodity/carbon",
-        "publisher": "Trading Economics (EUA front-year contract)",
+        "kind": "dataset",
+        "dataset": {
+          "name": "EU Carbon Permits, EUA front-year contract"
+        },
+        "publisher": "Trading Economics",
         "verbatim": "EU Carbon Permits rose to 82.80 EUR on August 21, 2026, up 0.42% from the previous day."
       },
       "note": "The money model is linear in this number, so it is the single parameter most able to move a measure's rank. A settled auction series from EEX would be a primary replacement; see data/transition/GAPS.md."
@@ -346,7 +350,12 @@
       "verbatim_note": "Comext reports quantity in 100 kg; 71 478 908,93 units of 100 kg is 7,1479 Mt. The conversion is arithmetic and is recorded in the snapshot alongside the request URL that produced the figure.",
       "source": {
         "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252310&time=2025",
-        "publisher": "Eurostat Comext, dataset ds-045409 — extra-EU imports into EU27, annual, quantity in 100 kg",
+        "kind": "api",
+        "dataset": {
+          "name": "Comext",
+          "id": "ds-045409"
+        },
+        "publisher": "Eurostat",
         "verbatim": "\"value\":{\"0\":71478908.93}",
         "snapshot": "sources/comext_2523_imports.json"
       }
@@ -365,7 +374,12 @@
       "verbatim_note": "Comext reports quantity in 100 kg; 57 658 565,6 units of 100 kg is 5,7659 Mt.",
       "source": {
         "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/ds-045409?format=JSON&freq=A&reporter=EU27_2020&partner=EXT_EU27_2020&flow=1&indicators=QUANTITY_IN_100KG&product=252329&time=2025",
-        "publisher": "Eurostat Comext, dataset ds-045409 — extra-EU imports into EU27, annual, quantity in 100 kg",
+        "kind": "api",
+        "dataset": {
+          "name": "Comext",
+          "id": "ds-045409"
+        },
+        "publisher": "Eurostat",
         "verbatim": "\"value\":{\"0\":57658565.6}",
         "snapshot": "sources/comext_2523_imports.json"
       }

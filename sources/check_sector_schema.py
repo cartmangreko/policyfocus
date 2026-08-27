@@ -301,6 +301,21 @@ def check_materials(e: Errors, rows: list[dict], sectors: dict, tech_ids: set,
         w = f"material {r.get('id', '?')}"
         _req(e, w, r, "id", "name", "type", "sectors", "description", "sources")
         _vocab(e, w, r, "type", sm.MATERIAL_TYPES)
+        # Annex I of the Critical Raw Materials Act: present and null where the
+        # material is not listed, an entry with its source where it is. Required
+        # rather than optional, so "not a strategic raw material" and "nobody
+        # has checked" stop being the same object -- the sector page renders a
+        # tag from this and a missing key would read as the first.
+        if "crma_annex_i" not in r:
+            e.add(w, "no crma_annex_i. Null says the material is not listed in Annex I "
+                     "of the CRMA; an absent key says nobody looked")
+        crma = r.get("crma_annex_i")
+        if crma is not None:
+            _req(e, f"{w} crma_annex_i", crma, "entry", "source")
+            src = crma.get("source") or {}
+            if not src.get("url") or not src.get("publisher"):
+                e.add(f"{w} crma_annex_i", "source needs a url and a publisher — an Annex "
+                                           "listing is a claim about a legal text")
         _source_list(e, w, r)
         for slug in r.get("sectors", []):
             if slug not in sectors:
