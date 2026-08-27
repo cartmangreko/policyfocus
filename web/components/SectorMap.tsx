@@ -3,6 +3,7 @@ import path from "node:path";
 import Link from "next/link";
 import Crumbs from "@/components/Crumbs";
 import { SEPARATOR, citation } from "@/lib/citation";
+import { getOpportunity, opportunitySignals, supportFact, supportMeasures } from "@/lib/opportunity";
 import LeadBlock from "@/components/LeadBlock";
 import SectionNav from "@/components/SectionNav";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
@@ -10,7 +11,8 @@ import TransitionDiagram, { type Diagram, type NodeSource } from "@/components/T
 import { FILES, SECTORS, getRelatedSectors } from "@/lib/data";
 import { transitionProse } from "@/lib/prose";
 import { renderedSections, sectorH1 } from "@/lib/sectorSections";
-import { getSectorOrientation, getTransitionNote, getUnnumberedH2 } from "@/lib/sitetext";
+import { getRecordsForSector } from "@/lib/records";
+import { getOpportunityProse, getSectorOrientation, getTransitionNote, getUnnumberedH2 } from "@/lib/sitetext";
 import {
   STATUS_LABEL,
   TRANSITION_LABEL,
@@ -19,6 +21,8 @@ import {
   fundingAmount,
   fundingTotals,
   fundingForProject,
+  FUNDING_ANNOUNCED,
+  FUNDING_COMMITTED,
   getBottlenecks,
   getFunding,
   getImportance,
@@ -35,6 +39,7 @@ import {
   measureHref,
   projectHref,
   sourcesForSector,
+  type Funding,
   type MaterialFlow,
   type Parameter,
   type StatusEvent,
@@ -209,6 +214,35 @@ function MaterialList({
   );
 }
 
+/** One allocation, said the same way in every status group. It is one component
+ *  rather than three copies because the ROW is identical across the groups —
+ *  what differs is whether the group above it carries a total, and that is a
+ *  decision about the group, not about the line. */
+function FundingRow({ f, params }: { f: Funding; params: Map<string, Parameter> }) {
+  const amount = fundingAmount(f, params);
+  return (
+    <li id={`funding-${f.id}`}>
+      <span className="amount">{amount ? eur(amount) : "undisclosed"}</span>
+      <span className="programme">{f.programme}</span>
+      <span className={`tstatus ${f.status}`}>{f.status}</span>
+      <span className="tfunding-to">
+        {f.finances.map((n, i) => (
+          <span key={n}>
+            {i > 0 ? ", " : ""}
+            <Link href={projectHref(n.split(":")[1])}>{nodeLabel(n)}</Link>
+          </span>
+        ))}
+      </span>
+      {f.under ? (
+        <Link href={measureHref(f.under)} className="measure">
+          {f.under}
+        </Link>
+      ) : null}
+      <span className="tfunding-date">{f.date}</span>
+    </li>
+  );
+}
+
 export default function SectorMap({ slug }: { slug: SectorSlug }) {
   const name = SECTORS[slug];
   const imp = getImportance(slug)!;
@@ -219,6 +253,17 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   const flows = materialFlows(slug);
   const funding = getFunding(slug);
   const related = getRelatedSectors(slug);
+  // §4.1's three status groups, split once and read three times.
+  const committedFunding = funding.filter((f) => FUNDING_COMMITTED.includes(f.status));
+  const announcedFunding = funding.filter((f) => FUNDING_ANNOUNCED.includes(f.status));
+  // The date the committed sum is complete THROUGH, not the date of the build:
+  // the build ran today and that says nothing about when the money last moved.
+  const committedAsOf = committedFunding.reduce((a, f) => (f.date > a ? f.date : a), "");
+  const opportunity = getOpportunity(slug);
+  const opp = getOpportunityProse();
+  const support = supportMeasures(slug);
+  // §4.6. A filter over the records that already exist, never a second feed.
+  const signals = opportunitySignals(slug, getRecordsForSector(slug));
   // The rollup, derived here and stored nowhere. `undisclosed` is counted
   // separately rather than folded in as zero: a grant nobody published is not
   // a grant of nothing, and a total that pretended otherwise would read as
@@ -505,62 +550,90 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
       {present.opportunity ? (
         <section className="tmap-section" id="opportunity">
           <h2 className="sectionhead">{h2("opportunity")}</h2>
-          {/* STEP 1 RENDERS THE MONEY AND NOTHING ELSE. Brief 5 §4 makes this
-              section four computed views — money flowing in, rules that pay,
-              rules that create demand, open windows — and step 2 of §9 builds
-              the first two while step 3 builds the third. What is here today is
-              §4.1's source, the capital allocations, which is the one of the
-              four that already had its data: it moved from the section it used
-              to head rather than being dropped for a release and put back. */}
-          <p className="tmap-sub">
-            Every allocation that finances a project here, with the basis it was made under
-            and how far it has got. Amounts are the published ones; an undisclosed amount is
-            shown as undisclosed rather than as nothing. Committed money — approved, signed
-            or disbursed — is totalled on its own; announcements and withdrawals are stated
-            separately and never folded into it.
-          </p>
-          <p className="tfunding-total">
-            {eur(totals.committed)} committed across {totals.committedCount} allocations
-            {undisclosed > 0 ? `, ${undisclosed} of them undisclosed` : ""}.
-          </p>
-          {totals.announcedCount > 0 ? (
-            <p className="tfunding-total tfunding-announced">
-              A further {eur(totals.announced)} announced across {totals.announcedCount}{" "}
-              allocations, not counted above: an announcement is not an award.
-            </p>
+          {/* THE SECTION'S OWN GENERATED SENTENCE (§4.5). Built by
+              sources/build_opportunity.py from the two facts below it and
+              nothing else, gated by the same rules as the sector lead, with an
+              override slot in overrides.json and a re-review flag when the
+              facts move. Absent where the sentence failed its gate — this
+              section has a heading that already asks the question, so a
+              sentence nobody checked is better not there. */}
+          {opportunity?.sentence.text ? (
+            <p className="topp-lead">{opportunity.sentence.text}</p>
           ) : null}
-          {totals.withdrawnCount > 0 ? (
-            <p className="tfunding-total tfunding-withdrawn">
-              {totals.withdrawnCount} withdrawn allocation
-              {totals.withdrawnCount === 1 ? " is" : "s are"} listed below and in no total.
-            </p>
-          ) : null}
-          <ul className="tfundings">
-            {funding.map((f) => {
-              const amount = fundingAmount(f, params);
-              return (
-                <li key={f.id} id={`funding-${f.id}`}>
-                  <span className="amount">{amount ? eur(amount) : "undisclosed"}</span>
-                  <span className="programme">{f.programme}</span>
-                  <span className={`tstatus ${f.status}`}>{f.status}</span>
-                  <span className="tfunding-to">
-                    {f.finances.map((n, i) => (
-                      <span key={n}>
-                        {i > 0 ? ", " : ""}
-                        <Link href={projectHref(n.split(":")[1])}>{nodeLabel(n)}</Link>
-                      </span>
-                    ))}
-                  </span>
-                  {f.under ? (
-                    <Link href={measureHref(f.under)} className="measure">
-                      {f.under}
+
+          {/* §4.1 MONEY FLOWING IN. Three status groups, three different
+              statements, and the difference between them is the point:
+              committed money is summed, announcements are listed and never
+              summed (ruled), withdrawals are a named count. */}
+          <div className="topp-block">
+            <h3>{opp.headings.money_in}</h3>
+            {committedFunding.length > 0 ? (
+              <>
+                <p className="tfunding-total">
+                  {eur(totals.committed)} {opp.headings.committed.toLowerCase()} across{" "}
+                  {totals.committedCount}{" "}
+                  {totals.committedCount === 1 ? "allocation" : "allocations"}
+                  {undisclosed > 0
+                    ? `, ${undisclosed} of them carrying no published figure`
+                    : ""}
+                  <span className="tscore-note">{`${SEPARATOR}as of ${committedAsOf}`}</span>
+                </p>
+                <ul className="tfundings">
+                  {committedFunding.map((f) => (
+                    <FundingRow key={f.id} f={f} params={params} />
+                  ))}
+                </ul>
+              </>
+            ) : null}
+
+            {announcedFunding.length > 0 ? (
+              <>
+                <h4 className="topp-sub">{opp.headings.announced}</h4>
+                {/* NOT SUMMED, and there is no total to render: lib/transition.ts
+                    does not compute one. An announcement is a statement of
+                    intent, and a euro figure made of intentions reads as money
+                    that exists. */}
+                <ul className="tfundings">
+                  {announcedFunding.map((f) => (
+                    <FundingRow key={f.id} f={f} params={params} />
+                  ))}
+                </ul>
+              </>
+            ) : null}
+
+            {totals.withdrawnCount > 0 ? (
+              <p className="tfunding-total tfunding-withdrawn">
+                {totals.withdrawnCount} {opp.headings.withdrawn.toLowerCase()} allocation
+                {totals.withdrawnCount === 1 ? "" : "s"}, in no total.
+              </p>
+            ) : null}
+          </div>
+
+          {/* §4.2 RULES THAT PAY. Support-direction measures in the ranking's
+              order, each saying what it PAYS in a context-specific template.
+              Never the standard one-liner — that sentence belongs to the
+              Policies section and to no other, and
+              sources/check_one_liner_scope.py fails the build if it appears
+              here (brief 5 §5). */}
+          {support.length > 0 ? (
+            <div className="topp-block">
+              <h3>{opp.headings.rules_that_pay}</h3>
+              <ul className="topp-pays">
+                {support.map((m) => (
+                  <li key={m.measure}>
+                    <Link href={measureHref(m.measure)}>
+                      {m.plain ? m.plain.title : m.measure}
                     </Link>
-                  ) : null}
-                  <span className="tfunding-date">{f.date}</span>
-                </li>
-              );
-            })}
-          </ul>
+                    <span className="topp-fact">{supportFact(m)}</span>
+                    <span className="tmeasure-cite">
+                      {FILES[m.file]?.name ?? m.file}
+                      {m.article ? ` · ${m.article}` : ""}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </section>
       ) : null}
 
@@ -679,6 +752,21 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
       {present.feed ? (
         <section className="tmap-section" id="feed">
           <h2 className="sectionhead">{h2("feed")}</h2>
+          {/* §4.6 OPPORTUNITY SIGNALS. Not a feed of its own and not a new data
+              structure: a filter over the change records, for the ones whose
+              object is a funding node, a support-direction measure or (from
+              step 3) a measure that creates demand. It renders only where this
+              sector HAS one — a filter chip that filters to nothing is a
+              promise the data does not keep — and it opens the change-record
+              list with the same filter as a query parameter. */}
+          {signals.length > 0 ? (
+            <p className="topp-signals">
+              <Link href={`/changes?opportunity=1`} className="chip">
+                {opp.signals.chip}
+                <span className="chip-count">{signals.length}</span>
+              </Link>
+            </p>
+          ) : null}
           {/* WHAT MOVED HERE, last 30 days. The home strip says what moved
               anywhere; this says what moved in this sector, which is the
               question somebody on this page is actually asking.
