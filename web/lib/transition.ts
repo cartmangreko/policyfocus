@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { moneyShort } from "./money";
 
 // The sector transition map, read at build time from data/transition/.
 //
@@ -557,10 +558,18 @@ export function lastChange(p: Project): StatusEvent | undefined {
  *  a reader who cannot see the list has to take that on trust. */
 export function sourcesForSector(sector: string): { publisher: string; sources: Source[] }[] {
   const params = all().parameters.filter((p) => !p.sector || p.sector === sector);
+  // MATERIALS ARE ON THE PAGE AND WERE NOT IN THIS LIST. The section says
+  // "every outbound URL on this page" and the Materials section had been
+  // rendering material names and their edges since it was built, with the
+  // material's own `sources` reachable from neither. It went unnoticed while
+  // both materials happened to share their URLs with a project or a parameter;
+  // steel's slag and scrap rows do not, and the ZKG citation appeared under a
+  // publisher heading with nothing under it.
   const rows: Source[] = [
     ...getTechnologies(sector).flatMap((t) => t.sources),
     ...getBottlenecks(sector).flatMap((b) => b.sources),
     ...getProjects(sector).flatMap((p) => p.sources),
+    ...getMaterials(sector).flatMap((m) => m.sources),
     ...params.map((p) => p.source),
   ];
   const byUrl = new Map<string, Source>();
@@ -588,11 +597,15 @@ export function projectHref(id: string): string {
   return `/projects/${id}`;
 }
 
-export function eur(n: number): string {
-  if (Math.abs(n) >= 1e9) return `€${(n / 1e9).toFixed(1)} bn`;
-  if (Math.abs(n) >= 1e6) return `€${Math.round(n / 1e6).toLocaleString("en-US")} m`;
-  return `€${n.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
-}
+/** One euro amount, in the short form. Kept as a name because every surface on
+ *  this side already calls it; the rule behind it is data/number_format.json,
+ *  which sources/number_format.py reads too.
+ *
+ *  It used to be a tier ladder written here, beside a second one written in
+ *  build_opportunity.py, and the two rounded a tie in opposite directions —
+ *  steel's committed total printed as "€3.2 billion" and "€3.3 bn" four lines
+ *  apart on the same page. */
+export const eur = moneyShort;
 
 /** The three lists the Materials section renders, brief 5 §2.
  *

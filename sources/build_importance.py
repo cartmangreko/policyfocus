@@ -65,6 +65,7 @@ import json
 from datetime import date
 from pathlib import Path
 
+import number_format as nf
 import sector_map as sm
 
 OUT_DIR = sm.ROOT / "data" / "transition" / "importance"
@@ -696,11 +697,13 @@ def sanity_report(doc: dict) -> list[str]:
     for m in top:
         money = m["money"]
         if money["computable"]:
-            rate = (f"€{money['per_tonne']}/t " if money["per_tonne"] is not None else "")
+            rate = (f"{nf.money_rate(money['per_tonne'], compact=True)} "
+                    if money["per_tonne"] is not None else "")
             money_str = (f"{rate}[{money['direction']} → {money['bearer']}] "
                          f"{money['value']:,.0f} {money['scale']}"
                          if money["scale"] != "eur_per_tonne_clinker"
-                         else f"€{money['value']}/t clinker [{money['direction']} → {money['bearer']}]")
+                         else f"{nf.money_rate(money['value'], compact=True)} clinker "
+                              f"[{money['direction']} → {money['bearer']}]")
         else:
             money_str = f"no money ({', '.join(money['missing'])})"
         via = "" if m["reach"] == "register" else f"  (reached via funding: {', '.join(m['reached_via'])})"

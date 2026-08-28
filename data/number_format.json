@@ -1,0 +1,243 @@
+{
+  "_comment": [
+    "THE ONE STATEMENT OF HOW THIS SITE WRITES A EURO AMOUNT.",
+    "",
+    "Read by sources/number_format.py and by web/lib/money.ts. Not mirrored — read.",
+    "Two copies of a rule is one rule that will eventually disagree with itself, and this",
+    "file exists because that had already happened: build_opportunity.py rendered a total",
+    "with Python's format spec, web/lib/transition.ts rendered the same total with",
+    "toFixed, and the two round a tie in opposite directions. Steel committed exactly",
+    "€3,250,000,000 and the sector page printed '€3.2 billion' and '€3.3 bn' four lines",
+    "apart. Cement's €421 million could not tell them apart, so it shipped invisible.",
+    "",
+    "WHAT IS SHARED AND WHAT IS NOT. The NUMBER is shared and must be identical on both",
+    "sides: which tier it falls in, how many decimals it keeps, and how it rounds. The",
+    "UNIT WORD is not: prose says 'billion' because a sentence has room for it, a table",
+    "cell says 'bn' because it does not. Both words are declared here so the difference",
+    "is a decision rather than an accident.",
+    "",
+    "ROUNDING IS HALF AWAY FROM ZERO, and it is applied to the number's shortest",
+    "round-trip DECIMAL representation rather than to a binary scaling of it. Both",
+    "languages produce that representation identically — Python's repr(), JavaScript's",
+    "String() — and both implementations round its digits. Scaling in binary first is",
+    "what makes 1.005 × 100 come out as 100.49999999999999 and round down in one",
+    "language and up in the other; rounding the digits cannot do that.",
+    "",
+    "`cases` IS THE GATE. A declaration that both sides round half away from zero proves",
+    "nothing about whether both sides DO. These vectors are the behaviour, they include",
+    "every tie and every tier boundary, and both implementations are checked against",
+    "them: sources/check_number_format.py on the Python side, web/lib/money.test.mts on",
+    "the TypeScript side, which the prebuild chain already runs.",
+    "",
+    "TWO SHAPES OF FIGURE, AND THEY ARE NOT THE SAME RULE. An AMOUNT is a stock — money",
+    "committed, money awarded — and is written at the scale that suits its size, so it",
+    "takes the tiers below. A RATE is a price per unit, always quoted at the same",
+    "precision because that is how the thing is traded, so it takes `rate` and no tiers:",
+    "a carbon cost of €75.46 per tonne does not become '€75 per tonne' because it is",
+    "small, and it does not become '€0.0 million per tonne' because the tiers exist.",
+    "",
+    "`rate` is implemented in Python only, because nothing in TypeScript formats one —",
+    "rates are built into the stored strings and rendered as they are. It is stated here",
+    "rather than in the Python module so that the day TypeScript needs one, the rule is",
+    "already written and there is nothing to invent.",
+    "",
+    "THREE FORMS, BECAUSE THERE ARE THREE SPACE BUDGETS. Prose has room for 'billion';",
+    "a table cell has room for 'bn'; a diagram node is 236 units wide and has room for",
+    "neither the space nor the word, so it takes 'm' welded to the figure. The three are",
+    "declared together here so that a surface picks one rather than inventing a fourth,",
+    "which is what the diagram had done."
+  ],
+  "prefix": "€",
+  "rounding": "half_away_from_zero",
+  "group_separator": ",",
+  "decimal_separator": ".",
+  "tiers": [
+    {
+      "at": 1000000000,
+      "divide_by": 1000000000,
+      "decimals": 1,
+      "long": "billion",
+      "short": "bn",
+      "compact": "bn"
+    },
+    {
+      "at": 1000000,
+      "divide_by": 1000000,
+      "decimals": 0,
+      "long": "million",
+      "short": "m",
+      "compact": "m"
+    },
+    {
+      "at": 0,
+      "divide_by": 1,
+      "decimals": 0,
+      "long": "",
+      "short": "",
+      "compact": ""
+    }
+  ],
+  "cases": [
+    {
+      "value": 0,
+      "long": "€0",
+      "short": "€0",
+      "compact": "€0"
+    },
+    {
+      "value": 1,
+      "long": "€1",
+      "short": "€1",
+      "compact": "€1"
+    },
+    {
+      "value": 2.5,
+      "long": "€3",
+      "short": "€3",
+      "compact": "€3"
+    },
+    {
+      "value": 999999,
+      "long": "€999,999",
+      "short": "€999,999",
+      "compact": "€999,999"
+    },
+    {
+      "value": 750000,
+      "long": "€750,000",
+      "short": "€750,000",
+      "compact": "€750,000"
+    },
+    {
+      "value": 1000000,
+      "long": "€1 million",
+      "short": "€1 m",
+      "compact": "€1m"
+    },
+    {
+      "value": 1500000,
+      "long": "€2 million",
+      "short": "€2 m",
+      "compact": "€2m"
+    },
+    {
+      "value": 2500000,
+      "long": "€3 million",
+      "short": "€3 m",
+      "compact": "€3m"
+    },
+    {
+      "value": 421000000,
+      "long": "€421 million",
+      "short": "€421 m",
+      "compact": "€421m"
+    },
+    {
+      "value": 999999999,
+      "long": "€1.0 billion",
+      "short": "€1.0 bn",
+      "compact": "€1.0bn"
+    },
+    {
+      "value": 1000000000,
+      "long": "€1.0 billion",
+      "short": "€1.0 bn",
+      "compact": "€1.0bn"
+    },
+    {
+      "value": 1250000000,
+      "long": "€1.3 billion",
+      "short": "€1.3 bn",
+      "compact": "€1.3bn"
+    },
+    {
+      "value": 3250000000,
+      "long": "€3.3 billion",
+      "short": "€3.3 bn",
+      "compact": "€3.3bn"
+    },
+    {
+      "value": 3350000000,
+      "long": "€3.4 billion",
+      "short": "€3.4 bn",
+      "compact": "€3.4bn"
+    },
+    {
+      "value": 12345000000,
+      "long": "€12.3 billion",
+      "short": "€12.3 bn",
+      "compact": "€12.3bn"
+    },
+    {
+      "value": 1234500000,
+      "long": "€1.2 billion",
+      "short": "€1.2 bn",
+      "compact": "€1.2bn"
+    },
+    {
+      "value": -3250000000,
+      "long": "-€3.3 billion",
+      "short": "-€3.3 bn",
+      "compact": "-€3.3bn"
+    },
+    {
+      "value": -1500000,
+      "long": "-€2 million",
+      "short": "-€2 m",
+      "compact": "-€2m"
+    },
+    {
+      "value": -421000000,
+      "long": "-€421 million",
+      "short": "-€421 m",
+      "compact": "-€421m"
+    }
+  ],
+  "rate": {
+    "decimals": 2,
+    "suffix": "per tonne",
+    "compact_suffix": "/t"
+  },
+  "rate_cases": [
+    {
+      "value": 0,
+      "rate": "€0.00 per tonne",
+      "compact": "€0.00/t"
+    },
+    {
+      "value": 1.005,
+      "rate": "€1.01 per tonne",
+      "compact": "€1.01/t"
+    },
+    {
+      "value": 2.345,
+      "rate": "€2.35 per tonne",
+      "compact": "€2.35/t"
+    },
+    {
+      "value": 75.46,
+      "rate": "€75.46 per tonne",
+      "compact": "€75.46/t"
+    },
+    {
+      "value": 82.8,
+      "rate": "€82.80 per tonne",
+      "compact": "€82.80/t"
+    },
+    {
+      "value": -75.455,
+      "rate": "-€75.46 per tonne",
+      "compact": "-€75.46/t"
+    },
+    {
+      "value": 1234.5,
+      "rate": "€1,234.50 per tonne",
+      "compact": "€1,234.50/t"
+    }
+  ],
+  "form_separator": {
+    "long": " ",
+    "short": " ",
+    "compact": ""
+  }
+}

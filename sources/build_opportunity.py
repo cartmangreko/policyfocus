@@ -51,6 +51,7 @@ import sys
 
 import build_lead as bl
 import display_vocabulary as dv
+import number_format as nf
 import sector_map as sm
 import build_importance as bi
 
@@ -78,12 +79,10 @@ def _amount(row: dict, params: dict) -> float | None:
     return bi._eur(params.get(pid)) if pid else None
 
 
-def _money(value: float) -> str:
-    if value >= 1e9:
-        return f"€{value / 1e9:,.1f} billion"
-    if value >= 1e6:
-        return f"€{value / 1e6:,.0f} million"
-    return f"€{value:,.0f}"
+# The site's one way of writing an amount, read from data/number_format.json.
+# This was a private ladder here and another one in web/lib/transition.ts, and
+# the two rounded a tie in opposite directions.
+_money = nf.money_long
 
 
 def _n(count: int, singular: str, plural: str | None = None) -> str:

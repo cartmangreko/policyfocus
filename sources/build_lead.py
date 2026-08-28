@@ -126,6 +126,7 @@ import sys
 from datetime import date
 
 import display_vocabulary as dv
+import number_format as nf
 import sector_map as sm
 import build_importance as bi
 
@@ -363,11 +364,11 @@ def fact_decisive_exposure(imp: dict, params: dict, labels: dict, sector: str) -
     name = sm.short_label(entry) if entry else m["measure"]
 
     if money["per_tonne"] is not None:
-        figure = f"€{money['per_tonne']:,.2f} per tonne"
-        numbers = [f"{money['per_tonne']:,.2f}"]
+        figure = nf.money_rate(money["per_tonne"])
+        numbers = [nf.digits_of(figure)]
     else:
-        figure = f"€{money['value'] / 1e6:,.0f} million"
-        numbers = [f"{money['value'] / 1e6:,.0f}"]
+        figure = nf.money_long(money["value"])
+        numbers = [nf.digits_of(figure)]
 
     bearer = money["bearer"].replace("_", " ")
     as_of = max((params[p]["date_of_value"] for p in money["inputs"] if p in params),
