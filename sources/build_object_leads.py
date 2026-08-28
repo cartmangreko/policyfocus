@@ -50,8 +50,10 @@ import json
 import re
 import sys
 
+import build_importance as bi
 import build_lead as bl
 import display_vocabulary as dv
+import number_format as nf
 import sector_map as sm
 
 OUT_DIR = sm.ROOT / "data" / "lead"
@@ -208,10 +210,10 @@ def priced_lines(measure_id: str, names: dict[str, str]) -> list[dict]:
             if model not in bl.MODEL_LINE:
                 continue
             if money["per_tonne"] is not None:
-                figure = f"€{money['per_tonne']:,.2f} per tonne"
+                figure = nf.money_rate(money["per_tonne"])
                 numbers = [f"{money['per_tonne']:,.2f}"]
             else:
-                figure = f"€{money['value'] / 1e6:,.0f} million"
+                figure = nf.money_long(money["value"])
                 numbers = [f"{money['value'] / 1e6:,.0f}"]
             out.append(_fact(
                 f"priced_{sector.replace('/', '_')}",
@@ -360,12 +362,19 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
             continue
         amount = params.get(f.get("amount") or "")
         if amount and isinstance(amount.get("value"), (int, float)):
-            total += float(amount["value"])
+            # IN EUROS, NOT IN WHATEVER THE PARAMETER IS DENOMINATED IN. A
+            # funding amount is stored as the sourced figure and its unit —
+            # 191 "EUR million" — and this loop used to add the 191 and then
+            # divide the total by a million, so every project lead on the site
+            # read "€0 million of public money has been committed to it".
+            # bi._eur does the conversion and raises on a unit nobody has ruled
+            # on, which is the whole reason it exists.
+            total += bi._eur(amount)
             latest = max(latest or f["date"], f["date"])
     if total:
         facts.append(_fact(
             "funding",
-            f"€{total / 1e6:,.0f} million of public money has been committed to it.",
+            f"{nf.money_long(total)} of public money has been committed to it.",
             latest or as_of, [f"{total / 1e6:,.0f}"], href="#funding",
         ))
     else:

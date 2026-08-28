@@ -3982,6 +3982,36 @@ h3 {
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
+
+  /* AND IT SAYS SO WHEN IT IS SCROLLED. The row hides its scrollbar, which on a
+     narrow screen left four of the eight sections past the right edge with
+     nothing to suggest they were there — the list looked like a list that
+     ended at "Bottlenecks".
+
+     The classic two-layer trick, and it needs no JavaScript and no measuring:
+     the SHADOW layers are attached to the viewport and stay put, the COVER
+     layers are attached to the scrolling content and slide away with it. At
+     rest the cover sits on the shadow and hides it; scroll, and the cover
+     moves off and the shadow shows. So a fade appears on whichever side has
+     more list, and neither side is faded when the whole row fits — which is
+     every viewport wide enough to show all eight. */
+  /* COVERS FIRST, SHADOWS SECOND. Background layers paint front to back, so the
+     covers have to be listed first to sit on top of the shadows and hide them
+     at rest. Listed the other way round the shadow is never covered and the
+     row wears a permanent fade on both ends. */
+  background:
+    /* The cover is the bar's OWN ground, not the page's. It was --paper, which
+       is the warm paper the page sits on and is a shade darker than the white
+       this bar paints, so the cover showed as a faint band on the left where it
+       was supposed to be showing nothing at all. */
+    linear-gradient(to right, #fff, rgba(255, 255, 255, 0)) 0 0 / 28px 100%
+      no-repeat local,
+    linear-gradient(to left, #fff, rgba(255, 255, 255, 0)) 100% 0 / 28px 100%
+      no-repeat local,
+    linear-gradient(to right, var(--rule), rgba(221, 217, 207, 0)) 0 0 / 26px 100%
+      no-repeat scroll,
+    linear-gradient(to left, var(--rule), rgba(221, 217, 207, 0)) 100% 0 / 26px 100%
+      no-repeat scroll;
 }
 .sectionnav-list::-webkit-scrollbar {
   display: none;

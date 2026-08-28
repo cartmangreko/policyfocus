@@ -74,6 +74,8 @@ import json
 import re
 from pathlib import Path
 
+import number_format as nf
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "transition"
 
@@ -323,19 +325,20 @@ def money_slots(money: dict) -> dict[str, str]:
     `money_per_tonne`, and a sentence that asks for one fails rather than
     printing an empty string where a euro figure was promised.
 
-    Rounding is by scale, not by taste. A rate is quoted to the cent because
-    that is how a carbon price is quoted; a stock is quoted in millions because
-    the last six digits of a grant total are noise a reader cannot use.
+    Rounding is by scale, not by taste, and the scale is not chosen here: a rate
+    goes through nf.money_rate and a stock through nf.money_long, both of which
+    read data/number_format.json. This function used to write its own euro
+    strings, which is how the site came to render one total two ways.
     """
     out: dict[str, str] = {}
     if not money or not money.get("computable"):
         return out
     if money.get("per_tonne") is not None:
-        out["money_per_tonne"] = f"€{money['per_tonne']:,.2f} per tonne"
+        out["money_per_tonne"] = nf.money_rate(money["per_tonne"])
     if money.get("annual_total"):
-        out["money_annual"] = f"€{money['annual_total'] / 1e6:,.0f} million a year"
+        out["money_annual"] = f"{nf.money_long(money['annual_total'])} a year"
     if money.get("value") and money.get("scale") == "eur_awarded":
-        out["money_awarded"] = f"€{money['value'] / 1e6:,.0f} million"
+        out["money_awarded"] = nf.money_long(money["value"])
     return out
 
 

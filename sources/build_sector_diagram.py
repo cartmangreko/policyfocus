@@ -76,6 +76,7 @@ import sys
 
 import design_tokens as dt
 import display_vocabulary as dv
+import number_format as nf
 import sector_map as sm
 import build_importance as bi
 
@@ -136,8 +137,11 @@ def build(sector: str) -> dict:
     for m in in_view:
         money = m["money"]
         if money["computable"]:
-            sub = (f"€{money['per_tonne']:,.2f}/t" if money["per_tonne"] is not None
-                   else f"€{money['value'] / 1e6:,.0f}m")
+            # The compact form: a node is 236 units wide and the subtitle sits
+            # under a label that already fills it. See data/number_format.json.
+            sub = (nf.money_rate(money["per_tonne"], compact=True)
+                   if money["per_tonne"] is not None
+                   else nf.money_compact(money["value"]))
             sub += f" · {money['direction']}"
         else:
             sub = f"linkage {m['bottleneck_linkage']['weight']}"
