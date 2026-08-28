@@ -6,12 +6,12 @@
     "summary_override, never here."
   ],
   "sector": "cement",
-  "template_version": 2,
-  "fingerprint": "b46a43f79fcc866e",
+  "template_version": 5,
+  "fingerprint": "e639cb7e8d01a133",
   "sentence": {
-    "text": "European cement is decarbonising by capturing the CO2 its kilns emit, and the main question is who pays for it.",
+    "text": "European cement is cutting its emissions.",
     "from": [
-      "binding_constraint"
+      "routes"
     ],
     "source": "generated"
   },
@@ -24,6 +24,33 @@
     "source": "generated"
   },
   "facts": [
+    {
+      "id": "routes",
+      "label": "Routes",
+      "text": "Three routes are being built: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
+      "as_of": "2025-06-18",
+      "numbers": [
+        "5",
+        "2",
+        "1"
+      ],
+      "parts": {
+        "count": 3,
+        "list": "post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1)",
+        "names": [
+          "Post-combustion carbon capture",
+          "Oxyfuel carbon capture",
+          "Alternative fuels in the kiln"
+        ]
+      },
+      "sourced": [
+        "Post-combustion carbon capture",
+        "Oxyfuel carbon capture",
+        "Alternative fuels in the kiln"
+      ],
+      "href": "#technologies",
+      "surface": true
+    },
     {
       "id": "the_gap",
       "label": "The gap",
@@ -50,15 +77,19 @@
     {
       "id": "pipeline_state",
       "label": "Pipeline",
-      "text": "8 European cement projects are under way, and 4 of them have taken a final investment decision.",
+      "text": "7 European cement projects are under way, 4 of them have taken a final investment decision, and 1 is paused.",
       "as_of": "2025-11-19",
       "numbers": [
-        "8",
-        "4"
+        "7",
+        "4",
+        "1"
       ],
       "parts": {
-        "total": "8",
+        "total": "7",
         "committed": "4",
+        "committed_is_all": false,
+        "paused": "1",
+        "cancelled": "0",
         "furthest": "Brevik CCS",
         "furthest_status": "operating"
       },

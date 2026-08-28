@@ -248,6 +248,20 @@ def index(rows: list[dict]) -> dict[str, dict]:
     return {row["id"]: row for row in rows}
 
 
+def mapped_sectors() -> list[str]:
+    """The sectors that have a transition map, which is the set every builder
+    on this layer runs over by default.
+
+    A sector has a map when something names a constraint in it -- the same
+    condition web/lib/transition.ts `hasMap` reads and the sector route
+    branches on. It was a literal ["cement"] in four builders' argument
+    parsers, which meant the second sector had to be remembered in four places
+    and would be silently absent from --check in any one of them that was
+    missed. Derived here so the third sector arrives by having data.
+    """
+    return sorted({b["sector"] for b in load("bottleneck")})
+
+
 def sectors() -> dict[str, dict]:
     """The sector spine, read from the same file build_graph.py and
     web/lib/data.ts read, so this layer cannot invent a sector."""
@@ -325,7 +339,36 @@ def money_slots(money: dict) -> dict[str, str]:
     return out
 
 
-def plain_measure(entry: dict, money: dict) -> dict:
+# WHAT A SECTOR'S PRODUCT IS CALLED, per sector, and the reason this list is
+# here rather than in the gate: it is the vocabulary that makes a plain block
+# sector-specific, and both the resolver and the gate have to agree about it.
+#
+# A shared plain block may contain none of these words, because a shared block
+# is rendered on every sector a measure reaches and a product word in one is a
+# sentence about the wrong industry. A per-sector block may contain its own
+# sector's words and no other's. Adding a sector to the platform means adding
+# its nouns here, and a sector with no entry has no product vocabulary to
+# violate -- which is correct for the instances that are not industries.
+SECTOR_PRODUCT_WORDS = {
+    "cement": ("clinker", "cement", "concrete", "kiln"),
+    "steel": ("steel", "hot metal", "crude steel", "directly reduced iron", "DRI",
+              "blast furnace", "scrap", "electric arc furnace", "EAF", "iron ore"),
+}
+
+
+def plain_block(entry: dict, sector: str) -> dict | None:
+    """The plain block this measure renders IN THIS SECTOR, or None.
+
+    The sector's own wording wins; the shared block is the fallback and exists
+    only for measures whose wording names no product. None is a real answer and
+    the gate fails on it -- see data/transition/measure_labels.json. Returning
+    the shared block regardless would be the trap this split was made to close.
+    """
+    per_sector = (entry.get("plain_by_sector") or {}).get(sector)
+    return per_sector or entry.get("plain") or None
+
+
+def plain_measure(entry: dict, money: dict, sector: str) -> dict:
     """The authored title and the slot-filled sentence, for one measure.
 
     The words are reviewed and stored; the figures are computed on every build.
@@ -333,7 +376,14 @@ def plain_measure(entry: dict, money: dict) -> dict:
     a measure costs nothing when what happened is that a parameter went
     missing.
     """
-    plain = entry.get("plain") or {}
+    plain = plain_block(entry, sector)
+    if plain is None:
+        raise SystemExit(
+            f"sector_map: this measure has a label but no plain block for {sector!r} — "
+            f"a sector view listing it would print an empty title and an empty sentence. "
+            f"Write plain_by_sector.{sector}, or a shared block if the wording names no "
+            f"product; see data/transition/measure_labels.json"
+        )
     title, sentence = plain.get("title", ""), plain.get("sentence", "")
     values = money_slots(money)
     for name in slots_named(sentence):

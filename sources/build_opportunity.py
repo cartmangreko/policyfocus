@@ -46,6 +46,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 
 import build_lead as bl
@@ -87,6 +88,21 @@ def _money(value: float) -> str:
 
 def _n(count: int, singular: str, plural: str | None = None) -> str:
     return f"{count} {singular if count == 1 else (plural or singular + 's')}"
+
+
+def _digits(figure: str) -> str:
+    """The numeric token out of a rendered money string, so a fact declares the
+    number the sentence will actually print.
+
+    It was `total / 1e6` written straight into the fact while `_money` chose
+    its own scale from the size of the total. The two agree up to €999 million
+    and part company above it: the first sector to commit more than a billion
+    produced a sentence saying "€3.2 billion" and a fact declaring 3200, and
+    build_lead.gate dropped the sentence for stating a number no fact carried.
+    Cement never crossed the boundary, so the bug shipped invisible and steel
+    found it -- which is the whole argument for a second sector.
+    """
+    return re.search(r"[\d,.]+", figure).group(0)
 
 
 # ---------------------------------------------------------------------------
@@ -131,7 +147,7 @@ def fact_money_in(funding: list[dict], params: dict) -> dict | None:
                else f"across {_n(len(committed), 'allocation')}."))
     return bl._fact(
         "money_in", "Money flowing in", text, as_of,
-        [f"{total / 1e6:.0f}", str(len(projects)), str(len(committed))]
+        [_digits(_money(total)), str(len(projects)), str(len(committed))]
         + ([str(undisclosed)] if undisclosed else []),
         {
             "committed": _money(total),
@@ -161,7 +177,7 @@ def fact_rules_that_pay(imp: dict) -> dict | None:
             f"{f', {_money(paid)} of it so far' if paid else ''}.")
     return bl._fact(
         "rules_that_pay", "Rules that pay", text, str(bi.date.today().year),
-        [str(len(support))] + ([f"{paid / 1e6:.0f}"] if paid else []),
+        [str(len(support))] + ([_digits(_money(paid))] if paid else []),
         {
             "support_measures": _n(len(support), "measure"),
             "support_count": len(support),
@@ -307,7 +323,7 @@ def main() -> int:
     ap.add_argument("--sector", action="append", default=None)
     args = ap.parse_args()
 
-    sectors = args.sector or ["cement"]
+    sectors = args.sector or sm.mapped_sectors()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     failed = False
     for sector in sectors:

@@ -2913,20 +2913,74 @@ h3 {
    its own line. No badges, no boxes of equal weight.
    ------------------------------------------------------------------- */
 
+/* TREATMENT A — the computed lead as a quiet container, not a headline.
+
+   The generated sentence was set at display size, which made it the loudest
+   thing on the page. That was tolerable while it was one short clause and
+   stopped being tolerable when it started enumerating routes: on a sector
+   building four of them it ran to six lines of 40px type and pulled the whole
+   first screen towards a sentence a machine wrote.
+
+   So the block is a panel rather than a masthead: a hairline border, a
+   background one step off the paper, and the sector accent as a thin left rule
+   — the same device `.tparam` uses, and the same reason, which is to mark a
+   computed thing as computed without shouting.
+
+   THE STANDING PROSE STAYS OUTSIDE IT. `.tmap-orientation` is a sibling above
+   this block and is deliberately left on the open page: it is the one piece of
+   writing on the page a person wrote, and putting it inside the machine's
+   container would file it as machine output. The contrast is the point — open
+   paragraph, then boxed computation. */
 .lead-block {
-  margin-top: 22px;
+  /* ONE EDGE, AND IT IS THE BOTTOM ONE. The block was a bordered card with the
+     sector accent down its left side, which drew a box around the computed
+     part of the page and made a container out of what is really a change of
+     ground. What separates it from the standing prose above is the background
+     step; what closes it is a single hairline underneath. No left rule, no
+     side or top edges.
+
+     THE TINT BLEEDS AND THE TEXT DOES NOT. Horizontal padding equal to a
+     negative margin, so the type inside stays on the same left edge as the
+     paragraph above it and everything else in the column, while the ground it
+     sits on runs wider. Without that, dropping the left rule would have left
+     the text indented against nothing. The bleed is the narrow gutter's width,
+     so at the small breakpoint the band reaches the screen edge exactly and
+     never overflows it. */
+  --lead-bleed: 20px;
+  margin-top: 24px;
+  margin-left: calc(var(--lead-bleed) * -1);
+  margin-right: calc(var(--lead-bleed) * -1);
+  padding: 20px var(--lead-bleed) 14px;
+  background: var(--paper-2);
+  border: 0;
+  border-bottom: 1px solid var(--rule-soft);
 }
 .lead-sentence {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(26px, 3.4vw, 40px);
-  line-height: 1.14;
-  letter-spacing: -0.015em;
-  max-width: 24ch;
+  font-size: 19px;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  max-width: 62ch;
+  /* THE ONE PLACE SIGNAL BLUE TOUCHES EDITORIAL TYPE, and it is an exception
+     rather than a widening of the chrome layer — sources/check_colour_layers.py
+     names it in SIGNAL_EXCEPTIONS and says so there. Once the sentence is at
+     body size inside a panel it has no weight of its own left, and the rule
+     gives it back a line of emphasis without giving it back a headline.
+
+     DELIBERATELY NOT THE LINK TREATMENT. Links in this block are a 1px
+     `--rule` border-bottom (see .lead-fact a), so a 2px blue rule set 5px off
+     the baseline does not read as one — which matters, because the lead
+     sentence is not a link and there is nothing behind it to open. */
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  text-decoration-skip-ink: auto;
 }
 @media (min-width: 720px) {
   .lead-sentence {
-    max-width: 34ch;
+    font-size: 20px;
   }
 }
 .lead-why {
@@ -2953,13 +3007,13 @@ h3 {
    itemised. */
 .lead-facts {
   list-style: none;
-  margin: 26px 0 0;
+  margin: 18px 0 0;
   padding: 0;
-  border-top: 1px solid var(--rule-soft);
+  border-top: 1px solid var(--rule);
 }
 .lead-fact {
   padding: 12px 0;
-  border-bottom: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule);
   font-size: 15.5px;
   line-height: 1.55;
   color: var(--ink-70);
@@ -2972,6 +3026,9 @@ h3 {
 }
 .lead-fact a:hover {
   border-bottom-color: var(--accent, var(--ink));
+}
+.lead-fact:last-child {
+  border-bottom: 0;
 }
 .lead-asof {
   font-family: var(--mono);

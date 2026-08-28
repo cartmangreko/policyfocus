@@ -117,32 +117,76 @@ def _money(value, scale, model, inputs, formula, missing=(), *,
     }
 
 
-def model_free_allocation_phaseout(params: dict, year: int) -> dict:
-    """Allowances withdrawn x carbon price, per tonne of clinker.
+# WHICH BENCHMARK THE PHASE-OUT BITES ON, PER SECTOR.
+#
+# Cement collapses to one product benchmark and steel does not: the free
+# allocation a steel site receives is set per tonne of hot metal on the
+# integrated route and per tonne of EAF steel on the scrap route, and those are
+# benchmarks of DIFFERENT PRODUCTS. They are therefore listed rather than
+# summed -- euros per tonne of hot metal plus euros per tonne of EAF steel is
+# the unit error `scale` exists to prevent -- and the FIRST route is the one the
+# ranking sorts on, with the rest carried as context beside it. That is the
+# shape model_cbam_certificates already uses for its two CN lines.
+#
+# `token` is the benchmark's name inside the formula string and `installation`
+# is what the caveat calls the thing that emits, because a caveat that said
+# "kiln" on a steel page would be the cement model talking.
+FREE_ALLOCATION_ROUTES = {
+    "cement": {
+        "installation": "kiln",
+        "routes": (
+            ("clinker", "clinker-benchmark-2026-2030", "eur_per_tonne_clinker",
+             "clinker_benchmark"),
+        ),
+    },
+    "steel": {
+        "installation": "site",
+        "routes": (
+            ("hot metal", "hot-metal-benchmark-2026-2030", "eur_per_tonne_hot_metal",
+             "hot_metal_benchmark"),
+            ("EAF carbon steel", "eaf-carbon-steel-benchmark-2026-2030",
+             "eur_per_tonne_eaf_carbon_steel", "eaf_carbon_steel_benchmark"),
+        ),
+    },
+}
+
+
+def model_free_allocation_phaseout(sector: str, params: dict, year: int) -> dict:
+    """Allowances withdrawn x carbon price, per tonne of the sector's product.
 
     Withdrawn share is (1 - CBAM factor): in 2026 the factor is 97,5 %, so 2,5 %
-    of the free allocation a cement kiln would otherwise receive is gone, and the
-    kiln buys that fraction of its benchmarked allowances at the market price.
+    of the free allocation an installation would otherwise receive is gone, and it
+    buys that fraction of its benchmarked allowances at the market price.
+
+    ONE FIGURE PER ROUTE, NEVER A SUM. See FREE_ALLOCATION_ROUTES above: the
+    routes are per tonne of different products, so the model ranks on the first
+    and reports the rest, and nothing anywhere adds them together.
     """
+    config = FREE_ALLOCATION_ROUTES[sector]
+    routes = config["routes"]
+    lead_scale = routes[0][2]
     factor = params.get(f"cbam-factor-{year}")
-    bench = params.get("clinker-benchmark-2026-2030")
     price = params.get("eua-price-spot")
-    needed = [f"cbam-factor-{year}", "clinker-benchmark-2026-2030", "eua-price-spot"]
-    missing = [n for n, p in zip(needed, (factor, bench, price)) if p is None]
-    formula = "(1 - cbam_factor) x clinker_benchmark x eua_price"
+    needed = ([f"cbam-factor-{year}"] + [r[1] for r in routes] + ["eua-price-spot"])
+    missing = [n for n in needed if n not in params]
+    formula = f"(1 - cbam_factor) x {routes[0][3]} x eua_price"
     if missing:
-        return _money(None, "eur_per_tonne_clinker", "free_allocation_phaseout",
+        return _money(None, lead_scale, "free_allocation_phaseout",
                       [n for n in needed if n not in missing], formula, missing,
                       direction="cost", bearer="eu_producer")
     withdrawn = 1 - (factor["value"] / 100)
-    value = round(withdrawn * bench["value"] * price["value"], 2)
-    return _money(value, "eur_per_tonne_clinker", "free_allocation_phaseout",
+    priced = [(label, scale, round(withdrawn * params[pid]["value"] * price["value"], 2))
+              for label, pid, scale, _ in routes]
+    value = priced[0][2]
+    context = [{"label": f"the same model on {label}", "value": amount, "scale": scale}
+               for label, scale, amount in priced[1:]]
+    return _money(value, lead_scale, "free_allocation_phaseout",
                   needed, formula, direction="cost", bearer="eu_producer",
-                  per_tonne=value,
+                  per_tonne=value, context=context,
                   caveats=[
                       "The figure is the cost of the WITHDRAWN benchmark allocation, not the full "
-                      "carbon cost of a plant: a kiln emitting above the benchmark pays for its "
-                      "excess on top of this, and always did.",
+                      f"carbon cost of a plant: a {config['installation']} emitting above the "
+                      "benchmark pays for its excess on top of this, and always did.",
                       "The carbon price is held flat at today's level across the whole schedule. "
                       "That is an assumption, not a forecast, and the model is linear in it.",
                   ])
@@ -336,21 +380,49 @@ def model_grant_programme(measure_id: str, funding: list[dict], params: dict,
 # and surrender certificates is what costs money; the reporting and verification
 # rows around it are how that obligation is administered, and pricing each of
 # them at the full certificate bill would state the same euro four times.
+# KEYED ON (SECTOR, MEASURE), NOT ON THE MEASURE ALONE.
+#
+# It was keyed on the measure, and that was a sector-level figure wearing a
+# measure-level key: ets:CBAM-01 reaches cement and steel, and a lookup that
+# could not tell them apart would have priced a steel site at the cement
+# clinker benchmark and put the answer on the steel page. The models themselves
+# were never the problem -- grant_programme already filters on the sector's own
+# projects -- so this is the key doing the work the key was always meant to do.
+#
+# ("cement", "ets:CBAM-02") is deliberately absent. It phases out free allocation
+# for product categories ADDED to the CBAM list later, on the same schedule --
+# pricing it at the cement clinker benchmark today would double-count the same
+# euro against cement and rank a measure about future goods second in a cement
+# view.
+#
+# Only ONE of the CBAM rows carries the certificate model. The obligation to hold
+# and surrender certificates is what costs money; the reporting and verification
+# rows around it are how that obligation is administered, and pricing each of
+# them at the full certificate bill would state the same euro four times.
+#
+# ("steel", "cbam:FIN-03") is absent and is not an oversight: steel is the
+# largest CBAM sector by trade volume and the certificate model matters more
+# there than it does for cement, but it needs the CN lines of chapters 72-73 and
+# their import volumes sourced, which is a research task of its own. Tracked as
+# its own issue; until then steel's import-side carbon cost is a stated gap
+# rather than a number nobody sourced.
 MODELS = {
-    "ets:CBAM-01": "free_allocation_phaseout",
-    "ets:FND-03": "grant_programme",
-    "cbam:FIN-03": "cbam_certificates",
+    ("cement", "ets:CBAM-01"): "free_allocation_phaseout",
+    ("cement", "ets:FND-03"): "grant_programme",
+    ("cement", "cbam:FIN-03"): "cbam_certificates",
+    ("steel", "ets:CBAM-01"): "free_allocation_phaseout",
+    ("steel", "ets:FND-03"): "grant_programme",
 }
 
 
-def money_for(measure_id: str, params: dict, funding: list[dict],
+def money_for(sector: str, measure_id: str, params: dict, funding: list[dict],
               project_ids: set[str], year: int) -> dict:
-    model = MODELS.get(measure_id)
+    model = MODELS.get((sector, measure_id))
     if model == "free_allocation_phaseout":
-        score = model_free_allocation_phaseout(params, year)
-        later = model_free_allocation_phaseout(params, 2030)
+        score = model_free_allocation_phaseout(sector, params, year)
+        later = model_free_allocation_phaseout(sector, params, 2030)
         if later["computable"]:
-            score["context"] = [{
+            score["context"] = score["context"] + [{
                 "label": "the same model at 2030",
                 "value": later["value"],
                 "scale": later["scale"],
@@ -432,6 +504,10 @@ def register_rows(sector: str, funding: list[dict], project_ids: set[str]) -> li
     return rows
 
 
+def mid_in_labels(scored_row: dict) -> bool:
+    return scored_row["measure"] in sm.measure_labels()
+
+
 def build(sector: str, year: int) -> dict:
     params = sm.index(sm.load("parameter"))
     bottlenecks = sm.load("bottleneck")
@@ -467,9 +543,14 @@ def build(sector: str, year: int) -> dict:
     for entry in register_rows(sector, funding, project_ids):
         slug, row = entry["file"], entry["row"]
         mid = f"{slug}:{row['id']}"
-        money = money_for(mid, params, funding, project_ids, year)
+        money = money_for(sector, mid, params, funding, project_ids, year)
         edges = linkage.get(mid, [])
         weight_sum = round(sum(e["weight"] for e in edges), 3)
+        # The same predicate as `in_sector_view` below, needed here because the
+        # plain block is only ever rendered by the key-measures list and the
+        # key-measures list is that predicate. Kept as one expression in two
+        # places rather than two rules: see the assertion after the loop.
+        in_view = bool((money["value"] or 0) > 0 or weight_sum > 0)
         count = attention["counts"].get(mid, 0) if attention["available"] else None
         scored.append({
             "measure": mid,
@@ -481,10 +562,13 @@ def build(sector: str, year: int) -> dict:
             "article": row.get("article"),
             "when": row.get("when"),
             "duty": row.get("duty") or row.get("entitlement") or "",
-            # Absent for a measure nobody has written one for, which is every
-            # measure outside a sector view. The gate requires one for every
-            # measure that has a label, and a measure in the view has a label.
-            "plain": sm.plain_measure(labels[mid], money) if mid in labels else None,
+            # Absent for a measure this sector does not list. A label is shared
+            # across every sector a measure reaches and the words under it are
+            # not, so asking for a sector's wording on a measure that sector
+            # never shows would demand prose for a page that does not exist.
+            # The gate requires one for every measure a sector DOES list.
+            "plain": (sm.plain_measure(labels[mid], money, sector)
+                      if in_view and mid in labels else None),
             "money": money,
             "bottleneck_linkage": {
                 "count": len(edges),
@@ -524,6 +608,14 @@ def build(sector: str, year: int) -> dict:
         # where the other 60-odd cement measures belong: reachable, not ranked.
         s["in_sector_view"] = bool((s["money"]["value"] or 0) > 0
                                    or s["bottleneck_linkage"]["weight"] > 0)
+        # The two places that compute this predicate must agree, or a measure
+        # gets its words from one rule and its place on the page from another.
+        if s["in_sector_view"] and mid_in_labels(s) and s["plain"] is None:
+            raise SystemExit(
+                f"build_importance: {s['measure']} is in the {s.get('sector', '')} sector "
+                f"view with a label and no plain block — the two readings of "
+                f"in_sector_view have drifted apart"
+            )
         ov = overrides.get(s["measure"])
         if ov:
             s["override_rank"] = ov["rank"]
@@ -643,7 +735,7 @@ def main() -> int:
     ap.add_argument("--year", type=int, default=date.today().year)
     args = ap.parse_args()
 
-    sectors = args.sector or ["cement"]
+    sectors = args.sector or sm.mapped_sectors()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     failed = False
 

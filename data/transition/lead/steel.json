@@ -1,0 +1,166 @@
+{
+  "_comment": [
+    "BUILT FILE — do not edit. sources/build_lead.py computes it from the sector's",
+    "own panels; web/components/LeadBlock.tsx draws it and adds nothing.",
+    "A reviewed replacement goes in data/transition/overrides.json under",
+    "summary_override, never here."
+  ],
+  "sector": "steel",
+  "template_version": 5,
+  "fingerprint": "089abd52c55b7788",
+  "sentence": {
+    "text": "European steel is cutting its emissions and shifting to recycled material.",
+    "from": [
+      "routes"
+    ],
+    "source": "generated"
+  },
+  "why_it_matters": {
+    "text": "Steel made this way costs more than the steel it replaces, so whether Europe gets it depends on who covers the difference.",
+    "from": [
+      "the_gap",
+      "binding_constraint"
+    ],
+    "source": "generated"
+  },
+  "facts": [
+    {
+      "id": "routes",
+      "label": "Routes",
+      "text": "Four routes are being built: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
+      "as_of": "2026-06-18",
+      "numbers": [
+        "4",
+        "3",
+        "2",
+        "1"
+      ],
+      "parts": {
+        "count": 4,
+        "list": "hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1)",
+        "names": [
+          "Hydrogen direct reduction",
+          "Direct reduction with an electric furnace",
+          "Electric arc furnace on scrap",
+          "Carbon capture on blast-furnace gas"
+        ]
+      },
+      "sourced": [
+        "Hydrogen direct reduction",
+        "Direct reduction with an electric furnace",
+        "Electric arc furnace on scrap",
+        "Carbon capture on blast-furnace gas"
+      ],
+      "href": "#technologies",
+      "surface": true
+    },
+    {
+      "id": "the_gap",
+      "label": "The gap",
+      "text": "Low-carbon steel costs 50-140% above a conventional BF-BOF plant to make, on the International Energy Agency's figures.",
+      "as_of": "2025",
+      "numbers": [
+        "50-140"
+      ],
+      "parts": {
+        "figure": "50-140%",
+        "rest": "above a conventional BF-BOF plant",
+        "name": "Production cost premium of near-zero emissions steel using hydrogen direct reduction",
+        "publisher": "International Energy Agency"
+      },
+      "sourced": [
+        "Production cost premium of near-zero emissions steel using hydrogen direct reduction",
+        "% above a conventional BF-BOF plant",
+        "above a conventional BF-BOF plant",
+        "International Energy Agency"
+      ],
+      "href": "#bottleneck-steel-green-premium",
+      "surface": true
+    },
+    {
+      "id": "pipeline_state",
+      "label": "Pipeline",
+      "text": "7 European steel projects are under way, all of them have taken a final investment decision, and 1 has been cancelled.",
+      "as_of": "2026-06-18",
+      "numbers": [
+        "7",
+        "1"
+      ],
+      "parts": {
+        "total": "7",
+        "committed": "7",
+        "committed_is_all": true,
+        "paused": "0",
+        "cancelled": "1",
+        "furthest": "HYBRIT pilot",
+        "furthest_status": "operating"
+      },
+      "sourced": [
+        "HYBRIT pilot"
+      ],
+      "href": "#projects",
+      "surface": true
+    },
+    {
+      "id": "decisive_exposure",
+      "label": "Decisive exposure",
+      "text": "European steel makers are losing the free carbon allowances they used to get, worth €2.58 per tonne at today's carbon price.",
+      "as_of": "2026-08-21",
+      "numbers": [
+        "2.58"
+      ],
+      "parts": {
+        "name": "Free allocation phase-out",
+        "figure": "€2.58 per tonne",
+        "direction": "cost",
+        "bearer": "eu producer",
+        "model": "free_allocation_phaseout"
+      },
+      "sourced": [
+        "Free allocation phase-out"
+      ],
+      "href": "#measure-ets-CBAM-01",
+      "surface": true
+    },
+    {
+      "id": "the_latest",
+      "label": "The latest",
+      "text": "greentec steel Linz went into construction on 18 June 2026.",
+      "as_of": "2026-06-18",
+      "numbers": [],
+      "parts": {
+        "project": "greentec steel Linz",
+        "status": "construction",
+        "date": "18 June 2026"
+      },
+      "sourced": [
+        "greentec steel Linz"
+      ],
+      "href": "/projects/greentec-linz",
+      "surface": true
+    },
+    {
+      "id": "binding_constraint",
+      "label": "Binding constraint",
+      "text": "Green premium against willingness to pay — a market constraint, acted on by 6 ranked measures at 4.5 of combined weight.",
+      "as_of": "2026-01-01",
+      "numbers": [
+        "6",
+        "4.5"
+      ],
+      "parts": {
+        "name": "Green premium against willingness to pay",
+        "type": "market",
+        "count": 6,
+        "weight": "4.5"
+      },
+      "sourced": [
+        "Green premium against willingness to pay"
+      ],
+      "href": "#bottleneck-steel-green-premium",
+      "surface": false
+    }
+  ],
+  "override_stale": false,
+  "notes": []
+}

@@ -128,6 +128,13 @@
           "decarbonisation"
         ],
         "sentence": "European cement is under one transition, decarbonisation, and it turns on a fact no energy choice can reach: most of a kiln's CO2 comes out of the limestone rather than the fuel, which is why the sector's future runs through capture, the pipes and stores that capture depends on, and whoever is willing to pay for the result."
+      },
+      "steel": {
+        "transitions": [
+          "decarbonisation",
+          "circularity"
+        ],
+        "sentence": ""
       }
     }
   },
@@ -158,10 +165,13 @@
       "before. sources/check_sector_schema.py fails for a mapped sector with no paragraph and",
       "prints the drafts on every run."
     ],
-    "reviewed": "2026-08-24",
+    "reviewed": "2026-08-28",
     "sectors": {
       "cement": {
         "paragraph": "Cement is the binding agent of the built environment. Concrete is the most used man-made material on earth, and European construction depends on a domestic industry that operates on thin margins with high energy and carbon intensity. Most of the sector's emissions come not from burning fuel but from the chemistry of clinker, the limestone-derived core of cement, which releases CO2 as it is processed. That makes cement one of the hardest sectors to decarbonise: efficiency and clean electricity cannot remove process emissions, so the transition runs through carbon capture, clinker substitution and alternative fuels. EU policy treats it accordingly: carbon pricing raises the cost of conventional production, a border adjustment shields producers from unpriced imports, and public funding underwrites the first capture projects. The open question is who pays for low-carbon cement while it costs more than conventional supply."
+      },
+      "steel": {
+        "paragraph": "European steel is attempting two transitions at once. Some plants are fitting capture equipment to their existing blast furnaces. Others are being rebuilt around a new process, reducing iron with hydrogen or gas and melting it in electric arc furnaces. The deciding factors sit mostly outside the steelworks: hydrogen at scale, electricity prices, and somewhere to put captured CO2. EU law has set the schedule. Free allowances are being withdrawn year by year, a carbon border charge phases in against imports, and the funding tracked below backs both processes."
       }
     }
   },
@@ -389,11 +399,16 @@
     ],
     "sectors": {
       "cement": {
-        "fingerprint": "b46a43f79fcc866e",
-        "template_version": 2,
-        "sentence": "European cement is decarbonising by capturing the CO2 its kilns emit, and the main question is who pays for it.",
+        "fingerprint": "e639cb7e8d01a133",
+        "template_version": 5,
+        "sentence": "European cement is cutting its emissions.",
         "why_it_matters": "Cement made this way costs more than the cement it replaces, so whether Europe gets it depends on who covers the difference.",
         "facts": [
+          {
+            "id": "routes",
+            "text": "Three routes are being built: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
+            "as_of": "2025-06-18"
+          },
           {
             "id": "the_gap",
             "text": "Low-carbon cement costs 75-150% above a conventional plant to make, on the International Energy Agency's figures.",
@@ -401,7 +416,7 @@
           },
           {
             "id": "pipeline_state",
-            "text": "8 European cement projects are under way, and 4 of them have taken a final investment decision.",
+            "text": "7 European cement projects are under way, 4 of them have taken a final investment decision, and 1 is paused.",
             "as_of": "2025-11-19"
           },
           {
@@ -413,6 +428,39 @@
             "id": "the_latest",
             "text": "Slite CCS was paused on 19 November 2025.",
             "as_of": "2025-11-19"
+          }
+        ]
+      },
+      "steel": {
+        "fingerprint": "089abd52c55b7788",
+        "template_version": 5,
+        "sentence": "European steel is cutting its emissions and shifting to recycled material.",
+        "why_it_matters": "Steel made this way costs more than the steel it replaces, so whether Europe gets it depends on who covers the difference.",
+        "facts": [
+          {
+            "id": "routes",
+            "text": "Four routes are being built: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
+            "as_of": "2026-06-18"
+          },
+          {
+            "id": "the_gap",
+            "text": "Low-carbon steel costs 50-140% above a conventional BF-BOF plant to make, on the International Energy Agency's figures.",
+            "as_of": "2025"
+          },
+          {
+            "id": "pipeline_state",
+            "text": "7 European steel projects are under way, all of them have taken a final investment decision, and 1 has been cancelled.",
+            "as_of": "2026-06-18"
+          },
+          {
+            "id": "decisive_exposure",
+            "text": "European steel makers are losing the free carbon allowances they used to get, worth €2.58 per tonne at today's carbon price.",
+            "as_of": "2026-08-21"
+          },
+          {
+            "id": "the_latest",
+            "text": "greentec steel Linz went into construction on 18 June 2026.",
+            "as_of": "2026-06-18"
           }
         ]
       }

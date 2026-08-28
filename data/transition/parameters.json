@@ -33,7 +33,6 @@
       "value": 97.5,
       "unit": "% of the free allocation otherwise due",
       "scope": "eu",
-      "sector": "cement",
       "date_of_value": "2024-03-01",
       "retrieved_date": "2026-08-22",
       "stale_after": 60,
@@ -51,7 +50,6 @@
       "value": 51.5,
       "unit": "% of the free allocation otherwise due",
       "scope": "eu",
-      "sector": "cement",
       "date_of_value": "2024-03-01",
       "retrieved_date": "2026-08-22",
       "stale_after": 60,
@@ -444,6 +442,336 @@
         "verbatim": "Production costs for early commercial plants for near-zero emissions cement using CCS are estimated to be 75-150% higher than today's conventional plants"
       },
       "note": "Replaces the WEF Net-Zero Industry Tracker as the green-premium source: the WEF page returns 403 to this repository's link checker, and a source that cannot be read is a source that has not been read."
+    },
+    {
+      "id": "hot-metal-benchmark-2026-2030",
+      "name": "EU ETS free-allocation benchmark, hot metal, 2026-2030",
+      "value": 1.248,
+      "unit": "allowances per tonne of hot metal",
+      "scope": "eu",
+      "sector": "steel",
+      "date_of_value": "2026-06-26",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 60,
+      "confidence": "primary",
+      "verbatim_note": "The annex prints two columns per product; 1,248 is the benchmark for the 2026-2030 period and 1,360 the average of the 10% most efficient installations it was computed from.",
+      "source": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1412",
+        "publisher": "EUR-Lex — Commission Implementing Regulation (EU) 2026/1412, Annex",
+        "verbatim": "Hot metal | 1,360 | 1,248"
+      },
+      "note": "The primary-route benchmark: the integrated blast-furnace product on which the free-allocation phase-out bites hardest. Delegated Regulation (EU) 2024/873 brought steel made by direct reduction inside this benchmark's system boundary, which is why the DRI projects in this sector are priced against it rather than against a benchmark of their own."
+    },
+    {
+      "id": "eaf-carbon-steel-benchmark-2026-2030",
+      "name": "EU ETS free-allocation benchmark, EAF carbon steel, 2026-2030",
+      "value": 0.142,
+      "unit": "allowances per tonne of EAF carbon steel",
+      "scope": "eu",
+      "sector": "steel",
+      "date_of_value": "2026-06-26",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 60,
+      "confidence": "primary",
+      "verbatim_note": "The annex prints two columns per product; 0,142 is the benchmark for the 2026-2030 period and 0,130 the average of the 10% most efficient installations it was computed from.",
+      "source": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1412",
+        "publisher": "EUR-Lex — Commission Implementing Regulation (EU) 2026/1412, Annex",
+        "verbatim": "EAF carbon steel | 0,130 | 0,142"
+      },
+      "note": "The scrap route's benchmark, an order of magnitude below hot metal, which is the whole economics of the electric arc furnace stated in one number. Carried as a second route rather than summed with hot metal: they are per tonne of different products."
+    },
+    {
+      "id": "near-zero-steel-cost-premium",
+      "name": "Production cost premium of near-zero emissions steel using hydrogen direct reduction",
+      "value": "50-140",
+      "unit": "% above a conventional BF-BOF plant",
+      "states_gap": true,
+      "scope": "global",
+      "sector": "steel",
+      "date_of_value": "2025",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 24,
+      "confidence": "estimate",
+      "source": {
+        "url": "https://www.iea.org/reports/breakthrough-agenda-report-2025/steel",
+        "publisher": "International Energy Agency — Breakthrough Agenda Report 2025",
+        "verbatim": "Early commercial plants using 100% hydrogen blends are estimated to cost 50-140% more than BF-BOF plants today"
+      },
+      "note": "The same report family and the same question as the cement premium, so the two sectors' gap figures are comparable in what they measure. The base is a conventional integrated plant, which is what the sector page has to say alongside the number."
+    },
+    {
+      "id": "stegra-boden-capacity",
+      "name": "Stegra Boden — initial annual steel volume",
+      "value": 2.5,
+      "unit": "Mt steel per year",
+      "scope": "plant:boden",
+      "sector": "steel",
+      "technology": "h2-dri",
+      "date_of_value": "2024-01-22",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 36,
+      "confidence": "primary",
+      "source": {
+        "url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-more-than-4-billion-in-debt-financing-for-the-worlds-first-large-scale-green-steel-plant",
+        "publisher": "Stegra (as H2 Green Steel)",
+        "verbatim": "half of the initial yearly volumes of 2.5 million tonnes of near zero steel have been sold"
+      }
+    },
+    {
+      "id": "stegra-innovation-fund-grant",
+      "name": "Stegra Boden — EU Innovation Fund grant",
+      "value": 250,
+      "unit": "EUR million",
+      "scope": "plant:boden",
+      "sector": "steel",
+      "date_of_value": "2024-01-22",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-more-than-4-billion-in-debt-financing-for-the-worlds-first-large-scale-green-steel-plant",
+        "publisher": "Stegra (as H2 Green Steel)",
+        "verbatim": "The company has also been awarded a €250 million grant from the EU Innovation Fund."
+      }
+    },
+    {
+      "id": "boden-electrolyser-capacity",
+      "name": "Stegra Boden — installed electrolyser capacity",
+      "value": 740,
+      "unit": "MW",
+      "scope": "plant:boden",
+      "sector": "steel",
+      "technology": "hydrogen-supply",
+      "date_of_value": "2026-04-04",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 24,
+      "confidence": "secondary",
+      "source": {
+        "url": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
+        "publisher": "BioEnergy Times",
+        "verbatim": "all 37 modules are now in place at the 740-megawatt facility"
+      },
+      "note": "Installed, not operating: the modules are in place and pre-commissioning has still to run. That distinction is what holds the hydrogen supply route at demonstration rather than moving it up."
+    },
+    {
+      "id": "tkh2steel-dri-capacity",
+      "name": "tkH2Steel Duisburg — direct reduction capacity",
+      "value": 2.5,
+      "unit": "Mt directly reduced iron per year",
+      "scope": "plant:duisburg",
+      "sector": "steel",
+      "technology": "dri-eaf",
+      "date_of_value": "2023-07-20",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+        "publisher": "thyssenkrupp",
+        "verbatim": "The 100% hydrogen-capable DR plant with two melters has a production capacity of 2.5 million metric tons of directly reduced iron per year"
+      }
+    },
+    {
+      "id": "tkh2steel-public-funding",
+      "name": "tkH2Steel Duisburg — German federal and state funding",
+      "value": 2,
+      "unit": "EUR billion",
+      "scope": "plant:duisburg",
+      "sector": "steel",
+      "date_of_value": "2023-07-20",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 60,
+      "confidence": "primary",
+      "verbatim_note": "The amount is written out in words in the release ('around two billion euros'), so the digits do not occur in the quote. Same case as k6-state-funding.",
+      "source": {
+        "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+        "publisher": "thyssenkrupp",
+        "verbatim": "The EU Commission has granted state aid approval for German federal and state government funding of the \"tkH2Steel\" decarbonization project in a total amount of around two billion euros"
+      }
+    },
+    {
+      "id": "salcos-federal-funding",
+      "name": "SALCOS stage one — German federal funding",
+      "value": 700,
+      "unit": "EUR million",
+      "scope": "plant:salzgitter",
+      "sector": "steel",
+      "date_of_value": "2023-04-18",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 60,
+      "confidence": "primary",
+      "verbatim_note": "One sentence carries both allocations; this parameter is the federal half and salcos-state-funding is the Lower Saxony half.",
+      "source": {
+        "url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+        "publisher": "Salzgitter AG",
+        "verbatim": "€ 700 million in federal funding and € 300 million from the state government"
+      }
+    },
+    {
+      "id": "salcos-state-funding",
+      "name": "SALCOS stage one — State of Lower Saxony funding",
+      "value": 300,
+      "unit": "EUR million",
+      "scope": "plant:salzgitter",
+      "sector": "steel",
+      "date_of_value": "2023-04-18",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 60,
+      "confidence": "primary",
+      "verbatim_note": "One sentence carries both allocations; this parameter is the Lower Saxony half and salcos-federal-funding is the federal half.",
+      "source": {
+        "url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+        "publisher": "Salzgitter AG",
+        "verbatim": "€ 700 million in federal funding and € 300 million from the state government"
+      }
+    },
+    {
+      "id": "salcos-crude-steel-capacity",
+      "name": "SALCOS stage one — crude steel capacity",
+      "value": 1.9,
+      "unit": "Mt crude steel per year",
+      "scope": "plant:salzgitter",
+      "sector": "steel",
+      "technology": "dri-eaf",
+      "date_of_value": "2023-04-18",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+        "publisher": "Salzgitter AG",
+        "verbatim": "1.9 million tonnes of crude steel per year"
+      }
+    },
+    {
+      "id": "am-germany-subsidy-declined",
+      "name": "ArcelorMittal Bremen and Eisenhüttenstadt — German subsidies declined",
+      "value": 1.3,
+      "unit": "EUR billion",
+      "scope": "country:DE",
+      "sector": "steel",
+      "date_of_value": "2025-06-23",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 60,
+      "confidence": "secondary",
+      "source": {
+        "url": "https://www.cleanenergywire.org/news/german-finance-minister-calls-steel-summit-after-green-projects-axed",
+        "publisher": "Clean Energy Wire",
+        "verbatim": "ArcelorMittal, last week dropped plans to convert two plants in Germany to climate-friendly production, citing high energy costs and turning down 1.3 billion euros of subsidies."
+      },
+      "note": "Money that was allocated and handed back. It is the amount on the withdrawn funding row and is in no total on this sector's page, which is what FUNDING_EXCLUDED is for."
+    },
+    {
+      "id": "hybrit-pilot-sponge-iron",
+      "name": "HYBRIT Luleå pilot — sponge iron produced",
+      "value": 100,
+      "unit": "tonnes",
+      "scope": "plant:lulea",
+      "sector": "steel",
+      "technology": "h2-dri",
+      "date_of_value": "2021-06-21",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 120,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+        "publisher": "SSAB",
+        "verbatim": "Around 100 tonnes have been made so far."
+      },
+      "note": "The number that fixes hydrogen direct reduction at pilot readiness. A hundred tonnes is the world's first, and it is four orders of magnitude below the plants being built against it."
+    },
+    {
+      "id": "dmx-dunkirk-capture-rate",
+      "name": "DMX pilot on blast-furnace gas, Dunkirk — CO2 capture rate",
+      "value": 90,
+      "unit": "% of the CO2 in the treated stream",
+      "scope": "plant:dunkirk",
+      "sector": "steel",
+      "technology": "ccs-blast-furnace",
+      "date_of_value": "2024-03-14",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 36,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
+        "publisher": "Axens",
+        "verbatim": "CO2 capture rates exceed 90%."
+      },
+      "note": "A rate on the stream the unit treats, NOT a share of the site's emissions. The cement technology carries an abatement_share because Brevik's operator stated one against the whole plant; nothing equivalent has been read for a blast furnace, so this parameter says what it measures in its unit and the technology carries no abatement_share at all."
+    },
+    {
+      "id": "voestalpine-donawitz-capacity",
+      "name": "voestalpine Donawitz — EAF capacity from 2027",
+      "value": 850000,
+      "unit": "tonnes CO2-reduced steel per year",
+      "scope": "plant:donawitz",
+      "sector": "steel",
+      "technology": "eaf-scrap",
+      "date_of_value": "2026-06-18",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 24,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+        "publisher": "voestalpine",
+        "verbatim": "The EAF plant currently under construction will be capable of producing around 850,000 tons of CO2‐reduced steel annually as of 2027."
+      }
+    },
+    {
+      "id": "voestalpine-phase-one-investment",
+      "name": "voestalpine greentec steel — phase one investment",
+      "value": 1.5,
+      "unit": "EUR billion",
+      "scope": "country:AT",
+      "sector": "steel",
+      "date_of_value": "2026-06-18",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 36,
+      "confidence": "primary",
+      "source": {
+        "url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+        "publisher": "voestalpine",
+        "verbatim": "The investment volume for the first phase remains unchanged at approximately EUR 1.5 billion."
+      },
+      "note": "Company capital across both Austrian sites, not public money. It is on the sector page as the scale of what a two-furnace conversion costs, and it is in no funding total."
+    },
+    {
+      "id": "eu-eaf-production-share",
+      "name": "Share of EU steel produced via the electric arc furnace route",
+      "value": 40,
+      "unit": "% of EU steel production",
+      "scope": "eu",
+      "sector": "steel",
+      "technology": "eaf-scrap",
+      "date_of_value": "2025-09-29",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 24,
+      "confidence": "secondary",
+      "source": {
+        "url": "https://www.eurofer.eu/about-steel/learn-about-steel/what-is-steel-and-how-is-steel-made/",
+        "publisher": "EUROFER — the European Steel Association",
+        "verbatim": "Just over 40% of EU steel is produced via the EAF production route."
+      },
+      "note": "What makes the electric arc furnace commercial rather than emerging in this sector: it is already two fifths of European output. The route's constraint is scrap supply, not readiness."
+    },
+    {
+      "id": "gbs-lost-per-blast-furnace",
+      "name": "Granulated blast furnace slag lost per blast furnace substituted",
+      "value": "150-800",
+      "unit": "thousand tonnes per year per blast furnace",
+      "scope": "eu",
+      "sector": "steel",
+      "date_of_value": "2023-06",
+      "retrieved_date": "2026-08-28",
+      "stale_after": 60,
+      "confidence": "secondary",
+      "source": {
+        "url": "https://www.zkg.de/en/artikel/the-steel-production-transformation-process-in-europe-new-slag-types-will-substitute-granulated-blast-furnace-slag-4001145.html",
+        "publisher": "ZKG International — 'The steel production transformation process in Europe', ZKG 6/2023",
+        "verbatim": "Depending on the individual blast furnace capacity yearly 150-800 thousand t of GBS will vanish together with each substituted blast furnace."
+      },
+      "note": "The number that joins this sector to cement. Every blast furnace steel converts away from also stops producing the slag the cement sector substitutes for clinker, so steel's decarbonisation removes one of cement's. The cement-side constraint is not in bottlenecks.json yet; see data/transition/GAPS.md."
     }
   ]
 }

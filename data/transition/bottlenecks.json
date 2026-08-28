@@ -269,6 +269,298 @@
           }
         }
       ]
+    },
+    {
+      "id": "steel-green-premium",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "type": "market",
+      "name": "Green premium against willingness to pay",
+      "description": "Steel made without a blast furnace costs more than the steel it replaces, and it is sold into construction and vehicle chains where the buyer is several steps removed from whoever carries the climate commitment, so the premium has to be pulled through by procurement and product rules rather than by demand.",
+      "quantified_by": [
+        "near-zero-steel-cost-premium"
+      ],
+      "addressed_by": [],
+      "sources": [
+        {
+          "url": "https://www.iea.org/reports/breakthrough-agenda-report-2025/steel",
+          "title": "Steel — Breakthrough Agenda Report 2025",
+          "publisher": "International Energy Agency",
+          "date": "2025-01-01"
+        },
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52026PC0100",
+          "title": "Industrial Accelerator Act proposal, lead-market provisions (Annex II)",
+          "publisher": "EUR-Lex",
+          "date": "2026-01-01"
+        }
+      ],
+      "measures": [
+        {
+          "measure": "iaa:LM-03b",
+          "rel": "relieves",
+          "weight": 1.0,
+          "note": "The one provision in the register that puts a volume share on low-carbon steel by name, which is what turns a premium product into a market rather than a pilot order.",
+          "evidence": {
+            "source": "data/iaa.json",
+            "path": "LM-03b.source_text",
+            "quote": "(a) Steel, and any product the performance of which depends mainly on steel, intended for use in buildings, infrastructure and motor vehicles for civil purposes: at least 25% of the total volume of steel used shall be low-carbon;",
+            "article": "Art. 11(2); Annex II, Part I"
+          }
+        },
+        {
+          "measure": "iaa:LM-03a",
+          "rel": "relieves",
+          "weight": 1.0,
+          "note": "The duty on the buying side of the same rule: public procurement has to apply the Annex II Part I requirements, and steel is the first product listed there.",
+          "evidence": {
+            "source": "data/iaa.json",
+            "path": "LM-03a.duty",
+            "quote": "Apply the Union-origin and low-carbon requirements laid down in Annex II Part I (steel, concrete/mortar, aluminium) and Annex III Part I (electric vehicles) in covered public procurement.",
+            "article": "Art. 11(2)"
+          }
+        },
+        {
+          "measure": "ets:CBAM-01",
+          "rel": "relieves",
+          "weight": 1.0,
+          "note": "Withdrawing free allocation raises the cost of blast-furnace steel, which narrows the gap the low-carbon product has to close.",
+          "evidence": {
+            "source": "data/ets.json",
+            "path": "CBAM-01.duty",
+            "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods.",
+            "article": "Art. 1(15)(b)(i), replacing Art. 10a(1a), second subparagraph of Directive 2003/87/EC"
+          }
+        },
+        {
+          "measure": "iaa:LM-06a",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "Support schemes carry the same requirements, widening the pull beyond public contracts.",
+          "evidence": {
+            "source": "data/iaa.json",
+            "path": "LM-06a.duty",
+            "quote": "Design public support schemes so that the Union-origin/low-carbon requirements of Annex II Part II and Annex III Part II apply to at least 45% of the national budget for Annex II Part II-type schemes and 100% of the budget for Annex III Part II-type schemes.",
+            "article": "Art. 12(1)"
+          }
+        },
+        {
+          "measure": "iaa:LM-01",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "A premium can only be charged for a claim a buyer can check, and this is the provision that makes the low-carbon classification a verified one rather than a marketing term.",
+          "evidence": {
+            "source": "data/iaa.json",
+            "path": "LM-01.duty",
+            "quote": "Have emissions and other data used to calculate a product's greenhouse gas intensity verified by accredited verifiers before it can be classified/labelled as low-carbon.",
+            "article": "Art. 10(2)"
+          }
+        },
+        {
+          "measure": "cbam:FIN-03",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "Same-year certificates stop importers hedging the carbon cost forward, holding imported and domestic carbon costs closer together.",
+          "evidence": {
+            "source": "data/cbam.json",
+            "path": "FIN-03.duty",
+            "quote": "From 2028, satisfy the quarterly certificate-holding requirement using only certificates bought in the same year, so certificates carried over from earlier years no longer count.",
+            "article": "Art. 1(13), adding a subparagraph to Art. 22(2) of Regulation (EU) 2023/956"
+          }
+        }
+      ]
+    },
+    {
+      "id": "steel-conversion-finance",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "type": "financial",
+      "name": "Conversion cost against site economics",
+      "description": "Replacing an integrated site's ironmaking is a rebuild rather than a retrofit, and every European conversion that has gone ahead has done so with public money in the stack. Where the public share was withdrawn or the electricity price moved against it, the conversion stopped.",
+      "quantified_by": [
+        "tkh2steel-public-funding",
+        "salcos-federal-funding",
+        "salcos-state-funding",
+        "voestalpine-phase-one-investment",
+        "am-germany-subsidy-declined"
+      ],
+      "addressed_by": [
+        "dri-eaf",
+        "eaf-scrap"
+      ],
+      "sources": [
+        {
+          "url": "https://www.cleanenergywire.org/news/german-finance-minister-calls-steel-summit-after-green-projects-axed",
+          "title": "German finance minister calls steel summit after green projects axed",
+          "publisher": "Clean Energy Wire",
+          "date": "2025-06-23"
+        },
+        {
+          "url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+          "title": "voestalpine unveils further expansion plans for greentec steel at its Donawitz location",
+          "publisher": "voestalpine",
+          "date": "2026-06-18"
+        }
+      ],
+      "measures": [
+        {
+          "measure": "ets:CBAM-01",
+          "rel": "worsens",
+          "weight": 0.5,
+          "note": "The same schedule that improves the case for converting raises the site's running cost before the conversion exists, on margins the conversion has to be financed from.",
+          "evidence": {
+            "source": "data/ets.json",
+            "path": "CBAM-01.duty",
+            "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods.",
+            "article": "Art. 1(15)(b)(i), replacing Art. 10a(1a), second subparagraph of Directive 2003/87/EC"
+          }
+        },
+        {
+          "measure": "nzia:SP-02",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "Strategic-project recognition shortens permitting and improves access to support, without providing capital. Boden holds it.",
+          "evidence": {
+            "source": "data/nzia.json",
+            "path": "SP-02.duty",
+            "quote": "File an application for strategic-project recognition containing evidence against the criteria, a business plan evaluating financial viability, and a draft timetable showing when the project contributes to the Union benchmark.",
+            "article": "Art. 14(2)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "steel-hydrogen-supply",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "type": "infrastructure",
+      "name": "Renewable hydrogen at volume and at a price",
+      "description": "Every direct reduction unit being built in Europe is designed to run on hydrogen and is being commissioned on natural gas, because the hydrogen it would need does not yet arrive in the volume or at the price the iron can carry. The electrolysers, the power contracts and the pipes are built by other parties on other timetables than the furnace that depends on them.",
+      "quantified_by": [
+        "boden-electrolyser-capacity"
+      ],
+      "addressed_by": [
+        "hydrogen-supply"
+      ],
+      "sources": [
+        {
+          "url": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
+          "title": "Europe's largest green hydrogen plant takes shape as Stegra installs final electrolyser",
+          "publisher": "BioEnergy Times",
+          "date": "2026-04-04"
+        },
+        {
+          "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+          "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
+          "publisher": "thyssenkrupp",
+          "date": "2023-07-20"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "id": "steel-co2-transport-storage-network",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "type": "infrastructure",
+      "name": "CO2 transport and storage network",
+      "description": "The route that keeps an existing blast furnace only counts as abatement once the captured tonne is stored, and the pipelines, terminals and permitted stores that get it there are the same ones the cement sector is waiting for. One network decides whether either sector's capture route works.",
+      "quantified_by": [
+        "nzia-injection-capacity-2030"
+      ],
+      "addressed_by": [
+        "co2-transport-storage"
+      ],
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735",
+          "title": "Regulation (EU) 2024/1735 (Net-Zero Industry Act), Art. 20 and 23",
+          "publisher": "EUR-Lex",
+          "date": "2024-06-13"
+        },
+        {
+          "url": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
+          "title": "Successful demonstration in Dunkirk of the CO2 capture DMX process",
+          "publisher": "Axens",
+          "date": "2024-03-14"
+        }
+      ],
+      "measures": [
+        {
+          "measure": "nzia:CO2-02",
+          "rel": "relieves",
+          "weight": 1.0,
+          "note": "Puts a dated, pro-rata injection-capacity duty on oil and gas entities, which is the only measure in the register that obliges anyone to build the store a capture unit needs.",
+          "evidence": {
+            "source": "data/nzia.json",
+            "path": "CO2-02.duty",
+            "quote": "Deliver an individual share of the Union's 50 Mt/year CO2 injection capacity target by 2030, calculated pro-rata on the entity's share of Union crude oil and natural gas production over 2020-2023, as permitted capacity available to the market.",
+            "article": "Art. 23(1)"
+          }
+        },
+        {
+          "measure": "nzia:CO2-10",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "Third-party access is what makes somebody else's store usable by a steel site, but it is qualified by economic feasibility.",
+          "evidence": {
+            "source": "data/nzia.json",
+            "path": "CO2-10.duty",
+            "quote": "Take the measures needed to open access to CO2 transport networks and storage sites for geological storage, as far as it is economically feasible or where a potential customer is willing to pay.",
+            "article": "Art. 22(2)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "steel-subsidy-dependence",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "type": "political",
+      "name": "Dependence on revocable public support",
+      "description": "Where the business case rests on a national support decision, either party can end it. Germany's largest planned conversion ended because the recipient handed the money back rather than because the funder withdrew it, which is the same dependence read from the other side.",
+      "quantified_by": [
+        "am-germany-subsidy-declined"
+      ],
+      "addressed_by": [],
+      "sources": [
+        {
+          "url": "https://www.cleanenergywire.org/news/german-finance-minister-calls-steel-summit-after-green-projects-axed",
+          "title": "German finance minister calls steel summit after green projects axed",
+          "publisher": "Clean Energy Wire",
+          "date": "2025-06-23"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "id": "steel-scrap-availability",
+      "sector": "steel",
+      "transition": "circularity",
+      "type": "market",
+      "name": "Scrap supply and quality against electric furnace capacity",
+      "description": "The electric furnace route is already two fifths of European output and is the cheapest way to make steel without ironmaking, so what limits it is not the furnace but the scrap: how much Europe collects, how clean it is, and how much of it leaves. Every new furnace announced competes for the same stream.",
+      "quantified_by": [
+        "eu-eaf-production-share"
+      ],
+      "addressed_by": [
+        "eaf-scrap"
+      ],
+      "sources": [
+        {
+          "url": "https://www.eurofer.eu/about-steel/learn-about-steel/what-is-steel-and-how-is-steel-made/",
+          "title": "Learn about steel — how steel is made",
+          "publisher": "EUROFER — the European Steel Association",
+          "date": "2025-09-29"
+        },
+        {
+          "url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+          "title": "voestalpine unveils further expansion plans for greentec steel at its Donawitz location",
+          "publisher": "voestalpine",
+          "date": "2026-06-18"
+        }
+      ],
+      "measures": []
     }
   ]
 }

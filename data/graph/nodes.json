@@ -496,6 +496,66 @@
   }
  },
  {
+  "id": "bottleneck:steel-co2-transport-storage-network",
+  "kind": "bottleneck",
+  "label": "CO2 transport and storage network",
+  "attrs": {
+   "transition": "decarbonisation",
+   "type": "infrastructure",
+   "sector": "steel"
+  }
+ },
+ {
+  "id": "bottleneck:steel-conversion-finance",
+  "kind": "bottleneck",
+  "label": "Conversion cost against site economics",
+  "attrs": {
+   "transition": "decarbonisation",
+   "type": "financial",
+   "sector": "steel"
+  }
+ },
+ {
+  "id": "bottleneck:steel-green-premium",
+  "kind": "bottleneck",
+  "label": "Green premium against willingness to pay",
+  "attrs": {
+   "transition": "decarbonisation",
+   "type": "market",
+   "sector": "steel"
+  }
+ },
+ {
+  "id": "bottleneck:steel-hydrogen-supply",
+  "kind": "bottleneck",
+  "label": "Renewable hydrogen at volume and at a price",
+  "attrs": {
+   "transition": "decarbonisation",
+   "type": "infrastructure",
+   "sector": "steel"
+  }
+ },
+ {
+  "id": "bottleneck:steel-scrap-availability",
+  "kind": "bottleneck",
+  "label": "Scrap supply and quality against electric furnace capacity",
+  "attrs": {
+   "transition": "circularity",
+   "type": "market",
+   "sector": "steel"
+  }
+ },
+ {
+  "id": "bottleneck:steel-subsidy-dependence",
+  "kind": "bottleneck",
+  "label": "Dependence on revocable public support",
+  "attrs": {
+   "transition": "decarbonisation",
+   "type": "political",
+   "sector": "steel"
+  }
+ },
+ {
   "id": "country:AT",
   "kind": "country",
   "label": "AT",
@@ -918,6 +978,42 @@
   }
  },
  {
+  "id": "funding:germany-am-bremen-eisenhuettenstadt",
+  "kind": "funding",
+  "label": "German subsidies declined — ArcelorMittal Bremen and Eisenhüttenstadt",
+  "attrs": {
+   "instrument": "state_aid",
+   "programme": "German federal funding for industrial decarbonisation",
+   "status": "withdrawn",
+   "date": "2025-06-23",
+   "country": "DE"
+  }
+ },
+ {
+  "id": "funding:germany-federal-salcos",
+  "kind": "funding",
+  "label": "German federal funding — SALCOS stage one",
+  "attrs": {
+   "instrument": "state_aid",
+   "programme": "German federal funding for industrial decarbonisation",
+   "status": "approved",
+   "date": "2023-04-18",
+   "country": "DE"
+  }
+ },
+ {
+  "id": "funding:germany-tkh2steel",
+  "kind": "funding",
+  "label": "German federal and state funding — tkH2Steel",
+  "attrs": {
+   "instrument": "state_aid",
+   "programme": "German federal and North Rhine-Westphalia state funding",
+   "status": "approved",
+   "date": "2023-07-20",
+   "country": "DE"
+  }
+ },
+ {
   "id": "funding:innovation-fund-anrav",
   "kind": "funding",
   "label": "Innovation Fund grant — ANRAV",
@@ -966,6 +1062,18 @@
   }
  },
  {
+  "id": "funding:innovation-fund-stegra",
+  "kind": "funding",
+  "label": "Innovation Fund grant — Stegra Boden",
+  "attrs": {
+   "instrument": "grant",
+   "programme": "EU Innovation Fund",
+   "status": "approved",
+   "date": "2024-01-22",
+   "country": "SE"
+  }
+ },
+ {
   "id": "funding:longship-brevik",
   "kind": "funding",
   "label": "Longship — Brevik CCS",
@@ -978,6 +1086,18 @@
   }
  },
  {
+  "id": "funding:lower-saxony-salcos",
+  "kind": "funding",
+  "label": "State of Lower Saxony funding — SALCOS stage one",
+  "attrs": {
+   "instrument": "state_aid",
+   "programme": "State of Lower Saxony funding",
+   "status": "approved",
+   "date": "2023-04-18",
+   "country": "DE"
+  }
+ },
+ {
   "id": "material:captured-co2",
   "kind": "material",
   "label": "Captured CO2",
@@ -986,7 +1106,8 @@
    "cn_code": null,
    "prodcom_code": null,
    "sectors": [
-    "cement"
+    "cement",
+    "steel"
    ]
   }
  },
@@ -1000,6 +1121,58 @@
    "prodcom_code": null,
    "sectors": [
     "cement"
+   ]
+  }
+ },
+ {
+  "id": "material:directly-reduced-iron",
+  "kind": "material",
+  "label": "Directly reduced iron",
+  "attrs": {
+   "type": "intermediate",
+   "cn_code": "7203 10 00",
+   "prodcom_code": null,
+   "sectors": [
+    "steel"
+   ]
+  }
+ },
+ {
+  "id": "material:granulated-blast-furnace-slag",
+  "kind": "material",
+  "label": "Granulated blast furnace slag",
+  "attrs": {
+   "type": "by_product",
+   "cn_code": "2618 00 00",
+   "prodcom_code": null,
+   "sectors": [
+    "steel"
+   ]
+  }
+ },
+ {
+  "id": "material:hydrogen",
+  "kind": "material",
+  "label": "Hydrogen",
+  "attrs": {
+   "type": "energy_carrier",
+   "cn_code": "2804 10 00",
+   "prodcom_code": null,
+   "sectors": [
+    "steel"
+   ]
+  }
+ },
+ {
+  "id": "material:steel-scrap",
+  "kind": "material",
+  "label": "Steel scrap",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": "7204",
+   "prodcom_code": null,
+   "sectors": [
+    "steel"
    ]
   }
  },
@@ -7244,6 +7417,17 @@
   }
  },
  {
+  "id": "parameter:am-germany-subsidy-declined",
+  "kind": "parameter",
+  "label": "ArcelorMittal Bremen and Eisenhüttenstadt — German subsidies declined",
+  "attrs": {
+   "unit": "EUR billion",
+   "scope": "country:DE",
+   "confidence": "secondary",
+   "date_of_value": "2025-06-23"
+  }
+ },
+ {
   "id": "parameter:anrav-capture-capacity",
   "kind": "parameter",
   "label": "ANRAV capture capacity",
@@ -7263,6 +7447,17 @@
    "scope": "plant:devnya",
    "confidence": "primary",
    "date_of_value": "2023-01-20"
+  }
+ },
+ {
+  "id": "parameter:boden-electrolyser-capacity",
+  "kind": "parameter",
+  "label": "Stegra Boden — installed electrolyser capacity",
+  "attrs": {
+   "unit": "MW",
+   "scope": "plant:boden",
+   "confidence": "secondary",
+   "date_of_value": "2026-04-04"
   }
  },
  {
@@ -7398,6 +7593,39 @@
   }
  },
  {
+  "id": "parameter:dmx-dunkirk-capture-rate",
+  "kind": "parameter",
+  "label": "DMX pilot on blast-furnace gas, Dunkirk — CO2 capture rate",
+  "attrs": {
+   "unit": "% of the CO2 in the treated stream",
+   "scope": "plant:dunkirk",
+   "confidence": "primary",
+   "date_of_value": "2024-03-14"
+  }
+ },
+ {
+  "id": "parameter:eaf-carbon-steel-benchmark-2026-2030",
+  "kind": "parameter",
+  "label": "EU ETS free-allocation benchmark, EAF carbon steel, 2026-2030",
+  "attrs": {
+   "unit": "allowances per tonne of EAF carbon steel",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2026-06-26"
+  }
+ },
+ {
+  "id": "parameter:eu-eaf-production-share",
+  "kind": "parameter",
+  "label": "Share of EU steel produced via the electric arc furnace route",
+  "attrs": {
+   "unit": "% of EU steel production",
+   "scope": "eu",
+   "confidence": "secondary",
+   "date_of_value": "2025-09-29"
+  }
+ },
+ {
   "id": "parameter:eua-price-spot",
   "kind": "parameter",
   "label": "EU allowance price, spot",
@@ -7406,6 +7634,17 @@
    "scope": "eu",
    "confidence": "secondary",
    "date_of_value": "2026-08-21"
+  }
+ },
+ {
+  "id": "parameter:gbs-lost-per-blast-furnace",
+  "kind": "parameter",
+  "label": "Granulated blast furnace slag lost per blast furnace substituted",
+  "attrs": {
+   "unit": "thousand tonnes per year per blast furnace",
+   "scope": "eu",
+   "confidence": "secondary",
+   "date_of_value": "2023-06"
   }
  },
  {
@@ -7442,6 +7681,28 @@
   }
  },
  {
+  "id": "parameter:hot-metal-benchmark-2026-2030",
+  "kind": "parameter",
+  "label": "EU ETS free-allocation benchmark, hot metal, 2026-2030",
+  "attrs": {
+   "unit": "allowances per tonne of hot metal",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2026-06-26"
+  }
+ },
+ {
+  "id": "parameter:hybrit-pilot-sponge-iron",
+  "kind": "parameter",
+  "label": "HYBRIT Luleå pilot — sponge iron produced",
+  "attrs": {
+   "unit": "tonnes",
+   "scope": "plant:lulea",
+   "confidence": "primary",
+   "date_of_value": "2021-06-21"
+  }
+ },
+ {
   "id": "parameter:ifestos-capture-capacity",
   "kind": "parameter",
   "label": "IFESTOS annual emissions avoidance",
@@ -7475,6 +7736,17 @@
   }
  },
  {
+  "id": "parameter:near-zero-steel-cost-premium",
+  "kind": "parameter",
+  "label": "Production cost premium of near-zero emissions steel using hydrogen direct reduction",
+  "attrs": {
+   "unit": "% above a conventional BF-BOF plant",
+   "scope": "global",
+   "confidence": "estimate",
+   "date_of_value": "2025"
+  }
+ },
+ {
   "id": "parameter:nzia-injection-capacity-2030",
   "kind": "parameter",
   "label": "Union CO2 injection capacity objective for 2030",
@@ -7483,6 +7755,129 @@
    "scope": "eu",
    "confidence": "primary",
    "date_of_value": "2024-06-13"
+  }
+ },
+ {
+  "id": "parameter:salcos-crude-steel-capacity",
+  "kind": "parameter",
+  "label": "SALCOS stage one — crude steel capacity",
+  "attrs": {
+   "unit": "Mt crude steel per year",
+   "scope": "plant:salzgitter",
+   "confidence": "primary",
+   "date_of_value": "2023-04-18"
+  }
+ },
+ {
+  "id": "parameter:salcos-federal-funding",
+  "kind": "parameter",
+  "label": "SALCOS stage one — German federal funding",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:salzgitter",
+   "confidence": "primary",
+   "date_of_value": "2023-04-18"
+  }
+ },
+ {
+  "id": "parameter:salcos-state-funding",
+  "kind": "parameter",
+  "label": "SALCOS stage one — State of Lower Saxony funding",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:salzgitter",
+   "confidence": "primary",
+   "date_of_value": "2023-04-18"
+  }
+ },
+ {
+  "id": "parameter:stegra-boden-capacity",
+  "kind": "parameter",
+  "label": "Stegra Boden — initial annual steel volume",
+  "attrs": {
+   "unit": "Mt steel per year",
+   "scope": "plant:boden",
+   "confidence": "primary",
+   "date_of_value": "2024-01-22"
+  }
+ },
+ {
+  "id": "parameter:stegra-innovation-fund-grant",
+  "kind": "parameter",
+  "label": "Stegra Boden — EU Innovation Fund grant",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:boden",
+   "confidence": "primary",
+   "date_of_value": "2024-01-22"
+  }
+ },
+ {
+  "id": "parameter:tkh2steel-dri-capacity",
+  "kind": "parameter",
+  "label": "tkH2Steel Duisburg — direct reduction capacity",
+  "attrs": {
+   "unit": "Mt directly reduced iron per year",
+   "scope": "plant:duisburg",
+   "confidence": "primary",
+   "date_of_value": "2023-07-20"
+  }
+ },
+ {
+  "id": "parameter:tkh2steel-public-funding",
+  "kind": "parameter",
+  "label": "tkH2Steel Duisburg — German federal and state funding",
+  "attrs": {
+   "unit": "EUR billion",
+   "scope": "plant:duisburg",
+   "confidence": "primary",
+   "date_of_value": "2023-07-20"
+  }
+ },
+ {
+  "id": "parameter:voestalpine-donawitz-capacity",
+  "kind": "parameter",
+  "label": "voestalpine Donawitz — EAF capacity from 2027",
+  "attrs": {
+   "unit": "tonnes CO2-reduced steel per year",
+   "scope": "plant:donawitz",
+   "confidence": "primary",
+   "date_of_value": "2026-06-18"
+  }
+ },
+ {
+  "id": "parameter:voestalpine-phase-one-investment",
+  "kind": "parameter",
+  "label": "voestalpine greentec steel — phase one investment",
+  "attrs": {
+   "unit": "EUR billion",
+   "scope": "country:AT",
+   "confidence": "primary",
+   "date_of_value": "2026-06-18"
+  }
+ },
+ {
+  "id": "project:3d-dunkirk",
+  "kind": "project",
+  "label": "3D — DMX demonstration in Dunkirk",
+  "attrs": {
+   "company": "ArcelorMittal",
+   "plant": "Dunkirk",
+   "country": "FR",
+   "status": "operating",
+   "transition": "decarbonisation"
+  }
+ },
+ {
+  "id": "project:am-bremen-eisenhuettenstadt",
+  "kind": "project",
+  "label": "ArcelorMittal Bremen and Eisenhüttenstadt conversion",
+  "attrs": {
+   "company": "ArcelorMittal",
+   "plant": "Bremen and Eisenhüttenstadt",
+   "country": "DE",
+   "status": "cancelled",
+   "transition": "decarbonisation"
   }
  },
  {
@@ -7546,6 +7941,42 @@
   }
  },
  {
+  "id": "project:greentec-donawitz",
+  "kind": "project",
+  "label": "greentec steel Donawitz",
+  "attrs": {
+   "company": "voestalpine",
+   "plant": "Donawitz",
+   "country": "AT",
+   "status": "construction",
+   "transition": "circularity"
+  }
+ },
+ {
+  "id": "project:greentec-linz",
+  "kind": "project",
+  "label": "greentec steel Linz",
+  "attrs": {
+   "company": "voestalpine",
+   "plant": "Linz",
+   "country": "AT",
+   "status": "construction",
+   "transition": "circularity"
+  }
+ },
+ {
+  "id": "project:hybrit-pilot-lulea",
+  "kind": "project",
+  "label": "HYBRIT pilot",
+  "attrs": {
+   "company": "SSAB, LKAB and Vattenfall",
+   "plant": "Luleå",
+   "country": "SE",
+   "status": "operating",
+   "transition": "decarbonisation"
+  }
+ },
+ {
   "id": "project:ifestos-kamari",
   "kind": "project",
   "label": "IFESTOS",
@@ -7570,6 +8001,18 @@
   }
  },
  {
+  "id": "project:salcos-salzgitter",
+  "kind": "project",
+  "label": "SALCOS stage one",
+  "attrs": {
+   "company": "Salzgitter AG",
+   "plant": "Salzgitter",
+   "country": "DE",
+   "status": "construction",
+   "transition": "decarbonisation"
+  }
+ },
+ {
   "id": "project:slite-ccs",
   "kind": "project",
   "label": "Slite CCS",
@@ -7578,6 +8021,30 @@
    "plant": "Slite",
    "country": "SE",
    "status": "paused",
+   "transition": "decarbonisation"
+  }
+ },
+ {
+  "id": "project:stegra-boden",
+  "kind": "project",
+  "label": "Stegra Boden",
+  "attrs": {
+   "company": "Stegra",
+   "plant": "Boden",
+   "country": "SE",
+   "status": "construction",
+   "transition": "decarbonisation"
+  }
+ },
+ {
+  "id": "project:tkh2steel-duisburg",
+  "kind": "project",
+  "label": "tkH2Steel",
+  "attrs": {
+   "company": "thyssenkrupp Steel",
+   "plant": "Duisburg",
+   "country": "DE",
+   "status": "construction",
    "transition": "decarbonisation"
   }
  },
@@ -7794,6 +8261,18 @@
   }
  },
  {
+  "id": "technology:ccs-blast-furnace",
+  "kind": "technology",
+  "label": "Carbon capture on blast-furnace gas",
+  "attrs": {
+   "transition": "decarbonisation",
+   "readiness": "pilot",
+   "sectors": [
+    "steel"
+   ]
+  }
+ },
+ {
   "id": "technology:ccs-oxyfuel",
   "kind": "technology",
   "label": "Oxyfuel carbon capture",
@@ -7828,6 +8307,54 @@
     "cement",
     "steel",
     "chem"
+   ]
+  }
+ },
+ {
+  "id": "technology:dri-eaf",
+  "kind": "technology",
+  "label": "Direct reduction with an electric furnace",
+  "attrs": {
+   "transition": "decarbonisation",
+   "readiness": "demonstration",
+   "sectors": [
+    "steel"
+   ]
+  }
+ },
+ {
+  "id": "technology:eaf-scrap",
+  "kind": "technology",
+  "label": "Electric arc furnace on scrap",
+  "attrs": {
+   "transition": "circularity",
+   "readiness": "commercial",
+   "sectors": [
+    "steel"
+   ]
+  }
+ },
+ {
+  "id": "technology:h2-dri",
+  "kind": "technology",
+  "label": "Hydrogen direct reduction",
+  "attrs": {
+   "transition": "decarbonisation",
+   "readiness": "pilot",
+   "sectors": [
+    "steel"
+   ]
+  }
+ },
+ {
+  "id": "technology:hydrogen-supply",
+  "kind": "technology",
+  "label": "Renewable hydrogen supply",
+  "attrs": {
+   "transition": "decarbonisation",
+   "readiness": "demonstration",
+   "sectors": [
+    "steel"
    ]
   }
  }

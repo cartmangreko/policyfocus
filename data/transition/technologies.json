@@ -111,7 +111,7 @@
       "id": "co2-transport-storage",
       "transition": "decarbonisation",
       "name": "CO2 transport and storage",
-      "description": "The pipelines, ships, terminals and permitted geological stores that a captured tonne has to reach before it counts as abated, and which no single cement plant can build for itself.",
+      "description": "The pipelines, ships, terminals and permitted geological stores that a captured tonne has to reach before it counts as abated, and which no single site that captures can build for itself.",
       "plain_action": "moving the CO2 it captures to somewhere it can be put underground for good",
       "readiness": {
         "level": "early-commercial",
@@ -165,6 +165,169 @@
           "publisher": "EQIOM",
           "date": "2024-02-15",
           "verbatim": "EQIOM construira une nouvelle ligne de production de clinker, innovante, qui augmentera de manière significative l'efficacité thermique"
+        }
+      ]
+    },
+    {
+      "id": "dri-eaf",
+      "transition": "decarbonisation",
+      "name": "Direct reduction with an electric furnace",
+      "description": "Iron ore is reduced in the solid state with gas rather than smelted with coke in a blast furnace, and the resulting iron is melted in an electric furnace. It is the route Europe's integrated sites are converting to, and it is being built to run on natural gas first and hydrogen later, which is why the conversion and the fuel are two different questions with two different timetables.",
+      "plain_action": "replacing its blast furnaces with direct reduction and electric furnaces",
+      "readiness": {
+        "level": "demonstration",
+        "source": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+        "date": "2023-07-20",
+        "note": "Full-scale units are under construction in Europe and none is operating: 2.5 Mt at Duisburg, 1.9 Mt at Salzgitter, and the Boden site. Under construction is demonstration, the same reading applied to the oxyfuel kilns in cement."
+      },
+      "dependency": [],
+      "sectors": [
+        "steel"
+      ],
+      "sources": [
+        {
+          "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+          "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
+          "publisher": "thyssenkrupp",
+          "date": "2023-07-20",
+          "verbatim": "The 100% hydrogen-capable DR plant with two melters has a production capacity of 2.5 million metric tons of directly reduced iron per year"
+        },
+        {
+          "url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+          "title": "Salzgitter AG receives official notice of government funding for the SALCOS low-CO2 steel production program",
+          "publisher": "Salzgitter AG",
+          "date": "2023-04-18",
+          "verbatim": "1.9 million tonnes of crude steel per year"
+        }
+      ]
+    },
+    {
+      "id": "h2-dri",
+      "transition": "decarbonisation",
+      "name": "Hydrogen direct reduction",
+      "description": "The reducing gas is hydrogen rather than natural gas, so what leaves the furnace is water rather than CO2. It is the only route that takes the chemistry of ironmaking to near zero, and it is separated from the conversion itself because every European unit under construction is being commissioned on natural gas and switched later.",
+      "plain_action": "reducing iron ore with hydrogen instead of coke",
+      "readiness": {
+        "level": "pilot",
+        "source": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+        "date": "2021-06-21",
+        "note": "The HYBRIT pilot at Luleå made the world's first hydrogen-reduced sponge iron in 2021, around 100 tonnes of it, and no full-scale unit is yet running on hydrogen anywhere in Europe. One unit being tested is pilot."
+      },
+      "abatement_share": {
+        "low": 90,
+        "high": 90,
+        "unit": "% of ironmaking CO2 emissions",
+        "source": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+        "date": "2021-06-21",
+        "note": "The partners state the initiative eliminates around 90% of the emissions of steelmaking. It is the route's design claim rather than a measured figure from an operating unit, which is what pilot readiness means."
+      },
+      "dependency": [
+        "hydrogen-supply"
+      ],
+      "sectors": [
+        "steel"
+      ],
+      "sources": [
+        {
+          "url": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+          "title": "HYBRIT: SSAB, LKAB and Vattenfall first in the world with hydrogen-reduced sponge iron",
+          "publisher": "SSAB",
+          "date": "2021-06-21",
+          "verbatim": "SSAB, LKAB and Vattenfall have now produced the world's first hydrogen-reduced sponge iron at a pilot scale."
+        }
+      ]
+    },
+    {
+      "id": "hydrogen-supply",
+      "transition": "decarbonisation",
+      "name": "Renewable hydrogen supply",
+      "description": "The electrolysers, power contracts and pipelines that have to deliver hydrogen at industrial volume and at a price the iron pays for, and which no single steel site can build for itself. It stands beside CO2 transport and storage as the other thing this sector is waiting for rather than doing.",
+      "plain_action": "getting the hydrogen its furnaces are being built to run on",
+      "readiness": {
+        "level": "demonstration",
+        "source": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
+        "date": "2026-04-04",
+        "note": "The largest unit built for a European steel site, 740 MW at Boden, has all 37 of its modules in place and has not been commissioned. Built and not operating is demonstration."
+      },
+      "dependency": [],
+      "sectors": [
+        "steel"
+      ],
+      "sources": [
+        {
+          "url": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
+          "title": "Europe's largest green hydrogen plant takes shape as Stegra installs final electrolyser",
+          "publisher": "BioEnergy Times",
+          "date": "2026-04-04",
+          "verbatim": "all 37 modules are now in place at the 740-megawatt facility"
+        },
+        {
+          "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+          "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
+          "publisher": "thyssenkrupp",
+          "date": "2023-07-20",
+          "verbatim": "The plant is scheduled to operate as early as 2029 with around 143,000 metric tons of hydrogen per year"
+        }
+      ]
+    },
+    {
+      "id": "ccs-blast-furnace",
+      "transition": "decarbonisation",
+      "name": "Carbon capture on blast-furnace gas",
+      "description": "CO2 is separated from the gases a blast furnace gives off, which leaves the ironmaking route in place and treats its output instead. It is the competitor to conversion rather than a part of it: a site that captures keeps the asset it has, and a site that converts writes it off.",
+      "plain_action": "capturing the CO2 its blast furnaces give off",
+      "readiness": {
+        "level": "pilot",
+        "source": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
+        "date": "2024-03-14",
+        "note": "The DMX unit on blast-furnace gas at Dunkirk is a pilot and has run stably since 2023; no full-scale capture unit is operating or under construction on a European blast furnace. Cement reached early-commercial on one operating industrial plant, and steel has none — the two readiness levels are different facts about different applications, which is why they are different nodes."
+      },
+      "dependency": [
+        "co2-transport-storage"
+      ],
+      "sectors": [
+        "steel"
+      ],
+      "sources": [
+        {
+          "url": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
+          "title": "Successful demonstration in Dunkirk of the CO2 capture DMX process",
+          "publisher": "Axens",
+          "date": "2024-03-14",
+          "verbatim": "capture the CO2 present in blast furnace gases emitted during steel production at ArcelorMittal's Dunkirk site"
+        }
+      ]
+    },
+    {
+      "id": "eaf-scrap",
+      "transition": "circularity",
+      "name": "Electric arc furnace on scrap",
+      "description": "Steel is remelted from scrap in an electric furnace, with no ironmaking step and therefore none of its CO2. It is not an emerging route — it is already two fifths of European output — and what limits it is how much scrap of the right quality Europe collects and keeps, not whether the furnace works.",
+      "plain_action": "melting scrap in electric furnaces instead of smelting ore",
+      "readiness": {
+        "level": "commercial",
+        "source": "https://www.eurofer.eu/about-steel/learn-about-steel/what-is-steel-and-how-is-steel-made/",
+        "date": "2025-09-29",
+        "note": "Just over 40% of EU steel already comes out of this route. Commercial is what a route that is two fifths of an industry's output is."
+      },
+      "dependency": [],
+      "sectors": [
+        "steel"
+      ],
+      "sources": [
+        {
+          "url": "https://www.eurofer.eu/about-steel/learn-about-steel/what-is-steel-and-how-is-steel-made/",
+          "title": "Learn about steel — how steel is made",
+          "publisher": "EUROFER — the European Steel Association",
+          "date": "2025-09-29",
+          "verbatim": "Just over 40% of EU steel is produced via the EAF production route."
+        },
+        {
+          "url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+          "title": "voestalpine unveils further expansion plans for greentec steel at its Donawitz location",
+          "publisher": "voestalpine",
+          "date": "2026-06-18",
+          "verbatim": "The EAF plant currently under construction will be capable of producing around 850,000 tons of CO2‐reduced steel annually as of 2027."
         }
       ]
     }
