@@ -3,9 +3,12 @@ import path from "node:path";
 import { getRecords, type ChangeRecord } from "./records";
 import { isOpportunitySignal as isSignal } from "./signals";
 import {
-  BEARER_LABEL,
+  FUNDING_COMMITTED,
   eur,
+  fundingAmount,
   getImportance,
+  type Funding,
+  type Parameter,
   type RankedMeasure,
 } from "./transition";
 import { getOpportunityProse } from "./sitetext";
@@ -70,6 +73,28 @@ export function supportMeasures(sector: string): RankedMeasure[] {
   return imp.measures.filter((m) => m.money?.direction === "support");
 }
 
+/** An ISO date, which is what makes a window a dated one. Nothing on the
+ *  platform carries one in `when` yet; the dated windows arrive with watch
+ *  channel three (step 4). Matching the shape rather than inventing a field
+ *  means the day one lands it renders, without a schema change here. */
+const ISO_DATE = /\b(\d{4}-\d{2}-\d{2})\b/;
+
+/** The eligibility window as a clause, or null.
+ *
+ *  Two forms and no third. A standing scheme has eligibility rather than an
+ *  opening — "eligibility ongoing" — and a call has a date it closes on. A
+ *  `when` that is neither renders no clause: it is the register's phrasing
+ *  about when a provision BITES, which is not always a window and is never a
+ *  promise about when somebody can apply. */
+export function supportWindow(m: RankedMeasure): string | null {
+  const prose = getOpportunityProse();
+  const when = (m.when ?? "").trim();
+  if (!when) return null;
+  const dated = ISO_DATE.exec(when);
+  if (dated) return prose.support_window.dated.replace("{date}", dated[1]);
+  return prose.support_window[when] ?? null;
+}
+
 /** What a support measure PAYS, as a context-specific template — never the
  *  measure's standard one-liner, which is the Policies section's alone
  *  (brief 5 §5, gated by sources/check_one_liner_scope.py).
@@ -77,8 +102,23 @@ export function supportMeasures(sector: string): RankedMeasure[] {
  *  Keyed on the money model, because the model is what the figure MEANS: a
  *  grant that has landed and an auction floor that has not are different offers
  *  and cannot share a sentence. A model with no template throws rather than
- *  falling back to something generic. */
-export function supportFact(m: RankedMeasure): string {
+ *  falling back to something generic.
+ *
+ *  THE AMOUNT IS THE SECTOR'S SHARE, NOT THE MEASURE'S TOTAL, and that is the
+ *  whole reason this function takes the funding rows. The importance store's
+ *  `money.value` is what the measure has paid EVERYWHERE; this section has just
+ *  printed what is committed to THIS sector a few lines above, and the template
+ *  says the second is part of the first. On cement the two coincide — every
+ *  Innovation Fund row under ets:FND-03 finances a cement plant — and on the
+ *  first measure that also pays another industry they would not. Summing the
+ *  sector's own rows makes "X of the Y" true by construction rather than by
+ *  luck, and a sentence claiming a share that is not one is the one thing this
+ *  template must never say. */
+export function supportFact(
+  m: RankedMeasure,
+  sectorFunding: Funding[],
+  params: Map<string, Parameter>,
+): string {
   const prose = getOpportunityProse();
   const money = m.money;
   if (!money || money.direction !== "support") {
@@ -92,16 +132,24 @@ export function supportFact(m: RankedMeasure): string {
         `every model would be saying nothing about any of them`,
     );
   }
-  const recipients = m.reached_via?.length
-    ? `${m.reached_via.length} tracked ${m.reached_via.length === 1 ? "project" : "projects"}`
-    : (BEARER_LABEL[money.bearer ?? ""] ?? "the bearer").toLowerCase();
-  const window = prose.support_window[m.when ?? ""] ?? null;
+
+  const committedRows = sectorFunding.filter((f) => FUNDING_COMMITTED.includes(f.status));
+  const underThis = committedRows.filter((f) => f.under === m.measure);
+  const awarded = underThis.reduce((sum, f) => sum + (fundingAmount(f, params) ?? 0), 0);
+  const committed = committedRows.reduce((sum, f) => sum + (fundingAmount(f, params) ?? 0), 0);
+  const projects = new Set(
+    underThis.flatMap((f) => f.finances.filter((n) => n.startsWith("project:"))),
+  );
+
   const text = template
-    .replace("{amount}", money.computable && money.value ? eur(money.value) : "an unpublished amount")
-    .replace("{recipients}", recipients)
-    .replace("{window}", window ?? "");
-  // A window nobody has worded leaves no dangling clause behind it.
-  return text.replace(/,\s*\./, ".").replace(/\s+/g, " ").trim();
+    .replace("{amount}", awarded > 0 ? eur(awarded) : "no published amount")
+    .replace("{committed}", eur(committed))
+    .replace(
+      "{recipients}",
+      `${projects.size} tracked ${projects.size === 1 ? "project" : "projects"}`,
+    );
+  const window = supportWindow(m);
+  return window ? `${text} ${window[0].toUpperCase()}${window.slice(1)}.` : text;
 }
 
 /** §4.6's predicate, re-exported. It lives in lib/signals.ts, which imports

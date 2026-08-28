@@ -624,7 +624,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                     <Link href={measureHref(m.measure)}>
                       {m.plain ? m.plain.title : m.measure}
                     </Link>
-                    <span className="topp-fact">{supportFact(m)}</span>
+                    <span className="topp-fact">{supportFact(m, funding, params)}</span>
                     <span className="tmeasure-cite">
                       {FILES[m.file]?.name ?? m.file}
                       {m.article ? ` · ${m.article}` : ""}

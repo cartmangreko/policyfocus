@@ -295,7 +295,7 @@
   },
   "opportunity": {
     "status": "approved",
-    "reviewed": "2026-08-27",
+    "reviewed": "2026-08-28",
     "_comment": [
       "THE OPPORTUNITY SECTION'S OWN WORDS, brief 5 §4.",
       "",
@@ -339,12 +339,13 @@
       "_comment": "Sub-headings inside the Opportunity section. §4.1's three status groups keep the schema's own words because they are the words the money is described with everywhere else on the site — a committed allocation is committed on the project page and in the funding store too."
     },
     "support_fact": {
-      "grant_programme": "{amount} awarded to {recipients}, {window}.",
-      "_comment": "Keyed on money.model. One entry today, because one model produces a support figure. A model that reaches this template with no entry stops the build."
+      "grant_programme": "{amount} of the {committed} committed to this sector was awarded under it, to {recipients}.",
+      "_comment": "Keyed on money.model. One entry today, because one model produces a support figure. A model that reaches this template with no entry stops the build. \n\nTHE RELATION TO THE SECTION'S OWN TOTAL IS STATED, not left to the reader. Two euro figures sit a few lines apart in this section — what is committed to the sector and what one measure paid — and the second is a SUBSET of the first. On cement they are EUR 421 m and EUR 381 m, and the EUR 40 m between them is the France Relance award to K6, which is under no measure the register has read. Printed side by side with no relation between them, two such figures read as a discrepancy. \n\nThe subset is guaranteed rather than asserted: web/lib/opportunity.ts sums the SECTOR'S OWN committed allocations that name this measure, not the measure's all-sector total from the importance store. Those coincide for cement and would not for a measure that also pays another industry, and a sentence saying 'X of the Y' when X is not inside Y is the one thing this template must never say."
     },
     "support_window": {
-      "ongoing": "open now",
-      "_comment": "money `when` values, said as an eligibility window. A value with no entry renders no window clause rather than the raw value: `when` is the register's phrasing and is not always a window at all."
+      "ongoing": "eligibility ongoing",
+      "dated": "call open until {date}",
+      "_comment": "The eligibility window, said in words. Two forms and no third: a standing scheme has eligibility rather than an opening, and a call has a date it closes on. \n\n`ongoing` renders for a measure whose register `when` is that word. `dated` renders where `when` is a date, and nothing on the platform carries one yet — the dated windows arrive with watch channel three in step 4 of brief 5 §9. A `when` that is neither renders NO window clause at all rather than its raw value: `when` is the register's phrasing about when a provision bites, which is not always a window and is never a promise about when somebody can apply."
     },
     "signals": {
       "chip": "Opportunity signals",
