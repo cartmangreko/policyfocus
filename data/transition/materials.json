@@ -354,8 +354,8 @@
           "material": "clinker",
           "since": "2023-06",
           "evidence": {
-            "source": "https://www.zkg.de/en/artikel/the-steel-production-transformation-process-in-europe-new-slag-types-will-substitute-granulated-blast-furnace-slag-4001145.html",
-            "path": "ZKG 6/2023",
+            "source": "data/transition/materials.json",
+            "path": "[id=granulated-blast-furnace-slag].sources[0]",
             "quote": "For decades blast furnace slag has been used mainly as a cementitious material (if it is glassy due to a quenching process for the liquid slag)",
             "note": "The substitution edge only. No consumed_by edge into cement is recorded here, because that is a claim about the cement sector's inputs and belongs with the cement dataset; see data/transition/GAPS.md."
           }
