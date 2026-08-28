@@ -2913,20 +2913,43 @@ h3 {
    its own line. No badges, no boxes of equal weight.
    ------------------------------------------------------------------- */
 
+/* TREATMENT A — the computed lead as a quiet container, not a headline.
+
+   The generated sentence was set at display size, which made it the loudest
+   thing on the page. That was tolerable while it was one short clause and
+   stopped being tolerable when it started enumerating routes: on a sector
+   building four of them it ran to six lines of 40px type and pulled the whole
+   first screen towards a sentence a machine wrote.
+
+   So the block is a panel rather than a masthead: a hairline border, a
+   background one step off the paper, and the sector accent as a thin left rule
+   — the same device `.tparam` uses, and the same reason, which is to mark a
+   computed thing as computed without shouting.
+
+   THE STANDING PROSE STAYS OUTSIDE IT. `.tmap-orientation` is a sibling above
+   this block and is deliberately left on the open page: it is the one piece of
+   writing on the page a person wrote, and putting it inside the machine's
+   container would file it as machine output. The contrast is the point — open
+   paragraph, then boxed computation. */
 .lead-block {
-  margin-top: 22px;
+  margin-top: 24px;
+  padding: 20px 22px 6px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule-soft);
+  border-left: 2px solid var(--accent, var(--rule));
+  border-radius: 3px;
 }
 .lead-sentence {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(26px, 3.4vw, 40px);
-  line-height: 1.14;
-  letter-spacing: -0.015em;
-  max-width: 24ch;
+  font-size: 19px;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  max-width: 62ch;
 }
 @media (min-width: 720px) {
   .lead-sentence {
-    max-width: 34ch;
+    font-size: 20px;
   }
 }
 .lead-why {
@@ -2953,13 +2976,13 @@ h3 {
    itemised. */
 .lead-facts {
   list-style: none;
-  margin: 26px 0 0;
+  margin: 18px 0 0;
   padding: 0;
-  border-top: 1px solid var(--rule-soft);
+  border-top: 1px solid var(--rule);
 }
 .lead-fact {
   padding: 12px 0;
-  border-bottom: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule);
   font-size: 15.5px;
   line-height: 1.55;
   color: var(--ink-70);
@@ -2972,6 +2995,9 @@ h3 {
 }
 .lead-fact a:hover {
   border-bottom-color: var(--accent, var(--ink));
+}
+.lead-fact:last-child {
+  border-bottom: 0;
 }
 .lead-asof {
   font-family: var(--mono);
