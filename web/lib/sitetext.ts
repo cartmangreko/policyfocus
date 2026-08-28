@@ -204,12 +204,16 @@ export function getCoverageDeclaration(file: string): string | null {
   return readProse().coverage_declarations.files[file] ?? null;
 }
 
-/** The home page's one-line coverage statement, its act count rendered from
- *  the site summary — same slot discipline as the perimeter paragraph. */
-export function getCoverageLine(): string {
-  const site = getSiteSummary();
-  return readProse().coverage_line.template.replace(/\{acts_count\}/g, String(site.files));
-}
+/** THE ACTS-DECODED COUNTER IS NOT RENDERED ANYWHERE, and this getter is gone
+ *  with it. The line ran at the foot of the front page — "N acts decoded so
+ *  far" beside a link to /coverage — and it sold the register on a page about
+ *  the industries.
+ *
+ *  The reviewed text stays in data/prose.json rather than being deleted: it is
+ *  approved prose, it is still accurate, and an About or Method page is where
+ *  it would come back. Deleting it would mean re-reviewing it to get it back.
+ *  The block carries a note saying it renders nowhere, so it is not mistaken
+ *  for prose that has quietly stopped appearing. */
 
 /** The reviewed sentence for a sector's transition map, or null while the block
  *  is still a draft. Null is not an error: web/lib/prose.ts renders the

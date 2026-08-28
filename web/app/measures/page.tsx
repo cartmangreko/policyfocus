@@ -91,9 +91,8 @@ export default function MeasuresPage() {
                 <p className="eyebrow">{FILES[slug].code}</p>
                 <h2>{FILES[slug].name}</h2>
               </div>
-              <Link href={`/coverage#${slug}`} className="section-link">
-                How this act was read →
-              </Link>
+              {/* "How this act was read" opened /coverage#<file>. Removed
+                  with every other link to that page. */}
             </div>
             <p className="section-note">
               {rows.length} {rows.length === 1 ? "measure" : "measures"} ·{" "}

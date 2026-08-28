@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import EcosystemTiles from "@/components/EcosystemTiles";
-import { getCoverageLine, getMasthead } from "@/lib/sitetext";
+import { getMasthead } from "@/lib/sitetext";
 
 // The front page, cut back to what it can stand behind (brief 4 §3): the name,
 // what the platform is, the six industries it covers, and one line saying where
@@ -70,19 +69,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The one line about the material, and the one link out of this page.
-          The sentence is reviewed prose with its act count computed, so it
-          moves when the coverage does. */}
-      <section className="band band-tight" id="sources">
-        <div className="wrap">
-          <p className="home-sources">
-            {getCoverageLine()}{" "}
-            <Link href="/coverage" className="section-link">
-              What is covered, and what is not &rarr;
-            </Link>
-          </p>
-        </div>
-      </section>
+      {/* THE ACTS-DECODED COUNTER IS GONE, and it is not in the footer either.
+          It was the last thing on the front page and what it sold was the
+          register: a count of acts read is a fact about the pipeline, and this
+          page is about the industries. /coverage still exists and is still
+          indexable — it is simply linked from nowhere on the site now, which is
+          a decision rather than an oversight. See components/SiteFooter.tsx. */}
     </main>
   );
 }

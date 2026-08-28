@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Crumbs from "@/components/Crumbs";
 import EcosystemTiles from "@/components/EcosystemTiles";
 
@@ -37,12 +36,12 @@ export default function SectorsPage() {
       <section className="band">
         <div className="wrap">
           <EcosystemTiles />
+          {/* The sentence stays and its link does not: what this page covers
+              is worth saying here, and the page that qualifies it is no longer
+              linked from anywhere on the site. */}
           <p className="section-note">
             Eufabric covers Europe&rsquo;s energy-intensive industries and the materials they
-            make.{" "}
-            <Link href="/coverage" className="section-link">
-              What is covered, and what is not &rarr;
-            </Link>
+            make.
           </p>
         </div>
       </section>
