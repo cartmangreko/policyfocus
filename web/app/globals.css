@@ -2932,12 +2932,28 @@ h3 {
    container would file it as machine output. The contrast is the point — open
    paragraph, then boxed computation. */
 .lead-block {
+  /* ONE EDGE, AND IT IS THE BOTTOM ONE. The block was a bordered card with the
+     sector accent down its left side, which drew a box around the computed
+     part of the page and made a container out of what is really a change of
+     ground. What separates it from the standing prose above is the background
+     step; what closes it is a single hairline underneath. No left rule, no
+     side or top edges.
+
+     THE TINT BLEEDS AND THE TEXT DOES NOT. Horizontal padding equal to a
+     negative margin, so the type inside stays on the same left edge as the
+     paragraph above it and everything else in the column, while the ground it
+     sits on runs wider. Without that, dropping the left rule would have left
+     the text indented against nothing. The bleed is the narrow gutter's width,
+     so at the small breakpoint the band reaches the screen edge exactly and
+     never overflows it. */
+  --lead-bleed: 20px;
   margin-top: 24px;
-  padding: 20px 22px 6px;
+  margin-left: calc(var(--lead-bleed) * -1);
+  margin-right: calc(var(--lead-bleed) * -1);
+  padding: 20px var(--lead-bleed) 14px;
   background: var(--paper-2);
-  border: 1px solid var(--rule-soft);
-  border-left: 2px solid var(--accent, var(--rule));
-  border-radius: 3px;
+  border: 0;
+  border-bottom: 1px solid var(--rule-soft);
 }
 .lead-sentence {
   margin: 0;
