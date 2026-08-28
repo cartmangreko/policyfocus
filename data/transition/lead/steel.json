@@ -6,12 +6,18 @@
     "summary_override, never here."
   ],
   "sector": "steel",
-  "template_version": 2,
-  "fingerprint": "31db5bcf6fe6b590",
+  "template_version": 3,
+  "fingerprint": "a506d27f72a8097d",
   "sentence": {
-    "text": "European steel is decarbonising by reducing iron ore with hydrogen instead of coke, and the main question is who pays for it.",
+    "text": "European steel is decarbonising and moving on to recycled material on four routes: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
     "from": [
-      "binding_constraint"
+      "routes"
+    ],
+    "sourced": [
+      "Hydrogen direct reduction",
+      "Direct reduction with an electric furnace",
+      "Electric arc furnace on scrap",
+      "Carbon capture on blast-furnace gas"
     ],
     "source": "generated"
   },
@@ -50,15 +56,18 @@
     {
       "id": "pipeline_state",
       "label": "Pipeline",
-      "text": "8 European steel projects are under way, and 7 of them have taken a final investment decision.",
+      "text": "7 European steel projects are under way, 7 of them have taken a final investment decision, and 1 has been cancelled.",
       "as_of": "2026-06-18",
       "numbers": [
-        "8",
-        "7"
+        "7",
+        "7",
+        "1"
       ],
       "parts": {
-        "total": "8",
+        "total": "7",
         "committed": "7",
+        "paused": "0",
+        "cancelled": "1",
         "furthest": "HYBRIT pilot",
         "furthest_status": "operating"
       },
@@ -125,6 +134,36 @@
         "Green premium against willingness to pay"
       ],
       "href": "#bottleneck-steel-green-premium",
+      "surface": false
+    },
+    {
+      "id": "routes",
+      "label": "Routes",
+      "text": "Four routes are being built in this sector: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
+      "as_of": "2026-06-18",
+      "numbers": [
+        "4",
+        "3",
+        "2",
+        "1"
+      ],
+      "parts": {
+        "count": 4,
+        "list": "hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1)",
+        "names": [
+          "Hydrogen direct reduction",
+          "Direct reduction with an electric furnace",
+          "Electric arc furnace on scrap",
+          "Carbon capture on blast-furnace gas"
+        ]
+      },
+      "sourced": [
+        "Hydrogen direct reduction",
+        "Direct reduction with an electric furnace",
+        "Electric arc furnace on scrap",
+        "Carbon capture on blast-furnace gas"
+      ],
+      "href": "#technologies",
       "surface": false
     }
   ],

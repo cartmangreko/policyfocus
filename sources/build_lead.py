@@ -39,8 +39,9 @@ silently discard reviewed prose, which is the failure mode the rule exists to
 prevent; showing stale reviewed prose with a flag on the build is the lesser
 one, and it is visible on every run.
 
-THE FIVE FACTS
-==============
+THE SIX FACTS
+=============
+  routes              every route the sector is building, with the count on each
   binding_constraint  the bottleneck the most measure weight lands on
   decisive_exposure   the top-ranked measure with a computable money figure
   pipeline_state      how far the pipeline has got, and how much of it is past FID
@@ -132,7 +133,7 @@ OUT_DIR = sm.ROOT / "data" / "transition" / "lead"
 
 # Bumped when a template changes. It is in the output so a diff shows whether a
 # sentence moved because the data moved or because the template did.
-TEMPLATE_VERSION = 2
+TEMPLATE_VERSION = 3
 
 # A project at or past this point has committed the money. `funded` is a grant
 # award and is deliberately below the line: an Innovation Fund letter is not a
@@ -181,16 +182,6 @@ TRANSITION_VERB = {
     "supply_security": "trying to secure its own supply",
     "digital": "digitising how it runs",
     "defence": "rebuilding for defence demand",
-}
-
-# The open question, by the type of the constraint the most measure weight lands
-# on. Keyed to sector_map.BOTTLENECK_TYPES.
-OPEN_QUESTION = {
-    "market": "who pays for it",
-    "financial": "who pays for it",
-    "infrastructure": "whether what it depends on gets built in time",
-    "technical": "whether the technology does what it has to at full scale",
-    "political": "whether the public money behind it holds",
 }
 
 # One sentence's worth of why-it-matters, by the same key. Each says what the
@@ -399,22 +390,120 @@ def fact_decisive_exposure(imp: dict, params: dict, labels: dict, sector: str) -
 
 
 def fact_pipeline_state(projects: list[dict], sector: str) -> dict | None:
-    """How far the pipeline has got, and how much of it has committed money."""
+    """How far the pipeline has got, how much of it has committed money, and
+    what has stopped.
+
+    UNDER WAY MEANS UNDER WAY. The count was over every project in the sector,
+    which put a paused plant and a cancelled conversion inside a number the
+    sentence calls "under way" -- and the two sectors on the platform have one
+    each, so the figure was wrong on both. Active is `ADVANCE`: the ladder a
+    project climbs. `paused` and `cancelled` are where a project left it, and
+    they are named in the same sentence when there are any rather than being
+    dropped, because a project that vanishes from the count reads as a project
+    that never existed.
+    """
     live = [p for p in projects if p["status"] in ADVANCE]
     if not live:
         return None
     furthest = max(live, key=lambda p: (ADVANCE.index(p["status"]), p["id"]))
     committed = sum(1 for p in projects if p["status"] in COMMITTED)
+    paused = sum(1 for p in projects if p["status"] == "paused")
+    cancelled = sum(1 for p in projects if p["status"] == "cancelled")
     as_of = max((h["date"] for p in projects for h in p["status_history"]), default="")
+
+    stopped = []
+    if paused:
+        stopped.append(f"{paused} {'is' if paused == 1 else 'are'} paused")
+    if cancelled:
+        stopped.append(f"{cancelled} {'has' if cancelled == 1 else 'have'} been cancelled")
+    tail = f", and {' and '.join(stopped)}" if stopped else ""
+
+    numbers = [f"{len(live)}", f"{committed}"]
+    numbers += [f"{paused}"] if paused else []
+    numbers += [f"{cancelled}"] if cancelled else []
     return _fact(
         "pipeline_state", "Pipeline",
-        f"{len(projects)} European {sector} projects are under way, and "
-        f"{committed} of them have taken a final investment decision.",
-        as_of, [f"{len(projects)}", f"{committed}"],
-        {"total": str(len(projects)), "committed": str(committed),
+        f"{len(live)} European {sector} projects are under way, "
+        f"{committed} of them have taken a final investment decision{tail}.",
+        as_of, numbers,
+        {"total": str(len(live)), "committed": str(committed),
+         "paused": str(paused), "cancelled": str(cancelled),
          "furthest": furthest["name"], "furthest_status": furthest["status"]},
         sourced=(furthest["name"],),
         href="#projects",
+    )
+
+
+# Small numbers read better as words in a sentence, and a word is not a figure
+# the gate has to trace to a fact. Past ten the digit is clearer than the word.
+_WORDS = ("no", "one", "two", "three", "four", "five", "six", "seven", "eight",
+          "nine", "ten")
+
+
+def _count_word(n: int) -> str:
+    return _WORDS[n] if n < len(_WORDS) else str(n)
+
+
+def _join(items: list[str]) -> str:
+    if len(items) == 1:
+        return items[0]
+    return ", ".join(items[:-1]) + " and " + items[-1]
+
+
+def fact_routes(projects: list[dict], technologies: list[dict]) -> dict | None:
+    """Every route the sector is actually building, with the count on each.
+
+    WHY EVERY ROUTE AND NOT THE LEADING ONE. The opening sentence used to name
+    the technology with the most projects behind it and stop, which stated one
+    route as though it were the sector's answer -- on steel that named hydrogen
+    direct reduction and said nothing about the blast-furnace capture route
+    competing with it, and the tension between the two is most of what the
+    sector is. A sector page that names one route is picking a winner in a
+    template.
+
+    Counted over ACTIVE projects only, the same reading as the pipeline fact:
+    a route whose only project was cancelled is not a route the sector is
+    building. Enabling technologies are out -- a technology another one depends
+    on is what the sector is waiting for, not a route it has taken -- which is
+    the rule `lead_technology` already applied and the reason CO2 transport and
+    storage never described cement.
+
+    ROUTE COUNTS DO NOT PARTITION THE PIPELINE. A plant converting to direct
+    reduction and running it on hydrogen is on two routes and is one project,
+    so these counts sum above the pipeline total by construction. The sentence
+    says "on" rather than "of" for that reason and states no total of its own.
+    """
+    own = [x for x in technologies
+           if x["id"] not in {d for y in technologies for d in y.get("dependency", [])}]
+    live = [p for p in projects if p["status"] in ADVANCE]
+    counted = []
+    for tech in own:
+        n = sum(1 for p in live if tech["id"] in p.get("technology", []))
+        if n:
+            counted.append((n, tech))
+    if not counted:
+        return None
+    counted.sort(key=lambda c: (-c[0], c[1]["id"]))
+
+    # The count goes after the name in brackets rather than in front of it with
+    # a preposition. "2 on electric arc furnace on scrap" reads the second `on`
+    # as part of the count's phrase and the name stops parsing; the bracketed
+    # form takes no preposition at all and so cannot collide with a name that
+    # contains one. The word "projects" is said once, on the first item.
+    parts = [f"{tech['name'][0].lower()}{tech['name'][1:]} "
+             f"({n}{' project' + ('s' if n != 1 else '') if i == 0 else ''})"
+             for i, (n, tech) in enumerate(counted)]
+    return _fact(
+        "routes", "Routes",
+        f"{_count_word(len(counted)).capitalize()} route"
+        f"{'s' if len(counted) != 1 else ''} are being built in this sector: "
+        f"{_join(parts)}.",
+        max((h["date"] for p in live for h in p["status_history"]), default=""),
+        [str(n) for n, _ in counted],
+        {"count": len(counted), "list": _join(parts),
+         "names": [tech["name"] for _, tech in counted]},
+        sourced=tuple(tech["name"] for _, tech in counted),
+        href="#technologies",
     )
 
 
@@ -482,46 +571,54 @@ def fact_the_latest(projects: list[dict]) -> dict | None:
 # the sentences
 # ---------------------------------------------------------------------------
 
-def compose(sector_name: str, facts: dict[str, dict], lead_action: str | None,
-            transition: str | None) -> tuple[dict, dict | None]:
+def compose(sector_name: str, facts: dict[str, dict], transitions: list[str]) -> tuple[dict, dict | None]:
     """The two generated blocks, as templates over the facts and nothing else.
 
     Each names the fact ids it drew on, so a reader following a claim back has a
     path and the gate has something to check. Everything comes out of `parts`:
     no template reads another template's output.
 
-    THE OPENING SENTENCE CARRIES NO NUMBER. It says what the sector is doing and
-    what the open question about it is, and both halves come from a closed
-    vocabulary keyed to the schema -- the transition it is under, the technology
-    most of its projects are building, and the type of the constraint the most
-    measure weight lands on. A reader who stops after this sentence has the
-    situation; a reader who goes on gets the figures, one per line, each with a
-    date on it.
+    THE OPENING SENTENCE IS THE ROUTES AND THEIR COUNTS, AND NOTHING ELSE. It
+    used to name the single technology with the most projects behind it and then
+    say what "the main question" was. Both halves were wrong for the slot. The
+    first stated one route as the sector's answer, which on a sector building
+    four of them at once is a template picking a winner -- and it contradicted
+    the page below it, where the other routes have their own cards, their own
+    readiness and their own constraints. The second was a verdict: "the main
+    question is who pays for it" is a reading of the sector, not a fact computed
+    from it, and a generated slot is the one place on this page that may not
+    carry one. What a reader needs before the figures is what is being built and
+    how much of each, which is countable.
+
+    EVERY TRANSITION THE SECTOR IS UNDER, not the transition of whichever
+    technology happened to lead. Steel is under two and the old sentence
+    asserted one of them; a sector page that renders a circularity section and
+    opens by calling the sector decarbonising is arguing with itself.
+
+    The judgement that survives is `why_it_matters`, which is a separate,
+    labelled line and is keyed to the constraint's type -- brief 4 §5 asks for
+    exactly one sentence of it, under its own heading, and that is where it
+    belongs.
     """
-    constraint = facts.get("binding_constraint")
+    routes = facts.get("routes")
     sector = sector_name.lower()
 
-    verb = TRANSITION_VERB.get(transition or "")
-    ctype = (constraint or {}).get("parts", {}).get("type")
-    question = OPEN_QUESTION.get(ctype or "")
-
-    if verb and lead_action and question:
-        sentence = {
-            "text": f"European {sector} is {verb} by {lead_action}, and the main "
-                    f"question is {question}.",
-            "from": ["binding_constraint"],
-        }
-    elif verb and lead_action:
-        sentence = {
-            "text": f"European {sector} is {verb} by {lead_action}.",
-            "from": [],
-        }
-    elif verb:
-        sentence = {"text": f"European {sector} is {verb}.", "from": []}
-    else:
+    verbs = [TRANSITION_VERB[x] for x in transitions if x in TRANSITION_VERB]
+    if not verbs or not routes:
         # Nothing to say that is not a schema word. The caller's fallback path
         # takes it from here.
         return {"text": "", "from": []}, None
+
+    sentence = {
+        "text": f"European {sector} is {_join(verbs)} on "
+                f"{_count_word(routes['parts']['count'])} route"
+                f"{'s' if routes['parts']['count'] != 1 else ''}: "
+                f"{routes['parts']['list']}.",
+        "from": ["routes"],
+        "sourced": list(routes["parts"]["names"]),
+    }
+    constraint = facts.get("binding_constraint")
+    ctype = (constraint or {}).get("parts", {}).get("type")
 
     # WHY IT MATTERS. One sentence, keyed to the same constraint type, and only
     # where the sector's own numbers state a shortfall that the sentence can be
@@ -680,12 +777,19 @@ def build(sector: str) -> dict:
     sector_name = sm.sectors()[sector]["name"]
     sector_word = sector_name.lower()
 
-    lead_tech = lead_technology(sector)
-    lead_action = (lead_tech or {}).get("plain_action")
-    transition = (lead_tech or {}).get("transition")
+    technologies = [x for x in sm.load("technology") if sector in x.get("sectors", [])]
+    # Every transition the sector is actually under, busiest first. The same
+    # set web/lib/transition.ts `getTransitions` reads, and ordered by how much
+    # of the pipeline sits under each so the sentence leads with the one the
+    # sector is mostly doing rather than with whichever sorts first.
+    counts: dict[str, int] = {}
+    for row in bottlenecks + projects:
+        counts[row["transition"]] = counts.get(row["transition"], 0) + 1
+    transitions = sorted(counts, key=lambda x: (-counts[x], x))
 
     computed = [
         fact_binding_constraint(bottlenecks),
+        fact_routes(projects, technologies),
         fact_decisive_exposure(imp, params, labels, sector_word),
         fact_pipeline_state(projects, sector_word),
         fact_the_gap(params, sector, bottlenecks, sector_word),
@@ -713,7 +817,7 @@ def build(sector: str) -> dict:
             notes.append(f"the fact {f['id']} failed its gate "
                          f"({'; '.join(problems)}) — computed, not shown")
 
-    sentence, why = compose(sector_name, by_id, lead_action, transition)
+    sentence, why = compose(sector_name, by_id, transitions)
 
     problems = gate(sentence, by_id)
     if problems:
@@ -724,9 +828,9 @@ def build(sector: str) -> dict:
         # block that had failed its vocabulary gate was a sentence built out of
         # schema words. It now says the one thing that is always true and always
         # plain: what the sector is under, and nothing else.
-        verb = TRANSITION_VERB.get(transition or "")
+        verbs = [TRANSITION_VERB[x] for x in transitions if x in TRANSITION_VERB]
         sentence = {
-            "text": (f"European {sector_word} is {verb}." if verb
+            "text": (f"European {sector_word} is {_join(verbs)}." if verbs
                      else f"European {sector_word}."),
             "from": [],
         }

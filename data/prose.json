@@ -399,9 +399,9 @@
     ],
     "sectors": {
       "cement": {
-        "fingerprint": "b46a43f79fcc866e",
-        "template_version": 2,
-        "sentence": "European cement is decarbonising by capturing the CO2 its kilns emit, and the main question is who pays for it.",
+        "fingerprint": "d0821f715f7a4484",
+        "template_version": 3,
+        "sentence": "European cement is decarbonising on three routes: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
         "why_it_matters": "Cement made this way costs more than the cement it replaces, so whether Europe gets it depends on who covers the difference.",
         "facts": [
           {
@@ -411,7 +411,7 @@
           },
           {
             "id": "pipeline_state",
-            "text": "8 European cement projects are under way, and 4 of them have taken a final investment decision.",
+            "text": "7 European cement projects are under way, 4 of them have taken a final investment decision, and 1 is paused.",
             "as_of": "2025-11-19"
           },
           {
@@ -423,6 +423,34 @@
             "id": "the_latest",
             "text": "Slite CCS was paused on 19 November 2025.",
             "as_of": "2025-11-19"
+          }
+        ]
+      },
+      "steel": {
+        "fingerprint": "a506d27f72a8097d",
+        "template_version": 3,
+        "sentence": "European steel is decarbonising and moving on to recycled material on four routes: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
+        "why_it_matters": "Steel made this way costs more than the steel it replaces, so whether Europe gets it depends on who covers the difference.",
+        "facts": [
+          {
+            "id": "the_gap",
+            "text": "Low-carbon steel costs 50-140% above a conventional BF-BOF plant to make, on the International Energy Agency's figures.",
+            "as_of": "2025"
+          },
+          {
+            "id": "pipeline_state",
+            "text": "7 European steel projects are under way, 7 of them have taken a final investment decision, and 1 has been cancelled.",
+            "as_of": "2026-06-18"
+          },
+          {
+            "id": "decisive_exposure",
+            "text": "European steel makers are losing the free carbon allowances they used to get, worth €2.58 per tonne at today's carbon price.",
+            "as_of": "2026-08-21"
+          },
+          {
+            "id": "the_latest",
+            "text": "greentec steel Linz went into construction on 18 June 2026.",
+            "as_of": "2026-06-18"
           }
         ]
       }
