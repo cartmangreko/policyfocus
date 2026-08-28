@@ -9,20 +9,20 @@ import { getMasthead } from "@/lib/sitetext";
 // beneath it. Their routes are unchanged and they are still reachable — from
 // any measure a sector page links, from search, from an existing bookmark.
 //
-// Coverage stays, under Method, because "what is covered and what is not" is
-// the one register surface a reader of a sector page has a right to be
-// pointed at.
+// THE METHOD COLUMN IS GONE, and the counter line it sat under did not move
+// here — it was removed rather than relocated. Both of its links pointed at
+// /coverage, which is now linked from nowhere on the site: it keeps its route,
+// keeps its place in the sitemap, stays indexable, and is reached by URL. An
+// orphan on purpose.
+//
+// The footer is chrome and chrome advertises. A column headed Method, on a site
+// selling the industries, was advertising the pipeline. When there is an About
+// or Method page, one quiet link belongs there — not here, and not on the pages
+// that sell the product.
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
     heading: "Product",
     links: [{ label: "Sectors", href: "/sectors" }],
-  },
-  {
-    heading: "Method",
-    links: [
-      { label: "Coverage & limits", href: "/coverage" },
-      { label: "Sources", href: "/coverage" },
-    ],
   },
 ];
 

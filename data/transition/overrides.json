@@ -38,8 +38,27 @@
     "  Empty on purpose. The first candidate for cement is the drafted sentence sitting",
     "  in data/prose.json under transition_notes — written for the old one-sentence lead,",
     "  never approved, and superseded by the generated lead. It is George's to approve,",
-    "  rewrite, or drop."
+    "  rewrite, or drop.",
+    "",
+    "`opportunity_overrides` — the OPPORTUNITY SECTION'S LEAD SENTENCE (brief 5 §4.5).",
+    "",
+    "  sources/build_opportunity.py generates one sentence from the section's own",
+    "  facts — the committed sum and what it finances, the measures whose money",
+    "  direction is support. A reviewed sentence here replaces it and renders",
+    "  identically, unsigned, on the same footing as the sector lead's override.",
+    "",
+    "  Same fingerprint rule, and for the same reason: when the facts move, the",
+    "  build sets `override_stale`, prints, and KEEPS RENDERING the reviewed",
+    "  sentence. Reverting to generated text on a fingerprint change would silently",
+    "  discard reviewed prose.",
+    "",
+    "  Shape:  { \"<sector>\": { \"sentence\": \"...\", \"from\": [\"money_in\"],",
+    "            \"fingerprint\": \"...\", \"reviewed\": \"YYYY-MM-DD\" } }",
+    "",
+    "  Empty on purpose. Cement's generated sentence has not been reviewed yet;",
+    "  `python3 sources/build_opportunity.py` prints it on every run."
   ],
   "overrides": {},
-  "summary_overrides": {}
+  "summary_overrides": {},
+  "opportunity_overrides": {}
 }

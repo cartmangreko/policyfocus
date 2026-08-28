@@ -58,6 +58,14 @@ export interface Source {
   verbatim?: string;
   snapshot?: string;
   archived?: boolean;
+  /** What kind of thing is at the other end. Absent means a document, which is
+   *  what almost everything is. `api` and `dataset` are cited from the query
+   *  the call was made with rather than by a title they do not have — see
+   *  lib/citation.ts. */
+  kind?: "document" | "api" | "dataset";
+  /** Required for an api or dataset source: what it is, so the citation has a
+   *  subject. The id is the dataset's own, where it has one. */
+  dataset?: { name: string; id?: string };
 }
 
 export interface Parameter {
@@ -172,6 +180,10 @@ export interface Material {
   type: MaterialType;
   cn_code: string | null;
   prodcom_code: string | null;
+  /** The Annex I entry of the Critical Raw Materials Act, where the material is
+   *  a strategic raw material, and null where it is not. Explicit rather than
+   *  optional: see the note in data/transition/materials.json. */
+  crma_annex_i: { entry: string; source: Source } | null;
   sectors: string[];
   description: string;
   produced_by: MaterialEdge[];
@@ -373,14 +385,19 @@ export function fundingAmount(f: Funding, params: Map<string, Parameter>): numbe
 }
 
 /** Funding split by what its status permits a total to say. Never one number:
- *  committed money, announced money and withdrawn lines are three different
- *  facts, and the Capital section shows them as three. `undisclosed` counts
+ *  committed money, announced allocations and withdrawn lines are three
+ *  different facts, and the Opportunity section shows them as three. `undisclosed` counts
  *  committed rows whose amount is not published, which is why `committed` is a
  *  floor rather than a total. */
 export interface FundingTotals {
   committed: number;
   committedCount: number;
-  announced: number;
+  /** ANNOUNCED IS COUNTED AND NOT SUMMED — brief 5 §4.1, ruled. There is no
+   *  `announced` total here on purpose: a figure that is not computed cannot be
+   *  rendered, which is a stronger guarantee than everybody remembering not to
+   *  add one up. An announcement is a statement of intent, and a euro total of
+   *  intentions reads as money that exists. The allocations are listed instead,
+   *  each with its own amount, source and date. */
   announcedCount: number;
   withdrawnCount: number;
   undisclosed: number;
@@ -390,7 +407,6 @@ export function fundingTotals(rows: Funding[], params: Map<string, Parameter>): 
   const t: FundingTotals = {
     committed: 0,
     committedCount: 0,
-    announced: 0,
     announcedCount: 0,
     withdrawnCount: 0,
     undisclosed: 0,
@@ -403,7 +419,6 @@ export function fundingTotals(rows: Funding[], params: Map<string, Parameter>): 
     const amount = fundingAmount(f, params);
     if (FUNDING_ANNOUNCED.includes(f.status)) {
       t.announcedCount += 1;
-      t.announced += amount ?? 0;
       continue;
     }
     t.committedCount += 1;
@@ -577,4 +592,122 @@ export function eur(n: number): string {
   if (Math.abs(n) >= 1e9) return `€${(n / 1e9).toFixed(1)} bn`;
   if (Math.abs(n) >= 1e6) return `€${Math.round(n / 1e6).toLocaleString("en-US")} m`;
   return `€${n.toLocaleString("en-US", { maximumFractionDigits: 2 })}`;
+}
+
+/** The three lists the Materials section renders, brief 5 §2.
+ *
+ *  WHAT COUNTS AS THIS SECTOR'S EDGE: the sector itself, and the plants in it.
+ *  Not the technologies deployed in it, and that distinction is the whole of
+ *  this function.
+ *
+ *  It was written the other way first, and captured CO2 came out as a cement
+ *  INPUT. Its one consumed_by edge is `technology:co2-transport-storage`,
+ *  evidenced on NZIA Art. 21 — access to transport networks and storage sites
+ *  for geological storage. That is where the CO2 GOES, not something a cement
+ *  plant takes in, and reading a disposal route as a feedstock is the kind of
+ *  error a page of computed views has no way to apologise for. A plant that
+ *  really consumed CO2 — curing, mineralisation — would carry a `project:` edge
+ *  and would show up here on the strength of it. None does.
+ *
+ *  So an endpoint counts when it is `sector:<slug>` or a project in the sector.
+ *  A technology is a route rather than an actor, and it is read on the
+ *  material's own page, where every edge is listed with its evidence.
+ *
+ *  THE BASIS IS DISPLAYED, brief 5 §2 as amended: each item shows the count
+ *  behind it — "5 plants", or the sector-level edge where the claim is made
+ *  about the industry as a whole — linking to the set of edges the count is of.
+ *  An item may appear in more than one list only where DISTINCT edges support
+ *  each appearance, which `assertDisjoint` below checks rather than assumes:
+ *  produced_by and consumed_by are separate arrays, so the property holds by
+ *  construction today, and a future list built off a shared array would break
+ *  it silently.
+ */
+export interface MaterialFlow {
+  material: Material;
+  /** Plants in this sector carrying the edge. The ordering basis, and the
+   *  displayed one. */
+  plants: number;
+  /** Whether the sector itself carries the edge — a claim about the industry
+   *  rather than about a countable set of installations. */
+  sectorWide: boolean;
+  /** The edges this appearance rests on, so two appearances can be checked
+   *  against each other rather than trusted. */
+  edges: MaterialEdge[];
+}
+
+export interface MaterialFlows {
+  inputs: MaterialFlow[];
+  outputs: MaterialFlow[];
+  substitutes: MaterialFlow[];
+}
+
+/** No two lists may rest on the same edge. The rule brief 5 §2 states, checked
+ *  where it can actually be broken rather than left as a property of how the
+ *  arrays happen to be named today. */
+function assertDisjoint(flows: MaterialFlows): void {
+  const seen = new Map<string, string>();
+  for (const [list, rows] of Object.entries(flows)) {
+    for (const row of rows as MaterialFlow[]) {
+      for (const e of row.edges) {
+        const key = `${row.material.id}|${e.node}|${e.since}`;
+        const already = seen.get(key);
+        if (already && already !== list) {
+          throw new Error(
+            `${row.material.id} appears in both ${already} and ${list} on the strength ` +
+              `of the same edge (${e.node}). An item may appear in more than one list ` +
+              `only where distinct edges support each appearance`,
+          );
+        }
+        seen.set(key, list);
+      }
+    }
+  }
+}
+
+export function materialFlows(sector: string): MaterialFlows {
+  const plants = new Set(getProjects(sector).map((p) => `project:${p.id}`));
+  const self = `sector:${sector}`;
+  const mine = (edges: MaterialEdge[]) =>
+    edges.filter((e) => e.node === self || plants.has(e.node));
+
+  const flow = (m: Material, edges: MaterialEdge[]): MaterialFlow => ({
+    material: m,
+    plants: edges.filter((e) => plants.has(e.node)).length,
+    sectorWide: edges.some((e) => e.node === self),
+    edges,
+  });
+  const rank = (rows: MaterialFlow[]) =>
+    rows
+      .filter((r) => r.edges.length > 0)
+      .sort(
+        (a, b) =>
+          b.edges.length - a.edges.length || a.material.name.localeCompare(b.material.name),
+      );
+
+  const materials = getMaterials(sector);
+  const flows: MaterialFlows = {
+    inputs: rank(materials.map((m) => flow(m, mine(m.consumed_by)))),
+    outputs: rank(materials.map((m) => flow(m, mine(m.produced_by)))),
+    // A substitution is a claim about one material standing in for another and
+    // carries no endpoint of its own, so it has no plant count: a substitute is
+    // in this sector's list because the material it substitutes for is, and the
+    // basis a reader wants is what it stands in for, which the item says.
+    substitutes: materials
+      .filter((m) => m.substitutes.length > 0)
+      .map((m) => ({ material: m, plants: 0, sectorWide: false, edges: [] }))
+      .sort((a, b) => a.material.name.localeCompare(b.material.name)),
+  };
+  assertDisjoint(flows);
+  return flows;
+}
+
+/** One material by id, for its own page. */
+export function getMaterial(id: string): Material | undefined {
+  return all().materials.find((m) => m.id === id);
+}
+
+/** Every material on the platform. Materials are cross-sector, so the spoke is
+ *  /materials/{id} rather than a per-sector list (brief 5 §6). */
+export function allMaterials(): Material[] {
+  return all().materials;
 }

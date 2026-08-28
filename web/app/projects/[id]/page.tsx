@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crumbs from "@/components/Crumbs";
+import { citation } from "@/lib/citation";
 import LeadBlock from "@/components/LeadBlock";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import { SECTORS } from "@/lib/data";
@@ -210,7 +211,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             {project.sources.map((s) => (
               <li key={s.url}>
                 <a href={s.url} target="_blank" rel="noreferrer">
-                  {s.title ?? s.url}
+                  {citation(s)}
                 </a>
                 <span className="note">
                   {s.publisher}

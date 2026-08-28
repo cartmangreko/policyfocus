@@ -34,7 +34,20 @@
     "WHAT IS MISSING. Slag and fly ash — the clinker substitute the brief asks for third —",
     "are not here, and the reason is the rule rather than the effort: no source stating the",
     "substitution has been read, and an edge without evidence is the one thing this layer",
-    "does not ship. See GAPS.md, which names the document that would fill it."
+    "does not ship. See GAPS.md, which names the document that would fill it.",
+    "",
+    "crma_annex_i  WHETHER THE MATERIAL IS A STRATEGIC RAW MATERIAL under Annex I of",
+    "              the Critical Raw Materials Act, brief 5 §2. Null where it is not,",
+    "              which is both materials on the platform today: clinker and a",
+    "              captured CO2 stream are neither of them raw materials the Union",
+    "              has listed. Where it is, the value is the Annex I entry as the",
+    "              annex words it plus the source it was read from, and the sector",
+    "              page renders it as a tag on the material — a fact about the",
+    "              material, never a judgement about the sector that handles it.",
+    "              The field is REQUIRED and explicit rather than absent-means-no:",
+    "              an unlisted material and a material nobody has checked are the",
+    "              same object otherwise, which is the mistake the scope attribute",
+    "              in ROADMAP.md is written about."
   ],
   "materials": [
     {
@@ -43,7 +56,10 @@
       "type": "intermediate",
       "cn_code": "2523 10 00",
       "prodcom_code": null,
-      "sectors": ["cement"],
+      "crma_annex_i": null,
+      "sectors": [
+        "cement"
+      ],
       "description": "The calcined intermediate that carries almost all of cement's process CO2. A tonne of cement is a tonne of clinker plus additions, which is why every carbon instrument that reaches this sector is written per tonne of clinker rather than per tonne of the product sold.",
       "produced_by": [
         {
@@ -83,7 +99,10 @@
       "type": "waste_stream",
       "cn_code": null,
       "prodcom_code": null,
-      "sectors": ["cement"],
+      "crma_annex_i": null,
+      "sectors": [
+        "cement"
+      ],
       "description": "What a capture plant produces and cannot sell. It is abated only once it is stored, so every tonne recorded here is a tonne owed to a transport and storage chain built by other parties on other timetables.",
       "produced_by": [
         {

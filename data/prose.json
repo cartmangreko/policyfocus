@@ -47,6 +47,19 @@
     "reviewed": "2026-08-18"
   },
   "coverage_line": {
+    "_comment": [
+      "NOT RENDERED ANYWHERE, deliberately, since the acts-decoded counter was removed",
+      "from the front page. The line ran at the foot of that page beside a link to",
+      "/coverage, and what it sold was the register: a count of acts read is a fact",
+      "about the pipeline, and the front page is about the industries.",
+      "",
+      "Kept rather than deleted because it is approved prose and still accurate. If an",
+      "About or Method page is built, this is the sentence it would carry, and keeping",
+      "it here means it comes back without another review pass.",
+      "",
+      "/coverage itself is unchanged: still live, still indexable, still in the",
+      "sitemap, and linked from nowhere on the site."
+    ],
     "status": "approved",
     "reviewed": "2026-08-19",
     "template": "{acts_count} acts decoded so far; the platform grows as new legislation is adopted."
@@ -150,6 +163,206 @@
       "cement": {
         "paragraph": "Cement is the binding agent of the built environment. Concrete is the most used man-made material on earth, and European construction depends on a domestic industry that operates on thin margins with high energy and carbon intensity. Most of the sector's emissions come not from burning fuel but from the chemistry of clinker, the limestone-derived core of cement, which releases CO2 as it is processed. That makes cement one of the hardest sectors to decarbonise: efficiency and clean electricity cannot remove process emissions, so the transition runs through carbon capture, clinker substitution and alternative fuels. EU policy treats it accordingly: carbon pricing raises the cost of conventional production, a border adjustment shields producers from unpriced imports, and public funding underwrites the first capture projects. The open question is who pays for low-carbon cement while it costs more than conventional supply."
       }
+    }
+  },
+  "sector_names": {
+    "status": "approved",
+    "reviewed": "2026-08-25",
+    "_comment": [
+      "THE TWO NAME SLOTS, brief 5 §2.1. Every heading on a sector page is a",
+      "template, and a template needs the sector's name in two grammatical shapes:",
+      "",
+      "    short   the bare noun, used inside a sentence — 'cement', 'circular",
+      "            materials'. Never carries 'European': the templates that want it",
+      "            say it themselves, which is why the projects heading reads 'in",
+      "            European {short}' and the feed heading reads 'in {short}'.",
+      "    phrase  the full noun phrase for a heading about the sector as a whole —",
+      "            'the European cement industry'. Lower case as stored; the",
+      "            renderer capitalises the first letter only where the slot OPENS a",
+      "            heading, which no template does today.",
+      "",
+      "KEYED ON ECOSYSTEM ID, NOT SECTOR SLUG. The keys are the six instances in",
+      "data/transition/ecosystems.json. The chemicals ecosystem spans two FIGARO",
+      "slugs (chem, chem/plastics) and batteries covers part of one (batsol), so a",
+      "slug-keyed store would have to say the chemicals name twice and would have no",
+      "key at all for hydrogen or circular materials. web/lib/ecosystems.ts resolves",
+      "a sector slug to its instance; a slug that belongs to no instance has no",
+      "name slots and cannot render the template, which is a build failure rather",
+      "than a fallback.",
+      "",
+      "BOTH SLOTS ARE REQUIRED for all six, and sources/check_h2_templates.py fails",
+      "the build on an empty one. Unlike the ecosystem descriptions these are not",
+      "optional prose a surface can omit — a heading with an unfilled slot is not a",
+      "heading."
+    ],
+    "sectors": {
+      "cement": {
+        "short": "cement",
+        "phrase": "the European cement industry"
+      },
+      "steel": {
+        "short": "steel",
+        "phrase": "the European steel industry"
+      },
+      "chemicals": {
+        "short": "chemicals",
+        "phrase": "the European chemicals industry"
+      },
+      "batteries": {
+        "short": "batteries",
+        "phrase": "European battery manufacturing"
+      },
+      "hydrogen": {
+        "short": "hydrogen",
+        "phrase": "European hydrogen"
+      },
+      "circular-materials": {
+        "short": "circular materials",
+        "phrase": "circular materials in Europe"
+      }
+    }
+  },
+  "sector_sections": {
+    "status": "approved",
+    "reviewed": "2026-08-25",
+    "_comment": [
+      "THE FIXED SEQUENCE, brief 5 §2. The sector page answers the same questions in",
+      "the same order on every sector, so the interface is learned once. The order of",
+      "the `sections` array below IS the render order and the nav order —",
+      "sources/check_section_order.py reads this array and fails the build if the",
+      "template disagrees with it.",
+      "",
+      "EVERY HEADING IS A QUESTION, and every question is stored here rather than",
+      "written in the component, so the wording is reviewable in one place and cannot",
+      "drift between sectors. Slots are {short} and {phrase} from sector_names above.",
+      "",
+      "A SECTION WITH NO DATA IS OMITTED, from the page and from the nav both — brief",
+      "5 §2, which amends the fixed-presence rule in page specifications §0.5 for",
+      "this page type. An empty section is not rendered with a 'none tracked' line",
+      "here: nine sections of which four say nothing is a worse page than five that",
+      "say something. Which sections have data is a question for the data, not for",
+      "this file, so no entry below is marked optional.",
+      "",
+      "NOT IN THE LIST. The lead block, which opens the page with no H2 and is",
+      "excluded from the nav (row 0). Sources, which page specifications §0.5 makes",
+      "the final section of every sector page and which brief 5 §2 does not number —",
+      "it renders last, unnumbered, outside the nav, on the same footing as the lead",
+      "block, and §2 is amended to say so in step 6."
+    ],
+    "h1": "{Short} in Europe's industrial transition",
+    "h1_comment": "`phrase` is deliberately not used in the H1: it already carries 'European', and 'The European cement industry in Europe's industrial transition' says Europe twice.",
+    "sections": [
+      {
+        "id": "projects",
+        "nav": "Projects",
+        "h2": "What is being built in European {short}"
+      },
+      {
+        "id": "technologies",
+        "nav": "Technologies",
+        "h2": "Which technologies could change {short}"
+      },
+      {
+        "id": "materials",
+        "nav": "Materials",
+        "h2": "Which materials flow through {short}"
+      },
+      {
+        "id": "opportunity",
+        "nav": "Opportunity",
+        "h2": "What EU rules and money support in {short}"
+      },
+      {
+        "id": "bottlenecks",
+        "nav": "Bottlenecks",
+        "h2": "What constrains {phrase}"
+      },
+      {
+        "id": "policies",
+        "nav": "Policies",
+        "h2": "Which EU rules matter for {short}"
+      },
+      {
+        "id": "companies",
+        "nav": "Companies",
+        "h2": "Who are the companies in {phrase}"
+      },
+      {
+        "id": "feed",
+        "nav": "Feed",
+        "h2": "What changed in {short}"
+      },
+      {
+        "id": "connections",
+        "nav": "Connections",
+        "h2": "How {short} connects"
+      }
+    ],
+    "unnumbered": [
+      {
+        "id": "sources",
+        "h2": "Sources",
+        "why": "Page specifications §0.5 makes this the final section of every sector page. Brief 5 §2 numbers nine questions and this is not one of them: it answers what the page stands on rather than anything about the industry, so it renders last, outside the nav, on the same footing as the lead block renders first. Stored here anyway, because the gate's rule is that no heading on this page is free text and an exception carved for one heading is an exception somebody will widen."
+      }
+    ]
+  },
+  "opportunity": {
+    "status": "approved",
+    "reviewed": "2026-08-28",
+    "_comment": [
+      "THE OPPORTUNITY SECTION'S OWN WORDS, brief 5 §4.",
+      "",
+      "The section is four computed views and no written judgement. What is stored",
+      "here is the wording of those views: the sub-headings, the one generated lead",
+      "sentence (§4.5), and the templates that say what a support measure PAYS",
+      "(§4.2). Nothing here states a fact; every slot is filled from",
+      "data/transition/opportunity/<sector>.json, which sources/build_opportunity.py",
+      "computes and gates.",
+      "",
+      "WHY THE SUPPORT FACT IS NOT THE MEASURE'S ONE-LINER. Brief 5 §5: the same",
+      "measure may appear in Policies, in Opportunity and under a Bottleneck, and the",
+      "same SENTENCE may not appear twice. Policies renders the standard one-liner",
+      "and is the only section that may — sources/check_one_liner_scope.py enforces",
+      "that. Here the measure says what it pays, in the template below, keyed on the",
+      "money model that produced the figure, because the model is what the number",
+      "MEANS. A model with no template raises rather than falling back to a generic",
+      "sentence: a grant programme and an auction floor are not the same offer, and a",
+      "template that covered both would be saying nothing about either.",
+      "",
+      "COUNTS AND SUMS ONLY (§4.5). No adjective in the lead sentence, and no",
+      "cost-versus-price comparison anywhere in the section — §4 rules technology",
+      "cost figures, abatement costs and carbon-price arithmetic out of it entirely.",
+      "",
+      "ANNOUNCED MONEY IS NOT SUMMED, ruled on brief 5 §4.1. There is no template",
+      "below that takes an announced total, and web/lib/transition.ts does not compute",
+      "one, so the sentence cannot be written by accident."
+    ],
+    "lead": {
+      "template": "{committed} is committed to {projects} in European {short}, and {support_measures} in EU law {support_verb} money into it.",
+      "template_no_support": "{committed} is committed to {projects} in European {short}.",
+      "template_no_money": "{support_measures} in EU law {support_verb} money into European {short}.",
+      "_slots": "committed: the committed sum, worded by the builder. projects: the count of projects it finances, with its noun. support_measures: the count of support-direction measures reaching the sector, with its noun. support_verb: agrees with that count. short: the sector name slot."
+    },
+    "headings": {
+      "money_in": "Money flowing in",
+      "rules_that_pay": "Rules that pay",
+      "committed": "Committed",
+      "announced": "Announced",
+      "withdrawn": "Withdrawn",
+      "_comment": "Sub-headings inside the Opportunity section. §4.1's three status groups keep the schema's own words because they are the words the money is described with everywhere else on the site — a committed allocation is committed on the project page and in the funding store too."
+    },
+    "support_fact": {
+      "grant_programme": "{amount} of the {committed} committed to this sector was awarded under it, to {recipients}.",
+      "_comment": "Keyed on money.model. One entry today, because one model produces a support figure. A model that reaches this template with no entry stops the build. \n\nTHE RELATION TO THE SECTION'S OWN TOTAL IS STATED, not left to the reader. Two euro figures sit a few lines apart in this section — what is committed to the sector and what one measure paid — and the second is a SUBSET of the first. On cement they are EUR 421 m and EUR 381 m, and the EUR 40 m between them is the France Relance award to K6, which is under no measure the register has read. Printed side by side with no relation between them, two such figures read as a discrepancy. \n\nThe subset is guaranteed rather than asserted: web/lib/opportunity.ts sums the SECTOR'S OWN committed allocations that name this measure, not the measure's all-sector total from the importance store. Those coincide for cement and would not for a measure that also pays another industry, and a sentence saying 'X of the Y' when X is not inside Y is the one thing this template must never say."
+    },
+    "support_window": {
+      "ongoing": "eligibility ongoing",
+      "dated": "call open until {date}",
+      "_comment": "The eligibility window, said in words. Two forms and no third: a standing scheme has eligibility rather than an opening, and a call has a date it closes on. \n\n`ongoing` renders for a measure whose register `when` is that word. `dated` renders where `when` is a date, and nothing on the platform carries one yet — the dated windows arrive with watch channel three in step 4 of brief 5 §9. A `when` that is neither renders NO window clause at all rather than its raw value: `when` is the register's phrasing about when a provision bites, which is not always a window and is never a promise about when somebody can apply."
+    },
+    "signals": {
+      "chip": "Opportunity signals",
+      "_comment": "§4.6. Not a feed of its own and not a new data structure: a filter over the change records, for records whose object is a funding node, a support-direction measure or a measure that creates demand. It renders as a chip on the Feed section and as a query parameter on the change-record list, and it renders at all only where the sector has at least one such record — a filter chip that filters to nothing is a promise the data does not keep."
     }
   },
   "sector_lead": {
