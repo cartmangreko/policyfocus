@@ -133,7 +133,7 @@ OUT_DIR = sm.ROOT / "data" / "transition" / "lead"
 
 # Bumped when a template changes. It is in the output so a diff shows whether a
 # sentence moved because the data moved or because the template did.
-TEMPLATE_VERSION = 3
+TEMPLATE_VERSION = 4
 
 # A project at or past this point has committed the money. `funded` is a grant
 # award and is deliberately below the line: an Innovation Fund letter is not a
@@ -177,8 +177,8 @@ SCHEMA_WORDS = (
 # What a sector under this transition is DOING, as a present participle. See the
 # module docstring: a missing key raises rather than degrading.
 TRANSITION_VERB = {
-    "decarbonisation": "decarbonising",
-    "circularity": "moving on to recycled material",
+    "decarbonisation": "cutting its emissions",
+    "circularity": "shifting to recycled material",
     "supply_security": "trying to secure its own supply",
     "digital": "digitising how it runs",
     "defence": "rebuilding for defence demand",
@@ -418,15 +418,22 @@ def fact_pipeline_state(projects: list[dict], sector: str) -> dict | None:
         stopped.append(f"{cancelled} {'has' if cancelled == 1 else 'have'} been cancelled")
     tail = f", and {' and '.join(stopped)}" if stopped else ""
 
-    numbers = [f"{len(live)}", f"{committed}"]
+    # A count that necessarily equals the one before it is not a second fact.
+    # "7 projects are under way, 7 of them have taken a final investment
+    # decision" asks a reader to compare two figures and find them identical;
+    # "all of them" says the same thing and says it once.
+    every = committed == len(live)
+    share = "all of them" if every else f"{committed} of them"
+    numbers = [f"{len(live)}"] + ([] if every else [f"{committed}"])
     numbers += [f"{paused}"] if paused else []
     numbers += [f"{cancelled}"] if cancelled else []
     return _fact(
         "pipeline_state", "Pipeline",
         f"{len(live)} European {sector} projects are under way, "
-        f"{committed} of them have taken a final investment decision{tail}.",
+        f"{share} have taken a final investment decision{tail}.",
         as_of, numbers,
         {"total": str(len(live)), "committed": str(committed),
+         "committed_is_all": every,
          "paused": str(paused), "cancelled": str(cancelled),
          "furthest": furthest["name"], "furthest_status": furthest["status"]},
         sourced=(furthest["name"],),

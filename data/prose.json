@@ -165,13 +165,13 @@
       "before. sources/check_sector_schema.py fails for a mapped sector with no paragraph and",
       "prints the drafts on every run."
     ],
-    "reviewed": "2026-08-24",
+    "reviewed": "2026-08-28",
     "sectors": {
       "cement": {
         "paragraph": "Cement is the binding agent of the built environment. Concrete is the most used man-made material on earth, and European construction depends on a domestic industry that operates on thin margins with high energy and carbon intensity. Most of the sector's emissions come not from burning fuel but from the chemistry of clinker, the limestone-derived core of cement, which releases CO2 as it is processed. That makes cement one of the hardest sectors to decarbonise: efficiency and clean electricity cannot remove process emissions, so the transition runs through carbon capture, clinker substitution and alternative fuels. EU policy treats it accordingly: carbon pricing raises the cost of conventional production, a border adjustment shields producers from unpriced imports, and public funding underwrites the first capture projects. The open question is who pays for low-carbon cement while it costs more than conventional supply."
       },
       "steel": {
-        "paragraph": ""
+        "paragraph": "European steel is attempting two transitions at once. Some plants are fitting capture equipment to their existing blast furnaces. Others are being rebuilt around a new process, reducing iron with hydrogen or gas and melting it in electric arc furnaces. The deciding factors sit mostly outside the steelworks: hydrogen at scale, electricity prices, and somewhere to put captured CO2. EU law has set the schedule. Free allowances are being withdrawn year by year, a carbon border charge phases in against imports, and the funding tracked below backs both processes."
       }
     }
   },
@@ -399,9 +399,9 @@
     ],
     "sectors": {
       "cement": {
-        "fingerprint": "d0821f715f7a4484",
-        "template_version": 3,
-        "sentence": "European cement is decarbonising on three routes: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
+        "fingerprint": "de87fd86f8e369f9",
+        "template_version": 4,
+        "sentence": "European cement is cutting its emissions on three routes: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
         "why_it_matters": "Cement made this way costs more than the cement it replaces, so whether Europe gets it depends on who covers the difference.",
         "facts": [
           {
@@ -427,9 +427,9 @@
         ]
       },
       "steel": {
-        "fingerprint": "a506d27f72a8097d",
-        "template_version": 3,
-        "sentence": "European steel is decarbonising and moving on to recycled material on four routes: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
+        "fingerprint": "1d632ef2597e9a62",
+        "template_version": 4,
+        "sentence": "European steel is cutting its emissions and shifting to recycled material on four routes: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
         "why_it_matters": "Steel made this way costs more than the steel it replaces, so whether Europe gets it depends on who covers the difference.",
         "facts": [
           {
@@ -439,7 +439,7 @@
           },
           {
             "id": "pipeline_state",
-            "text": "7 European steel projects are under way, 7 of them have taken a final investment decision, and 1 has been cancelled.",
+            "text": "7 European steel projects are under way, all of them have taken a final investment decision, and 1 has been cancelled.",
             "as_of": "2026-06-18"
           },
           {
