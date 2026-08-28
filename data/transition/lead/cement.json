@@ -6,17 +6,12 @@
     "summary_override, never here."
   ],
   "sector": "cement",
-  "template_version": 4,
-  "fingerprint": "de87fd86f8e369f9",
+  "template_version": 5,
+  "fingerprint": "e639cb7e8d01a133",
   "sentence": {
-    "text": "European cement is cutting its emissions on three routes: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
+    "text": "European cement is cutting its emissions.",
     "from": [
       "routes"
-    ],
-    "sourced": [
-      "Post-combustion carbon capture",
-      "Oxyfuel carbon capture",
-      "Alternative fuels in the kiln"
     ],
     "source": "generated"
   },
@@ -29,6 +24,33 @@
     "source": "generated"
   },
   "facts": [
+    {
+      "id": "routes",
+      "label": "Routes",
+      "text": "Three routes are being built: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
+      "as_of": "2025-06-18",
+      "numbers": [
+        "5",
+        "2",
+        "1"
+      ],
+      "parts": {
+        "count": 3,
+        "list": "post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1)",
+        "names": [
+          "Post-combustion carbon capture",
+          "Oxyfuel carbon capture",
+          "Alternative fuels in the kiln"
+        ]
+      },
+      "sourced": [
+        "Post-combustion carbon capture",
+        "Oxyfuel carbon capture",
+        "Alternative fuels in the kiln"
+      ],
+      "href": "#technologies",
+      "surface": true
+    },
     {
       "id": "the_gap",
       "label": "The gap",
@@ -134,33 +156,6 @@
         "Green premium against willingness to pay"
       ],
       "href": "#bottleneck-cement-green-premium",
-      "surface": false
-    },
-    {
-      "id": "routes",
-      "label": "Routes",
-      "text": "Three routes are being built in this sector: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
-      "as_of": "2025-06-18",
-      "numbers": [
-        "5",
-        "2",
-        "1"
-      ],
-      "parts": {
-        "count": 3,
-        "list": "post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1)",
-        "names": [
-          "Post-combustion carbon capture",
-          "Oxyfuel carbon capture",
-          "Alternative fuels in the kiln"
-        ]
-      },
-      "sourced": [
-        "Post-combustion carbon capture",
-        "Oxyfuel carbon capture",
-        "Alternative fuels in the kiln"
-      ],
-      "href": "#technologies",
       "surface": false
     }
   ],

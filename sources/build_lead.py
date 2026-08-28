@@ -133,7 +133,7 @@ OUT_DIR = sm.ROOT / "data" / "transition" / "lead"
 
 # Bumped when a template changes. It is in the output so a diff shows whether a
 # sentence moved because the data moved or because the template did.
-TEMPLATE_VERSION = 4
+TEMPLATE_VERSION = 5
 
 # A project at or past this point has committed the money. `funded` is a grant
 # award and is deliberately below the line: an Innovation Fund letter is not a
@@ -231,7 +231,7 @@ MODEL_LINE = {
 # The order the surfaced facts read in: how big the problem is, what is being
 # built about it, what it costs today, what moved last. Anything not listed here
 # is computed and kept, and does not appear on the page.
-SURFACE_ORDER = ("the_gap", "pipeline_state", "decisive_exposure", "the_latest")
+SURFACE_ORDER = ("routes", "the_gap", "pipeline_state", "decisive_exposure", "the_latest")
 
 # Abbreviations that end in a full stop and do not end a sentence. Without this
 # list "Art. 1(13), adding a subparagraph to Art. 22(2)" counts as three
@@ -503,8 +503,7 @@ def fact_routes(projects: list[dict], technologies: list[dict]) -> dict | None:
     return _fact(
         "routes", "Routes",
         f"{_count_word(len(counted)).capitalize()} route"
-        f"{'s' if len(counted) != 1 else ''} are being built in this sector: "
-        f"{_join(parts)}.",
+        f"{'s' if len(counted) != 1 else ''} are being built: {_join(parts)}.",
         max((h["date"] for p in live for h in p["status_history"]), default=""),
         [str(n) for n, _ in counted],
         {"count": len(counted), "list": _join(parts),
@@ -616,13 +615,15 @@ def compose(sector_name: str, facts: dict[str, dict], transitions: list[str]) ->
         # takes it from here.
         return {"text": "", "from": []}, None
 
+    # TREATMENT B: the display slot is the transition sentence and nothing
+    # else. The enumeration it used to carry is a fact line now -- the first
+    # one, because what is being built is what a reader wants before any
+    # figure about it. Same words, split across two levels of the block: the
+    # slot says what the sector is doing, the line says what it is doing it
+    # with. Nothing is lost and nothing is reworded.
     sentence = {
-        "text": f"European {sector} is {_join(verbs)} on "
-                f"{_count_word(routes['parts']['count'])} route"
-                f"{'s' if routes['parts']['count'] != 1 else ''}: "
-                f"{routes['parts']['list']}.",
+        "text": f"European {sector} is {_join(verbs)}.",
         "from": ["routes"],
-        "sourced": list(routes["parts"]["names"]),
     }
     constraint = facts.get("binding_constraint")
     ctype = (constraint or {}).get("parts", {}).get("type")

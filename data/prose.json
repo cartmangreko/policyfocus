@@ -399,11 +399,16 @@
     ],
     "sectors": {
       "cement": {
-        "fingerprint": "de87fd86f8e369f9",
-        "template_version": 4,
-        "sentence": "European cement is cutting its emissions on three routes: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
+        "fingerprint": "e639cb7e8d01a133",
+        "template_version": 5,
+        "sentence": "European cement is cutting its emissions.",
         "why_it_matters": "Cement made this way costs more than the cement it replaces, so whether Europe gets it depends on who covers the difference.",
         "facts": [
+          {
+            "id": "routes",
+            "text": "Three routes are being built: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
+            "as_of": "2025-06-18"
+          },
           {
             "id": "the_gap",
             "text": "Low-carbon cement costs 75-150% above a conventional plant to make, on the International Energy Agency's figures.",
@@ -427,11 +432,16 @@
         ]
       },
       "steel": {
-        "fingerprint": "1d632ef2597e9a62",
-        "template_version": 4,
-        "sentence": "European steel is cutting its emissions and shifting to recycled material on four routes: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
+        "fingerprint": "089abd52c55b7788",
+        "template_version": 5,
+        "sentence": "European steel is cutting its emissions and shifting to recycled material.",
         "why_it_matters": "Steel made this way costs more than the steel it replaces, so whether Europe gets it depends on who covers the difference.",
         "facts": [
+          {
+            "id": "routes",
+            "text": "Four routes are being built: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
+            "as_of": "2026-06-18"
+          },
           {
             "id": "the_gap",
             "text": "Low-carbon steel costs 50-140% above a conventional BF-BOF plant to make, on the International Energy Agency's figures.",

@@ -6,18 +6,12 @@
     "summary_override, never here."
   ],
   "sector": "steel",
-  "template_version": 4,
-  "fingerprint": "1d632ef2597e9a62",
+  "template_version": 5,
+  "fingerprint": "089abd52c55b7788",
   "sentence": {
-    "text": "European steel is cutting its emissions and shifting to recycled material on four routes: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
+    "text": "European steel is cutting its emissions and shifting to recycled material.",
     "from": [
       "routes"
-    ],
-    "sourced": [
-      "Hydrogen direct reduction",
-      "Direct reduction with an electric furnace",
-      "Electric arc furnace on scrap",
-      "Carbon capture on blast-furnace gas"
     ],
     "source": "generated"
   },
@@ -30,6 +24,36 @@
     "source": "generated"
   },
   "facts": [
+    {
+      "id": "routes",
+      "label": "Routes",
+      "text": "Four routes are being built: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
+      "as_of": "2026-06-18",
+      "numbers": [
+        "4",
+        "3",
+        "2",
+        "1"
+      ],
+      "parts": {
+        "count": 4,
+        "list": "hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1)",
+        "names": [
+          "Hydrogen direct reduction",
+          "Direct reduction with an electric furnace",
+          "Electric arc furnace on scrap",
+          "Carbon capture on blast-furnace gas"
+        ]
+      },
+      "sourced": [
+        "Hydrogen direct reduction",
+        "Direct reduction with an electric furnace",
+        "Electric arc furnace on scrap",
+        "Carbon capture on blast-furnace gas"
+      ],
+      "href": "#technologies",
+      "surface": true
+    },
     {
       "id": "the_gap",
       "label": "The gap",
@@ -134,36 +158,6 @@
         "Green premium against willingness to pay"
       ],
       "href": "#bottleneck-steel-green-premium",
-      "surface": false
-    },
-    {
-      "id": "routes",
-      "label": "Routes",
-      "text": "Four routes are being built in this sector: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
-      "as_of": "2026-06-18",
-      "numbers": [
-        "4",
-        "3",
-        "2",
-        "1"
-      ],
-      "parts": {
-        "count": 4,
-        "list": "hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1)",
-        "names": [
-          "Hydrogen direct reduction",
-          "Direct reduction with an electric furnace",
-          "Electric arc furnace on scrap",
-          "Carbon capture on blast-furnace gas"
-        ]
-      },
-      "sourced": [
-        "Hydrogen direct reduction",
-        "Direct reduction with an electric furnace",
-        "Electric arc furnace on scrap",
-        "Carbon capture on blast-furnace gas"
-      ],
-      "href": "#technologies",
       "surface": false
     }
   ],
