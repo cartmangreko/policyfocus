@@ -20,6 +20,10 @@ It checks three things and nothing else:
 
   COMPLETE    the zip holds the members the record lists, so a shapefile
               missing its .dbf or .prj fails here rather than in a renderer.
+
+What is NOT here: whether the register's coordinates land where they should.
+That reads the basemap rather than checking it, and it lives in
+sources/check_coordinates.py, which runs next.
 """
 
 from __future__ import annotations

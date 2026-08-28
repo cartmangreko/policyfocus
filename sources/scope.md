@@ -465,3 +465,49 @@ reasoning: a classification that cannot be substantiated does not get to
 render as a confident label. A row that cannot reach the prior text is
 entitled to say `add` and be read as a requirement — the honest default when
 the before-state is unknown.
+
+### Press may name a destination the company has already asserted
+
+A capture project's storage chain is recorded in
+`data/transition/projects.json` under `storage`: either the id of the store the
+tonne reaches, or `"unresolved": true`. The question this ruling settles is when
+a trade report may supply the store's identity.
+
+**The company's own source has to assert the relationship, and describe the
+destination specifically enough that the press report is identifying it rather
+than adding it.** Press then supplies the name and nothing else. Where the
+company asserts no destination at all, or asserts a different fate for the CO2,
+a press claim is not recorded and the chain is unresolved.
+
+The three worked cases, which is why this is written down:
+
+- **ANRAV** — the Innovation Fund fiche says the project links Devnya "with CO2
+  storage in a depleted gas field in the Black Sea, through an onshore and
+  offshore pipeline system". The company asserts the relationship, the mode and
+  a describable destination. There is one depleted gas field this can be, and
+  the press names it Galata. **Recorded.**
+- **IFESTOS** — the project's own site says the CO2 "will be liquified and
+  transported to a permanent storage site in the Mediterranean". Same shape:
+  the relationship is asserted and the destination is described. Press names
+  Prinos. **Recorded.**
+- **Carbon2Business** — Holcim's pages say the purified CO2 "will either be
+  processed into e-methanol through methanol synthesis or reprocessed as a raw
+  material to produce plastics". That is a different fate, not an unnamed
+  storage destination. Trade press reporting a thirty-kilometre pipeline to
+  Brunsbüttel is asserting a chain the company does not. **Not recorded; the
+  chain is unresolved.**
+
+The line is between naming something the company has already put in the world
+and supplying a fact it has not. The first is what a specialist press is for;
+the second is this register borrowing somebody else's confidence.
+
+Two consequences that are not optional. The `storage` block carries the press
+source with its verbatim, and a `note` saying the company's own wording is
+weaker — so the reader sees the join rather than a flat assertion. And the
+site's `confidence` stays `secondary`, which is what it is.
+
+The same test governs an infrastructure node's existence. A named destination
+becomes a node only where it is a concrete place with a published position:
+Antwerp@C is named by Holcim as GO4ZERO's export hub and is sited only as "a
+plot of land inside the port", so it is not a node and GO4ZERO is unresolved.
+Naming is not siting.
