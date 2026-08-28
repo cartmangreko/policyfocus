@@ -1,4 +1,4 @@
-# What the cement layer is missing
+# What the transition layer is missing
 
 This file is part of the data. Everything in `data/transition/` is sourced to a
 quoted sentence, which means everything that could not be sourced is *absent* —
@@ -8,11 +8,31 @@ unlock, and which document would fill it.
 
 An entry leaves this file when the parameter, technology or project row lands.
 
+**One file, one section per sector.** It was "what the cement layer is missing"
+while cement was the only sector. Splitting it per sector would have hidden the
+entries that belong to neither and to both — the allowance price, the CO2
+network, the slag that leaves one industry and arrives in the other — so the
+sector sections sit under a shared one instead.
+
 ---
 
-## Blocking a number the page states
+## Across every sector
 
-### IR (EU) 2025/2620 — the exact free-allocation adjustment
+### A primary EU allowance price
+
+`eua-price-spot` is Trading Economics — secondary, and every carbon-cost model
+on the platform is linear in it, so it is the single number most able to move a
+rank. It now moves two sectors rather than one. EEX publishes primary auction
+clearing prices; a settled series from there would make this primary and would
+let the price be a monthly average rather than one day's close.
+
+---
+
+## Cement
+
+### Blocking a number the page states
+
+#### IR (EU) 2025/2620 — the exact free-allocation adjustment
 
 The CBAM certificate model subtracts a free-allocation adjustment before pricing
 an imported tonne, because gross embedded emissions times the carbon price
@@ -28,7 +48,7 @@ This is the single most valuable gap on the list, because it is the only one
 that makes a number already on the page more accurate rather than adding a new
 one.
 
-### EU clinker output — blocks the sector total
+#### EU clinker output — blocks the sector total
 
 `build_importance.py` computes the free-allocation cost as **euros per tonne of
 clinker**. Per tonne is the display unit by decision, not by default — cement is
@@ -40,25 +60,18 @@ installations divided by the 0.656 clinker benchmark gives an approximate EU
 clinker output, with the method stated on the surface; Eurostat PRODCOM is the
 cross-check. The data is public and bulk-downloadable. Not a blocker for step 3.
 
-### A primary EU allowance price
-
-`eua-price-spot` is Trading Economics — secondary, and both money models are
-linear in it, so it is the single number most able to move a rank. EEX publishes
-primary auction clearing prices; a settled series from there would make this
-primary and would let the price be a monthly average rather than one day's close.
-
 ---
 
-## Bottlenecks stated without a number
+### Bottlenecks stated without a number
 
-### Share of cement CO2 that is process emissions from calcination
+#### Share of cement CO2 that is process emissions from calcination
 
 `cement-process-emissions` states the constraint without quantifying it: the
 IEA's cement page carries the figure in a chart rather than in text, and the
 CEMBUREAU page that states it serves a self-signed certificate. The IEA cement
 technology roadmap or IRENA would fill it.
 
-### Buyer willingness to pay
+#### Buyer willingness to pay
 
 `cement-green-premium` now carries the production-cost side of the gap — the
 IEA's 75–150% premium for near-zero cement — but not the demand side. The WEF
@@ -66,7 +79,7 @@ Net-Zero Industry Tracker is the obvious source and returns 403 to this
 repository's link checker; a figure needs to come from the PDF or from RMI's
 book-and-claim work.
 
-### Capacity utilisation and closures
+#### Capacity utilisation and closures
 
 The brief lists this as a market bottleneck; it is not in `bottlenecks.json`
 because no figure has been read at source. ZKG's 2023 analysis gives 65.3%
@@ -75,9 +88,9 @@ production of 179.5 Mt/a — secondary, and old enough to want checking.
 
 ---
 
-## Materials
+### Materials
 
-### Slag and fly ash — the clinker substitute
+#### Slag and fly ash — the clinker substitute
 
 The material layer carries clinker and captured CO2 and not the third material
 the brief asks for. The reason is the rule rather than the effort: an edge here
@@ -87,19 +100,29 @@ mentions granulated blast-furnace slag or fly ash — CBAM's cement annex lists
 clinker, Portland cement and calcined clay, and the IAA's low-carbon procurement
 annex names concrete without naming what goes into it.
 
-What would fill it: CEN EN 197-1, which defines the cement types by their
-clinker share and is the document the substitution ratio actually lives in; or
-the IEA cement technology roadmap for the EU average clinker-to-cement ratio.
-Either gives the material, its `substitutes` edge to clinker, and the number
-that makes the edge worth drawing.
+**Half filled by the steel dataset.** `granulated-blast-furnace-slag` now
+exists, with a `produced_by` edge from `sector:steel` and a `substitutes` edge
+to clinker, both sourced to ZKG 6/2023 — so the node the entry asked for is on
+the platform and the two sectors are joined in the graph. Fly ash is still
+absent.
 
-It is worth more than its size suggests. Slag is the one material that would
-join two sectors honestly — it leaves steel as a by-product and arrives in
-cement as a feedstock, one node with an edge on each side — and the bottleneck
-the original brief names, SCM supply falling as blast furnaces close, cannot be
-stated until it exists.
+What is still missing is the CEMENT SIDE and the ratio. There is no
+`consumed_by` edge into `sector:cement`, because that is a claim about cement's
+inputs and needs a cement-side source; and there is no substitution ratio, which
+is what would make the edge worth drawing rather than merely true. CEN EN 197-1
+defines the cement types by their clinker share and is the document the ratio
+lives in; the IEA cement technology roadmap carries the EU average
+clinker-to-cement ratio.
 
-### CN 252329 — Portland cement, non-white, has no material node
+The bottleneck the original brief names — SCM supply falling as blast furnaces
+close — is now sourced on one side and unstated on the other. `parameters.json`
+carries `gbs-lost-per-blast-furnace`: 150-800 thousand tonnes of slag vanish
+with each blast furnace substituted. That is a fact about steel's transition
+that lands on cement, and it cannot become a cement bottleneck row until the
+cement-side edge above exists. It is the sharpest cross-sector finding the
+platform currently holds and cannot draw.
+
+#### CN 252329 — Portland cement, non-white, has no material node
 
 The Comext citations on the cement page name what was asked of the dataset,
 including the product code and the register's name for it. One of the two calls
@@ -126,7 +149,7 @@ is missing is the node, not the evidence.
 
 Until it lands, the citation renders the code alone, and this entry is why.
 
-### The CRMA strategic raw materials list, as stub nodes
+#### The CRMA strategic raw materials list, as stub nodes
 
 Amendment brief 2 asks for the Critical Raw Materials Act's strategic list
 ingested as stubs, for the sectors that come after cement — storage needs
@@ -139,7 +162,7 @@ they are.
 
 ---
 
-## Technologies
+### Technologies
 
 Four of the seven in the brief are absent, each for the same reason: no source
 stating a readiness level has been read, and `readiness` is required rather than
@@ -156,7 +179,7 @@ defaulted.
 
 ---
 
-## Projects
+### Projects
 
 Eight are recorded against the fifteen to twenty the brief asks for. The missing
 ones are mostly the smaller and the newer: the 2024 Innovation Fund call's cement
@@ -181,6 +204,114 @@ Two project-level facts are missing from rows that exist:
 
 ---
 
+## Steel
+
+### Blocking a number the page states
+
+#### The CBAM certificate model, and the CN lines it needs
+
+`cbam:FIN-03` is in steel's sector view on its constraint edge and carries no
+euro figure, because `model_cbam_certificates` is written around cement's two CN
+lines and cement's import volumes. Steel is the larger CBAM sector by trade
+volume, so the number this model would produce matters more here than it does
+where the model already runs.
+
+What would fill it: the CBAM iron-and-steel annex read for its CN lines, the
+default embedded emissions for each from IR (EU) 2025/2621 Annex I, and Eurostat
+Comext volumes per line — then `model_cbam_certificates` generalised over a
+sector's lines rather than copied. Tracked as its own issue; the plain block for
+`cbam:FIN-03` on steel is deliberately written without a `{money_per_tonne}`
+slot until it lands, because a sentence must never ask for a number the platform
+cannot compute.
+
+#### EU crude steel output — blocks the sector total
+
+The free-allocation cost is computed per tonne of hot metal, and per tonne is
+the display unit by decision. The sector total is a second number and it is
+missing, exactly as it is for cement: EUTL verified emissions divided by the
+1,248 hot metal benchmark would give an approximate output, with the method
+stated on the surface, and EUROFER's own production series is the cross-check.
+
+#### The other route benchmarks
+
+Free allocation is priced on hot metal and EAF carbon steel. The annex to IR
+(EU) 2026/1412 also sets benchmarks for coke (0,143), agglomerated iron ore
+(0,086) and EAF high alloy steel (0,176), and none of the tracked sites is
+recorded as running those sub-installations, so none is a parameter yet. They
+are cheap to add the day a project needs one — the model takes a list of routes.
+
+### Bottlenecks stated without a number
+
+#### The electricity price the electric route runs on
+
+`steel-conversion-finance` records that conversions stopped, and ArcelorMittal's
+stated reason was the cost of power. No European industrial electricity price
+has been read at source, so the constraint names the cause and quantifies the
+money that was handed back instead. Eurostat's `nrg_pc_205` series for
+non-household consumers would fill it, and it would be the first parameter on
+the platform that belongs to the electric route rather than to carbon.
+
+#### Scrap availability, as a volume
+
+`steel-scrap-availability` is quantified by the EAF share of production, which
+says how much of the route exists and not how much scrap Europe has. The
+constraint is about the second. EUROFER and the Bureau of International
+Recycling publish EU scrap collection, consumption and net exports; the export
+figure is the one the constraint really turns on, and none of the three has been
+read.
+
+### Materials
+
+#### Hydrogen has no consumed_by edge to a plant
+
+`materials.json` allows `consumed_by` to point at a `sector:` or a
+`technology:`, and not at a `project:`. Hydrogen is consumed at one pilot site
+and by no European industry yet, so neither permitted endpoint states the truth:
+`sector:steel` would assert an industry-wide consumption that has not started,
+and `technology:h2-dri` confers no sector membership, so the material does not
+appear in steel's inputs at all.
+
+The edge recorded is the technology one, which is honest and incomplete. Cement
+never hit this because nothing in cement consumed anything. Widening
+`consumed_by` to accept a `project:` endpoint — which `produced_by` already
+does — is a one-line change to the gate and a decision about the schema, so it
+is written down here rather than taken.
+
+### Technologies
+
+Capture on blast-furnace gas is recorded at `pilot` on the DMX unit at Dunkirk,
+and it carries **no `abatement_share`**. The source states a capture rate on the
+stream the unit treats, which is not the same claim as a share of the site's
+emissions — the figure cement's equivalent carries. A source stating what a
+full-scale unit would remove from an integrated site's total would fill it.
+
+Two routes in the brief are absent for the usual reason, no readiness source
+read: **smelting reduction** (HIsarna and the Belgian and Spanish work around
+it), and **electrolytic ironmaking**, which is the only route that skips both
+coke and hydrogen.
+
+### Projects
+
+Eight are recorded. The absences are mostly the newer and the smaller: **Tata
+Steel IJmuiden**, whose Dutch state agreement has been reported and whose
+primary documents have not been read; **the HYBRIT demonstration plant at
+Gällivare**, which is the industrial-scale sequel to the pilot that is recorded
+and whose permit and investment decisions need sourcing; and the Spanish and
+French conversions.
+
+Two project-level facts are missing from rows that exist:
+
+- **The Dunkirk pilot's capture volume.** The Axens release states a capture
+  rate and no tonnage, so `captured-co2`'s edge from that project carries a null
+  volume with a note. A figure would make steel's contribution to the CO2
+  network comparable with cement's.
+- **Status histories start late.** Four of the eight begin at the event this
+  repository first sourced — the grant, the result, the release — rather than at
+  the announcement. The same condition cement's file records, for the same
+  reason, and the watch channel extends them forward rather than backwards.
+
+---
+
 ## Filled since the first pass
 
 Kept briefly, then deleted — a gap list that only grows stops being read.
@@ -190,3 +321,8 @@ Kept briefly, then deleted — a gap list that only grows stops being read.
 - Innovation Fund awards — linked to `ets:FND-03`, €381 m across four projects.
 - CCS retrofit capital cost — CEMBUREAU, via the Internet Archive.
 - Production-cost premium for near-zero cement — IEA Breakthrough Agenda 2025.
+- Granulated blast furnace slag, the steel side — the node, its `produced_by`
+  edge and the volume that vanishes per furnace converted. The cement side is
+  still open and is now the only half missing; see Cement → Materials above.
+- Free-allocation benchmarks for steel — IR (EU) 2026/1412, Annex, hot metal and
+  EAF carbon steel.

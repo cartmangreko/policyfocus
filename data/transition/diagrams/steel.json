@@ -1,0 +1,602 @@
+{
+  "_comment": [
+    "BUILT FILE — do not edit. sources/build_sector_diagram.py computes the layout;",
+    "web/components/TransitionDiagram.tsx draws it and adds nothing but hover.",
+    "Coordinates are in the diagram's own units; the component scales the viewBox."
+  ],
+  "sector": "steel",
+  "width": 1160,
+  "height": 548,
+  "columns": [
+    {
+      "kind": "measure",
+      "x": 0,
+      "count": 10
+    },
+    {
+      "kind": "bottleneck",
+      "x": 300,
+      "count": 6
+    },
+    {
+      "kind": "technology",
+      "x": 600,
+      "count": 6
+    },
+    {
+      "kind": "project",
+      "x": 900,
+      "count": 8
+    }
+  ],
+  "nodes": [
+    {
+      "id": "measure:ets:CBAM-01",
+      "kind": "measure",
+      "label": "Free allocation phase-out",
+      "sub": "€2.58/t · cost",
+      "href": "/measures/ets/CBAM-01",
+      "rank": 1,
+      "direction": "cost",
+      "measure_id": "ets:CBAM-01",
+      "x": 0,
+      "y": 12.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:ets:FND-03",
+      "kind": "measure",
+      "label": "Innovation Fund grants",
+      "sub": "€250m · support",
+      "href": "/measures/ets/FND-03",
+      "rank": 2,
+      "direction": "support",
+      "measure_id": "ets:FND-03",
+      "x": 0,
+      "y": 66.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:iaa:LM-03a",
+      "kind": "measure",
+      "label": "Procurement requirements",
+      "sub": "linkage 1.0",
+      "href": "/measures/iaa/LM-03a",
+      "rank": 3,
+      "direction": null,
+      "measure_id": "iaa:LM-03a",
+      "x": 0,
+      "y": 120.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:iaa:LM-03b",
+      "kind": "measure",
+      "label": "Low-carbon steel threshold",
+      "sub": "linkage 1.0",
+      "href": "/measures/iaa/LM-03b",
+      "rank": 4,
+      "direction": null,
+      "measure_id": "iaa:LM-03b",
+      "x": 0,
+      "y": 174.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:nzia:CO2-02",
+      "kind": "measure",
+      "label": "CO2 storage obligation",
+      "sub": "linkage 1.0",
+      "href": "/measures/nzia/CO2-02",
+      "rank": 5,
+      "direction": null,
+      "measure_id": "nzia:CO2-02",
+      "x": 0,
+      "y": 228.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:cbam:FIN-03",
+      "kind": "measure",
+      "label": "CBAM certificates",
+      "sub": "linkage 0.5",
+      "href": "/measures/cbam/FIN-03",
+      "rank": 6,
+      "direction": null,
+      "measure_id": "cbam:FIN-03",
+      "x": 0,
+      "y": 282.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:iaa:LM-01",
+      "kind": "measure",
+      "label": "Low-carbon classification",
+      "sub": "linkage 0.5",
+      "href": "/measures/iaa/LM-01",
+      "rank": 7,
+      "direction": null,
+      "measure_id": "iaa:LM-01",
+      "x": 0,
+      "y": 336.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:iaa:LM-06a",
+      "kind": "measure",
+      "label": "Support scheme budgets",
+      "sub": "linkage 0.5",
+      "href": "/measures/iaa/LM-06a",
+      "rank": 8,
+      "direction": null,
+      "measure_id": "iaa:LM-06a",
+      "x": 0,
+      "y": 390.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:nzia:CO2-10",
+      "kind": "measure",
+      "label": "CO2 network access",
+      "sub": "linkage 0.5",
+      "href": "/measures/nzia/CO2-10",
+      "rank": 9,
+      "direction": null,
+      "measure_id": "nzia:CO2-10",
+      "x": 0,
+      "y": 444.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:nzia:SP-02",
+      "kind": "measure",
+      "label": "Strategic project status",
+      "sub": "linkage 0.5",
+      "href": "/measures/nzia/SP-02",
+      "rank": 10,
+      "direction": null,
+      "measure_id": "nzia:SP-02",
+      "x": 0,
+      "y": 498.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:steel-scrap-availability",
+      "kind": "bottleneck",
+      "label": "Scrap supply and quality against electric furnace capacity",
+      "sub": "market",
+      "href": "#bottleneck-steel-scrap-availability",
+      "type": "market",
+      "x": 300,
+      "y": 120.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:steel-conversion-finance",
+      "kind": "bottleneck",
+      "label": "Conversion cost against site economics",
+      "sub": "financial",
+      "href": "#bottleneck-steel-conversion-finance",
+      "type": "financial",
+      "x": 300,
+      "y": 174.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:steel-co2-transport-storage-network",
+      "kind": "bottleneck",
+      "label": "CO2 transport and storage network",
+      "sub": "infrastructure",
+      "href": "#bottleneck-steel-co2-transport-storage-network",
+      "type": "infrastructure",
+      "x": 300,
+      "y": 228.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:steel-hydrogen-supply",
+      "kind": "bottleneck",
+      "label": "Renewable hydrogen at volume and at a price",
+      "sub": "infrastructure",
+      "href": "#bottleneck-steel-hydrogen-supply",
+      "type": "infrastructure",
+      "x": 300,
+      "y": 282.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:steel-subsidy-dependence",
+      "kind": "bottleneck",
+      "label": "Dependence on revocable public support",
+      "sub": "political",
+      "href": "#bottleneck-steel-subsidy-dependence",
+      "type": "political",
+      "x": 300,
+      "y": 336.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:steel-green-premium",
+      "kind": "bottleneck",
+      "label": "Green premium against willingness to pay",
+      "sub": "market",
+      "href": "#bottleneck-steel-green-premium",
+      "type": "market",
+      "x": 300,
+      "y": 390.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:eaf-scrap",
+      "kind": "technology",
+      "label": "Electric arc furnace on scrap",
+      "sub": "commercial",
+      "href": "#technology-eaf-scrap",
+      "readiness": "commercial",
+      "x": 600,
+      "y": 120.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:ccs-blast-furnace",
+      "kind": "technology",
+      "label": "Carbon capture on blast-furnace gas",
+      "sub": "pilot",
+      "href": "#technology-ccs-blast-furnace",
+      "readiness": "pilot",
+      "x": 600,
+      "y": 174.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:co2-transport-storage",
+      "kind": "technology",
+      "label": "CO2 transport and storage",
+      "sub": "early-commercial",
+      "href": "#technology-co2-transport-storage",
+      "readiness": "early-commercial",
+      "x": 600,
+      "y": 228.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:dri-eaf",
+      "kind": "technology",
+      "label": "Direct reduction with an electric furnace",
+      "sub": "demonstration",
+      "href": "#technology-dri-eaf",
+      "readiness": "demonstration",
+      "x": 600,
+      "y": 282.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:h2-dri",
+      "kind": "technology",
+      "label": "Hydrogen direct reduction",
+      "sub": "pilot",
+      "href": "#technology-h2-dri",
+      "readiness": "pilot",
+      "x": 600,
+      "y": 336.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:hydrogen-supply",
+      "kind": "technology",
+      "label": "Renewable hydrogen supply",
+      "sub": "demonstration",
+      "href": "#technology-hydrogen-supply",
+      "readiness": "demonstration",
+      "x": 600,
+      "y": 390.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:am-bremen-eisenhuettenstadt",
+      "kind": "project",
+      "label": "ArcelorMittal Bremen and Eisenhüttenstadt conversion",
+      "sub": "DE · cancelled",
+      "href": "/projects/am-bremen-eisenhuettenstadt",
+      "status": "cancelled",
+      "x": 900,
+      "y": 66.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:greentec-donawitz",
+      "kind": "project",
+      "label": "greentec steel Donawitz",
+      "sub": "AT · construction",
+      "href": "/projects/greentec-donawitz",
+      "status": "construction",
+      "x": 900,
+      "y": 120.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:greentec-linz",
+      "kind": "project",
+      "label": "greentec steel Linz",
+      "sub": "AT · construction",
+      "href": "/projects/greentec-linz",
+      "status": "construction",
+      "x": 900,
+      "y": 174.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:3d-dunkirk",
+      "kind": "project",
+      "label": "3D — DMX demonstration in Dunkirk",
+      "sub": "FR · operating",
+      "href": "/projects/3d-dunkirk",
+      "status": "operating",
+      "x": 900,
+      "y": 228.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:salcos-salzgitter",
+      "kind": "project",
+      "label": "SALCOS stage one",
+      "sub": "DE · construction",
+      "href": "/projects/salcos-salzgitter",
+      "status": "construction",
+      "x": 900,
+      "y": 282.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:stegra-boden",
+      "kind": "project",
+      "label": "Stegra Boden",
+      "sub": "SE · construction",
+      "href": "/projects/stegra-boden",
+      "status": "construction",
+      "x": 900,
+      "y": 336.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:tkh2steel-duisburg",
+      "kind": "project",
+      "label": "tkH2Steel",
+      "sub": "DE · construction",
+      "href": "/projects/tkh2steel-duisburg",
+      "status": "construction",
+      "x": 900,
+      "y": 390.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:hybrit-pilot-lulea",
+      "kind": "project",
+      "label": "HYBRIT pilot",
+      "sub": "SE · operating",
+      "href": "/projects/hybrit-pilot-lulea",
+      "status": "operating",
+      "x": 900,
+      "y": 444.0,
+      "w": 236,
+      "h": 38
+    }
+  ],
+  "edges": [
+    {
+      "from": "measure:cbam:FIN-03",
+      "to": "bottleneck:steel-green-premium",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:ets:CBAM-01",
+      "to": "bottleneck:steel-conversion-finance",
+      "rel": "worsens",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:ets:CBAM-01",
+      "to": "bottleneck:steel-green-premium",
+      "rel": "relieves",
+      "weight": 1.0
+    },
+    {
+      "from": "measure:iaa:LM-01",
+      "to": "bottleneck:steel-green-premium",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:iaa:LM-03a",
+      "to": "bottleneck:steel-green-premium",
+      "rel": "relieves",
+      "weight": 1.0
+    },
+    {
+      "from": "measure:iaa:LM-03b",
+      "to": "bottleneck:steel-green-premium",
+      "rel": "relieves",
+      "weight": 1.0
+    },
+    {
+      "from": "measure:iaa:LM-06a",
+      "to": "bottleneck:steel-green-premium",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:nzia:CO2-02",
+      "to": "bottleneck:steel-co2-transport-storage-network",
+      "rel": "relieves",
+      "weight": 1.0
+    },
+    {
+      "from": "measure:nzia:CO2-10",
+      "to": "bottleneck:steel-co2-transport-storage-network",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:nzia:SP-02",
+      "to": "bottleneck:steel-conversion-finance",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "project:3d-dunkirk",
+      "to": "technology:ccs-blast-furnace",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:3d-dunkirk",
+      "to": "technology:co2-transport-storage",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:am-bremen-eisenhuettenstadt",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:greentec-donawitz",
+      "to": "technology:eaf-scrap",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:greentec-linz",
+      "to": "technology:eaf-scrap",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:hybrit-pilot-lulea",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:hybrit-pilot-lulea",
+      "to": "technology:hydrogen-supply",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:salcos-salzgitter",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:salcos-salzgitter",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:salcos-salzgitter",
+      "to": "technology:hydrogen-supply",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:stegra-boden",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:stegra-boden",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:stegra-boden",
+      "to": "technology:hydrogen-supply",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:tkh2steel-duisburg",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:tkh2steel-duisburg",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:tkh2steel-duisburg",
+      "to": "technology:hydrogen-supply",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "technology:co2-transport-storage",
+      "to": "bottleneck:steel-co2-transport-storage-network",
+      "rel": "addresses",
+      "weight": 1
+    },
+    {
+      "from": "technology:dri-eaf",
+      "to": "bottleneck:steel-conversion-finance",
+      "rel": "addresses",
+      "weight": 1
+    },
+    {
+      "from": "technology:eaf-scrap",
+      "to": "bottleneck:steel-conversion-finance",
+      "rel": "addresses",
+      "weight": 1
+    },
+    {
+      "from": "technology:eaf-scrap",
+      "to": "bottleneck:steel-scrap-availability",
+      "rel": "addresses",
+      "weight": 1
+    },
+    {
+      "from": "technology:hydrogen-supply",
+      "to": "bottleneck:steel-hydrogen-supply",
+      "rel": "addresses",
+      "weight": 1
+    }
+  ]
+}

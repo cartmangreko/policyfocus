@@ -797,7 +797,7 @@ def main() -> int:
     ap.add_argument("--sector", action="append", default=None)
     args = ap.parse_args()
 
-    sectors = args.sector or ["cement"]
+    sectors = args.sector or sm.mapped_sectors()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     failed = False
     for sector in sectors:

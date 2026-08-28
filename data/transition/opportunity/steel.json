@@ -1,0 +1,68 @@
+{
+  "_comment": [
+    "BUILT FILE — do not edit. sources/build_opportunity.py computes it from the",
+    "sector's funding rows and its support-direction measures; the Opportunity",
+    "section draws it and adds nothing. A reviewed replacement goes in",
+    "data/transition/overrides.json under opportunity_overrides, never here."
+  ],
+  "sector": "steel",
+  "template_version": 1,
+  "fingerprint": "5fad5e9673749ad6",
+  "sentence": {
+    "text": "€3.2 billion is committed to 3 projects in European steel, and 1 measure in EU law pays money into it.",
+    "from": [
+      "money_in",
+      "rules_that_pay"
+    ],
+    "source": "generated"
+  },
+  "facts": [
+    {
+      "id": "money_in",
+      "label": "Money flowing in",
+      "text": "€3.2 billion is committed to 3 projects, across 4 allocations.",
+      "as_of": "2024-01-22",
+      "numbers": [
+        "3.2",
+        "3",
+        "4"
+      ],
+      "parts": {
+        "committed": "€3.2 billion",
+        "committed_count": 4,
+        "projects": "3 projects",
+        "project_count": 3,
+        "undisclosed": 0,
+        "announced_count": 0,
+        "withdrawn_count": 1
+      },
+      "sourced": [],
+      "href": null,
+      "surface": false
+    },
+    {
+      "id": "rules_that_pay",
+      "label": "Rules that pay",
+      "text": "1 measure in EU law pays into this sector, €250 million of it so far.",
+      "as_of": "2026",
+      "numbers": [
+        "1",
+        "250"
+      ],
+      "parts": {
+        "support_measures": "1 measure",
+        "support_count": 1,
+        "support_verb": "pays",
+        "paid": "€250 million",
+        "measures": [
+          "ets:FND-03"
+        ]
+      },
+      "sourced": [],
+      "href": null,
+      "surface": false
+    }
+  ],
+  "override_stale": false,
+  "notes": []
+}

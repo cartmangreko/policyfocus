@@ -325,6 +325,307 @@
           "date": "2024-02-15"
         }
       ]
+    },
+    {
+      "id": "stegra-boden",
+      "name": "Stegra Boden",
+      "company": "Stegra",
+      "plant": "Boden",
+      "country": "SE",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "technology": [
+        "dri-eaf",
+        "h2-dri",
+        "hydrogen-supply"
+      ],
+      "capacity": {
+        "value": 2.5,
+        "unit": "Mt steel per year",
+        "parameter": "stegra-boden-capacity"
+      },
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "funded",
+          "date": "2024-01-22",
+          "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-more-than-4-billion-in-debt-financing-for-the-worlds-first-large-scale-green-steel-plant",
+          "note": "Funding of close to €6.5 billion closed, including a €250 million EU Innovation Fund grant. The company was then called H2 Green Steel."
+        },
+        {
+          "status": "construction",
+          "date": "2026-04-04",
+          "source_url": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
+          "note": "All 37 electrolyser modules in place at the 740 MW hydrogen unit; pre-commissioning still to run. The €1.4 billion round that closed on 24 June 2026 is a source on this row and not a history entry — it refinanced the build rather than moving its status, and the company states the timeline is under review."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-more-than-4-billion-in-debt-financing-for-the-worlds-first-large-scale-green-steel-plant",
+          "title": "H2 Green Steel raises more than €4 billion in debt financing for the world's first large-scale green steel plant",
+          "publisher": "Stegra (as H2 Green Steel)",
+          "date": "2024-01-22"
+        },
+        {
+          "url": "https://stegra.com/en/news-and-stories/stegra-announces-closing-of-14-billion-financing-round",
+          "title": "Stegra announces closing of €1.4 billion financing round",
+          "publisher": "Stegra",
+          "date": "2026-06-24"
+        },
+        {
+          "url": "https://stegra.com/en/news-and-stories/stegra-boden-strategic-net-zero-project",
+          "title": "Stegra's plant in Boden recognized as a net-zero project important for the EU's climate goals",
+          "publisher": "Stegra",
+          "date": "2026-04-27"
+        }
+      ]
+    },
+    {
+      "id": "tkh2steel-duisburg",
+      "name": "tkH2Steel",
+      "company": "thyssenkrupp Steel",
+      "plant": "Duisburg",
+      "country": "DE",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "technology": [
+        "dri-eaf",
+        "h2-dri",
+        "hydrogen-supply"
+      ],
+      "capacity": {
+        "value": 2.5,
+        "unit": "Mt directly reduced iron per year",
+        "parameter": "tkh2steel-dri-capacity"
+      },
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "funded",
+          "date": "2023-07-20",
+          "source_url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+          "note": "State aid approval granted for German federal and state funding of around two billion euros."
+        },
+        {
+          "status": "construction",
+          "date": "2023-07-20",
+          "source_url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+          "note": "The same release records that SMS group was contracted for engineering, supply and construction of the direct reduction unit and its two melters, and that construction work had begun. Two entries share a date because one document reports both events."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+          "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
+          "publisher": "thyssenkrupp",
+          "date": "2023-07-20"
+        }
+      ]
+    },
+    {
+      "id": "salcos-salzgitter",
+      "name": "SALCOS stage one",
+      "company": "Salzgitter AG",
+      "plant": "Salzgitter",
+      "country": "DE",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "technology": [
+        "dri-eaf",
+        "h2-dri",
+        "hydrogen-supply"
+      ],
+      "capacity": {
+        "value": 1.9,
+        "unit": "Mt crude steel per year",
+        "parameter": "salcos-crude-steel-capacity"
+      },
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "funded",
+          "date": "2023-04-18",
+          "source_url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+          "note": "Official notice of €700 million federal and €300 million Lower Saxony funding for stage one."
+        },
+        {
+          "status": "construction",
+          "date": "2024-03-07",
+          "source_url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salcos-milestone-reached-salzgitter-ag-awards-contract-for-direct-reduction-plant-20791.html",
+          "note": "Contract awarded for the direct reduction unit, the largest sub-unit of stage one."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+          "title": "Salzgitter AG receives official notice of government funding for the SALCOS low-CO2 steel production program",
+          "publisher": "Salzgitter AG",
+          "date": "2023-04-18"
+        },
+        {
+          "url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salcos-milestone-reached-salzgitter-ag-awards-contract-for-direct-reduction-plant-20791.html",
+          "title": "SALCOS milestone reached — Salzgitter AG awards contract for direct reduction plant",
+          "publisher": "Salzgitter AG",
+          "date": "2024-03-07"
+        }
+      ]
+    },
+    {
+      "id": "am-bremen-eisenhuettenstadt",
+      "name": "ArcelorMittal Bremen and Eisenhüttenstadt conversion",
+      "company": "ArcelorMittal",
+      "plant": "Bremen and Eisenhüttenstadt",
+      "country": "DE",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "technology": [
+        "dri-eaf"
+      ],
+      "status": "cancelled",
+      "status_history": [
+        {
+          "status": "cancelled",
+          "date": "2025-06-23",
+          "source_url": "https://www.cleanenergywire.org/news/german-finance-minister-calls-steel-summit-after-green-projects-axed",
+          "note": "The conversion of both sites was dropped and €1.3 billion of German subsidies turned down, the company citing energy costs. No primary source for the earlier announcement has been read, so the history starts here."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.cleanenergywire.org/news/german-finance-minister-calls-steel-summit-after-green-projects-axed",
+          "title": "German finance minister calls steel summit after green projects axed",
+          "publisher": "Clean Energy Wire",
+          "date": "2025-06-23"
+        }
+      ]
+    },
+    {
+      "id": "hybrit-pilot-lulea",
+      "name": "HYBRIT pilot",
+      "company": "SSAB, LKAB and Vattenfall",
+      "plant": "Luleå",
+      "country": "SE",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "technology": [
+        "h2-dri",
+        "hydrogen-supply"
+      ],
+      "capacity": {
+        "value": 100,
+        "unit": "tonnes of sponge iron produced",
+        "parameter": "hybrit-pilot-sponge-iron"
+      },
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2021-06-21",
+          "source_url": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+          "note": "Test production of the world's first hydrogen-reduced sponge iron completed at the pilot unit; around 100 tonnes made."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+          "title": "HYBRIT: SSAB, LKAB and Vattenfall first in the world with hydrogen-reduced sponge iron",
+          "publisher": "SSAB",
+          "date": "2021-06-21"
+        }
+      ]
+    },
+    {
+      "id": "3d-dunkirk",
+      "name": "3D — DMX demonstration in Dunkirk",
+      "company": "ArcelorMittal",
+      "plant": "Dunkirk",
+      "country": "FR",
+      "sector": "steel",
+      "transition": "decarbonisation",
+      "technology": [
+        "ccs-blast-furnace",
+        "co2-transport-storage"
+      ],
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2024-03-14",
+          "source_url": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
+          "note": "The pilot unit on blast-furnace gas is running and reported capture rates above 90%. No primary source for the earlier start-up has been read, so the history starts at the result."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
+          "title": "Successful demonstration in Dunkirk of the CO2 capture DMX process",
+          "publisher": "Axens",
+          "date": "2024-03-14"
+        }
+      ]
+    },
+    {
+      "id": "greentec-donawitz",
+      "name": "greentec steel Donawitz",
+      "company": "voestalpine",
+      "plant": "Donawitz",
+      "country": "AT",
+      "sector": "steel",
+      "transition": "circularity",
+      "technology": [
+        "eaf-scrap"
+      ],
+      "capacity": {
+        "value": 850000,
+        "unit": "tonnes CO2-reduced steel per year",
+        "parameter": "voestalpine-donawitz-capacity"
+      },
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2026-06-18",
+          "source_url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+          "note": "The electric furnace is under construction for operation from 2027, with an expansion to 1.5 Mt by 2030 announced. No primary source for the earlier groundbreaking has been read, so the history starts here."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+          "title": "voestalpine unveils further expansion plans for greentec steel at its Donawitz location",
+          "publisher": "voestalpine",
+          "date": "2026-06-18"
+        }
+      ]
+    },
+    {
+      "id": "greentec-linz",
+      "name": "greentec steel Linz",
+      "company": "voestalpine",
+      "plant": "Linz",
+      "country": "AT",
+      "sector": "steel",
+      "transition": "circularity",
+      "technology": [
+        "eaf-scrap"
+      ],
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2026-06-18",
+          "source_url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+          "note": "The same release states the first phase covers both Austrian sites at an unchanged investment of about EUR 1.5 billion, with an electric furnace at each going into operation from 2027."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+          "title": "voestalpine unveils further expansion plans for greentec steel at its Donawitz location",
+          "publisher": "voestalpine",
+          "date": "2026-06-18"
+        }
+      ]
     }
   ]
 }

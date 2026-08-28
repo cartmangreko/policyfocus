@@ -101,7 +101,8 @@
       "prodcom_code": null,
       "crma_annex_i": null,
       "sectors": [
-        "cement"
+        "cement",
+        "steel"
       ],
       "description": "What a capture plant produces and cannot sell. It is abated only once it is stored, so every tonne recorded here is a tonne owed to a transport and storage chain built by other parties on other timetables.",
       "produced_by": [
@@ -154,6 +155,18 @@
             "path": "[id=ifestos-capture-capacity]",
             "quote": "an absolute annual GHG emissions avoidance of more than 1.9 million tons of CO2"
           }
+        },
+        {
+          "node": "project:3d-dunkirk",
+          "since": "2024-03-14",
+          "volume": null,
+          "volume_note": "The release states the capture rate on the treated stream and no tonnage for the pilot unit, so this edge carries no sourced volume.",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=dmx-dunkirk-capture-rate]",
+            "quote": "capture the CO2 present in blast furnace gases emitted during steel production at ArcelorMittal's Dunkirk site",
+            "note": "The first non-cement producer of this material. One node with an edge on each side is what the material kind exists for, and it is also why the CO2 transport and storage constraint is now a constraint on two sectors rather than one."
+          }
         }
       ],
       "consumed_by": [
@@ -182,6 +195,232 @@
           "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway",
           "publisher": "Heidelberg Materials",
           "date": "2025-06-18"
+        }
+      ]
+    },
+    {
+      "id": "steel-scrap",
+      "name": "Steel scrap",
+      "type": "feedstock",
+      "cn_code": "7204",
+      "prodcom_code": null,
+      "crma_annex_i": null,
+      "sectors": [
+        "steel"
+      ],
+      "description": "Recovered steel, remelted in an electric furnace with no ironmaking step and therefore none of ironmaking's CO2. It is the only decarbonisation input this sector already has at scale, and the only one whose supply is fixed by what Europe scrapped twenty years ago rather than by what anyone decides to build.",
+      "produced_by": [],
+      "consumed_by": [
+        {
+          "node": "sector:steel",
+          "since": "2025-09-29",
+          "volume": "eu-eaf-production-share",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=eu-eaf-production-share]",
+            "quote": "Just over 40% of EU steel is produced via the EAF production route.",
+            "note": "A claim about the industry rather than about a countable set of installations: two fifths of European output already comes off this route."
+          }
+        },
+        {
+          "node": "technology:eaf-scrap",
+          "since": "2025-09-29",
+          "volume": null,
+          "evidence": {
+            "source": "data/transition/technologies.json",
+            "path": "[id=eaf-scrap].description",
+            "quote": "Just over 40% of EU steel is produced via the EAF production route."
+          }
+        }
+      ],
+      "substitutes": [],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://www.eurofer.eu/about-steel/learn-about-steel/what-is-steel-and-how-is-steel-made/",
+          "title": "Learn about steel — how steel is made",
+          "publisher": "EUROFER — the European Steel Association",
+          "date": "2025-09-29"
+        },
+        {
+          "url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+          "title": "voestalpine unveils further expansion plans for greentec steel at its Donawitz location",
+          "publisher": "voestalpine",
+          "date": "2026-06-18"
+        }
+      ]
+    },
+    {
+      "id": "directly-reduced-iron",
+      "name": "Directly reduced iron",
+      "type": "intermediate",
+      "cn_code": "7203 10 00",
+      "prodcom_code": null,
+      "crma_annex_i": null,
+      "sectors": [
+        "steel"
+      ],
+      "description": "Iron reduced in the solid state rather than smelted, and the thing every European conversion is being built to make. It carries the sector's decarbonisation in one object: the same material is near-zero or not depending only on whether the gas that reduced it was hydrogen.",
+      "produced_by": [
+        {
+          "node": "project:tkh2steel-duisburg",
+          "since": "2023-07-20",
+          "volume": "tkh2steel-dri-capacity",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=tkh2steel-dri-capacity]",
+            "quote": "The 100% hydrogen-capable DR plant with two melters has a production capacity of 2.5 million metric tons of directly reduced iron per year"
+          }
+        },
+        {
+          "node": "project:hybrit-pilot-lulea",
+          "since": "2021-06-21",
+          "volume": "hybrit-pilot-sponge-iron",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=hybrit-pilot-sponge-iron]",
+            "quote": "Around 100 tonnes have been made so far."
+          }
+        },
+        {
+          "node": "project:salcos-salzgitter",
+          "since": "2023-04-18",
+          "volume": null,
+          "volume_note": "The release states the stage's crude steel capacity, not the direct reduction unit's own output, so no sourced volume attaches to this edge.",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=salcos-crude-steel-capacity]",
+            "quote": "1.9 million tonnes of crude steel per year"
+          }
+        }
+      ],
+      "consumed_by": [
+        {
+          "node": "sector:steel",
+          "since": "2023-07-20",
+          "volume": null,
+          "evidence": {
+            "source": "data/transition/technologies.json",
+            "path": "[id=dri-eaf].description",
+            "quote": "The 100% hydrogen-capable DR plant with two melters has a production capacity of 2.5 million metric tons of directly reduced iron per year",
+            "note": "The melters are on the same site as the direct reduction unit: this sector makes the material and feeds it straight back in, which is why the same node is both an output and an input here. The two appearances rest on different edges."
+          }
+        }
+      ],
+      "substitutes": [],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+          "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
+          "publisher": "thyssenkrupp",
+          "date": "2023-07-20"
+        },
+        {
+          "url": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+          "title": "HYBRIT: SSAB, LKAB and Vattenfall first in the world with hydrogen-reduced sponge iron",
+          "publisher": "SSAB",
+          "date": "2021-06-21"
+        }
+      ]
+    },
+    {
+      "id": "granulated-blast-furnace-slag",
+      "name": "Granulated blast furnace slag",
+      "type": "by_product",
+      "cn_code": "2618 00 00",
+      "prodcom_code": null,
+      "crma_annex_i": null,
+      "sectors": [
+        "steel"
+      ],
+      "description": "What runs off a blast furnace and is quenched into a glassy sand that sets like cement. It is the one material that joins these two industries in the wrong direction: it leaves steel as a by-product and arrives in cement as a substitute for clinker, so every furnace steel converts away from also takes away part of cement's answer.",
+      "produced_by": [
+        {
+          "node": "sector:steel",
+          "since": "2023-06",
+          "volume": "gbs-lost-per-blast-furnace",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=gbs-lost-per-blast-furnace]",
+            "quote": "Depending on the individual blast furnace capacity yearly 150-800 thousand t of GBS will vanish together with each substituted blast furnace.",
+            "note": "The volume is stated as what is LOST per furnace converted, which is the only figure the source gives and the one that matters: the quantity is falling by construction as this sector decarbonises."
+          }
+        }
+      ],
+      "consumed_by": [],
+      "substitutes": [
+        {
+          "material": "clinker",
+          "since": "2023-06",
+          "evidence": {
+            "source": "https://www.zkg.de/en/artikel/the-steel-production-transformation-process-in-europe-new-slag-types-will-substitute-granulated-blast-furnace-slag-4001145.html",
+            "path": "ZKG 6/2023",
+            "quote": "For decades blast furnace slag has been used mainly as a cementitious material (if it is glassy due to a quenching process for the liquid slag)",
+            "note": "The substitution edge only. No consumed_by edge into cement is recorded here, because that is a claim about the cement sector's inputs and belongs with the cement dataset; see data/transition/GAPS.md."
+          }
+        }
+      ],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://www.zkg.de/en/artikel/the-steel-production-transformation-process-in-europe-new-slag-types-will-substitute-granulated-blast-furnace-slag-4001145.html",
+          "title": "The steel production transformation process in Europe: new slag types will substitute granulated blast furnace slag",
+          "publisher": "ZKG International",
+          "date": "2023-06"
+        }
+      ]
+    },
+    {
+      "id": "hydrogen",
+      "name": "Hydrogen",
+      "type": "energy_carrier",
+      "cn_code": "2804 10 00",
+      "prodcom_code": null,
+      "crma_annex_i": null,
+      "sectors": [
+        "steel"
+      ],
+      "description": "The reducing gas that makes direct reduction near-zero rather than merely lower. Nothing in European steel runs on it at scale yet, which is why it is recorded against the route that needs it rather than against the industry: an edge from the sector would assert a consumption that has not started.",
+      "produced_by": [],
+      "consumed_by": [
+        {
+          "node": "technology:h2-dri",
+          "since": "2021-06-21",
+          "volume": null,
+          "evidence": {
+            "source": "data/transition/technologies.json",
+            "path": "[id=h2-dri].readiness",
+            "quote": "SSAB, LKAB and Vattenfall have now produced the world's first hydrogen-reduced sponge iron at a pilot scale.",
+            "note": "A technology edge, which by the membership rule confers no sector: this material is read on its own page rather than in the steel sector's inputs, and that is correct until a site consumes it."
+          }
+        }
+      ],
+      "substitutes": [],
+      "required_by": [
+        {
+          "node": "technology:hydrogen-supply",
+          "since": "2026-04-04",
+          "volume": "boden-electrolyser-capacity",
+          "evidence": {
+            "source": "data/transition/parameters.json",
+            "path": "[id=boden-electrolyser-capacity]",
+            "quote": "all 37 modules are now in place at the 740-megawatt facility"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+          "title": "HYBRIT: SSAB, LKAB and Vattenfall first in the world with hydrogen-reduced sponge iron",
+          "publisher": "SSAB",
+          "date": "2021-06-21"
+        },
+        {
+          "url": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
+          "title": "Europe's largest green hydrogen plant takes shape as Stegra installs final electrolyser",
+          "publisher": "BioEnergy Times",
+          "date": "2026-04-04"
         }
       ]
     }

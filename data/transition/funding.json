@@ -173,6 +173,121 @@
           "date": "2025-06-18"
         }
       ]
+    },
+    {
+      "id": "innovation-fund-stegra",
+      "name": "Innovation Fund grant — Stegra Boden",
+      "instrument": "grant",
+      "programme": "EU Innovation Fund",
+      "under": "ets:FND-03",
+      "under_note": "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
+      "amount": "stegra-innovation-fund-grant",
+      "amount_note": null,
+      "date": "2024-01-22",
+      "status": "approved",
+      "finances": ["project:stegra-boden"],
+      "supports": ["technology:h2-dri"],
+      "country": "SE",
+      "sources": [
+        {
+          "url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-more-than-4-billion-in-debt-financing-for-the-worlds-first-large-scale-green-steel-plant",
+          "title": "H2 Green Steel raises more than €4 billion in debt financing for the world's first large-scale green steel plant",
+          "publisher": "Stegra (as H2 Green Steel)",
+          "date": "2024-01-22"
+        }
+      ]
+    },
+    {
+      "id": "germany-tkh2steel",
+      "name": "German federal and state funding — tkH2Steel",
+      "instrument": "state_aid",
+      "programme": "German federal and North Rhine-Westphalia state funding",
+      "under": null,
+      "under_note": "A national decision, cleared by the Commission under the state aid rules. The register has read no act that carries the German scheme, so the funding names its programme and points at no measure. Same case as france-relance-k6; see issue #39.",
+      "amount": "tkh2steel-public-funding",
+      "amount_note": null,
+      "date": "2023-07-20",
+      "status": "approved",
+      "finances": ["project:tkh2steel-duisburg"],
+      "supports": ["technology:dri-eaf"],
+      "country": "DE",
+      "sources": [
+        {
+          "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+          "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
+          "publisher": "thyssenkrupp",
+          "date": "2023-07-20"
+        }
+      ]
+    },
+    {
+      "id": "germany-federal-salcos",
+      "name": "German federal funding — SALCOS stage one",
+      "instrument": "state_aid",
+      "programme": "German federal funding for industrial decarbonisation",
+      "under": null,
+      "under_note": "A national decision. The register has read no act that carries the German scheme, so the funding names its programme and points at no measure. See issue #39.",
+      "amount": "salcos-federal-funding",
+      "amount_note": null,
+      "date": "2023-04-18",
+      "status": "approved",
+      "finances": ["project:salcos-salzgitter"],
+      "supports": ["technology:dri-eaf"],
+      "country": "DE",
+      "sources": [
+        {
+          "url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+          "title": "Salzgitter AG receives official notice of government funding for the SALCOS low-CO2 steel production program",
+          "publisher": "Salzgitter AG",
+          "date": "2023-04-18"
+        }
+      ]
+    },
+    {
+      "id": "lower-saxony-salcos",
+      "name": "State of Lower Saxony funding — SALCOS stage one",
+      "instrument": "state_aid",
+      "programme": "State of Lower Saxony funding",
+      "under": null,
+      "under_note": "A regional decision alongside the federal one. Recorded as its own allocation because two governments took two decisions, and a single row would state one funder where there are two. See issue #39.",
+      "amount": "salcos-state-funding",
+      "amount_note": null,
+      "date": "2023-04-18",
+      "status": "approved",
+      "finances": ["project:salcos-salzgitter"],
+      "supports": ["technology:dri-eaf"],
+      "country": "DE",
+      "sources": [
+        {
+          "url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+          "title": "Salzgitter AG receives official notice of government funding for the SALCOS low-CO2 steel production program",
+          "publisher": "Salzgitter AG",
+          "date": "2023-04-18"
+        }
+      ]
+    },
+    {
+      "id": "germany-am-bremen-eisenhuettenstadt",
+      "name": "German subsidies declined — ArcelorMittal Bremen and Eisenhüttenstadt",
+      "instrument": "state_aid",
+      "programme": "German federal funding for industrial decarbonisation",
+      "under": null,
+      "under_note": "A national decision. The register has read no act that carries the German scheme, so the funding names its programme and points at no measure. See issue #39.",
+      "amount": "am-germany-subsidy-declined",
+      "amount_note": null,
+      "date": "2025-06-23",
+      "status": "withdrawn",
+      "finances": ["project:am-bremen-eisenhuettenstadt"],
+      "supports": ["technology:dri-eaf"],
+      "country": "DE",
+      "sources": [
+        {
+          "url": "https://www.cleanenergywire.org/news/german-finance-minister-calls-steel-summit-after-green-projects-axed",
+          "title": "German finance minister calls steel summit after green projects axed",
+          "publisher": "Clean Energy Wire",
+          "date": "2025-06-23"
+        }
+      ]
     }
   ]
 }

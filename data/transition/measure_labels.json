@@ -52,43 +52,114 @@
     "    {money_annual}     the annual total, e.g. '€990 million a year'",
     "    {money_awarded}    money awarded to date, e.g. '€381 million'",
     "",
-    "THE GATES (sources/check_sector_schema.py): every entry has a plain block; the title",
-    "carries no digits and no word from sources/display_vocabulary.py; the sentence is one",
-    "sentence, names only known slots, and any bare number in it appears in the measure's",
-    "own `when` field — which is how a date is allowed to be written out and a euro figure",
-    "is not."
+    "WHERE THE PLAIN BLOCK LIVES, AND WHY IT IS NOT ALWAYS SHARED. `object` and",
+    "`instrument` are shared across sectors and always will be: they name the legal device,",
+    "which does not change when a second industry is reached. The plain block does change,",
+    "because it names the PRODUCT — and a measure page for steel that said \"per tonne of",
+    "clinker\" would be the cement dataset talking on somebody else's page.",
+    "",
+    "So there are two slots and the reader is resolved per sector:",
+    "",
+    "    plain_by_sector.<slug>   the sector's own wording, consulted first",
+    "    plain                    the shared block, used only where the measure's wording",
+    "                             is genuinely product-free — governance, verification,",
+    "                             procedural and infrastructure measures read the same",
+    "                             everywhere and are written once",
+    "",
+    "A SHARED BLOCK MAY NOT NAME ANY SECTOR'S PRODUCT. That is the rule that stops the",
+    "fallback from becoming a trap: a shared block still saying \"clinker\" would render",
+    "cement's sentence on the third sector the day a measure reaches it, and nobody would",
+    "be told. The gate holds every shared block against every sector's product vocabulary",
+    "and fails on a hit, so the wrong sentence is a build error rather than a page nobody",
+    "re-read. A measure that reaches a sector and resolves to neither slot fails the same",
+    "way.",
+    "",
+    "THE GATES (sources/check_sector_schema.py): every measure that reaches a mapped sector",
+    "resolves to a plain block; no shared block names a product; no per-sector block names",
+    "another sector's product; the title carries no digits and no word from",
+    "sources/display_vocabulary.py; the sentence is one sentence, names only known slots,",
+    "and any bare number in it appears in the measure's own `when` field — which is how a",
+    "date is allowed to be written out and a euro figure is not.",
+    "",
+    "A SENTENCE NEVER ASKS FOR A NUMBER THE PLATFORM CANNOT COMPUTE. cbam:FIN-03 is the",
+    "live case: its cement block states the certificate cost from the money model, and the",
+    "steel block states the obligation qualitatively because no certificate model exists",
+    "for steel yet. An unfillable slot is a build failure by design, and writing round it",
+    "is what a reviewer does instead of loosening the rule."
   ],
   "labels": {
     "cbam:FIN-03": {
       "object": "CBAM certificates",
       "instrument": null,
-      "plain": {
-        "title": "Importers pay for the carbon in the cement they bring in",
-        "sentence": "The carbon in imported cement is charged at {money_per_tonne} at today's carbon price, and from 2028 the certificates covering it have to be bought in the same year they are used."
+      "plain_by_sector": {
+        "cement": {
+          "title": "Importers pay for the carbon in the cement they bring in",
+          "sentence": "The carbon in imported cement is charged at {money_per_tonne} at today's carbon price, and from 2028 the certificates covering it have to be bought in the same year they are used."
+        },
+        "steel": {
+          "title": "Importers pay for the carbon in the steel they bring in",
+          "sentence": "Importers of steel have to buy certificates covering the carbon emitted making it, and from 2028 those certificates have to be bought in the same year they are used."
+        }
       }
     },
     "ets:CBAM-01": {
       "object": "Free allocation",
       "instrument": "phase-out",
-      "plain": {
-        "title": "Free carbon allowances for European kilns are being withdrawn",
-        "sentence": "European cement makers lose their free allowances on a fixed schedule that reaches zero in 2038, which costs {money_per_tonne} of clinker at today's carbon price and more every year after that."
+      "plain_by_sector": {
+        "cement": {
+          "title": "Free carbon allowances for European kilns are being withdrawn",
+          "sentence": "European cement makers lose their free allowances on a fixed schedule that reaches zero in 2038, which costs {money_per_tonne} of clinker at today's carbon price and more every year after that."
+        },
+        "steel": {
+          "title": "Free carbon allowances for European steel are being withdrawn",
+          "sentence": "European steel makers lose their free allowances on a fixed schedule that reaches zero in 2038, which costs {money_per_tonne} of hot metal at today's carbon price and more every year after that."
+        }
       }
     },
     "ets:FND-03": {
       "object": "Innovation Fund",
       "instrument": "grants",
+      "plain_by_sector": {
+        "cement": {
+          "title": "EU grants for cutting industrial emissions",
+          "sentence": "{money_awarded} has been awarded from the Innovation Fund to European cement projects that capture their CO2."
+        },
+        "steel": {
+          "title": "EU grants for making iron without coal",
+          "sentence": "{money_awarded} has been awarded from the Innovation Fund to European steel projects that reduce iron ore without coal."
+        }
+      }
+    },
+    "iaa:LM-01": {
+      "object": "Low-carbon classification",
+      "instrument": null,
       "plain": {
-        "title": "EU grants for cutting industrial emissions",
-        "sentence": "{money_awarded} has been awarded from the Innovation Fund to European cement projects that capture their CO2."
+        "title": "A low-carbon claim has to be checked by an accredited verifier",
+        "sentence": "Before a product can be called low-carbon, the emissions figures behind the claim have to be verified by an accredited verifier."
       }
     },
     "iaa:LM-03a": {
       "object": "Procurement",
       "instrument": "requirements",
-      "plain": {
-        "title": "Public contracts must buy low-carbon concrete",
-        "sentence": "From 2029, public buyers have to require concrete that meets the low-carbon and Union-origin rules the act sets, in the contracts the act covers."
+      "plain_by_sector": {
+        "cement": {
+          "title": "Public contracts must buy low-carbon concrete",
+          "sentence": "From 2029, public buyers have to require concrete that meets the low-carbon and Union-origin rules the act sets, in the contracts the act covers."
+        },
+        "steel": {
+          "title": "Public contracts must buy low-carbon steel",
+          "sentence": "From 2029, public buyers have to require steel that meets the low-carbon and Union-origin rules the act sets, in the contracts the act covers."
+        }
+      }
+    },
+    "iaa:LM-03b": {
+      "object": "Low-carbon steel",
+      "instrument": "threshold",
+      "plain_by_sector": {
+        "steel": {
+          "title": "A quarter of the steel in public projects must be low-carbon",
+          "sentence": "From 2029, at least a quarter of the steel used in the buildings, infrastructure and vehicles the act covers has to be low-carbon steel."
+        }
       }
     },
     "iaa:LM-06a": {

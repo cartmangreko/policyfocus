@@ -50,6 +50,56 @@
   }
  },
  {
+  "rel": "addresses",
+  "from": "technology:co2-transport-storage",
+  "to": "bottleneck:steel-co2-transport-storage-network",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-co2-transport-storage-network].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:dri-eaf",
+  "to": "bottleneck:steel-conversion-finance",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-conversion-finance].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:eaf-scrap",
+  "to": "bottleneck:steel-conversion-finance",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-conversion-finance].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:eaf-scrap",
+  "to": "bottleneck:steel-scrap-availability",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-scrap-availability].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:hydrogen-supply",
+  "to": "bottleneck:steel-hydrogen-supply",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-hydrogen-supply].addressed_by"
+  }
+ },
+ {
   "rel": "amends",
   "from": "act:32025R0040",
   "to": "act:32019L0904",
@@ -22814,6 +22864,30 @@
  },
  {
   "rel": "consumes",
+  "from": "sector:steel",
+  "to": "material:directly-reduced-iron",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=directly-reduced-iron].consumed_by[sector:steel]",
+   "quote": "The 100% hydrogen-capable DR plant with two melters has a production capacity of 2.5 million metric tons of directly reduced iron per year"
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "sector:steel",
+  "to": "material:steel-scrap",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=steel-scrap].consumed_by[sector:steel]",
+   "quote": "Just over 40% of EU steel is produced via the EAF production route."
+  },
+  "volume": "eu-eaf-production-share"
+ },
+ {
+  "rel": "consumes",
   "from": "technology:co2-transport-storage",
   "to": "material:captured-co2",
   "since": "2024-06-13",
@@ -22821,6 +22895,30 @@
    "source": "data/transition/materials.json",
    "path": "[id=captured-co2].consumed_by[technology:co2-transport-storage]",
    "quote": "Member States shall take the necessary measures to enable access to CO2 transport networks and to storage sites for the purposes of geological storage of the produced and captured CO2 as far as it is economically feasible to do so or when a potential customer is willing to pay, in accordance with Article 21 of Directive 2009/31/EC."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:eaf-scrap",
+  "to": "material:steel-scrap",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=steel-scrap].consumed_by[technology:eaf-scrap]",
+   "quote": "Just over 40% of EU steel is produced via the EAF production route."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:h2-dri",
+  "to": "material:hydrogen",
+  "since": "2021-06-21",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=hydrogen].consumed_by[technology:h2-dri]",
+   "quote": "SSAB, LKAB and Vattenfall have now produced the world's first hydrogen-reduced sponge iron at a pilot scale."
   },
   "volume": null
  },
@@ -27722,6 +27820,16 @@
  },
  {
   "rel": "depends_on",
+  "from": "technology:ccs-blast-furnace",
+  "to": "technology:co2-transport-storage",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/technologies.json",
+   "path": "[id=ccs-blast-furnace].dependency"
+  }
+ },
+ {
+  "rel": "depends_on",
   "from": "technology:ccs-oxyfuel",
   "to": "technology:co2-transport-storage",
   "since": "2024-05-16",
@@ -27738,6 +27846,56 @@
   "evidence": {
    "source": "data/transition/technologies.json",
    "path": "[id=ccs-post-combustion].dependency"
+  }
+ },
+ {
+  "rel": "depends_on",
+  "from": "technology:h2-dri",
+  "to": "technology:hydrogen-supply",
+  "since": "2021-06-21",
+  "evidence": {
+   "source": "data/transition/technologies.json",
+   "path": "[id=h2-dri].dependency"
+  }
+ },
+ {
+  "rel": "depends_on",
+  "from": "technology:hydrogen-supply",
+  "to": "material:hydrogen",
+  "since": "2026-04-04",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=hydrogen].required_by[technology:hydrogen-supply]"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:3d-dunkirk",
+  "to": "technology:ccs-blast-furnace",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=3d-dunkirk].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:3d-dunkirk",
+  "to": "technology:co2-transport-storage",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=3d-dunkirk].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:am-bremen-eisenhuettenstadt",
+  "to": "technology:dri-eaf",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=am-bremen-eisenhuettenstadt].technology"
   }
  },
  {
@@ -27832,6 +27990,46 @@
  },
  {
   "rel": "deploys",
+  "from": "project:greentec-donawitz",
+  "to": "technology:eaf-scrap",
+  "since": "2026-06-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=greentec-donawitz].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:greentec-linz",
+  "to": "technology:eaf-scrap",
+  "since": "2026-06-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=greentec-linz].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:hybrit-pilot-lulea",
+  "to": "technology:h2-dri",
+  "since": "2021-06-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hybrit-pilot-lulea].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:hybrit-pilot-lulea",
+  "to": "technology:hydrogen-supply",
+  "since": "2021-06-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hybrit-pilot-lulea].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:ifestos-kamari",
   "to": "technology:ccs-post-combustion",
   "since": "2023-07-14",
@@ -27872,6 +28070,36 @@
  },
  {
   "rel": "deploys",
+  "from": "project:salcos-salzgitter",
+  "to": "technology:dri-eaf",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=salcos-salzgitter].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:salcos-salzgitter",
+  "to": "technology:h2-dri",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=salcos-salzgitter].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:salcos-salzgitter",
+  "to": "technology:hydrogen-supply",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=salcos-salzgitter].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:slite-ccs",
   "to": "technology:ccs-post-combustion",
   "since": "2025-11-19",
@@ -27891,6 +28119,66 @@
   }
  },
  {
+  "rel": "deploys",
+  "from": "project:stegra-boden",
+  "to": "technology:dri-eaf",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=stegra-boden].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:stegra-boden",
+  "to": "technology:h2-dri",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=stegra-boden].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:stegra-boden",
+  "to": "technology:hydrogen-supply",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=stegra-boden].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:tkh2steel-duisburg",
+  "to": "technology:dri-eaf",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tkh2steel-duisburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:tkh2steel-duisburg",
+  "to": "technology:h2-dri",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tkh2steel-duisburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:tkh2steel-duisburg",
+  "to": "technology:hydrogen-supply",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tkh2steel-duisburg].technology"
+  }
+ },
+ {
   "rel": "finances",
   "from": "funding:france-relance-k6",
   "to": "project:k6-lumbres",
@@ -27898,6 +28186,42 @@
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=france-relance-k6].finances"
+  },
+  "instrument": "state_aid",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:germany-am-bremen-eisenhuettenstadt",
+  "to": "project:am-bremen-eisenhuettenstadt",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-am-bremen-eisenhuettenstadt].finances"
+  },
+  "instrument": "state_aid",
+  "status": "withdrawn"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:germany-federal-salcos",
+  "to": "project:salcos-salzgitter",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-federal-salcos].finances"
+  },
+  "instrument": "state_aid",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:germany-tkh2steel",
+  "to": "project:tkh2steel-duisburg",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-tkh2steel].finances"
   },
   "instrument": "state_aid",
   "status": "approved"
@@ -27952,12 +28276,36 @@
  },
  {
   "rel": "finances",
+  "from": "funding:innovation-fund-stegra",
+  "to": "project:stegra-boden",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-stegra].finances"
+  },
+  "instrument": "grant",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
   "from": "funding:longship-brevik",
   "to": "project:brevik-ccs",
   "since": "2025-06-18",
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=longship-brevik].finances"
+  },
+  "instrument": "state_aid",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:lower-saxony-salcos",
+  "to": "project:salcos-salzgitter",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=lower-saxony-salcos].finances"
   },
   "instrument": "state_aid",
   "status": "approved"
@@ -29879,6 +30227,39 @@
  },
  {
   "rel": "in",
+  "from": "funding:germany-am-bremen-eisenhuettenstadt",
+  "to": "country:DE",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-am-bremen-eisenhuettenstadt].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:germany-federal-salcos",
+  "to": "country:DE",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-federal-salcos].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:germany-tkh2steel",
+  "to": "country:DE",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-tkh2steel].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
   "from": "funding:innovation-fund-anrav",
   "to": "country:BG",
   "since": "2023-01-20",
@@ -29923,6 +30304,17 @@
  },
  {
   "rel": "in",
+  "from": "funding:innovation-fund-stegra",
+  "to": "country:SE",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-stegra].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
   "from": "funding:longship-brevik",
   "to": "country:NO",
   "since": "2025-06-18",
@@ -29931,6 +30323,61 @@
    "path": "[id=longship-brevik].country"
   },
   "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:lower-saxony-salcos",
+  "to": "country:DE",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=lower-saxony-salcos].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:3d-dunkirk",
+  "to": "country:FR",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=3d-dunkirk].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:3d-dunkirk",
+  "to": "sector:steel",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=3d-dunkirk].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:am-bremen-eisenhuettenstadt",
+  "to": "country:DE",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=am-bremen-eisenhuettenstadt].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:am-bremen-eisenhuettenstadt",
+  "to": "sector:steel",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=am-bremen-eisenhuettenstadt].sector"
+  },
+  "basis": "sector"
  },
  {
   "rel": "in",
@@ -30044,6 +30491,72 @@
  },
  {
   "rel": "in",
+  "from": "project:greentec-donawitz",
+  "to": "country:AT",
+  "since": "2026-06-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=greentec-donawitz].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:greentec-donawitz",
+  "to": "sector:steel",
+  "since": "2026-06-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=greentec-donawitz].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:greentec-linz",
+  "to": "country:AT",
+  "since": "2026-06-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=greentec-linz].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:greentec-linz",
+  "to": "sector:steel",
+  "since": "2026-06-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=greentec-linz].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:hybrit-pilot-lulea",
+  "to": "country:SE",
+  "since": "2021-06-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hybrit-pilot-lulea].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:hybrit-pilot-lulea",
+  "to": "sector:steel",
+  "since": "2021-06-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hybrit-pilot-lulea].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:ifestos-kamari",
   "to": "country:GR",
   "since": "2023-07-14",
@@ -30088,6 +30601,28 @@
  },
  {
   "rel": "in",
+  "from": "project:salcos-salzgitter",
+  "to": "country:DE",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=salcos-salzgitter].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:salcos-salzgitter",
+  "to": "sector:steel",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=salcos-salzgitter].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:slite-ccs",
   "to": "country:SE",
   "since": "2025-11-19",
@@ -30107,6 +30642,62 @@
    "path": "[id=slite-ccs].sector"
   },
   "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:stegra-boden",
+  "to": "country:SE",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=stegra-boden].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:stegra-boden",
+  "to": "sector:steel",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=stegra-boden].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:tkh2steel-duisburg",
+  "to": "country:DE",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tkh2steel-duisburg].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:tkh2steel-duisburg",
+  "to": "sector:steel",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tkh2steel-duisburg].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "produces",
+  "from": "project:3d-dunkirk",
+  "to": "material:captured-co2",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=captured-co2].produced_by[project:3d-dunkirk]",
+   "quote": "capture the CO2 present in blast furnace gases emitted during steel production at ArcelorMittal's Dunkirk site"
+  },
+  "volume": null
  },
  {
   "rel": "produces",
@@ -30158,6 +30749,18 @@
  },
  {
   "rel": "produces",
+  "from": "project:hybrit-pilot-lulea",
+  "to": "material:directly-reduced-iron",
+  "since": "2021-06-21",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=directly-reduced-iron].produced_by[project:hybrit-pilot-lulea]",
+   "quote": "Around 100 tonnes have been made so far."
+  },
+  "volume": "hybrit-pilot-sponge-iron"
+ },
+ {
+  "rel": "produces",
   "from": "project:ifestos-kamari",
   "to": "material:captured-co2",
   "since": "2023-07-14",
@@ -30170,6 +30773,30 @@
  },
  {
   "rel": "produces",
+  "from": "project:salcos-salzgitter",
+  "to": "material:directly-reduced-iron",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=directly-reduced-iron].produced_by[project:salcos-salzgitter]",
+   "quote": "1.9 million tonnes of crude steel per year"
+  },
+  "volume": null
+ },
+ {
+  "rel": "produces",
+  "from": "project:tkh2steel-duisburg",
+  "to": "material:directly-reduced-iron",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=directly-reduced-iron].produced_by[project:tkh2steel-duisburg]",
+   "quote": "The 100% hydrogen-capable DR plant with two melters has a production capacity of 2.5 million metric tons of directly reduced iron per year"
+  },
+  "volume": "tkh2steel-dri-capacity"
+ },
+ {
+  "rel": "produces",
   "from": "sector:cement",
   "to": "material:clinker",
   "since": "2026-06-26",
@@ -30179,6 +30806,49 @@
    "quote": "Grey cement clinker | 0,689 | 0,656"
   },
   "volume": null
+ },
+ {
+  "rel": "produces",
+  "from": "sector:steel",
+  "to": "material:granulated-blast-furnace-slag",
+  "since": "2023-06",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=granulated-blast-furnace-slag].produced_by[sector:steel]",
+   "quote": "Depending on the individual blast furnace capacity yearly 150-800 thousand t of GBS will vanish together with each substituted blast furnace."
+  },
+  "volume": "gbs-lost-per-blast-furnace"
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:am-germany-subsidy-declined",
+  "to": "bottleneck:steel-conversion-finance",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-conversion-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:am-germany-subsidy-declined",
+  "to": "bottleneck:steel-subsidy-dependence",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-subsidy-dependence].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:am-germany-subsidy-declined",
+  "to": "sector:steel",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=am-germany-subsidy-declined].sector",
+   "quote": "ArcelorMittal, last week dropped plans to convert two plants in Germany to climate-friendly production, citing high energy costs and turning down 1.3 billion euros of subsidies."
+  }
  },
  {
   "rel": "quantifies",
@@ -30210,6 +30880,27 @@
    "source": "data/transition/parameters.json",
    "path": "[id=anrav-grant].sector",
    "quote": "The Innovation Fund will provide a total of around 190 million euros in financing to Heidelberg Materials and partner PetroCeltic"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:boden-electrolyser-capacity",
+  "to": "bottleneck:steel-hydrogen-supply",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-hydrogen-supply].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:boden-electrolyser-capacity",
+  "to": "technology:hydrogen-supply",
+  "since": "2026-04-04",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=boden-electrolyser-capacity].technology",
+   "quote": "all 37 modules are now in place at the 740-megawatt facility"
   }
  },
  {
@@ -30275,28 +30966,6 @@
    "source": "data/transition/parameters.json",
    "path": "[id=cbam-default-grey-clinker-2026].sector",
    "quote": "2523 10 00 Grey clinker 1,370 0,050 1,410 1,551 1,692 1,833 (A)"
-  }
- },
- {
-  "rel": "quantifies",
-  "from": "parameter:cbam-factor-2026",
-  "to": "sector:cement",
-  "since": "2024-03-01",
-  "evidence": {
-   "source": "data/transition/parameters.json",
-   "path": "[id=cbam-factor-2026].sector",
-   "quote": "The CBAM factor shall be equal to 100 % for the period between the entry into force of that Regulation and the end of 2025 and, subject to the application of provisions referred to in Article 36(2), point (b), of that Regulation, shall be equal to 97,5 % in 2026, 95 % in 2027, 90 % in 2028, 77,5 % in 2029, 51,5 % in 2030, 39 % in 2031, 26,5 % in 2032 and 14 % in 2033. From 2034, no CBAM factor sha"
-  }
- },
- {
-  "rel": "quantifies",
-  "from": "parameter:cbam-factor-2030",
-  "to": "sector:cement",
-  "since": "2024-03-01",
-  "evidence": {
-   "source": "data/transition/parameters.json",
-   "path": "[id=cbam-factor-2030].sector",
-   "quote": "The CBAM factor shall be equal to 100 % for the period between the entry into force of that Regulation and the end of 2025 and, subject to the application of provisions referred to in Article 36(2), point (b), of that Regulation, shall be equal to 97,5 % in 2026, 95 % in 2027, 90 % in 2028, 77,5 % in 2029, 51,5 % in 2030, 39 % in 2031, 26,5 % in 2032 and 14 % in 2033. From 2034, no CBAM factor sha"
   }
  },
  {
@@ -30376,6 +31045,60 @@
  },
  {
   "rel": "quantifies",
+  "from": "parameter:dmx-dunkirk-capture-rate",
+  "to": "technology:ccs-blast-furnace",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=dmx-dunkirk-capture-rate].technology",
+   "quote": "CO2 capture rates exceed 90%."
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:eaf-carbon-steel-benchmark-2026-2030",
+  "to": "sector:steel",
+  "since": "2026-06-26",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=eaf-carbon-steel-benchmark-2026-2030].sector",
+   "quote": "EAF carbon steel | 0,130 | 0,142"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:eu-eaf-production-share",
+  "to": "bottleneck:steel-scrap-availability",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-scrap-availability].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:eu-eaf-production-share",
+  "to": "technology:eaf-scrap",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=eu-eaf-production-share].technology",
+   "quote": "Just over 40% of EU steel is produced via the EAF production route."
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:gbs-lost-per-blast-furnace",
+  "to": "sector:steel",
+  "since": "2023-06",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=gbs-lost-per-blast-furnace].sector",
+   "quote": "Depending on the individual blast furnace capacity yearly 150-800 thousand t of GBS will vanish together with each substituted blast furnace."
+  }
+ },
+ {
+  "rel": "quantifies",
   "from": "parameter:gezero-capture-capacity",
   "to": "technology:ccs-post-combustion",
   "since": "2023-12-15",
@@ -30429,6 +31152,28 @@
  },
  {
   "rel": "quantifies",
+  "from": "parameter:hot-metal-benchmark-2026-2030",
+  "to": "sector:steel",
+  "since": "2026-06-26",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=hot-metal-benchmark-2026-2030].sector",
+   "quote": "Hot metal | 1,360 | 1,248"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:hybrit-pilot-sponge-iron",
+  "to": "technology:h2-dri",
+  "since": "2021-06-21",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=hybrit-pilot-sponge-iron].technology",
+   "quote": "Around 100 tonnes have been made so far."
+  }
+ },
+ {
+  "rel": "quantifies",
   "from": "parameter:ifestos-capture-capacity",
   "to": "technology:ccs-post-combustion",
   "since": "2023-07-14",
@@ -30472,12 +31217,182 @@
  },
  {
   "rel": "quantifies",
+  "from": "parameter:near-zero-steel-cost-premium",
+  "to": "bottleneck:steel-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-green-premium].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:near-zero-steel-cost-premium",
+  "to": "sector:steel",
+  "since": "2025",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=near-zero-steel-cost-premium].sector",
+   "quote": "Early commercial plants using 100% hydrogen blends are estimated to cost 50-140% more than BF-BOF plants today"
+  }
+ },
+ {
+  "rel": "quantifies",
   "from": "parameter:nzia-injection-capacity-2030",
   "to": "bottleneck:co2-transport-storage-network",
   "since": "2024-06-13",
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=co2-transport-storage-network].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:nzia-injection-capacity-2030",
+  "to": "bottleneck:steel-co2-transport-storage-network",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-co2-transport-storage-network].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:salcos-crude-steel-capacity",
+  "to": "technology:dri-eaf",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=salcos-crude-steel-capacity].technology",
+   "quote": "1.9 million tonnes of crude steel per year"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:salcos-federal-funding",
+  "to": "bottleneck:steel-conversion-finance",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-conversion-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:salcos-federal-funding",
+  "to": "sector:steel",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=salcos-federal-funding].sector",
+   "quote": "€ 700 million in federal funding and € 300 million from the state government"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:salcos-state-funding",
+  "to": "bottleneck:steel-conversion-finance",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-conversion-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:salcos-state-funding",
+  "to": "sector:steel",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=salcos-state-funding].sector",
+   "quote": "€ 700 million in federal funding and € 300 million from the state government"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:stegra-boden-capacity",
+  "to": "technology:h2-dri",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=stegra-boden-capacity].technology",
+   "quote": "half of the initial yearly volumes of 2.5 million tonnes of near zero steel have been sold"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:stegra-innovation-fund-grant",
+  "to": "sector:steel",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=stegra-innovation-fund-grant].sector",
+   "quote": "The company has also been awarded a €250 million grant from the EU Innovation Fund."
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:tkh2steel-dri-capacity",
+  "to": "technology:dri-eaf",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=tkh2steel-dri-capacity].technology",
+   "quote": "The 100% hydrogen-capable DR plant with two melters has a production capacity of 2.5 million metric tons of directly reduced iron per year"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:tkh2steel-public-funding",
+  "to": "bottleneck:steel-conversion-finance",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-conversion-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:tkh2steel-public-funding",
+  "to": "sector:steel",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=tkh2steel-public-funding].sector",
+   "quote": "The EU Commission has granted state aid approval for German federal and state government funding of the \"tkH2Steel\" decarbonization project in a total amount of around two billion euros"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:voestalpine-donawitz-capacity",
+  "to": "technology:eaf-scrap",
+  "since": "2026-06-18",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=voestalpine-donawitz-capacity].technology",
+   "quote": "The EAF plant currently under construction will be capable of producing around 850,000 tons of CO2‐reduced steel annually as of 2027."
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:voestalpine-phase-one-investment",
+  "to": "bottleneck:steel-conversion-finance",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-conversion-finance].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:voestalpine-phase-one-investment",
+  "to": "sector:steel",
+  "since": "2026-06-18",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=voestalpine-phase-one-investment].sector",
+   "quote": "The investment volume for the first phase remains unchanged at approximately EUR 1.5 billion."
   }
  },
  {
@@ -30488,6 +31403,18 @@
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=cement-green-premium].measures[cbam:FIN-03]",
+   "quote": "From 2028, satisfy the quarterly certificate-holding requirement using only certificates bought in the same year, so certificates carried over from earlier years no longer count."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:cbam:FIN-03",
+  "to": "bottleneck:steel-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-green-premium].measures[cbam:FIN-03]",
    "quote": "From 2028, satisfy the quarterly certificate-holding requirement using only certificates bought in the same year, so certificates carried over from earlier years no longer count."
   },
   "weight": 0.5
@@ -30506,6 +31433,30 @@
  },
  {
   "rel": "relieves",
+  "from": "measure:ets:CBAM-01",
+  "to": "bottleneck:steel-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-green-premium].measures[ets:CBAM-01]",
+   "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:iaa:LM-01",
+  "to": "bottleneck:steel-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-green-premium].measures[iaa:LM-01]",
+   "quote": "Have emissions and other data used to calculate a product's greenhouse gas intensity verified by accredited verifiers before it can be classified/labelled as low-carbon."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
   "from": "measure:iaa:LM-03a",
   "to": "bottleneck:cement-green-premium",
   "since": "2025-01-01",
@@ -30518,12 +31469,48 @@
  },
  {
   "rel": "relieves",
+  "from": "measure:iaa:LM-03a",
+  "to": "bottleneck:steel-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-green-premium].measures[iaa:LM-03a]",
+   "quote": "Apply the Union-origin and low-carbon requirements laid down in Annex II Part I (steel, concrete/mortar, aluminium) and Annex III Part I (electric vehicles) in covered public procurement."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:iaa:LM-03b",
+  "to": "bottleneck:steel-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-green-premium].measures[iaa:LM-03b]",
+   "quote": "(a) Steel, and any product the performance of which depends mainly on steel, intended for use in buildings, infrastructure and motor vehicles for civil purposes: at least 25% of the total volume of steel used shall be low-carbon;"
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
   "from": "measure:iaa:LM-06a",
   "to": "bottleneck:cement-green-premium",
   "since": "2025-01-01",
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=cement-green-premium].measures[iaa:LM-06a]",
+   "quote": "Design public support schemes so that the Union-origin/low-carbon requirements of Annex II Part II and Annex III Part II apply to at least 45% of the national budget for Annex II Part II-type schemes and 100% of the budget for Annex III Part II-type schemes."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:iaa:LM-06a",
+  "to": "bottleneck:steel-green-premium",
+  "since": "2025-01-01",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-green-premium].measures[iaa:LM-06a]",
    "quote": "Design public support schemes so that the Union-origin/low-carbon requirements of Annex II Part II and Annex III Part II apply to at least 45% of the national budget for Annex II Part II-type schemes and 100% of the budget for Annex III Part II-type schemes."
   },
   "weight": 0.5
@@ -30542,6 +31529,18 @@
  },
  {
   "rel": "relieves",
+  "from": "measure:nzia:CO2-02",
+  "to": "bottleneck:steel-co2-transport-storage-network",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-co2-transport-storage-network].measures[nzia:CO2-02]",
+   "quote": "Deliver an individual share of the Union's 50 Mt/year CO2 injection capacity target by 2030, calculated pro-rata on the entity's share of Union crude oil and natural gas production over 2020-2023, as permitted capacity available to the market."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
   "from": "measure:nzia:CO2-10",
   "to": "bottleneck:co2-transport-storage-network",
   "since": "2024-06-13",
@@ -30554,12 +31553,36 @@
  },
  {
   "rel": "relieves",
+  "from": "measure:nzia:CO2-10",
+  "to": "bottleneck:steel-co2-transport-storage-network",
+  "since": "2024-03-14",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-co2-transport-storage-network].measures[nzia:CO2-10]",
+   "quote": "Take the measures needed to open access to CO2 transport networks and storage sites for geological storage, as far as it is economically feasible or where a potential customer is willing to pay."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
   "from": "measure:nzia:SP-02",
   "to": "bottleneck:cement-retrofit-finance",
   "since": "2023-12-15",
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=cement-retrofit-finance].measures[nzia:SP-02]",
+   "quote": "File an application for strategic-project recognition containing evidence against the criteria, a business plan evaluating financial viability, and a draft timetable showing when the project contributes to the Union benchmark."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:nzia:SP-02",
+  "to": "bottleneck:steel-conversion-finance",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-conversion-finance].measures[nzia:SP-02]",
    "quote": "File an application for strategic-project recognition containing evidence against the criteria, a business plan evaluating financial viability, and a draft timetable showing when the project contributes to the Union benchmark."
   },
   "weight": 0.5
@@ -30597,6 +31620,16 @@
    }
   ],
   "correlation_table": "Annex XIII; Art. 70(5): References to the repealed Directive 94/62/EC shall be construed as references to this Regulation and shall be read in accordance with the correlation table in Annex XIII to this Regulation."
+ },
+ {
+  "rel": "substitutes",
+  "from": "material:granulated-blast-furnace-slag",
+  "to": "material:clinker",
+  "since": "2023-06",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=granulated-blast-furnace-slag].substitutes[clinker]"
+  }
  },
  {
   "rel": "supplies",
@@ -31812,6 +32845,36 @@
  },
  {
   "rel": "supports",
+  "from": "funding:germany-am-bremen-eisenhuettenstadt",
+  "to": "technology:dri-eaf",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-am-bremen-eisenhuettenstadt].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:germany-federal-salcos",
+  "to": "technology:dri-eaf",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-federal-salcos].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:germany-tkh2steel",
+  "to": "technology:dri-eaf",
+  "since": "2023-07-20",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-tkh2steel].supports"
+  }
+ },
+ {
+  "rel": "supports",
   "from": "funding:innovation-fund-anrav",
   "to": "technology:ccs-post-combustion",
   "since": "2023-01-20",
@@ -31852,12 +32915,32 @@
  },
  {
   "rel": "supports",
+  "from": "funding:innovation-fund-stegra",
+  "to": "technology:h2-dri",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-stegra].supports"
+  }
+ },
+ {
+  "rel": "supports",
   "from": "funding:longship-brevik",
   "to": "technology:ccs-post-combustion",
   "since": "2025-06-18",
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=longship-brevik].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:lower-saxony-salcos",
+  "to": "technology:dri-eaf",
+  "since": "2023-04-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=lower-saxony-salcos].supports"
   }
  },
  {
@@ -31905,6 +32988,17 @@
   "programme": "EU Innovation Fund"
  },
  {
+  "rel": "under",
+  "from": "funding:innovation-fund-stegra",
+  "to": "measure:ets:FND-03",
+  "since": "2024-01-22",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-stegra].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
   "rel": "worsens",
   "from": "measure:ets:CBAM-01",
   "to": "bottleneck:cement-retrofit-finance",
@@ -31912,6 +33006,18 @@
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=cement-retrofit-finance].measures[ets:CBAM-01]",
+   "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "worsens",
+  "from": "measure:ets:CBAM-01",
+  "to": "bottleneck:steel-conversion-finance",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=steel-conversion-finance].measures[ets:CBAM-01]",
    "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods."
   },
   "weight": 0.5

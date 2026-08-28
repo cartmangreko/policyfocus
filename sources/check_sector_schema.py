@@ -543,8 +543,32 @@ def check_project_boundary(e: Errors, ecosystems: list[dict]) -> None:
                                     f"in its note")
 
 
+def measures_reaching(sector: str) -> set[str]:
+    """Which measures this sector actually renders a plain block for.
+
+    Two ways in, and they are the two the sector view itself uses: a measure
+    with an edge to one of the sector's constraints, and a measure this sector
+    has a money model for. Computed here rather than by running the ranking,
+    because this gate has to hold before anything is built -- a label written
+    wrong should fail on the file, not on the day somebody rebuilds it.
+    """
+    import build_importance as bi
+    reached = {m["measure"]
+               for b in sm.load("bottleneck") if b["sector"] == sector
+               for m in (b.get("measures") or [])}
+    return reached | {mid for (slug, mid) in bi.MODELS if slug == sector}
+
+
+def product_words(block: dict, words: tuple[str, ...]) -> set[str]:
+    """Which of these product nouns a plain block uses, whole words only."""
+    text = f"{block.get('title', '')} {block.get('sentence', '')}"
+    return {w for w in words
+            if re.search(rf"\b{re.escape(w)}s?\b", text, re.IGNORECASE)}
+
+
 def check_measure_labels(e: Errors, measure_ids: set[str]) -> None:
-    """The short labels the diagram draws instead of measure ids.
+    """The short labels the diagram draws, and the plain block each sector
+    reads under them.
 
     Checked here as well as in build_sector_diagram.py, and the duplication is
     deliberate: the builder only ever sees the measures that made one sector's
@@ -554,9 +578,22 @@ def check_measure_labels(e: Errors, measure_ids: set[str]) -> None:
 
     What is NOT checked here is uniqueness. Two measures may legitimately share
     a label as long as they never appear in the same picture, and only the
-    builder knows which measures share a picture — so that gate lives there.
+    builder knows which measures share a picture -- so that gate lives there.
+
+    THE PLAIN BLOCK IS CHECKED PER SECTOR, which is the point of this function
+    since the block was split. `object` and `instrument` are shared and stay
+    shared: they name the legal device, which does not change when a second
+    industry is reached. The plain block names the PRODUCT, and a shared one
+    that still said "clinker" would render cement's sentence on the next
+    sector to reach that measure, silently. So: a shared block may name no
+    sector's product at all, a per-sector block may name only its own sector's,
+    and a measure that reaches a sector and resolves to neither slot fails
+    outright. The trap becomes a build error.
     """
     labels = sm.measure_labels()
+    mapped = sorted({b["sector"] for b in sm.load("bottleneck")})
+    reach = {s: measures_reaching(s) for s in mapped}
+
     for measure_id, entry in sorted(labels.items()):
         where = f"measure label {measure_id}"
         if measure_id not in measure_ids:
@@ -576,7 +613,45 @@ def check_measure_labels(e: Errors, measure_ids: set[str]) -> None:
         if bad:
             e.add(where, f"{label!r} uses {sorted(set(bad))} — see "
                          f"sources/display_vocabulary.py")
-        check_plain_block(e, where, entry, measure_id)
+
+        # The shared block, held against EVERY sector's product vocabulary. It
+        # is checked whether or not any sector currently falls back to it: a
+        # shared block naming a product is wrong the moment it is written, and
+        # waiting for the sector that would expose it is waiting for the bug.
+        shared = entry.get("plain")
+        if shared:
+            check_plain_block(e, f"{where} (shared)", shared, measure_id)
+            for slug, words in sorted(sm.SECTOR_PRODUCT_WORDS.items()):
+                hit = product_words(shared, words)
+                if hit:
+                    e.add(f"{where} (shared)",
+                          f"names {sorted(hit)}, which is {slug}'s product vocabulary. A "
+                          f"shared block renders on every sector a measure reaches, so it "
+                          f"may name no sector's product — move it to "
+                          f"plain_by_sector.{slug}")
+
+        for slug, block in sorted((entry.get("plain_by_sector") or {}).items()):
+            if slug not in sm.sectors():
+                e.add(where, f"plain_by_sector names {slug!r}, which is not in "
+                             f"data/sectors.json")
+                continue
+            check_plain_block(e, f"{where} ({slug})", block, measure_id)
+            for other, words in sorted(sm.SECTOR_PRODUCT_WORDS.items()):
+                if other == slug:
+                    continue
+                hit = product_words(block, words)
+                if hit:
+                    e.add(f"{where} ({slug})",
+                          f"names {sorted(hit)}, which is {other}'s product vocabulary")
+
+        # And the resolution itself: every sector that reaches this measure has
+        # to end up with words.
+        for slug in mapped:
+            if measure_id in reach[slug] and sm.plain_block(entry, slug) is None:
+                e.add(where, f"reaches {slug} and resolves to no plain block — the sector "
+                             f"page would list this measure with nothing to say about it. "
+                             f"Write plain_by_sector.{slug}, or a shared block if the "
+                             f"wording names no product")
 
 
 # A four-digit year, which is the one number an authored sentence is allowed to
@@ -591,7 +666,7 @@ _DIGITS = re.compile(r"(?<![A-Za-z0-9])\d+(?![A-Za-z0-9])")
 MAX_PLAIN_TITLE = 72
 
 
-def check_plain_block(e: Errors, where: str, entry: dict, measure_id: str) -> None:
+def check_plain_block(e: Errors, where: str, plain: dict, measure_id: str) -> None:
     """The key-measures list's title and sentence — brief 4 §5.
 
     THE RULE THIS ENFORCES is that the words are authored and the figures are
@@ -606,7 +681,7 @@ def check_plain_block(e: Errors, where: str, entry: dict, measure_id: str) -> No
     the measure's own `when` field — which is exactly what happens below. Any
     other run of digits is a figure that should have been a slot.
     """
-    plain = entry.get("plain") or {}
+    plain = plain or {}
     title = (plain.get("title") or "").strip()
     sentence = (plain.get("sentence") or "").strip()
     if not title or not sentence:
@@ -675,10 +750,23 @@ def check_prose(e: Errors) -> list[str]:
     block = doc.get("transition_notes") or {}
     notes = block.get("sectors", {})
     mapped = {b["sector"] for b in sm.load("bottleneck")}
+    # A slot that exists and is empty is a DIFFERENT state from a slot nobody
+    # opened, and both have to be visible. The missing key fails, because a
+    # mapped sector nobody has thought about is a defect; the empty string is
+    # collected into `outstanding` below and printed on every run, because the
+    # words are George's to write and an unwritten one that never surfaced
+    # would be indistinguishable from a written one. Same discipline as the
+    # ecosystem descriptions further down, and it exists because
+    # `sector_orientation` is `approved` — without this, an empty paragraph
+    # under an approved block is invisible to every run of this gate.
+    unwritten: list[str] = []
     for sector in sorted(mapped):
         if sector not in notes:
             e.add(f"prose {sector}", "has a transition map and no note in "
                                      "data/prose.json transition_notes")
+        elif not (notes[sector].get("sentence") or "").strip():
+            unwritten.append(f"  {sector} (transition note): not written — the page falls "
+                             f"back to the computed sentence")
     # The orientation paragraph, same discipline one level up: a mapped sector
     # must have one, and an unreviewed block is a state rather than a defect.
     # It has no computed fallback — standing context is the one thing on the
@@ -690,6 +778,9 @@ def check_prose(e: Errors) -> list[str]:
         if sector not in paras:
             e.add(f"prose {sector}", "has a transition map and no orientation paragraph in "
                                      "data/prose.json sector_orientation")
+        elif not (paras[sector].get("paragraph") or "").strip():
+            unwritten.append(f"  {sector} (orientation): not written — the page opens on its "
+                             f"lead block and carries no standing context")
 
     # One description per ecosystem instance (page specifications §4.2). An
     # instance must HAVE a slot — a missing key is an instance nobody has
@@ -747,6 +838,10 @@ def check_prose(e: Errors) -> list[str]:
     if outstanding:
         pending += [f"  {i} (ecosystem description): not written — the tile has no hover "
                     f"text and the coverage page lists nothing for it" for i in outstanding]
+    # Unconditional: an empty slot is outstanding whether or not the block
+    # around it has been approved, which is the whole reason this list is
+    # separate from the draft lists above.
+    pending += unwritten
     return pending
 
 
