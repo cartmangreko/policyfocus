@@ -2946,6 +2946,21 @@ h3 {
   line-height: 1.45;
   letter-spacing: -0.005em;
   max-width: 62ch;
+  /* THE ONE PLACE SIGNAL BLUE TOUCHES EDITORIAL TYPE, and it is an exception
+     rather than a widening of the chrome layer — sources/check_colour_layers.py
+     names it in SIGNAL_EXCEPTIONS and says so there. Once the sentence is at
+     body size inside a panel it has no weight of its own left, and the rule
+     gives it back a line of emphasis without giving it back a headline.
+
+     DELIBERATELY NOT THE LINK TREATMENT. Links in this block are a 1px
+     `--rule` border-bottom (see .lead-fact a), so a 2px blue rule set 5px off
+     the baseline does not read as one — which matters, because the lead
+     sentence is not a link and there is nothing behind it to open. */
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  text-decoration-skip-ink: auto;
 }
 @media (min-width: 720px) {
   .lead-sentence {

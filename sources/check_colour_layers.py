@@ -144,6 +144,30 @@ CHROME_MARKERS = (
     "searchbar", "query-arrow", "skip-link",
 )
 
+# SIGNAL BLUE ON EDITORIAL TYPE, BY EXCEPTION AND BY NAME.
+#
+# Signal is the chrome and interaction layer and the ruling above says it never
+# touches data. The sector lead's opening sentence is neither: it is editorial
+# type, and once it is set at body size inside a panel it has no weight left of
+# its own, so it carries a 2px signal rule under it as emphasis.
+#
+# This is a LIST OF EXACT SELECTORS rather than a marker added to
+# CHROME_MARKERS, and the difference is the point. A marker would quietly admit
+# every future selector whose name happens to contain it, and would also record
+# the untruth that the lead sentence is chrome. An exact list admits one rule,
+# reads as an exception when somebody opens this file, and has to be edited
+# deliberately to admit a second.
+#
+# Brief 5 §7 governs where colour appears on a sector page and does not
+# contemplate this. It is flagged for the specification pass rather than
+# treated as settled here.
+SIGNAL_EXCEPTIONS = (".lead-sentence",)
+
+
+def signal_excepted(selector: str) -> bool:
+    return any(part.strip() in SIGNAL_EXCEPTIONS for part in selector.split(","))
+
+
 # Where the diagram palette is allowed. The diagram, the ego graph, the finding
 # diagrams -- pictures, and nothing that is not a picture.
 DIAGRAM_MARKERS = ("tdiagram", "tnode", "tedge", "ego-", "diagram", "fdiag")
@@ -241,8 +265,12 @@ def main() -> int:
                     f"{sel}: emits {token} without naming a direction. Claret and pine "
                     f"are the direction layer; a selector that wants one has to say "
                     f"which side it is showing")
-        if uses(body, "--signal") and not confined(sel, CHROME_MARKERS):
-            problems.append(f"{sel}: emits --signal outside brand and chrome")
+        if (uses(body, "--signal") and not confined(sel, CHROME_MARKERS)
+                and not signal_excepted(sel)):
+            problems.append(f"{sel}: emits --signal outside brand and chrome. If it is a "
+                            f"deliberate exception, name the exact selector in "
+                            f"SIGNAL_EXCEPTIONS with the reason, rather than widening "
+                            f"CHROME_MARKERS")
         for name in measured:
             if not uses(body, name):
                 continue
