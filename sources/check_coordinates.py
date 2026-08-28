@@ -117,10 +117,14 @@ def main() -> int:
                     continue
                 drift = abs(km - exception["km"])
                 if drift > DRIFT_KM:
-                    errors.append(f"{where}: {km:.2f} km from {project['country']}, and the "
-                                  f"exception records {exception['km']:.2f} km — it has moved "
-                                  f"{drift:.2f} km. Re-measure and re-record it, or find out "
-                                  f"why the point changed")
+                    # All three numbers, each labelled. An earlier wording gave the
+                    # drift last and unlabelled, and it was read as the measured
+                    # distance -- which makes a firing test look like a passing one.
+                    errors.append(f"{where}: measured {km:.2f} km from "
+                                  f"{project['country']}, recorded {exception['km']:.2f} km, "
+                                  f"drift {drift:.2f} km, which is past the "
+                                  f"{DRIFT_KM:.0f} km limit. Re-measure and re-record it, or "
+                                  f"find out why the point changed")
                     continue
                 noted.append(f"  {km:6.2f} km  {key}\n             {exception['why']}")
                 placed += 1

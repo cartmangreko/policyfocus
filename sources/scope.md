@@ -506,8 +506,28 @@ source with its verbatim, and a `note` saying the company's own wording is
 weaker — so the reader sees the join rather than a flat assertion. And the
 site's `confidence` stays `secondary`, which is what it is.
 
-The same test governs an infrastructure node's existence. A named destination
-becomes a node only where it is a concrete place with a published position:
-Antwerp@C is named by Holcim as GO4ZERO's export hub and is sited only as "a
-plot of land inside the port", so it is not a node and GO4ZERO is unresolved.
-Naming is not siting.
+### A node in the geo layer requires a source-stated position
+
+Scoped to the geo layer and to nothing else. Every project row carries
+`location`, `sources/check_coordinates.py` places every point against the
+basemap, and both rest on the same precondition: a row in this layer is a row
+somebody can draw. So **admission to this layer requires a position a source
+states, to plant or site precision.** A facility that is named but not sited is
+not admitted here, and the thing that names it records the chain as unresolved
+instead.
+
+Antwerp@C is the worked case. Holcim names it as GO4ZERO's export hub, so it is
+a real, named destination; the Port of Antwerp-Bruges sites it only as "a plot
+of land… inside the port", which is a port and not a place. A point invented
+for it would be a mark a reader takes for a terminal, several kilometres from
+wherever the terminal turns out to be. So it is not admitted, and
+`go4zero-obourg` carries `"unresolved": true` with a note naming the hub — which
+is more information than a wrong dot, not less.
+
+**This settles admission to the geo layer and nothing beyond it.** Whether a
+named-but-unsited facility should exist as a node in some other layer — carrying
+its name, its operator and its role, with no coordinate — is an open question
+this ruling does not reach and must not be read as foreclosing. It is a live
+option: the register already holds facts about places it cannot draw. The two
+readings agree on the case in front of us either way, because under both,
+Antwerp@C has no position and GO4ZERO's chain is unresolved.
