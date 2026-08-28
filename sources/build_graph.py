@@ -41,7 +41,10 @@ that starts on an act and ends on a plant.
   technology:<slug>           a way of making the product differently
   bottleneck:<slug>           a named constraint on one sector's transition
   parameter:<slug>            one sourced number, with the sentence it came from
-  project:<slug>              one real installation, append-only status history
+  project:<slug>              one real installation, append-only status history.
+                              Carries `location`, a list of sited coordinates,
+                              and `role` -- `plant` for a works, `storage` for
+                              the geological store a captured tonne ends in
   material:<slug>             what a sector makes, consumes or throws off
   funding:<slug>              one capital allocation, with the basis it was made
                               under
@@ -110,6 +113,14 @@ so that country-level views can be added later without moving these.
                                         Shares its name with the measure -> act
                                         dependency deliberately: it is the same
                                         relation about a different object.
+               project -> project       ... and the same relation again, one
+                                        level down: this plant's captured tonne
+                                        goes to that store. Only where a source
+                                        names the store. Where none does, the
+                                        project row says the storage is
+                                        unresolved and no edge is written,
+                                        because an edge to a store nobody has
+                                        named would be this build inventing one.
 
 These are the TRANSITION edges. They come from data/transition/*.json and
 carry the same since/evidence discipline as everything else: an edge whose
@@ -703,10 +714,15 @@ def _transition_edges(g: Graph):
                    unit=p["unit"], scope=p["scope"], confidence=p["confidence"],
                    date_of_value=p["date_of_value"])
     for pr in kinds["project"]:
+        # `location` rides onto the node as it is written: a list of sites, each
+        # with its own source. It is an ATTRIBUTE and not a derived centroid --
+        # a two-site project averaged into one point would put a mark in a field
+        # between Bremen and Eisenhüttenstadt and call it a steelworks.
         g.add_node(f"project:{pr['id']}", "project", pr["name"],
                    company=pr["company"], plant=pr.get("plant"),
                    country=pr["country"], status=pr["status"],
-                   transition=pr["transition"])
+                   transition=pr["transition"],
+                   role=pr.get("role", "plant"), location=pr["location"])
     for m in kinds["material"]:
         g.add_node(f"material:{m['id']}", "material", m["name"],
                    type=m["type"], cn_code=m.get("cn_code"),
@@ -784,6 +800,18 @@ def _transition_edges(g: Graph):
                    {"source": "data/transition/projects.json",
                     "path": f"[id={pr['id']}].country"},
                    basis="country")
+        # project -> project, where the tonne goes. Only the resolved ones become
+        # edges: an unresolved store is recorded on the row and drawn from there,
+        # because an edge to nowhere is not a thing a walk can carry, and an edge
+        # to a placeholder node would be this repository inventing a store.
+        storage = pr.get("storage") or {}
+        if storage.get("project"):
+            g.add_edge("depends_on", src, f"project:{storage['project']}",
+                       storage.get("since", first),
+                       {"source": "data/transition/projects.json",
+                        "path": f"[id={pr['id']}].storage",
+                        "quote": storage["source"]["verbatim"][:400]},
+                       basis="storage")
 
     # material edges. Every one of them is recorded on the material row, so the
     # direction here is a re-read rather than a decision: `produced_by` becomes
@@ -1013,7 +1041,7 @@ def gate(g: Graph):
         "repeals": {("act", "act")},
         "cites": {("measure", "act")},
         "depends_on": {("measure", "act"), ("technology", "technology"),
-                       ("technology", "material")},
+                       ("technology", "material"), ("project", "project")},
         "contains": {("act", "measure")},
         "applies_to": {("measure", "sector")},
         "supplies": {("sector", "sector")},

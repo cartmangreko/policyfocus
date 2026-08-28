@@ -43,6 +43,21 @@ What it enforces, and why each rule is a failure rather than a warning:
                  project's `status`. A project whose header and whose timeline
                  disagree is a project whose page states two different facts.
 
+  COORDINATES    every project carries at least one located site, and every site
+                 carries a latitude, a longitude, a precision and a source. A
+                 project without coordinates cannot be drawn, and a map that
+                 quietly omits the plants it has no point for is a map that
+                 reads as a claim about where the industry is. `precision:
+                 "town"` fails by name: a town centroid drawn as a works is a
+                 wrong fact rendered confidently.
+
+  STORAGE        every project that deploys a capture technology says where the
+                 tonne goes -- either the id of a storage project, or
+                 `"unresolved": true` with a note. Unresolved is a fact about
+                 the chain and is renderable; silence is not, because a page
+                 with nothing in that slot reads as a project whose storage
+                 nobody asked about.
+
 What it prints and does NOT fail on:
 
   STALE          a parameter more than `stale_after` months past its
@@ -256,7 +271,88 @@ def check_parameters(e: Errors, rows: list[dict], tech_ids: set, sectors: dict) 
                 e.stale.append(f"  {r['id']}: {age} months old, stale_after {limit}")
 
 
-def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set, sectors: dict) -> None:
+def _location(e: Errors, where: str, row: dict) -> None:
+    """Every site a project sits on, and the source that puts it there.
+
+    `location` is a list because a project is not always at one place. The list
+    may not be empty: a project with no point is a project the map has to leave
+    out, and the whole reason the coordinate is a first-class attribute rather
+    than a rendering detail is that leaving one out silently is the failure.
+    """
+    sites = row.get("location")
+    if not sites:
+        e.add(where, "no location — every project and plant carries at least one "
+                     "site with a latitude and a longitude")
+        return
+    if not isinstance(sites, list):
+        e.add(where, "location must be a list of sites, even where there is one")
+        return
+    for i, s in enumerate(sites):
+        w = f"{where} location[{i}]"
+        _req(e, w, s, "site", "precision", "retrieved_date", "confidence")
+        _date(e, w, s, "retrieved_date")
+        _vocab(e, w, s, "confidence", sm.CONFIDENCE)
+        _vocab(e, w, s, "precision", sm.LOCATION_PRECISIONS)
+        if s.get("precision") == "town":
+            e.add(w, "precision=town — a town centroid is not a plant site. Find the "
+                     "works, or leave the project out of the register until somebody has")
+        for field, lo, hi in (("lat", -90, 90), ("lon", -180, 180)):
+            val = s.get(field)
+            if not isinstance(val, (int, float)):
+                e.add(w, f"{field} is missing or not a number")
+            elif not lo <= val <= hi:
+                e.add(w, f"{field}={val} is outside {lo}..{hi}")
+        src = s.get("source") or {}
+        _url(e, w, src.get("url"))
+        _req(e, w, src, "publisher", "verbatim")
+        addr = s.get("address")
+        if addr:
+            _url(e, f"{w} address", addr.get("url"))
+            _req(e, f"{w} address", addr, "text", "publisher", "date")
+            _date(e, f"{w} address", addr, "date")
+
+
+def _storage(e: Errors, where: str, row: dict, technologies: dict, project_ids: set) -> None:
+    """Where the captured tonne goes, for every project that captures one.
+
+    Two shapes and no third. Naming a store resolves to a project in this same
+    file, which is what makes the edge drawable and the store's own page
+    reachable; `unresolved` is the other answer and is not a lesser one, but it
+    still carries the source that failed to name a destination, because "nobody
+    has said" is a claim about a document somebody read.
+    """
+    st = row.get("storage")
+    if not sm.captures_co2(row, technologies):
+        if st is not None:
+            e.add(where, "carries `storage` and deploys no capture technology — the field "
+                         "answers a question this project is not being asked")
+        return
+    if not st:
+        e.add(where, "deploys a capture technology and says nothing about where the CO2 "
+                     "goes. Name a storage project, or say \"unresolved\": true with a note")
+        return
+    src = st.get("source") or {}
+    _url(e, f"{where} storage", src.get("url"))
+    _req(e, f"{where} storage", src, "publisher", "date", "verbatim")
+    _date(e, f"{where} storage", src, "date")
+    if st.get("unresolved"):
+        if st.get("project"):
+            e.add(where, "storage is both unresolved and points at a project — one or "
+                         "the other")
+        _req(e, f"{where} storage", st, "note")
+        return
+    target = st.get("project")
+    if not target:
+        e.add(where, "storage names no project and is not marked unresolved")
+        return
+    if target not in project_ids:
+        e.add(where, f"storage points at {target!r}, which is not a project id")
+    _date(e, f"{where} storage", st, "since")
+    _req(e, f"{where} storage", st, "since")
+
+
+def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
+                   sectors: dict, technologies: dict, project_ids: set) -> None:
     for r in rows:
         w = f"project {r.get('id', '?')}"
         _req(e, w, r, "id", "name", "company", "country", "sector", "transition",
@@ -285,6 +381,14 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
         if history and history[-1].get("status") != r.get("status"):
             e.add(w, f"status={r.get('status')!r} but the last history entry is "
                      f"{history[-1].get('status')!r}")
+        _vocab(e, w, r, "role", sm.PROJECT_ROLES)
+        if r.get("shared") is not None and r.get("shared") is not True:
+            e.add(w, "shared is only ever true — a project that is not shared omits it")
+        if r.get("shared") and not r.get("shared_note"):
+            e.add(w, "shared with no shared_note — the flag is a judgement and the note "
+                     "is where it is defended")
+        _location(e, w, r)
+        _storage(e, w, r, technologies, project_ids)
         _source_list(e, w, r)
 
 
@@ -862,8 +966,9 @@ def main() -> int:
     check_technologies(e, rows["technology"], sectors)
     check_parameters(e, rows["parameter"], tech_ids, sectors)
     check_bottlenecks(e, rows["bottleneck"], tech_ids, param_ids, measure_ids, sectors)
-    check_projects(e, rows["project"], tech_ids, measure_ids, sectors)
     project_ids = {r["id"] for r in rows["project"]}
+    check_projects(e, rows["project"], tech_ids, measure_ids, sectors,
+                   sm.index(rows["technology"]), project_ids)
     material_ids = {r["id"] for r in rows["material"]}
     check_materials(e, rows["material"], sectors, tech_ids, project_ids, param_ids,
                     material_ids)

@@ -30,7 +30,37 @@
     "build — a boundary drawn twice is a boundary somebody has to redraw. A CO2 store or a",
     "hydrogen pipeline serving three industries is the exception the rule needs, and it",
     "says so with \"shared\": true and a note giving the industries it serves. A plant making",
-    "one product never carries it."
+    "one product never carries it.",
+    "",
+    "WHERE IT IS, IN THE SAME BREATH AS WHAT IT IS. `location` is a LIST of sites, because a",
+    "project is not always at one place: the ArcelorMittal row covers Bremen and",
+    "Eisenhüttenstadt, and a single point for it would put a fact on the map that is half",
+    "wrong. One site is the ordinary case and the list of one says so honestly.",
+    "",
+    "Every site carries {site, lat, lon, precision, retrieved_date, source, confidence} — the",
+    "parameter discipline, applied to a coordinate. `precision` is `plant` for a works and",
+    "`site` for a store or a terminal; `town` is in the vocabulary only so that the gate can",
+    "name what it is refusing. A town centroid is not a plant location: it would draw a mark",
+    "a reader would take for the works, several kilometres from the works. The coordinates",
+    "are read off OpenStreetMap features that carry the operator's or the works' own name,",
+    "which is a source that states a position rather than an address somebody geocoded in",
+    "their head; where a company publishes the plant address, `address` records it beside the",
+    "point. `confidence` is `secondary` throughout: OpenStreetMap is a third party reporting",
+    "somebody else's site.",
+    "",
+    "`role` says what kind of place it is, and the map draws each differently. `plant` is the",
+    "default and is omitted; `storage` is a permitted or proposed geological store. A store is",
+    "in this file rather than in one of its own because it is what this file already says it",
+    "is — a real installation with an append-only status history — and because the exception",
+    "the `shared` flag was written for is exactly a CO2 store serving several industries.",
+    "",
+    "`storage` IS REQUIRED ON EVERY CAPTURE PROJECT and has two shapes. Either it names the",
+    "project id of the store the tonne reaches, with the source that names it; or it says",
+    "`\"unresolved\": true` with a note saying how far the chain is actually specified. Five of",
+    "the nine capture projects here are unresolved, and that is the finding, not a hole: a",
+    "kiln with a capture unit and nowhere to send the CO2 is the thing the sector page exists",
+    "to show. An unresolved row still carries a source, because \"nobody has said\" is itself a",
+    "claim about a document somebody read."
   ],
   "projects": [
     {
@@ -39,12 +69,38 @@
       "company": "Heidelberg Materials",
       "plant": "Brevik",
       "country": "NO",
+      "location": [
+        {
+          "site": "Brevik cement works",
+          "lat": 59.0644,
+          "lon": 9.6912,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/relation/1437635",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Norcem; landuse=industrial; industrial=cement",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "cement",
       "transition": "decarbonisation",
       "technology": [
         "ccs-post-combustion",
         "co2-transport-storage"
       ],
+      "storage": {
+        "project": "northern-lights",
+        "since": "2025-08-25",
+        "source": {
+          "url": "https://www.equinor.com/news/20250825-first-co2-volumes-stored-at-northern-lights",
+          "publisher": "Equinor",
+          "date": "2025-08-25",
+          "verbatim": "The CO₂ is transported via ships from Heidelberg Materials' cement factory in Brevik. The CO₂ is then offloaded and transported through a 100-kilometer pipeline and injected into the Aurora reservoir under the seabed of the North Sea."
+        }
+      },
       "capacity": {
         "value": 400000,
         "unit": "tonnes CO2 captured per year",
@@ -86,12 +142,45 @@
       "company": "Heidelberg Materials",
       "plant": "Geseke",
       "country": "DE",
+      "location": [
+        {
+          "site": "Geseke cement works, Milke section",
+          "lat": 51.6191,
+          "lon": 8.5118,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/231449793",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Zementwerk Milke; man_made=works; product=cement; addr:street=Bürener Straße; addr:housenumber=46; addr:postcode=59590",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "address": {
+            "text": "Bürener Straße 46, 59590 Geseke, Deutschland",
+            "url": "https://www.heidelbergmaterials.de/de/zement/zementwerke/geseke",
+            "publisher": "Heidelberg Materials Deutschland",
+            "date": "2026-08-28"
+          },
+          "note": "The works has two sections, Elsa and Milke; the company gives Bürener Straße 46 as the plant address and that is the point taken."
+        }
+      ],
       "sector": "cement",
       "transition": "decarbonisation",
       "technology": [
         "ccs-post-combustion",
         "co2-transport-storage"
       ],
+      "storage": {
+        "unresolved": true,
+        "source": {
+          "url": "https://www.heidelbergmaterials.com/en/sustainability/we-decarbonize-the-construction-industry/ccus/gezero",
+          "publisher": "Heidelberg Materials",
+          "date": "2026-08-28",
+          "verbatim": "The captured CO₂ is intended to be transported to the North Sea and permanently stored offshore in secure storage facilities at depths between 1000 and 3000 metres."
+        },
+        "note": "Rail to the coast and then the North Sea. No store and no receiving terminal is named, so the chain ends in a region rather than at a place."
+      },
       "capacity": {
         "value": 700000,
         "unit": "tonnes CO2 captured per year",
@@ -121,12 +210,39 @@
       "company": "Heidelberg Materials (Devnya Cement)",
       "plant": "Devnya",
       "country": "BG",
+      "location": [
+        {
+          "site": "Devnya cement works",
+          "lat": 43.2343,
+          "lon": 27.5951,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/196776675",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Девня Цимент АД; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "cement",
       "transition": "decarbonisation",
       "technology": [
         "ccs-post-combustion",
         "co2-transport-storage"
       ],
+      "storage": {
+        "project": "galata-co2-storage",
+        "since": "2022-07-18",
+        "source": {
+          "url": "https://balkangreenenergynews.com/bulgarian-cement-plant-gets-eu-grant-for-innovative-carbon-capture-storage-project/",
+          "publisher": "Balkan Green Energy News",
+          "date": "2022-07-18",
+          "verbatim": "The Devnya Cement plant in the country's northeast intends to capture carbon dioxide from its operations and pipeline it to the depleted Galata offshore gas field under the Black Sea for permanent storage."
+        },
+        "note": "The Innovation Fund fiche says only \"a depleted gas field in the Black Sea\". Galata is named by the trade press and not by the project's own publications."
+      },
       "capacity": {
         "value": 800000,
         "unit": "tonnes CO2 captured per year",
@@ -156,12 +272,38 @@
       "company": "Holcim",
       "plant": "Obourg",
       "country": "BE",
+      "location": [
+        {
+          "site": "Obourg cement works",
+          "lat": 50.4709,
+          "lon": 3.9948,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/relation/10785798",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Holcim (Cimenterie d'Obourg); landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "cement",
       "transition": "decarbonisation",
       "technology": [
         "ccs-oxyfuel",
         "co2-transport-storage"
       ],
+      "storage": {
+        "unresolved": true,
+        "source": {
+          "url": "https://www.holcim.com/what-we-do/green-operations/ccus/go4zero",
+          "publisher": "Holcim",
+          "date": "2026-08-28",
+          "verbatim": "Captured CO2 will then be transported via Fluxys' network to the Antwerp@C CO2 Export Hub"
+        },
+        "note": "The chain reaches a named export hub — Antwerp@C, in the port of Antwerp — and is then \"shipped for storage under the North Sea\". The hub has no published plot and the store has no name, so neither is a node yet."
+      },
       "investment_total": {
         "value": 500000000,
         "unit": "EUR",
@@ -191,11 +333,37 @@
       "company": "Holcim",
       "plant": "Lägerdorf",
       "country": "DE",
+      "location": [
+        {
+          "site": "Lägerdorf cement works",
+          "lat": 53.8759,
+          "lon": 9.5822,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/29202456",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Zementwerk Lägerdorf; landuse=industrial; industrial=cement; operator=Holcim (Deutschland) GmbH; addr:street=Sandweg; addr:housenumber=10",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "cement",
       "transition": "decarbonisation",
       "technology": [
         "ccs-oxyfuel"
       ],
+      "storage": {
+        "unresolved": true,
+        "source": {
+          "url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+          "publisher": "Holcim",
+          "date": "2026-08-28",
+          "verbatim": "The purified CO2 will either be processed into e-methanol through methanol synthesis or reprocessed as a raw material to produce plastics, for example."
+        },
+        "note": "Holcim's own pages state a use for the CO2 and no destination for it. Trade press reports a 30 km pipeline to Brunsbüttel; the company does not, so it is not recorded here."
+      },
       "capacity": {
         "value": 1.2,
         "unit": "Mt CO2 captured per year",
@@ -231,12 +399,38 @@
       "company": "Heidelberg Materials",
       "plant": "Slite",
       "country": "SE",
+      "location": [
+        {
+          "site": "Slite cement works",
+          "lat": 57.7121,
+          "lon": 18.8015,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/198541727",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Cementa; landuse=industrial; man_made=works; operator=Cementa",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "cement",
       "transition": "decarbonisation",
       "technology": [
         "ccs-post-combustion",
         "co2-transport-storage"
       ],
+      "storage": {
+        "unresolved": true,
+        "source": {
+          "url": "https://www.heidelbergmaterials.com/en/pr-30-05-2022",
+          "publisher": "Heidelberg Materials",
+          "date": "2022-05-30",
+          "verbatim": "The Slite plant has a favorable location directly at a sea-harbor, and there are several storage solutions under development in the North Sea where Northern Lights is the most advanced today."
+        },
+        "note": "Northern Lights is named as the most advanced candidate, not as the contracted store. The project is in any case paused."
+      },
       "status": "paused",
       "status_history": [
         {
@@ -267,12 +461,40 @@
       "company": "TITAN Cement",
       "plant": "Kamari",
       "country": "GR",
+      "location": [
+        {
+          "site": "Kamari cement works",
+          "lat": 38.1292,
+          "lon": 23.5218,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/188683552",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=ΤΙΤΑΝ Καμάρι; landuse=industrial; industrial=factory",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "Global Energy Monitor independently gives 38.129588, 23.526606 for the same works."
+        }
+      ],
       "sector": "cement",
       "transition": "decarbonisation",
       "technology": [
         "ccs-post-combustion",
         "co2-transport-storage"
       ],
+      "storage": {
+        "project": "prinos-co2-storage",
+        "since": "2026-07-02",
+        "source": {
+          "url": "https://en.protothema.gr/2026/07/02/greece-moves-to-become-southeast-europes-first-carbon-storage-hub-with-e1bn-prinos-project/",
+          "publisher": "ProtoThema English",
+          "date": "2026-07-02",
+          "verbatim": "TITAN's IFESTOS project at its Kamari plant in Boeotia. Both involve the installation of specialised units to capture carbon dioxide from cement production, which will then be transported to Prinos for permanent storage."
+        },
+        "note": "The project's own site says only \"a permanent storage site in the Mediterranean\"; Prinos is named by the press reporting EnEarth's permit."
+      },
       "capacity": {
         "value": 1.9,
         "unit": "Mt CO2 avoided per year",
@@ -302,12 +524,38 @@
       "company": "EQIOM (CRH)",
       "plant": "Lumbres",
       "country": "FR",
+      "location": [
+        {
+          "site": "Lumbres cement works",
+          "lat": 50.6946,
+          "lon": 2.106,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/670671322",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Cimenterie de Lumbres; landuse=industrial; operator=EQIOM - a CRH Company; addr:street=Rue Jean-Baptiste Macaud; addr:postcode=62380",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "cement",
       "transition": "decarbonisation",
       "technology": [
         "alternative-fuels",
         "ccs-post-combustion"
       ],
+      "storage": {
+        "unresolved": true,
+        "source": {
+          "url": "https://dunkerquelenergiecreative.fr/en/news/industrial-dartagnan-project/",
+          "publisher": "Dunkerque l'Énergie Créative",
+          "date": "2026-08-28",
+          "verbatim": "an underground pipeline network between the industrial sites of Lumbres, Réty and the port of Dunkerque"
+        },
+        "note": "The D'Artagnan pipeline and CO2 terminal at Dunkerque are named and Lumbres is named as feeding them, but the terminal is sited only as \"the western outer harbour\" and it exports to unnamed North Sea stores."
+      },
       "status": "construction",
       "status_history": [
         {
@@ -332,6 +580,23 @@
       "company": "Stegra",
       "plant": "Boden",
       "country": "SE",
+      "location": [
+        {
+          "site": "Boden steelworks",
+          "lat": 65.8098,
+          "lon": 21.792,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1388001960",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=STEGRA stålverk Boden; landuse=construction; operator=STEGRA",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The 740 MW electrolyser is a second polygon on the same site, way/1481669820."
+        }
+      ],
       "sector": "steel",
       "transition": "decarbonisation",
       "technology": [
@@ -386,6 +651,22 @@
       "company": "thyssenkrupp Steel",
       "plant": "Duisburg",
       "country": "DE",
+      "location": [
+        {
+          "site": "Duisburg steelworks",
+          "lat": 51.4907,
+          "lon": 6.7272,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/relation/5148195",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=ThyssenKrupp Steel Europe AG; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "steel",
       "transition": "decarbonisation",
       "technology": [
@@ -428,6 +709,22 @@
       "company": "Salzgitter AG",
       "plant": "Salzgitter",
       "country": "DE",
+      "location": [
+        {
+          "site": "Salzgitter steelworks",
+          "lat": 52.1631,
+          "lon": 10.4107,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/100545500",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Salzgitter Flachstahl GmbH; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "steel",
       "transition": "decarbonisation",
       "technology": [
@@ -476,6 +773,36 @@
       "company": "ArcelorMittal",
       "plant": "Bremen and Eisenhüttenstadt",
       "country": "DE",
+      "location": [
+        {
+          "site": "Bremen steelworks",
+          "lat": 53.1331,
+          "lon": 8.689,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/relation/3942800",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Stahlwerke Bremen; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        },
+        {
+          "site": "Eisenhüttenstadt steelworks",
+          "lat": 52.1892,
+          "lon": 14.6213,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/41196685",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=ArcelorMittal; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "steel",
       "transition": "decarbonisation",
       "technology": [
@@ -505,6 +832,23 @@
       "company": "SSAB, LKAB and Vattenfall",
       "plant": "Luleå",
       "country": "SE",
+      "location": [
+        {
+          "site": "HYBRIT pilot plant, Luleå",
+          "lat": 65.5557,
+          "lon": 22.2057,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/847533124",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Hybrit",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The pilot stands beside SSAB's Luleå works on Svartön."
+        }
+      ],
       "sector": "steel",
       "transition": "decarbonisation",
       "technology": [
@@ -540,12 +884,38 @@
       "company": "ArcelorMittal",
       "plant": "Dunkirk",
       "country": "FR",
+      "location": [
+        {
+          "site": "Dunkerque steelworks",
+          "lat": 51.0362,
+          "lon": 2.298,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/618631514",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=ArcelorMittal Dunkerque; landuse=industrial; man_made=works; operator=ArcelorMittal; product=steel",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "steel",
       "transition": "decarbonisation",
       "technology": [
         "ccs-blast-furnace",
         "co2-transport-storage"
       ],
+      "storage": {
+        "unresolved": true,
+        "source": {
+          "url": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
+          "publisher": "Axens",
+          "date": "2024-03-14",
+          "verbatim": "Successful demonstration in Dunkirk of the CO2 capture DMX process"
+        },
+        "note": "A demonstration unit on blast-furnace gas. Its own source reports capture and says nothing about a destination for the tonne, which for a pilot is the ordinary case."
+      },
       "status": "operating",
       "status_history": [
         {
@@ -570,6 +940,22 @@
       "company": "voestalpine",
       "plant": "Donawitz",
       "country": "AT",
+      "location": [
+        {
+          "site": "Donawitz steelworks",
+          "lat": 47.3831,
+          "lon": 15.0604,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/relation/11365499",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=VOEST-Alpine Donawitz; landuse=industrial; operator=Voestalpine Schienen GmbH",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
       "sector": "steel",
       "transition": "circularity",
       "technology": [
@@ -604,6 +990,29 @@
       "company": "voestalpine",
       "plant": "Linz",
       "country": "AT",
+      "location": [
+        {
+          "site": "Linz steelworks",
+          "lat": 48.2785,
+          "lon": 14.3196,
+          "precision": "plant",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/28854956",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Finanz- und Vertriebszentrum; addr:street=voestalpine-Straße; addr:housenumber=3; addr:postcode=4020; addr:city=Linz",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "address": {
+            "text": "voestalpine-Straße 3, 4020 Linz, Austria",
+            "url": "https://www.voestalpine.com/stahl/en/Contact",
+            "publisher": "voestalpine",
+            "date": "2026-08-28"
+          },
+          "note": "The works spans roughly two kilometres; the point is its registered address inside the site, not the centre of the plant area."
+        }
+      ],
       "sector": "steel",
       "transition": "circularity",
       "technology": [
@@ -624,6 +1033,171 @@
           "title": "voestalpine unveils further expansion plans for greentec steel at its Donawitz location",
           "publisher": "voestalpine",
           "date": "2026-06-18"
+        }
+      ]
+    },
+    {
+      "id": "northern-lights",
+      "name": "Northern Lights",
+      "company": "Northern Lights JV DA (Equinor, Shell, TotalEnergies)",
+      "plant": "Øygarden",
+      "country": "NO",
+      "location": [
+        {
+          "site": "Øygarden receiving terminal, Naturgassparken",
+          "lat": 60.5539,
+          "lon": 4.8856,
+          "precision": "site",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/relation/4777286",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Naturgassparken; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The mark is the onshore terminal where the ships unload. The store itself is the Aurora reservoir 2,600 m under the seabed, about 100 km further out; no source read here publishes its position, so it is not a second site."
+        }
+      ],
+      "sector": "ccs",
+      "role": "storage",
+      "shared": true,
+      "shared_note": "A permitted store open to third-party industrial CO2. Cement reaches it today through Brevik; steel, chemicals and waste-to-energy are its other declared customers, so it belongs to no one industry.",
+      "transition": "decarbonisation",
+      "technology": [
+        "co2-transport-storage"
+      ],
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2025-08-25",
+          "source_url": "https://www.equinor.com/news/20250825-first-co2-volumes-stored-at-northern-lights",
+          "note": "First CO2 volumes injected and stored in the Aurora reservoir. No primary source for the earlier construction milestones has been read, so the history starts here."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.equinor.com/news/20250825-first-co2-volumes-stored-at-northern-lights",
+          "title": "First CO2 volumes stored at Northern Lights",
+          "publisher": "Equinor",
+          "date": "2025-08-25"
+        },
+        {
+          "url": "https://norlights.com/what-we-do/",
+          "title": "Northern Lights — What we do",
+          "publisher": "Northern Lights JV DA",
+          "date": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "id": "galata-co2-storage",
+      "name": "Galata CO2 storage",
+      "company": "Petroceltic",
+      "plant": "Galata field",
+      "country": "BG",
+      "location": [
+        {
+          "site": "Galata gas field, Black Sea",
+          "lat": 43.0446,
+          "lon": 28.1932,
+          "precision": "site",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://en.wikipedia.org/wiki/Galata_gas_field",
+            "publisher": "Wikipedia",
+            "date": "2026-08-28",
+            "verbatim": "located on the continental shelf of the Black Sea approximately 25km Southeast of Varna, Bulgaria"
+          },
+          "confidence": "secondary",
+          "note": "The field's own position, in 35 m of water. The onshore and offshore pipeline that would reach it from Devnya is not built and has no published route."
+        }
+      ],
+      "sector": "ccs",
+      "role": "storage",
+      "shared": true,
+      "shared_note": "Proposed as the store for a Bulgarian CCUS cluster serving Bulgaria, Romania and Greece; cement is the first industry to point at it.",
+      "transition": "decarbonisation",
+      "technology": [
+        "co2-transport-storage"
+      ],
+      "status": "announced",
+      "status_history": [
+        {
+          "status": "announced",
+          "date": "2022-07-18",
+          "source_url": "https://balkangreenenergynews.com/bulgarian-cement-plant-gets-eu-grant-for-innovative-carbon-capture-storage-project/",
+          "note": "Named as ANRAV's store when the Innovation Fund grant was reported. Nothing has been read since that records a storage permit, so the status stays where the evidence leaves it."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://balkangreenenergynews.com/bulgarian-cement-plant-gets-eu-grant-for-innovative-carbon-capture-storage-project/",
+          "title": "Bulgarian cement plant gets EU grant for innovative carbon capture, storage project",
+          "publisher": "Balkan Green Energy News",
+          "date": "2022-07-18"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Galata_gas_field",
+          "title": "Galata gas field",
+          "publisher": "Wikipedia",
+          "date": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "id": "prinos-co2-storage",
+      "name": "Prinos CO2 storage",
+      "company": "EnEarth (Energean)",
+      "plant": "Prinos field",
+      "country": "GR",
+      "location": [
+        {
+          "site": "Prinos production platforms, Gulf of Kavala",
+          "lat": 40.7987,
+          "lon": 24.4976,
+          "precision": "site",
+          "retrieved_date": "2026-08-28",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1155096048",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Εγκαταστάσεις Άντλησης Πρίνου; man_made=offshore_platform",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The existing production platforms over the depleted reservoirs. A new platform, Omega, is permitted and not built."
+        }
+      ],
+      "sector": "ccs",
+      "role": "storage",
+      "shared": true,
+      "shared_note": "Offered as south-east Europe's first store; sixteen non-binding memoranda across Greek and European industry, of which cement is one.",
+      "transition": "decarbonisation",
+      "technology": [
+        "co2-transport-storage"
+      ],
+      "status": "announced",
+      "status_history": [
+        {
+          "status": "announced",
+          "date": "2026-07-02",
+          "source_url": "https://en.protothema.gr/2026/07/02/greece-moves-to-become-southeast-europes-first-carbon-storage-hub-with-e1bn-prinos-project/",
+          "note": "Installation permit for the Omega platform signed, with work expected to begin in October 2026. A permit is not a build, so the status is what has been announced."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.protothema.gr/2026/07/02/greece-moves-to-become-southeast-europes-first-carbon-storage-hub-with-e1bn-prinos-project/",
+          "title": "Greece moves to become Southeast Europe's first carbon storage hub with €1bn Prinos project",
+          "publisher": "ProtoThema English",
+          "date": "2026-07-02"
+        },
+        {
+          "url": "https://ifestos.eu/about-us/",
+          "title": "About IFESTOS: Europe's Largest Carbon Capture Project",
+          "publisher": "IFESTOS",
+          "date": "2026-08-28"
         }
       ]
     }
