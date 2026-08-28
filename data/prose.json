@@ -293,6 +293,65 @@
       }
     ]
   },
+  "opportunity": {
+    "status": "approved",
+    "reviewed": "2026-08-28",
+    "_comment": [
+      "THE OPPORTUNITY SECTION'S OWN WORDS, brief 5 §4.",
+      "",
+      "The section is four computed views and no written judgement. What is stored",
+      "here is the wording of those views: the sub-headings, the one generated lead",
+      "sentence (§4.5), and the templates that say what a support measure PAYS",
+      "(§4.2). Nothing here states a fact; every slot is filled from",
+      "data/transition/opportunity/<sector>.json, which sources/build_opportunity.py",
+      "computes and gates.",
+      "",
+      "WHY THE SUPPORT FACT IS NOT THE MEASURE'S ONE-LINER. Brief 5 §5: the same",
+      "measure may appear in Policies, in Opportunity and under a Bottleneck, and the",
+      "same SENTENCE may not appear twice. Policies renders the standard one-liner",
+      "and is the only section that may — sources/check_one_liner_scope.py enforces",
+      "that. Here the measure says what it pays, in the template below, keyed on the",
+      "money model that produced the figure, because the model is what the number",
+      "MEANS. A model with no template raises rather than falling back to a generic",
+      "sentence: a grant programme and an auction floor are not the same offer, and a",
+      "template that covered both would be saying nothing about either.",
+      "",
+      "COUNTS AND SUMS ONLY (§4.5). No adjective in the lead sentence, and no",
+      "cost-versus-price comparison anywhere in the section — §4 rules technology",
+      "cost figures, abatement costs and carbon-price arithmetic out of it entirely.",
+      "",
+      "ANNOUNCED MONEY IS NOT SUMMED, ruled on brief 5 §4.1. There is no template",
+      "below that takes an announced total, and web/lib/transition.ts does not compute",
+      "one, so the sentence cannot be written by accident."
+    ],
+    "lead": {
+      "template": "{committed} is committed to {projects} in European {short}, and {support_measures} in EU law {support_verb} money into it.",
+      "template_no_support": "{committed} is committed to {projects} in European {short}.",
+      "template_no_money": "{support_measures} in EU law {support_verb} money into European {short}.",
+      "_slots": "committed: the committed sum, worded by the builder. projects: the count of projects it finances, with its noun. support_measures: the count of support-direction measures reaching the sector, with its noun. support_verb: agrees with that count. short: the sector name slot."
+    },
+    "headings": {
+      "money_in": "Money flowing in",
+      "rules_that_pay": "Rules that pay",
+      "committed": "Committed",
+      "announced": "Announced",
+      "withdrawn": "Withdrawn",
+      "_comment": "Sub-headings inside the Opportunity section. §4.1's three status groups keep the schema's own words because they are the words the money is described with everywhere else on the site — a committed allocation is committed on the project page and in the funding store too."
+    },
+    "support_fact": {
+      "grant_programme": "{amount} of the {committed} committed to this sector was awarded under it, to {recipients}.",
+      "_comment": "Keyed on money.model. One entry today, because one model produces a support figure. A model that reaches this template with no entry stops the build. \n\nTHE RELATION TO THE SECTION'S OWN TOTAL IS STATED, not left to the reader. Two euro figures sit a few lines apart in this section — what is committed to the sector and what one measure paid — and the second is a SUBSET of the first. On cement they are EUR 421 m and EUR 381 m, and the EUR 40 m between them is the France Relance award to K6, which is under no measure the register has read. Printed side by side with no relation between them, two such figures read as a discrepancy. \n\nThe subset is guaranteed rather than asserted: web/lib/opportunity.ts sums the SECTOR'S OWN committed allocations that name this measure, not the measure's all-sector total from the importance store. Those coincide for cement and would not for a measure that also pays another industry, and a sentence saying 'X of the Y' when X is not inside Y is the one thing this template must never say."
+    },
+    "support_window": {
+      "ongoing": "eligibility ongoing",
+      "dated": "call open until {date}",
+      "_comment": "The eligibility window, said in words. Two forms and no third: a standing scheme has eligibility rather than an opening, and a call has a date it closes on. \n\n`ongoing` renders for a measure whose register `when` is that word. `dated` renders where `when` is a date, and nothing on the platform carries one yet — the dated windows arrive with watch channel three in step 4 of brief 5 §9. A `when` that is neither renders NO window clause at all rather than its raw value: `when` is the register's phrasing about when a provision bites, which is not always a window and is never a promise about when somebody can apply."
+    },
+    "signals": {
+      "chip": "Opportunity signals",
+      "_comment": "§4.6. Not a feed of its own and not a new data structure: a filter over the change records, for records whose object is a funding node, a support-direction measure or a measure that creates demand. It renders as a chip on the Feed section and as a query parameter on the change-record list, and it renders at all only where the sector has at least one such record — a filter chip that filters to nothing is a promise the data does not keep."
+    }
+  },
   "sector_lead": {
     "status": "draft",
     "reviewed": null,

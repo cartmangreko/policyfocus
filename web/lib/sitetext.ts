@@ -115,6 +115,19 @@ interface ProseDoc {
      *  exception to be widened later. */
     unnumbered: { id: string; h2: string; why?: string }[];
   };
+  /** The Opportunity section's wording — brief 5 §4. Sub-headings, the lead
+   *  sentence templates the Python builder fills, and the support-fact and
+   *  window templates the section renders. Required, like the section
+   *  sequence: none of it has a computed fallback. */
+  opportunity: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    lead: Record<string, string>;
+    headings: Record<string, string>;
+    support_fact: Record<string, string>;
+    support_window: Record<string, string>;
+    signals: Record<string, string>;
+  };
   sector_orientation?: {
     status: ProseStatus;
     reviewed?: string | null;
@@ -284,4 +297,18 @@ export function getUnnumberedH2(id: string): string {
     );
   }
   return row.h2;
+}
+
+/** The Opportunity section's wording. Throws for an unreviewed block, on the
+ *  same reasoning as the name slots: the section is nine tenths computed and
+ *  the tenth that is words has no computed form to fall back to. */
+export function getOpportunityProse() {
+  const block = readProse().opportunity;
+  if (!isReviewed(block.status)) {
+    throw new Error(
+      `data/prose.json -> opportunity is ${block.status}; the Opportunity section has ` +
+        `no computed fallback for its headings`
+    );
+  }
+  return block;
 }

@@ -4142,3 +4142,82 @@ a.tmat-basis:hover {
 .mat-volume {
   font-family: var(--mono);
 }
+
+/* ---------- the Opportunity section (brief 5 §4) ---------- */
+
+/* The section's one generated sentence. Set above the blocks and quieter than a
+   lead block: it is a summary of what follows, not a second opening for the
+   page. */
+.topp-lead {
+  max-width: 62ch;
+  margin: 0 0 22px;
+  font-size: 16.5px;
+  line-height: 1.5;
+  color: var(--ink-70);
+}
+.topp-block {
+  margin-top: 24px;
+}
+.topp-block > h3 {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+.topp-sub {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  margin: 18px 0 8px;
+}
+.topp-pays {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.topp-pays li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 72ch;
+}
+.topp-pays a {
+  font-size: 15.5px;
+  border-bottom: 1px solid var(--rule);
+  align-self: flex-start;
+}
+.topp-pays a:hover {
+  border-bottom-color: var(--ink);
+}
+/* What the measure PAYS. Never the standard one-liner — that sentence is the
+   Policies section's, and sources/check_one_liner_scope.py fails the build if
+   it turns up here. */
+.topp-fact {
+  font-size: 14px;
+  color: var(--ink-70);
+}
+.topp-signals {
+  margin: 0 0 14px;
+}
+
+/* The filter chips on the change-record list. `is-here` is the state the list
+   is currently in, not a link to somewhere else. */
+.record-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+}
+.record-filter .chip.is-here {
+  border-color: var(--ink);
+  color: var(--ink);
+}

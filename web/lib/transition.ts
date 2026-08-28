@@ -385,14 +385,19 @@ export function fundingAmount(f: Funding, params: Map<string, Parameter>): numbe
 }
 
 /** Funding split by what its status permits a total to say. Never one number:
- *  committed money, announced money and withdrawn lines are three different
- *  facts, and the Capital section shows them as three. `undisclosed` counts
+ *  committed money, announced allocations and withdrawn lines are three
+ *  different facts, and the Opportunity section shows them as three. `undisclosed` counts
  *  committed rows whose amount is not published, which is why `committed` is a
  *  floor rather than a total. */
 export interface FundingTotals {
   committed: number;
   committedCount: number;
-  announced: number;
+  /** ANNOUNCED IS COUNTED AND NOT SUMMED — brief 5 §4.1, ruled. There is no
+   *  `announced` total here on purpose: a figure that is not computed cannot be
+   *  rendered, which is a stronger guarantee than everybody remembering not to
+   *  add one up. An announcement is a statement of intent, and a euro total of
+   *  intentions reads as money that exists. The allocations are listed instead,
+   *  each with its own amount, source and date. */
   announcedCount: number;
   withdrawnCount: number;
   undisclosed: number;
@@ -402,7 +407,6 @@ export function fundingTotals(rows: Funding[], params: Map<string, Parameter>): 
   const t: FundingTotals = {
     committed: 0,
     committedCount: 0,
-    announced: 0,
     announcedCount: 0,
     withdrawnCount: 0,
     undisclosed: 0,
@@ -415,7 +419,6 @@ export function fundingTotals(rows: Funding[], params: Map<string, Parameter>): 
     const amount = fundingAmount(f, params);
     if (FUNDING_ANNOUNCED.includes(f.status)) {
       t.announcedCount += 1;
-      t.announced += amount ?? 0;
       continue;
     }
     t.committedCount += 1;
