@@ -5,12 +5,14 @@ import Crumbs from "@/components/Crumbs";
 import { SEPARATOR, citation } from "@/lib/citation";
 import { getOpportunity, opportunitySignals, supportFact, supportMeasures } from "@/lib/opportunity";
 import LeadBlock from "@/components/LeadBlock";
+import LocationMap from "@/components/LocationMap";
 import SectionNav from "@/components/SectionNav";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import TransitionDiagram, { type Diagram, type NodeSource } from "@/components/TransitionDiagram";
 import { FILES, SECTORS, getRelatedSectors } from "@/lib/data";
-import { transitionProse } from "@/lib/prose";
+import { sectorGeoProse, transitionProse } from "@/lib/prose";
 import { renderedSections, sectorH1 } from "@/lib/sectorSections";
+import { getSectorMap } from "@/lib/maps";
 import { getRecordsForSector } from "@/lib/records";
 import { getOpportunityProse, getSectorOrientation, getTransitionNote, getUnnumberedH2 } from "@/lib/sitetext";
 import {
@@ -278,6 +280,25 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   // the most recent change of any age for the empty state. `lastChange` is the
   // same helper the home feed uses, so the two strips cannot disagree about
   // what the latest event is.
+  // EVERY COUNT IN THIS SENTENCE IS OVER SITES, because every mark in the
+  // picture is one. Counting projects instead made steel read "9 sites … 7
+  // operating or under construction, 1 paused" — eight, because the
+  // ArcelorMittal row is one project standing on two sites and the picture
+  // draws both.
+  const geoFrame = getSectorMap(slug);
+  const geoMarks = (status: string[]) =>
+    geoFrame ? geoFrame.marks.filter((m) => status.includes(m.status)).length : 0;
+  const geoProse = geoFrame
+    ? sectorGeoProse({
+        sector: SECTORS[slug].toLowerCase(),
+        sites: geoFrame.marks.length,
+        countries: new Set(projects.map((p) => p.country)).size,
+        running: geoMarks(["operating", "construction"]),
+        pending: geoMarks(["announced", "funded", "fid"]),
+        stopped: geoMarks(["paused", "cancelled"]),
+      })
+    : null;
+
   const changes = projects
     .map((p) => ({ project: p, event: lastChange(p) }))
     .filter((r): r is { project: (typeof projects)[number]; event: StatusEvent } =>
@@ -410,6 +431,18 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
       {present.projects ? (
         <section className="tmap-section" id="projects">
           <h2 className="sectionhead">{h2("projects")}</h2>
+          {/* THE OVERVIEW COMES BEFORE THE TABLE, and inside this section rather
+              than as one of its own. It answers the section's question — what is
+              being built — in the one dimension the table cannot show, and a
+              tenth numbered section would have made geography a subject rather
+              than an attribute of the projects already here. */}
+          {geoFrame && geoProse ? (
+            <LocationMap
+              doc={geoFrame}
+              heading={geoProse.heading}
+              standfirst={geoProse.standfirst}
+            />
+          ) : null}
           <p className="tmap-sub">Sorted by last status change. Every change carries its source.</p>
           <div className="tprojects-scroll">
             <table className="tprojects">

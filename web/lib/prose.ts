@@ -114,3 +114,95 @@ export function transitionProse(cuts: {
     `${built ? ` (${built})` : ""}.`
   );
 }
+
+// ---------------------------------------------------------------------------
+// The geography. Three templates: the heading and standfirst over a regional
+// crop, the same pair over a Europe-wide overview, and the text a mark carries.
+//
+// THESE ARE TIER 1. Every one is rendered from the built map object, which
+// sources/build_maps.py wrote and sources/check_coordinates.py placed, so every
+// noun and every number in them points at gate-checked data. Worded here, once,
+// like every other computed sentence on the site.
+//
+// TWO WORDS THAT DO NOT APPEAR, and their absence is the rule rather than an
+// oversight. The picture is never called a map: "map" is on the framing list in
+// display_vocabulary.py, and a page that calls itself one has told the reader it
+// is a place things are drawn rather than a place they are worked out. "Plant"
+// is on the same list, so a mark is a SITE or a WORKS in running text, and
+// "plant" survives only inside an installation's own name.
+
+export interface GeoCounts {
+  label: string;
+  place: string;
+  sites: number;
+  dependency: number;
+  technology: number;
+  sector: number;
+}
+
+/** The regional crop on a project page. */
+export function projectGeoProse(c: GeoCounts): { heading: string; standfirst: string } {
+  const near = c.technology + c.sector;
+  const parts: string[] = [
+    c.sites > 1
+      ? `${c.label} runs across ${n(c.sites, "site")}, at ${c.place}.`
+      : `${c.label} is at ${c.place}.`,
+  ];
+  if (c.dependency === 1) {
+    parts.push("The store its captured CO₂ reaches is drawn with it.");
+  } else if (c.dependency > 1) {
+    parts.push(`The ${c.dependency} stores its captured CO₂ reaches are drawn with it.`);
+  }
+  parts.push(
+    near > 0
+      ? "Also in frame: " +
+        list([
+          c.technology > 0 ? `${n(c.technology, "site")} using the same technology` : null,
+          c.sector > 0 ? `${n(c.sector, "site")} in the same sector` : null,
+        ]) +
+        "."
+      : "Nothing else on file falls inside this frame.",
+  );
+  return { heading: `Where ${c.label} is`, standfirst: parts.join(" ") };
+}
+
+/** The Europe-wide overview on a sector page.
+ *
+ *  THE THREE GROUPS PARTITION THE STATUSES and the sentence says so by adding
+ *  up. An earlier wording gave only the running and the stopped, so a sector
+ *  with eight sites announced "4 operating or under construction, 1 paused" and
+ *  left three of them unaccounted for — a reader can subtract, and a sentence
+ *  that invites the subtraction and then fails it is worse than one that says
+ *  less. `pending` is everything between a decision and a building site. */
+export function sectorGeoProse(c: {
+  sector: string;
+  sites: number;
+  countries: number;
+  running: number;
+  pending: number;
+  stopped: number;
+}): { heading: string; standfirst: string } {
+  const state = list([
+    c.running > 0 ? `${c.running} operating or under construction` : null,
+    c.pending > 0 ? `${c.pending} announced or funded and not yet built` : null,
+    c.stopped > 0 ? `${c.stopped} paused or cancelled` : null,
+  ]);
+  return {
+    heading: `Every ${c.sector} site on file, across Europe`,
+    standfirst:
+      `${n(c.sites, "site")} in ${n(c.countries, "country", "countries")}` +
+      (state ? `: ${state}.` : ".") +
+      " Each one opens its own page.",
+  };
+}
+
+/** What a mark says when a reader points at it. One line, because it is a
+ *  tooltip: the name, whose it is, and the coordinate the register claims. */
+export function geoMarkProse(m: {
+  label: string;
+  sub: string;
+  site: string;
+  coordinates: string;
+}): string {
+  return `${m.label} — ${m.sub}. ${m.site}, ${m.coordinates}.`;
+}

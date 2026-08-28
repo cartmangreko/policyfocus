@@ -4,9 +4,12 @@ import { notFound } from "next/navigation";
 import Crumbs from "@/components/Crumbs";
 import { citation } from "@/lib/citation";
 import LeadBlock from "@/components/LeadBlock";
+import LocationMap from "@/components/LocationMap";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import { SECTORS } from "@/lib/data";
 import { getProjectLead } from "@/lib/objectLeads";
+import { getProjectMap } from "@/lib/maps";
+import { projectGeoProse } from "@/lib/prose";
 import {
   STATUS_LABEL,
   TRANSITION_LABEL,
@@ -66,6 +69,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   if (!project) notFound();
 
   const lead = getProjectLead(project.id);
+  // The regional crop. Absent only if the build has not run — which the
+  // prebuild gate makes impossible — so there is no empty state to design.
+  const frame = getProjectMap(project.id);
+  const geo = frame
+    ? projectGeoProse({
+        label: project.name,
+        place: project.location.map((s) => s.site).join(" and "),
+        sites: project.location.length,
+        dependency: frame.marks.filter((m) => m.relation === "dependency").length,
+        technology: frame.marks.filter((m) => m.relation === "technology").length,
+        sector: frame.marks.filter((m) => m.relation === "sector").length,
+      })
+    : null;
 
   const sector = project.sector as SectorSlug;
   const allParams = getParameters();
@@ -123,6 +139,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               a project means it has no status history at all. */}
           {lead ? <LeadBlock lead={lead} /> : null}
         </header>
+
+        {frame && geo ? (
+          <section className="proj-section">
+            <LocationMap doc={frame} heading={geo.heading} standfirst={geo.standfirst} />
+          </section>
+        ) : null}
 
         <section className="proj-section">
           <h2>Status</h2>
