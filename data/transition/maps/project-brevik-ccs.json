@@ -72,10 +72,12 @@
     {
       "id": "brevik-ccs",
       "site": "Brevik cement works",
+      "country": "NO",
       "role": "plant",
       "relation": "subject",
       "status": "operating",
       "label": "Brevik CCS",
+      "name_line": "Brevik CCS",
       "sub": "Heidelberg Materials",
       "href": "/projects/brevik-ccs",
       "lat": 59.0644,
@@ -125,10 +127,12 @@
     {
       "id": "northern-lights",
       "site": "Øygarden receiving terminal, Naturgassparken",
+      "country": "NO",
       "role": "storage",
       "relation": "dependency",
       "status": "operating",
       "label": "Northern Lights",
+      "name_line": "Northern Lights",
       "sub": "Northern Lights JV DA (Equinor, Shell, TotalEnergies)",
       "href": "/projects/northern-lights",
       "lat": 60.5539,
@@ -182,6 +186,68 @@
               "role": "company",
               "size": 18.1,
               "y": 160.2
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "countries": [
+    {
+      "iso": "NO",
+      "text": "Norway",
+      "labels": {
+        "wide": {
+          "x": 512.3,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Norway",
+              "role": "country",
+              "size": 9.0,
+              "y": 64.4
+            }
+          ]
+        },
+        "narrow": {
+          "x": 512.3,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Norway",
+              "role": "country",
+              "size": 17.2,
+              "y": 65.8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "SE",
+      "text": "Sweden",
+      "labels": {
+        "wide": {
+          "x": 696.7,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Sweden",
+              "role": "country",
+              "size": 9.0,
+              "y": 274.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 688.0,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Sweden",
+              "role": "country",
+              "size": 17.2,
+              "y": 256.8
             }
           ]
         }

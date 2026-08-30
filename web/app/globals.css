@@ -4465,6 +4465,19 @@ a.tmat-basis:hover {
   text-decoration: underline;
 }
 
+/* THE COUNTRY NAMES. The faintest thing on the paper that is still type: they
+   are the ground, and a reader should be able to look past them at the marks.
+   Letterspaced and small, which is how a name of an AREA is told from a name of
+   a POINT without either changing colour — the same trick the marks use to
+   avoid asking the colour layers a question. */
+.geo-country-text {
+  fill: var(--ink-40);
+  letter-spacing: 0.06em;
+}
+.geo-country {
+  pointer-events: none;
+}
+
 .geo-key {
   display: flex;
   flex-wrap: wrap;

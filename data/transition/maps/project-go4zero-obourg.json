@@ -51,10 +51,12 @@
     {
       "id": "go4zero-obourg",
       "site": "Obourg cement works",
+      "country": "BE",
       "role": "plant",
       "relation": "subject",
       "status": "construction",
       "label": "GO4ZERO",
+      "name_line": "GO4ZERO",
       "sub": "Holcim",
       "href": "/projects/go4zero-obourg",
       "lat": 50.4709,
@@ -104,10 +106,12 @@
     {
       "id": "3d-dunkirk",
       "site": "Dunkerque steelworks",
+      "country": "FR",
       "role": "plant",
       "relation": "technology",
       "status": "operating",
       "label": "3D — DMX demonstration in Dunkirk",
+      "name_line": "3D — DMX demonstration in Dunkirk",
       "sub": "ArcelorMittal",
       "href": "/projects/3d-dunkirk",
       "lat": 51.0362,
@@ -135,26 +139,32 @@
           ]
         },
         "narrow": {
-          "x": 295.7,
+          "x": 290.2,
           "anchor": "start",
           "lines": [
             {
               "text": "3D — DMX",
               "role": "name",
               "size": 21.0,
-              "y": 127.8
+              "y": 52.7
             },
             {
-              "text": "demonstration in Dunkirk",
+              "text": "demonstration in",
               "role": "name",
               "size": 21.0,
-              "y": 153.0
+              "y": 77.9
+            },
+            {
+              "text": "Dunkirk",
+              "role": "name",
+              "size": 21.0,
+              "y": 103.1
             },
             {
               "text": "ArcelorMittal",
               "role": "company",
               "size": 18.1,
-              "y": 176.0
+              "y": 126.0
             }
           ]
         }
@@ -163,10 +173,12 @@
     {
       "id": "gezero-geseke",
       "site": "Geseke cement works, Milke section",
+      "country": "DE",
       "role": "plant",
       "relation": "technology",
       "status": "funded",
       "label": "GeZero",
+      "name_line": "GeZero",
       "sub": "Heidelberg Materials",
       "href": "/projects/gezero-geseke",
       "lat": 51.6191,
@@ -194,20 +206,20 @@
           ]
         },
         "narrow": {
-          "x": 661.3,
+          "x": 655.8,
           "anchor": "end",
           "lines": [
             {
               "text": "GeZero",
               "role": "name",
               "size": 21.0,
-              "y": 68.4
+              "y": 105.7
             },
             {
               "text": "Heidelberg Materials",
               "role": "company",
               "size": 18.1,
-              "y": 91.3
+              "y": 128.7
             }
           ]
         }
@@ -216,10 +228,12 @@
     {
       "id": "k6-lumbres",
       "site": "Lumbres cement works",
+      "country": "FR",
       "role": "plant",
       "relation": "sector",
       "status": "construction",
       "label": "K6",
+      "name_line": "K6",
       "sub": "EQIOM (CRH)",
       "href": "/projects/k6-lumbres",
       "lat": 50.6946,
@@ -261,6 +275,188 @@
               "role": "company",
               "size": 18.1,
               "y": 196.7
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "countries": [
+    {
+      "iso": "BE",
+      "text": "Belgium",
+      "labels": {
+        "wide": {
+          "x": 429.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Belgium",
+              "role": "country",
+              "size": 9.0,
+              "y": 189.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 425.3,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Belgium",
+              "role": "country",
+              "size": 17.2,
+              "y": 178.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "DE",
+      "text": "Germany",
+      "labels": {
+        "wide": {
+          "x": 749.5,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 9.0,
+              "y": 86.2
+            }
+          ]
+        },
+        "narrow": {
+          "x": 743.8,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 17.2,
+              "y": 87.7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "FR",
+      "text": "France",
+      "labels": {
+        "wide": {
+          "x": 306.3,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "France",
+              "role": "country",
+              "size": 9.0,
+              "y": 351.4
+            }
+          ]
+        },
+        "narrow": {
+          "x": 306.3,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "France",
+              "role": "country",
+              "size": 17.2,
+              "y": 352.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "GB",
+      "text": "United Kingdom",
+      "labels": {
+        "wide": {
+          "x": 103.2,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "United Kingdom",
+              "role": "country",
+              "size": 9.0,
+              "y": 79.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 103.2,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "United Kingdom",
+              "role": "country",
+              "size": 17.2,
+              "y": 80.8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "LU",
+      "text": "Luxembourg",
+      "labels": {
+        "wide": {
+          "x": 512.0,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Luxembourg",
+              "role": "country",
+              "size": 9.0,
+              "y": 302.8
+            }
+          ]
+        },
+        "narrow": {
+          "x": 512.0,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Luxembourg",
+              "role": "country",
+              "size": 17.2,
+              "y": 304.2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "NL",
+      "text": "Netherlands",
+      "labels": {
+        "wide": {
+          "x": 466.2,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Netherlands",
+              "role": "country",
+              "size": 9.0,
+              "y": 76.4
+            }
+          ]
+        },
+        "narrow": {
+          "x": 474.9,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Netherlands",
+              "role": "country",
+              "size": 17.2,
+              "y": 58.8
             }
           ]
         }

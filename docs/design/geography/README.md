@@ -87,6 +87,66 @@ the component needs to draw one the same size; held in two places, the day a mar
 grows, every label would still be placed against the old radius and nothing would
 say so.
 
+## A multi-site mark says which site it is
+
+A one-site project's label is its name. A multi-site project's label is its name
+and which site this is, because the alternative is two marks in one picture
+carrying identical words: the ArcelorMittal row is one project standing on
+Bremen and Eisenhüttenstadt, and a reader who sees the same label twice reads a
+rendering fault rather than a two-site project. The suffix is added only where
+it distinguishes something — on the other eighteen projects it would be noise.
+
+**The site survives shortening; the company does not.** Rung three of the ladder
+drops the company and never the name line, so the one thing that tells a mark
+from its twin cannot be the thing that falls off. The company is in the tooltip
+either way, and the tooltip is unchanged.
+
+## The ground is named
+
+Country names, in English, as the faintest layer of type on the paper.
+
+**Which countries are named differs by frame, on one principle in two settings.**
+A crop names **every country in view**: the reader has been handed a region
+without being told which one, and at 800 km across these are not outlines anybody
+recognises from memory. An overview names **only the countries holding a site**,
+because Europe with forty-five names on it is an atlas, and the question an
+overview answers is where this sector is — a name over an empty country answers
+a question nobody asked and takes the room from one that was.
+
+**The country layer is subordinate, and the ordering is what makes that true.**
+Site labels are placed first, against nothing but each other. Country names are
+placed afterwards, against the boxes the site labels have already taken. So a
+country name can be nudged or dropped by a site name and never the reverse.
+Where no clean position exists the country name is **dropped** — the opposite of
+the rule for a site label, and the asymmetry is deliberate: a missing site is a
+fact the reader cannot recover, and a missing country is a shape most readers
+know. The build prints every drop and counts them.
+
+**A name stays inside its country.** The label point is the cell of a 26×26 grid
+furthest from anywhere the country is not — a discrete distance transform, not a
+centroid, because the centroid of a concave shape is routinely outside the shape
+and a country outline is nothing if not concave. Up to four such points are
+offered, kept apart so they are genuinely different middles: Germany's roomiest
+point on a crop of the Ruhr is exactly where the site labels are, and a country
+with one candidate loses its name to a neighbour's works. Nudges from those
+points are small, because a name that has walked any distance is no longer over
+its country, and a name in the wrong country is worse than none.
+
+**No border layer was added.** The ruling made one conditional on the base
+geometry being coastline-only, and it is not: every country's ring carries its
+land boundaries as well as its coast, and `land_paths` has drawn both from the
+first commit — from both sides, in fact. Nothing was needed.
+
+**The names are worded once, in `data/prose.json` under `country_names`**, keyed
+on the same ISO codes `natural_earth.py` keys the polygons on. They are there
+rather than in `web/lib/prose.ts` with the geography's sentences because the
+layout runs in Python at build time and a name the placement cannot see is a name
+it cannot fit: `build_maps.py` takes the string to measure it, and bakes it into
+the map file, so the component draws a name it never chose. Required rather than
+defaulted — a frame showing a country the block does not name fails the build,
+rather than falling back to a two-letter code or to the basemap's own `NAME_EN`,
+which is neither reviewed nor in house style.
+
 ## The projection
 
 Lambert conformal conic, EPSG:3034's parameters — standard parallels 35 N and

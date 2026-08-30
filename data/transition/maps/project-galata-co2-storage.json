@@ -47,10 +47,12 @@
     {
       "id": "galata-co2-storage",
       "site": "Galata gas field, Black Sea",
+      "country": "BG",
       "role": "storage",
       "relation": "subject",
       "status": "announced",
       "label": "Galata CO2 storage",
+      "name_line": "Galata CO2 storage",
       "sub": "Petroceltic",
       "href": "/projects/galata-co2-storage",
       "lat": 43.0446,
@@ -100,10 +102,12 @@
     {
       "id": "anrav-devnya",
       "site": "Devnya cement works",
+      "country": "BG",
       "role": "plant",
       "relation": "dependency",
       "status": "funded",
       "label": "ANRAV",
+      "name_line": "ANRAV",
       "sub": "Heidelberg Materials (Devnya Cement)",
       "href": "/projects/anrav-devnya",
       "lat": 43.2343,
@@ -151,6 +155,128 @@
               "role": "company",
               "size": 18.1,
               "y": 237.6
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "countries": [
+    {
+      "iso": "BG",
+      "text": "Bulgaria",
+      "labels": {
+        "wide": {
+          "x": 173.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Bulgaria",
+              "role": "country",
+              "size": 9.0,
+              "y": 324.2
+            }
+          ]
+        },
+        "narrow": {
+          "x": 173.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Bulgaria",
+              "role": "country",
+              "size": 17.2,
+              "y": 325.7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "GR",
+      "text": "Greece",
+      "labels": {
+        "wide": {
+          "x": 303.9,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Greece",
+              "role": "country",
+              "size": 9.0,
+              "y": 411.1
+            }
+          ]
+        },
+        "narrow": {
+          "x": 303.9,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Greece",
+              "role": "country",
+              "size": 17.2,
+              "y": 412.5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "RO",
+      "text": "Romania",
+      "labels": {
+        "wide": {
+          "x": 180.0,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Romania",
+              "role": "country",
+              "size": 9.0,
+              "y": 91.5
+            }
+          ]
+        },
+        "narrow": {
+          "x": 180.0,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Romania",
+              "role": "country",
+              "size": 17.2,
+              "y": 93.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "TR",
+      "text": "Türkiye",
+      "labels": {
+        "wide": {
+          "x": 650.8,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Türkiye",
+              "role": "country",
+              "size": 9.0,
+              "y": 395.5
+            }
+          ]
+        },
+        "narrow": {
+          "x": 650.8,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Türkiye",
+              "role": "country",
+              "size": 17.2,
+              "y": 397.0
             }
           ]
         }

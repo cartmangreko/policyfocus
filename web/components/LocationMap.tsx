@@ -28,6 +28,13 @@ import { geoKeyProse, geoMarkProse } from "@/lib/prose";
 //     hollow     it is not — paused, cancelled, or not yet built
 //     ring       the one this page is about
 //
+// AND THE GROUND IS NAMED UNDER ALL OF IT. A crop names every country in view,
+// an overview only those holding a site. They are the faintest layer and the
+// subordinate one: placed after the site labels, against boxes those have
+// already taken, and DROPPED rather than moved on top of a name that matters
+// more. Internal borders were already drawn — every country ring carries its
+// land boundaries as well as its coast — so no border layer was added.
+//
 // EVERY MARK IS NAMED ON THE PAPER. The label is not a tooltip: a tooltip needs
 // a pointer, and this picture is read on phones, in print and in screenshots.
 // Where labels would collide they are offset and joined to their mark by a
@@ -73,6 +80,12 @@ export interface MapMark {
   labels: { wide: MapLabel; narrow: MapLabel };
 }
 
+export interface MapCountry {
+  iso: string;
+  text: string;
+  labels: { wide?: MapLabel; narrow?: MapLabel };
+}
+
 export interface MapCoordinates {
   site: string;
   lat?: number;
@@ -92,6 +105,7 @@ export interface MapDoc {
   mark_geometry: { r: number; store_scale: number; ring_scale: number };
   land: string[];
   marks: MapMark[];
+  countries: MapCountry[];
   coordinates: MapCoordinates[];
   as_of: string;
 }
@@ -146,6 +160,31 @@ function label(mark: MapMark, which: "wide" | "narrow") {
           fontSize={line.size}
           textAnchor={l.anchor}
           className={`geo-label-text geo-label-${line.role}`}
+        >
+          {line.text}
+        </text>
+      ))}
+    </g>
+  );
+}
+
+/** THE GROUND'S NAME, at one breakpoint, or nothing where the placement could
+ *  not fit it. Drawn before the marks and before their labels, so it is under
+ *  them on the paper as well as in the ordering: a country name never covers a
+ *  site name, and build_maps.py has already dropped any that would have. */
+function countryLabel(country: MapCountry, which: "wide" | "narrow") {
+  const l = country.labels[which];
+  if (!l) return null;
+  return (
+    <g className={`geo-country geo-label-${which}`}>
+      {l.lines.map((line, i) => (
+        <text
+          key={i}
+          x={l.x}
+          y={line.y}
+          fontSize={line.size}
+          textAnchor={l.anchor}
+          className="geo-label-text geo-country-text"
         >
           {line.text}
         </text>
@@ -217,6 +256,14 @@ export default function LocationMap({
         <g className="geo-land-group">
           {doc.land.map((d, i) => (
             <path key={i} d={d} className="geo-land" vectorEffect="non-scaling-stroke" />
+          ))}
+        </g>
+        <g className="geo-country-group">
+          {doc.countries.map((country) => (
+            <g key={country.iso}>
+              {countryLabel(country, "wide")}
+              {countryLabel(country, "narrow")}
+            </g>
           ))}
         </g>
         {doc.marks.map((mark) => (

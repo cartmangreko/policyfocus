@@ -90,10 +90,12 @@
     {
       "id": "am-bremen-eisenhuettenstadt",
       "site": "Bremen steelworks",
+      "country": "DE",
       "role": "plant",
       "relation": "subject",
       "status": "cancelled",
       "label": "ArcelorMittal Bremen and Eisenhüttenstadt conversion",
+      "name_line": "ArcelorMittal Bremen and Eisenhüttenstadt conversion — Bremen steelworks",
       "sub": "ArcelorMittal",
       "href": "/projects/am-bremen-eisenhuettenstadt",
       "lat": 53.1331,
@@ -110,19 +112,25 @@
               "text": "ArcelorMittal Bremen and",
               "role": "name",
               "size": 11.0,
-              "y": 160.7
+              "y": 154.1
             },
             {
-              "text": "Eisenhüttenstadt conversion",
+              "text": "Eisenhüttenstadt conversion — Bremen",
               "role": "name",
               "size": 11.0,
-              "y": 173.9
+              "y": 167.3
+            },
+            {
+              "text": "steelworks",
+              "role": "name",
+              "size": 11.0,
+              "y": 180.5
             },
             {
               "text": "ArcelorMittal",
               "role": "company",
               "size": 9.5,
-              "y": 185.9
+              "y": 192.5
             }
           ]
         },
@@ -134,19 +142,25 @@
               "text": "ArcelorMittal Bremen",
               "role": "name",
               "size": 21.0,
-              "y": 151.3
+              "y": 138.7
             },
             {
-              "text": "and Eisenhüttenstadt conversion",
+              "text": "and Eisenhüttenstadt",
               "role": "name",
               "size": 21.0,
-              "y": 176.5
+              "y": 163.9
+            },
+            {
+              "text": "conversion — Bremen steelworks",
+              "role": "name",
+              "size": 21.0,
+              "y": 189.1
             },
             {
               "text": "ArcelorMittal",
               "role": "company",
               "size": 18.1,
-              "y": 199.5
+              "y": 212.1
             }
           ]
         }
@@ -155,10 +169,12 @@
     {
       "id": "am-bremen-eisenhuettenstadt",
       "site": "Eisenhüttenstadt steelworks",
+      "country": "DE",
       "role": "plant",
       "relation": "subject",
       "status": "cancelled",
       "label": "ArcelorMittal Bremen and Eisenhüttenstadt conversion",
+      "name_line": "ArcelorMittal Bremen and Eisenhüttenstadt conversion — Eisenhüttenstadt steelworks",
       "sub": "ArcelorMittal",
       "href": "/projects/am-bremen-eisenhuettenstadt",
       "lat": 52.1892,
@@ -175,19 +191,25 @@
               "text": "ArcelorMittal Bremen and",
               "role": "name",
               "size": 11.0,
-              "y": 248.7
+              "y": 242.1
             },
             {
-              "text": "Eisenhüttenstadt conversion",
+              "text": "Eisenhüttenstadt conversion —",
               "role": "name",
               "size": 11.0,
-              "y": 261.9
+              "y": 255.3
+            },
+            {
+              "text": "Eisenhüttenstadt steelworks",
+              "role": "name",
+              "size": 11.0,
+              "y": 268.5
             },
             {
               "text": "ArcelorMittal",
               "role": "company",
               "size": 9.5,
-              "y": 273.9
+              "y": 280.5
             }
           ]
         },
@@ -202,16 +224,22 @@
               "y": 296.4
             },
             {
-              "text": "and Eisenhüttenstadt conversion",
+              "text": "and Eisenhüttenstadt",
               "role": "name",
               "size": 21.0,
               "y": 321.6
             },
             {
+              "text": "conversion — Eisenhüttenstadt steelworks",
+              "role": "name",
+              "size": 21.0,
+              "y": 346.8
+            },
+            {
               "text": "ArcelorMittal",
               "role": "company",
               "size": 18.1,
-              "y": 344.5
+              "y": 369.7
             }
           ]
         }
@@ -220,10 +248,12 @@
     {
       "id": "salcos-salzgitter",
       "site": "Salzgitter steelworks",
+      "country": "DE",
       "role": "plant",
       "relation": "technology",
       "status": "construction",
       "label": "SALCOS stage one",
+      "name_line": "SALCOS stage one",
       "sub": "Salzgitter AG",
       "href": "/projects/salcos-salzgitter",
       "lat": 52.1631,
@@ -279,10 +309,12 @@
     {
       "id": "tkh2steel-duisburg",
       "site": "Duisburg steelworks",
+      "country": "DE",
       "role": "plant",
       "relation": "technology",
       "status": "construction",
       "label": "tkH2Steel",
+      "name_line": "tkH2Steel",
       "sub": "thyssenkrupp Steel",
       "href": "/projects/tkh2steel-duisburg",
       "lat": 51.4907,
@@ -310,27 +342,174 @@
           ]
         },
         "narrow": {
-          "x": 100.0,
+          "x": 122.3,
           "anchor": "start",
           "lines": [
             {
               "text": "tkH2Steel",
               "role": "name",
               "size": 21.0,
-              "y": 383.2
-            },
-            {
-              "text": "thyssenkrupp Steel",
-              "role": "company",
-              "size": 18.1,
-              "y": 406.1
+              "y": 405.5
             }
           ],
           "leader": [
             72.0,
             338.8,
-            100.0,
-            366.8
+            122.3,
+            389.1
+          ],
+          "shortened": true
+        }
+      }
+    }
+  ],
+  "countries": [
+    {
+      "iso": "CZ",
+      "text": "Czechia",
+      "labels": {
+        "wide": {
+          "x": 584.6,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Czechia",
+              "role": "country",
+              "size": 9.0,
+              "y": 418.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 593.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Czechia",
+              "role": "country",
+              "size": 17.2,
+              "y": 400.7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "DE",
+      "text": "Germany",
+      "labels": {
+        "wide": {
+          "x": 303.0,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 9.0,
+              "y": 258.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 320.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 17.2,
+              "y": 255.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "DK",
+      "text": "Denmark",
+      "labels": {
+        "wide": {
+          "x": 368.1,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Denmark",
+              "role": "country",
+              "size": 9.0,
+              "y": 19.9
+            }
+          ]
+        },
+        "narrow": {
+          "x": 372.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Denmark",
+              "role": "country",
+              "size": 17.2,
+              "y": 30.4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "NL",
+      "text": "Netherlands",
+      "labels": {
+        "wide": {
+          "x": 34.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Netherlands",
+              "role": "country",
+              "size": 9.0,
+              "y": 221.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 40.5,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Netherlands",
+              "role": "country",
+              "size": 17.2,
+              "y": 222.4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "PL",
+      "text": "Poland",
+      "labels": {
+        "wide": {
+          "x": 662.4,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Poland",
+              "role": "country",
+              "size": 9.0,
+              "y": 221.4
+            }
+          ]
+        },
+        "narrow": {
+          "x": 662.4,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Poland",
+              "role": "country",
+              "size": 17.2,
+              "y": 222.9
+            }
           ]
         }
       }

@@ -361,6 +361,25 @@ def _sites(project: dict) -> list[dict]:
     return project.get("location") or []
 
 
+def name_line(row: dict, site: dict) -> str:
+    """What the label on the paper calls this mark.
+
+    A ONE-SITE PROJECT IS ITS NAME. A MULTI-SITE PROJECT IS ITS NAME AND WHICH
+    SITE THIS IS, because the alternative is two marks in the same picture
+    carrying identical labels: the ArcelorMittal row is one project standing on
+    Bremen and Eisenhüttenstadt, and a reader seeing the same words twice reads a
+    rendering fault rather than a two-site project. The site is appended only
+    where it distinguishes something -- a suffix on every label would be noise
+    on the eighteen projects that have one site.
+
+    The tooltip is unaffected: it names the site in its own clause already, and
+    `label` is left alone for it.
+    """
+    if len(_sites(row)) < 2:
+        return row["name"]
+    return f"{row['name']} — {site['site']}"
+
+
 def _mark(row: dict, site: dict, relation: str, frame, canvas) -> dict:
     """One mark. `row` is the project, never called `project` in this file --
     that name is the projection function and shadowing it here is how a
@@ -371,10 +390,12 @@ def _mark(row: dict, site: dict, relation: str, frame, canvas) -> dict:
     return {
         "id": row["id"],
         "site": site["site"],
+        "country": row["country"],
         "role": row.get("role", "plant"),
         "relation": relation,
         "status": row["status"],
         "label": row["name"],
+        "name_line": name_line(row, site),
         "sub": row["company"],
         "href": f"/projects/{row['id']}",
         "lat": site["lat"],
@@ -488,7 +509,13 @@ LEAD_STEPS = (1.0, 2.3, 3.9, 6.0, 8.6)
 # width. Past this a label stops being a tag on a mark and becomes a banner
 # across the picture.
 MAX_LINE_FRACTION = 0.30
-MAX_NAME_LINES = 2
+
+# Line budgets. The name gets three because a multi-site mark carries its site
+# too -- "ArcelorMittal Bremen and Eisenhüttenstadt conversion — Bremen
+# steelworks" is four times the width of the canvas at the narrow size and has
+# to be allowed to stack rather than be crammed onto one overflowing line.
+MAX_NAME_LINES = 3
+MAX_COMPANY_LINES = 2
 
 BOX_PAD = 0.30            # between two label boxes, in multiples of type size
 EDGE_MARGIN = 0.35        # between a label box and the frame edge
@@ -569,12 +596,16 @@ def mark_clearance(mark: dict) -> float:
 
 
 def _lines_for(label: str, sub, size: float, limit: float) -> list[dict]:
+    """The label's lines. THE NAME LINE IS NEVER THE THING THAT DROPS: on a
+    multi-site mark it carries the site, which is the whole of what tells that
+    mark from its twin, so the shortening rung takes the company and leaves this
+    alone. The company is in the tooltip either way."""
     out = [{"text": t, "size": size, "role": "name"}
            for t in wrap(label, size, limit, MAX_NAME_LINES)]
     if sub:
         company = size * COMPANY_RATIO
         out += [{"text": t, "size": company, "role": "company"}
-                for t in wrap(sub, company, limit, MAX_NAME_LINES)]
+                for t in wrap(sub, company, limit, MAX_COMPANY_LINES)]
     return out
 
 
@@ -685,7 +716,7 @@ def _search(mark, lines, marks, placed, canvas, size):
     return best
 
 
-def label_marks(marks: list[dict], canvas: tuple[float, float]) -> list[str]:
+def label_marks(marks: list[dict], canvas: tuple[float, float]) -> dict[str, list]:
     """Give every mark a permanent label under each breakpoint, in place.
 
     Greedy, in the order the marks already sort in, which is deterministic and
@@ -699,18 +730,18 @@ def label_marks(marks: list[dict], canvas: tuple[float, float]) -> list[str]:
     place is a picture that lies worst exactly where it is most crowded, and the
     reader has no way of knowing a name was ever there.
     """
-    notes: list[str] = []
+    boxes: dict[str, list] = {}
     for key, spec in BREAKPOINTS.items():
         size = spec["size"]
         limit = canvas[0] * MAX_LINE_FRACTION
         placed: list[tuple] = []
         for mark in marks:
-            full = _search(mark, _lines_for(mark["label"], mark["sub"], size, limit),
+            full = _search(mark, _lines_for(mark["name_line"], mark["sub"], size, limit),
                            marks, placed, canvas, size)
             if full["cost"] == 0.0:
                 best, shortened = full, False
             else:
-                short = _search(mark, _lines_for(mark["label"], None, size, limit),
+                short = _search(mark, _lines_for(mark["name_line"], None, size, limit),
                                 marks, placed, canvas, size)
                 if short["cost"] < full["cost"]:
                     best, shortened = short, True
@@ -726,10 +757,281 @@ def label_marks(marks: list[dict], canvas: tuple[float, float]) -> list[str]:
                 out["shortened"] = True
             if best["cost"] > 0.0:
                 out["crowded"] = True
-                notes.append(f"{key}: {mark['id']} ({mark['site']})")
             mark.setdefault("labels", {})[key] = out
             placed.append(best["box"])
-    return notes
+        boxes[key] = placed
+    return boxes
+
+
+# ---------------------------------------------------------------------------
+# Countries
+# ---------------------------------------------------------------------------
+#
+# THE GROUND IS NAMED. A reader who does not already know the shape of Europe
+# cannot tell Denmark from Schleswig-Holstein, and the picture was asking them
+# to. The names are the faintest layer on the paper: they sit under the site
+# labels in every sense, and where the two want the same space the country loses
+# and is dropped rather than moved on top of a name that matters more.
+#
+# WHICH COUNTRIES ARE NAMED DIFFERS BY FRAME, and it is the same principle in
+# two settings. A CROP names every country in view, because the reader is being
+# shown a region and needs to know which one. AN OVERVIEW names only the
+# countries that contain a drawn site, because Europe with forty-five names on
+# it is an atlas, and the question the overview answers is where this sector is
+# -- a name over a country with nothing in it answers a question nobody asked and
+# crowds out one that was.
+#
+# INTERNAL BORDERS WERE ALREADY THERE. The ruling made the border layer
+# conditional on the base geometry being coastline-only, and it is not: every
+# country's ring carries its land boundaries as well as its coast, and
+# land_paths has been drawing both since the first commit -- from both sides, in
+# fact. Nothing was added, and the faintest-ink layer the ruling provided for is
+# not needed.
+
+# The name's size against the site name's, per breakpoint, and how it is placed.
+COUNTRY_RATIO = 0.82
+
+# A grid coarse enough to run and fine enough to find the middle of a country.
+# The label point is the cell furthest from anywhere the country is not, which is
+# what stops Norway's name landing in the North Sea: a centroid of a concave
+# shape is routinely outside the shape, and a country outline is nothing if not
+# concave.
+COUNTRY_GRID = 26
+
+# How far, in canvas units, a country's label point has to be from the nearest
+# edge of the country or of the frame before the country is named at all. Below
+# this the name is standing on a sliver of Denmark clipped by the frame, and it
+# reads as belonging to whatever is next to it.
+COUNTRY_MIN_ROOM = 9.0
+
+# How many candidate middles a country offers the placement, and how far apart
+# on the grid they have to be to count as different places.
+COUNTRY_CANDIDATES = 4
+COUNTRY_SPREAD = 4
+
+# Rings simplified to this, in degrees, before any of the point work. Roughly
+# eleven kilometres, which is invisible to the question "where is the middle of
+# Poland" and is the difference between this running in seconds and in minutes.
+COUNTRY_SIMPLIFY_DEG = 0.1
+
+_RING_CACHE: dict[str, list] = {}
+
+
+def _coarse_rings(iso: str) -> list:
+    """A country's rings, simplified once and kept. Only ever used to answer
+    where a name goes -- the drawn coastline is simplified separately, in canvas
+    units, at a tolerance chosen for how it looks."""
+    if iso not in _RING_CACHE:
+        rings = []
+        for ring in ne.countries()[iso]:
+            thin = simplify(ring, COUNTRY_SIMPLIFY_DEG)
+            if len(thin) >= 3:
+                rings.append(thin)
+        _RING_CACHE[iso] = rings
+    return _RING_CACHE[iso]
+
+
+def _inside(pt, rings) -> bool:
+    """Even-odd, over the coarse rings, in degrees. The same parity rule
+    natural_earth.contains uses and for the same reason: a hole is a ring."""
+    x, y = pt
+    hit = False
+    for ring in rings:
+        n = len(ring)
+        for i in range(n):
+            x1, y1 = ring[i]
+            x2, y2 = ring[(i + 1) % n]
+            if (y1 > y) != (y2 > y):
+                if x < (x2 - x1) * (y - y1) / (y2 - y1) + x1:
+                    hit = not hit
+    return hit
+
+
+def _distance_transform(mask, w, h):
+    """Chamfer, two passes, on the grid rather than on the geometry. Gives every
+    inside cell its distance to the nearest outside cell in cell units, which is
+    all that is needed to pick the roomiest one and is far cheaper than asking
+    the same question of a coastline."""
+    big = float(w + h)
+    d = [[0.0 if not mask[j][i] else big for i in range(w)] for j in range(h)]
+    for j in range(h):
+        for i in range(w):
+            if not mask[j][i]:
+                continue
+            best = d[j][i]
+            if j > 0:
+                best = min(best, d[j - 1][i] + 1.0)
+                if i > 0:
+                    best = min(best, d[j - 1][i - 1] + 1.414)
+                if i + 1 < w:
+                    best = min(best, d[j - 1][i + 1] + 1.414)
+            if i > 0:
+                best = min(best, d[j][i - 1] + 1.0)
+            d[j][i] = best
+    for j in range(h - 1, -1, -1):
+        for i in range(w - 1, -1, -1):
+            if not mask[j][i]:
+                continue
+            best = d[j][i]
+            if j + 1 < h:
+                best = min(best, d[j + 1][i] + 1.0)
+                if i > 0:
+                    best = min(best, d[j + 1][i - 1] + 1.414)
+                if i + 1 < w:
+                    best = min(best, d[j + 1][i + 1] + 1.414)
+            if i + 1 < w:
+                best = min(best, d[j][i + 1] + 1.0)
+            d[j][i] = best
+    return d
+
+
+def country_points(iso: str, frame, canvas) -> list:
+    """Where this country's name could go, in canvas units, roomiest first, or
+    empty if the frame does not show enough of it to name.
+
+    The frame's own edge counts as outside, so a country clipped to a corner is
+    measured on what is VISIBLE of it rather than on what it is -- otherwise
+    Sweden's name lands off the top of a crop that shows its southern tip.
+    """
+    rings = _coarse_rings(iso)
+    if not rings:
+        return []
+    x0, y0, x1, y1 = frame
+    scale = canvas[0] / (x1 - x0)
+
+    lons, lats = [], []
+    steps = 12
+    for i in range(steps + 1):
+        x = x0 + (x1 - x0) * i / steps
+        y = y0 + (y1 - y0) * i / steps
+        for corner in ((x, y0), (x, y1), (x0, y), (x1, y)):
+            lon, lat = unproject(*corner)
+            lons.append(lon)
+            lats.append(lat)
+    west, east = min(lons), max(lons)
+    south, north = min(lats), max(lats)
+
+    rw = [p[0] for ring in rings for p in ring]
+    rh = [p[1] for ring in rings for p in ring]
+    west, east = max(west, min(rw)), min(east, max(rw))
+    south, north = max(south, min(rh)), min(north, max(rh))
+    if east <= west or north <= south:
+        return []
+
+    w = h = COUNTRY_GRID
+    mask = [[False] * w for _ in range(h)]
+    pts = [[None] * w for _ in range(h)]
+    for j in range(h):
+        lat = south + (north - south) * (j + 0.5) / h
+        for i in range(w):
+            lon = west + (east - west) * (i + 0.5) / w
+            px, py = project(lon, lat)
+            if not (x0 <= px <= x1 and y0 <= py <= y1):
+                continue
+            if _inside((lon, lat), rings):
+                mask[j][i] = True
+                pts[j][i] = ((px - x0) * scale, (py - y0) * scale)
+
+    d = _distance_transform(mask, w, h)
+    # One grid cell, in canvas units, so room measured on the grid can be
+    # compared against a threshold written in the units everything else uses.
+    cell = ((east - west) / w) * math.cos(math.radians((north + south) / 2)) * 111.32 * scale
+    roomy = sorted(
+        ((d[j][i], i, j) for j in range(h) for i in range(w)
+         if mask[j][i] and d[j][i] * cell >= COUNTRY_MIN_ROOM),
+        key=lambda t: (-t[0], t[2], t[1]))
+
+    # MORE THAN ONE CANDIDATE, KEPT APART. The roomiest cell is the best place
+    # for a name and is not the only one: Germany's is in the middle, which on a
+    # crop of the Ruhr is exactly where the site labels are, and a country whose
+    # single candidate is taken loses its name to a neighbour's works. Offering
+    # the placement a few genuinely different middles recovers those without
+    # letting a name wander out of its own country, which is what a large nudge
+    # would do. Kept COUNTRY_SPREAD cells apart so the alternatives are places
+    # rather than neighbours of the first one.
+    out = []
+    for dist, i, j in roomy:
+        if any(max(abs(i - pi), abs(j - pj)) < COUNTRY_SPREAD for _, pi, pj in out):
+            continue
+        out.append((pts[j][i], i, j))
+        if len(out) >= COUNTRY_CANDIDATES:
+            break
+    return [pt for pt, _i, _j in out]
+
+
+def visible_countries(frame, canvas) -> list[str]:
+    """Every country the frame shows enough of to name, in ISO order so two
+    builds of one frame agree."""
+    return [iso for iso in sorted(ne.countries())
+            if country_points(iso, frame, canvas)]
+
+# Where a country's name may be nudged to, and how far. SMALL, and small on
+# purpose: a country label that has walked any distance is no longer over its
+# country, and a name in the wrong country is worse than no name at all. Past
+# these the name is dropped instead.
+COUNTRY_NUDGES = (0.0, 0.7, 1.4, 2.2)
+
+
+def country_names() -> dict[str, str]:
+    doc = json.loads((sm.ROOT / "data" / "prose.json").read_text(encoding="utf-8"))
+    return doc["country_names"]["names"]
+
+
+def label_countries(isos, points, marks, canvas, placed) -> list[dict]:
+    """Name the ground, under the site labels in every sense.
+
+    A COUNTRY LABEL NEVER MOVES A SITE LABEL. The site labels are placed first
+    and handed here as fixed boxes; this pass places around them, and where it
+    cannot it DROPS THE NAME. That is the opposite of the rule for a site label,
+    which is never dropped, and the asymmetry is the point: a missing site is a
+    fact the reader cannot recover, and a missing country is a shape most readers
+    know and all of them will be able to hover once the hit layer lands.
+    """
+    names = country_names()
+    missing = [iso for iso in isos if iso not in names]
+    if missing:
+        raise SystemExit(
+            f"build_maps: no name for {', '.join(missing)} — add them to "
+            f"country_names in data/prose.json rather than letting a two-letter "
+            f"code onto the paper")
+
+    out = []
+    for iso in isos:
+        entry = {"iso": iso, "text": names[iso], "labels": {}}
+        for key, spec in BREAKPOINTS.items():
+            candidates = points[key].get(iso) or []
+            if not candidates:
+                continue
+            size = spec["size"] * COUNTRY_RATIO
+            limit = canvas[0] * MAX_LINE_FRACTION
+            lines = [{"text": t, "size": size, "role": "country"}
+                     for t in wrap(names[iso], size, limit, 2)]
+            w, h = _box_size(lines)
+            best = None
+            for mx, my in candidates:
+                for step in COUNTRY_NUDGES:
+                    # The label point itself first, then the same ring of
+                    # directions the site labels use, at a fraction of the reach.
+                    tries = (("c", 0.0, 0.0),) if step == 0.0 else DIRECTIONS
+                    for _n, ux, uy in tries:
+                        box = _place(mx, my, ux, uy, size * step, w, h)
+                        cost = _cost(box, placed[key], marks, None, canvas, size)
+                        if best is None or cost < best["cost"]:
+                            best = {"cost": cost, "box": box, "ux": ux, "lines": lines}
+                        if cost == 0.0:
+                            break
+                    if best["cost"] == 0.0:
+                        break
+                if best["cost"] == 0.0:
+                    break
+            # Dropped rather than drawn badly: see the docstring.
+            if best["cost"] > 0.0:
+                continue
+            entry["labels"][key] = _render(best["lines"], best["box"], best["ux"])
+            placed[key].append(best["box"])
+        if entry["labels"]:
+            out.append(entry)
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -752,10 +1054,20 @@ PROJECTION = {
 }
 
 
-def _doc(map_id, kind, subject, frame, canvas, marks, detail) -> dict:
+def _doc(map_id, kind, subject, frame, canvas, marks, detail, isos) -> dict:
     # Labels are laid out here, once the marks are final and before anything is
     # written, so that no consumer of this file ever sees a mark without one.
-    label_marks(marks, canvas)
+    #
+    # ORDER MATTERS AND IS THE RULING. The site labels are placed first and
+    # against nothing but each other; the country names are placed afterwards,
+    # against the boxes the site labels have already taken. A country name can
+    # therefore be nudged or dropped by a site name and never the other way
+    # round, which is what "subordinate" has to mean once two layers want the
+    # same square of paper.
+    placed = label_marks(marks, canvas)
+    candidates = {iso: country_points(iso, frame, canvas) for iso in isos}
+    points = {key: candidates for key in BREAKPOINTS}
+    countries = label_countries(isos, points, marks, canvas, placed)
     return {
         "id": map_id,
         "kind": kind,
@@ -766,6 +1078,7 @@ def _doc(map_id, kind, subject, frame, canvas, marks, detail) -> dict:
         "extent": frame_degrees(frame),
         "land": land_paths(frame, canvas, detail["tolerance"], detail["min_ring"]),
         "marks": marks,
+        "countries": countries,
         "as_of": max((m["as_of"] for m in marks), default=""),
     }
 
@@ -785,8 +1098,13 @@ def sector_map(sector: str, projects: list[dict]) -> dict:
         for site in _sites(row):
             marks.append(_mark(row, site, "sector", frame, SECTOR_CANVAS))
     marks.sort(key=lambda m: (m["id"], m["site"]))
+    # AN OVERVIEW NAMES ONLY WHERE IT HAS SOMETHING. Europe carries forty-five
+    # countries and naming all of them makes an atlas out of a picture whose one
+    # question is where this sector is; a name over a country with no site in it
+    # answers a question nobody asked and takes the room from one that was.
+    isos = sorted({m["country"] for m in marks})
     doc = _doc(f"sector-{sector.replace('/', '__')}", "sector", sector,
-               frame, SECTOR_CANVAS, marks, SECTOR_DETAIL)
+               frame, SECTOR_CANVAS, marks, SECTOR_DETAIL, isos)
     # The coordinates line under an overview states THE EXTENT OF WHAT IS
     # MARKED, not the frame's. `extent` is the frame and is kept in the file for
     # anyone checking the projection, but it is not a line to print: a conic's
@@ -844,8 +1162,12 @@ def project_map(subject: dict, projects: list[dict]) -> dict:
                 marks.append(_mark(row, site, rel, frame, PROJECT_CANVAS))
     marks.sort(key=lambda m: (RELATIONS.index(m["relation"]), m["id"], m["site"]))
 
+    # A CROP NAMES EVERYTHING IN VIEW. The reader has been handed a region
+    # without being told which one, and at 800 km across the outlines are not
+    # the ones anybody recognises from memory.
     doc = _doc(f"project-{subject['id']}", "project", subject["id"],
-               frame, PROJECT_CANVAS, marks, PROJECT_DETAIL)
+               frame, PROJECT_CANVAS, marks, PROJECT_DETAIL,
+               visible_countries(frame, PROJECT_CANVAS))
     # The coordinates line under a project crop states THE PROJECT'S position,
     # not the frame's. A reader looking at a plant wants the plant's numbers,
     # and a two-site project gets both lines.
@@ -915,6 +1237,19 @@ def main() -> int:
     for line in crowded:
         print(f"build_maps: label overlaps something at {line}", file=sys.stderr)
 
+    # Country names that lost their square of paper to a site label. Counted and
+    # printed rather than passed over: it is the one place the geography drops
+    # something a reader might have wanted, and the number is how anybody notices
+    # a frame has become too crowded to name its own ground.
+    asked = sum(len(BREAKPOINTS) * len(d["countries"]) for d in docs)
+    given = sum(len(c["labels"]) for d in docs for c in d["countries"])
+    for doc in docs:
+        for c in doc["countries"]:
+            for bp in BREAKPOINTS:
+                if bp not in c["labels"]:
+                    print(f"build_maps: no room for {c['text']} on {doc['id']} "
+                          f"({bp}) — a site label has it", file=sys.stderr)
+
     if failed:
         return 1
     verb = "--check," if args.check else "wrote"
@@ -924,7 +1259,8 @@ def main() -> int:
           f"{sum(len(d['land']) for d in docs)} stroke(s), "
           f"{sum(len(d['marks']) for d in docs)} mark(s), "
           f"{sum(1 for d in docs for m in d['marks'] for l in m['labels'].values() if l.get('shortened'))}"
-          f" label(s) shortened, {len(crowded)} crowded")
+          f" label(s) shortened, {len(crowded)} crowded; "
+          f"{asked} country name slot(s), {asked - given} dropped to a site label")
     return 0
 
 

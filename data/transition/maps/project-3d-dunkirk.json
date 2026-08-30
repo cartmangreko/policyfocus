@@ -68,10 +68,12 @@
     {
       "id": "3d-dunkirk",
       "site": "Dunkerque steelworks",
+      "country": "FR",
       "role": "plant",
       "relation": "subject",
       "status": "operating",
       "label": "3D — DMX demonstration in Dunkirk",
+      "name_line": "3D — DMX demonstration in Dunkirk",
       "sub": "ArcelorMittal",
       "href": "/projects/3d-dunkirk",
       "lat": 51.0362,
@@ -99,26 +101,32 @@
           ]
         },
         "narrow": {
-          "x": 350.8,
-          "anchor": "end",
+          "x": 409.2,
+          "anchor": "start",
           "lines": [
             {
               "text": "3D — DMX",
               "role": "name",
               "size": 21.0,
-              "y": 195.3
+              "y": 182.7
             },
             {
-              "text": "demonstration in Dunkirk",
+              "text": "demonstration in",
               "role": "name",
               "size": 21.0,
-              "y": 220.5
+              "y": 207.9
+            },
+            {
+              "text": "Dunkirk",
+              "role": "name",
+              "size": 21.0,
+              "y": 233.1
             },
             {
               "text": "ArcelorMittal",
               "role": "company",
               "size": 18.1,
-              "y": 243.5
+              "y": 256.1
             }
           ]
         }
@@ -127,10 +135,12 @@
     {
       "id": "go4zero-obourg",
       "site": "Obourg cement works",
+      "country": "BE",
       "role": "plant",
       "relation": "technology",
       "status": "construction",
       "label": "GO4ZERO",
+      "name_line": "GO4ZERO",
       "sub": "Holcim",
       "href": "/projects/go4zero-obourg",
       "lat": 50.4709,
@@ -158,20 +168,20 @@
           ]
         },
         "narrow": {
-          "x": 503.1,
+          "x": 497.6,
           "anchor": "start",
           "lines": [
             {
               "text": "GO4ZERO",
               "role": "name",
               "size": 21.0,
-              "y": 275.4
+              "y": 312.8
             },
             {
               "text": "Holcim",
               "role": "company",
               "size": 18.1,
-              "y": 298.4
+              "y": 335.7
             }
           ]
         }
@@ -180,10 +190,12 @@
     {
       "id": "tkh2steel-duisburg",
       "site": "Duisburg steelworks",
+      "country": "DE",
       "role": "plant",
       "relation": "sector",
       "status": "construction",
       "label": "tkH2Steel",
+      "name_line": "tkH2Steel",
       "sub": "thyssenkrupp Steel",
       "href": "/projects/tkh2steel-duisburg",
       "lat": 51.4907,
@@ -211,20 +223,208 @@
           ]
         },
         "narrow": {
-          "x": 645.9,
+          "x": 633.2,
           "anchor": "end",
           "lines": [
             {
               "text": "tkH2Steel",
               "role": "name",
               "size": 21.0,
-              "y": 182.7
+              "y": 127.2
             },
             {
               "text": "thyssenkrupp Steel",
               "role": "company",
               "size": 18.1,
-              "y": 205.7
+              "y": 150.1
+            }
+          ],
+          "leader": [
+            661.2,
+            185.7,
+            633.2,
+            157.7
+          ]
+        }
+      }
+    }
+  ],
+  "countries": [
+    {
+      "iso": "BE",
+      "text": "Belgium",
+      "labels": {
+        "wide": {
+          "x": 533.5,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Belgium",
+              "role": "country",
+              "size": 9.0,
+              "y": 256.5
+            }
+          ]
+        },
+        "narrow": {
+          "x": 583.5,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Belgium",
+              "role": "country",
+              "size": 17.2,
+              "y": 283.1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "DE",
+      "text": "Germany",
+      "labels": {
+        "wide": {
+          "x": 700.2,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 9.0,
+              "y": 262.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 700.2,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 17.2,
+              "y": 263.8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "FR",
+      "text": "France",
+      "labels": {
+        "wide": {
+          "x": 396.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "France",
+              "role": "country",
+              "size": 9.0,
+              "y": 375.5
+            }
+          ]
+        },
+        "narrow": {
+          "x": 396.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "France",
+              "role": "country",
+              "size": 17.2,
+              "y": 377.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "GB",
+      "text": "United Kingdom",
+      "labels": {
+        "wide": {
+          "x": 176.8,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "United Kingdom",
+              "role": "country",
+              "size": 9.0,
+              "y": 105.2
+            }
+          ]
+        },
+        "narrow": {
+          "x": 176.8,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "United Kingdom",
+              "role": "country",
+              "size": 17.2,
+              "y": 106.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "LU",
+      "text": "Luxembourg",
+      "labels": {
+        "wide": {
+          "x": 615.7,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Luxembourg",
+              "role": "country",
+              "size": 9.0,
+              "y": 370.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 615.7,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Luxembourg",
+              "role": "country",
+              "size": 17.2,
+              "y": 371.8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "NL",
+      "text": "Netherlands",
+      "labels": {
+        "wide": {
+          "x": 603.0,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Netherlands",
+              "role": "country",
+              "size": 9.0,
+              "y": 102.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 611.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Netherlands",
+              "role": "country",
+              "size": 17.2,
+              "y": 84.5
             }
           ]
         }

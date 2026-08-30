@@ -363,10 +363,12 @@
     {
       "id": "anrav-devnya",
       "site": "Devnya cement works",
+      "country": "BG",
       "role": "plant",
       "relation": "sector",
       "status": "funded",
       "label": "ANRAV",
+      "name_line": "ANRAV",
       "sub": "Heidelberg Materials (Devnya Cement)",
       "href": "/projects/anrav-devnya",
       "lat": 43.2343,
@@ -422,10 +424,12 @@
     {
       "id": "brevik-ccs",
       "site": "Brevik cement works",
+      "country": "NO",
       "role": "plant",
       "relation": "sector",
       "status": "operating",
       "label": "Brevik CCS",
+      "name_line": "Brevik CCS",
       "sub": "Heidelberg Materials",
       "href": "/projects/brevik-ccs",
       "lat": 59.0644,
@@ -475,10 +479,12 @@
     {
       "id": "carbon2business-lagerdorf",
       "site": "Lägerdorf cement works",
+      "country": "DE",
       "role": "plant",
       "relation": "sector",
       "status": "construction",
       "label": "Carbon2Business",
+      "name_line": "Carbon2Business",
       "sub": "Holcim",
       "href": "/projects/carbon2business-lagerdorf",
       "lat": 53.8759,
@@ -528,10 +534,12 @@
     {
       "id": "gezero-geseke",
       "site": "Geseke cement works, Milke section",
+      "country": "DE",
       "role": "plant",
       "relation": "sector",
       "status": "funded",
       "label": "GeZero",
+      "name_line": "GeZero",
       "sub": "Heidelberg Materials",
       "href": "/projects/gezero-geseke",
       "lat": 51.6191,
@@ -581,10 +589,12 @@
     {
       "id": "go4zero-obourg",
       "site": "Obourg cement works",
+      "country": "BE",
       "role": "plant",
       "relation": "sector",
       "status": "construction",
       "label": "GO4ZERO",
+      "name_line": "GO4ZERO",
       "sub": "Holcim",
       "href": "/projects/go4zero-obourg",
       "lat": 50.4709,
@@ -634,10 +644,12 @@
     {
       "id": "ifestos-kamari",
       "site": "Kamari cement works",
+      "country": "GR",
       "role": "plant",
       "relation": "sector",
       "status": "announced",
       "label": "IFESTOS",
+      "name_line": "IFESTOS",
       "sub": "TITAN Cement",
       "href": "/projects/ifestos-kamari",
       "lat": 38.1292,
@@ -687,10 +699,12 @@
     {
       "id": "k6-lumbres",
       "site": "Lumbres cement works",
+      "country": "FR",
       "role": "plant",
       "relation": "sector",
       "status": "construction",
       "label": "K6",
+      "name_line": "K6",
       "sub": "EQIOM (CRH)",
       "href": "/projects/k6-lumbres",
       "lat": 50.6946,
@@ -740,10 +754,12 @@
     {
       "id": "slite-ccs",
       "site": "Slite cement works",
+      "country": "SE",
       "role": "plant",
       "relation": "sector",
       "status": "paused",
       "label": "Slite CCS",
+      "name_line": "Slite CCS",
       "sub": "Heidelberg Materials",
       "href": "/projects/slite-ccs",
       "lat": 57.7121,
@@ -785,6 +801,218 @@
               "role": "company",
               "size": 18.1,
               "y": 305.3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "countries": [
+    {
+      "iso": "BE",
+      "text": "Belgium",
+      "labels": {
+        "wide": {
+          "x": 310.3,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Belgium",
+              "role": "country",
+              "size": 9.0,
+              "y": 421.9
+            }
+          ]
+        },
+        "narrow": {
+          "x": 310.3,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Belgium",
+              "role": "country",
+              "size": 17.2,
+              "y": 419.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "BG",
+      "text": "Bulgaria",
+      "labels": {
+        "wide": {
+          "x": 606.8,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Bulgaria",
+              "role": "country",
+              "size": 9.0,
+              "y": 587.8
+            }
+          ]
+        },
+        "narrow": {
+          "x": 630.9,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Bulgaria",
+              "role": "country",
+              "size": 17.2,
+              "y": 589.2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "DE",
+      "text": "Germany",
+      "labels": {
+        "wide": {
+          "x": 387.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 9.0,
+              "y": 445.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 405.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 17.2,
+              "y": 418.8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "FR",
+      "text": "France",
+      "labels": {
+        "wide": {
+          "x": 254.3,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "France",
+              "role": "country",
+              "size": 9.0,
+              "y": 496.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 271.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "France",
+              "role": "country",
+              "size": 17.2,
+              "y": 525.5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "GR",
+      "text": "Greece",
+      "labels": {
+        "wide": {
+          "x": 576.5,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Greece",
+              "role": "country",
+              "size": 9.0,
+              "y": 663.7
+            }
+          ]
+        },
+        "narrow": {
+          "x": 576.5,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Greece",
+              "role": "country",
+              "size": 17.2,
+              "y": 642.8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "NO",
+      "text": "Norway",
+      "labels": {
+        "wide": {
+          "x": 375.5,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Norway",
+              "role": "country",
+              "size": 9.0,
+              "y": 217.8
+            }
+          ]
+        },
+        "narrow": {
+          "x": 375.5,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Norway",
+              "role": "country",
+              "size": 17.2,
+              "y": 219.2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "SE",
+      "text": "Sweden",
+      "labels": {
+        "wide": {
+          "x": 435.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Sweden",
+              "role": "country",
+              "size": 9.0,
+              "y": 240.7
+            }
+          ]
+        },
+        "narrow": {
+          "x": 431.2,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Sweden",
+              "role": "country",
+              "size": 17.2,
+              "y": 252.1
             }
           ]
         }

@@ -66,10 +66,12 @@
     {
       "id": "tkh2steel-duisburg",
       "site": "Duisburg steelworks",
+      "country": "DE",
       "role": "plant",
       "relation": "subject",
       "status": "construction",
       "label": "tkH2Steel",
+      "name_line": "tkH2Steel",
       "sub": "thyssenkrupp Steel",
       "href": "/projects/tkh2steel-duisburg",
       "lat": 51.4907,
@@ -119,10 +121,12 @@
     {
       "id": "am-bremen-eisenhuettenstadt",
       "site": "Bremen steelworks",
+      "country": "DE",
       "role": "plant",
       "relation": "technology",
       "status": "cancelled",
       "label": "ArcelorMittal Bremen and Eisenhüttenstadt conversion",
+      "name_line": "ArcelorMittal Bremen and Eisenhüttenstadt conversion — Bremen steelworks",
       "sub": "ArcelorMittal",
       "href": "/projects/am-bremen-eisenhuettenstadt",
       "lat": 53.1331,
@@ -139,43 +143,55 @@
               "text": "ArcelorMittal Bremen and",
               "role": "name",
               "size": 11.0,
-              "y": 41.0
+              "y": 34.4
             },
             {
-              "text": "Eisenhüttenstadt conversion",
+              "text": "Eisenhüttenstadt conversion — Bremen",
               "role": "name",
               "size": 11.0,
-              "y": 54.2
+              "y": 47.6
+            },
+            {
+              "text": "steelworks",
+              "role": "name",
+              "size": 11.0,
+              "y": 60.8
             },
             {
               "text": "ArcelorMittal",
               "role": "company",
               "size": 9.5,
-              "y": 66.2
+              "y": 72.8
             }
           ]
         },
         "narrow": {
-          "x": 488.1,
+          "x": 493.6,
           "anchor": "end",
           "lines": [
             {
               "text": "ArcelorMittal Bremen",
               "role": "name",
               "size": 21.0,
-              "y": 31.6
+              "y": 81.6
             },
             {
-              "text": "and Eisenhüttenstadt conversion",
+              "text": "and Eisenhüttenstadt",
               "role": "name",
               "size": 21.0,
-              "y": 56.8
+              "y": 106.8
+            },
+            {
+              "text": "conversion — Bremen steelworks",
+              "role": "name",
+              "size": 21.0,
+              "y": 132.0
             },
             {
               "text": "ArcelorMittal",
               "role": "company",
               "size": 18.1,
-              "y": 79.8
+              "y": 154.9
             }
           ]
         }
@@ -184,10 +200,12 @@
     {
       "id": "salcos-salzgitter",
       "site": "Salzgitter steelworks",
+      "country": "DE",
       "role": "plant",
       "relation": "technology",
       "status": "construction",
       "label": "SALCOS stage one",
+      "name_line": "SALCOS stage one",
       "sub": "Salzgitter AG",
       "href": "/projects/salcos-salzgitter",
       "lat": 52.1631,
@@ -215,20 +233,20 @@
           ]
         },
         "narrow": {
-          "x": 594.1,
-          "anchor": "end",
+          "x": 613.5,
+          "anchor": "middle",
           "lines": [
             {
               "text": "SALCOS stage one",
               "role": "name",
               "size": 21.0,
-              "y": 143.8
+              "y": 101.0
             },
             {
               "text": "Salzgitter AG",
               "role": "company",
               "size": 18.1,
-              "y": 166.8
+              "y": 123.9
             }
           ]
         }
@@ -237,10 +255,12 @@
     {
       "id": "3d-dunkirk",
       "site": "Dunkerque steelworks",
+      "country": "FR",
       "role": "plant",
       "relation": "sector",
       "status": "operating",
       "label": "3D — DMX demonstration in Dunkirk",
+      "name_line": "3D — DMX demonstration in Dunkirk",
       "sub": "ArcelorMittal",
       "href": "/projects/3d-dunkirk",
       "lat": 51.0362,
@@ -268,26 +288,202 @@
           ]
         },
         "narrow": {
-          "x": 108.6,
+          "x": 114.1,
           "anchor": "start",
           "lines": [
             {
               "text": "3D — DMX",
               "role": "name",
               "size": 21.0,
-              "y": 270.5
+              "y": 207.9
             },
             {
-              "text": "demonstration in Dunkirk",
+              "text": "demonstration in",
               "role": "name",
               "size": 21.0,
-              "y": 295.7
+              "y": 233.1
+            },
+            {
+              "text": "Dunkirk",
+              "role": "name",
+              "size": 21.0,
+              "y": 258.3
             },
             {
               "text": "ArcelorMittal",
               "role": "company",
               "size": 18.1,
-              "y": 318.6
+              "y": 281.3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "countries": [
+    {
+      "iso": "BE",
+      "text": "Belgium",
+      "labels": {
+        "wide": {
+          "x": 243.6,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Belgium",
+              "role": "country",
+              "size": 9.0,
+              "y": 291.7
+            }
+          ]
+        },
+        "narrow": {
+          "x": 252.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Belgium",
+              "role": "country",
+              "size": 17.2,
+              "y": 312.2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "DE",
+      "text": "Germany",
+      "labels": {
+        "wide": {
+          "x": 707.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 9.0,
+              "y": 19.1
+            }
+          ]
+        },
+        "narrow": {
+          "x": 694.5,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 17.2,
+              "y": 29.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "FR",
+      "text": "France",
+      "labels": {
+        "wide": {
+          "x": 126.3,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "France",
+              "role": "country",
+              "size": 9.0,
+              "y": 378.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 126.3,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "France",
+              "role": "country",
+              "size": 17.2,
+              "y": 379.5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "GB",
+      "text": "United Kingdom",
+      "labels": {
+        "wide": {
+          "x": 25.1,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "United Kingdom",
+              "role": "country",
+              "size": 9.0,
+              "y": 103.8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "LU",
+      "text": "Luxembourg",
+      "labels": {
+        "wide": {
+          "x": 330.4,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Luxembourg",
+              "role": "country",
+              "size": 9.0,
+              "y": 395.6
+            }
+          ]
+        },
+        "narrow": {
+          "x": 330.4,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Luxembourg",
+              "role": "country",
+              "size": 17.2,
+              "y": 397.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "NL",
+      "text": "Netherlands",
+      "labels": {
+        "wide": {
+          "x": 323.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Netherlands",
+              "role": "country",
+              "size": 9.0,
+              "y": 120.6
+            }
+          ]
+        },
+        "narrow": {
+          "x": 384.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Netherlands",
+              "role": "country",
+              "size": 17.2,
+              "y": 36.2
             }
           ]
         }

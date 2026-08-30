@@ -90,10 +90,12 @@
     {
       "id": "stegra-boden",
       "site": "Boden steelworks",
+      "country": "SE",
       "role": "plant",
       "relation": "subject",
       "status": "construction",
       "label": "Stegra Boden",
+      "name_line": "Stegra Boden",
       "sub": "Stegra",
       "href": "/projects/stegra-boden",
       "lat": 65.8098,
@@ -143,10 +145,12 @@
     {
       "id": "hybrit-pilot-lulea",
       "site": "HYBRIT pilot plant, Luleå",
+      "country": "SE",
       "role": "plant",
       "relation": "technology",
       "status": "operating",
       "label": "HYBRIT pilot",
+      "name_line": "HYBRIT pilot",
       "sub": "SSAB, LKAB and Vattenfall",
       "href": "/projects/hybrit-pilot-lulea",
       "lat": 65.5557,
@@ -194,6 +198,128 @@
               "role": "company",
               "size": 18.1,
               "y": 265.4
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "countries": [
+    {
+      "iso": "FI",
+      "text": "Finland",
+      "labels": {
+        "wide": {
+          "x": 601.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Finland",
+              "role": "country",
+              "size": 9.0,
+              "y": 140.2
+            }
+          ]
+        },
+        "narrow": {
+          "x": 601.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Finland",
+              "role": "country",
+              "size": 17.2,
+              "y": 141.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "NO",
+      "text": "Norway",
+      "labels": {
+        "wide": {
+          "x": 18.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Norway",
+              "role": "country",
+              "size": 9.0,
+              "y": 326.5
+            }
+          ]
+        },
+        "narrow": {
+          "x": 24.1,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Norway",
+              "role": "country",
+              "size": 17.2,
+              "y": 328.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "RU",
+      "text": "Russia",
+      "labels": {
+        "wide": {
+          "x": 724.8,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Russia",
+              "role": "country",
+              "size": 9.0,
+              "y": 43.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 724.8,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Russia",
+              "role": "country",
+              "size": 17.2,
+              "y": 44.5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "SE",
+      "text": "Sweden",
+      "labels": {
+        "wide": {
+          "x": 230.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Sweden",
+              "role": "country",
+              "size": 9.0,
+              "y": 246.9
+            }
+          ]
+        },
+        "narrow": {
+          "x": 238.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Sweden",
+              "role": "country",
+              "size": 17.2,
+              "y": 267.4
             }
           ]
         }
