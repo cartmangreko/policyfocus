@@ -32,6 +32,49 @@ matter again the next time something is staged on this project: a Vercel
 production custom domain is not covered by deployment protection by default, and
 noindex is a closure against crawlers, not against people.
 
+## The country hover layer on the geography
+
+**Its own stack, small.** Touches `sources/build_maps.py` (a second geometry
+output), `web/components/LocationMap.tsx` (which becomes a client component),
+`web/app/globals.css`, and every page that draws a frame.
+
+Split out of #47 deliberately. The permanent country names landed there — a crop
+names every country in view, an overview only those holding a site — and 2 of
+234 name slots were dropped because a site label had the paper. The hover layer
+is the backstop for those two and for every country a frame shows without room
+to name: point at any country and its name appears, in the same treatment the
+permanent labels use rather than in the site tooltip's.
+
+Why it is not in #47. It is the component's **first client-side behaviour**, and
+that is a real change rather than a small one. Hover alone is a CSS pseudo-class
+and would have ridden along; the ruling also asks for touch — a tap on country
+area shows the name, the next tap dismisses it — and that is state. Holding
+state makes `LocationMap` a client component, which puts hydration on all 21
+frames and on every project and sector page that draws one, and that belongs in
+a review of its own rather than at the end of a five-commit PR about geometry.
+
+The second reason is data. Hit-testing a country needs **closed polygons**, and
+the map files carry open polylines: coastlines are stroked, not filled, and are
+clipped as lines precisely so that a frame edge does not read as a coast
+(`build_maps.py`, module docstring). Hit targets are a second geometry output
+with a different clipping rule, and they roughly double the land payload of
+every map file. That is a size and a shape question worth its own diff.
+
+What it needs, in order:
+
+1. **Closed per-country paths**, clipped as polygons rather than as polylines,
+   emitted alongside `land` and invisible — `fill: transparent`, no stroke, so
+   nothing about the picture changes.
+2. **The hit order**, which the ruling fixes: site marks always win. The country
+   targets sit below the marks in paint order, which is where SVG hit-testing
+   already resolves it, so no code decides this.
+3. **The behaviour**: hover on pointer devices, tap-to-show and tap-to-dismiss on
+   touch, the name rendered in the permanent-label treatment and not the tooltip
+   one.
+
+The names themselves are already done: `country_names` in `data/prose.json`, and
+`build_maps.py` already bakes the string into every frame that shows the country.
+
 ## Horizontal / economy-wide scope as a data-model attribute
 
 **Its own stack.** Touches the schema, the gates, and every sector page.
