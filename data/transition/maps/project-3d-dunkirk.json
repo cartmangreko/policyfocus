@@ -6,6 +6,11 @@
     "width": 760.0,
     "height": 430.0
   },
+  "mark_geometry": {
+    "r": 4.6,
+    "store_scale": 1.25,
+    "ring_scale": 3.4
+  },
   "projection": {
     "name": "Lambert conformal conic",
     "basis": "EPSG:3034 parameters (ETRS89-extended / LCC-Europe), spherical form",
@@ -73,7 +78,51 @@
       "lon": 2.298,
       "as_of": "2026-08-28",
       "x": 380.0,
-      "y": 215.0
+      "y": 215.0,
+      "labels": {
+        "wide": {
+          "x": 403.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "3D — DMX demonstration in Dunkirk",
+              "role": "name",
+              "size": 11.0,
+              "y": 211.3
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 9.5,
+              "y": 223.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 350.8,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "3D — DMX",
+              "role": "name",
+              "size": 21.0,
+              "y": 195.3
+            },
+            {
+              "text": "demonstration in Dunkirk",
+              "role": "name",
+              "size": 21.0,
+              "y": 220.5
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 18.1,
+              "y": 243.5
+            }
+          ]
+        }
+      }
     },
     {
       "id": "go4zero-obourg",
@@ -88,7 +137,45 @@
       "lon": 3.9948,
       "as_of": "2026-08-28",
       "x": 483.7,
-      "y": 282.5
+      "y": 282.5,
+      "labels": {
+        "wide": {
+          "x": 497.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "GO4ZERO",
+              "role": "name",
+              "size": 11.0,
+              "y": 278.8
+            },
+            {
+              "text": "Holcim",
+              "role": "company",
+              "size": 9.5,
+              "y": 290.8
+            }
+          ]
+        },
+        "narrow": {
+          "x": 503.1,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "GO4ZERO",
+              "role": "name",
+              "size": 21.0,
+              "y": 275.4
+            },
+            {
+              "text": "Holcim",
+              "role": "company",
+              "size": 18.1,
+              "y": 298.4
+            }
+          ]
+        }
+      }
     },
     {
       "id": "tkh2steel-duisburg",
@@ -103,7 +190,45 @@
       "lon": 6.7272,
       "as_of": "2026-08-28",
       "x": 665.3,
-      "y": 189.8
+      "y": 189.8,
+      "labels": {
+        "wide": {
+          "x": 655.3,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "tkH2Steel",
+              "role": "name",
+              "size": 11.0,
+              "y": 163.8
+            },
+            {
+              "text": "thyssenkrupp Steel",
+              "role": "company",
+              "size": 9.5,
+              "y": 175.8
+            }
+          ]
+        },
+        "narrow": {
+          "x": 645.9,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "tkH2Steel",
+              "role": "name",
+              "size": 21.0,
+              "y": 182.7
+            },
+            {
+              "text": "thyssenkrupp Steel",
+              "role": "company",
+              "size": 18.1,
+              "y": 205.7
+            }
+          ]
+        }
+      }
     }
   ],
   "as_of": "2026-08-28",

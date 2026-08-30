@@ -6,6 +6,11 @@
     "width": 760.0,
     "height": 430.0
   },
+  "mark_geometry": {
+    "r": 4.6,
+    "store_scale": 1.25,
+    "ring_scale": 3.4
+  },
   "projection": {
     "name": "Lambert conformal conic",
     "basis": "EPSG:3034 parameters (ETRS89-extended / LCC-Europe), spherical form",
@@ -77,7 +82,57 @@
       "lon": 4.8856,
       "as_of": "2026-08-28",
       "x": 258.0,
-      "y": 133.5
+      "y": 133.5,
+      "labels": {
+        "wide": {
+          "x": 281.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Northern Lights",
+              "role": "name",
+              "size": 11.0,
+              "y": 124.1
+            },
+            {
+              "text": "Northern Lights JV DA (Equinor, Shell,",
+              "role": "company",
+              "size": 9.5,
+              "y": 136.1
+            },
+            {
+              "text": "TotalEnergies)",
+              "role": "company",
+              "size": 9.5,
+              "y": 147.5
+            }
+          ]
+        },
+        "narrow": {
+          "x": 287.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Northern Lights",
+              "role": "name",
+              "size": 21.0,
+              "y": 115.6
+            },
+            {
+              "text": "Northern Lights JV DA",
+              "role": "company",
+              "size": 18.1,
+              "y": 138.5
+            },
+            {
+              "text": "(Equinor, Shell, TotalEnergies)",
+              "role": "company",
+              "size": 18.1,
+              "y": 160.2
+            }
+          ]
+        }
+      }
     },
     {
       "id": "brevik-ccs",
@@ -92,7 +147,45 @@
       "lon": 9.6912,
       "as_of": "2026-08-28",
       "x": 502.0,
-      "y": 296.5
+      "y": 296.5,
+      "labels": {
+        "wide": {
+          "x": 515.9,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Brevik CCS",
+              "role": "name",
+              "size": 11.0,
+              "y": 292.8
+            },
+            {
+              "text": "Heidelberg Materials",
+              "role": "company",
+              "size": 9.5,
+              "y": 304.8
+            }
+          ]
+        },
+        "narrow": {
+          "x": 521.4,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Brevik CCS",
+              "role": "name",
+              "size": 21.0,
+              "y": 289.4
+            },
+            {
+              "text": "Heidelberg Materials",
+              "role": "company",
+              "size": 18.1,
+              "y": 312.4
+            }
+          ]
+        }
+      }
     }
   ],
   "as_of": "2026-08-28",

@@ -6,6 +6,11 @@
     "width": 760.0,
     "height": 430.0
   },
+  "mark_geometry": {
+    "r": 4.6,
+    "store_scale": 1.25,
+    "ring_scale": 3.4
+  },
   "projection": {
     "name": "Lambert conformal conic",
     "basis": "EPSG:3034 parameters (ETRS89-extended / LCC-Europe), spherical form",
@@ -99,7 +104,45 @@
       "lon": 9.5822,
       "as_of": "2026-08-28",
       "x": 380.0,
-      "y": 215.0
+      "y": 215.0,
+      "labels": {
+        "wide": {
+          "x": 403.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Carbon2Business",
+              "role": "name",
+              "size": 11.0,
+              "y": 211.3
+            },
+            {
+              "text": "Holcim",
+              "role": "company",
+              "size": 9.5,
+              "y": 223.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 409.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Carbon2Business",
+              "role": "name",
+              "size": 21.0,
+              "y": 207.9
+            },
+            {
+              "text": "Holcim",
+              "role": "company",
+              "size": 18.1,
+              "y": 230.9
+            }
+          ]
+        }
+      }
     }
   ],
   "as_of": "2026-08-28",

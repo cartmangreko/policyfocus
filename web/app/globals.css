@@ -4405,6 +4405,66 @@ a.tmat-basis:hover {
   fill: var(--ink-55);
 }
 
+/* THE LABELS. Every number that positions one came from build_maps.py; nothing
+   here moves a word. What the stylesheet owns is how the type looks and which
+   of the two computed layouts is on show.
+
+   THE HALO IS THE ONLY WAY INK-ON-PAPER SURVIVES A COASTLINE. A label sits over
+   a hairline often enough that unhaloed text loses a letter to it, so each glyph
+   is stroked in paper and filled in ink, in that order. paint-order is what
+   makes it that order rather than a fat outline over the top of the letter. */
+.geo-label-text {
+  font-family: var(--sans);
+  fill: var(--ink);
+  stroke: var(--paper);
+  stroke-width: 2.6px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+.geo-label-company {
+  fill: var(--ink-55);
+}
+.geo-leader {
+  stroke: var(--ink-40);
+  stroke-width: 0.75px;
+  fill: none;
+}
+/* The narrow layout is laid out at roughly twice the type size, so its halo is
+   twice the stroke — the same weight of paper behind the same weight of ink. */
+.geo-label-narrow .geo-label-text {
+  stroke-width: 4px;
+}
+/* One layout is drawn and the other is not. `display: none` rather than opacity,
+   so the hidden one is out of the accessibility tree as well as out of sight and
+   a screen reader is not given every name twice. */
+.geo-label-narrow {
+  display: none;
+}
+@media (max-width: 680px) {
+  .geo-label-wide {
+    display: none;
+  }
+  .geo-label-narrow {
+    display: block;
+  }
+}
+/* A label follows its mark's emphasis. A neighbour on a crop is context, and its
+   name should not shout over the name of the works the page is about. */
+.geo-project .geo-rel-technology .geo-label-text,
+.geo-project .geo-rel-sector .geo-label-text {
+  fill: var(--ink-55);
+}
+.geo-project .geo-rel-technology .geo-label-company,
+.geo-project .geo-rel-sector .geo-label-company {
+  fill: var(--ink-40);
+}
+.geo-link:hover .geo-label-name,
+.geo-link:focus-visible .geo-label-name {
+  text-decoration: underline;
+}
+
 .geo-key {
   display: flex;
   flex-wrap: wrap;

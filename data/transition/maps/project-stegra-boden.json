@@ -6,6 +6,11 @@
     "width": 760.0,
     "height": 430.0
   },
+  "mark_geometry": {
+    "r": 4.6,
+    "store_scale": 1.25,
+    "ring_scale": 3.4
+  },
   "projection": {
     "name": "Lambert conformal conic",
     "basis": "EPSG:3034 parameters (ETRS89-extended / LCC-Europe), spherical form",
@@ -95,7 +100,45 @@
       "lon": 21.792,
       "as_of": "2026-08-28",
       "x": 380.0,
-      "y": 215.0
+      "y": 215.0,
+      "labels": {
+        "wide": {
+          "x": 403.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Stegra Boden",
+              "role": "name",
+              "size": 11.0,
+              "y": 211.3
+            },
+            {
+              "text": "Stegra",
+              "role": "company",
+              "size": 9.5,
+              "y": 223.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 350.8,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Stegra Boden",
+              "role": "name",
+              "size": 21.0,
+              "y": 207.9
+            },
+            {
+              "text": "Stegra",
+              "role": "company",
+              "size": 18.1,
+              "y": 230.9
+            }
+          ]
+        }
+      }
     },
     {
       "id": "hybrit-pilot-lulea",
@@ -110,7 +153,51 @@
       "lon": 22.2057,
       "as_of": "2026-08-28",
       "x": 402.2,
-      "y": 238.7
+      "y": 238.7,
+      "labels": {
+        "wide": {
+          "x": 412.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "HYBRIT pilot",
+              "role": "name",
+              "size": 11.0,
+              "y": 257.3
+            },
+            {
+              "text": "SSAB, LKAB and Vattenfall",
+              "role": "company",
+              "size": 9.5,
+              "y": 269.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 421.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "HYBRIT pilot",
+              "role": "name",
+              "size": 21.0,
+              "y": 220.8
+            },
+            {
+              "text": "SSAB, LKAB and",
+              "role": "company",
+              "size": 18.1,
+              "y": 243.7
+            },
+            {
+              "text": "Vattenfall",
+              "role": "company",
+              "size": 18.1,
+              "y": 265.4
+            }
+          ]
+        }
+      }
     }
   ],
   "as_of": "2026-08-28",

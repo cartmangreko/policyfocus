@@ -6,6 +6,11 @@
     "width": 760.0,
     "height": 790.0
   },
+  "mark_geometry": {
+    "r": 4.6,
+    "store_scale": 1.25,
+    "ring_scale": 3.4
+  },
   "projection": {
     "name": "Lambert conformal conic",
     "basis": "EPSG:3034 parameters (ETRS89-extended / LCC-Europe), spherical form",
@@ -368,7 +373,51 @@
       "lon": 2.298,
       "as_of": "2026-08-28",
       "x": 280.2,
-      "y": 428.2
+      "y": 428.2,
+      "labels": {
+        "wide": {
+          "x": 266.3,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "3D — DMX demonstration in Dunkirk",
+              "role": "name",
+              "size": 11.0,
+              "y": 424.5
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 9.5,
+              "y": 436.5
+            }
+          ]
+        },
+        "narrow": {
+          "x": 266.3,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "3D — DMX",
+              "role": "name",
+              "size": 21.0,
+              "y": 358.6
+            },
+            {
+              "text": "demonstration in Dunkirk",
+              "role": "name",
+              "size": 21.0,
+              "y": 383.8
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 18.1,
+              "y": 406.7
+            }
+          ]
+        }
+      }
     },
     {
       "id": "am-bremen-eisenhuettenstadt",
@@ -383,7 +432,57 @@
       "lon": 8.689,
       "as_of": "2026-08-28",
       "x": 363.7,
-      "y": 390.0
+      "y": 390.0,
+      "labels": {
+        "wide": {
+          "x": 349.8,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "ArcelorMittal Bremen and",
+              "role": "name",
+              "size": 11.0,
+              "y": 379.7
+            },
+            {
+              "text": "Eisenhüttenstadt conversion",
+              "role": "name",
+              "size": 11.0,
+              "y": 392.9
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 9.5,
+              "y": 404.9
+            }
+          ]
+        },
+        "narrow": {
+          "x": 377.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "ArcelorMittal Bremen",
+              "role": "name",
+              "size": 21.0,
+              "y": 320.4
+            },
+            {
+              "text": "and Eisenhüttenstadt conversion",
+              "role": "name",
+              "size": 21.0,
+              "y": 345.6
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 18.1,
+              "y": 368.5
+            }
+          ]
+        }
+      }
     },
     {
       "id": "am-bremen-eisenhuettenstadt",
@@ -398,7 +497,63 @@
       "lon": 14.6213,
       "as_of": "2026-08-28",
       "x": 438.5,
-      "y": 407.8
+      "y": 407.8,
+      "labels": {
+        "wide": {
+          "x": 452.4,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "ArcelorMittal Bremen and",
+              "role": "name",
+              "size": 11.0,
+              "y": 397.5
+            },
+            {
+              "text": "Eisenhüttenstadt conversion",
+              "role": "name",
+              "size": 11.0,
+              "y": 410.7
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 9.5,
+              "y": 422.7
+            }
+          ]
+        },
+        "narrow": {
+          "x": 406.4,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "ArcelorMittal Bremen",
+              "role": "name",
+              "size": 21.0,
+              "y": 456.3
+            },
+            {
+              "text": "and Eisenhüttenstadt conversion",
+              "role": "name",
+              "size": 21.0,
+              "y": 481.5
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 18.1,
+              "y": 504.4
+            }
+          ],
+          "leader": [
+            434.4,
+            411.9,
+            406.4,
+            439.9
+          ]
+        }
+      }
     },
     {
       "id": "greentec-donawitz",
@@ -413,7 +568,51 @@
       "lon": 15.0604,
       "as_of": "2026-08-28",
       "x": 450.8,
-      "y": 506.5
+      "y": 506.5,
+      "labels": {
+        "wide": {
+          "x": 464.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "greentec steel Donawitz",
+              "role": "name",
+              "size": 11.0,
+              "y": 502.8
+            },
+            {
+              "text": "voestalpine",
+              "role": "company",
+              "size": 9.5,
+              "y": 514.8
+            }
+          ]
+        },
+        "narrow": {
+          "x": 470.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "greentec steel",
+              "role": "name",
+              "size": 21.0,
+              "y": 486.8
+            },
+            {
+              "text": "Donawitz",
+              "role": "name",
+              "size": 21.0,
+              "y": 512.0
+            },
+            {
+              "text": "voestalpine",
+              "role": "company",
+              "size": 18.1,
+              "y": 535.0
+            }
+          ]
+        }
+      }
     },
     {
       "id": "greentec-linz",
@@ -428,7 +627,51 @@
       "lon": 14.3196,
       "as_of": "2026-08-28",
       "x": 439.4,
-      "y": 488.7
+      "y": 488.7,
+      "labels": {
+        "wide": {
+          "x": 425.5,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "greentec steel Linz",
+              "role": "name",
+              "size": 11.0,
+              "y": 485.0
+            },
+            {
+              "text": "voestalpine",
+              "role": "company",
+              "size": 9.5,
+              "y": 497.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 471.5,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "greentec steel Linz",
+              "role": "name",
+              "size": 21.0,
+              "y": 426.1
+            },
+            {
+              "text": "voestalpine",
+              "role": "company",
+              "size": 18.1,
+              "y": 449.0
+            }
+          ],
+          "leader": [
+            443.5,
+            484.6,
+            471.5,
+            456.6
+          ]
+        }
+      }
     },
     {
       "id": "hybrit-pilot-lulea",
@@ -443,7 +686,51 @@
       "lon": 22.2057,
       "as_of": "2026-08-28",
       "x": 487.9,
-      "y": 120.9
+      "y": 120.9,
+      "labels": {
+        "wide": {
+          "x": 501.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "HYBRIT pilot",
+              "role": "name",
+              "size": 11.0,
+              "y": 117.2
+            },
+            {
+              "text": "SSAB, LKAB and Vattenfall",
+              "role": "company",
+              "size": 9.5,
+              "y": 129.2
+            }
+          ]
+        },
+        "narrow": {
+          "x": 507.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "HYBRIT pilot",
+              "role": "name",
+              "size": 21.0,
+              "y": 103.0
+            },
+            {
+              "text": "SSAB, LKAB and",
+              "role": "company",
+              "size": 18.1,
+              "y": 125.9
+            },
+            {
+              "text": "Vattenfall",
+              "role": "company",
+              "size": 18.1,
+              "y": 147.6
+            }
+          ]
+        }
+      }
     },
     {
       "id": "salcos-salzgitter",
@@ -458,7 +745,57 @@
       "lon": 10.4107,
       "as_of": "2026-08-28",
       "x": 385.2,
-      "y": 410.2
+      "y": 410.2,
+      "labels": {
+        "wide": {
+          "x": 408.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "SALCOS stage one",
+              "role": "name",
+              "size": 11.0,
+              "y": 441.7
+            },
+            {
+              "text": "Salzgitter AG",
+              "role": "company",
+              "size": 9.5,
+              "y": 453.7
+            }
+          ],
+          "leader": [
+            389.3,
+            414.3,
+            408.2,
+            433.2
+          ]
+        },
+        "narrow": {
+          "x": 301.5,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "SALCOS stage one",
+              "role": "name",
+              "size": 21.0,
+              "y": 296.0
+            },
+            {
+              "text": "Salzgitter AG",
+              "role": "company",
+              "size": 18.1,
+              "y": 318.9
+            }
+          ],
+          "leader": [
+            381.1,
+            406.1,
+            301.5,
+            326.5
+          ]
+        }
+      }
     },
     {
       "id": "stegra-boden",
@@ -473,7 +810,45 @@
       "lon": 21.792,
       "as_of": "2026-08-28",
       "x": 483.4,
-      "y": 116.1
+      "y": 116.1,
+      "labels": {
+        "wide": {
+          "x": 469.5,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Stegra Boden",
+              "role": "name",
+              "size": 11.0,
+              "y": 112.4
+            },
+            {
+              "text": "Stegra",
+              "role": "company",
+              "size": 9.5,
+              "y": 124.4
+            }
+          ]
+        },
+        "narrow": {
+          "x": 464.0,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Stegra Boden",
+              "role": "name",
+              "size": 21.0,
+              "y": 109.0
+            },
+            {
+              "text": "Stegra",
+              "role": "company",
+              "size": 18.1,
+              "y": 132.0
+            }
+          ]
+        }
+      }
     },
     {
       "id": "tkh2steel-duisburg",
@@ -488,7 +863,51 @@
       "lon": 6.7272,
       "as_of": "2026-08-28",
       "x": 337.9,
-      "y": 423.1
+      "y": 423.1,
+      "labels": {
+        "wide": {
+          "x": 337.9,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "tkH2Steel",
+              "role": "name",
+              "size": 11.0,
+              "y": 445.6
+            },
+            {
+              "text": "thyssenkrupp Steel",
+              "role": "company",
+              "size": 9.5,
+              "y": 457.5
+            }
+          ]
+        },
+        "narrow": {
+          "x": 337.9,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "tkH2Steel",
+              "role": "name",
+              "size": 21.0,
+              "y": 555.7
+            },
+            {
+              "text": "thyssenkrupp Steel",
+              "role": "company",
+              "size": 18.1,
+              "y": 578.6
+            }
+          ],
+          "leader": [
+            337.9,
+            428.9,
+            337.9,
+            539.3
+          ]
+        }
+      }
     }
   ],
   "as_of": "2026-08-28",

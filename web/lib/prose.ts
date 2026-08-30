@@ -196,8 +196,47 @@ export function sectorGeoProse(c: {
   };
 }
 
+/** THE KEY, SPELLED OUT. Two axes, and the reader is told both rather than
+ *  being left to infer either: SHAPE says what kind of thing a mark is, and FILL
+ *  says whether it is doing anything.
+ *
+ *  The fill wording is the part that had to be written down. "not running" on
+ *  its own describes the hollow mark without saying what the filled one means,
+ *  so a reader who saw only filled marks learned nothing from the key at all —
+ *  and "running" is not the word the register uses, which grades a project
+ *  through announced, funded, construction and operating. The two lines here
+ *  name the statuses on each side of that line, and they are the same statuses
+ *  LocationMap's RUNNING set divides on and the same ones sectorGeoProse counts
+ *  in its standfirst, so the key, the picture and the sentence above it cannot
+ *  drift apart without one of the three being edited alone. */
+export function geoKeyProse(o: { hasStore: boolean }): {
+  role: "plant" | "storage";
+  running: boolean;
+  text: string;
+}[] {
+  return [
+    // THE SHAPE AXIS IS NAMED ONLY WHERE THE PICTURE DRAWS IT. A frame with no
+    // store on it has one shape, so "a dot is a works" would put a second
+    // identical filled dot in the key beside the one explaining fill — which
+    // reads as a mistake and teaches a distinction the reader cannot see.
+    ...(o.hasStore
+      ? ([
+          { role: "plant" as const, running: true, text: "a dot is a works" },
+          { role: "storage" as const, running: true, text: "a triangle is a store" },
+        ])
+      : []),
+    { role: "plant", running: true, text: "filled: operating or under construction" },
+    { role: "plant", running: false, text: "hollow: not running" },
+  ];
+}
+
 /** What a mark says when a reader points at it. One line, because it is a
- *  tooltip: the name, whose it is, and the coordinate the register claims. */
+ *  tooltip: the name, whose it is, and the coordinate the register claims.
+ *
+ *  UNCHANGED BY THE LABELS. The label on the paper carries the name and, where
+ *  there is room, the company; this is where the site and the coordinate still
+ *  live, and it is the whole of the label for a mark whose company had to be
+ *  dropped to fit. */
 export function geoMarkProse(m: {
   label: string;
   sub: string;

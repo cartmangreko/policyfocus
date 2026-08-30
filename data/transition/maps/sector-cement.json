@@ -6,6 +6,11 @@
     "width": 760.0,
     "height": 790.0
   },
+  "mark_geometry": {
+    "r": 4.6,
+    "store_scale": 1.25,
+    "ring_scale": 3.4
+  },
   "projection": {
     "name": "Lambert conformal conic",
     "basis": "EPSG:3034 parameters (ETRS89-extended / LCC-Europe), spherical form",
@@ -368,7 +373,51 @@
       "lon": 27.5951,
       "as_of": "2026-08-28",
       "x": 644.5,
-      "y": 563.4
+      "y": 563.4,
+      "labels": {
+        "wide": {
+          "x": 630.6,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "ANRAV",
+              "role": "name",
+              "size": 11.0,
+              "y": 559.7
+            },
+            {
+              "text": "Heidelberg Materials (Devnya Cement)",
+              "role": "company",
+              "size": 9.5,
+              "y": 571.7
+            }
+          ]
+        },
+        "narrow": {
+          "x": 625.1,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "ANRAV",
+              "role": "name",
+              "size": 21.0,
+              "y": 545.5
+            },
+            {
+              "text": "Heidelberg Materials",
+              "role": "company",
+              "size": 18.1,
+              "y": 568.4
+            },
+            {
+              "text": "(Devnya Cement)",
+              "role": "company",
+              "size": 18.1,
+              "y": 590.1
+            }
+          ]
+        }
+      }
     },
     {
       "id": "brevik-ccs",
@@ -383,7 +432,45 @@
       "lon": 9.6912,
       "as_of": "2026-08-28",
       "x": 376.7,
-      "y": 267.0
+      "y": 267.0,
+      "labels": {
+        "wide": {
+          "x": 390.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Brevik CCS",
+              "role": "name",
+              "size": 11.0,
+              "y": 263.3
+            },
+            {
+              "text": "Heidelberg Materials",
+              "role": "company",
+              "size": 9.5,
+              "y": 275.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 357.3,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Brevik CCS",
+              "role": "name",
+              "size": 21.0,
+              "y": 259.9
+            },
+            {
+              "text": "Heidelberg Materials",
+              "role": "company",
+              "size": 18.1,
+              "y": 282.9
+            }
+          ]
+        }
+      }
     },
     {
       "id": "carbon2business-lagerdorf",
@@ -398,7 +485,45 @@
       "lon": 9.5822,
       "as_of": "2026-08-28",
       "x": 374.9,
-      "y": 374.8
+      "y": 374.8,
+      "labels": {
+        "wide": {
+          "x": 388.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Carbon2Business",
+              "role": "name",
+              "size": 11.0,
+              "y": 371.1
+            },
+            {
+              "text": "Holcim",
+              "role": "company",
+              "size": 9.5,
+              "y": 383.1
+            }
+          ]
+        },
+        "narrow": {
+          "x": 394.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Carbon2Business",
+              "role": "name",
+              "size": 21.0,
+              "y": 367.7
+            },
+            {
+              "text": "Holcim",
+              "role": "company",
+              "size": 18.1,
+              "y": 390.7
+            }
+          ]
+        }
+      }
     },
     {
       "id": "gezero-geseke",
@@ -413,7 +538,45 @@
       "lon": 8.5118,
       "as_of": "2026-08-28",
       "x": 360.9,
-      "y": 421.2
+      "y": 421.2,
+      "labels": {
+        "wide": {
+          "x": 374.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "GeZero",
+              "role": "name",
+              "size": 11.0,
+              "y": 417.5
+            },
+            {
+              "text": "Heidelberg Materials",
+              "role": "company",
+              "size": 9.5,
+              "y": 429.5
+            }
+          ]
+        },
+        "narrow": {
+          "x": 374.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "GeZero",
+              "role": "name",
+              "size": 21.0,
+              "y": 451.5
+            },
+            {
+              "text": "Heidelberg Materials",
+              "role": "company",
+              "size": 18.1,
+              "y": 474.4
+            }
+          ]
+        }
+      }
     },
     {
       "id": "go4zero-obourg",
@@ -428,7 +591,45 @@
       "lon": 3.9948,
       "as_of": "2026-08-28",
       "x": 301.1,
-      "y": 441.9
+      "y": 441.9,
+      "labels": {
+        "wide": {
+          "x": 315.0,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "GO4ZERO",
+              "role": "name",
+              "size": 11.0,
+              "y": 438.2
+            },
+            {
+              "text": "Holcim",
+              "role": "company",
+              "size": 9.5,
+              "y": 450.2
+            }
+          ]
+        },
+        "narrow": {
+          "x": 287.2,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "GO4ZERO",
+              "role": "name",
+              "size": 21.0,
+              "y": 472.2
+            },
+            {
+              "text": "Holcim",
+              "role": "company",
+              "size": 18.1,
+              "y": 495.1
+            }
+          ]
+        }
+      }
     },
     {
       "id": "ifestos-kamari",
@@ -443,7 +644,45 @@
       "lon": 23.5218,
       "as_of": "2026-08-28",
       "x": 603.5,
-      "y": 681.5
+      "y": 681.5,
+      "labels": {
+        "wide": {
+          "x": 617.4,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "IFESTOS",
+              "role": "name",
+              "size": 11.0,
+              "y": 677.8
+            },
+            {
+              "text": "TITAN Cement",
+              "role": "company",
+              "size": 9.5,
+              "y": 689.8
+            }
+          ]
+        },
+        "narrow": {
+          "x": 584.1,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "IFESTOS",
+              "role": "name",
+              "size": 21.0,
+              "y": 674.4
+            },
+            {
+              "text": "TITAN Cement",
+              "role": "company",
+              "size": 18.1,
+              "y": 697.4
+            }
+          ]
+        }
+      }
     },
     {
       "id": "k6-lumbres",
@@ -458,7 +697,45 @@
       "lon": 2.106,
       "as_of": "2026-08-28",
       "x": 276.9,
-      "y": 435.0
+      "y": 435.0,
+      "labels": {
+        "wide": {
+          "x": 263.0,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "K6",
+              "role": "name",
+              "size": 11.0,
+              "y": 431.3
+            },
+            {
+              "text": "EQIOM (CRH)",
+              "role": "company",
+              "size": 9.5,
+              "y": 443.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 263.0,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "K6",
+              "role": "name",
+              "size": 21.0,
+              "y": 390.6
+            },
+            {
+              "text": "EQIOM (CRH)",
+              "role": "company",
+              "size": 18.1,
+              "y": 413.5
+            }
+          ]
+        }
+      }
     },
     {
       "id": "slite-ccs",
@@ -473,7 +750,45 @@
       "lon": 18.8015,
       "as_of": "2026-08-28",
       "x": 477.6,
-      "y": 289.4
+      "y": 289.4,
+      "labels": {
+        "wide": {
+          "x": 491.5,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Slite CCS",
+              "role": "name",
+              "size": 11.0,
+              "y": 285.7
+            },
+            {
+              "text": "Heidelberg Materials",
+              "role": "company",
+              "size": 9.5,
+              "y": 297.7
+            }
+          ]
+        },
+        "narrow": {
+          "x": 497.0,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Slite CCS",
+              "role": "name",
+              "size": 21.0,
+              "y": 282.3
+            },
+            {
+              "text": "Heidelberg Materials",
+              "role": "company",
+              "size": 18.1,
+              "y": 305.3
+            }
+          ]
+        }
+      }
     }
   ],
   "as_of": "2026-08-28",

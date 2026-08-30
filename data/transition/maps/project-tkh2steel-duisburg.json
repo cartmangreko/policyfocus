@@ -6,6 +6,11 @@
     "width": 760.0,
     "height": 430.0
   },
+  "mark_geometry": {
+    "r": 4.6,
+    "store_scale": 1.25,
+    "ring_scale": 3.4
+  },
   "projection": {
     "name": "Lambert conformal conic",
     "basis": "EPSG:3034 parameters (ETRS89-extended / LCC-Europe), spherical form",
@@ -71,7 +76,45 @@
       "lon": 6.7272,
       "as_of": "2026-08-28",
       "x": 380.0,
-      "y": 215.0
+      "y": 215.0,
+      "labels": {
+        "wide": {
+          "x": 403.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "tkH2Steel",
+              "role": "name",
+              "size": 11.0,
+              "y": 211.3
+            },
+            {
+              "text": "thyssenkrupp Steel",
+              "role": "company",
+              "size": 9.5,
+              "y": 223.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 409.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "tkH2Steel",
+              "role": "name",
+              "size": 21.0,
+              "y": 207.9
+            },
+            {
+              "text": "thyssenkrupp Steel",
+              "role": "company",
+              "size": 18.1,
+              "y": 230.9
+            }
+          ]
+        }
+      }
     },
     {
       "id": "am-bremen-eisenhuettenstadt",
@@ -86,7 +129,57 @@
       "lon": 8.689,
       "as_of": "2026-08-28",
       "x": 507.5,
-      "y": 51.3
+      "y": 51.3,
+      "labels": {
+        "wide": {
+          "x": 521.4,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "ArcelorMittal Bremen and",
+              "role": "name",
+              "size": 11.0,
+              "y": 41.0
+            },
+            {
+              "text": "Eisenhüttenstadt conversion",
+              "role": "name",
+              "size": 11.0,
+              "y": 54.2
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 9.5,
+              "y": 66.2
+            }
+          ]
+        },
+        "narrow": {
+          "x": 488.1,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "ArcelorMittal Bremen",
+              "role": "name",
+              "size": 21.0,
+              "y": 31.6
+            },
+            {
+              "text": "and Eisenhüttenstadt conversion",
+              "role": "name",
+              "size": 21.0,
+              "y": 56.8
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 18.1,
+              "y": 79.8
+            }
+          ]
+        }
+      }
     },
     {
       "id": "salcos-salzgitter",
@@ -101,7 +194,45 @@
       "lon": 10.4107,
       "as_of": "2026-08-28",
       "x": 613.5,
-      "y": 150.9
+      "y": 150.9,
+      "labels": {
+        "wide": {
+          "x": 627.4,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "SALCOS stage one",
+              "role": "name",
+              "size": 11.0,
+              "y": 147.2
+            },
+            {
+              "text": "Salzgitter AG",
+              "role": "company",
+              "size": 9.5,
+              "y": 159.2
+            }
+          ]
+        },
+        "narrow": {
+          "x": 594.1,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "SALCOS stage one",
+              "role": "name",
+              "size": 21.0,
+              "y": 143.8
+            },
+            {
+              "text": "Salzgitter AG",
+              "role": "company",
+              "size": 18.1,
+              "y": 166.8
+            }
+          ]
+        }
+      }
     },
     {
       "id": "3d-dunkirk",
@@ -116,7 +247,51 @@
       "lon": 2.298,
       "as_of": "2026-08-28",
       "x": 94.7,
-      "y": 240.2
+      "y": 240.2,
+      "labels": {
+        "wide": {
+          "x": 108.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "3D — DMX demonstration in Dunkirk",
+              "role": "name",
+              "size": 11.0,
+              "y": 236.5
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 9.5,
+              "y": 248.5
+            }
+          ]
+        },
+        "narrow": {
+          "x": 108.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "3D — DMX",
+              "role": "name",
+              "size": 21.0,
+              "y": 270.5
+            },
+            {
+              "text": "demonstration in Dunkirk",
+              "role": "name",
+              "size": 21.0,
+              "y": 295.7
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 18.1,
+              "y": 318.6
+            }
+          ]
+        }
+      }
     }
   ],
   "as_of": "2026-08-28",

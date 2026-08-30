@@ -339,6 +339,18 @@ def frame_degrees(frame) -> dict[str, float]:
 # Marks
 # ---------------------------------------------------------------------------
 
+# THE MARK'S GEOMETRY LIVES HERE AND IS WRITTEN INTO EVERY FILE, because the
+# label layout has to know how much room a mark takes and the component has to
+# draw one the same size. Held in one place and shipped, rather than written
+# twice: the day a mark grows, a copy in the stylesheet or the component would
+# leave every label placed against the old radius and nothing would say so.
+MARK_R = 4.6
+STORE_SCALE = 1.25        # a store's triangle, against a works' dot
+RING_SCALE = 3.4          # the ring that says which mark the page is about
+
+MARK_GEOMETRY = {"r": MARK_R, "store_scale": STORE_SCALE, "ring_scale": RING_SCALE}
+
+
 # What a mark's presence in the picture is owed to, most specific first. The
 # brief's order, and it decides emphasis, not the frame: see the module
 # docstring.
@@ -427,6 +439,300 @@ def relations_for(subject: dict, projects: list[dict]) -> dict[str, str]:
 
 
 # ---------------------------------------------------------------------------
+# Labels
+# ---------------------------------------------------------------------------
+#
+# EVERY MARK CARRIES ITS NAME ON THE PAPER, on both frames, and a tooltip is not
+# a label: it is reachable only by a reader who already has a pointer and
+# already suspects there is something to point at. A picture that has to be
+# hovered to be read cannot be read on a phone, in print, or in the screenshot
+# somebody puts in a slide, and those are three of the four ways this one will
+# be looked at.
+#
+# SO THE PLACEMENT IS HERE, with the rest of the geometry. The component draws
+# what it is given and decides nothing, which is the rule the coastlines and the
+# marks already work under. Text placement is the part of a picture most likely
+# to come out differently on two machines, so it is the last part that should be
+# left to one.
+#
+# TWO LAYOUTS ARE COMPUTED, NOT ONE, and this is the only place in this file
+# that admits a viewport exists. The canvas is 760 units wide and scales to fit,
+# so a label's size in UNITS is fixed while its size in PIXELS is not: 11 units
+# is 11px on the 760px canvas a desktop gets and 5.6px on the 390px one a
+# 430-wide phone has room for, which is not reading, it is a smudge. Holding the
+# label legible at 430 means roughly doubling it in canvas units, and a label at
+# twice the size collides far more often -- so the narrow frame genuinely needs
+# its own placements and, in a crowd, its own shorter wording. A single layout
+# would be either unreadable on a phone or absurd on a desk.
+
+# The type size in canvas units per breakpoint, and the canvas width in pixels
+# each is sized against: 760 is the max-width the stylesheet caps the figure at,
+# and 390 is a 430-wide viewport less the 20px gutter the stylesheet drops to
+# below 680. Both land the name at about eleven pixels, which is the size the
+# coordinate line under the picture already sets and is read at.
+BREAKPOINTS = {
+    "wide": {"canvas_px": 760.0, "size": 11.0},
+    "narrow": {"canvas_px": 390.0, "size": 21.0},
+}
+
+COMPANY_RATIO = 0.86      # the company line, against the name line
+LINE_HEIGHT = 1.2         # multiples of each line's own size
+
+# How far a label sits from its mark, in multiples of the ordinary gap. The
+# first step is the ordinary position and draws no leader; a label pushed past
+# it is joined to its mark by a hairline, because an offset label with nothing
+# connecting it is a caption whose owner the reader has to guess.
+LEAD_STEPS = (1.0, 2.3, 3.9, 6.0, 8.6)
+
+# The longest a line may run before it is wrapped, as a fraction of the canvas
+# width. Past this a label stops being a tag on a mark and becomes a banner
+# across the picture.
+MAX_LINE_FRACTION = 0.30
+MAX_NAME_LINES = 2
+
+BOX_PAD = 0.30            # between two label boxes, in multiples of type size
+EDGE_MARGIN = 0.35        # between a label box and the frame edge
+
+# Advance widths as a fraction of the type size, by character class. A true font
+# metric would need a font file and a parser for it -- a dependency and a build
+# input, for the sake of positioning nineteen names. These are the classes a
+# humanist sans actually differs across, taken off the stack the stylesheet asks
+# for and rounded up. _WIDTH_SAFETY absorbs the error and errs WIDE on purpose:
+# a box measured too big loses a placement that would have fitted, which costs a
+# leader line, and a box measured too small puts one word on top of another,
+# which costs the reader the label.
+_WIDTH_SAFETY = 1.06
+_NARROW_CHARS = set("ijlt.,;:'!|()[]{}/\\-")
+_WIDE_CHARS = set("mw")
+_CAP_WIDE = set("MW")
+
+
+def text_width(text: str, size: float) -> float:
+    total = 0.0
+    for ch in text:
+        if ch == " ":
+            total += 0.28
+        elif ch in _NARROW_CHARS:
+            total += 0.30
+        elif ch in _WIDE_CHARS:
+            total += 0.84
+        elif ch in _CAP_WIDE:
+            total += 0.89
+        elif ch.isdigit():
+            total += 0.56
+        elif ch.isupper():
+            total += 0.67
+        else:
+            total += 0.53
+    return total * size * _WIDTH_SAFETY
+
+
+def wrap(text: str, size: float, limit: float, max_lines: int) -> list[str]:
+    """Greedy wrap on spaces, never past max_lines. A word too long to fit on
+    its own is left long rather than broken: a hyphen this file invented would
+    be read as part of a company's name."""
+    words = text.split()
+    if not words:
+        return []
+    lines = [words[0]]
+    for word in words[1:]:
+        trial = f"{lines[-1]} {word}"
+        if len(lines) >= max_lines or text_width(trial, size) <= limit:
+            lines[-1] = trial
+        else:
+            lines.append(word)
+    return lines
+
+
+# Where a label is tried, in order. East and west first: a label beside a mark
+# reads as belonging to it more immediately than one above or below, and every
+# frame here has more room across than down.
+DIRECTIONS = (
+    ("e", 1.0, 0.0),
+    ("w", -1.0, 0.0),
+    ("ne", 0.72, -0.72),
+    ("se", 0.72, 0.72),
+    ("nw", -0.72, -0.72),
+    ("sw", -0.72, 0.72),
+    ("n", 0.0, -1.0),
+    ("s", 0.0, 1.0),
+)
+
+
+def mark_clearance(mark: dict) -> float:
+    """How much room a mark needs around it before a label may sit there. The
+    subject wears a ring of MARK_R * 3.4 and a label crossing that ring reads as
+    striking it through, so the subject asks for more than the rest."""
+    if mark["relation"] == "subject":
+        return MARK_R * 3.4 + 2.0
+    return MARK_R * 1.7
+
+
+def _lines_for(label: str, sub, size: float, limit: float) -> list[dict]:
+    out = [{"text": t, "size": size, "role": "name"}
+           for t in wrap(label, size, limit, MAX_NAME_LINES)]
+    if sub:
+        company = size * COMPANY_RATIO
+        out += [{"text": t, "size": company, "role": "company"}
+                for t in wrap(sub, company, limit, MAX_NAME_LINES)]
+    return out
+
+
+def _box_size(lines: list[dict]) -> tuple[float, float]:
+    w = max((text_width(l["text"], l["size"]) for l in lines), default=0.0)
+    h = sum(LINE_HEIGHT * l["size"] for l in lines)
+    return w, h
+
+
+def _place(mx, my, ux, uy, dist, w, h) -> tuple[float, float, float, float]:
+    ax, ay = mx + ux * dist, my + uy * dist
+    if ux > 0.1:
+        x0 = ax
+    elif ux < -0.1:
+        x0 = ax - w
+    else:
+        x0 = ax - w / 2
+    if uy > 0.1:
+        y0 = ay
+    elif uy < -0.1:
+        y0 = ay - h
+    else:
+        y0 = ay - h / 2
+    return x0, y0, x0 + w, y0 + h
+
+
+def _overlap(a, b) -> float:
+    dx = min(a[2], b[2]) - max(a[0], b[0])
+    dy = min(a[3], b[3]) - max(a[1], b[1])
+    return dx * dy if dx > 0 and dy > 0 else 0.0
+
+
+def _cost(box, placed, marks, subject, canvas, size) -> float:
+    """Nought is a clean placement. Anything else is how much this label is in
+    the way, in square units, so that the least-bad candidate can be ranked when
+    no clean one exists.
+
+    THE MARK BEING LABELLED IS EXEMPT from the clearance test -- the label is
+    meant to be near it, that is the whole point -- and every other mark is not.
+    """
+    pad = BOX_PAD * size
+    padded = (box[0] - pad, box[1] - pad, box[2] + pad, box[3] + pad)
+    cost = sum(_overlap(padded, other) for other in placed)
+
+    for m in marks:
+        if m is subject:
+            continue
+        c = mark_clearance(m)
+        cost += _overlap(box, (m["x"] - c, m["y"] - c, m["x"] + c, m["y"] + c))
+
+    margin = EDGE_MARGIN * size
+    w, h = canvas
+    out_x = max(0.0, margin - box[0]) + max(0.0, box[2] - (w - margin))
+    out_y = max(0.0, margin - box[1]) + max(0.0, box[3] - (h - margin))
+    # Leaving the frame is weighted heavily rather than forbidden outright: a
+    # label half off the paper is worse than one touching a coastline, and the
+    # search still has to be able to rank two bad options against each other.
+    cost += (out_x * (box[3] - box[1]) + out_y * (box[2] - box[0])) * 4.0
+    return cost
+
+
+def _render(lines, box, ux) -> dict:
+    x0, y0, x1, _ = box
+    if ux > 0.1:
+        anchor, x = "start", x0
+    elif ux < -0.1:
+        anchor, x = "end", x1
+    else:
+        anchor, x = "middle", (x0 + x1) / 2
+    out, y = [], y0
+    for line in lines:
+        out.append({"text": line["text"], "role": line["role"],
+                    "size": _round(line["size"]),
+                    "y": _round(y + line["size"] * 0.78)})
+        y += LINE_HEIGHT * line["size"]
+    return {"x": _round(x), "anchor": anchor, "lines": out}
+
+
+def _leader(mx, my, box) -> list:
+    """From the mark's edge to the nearest point on the label's box. Drawn only
+    where a label had to be pushed out, so a hairline always means one thing:
+    this word belongs to that mark and not to the nearer one."""
+    tx = min(max(mx, box[0]), box[2])
+    ty = min(max(my, box[1]), box[3])
+    dx, dy = tx - mx, ty - my
+    dist = math.hypot(dx, dy)
+    start = MARK_R + 1.2
+    if dist <= start:
+        return []
+    return [_round(mx + dx / dist * start), _round(my + dy / dist * start),
+            _round(tx), _round(ty)]
+
+
+def _search(mark, lines, marks, placed, canvas, size):
+    """The best position for one wording of one label, and its cost."""
+    w, h = _box_size(lines)
+    base = mark_clearance(mark) + size * 0.55
+    best = None
+    for step_i, step in enumerate(LEAD_STEPS):
+        for _name, ux, uy in DIRECTIONS:
+            box = _place(mark["x"], mark["y"], ux, uy, base * step, w, h)
+            cost = _cost(box, placed, marks, mark, canvas, size)
+            if best is None or cost < best["cost"]:
+                best = {"cost": cost, "box": box, "ux": ux,
+                        "lines": lines, "step": step_i}
+            if cost == 0.0:
+                return best
+    return best
+
+
+def label_marks(marks: list[dict], canvas: tuple[float, float]) -> list[str]:
+    """Give every mark a permanent label under each breakpoint, in place.
+
+    Greedy, in the order the marks already sort in, which is deterministic and
+    is the whole reason this is reviewable in a diff.
+
+    THE LADDER IS THE RULING'S. A clean placement beside the mark; then the same
+    pushed out, with a leader drawn to it; then THE NAME ALONE pushed out, the
+    company falling back to the tooltip that already carries it; and if nothing
+    at all comes out clean, the least-bad position, KEPT AND REPORTED rather than
+    dropped. A picture that silently omits whichever label it found hardest to
+    place is a picture that lies worst exactly where it is most crowded, and the
+    reader has no way of knowing a name was ever there.
+    """
+    notes: list[str] = []
+    for key, spec in BREAKPOINTS.items():
+        size = spec["size"]
+        limit = canvas[0] * MAX_LINE_FRACTION
+        placed: list[tuple] = []
+        for mark in marks:
+            full = _search(mark, _lines_for(mark["label"], mark["sub"], size, limit),
+                           marks, placed, canvas, size)
+            if full["cost"] == 0.0:
+                best, shortened = full, False
+            else:
+                short = _search(mark, _lines_for(mark["label"], None, size, limit),
+                                marks, placed, canvas, size)
+                if short["cost"] < full["cost"]:
+                    best, shortened = short, True
+                else:
+                    best, shortened = full, False
+
+            out = _render(best["lines"], best["box"], best["ux"])
+            if best["step"] > 0:
+                leader = _leader(mark["x"], mark["y"], best["box"])
+                if leader:
+                    out["leader"] = leader
+            if shortened:
+                out["shortened"] = True
+            if best["cost"] > 0.0:
+                out["crowded"] = True
+                notes.append(f"{key}: {mark['id']} ({mark['site']})")
+            mark.setdefault("labels", {})[key] = out
+            placed.append(best["box"])
+    return notes
+
+
+# ---------------------------------------------------------------------------
 # The two kinds of picture
 # ---------------------------------------------------------------------------
 
@@ -447,11 +753,15 @@ PROJECTION = {
 
 
 def _doc(map_id, kind, subject, frame, canvas, marks, detail) -> dict:
+    # Labels are laid out here, once the marks are final and before anything is
+    # written, so that no consumer of this file ever sees a mark without one.
+    label_marks(marks, canvas)
     return {
         "id": map_id,
         "kind": kind,
         "subject": subject,
         "canvas": {"width": canvas[0], "height": canvas[1]},
+        "mark_geometry": MARK_GEOMETRY,
         "projection": PROJECTION,
         "extent": frame_degrees(frame),
         "land": land_paths(frame, canvas, detail["tolerance"], detail["min_ring"]),
@@ -595,6 +905,16 @@ def main() -> int:
         else:
             (OUT_DIR / name).unlink()
 
+    # A label that could not be placed cleanly is REPORTED AND KEPT, never
+    # dropped -- see label_marks. It is not a build failure: the picture is still
+    # honest, every name is still on it, and the fix is a judgement about the
+    # frame or the wording that nobody can make from a non-zero exit code.
+    crowded = [f"{doc['id']} {bp}: {mark['id']} ({mark['site']})"
+               for doc in docs for mark in doc["marks"]
+               for bp, label in mark["labels"].items() if label.get("crowded")]
+    for line in crowded:
+        print(f"build_maps: label overlaps something at {line}", file=sys.stderr)
+
     if failed:
         return 1
     verb = "--check," if args.check else "wrote"
@@ -602,7 +922,9 @@ def main() -> int:
     print(f"build_maps: {verb} {len(docs)} frame(s) — {sectors} sector, "
           f"{len(docs) - sectors} project, "
           f"{sum(len(d['land']) for d in docs)} stroke(s), "
-          f"{sum(len(d['marks']) for d in docs)} mark(s)")
+          f"{sum(len(d['marks']) for d in docs)} mark(s), "
+          f"{sum(1 for d in docs for m in d['marks'] for l in m['labels'].values() if l.get('shortened'))}"
+          f" label(s) shortened, {len(crowded)} crowded")
     return 0
 
 

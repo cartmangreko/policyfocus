@@ -6,6 +6,11 @@
     "width": 760.0,
     "height": 430.0
   },
+  "mark_geometry": {
+    "r": 4.6,
+    "store_scale": 1.25,
+    "ring_scale": 3.4
+  },
   "projection": {
     "name": "Lambert conformal conic",
     "basis": "EPSG:3034 parameters (ETRS89-extended / LCC-Europe), spherical form",
@@ -111,7 +116,45 @@
       "lon": 23.5218,
       "as_of": "2026-08-28",
       "x": 368.0,
-      "y": 355.6
+      "y": 355.6,
+      "labels": {
+        "wide": {
+          "x": 391.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "IFESTOS",
+              "role": "name",
+              "size": 11.0,
+              "y": 351.9
+            },
+            {
+              "text": "TITAN Cement",
+              "role": "company",
+              "size": 9.5,
+              "y": 363.9
+            }
+          ]
+        },
+        "narrow": {
+          "x": 397.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "IFESTOS",
+              "role": "name",
+              "size": 21.0,
+              "y": 348.5
+            },
+            {
+              "text": "TITAN Cement",
+              "role": "company",
+              "size": 18.1,
+              "y": 371.5
+            }
+          ]
+        }
+      }
     },
     {
       "id": "prinos-co2-storage",
@@ -126,7 +169,45 @@
       "lon": 24.4976,
       "as_of": "2026-08-28",
       "x": 392.0,
-      "y": 74.4
+      "y": 74.4,
+      "labels": {
+        "wide": {
+          "x": 405.9,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Prinos CO2 storage",
+              "role": "name",
+              "size": 11.0,
+              "y": 70.7
+            },
+            {
+              "text": "EnEarth (Energean)",
+              "role": "company",
+              "size": 9.5,
+              "y": 82.7
+            }
+          ]
+        },
+        "narrow": {
+          "x": 411.4,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Prinos CO2 storage",
+              "role": "name",
+              "size": 21.0,
+              "y": 67.3
+            },
+            {
+              "text": "EnEarth (Energean)",
+              "role": "company",
+              "size": 18.1,
+              "y": 90.3
+            }
+          ]
+        }
+      }
     }
   ],
   "as_of": "2026-08-28",

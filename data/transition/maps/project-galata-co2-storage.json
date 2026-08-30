@@ -6,6 +6,11 @@
     "width": 760.0,
     "height": 430.0
   },
+  "mark_geometry": {
+    "r": 4.6,
+    "store_scale": 1.25,
+    "ring_scale": 3.4
+  },
   "projection": {
     "name": "Lambert conformal conic",
     "basis": "EPSG:3034 parameters (ETRS89-extended / LCC-Europe), spherical form",
@@ -52,7 +57,45 @@
       "lon": 28.1932,
       "as_of": "2026-08-28",
       "x": 404.1,
-      "y": 219.1
+      "y": 219.1,
+      "labels": {
+        "wide": {
+          "x": 427.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Galata CO2 storage",
+              "role": "name",
+              "size": 11.0,
+              "y": 215.4
+            },
+            {
+              "text": "Petroceltic",
+              "role": "company",
+              "size": 9.5,
+              "y": 227.4
+            }
+          ]
+        },
+        "narrow": {
+          "x": 433.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Galata CO2 storage",
+              "role": "name",
+              "size": 21.0,
+              "y": 212.0
+            },
+            {
+              "text": "Petroceltic",
+              "role": "company",
+              "size": 18.1,
+              "y": 235.0
+            }
+          ]
+        }
+      }
     },
     {
       "id": "anrav-devnya",
@@ -67,7 +110,51 @@
       "lon": 27.5951,
       "as_of": "2026-08-28",
       "x": 355.9,
-      "y": 210.9
+      "y": 210.9,
+      "labels": {
+        "wide": {
+          "x": 342.0,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "ANRAV",
+              "role": "name",
+              "size": 11.0,
+              "y": 207.2
+            },
+            {
+              "text": "Heidelberg Materials (Devnya Cement)",
+              "role": "company",
+              "size": 9.5,
+              "y": 219.2
+            }
+          ]
+        },
+        "narrow": {
+          "x": 336.5,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "ANRAV",
+              "role": "name",
+              "size": 21.0,
+              "y": 193.0
+            },
+            {
+              "text": "Heidelberg Materials",
+              "role": "company",
+              "size": 18.1,
+              "y": 215.9
+            },
+            {
+              "text": "(Devnya Cement)",
+              "role": "company",
+              "size": 18.1,
+              "y": 237.6
+            }
+          ]
+        }
+      }
     }
   ],
   "as_of": "2026-08-28",

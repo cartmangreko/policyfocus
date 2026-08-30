@@ -6,6 +6,11 @@
     "width": 760.0,
     "height": 430.0
   },
+  "mark_geometry": {
+    "r": 4.6,
+    "store_scale": 1.25,
+    "ring_scale": 3.4
+  },
   "projection": {
     "name": "Lambert conformal conic",
     "basis": "EPSG:3034 parameters (ETRS89-extended / LCC-Europe), spherical form",
@@ -95,7 +100,57 @@
       "lon": 8.689,
       "as_of": "2026-08-28",
       "x": 195.4,
-      "y": 171.0
+      "y": 171.0,
+      "labels": {
+        "wide": {
+          "x": 219.1,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "ArcelorMittal Bremen and",
+              "role": "name",
+              "size": 11.0,
+              "y": 160.7
+            },
+            {
+              "text": "Eisenhüttenstadt conversion",
+              "role": "name",
+              "size": 11.0,
+              "y": 173.9
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 9.5,
+              "y": 185.9
+            }
+          ]
+        },
+        "narrow": {
+          "x": 224.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "ArcelorMittal Bremen",
+              "role": "name",
+              "size": 21.0,
+              "y": 151.3
+            },
+            {
+              "text": "and Eisenhüttenstadt conversion",
+              "role": "name",
+              "size": 21.0,
+              "y": 176.5
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 18.1,
+              "y": 199.5
+            }
+          ]
+        }
+      }
     },
     {
       "id": "am-bremen-eisenhuettenstadt",
@@ -110,7 +165,57 @@
       "lon": 14.6213,
       "as_of": "2026-08-28",
       "x": 564.6,
-      "y": 259.0
+      "y": 259.0,
+      "labels": {
+        "wide": {
+          "x": 588.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "ArcelorMittal Bremen and",
+              "role": "name",
+              "size": 11.0,
+              "y": 248.7
+            },
+            {
+              "text": "Eisenhüttenstadt conversion",
+              "role": "name",
+              "size": 11.0,
+              "y": 261.9
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 9.5,
+              "y": 273.9
+            }
+          ]
+        },
+        "narrow": {
+          "x": 543.6,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "ArcelorMittal Bremen",
+              "role": "name",
+              "size": 21.0,
+              "y": 296.4
+            },
+            {
+              "text": "and Eisenhüttenstadt conversion",
+              "role": "name",
+              "size": 21.0,
+              "y": 321.6
+            },
+            {
+              "text": "ArcelorMittal",
+              "role": "company",
+              "size": 18.1,
+              "y": 344.5
+            }
+          ]
+        }
+      }
     },
     {
       "id": "salcos-salzgitter",
@@ -125,7 +230,51 @@
       "lon": 10.4107,
       "as_of": "2026-08-28",
       "x": 301.4,
-      "y": 270.6
+      "y": 270.6,
+      "labels": {
+        "wide": {
+          "x": 315.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "SALCOS stage one",
+              "role": "name",
+              "size": 11.0,
+              "y": 266.9
+            },
+            {
+              "text": "Salzgitter AG",
+              "role": "company",
+              "size": 9.5,
+              "y": 278.9
+            }
+          ]
+        },
+        "narrow": {
+          "x": 301.4,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "SALCOS stage one",
+              "role": "name",
+              "size": 21.0,
+              "y": 73.5
+            },
+            {
+              "text": "Salzgitter AG",
+              "role": "company",
+              "size": 18.1,
+              "y": 96.4
+            }
+          ],
+          "leader": [
+            301.4,
+            264.8,
+            301.4,
+            104.0
+          ]
+        }
+      }
     },
     {
       "id": "tkh2steel-duisburg",
@@ -140,7 +289,51 @@
       "lon": 6.7272,
       "as_of": "2026-08-28",
       "x": 67.9,
-      "y": 334.7
+      "y": 334.7,
+      "labels": {
+        "wide": {
+          "x": 81.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "tkH2Steel",
+              "role": "name",
+              "size": 11.0,
+              "y": 331.0
+            },
+            {
+              "text": "thyssenkrupp Steel",
+              "role": "company",
+              "size": 9.5,
+              "y": 343.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 100.0,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "tkH2Steel",
+              "role": "name",
+              "size": 21.0,
+              "y": 383.2
+            },
+            {
+              "text": "thyssenkrupp Steel",
+              "role": "company",
+              "size": 18.1,
+              "y": 406.1
+            }
+          ],
+          "leader": [
+            72.0,
+            338.8,
+            100.0,
+            366.8
+          ]
+        }
+      }
     }
   ],
   "as_of": "2026-08-28",

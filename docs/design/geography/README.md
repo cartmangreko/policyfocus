@@ -32,6 +32,61 @@ no such node exists. Every named hub in the register — Antwerp@C, Brunsbüttel
 the Dunkerque CO₂ terminal — is named without being sited. See `scope.md`,
 "A node in the geo layer requires a source-stated position".
 
+**The key names only the distinctions the picture draws.** Fill is always
+explained, in both directions — "filled: operating or under construction" and
+"hollow: not running", so a reader who sees only filled marks still learns what
+filled means. Shape is explained only on a frame that actually carries a store;
+on one that does not, "a dot is a works" would put a second identical filled dot
+in the key beside the one explaining fill, which reads as a mistake. The wording
+is tier 1, in `geoKeyProse`, and divides on the same statuses the picture and
+the standfirst above it divide on.
+
+## Every mark is named on the paper
+
+A tooltip is not a label. It needs a pointer, and a pointer is the one thing a
+reader has not got on a phone, in print, or in the screenshot somebody puts in a
+slide — three of the four ways this picture is looked at. So every mark carries
+its project name and its company, permanently, on both frames.
+
+`build_maps.py` places them, with the rest of the geometry, and the component
+decides nothing. The ladder, in order:
+
+1. **Beside the mark**, clear of every other mark, every placed label and the
+   frame edge. Eight directions are tried, east and west first.
+2. **Pushed out, with a leader line** drawn back to the mark. A hairline in this
+   picture always means one thing: this name belongs to that mark and not to the
+   nearer one.
+3. **The name alone**, pushed out — the company falls back to the tooltip, which
+   was already carrying it and is unchanged by any of this.
+4. **The least-bad position, kept.** A label is never dropped. A picture that
+   silently omits whichever name it found hardest to place lies worst exactly
+   where it is most crowded, and the reader cannot know a name was ever there.
+   The file records `crowded` on any label that lands here, and the build says so.
+
+**Two layouts are computed, not one.** This is the only place in `build_maps.py`
+that admits a viewport exists, and it has to: the canvas is 760 units wide and
+scales to fit, so a label's size in units is fixed while its size in pixels is
+not. Eleven units is 11px on the 760px canvas a desktop gets and 5.6px on the
+390px one a 430-wide phone has room for, which is not reading, it is a smudge.
+Holding the label legible at 430 means roughly doubling it in canvas units, and
+a label at twice the size collides far more often — so the narrow frame needs
+its own placements and, in a crowd, its own shorter wording. The stylesheet shows
+one layout and hides the other with `display: none`, so a screen reader is not
+given every name twice.
+
+**Widths are estimated, not measured.** A true font metric would mean shipping a
+font file and a parser for it, as a build input, to position nineteen names.
+`text_width` uses per-class advances taken off the stack the stylesheet asks for,
+rounded up, with a safety factor that errs wide on purpose: a box measured too
+big costs a leader line, and a box measured too small puts one word on top of
+another.
+
+**`MARK_R` moved into the build** and is written into every map file as
+`mark_geometry`. The label layout needs to know how much room a mark takes and
+the component needs to draw one the same size; held in two places, the day a mark
+grows, every label would still be placed against the old radius and nothing would
+say so.
+
 ## The projection
 
 Lambert conformal conic, EPSG:3034's parameters — standard parallels 35 N and

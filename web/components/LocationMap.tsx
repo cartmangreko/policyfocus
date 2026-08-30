@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { geoMarkProse } from "@/lib/prose";
+import { geoKeyProse, geoMarkProse } from "@/lib/prose";
 
 // THE SHARED GEOGRAPHY COMPONENT. One picture, two frames: a regional crop on a
 // project page and a Europe-wide overview on a sector page. Both are the same
@@ -28,10 +28,33 @@ import { geoMarkProse } from "@/lib/prose";
 //     hollow     it is not — paused, cancelled, or not yet built
 //     ring       the one this page is about
 //
+// EVERY MARK IS NAMED ON THE PAPER. The label is not a tooltip: a tooltip needs
+// a pointer, and this picture is read on phones, in print and in screenshots.
+// Where labels would collide they are offset and joined to their mark by a
+// leader; where a crowd leaves no room at all the company drops to the tooltip
+// and the name stays, because a label that is never drawn is a name the reader
+// cannot know was there. All of that is decided in build_maps.py.
+//
 // A third mark for transport infrastructure is described in the brief and is
 // not drawn, because no such node exists: every named hub in the register is
 // named without being sited. See scope.md, "A node in the geo layer requires a
 // source-stated position".
+
+export interface MapLabelLine {
+  text: string;
+  role: "name" | "company";
+  size: number;
+  y: number;
+}
+
+export interface MapLabel {
+  x: number;
+  anchor: "start" | "middle" | "end";
+  lines: MapLabelLine[];
+  leader?: [number, number, number, number];
+  shortened?: boolean;
+  crowded?: boolean;
+}
 
 export interface MapMark {
   id: string;
@@ -47,6 +70,7 @@ export interface MapMark {
   as_of: string;
   x: number;
   y: number;
+  labels: { wide: MapLabel; narrow: MapLabel };
 }
 
 export interface MapCoordinates {
@@ -65,6 +89,7 @@ export interface MapDoc {
   kind: "project" | "sector";
   subject: string;
   canvas: { width: number; height: number };
+  mark_geometry: { r: number; store_scale: number; ring_scale: number };
   land: string[];
   marks: MapMark[];
   coordinates: MapCoordinates[];
@@ -76,22 +101,57 @@ export interface MapDoc {
  *  hollow — the same reading build_lead.py's ADVANCE ladder takes. */
 const RUNNING = new Set(["construction", "operating"]);
 
-const MARK_R = 4.6;
+type Geometry = MapDoc["mark_geometry"];
 
-function shape(mark: MapMark) {
+function shape(mark: MapMark, g: Geometry) {
   const filled = RUNNING.has(mark.status);
   const common = {
     className: `geo-mark geo-mark-${mark.role} ${filled ? "is-running" : "is-stopped"}`,
     vectorEffect: "non-scaling-stroke" as const,
   };
   if (mark.role === "storage") {
-    const r = MARK_R * 1.25;
+    const r = g.r * g.store_scale;
     const points = `${mark.x},${mark.y + r} ${mark.x - r},${mark.y - r * 0.72} ${
       mark.x + r
     },${mark.y - r * 0.72}`;
     return <polygon points={points} {...common} />;
   }
-  return <circle cx={mark.x} cy={mark.y} r={MARK_R} {...common} />;
+  return <circle cx={mark.x} cy={mark.y} r={g.r} {...common} />;
+}
+
+/** ONE MARK'S LABEL, AT ONE BREAKPOINT. Every number here was computed by
+ *  sources/build_maps.py — the anchor, the baseline of each line, and the leader
+ *  when the label had to be pushed clear of a neighbour. Both breakpoints are
+ *  rendered and the stylesheet shows one, because the label that fits a 760px
+ *  canvas is unreadable on a 390px one and the file carries a layout for each. */
+function label(mark: MapMark, which: "wide" | "narrow") {
+  const l = mark.labels[which];
+  return (
+    <g className={`geo-label geo-label-${which}`}>
+      {l.leader ? (
+        <line
+          x1={l.leader[0]}
+          y1={l.leader[1]}
+          x2={l.leader[2]}
+          y2={l.leader[3]}
+          className="geo-leader"
+          vectorEffect="non-scaling-stroke"
+        />
+      ) : null}
+      {l.lines.map((line, i) => (
+        <text
+          key={i}
+          x={l.x}
+          y={line.y}
+          fontSize={line.size}
+          textAnchor={l.anchor}
+          className={`geo-label-text geo-label-${line.role}`}
+        >
+          {line.text}
+        </text>
+      ))}
+    </g>
+  );
 }
 
 /** Degrees as a reader writes them, not as the file stores them: a hemisphere
@@ -113,6 +173,21 @@ function coordinateLine(c: MapCoordinates) {
   );
 }
 
+/** The key's swatch, drawn at the same proportions the picture uses so that the
+ *  thing in the key is the thing on the paper. */
+function swatch(item: { role: "plant" | "storage"; running: boolean }) {
+  const cls = `geo-mark geo-mark-${item.role} ${item.running ? "is-running" : "is-stopped"}`;
+  return (
+    <svg viewBox="0 0 12 12" aria-hidden="true">
+      {item.role === "storage" ? (
+        <polygon points="6,10.5 1.2,3.2 10.8,3.2" className={cls} />
+      ) : (
+        <circle cx="6" cy="6" r="4" className={cls} />
+      )}
+    </svg>
+  );
+}
+
 export default function LocationMap({
   doc,
   heading,
@@ -123,6 +198,7 @@ export default function LocationMap({
   standfirst: string;
 }) {
   const { width, height } = doc.canvas;
+  const g = doc.mark_geometry;
   const hasStore = doc.marks.some((m) => m.role === "storage");
 
   return (
@@ -161,40 +237,25 @@ export default function LocationMap({
               <circle
                 cx={mark.x}
                 cy={mark.y}
-                r={MARK_R * 3.4}
+                r={g.r * g.ring_scale}
                 className="geo-here"
                 vectorEffect="non-scaling-stroke"
               />
             ) : null}
-            {shape(mark)}
+            {shape(mark, g)}
+            {label(mark, "wide")}
+            {label(mark, "narrow")}
           </Link>
         ))}
       </svg>
 
       <div className="geo-key">
-        <span className="geo-key-item">
-          <svg viewBox="0 0 12 12" aria-hidden="true">
-            <circle cx="6" cy="6" r="4" className="geo-mark geo-mark-plant is-running" />
-          </svg>
-          works
-        </span>
-        {hasStore ? (
-          <span className="geo-key-item">
-            <svg viewBox="0 0 12 12" aria-hidden="true">
-              <polygon
-                points="6,10.5 1.2,3.2 10.8,3.2"
-                className="geo-mark geo-mark-storage is-running"
-              />
-            </svg>
-            store
+        {geoKeyProse({ hasStore }).map((item) => (
+          <span className="geo-key-item" key={item.text}>
+            {swatch(item)}
+            {item.text}
           </span>
-        ) : null}
-        <span className="geo-key-item">
-          <svg viewBox="0 0 12 12" aria-hidden="true">
-            <circle cx="6" cy="6" r="4" className="geo-mark geo-mark-plant is-stopped" />
-          </svg>
-          not running
-        </span>
+        ))}
       </div>
 
       <div className="geo-coords">
