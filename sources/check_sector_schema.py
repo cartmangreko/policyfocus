@@ -271,6 +271,32 @@ def check_parameters(e: Errors, rows: list[dict], tech_ids: set, sectors: dict) 
                 e.stale.append(f"  {r['id']}: {age} months old, stale_after {limit}")
 
 
+# COORDINATE-SOURCE EXCEPTIONS, named one at a time, in the same shape and for
+# the same reason as the offshore exceptions in check_coordinates.py: the list is
+# short, every entry is a sentence somebody wrote, and the gate prints all of
+# them on every run. That is the whole difference between an exception and a
+# loophole.
+#
+# THE ONE ENTRY IS A HOLE IN THE VOCABULARY AND SHOULD BE READ AS ONE. The three
+# source types describe how you identify a WORKS -- a polygon somebody drew, an
+# address the operator published, a parcel a permit names. A depleted offshore
+# gas field has none of those. It has a name, a concession block and a position
+# in the technical literature, and no amount of looking will produce a street.
+# The honest options were a fourth source type or a named exception; this is the
+# cheaper one to reverse, and it keeps the vocabulary describing works rather
+# than quietly widening to mean "anything citable".
+#
+# An entry naming a site that no longer exists fails, so the list cannot rot.
+COORDINATE_SOURCE_EXCEPTIONS = {
+    ("galata-co2-storage", "Galata gas field, Black Sea"):
+        "A depleted offshore gas field, not a works: it has no address, no parcel "
+        "and no polygon anybody has drawn. The position is the field's own, and "
+        "the source states it as a coordinate rather than describing a place. "
+        "check_coordinates.py holds the same point against a measured 22.91 km "
+        "offshore exception, which is the check that actually constrains it.",
+}
+
+
 def _location(e: Errors, where: str, row: dict) -> None:
     """Every site a project sits on, and the source that puts it there.
 
@@ -304,7 +330,26 @@ def _location(e: Errors, where: str, row: dict) -> None:
                 e.add(w, f"{field}={val} is outside {lo}..{hi}")
         src = s.get("source") or {}
         _url(e, w, src.get("url"))
-        _req(e, w, src, "publisher", "verbatim")
+        # `type` says which of the three kinds of evidence put this works here,
+        # and is required rather than defaulted: a coordinate whose provenance is
+        # implied is one nobody can weigh. See sm.LOCATION_SOURCE_TYPES for what
+        # each admits and, more importantly, for what none of them admits — a
+        # geocoded town name and a position read off a press photograph are
+        # refused by having no value to record them under.
+        excused = (row.get("id"), s.get("site")) in COORDINATE_SOURCE_EXCEPTIONS
+        if not excused:
+            _req(e, w, src, "publisher", "verbatim", "type")
+            _vocab(e, w, src, "type", sm.LOCATION_SOURCE_TYPES)
+        else:
+            _req(e, w, src, "publisher", "verbatim")
+            if src.get("type") is not None:
+                e.add(w, "is a named coordinate-source exception and also declares a "
+                         "type — one or the other, or nobody can tell which rule the "
+                         "coordinate is standing on")
+        if src.get("type") == "company" and not s.get("address"):
+            e.add(w, "source type=company and no address block — a coordinate derived "
+                     "from the operator's own materials has to quote the address or "
+                     "parcel it was derived from, or the derivation is unrepeatable")
         addr = s.get("address")
         if addr:
             _url(e, f"{w} address", addr.get("url"))
@@ -409,6 +454,25 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
         _location(e, w, r)
         _storage(e, w, r, technologies, project_ids)
         _source_list(e, w, r)
+
+
+def check_coordinate_exceptions(e: Errors, rows: list[dict]) -> list[str]:
+    """Report every named coordinate-source exception, and fail a stale one.
+
+    Printed whether or not anything is wrong, on the same rule the offshore
+    exceptions run under: an exception nobody sees is a rule nobody is applying.
+    """
+    live = {(r.get("id"), s.get("site")) for r in rows for s in (r.get("location") or [])}
+    out = []
+    for key, why in sorted(COORDINATE_SOURCE_EXCEPTIONS.items()):
+        pid, site = key
+        if key not in live:
+            e.add(f"project {pid}", f"a coordinate-source exception names the site "
+                                    f"{site!r}, which no longer exists — a stale "
+                                    f"exception is a rule nobody is applying")
+            continue
+        out.append(f"  {pid}::{site}\n      {why}")
+    return out
 
 
 def check_materials(e: Errors, rows: list[dict], sectors: dict, tech_ids: set,
@@ -996,6 +1060,7 @@ def main() -> int:
     check_ecosystems(e, rows["ecosystem"], sectors, tech_ids, project_ids, material_ids,
                      measure_ids)
     check_status_groups(e)
+    coord_exceptions = check_coordinate_exceptions(e, rows["project"])
 
     drafts = check_prose(e)
 
@@ -1013,6 +1078,10 @@ def main() -> int:
     if e.stale:
         print(f"\nstale parameters ({len(e.stale)}) — reported, not failed:")
         print("\n".join(e.stale))
+    if coord_exceptions:
+        print(f"\ncoordinate-source exceptions ({len(coord_exceptions)}) — recorded, "
+              f"never silent:")
+        print("\n".join(coord_exceptions))
     return 0
 
 

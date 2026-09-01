@@ -1,0 +1,374 @@
+{
+  "_comment": [
+    "THE BATTERIES CANDIDATE LIST, machine-readable so the gap can be REPORTED rather",
+    "than narrated. sources/report_candidate_gaps.py reads it and prints what is still",
+    "missing on every build.",
+    "",
+    "WHY IT EXISTS. The perimeter admits a site only when the company has confirmed it",
+    "and a citable source identifies the works. Both take research, and a dataset in",
+    "build-up therefore has two populations: rows that are on file, and candidates that",
+    "are not yet. Held only in prose, the second population is a paragraph somebody has",
+    "to remember to update. Held here, it is a number the build prints.",
+    "",
+    "A CANDIDATE LEAVES BY BECOMING A ROW. `id` matches the project id it will take in",
+    "data/transition/projects.json, and the report treats a candidate whose id is",
+    "already a project as landed. Nothing is deleted when that happens: the entry stays",
+    "as the record of what was needed, and the report stops asking for it.",
+    "",
+    "`company_source` is a URL or null. `coordinate_source` is one of the values in",
+    "sector_map.LOCATION_SOURCE_TYPES or null. Null means outstanding, and outstanding",
+    "is the thing this file is for.",
+    "",
+    "Refused candidates are NOT here. This file is the admitted set; what the perimeter",
+    "refuses, and why, is in sources/batteries_docket.md, which is the reviewed record."
+  ],
+  "sector": "batsol",
+  "perimeter": "sources/batteries_docket.md",
+  "candidates": [
+    {
+      "id": "acc-billy-berclau",
+      "company": "Automotive Cells Company",
+      "site": "Billy-Berclau/Douvrin",
+      "country": "FR",
+      "status": "operating",
+      "capacity_gwh": 13,
+      "company_source": "https://www.acc-emotion.com/media/bbd-press-release",
+      "coordinate_source": "basemap"
+    },
+    {
+      "id": "verkor-dunkirk",
+      "company": "Verkor",
+      "site": "Bourbourg, Dunkirk",
+      "country": "FR",
+      "status": "operating",
+      "capacity_gwh": 16,
+      "company_source": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+      "coordinate_source": "basemap"
+    },
+    {
+      "id": "powerco-salzgitter",
+      "company": "PowerCo",
+      "site": "Salzgitter",
+      "country": "DE",
+      "status": "operating",
+      "capacity_gwh": 20,
+      "company_source": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
+      "coordinate_source": "basemap"
+    },
+    {
+      "id": "northvolt-ett-skelleftea",
+      "company": "Lyten",
+      "site": "Skellefteå",
+      "country": "SE",
+      "status": "paused",
+      "capacity_gwh": null,
+      "company_source": "https://lyten.com/2026/02/26/lyten-completes-acquisition-of-northvolt-sweden-and-establishes-its-first-lyten-industrial-hub-in-sweden/",
+      "coordinate_source": "basemap",
+      "note": "Capacity outstanding: no company figure read for Northvolt Ett under Lyten."
+    },
+    {
+      "id": "acc-termoli",
+      "company": "Automotive Cells Company",
+      "site": "Termoli",
+      "country": "IT",
+      "status": "paused",
+      "capacity_gwh": null,
+      "company_source": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
+      "coordinate_source": "basemap",
+      "note": "Company source is ACC quoted in trade press; ACC's own release not located."
+    },
+    {
+      "id": "catl-stellantis-zaragoza",
+      "company": "CATL and Stellantis joint venture",
+      "site": "Zaragoza, Figueruelas",
+      "country": "ES",
+      "status": "announced",
+      "capacity_gwh": 50,
+      "company_source": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+      "coordinate_source": "basemap"
+    },
+    {
+      "id": "acc-kaiserslautern",
+      "company": "Automotive Cells Company",
+      "site": "Kaiserslautern",
+      "country": "DE",
+      "status": "paused",
+      "capacity_gwh": null,
+      "company_source": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
+      "coordinate_source": null,
+      "note": "No OpenStreetMap feature for the site. The widened rule admits a company address or a permitting filing; neither read yet."
+    },
+    {
+      "id": "powerco-sagunto",
+      "company": "PowerCo",
+      "site": "Sagunto, Valencia",
+      "country": "ES",
+      "status": "construction",
+      "capacity_gwh": 40,
+      "company_source": "https://www.volkswagen-group.com/en/press-releases/gigafactory-valencia-powerco-gives-starting-signal-for-construction-of-second-cell-factory-17033",
+      "coordinate_source": null,
+      "note": "Basemap has Parc Sagunt II, the industrial estate, not the works."
+    },
+    {
+      "id": "gib-surany",
+      "company": "Gotion InoBat Batteries",
+      "site": "Šurany",
+      "country": "SK",
+      "status": "construction",
+      "capacity_gwh": 20,
+      "company_source": "https://www.inobat.eu/newsroom/gib-to-build-an-advanced-gigafactory-in-slovakia/",
+      "coordinate_source": null,
+      "note": "Basemap carries nothing named at the Šurany eco park."
+    },
+    {
+      "id": "envision-aesc-douai",
+      "company": "Envision AESC",
+      "site": "Douai",
+      "country": "FR",
+      "status": "operating",
+      "capacity_gwh": 10,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "envision-aesc-sunderland",
+      "company": "Envision AESC",
+      "site": "Sunderland",
+      "country": "UK",
+      "status": "operating",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "envision-aesc-extremadura",
+      "company": "Envision AESC",
+      "site": "Navalmoral de la Mata",
+      "country": "ES",
+      "status": "construction",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "catl-arnstadt",
+      "company": "CATL",
+      "site": "Arnstadt, Thuringia",
+      "country": "DE",
+      "status": "operating",
+      "capacity_gwh": 14,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "catl-debrecen",
+      "company": "CATL",
+      "site": "Debrecen",
+      "country": "HU",
+      "status": "construction",
+      "capacity_gwh": 100,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "tesla-gruenheide-cells",
+      "company": "Tesla",
+      "site": "Grünheide",
+      "country": "DE",
+      "status": "operating",
+      "capacity_gwh": 18,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "lges-wroclaw",
+      "company": "LG Energy Solution",
+      "site": "Biskupice Podgórne, Wrocław",
+      "country": "PL",
+      "status": "operating",
+      "capacity_gwh": 86,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "samsung-sdi-god",
+      "company": "Samsung SDI",
+      "site": "Göd",
+      "country": "HU",
+      "status": "operating",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "sk-on-ivancsa",
+      "company": "SK On",
+      "site": "Iváncsa",
+      "country": "HU",
+      "status": "operating",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "sk-on-komarom",
+      "company": "SK On",
+      "site": "Komárom",
+      "country": "HU",
+      "status": "operating",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "agratas-bridgwater",
+      "company": "Agratas",
+      "site": "Gravity, Bridgwater",
+      "country": "UK",
+      "status": "construction",
+      "capacity_gwh": 40,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "sunwoda-nyiregyhaza",
+      "company": "Sunwoda",
+      "site": "Nyíregyháza",
+      "country": "HU",
+      "status": "construction",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "eve-power-debrecen",
+      "company": "EVE Power",
+      "site": "Debrecen",
+      "country": "HU",
+      "status": "announced",
+      "capacity_gwh": 30,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "calb-sines",
+      "company": "CALB",
+      "site": "Sines",
+      "country": "PT",
+      "status": "announced",
+      "capacity_gwh": 15,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "inobat-spain",
+      "company": "InoBat",
+      "site": "Spain, site to confirm",
+      "country": "ES",
+      "status": "announced",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "freyr-mo-i-rana",
+      "company": "T1 Energy (FREYR)",
+      "site": "Mo i Rana",
+      "country": "NO",
+      "status": "paused",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "lyten-heide",
+      "company": "Lyten",
+      "site": "Heide",
+      "country": "DE",
+      "status": "paused",
+      "capacity_gwh": 60,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "elevenes-subotica",
+      "company": "ElevenEs",
+      "site": "Subotica",
+      "country": "RS",
+      "status": "operating",
+      "capacity_gwh": 8,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "svolt-uberherrn",
+      "company": "SVOLT",
+      "site": "Überherrn, Saarland",
+      "country": "DE",
+      "status": "cancelled",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "svolt-lauchhammer",
+      "company": "SVOLT",
+      "site": "Lauchhammer, Brandenburg",
+      "country": "DE",
+      "status": "cancelled",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "britishvolt-blyth",
+      "company": "Britishvolt",
+      "site": "Cambois, Blyth",
+      "country": "UK",
+      "status": "cancelled",
+      "capacity_gwh": 35,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "italvolt-scarmagno",
+      "company": "Italvolt",
+      "site": "Scarmagno",
+      "country": "IT",
+      "status": "cancelled",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "farasis-bitterfeld",
+      "company": "Farasis Energy",
+      "site": "Bitterfeld-Wolfen",
+      "country": "DE",
+      "status": "cancelled",
+      "capacity_gwh": 16,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "morrow-arendal",
+      "company": "Morrow Batteries",
+      "site": "Arendal",
+      "country": "NO",
+      "status": "cancelled",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    },
+    {
+      "id": "northvolt-borlange",
+      "company": "Northvolt",
+      "site": "Borlänge",
+      "country": "SE",
+      "status": "cancelled",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null
+    }
+  ]
+}

@@ -217,6 +217,44 @@ PROJECT_ROLES = (
     "storage",
 )
 
+# WHERE A COORDINATE CAME FROM, and it is recorded per site rather than assumed.
+#
+# The rule this vocabulary enforces has not changed and is the one the register
+# has always had: a coordinate must come from a citable source that identifies
+# THE WORKS SPECIFICALLY. What changed is that the basemap is no longer the only
+# thing that can do that. Batteries made the old reading untenable -- ACC's
+# Kaiserslautern site is real, company-confirmed and carries no OpenStreetMap
+# feature at all, and a rule that admits a works only when a volunteer has
+# already drawn it is a rule about OpenStreetMap's coverage rather than about
+# evidence.
+#
+# So three kinds of source may put a works on the paper:
+#
+#   basemap     an OpenStreetMap feature, with its tags quoted, so a reader can
+#               see that the polygon is the works and not the industrial estate
+#               around it. Still the best of the three, because the geometry and
+#               the identification are the same object.
+#   company     the operator's own materials naming a street address or a land
+#               parcel. The company knows where its works is; what this costs is
+#               that the coordinate is then derived from an address rather than
+#               read off a shape, so the address itself is quoted alongside.
+#   permit      a state permitting, planning or zoning filing. Often the most
+#               precise of the three -- a zoning decision names parcels -- and it
+#               is a public document that outlives a press release.
+#
+# WHAT IS STILL REFUSED, and this is the whole point of naming the three. A town
+# name run through a geocoder is not a source about a works, it is a source about
+# a town, and `precision: "town"` already fails by name. A position read off a
+# picture in a news story is not citable: nobody can check it and the next reader
+# gets a different number. Neither has a value in this vocabulary, so neither can
+# be recorded without inventing one, which is the point of a closed list.
+LOCATION_SOURCE_TYPES = (
+    "basemap",
+    "company",
+    "permit",
+)
+
+
 # HOW EXACT A COORDINATE IS. `plant` is the works itself; `site` is a store, a
 # field or a receiving terminal, which has a position but not a street. `town`
 # is listed and is not allowed on a project: the gate refuses it by name, so the
