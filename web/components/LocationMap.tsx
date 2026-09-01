@@ -25,8 +25,16 @@ import { geoKeyProse, geoMarkProse } from "@/lib/prose";
 //     dot        a works
 //     triangle   a store, pointing down, because that is where the tonne goes
 //     filled     it is running
-//     hollow     it is not — paused, cancelled, or not yet built
+//     hollow     it is not — announced, funded, or paused
 //     ring       the one this page is about
+//
+// AND WHAT IS NOT DRAWN AT ALL. A cancelled project is off the overview and is
+// not a context mark on anybody else's crop, because the picture draws what
+// Europe is building. It keeps its row, its page and its place in every count;
+// it is drawn on its own crop and on no other frame. sources/build_maps.py
+// decides that, in UNDRAWN_STATUSES, and this file is handed the result — but
+// the KEY has to say it, because a hollow mark drawn nowhere else looks like
+// every other hollow mark. See geoKeyProse.
 //
 // AND THE GROUND IS NAMED UNDER ALL OF IT. A crop names every country in view,
 // an overview only those holding a site. They are the faintest layer and the
@@ -66,6 +74,10 @@ export interface MapLabel {
 export interface MapMark {
   id: string;
   site: string;
+  /** The ISO code of the country this site stands in. The overview's standfirst
+   *  counts countries off this rather than off the project rows, so that the
+   *  number is over sites the frame draws. */
+  country: string;
   role: "plant" | "storage";
   relation: "subject" | "dependency" | "technology" | "sector";
   status: string;
@@ -108,6 +120,12 @@ export interface MapDoc {
   countries: MapCountry[];
   coordinates: MapCoordinates[];
   as_of: string;
+  /** Overview only: the register's remainder — what this sector has on file and
+   *  this frame does not draw. The standfirst states it in a clause of its own. */
+  undrawn?: { projects: number; sites: number };
+  /** Crop only: the subject's status, so the key can name the one case the two
+   *  fill lines do not cover. */
+  subject_status?: string;
 }
 
 /** Running, in the sense the mark uses: a filled mark is a thing that is doing
@@ -213,15 +231,18 @@ function coordinateLine(c: MapCoordinates) {
 }
 
 /** The key's swatch, drawn at the same proportions the picture uses so that the
- *  thing in the key is the thing on the paper. */
-function swatch(item: { role: "plant" | "storage"; running: boolean }) {
+ *  thing in the key is the thing on the paper. The ring is drawn at the same
+ *  ratio to the mark that `mark_geometry.ring_scale` sets on the canvas, so the
+ *  ringed swatch is the ringed mark and not an approximation of it. */
+function swatch(item: { role: "plant" | "storage"; running: boolean; ringed?: boolean }) {
   const cls = `geo-mark geo-mark-${item.role} ${item.running ? "is-running" : "is-stopped"}`;
   return (
     <svg viewBox="0 0 12 12" aria-hidden="true">
+      {item.ringed ? <circle cx="6" cy="6" r="5.4" className="geo-here" /> : null}
       {item.role === "storage" ? (
         <polygon points="6,10.5 1.2,3.2 10.8,3.2" className={cls} />
       ) : (
-        <circle cx="6" cy="6" r="4" className={cls} />
+        <circle cx="6" cy="6" r={item.ringed ? 2.6 : 4} className={cls} />
       )}
     </svg>
   );
@@ -239,6 +260,18 @@ export default function LocationMap({
   const { width, height } = doc.canvas;
   const g = doc.mark_geometry;
   const hasStore = doc.marks.some((m) => m.role === "storage");
+  // THE RING IS EXPLAINED WHEREVER IT IS DRAWN, which is every crop and no
+  // overview. Read off the built file's `subject_status` rather than off the
+  // marks, so the key states the SUBJECT's state and not whichever mark
+  // happened to be in frame — and so the swatch takes the subject's own fill
+  // and is the mark on the paper rather than a filled stand-in for a hollow
+  // one. The cancelled clause is appended to that same line: see geoKeyProse.
+  const subject = doc.subject_status
+    ? {
+        running: RUNNING.has(doc.subject_status),
+        cancelled: doc.subject_status === "cancelled",
+      }
+    : undefined;
 
   return (
     <figure className={`geo geo-${doc.kind}`} aria-labelledby={`${doc.id}-heading`}>
@@ -297,7 +330,7 @@ export default function LocationMap({
       </svg>
 
       <div className="geo-key">
-        {geoKeyProse({ hasStore }).map((item) => (
+        {geoKeyProse({ hasStore, subject }).map((item) => (
           <span className="geo-key-item" key={item.text}>
             {swatch(item)}
             {item.text}

@@ -121,6 +121,51 @@ PROJECT_STATUSES = (
     "cancelled",
 )
 
+
+# NOT EVERY ENTRY IN A STATUS HISTORY IS A STATUS CHANGE, and the difference has
+# to be named because three sentence templates on this site render an entry as
+# one: "{project} was paused on {date}".
+#
+# A history is a list of EVENTS, in date order. Most are transitions -- the
+# project moved from one status to the next, and the entry's date is the date it
+# moved. Some are not: a later source reports on a project whose status it does
+# not change. Slite is the case that forced this. It was paused on 19 November
+# 2025 when the Swedish Energy Agency declined to co-fund it; on 1 January 2026
+# Heidelberg Materials withdrew the permit application, which is a fact about a
+# paused project rather than a project becoming paused. Both belong in the
+# history -- the second is the evidence that the register has read the later
+# news and still says paused -- and rendering the second as a transition would
+# put "Slite CCS was paused on 1 January 2026" on three pages, which no source
+# says.
+#
+# THE RULE IS POSITIONAL, not a flag on the row. An entry is a transition if its
+# status differs from the entry before it; the first entry always is. That
+# cannot fall out of step with the data the way a hand-set `transition: false`
+# would, and it needs nothing added to any row.
+
+def is_transition(history: list[dict], i: int) -> bool:
+    """Whether entry `i` is the moment the project's status changed."""
+    return i == 0 or history[i]["status"] != history[i - 1]["status"]
+
+
+def transitions(project: dict) -> list[dict]:
+    """Only the entries that changed the status. What a feed of "what moved"
+    should be built from, and what a sentence saying a project MOVED may use."""
+    history = project.get("status_history") or []
+    return [h for i, h in enumerate(history) if is_transition(history, i)]
+
+
+def entered(project: dict) -> dict | None:
+    """The entry that put the project into the status it is in now -- the first
+    of the trailing run, not the last entry.
+
+    This is the date "was paused on" means. `status_history[-1]` is the latest
+    thing ON FILE about the project, which is a different question and is the
+    right answer for a feed, a "last change" column or an "as of" date.
+    """
+    changes = transitions(project)
+    return changes[-1] if changes else None
+
 # WHAT KIND OF PLACE A PROJECT ROW IS. `plant` is the default and is left off the
 # row; a row that says nothing is a works. `storage` is a permitted or proposed
 # geological store -- the place a captured tonne ends, which the graph referred

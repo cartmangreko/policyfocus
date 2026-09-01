@@ -19,12 +19,72 @@ told apart by shape. No selector in the geography block emits a reserved token,
 which is why `check_colour_layers.py` passes without the file being added to
 any allowance and why §7 was never asked a question it does not answer.
 
+## The picture draws what Europe is building
+
+A **cancelled** project is **not drawn**: not on the sector overview, and not as
+a context neighbour on another project's crop. Nothing is deleted — it keeps its
+row in the register, its own page, and its place in every count and every number
+built off the dataset. It loses ink on frames about what is being built, and
+nothing else.
+
+**The exception is its own page.** A project is always drawn on its own crop,
+whatever its status, because a page whose picture omitted its subject would have
+lost the plot. That crop is the one frame a cancelled project appears on, and
+both the standfirst and the key say so — a hollow mark drawn nowhere else looks
+exactly like a hollow mark drawn everywhere, and the reader cannot tell without
+being told.
+
+**The frame follows the ink.** An undrawn dependency does not widen a crop it is
+then left off; the subject fixes the frame whatever its status, because the
+subject is always drawn.
+
+**Stores follow their project.** A triangle is drawn where the works whose tonne
+it takes is drawn. That holds without a rule of its own: a store is only ever
+pulled onto a crop as the *subject's* dependency, and the subject is always
+drawn. A store serving one drawn and one undrawn project is the case nothing can
+decide by default, so `build_maps.py` reports it rather than choosing. Today no
+store serves a cancelled project and the report is empty.
+
+**Not every entry in a status history is a status change**, and the split is what
+forced that to be named. Slite was paused on 19 November 2025 when the Swedish
+Energy Agency declined to co-fund it; on 1 January 2026 Heidelberg Materials
+withdrew the permit application, and that source is now an entry in the history
+with the status unchanged. It is the evidence that the register has read the
+later news and still says paused — which is exactly what `ambiguity_report` was
+asking for, and filing it clears the flag.
+
+An entry is a **transition** if its status differs from the one before it; the
+first always is. The rule is positional rather than a flag on the row, so it
+cannot fall out of step with the data. Three sentence templates render an entry
+as a transition — "{project} was paused on {date}" — and all three now read the
+transitions only, or Slite would have been paused on 1 January 2026 on three
+pages, which no source says: `fact_the_latest` in `build_lead.py`,
+`project_lead` in `build_object_leads.py`, and the status rail on the project
+page. `sector_map.transitions` / `entered` and `transition.ts`
+`statusTransitions` are the two implementations of the one rule.
+
+Feeds are deliberately **not** built this way. The home feed, the sector change
+strip, the "Last change" column and the `as of` date all want the latest thing on
+file, which is a different question from when the project last moved — and the
+withdrawal, rendered as a date, a status chip and its note, is true in all four.
+
+**Two checks came with the split**, both in `build_maps.py`, both reported and
+neither failing the build. `paused` and `cancelled` used to be one group
+everywhere that mattered — both hollow, both drawn, both inside "paused or
+cancelled" — so telling them apart was a question of wording. It now decides
+whether a project is on the paper. `ambiguity_report` flags any project in that
+group carrying a source dated *later* than the status_history entry that put it
+there, which is the one mechanical signal that the sources have moved on and
+nobody has read the status against them. `store_report` is the straddle check
+above. Neither can be settled by a build: both want somebody to read two
+paragraphs and decide, and a non-zero exit would claim otherwise.
+
 ## One rule for the marks
 
     dot        a works
     triangle   a store, pointing down, because that is where the tonne goes
     filled     it is running
-    hollow     it is not — paused, cancelled, or not yet built
+    hollow     it is not — announced, funded, or paused
     ring       the one this page is about
 
 A third mark for transport infrastructure is in the brief and is not drawn:
@@ -34,12 +94,48 @@ the Dunkerque CO₂ terminal — is named without being sited. See `scope.md`,
 
 **The key names only the distinctions the picture draws.** Fill is always
 explained, in both directions — "filled: operating or under construction" and
-"hollow: not running", so a reader who sees only filled marks still learns what
-filled means. Shape is explained only on a frame that actually carries a store;
-on one that does not, "a dot is a works" would put a second identical filled dot
-in the key beside the one explaining fill, which reads as a mistake. The wording
-is tier 1, in `geoKeyProse`, and divides on the same statuses the picture and
-the standfirst above it divide on.
+"hollow: announced, funded, or paused", so a reader who sees only filled marks
+still learns what filled means. Shape is explained only on a frame that actually
+carries a store; on one that does not, "a dot is a works" would put a second
+identical filled dot in the key beside the one explaining fill, which reads as a
+mistake. The wording is tier 1, in `geoKeyProse`, and divides on the same
+statuses the picture and the standfirst above it divide on.
+
+**Hollow is enumerated rather than negated.** It used to read "not running",
+which quietly covered cancelled too. Cancelled is no longer drawn on an overview
+or as context, so hollow there is exactly announced, funded, or paused, and the
+key names the three. That is the point of the change: a reader told what hollow
+contains can notice that a project they know of is absent from the picture; a
+reader told only "not running" cannot.
+
+**The ring is now named too**, on every crop, and it never was before — a reader
+was left to work out that the circle around one mark meant "the one you are
+looking at". An overview has no subject and draws no ring, so it gets no such
+line.
+
+    ringed: this project
+
+**And on the one frame where hollow is not the whole truth, that line carries
+it.** On a crop whose subject is cancelled, the mark is hollow and its status is
+outside the three the hollow line names. Two other answers were considered and
+dropped: a third fill state — a dashed or struck mark — adds a distinction to a
+vocabulary that deliberately has two axes, and would have to be explained in the
+key of every frame that does *not* draw it, which is all but one; and widening
+the hollow line to include cancelled would be wrong for every other mark on that
+same crop. So the ring's own line takes the clause:
+
+    ringed: this project — cancelled, and drawn on no other frame
+
+That states the status, and it states the thing a reader could not otherwise
+know — that the mark's absence from every other frame is a rule and not an
+oversight. On every other crop the line stops after "this project", because
+there is nothing further to tell and a key that explains an exception on the
+frames it does not apply to has taught a rule the reader cannot see.
+
+**The ringed swatch takes the subject's own fill**, so a paused subject's key
+shows a hollow ringed dot and an operating one shows a filled ringed dot. The
+thing in the key is the thing on the paper, which is the rule every other swatch
+already works under.
 
 ## Every mark is named on the paper
 
@@ -147,6 +243,31 @@ defaulted — a frame showing a country the block does not name fails the build,
 rather than falling back to a two-letter code or to the basemap's own `NAME_EN`,
 which is neither reviewed nor in house style.
 
+## What the standfirsts count
+
+**The overview heading is "Where Europe is building {sector}".** "Every {sector}
+site on file, across Europe" stopped being true when cancelled projects came off
+the frame. Rather than qualify it, the heading says what the picture is actually
+of — and a cancelled conversion is on file and is not something Europe is
+building, so its absence is the heading keeping its word rather than the heading
+being narrowed to fit.
+
+**The three status groups sum over drawn sites, and a final clause names the
+remainder**: *"1 cancelled project, on 2 sites, is on file and not drawn."*
+Without it the overview would quietly shrink — a reader counting steel's sites
+here and in the projects table below would find two missing and nothing on the
+page accounting for them. The third group is now `paused` alone, not "paused or
+cancelled": cancelled is the one status this frame cannot show, and a group named
+for a state the picture never draws is a group that teaches nothing. The country
+count moved onto the drawn marks for the same reason — taken off the project
+rows it would have gone on naming a country whose only site had been left off.
+
+**On a crop, "nothing else on file falls inside this frame" became "nothing else
+drawn".** It was a claim about the register and is now false where a cancelled
+project sits in view: ArcelorMittal's two sites are inside SALCOS's crop and are
+not drawn on it. And a cancelled subject's crop opens by saying so — *"It was
+cancelled, and is drawn here and on no other frame."*
+
 ## The projection
 
 Lambert conformal conic, EPSG:3034's parameters — standard parallels 35 N and
@@ -184,5 +305,11 @@ and both are worth knowing before they are changed:
 ## Screenshots
 
 `screenshots/`, at 1280 and at 430, taken from `next start` against the built
-site. Brevik and SALCOS stage one for the crop; cement and steel for the
-overview.
+site — one element screenshot of `figure.geo` per page, at device scale 2, with
+the sticky site header and section nav hidden so they do not paint over the
+figure's own heading.
+
+Brevik and SALCOS stage one for the crop; cement and steel for the overview; and
+the ArcelorMittal conversion, which is the frame the exclusion is about — the one
+crop that draws a cancelled project, and the only place the ring's third key line
+carries its clause.

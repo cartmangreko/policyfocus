@@ -75,6 +75,56 @@ What it needs, in order:
 The names themselves are already done: `country_names` in `data/prose.json`, and
 `build_maps.py` already bakes the string into every frame that shows the country.
 
+## A drawn connection between a works and the store its tonne reaches
+
+**Low priority. Its own stack, small.** Touches `sources/build_maps.py` (a
+connection layer and the label placement that has to avoid it),
+`web/components/LocationMap.tsx`, `web/app/globals.css`, and `web/lib/prose.ts`
+for the key line that would explain it.
+
+Split out of #47. The ruling there settled that the geography stays **marks
+only**: a dot is a works, a triangle is a store, and the fact that Brevik's
+captured tonne ends up in Northern Lights is carried by the crop drawing both
+and by the standfirst saying so — "The store its captured CO₂ reaches is drawn
+with it." That is a sentence, not a line on the paper, and a reader looking at
+two marks four hundred kilometres apart is being asked to infer the relation
+that put them in the same frame.
+
+What a line would add, and what it would cost. It would make the dependency
+visible rather than stated, which is the one relation on this picture that is
+not geographic — every other reason two marks share a frame is that they are
+near each other. The cost is a fifth ink layer on a picture whose whole
+discipline is that it has four, and a stroke on a frame where a stroke already
+means a coastline. Neither is fatal; both are why this is not a small edit.
+
+**Scoped to include the shared store.** A store serving more than one works is
+the case that makes the layer worth building and the case that makes it hard.
+Northern Lights already takes Brevik's tonne and is named as the most advanced
+candidate for Slite's; Galata takes Anrav's; Prinos takes Ifestos'. A store with
+two or three lines running into it draws the thing the register actually knows
+and the standfirst cannot say without listing — and it is also where the lines
+start crossing each other, crossing coastlines, and crossing the site labels
+that `label_marks` has already placed. Any design here has to answer the
+many-to-one case before it answers the one-to-one one, or it will be rebuilt.
+
+It also has to answer what a line means when only one of its ends is drawn.
+`UNDRAWN_STATUSES` takes cancelled projects off every frame but their own, and
+`store_report` in `build_maps.py` already watches for a store serving both a
+drawn and an undrawn project — today it reports nothing, because no cancelled
+project has a store. The day one does, this layer is what has to decide whether
+a line runs to a mark that is not there.
+
+What it needs, in order:
+
+1. **The connection as data**, emitted per frame: a path from works to store in
+   canvas units, computed where both ends are drawn, and a stated rule for where
+   only one is.
+2. **The label pass made to avoid it**, which is the real work. `label_marks`
+   places against marks and against other labels; a connection layer is a third
+   thing to place around, and the crowded/dropped counts the build prints are
+   the measure of whether it can be done at the narrow breakpoint.
+3. **A key line**, tier 1 in `geoKeyProse`, on the frames that draw one.
+
 ## Horizontal / economy-wide scope as a data-model attribute
 
 **Its own stack.** Touches the schema, the gates, and every sector page.

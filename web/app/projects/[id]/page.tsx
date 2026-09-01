@@ -21,6 +21,7 @@ import {
   getProjects,
   getTechnology,
   measureHref,
+  statusTransitions,
   type ProjectStatus,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
@@ -80,6 +81,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         dependency: frame.marks.filter((m) => m.relation === "dependency").length,
         technology: frame.marks.filter((m) => m.relation === "technology").length,
         sector: frame.marks.filter((m) => m.relation === "sector").length,
+        // A cancelled subject is drawn on this crop and on no other frame. The
+        // standfirst says so and the key repeats it against the ring, because
+        // nothing about the mark itself distinguishes it from a hollow
+        // neighbour that IS drawn elsewhere.
+        subjectCancelled: project.status === "cancelled",
       })
     : null;
 
@@ -94,7 +100,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
     .map((h) => h.status)
     .filter((s) => !FLOW.includes(s));
   const rail = [...FLOW, ...new Set(offFlow)];
-  const dateOf = new Map(project.status_history.map((h) => [h.status, h.date]));
+  // THE RAIL DATES A STATUS FROM WHEN IT WAS ENTERED. Built off the whole
+  // history, a repeated status would take the date of the LAST entry carrying
+  // it — so Slite's "Paused" rung would read 1 January 2026, the date its permit
+  // application was withdrawn, rather than 19 November 2025, the date it was
+  // paused. The full history is still drawn underneath, both entries and both
+  // sources; it is only the rung that has to name the moment.
+  const dateOf = new Map(statusTransitions(project).map((h) => [h.status, h.date]));
 
   return (
     <main className="rise project-page" style={{ ["--accent" as string]: `var(${accentVar(sector)})` }}>

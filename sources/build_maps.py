@@ -46,6 +46,12 @@ gives:
      a Norwegian crop across the continent. Priority decides what a mark is
      labelled as, not whether the frame moves.
 
+AND ONE CLASS OF PROJECT IS NOT DRAWN AT ALL. A cancelled project is off the
+overview and is not a context neighbour on anybody else's crop, because the
+picture draws what Europe is building. It is still drawn on its OWN crop, which
+is the only frame it appears on. See UNDRAWN_STATUSES, which is where that rule
+is written and the only place it is decided.
+
 COASTLINES ARE STROKED, NOT FILLED, SO THEY ARE CLIPPED AS LINES
 ================================================================
 Clipping a country polygon to the frame the usual way -- Sutherland-Hodgman --
@@ -355,6 +361,38 @@ MARK_GEOMETRY = {"r": MARK_R, "store_scale": STORE_SCALE, "ring_scale": RING_SCA
 # brief's order, and it decides emphasis, not the frame: see the module
 # docstring.
 RELATIONS = ("subject", "dependency", "technology", "sector")
+
+
+# WHAT THE PICTURE IS OF, AND WHAT IT IS NOT
+# ==========================================
+# The overview answers "where is Europe building this", and a project that will
+# not be built is not part of the answer. So a CANCELLED project is UNDRAWN: it
+# is off the sector overview, and it is not a context neighbour on anybody
+# else's crop. Nothing is deleted -- it keeps its row in the register, its own
+# page, its place in the counts and every number built off the dataset. The only
+# thing it loses is ink on a frame about what is being built.
+#
+# THE EXCEPTION IS ITS OWN PAGE. A project's crop exists to show where that
+# project is, and a page whose picture omitted its own subject would be a page
+# that had lost the plot. So the subject is drawn whatever its status, and it is
+# the ONE frame a cancelled project appears on -- which is a fact the crop's key
+# and standfirst have to say out loud, because a mark drawn nowhere else is not
+# something a reader can infer from seeing it here.
+#
+# WHY A SET AND NOT `!= "cancelled"`. This is a status GROUP, and the other two
+# groups on this layer -- filled/hollow in LocationMap.tsx, and the three that
+# sum in sectorGeoProse -- are written as groups for the same reason: the day a
+# sixth status arrives, the question "which side is it on" has to be asked of a
+# named thing rather than found in an inequality.
+UNDRAWN_STATUSES = frozenset({"cancelled"})
+
+
+def drawn(row: dict, subject_id: str | None = None) -> bool:
+    """Whether this project gets ink on this frame. `subject_id` is the crop's
+    subject, or None on the overview, which has no subject and no exception."""
+    if subject_id is not None and row["id"] == subject_id:
+        return True
+    return row["status"] not in UNDRAWN_STATUSES
 
 
 def _sites(project: dict) -> list[dict]:
@@ -1095,6 +1133,12 @@ def sector_map(sector: str, projects: list[dict]) -> dict:
     for row in projects:
         if row["sector"] != sector:
             continue
+        # UNDRAWN, NOT DROPPED. The row is still in the register and still has a
+        # page; it is the ink on THIS frame it does not get. The count of what
+        # was left off is written into the file below, so the standfirst can say
+        # so rather than the reader being quietly shown a smaller Europe.
+        if not drawn(row):
+            continue
         for site in _sites(row):
             marks.append(_mark(row, site, "sector", frame, SECTOR_CANVAS))
     marks.sort(key=lambda m: (m["id"], m["site"]))
@@ -1116,6 +1160,17 @@ def sector_map(sector: str, projects: list[dict]) -> dict:
         "west": min(m["lon"] for m in marks), "east": max(m["lon"] for m in marks),
         "as_of": doc["as_of"],
     }] if marks else []
+    # WHAT WAS LEFT OFF, COUNTED. The standfirst above the picture states it in
+    # a clause of its own -- "1 cancelled project, on 2 sites, is on file and not
+    # drawn" -- because an overview that silently shrank would be telling the
+    # reader a sector is smaller than the register says it is. Counted here,
+    # beside the exclusion that caused it, so the two cannot disagree.
+    left_off = [row for row in projects
+                if row["sector"] == sector and not drawn(row)]
+    doc["undrawn"] = {
+        "projects": len(left_off),
+        "sites": sum(len(_sites(row)) for row in left_off),
+    }
     return doc
 
 
@@ -1140,9 +1195,14 @@ def project_map(subject: dict, projects: list[dict]) -> dict:
     index = {p["id"]: p for p in projects}
     relation = relations_for(subject, projects)
 
+    # THE FRAME IS FIXED BY WHAT WILL BE DRAWN. An undrawn dependency must not
+    # widen the crop it is then left off -- that is a picture stretched to hold
+    # something the reader is never shown, and the empty space would be
+    # unexplainable. The subject fixes the frame whatever its status, because
+    # the subject is always drawn.
     core = list(_sites(subject))
     for pid, rel in relation.items():
-        if rel == "dependency" and pid in index:
+        if rel == "dependency" and pid in index and drawn(index[pid], subject["id"]):
             core += _sites(index[pid])
     frame = _pad(bounds(core))
 
@@ -1156,6 +1216,14 @@ def project_map(subject: dict, projects: list[dict]) -> dict:
     for row in projects:
         rel = relation.get(row["id"])
         if rel is None:
+            continue
+        # THE SUBJECT IS ALWAYS DRAWN, whatever its status -- a page whose
+        # picture omitted the thing the page is about would have lost the plot.
+        # Everything else on this crop is context, and cancelled context is not
+        # drawn: see UNDRAWN_STATUSES. That covers a store reached by a
+        # cancelled capture project too, since the store is only ever pulled
+        # onto a crop as the SUBJECT's dependency and the subject is drawn.
+        if not drawn(row, subject["id"]):
             continue
         for site in _sites(row):
             if rel in ("subject", "dependency") or inside(frame, site):
@@ -1175,7 +1243,95 @@ def project_map(subject: dict, projects: list[dict]) -> dict:
         {"site": s["site"], "lat": s["lat"], "lon": s["lon"], "as_of": s["retrieved_date"]}
         for s in _sites(subject)
     ]
+    # The subject's status, on the file rather than fished out of the marks. The
+    # key has to name it: a cancelled subject is drawn on this crop and on no
+    # other frame, which is a state the ordinary two-line key does not cover and
+    # a reader cannot infer from a mark that looks like every other hollow one.
+    doc["subject_status"] = subject["status"]
     return doc
+
+
+# ---------------------------------------------------------------------------
+# The two checks the split needs, because the split gave two facts consequences
+# they did not have before
+# ---------------------------------------------------------------------------
+#
+# Until now, `paused` and `cancelled` were one group everywhere that mattered:
+# both hollow, both drawn, both inside "paused or cancelled" in the standfirst.
+# Telling them apart was a matter of wording. It now decides whether a project is
+# on the picture at all, so the register's grounds for putting a project on one
+# side rather than the other have to be legible -- and so does anything that
+# would be dragged off the paper behind it.
+#
+# Both are REPORTED, NOT FAILED. Neither is a fact this file can settle: whether
+# a withdrawn permit application amounts to cancellation is a judgement about
+# sources, and which of two projects a shared store belongs to is a judgement
+# about the picture. A non-zero exit would say the build is broken when what is
+# actually needed is somebody to read two paragraphs and decide.
+
+def ambiguity_report(projects: list[dict]) -> list[str]:
+    """Projects whose place in the paused/cancelled split is not settled by the
+    sources on their own row.
+
+    THE TEST IS A LATER SOURCE THAN THE STATUS. A row in this group carries a
+    status_history entry saying when it stopped and what said so. A source dated
+    AFTER that entry is later news the status has not been read against -- and on
+    this split, later news is exactly what would move a project from one side to
+    the other. It is not proof of anything; it is the one mechanical signal that
+    somebody should look.
+    """
+    group = UNDRAWN_STATUSES | {"paused"}
+    out = []
+    for row in projects:
+        if row["status"] not in group:
+            continue
+        history = row.get("status_history") or []
+        settled = max((h["date"] for h in history), default="")
+        for src in row.get("sources") or []:
+            date = src.get("date") or ""
+            if date > settled:
+                out.append(
+                    f"{row['id']} is {row['status']} as of {settled or 'no dated history'}, "
+                    f"and carries a later source ({date}, {src.get('publisher', '?')}: "
+                    f"\"{src.get('title', '')}\") that its status has not been read "
+                    f"against — the split now decides whether it is drawn")
+    return out
+
+
+def store_report(projects: list[dict]) -> list[str]:
+    """Stores whose capture projects do not agree about being drawn.
+
+    STORES FOLLOW THEIR PROJECT: a triangle is drawn where the works whose tonne
+    it takes is drawn. On a crop that holds already -- a store is only ever
+    pulled onto a frame as the SUBJECT's dependency, and the subject is always
+    drawn -- so the case this reports is the one the rule cannot decide on its
+    own: a store serving one project that is drawn and another that is not.
+    Reported rather than resolved, because which way it should go is a judgement
+    about the picture and not a default.
+
+    A store whose every capture project is undrawn is reported too. It keeps its
+    own page and its place on the CCS overview, where it is a subject in its own
+    right rather than somebody's dependency, and that is a distinction worth
+    seeing stated rather than assumed.
+    """
+    served: dict[str, list[dict]] = {}
+    for row in projects:
+        store = (row.get("storage") or {}).get("project")
+        if store:
+            served.setdefault(store, []).append(row)
+    out = []
+    for store, rows in sorted(served.items()):
+        yes = [r["id"] for r in rows if drawn(r)]
+        no = [r["id"] for r in rows if not drawn(r)]
+        if yes and no:
+            out.append(f"{store} serves both drawn ({', '.join(sorted(yes))}) and "
+                       f"undrawn ({', '.join(sorted(no))}) projects — decide which "
+                       f"frames its triangle belongs on; this file has not chosen")
+        elif no:
+            out.append(f"{store}'s only capture project(s) are undrawn "
+                       f"({', '.join(sorted(no))}) — it is off every crop but its "
+                       f"own and stays on its sector's overview as a subject")
+    return out
 
 
 def build() -> list[dict]:
@@ -1192,7 +1348,17 @@ def main() -> int:
     args = ap.parse_args()
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    projects = sm.load("project")
     docs = build()
+
+    # Printed before the frames are written, because both are questions about
+    # the register that the geometry cannot answer and somebody should read
+    # before trusting the pictures underneath them.
+    for line in ambiguity_report(projects):
+        print(f"build_maps: check the status — {line}", file=sys.stderr)
+    for line in store_report(projects):
+        print(f"build_maps: store — {line}", file=sys.stderr)
+
     written = set()
     failed = False
 
@@ -1254,8 +1420,10 @@ def main() -> int:
         return 1
     verb = "--check," if args.check else "wrote"
     sectors = sum(1 for d in docs if d["kind"] == "sector")
+    undrawn = sum(1 for row in projects if not drawn(row))
     print(f"build_maps: {verb} {len(docs)} frame(s) — {sectors} sector, "
           f"{len(docs) - sectors} project, "
+          f"{undrawn} project(s) drawn only on their own crop, "
           f"{sum(len(d['land']) for d in docs)} stroke(s), "
           f"{sum(len(d['marks']) for d in docs)} mark(s), "
           f"{sum(1 for d in docs for m in d['marks'] for l in m['labels'].values() if l.get('shortened'))}"

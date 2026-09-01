@@ -285,6 +285,14 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   // operating or under construction, 1 paused" — eight, because the
   // ArcelorMittal row is one project standing on two sites and the picture
   // draws both.
+  //
+  // AND EVERY COUNT IS OVER DRAWN SITES, which is the same rule one step
+  // further on. Since cancelled projects came off the overview, `projects` and
+  // `geoFrame.marks` are two different populations, and a sentence over the
+  // picture has to count the picture — the countries included, which were being
+  // taken off the project rows and would have gone on naming a country whose
+  // only site had been left off. What the frame does NOT draw is stated in its
+  // own clause, from the count build_maps.py wrote into the file.
   const geoFrame = getSectorMap(slug);
   const geoMarks = (status: string[]) =>
     geoFrame ? geoFrame.marks.filter((m) => status.includes(m.status)).length : 0;
@@ -292,10 +300,11 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
     ? sectorGeoProse({
         sector: SECTORS[slug].toLowerCase(),
         sites: geoFrame.marks.length,
-        countries: new Set(projects.map((p) => p.country)).size,
+        countries: new Set(geoFrame.marks.map((m) => m.country)).size,
         running: geoMarks(["operating", "construction"]),
         pending: geoMarks(["announced", "funded", "fid"]),
-        stopped: geoMarks(["paused", "cancelled"]),
+        paused: geoMarks(["paused"]),
+        undrawn: geoFrame.undrawn ?? { projects: 0, sites: 0 },
       })
     : null;
 

@@ -600,6 +600,29 @@ export function lastChange(p: Project): StatusEvent | undefined {
   return p.status_history[p.status_history.length - 1];
 }
 
+/** The entries that CHANGED the status, which is not all of them.
+ *
+ *  A history is a list of events in date order, and most are transitions. Some
+ *  are not: a later source reporting on a project whose status it does not
+ *  change. Slite was paused on 19 November 2025 when the Swedish Energy Agency
+ *  declined to co-fund it, and its permit application was withdrawn on 1
+ *  January 2026 — a fact about a paused project, not a project becoming paused.
+ *
+ *  The distinction is positional rather than a flag on the row: an entry is a
+ *  transition if its status differs from the one before it. That cannot fall out
+ *  of step with the data the way a hand-set flag would. The same rule is written
+ *  in sources/sector_map.py, which is where the two Python sentence templates
+ *  with the same problem read it from.
+ *
+ *  `lastChange` is deliberately NOT this. A feed, a "last change" column and an
+ *  "as of" date all want the latest thing on file, which is a different
+ *  question from when the project last moved. */
+export function statusTransitions(p: Project): StatusEvent[] {
+  return p.status_history.filter(
+    (h, i) => i === 0 || h.status !== p.status_history[i - 1].status,
+  );
+}
+
 /** Every source URL used anywhere on a sector page, grouped by publisher.
  *  Section 7 of the sector page is not a nicety: the claim the whole layer
  *  makes is that each figure walks back to somebody's published sentence, and
