@@ -1972,6 +1972,90 @@
       ],
       "override_stale": false,
       "notes": []
+    },
+    "catl-arnstadt": {
+      "id": "catl-arnstadt",
+      "template_version": 1,
+      "fingerprint": "131b3486f96cee52",
+      "sentence": {
+        "text": "CATL Arnstadt is Contemporary Amperex Technology Thuringia's batteries and solar project at Arnstadt, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "CATL Arnstadt",
+          "Contemporary Amperex Technology Thuringia",
+          "Arnstadt, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "CATL Arnstadt started operating on 21 December 2022.",
+          "as_of": "2022-12-21",
+          "numbers": [],
+          "sourced": [
+            "CATL Arnstadt"
+          ],
+          "href": "https://www.prnewswire.com/news-releases/catls-german-plant-kicks-off-cell-production-301708032.html",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Arnstadt, Germany.",
+          "as_of": "2022-12-21",
+          "numbers": [],
+          "sourced": [
+            "Arnstadt, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2022-12-21",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 14 GWh per year.",
+          "as_of": "2022-12-21",
+          "numbers": [
+            "14"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2022-12-21",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
     }
   }
 }

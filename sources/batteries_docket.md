@@ -436,6 +436,56 @@ rather than after.
 
 ---
 
+## 8. Track (a) progress, and what the confirmation work is actually hitting
+
+**The gap is no longer narrated here.** `sources/batteries_candidates.json` holds
+the admitted set machine-readably and `report_candidate_gaps.py` prints what is
+outstanding on every build. This section records what the second pass learnt; the
+count itself is the report's job now.
+
+**Seven rows on file, 27 outstanding.** The new row is CATL Arnstadt, on CATL's
+own release of 21 December 2022 and the `CATL Werk G1` polygon.
+
+### The two halves of the work are not equally hard, and it is the opposite of what I expected
+
+**Coordinates turned out to be the easy half.** A sweep of the remaining 27 found
+usable OpenStreetMap features for seven of them — Tesla Grünheide, LG Energy
+Solution Wrocław, Morrow Arendal, Envision AESC Douai, CATL Debrecen, CATL
+Arnstadt and, weakly, Samsung SDI Göd. Every reference is recorded on its
+candidate as `coordinate_ref` so the lookup is not repeated.
+
+**Company sources are the binding constraint**, and by some distance: 24 of 34
+candidates still have none read. That is the reverse of the position after the
+first pass, when coordinates looked like the blocker.
+
+**Two refusals worth recording, because both are the rules working:**
+
+- **SK On Iváncsa's only OpenStreetMap feature is an office node** — `office=company`
+  on a point, not the works. A coordinate has to identify the works specifically,
+  and an office at an address is not that. Refused, and recorded as refused so the
+  next pass does not rediscover it and accept it.
+- **Samsung SDI Göd's polygon is tagged only `Samsung`.** It identifies the
+  industrial estate rather than the cell works. Recorded as weak rather than
+  taken; it needs a second source before it is used.
+
+**And the sector's largest project has no company source.** CATL Debrecen — 100
+GWh planned, 40 GWh initial, production from early 2026 — is carried entirely by
+trade press and Hungarian state agencies. Its coordinate exists
+(`relation/18559299`, still tagged `landuse=construction`). The perimeter keeps it
+off file until CATL says it, which is the rule doing exactly what it is for on the
+one row where it costs the most.
+
+### The acts track is less blocking than it looked
+
+Batteries already carries **153 measures**: 101 naming `batsol` and 52 reaching it,
+from CRMA, IAA and NZIA. Item 5's instruction to add `applies_to` edges to
+batteries where CRMA and NZIA support them is largely already satisfied by the
+existing reads. What is genuinely missing is the two new acts — the Battery
+Regulation and the fleet standards — and neither is needed for the sector to have
+a measure base.
+
+---
+
 ## Stopping here
 
 A–E are resolved and the first six rows are in. What is left, in order:

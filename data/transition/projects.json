@@ -1558,6 +1558,58 @@
           "date": "2024-12-10"
         }
       ]
+    },
+    {
+      "id": "catl-arnstadt",
+      "name": "CATL Arnstadt",
+      "company": "Contemporary Amperex Technology Thuringia",
+      "plant": "Arnstadt",
+      "country": "DE",
+      "location": [
+        {
+          "site": "Arnstadt cell works",
+          "lat": 50.8611,
+          "lon": 10.9502,
+          "precision": "plant",
+          "retrieved_date": "2026-09-02",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/776264491",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=CATL Werk G1; man_made=works; operator=Contemporary Amperex Technology Thuringia AG",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The polygon is the G1 building; CATL states the first cells came off a line in G2 on the same site, for which the basemap carries no separate outline."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "nmc-nca-cells"
+      ],
+      "capacity": {
+        "value": 14,
+        "unit": "GWh per year"
+      },
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2022-12-21",
+          "source_url": "https://www.prnewswire.com/news-releases/catls-german-plant-kicks-off-cell-production-301708032.html",
+          "note": "CATL stated that 'the first batch of lithium-ion battery cells rolled off the newly installed production line under series condition in CATT's G2 building', with an initial 8 GWh per year rising to a planned 14 GWh."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.prnewswire.com/news-releases/catls-german-plant-kicks-off-cell-production-301708032.html",
+          "title": "CATL's German plant kicks off cell production",
+          "publisher": "CATL (via PR Newswire)",
+          "date": "2022-12-21"
+        }
+      ]
     }
   ]
 }
