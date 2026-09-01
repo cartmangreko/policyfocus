@@ -612,7 +612,11 @@ export function lastChange(p: Project): StatusEvent | undefined {
  *  transition if its status differs from the one before it. That cannot fall out
  *  of step with the data the way a hand-set flag would. The same rule is written
  *  in sources/sector_map.py, which is where the two Python sentence templates
- *  with the same problem read it from.
+ *  with the same problem read it from — and the two are held together by
+ *  sources/check_transition_parity.py, which runs both readings over every
+ *  history up to four entries long and fails the build if they disagree. A
+ *  comment saying "edit both" is what this rule had before that gate existed,
+ *  and it is not a mechanism.
  *
  *  `lastChange` is deliberately NOT this. A feed, a "last change" column and an
  *  "as of" date all want the latest thing on file, which is a different

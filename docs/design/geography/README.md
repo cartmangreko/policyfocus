@@ -61,7 +61,20 @@ transitions only, or Slite would have been paused on 1 January 2026 on three
 pages, which no source says: `fact_the_latest` in `build_lead.py`,
 `project_lead` in `build_object_leads.py`, and the status rail on the project
 page. `sector_map.transitions` / `entered` and `transition.ts`
-`statusTransitions` are the two implementations of the one rule.
+`statusTransitions` are the two implementations of the one rule, and
+`sources/check_transition_parity.py` is what holds them together: it compiles and
+runs the TypeScript, walks both readings over every history up to four entries
+long — 4,681 of them, over the seven statuses plus one neither side knows — and
+fails the build on any disagreement. Four entries is past the point a longer case
+could say anything new, because the rule only ever compares an entry with its
+predecessor.
+
+It is a gate rather than a comment because the failure is invisible in the
+product: if the two sides disagreed about which entries qualify, the built lead
+and the project page would each name a different date for the same event, both
+confidently, and nothing in either output would say which was right. That is the
+same reason `check_valence_parity.py` exists, and it runs in the prebuild beside
+`check_number_format.py`, the site's other two-language rule.
 
 Feeds are deliberately **not** built this way. The home feed, the sector change
 strip, the "Last change" column and the `as of` date all want the latest thing on
