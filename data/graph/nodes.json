@@ -7886,6 +7886,65 @@
   }
  },
  {
+  "id": "project:acc-billy-berclau",
+  "kind": "project",
+  "label": "ACC Billy-Berclau Douvrin",
+  "attrs": {
+   "company": "Automotive Cells Company",
+   "plant": "Billy-Berclau/Douvrin",
+   "country": "FR",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Billy-Berclau/Douvrin gigafactory",
+     "lat": 50.5186,
+     "lon": 2.8485,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1196306304",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Gigafactory ACC; landuse=industrial; man_made=works",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:acc-termoli",
+  "kind": "project",
+  "label": "ACC Termoli",
+  "attrs": {
+   "company": "Automotive Cells Company",
+   "plant": "Termoli",
+   "country": "IT",
+   "status": "paused",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Termoli works",
+     "lat": 41.9553,
+     "lon": 15.0031,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/77616014",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Stellantis - Termoli 1; building=industrial; man_made=works",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The gigafactory was to be built on the existing Stellantis Termoli site; the polygon is that works. Three adjacent polygons carry the site, way/77615859 and way/77616015 being the others."
+    }
+   ]
+  }
+ },
+ {
   "id": "project:am-bremen-eisenhuettenstadt",
   "kind": "project",
   "label": "ArcelorMittal Bremen and Eisenhüttenstadt conversion",
@@ -8011,6 +8070,36 @@
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:catl-stellantis-zaragoza",
+  "kind": "project",
+  "label": "CATL and Stellantis Zaragoza",
+  "attrs": {
+   "company": "Automotive Cells Zaragoza (CATL and Stellantis joint venture)",
+   "plant": "Zaragoza",
+   "country": "ES",
+   "status": "announced",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Zaragoza works, Figueruelas",
+     "lat": 41.7523,
+     "lon": -1.1792,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/134929549",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Opel España de Automóviles; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The joint venture site is Stellantis' Zaragoza works at Figueruelas, which the basemap still names for its former operator."
     }
    ]
   }
@@ -8295,6 +8384,66 @@
   }
  },
  {
+  "id": "project:northvolt-ett-skelleftea",
+  "kind": "project",
+  "label": "Northvolt Ett",
+  "attrs": {
+   "company": "Lyten",
+   "plant": "Skellefteå",
+   "country": "SE",
+   "status": "paused",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Skellefteå gigafactory",
+     "lat": 64.734,
+     "lon": 21.0871,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/906692713",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Northvolt Ett; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The basemap names the polygon Northvolt Ett, which is the project's own name; the site is called for its town here so that the sentence over the picture does not say a thing is at itself."
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:powerco-salzgitter",
+  "kind": "project",
+  "label": "PowerCo Salzgitter",
+  "attrs": {
+   "company": "PowerCo",
+   "plant": "Salzgitter",
+   "country": "DE",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Salzgitter gigafactory",
+     "lat": 52.187,
+     "lon": 10.4432,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/26143236",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Volkswagen AG Salzgitter; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The cell factory stands on the Volkswagen Salzgitter works, which is the polygon named; the basemap carries no separate outline for the cell building."
+    }
+   ]
+  }
+ },
+ {
   "id": "project:prinos-co2-storage",
   "kind": "project",
   "label": "Prinos CO2 storage",
@@ -8434,6 +8583,35 @@
       "url": "https://www.openstreetmap.org/relation/5148195",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=ThyssenKrupp Steel Europe AG; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:verkor-dunkirk",
+  "kind": "project",
+  "label": "Verkor Gigafactory Bourbourg",
+  "attrs": {
+   "company": "Verkor",
+   "plant": "Bourbourg",
+   "country": "FR",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Bourbourg gigafactory",
+     "lat": 50.9665,
+     "lon": 2.1935,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/947606985",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Gigafactory Verkor; landuse=industrial; industrial=factory; operator=Verkor",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
@@ -8690,6 +8868,18 @@
   }
  },
  {
+  "id": "technology:cell-manufacturing",
+  "kind": "technology",
+  "label": "Gigafactory-scale cell manufacturing",
+  "attrs": {
+   "transition": "supply_security",
+   "readiness": "commercial",
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
   "id": "technology:co2-transport-storage",
   "kind": "technology",
   "label": "CO2 transport and storage",
@@ -8748,6 +8938,42 @@
    "readiness": "demonstration",
    "sectors": [
     "steel"
+   ]
+  }
+ },
+ {
+  "id": "technology:lfp-cells",
+  "kind": "technology",
+  "label": "Lithium iron phosphate cells",
+  "attrs": {
+   "transition": "supply_security",
+   "readiness": "commercial",
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "technology:nmc-nca-cells",
+  "kind": "technology",
+  "label": "Nickel-rich cells",
+  "attrs": {
+   "transition": "decarbonisation",
+   "readiness": "commercial",
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "technology:sodium-ion-cells",
+  "kind": "technology",
+  "label": "Sodium-ion cells",
+  "attrs": {
+   "transition": "supply_security",
+   "readiness": "early-commercial",
+   "sectors": [
+    "batsol"
    ]
   }
  }

@@ -160,10 +160,30 @@ PROJECT_COMPLETE = ("operating",)
 #   ownership   the project changed hands. The site is continuous and its OWNER
 #               broke; a history that could not say so would have to choose
 #               between a cancellation that did not happen and an acquisition
-#               that never appears.
+#               that never appears. Northvolt Ett is the case that forced it.
 #   financing   money reached, or left, the project. Distinct from the `funded`
 #               status, which is a rung on the ladder: a second grant to a
 #               project already funded is a financing event and not a move.
+#
+# AN OWNERSHIP EVENT STILL CARRIES A STATUS, and it is the status the project was
+# already in. Three things fall out of that and all three are wanted:
+#
+#   the append-only invariant survives -- the last entry's status still equals
+#   the project's, so a header and a timeline cannot disagree;
+#
+#   is_transition already handles it -- the status is unchanged, so an ownership
+#   event is not a transition, and the three sentence templates that render an
+#   entry as "was paused on {date}" skip it without being told to;
+#
+#   and the feed, which wants the latest thing on file rather than the latest
+#   MOVE, shows it with a true status chip beside it.
+#
+# ONE FACT PER ENTRY. An ownership event may not also change the status: the gate
+# refuses one whose status differs from the entry before it, because a company
+# changing hands on the same day a project is paused is two events and reads as
+# one cause. For the same reason an ownership event may not be the first entry --
+# there is nothing for its status to be unchanged FROM, and is_transition would
+# have to call it a status change.
 PROJECT_EVENT_KINDS = (
     "status",
     "ownership",

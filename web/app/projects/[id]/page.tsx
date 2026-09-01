@@ -173,10 +173,22 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             })}
           </ol>
           <ul className="proj-history">
+            {/* THE WHOLE HISTORY, EVERY KIND. The rail above draws the status
+                transitions; this draws everything on file, which since the
+                batteries dataset includes projects changing hands. An ownership
+                event says so in place of the status chip — its status is
+                unchanged by rule, so a chip there would repeat the line above it
+                and hide the one new fact. */}
             {project.status_history.map((h) => (
-              <li key={`${h.status}-${h.date}`}>
+              <li key={`${h.kind ?? "status"}-${h.status}-${h.date}`}>
                 <span className="date">{h.date}</span>
-                <span className={`tstatus ${h.status}`}>{STATUS_LABEL[h.status]}</span>
+                {h.kind === "ownership" ? (
+                  <span className="tstatus ownership">
+                    {h.from} → {h.to}
+                  </span>
+                ) : (
+                  <span className={`tstatus ${h.status}`}>{STATUS_LABEL[h.status]}</span>
+                )}
                 {h.note ? <span className="note">{h.note}</span> : null}
                 <a href={h.source_url} target="_blank" rel="noreferrer">
                   source

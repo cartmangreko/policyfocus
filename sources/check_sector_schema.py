@@ -453,6 +453,31 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
             _date(e, hw, h, "date")
             _url(e, hw, h.get("source_url"), "source_url")
             _event(e, hw, h, i, prev_status)
+            # AN OWNERSHIP EVENT IS ONE FACT AND SAYS BOTH ENDS OF IT. `from` and
+            # `to` are required because "the owner changed" without naming the
+            # owners is an event nobody can check, and they are refused on every
+            # other kind so the field cannot quietly become a note.
+            #
+            # THE KIND IS READ FROM `event_kind`. This branch was written against
+            # a field called `kind`; the same fact is called `event_kind` on main,
+            # where it sits beside source_type and evidence_mode as one of the six
+            # fields _event requires. One name survives the rebase and it is the
+            # one the rest of the schema uses -- two names for one fact is exactly
+            # the quiet second source of truth these gates exist to prevent.
+            if h.get("event_kind") == "ownership":
+                _req(e, hw, h, "from", "to")
+                if i == 0:
+                    e.add(hw, "an ownership event cannot open a history — there is no "
+                              "status before it for its own to be unchanged from, and "
+                              "the first entry is always read as a status change")
+                elif h.get("status") != history[i - 1].get("status"):
+                    e.add(hw, f"is an ownership event whose status ({h.get('status')!r}) "
+                              f"differs from the entry before it "
+                              f"({history[i - 1].get('status')!r}) — a project changing "
+                              f"hands and changing status is two events, and one entry "
+                              f"saying both reads as one causing the other")
+            elif "from" in h or "to" in h:
+                e.add(hw, "carries from/to and is not an ownership event")
             prev_status = h.get("status")
             dates.append(str(h.get("date", "")))
         if dates != sorted(dates):

@@ -135,11 +135,24 @@ export interface FundingLine {
   note?: string;
 }
 
+/** One event in a project's history.
+ *
+ *  `kind` is absent on an ordinary status change, which is almost all of them.
+ *  An `ownership` event is the project changing hands: it names both owners, and
+ *  it carries the status the project was ALREADY in, unchanged. That is what
+ *  keeps the last entry's status equal to the project's, and it is why
+ *  `statusTransitions` skips one without being told to — the status did not
+ *  change, so the entry is not a transition. See sources/sector_map.py,
+ *  PROJECT_EVENT_KINDS, which is where the rule is written and gated. */
 export interface StatusEvent {
+  kind?: "status" | "ownership";
   status: ProjectStatus;
   date: string;
   source_url: string;
   note?: string;
+  /** Ownership events only: who it was, and who it is now. */
+  from?: string;
+  to?: string;
 }
 
 /** What kind of place a project row is, which is the only thing that decides

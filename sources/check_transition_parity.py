@@ -80,6 +80,16 @@ def histories() -> list[list[str]]:
     return out
 
 
+# EVERY CASE IS RUN TWICE, ONCE WITH THE ENTRIES MARKED `ownership`. The rule
+# reads `status` and nothing else, so marking an entry as a change of hands must
+# not move the answer on either side -- and the two implementations have to agree
+# about that too. Cheap to check, and it is the thing that would break first if
+# somebody taught one side to treat a kind specially: the sentence templates skip
+# ownership events today only BECAUSE their status is unchanged, never because
+# the kind was looked at, and that is a load-bearing accident worth a gate.
+KINDS = (None, "ownership")
+
+
 # Masks rather than entries: the question is WHICH entries each side calls a
 # transition, and comparing the objects would compare the fixture as much as the
 # rule. "0110" reads as an answer and diffs as one.
@@ -87,12 +97,15 @@ PROBE_TS = """
 import { statusTransitions } from "./transition";
 import fs from "node:fs";
 
-type Row = { status: string; date: string; source_url: string };
+type Row = { status: string; date: string; source_url: string; kind?: string };
 
-const cases: string[][] = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
-const out = cases.map((statuses) => {
+const cases: [string[], string | null][] = JSON.parse(
+  fs.readFileSync(process.argv[2], "utf8"),
+);
+const out = cases.map(([statuses, kind]) => {
   const history: Row[] = statuses.map((status, i) => ({
     status,
+    ...(kind ? { kind } : {}),
     // Ordered and distinct so nothing here can be mistaken for the real thing
     // if this fixture ever escapes the temporary directory it is built in.
     date: `2000-01-0${i + 1}`,
@@ -156,22 +169,25 @@ def ts_masks(cases: list[list[str]]) -> list[str] | None:
         return json.loads(run.stdout)
 
 
-def python_mask(statuses: list[str]) -> str:
-    history = [{"status": s, "date": f"2000-01-0{i + 1}",
-                "source_url": "https://example.invalid/probe"}
-               for i, s in enumerate(statuses)]
+def _history(statuses: list[str], kind: str | None) -> list[dict]:
+    return [{"status": s, "date": f"2000-01-0{i + 1}",
+             "source_url": "https://example.invalid/probe",
+             **({"kind": kind} if kind else {})}
+            for i, s in enumerate(statuses)]
+
+
+def python_mask(statuses: list[str], kind: str | None) -> str:
+    history = _history(statuses, kind)
     return "".join("1" if sm.is_transition(history, i) else "0"
                    for i in range(len(history)))
 
 
-def entered_agrees(statuses: list[str], mask: str) -> bool:
+def entered_agrees(statuses: list[str], kind: str | None, mask: str) -> bool:
     """`entered` is derived from the same rule and is what two of the three
     sentence templates actually call, so it is checked against the mask rather
     than trusted to follow from it. It is the LAST transition -- the first entry
     of the trailing run of the current status."""
-    history = [{"status": s, "date": f"2000-01-0{i + 1}",
-                "source_url": "https://example.invalid/probe"}
-               for i, s in enumerate(statuses)]
+    history = _history(statuses, kind)
     got = sm.entered({"status_history": history})
     if not statuses:
         return got is None
@@ -179,7 +195,7 @@ def entered_agrees(statuses: list[str], mask: str) -> bool:
 
 
 def main() -> int:
-    cases = histories()
+    cases = [(h, k) for k in KINDS for h in histories()]
     ts = ts_masks(cases)
     if ts is None:
         print("check_transition_parity: SKIPPED — needs node and `npm install` in web/.")
@@ -193,18 +209,19 @@ def main() -> int:
 
     mismatches = []
     derived = []
-    for statuses, got in zip(cases, ts):
-        py = python_mask(statuses)
+    for (statuses, kind), got in zip(cases, ts):
+        py = python_mask(statuses, kind)
         if py != got:
-            mismatches.append((statuses, py, got))
-        elif not entered_agrees(statuses, py):
-            derived.append((statuses, py))
+            mismatches.append((statuses, kind, py, got))
+        elif not entered_agrees(statuses, kind, py):
+            derived.append((statuses, kind, py))
 
     if mismatches:
         print(f"check_transition_parity: {len(mismatches)} of {len(cases)} "
               f"histories disagree\n")
-        for statuses, py, got in mismatches[:12]:
-            print(f"  {' → '.join(statuses) or '(empty)'}")
+        for statuses, kind, py, got in mismatches[:12]:
+            print(f"  {' → '.join(statuses) or '(empty)'}"
+                  f"{f'  [kind={kind}]' if kind else ''}")
             print(f"      python={py!r} typescript={got!r}")
         if len(mismatches) > 12:
             print(f"  … and {len(mismatches) - 12} more")
@@ -215,13 +232,15 @@ def main() -> int:
     if derived:
         print(f"check_transition_parity: {len(derived)} history/histories where "
               f"sector_map.entered is not the last transition its own rule found\n")
-        for statuses, py in derived[:12]:
-            print(f"  {' → '.join(statuses) or '(empty)'}  mask={py!r}")
+        for statuses, kind, py in derived[:12]:
+            print(f"  {' → '.join(statuses) or '(empty)'}"
+                  f"{f'  [kind={kind}]' if kind else ''}  mask={py!r}")
         return 1
 
     print(f"check_transition_parity: {len(cases)}/{len(cases)} histories agree "
-          f"(every sequence to {MAX_LENGTH} entries over "
-          f"{len(ALPHABET)} statuses), and `entered` follows the mask in all of them")
+          f"(every sequence to {MAX_LENGTH} entries over {len(ALPHABET)} statuses, "
+          f"each run as plain events and as ownership events), and `entered` "
+          f"follows the mask in all of them")
     return 0
 
 

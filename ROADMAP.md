@@ -184,6 +184,39 @@ register** — a few hundred, which is a real corpus and not a synthetic one —
 a short list of hand-written strings sitting on the boundary between the two
 patterns. Those hand-written cases are the part worth arguing about in review.
 
+## Türkiye in the batteries perimeter — revisit the exclusion
+
+**Queued behind the batteries dataset. Small: one clause in the perimeter prose,
+one list in the gate, and whatever candidates it admits.**
+
+The batteries perimeter defines Europe as a named country list — the twenty-seven
+member states plus the United Kingdom, Norway, Switzerland, the Western Balkans
+and Ukraine — and excludes Türkiye as a whole country at launch, with the
+exclusion stated on the coverage page rather than left to be inferred from an
+absence.
+
+**Why a whole country rather than a line.** Strict geography would put the
+question on which side of the Bosphorus a site stands, and Türkiye's cell
+industry is largely in the Marmara region where that line runs: Siro, the
+Togg/Farasis joint venture at Gemlik, is in Bursa province on the Asian shore and
+would be refused by a few kilometres. A perimeter that turns on that will be
+argued with every time it is applied, and the argument will be about cartography
+rather than about industry. Excluding the country is at least a rule a reader can
+predict.
+
+**What would reopen it.** Türkiye is in the customs union, its cell industry
+supplies European carmakers, and the argument for holding it is the same one that
+holds the United Kingdom and Norway. If the perimeter's question is "what is
+Europe building", the honest answer may include it. That is a scope decision
+rather than a data one, and it should be made deliberately rather than by a
+candidate arriving and forcing it.
+
+**What it touches when it moves.** The perimeter prose on `/coverage`, the country
+list in the gate, and the geography — `country_names` in `data/prose.json` would
+need Türkiye, and `EUROPE_DEGREES` in `build_maps.py` currently stops at 31 E,
+which holds Istanbul but not Bursa's eastern edge. Both are one-line changes and
+both would fail the build loudly rather than quietly, which is the right order.
+
 ## Horizontal / economy-wide scope as a data-model attribute
 
 **Its own stack.** Touches the schema, the gates, and every sector page.
