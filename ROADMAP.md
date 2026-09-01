@@ -32,6 +32,99 @@ matter again the next time something is staged on this project: a Vercel
 production custom domain is not covered by deployment protection by default, and
 noindex is a closure against crawlers, not against people.
 
+## The country hover layer on the geography
+
+**Its own stack, small.** Touches `sources/build_maps.py` (a second geometry
+output), `web/components/LocationMap.tsx` (which becomes a client component),
+`web/app/globals.css`, and every page that draws a frame.
+
+Split out of #47 deliberately. The permanent country names landed there — a crop
+names every country in view, an overview only those holding a site — and 2 of
+234 name slots were dropped because a site label had the paper. The hover layer
+is the backstop for those two and for every country a frame shows without room
+to name: point at any country and its name appears, in the same treatment the
+permanent labels use rather than in the site tooltip's.
+
+Why it is not in #47. It is the component's **first client-side behaviour**, and
+that is a real change rather than a small one. Hover alone is a CSS pseudo-class
+and would have ridden along; the ruling also asks for touch — a tap on country
+area shows the name, the next tap dismisses it — and that is state. Holding
+state makes `LocationMap` a client component, which puts hydration on all 21
+frames and on every project and sector page that draws one, and that belongs in
+a review of its own rather than at the end of a five-commit PR about geometry.
+
+The second reason is data. Hit-testing a country needs **closed polygons**, and
+the map files carry open polylines: coastlines are stroked, not filled, and are
+clipped as lines precisely so that a frame edge does not read as a coast
+(`build_maps.py`, module docstring). Hit targets are a second geometry output
+with a different clipping rule, and they roughly double the land payload of
+every map file. That is a size and a shape question worth its own diff.
+
+What it needs, in order:
+
+1. **Closed per-country paths**, clipped as polygons rather than as polylines,
+   emitted alongside `land` and invisible — `fill: transparent`, no stroke, so
+   nothing about the picture changes.
+2. **The hit order**, which the ruling fixes: site marks always win. The country
+   targets sit below the marks in paint order, which is where SVG hit-testing
+   already resolves it, so no code decides this.
+3. **The behaviour**: hover on pointer devices, tap-to-show and tap-to-dismiss on
+   touch, the name rendered in the permanent-label treatment and not the tooltip
+   one.
+
+The names themselves are already done: `country_names` in `data/prose.json`, and
+`build_maps.py` already bakes the string into every frame that shows the country.
+
+## A drawn connection between a works and the store its tonne reaches
+
+**Low priority. Its own stack, small.** Touches `sources/build_maps.py` (a
+connection layer and the label placement that has to avoid it),
+`web/components/LocationMap.tsx`, `web/app/globals.css`, and `web/lib/prose.ts`
+for the key line that would explain it.
+
+Split out of #47. The ruling there settled that the geography stays **marks
+only**: a dot is a works, a triangle is a store, and the fact that Brevik's
+captured tonne ends up in Northern Lights is carried by the crop drawing both
+and by the standfirst saying so — "The store its captured CO₂ reaches is drawn
+with it." That is a sentence, not a line on the paper, and a reader looking at
+two marks four hundred kilometres apart is being asked to infer the relation
+that put them in the same frame.
+
+What a line would add, and what it would cost. It would make the dependency
+visible rather than stated, which is the one relation on this picture that is
+not geographic — every other reason two marks share a frame is that they are
+near each other. The cost is a fifth ink layer on a picture whose whole
+discipline is that it has four, and a stroke on a frame where a stroke already
+means a coastline. Neither is fatal; both are why this is not a small edit.
+
+**Scoped to include the shared store.** A store serving more than one works is
+the case that makes the layer worth building and the case that makes it hard.
+Northern Lights already takes Brevik's tonne and is named as the most advanced
+candidate for Slite's; Galata takes Anrav's; Prinos takes Ifestos'. A store with
+two or three lines running into it draws the thing the register actually knows
+and the standfirst cannot say without listing — and it is also where the lines
+start crossing each other, crossing coastlines, and crossing the site labels
+that `label_marks` has already placed. Any design here has to answer the
+many-to-one case before it answers the one-to-one one, or it will be rebuilt.
+
+It also has to answer what a line means when only one of its ends is drawn.
+`UNDRAWN_STATUSES` takes cancelled projects off every frame but their own, and
+`store_report` in `build_maps.py` already watches for a store serving both a
+drawn and an undrawn project — today it reports nothing, because no cancelled
+project has a store. The day one does, this layer is what has to decide whether
+a line runs to a mark that is not there.
+
+What it needs, in order:
+
+1. **The connection as data**, emitted per frame: a path from works to store in
+   canvas units, computed where both ends are drawn, and a stated rule for where
+   only one is.
+2. **The label pass made to avoid it**, which is the real work. `label_marks`
+   places against marks and against other labels; a connection layer is a third
+   thing to place around, and the crowded/dropped counts the build prints are
+   the measure of whether it can be done at the narrow breakpoint.
+3. **A key line**, tier 1 in `geoKeyProse`, on the frames that draw one.
+
 ## Horizontal / economy-wide scope as a data-model attribute
 
 **Its own stack.** Touches the schema, the gates, and every sector page.

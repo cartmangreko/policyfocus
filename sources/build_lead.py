@@ -555,8 +555,14 @@ def fact_the_gap(params: dict, sector: str, bottlenecks: list[dict],
 
 
 def fact_the_latest(projects: list[dict]) -> dict | None:
-    """The most recent status change anywhere in the sector's pipeline."""
-    events = [(h["date"], p, h) for p in projects for h in p["status_history"]]
+    """The most recent status change anywhere in the sector's pipeline.
+
+    TRANSITIONS ONLY. A history entry whose status matches the one before it is
+    a later source on an unchanged project, not a change -- and this fact
+    renders its entry as "{project} {verb} on {date}", which for such an entry
+    would be a sentence no source supports. See sector_map.transitions.
+    """
+    events = [(h["date"], p, h) for p in projects for h in sm.transitions(p)]
     if not events:
         return None
     _, p, h = max(events, key=lambda e: (e[0], e[1]["id"]))

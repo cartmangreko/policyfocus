@@ -4308,3 +4308,234 @@ a.tmat-basis:hover {
   border-color: var(--ink);
   color: var(--ink);
 }
+
+/* ---------- the geography ---------------------------------------------------
+   THE PICTURE IS INK ON PAPER AND NOTHING ELSE. Signal is chrome, claret and
+   pine are money direction, the diagram palette belongs to diagrams and the
+   sector accent is page identity and is explicitly never on a figure. A
+   coastline is none of those, so it is --ink, and the marks are told apart by
+   shape rather than by hue. No selector below emits a reserved token, which is
+   why the map needed no ruling and no exception.
+
+   Land is STROKED AND NEVER FILLED. A filled continent turns the picture into a
+   diagram of Europe; an outline stays a ground for the marks to sit on, which is
+   the only job it has here. */
+.geo {
+  margin: 0 0 28px;
+}
+.geo-caption {
+  margin-bottom: 10px;
+}
+.geo-caption h3 {
+  font-family: var(--display);
+  font-size: 17px;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--ink);
+}
+.geo-standfirst {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-55);
+  max-width: 62ch;
+}
+.geo-canvas {
+  display: block;
+  width: 100%;
+  /* Never larger than the size it was laid out at. build_maps.py works in a
+     760-unit canvas and chooses its simplification for that width; blown up to
+     1100 the coastline starts showing the straight runs the simplifier left,
+     and the marks stop being marks and become discs. */
+  max-width: 760px;
+  height: auto;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+.geo-land {
+  fill: none;
+  stroke: var(--ink-40);
+  stroke-width: 0.75px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* THE MARKS. One rule, and it is not colour: filled is running, hollow is not;
+   a dot is a works and a downward triangle is a store, because down is where
+   the tonne goes. */
+.geo-mark {
+  stroke: var(--ink);
+  stroke-width: 1.4px;
+}
+.geo-mark.is-running {
+  fill: var(--ink);
+}
+.geo-mark.is-stopped {
+  fill: var(--paper);
+}
+.geo-here {
+  fill: none;
+  stroke: var(--ink-40);
+  stroke-width: 1px;
+}
+.geo-link {
+  cursor: pointer;
+}
+.geo-link:hover .geo-mark,
+.geo-link:focus-visible .geo-mark {
+  stroke-width: 2.4px;
+}
+.geo-link:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+/* Context marks are quieter than the subject and its dependencies. Same ink,
+   less of it — a neighbour is on the paper because it is nearby, not because
+   the page is about it.
+
+   ONLY ON A CROP. An overview has no subject, so every mark on it carries
+   relation "sector"; scoped any wider, this rule greyed out the whole of a
+   sector's Europe view and left nothing at full strength to be quieter than. */
+.geo-project .geo-rel-technology .geo-mark,
+.geo-project .geo-rel-sector .geo-mark {
+  stroke: var(--ink-55);
+}
+.geo-project .geo-rel-technology .geo-mark.is-running,
+.geo-project .geo-rel-sector .geo-mark.is-running {
+  fill: var(--ink-55);
+}
+
+/* THE LABELS. Every number that positions one came from build_maps.py; nothing
+   here moves a word. What the stylesheet owns is how the type looks and which
+   of the two computed layouts is on show.
+
+   THE HALO IS THE ONLY WAY INK-ON-PAPER SURVIVES A COASTLINE. A label sits over
+   a hairline often enough that unhaloed text loses a letter to it, so each glyph
+   is stroked in paper and filled in ink, in that order. paint-order is what
+   makes it that order rather than a fat outline over the top of the letter. */
+.geo-label-text {
+  font-family: var(--sans);
+  fill: var(--ink);
+  stroke: var(--paper);
+  stroke-width: 2.6px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+}
+.geo-label-company {
+  fill: var(--ink-55);
+}
+.geo-leader {
+  stroke: var(--ink-40);
+  stroke-width: 0.75px;
+  fill: none;
+}
+/* The narrow layout is laid out at roughly twice the type size, so its halo is
+   twice the stroke — the same weight of paper behind the same weight of ink. */
+.geo-label-narrow .geo-label-text {
+  stroke-width: 4px;
+}
+/* One layout is drawn and the other is not. `display: none` rather than opacity,
+   so the hidden one is out of the accessibility tree as well as out of sight and
+   a screen reader is not given every name twice. */
+.geo-label-narrow {
+  display: none;
+}
+@media (max-width: 680px) {
+  .geo-label-wide {
+    display: none;
+  }
+  .geo-label-narrow {
+    display: block;
+  }
+}
+/* A label follows its mark's emphasis. A neighbour on a crop is context, and its
+   name should not shout over the name of the works the page is about. */
+.geo-project .geo-rel-technology .geo-label-text,
+.geo-project .geo-rel-sector .geo-label-text {
+  fill: var(--ink-55);
+}
+.geo-project .geo-rel-technology .geo-label-company,
+.geo-project .geo-rel-sector .geo-label-company {
+  fill: var(--ink-40);
+}
+.geo-link:hover .geo-label-name,
+.geo-link:focus-visible .geo-label-name {
+  text-decoration: underline;
+}
+
+/* THE COUNTRY NAMES. The faintest thing on the paper that is still type: they
+   are the ground, and a reader should be able to look past them at the marks.
+   Letterspaced and small, which is how a name of an AREA is told from a name of
+   a POINT without either changing colour — the same trick the marks use to
+   avoid asking the colour layers a question. */
+.geo-country-text {
+  fill: var(--ink-40);
+  letter-spacing: 0.06em;
+}
+.geo-country {
+  pointer-events: none;
+}
+
+.geo-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--ink-55);
+}
+.geo-key-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.geo-key-item svg {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  overflow: visible;
+}
+
+.geo-coords {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule-soft);
+}
+.geo-coords p {
+  margin: 0 0 2px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+}
+.geo-coord {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-70);
+  white-space: nowrap;
+}
+.geo-site {
+  font-size: 12px;
+  color: var(--ink-55);
+}
+.geo-asof {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+  margin: 4px 0 0;
+}
+
+@media (max-width: 560px) {
+  .geo-caption h3 {
+    font-size: 15.5px;
+  }
+  .geo-mark {
+    stroke-width: 1.8px;
+  }
+  .geo-coord,
+  .geo-site {
+    font-size: 11.5px;
+  }
+}

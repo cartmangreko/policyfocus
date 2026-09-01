@@ -27820,6 +27820,42 @@
  },
  {
   "rel": "depends_on",
+  "from": "project:anrav-devnya",
+  "to": "project:galata-co2-storage",
+  "since": "2022-07-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=anrav-devnya].storage",
+   "quote": "The Devnya Cement plant in the country's northeast intends to capture carbon dioxide from its operations and pipeline it to the depleted Galata offshore gas field under the Black Sea for permanent storage."
+  },
+  "basis": "storage"
+ },
+ {
+  "rel": "depends_on",
+  "from": "project:brevik-ccs",
+  "to": "project:northern-lights",
+  "since": "2025-08-25",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=brevik-ccs].storage",
+   "quote": "The CO₂ is transported via ships from Heidelberg Materials' cement factory in Brevik. The CO₂ is then offloaded and transported through a 100-kilometer pipeline and injected into the Aurora reservoir under the seabed of the North Sea."
+  },
+  "basis": "storage"
+ },
+ {
+  "rel": "depends_on",
+  "from": "project:ifestos-kamari",
+  "to": "project:prinos-co2-storage",
+  "since": "2026-07-02",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ifestos-kamari].storage",
+   "quote": "TITAN's IFESTOS project at its Kamari plant in Boeotia. Both involve the installation of specialised units to capture carbon dioxide from cement production, which will then be transported to Prinos for permanent storage."
+  },
+  "basis": "storage"
+ },
+ {
+  "rel": "depends_on",
   "from": "technology:ccs-blast-furnace",
   "to": "technology:co2-transport-storage",
   "since": "2024-03-14",
@@ -27950,6 +27986,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:galata-co2-storage",
+  "to": "technology:co2-transport-storage",
+  "since": "2022-07-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=galata-co2-storage].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:gezero-geseke",
   "to": "technology:ccs-post-combustion",
   "since": "2023-12-15",
@@ -28066,6 +28112,26 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=k6-lumbres].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:northern-lights",
+  "to": "technology:co2-transport-storage",
+  "since": "2025-08-25",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northern-lights].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:prinos-co2-storage",
+  "to": "technology:co2-transport-storage",
+  "since": "2026-07-02",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=prinos-co2-storage].technology"
   }
  },
  {
@@ -30447,6 +30513,28 @@
  },
  {
   "rel": "in",
+  "from": "project:galata-co2-storage",
+  "to": "country:BG",
+  "since": "2022-07-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=galata-co2-storage].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:galata-co2-storage",
+  "to": "sector:ccs",
+  "since": "2022-07-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=galata-co2-storage].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:gezero-geseke",
   "to": "country:DE",
   "since": "2023-12-15",
@@ -30596,6 +30684,50 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=k6-lumbres].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:northern-lights",
+  "to": "country:NO",
+  "since": "2025-08-25",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northern-lights].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:northern-lights",
+  "to": "sector:ccs",
+  "since": "2025-08-25",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northern-lights].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:prinos-co2-storage",
+  "to": "country:GR",
+  "since": "2026-07-02",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=prinos-co2-storage].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:prinos-co2-storage",
+  "to": "sector:ccs",
+  "since": "2026-07-02",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=prinos-co2-storage].sector"
   },
   "basis": "sector"
  },

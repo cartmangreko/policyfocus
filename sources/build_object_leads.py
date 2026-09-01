@@ -323,9 +323,14 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
     history = p.get("status_history") or []
     if not history or p["status"] not in STATUS_MEANING:
         return None
-    last = history[-1]
+    # THE STATUS FACT DATES FROM WHEN THE STATUS WAS ENTERED, which is not
+    # always the last entry: a history may carry later sources on a project
+    # whose status they do not change. "Slite CCS was paused on" takes the date
+    # it was paused, not the date of the most recent thing written about it.
+    # `as_of`, which is a different claim, still takes the latest source.
+    last = sm.entered(p) or history[-1]
     source_dates = [s["date"] for s in p.get("sources", []) if s.get("date")]
-    as_of = max(source_dates) if source_dates else last["date"]
+    as_of = max(source_dates) if source_dates else history[-1]["date"]
     where = countries.get(p.get("country", ""), p.get("country", ""))
     place = f"{p['plant']}, {where}" if p.get("plant") else where
 

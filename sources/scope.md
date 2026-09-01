@@ -465,3 +465,69 @@ reasoning: a classification that cannot be substantiated does not get to
 render as a confident label. A row that cannot reach the prior text is
 entitled to say `add` and be read as a requirement — the honest default when
 the before-state is unknown.
+
+### Press may name a destination the company has already asserted
+
+A capture project's storage chain is recorded in
+`data/transition/projects.json` under `storage`: either the id of the store the
+tonne reaches, or `"unresolved": true`. The question this ruling settles is when
+a trade report may supply the store's identity.
+
+**The company's own source has to assert the relationship, and describe the
+destination specifically enough that the press report is identifying it rather
+than adding it.** Press then supplies the name and nothing else. Where the
+company asserts no destination at all, or asserts a different fate for the CO2,
+a press claim is not recorded and the chain is unresolved.
+
+The three worked cases, which is why this is written down:
+
+- **ANRAV** — the Innovation Fund fiche says the project links Devnya "with CO2
+  storage in a depleted gas field in the Black Sea, through an onshore and
+  offshore pipeline system". The company asserts the relationship, the mode and
+  a describable destination. There is one depleted gas field this can be, and
+  the press names it Galata. **Recorded.**
+- **IFESTOS** — the project's own site says the CO2 "will be liquified and
+  transported to a permanent storage site in the Mediterranean". Same shape:
+  the relationship is asserted and the destination is described. Press names
+  Prinos. **Recorded.**
+- **Carbon2Business** — Holcim's pages say the purified CO2 "will either be
+  processed into e-methanol through methanol synthesis or reprocessed as a raw
+  material to produce plastics". That is a different fate, not an unnamed
+  storage destination. Trade press reporting a thirty-kilometre pipeline to
+  Brunsbüttel is asserting a chain the company does not. **Not recorded; the
+  chain is unresolved.**
+
+The line is between naming something the company has already put in the world
+and supplying a fact it has not. The first is what a specialist press is for;
+the second is this register borrowing somebody else's confidence.
+
+Two consequences that are not optional. The `storage` block carries the press
+source with its verbatim, and a `note` saying the company's own wording is
+weaker — so the reader sees the join rather than a flat assertion. And the
+site's `confidence` stays `secondary`, which is what it is.
+
+### A node in the geo layer requires a source-stated position
+
+Scoped to the geo layer and to nothing else. Every project row carries
+`location`, `sources/check_coordinates.py` places every point against the
+basemap, and both rest on the same precondition: a row in this layer is a row
+somebody can draw. So **admission to this layer requires a position a source
+states, to plant or site precision.** A facility that is named but not sited is
+not admitted here, and the thing that names it records the chain as unresolved
+instead.
+
+Antwerp@C is the worked case. Holcim names it as GO4ZERO's export hub, so it is
+a real, named destination; the Port of Antwerp-Bruges sites it only as "a plot
+of land… inside the port", which is a port and not a place. A point invented
+for it would be a mark a reader takes for a terminal, several kilometres from
+wherever the terminal turns out to be. So it is not admitted, and
+`go4zero-obourg` carries `"unresolved": true` with a note naming the hub — which
+is more information than a wrong dot, not less.
+
+**This settles admission to the geo layer and nothing beyond it.** Whether a
+named-but-unsited facility should exist as a node in some other layer — carrying
+its name, its operator and its role, with no coordinate — is an open question
+this ruling does not reach and must not be read as foreclosing. It is a live
+option: the register already holds facts about places it cannot draw. The two
+readings agree on the case in front of us either way, because under both,
+Antwerp@C has no position and GO4ZERO's chain is unresolved.

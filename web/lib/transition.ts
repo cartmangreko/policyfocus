@@ -69,6 +69,10 @@ export interface Source {
   dataset?: { name: string; id?: string };
 }
 
+/** How the number or the point was come by. Same three values the Python
+ *  vocabulary holds, named once so both sides cannot drift. */
+export type Confidence = "primary" | "secondary" | "estimate";
+
 export interface Parameter {
   id: string;
   name: string;
@@ -80,7 +84,7 @@ export interface Parameter {
   date_of_value: string;
   retrieved_date: string;
   stale_after?: number;
-  confidence: "primary" | "secondary" | "estimate";
+  confidence: Confidence;
   verbatim_note?: string;
   note?: string;
   source: Source;
@@ -138,15 +142,59 @@ export interface StatusEvent {
   note?: string;
 }
 
+/** What kind of place a project row is, which is the only thing that decides
+ *  how it is drawn. Absent means `plant`: a row that says nothing is a works. */
+export type ProjectRole = "plant" | "storage";
+
+/** One sited coordinate, with the source that puts it there.
+ *
+ *  `precision` is `plant` for a works and `site` for a store, a field or a
+ *  receiving terminal. `town` exists in the Python vocabulary so that the gate
+ *  can refuse it by name and never reaches this type in practice — a town
+ *  centroid drawn as a works is a wrong fact rendered confidently. */
+export interface Site {
+  site: string;
+  lat: number;
+  lon: number;
+  precision: "plant" | "site" | "town";
+  retrieved_date: string;
+  source: Source;
+  confidence: Confidence;
+  /** The plant address, where the company publishes one, beside the point that
+   *  was read off it. */
+  address?: { text: string; url: string; publisher: string; date: string };
+  note?: string;
+}
+
+/** Where a captured tonne goes. Two shapes and no third: either the id of the
+ *  storage project it reaches, or `unresolved` with a note saying how far the
+ *  chain is actually specified. Unresolved is renderable information — a kiln
+ *  with a capture unit and nowhere to send the CO2 is the thing worth showing —
+ *  so nothing here treats it as an absence. */
+export type ProjectStorage =
+  | { project: string; since: string; source: Source; note?: string; unresolved?: never }
+  | { unresolved: true; note: string; source: Source; project?: never };
+
 export interface Project {
   id: string;
   name: string;
   company: string;
   plant?: string;
   country: string;
+  /** One or more sites. A list because a project is not always at one place:
+   *  the ArcelorMittal row covers Bremen and Eisenhüttenstadt, and one point
+   *  for it would put a mark in the field between them. Never empty — the
+   *  Python gate fails the build before this file is written. */
+  location: Site[];
   sector: string;
+  role?: ProjectRole;
+  /** Only ever true, and only on a node several industries share — a CO2 store,
+   *  a hydrogen pipeline. `shared_note` is where the judgement is defended. */
+  shared?: true;
+  shared_note?: string;
   transition: Transition;
   technology: string[];
+  storage?: ProjectStorage;
   capacity?: { value: number; unit: string; parameter?: string };
   investment_total?: { value: number; unit: string; parameter?: string };
   status: ProjectStatus;
@@ -550,6 +598,29 @@ export function byLastChange(rows: Project[]): Project[] {
 
 export function lastChange(p: Project): StatusEvent | undefined {
   return p.status_history[p.status_history.length - 1];
+}
+
+/** The entries that CHANGED the status, which is not all of them.
+ *
+ *  A history is a list of events in date order, and most are transitions. Some
+ *  are not: a later source reporting on a project whose status it does not
+ *  change. Slite was paused on 19 November 2025 when the Swedish Energy Agency
+ *  declined to co-fund it, and its permit application was withdrawn on 1
+ *  January 2026 — a fact about a paused project, not a project becoming paused.
+ *
+ *  The distinction is positional rather than a flag on the row: an entry is a
+ *  transition if its status differs from the one before it. That cannot fall out
+ *  of step with the data the way a hand-set flag would. The same rule is written
+ *  in sources/sector_map.py, which is where the two Python sentence templates
+ *  with the same problem read it from.
+ *
+ *  `lastChange` is deliberately NOT this. A feed, a "last change" column and an
+ *  "as of" date all want the latest thing on file, which is a different
+ *  question from when the project last moved. */
+export function statusTransitions(p: Project): StatusEvent[] {
+  return p.status_history.filter(
+    (h, i) => i === 0 || h.status !== p.status_history[i - 1].status,
+  );
 }
 
 /** Every source URL used anywhere on a sector page, grouped by publisher.

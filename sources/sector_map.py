@@ -121,6 +121,76 @@ PROJECT_STATUSES = (
     "cancelled",
 )
 
+
+# NOT EVERY ENTRY IN A STATUS HISTORY IS A STATUS CHANGE, and the difference has
+# to be named because three sentence templates on this site render an entry as
+# one: "{project} was paused on {date}".
+#
+# A history is a list of EVENTS, in date order. Most are transitions -- the
+# project moved from one status to the next, and the entry's date is the date it
+# moved. Some are not: a later source reports on a project whose status it does
+# not change. Slite is the case that forced this. It was paused on 19 November
+# 2025 when the Swedish Energy Agency declined to co-fund it; on 1 January 2026
+# Heidelberg Materials withdrew the permit application, which is a fact about a
+# paused project rather than a project becoming paused. Both belong in the
+# history -- the second is the evidence that the register has read the later
+# news and still says paused -- and rendering the second as a transition would
+# put "Slite CCS was paused on 1 January 2026" on three pages, which no source
+# says.
+#
+# THE RULE IS POSITIONAL, not a flag on the row. An entry is a transition if its
+# status differs from the entry before it; the first entry always is. That
+# cannot fall out of step with the data the way a hand-set `transition: false`
+# would, and it needs nothing added to any row.
+
+def is_transition(history: list[dict], i: int) -> bool:
+    """Whether entry `i` is the moment the project's status changed."""
+    return i == 0 or history[i]["status"] != history[i - 1]["status"]
+
+
+def transitions(project: dict) -> list[dict]:
+    """Only the entries that changed the status. What a feed of "what moved"
+    should be built from, and what a sentence saying a project MOVED may use."""
+    history = project.get("status_history") or []
+    return [h for i, h in enumerate(history) if is_transition(history, i)]
+
+
+def entered(project: dict) -> dict | None:
+    """The entry that put the project into the status it is in now -- the first
+    of the trailing run, not the last entry.
+
+    This is the date "was paused on" means. `status_history[-1]` is the latest
+    thing ON FILE about the project, which is a different question and is the
+    right answer for a feed, a "last change" column or an "as of" date.
+    """
+    changes = transitions(project)
+    return changes[-1] if changes else None
+
+# WHAT KIND OF PLACE A PROJECT ROW IS. `plant` is the default and is left off the
+# row; a row that says nothing is a works. `storage` is a permitted or proposed
+# geological store -- the place a captured tonne ends, which the graph referred
+# to as a technology long before it named one. Closed, and short on purpose: a
+# role is a mark on a map, and a vocabulary with eight of them would be eight
+# marks nobody can tell apart.
+PROJECT_ROLES = (
+    "plant",
+    "storage",
+)
+
+# HOW EXACT A COORDINATE IS. `plant` is the works itself; `site` is a store, a
+# field or a receiving terminal, which has a position but not a street. `town`
+# is listed and is not allowed on a project: the gate refuses it by name, so the
+# refusal reads as a rule rather than as a missing value. A town centroid drawn
+# as a plant is a wrong fact rendered confidently, which is worse than no map.
+LOCATION_PRECISIONS = (
+    "plant",
+    "site",
+    "town",
+)
+
+# The precisions a project or a plant may actually carry. See the note above.
+LOCATION_PRECISIONS_ALLOWED = ("plant", "site")
+
 # The legal device a measure acts with, as a diagram says it. Closed for the
 # usual reason and one extra: these words are the only part of a measure label
 # that repeats across sectors, so an open list would give every sector its own
@@ -262,6 +332,31 @@ def mapped_sectors() -> list[str]:
     missed. Derived here so the third sector arrives by having data.
     """
     return sorted({b["sector"] for b in load("bottleneck")})
+
+
+# The technology every capture route eventually leans on. Named once here rather
+# than matched on the `ccs-` prefix in three places: the prefix is a naming
+# habit, the dependency is the fact.
+CO2_STORAGE_TECHNOLOGY = "co2-transport-storage"
+
+
+def captures_co2(project: dict, technologies: dict[str, dict]) -> bool:
+    """Whether this project puts a captured tonne on the road, and therefore owes
+    an answer about where the tonne goes.
+
+    Read off the dependency graph, not off the row: a project deploys a capture
+    technology, and that technology declares it cannot run without CO2 transport
+    and storage. A project that deploys transport and storage ITSELF is the far
+    end of that chain and owes nothing -- it is the answer, not the question.
+    """
+    tech_ids = project.get("technology") or []
+    if CO2_STORAGE_TECHNOLOGY in tech_ids and project.get("role") == "storage":
+        return False
+    for tid in tech_ids:
+        row = technologies.get(tid) or {}
+        if CO2_STORAGE_TECHNOLOGY in (row.get("dependency") or []):
+            return True
+    return False
 
 
 def sectors() -> dict[str, dict]:

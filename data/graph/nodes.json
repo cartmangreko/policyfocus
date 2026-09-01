@@ -7865,7 +7865,24 @@
    "plant": "Dunkirk",
    "country": "FR",
    "status": "operating",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Dunkerque steelworks",
+     "lat": 51.0362,
+     "lon": 2.298,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/618631514",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=ArcelorMittal Dunkerque; landuse=industrial; man_made=works; operator=ArcelorMittal; product=steel",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
   }
  },
  {
@@ -7877,7 +7894,38 @@
    "plant": "Bremen and Eisenhüttenstadt",
    "country": "DE",
    "status": "cancelled",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Bremen steelworks",
+     "lat": 53.1331,
+     "lon": 8.689,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/relation/3942800",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Stahlwerke Bremen; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    },
+    {
+     "site": "Eisenhüttenstadt steelworks",
+     "lat": 52.1892,
+     "lon": 14.6213,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/41196685",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=ArcelorMittal; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
   }
  },
  {
@@ -7889,7 +7937,24 @@
    "plant": "Devnya",
    "country": "BG",
    "status": "funded",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Devnya cement works",
+     "lat": 43.2343,
+     "lon": 27.5951,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/196776675",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Девня Цимент АД; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
   }
  },
  {
@@ -7901,7 +7966,24 @@
    "plant": "Brevik",
    "country": "NO",
    "status": "operating",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Brevik cement works",
+     "lat": 59.0644,
+     "lon": 9.6912,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/relation/1437635",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Norcem; landuse=industrial; industrial=cement",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
   }
  },
  {
@@ -7913,7 +7995,54 @@
    "plant": "Lägerdorf",
    "country": "DE",
    "status": "construction",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Lägerdorf cement works",
+     "lat": 53.8759,
+     "lon": 9.5822,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/29202456",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Zementwerk Lägerdorf; landuse=industrial; industrial=cement; operator=Holcim (Deutschland) GmbH; addr:street=Sandweg; addr:housenumber=10",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:galata-co2-storage",
+  "kind": "project",
+  "label": "Galata CO2 storage",
+  "attrs": {
+   "company": "Petroceltic",
+   "plant": "Galata field",
+   "country": "BG",
+   "status": "announced",
+   "transition": "decarbonisation",
+   "role": "storage",
+   "location": [
+    {
+     "site": "Galata gas field, Black Sea",
+     "lat": 43.0446,
+     "lon": 28.1932,
+     "precision": "site",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://en.wikipedia.org/wiki/Galata_gas_field",
+      "publisher": "Wikipedia",
+      "date": "2026-08-28",
+      "verbatim": "located on the continental shelf of the Black Sea approximately 25km Southeast of Varna, Bulgaria"
+     },
+     "confidence": "secondary",
+     "note": "The field's own position, in 35 m of water. The onshore and offshore pipeline that would reach it from Devnya is not built and has no published route."
+    }
+   ]
   }
  },
  {
@@ -7925,7 +8054,31 @@
    "plant": "Geseke",
    "country": "DE",
    "status": "funded",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Geseke cement works, Milke section",
+     "lat": 51.6191,
+     "lon": 8.5118,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/231449793",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Zementwerk Milke; man_made=works; product=cement; addr:street=Bürener Straße; addr:housenumber=46; addr:postcode=59590",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "address": {
+      "text": "Bürener Straße 46, 59590 Geseke, Deutschland",
+      "url": "https://www.heidelbergmaterials.de/de/zement/zementwerke/geseke",
+      "publisher": "Heidelberg Materials Deutschland",
+      "date": "2026-08-28"
+     },
+     "note": "The works has two sections, Elsa and Milke; the company gives Bürener Straße 46 as the plant address and that is the point taken."
+    }
+   ]
   }
  },
  {
@@ -7937,7 +8090,24 @@
    "plant": "Obourg",
    "country": "BE",
    "status": "construction",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Obourg cement works",
+     "lat": 50.4709,
+     "lon": 3.9948,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/relation/10785798",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Holcim (Cimenterie d'Obourg); landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
   }
  },
  {
@@ -7949,7 +8119,24 @@
    "plant": "Donawitz",
    "country": "AT",
    "status": "construction",
-   "transition": "circularity"
+   "transition": "circularity",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Donawitz steelworks",
+     "lat": 47.3831,
+     "lon": 15.0604,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/relation/11365499",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=VOEST-Alpine Donawitz; landuse=industrial; operator=Voestalpine Schienen GmbH",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
   }
  },
  {
@@ -7961,7 +8148,31 @@
    "plant": "Linz",
    "country": "AT",
    "status": "construction",
-   "transition": "circularity"
+   "transition": "circularity",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Linz steelworks",
+     "lat": 48.2785,
+     "lon": 14.3196,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/28854956",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Finanz- und Vertriebszentrum; addr:street=voestalpine-Straße; addr:housenumber=3; addr:postcode=4020; addr:city=Linz",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "address": {
+      "text": "voestalpine-Straße 3, 4020 Linz, Austria",
+      "url": "https://www.voestalpine.com/stahl/en/Contact",
+      "publisher": "voestalpine",
+      "date": "2026-08-28"
+     },
+     "note": "The works spans roughly two kilometres; the point is its registered address inside the site, not the centre of the plant area."
+    }
+   ]
   }
  },
  {
@@ -7973,7 +8184,25 @@
    "plant": "Luleå",
    "country": "SE",
    "status": "operating",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "HYBRIT pilot plant, Luleå",
+     "lat": 65.5557,
+     "lon": 22.2057,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/847533124",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Hybrit",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The pilot stands beside SSAB's Luleå works on Svartön."
+    }
+   ]
   }
  },
  {
@@ -7985,7 +8214,25 @@
    "plant": "Kamari",
    "country": "GR",
    "status": "announced",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Kamari cement works",
+     "lat": 38.1292,
+     "lon": 23.5218,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/188683552",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=ΤΙΤΑΝ Καμάρι; landuse=industrial; industrial=factory",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "Global Energy Monitor independently gives 38.129588, 23.526606 for the same works."
+    }
+   ]
   }
  },
  {
@@ -7997,7 +8244,84 @@
    "plant": "Lumbres",
    "country": "FR",
    "status": "construction",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Lumbres cement works",
+     "lat": 50.6946,
+     "lon": 2.106,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/670671322",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Cimenterie de Lumbres; landuse=industrial; operator=EQIOM - a CRH Company; addr:street=Rue Jean-Baptiste Macaud; addr:postcode=62380",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:northern-lights",
+  "kind": "project",
+  "label": "Northern Lights",
+  "attrs": {
+   "company": "Northern Lights JV DA (Equinor, Shell, TotalEnergies)",
+   "plant": "Øygarden",
+   "country": "NO",
+   "status": "operating",
+   "transition": "decarbonisation",
+   "role": "storage",
+   "location": [
+    {
+     "site": "Øygarden receiving terminal, Naturgassparken",
+     "lat": 60.5539,
+     "lon": 4.8856,
+     "precision": "site",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/relation/4777286",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Naturgassparken; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The mark is the onshore terminal where the ships unload. The store itself is the Aurora reservoir 2,600 m under the seabed, about 100 km further out; no source read here publishes its position, so it is not a second site."
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:prinos-co2-storage",
+  "kind": "project",
+  "label": "Prinos CO2 storage",
+  "attrs": {
+   "company": "EnEarth (Energean)",
+   "plant": "Prinos field",
+   "country": "GR",
+   "status": "announced",
+   "transition": "decarbonisation",
+   "role": "storage",
+   "location": [
+    {
+     "site": "Prinos production platforms, Gulf of Kavala",
+     "lat": 40.7987,
+     "lon": 24.4976,
+     "precision": "site",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1155096048",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Εγκαταστάσεις Άντλησης Πρίνου; man_made=offshore_platform",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The existing production platforms over the depleted reservoirs. A new platform, Omega, is permitted and not built."
+    }
+   ]
   }
  },
  {
@@ -8009,7 +8333,24 @@
    "plant": "Salzgitter",
    "country": "DE",
    "status": "construction",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Salzgitter steelworks",
+     "lat": 52.1631,
+     "lon": 10.4107,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/100545500",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Salzgitter Flachstahl GmbH; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
   }
  },
  {
@@ -8021,7 +8362,24 @@
    "plant": "Slite",
    "country": "SE",
    "status": "paused",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Slite cement works",
+     "lat": 57.7121,
+     "lon": 18.8015,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/198541727",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Cementa; landuse=industrial; man_made=works; operator=Cementa",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
   }
  },
  {
@@ -8033,7 +8391,25 @@
    "plant": "Boden",
    "country": "SE",
    "status": "construction",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Boden steelworks",
+     "lat": 65.8098,
+     "lon": 21.792,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1388001960",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=STEGRA stålverk Boden; landuse=construction; operator=STEGRA",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The 740 MW electrolyser is a second polygon on the same site, way/1481669820."
+    }
+   ]
   }
  },
  {
@@ -8045,7 +8421,24 @@
    "plant": "Duisburg",
    "country": "DE",
    "status": "construction",
-   "transition": "decarbonisation"
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Duisburg steelworks",
+     "lat": 51.4907,
+     "lon": 6.7272,
+     "precision": "plant",
+     "retrieved_date": "2026-08-28",
+     "source": {
+      "url": "https://www.openstreetmap.org/relation/5148195",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=ThyssenKrupp Steel Europe AG; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
   }
  },
  {
