@@ -142,6 +142,13 @@ PROJECT_STATUSES = (
 # status differs from the entry before it; the first entry always is. That
 # cannot fall out of step with the data the way a hand-set `transition: false`
 # would, and it needs nothing added to any row.
+#
+# IT IS WRITTEN TWICE, AND HELD BY A GATE. web/lib/transition.ts
+# statusTransitions is the same rule for the page, and check_transition_parity.py
+# runs both readings over every history up to four entries long -- 4,681 of them
+# -- and fails the build on any disagreement. The two sides used to be held by a
+# comment on each saying "edit both", which is what the reach-channel inference
+# is still held by and is not a mechanism.
 
 def is_transition(history: list[dict], i: int) -> bool:
     """Whether entry `i` is the moment the project's status changed."""

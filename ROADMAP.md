@@ -288,6 +288,46 @@ can no longer be trusted either.
 
 ---
 
+## The twenty-two `--acc-*` values were chosen, not ruled — revisit or ratify
+
+**Low priority, and it may close by being ratified rather than changed.** Touches
+one block in `web/app/globals.css` and nothing else. Every value is a one-line
+edit; nothing computes from them and no gate encodes any particular hue.
+
+**This was open question 3 of the original brief and was never answered.** The
+brief asked which hues the sector accents should be; the instruction at the time
+was to choose rather than to ask, so they were chosen. That decision has been
+carried ever since as a fact about the stylesheet rather than as an open
+question, and until now the only written record of its being open was a note in
+the description of #26 — a PR that is closed, which is where questions go to be
+forgotten. It is here so it is findable.
+
+**What is already settled and is not being reopened.** The accents are wayfinding
+rather than decoration: hairlines, chips and icon strokes only, never a
+background, never a large fill. Grouped by material family, with a child sector a
+lighter cut of its parent. And they have been **re-cut once by measurement** —
+the first cut put all of them in one narrow band so none would shout, which
+walked twelve into claret's and pine's neighbourhoods (`--acc-auto` was `#7c414a`,
+nine deltaE from claret: a claret marker on the automotive page, beside figures
+where claret means cost). Each is now the nearest colour to its original that
+clears claret, pine, signal and ink by 33 deltaE, and `check_colour_layers.py`
+fails the build on any that does not. So the values are constrained, checked, and
+defensible.
+
+**What is open is the only thing measurement cannot answer**: whether these are
+the right twenty-two hues for these twenty-two sectors, as opposed to a
+consistent set that clears the gate. A reader learns a sector's mark once and
+then reads it everywhere — the feed card, the finding card, the directory card,
+the diagram node, the sector header, the reach row — so the question is whether
+the assignment means anything to somebody who does not already know the code, and
+whether the family groupings read as families.
+
+Closing it needs a look at the twenty-two in one place at the sizes they are
+actually used, and then either a ruling that they stand or a re-cut inside the
+same deltaE floor. Ratifying is a real outcome and should be recorded as one:
+the entry exists so that the answer is written down, not so that the values
+change.
+
 ## Downstream reach channel from the Eurostat input-output data
 
 **Its own stack.** Touches `web/lib/reachChannel.ts`, the reach data behind
