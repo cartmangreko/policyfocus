@@ -1610,6 +1610,227 @@
           "date": "2022-12-21"
         }
       ]
+    },
+    {
+      "id": "lges-wroclaw",
+      "name": "LG Energy Solution Wrocław",
+      "company": "LG Energy Solution",
+      "plant": "Wrocław",
+      "country": "PL",
+      "location": [
+        {
+          "site": "Wrocław cell works",
+          "lat": 51.0205,
+          "lon": 16.886,
+          "precision": "plant",
+          "retrieved_date": "2026-09-02",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/922173635",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=LG Energy Solution Wrocław; man_made=works; product=car_battery",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "nmc-nca-cells"
+      ],
+      "capacity": {
+        "value": 90,
+        "unit": "GWh per year"
+      },
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2023-07-27",
+          "source_url": "https://news.lgensol.com/insights/from-our-experts/3071/",
+          "note": "LG Energy Solution describes Wrocław as Europe's largest EV battery works, expanding from 86 GWh to 90 GWh by the end of 2023. The history starts at this statement because it is the first company source read for the site."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://news.lgensol.com/insights/from-our-experts/3071/",
+          "title": "LG Energy Solution Wroclaw Shows No Signs of Slowing Down as Europe's Undisputed Battery Leader",
+          "publisher": "LG Energy Solution",
+          "date": "2023-07-27"
+        }
+      ]
+    },
+    {
+      "id": "catl-debrecen",
+      "name": "CATL Debrecen",
+      "company": "Contemporary Amperex Technology",
+      "plant": "Debrecen",
+      "country": "HU",
+      "location": [
+        {
+          "site": "Debrecen Southern Industrial Park",
+          "lat": 47.4632,
+          "lon": 21.6201,
+          "precision": "plant",
+          "retrieved_date": "2026-09-02",
+          "source": {
+            "url": "https://www.openstreetmap.org/relation/18559299",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=CATL akkumulátorgyár; landuse=construction",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The basemap still carries the site as landuse=construction, which matches its status here."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 100,
+        "unit": "GWh per year"
+      },
+      "investment_total": {
+        "value": 7340000000,
+        "currency": "EUR",
+        "source": "https://www.catl.com/en/news/983.html",
+        "date": "2022-08-12"
+      },
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2022-08-12",
+          "source_url": "https://www.catl.com/en/news/983.html",
+          "note": "CATL 'officially announced it will invest 7.34 billion euros to build a 100 GWh battery plant in Debrecen of east Hungary', on 221 hectares in the Southern Industrial Park, its second European site. Trade press reports cell production starting in early 2026; no company statement of a start has been read, so the status stays at construction."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.catl.com/en/news/983.html",
+          "title": "CATL announces its second European battery plant in Hungary",
+          "publisher": "CATL",
+          "date": "2022-08-12"
+        }
+      ]
+    },
+    {
+      "id": "lyten-heide",
+      "name": "Northvolt Drei",
+      "company": "Northvolt Drei Project GmbH",
+      "plant": "Heide",
+      "country": "DE",
+      "location": [
+        {
+          "site": "Heide gigafactory",
+          "lat": 54.1953,
+          "lon": 9.0547,
+          "precision": "plant",
+          "retrieved_date": "2026-09-02",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1238083686",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Batteriefabrik Northvolt Drei",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 15,
+        "unit": "GWh per year"
+      },
+      "status": "paused",
+      "status_history": [
+        {
+          "status": "paused",
+          "date": "2026-07-01",
+          "source_url": "https://lyten.com/2026/07/01/lyten-signs-exclusive-mou-to-progress-acquisition-of-northvolt-drei-assets-in-germany/",
+          "note": "Lyten signed an exclusive memorandum of understanding with KfW, Northvolt Drei Project GmbH and its shareholder LG Batterie GmbH to progress an acquisition of the assets. The 110-hectare site has groundwork and utilities in place, with 15 GWh under construction and plans to scale beyond 30 GWh. A memorandum is not a completed sale, so the owner is unchanged here and no ownership event is recorded."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://lyten.com/2026/07/01/lyten-signs-exclusive-mou-to-progress-acquisition-of-northvolt-drei-assets-in-germany/",
+          "title": "Lyten Signs Exclusive MOU to Progress Acquisition of Northvolt Drei Assets in Germany",
+          "publisher": "Lyten",
+          "date": "2026-07-01"
+        }
+      ]
+    },
+    {
+      "id": "morrow-arendal",
+      "name": "Morrow Cell Factory",
+      "company": "Morrow Batteries",
+      "plant": "Arendal",
+      "country": "NO",
+      "location": [
+        {
+          "site": "Arendal cell works",
+          "lat": 58.5004,
+          "lon": 8.803,
+          "precision": "plant",
+          "retrieved_date": "2026-09-02",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1308751286",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Morrow batteries; building=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "lfp-cells"
+      ],
+      "capacity": {
+        "value": 43,
+        "unit": "GWh per year"
+      },
+      "status": "cancelled",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2024-08-16",
+          "source_url": "https://news.morrowbatteries.com/pressreleases/jonas-gahr-stoere-prime-minister-of-norway-officially-inaugurates-europes-first-lfp-battery-gigafactory-3337609",
+          "note": "Norway's prime minister inaugurated the site, which Morrow described as Europe's first gigawatt-scale factory for lithium iron phosphate cells. The 1 GWh cell factory is the first phase of a stated 43 GWh across three further modules; the capacity here is the target for the site, per the perimeter's definition."
+        },
+        {
+          "status": "cancelled",
+          "date": "2026-05-06",
+          "source_url": "https://www.energy-storage.news/european-ess-battery-company-morrow-files-for-bankruptcy/",
+          "note": "Morrow Batteries ASA filed for bankruptcy in Norway. The bankruptcy is carried by trade press; no company statement has been read, and the company's own newsroom is still up but silent on it."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://news.morrowbatteries.com/pressreleases/jonas-gahr-stoere-prime-minister-of-norway-officially-inaugurates-europes-first-lfp-battery-gigafactory-3337609",
+          "title": "Jonas Gahr Støre Prime Minister of Norway officially inaugurates Europe's first LFP battery gigafactory",
+          "publisher": "Morrow Batteries",
+          "date": "2024-08-16"
+        },
+        {
+          "url": "https://www.energy-storage.news/european-ess-battery-company-morrow-files-for-bankruptcy/",
+          "title": "European ESS battery company Morrow files for bankruptcy",
+          "publisher": "Energy-Storage.News",
+          "date": "2026-05-06"
+        }
+      ]
     }
   ]
 }
