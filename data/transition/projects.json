@@ -1206,6 +1206,333 @@
           "date": "2026-08-28"
         }
       ]
+    },
+    {
+      "id": "acc-billy-berclau",
+      "name": "ACC Billy-Berclau Douvrin",
+      "company": "Automotive Cells Company",
+      "plant": "Billy-Berclau/Douvrin",
+      "country": "FR",
+      "location": [
+        {
+          "site": "Billy-Berclau/Douvrin gigafactory",
+          "lat": 50.5186,
+          "lon": 2.8485,
+          "precision": "plant",
+          "retrieved_date": "2026-09-01",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1196306304",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Gigafactory ACC; landuse=industrial; man_made=works",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "nmc-nca-cells"
+      ],
+      "capacity": {
+        "value": 13,
+        "unit": "GWh per year"
+      },
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2023-05-30",
+          "source_url": "https://www.acc-emotion.com/media/bbd-press-release",
+          "note": "Inaugurated on 30 May 2023 with more than 13 GWh, rising to 40 GWh by 2030. ACC stated the first of the site's three production units would be operational before the end of 2023; the history starts at the inauguration because that is the first event sourced here."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.acc-emotion.com/media/bbd-press-release",
+          "title": "ACC inaugurates its first Gigafactory in Billy-Berclau/Douvrin",
+          "publisher": "Automotive Cells Company",
+          "date": "2023-05-30"
+        }
+      ]
+    },
+    {
+      "id": "acc-termoli",
+      "name": "ACC Termoli",
+      "company": "Automotive Cells Company",
+      "plant": "Termoli",
+      "country": "IT",
+      "location": [
+        {
+          "site": "Termoli works",
+          "lat": 41.9553,
+          "lon": 15.0031,
+          "precision": "plant",
+          "retrieved_date": "2026-09-01",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/77616014",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Stellantis - Termoli 1; building=industrial; man_made=works",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The gigafactory was to be built on the existing Stellantis Termoli site; the polygon is that works. Three adjacent polygons carry the site, way/77615859 and way/77616015 being the others."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "status": "paused",
+      "status_history": [
+        {
+          "status": "paused",
+          "date": "2024-06-05",
+          "source_url": "https://www.electrive.com/2024/06/05/acc-puts-work-on-battery-factories-in-kaiserslautern-and-termoli-on-hold/",
+          "note": "Work on Termoli and Kaiserslautern put on hold from May 2024 while ACC weighed a move to lithium iron phosphate."
+        },
+        {
+          "status": "paused",
+          "date": "2026-02-09",
+          "source_url": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
+          "note": "Status unchanged, and the sources disagree about what happened. The Italian union UILM said on 7 February 2026 that the project was 'definitively shelved'. ACC's own words are that the conditions for restarting the projects 'are unlikely to be met', and that it has begun a 'constructive dialogue' with unions about potential discontinuation. Under the standing press ruling the status follows the project's own sources, which describe a condition and a talks process rather than a decision, so it stays paused."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.electrive.com/2024/06/05/acc-puts-work-on-battery-factories-in-kaiserslautern-and-termoli-on-hold/",
+          "title": "ACC puts work on battery factories in Kaiserslautern and Termoli on hold",
+          "publisher": "electrive",
+          "date": "2024-06-05"
+        },
+        {
+          "url": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
+          "title": "ACC permanently abandons battery projects in Germany and Italy",
+          "publisher": "electrive",
+          "date": "2026-02-09"
+        }
+      ]
+    },
+    {
+      "id": "verkor-dunkirk",
+      "name": "Verkor Gigafactory Bourbourg",
+      "company": "Verkor",
+      "plant": "Bourbourg",
+      "country": "FR",
+      "location": [
+        {
+          "site": "Bourbourg gigafactory",
+          "lat": 50.9665,
+          "lon": 2.1935,
+          "precision": "plant",
+          "retrieved_date": "2026-09-01",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/947606985",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Gigafactory Verkor; landuse=industrial; industrial=factory; operator=Verkor",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "nmc-nca-cells"
+      ],
+      "capacity": {
+        "value": 16,
+        "unit": "GWh per year"
+      },
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2025-12-11",
+          "source_url": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+          "note": "Opened 11 December 2025 at 16 GWh, aiming at 50 GWh by 2030. Verkor stated the site 'is now manufacturing its own cells', with commercialisation of the first batteries planned for 2026."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+          "title": "Verkor reaches a decisive milestone and opens its first gigafactory",
+          "publisher": "Verkor",
+          "date": "2025-12-11"
+        }
+      ]
+    },
+    {
+      "id": "powerco-salzgitter",
+      "name": "PowerCo Salzgitter",
+      "company": "PowerCo",
+      "plant": "Salzgitter",
+      "country": "DE",
+      "location": [
+        {
+          "site": "Salzgitter gigafactory",
+          "lat": 52.187,
+          "lon": 10.4432,
+          "precision": "plant",
+          "retrieved_date": "2026-09-01",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/26143236",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Volkswagen AG Salzgitter; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The cell factory stands on the Volkswagen Salzgitter works, which is the polygon named; the basemap carries no separate outline for the cell building."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 20,
+        "unit": "GWh per year"
+      },
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2025-12-17",
+          "source_url": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
+          "note": "PowerCo 'commissioned the Salzgitter gigafactory as planned and produced the first Unified Cells made in Europe'. First expansion stage 20 GWh, expandable to 40 GWh."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
+          "title": "Start of European battery cell production: PowerCo commissions Salzgitter gigafactory",
+          "publisher": "Volkswagen Group",
+          "date": "2025-12-17"
+        }
+      ]
+    },
+    {
+      "id": "northvolt-ett-skelleftea",
+      "name": "Northvolt Ett",
+      "company": "Lyten",
+      "plant": "Skellefteå",
+      "country": "SE",
+      "location": [
+        {
+          "site": "Skellefteå gigafactory",
+          "lat": 64.734,
+          "lon": 21.0871,
+          "precision": "plant",
+          "retrieved_date": "2026-09-01",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/906692713",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Northvolt Ett; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The basemap names the polygon Northvolt Ett, which is the project's own name; the site is called for its town here so that the sentence over the picture does not say a thing is at itself."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "nmc-nca-cells"
+      ],
+      "status": "paused",
+      "status_history": [
+        {
+          "status": "paused",
+          "date": "2025-03-12",
+          "source_url": "https://northvolt.com/articles/northvolt-files-for-bankruptcy-in-sweden/",
+          "note": "Northvolt AB, Northvolt Ett AB, Northvolt Labs AB, Northvolt Revolt AB and Northvolt Systems AB filed for bankruptcy in Sweden on 12 March 2025. A court-appointed trustee was to determine the future of the production facilities. The history starts here because it is the first event sourced on this row; the site produced cells from 2021."
+        },
+        {
+          "kind": "ownership",
+          "status": "paused",
+          "date": "2026-02-26",
+          "from": "Northvolt",
+          "to": "Lyten",
+          "source_url": "https://lyten.com/2026/02/26/lyten-completes-acquisition-of-northvolt-sweden-and-establishes-its-first-lyten-industrial-hub-in-sweden/",
+          "note": "Lyten completed the acquisition of Northvolt Ett, Ett Expansion and Northvolt Labs and said it would begin the restart process immediately, with commercial cells planned for the second half of 2026. The site did not change status: it is the owner that changed, and the restart had not happened when this was recorded."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://northvolt.com/articles/northvolt-files-for-bankruptcy-in-sweden/",
+          "title": "Northvolt files for bankruptcy in Sweden",
+          "publisher": "Northvolt",
+          "date": "2025-03-12"
+        },
+        {
+          "url": "https://lyten.com/2026/02/26/lyten-completes-acquisition-of-northvolt-sweden-and-establishes-its-first-lyten-industrial-hub-in-sweden/",
+          "title": "Lyten Completes Acquisition of Northvolt Sweden and Establishes its First Lyten Industrial Hub in Sweden",
+          "publisher": "Lyten",
+          "date": "2026-02-26"
+        }
+      ]
+    },
+    {
+      "id": "catl-stellantis-zaragoza",
+      "name": "CATL and Stellantis Zaragoza",
+      "company": "Automotive Cells Zaragoza (CATL and Stellantis joint venture)",
+      "plant": "Zaragoza",
+      "country": "ES",
+      "location": [
+        {
+          "site": "Zaragoza works, Figueruelas",
+          "lat": 41.7523,
+          "lon": -1.1792,
+          "precision": "plant",
+          "retrieved_date": "2026-09-01",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/134929549",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Opel España de Automóviles; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The joint venture site is Stellantis' Zaragoza works at Figueruelas, which the basemap still names for its former operator."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "lfp-cells"
+      ],
+      "capacity": {
+        "value": 50,
+        "unit": "GWh per year"
+      },
+      "investment_total": {
+        "value": 4100000000,
+        "currency": "EUR",
+        "source": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+        "date": "2024-12-10"
+      },
+      "status": "announced",
+      "status_history": [
+        {
+          "status": "announced",
+          "date": "2024-12-10",
+          "source_url": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+          "note": "A 50-50 joint venture investing up to €4.1 billion in a 50 GWh lithium iron phosphate site, targeted to start production by the end of 2026 and stated as subject to the evolution of the European electrical market and continued support from Spanish and EU authorities."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+          "title": "Stellantis and CATL to invest up to €4.1 billion in joint venture for large-scale LFP battery plant in Spain",
+          "publisher": "Stellantis",
+          "date": "2024-12-10"
+        }
+      ]
     }
   ]
 }

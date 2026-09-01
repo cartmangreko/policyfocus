@@ -27926,6 +27926,36 @@
  },
  {
   "rel": "deploys",
+  "from": "project:acc-billy-berclau",
+  "to": "technology:cell-manufacturing",
+  "since": "2023-05-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-billy-berclau].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:acc-billy-berclau",
+  "to": "technology:nmc-nca-cells",
+  "since": "2023-05-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-billy-berclau].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:acc-termoli",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-06-05",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-termoli].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:am-bremen-eisenhuettenstadt",
   "to": "technology:dri-eaf",
   "since": "2025-06-23",
@@ -27982,6 +28012,26 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=carbon2business-lagerdorf].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:catl-stellantis-zaragoza",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-stellantis-zaragoza].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:catl-stellantis-zaragoza",
+  "to": "technology:lfp-cells",
+  "since": "2024-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-stellantis-zaragoza].technology"
   }
  },
  {
@@ -28126,6 +28176,36 @@
  },
  {
   "rel": "deploys",
+  "from": "project:northvolt-ett-skelleftea",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northvolt-ett-skelleftea].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:northvolt-ett-skelleftea",
+  "to": "technology:nmc-nca-cells",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northvolt-ett-skelleftea].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:powerco-salzgitter",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-12-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-salzgitter].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:prinos-co2-storage",
   "to": "technology:co2-transport-storage",
   "since": "2026-07-02",
@@ -28242,6 +28322,26 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=tkh2steel-duisburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:verkor-dunkirk",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=verkor-dunkirk].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:verkor-dunkirk",
+  "to": "technology:nmc-nca-cells",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=verkor-dunkirk].technology"
   }
  },
  {
@@ -30425,6 +30525,50 @@
  },
  {
   "rel": "in",
+  "from": "project:acc-billy-berclau",
+  "to": "country:FR",
+  "since": "2023-05-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-billy-berclau].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:acc-billy-berclau",
+  "to": "sector:batsol",
+  "since": "2023-05-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-billy-berclau].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:acc-termoli",
+  "to": "country:IT",
+  "since": "2024-06-05",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-termoli].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:acc-termoli",
+  "to": "sector:batsol",
+  "since": "2024-06-05",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-termoli].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:am-bremen-eisenhuettenstadt",
   "to": "country:DE",
   "since": "2025-06-23",
@@ -30508,6 +30652,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=carbon2business-lagerdorf].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-stellantis-zaragoza",
+  "to": "country:ES",
+  "since": "2024-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-stellantis-zaragoza].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-stellantis-zaragoza",
+  "to": "sector:batsol",
+  "since": "2024-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-stellantis-zaragoza].sector"
   },
   "basis": "sector"
  },
@@ -30711,6 +30877,50 @@
  },
  {
   "rel": "in",
+  "from": "project:northvolt-ett-skelleftea",
+  "to": "country:SE",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northvolt-ett-skelleftea].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:northvolt-ett-skelleftea",
+  "to": "sector:batsol",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northvolt-ett-skelleftea].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:powerco-salzgitter",
+  "to": "country:DE",
+  "since": "2025-12-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-salzgitter].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:powerco-salzgitter",
+  "to": "sector:batsol",
+  "since": "2025-12-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-salzgitter].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:prinos-co2-storage",
   "to": "country:GR",
   "since": "2026-07-02",
@@ -30816,6 +31026,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=tkh2steel-duisburg].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:verkor-dunkirk",
+  "to": "country:FR",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=verkor-dunkirk].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:verkor-dunkirk",
+  "to": "sector:batsol",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=verkor-dunkirk].sector"
   },
   "basis": "sector"
  },

@@ -373,8 +373,27 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
             hw = f"{w} status_history[{i}]"
             _req(e, hw, h, "status", "date", "source_url")
             _vocab(e, hw, h, "status", sm.PROJECT_STATUSES)
+            _vocab(e, hw, h, "kind", sm.PROJECT_EVENT_KINDS)
             _date(e, hw, h, "date")
             _url(e, hw, h.get("source_url"), "source_url")
+            # AN OWNERSHIP EVENT IS ONE FACT AND SAYS BOTH ENDS OF IT. `from` and
+            # `to` are required because "the owner changed" without naming the
+            # owners is an event nobody can check, and they are refused on every
+            # other kind so the field cannot quietly become a note.
+            if h.get("kind") == "ownership":
+                _req(e, hw, h, "from", "to")
+                if i == 0:
+                    e.add(hw, "an ownership event cannot open a history — there is no "
+                              "status before it for its own to be unchanged from, and "
+                              "the first entry is always read as a status change")
+                elif h.get("status") != history[i - 1].get("status"):
+                    e.add(hw, f"is an ownership event whose status ({h.get('status')!r}) "
+                              f"differs from the entry before it "
+                              f"({history[i - 1].get('status')!r}) — a project changing "
+                              f"hands and changing status is two events, and one entry "
+                              f"saying both reads as one causing the other")
+            elif "from" in h or "to" in h:
+                e.add(hw, "carries from/to and is not an ownership event")
             dates.append(str(h.get("date", "")))
         if dates != sorted(dates):
             e.add(w, "status_history is not in date order; it is append-only")

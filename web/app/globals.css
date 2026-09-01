@@ -3621,6 +3621,17 @@ h3 {
   border-color: transparent;
   color: var(--ink-55);
 }
+/* An ownership event in a project's history. Not a status, so it does not take
+   a status chip's ground: it is the one entry in the timeline that reports a
+   change of hands rather than a change of state, and it reads as a note in the
+   chip's position rather than as a sixth status. */
+.tstatus.ownership {
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--ink-55);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
 
 /* --- sources ------------------------------------------------------ */
 

@@ -19,25 +19,39 @@ therefore rendered as **site**, which is the word the geography layer already us
 in running text.
 
 > **Batteries.** Eufabric holds a battery cell manufacturing site when three
-> things are true of it at once: it makes battery cells, it stands in geographic
-> Europe, and the company itself has confirmed a named site with an announced
-> capacity of at least 1 GWh per year.
+> things are true of it at once: it makes battery cells, it stands in Europe as
+> this platform draws it, and the company itself has confirmed a named site with
+> an announced capacity of at least 1 GWh per year. Announced capacity means the
+> capacity the company states it is building towards at that site; a smaller
+> first line is a phase of it and not a different number.
+>
+> Europe here is a named list of countries rather than a coastline: the
+> twenty-seven member states, together with the United Kingdom, Norway,
+> Switzerland, the Western Balkans and Ukraine. Türkiye is outside it for now, as
+> a whole country rather than by where a site stands relative to the Bosphorus,
+> because a boundary that runs through one country's own industry is a boundary
+> that will be argued with every time it is applied.
 >
 > Four things follow, and each is enforced rather than left to judgement. Pack
-> and module assembly is out, including the assembly lines inside vehicle
-> factories: a site that buys cells and builds them into packs is not making
-> cells. Cathode, anode, separator and electrolyte works are out for now — they
-> are the inputs to a cell rather than a cell, and they arrive later either as
-> material links or as a widened perimeter. Battery recycling is out here and
-> belongs to circular materials, on the standing boundary rule that a site is
-> claimed by the ecosystem whose product it makes; links back appear when that
-> dataset exists. Pilot and research lines are out unless the company states the
-> line as a phase of a commercial project.
+> and module assembly is out: a site that buys cells and builds them into packs
+> is not making cells, and the great majority of what that removes is inside
+> vehicle factories. A cell line inside a vehicle factory is IN — the rule is
+> about what a site makes and not about who owns the gate. Cathode, anode,
+> separator and electrolyte works are out for now: they are the inputs to a cell
+> rather than a cell, and they arrive later either as material links or as a
+> widened perimeter. Battery recycling is out here and belongs to circular
+> materials, on the standing boundary rule that a site is claimed by the
+> ecosystem whose product it makes; links back appear when that dataset exists.
+> Pilot and research lines are out unless the company states the line as a phase
+> of a commercial project.
 >
 > A project whose specific site the company has not confirmed is not held at all.
 > That one needs no separate enforcement: every site on this platform carries a
 > latitude and a longitude from a quoted source, and a site nobody has named
-> cannot have one.
+> cannot have one. Capacity is the one figure that may be sourced at any tier,
+> with the tier written down; a site whose capacity nobody has stated is held
+> only where a company or a government has described it as commercial-scale, and
+> it is listed as outstanding until a figure exists.
 
 **Word check:** `python3 -c "import display_vocabulary as dv; print(dv.violations(TEXT))"`
 returns `[]`. Confirmed before this file was written.
@@ -346,8 +360,94 @@ which is the gate working, and is cheaper to know about now than at the build.
 
 ---
 
+## 7. Rulings applied, and what confirmation turned up
+
+The rulings of 2 September 2026 are folded in. What follows is what changed and
+what the company-source pass actually found, because the answer moved several
+candidates.
+
+**A — ACC stays paused, with the February 2026 reports as events.** ACC's own
+words are that the conditions for restarting "are unlikely to be met" and that it
+has begun a "constructive dialogue" with unions over potential discontinuation;
+"definitively shelved" is UILM's. Both are on the Termoli row as a second event
+with the status unchanged, which is the machinery the Slite ruling built.
+
+**B — Northvolt Ett is one continuous project**, and `status_history` now has an
+event kind. `ownership` carries `from`, `to` and the status the project was
+already in. Three things fell out of that and all three were wanted: the
+append-only invariant survives, `is_transition` already skips it — the status is
+unchanged, so the "was paused on {date}" templates need no teaching — and the feed
+still shows it with a true status chip. The gate refuses an ownership event that
+opens a history or that also changes the status, because a company changing hands
+on the day a project is paused is two events and one entry saying both reads as
+one causing the other. The parity gate now runs every case twice, once with the
+entries marked `ownership`, so the two languages cannot start disagreeing about
+whether a kind matters: **9,362 histories agree.**
+
+**C, D, E** are in the perimeter prose above.
+
+### What company-source confirmation actually found
+
+**Six rows landed.** They are in `data/transition/projects.json` and every gate
+passes. Each has a company source, a works-level coordinate from OpenStreetMap
+with the tags quoted, and a status history whose entries each carry a link.
+
+| Row | Status | Company source | Exercises |
+|---|---|---|---|
+| `acc-billy-berclau` | operating | acc-emotion.com, 2023-05-30 | — |
+| `verkor-dunkirk` | operating | verkor.com, 2025-12-11 | — |
+| `powerco-salzgitter` | operating | volkswagen-group.com, 2025-12-17 | cell line at a vehicle works |
+| `northvolt-ett-skelleftea` | paused | northvolt.com + lyten.com | **ruling B** |
+| `acc-termoli` | paused | ACC quoted, 2026-02-09 | **ruling A** |
+| `catl-stellantis-zaragoza` | announced | stellantis.com, 2024-12-10 | cell line at a vehicle works |
+
+**And two candidates were stopped by the rules rather than by effort**, which is
+worth recording because it is the perimeter and the location layer doing exactly
+what they are for:
+
+- **ACC Kaiserslautern has no OpenStreetMap feature.** The site is real and ACC's
+  own, but the basemap carries no polygon for it, so there is no coordinate from a
+  quoted source and the location rule keeps it off file. It is not a judgement and
+  cannot be argued around; it needs a source for the position.
+- **PowerCo Sagunto and GIB Šurany have company sources and no works-level
+  coordinate.** The basemap has the industrial park at Sagunt and nothing named at
+  Šurany. Same rule, same remedy.
+
+**A fifth country name was needed beyond the four approved.** The four — Spain,
+Portugal, Ireland, Ukraine — are in. The Termoli crop then failed the build asking
+for **Montenegro**, because at 800 km across it reaches the far side of the
+Adriatic, which my pre-check missed by only testing the sites I then wrote rows
+for. It is added, and it is flagged here rather than buried: it is a fifth name
+on a list of four that were approved.
+
+### The dataset is complete by the perimeter's own definition
+
+Six rows is not a sixth of the sector — it is all of the sector that is **on
+file**, because the perimeter says a site the company has not confirmed is not
+held. The other 28 candidates in §2 are candidates, not omissions.
+
+That distinction is honest and it is also a real editorial problem for the page:
+an overview drawn today would show six sites and would not show CATL Debrecen, the
+Korean majors' Hungarian and Polish works, or any of the seven cancelled ones. The
+picture would understate the sector badly. **The confirmation work is therefore
+not tidying — it is the thing standing between this dataset and a page that can
+honestly be published**, and it should finish before the sector page is drawn
+rather than after.
+
+---
+
 ## Stopping here
 
-Per brief item 10, nothing else is built. Next, on your ruling: fetch company
-sources for every `press` and `state` candidate, resolve A–E, then rows, graph and
-page in the settled section order, stopping again for preview.
+A–E are resolved and the first six rows are in. What is left, in order:
+
+1. **Company sources and coordinates for the remaining 28 candidates.** The
+   binding constraint is coordinates as much as sources — three candidates
+   already have a company source and no works polygon.
+2. **Bottlenecks and the ranking**, which is what `hasMap` reads: until
+   `data/transition/bottlenecks.json` carries batteries rows and
+   `build_importance.py` writes `importance/batsol.json`, the tile keeps opening
+   the holding page and no sector overview is drawn. Project crops already build,
+   and the six are on disk.
+3. **Materials**, for the CRMA Annex I links the technology nodes want.
+4. **The two acts**, each a single pass declared as a preliminary reading.
+5. **Funding rows**, then the prose slots, then the page.

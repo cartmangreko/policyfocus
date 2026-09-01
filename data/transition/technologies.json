@@ -330,6 +330,106 @@
           "verbatim": "The EAF plant currently under construction will be capable of producing around 850,000 tons of CO2‐reduced steel annually as of 2027."
         }
       ]
+    },
+    {
+      "id": "cell-manufacturing",
+      "transition": "supply_security",
+      "name": "Gigafactory-scale cell manufacturing",
+      "description": "Electrode coating, cell assembly and formation run at gigawatt-hour scale on one site. It is the process node rather than a chemistry: the same lines make several chemistries, and what decides whether Europe has cells is whether the lines exist and yield, not which cathode runs through them.",
+      "plain_action": "building cell factories at gigawatt-hour scale",
+      "readiness": {
+        "level": "commercial",
+        "source": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
+        "date": "2025-12-17",
+        "note": "Several European sites are producing at scale. PowerCo commissioned Salzgitter on 17 December 2025 and produced the first Unified Cells made in Europe; ACC has been running at Billy-Berclau since 2023 and Verkor opened Bourbourg in December 2025."
+      },
+      "sectors": [
+        "batsol"
+      ],
+      "sources": [
+        {
+          "url": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
+          "title": "Start of European battery cell production: PowerCo commissions Salzgitter gigafactory",
+          "publisher": "Volkswagen Group",
+          "date": "2025-12-17",
+          "verbatim": "PowerCo SE today commissioned the Salzgitter gigafactory as planned and produced the first Unified Cells 'made in Europe'."
+        }
+      ]
+    },
+    {
+      "id": "lfp-cells",
+      "transition": "supply_security",
+      "name": "Lithium iron phosphate cells",
+      "description": "A cathode of iron and phosphate rather than nickel, manganese and cobalt. Lower energy density and lower cost, and it removes the two metals whose supply is most concentrated outside Europe, which is why it is the chemistry the volume end of the market has moved to.",
+      "plain_action": "shifting its cells to lithium iron phosphate",
+      "readiness": {
+        "level": "commercial",
+        "source": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+        "date": "2024-12-10",
+        "note": "Commercial worldwide and being built in Europe rather than made here at scale yet: the Stellantis and CATL joint venture at Zaragoza is a 50 GWh LFP site targeted to start production by the end of 2026."
+      },
+      "sectors": [
+        "batsol"
+      ],
+      "sources": [
+        {
+          "url": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+          "title": "Stellantis and CATL to invest up to €4.1 billion in joint venture for large-scale LFP battery plant in Spain",
+          "publisher": "Stellantis",
+          "date": "2024-12-10",
+          "verbatim": "Targeted to start production by end of 2026 at Stellantis' Zaragoza, Spain site, the facility could reach up to 50 GWh capacity, subject to the evolution of the electrical market in Europe and continued support from authorities in Spain and the European Union."
+        }
+      ]
+    },
+    {
+      "id": "nmc-nca-cells",
+      "transition": "decarbonisation",
+      "name": "Nickel-rich cells",
+      "description": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes. Higher energy density than iron phosphate and the chemistry most European cell capacity was designed around, at the cost of depending on nickel and cobalt.",
+      "plain_action": "making nickel-rich cells for longer range",
+      "readiness": {
+        "level": "commercial",
+        "source": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+        "date": "2025-12-11",
+        "note": "The chemistry most European lines run. Verkor opened Bourbourg on 11 December 2025 making high-performance cells for Renault and Alpine."
+      },
+      "sectors": [
+        "batsol"
+      ],
+      "sources": [
+        {
+          "url": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+          "title": "Verkor reaches a decisive milestone and opens its first gigafactory",
+          "publisher": "Verkor",
+          "date": "2025-12-11",
+          "verbatim": "For several months, the Gigafactory has been assembling modules from VIC cells and is now manufacturing its own cells."
+        }
+      ]
+    },
+    {
+      "id": "sodium-ion-cells",
+      "transition": "supply_security",
+      "name": "Sodium-ion cells",
+      "description": "Sodium in place of lithium in the cell. Lower energy density than either lithium chemistry and it removes lithium from the bill of materials entirely, which is the reason it is on this list: the constraint it answers is supply rather than emissions.",
+      "plain_action": "moving some cells to sodium, which uses no lithium",
+      "readiness": {
+        "level": "early-commercial",
+        "source": "https://www.catl.com/en/news/6401.html",
+        "date": "2025-04-21",
+        "note": "CATL launched Naxtra as a mass-production sodium-ion cell in April 2025. No European site makes sodium-ion cells, so the readiness is the technology's and not this sector's — which is the gap it is on this list to mark."
+      },
+      "sectors": [
+        "batsol"
+      ],
+      "sources": [
+        {
+          "url": "https://www.catl.com/en/news/6401.html",
+          "title": "Naxtra Battery Breakthrough & Dual-Power Architecture: CATL Pioneers the Multi-Power Era",
+          "publisher": "CATL",
+          "date": "2025-04-21",
+          "verbatim": "Naxtra Battery"
+        }
+      ]
     }
   ]
 }

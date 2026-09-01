@@ -122,6 +122,39 @@ PROJECT_STATUSES = (
 )
 
 
+# WHAT KIND OF EVENT AN ENTRY IS. `status` is the default and is left off the
+# entry; an entry that says nothing is the project moving from one status to the
+# next. `ownership` is the project changing hands, which the batteries dataset
+# forced: Northvolt Ett is one continuous site whose OWNER broke, not one project
+# that ended and another that began at the same coordinates, and a history that
+# could not say so would have had to choose between a cancellation that did not
+# happen and an acquisition that never appears.
+#
+# AN OWNERSHIP EVENT STILL CARRIES A STATUS, and it is the status the project was
+# already in. Three things fall out of that and all three are wanted:
+#
+#   the append-only invariant survives -- the last entry's status still equals
+#   the project's, so a header and a timeline cannot disagree;
+#
+#   is_transition already handles it -- the status is unchanged, so an ownership
+#   event is not a transition, and the three sentence templates that render an
+#   entry as "was paused on {date}" skip it without being told to;
+#
+#   and the feed, which wants the latest thing on file rather than the latest
+#   MOVE, shows it with a true status chip beside it.
+#
+# ONE FACT PER ENTRY. An ownership event may not also change the status: the gate
+# refuses one whose status differs from the entry before it, because a company
+# changing hands on the same day a project is paused is two events and reads as
+# one cause. For the same reason an ownership event may not be the first entry --
+# there is nothing for its status to be unchanged FROM, and is_transition would
+# have to call it a status change.
+PROJECT_EVENT_KINDS = (
+    "status",
+    "ownership",
+)
+
+
 # NOT EVERY ENTRY IN A STATUS HISTORY IS A STATUS CHANGE, and the difference has
 # to be named because three sentence templates on this site render an entry as
 # one: "{project} was paused on {date}".
