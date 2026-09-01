@@ -8083,6 +8083,37 @@
   }
  },
  {
+  "id": "project:catl-arnstadt",
+  "kind": "project",
+  "label": "CATL Arnstadt",
+  "attrs": {
+   "company": "Contemporary Amperex Technology Thuringia",
+   "plant": "Arnstadt",
+   "country": "DE",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Arnstadt cell works",
+     "lat": 50.8611,
+     "lon": 10.9502,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/776264491",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=CATL Werk G1; man_made=works; operator=Contemporary Amperex Technology Thuringia AG",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The polygon is the G1 building; CATL states the first cells came off a line in G2 on the same site, for which the basemap carries no separate outline."
+    }
+   ]
+  }
+ },
+ {
   "id": "project:catl-stellantis-zaragoza",
   "kind": "project",
   "label": "CATL and Stellantis Zaragoza",

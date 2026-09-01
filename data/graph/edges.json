@@ -28016,6 +28016,26 @@
  },
  {
   "rel": "deploys",
+  "from": "project:catl-arnstadt",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-12-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-arnstadt].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:catl-arnstadt",
+  "to": "technology:nmc-nca-cells",
+  "since": "2022-12-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-arnstadt].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:catl-stellantis-zaragoza",
   "to": "technology:cell-manufacturing",
   "since": "2024-12-10",
@@ -30652,6 +30672,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=carbon2business-lagerdorf].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-arnstadt",
+  "to": "country:DE",
+  "since": "2022-12-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-arnstadt].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-arnstadt",
+  "to": "sector:batsol",
+  "since": "2022-12-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-arnstadt].sector"
   },
   "basis": "sector"
  },
