@@ -8114,6 +8114,37 @@
   }
  },
  {
+  "id": "project:catl-debrecen",
+  "kind": "project",
+  "label": "CATL Debrecen",
+  "attrs": {
+   "company": "Contemporary Amperex Technology",
+   "plant": "Debrecen",
+   "country": "HU",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Debrecen Southern Industrial Park",
+     "lat": 47.4632,
+     "lon": 21.6201,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/relation/18559299",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=CATL akkumulátorgyár; landuse=construction",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The basemap still carries the site as landuse=construction, which matches its status here."
+    }
+   ]
+  }
+ },
+ {
   "id": "project:catl-stellantis-zaragoza",
   "kind": "project",
   "label": "CATL and Stellantis Zaragoza",
@@ -8393,6 +8424,96 @@
       "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Cimenterie de Lumbres; landuse=industrial; operator=EQIOM - a CRH Company; addr:street=Rue Jean-Baptiste Macaud; addr:postcode=62380",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:lges-wroclaw",
+  "kind": "project",
+  "label": "LG Energy Solution Wrocław",
+  "attrs": {
+   "company": "LG Energy Solution",
+   "plant": "Wrocław",
+   "country": "PL",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Wrocław cell works",
+     "lat": 51.0205,
+     "lon": 16.886,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/922173635",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=LG Energy Solution Wrocław; man_made=works; product=car_battery",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:lyten-heide",
+  "kind": "project",
+  "label": "Northvolt Drei",
+  "attrs": {
+   "company": "Northvolt Drei Project GmbH",
+   "plant": "Heide",
+   "country": "DE",
+   "status": "paused",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Heide gigafactory",
+     "lat": 54.1953,
+     "lon": 9.0547,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1238083686",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Batteriefabrik Northvolt Drei",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:morrow-arendal",
+  "kind": "project",
+  "label": "Morrow Cell Factory",
+  "attrs": {
+   "company": "Morrow Batteries",
+   "plant": "Arendal",
+   "country": "NO",
+   "status": "cancelled",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Arendal cell works",
+     "lat": 58.5004,
+     "lon": 8.803,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1308751286",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Morrow batteries; building=industrial",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"

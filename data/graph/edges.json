@@ -28036,6 +28036,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:catl-debrecen",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-debrecen].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:catl-stellantis-zaragoza",
   "to": "technology:cell-manufacturing",
   "since": "2024-12-10",
@@ -28182,6 +28192,56 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=k6-lumbres].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:lges-wroclaw",
+  "to": "technology:cell-manufacturing",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lges-wroclaw].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:lges-wroclaw",
+  "to": "technology:nmc-nca-cells",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lges-wroclaw].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:lyten-heide",
+  "to": "technology:cell-manufacturing",
+  "since": "2026-07-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lyten-heide].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:morrow-arendal",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-08-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=morrow-arendal].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:morrow-arendal",
+  "to": "technology:lfp-cells",
+  "since": "2024-08-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=morrow-arendal].technology"
   }
  },
  {
@@ -30699,6 +30759,28 @@
  },
  {
   "rel": "in",
+  "from": "project:catl-debrecen",
+  "to": "country:HU",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-debrecen].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-debrecen",
+  "to": "sector:batsol",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-debrecen].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:catl-stellantis-zaragoza",
   "to": "country:ES",
   "since": "2024-12-10",
@@ -30892,6 +30974,72 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=k6-lumbres].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:lges-wroclaw",
+  "to": "country:PL",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lges-wroclaw].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:lges-wroclaw",
+  "to": "sector:batsol",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lges-wroclaw].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:lyten-heide",
+  "to": "country:DE",
+  "since": "2026-07-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lyten-heide].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:lyten-heide",
+  "to": "sector:batsol",
+  "since": "2026-07-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lyten-heide].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:morrow-arendal",
+  "to": "country:NO",
+  "since": "2024-08-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=morrow-arendal].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:morrow-arendal",
+  "to": "sector:batsol",
+  "since": "2024-08-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=morrow-arendal].sector"
   },
   "basis": "sector"
  },

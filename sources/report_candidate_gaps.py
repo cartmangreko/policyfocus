@@ -59,7 +59,7 @@ def report(path: Path, projects: dict[str, dict]) -> tuple[int, int, int]:
     rows = doc["candidates"]
     sector = doc.get("sector", "?")
 
-    landed, no_source, no_coord, no_capacity = [], [], [], []
+    landed, no_source, no_coord, no_capacity, blocked = [], [], [], [], []
     for r in rows:
         if r["id"] in projects:
             landed.append(r)
@@ -70,7 +70,7 @@ def report(path: Path, projects: dict[str, dict]) -> tuple[int, int, int]:
                 no_capacity.append(r)
             continue
         if not r.get("company_source"):
-            no_source.append(r)
+            (blocked if r.get("company_source_blocked") else no_source).append(r)
         if not r.get("coordinate_source"):
             no_coord.append(r)
 
@@ -89,6 +89,15 @@ def report(path: Path, projects: dict[str, dict]) -> tuple[int, int, int]:
                 print(f"        {note}")
 
     block("no company source read", no_source, "company_source")
+    # SEPARATED FROM THE ABOVE ON PURPOSE. These are not research, they are a
+    # minute in a browser: the document is identified and the fetcher is being
+    # refused. Mixed into the same list they look like the same problem and get
+    # the same effort, which is how a five-minute job stays open for a month.
+    if blocked:
+        print(f"\n  company source located, this pipeline cannot read it ({len(blocked)}) "
+              f"— open in a browser and quote it:")
+        for r in sorted(blocked, key=lambda x: (x["country"], x["id"])):
+            print(f"    {r['country']}  {r['id']:30} {r['company_source_blocked']}")
     block("no coordinate from a citable source", no_coord, "coordinate_source")
     block("on file, capacity figure still outstanding", no_capacity, "capacity_gwh")
 

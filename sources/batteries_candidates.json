@@ -20,7 +20,13 @@
     "is the thing this file is for.",
     "",
     "Refused candidates are NOT here. This file is the admitted set; what the perimeter",
-    "refuses, and why, is in sources/batteries_docket.md, which is the reviewed record."
+    "refuses, and why, is in sources/batteries_docket.md, which is the reviewed record.",
+    "",
+    "`company_source_blocked` is the third state. The right document has been found and",
+    "named, and the fetcher cannot read it -- a publisher that answers 403 to a datacentre",
+    "IP, or a host whose certificate does not match. It is not a missing source and it is",
+    "not a usable one: somebody with a browser can close it in a minute, and until they do",
+    "the row cannot carry a verbatim quote nobody has read."
   ],
   "sector": "batsol",
   "perimeter": "sources/batteries_docket.md",
@@ -129,7 +135,9 @@
       "capacity_gwh": 10,
       "company_source": null,
       "coordinate_source": null,
-      "coordinate_ref": "way/1547499346 Envision AESC, man_made=works"
+      "coordinate_ref": "way/1547499346 Envision AESC, man_made=works",
+      "note": "Company source located and unreadable: aesc-group.com answers 403 to every URL tried, including language variants. The Douai start-of-production release is the right document. Coordinate is in hand (way/1547499346, man_made=works).",
+      "company_source_blocked": "https://aesc-group.com/news/at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory"
     },
     {
       "id": "envision-aesc-sunderland",
@@ -139,7 +147,9 @@
       "status": "operating",
       "capacity_gwh": null,
       "company_source": null,
-      "coordinate_source": null
+      "coordinate_source": null,
+      "note": "Company source located and unreadable (aesc-group.com, 403). No basemap feature found for either Sunderland site.",
+      "company_source_blocked": "https://www.aesc-group.com/news/aesc-launches-its-new-uk-battery-gigafactory"
     },
     {
       "id": "envision-aesc-extremadura",
@@ -149,7 +159,9 @@
       "status": "construction",
       "capacity_gwh": null,
       "company_source": null,
-      "coordinate_source": null
+      "coordinate_source": null,
+      "note": "Company source located and unreadable (aesc-group.com, 403). No basemap feature found.",
+      "company_source_blocked": "https://aesc-group.com/news/"
     },
     {
       "id": "catl-arnstadt",
@@ -169,8 +181,8 @@
       "country": "HU",
       "status": "construction",
       "capacity_gwh": 100,
-      "company_source": null,
-      "coordinate_source": null,
+      "company_source": "https://www.catl.com/en/news/983.html",
+      "coordinate_source": "basemap",
       "coordinate_ref": "relation/18559299 CATL akkumulátorgyár, landuse=construction"
     },
     {
@@ -191,8 +203,8 @@
       "country": "PL",
       "status": "operating",
       "capacity_gwh": 86,
-      "company_source": null,
-      "coordinate_source": null,
+      "company_source": "https://news.lgensol.com/insights/from-our-experts/3071/",
+      "coordinate_source": "basemap",
       "coordinate_ref": "way/922173635 LG Energy Solution Wrocław, product=car_battery"
     },
     {
@@ -202,9 +214,10 @@
       "country": "HU",
       "status": "operating",
       "capacity_gwh": null,
-      "company_source": null,
+      "company_source": "https://www.samsungsdi.com/about-sdi/global-network.html",
       "coordinate_source": null,
-      "coordinate_ref": "relation/16364462, tagged only 'Samsung' — identifies the estate rather than the cell works; weak"
+      "coordinate_ref": "relation/16364462, tagged only 'Samsung' — identifies the estate rather than the cell works; weak",
+      "note": "Samsung SDI's own network page names SAMSUNG SDI Hungary Zrt. at '2131 Göd, Schenek István utca 1'. The street is not in the basemap, so the published address yields no works-level point; the earlier relation/16364462 is tagged only 'Samsung' and identifies the estate. Coordinate outstanding, capacity outstanding."
     },
     {
       "id": "sk-on-ivancsa",
@@ -215,7 +228,9 @@
       "capacity_gwh": null,
       "company_source": null,
       "coordinate_source": null,
-      "coordinate_ref": "node/8928841937 is an OFFICE node (office=company), not the works — refused"
+      "coordinate_ref": "node/8928841937 is an OFFICE node (office=company), not the works — refused",
+      "note": "SK On's own site lists Plant No.3 at Iváncsa, 30 GWh, from 2024, at 'HRSZ 99/48, Iváncsa 2454', but eng.sk-on.com serves a certificate for a different host and could not be read. The only basemap feature is an office node (office=company), refused: an office is not the works.",
+      "company_source_blocked": "http://eng.sk-on.com/company/global.asp"
     },
     {
       "id": "sk-on-komarom",
@@ -224,8 +239,9 @@
       "country": "HU",
       "status": "operating",
       "capacity_gwh": null,
-      "company_source": null,
-      "coordinate_source": null
+      "company_source": "https://www.skinnovation.com/company/global?type=europe",
+      "coordinate_source": null,
+      "note": "SK Innovation's network page names SK Battery Manufacturing Kft. at '2900 Komárom, Klapka György út 39.'. The address geocodes only to the street, which returns two segments 700 m apart — a street centroid is no more a works than a town centroid is. Coordinate outstanding."
     },
     {
       "id": "agratas-bridgwater",
@@ -234,8 +250,9 @@
       "country": "UK",
       "status": "construction",
       "capacity_gwh": 40,
-      "company_source": null,
-      "coordinate_source": null
+      "company_source": "https://www.agratas.com/news/bridgwater-july-site-progress-update",
+      "coordinate_source": null,
+      "note": "Company source read (Agratas, 22 August 2025). No coordinate: the basemap carries nothing at the Gravity site, Puriton or Bridgwater under any name tried."
     },
     {
       "id": "sunwoda-nyiregyhaza",
@@ -294,8 +311,9 @@
       "country": "DE",
       "status": "paused",
       "capacity_gwh": 60,
-      "company_source": null,
-      "coordinate_source": null
+      "company_source": "https://lyten.com/2026/07/01/lyten-signs-exclusive-mou-to-progress-acquisition-of-northvolt-drei-assets-in-germany/",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1238083686 Batteriefabrik Northvolt Drei"
     },
     {
       "id": "elevenes-subotica",
@@ -364,8 +382,8 @@
       "country": "NO",
       "status": "cancelled",
       "capacity_gwh": null,
-      "company_source": null,
-      "coordinate_source": null,
+      "company_source": "https://news.morrowbatteries.com/pressreleases/jonas-gahr-stoere-prime-minister-of-norway-officially-inaugurates-europes-first-lfp-battery-gigafactory-3337609",
+      "coordinate_source": "basemap",
       "coordinate_ref": "way/1308751286 Morrow batteries"
     },
     {

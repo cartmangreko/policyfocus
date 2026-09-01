@@ -486,6 +486,73 @@ a measure base.
 
 ---
 
+## 9. The company-source sweep
+
+**Eleven rows on file, 23 outstanding — 32% of the sector.** Four rows landed on
+this pass: LG Energy Solution Wrocław, CATL Debrecen, Northvolt Drei at Heide,
+and Morrow at Arendal.
+
+**CATL Debrecen matters most.** It is the sector's largest project — 100 GWh,
+€7.34 billion, 221 hectares in the Southern Industrial Park — and CATL's own
+announcement of 12 August 2022 says so in as many words. It was the row the
+perimeter was holding out at the greatest cost, and it is now in.
+
+**Your expectation was right, with one correction.** The constraint was reading
+rather than existence: every operator that has built at scale has documented it
+in its own materials, and the sites came out of newsrooms, network pages and
+investor copy exactly where you said they would. The correction is that the
+constraint has **split in two**, and only one half is research:
+
+### A source can be located and still unusable, and that is now its own state
+
+`company_source_blocked` records a document that has been found and named and
+that this pipeline cannot read. It is reported separately from "no source read",
+because mixing them makes a five-minute job look like a research task and it then
+gets a research task's priority.
+
+- **AESC answers 403 to everything.** All three Envision AESC sites — Douai,
+  Sunderland, Extremadura — have the right release identified and unreadable. The
+  Douai coordinate is already in hand. Somebody with a browser closes all three.
+- **SK On's English site serves a certificate for another host.** `eng.sk-on.com`
+  presents a certificate for `*.skenergy.com`, so the page listing Iváncsa at
+  "HRSZ 99/48, Iváncsa 2454" with 30 GWh from 2024 cannot be read here. SK
+  Innovation's own network page was readable and gave Komárom.
+
+### The published address is a company source and often not a coordinate
+
+The widened rule admits an operator's own address, and three operators publish
+one. It closes the source question and frequently not the position question:
+
+- **Samsung SDI** names "2131 Göd, Schenek István utca 1". The street is not in
+  the basemap; the address yields no point.
+- **SK On** names "2900 Komárom, Klapka György út 39.". The street geocodes to two
+  segments 700 m apart. A street centroid is no more a works than a town centroid
+  is, so it is refused on the same rule.
+- **Agratas** was read and gives the site and its state — 4,000 tonnes of steel
+  standing at Bridgwater — and the basemap has nothing there under any name tried.
+
+So both moved from "no company source" to "company source read, coordinate
+outstanding", which is real progress and does not put them on the paper.
+
+### Refusals recorded as refusals
+
+- **SK On Iváncsa**: the only basemap feature is `office=company` on a point. An
+  office is not the works and does not become the works by being the only thing
+  available.
+- **Samsung SDI Göd**: `relation/16364462` is tagged only `Samsung`. It identifies
+  the industrial estate.
+
+### One capacity that the ruling settled
+
+Morrow Arendal is carried at **43 GWh**, not the 1 GWh of the cell factory that
+was inaugurated. Ruling C says announced capacity is the company's stated target
+for the site and a smaller first line is a phase of it, and Morrow's own release
+describes the 1 GWh Morrow Cell Factory followed by three 14 GWh modules. It is
+also, now, a cancelled project carrying a 43 GWh target, which is the sector's
+shape in one row.
+
+---
+
 ## Stopping here
 
 A–E are resolved and the first six rows are in. What is left, in order:
