@@ -1,0 +1,353 @@
+# Batteries — perimeter and candidate docket
+
+**Brief 6, items 1 and 2. Nothing here is built yet.** This file is the stop the
+brief asks for: the perimeter as proposed reviewed prose, and every candidate the
+perimeter admits or refuses, with the clause that decided it and the source that
+supports it. No rows, no graph, no page. It leaves this file when the dataset
+lands.
+
+---
+
+## 1. The perimeter
+
+### The proposed reviewed prose
+
+Written for `/coverage`, so it clears the display vocabulary: `plant`, `register`,
+`record`, `map` and `transition` are all on the banned lists and none of them
+appears below. The brief's own phrase "battery cell manufacturing plant" is
+therefore rendered as **site**, which is the word the geography layer already uses
+in running text.
+
+> **Batteries.** Eufabric holds a battery cell manufacturing site when three
+> things are true of it at once: it makes battery cells, it stands in geographic
+> Europe, and the company itself has confirmed a named site with an announced
+> capacity of at least 1 GWh per year.
+>
+> Four things follow, and each is enforced rather than left to judgement. Pack
+> and module assembly is out, including the assembly lines inside vehicle
+> factories: a site that buys cells and builds them into packs is not making
+> cells. Cathode, anode, separator and electrolyte works are out for now — they
+> are the inputs to a cell rather than a cell, and they arrive later either as
+> material links or as a widened perimeter. Battery recycling is out here and
+> belongs to circular materials, on the standing boundary rule that a site is
+> claimed by the ecosystem whose product it makes; links back appear when that
+> dataset exists. Pilot and research lines are out unless the company states the
+> line as a phase of a commercial project.
+>
+> A project whose specific site the company has not confirmed is not held at all.
+> That one needs no separate enforcement: every site on this platform carries a
+> latitude and a longitude from a quoted source, and a site nobody has named
+> cannot have one.
+
+**Word check:** `python3 -c "import display_vocabulary as dv; print(dv.violations(TEXT))"`
+returns `[]`. Confirmed before this file was written.
+
+**"1 GWh" appears verbatim**, as the brief requires, in the sentence that states
+the rule rather than in a note under it.
+
+### Two things the perimeter had to settle that the brief did not spell out
+
+**Cell lines inside vehicle factories are IN.** The exclusion is of pack and
+module assembly, and it is a rule about the **product**, not about who owns the
+gate. Tesla's Grünheide site, PowerCo's Salzgitter site and the CATL/Stellantis
+Zaragoza site are all cell manufacturing standing on or beside a vehicle factory,
+and all three are admitted. Reading the exclusion as "no automotive sites" would
+have thrown out three of the largest genuine cell projects in Europe. The prose
+above says "including the assembly lines inside vehicle factories" so that the
+distinction is drawn where a reader will look for it.
+
+**"Geographic Europe" is wider than the EU**, and deliberately: it admits the
+United Kingdom, Norway, Switzerland and Serbia, all of which have real candidates.
+It has one edge that needs your ruling — see open question **D**.
+
+### How each consequence is enforced
+
+| Consequence | Enforcement | Silent? |
+|---|---|---|
+| Cells only — no pack/module assembly | Product rule in the gate; a candidate is admitted on what it makes | No — refused by name |
+| No cathode/anode/separator/electrolyte | Product rule in the gate | No — refused by name, ROADMAP entry for the widening |
+| No recycling | Boundary rule; claimed by circular materials | No — refused by name, edges back when that dataset exists |
+| No pilot/R&D unless a stated commercial phase | Product rule in the gate | No — refused by name |
+| Named company-confirmed site | Location layer, mechanically: no coordinate may be missing | No — the build fails |
+| ≥ 1 GWh per year announced | Scale rule in the gate | No — refused by name |
+
+The gate fails a candidate breaching the **product**, **site** or **scale** rule,
+as the brief specifies. It is a gate and not a report because all three are
+answerable from the data on the candidate itself; the two things that are *not*
+answerable that way — the paused/cancelled distinction, and whether an announcement
+is still live — are reports, per items 2 and 3.
+
+---
+
+## 2. The candidate docket
+
+### How to read the source column
+
+The perimeter requires a **company-confirmed** site. This pass identified
+candidates and got as far as it could on sources in one sweep; the column says
+honestly how far that is, because the difference decides whether a candidate can
+become a held site at all.
+
+- **company** — a company or joint-venture publication naming the site is in hand.
+- **state** — a government or agency publication (HIPA, AICEP, National Grid, a
+  state-aid decision). Good evidence, and **not** what the perimeter asks for.
+- **press** — trade press only. **Not admissible as it stands.**
+
+**Every `press` and `state` candidate below needs a company source fetched before
+it can be admitted.** That is the perimeter doing its job, not a defect in the
+docket, and it is the largest single piece of work between this file and the rows.
+
+### Admitted — operating
+
+| # | Company | Site | Country | GWh | Status basis | Source |
+|---|---|---|---|---|---|---|
+| 1 | ACC | Billy-Berclau / Douvrin | FR | 13 (block 1) | Inaugurated May 2023 | **company** (acc-emotion.com) |
+| 2 | Verkor | Gigafactory Bourbourg, Dunkirk | FR | 16 | Inaugurated Dec 2025 | **company** (verkor.com) |
+| 3 | PowerCo (VW) | Salzgitter | DE | up to 20 | Commissioned | **company** (volkswagen-group.com) |
+| 4 | Envision AESC | Douai | FR | 10 (phase 1) | Operational 2025 | press |
+| 5 | Envision AESC | Sunderland | UK | — | Second site began ops Dec 2025 | press |
+| 6 | CATL | Arnstadt, Thuringia | DE | 14 | Cells since Dec 2022 | press |
+| 7 | Tesla | Grünheide (Giga Berlin) 4680 line | DE | 8 → 18 target | Ramping; €250m expansion May 2026 | press |
+| 8 | LG Energy Solution | Biskupice Podgórne, Wrocław | PL | ~86–90 | Operating | press |
+| 9 | Samsung SDI | Göd | HU | — | Operating | press |
+| 10 | SK On | Iváncsa | HU | — | Operating | press |
+| 11 | SK On | Komárom | HU | — | Operating | press |
+
+### Admitted — under construction
+
+| # | Company | Site | Country | GWh | Status basis | Source |
+|---|---|---|---|---|---|---|
+| 12 | CATL | Debrecen | HU | 100 planned / 40 initial | Production from early 2026 | press |
+| 13 | PowerCo (VW) | Sagunto, Valencia | ES | 40 planned / 20 at start | Series production July 2027 | **company** (volkswagen-group.com) |
+| 14 | Agratas (Tata) | Gravity, Bridgwater, Somerset | UK | 40 | Piling complete; grid works under way | state (National Grid) |
+| 15 | Gotion InoBat Batteries | Šurany | SK | 20 (→40) | Construction began Oct 2025 | **company** (inobat.eu / gibenergy.com) |
+| 16 | Envision AESC | Navalmoral de la Mata, Extremadura | ES | — | Ground broken; first production 2026 | press |
+| 17 | CATL / Stellantis JV | Zaragoza | ES | up to 50 | JV Dec 2024; production targeted end 2026 | **company** (stellantis.com) |
+| 18 | Sunwoda | Nyíregyháza | HU | — | Under construction, on schedule | state (HIPA) |
+
+### Admitted — announced
+
+| # | Company | Site | Country | GWh | Status basis | Source | Newest source |
+|---|---|---|---|---|---|---|---|
+| 19 | EVE Power | Debrecen | HU | 30 (phase 1) | Environmental permit; production 2027 | state (HIPA) | 2026-07 |
+| 20 | CALB | Sines | PT | 15 | Investment contract signed 20 Jan 2026 | state (AICEP) | 2026-01 |
+| 21 | InoBat | Spain (site to confirm) | ES | — | Funding secured Sep 2025 | press | 2025-09 |
+
+### Admitted — paused
+
+| # | Company | Site | Country | GWh | Status basis | Source |
+|---|---|---|---|---|---|---|
+| 22 | ACC | Kaiserslautern | DE | — | **See open question A** | press |
+| 23 | ACC | Termoli | IT | — | **See open question A** | press |
+| 24 | FREYR / T1 Energy | Mo i Rana | NO | — | Cell manufacturing on hold; company pivoted to US | press |
+| 25 | Lyten (ex-Northvolt) | Heide (Northvolt Drei) | DE | 60 originally | StaRUG restructuring; Lyten plans smaller | press |
+
+### Admitted — cancelled
+
+| # | Company | Site | Country | GWh | Status basis | Source |
+|---|---|---|---|---|---|---|
+| 26 | SVOLT | Überherrn, Saarland | DE | — | Withdrawn 2023 | press |
+| 27 | SVOLT | Lauchhammer, Brandenburg | DE | — | Cancelled May 2023 | press |
+| 28 | Britishvolt | Cambois, Blyth, Northumberland | UK | 35 | Administration Jan 2023 | press |
+| 29 | Italvolt | Scarmagno | IT | — | Bankrupt Jan 2024; moved to UAE | press |
+| 30 | Farasis | Bitterfeld-Wolfen | DE | 16 | Cancelled | press |
+| 31 | Morrow Batteries | Arendal | NO | — | Filed for bankruptcy 6 May 2026 | press |
+| 32 | Northvolt | Borlänge | SE | — | Cancelled | press |
+
+### Admitted — status unresolved
+
+| # | Company | Site | Country | GWh | Why unresolved |
+|---|---|---|---|---|---|
+| 33 | Lyten (ex-Northvolt) | Northvolt Ett, Skellefteå | SE | — | **See open question B** |
+| 34 | ElevenEs | Subotica | RS | 8 or 1 — conflicting | **See open question C** |
+
+### Refused, and by which clause
+
+| Candidate | Clause | Note |
+|---|---|---|
+| Cellforce Group, Kirchentellinsfurt (Porsche) | scale, then product | Sub-1 GWh; site being shut down entirely |
+| CustomCells, Itzehoe | scale | Specialty cells well under 1 GWh; insolvent 2025, new owners |
+| CustomCells, Tübingen | scale | Closed and will not reopen |
+| VARTA, Ellwangen / Nördlingen | scale | Small-format cells |
+| Northvolt Labs, Västerås | pilot/R&D | R&D site, not a stated phase of a commercial project |
+| Northvolt Poland, Gdańsk | product | Energy-storage system assembly — module and pack work |
+| Umicore, Nysa | product | Cathode material |
+| BASF, Schwarzheide | product | Cathode material |
+| Every pack/module line at a vehicle factory | product | The exclusion's main population |
+| Hydrovolt, Librec, Altilium and other recyclers | boundary | Circular materials; links back when that dataset exists |
+
+**The refusals are the perimeter earning its place.** Four of the six clauses
+actually bite on real candidates in this sector, which is not true of every
+perimeter — the scale rule alone removes four German sites that a naive "battery
+factories in Europe" sweep would have carried in.
+
+---
+
+## 3. Open questions — these need your ruling before rows are written
+
+### A. ACC Kaiserslautern and Termoli: paused or cancelled?
+
+**This is the Slite case again, twice, and bigger.** The brief asks for the
+paused/cancelled distinction to be sourced with the same rigour, and the sources
+do not currently settle it:
+
+- The Italian metalworkers' union UILM said on **7 February 2026** that ACC
+  management had confirmed the plans were **"definitively shelved."**
+- ACC's own statement is weaker: *"It is clear that the prerequisites for
+  restarting ACC's projects in Germany and Italy are not in place."*
+- ACC was reported as **"considering shutting down the projects"** and in talks
+  with unions **"over the modalities for a potential shutdown"** — which is the
+  language of a decision not yet taken.
+
+So the strongest word ("definitively shelved") is the **union's**, not the
+company's, and the company's own words describe a condition rather than a
+cancellation. Under the standing press ruling, status comes from the project's own
+sources. On that reading both are **paused**, and I have entered them as paused
+above — but flagged, not decided, because two of the largest European projects
+turning on a union's adverb is exactly the call the brief says to bring to you.
+
+This matters more than it did for Slite: under the #47 ruling, cancelled means
+**undrawn** on the batteries overview. Ruling these cancelled removes two of the
+sector's largest sites from the picture.
+
+### B. Northvolt Ett / Lyten, Skellefteå — one project or two?
+
+Northvolt filed for bankruptcy in March 2025, the largest in modern Swedish
+history. Lyten acquired the assets and **completed the acquisition in February
+2026**, assuming operations at Ett and Labs, with production planned to restart in
+the second half of 2026.
+
+The data model has no vocabulary for this. Options:
+
+1. **One continuous project** that changed hands: status history runs
+   operating → paused → (restart), with the company changing. The schema has no
+   company-change event.
+2. **Two projects**: Northvolt Ett, cancelled at bankruptcy; and a new Lyten
+   project at the same site, announced. Honest about the discontinuity, and it
+   double-counts the site on the overview.
+
+I lean to (1) with the company as Lyten and the history carrying the bankruptcy
+and the acquisition as events, because the site, the building and the equipment
+are continuous and it is the *ownership* that broke. But this is a modelling
+ruling, not a sourcing one, and the same question will recur.
+
+### C. ElevenEs Subotica — does it clear 1 GWh?
+
+Sources conflict badly. One line has a Subotica gigafactory at **8 GWh** launching
+2026 with 40 GWh to follow; another has the February 2026 Series B financing
+supporting a **1 GWh** LFP mega-factory with construction starting February 2026.
+A third describes the existing facility as already "fully operational."
+
+At 8 GWh it is comfortably in. At 1 GWh it is exactly on the threshold, and
+"at least 1 GWh" admits it — but only if 1 GWh is the *announced capacity* rather
+than a first phase of something smaller. **Needs a company source before it can be
+admitted**, and it is the row that will test the scale rule's wording hardest.
+
+### D. Does "geographic Europe" include European Turkey?
+
+Turkey has real cell candidates (Siro, a Togg/Farasis joint venture, at Gemlik).
+Gemlik is in Bursa province, on the **Asian** side of the Sea of Marmara, so on a
+strict geographic reading it is out — but the rule then turns on which side of a
+strait a site stands, which is a poor thing for a perimeter to rest on. Three ways
+to close it: name the continental boundary explicitly; say "Europe" and let the
+basemap's own country set decide; or scope to Europe plus named neighbours. **No
+candidate is admitted or refused on this today** — I flag it because the perimeter
+becomes a gate, and a gate needs the answer.
+
+### E. Capacity is missing for eight admitted candidates
+
+Rows 5, 9, 10, 11, 16, 18, 22, 23 have no announced capacity figure in hand. The
+scale rule cannot be applied to them mechanically until it exists. All eight are
+very likely well over 1 GWh — these are the Korean majors' Hungarian and Polish
+sites and the two ACC projects — but "very likely" is not what the gate reads.
+
+---
+
+## 4. Staleness, applied by hand
+
+Item 3 asks for a standing report on announced candidates whose newest source is
+older than twelve months. That report is not built yet — it comes after this stop
+— but the test is worth running now, because it is one of the things you are
+reading this docket to judge. Against a **1 September 2026** clock:
+
+| Candidate | Newest source | Age | Zombie? |
+|---|---|---|---|
+| EVE Power, Debrecen | 2026-07 | 2 months | No |
+| CALB, Sines | 2026-01 | 7 months | No |
+| InoBat, Spain | 2025-09 | ~12 months | **On the line** |
+
+**Only one announced candidate is anywhere near the threshold**, and that is
+because this sector's dead projects mostly died loudly — bankruptcies and union
+statements — rather than going quiet. The zombie population the report exists to
+catch is smaller here than the brief anticipated. The report is still worth
+building: it is cheap, it generalises, and the sector's shape can change in a
+quarter.
+
+---
+
+## 5. What this docket says about the sector
+
+The standfirst clause the brief anticipates is real and is bigger than steel's.
+Of 34 admitted candidates: **11 operating, 7 under construction, 3 announced,
+4 paused, 7 cancelled, 2 unresolved.** Eleven of thirty-four are stopped or
+dead — roughly a third — against steel's one in eight. One independent European
+cell maker (Northvolt) went through the largest bankruptcy in modern Swedish
+history; a second (Morrow) filed in May 2026; a third (FREYR) left for the United
+States. The European-owned share of this sector's operating capacity is small and
+falling, and most of what is operating or building is Chinese, Korean or a
+carmaker's own subsidiary.
+
+That is a fact about the sector, and the page should carry it rather than a
+pipeline number that quietly counts dead projects as live.
+
+---
+
+## 6. The location layer, checked against batteries (brief item 9)
+
+The brief predicts the geography lights up for batteries with zero geometry work
+and asks me to report if it does not. **It half does**, and the half that does not
+would fail the build rather than degrade quietly.
+
+I checked this by running the real functions in `build_maps.py` against the
+extreme candidate sites rather than by reading the code.
+
+**Geometry: nothing to do, exactly as predicted.** Every candidate site falls
+inside the fixed Europe overview frame — Sines at 37.9 N and 8.9 W, Mo i Rana at
+66.3 N, Šurany, Subotica, Skellefteå, Bridgwater — so `EUROPE_DEGREES` needs no
+widening and the out-of-frame gate in `build_maps.main` stays silent. Crops are
+computed per subject and need nothing. The layer is genuinely sector-neutral.
+
+**Ground naming: four names are missing, and each is a hard build failure.**
+`label_countries` raises `SystemExit` rather than letting a two-letter code onto
+the paper, and a crop names *every* country in view. Batteries reaches parts of
+Europe no cement or steel crop has:
+
+| Crop | Countries it would name | Unnamed in `country_names` |
+|---|---|---|
+| Sines, Portugal | 2 | **ES, PT** |
+| Bridgwater, UK | 3 | **IE** |
+| Šurany, Slovakia | 12 | **UA** |
+| Skellefteå / Subotica / Mo i Rana | 4 / 9 / 2 | none |
+
+So `data/prose.json` `country_names` needs **Spain, Portugal, Ireland and
+Ukraine** before the first batteries crop builds. Cement and steel never reached
+Iberia, Ireland or the Ukrainian border, so the gap has been latent since the
+geography landed.
+
+They are four one-line additions and I have **not** made them: country names are
+reviewed prose, and the stop is before anything is built. Flagging them now
+because they are a prerequisite rather than a consequence — the batteries build
+fails at the first Spanish crop without them, with this message:
+
+    build_maps: no name for ES — add them to country_names in data/prose.json
+    rather than letting a two-letter code onto the paper
+
+which is the gate working, and is cheaper to know about now than at the build.
+
+---
+
+## Stopping here
+
+Per brief item 10, nothing else is built. Next, on your ruling: fetch company
+sources for every `press` and `state` candidate, resolve A–E, then rows, graph and
+page in the settled section order, stopping again for preview.

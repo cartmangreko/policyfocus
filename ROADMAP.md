@@ -125,6 +125,65 @@ What it needs, in order:
    the measure of whether it can be done at the narrow breakpoint.
 3. **A key line**, tier 1 in `geoKeyProse`, on the frames that draw one.
 
+## Cell inputs — cathode, anode, separator, electrolyte — as material links or a widened batteries perimeter
+
+**Queued behind the batteries dataset. Its own stack.** Touches
+`data/transition/materials.json`, the batteries perimeter prose and its gate, and
+`data/transition/projects.json` if the perimeter widens rather than linking.
+
+The batteries perimeter admits **cell manufacturing only**, and refuses cathode,
+anode, separator and electrolyte works by name. That refusal is deliberate and it
+is not permanent: those four are the inputs a cell is made of, several of the
+largest are being built in Europe right now — Umicore at Nysa, BASF at
+Schwarzheide — and a batteries picture that cannot see them is missing the half of
+the supply chain Europe is actually furthest behind on.
+
+Two ways to close it, and they are not the same change:
+
+- **Material links.** The works stay outside the batteries dataset and arrive as
+  edges from the materials layer, the way a captured tonne reaches a store. The
+  perimeter is unchanged and the batteries page gains a dependency it can draw.
+- **A widened perimeter.** Cathode and the rest become admissible sites in their
+  own right, which means new rows, new marks on the overview, and a scale rule
+  that has to be restated: 1 GWh per year is a cell measure and means nothing for
+  a tonne of cathode powder.
+
+The first is cheaper and is probably right. The second is what a reader would
+expect if the page ever calls itself a picture of European battery manufacturing,
+so the naming and the perimeter have to move together.
+
+CRMA Annex I materials are the obvious first links either way, and are already
+queued as part of the batteries dataset's technology work.
+
+## A reach-channel parity gate, on the transition-parity pattern
+
+**Queued. Small, and its shape is already settled.** Touches
+`sources/build_summaries.py`, `web/lib/reachChannel.ts` and one new file in
+`sources/`.
+
+`build_summaries.infer_reach_channel` and `reachChannel.ts` `inferReachChannel`
+are one rule written twice — the same two regexes, the same order, the same
+residual case — and what holds them together is a comment on each side saying
+"ported verbatim … the two regexes must be edited together." That is exactly the
+shape `sector_map.is_transition` and `transition.ts` `statusTransitions` were in
+before `check_transition_parity.py`, and it is not a mechanism.
+
+The failure is invisible in the product, which is what makes it worth a gate: the
+channel is **not stored** on any row — both sides infer it from the same stored
+text — so a drifting regex would have the built summary and the rendered page
+sort the same measure into different channels, both confidently, with nothing in
+either output saying which was right.
+
+The pattern to copy is `check_transition_parity.py`: compile the TypeScript with
+the project's own `tsc`, run it, and diff the two answers over a corpus rather
+than reimplementing the rule a third time in Python. The corpus is the one real
+difference. Transitions could be enumerated exhaustively because the rule is
+local and the alphabet is seven statuses; a regex over free text cannot be, so
+this one takes **every `addressee`/`duty`/`benefit` triple actually in the
+register** — a few hundred, which is a real corpus and not a synthetic one — plus
+a short list of hand-written strings sitting on the boundary between the two
+patterns. Those hand-written cases are the part worth arguing about in review.
+
 ## Horizontal / economy-wide scope as a data-model attribute
 
 **Its own stack.** Touches the schema, the gates, and every sector page.
