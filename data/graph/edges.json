@@ -27956,6 +27956,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:agratas-bridgwater",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-08-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=agratas-bridgwater].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:am-bremen-eisenhuettenstadt",
   "to": "technology:dri-eaf",
   "since": "2025-06-23",
@@ -28092,6 +28102,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=gezero-geseke].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:gib-surany",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-06-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gib-surany].technology"
   }
  },
  {
@@ -28276,6 +28296,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:powerco-sagunto",
+  "to": "technology:cell-manufacturing",
+  "since": "2023-03-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-sagunto].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:powerco-salzgitter",
   "to": "technology:cell-manufacturing",
   "since": "2025-12-17",
@@ -28322,6 +28352,26 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=salcos-salzgitter].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:samsung-sdi-god",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:samsung-sdi-god",
+  "to": "technology:nmc-nca-cells",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].technology"
   }
  },
  {
@@ -30649,6 +30699,28 @@
  },
  {
   "rel": "in",
+  "from": "project:agratas-bridgwater",
+  "to": "country:GB",
+  "since": "2025-08-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=agratas-bridgwater].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:agratas-bridgwater",
+  "to": "sector:batsol",
+  "since": "2025-08-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=agratas-bridgwater].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:am-bremen-eisenhuettenstadt",
   "to": "country:DE",
   "since": "2025-06-23",
@@ -30842,6 +30914,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=gezero-geseke].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:gib-surany",
+  "to": "country:SK",
+  "since": "2024-06-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gib-surany].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:gib-surany",
+  "to": "sector:batsol",
+  "since": "2024-06-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gib-surany].sector"
   },
   "basis": "sector"
  },
@@ -31089,6 +31183,28 @@
  },
  {
   "rel": "in",
+  "from": "project:powerco-sagunto",
+  "to": "country:ES",
+  "since": "2023-03-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-sagunto].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:powerco-sagunto",
+  "to": "sector:batsol",
+  "since": "2023-03-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-sagunto].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:powerco-salzgitter",
   "to": "country:DE",
   "since": "2025-12-17",
@@ -31150,6 +31266,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=salcos-salzgitter].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:samsung-sdi-god",
+  "to": "country:HU",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:samsung-sdi-god",
+  "to": "sector:batsol",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].sector"
   },
   "basis": "sector"
  },

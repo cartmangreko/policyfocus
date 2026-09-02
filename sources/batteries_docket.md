@@ -553,6 +553,76 @@ shape in one row.
 
 ---
 
+## 10. The sweep continued: bounding boxes, and the limits of this pipeline
+
+**Fifteen rows on file, 19 outstanding — 44%.** Four more landed: PowerCo Sagunto,
+Agratas Bridgwater, GIB Šurany and Samsung SDI Göd.
+
+### The coordinate problem was a search problem
+
+Nominatim searches by name, and a works whose polygon is unnamed, named in the
+local language, or named for its function is invisible to it. **A bounding-box
+query over Overpass finds them.** That single change turned up six works the name
+search had reported as absent:
+
+| Site | What the basemap actually calls it |
+|---|---|
+| Agratas Bridgwater | `Agratas Battery Factory` — indexed under nothing I had searched |
+| Samsung SDI Göd | `Cella gyártás` — *cell manufacturing*, tagged by function |
+| GIB Šurany | unnamed, identified only by `operator=GIB EnergyX Slovakia` |
+| PowerCo Sagunto | `Gigafactoria Volkswagen` |
+| CALB Sines | `Construção da Unidade Industrial de Baterias de Lítio da CALB` |
+| Italvolt Scarmagno | `Officine Olivetti`, the site's historic name |
+
+Samsung SDI's is the one worth keeping. The estate polygon is tagged `Samsung`
+and was refused last pass for identifying the site rather than the works; inside
+it sits a building tagged **`Cella gyártás`**, which is exactly the works and
+says so. The refusal was right and the thing it was holding out for existed.
+
+**Bounding-box first, name search second**, for anything this dataset needs next.
+
+### Three things this pipeline cannot do, and a person can
+
+The sweep did not exhaust — it hit a wall, and the wall has three courses. All
+eleven are queued in `sources/manual/MANIFEST.json`.
+
+1. **A publisher that refuses us.** AESC answers `403` to every URL and language
+   variant. Three sites.
+2. **A certificate that does not match its host.** `eng.sk-on.com` presents a
+   certificate for `*.skenergy.com`; `en.calb-tech.com` presents one for
+   `cloudfront.net`. Two sites, both with the right document identified.
+3. **The Internet Archive, which is unreachable from here.** This is the one that
+   matters, because it is not a quirk. **Six of the seven cancelled projects are
+   cancelled because their companies no longer exist**, and a defunct company's
+   own materials survive nowhere else. Britishvolt, Italvolt, Farasis, SVOLT
+   twice, Northvolt Borlänge: the perimeter requires company confirmation, the
+   company is gone, and the only copy of what it said is behind a fetch this
+   pipeline cannot make.
+
+That third course is a structural fact about a dataset whose subject is failure.
+It is not an argument for weakening the site rule — a cancelled project is
+exactly where a loose source would do most damage, because nobody is left to
+contradict it. It is an argument for the drop folder, which is why there is one.
+
+### Two coordinates refused on judgement rather than absence
+
+- **ACC Kaiserslautern**: the Opel works is in the basemap as six numbered
+  buildings — K16, K18, K19, K25, K30, K70 — and nothing says which parcel the
+  cell works was to take. Picking one would be a guess wearing a coordinate's
+  clothes.
+- **SK On Komárom**: the published address geocodes to a street returned as two
+  segments 700 m apart.
+
+### One row that reads oddly and is right
+
+**GIB Šurany is `announced`** while its own coordinate polygon is tagged
+`landuse=construction` and trade press reports building started in October 2025.
+No company statement that construction began has been read, and under the
+standing press ruling the project's own sources decide. The note on the row says
+all three things so the oddity is legible rather than looking like a stale status.
+
+---
+
 ## Stopping here
 
 A–E are resolved and the first six rows are in. What is left, in order:

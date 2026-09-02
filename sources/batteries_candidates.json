@@ -102,7 +102,7 @@
       "capacity_gwh": null,
       "company_source": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
       "coordinate_source": null,
-      "note": "No OpenStreetMap feature for the site. The widened rule admits a company address or a permitting filing; neither read yet."
+      "note": "Company source read. Coordinate still outstanding: the Opel Kaiserslautern works is in the basemap as individual buildings (OPEL K16, K18, K19, K25, K30, K70) and nothing says which parcel the cell works was to take. Picking one would be a guess wearing a coordinate's clothes."
     },
     {
       "id": "powerco-sagunto",
@@ -112,8 +112,9 @@
       "status": "construction",
       "capacity_gwh": 40,
       "company_source": "https://www.volkswagen-group.com/en/press-releases/gigafactory-valencia-powerco-gives-starting-signal-for-construction-of-second-cell-factory-17033",
-      "coordinate_source": null,
-      "note": "Basemap has Parc Sagunt II, the industrial estate, not the works."
+      "coordinate_source": "basemap",
+      "note": "Basemap has Parc Sagunt II, the industrial estate, not the works.",
+      "coordinate_ref": "way/1180219207 Gigafactoria Volkswagen"
     },
     {
       "id": "gib-surany",
@@ -123,8 +124,8 @@
       "status": "construction",
       "capacity_gwh": 20,
       "company_source": "https://www.inobat.eu/newsroom/gib-to-build-an-advanced-gigafactory-in-slovakia/",
-      "coordinate_source": null,
-      "note": "Basemap carries nothing named at the Šurany eco park."
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1445839308 operator=GIB EnergyX Slovakia"
     },
     {
       "id": "envision-aesc-douai",
@@ -134,7 +135,7 @@
       "status": "operating",
       "capacity_gwh": 10,
       "company_source": null,
-      "coordinate_source": null,
+      "coordinate_source": "basemap",
       "coordinate_ref": "way/1547499346 Envision AESC, man_made=works",
       "note": "Company source located and unreadable: aesc-group.com answers 403 to every URL tried, including language variants. The Douai start-of-production release is the right document. Coordinate is in hand (way/1547499346, man_made=works).",
       "company_source_blocked": "https://aesc-group.com/news/at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory"
@@ -194,7 +195,8 @@
       "capacity_gwh": 18,
       "company_source": null,
       "coordinate_source": null,
-      "coordinate_ref": "way/775978799 Tesla Gigafactory Berlin-Brandenburg"
+      "coordinate_ref": "way/775978799 Tesla Gigafactory Berlin-Brandenburg",
+      "note": "Not yet reached. Tesla issues no press releases; the route is the quarterly shareholder deck."
     },
     {
       "id": "lges-wroclaw",
@@ -214,10 +216,9 @@
       "country": "HU",
       "status": "operating",
       "capacity_gwh": null,
-      "company_source": "https://www.samsungsdi.com/about-sdi/global-network.html",
-      "coordinate_source": null,
-      "coordinate_ref": "relation/16364462, tagged only 'Samsung' — identifies the estate rather than the cell works; weak",
-      "note": "Samsung SDI's own network page names SAMSUNG SDI Hungary Zrt. at '2131 Göd, Schenek István utca 1'. The street is not in the basemap, so the published address yields no works-level point; the earlier relation/16364462 is tagged only 'Samsung' and identifies the estate. Coordinate outstanding, capacity outstanding."
+      "company_source": "https://news.samsungsdi.com/global/articleView?seq=8",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1009198739 Cella gyártás"
     },
     {
       "id": "sk-on-ivancsa",
@@ -241,7 +242,7 @@
       "capacity_gwh": null,
       "company_source": "https://www.skinnovation.com/company/global?type=europe",
       "coordinate_source": null,
-      "note": "SK Innovation's network page names SK Battery Manufacturing Kft. at '2900 Komárom, Klapka György út 39.'. The address geocodes only to the street, which returns two segments 700 m apart — a street centroid is no more a works than a town centroid is. Coordinate outstanding."
+      "note": "Company source read (SK Innovation network page, address '2900 Komárom, Klapka György út 39.'). No works feature at Komárom in the basemap; the address geocodes only to the street."
     },
     {
       "id": "agratas-bridgwater",
@@ -251,8 +252,8 @@
       "status": "construction",
       "capacity_gwh": 40,
       "company_source": "https://www.agratas.com/news/bridgwater-july-site-progress-update",
-      "coordinate_source": null,
-      "note": "Company source read (Agratas, 22 August 2025). No coordinate: the basemap carries nothing at the Gravity site, Puriton or Bridgwater under any name tried."
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/125139808 Agratas Battery Factory"
     },
     {
       "id": "sunwoda-nyiregyhaza",
@@ -282,7 +283,10 @@
       "status": "announced",
       "capacity_gwh": 15,
       "company_source": null,
-      "coordinate_source": null
+      "coordinate_source": null,
+      "coordinate_ref": "way/1262719042 Construção da Unidade Industrial de Baterias de Lítio da CALB",
+      "note": "Coordinate in hand. CALB's own groundbreaking release is the right document and en.calb-tech.com serves a certificate for cloudfront.net.",
+      "company_source_blocked": "http://en.calb-tech.com/news_detail/5.html"
     },
     {
       "id": "inobat-spain",
@@ -302,7 +306,8 @@
       "status": "paused",
       "capacity_gwh": null,
       "company_source": null,
-      "coordinate_source": null
+      "coordinate_source": null,
+      "note": "Not yet reached. T1 Energy is NASDAQ-listed, so its filings are the likely route rather than a newsroom."
     },
     {
       "id": "lyten-heide",
@@ -322,8 +327,9 @@
       "country": "RS",
       "status": "operating",
       "capacity_gwh": 8,
-      "company_source": null,
-      "coordinate_source": null
+      "company_source": "https://elevenes.com/news/interview-elevenes-finalising-plans-for-1-gwh-battery-plant-in-serbia/",
+      "coordinate_source": null,
+      "note": "Company site reachable and confirms both the 8 GWh gigafactory and the separate 1 GWh mega-factory, which is the distinction ruling C turned on. No basemap feature at Subotica under any name or operator tried."
     },
     {
       "id": "svolt-uberherrn",
@@ -333,7 +339,9 @@
       "status": "cancelled",
       "capacity_gwh": null,
       "company_source": null,
-      "coordinate_source": null
+      "coordinate_source": null,
+      "note": "No basemap feature. SVOLT withdrew from Europe in 2023; company materials only in the Internet Archive.",
+      "company_source_blocked": "https://web.archive.org/web/2023/https://svolt-eu.com/"
     },
     {
       "id": "svolt-lauchhammer",
@@ -343,7 +351,9 @@
       "status": "cancelled",
       "capacity_gwh": null,
       "company_source": null,
-      "coordinate_source": null
+      "coordinate_source": null,
+      "note": "No basemap feature. Same as Überherrn.",
+      "company_source_blocked": "https://web.archive.org/web/2023/https://svolt-eu.com/"
     },
     {
       "id": "britishvolt-blyth",
@@ -353,7 +363,9 @@
       "status": "cancelled",
       "capacity_gwh": 35,
       "company_source": null,
-      "coordinate_source": null
+      "coordinate_source": null,
+      "note": "Company dissolved; britishvolt.com is gone and the Internet Archive is unreachable from here. No basemap feature at Cambois — the site was sold in April 2024 for redevelopment as a data centre campus, so there may no longer be one to find.",
+      "company_source_blocked": "https://web.archive.org/web/2022/https://britishvolt.com/"
     },
     {
       "id": "italvolt-scarmagno",
@@ -363,7 +375,10 @@
       "status": "cancelled",
       "capacity_gwh": null,
       "company_source": null,
-      "coordinate_source": null
+      "coordinate_source": null,
+      "coordinate_ref": "way/162150670 Officine Olivetti — the former Olivetti works, the Italvolt site, identified by its historic name only",
+      "note": "Company defunct since January 2024; its own materials survive only in the Internet Archive, which this pipeline cannot fetch.",
+      "company_source_blocked": "https://web.archive.org/web/2023/https://italvolt.com/"
     },
     {
       "id": "farasis-bitterfeld",
@@ -373,7 +388,9 @@
       "status": "cancelled",
       "capacity_gwh": 16,
       "company_source": null,
-      "coordinate_source": null
+      "coordinate_source": null,
+      "note": "No basemap feature at Bitterfeld-Wolfen. Company materials for the cancelled European site survive only in the Internet Archive.",
+      "company_source_blocked": "https://web.archive.org/web/2023/https://www.farasis-energy.eu/"
     },
     {
       "id": "morrow-arendal",
@@ -394,7 +411,9 @@
       "status": "cancelled",
       "capacity_gwh": null,
       "company_source": null,
-      "coordinate_source": null
+      "coordinate_source": null,
+      "note": "No basemap feature at Borlänge. Northvolt's own site survives for the bankruptcy notice but not for this cancelled cathode site.",
+      "company_source_blocked": "https://web.archive.org/web/2024/https://northvolt.com/"
     }
   ]
 }

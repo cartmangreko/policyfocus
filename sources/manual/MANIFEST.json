@@ -1,0 +1,84 @@
+{
+  "_comment": [
+    "Pages retrieved by hand, because the fetcher is refused and a browser is not.",
+    "See README.md in this folder for the protocol and for what this is not.",
+    "",
+    "Every entry: the file as saved here, the URL it came from, the date it was",
+    "retrieved and by whom. Gated in both directions by check_manual_sources.py --",
+    "a file with no entry fails, an entry with no file fails, and a row citing a",
+    "file that is not here fails.",
+    "",
+    "`wanted` is the queue: pages known to be needed and not yet retrieved. It is",
+    "here rather than in a message so the list survives the conversation that",
+    "produced it."
+  ],
+  "retrieved": [],
+  "wanted": [
+    {
+      "candidate": "britishvolt-blyth",
+      "url": "https://web.archive.org/web/2022/https://britishvolt.com/",
+      "why": "company is defunct; only the Internet Archive has its materials, and this pipeline cannot fetch web.archive.org",
+      "needed_for": "company confirmation of the site, and a coordinate if the page gives an address"
+    },
+    {
+      "candidate": "calb-sines",
+      "url": "http://en.calb-tech.com/news_detail/5.html",
+      "why": "certificate does not match the host",
+      "needed_for": "company confirmation of the site, and a coordinate if the page gives an address"
+    },
+    {
+      "candidate": "envision-aesc-douai",
+      "url": "https://aesc-group.com/news/at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
+      "why": "publisher answers 403 to this pipeline",
+      "needed_for": "company confirmation of the site"
+    },
+    {
+      "candidate": "envision-aesc-extremadura",
+      "url": "https://aesc-group.com/news/",
+      "why": "publisher answers 403 to this pipeline",
+      "needed_for": "company confirmation of the site, and a coordinate if the page gives an address"
+    },
+    {
+      "candidate": "envision-aesc-sunderland",
+      "url": "https://www.aesc-group.com/news/aesc-launches-its-new-uk-battery-gigafactory",
+      "why": "publisher answers 403 to this pipeline",
+      "needed_for": "company confirmation of the site, and a coordinate if the page gives an address"
+    },
+    {
+      "candidate": "farasis-bitterfeld",
+      "url": "https://web.archive.org/web/2023/https://www.farasis-energy.eu/",
+      "why": "company is defunct; only the Internet Archive has its materials, and this pipeline cannot fetch web.archive.org",
+      "needed_for": "company confirmation of the site, and a coordinate if the page gives an address"
+    },
+    {
+      "candidate": "italvolt-scarmagno",
+      "url": "https://web.archive.org/web/2023/https://italvolt.com/",
+      "why": "company is defunct; only the Internet Archive has its materials, and this pipeline cannot fetch web.archive.org",
+      "needed_for": "company confirmation of the site, and a coordinate if the page gives an address"
+    },
+    {
+      "candidate": "northvolt-borlange",
+      "url": "https://web.archive.org/web/2024/https://northvolt.com/",
+      "why": "company is defunct; only the Internet Archive has its materials, and this pipeline cannot fetch web.archive.org",
+      "needed_for": "company confirmation of the site, and a coordinate if the page gives an address"
+    },
+    {
+      "candidate": "sk-on-ivancsa",
+      "url": "http://eng.sk-on.com/company/global.asp",
+      "why": "certificate does not match the host",
+      "needed_for": "company confirmation of the site, and a coordinate if the page gives an address"
+    },
+    {
+      "candidate": "svolt-lauchhammer",
+      "url": "https://web.archive.org/web/2023/https://svolt-eu.com/",
+      "why": "company is defunct; only the Internet Archive has its materials, and this pipeline cannot fetch web.archive.org",
+      "needed_for": "company confirmation of the site, and a coordinate if the page gives an address"
+    },
+    {
+      "candidate": "svolt-uberherrn",
+      "url": "https://web.archive.org/web/2023/https://svolt-eu.com/",
+      "why": "company is defunct; only the Internet Archive has its materials, and this pipeline cannot fetch web.archive.org",
+      "needed_for": "company confirmation of the site, and a coordinate if the page gives an address"
+    }
+  ]
+}
