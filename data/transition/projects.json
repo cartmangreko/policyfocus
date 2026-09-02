@@ -1831,6 +1831,218 @@
           "date": "2026-05-06"
         }
       ]
+    },
+    {
+      "id": "powerco-sagunto",
+      "name": "PowerCo Valencia",
+      "company": "PowerCo",
+      "plant": "Sagunto",
+      "country": "ES",
+      "location": [
+        {
+          "site": "Sagunto gigafactory",
+          "lat": 39.6482,
+          "lon": -0.2683,
+          "precision": "plant",
+          "retrieved_date": "2026-09-02",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1180219207",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Gigafactoria Volkswagen; landuse=construction; construction=industrial; operator=Volkswagen",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 40,
+        "unit": "GWh per year"
+      },
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2023-03-17",
+          "source_url": "https://www.volkswagen-group.com/en/press-releases/gigafactory-valencia-powerco-gives-starting-signal-for-construction-of-second-cell-factory-17033",
+          "note": "PowerCo 'gave the starting signal for construction of its second PowerCo cell factory' on about 130 hectares at Sagunto, at an initial 40 GWh per year with room to expand. Trade press reports series production moving to July 2027; no company statement of the revised date has been read."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.volkswagen-group.com/en/press-releases/gigafactory-valencia-powerco-gives-starting-signal-for-construction-of-second-cell-factory-17033",
+          "title": "Gigafactory Valencia: PowerCo gives starting signal for construction of second cell factory",
+          "publisher": "Volkswagen Group",
+          "date": "2023-03-17"
+        }
+      ]
+    },
+    {
+      "id": "agratas-bridgwater",
+      "name": "Agratas Bridgwater",
+      "company": "Agratas",
+      "plant": "Bridgwater",
+      "country": "GB",
+      "location": [
+        {
+          "site": "Gravity, Puriton",
+          "lat": 51.177,
+          "lon": -2.9549,
+          "precision": "plant",
+          "retrieved_date": "2026-09-02",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/125139808",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Agratas Battery Factory; landuse=construction; construction=commercial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "Found by bounding-box query rather than by name search: the feature is not indexed under Gravity, Puriton or the Smart Campus."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 40,
+        "unit": "GWh per year"
+      },
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2025-08-22",
+          "source_url": "https://www.agratas.com/news/bridgwater-july-site-progress-update",
+          "note": "Agratas reported the steel frame complete and cladding under way: 'In the heart of Somerset, what began as open ground is now a structure of more of 4,000 tonnes of steel'. The 40 GWh figure is from the Tata Group announcement of July 2023."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.agratas.com/news/bridgwater-july-site-progress-update",
+          "title": "Bridgwater: July site progress update",
+          "publisher": "Agratas",
+          "date": "2025-08-22"
+        },
+        {
+          "url": "https://www.tata.com/newsroom/business/battery-gigafactory-uk",
+          "title": "Tata Group to set up a Battery Gigafactory in the United Kingdom",
+          "publisher": "Tata Group",
+          "date": "2023-07-19"
+        }
+      ]
+    },
+    {
+      "id": "gib-surany",
+      "name": "Gotion InoBat Batteries Šurany",
+      "company": "Gotion InoBat Batteries",
+      "plant": "Šurany",
+      "country": "SK",
+      "location": [
+        {
+          "site": "Šurany gigafactory",
+          "lat": 48.0686,
+          "lon": 18.1629,
+          "precision": "plant",
+          "retrieved_date": "2026-09-02",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1445839308",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "landuse=construction; construction=industrial; operator=GIB EnergyX Slovakia",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The polygon carries no name and is identified by its operator tag, GIB EnergyX Slovakia, which is the joint venture's Slovak entity."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 60,
+        "unit": "GWh per year"
+      },
+      "status": "announced",
+      "status_history": [
+        {
+          "status": "announced",
+          "date": "2024-06-20",
+          "source_url": "https://www.inobat.eu/newsroom/gib-to-build-an-advanced-gigafactory-in-slovakia/",
+          "note": "A joint venture of Gotion High-Tech and InoBat, on a 95-hectare site near Šurany, total planned capacity up to 60 GWh with a first phase of 20 GWh. Construction was planned for the end of 2024. The status stays at announced because no company statement that building started has been read — the basemap already carries the site as landuse=construction and trade press reports a start in October 2025, and neither is the project's own source."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.inobat.eu/newsroom/gib-to-build-an-advanced-gigafactory-in-slovakia/",
+          "title": "GIB to build an Advanced Gigafactory in Slovakia",
+          "publisher": "InoBat",
+          "date": "2024-06-20"
+        }
+      ]
+    },
+    {
+      "id": "samsung-sdi-god",
+      "name": "Samsung SDI Göd",
+      "company": "Samsung SDI",
+      "plant": "Göd",
+      "country": "HU",
+      "location": [
+        {
+          "site": "Göd cell works",
+          "lat": 47.674,
+          "lon": 19.1631,
+          "precision": "plant",
+          "retrieved_date": "2026-09-02",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1009198739",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Cella gyártás; man_made=works; building=industrial; operator=Samsung",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The polygon is tagged by function — 'Cella gyártás' is cell manufacturing — which is what makes it the cell works rather than the estate. An earlier candidate, relation/16364462, is tagged only 'Samsung' and was refused for identifying the site rather than the works. Samsung SDI's own network page puts SAMSUNG SDI Hungary Zrt. at '2131 Göd, Schenek István utca 1'; the street is not in the basemap, so the address corroborates rather than places it."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "nmc-nca-cells"
+      ],
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2022-08-01",
+          "source_url": "https://news.samsungsdi.com/global/articleView?seq=8",
+          "note": "Samsung SDI's second-quarter 2022 results state a 'Sales boost of Gen5 battery is expected with the start of operation in Hungary Plant #2'. No company capacity figure for the site has been read, so the capacity is outstanding rather than estimated."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://news.samsungsdi.com/global/articleView?seq=8",
+          "title": "SAMSUNG SDI Announces Second Quarter 2022 Earnings Results",
+          "publisher": "Samsung SDI",
+          "date": "2022-08-01"
+        },
+        {
+          "url": "https://www.samsungsdi.com/about-sdi/global-network.html",
+          "title": "Samsung SDI Global Network — Locations",
+          "publisher": "Samsung SDI",
+          "date": "2026-09-02"
+        }
+      ]
     }
   ]
 }

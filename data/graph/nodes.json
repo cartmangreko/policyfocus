@@ -7948,6 +7948,37 @@
   }
  },
  {
+  "id": "project:agratas-bridgwater",
+  "kind": "project",
+  "label": "Agratas Bridgwater",
+  "attrs": {
+   "company": "Agratas",
+   "plant": "Bridgwater",
+   "country": "GB",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Gravity, Puriton",
+     "lat": 51.177,
+     "lon": -2.9549,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/125139808",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Agratas Battery Factory; landuse=construction; construction=commercial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "Found by bounding-box query rather than by name search: the feature is not indexed under Gravity, Puriton or the Smart Campus."
+    }
+   ]
+  }
+ },
+ {
   "id": "project:am-bremen-eisenhuettenstadt",
   "kind": "project",
   "label": "ArcelorMittal Bremen and Eisenhüttenstadt conversion",
@@ -8238,6 +8269,37 @@
       "date": "2026-08-28"
      },
      "note": "The works has two sections, Elsa and Milke; the company gives Bürener Straße 46 as the plant address and that is the point taken."
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:gib-surany",
+  "kind": "project",
+  "label": "Gotion InoBat Batteries Šurany",
+  "attrs": {
+   "company": "Gotion InoBat Batteries",
+   "plant": "Šurany",
+   "country": "SK",
+   "status": "announced",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Šurany gigafactory",
+     "lat": 48.0686,
+     "lon": 18.1629,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1445839308",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "landuse=construction; construction=industrial; operator=GIB EnergyX Slovakia",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The polygon carries no name and is identified by its operator tag, GIB EnergyX Slovakia, which is the joint venture's Slovak entity."
     }
    ]
   }
@@ -8584,6 +8646,36 @@
   }
  },
  {
+  "id": "project:powerco-sagunto",
+  "kind": "project",
+  "label": "PowerCo Valencia",
+  "attrs": {
+   "company": "PowerCo",
+   "plant": "Sagunto",
+   "country": "ES",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Sagunto gigafactory",
+     "lat": 39.6482,
+     "lon": -0.2683,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1180219207",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Gigafactoria Volkswagen; landuse=construction; construction=industrial; operator=Volkswagen",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
   "id": "project:powerco-salzgitter",
   "kind": "project",
   "label": "PowerCo Salzgitter",
@@ -8671,6 +8763,37 @@
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:samsung-sdi-god",
+  "kind": "project",
+  "label": "Samsung SDI Göd",
+  "attrs": {
+   "company": "Samsung SDI",
+   "plant": "Göd",
+   "country": "HU",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Göd cell works",
+     "lat": 47.674,
+     "lon": 19.1631,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1009198739",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Cella gyártás; man_made=works; building=industrial; operator=Samsung",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The polygon is tagged by function — 'Cella gyártás' is cell manufacturing — which is what makes it the cell works rather than the estate. An earlier candidate, relation/16364462, is tagged only 'Samsung' and was refused for identifying the site rather than the works. Samsung SDI's own network page puts SAMSUNG SDI Hungary Zrt. at '2131 Göd, Schenek István utca 1'; the street is not in the basemap, so the address corroborates rather than places it."
     }
    ]
   }
