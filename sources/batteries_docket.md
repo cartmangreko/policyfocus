@@ -818,6 +818,72 @@ span or the narrow type size is the thing to revisit, not the labels.
 
 ---
 
+## 14. Two rules written down, and a sweep that exhausted without a row
+
+**No rows landed this pass.** Seventeen on file, unchanged. What it bought was a
+rule, a chain of evidence that stops just short, and the difference between "not
+found" and "not there".
+
+### We do not draw the polygon ourselves
+
+Written into `sector_map.LOCATION_SOURCE_TYPES` and into the geography design
+note, because it is a rule about our own conduct and those only survive where the
+next person looks. Where the basemap has no feature, the answer is a permit, a
+published address, or the row staying off file — **never an edit to OpenStreetMap
+made in order to cite it.** That edit would be circular: the coordinate's whole
+claim is that somebody independent put the works there, and an edit made to be
+cited turns "we believe this is the site" into "the basemap says so", which is a
+stronger claim than we hold and one no reader could unpick.
+
+It says nothing against improving OpenStreetMap. It says the two must not be done
+in the same breath.
+
+**Crowding is ratified in advance**: if narrow crowding climbs, the lever is crop
+span or narrow type size. Labels stay.
+
+### Sunderland: the permit chain runs and stops one link short
+
+The route worked as far as evidence goes. Sunderland City Council's register gives
+AESC Plant 2 as **21/01764/HE4**, varied by **23/01542/VA4**, and the address is
+**1 International Drive, Sunderland SR5 3FH** — tied to AESC through a
+discharge-of-condition application that names the s73 in its own description.
+
+Every document that would carry a position refuses this pipeline: the
+environmental-permit installation details and the s73 non-technical summary on
+`sunderland.gov.uk`, and the Plant 3 planning statement on
+`docs.planning.org.uk`. The one readable register, `planning.org.uk`, **disclaims
+its own map** — "map location should not be relied on for accuracy" — which is
+that aggregator being honest about geocoding an address, and is exactly the thing
+the coordinate rule refuses.
+
+And the postcode does not resolve it: at SR5 3FH on International Drive the
+basemap holds the **Innovation Centre**, a different building, and the IAMP estate
+polygon, which is an estate. Three pages escalated.
+
+### "Exhausted" is now a recorded state, distinct from "outstanding"
+
+Three candidates have a company source and were run through a full bounding-box
+sweep with no result:
+
+| Candidate | Sweep | Result |
+|---|---|---|
+| ElevenEs Subotica | 400 features | nothing named or operated by ElevenEs |
+| SK On Komárom | 400 features | nothing for SK On or SK Battery Manufacturing |
+| ACC Kaiserslautern | 96 features | the Opel works as numbered halls, nothing naming ACC |
+
+These are not outstanding for want of looking. Their notes say so, so the next
+pass does not repeat the sweep and reach the same nothing.
+
+### One thing the wire ruling does not reach
+
+**PR Newswire is readable here and Business Wire is not.** FREYR's operations
+update of 29 November 2023 — where the Giga Arctic suspension is stated — answers
+403, and so does T1 Energy's own investor site. So which wire a company happened
+to use decides whether its release can be quoted, which is arbitrary and worth
+knowing. It is the eleventh page in the queue.
+
+---
+
 ## Stopping here
 
 A–E are resolved and the first six rows are in. What is left, in order:
