@@ -28196,6 +28196,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:italvolt-scarmagno",
+  "to": "technology:cell-manufacturing",
+  "since": "2021-09-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=italvolt-scarmagno].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:k6-lumbres",
   "to": "technology:alternative-fuels",
   "since": "2024-02-15",
@@ -31046,6 +31056,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=ifestos-kamari].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:italvolt-scarmagno",
+  "to": "country:IT",
+  "since": "2021-09-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=italvolt-scarmagno].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:italvolt-scarmagno",
+  "to": "sector:batsol",
+  "since": "2021-09-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=italvolt-scarmagno].sector"
   },
   "basis": "sector"
  },
