@@ -28076,6 +28076,26 @@
  },
  {
   "rel": "deploys",
+  "from": "project:envision-aesc-douai",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-06-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-douai].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:envision-aesc-douai",
+  "to": "technology:nmc-nca-cells",
+  "since": "2025-06-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-douai].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:galata-co2-storage",
   "to": "technology:co2-transport-storage",
   "since": "2022-07-18",
@@ -30880,6 +30900,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=catl-stellantis-zaragoza].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-douai",
+  "to": "country:FR",
+  "since": "2025-06-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-douai].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-douai",
+  "to": "sector:batsol",
+  "since": "2025-06-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-douai].sector"
   },
   "basis": "sector"
  },

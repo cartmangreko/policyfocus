@@ -2106,6 +2106,58 @@
           "date": "2024-11-20"
         }
       ]
+    },
+    {
+      "id": "envision-aesc-douai",
+      "name": "AESC Douai",
+      "company": "AESC",
+      "plant": "Douai",
+      "country": "FR",
+      "location": [
+        {
+          "site": "Douai gigafactory",
+          "lat": 50.3556,
+          "lon": 3.0266,
+          "precision": "plant",
+          "retrieved_date": "2026-09-02",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1547499346",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Envision AESC; man_made=works",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "nmc-nca-cells"
+      ],
+      "capacity": {
+        "value": 10,
+        "unit": "GWh per year"
+      },
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2025-06-03",
+          "source_url": "https://www.aesc-group.com/newsInfo?id=at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
+          "note": "AESC 'hosted a ceremony announcing the Start of Production (SOP)' with President Macron attending. 'With an annual production capacity of 10 GWh, the facility currently supplies advanced batteries for Renault.' The site runs electrode production, cell assembly and module integration, so it is a cell works and not an assembly line. THE RELEASE CARRIES NO DATE on the page and none in the index saved with it; 3 June 2025 is the date of the ceremony in contemporaneous reporting, and is recorded here as that rather than as the company's own dating."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.aesc-group.com/newsInfo?id=at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
+          "title": "At Start of Production, AESC Hosts President Macron at Douai Battery Gigafactory",
+          "publisher": "AESC",
+          "date": "2025-06-03",
+          "retrieved_manually": "sources/manual/envision-aesc-douai--start-of-production.pdf"
+        }
+      ]
     }
   ]
 }

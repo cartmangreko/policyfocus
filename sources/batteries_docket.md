@@ -761,6 +761,63 @@ had to choose which fact to be about and would have hidden the other.
 
 ---
 
+## 13. The first two manual pages, filed
+
+**Seventeen rows on file, 16 outstanding — 52%.** The drop folder has its first
+two entries and the protocol survived contact.
+
+### What each page settled
+
+**Douai is a row.** The release records a start-of-production ceremony with
+President Macron: *"With an annual production capacity of 10 GWh, the facility
+currently supplies advanced batteries for Renault."* It also settles that the site
+is a cell works rather than an assembly line — it runs "electrode production, cell
+assembly, and module integration". The coordinate was already in hand.
+
+**Sunderland is settled and still not a row.** *"Production is now officially
+underway at Envision AESC's new 15.8 GWh plant"* fixes status and capacity at
+company tier, and AESC's own index on the same page dates the release 2025-12-16.
+**The coordinate is the blocker, and it is a refusal rather than an absence**: the
+only basemap features are the International Advanced Manufacturing Park, which is
+the estate, and Nissan Motor Manufacturing, which is another company's works. The
+release publishes no address. That is the same refusal as Sagunto's industrial
+park and Göd's estate polygon, and it should be the same refusal.
+
+### Two things worth knowing about the retrieved pages
+
+**Neither page carries its own date.** Sunderland's is recoverable — AESC's "More
+articles" index, captured in the same print, dates it 2025-12-16 — and Douai's is
+not. The Douai row therefore dates from contemporaneous reporting of the ceremony
+and **says so in the note**, rather than letting a date inferred from press wear
+the company source's authority.
+
+**The live URL passes `check_links` even though `WebFetch` is refused.** 107 URLs
+checked, all live, the two AESC ones included. So the 403 is specific to how this
+pipeline reads a page for content, not to whether the citation resolves — which
+is exactly the split the drop folder was built for: the row cites the publisher's
+live URL, the gate confirms it resolves, and the quoted sentence comes from a copy
+a person actually read.
+
+### The queue is seven, and Extremadura's URL form is now known
+
+The two retrieved pages confirm the live URL form is
+`aesc-group.com/newsInfo?id=<slug>`, not the `\/news\/<slug>` path I had recorded
+from search results. The dead form is replaced everywhere. **Extremadura's slug is
+still unknown and is not guessed** — the queue entry carries the form and the
+release title.
+
+### One label is crowded, for the first time
+
+`build_maps` reports `project-agratas-bridgwater narrow: envision-aesc-douai`.
+That is the first crowded label in this repository, and it is a density signal
+rather than a defect: the narrow layout has held 0 crowded through cement, steel
+and sixteen battery sites, and the seventeenth put two works close enough on one
+crop to cost a placement. The label is kept and reported, which is the rule. Worth
+watching as the remaining sixteen land — if the count climbs, the crop's minimum
+span or the narrow type size is the thing to revisit, not the labels.
+
+---
+
 ## Stopping here
 
 A–E are resolved and the first six rows are in. What is left, in order:

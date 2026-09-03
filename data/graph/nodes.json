@@ -8207,6 +8207,36 @@
   }
  },
  {
+  "id": "project:envision-aesc-douai",
+  "kind": "project",
+  "label": "AESC Douai",
+  "attrs": {
+   "company": "AESC",
+   "plant": "Douai",
+   "country": "FR",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Douai gigafactory",
+     "lat": 50.3556,
+     "lon": 3.0266,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1547499346",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Envision AESC; man_made=works",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
   "id": "project:galata-co2-storage",
   "kind": "project",
   "label": "Galata CO2 storage",

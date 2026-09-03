@@ -2793,6 +2793,90 @@
       ],
       "override_stale": false,
       "notes": []
+    },
+    "envision-aesc-douai": {
+      "id": "envision-aesc-douai",
+      "template_version": 1,
+      "fingerprint": "8d040cfd2553d70c",
+      "sentence": {
+        "text": "AESC Douai is AESC's batteries and solar project at Douai, France.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "AESC Douai",
+          "AESC",
+          "Douai, France"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "AESC Douai started operating on 3 June 2025.",
+          "as_of": "2025-06-03",
+          "numbers": [],
+          "sourced": [
+            "AESC Douai"
+          ],
+          "href": "https://www.aesc-group.com/newsInfo?id=at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Douai, France.",
+          "as_of": "2025-06-03",
+          "numbers": [],
+          "sourced": [
+            "Douai, France"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2025-06-03",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 10 GWh per year.",
+          "as_of": "2025-06-03",
+          "numbers": [
+            "10"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2025-06-03",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
     }
   }
 }

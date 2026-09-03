@@ -134,11 +134,10 @@
       "country": "FR",
       "status": "operating",
       "capacity_gwh": 10,
-      "company_source": null,
+      "company_source": "https://www.aesc-group.com/newsInfo?id=at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
       "coordinate_source": "basemap",
       "coordinate_ref": "way/1547499346 Envision AESC, man_made=works",
-      "note": "Company source located and unreadable: aesc-group.com answers 403 to every URL tried, including language variants. The Douai start-of-production release is the right document. Coordinate is in hand (way/1547499346, man_made=works).",
-      "company_source_blocked": "https://aesc-group.com/news/at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory"
+      "note": "Retrieved by hand; see sources/manual/. Coordinate was already in hand."
     },
     {
       "id": "envision-aesc-sunderland",
@@ -146,11 +145,10 @@
       "site": "Sunderland",
       "country": "UK",
       "status": "operating",
-      "capacity_gwh": null,
-      "company_source": null,
+      "capacity_gwh": 15.8,
+      "company_source": "https://www.aesc-group.com/newsInfo?id=aesc-launches-its-new-uk-battery-gigafactory",
       "coordinate_source": null,
-      "note": "Company source located and unreadable (aesc-group.com, 403). No basemap feature found for either Sunderland site.",
-      "company_source_blocked": "https://www.aesc-group.com/news/aesc-launches-its-new-uk-battery-gigafactory"
+      "note": "Company source retrieved by hand and it settles two things: 'Production is now officially underway at Envision AESC's new 15.8 GWh plant', which fixes status and capacity at company tier, dated 2025-12-16 by AESC's own index. The COORDINATE is the blocker and is refused rather than outstanding: the only basemap features are the International Advanced Manufacturing Park, which is the estate, and Nissan Motor Manufacturing, which is another company's works. The release publishes no address. Same refusal as Sagunto's industrial park and Göd's estate polygon."
     },
     {
       "id": "envision-aesc-extremadura",
@@ -162,7 +160,7 @@
       "company_source": null,
       "coordinate_source": null,
       "note": "Status and staleness both turn on the June 2026 update: the cornerstone was laid in July 2024, but as of June 2026 only ground preparation is done and AESC's roadmap puts first cells at December 2028. When the row lands it is construction — ground works have begun — with a note that four and a half years separate the cornerstone from the first cell. Not stale by the twelve-month test: the newest source is three months old.",
-      "company_source_blocked": "https://aesc-group.com/news/ — 'AESC Spain celebrates the laying of the first stone of the battery gigafactory in Navalmoral de la Mata (Cáceres)'",
+      "company_source_blocked": "https://www.aesc-group.com/newsInfo?id=<slug> — 'AESC Spain celebrates the laying of the first stone of the battery gigafactory in Navalmoral de la Mata (Cáceres)'. The live URL form is confirmed by the two pages already retrieved; the slug itself is not, so it is not guessed here.",
       "supporting_sources": [
         {
           "url": "https://www.juntaex.es/w/maria-guardiola-asiste-a-la-puesta-de-la-primera-piedra-de-la-gigafactoria",
