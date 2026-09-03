@@ -258,6 +258,20 @@ PROJECT_ROLES = (
 # picture in a news story is not citable: nobody can check it and the next reader
 # gets a different number. Neither has a value in this vocabulary, so neither can
 # be recorded without inventing one, which is the point of a closed list.
+#
+# AND WE DO NOT DRAW THE POLYGON OURSELVES. Where the basemap has no feature for a
+# works, the answer is a permit, a published address, or the row staying off file
+# -- never an edit to OpenStreetMap made in order to cite it. The temptation is
+# real and the reasoning is easy: we know where the works is, OSM is editable, and
+# `basemap` would then be true of the row. It would also be circular. The
+# coordinate's whole claim is that somebody independent put the works there, and
+# an edit made to be cited LAUNDERS AN ASSERTION INTO A SOURCE TYPE -- it converts
+# "we believe this is the site" into "the basemap says so", which is a stronger
+# claim than we hold and one no reader could unpick.
+#
+# This says nothing against improving OpenStreetMap. It says that a coordinate
+# this repository publishes may not rest on an edit this repository made for the
+# purpose, and that the two must not be done in the same breath.
 LOCATION_SOURCE_TYPES = (
     "basemap",
     "company",
