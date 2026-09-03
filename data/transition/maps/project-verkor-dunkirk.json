@@ -138,8 +138,8 @@
       "y": 264.7,
       "labels": {
         "wide": {
-          "x": 431.3,
-          "anchor": "start",
+          "x": 403.5,
+          "anchor": "end",
           "lines": [
             {
               "text": "ACC Billy-Berclau Douvrin",
@@ -156,8 +156,8 @@
           ]
         },
         "narrow": {
-          "x": 431.3,
-          "anchor": "start",
+          "x": 403.5,
+          "anchor": "end",
           "lines": [
             {
               "text": "ACC Billy-Berclau",
@@ -241,6 +241,61 @@
           ]
         }
       }
+    },
+    {
+      "id": "envision-aesc-douai",
+      "site": "Douai gigafactory",
+      "country": "FR",
+      "role": "plant",
+      "relation": "technology",
+      "status": "operating",
+      "label": "AESC Douai",
+      "name_line": "AESC Douai",
+      "sub": "AESC",
+      "href": "/projects/envision-aesc-douai",
+      "lat": 50.3556,
+      "lon": 3.0266,
+      "as_of": "2026-09-02",
+      "x": 427.4,
+      "y": 282.4,
+      "labels": {
+        "wide": {
+          "x": 441.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "AESC Douai",
+              "role": "name",
+              "size": 11.0,
+              "y": 278.7
+            },
+            {
+              "text": "AESC",
+              "role": "company",
+              "size": 9.5,
+              "y": 290.7
+            }
+          ]
+        },
+        "narrow": {
+          "x": 446.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "AESC Douai",
+              "role": "name",
+              "size": 21.0,
+              "y": 275.3
+            },
+            {
+              "text": "AESC",
+              "role": "company",
+              "size": 18.1,
+              "y": 298.3
+            }
+          ]
+        }
+      }
     }
   ],
   "countries": [
@@ -249,14 +304,26 @@
       "text": "Belgium",
       "labels": {
         "wide": {
-          "x": 545.4,
-          "anchor": "start",
+          "x": 536.3,
+          "anchor": "middle",
           "lines": [
             {
               "text": "Belgium",
               "role": "country",
               "size": 9.0,
-              "y": 245.6
+              "y": 260.1
+            }
+          ]
+        },
+        "narrow": {
+          "x": 594.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Belgium",
+              "role": "country",
+              "size": 17.2,
+              "y": 295.8
             }
           ]
         }
@@ -309,8 +376,8 @@
           ]
         },
         "narrow": {
-          "x": 385.2,
-          "anchor": "end",
+          "x": 409.3,
+          "anchor": "start",
           "lines": [
             {
               "text": "France",
@@ -369,8 +436,8 @@
           ]
         },
         "narrow": {
-          "x": 635.1,
-          "anchor": "start",
+          "x": 623.1,
+          "anchor": "middle",
           "lines": [
             {
               "text": "Luxembourg",

@@ -12,7 +12,22 @@
     "here rather than in a message so the list survives the conversation that",
     "produced it."
   ],
-  "retrieved": [],
+  "retrieved": [
+    {
+      "file": "envision-aesc-sunderland--launches-its-new-uk-battery-gigafactory.pdf",
+      "url": "https://www.aesc-group.com/newsInfo?id=aesc-launches-its-new-uk-battery-gigafactory",
+      "retrieved_date": "2026-09-03",
+      "retrieved_by": "George Christopoulos",
+      "note": "Print-to-PDF. The page carries no date in its body; AESC's own 'More articles' index on the same page dates this release 2025-12-16, which is what the row uses."
+    },
+    {
+      "file": "envision-aesc-douai--start-of-production.pdf",
+      "url": "https://www.aesc-group.com/newsInfo?id=at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
+      "retrieved_date": "2026-09-03",
+      "retrieved_by": "George Christopoulos",
+      "note": "Print-to-PDF. Undated on the page and not in the index carried with it; the row dates it from contemporaneous reporting of the ceremony and says so."
+    }
+  ],
   "wanted": [
     {
       "candidate": "britishvolt-blyth",
@@ -27,21 +42,9 @@
       "needed_for": "company confirmation of the site"
     },
     {
-      "candidate": "envision-aesc-douai",
-      "url": "https://aesc-group.com/news/at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
-      "why": "publisher answers 403 to this pipeline",
-      "needed_for": "company confirmation of the site"
-    },
-    {
       "candidate": "envision-aesc-extremadura",
-      "url": "https://aesc-group.com/news/ — 'AESC Spain celebrates the laying of the first stone of the battery gigafactory in Navalmoral de la Mata (Cáceres)'",
-      "why": "publisher answers 403 to this pipeline",
-      "needed_for": "company confirmation of the site"
-    },
-    {
-      "candidate": "envision-aesc-sunderland",
-      "url": "https://www.aesc-group.com/news/aesc-launches-its-new-uk-battery-gigafactory",
-      "why": "publisher answers 403 to this pipeline",
+      "url": "https://www.aesc-group.com/newsInfo?id=<slug> — 'AESC Spain celebrates the laying of the first stone of the battery gigafactory in Navalmoral de la Mata (Cáceres)'",
+      "why": "publisher answers 403 to this pipeline; the newsInfo?id= URL form is now confirmed by two retrieved pages, the slug is not",
       "needed_for": "company confirmation of the site"
     },
     {
