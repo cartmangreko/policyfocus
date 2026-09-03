@@ -2043,6 +2043,69 @@
           "date": "2026-09-02"
         }
       ]
+    },
+    {
+      "id": "italvolt-scarmagno",
+      "name": "Italvolt Scarmagno",
+      "company": "Italvolt",
+      "plant": "Scarmagno",
+      "country": "IT",
+      "location": [
+        {
+          "site": "Former Olivetti works, Scarmagno",
+          "lat": 45.46,
+          "lon": 7.876,
+          "precision": "plant",
+          "retrieved_date": "2026-09-03",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/162150670",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Officine Olivetti; man_made=works; building=yes",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The basemap carries the site under its historic name. Italvolt's own release identifies the land as 'the municipality of Scarmagno … where the former Olivetti factory stood', which is what ties the two together."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 45,
+        "unit": "GWh per year"
+      },
+      "status": "cancelled",
+      "status_history": [
+        {
+          "status": "announced",
+          "date": "2021-09-10",
+          "source_url": "https://www.prnewswire.com/news-releases/italvolt-signs-one-million-square-meters-land-purchasing-agreement-301373280.html",
+          "note": "Italvolt signed a one-million-square-metre land purchase at Scarmagno for a 45 GWh site: 'The purchased land is located in the municipality of Scarmagno, which is in Italy's second largest region of Piedmont, where the former Olivetti factory stood.'"
+        },
+        {
+          "status": "cancelled",
+          "date": "2024-01-31",
+          "source_url": "https://www.bestmag.co.uk/battery-gigafactories-facing-a-temporary-dip-or-a-full-scale-crisis/",
+          "note": "'The second project, Italvolt, in Italy also went bankrupt in January 2024.' Trade press, recorded as such: the company is dissolved and issued no closing statement, and the day within January is not given, so the date is the month's end rather than a claim to precision."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.prnewswire.com/news-releases/italvolt-signs-one-million-square-meters-land-purchasing-agreement-301373280.html",
+          "title": "Italvolt signs one million square meters land purchasing agreement",
+          "publisher": "Italvolt (via PR Newswire)",
+          "date": "2021-09-10"
+        },
+        {
+          "url": "https://www.bestmag.co.uk/battery-gigafactories-facing-a-temporary-dip-or-a-full-scale-crisis/",
+          "title": "Battery gigafactories — facing a temporary dip or a full-scale crisis?",
+          "publisher": "Batteries International",
+          "date": "2024-11-20"
+        }
+      ]
     }
   ]
 }

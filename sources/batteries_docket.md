@@ -187,6 +187,7 @@ docket, and it is the largest single piece of work between this file and the row
 | Northvolt Poland, Gdańsk | product | Energy-storage system assembly — module and pack work |
 | Umicore, Nysa | product | Cathode material |
 | BASF, Schwarzheide | product | Cathode material |
+| Northvolt Borlänge (Northvolt Fem) | product | **Refused on the second pass.** Admitted in error: Northvolt's own release of 9 September 2024 says Kvarnsveden was 'envisioned as a new facility for cathode active material production'. Cathode is refused by name |
 | Every pack/module line at a vehicle factory | product | The exclusion's main population |
 | Hydrovolt, Librec, Altilium and other recyclers | boundary | Circular materials; links back when that dataset exists |
 
@@ -620,6 +621,75 @@ contradict it. It is an argument for the drop folder, which is why there is one.
 No company statement that construction began has been read, and under the
 standing press ruling the project's own sources decide. The note on the row says
 all three things so the oddity is legible rather than looking like a stale status.
+
+---
+
+## 11. The wire sweep
+
+**Sixteen rows on file, 17 outstanding — 48% of a set that is now 33 rather than 34.**
+
+The ruling that a wire-distributed release is the company's own text did most of
+the work here, and it also ratified a row already written: CATL Arnstadt has cited
+PR Newswire since it landed.
+
+### It resolved two of the six defunct companies
+
+- **Britishvolt.** The site-selection release is live on PR Newswire, 10 December
+  2020: 95 hectares at Blyth, the former Blyth Power Station.
+- **Italvolt.** The land-purchase release, PR Newswire, 10 September 2021: a
+  million square metres at Scarmagno, 45 GWh, "where the former Olivetti factory
+  stood". That is the sentence that ties the row to the `Officine Olivetti`
+  polygon, which carries the site under its historic name and nothing else.
+  **Italvolt is a row.**
+
+### It refused a third out of the perimeter altogether
+
+**Northvolt Borlänge was admitted in error and is now refused.** Northvolt's own
+release of 9 September 2024 says the Kvarnsveden site was "envisioned as a new
+facility for cathode active material production" and that the programme "will be
+terminated". Cathode is refused by name. The first pass carried it as a cancelled
+cell project on trade-press summaries that described it as both; the company's own
+words settle it.
+
+The admitted set is 33, not 34, and the cancelled population is six rather than
+seven. **The sweep's most useful result was not a source but a correction.**
+
+### And it leaves three for the Archive
+
+- **SVOLT.** The Saarland announcement did exist on presseportal and now answers
+  **410 Gone**. Nothing on any other wire, and a withdrawal is not the kind of
+  thing a company wires. Two sites, one archive URL.
+- **Farasis Bitterfeld.** Nothing on any wire. The only presseportal item is a
+  newspaper's release about the project, which is not the company speaking.
+
+### One coordinate that will probably never exist
+
+**Britishvolt has a company source and no coordinate, and the reason is not that
+nobody has drawn it.** The basemap carries the parcel as `Site for QTS AI Data
+Center`. The site was sold in April 2024 for redevelopment; there is no longer a
+battery works there to identify, and a polygon naming a data centre identifies a
+data centre. This is the first candidate where the coordinate is not outstanding
+but absent, and the honest record is that the row stays off file unless the
+company's own materials give an address or the planning file does.
+
+### Extremadura, entered against its own timeline
+
+The AESC release is queued for retrieval. Two supporting sources are recorded on
+the candidate now:
+
+- **La Moncloa**, 8 July 2024 — state — the cornerstone, and nearly €1 billion in
+  the first phase.
+- **The June 2026 regional-government update**, currently held as an elEconomista
+  relay because the Junta de Extremadura's own page has not been read: ground
+  preparation only, first cells December 2028.
+
+Read against the row: it lands as **construction**, because ground works have
+begun, with a note that **four and a half years separate the cornerstone from the
+first cell**. Against the staleness test it is not stale — the newest source is
+three months old. Which is the useful part: staleness catches announcements that
+went quiet, and this is an announcement that is being actively updated and is
+still four years from a cell. Those are different failures and only one of them
+has a report.
 
 ---
 

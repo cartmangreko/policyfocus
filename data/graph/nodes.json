@@ -8464,6 +8464,37 @@
   }
  },
  {
+  "id": "project:italvolt-scarmagno",
+  "kind": "project",
+  "label": "Italvolt Scarmagno",
+  "attrs": {
+   "company": "Italvolt",
+   "plant": "Scarmagno",
+   "country": "IT",
+   "status": "cancelled",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Former Olivetti works, Scarmagno",
+     "lat": 45.46,
+     "lon": 7.876,
+     "precision": "plant",
+     "retrieved_date": "2026-09-03",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/162150670",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Officine Olivetti; man_made=works; building=yes",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The basemap carries the site under its historic name. Italvolt's own release identifies the land as 'the municipality of Scarmagno … where the former Olivetti factory stood', which is what ties the two together."
+    }
+   ]
+  }
+ },
+ {
   "id": "project:k6-lumbres",
   "kind": "project",
   "label": "K6",
