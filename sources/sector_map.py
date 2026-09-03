@@ -183,6 +183,16 @@ PROJECT_EVENT_KINDS = (
 # comment on each saying "edit both", which is what the reach-channel inference
 # is still held by and is not a mechanism.
 
+# WHERE A PROJECT HAS STOPPED MOVING, and it is a different question from where
+# it has stopped being reported. Two statuses are TERMINAL for that question:
+# `operating` has climbed the whole ladder and has nowhere left to go, and
+# `cancelled` will not move again. Everything else is a project that is supposed
+# to be going somewhere, including `paused` -- a paused project can resume, and
+# one that has been paused for three years is exactly what a stalling listing is
+# for.
+TERMINAL_STATUSES = frozenset({"operating", "cancelled"})
+
+
 def is_transition(history: list[dict], i: int) -> bool:
     """Whether entry `i` is the moment the project's status changed."""
     return i == 0 or history[i]["status"] != history[i - 1]["status"]

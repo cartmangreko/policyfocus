@@ -693,6 +693,74 @@ has a report.
 
 ---
 
+## 12. The permit route, the state primary, and a second report
+
+### Britishvolt: I was wrong that the coordinate was absent
+
+The permit route worked. Northumberland County Council application
+**21/00818/FULES** — "Land At Former Power Station Site On Northern Side Of
+Cambois", 92.2 hectares, validated 3 March 2021, permitted 6 July 2021 — names the
+parcel exactly and is a state permitting filing, which the widened rule admits.
+
+What failed was the fetch, twice: the committee report on `moderngov` answers
+**403**, and the public-access portal answers *"This application is no longer
+available for viewing."* So the coordinate is **not absent**; it is behind a
+document a browser opens, and it has joined the queue as the ninth page.
+
+The correction matters beyond this row. Last turn I read "no OpenStreetMap
+feature, and a data centre on the parcel now" as evidence that no coordinate could
+exist. Both facts were true and neither was the question. **The row records where
+the project was sited, not what stands there now** — and the permit is a source
+about the former, which is why it is in the vocabulary.
+
+### Extremadura: one primary found, one not, and the note stands
+
+Per the ruling, the relay is replaced where a state primary is locatable:
+
+- **The Junta de Extremadura's own cornerstone page is located** and is now on the
+  candidate beside La Moncloa's, not instead of it — two arms of the state
+  reporting the same ceremony is corroboration, not duplication.
+- **The environmental-authorisation line** is recorded too: the 108-hectare plot
+  in the Industrial Development Park of Northern Extremadura, and a four-phase
+  build to 2028 reaching 94.24 GWh, which has not been read against an AESC
+  figure and is flagged as such.
+- **The June 2026 update has no state primary that I could find.** The Junta's
+  newsroom carries the cornerstone and a 2025 visit to AESC's Zama works and
+  nothing from June 2026; the Assembly's records did not surface one. **The
+  substitution note therefore stands**: the elEconomista relay is kept, and it is
+  recorded as press relaying a state source rather than as the state source.
+
+### The second report: `report_status_age.py`
+
+Every project whose status is not terminal, ordered by how long it has held that
+status, with the date it entered it. **No threshold and no verdict** — a threshold
+would invent a number nobody has ruled on, and "stalled" is a conclusion about a
+company's intentions from a file that knows only dates.
+
+`TERMINAL_STATUSES` is `operating` and `cancelled`, named in `sector_map.py` with
+the rest of the status groups. **`paused` is deliberately not terminal**: a paused
+project can resume, and one paused for three years is what the listing is for.
+
+**Time is counted from the transition, not the last entry**, reusing
+`sector_map.entered`. A project whose history carries a later event with the
+status unchanged — a permit withdrawn, a company changing hands — has not moved,
+and dating it from that entry would reset the clock on exactly the projects the
+listing exists to show.
+
+It runs across every sector, not only batteries, and its first output is worth
+reading: **CATL Debrecen has been `construction` for four years** on its own last
+transition, and Galata has been `announced` for four years and one month. Neither
+is a finding. Both are the kind of thing somebody should look at.
+
+**Why it is separate from staleness**, which was the ruling's point and is worth
+recording where the two disagree: staleness asks when somebody last *said*
+anything; this asks when the project last *moved*. Navalmoral is the case that
+forced the split — nothing has gone quiet, so staleness finds nothing, and four
+and a half years separate the ceremony from the first cell. One report would have
+had to choose which fact to be about and would have hidden the other.
+
+---
+
 ## Stopping here
 
 A–E are resolved and the first six rows are in. What is left, in order:
