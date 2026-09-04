@@ -342,6 +342,23 @@ def _location(e: Errors, where: str, row: dict) -> None:
         # sees the block when the URL actually 403s — a malformed one on a source
         # that happens to be answering would sit unnoticed until the day it
         # mattered.
+        # THE COMPOSITE SITE STANDARD, gated leg by leg. A row that claims it
+        # must show all three, because the whole argument for the standard is
+        # that the legs cover each other's weaknesses — two of them is just a
+        # weaker version of company-only, which is the thing it must not become.
+        ev = s.get("site_evidence")
+        if ev is not None:
+            ew = f"{w} site_evidence"
+            _vocab(e, ew, ev, "kind", sm.SITE_EVIDENCE_KINDS)
+            if ev.get("kind") == "composite":
+                _req(e, ew, ev, "company", "state", "basemap", "note")
+                for leg in ("company", "state", "basemap"):
+                    block = ev.get(leg)
+                    if not isinstance(block, dict):
+                        continue
+                    _req(e, f"{ew}.{leg}", block, "url", "publisher", "verbatim")
+                    _url(e, f"{ew}.{leg}", block.get("url"))
+
         refused = src.get("refused_declared_reader")
         if refused is not None:
             _req(e, f"{w} refused_declared_reader", refused, "last_verified", "by", "note")
