@@ -560,7 +560,38 @@ export function getLead(sector: string): Lead | null {
  *  to choose a template, so it has to be cheap and total: no throw, no
  *  half-answer. A sector has a map when it has a ranking AND something for the
  *  ranking to point at. */
+/** Sectors whose data is built and whose page may not be drawn yet.
+ *
+ *  `hasMap` asks whether the data EXISTS. It cannot ask whether the data is
+ *  COMPLETE ENOUGH TO PUBLISH, and those are different questions — batteries
+ *  passed the first the moment its ranking was built while still failing the
+ *  second badly. A hold is data rather than a missing file, so that it is
+ *  visible, survives anyone re-running a builder, and can say who releases it.
+ *  See data/transition/draw_holds.json. */
+export interface DrawHold {
+  since: string;
+  reason: string;
+  released_by: string;
+}
+
+let holdsCache: Record<string, DrawHold> | null = null;
+
+export function drawHolds(): Record<string, DrawHold> {
+  if (!holdsCache) {
+    const full = path.join(DIR, "draw_holds.json");
+    holdsCache = fs.existsSync(full)
+      ? (JSON.parse(fs.readFileSync(full, "utf8")).holds as Record<string, DrawHold>)
+      : {};
+  }
+  return holdsCache;
+}
+
+export function drawHold(sector: string): DrawHold | undefined {
+  return drawHolds()[sector];
+}
+
 export function hasMap(sector: string): boolean {
+  if (drawHold(sector)) return false;
   const imp = getImportance(sector);
   return Boolean(imp && getBottlenecks(sector).length > 0);
 }

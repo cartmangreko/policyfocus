@@ -41,6 +41,36 @@
  },
  {
   "rel": "addresses",
+  "from": "technology:cell-manufacturing",
+  "to": "bottleneck:batsol-cell-cost-gap",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cell-cost-gap].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:cell-manufacturing",
+  "to": "bottleneck:batsol-demand-uncertainty",
+  "since": "2026-02-09",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-demand-uncertainty].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:cell-manufacturing",
+  "to": "bottleneck:batsol-ramp-and-yield",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-ramp-and-yield].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
   "from": "technology:co2-transport-storage",
   "to": "bottleneck:co2-transport-storage-network",
   "since": "2024-06-13",
@@ -97,6 +127,36 @@
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=steel-hydrogen-supply].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:lfp-cells",
+  "to": "bottleneck:batsol-cathode-dependence",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cathode-dependence].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:lfp-cells",
+  "to": "bottleneck:batsol-cell-cost-gap",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cell-cost-gap].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:sodium-ion-cells",
+  "to": "bottleneck:batsol-cathode-dependence",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cathode-dependence].addressed_by"
   }
  },
  {
