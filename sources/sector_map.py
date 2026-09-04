@@ -279,6 +279,53 @@ LOCATION_SOURCE_TYPES = (
 )
 
 
+# HOW A SITE IS CONFIRMED, WHEN ONE SOURCE CANNOT DO IT ALONE
+# ===========================================================
+# The perimeter's site rule is company-only: a project whose specific site the
+# company has not confirmed is not held. That rule is right and it has already
+# refused a candidate outright -- InoBat's Spanish site, where the only company
+# statement was conditional and nothing followed it.
+#
+# Sunwoda is the case it could not decide. The company confirms the project and
+# the country and never names the town: its newsroom release says "Hungary", its
+# 2025 Shenzhen-filed interim report lists "Hungary Sunwoda Power Technology Co.,
+# Ltd" with Hungary as its place of business, and neither says Nyíregyháza. The
+# Hungarian government's own briefing room does say it, and the basemap carries a
+# works whose name is the operator's own subsidiary at an address in that town.
+#
+# Read strictly, company-only refuses a site that three independent sources agree
+# on. Read loosely, it stops meaning anything. So it is neither stretched nor
+# abandoned: a SECOND, NAMED standard is defined, and a row says which one it
+# stands on.
+#
+# THE COMPOSITE STANDARD HAS THREE LEGS AND ALL THREE ARE REQUIRED:
+#
+#   company    the operator's own materials confirming the project and the
+#              country. Not the town -- if the company named the town, the
+#              ordinary standard is met and this one is not needed.
+#   state      a primary of the host state naming the site. A government's own
+#              publication, not an agency's summary of it and not press relaying
+#              either.
+#   basemap    a feature carrying the operator's name, corroborating that
+#              something of theirs stands where the state says it does.
+#
+# WHY THIS IS NOT A WEAKENING. Each leg is weak where the others are strong. The
+# company knows what it is building and will not always say where; the state
+# knows where because it permitted and subsidised it; the basemap knows what is
+# physically there and nothing about who intends what. One source doing all three
+# jobs is the ordinary case; three sources doing one job each is not a lower bar,
+# it is a different one, and it is only available when no single source clears
+# the first.
+#
+# EVERY LEG IS CITED ON THE ROW, and the note says plainly that the company
+# source names no city. A reader who disagrees with the standard can see exactly
+# what it was applied to.
+SITE_EVIDENCE_KINDS = (
+    "company",      # the ordinary standard: the operator names its own site
+    "composite",    # the three legs above, all cited
+)
+
+
 # HOW EXACT A COORDINATE IS. `plant` is the works itself; `site` is a store, a
 # field or a receiving terminal, which has a position but not a street. `town`
 # is listed and is not allowed on a project: the gate refuses it by name, so the

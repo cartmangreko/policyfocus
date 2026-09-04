@@ -2285,6 +2285,84 @@
           "note": "CAPACITY OUTSTANDING AND ADMITTED ANYWAY. Tesla publishes no figure for Berlin 4680. The row is held on the perimeter's own provision: a candidate with no figure is admitted on a company description of commercial-scale intent, and appearing in Tesla's installed-capacity table beside a >40 GWh line is that. It sits in the standing report until a figure exists. CITED AT THE SEC RATHER THAN AT TESLA'S OWN CDN: assets-ir.tesla.com answers 403 to check_links, and the filed exhibit is the same document, permanent, and reachable. Adding a host to the bot-hostile list would have hidden a citation that had a better home."
         }
       ]
+    },
+    {
+      "id": "sunwoda-nyiregyhaza",
+      "name": "Sunwoda Nyíregyháza",
+      "company": "Sunwoda",
+      "plant": "Nyíregyháza",
+      "country": "HU",
+      "location": [
+        {
+          "site": "Nyíregyháza cell works",
+          "lat": 47.8953,
+          "lon": 21.7435,
+          "precision": "plant",
+          "retrieved_date": "2026-09-04",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1263927003",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Hungary Sunwoda Electronics Automotive Energy Techonology Kft. épülő akkumulátor gyára; landuse=construction; construction=industrial; addr:city=Nyíregyháza; addr:street=Déli út",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "site_evidence": {
+            "kind": "composite",
+            "note": "THE COMPANY SOURCE NAMES NO CITY. Sunwoda's own release says 'Hungary' and its Shenzhen-filed interim report gives Hungary as the subsidiary's place of business; neither says Nyíregyháza. The site is confirmed under the composite standard instead of the ordinary company-only one, and all three legs are cited here so a reader who disagrees with the standard can see what it was applied to.",
+            "company": {
+              "url": "https://en.sunwoda.com/article/1345/9.html",
+              "publisher": "Sunwoda Electronic",
+              "date": "2023-08-10",
+              "verbatim": "The Hungary project is Sunwoda's first self-owned production base in Europe and the third overseas factory following the global layout opened in New Delhi, India in 2017.",
+              "note": "Confirms the project and the country and no more. Corroborated by the 2025 interim report filed with the Shenzhen exchange, which lists 'Hungary Sunwoda Power Technology Co., Ltd' with Hungary as its place of business.",
+              "also": "https://en.sunwoda.com/upload/portal/20250827/3da078ce6dd869be2a276b175627640c.pdf"
+            },
+            "state": {
+              "url": "https://kormany.hu/hirek/a-kinai-sunwoda-580-milliard-forintos-beruhazassal-nyiregyhazan-epiti-fel-elso-europai-uzemet",
+              "publisher": "Government of Hungary",
+              "date": "2023-07-27",
+              "verbatim": "Nyíregyházán építi fel első európai üzemét a világ egyik legnagyobb akkumulátorgyártója, a kínai Sunwoda",
+              "note": "The government's own briefing room names the town and the product — one of the world's largest battery manufacturers building its first European works at Nyíregyháza — at a stated 580 billion forints. HIPA's announcement says the same and answers 403 to this pipeline, so it is not cited as a leg."
+            },
+            "basemap": {
+              "url": "https://www.openstreetmap.org/way/1263927003",
+              "publisher": "OpenStreetMap contributors",
+              "verbatim": "name=Hungary Sunwoda Electronics Automotive Energy Techonology Kft. épülő akkumulátor gyára; addr:city=Nyíregyháza; addr:street=Déli út",
+              "note": "A works under construction carrying the operator's own Hungarian subsidiary name, at an address in the town the state names."
+            }
+          }
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2023-07-27",
+          "source_url": "https://kormany.hu/hirek/a-kinai-sunwoda-580-milliard-forintos-beruhazassal-nyiregyhazan-epiti-fel-elso-europai-uzemet",
+          "note": "Announced by the Hungarian government on 27 July 2023 at 580 billion forints, with a first phase of 93 billion. The basemap carries the site as landuse=construction. NO COMPANY STATEMENT OF A BUILD START HAS BEEN READ — Sunwoda's own release predates this by two weeks and says only that the project exists."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.sunwoda.com/article/1345/9.html",
+          "title": "Accelerating Overseas Expansion! Sunwoda's First European Factory Settles in Hungary",
+          "publisher": "Sunwoda Electronic",
+          "date": "2023-08-10"
+        },
+        {
+          "url": "https://kormany.hu/hirek/a-kinai-sunwoda-580-milliard-forintos-beruhazassal-nyiregyhazan-epiti-fel-elso-europai-uzemet",
+          "title": "A kínai Sunwoda 580 milliárd forintos beruházással Nyíregyházán építi fel első európai üzemét",
+          "publisher": "Government of Hungary",
+          "date": "2023-07-27",
+          "note": "PRODUCT AND SCALE BOTH SIT AT STATE TIER ON THIS ROW. The government describes a battery works for electric vehicles, which satisfies the product rule; it states an investment and no capacity, so the capacity is absent and the row is admitted on a state-tier description of commercial-scale intent. It joins the standing report until a figure exists."
+        }
+      ]
     }
   ]
 }

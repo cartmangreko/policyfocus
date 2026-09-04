@@ -29268,6 +29268,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:sunwoda-nyiregyhaza",
+  "to": "technology:cell-manufacturing",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sunwoda-nyiregyhaza].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:tesla-gruenheide-cells",
   "to": "technology:cell-manufacturing",
   "since": "2026-07-22",
@@ -32260,6 +32270,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=stegra-boden].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:sunwoda-nyiregyhaza",
+  "to": "country:HU",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sunwoda-nyiregyhaza].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:sunwoda-nyiregyhaza",
+  "to": "sector:batsol",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sunwoda-nyiregyhaza].sector"
   },
   "basis": "sector"
  },
