@@ -127,7 +127,30 @@ EUROPE_DEGREES = (-11.0, 34.0, 31.0, 70.5)      # west, south, east, north
 # stops a project whose store is fifty kilometres away from being drawn at a
 # scale where the coastline is all there is to see.
 PADDING_KM = 80.0
-MIN_SPAN_KM = 800.0
+
+# THE MINIMUM SPAN WAS 500, THEN 800, AND IS NOW 700, and each move was made by
+# measuring rather than by argument.
+#
+#   500  Salzgitter's crop was very nearly blank: inland Europe has no coast and
+#        the nearest borders sat just outside the frame.
+#   800  fixed that, and held at zero crowded labels through cement and steel.
+#   700  the batteries dataset put 133 marks on these frames and the narrow
+#        layout began losing labels — six crowded and three country names
+#        dropped. Pulling the span in to 700 recovers two of the six and one
+#        country name, because a tighter frame spreads the same marks further
+#        apart in canvas units.
+#
+# WHAT IT COSTS, stated because it is a real cost: eight context marks that used
+# to fall inside a crop now fall outside one. They are neighbours rather than
+# subjects — every one is still drawn on its own page and on its sector's
+# overview — and no crop loses its last neighbour: the number of crops showing
+# only their subject is nine at 800 and nine at 700. At 650 it rises to eleven,
+# which is where this stops being worth doing.
+#
+# The four collisions this does NOT fix are all on the batteries sector overview,
+# whose frame is fixed Europe and which a crop span cannot reach. That is a type
+# size question and is left alone deliberately: see BREAKPOINTS.
+MIN_SPAN_KM = 700.0
 
 
 
@@ -529,6 +552,19 @@ def relations_for(subject: dict, projects: list[dict]) -> dict[str, str]:
 # and 390 is a 430-wide viewport less the 20px gutter the stylesheet drops to
 # below 680. Both land the name at about eleven pixels, which is the size the
 # coordinate line under the picture already sets and is read at.
+# THE NARROW SIZE IS 21 AND IS NOT BEING REDUCED TO BUY BACK COLLISIONS, though
+# it would: 19 takes the crowded count from four to three and the dropped country
+# names from three to one. It is left alone because the trade is bad in a way the
+# numbers hide. A crowded label is KEPT and reported — the name is on the paper,
+# overlapping something — while a smaller type size makes every name on every
+# narrow layout harder to read, on cement and steel as well, to fix four labels
+# on one picture that is currently held from drawing.
+#
+# It is the right lever eventually. The four remaining collisions are all on the
+# batteries overview, they come from mark density in a fixed Europe frame, and
+# they will get worse as the fourteen outstanding rows land. When that picture is
+# released it will need this decision taken properly, on a look at the rendered
+# page rather than on a count.
 BREAKPOINTS = {
     "wide": {"canvas_px": 760.0, "size": 11.0},
     "narrow": {"canvas_px": 390.0, "size": 21.0},

@@ -27,15 +27,15 @@
         "scale": "eur_awarded",
         "bearer": "project_developer",
         "cost": 0.0,
-        "support": 381000000.0,
+        "support": 615000000.0,
         "measures": [
           {
             "measure": "ets:FND-03",
             "direction": "support",
-            "amount": 381000000.0
+            "amount": 615000000.0
           }
         ],
-        "net": 381000000.0
+        "net": 615000000.0
       },
       {
         "scale": "eur_per_tonne",
@@ -244,17 +244,18 @@
         "anrav-devnya",
         "carbon2business-lagerdorf",
         "gezero-geseke",
-        "go4zero-obourg"
+        "go4zero-obourg",
+        "ifestos-kamari"
       ],
       "article": "Art. 1(17), inserting Art. 10cb of Directive 2003/87/EC",
       "when": "ongoing",
       "duty": "",
       "plain": {
         "title": "EU grants for cutting industrial emissions",
-        "sentence": "€381 million has been awarded from the Innovation Fund to European cement projects that capture their CO2."
+        "sentence": "€615 million has been awarded from the Innovation Fund to European cement projects that capture their CO2."
       },
       "money": {
-        "value": 381000000.0,
+        "value": 615000000.0,
         "scale": "eur_awarded",
         "model": "grant_programme",
         "direction": "support",
@@ -264,7 +265,8 @@
         "computable": true,
         "inputs": [
           "innovation-fund-gezero",
-          "innovation-fund-anrav"
+          "innovation-fund-anrav",
+          "innovation-fund-ifestos"
         ],
         "formula": "sum of funding.amount where funding.under = this measure and funding.status is committed (approved, signed, disbursed)",
         "missing": [],
