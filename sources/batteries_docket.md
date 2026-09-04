@@ -188,6 +188,7 @@ docket, and it is the largest single piece of work between this file and the row
 | Umicore, Nysa | product | Cathode material |
 | BASF, Schwarzheide | product | Cathode material |
 | Northvolt Borlänge (Northvolt Fem) | product | **Refused on the second pass.** Admitted in error: Northvolt's own release of 9 September 2024 says Kvarnsveden was 'envisioned as a new facility for cathode active material production'. Cathode is refused by name |
+| InoBat, Spain | site | **Refused on the third pass.** The only company statement is a conditional declaration of intent with Valladolid of 19 October 2022 — "if Spain is selected" — and InoBat's newsroom has carried nothing about Spain since. A site the company has never confirmed choosing is not a site |
 | Every pack/module line at a vehicle factory | product | The exclusion's main population |
 | Hydrovolt, Librec, Altilium and other recyclers | boundary | Circular materials; links back when that dataset exists |
 
@@ -952,6 +953,45 @@ about whether the page is there.
 **The row's quotes from the permit are second-hand until the file lands** — the
 grid references are George's reading, not this pipeline's. The queue entry carries
 a `drop_as` path.
+
+---
+
+## 16. The sweep continues, and the two halves keep landing separately
+
+Eighteen rows, and the admitted set is **32**: InoBat Spain is refused.
+
+### A candidate refused on the site rule for the first time
+
+**InoBat Spain is out.** Its only company statement is a declaration of intent
+signed with Valladolid on 19 October 2022, and it is explicitly conditional — the
+release says InoBat was still weighing sites in the United Kingdom and would
+decide "if Spain is selected". The company's newsroom has carried nothing about
+Spain since; the September 2025 funding story is trade press. **A site the company
+has never confirmed choosing is not a site**, which is the perimeter's own words
+and the first time that clause has done the refusing.
+
+Northvolt Borlänge went on the product rule and this goes on the site rule. Two of
+the six perimeter clauses have now removed a candidate that a plausible sweep
+would have carried.
+
+### Two candidates each moved one half, and neither moved both
+
+**EVE Power has its company source and no coordinate.** EVE's own page of 29
+September 2025 names Debrecen: "The EVE Energy Hungarian factory, approved for
+construction this year, is expected to be completed and put into operation in
+2026." A sweep of 117 features across Debrecen returns the CATL site and nothing
+in the northwest industrial zone.
+
+**Sunwoda has its coordinate and no company-confirmed site.** The basemap names
+the works in full — *Hungary Sunwoda Electronics Automotive Energy Techonology
+Kft. épülő akkumulátor gyára*, at Déli út, Nyíregyháza — and Sunwoda's own release
+of 10 August 2023 says only "Hungary", names no city, and describes the output as
+"lithium-ion batteries and power battery systems", which does not settle the
+product rule either. Site confirmation is company-only, so a basemap feature
+naming the operator does not close it.
+
+That pair is the sweep's shape in miniature: **the two halves are independent, and
+finding one tells you nothing about the other.**
 
 ---
 

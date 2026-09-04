@@ -274,7 +274,9 @@
       "company": "Sunwoda",
       "site": "Nyíregyháza",
       "country": "HU",
-      "status": "construction"
+      "status": "construction",
+      "coordinate_ref": "way/1263927003 Hungary Sunwoda Electronics Automotive Energy, landuse=construction",
+      "note": "COORDINATE FOUND, SITE RULE STILL UNMET. The basemap names the works — 'Hungary Sunwoda Electronics Automotive Energy' at Nyíregyháza — but Sunwoda's own release of 10 August 2023 says only 'Hungary' and names no city, and the 2025 milestones page does not mention the country at all. Site confirmation is company-only, so a basemap feature naming the operator does not close it. Trade press and HIPA both say cells rather than packs; Sunwoda's own words are 'lithium-ion batteries and power battery systems', which does not settle the product rule either."
     },
     {
       "id": "eve-power-debrecen",
@@ -282,7 +284,9 @@
       "site": "Debrecen",
       "country": "HU",
       "status": "announced",
-      "capacity_gwh": 30
+      "capacity_gwh": 30,
+      "company_source": "https://www.evebattery.com/en/news-1873",
+      "note": "Company source found: EVE's own page of 29 September 2025 names Debrecen — 'The EVE Energy Hungarian factory, approved for construction this year, is expected to be completed and put into operation in 2026.' No company capacity figure; the 30 GWh is state and trade tier. COORDINATE NOT FOUND: a sweep of 117 features across Debrecen returns the CATL site and nothing in the northwest industrial zone."
     },
     {
       "id": "calb-sines",
@@ -294,13 +298,6 @@
       "coordinate_ref": "way/1262719042 Construção da Unidade Industrial de Baterias de Lítio da CALB",
       "note": "Coordinate in hand. CALB's own groundbreaking release is the right document and en.calb-tech.com serves a certificate for cloudfront.net.",
       "company_source_blocked": "http://en.calb-tech.com/news_detail/5.html"
-    },
-    {
-      "id": "inobat-spain",
-      "company": "InoBat",
-      "site": "Spain, site to confirm",
-      "country": "ES",
-      "status": "announced"
     },
     {
       "id": "freyr-mo-i-rana",
