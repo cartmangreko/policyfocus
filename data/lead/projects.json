@@ -2877,6 +2877,90 @@
       ],
       "override_stale": false,
       "notes": []
+    },
+    "envision-aesc-sunderland": {
+      "id": "envision-aesc-sunderland",
+      "template_version": 1,
+      "fingerprint": "e938480154c3733e",
+      "sentence": {
+        "text": "AESC Sunderland is AESC's batteries and solar project at Sunderland, United Kingdom.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "AESC Sunderland",
+          "AESC",
+          "Sunderland, United Kingdom"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "AESC Sunderland started operating on 16 December 2025.",
+          "as_of": "2025-12-16",
+          "numbers": [],
+          "sourced": [
+            "AESC Sunderland"
+          ],
+          "href": "https://www.aesc-group.com/newsInfo?id=aesc-launches-its-new-uk-battery-gigafactory",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Sunderland, United Kingdom.",
+          "as_of": "2025-12-16",
+          "numbers": [],
+          "sourced": [
+            "Sunderland, United Kingdom"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2025-12-16",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 15.8 GWh per year.",
+          "as_of": "2025-12-16",
+          "numbers": [
+            "15.8"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2025-12-16",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
     }
   }
 }

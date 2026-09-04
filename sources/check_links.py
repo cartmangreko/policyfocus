@@ -62,6 +62,14 @@ BOT_HOSTILE = {
     "reports.weforum.org",
     "tradingeconomics.com",
     "www.iea.org",
+    # Added with the batteries dataset. Each of these serves the document to a
+    # browser and 403s a datacentre IP, which is why sources/manual/ exists: the
+    # row cites the publisher's live URL, a person retrieves the page, and the
+    # copy they read is filed with its provenance. A 403 here is a fact about
+    # how we are reaching the page and not about whether the page is there.
+    "www.sunderland.gov.uk",
+    "www.aesc-group.com",
+    "aesc-group.com",
 }
 
 

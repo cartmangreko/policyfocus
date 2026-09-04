@@ -76,6 +76,7 @@ import sys
 from datetime import date
 
 import display_vocabulary as dv
+import osgb36
 import sector_map as sm
 
 DATE_RE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
@@ -346,6 +347,32 @@ def _location(e: Errors, where: str, row: dict) -> None:
                 e.add(w, "is a named coordinate-source exception and also declares a "
                          "type — one or the other, or nobody can tell which rule the "
                          "coordinate is standing on")
+        # A GRID REFERENCE IS RECOMPUTED, NOT TRUSTED. Where a permit gives a
+        # British National Grid position, the stored latitude and longitude have
+        # to be what osgb36.to_wgs84 produces from it — so the conversion cannot
+        # be done once by hand, mistyped, or quietly adjusted afterwards, and a
+        # reader can redo it. The projection and the datum shift are themselves
+        # checked against the Ordnance Survey's published worked example every
+        # time this gate runs; see osgb36.self_check.
+        grid = s.get("grid_reference")
+        if grid:
+            _req(e, f"{w} grid_reference", grid, "system", "easting", "northing")
+            if grid.get("system") != "OSGB36":
+                e.add(f"{w} grid_reference", f"system={grid.get('system')!r} — only "
+                                             f"OSGB36 is implemented, in sources/osgb36.py")
+            elif src.get("type") != "permit":
+                e.add(f"{w} grid_reference", "is on a site whose coordinate source is "
+                                             "not a permit — a grid reference comes from a "
+                                             "filing, and recording one beside another "
+                                             "kind of source hides which put the point here")
+            else:
+                for failure in osgb36.self_check():
+                    e.add("osgb36", failure)
+                got = osgb36.to_wgs84(grid["easting"], grid["northing"])
+                if (s.get("lat"), s.get("lon")) != got:
+                    e.add(w, f"lat/lon is {(s.get('lat'), s.get('lon'))} and the grid "
+                             f"reference E {grid['easting']} N {grid['northing']} converts "
+                             f"to {got} — one of the two has been edited alone")
         if src.get("type") == "company" and not s.get("address"):
             e.add(w, "source type=company and no address block — a coordinate derived "
                      "from the operator's own materials has to quote the address or "
