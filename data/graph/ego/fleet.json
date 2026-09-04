@@ -1,0 +1,35 @@
+{
+  "file": "fleet",
+  "center": {
+    "id": "act:32019R0631",
+    "label": "CO2 Standards for Cars and Vans",
+    "file": "fleet"
+  },
+  "measure_count": 6,
+  "groups": [
+    {
+      "rel": "sectors",
+      "title": "Sectors",
+      "spokes": [
+        {
+          "id": "sector:auto",
+          "kind": "sector",
+          "label": "Automotive",
+          "file": null,
+          "href": "/sectors/auto",
+          "detail": "named by 6 measures",
+          "weight": 6
+        },
+        {
+          "id": "sector:batsol",
+          "kind": "sector",
+          "label": "Batteries and solar",
+          "file": null,
+          "href": "/sectors/batsol",
+          "detail": "reached by 4 measures",
+          "weight": 4
+        }
+      ]
+    }
+  ]
+}

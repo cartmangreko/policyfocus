@@ -171,6 +171,402 @@
  },
  {
   "rel": "applies_to",
+  "from": "measure:battery:BP-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=BP-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:BP-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=BP-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:BP-01",
+  "to": "sector:waste",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=BP-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:CF-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=CF-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:CF-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=CF-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-01",
+  "to": "sector:alu",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-01",
+  "to": "sector:chem",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-02",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-02].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-02",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-03",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-03].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:EPR-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=EPR-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:EPR-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=EPR-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:EPR-01",
+  "to": "sector:waste",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=EPR-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:FM-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=FM-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:FM-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=FM-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:GPP-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=GPP-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:GPP-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=GPP-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:LAB-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=LAB-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:LAB-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=LAB-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:MAN-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=MAN-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:MAN-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=MAN-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:PEN-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=PEN-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:RC-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=RC-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:RC-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=RC-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:RC-01",
+  "to": "sector:waste",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=RC-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:REC-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REC-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:REC-01",
+  "to": "sector:waste",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REC-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:REM-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REM-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:REM-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REM-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:SUB-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUB-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:SUB-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUB-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:SUB-01",
+  "to": "sector:chem",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUB-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:SUP-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUP-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:SUP-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUP-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
   "from": "measure:cbam:ANTI-01",
   "to": "sector:alu",
   "since": "2025",
@@ -6922,6 +7318,116 @@
    "path": "[id=WST-03].sectors_named"
   },
   "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:DER-01",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=DER-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:MON-01",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=MON-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:PREM-01",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=PREM-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:PREM-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=PREM-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-01",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-2030",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2030].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-2030",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2030].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-2035",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2035].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-2035",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2035].sectors_reached"
+  },
+  "basis": "reached"
  },
  {
   "rel": "applies_to",
@@ -20092,6 +20598,28 @@
  },
  {
   "rel": "cites",
+  "from": "measure:battery:GPP-01",
+  "to": "act:32014L0025",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=GPP-01]",
+   "quote": "contracting entities, as defined in Article 4(1) of Directive 2014/25/EU shall, when procuring batteries or products containing batteries in situations covered by those Directives, take account of the environmental impacts of those batteries over their life cycle with a view to ensuring that such impacts are kept to a minimum."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:battery:SUB-01",
+  "to": "act:32006R1907",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUB-01]",
+   "quote": "In addition to the restrictions set out in Annex XVII to Regulation (EC) No 1907/2006 and in Article 4(2), point (a), of Directive 2000/53/EC, batteries shall not contain substances for which Annex I to this Regulation contains a restriction unless the conditions of that restriction are complied with."
+  }
+ },
+ {
+  "rel": "cites",
   "from": "measure:cbam:ANTI-01",
   "to": "act:32023R0956",
   "since": "2025",
@@ -22921,6 +23449,226 @@
    "quote": "SSAB, LKAB and Vattenfall have now produced the world's first hydrogen-reduced sponge iron at a pilot scale."
   },
   "volume": null
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:DER-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=DER-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:MON-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=MON-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:PREM-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=PREM-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:TGT-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:TGT-2030",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2030]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:TGT-2035",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2035]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:BP-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=BP-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:CF-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=CF-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:DD-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:DD-02",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-02]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:DD-03",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-03]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:EPR-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=EPR-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:FM-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=FM-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:GPP-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=GPP-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:LAB-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=LAB-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:MAN-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=MAN-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:PEN-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=PEN-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:RC-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=RC-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:REC-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REC-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:REM-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REM-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:SUB-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUB-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:SUP-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUP-01]"
+  }
  },
  {
   "rel": "contains",
@@ -27721,6 +28469,50 @@
    "source": "data/ets.json",
    "path": "[id=WST-03]"
   }
+ },
+ {
+  "rel": "creates_demand_for",
+  "from": "measure:fleet:PREM-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=PREM-01].creates_demand_for"
+  },
+  "basis": "demand"
+ },
+ {
+  "rel": "creates_demand_for",
+  "from": "measure:fleet:TGT-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-01].creates_demand_for"
+  },
+  "basis": "demand"
+ },
+ {
+  "rel": "creates_demand_for",
+  "from": "measure:fleet:TGT-2030",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2030].creates_demand_for"
+  },
+  "basis": "demand"
+ },
+ {
+  "rel": "creates_demand_for",
+  "from": "measure:fleet:TGT-2035",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2035].creates_demand_for"
+  },
+  "basis": "demand"
  },
  {
   "rel": "depends_on",

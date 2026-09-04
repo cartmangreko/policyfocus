@@ -26,6 +26,7 @@ DATA_FILES = [
     ("crma", "../data/crma.json"),
     ("ppwr", "../data/ppwr.json"),
     ("battery", "../data/battery.json"),
+    ("fleet", "../data/fleet.json"),
 ]
 
 # Fields that assert a support movement or a conferred faculty. An obligation
