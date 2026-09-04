@@ -337,6 +337,16 @@ def _location(e: Errors, where: str, row: dict) -> None:
         # each admits and, more importantly, for what none of them admits — a
         # geocoded town name and a position read off a press photograph are
         # refused by having no value to record them under.
+        # A source may record that its publisher refuses a declared reader. The
+        # shape is gated here as well as in check_links, because check_links only
+        # sees the block when the URL actually 403s — a malformed one on a source
+        # that happens to be answering would sit unnoticed until the day it
+        # mattered.
+        refused = src.get("refused_declared_reader")
+        if refused is not None:
+            _req(e, f"{w} refused_declared_reader", refused, "last_verified", "by", "note")
+            _date(e, f"{w} refused_declared_reader", refused, "last_verified")
+
         excused = (row.get("id"), s.get("site")) in COORDINATE_SOURCE_EXCEPTIONS
         if not excused:
             _req(e, w, src, "publisher", "verbatim", "type")
