@@ -8250,25 +8250,26 @@
    "location": [
     {
      "site": "IAMP, Sunderland",
-     "lat": 54.9216,
-     "lon": -1.4839,
+     "lat": 54.9221,
+     "lon": -1.4837,
      "precision": "plant",
-     "retrieved_date": "2026-09-03",
+     "retrieved_date": "2026-09-04",
      "grid_reference": {
       "system": "OSGB36",
-      "easting": 433175,
-      "northing": 558670,
-      "note": "The centre of the block the Appendix 1 site plans place the factory building in, E 433100–433250 by N 558550–558790. The installation's own VOC stacks are listed inside it — VOC 04 at E 433151, N 558774 — which is what ties the block to the works rather than to the estate around it. Converted by sources/osgb36.py and recomputed by the gate."
+      "easting": 433189,
+      "northing": 558718,
+      "note": "The centroid of the 61 emission-point positions the report lists for this installation, each given to the millimetre — VOC 04 at E 433151.055, N 558774.146 and so on. Computed from the document's own numbers rather than from the block they fall in, because the stacks ARE the installation: they span E 433070–433459 by N 558555–558868, and their centroid is the one point in that spread the document itself supports. Converted by sources/osgb36.py and recomputed by the gate."
      },
      "source": {
       "url": "https://www.sunderland.gov.uk/media/35770/4-Envision-AESC-Installation-Details-Process-Description-300168590-ES-001/pdf/4._Envision_AESC-_Installation_Details___Process_Description-300168590-ES-001.pdf",
       "type": "permit",
-      "publisher": "TÜV Rheinland for AESC UK, environmental-permit application to Sunderland City Council, ref 300168590-ES-001",
-      "verbatim": "Appendix 1 site plans, gridded on the British National Grid, with the installation's VOC stacks listed by easting and northing",
-      "date": "2023-09"
+      "publisher": "TÜV Rheinland Industrial Services for Envision AESC UK Ltd, environmental-permit application to Sunderland City Council, ref 300168590-ES-001",
+      "verbatim": "The Installation consists of a single, three-storey industrial unit (main factory building) that is to house a capacity electrode and battery manufacturing facility with a maximum capacity of up to 9 GWh / annum, split across two battery manufacturing plants separated by a central spine of offices.",
+      "date": "2023-09-26",
+      "retrieved_manually": "sources/manual/envision-aesc-sunderland--installation-details-300168590-ES-001.pdf"
      },
      "confidence": "secondary",
-     "note": "The permit is the source of the position; it is not derived from any basemap feature. An unnamed landuse=construction polygon sits 95 m away and the IAMP estate 560 m away, which corroborates the conversion and is not what places it."
+     "note": "The permit places the point and no basemap feature does. The report puts the site 'to the west of the A19, and to the south of the River Don', which the converted position agrees with. An unnamed landuse=construction polygon sits about 100 m away and the IAMP estate about 550 m away; both corroborate and neither places it."
     }
    ]
   }
