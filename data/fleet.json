@@ -1,0 +1,193 @@
+[
+  {
+    "id": "TGT-2030",
+    "measure_type": "obligation",
+    "addressee": "Manufacturers of new passenger cars and light commercial vehicles",
+    "class": "business",
+    "trigger": "the new vehicle fleet registered in the Union in a calendar year",
+    "frequency": "annual",
+    "verification": "the Commission",
+    "direction": "add",
+    "article": "Art. 1(5)",
+    "when": "From 1 January 2030 (Art. 1(5))",
+    "source_text": "From 1 January 2030, the following EU fleet-wide targets shall apply: (a) for the average emissions of the new passenger car fleet, an EU fleet-wide target equal to a ►M5 55 % ◄ reduction of the target in 2021 determined in accordance with point 6.1.2 of Part A of Annex I; (b) for the average emissions of the new light commercial vehicles fleet, an EU fleetwide target equal to a ►M5 50 % ◄ reduction of the target in 2021 determined in accordance with point 6.1.2 of Part B of Annex I.",
+    "drivers": [
+      "D1",
+      "D3"
+    ],
+    "sectors_named": [
+      "auto"
+    ],
+    "sectors_reached": [
+      "batsol"
+    ],
+    "provision_id": null,
+    "file": "fleet",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0631-20250709",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Meet an EU fleet-wide target of a 55% reduction on the 2021 baseline for new passenger cars, and 50% for new light commercial vehicles.",
+    "creates_demand_for": [
+      "batsol"
+    ],
+    "reading_note": "A 55% fleet reduction is not reachable on internal combustion alone at fleet scale, which is what makes this a demand instrument for cells and not only a duty on a carmaker."
+  },
+  {
+    "id": "TGT-2035",
+    "measure_type": "obligation",
+    "addressee": "Manufacturers of new passenger cars",
+    "class": "business",
+    "trigger": "the new passenger car fleet registered in the Union in a calendar year",
+    "frequency": "annual",
+    "verification": "the Commission",
+    "direction": "add",
+    "article": "Art. 1(5a)",
+    "when": "From 1 January 2035 (Art. 1(5a))",
+    "source_text": "From 1 January 2035, the following EU fleet-wide targets shall apply: (a) for the average emissions of the new passenger car fleet, an EU fleet-wide target equal to a 100 % reduction of the target in 2021 determined in accordance with Part A, point 6.1.3, of Annex I;",
+    "drivers": [
+      "D1",
+      "D3"
+    ],
+    "sectors_named": [
+      "auto"
+    ],
+    "sectors_reached": [
+      "batsol"
+    ],
+    "provision_id": null,
+    "file": "fleet",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0631-20250709",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Meet an EU fleet-wide target of a 100% reduction on the 2021 baseline for new passenger cars from 2035.",
+    "creates_demand_for": [
+      "batsol"
+    ],
+    "reading_note": "THE PROVISION THIS SECTOR IS BUILT ON. A 100% reduction on the tailpipe measure is a requirement that new cars emit no CO2 where they are driven, and the only volume technology that meets it is a battery electric vehicle. Every gigafactory row in the projects dataset exists because somebody believes this sentence."
+  },
+  {
+    "id": "TGT-01",
+    "measure_type": "obligation",
+    "addressee": "Manufacturers of new passenger cars and light commercial vehicles",
+    "class": "business",
+    "trigger": "a manufacturer's new vehicles registered in a calendar year",
+    "frequency": "annual",
+    "verification": "the Commission",
+    "direction": "add",
+    "article": "Art. 4(1)",
+    "when": "In force; applies to each calendar year",
+    "source_text": "The manufacturer shall ensure that its average specific emissions of CO2 do not exceed the following specific emissions targets: (a) for the calendar year 2020, the specific emissions target determined in accordance with points 1 and 2 of Part A of Annex I in the case of passenger cars, or points 1 and 2 of Part B of Annex I in the case of light commercial vehicles, or where a manufacturer is granted a derogation under Article 10, in accordance with that derogation; (b) for each calendar year from 2021 until 2024, the specific emissions targets determined in accordance with points 3 and 4 of Part A or B of Annex I, as appropriate, or, where a manufacturer is granted a derogation under Article 10, in accordance with that derogation and point 5 of Part A or B of Annex I; (c) for each calendar year, starting from 2025, the specific emissions targets determined in accordance with point 6.3 of Part A or B of Annex I, or, where a manufacturer is granted a derogation under Article 10, in accordance with that derogation.",
+    "drivers": [
+      "D1",
+      "D3"
+    ],
+    "sectors_named": [
+      "auto"
+    ],
+    "sectors_reached": [
+      "batsol"
+    ],
+    "provision_id": null,
+    "file": "fleet",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0631-20250709",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Ensure the manufacturer's average specific CO2 emissions do not exceed its specific emissions target for the calendar year.",
+    "creates_demand_for": [
+      "batsol"
+    ],
+    "reading_note": "Where the fleet-wide number becomes an obligation on a named company. The fleet-wide targets in Art. 1 set the level; this is the row a manufacturer is actually held to."
+  },
+  {
+    "id": "PREM-01",
+    "measure_type": "obligation",
+    "addressee": "Manufacturers of new passenger cars and light commercial vehicles",
+    "class": "business",
+    "trigger": "average specific emissions above the manufacturer's target",
+    "frequency": "annual",
+    "verification": "the Commission",
+    "direction": "add",
+    "article": "Art. 8(1)",
+    "when": "In force; applies to each calendar year",
+    "source_text": "In respect of each calendar year, the Commission shall impose an excess emissions premium on a manufacturer or pool manager, as appropriate, where a manufacturer's average specific emissions of CO2 exceed its specific emissions target.",
+    "drivers": [
+      "D1",
+      "D3"
+    ],
+    "sectors_named": [
+      "auto"
+    ],
+    "sectors_reached": [
+      "batsol"
+    ],
+    "provision_id": null,
+    "file": "fleet",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0631-20250709",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Pay an excess emissions premium of EUR 95 per gram per kilometre of exceedance, multiplied by the number of newly registered vehicles.",
+    "creates_demand_for": [
+      "batsol"
+    ],
+    "reading_note": "The price of missing the target, which is what makes the target bite. Carried as a demand edge because a priced obligation is the mechanism by which the fleet target reaches a procurement decision; the premium itself is money out of a carmaker, not money into a cell maker, and no money model is built from it here."
+  },
+  {
+    "id": "MON-01",
+    "measure_type": "obligation",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "each new vehicle registered in the territory",
+    "frequency": "annual",
+    "verification": "the Commission",
+    "direction": "add",
+    "article": "Art. 7(1)",
+    "when": "In force; applies to each calendar year",
+    "source_text": "For each calendar year, each Member State shall record information for each new passenger car and each new light commercial vehicle registered in its territory",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "auto"
+    ],
+    "sectors_reached": [],
+    "provision_id": null,
+    "file": "fleet",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0631-20250709",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Record and report to the Commission, for each calendar year, the registration information for every new passenger car and light commercial vehicle.",
+    "reading_note": "A real duty and NOT a demand instrument. Carried without a creates_demand_for edge on purpose: monitoring makes no market for a cell, and an edge on every row in this act would say the whole regulation is a batteries instrument."
+  },
+  {
+    "id": "DER-01",
+    "measure_type": "right",
+    "addressee": "Manufacturers below the small-volume thresholds",
+    "class": "business",
+    "trigger": "fewer than 10 000 cars or 22 000 vans registered in the Union per year",
+    "frequency": "per application",
+    "verification": "the Commission",
+    "direction": "add",
+    "article": "Art. 10(1)",
+    "when": "In force; applies to each calendar year",
+    "source_text": "An application for a derogation from the specific emissions target calculated in accordance with Annex I may be made by a manufacturer of fewer than 10 000 new passenger cars or 22 000 new light commercial vehicles registered in the Union per calendar year",
+    "drivers": [],
+    "sectors_named": [
+      "auto"
+    ],
+    "sectors_reached": [],
+    "provision_id": null,
+    "file": "fleet",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0631-20250709",
+    "value_drivers": [
+      "V1"
+    ],
+    "access_frictions": [
+      "F4"
+    ],
+    "benefit": "A small-volume manufacturer may apply for a derogation from its specific emissions target.",
+    "right_basis": {
+      "text": "An application for a derogation from the specific emissions target calculated in accordance with Annex I may be made by a manufacturer of fewer than 10 000 new passenger cars or 22 000 new light commercial vehicles registered in the Union per calendar year",
+      "kind": "procedure"
+    }
+  }
+]

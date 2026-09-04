@@ -194,6 +194,11 @@ FILE_SOURCES = {
     # reason cbam_base is not: they are what this Regulation repeals and
     # amends, not what it says.
     "ppwr": ["ppwr.txt"],
+    # Brief 6 §5, both read once and declared preliminary. The batteries
+    # regulation at its 31 July 2025 consolidation; the CO2 standards for cars
+    # and vans at 9 July 2025.
+    "battery": ["battery.txt"],
+    "fleet": ["fleet.txt"],
 }
 
 
