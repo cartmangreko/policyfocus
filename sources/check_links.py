@@ -55,7 +55,17 @@ TIMEOUT = 20
 # one and are right to. The SEC's fair-access policy is explicit: an automated
 # reader states who it is and how to reach it, and anything that does not gets a
 # 403 whatever it asks for. The address is the platform's own, not a person's.
-UA = "Eufabric/1.0 (+https://www.eufabric.eu; data@eufabric.eu)"
+#
+# THE `Mozilla/5.0 (compatible; …)` WRAPPER IS THE CONVENTION AND NOT A DISGUISE.
+# It is the form Googlebot and every other well-behaved crawler uses, and the
+# thing inside the parentheses is the whole identity: a name, a URL and an
+# address. What it is NOT is the previous string, which opened with the same
+# token and then said nothing a publisher could contact. That one got past
+# filters by looking like a browser, which is a thing to stop doing rather than a
+# feature to keep — and stopping cost three citations that now report as 403,
+# recorded below rather than quietly recovered by wearing a browser's name.
+UA = ("Mozilla/5.0 (compatible; Eufabric/1.0; "
+      "+https://www.eufabric.eu; data@eufabric.eu)")
 
 # Hosts that answer a datacentre IP with 403 whatever the URL. A 403 from these
 # is reported, never failed. Anything not on this list that 403s IS a failure,
@@ -73,6 +83,15 @@ BOT_HOSTILE = {
     "www.sunderland.gov.uk",
     "www.aesc-group.com",
     "aesc-group.com",
+    # SURFACED BY DECLARING OURSELVES HONESTLY, and that is worth writing down.
+    # These two answered the old string, which opened with a bare "Mozilla/5.0"
+    # and named nobody. They refuse a User-Agent that says what it is. The
+    # citations are sound — both pages are live in a browser — and the choice was
+    # between wearing a browser's name to keep them green and saying plainly that
+    # the publisher will not serve a declared reader. The second is the honest
+    # one, and it costs two reported lines.
+    "www.globalcement.com",
+    "www.stellantis.com",
 }
 
 
