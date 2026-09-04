@@ -561,6 +561,104 @@
         }
       ],
       "measures": []
+    },
+    {
+      "id": "batsol-cell-cost-gap",
+      "sector": "batsol",
+      "transition": "supply_security",
+      "type": "market",
+      "name": "European cells against imported cells",
+      "description": "A European gigafactory has to sell cells against imported ones made at larger scale on longer-amortised lines, and the European cost per kWh has not closed that gap. It is the constraint the sector's failures share: the plants that stopped did not stop for want of a market for batteries, they stopped for want of a price at which their own cells cleared.",
+      "quantified_by": [],
+      "addressed_by": [
+        "cell-manufacturing",
+        "lfp-cells"
+      ],
+      "measures": [],
+      "sources": [
+        {
+          "url": "https://northvolt.com/articles/northvolt-files-for-bankruptcy-in-sweden/",
+          "title": "Northvolt files for bankruptcy in Sweden",
+          "publisher": "Northvolt",
+          "date": "2025-03-12"
+        },
+        {
+          "url": "https://www.energy-storage.news/european-ess-battery-company-morrow-files-for-bankruptcy/",
+          "title": "European ESS battery company Morrow files for bankruptcy",
+          "publisher": "Energy-Storage.News",
+          "date": "2026-05-06"
+        }
+      ]
+    },
+    {
+      "id": "batsol-ramp-and-yield",
+      "sector": "batsol",
+      "transition": "supply_security",
+      "type": "technical",
+      "name": "Ramping a cell line to yield",
+      "description": "Building a gigafactory and running one are different problems. A cell line reaches its nameplate only when scrap falls far enough for the plant to earn, and the interval between commissioning and that point is where European projects have most often failed. It is a technical constraint with a financial deadline: the capital is spent before the yield arrives.",
+      "quantified_by": [],
+      "addressed_by": [
+        "cell-manufacturing"
+      ],
+      "measures": [],
+      "sources": [
+        {
+          "url": "https://northvolt.com/articles/northvolt-files-for-bankruptcy-in-sweden/",
+          "title": "Northvolt files for bankruptcy in Sweden",
+          "publisher": "Northvolt",
+          "date": "2025-03-12"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1992243/000199224324000066/frey-20231231.htm",
+          "title": "FREYR Battery, Annual Report on Form 10-K for 2023",
+          "publisher": "FREYR Battery (SEC EDGAR)",
+          "date": "2024-02-29"
+        }
+      ]
+    },
+    {
+      "id": "batsol-demand-uncertainty",
+      "sector": "batsol",
+      "transition": "supply_security",
+      "type": "market",
+      "name": "Committing capacity against uncertain vehicle demand",
+      "description": "A cell factory is sanctioned years before the vehicles it supplies are sold, on a forecast of how fast Europe electrifies. When that forecast moves, the capacity is already half-built. It is the reason given for the largest pauses in the sector, and it is the constraint the fleet CO2 standards act on from the other side — the same rule that makes the demand is what makes the forecast a policy question rather than a commercial one.",
+      "quantified_by": [],
+      "addressed_by": [
+        "cell-manufacturing"
+      ],
+      "measures": [],
+      "sources": [
+        {
+          "url": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
+          "title": "ACC permanently abandons battery projects in Germany and Italy",
+          "publisher": "electrive",
+          "date": "2026-02-09"
+        }
+      ]
+    },
+    {
+      "id": "batsol-cathode-dependence",
+      "sector": "batsol",
+      "transition": "supply_security",
+      "type": "infrastructure",
+      "name": "Cell capacity without the materials behind it",
+      "description": "A European cell works still buys most of its cathode and anode material from outside Europe, so onshoring the cell does not by itself onshore the supply chain. The perimeter of this dataset makes the same point from the other direction: cathode, anode, separator and electrolyte works are outside it, and there are very few of them here to hold.",
+      "quantified_by": [],
+      "addressed_by": [
+        "lfp-cells",
+        "sodium-ion-cells"
+      ],
+      "measures": [],
+      "sources": [
+        {
+          "url": "https://www.catl.com/en/news/983.html",
+          "title": "CATL announces its second European battery plant in Hungary",
+          "publisher": "CATL",
+          "date": "2022-08-12"
+        }
+      ]
     }
   ]
 }

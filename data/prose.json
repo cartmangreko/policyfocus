@@ -137,11 +137,18 @@
           "circularity"
         ],
         "sentence": ""
+      },
+      "batsol": {
+        "transitions": [
+          "supply_security",
+          "decarbonisation"
+        ],
+        "sentence": "European batteries is the one sector here with no incumbent base to convert: the works are new ground rather than retrofits, which is why it moves under two headings at once — building the capacity Europe does not yet have, and supplying the vehicles the CO2 standards oblige carmakers to sell."
       }
     }
   },
   "sector_orientation": {
-    "status": "approved",
+    "status": "draft",
     "_comment": [
       "One reviewed paragraph per sector that has a transition map: the orientation a reader",
       "needs before the page's own numbers mean anything. Tier 2 of the three-tier rule in",
@@ -167,13 +174,16 @@
       "before. sources/check_sector_schema.py fails for a mapped sector with no paragraph and",
       "prints the drafts on every run."
     ],
-    "reviewed": "2026-08-28",
+    "reviewed": null,
     "sectors": {
       "cement": {
         "paragraph": "Cement is the binding agent of the built environment. Concrete is the most used man-made material on earth, and European construction depends on a domestic industry that operates on thin margins with high energy and carbon intensity. Most of the sector's emissions come not from burning fuel but from the chemistry of clinker, the limestone-derived core of cement, which releases CO2 as it is processed. That makes cement one of the hardest sectors to decarbonise: efficiency and clean electricity cannot remove process emissions, so the transition runs through carbon capture, clinker substitution and alternative fuels. EU policy treats it accordingly: carbon pricing raises the cost of conventional production, a border adjustment shields producers from unpriced imports, and public funding underwrites the first capture projects. The open question is who pays for low-carbon cement while it costs more than conventional supply."
       },
       "steel": {
         "paragraph": "European steel is attempting two transitions at once. Some plants are fitting capture equipment to their existing blast furnaces. Others are being rebuilt around a new process, reducing iron with hydrogen or gas and melting it in electric arc furnaces. The deciding factors sit mostly outside the steelworks: hydrogen at scale, electricity prices, and somewhere to put captured CO2. EU law has set the schedule. Free allowances are being withdrawn year by year, a carbon border charge phases in against imports, and the funding tracked below backs both processes."
+      },
+      "batsol": {
+        "paragraph": "Europe is building a battery industry from almost nothing, and the difficulty is not that the technology is unproven. Cells are made at enormous scale elsewhere. What is unproven is whether they can be made here at a price that clears against imports, and the sector's short history is mostly the answer coming back no: of the sites on file, a third are paused or cancelled, and four of those failed with their companies. The demand is not in doubt — from 2035 the CO2 standards require new cars to emit nothing at the tailpipe, which is a rule that only battery vehicles meet at volume. What is in doubt is who makes the cells. Most of what is operating or building in Europe belongs to a Chinese or Korean firm or to a carmaker's own subsidiary, and the materials behind the cells are largely still bought from outside."
       }
     }
   },

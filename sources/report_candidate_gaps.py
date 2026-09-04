@@ -113,6 +113,26 @@ def report(path: Path, projects: dict[str, dict]) -> tuple[int, int, int]:
     return len(landed), total, len(no_source) + len(no_coord)
 
 
+def draw_holds() -> None:
+    """Print any sector whose page is built and deliberately not drawn.
+
+    Printed on every build, beside the gap it exists because of. A hold nobody
+    is reminded of is a hold that either stays on after the reason has gone or
+    comes off without anybody deciding it should.
+    """
+    path = sm.DATA / "draw_holds.json"
+    if not path.exists():
+        return
+    holds = (json.loads(path.read_text(encoding="utf-8")).get("holds") or {})
+    if not holds:
+        return
+    print(f"\nheld from drawing ({len(holds)}) — data built, page withheld:")
+    for sector, h in sorted(holds.items()):
+        print(f"  {sector}  since {h.get('since', '?')}")
+        print(f"      {h.get('reason', '')}")
+        print(f"      released by: {h.get('released_by', '?')}")
+
+
 def main() -> int:
     files = candidate_files()
     if not files:
@@ -121,6 +141,7 @@ def main() -> int:
     projects = {r["id"]: r for r in sm.load("project")}
     for path in files:
         report(path, projects)
+    draw_holds()
     return 0
 
 

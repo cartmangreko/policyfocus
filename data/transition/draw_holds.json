@@ -1,0 +1,29 @@
+{
+  "_comment": [
+    "SECTORS WHOSE DATA IS BUILT AND WHOSE PAGE MAY NOT BE DRAWN YET.",
+    "",
+    "A sector renders its full page when it has a ranking and a bottleneck — `hasMap` in",
+    "web/lib/transition.ts. That test asks whether the data EXISTS. It cannot ask whether the",
+    "data is COMPLETE ENOUGH TO PUBLISH, and those are different questions with different",
+    "answers.",
+    "",
+    "Batteries is the case that forced the file. Its rows, technologies, bottlenecks and ranking",
+    "all exist and all pass their gates, so the moment the ranking was built the page began",
+    "rendering — including a Europe-wide overview drawn on twenty of thirty-two admitted sites,",
+    "with four of six cancelled projects missing because nobody could reach a webpage. That is a",
+    "picture that understates a sector, and it would have shipped as a side effect of a build",
+    "step rather than as anybody's decision.",
+    "",
+    "So the hold is explicit, it is data rather than a missing file, and it says who releases it.",
+    "A hold that worked by leaving something unbuilt would be invisible, would break the moment",
+    "somebody ran the builder, and would give a reader no way of knowing the page was withheld",
+    "rather than absent."
+  ],
+  "holds": {
+    "batsol": {
+      "since": "2026-09-04",
+      "reason": "The overview would draw 20 of 32 admitted sites. Six candidates are outstanding only because their sources are behind a fetch this pipeline cannot make, and four of those are cancelled projects — SVOLT twice, Farasis, Britishvolt. This sector's defining fact is how much of it died, and a picture missing four of six dead projects shows it in better health than it is in, silently, because a reader cannot see what is not drawn.",
+      "released_by": "George, on a re-judgement that the retrieval gap has closed far enough for the overview to be honest. Brief 6 §10 and the ruling of 4 September 2026."
+    }
+  }
+}

@@ -463,6 +463,46 @@
   }
  },
  {
+  "id": "bottleneck:batsol-cathode-dependence",
+  "kind": "bottleneck",
+  "label": "Cell capacity without the materials behind it",
+  "attrs": {
+   "transition": "supply_security",
+   "type": "infrastructure",
+   "sector": "batsol"
+  }
+ },
+ {
+  "id": "bottleneck:batsol-cell-cost-gap",
+  "kind": "bottleneck",
+  "label": "European cells against imported cells",
+  "attrs": {
+   "transition": "supply_security",
+   "type": "market",
+   "sector": "batsol"
+  }
+ },
+ {
+  "id": "bottleneck:batsol-demand-uncertainty",
+  "kind": "bottleneck",
+  "label": "Committing capacity against uncertain vehicle demand",
+  "attrs": {
+   "transition": "supply_security",
+   "type": "market",
+   "sector": "batsol"
+  }
+ },
+ {
+  "id": "bottleneck:batsol-ramp-and-yield",
+  "kind": "bottleneck",
+  "label": "Ramping a cell line to yield",
+  "attrs": {
+   "transition": "supply_security",
+   "type": "technical",
+   "sector": "batsol"
+  }
+ },
+ {
   "id": "bottleneck:cement-green-premium",
   "kind": "bottleneck",
   "label": "Green premium against willingness to pay",
