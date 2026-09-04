@@ -1,0 +1,465 @@
+[
+  {
+    "id": "FM-01",
+    "measure_type": "right",
+    "addressee": "Economic operators placing batteries on the market",
+    "class": "business",
+    "trigger": "a battery that complies with this Regulation",
+    "frequency": "continuous",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 4(1)",
+    "when": "Applies from 18 February 2024 (Art. 96(2))",
+    "source_text": "Member States shall not, for reasons relating to the sustainability, safety, labelling and information requirements for batteries covered by this Regulation, prohibit, restrict or impede the making available on the market or the putting into service of batteries that comply with this Regulation.",
+    "drivers": [],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [
+      "V3"
+    ],
+    "access_frictions": [
+      "F1"
+    ],
+    "benefit": "A battery that complies with this Regulation may be placed on the market anywhere in the Union without a Member State restricting it on sustainability, safety, labelling or information grounds.",
+    "right_basis": {
+      "text": "Member States shall not, for reasons relating to the sustainability, safety, labelling and information requirements for batteries covered by this Regulation, prohibit, restrict or impede the making available on the market or the putting into service of batteries that comply with this Regulation.",
+      "kind": "conferral"
+    },
+    "reading_note": "The free-movement clause is read as a conferral on the operator rather than as a duty on the Member State, on the rule the benefit axis already applies: measure_type follows the OBJECT the provision acts on, and what this one acts on is the operator's ability to sell."
+  },
+  {
+    "id": "SUB-01",
+    "measure_type": "prohibition",
+    "addressee": "Economic operators placing batteries on the market",
+    "class": "business",
+    "trigger": "a battery containing mercury, cadmium or lead above the Annex I limits",
+    "frequency": "per battery model",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 6(1)",
+    "when": "Applies from 18 February 2024 (Art. 96(2))",
+    "source_text": "In addition to the restrictions set out in Annex XVII to Regulation (EC) No 1907/2006 and in Article 4(2), point (a), of Directive 2000/53/EC, batteries shall not contain substances for which Annex I to this Regulation contains a restriction unless the conditions of that restriction are complied with.",
+    "drivers": [
+      "D1"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto",
+      "chem"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Do not place on the market a battery containing a substance restricted by Annex I otherwise than on the conditions that Annex sets."
+  },
+  {
+    "id": "CF-01",
+    "measure_type": "obligation",
+    "addressee": "Manufacturers of electric vehicle, rechargeable industrial and LMT batteries",
+    "class": "business",
+    "trigger": "each battery model, at each manufacturing site",
+    "frequency": "per model per site",
+    "verification": "notified body",
+    "direction": "add",
+    "article": "Art. 7(1)",
+    "when": "18 February 2025, or 12 months after the delegated and implementing acts under Art. 7(1) enter into force, whichever is the latest. Neither act has been adopted, so the date is not yet fixed",
+    "source_text": "For electric vehicle batteries, rechargeable industrial batteries with a capacity greater than 2 kWh and LMT batteries a carbon footprint declaration shall be drawn up for each battery model per manufacturing plant, in accordance with the implementing act referred to in the fourth subparagraph and containing, at least, the following information: (a) administrative information about the manufacturer; (b) information about the battery model; (c) information about the geographic location of the battery manufacturing plant; (d) the carbon footprint of the battery, calculated as kg of carbon dioxide equivalent per one kWh of the total energy provided by the battery over its expected service life; (e) the carbon footprint of the battery differentiated according to life cycle stage as described in point 4 of Annex II; (f) the identification number of the EU declaration of conformity of the battery; (g) a web link giving access to a public version of the study supporting the carbon footprint values referred to in points (d) and (e).",
+    "drivers": [
+      "D1",
+      "D3"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Draw up a carbon footprint declaration for each battery model per manufacturing site, giving the site's geographic location and the battery's carbon footprint in kg CO2-equivalent per kWh delivered over its service life.",
+    "reading_note": "THE ONE PROVISION IN THIS ACT THAT IS PER-SITE, and the reason there is no money model for this sector. The declaration is drawn up per manufacturing site and its methodology sits in a delegated and an implementing act, neither adopted. Until they exist nothing about the declaration is computable for a named works, so the sector page carries no arithmetic here and no placeholder for it."
+  },
+  {
+    "id": "RC-01",
+    "measure_type": "obligation",
+    "addressee": "Manufacturers of industrial, electric vehicle and SLI batteries",
+    "class": "business",
+    "trigger": "a battery containing cobalt, lead, lithium or nickel in active materials",
+    "frequency": "per model per year per site",
+    "verification": "notified body",
+    "direction": "add",
+    "article": "Art. 8(1)",
+    "when": "18 August 2028, or 24 months after the delegated act under Art. 8(1) enters into force, whichever is the latest. That act has not been adopted, so the date is not yet fixed",
+    "source_text": "industrial batteries with a capacity greater than 2 kWh, except those with exclusively external storage, electric vehicle batteries and SLI batteries that contain cobalt, lead, lithium or nickel in active materials, shall be accompanied by documentation containing information about the percentage share of cobalt, lithium or nickel that is present in active materials and that has been recovered from battery manufacturing waste or post-consumer waste, and the percentage share of lead that is present in the battery and that has been recovered from waste, for each battery model per year and per manufacturing plant.",
+    "drivers": [
+      "D1",
+      "D2"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site."
+  },
+  {
+    "id": "REM-01",
+    "measure_type": "obligation",
+    "addressee": "Any person placing products incorporating portable batteries on the market",
+    "class": "business",
+    "trigger": "a product incorporating a portable battery",
+    "frequency": "per product model",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 11(1)",
+    "when": "From 18 February 2027 (Art. 96(2)(a))",
+    "source_text": "Any natural or legal person that places on the market products incorporating portable batteries shall ensure that those batteries are readily removable and replaceable by the end-user at any time during the lifetime of the product.",
+    "drivers": [
+      "D1"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Ensure a portable battery in a product placed on the market is readily removable and replaceable by the end-user, using commercially available tools, at any time in the product's life."
+  },
+  {
+    "id": "LAB-01",
+    "measure_type": "obligation",
+    "addressee": "Economic operators placing batteries on the market",
+    "class": "business",
+    "trigger": "every battery placed on the market",
+    "frequency": "per battery",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 13(1)",
+    "when": "18 August 2026, or 18 months after the implementing act under Art. 13(10) enters into force, whichever is the latest",
+    "source_text": "batteries shall bear a label containing the general information on batteries set out in Part A of Annex VI.",
+    "drivers": [
+      "D1"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Bear a label carrying the general information on batteries set out in Part A of Annex VI."
+  },
+  {
+    "id": "MAN-01",
+    "measure_type": "obligation",
+    "addressee": "Manufacturers of batteries",
+    "class": "business",
+    "trigger": "before a battery is placed on the market or put into service",
+    "frequency": "per battery model",
+    "verification": "notified body",
+    "direction": "add",
+    "article": "Art. 38(2)",
+    "when": "Applies from 18 February 2024 (Art. 96(2))",
+    "source_text": "Before placing a battery on the market or putting it into service, manufacturers shall draw up the technical documentation referred to in Annex VIII and carry out the relevant conformity assessment procedure, referred to in Article 17, or have it carried out.",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Draw up the Annex VIII technical documentation and carry out, or have carried out, the conformity assessment procedure before placing a battery on the market."
+  },
+  {
+    "id": "SUP-01",
+    "measure_type": "obligation",
+    "addressee": "Suppliers of battery cells and battery modules",
+    "class": "business",
+    "trigger": "supplying cells or modules to a battery manufacturer",
+    "frequency": "per supply",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 39",
+    "when": "From 18 August 2024 (Art. 96(2)(b))",
+    "source_text": "Suppliers of battery cells and battery modules shall provide the information and documentation necessary to comply with the requirements of this Regulation when supplying battery cells or modules to a manufacturer. That information and documentation shall be provided free of charge.",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Supply, free of charge, the information and documentation a battery manufacturer needs to comply with this Regulation when supplying it cells or modules.",
+    "reading_note": "THE ONE PROVISION ADDRESSED TO A CELL MAKER AS SUCH. Everything else in Chapter VI speaks to whoever places the finished battery on the market; this speaks to the works that made the cell, which is the population the projects dataset draws."
+  },
+  {
+    "id": "DD-01",
+    "measure_type": "obligation",
+    "addressee": "Economic operators placing batteries on the market",
+    "class": "business",
+    "trigger": "placing a battery on the market or putting it into service",
+    "frequency": "continuous",
+    "verification": "notified body",
+    "direction": "add",
+    "article": "Art. 48(1)",
+    "when": "From 18 August 2027, as amended (Art. 48(1))",
+    "source_text": "economic operators that place batteries on the market or put them into service shall fulfil the due diligence obligations laid down in paragraphs 2 and 3 of this Article, and in Articles 49, 50 and 52 and shall, to that end, set up and implement battery due diligence policies.",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto",
+      "alu",
+      "chem"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Set up and implement a battery due diligence policy covering the raw materials in the battery and the social and environmental risks in their supply chain."
+  },
+  {
+    "id": "DD-02",
+    "measure_type": "obligation",
+    "addressee": "Economic operators placing batteries on the market",
+    "class": "business",
+    "trigger": "holding a battery due diligence policy",
+    "frequency": "periodic",
+    "verification": "notified body",
+    "direction": "add",
+    "article": "Art. 48(2)",
+    "when": "From 18 August 2027, as amended (Art. 48(1))",
+    "source_text": "Economic operators referred to in paragraph 1 of this Article shall have their battery due diligence policies verified by a notified body in accordance with Article 51 (‘third-party verification’) and periodically audited by that notified body to make sure that the battery due diligence policies are maintained and applied in accordance with Articles 49, 50 and 52. The notified body shall provide the audited economic operator with an audit report.",
+    "drivers": [
+      "D4"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Have the battery due diligence policy verified by a notified body and periodically audited by it, and hold the audit report."
+  },
+  {
+    "id": "DD-03",
+    "measure_type": "obligation",
+    "addressee": "Economic operators below the turnover threshold",
+    "class": "business",
+    "trigger": "net turnover below EUR 40 million in the preceding financial year",
+    "frequency": "annual test",
+    "verification": "none",
+    "direction": "rem",
+    "article": "Art. 47",
+    "when": "From 18 August 2027, as amended (Art. 48(1))",
+    "source_text": "This Chapter does not apply to economic operators that had a net turnover of less than EUR 40 million",
+    "drivers": [],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Comply with the battery due diligence obligations in Chapter VII.",
+    "reading_note": "Direction rem on an obligation row: the duty exists and this provision switches it off for a named class. That is the Simplification reading the valence rule takes, and is the same shape as NZIA Art. 6(5). It carries NO value_drivers and NO access_frictions, and the validator is right to insist: those fields assert a conferred faculty, and relieving a duty is not the same act as conferring one. The relief is expressed by direction rem on the duty, which is what the valence rule reads as Simplification."
+  },
+  {
+    "id": "BP-01",
+    "measure_type": "obligation",
+    "addressee": "Economic operators placing batteries on the market",
+    "class": "business",
+    "trigger": "an LMT, industrial over 2 kWh, or electric vehicle battery",
+    "frequency": "per battery",
+    "verification": "market surveillance authority",
+    "direction": "add",
+    "article": "Art. 77(1)",
+    "when": "From 18 February 2027 (Art. 77(1))",
+    "source_text": "each LMT battery, each industrial battery with a capacity greater than 2 kWh and each electric vehicle battery placed on the market or put into service shall have an electronic record (‘battery passport’).",
+    "drivers": [
+      "D1",
+      "D4"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Give each LMT, larger industrial and electric vehicle battery an electronic record carrying the Annex XIII information, accessible through the QR code on the battery."
+  },
+  {
+    "id": "GPP-01",
+    "measure_type": "obligation",
+    "addressee": "Contracting authorities and contracting entities",
+    "class": "state",
+    "trigger": "a public procurement of batteries or products containing batteries",
+    "frequency": "per procurement",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 85(1)",
+    "when": "12 months after the first delegated act under Art. 85(3) enters into force. That act has not been adopted, so the date is not yet fixed",
+    "source_text": "contracting entities, as defined in Article 4(1) of Directive 2014/25/EU shall, when procuring batteries or products containing batteries in situations covered by those Directives, take account of the environmental impacts of those batteries over their life cycle with a view to ensuring that such impacts are kept to a minimum.",
+    "drivers": [
+      "D3"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Take account of the life-cycle environmental impacts of batteries when procuring batteries or products containing them.",
+    "reading_note": "The duty is on the buyer and the effect is on the seller, which is why this is an obligation on the state rather than a right for the operator: nothing here confers a faculty on anybody, it constrains how a contracting authority may buy."
+  },
+  {
+    "id": "EPR-01",
+    "measure_type": "obligation",
+    "addressee": "Producers of batteries",
+    "class": "business",
+    "trigger": "making a battery available on a Member State's market for the first time",
+    "frequency": "continuous",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 56(1)",
+    "when": "From 18 August 2025 (Art. 96(2)(c))",
+    "source_text": "Producers shall have extended producer responsibility for batteries that they make available on the market for the first time within the territory of a Member State.",
+    "drivers": [
+      "D1",
+      "D2"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "auto",
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Carry extended producer responsibility for every battery first made available on a Member State's market, including the cost of collection, treatment and recycling."
+  },
+  {
+    "id": "REC-01",
+    "measure_type": "prohibition",
+    "addressee": "Operators of waste battery treatment facilities",
+    "class": "business",
+    "trigger": "waste batteries that have been collected",
+    "frequency": "continuous",
+    "verification": "competent authority",
+    "direction": "add",
+    "article": "Art. 70(1)",
+    "when": "From 18 August 2025 (Art. 96(2)(c))",
+    "source_text": "Collected waste batteries shall not be disposed of or be the subject of an energy recovery operation.",
+    "drivers": [
+      "D1"
+    ],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [
+      "waste"
+    ],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Do not dispose of collected waste batteries or send them for energy recovery."
+  },
+  {
+    "id": "PEN-01",
+    "measure_type": "obligation",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "entry into application of the Regulation",
+    "frequency": "one-off",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 93",
+    "when": "By 18 August 2025 (Art. 93)",
+    "source_text": "Member States shall lay down the rules on penalties applicable to infringements of this Regulation",
+    "drivers": [],
+    "sectors_named": [
+      "batsol"
+    ],
+    "sectors_reached": [],
+    "provision_id": null,
+    "file": "battery",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Lay down and notify rules on penalties for infringements of this Regulation, and take the measures necessary to ensure they are applied."
+  }
+]
