@@ -28476,6 +28476,26 @@
  },
  {
   "rel": "deploys",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "technology:cell-manufacturing",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "technology:nmc-nca-cells",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:tkh2steel-duisburg",
   "to": "technology:dri-eaf",
   "since": "2023-07-20",
@@ -31448,6 +31468,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=stegra-boden].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "country:DE",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "sector:batsol",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].sector"
   },
   "basis": "sector"
  },

@@ -2961,6 +2961,77 @@
       ],
       "override_stale": false,
       "notes": []
+    },
+    "tesla-gruenheide-cells": {
+      "id": "tesla-gruenheide-cells",
+      "template_version": 1,
+      "fingerprint": "f32c06e58d9845f1",
+      "sentence": {
+        "text": "Tesla Giga Berlin cell manufacturing is Tesla's batteries and solar project at Grünheide, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Tesla Giga Berlin cell manufacturing",
+          "Tesla",
+          "Grünheide, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Tesla Giga Berlin cell manufacturing went into construction on 22 July 2026.",
+          "as_of": "2026-07-22",
+          "numbers": [],
+          "sourced": [
+            "Tesla Giga Berlin cell manufacturing"
+          ],
+          "href": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Grünheide, Germany.",
+          "as_of": "2026-07-22",
+          "numbers": [],
+          "sourced": [
+            "Grünheide, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2026-07-22",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-07-22",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
     }
   }
 }

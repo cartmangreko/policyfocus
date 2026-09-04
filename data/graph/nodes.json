@@ -8959,6 +8959,37 @@
   }
  },
  {
+  "id": "project:tesla-gruenheide-cells",
+  "kind": "project",
+  "label": "Tesla Giga Berlin cell manufacturing",
+  "attrs": {
+   "company": "Tesla",
+   "plant": "Grünheide",
+   "country": "DE",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Grünheide works",
+     "lat": 52.3972,
+     "lon": 13.7948,
+     "precision": "plant",
+     "retrieved_date": "2026-09-04",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/775978799",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Tesla Gigafactory Berlin-Brandenburg; man_made=works; landuse=industrial; industrial=factory; operator=Tesla",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The cell line stands inside Tesla's Grünheide works, which is the polygon named. A cell line inside a vehicle factory is admitted — the perimeter's exclusion is of pack and module assembly and is a rule about the product, not about who owns the gate."
+    }
+   ]
+  }
+ },
+ {
   "id": "project:tkh2steel-duisburg",
   "kind": "project",
   "label": "tkH2Steel",

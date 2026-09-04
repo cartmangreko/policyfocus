@@ -2226,6 +2226,55 @@
           "retrieved_manually": "sources/manual/envision-aesc-sunderland--installation-details-300168590-ES-001.pdf"
         }
       ]
+    },
+    {
+      "id": "tesla-gruenheide-cells",
+      "name": "Tesla Giga Berlin cell manufacturing",
+      "company": "Tesla",
+      "plant": "Grünheide",
+      "country": "DE",
+      "location": [
+        {
+          "site": "Grünheide works",
+          "lat": 52.3972,
+          "lon": 13.7948,
+          "precision": "plant",
+          "retrieved_date": "2026-09-04",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/775978799",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Tesla Gigafactory Berlin-Brandenburg; man_made=works; landuse=industrial; industrial=factory; operator=Tesla",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The cell line stands inside Tesla's Grünheide works, which is the polygon named. A cell line inside a vehicle factory is admitted — the perimeter's exclusion is of pack and module assembly and is a rule about the product, not about who owns the gate."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "nmc-nca-cells"
+      ],
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2026-07-22",
+          "source_url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf",
+          "note": "Tesla's own quarterly update lists, under Installed Annual Manufacturing Capacity — Battery Cell Manufacturing, the row 'Berlin 4680 - Construction'. The capacity column is a dash where Texas reads '>40 GWh Production'. Trade press through 2026 reported cells being made at Grünheide and a target rising from 8 GWh to 18 GWh; the company's own filing says construction and states no capacity, and under the standing press ruling the project's own sources decide. This is the first company statement read for the site, so the history starts here."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf",
+          "title": "Tesla Q2 2026 Update",
+          "publisher": "Tesla",
+          "date": "2026-07-22",
+          "note": "CAPACITY OUTSTANDING AND ADMITTED ANYWAY. Tesla publishes no figure for Berlin 4680. The row is held on the perimeter's own provision: a candidate with no figure is admitted on a company description of commercial-scale intent, and appearing in Tesla's installed-capacity table beside a >40 GWh line is that. It sits in the standing report until a figure exists."
+        }
+      ]
     }
   ]
 }

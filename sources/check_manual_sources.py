@@ -122,15 +122,27 @@ def main() -> int:
     print(f"check_manual_sources: OK — {len(recorded)} page(s) retrieved by hand, "
           f"{len(cited_paths())} citation(s)")
     if wanted:
-        # THE QUEUE IS PRINTED, ALWAYS. It is a list of things only a person can
-        # do, and a list of those that nobody is reminded of is a list that stays
-        # the same length.
-        print(f"\nwanted ({len(wanted)}) — pages this pipeline cannot fetch, waiting "
-              f"for a browser:")
-        for w in wanted:
-            print(f"  {w.get('candidate', '?')}\n      {w.get('url', '?')}")
-            if w.get("why"):
-                print(f"      {w['why']}")
+        # THE QUEUE IS PRINTED, ALWAYS, AND IT IS PARKED. These are things only a
+        # person can do; the build retries none of them and no turn is spent on
+        # them. Printing the exact URL and the path the file should take makes
+        # filing a copy and a manifest line rather than a search — a queue that
+        # has to be reconstructed before it can be worked is a queue nobody works.
+        live = [w for w in wanted if w.get("priority") != "lowest"]
+        low = [w for w in wanted if w.get("priority") == "lowest"]
+        print(f"\nwanted ({len(wanted)}) — pages this pipeline cannot fetch, parked for "
+              f"a browser:")
+        for group, label in ((live, None), (low, "lowest priority — corroboration only, "
+                                                "nothing waits on these")):
+            if not group:
+                continue
+            if label:
+                print(f"\n  {label}:")
+            for w in group:
+                print(f"  {w.get('candidate', '?')}")
+                print(f"      url      {w.get('url', '?')}")
+                print(f"      drop as  {w.get('drop_as', '?')}")
+                if w.get("why"):
+                    print(f"      {w['why']}")
     return 0
 
 

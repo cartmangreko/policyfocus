@@ -214,9 +214,11 @@
       "site": "Grünheide",
       "country": "DE",
       "status": "operating",
-      "capacity_gwh": 18,
+      "capacity_gwh": null,
       "coordinate_ref": "way/775978799 Tesla Gigafactory Berlin-Brandenburg",
-      "note": "Not yet reached. Tesla issues no press releases; the route is the quarterly shareholder deck."
+      "note": "Landed on Tesla's Q2 2026 shareholder update, which lists 'Berlin 4680 - Construction' with no capacity. Corrects the trade-press reading of operating at 8→18 GWh.",
+      "company_source": "https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q2-2026-Update.pdf",
+      "coordinate_source": "basemap"
     },
     {
       "id": "lges-wroclaw",
@@ -276,7 +278,7 @@
       "country": "HU",
       "status": "construction",
       "coordinate_ref": "way/1263927003 Hungary Sunwoda Electronics Automotive Energy, landuse=construction",
-      "note": "COORDINATE FOUND, SITE RULE STILL UNMET. The basemap names the works — 'Hungary Sunwoda Electronics Automotive Energy' at Nyíregyháza — but Sunwoda's own release of 10 August 2023 says only 'Hungary' and names no city, and the 2025 milestones page does not mention the country at all. Site confirmation is company-only, so a basemap feature naming the operator does not close it. Trade press and HIPA both say cells rather than packs; Sunwoda's own words are 'lithium-ion batteries and power battery systems', which does not settle the product rule either."
+      "note": "COMPANY SOURCES EXHAUSTED FOR THE SITE NAME, three routes tried. The newsroom release of 10 August 2023 says 'Hungary' and names no city; the 2025 milestones page does not mention the country; and the Shenzhen-filed 2025 interim report names the subsidiary — 'Hungary Sunwoda Power Technology Co., Ltd' — with Hungary as its place of business and no town, no product detail. The basemap names the works in full at Déli út, Nyíregyháza, carrying the operator's own name. Whether that combination satisfies a site rule written as company-only is a question for George; it is raised in the report rather than decided here."
     },
     {
       "id": "eve-power-debrecen",
