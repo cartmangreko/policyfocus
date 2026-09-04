@@ -1039,6 +1039,59 @@ The queue is **eight**.
 
 ---
 
+## 18. The decision point
+
+Nineteen rows on file of 32 admitted — **59%** — and both acts read. This is the
+stop brief 6 §10 set: nothing ships or draws before George's read.
+
+### The overview is not honest yet, and my judgement is not to draw it
+
+Thirteen candidates are outstanding. Six of them are in the manual queue and
+cannot move without a browser. What an overview drawn today would omit:
+
+- **Envision AESC Extremadura**, a site whose cornerstone the Spanish prime
+  minister laid.
+- **SK On Iváncsa**, 30 GWh, and **SK On Komárom**, both operating.
+- **CALB Sines**, 15 GWh, whose coordinate is already in hand.
+- **Four of the six cancelled projects** — SVOLT twice, Farasis, Britishvolt.
+
+The last of those is the one that decides it. This sector's defining fact is how
+much of it died, and the docket has been saying so since the first pass: a third
+of the admitted set is stopped or dead. An overview that draws two of six
+cancelled projects and none of the four whose companies no longer exist would
+show a sector in better health than it is in — and it would do it silently,
+because a reader cannot see what is not drawn.
+
+The standfirst's "on file and not drawn" clause was built for cancelled projects
+the perimeter deliberately excludes. It cannot carry candidates missing because
+nobody could reach a webpage.
+
+### What the acts wait on
+
+Twenty-two measure rows, both declared preliminary readings. The Battery
+Regulation's 16 and the fleet standards' 6, including the four
+`creates_demand_for` edges — the first this graph has carried.
+
+### What is not built, and is not started
+
+Brief items 6, 7 and 8, and the materials half of item 4:
+
+- **Money model.** No funding rows for batteries. IPCEI decisions, Innovation
+  Fund awards, state aid approvals and announced project finance are all
+  unstarted. The compliance-cost side is settled and stays empty, for the reason
+  Article 7 gives.
+- **Exposure.** The exclusion is decided and not yet written into a page.
+- **Prose slots.** `sector_names` already carries batteries. `transition_notes`,
+  `sector_orientation`, `sector_lead` and the ecosystem description carry cement
+  and steel and nothing else.
+- **CRMA Annex I material links** from the technology nodes.
+- **Bottlenecks and the ranking**, which is what `hasMap` reads. Until
+  `bottlenecks.json` carries batteries rows and `build_importance` writes
+  `importance/batsol.json`, the tile keeps opening the holding page. Project
+  crops already build and all nineteen are on disk.
+
+---
+
 ## Stopping here
 
 A–E are resolved and the first six rows are in. What is left, in order:
