@@ -43,6 +43,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import datetime as dt
 import sys
 import urllib.error
 import urllib.request
@@ -80,23 +81,61 @@ BOT_HOSTILE = {
     # row cites the publisher's live URL, a person retrieves the page, and the
     # copy they read is filed with its provenance. A 403 here is a fact about
     # how we are reaching the page and not about whether the page is there.
-    "www.sunderland.gov.uk",
-    "www.aesc-group.com",
-    "aesc-group.com",
-    # SURFACED BY DECLARING OURSELVES HONESTLY, and that is worth writing down.
-    # These two answered the old string, which opened with a bare "Mozilla/5.0"
-    # and named nobody. They refuse a User-Agent that says what it is. The
-    # citations are sound — both pages are live in a browser — and the choice was
-    # between wearing a browser's name to keep them green and saying plainly that
-    # the publisher will not serve a declared reader. The second is the honest
-    # one, and it costs two reported lines.
+    # SURFACED BY DECLARING OURSELVES HONESTLY. These two answered the old
+    # string, which opened with a bare "Mozilla/5.0" and named nobody; they
+    # refuse a User-Agent that says what it is. They are here rather than on
+    # `refused_declared_reader` for one reason: that state carries the date a
+    # PERSON last opened the page, and nobody has opened these. They belong on
+    # it the moment somebody does. See the note under REFUSED_STATE.
     "www.globalcement.com",
     "www.stellantis.com",
 }
 
+# THE RECORDED STATE FOR A PUBLISHER THAT REFUSES A DECLARED READER
+# =================================================================
+# A host list says "requests from here fail" and nothing else. It cannot say
+# whether the page is still there, and it quietly converts an unverified claim
+# into a permanent green line — which is the failure mode a link checker exists
+# to prevent, arriving through the back door.
+#
+# So a source may instead carry, beside its url:
+#
+#     "refused_declared_reader": {
+#         "last_verified": "2026-09-03",
+#         "by": "George Christopoulos",
+#         "note": "why the refusal is the publisher's policy and not a dead page"
+#     }
+#
+# and that is a stronger claim than a host list, not a weaker one. It says a
+# named person opened this exact URL on a stated day and found the document
+# there. `last_verified` is REQUIRED — a state that could be claimed without one
+# would be the host list again, wearing a better name.
+#
+# THE HONEST DEGRADED STATE IS THIS PLUS A FILED COPY. Where the row also carries
+# `retrieved_manually`, the chain is complete: the publisher's own URL for the
+# claim, a person's word that it resolves, and the text that was actually read
+# sitting in sources/manual/ for anyone to check. What is NOT an option is
+# putting a browser's name in the User-Agent to make the line green, which
+# recovers the appearance of verification and none of it.
+REFUSED_STATE = "refused_declared_reader"
 
-def urls_in(obj, path="") -> list[tuple[str, str, bool, str | None]]:
-    """Walk any of the transition files and yield (url, where, archived, snapshot).
+# How old a human verification may get before it is worth saying so. Reported,
+# never failed: a year-old check is not a broken link, it is a check worth
+# repeating, and failing a build over it would push somebody to re-date the field
+# rather than re-open the page.
+VERIFICATION_STALE_DAYS = 365
+
+
+def _age_days(date: str) -> int | None:
+    try:
+        return (dt.date.today() - dt.date.fromisoformat(date)).days
+    except (ValueError, TypeError):
+        return None
+
+
+def urls_in(obj, path="") -> list[tuple[str, str, bool, str | None, dict | None]]:
+    """Walk any of the transition files and yield
+    (url, where, archived, snapshot, refused).
     Written as a walk rather than as per-kind knowledge because the URL-bearing
     fields differ per kind and a new one should be checked the day it is added,
     not the day someone remembers to update this function."""
@@ -104,7 +143,8 @@ def urls_in(obj, path="") -> list[tuple[str, str, bool, str | None]]:
     if isinstance(obj, dict):
         url = obj.get("url") or obj.get("source_url")
         if isinstance(url, str) and url.startswith(("http://", "https://")):
-            found.append((url, path, bool(obj.get("archived")), obj.get("snapshot")))
+            found.append((url, path, bool(obj.get("archived")), obj.get("snapshot"),
+                          obj.get(REFUSED_STATE)))
         for k, v in obj.items():
             found += urls_in(v, f"{path}.{k}" if path else k)
     elif isinstance(obj, list):
@@ -121,12 +161,18 @@ def main() -> int:
 
     seen: dict[str, str] = {}
     archived: list[tuple[str, str]] = []
+    # url -> (where, the recorded state). A publisher that refuses a declared
+    # reader is a fact about the publisher, recorded per source with the date a
+    # person last opened it; see REFUSED_STATE.
+    declared: dict[str, tuple[str, dict]] = {}
     for kind in ("technology", "bottleneck", "parameter", "project"):
-        for url, where, is_archived, snapshot in urls_in(sm.load(kind), kind):
+        for url, where, is_archived, snapshot, refused in urls_in(sm.load(kind), kind):
             if is_archived:
                 archived.append((url, snapshot or "NO SNAPSHOT PATH"))
                 continue
             seen.setdefault(url, where)
+            if refused is not None:
+                declared[url] = (where, refused)
 
     if args.offline:
         print(f"check_links: {len(seen)} live URLs, {len(archived)} archived — "
@@ -137,6 +183,7 @@ def main() -> int:
 
     dead: list[str] = []
     soft: list[str] = []
+    refused_ok: list[str] = []
 
     def status_of(url: str) -> int:
         """The response code, following redirects. urlopen raises on 4xx/5xx
@@ -157,7 +204,22 @@ def main() -> int:
         except OSError as exc:
             soft.append(f"{url} — {type(exc).__name__}: {exc}")
             continue
-        if code == 403 and host in BOT_HOSTILE:
+        if code == 403 and url in declared:
+            where, state = declared[url]
+            missing = [f for f in ("last_verified", "by") if not state.get(f)]
+            if missing:
+                dead.append(f"{url} — declares {REFUSED_STATE} with no "
+                            f"{', '.join(missing)}  ({where}). The state is a person's word "
+                            f"that the page is there; without a name and a date it is a host "
+                            f"list wearing a better name")
+            else:
+                age = _age_days(state["last_verified"])
+                stale = (f", LAST CHECKED {age} DAYS AGO — worth re-opening"
+                         if age is not None and age > VERIFICATION_STALE_DAYS else "")
+                refused_ok.append(
+                    f"{url}\n      publisher refuses a declared reader; "
+                    f"{state['by']} opened it on {state['last_verified']}{stale}")
+        elif code == 403 and host in BOT_HOSTILE:
             soft.append(f"{url} — 403 from a known bot-hostile host")
         elif 400 <= code < 500:
             dead.append(f"{url} — HTTP {code}  ({seen[url]})")
@@ -168,7 +230,21 @@ def main() -> int:
         if snapshot == "NO SNAPSHOT PATH" or not (sm.ROOT / snapshot).exists():
             dead.append(f"{url} — marked archived with no readable snapshot ({snapshot})")
 
+    # A SOURCE THAT DECLARES THE STATE AND IS THEN SERVED. Reported, because the
+    # state is a claim about the publisher and the publisher has just contradicted
+    # it: the block can come off, and leaving it on would keep a 403 excused that
+    # nothing is causing any more.
+    for url, (where, _state) in sorted(declared.items()):
+        if url in seen and url not in "".join(refused_ok) and url not in "".join(dead):
+            soft.append(f"{url} — declares {REFUSED_STATE} and answered normally; "
+                        f"the state can be removed  ({where})")
+
     print(f"check_links: {len(seen)} live URLs checked, {len(archived)} archived")
+    if refused_ok:
+        print(f"\npublisher refuses a declared reader ({len(refused_ok)}) — verified by hand, "
+              f"not failed:")
+        for r in refused_ok:
+            print(f"  {r}")
     if soft:
         print(f"\nreported, not failed ({len(soft)}):")
         for s in soft:

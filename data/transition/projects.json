@@ -2184,7 +2184,12 @@
             "publisher": "TÜV Rheinland Industrial Services for Envision AESC UK Ltd, environmental-permit application to Sunderland City Council, ref 300168590-ES-001",
             "verbatim": "The Installation consists of a single, three-storey industrial unit (main factory building) that is to house a capacity electrode and battery manufacturing facility with a maximum capacity of up to 9 GWh / annum, split across two battery manufacturing plants separated by a central spine of offices.",
             "date": "2023-09-26",
-            "retrieved_manually": "sources/manual/envision-aesc-sunderland--installation-details-300168590-ES-001.pdf"
+            "retrieved_manually": "sources/manual/envision-aesc-sunderland--installation-details-300168590-ES-001.pdf",
+            "refused_declared_reader": {
+              "last_verified": "2026-09-04",
+              "by": "George Christopoulos",
+              "note": "Sunderland City Council serves the permit document to a browser and answers 403 to a declared automated reader. Retrieved by hand and filed; the 70-page report the row quotes is in sources/manual/."
+            }
           },
           "confidence": "secondary",
           "note": "The permit places the point and no basemap feature does. The report puts the site 'to the west of the A19, and to the south of the River Don', which the converted position agrees with. An unnamed landuse=construction polygon sits about 100 m away and the IAMP estate about 550 m away; both corroborate and neither places it."
@@ -2223,7 +2228,12 @@
           "publisher": "TÜV Rheinland Industrial Services for Envision AESC UK Ltd",
           "date": "2023-09-26",
           "note": "PRODUCT SCOPE AT PERMIT TIER, and it settles the product rule on this row: the report walks the Electrode Area, then 'Area A – Cell Assembly', 'Area B – Cell Processing' and 'Area C – Module Production'. Electrodes are made and cells are assembled on site, so it is a cell works and the module line is downstream of that rather than instead of it.\n\nNAMING AND CAPACITY DISAGREE ACROSS THE TWO SOURCES, and the disagreement is carried rather than resolved. This report, issued 26 September 2023, is titled for the 'Giga 1 Car Battery Manufacturing Facility' and consents a maximum of up to 9 GWh per annum 'split across two battery manufacturing plants separated by a central spine of offices'. AESC's launch release of December 2025 calls the works 'Plant 2' at 15.8 GWh. A permit states a consented maximum at its filing date and a launch release states what was built, so the capacities need not agree. The naming does not follow from that — though the permit's own phrase, two manufacturing plants inside one Giga 1 installation, is the likeliest explanation and is not stated anywhere read so far, so it stays an observation and not a finding.",
-          "retrieved_manually": "sources/manual/envision-aesc-sunderland--installation-details-300168590-ES-001.pdf"
+          "retrieved_manually": "sources/manual/envision-aesc-sunderland--installation-details-300168590-ES-001.pdf",
+          "refused_declared_reader": {
+            "last_verified": "2026-09-04",
+            "by": "George Christopoulos",
+            "note": "Sunderland City Council serves the permit document to a browser and answers 403 to a declared automated reader. Retrieved by hand and filed; the 70-page report the row quotes is in sources/manual/."
+          }
         }
       ]
     },
