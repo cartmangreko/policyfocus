@@ -995,6 +995,50 @@ finding one tells you nothing about the other.**
 
 ---
 
+## 17. The permit arrives, and the row is rebuilt on what it says
+
+The file is in `sources/manual/`, 70 pages, and the Sunderland row's quotes are no
+longer second-hand. Reading it changed three things and confirmed the rest.
+
+**The coordinate moved, and is better founded.** It was the centre of the block
+the site plans were described as putting the building in. It is now the **centroid
+of the 61 emission-point positions the report lists**, each given to the
+millimetre — VOC 04 at E 433151.055, N 558774.146 and sixty more. They span E
+433070–433459 by N 558555–558868, and their centroid is the one point in that
+spread the document itself supports. E 433189, N 558718 → **54.9221 N, 1.4837 W**,
+about 55 m from where the row stood. The stacks *are* the installation, which is
+what makes their centroid a claim about the works rather than about a rectangle
+somebody drew around it.
+
+**The date is exact.** Issued 26 September 2023, not "September 2023".
+
+**The product rule is settled at permit tier, and not by a summary.** The report
+walks the Electrode Area, then "Area A – Cell Assembly", "Area B – Cell
+Processing" and "Area C – Module Production". Electrodes are made and cells are
+assembled on site, so this is a cell works and the module line is downstream of
+that rather than instead of it. That is the distinction the perimeter's product
+clause turns on, and here it is answered by the operator's own process
+description.
+
+**The naming discrepancy has a likely explanation, which is recorded as an
+observation and not as a finding.** The report is titled for the "Giga 1 Car
+Battery Manufacturing Facility" and consents up to 9 GWh per annum *"split across
+two battery manufacturing plants separated by a central spine of offices"*. AESC's
+launch release calls the works "Plant 2". Two manufacturing plants inside one Giga
+1 installation is the obvious reading of how "Plant 2" arises — and **no source
+read so far says so**, so the row records the phrase and stops. The capacities
+still need not agree: a permit states a consented maximum at its filing date and a
+launch release states what was built.
+
+**And the position is corroborated by the document's own prose.** It places the
+site "to the west of the A19, and to the south of the River Don", which the
+converted coordinate agrees with — a check the grid references alone could not
+give.
+
+The queue is **eight**.
+
+---
+
 ## Stopping here
 
 A–E are resolved and the first six rows are in. What is left, in order:
