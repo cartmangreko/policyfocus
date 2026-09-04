@@ -70,6 +70,18 @@ BOT_HOSTILE = {
     "www.sunderland.gov.uk",
     "www.aesc-group.com",
     "aesc-group.com",
+    # NOT BOT-HOSTILE, AND HERE FOR AN HONEST REASON THAT IS NOT THE OTHERS'.
+    # The SEC's fair-access policy asks automated readers to declare a contact
+    # ADDRESS in the User-Agent, and it answers 403 to every request that does
+    # not — including this one, whose UA declares a repository URL instead. The
+    # document is public, permanent and the best available citation for a filed
+    # exhibit; what stands between us and it is one line of contact detail.
+    #
+    # That line is not mine to write. Publishing an address in a header on every
+    # build is a decision about whose address it is, so it is raised rather than
+    # taken, and until it is taken the SEC is listed here with the reason stated
+    # rather than filed under a label that would misdescribe it.
+    "www.sec.gov",
 }
 
 
