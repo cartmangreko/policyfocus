@@ -1059,6 +1059,18 @@
   }
  },
  {
+  "id": "funding:germany-northvolt-drei",
+  "kind": "funding",
+  "label": "German State aid — Northvolt Drei",
+  "attrs": {
+   "instrument": "state_aid",
+   "programme": "German federal and Schleswig-Holstein aid",
+   "status": "approved",
+   "date": "2024-01-08",
+   "country": "DE"
+  }
+ },
+ {
   "id": "funding:germany-tkh2steel",
   "kind": "funding",
   "label": "German federal and state funding — tkH2Steel",
@@ -1068,6 +1080,42 @@
    "status": "approved",
    "date": "2023-07-20",
    "country": "DE"
+  }
+ },
+ {
+  "id": "funding:innovation-fund-46ineu",
+  "kind": "funding",
+  "label": "Innovation Fund grant — 46inEU",
+  "attrs": {
+   "instrument": "grant",
+   "programme": "EU Innovation Fund",
+   "status": "approved",
+   "date": "2025-07-04",
+   "country": "PL"
+  }
+ },
+ {
+  "id": "funding:innovation-fund-accept",
+  "kind": "funding",
+  "label": "Innovation Fund grant — ACCEPT",
+  "attrs": {
+   "instrument": "grant",
+   "programme": "EU Innovation Fund",
+   "status": "approved",
+   "date": "2025-07-04",
+   "country": "FR"
+  }
+ },
+ {
+  "id": "funding:innovation-fund-agathe",
+  "kind": "funding",
+  "label": "Innovation Fund grant — AGATHE",
+  "attrs": {
+   "instrument": "grant",
+   "programme": "EU Innovation Fund",
+   "status": "approved",
+   "date": "2025-07-04",
+   "country": "FR"
   }
  },
  {
@@ -8087,6 +8135,17 @@
    "scope": "global",
    "confidence": "estimate",
    "date_of_value": "2025"
+  }
+ },
+ {
+  "id": "parameter:northvolt-drei-state-aid",
+  "kind": "parameter",
+  "label": "Northvolt Drei — German State aid, Commission approval",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:heide",
+   "confidence": "primary",
+   "date_of_value": "2024-01-08"
   }
  },
  {

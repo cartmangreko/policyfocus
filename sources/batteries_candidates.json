@@ -26,7 +26,13 @@
     "named, and the fetcher cannot read it -- a publisher that answers 403 to a datacentre",
     "IP, or a host whose certificate does not match. It is not a missing source and it is",
     "not a usable one: somebody with a browser can close it in a minute, and until they do",
-    "the row cannot carry a verbatim quote nobody has read."
+    "the row cannot carry a verbatim quote nobody has read.",
+    "",
+    "TWO CANDIDATES ARRIVED FROM THE FUNDING WORK RATHER THAN FROM THE PERIMETER SWEEP --",
+    "NOVO Energy at Gothenburg and Leclanche at Willstatt, both named in the Commission's",
+    "Innovation Fund Battery Call. The sweep looked for gigafactories and missed two that a",
+    "list of who got money named directly. Worth remembering the next time a sector is built:",
+    "the funding trail is a discovery route and not only a money model."
   ],
   "sector": "batsol",
   "perimeter": "sources/batteries_docket.md",
@@ -392,6 +398,28 @@
       "company_source": "https://news.morrowbatteries.com/pressreleases/jonas-gahr-stoere-prime-minister-of-norway-officially-inaugurates-europes-first-lfp-battery-gigafactory-3337609",
       "coordinate_source": "basemap",
       "coordinate_ref": "way/1308751286 Morrow batteries"
+    },
+    {
+      "id": "novo-energy-gothenburg",
+      "company": "NOVO Energy",
+      "site": "Gothenburg",
+      "country": "SE",
+      "status": "construction",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null,
+      "note": "FOUND BY THE FUNDING WORK, NOT BY THE PERIMETER SWEEP. The Commission's Innovation Fund Battery Call names 'NOVO One – NOVO One Gigafactory, located in Sweden (NOVO Energy)' as one of six awards. NOVO Energy is the Volvo Cars and Northvolt joint venture at Gothenburg; Northvolt's bankruptcy leaves its ownership needing a source. Neither company source nor coordinate has been read, and it is not clear the perimeter admits it until somebody has."
+    },
+    {
+      "id": "leclanche-willstatt",
+      "company": "Leclanché",
+      "site": "Willstätt",
+      "country": "DE",
+      "status": "announced",
+      "capacity_gwh": 2,
+      "company_source": null,
+      "coordinate_source": null,
+      "note": "FOUND BY THE FUNDING WORK. The Commission names 'WGF2G – Willstatt GigaFactory 2 GWh, located in Germany (Leclanche)'. Two GWh clears the perimeter's scale rule, so it is a candidate and not a refusal. Neither company source nor coordinate read."
     }
   ]
 }

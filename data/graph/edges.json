@@ -29444,6 +29444,18 @@
  },
  {
   "rel": "finances",
+  "from": "funding:germany-northvolt-drei",
+  "to": "project:lyten-heide",
+  "since": "2024-01-08",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-northvolt-drei].finances"
+  },
+  "instrument": "state_aid",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
   "from": "funding:germany-tkh2steel",
   "to": "project:tkh2steel-duisburg",
   "since": "2023-07-20",
@@ -29452,6 +29464,42 @@
    "path": "[id=germany-tkh2steel].finances"
   },
   "instrument": "state_aid",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-46ineu",
+  "to": "project:lges-wroclaw",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-46ineu].finances"
+  },
+  "instrument": "grant",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-accept",
+  "to": "project:acc-billy-berclau",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-accept].finances"
+  },
+  "instrument": "grant",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-agathe",
+  "to": "project:verkor-dunkirk",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-agathe].finances"
+  },
+  "instrument": "grant",
   "status": "approved"
  },
  {
@@ -31477,12 +31525,56 @@
  },
  {
   "rel": "in",
+  "from": "funding:germany-northvolt-drei",
+  "to": "country:DE",
+  "since": "2024-01-08",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-northvolt-drei].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
   "from": "funding:germany-tkh2steel",
   "to": "country:DE",
   "since": "2023-07-20",
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=germany-tkh2steel].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-46ineu",
+  "to": "country:PL",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-46ineu].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-accept",
+  "to": "country:FR",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-accept].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-agathe",
+  "to": "country:FR",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-agathe].country"
   },
   "basis": "country"
  },
@@ -32968,6 +33060,17 @@
    "source": "data/transition/parameters.json",
    "path": "[id=near-zero-steel-cost-premium].sector",
    "quote": "Early commercial plants using 100% hydrogen blends are estimated to cost 50-140% more than BF-BOF plants today"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:northvolt-drei-state-aid",
+  "to": "sector:batsol",
+  "since": "2024-01-08",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=northvolt-drei-state-aid].sector",
+   "quote": "Commission approves €902 million German State aid measure to support Northvolt in the construction of an electric vehicle battery production plant to foster the transition to a net-zero economy"
   }
  },
  {
@@ -34599,12 +34702,52 @@
  },
  {
   "rel": "supports",
+  "from": "funding:germany-northvolt-drei",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-01-08",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-northvolt-drei].supports"
+  }
+ },
+ {
+  "rel": "supports",
   "from": "funding:germany-tkh2steel",
   "to": "technology:dri-eaf",
   "since": "2023-07-20",
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=germany-tkh2steel].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-46ineu",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-46ineu].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-accept",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-accept].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-agathe",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-agathe].supports"
   }
  },
  {
@@ -34676,6 +34819,39 @@
    "source": "data/transition/funding.json",
    "path": "[id=lower-saxony-salcos].supports"
   }
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-46ineu",
+  "to": "measure:ets:FND-03",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-46ineu].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-accept",
+  "to": "measure:ets:FND-03",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-accept].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-agathe",
+  "to": "measure:ets:FND-03",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-agathe].under"
+  },
+  "programme": "EU Innovation Fund"
  },
  {
   "rel": "under",
