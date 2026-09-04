@@ -884,6 +884,77 @@ knowing. It is the eleventh page in the queue.
 
 ---
 
+## 15. Sunderland lands on a grid reference
+
+**Eighteen rows on file, 15 outstanding — 55%.**
+
+### The conversion is done properly and proved on every build
+
+`sources/osgb36.py` converts British National Grid to WGS84 in the two stages
+these are always confused between: the transverse Mercator inverse off the Airy
+1830 ellipsoid, then a seven-parameter Helmert shift through geocentric cartesian
+coordinates. It is not OSTN15 and says so — OSTN15 reaches centimetres and needs a
+several-megabyte grid file; Helmert reaches a few metres, and a mark on a
+two-hundred-metre works is the use Ordnance Survey publishes those parameters for.
+
+**It is checked against the OS worked example on every build that reads a grid
+reference.** Caister Water Tower, both stages: the projection inverse lands
+**0.000 m** from the published OSGB36 position and the full conversion within a
+tenth of a metre of the published ETRS89 one.
+
+That check earned itself immediately. The first run appeared to be out by up to
+1.5 km against reference values I had written from memory — and **the reference
+values were wrong, not the code**: they were OSGB36 positions mislabelled as
+WGS84, which is the exact confusion the two-stage docstring is about. Without a
+published vector the natural next move is to "correct" working code until it
+matches a bad number.
+
+### The stored coordinate is recomputed, not trusted
+
+The site carries its `grid_reference` and the gate derives latitude and longitude
+from it. Verified by breaking it — moving the latitude to a plausible-looking
+54.9250 fails with:
+
+    lat/lon is (54.925, -1.4839) and the grid reference E 433175 N 558670
+    converts to (54.9216, -1.4839) — one of the two has been edited alone
+
+So the conversion cannot be done once by hand, mistyped, or quietly adjusted.
+
+### What the row carries
+
+E 433175, N 558670 — the centre of the block the Appendix 1 site plans put the
+factory building in — converting to **54.9216 N, 1.4839 W**. The block is tied to
+the works rather than to the estate by the installation's own VOC stacks being
+listed inside it.
+
+**The permit is the source of the position and no basemap feature is.** An
+unnamed `landuse=construction` polygon sits 95 m away and the IAMP estate 560 m
+away; both corroborate the conversion and neither places it. That distinction is
+the whole of why this coordinate is admissible where the estate polygon was not.
+
+**The discrepancy is carried, not resolved.** The 2023 filing calls the works
+"Giga 1" at up to 9 GWh per annum; the December 2025 launch release calls it
+"Plant 2" at 15.8 GWh. The row carries the company's current figure and the note
+holds both. A permit states a consented maximum at its filing date and a launch
+release states what was built, so the capacities need not agree — **but the naming
+does not follow from that, and nothing read so far explains it.**
+
+Product scope is confirmed at permit tier: electrode production, cell assembly and
+module production on site.
+
+### Two hosts added to the bot-hostile list
+
+`sunderland.gov.uk` and `aesc-group.com` serve to a browser and 403 a datacentre
+IP. `check_links` now reports rather than fails on them, on the same distinction
+`sources/manual/` rests on: a 403 is a fact about how we are reaching a page, not
+about whether the page is there.
+
+**The row's quotes from the permit are second-hand until the file lands** — the
+grid references are George's reading, not this pipeline's. The queue entry carries
+a `drop_as` path.
+
+---
+
 ## Stopping here
 
 A–E are resolved and the first six rows are in. What is left, in order:

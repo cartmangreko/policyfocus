@@ -143,13 +143,9 @@
       "status": "operating",
       "capacity_gwh": 15.8,
       "company_source": "https://www.aesc-group.com/newsInfo?id=aesc-launches-its-new-uk-battery-gigafactory",
-      "note": "Status and capacity settled at company tier (15.8 GWh, production under way, 2025-12-16). THE PERMIT ROUTE WAS RUN AND DID NOT CLOSE IT. The register gives the address — 1 International Drive, SR5 3FH — and nothing that resolves to the works: sunderland.gov.uk answers 403 to the environmental-permit installation details and to the s73 non-technical summary, docs.planning.org.uk answers 403 to the Plant 3 planning statement, and the one readable register (planning.org.uk) disclaims its own map — 'map location should not be relied on for accuracy'. At that postcode the basemap holds the Innovation Centre, a different building, and the IAMP estate polygon, which is an estate. Three pages escalated.",
+      "note": "Landed. Coordinate from the environmental-permit report's Appendix 1 grid, converted by sources/osgb36.py and recomputed by the gate. The permit document itself is still queued for sources/manual/ — the row's quotes from it are second-hand until the file lands.",
       "coordinate_ref": "permit 21/01764/HE4, varied by 23/01542/VA4 (Sunderland City Council). Site address on the register: '1 International Drive, Sunderland SR5 3FH', tied to AESC Plant 2 through discharge-of-condition 24/00782/DIS, which names 23/01542/VA4 in its description.",
-      "permit_blocked": [
-        "https://www.sunderland.gov.uk/article/34778/4-Envision-AESC-Installation-Details-Process-Description-300168590-ES-001",
-        "https://www.sunderland.gov.uk/media/35768/2-Non-Technical-Summary-13-7-23/pdf/2._Non-Technical_Summary_-_13.7.23.PDF",
-        "https://docs.planning.org.uk/20240424/110/SC0YAKBB01600/i11g9tquu26kxzlv.pdf"
-      ]
+      "coordinate_source": "permit"
     },
     {
       "id": "envision-aesc-extremadura",

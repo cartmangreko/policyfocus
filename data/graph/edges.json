@@ -28096,6 +28096,26 @@
  },
  {
   "rel": "deploys",
+  "from": "project:envision-aesc-sunderland",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-sunderland].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:envision-aesc-sunderland",
+  "to": "technology:nmc-nca-cells",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-sunderland].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:galata-co2-storage",
   "to": "technology:co2-transport-storage",
   "since": "2022-07-18",
@@ -30922,6 +30942,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=envision-aesc-douai].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-sunderland",
+  "to": "country:GB",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-sunderland].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-sunderland",
+  "to": "sector:batsol",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-sunderland].sector"
   },
   "basis": "sector"
  },
