@@ -1,0 +1,45 @@
+#!/bin/sh
+# Refuse to push a red build.
+#
+# WHY THIS EXISTS. A commit was pushed with prebuild failing, because the push
+# and the check ran in one command and the exit code was not read before the push
+# went out. The gate had done its job and nobody looked. This makes that
+# particular slip impossible rather than asking anybody to remember.
+#
+# WHAT IT RUNS. web/'s prebuild, which is the whole gate chain: the parity
+# checks, the schema, the coordinates, the geography, the leads, the links. It is
+# the same command CI runs, so a push that survives this is a push that survives
+# there.
+#
+# IT IS SLOW ON PURPOSE. The chain takes a couple of minutes, most of it in
+# check_links waiting politely on other people's servers. That is the right
+# trade against pushing something broken to a branch somebody else may build on.
+#
+# TO SKIP IT, deliberately and visibly:  git push --no-verify
+# There are honest reasons — pushing a work-in-progress branch nobody builds, or
+# a documentation-only change. There is no honest reason to make it the habit.
+#
+# INSTALL:  git config core.hooksPath .githooks
+# Versioned rather than left in .git/hooks so it survives a fresh clone and can be
+# reviewed in a diff like everything else here.
+
+set -e
+
+root=$(git rev-parse --show-toplevel)
+if [ ! -d "$root/web/node_modules" ]; then
+  echo "pre-push: web/node_modules is missing — run npm install in web/ first." >&2
+  echo "pre-push: refusing to push a build that cannot be checked." >&2
+  exit 1
+fi
+
+echo "pre-push: running the gate chain (this takes a couple of minutes)…"
+if ! (cd "$root/web" && npm run --silent prebuild >/tmp/eufabric-prepush.log 2>&1); then
+  echo >&2
+  echo "pre-push: THE GATE CHAIN FAILED. Nothing was pushed." >&2
+  echo >&2
+  tail -30 /tmp/eufabric-prepush.log >&2
+  echo >&2
+  echo "pre-push: full output in /tmp/eufabric-prepush.log" >&2
+  exit 1
+fi
+echo "pre-push: gate chain green."
