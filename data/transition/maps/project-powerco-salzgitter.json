@@ -112,8 +112,8 @@
           ]
         },
         "narrow": {
-          "x": 409.2,
-          "anchor": "start",
+          "x": 350.8,
+          "anchor": "end",
           "lines": [
             {
               "text": "PowerCo Salzgitter",
@@ -252,6 +252,67 @@
           ]
         }
       }
+    },
+    {
+      "id": "tesla-gruenheide-cells",
+      "site": "Grünheide works",
+      "country": "DE",
+      "role": "plant",
+      "relation": "technology",
+      "status": "construction",
+      "label": "Tesla Giga Berlin cell manufacturing",
+      "name_line": "Tesla Giga Berlin cell manufacturing",
+      "sub": "Tesla",
+      "href": "/projects/tesla-gruenheide-cells",
+      "lat": 52.3972,
+      "lon": 13.7948,
+      "as_of": "2026-09-04",
+      "x": 588.4,
+      "y": 187.6,
+      "labels": {
+        "wide": {
+          "x": 578.4,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Tesla Giga Berlin cell manufacturing",
+              "role": "name",
+              "size": 11.0,
+              "y": 161.6
+            },
+            {
+              "text": "Tesla",
+              "role": "company",
+              "size": 9.5,
+              "y": 173.6
+            }
+          ]
+        },
+        "narrow": {
+          "x": 574.5,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Tesla Giga Berlin cell",
+              "role": "name",
+              "size": 21.0,
+              "y": 118.0
+            },
+            {
+              "text": "manufacturing",
+              "role": "name",
+              "size": 21.0,
+              "y": 143.2
+            },
+            {
+              "text": "Tesla",
+              "role": "company",
+              "size": 18.1,
+              "y": 166.1
+            }
+          ]
+        }
+      }
     }
   ],
   "countries": [
@@ -332,14 +393,14 @@
           ]
         },
         "narrow": {
-          "x": 380.1,
-          "anchor": "end",
+          "x": 400.9,
+          "anchor": "start",
           "lines": [
             {
               "text": "Germany",
               "role": "country",
               "size": 17.2,
-              "y": 254.3
+              "y": 235.3
             }
           ]
         }
@@ -436,7 +497,7 @@
       }
     }
   ],
-  "as_of": "2026-09-02",
+  "as_of": "2026-09-04",
   "coordinates": [
     {
       "site": "Salzgitter gigafactory",

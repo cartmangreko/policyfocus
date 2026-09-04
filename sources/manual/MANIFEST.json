@@ -10,7 +10,12 @@
     "",
     "`wanted` is the queue: pages known to be needed and not yet retrieved. It is",
     "here rather than in a message so the list survives the conversation that",
-    "produced it."
+    "produced it.",
+    "",
+    "`wanted` is PARKED. George retrieves these; nothing in the build retries them and no",
+    "turn is spent on them. Each entry carries the exact URL and the `drop_as` path the file",
+    "should take, so filing is a copy and a manifest line. `priority: lowest` marks an entry",
+    "that would corroborate something already settled -- nothing waits on it."
   ],
   "retrieved": [
     {
@@ -40,49 +45,81 @@
       "candidate": "britishvolt-blyth",
       "url": "https://northumberland.moderngov.co.uk/documents/s5924/05%2021-00818-FULES%20Britishvolt%20Gigaplant%20Report1.pdf",
       "why": "council planning portal answers 403; the public-access record says the application is no longer available for viewing",
-      "needed_for": "a coordinate, from the parcel the permit names"
+      "needed_for": "a coordinate, from the parcel the permit names",
+      "drop_as": "sources/manual/britishvolt-blyth--northumberland-permit-21-00818-FULES-committee-report.pdf",
+      "priority": "normal"
     },
     {
       "candidate": "calb-sines",
       "url": "http://en.calb-tech.com/news_detail/5.html",
       "why": "certificate does not match the host",
-      "needed_for": "company confirmation of the site"
+      "needed_for": "company confirmation of the site",
+      "drop_as": "sources/manual/calb-sines--calb-sines-groundbreaking.html",
+      "priority": "normal"
     },
     {
       "candidate": "envision-aesc-extremadura",
       "url": "https://www.aesc-group.com/newsInfo?id=<slug> — 'AESC Spain celebrates the laying of the first stone of the battery gigafactory in Navalmoral de la Mata (Cáceres)'",
       "why": "publisher answers 403 to this pipeline; the newsInfo?id= URL form is now confirmed by two retrieved pages, the slug is not",
-      "needed_for": "company confirmation of the site"
+      "needed_for": "company confirmation of the site",
+      "drop_as": "sources/manual/envision-aesc-extremadura--first-stone-navalmoral-de-la-mata.html",
+      "priority": "normal"
     },
     {
       "candidate": "farasis-bitterfeld",
       "url": "https://web.archive.org/web/2023/https://www.farasis-energy.eu/",
       "why": "no live wire release found; the company is dissolved and only the Internet Archive has its materials",
-      "needed_for": "company confirmation of the site, and a coordinate if it gives one"
+      "needed_for": "company confirmation of the site, and a coordinate if it gives one",
+      "drop_as": "sources/manual/farasis-bitterfeld--farasis-europe-site.html",
+      "priority": "normal"
     },
     {
       "candidate": "freyr-mo-i-rana",
       "url": "https://www.businesswire.com/news/home/20231129041515/en/FREYR-Battery-Provides-Operations-Update",
       "why": "Business Wire answers 403 to this pipeline, as does T1 Energy's investor site; PR Newswire, by contrast, is readable",
-      "needed_for": "company confirmation of the site and of the suspension"
+      "needed_for": "company confirmation of the site and of the suspension",
+      "drop_as": "sources/manual/freyr-mo-i-rana--freyr-operations-update-2023-11-29.html",
+      "priority": "normal"
     },
     {
       "candidate": "sk-on-ivancsa",
       "url": "http://eng.sk-on.com/company/global.asp",
       "why": "certificate does not match the host",
-      "needed_for": "company confirmation of the site"
+      "needed_for": "company confirmation of the site",
+      "drop_as": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html",
+      "priority": "normal"
     },
     {
       "candidate": "svolt-lauchhammer",
       "url": "https://web.archive.org/web/2023/https://svolt-eu.com/",
       "why": "no live wire release found; the company is dissolved and only the Internet Archive has its materials",
-      "needed_for": "company confirmation of the site, and a coordinate if it gives one"
+      "needed_for": "company confirmation of the site, and a coordinate if it gives one",
+      "drop_as": "sources/manual/svolt-lauchhammer--svolt-europe-lauchhammer.html",
+      "priority": "normal"
     },
     {
       "candidate": "svolt-uberherrn",
       "url": "https://web.archive.org/web/2023/https://svolt-eu.com/",
       "why": "no live wire release found; the company is dissolved and only the Internet Archive has its materials",
-      "needed_for": "company confirmation of the site, and a coordinate if it gives one"
+      "needed_for": "company confirmation of the site, and a coordinate if it gives one",
+      "drop_as": "sources/manual/svolt-uberherrn--svolt-europe-uberherrn.html",
+      "priority": "normal"
+    },
+    {
+      "candidate": "envision-aesc-sunderland",
+      "url": "https://www.sunderland.gov.uk/media/35768/2-Non-Technical-Summary-13-7-23/pdf/2._Non-Technical_Summary_-_13.7.23.PDF",
+      "why": "council answers 403; non-technical summary for the s73 application",
+      "needed_for": "CORROBORATION ONLY — the row is landed and its coordinate is settled by the installation-details report already filed. These would confirm the position independently and may explain the Giga 1 / Plant 2 naming. Nothing waits on them.",
+      "drop_as": "sources/manual/envision-aesc-sunderland--s73-non-technical-summary-23-01542-VA4.pdf",
+      "priority": "lowest"
+    },
+    {
+      "candidate": "envision-aesc-sunderland",
+      "url": "https://docs.planning.org.uk/20240424/110/SC0YAKBB01600/i11g9tquu26kxzlv.pdf",
+      "why": "document host answers 403; Plant 3 planning statement, which locates Plants 1 and 2 relative to it",
+      "needed_for": "CORROBORATION ONLY — the row is landed and its coordinate is settled by the installation-details report already filed. These would confirm the position independently and may explain the Giga 1 / Plant 2 naming. Nothing waits on them.",
+      "drop_as": "sources/manual/envision-aesc-sunderland--plant-3-planning-statement.pdf",
+      "priority": "lowest"
     }
   ]
 }
