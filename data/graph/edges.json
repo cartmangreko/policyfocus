@@ -29552,6 +29552,18 @@
  },
  {
   "rel": "finances",
+  "from": "funding:innovation-fund-ifestos",
+  "to": "project:ifestos-kamari",
+  "since": "2024-01-01",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-ifestos].finances"
+  },
+  "instrument": "grant",
+  "status": "signed"
+ },
+ {
+  "rel": "finances",
   "from": "funding:innovation-fund-stegra",
   "to": "project:stegra-boden",
   "since": "2024-01-22",
@@ -31624,6 +31636,17 @@
  },
  {
   "rel": "in",
+  "from": "funding:innovation-fund-ifestos",
+  "to": "country:GR",
+  "since": "2024-01-01",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-ifestos].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
   "from": "funding:innovation-fund-stegra",
   "to": "country:SE",
   "since": "2024-01-22",
@@ -33007,6 +33030,17 @@
    "source": "data/transition/parameters.json",
    "path": "[id=ifestos-capture-capacity].technology",
    "quote": "an absolute annual GHG emissions avoidance of more than 1.9 million tons of CO2"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:ifestos-grant",
+  "to": "sector:cement",
+  "since": "2026-08-18",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=ifestos-grant].sector",
+   "quote": "COORDINATOR ANONYMI ETAIREIA TSIMENTON TITAN LOCATION Greece CATEGORY Energy intensive industries (EII) SECTOR Cement & lime AMOUNT OF INNOVATION FUND GRANT EUR 234,000,000"
   }
  },
  {
@@ -34792,6 +34826,26 @@
  },
  {
   "rel": "supports",
+  "from": "funding:innovation-fund-ifestos",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-01-01",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-ifestos].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-ifestos",
+  "to": "technology:ccs-post-combustion",
+  "since": "2024-01-01",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-ifestos].supports"
+  }
+ },
+ {
+  "rel": "supports",
   "from": "funding:innovation-fund-stegra",
   "to": "technology:h2-dri",
   "since": "2024-01-22",
@@ -34894,6 +34948,17 @@
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=innovation-fund-go4zero].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-ifestos",
+  "to": "measure:ets:FND-03",
+  "since": "2024-01-01",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-ifestos].under"
   },
   "programme": "EU Innovation Fund"
  },

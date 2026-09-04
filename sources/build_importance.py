@@ -61,6 +61,7 @@ letting it decide the order.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import json
 from datetime import date
 from pathlib import Path
@@ -730,6 +731,37 @@ def sanity_report(doc: dict) -> list[str]:
     return lines
 
 
+HOLDS = sm.DATA / "draw_holds.json"
+
+
+def hold_on_first_ranking(sector: str) -> str:
+    """Record a draw hold for a sector that has just got its first ranking.
+
+    Returns a line for the build log. Does nothing if the sector is already
+    held or has been explicitly released — a release is a decision somebody
+    made, and re-holding a released sector on the next rebuild would undo it
+    silently.
+    """
+    doc = json.loads(HOLDS.read_text(encoding="utf-8")) if HOLDS.exists() else {
+        "holds": {}, "released": {}}
+    doc.setdefault("holds", {})
+    doc.setdefault("released", {})
+    if sector in doc["holds"]:
+        return "already held"
+    if sector in doc["released"]:
+        return "previously released; not re-held"
+    doc["holds"][sector] = {
+        "since": dt.date.today().isoformat(),
+        "reason": (f"Placed automatically when {sector} first got a ranking. A ranking is what "
+                   f"turns hasMap true, so without this the sector's page would begin drawing a "
+                   f"Europe-wide overview on whatever rows happen to exist. Nobody has judged "
+                   f"whether they are enough."),
+        "released_by": "George, on an explicit judgement that the data is complete enough to draw.",
+    }
+    HOLDS.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return "hold written to data/transition/draw_holds.json"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true",
@@ -759,7 +791,23 @@ def main() -> int:
                   f"({sum(1 for m in doc['measures'] if m['in_sector_view'])} of "
                   f"{len(doc['measures'])} measures in the sector view)")
         else:
+            # A SECTOR IS HELD FROM DRAWING THE MOMENT IT FIRST HAS A RANKING.
+            # `hasMap` turns true the instant this file exists, so a sector's
+            # page goes from a directory template to a full page with a
+            # Europe-wide overview on it as a side effect of running a builder.
+            # Batteries did exactly that, and the picture it would have drawn was
+            # short of a third of the sector.
+            #
+            # So the hold is placed HERE, before the first render, and it is
+            # placed automatically because the one time it mattered nobody
+            # thought to place it. It is never lifted here: releasing is a
+            # judgement about whether the data is honest enough to publish, and a
+            # builder is not entitled to make it.
+            first_time = not path.exists()
             path.write_text(text, encoding="utf-8")
+            if first_time:
+                held = hold_on_first_ranking(sector)
+                print(f"build_importance: {sector} is HELD FROM DRAWING — {held}")
             print(f"build_importance: wrote {path} — "
                   f"{sum(1 for m in doc['measures'] if m['in_sector_view'])} of "
                   f"{len(doc['measures'])} measures in the sector view")

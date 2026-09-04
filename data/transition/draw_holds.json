@@ -17,7 +17,19 @@
     "So the hold is explicit, it is data rather than a missing file, and it says who releases it.",
     "A hold that worked by leaving something unbuilt would be invisible, would break the moment",
     "somebody ran the builder, and would give a reader no way of knowing the page was withheld",
-    "rather than absent."
+    "rather than absent.",
+    "",
+    "to  with the date and who ruled it, so a later builder does not re-hold it",
+    "and a reader can see that drawing was decided rather than defaulted.",
+    "",
+    "RELEASES ARE RECORDED, not merely absences. When a hold is lifted the sector moves to the",
+    "released map with the date and who ruled it, so a later build does not re-hold it and a",
+    "reader can see that drawing was decided rather than defaulted.",
+    "",
+    "HOLDS ARE PLACED AUTOMATICALLY by sources/build_importance.py, on the first build that",
+    "writes a sector's ranking -- the moment hasMap turns true and the page would otherwise",
+    "begin drawing. They are never lifted by a builder: releasing is a judgement about whether",
+    "the data is honest enough to publish, and a builder is not entitled to make it."
   ],
   "holds": {
     "batsol": {
@@ -25,5 +37,6 @@
       "reason": "The overview would draw 20 of 32 admitted sites. Six candidates are outstanding only because their sources are behind a fetch this pipeline cannot make, and four of those are cancelled projects — SVOLT twice, Farasis, Britishvolt. This sector's defining fact is how much of it died, and a picture missing four of six dead projects shows it in better health than it is in, silently, because a reader cannot see what is not drawn.",
       "released_by": "George, on a re-judgement that the retrieval gap has closed far enough for the overview to be honest. Brief 6 §10 and the ruling of 4 September 2026."
     }
-  }
+  },
+  "released": {}
 }
