@@ -8796,6 +8796,41 @@
   }
  },
  {
+  "id": "project:envision-aesc-extremadura",
+  "kind": "project",
+  "label": "AESC Navalmoral de la Mata",
+  "attrs": {
+   "company": "AESC",
+   "plant": "Navalmoral de la Mata",
+   "country": "ES",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Parcela I-67, Polígono Industrial Expacionavalmoral",
+     "lat": 39.9152,
+     "lon": -5.5116,
+     "precision": "plant",
+     "retrieved_date": "2026-09-05",
+     "grid_reference": {
+      "system": "ETRS89 / UTM 30N",
+      "easting": 285333,
+      "northing": 4421360
+     },
+     "source": {
+      "url": "https://doe.juntaex.es/pdfs/doe/2023/970o/xml/2023061930.xml",
+      "type": "permit",
+      "publisher": "Diario Oficial de Extremadura — Dirección General de Sostenibilidad, Junta de Extremadura",
+      "verbatim": "La instalación industrial se ubicará en el Polígono Industrial Expacionavalmoral, del término municipal de Navalmoral de la Mata (Cáceres). Las coordenadas geográficas representativas de la instalación son: X: 285.333; Y: 4.421.360; ETRS89, huso 30.",
+      "note": "THE PERMIT IS THE SOURCE OF THE POSITION AND NO BASEMAP FEATURE IS. The integrated environmental authorisation of 17 May 2023 for Envision AESC Spain SL states the installation's representative coordinates and names the cadastral parcel — 'parcela catastral I-67' — on a plot of 1 088 211 m². The stored latitude and longitude are RECOMPUTED from the easting and northing by sources/utm.py on every build, so the conversion cannot be done once by hand and quietly adjusted. Corroboration and not placement: the point falls 152 m outside the mapped edge of the 'Expacio Navalmoral' industrial estate, which is the park the permit names and whose polygon covers what was already built there — an estate is refused as a position on this platform, so it stands here as a check on the arithmetic rather than as the source."
+     },
+     "confidence": "secondary"
+    }
+   ]
+  }
+ },
+ {
   "id": "project:envision-aesc-sunderland",
   "kind": "project",
   "label": "AESC Sunderland",

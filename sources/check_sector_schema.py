@@ -78,6 +78,7 @@ from datetime import date
 import display_vocabulary as dv
 import osgb36
 import sector_map as sm
+import utm
 
 DATE_RE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
 
@@ -298,6 +299,18 @@ COORDINATE_SOURCE_EXCEPTIONS = {
 }
 
 
+# THE PROJECTIONS A PERMIT MAY STATE A POSITION IN, and the module that inverts
+# each. Closed and small on purpose: a system in this table is one somebody has
+# implemented and self-checked, and a permit quoting any other projection is a
+# coordinate this repository cannot re-run — which is the same as a coordinate it
+# cannot defend. Adding one means writing the conversion and its checks, not
+# widening a vocabulary.
+GRID_SYSTEMS = {
+    "OSGB36": (osgb36, osgb36.to_wgs84),
+    "ETRS89 / UTM 30N": (utm, lambda e_, n_: utm.to_wgs84(e_, n_, zone=30)),
+}
+
+
 def _location(e: Errors, where: str, row: dict) -> None:
     """Every site a project sits on, and the source that puts it there.
 
@@ -384,18 +397,22 @@ def _location(e: Errors, where: str, row: dict) -> None:
         grid = s.get("grid_reference")
         if grid:
             _req(e, f"{w} grid_reference", grid, "system", "easting", "northing")
-            if grid.get("system") != "OSGB36":
-                e.add(f"{w} grid_reference", f"system={grid.get('system')!r} — only "
-                                             f"OSGB36 is implemented, in sources/osgb36.py")
+            system = grid.get("system")
+            if system not in GRID_SYSTEMS:
+                e.add(f"{w} grid_reference", f"system={system!r} — the systems "
+                                             f"implemented are {sorted(GRID_SYSTEMS)}. A "
+                                             f"projection nobody has written is a "
+                                             f"conversion nobody can re-run")
             elif src.get("type") != "permit":
                 e.add(f"{w} grid_reference", "is on a site whose coordinate source is "
                                              "not a permit — a grid reference comes from a "
                                              "filing, and recording one beside another "
                                              "kind of source hides which put the point here")
             else:
-                for failure in osgb36.self_check():
-                    e.add("osgb36", failure)
-                got = osgb36.to_wgs84(grid["easting"], grid["northing"])
+                module, convert = GRID_SYSTEMS[system]
+                for failure in module.self_check():
+                    e.add(module.__name__, failure)
+                got = convert(grid["easting"], grid["northing"])
                 if (s.get("lat"), s.get("lon")) != got:
                     e.add(w, f"lat/lon is {(s.get('lat'), s.get('lon'))} and the grid "
                              f"reference E {grid['easting']} N {grid['northing']} converts "

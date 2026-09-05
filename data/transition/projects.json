@@ -2622,6 +2622,99 @@
           "note": "The basemap feature the point is taken from. Cited as a source and not as the site's evidence type: what admits this coordinate is the operator's published address, and this building is what stands at it."
         }
       ]
+    },
+    {
+      "id": "envision-aesc-extremadura",
+      "name": "AESC Navalmoral de la Mata",
+      "company": "AESC",
+      "plant": "Navalmoral de la Mata",
+      "country": "ES",
+      "location": [
+        {
+          "site": "Parcela I-67, Polígono Industrial Expacionavalmoral",
+          "lat": 39.9152,
+          "lon": -5.5116,
+          "precision": "plant",
+          "retrieved_date": "2026-09-05",
+          "grid_reference": {
+            "system": "ETRS89 / UTM 30N",
+            "easting": 285333,
+            "northing": 4421360
+          },
+          "source": {
+            "url": "https://doe.juntaex.es/pdfs/doe/2023/970o/xml/2023061930.xml",
+            "type": "permit",
+            "publisher": "Diario Oficial de Extremadura — Dirección General de Sostenibilidad, Junta de Extremadura",
+            "verbatim": "La instalación industrial se ubicará en el Polígono Industrial Expacionavalmoral, del término municipal de Navalmoral de la Mata (Cáceres). Las coordenadas geográficas representativas de la instalación son: X: 285.333; Y: 4.421.360; ETRS89, huso 30.",
+            "note": "THE PERMIT IS THE SOURCE OF THE POSITION AND NO BASEMAP FEATURE IS. The integrated environmental authorisation of 17 May 2023 for Envision AESC Spain SL states the installation's representative coordinates and names the cadastral parcel — 'parcela catastral I-67' — on a plot of 1 088 211 m². The stored latitude and longitude are RECOMPUTED from the easting and northing by sources/utm.py on every build, so the conversion cannot be done once by hand and quietly adjusted. Corroboration and not placement: the point falls 152 m outside the mapped edge of the 'Expacio Navalmoral' industrial estate, which is the park the permit names and whose polygon covers what was already built there — an estate is refused as a position on this platform, so it stands here as a check on the arithmetic rather than as the source."
+          },
+          "confidence": "secondary"
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing",
+        "lfp-cells"
+      ],
+      "capacity": {
+        "value": 94.24,
+        "unit": "GWh per year"
+      },
+      "capacity_note": "The permit's figure for the END OF PHASE FOUR — 'la capacidad total de fabricación de baterías, al final de la cuarta etapa en 2028, sea de 94,24 GWh al año' — and not what the first phase builds. AESC's own release states no GWh at all, so this is a permit-tier capacity for a four-phase build whose first phase is what is under construction.",
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2024-07-08",
+          "source_url": "https://web.archive.org/web/20241002033752/https://www.aesc-group.com/en/item/668bf854f7fe5a27254fcc59/",
+          "note": "AESC's own first-stone release: 'Today, Monday, July 8, marked the groundbreaking ceremony of AESC's future gigafactory for batteries in Navalmoral de la Mata, Cáceres.' La Moncloa and the Junta de Extremadura record the same ceremony, with the Prime Minister and the President of the Junta present. TWO TIMETABLES THAT DO NOT AGREE, AND BOTH ARE HELD. The 2024 release says the plant 'is scheduled to begin production in 2026'; the Junta told the Extremadura Assembly in June 2026 that construction concludes in November 2027 and the first cells come in December 2028, and an opposition deputy in the same session said that two years after the first stone there is 'la primera piedra y nada más'. The status is what none of them disputes — ground was broken and no cell has been made — and the four-and-a-half-year gap between the ceremony and the first cell is the fact a reader should have, not a discrepancy to be resolved by taking the newest number silently."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20241002033752/https://www.aesc-group.com/en/item/668bf854f7fe5a27254fcc59/",
+          "title": "AESC Spain celebrates the laying of the first stone of the battery gigafactory in Navalmoral de la Mata (Cáceres)",
+          "publisher": "AESC",
+          "date": "2024-07-08",
+          "archived": true,
+          "snapshot": "sources/manual/envision-aesc-extremadura--first-stone-navalmoral-de-la-mata.html",
+          "note": "THE COMPANY SOURCE, AND IT NAMES THE TOWN, so this row stands on the ordinary company standard and not on the composite one. Read from the Internet Archive because AESC's rebuilt site has removed the page: capture of 2 October 2024. Product is company tier — 'advanced Lithium Iron Phosphate (LFP) batteries at scale' — and so is the investment, 'over 1 billion euros for its first phase' with 'up to 900 direct jobs'."
+        },
+        {
+          "url": "https://www.lamoncloa.gob.es/presidente/actividades/Paginas/2024/080724-sanchez-gigafactoria-baterias.aspx",
+          "title": "Sánchez asiste a la colocación de la primera piedra de la gigafactoría de baterías",
+          "publisher": "La Moncloa (Government of Spain)",
+          "date": "2024-07-08",
+          "note": "State record of the ceremony the company release describes. It states nearly one billion euros in the first phase where AESC says over one billion; the row carries neither figure as a number, because 'nearly' and 'over' are not the same claim and no source read here settles it."
+        },
+        {
+          "url": "https://www.juntaex.es/w/maria-guardiola-asiste-a-la-puesta-de-la-primera-piedra-de-la-gigafactoria",
+          "title": "María Guardiola asiste a la puesta de la primera piedra de la gigafactoría",
+          "publisher": "Junta de Extremadura",
+          "date": "2024-07-08"
+        },
+        {
+          "url": "https://doe.juntaex.es/pdfs/doe/2023/970o/xml/2023061930.xml",
+          "title": "Resolución de 17 de mayo de 2023, autorización ambiental integrada — planta de fabricación de baterías de iones de litio, Envision AESC Spain, SL",
+          "publisher": "Diario Oficial de Extremadura",
+          "date": "2023-05-23",
+          "note": "The position, the parcel, the plot area and the four-phase capacity all come from here. It is also where the project's own timetable is stated as running from 2023 to 2028."
+        },
+        {
+          "url": "https://www.juntaex.es/w/autorizacion-ambiental-para-el-proyecto-de-la-gigafactoria-en-navalmoral",
+          "title": "La Junta de Extremadura somete a información pública la autorización ambiental para el proyecto de la gigafactoría en Navalmoral",
+          "publisher": "Junta de Extremadura",
+          "date": "2022-11-02"
+        },
+        {
+          "url": "https://www.laportadadeextremadura.com/economia/empresas/gigafactoria-baterias-navalmoral-mata-proyecta-inicio-produccion-celdas-diciembre-2028_5773_102.html",
+          "title": "La Gigafactoría de baterías de Navalmoral de la Mata proyecta el inicio de la producción de celdas para diciembre de 2028",
+          "publisher": "La Portada de Extremadura, relaying the Junta de Extremadura",
+          "date": "2026-06-08",
+          "note": "PRESS RELAYING A STATE SOURCE, recorded as press. It reports what the Junta's secretaria general de Economía, Celina Pérez, told the Asamblea de Extremadura on 8 June 2026: assembly of the installations finished September 2027, module and pack production September 2027, construction concluded November 2027, and cell production from December 2028, at 977 million euros and 900 jobs. No Junta or Assembly record of the session was found, which is why it sits at press tier. USED FOR THE TIMETABLE IT RELAYS AND NOT FOR DATES IT STATES ITSELF: the article puts the first stone in July 2022, and the company's own release and La Moncloa both put it in July 2024."
+        }
+      ]
     }
   ]
 }

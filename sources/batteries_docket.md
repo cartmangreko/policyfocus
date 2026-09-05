@@ -1453,21 +1453,110 @@ now specific and written down per site, with the next document named, rather tha
 
 ---
 
+## 22. A Spanish permit states its own coordinates, and a second projection is written
+
+Twenty-four rows on file of 34 candidates — **71%** — and ten outstanding.
+
+### The company source arrives, and it is the ordinary standard
+
+AESC's first-stone release of 8 July 2024, from the Internet Archive because the
+rebuilt site has removed it. **It names the town**, so this row stands on the
+ordinary company standard and not on the composite one: *"Today, Monday, July 8,
+marked the groundbreaking ceremony of AESC's future gigafactory for batteries in
+Navalmoral de la Mata, Cáceres."* Product is company tier and specific — *"advanced
+Lithium Iron Phosphate (LFP) batteries at scale"* — and so is the money, over a
+billion euros in the first phase and up to 900 direct jobs. The attendance list,
+Sánchez and Guardiola and the mayor, corroborates La Moncloa's record of the same
+ceremony from the other side.
+
+**The capture filed is 2 October 2024**, not the 19 September one the retrieval
+was described against; the Wayback bar on the saved copy says so and the row cites
+the capture that is actually on disk. Cited `archived: true` with the file as its
+snapshot, on the SVOLT pattern.
+
+### And then the permit did what the SVOLT permits could not
+
+The Extremadura environmental authorisation of 17 May 2023, in the Diario Oficial,
+**states the installation's own coordinates**:
+
+> Las coordenadas geográficas representativas de la instalación son: X: 285.333;
+> Y: 4.421.360; ETRS89, huso 30.
+
+It also names the cadastral parcel, `I-67` in the Polígono Industrial
+Expacionavalmoral, on 1 088 211 m², and gives the four-phase capacity: 94,24 GWh a
+year at the end of phase four in 2028. This is the Sunderland shape exactly — a
+filing that gives a projected position to the metre — in a country whose permits
+use a different projection.
+
+**So a second projection is written.** `sources/utm.py` inverts ETRS89 UTM to
+WGS84, and the row's latitude and longitude are recomputed from the easting and
+northing on every build, exactly as Sunderland's are from its National Grid
+reference. Verified by breaking it: moving the latitude to a plausible 39.9200
+fails with *"lat/lon is (39.92, -5.5116) and the grid reference E 285333 N 4421360
+converts to (39.9152, -5.5116) — one of the two has been edited alone"*.
+
+**One stage rather than two**, and that is the whole difference from the British
+case. OSGB36 needs a projection inverse and a Helmert datum shift because Airy
+1830 sits a hundred metres from WGS84; ETRS89 is a WGS84-family datum and the
+drift since 1989 is tens of centimetres, two orders of magnitude below what four
+decimal places store. Adding a datum shift would be pretending to a precision the
+source does not have.
+
+**How a conversion is checked when nobody publishes a test vector for it.** The
+Ordnance Survey publishes a worked example and Spain does not, so the new module's
+transverse Mercator inverse is written generically — it takes the ellipsoid and
+the projection parameters — and is run with the National Grid's parameters against
+the OS's own Caister Water Tower position. That is a published test point proving
+the series, borrowed from the one country that publishes one. Beside it: a forward
+projection that has to invert the inverse to a millimetre across three zones, and
+the definitional identity that the central meridian is the false easting and the
+equator is zero. The systems a permit may quote are a closed table in the schema
+gate, so a projection nobody has implemented is a coordinate the build refuses
+rather than one it approximates.
+
+**The estate corroborates and does not place.** The point falls 152 m outside the
+mapped edge of the `Expacio Navalmoral` polygon — the park the permit names — which
+is a check on the arithmetic and nothing more. An estate is refused as a position
+here, as it was at Mo i Rana, IAMP and Parc Sagunt II.
+
+### Two dates that disagree, and both are carried
+
+The 2024 release says the plant *"is scheduled to begin production in 2026"*. The
+June 2026 update — the Junta's secretaria general de Economía before the
+Extremadura Assembly, relayed by press because no Assembly record of the session
+was found — puts assembly finished in September 2027, construction concluded in
+November 2027 and **first cells in December 2028**, at 977 million euros and 900
+jobs. In the same session an opposition deputy said that two years after the
+ceremony there is *"la primera piedra y nada más"*. The row's status is what none
+of them disputes — ground was broken, no cell has been made — and **the
+four-and-a-half-year gap between the ceremony and the first cell is carried as
+the fact rather than resolved by taking the newest number in silence**.
+
+**The relay was changed on the way in.** The locator the candidate carried
+answers 403 to this pipeline, and a citation nobody here can open is not one this
+row will stand on; a second outlet reporting the same Assembly session serves and
+is cited instead. It is used for the timetable it relays and **not for dates it
+states itself**: it puts the first stone in July 2022, where the company's own
+release and La Moncloa both put it in July 2024.
+
+The same discipline on the money: AESC says *over* one billion euros in the first
+phase, La Moncloa says *nearly* one billion. Neither is stored as a number,
+because they are not the same claim and nothing read here settles it.
+
+---
+
 ## Stopping here
 
-Twenty-three rows on file of 34 candidates, eleven outstanding. What is left, in
+Twenty-four rows on file of 34 candidates, ten outstanding. What is left, in
 order:
 
-1. **Coordinates**, still the binding constraint, and now with a named next
-   document on each of the two SVOLT sites: the Linsler Feld Planzeichnung or the
-   state map service's geometry at Überherrn, and at Lauchhammer an address SVOLT
-   itself published, a Brandenburg record naming the parcel, or the works
-   appearing in the basemap. ACC Kaiserslautern, FREYR and Farasis are the other
-   three.
-2. **The five pages still parked for a browser**, in `sources/manual/MANIFEST.json`:
-   Britishvolt's committee report, AESC Extremadura's first-stone release, Farasis
-   from the Internet Archive, and two Sunderland corroborations that nothing waits
-   on.
+1. **Coordinates**, still the binding constraint: both SVOLT sites, ACC
+   Kaiserslautern, FREYR and Farasis. The Extremadura permit is the pattern to
+   try first on each — a state filing that states its own position — and it is
+   now a route this pipeline can read in two projections.
+2. **The four pages still parked for a browser**, in `sources/manual/MANIFEST.json`:
+   Britishvolt's committee report, Farasis from the Internet Archive, and two
+   Sunderland corroborations that nothing waits on.
 3. **Prose slots**: `transition_notes`, `sector_orientation`, `sector_lead` and the
    ecosystem description carry cement and steel and nothing else, and the batteries
    blocks that exist are drafts awaiting review.
