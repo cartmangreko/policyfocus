@@ -862,6 +862,74 @@
       }
     },
     {
+      "id": "envision-aesc-extremadura",
+      "site": "Parcela I-67, Polígono Industrial Expacionavalmoral",
+      "country": "ES",
+      "role": "plant",
+      "relation": "sector",
+      "status": "construction",
+      "label": "AESC Navalmoral de la Mata",
+      "name_line": "AESC Navalmoral de la Mata",
+      "sub": "AESC",
+      "href": "/projects/envision-aesc-extremadura",
+      "lat": 39.9152,
+      "lon": -5.5116,
+      "as_of": "2026-09-05",
+      "x": 131.9,
+      "y": 638.3,
+      "labels": {
+        "wide": {
+          "x": 170.8,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "AESC Navalmoral de la Mata",
+              "role": "name",
+              "size": 11.0,
+              "y": 685.8
+            },
+            {
+              "text": "AESC",
+              "role": "company",
+              "size": 9.5,
+              "y": 697.8
+            }
+          ],
+          "leader": [
+            136.0,
+            642.4,
+            170.8,
+            677.2
+          ]
+        },
+        "narrow": {
+          "x": 215.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "AESC Navalmoral de",
+              "role": "name",
+              "size": 21.0,
+              "y": 738.4
+            },
+            {
+              "text": "la Mata",
+              "role": "name",
+              "size": 21.0,
+              "y": 763.6
+            }
+          ],
+          "leader": [
+            136.0,
+            642.4,
+            215.6,
+            722.0
+          ],
+          "shortened": true
+        }
+      }
+    },
+    {
       "id": "envision-aesc-sunderland",
       "site": "IAMP, Sunderland",
       "country": "GB",
@@ -1203,21 +1271,27 @@
           ]
         },
         "narrow": {
-          "x": 228.2,
+          "x": 298.0,
           "anchor": "start",
           "lines": [
             {
               "text": "PowerCo Valencia",
               "role": "name",
               "size": 21.0,
-              "y": 688.8
+              "y": 544.3
             },
             {
               "text": "PowerCo",
               "role": "company",
               "size": 18.1,
-              "y": 711.7
+              "y": 567.2
             }
+          ],
+          "leader": [
+            218.4,
+            654.4,
+            298.0,
+            574.8
           ]
         }
       }
@@ -1264,28 +1338,29 @@
           ]
         },
         "narrow": {
-          "x": 385.6,
-          "anchor": "middle",
+          "x": 505.5,
+          "anchor": "start",
           "lines": [
             {
               "text": "PowerCo Salzgitter",
               "role": "name",
               "size": 21.0,
-              "y": 542.3
+              "y": 259.3
             },
             {
               "text": "PowerCo",
               "role": "company",
               "size": 18.1,
-              "y": 565.2
+              "y": 282.2
             }
           ],
           "leader": [
-            385.6,
-            415.5,
-            385.6,
-            525.9
-          ]
+            389.7,
+            405.6,
+            505.5,
+            289.8
+          ],
+          "crowded": true
         }
       }
     },
@@ -1604,7 +1679,8 @@
             427.8,
             237.5
           ],
-          "shortened": true
+          "shortened": true,
+          "crowded": true
         }
       }
     },
@@ -1796,6 +1872,18 @@
               "y": 572.3
             }
           ]
+        },
+        "narrow": {
+          "x": 365.8,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Italy",
+              "role": "country",
+              "size": 17.2,
+              "y": 672.7
+            }
+          ]
         }
       }
     },
@@ -1876,8 +1964,8 @@
           ]
         },
         "narrow": {
-          "x": 439.9,
-          "anchor": "start",
+          "x": 422.5,
+          "anchor": "end",
           "lines": [
             {
               "text": "Sweden",
@@ -1911,7 +1999,7 @@
   "as_of": "2026-09-05",
   "coordinates": [
     {
-      "site": "21 sites",
+      "site": "22 sites",
       "south": 37.9871,
       "north": 64.734,
       "west": -8.7974,

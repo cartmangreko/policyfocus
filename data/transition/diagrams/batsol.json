@@ -6,7 +6,7 @@
   ],
   "sector": "batsol",
   "width": 1160,
-  "height": 1250,
+  "height": 1304,
   "columns": [
     {
       "kind": "measure",
@@ -26,7 +26,7 @@
     {
       "kind": "project",
       "x": 900,
-      "count": 23
+      "count": 24
     }
   ],
   "nodes": [
@@ -40,7 +40,7 @@
       "direction": null,
       "measure_id": "fleet:TGT-2035",
       "x": 0,
-      "y": 363.0,
+      "y": 390.0,
       "w": 236,
       "h": 38
     },
@@ -54,7 +54,7 @@
       "direction": null,
       "measure_id": "crma:CBEN-01",
       "x": 0,
-      "y": 417.0,
+      "y": 444.0,
       "w": 236,
       "h": 38
     },
@@ -68,7 +68,7 @@
       "direction": null,
       "measure_id": "iaa:LM-15a",
       "x": 0,
-      "y": 471.0,
+      "y": 498.0,
       "w": 236,
       "h": 38
     },
@@ -82,7 +82,7 @@
       "direction": null,
       "measure_id": "fleet:PREM-01",
       "x": 0,
-      "y": 525.0,
+      "y": 552.0,
       "w": 236,
       "h": 38
     },
@@ -96,7 +96,7 @@
       "direction": null,
       "measure_id": "fleet:TGT-2030",
       "x": 0,
-      "y": 579.0,
+      "y": 606.0,
       "w": 236,
       "h": 38
     },
@@ -110,7 +110,7 @@
       "direction": null,
       "measure_id": "crma:CBEN-02",
       "x": 0,
-      "y": 633.0,
+      "y": 660.0,
       "w": 236,
       "h": 38
     },
@@ -124,7 +124,7 @@
       "direction": null,
       "measure_id": "crma:CSP-02",
       "x": 0,
-      "y": 687.0,
+      "y": 714.0,
       "w": 236,
       "h": 38
     },
@@ -138,7 +138,7 @@
       "direction": null,
       "measure_id": "ets:FND-03",
       "x": 0,
-      "y": 741.0,
+      "y": 768.0,
       "w": 236,
       "h": 38
     },
@@ -152,7 +152,7 @@
       "direction": null,
       "measure_id": "iaa:LM-26a",
       "x": 0,
-      "y": 795.0,
+      "y": 822.0,
       "w": 236,
       "h": 38
     },
@@ -166,7 +166,7 @@
       "direction": null,
       "measure_id": "nzia:SCH-01",
       "x": 0,
-      "y": 849.0,
+      "y": 876.0,
       "w": 236,
       "h": 38
     },
@@ -178,7 +178,7 @@
       "href": "#bottleneck-batsol-cell-cost-gap",
       "type": "market",
       "x": 300,
-      "y": 525.0,
+      "y": 552.0,
       "w": 236,
       "h": 38
     },
@@ -190,7 +190,7 @@
       "href": "#bottleneck-batsol-demand-uncertainty",
       "type": "market",
       "x": 300,
-      "y": 579.0,
+      "y": 606.0,
       "w": 236,
       "h": 38
     },
@@ -202,7 +202,7 @@
       "href": "#bottleneck-batsol-ramp-and-yield",
       "type": "technical",
       "x": 300,
-      "y": 633.0,
+      "y": 660.0,
       "w": 236,
       "h": 38
     },
@@ -214,7 +214,7 @@
       "href": "#bottleneck-batsol-cathode-dependence",
       "type": "infrastructure",
       "x": 300,
-      "y": 687.0,
+      "y": 714.0,
       "w": 236,
       "h": 38
     },
@@ -226,7 +226,7 @@
       "href": "#technology-lfp-cells",
       "readiness": "commercial",
       "x": 600,
-      "y": 525.0,
+      "y": 552.0,
       "w": 236,
       "h": 38
     },
@@ -238,7 +238,7 @@
       "href": "#technology-cell-manufacturing",
       "readiness": "commercial",
       "x": 600,
-      "y": 579.0,
+      "y": 606.0,
       "w": 236,
       "h": 38
     },
@@ -250,7 +250,7 @@
       "href": "#technology-nmc-nca-cells",
       "readiness": "commercial",
       "x": 600,
-      "y": 633.0,
+      "y": 660.0,
       "w": 236,
       "h": 38
     },
@@ -262,7 +262,19 @@
       "href": "#technology-sodium-ion-cells",
       "readiness": "early-commercial",
       "x": 600,
-      "y": 687.0,
+      "y": 714.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:envision-aesc-extremadura",
+      "kind": "project",
+      "label": "AESC Navalmoral de la Mata",
+      "sub": "ES · construction",
+      "href": "/projects/envision-aesc-extremadura",
+      "status": "construction",
+      "x": 900,
+      "y": 12.0,
       "w": 236,
       "h": 38
     },
@@ -274,7 +286,7 @@
       "href": "/projects/catl-stellantis-zaragoza",
       "status": "announced",
       "x": 900,
-      "y": 12.0,
+      "y": 66.0,
       "w": 236,
       "h": 38
     },
@@ -286,7 +298,7 @@
       "href": "/projects/morrow-arendal",
       "status": "cancelled",
       "x": 900,
-      "y": 66.0,
+      "y": 120.0,
       "w": 236,
       "h": 38
     },
@@ -298,7 +310,7 @@
       "href": "/projects/acc-termoli",
       "status": "paused",
       "x": 900,
-      "y": 120.0,
+      "y": 174.0,
       "w": 236,
       "h": 38
     },
@@ -310,7 +322,7 @@
       "href": "/projects/agratas-bridgwater",
       "status": "construction",
       "x": 900,
-      "y": 174.0,
+      "y": 228.0,
       "w": 236,
       "h": 38
     },
@@ -322,7 +334,7 @@
       "href": "/projects/calb-sines",
       "status": "construction",
       "x": 900,
-      "y": 228.0,
+      "y": 282.0,
       "w": 236,
       "h": 38
     },
@@ -334,7 +346,7 @@
       "href": "/projects/catl-debrecen",
       "status": "construction",
       "x": 900,
-      "y": 282.0,
+      "y": 336.0,
       "w": 236,
       "h": 38
     },
@@ -346,7 +358,7 @@
       "href": "/projects/gib-surany",
       "status": "announced",
       "x": 900,
-      "y": 336.0,
+      "y": 390.0,
       "w": 236,
       "h": 38
     },
@@ -358,7 +370,7 @@
       "href": "/projects/italvolt-scarmagno",
       "status": "cancelled",
       "x": 900,
-      "y": 390.0,
+      "y": 444.0,
       "w": 236,
       "h": 38
     },
@@ -370,7 +382,7 @@
       "href": "/projects/lyten-heide",
       "status": "paused",
       "x": 900,
-      "y": 444.0,
+      "y": 498.0,
       "w": 236,
       "h": 38
     },
@@ -382,7 +394,7 @@
       "href": "/projects/powerco-salzgitter",
       "status": "operating",
       "x": 900,
-      "y": 498.0,
+      "y": 552.0,
       "w": 236,
       "h": 38
     },
@@ -394,7 +406,7 @@
       "href": "/projects/powerco-sagunto",
       "status": "construction",
       "x": 900,
-      "y": 552.0,
+      "y": 606.0,
       "w": 236,
       "h": 38
     },
@@ -406,7 +418,7 @@
       "href": "/projects/sk-on-ivancsa",
       "status": "construction",
       "x": 900,
-      "y": 606.0,
+      "y": 660.0,
       "w": 236,
       "h": 38
     },
@@ -418,7 +430,7 @@
       "href": "/projects/sk-on-komarom",
       "status": "operating",
       "x": 900,
-      "y": 660.0,
+      "y": 714.0,
       "w": 236,
       "h": 38
     },
@@ -430,7 +442,7 @@
       "href": "/projects/sunwoda-nyiregyhaza",
       "status": "construction",
       "x": 900,
-      "y": 714.0,
+      "y": 768.0,
       "w": 236,
       "h": 38
     },
@@ -442,7 +454,7 @@
       "href": "/projects/acc-billy-berclau",
       "status": "operating",
       "x": 900,
-      "y": 768.0,
+      "y": 822.0,
       "w": 236,
       "h": 38
     },
@@ -454,7 +466,7 @@
       "href": "/projects/envision-aesc-douai",
       "status": "operating",
       "x": 900,
-      "y": 822.0,
+      "y": 876.0,
       "w": 236,
       "h": 38
     },
@@ -466,7 +478,7 @@
       "href": "/projects/envision-aesc-sunderland",
       "status": "operating",
       "x": 900,
-      "y": 876.0,
+      "y": 930.0,
       "w": 236,
       "h": 38
     },
@@ -478,7 +490,7 @@
       "href": "/projects/catl-arnstadt",
       "status": "operating",
       "x": 900,
-      "y": 930.0,
+      "y": 984.0,
       "w": 236,
       "h": 38
     },
@@ -490,7 +502,7 @@
       "href": "/projects/lges-wroclaw",
       "status": "operating",
       "x": 900,
-      "y": 984.0,
+      "y": 1038.0,
       "w": 236,
       "h": 38
     },
@@ -502,7 +514,7 @@
       "href": "/projects/northvolt-ett-skelleftea",
       "status": "paused",
       "x": 900,
-      "y": 1038.0,
+      "y": 1092.0,
       "w": 236,
       "h": 38
     },
@@ -514,7 +526,7 @@
       "href": "/projects/samsung-sdi-god",
       "status": "operating",
       "x": 900,
-      "y": 1092.0,
+      "y": 1146.0,
       "w": 236,
       "h": 38
     },
@@ -526,7 +538,7 @@
       "href": "/projects/tesla-gruenheide-cells",
       "status": "construction",
       "x": 900,
-      "y": 1146.0,
+      "y": 1200.0,
       "w": 236,
       "h": 38
     },
@@ -538,7 +550,7 @@
       "href": "/projects/verkor-dunkirk",
       "status": "operating",
       "x": 900,
-      "y": 1200.0,
+      "y": 1254.0,
       "w": 236,
       "h": 38
     }
@@ -673,6 +685,18 @@
     {
       "from": "project:envision-aesc-douai",
       "to": "technology:nmc-nca-cells",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:envision-aesc-extremadura",
+      "to": "technology:cell-manufacturing",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:envision-aesc-extremadura",
+      "to": "technology:lfp-cells",
       "rel": "deploys",
       "weight": 1
     },

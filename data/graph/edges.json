@@ -29066,6 +29066,26 @@
  },
  {
   "rel": "deploys",
+  "from": "project:envision-aesc-extremadura",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-07-08",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-extremadura].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:envision-aesc-extremadura",
+  "to": "technology:lfp-cells",
+  "since": "2024-07-08",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-extremadura].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:envision-aesc-sunderland",
   "to": "technology:cell-manufacturing",
   "since": "2025-12-16",
@@ -32099,6 +32119,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=envision-aesc-douai].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-extremadura",
+  "to": "country:ES",
+  "since": "2024-07-08",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-extremadura].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-extremadura",
+  "to": "sector:batsol",
+  "since": "2024-07-08",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-extremadura].sector"
   },
   "basis": "sector"
  },
