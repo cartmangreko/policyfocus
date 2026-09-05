@@ -417,6 +417,37 @@ def _location(e: Errors, where: str, row: dict) -> None:
                     e.add(w, f"lat/lon is {(s.get('lat'), s.get('lon'))} and the grid "
                              f"reference E {grid['easting']} N {grid['northing']} converts "
                              f"to {got} — one of the two has been edited alone")
+        # A PLAN-PARCEL COORDINATE HAS TO SHOW ITS WORKING. The type says two
+        # documents did one job — a plan naming parcels, a cadastre holding their
+        # geometry — and neither is checkable without the list, the register and
+        # the day it answered. `matched` under `listed` is not a failure and is
+        # not hidden either: it is the number a reader needs to know how much of
+        # the plan area the point was computed from.
+        if src.get("type") == "plan_parcels":
+            block = s.get("parcels")
+            if not isinstance(block, dict):
+                e.add(w, "source type=plan_parcels and no parcels block — the plan's own "
+                         "list, the cadastre it was resolved against and the date it was "
+                         "read are what make this coordinate reproducible")
+            else:
+                _req(e, f"{w} parcels", block, "gemarkung", "matched", "listed",
+                     "service", "read_date")
+                _date(e, f"{w} parcels", block, "read_date")
+                _url(e, f"{w} parcels", block.get("service"), "service")
+                matched, listed = block.get("matched"), block.get("listed")
+                if isinstance(matched, int) and isinstance(listed, int):
+                    if matched > listed:
+                        e.add(f"{w} parcels", f"matched={matched} of listed={listed} — the "
+                                              f"cadastre answered for more parcels than the "
+                                              f"plan names")
+                    if matched == 0:
+                        e.add(f"{w} parcels", "matched=0 — no parcel resolved, so nothing "
+                                              "placed this point")
+                    if matched < listed and not block.get("not_found"):
+                        e.add(f"{w} parcels", f"matched={matched} of listed={listed} and "
+                                              f"`not_found` is empty — say which parcels the "
+                                              f"cadastre did not answer for")
+
         if src.get("type") == "company" and not s.get("address"):
             e.add(w, "source type=company and no address block — a coordinate derived "
                      "from the operator's own materials has to quote the address or "

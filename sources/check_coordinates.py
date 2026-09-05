@@ -40,6 +40,18 @@ only cover a site on a `role: "storage"` row, so that the list cannot quietly
 become the place bad plant coordinates go to be forgiven. An entry naming a site
 that no longer exists fails too -- a stale exception is a rule nobody is
 applying to anything.
+
+WHAT PUT EACH POINT THERE, COUNTED
+==================================
+Every point carries a source type from sector_map.LOCATION_SOURCE_TYPES, and
+this gate holds each one against that list and prints the breakdown. Two reasons
+it belongs here rather than only in the schema gate. A value outside the
+vocabulary is a coordinate whose provenance nobody can weigh, and this is the
+file that reads a coordinate AS A POSITION -- the one place where "where is it"
+and "who says so" are asked in the same pass. And the breakdown is worth seeing
+on every run: it is the shape of how this register knows where things are, and a
+type appearing or vanishing is a change in the evidence base rather than in the
+code.
 """
 
 from __future__ import annotations
@@ -48,6 +60,11 @@ import sys
 
 import natural_earth as ne
 import sector_map as sm
+# The one registry of sites whose coordinate stands on a named exception rather
+# than on a source type. Imported rather than repeated: two lists of exceptions
+# is one list that will eventually disagree with itself, and the gate that
+# writes them is the gate that prints them.
+from check_sector_schema import COORDINATE_SOURCE_EXCEPTIONS
 
 # Wide enough for a generalised coastline, narrow enough to catch a dropped
 # decimal. See the module docstring.
@@ -92,6 +109,7 @@ def main() -> int:
     noted: list[str] = []
     placed = 0
     used: set[str] = set()
+    by_type: dict[str, int] = {}
 
     for project in sm.load("project"):
         pid = project["id"]
@@ -106,6 +124,19 @@ def main() -> int:
             inside = ne.contains(point, rings)
             km = 0.0 if inside else ne.distance_km(point, rings)
             where = f"project {pid} location[{site['site']}]"
+
+            kind = (site.get("source") or {}).get("type")
+            if (pid, site["site"]) in COORDINATE_SOURCE_EXCEPTIONS:
+                # A named exception carries no type by rule — check_sector_schema
+                # fails it for declaring one — because what stands behind it is
+                # the sentence in that list rather than a kind of source.
+                pass
+            elif kind not in sm.LOCATION_SOURCE_TYPES:
+                errors.append(f"{where}: source type={kind!r} is not in "
+                              f"{list(sm.LOCATION_SOURCE_TYPES)} — a position whose "
+                              f"provenance has no name is one nobody can weigh")
+            else:
+                by_type[kind] = by_type.get(kind, 0) + 1
 
             exception = OFFSHORE.get(key)
             if exception:
@@ -152,6 +183,8 @@ def main() -> int:
 
     print(f"check_coordinates: OK — {placed} sited point(s) placed against Natural Earth, "
           f"tolerance {TOLERANCE_KM:.0f} km")
+    print("  what put them there: "
+          + ", ".join(f"{n} {kind}" for kind, n in sorted(by_type.items())))
     if noted:
         print(f"\noffshore exceptions ({len(noted)}) — recorded, never silent:")
         print("\n".join(noted))

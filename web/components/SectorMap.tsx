@@ -943,6 +943,16 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                     {s.date ? (
                       <span className="tscore-note">{`${SEPARATOR}${s.date}`}</span>
                     ) : null}
+                    {/* The day it was read, and the terms it is reused under.
+                        Both absent on almost every source; both load-bearing on
+                        the few that are queried rather than published — see the
+                        Source type in lib/transition.ts. */}
+                    {s.retrieved_date ? (
+                      <span className="tscore-note">{`${SEPARATOR}read ${s.retrieved_date}`}</span>
+                    ) : null}
+                    {s.licence ? (
+                      <span className="tscore-note">{`${SEPARATOR}${s.licence}`}</span>
+                    ) : null}
                     {s.archived ? <span className="tarchived">archived</span> : null}
                   </li>
                 ))}
