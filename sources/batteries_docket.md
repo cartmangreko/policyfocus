@@ -1366,23 +1366,111 @@ attempt before it gets a queue entry.
 
 ---
 
+## 21. The tie is broken by a rule, and the permit route is tried on both SVOLT sites
+
+### Demand edges become the tie-break, and the pin is not needed
+
+The batteries ranking had three measures tied at 1.0 and broke the tie on
+measure id, which put a raw-materials benchmark above the 2035 fleet target.
+**Neither an override nor the alphabet decides it now.** `creates_demand_for` —
+an edge the register has carried since the fleet standards landed — is a fourth
+component of the ranking, and the rule is general:
+
+> A measure carrying `creates_demand_for` into the sector ranks above a tied peer
+> without one.
+
+It is written into the method note at the top of `build_importance.py`, where the
+other three components are, and it is **a tie-break and not a lift**, on the same
+principle attention runs under: a demand edge does not put a measure into the
+sector view and does not move it past a measure with more money or more linkage.
+It orders equals.
+
+Above attention, deliberately. A demand edge is a reading of the measure's own
+text; attention is a count of other people talking about it.
+
+**What it does to the ranking**: `fleet:TGT-2035` first, `crma:CBEN-01` second,
+`iaa:LM-15a` third — and within the 0.5 group, the two remaining fleet rows rise
+above the CRMA and NZIA rows they were tied with. Cement and steel do not move at
+all: no measure reaching either carries a demand edge, so every row there gains
+the field `false` and nothing reorders. That is the test of a general rule — it
+had to be able to do nothing.
+
+The editorial pin in `overrides.json` was the fallback and is not used. A rule
+computed from an edge the register already carries decides the next tie the same
+way without anybody remembering to.
+
+### Überherrn: the permit route works, and stops one step short
+
+The plan exists and it is exactly what was hoped for. A **vorhabenbezogener
+Bebauungsplan "Industriegebiet Linsler Feld"**, adopted by the Überherrn
+municipal council on 7 March 2024 — the vote the company's own capture documents
+— legally binding from September 2024, and written for this works in the
+authority's own words: *"der die planungsrechtlichen Voraussetzungen für die
+Ansiedlung einer Batteriezellfabrik schaffen sollte"*.
+
+It gives three things the company source could not:
+
+- **The site at authority tier**, not merely at company tier.
+- **The scale**: a plan area of about 99 hectares, a works area of about 52, a
+  building height of 30 m and a stack of 34.
+- **The cancellation, stated by the authority**. The council resolved on 7 May
+  2026 to repeal the plan, and the notice says *"Das Vorhaben wird nicht mehr
+  umgesetzt"* — the project will not be implemented. The area falls back to
+  `Außenbereich`. This is far better than press for the status event when the row
+  lands.
+
+**And it does not give a coordinate.** Unlike Sunderland's permit there is no grid
+reference anywhere in it: the summary declaration lists no parcels for the works,
+the repeal notice locates the area verbally — *"östlich der Siedlungslage von
+Überherrn zwischen der B 269, der L 168 und der L 279"* — and the 1:5.000
+Lageplan is a cadastral map whose text layer carries parcel numbers and no
+coordinate grid. Placing it from three bounding roads would be **drawing the
+polygon ourselves**, which is the rule this dataset refused at Sunderland and
+will not now break for a better-documented site.
+
+The next thing to try is named on the candidate: the plan's own Planzeichnung, or
+the Geltungsbereich geometry from the state map service the repeal notice itself
+points at.
+
+### Lauchhammer: the permit route finds nothing, which is itself consistent
+
+No BImSchG procedure for SVOLT at Lauchhammer appears in the Landesamt für
+Umwelt's public notices or Brandenburg's UVP portal. That is what a works bought
+and never converted looks like in a permitting system: the company took over an
+existing plant and never applied to change what it does.
+
+The only address for the former Vestas rotor-blade works comes from commercial
+directories and a county business listing. **A directory is none of the three
+coordinate source types** — not a polygon somebody drew, not an address the
+operator published, not a parcel a permit names — and the row will not stand on
+one. SVOLT publishes only its Frankfurt office.
+
+### So both settle into EVE Power's state, with more on file than when they entered it
+
+Company source in hand, coordinate outstanding. What changed is that the reason is
+now specific and written down per site, with the next document named, rather than
+"no basemap feature".
+
+---
+
 ## Stopping here
 
 Twenty-three rows on file of 34 candidates, eleven outstanding. What is left, in
 order:
 
-1. **Coordinates.** The binding constraint, and it now binds on both SVOLT sites,
-   ACC Kaiserslautern, FREYR and Farasis — five candidates whose company source is
-   in hand or unreachable and whose works no source will place.
+1. **Coordinates**, still the binding constraint, and now with a named next
+   document on each of the two SVOLT sites: the Linsler Feld Planzeichnung or the
+   state map service's geometry at Überherrn, and at Lauchhammer an address SVOLT
+   itself published, a Brandenburg record naming the parcel, or the works
+   appearing in the basemap. ACC Kaiserslautern, FREYR and Farasis are the other
+   three.
 2. **The five pages still parked for a browser**, in `sources/manual/MANIFEST.json`:
    Britishvolt's committee report, AESC Extremadura's first-stone release, Farasis
    from the Internet Archive, and two Sunderland corroborations that nothing waits
    on.
-3. **The rank tie at the top of the batteries ranking** — an override for
-   `fleet:TGT-2035`, or a ruling that alphabetical tie-breaking stands. §19.
-4. **Prose slots**: `transition_notes`, `sector_orientation`, `sector_lead` and the
+3. **Prose slots**: `transition_notes`, `sector_orientation`, `sector_lead` and the
    ecosystem description carry cement and steel and nothing else, and the batteries
    blocks that exist are drafts awaiting review.
-5. **The exposure exclusion**, decided and not yet written into a page.
-6. **The draw hold**, which only George lifts, and only on a judgement that the
+4. **The exposure exclusion**, decided and not yet written into a page.
+5. **The draw hold**, which only George lifts, and only on a judgement that the
    retrieval gap has closed far enough for the overview to be honest.

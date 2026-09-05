@@ -347,7 +347,15 @@
       "status": "cancelled",
       "note": "COMPANY SOURCE IN HAND, COORDINATE OUTSTANDING. The Internet Archive's capture of 24 July 2024 carries SVOLT's EU-Locations page: 'In Überherrn on \"Linslerfeld\", a battery cell factory with 24 GWh of installed capacity in the final expansion stage is to be built.' Site, cell product and capacity in one sentence — the strongest company source of the two SVOLT candidates. COORDINATE OUTSTANDING: nothing in the basemap is named Linslerfeld, and the works was never built, so there is no works to name. What stands on the land now is a solar park. Filed at sources/manual/svolt-uberherrn--svolt-europe-uberherrn.html; the row will cite the capture with archived: true.",
       "company_source": "https://web.archive.org/web/20240724080837/https://www.svolt-eu.com/en/eu-locations/",
-      "capacity_gwh": 24
+      "capacity_gwh": 24,
+      "permit_route": {
+        "tried": "2026-09-05",
+        "record": "https://ueberherrn.de/wp-content/uploads/2024/02/Bekanntmachung-Offenlage-Aufhebung-Linsler-Feld.pdf",
+        "also": "https://ueberherrn.de/wp-content/uploads/2024/09/Zusammenfassende-Erklaerung-BP-Linsler-Feld.pdf",
+        "what_it_gives": "A vorhabenbezogener Bebauungsplan 'Industriegebiet Linsler Feld', adopted by the Überherrn municipal council on 7 March 2024 and legally binding from September 2024, written for this works: 'der die planungsrechtlichen Voraussetzungen für die Ansiedlung einer Batteriezellfabrik schaffen sollte'. It confirms the site at AUTHORITY TIER and it states the cancellation in the authority's own words — 'Das Vorhaben wird nicht mehr umgesetzt' — the council having resolved on 7 May 2026 to repeal the plan. Plan area about 99 ha; works area about 52 ha; building height 30 m and stack 34 m.",
+        "what_it_does_not_give": "A COORDINATE. Unlike the Sunderland permit there is no grid reference in any document read: the summary declaration lists no parcels for the works, the repeal notice locates the area verbally — 'östlich der Siedlungslage von Überherrn zwischen der B 269, der L 168 und der L 279' — and the 1:5.000 Lageplan is a cadastral map whose text layer carries parcel numbers and no coordinate grid. Placing it from the bounding roads would be drawing the polygon ourselves, which is the one thing this dataset does not do.",
+        "next": "The plan's own Planzeichnung, or the Geltungsbereich geometry from the state map service the repeal notice names (https://www.uvp-verbund.de/kartendienste). Either would be a position stated by the record rather than derived from its prose."
+      }
     },
     {
       "id": "svolt-lauchhammer",
@@ -356,7 +364,14 @@
       "country": "DE",
       "status": "cancelled",
       "note": "COMPANY SOURCE IN HAND, COORDINATE OUTSTANDING. The Internet Archive's capture of 22 May 2024 carries SVOLT's press release of 9 September 2022: the company 'will build another battery cell factory for the European market in Lauchhammer', on the former Vestas rotor-blade site it took over at the end of August 2022. Site and product are confirmed by the company and the capacity is absent — the release states no GWh. COORDINATE EXHAUSTED on 5 September 2026: a name sweep for Vestas and SVOLT across Brandenburg returns nothing, and a sweep of every industrial and construction feature at Lauchhammer returns 36 named works, none of them this one. The company publishes no site address — only its Frankfurt office. Unnamed polygons corroborate nothing here, on the rule Sunderland settled: a polygon nobody has named does not place a works. Filed at sources/manual/svolt-lauchhammer--svolt-europe-lauchhammer.html; the row will cite the capture with archived: true.",
-      "company_source": "https://web.archive.org/web/20240522145108/https://www.svolt-eu.com/en/press/svolt-builds-additional-battery-cell-factory-in-brandenburg-germany-for-european-market/"
+      "company_source": "https://web.archive.org/web/20240522145108/https://www.svolt-eu.com/en/press/svolt-builds-additional-battery-cell-factory-in-brandenburg-germany-for-european-market/",
+      "permit_route": {
+        "tried": "2026-09-05",
+        "record": null,
+        "what_it_gives": "Nothing this pipeline can read. No BImSchG procedure for SVOLT at Lauchhammer appears in the Landesamt für Umwelt's public notices or the Brandenburg UVP portal, which is consistent with a works that was bought and never converted.",
+        "what_it_does_not_give": "A COORDINATE. The only address for the former Vestas rotor-blade works comes from commercial directories and a county business listing, and a directory is none of the three coordinate source types: it is not a polygon somebody drew, not an address the operator published, and not a parcel a permit names. SVOLT publishes only its Frankfurt office.",
+        "next": "An address published by SVOLT itself, a Brandenburg permit or land-transfer record naming the parcel, or the works appearing in the basemap under either name."
+      }
     },
     {
       "id": "britishvolt-blyth",
