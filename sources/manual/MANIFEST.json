@@ -107,6 +107,30 @@
       "needed_for": "CORROBORATION ONLY — the row is landed and its coordinate is settled by the installation-details report already filed. These would confirm the position independently and may explain the Giga 1 / Plant 2 naming. Nothing waits on them.",
       "drop_as": "sources/manual/envision-aesc-sunderland--plant-3-planning-statement.pdf",
       "priority": "lowest"
+    },
+    {
+      "candidate": "freyr-mo-i-rana",
+      "url": "https://arealplaner.no/rana1833/arealplaner/search — the planning register Rana kommune's own 'Hvilken plan gjelder for eiendommen min?' page links to. Look for the detaljregulering covering the Central Plot (Sentraltomta) in Mo Industripark, and for the gnr/bnr it names.",
+      "why": "Both of the registers that would answer are JavaScript applications: they serve an empty shell to a fetcher and their content exists only in a browser. This is not a 403 and not a dead page — it is a wall this pipeline cannot climb, which is why it is parked here rather than retried. Miljødirektoratet's site is the same shape, so the environmental permit route is closed from here too.",
+      "needed_for": "a coordinate. The company source is in hand (FREYR's FY2023 10-K); the parcel a plan names would let Kartverket's matrikkel place the works, which is how Überherrn was placed.",
+      "drop_as": "sources/manual/freyr-mo-i-rana--rana-planregister-sentraltomta.pdf",
+      "priority": "normal"
+    },
+    {
+      "candidate": "svolt-lauchhammer",
+      "url": "https://lfu.brandenburg.de/lfu/de/aktuelles/oeffentliche-bekanntmachungen/immissionsschutzrecht-genehmigungsverfahren/ and the Lauchhammer municipal planning pages — look for any BImSchG procedure or B-plan naming the former Vestas rotor-blade works, and for the parcel or address it gives.",
+      "why": "Not a fetch wall but an absence: no SVOLT procedure appears in the Landesamt für Umwelt's notices or Brandenburg's UVP portal, which is what a works bought and never converted looks like in a permitting system. Parked rather than retried because the next attempt is a judgement about where else to look, not a request this pipeline can make.",
+      "needed_for": "a coordinate. The company source is in hand and names the site as the former Vestas works; nothing in the basemap carries either name, and the only address for it comes from commercial directories, which are none of the four coordinate source types.",
+      "drop_as": "sources/manual/svolt-lauchhammer--brandenburg-permit-or-plan.pdf",
+      "priority": "normal"
+    },
+    {
+      "candidate": "acc-kaiserslautern",
+      "url": "The Stadt Kaiserslautern planning pages — look for the Bebauungsplan or permit covering the ACC site and for the parcels it names.",
+      "why": "COORDINATE EXHAUSTED on the basemap: a bounding-box sweep of the Kaiserslautern industrial area returns the Opel works as numbered halls and nothing naming ACC or a cell works. The remaining route is the plan-parcel one, and it needs a document a person can open.",
+      "needed_for": "a coordinate. Company source in hand; nothing says which parcel the gigafactory was to take, and picking one would be a guess wearing a coordinate's clothes.",
+      "drop_as": "sources/manual/acc-kaiserslautern--kaiserslautern-plan-or-permit.pdf",
+      "priority": "normal"
     }
   ]
 }

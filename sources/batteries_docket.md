@@ -1618,22 +1618,136 @@ rule has always been asking.
 
 ---
 
+## 24. A fourth way to place a works, and four candidates parked for a browser
+
+### The route gets its own name
+
+`plan_parcels` joins `basemap`, `company` and `permit` in
+`sector_map.LOCATION_SOURCE_TYPES`: **a plan that names its parcels, resolved
+through the state cadastre that holds their geometry.** It is not folded into
+`permit`, and the reason is the question a reader has to ask of it. Of a permit
+you ask whether you trust the filing. Of this you ask two further things — *did
+the right parcels get selected*, and *did the cadastre answer for all of them* —
+and neither is visible unless the row shows its working.
+
+So the row does. `check_sector_schema` now requires a `parcels` block on this
+type: the Gemarkung, how many parcels the plan listed, how many the register
+answered for, which ones it did not, the service they were read from and the day
+it answered. `matched` under `listed` is not a failure and is not hidden either
+— it is the number that says how much of the plan area the point was computed
+from.
+
+**The enum moved into `check_coordinates` as well**, which is the gate that reads
+a coordinate AS A POSITION. A type outside the vocabulary now fails there, and
+every run prints what put the points where they are:
+
+    what put them there: 39 basemap, 2 company, 2 permit, 1 plan_parcels
+
+That line is the shape of how this register knows where things are, and a type
+appearing or vanishing from it is a change in the evidence base rather than in
+the code.
+
+The two caveats stay on the Überherrn row exactly as they were: `152/11` was not
+found, and four labels occur in both Fluren and are both counted.
+
+### The sources say when they were read, and under what terms
+
+The repeal Begründung and the LVGL cadastral service are both filed as sources
+with their URL, **the day they were read**, and — on the cadastre — the licence
+its publisher requires to be carried. Two new optional fields on a source,
+`retrieved_date` and `licence`, and both render:
+
+> INSPIRE-WFS SL Flurstücke Grundstücke ALKIS · Landesamt für Vermessung,
+> Geoinformation und Landentwicklung Saarland · 2026-09-05 · read 2026-09-05 ·
+> dl-de/by-2-0 — ©LVGL Saarland 2022, www.lvgl.saarland.de
+
+`date` is the document's own and answers *when was this true*; `retrieved_date`
+answers *when did we look*, which is the question a register that is QUERIED
+rather than published forces — a cadastre answers differently next year and says
+nothing about having changed. An attribution that lives only in the data is not
+an attribution, so it renders beside the citation on the project page and in the
+sector page's Sources block.
+
+### And the surface stopped saying the works was built
+
+The project page's lead read **"It is built for 24 GWh per year"** on a works
+that was never built. The figure is right and stays — it is what the company
+said it was building, and this sector's defining fact is how much of what it
+planned it did not build — but the verb was describing something standing in a
+field. A cancelled project's capacity is now in the past tense: *"It was to be
+built for 24 GWh per year."* Italvolt's 45 GWh was reading the same way and is
+fixed by the same line.
+
+Everything else on the surface already held: the page opens *"It will not be
+built"*, the site is named as the Geltungsbereich rather than as a works, the
+precision is `site`, the crop's key says the project is drawn here and on no
+other frame, and the overview counts it in the undrawn clause. **No sum anywhere
+adds capacity**, so a cancelled figure sits outside every active total by there
+being none — which is worth writing down, because the day a sector total is
+built is the day that stops being true by accident.
+
+### The pair goes into scope.md as a corollary
+
+> **An address places a row only where it is the address of the works.** A
+> registered office, a filing address or a headquarters is an address for
+> serving papers, and it never places a works, however plainly the operator
+> publishes it and however official the register it is filed in.
+
+Iváncsa is the worked example that places — SK On publishes the works' own
+address, and its parcel — and Giga Arctic the one that does not: T1 Energy files
+Terminalveien 22 in the Norwegian company register, Kartverket gives it a
+position on gnr 20 bnr 538, and it is an office 2.5 km from the plot. Same
+source type, same official quality, opposite outcomes. The failure it forecloses
+is a register that takes an operator's most findable address, geocodes it, and
+draws a factory on an office with every field on the row true.
+
+### The Norwegian wall, and four candidates parked
+
+No more constructed paths. Rana kommune's own page — *"Hvilken plan gjelder for
+eiendommen min?"* — links the planning register at `arealplaner.no/rana1833`,
+and **that register is a JavaScript application**: it answers a fetcher with a
+1.4 kB shell and its search exists only in a browser. Miljødirektoratet's site is
+the same shape, 230 kB of HTML carrying eight links. Neither is a 403 and neither
+is dead. It is a wall this pipeline cannot climb.
+
+So **FREYR is parked in `sources/manual/MANIFEST.json`**, printed by
+`check_manual_sources` on every build and not retried, with what to bring back
+written down: the detaljregulering covering the Central Plot in Mo Industripark
+and the gnr/bnr it names, which Kartverket's matrikkel would then place — the
+Überherrn route, in Norway.
+
+**Lauchhammer and ACC Kaiserslautern are parked beside it**, and Farasis already
+was. Their walls differ in kind — Lauchhammer's is an absence rather than a
+fetch failure, Kaiserslautern's is a municipal plan nobody has opened — and the
+answer is the same: a person with a browser, not another sweep.
+
+### The hold no longer rests on these four
+
+Recorded as a dated amendment on the hold rather than written over George's
+original reason, because a hold whose grounds moved is a different decision from
+a hold that was always about this. **Overview honesty is judged on what is on
+file**: a picture drawn on 25 of 34 candidates is honest if it says so and if
+what it leaves out is counted where a reader can see it, which the standfirst's
+undrawn clause does. What the hold still waits on is the judgement itself, and
+that is George's.
+
+---
+
 ## Stopping here
 
 Twenty-five rows on file of 34 candidates, nine outstanding. What is left, in
 order:
 
-1. **Coordinates**: SVOLT Lauchhammer, FREYR, ACC Kaiserslautern and Farasis.
-   Three routes have now placed a works — a permit's own grid reference
-   (Sunderland), a permit's own coordinates (Navalmoral), and a plan's parcel list
-   through a state cadastre (Überherrn) — and the fourth, an operator's published
-   address, works only when the address is the works' and not the office's.
-2. **The four pages still parked for a browser**, in `sources/manual/MANIFEST.json`:
-   Britishvolt's committee report, Farasis from the Internet Archive, and two
+1. **The four parked candidates** — FREYR, SVOLT Lauchhammer, ACC Kaiserslautern
+   and Farasis — which are George's browser and not this pipeline's next sweep.
+   They are printed by `check_manual_sources` on every build with what to bring
+   back written on each.
+2. **The rest of the manual queue**: Britishvolt's committee report and two
    Sunderland corroborations that nothing waits on.
 3. **Prose slots**: `transition_notes`, `sector_orientation`, `sector_lead` and the
    ecosystem description carry cement and steel and nothing else, and the batteries
    blocks that exist are drafts awaiting review.
 4. **The exposure exclusion**, decided and not yet written into a page.
-5. **The draw hold**, which only George lifts, and only on a judgement that the
-   retrieval gap has closed far enough for the overview to be honest.
+5. **The draw hold**, which only George lifts. It no longer rests on the four
+   parked candidates; what it waits on is the judgement that the picture is
+   honest on what is on file.

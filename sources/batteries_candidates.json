@@ -104,7 +104,14 @@
       "country": "DE",
       "status": "paused",
       "company_source": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
-      "note": "Company source in hand. COORDINATE EXHAUSTED: a bounding-box sweep of the Kaiserslautern industrial area returns the Opel works as numbered halls and nothing naming ACC or a cell works. Nothing says which parcel the gigafactory was to take, and picking one would be a guess wearing a coordinate's clothes."
+      "note": "Company source in hand. COORDINATE EXHAUSTED: a bounding-box sweep of the Kaiserslautern industrial area returns the Opel works as numbered halls and nothing naming ACC or a cell works. Nothing says which parcel the gigafactory was to take, and picking one would be a guess wearing a coordinate's clothes.",
+      "permit_route": {
+        "tried": "2026-09-05",
+        "record": null,
+        "what_it_gives": "Nothing yet. The basemap sweep is exhausted and the plan-parcel route has not been opened, because the documents that would carry it are municipal planning pages a person has to open.",
+        "what_it_does_not_give": "A coordinate. Nothing read says which parcel the works was to take.",
+        "next": "PARKED, in sources/manual/MANIFEST.json under `wanted`: the Kaiserslautern Bebauungsplan or permit for the ACC site, and the parcels it names."
+      }
     },
     {
       "id": "powerco-sagunto",
@@ -322,7 +329,7 @@
         "record": null,
         "what_it_gives": "An operator address and a project company. Brønnøysundregistrene, the Norwegian company register, carries T1 ENERGY GIGA ARCTIC AS (926089862) and T1 ENERGY NORWAY AS (929340019, 'Produksjon av batterier og akkumulatorer'), both with the filed business address Terminalveien 22, 8624 Mo i Rana, and Kartverket's address register gives that address a representasjonspunkt at 66.30513, 14.11593 on gnr 20 bnr 538.",
         "what_it_does_not_give": "THE WORKS. Terminalveien 22 is at Langneset, the harbour end of Mo Industripark, among warehouses and an office block, about 2.5 km from the Central Plot where the reporting places Giga Arctic. A registered business address is an office address, and an office is not the works — the rule that refused SK On's office node at Iváncsa refuses this too, and by a wider margin. No Norwegian environmental permit or planning document naming the works' gnr/bnr was reachable: miljovedtak.no and norskeutslipp.no answer 404 to this pipeline's paths and no Rana kommune detaljregulering for the Central Plot surfaced.",
-        "next": "Rana kommune's own planning register or byggesak for the Central Plot — a plan or permit naming the gnr/bnr would let Kartverket's matrikkel give the geometry, which is exactly how Überherrn was placed."
+        "next": "PARKED. Rana kommune's own 'Hvilken plan gjelder for eiendommen min?' page links its planning register at arealplaner.no/rana1833, and that register is a JavaScript application: it serves a 1.4 kB shell to a fetcher and its search exists only in a browser. Miljødirektoratet's site is the same shape. Neither is a 403 and neither is dead — they are a wall this pipeline cannot climb, so the entry is in sources/manual/MANIFEST.json under `wanted` and George looks at the plan register. What to bring back: the detaljregulering covering the Central Plot in Mo Industripark and the gnr/bnr it names, which Kartverket's matrikkel would then place."
       }
     },
     {
@@ -377,7 +384,7 @@
         "record": null,
         "what_it_gives": "Nothing this pipeline can read. No BImSchG procedure for SVOLT at Lauchhammer appears in the Landesamt für Umwelt's public notices or the Brandenburg UVP portal, which is consistent with a works that was bought and never converted.",
         "what_it_does_not_give": "A COORDINATE. The only address for the former Vestas rotor-blade works comes from commercial directories and a county business listing, and a directory is none of the three coordinate source types: it is not a polygon somebody drew, not an address the operator published, and not a parcel a permit names. SVOLT publishes only its Frankfurt office.",
-        "next": "An address published by SVOLT itself, a Brandenburg permit or land-transfer record naming the parcel, or the works appearing in the basemap under either name."
+        "next": "PARKED, in sources/manual/MANIFEST.json under `wanted`. An address published by SVOLT itself, a Brandenburg permit or land-transfer record naming the parcel, or the works appearing in the basemap under either name."
       }
     },
     {

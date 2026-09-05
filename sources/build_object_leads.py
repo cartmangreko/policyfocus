@@ -352,9 +352,17 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
     cap = p.get("capacity") or {}
     if cap.get("value") and cap.get("unit"):
         param = params.get(cap.get("parameter") or "")
+        # A CANCELLED PROJECT'S CAPACITY IS IN THE PAST TENSE, and this is not a
+        # style note. "It is built for 24 GWh per year" on a works that was never
+        # built is a sentence a reader takes for a description of something
+        # standing in a field. The figure is real and stays -- it is what the
+        # company said it was building, and the row is on file precisely because
+        # what this sector planned and did not build is the sector's defining
+        # fact -- but the verb has to say which of the two it is.
+        verb = "was to be built for" if last["status"] == "cancelled" else "is built for"
         facts.append(_fact(
             "capacity",
-            f"It is built for {cap['value']:,} {cap['unit']}.",
+            f"It {verb} {cap['value']:,} {cap['unit']}.",
             (param or {}).get("date_of_value") or as_of,
             [f"{cap['value']:,}"], sourced=(cap["unit"],),
         ))

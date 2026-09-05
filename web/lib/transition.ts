@@ -59,6 +59,17 @@ export interface Source {
   verbatim?: string;
   snapshot?: string;
   archived?: boolean;
+  /** The day a person or this pipeline actually read it. `date` is the
+   *  document's own date and answers "when was this true"; this answers "when
+   *  did we look", which is the question a reader asks of a register that is
+   *  queried rather than published — a cadastre answers differently next year
+   *  and says nothing about having changed. */
+  retrieved_date?: string;
+  /** The terms the material is reused under, where the publisher requires them
+   *  to be carried. Rendered beside the citation rather than filed in a
+   *  licences page nobody opens: an attribution that only exists in the data is
+   *  not an attribution. */
+  licence?: string;
   /** What kind of thing is at the other end. Absent means a document, which is
    *  what almost everything is. `api` and `dataset` are cited from the query
    *  the call was made with rather than by a title they do not have — see
@@ -572,6 +583,11 @@ export interface DrawHold {
   since: string;
   reason: string;
   released_by: string;
+  /** A dated change to what the hold rests on, kept beside the original reason
+   *  rather than rewritten into it: a hold whose grounds moved is a different
+   *  decision from a hold that was always about this, and only one of them can
+   *  be read back later. */
+  amended?: { date: string; by: string; note: string };
 }
 
 /** A DATED NOTE ON A FIGURE THIS SITE HAS ALREADY PRINTED.

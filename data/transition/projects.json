@@ -2731,28 +2731,28 @@
           "retrieved_date": "2026-09-05",
           "source": {
             "url": "https://ueberherrn.de/wp-content/uploads/2026/06/Begruendung.pdf",
-            "type": "permit",
+            "type": "plan_parcels",
             "publisher": "Gemeinde Überherrn (FIRU mbH)",
             "verbatim": "Betroffen sind folgende Flurstücke: Vollständig im Geltungsbereich: 101/23 152/11 100/14 100/13 101/22 100/16 100/15 99/3 122/7 122/4 122/3 122/2 121/5 101/13 101/14 101/15 101/16 101/17 101/18 101/19 80/10 80/8 80/6 72/3 100/9 100/8 100/7 100/6 100/5 100/10 100/11 119/8 137/37 137/36 137/35 119/6 121/1 121/2 121/3 121/4 382/121 385/125 386/125 137/38 133/1 412/127 399/127 127/3 127/1 127/2 410/132 397/132 352/131 351/130 357/129 356/129 355/129 354/129",
-            "note": "THE PLAN NAMES THE PARCELS AND THE STATE CADASTRE HOLDS THEIR GEOMETRY, and the point is the area-weighted centroid of the two put together — the same construction as Sunderland's, where the permit listed emission points and the centroid of those was the works. 57 of the 58 parcels the Begründung lists as wholly inside the Geltungsbereich were found in Gemarkung Überherrn, Flur 1 and Flur 3, in the Saarland INSPIRE cadastral service (LVGL, dl-de/by-2-0); 152/11 was not, and four labels occur in both Fluren and are both counted, which moves the point by tens of metres. They total 77.1 ha against the plan's stated 99, the balance being the road and watercourse parcels the same page lists as only partly inside. THE PLAN AREA IS NOT THE WORKS: the factory footprint inside it was about 52 ha, and nothing was ever built, so the precision is `site` and the point is the centre of the area the plan covered rather than of a building.",
-            "licence": "dl-de/by-2-0 (cadastral geometry: ©LVGL Saarland)",
-            "parcels": {
-              "gemarkung": "Überherrn",
-              "fluren": [
-                "1",
-                "3"
-              ],
-              "matched": 57,
-              "listed": 58,
-              "not_found": [
-                "152/11"
-              ],
-              "area_ha": 77.1,
-              "service": "https://geoportal.saarland.de/gdi-sl/inspirewfs_Flurstuecke_Grundstuecke_ALKIS?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0",
-              "read_date": "2026-09-05"
-            }
+            "note": "THE PLAN NAMES THE PARCELS AND THE STATE CADASTRE HOLDS THEIR GEOMETRY, which is what the `plan_parcels` source type is: two documents doing one job, neither of them able to place anything alone. The point is the area-weighted centroid of the two put together — the same construction as Sunderland's, where the permit listed emission points and the centroid of those was the works. 57 of the 58 parcels the Begründung lists as wholly inside the Geltungsbereich were found in Gemarkung Überherrn, Flur 1 and Flur 3, in the Saarland INSPIRE cadastral service (LVGL, dl-de/by-2-0); 152/11 was not, and four labels occur in both Fluren and are both counted, which moves the point by tens of metres. They total 77.1 ha against the plan's stated 99, the balance being the road and watercourse parcels the same page lists as only partly inside. THE PLAN AREA IS NOT THE WORKS: the factory footprint inside it was about 52 ha, and nothing was ever built, so the precision is `site` and the point is the centre of the area the plan covered rather than of a building.",
+            "licence": "dl-de/by-2-0 (cadastral geometry: ©LVGL Saarland)"
           },
-          "confidence": "secondary"
+          "confidence": "secondary",
+          "parcels": {
+            "gemarkung": "Überherrn",
+            "fluren": [
+              "1",
+              "3"
+            ],
+            "matched": 57,
+            "listed": 58,
+            "not_found": [
+              "152/11"
+            ],
+            "area_ha": 77.1,
+            "service": "https://geoportal.saarland.de/gdi-sl/inspirewfs_Flurstuecke_Grundstuecke_ALKIS?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0",
+            "read_date": "2026-09-05"
+          }
         }
       ],
       "sector": "batsol",
@@ -2795,28 +2795,33 @@
           "title": "Aufhebung des Vorhabenbezogenen Bebauungsplans „Industriegebiet Linsler Feld“ — Bekanntmachung der öffentlichen Auslegung",
           "publisher": "Gemeinde Überherrn",
           "date": "2026-06-29",
-          "note": "The authority's statement that the project will not be implemented, and the plan area: about 99 ha east of the Überherrn settlement between the B 269, the L 168 and the L 279."
+          "note": "The authority's statement that the project will not be implemented, and the plan area: about 99 ha east of the Überherrn settlement between the B 269, the L 168 and the L 279.",
+          "retrieved_date": "2026-09-05"
         },
         {
           "url": "https://ueberherrn.de/wp-content/uploads/2026/06/Begruendung.pdf",
           "title": "Aufhebung des Vorhabenbezogenen Bebauungsplans „Industriegebiet Linsler Feld“ — Begründung",
           "publisher": "Gemeinde Überherrn (FIRU mbH)",
           "date": "2026-05-08",
-          "note": "The parcel list the coordinate is built from, and the record of how the project ended: the Durchführungsvertrag with gwSaar, the heritable building right SVOLT was to receive, and gwSaar's declaration that it would not hold to the project."
+          "note": "The parcel list the coordinate is built from, and the record of how the project ended: the Durchführungsvertrag with gwSaar, the heritable building right SVOLT was to receive, and gwSaar's declaration that it would not hold to the project.",
+          "retrieved_date": "2026-09-05"
         },
         {
           "url": "https://ueberherrn.de/wp-content/uploads/2026/06/Satzungsentwurf.pdf",
           "title": "Satzung über die Aufhebung des Vorhabenbezogenen Bebauungsplans „Industriegebiet Linsler Feld“ — Entwurf",
           "publisher": "Gemeinde Überherrn",
           "date": "2026-05-08",
-          "note": "Records that the plan came into force on 24 September 2024 and was re-published on 13 November 2025 after a formal defect, and that the repeal removes it in full."
+          "note": "Records that the plan came into force on 24 September 2024 and was re-published on 13 November 2025 after a formal defect, and that the repeal removes it in full.",
+          "retrieved_date": "2026-09-05"
         },
         {
           "url": "https://geoportal.saarland.de/gdi-sl/inspirewfs_Flurstuecke_Grundstuecke_ALKIS?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0",
           "title": "INSPIRE-WFS SL Flurstücke Grundstücke ALKIS",
           "publisher": "Landesamt für Vermessung, Geoinformation und Landentwicklung Saarland",
           "date": "2026-09-05",
-          "note": "Where the parcels' geometry was read. Cited as a source and not as the coordinate's type: what admits this position is the plan naming its parcels; the cadastre only says where those parcels are. Cited as the service's capabilities document, because the endpoint itself answers only to a query."
+          "note": "Where the parcels' geometry was read. Cited as a source and not as the coordinate's type: what admits this position is the plan naming its parcels; the cadastre only says where those parcels are. Cited as the service's capabilities document, because the endpoint itself answers only to a query.",
+          "retrieved_date": "2026-09-05",
+          "licence": "dl-de/by-2-0 — ©LVGL Saarland 2022, www.lvgl.saarland.de"
         }
       ]
     }

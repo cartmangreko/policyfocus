@@ -531,3 +531,38 @@ this ruling does not reach and must not be read as foreclosing. It is a live
 option: the register already holds facts about places it cannot draw. The two
 readings agree on the case in front of us either way, because under both,
 Antwerp@C has no position and GO4ZERO's chain is unresolved.
+
+#### Corollary: an address places a row only where it is the address of the works
+
+An operator's published address is one of the source types that may put a works
+on the paper — the company knows where its works is. What that type does not
+carry is any claim about which of the company's addresses it is. **A registered
+office, a filing address, a correspondence address or a headquarters is an
+address for serving papers on a company, and it never places a works**, however
+plainly the operator publishes it and however official the register it is filed
+in. The coordinate rule asks what the address is an address OF, and only the
+source can answer that.
+
+The pair that settled it, both read on 5 September 2026:
+
+**Iváncsa is placed.** SK On publishes `H-2454 Iváncsa, SK út 1.` on its
+Hungarian site as the location of the works, and `HRSZ 99/48 Iváncsa 2454` — the
+land-registry parcel — as the same thing on its global places-of-business page.
+The address is the works', the operator says so, and the point stands on it.
+
+**Giga Arctic is refused.** The Norwegian company register carries T1 ENERGY
+GIGA ARCTIC AS and T1 ENERGY NORWAY AS at `Terminalveien 22, 8624 Mo i Rana`,
+and Kartverket's address register gives that address a position on gnr 20 bnr
+538. It is a *forretningsadresse* — the address the company files — and it sits
+at Langneset, the harbour end of Mo Industripark, among warehouses and an office
+block, about 2.5 km from the Central Plot where every account puts the
+gigafactory. Same source type as Iváncsa, same official quality, and it places
+nothing.
+
+The two look identical in a data model that records only "the operator published
+an address". They are told apart by reading what was published, which is why the
+row carries the address text itself and why the note has to say what the position
+walks back to. **The failure this forecloses** is the easy one: a register that
+takes an operator's most findable address, geocodes it, and draws a factory on an
+office — with every field on the row true and the mark in the wrong place.
+

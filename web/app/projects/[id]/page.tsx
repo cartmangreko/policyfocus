@@ -259,9 +259,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 <a href={s.url} target="_blank" rel="noreferrer">
                   {citation(s)}
                 </a>
+                {/* The document's own date, then the day we read it, then the
+                    terms it is reused under. The second and third are absent on
+                    almost every source and load-bearing on the few that are
+                    queried rather than published — a cadastre answers
+                    differently next year without saying it has changed, and an
+                    attribution that lives only in the data is not one. */}
                 <span className="note">
                   {s.publisher}
                   {s.date ? ` · ${s.date}` : ""}
+                  {s.retrieved_date ? ` · read ${s.retrieved_date}` : ""}
+                  {s.licence ? ` · ${s.licence}` : ""}
                 </span>
               </li>
             ))}

@@ -239,7 +239,7 @@ PROJECT_ROLES = (
 # already drawn it is a rule about OpenStreetMap's coverage rather than about
 # evidence.
 #
-# So three kinds of source may put a works on the paper:
+# So four kinds of source may put a works on the paper:
 #
 #   basemap     an OpenStreetMap feature, with its tags quoted, so a reader can
 #               see that the polygon is the works and not the industrial estate
@@ -248,12 +248,29 @@ PROJECT_ROLES = (
 #   company     the operator's own materials naming a street address or a land
 #               parcel. The company knows where its works is; what this costs is
 #               that the coordinate is then derived from an address rather than
-#               read off a shape, so the address itself is quoted alongside.
-#   permit      a state permitting, planning or zoning filing. Often the most
-#               precise of the three -- a zoning decision names parcels -- and it
-#               is a public document that outlives a press release.
+#               read off a shape, so the address itself is quoted alongside. AND
+#               THE ADDRESS HAS TO BE THE WORKS'. A registered office or a filing
+#               address is an address for serving papers; see the corollary in
+#               sources/scope.md and the pair it is written from.
+#   permit      a state permitting, planning or zoning filing that states a
+#               position itself: a grid reference, a coordinate pair, an address.
+#               Often the most precise of these -- and it is a public document
+#               that outlives a press release.
+#   plan_parcels
+#               a plan that names its PARCELS but no position, resolved through
+#               the state cadastre that holds their geometry. Two documents doing
+#               one job: the plan says which parcels, and neither of them alone
+#               places anything -- the cadastre knows where parcel 121/4 is and
+#               nothing about what was to be built on it, and the plan knows what
+#               was to be built and gives no coordinate. It is recorded as its own
+#               type rather than folded into `permit` because the reader has a
+#               different question to ask of it: not "do you trust this filing"
+#               but "did the right parcels get selected, and did the cadastre
+#               answer for all of them". A row on this type therefore carries the
+#               parcel list, the register it was resolved against, the date it was
+#               read, and how many of the named parcels were found.
 #
-# WHAT IS STILL REFUSED, and this is the whole point of naming the three. A town
+# WHAT IS STILL REFUSED, and this is the whole point of naming them. A town
 # name run through a geocoder is not a source about a works, it is a source about
 # a town, and `precision: "town"` already fails by name. A position read off a
 # picture in a news story is not citable: nobody can check it and the next reader
@@ -277,6 +294,7 @@ LOCATION_SOURCE_TYPES = (
     "basemap",
     "company",
     "permit",
+    "plan_parcels",
 )
 
 
