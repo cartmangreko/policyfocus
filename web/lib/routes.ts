@@ -41,8 +41,15 @@
 
 /** The canonical origin. The sitemap's URLs and the Sitemap: line in robots.txt
  *  both have to be absolute, and neither is rendered from a request, so there
- *  is nothing to infer it from. */
-export const SITE_URL = "https://www.eufabric.eu";
+ *  is nothing to infer it from.
+ *
+ *  APEX, NOT www. A sitemap is a list of the URLs this site asks to have
+ *  indexed, and asking for a URL that answers with a redirect is asking for the
+ *  wrong one: the crawler follows it, indexes what it lands on, and the address
+ *  we published is not the address in the index. There is one canonical host and
+ *  this is it. The redirect at the edge has to point the same way — apex serving
+ *  and www redirecting to it — or every URL in the sitemap is a hop. */
+export const SITE_URL = "https://eufabric.eu";
 
 /** Route trees demoted whole. Prefixes rather than paths: every page under one
  *  of these is demoted for the reason its index page is, so the prefix is the
