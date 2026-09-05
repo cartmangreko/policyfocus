@@ -1545,15 +1545,89 @@ because they are not the same claim and nothing read here settles it.
 
 ---
 
+## 23. The Geltungsbereich is found in the cadastre, and FREYR's address turns out to be an office
+
+Twenty-five rows on file of 34 candidates — **74%** — and nine outstanding.
+
+### The Saarland map service does not carry the plan, and the plan carries the parcels
+
+The state's INSPIRE service for Überherrn was the obvious place to look and the
+answer there is no: 76 plans in
+`inspirewfs_Geplante_Bodennutzung_XPlan_Ueberherrn`, across both feature types,
+and **"Industriegebiet Linsler Feld" is not among them**. A plan adopted in 2024
+and repealed in 2026 never reached the geodata.
+
+What worked instead was the repeal's own **Begründung**, which lists the parcels:
+*"Betroffen sind folgende Flurstücke: Vollständig im Geltungsbereich: 101/23
+152/11 100/14 …"* — 58 of them wholly inside, 24 more partly, in Gemarkung
+Überherrn, Flur 1 and Flur 3.
+
+So the position is built the way Sunderland's was, from what the filing itself
+names: **57 of the 58 parcels were found in the Saarland cadastral service**
+(LVGL, dl-de/by-2-0), and the point is their area-weighted centroid —
+**49.2442 N, 6.7259 E**. They total 77.1 ha against the plan's stated 99, the
+balance being the road and watercourse parcels the same page lists as only partly
+inside. `152/11` was not found; four labels exist in both Fluren and both are
+counted, which moves the point by tens of metres.
+
+**The precision is `site` and not `plant`, deliberately.** The plan area is 99 ha
+and the factory footprint inside it was about 52, and **nothing was ever built**.
+The point is the centre of the area the plan covered, which is an honest thing to
+draw and a dishonest thing to call a works.
+
+### What the row now says about how it ended
+
+The status is `cancelled` **on the authority's own record rather than on press**:
+the council resolved on 7 May 2026 to repeal, and the notice says *"Das Vorhaben
+wird nicht mehr umgesetzt"*. The Begründung supplies the mechanism — gwSaar, the
+Vorhabenträger that had bought the land to grant SVOLT a heritable building
+right, declared it would not hold to the project, which triggers the
+municipality's duty to repeal under § 12 Abs. 6 BauGB. SVOLT's European
+withdrawal was reported in trade press earlier and no company statement of it has
+been read here, so the date the row carries is the authority's.
+
+Capacity 24 GWh, company tier, for a final expansion stage that no phase of ever
+existed.
+
+### FREYR: a new route, a real finding, and the same refusal
+
+The retry did not repeat the sweep. It went at the operator's address through the
+Norwegian company register, which is a route this dataset had not tried on any
+candidate, and it found something: **T1 ENERGY GIGA ARCTIC AS** (926089862) and
+**T1 ENERGY NORWAY AS** (929340019, "Produksjon av batterier og akkumulatorer"),
+both filing the business address **Terminalveien 22, 8624 Mo i Rana**, which
+Kartverket's address register places at 66.30513 N, 14.11593 E on gnr 20 bnr 538.
+
+**And it is an office.** Terminalveien 22 is at Langneset, the harbour end of Mo
+Industripark, among warehouses and an office block, about 2.5 km from the Central
+Plot where every account puts Giga Arctic. A registered business address is an
+address for serving papers, and the rule that refused SK On's office node at
+Iváncsa refuses this by a much wider margin.
+
+The Norwegian permit route is not exhausted, only unreachable in this pass:
+`miljovedtak.no` and `norskeutslipp.no` answer 404 to the paths tried, and no Rana
+kommune detaljregulering for the Central Plot surfaced. The next document is named
+on the candidate — a plan or a building permit stating the gnr/bnr, which
+Kartverket's matrikkel would then place, exactly as Überherrn was placed.
+
+**Two candidates, two addresses, opposite outcomes.** SK On publishes the address
+of its works and it placed the row; T1 Energy files the address of its office and
+it cannot. The difference is not the source type — both are the operator's own —
+but what the address is an address *of*, and that is a question the coordinate
+rule has always been asking.
+
+---
+
 ## Stopping here
 
-Twenty-four rows on file of 34 candidates, ten outstanding. What is left, in
+Twenty-five rows on file of 34 candidates, nine outstanding. What is left, in
 order:
 
-1. **Coordinates**, still the binding constraint: both SVOLT sites, ACC
-   Kaiserslautern, FREYR and Farasis. The Extremadura permit is the pattern to
-   try first on each — a state filing that states its own position — and it is
-   now a route this pipeline can read in two projections.
+1. **Coordinates**: SVOLT Lauchhammer, FREYR, ACC Kaiserslautern and Farasis.
+   Three routes have now placed a works — a permit's own grid reference
+   (Sunderland), a permit's own coordinates (Navalmoral), and a plan's parcel list
+   through a state cadastre (Überherrn) — and the fourth, an operator's published
+   address, works only when the address is the works' and not the office's.
 2. **The four pages still parked for a browser**, in `sources/manual/MANIFEST.json`:
    Britishvolt's committee report, Farasis from the Internet Archive, and two
    Sunderland corroborations that nothing waits on.
