@@ -26,6 +26,7 @@ import {
   FUNDING_ANNOUNCED,
   FUNDING_COMMITTED,
   getBottlenecks,
+  getCorrections,
   getFunding,
   getImportance,
   getLead,
@@ -261,6 +262,10 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   // The date the committed sum is complete THROUGH, not the date of the build:
   // the build ran today and that says nothing about when the money last moved.
   const committedAsOf = committedFunding.reduce((a, f) => (f.date > a ? f.date : a), "");
+  // Dated notes on this figure, where it is printed. A figure the site has
+  // already stated and later had to correct says so beside itself: a reader who
+  // saw the old number is reading this page, not the commit history.
+  const moneyCorrections = getCorrections(slug, "opportunity.money_in");
   const opportunity = getOpportunity(slug);
   const opp = getOpportunityProse();
   const support = supportMeasures(slug);
@@ -620,6 +625,15 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                     : ""}
                   <span className="tscore-note">{`${SEPARATOR}as of ${committedAsOf}`}</span>
                 </p>
+                {moneyCorrections.map((c) => (
+                  <p key={c.id} className="tcorrection">
+                    <span className="tcorrection-head">
+                      Corrected {c.date}
+                      {SEPARATOR}was {c.was}
+                    </span>{" "}
+                    {c.what} {c.why}
+                  </p>
+                ))}
                 <ul className="tfundings">
                   {committedFunding.map((f) => (
                     <FundingRow key={f.id} f={f} params={params} />

@@ -315,7 +315,7 @@
       "site": "Mo i Rana",
       "country": "NO",
       "status": "paused",
-      "note": "UNPARKED AND TAKEN DIRECTLY, once the User-Agent declared a contact and the SEC answered. FREYR's FY2023 10-K, filed 29 February 2024, states it: 'In June 2022 … FREYR formally sanctioned the construction of Giga Arctic, a 120,000 square meter gigafactory in Mo i Rana, Norway. In 2023, we substantially completed groundworks and certain foundation structures, erected the initial building and secured and weatherized it, and then suspended work on the planned gigafactory.' Status is paused; the Customer Qualification Plant on the same site is a 13,000 m² qualification line and is refused separately by the pilot clause. NO CAPACITY IN THE FILING — the 10-K states no GWh figure at all — so capacity is outstanding and the row would be admitted on 'a 120,000 square meter gigafactory' being a company description of commercial-scale intent. COORDINATE OUTSTANDING: Nominatim has only Mo Industripark, which is the estate and is refused on the same rule as IAMP and Parc Sagunt II; Overpass was unavailable for a bounding-box sweep and that is the next thing to try.",
+      "note": "UNPARKED AND TAKEN DIRECTLY, once the User-Agent declared a contact and the SEC answered. FREYR's FY2023 10-K, filed 29 February 2024, states it: 'In June 2022 … FREYR formally sanctioned the construction of Giga Arctic, a 120,000 square meter gigafactory in Mo i Rana, Norway. In 2023, we substantially completed groundworks and certain foundation structures, erected the initial building and secured and weatherized it, and then suspended work on the planned gigafactory.' Status is paused; the Customer Qualification Plant on the same site is a 13,000 m² qualification line and is refused separately by the pilot clause. NO CAPACITY IN THE FILING — the 10-K states no GWh figure at all — so capacity is outstanding and the row would be admitted on 'a 120,000 square meter gigafactory' being a company description of commercial-scale intent. COORDINATE OUTSTANDING: Nominatim has only Mo Industripark, which is the estate and is refused on the same rule as IAMP and Parc Sagunt II; Overpass was unavailable for a bounding-box sweep when the row was written. OVERPASS RAN ON 5 SEPTEMBER 2026 AND THE SWEEP IS EXHAUSTED, NOT BLOCKED. Three queries: a name search for Freyr, FREYR, Giga Arctic and T1 Energy over the town and the estate returned nothing; a bounding-box sweep of Mo Industripark and its surroundings returned 309 industrial and construction features of which 5 carry a name, and those five are A/S Norsk Jernverk, three power stations and Mo Industripark itself; an operator and brand search over a box from 65.9 to 66.7 N and 13.0 to 15.2 E returned nothing. The estate polygon is refused on the same rule as IAMP and Parc Sagunt II. T1 Energy's own site names the location as 'Mo i Rana, Norway' and publishes no address, so the operator-address route is closed too. The coordinate is outstanding because no admissible source states a position, which is a different state from nobody having looked.",
       "company_source": "https://www.sec.gov/Archives/edgar/data/1992243/000199224324000066/frey-20231231.htm"
     },
     {
@@ -345,8 +345,9 @@
       "site": "Überherrn, Saarland",
       "country": "DE",
       "status": "cancelled",
-      "note": "No basemap feature. SVOLT withdrew from Europe in 2023; company materials only in the Internet Archive.",
-      "company_source_blocked": "https://web.archive.org/web/2023/https://svolt-eu.com/"
+      "note": "COMPANY SOURCE IN HAND, COORDINATE OUTSTANDING. The Internet Archive's capture of 24 July 2024 carries SVOLT's EU-Locations page: 'In Überherrn on \"Linslerfeld\", a battery cell factory with 24 GWh of installed capacity in the final expansion stage is to be built.' Site, cell product and capacity in one sentence — the strongest company source of the two SVOLT candidates. COORDINATE OUTSTANDING: nothing in the basemap is named Linslerfeld, and the works was never built, so there is no works to name. What stands on the land now is a solar park. Filed at sources/manual/svolt-uberherrn--svolt-europe-uberherrn.html; the row will cite the capture with archived: true.",
+      "company_source": "https://web.archive.org/web/20240724080837/https://www.svolt-eu.com/en/eu-locations/",
+      "capacity_gwh": 24
     },
     {
       "id": "svolt-lauchhammer",
@@ -354,8 +355,8 @@
       "site": "Lauchhammer, Brandenburg",
       "country": "DE",
       "status": "cancelled",
-      "note": "No basemap feature. Same as Überherrn.",
-      "company_source_blocked": "https://web.archive.org/web/2023/https://svolt-eu.com/"
+      "note": "COMPANY SOURCE IN HAND, COORDINATE OUTSTANDING. The Internet Archive's capture of 22 May 2024 carries SVOLT's press release of 9 September 2022: the company 'will build another battery cell factory for the European market in Lauchhammer', on the former Vestas rotor-blade site it took over at the end of August 2022. Site and product are confirmed by the company and the capacity is absent — the release states no GWh. COORDINATE EXHAUSTED on 5 September 2026: a name sweep for Vestas and SVOLT across Brandenburg returns nothing, and a sweep of every industrial and construction feature at Lauchhammer returns 36 named works, none of them this one. The company publishes no site address — only its Frankfurt office. Unnamed polygons corroborate nothing here, on the rule Sunderland settled: a polygon nobody has named does not place a works. Filed at sources/manual/svolt-lauchhammer--svolt-europe-lauchhammer.html; the row will cite the capture with archived: true.",
+      "company_source": "https://web.archive.org/web/20240522145108/https://www.svolt-eu.com/en/press/svolt-builds-additional-battery-cell-factory-in-brandenburg-germany-for-european-market/"
     },
     {
       "id": "britishvolt-blyth",

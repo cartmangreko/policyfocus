@@ -423,6 +423,353 @@
           "date": "2026-04-04"
         }
       ]
+    },
+    {
+      "id": "lithium",
+      "name": "Lithium",
+      "type": "feedstock",
+      "cn_code": null,
+      "prodcom_code": null,
+      "crma_annex_i": {
+        "entry": "lithium — battery grade",
+        "source": {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1252-20240503",
+          "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex I — strategic raw materials",
+          "publisher": "EUR-Lex",
+          "date": "2024-04-11",
+          "path": "Annex I, Section 1(h)"
+        }
+      },
+      "sectors": [
+        "batsol"
+      ],
+      "description": "The metal both lithium chemistries are named after, and the one the Union lists in a battery grade of its own. It is recorded against the routes that use it rather than against the industry, because no site here is sourced as consuming a stated tonnage of it.",
+      "produced_by": [],
+      "consumed_by": [
+        {
+          "node": "technology:cell-manufacturing",
+          "since": "2023-07-12",
+          "volume": null,
+          "evidence": {
+            "source": "data/battery.json",
+            "path": "RC-01.duty",
+            "quote": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site.",
+            "note": "The Batteries Regulation states that lithium is in the active materials of the batteries it covers, which is the Union's own reading of what a cell is made of."
+          }
+        },
+        {
+          "node": "technology:lfp-cells",
+          "since": "2024-12-10",
+          "volume": null,
+          "evidence": {
+            "source": "data/transition/technologies.json",
+            "path": "[id=lfp-cells].name",
+            "quote": "Lithium iron phosphate cells",
+            "note": "The chemistry is named for the metal, which is as direct as an evidenced consumption edge gets."
+          }
+        }
+      ],
+      "substitutes": [],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1252-20240503",
+          "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex I — strategic raw materials",
+          "publisher": "EUR-Lex",
+          "date": "2024-04-11"
+        },
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+          "title": "Regulation (EU) 2023/1542 (Batteries Regulation), Art. 8 — recycled content",
+          "publisher": "EUR-Lex",
+          "date": "2023-07-12"
+        },
+        {
+          "url": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+          "title": "Stellantis and CATL to invest up to €4.1 billion in joint venture for large-scale LFP battery plant in Spain",
+          "publisher": "Stellantis",
+          "date": "2024-12-10"
+        }
+      ]
+    },
+    {
+      "id": "cobalt",
+      "name": "Cobalt",
+      "type": "feedstock",
+      "cn_code": null,
+      "prodcom_code": null,
+      "crma_annex_i": {
+        "entry": "cobalt",
+        "source": {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1252-20240503",
+          "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex I — strategic raw materials",
+          "publisher": "EUR-Lex",
+          "date": "2024-04-11",
+          "path": "Annex I, Section 1(d)"
+        }
+      },
+      "sectors": [
+        "batsol"
+      ],
+      "description": "One of the two metals a nickel-rich cathode depends on and iron phosphate removes. It is listed as strategic without a grade qualifier, which is the Union saying the whole of it is strategic rather than the battery fraction alone.",
+      "produced_by": [],
+      "consumed_by": [
+        {
+          "node": "technology:cell-manufacturing",
+          "since": "2023-07-12",
+          "volume": null,
+          "evidence": {
+            "source": "data/battery.json",
+            "path": "RC-01.duty",
+            "quote": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site.",
+            "note": "The Batteries Regulation states that cobalt is in the active materials of the batteries it covers, which is the Union's own reading of what a cell is made of."
+          }
+        },
+        {
+          "node": "technology:nmc-nca-cells",
+          "since": "2025-12-11",
+          "volume": null,
+          "evidence": {
+            "source": "data/transition/technologies.json",
+            "path": "[id=nmc-nca-cells].description",
+            "quote": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes.",
+            "note": "Named in the cathode this chemistry is built from, and named again in the sentence that states the cost of it."
+          }
+        }
+      ],
+      "substitutes": [],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1252-20240503",
+          "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex I — strategic raw materials",
+          "publisher": "EUR-Lex",
+          "date": "2024-04-11"
+        },
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+          "title": "Regulation (EU) 2023/1542 (Batteries Regulation), Art. 8 — recycled content",
+          "publisher": "EUR-Lex",
+          "date": "2023-07-12"
+        },
+        {
+          "url": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+          "title": "Verkor reaches a decisive milestone and opens its first gigafactory",
+          "publisher": "Verkor",
+          "date": "2025-12-11"
+        }
+      ]
+    },
+    {
+      "id": "nickel",
+      "name": "Nickel",
+      "type": "feedstock",
+      "cn_code": null,
+      "prodcom_code": null,
+      "crma_annex_i": {
+        "entry": "nickel — battery grade",
+        "source": {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1252-20240503",
+          "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex I — strategic raw materials",
+          "publisher": "EUR-Lex",
+          "date": "2024-04-11",
+          "path": "Annex I, Section 1(l)"
+        }
+      },
+      "sectors": [
+        "batsol"
+      ],
+      "description": "What a nickel-rich cathode is rich in. The energy density European lines were designed around is bought with a dependence on this metal, which is the trade the sector's chemistries are choosing between.",
+      "produced_by": [],
+      "consumed_by": [
+        {
+          "node": "technology:cell-manufacturing",
+          "since": "2023-07-12",
+          "volume": null,
+          "evidence": {
+            "source": "data/battery.json",
+            "path": "RC-01.duty",
+            "quote": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site.",
+            "note": "The Batteries Regulation states that nickel is in the active materials of the batteries it covers, which is the Union's own reading of what a cell is made of."
+          }
+        },
+        {
+          "node": "technology:nmc-nca-cells",
+          "since": "2025-12-11",
+          "volume": null,
+          "evidence": {
+            "source": "data/transition/technologies.json",
+            "path": "[id=nmc-nca-cells].description",
+            "quote": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes.",
+            "note": "The chemistry's own name states the dependence: the cells are nickel-rich, and that is the reason they carry the range they do."
+          }
+        }
+      ],
+      "substitutes": [],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1252-20240503",
+          "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex I — strategic raw materials",
+          "publisher": "EUR-Lex",
+          "date": "2024-04-11"
+        },
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+          "title": "Regulation (EU) 2023/1542 (Batteries Regulation), Art. 8 — recycled content",
+          "publisher": "EUR-Lex",
+          "date": "2023-07-12"
+        },
+        {
+          "url": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+          "title": "Verkor reaches a decisive milestone and opens its first gigafactory",
+          "publisher": "Verkor",
+          "date": "2025-12-11"
+        }
+      ]
+    },
+    {
+      "id": "manganese",
+      "name": "Manganese",
+      "type": "feedstock",
+      "cn_code": null,
+      "prodcom_code": null,
+      "crma_annex_i": {
+        "entry": "manganese — battery grade",
+        "source": {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1252-20240503",
+          "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex I — strategic raw materials",
+          "publisher": "EUR-Lex",
+          "date": "2024-04-11",
+          "path": "Annex I, Section 1(j)"
+        }
+      },
+      "sectors": [
+        "batsol"
+      ],
+      "description": "The third metal in a nickel-manganese-cobalt cathode. It carries a battery grade in Annex I and no edge to a European works: nothing on this platform makes cathode material, which is the point the cathode constraint is written about.",
+      "produced_by": [],
+      "consumed_by": [
+        {
+          "node": "technology:nmc-nca-cells",
+          "since": "2025-12-11",
+          "volume": null,
+          "evidence": {
+            "source": "data/transition/technologies.json",
+            "path": "[id=nmc-nca-cells].description",
+            "quote": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes.",
+            "note": "The middle letter of the chemistry, stated by the technology's own description."
+          }
+        }
+      ],
+      "substitutes": [],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1252-20240503",
+          "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex I — strategic raw materials",
+          "publisher": "EUR-Lex",
+          "date": "2024-04-11"
+        },
+        {
+          "url": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+          "title": "Verkor reaches a decisive milestone and opens its first gigafactory",
+          "publisher": "Verkor",
+          "date": "2025-12-11"
+        }
+      ]
+    },
+    {
+      "id": "natural-graphite",
+      "name": "Natural graphite",
+      "type": "feedstock",
+      "cn_code": null,
+      "prodcom_code": null,
+      "crma_annex_i": {
+        "entry": "graphite — battery grade",
+        "source": {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1252-20240503",
+          "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex I — strategic raw materials",
+          "publisher": "EUR-Lex",
+          "date": "2024-04-11",
+          "path": "Annex I, Section 1(k)"
+        }
+      },
+      "sectors": [
+        "batsol"
+      ],
+      "description": "The anode side of the same dependence, and the half of a cell this dataset can say least about. The Union lists a battery grade of it; no source read here states where a European line buys it, and the anode is outside this dataset's perimeter as a works.",
+      "produced_by": [],
+      "consumed_by": [
+        {
+          "node": "technology:cell-manufacturing",
+          "since": "2024-04-11",
+          "volume": null,
+          "evidence": {
+            "source": "sources/crma.txt",
+            "path": "Annex I, Section 1(k)",
+            "quote": "graphite — battery grade",
+            "note": "The listing is the evidence: the Union names a battery grade of graphite as strategic, which is a claim that this material goes into cells. No source read here states a European line's supply of it."
+          }
+        }
+      ],
+      "substitutes": [],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1252-20240503",
+          "title": "Regulation (EU) 2024/1252 (Critical Raw Materials Act), Annex I — strategic raw materials",
+          "publisher": "EUR-Lex",
+          "date": "2024-04-11"
+        }
+      ]
+    },
+    {
+      "id": "sodium",
+      "name": "Sodium",
+      "type": "feedstock",
+      "cn_code": null,
+      "prodcom_code": null,
+      "crma_annex_i": null,
+      "sectors": [
+        "batsol"
+      ],
+      "description": "The material that is on this platform for what it removes rather than for what it adds. It is in no annex of the Critical Raw Materials Act, which is the whole of its interest: a chemistry built on it answers a supply constraint by leaving the listed metal out.",
+      "produced_by": [],
+      "consumed_by": [
+        {
+          "node": "technology:sodium-ion-cells",
+          "since": "2025-04-21",
+          "volume": null,
+          "evidence": {
+            "source": "data/transition/technologies.json",
+            "path": "[id=sodium-ion-cells].description",
+            "quote": "Sodium in place of lithium in the cell.",
+            "note": "No European site makes these cells, so this edge is to the route and not to a works — the same membership rule hydrogen is held to."
+          }
+        }
+      ],
+      "substitutes": [
+        {
+          "material": "lithium",
+          "since": "2025-04-21",
+          "evidence": {
+            "source": "data/transition/technologies.json",
+            "path": "[id=sodium-ion-cells].description",
+            "quote": "it removes lithium from the bill of materials entirely, which is the reason it is on this list: the constraint it answers is supply rather than emissions",
+            "note": "A substitution at a stated cost: the description says the energy density is lower than either lithium chemistry, so this edge is about supply and not about performance."
+          }
+        }
+      ],
+      "required_by": [],
+      "sources": [
+        {
+          "url": "https://www.catl.com/en/news/6401.html",
+          "title": "Naxtra Battery Breakthrough & Dual-Power Architecture: CATL Pioneers the Multi-Power Era",
+          "publisher": "CATL",
+          "date": "2025-04-21"
+        }
+      ]
     }
   ]
 }

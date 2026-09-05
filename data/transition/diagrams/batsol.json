@@ -6,12 +6,12 @@
   ],
   "sector": "batsol",
   "width": 1160,
-  "height": 1088,
+  "height": 1250,
   "columns": [
     {
       "kind": "measure",
       "x": 0,
-      "count": 0
+      "count": 10
     },
     {
       "kind": "bottleneck",
@@ -26,10 +26,150 @@
     {
       "kind": "project",
       "x": 900,
-      "count": 20
+      "count": 23
     }
   ],
   "nodes": [
+    {
+      "id": "measure:crma:CBEN-01",
+      "kind": "measure",
+      "label": "Raw material capacity",
+      "sub": "linkage 1.0",
+      "href": "/measures/crma/CBEN-01",
+      "rank": 1,
+      "direction": null,
+      "measure_id": "crma:CBEN-01",
+      "x": 0,
+      "y": 363.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:fleet:TGT-2035",
+      "kind": "measure",
+      "label": "Zero-emission cars target",
+      "sub": "linkage 1.0",
+      "href": "/measures/fleet/TGT-2035",
+      "rank": 2,
+      "direction": null,
+      "measure_id": "fleet:TGT-2035",
+      "x": 0,
+      "y": 417.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:iaa:LM-15a",
+      "kind": "measure",
+      "label": "Union-origin requirements",
+      "sub": "linkage 1.0",
+      "href": "/measures/iaa/LM-15a",
+      "rank": 3,
+      "direction": null,
+      "measure_id": "iaa:LM-15a",
+      "x": 0,
+      "y": 471.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:crma:CBEN-02",
+      "kind": "measure",
+      "label": "Import diversification",
+      "sub": "linkage 0.5",
+      "href": "/measures/crma/CBEN-02",
+      "rank": 4,
+      "direction": null,
+      "measure_id": "crma:CBEN-02",
+      "x": 0,
+      "y": 525.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:crma:CSP-02",
+      "kind": "measure",
+      "label": "Material project status",
+      "sub": "linkage 0.5",
+      "href": "/measures/crma/CSP-02",
+      "rank": 5,
+      "direction": null,
+      "measure_id": "crma:CSP-02",
+      "x": 0,
+      "y": 579.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:ets:FND-03",
+      "kind": "measure",
+      "label": "Innovation Fund grants",
+      "sub": "linkage 0.5",
+      "href": "/measures/ets/FND-03",
+      "rank": 6,
+      "direction": null,
+      "measure_id": "ets:FND-03",
+      "x": 0,
+      "y": 633.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:fleet:PREM-01",
+      "kind": "measure",
+      "label": "Excess emissions levy",
+      "sub": "linkage 0.5",
+      "href": "/measures/fleet/PREM-01",
+      "rank": 7,
+      "direction": null,
+      "measure_id": "fleet:PREM-01",
+      "x": 0,
+      "y": 687.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:fleet:TGT-2030",
+      "kind": "measure",
+      "label": "Fleet CO2 reduction target",
+      "sub": "linkage 0.5",
+      "href": "/measures/fleet/TGT-2030",
+      "rank": 8,
+      "direction": null,
+      "measure_id": "fleet:TGT-2030",
+      "x": 0,
+      "y": 741.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:iaa:LM-26a",
+      "kind": "measure",
+      "label": "Vehicle purchase schemes",
+      "sub": "linkage 0.5",
+      "href": "/measures/iaa/LM-26a",
+      "rank": 9,
+      "direction": null,
+      "measure_id": "iaa:LM-26a",
+      "x": 0,
+      "y": 795.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "measure:nzia:SCH-01",
+      "kind": "measure",
+      "label": "Purchase support schemes",
+      "sub": "linkage 0.5",
+      "href": "/measures/nzia/SCH-01",
+      "rank": 10,
+      "direction": null,
+      "measure_id": "nzia:SCH-01",
+      "x": 0,
+      "y": 849.0,
+      "w": 236,
+      "h": 38
+    },
     {
       "id": "bottleneck:batsol-cell-cost-gap",
       "kind": "bottleneck",
@@ -38,7 +178,7 @@
       "href": "#bottleneck-batsol-cell-cost-gap",
       "type": "market",
       "x": 300,
-      "y": 444.0,
+      "y": 525.0,
       "w": 236,
       "h": 38
     },
@@ -50,7 +190,7 @@
       "href": "#bottleneck-batsol-demand-uncertainty",
       "type": "market",
       "x": 300,
-      "y": 498.0,
+      "y": 579.0,
       "w": 236,
       "h": 38
     },
@@ -62,7 +202,7 @@
       "href": "#bottleneck-batsol-ramp-and-yield",
       "type": "technical",
       "x": 300,
-      "y": 552.0,
+      "y": 633.0,
       "w": 236,
       "h": 38
     },
@@ -74,7 +214,7 @@
       "href": "#bottleneck-batsol-cathode-dependence",
       "type": "infrastructure",
       "x": 300,
-      "y": 606.0,
+      "y": 687.0,
       "w": 236,
       "h": 38
     },
@@ -86,7 +226,7 @@
       "href": "#technology-lfp-cells",
       "readiness": "commercial",
       "x": 600,
-      "y": 444.0,
+      "y": 525.0,
       "w": 236,
       "h": 38
     },
@@ -98,7 +238,7 @@
       "href": "#technology-cell-manufacturing",
       "readiness": "commercial",
       "x": 600,
-      "y": 498.0,
+      "y": 579.0,
       "w": 236,
       "h": 38
     },
@@ -110,7 +250,7 @@
       "href": "#technology-nmc-nca-cells",
       "readiness": "commercial",
       "x": 600,
-      "y": 552.0,
+      "y": 633.0,
       "w": 236,
       "h": 38
     },
@@ -122,7 +262,7 @@
       "href": "#technology-sodium-ion-cells",
       "readiness": "early-commercial",
       "x": 600,
-      "y": 606.0,
+      "y": 687.0,
       "w": 236,
       "h": 38
     },
@@ -175,6 +315,18 @@
       "h": 38
     },
     {
+      "id": "project:calb-sines",
+      "kind": "project",
+      "label": "CALB Sines",
+      "sub": "PT · construction",
+      "href": "/projects/calb-sines",
+      "status": "construction",
+      "x": 900,
+      "y": 228.0,
+      "w": 236,
+      "h": 38
+    },
+    {
       "id": "project:catl-debrecen",
       "kind": "project",
       "label": "CATL Debrecen",
@@ -182,7 +334,7 @@
       "href": "/projects/catl-debrecen",
       "status": "construction",
       "x": 900,
-      "y": 228.0,
+      "y": 282.0,
       "w": 236,
       "h": 38
     },
@@ -194,7 +346,7 @@
       "href": "/projects/gib-surany",
       "status": "announced",
       "x": 900,
-      "y": 282.0,
+      "y": 336.0,
       "w": 236,
       "h": 38
     },
@@ -206,7 +358,7 @@
       "href": "/projects/italvolt-scarmagno",
       "status": "cancelled",
       "x": 900,
-      "y": 336.0,
+      "y": 390.0,
       "w": 236,
       "h": 38
     },
@@ -218,7 +370,7 @@
       "href": "/projects/lyten-heide",
       "status": "paused",
       "x": 900,
-      "y": 390.0,
+      "y": 444.0,
       "w": 236,
       "h": 38
     },
@@ -230,7 +382,7 @@
       "href": "/projects/powerco-salzgitter",
       "status": "operating",
       "x": 900,
-      "y": 444.0,
+      "y": 498.0,
       "w": 236,
       "h": 38
     },
@@ -242,7 +394,31 @@
       "href": "/projects/powerco-sagunto",
       "status": "construction",
       "x": 900,
-      "y": 498.0,
+      "y": 552.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:sk-on-ivancsa",
+      "kind": "project",
+      "label": "SK On Iváncsa",
+      "sub": "HU · construction",
+      "href": "/projects/sk-on-ivancsa",
+      "status": "construction",
+      "x": 900,
+      "y": 606.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:sk-on-komarom",
+      "kind": "project",
+      "label": "SK On Komárom",
+      "sub": "HU · operating",
+      "href": "/projects/sk-on-komarom",
+      "status": "operating",
+      "x": 900,
+      "y": 660.0,
       "w": 236,
       "h": 38
     },
@@ -254,7 +430,7 @@
       "href": "/projects/sunwoda-nyiregyhaza",
       "status": "construction",
       "x": 900,
-      "y": 552.0,
+      "y": 714.0,
       "w": 236,
       "h": 38
     },
@@ -266,7 +442,7 @@
       "href": "/projects/acc-billy-berclau",
       "status": "operating",
       "x": 900,
-      "y": 606.0,
+      "y": 768.0,
       "w": 236,
       "h": 38
     },
@@ -278,7 +454,7 @@
       "href": "/projects/envision-aesc-douai",
       "status": "operating",
       "x": 900,
-      "y": 660.0,
+      "y": 822.0,
       "w": 236,
       "h": 38
     },
@@ -290,7 +466,7 @@
       "href": "/projects/envision-aesc-sunderland",
       "status": "operating",
       "x": 900,
-      "y": 714.0,
+      "y": 876.0,
       "w": 236,
       "h": 38
     },
@@ -302,7 +478,7 @@
       "href": "/projects/catl-arnstadt",
       "status": "operating",
       "x": 900,
-      "y": 768.0,
+      "y": 930.0,
       "w": 236,
       "h": 38
     },
@@ -314,7 +490,7 @@
       "href": "/projects/lges-wroclaw",
       "status": "operating",
       "x": 900,
-      "y": 822.0,
+      "y": 984.0,
       "w": 236,
       "h": 38
     },
@@ -326,7 +502,7 @@
       "href": "/projects/northvolt-ett-skelleftea",
       "status": "paused",
       "x": 900,
-      "y": 876.0,
+      "y": 1038.0,
       "w": 236,
       "h": 38
     },
@@ -338,7 +514,7 @@
       "href": "/projects/samsung-sdi-god",
       "status": "operating",
       "x": 900,
-      "y": 930.0,
+      "y": 1092.0,
       "w": 236,
       "h": 38
     },
@@ -350,7 +526,7 @@
       "href": "/projects/tesla-gruenheide-cells",
       "status": "construction",
       "x": 900,
-      "y": 984.0,
+      "y": 1146.0,
       "w": 236,
       "h": 38
     },
@@ -362,12 +538,72 @@
       "href": "/projects/verkor-dunkirk",
       "status": "operating",
       "x": 900,
-      "y": 1038.0,
+      "y": 1200.0,
       "w": 236,
       "h": 38
     }
   ],
   "edges": [
+    {
+      "from": "measure:crma:CBEN-01",
+      "to": "bottleneck:batsol-cathode-dependence",
+      "rel": "relieves",
+      "weight": 1.0
+    },
+    {
+      "from": "measure:crma:CBEN-02",
+      "to": "bottleneck:batsol-cathode-dependence",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:crma:CSP-02",
+      "to": "bottleneck:batsol-cathode-dependence",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:ets:FND-03",
+      "to": "bottleneck:batsol-ramp-and-yield",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:fleet:PREM-01",
+      "to": "bottleneck:batsol-demand-uncertainty",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:fleet:TGT-2030",
+      "to": "bottleneck:batsol-demand-uncertainty",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:fleet:TGT-2035",
+      "to": "bottleneck:batsol-demand-uncertainty",
+      "rel": "relieves",
+      "weight": 1.0
+    },
+    {
+      "from": "measure:iaa:LM-15a",
+      "to": "bottleneck:batsol-cell-cost-gap",
+      "rel": "relieves",
+      "weight": 1.0
+    },
+    {
+      "from": "measure:iaa:LM-26a",
+      "to": "bottleneck:batsol-cell-cost-gap",
+      "rel": "relieves",
+      "weight": 0.5
+    },
+    {
+      "from": "measure:nzia:SCH-01",
+      "to": "bottleneck:batsol-cell-cost-gap",
+      "rel": "relieves",
+      "weight": 0.5
+    },
     {
       "from": "project:acc-billy-berclau",
       "to": "technology:cell-manufacturing",
@@ -388,6 +624,12 @@
     },
     {
       "from": "project:agratas-bridgwater",
+      "to": "technology:cell-manufacturing",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:calb-sines",
       "to": "technology:cell-manufacturing",
       "rel": "deploys",
       "weight": 1
@@ -521,6 +763,18 @@
     {
       "from": "project:samsung-sdi-god",
       "to": "technology:nmc-nca-cells",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:sk-on-ivancsa",
+      "to": "technology:cell-manufacturing",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:sk-on-komarom",
+      "to": "technology:cell-manufacturing",
       "rel": "deploys",
       "weight": 1
     },

@@ -2363,6 +2363,265 @@
           "note": "PRODUCT AND SCALE BOTH SIT AT STATE TIER ON THIS ROW. The government describes a battery works for electric vehicles, which satisfies the product rule; it states an investment and no capacity, so the capacity is absent and the row is admitted on a state-tier description of commercial-scale intent. It joins the standing report until a figure exists."
         }
       ]
+    },
+    {
+      "id": "calb-sines",
+      "name": "CALB Sines",
+      "company": "CALB",
+      "plant": "Sines",
+      "country": "PT",
+      "location": [
+        {
+          "site": "ZILS Lote 1A3.3, Sines",
+          "lat": 37.9871,
+          "lon": -8.7974,
+          "precision": "plant",
+          "retrieved_date": "2026-09-05",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1262719042",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Construção da Unidade Industrial de Baterias de Lítio da CALB; official_name=Calb Europe, S.A.; landuse=construction; construction=industrial; addr:street=ZILS; addr:housenumber=Lote 1A3.3; addr:city=Sines; addr:postcode=7520-064",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The point is the area-weighted centroid of the plot polygon, which carries the operator's own name and the ZILS lot number. The basemap still has it as landuse=construction, which matches the status here.",
+          "site_evidence": {
+            "kind": "composite",
+            "note": "THE COMPANY SOURCE NAMES NO CITY. CALB's own groundbreaking release says the works is in Portugal and stops there — no town, no lot, no capacity — which is the same shape as Sunwoda's 'Hungary' and is why the ordinary company-only standard cannot confirm this site. All three legs are cited so a reader who disagrees with the standard can see what it was applied to. AICEP, the Portuguese state's investment agency, announced the same investment and is named here rather than cited: the state leg is the Government's own briefing room, not an agency's summary of it.",
+            "company": {
+              "url": "http://en.calb-tech.com/news_detail/5.html",
+              "publisher": "CALB Group Co., Ltd.",
+              "date": "2025-02-27",
+              "verbatim": "On February 24, local time, construction commenced on CALB's Portugal facility, which will be a zero-carbon AI gigafactory with delivery expected in 2027.",
+              "note": "Confirms the project, the country and the build start, and names neither the town nor the site. The host's certificate does not match its own name, so https fails and the page serves over plain http, which is how check_links reaches it. It was opened in a browser as well, and the filed copy is byte-for-byte the page this URL serves.",
+              "retrieved_manually": "sources/manual/calb-sines--calb-sines-groundbreaking.html"
+            },
+            "state": {
+              "url": "https://portugal.gov.pt/gc24/comunicacao/noticias/fabrica-de-ultima-geracao-de-baterias-de-litio-lancada-em-sines",
+              "publisher": "Government of Portugal — XXIV Governo Constitucional",
+              "date": "2025-02-24",
+              "verbatim": "O Ministro da Economia, Pedro Reis, esteve presente na cerimónia de lançamento do projeto de uma nova fábrica de baterias de lítio em Sines da CALB.",
+              "note": "The Government's own briefing room names the town, the company and the product, and puts its economy minister at the launch the company's release describes without locating. The same page states the capacity: 'Assim que estiver operacional, a fábrica de última geração de baterias de lítio em Sines terá capacidade de produção de 15 GWh de armazenamento de energia.'"
+            },
+            "basemap": {
+              "url": "https://www.openstreetmap.org/way/1262719042",
+              "publisher": "OpenStreetMap contributors",
+              "verbatim": "name=Construção da Unidade Industrial de Baterias de Lítio da CALB; official_name=Calb Europe, S.A.; addr:street=ZILS; addr:housenumber=Lote 1A3.3; addr:city=Sines",
+              "note": "A plot under construction carrying the operator's own name and its Portuguese company name, at a numbered lot in the Sines industrial and logistics zone the state names."
+            }
+          }
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 15,
+        "unit": "GWh per year"
+      },
+      "capacity_note": "The Portuguese government states '15 GWh de armazenamento de energia' without a period. It is recorded here per year, which is how every other capacity on this platform is stated and how the company's own reporting reads it; no source read here writes 'per year' for this works.",
+      "investment_total": {
+        "value": 2000000000,
+        "currency": "EUR",
+        "source": "https://portugal.gov.pt/gc24/comunicacao/noticias/fabrica-de-ultima-geracao-de-baterias-de-litio-lancada-em-sines",
+        "date": "2025-02-24"
+      },
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "construction",
+          "date": "2025-02-24",
+          "source_url": "http://en.calb-tech.com/news_detail/5.html",
+          "note": "CALB's own release dates the build start to 24 February 2025: 'construction commenced on CALB's Portugal facility'. The Portuguese government's release of the same day announces the launch, the 15 GWh capacity, about two billion euros of investment and 1 800 direct jobs, and records the project as a Projeto de Interesse Nacional. THE COMPANY EXPECTS DELIVERY IN 2027 AND THE STATE SAYS FULLY OPERATIONAL IN 2028; neither is a status this row can carry until something happens."
+        }
+      ],
+      "sources": [
+        {
+          "url": "http://en.calb-tech.com/news_detail/5.html",
+          "title": "CALB's New Journey: Groundbreaking of Zero-Carbon AI Gigafactory in Portugal",
+          "publisher": "CALB Group Co., Ltd.",
+          "date": "2025-02-27",
+          "retrieved_manually": "sources/manual/calb-sines--calb-sines-groundbreaking.html",
+          "note": "The host's certificate does not match its own name, so https fails and the page serves over plain http, which is how check_links reaches it. It was opened in a browser as well, and the filed copy is byte-for-byte the page this URL serves."
+        },
+        {
+          "url": "https://portugal.gov.pt/gc24/comunicacao/noticias/fabrica-de-ultima-geracao-de-baterias-de-litio-lancada-em-sines",
+          "title": "Fábrica de última geração de baterias de lítio lançada em Sines",
+          "publisher": "Government of Portugal — XXIV Governo Constitucional",
+          "date": "2025-02-24",
+          "note": "PRODUCT AND CAPACITY BOTH SIT AT STATE TIER ON THIS ROW. The Government describes a lithium battery works for electric vehicles and energy storage and states 15 GWh; the company's own release states neither. Neither source uses the word 'cell'."
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1262719042",
+          "title": "Construção da Unidade Industrial de Baterias de Lítio da CALB — plot 1A3.3, ZILS",
+          "publisher": "OpenStreetMap contributors",
+          "date": "2026-09-05"
+        }
+      ]
+    },
+    {
+      "id": "sk-on-ivancsa",
+      "name": "SK On Iváncsa",
+      "company": "SK On",
+      "plant": "Iváncsa",
+      "country": "HU",
+      "location": [
+        {
+          "site": "Iváncsa cell works",
+          "lat": 47.134,
+          "lon": 18.8204,
+          "precision": "plant",
+          "retrieved_date": "2026-09-05",
+          "source": {
+            "url": "https://skonhungary.com/",
+            "type": "company",
+            "publisher": "SK On Hungary Kft.",
+            "verbatim": "H-2454 Iváncsa, SK út 1.",
+            "note": "THE POSITION WALKS BACK TO THE OPERATOR'S OWN PUBLISHED ADDRESS, and to nothing else. SK On publishes the works in two forms: this street address on its Hungarian site, and the land-registry parcel 'HRSZ 99/48 Iváncsa 2454' on its global places-of-business page (filed at sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html). The point is where the basemap carries that address — an entry addressed SK út 1, 2454 Iváncsa, on the road that serves the works and is named after the operator. THE PARCEL ITSELF PLACES NOTHING HERE: HRSZ 99/48 geocodes to the settlement, and this pipeline has no cadastral source that would resolve it. The industrial buildings 300 to 800 metres north along SK út carry no name, so no polygon places this works either — the address does.",
+            "retrieved_manually": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html"
+          },
+          "confidence": "secondary",
+          "address": {
+            "text": "H-2454 Iváncsa, SK út 1.",
+            "url": "https://skonhungary.com/",
+            "publisher": "SK On Hungary Kft.",
+            "date": "2026-09-05",
+            "also": "SK On Hungary Iváncsa HRSZ 99/48 Iváncsa 2454, Hungary",
+            "note": "Two published forms of one works: the street address on the operator's Hungarian site and the land-registry parcel on its global places-of-business page. The street address is what the point was derived from; the parcel resolves only to the settlement here."
+          }
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "status": "construction",
+      "status_history": [
+        {
+          "status": "announced",
+          "date": "2021-01-29",
+          "source_url": "https://kormany.hu/hirek/szijjarto-magyarorszag-tortenetenek-legnagyobb-zoldmezos-beruhazasat-valositja-meg-a-del-koreai-sk-innovation-ivancsan",
+          "note": "The Hungarian government announces the investment: 'Magyarország történetének legnagyobb zöldmezős beruházását valósítja meg az SK Innovation a Fejér megyei Iváncsán, a dél-koreai vállalat 681 milliárd forintos fejlesztéssel új akkumulátorgyárat épít, ezzel 2500 embernek ad majd közvetlenül munkát' — 681 billion forints, 2 500 direct jobs, and construction to start in the third quarter of that year."
+        },
+        {
+          "status": "construction",
+          "date": "2022-03-23",
+          "source_url": "https://www.electrive.com/2022/03/23/sk-on-receives-funding-for-battery-cell-plant-in-hungary/",
+          "note": "electrive reports that the project started in early 2021 and gives an annual capacity of 30 GWh with the final expansion in 2028. THE STATUS STOPS HERE. Trade reporting describes mass production from 2024 at 30 GWh; SK On's own newsroom is served under a certificate for a different host and no source this pipeline can read states a production start, so the row does not claim one and joins the status-age report."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://skonhungary.com/",
+          "title": "SK On Hungary — contact and places of business",
+          "publisher": "SK On Hungary Kft.",
+          "date": "2026-09-05",
+          "note": "The operator's own Hungarian site, live and readable, publishing 'H-2454 Iváncsa, SK út 1.' It is the site confirmation and the position."
+        },
+        {
+          "url": "http://eng.sk-on.com/company/global.asp",
+          "title": "Overseas — Places of business — SK On",
+          "publisher": "SK On Co., Ltd.",
+          "date": "2026-09-05",
+          "retrieved_manually": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html",
+          "note": "The parcel form of the same address, 'SK On Hungary Iváncsa HRSZ 99/48 Iváncsa 2454, Hungary'. The host's certificate does not match its own name, so https fails and the page serves over plain http, which is how check_links reaches it. It was opened in a browser as well, and the filed copy is byte-for-byte the page this URL serves."
+        },
+        {
+          "url": "https://kormany.hu/hirek/szijjarto-magyarorszag-tortenetenek-legnagyobb-zoldmezos-beruhazasat-valositja-meg-a-del-koreai-sk-innovation-ivancsan",
+          "title": "Szijjártó: Magyarország történetének legnagyobb zöldmezős beruházását valósítja meg a dél-koreai SK Innovation Iváncsán",
+          "publisher": "Government of Hungary",
+          "date": "2021-01-29",
+          "note": "PRODUCT AT STATE TIER: 'elektromos autókba való akkumulátorokat fog gyártani' — batteries for electric cars. CAPACITY ABSENT: the state states an investment and a headcount and no GWh, so the row is admitted on a state-tier description of commercial-scale intent and joins the standing report until a figure exists in a source this pipeline can read."
+        },
+        {
+          "url": "https://www.electrive.com/2022/03/23/sk-on-receives-funding-for-battery-cell-plant-in-hungary/",
+          "title": "SK On receives funding for battery cell plant in Hungary",
+          "publisher": "electrive",
+          "date": "2022-03-23"
+        }
+      ]
+    },
+    {
+      "id": "sk-on-komarom",
+      "name": "SK On Komárom",
+      "company": "SK On",
+      "plant": "Komárom",
+      "country": "HU",
+      "location": [
+        {
+          "site": "Komárom industrial park works",
+          "lat": 47.7401,
+          "lon": 18.0685,
+          "precision": "plant",
+          "retrieved_date": "2026-09-05",
+          "source": {
+            "url": "https://skonhungary.com/",
+            "type": "company",
+            "publisher": "SK On Hungary Kft.",
+            "verbatim": "SK On Hungary Kft. 2903 Komárom, Irinyi János utca 9.",
+            "note": "THE POSITION WALKS BACK TO THE OPERATOR'S PUBLISHED ADDRESS AND TO A BASEMAP BUILDING CARRYING ITS NAME ON THAT STREET. SK On publishes two Komárom addresses — this one for SK On Hungary Kft. and '2900 Komárom, Klapka Gyorgy ut 39.' for SK Battery Manufacturing, on the global page filed at sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html. Neither geocodes to a house number: both resolve only to a street. The point is the centroid of the industrial building the basemap names 'SK Battery', which stands on Irinyi János utca in the Komárom industrial park, at the address the operator publishes. IT IS ONE POINT FOR WHAT THE STATE CALLS TWO PLANTS: the row carries the operator's Komárom works as one project and says so rather than splitting it on an address nobody can resolve.",
+            "retrieved_manually": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html"
+          },
+          "confidence": "secondary",
+          "address": {
+            "text": "SK On Hungary Kft. 2903 Komárom, Irinyi János utca 9.",
+            "url": "https://skonhungary.com/",
+            "publisher": "SK On Hungary Kft.",
+            "date": "2026-09-05",
+            "also": "SK Battery Manufacturing Komárom 2900 Komárom, Klapka Gyorgy ut 39., Hungary",
+            "note": "Both addresses the operator publishes for Komárom. Neither resolves to a house number; the point is the basemap building named 'SK Battery' on Irinyi János utca, which is the street in the first of them."
+          }
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "status": "operating",
+      "status_history": [
+        {
+          "status": "operating",
+          "date": "2021-01-29",
+          "source_url": "https://kormany.hu/hirek/szijjarto-magyarorszag-tortenetenek-legnagyobb-zoldmezos-beruhazasat-valositja-meg-a-del-koreai-sk-innovation-ivancsan",
+          "note": "The Hungarian government, announcing the Iváncsa investment, describes the Komárom works as already running: 'A cég első két tengerentúli gyára Komáromban működik' — the company's first two overseas plants operate in Komárom. NO BUILD OR OPENING DATE IS RECORDED HERE, because no source read here gives one; this is the earliest sourced statement that the works operates, not the date it started. SK On's own Hungarian newsroom corroborates it from the other side, describing a waste-collection event in May 2023 in which '45 employees of the battery manufacturing company participated'."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://skonhungary.com/",
+          "title": "SK On Hungary — contact and places of business",
+          "publisher": "SK On Hungary Kft.",
+          "date": "2026-09-05",
+          "note": "The operator's own Hungarian site, publishing '2903 Komárom, Irinyi János utca 9.'"
+        },
+        {
+          "url": "http://eng.sk-on.com/company/global.asp",
+          "title": "Overseas — Places of business — SK On",
+          "publisher": "SK On Co., Ltd.",
+          "date": "2026-09-05",
+          "retrieved_manually": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html",
+          "note": "Publishes both Komárom addresses: 'SK On Hungary Komárom 2903 Komárom, Irinyi János u 9, Hungary' and 'SK Battery Manufacturing Komárom 2900 Komárom, Klapka Gyorgy ut 39., Hungary'. The host's certificate does not match its own name, so https fails and the page serves over plain http, which is how check_links reaches it. It was opened in a browser as well, and the filed copy is byte-for-byte the page this URL serves."
+        },
+        {
+          "url": "https://kormany.hu/hirek/szijjarto-magyarorszag-tortenetenek-legnagyobb-zoldmezos-beruhazasat-valositja-meg-a-del-koreai-sk-innovation-ivancsan",
+          "title": "Szijjártó: Magyarország történetének legnagyobb zöldmezős beruházását valósítja meg a dél-koreai SK Innovation Iváncsán",
+          "publisher": "Government of Hungary",
+          "date": "2021-01-29",
+          "note": "PRODUCT AT STATE TIER, in a release about the company's battery investments: the state names SK Innovation as one of the world's leading manufacturers of electric batteries and its Komárom plants as operating. CAPACITY ABSENT — no GWh figure for either Komárom plant appears in any source this pipeline can read, so the row joins the standing report."
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1060358967",
+          "title": "SK Battery — industrial building, Komárom industrial park",
+          "publisher": "OpenStreetMap contributors",
+          "date": "2026-09-05",
+          "note": "The basemap feature the point is taken from. Cited as a source and not as the site's evidence type: what admits this coordinate is the operator's published address, and this building is what stands at it."
+        }
+      ]
     }
   ]
 }

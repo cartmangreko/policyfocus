@@ -1086,6 +1086,36 @@ def check_prose(e: Errors) -> list[str]:
     return pending
 
 
+def check_corrections(e: Errors, rows: list[dict], sectors: dict) -> list[str]:
+    """Dated notes on figures the site has already printed.
+
+    The gate is small because the practice is: an entry says which printed
+    figure moved, when, from what to what, and how this platform came to be
+    wrong. What it enforces is that the note can actually reach a reader — the
+    figure is one a surface renders, from the closed list in sector_map.py, and
+    the sector is one that has a page.
+
+    Every entry is printed on every run, the way the coordinate-source
+    exceptions are, so a correction cannot become a line in a file nobody
+    opens.
+    """
+    listed = []
+    for r in rows:
+        w = f"correction {r.get('id', '?')}"
+        _req(e, w, r, "id", "sector", "figure", "date", "was", "now", "what", "why")
+        _date(e, w, r, "date")
+        _vocab(e, w, r, "figure", sm.CORRECTABLE_FIGURES)
+        if r.get("sector") not in sectors:
+            e.add(w, f"sector={r.get('sector')!r} is not in data/sectors.json")
+        for field in ("what", "why"):
+            if (r.get(field) or "").strip() and not (r.get(field) or "").strip().endswith("."):
+                e.add(w, f"{field} does not end in a full stop; it is a sentence a page prints")
+        _source_list(e, w, r)
+        listed.append(f"  {r.get('date')} {r.get('sector')} {r.get('figure')}: "
+                      f"{r.get('was')} \u2192 {r.get('now')}")
+    return sorted(listed)
+
+
 def main() -> int:
     rows = sm.load_all()
     sectors = sm.sectors()
@@ -1114,6 +1144,7 @@ def main() -> int:
     check_ecosystems(e, rows["ecosystem"], sectors, tech_ids, project_ids, material_ids,
                      measure_ids)
     check_status_groups(e)
+    corrections = check_corrections(e, rows["correction"], sectors)
     coord_exceptions = check_coordinate_exceptions(e, rows["project"])
 
     drafts = check_prose(e)
@@ -1132,6 +1163,10 @@ def main() -> int:
     if e.stale:
         print(f"\nstale parameters ({len(e.stale)}) — reported, not failed:")
         print("\n".join(e.stale))
+    if corrections:
+        print(f"\ncorrections to printed figures ({len(corrections)}) — dated where the "
+              f"figure is printed, and listed here on every run:")
+        print("\n".join(corrections))
     if coord_exceptions:
         print(f"\ncoordinate-source exceptions ({len(coord_exceptions)}) — recorded, "
               f"never silent:")

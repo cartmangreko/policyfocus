@@ -3296,6 +3296,20 @@ h3 {
   font-size: clamp(20px, 2.4vw, 28px);
   margin: 14px 0 10px;
 }
+/* A DATED CORRECTION, under the figure it corrects. Deliberately quiet: it is
+   not a warning and not a badge, it is the page saying what it printed before.
+   No reserved colour — a correction is not a direction. */
+.tcorrection {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-55);
+  margin: -4px 0 12px;
+  max-width: 62ch;
+}
+.tcorrection-head {
+  font-weight: 600;
+  color: var(--ink-70);
+}
 .tfundings {
   list-style: none;
   padding: 0;

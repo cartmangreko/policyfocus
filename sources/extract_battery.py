@@ -90,9 +90,21 @@ WHEN_CHAPTER_VIII = "From 18 August 2025 (Art. 96(2)(c))"
 # whichever is LATER -- and the act in question has not been adopted. Written out
 # rather than reduced to the calendar date, because the calendar date is the one
 # thing that is certainly not when the duty starts.
-WHEN_CARBON_EV = ("18 February 2025, or 12 months after the delegated and implementing acts under "
-                  "Art. 7(1) enter into force, whichever is the latest. Neither act has been "
-                  "adopted, so the date is not yet fixed")
+# STAGGERED BY BATTERY CATEGORY, which one date would have hidden. Art. 7(1),
+# second subparagraph, gives four application dates rather than one, each of them
+# the LATER of the calendar date and an interval after the delegated and
+# implementing acts enter into force -- 12 months for electric vehicle batteries
+# and 18 for the other three. Neither act is adopted, so none of the four is
+# fixed. Carried in full because "18 February 2025" alone would have said the
+# duty reaches an LMT battery three and a half years before it does.
+WHEN_CARBON = ("Staggered by battery category (Art. 7(1), second subparagraph), each date being "
+               "the later of the date given and the interval stated after the delegated and "
+               "implementing acts enter into force: electric vehicle batteries 18 February 2025 "
+               "or 12 months; rechargeable industrial batteries except those with exclusively "
+               "external storage 18 February 2026 or 18 months; LMT batteries 18 August 2028 or "
+               "18 months; rechargeable industrial batteries with external storage 18 August "
+               "2030 or 18 months. Neither act has been adopted, so none of the dates is yet "
+               "fixed")
 WHEN_RECYCLED_CONTENT = ("18 August 2028, or 24 months after the delegated act under Art. 8(1) "
                          "enters into force, whichever is the latest. That act has not been "
                          "adopted, so the date is not yet fixed")
@@ -166,7 +178,7 @@ ROWS: list[tuple] = [
           addressee="Manufacturers of electric vehicle, rechargeable industrial and LMT batteries",
           cls=B, trigger="each battery model, at each manufacturing site",
           frequency="per model per site", verification="notified body",
-          article="Art. 7(1)", when=WHEN_CARBON_EV,
+          article="Art. 7(1)", when=WHEN_CARBON,
           drivers=["D1", "D3"], named=BAT, reached=["auto"],
           note="THE ONE PROVISION IN THIS ACT THAT IS PER-SITE, and the reason there is no money "
                "model for this sector. The declaration is drawn up per manufacturing site and its "

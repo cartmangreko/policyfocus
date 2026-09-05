@@ -7,7 +7,7 @@
   ],
   "sector": "batsol",
   "template_version": 5,
-  "fingerprint": "fbced473209783f8",
+  "fingerprint": "d87a1a02e94adbb2",
   "sentence": {
     "text": "European batteries and solar is trying to secure its own supply.",
     "from": [
@@ -20,16 +20,16 @@
     {
       "id": "routes",
       "label": "Routes",
-      "text": "Three routes are being built: gigafactory-scale cell manufacturing (15 projects), nickel-rich cells (8) and lithium iron phosphate cells (1).",
+      "text": "Three routes are being built: gigafactory-scale cell manufacturing (18 projects), nickel-rich cells (8) and lithium iron phosphate cells (1).",
       "as_of": "2026-07-22",
       "numbers": [
-        "15",
+        "18",
         "8",
         "1"
       ],
       "parts": {
         "count": 3,
-        "list": "gigafactory-scale cell manufacturing (15 projects), nickel-rich cells (8) and lithium iron phosphate cells (1)",
+        "list": "gigafactory-scale cell manufacturing (18 projects), nickel-rich cells (8) and lithium iron phosphate cells (1)",
         "names": [
           "Gigafactory-scale cell manufacturing",
           "Nickel-rich cells",
@@ -47,17 +47,17 @@
     {
       "id": "pipeline_state",
       "label": "Pipeline",
-      "text": "15 European batteries and solar projects are under way, 13 of them have taken a final investment decision, and 3 are paused and 2 have been cancelled.",
+      "text": "18 European batteries and solar projects are under way, 16 of them have taken a final investment decision, and 3 are paused and 2 have been cancelled.",
       "as_of": "2026-07-22",
       "numbers": [
-        "15",
-        "13",
+        "18",
+        "16",
         "3",
         "2"
       ],
       "parts": {
-        "total": "15",
-        "committed": "13",
+        "total": "18",
+        "committed": "16",
         "committed_is_all": false,
         "paused": "3",
         "cancelled": "2",
@@ -86,6 +86,27 @@
       ],
       "href": "/projects/tesla-gruenheide-cells",
       "surface": true
+    },
+    {
+      "id": "binding_constraint",
+      "label": "Binding constraint",
+      "text": "Committing capacity against uncertain vehicle demand — a market constraint, acted on by 3 ranked measures at 2 of combined weight.",
+      "as_of": "2026-02-09",
+      "numbers": [
+        "3",
+        "2"
+      ],
+      "parts": {
+        "name": "Committing capacity against uncertain vehicle demand",
+        "type": "market",
+        "count": 3,
+        "weight": "2"
+      },
+      "sourced": [
+        "Committing capacity against uncertain vehicle demand"
+      ],
+      "href": "#bottleneck-batsol-demand-uncertainty",
+      "surface": false
     }
   ],
   "override_stale": false,

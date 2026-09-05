@@ -92,6 +92,20 @@ WHEN_GENERAL = "In force; applies to each calendar year"
 AUTO = ["auto"]
 BAT = ["batsol"]
 
+# WHAT IS UNDER LEGISLATIVE QUESTION, said on the rows it would change.
+#
+# COM(2025) 995, adopted 16 December 2025 (CELEX 52025PC0995), amends Regulation
+# (EU) 2019/631: the 2035 target would fall from a 100% reduction to 90% with
+# compensation credits, the 2030 target would be averaged over a period rather
+# than met in the year, the van target would move to 40%, and the excess
+# emissions premium formula would change. It is a proposal and this file reads
+# the law in force, so nothing here moves -- but a row that said nothing would
+# let a reader take the target for settled. See sources/queued.json.
+REVISION_UNDER_REVIEW = (
+    "A Commission proposal to revise this target is under legislative review; this row reads "
+    "the law in force."
+)
+
 ROWS: list[tuple] = [
 
     ("TGT-2030",
@@ -111,7 +125,7 @@ ROWS: list[tuple] = [
           demand=BAT,
           note="A 55% fleet reduction is not reachable on internal combustion alone at fleet "
                "scale, which is what makes this a demand instrument for cells and not only a "
-               "duty on a carmaker.")),
+               "duty on a carmaker. " + REVISION_UNDER_REVIEW)),
 
     ("TGT-2035",
      "From 1 January 2035, the following EU fleet-wide targets shall apply: (a) for the average "
@@ -130,7 +144,8 @@ ROWS: list[tuple] = [
           note="THE PROVISION THIS SECTOR IS BUILT ON. A 100% reduction on the tailpipe measure is "
                "a requirement that new cars emit no CO2 where they are driven, and the only volume "
                "technology that meets it is a battery electric vehicle. Every gigafactory row in "
-               "the projects dataset exists because somebody believes this sentence.")),
+               "the projects dataset exists because somebody believes this sentence. "
+               + REVISION_UNDER_REVIEW)),
 
     ("TGT-01",
      "The manufacturer shall ensure that its average specific emissions of CO2 do not exceed the "

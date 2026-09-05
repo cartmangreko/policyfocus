@@ -550,6 +550,61 @@
       }
     },
     {
+      "id": "calb-sines",
+      "site": "ZILS Lote 1A3.3, Sines",
+      "country": "PT",
+      "role": "plant",
+      "relation": "sector",
+      "status": "construction",
+      "label": "CALB Sines",
+      "name_line": "CALB Sines",
+      "sub": "CALB",
+      "href": "/projects/calb-sines",
+      "lat": 37.9871,
+      "lon": -8.7974,
+      "as_of": "2026-09-05",
+      "x": 70.2,
+      "y": 665.4,
+      "labels": {
+        "wide": {
+          "x": 84.1,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "CALB Sines",
+              "role": "name",
+              "size": 11.0,
+              "y": 661.7
+            },
+            {
+              "text": "CALB",
+              "role": "company",
+              "size": 9.5,
+              "y": 673.7
+            }
+          ]
+        },
+        "narrow": {
+          "x": 84.1,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "CALB Sines",
+              "role": "name",
+              "size": 21.0,
+              "y": 695.7
+            },
+            {
+              "text": "CALB",
+              "role": "company",
+              "size": 18.1,
+              "y": 718.6
+            }
+          ]
+        }
+      }
+    },
+    {
       "id": "catl-arnstadt",
       "site": "Arnstadt cell works",
       "country": "DE",
@@ -658,27 +713,33 @@
           ]
         },
         "narrow": {
-          "x": 527.9,
-          "anchor": "end",
+          "x": 541.8,
+          "anchor": "middle",
           "lines": [
             {
               "text": "CATL Debrecen",
               "role": "name",
               "size": 21.0,
-              "y": 524.8
+              "y": 677.5
             },
             {
               "text": "Contemporary Amperex",
               "role": "company",
               "size": 18.1,
-              "y": 547.7
+              "y": 700.4
             },
             {
               "text": "Technology",
               "role": "company",
               "size": 18.1,
-              "y": 569.4
+              "y": 722.0
             }
+          ],
+          "leader": [
+            541.8,
+            500.3,
+            541.8,
+            661.1
           ]
         }
       }
@@ -725,40 +786,23 @@
           ]
         },
         "narrow": {
-          "x": 260.8,
+          "x": 225.8,
           "anchor": "start",
           "lines": [
             {
               "text": "CATL and Stellantis",
               "role": "name",
               "size": 21.0,
-              "y": 683.6
+              "y": 604.0
             },
             {
               "text": "Zaragoza",
               "role": "name",
               "size": 21.0,
-              "y": 708.8
-            },
-            {
-              "text": "Automotive Cells",
-              "role": "company",
-              "size": 18.1,
-              "y": 731.7
-            },
-            {
-              "text": "Zaragoza (CATL and Stellantis joint venture)",
-              "role": "company",
-              "size": 18.1,
-              "y": 753.3
+              "y": 629.2
             }
           ],
-          "leader": [
-            210.5,
-            616.9,
-            260.8,
-            667.2
-          ]
+          "shortened": true
         }
       }
     },
@@ -798,27 +842,21 @@
           ]
         },
         "narrow": {
-          "x": 288.2,
-          "anchor": "middle",
+          "x": 302.1,
+          "anchor": "start",
           "lines": [
             {
               "text": "AESC Douai",
               "role": "name",
               "size": 21.0,
-              "y": 368.2
+              "y": 473.5
             },
             {
               "text": "AESC",
               "role": "company",
               "size": 18.1,
-              "y": 391.1
+              "y": 496.4
             }
-          ],
-          "leader": [
-            288.2,
-            437.4,
-            288.2,
-            398.6
           ]
         }
       }
@@ -859,20 +897,20 @@
           ]
         },
         "narrow": {
-          "x": 230.0,
+          "x": 224.5,
           "anchor": "end",
           "lines": [
             {
               "text": "AESC Sunderland",
               "role": "name",
               "size": 21.0,
-              "y": 298.1
+              "y": 335.4
             },
             {
               "text": "AESC",
               "role": "company",
               "size": 18.1,
-              "y": 321.0
+              "y": 358.4
             }
           ]
         }
@@ -914,30 +952,29 @@
           ]
         },
         "narrow": {
-          "x": 372.7,
-          "anchor": "end",
+          "x": 524.7,
+          "anchor": "start",
           "lines": [
             {
               "text": "Gotion InoBat",
               "role": "name",
               "size": 21.0,
-              "y": 624.8
+              "y": 537.0
             },
             {
               "text": "Batteries Šurany",
               "role": "name",
               "size": 21.0,
-              "y": 650.0
+              "y": 562.2
             }
           ],
           "leader": [
-            488.5,
+            496.7,
             492.6,
-            372.7,
-            608.4
+            524.7,
+            520.6
           ],
-          "shortened": true,
-          "crowded": true
+          "shortened": true
         }
       }
     },
@@ -1044,33 +1081,33 @@
           ]
         },
         "narrow": {
-          "x": 368.6,
-          "anchor": "middle",
+          "x": 284.9,
+          "anchor": "end",
           "lines": [
             {
               "text": "Northvolt Drei",
               "role": "name",
               "size": 21.0,
-              "y": 199.7
+              "y": 232.3
             },
             {
               "text": "Northvolt Drei Project",
               "role": "company",
               "size": 18.1,
-              "y": 222.6
+              "y": 255.2
             },
             {
               "text": "GmbH",
               "role": "company",
               "size": 18.1,
-              "y": 244.3
+              "y": 276.8
             }
           ],
           "leader": [
-            368.6,
-            362.3,
-            368.6,
-            251.9
+            364.5,
+            364.0,
+            284.9,
+            284.4
           ]
         }
       }
@@ -1166,8 +1203,8 @@
           ]
         },
         "narrow": {
-          "x": 200.4,
-          "anchor": "end",
+          "x": 228.2,
+          "anchor": "start",
           "lines": [
             {
               "text": "PowerCo Valencia",
@@ -1234,16 +1271,21 @@
               "text": "PowerCo Salzgitter",
               "role": "name",
               "size": 21.0,
-              "y": 470.6
+              "y": 542.3
+            },
+            {
+              "text": "PowerCo",
+              "role": "company",
+              "size": 18.1,
+              "y": 565.2
             }
           ],
           "leader": [
             385.6,
             415.5,
             385.6,
-            454.3
-          ],
-          "shortened": true
+            525.9
+          ]
         }
       }
     },
@@ -1289,28 +1331,143 @@
           ]
         },
         "narrow": {
-          "x": 539.4,
+          "x": 551.9,
           "anchor": "start",
           "lines": [
             {
               "text": "Samsung SDI Göd",
               "role": "name",
               "size": 21.0,
-              "y": 543.5
-            },
-            {
-              "text": "Samsung SDI",
-              "role": "company",
-              "size": 18.1,
-              "y": 566.4
+              "y": 498.8
             }
           ],
           "leader": [
-            511.4,
-            499.1,
-            539.4,
-            527.1
+            513.1,
+            495.0,
+            551.9,
+            495.0
+          ],
+          "shortened": true
+        }
+      }
+    },
+    {
+      "id": "sk-on-ivancsa",
+      "site": "Iváncsa cell works",
+      "country": "HU",
+      "role": "plant",
+      "relation": "sector",
+      "status": "construction",
+      "label": "SK On Iváncsa",
+      "name_line": "SK On Iváncsa",
+      "sub": "SK On",
+      "href": "/projects/sk-on-ivancsa",
+      "lat": 47.134,
+      "lon": 18.8204,
+      "as_of": "2026-09-05",
+      "x": 503.9,
+      "y": 506.7,
+      "labels": {
+        "wide": {
+          "x": 513.9,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "SK On Iváncsa",
+              "role": "name",
+              "size": 11.0,
+              "y": 525.3
+            },
+            {
+              "text": "SK On",
+              "role": "company",
+              "size": 9.5,
+              "y": 537.3
+            }
           ]
+        },
+        "narrow": {
+          "x": 384.0,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "SK On Iváncsa",
+              "role": "name",
+              "size": 21.0,
+              "y": 377.9
+            }
+          ],
+          "leader": [
+            499.8,
+            502.6,
+            384.0,
+            386.8
+          ],
+          "shortened": true,
+          "crowded": true
+        }
+      }
+    },
+    {
+      "id": "sk-on-komarom",
+      "site": "Komárom industrial park works",
+      "country": "HU",
+      "role": "plant",
+      "relation": "sector",
+      "status": "operating",
+      "label": "SK On Komárom",
+      "name_line": "SK On Komárom",
+      "sub": "SK On",
+      "href": "/projects/sk-on-komarom",
+      "lat": 47.7401,
+      "lon": 18.0685,
+      "as_of": "2026-09-05",
+      "x": 492.0,
+      "y": 495.4,
+      "labels": {
+        "wide": {
+          "x": 453.1,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "SK On Komárom",
+              "role": "name",
+              "size": 11.0,
+              "y": 542.9
+            },
+            {
+              "text": "SK On",
+              "role": "company",
+              "size": 9.5,
+              "y": 554.9
+            }
+          ],
+          "leader": [
+            487.9,
+            499.5,
+            453.1,
+            534.3
+          ]
+        },
+        "narrow": {
+          "x": 437.6,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "SK On Komárom",
+              "role": "name",
+              "size": 21.0,
+              "y": 432.2
+            }
+          ],
+          "leader": [
+            487.9,
+            491.3,
+            437.6,
+            441.0
+          ],
+          "shortened": true,
+          "crowded": true
         }
       }
     },
@@ -1332,51 +1489,51 @@
       "y": 485.4,
       "labels": {
         "wide": {
-          "x": 581.0,
+          "x": 602.0,
           "anchor": "start",
           "lines": [
             {
               "text": "Sunwoda Nyíregyháza",
               "role": "name",
               "size": 11.0,
-              "y": 532.9
+              "y": 553.9
             },
             {
               "text": "Sunwoda",
               "role": "company",
               "size": 9.5,
-              "y": 544.9
+              "y": 565.9
             }
           ],
           "leader": [
             546.2,
             489.5,
-            581.0,
-            524.3
+            602.0,
+            545.3
           ]
         },
         "narrow": {
-          "x": 487.7,
+          "x": 458.4,
           "anchor": "end",
           "lines": [
             {
               "text": "Sunwoda",
               "role": "name",
               "size": 21.0,
-              "y": 397.0
+              "y": 367.7
             },
             {
               "text": "Nyíregyháza",
               "role": "name",
               "size": 21.0,
-              "y": 422.2
+              "y": 392.9
             }
           ],
           "leader": [
             538.0,
             481.3,
-            487.7,
-            431.0
+            458.4,
+            401.7
           ],
           "shortened": true,
           "crowded": true
@@ -1425,30 +1582,29 @@
           ]
         },
         "narrow": {
-          "x": 261.2,
-          "anchor": "end",
+          "x": 427.8,
+          "anchor": "middle",
           "lines": [
             {
               "text": "Tesla Giga Berlin cell",
               "role": "name",
               "size": 21.0,
-              "y": 395.3
+              "y": 203.5
             },
             {
               "text": "manufacturing",
               "role": "name",
               "size": 21.0,
-              "y": 420.5
+              "y": 228.7
             }
           ],
           "leader": [
-            422.0,
-            404.1,
-            261.2,
-            404.1
+            427.8,
+            398.3,
+            427.8,
+            237.5
           ],
-          "shortened": true,
-          "crowded": true
+          "shortened": true
         }
       }
     },
@@ -1488,27 +1644,27 @@
           ]
         },
         "narrow": {
-          "x": 224.3,
+          "x": 234.1,
           "anchor": "end",
           "lines": [
             {
               "text": "Verkor Gigafactory",
               "role": "name",
               "size": 21.0,
-              "y": 341.1
+              "y": 420.7
             },
             {
               "text": "Bourbourg",
               "role": "name",
               "size": 21.0,
-              "y": 366.3
+              "y": 445.9
             }
           ],
           "leader": [
-            274.6,
-            425.4,
-            224.3,
-            375.1
+            272.9,
+            429.5,
+            234.1,
+            429.5
           ],
           "shortened": true,
           "crowded": true
@@ -1582,14 +1738,14 @@
           ]
         },
         "narrow": {
-          "x": 242.9,
-          "anchor": "middle",
+          "x": 234.2,
+          "anchor": "end",
           "lines": [
             {
               "text": "France",
               "role": "country",
               "size": 17.2,
-              "y": 590.8
+              "y": 571.8
             }
           ]
         }
@@ -1610,34 +1766,16 @@
               "y": 364.7
             }
           ]
-        }
-      }
-    },
-    {
-      "iso": "HU",
-      "text": "Hungary",
-      "labels": {
-        "wide": {
-          "x": 508.1,
-          "anchor": "middle",
-          "lines": [
-            {
-              "text": "Hungary",
-              "role": "country",
-              "size": 9.0,
-              "y": 510.8
-            }
-          ]
         },
         "narrow": {
-          "x": 559.3,
-          "anchor": "start",
+          "x": 212.4,
+          "anchor": "end",
           "lines": [
             {
-              "text": "Hungary",
+              "text": "United Kingdom",
               "role": "country",
               "size": 17.2,
-              "y": 501.5
+              "y": 391.5
             }
           ]
         }
@@ -1648,26 +1786,14 @@
       "text": "Italy",
       "labels": {
         "wide": {
-          "x": 394.1,
-          "anchor": "middle",
-          "lines": [
-            {
-              "text": "Italy",
-              "role": "country",
-              "size": 9.0,
-              "y": 562.4
-            }
-          ]
-        },
-        "narrow": {
-          "x": 421.3,
+          "x": 398.6,
           "anchor": "start",
           "lines": [
             {
               "text": "Italy",
               "role": "country",
-              "size": 17.2,
-              "y": 601.4
+              "size": 9.0,
+              "y": 572.3
             }
           ]
         }
@@ -1690,14 +1816,44 @@
           ]
         },
         "narrow": {
-          "x": 455.8,
+          "x": 488.1,
           "anchor": "end",
           "lines": [
             {
               "text": "Poland",
               "role": "country",
               "size": 17.2,
-              "y": 368.1
+              "y": 462.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "iso": "PT",
+      "text": "Portugal",
+      "labels": {
+        "wide": {
+          "x": 104.8,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Portugal",
+              "role": "country",
+              "size": 9.0,
+              "y": 605.6
+            }
+          ]
+        },
+        "narrow": {
+          "x": 92.7,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Portugal",
+              "role": "country",
+              "size": 17.2,
+              "y": 607.0
             }
           ]
         }
@@ -1752,15 +1908,15 @@
       }
     }
   ],
-  "as_of": "2026-09-04",
+  "as_of": "2026-09-05",
   "coordinates": [
     {
-      "site": "18 sites",
-      "south": 39.6482,
+      "site": "21 sites",
+      "south": 37.9871,
       "north": 64.734,
-      "west": -2.9549,
+      "west": -8.7974,
       "east": 21.7435,
-      "as_of": "2026-09-04"
+      "as_of": "2026-09-05"
     }
   ],
   "undrawn": {

@@ -1242,6 +1242,19 @@
   }
  },
  {
+  "id": "material:cobalt",
+  "kind": "material",
+  "label": "Cobalt",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
   "id": "material:directly-reduced-iron",
   "kind": "material",
   "label": "Directly reduced iron",
@@ -1277,6 +1290,71 @@
    "prodcom_code": null,
    "sectors": [
     "steel"
+   ]
+  }
+ },
+ {
+  "id": "material:lithium",
+  "kind": "material",
+  "label": "Lithium",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "material:manganese",
+  "kind": "material",
+  "label": "Manganese",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "material:natural-graphite",
+  "kind": "material",
+  "label": "Natural graphite",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "material:nickel",
+  "kind": "material",
+  "label": "Nickel",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "material:sodium",
+  "kind": "material",
+  "label": "Sodium",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
    ]
   }
  },
@@ -8509,6 +8587,62 @@
   }
  },
  {
+  "id": "project:calb-sines",
+  "kind": "project",
+  "label": "CALB Sines",
+  "attrs": {
+   "company": "CALB",
+   "plant": "Sines",
+   "country": "PT",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "ZILS Lote 1A3.3, Sines",
+     "lat": 37.9871,
+     "lon": -8.7974,
+     "precision": "plant",
+     "retrieved_date": "2026-09-05",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1262719042",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Construção da Unidade Industrial de Baterias de Lítio da CALB; official_name=Calb Europe, S.A.; landuse=construction; construction=industrial; addr:street=ZILS; addr:housenumber=Lote 1A3.3; addr:city=Sines; addr:postcode=7520-064",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The point is the area-weighted centroid of the plot polygon, which carries the operator's own name and the ZILS lot number. The basemap still has it as landuse=construction, which matches the status here.",
+     "site_evidence": {
+      "kind": "composite",
+      "note": "THE COMPANY SOURCE NAMES NO CITY. CALB's own groundbreaking release says the works is in Portugal and stops there — no town, no lot, no capacity — which is the same shape as Sunwoda's 'Hungary' and is why the ordinary company-only standard cannot confirm this site. All three legs are cited so a reader who disagrees with the standard can see what it was applied to. AICEP, the Portuguese state's investment agency, announced the same investment and is named here rather than cited: the state leg is the Government's own briefing room, not an agency's summary of it.",
+      "company": {
+       "url": "http://en.calb-tech.com/news_detail/5.html",
+       "publisher": "CALB Group Co., Ltd.",
+       "date": "2025-02-27",
+       "verbatim": "On February 24, local time, construction commenced on CALB's Portugal facility, which will be a zero-carbon AI gigafactory with delivery expected in 2027.",
+       "note": "Confirms the project, the country and the build start, and names neither the town nor the site. The host's certificate does not match its own name, so https fails and the page serves over plain http, which is how check_links reaches it. It was opened in a browser as well, and the filed copy is byte-for-byte the page this URL serves.",
+       "retrieved_manually": "sources/manual/calb-sines--calb-sines-groundbreaking.html"
+      },
+      "state": {
+       "url": "https://portugal.gov.pt/gc24/comunicacao/noticias/fabrica-de-ultima-geracao-de-baterias-de-litio-lancada-em-sines",
+       "publisher": "Government of Portugal — XXIV Governo Constitucional",
+       "date": "2025-02-24",
+       "verbatim": "O Ministro da Economia, Pedro Reis, esteve presente na cerimónia de lançamento do projeto de uma nova fábrica de baterias de lítio em Sines da CALB.",
+       "note": "The Government's own briefing room names the town, the company and the product, and puts its economy minister at the launch the company's release describes without locating. The same page states the capacity: 'Assim que estiver operacional, a fábrica de última geração de baterias de lítio em Sines terá capacidade de produção de 15 GWh de armazenamento de energia.'"
+      },
+      "basemap": {
+       "url": "https://www.openstreetmap.org/way/1262719042",
+       "publisher": "OpenStreetMap contributors",
+       "verbatim": "name=Construção da Unidade Industrial de Baterias de Lítio da CALB; official_name=Calb Europe, S.A.; addr:street=ZILS; addr:housenumber=Lote 1A3.3; addr:city=Sines",
+       "note": "A plot under construction carrying the operator's own name and its Portuguese company name, at a numbered lot in the Sines industrial and logistics zone the state names."
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
   "id": "project:carbon2business-lagerdorf",
   "kind": "project",
   "label": "Carbon2Business",
@@ -9323,6 +9457,84 @@
      },
      "confidence": "secondary",
      "note": "The polygon is tagged by function — 'Cella gyártás' is cell manufacturing — which is what makes it the cell works rather than the estate. An earlier candidate, relation/16364462, is tagged only 'Samsung' and was refused for identifying the site rather than the works. Samsung SDI's own network page puts SAMSUNG SDI Hungary Zrt. at '2131 Göd, Schenek István utca 1'; the street is not in the basemap, so the address corroborates rather than places it."
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:sk-on-ivancsa",
+  "kind": "project",
+  "label": "SK On Iváncsa",
+  "attrs": {
+   "company": "SK On",
+   "plant": "Iváncsa",
+   "country": "HU",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Iváncsa cell works",
+     "lat": 47.134,
+     "lon": 18.8204,
+     "precision": "plant",
+     "retrieved_date": "2026-09-05",
+     "source": {
+      "url": "https://skonhungary.com/",
+      "type": "company",
+      "publisher": "SK On Hungary Kft.",
+      "verbatim": "H-2454 Iváncsa, SK út 1.",
+      "note": "THE POSITION WALKS BACK TO THE OPERATOR'S OWN PUBLISHED ADDRESS, and to nothing else. SK On publishes the works in two forms: this street address on its Hungarian site, and the land-registry parcel 'HRSZ 99/48 Iváncsa 2454' on its global places-of-business page (filed at sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html). The point is where the basemap carries that address — an entry addressed SK út 1, 2454 Iváncsa, on the road that serves the works and is named after the operator. THE PARCEL ITSELF PLACES NOTHING HERE: HRSZ 99/48 geocodes to the settlement, and this pipeline has no cadastral source that would resolve it. The industrial buildings 300 to 800 metres north along SK út carry no name, so no polygon places this works either — the address does.",
+      "retrieved_manually": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html"
+     },
+     "confidence": "secondary",
+     "address": {
+      "text": "H-2454 Iváncsa, SK út 1.",
+      "url": "https://skonhungary.com/",
+      "publisher": "SK On Hungary Kft.",
+      "date": "2026-09-05",
+      "also": "SK On Hungary Iváncsa HRSZ 99/48 Iváncsa 2454, Hungary",
+      "note": "Two published forms of one works: the street address on the operator's Hungarian site and the land-registry parcel on its global places-of-business page. The street address is what the point was derived from; the parcel resolves only to the settlement here."
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "project:sk-on-komarom",
+  "kind": "project",
+  "label": "SK On Komárom",
+  "attrs": {
+   "company": "SK On",
+   "plant": "Komárom",
+   "country": "HU",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Komárom industrial park works",
+     "lat": 47.7401,
+     "lon": 18.0685,
+     "precision": "plant",
+     "retrieved_date": "2026-09-05",
+     "source": {
+      "url": "https://skonhungary.com/",
+      "type": "company",
+      "publisher": "SK On Hungary Kft.",
+      "verbatim": "SK On Hungary Kft. 2903 Komárom, Irinyi János utca 9.",
+      "note": "THE POSITION WALKS BACK TO THE OPERATOR'S PUBLISHED ADDRESS AND TO A BASEMAP BUILDING CARRYING ITS NAME ON THAT STREET. SK On publishes two Komárom addresses — this one for SK On Hungary Kft. and '2900 Komárom, Klapka Gyorgy ut 39.' for SK Battery Manufacturing, on the global page filed at sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html. Neither geocodes to a house number: both resolve only to a street. The point is the centroid of the industrial building the basemap names 'SK Battery', which stands on Irinyi János utca in the Komárom industrial park, at the address the operator publishes. IT IS ONE POINT FOR WHAT THE STATE CALLS TWO PLANTS: the row carries the operator's Komárom works as one project and says so rather than splitting it on an address nobody can resolve.",
+      "retrieved_manually": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html"
+     },
+     "confidence": "secondary",
+     "address": {
+      "text": "SK On Hungary Kft. 2903 Komárom, Irinyi János utca 9.",
+      "url": "https://skonhungary.com/",
+      "publisher": "SK On Hungary Kft.",
+      "date": "2026-09-05",
+      "also": "SK Battery Manufacturing Komárom 2900 Komárom, Klapka Gyorgy ut 39., Hungary",
+      "note": "Both addresses the operator publishes for Komárom. Neither resolves to a house number; the point is the basemap building named 'SK Battery' on Irinyi János utca, which is the street in the first of them."
+     }
     }
    ]
   }

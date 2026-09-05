@@ -12,6 +12,14 @@ Read for: whether the duty summarises the span correctly, whether the addressee 
 are right, whether the conditional dates are fairly stated, and — on the fleet rows —
 whether the demand edges are drawn in the right places.
 
+**RATIFIED 5 SEPTEMBER 2026, WITH TWO CHANGES.** Everything else stands as written, including
+all four demand edges and the two deliberate non-edges. The changes: `CF-01`'s `When` cell now
+carries Art. 7(1)'s per-category split, and `TGT-2030` and `TGT-2035` each gain a sentence
+saying that a Commission proposal to revise the target is under legislative review and that
+the row reads the law in force. The proposal — COM(2025) 995 of 16 December 2025, CELEX
+52025PC0995 — is on watch in `sources/queued.json` and is not read here: a proposal is not
+the law.
+
 ---
 
 ## Batteries Regulation — Regulation (EU) 2023/1542
@@ -78,7 +86,7 @@ consolidated at 31 July 2025 (CELEX 02023R1542-20250731) · [source](https://eur
 | Trigger | each battery model, at each manufacturing site |
 | Frequency | per model per site |
 | Verification | notified body |
-| **When** | 18 February 2025, or 12 months after the delegated and implementing acts under Art. 7(1) enter into force, whichever is the latest. Neither act has been adopted, so the date is not yet fixed |
+| **When** | Staggered by battery category (Art. 7(1), second subparagraph), each date being the later of the date given and the interval stated after the delegated and implementing acts enter into force: electric vehicle batteries 18 February 2025 or 12 months; rechargeable industrial batteries except those with exclusively external storage 18 February 2026 or 18 months; LMT batteries 18 August 2028 or 18 months; rechargeable industrial batteries with external storage 18 August 2030 or 18 months. Neither act has been adopted, so none of the dates is yet fixed |
 | Names | batsol |
 | Reaches | auto |
 | Drivers | D1, D3 |
@@ -406,7 +414,7 @@ consolidated at 9 July 2025 (CELEX 02019R0631-20250709) · [source](https://eur-
 > equal to a ►M5 50 % ◄ reduction of the target in 2021 determined in accordance with point 6.1.2
 > of Part B of Annex I.
 
-**Reading note.** A 55% fleet reduction is not reachable on internal combustion alone at fleet scale, which is what makes this a demand instrument for cells and not only a duty on a carmaker.
+**Reading note.** A 55% fleet reduction is not reachable on internal combustion alone at fleet scale, which is what makes this a demand instrument for cells and not only a duty on a carmaker. A Commission proposal to revise this target is under legislative review; this row reads the law in force.
 
 ### `TGT-2035` — Art. 1(5a)
 
@@ -429,7 +437,7 @@ consolidated at 9 July 2025 (CELEX 02019R0631-20250709) · [source](https://eur-
 > emissions of the new passenger car fleet, an EU fleet-wide target equal to a 100 % reduction of
 > the target in 2021 determined in accordance with Part A, point 6.1.3, of Annex I;
 
-**Reading note.** THE PROVISION THIS SECTOR IS BUILT ON. A 100% reduction on the tailpipe measure is a requirement that new cars emit no CO2 where they are driven, and the only volume technology that meets it is a battery electric vehicle. Every gigafactory row in the projects dataset exists because somebody believes this sentence.
+**Reading note.** THE PROVISION THIS SECTOR IS BUILT ON. A 100% reduction on the tailpipe measure is a requirement that new cars emit no CO2 where they are driven, and the only volume technology that meets it is a battery electric vehicle. Every gigafactory row in the projects dataset exists because somebody believes this sentence. A Commission proposal to revise this target is under legislative review; this row reads the law in force.
 
 ### `TGT-01` — Art. 4(1)
 
@@ -540,6 +548,15 @@ calendar date *or* a stated interval after a delegated act enters into force, wh
 later, and none of those acts exists. The `When` cell carries the conditional in full
 rather than printing the calendar date, because the calendar date is the one thing that is
 certainly not when the duty starts.
+
+**And on `CF-01` the conditional is four conditionals.** Ratified 5 September 2026, on a
+check of Art. 7(1)'s second subparagraph: the declaration applies from a different date for
+each battery category — electric vehicle batteries at 18 February 2025 or 12 months after
+the acts, rechargeable industrial batteries except those with exclusively external storage
+at 18 February 2026 or 18 months, LMT batteries at 18 August 2028 or 18 months, and
+rechargeable industrial batteries with external storage at 18 August 2030 or 18 months. The
+row carried the electric-vehicle date alone, which said the duty reaches an LMT battery
+three and a half years before it does. The `When` cell now carries the split.
 
 **`CF-01` is why this sector has no money model.** It is the only provision in either act
 that is per-manufacturing-site, and its methodology sits in an implementing act that is on

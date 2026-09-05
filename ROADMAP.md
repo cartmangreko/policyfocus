@@ -420,6 +420,45 @@ same deltaE floor. Ratifying is a real outcome and should be recorded as one:
 the entry exists so that the answer is written down, not so that the values
 change.
 
+## A research-funding layer, beside the capital one
+
+**Its own stack, small.** Touches `data/transition/funding.json` (a second row
+kind, or a second file beside it), `sources/sector_map.py` (the vocabulary and
+the loader), `sources/build_importance.py` and `sources/build_opportunity.py`
+(both of which sum funding today and would have to say which kind they are
+summing), and the Opportunity section of `web/components/SectorMap.tsx`.
+
+The money model was given a boundary on 5 September 2026: it holds capital
+committed to building an admitted works, and research and pilot funding is
+excluded. The boundary is stated in the method prose at the top of
+`funding.json`, and it is the right line for the figure the sector pages print —
+a committed total that mixed money spent on finding out with money spent on
+building would be inflated by an amount that varies with how research-heavy an
+industry is, which is exactly what a comparison between sectors must not do.
+
+**What it leaves on the floor is real money, already found.** 3D at Dunkirk holds
+about €14.8 million of Horizon 2020 money for the DMX capture pilot, and
+voestalpine's H2Future at Linz about €12 million for the electrolyser
+demonstration. Both are traceable, both are facts about projects on this
+platform, and today neither has anywhere to live except a paragraph of method
+prose. A pilot is on this platform *because* it is a pilot; the funding that
+built it is part of what it is.
+
+**What the layer would be.** Rows of the same shape as a capital allocation —
+instrument, programme, legal basis, recipient, status, sourced amount — carrying
+a kind that says the money bought knowledge rather than capacity, summed
+separately everywhere, and never folded into the committed figure. The interest
+of the layer is the comparison it makes available and not the total: how much of
+a sector's public money has gone into learning versus building is a question
+about where a technology has got to, and it is a question this platform is
+otherwise well shaped to answer.
+
+**Why it is not being built now.** A second kind of money doubles the number of
+places a sum has to say what it is summing, and doing that before the boundary
+has been lived with would be building the mechanism against two examples. The
+entry exists so that the two findings are not lost and so that the next research
+grant that turns up has somewhere to be filed rather than a decision to reopen.
+
 ## Downstream reach channel from the Eurostat input-output data
 
 **Its own stack.** Touches `web/lib/reachChannel.ts`, the reach data behind

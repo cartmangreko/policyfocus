@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=1250">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="/css/default.css">
+<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css">
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/jquery-scrolltofixed-min.js"></script>
+<script src="/js/common.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-192762366-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-192762366-1');
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQ880VNLMR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NQ880VNLMR');
+</script>
+ 
+<title>Overseas &lt; Places of busines &lt; Company &lt; SK on</title> 
+<script>
+$(document).ready(function(){
+	$("#contents .loc-list a").click(function(){
+		var id = $(this).parent();
+		if(id.hasClass("show")){
+			$("#contents .loc-list.show").removeClass("show");
+			id.find(".map-inner").TRANSITION(function() {
+				id.find("iframe").hide();
+			});			
+				link_title = $(this).children("span").text().replace("닫기", "열기");
+				$(this).find("span").html(link_title);
+			return false;
+		} else {
+			id.find("iframe").show();
+			link_title = $(this).children("span").text().replace("열기", "닫기");
+			$(this).find("span").html(link_title);
+			if(!id.hasClass("open")){
+				id.addClass("open");
+				var idx = $(this).attr("data-mapid");
+				map_open(idx);
+			}
+		}
+		$("#contents .loc-list.show").removeClass("show").TRANSITION(function(me) {
+			me.find("iframe").hide();
+		});			
+
+		id.addClass("show");
+		return false;
+	});
+});
+
+//구글맵 오픈
+//
+function map_open(id){
+	//alert("id = "+ id);
+	var urlV = "map_open.asp?map_no="+ id;
+	var idx = $("#contents .loc-list.show").attr("data-idx");
+	if(id == idx){
+		return false;
+	}
+	$.ajax({
+		url : urlV,
+		cache : false,
+		success: function(html){
+			$("#"+ id +"").html(html);
+		}
+	});
+}
+</script>
+</head>
+
+
+<body>
+
+<!-- uskip -->
+	<div id="u-skip">
+		<a href="#gnb-menu"><span>Gnb Go</span></a>
+		<a href="#subsidiary"><span>Subsidiaries Go</span></a>
+	</div>
+<!-- //uskip -->
+
+<!-- wrap -->
+<div id="wrap">
+	<!-- container -->
+	<div id="container">
+		<!-- gnb -->
+		
+		<div id="header">
+			<div class="pos-fixed">
+				<div class="inner">
+					<h1><a href="/main.asp"><img src="/images/common/logo.png" alt="SK on" /></a></h1>
+					<!-- gnb -->
+					<div id="gnb" >
+						<ul>
+							<li class=" menu-1 m-1 curr"><a class="dep-0" id="gnb1" href="javascript: void(0);">Company</a>
+								<div class="dep-1">
+									<div class="sub-menu">
+										<div class="fl">
+											<div class="right hidden">
+												<h2>Company</h2>
+												<p>introduction, networks,<br>press materials and more.</p>
+											</div>
+											<ul class="m-list">
+												<li class="d-2 w-4"><a href="/company/overview.asp" class="m-2">Introduction</a>
+													<ul>
+														<li><a href="/company/overview.asp">Overview</a></li>
+														<li><a href="/company/vision.asp">Vision</a></li>
+														<li><a href="/company/skms.asp">Management Philosophy (SKMS)</a></li>
+														<li><a href="/company/history.asp">History</a></li>
+													</ul>
+												</li>
+												<li class="d-2 w-1"><a href="/company/ceo.asp" class="m-2">CEO</a>
+													<ul>
+														<li><a href="/company/ceo.asp">CEO Message </a></li>
+													</ul>
+												</li>
+												<li class="d-2 w-2"><a href="/company/local.asp" class="m-2">Places of business</a>
+													<ul>
+														<li><a href="/company/local.asp">Domestic</a></li>
+														<li><a href="/company/global.asp">Overseas</a></li>
+													</ul>
+												</li>
+												<li class="d-2 w-3"><a href="/company/adv_movie3.asp" class="m-2">Press</a>
+													<ul>
+														<li><a href="https://askinno.com/global/" target="_blank" title="Open a new window">Newsroom</a></li>
+														<li><a href="/company/adv_movie3.asp">PR Video</a></li>
+														<li><a href="/company/press.asp">News Releases</a></li>
+													</ul>
+												</li>
+											</ul>
+											<div class="btn-close">
+											<a href="javascript: void(0);"><span>Company introduction close</span></a></div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="menu-2 m-1 "><a class="dep-0" href="javascript: void(0);">Sustainability</a>
+								<div class="dep-1">
+									<div class="sub-menu">
+										<div class="fl">
+											<div class="right">
+												<h2>Sustainability</h2>
+												<p>SK ESG, sustainability, and <br>SK DBL and more.</p>
+											</div>
+											<ul class="m-list">
+												<li class="d-2 w-2"><a href="/together/vision_esg.asp" class="m-2">ESG</a>
+													<ul>
+														<li><a href="/together/vision_esg.asp">ESG Management Vision</a></li>
+														<li><a href="/together/happiness.asp">Double Bottom Line</a></li>
+														<li><a href="/together/focus.asp">Focus Issue</a></li>												
+													</ul>
+												</li>
+												<!-- <li class="d-2"><a href="/together/netzero.asp" class="m-2">Environment</a>
+													<ul>
+														<li><a href="/together/netzero.asp">Net Zero</a></li>
+														<li><a href="/together/re100.asp">RE 100</a></li>
+													</ul>
+												</li> -->
+												<li class="d-2 w-4"><a href="/together/she_01.asp" class="m-2">Social</a>
+													<ul>
+														<li><a href="/together/she_01.asp">SHE</a></li>
+														<li><a href="/together/vcm_01.asp">Supply Chain Management</a></li>
+														<li><a href="/together/csr_021.asp">Human Rights</a></li>
+														<!-- <li><a href="/together/sc.asp">Contribution to local community</a></li> -->
+														<li><a href="/together/csr_031.asp">Stakeholders comm</a></li>
+													</ul>
+												</li>
+												<li class="d-2 w-2"><a href="/together/governance.asp" class="m-2">Governance</a>
+													<ul>
+														<li><a href="/together/governance.asp">Compliance management</a></li>
+														<li><a href="/together/ethics_01.asp">Ethical Management</a></li>
+														<li><a href="/together/ethics_tax.asp">Tax Strategy</a></li>														
+													</ul>
+												</li>
+												<li class="d-2 w-3"><a href="/together/esg_report.asp" class="m-2">Archive</a>
+													<ul>
+														<li><a href="/together/esg_report.asp">ESG Report</a></li>														
+													</ul>
+												</li>
+											</ul>
+											<div class="btn-close"><a href="javascript: void(0);"><span>Sustainability close</span></a></div>
+										</div>
+									</div>
+								</div>
+							</li>
+								<li class="menu-3 m-1 "><a class="dep-0" href="javascript: void(0);">Business</a>
+								<div class="dep-1">
+									<div class="sub-menu">
+										<div class="fl">
+											<div class="right">
+												<h2>Business</h2>
+												<p>Business, technology and more.</p>
+											</div>
+											<ul class="m-list">
+												<li class="d-2 w-3"><a href="/business/business_01.asp" class="m-2">Business</a>
+												</li>
+												<li class="d-2 w-3"><a href="/business/technology.asp" class="m-2">Technology</a>
+													</li>
+											</ul>
+											<div class="btn-close"><a href="javascript: void(0);"><span>Business close</span></a></div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="menu-4 m-1 "><a class="dep-0" href="javascript: void(0);">Recruit</a>
+								<div class="dep-1">
+									<div class="sub-menu">
+										<div class="fl">
+											<div class="right">
+												<h2>Recruit</h2>
+												<p>Corporate culture, HR system, and recruits and more.</p>
+											</div>
+											<ul class="m-list">
+												<li class="d-2 w-3"><a href="/recruit/org_culture.asp" class="m-2">Corporate Culture</a></li>
+											</ul>
+											<div class="btn-close"><a href="javascript: void(0);"><span>Recruit close</span></a></div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- //gnb -->
+					<div class="util-menu">
+						<ul>
+							<li id="btn-global"><a href="#global-wrap" class="util-2" title="language open"><span>language</span></a></li>
+							<li id="btn-sitemap"><a href="#sitemap-wrap" class="util-3" title="sitemap open"><span>Sitemap</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="gnb-area"></div>
+		<!-- //gnb -->
+
+		<!-- contents -->
+		<div id="contents" class="bus-place">
+			<div class="inner">
+				<!-- navigation -->
+				<div id="nav">
+					<ul>
+						<li>Company</li>
+						<li>Places of busines</li>
+						<li class="last">Overseas</li>
+					</ul>
+				</div>
+				<!-- //navigation -->
+
+				<div class="cont-tit">
+					<h2>Overseas Network</h2>
+					<p><span>SK on</span> is stretching all around the world</p>
+					<span class="margin"></span>
+				</div>
+
+				<div class="section map map-2">
+					<img src="/images/company/eng_map_2.png" alt="해외지도(해외 사업장)" />
+				</div>
+
+				<!-- 22.02.08 -->
+				<!-- <div class="section map map-2">
+		        	<a href="javascript:void(0);" class="loc-1" title="Yancheng,Beijing,Changzhou,Huizhou"><img src="/images/company/map_loc_2_11_over.png" alt="Yancheng,Beijing,Changzhou,Huizhou"><span></span></a>
+					<a href="javascript:void(0);" class="loc-2" title="Hungary Komárom, Iváncsa"><img src="/images/company/map_loc_2_21_over.png" alt="Komárom, Iváncsa"><span></span></a>
+					<a href="javascript:void(0);" class="loc-3" title="USA Georgia, Tennessee, Kentucky"><img src="/images/company/map_loc_2_31_over.png" alt="USA Georgia, Tennessee, Kentucky"><span></span></a>	
+					<img src="/images/company/map_2.gif" alt="global map"> 
+			    </div> -->
+
+					<!-- <div class="section map map-2">
+					<div class="mv loc-1"><img src="/images/company/map_loc_2_11_over.png" alt="China Yancheng,Beijing,Changzhou,Huizhou"><span></span></div>
+					<div class="mv loc-2"><img src="/images/company/map_loc_2_21_over.png" alt="Hungary Komárom, Iváncsa"><span></span></div>
+					<div class="mv loc-3"><img src="/images/company/map_loc_2_31_over.png" alt="USA Commerce, Tennessee, Kentucky"><span></span></div>	
+					<img src="/images/company/map_2.gif" alt="해외지도(해외 사업장)">
+									</div> -->
+				
+				<!-- // 22.02.08 -->
+
+				<!--전체-->
+				<div class="section">
+					<!--이노베이션-->
+					<div class="section loc">
+					  <h3><span class="c-red">USA</span></h3>
+
+					    <div class="loc-list first">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>SK Battery America<span>Georgia</span></h4>
+							<p>
+								<span class="addr">1760 SK Blvd, Commerce, GA 30529, USA</span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+
+                          <div class="loc-list ">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>SK On Tennessee <span>Tennessee</span></h4>
+							<p>
+								<span class="addr">2022 Battery Park Dr, Stanton, TN 38069, USA </span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+
+						  <!-- <div class="loc-list ">>
+						  							<h4>BlueOval SK (Ford JV)<span>Kentucky</span></h4>
+						  							<p>
+						  								<span class="addr">Blue Oval SK Battery Park, Glendale, KY, 42740, USA</span>
+						  							</p>
+						  							<div id="5" class="map-inner"></div>
+						  						</div> -->
+						  <div class="loc-list ">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>HSBMA (Hyundai JV)<span>Georgia</span></h4>
+							<p>
+								<span class="addr">5098 US Highway 411, Kingston, County of Bartow, GA, 30145, USA </span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+                     </div>
+
+
+                     <div class="section loc">
+					  <h3><span class="c-red">China</span></h3>
+
+
+						<div class="loc-list first">
+							<!-- <a href="javascript: void(0);" data-mapid="4"><span>SK hi-tech battery materials(Jiangsu) Ltd.(Jiangsu China) 지도영역 열기</span></a> -->
+							<h4>SK On Yancheng<span>Yancheng</span></h4>
+							<p>
+								<span class="addr">No.61, Xiwang Avenue South Road, Economic and Technological Development Zone, Yancheng City, Jiangsu Province, China
+                            </span>
+							</p>
+							<div id="4" class="map-inner"></div>
+						</div>    
+						<div class="loc-list">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>SK On Jiangsu (EVE Energy JV)<span>Yancheng</span></h4>
+							<p>
+								<span class="addr">No.59, Xiwang Avenue, Tinghu District, Yancheng, Jiangsu Province, China</span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+						<div class="loc-list">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>BESK (Beijing Automotive Group, Beijing Electronics JV)<span>Beijing</span></h4>
+							<p>
+								<span class="addr">No.9 4th Jinghai Road, Beijing Economic-Technological Development Area, Beijing, China</span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+						<div class="loc-list">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>BEST (BESK Subsidiary)<span>Changzhou</span></h4>
+							<p>
+								<span class="addr">No.688, HuiFu Road, Jintan District, Changzhou, Jiangsu Province, China</span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+				<!-- 		<div class="loc-list">
+							<a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a>
+							<h4>EUE (EVE Energy JV)<span>Huizhou</span></h4>
+							<p>
+								<span class="addr">B1, B2 and B3 of No. 71 District, Zhongkai High-tech Zone, Huizhou, Guangdong Province, China</span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div> -->
+						<div class="loc-list">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>SK On Shanghai <span>Shanghai</span></h4>
+							<p>
+								<span class="addr">61F, SK Tower, No.149 Youcheng Road, Shanghai</span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+					</div>
+
+
+
+                    <div class="section loc">
+					  <h3><span class="c-red">Hungary</span></h3>
+
+
+						<div class="loc-list first">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>SK On Hungary<span>Komárom</span></h4>
+							<p>
+								<span class="addr">2903 Komárom, Irinyi János u 9, Hungary</span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+						<div class="loc-list">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>SK Battery Manufacturing<span>Komárom</span></h4>
+							<p>
+								<span class="addr">2900 Komárom, Klapka Gyorgy ut 39., Hungary</span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+						<div class="loc-list">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>SK On Hungary<span>Iváncsa</span></h4>
+							<p>
+								<span class="addr">HRSZ 99/48 Iváncsa 2454, Hungary</span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+					</div>	
+					
+					
+
+					<div class="section loc">
+					  <h3><span class="c-red">Japan</span></h3>
+
+
+						<div class="loc-list first">
+							<!-- <a href="javascript: void(0);" data-mapid="5"><span>SK hi-tech battery materials Poland sp. z o.o.(Poland) 지도영역 열기</span></a> -->
+							<h4>SK On Japan Office <span>Tokyo</span></h4>
+							<p>
+								<span class="addr">Tokyo Midtown Hibiya 32F, 1-1-2, Yurakucho, Chiyoda-Ku, Tokyo, 100-0006, Japan</span>
+							</p>
+							<div id="5" class="map-inner"></div>
+						</div>
+					</div>		
+			    </div>
+		</div>
+		<!-- //contents -->
+
+		<!-- footer -->
+				<div id="footer">
+			<div class="inner">
+				<div class="logo"><img src="/images/common/logo_f.png" alt="SK on" /></div>
+				<div class="copy">
+					<ul>
+						<li><a href="https://ethics.sk.co.kr/Eng/Main.aspx" class="ic-1" target="_blank" title="new window"><span>SK Ethical Management</span></a></li>
+					<!-- 	<li><a href="https://skinnonews.com/global/" target="_blank" title="new window">SKinnoNews</a></li> -->
+						<!-- <li class="last btn-family1"><a href="javascript: void(0);" class="ic-2" title="Family Site1">Privacy </a>
+							<div id="family-site">
+								<h3>Privacy Policy</h3>
+								<dl>
+									<dd><a href="javascript: void(0);" onClick="window.open('/privacy/privacy.asp','_blank','width=760, height=830, scrollbars=yes, menubar=no, status=no')" title="window open">SK on EU</a></dd>
+								</dl>
+								<div class="line-1"></div><div class="line-2"></div>
+								<a href="javascript: void(0);" class="btn-close">Close</a>
+							</div>
+						</li> -->
+						<li><a href="/company/local.asp">Map</a></li>
+						<li class="last btn-family"><a href="javascript: void(0);" class="ic-2" title="family site">Family Site</a>
+							<div id="family-site2">
+								<h3>Family Site</h3>
+								<ul>
+									<!-- <dt>Family Site</dt> -->
+									<dd><a href="https://www.skinnovation.com/" target="_blank" title="new window">SK innovation</a></dd>
+									<dd><a href="https://www.skenergy.com/?lng=en" target="_blank" title="new window">SK energy</a></dd>
+									<dd><a href="http://eng.skgeocentric.com" target="_blank" title="new window">SK geocentric</a></dd>
+									<!-- <dd><a href="https://www.skenmove.com/?lng=en" target="_blank" title="new window">SK Enmove</a></dd> -->
+									<dd><a href="https://www.skincheonpetrochem.com/?lng=en" target="_blank" title="new window">SK incheon petrochem</a></dd>
+								<!-- 	<dd><a href="https://www.sktradinginternational.com/?lng=en" target="_blank" title="new window">SK trading international</a></dd> -->
+									<dd><a href="http://eng.skietechnology.com/" target="_blank" title="new window">SK ie technology</a></dd>
+									<dd><a href="http://eng.skearthon.com" target="_blank" title="new window">SK earthon</a></dd>
+									<!-- <dd><a href="http://www.skenterm.com/" target="_blank" title="Open new window">SK enterm</a></dd> -->
+								</dl>
+								<div class="line-1"></div><div class="line-2"></div><div class="line-3"></div><div class="line-4"></div><div class="line-5"></div>
+								<a href="javascript: void(0);" class="btn-close" title="Family Site close">Close</a>
+							</div>
+						</li>
+					</ul>
+				<address>
+						SK On Co., Ltd. Gwanhun Building, 32 Insadong 7-gil, Jongno-gu, Seoul, Republic of Korea<br>
+						TEL +82-2-2121-5114 &nbsp;&nbsp;FAX +82-2-2121-7001 &nbsp;&nbsp;<br>
+						ⓒ 2026 SK on Co., Ltd
+						<!-- <img src="/images/common/footer_add_on.png" alt="SK on Co., Ltd, 26, Jongno, Jongno-gu, Seoul, Korea tel +82-2-2121-5114 FAX +82-2-2121-7001 ©2021 SK on Co,. Ltd" /> -->
+					</address>
+				</div>
+				<div class="footer-social">
+                    <ul class="list1">
+                        <li class="over1"><a  href="https://www.linkedin.com/company/sk-on" target="_blank"><div class="in"> </div></a></li>
+                        <li class="over2"><a  href="https://www.youtube.com/c/SKonstory"  target="_blank"><div class="you"> </div></a></li>
+                       
+                    </ul>
+                </div>
+				   <!-- <div class="mark">
+				   
+				   					<img class="ico" src="/images/main/0725_banner.png" alt="SK proudly supports busan's bid to host the world expo 2030" >
+				   					<a href="https://thewave.net/?lang=EN" target="_blank" title=""><img class="ico" src="/images/common/wave_banner_eng.png" alt="'WAVE Flatform"> </a>
+				   			      </div> -->
+			</div>
+		</div>
+
+		<div id="btn-top">
+			<div class="inner">
+				<a href="#wrap"><span>Page Top</span></a>
+			</div>
+		</div>
+
+		<!-- //footer -->
+	</div>
+	<!-- //container -->
+</div>
+<!-- //wrap -->
+
+<!-- sitemap -->
+	<div id="global-wrap">
+		<div class="inner">
+			<div class="pos">
+				<span class="ico_arrow"></span>
+				<div class="ly-inner">
+					<ul>
+						<li><a href="http://sk-on.com/"  title="SK on Korea(new window)">KOR</a></li>
+						<li class="on curr"><a href="/main.asp" title="SK on English">ENG</a></li>
+						<li><a href="http://chn.sk-on.com/" target="_blank" title="SK on Chinese(new window)">CHN</a></li>
+					</ul>
+					<a href="#btn-global" class="btn-close"><span>Close</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 사이트맵 -->
+	<div id="sitemap-wrap">
+		<div class="inner">
+			<div class="pos">
+				<span class="ico_arrow"></span>
+				<div class="ly-inner">
+					<ul>
+						<li class="dep-1 ic-1">
+							<div>
+								<span>Company</span>
+								<ul>
+									<li><a href="/company/overview.asp">Introduction</a></li>
+									<!-- <li><a href="/company/ceo.asp">CEO</a></li> -->
+									<li><a href="/company/local.asp">Places of business</a></li>
+									<li><a href="/company/adv_movie3.asp">Press</a></li>								
+								</ul>
+							</div>
+						</li>
+						<li class="dep-1 ic-2">
+							<div>
+								<span>Sustainability</span>
+								<ul>
+									<li><a href="/together/vision_esg.asp">ESG</a></li>
+									<!-- <li><a href="/together/netzero.asp">Environment</a></li> -->
+									<li><a href="/together/she_01.asp">Social</a></li>
+									<li><a href="/together/governance.asp">Governance</a></li>
+									<li><a href="/together/esg_report.asp">Archive</a></li>
+									</a></li>
+									
+								</ul>
+							</div>
+						</li>
+						<li class="dep-1 ic-3">
+							<div>
+								<span>Business</span>
+								<ul>
+									<li><a href="/business/business_01.asp">Business</a></li>
+									<li ><a href="/business/technology.asp" >Technology</a></li>
+								</ul>
+							</div>
+						</li>
+					
+						<li class="dep-1 ic-4">
+							<div>
+								<span>Recruit</span>
+								<ul>
+									<li><a href="/recruit/org_culture.asp">Corporate Culture</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="dep-1 ic-5">
+							<div>
+								<span>Family Site</span>
+								<ul>
+									<li><a href="https://www.skinnovation.com/" target="_blank" title="new window">SK innovation</a></li>
+									<li><a href="https://www.skenergy.com/?lng=en" target="_blank" title="new window">SK energy</a></li>
+									<li><a href="http://eng.skgeocentric.com" target="_blank" title="new window">SK geocentric</a></li>
+								<!-- 	<li><a href="https://www.skenmove.com/?lng=en" target="_blank" title="new window">SK Enmove</a></li> -->
+									<li><a href="https://www.skincheonpetrochem.com/?lng=en" target="_blank" title="new window">SK incheon petrochem</a></li>
+								<!-- 	<li><a href="https://www.sktradinginternational.com/?lng=en" target="_blank" title="new window">SK trading international</a></li> -->
+									<li><a href="http://eng.skietechnology.com/" target="_blank" title="new window">SK ie technology</a></li>
+									<li><a href="http://eng.skearthon.com" target="_blank" title="new window">SK earthon</a></li>
+								<!-- 	<li><a href="http://www.skenterm.com/" target="_blank" title="new window">SK enterm</a></li> -->
+								</ul>
+							</div>
+						</li>
+					</ul>
+					<!-- <a href="/etc/total_sitemap.asp" class="btn-sitemap">전체메뉴</a> -->
+					<a href="#btn-sitemap" class="btn-close"><span>Close</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /사이트맵 -->
+</body>
+</html>
+
+<div id="test-wrap2">
+	<div class="inner">
+		<div class="pos">
+			<span class="ico_arrow"></span>
+			<div class="ly-inner">
+				<ul>
+					<li>
+	<a href="javascript: void(0);" title="새 창 열림" onClick="window.open('http://irsvc.teletogether.com/skinnovation/skinnovation2021Q2_kor.php','_blank','width=800, height=600, scrollbars=yes, menubar=no, status=no')">	<img src = "/popup/kor_2102q.png" alt="2021년 2분기 실적 컨퍼런스 콜 일자:2021년 8월 4일 수요일 오전 10:00 - 컨퍼런스콜 자세히보기 " > </a>
+					
+<!--<a href="/ir/earning.asp" title="실적발표 페이지로 이동" >
+		<img src = "/popup/kor_2102q.png" alt="SK 아이이테크놀로지 2021년 2분기 실적발표안내 ">
+	</a> 
+-->	                   
+					</li>
+				</ul>
+				<a href="#btn-test" class="btn-close"><span>SK이노베이션 실적발표 닫기</span></a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //sitemap -->

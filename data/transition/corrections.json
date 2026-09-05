@@ -1,0 +1,58 @@
+{
+  "_comment": [
+    "MATERIAL CORRECTIONS TO FIGURES THIS PLATFORM HAS ALREADY PRINTED.",
+    "",
+    "THE PRACTICE. When a figure the site has been printing changes materially — not because",
+    "the world moved, which is what a dated as-of line already says, but because what we held",
+    "was wrong or incomplete — the change carries a dated note WHERE THE FIGURE IS PRINTED,",
+    "saying what it was, what it is now, and why it moved. The note is data rather than a",
+    "sentence in a commit message, because a commit message is read by whoever is looking for",
+    "it and a reader of the page is not.",
+    "",
+    "WHY IT IS NOT ENOUGH TO JUST FIX THE NUMBER. A reader who saw €421 million in cement last",
+    "month and sees €655 million today has no way, from the page, to tell a correction from a",
+    "new award — and those are different facts about how much this platform knew. Silently",
+    "restating a figure asks to be trusted on the new one while hiding that the old one was",
+    "shipped. The note is the cost of having printed it.",
+    "",
+    "WHAT COUNTS AS MATERIAL. A figure a page states in its own prose, moved by enough that a",
+    "reader who acted on the old one would act differently. A rounding change is not one. A",
+    "figure that has never been rendered is not one either: it was never printed, so there is",
+    "nothing to correct in front of anybody.",
+    "",
+    "THE FIELDS.",
+    "",
+    "  figure   WHICH printed figure, from the closed list in sources/sector_map.py. Closed",
+    "           because a note pinned to a figure nobody renders is a note nobody reads, and",
+    "           a typo would produce exactly that, silently.",
+    "  date     when the correction was made, which is what the note prints.",
+    "  was/now  the figure as it read and as it reads, in the site's own money wording.",
+    "  what     one sentence a reader can act on.",
+    "  why      how the platform came to be wrong, in our own words rather than in a passive",
+    "           one. A correction that will not say whose miss it was is half a correction.",
+    "  sources  the document that settled it.",
+    "",
+    "AN ENTRY IS NEVER REMOVED. The figure moving again is a second entry, not an edit of the",
+    "first: a correction that can be quietly rewritten is not a correction."
+  ],
+  "corrections": [
+    {
+      "id": "cement-committed-money-2026-09-05",
+      "sector": "cement",
+      "figure": "opportunity.money_in",
+      "date": "2026-09-05",
+      "was": "€421 million",
+      "now": "€655 million",
+      "what": "Committed money in European cement was corrected upwards by €234 million, a little over half again as much as the figure this page had been stating.",
+      "why": "A retro-check of the Commission's own funding registers against the sites already on file found an Innovation Fund grant of €234 million to IFESTOS — TITAN's oxyfuel capture retrofit at Kamari — that this platform carried no funding row for, although the project itself has been on file since the cement dataset landed. The figure was not miscalculated: it was calculated over a set we had left incomplete, and the miss was ours rather than the source's.",
+      "sources": [
+        {
+          "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101133204.pdf",
+          "title": "IFESTOS — Innovation Fund project factsheet",
+          "publisher": "CINEA",
+          "date": "2026-08-18"
+        }
+      ]
+    }
+  ]
+}

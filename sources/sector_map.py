@@ -23,6 +23,7 @@ THE FILES
   data/transition/materials.json      what a sector makes, consumes and throws off
   data/transition/funding.json        capital allocated, and what it was allocated under
   data/transition/measure_labels.json what a measure is CALLED on a diagram
+  data/transition/corrections.json    dated notes on figures already printed
 
 Each file is {"_comment": [...], "<kind>s": [ ... ]} -- the same arrangement
 data/sectors.json uses, for the same reason: a data file that cannot say what
@@ -436,6 +437,16 @@ DEFAULT_STALE_AFTER_MONTHS = 12
 # Loading
 # ---------------------------------------------------------------------------
 
+# WHICH PRINTED FIGURES A CORRECTION MAY BE PINNED TO. Closed, because the
+# whole value of a correction note is that it appears beside the figure it
+# corrects: an entry naming a figure no surface renders is a correction nobody
+# is told about, and a typo would produce exactly that in silence. Each entry is
+# `<section>.<figure>` and names something a page actually prints.
+CORRECTABLE_FIGURES = (
+    "opportunity.money_in",
+)
+
+
 _FILES = {
     "technology": ("technologies.json", "technologies"),
     "bottleneck": ("bottlenecks.json", "bottlenecks"),
@@ -444,6 +455,7 @@ _FILES = {
     "material": ("materials.json", "materials"),
     "funding": ("funding.json", "funding"),
     "ecosystem": ("ecosystems.json", "ecosystems"),
+    "correction": ("corrections.json", "corrections"),
 }
 
 
@@ -600,6 +612,9 @@ SECTOR_PRODUCT_WORDS = {
     "cement": ("clinker", "cement", "concrete", "kiln"),
     "steel": ("steel", "hot metal", "crude steel", "directly reduced iron", "DRI",
               "blast furnace", "scrap", "electric arc furnace", "EAF", "iron ore"),
+    # Both spellings of the plural are listed because the check matches a word
+    # plus an optional "s", and "batteries" is not "batterys".
+    "batsol": ("battery", "batteries", "cell", "cathode", "anode", "gigafactory"),
 }
 
 
