@@ -6,7 +6,7 @@
     "dev": "next dev",
     "prebuild": "node --test lib/*.test.mts && node scripts/build-mark-assets.mjs --check && python3 ../sources/check_colour_layers.py && python3 ../sources/build_findings.py && python3 ../sources/build_records.py && python3 ../sources/build_summaries.py --check && python3 ../sources/build_graph.py --check && python3 ../sources/build_ego_views.py --check && python3 ../sources/check_number_format.py && python3 ../sources/check_transition_parity.py && python3 ../sources/check_sector_schema.py && python3 ../sources/check_geo_source.py && python3 ../sources/check_coordinates.py && python3 ../sources/check_section_order.py && python3 ../sources/check_h2_templates.py && python3 ../sources/check_one_liner_scope.py && python3 ../sources/build_importance.py --check && python3 ../sources/check_importance.py && python3 ../sources/build_sector_diagram.py --check && python3 ../sources/build_maps.py --check && python3 ../sources/build_lead.py --check && python3 ../sources/build_opportunity.py --check && python3 ../sources/build_object_leads.py --check && python3 ../sources/check_display_vocabulary.py && python3 ../sources/check_links.py",
     "build": "next build",
-    "postbuild": "python3 ../sources/check_anchor_text.py",
+    "postbuild": "python3 ../sources/check_anchor_text.py && python3 ../sources/check_sitemap.py",
     "start": "next start",
     "lint": "eslint",
     "test": "node --test lib/*.test.mts"

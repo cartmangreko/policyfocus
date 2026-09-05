@@ -150,6 +150,19 @@ vocabulary are unchanged and bind everything below.
    on the question, the sitemap is the site's one published statement of what it
    asks to have indexed.
 
+   **And the published file is checked, not only the rule.** Those tests run on a
+   fixture and would pass on a build whose sitemap listed every demoted page in
+   the register, so `sources/check_sitemap.py` runs after the build over the file
+   the build wrote: every URL in it is held against the robots tag of the page it
+   names, no URL may appear twice, and every one has to be on the canonical
+   origin. Pre-launch it says so and skips the comparison — the switch makes
+   every page noindex, so the check would fail everything and prove nothing.
+
+   **The canonical origin is the apex, `https://eufabric.eu`.** A sitemap of
+   redirects publishes an address that is not the one that gets indexed, so the
+   host in `web/lib/routes.ts` and the host the edge serves have to point the
+   same way.
+
    **This section is the authority for the route list.** The list in
    `web/lib/launch.ts` predates it and is reviewed against this section; where
    they disagree, this section is what the implementation is wrong about.
