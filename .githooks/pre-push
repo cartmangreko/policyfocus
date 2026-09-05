@@ -6,14 +6,28 @@
 # went out. The gate had done its job and nobody looked. This makes that
 # particular slip impossible rather than asking anybody to remember.
 #
-# WHAT IT RUNS. web/'s prebuild, which is the whole gate chain: the parity
-# checks, the schema, the coordinates, the geography, the leads, the links. It is
-# the same command CI runs, so a push that survives this is a push that survives
-# there.
+# WHAT IT RUNS. THE WHOLE CHAIN: prebuild, build, postbuild. Not prebuild alone,
+# which is what it used to run and what let a failure through.
 #
-# IT IS SLOW ON PURPOSE. The chain takes a couple of minutes, most of it in
-# check_links waiting politely on other people's servers. That is the right
-# trade against pushing something broken to a branch somebody else may build on.
+# WHY THE BUILD IS PART OF IT. Two gates read the pages the build writes rather
+# than the sources they were built from -- check_anchor_text asks what a reader
+# sees in a link, check_sitemap asks what the published sitemap asks to have
+# indexed -- and neither can exist before `next build`. Running prebuild alone
+# therefore exercised every gate EXCEPT the two that need a build, and a
+# postbuild failure sat green locally and red on Vercel for as long as nobody
+# ran a full build by hand. If a gate cannot run without a build, the build is
+# part of the chain.
+#
+# IT IS SLOW ON PURPOSE, and it is slower now: prebuild is a couple of minutes,
+# most of it check_links waiting politely on other people's servers, and the
+# build is a couple more. That is the right trade against pushing something
+# broken to a branch somebody else may build on, and the timing is printed at
+# the end so the cost is visible rather than guessed at.
+#
+# AND A FAILURE HERE IS BLOCKING, whatever caused it. "Pre-existing" describes
+# when a failure started, not whether it may be pushed over; a failure outside
+# the branch's scope is reported and ruled on, never stepped around. See
+# sources/scope.md, "A failure you observe is blocking".
 #
 # TO SKIP IT, deliberately and visibly:  git push --no-verify
 # There are honest reasons — pushing a work-in-progress branch nobody builds, or
@@ -32,14 +46,29 @@ if [ ! -d "$root/web/node_modules" ]; then
   exit 1
 fi
 
-echo "pre-push: running the gate chain (this takes a couple of minutes)…"
-if ! (cd "$root/web" && npm run --silent prebuild >/tmp/eufabric-prepush.log 2>&1); then
-  echo >&2
-  echo "pre-push: THE GATE CHAIN FAILED. Nothing was pushed." >&2
-  echo >&2
-  tail -30 /tmp/eufabric-prepush.log >&2
-  echo >&2
-  echo "pre-push: full output in /tmp/eufabric-prepush.log" >&2
-  exit 1
-fi
-echo "pre-push: gate chain green."
+log=/tmp/eufabric-prepush.log
+started=$(date +%s)
+
+# The whole chain in one call, because npm runs the three stages itself.
+run_stage() {
+  stage=$1
+  if ! (cd "$root/web" && npm run --silent "$stage" >>"$log" 2>&1); then
+    echo >&2
+    echo "pre-push: THE GATE CHAIN FAILED. Nothing was pushed." >&2
+    echo "pre-push: the log names the stage — prebuild, build or postbuild." >&2
+    echo >&2
+    tail -30 "$log" >&2
+    echo >&2
+    echo "pre-push: full output in $log" >&2
+    exit 1
+  fi
+}
+
+: >"$log"
+echo "pre-push: running the whole chain — prebuild, build, postbuild (a few minutes)…"
+# ONE COMMAND, THREE STAGES. npm's own lifecycle runs `prebuild` before `build`
+# and `postbuild` after it, so naming them here would run prebuild twice and add
+# two minutes for nothing. What makes this the whole chain is that `build` is
+# what is asked for; what made the old hook partial is that `prebuild` was.
+run_stage build
+echo "pre-push: gate chain green — prebuild, build and postbuild, $(( $(date +%s) - started ))s."
