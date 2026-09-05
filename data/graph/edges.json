@@ -23476,6 +23476,54 @@
  },
  {
   "rel": "consumes",
+  "from": "technology:cell-manufacturing",
+  "to": "material:cobalt",
+  "since": "2023-07-12",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=cobalt].consumed_by[technology:cell-manufacturing]",
+   "quote": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:cell-manufacturing",
+  "to": "material:lithium",
+  "since": "2023-07-12",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=lithium].consumed_by[technology:cell-manufacturing]",
+   "quote": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:cell-manufacturing",
+  "to": "material:natural-graphite",
+  "since": "2024-04-11",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=natural-graphite].consumed_by[technology:cell-manufacturing]",
+   "quote": "graphite — battery grade"
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:cell-manufacturing",
+  "to": "material:nickel",
+  "since": "2023-07-12",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=nickel].consumed_by[technology:cell-manufacturing]",
+   "quote": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
   "from": "technology:co2-transport-storage",
   "to": "material:captured-co2",
   "since": "2024-06-13",
@@ -23507,6 +23555,66 @@
    "source": "data/transition/materials.json",
    "path": "[id=hydrogen].consumed_by[technology:h2-dri]",
    "quote": "SSAB, LKAB and Vattenfall have now produced the world's first hydrogen-reduced sponge iron at a pilot scale."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:lfp-cells",
+  "to": "material:lithium",
+  "since": "2024-12-10",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=lithium].consumed_by[technology:lfp-cells]",
+   "quote": "Lithium iron phosphate cells"
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:nmc-nca-cells",
+  "to": "material:cobalt",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=cobalt].consumed_by[technology:nmc-nca-cells]",
+   "quote": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:nmc-nca-cells",
+  "to": "material:manganese",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=manganese].consumed_by[technology:nmc-nca-cells]",
+   "quote": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:nmc-nca-cells",
+  "to": "material:nickel",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=nickel].consumed_by[technology:nmc-nca-cells]",
+   "quote": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:sodium-ion-cells",
+  "to": "material:sodium",
+  "since": "2025-04-21",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=sodium].consumed_by[technology:sodium-ion-cells]",
+   "quote": "Sodium in place of lithium in the cell."
   },
   "volume": null
  },
@@ -28868,6 +28976,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:calb-sines",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-02-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=calb-sines].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:carbon2business-lagerdorf",
   "to": "technology:ccs-oxyfuel",
   "since": "2023",
@@ -29274,6 +29392,26 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=samsung-sdi-god].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:sk-on-ivancsa",
+  "to": "technology:cell-manufacturing",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-ivancsa].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:sk-on-komarom",
+  "to": "technology:cell-manufacturing",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-komarom].technology"
   }
  },
  {
@@ -31834,6 +31972,28 @@
  },
  {
   "rel": "in",
+  "from": "project:calb-sines",
+  "to": "country:PT",
+  "since": "2025-02-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=calb-sines].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:calb-sines",
+  "to": "sector:batsol",
+  "since": "2025-02-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=calb-sines].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:carbon2business-lagerdorf",
   "to": "country:DE",
   "since": "2023",
@@ -32401,6 +32561,50 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=samsung-sdi-god].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:sk-on-ivancsa",
+  "to": "country:HU",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-ivancsa].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:sk-on-ivancsa",
+  "to": "sector:batsol",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-ivancsa].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:sk-on-komarom",
+  "to": "country:HU",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-komarom].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:sk-on-komarom",
+  "to": "sector:batsol",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-komarom].sector"
   },
   "basis": "sector"
  },
@@ -33292,6 +33496,42 @@
  },
  {
   "rel": "relieves",
+  "from": "measure:crma:CBEN-01",
+  "to": "bottleneck:batsol-cathode-dependence",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cathode-dependence].measures[crma:CBEN-01]",
+   "quote": "Build Union capacity towards extracting 10%, processing 40% and recycling 25% of the Union's annual consumption of each strategic raw material by 2030."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:crma:CBEN-02",
+  "to": "bottleneck:batsol-cathode-dependence",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cathode-dependence].measures[crma:CBEN-02]",
+   "quote": "Diversify imports so that no single third country supplies more than 65% of the Union's annual consumption of any strategic raw material by 2030."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:crma:CSP-02",
+  "to": "bottleneck:batsol-cathode-dependence",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cathode-dependence].measures[crma:CSP-02]",
+   "quote": "File a Strategic Project application carrying ten items: evidence against the criteria, a UN Framework Classification, a permitting timetable, a public-acceptance plan, ownership and control information, a business plan, a jobs and skills estimate, a post-exploitation environmental restoration plan, an alternative-locations assessment in protected areas, and an indigenous-peoples consultation plan."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
   "from": "measure:ets:CBAM-01",
   "to": "bottleneck:cement-green-premium",
   "since": "2025-01-01",
@@ -33311,6 +33551,54 @@
    "source": "data/transition/bottlenecks.json",
    "path": "[id=steel-green-premium].measures[ets:CBAM-01]",
    "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:ets:FND-03",
+  "to": "bottleneck:batsol-ramp-and-yield",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-ramp-and-yield].measures[ets:FND-03]",
+   "quote": "Grants and other support (e.g. blended finance) from the Innovation Fund, financed by auctioning 200 million allowances from reduced free allocation, are available via open competitive calls for projects scaling up low-/zero-carbon and carbon-negative products, processes and technologies across all Member States."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:fleet:PREM-01",
+  "to": "bottleneck:batsol-demand-uncertainty",
+  "since": "2026-02-09",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-demand-uncertainty].measures[fleet:PREM-01]",
+   "quote": "Pay an excess emissions premium of EUR 95 per gram per kilometre of exceedance, multiplied by the number of newly registered vehicles."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:fleet:TGT-2030",
+  "to": "bottleneck:batsol-demand-uncertainty",
+  "since": "2026-02-09",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-demand-uncertainty].measures[fleet:TGT-2030]",
+   "quote": "Meet an EU fleet-wide target of a 55% reduction on the 2021 baseline for new passenger cars, and 50% for new light commercial vehicles."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:fleet:TGT-2035",
+  "to": "bottleneck:batsol-demand-uncertainty",
+  "since": "2026-02-09",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-demand-uncertainty].measures[fleet:TGT-2035]",
+   "quote": "Meet an EU fleet-wide target of a 100% reduction on the 2021 baseline for new passenger cars from 2035."
   },
   "weight": 1.0
  },
@@ -33388,6 +33676,30 @@
  },
  {
   "rel": "relieves",
+  "from": "measure:iaa:LM-15a",
+  "to": "bottleneck:batsol-cell-cost-gap",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cell-cost-gap].measures[iaa:LM-15a]",
+   "quote": "Apply the Union-origin requirements laid down in the new Annex II when procuring listed net-zero technologies (battery storage, solar PV, heat pumps, wind, nuclear)."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:iaa:LM-26a",
+  "to": "bottleneck:batsol-cell-cost-gap",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cell-cost-gap].measures[iaa:LM-26a]",
+   "quote": "Ensure that only vehicles complying with the Union-origin requirements are eligible under public schemes supporting the purchase, lease, rent or hire-purchase of new electric vehicles."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
   "from": "measure:nzia:CO2-02",
   "to": "bottleneck:co2-transport-storage-network",
   "since": "2024-06-13",
@@ -33431,6 +33743,18 @@
    "source": "data/transition/bottlenecks.json",
    "path": "[id=steel-co2-transport-storage-network].measures[nzia:CO2-10]",
    "quote": "Take the measures needed to open access to CO2 transport networks and storage sites for geological storage, as far as it is economically feasible or where a potential customer is willing to pay."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:nzia:SCH-01",
+  "to": "bottleneck:batsol-cell-cost-gap",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cell-cost-gap].measures[nzia:SCH-01]",
+   "quote": "Design any new or updated scheme that subsidises the purchase of net-zero technology final products so that it favours products with a high sustainability and resilience contribution, either by paying more for them or by making them the eligibility condition."
   },
   "weight": 0.5
  },
@@ -33500,6 +33824,16 @@
   "evidence": {
    "source": "data/transition/materials.json",
    "path": "[id=granulated-blast-furnace-slag].substitutes[clinker]"
+  }
+ },
+ {
+  "rel": "substitutes",
+  "from": "material:sodium",
+  "to": "material:lithium",
+  "since": "2025-04-21",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=sodium].substitutes[lithium]"
   }
  },
  {

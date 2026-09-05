@@ -22,5 +22,13 @@
     "known_extractor_gap": "If the CEA lands PDF-only, as Commission proposals often do, fetch_eurlex.py can retrieve it but the PDF path hard-wraps text and breaks verbatim span anchoring. That is a known gap and must not be hacked around at extraction time.",
     "display_title": "Circular Economy Act — not yet published",
     "display_note": "Checked directly against the EU's official publication channels as of 2026-08-18; no proposal or adopted text exists yet. It will be read on publication."
+  },
+  {
+    "title": "COM(2025) 995 — proposal amending Regulation (EU) 2019/631 (CO2 standards for new light duty vehicles)",
+    "celex": "52025PC0995",
+    "note": "Adopted by the Commission on 16 December 2025 and under Parliament and Council review; a rapporteur draft followed in April 2026. It reopens the provisions this platform's batteries sector rests on: the 2035 target moves from a 100% reduction to 90% with compensation credits, the 2030 target is averaged over a period rather than met in the year, the van target moves to 40%, and the excess emissions premium formula changes. fleet:TGT-2035 and fleet:TGT-2030 carry a reading note saying a revision is under review and that the row reads the law in force. NOT READ HERE AND NOT EXTRACTED: a proposal is not the law, and this register's rows are the law in force until a text is adopted. What the entry buys is that the demand edges into batsol are known to be under legislative question rather than looking settled.",
+    "capture_priority": "Structured read when a text is ADOPTED, not on the proposal. Before then the watch agent's watchlist channel should surface every step of the procedure, since 02019R0631 is in sources/manifest.json and this proposal sits in its dossier — this entry is the backstop for the day it does not.",
+    "display_title": "Revision of the CO2 standards for new cars and vans — proposed, under review",
+    "display_note": "The Commission proposed changes to the 2030 and 2035 car targets, the van target and the excess emissions premium on 16 December 2025. The measures on this platform read the law in force; they will be re-read if and when a revision is adopted."
   }
 ]

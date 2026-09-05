@@ -1092,18 +1092,297 @@ Brief items 6, 7 and 8, and the materials half of item 4:
 
 ---
 
+## 19. The ranking is completed, the materials land, and one sweep exhausts
+
+Ten measures enter the batteries sector view, five strategic raw materials and a
+sixth that is deliberately not one land as material nodes, and the FREYR
+coordinate stops being blocked and starts being absent.
+
+### The ranking now has something to rank
+
+`batsol` had a ranking with nothing in its sector view: 174 measures reach the
+sector on the register's own reading, and **none of them was in the view**,
+because the view is entered on money or on a named constraint and batteries has
+no money model and had no bottleneck edges. The page's tile opened a ranking of
+nothing.
+
+**Ten measures are now in, on ten edges across the four constraints.** Every edge
+carries the register's own wording as evidence, quoted verbatim from the field it
+names:
+
+- **Committing capacity against uncertain vehicle demand** — `fleet:TGT-2035` at
+  1.0, `fleet:TGT-2030` and `fleet:PREM-01` at 0.5. The 2035 target is the only
+  provision that removes the demand question rather than answering it, and the
+  premium is weighted below the targets it enforces because it is money out of a
+  carmaker rather than money into a cell maker.
+- **European cells against imported cells** — `iaa:LM-15a` at 1.0, `iaa:LM-26a`
+  and `nzia:SCH-01` at 0.5. LM-15a is the only provision in the register that
+  names battery storage in an origin requirement. None of the three lowers a
+  European cost per kWh; they close part of the demand a cheaper cell can
+  compete for, which is a different claim and is what the notes say.
+- **Ramping a cell line to yield** — `ets:FND-03` alone, at 0.5. **Nothing in the
+  register reaches scrap rates.** The Innovation Fund reaches the constraint's
+  financial deadline and not the constraint, and the single edge is the honest
+  shape of that.
+- **Cell capacity without the materials behind it** — `crma:CBEN-01` at 1.0,
+  `crma:CBEN-02` and `crma:CSP-02` at 0.5.
+
+**No edge is a `worsens` edge, and that is a finding rather than an omission.**
+Cement and steel both carry one: `ets:CBAM-01` raises a European producer's cost
+before the fix it pays for exists. Batteries has no equivalent, because every
+duty in the Batteries Regulation bites at the point a battery is *placed on the
+market* — so it falls on an imported cell exactly as it falls on a European one.
+A compliance cost that both sides carry does not widen the gap this sector's
+defining constraint is about.
+
+### A decision the ranking cannot make for itself, and I have not made
+
+With no money model, the ranking sorts on linkage weight alone, and **three
+measures tie at 1.0**: `crma:CBEN-01`, `fleet:TGT-2035`, `iaa:LM-15a`. The tie
+breaks on measure id, so the CRMA benchmark ranks first and the 2035 target
+second — alphabetically. The fleet standards' own reading note says of TGT-2035:
+*"Every gigafactory row in the projects dataset exists because somebody believes
+this sentence."* If that is right, the top of this ranking is in the wrong order
+for a reason that has nothing to do with the data.
+
+`data/transition/overrides.json` exists for exactly this and takes a rank and a
+reason. **Left for George**: either an override putting TGT-2035 first, or a
+ruling that alphabetical tie-breaking is honest where nothing distinguishes the
+weights.
+
+### Ten labels, and the batteries product vocabulary
+
+Nine measures had no diagram label and no plain block, and one — `ets:FND-03` —
+had blocks for cement and steel and none for batteries. All ten are written. The
+Innovation Fund's batteries block **states no figure**: the three Battery Call
+grants carry null amounts, so `{money_awarded}` cannot be filled, and asking for
+it would have failed the build by design. The sentence says the Commission
+published no figure instead, which is the fact.
+
+`sector_map.SECTOR_PRODUCT_WORDS` gains a `batsol` entry — battery, batteries,
+cell, cathode, anode, gigafactory — so a shared block that names a battery now
+fails the gate the way one naming clinker always has. Both plural spellings are
+listed because the check matches a word plus an optional `s`.
+
+### Five strategic raw materials, and the one that is on the list for not being on it
+
+`crma_annex_i` has been a field on every material since the layer was written and
+has been null on every row in it. It is now populated: **lithium, cobalt, nickel,
+manganese and natural graphite**, each carrying the Annex I entry in the annex's
+own words with the article it sits in.
+
+Four of the five carry the qualifier *battery grade* in Annex I itself, which is
+the Union stating the link this dataset was going to have to argue for. Graphite
+is the row that says least and marks the most: the anode side of the dependence,
+listed as strategic by the Union, with **no source read here stating where a
+European line buys it** — and anode works are outside the perimeter, so this
+dataset holds none.
+
+**Sodium is on the platform for what it removes.** It is in no annex, and that is
+the whole of its interest: a `substitutes` edge to lithium, evidenced from the
+sodium-ion route's own description, is the layer saying that a chemistry can
+answer a supply constraint by leaving the listed metal out. It is the first
+substitution edge in the materials layer — the slag one the brief asked for is
+still unwritten for want of a source.
+
+Every consumption edge is to a **technology and not to a sector**, on the
+membership rule hydrogen is held to: no site here is sourced as consuming a
+stated tonnage of any of them.
+
+### FREYR: the sweep exhausted, and the coordinate is absent rather than blocked
+
+Overpass answered today. Three queries: a name search for Freyr, FREYR, Giga
+Arctic and T1 Energy; a bounding-box sweep of Mo Industripark returning **309
+industrial and construction features, of which five carry a name** — a former
+ironworks, three power stations, and the estate; and an operator and brand search
+over a box roughly 90 km by 100 km. **Nothing names the works.** T1 Energy's own
+site says "Mo i Rana, Norway" and publishes no address.
+
+So the estate polygon is all there is, and it is refused on the same rule that
+refused IAMP and Parc Sagunt II. The candidate's note now says the sweep ran
+rather than that Overpass was unavailable, which is the difference between a
+coordinate nobody has looked for and one **no admissible source states**.
+
+### The acts come back ratified, with two changes
+
+George ratified `sources/battery_acts_review.md` on 5 September 2026. Everything
+stands as written, **including all four demand edges and the two deliberate
+non-edges**, and two things move.
+
+**`CF-01`'s dates were one date where the act gives four.** Art. 7(1), second
+subparagraph, staggers the carbon footprint declaration by battery category —
+electric vehicle batteries at 18 February 2025 or 12 months after the delegated
+and implementing acts, rechargeable industrial batteries except those with
+exclusively external storage at 18 February 2026 or 18 months, LMT batteries at
+18 August 2028 or 18 months, and rechargeable industrial batteries with external
+storage at 18 August 2030 or 18 months. The row carried the electric-vehicle date
+alone, which said the duty reaches an LMT battery three and a half years before it
+does. Checked against the act's own text and now carried in full.
+
+**The fleet targets say they are under legislative question.** COM(2025) 995 of
+16 December 2025 — CELEX 52025PC0995, verified against CELLAR rather than taken
+from memory — proposes moving the 2035 target from a 100% reduction to 90% with
+compensation credits, averaging the 2030 target over a period, moving the van
+target to 40%, and changing the premium formula. It is under Parliament and
+Council review. `TGT-2030` and `TGT-2035` each gain a sentence: *a Commission
+proposal to revise this target is under legislative review; this row reads the
+law in force.* The proposal goes on watch in `sources/queued.json` and **is not
+extracted**: a proposal is not the law, and every row here is the law in force.
+
+That matters more here than it would on another sector. Three of the ten measures
+in the batteries ranking are fleet rows, and the highest-weighted edge on the
+demand constraint is `TGT-2035`. The sentence is what stops a reader taking the
+sector's foundation for settled.
+
+### The cement correction, and the practice it now stands on
+
+The Innovation Fund retro-check moved cement's committed money from €421 million
+to €655 million, and the page had been printing the old figure. Corrections to
+printed figures now carry a dated note **where the figure is printed**:
+`data/transition/corrections.json` holds the practice and the entry, the schema
+gate validates it and lists every correction on every run, and the Opportunity
+section renders it under the total it corrects.
+
+The anchor is a closed vocabulary — `sector_map.CORRECTABLE_FIGURES` — because a
+note pinned to a figure no surface renders is a note nobody is told about, and a
+typo would produce exactly that in silence.
+
+### The money model's boundary
+
+Ruled and written into the method prose at the top of `funding.json`: the model
+holds **capital committed to building an admitted works**, and research and pilot
+funding is out. The two findings that forced it — €14.8 million of Horizon 2020
+money at 3D Dunkirk, about €12 million at H2Future Linz — are recorded there
+rather than landed as rows, and `ROADMAP.md` carries an entry for the
+research-funding layer that could hold them properly.
+
+### What this does not change
+
+**The draw hold stands.** Twenty of 34 candidates are on file, fourteen are
+outstanding, and four of six cancelled projects are unreachable, and a completed ranking is not an answer to
+that. The hold is what stops a better ranking from becoming a worse picture.
+
+---
+
+## 20. Four pages arrive by hand, and three of them become rows
+
+Twenty-three rows on file of 34 candidates — **68%** — and eleven outstanding.
+
+### CALB Sines, on the composite standard
+
+The second row to stand on it, and the first outside Hungary. **CALB's own release
+names a country and no city**: "On February 24, local time, construction commenced
+on CALB's Portugal facility, which will be a zero-carbon AI gigafactory with
+delivery expected in 2027." No town, no lot, no capacity — the same shape as
+Sunwoda's "Hungary", and the reason the ordinary company-only standard cannot
+confirm this site.
+
+The three legs, all cited on the row:
+
+- **company** — the release above, retrieved by hand and filed.
+- **state** — the Portuguese Government's own briefing room, 24 February 2025:
+  *"O Ministro da Economia, Pedro Reis, esteve presente na cerimónia de lançamento
+  do projeto de uma nova fábrica de baterias de lítio em Sines da CALB."* It names
+  the town, the company and the product, and puts its economy minister at the
+  ceremony the company's release describes without locating. **AICEP announced the
+  same investment and is named rather than cited**: the state leg is the
+  Government's publication, not its investment agency's summary of it — the same
+  line HIPA fell on at Nyíregyháza.
+- **basemap** — a plot under construction carrying the operator's own name:
+  *Construção da Unidade Industrial de Baterias de Lítio da CALB*, official name
+  *Calb Europe, S.A.*, at ZILS Lote 1A3.3, Sines.
+
+**Capacity is state tier and is not absent**, which is where this row differs from
+Sunwoda: the Government states 15 GWh. It writes it without a period, so the row
+records GWh per year and says in a note that the "per year" is this platform's
+reading and not the source's.
+
+### SK On on its own published addresses, twice
+
+The parcel line was the payload, as expected, and it turned into two rows rather
+than one.
+
+**Iváncsa.** SK On publishes the works in two forms — `HRSZ 99/48 Iváncsa 2454`
+on its global places-of-business page, and `H-2454 Iváncsa, SK út 1.` on its
+Hungarian site — and the row's position walks back to the second. **The parcel
+places nothing here**: HRSZ 99/48 geocodes to the settlement and this pipeline has
+no cadastral source that would resolve it. The industrial buildings 300 to 800
+metres north along SK út are unnamed, so no polygon places the works either. What
+places it is the address, which is the coordinate rule's second source type doing
+the work it was written for.
+
+**Komárom.** Two published addresses, neither resolving to a house number, and a
+basemap building named `SK Battery` standing on the first of the two streets. The
+point is that building; what admits it is the address. **One point for what the
+state calls two plants**, said on the row rather than split on an address nobody
+can resolve.
+
+**Status splits the two rows.** Komárom is `operating` on the Hungarian
+government's own sentence — *"A cég első két tengerentúli gyára Komáromban
+működik"*, the company's first two overseas plants operate in Komárom — and the
+row records that this is the earliest sourced statement that it runs, not the date
+it started. Iváncsa stops at `construction`: trade reporting describes mass
+production from 2024 at 30 GWh, and **no source this pipeline can read states a
+production start**, so the row does not claim one and joins the status-age report.
+Capacity is absent on both.
+
+### The two SVOLT captures do not become rows, and the reason is a coordinate
+
+Both company sources are now in hand and both are strong. Überherrn is the
+stronger: *"In Überherrn on 'Linslerfeld', a battery cell factory with 24 GWh of
+installed capacity in the final expansion stage is to be built"* — site, cell
+product and capacity in one sentence. Lauchhammer gives the site as the former
+Vestas rotor-blade plant taken over at the end of August 2022, and **states no
+capacity**, so that half joins the standing report the moment the row lands.
+
+Neither lands, and the constraint is the same on both: **nothing in the basemap
+names either works**. A name sweep for Vestas and SVOLT across Brandenburg returns
+nothing; a sweep of every industrial and construction feature at Lauchhammer
+returns thirty-six named works and none of them this one; nothing anywhere is
+named Linslerfeld, and the Überherrn works was never built, so there is no works
+to name — what stands on that land now is a solar park. The company publishes no
+site address, only its Frankfurt office.
+
+So they move from *no company source* to *company source in hand, coordinate
+outstanding*, which is EVE Power's state: the two halves are independent, and
+having one tells you nothing about the other. **The `archived: true` citation form
+is endorsed for when they land** — the publisher's copy is gone with the company,
+so the row will cite the capture URL with the filed page as its snapshot rather
+than citing a live URL nobody can open.
+
+### A "blocked" source that was not blocked
+
+Both hosts behind the manual queue's certificate entries — `en.calb-tech.com` and
+`eng.sk-on.com` — **serve over plain http**. The certificate does not match the
+host, so https fails; nothing else does. `check_links` reaches both, and the filed
+copies are byte-for-byte what the URLs serve.
+
+Worth writing down because the queue entry said *"certificate does not match the
+host"* and the working assumption around it was that the page could not be read
+here at all. Those are different failures and only one of them needs a person.
+**The filed copies stay** — they are what was actually read, and the row cites the
+publisher's URL either way — but the next certificate mismatch gets an http
+attempt before it gets a queue entry.
+
+---
+
 ## Stopping here
 
-A–E are resolved and the first six rows are in. What is left, in order:
+Twenty-three rows on file of 34 candidates, eleven outstanding. What is left, in
+order:
 
-1. **Company sources and coordinates for the remaining 28 candidates.** The
-   binding constraint is coordinates as much as sources — three candidates
-   already have a company source and no works polygon.
-2. **Bottlenecks and the ranking**, which is what `hasMap` reads: until
-   `data/transition/bottlenecks.json` carries batteries rows and
-   `build_importance.py` writes `importance/batsol.json`, the tile keeps opening
-   the holding page and no sector overview is drawn. Project crops already build,
-   and the six are on disk.
-3. **Materials**, for the CRMA Annex I links the technology nodes want.
-4. **The two acts**, each a single pass declared as a preliminary reading.
-5. **Funding rows**, then the prose slots, then the page.
+1. **Coordinates.** The binding constraint, and it now binds on both SVOLT sites,
+   ACC Kaiserslautern, FREYR and Farasis — five candidates whose company source is
+   in hand or unreachable and whose works no source will place.
+2. **The five pages still parked for a browser**, in `sources/manual/MANIFEST.json`:
+   Britishvolt's committee report, AESC Extremadura's first-stone release, Farasis
+   from the Internet Archive, and two Sunderland corroborations that nothing waits
+   on.
+3. **The rank tie at the top of the batteries ranking** — an override for
+   `fleet:TGT-2035`, or a ruling that alphabetical tie-breaking stands. §19.
+4. **Prose slots**: `transition_notes`, `sector_orientation`, `sector_lead` and the
+   ecosystem description carry cement and steel and nothing else, and the batteries
+   blocks that exist are drafts awaiting review.
+5. **The exposure exclusion**, decided and not yet written into a page.
+6. **The draw hold**, which only George lifts, and only on a judgement that the
+   retrieval gap has closed far enough for the overview to be honest.

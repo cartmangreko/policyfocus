@@ -102,6 +102,30 @@
         }
       }
     },
+    "crma:CBEN-01": {
+      "object": "Raw material capacity",
+      "instrument": null,
+      "plain": {
+        "title": "Europe sets itself capacity goals for its own raw materials",
+        "sentence": "By 2030 the Union is to be able to extract, process and recycle set shares of the strategic raw materials it consumes each year, rather than buying all of them from outside."
+      }
+    },
+    "crma:CBEN-02": {
+      "object": "Import diversification",
+      "instrument": null,
+      "plain": {
+        "title": "No single country may supply most of a strategic material",
+        "sentence": "By 2030 the Union's yearly consumption of each strategic raw material is to come from several countries, with no one of them above the share the act sets."
+      }
+    },
+    "crma:CSP-02": {
+      "object": "Material project status",
+      "instrument": null,
+      "plain": {
+        "title": "Raw material projects can apply for strategic status",
+        "sentence": "A raw materials project can apply to be recognised as strategic, which brings faster permitting and easier access to finance, by filing evidence against the criteria together with a business plan, a timetable and environmental and consultation plans."
+      }
+    },
     "ets:CBAM-01": {
       "object": "Free allocation",
       "instrument": "phase-out",
@@ -127,6 +151,40 @@
         "steel": {
           "title": "EU grants for making iron without coal",
           "sentence": "{money_awarded} has been awarded from the Innovation Fund to European steel projects that reduce iron ore without coal."
+        },
+        "batsol": {
+          "title": "EU grants for building battery factories",
+          "sentence": "The Innovation Fund, financed by auctioning carbon allowances, has awarded grants to European cell works through its first battery call, and published no figure for what any one of them received."
+        }
+      }
+    },
+    "fleet:PREM-01": {
+      "object": "Excess emissions",
+      "instrument": "levy",
+      "plain_by_sector": {
+        "batsol": {
+          "title": "Carmakers pay for every gram they are over their target",
+          "sentence": "A carmaker whose fleet exceeds its target pays a premium for each gram per kilometre of the excess on every vehicle it registered, which is what makes the target a purchasing decision rather than an ambition."
+        }
+      }
+    },
+    "fleet:TGT-2030": {
+      "object": "Fleet CO2 reduction",
+      "instrument": "target",
+      "plain_by_sector": {
+        "batsol": {
+          "title": "Carmakers must halve the emissions of the cars they sell",
+          "sentence": "From 2030 the average new car sold in the Union has to cut its emissions by more than half against the baseline year, with new vans close behind, which is the demand a factory being built today supplies."
+        }
+      }
+    },
+    "fleet:TGT-2035": {
+      "object": "Zero-emission cars",
+      "instrument": "target",
+      "plain_by_sector": {
+        "batsol": {
+          "title": "New cars sold in Europe have to be zero-emission",
+          "sentence": "From 2035 a new passenger car sold in the Union may emit no CO2 where it is driven, which at fleet scale means the car carries a battery."
         }
       }
     },
@@ -170,6 +228,26 @@
         "sentence": "From 2029, public schemes that pay for construction have to be built around the same low-carbon and Union-origin requirements as public contracts."
       }
     },
+    "iaa:LM-15a": {
+      "object": "Union-origin",
+      "instrument": "requirements",
+      "plain_by_sector": {
+        "batsol": {
+          "title": "Public contracts for battery storage must buy European",
+          "sentence": "Public buyers procuring battery storage have to apply the Union-origin requirements the act sets out for it, so part of the demand is closed to a cell made elsewhere."
+        }
+      }
+    },
+    "iaa:LM-26a": {
+      "object": "Vehicle purchase schemes",
+      "instrument": null,
+      "plain_by_sector": {
+        "batsol": {
+          "title": "Public schemes may only subsidise European-made electric cars",
+          "sentence": "A public scheme that pays towards buying or leasing a new electric vehicle may only cover vehicles meeting the Union-origin requirements, which reaches the battery through the car it sits in."
+        }
+      }
+    },
     "nzia:CO2-02": {
       "object": "CO2 storage",
       "instrument": "obligation",
@@ -184,6 +262,14 @@
       "plain": {
         "title": "CO2 pipelines and stores must be open to whoever needs them",
         "sentence": "Whoever owns a CO2 pipeline or a storage site has to let others use it on fair and open terms, so that a capture project is not stopped by the party that owns the route to the ground."
+      }
+    },
+    "nzia:SCH-01": {
+      "object": "Purchase support schemes",
+      "instrument": null,
+      "plain": {
+        "title": "Purchase subsidies have to favour a resilient supply",
+        "sentence": "A scheme that subsidises buying clean technology has to be designed so that products with a high sustainability and resilience contribution either receive more money or are the only ones eligible."
       }
     },
     "nzia:SP-02": {

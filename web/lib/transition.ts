@@ -574,6 +574,43 @@ export interface DrawHold {
   released_by: string;
 }
 
+/** A DATED NOTE ON A FIGURE THIS SITE HAS ALREADY PRINTED.
+ *
+ *  Not an as-of line, which says when a figure was last true, and not a change
+ *  record, which says what moved in the world. A correction says that what we
+ *  printed was wrong or incomplete, when we said so, and how we came to be
+ *  wrong — beside the figure, because a reader who saw the old number is
+ *  reading the page and not the commit history. See
+ *  data/transition/corrections.json for the practice and
+ *  sources/check_sector_schema.py for the gate. */
+export interface Correction {
+  id: string;
+  sector: string;
+  figure: string;
+  date: string;
+  was: string;
+  now: string;
+  what: string;
+  why: string;
+  sources: Source[];
+}
+
+let correctionsCache: Correction[] | null = null;
+
+/** The corrections pinned to one printed figure, newest first. `figure` is one
+ *  of the closed list in sources/sector_map.py, and passing a value that is not
+ *  in it returns nothing rather than throwing: the gate is where a bad anchor
+ *  is caught, and a page that fell over because a note was mis-keyed would be
+ *  worse than one that renders the figure it always did. */
+export function getCorrections(sector: string, figure: string): Correction[] {
+  if (!correctionsCache) {
+    correctionsCache = read<Correction>("corrections.json", "corrections");
+  }
+  return correctionsCache
+    .filter((c) => c.sector === sector && c.figure === figure)
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
 let holdsCache: Record<string, DrawHold> | null = null;
 
 export function drawHolds(): Record<string, DrawHold> {

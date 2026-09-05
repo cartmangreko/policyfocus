@@ -38,6 +38,34 @@
       "retrieved_date": "2026-09-04",
       "retrieved_by": "George Christopoulos",
       "note": "TÜV Rheinland installation-details report, 70 pages, issued 26 September 2023. Carries the Appendix 1 site plans and the 61 emission-point grid references the row's coordinate is computed from."
+    },
+    {
+      "file": "calb-sines--calb-sines-groundbreaking.html",
+      "url": "http://en.calb-tech.com/news_detail/5.html",
+      "retrieved_date": "2026-09-05",
+      "retrieved_by": "George Christopoulos",
+      "note": "CALB's own release of 27 February 2025: 'On February 24, local time, construction commenced on CALB's Portugal facility, which will be a zero-carbon AI gigafactory with delivery expected in 2027.' READ BEFORE THE ROW IS WRITTEN: the release names PORTUGAL AND NO CITY, states no capacity, and does not say Sines. It confirms that construction started and it does not confirm the site, which is the thing the candidate was waiting on — the same shape as Sunwoda's 'Hungary'. The coordinate is already in hand; the site rule is not closed by this page. FOUND AFTERWARDS: the certificate mismatch is an https problem only — the URL serves over plain http and check_links reaches it, and this file is byte-for-byte what it serves. The filed copy stays: it is what was read, and the row cites the publisher's URL either way."
+    },
+    {
+      "file": "sk-on-ivancsa--sk-on-global-network-ivancsa.html",
+      "url": "http://eng.sk-on.com/company/global.asp",
+      "retrieved_date": "2026-09-05",
+      "retrieved_by": "George Christopoulos",
+      "note": "SK On's own places-of-business page. THE PARCEL LINE IS THE PAYLOAD: 'SK On Hungary Iváncsa HRSZ 99/48 Iváncsa 2454, Hungary' — an operator-published address carrying the Hungarian land-registry parcel number (helyrajzi szám) for the works, which is both the company confirmation of the site and a position that walks back to a cadastral parcel rather than to an estate. The same page also carries 'SK On Hungary Komárom 2903 Komárom, Irinyi János u 9, Hungary' and 'SK Battery Manufacturing Komárom 2900 Komárom, Klapka Gyorgy ut 39., Hungary', so it serves the Komárom candidate as well as Iváncsa. FOUND AFTERWARDS: the certificate mismatch is an https problem only — the URL serves over plain http and check_links reaches it, and this file is byte-for-byte what it serves. The filed copy stays: it is what was read, and the row cites the publisher's URL either way."
+    },
+    {
+      "file": "svolt-lauchhammer--svolt-europe-lauchhammer.html",
+      "url": "https://web.archive.org/web/20240522145108/https://www.svolt-eu.com/en/press/svolt-builds-additional-battery-cell-factory-in-brandenburg-germany-for-european-market/",
+      "retrieved_date": "2026-09-05",
+      "retrieved_by": "George Christopoulos",
+      "note": "SVOLT's press release of 9 September 2022, from the Internet Archive's capture of 22 May 2024: SVOLT 'will build another battery cell factory for the European market in Lauchhammer', on the former Vestas rotor-blade site taken over at the end of August 2022 and repurposed. Cell factory, named brownfield site, no capacity in this release. NOT A RETRIEVED_MANUALLY SOURCE: the publisher's own copy is gone with the company, so the row cites this capture URL with archived: true and snapshot pointing at this file — see sources/manual/README.md, 'What this is not'."
+    },
+    {
+      "file": "svolt-uberherrn--svolt-europe-uberherrn.html",
+      "url": "https://web.archive.org/web/20240724080837/https://www.svolt-eu.com/en/eu-locations/",
+      "retrieved_date": "2026-09-05",
+      "retrieved_by": "George Christopoulos",
+      "note": "SVOLT's EU-Locations page, from the Internet Archive's capture of 24 July 2024. Überherrn: 'In Überherrn on \"Linslerfeld\", a battery cell factory with 24 GWh of installed capacity in the final expansion stage is to be built' — site, product and scale in one sentence, and the site is named as a parcel rather than as a town. The page also covers Heusweiler, which is a module and pack factory and is refused by the product rule, and Lauchhammer. Archived rather than manually retrieved, for the same reason as the Lauchhammer capture."
     }
   ],
   "wanted": [
@@ -47,14 +75,6 @@
       "why": "council planning portal answers 403; the public-access record says the application is no longer available for viewing",
       "needed_for": "a coordinate, from the parcel the permit names",
       "drop_as": "sources/manual/britishvolt-blyth--northumberland-permit-21-00818-FULES-committee-report.pdf",
-      "priority": "normal"
-    },
-    {
-      "candidate": "calb-sines",
-      "url": "http://en.calb-tech.com/news_detail/5.html",
-      "why": "certificate does not match the host",
-      "needed_for": "company confirmation of the site",
-      "drop_as": "sources/manual/calb-sines--calb-sines-groundbreaking.html",
       "priority": "normal"
     },
     {
@@ -71,30 +91,6 @@
       "why": "no live wire release found; the company is dissolved and only the Internet Archive has its materials",
       "needed_for": "company confirmation of the site, and a coordinate if it gives one",
       "drop_as": "sources/manual/farasis-bitterfeld--farasis-europe-site.html",
-      "priority": "normal"
-    },
-    {
-      "candidate": "sk-on-ivancsa",
-      "url": "http://eng.sk-on.com/company/global.asp",
-      "why": "certificate does not match the host",
-      "needed_for": "company confirmation of the site",
-      "drop_as": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html",
-      "priority": "normal"
-    },
-    {
-      "candidate": "svolt-lauchhammer",
-      "url": "https://web.archive.org/web/2023/https://svolt-eu.com/",
-      "why": "no live wire release found; the company is dissolved and only the Internet Archive has its materials",
-      "needed_for": "company confirmation of the site, and a coordinate if it gives one",
-      "drop_as": "sources/manual/svolt-lauchhammer--svolt-europe-lauchhammer.html",
-      "priority": "normal"
-    },
-    {
-      "candidate": "svolt-uberherrn",
-      "url": "https://web.archive.org/web/2023/https://svolt-eu.com/",
-      "why": "no live wire release found; the company is dissolved and only the Internet Archive has its materials",
-      "needed_for": "company confirmation of the site, and a coordinate if it gives one",
-      "drop_as": "sources/manual/svolt-uberherrn--svolt-europe-uberherrn.html",
       "priority": "normal"
     },
     {
