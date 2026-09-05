@@ -6,7 +6,7 @@
   ],
   "sector": "batsol",
   "width": 1160,
-  "height": 1304,
+  "height": 1358,
   "columns": [
     {
       "kind": "measure",
@@ -26,7 +26,7 @@
     {
       "kind": "project",
       "x": 900,
-      "count": 24
+      "count": 25
     }
   ],
   "nodes": [
@@ -40,7 +40,7 @@
       "direction": null,
       "measure_id": "fleet:TGT-2035",
       "x": 0,
-      "y": 390.0,
+      "y": 417.0,
       "w": 236,
       "h": 38
     },
@@ -54,7 +54,7 @@
       "direction": null,
       "measure_id": "crma:CBEN-01",
       "x": 0,
-      "y": 444.0,
+      "y": 471.0,
       "w": 236,
       "h": 38
     },
@@ -68,7 +68,7 @@
       "direction": null,
       "measure_id": "iaa:LM-15a",
       "x": 0,
-      "y": 498.0,
+      "y": 525.0,
       "w": 236,
       "h": 38
     },
@@ -82,7 +82,7 @@
       "direction": null,
       "measure_id": "fleet:PREM-01",
       "x": 0,
-      "y": 552.0,
+      "y": 579.0,
       "w": 236,
       "h": 38
     },
@@ -96,7 +96,7 @@
       "direction": null,
       "measure_id": "fleet:TGT-2030",
       "x": 0,
-      "y": 606.0,
+      "y": 633.0,
       "w": 236,
       "h": 38
     },
@@ -110,7 +110,7 @@
       "direction": null,
       "measure_id": "crma:CBEN-02",
       "x": 0,
-      "y": 660.0,
+      "y": 687.0,
       "w": 236,
       "h": 38
     },
@@ -124,7 +124,7 @@
       "direction": null,
       "measure_id": "crma:CSP-02",
       "x": 0,
-      "y": 714.0,
+      "y": 741.0,
       "w": 236,
       "h": 38
     },
@@ -138,7 +138,7 @@
       "direction": null,
       "measure_id": "ets:FND-03",
       "x": 0,
-      "y": 768.0,
+      "y": 795.0,
       "w": 236,
       "h": 38
     },
@@ -152,7 +152,7 @@
       "direction": null,
       "measure_id": "iaa:LM-26a",
       "x": 0,
-      "y": 822.0,
+      "y": 849.0,
       "w": 236,
       "h": 38
     },
@@ -166,7 +166,7 @@
       "direction": null,
       "measure_id": "nzia:SCH-01",
       "x": 0,
-      "y": 876.0,
+      "y": 903.0,
       "w": 236,
       "h": 38
     },
@@ -178,7 +178,7 @@
       "href": "#bottleneck-batsol-cell-cost-gap",
       "type": "market",
       "x": 300,
-      "y": 552.0,
+      "y": 579.0,
       "w": 236,
       "h": 38
     },
@@ -190,7 +190,7 @@
       "href": "#bottleneck-batsol-demand-uncertainty",
       "type": "market",
       "x": 300,
-      "y": 606.0,
+      "y": 633.0,
       "w": 236,
       "h": 38
     },
@@ -202,7 +202,7 @@
       "href": "#bottleneck-batsol-ramp-and-yield",
       "type": "technical",
       "x": 300,
-      "y": 660.0,
+      "y": 687.0,
       "w": 236,
       "h": 38
     },
@@ -214,7 +214,7 @@
       "href": "#bottleneck-batsol-cathode-dependence",
       "type": "infrastructure",
       "x": 300,
-      "y": 714.0,
+      "y": 741.0,
       "w": 236,
       "h": 38
     },
@@ -226,7 +226,7 @@
       "href": "#technology-lfp-cells",
       "readiness": "commercial",
       "x": 600,
-      "y": 552.0,
+      "y": 579.0,
       "w": 236,
       "h": 38
     },
@@ -238,7 +238,7 @@
       "href": "#technology-cell-manufacturing",
       "readiness": "commercial",
       "x": 600,
-      "y": 606.0,
+      "y": 633.0,
       "w": 236,
       "h": 38
     },
@@ -250,7 +250,7 @@
       "href": "#technology-nmc-nca-cells",
       "readiness": "commercial",
       "x": 600,
-      "y": 660.0,
+      "y": 687.0,
       "w": 236,
       "h": 38
     },
@@ -262,7 +262,7 @@
       "href": "#technology-sodium-ion-cells",
       "readiness": "early-commercial",
       "x": 600,
-      "y": 714.0,
+      "y": 741.0,
       "w": 236,
       "h": 38
     },
@@ -447,6 +447,18 @@
       "h": 38
     },
     {
+      "id": "project:svolt-uberherrn",
+      "kind": "project",
+      "label": "SVOLT Überherrn",
+      "sub": "DE · cancelled",
+      "href": "/projects/svolt-uberherrn",
+      "status": "cancelled",
+      "x": 900,
+      "y": 822.0,
+      "w": 236,
+      "h": 38
+    },
+    {
       "id": "project:acc-billy-berclau",
       "kind": "project",
       "label": "ACC Billy-Berclau Douvrin",
@@ -454,7 +466,7 @@
       "href": "/projects/acc-billy-berclau",
       "status": "operating",
       "x": 900,
-      "y": 822.0,
+      "y": 876.0,
       "w": 236,
       "h": 38
     },
@@ -466,7 +478,7 @@
       "href": "/projects/envision-aesc-douai",
       "status": "operating",
       "x": 900,
-      "y": 876.0,
+      "y": 930.0,
       "w": 236,
       "h": 38
     },
@@ -478,7 +490,7 @@
       "href": "/projects/envision-aesc-sunderland",
       "status": "operating",
       "x": 900,
-      "y": 930.0,
+      "y": 984.0,
       "w": 236,
       "h": 38
     },
@@ -490,7 +502,7 @@
       "href": "/projects/catl-arnstadt",
       "status": "operating",
       "x": 900,
-      "y": 984.0,
+      "y": 1038.0,
       "w": 236,
       "h": 38
     },
@@ -502,7 +514,7 @@
       "href": "/projects/lges-wroclaw",
       "status": "operating",
       "x": 900,
-      "y": 1038.0,
+      "y": 1092.0,
       "w": 236,
       "h": 38
     },
@@ -514,7 +526,7 @@
       "href": "/projects/northvolt-ett-skelleftea",
       "status": "paused",
       "x": 900,
-      "y": 1092.0,
+      "y": 1146.0,
       "w": 236,
       "h": 38
     },
@@ -526,7 +538,7 @@
       "href": "/projects/samsung-sdi-god",
       "status": "operating",
       "x": 900,
-      "y": 1146.0,
+      "y": 1200.0,
       "w": 236,
       "h": 38
     },
@@ -538,7 +550,7 @@
       "href": "/projects/tesla-gruenheide-cells",
       "status": "construction",
       "x": 900,
-      "y": 1200.0,
+      "y": 1254.0,
       "w": 236,
       "h": 38
     },
@@ -550,7 +562,7 @@
       "href": "/projects/verkor-dunkirk",
       "status": "operating",
       "x": 900,
-      "y": 1254.0,
+      "y": 1308.0,
       "w": 236,
       "h": 38
     }
@@ -804,6 +816,12 @@
     },
     {
       "from": "project:sunwoda-nyiregyhaza",
+      "to": "technology:cell-manufacturing",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:svolt-uberherrn",
       "to": "technology:cell-manufacturing",
       "rel": "deploys",
       "weight": 1

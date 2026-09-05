@@ -3413,6 +3413,89 @@
       ],
       "override_stale": false,
       "notes": []
+    },
+    "svolt-uberherrn": {
+      "id": "svolt-uberherrn",
+      "template_version": 1,
+      "fingerprint": "53b2b9fb648eec7b",
+      "sentence": {
+        "text": "SVOLT Überherrn is SVOLT's batteries and solar project at Überherrn, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "SVOLT Überherrn",
+          "SVOLT",
+          "Überherrn, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "SVOLT Überherrn was cancelled on 7 May 2026.",
+          "as_of": "2026-05-07",
+          "numbers": [],
+          "sourced": [
+            "SVOLT Überherrn"
+          ],
+          "href": "https://ueberherrn.de/wp-content/uploads/2024/02/Bekanntmachung-Offenlage-Aufhebung-Linsler-Feld.pdf",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Überherrn, Germany.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [
+            "Überherrn, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 24 GWh per year.",
+          "as_of": "2026-09-05",
+          "numbers": [
+            "24"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
     }
   }
 }

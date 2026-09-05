@@ -2715,6 +2715,110 @@
           "note": "PRESS RELAYING A STATE SOURCE, recorded as press. It reports what the Junta's secretaria general de Economía, Celina Pérez, told the Asamblea de Extremadura on 8 June 2026: assembly of the installations finished September 2027, module and pack production September 2027, construction concluded November 2027, and cell production from December 2028, at 977 million euros and 900 jobs. No Junta or Assembly record of the session was found, which is why it sits at press tier. USED FOR THE TIMETABLE IT RELAYS AND NOT FOR DATES IT STATES ITSELF: the article puts the first stone in July 2022, and the company's own release and La Moncloa both put it in July 2024."
         }
       ]
+    },
+    {
+      "id": "svolt-uberherrn",
+      "name": "SVOLT Überherrn",
+      "company": "SVOLT",
+      "plant": "Überherrn",
+      "country": "DE",
+      "location": [
+        {
+          "site": "Geltungsbereich \"Industriegebiet Linsler Feld\", Überherrn",
+          "lat": 49.2442,
+          "lon": 6.7259,
+          "precision": "site",
+          "retrieved_date": "2026-09-05",
+          "source": {
+            "url": "https://ueberherrn.de/wp-content/uploads/2026/06/Begruendung.pdf",
+            "type": "permit",
+            "publisher": "Gemeinde Überherrn (FIRU mbH)",
+            "verbatim": "Betroffen sind folgende Flurstücke: Vollständig im Geltungsbereich: 101/23 152/11 100/14 100/13 101/22 100/16 100/15 99/3 122/7 122/4 122/3 122/2 121/5 101/13 101/14 101/15 101/16 101/17 101/18 101/19 80/10 80/8 80/6 72/3 100/9 100/8 100/7 100/6 100/5 100/10 100/11 119/8 137/37 137/36 137/35 119/6 121/1 121/2 121/3 121/4 382/121 385/125 386/125 137/38 133/1 412/127 399/127 127/3 127/1 127/2 410/132 397/132 352/131 351/130 357/129 356/129 355/129 354/129",
+            "note": "THE PLAN NAMES THE PARCELS AND THE STATE CADASTRE HOLDS THEIR GEOMETRY, and the point is the area-weighted centroid of the two put together — the same construction as Sunderland's, where the permit listed emission points and the centroid of those was the works. 57 of the 58 parcels the Begründung lists as wholly inside the Geltungsbereich were found in Gemarkung Überherrn, Flur 1 and Flur 3, in the Saarland INSPIRE cadastral service (LVGL, dl-de/by-2-0); 152/11 was not, and four labels occur in both Fluren and are both counted, which moves the point by tens of metres. They total 77.1 ha against the plan's stated 99, the balance being the road and watercourse parcels the same page lists as only partly inside. THE PLAN AREA IS NOT THE WORKS: the factory footprint inside it was about 52 ha, and nothing was ever built, so the precision is `site` and the point is the centre of the area the plan covered rather than of a building.",
+            "licence": "dl-de/by-2-0 (cadastral geometry: ©LVGL Saarland)",
+            "parcels": {
+              "gemarkung": "Überherrn",
+              "fluren": [
+                "1",
+                "3"
+              ],
+              "matched": 57,
+              "listed": 58,
+              "not_found": [
+                "152/11"
+              ],
+              "area_ha": 77.1,
+              "service": "https://geoportal.saarland.de/gdi-sl/inspirewfs_Flurstuecke_Grundstuecke_ALKIS?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0",
+              "read_date": "2026-09-05"
+            }
+          },
+          "confidence": "secondary"
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 24,
+        "unit": "GWh per year"
+      },
+      "capacity_note": "The company's figure for the final expansion stage, from its own EU-Locations page: 'a battery cell factory with 24 GWh of installed capacity in the final expansion stage is to be built'. No stage of it was built.",
+      "status": "cancelled",
+      "status_history": [
+        {
+          "status": "announced",
+          "date": "2024-07-24",
+          "source_url": "https://web.archive.org/web/20240724080837/https://www.svolt-eu.com/en/eu-locations/",
+          "note": "SVOLT's own EU-Locations page, as the Internet Archive captured it on 24 July 2024: 'In Überherrn on \"Linslerfeld\", a battery cell factory with 24 GWh of installed capacity in the final expansion stage is to be built.' The site was announced in 2020 and this is the earliest company statement about it that this pipeline has read; the capture date is what the row can defend, not the announcement date."
+        },
+        {
+          "status": "cancelled",
+          "date": "2026-05-07",
+          "source_url": "https://ueberherrn.de/wp-content/uploads/2024/02/Bekanntmachung-Offenlage-Aufhebung-Linsler-Feld.pdf",
+          "note": "THE CANCELLATION IS THE AUTHORITY'S OWN, not press. The Überherrn council resolved on 7 May 2026 to repeal the plan, and the notice says why: 'Gegenstand der Aufhebung ist der Vorhabenbezogene Bebauungsplan „Industriegebiet Linsler Feld“, der die planungsrechtlichen Voraussetzungen für die Ansiedlung einer Batteriezellfabrik schaffen sollte. Das Vorhaben wird nicht mehr umgesetzt.' The repeal Begründung records the mechanism: gwSaar, the Vorhabenträger that had bought the land to grant SVOLT a heritable building right, declared it would not hold to the project, which triggers the municipality's duty to repeal under § 12 Abs. 6 BauGB. SVOLT's European withdrawal was reported earlier in trade press and no company statement of it has been read here, so the date this row carries is the authority's."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20240724080837/https://www.svolt-eu.com/en/eu-locations/",
+          "title": "SVOLT in Europe — EU-Locations",
+          "publisher": "SVOLT Energy Technology (Europe) GmbH",
+          "date": "2024-07-24",
+          "archived": true,
+          "snapshot": "sources/manual/svolt-uberherrn--svolt-europe-uberherrn.html",
+          "note": "THE COMPANY SOURCE, and it names the site: Überherrn, on 'Linslerfeld', a cell factory at 24 GWh in the final expansion stage. Read from the Internet Archive because SVOLT's European site is gone with the company. The same page covers Heusweiler, which is a module and pack works and is refused by the product rule, and Lauchhammer, which is a separate candidate."
+        },
+        {
+          "url": "https://ueberherrn.de/wp-content/uploads/2024/02/Bekanntmachung-Offenlage-Aufhebung-Linsler-Feld.pdf",
+          "title": "Aufhebung des Vorhabenbezogenen Bebauungsplans „Industriegebiet Linsler Feld“ — Bekanntmachung der öffentlichen Auslegung",
+          "publisher": "Gemeinde Überherrn",
+          "date": "2026-06-29",
+          "note": "The authority's statement that the project will not be implemented, and the plan area: about 99 ha east of the Überherrn settlement between the B 269, the L 168 and the L 279."
+        },
+        {
+          "url": "https://ueberherrn.de/wp-content/uploads/2026/06/Begruendung.pdf",
+          "title": "Aufhebung des Vorhabenbezogenen Bebauungsplans „Industriegebiet Linsler Feld“ — Begründung",
+          "publisher": "Gemeinde Überherrn (FIRU mbH)",
+          "date": "2026-05-08",
+          "note": "The parcel list the coordinate is built from, and the record of how the project ended: the Durchführungsvertrag with gwSaar, the heritable building right SVOLT was to receive, and gwSaar's declaration that it would not hold to the project."
+        },
+        {
+          "url": "https://ueberherrn.de/wp-content/uploads/2026/06/Satzungsentwurf.pdf",
+          "title": "Satzung über die Aufhebung des Vorhabenbezogenen Bebauungsplans „Industriegebiet Linsler Feld“ — Entwurf",
+          "publisher": "Gemeinde Überherrn",
+          "date": "2026-05-08",
+          "note": "Records that the plan came into force on 24 September 2024 and was re-published on 13 November 2025 after a formal defect, and that the repeal removes it in full."
+        },
+        {
+          "url": "https://geoportal.saarland.de/gdi-sl/inspirewfs_Flurstuecke_Grundstuecke_ALKIS?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0",
+          "title": "INSPIRE-WFS SL Flurstücke Grundstücke ALKIS",
+          "publisher": "Landesamt für Vermessung, Geoinformation und Landentwicklung Saarland",
+          "date": "2026-09-05",
+          "note": "Where the parcels' geometry was read. Cited as a source and not as the coordinate's type: what admits this position is the plan naming its parcels; the cadastre only says where those parcels are. Cited as the service's capabilities document, because the endpoint itself answers only to a query."
+        }
+      ]
     }
   ]
 }
