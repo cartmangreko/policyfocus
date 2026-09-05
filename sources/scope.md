@@ -506,6 +506,34 @@ source with its verbatim, and a `note` saying the company's own wording is
 weaker — so the reader sees the join rather than a flat assertion. And the
 site's `confidence` stays `secondary`, which is what it is.
 
+### A failure you observe is blocking
+
+**"Pre-existing" describes when a failure started. It is not a reason to push
+over it.** A red gate is red whoever made it red, and a branch that ships with a
+known failure hands the next person a build they cannot trust and a question
+they did not ask for.
+
+So: **a failure observed before a push is reported and ruled on, never stepped
+around.** If it is inside the branch's scope, fix it. If it is outside — a gate
+that has been failing since before this work started, a dependency that broke on
+somebody else's clock — it is brought to George as a failure, in those words,
+before the push, and he decides whether it is fixed here, fixed elsewhere or
+knowingly carried. What is not available is a push accompanied by a note saying
+the failure was already there.
+
+**The case this is written from.** `check_anchor_text` failed on the Italvolt
+page for days. It was described in commit messages and in conversation as
+pre-existing and out of scope, which was true and was not the point: the branch
+was pushed green four times over a gate that was red, because the hook that says
+"gate chain green" was running `prebuild` and the failing gate runs after the
+build. Two things were wrong and only one of them was the gate — see
+`.githooks/pre-push`, which now runs the whole chain.
+
+**Why this is a ruling and not a habit.** The pull towards stepping around it is
+strongest exactly when the failure is genuinely not yours, which is when the
+reasoning sounds best and the outcome is worst: an unrelated red gate is how a
+build stops being a signal at all.
+
 ### A node in the geo layer requires a source-stated position
 
 Scoped to the geo layer and to nothing else. Every project row carries
