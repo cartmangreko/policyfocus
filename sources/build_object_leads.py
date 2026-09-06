@@ -168,6 +168,16 @@ STANDING_CLAUSE = {
 }
 
 
+def _where_sentence(project: dict, status: str, place: str) -> str:
+    """Where the project is, in the tense its state supports. See the three
+    cases at the call site."""
+    if project.get("location"):
+        return f"It is at {place}."
+    if status == "cancelled":
+        return f"It was to be at {place}."
+    return f"Its site is at {place}."
+
+
 def _fact(fid, text, as_of, numbers=(), sourced=(), href=None) -> dict:
     return {
         "id": fid,
@@ -338,17 +348,21 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
         _fact("status", f"{p['name']} {bl.STATUS_VERB[last['status']]} on "
                         f"{bl._long_date(last['date'])}.",
               last["date"], sourced=(p["name"],), href=last.get("source_url")),
-        # PRESENT TENSE WHERE THERE IS A POSITION, past tense where there is
-        # none. The test is the position and not the status: Northvolt Ett is
-        # paused and the works stands in Skellefteå, so "it is at" is true of
-        # it; a row whose location was never sought has nothing the present
-        # tense can be about, and the place it names is where the thing was to
-        # be. Getting this from the status would have said the Skellefteå works
-        # was never there.
-        _fact("where",
-              (f"It is at {place}." if p.get("location")
-               else f"It was to be at {place}."),
-              as_of, sourced=(place,)),
+        # THREE SENTENCES, AND THE STATUS PICKS BETWEEN THEM.
+        #
+        #   a position          "It is at Skellefteå, Sweden."
+        #   none, cancelled     "It was to be at Mo i Rana, Norway."
+        #   none, paused        "Its site is at Gothenburg, Sweden."
+        #
+        # The middle two used to be one sentence keyed on the position alone,
+        # and it said the wrong thing about a paused project: NOVO Energy's
+        # shell stands in Gothenburg and its works is confirmed, so "it was to
+        # be at" denied a building that is there. Cancelled is the case where
+        # the past tense is the truth — nothing will stand — and paused is the
+        # case where the register simply has no point for a site it knows the
+        # town of.
+        _fact("where", _where_sentence(p, last["status"], place), as_of,
+              sourced=(place,)),
     ]
 
     tech_names = [_uncapitalise(techs[t]["name"]) for t in p.get("technology", [])

@@ -128,11 +128,25 @@ interface ProseDoc {
     support_window: Record<string, string>;
     signals: Record<string, string>;
   };
+  sector_plain?: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    sectors: Record<string, Record<string, { section: string; title: string; text: string }>>;
+  };
   sector_orientation?: {
     status: ProseStatus;
     reviewed?: string | null;
-    sectors: Record<string, { paragraph: string }>;
+    /** A sector may carry its own status: see getSectorOrientation. */
+    sectors: Record<string, { paragraph: string; status?: ProseStatus; reviewed?: string | null }>;
   };
+}
+
+/** One of the page's explanations of itself, with the section it renders in. */
+export interface SectorPlainBlock {
+  id: string;
+  section: string;
+  title: string;
+  text: string;
 }
 
 let cached: ProseDoc | null = null;
@@ -227,8 +241,31 @@ export function getCoverageDeclaration(file: string): string | null {
  *  page that cannot be derived from the panels. */
 export function getSectorOrientation(sector: string): string | null {
   const block = readProse().sector_orientation;
-  if (!block || !isReviewed(block.status)) return null;
-  return block.sectors[sector]?.paragraph ?? null;
+  const entry = block?.sectors[sector];
+  if (!block || !entry) return null;
+  // APPROVAL IS PER SECTOR WHERE THE SECTOR SAYS SO. The block carries one
+  // status for everything under it, which is right while the paragraphs are
+  // written together and wrong the moment one sector's is reviewed and the
+  // others are not: approving batteries' would have published cement's and
+  // steel's on the same keystroke. A sector may therefore carry its own
+  // status and reviewed date, and it wins; without one, the block's status
+  // still decides.
+  return isReviewed(entry.status ?? block.status) ? (entry.paragraph ?? null) : null;
+}
+
+/** The page's own explanations of how it counts — what is summed, why a figure
+ *  another sector shows is missing here, what admits a project, what the
+ *  picture leaves out. Keyed by topic in data/prose.json and placed by the
+ *  `section` each one names, in the order they are written.
+ *
+ *  ABSENT IS THE ORDINARY CASE and renders nothing: cement and steel have none
+ *  of these. What this must never do is render one sector's explanation on
+ *  another's page, which is why nothing here falls back to a shared block. */
+export function getSectorPlain(sector: string): SectorPlainBlock[] {
+  const block = readProse().sector_plain;
+  if (!block || !isReviewed(block.status)) return [];
+  const entries = block.sectors[sector] ?? {};
+  return Object.entries(entries).map(([id, b]) => ({ id, ...b }));
 }
 
 export function getTransitionNote(sector: string): string | null {

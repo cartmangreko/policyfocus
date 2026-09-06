@@ -29792,6 +29792,18 @@
  },
  {
   "rel": "finances",
+  "from": "funding:innovation-fund-novo-one",
+  "to": "project:novo-energy-gothenburg",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-novo-one].finances"
+  },
+  "instrument": "grant",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
   "from": "funding:innovation-fund-stegra",
   "to": "project:stegra-boden",
   "since": "2024-01-22",
@@ -31870,6 +31882,17 @@
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=innovation-fund-ifestos].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-novo-one",
+  "to": "country:SE",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-novo-one].country"
   },
   "basis": "country"
  },
@@ -35446,6 +35469,16 @@
  },
  {
   "rel": "supports",
+  "from": "funding:innovation-fund-novo-one",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-novo-one].supports"
+  }
+ },
+ {
+  "rel": "supports",
   "from": "funding:innovation-fund-stegra",
   "to": "technology:h2-dri",
   "since": "2024-01-22",
@@ -35559,6 +35592,17 @@
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=innovation-fund-ifestos].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-novo-one",
+  "to": "measure:ets:FND-03",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-novo-one].under"
   },
   "programme": "EU Innovation Fund"
  },
