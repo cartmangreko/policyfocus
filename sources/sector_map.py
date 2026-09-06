@@ -221,6 +221,7 @@ EVIDENCE_MODES = (
 CAPACITY_UNITS = (
     "t_per_year",
     "GWh_per_year",
+    "t_co2_per_year",
 )
 
 # HOW FIRM THE FIGURE IS. The same number means different things at these three
@@ -243,13 +244,21 @@ CAPACITY_PRODUCTS = (
     "steel",
     "co2_reduced_steel",
     "battery_cells",
+    # NOT A PRODUCT THE PLANT SELLS, and it is in this list anyway. A capture
+    # retrofit's output is the tonne it stops: the cement rows' known figure is
+    # CO2 captured per year, the works makes the same clinker it always did, and
+    # a register that could only record saleable product would have to leave
+    # every one of them empty. It is kept apart from the rest by its unit --
+    # t_co2_per_year is the only unit it ever takes -- so nothing can add a tonne
+    # of captured CO2 to a tonne of crude steel.
+    "CO2 captured",
 )
 
 # THE SECTORS A CAPACITY FIGURE IS SOUGHT FOR. Not every sector in the file has a
 # product capacity that means anything — a CO2 store's capacity is a different
 # quantity in a different unit — so the gate asks for these three and is silent
 # about the rest.
-CAPACITY_SECTORS = ("cement", "steel", "batsol")
+CAPACITY_SECTORS = ("cement", "steel", "batsol", "ccs")
 
 
 # NOT EVERY ENTRY IN A STATUS HISTORY IS A STATUS CHANGE, and the difference has

@@ -33,6 +33,32 @@ import sector_map as sm  # noqa: E402
 ROOT = sm.ROOT
 OUT = ROOT / "scratch"
 
+# THE PAPER'S REPORTING GROUPS, AND THEY ARE THIS FILE'S ALONE.
+#
+# sector_map.PROJECT_ALIVE / PROJECT_STOPPED / PROJECT_COMPLETE are the schema's
+# counting groups and sector_map.STOPPED_STATUSES is the site's drawing rule.
+# Neither is touched here. An attrition paper needs a third cut: it is ABOUT the
+# projects that stalled, so `paused` cannot be folded into either the ones that
+# are proceeding or the ones that are over — the whole question is how many sit
+# in between, and for how long.
+#
+#   active    work is proceeding. Everything on the ladder, INCLUDING operating:
+#             a plant that was built did not stall, and putting it in its own
+#             bucket would make the active count read as "unfinished".
+#   paused    its own group, because it is the finding.
+#   stopped   it will not be built. `withdrawn` is named here for the same reason
+#             the schema names it nowhere: it is a funding status, and if a
+#             project status of that name ever lands it belongs in this group.
+#
+# So this is three groups where the schema has three and the site has two, and
+# all three readings stand — they answer different questions.
+REPORTING_GROUPS = {
+    "active": ("announced", "funded", "fid", "construction", "operating"),
+    "paused": ("paused",),
+    "stopped": ("cancelled", "withdrawn"),
+}
+
+
 COLUMNS = [
     "project_id", "sector", "company", "country", "technology", "transition",
     "capacity_value", "capacity_unit", "capacity_basis",
@@ -66,6 +92,20 @@ def num(v: float) -> str:
     which is a capacity nobody can read at a glance and the wrong shape for a
     column somebody will paste into a paper."""
     return f"{v:,.0f}" if float(v) == int(v) else f"{v:,.2f}"
+
+
+def by_unit(rows) -> str:
+    """A total per unit, never across them. t_per_year and t_co2_per_year are both
+    tonnes and they are not the same tonne: one is product the works sells, the
+    other is emissions it stops. Adding them would produce a number with no
+    referent, which is the failure CAPACITY_UNITS exists to prevent, so the totals
+    are printed side by side and never summed."""
+    per: dict[str, float] = defaultdict(float)
+    for r in rows:
+        v = r.get("capacity_value")
+        if v not in (None, ""):
+            per[r.get("capacity_unit") or "?"] += float(v)
+    return "; ".join(f"{num(v)} {u}" for u, v in sorted(per.items()))
 
 
 def load():
@@ -145,13 +185,10 @@ def main() -> int:
     for s in sectors:
         rs = [r for r in rows if r.get("sector") == s]
         filled = [r for r in rs if r.get("capacity_value") not in (None, "")]
-        total = sum(r["capacity_value"] for r in filled) if filled else 0
-        units = sorted({r.get("capacity_unit") for r in filled})
         body.append([s, len(rs), len(filled), len(rs) - len(filled),
-                     num(total) if filled else "-",
-                     " ".join(u for u in units if u) or "-"])
+                     by_unit(filled) or "-"])
     md += [table(["sector", "projects", "capacity filled", "capacity empty",
-                  "capacity total", "units"], body)]
+                  "capacity total"], body)]
 
     md += ["", "## Events by kind", ""]
     kinds = list(sm.PROJECT_EVENT_KINDS)
@@ -180,18 +217,17 @@ def main() -> int:
     md += ["", "## Transition matrix — counts, and capacity behind them", "",
            "Rows are status_from, columns status_to. `-` in the from column is a "
            "project's first entry, which comes from nowhere. Each cell is the "
-           "number of events, and after the slash the capacity moving with them "
-           "in the units the sector records — blank where none of those projects "
-           "carries a figure.", ""]
+           "number of events, and after the slash the capacity moving with them, "
+           "totalled separately per unit and never across them — blank where none "
+           "of those projects carries a figure.", ""]
     froms = ["-"] + list(sm.PROJECT_STATUSES)
     tos = list(sm.PROJECT_STATUSES)
     cell_n: dict[tuple, int] = Counter()
-    cell_cap: dict[tuple, float] = defaultdict(float)
+    cell_rows: dict[tuple, list] = defaultdict(list)
     for e in events:
         key = (e["status_from"] or "-", e["status_to"])
         cell_n[key] += 1
-        if e["capacity_value"] not in (None, ""):
-            cell_cap[key] += float(e["capacity_value"])
+        cell_rows[key].append(e)
     body = []
     for f in froms:
         if not any(cell_n.get((f, t)) for t in tos):
@@ -201,10 +237,9 @@ def main() -> int:
             n = cell_n.get((f, t), 0)
             if not n:
                 line.append("")
-            elif cell_cap.get((f, t)):
-                line.append("%d / %s" % (n, num(cell_cap[(f, t)])))
-            else:
-                line.append(str(n))
+                continue
+            cap = by_unit(cell_rows[(f, t)])
+            line.append("%d / %s" % (n, cap) if cap else str(n))
         body.append(line)
     md += [table(["from \\ to"] + tos, body)]
 
@@ -221,16 +256,46 @@ def main() -> int:
     md += [table(["status", "closed runs", "median months (closed)",
                   "open runs", "median months (open, to export date)"], body)]
 
-    md += ["", "## Status now", ""]
+    md += ["", "## Status now, by reporting group", "",
+           "`active`, `paused` and `stopped` are this export's groups and are "
+           "declared in this file. They are not sector_map's counting groups and "
+           "not the site's STOPPED_STATUSES; all three readings stand and answer "
+           "different questions. `paused` is its own group because it is what the "
+           "paper is about.", ""]
+    names = list(REPORTING_GROUPS)
     body = []
     for s in sectors:
         c = Counter(r.get("status") for r in rows if r.get("sector") == s)
-        alive = sum(c[x] for x in sm.PROJECT_ALIVE)
-        stopped = sum(c[x] for x in sm.PROJECT_STOPPED)
-        complete = sum(c[x] for x in sm.PROJECT_COMPLETE)
-        body.append([s, alive, stopped, complete,
-                     " ".join(f"{k}:{v}" for k, v in sorted(c.items()))])
-    md += [table(["sector", "alive", "stopped", "complete", "detail"], body)]
+        line = [s] + [sum(c[x] for x in REPORTING_GROUPS[g]) for g in names]
+        line.append(" ".join(f"{k}:{v}" for k, v in sorted(c.items())))
+        body.append(line)
+    c = Counter(r.get("status") for r in rows)
+    body.append(["all"] + [sum(c[x] for x in REPORTING_GROUPS[g]) for g in names]
+                + [" ".join(f"{k}:{v}" for k, v in sorted(c.items()))])
+    md += [table(["sector"] + names + ["detail"], body)]
+
+    md += ["", "## Capacity now, by reporting group", "",
+           "The same three groups, weighted by capacity rather than counted. "
+           "Totals are per unit and never across them.", ""]
+    body = []
+    for s in sectors:
+        rs = [r for r in rows if r.get("sector") == s]
+        line = [s]
+        for g in names:
+            line.append(by_unit([r for r in rs
+                                 if r.get("status") in REPORTING_GROUPS[g]]) or "-")
+        body.append(line)
+    body.append(["all"] + [by_unit([r for r in rows
+                                    if r.get("status") in REPORTING_GROUPS[g]]) or "-"
+                           for g in names])
+    md += [table(["sector"] + names, body)]
+
+    unplaced = [st for st in sm.PROJECT_STATUSES
+                if not any(st in v for v in REPORTING_GROUPS.values())]
+    if unplaced:
+        md += ["", f"**{len(unplaced)} project status(es) fall into no reporting "
+                   f"group and are missing from the two tables above: "
+                   f"{', '.join(unplaced)}.**"]
 
     md_path = OUT / "status_summary.md"
     md_path.write_text("\n".join(md) + "\n", encoding="utf-8")
