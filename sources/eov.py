@@ -15,9 +15,11 @@ already publishes and PROJ already implements. So this file converts nothing. It
 names EPSG:23700, asks pyproj, and spends its whole length checking the answer.
 
 WHAT THAT COSTS AND WHY IT IS PAID. pyproj is the first dependency the GATES
-need rather than the fetcher, and the gate fails loudly rather than skipping when
-it is absent -- a coordinate check that quietly does not run is worse than one
-that was never written. See sources/requirements.txt.
+need rather than the fetcher, so it lives in sources/requirements-gates.txt and
+sources/ensure_gate_deps.py installs it at the head of the prebuild -- in every
+environment the build runs in, not only the one that added it. Where it is absent
+the gate fails loudly rather than skipping: a coordinate check that quietly does
+not run is worse than one that was never written.
 
 WHAT IS CHECKED, WHICH IS NOT NOTHING JUST BECAUSE THE MATHS IS SOMEBODY ELSE'S.
 Three properties, and no arrangement of a broken install passes all three:
@@ -64,7 +66,7 @@ def _transformers():
     except ImportError as exc:  # pragma: no cover - the message is the point
         raise RuntimeError(
             "sources/eov.py needs pyproj, which is not installed: "
-            f"{exc}. Run `python3 -m pip install -r sources/requirements.txt`. "
+            f"{exc}. Run `python3 -m pip install -r sources/requirements-gates.txt`. "
             "The gate fails rather than skipping the check, because a coordinate "
             "nobody recomputed is a coordinate nobody can defend."
         ) from exc

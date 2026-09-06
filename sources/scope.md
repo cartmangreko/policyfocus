@@ -715,11 +715,18 @@ What does not change is the recompute contract. The stored latitude and longitud
 are still whatever the module returns from the document's own easting and
 northing, on every build, and the module still self-checks on every gate run —
 here against EOV's definitional origin, a round trip, and the grid's own
-orientation. What changes is only who owns the arithmetic. pyproj joins the
-fetcher's own dependencies in `sources/requirements.txt` — the first one the
-GATES need rather than the fetcher — and the gate **fails** when it is absent
-rather than skipping the check: a coordinate check that quietly does not run is
-worse than one nobody wrote.
+orientation. What changes is only who owns the arithmetic.
+
+**A gate dependency is installed everywhere the gates run, not everywhere
+somebody remembered.** pyproj is the first thing the gates need that the standard
+library does not carry, and the first build after it was added passed on the
+laptop that added it and failed on the deployment — which is the worst shape a
+dependency can have. So it lives in `sources/requirements-gates.txt`, separate
+from the fetcher's heavier `requirements.txt`, and `sources/ensure_gate_deps.py`
+installs it at the head of the prebuild. Where it cannot be installed the gate
+**fails**: a coordinate check that quietly does not run is worse than one nobody
+wrote.
+
 
 
 ### capacity_basis is read from the source sentence, never derived from status
