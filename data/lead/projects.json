@@ -3938,6 +3938,89 @@
       ],
       "override_stale": false,
       "notes": []
+    },
+    "eve-power-debrecen": {
+      "id": "eve-power-debrecen",
+      "template_version": 1,
+      "fingerprint": "127716cefbaab7df",
+      "sentence": {
+        "text": "EVE Power Debrecen is EVE Power's batteries and solar project at Debrecen, Hungary.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "EVE Power Debrecen",
+          "EVE Power",
+          "Debrecen, Hungary"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Nothing has been committed to it yet.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "EVE Power Debrecen was announced on 29 September 2025.",
+          "as_of": "2025-09-29",
+          "numbers": [],
+          "sourced": [
+            "EVE Power Debrecen"
+          ],
+          "href": "https://www.evebattery.com/en/news-1873",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Debrecen, Hungary.",
+          "as_of": "2025-09-29",
+          "numbers": [],
+          "sourced": [
+            "Debrecen, Hungary"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2025-09-29",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 30 GWh per year.",
+          "as_of": "2025-09-29",
+          "numbers": [
+            "30"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2025-09-29",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
     }
   }
 }

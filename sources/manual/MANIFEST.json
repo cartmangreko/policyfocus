@@ -119,7 +119,7 @@
     {
       "candidate": "elevenes-subotica",
       "url": "https://www.ekologija.gov.rs/obavestenja/procena-uticaja-na-zivotnu-sredinu",
-      "why": "the Serbian EIA register is a JavaScript shell to the fetcher, and ElevenEs's own newsroom now carries a single item (July 2026) with no line-opening release behind it",
+      "why": "the Serbian EIA register is a JavaScript shell to the fetcher, and neither the live site nor the Wayback Machine holds a line-opening release. The archive has 57 elevenes.com/news pages, read on 7 September 2026; the two that could carry a works address — 'How we became the first battery factory in Europe' and the SeeNews interview on the 1 GWh plant — name Subotica and no address. The company's live newsroom now carries a single item.",
       "needed_for": "PLACES AN ACTIVE ROW. Either the EIA decision for the Subotica cell line or an ElevenEs release naming the works address. The only address the company publishes is Tolminska 35, Subotica, which is its contact address and refused as a works position under the office-address rule.",
       "drop_as": "sources/manual/elevenes-subotica--eia-decision.pdf",
       "priority": "normal"
@@ -127,10 +127,10 @@
     {
       "candidate": "leclanche-willstatt",
       "url": "https://www.uvp-verbund.de/freitextsuche?q=Leclanch%C3%A9",
-      "why": "NOT A FETCH FAILURE. The national UVP portal answers, and answers nothing: 0 results for Leclanche, and the 2 results for Willstatt are groundwater abstractions unrelated to the site. There is no federal-portal environmental procedure to retrieve.",
-      "needed_for": "Would place the row only if a BImSchG procedure exists outside the portal's index. The row also still lacks Leclanche's own statement of the 2 GWh expansion, which George ruled a precondition of admission, so the permit alone would not admit it.",
+      "why": "NOT A FETCH FAILURE. The national UVP portal answers and answers nothing: 0 results for Leclanche, and the 2 for Willstatt are groundwater abstractions. No federal environmental procedure exists to retrieve.",
+      "needed_for": "PLACES AN ACTIVE ROW, and it is now the only thing missing. Leclanche's own ad hoc release of 10 November 2025 states the expansion — 'die Erweiterung des bestehenden Produktionsstandorts von Leclanche in Willstatt auf eine Kapazitat von 2 GWh' — so the admission precondition is met. What is not met is the position. Leclanche publishes Leclanche GmbH at Industriestrasse 1, 77731 Willstatt on its locations page, which is an address OF THE COMPANY and not a statement that the works is there; OSM carries an unnamed building at that address (way 49435057) and nothing named or operated by Leclanche. What would place it: a Leclanche page or filing naming the production site's own address, or a Baden-Wurttemberg BImSchG notice for the expansion once one is published.",
       "drop_as": "sources/manual/leclanche-willstatt--bimschg-notice.pdf",
-      "priority": "lowest"
+      "priority": "normal"
     }
   ]
 }

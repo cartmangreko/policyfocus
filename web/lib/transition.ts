@@ -70,6 +70,19 @@ export interface Source {
    *  licences page nobody opens: an attribution that only exists in the data is
    *  not an attribution. */
   licence?: string;
+  /** WHERE THIS COPY WAS FETCHED FROM, when that is not the author's own site.
+   *  A document is sourced by its author, not by its host (sources/scope.md), so
+   *  an applicant's own permit submission held by a campaign group may place a
+   *  row — and then has to say so. The digest is what makes the disclosure
+   *  checkable rather than decorative: it fixes which bytes were read, so a host
+   *  that swaps or truncates the file cannot silently change what is quoted. */
+  hosted_copy?: {
+    host: string;
+    host_url: string;
+    retrieved_date: string;
+    sha256: string;
+    label: "hosted copy";
+  };
   /** What kind of thing is at the other end. Absent means a document, which is
    *  what almost everything is. `api` and `dataset` are cited from the query
    *  the call was made with rather than by a title they do not have — see

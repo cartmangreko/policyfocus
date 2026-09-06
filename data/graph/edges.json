@@ -6831,6 +6831,138 @@
  },
  {
   "rel": "applies_to",
+  "from": "measure:emd:DES-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=DES-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:DES-01",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=DES-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:FLEX-01",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:FLEX-02",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-02].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:FLEX-02",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:FLEX-03",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-03].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:OBJ-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=OBJ-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:OBJ-01",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=OBJ-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:SUP-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:SUP-01",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:SUP-02",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-02].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:SUP-02",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
   "from": "measure:ets:AVI-01",
   "to": "sector:air",
   "since": "2026",
@@ -23680,6 +23812,76 @@
  },
  {
   "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:DES-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=DES-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:FLEX-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:FLEX-02",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-02]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:FLEX-03",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-03]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:OBJ-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=OBJ-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:SUP-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:SUP-02",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-02]"
+  }
+ },
+ {
+  "rel": "contains",
   "from": "act:32023R1542",
   "to": "measure:battery:BP-01",
   "since": "2023",
@@ -28640,6 +28842,17 @@
  },
  {
   "rel": "creates_demand_for",
+  "from": "measure:emd:OBJ-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=OBJ-01].creates_demand_for"
+  },
+  "basis": "demand"
+ },
+ {
+  "rel": "creates_demand_for",
   "from": "measure:fleet:PREM-01",
   "to": "sector:batsol",
   "since": "2019",
@@ -29122,6 +29335,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=envision-aesc-sunderland].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:eve-power-debrecen",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=eve-power-debrecen].technology"
   }
  },
  {
@@ -32300,6 +32523,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=envision-aesc-sunderland].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:eve-power-debrecen",
+  "to": "country:HU",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=eve-power-debrecen].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:eve-power-debrecen",
+  "to": "sector:batsol",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=eve-power-debrecen].sector"
   },
   "basis": "sector"
  },

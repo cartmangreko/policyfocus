@@ -289,6 +289,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                   {s.publisher}
                   {s.date ? ` · ${s.date}` : ""}
                   {s.retrieved_date ? ` · read ${s.retrieved_date}` : ""}
+                  {/* The three fixed words say the file was fetched from
+                      somebody other than its author, and the host is named
+                      rather than merely admitted to. */}
+                  {s.hosted_copy
+                    ? ` · ${s.hosted_copy.label} at ${s.hosted_copy.host}, read ${s.hosted_copy.retrieved_date}`
+                    : ""}
                   {s.licence ? ` · ${s.licence}` : ""}
                 </span>
               </li>

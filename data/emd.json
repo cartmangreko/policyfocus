@@ -1,0 +1,207 @@
+[
+  {
+    "id": "FLEX-01",
+    "measure_type": "obligation",
+    "addressee": "The regulatory authority, or another authority or entity designated by the Member State",
+    "class": "state",
+    "trigger": "the biennial cycle, starting one year after ACER approves the methodology",
+    "frequency": "every two years",
+    "verification": "ACER",
+    "direction": "add",
+    "article": "Art. 19e(1)",
+    "when": "One year after ACER approves the methodology, and every two years thereafter; the methodology proposal was due by 17 April 2025 (Art. 19e(1) and (6))",
+    "source_text": "No later than one year after the approval by ACER of the methodology pursuant to paragraph 6, and every two years thereafter, the regulatory authority or another authority or entity designated by a Member State, shall adopt a report on the estimated flexibility needs for a period of at least the next 5 to 10 years at national level, in view of the need to cost effectively achieve security and reliability of supply and decarbonise the electricity system, taking into account the integration of variable renewable energy sources and the different sectors, as well as the interconnected nature of the electricity market, including interconnection targets and potential availability of cross-border flexibility.",
+    "drivers": [
+      "D1",
+      "D5"
+    ],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [],
+    "provision_id": null,
+    "file": "emd",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0943-20240716",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Adopt, every two years, a report on the estimated national flexibility needs for at least the next 5 to 10 years.",
+    "reading_note": "The study the objective is built on, and NOT a demand instrument. Extracted because Art. 19f's objective is due six months after this report and cannot be read without it."
+  },
+  {
+    "id": "FLEX-02",
+    "measure_type": "obligation",
+    "addressee": "The regulatory authority, or another authority or entity designated by the Member State",
+    "class": "state",
+    "trigger": "the content requirements of the report under Art. 19e(1)",
+    "frequency": "every two years",
+    "verification": "ACER",
+    "direction": "add",
+    "article": "Art. 19e(2)(b)",
+    "when": "One year after ACER approves the methodology, and every two years thereafter; the methodology proposal was due by 17 April 2025 (Art. 19e(1) and (6))",
+    "source_text": "consider the potential of non-fossil flexibility resources such as demand response and energy storage, including aggregation and interconnection, to fulfil the flexibility needs, both at transmission and distribution levels;",
+    "drivers": [
+      "D1",
+      "D5"
+    ],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [
+      "batsol"
+    ],
+    "provision_id": null,
+    "file": "emd",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0943-20240716",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Consider, in that report, the potential of non-fossil flexibility resources — demand response and energy storage — to meet the flexibility needs, at both transmission and distribution level.",
+    "reading_note": "WHERE STORAGE FIRST APPEARS AS A THING TO BE COUNTED. It reaches batsol without naming a battery maker, which is what sectors_reached is for, and it carries no demand edge: an obligation to consider a potential is not an obligation to procure anything."
+  },
+  {
+    "id": "FLEX-03",
+    "measure_type": "obligation",
+    "addressee": "Transmission system operators and distribution system operators",
+    "class": "business",
+    "trigger": "the preparation of the report under Art. 19e(1)",
+    "frequency": "every two years",
+    "verification": "the regulatory authority",
+    "direction": "add",
+    "article": "Art. 19e(3)",
+    "when": "In force; on each preparation of the report under Art. 19e(1)",
+    "source_text": "The transmission system operators and distribution system operators of each Member State shall provide the data and analyses that are needed for the preparation of the report referred to in paragraph 1 to the regulatory authority or another authority or entity designated pursuant to paragraph 1. Where duly justified, the regulatory authority or another authority or entity designated pursuant to paragraph 1 may request the transmission system operators and distribution system operators concerned to provide additional input to the report, in addition to the requirements referred to in paragraph 4. The electricity transmission system operators or the electricity distribution system operators concerned shall, together with operators of natural gas systems and of hydrogen systems, coordinate the gathering of the relevant information where necessary for the purposes of this Article.",
+    "drivers": [
+      "D1",
+      "D4",
+      "D5"
+    ],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [],
+    "provision_id": null,
+    "file": "emd",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0943-20240716",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Provide the data and analyses needed for the flexibility-needs report, in the type and format defined by ENTSO-E and the EU DSO entity.",
+    "reading_note": "The data duty underneath the report. Carried as a business row because a system operator is the addressee, and with D4 because the methodology defines a data type and format that did not exist before it."
+  },
+  {
+    "id": "OBJ-01",
+    "measure_type": "obligation",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "six months after the flexibility-needs report is submitted",
+    "frequency": "one-off, then reported on in the national energy and climate progress reports",
+    "verification": "the Commission, under Art. 9 of Regulation (EU) 2018/1999",
+    "direction": "add",
+    "article": "Art. 19f",
+    "when": "Six months after the first report under Art. 19e(1); a Member State may set a provisional objective before then (Art. 19f)",
+    "source_text": "No later than six months after the submission of the report pursuant to Article 19e(1) of this Regulation, each Member State shall define, on the basis of that report, an indicative national objective for non-fossil flexibility, including the respective specific contributions of both demand response and energy storage to that objective. Member States may achieve that objective by realising the identified potential of non-fossil flexibility, via the removal of identified market barriers or via the non-fossil flexibility support schemes referred to in Article 19g of this Regulation. That indicative national objective, including the respective specific contributions of demand response and energy storage to that objective, as well as measures to achieve it shall also be reflected in Member States’ integrated national energy and climate plans as regards the dimension ‘Internal Energy Market’ in accordance with Articles 3, 4 and 7 of Regulation (EU) 2018/1999 and in their integrated national energy and climate progress reports in accordance with Article 17 of that Regulation. Member States may define provisional indicative national objectives until the report is adopted pursuant to Article 19e(1) of this Regulation.",
+    "drivers": [
+      "D1",
+      "D5"
+    ],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [
+      "batsol"
+    ],
+    "provision_id": null,
+    "file": "emd",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0943-20240716",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Define an indicative national objective for non-fossil flexibility, stating the specific contributions of demand response and of energy storage to it, and reflect it in the integrated national energy and climate plan and progress reports.",
+    "creates_demand_for": [
+      "batsol"
+    ],
+    "reading_note": "THE PROVISION THE STORAGE SIDE OF THIS SECTOR IS BUILT ON. It is the only place in EU law in force that asks a Member State to put a NUMBER on energy storage: the objective is indicative rather than binding, and its storage contribution is named in the act's own words rather than inferred. The renewables directive's targets were the alternative and were not taken — they ask for a share of renewable energy, which storage serves consequentially and which names it nowhere. Indicative is not binding, and this row does not say it is; what it says is that the law asks for the number."
+  },
+  {
+    "id": "SUP-01",
+    "measure_type": "right",
+    "addressee": "Member States",
+    "class": "state",
+    "trigger": "investment insufficient to achieve the indicative national objective",
+    "frequency": "per scheme",
+    "verification": "State aid control",
+    "direction": "add",
+    "article": "Art. 19g(1)",
+    "when": "In force; applies where a Member State chooses to apply such a scheme",
+    "source_text": "Where investment in non-fossil flexibility is insufficient to achieve the indicative national objective or, where relevant, provisional indicative national objectives defined pursuant to Article 19f, Member States may apply non-fossil flexibility support schemes consisting of payments for the available capacity of non-fossil flexibility without prejudice to Articles 12 and 13.",
+    "drivers": [],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [
+      "batsol"
+    ],
+    "provision_id": null,
+    "file": "emd",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0943-20240716",
+    "value_drivers": [],
+    "access_frictions": [],
+    "benefit": "A Member State may pay for the available capacity of non-fossil flexibility through a support scheme, where investment falls short of its indicative national objective.",
+    "right_basis": {
+      "text": "Where investment in non-fossil flexibility is insufficient to achieve the indicative national objective or, where relevant, provisional indicative national objectives defined pursuant to Article 19f, Member States may apply non-fossil flexibility support schemes consisting of payments for the available capacity of non-fossil flexibility",
+      "kind": "procedure"
+    },
+    "reading_note": "MONEY POINTED AT STORAGE, AND NO DEMAND EDGE ON IT. The payment is permissive and conditional: 'may apply', and only where investment is insufficient. Nothing in the text obliges a euro to be spent, so the edge stays on Art. 19f, which asks for the number. See the module docstring."
+  },
+  {
+    "id": "SUP-02",
+    "measure_type": "obligation",
+    "addressee": "Member States operating a capacity mechanism",
+    "class": "state",
+    "trigger": "operating a capacity mechanism",
+    "frequency": "one-off",
+    "verification": "none",
+    "direction": "add",
+    "article": "Art. 19g(1), second sentence",
+    "when": "In force; applies where a Member State chooses to apply such a scheme",
+    "source_text": "Member States which apply a capacity mechanism shall consider to make the necessary adaptations in the design of the capacity mechanisms to promote the participation of non-fossil flexibility such as demand side response and energy storage",
+    "drivers": [],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [
+      "batsol"
+    ],
+    "provision_id": null,
+    "file": "emd",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0943-20240716",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Consider adapting the design of an existing capacity mechanism to promote the participation of non-fossil flexibility, including demand side response and energy storage.",
+    "reading_note": "A duty to CONSIDER, which is the weakest operative verb in the block and is recorded as what it is. No demand edge: a Member State that considers and declines has complied."
+  },
+  {
+    "id": "DES-01",
+    "measure_type": "obligation",
+    "addressee": "Member States applying a non-fossil flexibility support scheme",
+    "class": "state",
+    "trigger": "applying a scheme under Art. 19g(1)",
+    "frequency": "per scheme",
+    "verification": "State aid control",
+    "direction": "add",
+    "article": "Art. 19h(a) and (b)",
+    "when": "In force; applies where a Member State chooses to apply such a scheme",
+    "source_text": "Non-fossil flexibility support schemes applied by Member States in accordance with Article 19g(1) shall: (a) not go beyond what is necessary to achieve the indicative national objective, or where relevant the provisional indicative national objective, defined pursuant to Article 19f in a cost-effective manner; (b) be limited to new investment in non-fossil flexibility resources such as demand side response and energy storage;",
+    "drivers": [],
+    "sectors_named": [
+      "power"
+    ],
+    "sectors_reached": [
+      "batsol"
+    ],
+    "provision_id": null,
+    "file": "emd",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02019R0943-20240716",
+    "value_drivers": [],
+    "access_frictions": [],
+    "duty": "Where such a scheme is applied, keep it within what is necessary to meet the objective cost-effectively and limit it to NEW investment in non-fossil flexibility resources such as demand side response and energy storage.",
+    "reading_note": "The condition that would matter most to a storage developer if the money were obligatory: support is limited to NEW investment, so a scheme cannot be spent on assets already built. Carried without a demand edge for the same reason as SUP-01 — the scheme it conditions is itself optional."
+  }
+]

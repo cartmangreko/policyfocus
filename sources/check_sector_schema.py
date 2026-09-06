@@ -76,6 +76,7 @@ import sys
 from datetime import date
 
 import display_vocabulary as dv
+import eov
 import osgb36
 import sector_map as sm
 import utm
@@ -117,6 +118,43 @@ def _url(e: Errors, where: str, url: str | None, field: str = "url") -> None:
         e.add(where, f"{field}={url!r} is not a URL")
 
 
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+
+
+def _hosted_copy(e: Errors, where: str, src: dict) -> None:
+    """A DOCUMENT IS SOURCED BY ITS AUTHOR, NOT BY ITS HOST.
+
+    An applicant's own permit submission is that applicant's statement wherever
+    the file happens to sit, so a copy held by a campaign group, a news outlet or
+    a mirror may place a row -- and the row then has to say so, because the
+    reader is being asked to trust an author while fetching from someone else.
+    The block is what makes that checkable rather than merely disclosed: the host
+    URL says where this copy came from, the date says when it answered, and the
+    digest says WHICH BYTES were read. A host that swaps the file, truncates it
+    or serves a different revision changes the digest, and the claim that the
+    quoted passage is in the document stops being unfalsifiable.
+
+    The label is fixed text and not free prose, because it is rendered on the
+    page: every citation standing on a copy reads the same three words, so a
+    reader learns the signal once.
+    """
+    w = f"{where} hosted_copy"
+    _req(e, w, src["hosted_copy"], "host", "host_url", "retrieved_date", "sha256", "label")
+    block = src["hosted_copy"]
+    _url(e, w, block.get("host_url"), "host_url")
+    _date(e, w, block, "retrieved_date")
+    digest = str(block.get("sha256") or "")
+    if digest and not SHA256_RE.match(digest):
+        e.add(w, f"sha256={digest!r} is not 64 lowercase hex characters — a digest "
+                 f"nobody can recompute is a digest that checks nothing")
+    if block.get("label") != "hosted copy":
+        e.add(w, f"label={block.get('label')!r} — the label is the fixed words "
+                 f"'hosted copy', which is what the page renders")
+    if not (src.get("publisher") or "").strip():
+        e.add(w, "is on a source with no publisher — the whole point of the block is "
+                 "that the publisher names the AUTHOR while the host names the copy")
+
+
 def _source_list(e: Errors, where: str, row: dict) -> None:
     sources = row.get("sources")
     if not sources:
@@ -127,6 +165,8 @@ def _source_list(e: Errors, where: str, row: dict) -> None:
         _url(e, w, s.get("url"))
         _req(e, w, s, "title", "publisher", "date")
         _date(e, w, s, "date")
+        if s.get("hosted_copy") is not None:
+            _hosted_copy(e, w, s)
 
 
 # ---------------------------------------------------------------------------
@@ -308,6 +348,12 @@ COORDINATE_SOURCE_EXCEPTIONS = {
 GRID_SYSTEMS = {
     "OSGB36": (osgb36, osgb36.to_wgs84),
     "ETRS89 / UTM 30N": (utm, lambda e_, n_: utm.to_wgs84(e_, n_, zone=30)),
+    # The one conversion this repository does not implement. EOV is a double
+    # projection on a datum ninety metres from WGS84, so sources/eov.py names
+    # EPSG:23700, asks pyproj, and checks the answer three ways. The recompute
+    # contract is unchanged: the stored point is still whatever the module
+    # returns from the document's own easting and northing, on every build.
+    "HD72 / EOV": (eov, eov.to_wgs84),
 }
 
 
@@ -389,6 +435,9 @@ def _location(e: Errors, where: str, row: dict) -> None:
                         continue
                     _req(e, f"{ew}.{leg}", block, "url", "publisher", "verbatim")
                     _url(e, f"{ew}.{leg}", block.get("url"))
+
+        if src.get("hosted_copy") is not None:
+            _hosted_copy(e, w, src)
 
         refused = src.get("refused_declared_reader")
         if refused is not None:

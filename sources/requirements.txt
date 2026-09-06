@@ -17,3 +17,11 @@ pymupdf>=1.24
 # library and can be debugged without a key.
 anthropic>=0.69
 pydantic>=2.7
+
+# Coordinate conversion, and only one of them: EPSG:23700, the Hungarian
+# national grid, whose double projection and ninety-metre datum shift
+# sources/eov.py deliberately does not reimplement. Every other conversion here
+# -- osgb36.py, utm.py -- is written and self-checked in plain Python, and the
+# ruling in sources/scope.md says when that stops being honest. The schema gate
+# FAILS when this is missing rather than skipping the check.
+pyproj>=3.6

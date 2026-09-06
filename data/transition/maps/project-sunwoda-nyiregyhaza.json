@@ -175,6 +175,61 @@
       }
     },
     {
+      "id": "eve-power-debrecen",
+      "site": "Debrecen 0237/405, Északnyugati Gazdasági Övezet",
+      "country": "HU",
+      "role": "plant",
+      "relation": "technology",
+      "status": "announced",
+      "label": "EVE Power Debrecen",
+      "name_line": "EVE Power Debrecen",
+      "sub": "EVE Power",
+      "href": "/projects/eve-power-debrecen",
+      "lat": 47.5806,
+      "lon": 21.5154,
+      "as_of": "2026-09-07",
+      "x": 368.1,
+      "y": 254.1,
+      "labels": {
+        "wide": {
+          "x": 354.2,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "EVE Power Debrecen",
+              "role": "name",
+              "size": 11.0,
+              "y": 250.4
+            },
+            {
+              "text": "EVE Power",
+              "role": "company",
+              "size": 9.5,
+              "y": 262.4
+            }
+          ]
+        },
+        "narrow": {
+          "x": 354.2,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "EVE Power Debrecen",
+              "role": "name",
+              "size": 21.0,
+              "y": 209.7
+            },
+            {
+              "text": "EVE Power",
+              "role": "company",
+              "size": 18.1,
+              "y": 232.6
+            }
+          ]
+        }
+      }
+    },
+    {
       "id": "gib-surany",
       "site": "Šurany gigafactory",
       "country": "SK",
@@ -192,45 +247,51 @@
       "y": 232.5,
       "labels": {
         "wide": {
-          "x": 114.0,
+          "x": 110.1,
           "anchor": "start",
           "lines": [
             {
               "text": "Gotion InoBat Batteries Šurany",
               "role": "name",
               "size": 11.0,
-              "y": 228.8
+              "y": 206.5
             },
             {
               "text": "Gotion InoBat Batteries",
               "role": "company",
               "size": 9.5,
-              "y": 240.8
+              "y": 218.5
             }
           ]
         },
         "narrow": {
-          "x": 114.0,
+          "x": 154.5,
           "anchor": "start",
           "lines": [
             {
               "text": "Gotion InoBat",
               "role": "name",
               "size": 21.0,
-              "y": 162.9
+              "y": 122.4
             },
             {
               "text": "Batteries Šurany",
               "role": "name",
               "size": 21.0,
-              "y": 188.1
+              "y": 147.6
             },
             {
               "text": "Gotion InoBat Batteries",
               "role": "company",
               "size": 18.1,
-              "y": 211.0
+              "y": 170.5
             }
+          ],
+          "leader": [
+            104.2,
+            228.4,
+            154.5,
+            178.1
           ]
         }
       }
@@ -253,20 +314,20 @@
       "y": 269.1,
       "labels": {
         "wide": {
-          "x": 197.2,
+          "x": 193.3,
           "anchor": "start",
           "lines": [
             {
               "text": "Samsung SDI Göd",
               "role": "name",
               "size": 11.0,
-              "y": 265.4
+              "y": 287.7
             },
             {
               "text": "Samsung SDI",
               "role": "company",
               "size": 9.5,
-              "y": 277.4
+              "y": 299.7
             }
           ]
         },
@@ -388,21 +449,10 @@
               "text": "SK On Komárom",
               "role": "name",
               "size": 21.0,
-              "y": 74.3
-            },
-            {
-              "text": "SK On",
-              "role": "company",
-              "size": 18.1,
-              "y": 97.2
+              "y": 307.1
             }
           ],
-          "leader": [
-            97.0,
-            265.6,
-            97.0,
-            104.8
-          ]
+          "shortened": true
         }
       }
     }
@@ -432,7 +482,7 @@
               "text": "Czechia",
               "role": "country",
               "size": 17.2,
-              "y": 42.4
+              "y": 64.7
             }
           ]
         }
@@ -455,14 +505,14 @@
           ]
         },
         "narrow": {
-          "x": 183.7,
-          "anchor": "end",
+          "x": 116.5,
+          "anchor": "middle",
           "lines": [
             {
               "text": "Hungary",
               "role": "country",
               "size": 17.2,
-              "y": 299.0
+              "y": 347.9
             }
           ]
         }
@@ -545,14 +595,14 @@
           ]
         },
         "narrow": {
-          "x": 175.5,
-          "anchor": "start",
+          "x": 142.7,
+          "anchor": "end",
           "lines": [
             {
               "text": "Slovakia",
               "role": "country",
               "size": 17.2,
-              "y": 132.4
+              "y": 151.4
             }
           ]
         }
@@ -589,7 +639,7 @@
       }
     }
   ],
-  "as_of": "2026-09-05",
+  "as_of": "2026-09-07",
   "coordinates": [
     {
       "site": "Nyíregyháza cell works",

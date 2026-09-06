@@ -122,45 +122,112 @@
       "y": 209.9,
       "labels": {
         "wide": {
-          "x": 647.5,
+          "x": 651.4,
           "anchor": "end",
           "lines": [
             {
               "text": "CATL Debrecen",
               "role": "name",
               "size": 11.0,
-              "y": 206.2
+              "y": 228.5
             },
             {
               "text": "Contemporary Amperex Technology",
               "role": "company",
               "size": 9.5,
-              "y": 218.2
+              "y": 240.5
             }
           ]
         },
         "narrow": {
-          "x": 647.5,
+          "x": 629.3,
           "anchor": "end",
           "lines": [
             {
               "text": "CATL Debrecen",
               "role": "name",
               "size": 21.0,
-              "y": 143.8
+              "y": 125.7
             },
             {
               "text": "Contemporary Amperex",
               "role": "company",
               "size": 18.1,
-              "y": 166.7
+              "y": 148.6
             },
             {
               "text": "Technology",
               "role": "company",
               "size": 18.1,
-              "y": 188.4
+              "y": 170.2
             }
+          ],
+          "leader": [
+            657.3,
+            205.8,
+            629.3,
+            177.8
+          ]
+        }
+      }
+    },
+    {
+      "id": "eve-power-debrecen",
+      "site": "Debrecen 0237/405, Északnyugati Gazdasági Övezet",
+      "country": "HU",
+      "role": "plant",
+      "relation": "technology",
+      "status": "announced",
+      "label": "EVE Power Debrecen",
+      "name_line": "EVE Power Debrecen",
+      "sub": "EVE Power",
+      "href": "/projects/eve-power-debrecen",
+      "lat": 47.5806,
+      "lon": 21.5154,
+      "as_of": "2026-09-07",
+      "x": 651.1,
+      "y": 197.7,
+      "labels": {
+        "wide": {
+          "x": 637.2,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "EVE Power Debrecen",
+              "role": "name",
+              "size": 11.0,
+              "y": 194.0
+            },
+            {
+              "text": "EVE Power",
+              "role": "company",
+              "size": 9.5,
+              "y": 206.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 531.2,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "EVE Power Debrecen",
+              "role": "name",
+              "size": 21.0,
+              "y": 47.3
+            },
+            {
+              "text": "EVE Power",
+              "role": "company",
+              "size": 18.1,
+              "y": 70.2
+            }
+          ],
+          "leader": [
+            647.0,
+            193.6,
+            531.2,
+            77.8
           ]
         }
       }
@@ -183,8 +250,8 @@
       "y": 176.1,
       "labels": {
         "wide": {
-          "x": 397.0,
-          "anchor": "start",
+          "x": 369.2,
+          "anchor": "end",
           "lines": [
             {
               "text": "Gotion InoBat Batteries Šurany",
@@ -251,13 +318,13 @@
               "text": "Samsung SDI Göd",
               "role": "name",
               "size": 11.0,
-              "y": 235.2
+              "y": 182.9
             },
             {
               "text": "Samsung SDI",
               "role": "company",
               "size": 9.5,
-              "y": 247.1
+              "y": 194.9
             }
           ]
         },
@@ -354,20 +421,20 @@
       "y": 158.6,
       "labels": {
         "wide": {
-          "x": 653.0,
+          "x": 649.1,
           "anchor": "end",
           "lines": [
             {
               "text": "Sunwoda Nyíregyháza",
               "role": "name",
               "size": 11.0,
-              "y": 132.6
+              "y": 154.9
             },
             {
               "text": "Sunwoda",
               "role": "company",
               "size": 9.5,
-              "y": 144.6
+              "y": 166.9
             }
           ]
         },
@@ -379,26 +446,26 @@
               "text": "Sunwoda",
               "role": "name",
               "size": 21.0,
-              "y": 58.4
+              "y": 27.4
             },
             {
               "text": "Nyíregyháza",
               "role": "name",
               "size": 21.0,
-              "y": 83.6
+              "y": 52.6
             },
             {
               "text": "Sunwoda",
               "role": "company",
               "size": 18.1,
-              "y": 106.5
+              "y": 75.5
             }
           ],
           "leader": [
             663.0,
             152.8,
             663.0,
-            114.0
+            83.1
           ]
         }
       }
@@ -600,18 +667,6 @@
               "y": 14.8
             }
           ]
-        },
-        "narrow": {
-          "x": 683.3,
-          "anchor": "end",
-          "lines": [
-            {
-              "text": "Poland",
-              "role": "country",
-              "size": 17.2,
-              "y": 25.1
-            }
-          ]
         }
       }
     },
@@ -720,18 +775,6 @@
               "y": 93.5
             }
           ]
-        },
-        "narrow": {
-          "x": 449.8,
-          "anchor": "middle",
-          "lines": [
-            {
-              "text": "Slovakia",
-              "role": "country",
-              "size": 17.2,
-              "y": 94.9
-            }
-          ]
         }
       }
     },
@@ -750,11 +793,23 @@
               "y": 67.5
             }
           ]
+        },
+        "narrow": {
+          "x": 710.5,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Ukraine",
+              "role": "country",
+              "size": 17.2,
+              "y": 106.6
+            }
+          ]
         }
       }
     }
   ],
-  "as_of": "2026-09-05",
+  "as_of": "2026-09-07",
   "coordinates": [
     {
       "site": "Komárom industrial park works",

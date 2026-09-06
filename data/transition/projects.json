@@ -3370,6 +3370,84 @@
           "note": "The share purchase agreement that ended the joint venture, subject to clearance from the US bankruptcy court and the Swedish Inspectorate of Strategic Products. Cited for the ownership rather than as a status event: the row's history begins at the first event on the SITE that a company sourced."
         }
       ]
+    },
+    {
+      "id": "eve-power-debrecen",
+      "name": "EVE Power Debrecen",
+      "company": "EVE Power",
+      "plant": "Debrecen",
+      "country": "HU",
+      "location": [
+        {
+          "site": "Debrecen 0237/405, Északnyugati Gazdasági Övezet",
+          "lat": 47.5806,
+          "lon": 21.5154,
+          "precision": "plant",
+          "retrieved_date": "2026-09-07",
+          "grid_reference": {
+            "system": "HD72 / EOV",
+            "easting": 835619,
+            "northing": 251450,
+            "note": "The applicant's own stated central coordinate of the installation, not a point computed from anything. The same document gives the polygon that encloses the works as nine EOV corners; the central pair falls inside it, and the polygon's area comes to 450 022 m² against the 450 000 m² the document states for the site. Converted by sources/eov.py, which names EPSG:23700 and asks pyproj rather than reimplementing a double projection, and recomputed by the gate on every build."
+          },
+          "source": {
+            "url": "https://miakoegyesulet.hu/wp-content/uploads/2025/05/EVE_Power_Hungary_osszevont_KHV_IPPC_anonim.pdf",
+            "type": "permit",
+            "publisher": "Eve Power Hungary Kft., combined environmental impact assessment and integrated environmental permit application to the Hajdú-Bihar County Government Office (anonymised copy)",
+            "verbatim": "Tervezési terület helyrajzi száma Debrecen, 0237/405 … Telephely területe 450 000 m2 … Központi EOV koordináták EOV Y: 835619 EOV X: 251450",
+            "date": "2025-05",
+            "hosted_copy": {
+              "host": "Mi a Kő? Egyesület",
+              "host_url": "https://miakoegyesulet.hu/wp-content/uploads/2025/05/EVE_Power_Hungary_osszevont_KHV_IPPC_anonim.pdf",
+              "retrieved_date": "2026-09-07",
+              "sha256": "d91a2a7bc266126653eaa5c1588d0ea5fd4612be2c7555d53de343e5c21a5d0d",
+              "label": "hosted copy"
+            },
+            "note": "THE AUTHOR IS THE APPLICANT AND THE HOST IS A CAMPAIGN GROUP. The county government office publishes its notices to a browser and not to a reader like this one, so the authority's own decision could not be retrieved; the submission it decided on could, from an environmental association that keeps a copy. The document names the applicant (Eve Power Hungary Kft., company register 09-09-035942, seat 4025 Debrecen, Barna utca 23), names the procedure and the office that runs it, and is internally consistent on the site: parcel, central coordinate, corner list and stated area all agree. The seat is an office address and is refused as a works position, as everywhere else here."
+          },
+          "confidence": "secondary",
+          "note": "Corroboration and not placement: the point sits in Debrecen's north-western economic zone beside the BMW plant, which is where the reporting of this project puts it, and 15 km from CATL's Debrecen works in the southern park, which is a different project on a different parcel."
+        }
+      ],
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 30,
+        "unit": "GWh per year"
+      },
+      "status": "announced",
+      "status_history": [
+        {
+          "status": "announced",
+          "date": "2025-09-29",
+          "source_url": "https://www.evebattery.com/en/news-1873",
+          "note": "EVE's own page names the site: 'The EVE Energy Hungarian factory, approved for construction this year, is expected to be completed and put into operation in 2026.' The row stays at announced because no company statement of a groundbreaking or of works underway has been read. The permit submission of May 2025 is what places it and what carries the capacity; it is a plan filed with an authority, not a statement that anything is built."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.evebattery.com/en/news-1873",
+          "title": "EVE Energy's Hungarian factory",
+          "publisher": "EVE Energy",
+          "date": "2025-09-29"
+        },
+        {
+          "url": "https://miakoegyesulet.hu/wp-content/uploads/2025/05/EVE_Power_Hungary_osszevont_KHV_IPPC_anonim.pdf",
+          "title": "Az Eve Power Hungary Kft. által Debrecen településen kialakítani tervezett akkumulátorgyár összevont környezeti hatásvizsgálati és egységes környezethasználati engedélyeztetés iránti kérelme",
+          "publisher": "Eve Power Hungary Kft.",
+          "date": "2025-05",
+          "hosted_copy": {
+            "host": "Mi a Kő? Egyesület",
+            "host_url": "https://miakoegyesulet.hu/wp-content/uploads/2025/05/EVE_Power_Hungary_osszevont_KHV_IPPC_anonim.pdf",
+            "retrieved_date": "2026-09-07",
+            "sha256": "d91a2a7bc266126653eaa5c1588d0ea5fd4612be2c7555d53de343e5c21a5d0d",
+            "label": "hosted copy"
+          }
+        }
+      ]
     }
   ]
 }

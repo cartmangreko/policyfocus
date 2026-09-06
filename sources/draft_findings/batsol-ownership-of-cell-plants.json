@@ -3,81 +3,96 @@
   "id": "batsol-ownership-of-cell-plants",
   "template": "counts",
   "status": "DRAFT — NOT PUBLISHED. Not in data/findings/, not built, not rendered.",
-  "headline": "Of 31 European cell projects on file, 11 are operated by companies based in the EU, and 7 of those 11 are stopped.",
-  "body": "31 cell projects are on file for European batteries. Classified by the home of the company named as the operator on each row: 11 EU, 10 China, 4 South Korea, 3 United States, 2 joint ventures between a Chinese and a European company, 1 India. Counting each row as active (operating, under construction, funded or announced) or stopped (paused or cancelled): of the 11 EU-operated projects, 4 are active and 7 are stopped; of the 10 Chinese-operated, 7 active and 3 stopped; of the 4 Korean-operated, 4 active and none stopped; of the 3 US-operated, 1 active and 2 stopped.",
+  "headline": "Of 32 European cell projects on file, 8 have an ultimate parent seated in the EU, and 4 of those 8 are stopped.",
+  "body": "32 cell projects are on file for European batteries. Classified by the seat of the ULTIMATE PARENT at each row's status date: 12 China, 8 EU, 4 South Korea, 3 United States, 1 Norway, 1 United Kingdom, 1 India, and 2 unresolved — one held equally by a Chinese and a European parent, one whose chain has a step this register cannot source. Counting each row as active (operating, under construction, funded or announced) or stopped (paused or cancelled): of the 8 EU-parented projects, 4 are active and 4 stopped; of the 12 China-parented, 9 active and 3 stopped; of the 4 Korea-parented, 4 active and none stopped; of the 3 US-parented, 1 active and 2 stopped. Taking the European seats together — the 8 EU rows with Norway and the United Kingdom — 10 rows, of which 4 are active and 6 stopped. Both unresolved rows are named in method.assignments and neither is counted anywhere above.",
   "numerator_denominator": {
-    "EU operated, stopped": "7 of 11",
-    "EU operated, active": "4 of 11",
-    "China operated, active": "7 of 10",
-    "Korea operated, active": "4 of 4",
-    "US operated, stopped": "2 of 3",
-    "all rows": "31"
+    "EU parent, stopped": "4 of 8",
+    "EU parent, active": "4 of 8",
+    "European parent (EU, NO, GB), stopped": "6 of 10",
+    "China parent, active": "9 of 12",
+    "Korea parent, active": "4 of 4",
+    "US parent, stopped": "2 of 3",
+    "unresolved ties": "2 of 32",
+    "all rows": "32"
   },
-  "date": "2026-09-06",
+  "date": "2026-09-07",
   "sectors": [
     "batsol"
   ],
   "files": [],
   "basis_status": "data",
   "method": {
-    "population": "Every project row in data/transition/projects.json with sector batsol, on 6 September 2026.",
-    "classification": "The class is the home of the COMPANY NAMED AS THE OPERATOR on the row, taken from that row's own sources. It is not the home of the ultimate parent, and one row turns on the difference: NOVO Energy is a Swedish company wholly owned by Volvo Cars, which is itself majority-owned by Geely of China. Counted as EU here because the operator is the company on the row; a count keyed on ultimate ownership would move it, and this finding does not make that choice for the reader.",
+    "population": "Every project row in data/transition/projects.json with sector batsol, on 7 September 2026.",
+    "classification": "THE RULE, stated so the counts can be redone by anybody: the class of a row is the SEAT OF THE ULTIMATE PARENT of the operating company, read AT THAT ROW'S STATUS DATE and not today. Where the operating company is a joint venture, the class is the seat of the MAJORITY HOLDER. Where no holder has a majority, the tie is NAMED rather than broken — with every holder listed — and the row is counted in the class only where all the tied holders share it. A tie across classes leaves the row unresolved and it is reported as its own line rather than assigned to whichever parent reads better.",
+    "why_not_the_operator": "An earlier cut of this finding classified by the company named as the operator on the row, which is the name on the gate and not the address of the owner. That reading made PowerCo German and NOVO Energy Swedish by the same logic, though one is a wholly owned Volkswagen subsidiary and the other passed to a company that is itself majority-held abroad. The rule above was ruled on 7 September 2026 and this draft is recomputed under it.",
     "states": "Active is operating, construction, funded or announced. Stopped is paused or cancelled. Both are the register's own status vocabulary and neither is a judgement made here.",
-    "excluded": "Nothing. All 31 rows are classified; no row is unclassified.",
+    "excluded": "Nothing. All 32 rows are classified or explicitly unresolved, and the two unresolved rows are named. No row is dropped and none is assigned on a guess.",
     "assignments": {
       "CN": [
-        "AESC Douai (AESC, operating)",
-        "AESC Navalmoral de la Mata (AESC, construction)",
-        "AESC Sunderland (AESC, operating)",
-        "CALB Sines (CALB, construction)",
-        "CATL Arnstadt (Contemporary Amperex Technology Thuringia, operating)",
+        "AESC Douai (Envision Group, operating)",
+        "AESC Navalmoral de la Mata (Envision Group, construction)",
+        "AESC Sunderland (Envision Group, operating)",
+        "CALB Sines (CALB Group, construction)",
+        "CATL Arnstadt (Contemporary Amperex Technology, operating)",
         "CATL Debrecen (Contemporary Amperex Technology, construction)",
+        "EVE Power Debrecen (EVE Energy, announced)",
         "Farasis Bitterfeld-Wolfen (Farasis Energy, paused)",
-        "SVOLT Lauchhammer (SVOLT, cancelled)",
-        "SVOLT Überherrn (SVOLT, cancelled)",
-        "Sunwoda Nyíregyháza (Sunwoda, construction)"
-      ],
-      "CN/EU JV": [
-        "CATL and Stellantis Zaragoza (Automotive Cells Zaragoza (CATL and Stellantis joint venture), announced)",
-        "Gotion InoBat Batteries Šurany (Gotion InoBat Batteries, announced)"
+        "Gotion InoBat Batteries Šurany (Gotion High-Tech, majority holder of the joint venture with InoBat, announced)",
+        "Sunwoda Nyíregyháza (Sunwoda Electronic, construction)",
+        "SVOLT Lauchhammer (SVOLT Energy Technology, cancelled)",
+        "SVOLT Überherrn (SVOLT Energy Technology, cancelled)"
       ],
       "EU": [
-        "ACC Billy-Berclau Douvrin (Automotive Cells Company, operating)",
-        "ACC Kaiserslautern (Automotive Cells Company, cancelled)",
-        "ACC Termoli (Automotive Cells Company, cancelled)",
-        "Britishvolt Blyth (Britishvolt, cancelled)",
-        "Italvolt Scarmagno (Italvolt, cancelled)",
-        "Morrow Cell Factory (Morrow Batteries, cancelled)",
-        "NOVO Energy Gothenburg (NOVO Energy, paused)",
-        "Northvolt Drei (Northvolt Drei Project GmbH, paused)",
-        "PowerCo Salzgitter (PowerCo, operating)",
-        "PowerCo Valencia (PowerCo, construction)",
-        "Verkor Gigafactory Bourbourg (Verkor, operating)"
-      ],
-      "IN": [
-        "Agratas Bridgwater (Agratas, construction)"
+        "ACC Billy-Berclau Douvrin (tie: Stellantis NL / Mercedes-Benz Group DE / TotalEnergies FR, a third each — all three seats are EU, so the row is EU without breaking the tie; operating)",
+        "ACC Kaiserslautern (same three, cancelled)",
+        "ACC Termoli (same three, cancelled)",
+        "Italvolt Scarmagno (Italvolt, IT, cancelled)",
+        "Northvolt Drei / Heide (Northvolt AB, SE — the Lyten memorandum of 2026 is not a completed sale and no ownership event is recorded, so the parent at the status date is unchanged; paused)",
+        "PowerCo Salzgitter (Volkswagen, DE, operating)",
+        "PowerCo Valencia (Volkswagen, DE, construction)",
+        "Verkor Gigafactory Bourbourg (Verkor, FR — no holder has a majority; operating)"
       ],
       "KR": [
-        "LG Energy Solution Wrocław (LG Energy Solution, operating)",
-        "SK On Iváncsa (SK On, construction)",
-        "SK On Komárom (SK On, operating)",
-        "Samsung SDI Göd (Samsung SDI, operating)"
+        "LG Energy Solution Wrocław (LG Chem, operating)",
+        "Samsung SDI Göd (Samsung, operating)",
+        "SK On Iváncsa (SK Group, construction)",
+        "SK On Komárom (SK Group, operating)"
       ],
       "US": [
-        "Northvolt Ett (Lyten, paused)",
+        "Northvolt Ett Skellefteå (Lyten, paused)",
         "T1 Energy Giga Arctic (T1 Energy, cancelled)",
         "Tesla Giga Berlin cell manufacturing (Tesla, construction)"
+      ],
+      "NO": [
+        "Morrow Cell Factory, Arendal (Morrow Batteries ASA, cancelled)"
+      ],
+      "GB": [
+        "Britishvolt Blyth (Britishvolt, cancelled)"
+      ],
+      "IN": [
+        "Agratas Bridgwater (Tata Sons, construction)"
+      ],
+      "unresolved — tie across classes": [
+        "CATL and Stellantis Zaragoza (tie: CATL CN / Stellantis NL, half each. Neither holds a majority and the two seats are in different classes, so the rule names the tie and assigns nothing; announced)"
+      ],
+      "unresolved — parent chain not sourced": [
+        "NOVO Energy Gothenburg (NOVO Energy is wholly owned by Volvo Cars, which is on file; Volvo Cars' own majority holder is not on file and could not be retrieved. Under the rule the row is China-parented, and it is held out of every count until the step is sourced; paused)"
       ]
+    },
+    "sourcing": {
+      "on_file": "Most chains are one step and are on the rows themselves: PowerCo is Volkswagen's, SK On is SK's, the ACC shareholding is on the ACC rows, and NOVO Energy's passage to sole Volvo Cars ownership on 29 January 2025 is on that row, cited to Northvolt's own release.",
+      "not_on_file": "TWO STEPS ARE ASSERTED HERE WITHOUT A SOURCE IN THIS REGISTER, and both are named rather than buried. (1) Volvo Cars' own majority holder. NOVO Energy is wholly owned by Volvo Cars, which is on file; who holds Volvo Cars is not, and volvocars.com answers 403 to a declared reader, so it could not be retrieved on 7 September 2026. Under the rule the row would be China-parented; it is excluded from the China count above and reported here instead, and adding it makes China 13 rows, 9 active and 4 stopped. (2) Gotion High-Tech's majority of Gotion InoBat Batteries, which is reported and not sourced on any row. If that majority does not hold, Šurany becomes a second unresolved tie and China falls to 11.",
+      "what_would_settle_them": "For NOVO: Volvo Car AB's own shareholder disclosure or its annual report. For Šurany: the joint venture agreement or either parent's filing stating the split."
     }
   },
   "sources": [
     {
       "url": "https://github.com/cartmangreko/policyfocus/blob/batteries-dataset/data/transition/projects.json",
-      "title": "data/transition/projects.json — the 31 batsol rows and their status histories",
+      "title": "data/transition/projects.json — the 32 batsol rows, their status histories and their ownership events",
       "publisher": "Eufabric",
-      "date": "2026-09-06",
-      "note": "Every row cites its own company and state sources; this finding adds no source of its own and states no cause. It counts what is on file."
+      "date": "2026-09-07",
+      "note": "Every row cites its own company and state sources; this finding adds no source of its own and states no cause. It counts what is on file, under the classification rule set out in method.classification — ultimate parent at the status date, joint ventures by majority holder, ties named — which is recorded here so a reader can redo the counts and get the same numbers or say exactly where they differ."
     }
   ],
-  "not_claimed": "No cause is asserted. The finding does not say that EU-operated projects stopped BECAUSE they were EU-operated, and the register holds nothing that would support such a claim: capital structure, offtake contracts and cell prices are not on this platform. It also says nothing about capacity — these are counts of projects, and the projects differ in size by two orders of magnitude."
+  "not_claimed": "No cause is asserted. The finding does not say that EU-parented projects stopped BECAUSE they were EU-parented, and the register holds nothing that would support such a claim: capital structure, offtake contracts and cell prices are not on this platform. It says nothing about capacity — these are counts of projects, and the projects differ in size by two orders of magnitude. And it is not a count of where cells are made: every one of these 32 sites is in Europe, which is the whole perimeter. It counts who owns them."
 }

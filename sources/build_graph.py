@@ -159,7 +159,7 @@ DATA = ROOT / "data"
 OUT = DATA / "graph"
 
 REGISTER_FILES = ["ets", "iaa", "omnibus", "cbam", "nzia", "crma", "ppwr",
-                  "battery", "fleet"]
+                  "battery", "fleet", "emd"]
 
 # The sector spine is NOT defined here. It lives in data/sectors.json, read by
 # this builder and by web/lib/data.ts, so the two sides cannot drift -- the

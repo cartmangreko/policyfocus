@@ -652,6 +652,76 @@ takes an operator's most findable address, geocodes it, and draws a factory on a
 office — with every field on the row true and the mark in the wrong place.
 
 
+### A document is sourced by its author, not by its host
+
+**Ruled 7 September 2026.** A document's provenance is the question of who wrote
+it, and that question is not answered by where the file is served from. **An
+applicant's own permit submission may place a row while sitting on a third
+party's website**, because the statement in it is the applicant's wherever the
+bytes live. A campaign group hosting a copy of a company's environmental impact
+documentation has not authored anything; it has kept a copy, and a register that
+refused to read it would be refusing the company's own words on the ground that
+somebody else is holding them.
+
+The allowance is conditional, and the conditions are what make it something other
+than an excuse to cite anything found anywhere. The copy must:
+
+  1. **name the applicant** — the company, and enough of its registration for the
+     applicant to be identified as the operator the row is about;
+  2. **name the procedure** — which authorisation, before which authority, so the
+     document can be asked for from the authority by anybody who wants the
+     original;
+  3. **be internally consistent on the site** — the parcel, the stated area, any
+     coordinate and any polygon have to agree with each other. A copy that has
+     been edited to say something else about where the works is fails here, and
+     this is the condition that does the work.
+
+And the row must record **the host URL, the retrieval date, the SHA-256 of the
+file read, and the label `hosted copy`**, which the page renders on the citation.
+The digest is the point of the four: it fixes which bytes were read, so a host
+that later swaps, truncates or re-issues the file cannot silently change what
+this register is quoting. Gated by `_hosted_copy` in check_sector_schema.py.
+
+**The case that settled it.** EVE Power's Debrecen cell plant. The Hajdú-Bihar
+county government office serves its notice board to a browser and not to a
+declared reader, so the authority's own decision could not be retrieved. The
+submission it decided on could: Eve Power Hungary Kft.'s combined KHV/IPPC
+application, held by an environmental association, naming the applicant with its
+company register number, naming the office and the procedure, and giving parcel
+Debrecen 0237/405, the site area 450 000 m², and the central EOV pair
+Y 835 619 / X 251 450. The nine-corner polygon in the same document encloses that
+pair and comes to 450 022 m². Three facts written independently in one document
+that agree to within a rounding — which is a document about this site, whoever is
+serving it.
+
+**What this does not open.** It is not a licence to cite a copy in place of an
+original that answers. It is not a licence to cite a host's *description* of a
+document, or an extract, or a re-typing: the file itself is what is read and
+hashed. And it says nothing about authority for the claim — an applicant's plan
+remains a plan, which is why the Debrecen row lands as `announced` and takes its
+capacity as the figure the applicant filed rather than as a plant that exists.
+
+### A conversion is either implemented here or asked of a library, and never half
+
+**Ruled 7 September 2026.** sources/osgb36.py and sources/utm.py implement their
+own projections because a transverse Mercator inverse is a published series that
+can be transcribed and held against a published worked example. EOV is not that:
+a double projection through a Gauss sphere onto an oblique cylinder, on a datum
+some ninety metres from WGS84. **Where the definition is beyond honest
+transcription, the conversion is asked of pyproj by EPSG code rather than
+hand-written**, and sources/eov.py names EPSG:23700 and does nothing else.
+
+What does not change is the recompute contract. The stored latitude and longitude
+are still whatever the module returns from the document's own easting and
+northing, on every build, and the module still self-checks on every gate run —
+here against EOV's definitional origin, a round trip, and the grid's own
+orientation. What changes is only who owns the arithmetic. pyproj joins the
+fetcher's own dependencies in `sources/requirements.txt` — the first one the
+GATES need rather than the fetcher — and the gate **fails** when it is absent
+rather than skipping the check: a coordinate check that quietly does not run is
+worse than one nobody wrote.
+
+
 ### capacity_basis is read from the source sentence, never derived from status
 
 `capacity_basis` is one of `announced`, `fid` or `operating`, and it records how

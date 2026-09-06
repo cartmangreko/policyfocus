@@ -135,45 +135,118 @@
       "y": 248.8,
       "labels": {
         "wide": {
-          "x": 644.3,
+          "x": 648.2,
           "anchor": "end",
           "lines": [
             {
               "text": "CATL Debrecen",
               "role": "name",
               "size": 11.0,
-              "y": 245.1
+              "y": 267.4
             },
             {
               "text": "Contemporary Amperex Technology",
               "role": "company",
               "size": 9.5,
-              "y": 257.1
+              "y": 279.4
             }
           ]
         },
         "narrow": {
-          "x": 644.3,
+          "x": 626.1,
           "anchor": "end",
           "lines": [
             {
               "text": "CATL Debrecen",
               "role": "name",
               "size": 21.0,
-              "y": 182.7
+              "y": 164.6
             },
             {
               "text": "Contemporary Amperex",
               "role": "company",
               "size": 18.1,
-              "y": 205.6
+              "y": 187.5
             },
             {
               "text": "Technology",
               "role": "company",
               "size": 18.1,
-              "y": 227.3
+              "y": 209.1
             }
+          ],
+          "leader": [
+            654.1,
+            244.7,
+            626.1,
+            216.7
+          ]
+        }
+      }
+    },
+    {
+      "id": "eve-power-debrecen",
+      "site": "Debrecen 0237/405, Északnyugati Gazdasági Övezet",
+      "country": "HU",
+      "role": "plant",
+      "relation": "technology",
+      "status": "announced",
+      "label": "EVE Power Debrecen",
+      "name_line": "EVE Power Debrecen",
+      "sub": "EVE Power",
+      "href": "/projects/eve-power-debrecen",
+      "lat": 47.5806,
+      "lon": 21.5154,
+      "as_of": "2026-09-07",
+      "x": 647.9,
+      "y": 236.6,
+      "labels": {
+        "wide": {
+          "x": 609.0,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "EVE Power Debrecen",
+              "role": "name",
+              "size": 11.0,
+              "y": 181.7
+            },
+            {
+              "text": "EVE Power",
+              "role": "company",
+              "size": 9.5,
+              "y": 193.7
+            }
+          ],
+          "leader": [
+            643.8,
+            232.5,
+            609.0,
+            197.7
+          ]
+        },
+        "narrow": {
+          "x": 528.0,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "EVE Power Debrecen",
+              "role": "name",
+              "size": 21.0,
+              "y": 86.2
+            },
+            {
+              "text": "EVE Power",
+              "role": "company",
+              "size": 18.1,
+              "y": 109.1
+            }
+          ],
+          "leader": [
+            643.8,
+            232.5,
+            528.0,
+            116.7
           ]
         }
       }
@@ -196,21 +269,27 @@
       "y": 251.6,
       "labels": {
         "wide": {
-          "x": 463.2,
-          "anchor": "middle",
+          "x": 440.2,
+          "anchor": "end",
           "lines": [
             {
               "text": "Samsung SDI Göd",
               "role": "name",
               "size": 11.0,
-              "y": 274.0
+              "y": 283.1
             },
             {
               "text": "Samsung SDI",
               "role": "company",
               "size": 9.5,
-              "y": 286.0
+              "y": 295.1
             }
+          ],
+          "leader": [
+            459.1,
+            255.7,
+            440.2,
+            274.6
           ]
         },
         "narrow": {
@@ -367,21 +446,27 @@
       "y": 197.5,
       "labels": {
         "wide": {
-          "x": 649.9,
-          "anchor": "end",
+          "x": 659.9,
+          "anchor": "middle",
           "lines": [
             {
               "text": "Sunwoda Nyíregyháza",
               "role": "name",
               "size": 11.0,
-              "y": 171.5
+              "y": 149.6
             },
             {
               "text": "Sunwoda",
               "role": "company",
               "size": 9.5,
-              "y": 183.5
+              "y": 161.6
             }
+          ],
+          "leader": [
+            659.9,
+            191.7,
+            659.9,
+            165.6
           ]
         },
         "narrow": {
@@ -392,26 +477,26 @@
               "text": "Sunwoda",
               "role": "name",
               "size": 21.0,
-              "y": 97.3
+              "y": 66.3
             },
             {
               "text": "Nyíregyháza",
               "role": "name",
               "size": 21.0,
-              "y": 122.5
+              "y": 91.5
             },
             {
               "text": "Sunwoda",
               "role": "company",
               "size": 18.1,
-              "y": 145.4
+              "y": 114.4
             }
           ],
           "leader": [
             659.9,
             191.7,
             659.9,
-            152.9
+            122.0
           ]
         }
       }
@@ -735,14 +820,14 @@
           ]
         },
         "narrow": {
-          "x": 446.7,
-          "anchor": "middle",
+          "x": 374.7,
+          "anchor": "end",
           "lines": [
             {
               "text": "Slovakia",
               "role": "country",
               "size": 17.2,
-              "y": 133.9
+              "y": 155.5
             }
           ]
         }
@@ -765,21 +850,21 @@
           ]
         },
         "narrow": {
-          "x": 720.4,
-          "anchor": "end",
+          "x": 710.2,
+          "anchor": "middle",
           "lines": [
             {
               "text": "Ukraine",
               "role": "country",
               "size": 17.2,
-              "y": 60.5
+              "y": 147.4
             }
           ]
         }
       }
     }
   ],
-  "as_of": "2026-09-05",
+  "as_of": "2026-09-07",
   "coordinates": [
     {
       "site": "Šurany gigafactory",
