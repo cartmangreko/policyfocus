@@ -6,7 +6,7 @@
   ],
   "sector": "batsol",
   "width": 1160,
-  "height": 1628,
+  "height": 1682,
   "columns": [
     {
       "kind": "measure",
@@ -26,7 +26,7 @@
     {
       "kind": "project",
       "x": 900,
-      "count": 30
+      "count": 31
     }
   ],
   "nodes": [
@@ -40,7 +40,7 @@
       "direction": null,
       "measure_id": "fleet:TGT-2035",
       "x": 0,
-      "y": 552.0,
+      "y": 579.0,
       "w": 236,
       "h": 38
     },
@@ -54,7 +54,7 @@
       "direction": null,
       "measure_id": "crma:CBEN-01",
       "x": 0,
-      "y": 606.0,
+      "y": 633.0,
       "w": 236,
       "h": 38
     },
@@ -68,7 +68,7 @@
       "direction": null,
       "measure_id": "iaa:LM-15a",
       "x": 0,
-      "y": 660.0,
+      "y": 687.0,
       "w": 236,
       "h": 38
     },
@@ -82,7 +82,7 @@
       "direction": null,
       "measure_id": "fleet:PREM-01",
       "x": 0,
-      "y": 714.0,
+      "y": 741.0,
       "w": 236,
       "h": 38
     },
@@ -96,7 +96,7 @@
       "direction": null,
       "measure_id": "fleet:TGT-2030",
       "x": 0,
-      "y": 768.0,
+      "y": 795.0,
       "w": 236,
       "h": 38
     },
@@ -110,7 +110,7 @@
       "direction": null,
       "measure_id": "crma:CBEN-02",
       "x": 0,
-      "y": 822.0,
+      "y": 849.0,
       "w": 236,
       "h": 38
     },
@@ -124,7 +124,7 @@
       "direction": null,
       "measure_id": "crma:CSP-02",
       "x": 0,
-      "y": 876.0,
+      "y": 903.0,
       "w": 236,
       "h": 38
     },
@@ -138,7 +138,7 @@
       "direction": null,
       "measure_id": "ets:FND-03",
       "x": 0,
-      "y": 930.0,
+      "y": 957.0,
       "w": 236,
       "h": 38
     },
@@ -152,7 +152,7 @@
       "direction": null,
       "measure_id": "iaa:LM-26a",
       "x": 0,
-      "y": 984.0,
+      "y": 1011.0,
       "w": 236,
       "h": 38
     },
@@ -166,7 +166,7 @@
       "direction": null,
       "measure_id": "nzia:SCH-01",
       "x": 0,
-      "y": 1038.0,
+      "y": 1065.0,
       "w": 236,
       "h": 38
     },
@@ -178,7 +178,7 @@
       "href": "#bottleneck-batsol-cell-cost-gap",
       "type": "market",
       "x": 300,
-      "y": 714.0,
+      "y": 741.0,
       "w": 236,
       "h": 38
     },
@@ -190,7 +190,7 @@
       "href": "#bottleneck-batsol-demand-uncertainty",
       "type": "market",
       "x": 300,
-      "y": 768.0,
+      "y": 795.0,
       "w": 236,
       "h": 38
     },
@@ -202,7 +202,7 @@
       "href": "#bottleneck-batsol-ramp-and-yield",
       "type": "technical",
       "x": 300,
-      "y": 822.0,
+      "y": 849.0,
       "w": 236,
       "h": 38
     },
@@ -214,7 +214,7 @@
       "href": "#bottleneck-batsol-cathode-dependence",
       "type": "infrastructure",
       "x": 300,
-      "y": 876.0,
+      "y": 903.0,
       "w": 236,
       "h": 38
     },
@@ -226,7 +226,7 @@
       "href": "#technology-lfp-cells",
       "readiness": "commercial",
       "x": 600,
-      "y": 714.0,
+      "y": 741.0,
       "w": 236,
       "h": 38
     },
@@ -238,7 +238,7 @@
       "href": "#technology-cell-manufacturing",
       "readiness": "commercial",
       "x": 600,
-      "y": 768.0,
+      "y": 795.0,
       "w": 236,
       "h": 38
     },
@@ -250,7 +250,7 @@
       "href": "#technology-nmc-nca-cells",
       "readiness": "commercial",
       "x": 600,
-      "y": 822.0,
+      "y": 849.0,
       "w": 236,
       "h": 38
     },
@@ -262,7 +262,7 @@
       "href": "#technology-sodium-ion-cells",
       "readiness": "early-commercial",
       "x": 600,
-      "y": 876.0,
+      "y": 903.0,
       "w": 236,
       "h": 38
     },
@@ -423,6 +423,18 @@
       "h": 38
     },
     {
+      "id": "project:novo-energy-gothenburg",
+      "kind": "project",
+      "label": "NOVO Energy Gothenburg",
+      "sub": "SE · paused",
+      "href": "/projects/novo-energy-gothenburg",
+      "status": "paused",
+      "x": 900,
+      "y": 714.0,
+      "w": 236,
+      "h": 38
+    },
+    {
       "id": "project:powerco-salzgitter",
       "kind": "project",
       "label": "PowerCo Salzgitter",
@@ -430,7 +442,7 @@
       "href": "/projects/powerco-salzgitter",
       "status": "operating",
       "x": 900,
-      "y": 714.0,
+      "y": 768.0,
       "w": 236,
       "h": 38
     },
@@ -442,7 +454,7 @@
       "href": "/projects/powerco-sagunto",
       "status": "construction",
       "x": 900,
-      "y": 768.0,
+      "y": 822.0,
       "w": 236,
       "h": 38
     },
@@ -454,7 +466,7 @@
       "href": "/projects/sk-on-ivancsa",
       "status": "construction",
       "x": 900,
-      "y": 822.0,
+      "y": 876.0,
       "w": 236,
       "h": 38
     },
@@ -466,7 +478,7 @@
       "href": "/projects/sk-on-komarom",
       "status": "operating",
       "x": 900,
-      "y": 876.0,
+      "y": 930.0,
       "w": 236,
       "h": 38
     },
@@ -478,7 +490,7 @@
       "href": "/projects/sunwoda-nyiregyhaza",
       "status": "construction",
       "x": 900,
-      "y": 930.0,
+      "y": 984.0,
       "w": 236,
       "h": 38
     },
@@ -490,7 +502,7 @@
       "href": "/projects/svolt-lauchhammer",
       "status": "cancelled",
       "x": 900,
-      "y": 984.0,
+      "y": 1038.0,
       "w": 236,
       "h": 38
     },
@@ -502,7 +514,7 @@
       "href": "/projects/svolt-uberherrn",
       "status": "cancelled",
       "x": 900,
-      "y": 1038.0,
+      "y": 1092.0,
       "w": 236,
       "h": 38
     },
@@ -514,7 +526,7 @@
       "href": "/projects/freyr-mo-i-rana",
       "status": "cancelled",
       "x": 900,
-      "y": 1092.0,
+      "y": 1146.0,
       "w": 236,
       "h": 38
     },
@@ -526,7 +538,7 @@
       "href": "/projects/acc-billy-berclau",
       "status": "operating",
       "x": 900,
-      "y": 1146.0,
+      "y": 1200.0,
       "w": 236,
       "h": 38
     },
@@ -538,7 +550,7 @@
       "href": "/projects/envision-aesc-douai",
       "status": "operating",
       "x": 900,
-      "y": 1200.0,
+      "y": 1254.0,
       "w": 236,
       "h": 38
     },
@@ -550,7 +562,7 @@
       "href": "/projects/envision-aesc-sunderland",
       "status": "operating",
       "x": 900,
-      "y": 1254.0,
+      "y": 1308.0,
       "w": 236,
       "h": 38
     },
@@ -562,7 +574,7 @@
       "href": "/projects/catl-arnstadt",
       "status": "operating",
       "x": 900,
-      "y": 1308.0,
+      "y": 1362.0,
       "w": 236,
       "h": 38
     },
@@ -574,7 +586,7 @@
       "href": "/projects/lges-wroclaw",
       "status": "operating",
       "x": 900,
-      "y": 1362.0,
+      "y": 1416.0,
       "w": 236,
       "h": 38
     },
@@ -586,7 +598,7 @@
       "href": "/projects/northvolt-ett-skelleftea",
       "status": "paused",
       "x": 900,
-      "y": 1416.0,
+      "y": 1470.0,
       "w": 236,
       "h": 38
     },
@@ -598,7 +610,7 @@
       "href": "/projects/samsung-sdi-god",
       "status": "operating",
       "x": 900,
-      "y": 1470.0,
+      "y": 1524.0,
       "w": 236,
       "h": 38
     },
@@ -610,7 +622,7 @@
       "href": "/projects/tesla-gruenheide-cells",
       "status": "construction",
       "x": 900,
-      "y": 1524.0,
+      "y": 1578.0,
       "w": 236,
       "h": 38
     },
@@ -622,7 +634,7 @@
       "href": "/projects/verkor-dunkirk",
       "status": "operating",
       "x": 900,
-      "y": 1578.0,
+      "y": 1632.0,
       "w": 236,
       "h": 38
     }
@@ -859,6 +871,12 @@
     {
       "from": "project:northvolt-ett-skelleftea",
       "to": "technology:nmc-nca-cells",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:novo-energy-gothenburg",
+      "to": "technology:cell-manufacturing",
       "rel": "deploys",
       "weight": 1
     },

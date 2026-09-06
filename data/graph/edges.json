@@ -29376,6 +29376,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:novo-energy-gothenburg",
+  "to": "technology:cell-manufacturing",
+  "since": "2026-01-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=novo-energy-gothenburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:powerco-sagunto",
   "to": "technology:cell-manufacturing",
   "since": "2023-03-17",
@@ -32641,6 +32651,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=northvolt-ett-skelleftea].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:novo-energy-gothenburg",
+  "to": "country:SE",
+  "since": "2026-01-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=novo-energy-gothenburg].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:novo-energy-gothenburg",
+  "to": "sector:batsol",
+  "since": "2026-01-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=novo-energy-gothenburg].sector"
   },
   "basis": "sector"
  },
