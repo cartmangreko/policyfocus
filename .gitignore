@@ -42,3 +42,7 @@ build/
 # the published copy lives at the artifact URL.
 docs/design/canvas/*.html
 !docs/design/canvas/*.dc.html
+
+# Analysis artefacts. sources/export_status_history.py writes here, and nothing
+# on the site reads what it writes.
+scratch/

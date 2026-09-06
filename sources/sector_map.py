@@ -122,6 +122,136 @@ PROJECT_STATUSES = (
 )
 
 
+# WHAT A STATUS MEANS FOR A COUNT, in one place, because the attrition question
+# is a count and a count that quietly spans these groups is the failure the
+# vocabulary exists to prevent. Modelled on FUNDING_COMMITTED / FUNDING_ANNOUNCED
+# / FUNDING_EXCLUDED below, and checked the same way: every project status is in
+# exactly one group, and check_sector_schema.py fails if one is in none, so
+# adding a status without deciding what it means for a count fails rather than
+# defaulting into invisibility.
+#
+#   ALIVE      the project is supposed to be going somewhere, INCLUDING paused.
+#              A paused project can resume, and one that has been paused for
+#              three years is exactly what an attrition series is measuring; it
+#              is a project that has stopped MOVING, not one that has stopped.
+#   STOPPED    it will not be built. `cancelled` is the only project status that
+#              says so.
+#   COMPLETE   it climbed the whole ladder and has nowhere left to go.
+#
+# THIS IS A COUNTING GROUP AND NOT A DRAWING ONE. Nothing on the site reads these
+# — no surface changed when they landed — so unlike the funding groups they are
+# not mirrored into web/lib/transition.ts and the parity half of
+# check_status_groups does not apply to them. When a surface does read them, the
+# mirror and its check are what to add.
+PROJECT_ALIVE = ("announced", "funded", "fid", "construction", "paused")
+PROJECT_STOPPED = ("cancelled",)
+PROJECT_COMPLETE = ("operating",)
+
+
+# WHAT KIND OF EVENT AN ENTRY IN A STATUS HISTORY IS. A history is a record of
+# what was published about a project, and not everything published about it
+# moves it along the ladder: money can be committed and a site can change hands
+# without the status changing at all. Naming the kind is what lets a count of
+# status changes be a count of status changes.
+#
+#   status      the ordinary entry: a source reports where the project has got
+#               to. Every entry that says nothing else is one of these, which is
+#               why the backfill could set it without reading anything.
+#   ownership   the project changed hands. The site is continuous and its OWNER
+#               broke; a history that could not say so would have to choose
+#               between a cancellation that did not happen and an acquisition
+#               that never appears.
+#   financing   money reached, or left, the project. Distinct from the `funded`
+#               status, which is a rung on the ladder: a second grant to a
+#               project already funded is a financing event and not a move.
+PROJECT_EVENT_KINDS = (
+    "status",
+    "ownership",
+    "financing",
+)
+
+
+# WHO IS SPEAKING IN THE SOURCE BEHIND AN EVENT. `confidence` above says how
+# close the speaker is to the fact; this says what kind of body they are, which
+# is the cut an attrition series needs: a cancellation a company announces and a
+# cancellation visible only because a permit was withdrawn are the same fact
+# reaching the record by two different routes, and how often each route carries
+# it is itself a finding.
+#
+#   company         the operator or its parent, speaking about its own project.
+#   permit          a planning or environmental consent file, and the authority's
+#                   own record of the procedure.
+#   regulator       a supervisory or competition authority acting on the project.
+#   grant_register  a public register of awards — the Innovation Fund's, a state
+#                   aid decision, a national programme's list.
+#   wire_release    a company release carried by a wire service. It is the
+#                   company speaking, through a distributor that keeps the page
+#                   alive after the company's own site has dropped it.
+#   press           anyone reporting on the project rather than acting in it.
+PROJECT_SOURCE_TYPES = (
+    "company",
+    "permit",
+    "regulator",
+    "grant_register",
+    "wire_release",
+    "press",
+)
+
+
+# WHETHER THE RECORD WATCHED THE EVENT OR RECONSTRUCTED IT. An event dated before
+# the day its project row first entered this repository was written up from the
+# archive; one dated after was seen as it happened. The distinction is not a
+# quality judgement — a retrospective entry can rest on a better source than a
+# live one — but a dataset built backwards has a survivorship problem a dataset
+# built forwards does not, and an attrition rate computed over the two without
+# separating them is two different measurements added together.
+EVIDENCE_MODES = (
+    "retrospective",
+    "live",
+)
+
+
+# CAPACITY, AND WHY IT IS NOT THE `capacity` BLOCK ALREADY ON THE ROW. That block
+# holds whatever figure a project is best known by, and across these sectors it
+# is not one quantity: for the cement rows it is CO2 captured per year, for the
+# steel rows it is tonnes of three different products, and for a battery row it
+# is GWh. A denominator has to be one quantity, so the capacity_* fields are the
+# PRODUCT the plant makes, in two units and nothing else, and a row whose known
+# figure is not that leaves them empty rather than bending it to fit.
+CAPACITY_UNITS = (
+    "t_per_year",
+    "GWh_per_year",
+)
+
+# HOW FIRM THE FIGURE IS. The same number means different things at these three
+# stages, and attrition measured against announced capacity is a different
+# series from attrition measured against capacity somebody committed money to.
+CAPACITY_BASES = (
+    "announced",
+    "fid",
+    "operating",
+)
+
+# WHAT THE PLANT MAKES, in the source's own word. Closed, because "steel" and
+# "crude steel" and "directly reduced iron" are three different tonnes and a free
+# text field would let them be added up.
+CAPACITY_PRODUCTS = (
+    "clinker",
+    "cement",
+    "crude_steel",
+    "dri",
+    "steel",
+    "co2_reduced_steel",
+    "battery_cells",
+)
+
+# THE SECTORS A CAPACITY FIGURE IS SOUGHT FOR. Not every sector in the file has a
+# product capacity that means anything — a CO2 store's capacity is a different
+# quantity in a different unit — so the gate asks for these three and is silent
+# about the rest.
+CAPACITY_SECTORS = ("cement", "steel", "batsol")
+
+
 # NOT EVERY ENTRY IN A STATUS HISTORY IS A STATUS CHANGE, and the difference has
 # to be named because three sentence templates on this site render an entry as
 # one: "{project} was paused on {date}".

@@ -109,15 +109,25 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2024-12-02",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.heidelbergmaterials.com/en/pr-2024-12-02",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Mechanical completion reached on schedule."
         },
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2025-06-18",
+          "status_from": "construction",
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Opening of the facility; the first industrial-scale capture plant in the cement industry."
         }
       ],
@@ -189,9 +199,14 @@
       "status": "funded",
       "status_history": [
         {
-          "status": "funded",
+          "event_kind": "status",
           "date": "2023-12-15",
+          "status_from": null,
+          "status_to": "funded",
+          "status": "funded",
           "source_url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Innovation Fund grant of €191 million; construction stated to start in 2026 and commissioning in 2029."
         }
       ],
@@ -251,9 +266,14 @@
       "status": "funded",
       "status_history": [
         {
-          "status": "funded",
+          "event_kind": "status",
           "date": "2023-01-20",
+          "status_from": null,
+          "status_to": "funded",
+          "status": "funded",
           "source_url": "https://www.heidelbergmaterials.com/en/eu-backs-heidelberg-materials-pioneering-ccus-project-in-bulgaria",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Innovation Fund grant of around €190 million to Heidelberg Materials and PetroCeltic; first full CCUS chain in Eastern Europe, expected operational as early as 2028."
         }
       ],
@@ -312,9 +332,14 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2024-05-16",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Groundbreaking on phase one; plant engineered to produce 2 million tons of net-zero cement per annum by 2029."
         }
       ],
@@ -372,15 +397,25 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "funded",
+          "event_kind": "status",
           "date": "2023",
+          "status_from": null,
+          "status_to": "funded",
+          "status": "funded",
           "source_url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "The project page states a grant from the EU Innovation Fund received in 2023; no month is given, so the date is the year."
         },
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2024-04-22",
+          "status_from": "funded",
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Official launch of the project; net-zero cement production at Lägerdorf stated from 2029."
         }
       ],
@@ -434,15 +469,25 @@
       "status": "paused",
       "status_history": [
         {
-          "status": "paused",
+          "event_kind": "status",
           "date": "2025-11-19",
+          "status_from": null,
+          "status_to": "paused",
+          "status": "paused",
           "source_url": "https://www.globalcement.com/news/item/19500-heidelberg-materials-pauses-slite-ccs-project",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "Paused after the Swedish Energy Agency rejected the co-financing application under the Industrial Step programme."
         },
         {
-          "status": "paused",
+          "event_kind": "status",
           "date": "2026-01-01",
+          "status_from": "paused",
+          "status_to": "paused",
+          "status": "paused",
           "source_url": "https://www.globalcement.com/news/20531-heidelberg-materials-withdraws-slite-ccs-permit-application",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "Heidelberg Materials withdrew the project's permit application. The status is unchanged: the source reports a withdrawal and no source states the project is cancelled."
         }
       ],
@@ -509,9 +554,14 @@
       "status": "announced",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2023-07-14",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://www.worldcement.com/europe-cis/14072023/titan-groups-large-scale-carbon-capture-project-selected-by-the-eu-innovation-fund/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "Selected by the EU Innovation Fund. Selection is not yet a signed grant, so the status is announced rather than funded until the grant agreement is sourced."
         }
       ],
@@ -565,9 +615,14 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2024-02-15",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Phase one launched: a new clinker line at Lumbres, supported by €40 million of French state funding through ADEME under NextGenerationEU. Capture is a stated second phase."
         }
       ],
@@ -615,18 +670,35 @@
         "unit": "Mt steel per year",
         "parameter": "stegra-boden-capacity"
       },
+      "capacity_value": 2500000,
+      "capacity_unit": "t_per_year",
+      "capacity_product": "steel",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-more-than-4-billion-in-debt-financing-for-the-worlds-first-large-scale-green-steel-plant",
+      "capacity_as_of": "2024-01-22",
+      "capacity_note": "Stegra states it in millions of tonnes — “half of the initial yearly volumes of 2.5 million tonnes of near zero steel have been sold” — and it is recorded here in tonnes per year. The company says “steel” and not “crude steel”, so capacity_product says steel.",
       "status": "construction",
       "status_history": [
         {
-          "status": "funded",
+          "event_kind": "status",
           "date": "2024-01-22",
+          "status_from": null,
+          "status_to": "funded",
+          "status": "funded",
           "source_url": "https://stegra.com/en/news-and-stories/h2-green-steel-raises-more-than-4-billion-in-debt-financing-for-the-worlds-first-large-scale-green-steel-plant",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Funding of close to €6.5 billion closed, including a €250 million EU Innovation Fund grant. The company was then called H2 Green Steel."
         },
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2026-04-04",
+          "status_from": "funded",
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "All 37 electrolyser modules in place at the 740 MW hydrogen unit; pre-commissioning still to run. The €1.4 billion round that closed on 24 June 2026 is a source on this row and not a history entry — it refinanced the build rather than moving its status, and the company states the timeline is under review."
         }
       ],
@@ -685,18 +757,35 @@
         "unit": "Mt directly reduced iron per year",
         "parameter": "tkh2steel-dri-capacity"
       },
+      "capacity_value": 2500000,
+      "capacity_unit": "t_per_year",
+      "capacity_product": "dri",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+      "capacity_as_of": "2023-07-20",
+      "capacity_note": "“A production capacity of 2.5 million metric tons of directly reduced iron per year”, recorded in tonnes per year. This is the direct reduction plant's output, not the crude steel the melters go on to make.",
       "status": "construction",
       "status_history": [
         {
-          "status": "funded",
+          "event_kind": "status",
           "date": "2023-07-20",
+          "status_from": null,
+          "status_to": "funded",
+          "status": "funded",
           "source_url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "State aid approval granted for German federal and state funding of around two billion euros."
         },
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2023-07-20",
+          "status_from": "funded",
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "The same release records that SMS group was contracted for engineering, supply and construction of the direct reduction unit and its two melters, and that construction work had begun. Two entries share a date because one document reports both events."
         }
       ],
@@ -743,18 +832,35 @@
         "unit": "Mt crude steel per year",
         "parameter": "salcos-crude-steel-capacity"
       },
+      "capacity_value": 1900000,
+      "capacity_unit": "t_per_year",
+      "capacity_product": "crude_steel",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+      "capacity_as_of": "2023-04-18",
+      "capacity_note": "“1.9 million tonnes of crude steel per year”, recorded in tonnes per year, and it is stage one rather than the whole programme.",
       "status": "construction",
       "status_history": [
         {
-          "status": "funded",
+          "event_kind": "status",
           "date": "2023-04-18",
+          "status_from": null,
+          "status_to": "funded",
+          "status": "funded",
           "source_url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Official notice of €700 million federal and €300 million Lower Saxony funding for stage one."
         },
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2024-03-07",
+          "status_from": "funded",
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salcos-milestone-reached-salzgitter-ag-awards-contract-for-direct-reduction-plant-20791.html",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Contract awarded for the direct reduction unit, the largest sub-unit of stage one."
         }
       ],
@@ -817,9 +923,14 @@
       "status": "cancelled",
       "status_history": [
         {
-          "status": "cancelled",
+          "event_kind": "status",
           "date": "2025-06-23",
+          "status_from": null,
+          "status_to": "cancelled",
+          "status": "cancelled",
           "source_url": "https://www.cleanenergywire.org/news/german-finance-minister-calls-steel-summit-after-green-projects-axed",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "The conversion of both sites was dropped and €1.3 billion of German subsidies turned down, the company citing energy costs. No primary source for the earlier announcement has been read, so the history starts here."
         }
       ],
@@ -869,9 +980,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2021-06-21",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Test production of the world's first hydrogen-reduced sponge iron completed at the pilot unit; around 100 tonnes made."
         }
       ],
@@ -925,9 +1041,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2024-03-14",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "The pilot unit on blast-furnace gas is running and reported capture rates above 90%. No primary source for the earlier start-up has been read, so the history starts at the result."
         }
       ],
@@ -972,12 +1093,24 @@
         "unit": "tonnes CO2-reduced steel per year",
         "parameter": "voestalpine-donawitz-capacity"
       },
+      "capacity_value": 850000,
+      "capacity_unit": "t_per_year",
+      "capacity_product": "co2_reduced_steel",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+      "capacity_as_of": "2026-06-18",
+      "capacity_note": "“Around 850,000 tons of CO2-reduced steel annually as of 2027”. voestalpine's own product word is kept: it is neither crude steel nor DRI.",
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2026-06-18",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "The electric furnace is under construction for operation from 2027, with an expansion to 1.5 Mt by 2030 announced. No primary source for the earlier groundbreaking has been read, so the history starts here."
         }
       ],
@@ -1027,9 +1160,14 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2026-06-18",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "The same release states the first phase covers both Austrian sites at an unchanged investment of about EUR 1.5 billion, with an electric furnace at each going into operation from 2027."
         }
       ],
@@ -1076,9 +1214,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2025-08-25",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://www.equinor.com/news/20250825-first-co2-volumes-stored-at-northern-lights",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "First CO2 volumes injected and stored in the Aurora reservoir. No primary source for the earlier construction milestones has been read, so the history starts here."
         }
       ],
@@ -1131,9 +1274,14 @@
       "status": "announced",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2022-07-18",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://balkangreenenergynews.com/bulgarian-cement-plant-gets-eu-grant-for-innovative-carbon-capture-storage-project/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "Named as ANRAV's store when the Innovation Fund grant was reported. Nothing has been read since that records a storage permit, so the status stays where the evidence leaves it."
         }
       ],
@@ -1186,9 +1334,14 @@
       "status": "announced",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2026-07-02",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://en.protothema.gr/2026/07/02/greece-moves-to-become-southeast-europes-first-carbon-storage-hub-with-e1bn-prinos-project/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "Installation permit for the Omega platform signed, with work expected to begin in October 2026. A permit is not a build, so the status is what has been announced."
         }
       ],
