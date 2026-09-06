@@ -506,6 +506,38 @@ source with its verbatim, and a `note` saying the company's own wording is
 weaker — so the reader sees the join rather than a flat assertion. And the
 site's `confidence` stays `secondary`, which is what it is.
 
+### A stopped row does not enter the location queue
+
+**Location is sought for active rows.** A project whose status is `cancelled` or
+`paused` may stand in the register without a position, carrying a
+`location_note` that says the position was not sought and why.
+
+The reasoning is what the coordinate is for. A mark on a picture is a claim that
+something is at a place, and the research behind it — a permit's grid reference,
+a plan's parcel list, an operator's published address — pays for itself on a
+works somebody might visit, buy from or object to. **A project that will not be
+built has no works to place.** Hunting the parcel of a factory cancelled two
+years ago buys a dot that a reader would take for a building, at the cost of the
+only thing the hunt was for.
+
+**The note is the whole of the allowance.** `sources/check_sector_schema.py`
+refuses an empty `location` on any other status, refuses it without the note, and
+refuses a note on a row that has a position — so the absence is always a decision
+on the record and never an oversight that looks like one. A row that returns to
+an active status fails the gate until its position is found, which is the
+mechanism that stops this from becoming the place coordinates go to be avoided.
+
+**What the surfaces do with it.** No crop is built (`sources/build_maps.py`
+skips it), the project page renders the note where the picture would have been
+with no placeholder standing in for the map, and the sector overview's
+not-drawn clause names the row and its status — so a reader counting sites
+against the projects table finds the difference accounted for by name.
+
+**And it does not lower the perimeter.** The site rule is unchanged: a company
+still has to have confirmed the site, and a row still says which standard it
+stands on. What is dropped is the coordinate hunt, and only where nothing will
+ever stand there.
+
 ### A failure you observe is blocking
 
 **"Pre-existing" describes when a failure started. It is not a reason to push

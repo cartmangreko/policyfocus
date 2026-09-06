@@ -208,6 +208,15 @@ export function projectGeoProse(c: GeoCounts): { heading: string; standfirst: st
  *  register's remainder. Without it an overview would quietly shrink — a reader
  *  counting steel's sites here and on the projects table below would find two
  *  missing and nothing on the page accounting for them. */
+export interface UndrawnRow {
+  id: string;
+  name: string;
+  status: string;
+  /** Whether the row has a position at all. False is a stopped project whose
+   *  location was never sought — see its own `location_note`. */
+  sited: boolean;
+}
+
 export function sectorGeoProse(c: {
   sector: string;
   sites: number;
@@ -215,19 +224,36 @@ export function sectorGeoProse(c: {
   running: number;
   pending: number;
   paused: number;
-  undrawn: { projects: number; sites: number };
+  undrawn: { projects: number; sites: number; rows?: UndrawnRow[] };
 }): { heading: string; standfirst: string } {
   const state = list([
     c.running > 0 ? `${c.running} operating or under construction` : null,
     c.pending > 0 ? `${c.pending} announced or funded and not yet built` : null,
     c.paused > 0 ? `${c.paused} paused` : null,
   ]);
-  const { projects, sites } = c.undrawn;
+  // WHAT IS NOT IN THE PICTURE, BY NAME. A count invites exactly the question
+  // the names answer — which ones — and the answer is short enough to give.
+  // Two reasons and they are not the same fact: a cancelled project is left
+  // off because the overview draws what Europe is building, and an unsited one
+  // is absent because there is nothing to draw, its location never having been
+  // sought (each such row says so in its own note).
+  const { projects, rows } = c.undrawn;
+  const named = rows ?? [];
+  const off = named.filter((r) => r.sited).map((r) => r.name);
+  const unsited = named.filter((r) => !r.sited);
+  const clauses = [
+    off.length > 0 ? `${list(off)} — cancelled` : null,
+    unsited.length > 0
+      ? `${list(unsited.map((r) => `${r.name} (${r.status})`))} — location not sought`
+      : null,
+  ].filter(Boolean) as string[];
   const left =
-    projects > 0
-      ? ` ${n(projects, "cancelled project")}, on ${n(sites, "site")}, ` +
-        `${projects === 1 ? "is" : "are"} on file and not drawn.`
-      : "";
+    named.length > 0
+      ? ` ${n(named.length, "project")} on file ${named.length === 1 ? "is" : "are"} ` +
+        `not drawn: ${clauses.join("; and ")}.`
+      : projects > 0
+        ? ` ${n(projects, "project")} on file ${projects === 1 ? "is" : "are"} not drawn.`
+        : "";
   return {
     heading: `Where Europe is building ${c.sector}`,
     standfirst:
@@ -236,6 +262,36 @@ export function sectorGeoProse(c: {
       " Each one opens its own page." +
       left,
   };
+}
+
+/** WHAT STANDS WHERE THE PICTURE WOULD HAVE BEEN, on a stopped project whose
+ *  location was never sought.
+ *
+ *  One computed sentence and then the row's own note. The sentence says the
+ *  three things a reader needs before the note explains itself: what this is,
+ *  that it is stopped, and that the absence of a map is a decision rather than
+ *  a fault. It does not apologise and it does not hedge — "no location data
+ *  available" is the wording of a system that lost something, and nothing was
+ *  lost here.
+ *
+ *  `place` is deliberately as coarse as the register is: the town where the row
+ *  names one, the country otherwise. A row with no position may still know
+ *  which town it was going to be in; that is not a coordinate and this sentence
+ *  is not a map. */
+export function projectNoLocationProse(c: {
+  name: string;
+  status: string;
+  plant?: string;
+  country: string;
+}): string {
+  const place = c.plant ? `${c.plant}, ${c.country}` : c.country;
+  const stopped = c.status === "cancelled" ? "cancelled" : c.status;
+  return (
+    `${c.name} is ${stopped}, and this register holds no position for it. ` +
+    `It was to be at ${place}; the works was never placed to the precision a ` +
+    `mark on a picture would claim, and looking for one was not thought worth ` +
+    `doing on a project that stopped.`
+  );
 }
 
 /** THE KEY, SPELLED OUT. Two axes, and the reader is told both rather than

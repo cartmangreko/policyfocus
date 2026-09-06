@@ -28906,6 +28906,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:acc-kaiserslautern",
+  "to": "technology:cell-manufacturing",
+  "since": "2026-02-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-kaiserslautern].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:acc-termoli",
   "to": "technology:cell-manufacturing",
   "since": "2024-06-05",
@@ -29102,6 +29112,26 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=envision-aesc-sunderland].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:farasis-bitterfeld",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-05-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=farasis-bitterfeld].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:freyr-mo-i-rana",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=freyr-mo-i-rana].technology"
   }
  },
  {
@@ -29492,6 +29522,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=sunwoda-nyiregyhaza].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:svolt-lauchhammer",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-lauchhammer].technology"
   }
  },
  {
@@ -31892,6 +31932,28 @@
  },
  {
   "rel": "in",
+  "from": "project:acc-kaiserslautern",
+  "to": "country:DE",
+  "since": "2026-02-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-kaiserslautern].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:acc-kaiserslautern",
+  "to": "sector:batsol",
+  "since": "2026-02-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-kaiserslautern].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:acc-termoli",
   "to": "country:IT",
   "since": "2024-06-05",
@@ -32173,6 +32235,50 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=envision-aesc-sunderland].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:farasis-bitterfeld",
+  "to": "country:DE",
+  "since": "2022-05-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=farasis-bitterfeld].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:farasis-bitterfeld",
+  "to": "sector:batsol",
+  "since": "2022-05-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=farasis-bitterfeld].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:freyr-mo-i-rana",
+  "to": "country:NO",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=freyr-mo-i-rana].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:freyr-mo-i-rana",
+  "to": "sector:batsol",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=freyr-mo-i-rana].sector"
   },
   "basis": "sector"
  },
@@ -32723,6 +32829,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=sunwoda-nyiregyhaza].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:svolt-lauchhammer",
+  "to": "country:DE",
+  "since": "2022-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-lauchhammer].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:svolt-lauchhammer",
+  "to": "sector:batsol",
+  "since": "2022-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-lauchhammer].sector"
   },
   "basis": "sector"
  },

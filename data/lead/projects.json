@@ -97,7 +97,7 @@
     "gezero-geseke": {
       "id": "gezero-geseke",
       "template_version": 1,
-      "fingerprint": "f9f9e7f70985cdc9",
+      "fingerprint": "8ce3863ffa2bfeea",
       "sentence": {
         "text": "GeZero is Heidelberg Materials' cement project at Geseke, Germany.",
         "from": [
@@ -154,7 +154,7 @@
         },
         {
           "id": "capacity",
-          "text": "It is built for 700,000 tonnes CO2 captured per year.",
+          "text": "It was to be built for 700,000 tonnes CO2 captured per year.",
           "as_of": "2023-12-15",
           "numbers": [
             "700000"
@@ -183,7 +183,7 @@
     "anrav-devnya": {
       "id": "anrav-devnya",
       "template_version": 1,
-      "fingerprint": "2592ec68199a8bcc",
+      "fingerprint": "02ed2a9881dc185d",
       "sentence": {
         "text": "ANRAV is Heidelberg Materials (Devnya Cement)'s cement project at Devnya, Bulgaria.",
         "from": [
@@ -240,7 +240,7 @@
         },
         {
           "id": "capacity",
-          "text": "It is built for 800,000 tonnes CO2 captured per year.",
+          "text": "It was to be built for 800,000 tonnes CO2 captured per year.",
           "as_of": "2023-01-20",
           "numbers": [
             "800000"
@@ -494,7 +494,7 @@
     "ifestos-kamari": {
       "id": "ifestos-kamari",
       "template_version": 1,
-      "fingerprint": "c8b893236b4ac24d",
+      "fingerprint": "7c3950c1651020ea",
       "sentence": {
         "text": "IFESTOS is TITAN Cement's cement project at Kamari, Greece.",
         "from": [
@@ -551,7 +551,7 @@
         },
         {
           "id": "capacity",
-          "text": "It is built for 1.9 Mt CO2 avoided per year.",
+          "text": "It was to be built for 1.9 Mt CO2 avoided per year.",
           "as_of": "2023-07-14",
           "numbers": [
             "1.9"
@@ -1894,7 +1894,7 @@
     "catl-stellantis-zaragoza": {
       "id": "catl-stellantis-zaragoza",
       "template_version": 1,
-      "fingerprint": "3e15d506fe0624b6",
+      "fingerprint": "f9690bc2ac6c94f5",
       "sentence": {
         "text": "CATL and Stellantis Zaragoza is Automotive Cells Zaragoza (CATL and Stellantis joint venture)'s batteries and solar project at Zaragoza, Spain.",
         "from": [
@@ -1951,7 +1951,7 @@
         },
         {
           "id": "capacity",
-          "text": "It is built for 50 GWh per year.",
+          "text": "It was to be built for 50 GWh per year.",
           "as_of": "2024-12-10",
           "numbers": [
             "50"
@@ -2229,7 +2229,7 @@
     "lyten-heide": {
       "id": "lyten-heide",
       "template_version": 1,
-      "fingerprint": "a718a39948dd1938",
+      "fingerprint": "0e8b433c5065e3d8",
       "sentence": {
         "text": "Northvolt Drei is Northvolt Drei Project GmbH's batteries and solar project at Heide, Germany.",
         "from": [
@@ -2285,7 +2285,7 @@
         },
         {
           "id": "capacity",
-          "text": "It is built for 15 GWh per year.",
+          "text": "It was to be built for 15 GWh per year.",
           "as_of": "2026-07-01",
           "numbers": [
             "15"
@@ -2314,7 +2314,7 @@
     "morrow-arendal": {
       "id": "morrow-arendal",
       "template_version": 1,
-      "fingerprint": "2599da9986f2cbfe",
+      "fingerprint": "7531d7731c6499e3",
       "sentence": {
         "text": "Morrow Cell Factory is Morrow Batteries' batteries and solar project at Arendal, Norway.",
         "from": [
@@ -2371,7 +2371,7 @@
         },
         {
           "id": "capacity",
-          "text": "It was to be built for 43 GWh per year.",
+          "text": "It is built for 43 GWh per year.",
           "as_of": "2026-05-06",
           "numbers": [
             "43"
@@ -2564,7 +2564,7 @@
     "gib-surany": {
       "id": "gib-surany",
       "template_version": 1,
-      "fingerprint": "8306e168be0897ff",
+      "fingerprint": "0271c028af430a09",
       "sentence": {
         "text": "Gotion InoBat Batteries Šurany is Gotion InoBat Batteries' batteries and solar project at Šurany, Slovakia.",
         "from": [
@@ -2620,7 +2620,7 @@
         },
         {
           "id": "capacity",
-          "text": "It is built for 60 GWh per year.",
+          "text": "It was to be built for 60 GWh per year.",
           "as_of": "2024-06-20",
           "numbers": [
             "60"
@@ -3488,6 +3488,286 @@
           "id": "funding",
           "text": "No committed public money is on file for it.",
           "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "freyr-mo-i-rana": {
+      "id": "freyr-mo-i-rana",
+      "template_version": 1,
+      "fingerprint": "6a5f6eab0c778254",
+      "sentence": {
+        "text": "T1 Energy Giga Arctic is T1 Energy's batteries and solar project at Mo i Rana, Norway.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "T1 Energy Giga Arctic",
+          "T1 Energy",
+          "Mo i Rana, Norway"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "T1 Energy Giga Arctic was cancelled on 31 March 2026.",
+          "as_of": "2026-03-31",
+          "numbers": [],
+          "sourced": [
+            "T1 Energy Giga Arctic"
+          ],
+          "href": "https://www.sec.gov/Archives/edgar/data/1992243/000199224326000007/t1-20251231.htm",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It was to be at Mo i Rana, Norway.",
+          "as_of": "2026-09-06",
+          "numbers": [],
+          "sourced": [
+            "Mo i Rana, Norway"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-06",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-06",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "acc-kaiserslautern": {
+      "id": "acc-kaiserslautern",
+      "template_version": 1,
+      "fingerprint": "9d662c118c53ed7c",
+      "sentence": {
+        "text": "ACC Kaiserslautern is Automotive Cells Company's batteries and solar project at Kaiserslautern, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "ACC Kaiserslautern",
+          "Automotive Cells Company",
+          "Kaiserslautern, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "ACC Kaiserslautern was cancelled on 7 February 2026.",
+          "as_of": "2026-02-07",
+          "numbers": [],
+          "sourced": [
+            "ACC Kaiserslautern"
+          ],
+          "href": "https://www.cnbc.com/2026/02/07/stellantis-backed-acc-drops-plans-for-italian-german-factories-union.html",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It was to be at Kaiserslautern, Germany.",
+          "as_of": "2026-02-09",
+          "numbers": [],
+          "sourced": [
+            "Kaiserslautern, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-02-09",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-02-09",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "svolt-lauchhammer": {
+      "id": "svolt-lauchhammer",
+      "template_version": 1,
+      "fingerprint": "b436ff9584a1b8be",
+      "sentence": {
+        "text": "SVOLT Lauchhammer is SVOLT's batteries and solar project at Lauchhammer, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "SVOLT Lauchhammer",
+          "SVOLT",
+          "Lauchhammer, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "SVOLT Lauchhammer was cancelled on 27 May 2024.",
+          "as_of": "2024-05-27",
+          "numbers": [],
+          "sourced": [
+            "SVOLT Lauchhammer"
+          ],
+          "href": "https://ecomento.de/2024/05/27/akkubauer-svolt-fertigt-doch-nicht-in-lauchhammer/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It was to be at Lauchhammer, Germany.",
+          "as_of": "2024-05-28",
+          "numbers": [],
+          "sourced": [
+            "Lauchhammer, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2024-05-28",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2024-05-28",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "farasis-bitterfeld": {
+      "id": "farasis-bitterfeld",
+      "template_version": 1,
+      "fingerprint": "d4662277e94259d3",
+      "sentence": {
+        "text": "Farasis Bitterfeld-Wolfen is Farasis Energy's batteries and solar project at Bitterfeld-Wolfen, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Farasis Bitterfeld-Wolfen",
+          "Farasis Energy",
+          "Bitterfeld-Wolfen, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Work has stopped, and the reason is in its history below.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Farasis Bitterfeld-Wolfen was paused on 23 May 2022.",
+          "as_of": "2022-05-23",
+          "numbers": [],
+          "sourced": [
+            "Farasis Bitterfeld-Wolfen"
+          ],
+          "href": "https://ecomento.de/2022/05/23/farasis-bau-einer-grossen-akkufabrik-in-bitterfeld-wolfen-ist-geplatzt/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It was to be at Bitterfeld-Wolfen, Germany.",
+          "as_of": "2022-05-24",
+          "numbers": [],
+          "sourced": [
+            "Bitterfeld-Wolfen, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2022-05-24",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2022-05-24",
           "numbers": [],
           "sourced": [],
           "href": null,

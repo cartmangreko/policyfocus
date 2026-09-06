@@ -546,11 +546,11 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                       </dd>
                     </>
                   ) : null}
-                  {t.dependency.length > 0 ? (
+                  {(t.dependency ?? []).length > 0 ? (
                     <>
                       <dt>Depends on</dt>
                       <dd>
-                        {t.dependency.map((d, i) => (
+                        {(t.dependency ?? []).map((d, i) => (
                           <span key={d}>
                             {i > 0 ? ", " : ""}
                             <a href={`#technology-${d}`}>{d}</a>

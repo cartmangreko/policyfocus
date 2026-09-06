@@ -149,6 +149,33 @@ PROJECT_STOPPED = ("cancelled",)
 PROJECT_COMPLETE = ("operating",)
 
 
+# THE STATUSES THAT STOP A PROJECT, named once because three files branch on
+# them: the schema gate, which lets a stopped row stand without a coordinate;
+# build_maps, which cannot draw one; and the ROADMAP entry that will eventually
+# ask whether `paused` should age into `cancelled` on its own.
+#
+# WHY A STOPPED ROW MAY HAVE NO POSITION. The perimeter admits a site the company
+# has confirmed and a citable source can place, and the second half is research
+# that only pays for itself on a works somebody might visit. A project that will
+# not be built has no works to place, and hunting the parcel of a factory that
+# was cancelled two years ago buys a dot on a map nobody should read as a
+# building. So location is sought for ACTIVE rows, and a stopped row says in its
+# own note that it was not sought -- which is a decision on the record rather
+# than a gap that looks like an oversight. See sources/scope.md, "A stopped row
+# does not enter the location queue".
+STOPPED_STATUSES = ("cancelled", "paused")
+
+
+# AND `paused` READS THREE WAYS ON PURPOSE, which is why the two tuples above
+# disagree about it in plain sight. It is ALIVE for the counting groups (a paused
+# project can resume, and one paused for three years is exactly what an attrition
+# series measures), STOPPED for the drawing rule (there is no works to place, so
+# no coordinate is sought), and its OWN group in sources/export_status_history.py
+# (it is what the attrition paper is about). The three are not a contradiction to
+# be settled: they are three questions with three right answers, and each is
+# declared where it is used rather than one being bent to serve all three.
+
+
 # WHAT KIND OF EVENT AN ENTRY IN A STATUS HISTORY IS. A history is a record of
 # what was published about a project, and not everything published about it
 # moves it along the ladder: money can be committed and a site can change hands

@@ -1201,11 +1201,21 @@ def sector_map(sector: str, projects: list[dict]) -> dict:
     # drawn" -- because an overview that silently shrank would be telling the
     # reader a sector is smaller than the register says it is. Counted here,
     # beside the exclusion that caused it, so the two cannot disagree.
+    # TWO WAYS TO BE OFF THE PICTURE, and the clause names both. A cancelled
+    # project is excluded on purpose -- the overview draws what Europe is
+    # building. A row with no position is absent because there is nothing to
+    # draw: its location was never sought, which the row says in its own note.
+    # A reader counting sites here against the projects table below finds the
+    # difference accounted for either way, and by name rather than as a count,
+    # because "3 projects are not drawn" invites the question the names answer.
     left_off = [row for row in projects
-                if row["sector"] == sector and not drawn(row)]
+                if row["sector"] == sector and (not drawn(row) or not _sites(row))]
     doc["undrawn"] = {
         "projects": len(left_off),
         "sites": sum(len(_sites(row)) for row in left_off),
+        "rows": [{"id": row["id"], "name": row["name"], "status": row["status"],
+                  "sited": bool(_sites(row))}
+                 for row in sorted(left_off, key=lambda r: r["name"])],
     }
     return doc
 
@@ -1374,6 +1384,14 @@ def build() -> list[dict]:
     projects = sm.load("project")
     docs = [sector_map(s, projects) for s in sm.mapped_sectors()]
     for row in projects:
+        # A ROW WITH NO POSITION GETS NO CROP, and there is nothing to design
+        # around that: a crop is a picture of where something is, and a stopped
+        # project whose location was never sought has no where. The schema gate
+        # allows the absence only on a cancelled or paused row carrying a
+        # `location_note`, so a missing frame here is always a decision that has
+        # been written down somewhere a reader can find it.
+        if not _sites(row):
+            continue
         docs.append(project_map(row, projects))
     return docs
 
@@ -1456,10 +1474,12 @@ def main() -> int:
         return 1
     verb = "--check," if args.check else "wrote"
     sectors = sum(1 for d in docs if d["kind"] == "sector")
-    undrawn = sum(1 for row in projects if not drawn(row))
+    undrawn = sum(1 for row in projects if not drawn(row) and _sites(row))
+    unsited = sum(1 for row in projects if not _sites(row))
     print(f"build_maps: {verb} {len(docs)} frame(s) — {sectors} sector, "
           f"{len(docs) - sectors} project, "
           f"{undrawn} project(s) drawn only on their own crop, "
+          f"{unsited} with no position and no crop, "
           f"{sum(len(d['land']) for d in docs)} stroke(s), "
           f"{sum(len(d['marks']) for d in docs)} mark(s), "
           f"{sum(1 for d in docs for m in d['marks'] for l in m['labels'].values() if l.get('shortened'))}"

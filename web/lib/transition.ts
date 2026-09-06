@@ -109,7 +109,12 @@ export interface Technology {
   readiness: { level: Readiness; source: string; date: string; note?: string };
   abatement_share?: { low: number; high: number; unit: string; source: string; date: string; note?: string };
   cost?: { low: number; high: number; unit: string; source: string; date: string; parameter?: string; note?: string };
-  dependency: string[];
+  /** Technologies this one cannot run without. ABSENT ON A TECHNOLOGY THAT
+   *  DEPENDS ON NOTHING, which is how the batteries rows are written — the
+   *  Python schema treats the key as optional, so a reader here has to as
+   *  well. It was `string[]` and required, and the mismatch only surfaced the
+   *  day the batteries page was drawn for the first time. */
+  dependency?: string[];
   sectors: string[];
   sources: Source[];
 }
@@ -207,9 +212,17 @@ export interface Project {
   country: string;
   /** One or more sites. A list because a project is not always at one place:
    *  the ArcelorMittal row covers Bremen and Eisenhüttenstadt, and one point
-   *  for it would put a mark in the field between them. Never empty — the
-   *  Python gate fails the build before this file is written. */
+   *  for it would put a mark in the field between them.
+   *
+   *  EMPTY ON A STOPPED ROW, AND ONLY THERE. A cancelled or paused project may
+   *  stand without a position where `location_note` says the position was not
+   *  sought; the Python gate refuses the absence on any other status and
+   *  refuses it without the note. So an empty list here is always a decision
+   *  somebody wrote down, and the note is what the page renders in the
+   *  picture's place. */
   location: Site[];
+  /** Why there is no position. Present only where `location` is empty. */
+  location_note?: string;
   sector: string;
   role?: ProjectRole;
   /** Only ever true, and only on a node several industries share — a CO2 store,

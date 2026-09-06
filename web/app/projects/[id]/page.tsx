@@ -7,9 +7,10 @@ import LeadBlock from "@/components/LeadBlock";
 import LocationMap from "@/components/LocationMap";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import { SECTORS } from "@/lib/data";
+import { countryName } from "@/lib/countries";
 import { getProjectLead } from "@/lib/objectLeads";
 import { getProjectMap } from "@/lib/maps";
-import { projectGeoProse } from "@/lib/prose";
+import { projectGeoProse, projectNoLocationProse } from "@/lib/prose";
 import {
   STATUS_LABEL,
   TRANSITION_LABEL,
@@ -152,9 +153,28 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           {lead ? <LeadBlock lead={lead} /> : null}
         </header>
 
+        {/* THE PICTURE, OR THE SENTENCE THAT REPLACES IT. A stopped project whose
+            location was never sought has no crop and gets none: an empty frame
+            with a caption apologising for itself is worse than a paragraph
+            saying plainly that nobody looked and why. No placeholder, no greyed
+            map, no "location unavailable" — the note is the content, and it is
+            written on the row. */}
         {frame && geo ? (
           <section className="proj-section">
             <LocationMap doc={frame} heading={geo.heading} standfirst={geo.standfirst} />
+          </section>
+        ) : project.location_note ? (
+          <section className="proj-section">
+            <h2>{`Where ${project.name} is`}</h2>
+            <p className="proj-nolocation">
+              {projectNoLocationProse({
+                name: project.name,
+                status: project.status,
+                plant: project.plant,
+                country: countryName(project.country, project.country),
+              })}
+            </p>
+            <p className="note">{project.location_note}</p>
           </section>
         ) : null}
 

@@ -1733,21 +1733,128 @@ that is George's.
 
 ---
 
+## 25. Four stopped projects land without positions, and the hold comes off
+
+Twenty-nine rows on file of 34 candidates — **85%** — and five outstanding. The
+batteries page is drawn.
+
+### The ruling: location is sought for active rows
+
+A project whose status is `cancelled` or `paused` may stand without a position,
+carrying a `location_note` that says the position was not sought and why. The
+reasoning is what a coordinate is for: a mark is a claim that something is at a
+place, and the research behind one — a permit's grid reference, a plan's parcel
+list, an operator's address — pays for itself on a works somebody might visit.
+**A project that will not be built has no works to place.**
+
+The note is the whole of the allowance, and the gate enforces all three sides of
+it: an empty `location` fails on any other status, fails without the note, and a
+note on a row that HAS a position fails too. **A row that returns to an active
+status fails until its position is found**, which is what stops this from
+becoming the place coordinates go to be avoided.
+
+Written into `sources/scope.md` as a standing ruling.
+
+### The four, each on a company source
+
+**T1 Energy Giga Arctic — cancelled.** The company that was FREYR is now T1
+Energy, and EDGAR carries the rename in the filer's own record: former name
+FREYR Battery, Inc. The FY2025 10-K reports the European businesses as **held
+for sale** and their disposal as *"a strategic shift that has had a major effect
+on our operations"*, presented as discontinued operations; Mo i Rana appears in
+Properties as a lease of the CQP and of **the land** for Giga Arctic. The August
+2026 rezoning of part of the site for a data centre is press and is carried as a
+note, not as a status: no Rana kommune record of it was found.
+
+**ACC Kaiserslautern — cancelled.** ACC's own statement of 7 February 2026: the
+German and Italian projects had been *"on standby since May 2024"* and the
+*"prerequisites"* to restart them were *"unlikely to be met"*. It was made to
+unions and confirmed publicly the same day; ACC's newsroom does not carry it, so
+the row cites the quotation and says so. **No earlier status event is
+back-dated** — the May 2024 standby was not read into this register at the time,
+and it is not being inferred now from a sentence written twenty-one months
+later.
+
+**SVOLT Lauchhammer — cancelled.** Announced 9 September 2022 in SVOLT's own
+release, filed from the Archive; cancelled 27 May 2024. **The company's own
+withdrawal release could not be fetched**:
+`svolt-eu.com/presse/svolt-europe-reagiert-auf-aktuelle-marktentwicklungen/` is
+in the Wayback index for 30 May 2024 and the capture is a **404** — the Archive
+reached the URL after the page was gone. So the statement is carried through
+reporting that quotes it, and the row says that is what it is doing.
+
+**Farasis Bitterfeld-Wolfen — paused, and not cancelled.** The distinction is
+the company's own words: Farasis told the Mitteldeutsche Zeitung that *"wir die
+Konkretisierung unserer Pläne für den Standort Bitterfeld-Wolfen vorläufig
+zurückgestellt haben"* — provisionally set aside. The town had already
+terminated the städtebaulicher Vertrag and the mayor said the factory would not
+come as planned. **A municipality ending a contract is the municipality's act,
+and a headline is a headline; neither is the company saying it has stopped.** The
+row moves to cancelled the day Farasis says so.
+
+### What the surfaces do with a row that has no position
+
+No crop is built. The project page renders a computed sentence where the picture
+would be — *"T1 Energy Giga Arctic is cancelled, and this register holds no
+position for it. It was to be at Mo i Rana, Norway…"* — followed by the row's own
+note, and **no placeholder**: no greyed map, no "location unavailable", because
+nothing was lost.
+
+**The overview's not-drawn clause now names them.** It counted before, which
+invites exactly the question the names answer:
+
+> 7 projects on file are not drawn: Italvolt Scarmagno, Morrow Cell Factory,
+> SVOLT Überherrn — cancelled; and ACC Kaiserslautern (cancelled), Farasis
+> Bitterfeld-Wolfen (paused), SVOLT Lauchhammer (cancelled), T1 Energy Giga
+> Arctic (cancelled) — location not sought.
+
+Two reasons, kept apart: a cancelled project is left off because the overview
+draws what Europe is building; an unsited one is absent because there is nothing
+to draw.
+
+### Two tenses that were lying, and the bug the hold was hiding
+
+`It is at Mo i Rana` on a row with no position, and `It is built for 24 GWh` on
+a works never raised. Both now turn on facts rather than on status: the place is
+present tense **where there is a position** — Northvolt Ett is paused and the
+works stands in Skellefteå — and the capacity is present tense **where ground
+was ever broken**, which keeps Morrow's built lines and puts Italvolt's 45 GWh
+in the past.
+
+And the first draw of the batteries page failed: `t.dependency.length` on a
+technology that depends on nothing. Four batteries technologies have no
+`dependency` key, the TypeScript type said the array was required, and **the
+hold had kept the page from rendering since the day the ranking was built**. A
+gate that stops a page from being drawn also stops it from being tested.
+
+### The hold is lifted
+
+Released 6 September 2026, recorded in `draw_holds.json` with the original
+reason and its amendment kept beside it. The judgement it was placed for: the
+overview draws 25 of 34 candidates and **says what it leaves out by name**. Four
+of the nine outstanding are stopped projects that will never be drawn and are no
+longer chased; five are live gaps. The coverage of the picture is now a fact
+about the picture rather than a silence in it.
+
+---
+
 ## Stopping here
 
-Twenty-five rows on file of 34 candidates, nine outstanding. What is left, in
-order:
+Twenty-nine rows on file of 34 candidates, five outstanding, and the page is
+drawn. What is left, in order:
 
-1. **The four parked candidates** — FREYR, SVOLT Lauchhammer, ACC Kaiserslautern
-   and Farasis — which are George's browser and not this pipeline's next sweep.
-   They are printed by `check_manual_sources` on every build with what to bring
-   back written on each.
-2. **The rest of the manual queue**: Britishvolt's committee report and two
-   Sunderland corroborations that nothing waits on.
-3. **Prose slots**: `transition_notes`, `sector_orientation`, `sector_lead` and the
-   ecosystem description carry cement and steel and nothing else, and the batteries
-   blocks that exist are drafts awaiting review.
-4. **The exposure exclusion**, decided and not yet written into a page.
-5. **The draw hold**, which only George lifts. It no longer rests on the four
-   parked candidates; what it waits on is the judgement that the picture is
-   honest on what is on file.
+1. **The five outstanding candidates** — ACC Kaiserslautern's Italian twin aside,
+   they are EVE Power, Sunwoda's second site, NOVO Energy at Gothenburg,
+   Leclanché at Willstatt and Britishvolt at Blyth. Britishvolt is cancelled and
+   is the next case for the stopped-row ruling: its coordinate is no longer
+   needed and its row can land as soon as the administration is sourced.
+2. **`acc-termoli` is paused on this register and ACC's 7 February 2026
+   statement covers it too** — the same sentence that cancelled Kaiserslautern.
+   Left for a ruling rather than changed here.
+3. **The manual queue is three**: Britishvolt's committee report, now
+   corroboration only, and two Sunderland pages that nothing waits on.
+4. **Prose slots**: `transition_notes`, `sector_orientation`, `sector_lead` and
+   the ecosystem description carry cement and steel and nothing else, and the
+   batteries blocks that exist are drafts awaiting review. **This is now the
+   most visible gap on the platform**, because the page is drawn.
+5. **The exposure exclusion**, decided and not yet written into a page.

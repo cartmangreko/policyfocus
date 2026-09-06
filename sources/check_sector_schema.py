@@ -320,10 +320,28 @@ def _location(e: Errors, where: str, row: dict) -> None:
     than a rendering detail is that leaving one out silently is the failure.
     """
     sites = row.get("location")
+    note = (row.get("location_note") or "").strip()
+    stopped = row.get("status") in sm.STOPPED_STATUSES
     if not sites:
-        e.add(where, "no location — every project and plant carries at least one "
-                     "site with a latitude and a longitude")
+        # A STOPPED ROW MAY STAND WITHOUT A POSITION, AND ONLY WITH A NOTE. The
+        # rule the note carries is the whole of the allowance: location is sought
+        # for active rows, and a cancelled or paused project says that it was not
+        # sought rather than leaving an absence that reads like an oversight.
+        # Both halves are required, and the second is what stops this from
+        # becoming the place coordinates go to be avoided.
+        if not stopped:
+            e.add(where, f"no location, and status={row.get('status')!r} is not one of "
+                         f"{list(sm.STOPPED_STATUSES)} — an active project carries at "
+                         f"least one site with a latitude and a longitude. A row that "
+                         f"returns to an active status needs its position found")
+        elif not note:
+            e.add(where, "no location and no location_note — a stopped row may stand "
+                         "without a position, and only where it says so. Write what was "
+                         "not sought and why, so the absence is a decision on the record")
         return
+    if note:
+        e.add(where, "carries both a location and a location_note — the note explains an "
+                     "absence, and there is nothing absent here")
     if not isinstance(sites, list):
         e.add(where, "location must be a list of sites, even where there is one")
         return

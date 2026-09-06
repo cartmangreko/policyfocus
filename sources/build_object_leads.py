@@ -338,7 +338,17 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
         _fact("status", f"{p['name']} {bl.STATUS_VERB[last['status']]} on "
                         f"{bl._long_date(last['date'])}.",
               last["date"], sourced=(p["name"],), href=last.get("source_url")),
-        _fact("where", f"It is at {place}.", as_of, sourced=(place,)),
+        # PRESENT TENSE WHERE THERE IS A POSITION, past tense where there is
+        # none. The test is the position and not the status: Northvolt Ett is
+        # paused and the works stands in Skellefteå, so "it is at" is true of
+        # it; a row whose location was never sought has nothing the present
+        # tense can be about, and the place it names is where the thing was to
+        # be. Getting this from the status would have said the Skellefteå works
+        # was never there.
+        _fact("where",
+              (f"It is at {place}." if p.get("location")
+               else f"It was to be at {place}."),
+              as_of, sourced=(place,)),
     ]
 
     tech_names = [_uncapitalise(techs[t]["name"]) for t in p.get("technology", [])
@@ -352,14 +362,22 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
     cap = p.get("capacity") or {}
     if cap.get("value") and cap.get("unit"):
         param = params.get(cap.get("parameter") or "")
-        # A CANCELLED PROJECT'S CAPACITY IS IN THE PAST TENSE, and this is not a
-        # style note. "It is built for 24 GWh per year" on a works that was never
-        # built is a sentence a reader takes for a description of something
-        # standing in a field. The figure is real and stays -- it is what the
-        # company said it was building, and the row is on file precisely because
-        # what this sector planned and did not build is the sector's defining
-        # fact -- but the verb has to say which of the two it is.
-        verb = "was to be built for" if last["status"] == "cancelled" else "is built for"
+        # THE CAPACITY OF SOMETHING NEVER BUILT IS IN THE PAST TENSE, and this
+        # is not a style note. "It is built for 24 GWh per year" on a works that
+        # was never built is a sentence a reader takes for a description of
+        # something standing in a field. The figure is real and stays -- it is
+        # what the company said it was building, and the row is on file
+        # precisely because what this sector planned and did not build is the
+        # sector's defining fact -- but the verb has to say which of the two it
+        # is.
+        #
+        # THE TEST IS WHETHER GROUND WAS EVER BROKEN, not the status now. Morrow
+        # reached operating and then went under: its lines existed, and "was to
+        # be built for" would be denying a factory that ran. Italvolt went from
+        # announced to cancelled and never turned a sod.
+        raised = any(h["status"] in ("construction", "operating")
+                     for h in history)
+        verb = "is built for" if raised else "was to be built for"
         facts.append(_fact(
             "capacity",
             f"It {verb} {cap['value']:,} {cap['unit']}.",

@@ -736,7 +736,15 @@ def _transition_edges(g: Graph):
                    company=pr["company"], plant=pr.get("plant"),
                    country=pr["country"], status=pr["status"],
                    transition=pr["transition"],
-                   role=pr.get("role", "plant"), location=pr["location"])
+                   role=pr.get("role", "plant"),
+                   # EMPTY ON A STOPPED ROW WHOSE POSITION WAS NEVER SOUGHT, and
+                   # carried as empty rather than as absent: a node with no
+                   # `location` key and a node with an empty one read the same
+                   # way to a consumer that uses `.get`, and only one of them is
+                   # a fact. `location_note` rides along so the graph can say
+                   # why, in the row's own words.
+                   location=pr.get("location") or [],
+                   location_note=pr.get("location_note"))
     for m in kinds["material"]:
         g.add_node(f"material:{m['id']}", "material", m["name"],
                    type=m["type"], cn_code=m.get("cn_code"),
