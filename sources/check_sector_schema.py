@@ -650,6 +650,20 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
         if history and history[-1].get("status") != r.get("status"):
             e.add(w, f"status={r.get('status')!r} but the last history entry is "
                      f"{history[-1].get('status')!r}")
+        # A SUPERSEDED CAPACITY HAS TO SAY WHOSE IT WAS. A figure carried after
+        # the party that stated it has gone is a fact about a plan, not about
+        # the project, and the page says so in the past tense with the planner
+        # named. Without `planned_by` the sentence would have nobody to
+        # attribute it to and would fall back to asserting it.
+        cap = r.get("capacity") or {}
+        if cap.get("superseded") and not cap.get("planned_by"):
+            e.add(w, "capacity is superseded and names no `planned_by` — a former plan "
+                     "is somebody's former plan, and the sentence has to say whose")
+        if cap.get("planned_by") and not cap.get("superseded"):
+            e.add(w, "capacity names a `planned_by` and is not marked superseded — "
+                     "attribution is for a figure the project has outlived; a current "
+                     "capacity is the project's own")
+
         _vocab(e, w, r, "role", sm.PROJECT_ROLES)
         if r.get("shared") is not None and r.get("shared") is not True:
             e.add(w, "shared is only ever true — a project that is not shared omits it")

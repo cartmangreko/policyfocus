@@ -385,12 +385,30 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
         raised = any(h["status"] in ("construction", "operating") for h in history)
         stopped = last["status"] in sm.STOPPED_STATUSES
         verb = "was to be built for" if stopped and not raised else "is built for"
-        facts.append(_fact(
-            "capacity",
-            f"It {verb} {cap['value']:,} {cap['unit']}.",
-            (param or {}).get("date_of_value") or as_of,
-            [f"{cap['value']:,}"], sourced=(cap["unit"],),
-        ))
+
+        # A SUPERSEDED FIGURE IS SOMEBODY'S FORMER PLAN AND IS SAID AS ONE.
+        # Heide is the case: Northvolt's 15 GWh, Northvolt insolvent, and the
+        # party in exclusive talks to take the site on has published no figure.
+        # Rendering that as "It is built for 15 GWh" would put a live number on
+        # a dead plan, and rendering it as "was to be built for" would still be
+        # this register asserting it. The attribution is the sentence's subject:
+        # who planned it, and that they no longer are.
+        if cap.get("superseded"):
+            facts.append(_fact(
+                "capacity",
+                f"It was planned for {cap['value']:,} {cap['unit']} by "
+                f"{cap['planned_by']}.",
+                (param or {}).get("date_of_value") or as_of,
+                [f"{cap['value']:,}"], sourced=(cap["unit"], cap["planned_by"]),
+            ))
+            cap = {}
+        if cap:
+            facts.append(_fact(
+                "capacity",
+                f"It {verb} {cap['value']:,} {cap['unit']}.",
+                (param or {}).get("date_of_value") or as_of,
+                [f"{cap['value']:,}"], sourced=(cap["unit"],),
+            ))
 
     total, latest = 0.0, None
     for f in funding:

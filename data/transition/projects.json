@@ -1938,15 +1938,35 @@
       ],
       "capacity": {
         "value": 15,
-        "unit": "GWh per year"
+        "unit": "GWh per year",
+        "planned_by": "Northvolt",
+        "superseded": true
       },
       "status": "paused",
       "status_history": [
         {
+          "status": "construction",
+          "date": "2024-03-25",
+          "source_url": "https://northvolt.com/articles/start-of-construction-at-northvolt-drei/",
+          "note": "Northvolt's own release: 'the start of construction of battery gigafactory Northvolt Drei in Heide' — the Chancellor, the Vice-Chancellor and the Minister-President of Schleswig-Holstein starting piling machinery on the site outside Heide, in Dithmarschen. GROUND WORKS AND NO BUILDING: what followed was piling, earthworks and utilities, and the factory itself was never raised. The Lyten memorandum of 2026 describes the site as having 'groundwork and utilities in place', which is the same fact from the other end."
+        },
+        {
+          "status": "paused",
+          "date": "2024-11-21",
+          "source_url": "https://northvolt.com/articles/chapter11/",
+          "note": "Northvolt AB and subsidiaries filed for Chapter 11 reorganisation in the United States, with about $245 million of new financing and a stated intention that operations continue. Heide stopped: the German project company was left to the restructuring, and no work has been recorded on the site since. The Swedish bankruptcy followed on 12 March 2025 and is on the Northvolt Ett row."
+        },
+        {
+          "status": "paused",
+          "date": "2026-04-10",
+          "source_url": "https://bimschg.bob-sh.de/verfahren/bfb5e3a5-e941-4a83-bdc3-ef8f1ca22e57/public/detail",
+          "note": "A FIRST PARTIAL PERMIT UNDER THE BImSchG, and the status does not move: a permit is permission to build, not building. The Landesamt für Umwelt is the licensing authority and its procedure G10/2023/091 — 'Neubau einer Anlage zur Herstellung von Lithium-Ionen-Akkumulatoren (Batteriezellenfertigungsanlage Northvolt DREI)' — names the applicant as Northvolt Drei Project GmbH and the site as Blauer Lappen 2, Lohe-Rickelshof, Gemarkung Rickelshof, Flur 1, with its parcels listed; the portal shows public participation running 20 April to 4 June 2026. THE GRANT ITSELF IS REPORTED AND NOT PUBLISHED WHERE THIS PIPELINE CAN READ IT: trade press dated the first partial permit 10 April 2026, alongside a €153 million repayment on the convertible bond to the federal and state governments, and the LfU's own press index carries no release for it. The date is the reported one and the source is the authority's file on the procedure."
+        },
+        {
           "status": "paused",
           "date": "2026-07-01",
           "source_url": "https://lyten.com/2026/07/01/lyten-signs-exclusive-mou-to-progress-acquisition-of-northvolt-drei-assets-in-germany/",
-          "note": "Lyten signed an exclusive memorandum of understanding with KfW, Northvolt Drei Project GmbH and its shareholder LG Batterie GmbH to progress an acquisition of the assets. The 110-hectare site has groundwork and utilities in place, with 15 GWh under construction and plans to scale beyond 30 GWh. A memorandum is not a completed sale, so the owner is unchanged here and no ownership event is recorded."
+          "note": "Lyten signed an exclusive memorandum of understanding with KfW, Northvolt Drei Project GmbH and its shareholder LG Batterie GmbH to progress an acquisition of the assets. The 110-hectare site has groundwork and utilities in place, with 15 GWh under construction and plans to scale beyond 30 GWh. A memorandum is not a completed sale, so the owner is unchanged here and no ownership event is recorded. The state's own release of the same week says the same thing from the other side: the parties will sign an exclusive letter of intent, it is 'rechtlich noch unverbindlich', and binding contracts are to be drafted and signed at a later 'closing'. REPORTED AND NOT RECORDED AS A FACT: Lyten's chief executive is said to have told the state government in March 2026 that construction would start in 2027 and production in 2028. No state or company page carrying that timetable could be read here — the ministry's and the Staatskanzlei's own releases do not state it, the trade reports of it are behind a consent wall or a 403 — so it is named as reported and no date on this row rests on it."
         }
       ],
       "sources": [
@@ -1955,8 +1975,47 @@
           "title": "Lyten Signs Exclusive MOU to Progress Acquisition of Northvolt Drei Assets in Germany",
           "publisher": "Lyten",
           "date": "2026-07-01"
+        },
+        {
+          "url": "https://northvolt.com/articles/start-of-construction-at-northvolt-drei/",
+          "title": "German Chancellor and Vice Chancellor celebrate the start of construction at Northvolt Drei",
+          "publisher": "Northvolt",
+          "date": "2024-03-25",
+          "retrieved_date": "2026-09-06"
+        },
+        {
+          "url": "https://northvolt.com/articles/chapter11/",
+          "title": "Northvolt files for Chapter 11 reorganization",
+          "publisher": "Northvolt",
+          "date": "2024-11-21",
+          "retrieved_date": "2026-09-06"
+        },
+        {
+          "url": "https://bimschg.bob-sh.de/verfahren/bfb5e3a5-e941-4a83-bdc3-ef8f1ca22e57/public/detail",
+          "title": "G10/2023/091 — Batteriezellenfertigungsanlage Northvolt DREI, Lohe-Rickelshof und Norderwöhrden",
+          "publisher": "BOB-SH — Landesamt für Umwelt Schleswig-Holstein",
+          "date": "2026-04-20",
+          "retrieved_date": "2026-09-06",
+          "note": "The licensing authority's own file on the procedure: applicant, site address, Gemarkung, Flur and parcels, and the public-participation window. Cited for the permit because the authority publishes the procedure and not, so far as this pipeline can see, a release announcing the partial grant."
+        },
+        {
+          "url": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/I/Presse/PI/2026/mp/260630_Lyten",
+          "title": "Land stellt Weiche zur Übernahme der Northvolt-Drei-Projektgesellschaft durch US-Investor",
+          "publisher": "Landesregierung Schleswig-Holstein",
+          "date": "2026-06-30",
+          "retrieved_date": "2026-09-06",
+          "note": "The state's account of the same memorandum Lyten announced: not yet binding, with a closing to follow, and the purchase price flowing to the federal government and the state through KfW."
+        },
+        {
+          "url": "https://ecomento.de/2026/04/13/northvolt-drei-bekommt-teilgenehmigung-fuer-bau-in-heide-millionen-rueckzahlung/",
+          "title": "Northvolt Drei bekommt Teilgenehmigung für Bau in Heide, Millionen-Rückzahlung",
+          "publisher": "ecomento.de",
+          "date": "2026-04-13",
+          "retrieved_date": "2026-09-06",
+          "note": "PRESS, and press relaying press: it reports electrive's story of 10 April 2026. Carried because it is the readable record of the date the partial permit was granted, and named as what it is."
         }
-      ]
+      ],
+      "capacity_note": "NORTHVOLT'S FIGURE, AND NORTHVOLT IS GONE. 15 GWh per year is the first stage Northvolt was building towards on this site, and it is recorded as the former plan rather than as the project's capacity: the company that stated it is insolvent, and the party in exclusive talks to take the assets on has published no figure of its own. The sentence on the page therefore says who planned it, in the past tense, and will keep saying so until a new owner states a number."
     },
     {
       "id": "morrow-arendal",
