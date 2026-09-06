@@ -107,6 +107,30 @@
       "needed_for": "CORROBORATION ONLY — the row is landed and its coordinate is settled by the installation-details report already filed. These would confirm the position independently and may explain the Giga 1 / Plant 2 naming. Nothing waits on them.",
       "drop_as": "sources/manual/envision-aesc-sunderland--plant-3-planning-statement.pdf",
       "priority": "lowest"
+    },
+    {
+      "candidate": "eve-power-debrecen",
+      "url": "https://kormanyhivatalok.hu/kormanyhivatalok/hajdu-bihar/hirdetmenyek",
+      "why": "the county office's notice board is a JavaScript shell to the fetcher; the decision itself is not at a stable URL the fetcher can reach",
+      "needed_for": "PLACES AN ACTIVE ROW. The Hajdu-Bihar Varmegyei Kormanyhivatal's combined KHV/IPPC decision, which names the works parcel. The applicant's own documentation for that procedure IS readable, but on an NGO host (miakoegyesulet.hu) rather than the authority's or the company's site: it gives parcel Debrecen hrsz 0237/405 and central EOV coordinates Y 835619 / X 251450. Whether an NGO-hosted copy of the company's own submission may place a works position is George's ruling, not mine.",
+      "drop_as": "sources/manual/eve-power-debrecen--kormanyhivatal-khv-ippc-decision.pdf",
+      "priority": "normal"
+    },
+    {
+      "candidate": "elevenes-subotica",
+      "url": "https://www.ekologija.gov.rs/obavestenja/procena-uticaja-na-zivotnu-sredinu",
+      "why": "the Serbian EIA register is a JavaScript shell to the fetcher, and ElevenEs's own newsroom now carries a single item (July 2026) with no line-opening release behind it",
+      "needed_for": "PLACES AN ACTIVE ROW. Either the EIA decision for the Subotica cell line or an ElevenEs release naming the works address. The only address the company publishes is Tolminska 35, Subotica, which is its contact address and refused as a works position under the office-address rule.",
+      "drop_as": "sources/manual/elevenes-subotica--eia-decision.pdf",
+      "priority": "normal"
+    },
+    {
+      "candidate": "leclanche-willstatt",
+      "url": "https://www.uvp-verbund.de/freitextsuche?q=Leclanch%C3%A9",
+      "why": "NOT A FETCH FAILURE. The national UVP portal answers, and answers nothing: 0 results for Leclanche, and the 2 results for Willstatt are groundwater abstractions unrelated to the site. There is no federal-portal environmental procedure to retrieve.",
+      "needed_for": "Would place the row only if a BImSchG procedure exists outside the portal's index. The row also still lacks Leclanche's own statement of the 2 GWh expansion, which George ruled a precondition of admission, so the permit alone would not admit it.",
+      "drop_as": "sources/manual/leclanche-willstatt--bimschg-notice.pdf",
+      "priority": "lowest"
     }
   ]
 }

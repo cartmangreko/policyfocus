@@ -420,6 +420,30 @@ same deltaE floor. Ratifying is a real outcome and should be recorded as one:
 the entry exists so that the answer is written down, not so that the values
 change.
 
+## Plain sets for cement and steel
+
+**Content, not code, and it is the next content item after the batteries merge.**
+Touches `data/prose.json` only — `sector_plain.sectors.cement` and
+`sector_plain.sectors.steel` — and nothing else: the block, the reader and the
+rendering all exist and are live on the batteries page.
+
+Batteries has five: how money is counted here, why there is no carbon-cost
+figure, where demand comes from, what counts as a plant here, and what is drawn
+and what is not. **Cement and steel have none**, and their pages have been
+answering none of those questions since they were built.
+
+Four of the five have direct counterparts and are a writing job rather than a
+research one. The fifth inverts: batteries has no carbon-cost figure and says
+why, while cement and steel HAVE one, and their block would have to say what
+that figure is and what it is not — the withdrawn free allocation priced at
+today's carbon price, not the plant's whole carbon bill, which is the
+distinction the ranking's caveats already make and the page does not.
+
+**Batteries merges with its set alone.** Absent renders nothing, and a sector
+whose page cannot yet explain how it counts is not made better by borrowing
+another sector's words — "cell plants do not pay for their emissions under the
+EU carbon market" is true on one page and false on the next.
+
 ## A research-funding layer, beside the capital one
 
 **Its own stack, small.** Touches `data/transition/funding.json` (a second row

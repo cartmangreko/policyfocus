@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "id": "batsol-ownership-of-cell-plants",
+  "template": "counts",
+  "status": "DRAFT — NOT PUBLISHED. Not in data/findings/, not built, not rendered.",
+  "headline": "Of 31 European cell projects on file, 11 are operated by companies based in the EU, and 7 of those 11 are stopped.",
+  "body": "31 cell projects are on file for European batteries. Classified by the home of the company named as the operator on each row: 11 EU, 10 China, 4 South Korea, 3 United States, 2 joint ventures between a Chinese and a European company, 1 India. Counting each row as active (operating, under construction, funded or announced) or stopped (paused or cancelled): of the 11 EU-operated projects, 4 are active and 7 are stopped; of the 10 Chinese-operated, 7 active and 3 stopped; of the 4 Korean-operated, 4 active and none stopped; of the 3 US-operated, 1 active and 2 stopped.",
+  "numerator_denominator": {
+    "EU operated, stopped": "7 of 11",
+    "EU operated, active": "4 of 11",
+    "China operated, active": "7 of 10",
+    "Korea operated, active": "4 of 4",
+    "US operated, stopped": "2 of 3",
+    "all rows": "31"
+  },
+  "date": "2026-09-06",
+  "sectors": [
+    "batsol"
+  ],
+  "files": [],
+  "basis_status": "data",
+  "method": {
+    "population": "Every project row in data/transition/projects.json with sector batsol, on 6 September 2026.",
+    "classification": "The class is the home of the COMPANY NAMED AS THE OPERATOR on the row, taken from that row's own sources. It is not the home of the ultimate parent, and one row turns on the difference: NOVO Energy is a Swedish company wholly owned by Volvo Cars, which is itself majority-owned by Geely of China. Counted as EU here because the operator is the company on the row; a count keyed on ultimate ownership would move it, and this finding does not make that choice for the reader.",
+    "states": "Active is operating, construction, funded or announced. Stopped is paused or cancelled. Both are the register's own status vocabulary and neither is a judgement made here.",
+    "excluded": "Nothing. All 31 rows are classified; no row is unclassified.",
+    "assignments": {
+      "CN": [
+        "AESC Douai (AESC, operating)",
+        "AESC Navalmoral de la Mata (AESC, construction)",
+        "AESC Sunderland (AESC, operating)",
+        "CALB Sines (CALB, construction)",
+        "CATL Arnstadt (Contemporary Amperex Technology Thuringia, operating)",
+        "CATL Debrecen (Contemporary Amperex Technology, construction)",
+        "Farasis Bitterfeld-Wolfen (Farasis Energy, paused)",
+        "SVOLT Lauchhammer (SVOLT, cancelled)",
+        "SVOLT Überherrn (SVOLT, cancelled)",
+        "Sunwoda Nyíregyháza (Sunwoda, construction)"
+      ],
+      "CN/EU JV": [
+        "CATL and Stellantis Zaragoza (Automotive Cells Zaragoza (CATL and Stellantis joint venture), announced)",
+        "Gotion InoBat Batteries Šurany (Gotion InoBat Batteries, announced)"
+      ],
+      "EU": [
+        "ACC Billy-Berclau Douvrin (Automotive Cells Company, operating)",
+        "ACC Kaiserslautern (Automotive Cells Company, cancelled)",
+        "ACC Termoli (Automotive Cells Company, cancelled)",
+        "Britishvolt Blyth (Britishvolt, cancelled)",
+        "Italvolt Scarmagno (Italvolt, cancelled)",
+        "Morrow Cell Factory (Morrow Batteries, cancelled)",
+        "NOVO Energy Gothenburg (NOVO Energy, paused)",
+        "Northvolt Drei (Northvolt Drei Project GmbH, paused)",
+        "PowerCo Salzgitter (PowerCo, operating)",
+        "PowerCo Valencia (PowerCo, construction)",
+        "Verkor Gigafactory Bourbourg (Verkor, operating)"
+      ],
+      "IN": [
+        "Agratas Bridgwater (Agratas, construction)"
+      ],
+      "KR": [
+        "LG Energy Solution Wrocław (LG Energy Solution, operating)",
+        "SK On Iváncsa (SK On, construction)",
+        "SK On Komárom (SK On, operating)",
+        "Samsung SDI Göd (Samsung SDI, operating)"
+      ],
+      "US": [
+        "Northvolt Ett (Lyten, paused)",
+        "T1 Energy Giga Arctic (T1 Energy, cancelled)",
+        "Tesla Giga Berlin cell manufacturing (Tesla, construction)"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "url": "https://github.com/cartmangreko/policyfocus/blob/batteries-dataset/data/transition/projects.json",
+      "title": "data/transition/projects.json — the 31 batsol rows and their status histories",
+      "publisher": "Eufabric",
+      "date": "2026-09-06",
+      "note": "Every row cites its own company and state sources; this finding adds no source of its own and states no cause. It counts what is on file."
+    }
+  ],
+  "not_claimed": "No cause is asserted. The finding does not say that EU-operated projects stopped BECAUSE they were EU-operated, and the register holds nothing that would support such a claim: capital structure, offtake contracts and cell prices are not on this platform. It also says nothing about capacity — these are counts of projects, and the projects differ in size by two orders of magnitude."
+}

@@ -1089,7 +1089,7 @@
   "attrs": {
    "instrument": "grant",
    "programme": "EU Innovation Fund",
-   "status": "approved",
+   "status": "signed",
    "date": "2025-07-04",
    "country": "PL"
   }
@@ -1101,7 +1101,7 @@
   "attrs": {
    "instrument": "grant",
    "programme": "EU Innovation Fund",
-   "status": "approved",
+   "status": "signed",
    "date": "2025-07-04",
    "country": "FR"
   }
@@ -1113,7 +1113,7 @@
   "attrs": {
    "instrument": "grant",
    "programme": "EU Innovation Fund",
-   "status": "approved",
+   "status": "signed",
    "date": "2025-07-04",
    "country": "FR"
   }
@@ -1185,7 +1185,7 @@
   "attrs": {
    "instrument": "grant",
    "programme": "EU Innovation Fund",
-   "status": "approved",
+   "status": "signed",
    "date": "2025-07-04",
    "country": "SE"
   }
@@ -7910,6 +7910,39 @@
   }
  },
  {
+  "id": "parameter:46ineu-grant",
+  "kind": "parameter",
+  "label": "Innovation Fund grant — 46inEU",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2025-12-01"
+  }
+ },
+ {
+  "id": "parameter:accept-grant",
+  "kind": "parameter",
+  "label": "Innovation Fund grant — ACCEPT",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2025-05-01"
+  }
+ },
+ {
+  "id": "parameter:agathe-grant",
+  "kind": "parameter",
+  "label": "Innovation Fund grant — AGATHE",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2025-05-01"
+  }
+ },
+ {
   "id": "parameter:am-germany-subsidy-declined",
   "kind": "parameter",
   "label": "ArcelorMittal Bremen and Eisenhüttenstadt — German subsidies declined",
@@ -8259,6 +8292,17 @@
    "scope": "plant:heide",
    "confidence": "primary",
    "date_of_value": "2024-01-08"
+  }
+ },
+ {
+  "id": "parameter:novo-one-grant",
+  "kind": "parameter",
+  "label": "Innovation Fund grant — NOVO One",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2025-12-01"
   }
  },
  {
