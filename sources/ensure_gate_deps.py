@@ -35,6 +35,14 @@ REQUIREMENTS = HERE / "requirements-gates.txt"
 NEEDED = {"pyproj": "EPSG:23700 for sources/eov.py"}
 
 
+def _pip(*extra: str) -> subprocess.CompletedProcess:
+    """One pip invocation, with whatever extra flags the caller has earned."""
+    return subprocess.run(
+        [sys.executable, "-m", "pip", "install", "--disable-pip-version-check",
+         *extra, "-r", str(REQUIREMENTS)],
+        capture_output=True, text=True)
+
+
 def missing() -> list:
     out = []
     for module in NEEDED:
@@ -61,11 +69,21 @@ def main() -> int:
         return 1
 
     print(f"ensure_gate_deps: installing {', '.join(gone)} "
-          f"({'; '.join(NEEDED[m] for m in gone)}) from {REQUIREMENTS.name}")
-    proc = subprocess.run(
-        [sys.executable, "-m", "pip", "install", "--disable-pip-version-check",
-         "-r", str(REQUIREMENTS)],
-        capture_output=True, text=True)
+          f"({'; '.join(NEEDED[m] for m in gone)}) from {REQUIREMENTS.name}",
+          flush=True)
+    proc = _pip()
+    # PEP 668. A build image's interpreter is usually marked externally managed,
+    # which is a sensible default for a machine somebody lives on and the wrong
+    # one for a container that exists for four minutes. The retry is narrow on
+    # purpose: only this error, only after the ordinary install has been tried,
+    # and it says out loud that it happened. It is never reached on a laptop,
+    # where the first attempt succeeds.
+    if proc.returncode != 0 and "externally-managed-environment" in (
+            proc.stderr + proc.stdout):
+        print("ensure_gate_deps: the interpreter is externally managed (PEP 668); "
+              "retrying with --break-system-packages, which is what a build image "
+              "is for", flush=True)
+        proc = _pip("--break-system-packages")
     if proc.returncode != 0:
         print(proc.stdout, file=sys.stderr)
         print(proc.stderr, file=sys.stderr)
