@@ -1487,7 +1487,7 @@
       "technology": [
         "cell-manufacturing"
       ],
-      "status": "paused",
+      "status": "cancelled",
       "status_history": [
         {
           "status": "paused",
@@ -1496,10 +1496,10 @@
           "note": "Work on Termoli and Kaiserslautern put on hold from May 2024 while ACC weighed a move to lithium iron phosphate."
         },
         {
-          "status": "paused",
+          "status": "cancelled",
           "date": "2026-02-09",
           "source_url": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
-          "note": "Status unchanged, and the sources disagree about what happened. The Italian union UILM said on 7 February 2026 that the project was 'definitively shelved'. ACC's own words are that the conditions for restarting the projects 'are unlikely to be met', and that it has begun a 'constructive dialogue' with unions about potential discontinuation. Under the standing press ruling the status follows the project's own sources, which describe a condition and a talks process rather than a decision, so it stays paused."
+          "note": "Status unchanged, and the sources disagree about what happened. The Italian union UILM said on 7 February 2026 that the project was 'definitively shelved'. ACC's own words are that the conditions for restarting the projects 'are unlikely to be met', and that it has begun a 'constructive dialogue' with unions about potential discontinuation. Under the standing press ruling the status follows the project's own sources, which describe a condition and a talks process rather than a decision, so it stays paused. ——— CORRECTED 6 SEPTEMBER 2026, and the paragraph above is left standing as what this register said at the time. The reading was wrong: ACC's statement of 7 February 2026 is the same sentence that cancels Kaiserslautern, and one statement cannot cancel one project and pause another. The event keeps the date it reached this register; the statement it rests on is of 7 February, which is the date the Kaiserslautern row carries."
         }
       ],
       "sources": [
@@ -1514,6 +1514,14 @@
           "title": "ACC permanently abandons battery projects in Germany and Italy",
           "publisher": "electrive",
           "date": "2026-02-09"
+        },
+        {
+          "url": "https://www.cnbc.com/2026/02/07/stellantis-backed-acc-drops-plans-for-italian-german-factories-union.html",
+          "title": "Stellantis-backed ACC drops plans for Italian, German gigafactories, union says",
+          "publisher": "CNBC",
+          "date": "2026-02-07",
+          "retrieved_date": "2026-09-06",
+          "note": "Carries ACC's own statement in quotation. The same source stands behind the Kaiserslautern row, which is the point: one statement, two projects, one reading."
         }
       ]
     },
@@ -3202,6 +3210,65 @@
           "publisher": "Elektronik (WEKA Fachmedien)",
           "date": "2022-05-24",
           "retrieved_date": "2026-09-06"
+        }
+      ]
+    },
+    {
+      "id": "britishvolt-blyth",
+      "name": "Britishvolt Blyth",
+      "company": "Britishvolt",
+      "plant": "Cambois, Blyth",
+      "country": "GB",
+      "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. The company went into administration in January 2023 and is now in liquidation; nothing was built on the Cambois site and what stands there now is somebody else's project. THE POSITION IS KNOWN TO BE FINDABLE AND IS NOT BEING FOUND: Northumberland's permit 21/00818/FULES names the parcel — 'Land At Former Power Station Site On Northern Side Of Cambois', 92.2 hectares — and the committee report that carries it refuses this pipeline. A person could open it in a minute. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked.",
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 35,
+        "unit": "GWh per year"
+      },
+      "capacity_note": "The company's own figure for the completed plant, from the announcement of 10 December 2020. No phase of it was built.",
+      "status": "cancelled",
+      "status_history": [
+        {
+          "status": "announced",
+          "date": "2020-12-10",
+          "source_url": "https://www.prnewswire.com/news-releases/britishvolt-selects-north-east-site-to-build-britains-first-battery-gigafactory-301190809.html",
+          "note": "Britishvolt's own announcement: the north-east site at Cambois, near Blyth, for what it called Britain's first battery gigafactory. Capacity 35 GWh at completion."
+        },
+        {
+          "status": "cancelled",
+          "date": "2023-01-17",
+          "source_url": "https://www.thegazette.co.uk/notice/4260297",
+          "note": "ADMINISTRATORS APPOINTED, from the official record rather than from reporting. The London Gazette's notice 4260297 of 19 January 2023, category Corporate Insolvency, type Appointment of Administrators: POWER BY BRITISHVOLT LIMITED (company number 12381543), 'Date of Appointment: 17 January 2023', administrators Joanne Honor Robinson and Alan Michael Hudson of Ernst & Young LLP and Daniel Christopher Hurd. Companies House carries the same case — administration started 17 January 2023, ended 28 October 2024 — and the company's status is now Liquidation, a creditors' voluntary liquidation whose winding up commenced on 28 October 2024. The status date is the appointment and not the publication: the company stopped on the 17th and the Gazette said so on the 19th."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.prnewswire.com/news-releases/britishvolt-selects-north-east-site-to-build-britains-first-battery-gigafactory-301190809.html",
+          "title": "Britishvolt selects North East site to build Britain's first battery gigafactory",
+          "publisher": "Britishvolt (PR Newswire)",
+          "date": "2020-12-10",
+          "retrieved_date": "2026-09-06",
+          "note": "The company source for the site and the capacity."
+        },
+        {
+          "url": "https://www.thegazette.co.uk/notice/4260297",
+          "title": "POWER BY BRITISHVOLT LIMITED — Appointment of Administrators, notice 4260297",
+          "publisher": "The Gazette (The London Gazette)",
+          "date": "2023-01-19",
+          "retrieved_date": "2026-09-06",
+          "note": "The statutory notice. It gives the appointment date, the court number CR-2023-00236 and the administrators by name and IP number — which is what makes this a record rather than a report of one."
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/12381543/insolvency",
+          "title": "Insolvency — POWER BY BRITISHVOLT LIMITED (12381543)",
+          "publisher": "Companies House",
+          "date": "2026-09-06",
+          "retrieved_date": "2026-09-06",
+          "note": "The register's own view of the same events: administration 17 January 2023 to 28 October 2024, then a creditors' voluntary liquidation. Cited for the ending as well as the beginning, because a row that says a company failed should be able to say what happened next."
         }
       ]
     }

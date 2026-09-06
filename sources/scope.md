@@ -506,6 +506,31 @@ source with its verbatim, and a `note` saying the company's own wording is
 weaker — so the reader sees the join rather than a flat assertion. And the
 site's `confidence` stays `secondary`, which is what it is.
 
+### A draw hold gates publication
+
+**A hold withholds a page from the index. It does not stop the page being
+built.** A held sector renders its product template like any other, is
+type-checked, crawled by the anchor gate and drawn into every frame the build
+writes; what the hold does is keep the URL out of `sitemap.xml` and put
+`noindex` in its head until somebody lifts it.
+
+**The case this is written from.** The batteries hold made `hasMap` return
+false, so the route rendered the register directory instead of the product page
+and the held page **was never built at all** — for two weeks. The first render
+after the hold came off failed immediately, on a technology with no `dependency`
+key against a TypeScript type that said the array was required. The bug was as
+old as the hold, and nothing could have found it: **a gate that stops a page
+being drawn also stops it being tested.**
+
+A hold is a judgement that the data is not yet honest enough to publish. That is
+a statement about readers, not about the build, and it has no business
+suppressing the one mechanism that would tell you whether the page works.
+
+`web/lib/transition.ts` `hasMap` therefore asks only whether the data exists;
+`web/lib/siteRoutes.ts` `sectorIsIndexable` is where the hold is read, and it is
+read by the page's own robots tag and by the sitemap together, so the two cannot
+disagree.
+
 ### A stopped row does not enter the location queue
 
 **Location is sought for active rows.** A project whose status is `cancelled` or

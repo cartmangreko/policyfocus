@@ -371,13 +371,20 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
         # sector's defining fact -- but the verb has to say which of the two it
         # is.
         #
-        # THE TEST IS WHETHER GROUND WAS EVER BROKEN, not the status now. Morrow
-        # reached operating and then went under: its lines existed, and "was to
-        # be built for" would be denying a factory that ran. Italvolt went from
-        # announced to cancelled and never turned a sod.
-        raised = any(h["status"] in ("construction", "operating")
-                     for h in history)
-        verb = "is built for" if raised else "was to be built for"
+        # TWO TESTS, AND BOTH HAVE TO FAIL BEFORE THE TENSE MOVES. The row has
+        # to be STOPPED, and it has to have never broken ground.
+        #
+        # Stopped alone is not enough: Morrow reached operating and then went
+        # under, and "was to be built for" would be denying a factory that ran.
+        # Never-raised alone is not enough either, and that error was live for a
+        # few minutes here — it put six announced and funded projects into the
+        # past tense, so ANRAV, GeZero, IFESTOS, Zaragoza, Šurány and Heide all
+        # read as dead. An announced project is not built yet and that is the
+        # ordinary case, not a failure. What the past tense is for is the works
+        # that stopped before anything stood on the ground.
+        raised = any(h["status"] in ("construction", "operating") for h in history)
+        stopped = last["status"] in sm.STOPPED_STATUSES
+        verb = "was to be built for" if stopped and not raised else "is built for"
         facts.append(_fact(
             "capacity",
             f"It {verb} {cap['value']:,} {cap['unit']}.",

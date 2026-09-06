@@ -28986,6 +28986,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:britishvolt-blyth",
+  "to": "technology:cell-manufacturing",
+  "since": "2020-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=britishvolt-blyth].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:calb-sines",
   "to": "technology:cell-manufacturing",
   "since": "2025-02-24",
@@ -32059,6 +32069,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=brevik-ccs].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:britishvolt-blyth",
+  "to": "country:GB",
+  "since": "2020-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=britishvolt-blyth].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:britishvolt-blyth",
+  "to": "sector:batsol",
+  "since": "2020-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=britishvolt-blyth].sector"
   },
   "basis": "sector"
  },

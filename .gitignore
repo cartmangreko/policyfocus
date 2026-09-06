@@ -43,6 +43,7 @@ build/
 docs/design/canvas/*.html
 !docs/design/canvas/*.dc.html
 
-# Analysis artefacts. sources/export_status_history.py writes here, and nothing
-# on the site reads what it writes.
+# Analysis artefacts and exploratory one-off outputs — sources/hidden_share.py,
+# sources/export_status_history.py and friends. Nothing on the site reads what
+# they write, which is why none of it is tracked.
 scratch/

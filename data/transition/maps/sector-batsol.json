@@ -428,67 +428,6 @@
       }
     },
     {
-      "id": "acc-termoli",
-      "site": "Termoli works",
-      "country": "IT",
-      "role": "plant",
-      "relation": "sector",
-      "status": "paused",
-      "label": "ACC Termoli",
-      "name_line": "ACC Termoli",
-      "sub": "Automotive Cells Company",
-      "href": "/projects/acc-termoli",
-      "lat": 41.9553,
-      "lon": 15.0031,
-      "as_of": "2026-09-01",
-      "x": 457.7,
-      "y": 619.1,
-      "labels": {
-        "wide": {
-          "x": 471.6,
-          "anchor": "start",
-          "lines": [
-            {
-              "text": "ACC Termoli",
-              "role": "name",
-              "size": 11.0,
-              "y": 615.4
-            },
-            {
-              "text": "Automotive Cells Company",
-              "role": "company",
-              "size": 9.5,
-              "y": 627.4
-            }
-          ]
-        },
-        "narrow": {
-          "x": 477.1,
-          "anchor": "start",
-          "lines": [
-            {
-              "text": "ACC Termoli",
-              "role": "name",
-              "size": 21.0,
-              "y": 601.2
-            },
-            {
-              "text": "Automotive Cells",
-              "role": "company",
-              "size": 18.1,
-              "y": 624.1
-            },
-            {
-              "text": "Company",
-              "role": "company",
-              "size": 18.1,
-              "y": 645.8
-            }
-          ]
-        }
-      }
-    },
-    {
       "id": "agratas-bridgwater",
       "site": "Gravity, Puriton",
       "country": "GB",
@@ -713,33 +652,33 @@
           ]
         },
         "narrow": {
-          "x": 541.8,
-          "anchor": "middle",
+          "x": 509.7,
+          "anchor": "end",
           "lines": [
             {
               "text": "CATL Debrecen",
               "role": "name",
               "size": 21.0,
-              "y": 677.5
+              "y": 543.0
             },
             {
               "text": "Contemporary Amperex",
               "role": "company",
               "size": 18.1,
-              "y": 700.4
+              "y": 565.9
             },
             {
               "text": "Technology",
               "role": "company",
               "size": 18.1,
-              "y": 722.0
+              "y": 587.5
             }
           ],
           "leader": [
-            541.8,
-            500.3,
-            541.8,
-            661.1
+            537.7,
+            498.6,
+            509.7,
+            526.6
           ]
         }
       }
@@ -786,23 +725,40 @@
           ]
         },
         "narrow": {
-          "x": 225.8,
+          "x": 238.5,
           "anchor": "start",
           "lines": [
             {
               "text": "CATL and Stellantis",
               "role": "name",
               "size": 21.0,
-              "y": 604.0
+              "y": 661.3
             },
             {
               "text": "Zaragoza",
               "role": "name",
               "size": 21.0,
-              "y": 629.2
+              "y": 686.5
+            },
+            {
+              "text": "Automotive Cells",
+              "role": "company",
+              "size": 18.1,
+              "y": 709.4
+            },
+            {
+              "text": "Zaragoza (CATL and Stellantis joint venture)",
+              "role": "company",
+              "size": 18.1,
+              "y": 731.0
             }
           ],
-          "shortened": true
+          "leader": [
+            210.5,
+            616.9,
+            238.5,
+            644.9
+          ]
         }
       }
     },
@@ -903,29 +859,24 @@
           ]
         },
         "narrow": {
-          "x": 215.6,
-          "anchor": "start",
+          "x": 131.9,
+          "anchor": "middle",
           "lines": [
             {
               "text": "AESC Navalmoral de",
               "role": "name",
               "size": 21.0,
-              "y": 738.4
+              "y": 584.9
             },
             {
               "text": "la Mata",
               "role": "name",
               "size": 21.0,
-              "y": 763.6
+              "y": 610.1
             }
           ],
-          "leader": [
-            136.0,
-            642.4,
-            215.6,
-            722.0
-          ],
-          "shortened": true
+          "shortened": true,
+          "crowded": true
         }
       }
     },
@@ -1034,6 +985,12 @@
               "role": "name",
               "size": 21.0,
               "y": 562.2
+            },
+            {
+              "text": "Gotion InoBat Batteries",
+              "role": "company",
+              "size": 18.1,
+              "y": 585.1
             }
           ],
           "leader": [
@@ -1041,8 +998,7 @@
             492.6,
             524.7,
             520.6
-          ],
-          "shortened": true
+          ]
         }
       }
     },
@@ -1271,28 +1227,24 @@
           ]
         },
         "narrow": {
-          "x": 298.0,
+          "x": 246.4,
           "anchor": "start",
           "lines": [
             {
               "text": "PowerCo Valencia",
               "role": "name",
               "size": 21.0,
-              "y": 544.3
-            },
-            {
-              "text": "PowerCo",
-              "role": "company",
-              "size": 18.1,
-              "y": 567.2
+              "y": 617.6
             }
           ],
           "leader": [
             218.4,
             654.4,
-            298.0,
-            574.8
-          ]
+            246.4,
+            626.4
+          ],
+          "shortened": true,
+          "crowded": true
         }
       }
     },
@@ -1588,27 +1540,27 @@
           ]
         },
         "narrow": {
-          "x": 458.4,
-          "anchor": "end",
+          "x": 542.1,
+          "anchor": "middle",
           "lines": [
             {
               "text": "Sunwoda",
               "role": "name",
               "size": 21.0,
-              "y": 367.7
+              "y": 618.0
             },
             {
               "text": "Nyíregyháza",
               "role": "name",
               "size": 21.0,
-              "y": 392.9
+              "y": 643.2
             }
           ],
           "leader": [
-            538.0,
-            481.3,
-            458.4,
-            401.7
+            542.1,
+            491.2,
+            542.1,
+            601.6
           ],
           "shortened": true,
           "crowded": true
@@ -1764,6 +1716,18 @@
               "y": 422.0
             }
           ]
+        },
+        "narrow": {
+          "x": 413.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Germany",
+              "role": "country",
+              "size": 17.2,
+              "y": 385.9
+            }
+          ]
         }
       }
     },
@@ -1784,14 +1748,14 @@
           ]
         },
         "narrow": {
-          "x": 163.6,
-          "anchor": "end",
+          "x": 184.4,
+          "anchor": "start",
           "lines": [
             {
               "text": "Spain",
               "role": "country",
               "size": 17.2,
-              "y": 622.6
+              "y": 641.6
             }
           ]
         }
@@ -1810,18 +1774,6 @@
               "role": "country",
               "size": 9.0,
               "y": 496.3
-            }
-          ]
-        },
-        "narrow": {
-          "x": 234.2,
-          "anchor": "end",
-          "lines": [
-            {
-              "text": "France",
-              "role": "country",
-              "size": 17.2,
-              "y": 571.8
             }
           ]
         }
@@ -1858,36 +1810,6 @@
       }
     },
     {
-      "iso": "IT",
-      "text": "Italy",
-      "labels": {
-        "wide": {
-          "x": 398.6,
-          "anchor": "start",
-          "lines": [
-            {
-              "text": "Italy",
-              "role": "country",
-              "size": 9.0,
-              "y": 572.3
-            }
-          ]
-        },
-        "narrow": {
-          "x": 365.8,
-          "anchor": "middle",
-          "lines": [
-            {
-              "text": "Italy",
-              "role": "country",
-              "size": 17.2,
-              "y": 672.7
-            }
-          ]
-        }
-      }
-    },
-    {
       "iso": "PL",
       "text": "Poland",
       "labels": {
@@ -1904,14 +1826,14 @@
           ]
         },
         "narrow": {
-          "x": 488.1,
-          "anchor": "end",
+          "x": 483.1,
+          "anchor": "middle",
           "lines": [
             {
               "text": "Poland",
               "role": "country",
               "size": 17.2,
-              "y": 462.6
+              "y": 357.5
             }
           ]
         }
@@ -1934,14 +1856,14 @@
           ]
         },
         "narrow": {
-          "x": 92.7,
-          "anchor": "end",
+          "x": 68.6,
+          "anchor": "middle",
           "lines": [
             {
               "text": "Portugal",
               "role": "country",
               "size": 17.2,
-              "y": 607.0
+              "y": 638.5
             }
           ]
         }
@@ -1999,7 +1921,7 @@
   "as_of": "2026-09-05",
   "coordinates": [
     {
-      "site": "22 sites",
+      "site": "21 sites",
       "south": 37.9871,
       "north": 64.734,
       "west": -8.7974,
@@ -2008,12 +1930,24 @@
     }
   ],
   "undrawn": {
-    "projects": 7,
-    "sites": 3,
+    "projects": 9,
+    "sites": 4,
     "rows": [
       {
         "id": "acc-kaiserslautern",
         "name": "ACC Kaiserslautern",
+        "status": "cancelled",
+        "sited": false
+      },
+      {
+        "id": "acc-termoli",
+        "name": "ACC Termoli",
+        "status": "cancelled",
+        "sited": true
+      },
+      {
+        "id": "britishvolt-blyth",
+        "name": "Britishvolt Blyth",
         "status": "cancelled",
         "sited": false
       },

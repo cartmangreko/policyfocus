@@ -1838,23 +1838,98 @@ about the picture rather than a silence in it.
 
 ---
 
+## 26. One statement, two projects; a liquidation from the register; and a hold that stopped hiding a bug
+
+Thirty rows on file of 34 candidates — **88%** — and four outstanding.
+
+### ACC Termoli, corrected rather than quietly changed
+
+The row held at `paused` on a reading made on 9 February 2026: ACC's words were
+*"unlikely to be met"* and a *"constructive dialogue"* about potential
+discontinuation, which was read as a condition and a talks process rather than a
+decision. **The same sentence cancelled Kaiserslautern**, and one statement
+cannot cancel one project and pause another.
+
+So the entry is corrected in place and **the earlier paragraph is left standing
+inside it**, with the correction dated and signed underneath. The event keeps the
+date it reached this register; the statement it rests on is of 7 February, which
+is the date the Kaiserslautern row carries, and both rows now cite the same
+source. A register that silently rewrites a reading it got wrong is a register
+whose readings cannot be trusted the next time.
+
+### Britishvolt, from the statutory record
+
+`britishvolt-blyth` lands as **cancelled**, and the ending is sourced from the
+official record rather than from reporting of it:
+
+- **The London Gazette**, notice 4260297 of 19 January 2023, Corporate
+  Insolvency / Appointment of Administrators: POWER BY BRITISHVOLT LIMITED
+  (12381543), *"Date of Appointment: 17 January 2023"*, administrators Joanne
+  Honor Robinson and Alan Michael Hudson of EY and Daniel Christopher Hurd,
+  court number CR-2023-00236.
+- **Companies House**, the same case from the register's side: administration 17
+  January 2023 to 28 October 2024, then a creditors' voluntary liquidation whose
+  winding up commenced on 28 October 2024. The company's status today is
+  Liquidation.
+
+The status date is the appointment, not the publication: the company stopped on
+the 17th and the Gazette said so on the 19th.
+
+**No location sought**, and the note says the unusual thing about this one:
+the position is known to be findable and is not being found. Northumberland's
+permit 21/00818/FULES names the parcel — *"Land At Former Power Station Site On
+Northern Side Of Cambois"*, 92.2 hectares — and the committee report carrying it
+refuses this pipeline. A person could open it in a minute. On a project that
+will not be built, that minute buys a dot.
+
+### A draw hold gates publication, and nothing else
+
+Written into `sources/scope.md`, and the mechanism moved with it. `hasMap` now
+asks only whether the data exists; `sectorIsIndexable` is where the hold is read,
+by the page's own robots tag and by the sitemap together.
+
+**What the old arrangement cost.** The hold made `hasMap` false, so the route
+rendered the register directory instead of the product template and the held page
+was never built — for two weeks. It was never type-checked against its own data,
+never crawled by the anchor gate, never in a build at all, and the first render
+after the hold came off failed on `t.dependency.length` over a technology with no
+`dependency` key. The bug was exactly as old as the hold. **A gate that stops a
+page being drawn also stops it being tested**, and a hold is a judgement about
+readers, not a reason to suspend the work.
+
+### The tense change, and the error inside the fix
+
+The capacity sentence moved to the past tense on projects that were never built.
+The first cut of the rule keyed on *whether ground was ever broken* — and that
+put **six live projects into the past tense**: ANRAV Devnya, GeZero Geseke,
+IFESTOS Kamari, CATL Stellantis Zaragoza, GIB Šurány and Northvolt Drei at Heide
+all read as dead, because an announced project has not broken ground and that is
+the ordinary case rather than a failure.
+
+The rule now needs both: **stopped, and never raised.** Three sentences move, and
+they are listed in full for George's read. Morrow keeps the present tense because
+its lines ran before the company went under, and the `where` sentence turned out
+to move nothing at all on the existing rows — it keys on having a position, and
+every row that had one keeps it.
+
+---
+
 ## Stopping here
 
-Twenty-nine rows on file of 34 candidates, five outstanding, and the page is
-drawn. What is left, in order:
+Thirty rows on file of 34 candidates, four outstanding, and the page is drawn and
+published. What is left, in order:
 
-1. **The five outstanding candidates** — ACC Kaiserslautern's Italian twin aside,
-   they are EVE Power, Sunwoda's second site, NOVO Energy at Gothenburg,
-   Leclanché at Willstatt and Britishvolt at Blyth. Britishvolt is cancelled and
-   is the next case for the stopped-row ruling: its coordinate is no longer
-   needed and its row can land as soon as the administration is sourced.
-2. **`acc-termoli` is paused on this register and ACC's 7 February 2026
-   statement covers it too** — the same sentence that cancelled Kaiserslautern.
-   Left for a ruling rather than changed here.
+1. **Four outstanding candidates**: EVE Power, Sunwoda's second site, NOVO Energy
+   at Gothenburg and Leclanché at Willstatt. All four are live projects, so the
+   location work is worth doing on each.
+2. **Northvolt Drei at Heide has one status event and no construction event**,
+   which is why its capacity now reads in the past tense. If ground was broken at
+   Heide, the row is missing the event and the sentence corrects itself when it
+   lands.
 3. **The manual queue is three**: Britishvolt's committee report, now
    corroboration only, and two Sunderland pages that nothing waits on.
 4. **Prose slots**: `transition_notes`, `sector_orientation`, `sector_lead` and
    the ecosystem description carry cement and steel and nothing else, and the
-   batteries blocks that exist are drafts awaiting review. **This is now the
-   most visible gap on the platform**, because the page is drawn.
+   batteries blocks that exist are drafts awaiting review. The most visible gap
+   on the platform, now that the page is published.
 5. **The exposure exclusion**, decided and not yet written into a page.

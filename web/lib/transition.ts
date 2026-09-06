@@ -656,8 +656,25 @@ export function drawHold(sector: string): DrawHold | undefined {
   return drawHolds()[sector];
 }
 
+/** Whether the sector has the data its product template draws. DATA ONLY —
+ *  a draw hold is not asked about here, and that is the change of 6 September
+ *  2026.
+ *
+ *  WHAT THE HOLD USED TO DO, AND WHY IT WAS WRONG. `hasMap` returned false
+ *  while a sector was held, so the route rendered the register directory
+ *  instead of the product template and the held page was never built. It was
+ *  therefore never type-checked against its own data, never crawled by the
+ *  anchor gate, never in a build at all — and the first draw after the hold
+ *  came off failed on a technology with no `dependency` key, a bug that had
+ *  been sitting there for as long as the hold. A gate that stops a page being
+ *  drawn also stops it being tested, and a hold is supposed to withhold
+ *  publication rather than suspend the work.
+ *
+ *  A HOLD NOW GATES PUBLICATION ONLY: the page renders and is exercised by
+ *  every gate on every run, and `sectorIsIndexable` keeps it out of the sitemap
+ *  and puts `noindex` in its head for as long as the hold stands. See
+ *  sources/scope.md, "A draw hold gates publication". */
 export function hasMap(sector: string): boolean {
-  if (drawHold(sector)) return false;
   const imp = getImportance(sector);
   return Boolean(imp && getBottlenecks(sector).length > 0);
 }
