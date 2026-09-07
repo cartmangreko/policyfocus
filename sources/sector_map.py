@@ -235,12 +235,24 @@ PROJECT_EVENT_KINDS = (
 #   wire_release    a company release carried by a wire service. It is the
 #                   company speaking, through a distributor that keeps the page
 #                   alive after the company's own site has dropped it.
+#   official_register
+#                   official public records: gazettes, insolvency notices,
+#                   company registries. ADDED BECAUSE `regulator` WAS DOING TWO
+#                   JOBS. A supervisory authority ACTING on a project and a
+#                   statutory register RECORDING that something happened to the
+#                   company are not the same route into the record, and an
+#                   attrition series cares about the difference: the first is
+#                   somebody intervening, the second is the state writing down a
+#                   fact that already occurred. The London Gazette's appointment
+#                   of administrators is the case — the Gazette did not act on
+#                   Britishvolt, it published the notice.
 #   press           anyone reporting on the project rather than acting in it.
 PROJECT_SOURCE_TYPES = (
     "company",
     "permit",
     "regulator",
     "grant_register",
+    "official_register",
     "wire_release",
     "press",
 )

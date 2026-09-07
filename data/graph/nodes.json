@@ -9125,36 +9125,6 @@
   }
  },
  {
-  "id": "project:farasis-bitterfeld",
-  "kind": "project",
-  "label": "Farasis Bitterfeld-Wolfen",
-  "attrs": {
-   "company": "Farasis Energy",
-   "plant": "Bitterfeld-Wolfen",
-   "country": "DE",
-   "status": "paused",
-   "transition": "supply_security",
-   "role": "plant",
-   "location": [],
-   "location_note": "LOCATION NOT SOUGHT: PROJECT PAUSED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. Nothing was ever built on the Solar Valley plot, the town has taken its urban development contract back, and the company has postponed rather than ended the project. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked."
-  }
- },
- {
-  "id": "project:freyr-mo-i-rana",
-  "kind": "project",
-  "label": "T1 Energy Giga Arctic",
-  "attrs": {
-   "company": "T1 Energy",
-   "plant": "Mo i Rana",
-   "country": "NO",
-   "status": "cancelled",
-   "transition": "supply_security",
-   "role": "plant",
-   "location": [],
-   "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. The company that was building it is now a solar manufacturer with a different name, and its European battery assets are held for sale; part of the Giga Arctic site is being rezoned for a data centre. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked."
-  }
- },
- {
   "id": "project:galata-co2-storage",
   "kind": "project",
   "label": "Galata CO2 storage",
@@ -9781,38 +9751,6 @@
   }
  },
  {
-  "id": "project:samsung-sdi-god",
-  "kind": "project",
-  "label": "Samsung SDI Göd",
-  "attrs": {
-   "company": "Samsung SDI",
-   "plant": "Göd",
-   "country": "HU",
-   "status": "operating",
-   "transition": "supply_security",
-   "role": "plant",
-   "location": [
-    {
-     "site": "Göd cell works",
-     "lat": 47.674,
-     "lon": 19.1631,
-     "precision": "plant",
-     "retrieved_date": "2026-09-02",
-     "source": {
-      "url": "https://www.openstreetmap.org/way/1009198739",
-      "type": "basemap",
-      "publisher": "OpenStreetMap contributors",
-      "verbatim": "name=Cella gyártás; man_made=works; building=industrial; operator=Samsung",
-      "licence": "ODbL 1.0"
-     },
-     "confidence": "secondary",
-     "note": "The polygon is tagged by function — 'Cella gyártás' is cell manufacturing — which is what makes it the cell works rather than the estate. An earlier candidate, relation/16364462, is tagged only 'Samsung' and was refused for identifying the site rather than the works. Samsung SDI's own network page puts SAMSUNG SDI Hungary Zrt. at '2131 Göd, Schenek István utca 1'; the street is not in the basemap, so the address corroborates rather than places it."
-    }
-   ],
-   "location_note": null
-  }
- },
- {
   "id": "project:sk-on-ivancsa",
   "kind": "project",
   "label": "SK On Iváncsa",
@@ -9846,46 +9784,6 @@
       "date": "2026-09-05",
       "also": "SK On Hungary Iváncsa HRSZ 99/48 Iváncsa 2454, Hungary",
       "note": "Two published forms of one works: the street address on the operator's Hungarian site and the land-registry parcel on its global places-of-business page. The street address is what the point was derived from; the parcel resolves only to the settlement here."
-     }
-    }
-   ],
-   "location_note": null
-  }
- },
- {
-  "id": "project:sk-on-komarom",
-  "kind": "project",
-  "label": "SK On Komárom",
-  "attrs": {
-   "company": "SK On",
-   "plant": "Komárom",
-   "country": "HU",
-   "status": "operating",
-   "transition": "supply_security",
-   "role": "plant",
-   "location": [
-    {
-     "site": "Komárom industrial park works",
-     "lat": 47.7401,
-     "lon": 18.0685,
-     "precision": "plant",
-     "retrieved_date": "2026-09-05",
-     "source": {
-      "url": "https://skonhungary.com/",
-      "type": "company",
-      "publisher": "SK On Hungary Kft.",
-      "verbatim": "SK On Hungary Kft. 2903 Komárom, Irinyi János utca 9.",
-      "note": "THE POSITION WALKS BACK TO THE OPERATOR'S PUBLISHED ADDRESS AND TO A BASEMAP BUILDING CARRYING ITS NAME ON THAT STREET. SK On publishes two Komárom addresses — this one for SK On Hungary Kft. and '2900 Komárom, Klapka Gyorgy ut 39.' for SK Battery Manufacturing, on the global page filed at sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html. Neither geocodes to a house number: both resolve only to a street. The point is the centroid of the industrial building the basemap names 'SK Battery', which stands on Irinyi János utca in the Komárom industrial park, at the address the operator publishes. IT IS ONE POINT FOR WHAT THE STATE CALLS TWO PLANTS: the row carries the operator's Komárom works as one project and says so rather than splitting it on an address nobody can resolve.",
-      "retrieved_manually": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html"
-     },
-     "confidence": "secondary",
-     "address": {
-      "text": "SK On Hungary Kft. 2903 Komárom, Irinyi János utca 9.",
-      "url": "https://skonhungary.com/",
-      "publisher": "SK On Hungary Kft.",
-      "date": "2026-09-05",
-      "also": "SK Battery Manufacturing Komárom 2900 Komárom, Klapka Gyorgy ut 39., Hungary",
-      "note": "Both addresses the operator publishes for Komárom. Neither resolves to a house number; the point is the basemap building named 'SK Battery' on Irinyi János utca, which is the street in the first of them."
      }
     }
    ],
@@ -9956,77 +9854,6 @@
   }
  },
  {
-  "id": "project:sunwoda-nyiregyhaza",
-  "kind": "project",
-  "label": "Sunwoda Nyíregyháza",
-  "attrs": {
-   "company": "Sunwoda",
-   "plant": "Nyíregyháza",
-   "country": "HU",
-   "status": "construction",
-   "transition": "supply_security",
-   "role": "plant",
-   "location": [
-    {
-     "site": "Nyíregyháza cell works",
-     "lat": 47.8953,
-     "lon": 21.7435,
-     "precision": "plant",
-     "retrieved_date": "2026-09-04",
-     "source": {
-      "url": "https://www.openstreetmap.org/way/1263927003",
-      "type": "basemap",
-      "publisher": "OpenStreetMap contributors",
-      "verbatim": "name=Hungary Sunwoda Electronics Automotive Energy Techonology Kft. épülő akkumulátor gyára; landuse=construction; construction=industrial; addr:city=Nyíregyháza; addr:street=Déli út",
-      "licence": "ODbL 1.0"
-     },
-     "confidence": "secondary",
-     "site_evidence": {
-      "kind": "composite",
-      "note": "THE COMPANY SOURCE NAMES NO CITY. Sunwoda's own release says 'Hungary' and its Shenzhen-filed interim report gives Hungary as the subsidiary's place of business; neither says Nyíregyháza. The site is confirmed under the composite standard instead of the ordinary company-only one, and all three legs are cited here so a reader who disagrees with the standard can see what it was applied to.",
-      "company": {
-       "url": "https://en.sunwoda.com/article/1345/9.html",
-       "publisher": "Sunwoda Electronic",
-       "date": "2023-08-10",
-       "verbatim": "The Hungary project is Sunwoda's first self-owned production base in Europe and the third overseas factory following the global layout opened in New Delhi, India in 2017.",
-       "note": "Confirms the project and the country and no more. Corroborated by the 2025 interim report filed with the Shenzhen exchange, which lists 'Hungary Sunwoda Power Technology Co., Ltd' with Hungary as its place of business.",
-       "also": "https://en.sunwoda.com/upload/portal/20250827/3da078ce6dd869be2a276b175627640c.pdf"
-      },
-      "state": {
-       "url": "https://kormany.hu/hirek/a-kinai-sunwoda-580-milliard-forintos-beruhazassal-nyiregyhazan-epiti-fel-elso-europai-uzemet",
-       "publisher": "Government of Hungary",
-       "date": "2023-07-27",
-       "verbatim": "Nyíregyházán építi fel első európai üzemét a világ egyik legnagyobb akkumulátorgyártója, a kínai Sunwoda",
-       "note": "The government's own briefing room names the town and the product — one of the world's largest battery manufacturers building its first European works at Nyíregyháza — at a stated 580 billion forints. HIPA's announcement says the same and answers 403 to this pipeline, so it is not cited as a leg."
-      },
-      "basemap": {
-       "url": "https://www.openstreetmap.org/way/1263927003",
-       "publisher": "OpenStreetMap contributors",
-       "verbatim": "name=Hungary Sunwoda Electronics Automotive Energy Techonology Kft. épülő akkumulátor gyára; addr:city=Nyíregyháza; addr:street=Déli út",
-       "note": "A works under construction carrying the operator's own Hungarian subsidiary name, at an address in the town the state names."
-      }
-     }
-    }
-   ],
-   "location_note": null
-  }
- },
- {
-  "id": "project:svolt-lauchhammer",
-  "kind": "project",
-  "label": "SVOLT Lauchhammer",
-  "attrs": {
-   "company": "SVOLT",
-   "plant": "Lauchhammer",
-   "country": "DE",
-   "status": "cancelled",
-   "transition": "supply_security",
-   "role": "plant",
-   "location": [],
-   "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. SVOLT bought the former Vestas rotor-blade works and never converted it, and no basemap feature carries either name; the only address for the site comes from commercial directories, which are not a source type this register admits. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked."
-  }
- },
- {
   "id": "project:svolt-uberherrn",
   "kind": "project",
   "label": "SVOLT Überherrn",
@@ -10068,38 +9895,6 @@
       "service": "https://geoportal.saarland.de/gdi-sl/inspirewfs_Flurstuecke_Grundstuecke_ALKIS?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0",
       "read_date": "2026-09-05"
      }
-    }
-   ],
-   "location_note": null
-  }
- },
- {
-  "id": "project:tesla-gruenheide-cells",
-  "kind": "project",
-  "label": "Tesla Giga Berlin cell manufacturing",
-  "attrs": {
-   "company": "Tesla",
-   "plant": "Grünheide",
-   "country": "DE",
-   "status": "construction",
-   "transition": "supply_security",
-   "role": "plant",
-   "location": [
-    {
-     "site": "Grünheide works",
-     "lat": 52.3972,
-     "lon": 13.7948,
-     "precision": "plant",
-     "retrieved_date": "2026-09-04",
-     "source": {
-      "url": "https://www.openstreetmap.org/way/775978799",
-      "type": "basemap",
-      "publisher": "OpenStreetMap contributors",
-      "verbatim": "name=Tesla Gigafactory Berlin-Brandenburg; man_made=works; landuse=industrial; industrial=factory; operator=Tesla",
-      "licence": "ODbL 1.0"
-     },
-     "confidence": "secondary",
-     "note": "The cell line stands inside Tesla's Grünheide works, which is the polygon named. A cell line inside a vehicle factory is admitted — the perimeter's exclusion is of pack and module assembly and is a rule about the product, not about who owns the gate."
     }
    ],
    "location_note": null

@@ -2,63 +2,17 @@
   "_comment": [
     "Landed rows whose capacity is still outstanding, with the reason and what would close it.",
     "",
-    "WHY NOT sources/manual/MANIFEST.json `wanted`. That queue is for a page the fetcher is",
-    "REFUSED and a browser can read, and its README says so in as many words: 'Not a place to",
-    "put anything a fetch failed on.' Only one entry here is that. The rest are the opposite",
-    "problem and a worse one -- the page is readable and the company has never stated a figure.",
-    "Filing those as retrieval jobs would send somebody to fetch a page that will not answer,",
-    "and would quietly convert 'nobody has said' into 'nobody has fetched'.",
+    "EMPTIED 7 September 2026, and the mechanism kept. All seven entries left as ROWS rather",
+    "than as filled figures: each was tested against its admitting source -- the source on which",
+    "it passed the perimeter's company-confirmed, >=1 GWh bar -- and in every case that source",
+    "names the site and states no capacity. A row admitted on a scale limb its own admitting",
+    "source never met is a row that should not have landed, so the seven went back to",
+    "sources/batteries_candidates.json rather than sitting here as a permanent shortfall.",
     "",
-    "WHY NOT sources/batteries_candidates.json. That file is the admitted set waiting to LAND.",
-    "These rows have landed; what is missing is one field on a row that is already published.",
-    "",
-    "`closes_it` is the test, not a guess: what a source would have to say for the row to be",
-    "filled. Printed on every build by report_candidate_gaps.py so the count recomputes itself",
-    "rather than rotting in a paragraph -- which is the lesson the batteries docket already",
-    "learned about carrying a shortfall as prose."
+    "THE FILE STAYS BECAUSE THE QUESTION RECURS. report_candidate_gaps.py prints whatever is",
+    "here on every build and drops an entry the moment its row gets a figure, so the next row",
+    "that lands with a capacity gap has somewhere to be counted instead of being carried in",
+    "prose that nobody recomputes."
   ],
-  "outstanding": [
-    {
-      "project": "sk-on-komarom",
-      "reason": "A REFUSAL, and the only one here. eng.sk-on.com serves a certificate for a different host and cannot be read by the pipeline; skonhungary.com answers 200 and states no capacity anywhere. The Hungarian government's Ivancsa announcement mentions Komarom only to say it already operates.",
-      "closes_it": "An SK On page stating a GWh figure for Komarom. Worth a manual retrieval, and the only entry here that is.",
-      "kind": "fetch_refused"
-    },
-    {
-      "project": "samsung-sdi-god",
-      "reason": "Samsung SDI's own Global Network locations page answers 200 and states no GWh for God. The 40 GWh figure in circulation is trade press (electrive, Battery-News) and is not admissible under the source rules for this pass.",
-      "closes_it": "A Samsung SDI page, filing or sustainability report stating a GWh figure for the Hungarian site.",
-      "kind": "company_states_none"
-    },
-    {
-      "project": "sunwoda-nyiregyhaza",
-      "reason": "Sunwoda's own release about the Hungarian factory answers 200 and states no GWh. The Hungarian government's announcement is in forints -- 580 billion, with a first phase of 93 billion.",
-      "closes_it": "A Sunwoda page or filing stating a GWh figure for Nyiregyhaza.",
-      "kind": "company_states_none"
-    },
-    {
-      "project": "svolt-lauchhammer",
-      "reason": "SVOLT's own announcement of the Lauchhammer factory, read from the Internet Archive, states no capacity. The row already recorded that when it landed, and re-fetching the capture confirms it.",
-      "closes_it": "An SVOLT statement giving a GWh figure for Lauchhammer. The company withdrew from the site in May 2024, so one may never exist.",
-      "kind": "company_states_none"
-    },
-    {
-      "project": "farasis-bitterfeld",
-      "reason": "Both sources on the row are German trade press. No Farasis statement giving a capacity for Bitterfeld-Wolfen has been read, and the row's own note already turns on the company's words being the only thing that moves it.",
-      "closes_it": "A Farasis statement giving a GWh figure for Bitterfeld-Wolfen.",
-      "kind": "company_states_none"
-    },
-    {
-      "project": "tesla-gruenheide-cells",
-      "reason": "THE COMPANY STATES THE ABSENCE. Tesla's own quarterly update prints a dash in the capacity column for 'Berlin 4680 - Construction' where Texas reads '>40 GWh Production'. Trade press carries 8 GWh rising to 18 GWh; under the standing press ruling the project's own sources decide, and they decline to give one.",
-      "closes_it": "A Tesla filing or update printing a capacity for Berlin 4680 rather than a dash.",
-      "kind": "company_states_none"
-    },
-    {
-      "project": "freyr-mo-i-rana",
-      "reason": "Both 10-Ks were fetched and read in full this turn. Neither contains the string 'GWh' at all: Giga Arctic is described as 'a 120,000 square meter gigafactory', which is floor area and not capacity.",
-      "closes_it": "A FREYR or T1 Energy filing stating a GWh figure for Giga Arctic. The European business is now presented as discontinued operations and the site is being rezoned for a data centre, so one is unlikely.",
-      "kind": "company_states_none"
-    }
-  ]
+  "outstanding": []
 }

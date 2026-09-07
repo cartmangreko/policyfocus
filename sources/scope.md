@@ -727,6 +727,21 @@ installs it at the head of the prebuild. Where it cannot be installed the gate
 **fails**: a coordinate check that quietly does not run is worse than one nobody
 wrote.
 
+Superseded 7 Sep 2026 by the paragraph above: pyproj joins the fetcher's own
+dependencies in `sources/requirements.txt` — the first one the GATES need rather
+than the fetcher — and the gate **fails** when it is absent rather than skipping
+the check: a coordinate check that quietly does not run is worse than one nobody
+wrote.
+
+WHY THE SUPERSEDED PARAGRAPH IS STILL HERE. A ruling is a record of what this
+register decided and when, and a record that silently loses its earlier readings
+cannot be audited — a reader who finds a row written under the old arrangement
+has nothing to read it against. So a ruling is never deleted, only superseded in
+place, with the superseding paragraph above it and the date on the line that
+says so. The two here disagree about one thing only: which file the dependency
+lives in, and therefore whether every environment that runs the gates installs
+it.
+
 
 
 ### capacity_basis is read from the source sentence, never derived from status
