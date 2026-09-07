@@ -838,3 +838,43 @@ built and what stops. It also had the effect of making the dataset look complete
 25 rows all carrying capacities, with the gap moved somewhere the totals could
 not see it. A register that improves its own numbers by dropping the rows that
 embarrass them is measuring itself and not the sector.
+
+### A slip is one speaker changing its mind
+
+`stated_schedule` records what a project said it would do. Every entry carries a
+`speaker` — `company`, `host_government`, `eu` or `other` — which is a different
+question from `source_type`. Source type says how the statement reached this
+register; speaker says whose statement it is. The two come apart constantly, and
+the gap is where the meaning is: the Junta de Extremadura telling its own Assembly
+that cells come in December 2028 is a **host government** statement that arrived
+through a newspaper, and filing it as "press" would lose the fact that a
+government said it.
+
+**A revision is counted only between events of the same speaker.** Two speakers
+giving different dates for the same milestone have revised nothing. They
+disagree, and that is a fact about the evidence rather than about the project.
+It is recorded as a disagreement, with the months between them, and never as a
+slip.
+
+The reason is that the alternative manufactures delay. CALB said its Sines works
+would deliver in 2027 and the Portuguese government said it would be fully
+operational in 2028 — on the same day, 24 February 2025. Nobody changed their
+mind and nothing slipped; two bodies were asked at once and gave different
+answers. Counting that as a twelve-month slip would turn the register's own
+breadth of sourcing into evidence of a project running late, and it would do so
+in the direction that makes the dataset look more informative than it is. The
+same reading applies to Navalmoral de la Mata, where AESC's 2026 has never been
+revised by AESC and the twenty-four-month gap is between the operator and its
+host.
+
+**Both numbers are real and they answer different questions.** A slip is evidence
+about the project. A disagreement is evidence about who believes what, and on
+this dataset it is the larger and more common of the two — which is itself the
+finding, and the reason they are printed side by side rather than added.
+
+**What neither number can see is silence.** A company that stated 2026 once and
+has never mentioned it again has not kept that date; it has stopped talking about
+it. That project shows a slip of zero, and nothing in this layer distinguishes it
+from one that is on time. The summary says so wherever the slip column is
+printed, because a zero that means "no second statement exists" and a zero that
+means "the date held" cannot be told apart here.

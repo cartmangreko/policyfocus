@@ -168,6 +168,33 @@ def capacity_queue() -> None:
               f"queue: {', '.join(sorted(landed))}")
 
 
+def schedule_queue() -> None:
+    """Landed rows with no stated schedule, printed and self-emptying.
+
+    Same shape and same reason as capacity_queue above: a shortfall carried as
+    prose is wrong by the following week, and this one is the larger of the two.
+    """
+    path = sm.ROOT / "sources" / "schedule_queue.json"
+    if not path.exists():
+        return
+    entries = (json.loads(path.read_text(encoding="utf-8")).get("outstanding") or [])
+    if not entries:
+        return
+    projects = {r["id"]: r for r in sm.load("project")}
+    open_ = [e for e in entries
+             if not (projects.get(e["project"], {}).get("stated_schedule") or [])]
+    if not open_:
+        print("\nschedule outstanding: none — every queued row now states a date.")
+        return
+    kinds: dict[str, int] = {}
+    for e in open_:
+        kinds[e.get("kind", "?")] = kinds.get(e.get("kind", "?"), 0) + 1
+    print(f"\nschedule outstanding ({len(open_)}) — landed rows stating no date: "
+          + ", ".join(f"{k} {v}" for k, v in sorted(kinds.items())))
+    for e in sorted(open_, key=lambda x: (x.get("sector", ""), x["project"])):
+        print(f"  {e.get('sector', '?'):8} {e['project']:30} [{e.get('kind', '?')}]")
+
+
 def main() -> int:
     files = candidate_files()
     if not files:
@@ -178,6 +205,7 @@ def main() -> int:
         report(path, projects)
     draw_holds()
     capacity_queue()
+    schedule_queue()
     return 0
 
 

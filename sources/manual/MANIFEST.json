@@ -139,6 +139,14 @@
       "needed_for": "THE WITHDRAWAL AT AN OFFICIAL TIER. funding germany-ipcei-tesla-gruenheide records Tesla's November 2021 withdrawal from the German IPCEI grant on Reuters carrying the federal ministry's confirmation, because neither ministry published a release on it and Tesla said nothing. Reporting says this state FAQ on the Tesla settlement addresses the funding; if it states the withdrawal, the row's weakest source can be replaced by the state's own words. The status does not change either way — it is already withdrawn.",
       "drop_as": "sources/manual/tesla-gruenheide-cells--brandenburg-tesla-faq.html",
       "priority": "low"
+    },
+    {
+      "candidate": "stegra-boden",
+      "url": "https://stegra.com/en/the-boden-plant",
+      "why": "answers 200 but renders by script; a declared reader gets no readable text, a browser shows the page",
+      "needed_for": "THE ONLY STATED PRODUCTION DATE FOR EUROPE'S LARGEST GREENFIELD STEEL PROJECT. stated_schedule is empty for stegra-boden after the fetch pass because nothing this pipeline can read states one. The Boden plant page is understood to carry the start of operations; a saved copy would let the row take it as a company statement rather than leave the row silent.",
+      "drop_as": "sources/manual/stegra-boden--the-boden-plant.html",
+      "priority": "medium"
     }
   ]
 }

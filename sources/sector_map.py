@@ -297,6 +297,41 @@ SCHEDULE_MILESTONES = (
     "construction_start",   # ground is to be broken
 )
 
+# WHO MADE THE PROMISE, which is a different question from how it reached us.
+# `source_type` says the route -- a company release, a permit file, a wire, the
+# press. `speaker` says whose statement it is. The two come apart constantly and
+# the gap is where the meaning lives: the Junta de Extremadura telling its own
+# Assembly that cells come in December 2028 is a HOST GOVERNMENT statement that
+# reached this register through a newspaper, and recording it as "press" would
+# lose the fact that a government said it.
+#
+# AND IT DECIDES WHAT COUNTS AS A SLIP. A revision is one speaker changing its own
+# mind, and only that. Two speakers giving different dates for the same milestone
+# have not revised anything -- they disagree, which is a fact about the evidence
+# and not about the project. Counting a disagreement as a slip would manufacture
+# delay out of a government and a company being asked on the same day, and it
+# would do so in the direction that makes the register look more informative than
+# it is. So a slip is measured within a speaker and a disagreement is reported
+# beside it, never inside it. See sources/scope.md, "A slip is one speaker
+# changing its mind".
+#
+#   company           the operator or its parent, about its own project.
+#   host_government   the state, region or municipality hosting the works, or an
+#                     agency of it. It is the speaker whether it speaks in a
+#                     release, a permit or an answer to its own parliament.
+#   eu                the Commission or an EU body -- a state aid decision, an
+#                     Innovation Fund award.
+#   other             anyone else who states a date: trade press, a consultant, a
+#                     customer. Named rather than excluded, so that a date from
+#                     one of them is visible as such rather than absent.
+SCHEDULE_SPEAKERS = (
+    "company",
+    "host_government",
+    "eu",
+    "other",
+)
+
+
 # HOW EXACTLY THE TARGET WAS STATED, because a company that says "2028" and a
 # company that says "December 2028" have not made the same promise, and flattening
 # both to a date would invent precision the source does not carry. The value is

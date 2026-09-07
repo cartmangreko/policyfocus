@@ -73,8 +73,9 @@ REPORTING_GROUPS = {
 COLUMNS = [
     "project_id", "sector", "company", "country", "technology", "transition",
     "capacity_value", "capacity_unit", "capacity_basis",
-    "first_stated_production_start", "latest_stated_production_start",
-    "schedule_revisions", "months_slipped", "months_past_stated",
+    "schedule_speaker", "first_stated_production_start",
+    "latest_stated_production_start", "schedule_revisions", "months_slipped",
+    "months_past_stated", "speakers_disagree", "disagreement_months",
     "event_date", "status_from", "status_to", "event_kind", "source_type",
     "source_url", "evidence_mode", "months_in_previous_state", "current_status",
     "months_in_current_state",
@@ -170,37 +171,65 @@ def target_end(t: str) -> date:
 
 
 def schedule(r: dict, today: date) -> dict:
-    """The production_start story for one row: what it first said, what it last
-    said, how many times it moved, and how far.
+    """The production_start story for one row, read under the speaker rule.
 
-    ONLY production_start IS SUMMARISED. The other milestones are on the row and
-    in the CSV's source data, but a slip series needs one milestone or it is
-    adding different promises together.
+    A SLIP IS ONE SPEAKER CHANGING ITS MIND, AND ONLY THAT. Two speakers giving
+    different dates for the same milestone have revised nothing; they disagree,
+    which is a fact about the evidence and not about the project. Counting that as
+    a slip manufactures delay out of a company and a government being asked on the
+    same day, and it does so in the direction that flatters the register. So the
+    slip series is computed WITHIN a speaker and the disagreement is reported in
+    its own columns beside it.
 
-    months_past_stated IS BLANK FOR AN OPERATING PLANT, because the question it
-    asks -- how long has this been late -- has no meaning once the plant is
-    running. It is zero, not negative, for a target still in the future: a project
-    that is not yet late is not early, it is simply not late.
+    THE PRIMARY SPEAKER is the one with the most statements, and `company` wins a
+    tie: the operator's own promise is the series a slip is really about, and a
+    host government quoting it is not a second data point about the operator.
+
+    months_past_stated IS BLANK FOR AN OPERATING PLANT, because "how long has this
+    been late" has no meaning once the plant runs, and zero rather than negative
+    for a target still ahead: a project that is not late is not early.
     """
+    BLANK = {k: "" for k in ("schedule_speaker", "first_stated_production_start",
+                             "latest_stated_production_start", "schedule_revisions",
+                             "months_slipped", "months_past_stated",
+                             "speakers_disagree", "disagreement_months")}
     ps = [h for h in (r.get("stated_schedule") or [])
           if h.get("milestone") == "production_start"]
     if not ps:
-        return {k: "" for k in ("first_stated_production_start",
-                                "latest_stated_production_start",
-                                "schedule_revisions", "months_slipped",
-                                "months_past_stated")}
-    ps = sorted(ps, key=lambda h: str(h["date"]))
-    first, last = ps[0], ps[-1]
-    out = {"first_stated_production_start": first["target_date"],
-           "latest_stated_production_start": last["target_date"],
-           "schedule_revisions": len(ps) - 1,
-           "months_slipped": months(target_end(first["target_date"]),
-                                    target_end(last["target_date"]))}
+        return BLANK
+    by_speaker: dict[str, list] = defaultdict(list)
+    for h in ps:
+        by_speaker[h.get("speaker") or "other"].append(h)
+    for v in by_speaker.values():
+        v.sort(key=lambda h: str(h["date"]))
+
+    primary = max(by_speaker, key=lambda sp: (len(by_speaker[sp]), sp == "company"))
+    series = by_speaker[primary]
+    first, last = series[0], series[-1]
+
+    out = dict(BLANK)
+    out["schedule_speaker"] = primary
+    out["first_stated_production_start"] = first["target_date"]
+    out["latest_stated_production_start"] = last["target_date"]
+    out["schedule_revisions"] = len(series) - 1
+    out["months_slipped"] = months(target_end(first["target_date"]),
+                                   target_end(last["target_date"]))
     if r.get("status") == "operating":
         out["months_past_stated"] = ""
     else:
         end = target_end(last["target_date"])
         out["months_past_stated"] = months(end, today) if today > end else 0.0
+
+    # DISAGREEMENT: each speaker's latest word on the milestone, compared. Never
+    # folded into the slip, and reported even when it is larger than the slip --
+    # which on this dataset it always is.
+    if len(by_speaker) > 1:
+        latest = {sp: v[-1] for sp, v in by_speaker.items()}
+        pairs = sorted(latest.items(), key=lambda kv: target_end(kv[1]["target_date"]))
+        lo, hi = pairs[0], pairs[-1]
+        out["speakers_disagree"] = f"{lo[0]} vs {hi[0]}"
+        out["disagreement_months"] = months(target_end(lo[1]["target_date"]),
+                                            target_end(hi[1]["target_date"]))
     return out
 
 
@@ -405,68 +434,82 @@ def main() -> int:
     md += [table(["sector", "projects", "median months", "max months"]
                  + [b[0] for b in bands], body)]
 
-    md += ["", "## Stated schedules and slip, by sector", "",
+    md += ["", "## Stated schedules, slip and disagreement, by sector", "",
            "What each project SAID it would do, from `stated_schedule` — a second "
            "history beside the status one. A slip is not a status change and never "
            "appears in the transition matrix: a plant whose start date moves from "
            "2026 to 2028 has not moved a rung, and this is the only table that "
            "sees it.", "",
+           "**A slip is one speaker changing its mind.** Two speakers giving "
+           "different dates for the same milestone have revised nothing — they "
+           "disagree, and that is a fact about the evidence rather than about the "
+           "project. Slip is therefore measured WITHIN a speaker and disagreement "
+           "is counted separately; folding the second into the first would "
+           "manufacture delay out of a company and a government being asked on the "
+           "same day.", "",
            "`with a stated date` is the share of the sector's projects carrying at "
            "least one production_start statement — everything right of it is over "
            "THOSE rows and not over the sector. A target is read at the end of its "
            "period, so \"2029\" is not late until 31 December 2029.", ""]
-    body = []
+
+    def sched_rows(rs):
+        out = []
+        for r in rs:
+            h = [x for x in (r.get("stated_schedule") or [])
+                 if x.get("milestone") == "production_start"]
+            if h:
+                out.append((r, schedule(r, today)))
+        return out
 
     def sched_stats(rs):
-        ps = [(r, [h for h in (r.get("stated_schedule") or [])
-                   if h.get("milestone") == "production_start"]) for r in rs]
-        have = [(r, h) for r, h in ps if h]
+        have = sched_rows(rs)
         if not have:
-            return [f"0 of {len(rs)}", "-", "-", "-"]
-        slips = []
-        revised = 0
-        for r, h in have:
-            h = sorted(h, key=lambda x: str(x["date"]))
-            if len(h) > 1:
-                revised += 1
-            slips.append(months(target_end(h[0]["target_date"]),
-                                target_end(h[-1]["target_date"])))
+            return [f"0 of {len(rs)}", "-", "-", "-", "-"]
+        slips = [x["months_slipped"] for _, x in have]
+        revised = sum(1 for _, x in have if x["schedule_revisions"])
+        dis = [x["disagreement_months"] for _, x in have if x["speakers_disagree"]]
         return [f"{len(have)} of {len(rs)} ({100 * len(have) // len(rs)}%)",
-                med(slips),
-                f"{revised} of {len(have)}",
-                f"{max(slips):.1f}" if slips else "-"]
+                med(slips), f"{revised} of {len(have)}",
+                f"{len(dis)} of {len(have)}",
+                f"{max(dis):.1f}" if dis else "-"]
 
-    for s in sectors:
-        rs = [r for r in rows if r.get("sector") == s]
-        body.append([s] + sched_stats(rs))
+    body = [[s] + sched_stats([r for r in rows if r.get("sector") == s])
+            for s in sectors]
     body.append(["all"] + sched_stats(rows))
     md += [table(["sector", "with a stated date", "median months slipped",
-                  "at least one revision", "largest slip"], body)]
+                  "at least one revision", "speakers disagree",
+                  "largest disagreement"], body)]
 
-    # The five largest slips, named. A median over thirteen rows hides the shape,
-    # and the shape is what the paper is about.
-    allsl = []
-    for r in rows:
-        h = sorted([x for x in (r.get("stated_schedule") or [])
-                    if x.get("milestone") == "production_start"],
-                   key=lambda x: str(x["date"]))
-        if h:
-            allsl.append((months(target_end(h[0]["target_date"]),
-                                 target_end(h[-1]["target_date"])), r, h))
-    allsl.sort(key=lambda x: -x[0])
-    md += ["", "The five largest slips, by project:", ""]
-    body = [[r["id"], r.get("sector", ""), h[0]["target_date"], h[-1]["target_date"],
-             "%.1f" % sl, r.get("status", "")] for sl, r, h in allsl[:5]]
-    md += [table(["project", "sector", "first stated", "latest stated",
-                  "months slipped", "status now"], body)]
-    md += ["", "**A caveat the numbers cannot carry.** A revision here is any later "
-               "statement of a different date, and the count cannot tell a company "
-               "revising its own promise from two speakers disagreeing on the same "
-               "day. `calb-sines` is the second kind: CALB said 2027 and the "
-               "Portuguese government said 2028, both on 24 February 2025. "
-               "`envision-aesc-extremadura` is the first, and is the real thing — "
-               "AESC's 2026 in July 2024, the Junta's December 2028 two years "
-               "later.", ""]
+    have = sched_rows(rows)
+    slipped = sorted([x for x in have if x[1]["months_slipped"]],
+                     key=lambda x: -x[1]["months_slipped"])[:5]
+    md += ["", "The five largest slips — one speaker moving its own date:", ""]
+    if slipped:
+        md += [table(["project", "sector", "speaker", "first stated",
+                      "latest stated", "months slipped", "status now"],
+                     [[r["id"], r.get("sector", ""), x["schedule_speaker"],
+                       x["first_stated_production_start"],
+                       x["latest_stated_production_start"],
+                       "%.1f" % x["months_slipped"], r.get("status", "")]
+                      for r, x in slipped])]
+    else:
+        md += ["**None. No speaker on this dataset has revised its own stated "
+               "production start.** Every gap between two dates on this file is a "
+               "gap between two different speakers, which the next table carries. "
+               "That is a finding about the evidence and not a clean bill for the "
+               "sector: a company that stops restating a date has not kept it, and "
+               "nothing here can tell the two apart.", ""]
+
+    dis = sorted([x for x in have if x[1]["speakers_disagree"]],
+                 key=lambda x: -x[1]["disagreement_months"])
+    md += ["", "Disagreements — two speakers, one milestone, never counted as slip:", ""]
+    if dis:
+        md += [table(["project", "sector", "speakers", "months apart", "status now"],
+                     [[r["id"], r.get("sector", ""), x["speakers_disagree"],
+                       "%.1f" % x["disagreement_months"], r.get("status", "")]
+                      for r, x in dis])]
+    else:
+        md += ["None.", ""]
 
     md += ["", "## Status now, by reporting group", "",
            "`active`, `paused`, `stopped` and `operating` are this export's "

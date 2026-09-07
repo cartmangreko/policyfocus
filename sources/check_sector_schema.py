@@ -644,8 +644,9 @@ def _schedule(e: Errors, where: str, row: dict) -> None:
     for i, h in enumerate(sched):
         w = f"{where} stated_schedule[{i}]"
         _req(e, w, h, "date", "milestone", "target_date", "target_precision",
-             "source_url", "source_type", "evidence_mode")
+             "source_url", "source_type", "evidence_mode", "speaker")
         _vocab(e, w, h, "milestone", sm.SCHEDULE_MILESTONES)
+        _vocab(e, w, h, "speaker", sm.SCHEDULE_SPEAKERS)
         _vocab(e, w, h, "target_precision", sm.TARGET_PRECISIONS)
         _vocab(e, w, h, "source_type", sm.PROJECT_SOURCE_TYPES)
         _vocab(e, w, h, "evidence_mode", sm.EVIDENCE_MODES)

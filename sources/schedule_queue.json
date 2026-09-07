@@ -1,0 +1,237 @@
+{
+  "_comment": [
+    "Landed rows with an empty stated_schedule after the fetch pass of 7 September 2026.",
+    "",
+    "WHY NOT sources/manual/wanted. That queue is for a page a browser can read and the",
+    "fetcher is refused, and its README says so. Only stegra-boden is that, and it is filed",
+    "there as well as here. The rest are the harder case: the page is readable and no company,",
+    "permit or grant decision states a date at all.",
+    "",
+    "`press_only` rows are the ones to watch. A date EXISTS for them and is excluded because",
+    "it is trade press. That is the source rules working, not a gap in the research, and the",
+    "row's own note already carries the press date as press. If the rule is ever relaxed these",
+    "are the rows it would change.",
+    "",
+    "Printed on every build by report_candidate_gaps.py, and an entry drops out the moment its",
+    "row gets a stated_schedule."
+  ],
+  "outstanding": [
+    {
+      "project": "acc-termoli",
+      "sector": "batsol",
+      "status": "cancelled",
+      "kind": "press_only",
+      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press."
+    },
+    {
+      "project": "britishvolt-blyth",
+      "sector": "batsol",
+      "status": "cancelled",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "catl-arnstadt",
+      "sector": "batsol",
+      "status": "operating",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "catl-debrecen",
+      "sector": "batsol",
+      "status": "construction",
+      "kind": "press_only",
+      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press."
+    },
+    {
+      "project": "envision-aesc-douai",
+      "sector": "batsol",
+      "status": "operating",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "envision-aesc-sunderland",
+      "sector": "batsol",
+      "status": "operating",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "farasis-bitterfeld",
+      "sector": "batsol",
+      "status": "paused",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "freyr-mo-i-rana",
+      "sector": "batsol",
+      "status": "cancelled",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "italvolt-scarmagno",
+      "sector": "batsol",
+      "status": "cancelled",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "lges-wroclaw",
+      "sector": "batsol",
+      "status": "operating",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "morrow-arendal",
+      "sector": "batsol",
+      "status": "cancelled",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "novo-energy-gothenburg",
+      "sector": "batsol",
+      "status": "paused",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "powerco-sagunto",
+      "sector": "batsol",
+      "status": "construction",
+      "kind": "press_only",
+      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press."
+    },
+    {
+      "project": "powerco-salzgitter",
+      "sector": "batsol",
+      "status": "operating",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "samsung-sdi-god",
+      "sector": "batsol",
+      "status": "operating",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "sk-on-ivancsa",
+      "sector": "batsol",
+      "status": "construction",
+      "kind": "press_only",
+      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press."
+    },
+    {
+      "project": "sk-on-komarom",
+      "sector": "batsol",
+      "status": "operating",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "sunwoda-nyiregyhaza",
+      "sector": "batsol",
+      "status": "construction",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "svolt-lauchhammer",
+      "sector": "batsol",
+      "status": "cancelled",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "svolt-uberherrn",
+      "sector": "batsol",
+      "status": "cancelled",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "tesla-gruenheide-cells",
+      "sector": "batsol",
+      "status": "construction",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "galata-co2-storage",
+      "sector": "ccs",
+      "status": "announced",
+      "kind": "press_only",
+      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press."
+    },
+    {
+      "project": "northern-lights",
+      "sector": "ccs",
+      "status": "operating",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "brevik-ccs",
+      "sector": "cement",
+      "status": "operating",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "ifestos-kamari",
+      "sector": "cement",
+      "status": "announced",
+      "kind": "not_located",
+      "reason": "No company page for this project could be located at the expected path (404 to the declared reader); nothing on file states a date."
+    },
+    {
+      "project": "k6-lumbres",
+      "sector": "cement",
+      "status": "construction",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "slite-ccs",
+      "sector": "cement",
+      "status": "paused",
+      "kind": "not_located",
+      "reason": "No company page for this project could be located at the expected path (404 to the declared reader); nothing on file states a date."
+    },
+    {
+      "project": "3d-dunkirk",
+      "sector": "steel",
+      "status": "operating",
+      "kind": "not_located",
+      "reason": "No company page for this project could be located at the expected path (404 to the declared reader); nothing on file states a date."
+    },
+    {
+      "project": "am-bremen-eisenhuettenstadt",
+      "sector": "steel",
+      "status": "cancelled",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "hybrit-pilot-lulea",
+      "sector": "steel",
+      "status": "operating",
+      "kind": "searched_none",
+      "reason": "Company pages and any permit or grant decision on file were read in the schedule pass; none states a production start."
+    },
+    {
+      "project": "stegra-boden",
+      "sector": "steel",
+      "status": "construction",
+      "kind": "render",
+      "reason": "The company's project page answers 200 but renders its content by script and serves no readable text to a declared reader."
+    }
+  ]
+}

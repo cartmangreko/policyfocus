@@ -244,7 +244,8 @@
           "source_url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "Heidelberg Materials' Innovation Fund release: construction stated to start in 2026."
+          "note": "Heidelberg Materials' Innovation Fund release: construction stated to start in 2026.",
+          "speaker": "company"
         },
         {
           "date": "2023-12-15",
@@ -254,7 +255,8 @@
           "source_url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "The same release states commissioning in 2029."
+          "note": "The same release states commissioning in 2029.",
+          "speaker": "company"
         },
         {
           "date": "2023-12-15",
@@ -264,7 +266,8 @@
           "source_url": "https://www.heidelbergmaterials.com/en/pr-2023-12-15",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "The same release again, on the capture itself: 'Capturing 700,000 tonnes of CO2 annually from 2029.' Three milestones from one statement, each on its own sentence."
+          "note": "The same release again, on the capture itself: 'Capturing 700,000 tonnes of CO2 annually from 2029.' Three milestones from one statement, each on its own sentence.",
+          "speaker": "company"
         }
       ]
     },
@@ -351,7 +354,8 @@
           "source_url": "https://www.heidelbergmaterials.com/en/eu-backs-heidelberg-materials-pioneering-ccus-project-in-bulgaria",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "'expected operational as early as 2028'. 'As early as' is the company's own hedge and the year is what it states; the hedge is not turned into a different number here."
+          "note": "'expected operational as early as 2028'. 'As early as' is the company's own hedge and the year is what it states; the hedge is not turned into a different number here.",
+          "speaker": "company"
         }
       ]
     },
@@ -430,7 +434,8 @@
           "source_url": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "Holcim's groundbreaking release: the plant is 'engineered to produce 2 million tons of net-zero cement per annum by 2029'."
+          "note": "Holcim's groundbreaking release: the plant is 'engineered to produce 2 million tons of net-zero cement per annum by 2029'.",
+          "speaker": "company"
         }
       ]
     },
@@ -526,7 +531,8 @@
           "source_url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "Holcim's project page at the official launch: net-zero cement production at Lagerdorf from 2029."
+          "note": "Holcim's project page at the official launch: net-zero cement production at Lagerdorf from 2029.",
+          "speaker": "company"
         }
       ]
     },
@@ -906,9 +912,29 @@
           "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
           "publisher": "thyssenkrupp",
           "date": "2023-07-20"
+        },
+        {
+          "url": "https://www.thyssenkrupp-steel.com/en/newsroom/press-releases/decision-taken-on-the-construction-of-germanys-largest-direct-reduction-plant-for-low-co2-steel.html",
+          "title": "Decision taken on the construction of Germany's largest direct reduction plant for low-CO2 steel",
+          "publisher": "thyssenkrupp Steel Europe AG",
+          "date": "2022-09-08",
+          "retrieved_date": "2026-09-07",
+          "note": "Fetched 7 September 2026 with the declared Eufabric User-Agent, for the schedule pass. Carries the only company-stated production date on file for this works: 'start of production in 2026'."
         }
       ],
-      "stated_schedule": []
+      "stated_schedule": [
+        {
+          "date": "2022-09-08",
+          "milestone": "production_start",
+          "target_date": "2026",
+          "target_precision": "year",
+          "source_url": "https://www.thyssenkrupp-steel.com/en/newsroom/press-releases/decision-taken-on-the-construction-of-germanys-largest-direct-reduction-plant-for-low-co2-steel.html",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "thyssenkrupp Steel's own release on the decision to build: 'Contract award is planned for fall 2022 - start of production in 2026.'"
+        }
+      ]
     },
     {
       "id": "salcos-salzgitter",
@@ -991,7 +1017,30 @@
           "date": "2024-03-07"
         }
       ],
-      "stated_schedule": []
+      "stated_schedule": [
+        {
+          "date": "2023-05-24",
+          "milestone": "commissioning",
+          "target_date": "2025",
+          "target_precision": "year",
+          "source_url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salcos-milestone-reached-salzgitter-ag-awards-contract-for-direct-reduction-plant-20791.html",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "Salzgitter AG's own release on awarding the direct-reduction contract: 'The first stage will go into operation as early as the end of 2025.'"
+        },
+        {
+          "date": "2023-05-24",
+          "milestone": "production_start",
+          "target_date": "2026",
+          "target_precision": "year",
+          "source_url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salcos-milestone-reached-salzgitter-ag-awards-contract-for-direct-reduction-plant-20791.html",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "The same release: 'a scheduled start of production of the SALCOS route in 2026'."
+        }
+      ]
     },
     {
       "id": "am-bremen-eisenhuettenstadt",
@@ -1253,7 +1302,8 @@
           "source_url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "voestalpine: the electric furnace is under construction 'for operation from 2027'."
+          "note": "voestalpine: the electric furnace is under construction 'for operation from 2027'.",
+          "speaker": "company"
         }
       ]
     },
@@ -1323,7 +1373,8 @@
           "source_url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "The same voestalpine release, covering both sites: 'an electric furnace at each going into operation from 2027'."
+          "note": "The same voestalpine release, covering both sites: 'an electric furnace at each going into operation from 2027'.",
+          "speaker": "company"
         }
       ]
     },
@@ -1519,7 +1570,8 @@
           "source_url": "https://en.protothema.gr/2026/07/02/greece-moves-to-become-southeast-europes-first-carbon-storage-hub-with-e1bn-prinos-project/",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "PRESS TIER AND SAID SO. The installation permit for the Omega platform is signed 'with work expected to begin in October 2026'. No company statement of the date is on file."
+          "note": "PRESS TIER AND SAID SO. The installation permit for the Omega platform is signed 'with work expected to begin in October 2026'. No company statement of the date is on file.",
+          "speaker": "other"
         }
       ]
     },
@@ -1594,7 +1646,8 @@
           "source_url": "https://www.acc-emotion.com/media/bbd-press-release",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "ACC's inauguration release: the first of the site's three production units 'would be operational before the end of 2023'. Recorded at year precision because 'before the end of 2023' states a year and not a month."
+          "note": "ACC's inauguration release: the first of the site's three production units 'would be operational before the end of 2023'. Recorded at year precision because 'before the end of 2023' states a year and not a month.",
+          "speaker": "company"
         }
       ]
     },
@@ -1762,7 +1815,8 @@
           "source_url": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "Verkor's opening release: the site 'is now manufacturing its own cells', with commercialisation of the first batteries planned for 2026. The milestone is the commercial start, which is what production_start means here."
+          "note": "Verkor's opening release: the site 'is now manufacturing its own cells', with commercialisation of the first batteries planned for 2026. The milestone is the commercial start, which is what production_start means here.",
+          "speaker": "company"
         }
       ]
     },
@@ -1917,7 +1971,8 @@
           "source_url": "https://lyten.com/2026/02/26/lyten-completes-acquisition-of-northvolt-sweden-and-establishes-its-first-lyten-industrial-hub-in-sweden/",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "Lyten's completion release: the restart begins immediately 'with commercial cells planned for the second half of 2026'. A half is neither a year nor a quarter and is stored as one rather than rounded to either."
+          "note": "Lyten's completion release: the restart begins immediately 'with commercial cells planned for the second half of 2026'. A half is neither a year nor a quarter and is stored as one rather than rounded to either.",
+          "speaker": "company"
         }
       ]
     },
@@ -1990,7 +2045,19 @@
       "capacity_source_url": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
       "capacity_as_of": "2024-12-10",
       "capacity_note": "Stellantis' own release for the 50-50 joint venture states 'a 50 GWh lithium iron phosphate site'. One figure, no phases stated. The release also states the plant is subject to the European market and to continued Spanish and EU support, which is why the basis is announced.",
-      "stated_schedule": []
+      "stated_schedule": [
+        {
+          "date": "2024-12-10",
+          "milestone": "production_start",
+          "target_date": "2026",
+          "target_precision": "year",
+          "source_url": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "Stellantis' own release for the joint venture, already on this row and already quoted in its status note: the site is 'targeted to start production by the end of 2026'. Missed by the first backfill pass and added here."
+        }
+      ]
     },
     {
       "id": "catl-arnstadt",
@@ -2325,7 +2392,19 @@
       "capacity_basis": "announced",
       "capacity_source_url": "https://lyten.com/2026/07/01/lyten-signs-exclusive-mou-to-progress-acquisition-of-northvolt-drei-assets-in-germany/",
       "capacity_as_of": "2026-07-01",
-      "stated_schedule": []
+      "stated_schedule": [
+        {
+          "date": "2024-03-25",
+          "milestone": "production_start",
+          "target_date": "2026",
+          "target_precision": "year",
+          "source_url": "https://northvolt.com/articles/start-of-construction-at-northvolt-drei/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "Northvolt's own start-of-construction release for Northvolt Drei: the complex is planned 'commencing first operations in 2026'. THIS IS THE COMPANY'S OWN PUBLISHED WORDS and is not the 2027/2028 timetable the row refuses — that one is Lyten's chief executive REPORTED as telling the state government, which no company or state page carries. Northvolt is insolvent and the site has not been built, so this stands as what was promised and by whom, not as a live plan."
+        }
+      ]
     },
     {
       "id": "morrow-arendal",
@@ -2539,7 +2618,19 @@
       "capacity_source_url": "https://www.tata.com/newsroom/business/battery-gigafactory-uk",
       "capacity_as_of": "2023-07-19",
       "capacity_note": "The 40 GWh is Tata Group's own figure from the announcement of the gigafactory in July 2023; the Agratas site update of August 2025 that carries the status states no capacity.",
-      "stated_schedule": []
+      "stated_schedule": [
+        {
+          "date": "2023-07-19",
+          "milestone": "production_start",
+          "target_date": "2026",
+          "target_precision": "year",
+          "source_url": "https://www.tata.com/newsroom/business/battery-gigafactory-uk",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "Tata Group's own announcement of the gigafactory: 'the start of production in 2026', with JLR and Tata Motors as anchor customers 'with supplies commencing from 2026'."
+        }
+      ]
     },
     {
       "id": "gib-surany",
@@ -2612,7 +2703,8 @@
           "source_url": "https://www.inobat.eu/newsroom/gib-to-build-an-advanced-gigafactory-in-slovakia/",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "InoBat's release for the joint venture: 'Construction was planned for the end of 2024.'"
+          "note": "InoBat's release for the joint venture: 'Construction was planned for the end of 2024.'",
+          "speaker": "company"
         }
       ]
     },
@@ -3171,7 +3263,8 @@
           "source_url": "http://en.calb-tech.com/news_detail/5.html",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "CALB's own release: the company expects delivery in 2027."
+          "note": "CALB's own release: the company expects delivery in 2027.",
+          "speaker": "company"
         },
         {
           "date": "2025-02-24",
@@ -3181,7 +3274,8 @@
           "source_url": "https://portugal.gov.pt/gc24/comunicacao/noticias/fabrica-de-ultima-geracao-de-baterias-de-litio-lancada-em-sines",
           "source_type": "grant_register",
           "evidence_mode": "retrospective",
-          "note": "THE SAME DAY, A DIFFERENT SPEAKER. The Portuguese government's release says the works is fully operational in 2028. This is a disagreement between two sources and not a revision by one, and the slip metric cannot tell the two apart — see the summary's caveat."
+          "note": "THE SAME DAY, A DIFFERENT SPEAKER, AND NOW COUNTED AS ONE. The Portuguese government's release says the works is fully operational in 2028 where CALB's own release the same day expects delivery in 2027. Under the speaker rule this is a disagreement of 12 months, not a revision — nobody changed their mind, and the earlier reading that called it a slip was manufacturing delay out of two bodies being asked at once.",
+          "speaker": "host_government"
         }
       ]
     },
@@ -3482,7 +3576,8 @@
           "source_url": "https://web.archive.org/web/20241002033752/https://www.aesc-group.com/en/item/668bf854f7fe5a27254fcc59/",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "AESC's own first-stone release: the plant 'is scheduled to begin production in 2026'."
+          "note": "AESC's own first-stone release: the plant 'is scheduled to begin production in 2026'.",
+          "speaker": "company"
         },
         {
           "date": "2026-06-08",
@@ -3492,7 +3587,8 @@
           "source_url": "https://www.laportadadeextremadura.com/economia/empresas/gigafactoria-baterias-navalmoral-mata-proyecta-inicio-produccion-celdas-diciembre-2028_5773_102.html",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "A REAL REVISION, TWO YEARS ON, and press relaying the authority: the Junta de Extremadura told the Assembly on 8 June 2026 that construction concludes November 2027 and cell production comes in December 2028. The row already holds both timetables and refuses to resolve them silently; this list is where the gap becomes a number."
+          "note": "THE JUNTA'S OWN TIMETABLE, REACHING US THROUGH A NEWSPAPER — speaker is host_government and source_type is press, and the two are different facts. The Junta de Extremadura told the Asamblea on 8 June 2026 that construction concludes November 2027 and cell production comes in December 2028. AESC's own 2026 stands above it unrevised: the company has not moved its date, a government has stated a different one, and under the speaker rule that is a DISAGREEMENT of 24 months and not a slip. The 24 months is real either way; what it is evidence OF is the gap between what the operator says and what its host says.",
+          "speaker": "host_government"
         }
       ]
     },
@@ -3766,7 +3862,8 @@
           "source_url": "https://www.acc-emotion.com/stories/kaiserslautern-acc-actively-preparing-its-deployment-germany",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "ACC's own site page: 'Operation should start in 2025.' THE STATEMENT DATE IS THE RETRIEVAL DATE because the page carries no date anywhere, which is how this row already handles it for capacity. So the register reads, in September 2026, a company page still promising a 2025 start for a project the company abandoned in February 2026 — the statement is recorded as found, not corrected."
+          "note": "ACC's own site page: 'Operation should start in 2025.' THE STATEMENT DATE IS THE RETRIEVAL DATE because the page carries no date anywhere, which is how this row already handles it for capacity. So the register reads, in September 2026, a company page still promising a 2025 start for a project the company abandoned in February 2026 — the statement is recorded as found, not corrected.",
+          "speaker": "company"
         }
       ]
     },
@@ -4116,7 +4213,8 @@
           "source_url": "https://www.evebattery.com/en/news-1873",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "EVE's own page: the factory 'is expected to be completed and put into operation in 2026'."
+          "note": "EVE's own page: the factory 'is expected to be completed and put into operation in 2026'.",
+          "speaker": "company"
         }
       ]
     }
