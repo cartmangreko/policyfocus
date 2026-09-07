@@ -29895,6 +29895,18 @@
  },
  {
   "rel": "finances",
+  "from": "funding:germany-ipcei-tesla-gruenheide",
+  "to": "project:tesla-gruenheide-cells",
+  "since": "2021-11-26",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-ipcei-tesla-gruenheide].finances"
+  },
+  "instrument": "ipcei",
+  "status": "withdrawn"
+ },
+ {
+  "rel": "finances",
   "from": "funding:germany-northvolt-drei",
   "to": "project:lyten-heide",
   "since": "2024-01-08",
@@ -31995,6 +32007,17 @@
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=germany-federal-salcos].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:germany-ipcei-tesla-gruenheide",
+  "to": "country:DE",
+  "since": "2021-11-26",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-ipcei-tesla-gruenheide].country"
   },
   "basis": "country"
  },
@@ -35600,6 +35623,16 @@
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=germany-federal-salcos].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:germany-ipcei-tesla-gruenheide",
+  "to": "technology:cell-manufacturing",
+  "since": "2021-11-26",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-ipcei-tesla-gruenheide].supports"
   }
  },
  {
