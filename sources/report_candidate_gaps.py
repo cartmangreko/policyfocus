@@ -133,6 +133,41 @@ def draw_holds() -> None:
         print(f"      released by: {h.get('released_by', '?')}")
 
 
+def capacity_queue() -> None:
+    """Print the landed rows whose capacity is still outstanding.
+
+    THE SAME REASON draw_holds IS HERE. The batteries docket carried its
+    shortfall as prose and the prose was wrong by the following week, because a
+    number nobody recomputes does not recount itself when a row lands. This one
+    is read from sources/capacity_queue.json and counted on every build, and it
+    empties itself: a row that gets a capacity_value is dropped from the print
+    whether or not anybody remembered to edit the queue.
+
+    A REPORT AND NOT A GATE, like everything else in this file. A row with no
+    stated capacity is the ordinary state of unfinished research, and failing on
+    it would push somebody to close the gap by inventing a figure -- which is
+    the one outcome the perimeter exists to prevent.
+    """
+    path = sm.ROOT / "sources" / "capacity_queue.json"
+    if not path.exists():
+        return
+    entries = (json.loads(path.read_text(encoding="utf-8")).get("outstanding") or [])
+    if not entries:
+        return
+    projects = {r["id"]: r for r in sm.load("project")}
+    open_ = [e for e in entries
+             if projects.get(e["project"], {}).get("capacity_value") in (None, "")]
+    landed = [e["project"] for e in entries if e not in open_]
+    print(f"\ncapacity outstanding ({len(open_)}) — landed rows with no stated figure:")
+    for e in sorted(open_, key=lambda x: x["project"]):
+        print(f"  {e['project']}  [{e.get('kind', '?')}]")
+        print(f"      {e.get('reason', '')}")
+        print(f"      closes it: {e.get('closes_it', '?')}")
+    if landed:
+        print(f"  {len(landed)} entr(y/ies) now filled and can be dropped from the "
+              f"queue: {', '.join(sorted(landed))}")
+
+
 def main() -> int:
     files = candidate_files()
     if not files:
@@ -142,6 +177,7 @@ def main() -> int:
     for path in files:
         report(path, projects)
     draw_holds()
+    capacity_queue()
     return 0
 
 

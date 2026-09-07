@@ -1544,8 +1544,23 @@
           "date": "2026-02-07",
           "retrieved_date": "2026-09-06",
           "note": "Carries ACC's own statement in quotation. The same source stands behind the Kaiserslautern row, which is the point: one statement, two projects, one reading."
+        },
+        {
+          "url": "https://www.acc-emotion.com/stories/acc-announces-opening-3rd-gigafactory-termoli-italy",
+          "title": "ACC announces the opening of a 3rd Gigafactory in Termoli, Italy",
+          "publisher": "Automotive Cells Company",
+          "date": "2026-09-07",
+          "retrieved_date": "2026-09-07",
+          "note": "Fetched 7 September 2026 with the declared Eufabric User-Agent. ACC's own announcement of the site: 'The new plant will take up an area of 1.2 million square metres and will produce 40 GWh as in Germany & France.' The page carries no date, on the page or in its markup. The date recorded is the retrieval date and is said to be that rather than passed off as the company's own dating, which is how envision-aesc-douai already handles an undated release."
         }
-      ]
+      ],
+      "capacity_value": 40,
+      "capacity_unit": "GWh_per_year",
+      "capacity_product": "battery_cells",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.acc-emotion.com/stories/acc-announces-opening-3rd-gigafactory-termoli-italy",
+      "capacity_as_of": "2026-09-07",
+      "capacity_note": "CAPACITY FROM A NEWLY FETCHED SOURCE. ACC's own announcement: the plant 'will produce 40 GWh as in Germany & France', in three blocks of 13.4 GWh. Nothing was built; the project was abandoned in February 2026."
     },
     {
       "id": "verkor-dunkirk",
@@ -1743,7 +1758,14 @@
           "publisher": "Lyten",
           "date": "2026-02-26"
         }
-      ]
+      ],
+      "capacity_value": 16,
+      "capacity_unit": "GWh_per_year",
+      "capacity_product": "battery_cells",
+      "capacity_basis": "operating",
+      "capacity_source_url": "https://lyten.com/2026/02/26/lyten-completes-acquisition-of-northvolt-sweden-and-establishes-its-first-lyten-industrial-hub-in-sweden/",
+      "capacity_as_of": "2026-02-26",
+      "capacity_note": "NOT A NEWLY FETCHED SOURCE, AND SAID SO. The figure was already on this row and 3a missed it, because the row's note recorded what the release said about the acquisition and not the number inside it. Lyten's own release: 'The Northvolt Sweden acquisition includes 16 GWh of existing battery manufacturing capacity.' BASIS IS operating AND NOT announced, read from the sentence: 'existing... capacity' is capacity that was built, and this works made cells from 2021. That the site is now idle is a fact about its STATUS, and under the scope.md ruling the status does not set the basis."
     },
     {
       "id": "catl-stellantis-zaragoza",
@@ -3488,8 +3510,23 @@
           "publisher": "Evertiq",
           "date": "2026-02-09",
           "retrieved_date": "2026-09-06"
+        },
+        {
+          "url": "https://www.acc-emotion.com/stories/kaiserslautern-acc-actively-preparing-its-deployment-germany",
+          "title": "Kaiserslautern — ACC is actively preparing for its deployment in Germany",
+          "publisher": "Automotive Cells Company",
+          "date": "2026-09-07",
+          "retrieved_date": "2026-09-07",
+          "note": "Fetched 7 September 2026 with the declared Eufabric User-Agent. ACC's own account of the site: 'Operation should start in 2025 with an initial capacity of 13,4GWh that will ultimately ramp-up to 40 GWh.' ACC'S FACILITIES PAGE FOR THIS SITE IS REFUSED: www.acc-emotion.com/facilities/kaiserslautern answered 403 to the declared reader on two attempts, while /facilities and /media/ answered 200, and the facilities index no longer lists Kaiserslautern or Termoli at all. This story page carries the same figure and is readable, so nothing waits on the refused one. The page carries no date, on the page or in its markup. The date recorded is the retrieval date and is said to be that rather than passed off as the company's own dating, which is how envision-aesc-douai already handles an undated release."
         }
-      ]
+      ],
+      "capacity_value": 40,
+      "capacity_unit": "GWh_per_year",
+      "capacity_product": "battery_cells",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.acc-emotion.com/stories/kaiserslautern-acc-actively-preparing-its-deployment-germany",
+      "capacity_as_of": "2026-09-07",
+      "capacity_note": "CAPACITY FROM A NEWLY FETCHED SOURCE. ACC's own page: 'Operation should start in 2025 with an initial capacity of 13,4GWh that will ultimately ramp-up to 40 GWh.' 40 is the figure being built towards and 13.4 GWh is the first of three blocks, which is a phase of it. The same page records a 437 million euro IPCEI grant from the German government in September 2021, and under the scope.md ruling that does NOT move the basis to fid: a grant is a third party committing its money against a capacity the applicant asserted. Nothing was built."
     },
     {
       "id": "svolt-lauchhammer",
@@ -3717,8 +3754,23 @@
           "date": "2025-01-29",
           "retrieved_date": "2026-09-06",
           "note": "The share purchase agreement that ended the joint venture, subject to clearance from the US bankruptcy court and the Swedish Inspectorate of Strategic Products. Cited for the ownership rather than as a status event: the row's history begins at the first event on the SITE that a company sourced."
+        },
+        {
+          "url": "https://www.novoenergy.se/about-us",
+          "title": "About us — NOVO Energy",
+          "publisher": "NOVO Energy AB",
+          "date": "2026-09-07",
+          "retrieved_date": "2026-09-07",
+          "note": "Fetched 7 September 2026 with the declared Eufabric User-Agent. Carries the capacity: 'Our Gigafactory in Gothenburg will be one of the largest cell production facilities in Europe, with a potential annual cell production capacity of up to 50 gigawatt hours (GWh)'. The page carries no date, on the page or in its markup. The date recorded is the retrieval date and is said to be that rather than passed off as the company's own dating, which is how envision-aesc-douai already handles an undated release."
         }
-      ]
+      ],
+      "capacity_value": 50,
+      "capacity_unit": "GWh_per_year",
+      "capacity_product": "battery_cells",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.novoenergy.se/about-us",
+      "capacity_as_of": "2026-09-07",
+      "capacity_note": "CAPACITY FROM A NEWLY FETCHED SOURCE. NOVO Energy's own about-us page: 'a potential annual cell production capacity of up to 50 gigawatt hours (GWh)'. Basis is announced and is read from the sentence: 'potential' and 'up to' describe a plant being built towards, and the works never opened — Volvo Cars paused the company in January 2026 with all 75 positions affected. The page is undated, so capacity_as_of is the retrieval date."
     },
     {
       "id": "eve-power-debrecen",

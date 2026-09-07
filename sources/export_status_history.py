@@ -333,7 +333,7 @@ def main() -> int:
     md += [table(["sector"] + names + ["detail"], body)]
 
     md += ["", "## Capacity now, by reporting group", "",
-           "The same three groups, weighted by capacity rather than counted. "
+           "The same four groups, weighted by capacity rather than counted. "
            "Totals are per unit and never across them.", ""]
     body = []
     for s in sectors:
