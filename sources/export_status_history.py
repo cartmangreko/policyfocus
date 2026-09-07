@@ -37,25 +37,35 @@ OUT = ROOT / "scratch"
 #
 # sector_map.PROJECT_ALIVE / PROJECT_STOPPED / PROJECT_COMPLETE are the schema's
 # counting groups and sector_map.STOPPED_STATUSES is the site's drawing rule.
-# Neither is touched here. An attrition paper needs a third cut: it is ABOUT the
+# Neither is touched here. An attrition paper needs its own cut: it is ABOUT the
 # projects that stalled, so `paused` cannot be folded into either the ones that
 # are proceeding or the ones that are over — the whole question is how many sit
 # in between, and for how long.
 #
-#   active    work is proceeding. Everything on the ladder, INCLUDING operating:
-#             a plant that was built did not stall, and putting it in its own
-#             bucket would make the active count read as "unfinished".
-#   paused    its own group, because it is the finding.
-#   stopped   it will not be built. `withdrawn` is named here for the same reason
-#             the schema names it nowhere: it is a funding status, and if a
-#             project status of that name ever lands it belongs in this group.
+#   active     work is proceeding and the plant is not yet built: the four rungs
+#              below `operating`.
+#   paused     its own group, because it is the finding.
+#   stopped    it will not be built. `withdrawn` is named here for the same
+#              reason the schema names it nowhere: it is a funding status, and
+#              if a project status of that name ever lands it belongs here.
+#   operating  it was built. Its own group, and NOT part of active.
 #
-# So this is three groups where the schema has three and the site has two, and
+# WHY `operating` LEFT `active`. It sat in `active` on the reading that a plant
+# that was built did not stall, which is true and is not the whole of it: an
+# attrition series divides by the projects that COULD still stall, and a built
+# plant cannot. Leaving it in `active` mixes the denominator — a sector that has
+# finished several plants reads as more active than one with the same number of
+# projects still climbing, when the opposite is what the count is for. Splitting
+# it out costs nothing, because `active + operating` recovers the old group
+# exactly whenever the earlier reading is the one somebody wants.
+#
+# So this is four groups where the schema has three and the site has two, and
 # all three readings stand — they answer different questions.
 REPORTING_GROUPS = {
-    "active": ("announced", "funded", "fid", "construction", "operating"),
+    "active": ("announced", "funded", "fid", "construction"),
     "paused": ("paused",),
     "stopped": ("cancelled", "withdrawn"),
+    "operating": ("operating",),
 }
 
 
@@ -64,7 +74,19 @@ COLUMNS = [
     "capacity_value", "capacity_unit", "capacity_basis",
     "event_date", "status_from", "status_to", "event_kind", "source_type",
     "source_url", "evidence_mode", "months_in_previous_state", "current_status",
+    "months_in_current_state",
 ]
+
+# WHY A ROW-LEVEL VALUE SITS ON AN EVENT ROW. `months_in_current_state` is a
+# property of the PROJECT, not of the event, and it repeats down every event of
+# the same project exactly as `current_status` already does. It is here because
+# the question it answers — how long has this been sitting where it is — is
+# asked of the same table as everything else, and making the reader join a
+# second file to ask it is how the two get out of step. It is measured from the
+# LAST event to the export date, so it is the open run and is censored: the
+# project has not finished being in this state, and the true figure can only be
+# larger. That is what makes a delay WITHOUT a status change visible at all —
+# nothing else in this table moves when a project quietly stops moving.
 
 
 def full(d: str) -> date:
@@ -126,6 +148,10 @@ def main() -> int:
 
     for r in rows:
         history = r.get("status_history") or []
+        # Measured from the last event to the export date. A project with no
+        # history has no event to measure from and is left empty rather than
+        # given a zero, which would read as "changed today".
+        in_current = (months(full(history[-1]["date"]), today) if history else "")
         prev_date = None
         for h in history:
             d = full(h["date"])
@@ -148,6 +174,7 @@ def main() -> int:
                 "evidence_mode": h.get("evidence_mode", ""),
                 "months_in_previous_state": "" if prev_date is None else months(prev_date, d),
                 "current_status": r.get("status", ""),
+                "months_in_current_state": in_current,
             })
             if prev_date is not None and h.get("status_from"):
                 dwell[h["status_from"]].append(months(prev_date, d))
@@ -256,12 +283,43 @@ def main() -> int:
     md += [table(["status", "closed runs", "median months (closed)",
                   "open runs", "median months (open, to export date)"], body)]
 
+    md += ["", "## Months in current state, by sector", "",
+           "How long each project has sat where it is, measured from its last "
+           "event to the export date. This is the distribution behind the delays "
+           "that no status change records: a project that stopped moving two "
+           "years ago and was never paused appears nowhere else in this file. "
+           "Every figure is censored — the runs are open, so each is a floor. "
+           "Bands are months and are half-open, `24+` catching the tail.", ""]
+    bands = [("0-6", 0, 6), ("6-12", 6, 12), ("12-24", 12, 24),
+             ("24+", 24, float("inf"))]
+
+    def dist(rs):
+        vals = []
+        for r in rs:
+            h = r.get("status_history") or []
+            if h:
+                vals.append(months(full(h[-1]["date"]), today))
+        line = [len(vals), med(vals),
+                "%.1f" % max(vals) if vals else "-"]
+        line += [sum(1 for v in vals if lo <= v < hi) for _, lo, hi in bands]
+        return line
+
+    body = []
+    for s_ in sectors:
+        body.append([s_] + dist([r for r in rows if r.get("sector") == s_]))
+    body.append(["all"] + dist(rows))
+    md += [table(["sector", "projects", "median months", "max months"]
+                 + [b[0] for b in bands], body)]
+
     md += ["", "## Status now, by reporting group", "",
-           "`active`, `paused` and `stopped` are this export's groups and are "
-           "declared in this file. They are not sector_map's counting groups and "
-           "not the site's STOPPED_STATUSES; all three readings stand and answer "
-           "different questions. `paused` is its own group because it is what the "
-           "paper is about.", ""]
+           "`active`, `paused`, `stopped` and `operating` are this export's "
+           "groups and are declared in this file. They are not sector_map's "
+           "counting groups and not the site's STOPPED_STATUSES; all three "
+           "readings stand and answer different questions. `paused` is its own "
+           "group because it is what the paper is about, and `operating` is its "
+           "own because a built plant can no longer stall and does not belong in "
+           "the denominator — add `active` and `operating` to recover the "
+           "earlier reading.", ""]
     names = list(REPORTING_GROUPS)
     body = []
     for s in sectors:

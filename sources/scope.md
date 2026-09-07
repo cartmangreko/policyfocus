@@ -531,3 +531,41 @@ this ruling does not reach and must not be read as foreclosing. It is a live
 option: the register already holds facts about places it cannot draw. The two
 readings agree on the case in front of us either way, because under both,
 Antwerp@C has no position and GO4ZERO's chain is unresolved.
+
+### capacity_basis is read from the source sentence, never derived from status
+
+`capacity_basis` is one of `announced`, `fid` or `operating`, and it records how
+firm the FIGURE is — at what stage of the project the number in
+`capacity_value` was stated. The project's own `status` records something else:
+how far the project has got. The two look alike, they are often equal, and the
+temptation is to fill the first from the second, because the second is already
+on the row and never missing.
+
+**They are not the same field and one is never computed from the other.** A
+company announces a 60 GWh plant, takes FID on a first 20 GWh phase and says
+nothing new about the rest: the status is `fid` and the basis of the 60 GWh
+figure is still `announced`. A plant that reached `operating` on a capacity
+nobody has restated since the announcement carries an `announced` basis while
+operating. Deriving the basis from the status would silently promote every one
+of those figures to a firmness no source gives them, and the promotion would be
+invisible — the field would still be populated, still be in the enum, and still
+be wrong, in the direction that flatters the dataset.
+
+So the basis comes from the sentence the figure comes from, and where the source
+states a figure without saying at what stage it was fixed, the basis is what the
+sentence supports and not what the ladder suggests.
+
+**A grant award is `announced`, not `fid`.** This is the case that forces the
+ruling, because a grant is the most FID-like thing that is not one. An
+Innovation Fund award, a state aid clearance or a national programme's grant
+list is a third party committing ITS money, on a capacity the applicant put in
+the application. It is not the board of the company committing the company's
+money to build that capacity, which is what FID is and what an `fid` basis
+asserts. The award moves the project's status — that is what the `funded` rung
+is for — and it leaves the basis of the capacity figure exactly where the
+company's own announcement left it.
+
+The consequence is that a capacity with no stated stage stays `announced`
+however much money is visible around it, and a row whose source states no figure
+at all leaves `capacity_value` empty rather than borrowing one from a grant
+document.
