@@ -271,6 +271,57 @@ EVIDENCE_MODES = (
 )
 
 
+# WHAT A PROJECT SAID IT WOULD DO, AND WHEN IT SAID IT. `stated_schedule` is a
+# second history beside `status_history`, and the two answer different questions.
+# status_history records what HAPPENED: the project moved, and here is the source.
+# stated_schedule records what was PROMISED: on this date, from this source, the
+# operator said the plant would start producing in that year.
+#
+# WHY IT CANNOT BE A FIELD ON THE ROW. A single `target_date` would be overwritten
+# every time a company restated it, and the overwrite is the finding. A project
+# that has said 2026, then 2027, then 2028 is not a project with a 2028 target; it
+# is a project that has slipped twice, and the only way to see that is to keep
+# every statement. So EVERY REVISION IS A NEW EVENT and the original is never
+# edited -- the same append-only discipline status_history already has, for the
+# same reason.
+#
+# A SLIP IS NOT A STATUS CHANGE, which is why this could not live in the other
+# history. A plant whose start date moves from 2026 to 2028 has not changed status
+# and never appears in the transition matrix. It is the commonest way a project
+# fails without any event recording it, and before this list there was nowhere in
+# the register to put it.
+SCHEDULE_MILESTONES = (
+    "production_start",     # the plant makes its first saleable output
+    "commissioning",        # the works is handed over and starts up
+    "fid_target",           # a final investment decision is expected by then
+    "construction_start",   # ground is to be broken
+)
+
+# HOW EXACTLY THE TARGET WAS STATED, because a company that says "2028" and a
+# company that says "December 2028" have not made the same promise, and flattening
+# both to a date would invent precision the source does not carry. The value is
+# stored in the shape the source used -- YYYY, YYYY-Hn, YYYY-Qn, YYYY-MM,
+# YYYY-MM-DD -- and this says which.
+#
+# `half` IS HERE BECAUSE THE DATA REQUIRED IT. Lyten said "the second half of
+# 2026" about Northvolt Ett, which is neither a year nor a quarter; rounding it to
+# either would be this register choosing a number the company did not.
+#
+# A TARGET IS READ AT THE END OF ITS PERIOD, everywhere it is compared. "2029" is
+# not missed until 31 December 2029, and treating it as 1 January would report a
+# project as late for a year in which it is still on time. This is the opposite
+# convention from a history DATE, which is padded to the first of its period
+# because that is the earliest the event can have happened -- both choices are the
+# reading that does not overstate.
+TARGET_PRECISIONS = (
+    "year",
+    "half",
+    "quarter",
+    "month",
+    "day",
+)
+
+
 # CAPACITY, AND WHY IT IS NOT THE `capacity` BLOCK ALREADY ON THE ROW. That block
 # holds whatever figure a project is best known by, and across these sectors it
 # is not one quantity: for the cement rows it is CO2 captured per year, for the

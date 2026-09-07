@@ -607,6 +607,64 @@ def _capacity(e: Errors, where: str, row: dict) -> None:
                      "clinker and tonnes of crude steel are not the same tonne")
 
 
+TARGET_RE = re.compile(r"^\d{4}(-(H[12]|Q[1-4]|\d{2}(-\d{2})?))?$")
+
+# Which shape each precision has to be written in. A precision that does not match
+# its own value is the failure this pairing exists to catch: "2026" declared as a
+# month is a target somebody will later read as January.
+TARGET_SHAPE = {
+    "year":    re.compile(r"^\d{4}$"),
+    "half":    re.compile(r"^\d{4}-H[12]$"),
+    "quarter": re.compile(r"^\d{4}-Q[1-4]$"),
+    "month":   re.compile(r"^\d{4}-\d{2}$"),
+    "day":     re.compile(r"^\d{4}-\d{2}-\d{2}$"),
+}
+
+
+def _schedule(e: Errors, where: str, row: dict) -> None:
+    """Every stated_schedule entry is a dated statement by a named kind of source
+    that a milestone would be reached by a stated time.
+
+    AN EMPTY HISTORY IS NOT A FAILURE and is the ordinary case: most rows here
+    have no source that states a date, and an empty list is the honest record of
+    that. What the gate refuses is a half-written entry, because a target with no
+    source or a precision that disagrees with its own value is worse than no
+    target at all -- it is a number a reader will take for a promise somebody made.
+
+    IT IS APPEND-ONLY AND IN DATE ORDER, like status_history, and for the same
+    reason: the point of the list is that the first statement survives the fifth.
+    """
+    sched = row.get("stated_schedule")
+    if sched is None:
+        e.add(where, "no stated_schedule — use [] where no source on file states a "
+                     "date, so that 'nobody has said' and 'nobody has looked' are "
+                     "different objects")
+        return
+    dates = []
+    for i, h in enumerate(sched):
+        w = f"{where} stated_schedule[{i}]"
+        _req(e, w, h, "date", "milestone", "target_date", "target_precision",
+             "source_url", "source_type", "evidence_mode")
+        _vocab(e, w, h, "milestone", sm.SCHEDULE_MILESTONES)
+        _vocab(e, w, h, "target_precision", sm.TARGET_PRECISIONS)
+        _vocab(e, w, h, "source_type", sm.PROJECT_SOURCE_TYPES)
+        _vocab(e, w, h, "evidence_mode", sm.EVIDENCE_MODES)
+        _date(e, w, h, "date")
+        _url(e, w, h.get("source_url"), "source_url")
+        t, p = h.get("target_date"), h.get("target_precision")
+        if t is not None and not TARGET_RE.match(str(t)):
+            e.add(w, f"target_date={t!r} is not YYYY, YYYY-Hn, YYYY-Qn, YYYY-MM or "
+                     f"YYYY-MM-DD")
+        elif t is not None and p in TARGET_SHAPE and not TARGET_SHAPE[p].match(str(t)):
+            e.add(w, f"target_date={t!r} is not the shape target_precision={p!r} "
+                     f"claims — a target read at the wrong precision is a promise "
+                     f"nobody made")
+        dates.append(str(h.get("date", "")))
+    if dates != sorted(dates):
+        e.add(where, "stated_schedule is not in date order; it is append-only and a "
+                     "revision is a new entry after the statement it revises")
+
+
 def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> None:
     """Every status_history entry carries the six fields that make it an event
     rather than a sentence, and the two derived ones agree with the positional
@@ -657,6 +715,7 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
             e.add(w, "public_funding moved to data/transition/funding.json — the project "
                      "carries a derived rollup, never a stored copy")
         _capacity(e, w, r)
+        _schedule(e, w, r)
         history = r.get("status_history") or []
         dates = []
         prev_status = None

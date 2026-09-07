@@ -25,6 +25,7 @@ import os
 import statistics
 import sys
 from collections import Counter, defaultdict
+from calendar import monthrange
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -72,6 +73,8 @@ REPORTING_GROUPS = {
 COLUMNS = [
     "project_id", "sector", "company", "country", "technology", "transition",
     "capacity_value", "capacity_unit", "capacity_basis",
+    "first_stated_production_start", "latest_stated_production_start",
+    "schedule_revisions", "months_slipped", "months_past_stated",
     "event_date", "status_from", "status_to", "event_kind", "source_type",
     "source_url", "evidence_mode", "months_in_previous_state", "current_status",
     "months_in_current_state",
@@ -144,6 +147,63 @@ def by_unit(rows) -> str:
     return "; ".join(f"{num(v)} {u}" for u, v in sorted(per.items()))
 
 
+# A TARGET IS READ AT THE END OF ITS PERIOD. "2029" is not missed until 31
+# December 2029, and reading it as 1 January would call a project late for a year
+# in which it is still on time. This is the opposite convention from a history
+# date, which is padded to the first of its period because that is the earliest
+# the event can have happened. Both are the reading that does not overstate.
+def target_end(t: str) -> date:
+    t = str(t)
+    y = int(t[:4])
+    if len(t) == 4:
+        return date(y, 12, 31)
+    tail = t[5:]
+    if tail.startswith("H"):
+        return date(y, 6, 30) if tail == "H1" else date(y, 12, 31)
+    if tail.startswith("Q"):
+        m = int(tail[1]) * 3
+        return date(y, m, monthrange(y, m)[1])
+    parts = [int(x) for x in t.split("-")]
+    if len(parts) == 2:
+        return date(y, parts[1], monthrange(y, parts[1])[1])
+    return date(*parts)
+
+
+def schedule(r: dict, today: date) -> dict:
+    """The production_start story for one row: what it first said, what it last
+    said, how many times it moved, and how far.
+
+    ONLY production_start IS SUMMARISED. The other milestones are on the row and
+    in the CSV's source data, but a slip series needs one milestone or it is
+    adding different promises together.
+
+    months_past_stated IS BLANK FOR AN OPERATING PLANT, because the question it
+    asks -- how long has this been late -- has no meaning once the plant is
+    running. It is zero, not negative, for a target still in the future: a project
+    that is not yet late is not early, it is simply not late.
+    """
+    ps = [h for h in (r.get("stated_schedule") or [])
+          if h.get("milestone") == "production_start"]
+    if not ps:
+        return {k: "" for k in ("first_stated_production_start",
+                                "latest_stated_production_start",
+                                "schedule_revisions", "months_slipped",
+                                "months_past_stated")}
+    ps = sorted(ps, key=lambda h: str(h["date"]))
+    first, last = ps[0], ps[-1]
+    out = {"first_stated_production_start": first["target_date"],
+           "latest_stated_production_start": last["target_date"],
+           "schedule_revisions": len(ps) - 1,
+           "months_slipped": months(target_end(first["target_date"]),
+                                    target_end(last["target_date"]))}
+    if r.get("status") == "operating":
+        out["months_past_stated"] = ""
+    else:
+        end = target_end(last["target_date"])
+        out["months_past_stated"] = months(end, today) if today > end else 0.0
+    return out
+
+
 def load():
     with open(ROOT / "data" / "transition" / "projects.json", encoding="utf-8") as fh:
         return json.load(fh)["projects"]
@@ -162,6 +222,7 @@ def main() -> int:
 
     for r in rows:
         history = r.get("status_history") or []
+        sched = schedule(r, today)
         # Measured from the last event to the export date. A project with no
         # history has no event to measure from and is left empty rather than
         # given a zero, which would read as "changed today".
@@ -179,6 +240,7 @@ def main() -> int:
                 "capacity_value": r.get("capacity_value", ""),
                 "capacity_unit": r.get("capacity_unit", ""),
                 "capacity_basis": r.get("capacity_basis", ""),
+                **sched,
                 "event_date": h["date"],
                 "status_from": h.get("status_from") or "",
                 "status_to": h.get("status_to", ""),
@@ -342,6 +404,69 @@ def main() -> int:
     body.append(["all"] + dist(rows))
     md += [table(["sector", "projects", "median months", "max months"]
                  + [b[0] for b in bands], body)]
+
+    md += ["", "## Stated schedules and slip, by sector", "",
+           "What each project SAID it would do, from `stated_schedule` — a second "
+           "history beside the status one. A slip is not a status change and never "
+           "appears in the transition matrix: a plant whose start date moves from "
+           "2026 to 2028 has not moved a rung, and this is the only table that "
+           "sees it.", "",
+           "`with a stated date` is the share of the sector's projects carrying at "
+           "least one production_start statement — everything right of it is over "
+           "THOSE rows and not over the sector. A target is read at the end of its "
+           "period, so \"2029\" is not late until 31 December 2029.", ""]
+    body = []
+
+    def sched_stats(rs):
+        ps = [(r, [h for h in (r.get("stated_schedule") or [])
+                   if h.get("milestone") == "production_start"]) for r in rs]
+        have = [(r, h) for r, h in ps if h]
+        if not have:
+            return [f"0 of {len(rs)}", "-", "-", "-"]
+        slips = []
+        revised = 0
+        for r, h in have:
+            h = sorted(h, key=lambda x: str(x["date"]))
+            if len(h) > 1:
+                revised += 1
+            slips.append(months(target_end(h[0]["target_date"]),
+                                target_end(h[-1]["target_date"])))
+        return [f"{len(have)} of {len(rs)} ({100 * len(have) // len(rs)}%)",
+                med(slips),
+                f"{revised} of {len(have)}",
+                f"{max(slips):.1f}" if slips else "-"]
+
+    for s in sectors:
+        rs = [r for r in rows if r.get("sector") == s]
+        body.append([s] + sched_stats(rs))
+    body.append(["all"] + sched_stats(rows))
+    md += [table(["sector", "with a stated date", "median months slipped",
+                  "at least one revision", "largest slip"], body)]
+
+    # The five largest slips, named. A median over thirteen rows hides the shape,
+    # and the shape is what the paper is about.
+    allsl = []
+    for r in rows:
+        h = sorted([x for x in (r.get("stated_schedule") or [])
+                    if x.get("milestone") == "production_start"],
+                   key=lambda x: str(x["date"]))
+        if h:
+            allsl.append((months(target_end(h[0]["target_date"]),
+                                 target_end(h[-1]["target_date"])), r, h))
+    allsl.sort(key=lambda x: -x[0])
+    md += ["", "The five largest slips, by project:", ""]
+    body = [[r["id"], r.get("sector", ""), h[0]["target_date"], h[-1]["target_date"],
+             "%.1f" % sl, r.get("status", "")] for sl, r, h in allsl[:5]]
+    md += [table(["project", "sector", "first stated", "latest stated",
+                  "months slipped", "status now"], body)]
+    md += ["", "**A caveat the numbers cannot carry.** A revision here is any later "
+               "statement of a different date, and the count cannot tell a company "
+               "revising its own promise from two speakers disagreeing on the same "
+               "day. `calb-sines` is the second kind: CALB said 2027 and the "
+               "Portuguese government said 2028, both on 24 February 2025. "
+               "`envision-aesc-extremadura` is the first, and is the real thing — "
+               "AESC's 2026 in July 2024, the Junta's December 2028 two years "
+               "later.", ""]
 
     md += ["", "## Status now, by reporting group", "",
            "`active`, `paused`, `stopped` and `operating` are this export's "
