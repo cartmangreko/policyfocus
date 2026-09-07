@@ -351,6 +351,81 @@ def _storage(e: Errors, where: str, row: dict, technologies: dict, project_ids: 
     _req(e, f"{where} storage", st, "since")
 
 
+def _capacity(e: Errors, where: str, row: dict) -> None:
+    """A capacity figure travels with the four things that make it readable, or
+    it does not travel at all.
+
+    THE COMPANION RULE IS THE WHOLE POINT. A bare number is the failure this
+    block exists to prevent: 2.5 million tonnes of what, decided by whom, said
+    when, and where can I read it. Announced capacity and capacity somebody has
+    committed money to are different series, and a figure that has lost its
+    basis cannot be sorted into either. So a non-empty capacity_value requires
+    capacity_unit, capacity_basis, capacity_source_url and capacity_as_of, and a
+    filled row missing any of them fails the build.
+
+    AN EMPTY ROW IS NOT A FAILURE. Most cement rows have no product capacity on
+    file — what is on file is CO2 captured, which is a different quantity — and
+    the honest record of that is five absent fields, not an estimate. The gate
+    is silent about them; the shortfall is reported by the export instead.
+    """
+    filled = [f for f in ("capacity_value", "capacity_unit", "capacity_basis",
+                          "capacity_source_url", "capacity_as_of", "capacity_product")
+              if row.get(f) not in (None, "")]
+    if row.get("capacity_value") in (None, ""):
+        if filled:
+            e.add(where, f"has {', '.join(filled)} but no capacity_value — a companion "
+                         f"field without the figure it qualifies says nothing")
+        return
+    if not isinstance(row.get("capacity_value"), (int, float)):
+        e.add(where, "capacity_value is not a number")
+    for f in ("capacity_unit", "capacity_basis", "capacity_source_url", "capacity_as_of"):
+        if row.get(f) in (None, ""):
+            e.add(where, f"capacity_value is set but {f} is missing — a figure without "
+                         f"its unit, basis, source and date cannot be read")
+    _vocab(e, where, row, "capacity_unit", sm.CAPACITY_UNITS)
+    _vocab(e, where, row, "capacity_basis", sm.CAPACITY_BASES)
+    _vocab(e, where, row, "capacity_product", sm.CAPACITY_PRODUCTS)
+    _date(e, where, row, "capacity_as_of")
+    if row.get("capacity_source_url"):
+        _url(e, where, row.get("capacity_source_url"), "capacity_source_url")
+    if row.get("sector") in sm.CAPACITY_SECTORS and not row.get("capacity_product"):
+        e.add(where, "capacity_value is set but capacity_product is missing — tonnes of "
+                     "clinker and tonnes of crude steel are not the same tonne")
+
+
+def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> None:
+    """Every status_history entry carries the six fields that make it an event
+    rather than a sentence, and the two derived ones agree with the positional
+    reading the rest of the repository already uses.
+
+    WHY status_to SITS BESIDE status AND DOES NOT REPLACE IT. `status` is what
+    web/lib/transition.ts and check_transition_parity.py read, and the whole
+    transition rule is positional: an entry is a change if its status differs
+    from the one before. Renaming the field would have rewritten both sides of a
+    parity gate to say what they already said. So `status_to` is the same value
+    under the name an event table wants, `status_from` is the entry before it,
+    and this gate holds the two readings together — which is what stops the pair
+    from drifting into a second, quieter source of truth.
+    """
+    _req(e, where, h, "event_kind", "source_type", "evidence_mode")
+    _vocab(e, where, h, "event_kind", sm.PROJECT_EVENT_KINDS)
+    _vocab(e, where, h, "source_type", sm.PROJECT_SOURCE_TYPES)
+    _vocab(e, where, h, "evidence_mode", sm.EVIDENCE_MODES)
+    _vocab(e, where, h, "status_to", sm.PROJECT_STATUSES)
+    if "status_to" not in h:
+        e.add(where, "missing status_to")
+    elif h.get("status_to") != h.get("status"):
+        e.add(where, f"status_to={h.get('status_to')!r} but status={h.get('status')!r}; "
+                     f"they are the same fact under two names and must agree")
+    if "status_from" not in h:
+        e.add(where, "missing status_from — the first entry carries it as null")
+    elif h["status_from"] != prev_status:
+        e.add(where, f"status_from={h['status_from']!r} but the entry before this one is "
+                     f"{prev_status!r}")
+    if i == 0 and h.get("status_from") is not None:
+        e.add(where, "the first entry has nothing to come from; status_from must be null")
+
+
 def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
                    sectors: dict, technologies: dict, project_ids: set) -> None:
     for r in rows:
@@ -367,14 +442,18 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
         if "public_funding" in r:
             e.add(w, "public_funding moved to data/transition/funding.json — the project "
                      "carries a derived rollup, never a stored copy")
+        _capacity(e, w, r)
         history = r.get("status_history") or []
         dates = []
+        prev_status = None
         for i, h in enumerate(history):
             hw = f"{w} status_history[{i}]"
             _req(e, hw, h, "status", "date", "source_url")
             _vocab(e, hw, h, "status", sm.PROJECT_STATUSES)
             _date(e, hw, h, "date")
             _url(e, hw, h.get("source_url"), "source_url")
+            _event(e, hw, h, i, prev_status)
+            prev_status = h.get("status")
             dates.append(str(h.get("date", "")))
         if dates != sorted(dates):
             e.add(w, "status_history is not in date order; it is append-only")
@@ -553,6 +632,38 @@ def check_status_groups(e: Errors) -> None:
         if found != tuple(members):
             e.add("web/lib/transition.ts", f"{name} is {found} but sector_map.py says "
                                            f"{tuple(members)}")
+
+
+def check_project_status_groups(e: Errors) -> None:
+    """Every project status is in exactly one counting group.
+
+    The same failure as the funding groups and for the same reason: a status
+    added to PROJECT_STATUSES and to no group would be dropped from the alive
+    count, the stopped count and the complete count at once, which is invisible
+    rather than wrong. No surface reads these yet, so there is no transition.ts
+    half to this check; when one does, add the mirror and check it here.
+    """
+    groups = {
+        "PROJECT_ALIVE": sm.PROJECT_ALIVE,
+        "PROJECT_STOPPED": sm.PROJECT_STOPPED,
+        "PROJECT_COMPLETE": sm.PROJECT_COMPLETE,
+    }
+    seen: dict[str, str] = {}
+    for name, members in groups.items():
+        for status in members:
+            if status in seen:
+                e.add("sector_map.py", f"project status {status!r} is in both {seen[status]} "
+                                       f"and {name}; it belongs to exactly one")
+            seen[status] = name
+    for status in sm.PROJECT_STATUSES:
+        if status not in seen:
+            e.add("sector_map.py", f"project status {status!r} is in no counting group; add "
+                                   f"it to PROJECT_ALIVE, PROJECT_STOPPED or "
+                                   f"PROJECT_COMPLETE so a count knows what to do with it")
+    for status in seen:
+        if status not in sm.PROJECT_STATUSES:
+            e.add("sector_map.py", f"{seen[status]} contains {status!r}, which is not a "
+                                   f"project status")
 
 
 # The icon set is keyed by the noun it draws, not by a sector slug — four of the
@@ -977,6 +1088,7 @@ def main() -> int:
     check_ecosystems(e, rows["ecosystem"], sectors, tech_ids, project_ids, material_ids,
                      measure_ids)
     check_status_groups(e)
+    check_project_status_groups(e)
 
     drafts = check_prose(e)
 
