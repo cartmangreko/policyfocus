@@ -561,27 +561,27 @@
       "y": 437.0,
       "labels": {
         "wide": {
-          "x": 415.4,
-          "anchor": "start",
+          "x": 353.5,
+          "anchor": "end",
           "lines": [
             {
               "text": "CATL Arnstadt",
               "role": "name",
               "size": 11.0,
-              "y": 398.1
+              "y": 382.1
             },
             {
               "text": "Contemporary Amperex Technology Thuringia",
               "role": "company",
               "size": 9.5,
-              "y": 410.1
+              "y": 394.1
             }
           ],
           "leader": [
-            396.5,
+            388.3,
             432.9,
-            415.4,
-            414.0
+            353.5,
+            398.1
           ]
         },
         "narrow": {
@@ -953,21 +953,27 @@
       "y": 492.4,
       "labels": {
         "wide": {
-          "x": 540.0,
-          "anchor": "middle",
+          "x": 563.0,
+          "anchor": "start",
           "lines": [
             {
               "text": "EVE Power Debrecen",
               "role": "name",
               "size": 11.0,
-              "y": 462.6
+              "y": 453.5
             },
             {
               "text": "EVE Power",
               "role": "company",
               "size": 9.5,
-              "y": 474.6
+              "y": 465.5
             }
+          ],
+          "leader": [
+            544.1,
+            488.3,
+            563.0,
+            469.4
           ]
         },
         "narrow": {
@@ -1076,27 +1082,21 @@
       "y": 429.6,
       "labels": {
         "wide": {
-          "x": 469.3,
-          "anchor": "middle",
+          "x": 479.3,
+          "anchor": "start",
           "lines": [
             {
               "text": "LG Energy Solution Wrocław",
               "role": "name",
               "size": 11.0,
-              "y": 359.5
+              "y": 403.6
             },
             {
               "text": "LG Energy Solution",
               "role": "company",
               "size": 9.5,
-              "y": 371.5
+              "y": 415.6
             }
-          ],
-          "leader": [
-            469.3,
-            423.8,
-            469.3,
-            375.5
           ]
         },
         "narrow": {
@@ -1149,20 +1149,20 @@
       "y": 368.1,
       "labels": {
         "wide": {
-          "x": 358.6,
-          "anchor": "end",
+          "x": 382.5,
+          "anchor": "start",
           "lines": [
             {
               "text": "Northvolt Drei",
               "role": "name",
               "size": 11.0,
-              "y": 386.7
+              "y": 364.4
             },
             {
               "text": "Northvolt Drei Project GmbH",
               "role": "company",
               "size": 9.5,
-              "y": 398.7
+              "y": 376.4
             }
           ]
         },
@@ -1328,27 +1328,27 @@
       "y": 409.7,
       "labels": {
         "wide": {
-          "x": 385.6,
-          "anchor": "middle",
+          "x": 445.5,
+          "anchor": "start",
           "lines": [
             {
               "text": "PowerCo Salzgitter",
               "role": "name",
               "size": 11.0,
-              "y": 310.5
+              "y": 333.8
             },
             {
               "text": "PowerCo",
               "role": "company",
               "size": 9.5,
-              "y": 322.5
+              "y": 345.8
             }
           ],
           "leader": [
-            385.6,
-            403.9,
-            385.6,
-            326.5
+            389.7,
+            405.6,
+            445.5,
+            349.8
           ]
         },
         "narrow": {
@@ -1364,6 +1364,68 @@
           ],
           "shortened": true,
           "crowded": true
+        }
+      }
+    },
+    {
+      "id": "samsung-sdi-god",
+      "site": "Göd cell works",
+      "country": "HU",
+      "role": "plant",
+      "relation": "sector",
+      "status": "operating",
+      "label": "Samsung SDI Göd",
+      "name_line": "Samsung SDI Göd",
+      "sub": "Samsung SDI",
+      "href": "/projects/samsung-sdi-god",
+      "lat": 47.674,
+      "lon": 19.1631,
+      "as_of": "2026-09-02",
+      "x": 507.3,
+      "y": 495.0,
+      "labels": {
+        "wide": {
+          "x": 530.3,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Samsung SDI Göd",
+              "role": "name",
+              "size": 11.0,
+              "y": 526.5
+            },
+            {
+              "text": "Samsung SDI",
+              "role": "company",
+              "size": 9.5,
+              "y": 538.5
+            }
+          ],
+          "leader": [
+            511.4,
+            499.1,
+            530.3,
+            518.0
+          ]
+        },
+        "narrow": {
+          "x": 551.9,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Samsung SDI Göd",
+              "role": "name",
+              "size": 21.0,
+              "y": 498.8
+            }
+          ],
+          "leader": [
+            513.1,
+            495.0,
+            551.9,
+            495.0
+          ],
+          "shortened": true
         }
       }
     },
@@ -1385,21 +1447,27 @@
       "y": 506.7,
       "labels": {
         "wide": {
-          "x": 513.9,
-          "anchor": "start",
+          "x": 480.9,
+          "anchor": "end",
           "lines": [
             {
               "text": "SK On Iváncsa",
               "role": "name",
               "size": 11.0,
-              "y": 525.3
+              "y": 538.2
             },
             {
               "text": "SK On",
               "role": "company",
               "size": 9.5,
-              "y": 537.3
+              "y": 550.2
             }
+          ],
+          "leader": [
+            499.8,
+            510.8,
+            480.9,
+            529.7
           ]
         },
         "narrow": {
@@ -1418,6 +1486,207 @@
             502.6,
             449.5,
             452.3
+          ],
+          "shortened": true,
+          "crowded": true
+        }
+      }
+    },
+    {
+      "id": "sk-on-komarom",
+      "site": "Komárom industrial park works",
+      "country": "HU",
+      "role": "plant",
+      "relation": "sector",
+      "status": "operating",
+      "label": "SK On Komárom",
+      "name_line": "SK On Komárom",
+      "sub": "SK On",
+      "href": "/projects/sk-on-komarom",
+      "lat": 47.7401,
+      "lon": 18.0685,
+      "as_of": "2026-09-05",
+      "x": 492.0,
+      "y": 495.4,
+      "labels": {
+        "wide": {
+          "x": 492.0,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "SK On Komárom",
+              "role": "name",
+              "size": 11.0,
+              "y": 447.5
+            },
+            {
+              "text": "SK On",
+              "role": "company",
+              "size": 9.5,
+              "y": 459.5
+            }
+          ],
+          "leader": [
+            492.0,
+            489.6,
+            492.0,
+            463.5
+          ]
+        },
+        "narrow": {
+          "x": 492.0,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "SK On Komárom",
+              "role": "name",
+              "size": 21.0,
+              "y": 628.0
+            }
+          ],
+          "leader": [
+            492.0,
+            501.2,
+            492.0,
+            611.6
+          ],
+          "shortened": true,
+          "crowded": true
+        }
+      }
+    },
+    {
+      "id": "sunwoda-nyiregyhaza",
+      "site": "Nyíregyháza cell works",
+      "country": "HU",
+      "role": "plant",
+      "relation": "sector",
+      "status": "construction",
+      "label": "Sunwoda Nyíregyháza",
+      "name_line": "Sunwoda Nyíregyháza",
+      "sub": "Sunwoda",
+      "href": "/projects/sunwoda-nyiregyhaza",
+      "lat": 47.8953,
+      "lon": 21.7435,
+      "as_of": "2026-09-04",
+      "x": 542.1,
+      "y": 485.4,
+      "labels": {
+        "wide": {
+          "x": 542.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Sunwoda Nyíregyháza",
+              "role": "name",
+              "size": 11.0,
+              "y": 577.2
+            },
+            {
+              "text": "Sunwoda",
+              "role": "company",
+              "size": 9.5,
+              "y": 589.2
+            }
+          ],
+          "leader": [
+            542.1,
+            491.2,
+            542.1,
+            568.6
+          ]
+        },
+        "narrow": {
+          "x": 542.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Sunwoda",
+              "role": "name",
+              "size": 21.0,
+              "y": 284.8
+            },
+            {
+              "text": "Nyíregyháza",
+              "role": "name",
+              "size": 21.0,
+              "y": 310.0
+            }
+          ],
+          "leader": [
+            542.1,
+            479.6,
+            542.1,
+            318.8
+          ],
+          "shortened": true,
+          "crowded": true
+        }
+      }
+    },
+    {
+      "id": "tesla-gruenheide-cells",
+      "site": "Grünheide works",
+      "country": "DE",
+      "role": "plant",
+      "relation": "sector",
+      "status": "construction",
+      "label": "Tesla Giga Berlin cell manufacturing",
+      "name_line": "Tesla Giga Berlin cell manufacturing",
+      "sub": "Tesla",
+      "href": "/projects/tesla-gruenheide-cells",
+      "lat": 52.3972,
+      "lon": 13.7948,
+      "as_of": "2026-09-04",
+      "x": 427.8,
+      "y": 404.1,
+      "labels": {
+        "wide": {
+          "x": 427.8,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "Tesla Giga Berlin cell manufacturing",
+              "role": "name",
+              "size": 11.0,
+              "y": 304.9
+            },
+            {
+              "text": "Tesla",
+              "role": "company",
+              "size": 9.5,
+              "y": 316.9
+            }
+          ],
+          "leader": [
+            427.8,
+            398.3,
+            427.8,
+            320.9
+          ]
+        },
+        "narrow": {
+          "x": 261.2,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "Tesla Giga Berlin cell",
+              "role": "name",
+              "size": 21.0,
+              "y": 395.3
+            },
+            {
+              "text": "manufacturing",
+              "role": "name",
+              "size": 21.0,
+              "y": 420.5
+            }
+          ],
+          "leader": [
+            422.0,
+            404.1,
+            261.2,
+            404.1
           ],
           "shortened": true,
           "crowded": true
@@ -1460,27 +1729,21 @@
           ]
         },
         "narrow": {
-          "x": 234.1,
-          "anchor": "end",
+          "x": 292.6,
+          "anchor": "start",
           "lines": [
             {
               "text": "Verkor Gigafactory",
               "role": "name",
               "size": 21.0,
-              "y": 420.7
+              "y": 381.5
             },
             {
               "text": "Bourbourg",
               "role": "name",
               "size": 21.0,
-              "y": 445.9
+              "y": 406.7
             }
-          ],
-          "leader": [
-            272.9,
-            429.5,
-            234.1,
-            429.5
           ],
           "shortened": true,
           "crowded": true
@@ -1494,26 +1757,14 @@
       "text": "Germany",
       "labels": {
         "wide": {
-          "x": 405.3,
+          "x": 400.8,
           "anchor": "start",
           "lines": [
             {
               "text": "Germany",
               "role": "country",
               "size": 9.0,
-              "y": 426.6
-            }
-          ]
-        },
-        "narrow": {
-          "x": 395.8,
-          "anchor": "start",
-          "lines": [
-            {
-              "text": "Germany",
-              "role": "country",
-              "size": 17.2,
-              "y": 404.3
+              "y": 422.0
             }
           ]
         }
@@ -1572,14 +1823,14 @@
       "text": "United Kingdom",
       "labels": {
         "wide": {
-          "x": 216.7,
-          "anchor": "end",
+          "x": 236.6,
+          "anchor": "middle",
           "lines": [
             {
               "text": "United Kingdom",
               "role": "country",
               "size": 9.0,
-              "y": 390.0
+              "y": 364.7
             }
           ]
         }
@@ -1590,26 +1841,14 @@
       "text": "Hungary",
       "labels": {
         "wide": {
-          "x": 479.4,
-          "anchor": "end",
-          "lines": [
-            {
-              "text": "Hungary",
-              "role": "country",
-              "size": 9.0,
-              "y": 534.5
-            }
-          ]
-        },
-        "narrow": {
-          "x": 559.3,
+          "x": 514.4,
           "anchor": "start",
           "lines": [
             {
               "text": "Hungary",
               "role": "country",
-              "size": 17.2,
-              "y": 501.5
+              "size": 9.0,
+              "y": 510.8
             }
           ]
         }
@@ -1627,7 +1866,7 @@
               "text": "Poland",
               "role": "country",
               "size": 9.0,
-              "y": 424.5
+              "y": 431.7
             }
           ]
         }
@@ -1698,14 +1937,14 @@
       "text": "Slovakia",
       "labels": {
         "wide": {
-          "x": 530.3,
+          "x": 504.4,
           "anchor": "middle",
           "lines": [
             {
               "text": "Slovakia",
               "role": "country",
               "size": 9.0,
-              "y": 442.0
+              "y": 475.2
             }
           ]
         }
@@ -1715,16 +1954,16 @@
   "as_of": "2026-09-07",
   "coordinates": [
     {
-      "site": "18 sites",
+      "site": "22 sites",
       "south": 37.9871,
       "north": 64.734,
       "west": -8.7974,
-      "east": 21.6201,
+      "east": 21.7435,
       "as_of": "2026-09-07"
     }
   ],
   "undrawn": {
-    "projects": 7,
+    "projects": 10,
     "sites": 4,
     "rows": [
       {
@@ -1746,6 +1985,12 @@
         "sited": false
       },
       {
+        "id": "farasis-bitterfeld",
+        "name": "Farasis Bitterfeld-Wolfen",
+        "status": "paused",
+        "sited": false
+      },
+      {
         "id": "italvolt-scarmagno",
         "name": "Italvolt Scarmagno",
         "status": "cancelled",
@@ -1764,10 +2009,22 @@
         "sited": false
       },
       {
+        "id": "svolt-lauchhammer",
+        "name": "SVOLT Lauchhammer",
+        "status": "cancelled",
+        "sited": false
+      },
+      {
         "id": "svolt-uberherrn",
         "name": "SVOLT Überherrn",
         "status": "cancelled",
         "sited": true
+      },
+      {
+        "id": "freyr-mo-i-rana",
+        "name": "T1 Energy Giga Arctic",
+        "status": "cancelled",
+        "sited": false
       }
     ]
   }

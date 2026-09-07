@@ -116,6 +116,20 @@ def num(v: float) -> str:
     return f"{v:,.0f}" if float(v) == int(v) else f"{v:,.2f}"
 
 
+def no_cap(rows) -> int:
+    """How many of these rows carry no capacity figure.
+
+    PRINTED BESIDE EVERY CAPACITY-WEIGHTED TOTAL, per sources/scope.md,
+    "Admission and capacity are separate questions". A row with no figure is
+    admitted, is counted in every count-based table here, and cannot be weighted
+    in a capacity-weighted one -- there is nothing to weight it by. A weighted
+    total with a silent denominator reads as a statement about the sector when it
+    is a statement about the part of the sector that published a number, so the
+    excluded count travels with it. It is printed when it is zero too, so that a
+    reader never has to work out whether it was checked."""
+    return sum(1 for r in rows if r.get("capacity_value") in (None, ""))
+
+
 def by_unit(rows) -> str:
     """A total per unit, never across them. t_per_year and t_co2_per_year are both
     tonnes and they are not the same tonne: one is product the works sells, the
@@ -246,7 +260,10 @@ def main() -> int:
            "project's first entry, which comes from nowhere. Each cell is the "
            "number of events, and after the slash the capacity moving with them, "
            "totalled separately per unit and never across them — blank where none "
-           "of those projects carries a figure.", ""]
+           "of those projects carries a figure. THE COUNT AND THE CAPACITY IN A "
+           "CELL HAVE DIFFERENT DENOMINATORS: the count is every event, the "
+           "capacity is only the events whose project carries a figure. The "
+           "shortfall is in the table above and in `no capacity` below.", ""]
     froms = ["-"] + list(sm.PROJECT_STATUSES)
     tos = list(sm.PROJECT_STATUSES)
     cell_n: dict[tuple, int] = Counter()
@@ -334,7 +351,11 @@ def main() -> int:
 
     md += ["", "## Capacity now, by reporting group", "",
            "The same four groups, weighted by capacity rather than counted. "
-           "Totals are per unit and never across them.", ""]
+           "Totals are per unit and never across them. `no capacity` is the "
+           "number of rows in that sector carrying no figure: they are admitted, "
+           "they are counted in every table above, and they are absent from these "
+           "totals because there is nothing to weight them by. Read every row of "
+           "this table against it.", ""]
     body = []
     for s in sectors:
         rs = [r for r in rows if r.get("sector") == s]
@@ -342,11 +363,12 @@ def main() -> int:
         for g in names:
             line.append(by_unit([r for r in rs
                                  if r.get("status") in REPORTING_GROUPS[g]]) or "-")
+        line.append(f"{no_cap(rs)} of {len(rs)}")
         body.append(line)
     body.append(["all"] + [by_unit([r for r in rows
                                     if r.get("status") in REPORTING_GROUPS[g]]) or "-"
-                           for g in names])
-    md += [table(["sector"] + names, body)]
+                           for g in names] + [f"{no_cap(rows)} of {len(rows)}"])
+    md += [table(["sector"] + names + ["no capacity"], body)]
 
     unplaced = [st for st in sm.PROJECT_STATUSES
                 if not any(st in v for v in REPORTING_GROUPS.values())]

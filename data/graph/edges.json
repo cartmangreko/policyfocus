@@ -29349,6 +29349,26 @@
  },
  {
   "rel": "deploys",
+  "from": "project:farasis-bitterfeld",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-05-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=farasis-bitterfeld].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:freyr-mo-i-rana",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=freyr-mo-i-rana].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:galata-co2-storage",
   "to": "technology:co2-transport-storage",
   "since": "2022-07-18",
@@ -29649,12 +29669,42 @@
  },
  {
   "rel": "deploys",
+  "from": "project:samsung-sdi-god",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:samsung-sdi-god",
+  "to": "technology:nmc-nca-cells",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:sk-on-ivancsa",
   "to": "technology:cell-manufacturing",
   "since": "2021-01-29",
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=sk-on-ivancsa].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:sk-on-komarom",
+  "to": "technology:cell-manufacturing",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-komarom].technology"
   }
  },
  {
@@ -29709,12 +29759,52 @@
  },
  {
   "rel": "deploys",
+  "from": "project:sunwoda-nyiregyhaza",
+  "to": "technology:cell-manufacturing",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sunwoda-nyiregyhaza].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:svolt-lauchhammer",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-lauchhammer].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:svolt-uberherrn",
   "to": "technology:cell-manufacturing",
   "since": "2024-07-24",
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=svolt-uberherrn].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "technology:cell-manufacturing",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "technology:nmc-nca-cells",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].technology"
   }
  },
  {
@@ -32460,6 +32550,50 @@
  },
  {
   "rel": "in",
+  "from": "project:farasis-bitterfeld",
+  "to": "country:DE",
+  "since": "2022-05-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=farasis-bitterfeld].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:farasis-bitterfeld",
+  "to": "sector:batsol",
+  "since": "2022-05-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=farasis-bitterfeld].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:freyr-mo-i-rana",
+  "to": "country:NO",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=freyr-mo-i-rana].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:freyr-mo-i-rana",
+  "to": "sector:batsol",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=freyr-mo-i-rana].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:galata-co2-storage",
   "to": "country:BG",
   "since": "2022-07-18",
@@ -32900,6 +33034,28 @@
  },
  {
   "rel": "in",
+  "from": "project:samsung-sdi-god",
+  "to": "country:HU",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:samsung-sdi-god",
+  "to": "sector:batsol",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:sk-on-ivancsa",
   "to": "country:HU",
   "since": "2021-01-29",
@@ -32917,6 +33073,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=sk-on-ivancsa].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:sk-on-komarom",
+  "to": "country:HU",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-komarom].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:sk-on-komarom",
+  "to": "sector:batsol",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-komarom].sector"
   },
   "basis": "sector"
  },
@@ -32966,6 +33144,50 @@
  },
  {
   "rel": "in",
+  "from": "project:sunwoda-nyiregyhaza",
+  "to": "country:HU",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sunwoda-nyiregyhaza].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:sunwoda-nyiregyhaza",
+  "to": "sector:batsol",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sunwoda-nyiregyhaza].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:svolt-lauchhammer",
+  "to": "country:DE",
+  "since": "2022-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-lauchhammer].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:svolt-lauchhammer",
+  "to": "sector:batsol",
+  "since": "2022-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-lauchhammer].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:svolt-uberherrn",
   "to": "country:DE",
   "since": "2024-07-24",
@@ -32983,6 +33205,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=svolt-uberherrn].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "country:DE",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "sector:batsol",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].sector"
   },
   "basis": "sector"
  },

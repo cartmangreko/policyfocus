@@ -782,3 +782,59 @@ however much money is visible around it, and a row whose source states no figure
 at all leaves `capacity_value` empty rather than borrowing one from a grant
 document.
 
+
+### Admission and capacity are separate questions
+
+**Ruled 7 September 2026, reversing a ruling of the same day.** For one commit
+this register held that a row whose admitting source states no capacity should
+never have been admitted, and seven battery rows were moved back to the candidate
+list on that reading. The reading was wrong and the rows are restored. It is
+written down here rather than quietly reverted, because the wrong version was on
+the branch and somebody reading the history is entitled to know why it went.
+
+**Admission requires a company-confirmed site.** That is the whole of the
+admission test: the company itself has confirmed a named site, in Europe as this
+platform draws it, making battery cells. What admits a row is that the operator
+says the works is theirs and says where it is.
+
+**Capacity is a separate attribute of an admitted row, and it has two acceptable
+origins.** Either a **company statement**, or an **official record naming the
+site** — a permit, a state aid decision, a host-state grant decision. A figure
+from an official record is recorded with `capacity_basis: "official"`, which
+exists so that the two origins can be told apart in every series built on them: a
+number the company gave an authority, or a number an authority was willing to pay
+against, is not the same claim as the company saying today what it is building
+towards.
+
+**A row with neither stays admitted with an empty capacity.** It is a real works
+that a real company has confirmed, and the register knows where it is and who
+runs it. What it does not know is how big it is.
+
+The consequence is a rule about arithmetic, and it is the reason the two
+questions had to be separated:
+
+- **a row with no capacity is INCLUDED in count-based statistics.** How many
+  battery projects were cancelled is a question about projects, and dropping the
+  ones whose size nobody published would answer a different question — and answer
+  it in a predictable direction, because the sites that never published a figure
+  are disproportionately the ones that failed early.
+- **a row with no capacity is EXCLUDED from capacity-weighted statistics**, of
+  necessity: there is nothing to weight it by.
+
+**So every summary prints the number of rows without a capacity, per sector,
+beside the capacity-weighted tables it affects.** A weighted total with a silent
+denominator is the failure this rule exists to prevent: it reads as a statement
+about the sector when it is a statement about the part of the sector that
+published a number. The count is printed whether it is zero or not, so that a
+reader never has to work out whether it was checked.
+
+**Why the earlier ruling was wrong.** It conflated the scale threshold with the
+admission test. The perimeter's "at least 1 GWh per year" is a rule about which
+sites are big enough to be worth holding, and it was never a rule that the
+admitting document must be the thing that states the figure. Applied as the
+latter it deleted seven real, company-confirmed works — Tesla's own Berlin cell
+line among them — from a dataset whose whole purpose is to count what is being
+built and what stops. It also had the effect of making the dataset look complete:
+25 rows all carrying capacities, with the gap moved somewhere the totals could
+not see it. A register that improves its own numbers by dropping the rows that
+embarrass them is measuring itself and not the sector.

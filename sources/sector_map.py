@@ -284,13 +284,28 @@ CAPACITY_UNITS = (
     "t_co2_per_year",
 )
 
-# HOW FIRM THE FIGURE IS. The same number means different things at these three
+# HOW FIRM THE FIGURE IS. The same number means different things at these
 # stages, and attrition measured against announced capacity is a different
 # series from attrition measured against capacity somebody committed money to.
+#
+#   announced  the company states it is building towards this figure.
+#   fid        the figure was fixed at a final investment decision.
+#   operating  the figure describes a works that is running.
+#   official   THE FIGURE COMES FROM AN OFFICIAL RECORD NAMING THE SITE rather
+#              than from the company: a permit, a state aid decision, a
+#              host-state grant decision. It is a separate basis and not a
+#              flavour of `announced` because the speaker is different and the
+#              failure modes are different — an applicant's filed plan is a
+#              number the company gave an authority, and a grant decision is a
+#              number an authority was willing to pay against. Both are checkable
+#              in a way a press figure is not, and neither is the company saying
+#              what it is building towards today. See sources/scope.md,
+#              "Admission and capacity are separate questions".
 CAPACITY_BASES = (
     "announced",
     "fid",
     "operating",
+    "official",
 )
 
 # WHAT THE PLANT MAKES, in the source's own word. Closed, because "steel" and
