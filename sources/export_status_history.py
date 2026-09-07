@@ -76,6 +76,7 @@ COLUMNS = [
     "schedule_speaker", "first_stated_production_start",
     "latest_stated_production_start", "schedule_revisions", "months_slipped",
     "months_past_stated", "speakers_disagree", "disagreement_months",
+    "press_stated_production_start", "press_source_url",
     "event_date", "status_from", "status_to", "event_kind", "source_type",
     "source_url", "evidence_mode", "months_in_previous_state", "current_status",
     "months_in_current_state",
@@ -233,6 +234,28 @@ def schedule(r: dict, today: date) -> dict:
     return out
 
 
+# THE COMPARISON TIER, AND WHY IT IS NOT IN THE REGISTER. Five rows have a
+# production date that exists only in trade press, and the source rules refuse it:
+# the register states nothing it cannot source to a company, a permit or a grant
+# decision. That refusal has a cost, and a cost nobody can see is a cost nobody
+# can weigh. So the press dates are held in sources/schedule_queue.json, read from
+# there into two columns here, and never written to data/transition/projects.json.
+#
+# THE FILE IS THE BOUNDARY. Anything in projects.json has passed the source rules;
+# anything in these two columns has not. Keeping them in different files is what
+# stops the tier being quietly promoted by somebody who finds it convenient.
+def press_tier() -> dict[str, dict]:
+    path = ROOT / "sources" / "schedule_queue.json"
+    if not path.exists():
+        return {}
+    out = {}
+    with open(path, encoding="utf-8") as fh:
+        for e in json.load(fh).get("outstanding") or []:
+            if e.get("press_stated_production_start"):
+                out[e["project"]] = e
+    return out
+
+
 def load():
     with open(ROOT / "data" / "transition" / "projects.json", encoding="utf-8") as fh:
         return json.load(fh)["projects"]
@@ -243,6 +266,7 @@ def main() -> int:
     today = date.today()
     rows = load()
 
+    press = press_tier()
     events = []
     # Every closed run in a state, and the open one the project is sitting in
     # now, keyed by the state itself.
@@ -252,6 +276,9 @@ def main() -> int:
     for r in rows:
         history = r.get("status_history") or []
         sched = schedule(r, today)
+        pt = press.get(r["id"], {})
+        sched["press_stated_production_start"] = pt.get("press_stated_production_start", "")
+        sched["press_source_url"] = pt.get("press_source_url", "")
         # Measured from the last event to the export date. A project with no
         # history has no event to measure from and is left empty rather than
         # given a zero, which would read as "changed today".
@@ -510,6 +537,50 @@ def main() -> int:
                       for r, x in dis])]
     else:
         md += ["None.", ""]
+
+    md += ["", "## The press tier, as a comparison and not as a source", "",
+           "Five rows have a stated production date that exists only in trade "
+           "press. The source rules refuse it — the register states nothing it "
+           "cannot source to a company, a permit or a grant decision — and those "
+           "dates are held in sources/schedule_queue.json, never in "
+           "data/transition/projects.json. THE FILE IS THE BOUNDARY: anything in "
+           "the register has passed the rules, anything in this tier has not.", "",
+           "This table is what the refusal costs. `months past` is the median "
+           "months_past_stated over the rows that have a date, on each tier; a "
+           "project whose date is still ahead counts as 0 and an operating plant "
+           "is excluded, as everywhere else in this file.", ""]
+
+    def tier(rs, with_press):
+        have, past = 0, []
+        for r in rs:
+            x = schedule(r, today)
+            t = x["latest_stated_production_start"]
+            if not t and with_press:
+                pt = press.get(r["id"], {})
+                t = pt.get("press_stated_production_start", "")
+            if not t:
+                continue
+            have += 1
+            if r.get("status") == "operating":
+                continue
+            end = target_end(t)
+            past.append(months(end, today) if today > end else 0.0)
+        return have, past
+
+    body = []
+    for s in sectors:
+        rs = [r for r in rows if r.get("sector") == s]
+        h0, p0 = tier(rs, False)
+        h1, p1 = tier(rs, True)
+        body.append([s, len(rs), f"{h0} ({100 * h0 // len(rs)}%)", med(p0),
+                     f"{h1} ({100 * h1 // len(rs)}%)", med(p1), h1 - h0])
+    h0, p0 = tier(rows, False)
+    h1, p1 = tier(rows, True)
+    body.append(["all", len(rows), f"{h0} ({100 * h0 // len(rows)}%)", med(p0),
+                 f"{h1} ({100 * h1 // len(rows)}%)", med(p1), h1 - h0])
+    md += [table(["sector", "projects", "with a date (register)",
+                  "median months past (register)", "with a date (+press)",
+                  "median months past (+press)", "rows the press adds"], body)]
 
     md += ["", "## Status now, by reporting group", "",
            "`active`, `paused`, `stopped` and `operating` are this export's "

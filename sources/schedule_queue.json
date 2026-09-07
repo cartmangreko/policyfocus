@@ -2,6 +2,13 @@
   "_comment": [
     "Landed rows with an empty stated_schedule after the fetch pass of 7 September 2026.",
     "",
+    "PRESS_ONLY ENTRIES CARRY THE DATE THEY WERE REFUSED FOR. `press_stated_production_start`",
+    "and `press_source_url` are a COMPARISON TIER: sources/export_status_history.py reads them",
+    "into two CSV columns and one summary table so the register can be measured against what",
+    "the press says, and they are NEVER written into data/transition/projects.json. The point is",
+    "to make the cost of the source rule visible rather than to relax it -- the register still",
+    "states nothing it cannot source to a company, a permit or a grant decision.",
+    "",
     "WHY NOT sources/manual/wanted. That queue is for a page a browser can read and the",
     "fetcher is refused, and its README says so. Only stegra-boden is that, and it is filed",
     "there as well as here. The rest are the harder case: the page is readable and no company,",
@@ -21,7 +28,11 @@
       "sector": "batsol",
       "status": "cancelled",
       "kind": "press_only",
-      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press."
+      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press.",
+      "press_stated_production_start": "2026",
+      "press_target_precision": "year",
+      "press_source_url": "https://www.electrive.com/2024/06/05/acc-puts-work-on-battery-factories-in-kaiserslautern-and-termoli-on-hold/",
+      "press_note": "electrive, already on the row: 'The other two factories in Kaiserslautern and Termoli are scheduled to go online in 2025 and 2026, respectively.'"
     },
     {
       "project": "britishvolt-blyth",
@@ -42,7 +53,11 @@
       "sector": "batsol",
       "status": "construction",
       "kind": "press_only",
-      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press."
+      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press.",
+      "press_stated_production_start": "2026",
+      "press_target_precision": "year",
+      "press_source_url": "https://www.electrive.com/2025/12/05/hungarian-catl-factory-to-open-in-spring/",
+      "press_note": "electrive, December 2025: cell production scheduled to start in early 2026. Located for this tier; not on the row."
     },
     {
       "project": "envision-aesc-douai",
@@ -105,7 +120,11 @@
       "sector": "batsol",
       "status": "construction",
       "kind": "press_only",
-      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press."
+      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press.",
+      "press_stated_production_start": "2027-07",
+      "press_target_precision": "month",
+      "press_source_url": "https://www.electrive.com/2025/10/28/powerco-battery-production-in-spain-scheduled-to-start-in-july-2027/",
+      "press_note": "electrive, October 2025: series production at Sagunto scheduled for July 2027. Located for this tier; not on the row."
     },
     {
       "project": "powerco-salzgitter",
@@ -126,7 +145,11 @@
       "sector": "batsol",
       "status": "construction",
       "kind": "press_only",
-      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press."
+      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press.",
+      "press_stated_production_start": "2024",
+      "press_target_precision": "year",
+      "press_source_url": "https://www.electrive.com/2022/03/23/sk-on-receives-funding-for-battery-cell-plant-in-hungary/",
+      "press_note": "electrive, already on the row: trade reporting describes mass production from 2024 at 30 GWh."
     },
     {
       "project": "sk-on-komarom",
@@ -168,7 +191,11 @@
       "sector": "ccs",
       "status": "announced",
       "kind": "press_only",
-      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press."
+      "reason": "A date exists in trade press and is excluded by the source rules for this pass. The row's own note already records it as press.",
+      "press_stated_production_start": "2028",
+      "press_target_precision": "year",
+      "press_source_url": "https://balkangreenenergynews.com/bulgarian-cement-plant-gets-eu-grant-for-innovative-carbon-capture-project/",
+      "press_note": "Balkan Green Energy News, already on the row: 'HeidelbergCement estimated the facility could come online in 2028.'"
     },
     {
       "project": "northern-lights",
