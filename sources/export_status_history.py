@@ -286,6 +286,21 @@ def main() -> int:
             line.append("%d / %s" % (n, cap) if cap else str(n))
         body.append(line)
     md += [table(["from \\ to"] + tos, body)]
+    # THE TWO DENOMINATORS, NAMED, because this table is the one a paper lifts
+    # straight into a figure and its two halves do not divide by the same thing.
+    # A cell's count is over every row; its capacity is over the rows carrying a
+    # figure. Printed per sector and for the file, so the caption travels with
+    # the table instead of living in a methods section nobody copies with it.
+    md += ["", "**The two denominators.** Counts in this table are over all rows; "
+               "capacities are over the rows with a stated capacity. They are not "
+               "the same denominator and a ratio must not be taken across them.", ""]
+    body = []
+    for s in sectors:
+        rs = [r for r in rows if r.get("sector") == s]
+        body.append([s, len(rs), len(rs) - no_cap(rs), no_cap(rs)])
+    body.append(["all", len(rows), len(rows) - no_cap(rows), no_cap(rows)])
+    md += [table(["sector", "rows", "rows with stated capacity",
+                  "rows without"], body)]
 
     md += ["", "## Months in each state", "",
            "A closed run is a state a project has left; the open run is the state "
