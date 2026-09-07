@@ -1443,9 +1443,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2023-05-30",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://www.acc-emotion.com/media/bbd-press-release",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Inaugurated on 30 May 2023 with more than 13 GWh, rising to 40 GWh by 2030. ACC stated the first of the site's three production units would be operational before the end of 2023; the history starts at the inauguration because that is the first event sourced here."
         }
       ],
@@ -1490,15 +1495,25 @@
       "status": "cancelled",
       "status_history": [
         {
-          "status": "paused",
+          "event_kind": "status",
           "date": "2024-06-05",
+          "status_from": null,
+          "status_to": "paused",
+          "status": "paused",
           "source_url": "https://www.electrive.com/2024/06/05/acc-puts-work-on-battery-factories-in-kaiserslautern-and-termoli-on-hold/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "Work on Termoli and Kaiserslautern put on hold from May 2024 while ACC weighed a move to lithium iron phosphate."
         },
         {
-          "status": "cancelled",
+          "event_kind": "status",
           "date": "2026-02-09",
+          "status_from": "paused",
+          "status_to": "cancelled",
+          "status": "cancelled",
           "source_url": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "Status unchanged, and the sources disagree about what happened. The Italian union UILM said on 7 February 2026 that the project was 'definitively shelved'. ACC's own words are that the conditions for restarting the projects 'are unlikely to be met', and that it has begun a 'constructive dialogue' with unions about potential discontinuation. Under the standing press ruling the status follows the project's own sources, which describe a condition and a talks process rather than a decision, so it stays paused. ——— CORRECTED 6 SEPTEMBER 2026, and the paragraph above is left standing as what this register said at the time. The reading was wrong: ACC's statement of 7 February 2026 is the same sentence that cancels Kaiserslautern, and one statement cannot cancel one project and pause another. The event keeps the date it reached this register; the statement it rests on is of 7 February, which is the date the Kaiserslautern row carries."
         }
       ],
@@ -1561,9 +1576,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2025-12-11",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Opened 11 December 2025 at 16 GWh, aiming at 50 GWh by 2030. Verkor stated the site 'is now manufacturing its own cells', with commercialisation of the first batteries planned for 2026."
         }
       ],
@@ -1612,9 +1632,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2025-12-17",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "PowerCo 'commissioned the Salzgitter gigafactory as planned and produced the first Unified Cells made in Europe'. First expansion stage 20 GWh, expandable to 40 GWh."
         }
       ],
@@ -1660,18 +1685,27 @@
       "status": "paused",
       "status_history": [
         {
-          "status": "paused",
+          "event_kind": "status",
           "date": "2025-03-12",
+          "status_from": null,
+          "status_to": "paused",
+          "status": "paused",
           "source_url": "https://northvolt.com/articles/northvolt-files-for-bankruptcy-in-sweden/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Northvolt AB, Northvolt Ett AB, Northvolt Labs AB, Northvolt Revolt AB and Northvolt Systems AB filed for bankruptcy in Sweden on 12 March 2025. A court-appointed trustee was to determine the future of the production facilities. The history starts here because it is the first event sourced on this row; the site produced cells from 2021."
         },
         {
-          "kind": "ownership",
-          "status": "paused",
+          "event_kind": "ownership",
           "date": "2026-02-26",
+          "status_from": "paused",
+          "status_to": "paused",
+          "status": "paused",
+          "source_url": "https://lyten.com/2026/02/26/lyten-completes-acquisition-of-northvolt-sweden-and-establishes-its-first-lyten-industrial-hub-in-sweden/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "from": "Northvolt",
           "to": "Lyten",
-          "source_url": "https://lyten.com/2026/02/26/lyten-completes-acquisition-of-northvolt-sweden-and-establishes-its-first-lyten-industrial-hub-in-sweden/",
           "note": "Lyten completed the acquisition of Northvolt Ett, Ett Expansion and Northvolt Labs and said it would begin the restart process immediately, with commercial cells planned for the second half of 2026. The site did not change status: it is the owner that changed, and the restart had not happened when this was recorded."
         }
       ],
@@ -1733,9 +1767,14 @@
       "status": "announced",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2024-12-10",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "A 50-50 joint venture investing up to €4.1 billion in a 50 GWh lithium iron phosphate site, targeted to start production by the end of 2026 and stated as subject to the evolution of the European electrical market and continued support from Spanish and EU authorities."
         }
       ],
@@ -1785,9 +1824,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2022-12-21",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://www.prnewswire.com/news-releases/catls-german-plant-kicks-off-cell-production-301708032.html",
+          "source_type": "wire_release",
+          "evidence_mode": "retrospective",
           "note": "CATL stated that 'the first batch of lithium-ion battery cells rolled off the newly installed production line under series condition in CATT's G2 building', with an initial 8 GWh per year rising to a planned 14 GWh."
         }
       ],
@@ -1836,9 +1880,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2023-07-27",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://news.lgensol.com/insights/from-our-experts/3071/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "LG Energy Solution describes Wrocław as Europe's largest EV battery works, expanding from 86 GWh to 90 GWh by the end of 2023. The history starts at this statement because it is the first company source read for the site."
         }
       ],
@@ -1893,9 +1942,14 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2022-08-12",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.catl.com/en/news/983.html",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "CATL 'officially announced it will invest 7.34 billion euros to build a 100 GWh battery plant in Debrecen of east Hungary', on 221 hectares in the Southern Industrial Park, its second European site. Trade press reports cell production starting in early 2026; no company statement of a start has been read, so the status stays at construction."
         }
       ],
@@ -1945,27 +1999,47 @@
       "status": "paused",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2024-03-25",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://northvolt.com/articles/start-of-construction-at-northvolt-drei/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Northvolt's own release: 'the start of construction of battery gigafactory Northvolt Drei in Heide' — the Chancellor, the Vice-Chancellor and the Minister-President of Schleswig-Holstein starting piling machinery on the site outside Heide, in Dithmarschen. GROUND WORKS AND NO BUILDING: what followed was piling, earthworks and utilities, and the factory itself was never raised. The Lyten memorandum of 2026 describes the site as having 'groundwork and utilities in place', which is the same fact from the other end."
         },
         {
-          "status": "paused",
+          "event_kind": "status",
           "date": "2024-11-21",
+          "status_from": "construction",
+          "status_to": "paused",
+          "status": "paused",
           "source_url": "https://northvolt.com/articles/chapter11/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Northvolt AB and subsidiaries filed for Chapter 11 reorganisation in the United States, with about $245 million of new financing and a stated intention that operations continue. Heide stopped: the German project company was left to the restructuring, and no work has been recorded on the site since. The Swedish bankruptcy followed on 12 March 2025 and is on the Northvolt Ett row."
         },
         {
-          "status": "paused",
+          "event_kind": "status",
           "date": "2026-04-10",
+          "status_from": "paused",
+          "status_to": "paused",
+          "status": "paused",
           "source_url": "https://bimschg.bob-sh.de/verfahren/bfb5e3a5-e941-4a83-bdc3-ef8f1ca22e57/public/detail",
+          "source_type": "permit",
+          "evidence_mode": "retrospective",
           "note": "A FIRST PARTIAL PERMIT UNDER THE BImSchG, and the status does not move: a permit is permission to build, not building. The Landesamt für Umwelt is the licensing authority and its procedure G10/2023/091 — 'Neubau einer Anlage zur Herstellung von Lithium-Ionen-Akkumulatoren (Batteriezellenfertigungsanlage Northvolt DREI)' — names the applicant as Northvolt Drei Project GmbH and the site as Blauer Lappen 2, Lohe-Rickelshof, Gemarkung Rickelshof, Flur 1, with its parcels listed; the portal shows public participation running 20 April to 4 June 2026. THE GRANT ITSELF IS REPORTED AND NOT PUBLISHED WHERE THIS PIPELINE CAN READ IT: trade press dated the first partial permit 10 April 2026, alongside a €153 million repayment on the convertible bond to the federal and state governments, and the LfU's own press index carries no release for it. The date is the reported one and the source is the authority's file on the procedure."
         },
         {
-          "status": "paused",
+          "event_kind": "status",
           "date": "2026-07-01",
+          "status_from": "paused",
+          "status_to": "paused",
+          "status": "paused",
           "source_url": "https://lyten.com/2026/07/01/lyten-signs-exclusive-mou-to-progress-acquisition-of-northvolt-drei-assets-in-germany/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Lyten signed an exclusive memorandum of understanding with KfW, Northvolt Drei Project GmbH and its shareholder LG Batterie GmbH to progress an acquisition of the assets. The 110-hectare site has groundwork and utilities in place, with 15 GWh under construction and plans to scale beyond 30 GWh. A memorandum is not a completed sale, so the owner is unchanged here and no ownership event is recorded. The state's own release of the same week says the same thing from the other side: the parties will sign an exclusive letter of intent, it is 'rechtlich noch unverbindlich', and binding contracts are to be drafted and signed at a later 'closing'. REPORTED AND NOT RECORDED AS A FACT: Lyten's chief executive is said to have told the state government in March 2026 that construction would start in 2027 and production in 2028. No state or company page carrying that timetable could be read here — the ministry's and the Staatskanzlei's own releases do not state it, the trade reports of it are behind a consent wall or a 403 — so it is named as reported and no date on this row rests on it."
         }
       ],
@@ -2053,15 +2127,25 @@
       "status": "cancelled",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2024-08-16",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://news.morrowbatteries.com/pressreleases/jonas-gahr-stoere-prime-minister-of-norway-officially-inaugurates-europes-first-lfp-battery-gigafactory-3337609",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Norway's prime minister inaugurated the site, which Morrow described as Europe's first gigawatt-scale factory for lithium iron phosphate cells. The 1 GWh cell factory is the first phase of a stated 43 GWh across three further modules; the capacity here is the target for the site, per the perimeter's definition."
         },
         {
-          "status": "cancelled",
+          "event_kind": "status",
           "date": "2026-05-06",
+          "status_from": "operating",
+          "status_to": "cancelled",
+          "status": "cancelled",
           "source_url": "https://www.energy-storage.news/european-ess-battery-company-morrow-files-for-bankruptcy/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "Morrow Batteries ASA filed for bankruptcy in Norway. The bankruptcy is carried by trade press; no company statement has been read, and the company's own newsroom is still up but silent on it."
         }
       ],
@@ -2115,9 +2199,14 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2023-03-17",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.volkswagen-group.com/en/press-releases/gigafactory-valencia-powerco-gives-starting-signal-for-construction-of-second-cell-factory-17033",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "PowerCo 'gave the starting signal for construction of its second PowerCo cell factory' on about 130 hectares at Sagunto, at an initial 40 GWh per year with room to expand. Trade press reports series production moving to July 2027; no company statement of the revised date has been read."
         }
       ],
@@ -2166,9 +2255,14 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2025-08-22",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.agratas.com/news/bridgwater-july-site-progress-update",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Agratas reported the steel frame complete and cladding under way: 'In the heart of Somerset, what began as open ground is now a structure of more of 4,000 tonnes of steel'. The 40 GWh figure is from the Tata Group announcement of July 2023."
         }
       ],
@@ -2223,9 +2317,14 @@
       "status": "announced",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2024-06-20",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://www.inobat.eu/newsroom/gib-to-build-an-advanced-gigafactory-in-slovakia/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "A joint venture of Gotion High-Tech and InoBat, on a 95-hectare site near Šurany, total planned capacity up to 60 GWh with a first phase of 20 GWh. Construction was planned for the end of 2024. The status stays at announced because no company statement that building started has been read — the basemap already carries the site as landuse=construction and trade press reports a start in October 2025, and neither is the project's own source."
         }
       ],
@@ -2271,9 +2370,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2022-08-01",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://news.samsungsdi.com/global/articleView?seq=8",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Samsung SDI's second-quarter 2022 results state a 'Sales boost of Gen5 battery is expected with the start of operation in Hungary Plant #2'. No company capacity figure for the site has been read, so the capacity is outstanding rather than estimated."
         }
       ],
@@ -2328,15 +2432,25 @@
       "status": "cancelled",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2021-09-10",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://www.prnewswire.com/news-releases/italvolt-signs-one-million-square-meters-land-purchasing-agreement-301373280.html",
+          "source_type": "wire_release",
+          "evidence_mode": "retrospective",
           "note": "Italvolt signed a one-million-square-metre land purchase at Scarmagno for a 45 GWh site: 'The purchased land is located in the municipality of Scarmagno, which is in Italy's second largest region of Piedmont, where the former Olivetti factory stood.'"
         },
         {
-          "status": "cancelled",
+          "event_kind": "status",
           "date": "2024-01-31",
+          "status_from": "announced",
+          "status_to": "cancelled",
+          "status": "cancelled",
           "source_url": "https://www.bestmag.co.uk/battery-gigafactories-facing-a-temporary-dip-or-a-full-scale-crisis/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "'The second project, Italvolt, in Italy also went bankrupt in January 2024.' Trade press, recorded as such: the company is dissolved and issued no closing statement, and the day within January is not given, so the date is the month's end rather than a claim to precision."
         }
       ],
@@ -2391,9 +2505,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2025-06-03",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://www.aesc-group.com/newsInfo?id=at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "AESC 'hosted a ceremony announcing the Start of Production (SOP)' with President Macron attending. 'With an annual production capacity of 10 GWh, the facility currently supplies advanced batteries for Renault.' The site runs electrode production, cell assembly and module integration, so it is a cell works and not an assembly line. THE RELEASE CARRIES NO DATE on the page and none in the index saved with it; 3 June 2025 is the date of the ceremony in contemporaneous reporting, and is recorded here as that rather than as the company's own dating."
         }
       ],
@@ -2456,9 +2575,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2025-12-16",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://www.aesc-group.com/newsInfo?id=aesc-launches-its-new-uk-battery-gigafactory",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "AESC: 'Production is now officially underway at Envision AESC's new 15.8 GWh plant that will manufacture lithium-Ion batteries for electric vehicles made in the UK and support the launch of the new Nissan LEAF.' Dated from AESC's own news index, which lists this release at 2025-12-16."
         }
       ],
@@ -2518,9 +2642,14 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2026-07-22",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026049213/exhibit991.htm",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "Tesla's own quarterly update lists, under Installed Annual Manufacturing Capacity — Battery Cell Manufacturing, the row 'Berlin 4680 - Construction'. The capacity column is a dash where Texas reads '>40 GWh Production'. Trade press through 2026 reported cells being made at Grünheide and a target rising from 8 GWh to 18 GWh; the company's own filing says construction and states no capacity, and under the standing press ruling the project's own sources decide. This is the first company statement read for the site, so the history starts here."
         }
       ],
@@ -2590,9 +2719,14 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2023-07-27",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://kormany.hu/hirek/a-kinai-sunwoda-580-milliard-forintos-beruhazassal-nyiregyhazan-epiti-fel-elso-europai-uzemet",
+          "source_type": "grant_register",
+          "evidence_mode": "retrospective",
           "note": "Announced by the Hungarian government on 27 July 2023 at 580 billion forints, with a first phase of 93 billion. The basemap carries the site as landuse=construction. NO COMPANY STATEMENT OF A BUILD START HAS BEEN READ — Sunwoda's own release predates this by two weeks and says only that the project exists."
         }
       ],
@@ -2680,9 +2814,14 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2025-02-24",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "http://en.calb-tech.com/news_detail/5.html",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "CALB's own release dates the build start to 24 February 2025: 'construction commenced on CALB's Portugal facility'. The Portuguese government's release of the same day announces the launch, the 15 GWh capacity, about two billion euros of investment and 1 800 direct jobs, and records the project as a Projeto de Interesse Nacional. THE COMPANY EXPECTS DELIVERY IN 2027 AND THE STATE SAYS FULLY OPERATIONAL IN 2028; neither is a status this row can carry until something happens."
         }
       ],
@@ -2750,15 +2889,25 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2021-01-29",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://kormany.hu/hirek/szijjarto-magyarorszag-tortenetenek-legnagyobb-zoldmezos-beruhazasat-valositja-meg-a-del-koreai-sk-innovation-ivancsan",
+          "source_type": "grant_register",
+          "evidence_mode": "retrospective",
           "note": "The Hungarian government announces the investment: 'Magyarország történetének legnagyobb zöldmezős beruházását valósítja meg az SK Innovation a Fejér megyei Iváncsán, a dél-koreai vállalat 681 milliárd forintos fejlesztéssel új akkumulátorgyárat épít, ezzel 2500 embernek ad majd közvetlenül munkát' — 681 billion forints, 2 500 direct jobs, and construction to start in the third quarter of that year."
         },
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2022-03-23",
+          "status_from": "announced",
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.electrive.com/2022/03/23/sk-on-receives-funding-for-battery-cell-plant-in-hungary/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "electrive reports that the project started in early 2021 and gives an annual capacity of 30 GWh with the final expansion in 2028. THE STATUS STOPS HERE. Trade reporting describes mass production from 2024 at 30 GWh; SK On's own newsroom is served under a certificate for a different host and no source this pipeline can read states a production start, so the row does not claim one and joins the status-age report."
         }
       ],
@@ -2833,9 +2982,14 @@
       "status": "operating",
       "status_history": [
         {
-          "status": "operating",
+          "event_kind": "status",
           "date": "2021-01-29",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
           "source_url": "https://kormany.hu/hirek/szijjarto-magyarorszag-tortenetenek-legnagyobb-zoldmezos-beruhazasat-valositja-meg-a-del-koreai-sk-innovation-ivancsan",
+          "source_type": "grant_register",
+          "evidence_mode": "retrospective",
           "note": "The Hungarian government, announcing the Iváncsa investment, describes the Komárom works as already running: 'A cég első két tengerentúli gyára Komáromban működik' — the company's first two overseas plants operate in Komárom. NO BUILD OR OPENING DATE IS RECORDED HERE, because no source read here gives one; this is the earliest sourced statement that the works operates, not the date it started. SK On's own Hungarian newsroom corroborates it from the other side, describing a waste-collection event in May 2023 in which '45 employees of the battery manufacturing company participated'."
         }
       ],
@@ -2913,9 +3067,14 @@
       "status": "construction",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2024-07-08",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://web.archive.org/web/20241002033752/https://www.aesc-group.com/en/item/668bf854f7fe5a27254fcc59/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "AESC's own first-stone release: 'Today, Monday, July 8, marked the groundbreaking ceremony of AESC's future gigafactory for batteries in Navalmoral de la Mata, Cáceres.' La Moncloa and the Junta de Extremadura record the same ceremony, with the Prime Minister and the President of the Junta present. TWO TIMETABLES THAT DO NOT AGREE, AND BOTH ARE HELD. The 2024 release says the plant 'is scheduled to begin production in 2026'; the Junta told the Extremadura Assembly in June 2026 that construction concludes in November 2027 and the first cells come in December 2028, and an opposition deputy in the same session said that two years after the first stone there is 'la primera piedra y nada más'. The status is what none of them disputes — ground was broken and no cell has been made — and the four-and-a-half-year gap between the ceremony and the first cell is the fact a reader should have, not a discrepancy to be resolved by taking the newest number silently."
         }
       ],
@@ -3016,15 +3175,25 @@
       "status": "cancelled",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2024-07-24",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://web.archive.org/web/20240724080837/https://www.svolt-eu.com/en/eu-locations/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "SVOLT's own EU-Locations page, as the Internet Archive captured it on 24 July 2024: 'In Überherrn on \"Linslerfeld\", a battery cell factory with 24 GWh of installed capacity in the final expansion stage is to be built.' The site was announced in 2020 and this is the earliest company statement about it that this pipeline has read; the capture date is what the row can defend, not the announcement date."
         },
         {
-          "status": "cancelled",
+          "event_kind": "status",
           "date": "2026-05-07",
+          "status_from": "announced",
+          "status_to": "cancelled",
+          "status": "cancelled",
           "source_url": "https://ueberherrn.de/wp-content/uploads/2024/02/Bekanntmachung-Offenlage-Aufhebung-Linsler-Feld.pdf",
+          "source_type": "permit",
+          "evidence_mode": "retrospective",
           "note": "THE CANCELLATION IS THE AUTHORITY'S OWN, not press. The Überherrn council resolved on 7 May 2026 to repeal the plan, and the notice says why: 'Gegenstand der Aufhebung ist der Vorhabenbezogene Bebauungsplan „Industriegebiet Linsler Feld“, der die planungsrechtlichen Voraussetzungen für die Ansiedlung einer Batteriezellfabrik schaffen sollte. Das Vorhaben wird nicht mehr umgesetzt.' The repeal Begründung records the mechanism: gwSaar, the Vorhabenträger that had bought the land to grant SVOLT a heritable building right, declared it would not hold to the project, which triggers the municipality's duty to repeal under § 12 Abs. 6 BauGB. SVOLT's European withdrawal was reported earlier in trade press and no company statement of it has been read here, so the date this row carries is the authority's."
         }
       ],
@@ -3088,15 +3257,25 @@
       "status": "cancelled",
       "status_history": [
         {
-          "status": "construction",
+          "event_kind": "status",
           "date": "2024-02-29",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
           "source_url": "https://www.sec.gov/Archives/edgar/data/1992243/000199224324000066/frey-20231231.htm",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "FREYR's own FY2023 10-K: 'In June 2022 … FREYR formally sanctioned the construction of Giga Arctic, a 120,000 square meter gigafactory in Mo i Rana, Norway. In 2023, we substantially completed groundworks and certain foundation structures, erected the initial building and secured and weatherized it, and then suspended work on the planned gigafactory.' Construction started and stopped inside one filing."
         },
         {
-          "status": "cancelled",
+          "event_kind": "status",
           "date": "2026-03-31",
+          "status_from": "construction",
+          "status_to": "cancelled",
+          "status": "cancelled",
           "source_url": "https://www.sec.gov/Archives/edgar/data/1992243/000199224326000007/t1-20251231.htm",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "THE COMPANY'S OWN FILING, and the rename is in the register: EDGAR carries the filer as T1 Energy Inc. with the former name FREYR Battery, Inc. The FY2025 10-K reports that 'the assets of our European businesses and our business in Coweta County, Georgia met the criteria for classification as held for sale as of December 31, 2024' and that 'the ultimate disposal represents a strategic shift that has had a major effect on our operations', so the European battery businesses are presented as discontinued operations. Mo i Rana appears in Properties as a lease of the CQP and of the LAND for Giga Arctic — the plan is a landholding, not a works. The date is the filing's; the decision is the pivot to US solar that preceded it. In late August 2026 Rana municipality approved rezoning part of the site for a data centre, reported and not filed, which is why it is a note and not a status."
         }
       ],
@@ -3154,9 +3333,14 @@
       "status": "cancelled",
       "status_history": [
         {
-          "status": "cancelled",
+          "event_kind": "status",
           "date": "2026-02-07",
+          "status_from": null,
+          "status_to": "cancelled",
+          "status": "cancelled",
           "source_url": "https://www.cnbc.com/2026/02/07/stellantis-backed-acc-drops-plans-for-italian-german-factories-union.html",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "ACC's own statement of 7 February 2026, made to unions and confirmed publicly the same day: the projects in Germany and Italy 'had been on standby since May 2024' and the 'prerequisites' to restart them 'were unlikely to be met', with 'different scenarios' under consideration. The Italian union UILM, which made it public, says management called Termoli and Kaiserslautern 'definitively shelved'. NO EARLIER STATUS EVENT IS RECORDED: the standby of May 2024 was not read into this register at the time and is not being back-dated from a sentence written twenty-one months later."
         }
       ],
@@ -3193,15 +3377,25 @@
       "status": "cancelled",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2022-09-09",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://web.archive.org/web/20240522145108/https://www.svolt-eu.com/en/press/svolt-builds-additional-battery-cell-factory-in-brandenburg-germany-for-european-market/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "SVOLT's own press release of 9 September 2022, filed from the Internet Archive: the company 'will build another battery cell factory for the European market in Lauchhammer', on the former Vestas rotor-blade site it had taken over at the end of August. No capacity in the release."
         },
         {
-          "status": "cancelled",
+          "event_kind": "status",
           "date": "2024-05-27",
+          "status_from": "announced",
+          "status_to": "cancelled",
+          "status": "cancelled",
           "source_url": "https://ecomento.de/2024/05/27/akkubauer-svolt-fertigt-doch-nicht-in-lauchhammer/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "SVOLT will not build in Lauchhammer. The company gave a re-evaluated location strategy, a volatile automotive market, missing planning and legal certainty, and a large customer project that would not be realised. THE COMPANY RELEASE ITSELF COULD NOT BE FETCHED: svolt-eu.com/presse/svolt-europe-reagiert-auf-aktuelle-marktentwicklungen/ is in the Internet Archive's index for 30 May 2024 and the capture is a 404 — the Archive reached the URL after the page was gone. So the statement is carried through reporting that quotes it, and said to be."
         }
       ],
@@ -3248,9 +3442,14 @@
       "status": "paused",
       "status_history": [
         {
-          "status": "paused",
+          "event_kind": "status",
           "date": "2022-05-23",
+          "status_from": null,
+          "status_to": "paused",
+          "status": "paused",
           "source_url": "https://ecomento.de/2022/05/23/farasis-bau-einer-grossen-akkufabrik-in-bitterfeld-wolfen-ist-geplatzt/",
+          "source_type": "press",
+          "evidence_mode": "retrospective",
           "note": "PAUSED AND NOT CANCELLED, and the distinction is the company's own words. Farasis told the Mitteldeutsche Zeitung 'wir die Konkretisierung unserer Pläne für den Standort Bitterfeld-Wolfen vorläufig zurückgestellt haben' — the concretisation of the plans is provisionally set aside. Bitterfeld-Wolfen had already terminated the städtebaulicher Vertrag, and the mayor said the factory will not come as planned and that the town is working with Farasis on alternatives. THIRD PARTIES CALL IT CANCELLED AND THIS ROW DOES NOT: a municipality ending a contract is the municipality's act, a headline is a headline, and neither is the company saying it has stopped. Nothing was ever built. The row moves to cancelled the day Farasis says so, and not before."
         }
       ],
@@ -3292,15 +3491,25 @@
       "status": "cancelled",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2020-12-10",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://www.prnewswire.com/news-releases/britishvolt-selects-north-east-site-to-build-britains-first-battery-gigafactory-301190809.html",
+          "source_type": "wire_release",
+          "evidence_mode": "retrospective",
           "note": "Britishvolt's own announcement: the north-east site at Cambois, near Blyth, for what it called Britain's first battery gigafactory. Capacity 35 GWh at completion."
         },
         {
-          "status": "cancelled",
+          "event_kind": "status",
           "date": "2023-01-17",
+          "status_from": "announced",
+          "status_to": "cancelled",
+          "status": "cancelled",
           "source_url": "https://www.thegazette.co.uk/notice/4260297",
+          "source_type": "regulator",
+          "evidence_mode": "retrospective",
           "note": "ADMINISTRATORS APPOINTED, from the official record rather than from reporting. The London Gazette's notice 4260297 of 19 January 2023, category Corporate Insolvency, type Appointment of Administrators: POWER BY BRITISHVOLT LIMITED (company number 12381543), 'Date of Appointment: 17 January 2023', administrators Joanne Honor Robinson and Alan Michael Hudson of Ernst & Young LLP and Daniel Christopher Hurd. Companies House carries the same case — administration started 17 January 2023, ended 28 October 2024 — and the company's status is now Liquidation, a creditors' voluntary liquidation whose winding up commenced on 28 October 2024. The status date is the appointment and not the publication: the company stopped on the 17th and the Gazette said so on the 19th."
         }
       ],
@@ -3346,9 +3555,14 @@
       "status": "paused",
       "status_history": [
         {
-          "status": "paused",
+          "event_kind": "status",
           "date": "2026-01-13",
+          "status_from": null,
+          "status_to": "paused",
+          "status": "paused",
           "source_url": "https://www.novoenergy.se/volvo-cars-announces-an-operational-pause-in-novo-energy",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "NOVO Energy's own statement: 'until a new technology partner is secured, NOVO Energy can no longer proceed with its operations as previously planned', with layoffs affecting all positions in the company — 75 in all, notified to the unions and to Arbetsförmedlingen. Volvo Cars, the owner, 'maintains its long-term ambition to produce batteries for its electric cars in the Gothenburg, Sweden area' and cannot say when production might start or in what structure. THE HISTORY STARTS HERE because it is the first event on this site sourced to the company: the venture was formed with Northvolt in 2021 and the site was reported under construction from 2023, and neither is read into this register. Volvo Cars took full ownership on 29 January 2025, on Northvolt's own release, which is on file below as the record of how the ownership got here."
         }
       ],
@@ -3421,9 +3635,14 @@
       "status": "announced",
       "status_history": [
         {
-          "status": "announced",
+          "event_kind": "status",
           "date": "2025-09-29",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
           "source_url": "https://www.evebattery.com/en/news-1873",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
           "note": "EVE's own page names the site: 'The EVE Energy Hungarian factory, approved for construction this year, is expected to be completed and put into operation in 2026.' The row stays at announced because no company statement of a groundbreaking or of works underway has been read. The permit submission of May 2025 is what places it and what carries the capacity; it is a plan filed with an authority, not a statement that anything is built."
         }
       ],
