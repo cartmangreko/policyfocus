@@ -158,7 +158,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = DATA / "graph"
 
-REGISTER_FILES = ["ets", "iaa", "omnibus", "cbam", "nzia", "crma", "ppwr"]
+REGISTER_FILES = ["ets", "iaa", "omnibus", "cbam", "nzia", "crma", "ppwr",
+                  "battery", "fleet", "emd"]
 
 # The sector spine is NOT defined here. It lives in data/sectors.json, read by
 # this builder and by web/lib/data.ts, so the two sides cannot drift -- the
@@ -600,6 +601,19 @@ def build() -> Graph:
                     {"source": f"data/{file_slug}.json", "path": f"[id={row['id']}].sectors_named"},
                     basis="named",
                 )
+            for slug in sorted(row.get("creates_demand_for") or []):
+                _require_sector(slug, file_slug, row["id"])
+                g.add_edge(
+                    "creates_demand_for",
+                    node_id,
+                    f"sector:{slug}",
+                    since,
+                    {
+                        "source": f"data/{file_slug}.json",
+                        "path": f"[id={row['id']}].creates_demand_for",
+                    },
+                    basis="demand",
+                )
             for slug in sorted(set(row.get("sectors_reached") or []) - named):
                 _require_sector(slug, file_slug, row["id"])
                 g.add_edge(
@@ -722,7 +736,15 @@ def _transition_edges(g: Graph):
                    company=pr["company"], plant=pr.get("plant"),
                    country=pr["country"], status=pr["status"],
                    transition=pr["transition"],
-                   role=pr.get("role", "plant"), location=pr["location"])
+                   role=pr.get("role", "plant"),
+                   # EMPTY ON A STOPPED ROW WHOSE POSITION WAS NEVER SOUGHT, and
+                   # carried as empty rather than as absent: a node with no
+                   # `location` key and a node with an empty one read the same
+                   # way to a consumer that uses `.get`, and only one of them is
+                   # a fact. `location_note` rides along so the graph can say
+                   # why, in the row's own words.
+                   location=pr.get("location") or [],
+                   location_note=pr.get("location_note"))
     for m in kinds["material"]:
         g.add_node(f"material:{m['id']}", "material", m["name"],
                    type=m["type"], cn_code=m.get("cn_code"),
@@ -1044,6 +1066,15 @@ def gate(g: Graph):
                        ("technology", "material"), ("project", "project")},
         "contains": {("act", "measure")},
         "applies_to": {("measure", "sector")},
+        # A DIFFERENT CLAIM FROM applies_to, AND KEPT APART FOR THAT REASON.
+        # applies_to says a measure BINDS a sector; this says it MAKES A MARKET
+        # for what the sector produces. The fleet CO2 standards bind carmakers
+        # and bind no battery maker at all, and a batteries page that showed
+        # them as applies_to would print a duty the sector does not carry.
+        # Reserved since the graph was built and populated for the first time by
+        # data/fleet.json; see extract_fleet.py for what does and does not
+        # qualify.
+        "creates_demand_for": {("measure", "sector")},
         "supplies": {("sector", "sector")},
         "imports_from": {("sector", "country")},
         # the transition layer

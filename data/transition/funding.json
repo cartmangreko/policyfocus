@@ -33,7 +33,35 @@
     "",
     "`programme` is the measure id where the register carries the legal basis, and a named",
     "string where it does not. Norway's Longship is the live case: it is a national decision",
-    "outside the register's perimeter, so it names itself and points at no measure."
+    "outside the register's perimeter, so it names itself and points at no measure.",
+    "",
+    "WHAT THIS MODEL HOLDS, AND WHAT IT DELIBERATELY DOES NOT. Ruled 5 September 2026, after",
+    "the Innovation Fund retro-check turned two findings up that the file could not place.",
+    "",
+    "IN: capital committed to BUILDING AN ADMITTED WORKS — a grant, a state aid approval, an",
+    "IPCEI decision or project finance whose recipient is a project on this platform and whose",
+    "purpose is the plant that project is. That is what the sector pages’ committed figure",
+    "means, and it is why the figure can be read as money going into the ground.",
+    "",
+    "OUT: research and pilot funding. A framework-programme grant to a consortium testing a",
+    "process, or to a demonstration unit built to learn from rather than to produce, is money",
+    "spent on FINDING OUT rather than on building capacity, and the two do not add up. Summing",
+    "them would inflate every sector total by an amount that varies with how research-heavy",
+    "the industry is, which is the one thing a comparison between sectors must not do.",
+    "",
+    "THE TWO FINDINGS THAT FORCED THE RULING, recorded here rather than landed as rows:",
+    "3D at Dunkirk holds about EUR 14.8 million of Horizon 2020 money for the DMX capture",
+    "pilot, and voestalpine’s H2Future at Linz about EUR 12 million for the electrolyser",
+    "demonstration. Both are real, both are traceable, and both are excluded by the boundary",
+    "above rather than by an oversight. Neither project loses its funding: 3D and H2Future are",
+    "pilots on this platform and their research money is a fact about them, which is why the",
+    "ROADMAP carries an entry for a research-funding layer that could hold it separately",
+    "instead of quietly inside a figure about building.",
+    "",
+    "WHERE THE LINE IS HARD. A demonstration unit at commercial scale that also produces is a",
+    "judgement call, and the judgement is made on what the money was FOR as the awarding",
+    "document states it, not on the unit’s size. Where the document will not say, the row",
+    "does not land and the reason is written down."
   ],
   "funding": [
     {
@@ -47,8 +75,12 @@
       "amount_note": null,
       "date": "2023-12-15",
       "status": "approved",
-      "finances": ["project:gezero-geseke"],
-      "supports": ["technology:ccs-post-combustion"],
+      "finances": [
+        "project:gezero-geseke"
+      ],
+      "supports": [
+        "technology:ccs-post-combustion"
+      ],
       "country": "DE",
       "sources": [
         {
@@ -70,8 +102,12 @@
       "amount_note": null,
       "date": "2023-01-20",
       "status": "approved",
-      "finances": ["project:anrav-devnya"],
-      "supports": ["technology:ccs-post-combustion"],
+      "finances": [
+        "project:anrav-devnya"
+      ],
+      "supports": [
+        "technology:ccs-post-combustion"
+      ],
       "country": "BG",
       "sources": [
         {
@@ -93,8 +129,12 @@
       "amount_note": "Holcim's release records selection for an Innovation Fund grant and states no figure. The Commission's own award tables would carry it.",
       "date": "2024-05-16",
       "status": "approved",
-      "finances": ["project:go4zero-obourg"],
-      "supports": ["technology:ccs-oxyfuel"],
+      "finances": [
+        "project:go4zero-obourg"
+      ],
+      "supports": [
+        "technology:ccs-oxyfuel"
+      ],
       "country": "BE",
       "sources": [
         {
@@ -116,8 +156,12 @@
       "amount_note": "Confirmed by the company; the amount is not stated on the page read.",
       "date": "2024-04-22",
       "status": "approved",
-      "finances": ["project:carbon2business-lagerdorf"],
-      "supports": ["technology:ccs-oxyfuel"],
+      "finances": [
+        "project:carbon2business-lagerdorf"
+      ],
+      "supports": [
+        "technology:ccs-oxyfuel"
+      ],
       "country": "DE",
       "sources": [
         {
@@ -139,8 +183,12 @@
       "amount_note": null,
       "date": "2024-02-15",
       "status": "approved",
-      "finances": ["project:k6-lumbres"],
-      "supports": ["technology:ccs-oxyfuel"],
+      "finances": [
+        "project:k6-lumbres"
+      ],
+      "supports": [
+        "technology:ccs-oxyfuel"
+      ],
       "country": "FR",
       "sources": [
         {
@@ -162,8 +210,12 @@
       "amount_note": "The release places Brevik inside the Longship chain and states no amount. The Norwegian government's own Longship documents carry the figure, and it matters more than most — Brevik is the worked example, and the state's share of it is what the subsidy-dependence constraint is really about. See GAPS.md.",
       "date": "2025-06-18",
       "status": "approved",
-      "finances": ["project:brevik-ccs"],
-      "supports": ["technology:ccs-post-combustion"],
+      "finances": [
+        "project:brevik-ccs"
+      ],
+      "supports": [
+        "technology:ccs-post-combustion"
+      ],
       "country": "NO",
       "sources": [
         {
@@ -185,8 +237,12 @@
       "amount_note": null,
       "date": "2024-01-22",
       "status": "approved",
-      "finances": ["project:stegra-boden"],
-      "supports": ["technology:h2-dri"],
+      "finances": [
+        "project:stegra-boden"
+      ],
+      "supports": [
+        "technology:h2-dri"
+      ],
       "country": "SE",
       "sources": [
         {
@@ -208,8 +264,12 @@
       "amount_note": null,
       "date": "2023-07-20",
       "status": "approved",
-      "finances": ["project:tkh2steel-duisburg"],
-      "supports": ["technology:dri-eaf"],
+      "finances": [
+        "project:tkh2steel-duisburg"
+      ],
+      "supports": [
+        "technology:dri-eaf"
+      ],
       "country": "DE",
       "sources": [
         {
@@ -231,8 +291,12 @@
       "amount_note": null,
       "date": "2023-04-18",
       "status": "approved",
-      "finances": ["project:salcos-salzgitter"],
-      "supports": ["technology:dri-eaf"],
+      "finances": [
+        "project:salcos-salzgitter"
+      ],
+      "supports": [
+        "technology:dri-eaf"
+      ],
       "country": "DE",
       "sources": [
         {
@@ -254,8 +318,12 @@
       "amount_note": null,
       "date": "2023-04-18",
       "status": "approved",
-      "finances": ["project:salcos-salzgitter"],
-      "supports": ["technology:dri-eaf"],
+      "finances": [
+        "project:salcos-salzgitter"
+      ],
+      "supports": [
+        "technology:dri-eaf"
+      ],
       "country": "DE",
       "sources": [
         {
@@ -277,8 +345,12 @@
       "amount_note": null,
       "date": "2025-06-23",
       "status": "withdrawn",
-      "finances": ["project:am-bremen-eisenhuettenstadt"],
-      "supports": ["technology:dri-eaf"],
+      "finances": [
+        "project:am-bremen-eisenhuettenstadt"
+      ],
+      "supports": [
+        "technology:dri-eaf"
+      ],
       "country": "DE",
       "sources": [
         {
@@ -288,6 +360,270 @@
           "date": "2025-06-23"
         }
       ]
+    },
+    {
+      "id": "innovation-fund-accept",
+      "name": "Innovation Fund grant — ACCEPT",
+      "instrument": "grant",
+      "programme": "EU Innovation Fund",
+      "under": "ets:FND-03",
+      "under_note": "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
+      "amount": "accept-grant",
+      "amount_note": null,
+      "date": "2025-07-04",
+      "status": "signed",
+      "finances": [
+        "project:acc-billy-berclau"
+      ],
+      "supports": [
+        "technology:cell-manufacturing"
+      ],
+      "country": "FR",
+      "sources": [
+        {
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1727",
+          "title": "EU invests €852 million in six innovative electric vehicle battery projects",
+          "publisher": "European Commission",
+          "date": "2025-07-04"
+        },
+        {
+          "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101250958.pdf",
+          "title": "ACCEPT — Innovation Fund project factsheet",
+          "publisher": "CINEA",
+          "date": "2026-09-06",
+          "retrieved_date": "2026-09-06",
+          "note": "Carries the per-project grant figure and the project start date."
+        }
+      ],
+      "note": "Selected in the Innovation Fund's first Battery Call, launched December 2024. The Commission names the project as 'ACCEPT — Automotive Cells Company European Production Take-off'. Grant agreements with CINEA were expected in the third quarter of 2025; the status here is approved and not signed, because no signature has been read. ——— CORRECTED 6 SEPTEMBER 2026. This row said the Commission published no per-project figure. It does: CINEA's project factsheet for this award states the amount and a project starting date, and the status moves from approved to SIGNED on the rule the IFESTOS row already runs under — CINEA publishes a start only for projects that have a grant agreement. What was true is that the PRESS RELEASE gives a call total and no split; the factsheets were not looked for. CELLFORCE's CF3_at_Scale is absent from CINEA's list of the call's projects, which is what a withdrawn application looks like there."
+    },
+    {
+      "id": "innovation-fund-agathe",
+      "name": "Innovation Fund grant — AGATHE",
+      "instrument": "grant",
+      "programme": "EU Innovation Fund",
+      "under": "ets:FND-03",
+      "under_note": "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
+      "amount": "agathe-grant",
+      "amount_note": null,
+      "date": "2025-07-04",
+      "status": "signed",
+      "finances": [
+        "project:verkor-dunkirk"
+      ],
+      "supports": [
+        "technology:cell-manufacturing"
+      ],
+      "country": "FR",
+      "sources": [
+        {
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1727",
+          "title": "EU invests €852 million in six innovative electric vehicle battery projects",
+          "publisher": "European Commission",
+          "date": "2025-07-04"
+        },
+        {
+          "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101251807.pdf",
+          "title": "AGATHE — Innovation Fund project factsheet",
+          "publisher": "CINEA",
+          "date": "2026-09-06",
+          "retrieved_date": "2026-09-06",
+          "note": "Carries the per-project grant figure and the project start date."
+        }
+      ],
+      "note": "Selected in the Innovation Fund's first Battery Call, launched December 2024. The Commission names the project as 'AGATHE — Advanced Gigafactory Aiming at Tempering greenhouse gases Emissions'. Grant agreements with CINEA were expected in the third quarter of 2025; the status here is approved and not signed, because no signature has been read. ——— CORRECTED 6 SEPTEMBER 2026. This row said the Commission published no per-project figure. It does: CINEA's project factsheet for this award states the amount and a project starting date, and the status moves from approved to SIGNED on the rule the IFESTOS row already runs under — CINEA publishes a start only for projects that have a grant agreement. What was true is that the PRESS RELEASE gives a call total and no split; the factsheets were not looked for. CELLFORCE's CF3_at_Scale is absent from CINEA's list of the call's projects, which is what a withdrawn application looks like there."
+    },
+    {
+      "id": "innovation-fund-46ineu",
+      "name": "Innovation Fund grant — 46inEU",
+      "instrument": "grant",
+      "programme": "EU Innovation Fund",
+      "under": "ets:FND-03",
+      "under_note": "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
+      "amount": "46ineu-grant",
+      "amount_note": null,
+      "date": "2025-07-04",
+      "status": "signed",
+      "finances": [
+        "project:lges-wroclaw"
+      ],
+      "supports": [
+        "technology:cell-manufacturing"
+      ],
+      "country": "PL",
+      "sources": [
+        {
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1727",
+          "title": "EU invests €852 million in six innovative electric vehicle battery projects",
+          "publisher": "European Commission",
+          "date": "2025-07-04"
+        },
+        {
+          "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101251513.pdf",
+          "title": "46inEU — Innovation Fund project factsheet",
+          "publisher": "CINEA",
+          "date": "2026-09-06",
+          "retrieved_date": "2026-09-06",
+          "note": "Carries the per-project grant figure and the project start date."
+        }
+      ],
+      "note": "Selected in the Innovation Fund's first Battery Call, launched December 2024. The Commission names the project as '46inEU — Powering the Future: 46 Cylinders, Infinite Possibilities in Europe'. Grant agreements with CINEA were expected in the third quarter of 2025; the status here is approved and not signed, because no signature has been read. ——— CORRECTED 6 SEPTEMBER 2026. This row said the Commission published no per-project figure. It does: CINEA's project factsheet for this award states the amount and a project starting date, and the status moves from approved to SIGNED on the rule the IFESTOS row already runs under — CINEA publishes a start only for projects that have a grant agreement. What was true is that the PRESS RELEASE gives a call total and no split; the factsheets were not looked for. CELLFORCE's CF3_at_Scale is absent from CINEA's list of the call's projects, which is what a withdrawn application looks like there."
+    },
+    {
+      "id": "germany-northvolt-drei",
+      "name": "German State aid — Northvolt Drei",
+      "instrument": "state_aid",
+      "programme": "German federal and Schleswig-Holstein aid",
+      "under": null,
+      "under_note": "No register measure is the legal basis. The aid was approved under the Temporary Crisis and Transition Framework, which is a state aid instrument and not a provision of any act this platform holds.",
+      "amount": "northvolt-drei-state-aid",
+      "amount_note": null,
+      "date": "2024-01-08",
+      "status": "approved",
+      "finances": [
+        "project:lyten-heide"
+      ],
+      "supports": [
+        "technology:cell-manufacturing"
+      ],
+      "country": "DE",
+      "sources": [
+        {
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_23_6823",
+          "title": "Commission approves €902 million German State aid measure to support Northvolt",
+          "publisher": "European Commission",
+          "date": "2024-01-08"
+        }
+      ],
+      "note": "Approved for Northvolt, which is no longer the site's owner. The project row carries the site as Northvolt Drei Project GmbH with Lyten holding an exclusive memorandum to acquire it; whether the aid survives a change of owner is not something any source read here answers, and the row does not assume it does."
+    },
+    {
+      "id": "innovation-fund-ifestos",
+      "name": "Innovation Fund grant — IFESTOS",
+      "instrument": "grant",
+      "programme": "EU Innovation Fund",
+      "under": "ets:FND-03",
+      "under_note": "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
+      "amount": "ifestos-grant",
+      "amount_note": null,
+      "date": "2024-01-01",
+      "status": "signed",
+      "finances": [
+        "project:ifestos-kamari"
+      ],
+      "supports": [
+        "technology:ccs-oxyfuel",
+        "technology:ccs-post-combustion"
+      ],
+      "country": "GR",
+      "sources": [
+        {
+          "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101133204.pdf",
+          "title": "IFESTOS — Innovation Fund project factsheet",
+          "publisher": "CINEA",
+          "date": "2026-08-18"
+        }
+      ],
+      "note": "FOUND BY A RETRO-CHECK OF THE COMMISSION'S FUNDING REGISTERS AGAINST AN EXISTING PERIMETER, not by the cement build. Two hundred and thirty-four million euros is the second-largest award on this platform and it sat unrecorded against a project that has been on file since the cement dataset landed. The status is signed rather than approved: the factsheet gives a project start of 1 January 2024, which CINEA publishes only for projects that have a grant agreement."
+    },
+    {
+      "id": "innovation-fund-novo-one",
+      "name": "Innovation Fund grant — NOVO One",
+      "instrument": "grant",
+      "programme": "EU Innovation Fund",
+      "under": "ets:FND-03",
+      "under_note": "Awarded under the Innovation Fund as it stands today (Art. 10a(8) of Directive 2003/87/EC). The register carries the Fund through the ETS revision's Art. 10cb, which re-establishes it, so ets:FND-03 is the register's handle on the programme rather than the provision this award was made under.",
+      "amount": "novo-one-grant",
+      "amount_note": null,
+      "date": "2025-07-04",
+      "status": "signed",
+      "finances": [
+        "project:novo-energy-gothenburg"
+      ],
+      "supports": [
+        "technology:cell-manufacturing"
+      ],
+      "country": "SE",
+      "sources": [
+        {
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1727",
+          "title": "EU invests €852 million in six innovative electric vehicle battery projects",
+          "publisher": "European Commission",
+          "date": "2025-07-04",
+          "retrieved_date": "2026-09-06"
+        },
+        {
+          "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101251644.pdf",
+          "title": "NOVO One — Innovation Fund project factsheet",
+          "publisher": "CINEA",
+          "date": "2026-09-06",
+          "retrieved_date": "2026-09-06",
+          "note": "Carries the per-project grant figure and the project start date."
+        }
+      ],
+      "note": "Selected in the Innovation Fund's first Battery Call, launched December 2024, and named by the Commission as 'NOVO One – NOVO One Gigafactory, located in Sweden (NOVO Energy)'. THE SAME SOURCE AND THE SAME STATUS GROUP AS ITS FIVE SIBLINGS: approved, not signed, because the Commission announced a selection and no signature for this project has been read. It was missing from this file until 6 September 2026, when the row for the plant it finances landed and the page said no public money was on file for a project the Commission had named. NOT WITHDRAWN, so far as anything read here says: trade reporting of November 2025 has CINEA signing five of the six agreements at €643 million after CELLFORCE withdrew its application, which is a different project. If a withdrawal of this award is ever stated, it is a dated event of its own on its own source and this row is not quietly deleted. ——— CORRECTED 6 SEPTEMBER 2026. This row said the Commission published no per-project figure. It does: CINEA's project factsheet for this award states the amount and a project starting date, and the status moves from approved to SIGNED on the rule the IFESTOS row already runs under — CINEA publishes a start only for projects that have a grant agreement. What was true is that the PRESS RELEASE gives a call total and no split; the factsheets were not looked for. CELLFORCE's CF3_at_Scale is absent from CINEA's list of the call's projects, which is what a withdrawn application looks like there."
+    },
+    {
+      "id": "germany-ipcei-tesla-gruenheide",
+      "name": "German IPCEI aid withdrawn — Tesla Grünheide cell plant (CARB-FREE)",
+      "instrument": "ipcei",
+      "programme": "IPCEI European Battery Innovation (EuBatIn) — German participation, project CARB-FREE",
+      "under": null,
+      "under_note": "An IPCEI is cleared under Art. 107(3)(b) TFEU and the Commission's IPCEI communication, which is a state aid instrument and not a provision of any act this platform holds. Same case as germany-northvolt-drei.",
+      "amount": null,
+      "amount_note": "NO AMOUNT IS RECORDED BECAUSE NO SOURCE READ HERE STATES ONE. The Commission's decision gives €2.9 billion across twelve Member States and 42 participants and says the split per participant follows in the non-confidential decision; Brandenburg's releases state no figure; Tesla's 10-K states none. The €1.14 billion in circulation is trade and wire press and is not admitted. It would not enter a total in any case — this row is withdrawn and therefore FUNDING_EXCLUDED.",
+      "date": "2021-11-26",
+      "status": "withdrawn",
+      "finances": [
+        "project:tesla-gruenheide-cells"
+      ],
+      "supports": [
+        "technology:cell-manufacturing"
+      ],
+      "country": "DE",
+      "sources": [
+        {
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_21_226",
+          "title": "State aid: Commission approves €2.9 billion public support by twelve Member States for a second pan-European research and innovation project along the entire battery value chain",
+          "publisher": "European Commission",
+          "date": "2021-01-26",
+          "retrieved_date": "2026-09-07",
+          "note": "THE APPROVAL INSTRUMENT, and it does not name Tesla. The release approves the second battery IPCEI, 'European Battery Innovation', notified by twelve Member States, and gives Germany's case number as SA.55831. Its text names no participant company — the 42 direct participants are listed in a graphic the page serves as an image — and it states no capacity in GWh for any site. What ties this decision to Grünheide is the Brandenburg release of the same day and Tesla's own 10-K, both below. The page itself renders by script and returns no text to a declared reader; the content here was read from the presscorner API's own JSON for this reference."
+        },
+        {
+          "url": "https://mweke.brandenburg.de/de/eu-gibt-gr%C3%BCnes-licht-f%C3%BCr-f%C3%B6rderung-der-geplanten-batteriefabrik-in-gr%C3%BCnheide/bb1.c.693878.de",
+          "title": "EU gibt grünes Licht für Förderung der geplanten Batteriefabrik in Grünheide",
+          "publisher": "Ministerium für Wirtschaft, Energie, Klimaschutz und Europa des Landes Brandenburg",
+          "date": "2021-01-26",
+          "retrieved_date": "2026-09-07",
+          "note": "THE HOST STATE'S OWN RECORD, dated the day of the decision, and it is what names the site: 'Grünes Licht für die Förderung der von Tesla geplanten Batterieproduktion im brandenburgischen Grünheide', and the EU decided 'dass die von Tesla geplante Batterieproduktion in Grünheide innerhalb des IPCEI gefördert werden kann'. No amount and no capacity."
+        },
+        {
+          "url": "https://mwaek.brandenburg.de/de/teslas-batteriezellfertigung-bund-und-land-schlie%C3%9Fen-verwaltungsabkommen/bb1.c.715623.de",
+          "title": "Teslas Batteriezellfertigung: Bund und Land schließen Verwaltungsabkommen",
+          "publisher": "Ministerium für Wirtschaft, Energie, Klimaschutz und Europa des Landes Brandenburg",
+          "date": "2021-09-07",
+          "retrieved_date": "2026-09-07",
+          "note": "The state naming the project and the arrangement: Brandenburg and the federal government are to conclude a Verwaltungsvereinbarung on jointly funding Tesla's battery cell research and production at Grünheide, under the IPCEI project 'Clean and cost-efficient Assembly and Recycling of Batteries – Facilitating Renewables and Electrification in Europe (CARB-FREE)'. This is the last official step published before the withdrawal. No amount and no capacity."
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1318605/000156459021004599/tsla-10k_20201231.htm",
+          "title": "Tesla, Inc., Annual Report on Form 10-K for 2020",
+          "publisher": "Tesla, Inc. (SEC EDGAR)",
+          "date": "2021-02-08",
+          "retrieved_date": "2026-09-07",
+          "note": "THE COMPANY TYING ITSELF TO THE DECISION, under the heading 'Gigafactory Berlin – Pending Grant': 'We have applied for a grant with the German government to improve the design, chemistry, manufacturing technology and recycling of lithium-ion battery cells for Gigafactory Berlin. The grant was approved by the European Commission in January 2021 and its implementation will be subject to a grant agreement with the German government.' The filing states no GWh for the cell plant. Tesla's FY2021 10-K carries no such heading at all — the disclosure is simply gone, which is an absence and is not recorded here as a statement."
+        },
+        {
+          "url": "https://www.cnbc.com/2021/11/26/tesla-decides-against-state-aid-for-german-battery-plant-as-musk-opposes-subsidies.html",
+          "title": "Tesla withdraws application for subsidies for battery plant in Germany",
+          "publisher": "CNBC (Reuters)",
+          "date": "2021-11-26",
+          "retrieved_date": "2026-09-07",
+          "note": "THE WITHDRAWAL, AND IT IS PRESS — said so rather than dressed as an official record. It reports the federal economy ministry confirming that Tesla informed it and the Brandenburg economics ministry that it was withdrawing the IPCEI application. NEITHER MINISTRY PUBLISHED IT and Tesla did not: bmwk.de and the Brandenburg ministry's own press archives carry no release on the withdrawal, brandenburg.de's Tesla FAQ answers 403 to a declared reader, and Tesla's own FY2021 filing drops the disclosure without a sentence. See the row note."
+        }
+      ],
+      "note": "APPROVED IN JANUARY 2021 AND WITHDRAWN IN NOVEMBER 2021, recorded as one row at its final status because a funding row carries one status and no history. The date is the withdrawal; the approval is dated on its own two sources above.\n\nWITHDRAWN IS FUNDING_EXCLUDED, so this money is named and enters no total. That is the point of recording it: without the row, a reader has no way to know that Germany's largest single battery aid offer was made and refused, and with it as `approved` the register would assert live public money that does not exist.\n\nTHE WITHDRAWAL RESTS ON PRESS, WHICH IS WEAKER THAN THIS ROW'S APPROVAL and weaker than the standard asked for. Searched on 7 September 2026: no BMWK or Brandenburg ministry release on the withdrawal could be found on their own domains; Tesla published nothing and its FY2021 10-K merely stops mentioning the grant; brandenburg.de's Tesla FAQ, which reporting says addresses it, answers 403 to a declared reader. What is on file is Reuters, carried by CNBC, reporting the federal ministry's own confirmation. The status moves on it because leaving the row `approved` would be the larger error, and the tier is written here rather than hidden. It is queued for a manual retrieval of the ministry FAQ."
     }
   ]
 }

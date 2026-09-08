@@ -772,6 +772,116 @@
         "verbatim": "Depending on the individual blast furnace capacity yearly 150-800 thousand t of GBS will vanish together with each substituted blast furnace."
       },
       "note": "The number that joins this sector to cement. Every blast furnace steel converts away from also stops producing the slag the cement sector substitutes for clinker, so steel's decarbonisation removes one of cement's. The cement-side constraint is not in bottlenecks.json yet; see data/transition/GAPS.md."
+    },
+    {
+      "id": "northvolt-drei-state-aid",
+      "name": "Northvolt Drei — German State aid, Commission approval",
+      "value": 902,
+      "unit": "EUR million",
+      "scope": "plant:heide",
+      "sector": "batsol",
+      "date_of_value": "2024-01-08",
+      "retrieved_date": "2026-09-04",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_23_6823",
+        "publisher": "European Commission",
+        "verbatim": "Commission approves €902 million German State aid measure to support Northvolt in the construction of an electric vehicle battery production plant to foster the transition to a net-zero economy"
+      }
+    },
+    {
+      "id": "ifestos-grant",
+      "name": "IFESTOS — EU Innovation Fund grant",
+      "value": 234,
+      "unit": "EUR million",
+      "scope": "plant:kamari",
+      "sector": "cement",
+      "date_of_value": "2026-08-18",
+      "retrieved_date": "2026-09-05",
+      "stale_after": 60,
+      "confidence": "primary",
+      "source": {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101133204.pdf",
+        "publisher": "CINEA (European Climate, Infrastructure and Environment Executive Agency)",
+        "verbatim": "COORDINATOR ANONYMI ETAIREIA TSIMENTON TITAN LOCATION Greece CATEGORY Energy intensive industries (EII) SECTOR Cement & lime AMOUNT OF INNOVATION FUND GRANT EUR 234,000,000"
+      }
+    },
+    {
+      "id": "accept-grant",
+      "name": "Innovation Fund grant — ACCEPT",
+      "value": 200.0,
+      "unit": "EUR million",
+      "scope": "eu",
+      "date_of_value": "2025-05-01",
+      "retrieved_date": "2026-09-06",
+      "confidence": "primary",
+      "source": {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101250958.pdf",
+        "title": "ACCEPT — Innovation Fund project factsheet",
+        "publisher": "CINEA",
+        "date": "2026-09-06",
+        "verbatim": "AMOUNT OF INNOVATION FUND GRANT EUR 200,000,000"
+      },
+      "verbatim_note": "The factsheet states the figure in euros; it is carried here in EUR million, which is the unit every funding amount on this platform uses.",
+      "note": "Read from CINEA's own project factsheet, the document class the IFESTOS amount already came from. The starting date on the factsheet is what makes the award SIGNED rather than approved: CINEA publishes a project start only for projects that have a grant agreement."
+    },
+    {
+      "id": "agathe-grant",
+      "name": "Innovation Fund grant — AGATHE",
+      "value": 76.282817,
+      "unit": "EUR million",
+      "scope": "eu",
+      "date_of_value": "2025-05-01",
+      "retrieved_date": "2026-09-06",
+      "confidence": "primary",
+      "source": {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101251807.pdf",
+        "title": "AGATHE — Innovation Fund project factsheet",
+        "publisher": "CINEA",
+        "date": "2026-09-06",
+        "verbatim": "AMOUNT OF INNOVATION FUND GRANT EUR 76,282,817"
+      },
+      "verbatim_note": "The factsheet states the figure in euros; it is carried here in EUR million, which is the unit every funding amount on this platform uses.",
+      "note": "Read from CINEA's own project factsheet, the document class the IFESTOS amount already came from. The starting date on the factsheet is what makes the award SIGNED rather than approved: CINEA publishes a project start only for projects that have a grant agreement."
+    },
+    {
+      "id": "46ineu-grant",
+      "name": "Innovation Fund grant — 46inEU",
+      "value": 90.833,
+      "unit": "EUR million",
+      "scope": "eu",
+      "date_of_value": "2025-12-01",
+      "retrieved_date": "2026-09-06",
+      "confidence": "primary",
+      "source": {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101251513.pdf",
+        "title": "46inEU — Innovation Fund project factsheet",
+        "publisher": "CINEA",
+        "date": "2026-09-06",
+        "verbatim": "AMOUNT OF INNOVATION FUND GRANT EUR 90,833,000"
+      },
+      "verbatim_note": "The factsheet states the figure in euros; it is carried here in EUR million, which is the unit every funding amount on this platform uses.",
+      "note": "Read from CINEA's own project factsheet, the document class the IFESTOS amount already came from. The starting date on the factsheet is what makes the award SIGNED rather than approved: CINEA publishes a project start only for projects that have a grant agreement."
+    },
+    {
+      "id": "novo-one-grant",
+      "name": "Innovation Fund grant — NOVO One",
+      "value": 201.5,
+      "unit": "EUR million",
+      "scope": "eu",
+      "date_of_value": "2025-12-01",
+      "retrieved_date": "2026-09-06",
+      "confidence": "primary",
+      "source": {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101251644.pdf",
+        "title": "NOVO One — Innovation Fund project factsheet",
+        "publisher": "CINEA",
+        "date": "2026-09-06",
+        "verbatim": "AMOUNT OF INNOVATION FUND GRANT EUR 201,500,000"
+      },
+      "verbatim_note": "The factsheet states the figure in euros; it is carried here in EUR million, which is the unit every funding amount on this platform uses.",
+      "note": "Read from CINEA's own project factsheet, the document class the IFESTOS amount already came from. The starting date on the factsheet is what makes the award SIGNED rather than approved: CINEA publishes a project start only for projects that have a grant agreement."
     }
   ]
 }

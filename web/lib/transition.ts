@@ -59,6 +59,30 @@ export interface Source {
   verbatim?: string;
   snapshot?: string;
   archived?: boolean;
+  /** The day a person or this pipeline actually read it. `date` is the
+   *  document's own date and answers "when was this true"; this answers "when
+   *  did we look", which is the question a reader asks of a register that is
+   *  queried rather than published — a cadastre answers differently next year
+   *  and says nothing about having changed. */
+  retrieved_date?: string;
+  /** The terms the material is reused under, where the publisher requires them
+   *  to be carried. Rendered beside the citation rather than filed in a
+   *  licences page nobody opens: an attribution that only exists in the data is
+   *  not an attribution. */
+  licence?: string;
+  /** WHERE THIS COPY WAS FETCHED FROM, when that is not the author's own site.
+   *  A document is sourced by its author, not by its host (sources/scope.md), so
+   *  an applicant's own permit submission held by a campaign group may place a
+   *  row — and then has to say so. The digest is what makes the disclosure
+   *  checkable rather than decorative: it fixes which bytes were read, so a host
+   *  that swaps or truncates the file cannot silently change what is quoted. */
+  hosted_copy?: {
+    host: string;
+    host_url: string;
+    retrieved_date: string;
+    sha256: string;
+    label: "hosted copy";
+  };
   /** What kind of thing is at the other end. Absent means a document, which is
    *  what almost everything is. `api` and `dataset` are cited from the query
    *  the call was made with rather than by a title they do not have — see
@@ -98,7 +122,12 @@ export interface Technology {
   readiness: { level: Readiness; source: string; date: string; note?: string };
   abatement_share?: { low: number; high: number; unit: string; source: string; date: string; note?: string };
   cost?: { low: number; high: number; unit: string; source: string; date: string; parameter?: string; note?: string };
-  dependency: string[];
+  /** Technologies this one cannot run without. ABSENT ON A TECHNOLOGY THAT
+   *  DEPENDS ON NOTHING, which is how the batteries rows are written — the
+   *  Python schema treats the key as optional, so a reader here has to as
+   *  well. It was `string[]` and required, and the mismatch only surfaced the
+   *  day the batteries page was drawn for the first time. */
+  dependency?: string[];
   sectors: string[];
   sources: Source[];
 }
@@ -135,11 +164,24 @@ export interface FundingLine {
   note?: string;
 }
 
+/** One event in a project's history.
+ *
+ *  `kind` is absent on an ordinary status change, which is almost all of them.
+ *  An `ownership` event is the project changing hands: it names both owners, and
+ *  it carries the status the project was ALREADY in, unchanged. That is what
+ *  keeps the last entry's status equal to the project's, and it is why
+ *  `statusTransitions` skips one without being told to — the status did not
+ *  change, so the entry is not a transition. See sources/sector_map.py,
+ *  PROJECT_EVENT_KINDS, which is where the rule is written and gated. */
 export interface StatusEvent {
+  kind?: "status" | "ownership";
   status: ProjectStatus;
   date: string;
   source_url: string;
   note?: string;
+  /** Ownership events only: who it was, and who it is now. */
+  from?: string;
+  to?: string;
 }
 
 /** What kind of place a project row is, which is the only thing that decides
@@ -183,9 +225,17 @@ export interface Project {
   country: string;
   /** One or more sites. A list because a project is not always at one place:
    *  the ArcelorMittal row covers Bremen and Eisenhüttenstadt, and one point
-   *  for it would put a mark in the field between them. Never empty — the
-   *  Python gate fails the build before this file is written. */
+   *  for it would put a mark in the field between them.
+   *
+   *  EMPTY ON A STOPPED ROW, AND ONLY THERE. A cancelled or paused project may
+   *  stand without a position where `location_note` says the position was not
+   *  sought; the Python gate refuses the absence on any other status and
+   *  refuses it without the note. So an empty list here is always a decision
+   *  somebody wrote down, and the note is what the page renders in the
+   *  picture's place. */
   location: Site[];
+  /** Why there is no position. Present only where `location` is empty. */
+  location_note?: string;
   sector: string;
   role?: ProjectRole;
   /** Only ever true, and only on a node several industries share — a CO2 store,
@@ -547,6 +597,118 @@ export function getLead(sector: string): Lead | null {
  *  to choose a template, so it has to be cheap and total: no throw, no
  *  half-answer. A sector has a map when it has a ranking AND something for the
  *  ranking to point at. */
+/** Sectors whose data is built and whose page may not be drawn yet.
+ *
+ *  `hasMap` asks whether the data EXISTS. It cannot ask whether the data is
+ *  COMPLETE ENOUGH TO PUBLISH, and those are different questions — batteries
+ *  passed the first the moment its ranking was built while still failing the
+ *  second badly. A hold is data rather than a missing file, so that it is
+ *  visible, survives anyone re-running a builder, and can say who releases it.
+ *  See data/transition/draw_holds.json. */
+export interface DrawHold {
+  since: string;
+  reason: string;
+  released_by: string;
+  /** A dated change to what the hold rests on, kept beside the original reason
+   *  rather than rewritten into it: a hold whose grounds moved is a different
+   *  decision from a hold that was always about this, and only one of them can
+   *  be read back later. */
+  amended?: { date: string; by: string; note: string };
+}
+
+/** A DATED NOTE ON A FIGURE THIS SITE HAS ALREADY PRINTED.
+ *
+ *  Not an as-of line, which says when a figure was last true, and not a change
+ *  record, which says what moved in the world. A correction says that what we
+ *  printed was wrong or incomplete, when we said so, and how we came to be
+ *  wrong — beside the figure, because a reader who saw the old number is
+ *  reading the page and not the commit history. See
+ *  data/transition/corrections.json for the practice and
+ *  sources/check_sector_schema.py for the gate. */
+export interface Correction {
+  id: string;
+  sector: string;
+  figure: string;
+  date: string;
+  was: string;
+  now: string;
+  what: string;
+  why: string;
+  sources: Source[];
+}
+
+let correctionsCache: Correction[] | null = null;
+
+/** The corrections pinned to one printed figure, newest first. `figure` is one
+ *  of the closed list in sources/sector_map.py, and passing a value that is not
+ *  in it returns nothing rather than throwing: the gate is where a bad anchor
+ *  is caught, and a page that fell over because a note was mis-keyed would be
+ *  worse than one that renders the figure it always did. */
+export function getCorrections(sector: string, figure: string): Correction[] {
+  if (!correctionsCache) {
+    correctionsCache = read<Correction>("corrections.json", "corrections");
+  }
+  return correctionsCache
+    .filter((c) => c.sector === sector && c.figure === figure)
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+let holdsCache: Record<string, DrawHold> | null = null;
+
+export function drawHolds(): Record<string, DrawHold> {
+  if (!holdsCache) {
+    const full = path.join(DIR, "draw_holds.json");
+    holdsCache = fs.existsSync(full)
+      ? (JSON.parse(fs.readFileSync(full, "utf8")).holds as Record<string, DrawHold>)
+      : {};
+  }
+  return holdsCache;
+}
+
+export function drawHold(sector: string): DrawHold | undefined {
+  return drawHolds()[sector];
+}
+
+let projectHoldsCache: Record<string, DrawHold> | null = null;
+/** Sectors whose PROJECT pages are built and not yet released for indexing.
+ *  Narrower than a draw hold and for the same reason: releasing a sector's own
+ *  page is a judgement about the overview it draws, not about the one indexable
+ *  page per project that classify() creates unconditionally.
+ *  See data/transition/draw_holds.json. */
+export function projectPageHolds(): Record<string, DrawHold> {
+  if (!projectHoldsCache) {
+    const full = path.join(DIR, "draw_holds.json");
+    projectHoldsCache = fs.existsSync(full)
+      ? ((JSON.parse(fs.readFileSync(full, "utf8")).project_page_holds ?? {}) as Record<
+          string,
+          DrawHold
+        >)
+      : {};
+  }
+  return projectHoldsCache;
+}
+export function projectPageHold(sector: string): DrawHold | undefined {
+  return projectPageHolds()[sector];
+}
+
+/** Whether the sector has the data its product template draws. DATA ONLY —
+ *  a draw hold is not asked about here, and that is the change of 6 September
+ *  2026.
+ *
+ *  WHAT THE HOLD USED TO DO, AND WHY IT WAS WRONG. `hasMap` returned false
+ *  while a sector was held, so the route rendered the register directory
+ *  instead of the product template and the held page was never built. It was
+ *  therefore never type-checked against its own data, never crawled by the
+ *  anchor gate, never in a build at all — and the first draw after the hold
+ *  came off failed on a technology with no `dependency` key, a bug that had
+ *  been sitting there for as long as the hold. A gate that stops a page being
+ *  drawn also stops it being tested, and a hold is supposed to withhold
+ *  publication rather than suspend the work.
+ *
+ *  A HOLD NOW GATES PUBLICATION ONLY: the page renders and is exercised by
+ *  every gate on every run, and `sectorIsIndexable` keeps it out of the sitemap
+ *  and puts `noindex` in its head for as long as the hold stands. See
+ *  sources/scope.md, "A draw hold gates publication". */
 export function hasMap(sector: string): boolean {
   const imp = getImportance(sector);
   return Boolean(imp && getBottlenecks(sector).length > 0);

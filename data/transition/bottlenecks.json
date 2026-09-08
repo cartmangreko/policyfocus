@@ -561,6 +561,228 @@
         }
       ],
       "measures": []
+    },
+    {
+      "id": "batsol-cell-cost-gap",
+      "sector": "batsol",
+      "transition": "supply_security",
+      "type": "market",
+      "name": "European cells against imported cells",
+      "description": "A European gigafactory has to sell cells against imported ones made at larger scale on longer-amortised lines, and the European cost per kWh has not closed that gap. It is the constraint the sector's failures share: the plants that stopped did not stop for want of a market for batteries, they stopped for want of a price at which their own cells cleared.",
+      "quantified_by": [],
+      "addressed_by": [
+        "cell-manufacturing",
+        "lfp-cells"
+      ],
+      "measures": [
+        {
+          "measure": "iaa:LM-15a",
+          "rel": "relieves",
+          "weight": 1.0,
+          "note": "The only provision in the register that puts an origin requirement on battery storage by name, on the buying side. It does not lower a European cost per kWh; it removes part of the demand a cheaper imported cell can compete for.",
+          "evidence": {
+            "source": "data/iaa.json",
+            "path": "LM-15a.duty",
+            "quote": "Apply the Union-origin requirements laid down in the new Annex II when procuring listed net-zero technologies (battery storage, solar PV, heat pumps, wind, nuclear).",
+            "article": "Art. 34(4) (new Art. 25a(2) of Regulation (EU) 2024/1735)"
+          }
+        },
+        {
+          "measure": "iaa:LM-26a",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "The same instrument reaching the cell through the vehicle it sits in rather than through the cell itself, and weighted for that distance: a purchase scheme buys a car, and the origin requirement it applies is a requirement about the car.",
+          "evidence": {
+            "source": "data/iaa.json",
+            "path": "LM-26a.duty",
+            "quote": "Ensure that only vehicles complying with the Union-origin requirements are eligible under public schemes supporting the purchase, lease, rent or hire-purchase of new electric vehicles.",
+            "article": "Art. 12; Art. 13; Annex III, Part II"
+          }
+        },
+        {
+          "measure": "nzia:SCH-01",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "Purchase subsidies have to be designed so that a resilient supply counts, either by paying more for it or by making it the condition of eligibility. It is a criterion rather than a volume, which is why it sits below the procurement rules.",
+          "evidence": {
+            "source": "data/nzia.json",
+            "path": "SCH-01.duty",
+            "quote": "Design any new or updated scheme that subsidises the purchase of net-zero technology final products so that it favours products with a high sustainability and resilience contribution, either by paying more for them or by making them the eligibility condition.",
+            "article": "Art. 28(1)"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://northvolt.com/articles/northvolt-files-for-bankruptcy-in-sweden/",
+          "title": "Northvolt files for bankruptcy in Sweden",
+          "publisher": "Northvolt",
+          "date": "2025-03-12"
+        },
+        {
+          "url": "https://www.energy-storage.news/european-ess-battery-company-morrow-files-for-bankruptcy/",
+          "title": "European ESS battery company Morrow files for bankruptcy",
+          "publisher": "Energy-Storage.News",
+          "date": "2026-05-06"
+        }
+      ]
+    },
+    {
+      "id": "batsol-ramp-and-yield",
+      "sector": "batsol",
+      "transition": "supply_security",
+      "type": "technical",
+      "name": "Ramping a cell line to yield",
+      "description": "Building a gigafactory and running one are different problems. A cell line reaches its nameplate only when scrap falls far enough for the plant to earn, and the interval between commissioning and that point is where European projects have most often failed. It is a technical constraint with a financial deadline: the capital is spent before the yield arrives.",
+      "quantified_by": [],
+      "addressed_by": [
+        "cell-manufacturing"
+      ],
+      "measures": [
+        {
+          "measure": "ets:FND-03",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "The register reaches the financial deadline on this constraint and not the constraint itself: Innovation Fund money is capital during the interval between commissioning and yield, and three of the sites here hold a grant from its first Battery Call. Nothing in the register reaches scrap rates.",
+          "evidence": {
+            "source": "data/ets.json",
+            "path": "FND-03.benefit",
+            "quote": "Grants and other support (e.g. blended finance) from the Innovation Fund, financed by auctioning 200 million allowances from reduced free allocation, are available via open competitive calls for projects scaling up low-/zero-carbon and carbon-negative products, processes and technologies across all Member States.",
+            "article": "Art. 1(17), inserting Art. 10cb of Directive 2003/87/EC"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://northvolt.com/articles/northvolt-files-for-bankruptcy-in-sweden/",
+          "title": "Northvolt files for bankruptcy in Sweden",
+          "publisher": "Northvolt",
+          "date": "2025-03-12"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1992243/000199224324000066/frey-20231231.htm",
+          "title": "FREYR Battery, Annual Report on Form 10-K for 2023",
+          "publisher": "FREYR Battery (SEC EDGAR)",
+          "date": "2024-02-29"
+        }
+      ]
+    },
+    {
+      "id": "batsol-demand-uncertainty",
+      "sector": "batsol",
+      "transition": "supply_security",
+      "type": "market",
+      "name": "Committing capacity against uncertain vehicle demand",
+      "description": "A cell factory is sanctioned years before the vehicles it supplies are sold, on a forecast of how fast Europe electrifies. When that forecast moves, the capacity is already half-built. It is the reason given for the largest pauses in the sector, and it is the constraint the fleet CO2 standards act on from the other side — the same rule that makes the demand is what makes the forecast a policy question rather than a commercial one.",
+      "quantified_by": [],
+      "addressed_by": [
+        "cell-manufacturing"
+      ],
+      "measures": [
+        {
+          "measure": "fleet:TGT-2035",
+          "rel": "relieves",
+          "weight": 1.0,
+          "note": "The one provision that removes the demand question rather than answering it: a 100% reduction on the tailpipe measure means a new car sold in the Union carries a battery, so a factory sanctioned against it is sanctioned against a legal deadline rather than against a forecast.",
+          "evidence": {
+            "source": "data/fleet.json",
+            "path": "TGT-2035.duty",
+            "quote": "Meet an EU fleet-wide target of a 100% reduction on the 2021 baseline for new passenger cars from 2035.",
+            "article": "Art. 1(5a)"
+          }
+        },
+        {
+          "measure": "fleet:TGT-2030",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "The step before it, and the one inside the horizon of a factory being built now — the fleet has to be halfway there five years before the full target bites.",
+          "evidence": {
+            "source": "data/fleet.json",
+            "path": "TGT-2030.duty",
+            "quote": "Meet an EU fleet-wide target of a 55% reduction on the 2021 baseline for new passenger cars, and 50% for new light commercial vehicles.",
+            "article": "Art. 1(5)"
+          }
+        },
+        {
+          "measure": "fleet:PREM-01",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "The price of missing the target, which is what turns it from an aspiration into a procurement decision. It is money out of a carmaker rather than money into a cell maker, which is why it is weighted below the targets it enforces.",
+          "evidence": {
+            "source": "data/fleet.json",
+            "path": "PREM-01.duty",
+            "quote": "Pay an excess emissions premium of EUR 95 per gram per kilometre of exceedance, multiplied by the number of newly registered vehicles.",
+            "article": "Art. 8(1)"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
+          "title": "ACC permanently abandons battery projects in Germany and Italy",
+          "publisher": "electrive",
+          "date": "2026-02-09"
+        }
+      ]
+    },
+    {
+      "id": "batsol-cathode-dependence",
+      "sector": "batsol",
+      "transition": "supply_security",
+      "type": "infrastructure",
+      "name": "Cell capacity without the materials behind it",
+      "description": "A European cell works still buys most of its cathode and anode material from outside Europe, so onshoring the cell does not by itself onshore the supply chain. The perimeter of this dataset makes the same point from the other direction: cathode, anode, separator and electrolyte works are outside it, and there are very few of them here to hold.",
+      "quantified_by": [],
+      "addressed_by": [
+        "lfp-cells",
+        "sodium-ion-cells"
+      ],
+      "measures": [
+        {
+          "measure": "crma:CBEN-01",
+          "rel": "relieves",
+          "weight": 1.0,
+          "note": "The benchmark that answers this constraint directly: extraction, processing and recycling capacity inside the Union for each strategic raw material, which is what a cathode works needs upstream of it. It is a benchmark on the Union rather than a duty on anybody's factory, and it is dated.",
+          "evidence": {
+            "source": "data/crma.json",
+            "path": "CBEN-01.duty",
+            "quote": "Build Union capacity towards extracting 10%, processing 40% and recycling 25% of the Union's annual consumption of each strategic raw material by 2030.",
+            "article": "Art. 5(1)(a)"
+          }
+        },
+        {
+          "measure": "crma:CBEN-02",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "The other half of the same article, and the one that concedes the material will still be imported: it caps how much of it may come from any one country rather than moving the supply into Europe.",
+          "evidence": {
+            "source": "data/crma.json",
+            "path": "CBEN-02.duty",
+            "quote": "Diversify imports so that no single third country supplies more than 65% of the Union's annual consumption of any strategic raw material by 2030.",
+            "article": "Art. 5(1)(b)"
+          }
+        },
+        {
+          "measure": "crma:CSP-02",
+          "rel": "relieves",
+          "weight": 0.5,
+          "note": "The route by which a particular materials project gets built: recognition brings shortened permitting and access to finance to the works that would sit upstream of these sites.",
+          "evidence": {
+            "source": "data/crma.json",
+            "path": "CSP-02.duty",
+            "quote": "File a Strategic Project application carrying ten items: evidence against the criteria, a UN Framework Classification, a permitting timetable, a public-acceptance plan, ownership and control information, a business plan, a jobs and skills estimate, a post-exploitation environmental restoration plan, an alternative-locations assessment in protected areas, and an indigenous-peoples consultation plan.",
+            "article": "Art. 7(1)"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.catl.com/en/news/983.html",
+          "title": "CATL announces its second European battery plant in Hungary",
+          "publisher": "CATL",
+          "date": "2022-08-12"
+        }
+      ]
     }
   ]
 }

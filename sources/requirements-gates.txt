@@ -1,0 +1,15 @@
+# What the BUILD GATES need, as opposed to the fetcher (sources/requirements.txt).
+# Kept separate because this file is installed everywhere the build runs — laptop,
+# pre-push hook, deployment — and nothing here should be heavier than the check it
+# serves.
+#
+#     python3 -m pip install -r sources/requirements-gates.txt
+#
+# sources/ensure_gate_deps.py installs it at the head of the prebuild, so a fresh
+# environment does not fail on a missing wheel.
+#
+# pyproj: EPSG:23700, the Hungarian national grid, whose double projection and
+# ninety-metre datum shift sources/eov.py deliberately does not reimplement. Every
+# other conversion here — osgb36.py, utm.py — is written and self-checked in plain
+# Python; sources/scope.md holds the ruling on when that stops being honest.
+pyproj>=3.6

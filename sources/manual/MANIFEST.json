@@ -1,0 +1,152 @@
+{
+  "_comment": [
+    "Pages retrieved by hand, because the fetcher is refused and a browser is not.",
+    "See README.md in this folder for the protocol and for what this is not.",
+    "",
+    "Every entry: the file as saved here, the URL it came from, the date it was",
+    "retrieved and by whom. Gated in both directions by check_manual_sources.py --",
+    "a file with no entry fails, an entry with no file fails, and a row citing a",
+    "file that is not here fails.",
+    "",
+    "`wanted` is the queue: pages known to be needed and not yet retrieved. It is",
+    "here rather than in a message so the list survives the conversation that",
+    "produced it.",
+    "",
+    "`wanted` is PARKED. George retrieves these; nothing in the build retries them and no",
+    "turn is spent on them. Each entry carries the exact URL and the `drop_as` path the file",
+    "should take, so filing is a copy and a manifest line. `priority: lowest` marks an entry",
+    "that would corroborate something already settled -- nothing waits on it.",
+    "",
+    "STOPPED ROWS DO NOT QUEUE HERE. On 6 September 2026 four candidates left this list without",
+    "anything being retrieved: FREYR at Mo i Rana, SVOLT at Lauchhammer, ACC at Kaiserslautern and",
+    "Farasis at Bitterfeld-Wolfen are all stopped as cell projects, and location is sought for",
+    "ACTIVE rows only. They landed as rows carrying their status, their company source and a",
+    "location_note saying the position was not sought. A queue entry for a works nobody will build",
+    "is a job that would never be worth doing, and leaving it here would have made the list read",
+    "as work outstanding. See sources/scope.md, 'A stopped row does not enter the location queue'."
+  ],
+  "retrieved": [
+    {
+      "file": "envision-aesc-sunderland--launches-its-new-uk-battery-gigafactory.pdf",
+      "url": "https://www.aesc-group.com/newsInfo?id=aesc-launches-its-new-uk-battery-gigafactory",
+      "retrieved_date": "2026-09-03",
+      "retrieved_by": "George Christopoulos",
+      "note": "Print-to-PDF. The page carries no date in its body; AESC's own 'More articles' index on the same page dates this release 2025-12-16, which is what the row uses."
+    },
+    {
+      "file": "envision-aesc-douai--start-of-production.pdf",
+      "url": "https://www.aesc-group.com/newsInfo?id=at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
+      "retrieved_date": "2026-09-03",
+      "retrieved_by": "George Christopoulos",
+      "note": "Print-to-PDF. Undated on the page and not in the index carried with it; the row dates it from contemporaneous reporting of the ceremony and says so."
+    },
+    {
+      "file": "envision-aesc-sunderland--installation-details-300168590-ES-001.pdf",
+      "url": "https://www.sunderland.gov.uk/media/35770/4-Envision-AESC-Installation-Details-Process-Description-300168590-ES-001/pdf/4._Envision_AESC-_Installation_Details___Process_Description-300168590-ES-001.pdf",
+      "retrieved_date": "2026-09-04",
+      "retrieved_by": "George Christopoulos",
+      "note": "TÜV Rheinland installation-details report, 70 pages, issued 26 September 2023. Carries the Appendix 1 site plans and the 61 emission-point grid references the row's coordinate is computed from."
+    },
+    {
+      "file": "calb-sines--calb-sines-groundbreaking.html",
+      "url": "http://en.calb-tech.com/news_detail/5.html",
+      "retrieved_date": "2026-09-05",
+      "retrieved_by": "George Christopoulos",
+      "note": "CALB's own release of 27 February 2025: 'On February 24, local time, construction commenced on CALB's Portugal facility, which will be a zero-carbon AI gigafactory with delivery expected in 2027.' READ BEFORE THE ROW IS WRITTEN: the release names PORTUGAL AND NO CITY, states no capacity, and does not say Sines. It confirms that construction started and it does not confirm the site, which is the thing the candidate was waiting on — the same shape as Sunwoda's 'Hungary'. The coordinate is already in hand; the site rule is not closed by this page. FOUND AFTERWARDS: the certificate mismatch is an https problem only — the URL serves over plain http and check_links reaches it, and this file is byte-for-byte what it serves. The filed copy stays: it is what was read, and the row cites the publisher's URL either way."
+    },
+    {
+      "file": "sk-on-ivancsa--sk-on-global-network-ivancsa.html",
+      "url": "http://eng.sk-on.com/company/global.asp",
+      "retrieved_date": "2026-09-05",
+      "retrieved_by": "George Christopoulos",
+      "note": "SK On's own places-of-business page. THE PARCEL LINE IS THE PAYLOAD: 'SK On Hungary Iváncsa HRSZ 99/48 Iváncsa 2454, Hungary' — an operator-published address carrying the Hungarian land-registry parcel number (helyrajzi szám) for the works, which is both the company confirmation of the site and a position that walks back to a cadastral parcel rather than to an estate. The same page also carries 'SK On Hungary Komárom 2903 Komárom, Irinyi János u 9, Hungary' and 'SK Battery Manufacturing Komárom 2900 Komárom, Klapka Gyorgy ut 39., Hungary', so it serves the Komárom candidate as well as Iváncsa. FOUND AFTERWARDS: the certificate mismatch is an https problem only — the URL serves over plain http and check_links reaches it, and this file is byte-for-byte what it serves. The filed copy stays: it is what was read, and the row cites the publisher's URL either way."
+    },
+    {
+      "file": "svolt-lauchhammer--svolt-europe-lauchhammer.html",
+      "url": "https://web.archive.org/web/20240522145108/https://www.svolt-eu.com/en/press/svolt-builds-additional-battery-cell-factory-in-brandenburg-germany-for-european-market/",
+      "retrieved_date": "2026-09-05",
+      "retrieved_by": "George Christopoulos",
+      "note": "SVOLT's press release of 9 September 2022, from the Internet Archive's capture of 22 May 2024: SVOLT 'will build another battery cell factory for the European market in Lauchhammer', on the former Vestas rotor-blade site taken over at the end of August 2022 and repurposed. Cell factory, named brownfield site, no capacity in this release. NOT A RETRIEVED_MANUALLY SOURCE: the publisher's own copy is gone with the company, so the row cites this capture URL with archived: true and snapshot pointing at this file — see sources/manual/README.md, 'What this is not'."
+    },
+    {
+      "file": "svolt-uberherrn--svolt-europe-uberherrn.html",
+      "url": "https://web.archive.org/web/20240724080837/https://www.svolt-eu.com/en/eu-locations/",
+      "retrieved_date": "2026-09-05",
+      "retrieved_by": "George Christopoulos",
+      "note": "SVOLT's EU-Locations page, from the Internet Archive's capture of 24 July 2024. Überherrn: 'In Überherrn on \"Linslerfeld\", a battery cell factory with 24 GWh of installed capacity in the final expansion stage is to be built' — site, product and scale in one sentence, and the site is named as a parcel rather than as a town. The page also covers Heusweiler, which is a module and pack factory and is refused by the product rule, and Lauchhammer. Archived rather than manually retrieved, for the same reason as the Lauchhammer capture."
+    },
+    {
+      "file": "envision-aesc-extremadura--first-stone-navalmoral-de-la-mata.html",
+      "url": "https://web.archive.org/web/20241002033752/https://www.aesc-group.com/en/item/668bf854f7fe5a27254fcc59/",
+      "retrieved_date": "2026-09-05",
+      "retrieved_by": "George Christopoulos",
+      "note": "AESC's own first-stone release of 8 July 2024, from the Internet Archive. THE CAPTURE FILED IS 2 OCTOBER 2024, not the 19 September one the retrieval was described against: the Wayback bar on this copy reads 20241002033752, and the row cites the capture that is actually here. Six captures of the page exist between 12 August 2024 and 18 February 2026. Payload: the site named as Navalmoral de la Mata (Cáceres), production 'scheduled to begin in 2026', LFP batteries 'at scale', over one billion euros in the first phase, up to 900 direct jobs, and an attendance list — Sánchez, Guardiola, the mayor — that corroborates La Moncloa's record of the same ceremony. NOT A RETRIEVED_MANUALLY SOURCE: the live page is gone from AESC's rebuilt site, so the row cites this capture with archived: true and this file as its snapshot, on the SVOLT pattern."
+    }
+  ],
+  "wanted": [
+    {
+      "candidate": "britishvolt-blyth",
+      "url": "https://northumberland.moderngov.co.uk/documents/s5924/05%2021-00818-FULES%20Britishvolt%20Gigaplant%20Report1.pdf",
+      "why": "council planning portal answers 403; the public-access record says the application is no longer available for viewing",
+      "needed_for": "RE-LABELLED 6 September 2026 UNDER THE STOPPED-ROW RULING, and left here rather than deleted so the entry does not vanish. Britishvolt is cancelled, so its coordinate is no longer needed: the row can land without a position, carrying a location_note, as soon as its status events are sourced — the December 2020 announcement is in hand and the administration in early 2023 is not read yet. This permit would place the works if anybody ever wants the dot, and nothing waits on it. George rules whether the row lands now.",
+      "drop_as": "sources/manual/britishvolt-blyth--northumberland-permit-21-00818-FULES-committee-report.pdf",
+      "priority": "lowest"
+    },
+    {
+      "candidate": "envision-aesc-sunderland",
+      "url": "https://www.sunderland.gov.uk/media/35768/2-Non-Technical-Summary-13-7-23/pdf/2._Non-Technical_Summary_-_13.7.23.PDF",
+      "why": "council answers 403; non-technical summary for the s73 application",
+      "needed_for": "CORROBORATION ONLY — the row is landed and its coordinate is settled by the installation-details report already filed. These would confirm the position independently and may explain the Giga 1 / Plant 2 naming. Nothing waits on them.",
+      "drop_as": "sources/manual/envision-aesc-sunderland--s73-non-technical-summary-23-01542-VA4.pdf",
+      "priority": "lowest"
+    },
+    {
+      "candidate": "envision-aesc-sunderland",
+      "url": "https://docs.planning.org.uk/20240424/110/SC0YAKBB01600/i11g9tquu26kxzlv.pdf",
+      "why": "document host answers 403; Plant 3 planning statement, which locates Plants 1 and 2 relative to it",
+      "needed_for": "CORROBORATION ONLY — the row is landed and its coordinate is settled by the installation-details report already filed. These would confirm the position independently and may explain the Giga 1 / Plant 2 naming. Nothing waits on them.",
+      "drop_as": "sources/manual/envision-aesc-sunderland--plant-3-planning-statement.pdf",
+      "priority": "lowest"
+    },
+    {
+      "candidate": "eve-power-debrecen",
+      "url": "https://kormanyhivatalok.hu/kormanyhivatalok/hajdu-bihar/hirdetmenyek",
+      "why": "the county office's notice board is a JavaScript shell to the fetcher; the decision itself is not at a stable URL the fetcher can reach",
+      "needed_for": "PLACES AN ACTIVE ROW. The Hajdu-Bihar Varmegyei Kormanyhivatal's combined KHV/IPPC decision, which names the works parcel. The applicant's own documentation for that procedure IS readable, but on an NGO host (miakoegyesulet.hu) rather than the authority's or the company's site: it gives parcel Debrecen hrsz 0237/405 and central EOV coordinates Y 835619 / X 251450. Whether an NGO-hosted copy of the company's own submission may place a works position is George's ruling, not mine.",
+      "drop_as": "sources/manual/eve-power-debrecen--kormanyhivatal-khv-ippc-decision.pdf",
+      "priority": "normal"
+    },
+    {
+      "candidate": "elevenes-subotica",
+      "url": "https://www.ekologija.gov.rs/obavestenja/procena-uticaja-na-zivotnu-sredinu",
+      "why": "the Serbian EIA register is a JavaScript shell to the fetcher, and neither the live site nor the Wayback Machine holds a line-opening release. The archive has 57 elevenes.com/news pages, read on 7 September 2026; the two that could carry a works address — 'How we became the first battery factory in Europe' and the SeeNews interview on the 1 GWh plant — name Subotica and no address. The company's live newsroom now carries a single item.",
+      "needed_for": "PLACES AN ACTIVE ROW. Either the EIA decision for the Subotica cell line or an ElevenEs release naming the works address. The only address the company publishes is Tolminska 35, Subotica, which is its contact address and refused as a works position under the office-address rule.",
+      "drop_as": "sources/manual/elevenes-subotica--eia-decision.pdf",
+      "priority": "normal"
+    },
+    {
+      "candidate": "leclanche-willstatt",
+      "url": "https://www.uvp-verbund.de/freitextsuche?q=Leclanch%C3%A9",
+      "why": "NOT A FETCH FAILURE. The national UVP portal answers and answers nothing: 0 results for Leclanche, and the 2 for Willstatt are groundwater abstractions. No federal environmental procedure exists to retrieve.",
+      "needed_for": "PLACES AN ACTIVE ROW, and it is now the only thing missing. Leclanche's own ad hoc release of 10 November 2025 states the expansion — 'die Erweiterung des bestehenden Produktionsstandorts von Leclanche in Willstatt auf eine Kapazitat von 2 GWh' — so the admission precondition is met. What is not met is the position. Leclanche publishes Leclanche GmbH at Industriestrasse 1, 77731 Willstatt on its locations page, which is an address OF THE COMPANY and not a statement that the works is there; OSM carries an unnamed building at that address (way 49435057) and nothing named or operated by Leclanche. What would place it: a Leclanche page or filing naming the production site's own address, or a Baden-Wurttemberg BImSchG notice for the expansion once one is published.",
+      "drop_as": "sources/manual/leclanche-willstatt--bimschg-notice.pdf",
+      "priority": "normal"
+    },
+    {
+      "candidate": "tesla-gruenheide-cells",
+      "url": "https://www.brandenburg.de/cms/detail.php/bb1.c.658136.de",
+      "why": "brandenburg.de answers 403 to the declared reader, and to a second reader tried after it; a browser opens it",
+      "needed_for": "THE WITHDRAWAL AT AN OFFICIAL TIER. funding germany-ipcei-tesla-gruenheide records Tesla's November 2021 withdrawal from the German IPCEI grant on Reuters carrying the federal ministry's confirmation, because neither ministry published a release on it and Tesla said nothing. Reporting says this state FAQ on the Tesla settlement addresses the funding; if it states the withdrawal, the row's weakest source can be replaced by the state's own words. The status does not change either way — it is already withdrawn.",
+      "drop_as": "sources/manual/tesla-gruenheide-cells--brandenburg-tesla-faq.html",
+      "priority": "low"
+    },
+    {
+      "candidate": "stegra-boden",
+      "url": "https://stegra.com/en/the-boden-plant",
+      "why": "answers 200 but renders by script; a declared reader gets no readable text, a browser shows the page",
+      "needed_for": "THE ONLY STATED PRODUCTION DATE FOR EUROPE'S LARGEST GREENFIELD STEEL PROJECT. stated_schedule is empty for stegra-boden after the fetch pass because nothing this pipeline can read states one. The Boden plant page is understood to carry the start of operations; a saved copy would let the row take it as a company statement rather than leave the row silent.",
+      "drop_as": "sources/manual/stegra-boden--the-boden-plant.html",
+      "priority": "medium"
+    }
+  ]
+}

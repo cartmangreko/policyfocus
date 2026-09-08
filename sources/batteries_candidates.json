@@ -1,0 +1,455 @@
+{
+  "_comment": [
+    "THE BATTERIES CANDIDATE LIST, machine-readable so the gap can be REPORTED rather",
+    "than narrated. sources/report_candidate_gaps.py reads it and prints what is still",
+    "missing on every build.",
+    "",
+    "WHY IT EXISTS. The perimeter admits a site only when the company has confirmed it",
+    "and a citable source identifies the works. Both take research, and a dataset in",
+    "build-up therefore has two populations: rows that are on file, and candidates that",
+    "are not yet. Held only in prose, the second population is a paragraph somebody has",
+    "to remember to update. Held here, it is a number the build prints.",
+    "",
+    "A CANDIDATE LEAVES BY BECOMING A ROW. `id` matches the project id it will take in",
+    "data/transition/projects.json, and the report treats a candidate whose id is",
+    "already a project as landed. Nothing is deleted when that happens: the entry stays",
+    "as the record of what was needed, and the report stops asking for it.",
+    "",
+    "`company_source` is a URL or null. `coordinate_source` is one of the values in",
+    "sector_map.LOCATION_SOURCE_TYPES or null. Null means outstanding, and outstanding",
+    "is the thing this file is for.",
+    "",
+    "Refused candidates are NOT here. This file is the admitted set; what the perimeter",
+    "refuses, and why, is in sources/batteries_docket.md, which is the reviewed record.",
+    "",
+    "`company_source_blocked` is the third state. The right document has been found and",
+    "named, and the fetcher cannot read it -- a publisher that answers 403 to a datacentre",
+    "IP, or a host whose certificate does not match. It is not a missing source and it is",
+    "not a usable one: somebody with a browser can close it in a minute, and until they do",
+    "the row cannot carry a verbatim quote nobody has read.",
+    "",
+    "TWO CANDIDATES ARRIVED FROM THE FUNDING WORK RATHER THAN FROM THE PERIMETER SWEEP --",
+    "NOVO Energy at Gothenburg and Leclanche at Willstatt, both named in the Commission's",
+    "Innovation Fund Battery Call. The sweep looked for gigafactories and missed two that a",
+    "list of who got money named directly. Worth remembering the next time a sector is built:",
+    "the funding trail is a discovery route and not only a money model."
+  ],
+  "sector": "batsol",
+  "perimeter": "sources/batteries_docket.md",
+  "candidates": [
+    {
+      "id": "acc-billy-berclau",
+      "company": "Automotive Cells Company",
+      "site": "Billy-Berclau/Douvrin",
+      "country": "FR",
+      "status": "operating",
+      "capacity_gwh": 13,
+      "company_source": "https://www.acc-emotion.com/media/bbd-press-release",
+      "coordinate_source": "basemap"
+    },
+    {
+      "id": "verkor-dunkirk",
+      "company": "Verkor",
+      "site": "Bourbourg, Dunkirk",
+      "country": "FR",
+      "status": "operating",
+      "capacity_gwh": 16,
+      "company_source": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+      "coordinate_source": "basemap"
+    },
+    {
+      "id": "powerco-salzgitter",
+      "company": "PowerCo",
+      "site": "Salzgitter",
+      "country": "DE",
+      "status": "operating",
+      "capacity_gwh": 20,
+      "company_source": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
+      "coordinate_source": "basemap"
+    },
+    {
+      "id": "northvolt-ett-skelleftea",
+      "company": "Lyten",
+      "site": "Skellefteå",
+      "country": "SE",
+      "status": "paused",
+      "company_source": "https://lyten.com/2026/02/26/lyten-completes-acquisition-of-northvolt-sweden-and-establishes-its-first-lyten-industrial-hub-in-sweden/",
+      "coordinate_source": "basemap",
+      "note": "Capacity landed 7 September 2026: Lyten's completion release states '16 GWh of existing battery manufacturing capacity', which is a company figure for Northvolt Ett under Lyten. The note previously said none had been read; it had been on file since the row landed and was not seen."
+    },
+    {
+      "id": "acc-termoli",
+      "company": "Automotive Cells Company",
+      "site": "Termoli",
+      "country": "IT",
+      "status": "paused",
+      "company_source": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
+      "coordinate_source": "basemap",
+      "note": "ACC's own release LOCATED 7 September 2026: acc-emotion.com/stories/acc-announces-opening-3rd-gigafactory-termoli-italy states 'The new plant will take up an area of 1.2 million square metres and will produce 40 GWh as in Germany & France.' The earlier note said the company's own release was not located and that ACC was known only through trade press; that is no longer true and the capacity is now on the row."
+    },
+    {
+      "id": "catl-stellantis-zaragoza",
+      "company": "CATL and Stellantis joint venture",
+      "site": "Zaragoza, Figueruelas",
+      "country": "ES",
+      "status": "announced",
+      "capacity_gwh": 50,
+      "company_source": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+      "coordinate_source": "basemap"
+    },
+    {
+      "id": "acc-kaiserslautern",
+      "company": "Automotive Cells Company",
+      "site": "Kaiserslautern",
+      "country": "DE",
+      "status": "paused",
+      "company_source": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
+      "note": "Company source in hand. COORDINATE EXHAUSTED: a bounding-box sweep of the Kaiserslautern industrial area returns the Opel works as numbered halls and nothing naming ACC or a cell works. Nothing says which parcel the gigafactory was to take, and picking one would be a guess wearing a coordinate's clothes.",
+      "permit_route": {
+        "tried": "2026-09-05",
+        "record": null,
+        "what_it_gives": "Nothing yet. The basemap sweep is exhausted and the plan-parcel route has not been opened, because the documents that would carry it are municipal planning pages a person has to open.",
+        "what_it_does_not_give": "A coordinate. Nothing read says which parcel the works was to take.",
+        "next": "PARKED, in sources/manual/MANIFEST.json under `wanted`: the Kaiserslautern Bebauungsplan or permit for the ACC site, and the parcels it names."
+      }
+    },
+    {
+      "id": "powerco-sagunto",
+      "company": "PowerCo",
+      "site": "Sagunto, Valencia",
+      "country": "ES",
+      "status": "construction",
+      "capacity_gwh": 40,
+      "company_source": "https://www.volkswagen-group.com/en/press-releases/gigafactory-valencia-powerco-gives-starting-signal-for-construction-of-second-cell-factory-17033",
+      "coordinate_source": "basemap",
+      "note": "Basemap has Parc Sagunt II, the industrial estate, not the works.",
+      "coordinate_ref": "way/1180219207 Gigafactoria Volkswagen"
+    },
+    {
+      "id": "gib-surany",
+      "company": "Gotion InoBat Batteries",
+      "site": "Šurany",
+      "country": "SK",
+      "status": "construction",
+      "capacity_gwh": 20,
+      "company_source": "https://www.inobat.eu/newsroom/gib-to-build-an-advanced-gigafactory-in-slovakia/",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1445839308 operator=GIB EnergyX Slovakia"
+    },
+    {
+      "id": "envision-aesc-douai",
+      "company": "Envision AESC",
+      "site": "Douai",
+      "country": "FR",
+      "status": "operating",
+      "capacity_gwh": 10,
+      "company_source": "https://www.aesc-group.com/newsInfo?id=at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1547499346 Envision AESC, man_made=works",
+      "note": "Retrieved by hand; see sources/manual/. Coordinate was already in hand."
+    },
+    {
+      "id": "envision-aesc-sunderland",
+      "company": "Envision AESC",
+      "site": "Sunderland",
+      "country": "UK",
+      "status": "operating",
+      "capacity_gwh": 15.8,
+      "company_source": "https://www.aesc-group.com/newsInfo?id=aesc-launches-its-new-uk-battery-gigafactory",
+      "note": "Landed, and the permit is now read rather than relayed: filed in sources/manual/ and quoted from directly. Coordinate is the centroid of the 61 emission points the report lists, converted by sources/osgb36.py and recomputed by the gate.",
+      "coordinate_ref": "permit 21/01764/HE4, varied by 23/01542/VA4 (Sunderland City Council). Site address on the register: '1 International Drive, Sunderland SR5 3FH', tied to AESC Plant 2 through discharge-of-condition 24/00782/DIS, which names 23/01542/VA4 in its description.",
+      "coordinate_source": "permit"
+    },
+    {
+      "id": "envision-aesc-extremadura",
+      "company": "Envision AESC",
+      "site": "Navalmoral de la Mata",
+      "country": "ES",
+      "status": "construction",
+      "note": "Status and staleness both turn on the June 2026 update: the cornerstone was laid in July 2024, but as of June 2026 only ground preparation is done and AESC's roadmap puts first cells at December 2028. When the row lands it is construction — ground works have begun — with a note that four and a half years separate the cornerstone from the first cell. Not stale by the twelve-month test: the newest source is three months old.",
+      "company_source_blocked": "https://www.aesc-group.com/newsInfo?id=<slug> — 'AESC Spain celebrates the laying of the first stone of the battery gigafactory in Navalmoral de la Mata (Cáceres)'. The live URL form is confirmed by the two pages already retrieved; the slug itself is not, so it is not guessed here.",
+      "supporting_sources": [
+        {
+          "url": "https://www.juntaex.es/w/maria-guardiola-asiste-a-la-puesta-de-la-primera-piedra-de-la-gigafactoria",
+          "publisher": "Junta de Extremadura",
+          "date": "2024-07-08",
+          "tier": "state",
+          "note": "State primary for the cornerstone, located this pass and replacing nothing — it stands beside La Moncloa's rather than instead of it."
+        },
+        {
+          "url": "https://www.lamoncloa.gob.es/presidente/actividades/Paginas/2024/080724-sanchez-gigafactoria-baterias.aspx",
+          "publisher": "La Moncloa (Government of Spain)",
+          "date": "2024-07-08",
+          "tier": "state",
+          "note": "Cornerstone laid 8 July 2024, nearly €1 billion in the first phase."
+        },
+        {
+          "url": "https://www.juntaex.es/w/autorizacion-ambiental-para-el-proyecto-de-la-gigafactoria-en-navalmoral",
+          "publisher": "Junta de Extremadura",
+          "date": "2022-11-02",
+          "tier": "state",
+          "note": "Environmental authorisation put to public consultation. The four-phase build to 2028 and the 108-hectare plot in the Industrial Development Park of Northern Extremadura come from this line of documents; a capacity of 94.24 GWh at the end of phase four is stated in them and has not been read against an AESC figure."
+        },
+        {
+          "url": "https://www.eleconomista.es/economia/noticias/13959337/06/26/la-gigafactoria-de-baterias-de-navalmoral-de-la-mata-en-caceres-proyecta-el-inicio-de-su-produccion-para-2028.html",
+          "publisher": "elEconomista, relaying the Junta de Extremadura",
+          "date": "2026-06",
+          "tier": "press",
+          "note": "RELAY, KEPT AS A LOCATOR. No Junta or Assembly record of the June 2026 update was found — the Junta's newsroom carries the cornerstone and the 2025 Zama visit but nothing from June 2026, and the Assembly's session records did not surface one. The substitution note therefore stands: this is press relaying a state source, recorded as press."
+        }
+      ]
+    },
+    {
+      "id": "catl-arnstadt",
+      "company": "CATL",
+      "site": "Arnstadt, Thuringia",
+      "country": "DE",
+      "status": "operating",
+      "capacity_gwh": 14,
+      "company_source": "https://www.prnewswire.com/news-releases/catls-german-plant-kicks-off-cell-production-301708032.html",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/776264491"
+    },
+    {
+      "id": "catl-debrecen",
+      "company": "CATL",
+      "site": "Debrecen",
+      "country": "HU",
+      "status": "construction",
+      "capacity_gwh": 100,
+      "company_source": "https://www.catl.com/en/news/983.html",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "relation/18559299 CATL akkumulátorgyár, landuse=construction"
+    },
+    {
+      "id": "tesla-gruenheide-cells",
+      "company": "Tesla",
+      "site": "Grünheide",
+      "country": "DE",
+      "status": "operating",
+      "capacity_gwh": null,
+      "coordinate_ref": "way/775978799 Tesla Gigafactory Berlin-Brandenburg",
+      "note": "Landed on Tesla's Q2 2026 shareholder update, which lists 'Berlin 4680 - Construction' with no capacity. Corrects the trade-press reading of operating at 8→18 GWh.",
+      "company_source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026049213/exhibit991.htm",
+      "coordinate_source": "basemap"
+    },
+    {
+      "id": "lges-wroclaw",
+      "company": "LG Energy Solution",
+      "site": "Biskupice Podgórne, Wrocław",
+      "country": "PL",
+      "status": "operating",
+      "capacity_gwh": 86,
+      "company_source": "https://news.lgensol.com/insights/from-our-experts/3071/",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/922173635 LG Energy Solution Wrocław, product=car_battery"
+    },
+    {
+      "id": "samsung-sdi-god",
+      "company": "Samsung SDI",
+      "site": "Göd",
+      "country": "HU",
+      "status": "operating",
+      "company_source": "https://news.samsungsdi.com/global/articleView?seq=8",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1009198739 Cella gyártás"
+    },
+    {
+      "id": "sk-on-ivancsa",
+      "company": "SK On",
+      "site": "Iváncsa",
+      "country": "HU",
+      "status": "operating",
+      "coordinate_ref": "node/8928841937 is an OFFICE node (office=company), not the works — refused",
+      "note": "SK On's own site lists Plant No.3 at Iváncsa, 30 GWh, from 2024, at 'HRSZ 99/48, Iváncsa 2454', but eng.sk-on.com serves a certificate for a different host and could not be read. The only basemap feature is an office node (office=company), refused: an office is not the works.",
+      "company_source_blocked": "http://eng.sk-on.com/company/global.asp"
+    },
+    {
+      "id": "sk-on-komarom",
+      "company": "SK On",
+      "site": "Komárom",
+      "country": "HU",
+      "status": "operating",
+      "company_source": "https://www.skinnovation.com/company/global?type=europe",
+      "note": "Company source in hand (SK Innovation network page, '2900 Komárom, Klapka György út 39.'). COORDINATE EXHAUSTED: a bounding-box sweep of 400 features across Komárom and Komárno returns nothing for SK On or SK Battery Manufacturing, and the published address geocodes only to the street."
+    },
+    {
+      "id": "agratas-bridgwater",
+      "company": "Agratas",
+      "site": "Gravity, Bridgwater",
+      "country": "UK",
+      "status": "construction",
+      "capacity_gwh": 40,
+      "company_source": "https://www.agratas.com/news/bridgwater-july-site-progress-update",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/125139808 Agratas Battery Factory"
+    },
+    {
+      "id": "sunwoda-nyiregyhaza",
+      "company": "Sunwoda",
+      "site": "Nyíregyháza",
+      "country": "HU",
+      "status": "construction",
+      "coordinate_ref": "way/1263927003 Hungary Sunwoda Electronics Automotive Energy, landuse=construction",
+      "note": "Landed under the composite site standard: company source confirms project and country, the Hungarian government's briefing room names the town and the product, the basemap carries a works with the operator's subsidiary name at an address in that town. Capacity absent, admitted at state tier.",
+      "company_source": "https://en.sunwoda.com/article/1345/9.html",
+      "coordinate_source": "basemap"
+    },
+    {
+      "id": "eve-power-debrecen",
+      "company": "EVE Power",
+      "site": "Debrecen",
+      "country": "HU",
+      "status": "announced",
+      "capacity_gwh": 30,
+      "company_source": "https://www.evebattery.com/en/news-1873",
+      "note": "Company source found: EVE's own page of 29 September 2025 names Debrecen — 'The EVE Energy Hungarian factory, approved for construction this year, is expected to be completed and put into operation in 2026.' No company capacity figure; the 30 GWh is state and trade tier. COORDINATE NOT FOUND: a sweep of 117 features across Debrecen returns the CATL site and nothing in the northwest industrial zone."
+    },
+    {
+      "id": "calb-sines",
+      "company": "CALB",
+      "site": "Sines",
+      "country": "PT",
+      "status": "announced",
+      "capacity_gwh": 15,
+      "coordinate_ref": "way/1262719042 Construção da Unidade Industrial de Baterias de Lítio da CALB",
+      "note": "Coordinate in hand. CALB's own groundbreaking release is the right document and en.calb-tech.com serves a certificate for cloudfront.net.",
+      "company_source_blocked": "http://en.calb-tech.com/news_detail/5.html"
+    },
+    {
+      "id": "freyr-mo-i-rana",
+      "company": "T1 Energy (FREYR)",
+      "site": "Mo i Rana",
+      "country": "NO",
+      "status": "paused",
+      "note": "UNPARKED AND TAKEN DIRECTLY, once the User-Agent declared a contact and the SEC answered. FREYR's FY2023 10-K, filed 29 February 2024, states it: 'In June 2022 … FREYR formally sanctioned the construction of Giga Arctic, a 120,000 square meter gigafactory in Mo i Rana, Norway. In 2023, we substantially completed groundworks and certain foundation structures, erected the initial building and secured and weatherized it, and then suspended work on the planned gigafactory.' Status is paused; the Customer Qualification Plant on the same site is a 13,000 m² qualification line and is refused separately by the pilot clause. NO CAPACITY IN THE FILING — the 10-K states no GWh figure at all — so capacity is outstanding and the row would be admitted on 'a 120,000 square meter gigafactory' being a company description of commercial-scale intent. COORDINATE OUTSTANDING: Nominatim has only Mo Industripark, which is the estate and is refused on the same rule as IAMP and Parc Sagunt II; Overpass was unavailable for a bounding-box sweep when the row was written. OVERPASS RAN ON 5 SEPTEMBER 2026 AND THE SWEEP IS EXHAUSTED, NOT BLOCKED. Three queries: a name search for Freyr, FREYR, Giga Arctic and T1 Energy over the town and the estate returned nothing; a bounding-box sweep of Mo Industripark and its surroundings returned 309 industrial and construction features of which 5 carry a name, and those five are A/S Norsk Jernverk, three power stations and Mo Industripark itself; an operator and brand search over a box from 65.9 to 66.7 N and 13.0 to 15.2 E returned nothing. The estate polygon is refused on the same rule as IAMP and Parc Sagunt II. T1 Energy's own site names the location as 'Mo i Rana, Norway' and publishes no address, so the operator-address route is closed too. The coordinate is outstanding because no admissible source states a position, which is a different state from nobody having looked.",
+      "company_source": "https://www.sec.gov/Archives/edgar/data/1992243/000199224324000066/frey-20231231.htm",
+      "permit_route": {
+        "tried": "2026-09-05",
+        "record": null,
+        "what_it_gives": "An operator address and a project company. Brønnøysundregistrene, the Norwegian company register, carries T1 ENERGY GIGA ARCTIC AS (926089862) and T1 ENERGY NORWAY AS (929340019, 'Produksjon av batterier og akkumulatorer'), both with the filed business address Terminalveien 22, 8624 Mo i Rana, and Kartverket's address register gives that address a representasjonspunkt at 66.30513, 14.11593 on gnr 20 bnr 538.",
+        "what_it_does_not_give": "THE WORKS. Terminalveien 22 is at Langneset, the harbour end of Mo Industripark, among warehouses and an office block, about 2.5 km from the Central Plot where the reporting places Giga Arctic. A registered business address is an office address, and an office is not the works — the rule that refused SK On's office node at Iváncsa refuses this too, and by a wider margin. No Norwegian environmental permit or planning document naming the works' gnr/bnr was reachable: miljovedtak.no and norskeutslipp.no answer 404 to this pipeline's paths and no Rana kommune detaljregulering for the Central Plot surfaced.",
+        "next": "PARKED. Rana kommune's own 'Hvilken plan gjelder for eiendommen min?' page links its planning register at arealplaner.no/rana1833, and that register is a JavaScript application: it serves a 1.4 kB shell to a fetcher and its search exists only in a browser. Miljødirektoratet's site is the same shape. Neither is a 403 and neither is dead — they are a wall this pipeline cannot climb, so the entry is in sources/manual/MANIFEST.json under `wanted` and George looks at the plan register. What to bring back: the detaljregulering covering the Central Plot in Mo Industripark and the gnr/bnr it names, which Kartverket's matrikkel would then place."
+      }
+    },
+    {
+      "id": "lyten-heide",
+      "company": "Lyten",
+      "site": "Heide",
+      "country": "DE",
+      "status": "paused",
+      "capacity_gwh": 60,
+      "company_source": "https://lyten.com/2026/07/01/lyten-signs-exclusive-mou-to-progress-acquisition-of-northvolt-drei-assets-in-germany/",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1238083686 Batteriefabrik Northvolt Drei"
+    },
+    {
+      "id": "elevenes-subotica",
+      "company": "ElevenEs",
+      "site": "Subotica",
+      "country": "RS",
+      "status": "operating",
+      "capacity_gwh": 8,
+      "company_source": "https://elevenes.com/news/interview-elevenes-finalising-plans-for-1-gwh-battery-plant-in-serbia/",
+      "note": "Company source in hand (elevenes.com), which confirms both the 8 GWh gigafactory and the separate 1 GWh mega-factory. COORDINATE EXHAUSTED: a bounding-box sweep of 400 features across Subotica returns no feature named or operated by ElevenEs. Not outstanding for want of looking."
+    },
+    {
+      "id": "svolt-uberherrn",
+      "company": "SVOLT",
+      "site": "Überherrn, Saarland",
+      "country": "DE",
+      "status": "cancelled",
+      "note": "COMPANY SOURCE IN HAND, COORDINATE OUTSTANDING. The Internet Archive's capture of 24 July 2024 carries SVOLT's EU-Locations page: 'In Überherrn on \"Linslerfeld\", a battery cell factory with 24 GWh of installed capacity in the final expansion stage is to be built.' Site, cell product and capacity in one sentence — the strongest company source of the two SVOLT candidates. COORDINATE OUTSTANDING: nothing in the basemap is named Linslerfeld, and the works was never built, so there is no works to name. What stands on the land now is a solar park. Filed at sources/manual/svolt-uberherrn--svolt-europe-uberherrn.html; the row will cite the capture with archived: true.",
+      "company_source": "https://web.archive.org/web/20240724080837/https://www.svolt-eu.com/en/eu-locations/",
+      "capacity_gwh": 24,
+      "permit_route": {
+        "tried": "2026-09-05",
+        "record": "https://ueberherrn.de/wp-content/uploads/2024/02/Bekanntmachung-Offenlage-Aufhebung-Linsler-Feld.pdf",
+        "also": "https://ueberherrn.de/wp-content/uploads/2024/09/Zusammenfassende-Erklaerung-BP-Linsler-Feld.pdf",
+        "what_it_gives": "A vorhabenbezogener Bebauungsplan 'Industriegebiet Linsler Feld', adopted by the Überherrn municipal council on 7 March 2024 and legally binding from September 2024, written for this works: 'der die planungsrechtlichen Voraussetzungen für die Ansiedlung einer Batteriezellfabrik schaffen sollte'. It confirms the site at AUTHORITY TIER and it states the cancellation in the authority's own words — 'Das Vorhaben wird nicht mehr umgesetzt' — the council having resolved on 7 May 2026 to repeal the plan. Plan area about 99 ha; works area about 52 ha; building height 30 m and stack 34 m.",
+        "what_it_does_not_give": "A COORDINATE. Unlike the Sunderland permit there is no grid reference in any document read: the summary declaration lists no parcels for the works, the repeal notice locates the area verbally — 'östlich der Siedlungslage von Überherrn zwischen der B 269, der L 168 und der L 279' — and the 1:5.000 Lageplan is a cadastral map whose text layer carries parcel numbers and no coordinate grid. Placing it from the bounding roads would be drawing the polygon ourselves, which is the one thing this dataset does not do.",
+        "next": "The plan's own Planzeichnung, or the Geltungsbereich geometry from the state map service the repeal notice names (https://www.uvp-verbund.de/kartendienste). Either would be a position stated by the record rather than derived from its prose."
+      }
+    },
+    {
+      "id": "svolt-lauchhammer",
+      "company": "SVOLT",
+      "site": "Lauchhammer, Brandenburg",
+      "country": "DE",
+      "status": "cancelled",
+      "note": "COMPANY SOURCE IN HAND, COORDINATE OUTSTANDING. The Internet Archive's capture of 22 May 2024 carries SVOLT's press release of 9 September 2022: the company 'will build another battery cell factory for the European market in Lauchhammer', on the former Vestas rotor-blade site it took over at the end of August 2022. Site and product are confirmed by the company and the capacity is absent — the release states no GWh. COORDINATE EXHAUSTED on 5 September 2026: a name sweep for Vestas and SVOLT across Brandenburg returns nothing, and a sweep of every industrial and construction feature at Lauchhammer returns 36 named works, none of them this one. The company publishes no site address — only its Frankfurt office. Unnamed polygons corroborate nothing here, on the rule Sunderland settled: a polygon nobody has named does not place a works. Filed at sources/manual/svolt-lauchhammer--svolt-europe-lauchhammer.html; the row will cite the capture with archived: true.",
+      "company_source": "https://web.archive.org/web/20240522145108/https://www.svolt-eu.com/en/press/svolt-builds-additional-battery-cell-factory-in-brandenburg-germany-for-european-market/",
+      "permit_route": {
+        "tried": "2026-09-05",
+        "record": null,
+        "what_it_gives": "Nothing this pipeline can read. No BImSchG procedure for SVOLT at Lauchhammer appears in the Landesamt für Umwelt's public notices or the Brandenburg UVP portal, which is consistent with a works that was bought and never converted.",
+        "what_it_does_not_give": "A COORDINATE. The only address for the former Vestas rotor-blade works comes from commercial directories and a county business listing, and a directory is none of the three coordinate source types: it is not a polygon somebody drew, not an address the operator published, and not a parcel a permit names. SVOLT publishes only its Frankfurt office.",
+        "next": "PARKED, in sources/manual/MANIFEST.json under `wanted`. An address published by SVOLT itself, a Brandenburg permit or land-transfer record naming the parcel, or the works appearing in the basemap under either name."
+      }
+    },
+    {
+      "id": "britishvolt-blyth",
+      "company": "Britishvolt",
+      "site": "Cambois, Blyth",
+      "country": "UK",
+      "status": "cancelled",
+      "capacity_gwh": 35,
+      "company_source": "https://www.prnewswire.com/news-releases/britishvolt-selects-north-east-site-to-build-britains-first-battery-gigafactory-301190809.html",
+      "note": "Company source in hand (PR Newswire, 10 December 2020). The permit route WORKED and the fetch did not: application 21/00818/FULES names the parcel exactly, and both the committee report and the public-access portal refuse this pipeline — 403 and 'no longer available for viewing'. The coordinate is not absent, as I said last turn; it is behind a document a browser opens. What occupies the parcel now — a data centre — does not bear on where the project was sited.",
+      "coordinate_ref": "permit 21/00818/FULES, Northumberland County Council — 'Land At Former Power Station Site On Northern Side Of Cambois', 92.2 ha, validated 3 March 2021, permitted 6 July 2021. Committee report at northumberland.moderngov.co.uk/documents/s5924/",
+      "company_source_blocked": "https://northumberland.moderngov.co.uk/documents/s5924/05%2021-00818-FULES%20Britishvolt%20Gigaplant%20Report1.pdf"
+    },
+    {
+      "id": "italvolt-scarmagno",
+      "company": "Italvolt",
+      "site": "Scarmagno",
+      "country": "IT",
+      "status": "cancelled",
+      "company_source": "https://www.prnewswire.com/news-releases/italvolt-signs-one-million-square-meters-land-purchasing-agreement-301373280.html",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/162150670 Officine Olivetti — the former Olivetti works, the Italvolt site, identified by its historic name only"
+    },
+    {
+      "id": "farasis-bitterfeld",
+      "company": "Farasis Energy",
+      "site": "Bitterfeld-Wolfen",
+      "country": "DE",
+      "status": "cancelled",
+      "capacity_gwh": 16,
+      "note": "No basemap feature at Bitterfeld-Wolfen. Company materials for the cancelled European site survive only in the Internet Archive.",
+      "company_source_blocked": "https://web.archive.org/web/2023/https://www.farasis-energy.eu/"
+    },
+    {
+      "id": "morrow-arendal",
+      "company": "Morrow Batteries",
+      "site": "Arendal",
+      "country": "NO",
+      "status": "cancelled",
+      "company_source": "https://news.morrowbatteries.com/pressreleases/jonas-gahr-stoere-prime-minister-of-norway-officially-inaugurates-europes-first-lfp-battery-gigafactory-3337609",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1308751286 Morrow batteries"
+    },
+    {
+      "id": "novo-energy-gothenburg",
+      "company": "NOVO Energy",
+      "site": "Gothenburg",
+      "country": "SE",
+      "status": "construction",
+      "capacity_gwh": null,
+      "company_source": null,
+      "coordinate_source": null,
+      "note": "FOUND BY THE FUNDING WORK, NOT BY THE PERIMETER SWEEP. The Commission's Innovation Fund Battery Call names 'NOVO One – NOVO One Gigafactory, located in Sweden (NOVO Energy)' as one of six awards. NOVO Energy is the Volvo Cars and Northvolt joint venture at Gothenburg; Northvolt's bankruptcy leaves its ownership needing a source. Neither company source nor coordinate has been read, and it is not clear the perimeter admits it until somebody has."
+    },
+    {
+      "id": "leclanche-willstatt",
+      "company": "Leclanché",
+      "site": "Willstätt",
+      "country": "DE",
+      "status": "announced",
+      "capacity_gwh": 2,
+      "company_source": "https://www.leclanche.com/de/leclanche-und-cinea-unterzeichnen-foerdervereinbarung-ueber-742-millionen-euro-zur-unterstuetzung-einer-nachhaltigen-batterieproduktion-in-europa/",
+      "coordinate_source": null,
+      "note": "FOUND BY THE FUNDING WORK. The Commission names 'WGF2G – Willstatt GigaFactory 2 GWh, located in Germany (Leclanche)'. Two GWh clears the perimeter's scale rule, so it is a candidate and not a refusal. COMPANY SOURCE NOW READ, 7 September 2026: Leclanche's own ad hoc release of 10 November 2025 confirms both the grant and the expansion — 'Das Projekt ermoglicht die Erweiterung des bestehenden Produktionsstandorts von Leclanche in Willstatt auf eine Kapazitat von 2 GWh' — and CINEA's figure of EUR 74,217,852 agrees with the EUR 74.2 million the company states. COORDINATE NOT FOUND: the national UVP portal holds no procedure for the site, and the only Willstatt address Leclanche publishes is Leclanche GmbH's on its locations page, which is a company address and not a statement of where the works is. OSM has an unnamed building at that address and nothing named for the operator. The row waits on a position and on nothing else."
+    }
+  ]
+}

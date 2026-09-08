@@ -1,0 +1,18 @@
+{
+  "_comment": [
+    "Landed rows whose capacity is still outstanding, with the reason and what would close it.",
+    "",
+    "EMPTIED 7 September 2026, and the mechanism kept. All seven entries left as ROWS rather",
+    "than as filled figures: each was tested against its admitting source -- the source on which",
+    "it passed the perimeter's company-confirmed, >=1 GWh bar -- and in every case that source",
+    "names the site and states no capacity. A row admitted on a scale limb its own admitting",
+    "source never met is a row that should not have landed, so the seven went back to",
+    "sources/batteries_candidates.json rather than sitting here as a permanent shortfall.",
+    "",
+    "THE FILE STAYS BECAUSE THE QUESTION RECURS. report_candidate_gaps.py prints whatever is",
+    "here on every build and drops an entry the moment its row gets a figure, so the next row",
+    "that lands with a capacity gap has somewhere to be counted instead of being carried in",
+    "prose that nobody recomputes."
+  ],
+  "outstanding": []
+}

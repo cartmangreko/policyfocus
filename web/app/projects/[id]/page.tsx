@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { DEMOTED, SITE_ROBOTS } from "@/lib/launch";
+import { projectIsIndexable } from "@/lib/siteRoutes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crumbs from "@/components/Crumbs";
@@ -7,9 +9,10 @@ import LeadBlock from "@/components/LeadBlock";
 import LocationMap from "@/components/LocationMap";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import { SECTORS } from "@/lib/data";
+import { countryName } from "@/lib/countries";
 import { getProjectLead } from "@/lib/objectLeads";
 import { getProjectMap } from "@/lib/maps";
-import { projectGeoProse } from "@/lib/prose";
+import { projectGeoProse, projectNoLocationProse } from "@/lib/prose";
 import {
   STATUS_LABEL,
   TRANSITION_LABEL,
@@ -53,7 +56,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const p = getProject((await params).id);
   if (!p) return { title: "Project not found" };
+  // Page metadata REPLACES the layout's rather than merging with it, so this
+  // has to state robots explicitly in both directions — the same trap the
+  // sector route documents. A project page is indexable unless its sector's
+  // project pages are still held; a held one carries `noindex, follow` so the
+  // crawler still walks through to the sector page that links it.
+  const robots = projectIsIndexable(p.id) ? SITE_ROBOTS : DEMOTED;
   return {
+    robots,
     title: `${p.name} — ${p.company}`,
     description:
       `${p.name}, ${p.company}'s ${p.plant ?? p.country} project: ` +
@@ -152,9 +162,28 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           {lead ? <LeadBlock lead={lead} /> : null}
         </header>
 
+        {/* THE PICTURE, OR THE SENTENCE THAT REPLACES IT. A stopped project whose
+            location was never sought has no crop and gets none: an empty frame
+            with a caption apologising for itself is worse than a paragraph
+            saying plainly that nobody looked and why. No placeholder, no greyed
+            map, no "location unavailable" — the note is the content, and it is
+            written on the row. */}
         {frame && geo ? (
           <section className="proj-section">
             <LocationMap doc={frame} heading={geo.heading} standfirst={geo.standfirst} />
+          </section>
+        ) : project.location_note ? (
+          <section className="proj-section">
+            <h2>{`Where ${project.name} is`}</h2>
+            <p className="proj-nolocation">
+              {projectNoLocationProse({
+                name: project.name,
+                status: project.status,
+                plant: project.plant,
+                country: countryName(project.country, project.country),
+              })}
+            </p>
+            <p className="note">{project.location_note}</p>
           </section>
         ) : null}
 
@@ -173,10 +202,22 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             })}
           </ol>
           <ul className="proj-history">
+            {/* THE WHOLE HISTORY, EVERY KIND. The rail above draws the status
+                transitions; this draws everything on file, which since the
+                batteries dataset includes projects changing hands. An ownership
+                event says so in place of the status chip — its status is
+                unchanged by rule, so a chip there would repeat the line above it
+                and hide the one new fact. */}
             {project.status_history.map((h) => (
-              <li key={`${h.status}-${h.date}`}>
+              <li key={`${h.kind ?? "status"}-${h.status}-${h.date}`}>
                 <span className="date">{h.date}</span>
-                <span className={`tstatus ${h.status}`}>{STATUS_LABEL[h.status]}</span>
+                {h.kind === "ownership" ? (
+                  <span className="tstatus ownership">
+                    {h.from} → {h.to}
+                  </span>
+                ) : (
+                  <span className={`tstatus ${h.status}`}>{STATUS_LABEL[h.status]}</span>
+                )}
                 {h.note ? <span className="note">{h.note}</span> : null}
                 <a href={h.source_url} target="_blank" rel="noreferrer">
                   source
@@ -247,9 +288,23 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 <a href={s.url} target="_blank" rel="noreferrer">
                   {citation(s)}
                 </a>
+                {/* The document's own date, then the day we read it, then the
+                    terms it is reused under. The second and third are absent on
+                    almost every source and load-bearing on the few that are
+                    queried rather than published — a cadastre answers
+                    differently next year without saying it has changed, and an
+                    attribution that lives only in the data is not one. */}
                 <span className="note">
                   {s.publisher}
                   {s.date ? ` · ${s.date}` : ""}
+                  {s.retrieved_date ? ` · read ${s.retrieved_date}` : ""}
+                  {/* The three fixed words say the file was fetched from
+                      somebody other than its author, and the host is named
+                      rather than merely admitted to. */}
+                  {s.hosted_copy
+                    ? ` · ${s.hosted_copy.label} at ${s.hosted_copy.host}, read ${s.hosted_copy.retrieved_date}`
+                    : ""}
+                  {s.licence ? ` · ${s.licence}` : ""}
                 </span>
               </li>
             ))}

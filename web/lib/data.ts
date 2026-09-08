@@ -12,7 +12,7 @@ import { isPositiveValence, valenceLabel } from "./valence";
 
 // data/ lives one level up from web/ at the repo root. Untouched, read-only.
 const DATA_DIR = path.join(process.cwd(), "..", "data");
-const DATA_FILES = ["omnibus.json", "ets.json", "iaa.json", "cbam.json", "nzia.json", "crma.json", "ppwr.json"];
+const DATA_FILES = ["omnibus.json", "ets.json", "iaa.json", "cbam.json", "nzia.json", "crma.json", "ppwr.json", "battery.json", "fleet.json", "emd.json"];
 
 export const FILES: Record<string, FileMeta> = {
   omnibus: {
@@ -44,6 +44,22 @@ export const FILES: Record<string, FileMeta> = {
   },
   // Read at the BASE act, not a consolidation: Cellar announces
   // 02025R0040-20250122 and then serves it in no format. Single-pass.
+  battery: {
+    name: "Batteries Regulation",
+    code: "Regulation (EU) 2023/1542",
+  },
+  fleet: {
+    name: "CO2 standards for cars and vans",
+    code: "Regulation (EU) 2019/631",
+  },
+  // Read at ONE BLOCK of a large act: Articles 19e to 19h, the non-fossil
+  // flexibility provisions inserted by Directive (EU) 2024/1747. The rest of
+  // the electricity market regulation is not in this register, and the code
+  // says which consolidation the block was read from.
+  emd: {
+    name: "Electricity market design — non-fossil flexibility",
+    code: "Regulation (EU) 2019/943, Arts. 19e–19h, consolidated 16.07.2024",
+  },
   ppwr: {
     name: "Packaging and Packaging Waste Regulation",
     code: "Regulation (EU) 2025/40, base act",

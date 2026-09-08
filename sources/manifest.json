@@ -116,5 +116,32 @@
         "correlation_table": "Annex XIII; Art. 70(5): References to the repealed Directive 94/62/EC shall be construed as references to this Regulation and shall be read in accordance with the correlation table in Annex XIII to this Regulation."
       }
     }
+  },
+  "battery": {
+    "celex": "02023R1542",
+    "kind": "consolidated",
+    "lang": "EN",
+    "consolidated_date": "latest",
+    "status": "adopted",
+    "amends": [],
+    "note": "Regulation (EU) 2023/1542 on batteries and waste batteries. Brief 6 §5: a single pass, declared as a preliminary reading. The carbon-footprint delegated acts are on watch and are not ingested — they are where the per-plant arithmetic would come from, and until they exist nothing about the declaration is computable."
+  },
+  "fleet": {
+    "celex": "02019R0631",
+    "kind": "consolidated",
+    "lang": "EN",
+    "consolidated_date": "latest",
+    "status": "adopted",
+    "amends": [],
+    "note": "Regulation (EU) 2019/631, CO2 emission performance standards for new passenger cars and vans, as amended. Ingested because it is this sector's principal demand driver: it is where the creates_demand_for edges to batteries come from, and it is the first real population of that edge type."
+  },
+  "emd": {
+    "celex": "02019R0943",
+    "kind": "consolidated",
+    "lang": "EN",
+    "consolidated_date": "latest",
+    "status": "adopted",
+    "amends": [],
+    "note": "Regulation (EU) 2019/943 on the internal market for electricity, as amended by Directive (EU) 2024/1747 — the electricity market design reform. Ingested for the non-fossil flexibility block inserted by that amendment, Articles 19e to 19h, which is where a storage-side creates_demand_for edge comes from: Art. 19f obliges every Member State to set an indicative national objective for non-fossil flexibility 'including the respective specific contributions of both demand response and energy storage'. The renewables directive's targets were the alternative and were not taken: they set a share of renewable energy and reach storage only consequentially, while 19f names storage and asks for a number."
   }
 }

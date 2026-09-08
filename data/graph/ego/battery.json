@@ -1,0 +1,86 @@
+{
+  "file": "battery",
+  "center": {
+    "id": "act:32023R1542",
+    "label": "32023R1542",
+    "file": "battery"
+  },
+  "measure_count": 16,
+  "groups": [
+    {
+      "rel": "cites",
+      "title": "Cites",
+      "spokes": [
+        {
+          "id": "act:32006R1907",
+          "kind": "act",
+          "label": "REACH",
+          "file": null,
+          "href": null,
+          "detail": "1 measure cites it",
+          "weight": 1
+        },
+        {
+          "id": "act:32014L0025",
+          "kind": "act",
+          "label": "Utilities Procurement Directive",
+          "file": null,
+          "href": null,
+          "detail": "1 measure cites it",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rel": "sectors",
+      "title": "Sectors",
+      "spokes": [
+        {
+          "id": "sector:batsol",
+          "kind": "sector",
+          "label": "Batteries and solar",
+          "file": null,
+          "href": "/sectors/batsol",
+          "detail": "named by 16 measures",
+          "weight": 16
+        },
+        {
+          "id": "sector:auto",
+          "kind": "sector",
+          "label": "Automotive",
+          "file": null,
+          "href": "/sectors/auto",
+          "detail": "reached by 13 measures",
+          "weight": 13
+        },
+        {
+          "id": "sector:waste",
+          "kind": "sector",
+          "label": "Waste",
+          "file": null,
+          "href": "/sectors/waste",
+          "detail": "reached by 4 measures",
+          "weight": 4
+        },
+        {
+          "id": "sector:chem",
+          "kind": "sector",
+          "label": "Chemicals",
+          "file": null,
+          "href": "/sectors/chem",
+          "detail": "reached by 2 measures",
+          "weight": 2
+        },
+        {
+          "id": "sector:alu",
+          "kind": "sector",
+          "label": "Aluminium",
+          "file": null,
+          "href": "/sectors/alu",
+          "detail": "reached by 1 measure",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

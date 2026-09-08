@@ -125,6 +125,98 @@ What it needs, in order:
    the measure of whether it can be done at the narrow breakpoint.
 3. **A key line**, tier 1 in `geoKeyProse`, on the frames that draw one.
 
+## Cell inputs — cathode, anode, separator, electrolyte — as material links or a widened batteries perimeter
+
+**Queued behind the batteries dataset. Its own stack.** Touches
+`data/transition/materials.json`, the batteries perimeter prose and its gate, and
+`data/transition/projects.json` if the perimeter widens rather than linking.
+
+The batteries perimeter admits **cell manufacturing only**, and refuses cathode,
+anode, separator and electrolyte works by name. That refusal is deliberate and it
+is not permanent: those four are the inputs a cell is made of, several of the
+largest are being built in Europe right now — Umicore at Nysa, BASF at
+Schwarzheide — and a batteries picture that cannot see them is missing the half of
+the supply chain Europe is actually furthest behind on.
+
+Two ways to close it, and they are not the same change:
+
+- **Material links.** The works stay outside the batteries dataset and arrive as
+  edges from the materials layer, the way a captured tonne reaches a store. The
+  perimeter is unchanged and the batteries page gains a dependency it can draw.
+- **A widened perimeter.** Cathode and the rest become admissible sites in their
+  own right, which means new rows, new marks on the overview, and a scale rule
+  that has to be restated: 1 GWh per year is a cell measure and means nothing for
+  a tonne of cathode powder.
+
+The first is cheaper and is probably right. The second is what a reader would
+expect if the page ever calls itself a picture of European battery manufacturing,
+so the naming and the perimeter have to move together.
+
+CRMA Annex I materials are the obvious first links either way, and are already
+queued as part of the batteries dataset's technology work.
+
+## A reach-channel parity gate, on the transition-parity pattern
+
+**Queued. Small, and its shape is already settled.** Touches
+`sources/build_summaries.py`, `web/lib/reachChannel.ts` and one new file in
+`sources/`.
+
+`build_summaries.infer_reach_channel` and `reachChannel.ts` `inferReachChannel`
+are one rule written twice — the same two regexes, the same order, the same
+residual case — and what holds them together is a comment on each side saying
+"ported verbatim … the two regexes must be edited together." That is exactly the
+shape `sector_map.is_transition` and `transition.ts` `statusTransitions` were in
+before `check_transition_parity.py`, and it is not a mechanism.
+
+The failure is invisible in the product, which is what makes it worth a gate: the
+channel is **not stored** on any row — both sides infer it from the same stored
+text — so a drifting regex would have the built summary and the rendered page
+sort the same measure into different channels, both confidently, with nothing in
+either output saying which was right.
+
+The pattern to copy is `check_transition_parity.py`: compile the TypeScript with
+the project's own `tsc`, run it, and diff the two answers over a corpus rather
+than reimplementing the rule a third time in Python. The corpus is the one real
+difference. Transitions could be enumerated exhaustively because the rule is
+local and the alphabet is seven statuses; a regex over free text cannot be, so
+this one takes **every `addressee`/`duty`/`benefit` triple actually in the
+register** — a few hundred, which is a real corpus and not a synthetic one — plus
+a short list of hand-written strings sitting on the boundary between the two
+patterns. Those hand-written cases are the part worth arguing about in review.
+
+## Türkiye in the batteries perimeter — revisit the exclusion
+
+**Queued behind the batteries dataset. Small: one clause in the perimeter prose,
+one list in the gate, and whatever candidates it admits.**
+
+The batteries perimeter defines Europe as a named country list — the twenty-seven
+member states plus the United Kingdom, Norway, Switzerland, the Western Balkans
+and Ukraine — and excludes Türkiye as a whole country at launch, with the
+exclusion stated on the coverage page rather than left to be inferred from an
+absence.
+
+**Why a whole country rather than a line.** Strict geography would put the
+question on which side of the Bosphorus a site stands, and Türkiye's cell
+industry is largely in the Marmara region where that line runs: Siro, the
+Togg/Farasis joint venture at Gemlik, is in Bursa province on the Asian shore and
+would be refused by a few kilometres. A perimeter that turns on that will be
+argued with every time it is applied, and the argument will be about cartography
+rather than about industry. Excluding the country is at least a rule a reader can
+predict.
+
+**What would reopen it.** Türkiye is in the customs union, its cell industry
+supplies European carmakers, and the argument for holding it is the same one that
+holds the United Kingdom and Norway. If the perimeter's question is "what is
+Europe building", the honest answer may include it. That is a scope decision
+rather than a data one, and it should be made deliberately rather than by a
+candidate arriving and forcing it.
+
+**What it touches when it moves.** The perimeter prose on `/coverage`, the country
+list in the gate, and the geography — `country_names` in `data/prose.json` would
+need Türkiye, and `EUROPE_DEGREES` in `build_maps.py` currently stops at 31 E,
+which holds Istanbul but not Bursa's eastern edge. Both are one-line changes and
+both would fail the build loudly rather than quietly, which is the right order.
+
 ## Horizontal / economy-wide scope as a data-model attribute
 
 **Its own stack.** Touches the schema, the gates, and every sector page.
@@ -327,6 +419,69 @@ actually used, and then either a ruling that they stand or a re-cut inside the
 same deltaE floor. Ratifying is a real outcome and should be recorded as one:
 the entry exists so that the answer is written down, not so that the values
 change.
+
+## Plain sets for cement and steel
+
+**Content, not code, and it is the next content item after the batteries merge.**
+Touches `data/prose.json` only — `sector_plain.sectors.cement` and
+`sector_plain.sectors.steel` — and nothing else: the block, the reader and the
+rendering all exist and are live on the batteries page.
+
+Batteries has five: how money is counted here, why there is no carbon-cost
+figure, where demand comes from, what counts as a plant here, and what is drawn
+and what is not. **Cement and steel have none**, and their pages have been
+answering none of those questions since they were built.
+
+Four of the five have direct counterparts and are a writing job rather than a
+research one. The fifth inverts: batteries has no carbon-cost figure and says
+why, while cement and steel HAVE one, and their block would have to say what
+that figure is and what it is not — the withdrawn free allocation priced at
+today's carbon price, not the plant's whole carbon bill, which is the
+distinction the ranking's caveats already make and the page does not.
+
+**Batteries merges with its set alone.** Absent renders nothing, and a sector
+whose page cannot yet explain how it counts is not made better by borrowing
+another sector's words — "cell plants do not pay for their emissions under the
+EU carbon market" is true on one page and false on the next.
+
+## A research-funding layer, beside the capital one
+
+**Its own stack, small.** Touches `data/transition/funding.json` (a second row
+kind, or a second file beside it), `sources/sector_map.py` (the vocabulary and
+the loader), `sources/build_importance.py` and `sources/build_opportunity.py`
+(both of which sum funding today and would have to say which kind they are
+summing), and the Opportunity section of `web/components/SectorMap.tsx`.
+
+The money model was given a boundary on 5 September 2026: it holds capital
+committed to building an admitted works, and research and pilot funding is
+excluded. The boundary is stated in the method prose at the top of
+`funding.json`, and it is the right line for the figure the sector pages print —
+a committed total that mixed money spent on finding out with money spent on
+building would be inflated by an amount that varies with how research-heavy an
+industry is, which is exactly what a comparison between sectors must not do.
+
+**What it leaves on the floor is real money, already found.** 3D at Dunkirk holds
+about €14.8 million of Horizon 2020 money for the DMX capture pilot, and
+voestalpine's H2Future at Linz about €12 million for the electrolyser
+demonstration. Both are traceable, both are facts about projects on this
+platform, and today neither has anywhere to live except a paragraph of method
+prose. A pilot is on this platform *because* it is a pilot; the funding that
+built it is part of what it is.
+
+**What the layer would be.** Rows of the same shape as a capital allocation —
+instrument, programme, legal basis, recipient, status, sourced amount — carrying
+a kind that says the money bought knowledge rather than capacity, summed
+separately everywhere, and never folded into the committed figure. The interest
+of the layer is the comparison it makes available and not the total: how much of
+a sector's public money has gone into learning versus building is a question
+about where a technology has got to, and it is a question this platform is
+otherwise well shaped to answer.
+
+**Why it is not being built now.** A second kind of money doubles the number of
+places a sum has to say what it is summing, and doing that before the boundary
+has been lived with would be building the mechanism against two examples. The
+entry exists so that the two findings are not lost and so that the next research
+grant that turns up has somewhere to be filed rather than a decision to reopen.
 
 ## Downstream reach channel from the Eurostat input-output data
 

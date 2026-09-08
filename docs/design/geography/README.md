@@ -281,6 +281,36 @@ project sits in view: ArcelorMittal's two sites are inside SALCOS's crop and are
 not drawn on it. And a cancelled subject's crop opens by saying so — *"It was
 cancelled, and is drawn here and on no other frame."*
 
+## Where a coordinate may come from
+
+A coordinate must come from a citable source identifying **the works
+specifically**, and three kinds do: `basemap` (an OpenStreetMap feature with its
+tags quoted), `company` (the operator's own materials naming an address or parcel,
+quoted alongside), `permit` (a state permitting, planning or zoning filing). The
+type is recorded per site and required rather than defaulted — a coordinate whose
+provenance is implied is one nobody can weigh. `sources/sector_map.py`,
+`LOCATION_SOURCE_TYPES`, is where the rule lives.
+
+**A geocoded town name is refused**, and so is a street: both are sources about a
+place rather than about a works, and `precision: "town"` already fails by name. A
+position read off a photograph in a news story is refused because nobody can check
+it.
+
+**And we do not draw the polygon ourselves.** Where the basemap has no feature,
+the answer is a permit, a published address, or the row staying off file — never
+an edit to OpenStreetMap made in order to cite it. That edit would be circular:
+the coordinate's whole claim is that somebody independent put the works there, and
+an edit made to be cited turns "we believe this is the site" into "the basemap
+says so", which is a stronger claim than we hold and one no reader could unpick.
+Nothing here argues against improving OpenStreetMap; it argues that a coordinate
+we publish may not rest on an edit we made for the purpose.
+
+**One named exception exists**, in the shape this repository already uses for
+offshore points: a short list in `check_sector_schema.py`, each entry a sentence
+somebody wrote, printed on every run, stale entries failing. Its single member is
+Galata, a depleted offshore gas field with no address, no parcel and no polygon —
+the three types describe how you identify a works, and it is not one.
+
 ## The projection
 
 Lambert conformal conic, EPSG:3034's parameters — standard parallels 35 N and

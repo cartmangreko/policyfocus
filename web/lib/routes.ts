@@ -81,6 +81,9 @@ export function classify(input: {
   mappedSectors: string[];
   unmappedSectors: string[];
   projectIds: string[];
+  /** Project pages whose sector's project pages are not yet released. Demoted
+   *  rather than absent: built, linked from the sector page, `noindex, follow`. */
+  heldProjectIds?: string[];
   /** Measure pages that render a lead block, and those that do not. Both come
    *  from the same store — data/lead/measures.json — so a page's own robots tag
    *  and its presence in the sitemap are two readings of one file. */
@@ -100,6 +103,7 @@ export function classify(input: {
       ...DEMOTED_PREFIXES,
       MEASURE_BROWSE,
       ...input.unmappedSectors.map((s) => `/sectors/${s}`),
+      ...(input.heldProjectIds ?? []).map((id) => `/projects/${id}`),
       ...(input.measuresWithoutLead ?? []),
     ],
   };

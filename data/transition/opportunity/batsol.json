@@ -1,0 +1,45 @@
+{
+  "_comment": [
+    "BUILT FILE — do not edit. sources/build_opportunity.py computes it from the",
+    "sector's funding rows and its support-direction measures; the Opportunity",
+    "section draws it and adds nothing. A reviewed replacement goes in",
+    "data/transition/overrides.json under opportunity_overrides, never here."
+  ],
+  "sector": "batsol",
+  "template_version": 1,
+  "fingerprint": "d3704b6db2be9b90",
+  "sentence": {
+    "text": "€1.5 billion is committed to 5 projects in European batteries.",
+    "from": [
+      "money_in"
+    ],
+    "source": "generated"
+  },
+  "facts": [
+    {
+      "id": "money_in",
+      "label": "Money flowing in",
+      "text": "€1.5 billion is committed to 5 projects, across 5 allocations.",
+      "as_of": "2025-07-04",
+      "numbers": [
+        "1.5",
+        "5",
+        "5"
+      ],
+      "parts": {
+        "committed": "€1.5 billion",
+        "committed_count": 5,
+        "projects": "5 projects",
+        "project_count": 5,
+        "undisclosed": 0,
+        "announced_count": 0,
+        "withdrawn_count": 1
+      },
+      "sourced": [],
+      "href": null,
+      "surface": false
+    }
+  ],
+  "override_stale": false,
+  "notes": []
+}

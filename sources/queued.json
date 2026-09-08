@@ -22,5 +22,21 @@
     "known_extractor_gap": "If the CEA lands PDF-only, as Commission proposals often do, fetch_eurlex.py can retrieve it but the PDF path hard-wraps text and breaks verbatim span anchoring. That is a known gap and must not be hacked around at extraction time.",
     "display_title": "Circular Economy Act — not yet published",
     "display_note": "Checked directly against the EU's official publication channels as of 2026-08-18; no proposal or adopted text exists yet. It will be read on publication."
+  },
+  {
+    "title": "COM(2025) 995 — proposal amending Regulation (EU) 2019/631 (CO2 standards for new light duty vehicles)",
+    "celex": "52025PC0995",
+    "note": "Adopted by the Commission on 16 December 2025 and under Parliament and Council review; a rapporteur draft followed in April 2026. It reopens the provisions this platform's batteries sector rests on: the 2035 target moves from a 100% reduction to 90% with compensation credits, the 2030 target is averaged over a period rather than met in the year, the van target moves to 40%, and the excess emissions premium formula changes. fleet:TGT-2035 and fleet:TGT-2030 carry a reading note saying a revision is under review and that the row reads the law in force. NOT READ HERE AND NOT EXTRACTED: a proposal is not the law, and this register's rows are the law in force until a text is adopted. What the entry buys is that the demand edges into batsol are known to be under legislative question rather than looking settled.",
+    "capture_priority": "Structured read when a text is ADOPTED, not on the proposal. Before then the watch agent's watchlist channel should surface every step of the procedure, since 02019R0631 is in sources/manifest.json and this proposal sits in its dossier — this entry is the backstop for the day it does not.",
+    "display_title": "Revision of the CO2 standards for new cars and vans — proposed, under review",
+    "display_note": "The Commission proposed changes to the 2030 and 2035 car targets, the van target and the excess emissions premium on 16 December 2025. The measures on this platform read the law in force; they will be re-read if and when a revision is adopted."
+  },
+  {
+    "title": "Regulation (EU) 2019/943 as amended by Regulation (EU) 2024/1747 — electricity market design, Arts. 19e–19h (flexibility and storage)",
+    "celex": "02019R0943-20240716",
+    "note": "PROPOSED AS THE STORAGE-SIDE DEMAND MEASURE, 6 September 2026. The batteries page's demand block says storage is one of the two sources of demand for European cells, and no rule on the platform carries that claim: every creates_demand_for edge into batsol is a fleet CO2 standard, which is the vehicle half. The candidate provisions, verified against the consolidated text: Art. 19e, the flexibility needs assessment; Art. 19f, under which each Member State defines an INDICATIVE NATIONAL OBJECTIVE FOR NON-FOSSIL FLEXIBILITY 'including the respective specific contributions of both demand response and energy storage', reflected in its national energy and climate plan; Art. 19g, non-fossil flexibility support schemes paying for available capacity where investment falls short of that objective; and Art. 19h(b), which limits those schemes to 'new investment in non-fossil flexibility resources such as demand side response and energy storage'. The demand edge belongs on Art. 19f: it is the provision that obliges a Member State to name a number for storage.",
+    "capture_priority": "Read the consolidated 2019/943 as amended, not the amending act alone: the amendment inserts these articles into the 2019 regulation and the standing text is where the duty lives.",
+    "display_title": "Electricity market design — flexibility and storage provisions, proposed for reading",
+    "display_note": "The rules that make Member States set an objective for energy storage and may pay for it. Proposed as the source of the storage-side demand the batteries page describes."
   }
 ]

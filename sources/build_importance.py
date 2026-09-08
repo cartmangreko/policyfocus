@@ -30,7 +30,31 @@ THREE COMPONENTS
    a missing model or a missing edge, and the sanity report at the end of the
    run is where that shows up.
 
-RANK = money, then bottleneck_linkage, then attention as tie-break. Money first
+4. DEMAND -- whether the measure carries a `creates_demand_for` edge into this
+   sector, from the register's own reading of its text. Not a score and not
+   weighted: a flag, and it is the tie-break.
+
+   THE RULE, GENERALLY: a measure carrying creates_demand_for into the sector
+   ranks above a tied peer without one. A measure that makes a market for what
+   the sector sells is worth more to it than one that does not, and where the
+   money model is silent and the linkage weights are level, that is the only
+   thing left that is a fact about the measures rather than about the alphabet.
+
+   IT IS A TIE-BREAK AND NOT A LIFT, on the same principle attention runs under:
+   a demand edge does not put a measure into the sector view and does not move it
+   past a measure with more money or more linkage. It orders equals.
+
+   WHY IT EXISTS. Batteries is the case that forced it. With no money model for
+   the sector, the ranking sorted on linkage alone and three measures tied at
+   1.0 -- so the top of the sector's ranking was decided by measure id, which
+   put a raw-materials benchmark above the 2035 fleet target that every
+   gigafactory row in the projects file exists because of. The alternative on
+   the table was an editorial pin in overrides.json; a general rule computed
+   from an edge the register already carries is better than one hand-placed
+   row, because it will decide the next tie the same way without anybody
+   remembering to.
+
+RANK = money, then bottleneck_linkage, then demand, then attention. Money first
 is a deliberate bet about the audience: an investor covering European
 industrials is asking which instrument moves the P&L, and the honest answer
 usually is not the one with the most commentary attached.
@@ -61,6 +85,7 @@ letting it decide the order.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import json
 from datetime import date
 from pathlib import Path
@@ -576,6 +601,11 @@ def build(sector: str, year: int) -> dict:
                 "weight": weight_sum,
                 "edges": edges,
             },
+            # DOES THIS MEASURE MAKE A MARKET FOR THIS SECTOR'S PRODUCT? The
+            # register's own edge, read and not re-derived. It is a fact about
+            # the measure's text, which is why it can break a tie that the
+            # judgement layer has left level.
+            "creates_demand": sector in (row.get("creates_demand_for") or []),
             "attention": {
                 "available": attention["available"],
                 "count": count,
@@ -597,6 +627,11 @@ def build(sector: str, year: int) -> dict:
             -(rate or 0),
             -(stock or 0),
             -s["bottleneck_linkage"]["weight"],
+            # THE DEMAND TIE-BREAK. See THE FOURTH COMPONENT in the module
+            # docstring: above attention, because a demand edge is a reading of
+            # the measure's own text and attention is a count of other people
+            # talking about it.
+            0 if s["creates_demand"] else 1,
             -(s["attention"]["count"] or 0),
             s["measure"],
         )
@@ -730,6 +765,37 @@ def sanity_report(doc: dict) -> list[str]:
     return lines
 
 
+HOLDS = sm.DATA / "draw_holds.json"
+
+
+def hold_on_first_ranking(sector: str) -> str:
+    """Record a draw hold for a sector that has just got its first ranking.
+
+    Returns a line for the build log. Does nothing if the sector is already
+    held or has been explicitly released — a release is a decision somebody
+    made, and re-holding a released sector on the next rebuild would undo it
+    silently.
+    """
+    doc = json.loads(HOLDS.read_text(encoding="utf-8")) if HOLDS.exists() else {
+        "holds": {}, "released": {}}
+    doc.setdefault("holds", {})
+    doc.setdefault("released", {})
+    if sector in doc["holds"]:
+        return "already held"
+    if sector in doc["released"]:
+        return "previously released; not re-held"
+    doc["holds"][sector] = {
+        "since": dt.date.today().isoformat(),
+        "reason": (f"Placed automatically when {sector} first got a ranking. A ranking is what "
+                   f"turns hasMap true, so without this the sector's page would begin drawing a "
+                   f"Europe-wide overview on whatever rows happen to exist. Nobody has judged "
+                   f"whether they are enough."),
+        "released_by": "George, on an explicit judgement that the data is complete enough to draw.",
+    }
+    HOLDS.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return "hold written to data/transition/draw_holds.json"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true",
@@ -759,7 +825,23 @@ def main() -> int:
                   f"({sum(1 for m in doc['measures'] if m['in_sector_view'])} of "
                   f"{len(doc['measures'])} measures in the sector view)")
         else:
+            # A SECTOR IS HELD FROM DRAWING THE MOMENT IT FIRST HAS A RANKING.
+            # `hasMap` turns true the instant this file exists, so a sector's
+            # page goes from a directory template to a full page with a
+            # Europe-wide overview on it as a side effect of running a builder.
+            # Batteries did exactly that, and the picture it would have drawn was
+            # short of a third of the sector.
+            #
+            # So the hold is placed HERE, before the first render, and it is
+            # placed automatically because the one time it mattered nobody
+            # thought to place it. It is never lifted here: releasing is a
+            # judgement about whether the data is honest enough to publish, and a
+            # builder is not entitled to make it.
+            first_time = not path.exists()
             path.write_text(text, encoding="utf-8")
+            if first_time:
+                held = hold_on_first_ranking(sector)
+                print(f"build_importance: {sector} is HELD FROM DRAWING — {held}")
             print(f"build_importance: wrote {path} — "
                   f"{sum(1 for m in doc['measures'] if m['in_sector_view'])} of "
                   f"{len(doc['measures'])} measures in the sector view")

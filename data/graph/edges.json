@@ -41,6 +41,36 @@
  },
  {
   "rel": "addresses",
+  "from": "technology:cell-manufacturing",
+  "to": "bottleneck:batsol-cell-cost-gap",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cell-cost-gap].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:cell-manufacturing",
+  "to": "bottleneck:batsol-demand-uncertainty",
+  "since": "2026-02-09",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-demand-uncertainty].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:cell-manufacturing",
+  "to": "bottleneck:batsol-ramp-and-yield",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-ramp-and-yield].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
   "from": "technology:co2-transport-storage",
   "to": "bottleneck:co2-transport-storage-network",
   "since": "2024-06-13",
@@ -97,6 +127,36 @@
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=steel-hydrogen-supply].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:lfp-cells",
+  "to": "bottleneck:batsol-cathode-dependence",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cathode-dependence].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:lfp-cells",
+  "to": "bottleneck:batsol-cell-cost-gap",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cell-cost-gap].addressed_by"
+  }
+ },
+ {
+  "rel": "addresses",
+  "from": "technology:sodium-ion-cells",
+  "to": "bottleneck:batsol-cathode-dependence",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cathode-dependence].addressed_by"
   }
  },
  {
@@ -168,6 +228,402 @@
    "source": "sources/manifest.json",
    "path": "ets.amends"
   }
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:BP-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=BP-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:BP-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=BP-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:BP-01",
+  "to": "sector:waste",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=BP-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:CF-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=CF-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:CF-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=CF-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-01",
+  "to": "sector:alu",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-01",
+  "to": "sector:chem",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-02",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-02].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-02",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:DD-03",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-03].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:EPR-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=EPR-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:EPR-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=EPR-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:EPR-01",
+  "to": "sector:waste",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=EPR-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:FM-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=FM-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:FM-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=FM-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:GPP-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=GPP-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:GPP-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=GPP-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:LAB-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=LAB-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:LAB-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=LAB-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:MAN-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=MAN-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:MAN-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=MAN-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:PEN-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=PEN-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:RC-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=RC-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:RC-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=RC-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:RC-01",
+  "to": "sector:waste",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=RC-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:REC-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REC-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:REC-01",
+  "to": "sector:waste",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REC-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:REM-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REM-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:REM-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REM-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:SUB-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUB-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:SUB-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUB-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:SUB-01",
+  "to": "sector:chem",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUB-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:SUP-01",
+  "to": "sector:auto",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUP-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:battery:SUP-01",
+  "to": "sector:batsol",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUP-01].sectors_named"
+  },
+  "basis": "named"
  },
  {
   "rel": "applies_to",
@@ -6375,6 +6831,138 @@
  },
  {
   "rel": "applies_to",
+  "from": "measure:emd:DES-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=DES-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:DES-01",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=DES-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:FLEX-01",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:FLEX-02",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-02].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:FLEX-02",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:FLEX-03",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-03].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:OBJ-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=OBJ-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:OBJ-01",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=OBJ-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:SUP-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:SUP-01",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:SUP-02",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-02].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:emd:SUP-02",
+  "to": "sector:power",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-02].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
   "from": "measure:ets:AVI-01",
   "to": "sector:air",
   "since": "2026",
@@ -6922,6 +7510,116 @@
    "path": "[id=WST-03].sectors_named"
   },
   "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:DER-01",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=DER-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:MON-01",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=MON-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:PREM-01",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=PREM-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:PREM-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=PREM-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-01",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-01].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-01].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-2030",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2030].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-2030",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2030].sectors_reached"
+  },
+  "basis": "reached"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-2035",
+  "to": "sector:auto",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2035].sectors_named"
+  },
+  "basis": "named"
+ },
+ {
+  "rel": "applies_to",
+  "from": "measure:fleet:TGT-2035",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2035].sectors_reached"
+  },
+  "basis": "reached"
  },
  {
   "rel": "applies_to",
@@ -20092,6 +20790,28 @@
  },
  {
   "rel": "cites",
+  "from": "measure:battery:GPP-01",
+  "to": "act:32014L0025",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=GPP-01]",
+   "quote": "contracting entities, as defined in Article 4(1) of Directive 2014/25/EU shall, when procuring batteries or products containing batteries in situations covered by those Directives, take account of the environmental impacts of those batteries over their life cycle with a view to ensuring that such impacts are kept to a minimum."
+  }
+ },
+ {
+  "rel": "cites",
+  "from": "measure:battery:SUB-01",
+  "to": "act:32006R1907",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUB-01]",
+   "quote": "In addition to the restrictions set out in Annex XVII to Regulation (EC) No 1907/2006 and in Article 4(2), point (a), of Directive 2000/53/EC, batteries shall not contain substances for which Annex I to this Regulation contains a restriction unless the conditions of that restriction are complied with."
+  }
+ },
+ {
+  "rel": "cites",
   "from": "measure:cbam:ANTI-01",
   "to": "act:32023R0956",
   "since": "2025",
@@ -22888,6 +23608,54 @@
  },
  {
   "rel": "consumes",
+  "from": "technology:cell-manufacturing",
+  "to": "material:cobalt",
+  "since": "2023-07-12",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=cobalt].consumed_by[technology:cell-manufacturing]",
+   "quote": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:cell-manufacturing",
+  "to": "material:lithium",
+  "since": "2023-07-12",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=lithium].consumed_by[technology:cell-manufacturing]",
+   "quote": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:cell-manufacturing",
+  "to": "material:natural-graphite",
+  "since": "2024-04-11",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=natural-graphite].consumed_by[technology:cell-manufacturing]",
+   "quote": "graphite — battery grade"
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:cell-manufacturing",
+  "to": "material:nickel",
+  "since": "2023-07-12",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=nickel].consumed_by[technology:cell-manufacturing]",
+   "quote": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
   "from": "technology:co2-transport-storage",
   "to": "material:captured-co2",
   "since": "2024-06-13",
@@ -22921,6 +23689,356 @@
    "quote": "SSAB, LKAB and Vattenfall have now produced the world's first hydrogen-reduced sponge iron at a pilot scale."
   },
   "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:lfp-cells",
+  "to": "material:lithium",
+  "since": "2024-12-10",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=lithium].consumed_by[technology:lfp-cells]",
+   "quote": "Lithium iron phosphate cells"
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:nmc-nca-cells",
+  "to": "material:cobalt",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=cobalt].consumed_by[technology:nmc-nca-cells]",
+   "quote": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:nmc-nca-cells",
+  "to": "material:manganese",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=manganese].consumed_by[technology:nmc-nca-cells]",
+   "quote": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:nmc-nca-cells",
+  "to": "material:nickel",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=nickel].consumed_by[technology:nmc-nca-cells]",
+   "quote": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes."
+  },
+  "volume": null
+ },
+ {
+  "rel": "consumes",
+  "from": "technology:sodium-ion-cells",
+  "to": "material:sodium",
+  "since": "2025-04-21",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=sodium].consumed_by[technology:sodium-ion-cells]",
+   "quote": "Sodium in place of lithium in the cell."
+  },
+  "volume": null
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:DER-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=DER-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:MON-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=MON-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:PREM-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=PREM-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:TGT-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:TGT-2030",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2030]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0631",
+  "to": "measure:fleet:TGT-2035",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2035]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:DES-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=DES-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:FLEX-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:FLEX-02",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-02]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:FLEX-03",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=FLEX-03]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:OBJ-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=OBJ-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:SUP-01",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32019R0943",
+  "to": "measure:emd:SUP-02",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=SUP-02]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:BP-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=BP-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:CF-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=CF-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:DD-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:DD-02",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-02]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:DD-03",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=DD-03]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:EPR-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=EPR-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:FM-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=FM-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:GPP-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=GPP-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:LAB-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=LAB-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:MAN-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=MAN-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:PEN-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=PEN-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:RC-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=RC-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:REC-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REC-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:REM-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=REM-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:SUB-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUB-01]"
+  }
+ },
+ {
+  "rel": "contains",
+  "from": "act:32023R1542",
+  "to": "measure:battery:SUP-01",
+  "since": "2023",
+  "evidence": {
+   "source": "data/battery.json",
+   "path": "[id=SUP-01]"
+  }
  },
  {
   "rel": "contains",
@@ -27723,6 +28841,61 @@
   }
  },
  {
+  "rel": "creates_demand_for",
+  "from": "measure:emd:OBJ-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/emd.json",
+   "path": "[id=OBJ-01].creates_demand_for"
+  },
+  "basis": "demand"
+ },
+ {
+  "rel": "creates_demand_for",
+  "from": "measure:fleet:PREM-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=PREM-01].creates_demand_for"
+  },
+  "basis": "demand"
+ },
+ {
+  "rel": "creates_demand_for",
+  "from": "measure:fleet:TGT-01",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-01].creates_demand_for"
+  },
+  "basis": "demand"
+ },
+ {
+  "rel": "creates_demand_for",
+  "from": "measure:fleet:TGT-2030",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2030].creates_demand_for"
+  },
+  "basis": "demand"
+ },
+ {
+  "rel": "creates_demand_for",
+  "from": "measure:fleet:TGT-2035",
+  "to": "sector:batsol",
+  "since": "2019",
+  "evidence": {
+   "source": "data/fleet.json",
+   "path": "[id=TGT-2035].creates_demand_for"
+  },
+  "basis": "demand"
+ },
+ {
   "rel": "depends_on",
   "from": "measure:iaa:FDI-11",
   "to": "act:pending-ecodesign-lowcarbon",
@@ -27926,6 +29099,56 @@
  },
  {
   "rel": "deploys",
+  "from": "project:acc-billy-berclau",
+  "to": "technology:cell-manufacturing",
+  "since": "2023-05-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-billy-berclau].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:acc-billy-berclau",
+  "to": "technology:nmc-nca-cells",
+  "since": "2023-05-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-billy-berclau].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:acc-kaiserslautern",
+  "to": "technology:cell-manufacturing",
+  "since": "2026-02-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-kaiserslautern].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:acc-termoli",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-06-05",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-termoli].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:agratas-bridgwater",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-08-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=agratas-bridgwater].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:am-bremen-eisenhuettenstadt",
   "to": "technology:dri-eaf",
   "since": "2025-06-23",
@@ -27976,12 +29199,172 @@
  },
  {
   "rel": "deploys",
+  "from": "project:britishvolt-blyth",
+  "to": "technology:cell-manufacturing",
+  "since": "2020-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=britishvolt-blyth].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:calb-sines",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-02-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=calb-sines].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:carbon2business-lagerdorf",
   "to": "technology:ccs-oxyfuel",
   "since": "2023",
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=carbon2business-lagerdorf].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:catl-arnstadt",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-12-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-arnstadt].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:catl-arnstadt",
+  "to": "technology:nmc-nca-cells",
+  "since": "2022-12-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-arnstadt].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:catl-debrecen",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-debrecen].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:catl-stellantis-zaragoza",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-stellantis-zaragoza].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:catl-stellantis-zaragoza",
+  "to": "technology:lfp-cells",
+  "since": "2024-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-stellantis-zaragoza].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:envision-aesc-douai",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-06-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-douai].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:envision-aesc-douai",
+  "to": "technology:nmc-nca-cells",
+  "since": "2025-06-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-douai].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:envision-aesc-extremadura",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-07-08",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-extremadura].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:envision-aesc-extremadura",
+  "to": "technology:lfp-cells",
+  "since": "2024-07-08",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-extremadura].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:envision-aesc-sunderland",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-sunderland].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:envision-aesc-sunderland",
+  "to": "technology:nmc-nca-cells",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-sunderland].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:eve-power-debrecen",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=eve-power-debrecen].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:farasis-bitterfeld",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-05-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=farasis-bitterfeld].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:freyr-mo-i-rana",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=freyr-mo-i-rana].technology"
   }
  },
  {
@@ -28012,6 +29395,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=gezero-geseke].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:gib-surany",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-06-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gib-surany].technology"
   }
  },
  {
@@ -28096,6 +29489,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:italvolt-scarmagno",
+  "to": "technology:cell-manufacturing",
+  "since": "2021-09-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=italvolt-scarmagno].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:k6-lumbres",
   "to": "technology:alternative-fuels",
   "since": "2024-02-15",
@@ -28116,12 +29519,112 @@
  },
  {
   "rel": "deploys",
+  "from": "project:lges-wroclaw",
+  "to": "technology:cell-manufacturing",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lges-wroclaw].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:lges-wroclaw",
+  "to": "technology:nmc-nca-cells",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lges-wroclaw].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:lyten-heide",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-03-25",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lyten-heide].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:morrow-arendal",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-08-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=morrow-arendal].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:morrow-arendal",
+  "to": "technology:lfp-cells",
+  "since": "2024-08-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=morrow-arendal].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:northern-lights",
   "to": "technology:co2-transport-storage",
   "since": "2025-08-25",
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=northern-lights].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:northvolt-ett-skelleftea",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northvolt-ett-skelleftea].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:northvolt-ett-skelleftea",
+  "to": "technology:nmc-nca-cells",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northvolt-ett-skelleftea].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:novo-energy-gothenburg",
+  "to": "technology:cell-manufacturing",
+  "since": "2026-01-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=novo-energy-gothenburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:powerco-sagunto",
+  "to": "technology:cell-manufacturing",
+  "since": "2023-03-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-sagunto].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:powerco-salzgitter",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-12-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-salzgitter].technology"
   }
  },
  {
@@ -28166,6 +29669,46 @@
  },
  {
   "rel": "deploys",
+  "from": "project:samsung-sdi-god",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:samsung-sdi-god",
+  "to": "technology:nmc-nca-cells",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:sk-on-ivancsa",
+  "to": "technology:cell-manufacturing",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-ivancsa].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:sk-on-komarom",
+  "to": "technology:cell-manufacturing",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-komarom].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:slite-ccs",
   "to": "technology:ccs-post-combustion",
   "since": "2025-11-19",
@@ -28216,6 +29759,56 @@
  },
  {
   "rel": "deploys",
+  "from": "project:sunwoda-nyiregyhaza",
+  "to": "technology:cell-manufacturing",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sunwoda-nyiregyhaza].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:svolt-lauchhammer",
+  "to": "technology:cell-manufacturing",
+  "since": "2022-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-lauchhammer].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:svolt-uberherrn",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-07-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-uberherrn].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "technology:cell-manufacturing",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "technology:nmc-nca-cells",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:tkh2steel-duisburg",
   "to": "technology:dri-eaf",
   "since": "2023-07-20",
@@ -28242,6 +29835,26 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=tkh2steel-duisburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:verkor-dunkirk",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=verkor-dunkirk].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:verkor-dunkirk",
+  "to": "technology:nmc-nca-cells",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=verkor-dunkirk].technology"
   }
  },
  {
@@ -28282,6 +29895,30 @@
  },
  {
   "rel": "finances",
+  "from": "funding:germany-ipcei-tesla-gruenheide",
+  "to": "project:tesla-gruenheide-cells",
+  "since": "2021-11-26",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-ipcei-tesla-gruenheide].finances"
+  },
+  "instrument": "ipcei",
+  "status": "withdrawn"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:germany-northvolt-drei",
+  "to": "project:lyten-heide",
+  "since": "2024-01-08",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-northvolt-drei].finances"
+  },
+  "instrument": "state_aid",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
   "from": "funding:germany-tkh2steel",
   "to": "project:tkh2steel-duisburg",
   "since": "2023-07-20",
@@ -28291,6 +29928,42 @@
   },
   "instrument": "state_aid",
   "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-46ineu",
+  "to": "project:lges-wroclaw",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-46ineu].finances"
+  },
+  "instrument": "grant",
+  "status": "signed"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-accept",
+  "to": "project:acc-billy-berclau",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-accept].finances"
+  },
+  "instrument": "grant",
+  "status": "signed"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-agathe",
+  "to": "project:verkor-dunkirk",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-agathe].finances"
+  },
+  "instrument": "grant",
+  "status": "signed"
  },
  {
   "rel": "finances",
@@ -28339,6 +30012,30 @@
   },
   "instrument": "grant",
   "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-ifestos",
+  "to": "project:ifestos-kamari",
+  "since": "2024-01-01",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-ifestos].finances"
+  },
+  "instrument": "grant",
+  "status": "signed"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:innovation-fund-novo-one",
+  "to": "project:novo-energy-gothenburg",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-novo-one].finances"
+  },
+  "instrument": "grant",
+  "status": "signed"
  },
  {
   "rel": "finances",
@@ -30315,12 +32012,67 @@
  },
  {
   "rel": "in",
+  "from": "funding:germany-ipcei-tesla-gruenheide",
+  "to": "country:DE",
+  "since": "2021-11-26",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-ipcei-tesla-gruenheide].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:germany-northvolt-drei",
+  "to": "country:DE",
+  "since": "2024-01-08",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-northvolt-drei].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
   "from": "funding:germany-tkh2steel",
   "to": "country:DE",
   "since": "2023-07-20",
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=germany-tkh2steel].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-46ineu",
+  "to": "country:PL",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-46ineu].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-accept",
+  "to": "country:FR",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-accept].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-agathe",
+  "to": "country:FR",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-agathe].country"
   },
   "basis": "country"
  },
@@ -30365,6 +32117,28 @@
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=innovation-fund-go4zero].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-ifestos",
+  "to": "country:GR",
+  "since": "2024-01-01",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-ifestos].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:innovation-fund-novo-one",
+  "to": "country:SE",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-novo-one].country"
   },
   "basis": "country"
  },
@@ -30420,6 +32194,94 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=3d-dunkirk].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:acc-billy-berclau",
+  "to": "country:FR",
+  "since": "2023-05-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-billy-berclau].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:acc-billy-berclau",
+  "to": "sector:batsol",
+  "since": "2023-05-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-billy-berclau].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:acc-kaiserslautern",
+  "to": "country:DE",
+  "since": "2026-02-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-kaiserslautern].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:acc-kaiserslautern",
+  "to": "sector:batsol",
+  "since": "2026-02-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-kaiserslautern].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:acc-termoli",
+  "to": "country:IT",
+  "since": "2024-06-05",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-termoli].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:acc-termoli",
+  "to": "sector:batsol",
+  "since": "2024-06-05",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=acc-termoli].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:agratas-bridgwater",
+  "to": "country:GB",
+  "since": "2025-08-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=agratas-bridgwater].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:agratas-bridgwater",
+  "to": "sector:batsol",
+  "since": "2025-08-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=agratas-bridgwater].sector"
   },
   "basis": "sector"
  },
@@ -30491,6 +32353,50 @@
  },
  {
   "rel": "in",
+  "from": "project:britishvolt-blyth",
+  "to": "country:GB",
+  "since": "2020-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=britishvolt-blyth].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:britishvolt-blyth",
+  "to": "sector:batsol",
+  "since": "2020-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=britishvolt-blyth].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:calb-sines",
+  "to": "country:PT",
+  "since": "2025-02-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=calb-sines].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:calb-sines",
+  "to": "sector:batsol",
+  "since": "2025-02-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=calb-sines].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:carbon2business-lagerdorf",
   "to": "country:DE",
   "since": "2023",
@@ -30508,6 +32414,204 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=carbon2business-lagerdorf].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-arnstadt",
+  "to": "country:DE",
+  "since": "2022-12-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-arnstadt].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-arnstadt",
+  "to": "sector:batsol",
+  "since": "2022-12-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-arnstadt].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-debrecen",
+  "to": "country:HU",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-debrecen].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-debrecen",
+  "to": "sector:batsol",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-debrecen].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-stellantis-zaragoza",
+  "to": "country:ES",
+  "since": "2024-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-stellantis-zaragoza].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:catl-stellantis-zaragoza",
+  "to": "sector:batsol",
+  "since": "2024-12-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catl-stellantis-zaragoza].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-douai",
+  "to": "country:FR",
+  "since": "2025-06-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-douai].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-douai",
+  "to": "sector:batsol",
+  "since": "2025-06-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-douai].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-extremadura",
+  "to": "country:ES",
+  "since": "2024-07-08",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-extremadura].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-extremadura",
+  "to": "sector:batsol",
+  "since": "2024-07-08",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-extremadura].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-sunderland",
+  "to": "country:GB",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-sunderland].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:envision-aesc-sunderland",
+  "to": "sector:batsol",
+  "since": "2025-12-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=envision-aesc-sunderland].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:eve-power-debrecen",
+  "to": "country:HU",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=eve-power-debrecen].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:eve-power-debrecen",
+  "to": "sector:batsol",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=eve-power-debrecen].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:farasis-bitterfeld",
+  "to": "country:DE",
+  "since": "2022-05-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=farasis-bitterfeld].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:farasis-bitterfeld",
+  "to": "sector:batsol",
+  "since": "2022-05-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=farasis-bitterfeld].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:freyr-mo-i-rana",
+  "to": "country:NO",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=freyr-mo-i-rana].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:freyr-mo-i-rana",
+  "to": "sector:batsol",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=freyr-mo-i-rana].sector"
   },
   "basis": "sector"
  },
@@ -30552,6 +32656,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=gezero-geseke].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:gib-surany",
+  "to": "country:SK",
+  "since": "2024-06-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gib-surany].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:gib-surany",
+  "to": "sector:batsol",
+  "since": "2024-06-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gib-surany].sector"
   },
   "basis": "sector"
  },
@@ -30667,6 +32793,28 @@
  },
  {
   "rel": "in",
+  "from": "project:italvolt-scarmagno",
+  "to": "country:IT",
+  "since": "2021-09-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=italvolt-scarmagno].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:italvolt-scarmagno",
+  "to": "sector:batsol",
+  "since": "2021-09-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=italvolt-scarmagno].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:k6-lumbres",
   "to": "country:FR",
   "since": "2024-02-15",
@@ -30689,6 +32837,72 @@
  },
  {
   "rel": "in",
+  "from": "project:lges-wroclaw",
+  "to": "country:PL",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lges-wroclaw].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:lges-wroclaw",
+  "to": "sector:batsol",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lges-wroclaw].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:lyten-heide",
+  "to": "country:DE",
+  "since": "2024-03-25",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lyten-heide].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:lyten-heide",
+  "to": "sector:batsol",
+  "since": "2024-03-25",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=lyten-heide].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:morrow-arendal",
+  "to": "country:NO",
+  "since": "2024-08-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=morrow-arendal].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:morrow-arendal",
+  "to": "sector:batsol",
+  "since": "2024-08-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=morrow-arendal].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:northern-lights",
   "to": "country:NO",
   "since": "2025-08-25",
@@ -30706,6 +32920,94 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=northern-lights].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:northvolt-ett-skelleftea",
+  "to": "country:SE",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northvolt-ett-skelleftea].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:northvolt-ett-skelleftea",
+  "to": "sector:batsol",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=northvolt-ett-skelleftea].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:novo-energy-gothenburg",
+  "to": "country:SE",
+  "since": "2026-01-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=novo-energy-gothenburg].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:novo-energy-gothenburg",
+  "to": "sector:batsol",
+  "since": "2026-01-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=novo-energy-gothenburg].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:powerco-sagunto",
+  "to": "country:ES",
+  "since": "2023-03-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-sagunto].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:powerco-sagunto",
+  "to": "sector:batsol",
+  "since": "2023-03-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-sagunto].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:powerco-salzgitter",
+  "to": "country:DE",
+  "since": "2025-12-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-salzgitter].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:powerco-salzgitter",
+  "to": "sector:batsol",
+  "since": "2025-12-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=powerco-salzgitter].sector"
   },
   "basis": "sector"
  },
@@ -30755,6 +33057,72 @@
  },
  {
   "rel": "in",
+  "from": "project:samsung-sdi-god",
+  "to": "country:HU",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:samsung-sdi-god",
+  "to": "sector:batsol",
+  "since": "2022-08-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=samsung-sdi-god].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:sk-on-ivancsa",
+  "to": "country:HU",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-ivancsa].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:sk-on-ivancsa",
+  "to": "sector:batsol",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-ivancsa].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:sk-on-komarom",
+  "to": "country:HU",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-komarom].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:sk-on-komarom",
+  "to": "sector:batsol",
+  "since": "2021-01-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sk-on-komarom].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:slite-ccs",
   "to": "country:SE",
   "since": "2025-11-19",
@@ -30799,6 +33167,94 @@
  },
  {
   "rel": "in",
+  "from": "project:sunwoda-nyiregyhaza",
+  "to": "country:HU",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sunwoda-nyiregyhaza].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:sunwoda-nyiregyhaza",
+  "to": "sector:batsol",
+  "since": "2023-07-27",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=sunwoda-nyiregyhaza].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:svolt-lauchhammer",
+  "to": "country:DE",
+  "since": "2022-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-lauchhammer].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:svolt-lauchhammer",
+  "to": "sector:batsol",
+  "since": "2022-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-lauchhammer].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:svolt-uberherrn",
+  "to": "country:DE",
+  "since": "2024-07-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-uberherrn].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:svolt-uberherrn",
+  "to": "sector:batsol",
+  "since": "2024-07-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=svolt-uberherrn].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "country:DE",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:tesla-gruenheide-cells",
+  "to": "sector:batsol",
+  "since": "2026-07-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tesla-gruenheide-cells].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:tkh2steel-duisburg",
   "to": "country:DE",
   "since": "2023-07-20",
@@ -30816,6 +33272,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=tkh2steel-duisburg].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:verkor-dunkirk",
+  "to": "country:FR",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=verkor-dunkirk].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:verkor-dunkirk",
+  "to": "sector:batsol",
+  "since": "2025-12-11",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=verkor-dunkirk].sector"
   },
   "basis": "sector"
  },
@@ -31317,6 +33795,17 @@
  },
  {
   "rel": "quantifies",
+  "from": "parameter:ifestos-grant",
+  "to": "sector:cement",
+  "since": "2026-08-18",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=ifestos-grant].sector",
+   "quote": "COORDINATOR ANONYMI ETAIREIA TSIMENTON TITAN LOCATION Greece CATEGORY Energy intensive industries (EII) SECTOR Cement & lime AMOUNT OF INNOVATION FUND GRANT EUR 234,000,000"
+  }
+ },
+ {
+  "rel": "quantifies",
   "from": "parameter:k6-state-funding",
   "to": "sector:cement",
   "since": "2024-02-15",
@@ -31366,6 +33855,17 @@
    "source": "data/transition/parameters.json",
    "path": "[id=near-zero-steel-cost-premium].sector",
    "quote": "Early commercial plants using 100% hydrogen blends are estimated to cost 50-140% more than BF-BOF plants today"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:northvolt-drei-state-aid",
+  "to": "sector:batsol",
+  "since": "2024-01-08",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=northvolt-drei-state-aid].sector",
+   "quote": "Commission approves €902 million German State aid measure to support Northvolt in the construction of an electric vehicle battery production plant to foster the transition to a net-zero economy"
   }
  },
  {
@@ -31553,6 +34053,42 @@
  },
  {
   "rel": "relieves",
+  "from": "measure:crma:CBEN-01",
+  "to": "bottleneck:batsol-cathode-dependence",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cathode-dependence].measures[crma:CBEN-01]",
+   "quote": "Build Union capacity towards extracting 10%, processing 40% and recycling 25% of the Union's annual consumption of each strategic raw material by 2030."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:crma:CBEN-02",
+  "to": "bottleneck:batsol-cathode-dependence",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cathode-dependence].measures[crma:CBEN-02]",
+   "quote": "Diversify imports so that no single third country supplies more than 65% of the Union's annual consumption of any strategic raw material by 2030."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:crma:CSP-02",
+  "to": "bottleneck:batsol-cathode-dependence",
+  "since": "2022-08-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cathode-dependence].measures[crma:CSP-02]",
+   "quote": "File a Strategic Project application carrying ten items: evidence against the criteria, a UN Framework Classification, a permitting timetable, a public-acceptance plan, ownership and control information, a business plan, a jobs and skills estimate, a post-exploitation environmental restoration plan, an alternative-locations assessment in protected areas, and an indigenous-peoples consultation plan."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
   "from": "measure:ets:CBAM-01",
   "to": "bottleneck:cement-green-premium",
   "since": "2025-01-01",
@@ -31572,6 +34108,54 @@
    "source": "data/transition/bottlenecks.json",
    "path": "[id=steel-green-premium].measures[ets:CBAM-01]",
    "quote": "Producers of CBAM-covered goods see their free allocation shrink on a fixed annual CBAM-factor schedule, falling to 0% from 2038, as CBAM replaces free allocation as the carbon-leakage instrument for those goods."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:ets:FND-03",
+  "to": "bottleneck:batsol-ramp-and-yield",
+  "since": "2024-02-29",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-ramp-and-yield].measures[ets:FND-03]",
+   "quote": "Grants and other support (e.g. blended finance) from the Innovation Fund, financed by auctioning 200 million allowances from reduced free allocation, are available via open competitive calls for projects scaling up low-/zero-carbon and carbon-negative products, processes and technologies across all Member States."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:fleet:PREM-01",
+  "to": "bottleneck:batsol-demand-uncertainty",
+  "since": "2026-02-09",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-demand-uncertainty].measures[fleet:PREM-01]",
+   "quote": "Pay an excess emissions premium of EUR 95 per gram per kilometre of exceedance, multiplied by the number of newly registered vehicles."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:fleet:TGT-2030",
+  "to": "bottleneck:batsol-demand-uncertainty",
+  "since": "2026-02-09",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-demand-uncertainty].measures[fleet:TGT-2030]",
+   "quote": "Meet an EU fleet-wide target of a 55% reduction on the 2021 baseline for new passenger cars, and 50% for new light commercial vehicles."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:fleet:TGT-2035",
+  "to": "bottleneck:batsol-demand-uncertainty",
+  "since": "2026-02-09",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-demand-uncertainty].measures[fleet:TGT-2035]",
+   "quote": "Meet an EU fleet-wide target of a 100% reduction on the 2021 baseline for new passenger cars from 2035."
   },
   "weight": 1.0
  },
@@ -31649,6 +34233,30 @@
  },
  {
   "rel": "relieves",
+  "from": "measure:iaa:LM-15a",
+  "to": "bottleneck:batsol-cell-cost-gap",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cell-cost-gap].measures[iaa:LM-15a]",
+   "quote": "Apply the Union-origin requirements laid down in the new Annex II when procuring listed net-zero technologies (battery storage, solar PV, heat pumps, wind, nuclear)."
+  },
+  "weight": 1.0
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:iaa:LM-26a",
+  "to": "bottleneck:batsol-cell-cost-gap",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cell-cost-gap].measures[iaa:LM-26a]",
+   "quote": "Ensure that only vehicles complying with the Union-origin requirements are eligible under public schemes supporting the purchase, lease, rent or hire-purchase of new electric vehicles."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
   "from": "measure:nzia:CO2-02",
   "to": "bottleneck:co2-transport-storage-network",
   "since": "2024-06-13",
@@ -31692,6 +34300,18 @@
    "source": "data/transition/bottlenecks.json",
    "path": "[id=steel-co2-transport-storage-network].measures[nzia:CO2-10]",
    "quote": "Take the measures needed to open access to CO2 transport networks and storage sites for geological storage, as far as it is economically feasible or where a potential customer is willing to pay."
+  },
+  "weight": 0.5
+ },
+ {
+  "rel": "relieves",
+  "from": "measure:nzia:SCH-01",
+  "to": "bottleneck:batsol-cell-cost-gap",
+  "since": "2025-03-12",
+  "evidence": {
+   "source": "data/transition/bottlenecks.json",
+   "path": "[id=batsol-cell-cost-gap].measures[nzia:SCH-01]",
+   "quote": "Design any new or updated scheme that subsidises the purchase of net-zero technology final products so that it favours products with a high sustainability and resilience contribution, either by paying more for them or by making them the eligibility condition."
   },
   "weight": 0.5
  },
@@ -31761,6 +34381,16 @@
   "evidence": {
    "source": "data/transition/materials.json",
    "path": "[id=granulated-blast-furnace-slag].substitutes[clinker]"
+  }
+ },
+ {
+  "rel": "substitutes",
+  "from": "material:sodium",
+  "to": "material:lithium",
+  "since": "2025-04-21",
+  "evidence": {
+   "source": "data/transition/materials.json",
+   "path": "[id=sodium].substitutes[lithium]"
   }
  },
  {
@@ -32997,12 +35627,62 @@
  },
  {
   "rel": "supports",
+  "from": "funding:germany-ipcei-tesla-gruenheide",
+  "to": "technology:cell-manufacturing",
+  "since": "2021-11-26",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-ipcei-tesla-gruenheide].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:germany-northvolt-drei",
+  "to": "technology:cell-manufacturing",
+  "since": "2024-01-08",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=germany-northvolt-drei].supports"
+  }
+ },
+ {
+  "rel": "supports",
   "from": "funding:germany-tkh2steel",
   "to": "technology:dri-eaf",
   "since": "2023-07-20",
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=germany-tkh2steel].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-46ineu",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-46ineu].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-accept",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-accept].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-agathe",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-agathe].supports"
   }
  },
  {
@@ -33047,6 +35727,36 @@
  },
  {
   "rel": "supports",
+  "from": "funding:innovation-fund-ifestos",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-01-01",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-ifestos].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-ifestos",
+  "to": "technology:ccs-post-combustion",
+  "since": "2024-01-01",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-ifestos].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:innovation-fund-novo-one",
+  "to": "technology:cell-manufacturing",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-novo-one].supports"
+  }
+ },
+ {
+  "rel": "supports",
   "from": "funding:innovation-fund-stegra",
   "to": "technology:h2-dri",
   "since": "2024-01-22",
@@ -33074,6 +35784,39 @@
    "source": "data/transition/funding.json",
    "path": "[id=lower-saxony-salcos].supports"
   }
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-46ineu",
+  "to": "measure:ets:FND-03",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-46ineu].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-accept",
+  "to": "measure:ets:FND-03",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-accept].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-agathe",
+  "to": "measure:ets:FND-03",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-agathe].under"
+  },
+  "programme": "EU Innovation Fund"
  },
  {
   "rel": "under",
@@ -33116,6 +35859,28 @@
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=innovation-fund-go4zero].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-ifestos",
+  "to": "measure:ets:FND-03",
+  "since": "2024-01-01",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-ifestos].under"
+  },
+  "programme": "EU Innovation Fund"
+ },
+ {
+  "rel": "under",
+  "from": "funding:innovation-fund-novo-one",
+  "to": "measure:ets:FND-03",
+  "since": "2025-07-04",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=innovation-fund-novo-one].under"
   },
   "programme": "EU Innovation Fund"
  },

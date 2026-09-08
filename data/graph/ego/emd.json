@@ -1,0 +1,35 @@
+{
+  "file": "emd",
+  "center": {
+    "id": "act:32019R0943",
+    "label": "32019R0943",
+    "file": "emd"
+  },
+  "measure_count": 7,
+  "groups": [
+    {
+      "rel": "sectors",
+      "title": "Sectors",
+      "spokes": [
+        {
+          "id": "sector:power",
+          "kind": "sector",
+          "label": "Power",
+          "file": null,
+          "href": "/sectors/power",
+          "detail": "named by 7 measures",
+          "weight": 7
+        },
+        {
+          "id": "sector:batsol",
+          "kind": "sector",
+          "label": "Batteries and solar",
+          "file": null,
+          "href": "/sectors/batsol",
+          "detail": "reached by 5 measures",
+          "weight": 5
+        }
+      ]
+    }
+  ]
+}

@@ -14,7 +14,13 @@ import { sectorGeoProse, transitionProse } from "@/lib/prose";
 import { renderedSections, sectorH1 } from "@/lib/sectorSections";
 import { getSectorMap } from "@/lib/maps";
 import { getRecordsForSector } from "@/lib/records";
-import { getOpportunityProse, getSectorOrientation, getTransitionNote, getUnnumberedH2 } from "@/lib/sitetext";
+import {
+  getOpportunityProse,
+  getSectorOrientation,
+  getSectorPlain,
+  getTransitionNote,
+  getUnnumberedH2,
+} from "@/lib/sitetext";
 import {
   STATUS_LABEL,
   TRANSITION_LABEL,
@@ -26,6 +32,7 @@ import {
   FUNDING_ANNOUNCED,
   FUNDING_COMMITTED,
   getBottlenecks,
+  getCorrections,
   getFunding,
   getImportance,
   getLead,
@@ -261,6 +268,10 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   // The date the committed sum is complete THROUGH, not the date of the build:
   // the build ran today and that says nothing about when the money last moved.
   const committedAsOf = committedFunding.reduce((a, f) => (f.date > a ? f.date : a), "");
+  // Dated notes on this figure, where it is printed. A figure the site has
+  // already stated and later had to correct says so beside itself: a reader who
+  // saw the old number is reading this page, not the commit history.
+  const moneyCorrections = getCorrections(slug, "opportunity.money_in");
   const opportunity = getOpportunity(slug);
   const opp = getOpportunityProse();
   const support = supportMeasures(slug);
@@ -323,6 +334,21 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   // computed sentence and is the right thing to fall back to for a sector whose
   // lead has not been built yet.
   const orientation = getSectorOrientation(slug);
+  // The page's own explanations of how it counts, placed by the section each
+  // one names. Absent on every sector but batteries today, and absent renders
+  // nothing — see lib/sitetext.ts.
+  const plain = getSectorPlain(slug);
+  const plainFor = (section: string) => plain.filter((b) => b.section === section);
+  const PlainBlocks = ({ section }: { section: string }) => (
+    <>
+      {plainFor(section).map((b) => (
+        <details key={b.id} className="tplain">
+          <summary>{b.title}</summary>
+          <p>{b.text}</p>
+        </details>
+      ))}
+    </>
+  );
   const lead = getLead(slug);
   const opening =
     getTransitionNote(slug) ??
@@ -433,13 +459,28 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
             anything, and a reader who has can skip it — which is why it is one
             paragraph and not a page. Absent (unreviewed, or unwritten for this
             sector) the header renders exactly as it did before. */}
-        {orientation ? <p className="tmap-orientation">{orientation}</p> : null}
+        {/* ONE BLOCK, RENDERED AS ITS BEATS. The paragraph is written in
+            several beats separated by blank lines — what is different about
+            this sector, why it is hard, the technology paths, what the law
+            does — and a single <p> would run them together into a wall. Split
+            on the blank line, so the prose keeps the shape it was written in
+            and a one-beat paragraph still renders as one. */}
+        {orientation
+          ? orientation
+              .split(/\n\s*\n/)
+              .map((beat, i) => (
+                <p key={i} className="tmap-orientation">
+                  {beat}
+                </p>
+              ))
+          : null}
         {lead ? <LeadBlock lead={lead} /> : <p className="tmap-lede">{opening}</p>}
       </header>
 
       {present.projects ? (
         <section className="tmap-section" id="projects">
           <h2 className="sectionhead">{h2("projects")}</h2>
+          <PlainBlocks section="projects" />
           {/* THE OVERVIEW COMES BEFORE THE TABLE, and inside this section rather
               than as one of its own. It answers the section's question — what is
               being built — in the one dimension the table cannot show, and a
@@ -541,11 +582,11 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                       </dd>
                     </>
                   ) : null}
-                  {t.dependency.length > 0 ? (
+                  {(t.dependency ?? []).length > 0 ? (
                     <>
                       <dt>Depends on</dt>
                       <dd>
-                        {t.dependency.map((d, i) => (
+                        {(t.dependency ?? []).map((d, i) => (
                           <span key={d}>
                             {i > 0 ? ", " : ""}
                             <a href={`#technology-${d}`}>{d}</a>
@@ -592,6 +633,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
       {present.opportunity ? (
         <section className="tmap-section" id="opportunity">
           <h2 className="sectionhead">{h2("opportunity")}</h2>
+          <PlainBlocks section="opportunity" />
           {/* THE SECTION'S OWN GENERATED SENTENCE (§4.5). Built by
               sources/build_opportunity.py from the two facts below it and
               nothing else, gated by the same rules as the sector lead, with an
@@ -620,6 +662,15 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                     : ""}
                   <span className="tscore-note">{`${SEPARATOR}as of ${committedAsOf}`}</span>
                 </p>
+                {moneyCorrections.map((c) => (
+                  <p key={c.id} className="tcorrection">
+                    <span className="tcorrection-head">
+                      Corrected {c.date}
+                      {SEPARATOR}was {c.was}
+                    </span>{" "}
+                    {c.what} {c.why}
+                  </p>
+                ))}
                 <ul className="tfundings">
                   {committedFunding.map((f) => (
                     <FundingRow key={f.id} f={f} params={params} />
@@ -737,6 +788,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
       {present.policies ? (
         <section className="tmap-section" id="policies">
           <h2 className="sectionhead">{h2("policies")}</h2>
+          <PlainBlocks section="policies" />
           {/* THE TOP FIVE, AND WHAT THEY SAY (brief 4 §5).
 
               This list used to be every measure in the sector view — eight for
@@ -928,6 +980,16 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                         than two strings run together. */}
                     {s.date ? (
                       <span className="tscore-note">{`${SEPARATOR}${s.date}`}</span>
+                    ) : null}
+                    {/* The day it was read, and the terms it is reused under.
+                        Both absent on almost every source; both load-bearing on
+                        the few that are queried rather than published — see the
+                        Source type in lib/transition.ts. */}
+                    {s.retrieved_date ? (
+                      <span className="tscore-note">{`${SEPARATOR}read ${s.retrieved_date}`}</span>
+                    ) : null}
+                    {s.licence ? (
+                      <span className="tscore-note">{`${SEPARATOR}${s.licence}`}</span>
                     ) : null}
                     {s.archived ? <span className="tarchived">archived</span> : null}
                   </li>

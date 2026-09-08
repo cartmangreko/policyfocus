@@ -168,6 +168,16 @@ STANDING_CLAUSE = {
 }
 
 
+def _where_sentence(project: dict, status: str, place: str) -> str:
+    """Where the project is, in the tense its state supports. See the three
+    cases at the call site."""
+    if project.get("location"):
+        return f"It is at {place}."
+    if status == "cancelled":
+        return f"It was to be at {place}."
+    return f"Its site is at {place}."
+
+
 def _fact(fid, text, as_of, numbers=(), sourced=(), href=None) -> dict:
     return {
         "id": fid,
@@ -338,7 +348,21 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
         _fact("status", f"{p['name']} {bl.STATUS_VERB[last['status']]} on "
                         f"{bl._long_date(last['date'])}.",
               last["date"], sourced=(p["name"],), href=last.get("source_url")),
-        _fact("where", f"It is at {place}.", as_of, sourced=(place,)),
+        # THREE SENTENCES, AND THE STATUS PICKS BETWEEN THEM.
+        #
+        #   a position          "It is at Skellefteå, Sweden."
+        #   none, cancelled     "It was to be at Mo i Rana, Norway."
+        #   none, paused        "Its site is at Gothenburg, Sweden."
+        #
+        # The middle two used to be one sentence keyed on the position alone,
+        # and it said the wrong thing about a paused project: NOVO Energy's
+        # shell stands in Gothenburg and its works is confirmed, so "it was to
+        # be at" denied a building that is there. Cancelled is the case where
+        # the past tense is the truth — nothing will stand — and paused is the
+        # case where the register simply has no point for a site it knows the
+        # town of.
+        _fact("where", _where_sentence(p, last["status"], place), as_of,
+              sourced=(place,)),
     ]
 
     tech_names = [_uncapitalise(techs[t]["name"]) for t in p.get("technology", [])
@@ -352,12 +376,53 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
     cap = p.get("capacity") or {}
     if cap.get("value") and cap.get("unit"):
         param = params.get(cap.get("parameter") or "")
-        facts.append(_fact(
-            "capacity",
-            f"It is built for {cap['value']:,} {cap['unit']}.",
-            (param or {}).get("date_of_value") or as_of,
-            [f"{cap['value']:,}"], sourced=(cap["unit"],),
-        ))
+        # THE CAPACITY OF SOMETHING NEVER BUILT IS IN THE PAST TENSE, and this
+        # is not a style note. "It is built for 24 GWh per year" on a works that
+        # was never built is a sentence a reader takes for a description of
+        # something standing in a field. The figure is real and stays -- it is
+        # what the company said it was building, and the row is on file
+        # precisely because what this sector planned and did not build is the
+        # sector's defining fact -- but the verb has to say which of the two it
+        # is.
+        #
+        # TWO TESTS, AND BOTH HAVE TO FAIL BEFORE THE TENSE MOVES. The row has
+        # to be STOPPED, and it has to have never broken ground.
+        #
+        # Stopped alone is not enough: Morrow reached operating and then went
+        # under, and "was to be built for" would be denying a factory that ran.
+        # Never-raised alone is not enough either, and that error was live for a
+        # few minutes here — it put six announced and funded projects into the
+        # past tense, so ANRAV, GeZero, IFESTOS, Zaragoza, Šurány and Heide all
+        # read as dead. An announced project is not built yet and that is the
+        # ordinary case, not a failure. What the past tense is for is the works
+        # that stopped before anything stood on the ground.
+        raised = any(h["status"] in ("construction", "operating") for h in history)
+        stopped = last["status"] in sm.STOPPED_STATUSES
+        verb = "was to be built for" if stopped and not raised else "is built for"
+
+        # A SUPERSEDED FIGURE IS SOMEBODY'S FORMER PLAN AND IS SAID AS ONE.
+        # Heide is the case: Northvolt's 15 GWh, Northvolt insolvent, and the
+        # party in exclusive talks to take the site on has published no figure.
+        # Rendering that as "It is built for 15 GWh" would put a live number on
+        # a dead plan, and rendering it as "was to be built for" would still be
+        # this register asserting it. The attribution is the sentence's subject:
+        # who planned it, and that they no longer are.
+        if cap.get("superseded"):
+            facts.append(_fact(
+                "capacity",
+                f"It was planned for {cap['value']:,} {cap['unit']} by "
+                f"{cap['planned_by']}.",
+                (param or {}).get("date_of_value") or as_of,
+                [f"{cap['value']:,}"], sourced=(cap["unit"], cap["planned_by"]),
+            ))
+            cap = {}
+        if cap:
+            facts.append(_fact(
+                "capacity",
+                f"It {verb} {cap['value']:,} {cap['unit']}.",
+                (param or {}).get("date_of_value") or as_of,
+                [f"{cap['value']:,}"], sourced=(cap["unit"],),
+            ))
 
     total, latest = 0.0, None
     for f in funding:

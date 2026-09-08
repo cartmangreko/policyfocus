@@ -3296,6 +3296,42 @@ h3 {
   font-size: clamp(20px, 2.4vw, 28px);
   margin: 14px 0 10px;
 }
+/* THE PAGE EXPLAINING HOW IT COUNTS. Folded shut by default: a reader who
+   trusts the figure should not have to scroll past a paragraph defending it,
+   and a reader who does not should not have to ask. The summary is the
+   question they would have asked. */
+.tplain {
+  margin: 10px 0 14px;
+  border-left: 2px solid var(--rule);
+  padding: 0 0 0 12px;
+}
+.tplain > summary {
+  cursor: pointer;
+  font-size: 12.5px;
+  color: var(--ink-55);
+}
+.tplain > p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-70);
+  max-width: 68ch;
+  margin: 8px 0 0;
+}
+
+/* A DATED CORRECTION, under the figure it corrects. Deliberately quiet: it is
+   not a warning and not a badge, it is the page saying what it printed before.
+   No reserved colour — a correction is not a direction. */
+.tcorrection {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-55);
+  margin: -4px 0 12px;
+  max-width: 62ch;
+}
+.tcorrection-head {
+  font-weight: 600;
+  color: var(--ink-70);
+}
 .tfundings {
   list-style: none;
   padding: 0;
@@ -3620,6 +3656,17 @@ h3 {
   background: var(--paper-2);
   border-color: transparent;
   color: var(--ink-55);
+}
+/* An ownership event in a project's history. Not a status, so it does not take
+   a status chip's ground: it is the one entry in the timeline that reports a
+   change of hands rather than a change of state, and it reads as a note in the
+   chip's position rather than as a sixth status. */
+.tstatus.ownership {
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--ink-55);
+  text-transform: none;
+  letter-spacing: 0.02em;
 }
 
 /* --- sources ------------------------------------------------------ */

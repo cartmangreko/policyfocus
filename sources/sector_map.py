@@ -23,6 +23,7 @@ THE FILES
   data/transition/materials.json      what a sector makes, consumes and throws off
   data/transition/funding.json        capital allocated, and what it was allocated under
   data/transition/measure_labels.json what a measure is CALLED on a diagram
+  data/transition/corrections.json    dated notes on figures already printed
 
 Each file is {"_comment": [...], "<kind>s": [ ... ]} -- the same arrangement
 data/sectors.json uses, for the same reason: a data file that cannot say what
@@ -148,6 +149,33 @@ PROJECT_STOPPED = ("cancelled",)
 PROJECT_COMPLETE = ("operating",)
 
 
+# THE STATUSES THAT STOP A PROJECT, named once because three files branch on
+# them: the schema gate, which lets a stopped row stand without a coordinate;
+# build_maps, which cannot draw one; and the ROADMAP entry that will eventually
+# ask whether `paused` should age into `cancelled` on its own.
+#
+# WHY A STOPPED ROW MAY HAVE NO POSITION. The perimeter admits a site the company
+# has confirmed and a citable source can place, and the second half is research
+# that only pays for itself on a works somebody might visit. A project that will
+# not be built has no works to place, and hunting the parcel of a factory that
+# was cancelled two years ago buys a dot on a map nobody should read as a
+# building. So location is sought for ACTIVE rows, and a stopped row says in its
+# own note that it was not sought -- which is a decision on the record rather
+# than a gap that looks like an oversight. See sources/scope.md, "A stopped row
+# does not enter the location queue".
+STOPPED_STATUSES = ("cancelled", "paused")
+
+
+# AND `paused` READS THREE WAYS ON PURPOSE, which is why the two tuples above
+# disagree about it in plain sight. It is ALIVE for the counting groups (a paused
+# project can resume, and one paused for three years is exactly what an attrition
+# series measures), STOPPED for the drawing rule (there is no works to place, so
+# no coordinate is sought), and its OWN group in sources/export_status_history.py
+# (it is what the attrition paper is about). The three are not a contradiction to
+# be settled: they are three questions with three right answers, and each is
+# declared where it is used rather than one being bent to serve all three.
+
+
 # WHAT KIND OF EVENT AN ENTRY IN A STATUS HISTORY IS. A history is a record of
 # what was published about a project, and not everything published about it
 # moves it along the ladder: money can be committed and a site can change hands
@@ -160,10 +188,30 @@ PROJECT_COMPLETE = ("operating",)
 #   ownership   the project changed hands. The site is continuous and its OWNER
 #               broke; a history that could not say so would have to choose
 #               between a cancellation that did not happen and an acquisition
-#               that never appears.
+#               that never appears. Northvolt Ett is the case that forced it.
 #   financing   money reached, or left, the project. Distinct from the `funded`
 #               status, which is a rung on the ladder: a second grant to a
 #               project already funded is a financing event and not a move.
+#
+# AN OWNERSHIP EVENT STILL CARRIES A STATUS, and it is the status the project was
+# already in. Three things fall out of that and all three are wanted:
+#
+#   the append-only invariant survives -- the last entry's status still equals
+#   the project's, so a header and a timeline cannot disagree;
+#
+#   is_transition already handles it -- the status is unchanged, so an ownership
+#   event is not a transition, and the three sentence templates that render an
+#   entry as "was paused on {date}" skip it without being told to;
+#
+#   and the feed, which wants the latest thing on file rather than the latest
+#   MOVE, shows it with a true status chip beside it.
+#
+# ONE FACT PER ENTRY. An ownership event may not also change the status: the gate
+# refuses one whose status differs from the entry before it, because a company
+# changing hands on the same day a project is paused is two events and reads as
+# one cause. For the same reason an ownership event may not be the first entry --
+# there is nothing for its status to be unchanged FROM, and is_transition would
+# have to call it a status change.
 PROJECT_EVENT_KINDS = (
     "status",
     "ownership",
@@ -187,12 +235,24 @@ PROJECT_EVENT_KINDS = (
 #   wire_release    a company release carried by a wire service. It is the
 #                   company speaking, through a distributor that keeps the page
 #                   alive after the company's own site has dropped it.
+#   official_register
+#                   official public records: gazettes, insolvency notices,
+#                   company registries. ADDED BECAUSE `regulator` WAS DOING TWO
+#                   JOBS. A supervisory authority ACTING on a project and a
+#                   statutory register RECORDING that something happened to the
+#                   company are not the same route into the record, and an
+#                   attrition series cares about the difference: the first is
+#                   somebody intervening, the second is the state writing down a
+#                   fact that already occurred. The London Gazette's appointment
+#                   of administrators is the case — the Gazette did not act on
+#                   Britishvolt, it published the notice.
 #   press           anyone reporting on the project rather than acting in it.
 PROJECT_SOURCE_TYPES = (
     "company",
     "permit",
     "regulator",
     "grant_register",
+    "official_register",
     "wire_release",
     "press",
 )
@@ -211,6 +271,92 @@ EVIDENCE_MODES = (
 )
 
 
+# WHAT A PROJECT SAID IT WOULD DO, AND WHEN IT SAID IT. `stated_schedule` is a
+# second history beside `status_history`, and the two answer different questions.
+# status_history records what HAPPENED: the project moved, and here is the source.
+# stated_schedule records what was PROMISED: on this date, from this source, the
+# operator said the plant would start producing in that year.
+#
+# WHY IT CANNOT BE A FIELD ON THE ROW. A single `target_date` would be overwritten
+# every time a company restated it, and the overwrite is the finding. A project
+# that has said 2026, then 2027, then 2028 is not a project with a 2028 target; it
+# is a project that has slipped twice, and the only way to see that is to keep
+# every statement. So EVERY REVISION IS A NEW EVENT and the original is never
+# edited -- the same append-only discipline status_history already has, for the
+# same reason.
+#
+# A SLIP IS NOT A STATUS CHANGE, which is why this could not live in the other
+# history. A plant whose start date moves from 2026 to 2028 has not changed status
+# and never appears in the transition matrix. It is the commonest way a project
+# fails without any event recording it, and before this list there was nowhere in
+# the register to put it.
+SCHEDULE_MILESTONES = (
+    "production_start",     # the plant makes its first saleable output
+    "commissioning",        # the works is handed over and starts up
+    "fid_target",           # a final investment decision is expected by then
+    "construction_start",   # ground is to be broken
+)
+
+# WHO MADE THE PROMISE, which is a different question from how it reached us.
+# `source_type` says the route -- a company release, a permit file, a wire, the
+# press. `speaker` says whose statement it is. The two come apart constantly and
+# the gap is where the meaning lives: the Junta de Extremadura telling its own
+# Assembly that cells come in December 2028 is a HOST GOVERNMENT statement that
+# reached this register through a newspaper, and recording it as "press" would
+# lose the fact that a government said it.
+#
+# AND IT DECIDES WHAT COUNTS AS A SLIP. A revision is one speaker changing its own
+# mind, and only that. Two speakers giving different dates for the same milestone
+# have not revised anything -- they disagree, which is a fact about the evidence
+# and not about the project. Counting a disagreement as a slip would manufacture
+# delay out of a government and a company being asked on the same day, and it
+# would do so in the direction that makes the register look more informative than
+# it is. So a slip is measured within a speaker and a disagreement is reported
+# beside it, never inside it. See sources/scope.md, "A slip is one speaker
+# changing its mind".
+#
+#   company           the operator or its parent, about its own project.
+#   host_government   the state, region or municipality hosting the works, or an
+#                     agency of it. It is the speaker whether it speaks in a
+#                     release, a permit or an answer to its own parliament.
+#   eu                the Commission or an EU body -- a state aid decision, an
+#                     Innovation Fund award.
+#   other             anyone else who states a date: trade press, a consultant, a
+#                     customer. Named rather than excluded, so that a date from
+#                     one of them is visible as such rather than absent.
+SCHEDULE_SPEAKERS = (
+    "company",
+    "host_government",
+    "eu",
+    "other",
+)
+
+
+# HOW EXACTLY THE TARGET WAS STATED, because a company that says "2028" and a
+# company that says "December 2028" have not made the same promise, and flattening
+# both to a date would invent precision the source does not carry. The value is
+# stored in the shape the source used -- YYYY, YYYY-Hn, YYYY-Qn, YYYY-MM,
+# YYYY-MM-DD -- and this says which.
+#
+# `half` IS HERE BECAUSE THE DATA REQUIRED IT. Lyten said "the second half of
+# 2026" about Northvolt Ett, which is neither a year nor a quarter; rounding it to
+# either would be this register choosing a number the company did not.
+#
+# A TARGET IS READ AT THE END OF ITS PERIOD, everywhere it is compared. "2029" is
+# not missed until 31 December 2029, and treating it as 1 January would report a
+# project as late for a year in which it is still on time. This is the opposite
+# convention from a history DATE, which is padded to the first of its period
+# because that is the earliest the event can have happened -- both choices are the
+# reading that does not overstate.
+TARGET_PRECISIONS = (
+    "year",
+    "half",
+    "quarter",
+    "month",
+    "day",
+)
+
+
 # CAPACITY, AND WHY IT IS NOT THE `capacity` BLOCK ALREADY ON THE ROW. That block
 # holds whatever figure a project is best known by, and across these sectors it
 # is not one quantity: for the cement rows it is CO2 captured per year, for the
@@ -224,13 +370,28 @@ CAPACITY_UNITS = (
     "t_co2_per_year",
 )
 
-# HOW FIRM THE FIGURE IS. The same number means different things at these three
+# HOW FIRM THE FIGURE IS. The same number means different things at these
 # stages, and attrition measured against announced capacity is a different
 # series from attrition measured against capacity somebody committed money to.
+#
+#   announced  the company states it is building towards this figure.
+#   fid        the figure was fixed at a final investment decision.
+#   operating  the figure describes a works that is running.
+#   official   THE FIGURE COMES FROM AN OFFICIAL RECORD NAMING THE SITE rather
+#              than from the company: a permit, a state aid decision, a
+#              host-state grant decision. It is a separate basis and not a
+#              flavour of `announced` because the speaker is different and the
+#              failure modes are different — an applicant's filed plan is a
+#              number the company gave an authority, and a grant decision is a
+#              number an authority was willing to pay against. Both are checkable
+#              in a way a press figure is not, and neither is the company saying
+#              what it is building towards today. See sources/scope.md,
+#              "Admission and capacity are separate questions".
 CAPACITY_BASES = (
     "announced",
     "fid",
     "operating",
+    "official",
 )
 
 # WHAT THE PLANT MAKES, in the source's own word. Closed, because "steel" and
@@ -289,6 +450,16 @@ CAPACITY_SECTORS = ("cement", "steel", "batsol", "ccs")
 # comment on each saying "edit both", which is what the reach-channel inference
 # is still held by and is not a mechanism.
 
+# WHERE A PROJECT HAS STOPPED MOVING, and it is a different question from where
+# it has stopped being reported. Two statuses are TERMINAL for that question:
+# `operating` has climbed the whole ladder and has nowhere left to go, and
+# `cancelled` will not move again. Everything else is a project that is supposed
+# to be going somewhere, including `paused` -- a paused project can resume, and
+# one that has been paused for three years is exactly what a stalling listing is
+# for.
+TERMINAL_STATUSES = frozenset({"operating", "cancelled"})
+
+
 def is_transition(history: list[dict], i: int) -> bool:
     """Whether entry `i` is the moment the project's status changed."""
     return i == 0 or history[i]["status"] != history[i - 1]["status"]
@@ -322,6 +493,123 @@ PROJECT_ROLES = (
     "plant",
     "storage",
 )
+
+# WHERE A COORDINATE CAME FROM, and it is recorded per site rather than assumed.
+#
+# The rule this vocabulary enforces has not changed and is the one the register
+# has always had: a coordinate must come from a citable source that identifies
+# THE WORKS SPECIFICALLY. What changed is that the basemap is no longer the only
+# thing that can do that. Batteries made the old reading untenable -- ACC's
+# Kaiserslautern site is real, company-confirmed and carries no OpenStreetMap
+# feature at all, and a rule that admits a works only when a volunteer has
+# already drawn it is a rule about OpenStreetMap's coverage rather than about
+# evidence.
+#
+# So four kinds of source may put a works on the paper:
+#
+#   basemap     an OpenStreetMap feature, with its tags quoted, so a reader can
+#               see that the polygon is the works and not the industrial estate
+#               around it. Still the best of the three, because the geometry and
+#               the identification are the same object.
+#   company     the operator's own materials naming a street address or a land
+#               parcel. The company knows where its works is; what this costs is
+#               that the coordinate is then derived from an address rather than
+#               read off a shape, so the address itself is quoted alongside. AND
+#               THE ADDRESS HAS TO BE THE WORKS'. A registered office or a filing
+#               address is an address for serving papers; see the corollary in
+#               sources/scope.md and the pair it is written from.
+#   permit      a state permitting, planning or zoning filing that states a
+#               position itself: a grid reference, a coordinate pair, an address.
+#               Often the most precise of these -- and it is a public document
+#               that outlives a press release.
+#   plan_parcels
+#               a plan that names its PARCELS but no position, resolved through
+#               the state cadastre that holds their geometry. Two documents doing
+#               one job: the plan says which parcels, and neither of them alone
+#               places anything -- the cadastre knows where parcel 121/4 is and
+#               nothing about what was to be built on it, and the plan knows what
+#               was to be built and gives no coordinate. It is recorded as its own
+#               type rather than folded into `permit` because the reader has a
+#               different question to ask of it: not "do you trust this filing"
+#               but "did the right parcels get selected, and did the cadastre
+#               answer for all of them". A row on this type therefore carries the
+#               parcel list, the register it was resolved against, the date it was
+#               read, and how many of the named parcels were found.
+#
+# WHAT IS STILL REFUSED, and this is the whole point of naming them. A town
+# name run through a geocoder is not a source about a works, it is a source about
+# a town, and `precision: "town"` already fails by name. A position read off a
+# picture in a news story is not citable: nobody can check it and the next reader
+# gets a different number. Neither has a value in this vocabulary, so neither can
+# be recorded without inventing one, which is the point of a closed list.
+#
+# AND WE DO NOT DRAW THE POLYGON OURSELVES. Where the basemap has no feature for a
+# works, the answer is a permit, a published address, or the row staying off file
+# -- never an edit to OpenStreetMap made in order to cite it. The temptation is
+# real and the reasoning is easy: we know where the works is, OSM is editable, and
+# `basemap` would then be true of the row. It would also be circular. The
+# coordinate's whole claim is that somebody independent put the works there, and
+# an edit made to be cited LAUNDERS AN ASSERTION INTO A SOURCE TYPE -- it converts
+# "we believe this is the site" into "the basemap says so", which is a stronger
+# claim than we hold and one no reader could unpick.
+#
+# This says nothing against improving OpenStreetMap. It says that a coordinate
+# this repository publishes may not rest on an edit this repository made for the
+# purpose, and that the two must not be done in the same breath.
+LOCATION_SOURCE_TYPES = (
+    "basemap",
+    "company",
+    "permit",
+    "plan_parcels",
+)
+
+
+# HOW A SITE IS CONFIRMED, WHEN ONE SOURCE CANNOT DO IT ALONE
+# ===========================================================
+# The perimeter's site rule is company-only: a project whose specific site the
+# company has not confirmed is not held. That rule is right and it has already
+# refused a candidate outright -- InoBat's Spanish site, where the only company
+# statement was conditional and nothing followed it.
+#
+# Sunwoda is the case it could not decide. The company confirms the project and
+# the country and never names the town: its newsroom release says "Hungary", its
+# 2025 Shenzhen-filed interim report lists "Hungary Sunwoda Power Technology Co.,
+# Ltd" with Hungary as its place of business, and neither says Nyíregyháza. The
+# Hungarian government's own briefing room does say it, and the basemap carries a
+# works whose name is the operator's own subsidiary at an address in that town.
+#
+# Read strictly, company-only refuses a site that three independent sources agree
+# on. Read loosely, it stops meaning anything. So it is neither stretched nor
+# abandoned: a SECOND, NAMED standard is defined, and a row says which one it
+# stands on.
+#
+# THE COMPOSITE STANDARD HAS THREE LEGS AND ALL THREE ARE REQUIRED:
+#
+#   company    the operator's own materials confirming the project and the
+#              country. Not the town -- if the company named the town, the
+#              ordinary standard is met and this one is not needed.
+#   state      a primary of the host state naming the site. A government's own
+#              publication, not an agency's summary of it and not press relaying
+#              either.
+#   basemap    a feature carrying the operator's name, corroborating that
+#              something of theirs stands where the state says it does.
+#
+# WHY THIS IS NOT A WEAKENING. Each leg is weak where the others are strong. The
+# company knows what it is building and will not always say where; the state
+# knows where because it permitted and subsidised it; the basemap knows what is
+# physically there and nothing about who intends what. One source doing all three
+# jobs is the ordinary case; three sources doing one job each is not a lower bar,
+# it is a different one, and it is only available when no single source clears
+# the first.
+#
+# EVERY LEG IS CITED ON THE ROW, and the note says plainly that the company
+# source names no city. A reader who disagrees with the standard can see exactly
+# what it was applied to.
+SITE_EVIDENCE_KINDS = (
+    "company",      # the ordinary standard: the operator names its own site
+    "composite",    # the three legs above, all cited
+)
+
 
 # HOW EXACT A COORDINATE IS. `plant` is the works itself; `site` is a store, a
 # field or a receiving terminal, which has a position but not a street. `town`
@@ -433,6 +721,16 @@ DEFAULT_STALE_AFTER_MONTHS = 12
 # Loading
 # ---------------------------------------------------------------------------
 
+# WHICH PRINTED FIGURES A CORRECTION MAY BE PINNED TO. Closed, because the
+# whole value of a correction note is that it appears beside the figure it
+# corrects: an entry naming a figure no surface renders is a correction nobody
+# is told about, and a typo would produce exactly that in silence. Each entry is
+# `<section>.<figure>` and names something a page actually prints.
+CORRECTABLE_FIGURES = (
+    "opportunity.money_in",
+)
+
+
 _FILES = {
     "technology": ("technologies.json", "technologies"),
     "bottleneck": ("bottlenecks.json", "bottlenecks"),
@@ -441,6 +739,7 @@ _FILES = {
     "material": ("materials.json", "materials"),
     "funding": ("funding.json", "funding"),
     "ecosystem": ("ecosystems.json", "ecosystems"),
+    "correction": ("corrections.json", "corrections"),
 }
 
 
@@ -597,6 +896,9 @@ SECTOR_PRODUCT_WORDS = {
     "cement": ("clinker", "cement", "concrete", "kiln"),
     "steel": ("steel", "hot metal", "crude steel", "directly reduced iron", "DRI",
               "blast furnace", "scrap", "electric arc furnace", "EAF", "iron ore"),
+    # Both spellings of the plural are listed because the check matches a word
+    # plus an optional "s", and "batteries" is not "batterys".
+    "batsol": ("battery", "batteries", "cell", "cathode", "anode", "gigafactory"),
 }
 
 

@@ -9,24 +9,31 @@ HTML. A source-level version would have to know which expression ends up as
 anchor text in every component on the site, and would answer for the components
 it knew about.
 
-THE RULE, AND WHY IT IS THIS BLUNT
-==================================
-Anchor text may not begin with `http` and may not contain a `?`.
+THE RULE
+========
+Anchor text may not be URL-SHAPED: it may not begin with `http`, may not contain
+`://`, and may not carry a `?key=value` pair.
 
-Both halves catch the same failure, which is a link whose text is its own
-address. It reached the sector page through `title ?? url`: every source
-attached to a parameter carries no title, so the fallback ran, and the Sources
-block printed a 214-character Eurostat Comext call -- eight query parameters,
-none of them readable -- where a citation belongs. A reader could not tell from
-it what had been asked of the dataset, which is the one thing the citation is
-for.
+All three catch one failure, which is a link whose text is its own address. It
+reached the sector page through `title ?? url`: every source attached to a
+parameter carries no title, so the fallback ran, and the Sources block printed a
+214-character Eurostat Comext call -- eight query parameters, none of them
+readable -- where a citation belongs. A reader could not tell from it what had
+been asked of the dataset, which is the one thing the citation is for.
 
-The `?` half is the sharper of the two, and it is deliberately not limited to
-strings that look like URLs: a question mark in anchor text is almost always a
-query string that escaped, and a link whose text is a genuine question is rare
-enough that the day one appears is a day worth having the conversation rather
-than a day this gate should have stayed quiet. If that day comes, the fix is a
-narrow allowance with the page named in it, not a softened rule.
+THE DAY THIS RULE SAID IT WOULD COME, CAME. The `?` half used to be blunt: any
+question mark in anchor text failed, on the reasoning that a genuine question in
+a link was rare enough to be worth a conversation. The conversation is this
+paragraph. Batteries International titled a piece "Battery gigafactories --
+facing a temporary dip or a full-scale crisis?", the Italvolt row cites it, and
+the gate called a verbatim title a query string.
+
+TITLES ARE VERBATIM AND STAY. A citation quotes a publisher's title rather than
+editing it -- that rule is older than this one and it wins -- so the gate is
+narrowed to the shape it was always aiming at. A query string in prose is
+`?key=value`; a question is a sentence that ends in a mark. The narrowing does
+not soften what it was for: every URL that ever tripped this gate still trips it,
+which is what `self_check` below exists to prove on every run.
 
 The URL belongs in href. It is already there; that is what an anchor is.
 """
@@ -44,6 +51,64 @@ PAGES = ROOT / "web" / ".next" / "server" / "app"
 ANCHOR = re.compile(r"<a\b[^>]*>(.*?)</a>", re.S)
 TAG = re.compile(r"<[^>]+>")
 
+# A QUERY PAIR, which is the thing a query string is made of: a question mark,
+# a key, an equals sign. `?product=252310` matches and "a full-scale crisis?"
+# does not, because a question ends where the sentence does. The key charset is
+# what URLs actually use for one, brackets included -- Comext writes
+# `?filter[time]=2025` -- and deliberately excludes the space, so a question
+# followed by another sentence cannot be read as a pair.
+QUERY_PAIR = re.compile(r"\?[A-Za-z0-9_%.\[\]-]+=")
+
+
+def url_shaped(text: str) -> bool:
+    """Whether this reads as an address rather than as a citation.
+
+    Three tests and no fourth. A scheme at the front, a scheme separator
+    anywhere, or a query pair. Each is a thing only a URL does; none of them is
+    a thing a title does, which is the whole distinction this gate turns on.
+    """
+    lowered = text.lower()
+    return (lowered.startswith("http")
+            or "://" in lowered
+            or bool(QUERY_PAIR.search(text)))
+
+
+# WHAT THE RULE MUST AND MUST NOT CATCH, run on every invocation. A narrowed
+# rule is only as good as the cases it was narrowed against, and a gate whose
+# fixtures live in a test file nobody runs in CI is a gate that will be widened
+# again by the next person in a hurry. These run before the pages are read, so
+# a build fails on the rule before it can fail on the data.
+MUST_FAIL = [
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/DS-045409"
+    "?format=JSON&flow=1&product=252310&reporter=EU27_2020&time=2025",
+    "http://en.calb-tech.com/news_detail/5.html",
+    "www.example.org/path?flow=1",
+    "ec.europa.eu/eurostat?product=252310",
+    "HTTPS://WWW.EUFABRIC.EU/sitemap.xml",
+    "see https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02023R1542-20250731",
+]
+MUST_PASS = [
+    # The title that forced the narrowing, verbatim.
+    "Battery gigafactories — facing a temporary dip or a full-scale crisis?",
+    "What is a low-carbon product?",
+    "Hvilken plan gjelder for eiendommen min?",
+    "Who pays for the transition? A note on the green premium",
+    "Cement — Energy System",
+    "Resolución de 17 de mayo de 2023, autorización ambiental integrada",
+]
+
+
+def self_check() -> list[str]:
+    """Every fixture through the rule. Returns the failures."""
+    out = []
+    for text in MUST_FAIL:
+        if not url_shaped(text):
+            out.append(f"must fail and does not: {text[:70]!r}")
+    for text in MUST_PASS:
+        if url_shaped(text):
+            out.append(f"must pass and does not: {text[:70]!r}")
+    return out
+
 
 def text_of(anchor_inner: str) -> str:
     """What a reader reads: markup stripped, entities resolved, whitespace
@@ -54,6 +119,12 @@ def text_of(anchor_inner: str) -> str:
 
 
 def main() -> int:
+    broken = self_check()
+    if broken:
+        print(f"check_anchor_text: the rule itself is wrong ({len(broken)} fixture(s))\n")
+        print("\n".join(f"  {b}" for b in broken))
+        return 1
+
     if not PAGES.is_dir():
         print(f"check_anchor_text: no build at {PAGES.relative_to(ROOT)} — run this "
               f"after `next build`, not before it")
@@ -71,14 +142,10 @@ def main() -> int:
                 continue
             anchors += 1
             where = page.relative_to(PAGES)
-            if text.lower().startswith("http"):
+            if url_shaped(text):
                 problems.append(
                     f"{where}: anchor reads {text[:90]!r} — that is an address, not a "
                     f"citation. The URL is in href already")
-            elif "?" in text:
-                problems.append(
-                    f"{where}: anchor reads {text[:90]!r} — a query string in the text "
-                    f"of a link")
 
     if problems:
         # One page can carry the same bad anchor many times; the set is what a
@@ -92,7 +159,9 @@ def main() -> int:
         return 1
 
     print(f"check_anchor_text: OK — {anchors} anchors with text across {pages} pages, "
-          f"none of them reading out a URL")
+          f"none of them reading out a URL "
+          f"({len(MUST_FAIL)} address fixtures still caught, {len(MUST_PASS)} titles "
+          f"still allowed)")
     return 0
 
 

@@ -17,3 +17,10 @@ pymupdf>=1.24
 # library and can be debugged without a key.
 anthropic>=0.69
 pydantic>=2.7
+
+# THE GATES' OWN DEPENDENCIES ARE NOT IN THIS FILE. Everything above is needed to
+# FETCH and triage source documents, which happens on a laptop when somebody
+# ingests an act. The build gates run everywhere -- laptop, pre-push hook, Vercel
+# -- and their one dependency lives in sources/requirements-gates.txt so a
+# deployment does not have to install a PDF engine and an LLM client to check a
+# coordinate.

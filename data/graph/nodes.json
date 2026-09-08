@@ -249,7 +249,24 @@
   "label": "CO2 Standards for Cars and Vans",
   "attrs": {
    "celex": "32019R0631",
-   "status": "adopted"
+   "kind_of_act": "consolidated",
+   "status": "adopted",
+   "procedure": null,
+   "manifest_slug": "fleet",
+   "consolidated_celex": "02019R0631"
+  }
+ },
+ {
+  "id": "act:32019R0943",
+  "kind": "act",
+  "label": "32019R0943",
+  "attrs": {
+   "celex": "32019R0943",
+   "kind_of_act": "consolidated",
+   "status": "adopted",
+   "procedure": null,
+   "manifest_slug": "emd",
+   "consolidated_celex": "02019R0943"
   }
  },
  {
@@ -317,6 +334,19 @@
    "procedure": null,
    "manifest_slug": "cbam_base",
    "consolidated_celex": "02023R0956"
+  }
+ },
+ {
+  "id": "act:32023R1542",
+  "kind": "act",
+  "label": "32023R1542",
+  "attrs": {
+   "celex": "32023R1542",
+   "kind_of_act": "consolidated",
+   "status": "adopted",
+   "procedure": null,
+   "manifest_slug": "battery",
+   "consolidated_celex": "02023R1542"
   }
  },
  {
@@ -443,6 +473,46 @@
    "status": "not_adopted",
    "placeholder": true,
    "note": "The IAA applies low-carbon requirements but leaves the thresholds to delegated acts under Regulation (EU) 2024/1781 (ESPR) and Regulation (EU) 2024/3110 (CPR) that have not been adopted. This node stands in for them so the dependency is visible; it carries no CELEX because there is nothing yet to cite."
+  }
+ },
+ {
+  "id": "bottleneck:batsol-cathode-dependence",
+  "kind": "bottleneck",
+  "label": "Cell capacity without the materials behind it",
+  "attrs": {
+   "transition": "supply_security",
+   "type": "infrastructure",
+   "sector": "batsol"
+  }
+ },
+ {
+  "id": "bottleneck:batsol-cell-cost-gap",
+  "kind": "bottleneck",
+  "label": "European cells against imported cells",
+  "attrs": {
+   "transition": "supply_security",
+   "type": "market",
+   "sector": "batsol"
+  }
+ },
+ {
+  "id": "bottleneck:batsol-demand-uncertainty",
+  "kind": "bottleneck",
+  "label": "Committing capacity against uncertain vehicle demand",
+  "attrs": {
+   "transition": "supply_security",
+   "type": "market",
+   "sector": "batsol"
+  }
+ },
+ {
+  "id": "bottleneck:batsol-ramp-and-yield",
+  "kind": "bottleneck",
+  "label": "Ramping a cell line to yield",
+  "attrs": {
+   "transition": "supply_security",
+   "type": "technical",
+   "sector": "batsol"
   }
  },
  {
@@ -1002,6 +1072,30 @@
   }
  },
  {
+  "id": "funding:germany-ipcei-tesla-gruenheide",
+  "kind": "funding",
+  "label": "German IPCEI aid withdrawn — Tesla Grünheide cell plant (CARB-FREE)",
+  "attrs": {
+   "instrument": "ipcei",
+   "programme": "IPCEI European Battery Innovation (EuBatIn) — German participation, project CARB-FREE",
+   "status": "withdrawn",
+   "date": "2021-11-26",
+   "country": "DE"
+  }
+ },
+ {
+  "id": "funding:germany-northvolt-drei",
+  "kind": "funding",
+  "label": "German State aid — Northvolt Drei",
+  "attrs": {
+   "instrument": "state_aid",
+   "programme": "German federal and Schleswig-Holstein aid",
+   "status": "approved",
+   "date": "2024-01-08",
+   "country": "DE"
+  }
+ },
+ {
   "id": "funding:germany-tkh2steel",
   "kind": "funding",
   "label": "German federal and state funding — tkH2Steel",
@@ -1011,6 +1105,42 @@
    "status": "approved",
    "date": "2023-07-20",
    "country": "DE"
+  }
+ },
+ {
+  "id": "funding:innovation-fund-46ineu",
+  "kind": "funding",
+  "label": "Innovation Fund grant — 46inEU",
+  "attrs": {
+   "instrument": "grant",
+   "programme": "EU Innovation Fund",
+   "status": "signed",
+   "date": "2025-07-04",
+   "country": "PL"
+  }
+ },
+ {
+  "id": "funding:innovation-fund-accept",
+  "kind": "funding",
+  "label": "Innovation Fund grant — ACCEPT",
+  "attrs": {
+   "instrument": "grant",
+   "programme": "EU Innovation Fund",
+   "status": "signed",
+   "date": "2025-07-04",
+   "country": "FR"
+  }
+ },
+ {
+  "id": "funding:innovation-fund-agathe",
+  "kind": "funding",
+  "label": "Innovation Fund grant — AGATHE",
+  "attrs": {
+   "instrument": "grant",
+   "programme": "EU Innovation Fund",
+   "status": "signed",
+   "date": "2025-07-04",
+   "country": "FR"
   }
  },
  {
@@ -1059,6 +1189,30 @@
    "status": "approved",
    "date": "2024-05-16",
    "country": "BE"
+  }
+ },
+ {
+  "id": "funding:innovation-fund-ifestos",
+  "kind": "funding",
+  "label": "Innovation Fund grant — IFESTOS",
+  "attrs": {
+   "instrument": "grant",
+   "programme": "EU Innovation Fund",
+   "status": "signed",
+   "date": "2024-01-01",
+   "country": "GR"
+  }
+ },
+ {
+  "id": "funding:innovation-fund-novo-one",
+  "kind": "funding",
+  "label": "Innovation Fund grant — NOVO One",
+  "attrs": {
+   "instrument": "grant",
+   "programme": "EU Innovation Fund",
+   "status": "signed",
+   "date": "2025-07-04",
+   "country": "SE"
   }
  },
  {
@@ -1125,6 +1279,19 @@
   }
  },
  {
+  "id": "material:cobalt",
+  "kind": "material",
+  "label": "Cobalt",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
   "id": "material:directly-reduced-iron",
   "kind": "material",
   "label": "Directly reduced iron",
@@ -1164,6 +1331,71 @@
   }
  },
  {
+  "id": "material:lithium",
+  "kind": "material",
+  "label": "Lithium",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "material:manganese",
+  "kind": "material",
+  "label": "Manganese",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "material:natural-graphite",
+  "kind": "material",
+  "label": "Natural graphite",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "material:nickel",
+  "kind": "material",
+  "label": "Nickel",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "material:sodium",
+  "kind": "material",
+  "label": "Sodium",
+  "attrs": {
+   "type": "feedstock",
+   "cn_code": null,
+   "prodcom_code": null,
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
   "id": "material:steel-scrap",
   "kind": "material",
   "label": "Steel scrap",
@@ -1174,6 +1406,214 @@
    "sectors": [
     "steel"
    ]
+  }
+ },
+ {
+  "id": "measure:battery:BP-01",
+  "kind": "measure",
+  "label": "Give each LMT, larger industrial and electric vehicle battery an electronic record carrying the Annex XIII information, accessible through the QR code on the battery.",
+  "attrs": {
+   "register_id": "BP-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 77(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:CF-01",
+  "kind": "measure",
+  "label": "Draw up a carbon footprint declaration for each battery model per manufacturing site, giving the site's geographic location and the battery's carbon footprint in kg CO2-equivalent per kWh delivered over its service life.",
+  "attrs": {
+   "register_id": "CF-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 7(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:DD-01",
+  "kind": "measure",
+  "label": "Set up and implement a battery due diligence policy covering the raw materials in the battery and the social and environmental risks in their supply chain.",
+  "attrs": {
+   "register_id": "DD-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 48(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:DD-02",
+  "kind": "measure",
+  "label": "Have the battery due diligence policy verified by a notified body and periodically audited by it, and hold the audit report.",
+  "attrs": {
+   "register_id": "DD-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 48(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:DD-03",
+  "kind": "measure",
+  "label": "Comply with the battery due diligence obligations in Chapter VII.",
+  "attrs": {
+   "register_id": "DD-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "rem",
+   "article": "Art. 47",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:EPR-01",
+  "kind": "measure",
+  "label": "Carry extended producer responsibility for every battery first made available on a Member State's market, including the cost of collection, treatment and recycling.",
+  "attrs": {
+   "register_id": "EPR-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 56(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:FM-01",
+  "kind": "measure",
+  "label": "FM-01",
+  "attrs": {
+   "register_id": "FM-01",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 4(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:GPP-01",
+  "kind": "measure",
+  "label": "Take account of the life-cycle environmental impacts of batteries when procuring batteries or products containing them.",
+  "attrs": {
+   "register_id": "GPP-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 85(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:battery:LAB-01",
+  "kind": "measure",
+  "label": "Bear a label carrying the general information on batteries set out in Part A of Annex VI.",
+  "attrs": {
+   "register_id": "LAB-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 13(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:MAN-01",
+  "kind": "measure",
+  "label": "Draw up the Annex VIII technical documentation and carry out, or have carried out, the conformity assessment procedure before placing a battery on the market.",
+  "attrs": {
+   "register_id": "MAN-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 38(2)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:PEN-01",
+  "kind": "measure",
+  "label": "Lay down and notify rules on penalties for infringements of this Regulation, and take the measures necessary to ensure they are applied.",
+  "attrs": {
+   "register_id": "PEN-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 93",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:battery:RC-01",
+  "kind": "measure",
+  "label": "Accompany the battery with documentation stating the percentage of cobalt, lithium or nickel in active materials recovered from battery manufacturing waste or post-consumer waste, and the percentage of lead recovered from waste, per model per year per manufacturing site.",
+  "attrs": {
+   "register_id": "RC-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 8(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:REC-01",
+  "kind": "measure",
+  "label": "Do not dispose of collected waste batteries or send them for energy recovery.",
+  "attrs": {
+   "register_id": "REC-01",
+   "provision_id": null,
+   "measure_type": "prohibition",
+   "direction": "add",
+   "article": "Art. 70(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:REM-01",
+  "kind": "measure",
+  "label": "Ensure a portable battery in a product placed on the market is readily removable and replaceable by the end-user, using commercially available tools, at any time in the product's life.",
+  "attrs": {
+   "register_id": "REM-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 11(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:SUB-01",
+  "kind": "measure",
+  "label": "Do not place on the market a battery containing a substance restricted by Annex I otherwise than on the conditions that Annex sets.",
+  "attrs": {
+   "register_id": "SUB-01",
+   "provision_id": null,
+   "measure_type": "prohibition",
+   "direction": "add",
+   "article": "Art. 6(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:battery:SUP-01",
+  "kind": "measure",
+  "label": "Supply, free of charge, the information and documentation a battery manufacturer needs to comply with this Regulation when supplying it cells or modules.",
+  "attrs": {
+   "register_id": "SUP-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 39",
+   "addressee_class": "business"
   }
  },
  {
@@ -3140,6 +3580,97 @@
   }
  },
  {
+  "id": "measure:emd:DES-01",
+  "kind": "measure",
+  "label": "Where such a scheme is applied, keep it within what is necessary to meet the objective cost-effectively and limit it to NEW investment in non-fossil flexibility resources such as demand side response and energy storage.",
+  "attrs": {
+   "register_id": "DES-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 19h(a) and (b)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:emd:FLEX-01",
+  "kind": "measure",
+  "label": "Adopt, every two years, a report on the estimated national flexibility needs for at least the next 5 to 10 years.",
+  "attrs": {
+   "register_id": "FLEX-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 19e(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:emd:FLEX-02",
+  "kind": "measure",
+  "label": "Consider, in that report, the potential of non-fossil flexibility resources — demand response and energy storage — to meet the flexibility needs, at both transmission and distribution level.",
+  "attrs": {
+   "register_id": "FLEX-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 19e(2)(b)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:emd:FLEX-03",
+  "kind": "measure",
+  "label": "Provide the data and analyses needed for the flexibility-needs report, in the type and format defined by ENTSO-E and the EU DSO entity.",
+  "attrs": {
+   "register_id": "FLEX-03",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 19e(3)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:emd:OBJ-01",
+  "kind": "measure",
+  "label": "Define an indicative national objective for non-fossil flexibility, stating the specific contributions of demand response and of energy storage to it, and reflect it in the integrated national energy and climate plan and progress reports.",
+  "attrs": {
+   "register_id": "OBJ-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 19f",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:emd:SUP-01",
+  "kind": "measure",
+  "label": "SUP-01",
+  "attrs": {
+   "register_id": "SUP-01",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 19g(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:emd:SUP-02",
+  "kind": "measure",
+  "label": "Consider adapting the design of an existing capacity mechanism to promote the participation of non-fossil flexibility, including demand side response and energy storage.",
+  "attrs": {
+   "register_id": "SUP-02",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 19g(1), second sentence",
+   "addressee_class": "state"
+  }
+ },
+ {
   "id": "measure:ets:AVI-01",
   "kind": "measure",
   "label": "AVI-01",
@@ -3799,6 +4330,84 @@
    "measure_type": "obligation",
    "direction": "rem",
    "article": "Art. 1(23), inserting Art. 12b(1) of Directive 2003/87/EC",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:fleet:DER-01",
+  "kind": "measure",
+  "label": "DER-01",
+  "attrs": {
+   "register_id": "DER-01",
+   "provision_id": null,
+   "measure_type": "right",
+   "direction": "add",
+   "article": "Art. 10(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:fleet:MON-01",
+  "kind": "measure",
+  "label": "Record and report to the Commission, for each calendar year, the registration information for every new passenger car and light commercial vehicle.",
+  "attrs": {
+   "register_id": "MON-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 7(1)",
+   "addressee_class": "state"
+  }
+ },
+ {
+  "id": "measure:fleet:PREM-01",
+  "kind": "measure",
+  "label": "Pay an excess emissions premium of EUR 95 per gram per kilometre of exceedance, multiplied by the number of newly registered vehicles.",
+  "attrs": {
+   "register_id": "PREM-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 8(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:fleet:TGT-01",
+  "kind": "measure",
+  "label": "Ensure the manufacturer's average specific CO2 emissions do not exceed its specific emissions target for the calendar year.",
+  "attrs": {
+   "register_id": "TGT-01",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 4(1)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:fleet:TGT-2030",
+  "kind": "measure",
+  "label": "Meet an EU fleet-wide target of a 55% reduction on the 2021 baseline for new passenger cars, and 50% for new light commercial vehicles.",
+  "attrs": {
+   "register_id": "TGT-2030",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(5)",
+   "addressee_class": "business"
+  }
+ },
+ {
+  "id": "measure:fleet:TGT-2035",
+  "kind": "measure",
+  "label": "Meet an EU fleet-wide target of a 100% reduction on the 2021 baseline for new passenger cars from 2035.",
+  "attrs": {
+   "register_id": "TGT-2035",
+   "provision_id": null,
+   "measure_type": "obligation",
+   "direction": "add",
+   "article": "Art. 1(5a)",
    "addressee_class": "business"
   }
  },
@@ -7417,6 +8026,39 @@
   }
  },
  {
+  "id": "parameter:46ineu-grant",
+  "kind": "parameter",
+  "label": "Innovation Fund grant — 46inEU",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2025-12-01"
+  }
+ },
+ {
+  "id": "parameter:accept-grant",
+  "kind": "parameter",
+  "label": "Innovation Fund grant — ACCEPT",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2025-05-01"
+  }
+ },
+ {
+  "id": "parameter:agathe-grant",
+  "kind": "parameter",
+  "label": "Innovation Fund grant — AGATHE",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2025-05-01"
+  }
+ },
+ {
   "id": "parameter:am-germany-subsidy-declined",
   "kind": "parameter",
   "label": "ArcelorMittal Bremen and Eisenhüttenstadt — German subsidies declined",
@@ -7714,6 +8356,17 @@
   }
  },
  {
+  "id": "parameter:ifestos-grant",
+  "kind": "parameter",
+  "label": "IFESTOS — EU Innovation Fund grant",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:kamari",
+   "confidence": "primary",
+   "date_of_value": "2026-08-18"
+  }
+ },
+ {
   "id": "parameter:k6-state-funding",
   "kind": "parameter",
   "label": "K6 Lumbres — French state funding, phase one",
@@ -7744,6 +8397,28 @@
    "scope": "global",
    "confidence": "estimate",
    "date_of_value": "2025"
+  }
+ },
+ {
+  "id": "parameter:northvolt-drei-state-aid",
+  "kind": "parameter",
+  "label": "Northvolt Drei — German State aid, Commission approval",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:heide",
+   "confidence": "primary",
+   "date_of_value": "2024-01-08"
+  }
+ },
+ {
+  "id": "parameter:novo-one-grant",
+  "kind": "parameter",
+  "label": "Innovation Fund grant — NOVO One",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "eu",
+   "confidence": "primary",
+   "date_of_value": "2025-12-01"
   }
  },
  {
@@ -7876,13 +8551,125 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/618631514",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=ArcelorMittal Dunkerque; landuse=industrial; man_made=works; operator=ArcelorMittal; product=steel",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:acc-billy-berclau",
+  "kind": "project",
+  "label": "ACC Billy-Berclau Douvrin",
+  "attrs": {
+   "company": "Automotive Cells Company",
+   "plant": "Billy-Berclau/Douvrin",
+   "country": "FR",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Billy-Berclau/Douvrin gigafactory",
+     "lat": 50.5186,
+     "lon": 2.8485,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1196306304",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Gigafactory ACC; landuse=industrial; man_made=works",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:acc-kaiserslautern",
+  "kind": "project",
+  "label": "ACC Kaiserslautern",
+  "attrs": {
+   "company": "Automotive Cells Company",
+   "plant": "Kaiserslautern",
+   "country": "DE",
+   "status": "cancelled",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [],
+   "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. It was on standby from May 2024 and never left it; nothing was built, and the basemap sweep of the Kaiserslautern industrial area returns the Opel works as numbered halls and nothing naming ACC. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked."
+  }
+ },
+ {
+  "id": "project:acc-termoli",
+  "kind": "project",
+  "label": "ACC Termoli",
+  "attrs": {
+   "company": "Automotive Cells Company",
+   "plant": "Termoli",
+   "country": "IT",
+   "status": "cancelled",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Termoli works",
+     "lat": 41.9553,
+     "lon": 15.0031,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/77616014",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Stellantis - Termoli 1; building=industrial; man_made=works",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The gigafactory was to be built on the existing Stellantis Termoli site; the polygon is that works. Three adjacent polygons carry the site, way/77615859 and way/77616015 being the others."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:agratas-bridgwater",
+  "kind": "project",
+  "label": "Agratas Bridgwater",
+  "attrs": {
+   "company": "Agratas",
+   "plant": "Bridgwater",
+   "country": "GB",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Gravity, Puriton",
+     "lat": 51.177,
+     "lon": -2.9549,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/125139808",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Agratas Battery Factory; landuse=construction; construction=commercial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "Found by bounding-box query rather than by name search: the feature is not indexed under Gravity, Puriton or the Smart Campus."
+    }
+   ],
+   "location_note": null
   }
  },
  {
@@ -7905,6 +8692,7 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/3942800",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Stahlwerke Bremen; landuse=industrial",
       "licence": "ODbL 1.0"
@@ -7919,13 +8707,15 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/41196685",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=ArcelorMittal; landuse=industrial",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
   }
  },
  {
@@ -7948,13 +8738,15 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/196776675",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Девня Цимент АД; landuse=industrial",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
   }
  },
  {
@@ -7977,13 +8769,87 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/1437635",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Norcem; landuse=industrial; industrial=cement",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:britishvolt-blyth",
+  "kind": "project",
+  "label": "Britishvolt Blyth",
+  "attrs": {
+   "company": "Britishvolt",
+   "plant": "Cambois, Blyth",
+   "country": "GB",
+   "status": "cancelled",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [],
+   "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. The company went into administration in January 2023 and is now in liquidation; nothing was built on the Cambois site and what stands there now is somebody else's project. THE POSITION IS KNOWN TO BE FINDABLE AND IS NOT BEING FOUND: Northumberland's permit 21/00818/FULES names the parcel — 'Land At Former Power Station Site On Northern Side Of Cambois', 92.2 hectares — and the committee report that carries it refuses this pipeline. A person could open it in a minute. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked."
+  }
+ },
+ {
+  "id": "project:calb-sines",
+  "kind": "project",
+  "label": "CALB Sines",
+  "attrs": {
+   "company": "CALB",
+   "plant": "Sines",
+   "country": "PT",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "ZILS Lote 1A3.3, Sines",
+     "lat": 37.9871,
+     "lon": -8.7974,
+     "precision": "plant",
+     "retrieved_date": "2026-09-05",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1262719042",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Construção da Unidade Industrial de Baterias de Lítio da CALB; official_name=Calb Europe, S.A.; landuse=construction; construction=industrial; addr:street=ZILS; addr:housenumber=Lote 1A3.3; addr:city=Sines; addr:postcode=7520-064",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The point is the area-weighted centroid of the plot polygon, which carries the operator's own name and the ZILS lot number. The basemap still has it as landuse=construction, which matches the status here.",
+     "site_evidence": {
+      "kind": "composite",
+      "note": "THE COMPANY SOURCE NAMES NO CITY. CALB's own groundbreaking release says the works is in Portugal and stops there — no town, no lot, no capacity — which is the same shape as Sunwoda's 'Hungary' and is why the ordinary company-only standard cannot confirm this site. All three legs are cited so a reader who disagrees with the standard can see what it was applied to. AICEP, the Portuguese state's investment agency, announced the same investment and is named here rather than cited: the state leg is the Government's own briefing room, not an agency's summary of it.",
+      "company": {
+       "url": "http://en.calb-tech.com/news_detail/5.html",
+       "publisher": "CALB Group Co., Ltd.",
+       "date": "2025-02-27",
+       "verbatim": "On February 24, local time, construction commenced on CALB's Portugal facility, which will be a zero-carbon AI gigafactory with delivery expected in 2027.",
+       "note": "Confirms the project, the country and the build start, and names neither the town nor the site. The host's certificate does not match its own name, so https fails and the page serves over plain http, which is how check_links reaches it. It was opened in a browser as well, and the filed copy is byte-for-byte the page this URL serves.",
+       "retrieved_manually": "sources/manual/calb-sines--calb-sines-groundbreaking.html"
+      },
+      "state": {
+       "url": "https://portugal.gov.pt/gc24/comunicacao/noticias/fabrica-de-ultima-geracao-de-baterias-de-litio-lancada-em-sines",
+       "publisher": "Government of Portugal — XXIV Governo Constitucional",
+       "date": "2025-02-24",
+       "verbatim": "O Ministro da Economia, Pedro Reis, esteve presente na cerimónia de lançamento do projeto de uma nova fábrica de baterias de lítio em Sines da CALB.",
+       "note": "The Government's own briefing room names the town, the company and the product, and puts its economy minister at the launch the company's release describes without locating. The same page states the capacity: 'Assim que estiver operacional, a fábrica de última geração de baterias de lítio em Sines terá capacidade de produção de 15 GWh de armazenamento de energia.'"
+      },
+      "basemap": {
+       "url": "https://www.openstreetmap.org/way/1262719042",
+       "publisher": "OpenStreetMap contributors",
+       "verbatim": "name=Construção da Unidade Industrial de Baterias de Lítio da CALB; official_name=Calb Europe, S.A.; addr:street=ZILS; addr:housenumber=Lote 1A3.3; addr:city=Sines",
+       "note": "A plot under construction carrying the operator's own name and its Portuguese company name, at a numbered lot in the Sines industrial and logistics zone the state names."
+      }
+     }
+    }
+   ],
+   "location_note": null
   }
  },
  {
@@ -8006,13 +8872,298 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/29202456",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Zementwerk Lägerdorf; landuse=industrial; industrial=cement; operator=Holcim (Deutschland) GmbH; addr:street=Sandweg; addr:housenumber=10",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:catl-arnstadt",
+  "kind": "project",
+  "label": "CATL Arnstadt",
+  "attrs": {
+   "company": "Contemporary Amperex Technology Thuringia",
+   "plant": "Arnstadt",
+   "country": "DE",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Arnstadt cell works",
+     "lat": 50.8611,
+     "lon": 10.9502,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/776264491",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=CATL Werk G1; man_made=works; operator=Contemporary Amperex Technology Thuringia AG",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The polygon is the G1 building; CATL states the first cells came off a line in G2 on the same site, for which the basemap carries no separate outline."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:catl-debrecen",
+  "kind": "project",
+  "label": "CATL Debrecen",
+  "attrs": {
+   "company": "Contemporary Amperex Technology",
+   "plant": "Debrecen",
+   "country": "HU",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Debrecen Southern Industrial Park",
+     "lat": 47.4632,
+     "lon": 21.6201,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/relation/18559299",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=CATL akkumulátorgyár; landuse=construction",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The basemap still carries the site as landuse=construction, which matches its status here."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:catl-stellantis-zaragoza",
+  "kind": "project",
+  "label": "CATL and Stellantis Zaragoza",
+  "attrs": {
+   "company": "Automotive Cells Zaragoza (CATL and Stellantis joint venture)",
+   "plant": "Zaragoza",
+   "country": "ES",
+   "status": "announced",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Zaragoza works, Figueruelas",
+     "lat": 41.7523,
+     "lon": -1.1792,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/134929549",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Opel España de Automóviles; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The joint venture site is Stellantis' Zaragoza works at Figueruelas, which the basemap still names for its former operator."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:envision-aesc-douai",
+  "kind": "project",
+  "label": "AESC Douai",
+  "attrs": {
+   "company": "AESC",
+   "plant": "Douai",
+   "country": "FR",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Douai gigafactory",
+     "lat": 50.3556,
+     "lon": 3.0266,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1547499346",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Envision AESC; man_made=works",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:envision-aesc-extremadura",
+  "kind": "project",
+  "label": "AESC Navalmoral de la Mata",
+  "attrs": {
+   "company": "AESC",
+   "plant": "Navalmoral de la Mata",
+   "country": "ES",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Parcela I-67, Polígono Industrial Expacionavalmoral",
+     "lat": 39.9152,
+     "lon": -5.5116,
+     "precision": "plant",
+     "retrieved_date": "2026-09-05",
+     "grid_reference": {
+      "system": "ETRS89 / UTM 30N",
+      "easting": 285333,
+      "northing": 4421360
+     },
+     "source": {
+      "url": "https://doe.juntaex.es/pdfs/doe/2023/970o/xml/2023061930.xml",
+      "type": "permit",
+      "publisher": "Diario Oficial de Extremadura — Dirección General de Sostenibilidad, Junta de Extremadura",
+      "verbatim": "La instalación industrial se ubicará en el Polígono Industrial Expacionavalmoral, del término municipal de Navalmoral de la Mata (Cáceres). Las coordenadas geográficas representativas de la instalación son: X: 285.333; Y: 4.421.360; ETRS89, huso 30.",
+      "note": "THE PERMIT IS THE SOURCE OF THE POSITION AND NO BASEMAP FEATURE IS. The integrated environmental authorisation of 17 May 2023 for Envision AESC Spain SL states the installation's representative coordinates and names the cadastral parcel — 'parcela catastral I-67' — on a plot of 1 088 211 m². The stored latitude and longitude are RECOMPUTED from the easting and northing by sources/utm.py on every build, so the conversion cannot be done once by hand and quietly adjusted. Corroboration and not placement: the point falls 152 m outside the mapped edge of the 'Expacio Navalmoral' industrial estate, which is the park the permit names and whose polygon covers what was already built there — an estate is refused as a position on this platform, so it stands here as a check on the arithmetic rather than as the source."
+     },
+     "confidence": "secondary"
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:envision-aesc-sunderland",
+  "kind": "project",
+  "label": "AESC Sunderland",
+  "attrs": {
+   "company": "AESC",
+   "plant": "Sunderland",
+   "country": "GB",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "IAMP, Sunderland",
+     "lat": 54.9221,
+     "lon": -1.4837,
+     "precision": "plant",
+     "retrieved_date": "2026-09-04",
+     "grid_reference": {
+      "system": "OSGB36",
+      "easting": 433189,
+      "northing": 558718,
+      "note": "The centroid of the 61 emission-point positions the report lists for this installation, each given to the millimetre — VOC 04 at E 433151.055, N 558774.146 and so on. Computed from the document's own numbers rather than from the block they fall in, because the stacks ARE the installation: they span E 433070–433459 by N 558555–558868, and their centroid is the one point in that spread the document itself supports. Converted by sources/osgb36.py and recomputed by the gate."
+     },
+     "source": {
+      "url": "https://www.sunderland.gov.uk/media/35770/4-Envision-AESC-Installation-Details-Process-Description-300168590-ES-001/pdf/4._Envision_AESC-_Installation_Details___Process_Description-300168590-ES-001.pdf",
+      "type": "permit",
+      "publisher": "TÜV Rheinland Industrial Services for Envision AESC UK Ltd, environmental-permit application to Sunderland City Council, ref 300168590-ES-001",
+      "verbatim": "The Installation consists of a single, three-storey industrial unit (main factory building) that is to house a capacity electrode and battery manufacturing facility with a maximum capacity of up to 9 GWh / annum, split across two battery manufacturing plants separated by a central spine of offices.",
+      "date": "2023-09-26",
+      "retrieved_manually": "sources/manual/envision-aesc-sunderland--installation-details-300168590-ES-001.pdf",
+      "refused_declared_reader": {
+       "last_verified": "2026-09-04",
+       "by": "George Christopoulos",
+       "note": "Sunderland City Council serves the permit document to a browser and answers 403 to a declared automated reader. Retrieved by hand and filed; the 70-page report the row quotes is in sources/manual/."
+      }
+     },
+     "confidence": "secondary",
+     "note": "The permit places the point and no basemap feature does. The report puts the site 'to the west of the A19, and to the south of the River Don', which the converted position agrees with. An unnamed landuse=construction polygon sits about 100 m away and the IAMP estate about 550 m away; both corroborate and neither places it."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:eve-power-debrecen",
+  "kind": "project",
+  "label": "EVE Power Debrecen",
+  "attrs": {
+   "company": "EVE Power",
+   "plant": "Debrecen",
+   "country": "HU",
+   "status": "announced",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Debrecen 0237/405, Északnyugati Gazdasági Övezet",
+     "lat": 47.5806,
+     "lon": 21.5154,
+     "precision": "plant",
+     "retrieved_date": "2026-09-07",
+     "grid_reference": {
+      "system": "HD72 / EOV",
+      "easting": 835619,
+      "northing": 251450,
+      "note": "The applicant's own stated central coordinate of the installation, not a point computed from anything. The same document gives the polygon that encloses the works as nine EOV corners; the central pair falls inside it, and the polygon's area comes to 450 022 m² against the 450 000 m² the document states for the site. Converted by sources/eov.py, which names EPSG:23700 and asks pyproj rather than reimplementing a double projection, and recomputed by the gate on every build."
+     },
+     "source": {
+      "url": "https://miakoegyesulet.hu/wp-content/uploads/2025/05/EVE_Power_Hungary_osszevont_KHV_IPPC_anonim.pdf",
+      "type": "permit",
+      "publisher": "Eve Power Hungary Kft., combined environmental impact assessment and integrated environmental permit application to the Hajdú-Bihar County Government Office (anonymised copy)",
+      "verbatim": "Tervezési terület helyrajzi száma Debrecen, 0237/405 … Telephely területe 450 000 m2 … Központi EOV koordináták EOV Y: 835619 EOV X: 251450",
+      "date": "2025-05",
+      "hosted_copy": {
+       "host": "Mi a Kő? Egyesület",
+       "host_url": "https://miakoegyesulet.hu/wp-content/uploads/2025/05/EVE_Power_Hungary_osszevont_KHV_IPPC_anonim.pdf",
+       "retrieved_date": "2026-09-07",
+       "sha256": "d91a2a7bc266126653eaa5c1588d0ea5fd4612be2c7555d53de343e5c21a5d0d",
+       "label": "hosted copy"
+      },
+      "note": "THE AUTHOR IS THE APPLICANT AND THE HOST IS A CAMPAIGN GROUP. The county government office publishes its notices to a browser and not to a reader like this one, so the authority's own decision could not be retrieved; the submission it decided on could, from an environmental association that keeps a copy. The document names the applicant (Eve Power Hungary Kft., company register 09-09-035942, seat 4025 Debrecen, Barna utca 23), names the procedure and the office that runs it, and is internally consistent on the site: parcel, central coordinate, corner list and stated area all agree. The seat is an office address and is refused as a works position, as everywhere else here."
+     },
+     "confidence": "secondary",
+     "note": "Corroboration and not placement: the point sits in Debrecen's north-western economic zone beside the BMW plant, which is where the reporting of this project puts it, and 15 km from CATL's Debrecen works in the southern park, which is a different project on a different parcel."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:farasis-bitterfeld",
+  "kind": "project",
+  "label": "Farasis Bitterfeld-Wolfen",
+  "attrs": {
+   "company": "Farasis Energy",
+   "plant": "Bitterfeld-Wolfen",
+   "country": "DE",
+   "status": "paused",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [],
+   "location_note": "LOCATION NOT SOUGHT: PROJECT PAUSED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. Nothing was ever built on the Solar Valley plot, the town has taken its urban development contract back, and the company has postponed rather than ended the project. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked."
+  }
+ },
+ {
+  "id": "project:freyr-mo-i-rana",
+  "kind": "project",
+  "label": "T1 Energy Giga Arctic",
+  "attrs": {
+   "company": "T1 Energy",
+   "plant": "Mo i Rana",
+   "country": "NO",
+   "status": "cancelled",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [],
+   "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. The company that was building it is now a solar manufacturer with a different name, and its European battery assets are held for sale; part of the Giga Arctic site is being rezoned for a data centre. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked."
   }
  },
  {
@@ -8042,7 +9193,8 @@
      "confidence": "secondary",
      "note": "The field's own position, in 35 m of water. The onshore and offshore pipeline that would reach it from Devnya is not built and has no published route."
     }
-   ]
+   ],
+   "location_note": null
   }
  },
  {
@@ -8065,6 +9217,7 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/231449793",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Zementwerk Milke; man_made=works; product=cement; addr:street=Bürener Straße; addr:housenumber=46; addr:postcode=59590",
       "licence": "ODbL 1.0"
@@ -8078,7 +9231,40 @@
      },
      "note": "The works has two sections, Elsa and Milke; the company gives Bürener Straße 46 as the plant address and that is the point taken."
     }
-   ]
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:gib-surany",
+  "kind": "project",
+  "label": "Gotion InoBat Batteries Šurany",
+  "attrs": {
+   "company": "Gotion InoBat Batteries",
+   "plant": "Šurany",
+   "country": "SK",
+   "status": "announced",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Šurany gigafactory",
+     "lat": 48.0686,
+     "lon": 18.1629,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1445839308",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "landuse=construction; construction=industrial; operator=GIB EnergyX Slovakia",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The polygon carries no name and is identified by its operator tag, GIB EnergyX Slovakia, which is the joint venture's Slovak entity."
+    }
+   ],
+   "location_note": null
   }
  },
  {
@@ -8101,13 +9287,15 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/10785798",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Holcim (Cimenterie d'Obourg); landuse=industrial",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
   }
  },
  {
@@ -8130,13 +9318,15 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/11365499",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=VOEST-Alpine Donawitz; landuse=industrial; operator=Voestalpine Schienen GmbH",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
   }
  },
  {
@@ -8159,6 +9349,7 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/28854956",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Finanz- und Vertriebszentrum; addr:street=voestalpine-Straße; addr:housenumber=3; addr:postcode=4020; addr:city=Linz",
       "licence": "ODbL 1.0"
@@ -8172,7 +9363,8 @@
      },
      "note": "The works spans roughly two kilometres; the point is its registered address inside the site, not the centre of the plant area."
     }
-   ]
+   ],
+   "location_note": null
   }
  },
  {
@@ -8195,6 +9387,7 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/847533124",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Hybrit",
       "licence": "ODbL 1.0"
@@ -8202,7 +9395,8 @@
      "confidence": "secondary",
      "note": "The pilot stands beside SSAB's Luleå works on Svartön."
     }
-   ]
+   ],
+   "location_note": null
   }
  },
  {
@@ -8225,6 +9419,7 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/188683552",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=ΤΙΤΑΝ Καμάρι; landuse=industrial; industrial=factory",
       "licence": "ODbL 1.0"
@@ -8232,7 +9427,40 @@
      "confidence": "secondary",
      "note": "Global Energy Monitor independently gives 38.129588, 23.526606 for the same works."
     }
-   ]
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:italvolt-scarmagno",
+  "kind": "project",
+  "label": "Italvolt Scarmagno",
+  "attrs": {
+   "company": "Italvolt",
+   "plant": "Scarmagno",
+   "country": "IT",
+   "status": "cancelled",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Former Olivetti works, Scarmagno",
+     "lat": 45.46,
+     "lon": 7.876,
+     "precision": "plant",
+     "retrieved_date": "2026-09-03",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/162150670",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Officine Olivetti; man_made=works; building=yes",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The basemap carries the site under its historic name. Italvolt's own release identifies the land as 'the municipality of Scarmagno … where the former Olivetti factory stood', which is what ties the two together."
+    }
+   ],
+   "location_note": null
   }
  },
  {
@@ -8255,13 +9483,108 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/670671322",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Cimenterie de Lumbres; landuse=industrial; operator=EQIOM - a CRH Company; addr:street=Rue Jean-Baptiste Macaud; addr:postcode=62380",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:lges-wroclaw",
+  "kind": "project",
+  "label": "LG Energy Solution Wrocław",
+  "attrs": {
+   "company": "LG Energy Solution",
+   "plant": "Wrocław",
+   "country": "PL",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Wrocław cell works",
+     "lat": 51.0205,
+     "lon": 16.886,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/922173635",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=LG Energy Solution Wrocław; man_made=works; product=car_battery",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:lyten-heide",
+  "kind": "project",
+  "label": "Northvolt Drei",
+  "attrs": {
+   "company": "Northvolt Drei Project GmbH",
+   "plant": "Heide",
+   "country": "DE",
+   "status": "paused",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Heide gigafactory",
+     "lat": 54.1953,
+     "lon": 9.0547,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1238083686",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Batteriefabrik Northvolt Drei",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:morrow-arendal",
+  "kind": "project",
+  "label": "Morrow Cell Factory",
+  "attrs": {
+   "company": "Morrow Batteries",
+   "plant": "Arendal",
+   "country": "NO",
+   "status": "cancelled",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Arendal cell works",
+     "lat": 58.5004,
+     "lon": 8.803,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1308751286",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Morrow batteries; building=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ],
+   "location_note": null
   }
  },
  {
@@ -8284,6 +9607,7 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/4777286",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Naturgassparken; landuse=industrial",
       "licence": "ODbL 1.0"
@@ -8291,7 +9615,118 @@
      "confidence": "secondary",
      "note": "The mark is the onshore terminal where the ships unload. The store itself is the Aurora reservoir 2,600 m under the seabed, about 100 km further out; no source read here publishes its position, so it is not a second site."
     }
-   ]
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:northvolt-ett-skelleftea",
+  "kind": "project",
+  "label": "Northvolt Ett",
+  "attrs": {
+   "company": "Lyten",
+   "plant": "Skellefteå",
+   "country": "SE",
+   "status": "paused",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Skellefteå gigafactory",
+     "lat": 64.734,
+     "lon": 21.0871,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/906692713",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Northvolt Ett; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The basemap names the polygon Northvolt Ett, which is the project's own name; the site is called for its town here so that the sentence over the picture does not say a thing is at itself."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:novo-energy-gothenburg",
+  "kind": "project",
+  "label": "NOVO Energy Gothenburg",
+  "attrs": {
+   "company": "NOVO Energy",
+   "plant": "Gothenburg",
+   "country": "SE",
+   "status": "paused",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [],
+   "location_note": "LOCATION NOT SOUGHT: PROJECT PAUSED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. NOVO Energy has laid off every employee and cannot say when production might start or in what organisational structure; the works in the Gothenburg area is confirmed by the company and is not being placed while the project is stopped. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked."
+  }
+ },
+ {
+  "id": "project:powerco-sagunto",
+  "kind": "project",
+  "label": "PowerCo Valencia",
+  "attrs": {
+   "company": "PowerCo",
+   "plant": "Sagunto",
+   "country": "ES",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Sagunto gigafactory",
+     "lat": 39.6482,
+     "lon": -0.2683,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1180219207",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Gigafactoria Volkswagen; landuse=construction; construction=industrial; operator=Volkswagen",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:powerco-salzgitter",
+  "kind": "project",
+  "label": "PowerCo Salzgitter",
+  "attrs": {
+   "company": "PowerCo",
+   "plant": "Salzgitter",
+   "country": "DE",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Salzgitter gigafactory",
+     "lat": 52.187,
+     "lon": 10.4432,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/26143236",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Volkswagen AG Salzgitter; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The cell factory stands on the Volkswagen Salzgitter works, which is the polygon named; the basemap carries no separate outline for the cell building."
+    }
+   ],
+   "location_note": null
   }
  },
  {
@@ -8314,6 +9749,7 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/1155096048",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Εγκαταστάσεις Άντλησης Πρίνου; man_made=offshore_platform",
       "licence": "ODbL 1.0"
@@ -8321,7 +9757,8 @@
      "confidence": "secondary",
      "note": "The existing production platforms over the depleted reservoirs. A new platform, Omega, is permitted and not built."
     }
-   ]
+   ],
+   "location_note": null
   }
  },
  {
@@ -8344,13 +9781,127 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/100545500",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Salzgitter Flachstahl GmbH; landuse=industrial",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:samsung-sdi-god",
+  "kind": "project",
+  "label": "Samsung SDI Göd",
+  "attrs": {
+   "company": "Samsung SDI",
+   "plant": "Göd",
+   "country": "HU",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Göd cell works",
+     "lat": 47.674,
+     "lon": 19.1631,
+     "precision": "plant",
+     "retrieved_date": "2026-09-02",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1009198739",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Cella gyártás; man_made=works; building=industrial; operator=Samsung",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The polygon is tagged by function — 'Cella gyártás' is cell manufacturing — which is what makes it the cell works rather than the estate. An earlier candidate, relation/16364462, is tagged only 'Samsung' and was refused for identifying the site rather than the works. Samsung SDI's own network page puts SAMSUNG SDI Hungary Zrt. at '2131 Göd, Schenek István utca 1'; the street is not in the basemap, so the address corroborates rather than places it."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:sk-on-ivancsa",
+  "kind": "project",
+  "label": "SK On Iváncsa",
+  "attrs": {
+   "company": "SK On",
+   "plant": "Iváncsa",
+   "country": "HU",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Iváncsa cell works",
+     "lat": 47.134,
+     "lon": 18.8204,
+     "precision": "plant",
+     "retrieved_date": "2026-09-05",
+     "source": {
+      "url": "https://skonhungary.com/",
+      "type": "company",
+      "publisher": "SK On Hungary Kft.",
+      "verbatim": "H-2454 Iváncsa, SK út 1.",
+      "note": "THE POSITION WALKS BACK TO THE OPERATOR'S OWN PUBLISHED ADDRESS, and to nothing else. SK On publishes the works in two forms: this street address on its Hungarian site, and the land-registry parcel 'HRSZ 99/48 Iváncsa 2454' on its global places-of-business page (filed at sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html). The point is where the basemap carries that address — an entry addressed SK út 1, 2454 Iváncsa, on the road that serves the works and is named after the operator. THE PARCEL ITSELF PLACES NOTHING HERE: HRSZ 99/48 geocodes to the settlement, and this pipeline has no cadastral source that would resolve it. The industrial buildings 300 to 800 metres north along SK út carry no name, so no polygon places this works either — the address does.",
+      "retrieved_manually": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html"
+     },
+     "confidence": "secondary",
+     "address": {
+      "text": "H-2454 Iváncsa, SK út 1.",
+      "url": "https://skonhungary.com/",
+      "publisher": "SK On Hungary Kft.",
+      "date": "2026-09-05",
+      "also": "SK On Hungary Iváncsa HRSZ 99/48 Iváncsa 2454, Hungary",
+      "note": "Two published forms of one works: the street address on the operator's Hungarian site and the land-registry parcel on its global places-of-business page. The street address is what the point was derived from; the parcel resolves only to the settlement here."
+     }
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:sk-on-komarom",
+  "kind": "project",
+  "label": "SK On Komárom",
+  "attrs": {
+   "company": "SK On",
+   "plant": "Komárom",
+   "country": "HU",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Komárom industrial park works",
+     "lat": 47.7401,
+     "lon": 18.0685,
+     "precision": "plant",
+     "retrieved_date": "2026-09-05",
+     "source": {
+      "url": "https://skonhungary.com/",
+      "type": "company",
+      "publisher": "SK On Hungary Kft.",
+      "verbatim": "SK On Hungary Kft. 2903 Komárom, Irinyi János utca 9.",
+      "note": "THE POSITION WALKS BACK TO THE OPERATOR'S PUBLISHED ADDRESS AND TO A BASEMAP BUILDING CARRYING ITS NAME ON THAT STREET. SK On publishes two Komárom addresses — this one for SK On Hungary Kft. and '2900 Komárom, Klapka Gyorgy ut 39.' for SK Battery Manufacturing, on the global page filed at sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html. Neither geocodes to a house number: both resolve only to a street. The point is the centroid of the industrial building the basemap names 'SK Battery', which stands on Irinyi János utca in the Komárom industrial park, at the address the operator publishes. IT IS ONE POINT FOR WHAT THE STATE CALLS TWO PLANTS: the row carries the operator's Komárom works as one project and says so rather than splitting it on an address nobody can resolve.",
+      "retrieved_manually": "sources/manual/sk-on-ivancsa--sk-on-global-network-ivancsa.html"
+     },
+     "confidence": "secondary",
+     "address": {
+      "text": "SK On Hungary Kft. 2903 Komárom, Irinyi János utca 9.",
+      "url": "https://skonhungary.com/",
+      "publisher": "SK On Hungary Kft.",
+      "date": "2026-09-05",
+      "also": "SK Battery Manufacturing Komárom 2900 Komárom, Klapka Gyorgy ut 39., Hungary",
+      "note": "Both addresses the operator publishes for Komárom. Neither resolves to a house number; the point is the basemap building named 'SK Battery' on Irinyi János utca, which is the street in the first of them."
+     }
+    }
+   ],
+   "location_note": null
   }
  },
  {
@@ -8373,13 +9924,15 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/198541727",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=Cementa; landuse=industrial; man_made=works; operator=Cementa",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
   }
  },
  {
@@ -8402,6 +9955,7 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/1388001960",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=STEGRA stålverk Boden; landuse=construction; operator=STEGRA",
       "licence": "ODbL 1.0"
@@ -8409,7 +9963,158 @@
      "confidence": "secondary",
      "note": "The 740 MW electrolyser is a second polygon on the same site, way/1481669820."
     }
-   ]
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:sunwoda-nyiregyhaza",
+  "kind": "project",
+  "label": "Sunwoda Nyíregyháza",
+  "attrs": {
+   "company": "Sunwoda",
+   "plant": "Nyíregyháza",
+   "country": "HU",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Nyíregyháza cell works",
+     "lat": 47.8953,
+     "lon": 21.7435,
+     "precision": "plant",
+     "retrieved_date": "2026-09-04",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1263927003",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Hungary Sunwoda Electronics Automotive Energy Techonology Kft. épülő akkumulátor gyára; landuse=construction; construction=industrial; addr:city=Nyíregyháza; addr:street=Déli út",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "site_evidence": {
+      "kind": "composite",
+      "note": "THE COMPANY SOURCE NAMES NO CITY. Sunwoda's own release says 'Hungary' and its Shenzhen-filed interim report gives Hungary as the subsidiary's place of business; neither says Nyíregyháza. The site is confirmed under the composite standard instead of the ordinary company-only one, and all three legs are cited here so a reader who disagrees with the standard can see what it was applied to.",
+      "company": {
+       "url": "https://en.sunwoda.com/article/1345/9.html",
+       "publisher": "Sunwoda Electronic",
+       "date": "2023-08-10",
+       "verbatim": "The Hungary project is Sunwoda's first self-owned production base in Europe and the third overseas factory following the global layout opened in New Delhi, India in 2017.",
+       "note": "Confirms the project and the country and no more. Corroborated by the 2025 interim report filed with the Shenzhen exchange, which lists 'Hungary Sunwoda Power Technology Co., Ltd' with Hungary as its place of business.",
+       "also": "https://en.sunwoda.com/upload/portal/20250827/3da078ce6dd869be2a276b175627640c.pdf"
+      },
+      "state": {
+       "url": "https://kormany.hu/hirek/a-kinai-sunwoda-580-milliard-forintos-beruhazassal-nyiregyhazan-epiti-fel-elso-europai-uzemet",
+       "publisher": "Government of Hungary",
+       "date": "2023-07-27",
+       "verbatim": "Nyíregyházán építi fel első európai üzemét a világ egyik legnagyobb akkumulátorgyártója, a kínai Sunwoda",
+       "note": "The government's own briefing room names the town and the product — one of the world's largest battery manufacturers building its first European works at Nyíregyháza — at a stated 580 billion forints. HIPA's announcement says the same and answers 403 to this pipeline, so it is not cited as a leg."
+      },
+      "basemap": {
+       "url": "https://www.openstreetmap.org/way/1263927003",
+       "publisher": "OpenStreetMap contributors",
+       "verbatim": "name=Hungary Sunwoda Electronics Automotive Energy Techonology Kft. épülő akkumulátor gyára; addr:city=Nyíregyháza; addr:street=Déli út",
+       "note": "A works under construction carrying the operator's own Hungarian subsidiary name, at an address in the town the state names."
+      }
+     }
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:svolt-lauchhammer",
+  "kind": "project",
+  "label": "SVOLT Lauchhammer",
+  "attrs": {
+   "company": "SVOLT",
+   "plant": "Lauchhammer",
+   "country": "DE",
+   "status": "cancelled",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [],
+   "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. SVOLT bought the former Vestas rotor-blade works and never converted it, and no basemap feature carries either name; the only address for the site comes from commercial directories, which are not a source type this register admits. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked."
+  }
+ },
+ {
+  "id": "project:svolt-uberherrn",
+  "kind": "project",
+  "label": "SVOLT Überherrn",
+  "attrs": {
+   "company": "SVOLT",
+   "plant": "Überherrn",
+   "country": "DE",
+   "status": "cancelled",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Geltungsbereich \"Industriegebiet Linsler Feld\", Überherrn",
+     "lat": 49.2442,
+     "lon": 6.7259,
+     "precision": "site",
+     "retrieved_date": "2026-09-05",
+     "source": {
+      "url": "https://ueberherrn.de/wp-content/uploads/2026/06/Begruendung.pdf",
+      "type": "plan_parcels",
+      "publisher": "Gemeinde Überherrn (FIRU mbH)",
+      "verbatim": "Betroffen sind folgende Flurstücke: Vollständig im Geltungsbereich: 101/23 152/11 100/14 100/13 101/22 100/16 100/15 99/3 122/7 122/4 122/3 122/2 121/5 101/13 101/14 101/15 101/16 101/17 101/18 101/19 80/10 80/8 80/6 72/3 100/9 100/8 100/7 100/6 100/5 100/10 100/11 119/8 137/37 137/36 137/35 119/6 121/1 121/2 121/3 121/4 382/121 385/125 386/125 137/38 133/1 412/127 399/127 127/3 127/1 127/2 410/132 397/132 352/131 351/130 357/129 356/129 355/129 354/129",
+      "note": "THE PLAN NAMES THE PARCELS AND THE STATE CADASTRE HOLDS THEIR GEOMETRY, which is what the `plan_parcels` source type is: two documents doing one job, neither of them able to place anything alone. The point is the area-weighted centroid of the two put together — the same construction as Sunderland's, where the permit listed emission points and the centroid of those was the works. 57 of the 58 parcels the Begründung lists as wholly inside the Geltungsbereich were found in Gemarkung Überherrn, Flur 1 and Flur 3, in the Saarland INSPIRE cadastral service (LVGL, dl-de/by-2-0); 152/11 was not, and four labels occur in both Fluren and are both counted, which moves the point by tens of metres. They total 77.1 ha against the plan's stated 99, the balance being the road and watercourse parcels the same page lists as only partly inside. THE PLAN AREA IS NOT THE WORKS: the factory footprint inside it was about 52 ha, and nothing was ever built, so the precision is `site` and the point is the centre of the area the plan covered rather than of a building.",
+      "licence": "dl-de/by-2-0 (cadastral geometry: ©LVGL Saarland)"
+     },
+     "confidence": "secondary",
+     "parcels": {
+      "gemarkung": "Überherrn",
+      "fluren": [
+       "1",
+       "3"
+      ],
+      "matched": 57,
+      "listed": 58,
+      "not_found": [
+       "152/11"
+      ],
+      "area_ha": 77.1,
+      "service": "https://geoportal.saarland.de/gdi-sl/inspirewfs_Flurstuecke_Grundstuecke_ALKIS?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0",
+      "read_date": "2026-09-05"
+     }
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:tesla-gruenheide-cells",
+  "kind": "project",
+  "label": "Tesla Giga Berlin cell manufacturing",
+  "attrs": {
+   "company": "Tesla",
+   "plant": "Grünheide",
+   "country": "DE",
+   "status": "construction",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Grünheide works",
+     "lat": 52.3972,
+     "lon": 13.7948,
+     "precision": "plant",
+     "retrieved_date": "2026-09-04",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/775978799",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Tesla Gigafactory Berlin-Brandenburg; man_made=works; landuse=industrial; industrial=factory; operator=Tesla",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The cell line stands inside Tesla's Grünheide works, which is the polygon named. A cell line inside a vehicle factory is admitted — the perimeter's exclusion is of pack and module assembly and is a rule about the product, not about who owns the gate."
+    }
+   ],
+   "location_note": null
   }
  },
  {
@@ -8432,13 +10137,46 @@
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/5148195",
+      "type": "basemap",
       "publisher": "OpenStreetMap contributors",
       "verbatim": "name=ThyssenKrupp Steel Europe AG; landuse=industrial",
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
     }
-   ]
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:verkor-dunkirk",
+  "kind": "project",
+  "label": "Verkor Gigafactory Bourbourg",
+  "attrs": {
+   "company": "Verkor",
+   "plant": "Bourbourg",
+   "country": "FR",
+   "status": "operating",
+   "transition": "supply_security",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Bourbourg gigafactory",
+     "lat": 50.9665,
+     "lon": 2.1935,
+     "precision": "plant",
+     "retrieved_date": "2026-09-01",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/947606985",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Gigafactory Verkor; landuse=industrial; industrial=factory; operator=Verkor",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ],
+   "location_note": null
   }
  },
  {
@@ -8690,6 +10428,18 @@
   }
  },
  {
+  "id": "technology:cell-manufacturing",
+  "kind": "technology",
+  "label": "Gigafactory-scale cell manufacturing",
+  "attrs": {
+   "transition": "supply_security",
+   "readiness": "commercial",
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
   "id": "technology:co2-transport-storage",
   "kind": "technology",
   "label": "CO2 transport and storage",
@@ -8748,6 +10498,42 @@
    "readiness": "demonstration",
    "sectors": [
     "steel"
+   ]
+  }
+ },
+ {
+  "id": "technology:lfp-cells",
+  "kind": "technology",
+  "label": "Lithium iron phosphate cells",
+  "attrs": {
+   "transition": "supply_security",
+   "readiness": "commercial",
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "technology:nmc-nca-cells",
+  "kind": "technology",
+  "label": "Nickel-rich cells",
+  "attrs": {
+   "transition": "decarbonisation",
+   "readiness": "commercial",
+   "sectors": [
+    "batsol"
+   ]
+  }
+ },
+ {
+  "id": "technology:sodium-ion-cells",
+  "kind": "technology",
+  "label": "Sodium-ion cells",
+  "attrs": {
+   "transition": "supply_security",
+   "readiness": "early-commercial",
+   "sectors": [
+    "batsol"
    ]
   }
  }

@@ -506,6 +506,91 @@ source with its verbatim, and a `note` saying the company's own wording is
 weaker — so the reader sees the join rather than a flat assertion. And the
 site's `confidence` stays `secondary`, which is what it is.
 
+### A draw hold gates publication
+
+**A hold withholds a page from the index. It does not stop the page being
+built.** A held sector renders its product template like any other, is
+type-checked, crawled by the anchor gate and drawn into every frame the build
+writes; what the hold does is keep the URL out of `sitemap.xml` and put
+`noindex` in its head until somebody lifts it.
+
+**The case this is written from.** The batteries hold made `hasMap` return
+false, so the route rendered the register directory instead of the product page
+and the held page **was never built at all** — for two weeks. The first render
+after the hold came off failed immediately, on a technology with no `dependency`
+key against a TypeScript type that said the array was required. The bug was as
+old as the hold, and nothing could have found it: **a gate that stops a page
+being drawn also stops it being tested.**
+
+A hold is a judgement that the data is not yet honest enough to publish. That is
+a statement about readers, not about the build, and it has no business
+suppressing the one mechanism that would tell you whether the page works.
+
+`web/lib/transition.ts` `hasMap` therefore asks only whether the data exists;
+`web/lib/siteRoutes.ts` `sectorIsIndexable` is where the hold is read, and it is
+read by the page's own robots tag and by the sitemap together, so the two cannot
+disagree.
+
+### A stopped row does not enter the location queue
+
+**Location is sought for active rows.** A project whose status is `cancelled` or
+`paused` may stand in the register without a position, carrying a
+`location_note` that says the position was not sought and why.
+
+The reasoning is what the coordinate is for. A mark on a picture is a claim that
+something is at a place, and the research behind it — a permit's grid reference,
+a plan's parcel list, an operator's published address — pays for itself on a
+works somebody might visit, buy from or object to. **A project that will not be
+built has no works to place.** Hunting the parcel of a factory cancelled two
+years ago buys a dot that a reader would take for a building, at the cost of the
+only thing the hunt was for.
+
+**The note is the whole of the allowance.** `sources/check_sector_schema.py`
+refuses an empty `location` on any other status, refuses it without the note, and
+refuses a note on a row that has a position — so the absence is always a decision
+on the record and never an oversight that looks like one. A row that returns to
+an active status fails the gate until its position is found, which is the
+mechanism that stops this from becoming the place coordinates go to be avoided.
+
+**What the surfaces do with it.** No crop is built (`sources/build_maps.py`
+skips it), the project page renders the note where the picture would have been
+with no placeholder standing in for the map, and the sector overview's
+not-drawn clause names the row and its status — so a reader counting sites
+against the projects table finds the difference accounted for by name.
+
+**And it does not lower the perimeter.** The site rule is unchanged: a company
+still has to have confirmed the site, and a row still says which standard it
+stands on. What is dropped is the coordinate hunt, and only where nothing will
+ever stand there.
+
+### A failure you observe is blocking
+
+**"Pre-existing" describes when a failure started. It is not a reason to push
+over it.** A red gate is red whoever made it red, and a branch that ships with a
+known failure hands the next person a build they cannot trust and a question
+they did not ask for.
+
+So: **a failure observed before a push is reported and ruled on, never stepped
+around.** If it is inside the branch's scope, fix it. If it is outside — a gate
+that has been failing since before this work started, a dependency that broke on
+somebody else's clock — it is brought to George as a failure, in those words,
+before the push, and he decides whether it is fixed here, fixed elsewhere or
+knowingly carried. What is not available is a push accompanied by a note saying
+the failure was already there.
+
+**The case this is written from.** `check_anchor_text` failed on the Italvolt
+page for days. It was described in commit messages and in conversation as
+pre-existing and out of scope, which was true and was not the point: the branch
+was pushed green four times over a gate that was red, because the hook that says
+"gate chain green" was running `prebuild` and the failing gate runs after the
+build. Two things were wrong and only one of them was the gate — see
+`.githooks/pre-push`, which now runs the whole chain.
+
+**Why this is a ruling and not a habit.** The pull towards stepping around it is
+strongest exactly when the failure is genuinely not yours, which is when the
+reasoning sounds best and the outcome is worst: an unrelated red gate is how a
+build stops being a signal at all.
+
 ### A node in the geo layer requires a source-stated position
 
 Scoped to the geo layer and to nothing else. Every project row carries
@@ -531,6 +616,133 @@ this ruling does not reach and must not be read as foreclosing. It is a live
 option: the register already holds facts about places it cannot draw. The two
 readings agree on the case in front of us either way, because under both,
 Antwerp@C has no position and GO4ZERO's chain is unresolved.
+
+#### Corollary: an address places a row only where it is the address of the works
+
+An operator's published address is one of the source types that may put a works
+on the paper — the company knows where its works is. What that type does not
+carry is any claim about which of the company's addresses it is. **A registered
+office, a filing address, a correspondence address or a headquarters is an
+address for serving papers on a company, and it never places a works**, however
+plainly the operator publishes it and however official the register it is filed
+in. The coordinate rule asks what the address is an address OF, and only the
+source can answer that.
+
+The pair that settled it, both read on 5 September 2026:
+
+**Iváncsa is placed.** SK On publishes `H-2454 Iváncsa, SK út 1.` on its
+Hungarian site as the location of the works, and `HRSZ 99/48 Iváncsa 2454` — the
+land-registry parcel — as the same thing on its global places-of-business page.
+The address is the works', the operator says so, and the point stands on it.
+
+**Giga Arctic is refused.** The Norwegian company register carries T1 ENERGY
+GIGA ARCTIC AS and T1 ENERGY NORWAY AS at `Terminalveien 22, 8624 Mo i Rana`,
+and Kartverket's address register gives that address a position on gnr 20 bnr
+538. It is a *forretningsadresse* — the address the company files — and it sits
+at Langneset, the harbour end of Mo Industripark, among warehouses and an office
+block, about 2.5 km from the Central Plot where every account puts the
+gigafactory. Same source type as Iváncsa, same official quality, and it places
+nothing.
+
+The two look identical in a data model that records only "the operator published
+an address". They are told apart by reading what was published, which is why the
+row carries the address text itself and why the note has to say what the position
+walks back to. **The failure this forecloses** is the easy one: a register that
+takes an operator's most findable address, geocodes it, and draws a factory on an
+office — with every field on the row true and the mark in the wrong place.
+
+
+### A document is sourced by its author, not by its host
+
+**Ruled 7 September 2026.** A document's provenance is the question of who wrote
+it, and that question is not answered by where the file is served from. **An
+applicant's own permit submission may place a row while sitting on a third
+party's website**, because the statement in it is the applicant's wherever the
+bytes live. A campaign group hosting a copy of a company's environmental impact
+documentation has not authored anything; it has kept a copy, and a register that
+refused to read it would be refusing the company's own words on the ground that
+somebody else is holding them.
+
+The allowance is conditional, and the conditions are what make it something other
+than an excuse to cite anything found anywhere. The copy must:
+
+  1. **name the applicant** — the company, and enough of its registration for the
+     applicant to be identified as the operator the row is about;
+  2. **name the procedure** — which authorisation, before which authority, so the
+     document can be asked for from the authority by anybody who wants the
+     original;
+  3. **be internally consistent on the site** — the parcel, the stated area, any
+     coordinate and any polygon have to agree with each other. A copy that has
+     been edited to say something else about where the works is fails here, and
+     this is the condition that does the work.
+
+And the row must record **the host URL, the retrieval date, the SHA-256 of the
+file read, and the label `hosted copy`**, which the page renders on the citation.
+The digest is the point of the four: it fixes which bytes were read, so a host
+that later swaps, truncates or re-issues the file cannot silently change what
+this register is quoting. Gated by `_hosted_copy` in check_sector_schema.py.
+
+**The case that settled it.** EVE Power's Debrecen cell plant. The Hajdú-Bihar
+county government office serves its notice board to a browser and not to a
+declared reader, so the authority's own decision could not be retrieved. The
+submission it decided on could: Eve Power Hungary Kft.'s combined KHV/IPPC
+application, held by an environmental association, naming the applicant with its
+company register number, naming the office and the procedure, and giving parcel
+Debrecen 0237/405, the site area 450 000 m², and the central EOV pair
+Y 835 619 / X 251 450. The nine-corner polygon in the same document encloses that
+pair and comes to 450 022 m². Three facts written independently in one document
+that agree to within a rounding — which is a document about this site, whoever is
+serving it.
+
+**What this does not open.** It is not a licence to cite a copy in place of an
+original that answers. It is not a licence to cite a host's *description* of a
+document, or an extract, or a re-typing: the file itself is what is read and
+hashed. And it says nothing about authority for the claim — an applicant's plan
+remains a plan, which is why the Debrecen row lands as `announced` and takes its
+capacity as the figure the applicant filed rather than as a plant that exists.
+
+### A conversion is either implemented here or asked of a library, and never half
+
+**Ruled 7 September 2026.** sources/osgb36.py and sources/utm.py implement their
+own projections because a transverse Mercator inverse is a published series that
+can be transcribed and held against a published worked example. EOV is not that:
+a double projection through a Gauss sphere onto an oblique cylinder, on a datum
+some ninety metres from WGS84. **Where the definition is beyond honest
+transcription, the conversion is asked of pyproj by EPSG code rather than
+hand-written**, and sources/eov.py names EPSG:23700 and does nothing else.
+
+What does not change is the recompute contract. The stored latitude and longitude
+are still whatever the module returns from the document's own easting and
+northing, on every build, and the module still self-checks on every gate run —
+here against EOV's definitional origin, a round trip, and the grid's own
+orientation. What changes is only who owns the arithmetic.
+
+**A gate dependency is installed everywhere the gates run, not everywhere
+somebody remembered.** pyproj is the first thing the gates need that the standard
+library does not carry, and the first build after it was added passed on the
+laptop that added it and failed on the deployment — which is the worst shape a
+dependency can have. So it lives in `sources/requirements-gates.txt`, separate
+from the fetcher's heavier `requirements.txt`, and `sources/ensure_gate_deps.py`
+installs it at the head of the prebuild. Where it cannot be installed the gate
+**fails**: a coordinate check that quietly does not run is worse than one nobody
+wrote.
+
+Superseded 7 Sep 2026 by the paragraph above: pyproj joins the fetcher's own
+dependencies in `sources/requirements.txt` — the first one the GATES need rather
+than the fetcher — and the gate **fails** when it is absent rather than skipping
+the check: a coordinate check that quietly does not run is worse than one nobody
+wrote.
+
+WHY THE SUPERSEDED PARAGRAPH IS STILL HERE. A ruling is a record of what this
+register decided and when, and a record that silently loses its earlier readings
+cannot be audited — a reader who finds a row written under the old arrangement
+has nothing to read it against. So a ruling is never deleted, only superseded in
+place, with the superseding paragraph above it and the date on the line that
+says so. The two here disagree about one thing only: which file the dependency
+lives in, and therefore whether every environment that runs the gates installs
+it.
+
+
 
 ### capacity_basis is read from the source sentence, never derived from status
 
@@ -569,3 +781,100 @@ The consequence is that a capacity with no stated stage stays `announced`
 however much money is visible around it, and a row whose source states no figure
 at all leaves `capacity_value` empty rather than borrowing one from a grant
 document.
+
+
+### Admission and capacity are separate questions
+
+**Ruled 7 September 2026, reversing a ruling of the same day.** For one commit
+this register held that a row whose admitting source states no capacity should
+never have been admitted, and seven battery rows were moved back to the candidate
+list on that reading. The reading was wrong and the rows are restored. It is
+written down here rather than quietly reverted, because the wrong version was on
+the branch and somebody reading the history is entitled to know why it went.
+
+**Admission requires a company-confirmed site.** That is the whole of the
+admission test: the company itself has confirmed a named site, in Europe as this
+platform draws it, making battery cells. What admits a row is that the operator
+says the works is theirs and says where it is.
+
+**Capacity is a separate attribute of an admitted row, and it has two acceptable
+origins.** Either a **company statement**, or an **official record naming the
+site** — a permit, a state aid decision, a host-state grant decision. A figure
+from an official record is recorded with `capacity_basis: "official"`, which
+exists so that the two origins can be told apart in every series built on them: a
+number the company gave an authority, or a number an authority was willing to pay
+against, is not the same claim as the company saying today what it is building
+towards.
+
+**A row with neither stays admitted with an empty capacity.** It is a real works
+that a real company has confirmed, and the register knows where it is and who
+runs it. What it does not know is how big it is.
+
+The consequence is a rule about arithmetic, and it is the reason the two
+questions had to be separated:
+
+- **a row with no capacity is INCLUDED in count-based statistics.** How many
+  battery projects were cancelled is a question about projects, and dropping the
+  ones whose size nobody published would answer a different question — and answer
+  it in a predictable direction, because the sites that never published a figure
+  are disproportionately the ones that failed early.
+- **a row with no capacity is EXCLUDED from capacity-weighted statistics**, of
+  necessity: there is nothing to weight it by.
+
+**So every summary prints the number of rows without a capacity, per sector,
+beside the capacity-weighted tables it affects.** A weighted total with a silent
+denominator is the failure this rule exists to prevent: it reads as a statement
+about the sector when it is a statement about the part of the sector that
+published a number. The count is printed whether it is zero or not, so that a
+reader never has to work out whether it was checked.
+
+**Why the earlier ruling was wrong.** It conflated the scale threshold with the
+admission test. The perimeter's "at least 1 GWh per year" is a rule about which
+sites are big enough to be worth holding, and it was never a rule that the
+admitting document must be the thing that states the figure. Applied as the
+latter it deleted seven real, company-confirmed works — Tesla's own Berlin cell
+line among them — from a dataset whose whole purpose is to count what is being
+built and what stops. It also had the effect of making the dataset look complete:
+25 rows all carrying capacities, with the gap moved somewhere the totals could
+not see it. A register that improves its own numbers by dropping the rows that
+embarrass them is measuring itself and not the sector.
+
+### A slip is one speaker changing its mind
+
+`stated_schedule` records what a project said it would do. Every entry carries a
+`speaker` — `company`, `host_government`, `eu` or `other` — which is a different
+question from `source_type`. Source type says how the statement reached this
+register; speaker says whose statement it is. The two come apart constantly, and
+the gap is where the meaning is: the Junta de Extremadura telling its own Assembly
+that cells come in December 2028 is a **host government** statement that arrived
+through a newspaper, and filing it as "press" would lose the fact that a
+government said it.
+
+**A revision is counted only between events of the same speaker.** Two speakers
+giving different dates for the same milestone have revised nothing. They
+disagree, and that is a fact about the evidence rather than about the project.
+It is recorded as a disagreement, with the months between them, and never as a
+slip.
+
+The reason is that the alternative manufactures delay. CALB said its Sines works
+would deliver in 2027 and the Portuguese government said it would be fully
+operational in 2028 — on the same day, 24 February 2025. Nobody changed their
+mind and nothing slipped; two bodies were asked at once and gave different
+answers. Counting that as a twelve-month slip would turn the register's own
+breadth of sourcing into evidence of a project running late, and it would do so
+in the direction that makes the dataset look more informative than it is. The
+same reading applies to Navalmoral de la Mata, where AESC's 2026 has never been
+revised by AESC and the twenty-four-month gap is between the operator and its
+host.
+
+**Both numbers are real and they answer different questions.** A slip is evidence
+about the project. A disagreement is evidence about who believes what, and on
+this dataset it is the larger and more common of the two — which is itself the
+finding, and the reason they are printed side by side rather than added.
+
+**What neither number can see is silence.** A company that stated 2026 once and
+has never mentioned it again has not kept that date; it has stopped talking about
+it. That project shows a slip of zero, and nothing in this layer distinguishes it
+from one that is on time. The summary says so wherever the slip column is
+printed, because a zero that means "no second statement exists" and a zero that
+means "the date held" cannot be told apart here.

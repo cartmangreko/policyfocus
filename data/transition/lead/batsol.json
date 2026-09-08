@@ -1,0 +1,114 @@
+{
+  "_comment": [
+    "BUILT FILE — do not edit. sources/build_lead.py computes it from the sector's",
+    "own panels; web/components/LeadBlock.tsx draws it and adds nothing.",
+    "A reviewed replacement goes in data/transition/overrides.json under",
+    "summary_override, never here."
+  ],
+  "sector": "batsol",
+  "template_version": 5,
+  "fingerprint": "fd201881cc7df16c",
+  "sentence": {
+    "text": "European batteries and solar is trying to secure its own supply.",
+    "from": [
+      "routes"
+    ],
+    "source": "generated"
+  },
+  "why_it_matters": null,
+  "facts": [
+    {
+      "id": "routes",
+      "label": "Routes",
+      "text": "Three routes are being built: gigafactory-scale cell manufacturing (20 projects), nickel-rich cells (8) and lithium iron phosphate cells (2).",
+      "as_of": "2026-07-22",
+      "numbers": [
+        "20",
+        "8",
+        "2"
+      ],
+      "parts": {
+        "count": 3,
+        "list": "gigafactory-scale cell manufacturing (20 projects), nickel-rich cells (8) and lithium iron phosphate cells (2)",
+        "names": [
+          "Gigafactory-scale cell manufacturing",
+          "Nickel-rich cells",
+          "Lithium iron phosphate cells"
+        ]
+      },
+      "sourced": [
+        "Gigafactory-scale cell manufacturing",
+        "Nickel-rich cells",
+        "Lithium iron phosphate cells"
+      ],
+      "href": "#technologies",
+      "surface": true
+    },
+    {
+      "id": "pipeline_state",
+      "label": "Pipeline",
+      "text": "20 European batteries and solar projects are under way, 17 of them have taken a final investment decision, and 4 are paused and 8 have been cancelled.",
+      "as_of": "2026-07-22",
+      "numbers": [
+        "20",
+        "17",
+        "4",
+        "8"
+      ],
+      "parts": {
+        "total": "20",
+        "committed": "17",
+        "committed_is_all": false,
+        "paused": "4",
+        "cancelled": "8",
+        "furthest": "Verkor Gigafactory Bourbourg",
+        "furthest_status": "operating"
+      },
+      "sourced": [
+        "Verkor Gigafactory Bourbourg"
+      ],
+      "href": "#projects",
+      "surface": true
+    },
+    {
+      "id": "the_latest",
+      "label": "The latest",
+      "text": "Tesla Giga Berlin cell manufacturing went into construction on 22 July 2026.",
+      "as_of": "2026-07-22",
+      "numbers": [],
+      "parts": {
+        "project": "Tesla Giga Berlin cell manufacturing",
+        "status": "construction",
+        "date": "22 July 2026"
+      },
+      "sourced": [
+        "Tesla Giga Berlin cell manufacturing"
+      ],
+      "href": "/projects/tesla-gruenheide-cells",
+      "surface": true
+    },
+    {
+      "id": "binding_constraint",
+      "label": "Binding constraint",
+      "text": "Committing capacity against uncertain vehicle demand — a market constraint, acted on by 3 ranked measures at 2 of combined weight.",
+      "as_of": "2026-02-09",
+      "numbers": [
+        "3",
+        "2"
+      ],
+      "parts": {
+        "name": "Committing capacity against uncertain vehicle demand",
+        "type": "market",
+        "count": 3,
+        "weight": "2"
+      },
+      "sourced": [
+        "Committing capacity against uncertain vehicle demand"
+      ],
+      "href": "#bottleneck-batsol-demand-uncertainty",
+      "surface": false
+    }
+  ],
+  "override_stale": false,
+  "notes": []
+}

@@ -494,7 +494,7 @@
     "ifestos-kamari": {
       "id": "ifestos-kamari",
       "template_version": 1,
-      "fingerprint": "b5b55ef0641a6a56",
+      "fingerprint": "c8b893236b4ac24d",
       "sentence": {
         "text": "IFESTOS is TITAN Cement's cement project at Kamari, Greece.",
         "from": [
@@ -564,11 +564,13 @@
         },
         {
           "id": "funding",
-          "text": "No committed public money is on file for it.",
-          "as_of": "2023-07-14",
-          "numbers": [],
+          "text": "€234 million of public money has been committed to it.",
+          "as_of": "2024-01-01",
+          "numbers": [
+            "234"
+          ],
           "sourced": [],
-          "href": null,
+          "href": "#funding",
           "surface": true
         }
       ],
@@ -1488,6 +1490,2529 @@
           "id": "funding",
           "text": "No committed public money is on file for it.",
           "as_of": "2026-08-28",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "acc-billy-berclau": {
+      "id": "acc-billy-berclau",
+      "template_version": 1,
+      "fingerprint": "3479cfbc1256276c",
+      "sentence": {
+        "text": "ACC Billy-Berclau Douvrin is Automotive Cells Company's batteries and solar project at Billy-Berclau/Douvrin, France.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "ACC Billy-Berclau Douvrin",
+          "Automotive Cells Company",
+          "Billy-Berclau/Douvrin, France"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "ACC Billy-Berclau Douvrin started operating on 30 May 2023.",
+          "as_of": "2023-05-30",
+          "numbers": [],
+          "sourced": [
+            "ACC Billy-Berclau Douvrin"
+          ],
+          "href": "https://www.acc-emotion.com/media/bbd-press-release",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Billy-Berclau/Douvrin, France.",
+          "as_of": "2023-05-30",
+          "numbers": [],
+          "sourced": [
+            "Billy-Berclau/Douvrin, France"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2023-05-30",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 13 GWh per year.",
+          "as_of": "2023-05-30",
+          "numbers": [
+            "13"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "€200 million of public money has been committed to it.",
+          "as_of": "2025-07-04",
+          "numbers": [
+            "200"
+          ],
+          "sourced": [],
+          "href": "#funding",
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "acc-termoli": {
+      "id": "acc-termoli",
+      "template_version": 1,
+      "fingerprint": "255417eac20e97cb",
+      "sentence": {
+        "text": "ACC Termoli is Automotive Cells Company's batteries and solar project at Termoli, Italy.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "ACC Termoli",
+          "Automotive Cells Company",
+          "Termoli, Italy"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "ACC Termoli was cancelled on 9 February 2026.",
+          "as_of": "2026-02-09",
+          "numbers": [],
+          "sourced": [
+            "ACC Termoli"
+          ],
+          "href": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Termoli, Italy.",
+          "as_of": "2026-09-07",
+          "numbers": [],
+          "sourced": [
+            "Termoli, Italy"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-07",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-07",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "verkor-dunkirk": {
+      "id": "verkor-dunkirk",
+      "template_version": 1,
+      "fingerprint": "4e20e2c6e5cf7b7c",
+      "sentence": {
+        "text": "Verkor Gigafactory Bourbourg is Verkor's batteries and solar project at Bourbourg, France.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Verkor Gigafactory Bourbourg",
+          "Verkor",
+          "Bourbourg, France"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Verkor Gigafactory Bourbourg started operating on 11 December 2025.",
+          "as_of": "2025-12-11",
+          "numbers": [],
+          "sourced": [
+            "Verkor Gigafactory Bourbourg"
+          ],
+          "href": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Bourbourg, France.",
+          "as_of": "2025-12-11",
+          "numbers": [],
+          "sourced": [
+            "Bourbourg, France"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2025-12-11",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 16 GWh per year.",
+          "as_of": "2025-12-11",
+          "numbers": [
+            "16"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "€76 million of public money has been committed to it.",
+          "as_of": "2025-07-04",
+          "numbers": [
+            "76"
+          ],
+          "sourced": [],
+          "href": "#funding",
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "powerco-salzgitter": {
+      "id": "powerco-salzgitter",
+      "template_version": 1,
+      "fingerprint": "0b8d0b33481dc5dd",
+      "sentence": {
+        "text": "PowerCo Salzgitter is PowerCo's batteries and solar project at Salzgitter, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "PowerCo Salzgitter",
+          "PowerCo",
+          "Salzgitter, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "PowerCo Salzgitter started operating on 17 December 2025.",
+          "as_of": "2025-12-17",
+          "numbers": [],
+          "sourced": [
+            "PowerCo Salzgitter"
+          ],
+          "href": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Salzgitter, Germany.",
+          "as_of": "2025-12-17",
+          "numbers": [],
+          "sourced": [
+            "Salzgitter, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2025-12-17",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 20 GWh per year.",
+          "as_of": "2025-12-17",
+          "numbers": [
+            "20"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2025-12-17",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "northvolt-ett-skelleftea": {
+      "id": "northvolt-ett-skelleftea",
+      "template_version": 1,
+      "fingerprint": "945001f48f927efd",
+      "sentence": {
+        "text": "Northvolt Ett is Lyten's batteries and solar project at Skellefteå, Sweden.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Northvolt Ett",
+          "Lyten",
+          "Skellefteå, Sweden"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Work has stopped, and the reason is in its history below.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Northvolt Ett was paused on 12 March 2025.",
+          "as_of": "2025-03-12",
+          "numbers": [],
+          "sourced": [
+            "Northvolt Ett"
+          ],
+          "href": "https://northvolt.com/articles/northvolt-files-for-bankruptcy-in-sweden/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Skellefteå, Sweden.",
+          "as_of": "2026-02-26",
+          "numbers": [],
+          "sourced": [
+            "Skellefteå, Sweden"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2026-02-26",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-02-26",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "catl-stellantis-zaragoza": {
+      "id": "catl-stellantis-zaragoza",
+      "template_version": 1,
+      "fingerprint": "3e15d506fe0624b6",
+      "sentence": {
+        "text": "CATL and Stellantis Zaragoza is Automotive Cells Zaragoza (CATL and Stellantis joint venture)'s batteries and solar project at Zaragoza, Spain.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "CATL and Stellantis Zaragoza",
+          "Automotive Cells Zaragoza (CATL and Stellantis joint venture)",
+          "Zaragoza, Spain"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Nothing has been committed to it yet.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "CATL and Stellantis Zaragoza was announced on 10 December 2024.",
+          "as_of": "2024-12-10",
+          "numbers": [],
+          "sourced": [
+            "CATL and Stellantis Zaragoza"
+          ],
+          "href": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Zaragoza, Spain.",
+          "as_of": "2024-12-10",
+          "numbers": [],
+          "sourced": [
+            "Zaragoza, Spain"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and lithium iron phosphate cells.",
+          "as_of": "2024-12-10",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "lithium iron phosphate cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 50 GWh per year.",
+          "as_of": "2024-12-10",
+          "numbers": [
+            "50"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2024-12-10",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "catl-arnstadt": {
+      "id": "catl-arnstadt",
+      "template_version": 1,
+      "fingerprint": "131b3486f96cee52",
+      "sentence": {
+        "text": "CATL Arnstadt is Contemporary Amperex Technology Thuringia's batteries and solar project at Arnstadt, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "CATL Arnstadt",
+          "Contemporary Amperex Technology Thuringia",
+          "Arnstadt, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "CATL Arnstadt started operating on 21 December 2022.",
+          "as_of": "2022-12-21",
+          "numbers": [],
+          "sourced": [
+            "CATL Arnstadt"
+          ],
+          "href": "https://www.prnewswire.com/news-releases/catls-german-plant-kicks-off-cell-production-301708032.html",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Arnstadt, Germany.",
+          "as_of": "2022-12-21",
+          "numbers": [],
+          "sourced": [
+            "Arnstadt, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2022-12-21",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 14 GWh per year.",
+          "as_of": "2022-12-21",
+          "numbers": [
+            "14"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2022-12-21",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "lges-wroclaw": {
+      "id": "lges-wroclaw",
+      "template_version": 1,
+      "fingerprint": "b58644faf0d246d1",
+      "sentence": {
+        "text": "LG Energy Solution Wrocław is LG Energy Solution's batteries and solar project at Wrocław, Poland.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "LG Energy Solution Wrocław",
+          "LG Energy Solution",
+          "Wrocław, Poland"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "LG Energy Solution Wrocław started operating on 27 July 2023.",
+          "as_of": "2023-07-27",
+          "numbers": [],
+          "sourced": [
+            "LG Energy Solution Wrocław"
+          ],
+          "href": "https://news.lgensol.com/insights/from-our-experts/3071/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Wrocław, Poland.",
+          "as_of": "2023-07-27",
+          "numbers": [],
+          "sourced": [
+            "Wrocław, Poland"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2023-07-27",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 90 GWh per year.",
+          "as_of": "2023-07-27",
+          "numbers": [
+            "90"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "€91 million of public money has been committed to it.",
+          "as_of": "2025-07-04",
+          "numbers": [
+            "91"
+          ],
+          "sourced": [],
+          "href": "#funding",
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "catl-debrecen": {
+      "id": "catl-debrecen",
+      "template_version": 1,
+      "fingerprint": "c111858b62ec816b",
+      "sentence": {
+        "text": "CATL Debrecen is Contemporary Amperex Technology's batteries and solar project at Debrecen, Hungary.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "CATL Debrecen",
+          "Contemporary Amperex Technology",
+          "Debrecen, Hungary"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "CATL Debrecen went into construction on 12 August 2022.",
+          "as_of": "2022-08-12",
+          "numbers": [],
+          "sourced": [
+            "CATL Debrecen"
+          ],
+          "href": "https://www.catl.com/en/news/983.html",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Debrecen, Hungary.",
+          "as_of": "2022-08-12",
+          "numbers": [],
+          "sourced": [
+            "Debrecen, Hungary"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2022-08-12",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 100 GWh per year.",
+          "as_of": "2022-08-12",
+          "numbers": [
+            "100"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2022-08-12",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "lyten-heide": {
+      "id": "lyten-heide",
+      "template_version": 1,
+      "fingerprint": "73affedd37264de8",
+      "sentence": {
+        "text": "Northvolt Drei is Northvolt Drei Project GmbH's batteries and solar project at Heide, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Northvolt Drei",
+          "Northvolt Drei Project GmbH",
+          "Heide, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Work has stopped, and the reason is in its history below.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Northvolt Drei was paused on 21 November 2024.",
+          "as_of": "2024-11-21",
+          "numbers": [],
+          "sourced": [
+            "Northvolt Drei"
+          ],
+          "href": "https://northvolt.com/articles/chapter11/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Heide, Germany.",
+          "as_of": "2026-07-01",
+          "numbers": [],
+          "sourced": [
+            "Heide, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-07-01",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It was planned for 15 GWh per year by Northvolt.",
+          "as_of": "2026-07-01",
+          "numbers": [
+            "15"
+          ],
+          "sourced": [
+            "GWh per year",
+            "Northvolt"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "€902 million of public money has been committed to it.",
+          "as_of": "2024-01-08",
+          "numbers": [
+            "902"
+          ],
+          "sourced": [],
+          "href": "#funding",
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "morrow-arendal": {
+      "id": "morrow-arendal",
+      "template_version": 1,
+      "fingerprint": "7531d7731c6499e3",
+      "sentence": {
+        "text": "Morrow Cell Factory is Morrow Batteries' batteries and solar project at Arendal, Norway.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Morrow Cell Factory",
+          "Morrow Batteries",
+          "Arendal, Norway"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Morrow Cell Factory was cancelled on 6 May 2026.",
+          "as_of": "2026-05-06",
+          "numbers": [],
+          "sourced": [
+            "Morrow Cell Factory"
+          ],
+          "href": "https://www.energy-storage.news/european-ess-battery-company-morrow-files-for-bankruptcy/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Arendal, Norway.",
+          "as_of": "2026-05-06",
+          "numbers": [],
+          "sourced": [
+            "Arendal, Norway"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and lithium iron phosphate cells.",
+          "as_of": "2026-05-06",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "lithium iron phosphate cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 43 GWh per year.",
+          "as_of": "2026-05-06",
+          "numbers": [
+            "43"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-05-06",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "powerco-sagunto": {
+      "id": "powerco-sagunto",
+      "template_version": 1,
+      "fingerprint": "22d2195a06c35688",
+      "sentence": {
+        "text": "PowerCo Valencia is PowerCo's batteries and solar project at Sagunto, Spain.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "PowerCo Valencia",
+          "PowerCo",
+          "Sagunto, Spain"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "PowerCo Valencia went into construction on 17 March 2023.",
+          "as_of": "2023-03-17",
+          "numbers": [],
+          "sourced": [
+            "PowerCo Valencia"
+          ],
+          "href": "https://www.volkswagen-group.com/en/press-releases/gigafactory-valencia-powerco-gives-starting-signal-for-construction-of-second-cell-factory-17033",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Sagunto, Spain.",
+          "as_of": "2023-03-17",
+          "numbers": [],
+          "sourced": [
+            "Sagunto, Spain"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2023-03-17",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 40 GWh per year.",
+          "as_of": "2023-03-17",
+          "numbers": [
+            "40"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2023-03-17",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "agratas-bridgwater": {
+      "id": "agratas-bridgwater",
+      "template_version": 1,
+      "fingerprint": "efbac63514a1828e",
+      "sentence": {
+        "text": "Agratas Bridgwater is Agratas' batteries and solar project at Bridgwater, United Kingdom.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Agratas Bridgwater",
+          "Agratas",
+          "Bridgwater, United Kingdom"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Agratas Bridgwater went into construction on 22 August 2025.",
+          "as_of": "2025-08-22",
+          "numbers": [],
+          "sourced": [
+            "Agratas Bridgwater"
+          ],
+          "href": "https://www.agratas.com/news/bridgwater-july-site-progress-update",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Bridgwater, United Kingdom.",
+          "as_of": "2025-08-22",
+          "numbers": [],
+          "sourced": [
+            "Bridgwater, United Kingdom"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2025-08-22",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 40 GWh per year.",
+          "as_of": "2025-08-22",
+          "numbers": [
+            "40"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2025-08-22",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "gib-surany": {
+      "id": "gib-surany",
+      "template_version": 1,
+      "fingerprint": "8306e168be0897ff",
+      "sentence": {
+        "text": "Gotion InoBat Batteries Šurany is Gotion InoBat Batteries' batteries and solar project at Šurany, Slovakia.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Gotion InoBat Batteries Šurany",
+          "Gotion InoBat Batteries",
+          "Šurany, Slovakia"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Nothing has been committed to it yet.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Gotion InoBat Batteries Šurany was announced on 20 June 2024.",
+          "as_of": "2024-06-20",
+          "numbers": [],
+          "sourced": [
+            "Gotion InoBat Batteries Šurany"
+          ],
+          "href": "https://www.inobat.eu/newsroom/gib-to-build-an-advanced-gigafactory-in-slovakia/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Šurany, Slovakia.",
+          "as_of": "2024-06-20",
+          "numbers": [],
+          "sourced": [
+            "Šurany, Slovakia"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2024-06-20",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 60 GWh per year.",
+          "as_of": "2024-06-20",
+          "numbers": [
+            "60"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2024-06-20",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "samsung-sdi-god": {
+      "id": "samsung-sdi-god",
+      "template_version": 1,
+      "fingerprint": "db3d258d2a332c3e",
+      "sentence": {
+        "text": "Samsung SDI Göd is Samsung SDI's batteries and solar project at Göd, Hungary.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Samsung SDI Göd",
+          "Samsung SDI",
+          "Göd, Hungary"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Samsung SDI Göd started operating on 1 August 2022.",
+          "as_of": "2022-08-01",
+          "numbers": [],
+          "sourced": [
+            "Samsung SDI Göd"
+          ],
+          "href": "https://news.samsungsdi.com/global/articleView?seq=8",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Göd, Hungary.",
+          "as_of": "2026-09-02",
+          "numbers": [],
+          "sourced": [
+            "Göd, Hungary"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2026-09-02",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-02",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "italvolt-scarmagno": {
+      "id": "italvolt-scarmagno",
+      "template_version": 1,
+      "fingerprint": "a8206d46a83ec59a",
+      "sentence": {
+        "text": "Italvolt Scarmagno is Italvolt's batteries and solar project at Scarmagno, Italy.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Italvolt Scarmagno",
+          "Italvolt",
+          "Scarmagno, Italy"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Italvolt Scarmagno was cancelled on 31 January 2024.",
+          "as_of": "2024-01-31",
+          "numbers": [],
+          "sourced": [
+            "Italvolt Scarmagno"
+          ],
+          "href": "https://www.bestmag.co.uk/battery-gigafactories-facing-a-temporary-dip-or-a-full-scale-crisis/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Scarmagno, Italy.",
+          "as_of": "2024-11-20",
+          "numbers": [],
+          "sourced": [
+            "Scarmagno, Italy"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2024-11-20",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It was to be built for 45 GWh per year.",
+          "as_of": "2024-11-20",
+          "numbers": [
+            "45"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2024-11-20",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "envision-aesc-douai": {
+      "id": "envision-aesc-douai",
+      "template_version": 1,
+      "fingerprint": "8d040cfd2553d70c",
+      "sentence": {
+        "text": "AESC Douai is AESC's batteries and solar project at Douai, France.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "AESC Douai",
+          "AESC",
+          "Douai, France"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "AESC Douai started operating on 3 June 2025.",
+          "as_of": "2025-06-03",
+          "numbers": [],
+          "sourced": [
+            "AESC Douai"
+          ],
+          "href": "https://www.aesc-group.com/newsInfo?id=at-start-of-production-aesc-hosts-president-macron-at-douai-battery-gigafactory",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Douai, France.",
+          "as_of": "2025-06-03",
+          "numbers": [],
+          "sourced": [
+            "Douai, France"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2025-06-03",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 10 GWh per year.",
+          "as_of": "2025-06-03",
+          "numbers": [
+            "10"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2025-06-03",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "envision-aesc-sunderland": {
+      "id": "envision-aesc-sunderland",
+      "template_version": 1,
+      "fingerprint": "e938480154c3733e",
+      "sentence": {
+        "text": "AESC Sunderland is AESC's batteries and solar project at Sunderland, United Kingdom.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "AESC Sunderland",
+          "AESC",
+          "Sunderland, United Kingdom"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "AESC Sunderland started operating on 16 December 2025.",
+          "as_of": "2025-12-16",
+          "numbers": [],
+          "sourced": [
+            "AESC Sunderland"
+          ],
+          "href": "https://www.aesc-group.com/newsInfo?id=aesc-launches-its-new-uk-battery-gigafactory",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Sunderland, United Kingdom.",
+          "as_of": "2025-12-16",
+          "numbers": [],
+          "sourced": [
+            "Sunderland, United Kingdom"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2025-12-16",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 15.8 GWh per year.",
+          "as_of": "2025-12-16",
+          "numbers": [
+            "15.8"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2025-12-16",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "tesla-gruenheide-cells": {
+      "id": "tesla-gruenheide-cells",
+      "template_version": 1,
+      "fingerprint": "4e5e87e6c1640f61",
+      "sentence": {
+        "text": "Tesla Giga Berlin cell manufacturing is Tesla's batteries and solar project at Grünheide, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Tesla Giga Berlin cell manufacturing",
+          "Tesla",
+          "Grünheide, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Tesla Giga Berlin cell manufacturing went into construction on 22 July 2026.",
+          "as_of": "2026-07-22",
+          "numbers": [],
+          "sourced": [
+            "Tesla Giga Berlin cell manufacturing"
+          ],
+          "href": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026049213/exhibit991.htm",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Grünheide, Germany.",
+          "as_of": "2026-07-22",
+          "numbers": [],
+          "sourced": [
+            "Grünheide, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and nickel-rich cells.",
+          "as_of": "2026-07-22",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "nickel-rich cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-07-22",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "sunwoda-nyiregyhaza": {
+      "id": "sunwoda-nyiregyhaza",
+      "template_version": 1,
+      "fingerprint": "40330c73b2f24e4a",
+      "sentence": {
+        "text": "Sunwoda Nyíregyháza is Sunwoda's batteries and solar project at Nyíregyháza, Hungary.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Sunwoda Nyíregyháza",
+          "Sunwoda",
+          "Nyíregyháza, Hungary"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Sunwoda Nyíregyháza went into construction on 27 July 2023.",
+          "as_of": "2023-07-27",
+          "numbers": [],
+          "sourced": [
+            "Sunwoda Nyíregyháza"
+          ],
+          "href": "https://kormany.hu/hirek/a-kinai-sunwoda-580-milliard-forintos-beruhazassal-nyiregyhazan-epiti-fel-elso-europai-uzemet",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Nyíregyháza, Hungary.",
+          "as_of": "2023-08-10",
+          "numbers": [],
+          "sourced": [
+            "Nyíregyháza, Hungary"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2023-08-10",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2023-08-10",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "calb-sines": {
+      "id": "calb-sines",
+      "template_version": 1,
+      "fingerprint": "57aa86cba64e8eea",
+      "sentence": {
+        "text": "CALB Sines is CALB's batteries and solar project at Sines, Portugal.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "CALB Sines",
+          "CALB",
+          "Sines, Portugal"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "CALB Sines went into construction on 24 February 2025.",
+          "as_of": "2025-02-24",
+          "numbers": [],
+          "sourced": [
+            "CALB Sines"
+          ],
+          "href": "http://en.calb-tech.com/news_detail/5.html",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Sines, Portugal.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [
+            "Sines, Portugal"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 15 GWh per year.",
+          "as_of": "2026-09-05",
+          "numbers": [
+            "15"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "sk-on-ivancsa": {
+      "id": "sk-on-ivancsa",
+      "template_version": 1,
+      "fingerprint": "037ab5e41a74e312",
+      "sentence": {
+        "text": "SK On Iváncsa is SK On's batteries and solar project at Iváncsa, Hungary.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "SK On Iváncsa",
+          "SK On",
+          "Iváncsa, Hungary"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "SK On Iváncsa went into construction on 23 March 2022.",
+          "as_of": "2022-03-23",
+          "numbers": [],
+          "sourced": [
+            "SK On Iváncsa"
+          ],
+          "href": "https://www.electrive.com/2022/03/23/sk-on-receives-funding-for-battery-cell-plant-in-hungary/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Iváncsa, Hungary.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [
+            "Iváncsa, Hungary"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "sk-on-komarom": {
+      "id": "sk-on-komarom",
+      "template_version": 1,
+      "fingerprint": "33bb9a3b0b3c7b74",
+      "sentence": {
+        "text": "SK On Komárom is SK On's batteries and solar project at Komárom, Hungary.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "SK On Komárom",
+          "SK On",
+          "Komárom, Hungary"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "SK On Komárom started operating on 29 January 2021.",
+          "as_of": "2021-01-29",
+          "numbers": [],
+          "sourced": [
+            "SK On Komárom"
+          ],
+          "href": "https://kormany.hu/hirek/szijjarto-magyarorszag-tortenetenek-legnagyobb-zoldmezos-beruhazasat-valositja-meg-a-del-koreai-sk-innovation-ivancsan",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Komárom, Hungary.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [
+            "Komárom, Hungary"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "envision-aesc-extremadura": {
+      "id": "envision-aesc-extremadura",
+      "template_version": 1,
+      "fingerprint": "7c35945d1ff7333c",
+      "sentence": {
+        "text": "AESC Navalmoral de la Mata is AESC's batteries and solar project at Navalmoral de la Mata, Spain.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "AESC Navalmoral de la Mata",
+          "AESC",
+          "Navalmoral de la Mata, Spain"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is being built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "AESC Navalmoral de la Mata went into construction on 8 July 2024.",
+          "as_of": "2024-07-08",
+          "numbers": [],
+          "sourced": [
+            "AESC Navalmoral de la Mata"
+          ],
+          "href": "https://web.archive.org/web/20241002033752/https://www.aesc-group.com/en/item/668bf854f7fe5a27254fcc59/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Navalmoral de la Mata, Spain.",
+          "as_of": "2026-06-08",
+          "numbers": [],
+          "sourced": [
+            "Navalmoral de la Mata, Spain"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing and lithium iron phosphate cells.",
+          "as_of": "2026-06-08",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing",
+            "lithium iron phosphate cells"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 94.24 GWh per year.",
+          "as_of": "2026-06-08",
+          "numbers": [
+            "94.24"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-06-08",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "svolt-uberherrn": {
+      "id": "svolt-uberherrn",
+      "template_version": 1,
+      "fingerprint": "f8525957e24cb50b",
+      "sentence": {
+        "text": "SVOLT Überherrn is SVOLT's batteries and solar project at Überherrn, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "SVOLT Überherrn",
+          "SVOLT",
+          "Überherrn, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "SVOLT Überherrn was cancelled on 7 May 2026.",
+          "as_of": "2026-05-07",
+          "numbers": [],
+          "sourced": [
+            "SVOLT Überherrn"
+          ],
+          "href": "https://ueberherrn.de/wp-content/uploads/2024/02/Bekanntmachung-Offenlage-Aufhebung-Linsler-Feld.pdf",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Überherrn, Germany.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [
+            "Überherrn, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It was to be built for 24 GWh per year.",
+          "as_of": "2026-09-05",
+          "numbers": [
+            "24"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-05",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "freyr-mo-i-rana": {
+      "id": "freyr-mo-i-rana",
+      "template_version": 1,
+      "fingerprint": "6a5f6eab0c778254",
+      "sentence": {
+        "text": "T1 Energy Giga Arctic is T1 Energy's batteries and solar project at Mo i Rana, Norway.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "T1 Energy Giga Arctic",
+          "T1 Energy",
+          "Mo i Rana, Norway"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "T1 Energy Giga Arctic was cancelled on 31 March 2026.",
+          "as_of": "2026-03-31",
+          "numbers": [],
+          "sourced": [
+            "T1 Energy Giga Arctic"
+          ],
+          "href": "https://www.sec.gov/Archives/edgar/data/1992243/000199224326000007/t1-20251231.htm",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It was to be at Mo i Rana, Norway.",
+          "as_of": "2026-09-06",
+          "numbers": [],
+          "sourced": [
+            "Mo i Rana, Norway"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-06",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-06",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "acc-kaiserslautern": {
+      "id": "acc-kaiserslautern",
+      "template_version": 1,
+      "fingerprint": "170e21467ba01188",
+      "sentence": {
+        "text": "ACC Kaiserslautern is Automotive Cells Company's batteries and solar project at Kaiserslautern, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "ACC Kaiserslautern",
+          "Automotive Cells Company",
+          "Kaiserslautern, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "ACC Kaiserslautern was cancelled on 7 February 2026.",
+          "as_of": "2026-02-07",
+          "numbers": [],
+          "sourced": [
+            "ACC Kaiserslautern"
+          ],
+          "href": "https://www.cnbc.com/2026/02/07/stellantis-backed-acc-drops-plans-for-italian-german-factories-union.html",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It was to be at Kaiserslautern, Germany.",
+          "as_of": "2026-09-07",
+          "numbers": [],
+          "sourced": [
+            "Kaiserslautern, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-07",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-07",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "svolt-lauchhammer": {
+      "id": "svolt-lauchhammer",
+      "template_version": 1,
+      "fingerprint": "b436ff9584a1b8be",
+      "sentence": {
+        "text": "SVOLT Lauchhammer is SVOLT's batteries and solar project at Lauchhammer, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "SVOLT Lauchhammer",
+          "SVOLT",
+          "Lauchhammer, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "SVOLT Lauchhammer was cancelled on 27 May 2024.",
+          "as_of": "2024-05-27",
+          "numbers": [],
+          "sourced": [
+            "SVOLT Lauchhammer"
+          ],
+          "href": "https://ecomento.de/2024/05/27/akkubauer-svolt-fertigt-doch-nicht-in-lauchhammer/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It was to be at Lauchhammer, Germany.",
+          "as_of": "2024-05-28",
+          "numbers": [],
+          "sourced": [
+            "Lauchhammer, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2024-05-28",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2024-05-28",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "farasis-bitterfeld": {
+      "id": "farasis-bitterfeld",
+      "template_version": 1,
+      "fingerprint": "974f8a83a55fbcfa",
+      "sentence": {
+        "text": "Farasis Bitterfeld-Wolfen is Farasis Energy's batteries and solar project at Bitterfeld-Wolfen, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Farasis Bitterfeld-Wolfen",
+          "Farasis Energy",
+          "Bitterfeld-Wolfen, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Work has stopped, and the reason is in its history below.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Farasis Bitterfeld-Wolfen was paused on 23 May 2022.",
+          "as_of": "2022-05-23",
+          "numbers": [],
+          "sourced": [
+            "Farasis Bitterfeld-Wolfen"
+          ],
+          "href": "https://ecomento.de/2022/05/23/farasis-bau-einer-grossen-akkufabrik-in-bitterfeld-wolfen-ist-geplatzt/",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "Its site is at Bitterfeld-Wolfen, Germany.",
+          "as_of": "2022-05-24",
+          "numbers": [],
+          "sourced": [
+            "Bitterfeld-Wolfen, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2022-05-24",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2022-05-24",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "britishvolt-blyth": {
+      "id": "britishvolt-blyth",
+      "template_version": 1,
+      "fingerprint": "3a72509623262a0d",
+      "sentence": {
+        "text": "Britishvolt Blyth is Britishvolt's batteries and solar project at Cambois, Blyth, United Kingdom.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "Britishvolt Blyth",
+          "Britishvolt",
+          "Cambois, Blyth, United Kingdom"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It will not be built.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "Britishvolt Blyth was cancelled on 17 January 2023.",
+          "as_of": "2023-01-17",
+          "numbers": [],
+          "sourced": [
+            "Britishvolt Blyth"
+          ],
+          "href": "https://www.thegazette.co.uk/notice/4260297",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It was to be at Cambois, Blyth, United Kingdom.",
+          "as_of": "2026-09-06",
+          "numbers": [],
+          "sourced": [
+            "Cambois, Blyth, United Kingdom"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-06",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It was to be built for 35 GWh per year.",
+          "as_of": "2026-09-06",
+          "numbers": [
+            "35"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-06",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "novo-energy-gothenburg": {
+      "id": "novo-energy-gothenburg",
+      "template_version": 1,
+      "fingerprint": "4b9da32bb554cd69",
+      "sentence": {
+        "text": "NOVO Energy Gothenburg is NOVO Energy's batteries and solar project at Gothenburg, Sweden.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "NOVO Energy Gothenburg",
+          "NOVO Energy",
+          "Gothenburg, Sweden"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Work has stopped, and the reason is in its history below.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "NOVO Energy Gothenburg was paused on 13 January 2026.",
+          "as_of": "2026-01-13",
+          "numbers": [],
+          "sourced": [
+            "NOVO Energy Gothenburg"
+          ],
+          "href": "https://www.novoenergy.se/volvo-cars-announces-an-operational-pause-in-novo-energy",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "Its site is at Gothenburg, Sweden.",
+          "as_of": "2026-09-07",
+          "numbers": [],
+          "sourced": [
+            "Gothenburg, Sweden"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-07",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "€202 million of public money has been committed to it.",
+          "as_of": "2025-07-04",
+          "numbers": [
+            "202"
+          ],
+          "sourced": [],
+          "href": "#funding",
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
+    },
+    "eve-power-debrecen": {
+      "id": "eve-power-debrecen",
+      "template_version": 1,
+      "fingerprint": "127716cefbaab7df",
+      "sentence": {
+        "text": "EVE Power Debrecen is EVE Power's batteries and solar project at Debrecen, Hungary.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "EVE Power Debrecen",
+          "EVE Power",
+          "Debrecen, Hungary"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "Nothing has been committed to it yet.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "EVE Power Debrecen was announced on 29 September 2025.",
+          "as_of": "2025-09-29",
+          "numbers": [],
+          "sourced": [
+            "EVE Power Debrecen"
+          ],
+          "href": "https://www.evebattery.com/en/news-1873",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "It is at Debrecen, Hungary.",
+          "as_of": "2025-09-29",
+          "numbers": [],
+          "sourced": [
+            "Debrecen, Hungary"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2025-09-29",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 30 GWh per year.",
+          "as_of": "2025-09-29",
+          "numbers": [
+            "30"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2025-09-29",
           "numbers": [],
           "sourced": [],
           "href": null,

@@ -25,6 +25,7 @@ import os
 import statistics
 import sys
 from collections import Counter, defaultdict
+from calendar import monthrange
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -72,6 +73,10 @@ REPORTING_GROUPS = {
 COLUMNS = [
     "project_id", "sector", "company", "country", "technology", "transition",
     "capacity_value", "capacity_unit", "capacity_basis",
+    "schedule_speaker", "first_stated_production_start",
+    "latest_stated_production_start", "schedule_revisions", "months_slipped",
+    "months_past_stated", "speakers_disagree", "disagreement_months",
+    "press_stated_production_start", "press_source_url",
     "event_date", "status_from", "status_to", "event_kind", "source_type",
     "source_url", "evidence_mode", "months_in_previous_state", "current_status",
     "months_in_current_state",
@@ -116,6 +121,20 @@ def num(v: float) -> str:
     return f"{v:,.0f}" if float(v) == int(v) else f"{v:,.2f}"
 
 
+def no_cap(rows) -> int:
+    """How many of these rows carry no capacity figure.
+
+    PRINTED BESIDE EVERY CAPACITY-WEIGHTED TOTAL, per sources/scope.md,
+    "Admission and capacity are separate questions". A row with no figure is
+    admitted, is counted in every count-based table here, and cannot be weighted
+    in a capacity-weighted one -- there is nothing to weight it by. A weighted
+    total with a silent denominator reads as a statement about the sector when it
+    is a statement about the part of the sector that published a number, so the
+    excluded count travels with it. It is printed when it is zero too, so that a
+    reader never has to work out whether it was checked."""
+    return sum(1 for r in rows if r.get("capacity_value") in (None, ""))
+
+
 def by_unit(rows) -> str:
     """A total per unit, never across them. t_per_year and t_co2_per_year are both
     tonnes and they are not the same tonne: one is product the works sells, the
@@ -130,6 +149,113 @@ def by_unit(rows) -> str:
     return "; ".join(f"{num(v)} {u}" for u, v in sorted(per.items()))
 
 
+# A TARGET IS READ AT THE END OF ITS PERIOD. "2029" is not missed until 31
+# December 2029, and reading it as 1 January would call a project late for a year
+# in which it is still on time. This is the opposite convention from a history
+# date, which is padded to the first of its period because that is the earliest
+# the event can have happened. Both are the reading that does not overstate.
+def target_end(t: str) -> date:
+    t = str(t)
+    y = int(t[:4])
+    if len(t) == 4:
+        return date(y, 12, 31)
+    tail = t[5:]
+    if tail.startswith("H"):
+        return date(y, 6, 30) if tail == "H1" else date(y, 12, 31)
+    if tail.startswith("Q"):
+        m = int(tail[1]) * 3
+        return date(y, m, monthrange(y, m)[1])
+    parts = [int(x) for x in t.split("-")]
+    if len(parts) == 2:
+        return date(y, parts[1], monthrange(y, parts[1])[1])
+    return date(*parts)
+
+
+def schedule(r: dict, today: date) -> dict:
+    """The production_start story for one row, read under the speaker rule.
+
+    A SLIP IS ONE SPEAKER CHANGING ITS MIND, AND ONLY THAT. Two speakers giving
+    different dates for the same milestone have revised nothing; they disagree,
+    which is a fact about the evidence and not about the project. Counting that as
+    a slip manufactures delay out of a company and a government being asked on the
+    same day, and it does so in the direction that flatters the register. So the
+    slip series is computed WITHIN a speaker and the disagreement is reported in
+    its own columns beside it.
+
+    THE PRIMARY SPEAKER is the one with the most statements, and `company` wins a
+    tie: the operator's own promise is the series a slip is really about, and a
+    host government quoting it is not a second data point about the operator.
+
+    months_past_stated IS BLANK FOR AN OPERATING PLANT, because "how long has this
+    been late" has no meaning once the plant runs, and zero rather than negative
+    for a target still ahead: a project that is not late is not early.
+    """
+    BLANK = {k: "" for k in ("schedule_speaker", "first_stated_production_start",
+                             "latest_stated_production_start", "schedule_revisions",
+                             "months_slipped", "months_past_stated",
+                             "speakers_disagree", "disagreement_months")}
+    ps = [h for h in (r.get("stated_schedule") or [])
+          if h.get("milestone") == "production_start"]
+    if not ps:
+        return BLANK
+    by_speaker: dict[str, list] = defaultdict(list)
+    for h in ps:
+        by_speaker[h.get("speaker") or "other"].append(h)
+    for v in by_speaker.values():
+        v.sort(key=lambda h: str(h["date"]))
+
+    primary = max(by_speaker, key=lambda sp: (len(by_speaker[sp]), sp == "company"))
+    series = by_speaker[primary]
+    first, last = series[0], series[-1]
+
+    out = dict(BLANK)
+    out["schedule_speaker"] = primary
+    out["first_stated_production_start"] = first["target_date"]
+    out["latest_stated_production_start"] = last["target_date"]
+    out["schedule_revisions"] = len(series) - 1
+    out["months_slipped"] = months(target_end(first["target_date"]),
+                                   target_end(last["target_date"]))
+    if r.get("status") == "operating":
+        out["months_past_stated"] = ""
+    else:
+        end = target_end(last["target_date"])
+        out["months_past_stated"] = months(end, today) if today > end else 0.0
+
+    # DISAGREEMENT: each speaker's latest word on the milestone, compared. Never
+    # folded into the slip, and reported even when it is larger than the slip --
+    # which on this dataset it always is.
+    if len(by_speaker) > 1:
+        latest = {sp: v[-1] for sp, v in by_speaker.items()}
+        pairs = sorted(latest.items(), key=lambda kv: target_end(kv[1]["target_date"]))
+        lo, hi = pairs[0], pairs[-1]
+        out["speakers_disagree"] = f"{lo[0]} vs {hi[0]}"
+        out["disagreement_months"] = months(target_end(lo[1]["target_date"]),
+                                            target_end(hi[1]["target_date"]))
+    return out
+
+
+# THE COMPARISON TIER, AND WHY IT IS NOT IN THE REGISTER. Five rows have a
+# production date that exists only in trade press, and the source rules refuse it:
+# the register states nothing it cannot source to a company, a permit or a grant
+# decision. That refusal has a cost, and a cost nobody can see is a cost nobody
+# can weigh. So the press dates are held in sources/schedule_queue.json, read from
+# there into two columns here, and never written to data/transition/projects.json.
+#
+# THE FILE IS THE BOUNDARY. Anything in projects.json has passed the source rules;
+# anything in these two columns has not. Keeping them in different files is what
+# stops the tier being quietly promoted by somebody who finds it convenient.
+def press_tier() -> dict[str, dict]:
+    path = ROOT / "sources" / "schedule_queue.json"
+    if not path.exists():
+        return {}
+    out = {}
+    with open(path, encoding="utf-8") as fh:
+        for e in json.load(fh).get("outstanding") or []:
+            if e.get("press_stated_production_start"):
+                out[e["project"]] = e
+    return out
+
+
 def load():
     with open(ROOT / "data" / "transition" / "projects.json", encoding="utf-8") as fh:
         return json.load(fh)["projects"]
@@ -140,6 +266,7 @@ def main() -> int:
     today = date.today()
     rows = load()
 
+    press = press_tier()
     events = []
     # Every closed run in a state, and the open one the project is sitting in
     # now, keyed by the state itself.
@@ -148,6 +275,10 @@ def main() -> int:
 
     for r in rows:
         history = r.get("status_history") or []
+        sched = schedule(r, today)
+        pt = press.get(r["id"], {})
+        sched["press_stated_production_start"] = pt.get("press_stated_production_start", "")
+        sched["press_source_url"] = pt.get("press_source_url", "")
         # Measured from the last event to the export date. A project with no
         # history has no event to measure from and is left empty rather than
         # given a zero, which would read as "changed today".
@@ -165,6 +296,7 @@ def main() -> int:
                 "capacity_value": r.get("capacity_value", ""),
                 "capacity_unit": r.get("capacity_unit", ""),
                 "capacity_basis": r.get("capacity_basis", ""),
+                **sched,
                 "event_date": h["date"],
                 "status_from": h.get("status_from") or "",
                 "status_to": h.get("status_to", ""),
@@ -246,7 +378,10 @@ def main() -> int:
            "project's first entry, which comes from nowhere. Each cell is the "
            "number of events, and after the slash the capacity moving with them, "
            "totalled separately per unit and never across them — blank where none "
-           "of those projects carries a figure.", ""]
+           "of those projects carries a figure. THE COUNT AND THE CAPACITY IN A "
+           "CELL HAVE DIFFERENT DENOMINATORS: the count is every event, the "
+           "capacity is only the events whose project carries a figure. The "
+           "shortfall is in the table above and in `no capacity` below.", ""]
     froms = ["-"] + list(sm.PROJECT_STATUSES)
     tos = list(sm.PROJECT_STATUSES)
     cell_n: dict[tuple, int] = Counter()
@@ -269,6 +404,21 @@ def main() -> int:
             line.append("%d / %s" % (n, cap) if cap else str(n))
         body.append(line)
     md += [table(["from \\ to"] + tos, body)]
+    # THE TWO DENOMINATORS, NAMED, because this table is the one a paper lifts
+    # straight into a figure and its two halves do not divide by the same thing.
+    # A cell's count is over every row; its capacity is over the rows carrying a
+    # figure. Printed per sector and for the file, so the caption travels with
+    # the table instead of living in a methods section nobody copies with it.
+    md += ["", "**The two denominators.** Counts in this table are over all rows; "
+               "capacities are over the rows with a stated capacity. They are not "
+               "the same denominator and a ratio must not be taken across them.", ""]
+    body = []
+    for s in sectors:
+        rs = [r for r in rows if r.get("sector") == s]
+        body.append([s, len(rs), len(rs) - no_cap(rs), no_cap(rs)])
+    body.append(["all", len(rows), len(rows) - no_cap(rows), no_cap(rows)])
+    md += [table(["sector", "rows", "rows with stated capacity",
+                  "rows without"], body)]
 
     md += ["", "## Months in each state", "",
            "A closed run is a state a project has left; the open run is the state "
@@ -311,6 +461,127 @@ def main() -> int:
     md += [table(["sector", "projects", "median months", "max months"]
                  + [b[0] for b in bands], body)]
 
+    md += ["", "## Stated schedules, slip and disagreement, by sector", "",
+           "What each project SAID it would do, from `stated_schedule` — a second "
+           "history beside the status one. A slip is not a status change and never "
+           "appears in the transition matrix: a plant whose start date moves from "
+           "2026 to 2028 has not moved a rung, and this is the only table that "
+           "sees it.", "",
+           "**A slip is one speaker changing its mind.** Two speakers giving "
+           "different dates for the same milestone have revised nothing — they "
+           "disagree, and that is a fact about the evidence rather than about the "
+           "project. Slip is therefore measured WITHIN a speaker and disagreement "
+           "is counted separately; folding the second into the first would "
+           "manufacture delay out of a company and a government being asked on the "
+           "same day.", "",
+           "`with a stated date` is the share of the sector's projects carrying at "
+           "least one production_start statement — everything right of it is over "
+           "THOSE rows and not over the sector. A target is read at the end of its "
+           "period, so \"2029\" is not late until 31 December 2029.", ""]
+
+    def sched_rows(rs):
+        out = []
+        for r in rs:
+            h = [x for x in (r.get("stated_schedule") or [])
+                 if x.get("milestone") == "production_start"]
+            if h:
+                out.append((r, schedule(r, today)))
+        return out
+
+    def sched_stats(rs):
+        have = sched_rows(rs)
+        if not have:
+            return [f"0 of {len(rs)}", "-", "-", "-", "-"]
+        slips = [x["months_slipped"] for _, x in have]
+        revised = sum(1 for _, x in have if x["schedule_revisions"])
+        dis = [x["disagreement_months"] for _, x in have if x["speakers_disagree"]]
+        return [f"{len(have)} of {len(rs)} ({100 * len(have) // len(rs)}%)",
+                med(slips), f"{revised} of {len(have)}",
+                f"{len(dis)} of {len(have)}",
+                f"{max(dis):.1f}" if dis else "-"]
+
+    body = [[s] + sched_stats([r for r in rows if r.get("sector") == s])
+            for s in sectors]
+    body.append(["all"] + sched_stats(rows))
+    md += [table(["sector", "with a stated date", "median months slipped",
+                  "at least one revision", "speakers disagree",
+                  "largest disagreement"], body)]
+
+    have = sched_rows(rows)
+    slipped = sorted([x for x in have if x[1]["months_slipped"]],
+                     key=lambda x: -x[1]["months_slipped"])[:5]
+    md += ["", "The five largest slips — one speaker moving its own date:", ""]
+    if slipped:
+        md += [table(["project", "sector", "speaker", "first stated",
+                      "latest stated", "months slipped", "status now"],
+                     [[r["id"], r.get("sector", ""), x["schedule_speaker"],
+                       x["first_stated_production_start"],
+                       x["latest_stated_production_start"],
+                       "%.1f" % x["months_slipped"], r.get("status", "")]
+                      for r, x in slipped])]
+    else:
+        md += ["**None. No speaker on this dataset has revised its own stated "
+               "production start.** Every gap between two dates on this file is a "
+               "gap between two different speakers, which the next table carries. "
+               "That is a finding about the evidence and not a clean bill for the "
+               "sector: a company that stops restating a date has not kept it, and "
+               "nothing here can tell the two apart.", ""]
+
+    dis = sorted([x for x in have if x[1]["speakers_disagree"]],
+                 key=lambda x: -x[1]["disagreement_months"])
+    md += ["", "Disagreements — two speakers, one milestone, never counted as slip:", ""]
+    if dis:
+        md += [table(["project", "sector", "speakers", "months apart", "status now"],
+                     [[r["id"], r.get("sector", ""), x["speakers_disagree"],
+                       "%.1f" % x["disagreement_months"], r.get("status", "")]
+                      for r, x in dis])]
+    else:
+        md += ["None.", ""]
+
+    md += ["", "## The press tier, as a comparison and not as a source", "",
+           "Five rows have a stated production date that exists only in trade "
+           "press. The source rules refuse it — the register states nothing it "
+           "cannot source to a company, a permit or a grant decision — and those "
+           "dates are held in sources/schedule_queue.json, never in "
+           "data/transition/projects.json. THE FILE IS THE BOUNDARY: anything in "
+           "the register has passed the rules, anything in this tier has not.", "",
+           "This table is what the refusal costs. `months past` is the median "
+           "months_past_stated over the rows that have a date, on each tier; a "
+           "project whose date is still ahead counts as 0 and an operating plant "
+           "is excluded, as everywhere else in this file.", ""]
+
+    def tier(rs, with_press):
+        have, past = 0, []
+        for r in rs:
+            x = schedule(r, today)
+            t = x["latest_stated_production_start"]
+            if not t and with_press:
+                pt = press.get(r["id"], {})
+                t = pt.get("press_stated_production_start", "")
+            if not t:
+                continue
+            have += 1
+            if r.get("status") == "operating":
+                continue
+            end = target_end(t)
+            past.append(months(end, today) if today > end else 0.0)
+        return have, past
+
+    body = []
+    for s in sectors:
+        rs = [r for r in rows if r.get("sector") == s]
+        h0, p0 = tier(rs, False)
+        h1, p1 = tier(rs, True)
+        body.append([s, len(rs), f"{h0} ({100 * h0 // len(rs)}%)", med(p0),
+                     f"{h1} ({100 * h1 // len(rs)}%)", med(p1), h1 - h0])
+    h0, p0 = tier(rows, False)
+    h1, p1 = tier(rows, True)
+    body.append(["all", len(rows), f"{h0} ({100 * h0 // len(rows)}%)", med(p0),
+                 f"{h1} ({100 * h1 // len(rows)}%)", med(p1), h1 - h0])
+    md += [table(["sector", "projects", "with a date (register)",
+                  "median months past (register)", "with a date (+press)",
+                  "median months past (+press)", "rows the press adds"], body)]
+
     md += ["", "## Status now, by reporting group", "",
            "`active`, `paused`, `stopped` and `operating` are this export's "
            "groups and are declared in this file. They are not sector_map's "
@@ -333,8 +604,12 @@ def main() -> int:
     md += [table(["sector"] + names + ["detail"], body)]
 
     md += ["", "## Capacity now, by reporting group", "",
-           "The same three groups, weighted by capacity rather than counted. "
-           "Totals are per unit and never across them.", ""]
+           "The same four groups, weighted by capacity rather than counted. "
+           "Totals are per unit and never across them. `no capacity` is the "
+           "number of rows in that sector carrying no figure: they are admitted, "
+           "they are counted in every table above, and they are absent from these "
+           "totals because there is nothing to weight them by. Read every row of "
+           "this table against it.", ""]
     body = []
     for s in sectors:
         rs = [r for r in rows if r.get("sector") == s]
@@ -342,11 +617,12 @@ def main() -> int:
         for g in names:
             line.append(by_unit([r for r in rs
                                  if r.get("status") in REPORTING_GROUPS[g]]) or "-")
+        line.append(f"{no_cap(rs)} of {len(rs)}")
         body.append(line)
     body.append(["all"] + [by_unit([r for r in rows
                                     if r.get("status") in REPORTING_GROUPS[g]]) or "-"
-                           for g in names])
-    md += [table(["sector"] + names, body)]
+                           for g in names] + [f"{no_cap(rows)} of {len(rows)}"])
+    md += [table(["sector"] + names + ["no capacity"], body)]
 
     unplaced = [st for st in sm.PROJECT_STATUSES
                 if not any(st in v for v in REPORTING_GROUPS.values())]

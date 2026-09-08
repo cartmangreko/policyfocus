@@ -76,7 +76,10 @@ import sys
 from datetime import date
 
 import display_vocabulary as dv
+import eov
+import osgb36
 import sector_map as sm
+import utm
 
 DATE_RE = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
 
@@ -115,6 +118,43 @@ def _url(e: Errors, where: str, url: str | None, field: str = "url") -> None:
         e.add(where, f"{field}={url!r} is not a URL")
 
 
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+
+
+def _hosted_copy(e: Errors, where: str, src: dict) -> None:
+    """A DOCUMENT IS SOURCED BY ITS AUTHOR, NOT BY ITS HOST.
+
+    An applicant's own permit submission is that applicant's statement wherever
+    the file happens to sit, so a copy held by a campaign group, a news outlet or
+    a mirror may place a row -- and the row then has to say so, because the
+    reader is being asked to trust an author while fetching from someone else.
+    The block is what makes that checkable rather than merely disclosed: the host
+    URL says where this copy came from, the date says when it answered, and the
+    digest says WHICH BYTES were read. A host that swaps the file, truncates it
+    or serves a different revision changes the digest, and the claim that the
+    quoted passage is in the document stops being unfalsifiable.
+
+    The label is fixed text and not free prose, because it is rendered on the
+    page: every citation standing on a copy reads the same three words, so a
+    reader learns the signal once.
+    """
+    w = f"{where} hosted_copy"
+    _req(e, w, src["hosted_copy"], "host", "host_url", "retrieved_date", "sha256", "label")
+    block = src["hosted_copy"]
+    _url(e, w, block.get("host_url"), "host_url")
+    _date(e, w, block, "retrieved_date")
+    digest = str(block.get("sha256") or "")
+    if digest and not SHA256_RE.match(digest):
+        e.add(w, f"sha256={digest!r} is not 64 lowercase hex characters — a digest "
+                 f"nobody can recompute is a digest that checks nothing")
+    if block.get("label") != "hosted copy":
+        e.add(w, f"label={block.get('label')!r} — the label is the fixed words "
+                 f"'hosted copy', which is what the page renders")
+    if not (src.get("publisher") or "").strip():
+        e.add(w, "is on a source with no publisher — the whole point of the block is "
+                 "that the publisher names the AUTHOR while the host names the copy")
+
+
 def _source_list(e: Errors, where: str, row: dict) -> None:
     sources = row.get("sources")
     if not sources:
@@ -125,6 +165,8 @@ def _source_list(e: Errors, where: str, row: dict) -> None:
         _url(e, w, s.get("url"))
         _req(e, w, s, "title", "publisher", "date")
         _date(e, w, s, "date")
+        if s.get("hosted_copy") is not None:
+            _hosted_copy(e, w, s)
 
 
 # ---------------------------------------------------------------------------
@@ -271,6 +313,50 @@ def check_parameters(e: Errors, rows: list[dict], tech_ids: set, sectors: dict) 
                 e.stale.append(f"  {r['id']}: {age} months old, stale_after {limit}")
 
 
+# COORDINATE-SOURCE EXCEPTIONS, named one at a time, in the same shape and for
+# the same reason as the offshore exceptions in check_coordinates.py: the list is
+# short, every entry is a sentence somebody wrote, and the gate prints all of
+# them on every run. That is the whole difference between an exception and a
+# loophole.
+#
+# THE ONE ENTRY IS A HOLE IN THE VOCABULARY AND SHOULD BE READ AS ONE. The three
+# source types describe how you identify a WORKS -- a polygon somebody drew, an
+# address the operator published, a parcel a permit names. A depleted offshore
+# gas field has none of those. It has a name, a concession block and a position
+# in the technical literature, and no amount of looking will produce a street.
+# The honest options were a fourth source type or a named exception; this is the
+# cheaper one to reverse, and it keeps the vocabulary describing works rather
+# than quietly widening to mean "anything citable".
+#
+# An entry naming a site that no longer exists fails, so the list cannot rot.
+COORDINATE_SOURCE_EXCEPTIONS = {
+    ("galata-co2-storage", "Galata gas field, Black Sea"):
+        "A depleted offshore gas field, not a works: it has no address, no parcel "
+        "and no polygon anybody has drawn. The position is the field's own, and "
+        "the source states it as a coordinate rather than describing a place. "
+        "check_coordinates.py holds the same point against a measured 22.91 km "
+        "offshore exception, which is the check that actually constrains it.",
+}
+
+
+# THE PROJECTIONS A PERMIT MAY STATE A POSITION IN, and the module that inverts
+# each. Closed and small on purpose: a system in this table is one somebody has
+# implemented and self-checked, and a permit quoting any other projection is a
+# coordinate this repository cannot re-run — which is the same as a coordinate it
+# cannot defend. Adding one means writing the conversion and its checks, not
+# widening a vocabulary.
+GRID_SYSTEMS = {
+    "OSGB36": (osgb36, osgb36.to_wgs84),
+    "ETRS89 / UTM 30N": (utm, lambda e_, n_: utm.to_wgs84(e_, n_, zone=30)),
+    # The one conversion this repository does not implement. EOV is a double
+    # projection on a datum ninety metres from WGS84, so sources/eov.py names
+    # EPSG:23700, asks pyproj, and checks the answer three ways. The recompute
+    # contract is unchanged: the stored point is still whatever the module
+    # returns from the document's own easting and northing, on every build.
+    "HD72 / EOV": (eov, eov.to_wgs84),
+}
+
+
 def _location(e: Errors, where: str, row: dict) -> None:
     """Every site a project sits on, and the source that puts it there.
 
@@ -280,10 +366,28 @@ def _location(e: Errors, where: str, row: dict) -> None:
     than a rendering detail is that leaving one out silently is the failure.
     """
     sites = row.get("location")
+    note = (row.get("location_note") or "").strip()
+    stopped = row.get("status") in sm.STOPPED_STATUSES
     if not sites:
-        e.add(where, "no location — every project and plant carries at least one "
-                     "site with a latitude and a longitude")
+        # A STOPPED ROW MAY STAND WITHOUT A POSITION, AND ONLY WITH A NOTE. The
+        # rule the note carries is the whole of the allowance: location is sought
+        # for active rows, and a cancelled or paused project says that it was not
+        # sought rather than leaving an absence that reads like an oversight.
+        # Both halves are required, and the second is what stops this from
+        # becoming the place coordinates go to be avoided.
+        if not stopped:
+            e.add(where, f"no location, and status={row.get('status')!r} is not one of "
+                         f"{list(sm.STOPPED_STATUSES)} — an active project carries at "
+                         f"least one site with a latitude and a longitude. A row that "
+                         f"returns to an active status needs its position found")
+        elif not note:
+            e.add(where, "no location and no location_note — a stopped row may stand "
+                         "without a position, and only where it says so. Write what was "
+                         "not sought and why, so the absence is a decision on the record")
         return
+    if note:
+        e.add(where, "carries both a location and a location_note — the note explains an "
+                     "absence, and there is nothing absent here")
     if not isinstance(sites, list):
         e.add(where, "location must be a list of sites, even where there is one")
         return
@@ -304,7 +408,117 @@ def _location(e: Errors, where: str, row: dict) -> None:
                 e.add(w, f"{field}={val} is outside {lo}..{hi}")
         src = s.get("source") or {}
         _url(e, w, src.get("url"))
-        _req(e, w, src, "publisher", "verbatim")
+        # `type` says which of the three kinds of evidence put this works here,
+        # and is required rather than defaulted: a coordinate whose provenance is
+        # implied is one nobody can weigh. See sm.LOCATION_SOURCE_TYPES for what
+        # each admits and, more importantly, for what none of them admits — a
+        # geocoded town name and a position read off a press photograph are
+        # refused by having no value to record them under.
+        # A source may record that its publisher refuses a declared reader. The
+        # shape is gated here as well as in check_links, because check_links only
+        # sees the block when the URL actually 403s — a malformed one on a source
+        # that happens to be answering would sit unnoticed until the day it
+        # mattered.
+        # THE COMPOSITE SITE STANDARD, gated leg by leg. A row that claims it
+        # must show all three, because the whole argument for the standard is
+        # that the legs cover each other's weaknesses — two of them is just a
+        # weaker version of company-only, which is the thing it must not become.
+        ev = s.get("site_evidence")
+        if ev is not None:
+            ew = f"{w} site_evidence"
+            _vocab(e, ew, ev, "kind", sm.SITE_EVIDENCE_KINDS)
+            if ev.get("kind") == "composite":
+                _req(e, ew, ev, "company", "state", "basemap", "note")
+                for leg in ("company", "state", "basemap"):
+                    block = ev.get(leg)
+                    if not isinstance(block, dict):
+                        continue
+                    _req(e, f"{ew}.{leg}", block, "url", "publisher", "verbatim")
+                    _url(e, f"{ew}.{leg}", block.get("url"))
+
+        if src.get("hosted_copy") is not None:
+            _hosted_copy(e, w, src)
+
+        refused = src.get("refused_declared_reader")
+        if refused is not None:
+            _req(e, f"{w} refused_declared_reader", refused, "last_verified", "by", "note")
+            _date(e, f"{w} refused_declared_reader", refused, "last_verified")
+
+        excused = (row.get("id"), s.get("site")) in COORDINATE_SOURCE_EXCEPTIONS
+        if not excused:
+            _req(e, w, src, "publisher", "verbatim", "type")
+            _vocab(e, w, src, "type", sm.LOCATION_SOURCE_TYPES)
+        else:
+            _req(e, w, src, "publisher", "verbatim")
+            if src.get("type") is not None:
+                e.add(w, "is a named coordinate-source exception and also declares a "
+                         "type — one or the other, or nobody can tell which rule the "
+                         "coordinate is standing on")
+        # A GRID REFERENCE IS RECOMPUTED, NOT TRUSTED. Where a permit gives a
+        # British National Grid position, the stored latitude and longitude have
+        # to be what osgb36.to_wgs84 produces from it — so the conversion cannot
+        # be done once by hand, mistyped, or quietly adjusted afterwards, and a
+        # reader can redo it. The projection and the datum shift are themselves
+        # checked against the Ordnance Survey's published worked example every
+        # time this gate runs; see osgb36.self_check.
+        grid = s.get("grid_reference")
+        if grid:
+            _req(e, f"{w} grid_reference", grid, "system", "easting", "northing")
+            system = grid.get("system")
+            if system not in GRID_SYSTEMS:
+                e.add(f"{w} grid_reference", f"system={system!r} — the systems "
+                                             f"implemented are {sorted(GRID_SYSTEMS)}. A "
+                                             f"projection nobody has written is a "
+                                             f"conversion nobody can re-run")
+            elif src.get("type") != "permit":
+                e.add(f"{w} grid_reference", "is on a site whose coordinate source is "
+                                             "not a permit — a grid reference comes from a "
+                                             "filing, and recording one beside another "
+                                             "kind of source hides which put the point here")
+            else:
+                module, convert = GRID_SYSTEMS[system]
+                for failure in module.self_check():
+                    e.add(module.__name__, failure)
+                got = convert(grid["easting"], grid["northing"])
+                if (s.get("lat"), s.get("lon")) != got:
+                    e.add(w, f"lat/lon is {(s.get('lat'), s.get('lon'))} and the grid "
+                             f"reference E {grid['easting']} N {grid['northing']} converts "
+                             f"to {got} — one of the two has been edited alone")
+        # A PLAN-PARCEL COORDINATE HAS TO SHOW ITS WORKING. The type says two
+        # documents did one job — a plan naming parcels, a cadastre holding their
+        # geometry — and neither is checkable without the list, the register and
+        # the day it answered. `matched` under `listed` is not a failure and is
+        # not hidden either: it is the number a reader needs to know how much of
+        # the plan area the point was computed from.
+        if src.get("type") == "plan_parcels":
+            block = s.get("parcels")
+            if not isinstance(block, dict):
+                e.add(w, "source type=plan_parcels and no parcels block — the plan's own "
+                         "list, the cadastre it was resolved against and the date it was "
+                         "read are what make this coordinate reproducible")
+            else:
+                _req(e, f"{w} parcels", block, "gemarkung", "matched", "listed",
+                     "service", "read_date")
+                _date(e, f"{w} parcels", block, "read_date")
+                _url(e, f"{w} parcels", block.get("service"), "service")
+                matched, listed = block.get("matched"), block.get("listed")
+                if isinstance(matched, int) and isinstance(listed, int):
+                    if matched > listed:
+                        e.add(f"{w} parcels", f"matched={matched} of listed={listed} — the "
+                                              f"cadastre answered for more parcels than the "
+                                              f"plan names")
+                    if matched == 0:
+                        e.add(f"{w} parcels", "matched=0 — no parcel resolved, so nothing "
+                                              "placed this point")
+                    if matched < listed and not block.get("not_found"):
+                        e.add(f"{w} parcels", f"matched={matched} of listed={listed} and "
+                                              f"`not_found` is empty — say which parcels the "
+                                              f"cadastre did not answer for")
+
+        if src.get("type") == "company" and not s.get("address"):
+            e.add(w, "source type=company and no address block — a coordinate derived "
+                     "from the operator's own materials has to quote the address or "
+                     "parcel it was derived from, or the derivation is unrepeatable")
         addr = s.get("address")
         if addr:
             _url(e, f"{w} address", addr.get("url"))
@@ -393,6 +607,65 @@ def _capacity(e: Errors, where: str, row: dict) -> None:
                      "clinker and tonnes of crude steel are not the same tonne")
 
 
+TARGET_RE = re.compile(r"^\d{4}(-(H[12]|Q[1-4]|\d{2}(-\d{2})?))?$")
+
+# Which shape each precision has to be written in. A precision that does not match
+# its own value is the failure this pairing exists to catch: "2026" declared as a
+# month is a target somebody will later read as January.
+TARGET_SHAPE = {
+    "year":    re.compile(r"^\d{4}$"),
+    "half":    re.compile(r"^\d{4}-H[12]$"),
+    "quarter": re.compile(r"^\d{4}-Q[1-4]$"),
+    "month":   re.compile(r"^\d{4}-\d{2}$"),
+    "day":     re.compile(r"^\d{4}-\d{2}-\d{2}$"),
+}
+
+
+def _schedule(e: Errors, where: str, row: dict) -> None:
+    """Every stated_schedule entry is a dated statement by a named kind of source
+    that a milestone would be reached by a stated time.
+
+    AN EMPTY HISTORY IS NOT A FAILURE and is the ordinary case: most rows here
+    have no source that states a date, and an empty list is the honest record of
+    that. What the gate refuses is a half-written entry, because a target with no
+    source or a precision that disagrees with its own value is worse than no
+    target at all -- it is a number a reader will take for a promise somebody made.
+
+    IT IS APPEND-ONLY AND IN DATE ORDER, like status_history, and for the same
+    reason: the point of the list is that the first statement survives the fifth.
+    """
+    sched = row.get("stated_schedule")
+    if sched is None:
+        e.add(where, "no stated_schedule — use [] where no source on file states a "
+                     "date, so that 'nobody has said' and 'nobody has looked' are "
+                     "different objects")
+        return
+    dates = []
+    for i, h in enumerate(sched):
+        w = f"{where} stated_schedule[{i}]"
+        _req(e, w, h, "date", "milestone", "target_date", "target_precision",
+             "source_url", "source_type", "evidence_mode", "speaker")
+        _vocab(e, w, h, "milestone", sm.SCHEDULE_MILESTONES)
+        _vocab(e, w, h, "speaker", sm.SCHEDULE_SPEAKERS)
+        _vocab(e, w, h, "target_precision", sm.TARGET_PRECISIONS)
+        _vocab(e, w, h, "source_type", sm.PROJECT_SOURCE_TYPES)
+        _vocab(e, w, h, "evidence_mode", sm.EVIDENCE_MODES)
+        _date(e, w, h, "date")
+        _url(e, w, h.get("source_url"), "source_url")
+        t, p = h.get("target_date"), h.get("target_precision")
+        if t is not None and not TARGET_RE.match(str(t)):
+            e.add(w, f"target_date={t!r} is not YYYY, YYYY-Hn, YYYY-Qn, YYYY-MM or "
+                     f"YYYY-MM-DD")
+        elif t is not None and p in TARGET_SHAPE and not TARGET_SHAPE[p].match(str(t)):
+            e.add(w, f"target_date={t!r} is not the shape target_precision={p!r} "
+                     f"claims — a target read at the wrong precision is a promise "
+                     f"nobody made")
+        dates.append(str(h.get("date", "")))
+    if dates != sorted(dates):
+        e.add(where, "stated_schedule is not in date order; it is append-only and a "
+                     "revision is a new entry after the statement it revises")
+
+
 def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> None:
     """Every status_history entry carries the six fields that make it an event
     rather than a sentence, and the two derived ones agree with the positional
@@ -443,6 +716,7 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
             e.add(w, "public_funding moved to data/transition/funding.json — the project "
                      "carries a derived rollup, never a stored copy")
         _capacity(e, w, r)
+        _schedule(e, w, r)
         history = r.get("status_history") or []
         dates = []
         prev_status = None
@@ -453,6 +727,31 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
             _date(e, hw, h, "date")
             _url(e, hw, h.get("source_url"), "source_url")
             _event(e, hw, h, i, prev_status)
+            # AN OWNERSHIP EVENT IS ONE FACT AND SAYS BOTH ENDS OF IT. `from` and
+            # `to` are required because "the owner changed" without naming the
+            # owners is an event nobody can check, and they are refused on every
+            # other kind so the field cannot quietly become a note.
+            #
+            # THE KIND IS READ FROM `event_kind`. This branch was written against
+            # a field called `kind`; the same fact is called `event_kind` on main,
+            # where it sits beside source_type and evidence_mode as one of the six
+            # fields _event requires. One name survives the rebase and it is the
+            # one the rest of the schema uses -- two names for one fact is exactly
+            # the quiet second source of truth these gates exist to prevent.
+            if h.get("event_kind") == "ownership":
+                _req(e, hw, h, "from", "to")
+                if i == 0:
+                    e.add(hw, "an ownership event cannot open a history — there is no "
+                              "status before it for its own to be unchanged from, and "
+                              "the first entry is always read as a status change")
+                elif h.get("status") != history[i - 1].get("status"):
+                    e.add(hw, f"is an ownership event whose status ({h.get('status')!r}) "
+                              f"differs from the entry before it "
+                              f"({history[i - 1].get('status')!r}) — a project changing "
+                              f"hands and changing status is two events, and one entry "
+                              f"saying both reads as one causing the other")
+            elif "from" in h or "to" in h:
+                e.add(hw, "carries from/to and is not an ownership event")
             prev_status = h.get("status")
             dates.append(str(h.get("date", "")))
         if dates != sorted(dates):
@@ -460,6 +759,20 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
         if history and history[-1].get("status") != r.get("status"):
             e.add(w, f"status={r.get('status')!r} but the last history entry is "
                      f"{history[-1].get('status')!r}")
+        # A SUPERSEDED CAPACITY HAS TO SAY WHOSE IT WAS. A figure carried after
+        # the party that stated it has gone is a fact about a plan, not about
+        # the project, and the page says so in the past tense with the planner
+        # named. Without `planned_by` the sentence would have nobody to
+        # attribute it to and would fall back to asserting it.
+        cap = r.get("capacity") or {}
+        if cap.get("superseded") and not cap.get("planned_by"):
+            e.add(w, "capacity is superseded and names no `planned_by` — a former plan "
+                     "is somebody's former plan, and the sentence has to say whose")
+        if cap.get("planned_by") and not cap.get("superseded"):
+            e.add(w, "capacity names a `planned_by` and is not marked superseded — "
+                     "attribution is for a figure the project has outlived; a current "
+                     "capacity is the project's own")
+
         _vocab(e, w, r, "role", sm.PROJECT_ROLES)
         if r.get("shared") is not None and r.get("shared") is not True:
             e.add(w, "shared is only ever true — a project that is not shared omits it")
@@ -469,6 +782,25 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
         _location(e, w, r)
         _storage(e, w, r, technologies, project_ids)
         _source_list(e, w, r)
+
+
+def check_coordinate_exceptions(e: Errors, rows: list[dict]) -> list[str]:
+    """Report every named coordinate-source exception, and fail a stale one.
+
+    Printed whether or not anything is wrong, on the same rule the offshore
+    exceptions run under: an exception nobody sees is a rule nobody is applying.
+    """
+    live = {(r.get("id"), s.get("site")) for r in rows for s in (r.get("location") or [])}
+    out = []
+    for key, why in sorted(COORDINATE_SOURCE_EXCEPTIONS.items()):
+        pid, site = key
+        if key not in live:
+            e.add(f"project {pid}", f"a coordinate-source exception names the site "
+                                    f"{site!r}, which no longer exists — a stale "
+                                    f"exception is a rule nobody is applying")
+            continue
+        out.append(f"  {pid}::{site}\n      {why}")
+    return out
 
 
 def check_materials(e: Errors, rows: list[dict], sectors: dict, tech_ids: set,
@@ -1060,6 +1392,36 @@ def check_prose(e: Errors) -> list[str]:
     return pending
 
 
+def check_corrections(e: Errors, rows: list[dict], sectors: dict) -> list[str]:
+    """Dated notes on figures the site has already printed.
+
+    The gate is small because the practice is: an entry says which printed
+    figure moved, when, from what to what, and how this platform came to be
+    wrong. What it enforces is that the note can actually reach a reader — the
+    figure is one a surface renders, from the closed list in sector_map.py, and
+    the sector is one that has a page.
+
+    Every entry is printed on every run, the way the coordinate-source
+    exceptions are, so a correction cannot become a line in a file nobody
+    opens.
+    """
+    listed = []
+    for r in rows:
+        w = f"correction {r.get('id', '?')}"
+        _req(e, w, r, "id", "sector", "figure", "date", "was", "now", "what", "why")
+        _date(e, w, r, "date")
+        _vocab(e, w, r, "figure", sm.CORRECTABLE_FIGURES)
+        if r.get("sector") not in sectors:
+            e.add(w, f"sector={r.get('sector')!r} is not in data/sectors.json")
+        for field in ("what", "why"):
+            if (r.get(field) or "").strip() and not (r.get(field) or "").strip().endswith("."):
+                e.add(w, f"{field} does not end in a full stop; it is a sentence a page prints")
+        _source_list(e, w, r)
+        listed.append(f"  {r.get('date')} {r.get('sector')} {r.get('figure')}: "
+                      f"{r.get('was')} \u2192 {r.get('now')}")
+    return sorted(listed)
+
+
 def main() -> int:
     rows = sm.load_all()
     sectors = sm.sectors()
@@ -1089,6 +1451,8 @@ def main() -> int:
                      measure_ids)
     check_status_groups(e)
     check_project_status_groups(e)
+    corrections = check_corrections(e, rows["correction"], sectors)
+    coord_exceptions = check_coordinate_exceptions(e, rows["project"])
 
     drafts = check_prose(e)
 
@@ -1106,6 +1470,14 @@ def main() -> int:
     if e.stale:
         print(f"\nstale parameters ({len(e.stale)}) — reported, not failed:")
         print("\n".join(e.stale))
+    if corrections:
+        print(f"\ncorrections to printed figures ({len(corrections)}) — dated where the "
+              f"figure is printed, and listed here on every run:")
+        print("\n".join(corrections))
+    if coord_exceptions:
+        print(f"\ncoordinate-source exceptions ({len(coord_exceptions)}) — recorded, "
+              f"never silent:")
+        print("\n".join(coord_exceptions))
     return 0
 
 

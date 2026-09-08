@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { geoKeyProse, geoMarkProse } from "@/lib/prose";
+import { geoKeyProse, geoMarkProse, type UndrawnRow } from "@/lib/prose";
 
 // THE SHARED GEOGRAPHY COMPONENT. One picture, two frames: a regional crop on a
 // project page and a Europe-wide overview on a sector page. Both are the same
@@ -122,7 +122,7 @@ export interface MapDoc {
   as_of: string;
   /** Overview only: the register's remainder — what this sector has on file and
    *  this frame does not draw. The standfirst states it in a clause of its own. */
-  undrawn?: { projects: number; sites: number };
+  undrawn?: { projects: number; sites: number; rows?: UndrawnRow[] };
   /** Crop only: the subject's status, so the key can name the one case the two
    *  fill lines do not cover. */
   subject_status?: string;
