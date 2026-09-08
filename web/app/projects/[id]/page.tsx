@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { DEMOTED, SITE_ROBOTS } from "@/lib/launch";
+import { projectIsIndexable } from "@/lib/siteRoutes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Crumbs from "@/components/Crumbs";
@@ -54,7 +56,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const p = getProject((await params).id);
   if (!p) return { title: "Project not found" };
+  // Page metadata REPLACES the layout's rather than merging with it, so this
+  // has to state robots explicitly in both directions — the same trap the
+  // sector route documents. A project page is indexable unless its sector's
+  // project pages are still held; a held one carries `noindex, follow` so the
+  // crawler still walks through to the sector page that links it.
+  const robots = projectIsIndexable(p.id) ? SITE_ROBOTS : DEMOTED;
   return {
+    robots,
     title: `${p.name} — ${p.company}`,
     description:
       `${p.name}, ${p.company}'s ${p.plant ?? p.country} project: ` +

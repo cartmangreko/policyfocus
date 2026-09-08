@@ -1,6 +1,6 @@
 import { getAllMeasures, getSectorSlugs } from "./data";
 import { measurePathsWithLead } from "./objectLeads";
-import { drawHold, getProjects, hasMap } from "./transition";
+import { drawHold, getProjects, hasMap, projectPageHold } from "./transition";
 import { classify } from "./routes";
 
 // The route policy in lib/routes.ts, applied to the data. Read by app/robots.ts
@@ -21,7 +21,8 @@ export function siteRoutes(): { indexable: string[]; demoted: string[] } {
   return classify({
     mappedSectors: slugs.filter((s) => sectorIsIndexable(s)),
     unmappedSectors: slugs.filter((s) => !sectorIsIndexable(s)),
-    projectIds: getProjects().map((p) => p.id),
+    projectIds: getProjects().filter((p) => projectIsIndexable(p.id)).map((p) => p.id),
+    heldProjectIds: getProjects().filter((p) => !projectIsIndexable(p.id)).map((p) => p.id),
     measuresWithLead: allMeasures.filter((p) => withLead.has(p)),
     measuresWithoutLead: allMeasures.filter((p) => !withLead.has(p)),
   });
@@ -40,4 +41,13 @@ export function siteRoutes(): { indexable: string[]; demoted: string[] } {
  *  its head and stays out of the sitemap until somebody lifts the hold. */
 export function sectorIsIndexable(slug: string): boolean {
   return hasMap(slug) && !drawHold(slug);
+}
+
+/** Whether a project's own page is indexable. Its sector's project pages must
+ *  have been released — the narrower of the two holds in draw_holds.json. The
+ *  route reads this for its robots metadata and siteRoutes reads it for the
+ *  sitemap, so the page and the URL set answer from one function. */
+export function projectIsIndexable(id: string): boolean {
+  const p = getProjects().find((x) => x.id === id);
+  return !!p && !projectPageHold(p.sector);
 }

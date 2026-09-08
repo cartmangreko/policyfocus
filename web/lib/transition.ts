@@ -669,6 +669,28 @@ export function drawHold(sector: string): DrawHold | undefined {
   return drawHolds()[sector];
 }
 
+let projectHoldsCache: Record<string, DrawHold> | null = null;
+/** Sectors whose PROJECT pages are built and not yet released for indexing.
+ *  Narrower than a draw hold and for the same reason: releasing a sector's own
+ *  page is a judgement about the overview it draws, not about the one indexable
+ *  page per project that classify() creates unconditionally.
+ *  See data/transition/draw_holds.json. */
+export function projectPageHolds(): Record<string, DrawHold> {
+  if (!projectHoldsCache) {
+    const full = path.join(DIR, "draw_holds.json");
+    projectHoldsCache = fs.existsSync(full)
+      ? ((JSON.parse(fs.readFileSync(full, "utf8")).project_page_holds ?? {}) as Record<
+          string,
+          DrawHold
+        >)
+      : {};
+  }
+  return projectHoldsCache;
+}
+export function projectPageHold(sector: string): DrawHold | undefined {
+  return projectPageHolds()[sector];
+}
+
 /** Whether the sector has the data its product template draws. DATA ONLY —
  *  a draw hold is not asked about here, and that is the change of 6 September
  *  2026.

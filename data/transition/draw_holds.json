@@ -29,7 +29,23 @@
     "HOLDS ARE PLACED AUTOMATICALLY by sources/build_importance.py, on the first build that",
     "writes a sector's ranking -- the moment hasMap turns true and the page would otherwise",
     "begin drawing. They are never lifted by a builder: releasing is a judgement about whether",
-    "the data is honest enough to publish, and a builder is not entitled to make it."
+    "the data is honest enough to publish, and a builder is not entitled to make it.",
+    "",
+    "`project_page_holds` IS A SECOND, NARROWER HOLD, AND IT EXISTS FOR THE SAME REASON.",
+    "Releasing a sector's own page is a judgement about the overview it draws. It is not a",
+    "judgement about the sector's PROJECT pages, which classify() in web/lib/routes.ts puts",
+    "into the indexable set unconditionally -- so the moment a sector's rows land, one search-",
+    "indexable page per project appears and enters the sitemap as a side effect of a build step.",
+    "That is exactly the failure the draw hold above was written to prevent, one level down.",
+    "",
+    "A HELD SECTOR'S PROJECT PAGES ARE BUILT, LINKED FROM THE SECTOR PAGE, AND CARRY",
+    "`noindex, follow`. They stay out of the sitemap. Nothing is hidden from a reader who",
+    "follows the product surface; what is withheld is offering 32 pages to a stranger through",
+    "search before anybody has said they are ready. `follow` is deliberate and is the same",
+    "reading the demoted measure pages already use: the crawler walks through them.",
+    "",
+    "Released the same way as a draw hold -- moved to `project_pages_released` with the date",
+    "and who ruled it."
   ],
   "holds": {},
   "released": {
@@ -45,5 +61,14 @@
       },
       "reason": "Released on the judgement the hold was placed for. The overview draws 25 of 34 candidates and says what it leaves out by name: seven rows on file are not drawn — six cancelled and one paused whose location was not sought — and the standfirst names each with its status. Four of the nine outstanding candidates are stopped projects that will never be drawn and are no longer chased for a position; five are live gaps, and the coverage of the picture is a fact about the picture rather than a silence in it. Overview honesty is judged on what is on file, and what is on file now says so out loud."
     }
-  }
+  },
+  "project_page_holds": {
+    "batsol": {
+      "held_since": "2026-09-09",
+      "held_by": "Claude, pending George's release",
+      "reason": "The batsol draw hold was released on 2026-09-06 and that release reasons about the OVERVIEW -- what the map draws, and which seven rows on file it leaves out. It says nothing about the sector's 32 project pages, which classify() makes indexable unconditionally and which would have entered the sitemap on this merge without any decision naming them. Held so that publishing them is a decision rather than a side effect. The pages are built, linked from the released sector page, and carry noindex, follow; lifting the hold is one line and one deploy.",
+      "released_by": "George"
+    }
+  },
+  "project_pages_released": {}
 }
