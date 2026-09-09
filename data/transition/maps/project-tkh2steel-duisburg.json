@@ -70,6 +70,7 @@
       "href": "/projects/tkh2steel-duisburg",
       "lat": 51.4907,
       "lon": 6.7272,
+      "host_works": null,
       "as_of": "2026-08-28",
       "x": 380.0,
       "y": 215.0,
@@ -125,6 +126,7 @@
       "href": "/projects/bp-lingen-green-hydrogen",
       "lat": 52.5605,
       "lon": 7.3073,
+      "host_works": "bp Raffinerie Lingen",
       "as_of": "2026-09-09",
       "x": 426.6,
       "y": 92.1,
@@ -186,6 +188,7 @@
       "href": "/projects/rwe-get-h2-nukleus-lingen",
       "lat": 52.4852,
       "lon": 7.303,
+      "host_works": null,
       "as_of": "2026-09-09",
       "x": 426.0,
       "y": 100.8,
@@ -247,6 +250,7 @@
       "href": "/projects/salcos-salzgitter",
       "lat": 52.1631,
       "lon": 10.4107,
+      "host_works": null,
       "as_of": "2026-08-28",
       "x": 646.8,
       "y": 141.8,
@@ -308,6 +312,7 @@
       "href": "/projects/shell-refhyne-2-wesseling",
       "lat": 50.8171,
       "lon": 7.0069,
+      "host_works": "Shell Energy & Chemicals Park Rheinland, Werk Wesseling",
       "as_of": "2026-09-09",
       "x": 397.1,
       "y": 294.3,
@@ -369,6 +374,62 @@
       }
     },
     {
+      "id": "uniper-h2maasvlakte",
+      "site": "Uniper Maasvlakte Energy Hub",
+      "country": "NL",
+      "role": "plant",
+      "relation": "technology",
+      "status": "announced",
+      "label": "H2Maasvlakte",
+      "name_line": "H2Maasvlakte",
+      "sub": "Uniper",
+      "href": "/projects/uniper-h2maasvlakte",
+      "lat": 51.9644,
+      "lon": 4.0221,
+      "host_works": "Centrale Maasvlakte",
+      "as_of": "2026-09-09",
+      "x": 188.5,
+      "y": 147.7,
+      "labels": {
+        "wide": {
+          "x": 202.4,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "H2Maasvlakte",
+              "role": "name",
+              "size": 11.0,
+              "y": 144.0
+            },
+            {
+              "text": "Uniper",
+              "role": "company",
+              "size": 9.5,
+              "y": 156.0
+            }
+          ]
+        },
+        "narrow": {
+          "x": 169.1,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "H2Maasvlakte",
+              "role": "name",
+              "size": 21.0,
+              "y": 140.6
+            },
+            {
+              "text": "Uniper",
+              "role": "company",
+              "size": 18.1,
+              "y": 163.6
+            }
+          ]
+        }
+      }
+    },
+    {
       "id": "3d-dunkirk",
       "site": "Dunkerque steelworks",
       "country": "FR",
@@ -381,6 +442,7 @@
       "href": "/projects/3d-dunkirk",
       "lat": 51.0362,
       "lon": 2.298,
+      "host_works": null,
       "as_of": "2026-08-28",
       "x": 53.9,
       "y": 243.8,
@@ -426,7 +488,8 @@
               "y": 221.0
             }
           ],
-          "shortened": true
+          "shortened": true,
+          "crowded": true
         }
       }
     }

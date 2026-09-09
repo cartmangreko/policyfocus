@@ -964,15 +964,34 @@ industrial attrition — that reasons are usually not given — into a distribut
 reasons somebody invented, and it would do so in whichever direction the person
 filling it in found natural.
 
-**The rule binds on the sectors that have adopted it, and is reported for the
-rest.** `STOP_REASON_SECTORS` in `sources/check_sector_schema.py` is `("clean",)`
-today. Nineteen stopped events across batteries, cement, steel and CCS predate
-the rule; the gate prints them on every run under "stopped events with no
-stop_reason" and does not fail. The alternative — writing `unstated` across all
-nineteen so that a gate goes green — is precisely the failure the field exists to
-prevent, applied to nineteen rows at once. The only honest backfill is a re-read
-of those sources, and until somebody does it the debt is on the record with a
-count.
+**The rule is required on the event that STOPS the project and on no other.** A
+later entry about an already-paused project reports on it rather than stopping
+it — Slite's withdrawn permit application, Lyten's memorandum over a site that
+has been still since 2024 — and asking each of those for a reason would make the
+register restate one cause every time somebody wrote about a consequence. The
+test is the positional one the whole layer uses.
+
+**It binds on every sector, and it did not on the day it landed.** Nineteen
+stopped events predated it and were reported rather than failed, on the ruling
+that the only honest backfill is a re-read. The re-read was done on 9 September
+2026 and the exemption is gone. Fifteen stopping transitions now carry a reason
+from their own sources; where the quote comes from somewhere other than the
+event's own source — a company saying why on the day a trade publisher this
+pipeline cannot read reported it — `stop_reason_source_url` carries it, so the
+event keeps its date and the quote keeps its provenance.
+
+**What the re-read found is the argument for the field.** Six of the fifteen give
+no cause at all: a company that stops two factories and says only that the
+"prerequisites" to restart them "were unlikely to be met"; a council that records
+"Das Vorhaben wird nicht mehr umgesetzt"; a Gazette notice that states an
+appointment of administrators and nothing else. Two more state a cause the
+vocabulary cannot hold — an owner changing the business it is in, and a venture
+losing its technology partner — and both are filed at their nearest value with
+the quote beside them and the misfit written on the row rather than smoothed
+into it. **And several sources give more than one reason** where the field takes
+one: SVOLT names tariffs, unevenly distributed subsidies and a lost customer
+project in a single sentence. The field takes the thing that changed and the
+quote keeps the rest.
 
 ### An asserted edge carries the sentence; a structural edge is not written by hand
 
@@ -994,6 +1013,83 @@ only one of them is data.
 kinds of edge that look identical on the page, with only the author knowing which
 is which, is a graph nobody can audit. `EDGE_CLASSES` carries the value so the
 refusal reads as a rule rather than as a missing feature.
+
+### A 200 with an empty body is a refusal, and the link checker cannot see it
+
+A publisher that answers a declared reader with **HTTP 200 and a document
+containing the page title, the navigation and no article** has refused it. The
+page is there; a browser renders it; a link checker calls the line green,
+because by every test a link checker has, it is.
+
+**This is a third state and it needed naming.** The first is a 403, which says
+"not to you" and which `BOT_HOSTILE` in `sources/check_links.py` reports and does
+not fail. The second is `refused_declared_reader`, which is stronger than a host
+list: a named person opened this exact URL on a stated day and found the document
+there. The third is this one, and it is the quietest of the three — nothing fails,
+nothing is reported, and the only symptom is that a source nobody can quote sits
+on a row looking exactly like a source somebody can.
+
+**Two publishers on this file are in it and they cost different things.**
+shell.com serves eighty-five characters to a declared reader: the row for
+REFHYNE 2 therefore quotes the REFHYNE consortium's own site instead, which is
+the operator speaking through the project it leads, and Shell's URL is queued.
+galp.com is worse and more interesting: the article text comes back and the
+**publication date does not**, because Galp renders every date in the browser. An
+undated statement cannot date an event, so a project with a final investment
+decision has its history dated from its lender's release instead, and Galp's page
+is cited beside it carrying no date and dating nothing.
+
+**Both are queued in `sources/manual/wanted`,** with what filing each would close
+— a schedule this register does not hold, and an FID event this register cannot
+date. A person with a browser closes either in a minute.
+
+**What is NOT the answer is a browser's name in the User-Agent.** That recovers
+the appearance of a citation and none of it, and the reasoning is the same one
+`check_links.py` already sets out for the 403s: an honest identity is what makes
+a refusal visible, and a refusal that is visible is a fact on the record rather
+than a green line nobody checked.
+
+### A site may be placed on the works it stands on
+
+**Ruled 9 September 2026, on the hydrogen docket's D13.** A project whose own
+outline nobody has drawn may take its position from the **host works** — the
+refinery, chemical park or power station it is being built inside — and the row
+says so in three places: `site_precision`, `host_works`, and the sentence over
+the picture.
+
+**Why the earlier reading had to give.** The hydrogen pass admitted twenty sites
+whose operators name them plainly and publish their capacities, and could draw
+seven. The other thirteen failed on position alone, and not because anybody was
+hiding anything: these works mostly do not exist yet. They are construction
+fields inside somebody else's fence, and a rule that admits a site only once a
+volunteer has drawn the building is a rule about OpenStreetMap's coverage of
+things that have not been built. That is the same reasoning that widened the
+coordinate vocabulary past `basemap` when batteries hit ACC's Kaiserslautern
+site, applied one turn further on.
+
+**What it does not do is lower the standard.** The coordinate is still a shape
+somebody independent drew, carrying a works' own name, quoted with its tags. What
+changes is which works: the point is the ground the installation stands on rather
+than its own outline, and the difference is a few hundred metres inside a fence
+the company named.
+
+**So it is recorded rather than absorbed.** `site_precision` — `works`, `parcel`
+or `point` — says how the position was resolved, on every site of every project
+in every sector, and is checked against the source type that produced it.
+`host_works` names the works where the point is not the installation's, and the
+gate refuses one without a note. The standfirst over a project's crop says
+"Its position is the Petronor refinery, the works it stands on, rather than the
+installation itself", and the sector overview says how many of its marks are
+which. A reader who thinks the ruling is wrong can see exactly which marks it
+moved.
+
+**And the ruling did not land everything.** Three of the thirteen came in on it:
+Hamburg Green Hydrogen Hub onto the dead Moorburg coal station, Uniper onto its
+own Maasvlakte power station, Repsol onto its Tarragona refinery. The other ten
+have no works polygon of ANY kind — not the installation's, not a host's — because
+they are greenfield sites, port estates and industrial parks, and an estate
+polygon is refused on the rule Subotica and Mo i Rana already settled. The
+constraint moved; it did not vanish.
 
 ### A slip is one speaker changing its mind
 

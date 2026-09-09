@@ -39,7 +39,17 @@
     "the benchmark file to compare every admitted row, candidate and refusal, and a candidate whose",
     "id lived only in a row would drop out of the comparison at exactly the point the comparison is",
     "most interesting: eufabric holds thirteen sites the outside lists also hold, and cannot draw",
-    "them. null means the list was searched and the site is not in it."
+    "them. null means the list was searched and the site is not in it.",
+    "",
+    "UPDATED 9 SEPTEMBER 2026, AFTER THE HOST-WORKS RULING. Three entries left this list by",
+    "becoming rows on it — Hamburg Green Hydrogen Hub onto a dead coal station, Uniper onto its",
+    "own power station, Repsol onto its Tarragona refinery. Nothing was deleted: the entries stay",
+    "as the record of what was needed, and report_candidate_gaps stops asking for them.",
+    "",
+    "THE TEN THAT REMAIN NOW WAIT ON SOMETHING DIFFERENT. Before the ruling they waited on a",
+    "polygon of the installation. Now they wait on a polygon of anything that is a WORKS rather",
+    "than an ESTATE — and an industrial park, a port and a business park are all estates, refused",
+    "on the rule Subotica and Mo i Rana settled. The note on each says which of the two it is."
   ],
   "sector": "clean",
   "perimeter": "sources/hydrogen_docket.md",
@@ -219,8 +229,8 @@
       "status": "construction",
       "capacity_mw_input": 100,
       "company_source": "https://hghh.eu/",
-      "coordinate_source": null,
-      "coordinate_ref": "NOT FOUND. The Moorburg bbox was swept on 9 September 2026 and carries no named feature for either the former power station or the electrolyser.",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "relation/8472949 Kohlekraftwerk Moorburg, operator=Vattenfall AB, end_date=2021-07-07 — the dead coal station HGHH is building inside. HOST WORKS, under the ruling of 9 September 2026.",
       "note": "The project company's own site: 'Am Standort des ehemaligen Kohlekraftwerks Moorburg realisiert die Projektgesellschaft Hamburg Green Hydrogen Hub (HGHH) eine 100-MW-Elektrolyseanlage für grünen Wasserstoff', producing 'rund 10.000 Tonnen grüner Wasserstoff' a year, with commercial operation planned for 2027. THE OWNER TYPE IS SPLIT and the row will have to say so: Hamburger Energiewerke is owned by the city, Luxcara is a private asset manager.",
       "benchmarks": {
         "odenweller_ueckerdt_2025": 900,
@@ -331,8 +341,8 @@
       "status": "announced",
       "capacity_mw_input": 100,
       "company_source": "https://www.uniper.energy/news/uniper-selected-plug-to-design-the-100mw-electrolyzer-package-for-the-netherlands-plant-to-accelerate-european-green-energy-adoption",
-      "coordinate_source": null,
-      "coordinate_ref": "NOT FOUND in the Maasvlakte sweep. way/1275268357 'Centrale Maasvlakte', operator=Uniper, is the power station on the same site and is a candidate position to argue about rather than to use silently.",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1275268357 Centrale Maasvlakte, operator=Uniper — Uniper's own power station on the site it names. HOST WORKS.",
       "note": "COMPANY SOURCE NAMED AND NOT YET READ THROUGH THIS PIPELINE. Listed here because the perimeter admits it on its face — 100 MW at a named site — and because the row, when it lands, is a schedule story: the 2023 announcement targets 2026, and the live IEA list now carries the site at feasibility study.",
       "benchmarks": {
         "odenweller_ueckerdt_2025": 927,
@@ -362,12 +372,13 @@
       "status": "announced",
       "capacity_mw_input": 150,
       "company_source": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
-      "coordinate_source": null,
+      "coordinate_source": "basemap",
       "note": "Named inside the Petronor release rather than in one of its own: 'The new renewable hydrogen plant will soon be joined by a large electrolyzer in Tarragona, with a capacity of 150 MW.' Above the threshold and company-confirmed as to site and country; it needs a release of its own before it carries a history.",
       "benchmarks": {
         "odenweller_ueckerdt_2025": 2246,
         "iea_hydrogen_production_projects": 2246
-      }
+      },
+      "coordinate_ref": "way/218584073 Repsol Tarragona Refinery — the complex the electrolyser is to supply. HOST WORKS."
     }
   ]
 }

@@ -5272,6 +5272,333 @@
           "retrieved_date": "2026-09-09"
         }
       ]
+    },
+    {
+      "id": "hghh-moorburg",
+      "name": "Hamburg Green Hydrogen Hub, Moorburg",
+      "company": "Hamburg Green Hydrogen Hub GmbH & Co. KG",
+      "plant": "Hamburg-Moorburg",
+      "country": "DE",
+      "location": [
+        {
+          "site": "Kraftwerksgelände Moorburg, Hamburg",
+          "lat": 53.4885,
+          "lon": 9.95,
+          "precision": "plant",
+          "site_precision": "works",
+          "host_works": "Kohlekraftwerk Moorburg (stillgelegt)",
+          "retrieved_date": "2026-09-09",
+          "source": {
+            "url": "https://www.openstreetmap.org/relation/8472949",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Kohlekraftwerk Moorburg; operator=Vattenfall AB; landuse=industrial; end_date=2021-07-07; disused:power=plant",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "LANDED UNDER THE HOST-WORKS RULING OF 9 SEPTEMBER 2026, and the host works is a dead one. HGHH states the site as 'am Standort des ehemaligen Kraftwerks Moorburg', and the basemap carries that station as a disused works with its closure dated 7 July 2021 and Vattenfall still on it as operator. So the mark is the coal station's ground, not the electrolyser building: the 16,000 m² the electrolyser is going up on is inside this polygon and has no outline of its own."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "owner_listing": "private",
+      "owner_listing_note": "THE FIRST SPLIT CASE, AND IT RESOLVES. HGHH GmbH & Co. KG is Luxcara (74.9 per cent), an independent asset manager, and Hamburger Energiewerke (25.1 per cent), which the Free and Hanseatic City of Hamburg owns outright. The field is about the party that operates, and the majority of the operating company is private. Had the split been the other way this row would have had nothing honest to say — see the docket's new rules.",
+      "capacity_value": 100,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.hamburger-energiewerke.de/ueber-uns/presse/hamburg-green-hydrogen-hub-feiert-grundsteinlegung-fuer-100-mw-elektrolyseur",
+      "capacity_as_of": "2025-12-01",
+      "capacity_note": "'Am Standort in Moorburg baut das Konsortium eine 100-MW-Elektrolyseanlage für grünen Wasserstoff.' `announced` and not `fid`: the consortium has ordered the electrolyser, broken ground and laid a foundation stone, and no source read here states a final investment decision in those words.",
+      "capacity_alternates": [
+        {
+          "value": 10000,
+          "unit": "t_h2_per_year",
+          "product": "hydrogen",
+          "basis": "announced",
+          "source_url": "https://www.hamburger-energiewerke.de/ueber-uns/presse/hamburg-green-hydrogen-hub-feiert-grundsteinlegung-fuer-100-mw-elektrolyseur",
+          "as_of": "2025-12-01",
+          "note": "'Jährlich sollen dann in Moorburg rund 10.000 Tonnen grüner Wasserstoff erzeugt werden.'"
+        }
+      ],
+      "status": "construction",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2025-12-01",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
+          "source_url": "https://www.hamburger-energiewerke.de/ueber-uns/presse/hamburg-green-hydrogen-hub-feiert-grundsteinlegung-fuer-100-mw-elektrolyseur",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "Hamburg's First Mayor 'legte heute den offiziellen Grundstein für den Bau des 100-MW-Elektrolyseurs am Standort des ehemaligen Kraftwerks Moorburg'. THE HISTORY STARTS AT THE FOUNDATION STONE AND NOT EARLIER, and the release itself names two earlier events this register does not hold a dated source for: the electrolyser was ordered from Siemens Energy in September 2024 and the ground works started in October 2023. A short history is honest — what is missing is a source, not the events."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2025-12-01",
+          "milestone": "production_start",
+          "target_date": "2027-H2",
+          "target_precision": "half",
+          "source_url": "https://www.hamburger-energiewerke.de/ueber-uns/presse/hamburg-green-hydrogen-hub-feiert-grundsteinlegung-fuer-100-mw-elektrolyseur",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'Das HGHH-Projekt plant den kommerziellen Betriebsstart für die zweite Jahreshälfte 2027.' Read at half precision because the company said a half."
+        },
+        {
+          "date": "2025-12-01",
+          "milestone": "construction_start",
+          "target_date": "2026-06-30",
+          "target_precision": "day",
+          "source_url": "https://www.hamburger-energiewerke.de/ueber-uns/presse/hamburg-green-hydrogen-hub-feiert-grundsteinlegung-fuer-100-mw-elektrolyseur",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'Bis Mitte kommenden Jahres soll das Gebäude für den Elektrolyseur und die Kompressoren errichtet sein.' Mid-2026 for the building, after which the stacks arrive. Recorded at day precision because 'Mitte kommenden Jahres' is the middle of a stated year and 30 June is the reading that does not overstate."
+        }
+      ],
+      "edges": [
+        {
+          "kind": "depends_on",
+          "target": "external:german-hydrogen-core-network",
+          "target_name": "German hydrogen core network (Wasserstoffnetz)",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2025-12-01",
+          "evidence": {
+            "url": "https://www.hamburger-energiewerke.de/ueber-uns/presse/hamburg-green-hydrogen-hub-feiert-grundsteinlegung-fuer-100-mw-elektrolyseur",
+            "publisher": "Hamburger Energiewerke",
+            "source_type": "company",
+            "verbatim": "Diese waren im Oktober 2023 gestartet, um Platz für den 100-MW-Elektrolyseur und die Anbindung an das Wasserstoffnetz zu schaffen."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:ipcei-hy2use-hamburg-hghh",
+          "target_name": "IPCEI funding, federal ministry and the City of Hamburg",
+          "type": "funding",
+          "class": "asserted",
+          "since": "2025-12-01",
+          "evidence": {
+            "url": "https://www.hamburger-energiewerke.de/ueber-uns/presse/hamburg-green-hydrogen-hub-feiert-grundsteinlegung-fuer-100-mw-elektrolyseur",
+            "publisher": "Hamburger Energiewerke",
+            "source_type": "company",
+            "verbatim": "KG (HGHH) besteht aus den beiden Partnern Luxcara (74,9 Prozent) und den Hamburger Energiewerken (25,1 Prozent) und wird als IPCEI-Projekt vom Bundesministerium für Wirtschaft und Energie sowie der Freien und Hansestadt Hamburg gefördert."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 900,
+        "iea_hydrogen_production_projects": 900,
+        "note": "Both lists carry 'Hamburg Green Hydrogen Hub (HGHH) project - old Moorburg plant' and both state 100 MW-equivalent, which agrees with the consortium. The 2023 file has it at feasibility study; the live IEA list has it at FID/Construction, which is where the foundation stone put it."
+      },
+      "sources": [
+        {
+          "url": "https://www.hamburger-energiewerke.de/ueber-uns/presse/hamburg-green-hydrogen-hub-feiert-grundsteinlegung-fuer-100-mw-elektrolyseur",
+          "title": "Hamburg Green Hydrogen Hub feiert Grundsteinlegung für 100-MW-Elektrolyseur",
+          "publisher": "Hamburger Energiewerke",
+          "date": "2025-12-01",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://hghh.eu/",
+          "title": "Hamburg Green Hydrogen Hub — project site",
+          "publisher": "Hamburg Green Hydrogen Hub",
+          "date": "2026-09-09",
+          "retrieved_date": "2026-09-09",
+          "note": "The project company's own site, cited and NOT used to date anything: it carries no date on any of its items, so every event on this row rests on the partner's dated release instead."
+        }
+      ]
+    },
+    {
+      "id": "uniper-h2maasvlakte",
+      "name": "H2Maasvlakte",
+      "company": "Uniper",
+      "plant": "Maasvlakte, Rotterdam",
+      "country": "NL",
+      "location": [
+        {
+          "site": "Uniper Maasvlakte Energy Hub",
+          "lat": 51.9644,
+          "lon": 4.0221,
+          "precision": "plant",
+          "site_precision": "works",
+          "host_works": "Centrale Maasvlakte",
+          "retrieved_date": "2026-09-09",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1275268357",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Centrale Maasvlakte; operator=Uniper; power=plant; plant:source=coal; plant:output:electricity=1070 MW; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "LANDED UNDER THE HOST-WORKS RULING. Uniper names the site as 'Uniper's Maasvlakte site at the Port of Rotterdam' and 'the Maasvlakte Energy Hub'; the basemap carries Uniper's own power station on that site under the operator's name. The mark is the power station's ground and not an electrolyser, which does not exist: the project has not taken a final investment decision."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "owner_listing": "listed",
+      "owner_listing_note": "Uniper SE is listed in Frankfurt; the German state holds the majority of it, which the field cannot say and which is worth knowing when this row is read against the disclosure comparison.",
+      "capacity_value": 100,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.uniper.energy/news/uniper-selected-plug-to-design-the-100mw-electrolyzer-package-for-the-netherlands-plant-to-accelerate-european-green-energy-adoption",
+      "capacity_as_of": "2023-03-07",
+      "capacity_note": "'At the Maasvlakte Energy Hub, Uniper plans to commission 100 MW of Plug electrolysis capacity to produce green hydrogen by 2026, rapidly expanding that capacity to 500 MW by 2030 at the latest.' The row carries 100 and not 500: the perimeter sums phases only where the company states a total, and 500 by 2030 is an expansion the same sentence makes conditional on getting there. The release is explicit that none of it is decided — Plug delivers 'upon Uniper's positive FID'.",
+      "status": "announced",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2023-03-07",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
+          "source_url": "https://www.uniper.energy/news/uniper-selected-plug-to-design-the-100mw-electrolyzer-package-for-the-netherlands-plant-to-accelerate-european-green-energy-adoption",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "Uniper selected Plug Power to design the 100 MW electrolyser package and said in the same release what that was not: 'Plug will deliver 10 prefabricated PEM (proton exchange membrane) electrolyzer arrays for Uniper's flagship project, H2Maasvlakte upon Uniper's positive FID.' Three and a half years on, no company source read here states one."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2023-03-07",
+          "milestone": "commissioning",
+          "target_date": "2026",
+          "target_precision": "year",
+          "source_url": "https://www.uniper.energy/news/uniper-selected-plug-to-design-the-100mw-electrolyzer-package-for-the-netherlands-plant-to-accelerate-european-green-energy-adoption",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'Uniper plans to commission 100 MW of Plug electrolysis capacity to produce green hydrogen by 2026.' A target is read at the end of its period, so this one is not missed until 31 December 2026 — and it is the row on this dataset most likely to become a slip the moment the company speaks again."
+        }
+      ],
+      "edges": [
+        {
+          "kind": "depends_on",
+          "target": "external:rotterdam-hydrogen-pipeline-network",
+          "target_name": "Port of Rotterdam hydrogen pipeline network",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2023-03-07",
+          "evidence": {
+            "url": "https://www.uniper.energy/news/uniper-selected-plug-to-design-the-100mw-electrolyzer-package-for-the-netherlands-plant-to-accelerate-european-green-energy-adoption",
+            "publisher": "Uniper",
+            "source_type": "company",
+            "verbatim": "As a port authority we support, stimulate and help companies in Rotterdam to reach the Paris climate treaty goals in multiple ways, including getting infrastructure like a hydrogen pipeline network in place in time."
+          },
+          "note": "The asserting voice inside the company's release is the port authority's, quoted in it. Filed as an asserted edge because the project's own source carries the sentence, and the note says whose sentence it is."
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 927,
+        "iea_hydrogen_production_projects": 927,
+        "note": "Both lists carry 'Uniper Maasvlakte, phase I' / 'Uniper H2Maasvlakte, phase I' at 100 MW-equivalent and feasibility study, and both carry a phase II — 400 MW in 2023, 52 kt in the live list — which this register does not hold, on the phase rule."
+      },
+      "sources": [
+        {
+          "url": "https://www.uniper.energy/news/uniper-selected-plug-to-design-the-100mw-electrolyzer-package-for-the-netherlands-plant-to-accelerate-european-green-energy-adoption",
+          "title": "Uniper Selected Plug to Design the 100MW Electrolyzer Package for the Netherlands Plant",
+          "publisher": "Uniper",
+          "date": "2023-03-07",
+          "retrieved_date": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "id": "repsol-tarragona",
+      "name": "Tarragona 150 MW electrolyser",
+      "company": "Repsol",
+      "plant": "La Pobla de Mafumet, Tarragona",
+      "country": "ES",
+      "location": [
+        {
+          "site": "Repsol Tarragona refinery",
+          "lat": 41.1754,
+          "lon": 1.2226,
+          "precision": "plant",
+          "site_precision": "works",
+          "host_works": "Repsol Tarragona Refinery",
+          "retrieved_date": "2026-09-09",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/218584073",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Repsol Tarragona Refinery; industrial=refinery; landuse=industrial; wikidata=Q114293546",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "LANDED UNDER THE HOST-WORKS RULING. Repsol names the site as Tarragona and says the electrolyser 'will mainly supply Repsol's industrial complex', as its two siblings do at Cartagena and Muskiz; the basemap carries the refinery under its own name. The mark is the refinery and not an electrolyser, which is not designed yet."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "owner_listing": "listed",
+      "owner_listing_note": "Repsol S.A. is listed in Madrid.",
+      "capacity_value": 150,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+      "capacity_as_of": "2026-01-26",
+      "capacity_note": "'The new renewable hydrogen plant will soon be joined by a large electrolyzer in Tarragona, with a capacity of 150 MW.' NAMED INSIDE ANOTHER PROJECT'S RELEASE AND NOT IN ONE OF ITS OWN, which is the whole of what this row rests on: one sentence, from the company, giving a site and a figure. It is enough for the perimeter and it is the thinnest evidence on this dataset.",
+      "status": "announced",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2026-01-26",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
+          "source_url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "note": "Repsol named the third of its large electrolysers in the release announcing the second. 'Soon' is not a date and is not recorded as one."
+        }
+      ],
+      "stated_schedule": [],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:repsol-tarragona-industrial-complex",
+          "target_name": "Repsol Tarragona industrial complex",
+          "type": "material",
+          "class": "asserted",
+          "since": "2026-01-26",
+          "evidence": {
+            "url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+            "publisher": "Repsol",
+            "source_type": "company",
+            "verbatim": "Like those atthe complexes in Cartagena and Petronor, it will mainly supply Repsol’s industrial complex."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 2246,
+        "iea_hydrogen_production_projects": 2246,
+        "note": "Both lists carry 'Repsol Tarragona, phase 1' at 150 MW-equivalent and feasibility study, which agrees with the figure and is a fair reading of a project named in one sentence."
+      },
+      "sources": [
+        {
+          "url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+          "title": "Repsol installs its second 100-MW electrolyzer at Petronor",
+          "publisher": "Repsol",
+          "date": "2026-01-26",
+          "retrieved_date": "2026-09-09"
+        }
+      ]
     }
   ]
 }

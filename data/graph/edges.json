@@ -29479,6 +29479,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:hghh-moorburg",
+  "to": "technology:hydrogen-supply",
+  "since": "2025-12-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hghh-moorburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:hybrit-pilot-lulea",
   "to": "technology:h2-dri",
   "since": "2021-06-21",
@@ -29685,6 +29695,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=repsol-petronor-muskiz].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:repsol-tarragona",
+  "to": "technology:hydrogen-supply",
+  "since": "2026-01-26",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=repsol-tarragona].technology"
   }
  },
  {
@@ -29905,6 +29925,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=tkh2steel-duisburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:uniper-h2maasvlakte",
+  "to": "technology:hydrogen-supply",
+  "since": "2023-03-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=uniper-h2maasvlakte].technology"
   }
  },
  {
@@ -33000,6 +33030,28 @@
  },
  {
   "rel": "in",
+  "from": "project:hghh-moorburg",
+  "to": "country:DE",
+  "since": "2025-12-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hghh-moorburg].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:hghh-moorburg",
+  "to": "sector:clean",
+  "since": "2025-12-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hghh-moorburg].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:hybrit-pilot-lulea",
   "to": "country:SE",
   "since": "2021-06-21",
@@ -33330,6 +33382,28 @@
  },
  {
   "rel": "in",
+  "from": "project:repsol-tarragona",
+  "to": "country:ES",
+  "since": "2026-01-26",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=repsol-tarragona].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:repsol-tarragona",
+  "to": "sector:clean",
+  "since": "2026-01-26",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=repsol-tarragona].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:rwe-get-h2-nukleus-lingen",
   "to": "country:DE",
   "since": "2023-01-31",
@@ -33611,6 +33685,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=tkh2steel-duisburg].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:uniper-h2maasvlakte",
+  "to": "country:NL",
+  "since": "2023-03-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=uniper-h2maasvlakte].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:uniper-h2maasvlakte",
+  "to": "sector:clean",
+  "since": "2023-03-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=uniper-h2maasvlakte].sector"
   },
   "basis": "sector"
  },
