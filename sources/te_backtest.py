@@ -29,7 +29,8 @@ from collections import Counter, OrderedDict
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sector_map as sm
 
-GROUPS = OrderedDict([("active", ("announced", "funded", "fid", "construction")),
+GROUPS = OrderedDict([("active", ("announced", "funded", "fid", "construction",
+                                 "commissioning")),
                       ("paused", ("paused",)), ("stopped", ("cancelled", "withdrawn")),
                       ("operating", ("operating",))])
 

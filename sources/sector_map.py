@@ -117,6 +117,21 @@ PROJECT_STATUSES = (
     "funded",
     "fid",
     "construction",
+    # BUILT AND NOT YET IN COMMERCIAL OPERATION, and it is a rung because a real
+    # project sat between two others with nowhere to be. RWE's Lingen works was
+    # making certified hydrogen in August 2026 while the company said in the same
+    # release that it would "prepare the plants for commercial operation" over
+    # the coming months. `construction` says nothing is being produced, which was
+    # false; `operating` says the ladder has been climbed, which was also false.
+    # The gap is not a hydrogen quirk: every large process plant has a
+    # commissioning period, and cement and steel will reach it too.
+    #
+    # IT IS ALIVE AND IT IS NOT TERMINAL. A plant in commissioning is going
+    # somewhere, so it joins PROJECT_ALIVE and the paper's `active` group; it has
+    # not arrived, so TERMINAL_STATUSES is untouched and an attrition series can
+    # still see a project that stalls in commissioning, which is a real way to
+    # fail and one nothing here could previously record.
+    "commissioning",
     "operating",
     "paused",
     "cancelled",
@@ -144,7 +159,8 @@ PROJECT_STATUSES = (
 # not mirrored into web/lib/transition.ts and the parity half of
 # check_status_groups does not apply to them. When a surface does read them, the
 # mirror and its check are what to add.
-PROJECT_ALIVE = ("announced", "funded", "fid", "construction", "paused")
+PROJECT_ALIVE = ("announced", "funded", "fid", "construction", "commissioning",
+                 "paused")
 PROJECT_STOPPED = ("cancelled",)
 PROJECT_COMPLETE = ("operating",)
 

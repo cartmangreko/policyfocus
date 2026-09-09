@@ -312,7 +312,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
         sector: SECTORS[slug].toLowerCase(),
         sites: geoFrame.marks.length,
         countries: new Set(geoFrame.marks.map((m) => m.country)).size,
-        running: geoMarks(["operating", "construction"]),
+        running: geoMarks(["operating", "construction", "commissioning"]),
         pending: geoMarks(["announced", "funded", "fid"]),
         paused: geoMarks(["paused"]),
         undrawn: geoFrame.undrawn ?? { projects: 0, sites: 0 },

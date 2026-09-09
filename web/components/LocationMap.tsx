@@ -136,7 +136,9 @@ export interface MapDoc {
 /** Running, in the sense the mark uses: a filled mark is a thing that is doing
  *  something. `funded` and `fid` are decisions and not yet plant, so they are
  *  hollow — the same reading build_lead.py's ADVANCE ladder takes. */
-const RUNNING = new Set(["construction", "operating"]);
+// `commissioning` is filled for the same reason `construction` is: something is
+// happening on the ground. A works being started up is not a decision on paper.
+const RUNNING = new Set(["construction", "commissioning", "operating"]);
 
 type Geometry = MapDoc["mark_geometry"];
 

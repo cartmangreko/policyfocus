@@ -249,7 +249,7 @@ export function sectorGeoProse(c: {
   hostWorks: number;
 }): { heading: string; standfirst: string } {
   const state = list([
-    c.running > 0 ? `${c.running} operating or under construction` : null,
+    c.running > 0 ? `${c.running} operating, commissioning or under construction` : null,
     c.pending > 0 ? `${c.pending} announced or funded and not yet built` : null,
     c.paused > 0 ? `${c.paused} paused` : null,
   ]);
@@ -403,7 +403,7 @@ export function geoKeyProse(o: {
           { role: "storage" as const, running: true, text: "a triangle is a store" },
         ])
       : []),
-    { role: "plant", running: true, text: "filled: operating or under construction" },
+    { role: "plant", running: true, text: "filled: operating, commissioning or under construction" },
     { role: "plant", running: false, text: "hollow: announced, funded, or paused" },
     ...(o.subject
       ? [

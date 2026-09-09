@@ -139,11 +139,12 @@ TEMPLATE_VERSION = 5
 # A project at or past this point has committed the money. `funded` is a grant
 # award and is deliberately below the line: an Innovation Fund letter is not a
 # final investment decision, and the pipeline fact would overstate itself.
-COMMITTED = ("fid", "construction", "operating")
+COMMITTED = ("fid", "construction", "commissioning", "operating")
 
 # Ordered as a project advances. paused/cancelled are not on the ladder: they
 # are where a project left it.
-ADVANCE = ("announced", "funded", "fid", "construction", "operating")
+ADVANCE = ("announced", "funded", "fid", "construction", "commissioning",
+           "operating")
 
 # Words that make a claim the facts cannot carry. The generated sentences are
 # templates and should never produce one; the gate is here because a template
@@ -209,6 +210,7 @@ STATUS_VERB = {
     "funded": "was awarded public funding",
     "fid": "took a final investment decision",
     "construction": "went into construction",
+    "commissioning": "began commissioning",
     "operating": "started operating",
     "paused": "was paused",
     "cancelled": "was cancelled",

@@ -47,6 +47,7 @@ export type ProjectStatus =
   | "funded"
   | "fid"
   | "construction"
+  | "commissioning"
   | "operating"
   | "paused"
   | "cancelled";
@@ -737,6 +738,7 @@ export const STATUS_LABEL: Record<ProjectStatus, string> = {
   funded: "Funded",
   fid: "FID taken",
   construction: "In construction",
+  commissioning: "Commissioning",
   operating: "Operating",
   paused: "Paused",
   cancelled: "Cancelled",
