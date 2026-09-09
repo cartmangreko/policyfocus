@@ -316,6 +316,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
         pending: geoMarks(["announced", "funded", "fid"]),
         paused: geoMarks(["paused"]),
         undrawn: geoFrame.undrawn ?? { projects: 0, sites: 0 },
+        hostWorks: geoFrame.marks.filter((m) => m.host_works).length,
       })
     : null;
 

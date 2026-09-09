@@ -86,6 +86,11 @@ export interface MapMark {
   href: string;
   lat: number;
   lon: number;
+  /** The works this mark is actually on, where that is not the installation
+   *  itself — an electrolyser inside a refinery is placed on the refinery. Null
+   *  where the polygon is the installation's own. The standfirst counts these,
+   *  because a dot looks the same either way. */
+  host_works: string | null;
   as_of: string;
   x: number;
   y: number;

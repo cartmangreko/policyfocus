@@ -96,6 +96,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         // nothing about the mark itself distinguishes it from a hollow
         // neighbour that IS drawn elsewhere.
         subjectCancelled: project.status === "cancelled",
+        // Only the subject's own marks: a neighbour placed on its host works is
+        // that project's fact and is stated on its own page.
+        hostWorks: frame.marks
+          .filter((m) => m.relation === "subject" && m.host_works)
+          .map((m) => m.host_works as string),
       })
     : null;
 

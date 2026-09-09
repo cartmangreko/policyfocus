@@ -792,6 +792,57 @@ LOCATION_PRECISIONS = (
 # The precisions a project or a plant may actually carry. See the note above.
 LOCATION_PRECISIONS_ALLOWED = ("plant", "site")
 
+
+# HOW THE POSITION WAS RESOLVED, WHICH IS A DIFFERENT QUESTION FROM HOW EXACT IT IS
+# =================================================================================
+# `precision` above says what KIND of place the point is — a works or a site — and
+# it has said so since the geo layer landed. It cannot say how the point was
+# arrived at, and after the hydrogen ruling of 9 September 2026 that is the
+# question a reader has to be able to ask.
+#
+# The ruling admits a site whose position is the HOST WORKS it stands on: an
+# electrolyser being built inside a refinery is placed on the refinery, because
+# that is where it is and because waiting for a volunteer to draw a building that
+# does not exist yet is a rule about OpenStreetMap's coverage rather than about
+# evidence. That is right, and it costs something: a mark on the paper now means
+# one of three different things, and nothing on the row said which.
+#
+#   works   the coordinate is a WORKS POLYGON somebody drew — the installation
+#           itself where the basemap has it, the works it stands on where it does
+#           not. `host_works` names the second case, so the two are never
+#           confused, and the sentence over the picture says how many of its marks
+#           are which.
+#   parcel  the coordinate was computed from named cadastral parcels: a plan says
+#           which parcels, a state register holds their geometry, and neither
+#           alone places anything.
+#   point   the coordinate is a POSITION SOMEBODY STATED — a grid reference in a
+#           permit, an address the operator published, a coordinate pair in a
+#           technical source. The most precise of the three where the source is
+#           good, and the one that rests on the fewest shapes.
+#
+# IT IS RECORDED PER SITE AND NOT PER ROW, because a row is not always at one
+# place: ArcelorMittal covers Bremen and Eisenhüttenstadt, and one field on the
+# row would have to pick between two answers or average them. Every row carries it
+# in the only place it can be true — on each of its sites.
+SITE_PRECISIONS = (
+    "works",
+    "parcel",
+    "point",
+)
+
+# WHICH PRECISION EACH KIND OF SOURCE CAN SUPPORT. Declared rather than left to
+# judgement, and gated, because the whole value of the field is that it is read
+# off the evidence: a basemap feature is a shape, a plan-and-cadastre pair is a
+# parcel list, and an address or a grid reference is a stated point. A row that
+# claimed `point` on a basemap polygon would be claiming a precision the source
+# does not have.
+SITE_PRECISION_BY_SOURCE = {
+    "basemap": "works",
+    "plan_parcels": "parcel",
+    "company": "point",
+    "permit": "point",
+}
+
 # The legal device a measure acts with, as a diagram says it. Closed for the
 # usual reason and one extra: these words are the only part of a measure label
 # that repeats across sectors, so an open list would give every sector its own

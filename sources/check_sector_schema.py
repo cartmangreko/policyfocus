@@ -88,9 +88,6 @@ class Errors:
     def __init__(self) -> None:
         self.errors: list[str] = []
         self.stale: list[str] = []
-        # Stopped events on sectors that have not yet adopted the reason rule.
-        # Reported and not failed, for the reason under STOP_REASON_SECTORS.
-        self.reasonless: list[str] = []
 
     def add(self, where: str, msg: str) -> None:
         self.errors.append(f"  {where}: {msg}")
@@ -396,10 +393,12 @@ def _location(e: Errors, where: str, row: dict) -> None:
         return
     for i, s in enumerate(sites):
         w = f"{where} location[{i}]"
-        _req(e, w, s, "site", "precision", "retrieved_date", "confidence")
+        _req(e, w, s, "site", "precision", "site_precision", "retrieved_date",
+             "confidence")
         _date(e, w, s, "retrieved_date")
         _vocab(e, w, s, "confidence", sm.CONFIDENCE)
         _vocab(e, w, s, "precision", sm.LOCATION_PRECISIONS)
+        _vocab(e, w, s, "site_precision", sm.SITE_PRECISIONS)
         if s.get("precision") == "town":
             e.add(w, "precision=town — a town centroid is not a plant site. Find the "
                      "works, or leave the project out of the register until somebody has")
@@ -446,6 +445,37 @@ def _location(e: Errors, where: str, row: dict) -> None:
         if refused is not None:
             _req(e, f"{w} refused_declared_reader", refused, "last_verified", "by", "note")
             _date(e, f"{w} refused_declared_reader", refused, "last_verified")
+
+        # HOW THE POSITION WAS RESOLVED HAS TO AGREE WITH WHAT RESOLVED IT.
+        # sm.SITE_PRECISION_BY_SOURCE is the table; a source type absent from it
+        # is one this check has nothing to say about, which today is only the
+        # named coordinate-source exception.
+        want = sm.SITE_PRECISION_BY_SOURCE.get((src or {}).get("type"))
+        if want and s.get("site_precision") != want:
+            e.add(w, f"site_precision={s.get('site_precision')!r} on a "
+                     f"{src.get('type')!r} source, which supports {want!r} — the field "
+                     f"is read off the evidence, and a precision the source cannot "
+                     f"carry is a claim about the coordinate that nothing backs")
+
+        # THE HOST WORKS, NAMED WHERE THE POINT IS NOT THE INSTALLATION'S OWN.
+        # The hydrogen ruling of 9 September 2026 admits a site placed on the
+        # works it stands on. That is a real position and it is not the same
+        # claim as a polygon of the installation, so the row says which, the note
+        # says it in words, and the sentence over the picture counts them. Only
+        # a `works` precision can have one: a parcel list and a stated point are
+        # about the project's own ground by construction.
+        host = s.get("host_works")
+        if host is not None:
+            if s.get("site_precision") != "works":
+                e.add(w, f"host_works on a site_precision={s.get('site_precision')!r} "
+                         f"coordinate — a host works is a works polygon, and a parcel "
+                         f"list or a stated point is already the project's own ground")
+            if not str(host).strip():
+                e.add(w, "host_works is empty — name the works, or leave the field out")
+            if not (s.get("note") or "").strip():
+                e.add(w, "host_works with no note — the reader is being told the mark is "
+                         "not the installation, and the note is where that is said in "
+                         "words rather than in a field")
 
         excused = (row.get("id"), s.get("site")) in COORDINATE_SOURCE_EXCEPTIONS
         if not excused:
@@ -831,20 +861,24 @@ def _edges(e: Errors, where: str, row: dict, project_ids: set) -> None:
         _vocab(e, f"{w} evidence", ev, "source_type", sm.PROJECT_SOURCE_TYPES)
 
 
-# THE SECTORS THAT HAVE ADOPTED reason-as-stated. Hydrogen is written to it from
-# the first row; the three sectors that were on file before the rule existed are
-# REPORTED rather than failed, and the list is printed on every run.
+# REASON-AS-STATED BINDS EVERYWHERE, since 9 September 2026. It did not on the
+# day it landed: nineteen stopped events across batteries, cement, steel and CCS
+# predated the rule, and they were REPORTED rather than failed on the ruling that
+# the only honest backfill is a re-read. The re-read happened. Every stopping
+# transition on this file now carries a reason read from its own sources, six of
+# them `unstated` because the source gives none, so the exemption has nothing
+# left to exempt and is gone rather than left standing as a door.
 #
-# WHY NOT JUST BACKFILL. Because the only honest backfill is a re-read. Every one
-# of those rows carries a note, several of the notes give a reason, and writing
-# `unstated` across the lot to turn a gate green would put a made-up distribution
-# of reasons into the one field whose whole purpose is that it is not made up.
-# The debt is on the record instead, with a count, until somebody reads the
-# sources again.
-STOP_REASON_SECTORS = ("clean",)
+# WHAT THE RE-READ FOUND, because it is the reason the field was worth having.
+# Of fifteen stopping transitions, six give no cause at all — a company that
+# stops a project and says only that the "prerequisites were unlikely to be met",
+# an authority that records "Das Vorhaben wird nicht mehr umgesetzt", a filing
+# that notes an appointment of administrators. Two more state a cause this
+# vocabulary cannot hold: an owner changing the business it is in, and a venture
+# losing its technology partner. Both are filed at their nearest value with the
+# quote beside them and the misfit written on the row.
 
-
-def _stop_reason(e: Errors, where: str, h: dict, sector: str | None) -> None:
+def _stop_reason(e: Errors, where: str, h: dict, transition: bool) -> None:
     """Why a project stopped, in the source's own terms or `unstated`.
 
     REQUIRED ON EVERY ENTRY THAT LANDS IN A STOPPED STATUS, and refused on every
@@ -853,16 +887,20 @@ def _stop_reason(e: Errors, where: str, h: dict, sector: str | None) -> None:
     reason has told us that, and a gate that accepted an empty field here would
     let a guess be written in the same space as a quotation.
     """
-    stopped = h.get("status_to") in sm.STOP_REASON_STATUSES
+    # REQUIRED ON THE EVENT THAT STOPS THE PROJECT, AND ONLY THAT ONE. A later
+    # entry about an already-paused project reports on it rather than stopping
+    # it — Slite's withdrawn permit application, Lyten's memorandum over a site
+    # that has been still since 2024 — and demanding a reason from each would
+    # make the register restate one cause every time somebody wrote about the
+    # consequence. The test is the positional one the whole layer uses: an entry
+    # is a transition if its status differs from the entry before it.
+    stopped = h.get("status_to") in sm.STOP_REASON_STATUSES and transition
     reason = h.get("stop_reason")
     if stopped and reason is None:
         msg = (f"moves to {h.get('status_to')!r} and states no stop_reason — write "
                f"the reason the source gives, or 'unstated' where it gives none")
-        if sector in STOP_REASON_SECTORS:
-            e.add(where, msg)
-        else:
-            e.reasonless.append(f"  {where}: {msg}")
-    elif not stopped and reason is not None:
+        e.add(where, msg)
+    elif reason is not None and h.get("status_to") not in sm.STOP_REASON_STATUSES:
         e.add(where, "carries a stop_reason and does not stop the project")
     if reason is not None:
         _vocab(e, where, h, "stop_reason", sm.STOP_REASONS)
@@ -870,6 +908,16 @@ def _stop_reason(e: Errors, where: str, h: dict, sector: str | None) -> None:
             e.add(where, f"stop_reason={reason!r} with no stop_reason_verbatim — a reason "
                          f"that is not 'unstated' was read from a sentence, and the "
                          f"sentence is what makes it checkable")
+        # WHERE THE SENTENCE CAME FROM, WHEN IT IS NOT THE EVENT'S OWN SOURCE.
+        # Several of these events are dated from a filing or a notice that
+        # records what happened and says nothing about why, while the company
+        # said why somewhere else on the same day. Rather than move the event
+        # onto the second source — which would re-date it — the quote carries
+        # its own URL, and its absence means the quote is in the event's source.
+        if h.get("stop_reason_source_url"):
+            _url(e, where, h["stop_reason_source_url"], "stop_reason_source_url")
+    elif h.get("stop_reason_verbatim") or h.get("stop_reason_source_url"):
+        e.add(where, "carries a stop_reason quote and no stop_reason")
 
 
 def _owner_and_benchmarks(e: Errors, where: str, row: dict) -> None:
@@ -933,7 +981,7 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
             _date(e, hw, h, "date")
             _url(e, hw, h.get("source_url"), "source_url")
             _event(e, hw, h, i, prev_status)
-            _stop_reason(e, hw, h, r.get("sector"))
+            _stop_reason(e, hw, h, sm.is_transition(history, i))
             # AN OWNERSHIP EVENT IS ONE FACT AND SAYS BOTH ENDS OF IT. `from` and
             # `to` are required because "the owner changed" without naming the
             # owners is an event nobody can check, and they are refused on every
@@ -1676,11 +1724,6 @@ def main() -> int:
         print(f"\ndraft prose awaiting review ({len(drafts)}) — the page renders the computed "
               f"sentence until the block in data/prose.json is approved:")
         print("\n".join(drafts))
-    if e.reasonless:
-        print(f"\nstopped events with no stop_reason ({len(e.reasonless)}) — reported, "
-              f"not failed: these rows predate reason-as-stated, and the only honest "
-              f"backfill is a re-read of their sources. See STOP_REASON_SECTORS:")
-        print("\n".join(e.reasonless))
     if e.stale:
         print(f"\nstale parameters ({len(e.stale)}) — reported, not failed:")
         print("\n".join(e.stale))

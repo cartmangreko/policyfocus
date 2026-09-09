@@ -140,6 +140,10 @@ export interface GeoCounts {
   sector: number;
   /** The subject is cancelled, so this crop is the one frame it appears on. */
   subjectCancelled: boolean;
+  /** The works the subject's own marks stand on, where the position is the host
+   *  works rather than the installation. Empty where every mark is the
+   *  installation's own polygon. */
+  hostWorks: string[];
 }
 
 /** The regional crop on a project page.
@@ -165,6 +169,21 @@ export function projectGeoProse(c: GeoCounts): { heading: string; standfirst: st
   ];
   if (c.subjectCancelled) {
     parts.push("It was cancelled, and is drawn here and on no other frame.");
+  }
+  // WHERE THE MARK IS THE WORKS IT STANDS ON. The ruling of 9 September 2026
+  // admits a position taken from the host works — an electrolyser being built
+  // inside a refinery is placed on the refinery, because that is where it is.
+  // A dot cannot say that, so the sentence does: the reader is told the mark is
+  // the works and not the installation, and told which works.
+  if (c.hostWorks.length === 1) {
+    parts.push(
+      `Its position is ${c.hostWorks[0]}, the works it stands on, rather than the installation itself.`,
+    );
+  } else if (c.hostWorks.length > 1) {
+    parts.push(
+      `${n(c.hostWorks.length, "of its marks is", "of its marks are")} the works it stands on — ` +
+        `${list(c.hostWorks)} — rather than the installation itself.`,
+    );
   }
   if (c.dependency === 1) {
     parts.push("The store its captured CO₂ reaches is drawn with it.");
@@ -225,6 +244,9 @@ export function sectorGeoProse(c: {
   pending: number;
   paused: number;
   undrawn: { projects: number; sites: number; rows?: UndrawnRow[] };
+  /** How many drawn marks are the works the installation stands on rather than
+   *  the installation's own outline. See projectGeoProse. */
+  hostWorks: number;
 }): { heading: string; standfirst: string } {
   const state = list([
     c.running > 0 ? `${c.running} operating or under construction` : null,
@@ -254,12 +276,22 @@ export function sectorGeoProse(c: {
       : projects > 0
         ? ` ${n(projects, "project")} on file ${projects === 1 ? "is" : "are"} not drawn.`
         : "";
+  // HOW MANY MARKS ARE THE HOST WORKS. Stated as a share of what is drawn,
+  // because it is a fact about the picture's precision rather than about any
+  // one site: on a sector where most installations are being built inside
+  // somebody else's works, most of the dots are that works.
+  const host =
+    c.hostWorks > 0
+      ? ` ${c.hostWorks} of ${n(c.sites, "mark")} ${c.hostWorks === 1 ? "is" : "are"} ` +
+        `the works the installation stands on rather than its own outline.`
+      : "";
   return {
     heading: `Where Europe is building ${c.sector}`,
     standfirst:
       `${n(c.sites, "site")} in ${n(c.countries, "country", "countries")}` +
       (state ? `: ${state}.` : ".") +
       " Each one opens its own page." +
+      host +
       left,
   };
 }

@@ -461,6 +461,12 @@ def _mark(row: dict, site: dict, relation: str, frame, canvas) -> dict:
         "href": f"/projects/{row['id']}",
         "lat": site["lat"],
         "lon": site["lon"],
+        # THE WORKS THE MARK IS ACTUALLY ON, where that is not the installation.
+        # Carried onto the mark so the sentence over the picture can count it:
+        # after the ruling of 9 September 2026 a mark means one of two things,
+        # and a reader looking at a dot has no way to tell which without being
+        # told. Absent on a mark that is the installation's own polygon.
+        "host_works": site.get("host_works"),
         "as_of": site["retrieved_date"],
         "x": round((px - x0) * scale, 1),
         "y": round((py - y0) * scale, 1),
