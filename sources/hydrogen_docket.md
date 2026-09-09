@@ -547,12 +547,31 @@ Italvolt, H2APEX Lubmin, Gigastack and Samsung SDI Göd — were padded correctl
 and said so only in prose. The field makes all five machine-readable and changed
 one date.
 
-**D31. Galp's capacity stays `announced` although its row now shows an FID.**
-capacity_basis is read from the source sentence and never derived from status. The
-figure is quoted from the EIB's release, and the brief makes an EIB approval
-`announced`. Galp's own sentence states the same 100 MW and would give a `fid`
-basis — and a `capacity_as_of` padded to a year, with no field on it to say so.
-The figure stays where it is dated.
+**D31. Galp's capacity stayed `announced` for one day and is now `fid`.** The
+first ruling let an EVENT carry year precision and put the final investment
+decision on the history; the capacity could not follow, because `capacity_as_of`
+had no precision field and would have claimed 1 January 2023 as a day, so the
+figure stayed on the EIB's dated sentence with the lender's basis. The second
+ruling gave every value date the same field. **The figure is now on the company's
+sentence at `fid`, dated 2023 at year precision** — capacity_basis read from the
+sentence that states both the decision and the megawatts — and the EIB's sentence
+stays on the row as a second source, two years later, on the same 100 MW.
+
+**D32a. Padding is undone for display, and a page caught it.** The first build
+after the backfill printed "as of 2025-01-01" on the cement and steel lead blocks,
+under a cost premium the International Energy Agency dates to 2025 — a day nobody
+published, which is the error the precision field exists to prevent, arriving one
+layer further out. `build_lead.py` now renders every value date at its own
+precision, in one helper: a year shows as a year, a month as a month. The stored
+date keeps its padding. A source's own `date` still has none and is printed as
+stored — rule 21.
+
+**D32. Nine other value dates moved with it.** Four Innovation Fund grants and a
+journal figure to `month`; two Comext import totals and two cost premiums from a
+bare `2025` to `2025-01-01` at `year`; EVE Power Debrecen's capacity from `2025-05`
+to `2025-05-01` at `month`; Gigastack's to `month`. Every one was already padded
+and said so only in prose, and one — the bare `2025` — was a date nothing could
+compare with a dated value.
 
 ### Step 3 decisions, after the second set of rulings on 9 September 2026
 
@@ -696,8 +715,14 @@ twenty and the comparison is simply this register against the two lists.
     `partner`: the owner cites its own readiness, in technology or in supply
     chain. Gigastack was filed at `policy` for part of a day, read from what the
     consortium DID rather than what it SAID.
-20. **`capacity_as_of` has no precision field and now needs one.** The event
-    dates got `date_precision` and the capacity date did not, which is why Galp's
-    figure stays on its lender's sentence rather than moving to the company's: the
-    company's sentence is dated to a year and `capacity_as_of` cannot say so. The
-    same argument applies to a parameter's `date_of_value`.
+20. **CLOSED.** `capacity_as_of`, an alternate's `as_of` and a parameter's
+    `date_of_value` all carry a precision now, on the same vocabulary and the same
+    padding as an event. Galp's figure moved to the company's sentence the moment
+    they did, which is the shortest a rule on this file has ever gone from being
+    named to being closed.
+21. **`retrieved_date` and a source's `date` do not carry one, and should be
+    looked at next.** A source `date` is the day a publisher published, which is a
+    day or it is nothing — but several on this file are the day a standing,
+    undated page was read, and one, ITM Power's phase-2 report, is a page dated to
+    a month and stored as its first day with the padding in a note. The same
+    argument that closed rule 20 applies, one layer down.

@@ -1284,12 +1284,40 @@ carries a day. What the ENTRY promises keeps its own `target_precision`, read at
 the end of its period; the two fields sit side by side and answer opposite
 questions about the same line.
 
-**The basis of a figure is still read from its own sentence.** Galp's row now
-shows a final investment decision and its capacity is still `announced`, because
-the sentence the figure is quoted from is the EIB's and the brief makes an EIB
-approval `announced`. The alternative was to move the figure onto the company's
-sentence, which states the same 100 MW — and to date it to a padded year with no
-field on `capacity_as_of` to say so. The figure stays where it is dated.
+**AND IT IS NOT ONLY EVENTS — ruled one turn later, the same day.**
+`capacity_as_of`, an alternate's `as_of` and a parameter's `date_of_value` carry
+`..._precision` on the same vocabulary and the same padding. They are dates of the
+same kind, answering the same question: when was this true, and how exactly does
+the source say so.
+
+The cost of their not having it was visible for exactly one day, on the Galp row.
+Its capacity had to stay on the EIB's sentence — `announced`, because the brief
+makes a lender's approval that — while the row's own history showed a final
+investment decision, because the company's sentence states the figure and the
+decision together and is dated to a year, and `capacity_as_of` could not say so.
+It can now. **The figure is on the company's sentence at `fid`, dated 2023 at year
+precision**, and the EIB's sentence stays on the row as what it is: a second
+source, two years later, on the same 100 MW.
+
+**Nine other values moved with it**, all of them already padded and saying so only
+in prose — four Innovation Fund grants dated to a month, a journal figure dated to
+a month, two Comext import totals and two cost premiums dated to a year, and one
+capacity from a permit application dated to a month.
+
+**PADDED IN STORAGE, UNPADDED ON THE PAGE.** The padding is right for storage and
+for arithmetic and wrong on a surface: "as of 2025-01-01" under a cost premium the
+source dates to 2025 claims a day nobody published, which is the error the field
+was added to prevent, arriving one layer further out. So `sources/build_lead.py`
+undoes the padding for display from the same field, in one place — a year shows as
+a year, a month as a month — and the cement and steel lead blocks went back to
+saying "as of 2025" the moment they were rebuilt. A source's own `date` has no
+precision field yet and is printed as stored; that is the next one to look at.
+
+**One convention for every date that says when something WAS, and the opposite one
+for a target.** Padded to the earliest it can be, against read at the end of its
+period. Both are the reading that does not overstate, and they point in opposite
+directions because overstating a promise and overstating a fact are opposite
+errors.
 
 ### A slip is one speaker changing its mind
 

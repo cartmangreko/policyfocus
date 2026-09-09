@@ -291,7 +291,7 @@ def check_parameters(e: Errors, rows: list[dict], tech_ids: set, sectors: dict) 
         _req(e, w, r, "id", "name", "value", "unit", "scope",
              "date_of_value", "retrieved_date", "source", "confidence")
         _vocab(e, w, r, "confidence", sm.CONFIDENCE)
-        _date(e, w, r, "date_of_value")
+        _dated(e, w, r, "date_of_value", "date_of_value_precision")
         _date(e, w, r, "retrieved_date")
         scope = r.get("scope")
         if scope and scope not in sm.SCOPE_LITERALS and not scope.startswith(sm.SCOPE_PREFIXES):
@@ -639,14 +639,15 @@ def _capacity(e: Errors, where: str, row: dict) -> None:
         return
     if not isinstance(row.get("capacity_value"), (int, float)):
         e.add(where, "capacity_value is not a number")
-    for f in ("capacity_unit", "capacity_basis", "capacity_source_url", "capacity_as_of"):
+    for f in ("capacity_unit", "capacity_basis", "capacity_source_url", "capacity_as_of",
+              "capacity_as_of_precision"):
         if row.get(f) in (None, ""):
             e.add(where, f"capacity_value is set but {f} is missing — a figure without "
                          f"its unit, basis, source and date cannot be read")
     _vocab(e, where, row, "capacity_unit", sm.CAPACITY_UNITS)
     _vocab(e, where, row, "capacity_basis", sm.CAPACITY_BASES)
     _vocab(e, where, row, "capacity_product", sm.CAPACITY_PRODUCTS)
-    _date(e, where, row, "capacity_as_of")
+    _dated(e, where, row, "capacity_as_of", "capacity_as_of_precision")
     if row.get("capacity_source_url"):
         _url(e, where, row.get("capacity_source_url"), "capacity_source_url")
     if row.get("sector") in sm.CAPACITY_SECTORS and not row.get("capacity_product"):
@@ -703,7 +704,7 @@ def _alternates(e: Errors, where: str, row: dict) -> None:
         _vocab(e, w, a, "unit", sm.CAPACITY_UNITS)
         _vocab(e, w, a, "basis", sm.CAPACITY_BASES)
         _vocab(e, w, a, "product", sm.CAPACITY_PRODUCTS)
-        _date(e, w, a, "as_of")
+        _dated(e, w, a, "as_of", "as_of_precision")
         _url(e, w, a.get("source_url"), "source_url")
         if not isinstance(a.get("value"), (int, float)):
             e.add(w, "value is not a number")
@@ -802,6 +803,30 @@ EVENT_DATE_SHAPE = {
 }
 
 
+def _dated(e: Errors, where: str, obj: dict, date_field: str, prec_field: str) -> None:
+    """A date and the precision the source gave it to, checked as a pair.
+
+    The general form of _event_date, which is now one caller of it. Every date on
+    this layer that records WHEN SOMETHING WAS — an event, the day a capacity was
+    stated, the day a parameter's value held — is written to the day and padded
+    to the earliest it can be, with a field saying how exactly the source put it.
+    A target, which records when something WILL BE, keeps the opposite convention
+    and its own field.
+    """
+    _req(e, where, obj, prec_field)
+    _vocab(e, where, obj, prec_field, sm.VALUE_DATE_PRECISIONS)
+    date, prec = str(obj.get(date_field) or ""), obj.get(prec_field)
+    if not EVENT_DATE_SHAPE["day"].match(date):
+        e.add(where, f"{date_field}={date!r} is not YYYY-MM-DD — a date on this layer is "
+                     f"always written to the day and `{prec_field}` says what the source "
+                     f"gave it to")
+    elif prec in EVENT_DATE_SHAPE and not EVENT_DATE_SHAPE[prec].match(date):
+        pad = "1 January" if prec == "year" else "the first of its month"
+        e.add(where, f"{date_field}={date!r} with {prec_field}={prec!r} — a {prec}-precision "
+                     f"date is padded to {pad}, which is the earliest it can be; anything "
+                     f"else claims a precision the source did not give")
+
+
 def _event_date(e: Errors, where: str, h: dict) -> None:
     """An event date, always written to the day, with what the source actually
     gave it to.
@@ -816,17 +841,7 @@ def _event_date(e: Errors, where: str, h: dict) -> None:
     be a padded date somebody had padded to the wrong place, and a `day` on a date
     nobody knows to the day is the claim this field exists to stop.
     """
-    _req(e, where, h, "date_precision")
-    _vocab(e, where, h, "date_precision", sm.EVENT_DATE_PRECISIONS)
-    date, prec = str(h.get("date") or ""), h.get("date_precision")
-    if not EVENT_DATE_SHAPE["day"].match(date):
-        e.add(where, f"date={date!r} is not YYYY-MM-DD — an event date is always written "
-                     f"to the day and `date_precision` says what the source gave it to")
-    elif prec in EVENT_DATE_SHAPE and not EVENT_DATE_SHAPE[prec].match(date):
-        pad = "1 January" if prec == "year" else "the first of its month"
-        e.add(where, f"date={date!r} with date_precision={prec!r} — a {prec}-precision "
-                     f"event is padded to {pad}, which is the earliest it can have "
-                     f"happened; anything else claims a precision the source did not give")
+    _dated(e, where, h, "date", "date_precision")
 
 
 def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> None:

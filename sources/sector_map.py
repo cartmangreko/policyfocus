@@ -393,6 +393,21 @@ EVENT_DATE_PRECISIONS = (
     "year",
 )
 
+# AND IT IS NOT ONLY EVENTS. Ruled 9 September 2026, one ruling after the events
+# got it: `capacity_as_of` and a parameter's `date_of_value` are dates of the same
+# kind, answering the same question — when was this true, and how exactly does the
+# source say so — and they were left without a precision for exactly one day. The
+# cost of that day is on the Galp row, whose capacity had to stay on its lender's
+# sentence rather than the company's, because the company's sentence is dated to a
+# year and the field could not say so.
+#
+# The vocabulary and the padding are the same, deliberately: one convention for
+# every date on this layer that records when something WAS, and the opposite one
+# for a target, which records when something WILL BE and is read at the end of its
+# period. Two rules, pointing in opposite directions, each the reading that does
+# not overstate.
+VALUE_DATE_PRECISIONS = EVENT_DATE_PRECISIONS
+
 
 TARGET_PRECISIONS = (
     "year",
