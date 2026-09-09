@@ -592,7 +592,11 @@
           "source_url": "https://www.globalcement.com/news/item/19500-heidelberg-materials-pauses-slite-ccs-project",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "Paused after the Swedish Energy Agency rejected the co-financing application under the Industrial Step programme."
+          "note": "Paused after the Swedish Energy Agency rejected the co-financing application under the Industrial Step programme.",
+          "stop_reason": "policy",
+          "stop_reason_verbatim": "Beskedet kommer efter att Energimyndigheten avslagit bolagets ansökan om medfinansiering för införande av teknik för koldioxidinfångning (CCS) inom ramen för Industriklivet.",
+          "stop_reason_source_url": "https://www.cement.heidelbergmaterials.se/sv/ccs-satsningen-vid-cementfabriken-i-slite-pausas",
+          "stop_reason_note": "POLICY AND NOT FINANCE, and the two readings are close enough to be worth separating. Money did not fail to arrive from a market; a state programme decided not to pay, and the company says so in the same breath as the pause: 'utan statens fortsatta stöd för genomförande finns just nu inte tillräckliga förutsättningar för att realisera projektet i Sverige'. The quote is from Heidelberg Materials' own Swedish release rather than from this event's source, which is a trade publisher that refuses a declared reader."
         },
         {
           "event_kind": "status",
@@ -1109,7 +1113,10 @@
           "source_url": "https://www.cleanenergywire.org/news/german-finance-minister-calls-steel-summit-after-green-projects-axed",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "The conversion of both sites was dropped and €1.3 billion of German subsidies turned down, the company citing energy costs. No primary source for the earlier announcement has been read, so the history starts here."
+          "note": "The conversion of both sites was dropped and €1.3 billion of German subsidies turned down, the company citing energy costs. No primary source for the earlier announcement has been read, so the history starts here.",
+          "stop_reason": "cost",
+          "stop_reason_verbatim": "Luxembourg-based ArcelorMittal said it would drop its plans for converting two plants in the country, in Bremen and Eisenhüttenstadt, to carbon-neutral production, arguing that energy costs in Germany were too high to allow for profitable operations.",
+          "stop_reason_note": "The company names one cause and the same source names a second condition — 'the European steel market is under unprecedented pressure due to weak demand and high imports'. The field takes one value and takes the one the company gives for the decision itself."
         }
       ],
       "sources": [
@@ -1713,7 +1720,10 @@
           "source_url": "https://www.electrive.com/2024/06/05/acc-puts-work-on-battery-factories-in-kaiserslautern-and-termoli-on-hold/",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "Work on Termoli and Kaiserslautern put on hold from May 2024 while ACC weighed a move to lithium iron phosphate."
+          "note": "Work on Termoli and Kaiserslautern put on hold from May 2024 while ACC weighed a move to lithium iron phosphate.",
+          "stop_reason": "offtake",
+          "stop_reason_verbatim": "The reason given is the declining demand for electric vehicles.",
+          "stop_reason_note": "Demand for the customer's product rather than a contract falling away, which is the nearest this vocabulary comes. The same source gives a second reason for the pause — the switch 'from its nickel-based cell chemistry to more cost-effective battery technologies' — which would be `cost`. One field, two stated reasons; see the docket."
         },
         {
           "event_kind": "status",
@@ -1724,7 +1734,9 @@
           "source_url": "https://www.electrive.com/2026/02/09/acc-permanently-abandons-battery-projects-in-germany-and-italy/",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "Status unchanged, and the sources disagree about what happened. The Italian union UILM said on 7 February 2026 that the project was 'definitively shelved'. ACC's own words are that the conditions for restarting the projects 'are unlikely to be met', and that it has begun a 'constructive dialogue' with unions about potential discontinuation. Under the standing press ruling the status follows the project's own sources, which describe a condition and a talks process rather than a decision, so it stays paused. ——— CORRECTED 6 SEPTEMBER 2026, and the paragraph above is left standing as what this register said at the time. The reading was wrong: ACC's statement of 7 February 2026 is the same sentence that cancels Kaiserslautern, and one statement cannot cancel one project and pause another. The event keeps the date it reached this register; the statement it rests on is of 7 February, which is the date the Kaiserslautern row carries."
+          "note": "Status unchanged, and the sources disagree about what happened. The Italian union UILM said on 7 February 2026 that the project was 'definitively shelved'. ACC's own words are that the conditions for restarting the projects 'are unlikely to be met', and that it has begun a 'constructive dialogue' with unions about potential discontinuation. Under the standing press ruling the status follows the project's own sources, which describe a condition and a talks process rather than a decision, so it stays paused. ——— CORRECTED 6 SEPTEMBER 2026, and the paragraph above is left standing as what this register said at the time. The reading was wrong: ACC's statement of 7 February 2026 is the same sentence that cancels Kaiserslautern, and one statement cannot cancel one project and pause another. The event keeps the date it reached this register; the statement it rests on is of 7 February, which is the date the Kaiserslautern row carries.",
+          "stop_reason": "unstated",
+          "stop_reason_note": "A REAL `unstated`, and the commonest shape of one. ACC's statement of 7 February 2026 gives a condition and not a cause: the 'prerequisites' to restart the projects 'were unlikely to be met'. What made them unlikely is not said, and the reason recorded against the 2024 pause is not carried forward onto the cancellation as though it had been restated."
         }
       ],
       "sources": [
@@ -1951,7 +1963,10 @@
           "source_url": "https://northvolt.com/articles/northvolt-files-for-bankruptcy-in-sweden/",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "Northvolt AB, Northvolt Ett AB, Northvolt Labs AB, Northvolt Revolt AB and Northvolt Systems AB filed for bankruptcy in Sweden on 12 March 2025. A court-appointed trustee was to determine the future of the production facilities. The history starts here because it is the first event sourced on this row; the site produced cells from 2021."
+          "note": "Northvolt AB, Northvolt Ett AB, Northvolt Labs AB, Northvolt Revolt AB and Northvolt Systems AB filed for bankruptcy in Sweden on 12 March 2025. A court-appointed trustee was to determine the future of the production facilities. The history starts here because it is the first event sourced on this row; the site produced cells from 2021.",
+          "stop_reason": "finance",
+          "stop_reason_verbatim": "Despite pursuing all available options to negotiate and implement a financial restructuring, including a Chapter 11 restructuring process in the United States, and despite liquidity support from our lenders and key counterparties, the company was unable to secure the necessary financial conditions to continue in its current form.",
+          "stop_reason_note": "The company's own filing statement. It also lists what eroded the position — 'rising capital costs, geopolitical instability, subsequent supply chain disruptions, and shifts in market demand' — which is a list of four and not a value."
         },
         {
           "event_kind": "ownership",
@@ -2345,7 +2360,9 @@
           "source_url": "https://northvolt.com/articles/chapter11/",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "Northvolt AB and subsidiaries filed for Chapter 11 reorganisation in the United States, with about $245 million of new financing and a stated intention that operations continue. Heide stopped: the German project company was left to the restructuring, and no work has been recorded on the site since. The Swedish bankruptcy followed on 12 March 2025 and is on the Northvolt Ett row."
+          "note": "Northvolt AB and subsidiaries filed for Chapter 11 reorganisation in the United States, with about $245 million of new financing and a stated intention that operations continue. Heide stopped: the German project company was left to the restructuring, and no work has been recorded on the site since. The Swedish bankruptcy followed on 12 March 2025 and is on the Northvolt Ett row.",
+          "stop_reason": "unstated",
+          "stop_reason_note": "THE SOURCE SAYS THE OPPOSITE OF WHAT THIS ROW RECORDS, and that is why the reason is unstated rather than `finance`. Northvolt's Chapter 11 release says the German subsidiary is financed separately and 'will continue to operate as usual outside of the Chapter 11 process'. Heide stopped anyway; no source read here says why, and inferring the parent's cause onto a subsidiary the parent said was unaffected would be this register writing the sentence itself."
         },
         {
           "event_kind": "status",
@@ -2493,7 +2510,10 @@
           "source_url": "https://www.energy-storage.news/european-ess-battery-company-morrow-files-for-bankruptcy/",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "Morrow Batteries ASA filed for bankruptcy in Norway. The bankruptcy is carried by trade press; no company statement has been read, and the company's own newsroom is still up but silent on it."
+          "note": "Morrow Batteries ASA filed for bankruptcy in Norway. The bankruptcy is carried by trade press; no company statement has been read, and the company's own newsroom is still up but silent on it.",
+          "stop_reason": "finance",
+          "stop_reason_verbatim": "In a statement, the company said it was not possible to complete the process of securing a new industrial investor and financing the group in light of ‘constraints imposed by the group’s liquidity situation’.",
+          "stop_reason_note": "Reported speech quoting the company's own statement; the company's newsroom is still up and silent on the bankruptcy, which is why the quote is the reporter's."
         }
       ],
       "sources": [
@@ -2861,7 +2881,10 @@
           "source_url": "https://www.bestmag.co.uk/battery-gigafactories-facing-a-temporary-dip-or-a-full-scale-crisis/",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "'The second project, Italvolt, in Italy also went bankrupt in January 2024.' Trade press, recorded as such: the company is dissolved and issued no closing statement, and the day within January is not given, so the date is the month's end rather than a claim to precision."
+          "note": "'The second project, Italvolt, in Italy also went bankrupt in January 2024.' Trade press, recorded as such: the company is dissolved and issued no closing statement, and the day within January is not given, so the date is the month's end rather than a claim to precision.",
+          "stop_reason": "finance",
+          "stop_reason_verbatim": "The second project, Italvolt, in Italy also went bankrupt in January 2024.",
+          "stop_reason_note": "THE INSOLVENCY IS THE REASON AND IS ALSO THE WHOLE OF WHAT THE SOURCE GIVES. A company that went bankrupt is a company whose money stopped, so `finance` is read from the sentence rather than inferred behind it — but nothing here says what caused the bankruptcy, and the row does not pretend otherwise."
         }
       ],
       "sources": [
@@ -3710,7 +3733,9 @@
           "source_url": "https://ueberherrn.de/wp-content/uploads/2024/02/Bekanntmachung-Offenlage-Aufhebung-Linsler-Feld.pdf",
           "source_type": "permit",
           "evidence_mode": "retrospective",
-          "note": "THE CANCELLATION IS THE AUTHORITY'S OWN, not press. The Überherrn council resolved on 7 May 2026 to repeal the plan, and the notice says why: 'Gegenstand der Aufhebung ist der Vorhabenbezogene Bebauungsplan „Industriegebiet Linsler Feld“, der die planungsrechtlichen Voraussetzungen für die Ansiedlung einer Batteriezellfabrik schaffen sollte. Das Vorhaben wird nicht mehr umgesetzt.' The repeal Begründung records the mechanism: gwSaar, the Vorhabenträger that had bought the land to grant SVOLT a heritable building right, declared it would not hold to the project, which triggers the municipality's duty to repeal under § 12 Abs. 6 BauGB. SVOLT's European withdrawal was reported earlier in trade press and no company statement of it has been read here, so the date this row carries is the authority's."
+          "note": "THE CANCELLATION IS THE AUTHORITY'S OWN, not press. The Überherrn council resolved on 7 May 2026 to repeal the plan, and the notice says why: 'Gegenstand der Aufhebung ist der Vorhabenbezogene Bebauungsplan „Industriegebiet Linsler Feld“, der die planungsrechtlichen Voraussetzungen für die Ansiedlung einer Batteriezellfabrik schaffen sollte. Das Vorhaben wird nicht mehr umgesetzt.' The repeal Begründung records the mechanism: gwSaar, the Vorhabenträger that had bought the land to grant SVOLT a heritable building right, declared it would not hold to the project, which triggers the municipality's duty to repeal under § 12 Abs. 6 BauGB. SVOLT's European withdrawal was reported earlier in trade press and no company statement of it has been read here, so the date this row carries is the authority's.",
+          "stop_reason": "unstated",
+          "stop_reason_note": "THE AUTHORITY RECORDS THE FACT AND NOT THE CAUSE. The repeal notice says 'Das Vorhaben wird nicht mehr umgesetzt' and the Begründung gives the mechanism — gwSaar declared it would not hold to the project, which triggers the municipality's duty to repeal under § 12 Abs. 6 BauGB — and neither is a reason. SVOLT's own stated reasons for withdrawing from Europe are on the Lauchhammer row, where the company said them; they are not copied here, because the company did not say them about this site."
         }
       ],
       "sources": [
@@ -3799,7 +3824,10 @@
           "source_url": "https://www.sec.gov/Archives/edgar/data/1992243/000199224326000007/t1-20251231.htm",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "THE COMPANY'S OWN FILING, and the rename is in the register: EDGAR carries the filer as T1 Energy Inc. with the former name FREYR Battery, Inc. The FY2025 10-K reports that 'the assets of our European businesses and our business in Coweta County, Georgia met the criteria for classification as held for sale as of December 31, 2024' and that 'the ultimate disposal represents a strategic shift that has had a major effect on our operations', so the European battery businesses are presented as discontinued operations. Mo i Rana appears in Properties as a lease of the CQP and of the LAND for Giga Arctic — the plan is a landholding, not a works. The date is the filing's; the decision is the pivot to US solar that preceded it. In late August 2026 Rana municipality approved rezoning part of the site for a data centre, reported and not filed, which is why it is a note and not a status."
+          "note": "THE COMPANY'S OWN FILING, and the rename is in the register: EDGAR carries the filer as T1 Energy Inc. with the former name FREYR Battery, Inc. The FY2025 10-K reports that 'the assets of our European businesses and our business in Coweta County, Georgia met the criteria for classification as held for sale as of December 31, 2024' and that 'the ultimate disposal represents a strategic shift that has had a major effect on our operations', so the European battery businesses are presented as discontinued operations. Mo i Rana appears in Properties as a lease of the CQP and of the LAND for Giga Arctic — the plan is a landholding, not a works. The date is the filing's; the decision is the pivot to US solar that preceded it. In late August 2026 Rana municipality approved rezoning part of the site for a data centre, reported and not filed, which is why it is a note and not a status.",
+          "stop_reason": "ownership",
+          "stop_reason_verbatim": "the ultimate disposal represents a strategic shift that has had a major effect on our operations",
+          "stop_reason_note": "NEAREST FIT AND A BAD ONE. Nothing failed and nobody changed hands: the owner changed the business it is in, pivoting to solar in the United States and classifying the European battery assets as held for sale. `ownership` is the closest of the seven and none of them is 'the owner changed its mind about what it does'. Named in the docket as a candidate class for a ruling."
         }
       ],
       "sources": [
@@ -3865,7 +3893,9 @@
           "source_url": "https://www.cnbc.com/2026/02/07/stellantis-backed-acc-drops-plans-for-italian-german-factories-union.html",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "ACC's own statement of 7 February 2026, made to unions and confirmed publicly the same day: the projects in Germany and Italy 'had been on standby since May 2024' and the 'prerequisites' to restart them 'were unlikely to be met', with 'different scenarios' under consideration. The Italian union UILM, which made it public, says management called Termoli and Kaiserslautern 'definitively shelved'. NO EARLIER STATUS EVENT IS RECORDED: the standby of May 2024 was not read into this register at the time and is not being back-dated from a sentence written twenty-one months later."
+          "note": "ACC's own statement of 7 February 2026, made to unions and confirmed publicly the same day: the projects in Germany and Italy 'had been on standby since May 2024' and the 'prerequisites' to restart them 'were unlikely to be met', with 'different scenarios' under consideration. The Italian union UILM, which made it public, says management called Termoli and Kaiserslautern 'definitively shelved'. NO EARLIER STATUS EVENT IS RECORDED: the standby of May 2024 was not read into this register at the time and is not being back-dated from a sentence written twenty-one months later.",
+          "stop_reason": "unstated",
+          "stop_reason_note": "ACC's own statement of 7 February 2026 gives a condition and not a cause — the 'prerequisites' to restart 'were unlikely to be met'. The same sentence cancels Termoli and the same `unstated` is recorded there."
         }
       ],
       "sources": [
@@ -3948,7 +3978,10 @@
           "source_url": "https://ecomento.de/2024/05/27/akkubauer-svolt-fertigt-doch-nicht-in-lauchhammer/",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "SVOLT will not build in Lauchhammer. The company gave a re-evaluated location strategy, a volatile automotive market, missing planning and legal certainty, and a large customer project that would not be realised. THE COMPANY RELEASE ITSELF COULD NOT BE FETCHED: svolt-eu.com/presse/svolt-europe-reagiert-auf-aktuelle-marktentwicklungen/ is in the Internet Archive's index for 30 May 2024 and the capture is a 404 — the Archive reached the URL after the page was gone. So the statement is carried through reporting that quotes it, and said to be."
+          "note": "SVOLT will not build in Lauchhammer. The company gave a re-evaluated location strategy, a volatile automotive market, missing planning and legal certainty, and a large customer project that would not be realised. THE COMPANY RELEASE ITSELF COULD NOT BE FETCHED: svolt-eu.com/presse/svolt-europe-reagiert-auf-aktuelle-marktentwicklungen/ is in the Internet Archive's index for 30 May 2024 and the capture is a 404 — the Archive reached the URL after the page was gone. So the statement is carried through reporting that quotes it, and said to be.",
+          "stop_reason": "offtake",
+          "stop_reason_verbatim": "Bei SVolt ist neben einer ohnehin geringen Planungssicherheit auf unterschiedlichsten Ebenen – von international drohenden Strafzöllen bis hin zu Marktverzerrungen durch langwierige sowie ungleich verteilte Fördermittel – nun außerdem ein signifikantes Kundenprojekt weggefallen.",
+          "stop_reason_note": "ONE SENTENCE, THREE REASONS, ONE FIELD. The company names tariffs and unevenly distributed subsidies as standing conditions — `policy` — and then names what changed: a significant customer project fell away. The field takes the thing that changed, because that is what stopped the site, and the standing conditions are in the quote where a reader can see them."
         }
       ],
       "sources": [
@@ -4003,7 +4036,9 @@
           "source_url": "https://ecomento.de/2022/05/23/farasis-bau-einer-grossen-akkufabrik-in-bitterfeld-wolfen-ist-geplatzt/",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "PAUSED AND NOT CANCELLED, and the distinction is the company's own words. Farasis told the Mitteldeutsche Zeitung 'wir die Konkretisierung unserer Pläne für den Standort Bitterfeld-Wolfen vorläufig zurückgestellt haben' — the concretisation of the plans is provisionally set aside. Bitterfeld-Wolfen had already terminated the städtebaulicher Vertrag, and the mayor said the factory will not come as planned and that the town is working with Farasis on alternatives. THIRD PARTIES CALL IT CANCELLED AND THIS ROW DOES NOT: a municipality ending a contract is the municipality's act, a headline is a headline, and neither is the company saying it has stopped. Nothing was ever built. The row moves to cancelled the day Farasis says so, and not before."
+          "note": "PAUSED AND NOT CANCELLED, and the distinction is the company's own words. Farasis told the Mitteldeutsche Zeitung 'wir die Konkretisierung unserer Pläne für den Standort Bitterfeld-Wolfen vorläufig zurückgestellt haben' — the concretisation of the plans is provisionally set aside. Bitterfeld-Wolfen had already terminated the städtebaulicher Vertrag, and the mayor said the factory will not come as planned and that the town is working with Farasis on alternatives. THIRD PARTIES CALL IT CANCELLED AND THIS ROW DOES NOT: a municipality ending a contract is the municipality's act, a headline is a headline, and neither is the company saying it has stopped. Nothing was ever built. The row moves to cancelled the day Farasis says so, and not before.",
+          "stop_reason": "unstated",
+          "stop_reason_note": "Farasis told a newspaper that it had 'die Konkretisierung unserer Pläne für den Standort Bitterfeld-Wolfen vorläufig zurückgestellt' and gave no reason for doing so. The municipality's termination of the städtebaulicher Vertrag is the municipality's act and is not the company saying why it stopped."
         }
       ],
       "sources": [
@@ -4064,7 +4099,10 @@
           "source_url": "https://www.thegazette.co.uk/notice/4260297",
           "source_type": "official_register",
           "evidence_mode": "retrospective",
-          "note": "ADMINISTRATORS APPOINTED, from the official record rather than from reporting. The London Gazette's notice 4260297 of 19 January 2023, category Corporate Insolvency, type Appointment of Administrators: POWER BY BRITISHVOLT LIMITED (company number 12381543), 'Date of Appointment: 17 January 2023', administrators Joanne Honor Robinson and Alan Michael Hudson of Ernst & Young LLP and Daniel Christopher Hurd. Companies House carries the same case — administration started 17 January 2023, ended 28 October 2024 — and the company's status is now Liquidation, a creditors' voluntary liquidation whose winding up commenced on 28 October 2024. The status date is the appointment and not the publication: the company stopped on the 17th and the Gazette said so on the 19th."
+          "note": "ADMINISTRATORS APPOINTED, from the official record rather than from reporting. The London Gazette's notice 4260297 of 19 January 2023, category Corporate Insolvency, type Appointment of Administrators: POWER BY BRITISHVOLT LIMITED (company number 12381543), 'Date of Appointment: 17 January 2023', administrators Joanne Honor Robinson and Alan Michael Hudson of Ernst & Young LLP and Daniel Christopher Hurd. Companies House carries the same case — administration started 17 January 2023, ended 28 October 2024 — and the company's status is now Liquidation, a creditors' voluntary liquidation whose winding up commenced on 28 October 2024. The status date is the appointment and not the publication: the company stopped on the 17th and the Gazette said so on the 19th.",
+          "stop_reason": "finance",
+          "stop_reason_verbatim": "Date of Appointment: 17 January 2023",
+          "stop_reason_note": "THE OFFICIAL RECORD STATES AN INSOLVENCY AND NOTHING ELSE. A Gazette notice of the appointment of administrators is the state writing down that a company ran out of money; `finance` is read from that and from nothing more. No cause appears in the notice, and none is imported from the reporting around it."
         }
       ],
       "sources": [
@@ -4124,7 +4162,10 @@
           "source_url": "https://www.novoenergy.se/volvo-cars-announces-an-operational-pause-in-novo-energy",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "NOVO Energy's own statement: 'until a new technology partner is secured, NOVO Energy can no longer proceed with its operations as previously planned', with layoffs affecting all positions in the company — 75 in all, notified to the unions and to Arbetsförmedlingen. Volvo Cars, the owner, 'maintains its long-term ambition to produce batteries for its electric cars in the Gothenburg, Sweden area' and cannot say when production might start or in what structure. THE HISTORY STARTS HERE because it is the first event on this site sourced to the company: the venture was formed with Northvolt in 2021 and the site was reported under construction from 2023, and neither is read into this register. Volvo Cars took full ownership on 29 January 2025, on Northvolt's own release, which is on file below as the record of how the ownership got here."
+          "note": "NOVO Energy's own statement: 'until a new technology partner is secured, NOVO Energy can no longer proceed with its operations as previously planned', with layoffs affecting all positions in the company — 75 in all, notified to the unions and to Arbetsförmedlingen. Volvo Cars, the owner, 'maintains its long-term ambition to produce batteries for its electric cars in the Gothenburg, Sweden area' and cannot say when production might start or in what structure. THE HISTORY STARTS HERE because it is the first event on this site sourced to the company: the venture was formed with Northvolt in 2021 and the site was reported under construction from 2023, and neither is read into this register. Volvo Cars took full ownership on 29 January 2025, on Northvolt's own release, which is on file below as the record of how the ownership got here.",
+          "stop_reason": "ownership",
+          "stop_reason_verbatim": "However, until a new technology partner is secured, NOVO Energy can no longer proceed with its operations as previously planned.",
+          "stop_reason_note": "NEAREST FIT, AND THE READER HAS TO BE TOLD WHY. The stated cause is the loss of a TECHNOLOGY PARTNER, which is not one of the seven. It is filed as `ownership` because the partner in question was Northvolt, the venture's own co-owner until Volvo Cars bought it out on 29 January 2025, so the thing that failed was half the owner. That is a fact a reader needs and the field cannot carry. Named in the docket as a candidate class for a ruling."
         }
       ],
       "sources": [
