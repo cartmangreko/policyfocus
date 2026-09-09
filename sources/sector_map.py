@@ -364,10 +364,44 @@ TARGET_PRECISIONS = (
 # is GWh. A denominator has to be one quantity, so the capacity_* fields are the
 # PRODUCT the plant makes, in two units and nothing else, and a row whose known
 # figure is not that leaves them empty rather than bending it to fit.
+#
+# HYDROGEN ADDED FOUR UNITS AND A RULE ABOUT NOT ADDING THEM. An electrolysis
+# project is quoted three ways by three different kinds of source -- the
+# electrical rating of the electrolyser (MW input), the hydrogen it makes stated
+# as a power or a flow (MW output, Nm3/h), and the tonnes a year it is expected
+# to produce -- and the three are related only through an efficiency and a
+# capacity factor that the source does not state. Converting between them here
+# would put a number on the page that nobody published, computed from an
+# assumption nobody wrote down; the IEA's own database does convert, calls the
+# result "normalised capacity", and its definitions sheet describes that column
+# once as MW electrical and once as "MW H2 output (LHV)" -- which is exactly the
+# ambiguity this register refuses to inherit. See sources/scope.md, "Three units
+# for one electrolyser, and no conversion between them".
+#
+# SO A ROW RECORDS THE FIGURE IN THE UNIT ITS SOURCE USED, and where a source
+# states the same phase in two units both are kept, in `capacity_alternates`,
+# with the row's own capacity_value being the one the export prefers.
 CAPACITY_UNITS = (
     "t_per_year",
     "GWh_per_year",
     "t_co2_per_year",
+    "MW_input",         # the electrolyser's electrical rating
+    "MW_output",        # the hydrogen, stated as a power
+    "Nm3_h",            # the hydrogen, stated as a flow
+    "t_h2_per_year",    # the hydrogen, stated as an annual mass
+    "t_nh3_per_year",   # ammonia, where the source states ammonia only
+)
+
+# WHICH UNIT THE EXPORT PREFERS WHEN A ROW STATES TWO. MW input is the figure the
+# perimeter's threshold is measured on and the figure every other source in this
+# sector can be compared against, so it wins where it is present; the order below
+# is the fallback chain and nothing outside it is ever chosen automatically.
+CAPACITY_UNIT_PREFERENCE = (
+    "MW_input",
+    "MW_output",
+    "Nm3_h",
+    "t_h2_per_year",
+    "t_nh3_per_year",
 )
 
 # HOW FIRM THE FIGURE IS. The same number means different things at these
@@ -405,6 +439,15 @@ CAPACITY_PRODUCTS = (
     "steel",
     "co2_reduced_steel",
     "battery_cells",
+    # WHAT AN ELECTROLYSIS SITE MAKES. `hydrogen` is the molecule; `ammonia` is
+    # here because a synthesis plant fed by its own electrolyser is sometimes the
+    # only thing its source quotes a tonnage for, and a register that could only
+    # record hydrogen would have to leave the figure out or invent one. The two
+    # are kept apart by their units -- t_nh3_per_year is the only annual mass
+    # `ammonia` ever takes -- so a tonne of ammonia can never be added to a tonne
+    # of hydrogen.
+    "hydrogen",
+    "ammonia",
     # NOT A PRODUCT THE PLANT SELLS, and it is in this list anyway. A capture
     # retrofit's output is the tonne it stops: the cement rows' known figure is
     # CO2 captured per year, the works makes the same clinker it always did, and
@@ -419,7 +462,131 @@ CAPACITY_PRODUCTS = (
 # product capacity that means anything — a CO2 store's capacity is a different
 # quantity in a different unit — so the gate asks for these three and is silent
 # about the rest.
-CAPACITY_SECTORS = ("cement", "steel", "batsol", "ccs")
+CAPACITY_SECTORS = ("cement", "steel", "batsol", "ccs", "clean")
+
+
+# WHICH PRODUCT EACH UNIT CAN BE A UNIT OF. A closed vocabulary of units and a
+# closed vocabulary of products still lets a row say "45,000 t_nh3_per_year of
+# hydrogen", which is a sentence nobody can act on and which a later total would
+# add to the hydrogen column. The pairing is therefore declared, and a unit that
+# is not in this table is a unit no product constrains -- the three original
+# units stay unconstrained because their sectors have one product each and the
+# `capacity_product` field already carries it.
+UNIT_PRODUCTS = {
+    "MW_input": ("hydrogen",),
+    "MW_output": ("hydrogen",),
+    "Nm3_h": ("hydrogen",),
+    "t_h2_per_year": ("hydrogen",),
+    "t_nh3_per_year": ("ammonia",),
+}
+
+
+# WHY A SITE IS NOT MOVING, IN THE SOURCE'S OWN TERMS. Every pause and every
+# cancellation carries one of these, and it is read off what the source says
+# rather than inferred from what happened around it. `unstated` is the ordinary
+# answer and is not a failure: a company that stops a project without saying why
+# has told us something, and recording a guess in that space would turn the
+# commonest fact in this dataset -- that reasons are not given -- into a
+# distribution of reasons somebody made up.
+#
+# The vocabulary is the one the hydrogen brief names, and it is deliberately
+# about the WORLD rather than about the company: `finance` is money not arriving,
+# `offtake` is nobody contracting to buy, `policy` is a rule or a subsidy moving,
+# `infrastructure` is a pipeline, a grid connection or a store not being there,
+# `cost` is the build costing more than the plan, `ownership` is the owner
+# changing or failing.
+STOP_REASONS = (
+    "finance",
+    "offtake",
+    "policy",
+    "infrastructure",
+    "cost",
+    "ownership",
+    "unstated",
+)
+
+# The statuses that owe a stop_reason. Read from the same place the drawing rule
+# reads, so the two cannot drift.
+STOP_REASON_STATUSES = STOPPED_STATUSES
+
+
+# WHETHER THE OWNER PUBLISHES. The paper this dataset feeds compares how much a
+# project discloses against who owns it, and that comparison needs the owner type
+# on the row rather than in somebody's head: a listed company files, a state-owned
+# one answers to a parliament, and a private one need do neither. It is about the
+# party that OPERATES the site -- for a joint venture, the lead named on the row.
+OWNER_LISTINGS = (
+    "listed",
+    "private",
+    "state-owned",
+)
+
+
+# DEPENDENCY EDGES, AND THE ONE CLASS THIS STEP CODES
+# ===================================================
+# A hydrogen site is defined by what it is attached to. It needs power, water and
+# a grid connection; it reaches its customer through a pipeline or a truck; and
+# the customer is usually a works that already exists and is in this register
+# under another sector. None of that is visible on a row that only says how many
+# megawatts it is.
+#
+# TWO CLASSES OF EDGE, AND ONLY ONE OF THEM IS DATA. An ASSERTED edge is one the
+# project's own source names: "the hydrogen will be delivered to the refinery in
+# Gonfreville", "connected directly to the hydrogen core network". It is evidence,
+# it carries the sentence it was read from, and it is what this step codes. A
+# STRUCTURAL edge is one that follows from the technology -- every electrolyser
+# needs a grid connection whether or not anybody said so -- and it is NOT coded
+# here: it belongs to a technology rule, applied once, in a later step. Writing
+# structural edges by hand now would produce a graph in which the two kinds look
+# identical and only the author knows which is which.
+EDGE_CLASSES = (
+    "asserted",
+    "structural",   # declared, and not written by hand -- see above
+)
+
+# WHICH WAY THE EDGE POINTS. `supplies` is the project sending something out;
+# `depends_on` is the project waiting for something. Both are recorded from the
+# project's own end, so a reader of one row sees both halves of its position.
+EDGE_KINDS = (
+    "supplies",
+    "depends_on",
+)
+
+# WHAT KIND OF THING IS ON THE OTHER END. The brief's four, unchanged:
+#   infrastructure  a pipeline, a store, a terminal, a grid or a water connection
+#   material        a molecule or a tonne moving between two works
+#   regulatory      a consent, a designation or a rule the project waits on
+#   funding         money the project is waiting for or standing on
+EDGE_TYPES = (
+    "infrastructure",
+    "material",
+    "regulatory",
+    "funding",
+)
+
+
+# THE OUTSIDE LISTS THIS REGISTER IS MEASURED AGAINST. Named here rather than in
+# the export, because the ids live on the rows and a row carrying an id under a
+# key nothing recognises is an id nobody can resolve.
+#
+#   odenweller_ueckerdt_2025
+#       The project list behind Odenweller and Ueckerdt, "The green hydrogen
+#       ambition and implementation gap", Nature Energy (2025). It is the IEA's
+#       October 2023 database after their own quality check, and the id is that
+#       file's `Ref` column.
+#   iea_hydrogen_production_projects
+#       The IEA's own live Hydrogen Production Projects database, read through
+#       its public project endpoint. The id is `projectReference`.
+#
+# THE TWO ARE NOT INDEPENDENT and the benchmark file says so: the first is a
+# quality-checked snapshot of the second, two years older. Matching against both
+# measures two different things -- whether this register holds what the published
+# academic list held, and whether it holds what the IEA holds today.
+BENCHMARKS = (
+    "odenweller_ueckerdt_2025",
+    "iea_hydrogen_production_projects",
+)
+
 
 
 # NOT EVERY ENTRY IN A STATUS HISTORY IS A STATUS CHANGE, and the difference has

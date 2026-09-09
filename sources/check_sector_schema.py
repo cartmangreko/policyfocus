@@ -88,6 +88,9 @@ class Errors:
     def __init__(self) -> None:
         self.errors: list[str] = []
         self.stale: list[str] = []
+        # Stopped events on sectors that have not yet adopted the reason rule.
+        # Reported and not failed, for the reason under STOP_REASON_SECTORS.
+        self.reasonless: list[str] = []
 
     def add(self, where: str, msg: str) -> None:
         self.errors.append(f"  {where}: {msg}")
@@ -605,6 +608,82 @@ def _capacity(e: Errors, where: str, row: dict) -> None:
     if row.get("sector") in sm.CAPACITY_SECTORS and not row.get("capacity_product"):
         e.add(where, "capacity_value is set but capacity_product is missing — tonnes of "
                      "clinker and tonnes of crude steel are not the same tonne")
+    _unit_product(e, where, row.get("capacity_unit"), row.get("capacity_product"))
+    _alternates(e, where, row)
+
+
+def _unit_product(e: Errors, where: str, unit, product) -> None:
+    """A unit and a product that cannot be each other's.
+
+    sm.UNIT_PRODUCTS is the pairing. Only the hydrogen units are constrained by
+    it, because their sector makes two products and the others make one; a unit
+    absent from the table is a unit this check has nothing to say about. See the
+    note there.
+    """
+    allowed = sm.UNIT_PRODUCTS.get(unit)
+    if allowed and product not in allowed:
+        e.add(where, f"capacity_unit={unit!r} with capacity_product={product!r} — that "
+                     f"unit measures {' or '.join(allowed)} and nothing else, and a total "
+                     f"would add this figure into the wrong column")
+
+
+def _alternates(e: Errors, where: str, row: dict) -> None:
+    """The same phase, stated by the same source in a second unit.
+
+    WHY THE LIST EXISTS. Electrolysis is quoted three ways and this register does
+    not convert between them (sources/scope.md, "Three units for one
+    electrolyser"). Where a source gives two of the three for one phase, throwing
+    one away would lose a figure the source actually published, and putting it in
+    a note would put it somewhere no total can reach. So it is a row of its own
+    shape, with every companion the main figure carries, and the export picks
+    between them by sm.CAPACITY_UNIT_PREFERENCE rather than by which was typed
+    first.
+
+    AN ALTERNATE MAY NOT REPEAT THE ROW'S OWN UNIT. Two figures in one unit for
+    one phase is not an alternate reading, it is a disagreement, and it belongs in
+    capacity_note where a reader is told which one the row stands on.
+    """
+    alts = row.get("capacity_alternates")
+    if alts is None:
+        return
+    if not isinstance(alts, list):
+        e.add(where, "capacity_alternates must be a list")
+        return
+    if alts and row.get("capacity_value") in (None, ""):
+        e.add(where, "capacity_alternates with no capacity_value — an alternate reading "
+                     "of a figure the row does not carry has nothing to be an alternate of")
+    seen = {row.get("capacity_unit")}
+    for i, a in enumerate(alts):
+        w = f"{where} capacity_alternates[{i}]"
+        _req(e, w, a, "value", "unit", "product", "basis", "source_url", "as_of")
+        _vocab(e, w, a, "unit", sm.CAPACITY_UNITS)
+        _vocab(e, w, a, "basis", sm.CAPACITY_BASES)
+        _vocab(e, w, a, "product", sm.CAPACITY_PRODUCTS)
+        _date(e, w, a, "as_of")
+        _url(e, w, a.get("source_url"), "source_url")
+        if not isinstance(a.get("value"), (int, float)):
+            e.add(w, "value is not a number")
+        _unit_product(e, w, a.get("unit"), a.get("product"))
+        if a.get("unit") in seen:
+            e.add(w, f"unit={a.get('unit')!r} is already carried by this row — two figures "
+                     f"in one unit is a disagreement, not an alternate reading, and the "
+                     f"row has to say in capacity_note which one it stands on")
+        seen.add(a.get("unit"))
+    # WHICH OF THE READINGS THE ROW LEADS WITH, enforced here rather than chosen
+    # in the export. sm.CAPACITY_UNIT_PREFERENCE says MW input wins where it is
+    # present, and the cheapest place to hold that is at authoring time: a
+    # selection made in the export would be a second rule, invisible on the row,
+    # and a reader comparing the row with the total would not be able to see why
+    # they disagree.
+    order = sm.CAPACITY_UNIT_PREFERENCE
+    if row.get("capacity_unit") in order:
+        mine = order.index(row["capacity_unit"])
+        for a in alts:
+            if a.get("unit") in order and order.index(a["unit"]) < mine:
+                e.add(where, f"capacity_unit={row['capacity_unit']!r} while an alternate "
+                             f"carries {a['unit']!r}, which comes first in "
+                             f"CAPACITY_UNIT_PREFERENCE — the row leads with the figure "
+                             f"the export totals, and the alternate is the other reading")
 
 
 TARGET_RE = re.compile(r"^\d{4}(-(H[12]|Q[1-4]|\d{2}(-\d{2})?))?$")
@@ -699,6 +778,133 @@ def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> N
         e.add(where, "the first entry has nothing to come from; status_from must be null")
 
 
+def _edges(e: Errors, where: str, row: dict, project_ids: set) -> None:
+    """What this project is attached to, as its own source names it.
+
+    ASSERTED ONLY, AND THE CLASS SAYS SO. Every edge written by hand is one a
+    source states in words, and it carries the words. A structural edge -- the
+    grid connection every electrolyser needs whether or not anybody wrote it down
+    -- is NOT written here; it follows from a technology rule in a later step, and
+    the gate refuses a hand-written one so that the two kinds cannot be confused
+    once both exist. See sm.EDGE_CLASSES.
+
+    A TARGET IS A PROJECT ID OR IT IS NAMED PROSE. `project:<id>` points at a row
+    in this file and is checked; anything else is `external:<slug>` and carries a
+    `target_name`, because most of what a hydrogen site is attached to -- a
+    pipeline, a store, a refinery in another sector -- has no row yet. An edge
+    that could point at nothing and say nothing would be a claim with no referent.
+    """
+    edges = row.get("edges")
+    if edges is None:
+        return
+    if not isinstance(edges, list):
+        e.add(where, "edges must be a list")
+        return
+    for i, g in enumerate(edges):
+        w = f"{where} edges[{i}]"
+        _req(e, w, g, "kind", "target", "type", "class", "since", "evidence")
+        _vocab(e, w, g, "kind", sm.EDGE_KINDS)
+        _vocab(e, w, g, "type", sm.EDGE_TYPES)
+        _vocab(e, w, g, "class", sm.EDGE_CLASSES)
+        _date(e, w, g, "since")
+        if g.get("class") == "structural":
+            e.add(w, "is written as a structural edge — structural edges follow from a "
+                     "technology rule and are not authored on a row; write the asserted "
+                     "edge the source states, or wait for the rule")
+        target = str(g.get("target") or "")
+        if target.startswith("project:"):
+            if target.split(":", 1)[1] not in project_ids:
+                e.add(w, f"target {target!r} is not a project id")
+        elif target.startswith("external:"):
+            if not g.get("target_name"):
+                e.add(w, "an external target has no target_name — an edge to something "
+                         "with no row has to say what the thing is called")
+        else:
+            e.add(w, f"target={target!r} must be project:<id> or external:<slug>")
+        ev = g.get("evidence")
+        if not isinstance(ev, dict):
+            e.add(w, "evidence is missing — an asserted edge is asserted by somebody, in "
+                     "a sentence, and the sentence is the whole of the claim")
+            continue
+        _req(e, f"{w} evidence", ev, "url", "publisher", "verbatim")
+        _url(e, f"{w} evidence", ev.get("url"))
+        _vocab(e, f"{w} evidence", ev, "source_type", sm.PROJECT_SOURCE_TYPES)
+
+
+# THE SECTORS THAT HAVE ADOPTED reason-as-stated. Hydrogen is written to it from
+# the first row; the three sectors that were on file before the rule existed are
+# REPORTED rather than failed, and the list is printed on every run.
+#
+# WHY NOT JUST BACKFILL. Because the only honest backfill is a re-read. Every one
+# of those rows carries a note, several of the notes give a reason, and writing
+# `unstated` across the lot to turn a gate green would put a made-up distribution
+# of reasons into the one field whose whole purpose is that it is not made up.
+# The debt is on the record instead, with a count, until somebody reads the
+# sources again.
+STOP_REASON_SECTORS = ("clean",)
+
+
+def _stop_reason(e: Errors, where: str, h: dict, sector: str | None) -> None:
+    """Why a project stopped, in the source's own terms or `unstated`.
+
+    REQUIRED ON EVERY ENTRY THAT LANDS IN A STOPPED STATUS, and refused on every
+    other, so the field cannot drift into a general note. `unstated` is a real
+    answer and the commonest one: a company that pauses a project without giving a
+    reason has told us that, and a gate that accepted an empty field here would
+    let a guess be written in the same space as a quotation.
+    """
+    stopped = h.get("status_to") in sm.STOP_REASON_STATUSES
+    reason = h.get("stop_reason")
+    if stopped and reason is None:
+        msg = (f"moves to {h.get('status_to')!r} and states no stop_reason — write "
+               f"the reason the source gives, or 'unstated' where it gives none")
+        if sector in STOP_REASON_SECTORS:
+            e.add(where, msg)
+        else:
+            e.reasonless.append(f"  {where}: {msg}")
+    elif not stopped and reason is not None:
+        e.add(where, "carries a stop_reason and does not stop the project")
+    if reason is not None:
+        _vocab(e, where, h, "stop_reason", sm.STOP_REASONS)
+        if reason != "unstated" and not h.get("stop_reason_verbatim"):
+            e.add(where, f"stop_reason={reason!r} with no stop_reason_verbatim — a reason "
+                         f"that is not 'unstated' was read from a sentence, and the "
+                         f"sentence is what makes it checkable")
+
+
+def _owner_and_benchmarks(e: Errors, where: str, row: dict) -> None:
+    """Who owns the operator, and what the outside lists call this project."""
+    if row.get("owner_listing") is not None:
+        _vocab(e, where, row, "owner_listing", sm.OWNER_LISTINGS)
+    marks = row.get("benchmarks")
+    if marks is None:
+        return
+    if not isinstance(marks, dict):
+        e.add(where, "benchmarks must be an object keyed by benchmark name")
+        return
+    for k, v in marks.items():
+        if k == "note":
+            continue
+        if k not in sm.BENCHMARKS:
+            e.add(where, f"benchmarks names {k!r}, which is not one of "
+                         f"{list(sm.BENCHMARKS)} — an id under a key nothing resolves is "
+                         f"an id nobody can look up")
+            continue
+        # A LIST IS A REAL ANSWER AND NOT A CONVENIENCE. Both benchmarks count
+        # PHASES as projects where this register counts a SITE, so a row that
+        # holds one works matches three of their rows, and collapsing that to one
+        # id would hide the mismatch the benchmark file exists to measure.
+        ids = v if isinstance(v, list) else [v]
+        if v is not None and not ids:
+            e.add(where, f"benchmarks.{k} is an empty list; use null for 'searched and "
+                         f"not there', which is a different fact from 'not searched'")
+        for one in ids:
+            if one is not None and not isinstance(one, (str, int)):
+                e.add(where, f"benchmarks.{k} carries {one!r}, which is neither an id nor "
+                             f"null; null is the record that the list was searched and "
+                             f"this project is not in it")
+
+
 def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
                    sectors: dict, technologies: dict, project_ids: set) -> None:
     for r in rows:
@@ -727,6 +933,7 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
             _date(e, hw, h, "date")
             _url(e, hw, h.get("source_url"), "source_url")
             _event(e, hw, h, i, prev_status)
+            _stop_reason(e, hw, h, r.get("sector"))
             # AN OWNERSHIP EVENT IS ONE FACT AND SAYS BOTH ENDS OF IT. `from` and
             # `to` are required because "the owner changed" without naming the
             # owners is an event nobody can check, and they are refused on every
@@ -781,6 +988,8 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
                      "is where it is defended")
         _location(e, w, r)
         _storage(e, w, r, technologies, project_ids)
+        _edges(e, w, r, project_ids)
+        _owner_and_benchmarks(e, w, r)
         _source_list(e, w, r)
 
 
@@ -1467,6 +1676,11 @@ def main() -> int:
         print(f"\ndraft prose awaiting review ({len(drafts)}) — the page renders the computed "
               f"sentence until the block in data/prose.json is approved:")
         print("\n".join(drafts))
+    if e.reasonless:
+        print(f"\nstopped events with no stop_reason ({len(e.reasonless)}) — reported, "
+              f"not failed: these rows predate reason-as-stated, and the only honest "
+              f"backfill is a re-read of their sources. See STOP_REASON_SECTORS:")
+        print("\n".join(e.reasonless))
     if e.stale:
         print(f"\nstale parameters ({len(e.stale)}) — reported, not failed:")
         print("\n".join(e.stale))
