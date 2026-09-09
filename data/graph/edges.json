@@ -29149,6 +29149,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:airliquide-normandhy-port-jerome",
+  "to": "technology:hydrogen-supply",
+  "since": "2022-01-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=airliquide-normandhy-port-jerome].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:am-bremen-eisenhuettenstadt",
   "to": "technology:dri-eaf",
   "since": "2025-06-23",
@@ -29175,6 +29185,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=anrav-devnya].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:bp-lingen-green-hydrogen",
+  "to": "technology:hydrogen-supply",
+  "since": "2024-12-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=bp-lingen-green-hydrogen].technology"
   }
  },
  {
@@ -29379,6 +29399,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:galp-sines-electrolyser",
+  "to": "technology:hydrogen-supply",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=galp-sines-electrolyser].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:gezero-geseke",
   "to": "technology:ccs-post-combustion",
   "since": "2023-12-15",
@@ -29549,6 +29579,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:moeve-onuba-huelva",
+  "to": "technology:hydrogen-supply",
+  "since": "2025-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=moeve-onuba-huelva].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:morrow-arendal",
   "to": "technology:cell-manufacturing",
   "since": "2024-08-16",
@@ -29639,6 +29679,26 @@
  },
  {
   "rel": "deploys",
+  "from": "project:repsol-petronor-muskiz",
+  "to": "technology:hydrogen-supply",
+  "since": "2026-01-26",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=repsol-petronor-muskiz].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:rwe-get-h2-nukleus-lingen",
+  "to": "technology:hydrogen-supply",
+  "since": "2023-01-31",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=rwe-get-h2-nukleus-lingen].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:salcos-salzgitter",
   "to": "technology:dri-eaf",
   "since": "2023-04-18",
@@ -29685,6 +29745,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=samsung-sdi-god].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:shell-refhyne-2-wesseling",
+  "to": "technology:hydrogen-supply",
+  "since": "2024-07-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=shell-refhyne-2-wesseling].technology"
   }
  },
  {
@@ -29856,6 +29926,18 @@
    "source": "data/transition/projects.json",
    "path": "[id=verkor-dunkirk].technology"
   }
+ },
+ {
+  "rel": "finances",
+  "from": "funding:eib-galp-sines-hydrogen",
+  "to": "project:galp-sines-electrolyser",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=eib-galp-sines-hydrogen].finances"
+  },
+  "instrument": "eib_financing",
+  "status": "approved"
  },
  {
   "rel": "finances",
@@ -30051,6 +30133,42 @@
  },
  {
   "rel": "finances",
+  "from": "funding:ipcei-hy2infra-bp-lingen",
+  "to": "project:bp-lingen-green-hydrogen",
+  "since": "2024-12-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=ipcei-hy2infra-bp-lingen].finances"
+  },
+  "instrument": "ipcei",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:ipcei-hy2infra-get-h2-nukleus",
+  "to": "project:rwe-get-h2-nukleus-lingen",
+  "since": "2024-07-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=ipcei-hy2infra-get-h2-nukleus].finances"
+  },
+  "instrument": "ipcei",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:ipcei-spain-repsol-petronor",
+  "to": "project:repsol-petronor-muskiz",
+  "since": "2026-01-26",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=ipcei-spain-repsol-petronor].finances"
+  },
+  "instrument": "ipcei",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
   "from": "funding:longship-brevik",
   "to": "project:brevik-ccs",
   "since": "2025-06-18",
@@ -30071,6 +30189,18 @@
    "path": "[id=lower-saxony-salcos].finances"
   },
   "instrument": "state_aid",
+  "status": "approved"
+ },
+ {
+  "rel": "finances",
+  "from": "funding:perte-erha-moeve-onuba",
+  "to": "project:moeve-onuba-huelva",
+  "since": "2025-09-16",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=perte-erha-moeve-onuba].finances"
+  },
+  "instrument": "grant",
   "status": "approved"
  },
  {
@@ -31979,6 +32109,17 @@
  },
  {
   "rel": "in",
+  "from": "funding:eib-galp-sines-hydrogen",
+  "to": "country:PT",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=eib-galp-sines-hydrogen].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
   "from": "funding:france-relance-k6",
   "to": "country:FR",
   "since": "2024-02-15",
@@ -32155,6 +32296,39 @@
  },
  {
   "rel": "in",
+  "from": "funding:ipcei-hy2infra-bp-lingen",
+  "to": "country:DE",
+  "since": "2024-12-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=ipcei-hy2infra-bp-lingen].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:ipcei-hy2infra-get-h2-nukleus",
+  "to": "country:DE",
+  "since": "2024-07-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=ipcei-hy2infra-get-h2-nukleus].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:ipcei-spain-repsol-petronor",
+  "to": "country:ES",
+  "since": "2026-01-26",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=ipcei-spain-repsol-petronor].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
   "from": "funding:longship-brevik",
   "to": "country:NO",
   "since": "2025-06-18",
@@ -32172,6 +32346,17 @@
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=lower-saxony-salcos].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "funding:perte-erha-moeve-onuba",
+  "to": "country:ES",
+  "since": "2025-09-16",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=perte-erha-moeve-onuba].country"
   },
   "basis": "country"
  },
@@ -32287,6 +32472,28 @@
  },
  {
   "rel": "in",
+  "from": "project:airliquide-normandhy-port-jerome",
+  "to": "country:FR",
+  "since": "2022-01-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=airliquide-normandhy-port-jerome].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:airliquide-normandhy-port-jerome",
+  "to": "sector:clean",
+  "since": "2022-01-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=airliquide-normandhy-port-jerome].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:am-bremen-eisenhuettenstadt",
   "to": "country:DE",
   "since": "2025-06-23",
@@ -32326,6 +32533,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=anrav-devnya].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:bp-lingen-green-hydrogen",
+  "to": "country:DE",
+  "since": "2024-12-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=bp-lingen-green-hydrogen].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:bp-lingen-green-hydrogen",
+  "to": "sector:clean",
+  "since": "2024-12-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=bp-lingen-green-hydrogen].sector"
   },
   "basis": "sector"
  },
@@ -32639,6 +32868,28 @@
  },
  {
   "rel": "in",
+  "from": "project:galp-sines-electrolyser",
+  "to": "country:PT",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=galp-sines-electrolyser].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:galp-sines-electrolyser",
+  "to": "sector:clean",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=galp-sines-electrolyser].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:gezero-geseke",
   "to": "country:DE",
   "since": "2023-12-15",
@@ -32881,6 +33132,28 @@
  },
  {
   "rel": "in",
+  "from": "project:moeve-onuba-huelva",
+  "to": "country:ES",
+  "since": "2025-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=moeve-onuba-huelva].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:moeve-onuba-huelva",
+  "to": "sector:clean",
+  "since": "2025-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=moeve-onuba-huelva].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:morrow-arendal",
   "to": "country:NO",
   "since": "2024-08-16",
@@ -33035,6 +33308,50 @@
  },
  {
   "rel": "in",
+  "from": "project:repsol-petronor-muskiz",
+  "to": "country:ES",
+  "since": "2026-01-26",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=repsol-petronor-muskiz].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:repsol-petronor-muskiz",
+  "to": "sector:clean",
+  "since": "2026-01-26",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=repsol-petronor-muskiz].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:rwe-get-h2-nukleus-lingen",
+  "to": "country:DE",
+  "since": "2023-01-31",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=rwe-get-h2-nukleus-lingen].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:rwe-get-h2-nukleus-lingen",
+  "to": "sector:clean",
+  "since": "2023-01-31",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=rwe-get-h2-nukleus-lingen].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:salcos-salzgitter",
   "to": "country:DE",
   "since": "2023-04-18",
@@ -33074,6 +33391,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=samsung-sdi-god].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:shell-refhyne-2-wesseling",
+  "to": "country:DE",
+  "since": "2024-07-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=shell-refhyne-2-wesseling].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:shell-refhyne-2-wesseling",
+  "to": "sector:clean",
+  "since": "2024-07-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=shell-refhyne-2-wesseling].sector"
   },
   "basis": "sector"
  },
@@ -33698,6 +34037,17 @@
  },
  {
   "rel": "quantifies",
+  "from": "parameter:galp-sines-h2-eib-loan",
+  "to": "sector:clean",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=galp-sines-h2-eib-loan].sector",
+   "quote": "In parallel, Galp is building in the same site a 100MW electrolyser, a €250 million investment of which the EIB will finance €180 million."
+  }
+ },
+ {
+  "rel": "quantifies",
   "from": "parameter:gbs-lost-per-blast-furnace",
   "to": "sector:steel",
   "since": "2023-06",
@@ -33817,6 +34167,17 @@
  },
  {
   "rel": "quantifies",
+  "from": "parameter:moeve-onuba-perte-grant",
+  "to": "sector:clean",
+  "since": "2025-09-16",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=moeve-onuba-perte-grant].sector",
+   "quote": "Moeve has been awarded €303.75 million for the initial phase of the Andalusian Green Hydrogen Valley , as part of the Strategic Project for the Economic Recovery and Transformation of Renewable Energies, Renewable Hydrogen, and Storage (PERTE ERHA) promoted by the Ministry for Ecological Transition and the Demographic Challenge."
+  }
+ },
+ {
+  "rel": "quantifies",
   "from": "parameter:near-zero-cement-cost-premium",
   "to": "bottleneck:cement-green-premium",
   "since": "2025-01-01",
@@ -33886,6 +34247,17 @@
   "evidence": {
    "source": "data/transition/bottlenecks.json",
    "path": "[id=steel-co2-transport-storage-network].quantified_by"
+  }
+ },
+ {
+  "rel": "quantifies",
+  "from": "parameter:repsol-petronor-ipcei-support",
+  "to": "sector:clean",
+  "since": "2026-01-26",
+  "evidence": {
+   "source": "data/transition/parameters.json",
+   "path": "[id=repsol-petronor-ipcei-support].sector",
+   "quote": "Recognised by the European Commission as an Important Project of Common European Interest (IPCEI), it will have the support of the Government of Spain and will receive €160 million through NextGenerationEU funds from the Spanish Recovery, Transformation, and Resilience Plan."
   }
  },
  {
@@ -35597,6 +35969,16 @@
  },
  {
   "rel": "supports",
+  "from": "funding:eib-galp-sines-hydrogen",
+  "to": "technology:hydrogen-supply",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=eib-galp-sines-hydrogen].supports"
+  }
+ },
+ {
+  "rel": "supports",
   "from": "funding:france-relance-k6",
   "to": "technology:ccs-oxyfuel",
   "since": "2024-02-15",
@@ -35767,6 +36149,36 @@
  },
  {
   "rel": "supports",
+  "from": "funding:ipcei-hy2infra-bp-lingen",
+  "to": "technology:hydrogen-supply",
+  "since": "2024-12-18",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=ipcei-hy2infra-bp-lingen].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:ipcei-hy2infra-get-h2-nukleus",
+  "to": "technology:hydrogen-supply",
+  "since": "2024-07-15",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=ipcei-hy2infra-get-h2-nukleus].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:ipcei-spain-repsol-petronor",
+  "to": "technology:hydrogen-supply",
+  "since": "2026-01-26",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=ipcei-spain-repsol-petronor].supports"
+  }
+ },
+ {
+  "rel": "supports",
   "from": "funding:longship-brevik",
   "to": "technology:ccs-post-combustion",
   "since": "2025-06-18",
@@ -35783,6 +36195,16 @@
   "evidence": {
    "source": "data/transition/funding.json",
    "path": "[id=lower-saxony-salcos].supports"
+  }
+ },
+ {
+  "rel": "supports",
+  "from": "funding:perte-erha-moeve-onuba",
+  "to": "technology:hydrogen-supply",
+  "since": "2025-09-16",
+  "evidence": {
+   "source": "data/transition/funding.json",
+   "path": "[id=perte-erha-moeve-onuba].supports"
   }
  },
  {

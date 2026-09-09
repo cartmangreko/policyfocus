@@ -1036,6 +1036,18 @@
   }
  },
  {
+  "id": "funding:eib-galp-sines-hydrogen",
+  "kind": "funding",
+  "label": "EIB loan — Sines 100 MW electrolyser",
+  "attrs": {
+   "instrument": "eib_financing",
+   "programme": "European Investment Bank direct lending",
+   "status": "approved",
+   "date": "2025-09-29",
+   "country": "PT"
+  }
+ },
+ {
   "id": "funding:france-relance-k6",
   "kind": "funding",
   "label": "France Relance / ADEME financing — K6",
@@ -1228,6 +1240,42 @@
   }
  },
  {
+  "id": "funding:ipcei-hy2infra-bp-lingen",
+  "kind": "funding",
+  "label": "IPCEI Hy2Infra — Lingen Green Hydrogen",
+  "attrs": {
+   "instrument": "ipcei",
+   "programme": "IPCEI Hy2Infra — German participation",
+   "status": "approved",
+   "date": "2024-12-18",
+   "country": "DE"
+  }
+ },
+ {
+  "id": "funding:ipcei-hy2infra-get-h2-nukleus",
+  "kind": "funding",
+  "label": "IPCEI Hy2Infra — GET H2 Nukleus, Lingen",
+  "attrs": {
+   "instrument": "ipcei",
+   "programme": "IPCEI Hy2Infra — German participation",
+   "status": "approved",
+   "date": "2024-07-15",
+   "country": "DE"
+  }
+ },
+ {
+  "id": "funding:ipcei-spain-repsol-petronor",
+  "kind": "funding",
+  "label": "IPCEI support — Petronor 100 MW electrolyser",
+  "attrs": {
+   "instrument": "ipcei",
+   "programme": "IPCEI, paid through Spain's Recovery, Transformation and Resilience Plan (NextGenerationEU)",
+   "status": "approved",
+   "date": "2026-01-26",
+   "country": "ES"
+  }
+ },
+ {
   "id": "funding:longship-brevik",
   "kind": "funding",
   "label": "Longship — Brevik CCS",
@@ -1249,6 +1297,18 @@
    "status": "approved",
    "date": "2023-04-18",
    "country": "DE"
+  }
+ },
+ {
+  "id": "funding:perte-erha-moeve-onuba",
+  "kind": "funding",
+  "label": "PERTE ERHA — Onuba, Andalusian Green Hydrogen Valley",
+  "attrs": {
+   "instrument": "grant",
+   "programme": "PERTE ERHA — Hydrogen Valleys, Spanish Recovery, Transformation and Resilience Plan (NextGenerationEU)",
+   "status": "approved",
+   "date": "2025-09-16",
+   "country": "ES"
   }
  },
  {
@@ -8279,6 +8339,17 @@
   }
  },
  {
+  "id": "parameter:galp-sines-h2-eib-loan",
+  "kind": "parameter",
+  "label": "Sines 100 MW electrolyser — EIB loan",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:galp-sines-electrolyser",
+   "confidence": "primary",
+   "date_of_value": "2025-09-29"
+  }
+ },
+ {
   "id": "parameter:gbs-lost-per-blast-furnace",
   "kind": "parameter",
   "label": "Granulated blast furnace slag lost per blast furnace substituted",
@@ -8378,6 +8449,17 @@
   }
  },
  {
+  "id": "parameter:moeve-onuba-perte-grant",
+  "kind": "parameter",
+  "label": "Onuba — PERTE ERHA award",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:moeve-onuba-huelva",
+   "confidence": "primary",
+   "date_of_value": "2025-09-16"
+  }
+ },
+ {
   "id": "parameter:near-zero-cement-cost-premium",
   "kind": "parameter",
   "label": "Production cost premium of near-zero emissions cement using CCS",
@@ -8430,6 +8512,17 @@
    "scope": "eu",
    "confidence": "primary",
    "date_of_value": "2024-06-13"
+  }
+ },
+ {
+  "id": "parameter:repsol-petronor-ipcei-support",
+  "kind": "parameter",
+  "label": "Petronor 100 MW electrolyser — IPCEI support",
+  "attrs": {
+   "unit": "EUR million",
+   "scope": "plant:repsol-petronor-muskiz",
+   "confidence": "primary",
+   "date_of_value": "2026-01-26"
   }
  },
  {
@@ -8673,6 +8766,38 @@
   }
  },
  {
+  "id": "project:airliquide-normandhy-port-jerome",
+  "kind": "project",
+  "label": "Air Liquide Normand'Hy",
+  "attrs": {
+   "company": "Air Liquide",
+   "plant": "Port-Jérôme, Saint-Jean-de-Folleville",
+   "country": "FR",
+   "status": "fid",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Normand'Hy, zone industrielle de Port-Jérôme",
+     "lat": 49.4955,
+     "lon": 0.5021,
+     "precision": "plant",
+     "retrieved_date": "2026-09-09",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1451191745",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Normand’Hy; operator=Air Liquide; landuse=construction; construction=industrial; product=H2; ref:FR:DREAL=0003902012",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The rare case where the basemap has drawn the electrolyser itself: the feature carries the project's name, the operator's name, the product and the DREAL installation reference, and it is tagged as an industrial construction site rather than as the surrounding estate. THE ROW'S STATUS DOES NOT READ OFF THAT TAG. The basemap shows a construction site and no source on file states the day construction began, so the history stops at the investment decision; a status inferred from a map tag would be this register deciding what happened from a picture of it."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
   "id": "project:am-bremen-eisenhuettenstadt",
   "kind": "project",
   "label": "ArcelorMittal Bremen and Eisenhüttenstadt conversion",
@@ -8744,6 +8869,38 @@
       "licence": "ODbL 1.0"
      },
      "confidence": "secondary"
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:bp-lingen-green-hydrogen",
+  "kind": "project",
+  "label": "Lingen Green Hydrogen (LGH2)",
+  "attrs": {
+   "company": "BP Europa SE",
+   "plant": "Lingen (Ems)",
+   "country": "DE",
+   "status": "construction",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "bp Raffinerie Lingen",
+     "lat": 52.5605,
+     "lon": 7.3073,
+     "precision": "plant",
+     "retrieved_date": "2026-09-09",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/147468367",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=BP Lingen; operator=BP Europa SE; industrial=refinery; landuse=industrial; alt_name=Erdöl-Raffinerie Emsland",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "THE FEATURE IS THE REFINERY AND THE ELECTROLYSER IS ON IT. bp states the site as the refinery's own ground — 'Die Anlage soll neben der bp Raffinerie in Lingen errichtet werden', and the July 2026 release has the pipe-rack modules arriving 'im Hafen der Raffinerie' and moving from there to a 34,000 m² Baufeld. OpenStreetMap carries no feature for the electrolyser itself. The point is therefore the works the company names, at plant precision, and a reader should read it as the refinery site rather than as the electrolyser building."
     }
    ],
    "location_note": null
@@ -9198,6 +9355,38 @@
   }
  },
  {
+  "id": "project:galp-sines-electrolyser",
+  "kind": "project",
+  "label": "Sines 100 MW electrolyser",
+  "attrs": {
+   "company": "Galp",
+   "plant": "Sines",
+   "country": "PT",
+   "status": "construction",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Refinaria de Sines",
+     "lat": 37.9586,
+     "lon": -8.8114,
+     "precision": "plant",
+     "retrieved_date": "2026-09-09",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/291921227",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Refinaria de Sines; operator=Galp Energia; industrial=refinery; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The works both sources name: Galp is 'building in the same site a 100 MW electrolyser' at the Sines Refinery. The feature carries the works' name and Galp as operator."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
   "id": "project:gezero-geseke",
   "kind": "project",
   "label": "GeZero",
@@ -9557,6 +9746,38 @@
   }
  },
  {
+  "id": "project:moeve-onuba-huelva",
+  "kind": "project",
+  "label": "Onuba — Andalusian Green Hydrogen Valley, phase 1",
+  "attrs": {
+   "company": "Moeve",
+   "plant": "Palos de la Frontera",
+   "country": "ES",
+   "status": "fid",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Parque Energético La Rábida, Palos de la Frontera",
+     "lat": 37.1811,
+     "lon": -6.9027,
+     "precision": "plant",
+     "retrieved_date": "2026-09-09",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/43025211",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Refinería de La Rábida; industrial=refinery; landuse=industrial; operator:-2024=Cepsa; start_date=1967",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The works Moeve names: 'the construction of a green hydrogen plant in Palos de la Frontera (Huelva)' at 'Moeve's energy parks in La Rábida (Palos de la Frontera, Huelva)'. The feature carries the works' own name and, in `operator:-2024`, the operator's former name — Moeve was Cepsa until 2024 — which is what ties the polygon to the company on the row."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
   "id": "project:morrow-arendal",
   "kind": "project",
   "label": "Morrow Cell Factory",
@@ -9762,6 +9983,69 @@
   }
  },
  {
+  "id": "project:repsol-petronor-muskiz",
+  "kind": "project",
+  "label": "Petronor 100 MW electrolyser, Muskiz",
+  "attrs": {
+   "company": "Repsol",
+   "plant": "Muskiz",
+   "country": "ES",
+   "status": "fid",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Refinería de Petronor, Muskiz",
+     "lat": 43.3312,
+     "lon": -3.1089,
+     "precision": "plant",
+     "retrieved_date": "2026-09-09",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/27532632",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Petronor birfindegia; name:es=Refinería de Petronor; operator=Petronor; industrial=refinery; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The works Repsol names: 'will install its second large-scale electrolyzer at its Petronor refinery in Muskiz close to Bilbao'. The feature carries the operator's own name."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:rwe-get-h2-nukleus-lingen",
+  "kind": "project",
+  "label": "GET H2 Nukleus — Lingen",
+  "attrs": {
+   "company": "RWE Generation SE",
+   "plant": "Lingen (Ems)",
+   "country": "DE",
+   "status": "construction",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "GET H₂ Nukleus, Lingen (Ems)",
+     "lat": 52.4852,
+     "lon": 7.303,
+     "precision": "plant",
+     "retrieved_date": "2026-09-09",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/1377883415",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "landuse=construction; name=GET H₂ Nukleus (300 MW)",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
   "id": "project:salcos-salzgitter",
   "kind": "project",
   "label": "SALCOS stage one",
@@ -9819,6 +10103,38 @@
      },
      "confidence": "secondary",
      "note": "The polygon is tagged by function — 'Cella gyártás' is cell manufacturing — which is what makes it the cell works rather than the estate. An earlier candidate, relation/16364462, is tagged only 'Samsung' and was refused for identifying the site rather than the works. Samsung SDI's own network page puts SAMSUNG SDI Hungary Zrt. at '2131 Göd, Schenek István utca 1'; the street is not in the basemap, so the address corroborates rather than places it."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
+  "id": "project:shell-refhyne-2-wesseling",
+  "kind": "project",
+  "label": "REFHYNE 2 — Shell Energy and Chemicals Park Rheinland",
+  "attrs": {
+   "company": "Shell Deutschland GmbH",
+   "plant": "Wesseling",
+   "country": "DE",
+   "status": "fid",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Shell Energy & Chemicals Park Rheinland, Werk Wesseling",
+     "lat": 50.8171,
+     "lon": 7.0069,
+     "precision": "plant",
+     "retrieved_date": "2026-09-09",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/38321216",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Shell Energy & Chemicals Park Rheinland Werk Wesseling; operator=Shell Energy & Chemicals Park Rheinland; industrial=refinery; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The works Shell names — 'a 100-megawatt renewable proton-exchange membrane (PEM) hydrogen electrolyser at the Shell Energy and Chemicals Park Rheinland' — and the feature carries that works' own name and operator. The electrolyser has no feature of its own."
     }
    ],
    "location_note": null
@@ -10497,7 +10813,8 @@
    "transition": "decarbonisation",
    "readiness": "demonstration",
    "sectors": [
-    "steel"
+    "steel",
+    "clean"
    ]
   }
  },

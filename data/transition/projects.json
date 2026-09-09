@@ -4217,6 +4217,960 @@
           "speaker": "company"
         }
       ]
+    },
+    {
+      "id": "rwe-get-h2-nukleus-lingen",
+      "name": "GET H2 Nukleus — Lingen",
+      "company": "RWE Generation SE",
+      "plant": "Lingen (Ems)",
+      "country": "DE",
+      "location": [
+        {
+          "site": "GET H₂ Nukleus, Lingen (Ems)",
+          "lat": 52.4852,
+          "lon": 7.303,
+          "precision": "plant",
+          "retrieved_date": "2026-09-09",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1377883415",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "landuse=construction; name=GET H₂ Nukleus (300 MW)",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "owner_listing": "listed",
+      "owner_listing_note": "RWE AG is listed in Frankfurt and consolidates RWE Generation SE.",
+      "capacity_value": 300,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+      "capacity_as_of": "2024-07-15",
+      "capacity_note": "RWE's own release on the funding notifications: 'the company wants to install hydrogen generating capacities of 300 megawatts in 100-megawatt increments by 2027 as part of the GET H2 Nukleus project.' The figure is the site total the company states, and the 100-MW increments are phases of it. The basis is `announced` and not `fid`: the January 2023 release that ordered the first two electrolysers says in terms that it 'does not yet imply a final investment decision', and no later source read here states one.",
+      "status": "construction",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2023-01-31",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
+          "source_url": "https://www.rwe.com/en/press/rwe-generation/2023-01-31-rwe-orders-two-100-megawatt-electrolysis-plants-for-get-h2-in-lingen/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "RWE ordered two 100-megawatt PEM electrolysers from Linde Engineering for the site of its gas-fired power plant in Lingen, and said plainly what the order was not: 'This does not yet imply a final investment decision.' The history starts here because it is the first event a company source on file states."
+        },
+        {
+          "event_kind": "status",
+          "date": "2024-07-15",
+          "status_from": "announced",
+          "status_to": "funded",
+          "status": "funded",
+          "source_url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "Germany's economy ministry and the states handed over the funding notifications in Berlin under the IPCEI Hy2Infra wave. RWE: 'Thanks to the funding from the German government and the federal state governments, the first industrial-scale hydrogen projects in Germany can now be implemented.'"
+        },
+        {
+          "event_kind": "status",
+          "date": "2026-08-04",
+          "status_from": "funded",
+          "status_to": "construction",
+          "status": "construction",
+          "source_url": "https://www.rwe.com/en/press/rwe-generation/2026-08-04-get-h2-nukleus-gains-momentum/",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "note": "The plant is making hydrogen and is not operating, and the two are not a contradiction. RWE: 'As part of the ongoing commissioning process for two 100-megawatt electrolysis plants operated by RWE in Lingen, initial quantities of renewable hydrogen are being produced in accordance with EU rules' — and, in the same release, 'We are now moving ahead quickly towards the full commissioning of our electrolysers. Over the coming months, we will prepare the plants for commercial operation.' This register has no rung between construction and operating, so the status is read from what the company says about commercial operation rather than from the fact that molecules exist. See the docket, new rule 6."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2023-01-31",
+          "milestone": "production_start",
+          "target_date": "2024",
+          "target_precision": "year",
+          "source_url": "https://www.rwe.com/en/press/rwe-generation/2023-01-31-rwe-orders-two-100-megawatt-electrolysis-plants-for-get-h2-in-lingen/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'RWE plans to commission the first of the two plants in 2024 on the site of its gas-fired power plant in Lingen.'"
+        },
+        {
+          "date": "2024-07-15",
+          "milestone": "production_start",
+          "target_date": "2025",
+          "target_precision": "year",
+          "source_url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'The first 100-MW electrolyser is to be commissioned in 2025.' Same speaker, same milestone, a year later than the statement above: this is a revision and the first slip on file in this dataset."
+        },
+        {
+          "date": "2026-08-04",
+          "milestone": "commissioning",
+          "target_date": "2026",
+          "target_precision": "year",
+          "source_url": "https://www.rwe.com/en/press/rwe-generation/2026-08-04-get-h2-nukleus-gains-momentum/",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "speaker": "company",
+          "note": "'RWE is commissioning 200 megawatts of electrolysis capacity in Lingen by the end of 2026. From 2027, the entire plant is scheduled to operate at a capacity of 300 megawatts.'"
+        }
+      ],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:evonik-marl-chemical-park",
+          "target_name": "Evonik Marl Chemical Park",
+          "type": "material",
+          "class": "asserted",
+          "since": "2026-08-04",
+          "evidence": {
+            "url": "https://www.rwe.com/en/press/rwe-generation/2026-08-04-get-h2-nukleus-gains-momentum/",
+            "publisher": "RWE Generation SE",
+            "source_type": "company",
+            "verbatim": "They are transported through a pipeline network spanning around 120 kilometres, operated by transmission system operators Nowega and OGE as well as SYNEQT, a subsidiary of Evonik, to Evonik’s Marl Chemical Park where the hydrogen is available for industrial production processes."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:get-h2-pipeline-nowega-oge",
+          "target_name": "GET H2 hydrogen pipeline network (Nowega, OGE, SYNEQT)",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2026-08-04",
+          "evidence": {
+            "url": "https://www.rwe.com/en/press/rwe-generation/2026-08-04-get-h2-nukleus-gains-momentum/",
+            "publisher": "RWE Generation SE",
+            "source_type": "company",
+            "verbatim": "The pipelines are among the first sections of the hydrogen core network that is being developed across Germany."
+          },
+          "note": "A pipeline is a dependency node and not a project row: the perimeter puts transport, storage and terminals outside it (docket §1). The edge is what carries the fact until those nodes exist."
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:rwe-gas-storage-west-gronau-epe",
+          "target_name": "RWE Gas Storage West hydrogen cavern, Gronau-Epe",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2026-08-04",
+          "evidence": {
+            "url": "https://www.rwe.com/en/press/rwe-generation/2026-08-04-get-h2-nukleus-gains-momentum/",
+            "publisher": "RWE Generation SE",
+            "source_type": "company",
+            "verbatim": "These include the 10-kilometre new-build pipeline from Heek to Epe, completed by OGE and Nowega at the end of 2025, connecting the hydrogen storage facility."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1632,
+          885,
+          1436
+        ],
+        "iea_hydrogen_production_projects": [
+          1632,
+          885,
+          1436
+        ],
+        "note": "Both lists split this site into three phase rows — 'GET H2 Nukleus, phase 1/2/3' — where this register holds one site of 300 MW. The ids are the phases in order. The quality-checked 2023 list carries phase 3 as 'Get H2 Lingen, phase 3' at 100 MW and feasibility study; the live IEA list carries all three at FID/Construction."
+      },
+      "sources": [
+        {
+          "url": "https://www.rwe.com/en/press/rwe-generation/2023-01-31-rwe-orders-two-100-megawatt-electrolysis-plants-for-get-h2-in-lingen/",
+          "title": "RWE orders two 100-megawatt electrolysis plants for GET H2 in Lingen",
+          "publisher": "RWE Generation SE",
+          "date": "2023-01-31",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+          "title": "German and state governments grant funding for large hydrogen projects by RWE",
+          "publisher": "RWE AG",
+          "date": "2024-07-15",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.rwe.com/en/press/rwe-generation/2026-08-04-get-h2-nukleus-gains-momentum/",
+          "title": "GET H2 Nukleus gains momentum: First hydrogen from Lingen reaches Marl",
+          "publisher": "RWE Generation SE",
+          "date": "2026-08-04",
+          "retrieved_date": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "id": "bp-lingen-green-hydrogen",
+      "name": "Lingen Green Hydrogen (LGH2)",
+      "company": "BP Europa SE",
+      "plant": "Lingen (Ems)",
+      "country": "DE",
+      "location": [
+        {
+          "site": "bp Raffinerie Lingen",
+          "lat": 52.5605,
+          "lon": 7.3073,
+          "precision": "plant",
+          "retrieved_date": "2026-09-09",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/147468367",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=BP Lingen; operator=BP Europa SE; industrial=refinery; landuse=industrial; alt_name=Erdöl-Raffinerie Emsland",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "THE FEATURE IS THE REFINERY AND THE ELECTROLYSER IS ON IT. bp states the site as the refinery's own ground — 'Die Anlage soll neben der bp Raffinerie in Lingen errichtet werden', and the July 2026 release has the pipe-rack modules arriving 'im Hafen der Raffinerie' and moving from there to a 34,000 m² Baufeld. OpenStreetMap carries no feature for the electrolyser itself. The point is therefore the works the company names, at plant precision, and a reader should read it as the refinery site rather than as the electrolyser building."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "owner_listing": "listed",
+      "owner_listing_note": "BP p.l.c. is listed in London and New York; BP Europa SE is its German subsidiary.",
+      "capacity_value": 100,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.bp.com/de_de/germany/home/presse/pressemeldungen/pm-2024-12-18-bp-verkuendet-investitionsentscheidung-fuer-projekt-lingen-green-hydrogen.html",
+      "capacity_as_of": "2024-12-18",
+      "capacity_note": "bp's FID release: 'bp hat die endgültige Investitionsentscheidung (Final Investment Decision, FID) für sein 100 Megawatt (MW)-Projekt „Lingen Green Hydrogen“ (LGH2) getroffen.' The same release states the annual mass — 'könnte jährlich bis zu 11.000 Tonnen grünen Wasserstoff produzieren' — which is carried as an alternate rather than converted into or out of the megawatts.",
+      "capacity_alternates": [
+        {
+          "value": 11000,
+          "unit": "t_h2_per_year",
+          "product": "hydrogen",
+          "basis": "fid",
+          "source_url": "https://www.bp.com/de_de/germany/home/presse/pressemeldungen/pm-2024-12-18-bp-verkuendet-investitionsentscheidung-fuer-projekt-lingen-green-hydrogen.html",
+          "as_of": "2024-12-18",
+          "note": "'Die Anlage, die im Rahmen des durch IPCEI-Mittel geförderten Projekts gebaut werden soll, könnte jährlich bis zu 11.000 Tonnen grünen Wasserstoff produzieren.' It is an upper bound the company states — 'bis zu' — and is recorded as the figure it is."
+        }
+      ],
+      "status": "construction",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2024-12-18",
+          "status_from": null,
+          "status_to": "fid",
+          "status": "fid",
+          "source_url": "https://www.bp.com/de_de/germany/home/presse/pressemeldungen/pm-2024-12-18-bp-verkuendet-investitionsentscheidung-fuer-projekt-lingen-green-hydrogen.html",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "bp took the final investment decision on the 100 MW project on 18 December 2024. The history starts at the FID because that is the first event a company source read here states; the project was in bp's plans earlier and no primary source for the earlier announcement has been read."
+        },
+        {
+          "event_kind": "status",
+          "date": "2026-07-23",
+          "status_from": "fid",
+          "status_to": "construction",
+          "status": "construction",
+          "source_url": "https://www.bp.com/de_de/germany/home/presse/nachrichten/2026-07-23-lingen-green-hydrogen-grosskomponenten-erreichen-den-standort.html",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "note": "'Große, vormontierte Rohrbrückenmodule sind planmäßig auf dem Gelände angekommen. Sie werden künftig verschiedene Bereiche und Anlagenteile des 100-Megawatt-Elektrolyseurs miteinander verbinden.' bp describes a 34,000 m² construction field on which 'Gebäude nehmen Gestalt an'."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2026-07-23",
+          "milestone": "production_start",
+          "target_date": "2027-H2",
+          "target_precision": "half",
+          "source_url": "https://www.bp.com/de_de/germany/home/presse/nachrichten/2026-07-23-lingen-green-hydrogen-grosskomponenten-erreichen-den-standort.html",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "speaker": "company",
+          "note": "'bp arbeitet weiterhin darauf hin, in der zweiten Hälfte des kommenden Jahres erstmals grünen Wasserstoff in Lingen zu produzieren.' Read at half precision because the company said a half and not a quarter, and the release is dated 2026, so 'des kommenden Jahres' is 2027."
+        }
+      ],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:bp-lingen-refinery",
+          "target_name": "bp Raffinerie Lingen",
+          "type": "material",
+          "class": "asserted",
+          "since": "2026-07-23",
+          "evidence": {
+            "url": "https://www.bp.com/de_de/germany/home/presse/nachrichten/2026-07-23-lingen-green-hydrogen-grosskomponenten-erreichen-den-standort.html",
+            "publisher": "BP Europa SE",
+            "source_type": "company",
+            "verbatim": "Mit der Einspeisung von grünem Wasserstoff aus dem Projekt können künftig bis zu 25 Prozent des heute eingesetzten grauen Wasserstoffs ersetzt werden."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:german-hydrogen-core-network",
+          "target_name": "German hydrogen core network (Wasserstoffkernnetz)",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2024-12-18",
+          "evidence": {
+            "url": "https://www.bp.com/de_de/germany/home/presse/pressemeldungen/pm-2024-12-18-bp-verkuendet-investitionsentscheidung-fuer-projekt-lingen-green-hydrogen.html",
+            "publisher": "BP Europa SE",
+            "source_type": "company",
+            "verbatim": "Die Anlage soll neben der bp Raffinerie in Lingen errichtet und direkt an das Wasserstoffkernnetz angeschlossen werden."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          622,
+          1034
+        ],
+        "iea_hydrogen_production_projects": 622,
+        "note": "The 2023 quality-checked list splits the site as 'Lingen Green Hydrogen (LGH2) Phase 1' (100 MW, feasibility study) and 'Phase 2' (400 MW, concept); this register holds phase 1, which is the phase that took FID, and holds no figure for a phase 2 no company source read here states."
+      },
+      "sources": [
+        {
+          "url": "https://www.bp.com/de_de/germany/home/presse/pressemeldungen/pm-2024-12-18-bp-verkuendet-investitionsentscheidung-fuer-projekt-lingen-green-hydrogen.html",
+          "title": "bp verkündet Investitionsentscheidung für Projekt „Lingen Green Hydrogen“",
+          "publisher": "BP Europa SE",
+          "date": "2024-12-18",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.bp.com/de_de/germany/home/presse/nachrichten/2026-07-23-lingen-green-hydrogen-grosskomponenten-erreichen-den-standort.html",
+          "title": "Lingen Green Hydrogen: Großkomponenten erreichen den Standort",
+          "publisher": "BP Europa SE",
+          "date": "2026-07-23",
+          "retrieved_date": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "id": "airliquide-normandhy-port-jerome",
+      "name": "Air Liquide Normand'Hy",
+      "company": "Air Liquide",
+      "plant": "Port-Jérôme, Saint-Jean-de-Folleville",
+      "country": "FR",
+      "location": [
+        {
+          "site": "Normand'Hy, zone industrielle de Port-Jérôme",
+          "lat": 49.4955,
+          "lon": 0.5021,
+          "precision": "plant",
+          "retrieved_date": "2026-09-09",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/1451191745",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Normand’Hy; operator=Air Liquide; landuse=construction; construction=industrial; product=H2; ref:FR:DREAL=0003902012",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The rare case where the basemap has drawn the electrolyser itself: the feature carries the project's name, the operator's name, the product and the DREAL installation reference, and it is tagged as an industrial construction site rather than as the surrounding estate. THE ROW'S STATUS DOES NOT READ OFF THAT TAG. The basemap shows a construction site and no source on file states the day construction began, so the history stops at the investment decision; a status inferred from a map tag would be this register deciding what happened from a picture of it."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "owner_listing": "listed",
+      "owner_listing_note": "L'Air Liquide S.A. is listed in Paris.",
+      "capacity_value": 200,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.airliquide.com/group/press-releases-news/2023-09-14/air-liquide-takes-further-step-developing-hydrogen-sector-france",
+      "capacity_as_of": "2023-09-14",
+      "capacity_note": "'Air Liquide announces an investment of over 400 million euros for the construction of its Normand'Hy electrolyzer, with a capacity of 200 MW.' The prefecture's operating authorisation, which Air Liquide reported in January 2022, states the same site at 'au moins 200 MW'. The basis is `fid` on a judgement recorded in the docket: the company commits a stated sum to construction and never uses the words 'final investment decision', and this register reads a committed sum for construction as the decision rather than as an intention.",
+      "status": "fid",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2022-01-19",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
+          "source_url": "https://fr.airliquide.com/a-propos/actualites-publications/air-liquide-obtient-lautorisation-dexploiter-son-futur-site-de-production-dhydrogene-renouvelable-en-normandie",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "Air Liquide France Industrie reporting the Seine-Maritime prefecture's arrêté: 'la préfecture de la Seine-Maritime autorise l'exploitation de l'usine de production d'hydrogène par électrolyse de l'eau d'Air Liquide Normand'Hy, dans la zone industrielle de Port-Jérôme.' The consent is a permit; the status it evidences is a named project with a site and no committed sum."
+        },
+        {
+          "event_kind": "status",
+          "date": "2023-09-14",
+          "status_from": "announced",
+          "status_to": "fid",
+          "status": "fid",
+          "source_url": "https://www.airliquide.com/group/press-releases-news/2023-09-14/air-liquide-takes-further-step-developing-hydrogen-sector-france",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "The €400 million investment for construction, announced with the memorandum of understanding to supply TotalEnergies' Gonfreville refinery. See the capacity note for why this register reads it as the decision."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2022-01-19",
+          "milestone": "commissioning",
+          "target_date": "2025",
+          "target_precision": "year",
+          "source_url": "https://fr.airliquide.com/a-propos/actualites-publications/air-liquide-obtient-lautorisation-dexploiter-son-futur-site-de-production-dhydrogene-renouvelable-en-normandie",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'La mise en service est prévue pour 2025.'"
+        },
+        {
+          "date": "2023-09-14",
+          "milestone": "production_start",
+          "target_date": "2026-H2",
+          "target_precision": "half",
+          "source_url": "https://www.airliquide.com/group/press-releases-news/2023-09-14/air-liquide-takes-further-step-developing-hydrogen-sector-france",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'the Air Liquide Normand'Hy electrolyzer will deliver to TotalEnergies' refinery in Gonfreville, over the long term, from the second half of 2026, renewable and low-carbon hydrogen equivalent to an electrolysis capacity of 100 MW.' NOT A REVISION OF THE LINE ABOVE: the 2022 statement is a commissioning date and this is a first-delivery date, and counting a milestone against a different milestone would manufacture a slip out of two things the company said about different events."
+        }
+      ],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:totalenergies-gonfreville-refinery",
+          "target_name": "TotalEnergies refinery, Gonfreville",
+          "type": "material",
+          "class": "asserted",
+          "since": "2023-09-14",
+          "evidence": {
+            "url": "https://www.airliquide.com/group/press-releases-news/2023-09-14/air-liquide-takes-further-step-developing-hydrogen-sector-france",
+            "publisher": "Air Liquide",
+            "source_type": "company",
+            "verbatim": "As part of this agreement, the Air Liquide Normand’Hy electrolyzer will deliver to TotalEnergies’ refinery in Gonfreville, over the long term, from the second half of 2026, renewable and low-carbon hydrogen equivalent to an electrolysis capacity of 100 MW."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:totalenergies-renewable-power-ppa",
+          "target_name": "TotalEnergies renewable electricity for the electrolyser",
+          "type": "material",
+          "class": "asserted",
+          "since": "2023-09-14",
+          "evidence": {
+            "url": "https://www.airliquide.com/group/press-releases-news/2023-09-14/air-liquide-takes-further-step-developing-hydrogen-sector-france",
+            "publisher": "Air Liquide",
+            "source_type": "company",
+            "verbatim": "To supply Air Liquide Normand’Hy, TotalEnergies will generate up to 100 MW renewable electricity to power the electrolyzer, volume corresponding to the hydrogen delivered to its refinery."
+          },
+          "note": "Typed `material` and not `infrastructure`: what is asserted is a volume of electricity contracted from a named counterparty, which is a thing moving between two parties rather than a connection being built. The grid connection every electrolyser needs is a STRUCTURAL edge and is not written here."
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 807,
+        "iea_hydrogen_production_projects": 807,
+        "note": "Both lists carry 'Normand'Hy - Air Liquide' at FID/Construction. The 2023 quality-checked list states 200 MW, which agrees with Air Liquide; the live IEA list normalises to 31.49 kt H2/y, about 182 MW on the IEA's own factor. The 9 per cent gap is the normalisation and not a disagreement about the plant."
+      },
+      "sources": [
+        {
+          "url": "https://fr.airliquide.com/a-propos/actualites-publications/air-liquide-obtient-lautorisation-dexploiter-son-futur-site-de-production-dhydrogene-renouvelable-en-normandie",
+          "title": "Air Liquide obtient l'autorisation d'exploiter son futur site de production d'hydrogène renouvelable en Normandie",
+          "publisher": "Air Liquide France Industrie",
+          "date": "2022-01-19",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.airliquide.com/group/press-releases-news/2023-09-14/air-liquide-takes-further-step-developing-hydrogen-sector-france",
+          "title": "Air Liquide takes a further step in developing the hydrogen sector in France",
+          "publisher": "Air Liquide",
+          "date": "2023-09-14",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://normandhy.airliquide.com/en",
+          "title": "Air Liquide Normand'Hy — project site",
+          "publisher": "Air Liquide",
+          "date": "2026-09-09",
+          "retrieved_date": "2026-09-09",
+          "note": "The project's own site, read for the site statement 'The electrolyser of at least 200 MW will be located in the Port-Jérôme industrial zone.' It states that construction is under way and carries no date for it, which is why the construction event on this row rests on the basemap instead."
+        }
+      ]
+    },
+    {
+      "id": "shell-refhyne-2-wesseling",
+      "name": "REFHYNE 2 — Shell Energy and Chemicals Park Rheinland",
+      "company": "Shell Deutschland GmbH",
+      "plant": "Wesseling",
+      "country": "DE",
+      "location": [
+        {
+          "site": "Shell Energy & Chemicals Park Rheinland, Werk Wesseling",
+          "lat": 50.8171,
+          "lon": 7.0069,
+          "precision": "plant",
+          "retrieved_date": "2026-09-09",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/38321216",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Shell Energy & Chemicals Park Rheinland Werk Wesseling; operator=Shell Energy & Chemicals Park Rheinland; industrial=refinery; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The works Shell names — 'a 100-megawatt renewable proton-exchange membrane (PEM) hydrogen electrolyser at the Shell Energy and Chemicals Park Rheinland' — and the feature carries that works' own name and operator. The electrolyser has no feature of its own."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "owner_listing": "listed",
+      "owner_listing_note": "Shell plc is listed in London, Amsterdam and New York.",
+      "capacity_value": 100,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.refhyne.eu/final-investment-decision-taken-by-shell-for-refhyne-2/",
+      "capacity_as_of": "2024-07-29",
+      "capacity_note": "'Shell has taken a final investment decision on REFHYNE 2, a 100-megawatt renewable proton-exchange membrane (PEM) hydrogen electrolyser at the Shell Energy and Chemicals Park Rheinland in Germany.' THE SOURCE IS THE PROJECT CONSORTIUM'S OWN SITE AND NOT SHELL'S, and that is a fact about the fetch rather than about the project: shell.com serves a declared reader a page containing its title and nothing else, so Shell's own release could not be quoted. The consortium page is the operator speaking through the project it leads, and Shell's URL is queued for a human read in sources/manual/MANIFEST.json.",
+      "capacity_alternates": [
+        {
+          "value": 15000,
+          "unit": "t_h2_per_year",
+          "product": "hydrogen",
+          "basis": "announced",
+          "source_url": "https://www.refhyne.eu/refhyne-2/",
+          "as_of": "2026-09-09",
+          "note": "'The REFHYNE 2 project aims to produce approximately up to 15,000 tonnes of green hydrogen per year.' Undated on the page and therefore dated at the day it was read; `announced` rather than `fid` because it is the project's aim rather than the figure the decision was taken on."
+        }
+      ],
+      "status": "fid",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2024-07-29",
+          "status_from": null,
+          "status_to": "fid",
+          "status": "fid",
+          "source_url": "https://www.refhyne.eu/final-investment-decision-taken-by-shell-for-refhyne-2/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "The consortium's own record of Shell's final investment decision, dated 29 July 2024 on the page. A short history is honest here: REFHYNE 2 was in preparation for years and no primary source for the earlier events has been read."
+        }
+      ],
+      "stated_schedule": [],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:shell-rheinland-refinery-networks",
+          "target_name": "Shell Energy and Chemicals Park Rheinland refinery networks",
+          "type": "material",
+          "class": "asserted",
+          "since": "2026-09-09",
+          "evidence": {
+            "url": "https://www.refhyne.eu/refhyne-2/",
+            "publisher": "REFHYNE consortium",
+            "source_type": "company",
+            "verbatim": "REFHYNE 2 will install a PEM electrolyser at the Shell Rheinland Energy and Chemicals Plant in Germany, using renewable power to produce green hydrogen and oxygen, which will be fed-in to the existing refinery networks to decarbonise refinery operations."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 942,
+        "iea_hydrogen_production_projects": 942,
+        "note": "Both lists carry the works as 'Refhyne II' / 'Refhyne - Phase 2'. The October 2023 quality-checked list puts it at 90 MW and feasibility study; the live IEA list has it at FID/Construction and 13.49 kt H2/y, about 78 MW on the IEA's own factor. Shell says 100 MW, and neither benchmark has ever said 100 — which is the sort of disagreement the benchmark file exists to count rather than to reconcile. Ref 225 in both files is REFHYNE 1, the 10 MW works on the same site, and is below this perimeter."
+      },
+      "sources": [
+        {
+          "url": "https://www.refhyne.eu/final-investment-decision-taken-by-shell-for-refhyne-2/",
+          "title": "Final Investment Decision taken by Shell for REFHYNE 2",
+          "publisher": "REFHYNE consortium",
+          "date": "2024-07-29",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.refhyne.eu/refhyne-2/",
+          "title": "REFHYNE 2",
+          "publisher": "REFHYNE consortium",
+          "date": "2026-09-09",
+          "retrieved_date": "2026-09-09",
+          "note": "Undated by its publisher; dated at the day it was read, which is the honest reading of a standing project page."
+        }
+      ]
+    },
+    {
+      "id": "repsol-petronor-muskiz",
+      "name": "Petronor 100 MW electrolyser, Muskiz",
+      "company": "Repsol",
+      "plant": "Muskiz",
+      "country": "ES",
+      "location": [
+        {
+          "site": "Refinería de Petronor, Muskiz",
+          "lat": 43.3312,
+          "lon": -3.1089,
+          "precision": "plant",
+          "retrieved_date": "2026-09-09",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/27532632",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Petronor birfindegia; name:es=Refinería de Petronor; operator=Petronor; industrial=refinery; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The works Repsol names: 'will install its second large-scale electrolyzer at its Petronor refinery in Muskiz close to Bilbao'. The feature carries the operator's own name."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "owner_listing": "listed",
+      "owner_listing_note": "Repsol S.A. is listed in Madrid; Petronor is its Basque refining subsidiary.",
+      "capacity_value": 100,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+      "capacity_as_of": "2026-01-26",
+      "capacity_note": "'The new 100 MW infrastructure will require an investment of €292 million for commissioning in 2029.' The basis is `fid`: Repsol describes the same step for Cartagena four months earlier as having 'approved the construction', and this release is the second of the pair.",
+      "capacity_alternates": [
+        {
+          "value": 15000,
+          "unit": "t_h2_per_year",
+          "product": "hydrogen",
+          "basis": "fid",
+          "source_url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+          "as_of": "2026-01-26",
+          "note": "'The electrolyzer will have the capacity to produce up to 15,000 tons of renewable hydrogen annually, which will mainly be used at the company's Petronor refinery in the vicinity of Bilbao in Northern Spain.'"
+        }
+      ],
+      "status": "fid",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2026-01-26",
+          "status_from": null,
+          "status_to": "fid",
+          "status": "fid",
+          "source_url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "note": "Repsol announced the second of its two large electrolysers, at Petronor. The history starts here because it is the first company statement on file that names this site with this figure."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2026-01-26",
+          "milestone": "commissioning",
+          "target_date": "2029",
+          "target_precision": "year",
+          "source_url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "speaker": "company",
+          "note": "'The new 100 MW infrastructure will require an investment of €292 million for commissioning in 2029.'"
+        }
+      ],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:petronor-muskiz-refinery",
+          "target_name": "Petronor refinery, Muskiz",
+          "type": "material",
+          "class": "asserted",
+          "since": "2026-01-26",
+          "evidence": {
+            "url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+            "publisher": "Repsol",
+            "source_type": "company",
+            "verbatim": "The electrolyzer will have the capacity to produce up to 15,000 tons of renewable hydrogen per year, which will mainly be used in processes at the Petronor the refinery itself."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:ipcei-hy2use-spain-repsol",
+          "target_name": "IPCEI funding, Spanish Recovery, Transformation and Resilience Plan",
+          "type": "funding",
+          "class": "asserted",
+          "since": "2026-01-26",
+          "evidence": {
+            "url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+            "publisher": "Repsol",
+            "source_type": "company",
+            "verbatim": "Recognised by the European Commission as an Important Project of Common European Interest (IPCEI), it will have the support of the Government of Spain and will receive €160 million through NextGenerationEU funds from the Spanish Recovery, Transformation, and Resilience Plan."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": 3554,
+        "note": "The live IEA list carries 'Repsol Bilbao refinery' at FID/Construction and 17.24 kt H2/y, about 100 MW on the IEA's own factor, which agrees with Repsol. The October 2023 list predates the decision and holds nothing at Muskiz at or above 100 MW."
+      },
+      "sources": [
+        {
+          "url": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+          "title": "Repsol installs its second 100-MW electrolyzer at Petronor",
+          "publisher": "Repsol",
+          "date": "2026-01-26",
+          "retrieved_date": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "id": "galp-sines-electrolyser",
+      "name": "Sines 100 MW electrolyser",
+      "company": "Galp",
+      "plant": "Sines",
+      "country": "PT",
+      "location": [
+        {
+          "site": "Refinaria de Sines",
+          "lat": 37.9586,
+          "lon": -8.8114,
+          "precision": "plant",
+          "retrieved_date": "2026-09-09",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/291921227",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Refinaria de Sines; operator=Galp Energia; industrial=refinery; landuse=industrial",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The works both sources name: Galp is 'building in the same site a 100 MW electrolyser' at the Sines Refinery. The feature carries the works' name and Galp as operator."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "owner_listing": "listed",
+      "owner_listing_note": "Galp Energia SGPS S.A. is listed in Lisbon.",
+      "capacity_value": 100,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-sines-with-eur430-million",
+      "capacity_as_of": "2025-09-29",
+      "capacity_note": "'In parallel, Galp is building in the same site a 100MW electrolyser, a €250 million investment of which the EIB will finance €180 million.' THE FIGURE IS ON A LENDER'S PAGE AND NOT ON A DATED COMPANY ONE, and the reason is worth writing down: Galp's own release, 'Final Investment Decision on Green Hydrogen and HVO/SAF projects', states the same '100 MW of electrolysers for the production of green hydrogen' and renders its publication date in the browser, so a declared reader gets the text without the date. An undated company statement cannot date an event, so the EIB's dated page carries the figure and the company page is cited beside it. Per the brief's own rule, an EIB approval is `announced` and not `fid`, even though Galp has taken one.",
+      "capacity_alternates": [
+        {
+          "value": 15000,
+          "unit": "t_h2_per_year",
+          "product": "hydrogen",
+          "basis": "announced",
+          "source_url": "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-sines-with-eur430-million",
+          "as_of": "2025-09-29",
+          "note": "'It is set to produce up to 15,000 tons of renewable hydrogen per year when it goes online next year, becoming one of the first operational units of its size in Europe.' Galp's own FID release states the same figure as 'up to 15 ktpa'."
+        }
+      ],
+      "status": "construction",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2025-09-29",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
+          "source_url": "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-sines-with-eur430-million",
+          "source_type": "grant_register",
+          "evidence_mode": "retrospective",
+          "note": "'The two projects, already in construction at the Sines Refinery, represent a total investment of €650 million.' THE SOURCE TYPE IS THE NEAREST FIT AND NOT A GOOD ONE: the European Investment Bank is a lender publishing a financing decision, and this vocabulary has no value for a lender — `grant_register` is the closest, `regulator` would say the EIB acted on the project, and `official_register` would say the state wrote down a fact. The gap is on the docket as a candidate class for a later ruling. The history starts at the construction event because Galp's own FID release carries no date a declared reader can read."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2025-09-29",
+          "milestone": "production_start",
+          "target_date": "2026",
+          "target_precision": "year",
+          "source_url": "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-sines-with-eur430-million",
+          "source_type": "grant_register",
+          "evidence_mode": "retrospective",
+          "speaker": "eu",
+          "note": "'It is set to produce up to 15,000 tons of renewable hydrogen per year when it goes online next year' — said in September 2025, so next year is 2026. THE SPEAKER IS THE EU AND NOT THE COMPANY, which is the whole reason the speaker field exists: a slip on this row can only be counted against another EIB statement, and a Galp date, when one is readable, will be a second speaker rather than a revision of this."
+        }
+      ],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:galp-sines-refinery",
+          "target_name": "Galp Sines refinery",
+          "type": "material",
+          "class": "asserted",
+          "since": "2025-09-29",
+          "evidence": {
+            "url": "https://www.eib.org/en/projects/pipelines/all/20230533",
+            "publisher": "European Investment Bank",
+            "source_type": "grant_register",
+            "verbatim": "The project will finance the implementation and operation of a very large-scale, grid-connected electrolyser (100 MW) producing renewable hydrogen to be supplied to a refinery."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1169,
+        "iea_hydrogen_production_projects": 1877,
+        "note": "THE SAME SITE UNDER TWO REFERENCE NUMBERS, WHICH IS THE MATCHING PROBLEM IN ONE ROW. The October 2023 quality-checked list calls it 'Sines refinery (phase 2)', ref 1169, 100 MW, FID/Construction — which agrees with Galp exactly. The live IEA list calls it 'GalpH2Park-I (Phase I)', ref 1877, 14.99 kt H2/y, about 87 MW. Ref 1877 in the older file is 'Sines refinery (phase 3)' at 600 MW and concept: the reference numbers were reassigned between the two vintages, so a match made on the id alone would put this row against a phase six times its size."
+      },
+      "sources": [
+        {
+          "url": "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-sines-with-eur430-million",
+          "title": "Portugal: EIB finances Galp's Renewable Hydrogen and Biofuels projects in Sines with €430 million",
+          "publisher": "European Investment Bank",
+          "date": "2025-09-29",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.galp.com/corp/en/media/press-releases/press-release/id/1490/final-investment-decision-on-green-hydrogen-and-hvosaf-projects",
+          "title": "Final Investment Decision on Green Hydrogen and HVO/SAF projects",
+          "publisher": "Galp",
+          "date": "2025-09-29",
+          "retrieved_date": "2026-09-09",
+          "note": "GALP'S OWN RELEASE, CITED AND NOT USED TO DATE ANYTHING. It states '100 MW of electrolysers for the production of green hydrogen', 'up to 15 ktpa of renewable hydrogen' and 'The total investments for this green hydrogen project are estimated at c.€250 m'. Its publication date is rendered by script and a declared reader gets no date at all, so the date recorded here is the EIB release's rather than this page's, and no event on this row rests on it. Queued for a human read."
+        },
+        {
+          "url": "https://www.eib.org/en/projects/pipelines/all/20230533",
+          "title": "Sines Green Hydrogen Production — project pipeline entry",
+          "publisher": "European Investment Bank",
+          "date": "2025-09-29",
+          "retrieved_date": "2026-09-09"
+        }
+      ]
+    },
+    {
+      "id": "moeve-onuba-huelva",
+      "name": "Onuba — Andalusian Green Hydrogen Valley, phase 1",
+      "company": "Moeve",
+      "plant": "Palos de la Frontera",
+      "country": "ES",
+      "location": [
+        {
+          "site": "Parque Energético La Rábida, Palos de la Frontera",
+          "lat": 37.1811,
+          "lon": -6.9027,
+          "precision": "plant",
+          "retrieved_date": "2026-09-09",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/43025211",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "name=Refinería de La Rábida; industrial=refinery; landuse=industrial; operator:-2024=Cepsa; start_date=1967",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary",
+          "note": "The works Moeve names: 'the construction of a green hydrogen plant in Palos de la Frontera (Huelva)' at 'Moeve's energy parks in La Rábida (Palos de la Frontera, Huelva)'. The feature carries the works' own name and, in `operator:-2024`, the operator's former name — Moeve was Cepsa until 2024 — which is what ties the polygon to the company on the row."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "owner_listing": "private",
+      "owner_listing_note": "Moeve, formerly Cepsa, is privately held; it is not listed and it is not state-owned. Recorded because the paper compares disclosure by owner type and this row is the private-ownership case among the seven.",
+      "capacity_value": 300,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.moeveglobal.com/en/press/moeve-investment-andalusian-green-hydrogen-valley-onuba-huelva",
+      "capacity_as_of": "2026-05-11",
+      "capacity_note": "'The first phase, known as Onuba, will be the largest in Southern Europe with 300 MW of capacity and the option to expand by an additional 105 MW.' THE ROW CARRIES 300 AND NOT 405. The brief's threshold rule sums phases only where the company states the total, and here the company states the opposite: 'The execution of the additional 105 MW of Onuba is subject to obtaining additional grid capacity and board approval.' The 405 MW figure is real and belongs to the grant — Spain's PERTE ERHA award of €303.75 million is stated 'for the development of 405 MW' — so it sits on the funding row and not here.",
+      "capacity_alternates": [
+        {
+          "value": 45000,
+          "unit": "t_h2_per_year",
+          "product": "hydrogen",
+          "basis": "fid",
+          "source_url": "https://www.moeveglobal.com/en/press/moeve-investment-andalusian-green-hydrogen-valley-onuba-huelva",
+          "as_of": "2026-05-11",
+          "note": "'At 300 MW, Onuba will have the capacity to produce around 45,000 tonnes of green hydrogen per year' — the company pairing the two units for the same phase, which is exactly the case capacity_alternates exists for."
+        }
+      ],
+      "status": "fid",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2025-09-16",
+          "status_from": null,
+          "status_to": "funded",
+          "status": "funded",
+          "source_url": "https://www.moeveglobal.com/en/press/moeve-green-hydrogen-andalusia-perte-erha",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "'Moeve has been awarded €303.75 million for the initial phase of the Andalusian Green Hydrogen Valley, as part of the Strategic Project for the Economic Recovery and Transformation of Renewable Energies, Renewable Hydrogen, and Storage (PERTE ERHA).' The page's own machine-readable date is written 2025-16-09, day and month transposed; read as 16 September 2025."
+        },
+        {
+          "event_kind": "status",
+          "date": "2026-05-11",
+          "status_from": "funded",
+          "status_to": "fid",
+          "status": "fid",
+          "source_url": "https://www.moeveglobal.com/en/press/moeve-investment-andalusian-green-hydrogen-valley-onuba-huelva",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "note": "'Moeve's Board of Directors has approved the final investment decision to begin construction in the coming weeks of the Andalusian Green Hydrogen Valley.' Construction 'in the coming weeks' is not construction, and the status stays at the decision until a source says ground was broken."
+        }
+      ],
+      "stated_schedule": [],
+      "edges": [
+        {
+          "kind": "depends_on",
+          "target": "external:spanish-grid-capacity-huelva",
+          "target_name": "Additional grid capacity for the 105 MW expansion",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2026-05-11",
+          "evidence": {
+            "url": "https://www.moeveglobal.com/en/press/moeve-investment-andalusian-green-hydrogen-valley-onuba-huelva",
+            "publisher": "Moeve",
+            "source_type": "company",
+            "verbatim": "The execution of the additional 105 MW of Onuba is subject to obtaining additional grid capacity and board approval."
+          },
+          "note": "An asserted dependency on a connection, named by the company as a condition on a stated part of the project. It is the one edge on these rows that a reader can use to see why a capacity figure is 300 and not 405."
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:pci-designation-onuba",
+          "target_name": "EU Project of Common Interest designation",
+          "type": "regulatory",
+          "class": "asserted",
+          "since": "2026-05-11",
+          "evidence": {
+            "url": "https://www.moeveglobal.com/en/press/moeve-investment-andalusian-green-hydrogen-valley-onuba-huelva",
+            "publisher": "Moeve",
+            "source_type": "company",
+            "verbatim": "The initiative has been designated as a Project of Common Interest (PCI) by the European Union and has received €304 million from the Government of Spain under the Recovery, Transformation and Resilience Plan, financed by the European Union’s NextGenerationEU program, through the Hydrogen Valleys scheme, for the development of 405 MW of the Andalusian Green Hydrogen Valley."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1997,
+        "iea_hydrogen_production_projects": 1997,
+        "note": "Both lists carry this site under the company's former name in the older file — 'Cepsa La Rábida Energy Park (Huelva) - phase 1' at 600 MW and feasibility study in October 2023, 'Moeve La Rábida Energy Park (Huelva) - phase 1' at FID/Construction and 51.98 kt H2/y in the live list. The 2023 figure is twice the phase the company has now taken a decision on, which is the ambition gap the benchmark paper is about, visible in one row."
+      },
+      "sources": [
+        {
+          "url": "https://www.moeveglobal.com/en/press/moeve-investment-andalusian-green-hydrogen-valley-onuba-huelva",
+          "title": "Moeve reaches the final investment decision to begin construction of Southern Europe's largest green hydrogen project",
+          "publisher": "Moeve",
+          "date": "2026-05-11",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.moeveglobal.com/en/press/moeve-green-hydrogen-andalusia-perte-erha",
+          "title": "Moeve secures €303.75 million from PERTE ERHA for the first phase of the Andalusian Green Hydrogen Valley",
+          "publisher": "Moeve",
+          "date": "2025-09-16",
+          "retrieved_date": "2026-09-09"
+        }
+      ]
     }
   ]
 }

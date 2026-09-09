@@ -113,6 +113,128 @@
       }
     },
     {
+      "id": "bp-lingen-green-hydrogen",
+      "site": "bp Raffinerie Lingen",
+      "country": "DE",
+      "role": "plant",
+      "relation": "technology",
+      "status": "construction",
+      "label": "Lingen Green Hydrogen (LGH2)",
+      "name_line": "Lingen Green Hydrogen (LGH2)",
+      "sub": "BP Europa SE",
+      "href": "/projects/bp-lingen-green-hydrogen",
+      "lat": 52.5605,
+      "lon": 7.3073,
+      "as_of": "2026-09-09",
+      "x": 426.6,
+      "y": 92.1,
+      "labels": {
+        "wide": {
+          "x": 440.5,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Lingen Green Hydrogen (LGH2)",
+              "role": "name",
+              "size": 11.0,
+              "y": 88.4
+            },
+            {
+              "text": "BP Europa SE",
+              "role": "company",
+              "size": 9.5,
+              "y": 100.4
+            }
+          ]
+        },
+        "narrow": {
+          "x": 446.0,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Lingen Green",
+              "role": "name",
+              "size": 21.0,
+              "y": 72.4
+            },
+            {
+              "text": "Hydrogen (LGH2)",
+              "role": "name",
+              "size": 21.0,
+              "y": 97.6
+            },
+            {
+              "text": "BP Europa SE",
+              "role": "company",
+              "size": 18.1,
+              "y": 120.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "rwe-get-h2-nukleus-lingen",
+      "site": "GET H₂ Nukleus, Lingen (Ems)",
+      "country": "DE",
+      "role": "plant",
+      "relation": "technology",
+      "status": "construction",
+      "label": "GET H2 Nukleus — Lingen",
+      "name_line": "GET H2 Nukleus — Lingen",
+      "sub": "RWE Generation SE",
+      "href": "/projects/rwe-get-h2-nukleus-lingen",
+      "lat": 52.4852,
+      "lon": 7.303,
+      "as_of": "2026-09-09",
+      "x": 426.0,
+      "y": 100.8,
+      "labels": {
+        "wide": {
+          "x": 412.1,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "GET H2 Nukleus — Lingen",
+              "role": "name",
+              "size": 11.0,
+              "y": 97.1
+            },
+            {
+              "text": "RWE Generation SE",
+              "role": "company",
+              "size": 9.5,
+              "y": 109.1
+            }
+          ]
+        },
+        "narrow": {
+          "x": 406.6,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "GET H2 Nukleus —",
+              "role": "name",
+              "size": 21.0,
+              "y": 81.1
+            },
+            {
+              "text": "Lingen",
+              "role": "name",
+              "size": 21.0,
+              "y": 106.3
+            },
+            {
+              "text": "RWE Generation SE",
+              "role": "company",
+              "size": 18.1,
+              "y": 129.3
+            }
+          ]
+        }
+      }
+    },
+    {
       "id": "salcos-salzgitter",
       "site": "Salzgitter steelworks",
       "country": "DE",
@@ -148,20 +270,99 @@
           ]
         },
         "narrow": {
-          "x": 627.4,
-          "anchor": "end",
+          "x": 646.8,
+          "anchor": "middle",
           "lines": [
             {
               "text": "SALCOS stage one",
               "role": "name",
               "size": 21.0,
-              "y": 134.7
+              "y": 274.4
             },
             {
               "text": "Salzgitter AG",
               "role": "company",
               "size": 18.1,
-              "y": 157.7
+              "y": 297.3
+            }
+          ],
+          "leader": [
+            646.8,
+            147.6,
+            646.8,
+            258.0
+          ]
+        }
+      }
+    },
+    {
+      "id": "shell-refhyne-2-wesseling",
+      "site": "Shell Energy & Chemicals Park Rheinland, Werk Wesseling",
+      "country": "DE",
+      "role": "plant",
+      "relation": "technology",
+      "status": "fid",
+      "label": "REFHYNE 2 — Shell Energy and Chemicals Park Rheinland",
+      "name_line": "REFHYNE 2 — Shell Energy and Chemicals Park Rheinland",
+      "sub": "Shell Deutschland GmbH",
+      "href": "/projects/shell-refhyne-2-wesseling",
+      "lat": 50.8171,
+      "lon": 7.0069,
+      "as_of": "2026-09-09",
+      "x": 397.1,
+      "y": 294.3,
+      "labels": {
+        "wide": {
+          "x": 411.0,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "REFHYNE 2 — Shell Energy and Chemicals",
+              "role": "name",
+              "size": 11.0,
+              "y": 284.0
+            },
+            {
+              "text": "Park Rheinland",
+              "role": "name",
+              "size": 11.0,
+              "y": 297.2
+            },
+            {
+              "text": "Shell Deutschland GmbH",
+              "role": "company",
+              "size": 9.5,
+              "y": 309.2
+            }
+          ]
+        },
+        "narrow": {
+          "x": 377.7,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "REFHYNE 2 — Shell",
+              "role": "name",
+              "size": 21.0,
+              "y": 262.0
+            },
+            {
+              "text": "Energy and Chemicals",
+              "role": "name",
+              "size": 21.0,
+              "y": 287.2
+            },
+            {
+              "text": "Park Rheinland",
+              "role": "name",
+              "size": 21.0,
+              "y": 312.4
+            },
+            {
+              "text": "Shell Deutschland GmbH",
+              "role": "company",
+              "size": 18.1,
+              "y": 335.4
             }
           ]
         }
@@ -203,34 +404,29 @@
           ]
         },
         "narrow": {
-          "x": 73.3,
+          "x": 67.8,
           "anchor": "start",
           "lines": [
             {
               "text": "3D — DMX",
               "role": "name",
               "size": 21.0,
-              "y": 211.5
+              "y": 170.6
             },
             {
               "text": "demonstration in",
               "role": "name",
               "size": 21.0,
-              "y": 236.7
+              "y": 195.8
             },
             {
               "text": "Dunkirk",
               "role": "name",
               "size": 21.0,
-              "y": 261.9
-            },
-            {
-              "text": "ArcelorMittal",
-              "role": "company",
-              "size": 18.1,
-              "y": 284.9
+              "y": 221.0
             }
-          ]
+          ],
+          "shortened": true
         }
       }
     }
@@ -253,14 +449,14 @@
           ]
         },
         "narrow": {
-          "x": 232.8,
+          "x": 285.2,
           "anchor": "start",
           "lines": [
             {
               "text": "Belgium",
               "role": "country",
               "size": 17.2,
-              "y": 322.9
+              "y": 362.0
             }
           ]
         }
@@ -361,14 +557,14 @@
       "text": "Netherlands",
       "labels": {
         "wide": {
-          "x": 310.8,
-          "anchor": "middle",
+          "x": 319.9,
+          "anchor": "start",
           "lines": [
             {
               "text": "Netherlands",
               "role": "country",
               "size": 9.0,
-              "y": 108.8
+              "y": 123.3
             }
           ]
         },
@@ -380,14 +576,14 @@
               "text": "Netherlands",
               "role": "country",
               "size": 17.2,
-              "y": 110.2
+              "y": 158.5
             }
           ]
         }
       }
     }
   ],
-  "as_of": "2026-08-28",
+  "as_of": "2026-09-09",
   "coordinates": [
     {
       "site": "Duisburg steelworks",
