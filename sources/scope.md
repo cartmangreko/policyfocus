@@ -1095,8 +1095,8 @@ constraint moved; it did not vanish.
 
 **Ruled 9 September 2026, and it reverses the oldest rule on the geography
 layer.** A project the perimeter admits is held whether or not anybody can place
-it. `location_precision: "none"` on the row is the state, and it is a state
-rather than an absence.
+it. `located: "no"` on the row is the state, and it is a state rather than an
+absence.
 
 **Why the old rule had to go, and it is not the reason the host-works ruling
 went.** That one was about which works a coordinate may be taken from. This one
@@ -1110,6 +1110,13 @@ second one, the largest single electrolyser figure any company on the file
 states, and the only project on the file with an insolvency in its history.
 **That is not a cautious register. It is a register that reports the coverage of
 OpenStreetMap and calls it industry.**
+
+**TWO FIELDS, TWO SCOPES, from later the same day.** `located` is `yes` or `no`
+and sits on the ROW; `location_precision` is `works`, `parcel` or `point` and
+sits on each SITE, only where the row is located. One name was doing two jobs at
+two scales — `none` could only ever be a row and the other three could only ever
+be a site — which is coherent and unreadable, and the gate now refuses each in
+the other's place.
 
 **What the row owes instead.** A `location_note` saying WHERE A POSITION WAS
 LOOKED FOR AND WHAT WAS FOUND, which is what stops this from becoming the place
@@ -1147,12 +1154,14 @@ no way to see that a quarter of it is the Free and Hanseatic City of Hamburg. A
 50:50 venture would not have been sayable at all. HyTechHafen Rostock is a
 four-way venture with no stated shares and is `mixed`; Catalina is five-way.
 
-**AND AN ABSENT OWNER TYPE IS A DECISION.** EWE AG is not listed on an exchange
-and is held by municipal associations together with a private investor, and no
-source read here states the split — so `private` and `state-owned` would both be
-assertions. The row carries no value and a note saying that, because a comparison
-of disclosure by owner type needs to know whether a row has no answer or was
-never asked. The fifty-one rows that predate the field are reported on every run,
+**AND `unknown` IS THE FOURTH VALUE, for the state where the split itself is not
+on file.** EWE AG is not listed on an exchange and is held by municipal
+associations together with a private investor, and no source read here says in
+what proportion — so `private` and `state-owned` would both be assertions, and
+`mixed` is a statement about a split between named parties rather than about one
+nobody here can see. The row carried nothing at all for part of a day, which
+could not tell "the sources do not say" from "nobody asked". `unknown` can, and
+it still carries the note. The fifty-one rows that predate the field are reported on every run,
 not failed, on the same reading the stop-reason backfill was done under.
 
 **`stop_reason` is an ordered list, first entry primary.** Sources give more than
@@ -1173,6 +1182,38 @@ customer: NOVO Energy has money, a site and a customer, and no technology. Both
 had been filed at their nearest value with the misfit written on the row; both
 are now filed at a value that fits, and the notes keep the record of the day
 they did not.
+
+### Every absence from a benchmark is a decision, and the residue is printed
+
+`sources/report_benchmark_gap.py` asks the question a reader distrusts a register
+over: **what do the outside lists hold that you do not, and is each absence a
+decision or an oversight.** It runs over every European entry at or above 100 MW
+in either benchmark, at any technology, and puts each into one of six classes —
+duplicate of a held row, DRI or other perimeter exclusion, blue, below threshold
+on reading, no company-confirmed site, and **not searched**.
+
+**Only the last is a defect, and it is printed by name rather than counted**,
+because the answer to it is to go and look. On the first run it held four
+entries, of which three carried the benchmark's status "Other/Unknown" — what a
+list looks like when it has stopped following a project rather than recorded that
+the project stopped. Two became rows, one was a later phase of the first, and one
+is refused in `REFUSED_BY_NAME` with its clause, on the same device the
+coordinate-source exceptions use: an entry leaves the residue by somebody
+deciding, never by a regex widening.
+
+**THE BENCHMARK IS A DISCOVERY ROUTE AND NOT ONLY A SCORE.** The batteries file
+recorded that the funding trail found two candidates the perimeter sweep had
+missed and said the lesson was worth remembering. This is the second such route
+and it is better, because it is exhaustive over a published list and it can be
+re-run. It found a paused 100 MW electrolyser at a British refinery that nothing
+else here would have reached.
+
+**And it found the reason a register cannot simply follow a list.** That project
+is in the October 2023 academic file twice, with an unknown status, and is gone
+from the live IEA file altogether. A register built by tracking the benchmark
+would have recorded its existence and never its pause: **a project that vanishes
+from a database is a project whose failure nobody counts.** The report is re-run
+whenever either list is refreshed.
 
 ### A slip is one speaker changing its mind
 

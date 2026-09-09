@@ -369,37 +369,39 @@ def _location(e: Errors, where: str, row: dict) -> None:
     """
     sites = row.get("location")
     note = (row.get("location_note") or "").strip()
-    row_precision = row.get("location_precision")
+    located = row.get("located")
+    _vocab(e, where, row, "located", sm.LOCATED)
+    if "located" not in row:
+        e.add(where, "no `located` — whether the row has a position is a question the row "
+                     "answers, not one a reader works out from whether a list is empty")
+    if row.get("location_precision") is not None:
+        e.add(where, "carries location_precision at row level — that field is per SITE and "
+                     "says how a position was resolved; whether there is one at all is "
+                     "`located`")
     if not sites:
         # POSITION IS NOT AN ADMISSION LEG. Ruled 9 September 2026. A row with no
-        # site says so POSITIVELY — `location_precision: "none"` on the row —
-        # rather than by an absence a reader has to notice. It is admitted, it is
-        # counted, it is named in the sentence over the overview as a row the
-        # picture does not draw, and its own page renders without the location
-        # section instead of with an empty one.
+        # site says so POSITIVELY — `located: "no"` — rather than by an absence a
+        # reader has to notice. It is admitted, it is counted, it is named in the
+        # sentence over the overview as a row the picture does not draw, and its
+        # own page renders without the location section instead of with an empty
+        # one.
         #
         # THE NOTE IS STILL REQUIRED AND IS DOING MORE WORK THAN BEFORE. It is
         # the record of where a polygon was looked for, which is what stops this
         # from becoming the place coordinates go to be avoided: a reader can see
         # that Maasvlakte was swept, that HØST's only feature is an office, that
         # an industrial park is refused as an estate.
-        if row_precision != "none":
-            e.add(where, f"no location and location_precision={row_precision!r} — a row "
-                         f"with no site says so with location_precision \"none\", which "
-                         f"is a state on the record rather than an absence a reader has "
-                         f"to infer")
+        if located != "no":
+            e.add(where, f"no location and located={located!r} — a row with no site says "
+                         f"so with located \"no\", which is a state on the record rather "
+                         f"than an absence a reader has to infer")
         if not note:
             e.add(where, "no location and no location_note — write where a position was "
                          "looked for and what was found, so the absence is a decision on "
                          "the record and nobody repeats the sweep")
         return
-    if row_precision is not None:
-        e.add(where, f"carries location_precision={row_precision!r} at row level and has "
-                     f"{len(sites)} site(s) — the row-level field says `none` and nothing "
-                     f"else; where there are sites, each carries its own")
-    if note:
-        e.add(where, "carries both a location and a location_note — the note explains an "
-                     "absence, and there is nothing absent here")
+    if located != "yes":
+        e.add(where, f"located={located!r} and the row carries {len(sites)} site(s)")
     if not isinstance(sites, list):
         e.add(where, "location must be a list of sites, even where there is one")
         return

@@ -9527,6 +9527,40 @@
   }
  },
  {
+  "id": "project:gigastack-humber",
+  "kind": "project",
+  "label": "Gigastack, Humber Refinery",
+  "attrs": {
+   "company": "Phillips 66",
+   "plant": "Humber Refinery, South Killingholme",
+   "country": "GB",
+   "status": "paused",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [
+    {
+     "site": "Humber Refinery, South Killingholme",
+     "lat": 53.6317,
+     "lon": -0.2423,
+     "precision": "plant",
+     "location_precision": "works",
+     "host_works": "Humber Refinery",
+     "retrieved_date": "2026-09-09",
+     "source": {
+      "url": "https://www.openstreetmap.org/relation/16012225",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "name=Humber Refinery; operator=Phillips 66; industrial=refinery; landuse=industrial",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary",
+     "note": "The host works the consortium names: the electrolyser was to stand at the Phillips 66 Humber Refinery and supply hydrogen into its fired heaters. The mark is the refinery, which is the works, and the project it was to serve is paused."
+    }
+   ],
+   "location_note": null
+  }
+ },
+ {
   "id": "project:go4zero-obourg",
   "kind": "project",
   "label": "GO4ZERO",
@@ -9772,6 +9806,21 @@
     }
    ],
    "location_note": null
+  }
+ },
+ {
+  "id": "project:ineos-koeln-electrolyser",
+  "kind": "project",
+  "label": "INEOS Köln 100 MW electrolyser",
+  "attrs": {
+   "company": "INOVYN (INEOS)",
+   "plant": "Köln-Worringen",
+   "country": "DE",
+   "status": "announced",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION, AND IT WAS LOOKED FOR. A Nominatim search for the INEOS Köln works on 9 September 2026 returns way/948687811, a pipeline valve station named 'Absperrstation M S24, Werk INEOS-Koeln'; two gatehouses, 'Ineos Tor 9' and 'Ineos Tor 19'; and a bus stop. A valve station, a gate and a bus stop are not the works, and the works itself carries no polygon under INEOS's name. So there is no host works to fall back on either."
   }
  },
  {

@@ -29469,6 +29469,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:gigastack-humber",
+  "to": "technology:hydrogen-supply",
+  "since": "2021-11-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gigastack-humber].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:go4zero-obourg",
   "to": "technology:ccs-oxyfuel",
   "since": "2024-05-16",
@@ -29585,6 +29595,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=ifestos-kamari].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:ineos-koeln-electrolyser",
+  "to": "technology:hydrogen-supply",
+  "since": "2021-10-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ineos-koeln-electrolyser].technology"
   }
  },
  {
@@ -33130,6 +33150,28 @@
  },
  {
   "rel": "in",
+  "from": "project:gigastack-humber",
+  "to": "country:GB",
+  "since": "2021-11-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gigastack-humber].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:gigastack-humber",
+  "to": "sector:clean",
+  "since": "2021-11-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=gigastack-humber].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:go4zero-obourg",
   "to": "country:BE",
   "since": "2024-05-16",
@@ -33323,6 +33365,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=ifestos-kamari].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:ineos-koeln-electrolyser",
+  "to": "country:DE",
+  "since": "2021-10-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ineos-koeln-electrolyser].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:ineos-koeln-electrolyser",
+  "to": "sector:clean",
+  "since": "2021-10-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ineos-koeln-electrolyser].sector"
   },
   "basis": "sector"
  },

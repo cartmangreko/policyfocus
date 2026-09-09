@@ -89,15 +89,15 @@ this docket names its own site plainly.
 
 | | count |
 |---|---|
-| Candidates the perimeter admits | **20** |
-| — of them, rows on file in `data/transition/projects.json` | **20** |
+| Candidates the perimeter admits | **22** |
+| — of them, rows on file in `data/transition/projects.json` | **22** |
 | — of them, still candidates | **0** |
 | Refused, by class, below | **8 classes named; 27 named instances** |
 | In the manual queue for a browser | **2** |
 | In `sources/schedule_queue.json` — no date from any admissible source | **2** |
 
 `sources/report_candidate_gaps.py` prints the first three lines on every build:
-`report_candidate_gaps: clean — 20 of 20 candidate(s) on file, 0 outstanding`.
+`report_candidate_gaps: clean — 22 of 22 candidate(s) on file, 0 outstanding`.
 
 ### THE DOCKET IS AT ITS END, AND IT TOOK TWO RULINGS TO GET THERE
 
@@ -123,19 +123,19 @@ states, and the only project here with an insolvency in its history. That is not
 cautious register; it is a register that reports OpenStreetMap's coverage and
 calls it industry.
 
-### How the twenty are placed
+### How the twenty-two are placed
 
-| how the position was resolved | rows |
-|---|---|
-| `works` — the installation's own polygon | 2 |
-| `works` — a host works, named on the row | 8 |
-| `none` — admitted, undrawn, and it says so | 10 |
+| `located` | how, per site | rows |
+|---|---|---|
+| yes | `works` — the installation's own polygon | 2 |
+| yes | `works` — a host works, named on the row | 9 |
+| no | — the row says so, and carries its sweep | 11 |
 
 The two on their own outlines are RWE's `GET H₂ Nukleus (300 MW)` at Lingen and
 Air Liquide's `Normand'Hy`, both tagged `landuse=construction` and both carrying
 the operator's name.
 
-**The ten `none` rows carry their sweep on the row.** Each `location_note` says
+**The eleven unplaced rows carry their sweep on the row.** Each `location_note` says
 where a polygon was looked for and what was found instead: the Maasvlakte box
 from 51.94 N to 52.00 N, where the Porthos compressor station and three TenneT
 converter stations are drawn and two 200 MW electrolysers are not; Emden, with
@@ -151,7 +151,7 @@ third clause — "no citable source places the works" — beside "cancelled" and
 renders without the location section and says in words that the company has
 confirmed the site, that nobody has drawn it, and that the row is held anyway.
 
-### The twenty rows
+### The twenty-two rows
 
 | # | Company | Site | Country | Capacity | Status | Position |
 |---|---|---|---|---|---|---|
@@ -175,24 +175,87 @@ confirmed the site, that nobody has drawn it, and that the row is held anyway.
 | 18 | H2APEX Group | Lubmin | DE | 100 MW | announced | none |
 | 19 | RWE Generation SE (JV of four) | Rostock port | DE | 100 MW | funded | none |
 | 20 | Copenhagen Infrastructure Partners | Andorra, Teruel | ES | 500 MW · 40,000 t/y | announced | none |
+| 21 | Phillips 66 (consortium of four) | Humber Refinery | GB | 100 MW | paused | host: the refinery |
+| 22 | INOVYN (INEOS) | Köln-Worringen | DE | 100 MW | announced | none |
 
-**3,410 MW of electrolyser capacity, plus one row stated in tonnes.** All twenty
-carry a stated figure — `clean: 20 of 20 plants with a stated capacity`, still
-the only sector on this platform where that is true. Row 17 is the reason the
+Rows 21 and 22 came from the benchmark gap report rather than the perimeter
+sweep; §2b is where they came from.
+
+**3,610 MW of electrolyser capacity, plus one row stated in tonnes.** All
+twenty-two carry a stated figure — `clean: 22 of 22 plants with a stated
+capacity`, still the only sector on this platform where that is true. Row 17 is the reason the
 no-conversion rule was worth writing: HØST states an annual mass and no megawatts
 at all, and the gigawatt figure that circulates for it is on no company page read
 here.
 
-**Two ownership events and one insolvency.** OMV's venture with Masdar on
+**Two ownership events and two stops.** OMV's venture with Masdar on
 6 November 2025 (49 per cent), and H2APEX taking sole ownership of HH2E Werk
 Lubmin out of insolvency plan proceedings on 2 July 2025 — this sector's first
 stop, `finance`, whose only surviving company source is the acquirer's, because
-HH2E's own domain now refuses a connection outright.
+HH2E's own domain now refuses a connection outright. The second stop is Gigastack, paused in
+August 2023 when its consortium withdrew from the UK's first electrolytic
+allocation round.
 
 **The first slip anywhere in this dataset is still row 1.** RWE said the first
 Lingen electrolyser would be commissioned in 2024, then in 2025 — one speaker,
 one milestone, twelve months. Across three other sectors the slip table has only
 ever held disagreements.
+
+### 2b. The benchmark gap, classified — and the two rows it found
+
+`sources/report_benchmark_gap.py` takes the opposite question to the benchmark
+file: not *how does each row compare*, but *what do the outside lists hold that
+this register does not, and is each absence a decision or an oversight*. It runs
+over every European entry at or above 100 MW in either list, **at any technology**
+— the wider population, because `blue` is one of the classes and a population
+that excluded fossil-with-capture could never report how much of it there is.
+
+| class | O&U | IEA |
+|---|---|---|
+| duplicate of a held row | 4 | 2 |
+| DRI or other perimeter exclusion | 25 | 31 |
+| blue | 0 | 22 |
+| below threshold on reading | 22 | 9 |
+| no company-confirmed site | 183 | 159 |
+| **not searched** | **0** | **0** |
+| held by eufabric | 21 | 14 |
+| **TOTAL** | **255** | **237** |
+
+**`not searched` is the only class that is a defect**, and the report prints its
+members by name rather than counting them, because the answer to it is to go and
+look. It found **four**, all in the older academic list and three of them carrying
+status "Other/Unknown" — which is what a list looks like when it has stopped
+following a project rather than recorded that the project stopped.
+
+| found | outcome |
+|---|---|
+| Gigastack–Hornsea 2, phase I (ref 552) | **landed.** 100 MW PEM at the Phillips 66 Humber Refinery, paused August 2023 |
+| Gigastack–Hornsea 2, phase II (ref 1374) | a later phase of the same site — duplicate once phase I is held |
+| INEOS Köln site (ref 1388) | **landed.** 100 MW announced October 2021, and nothing since |
+| Centurion (ref 580) | **refused by name**, on two clauses at once |
+
+**THIS IS A DISCOVERY ROUTE, AND THE BATTERIES FILE PREDICTED IT.** That file
+recorded that the funding trail found two candidates the perimeter sweep had
+missed, and said the lesson was worth remembering. The benchmark trail is the
+second such route and it is better than the first, because it is exhaustive over
+a published list and it can be re-run. It found a paused 100 MW project at a
+British refinery that this register would otherwise never have known existed —
+and the live IEA list has dropped that project entirely, which is a fact about
+the list rather than about the project: **a paused project that vanishes from a
+database is a project whose failure nobody counts.**
+
+**Centurion is refused in `REFUSED_BY_NAME`, one entry with its clause**, the
+same device the coordinate-source exceptions use: it is a 2018 Innovate UK
+*feasibility study* about grid injection and salt-cavern storage, and the
+perimeter refuses it twice over — no company statement confirms a project, and
+storage is a dependency node rather than a site. Printed on every run.
+
+**Two of the six classes are worth reading as findings rather than as bookkeeping.**
+`below threshold on reading` is 22 and 9: entries that clear 100 MW only through
+the IEA's normalisation, whose own `Announced Size` — the figure as the project
+stated it — is below it. And `no company-confirmed site` is 183 and 159, which is
+nine in ten of the gap: the perimeter admits what a company has confirmed, and a
+feasibility study is a company saying it might.
 
 ### Refused, by class
 
@@ -536,3 +599,17 @@ twenty and the comparison is simply this register against the two lists.
 15. **The undrawn clause will not scale.** It names every undrawn row, which is
     right at ten and unreadable at fifty. The hydrogen overview is not drawn yet,
     so nothing renders it today; the sentence needs a cutoff before it does.
+16. **`stop_reason` has no value for "the project is not ready".** Gigastack's
+    consortium paused it saying "further project maturation and supply chain
+    development is needed", which is neither finance, offtake, policy,
+    infrastructure, cost, ownership, strategy nor partner. It is filed at
+    `policy`, read from what they DID — withdrawing from the revenue-support
+    round their own 2021 report made the schedule conditional on — with the
+    misfit written on the row. A `readiness` or `supply_chain` value is the
+    candidate class.
+17. **A benchmark that drops a project drops its failure.** Gigastack is in the
+    October 2023 academic list twice, with status "Other/Unknown", and is gone
+    from the live IEA list altogether. A register built by following an outside
+    list would have recorded this project's existence and never its pause. The
+    gap report is the mechanism that caught it and it should be re-run whenever
+    either list is refreshed.

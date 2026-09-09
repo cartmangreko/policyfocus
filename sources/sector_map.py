@@ -580,6 +580,18 @@ OWNER_LISTINGS = (
     # city utility — showed that the single-value field only worked because that
     # split happened to have a majority. A 50:50 venture had no honest answer.
     "mixed",
+    # AND `unknown` IS THE FOURTH, ADDED THE SAME DAY. `mixed` is a statement
+    # about a split between named parties; this is the state where the split
+    # itself is not on file. EWE AG is the case: not listed on any exchange, held
+    # by East Frisian and Oldenburg municipal associations together with a
+    # private infrastructure investor, and no source read here says in what
+    # proportion. `private` and `state-owned` would each be an assertion.
+    #
+    # IT IS NOT THE SAME AS AN EMPTY FIELD and that is the whole of why it
+    # exists: an empty field cannot tell "the sources do not say" from "nobody
+    # asked", and a comparison of disclosure by owner type needs the difference.
+    # A row that carries it still carries the note saying what was looked at.
+    "unknown",
 )
 
 
@@ -885,25 +897,40 @@ LOCATION_PRECISIONS_ALLOWED = ("plant", "site")
 # place: ArcelorMittal covers Bremen and Eisenhüttenstadt, and one field on the
 # row would have to pick between two answers or average them. Every row carries it
 # in the only place it can be true — on each of its sites.
+# WHETHER THE ROW HAS A POSITION AT ALL, AT ROW LEVEL, AS ITS OWN QUESTION.
+# Split from location_precision on 9 September 2026, and the reason is that one
+# name was doing two jobs at two scopes: `none` could only ever be a row and
+# `works`/`parcel`/`point` could only ever be a site, which is coherent and is
+# not readable. Two fields, two scopes, and neither has to be explained.
+#
+#   yes   the row has at least one site, each with a coordinate and a precision.
+#   no    it has none, it is admitted anyway, and its `location_note` says where
+#         a polygon was looked for and what was found instead.
+LOCATED = (
+    "yes",
+    "no",
+)
+
+# HOW THE POSITION WAS RESOLVED, PER SITE, and only on a row that has one.
+#
+#   works   the coordinate is a WORKS POLYGON somebody drew — the installation
+#           itself where the basemap has it, the works it stands on where it does
+#           not. `host_works` names the second case, so the two are never
+#           confused, and the sentence over the picture says how many are which.
+#   parcel  the coordinate was computed from named cadastral parcels: a plan says
+#           which parcels, a state register holds their geometry, and neither
+#           alone places anything.
+#   point   the coordinate is a POSITION SOMEBODY STATED — a grid reference in a
+#           permit, an address the operator published, a coordinate pair in a
+#           technical source.
+#
+# IT IS RECORDED PER SITE AND NOT PER ROW, because a row is not always at one
+# place: ArcelorMittal covers Bremen and Eisenhüttenstadt, and one field on the
+# row would have to pick between two answers or average them.
 LOCATION_PRECISION_VALUES = (
     "works",
     "parcel",
     "point",
-    # NO POSITION, AND THE ROW IS ADMITTED ANYWAY. Ruled 9 September 2026:
-    # position is not an admission leg. A works a company has confirmed, with a
-    # capacity it has published, is a fact about European industry whether or not
-    # a volunteer has drawn a polygon around it — and the ten hydrogen sites this
-    # value landed are construction fields inside ports, industrial parks and
-    # greenfield, where the choice was never between a good coordinate and a bad
-    # one but between a row and nothing.
-    #
-    # IT IS A POSITIVE STATE AND NOT AN ABSENCE. The row says `none`, carries the
-    # note recording where a polygon was looked for, is counted in every
-    # count-based statistic, is named in the sentence over the overview as a row
-    # the picture does not draw, and renders its own page without the location
-    # section rather than with an empty one. A reader is told, everywhere it
-    # matters, that this project is on file and is not on the paper.
-    "none",
 )
 
 # WHICH PRECISION EACH KIND OF SOURCE CAN SUPPORT. Declared rather than left to

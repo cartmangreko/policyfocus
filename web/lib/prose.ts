@@ -269,17 +269,30 @@ export function sectorGeoProse(c: {
   const off = named.filter((r) => r.sited).map((r) => r.name);
   const unsitedStopped = named.filter((r) => !r.sited && r.stopped);
   const unsitedLive = named.filter((r) => !r.sited && !r.stopped);
+  // NAME UP TO FIVE AND THEN COUNT. The clause was written when the largest
+  // group was two; hydrogen made it ten and it would be fifty before this
+  // sector is finished. A sentence that names fifty projects is a list wearing a
+  // sentence's clothes, and a reader stops reading it — which loses the fact the
+  // clause exists to carry. So the names stop at five and the rest are counted,
+  // and THE FULL LIST IS RENDERED UNDER THE PICTURE where a list belongs. The
+  // number in the sentence and the length of that list are the same number, and
+  // both come from `undrawn.rows`.
+  const NAMED_LIMIT = 5;
+  const capped = (names: string[]): string =>
+    names.length <= NAMED_LIMIT
+      ? list(names)
+      : `${names.slice(0, NAMED_LIMIT).join(", ")} and ${names.length - NAMED_LIMIT} more`;
   const clauses = [
-    off.length > 0 ? `${list(off)} — cancelled` : null,
+    off.length > 0 ? `${capped(off)} — cancelled` : null,
     unsitedStopped.length > 0
-      ? `${list(unsitedStopped.map((r) => `${r.name} (${r.status})`))} — location not sought`
+      ? `${capped(unsitedStopped.map((r) => `${r.name} (${r.status})`))} — location not sought`
       : null,
     // THE THIRD REASON, ADDED 9 SEPTEMBER 2026. A row that is being built and
     // that nobody has drawn is on file and off the paper, and it is neither
     // cancelled nor unlooked-for. Naming it separately is the whole of what
     // stops the picture from reading as the sector.
     unsitedLive.length > 0
-      ? `${list(unsitedLive.map((r) => `${r.name} (${r.status})`))} — no citable source places the works`
+      ? `${capped(unsitedLive.map((r) => `${r.name} (${r.status})`))} — no citable source places the works`
       : null,
   ].filter(Boolean) as string[];
   const left =

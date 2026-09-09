@@ -58,7 +58,18 @@
     "",
     "NOTHING IS DELETED. Each entry stays as the record of what was needed and what was found,",
     "and report_candidate_gaps prints 20 of 20 rather than asking for anything. The file is now a",
-    "history of a docket rather than a queue, which is what a finished docket looks like."
+    "history of a docket rather than a queue, which is what a finished docket looks like.",
+    "",
+    "TWO ENTRIES ADDED 9 SEPTEMBER 2026 BY THE BENCHMARK GAP REPORT, not by the perimeter sweep.",
+    "sources/report_benchmark_gap.py classifies every European entry at or above 100 MW in either",
+    "outside list that this register does not hold, and its `not searched` class is the only one",
+    "that is a defect: an entry at FID or beyond, in the geography, above the threshold, that",
+    "nothing here explains. It found four. Two are the phases of one project, Gigastack; one is",
+    "INEOS Köln; one is Centurion, refused in the docket. Both admitted ones are now rows.",
+    "",
+    "THIS IS THE DISCOVERY ROUTE THE BATTERIES FILE PREDICTED. That file noted that the funding",
+    "trail found two candidates the sweep had missed. The benchmark trail is the second such route",
+    "and it is better, because it is exhaustive over a published list and it can be re-run."
   ],
   "sector": "clean",
   "perimeter": "sources/hydrogen_docket.md",
@@ -388,6 +399,41 @@
         "iea_hydrogen_production_projects": 2246
       },
       "coordinate_ref": "way/218584073 Repsol Tarragona Refinery — the complex the electrolyser is to supply. HOST WORKS."
+    },
+    {
+      "id": "gigastack-humber",
+      "company": "Phillips 66",
+      "site": "Humber Refinery, South Killingholme",
+      "country": "GB",
+      "status": "paused",
+      "capacity_mw_input": 100,
+      "company_source": "https://itm-power.com/news/gigastack-project-one-step-closer-to-renewable-hydrogen-at-industrial-scale-as-phase-2-concludes",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "relation/16012225 Humber Refinery, operator=Phillips 66 — HOST WORKS",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          552,
+          1374
+        ],
+        "iea_hydrogen_production_projects": null
+      },
+      "note": "FOUND BY THE BENCHMARK GAP REPORT AND NOT BY THE PERIMETER SWEEP, 9 September 2026. The academic list carries it twice, at 100 MW and 900 MW, both with status 'Other/Unknown'; the live IEA list has dropped it. A 100 MW electrolyser at a named refinery, paused in August 2023 when the consortium withdrew its bid from the UK's first electrolytic allocation round."
+    },
+    {
+      "id": "ineos-koeln-electrolyser",
+      "company": "INOVYN (INEOS)",
+      "site": "Köln-Worringen",
+      "country": "DE",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.ineos.com/news/ineos-group/ineos-green-hydrogen-project-accelerates-towards-net-zero-future-in-germany-by-2045/",
+      "coordinate_source": "none",
+      "coordinate_ref": "NOT FOUND. The works carries no polygon under INEOS's name: a pipeline valve station, two gatehouses and a bus stop, all refused.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1388,
+        "iea_hydrogen_production_projects": 1388
+      },
+      "note": "FOUND BY THE BENCHMARK GAP REPORT, 9 September 2026 — the one entry in either list at FID or beyond that this register did not hold and could not explain. INEOS announced it in October 2021 and no source read here says anything after that."
     }
   ]
 }
