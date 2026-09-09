@@ -23,7 +23,14 @@
     "ACTIVE rows only. They landed as rows carrying their status, their company source and a",
     "location_note saying the position was not sought. A queue entry for a works nobody will build",
     "is a job that would never be worth doing, and leaving it here would have made the list read",
-    "as work outstanding. See sources/scope.md, 'A stopped row does not enter the location queue'."
+    "as work outstanding. See sources/scope.md, 'A stopped row does not enter the location queue'.",
+    "",
+    "HYDROGEN ADDED A THIRD KIND OF REFUSAL, and it is not a 403. shell.com and galp.com both",
+    "answer a declared reader with HTTP 200 and a document that contains the page title, the",
+    "navigation and no article: the release renders in the browser. A link checker calls that a",
+    "live page, because it is one. What it is not is a source anybody can quote, and the two",
+    "entries below are queued for the same reason a 403 is — a person with a browser closes it",
+    "in a minute, and until they do the row cannot carry a sentence nobody has read."
   ],
   "retrieved": [
     {
@@ -147,6 +154,22 @@
       "needed_for": "THE ONLY STATED PRODUCTION DATE FOR EUROPE'S LARGEST GREENFIELD STEEL PROJECT. stated_schedule is empty for stegra-boden after the fetch pass because nothing this pipeline can read states one. The Boden plant page is understood to carry the start of operations; a saved copy would let the row take it as a company statement rather than leave the row silent.",
       "drop_as": "sources/manual/stegra-boden--the-boden-plant.html",
       "priority": "medium"
+    },
+    {
+      "candidate": "shell-refhyne-2-wesseling",
+      "url": "https://www.shell.com/what-we-do/hydrogen/latest-news-from-shell-hydrogen/shell-to-build-100-megawatt-renewable-hydrogen-electrolyser-in-germany.html",
+      "why": "shell.com answers a declared reader with 200 and a body of 85 characters — the page title. The article renders client-side.",
+      "needed_for": "The row stands on refhyne.eu, the project consortium's own site, which carries Shell's FID and the 100 MW figure. What Shell's own release adds is the SCHEDULE: it is the source trade press quotes for the electrolyser starting up in 2027, and this register holds no date for the project at all. Filing it closes sources/schedule_queue.json entry shell-refhyne-2-wesseling.",
+      "drop_as": "sources/manual/shell-refhyne-2-wesseling--shell-to-build-100-megawatt-electrolyser-in-germany.html",
+      "priority": "normal"
+    },
+    {
+      "candidate": "galp-sines-electrolyser",
+      "url": "https://www.galp.com/corp/en/media/press-releases/press-release/id/1490/final-investment-decision-on-green-hydrogen-and-hvosaf-projects",
+      "why": "galp.com serves the article text to a declared reader and renders its PUBLICATION DATE in the browser; the announcement list renders every date the same way.",
+      "needed_for": "The text is already quoted on the row — '100 MW of electrolysers', 'up to 15 ktpa of renewable hydrogen', 'c.€250 m' — and it dates nothing, so the row's history starts at the EIB release of 29 September 2025 instead of at Galp's own decision. A dated copy would give this project its FID event and make the EIB entry the corroboration rather than the spine.",
+      "drop_as": "sources/manual/galp-sines-electrolyser--final-investment-decision-green-hydrogen-hvo-saf.html",
+      "priority": "normal"
     }
   ]
 }

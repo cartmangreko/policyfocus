@@ -839,6 +839,162 @@ built and what stops. It also had the effect of making the dataset look complete
 not see it. A register that improves its own numbers by dropping the rows that
 embarrass them is measuring itself and not the sector.
 
+### The hydrogen perimeter
+
+**Written 9 September 2026, brief 7.** The fourth sector this platform holds
+projects for, and the first whose boundary had to be drawn against three
+neighbouring datasets at once — steel, chemicals and clean-technology
+manufacturing — rather than against a product.
+
+The reviewed prose, which is what `/coverage` renders:
+
+> **Hydrogen.** Eufabric holds an electrolytic hydrogen production site when three
+> things are true of it at once: it makes hydrogen by splitting water, it stands in
+> Europe as this platform draws it, and the company itself has confirmed a named
+> site with an electrolyser capacity of at least 100 MW. Phases count towards that
+> figure only where the company states the total; a first line stated on its own is
+> a phase and not a smaller project.
+>
+> Europe here is the same named list of countries the battery boundary uses: the
+> twenty-seven member states, together with the United Kingdom, Norway,
+> Switzerland, the Western Balkans and Ukraine, with Türkiye outside it.
+>
+> Six things follow, and each is stated rather than left to judgement. Hydrogen
+> made from methane with the carbon captured is out of this boundary for now, and
+> is listed rather than refused, because whether it belongs is a question nobody
+> here has answered. Steelworks that make their own hydrogen to reduce iron are
+> steel sites and are already held as such. Pipelines, stores and import terminals
+> are out: they are what a site depends on rather than sites in their own right,
+> and they appear as links from the sites that name them. Works that build
+> electrolysers are out, and belong with the rest of clean-technology
+> manufacturing. Ammonia synthesis fed by electrolytic hydrogen is in. Methanol,
+> e-fuel and aviation-fuel works are out unless their own electrolyser clears the
+> threshold, in which case the electrolyser is what is held and the fuel works is a
+> note on it.
+>
+> Capacity for an electrolyser is quoted three ways — the electricity it draws, the
+> hydrogen it makes stated as a power or a flow, and the tonnes a year it is
+> expected to produce — and this platform keeps whichever the source used and
+> never converts between them. Where one source states two, both are kept. A site
+> whose capacity nobody has stated is still held, and is listed as outstanding
+> until a figure exists.
+
+**Six exclusions, each stated rather than left to judgement:**
+
+- **Hydrogen-DRI steelworks are OUT.** A works that makes its own hydrogen to
+  reduce iron is a steel project and is already held as one. Stegra at Boden,
+  HYBRIT, SALCOS and tkH2Steel are steel rows, not hydrogen rows, and the
+  740 MW electrolyser at Boden is a fact about a steel row.
+- **Blue hydrogen is OUT of this dataset and is LISTED rather than refused.**
+  Methane reforming with capture is a class nobody here has ruled on; it goes to
+  `sources/hydrogen_candidates.json` with the reason "blue, out of perimeter", so
+  that the day somebody rules, the list of what the ruling affects already exists.
+- **Pipelines, stores and import terminals are OUT.** They are what a site
+  depends on rather than sites in their own right, and they arrive as asserted
+  `depends_on` edges from the sites whose sources name them.
+- **Electrolyser manufacturing is OUT.** It is NZIA manufacturing and belongs to a
+  later sector, however tempting it is to hold the supplier beside the customer.
+- **Pilots and demonstrators below the threshold are OUT.** REFHYNE 1 at Wesseling
+  is the case that shows the threshold is doing work: at 10 MW it is still the
+  largest PEM electrolyser operating in Europe, and it is out while REFHYNE 2 on
+  the same site is in.
+- **Methanol, e-fuel and SAF works are OUT unless their own electrolyser clears
+  the threshold**, in which case the electrolyser is the project and the fuel
+  works is a note on it. La Robla Green is the first case: a 200 MW electrolyser
+  feeding a 100,000 t/y e-methanol plant, held as the electrolyser.
+
+**Ammonia synthesis fed by electrolytic hydrogen is IN**, with `transition` read
+as `supply_security` unless the source states decarbonisation.
+
+**And the perimeter's binding constraint here is not the one batteries had.**
+Batteries stalled on company confirmation — sites the operator had never named,
+which is what the composite standard was written for. Hydrogen does not stall
+there: these operators name their sites and publish their megawatts. It stalls on
+POSITION, because these works are mostly not built yet, and the basemap draws
+buildings rather than intentions. That is a fact about the sector's stage, it is
+counted in `sources/hydrogen_docket.md` rather than described, and it is the
+reason the first pass landed seven rows out of twenty admitted candidates.
+
+### Three units for one electrolyser, and no conversion between them
+
+An electrolysis project is quoted three ways, by three different kinds of source:
+the **electricity the electrolyser draws** (MW input), the **hydrogen it makes**
+stated as a power or as a flow (MW output, Nm³/h), and the **tonnes a year** it is
+expected to produce. They are related only through an efficiency and a capacity
+factor, and the source almost never states either.
+
+**So a row records the figure in the unit its source used, and this platform
+never converts between them.** Where one source states the same phase in two
+units, both are kept — `capacity_alternates` on the row, with every companion
+field the main figure carries — and the row leads with the unit that comes first
+in `CAPACITY_UNIT_PREFERENCE`, which is MW input where it exists. The gate refuses
+a row that leads with a lower-ranked unit while carrying a higher-ranked
+alternate, so the choice is enforced on the row rather than made invisibly in an
+export.
+
+**The reason this is a ruling and not a preference is the IEA's own database.**
+Its "estimated normalised capacity" column is the number every hydrogen study
+compares against. Its definitions sheet describes that column as
+"estimated normalised hydrogen production capacity in MW H₂ output (LHV)", and
+then gives the factors it was computed with — 0.0046 MW per Nm³/h for alkaline,
+0.0052 for PEM, and the gloss "0.0045 MW/Nm³ H₂/hour (equivalent to 50 kWh/kg
+H₂)". Fifty kilowatt-hours per kilogram is electrical input; the lower heating
+value of hydrogen is thirty-three. **The column is input and the sentence above it
+says output.** Two readings of one column, in one file, from the body that
+publishes it.
+
+A register that converted between these units would inherit that ambiguity and
+hide it behind a number of its own. So it does not convert, and the one place a
+factor is applied — counting the benchmarks' European entries at or above 100 MW
+in `sources/build_hydrogen_benchmark.py` — applies the IEA's own factor to the
+IEA's own rows, labels every count that rests on it, and touches no row here.
+
+### Reason as stated, or unstated
+
+**Every event that moves a project to `paused` or `cancelled` carries a
+`stop_reason`** from a closed list — `finance`, `offtake`, `policy`,
+`infrastructure`, `cost`, `ownership`, `unstated` — read from what the source
+says and from nothing else. A reason that is not `unstated` carries the sentence
+it was read from, in `stop_reason_verbatim`.
+
+**`unstated` is a real answer and is expected to be the commonest one.** A company
+that stops a project without saying why has told us something. Filling that space
+with the most plausible reason would turn the single most interesting fact about
+industrial attrition — that reasons are usually not given — into a distribution of
+reasons somebody invented, and it would do so in whichever direction the person
+filling it in found natural.
+
+**The rule binds on the sectors that have adopted it, and is reported for the
+rest.** `STOP_REASON_SECTORS` in `sources/check_sector_schema.py` is `("clean",)`
+today. Nineteen stopped events across batteries, cement, steel and CCS predate
+the rule; the gate prints them on every run under "stopped events with no
+stop_reason" and does not fail. The alternative — writing `unstated` across all
+nineteen so that a gate goes green — is precisely the failure the field exists to
+prevent, applied to nineteen rows at once. The only honest backfill is a re-read
+of those sources, and until somebody does it the debt is on the record with a
+count.
+
+### An asserted edge carries the sentence; a structural edge is not written by hand
+
+A hydrogen site is defined by what it is attached to: the power it draws, the
+pipeline it feeds, the works that buys the molecule. Two kinds of edge say so and
+only one of them is data.
+
+- **Asserted.** The project's own source names the thing — "the hydrogen will be
+  delivered to the refinery in Gonfreville", "directly connected to the hydrogen
+  core network". It carries `kind` (`supplies` or `depends_on`), `type`
+  (`infrastructure`, `material`, `regulatory`, `funding`), a `since` date and the
+  evidence with its verbatim. This is what is authored.
+- **Structural.** It follows from the technology — every electrolyser needs a grid
+  connection and water, every DRI furnace needs hydrogen — and it is **not**
+  authored on a row. It follows from a technology rule, applied once, so that the
+  graph can always say which of its edges somebody asserted and which it derived.
+
+**The gate refuses a hand-written structural edge**, by name, for that reason: two
+kinds of edge that look identical on the page, with only the author knowing which
+is which, is a graph nobody can audit. `EDGE_CLASSES` carries the value so the
+refusal reads as a rule rather than as a missing feature.
+
 ### A slip is one speaker changing its mind
 
 `stated_schedule` records what a project said it would do. Every entry carries a

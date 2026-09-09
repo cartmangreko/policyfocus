@@ -1,0 +1,373 @@
+{
+  "_comment": [
+    "THE HYDROGEN CANDIDATE LIST, machine-readable so the gap can be REPORTED rather",
+    "than narrated. sources/report_candidate_gaps.py reads it and prints what is still",
+    "missing on every build. Same shape and same purpose as sources/batteries_candidates.json.",
+    "",
+    "WHAT THE PERIMETER ADMITS AND WHAT IT CANNOT YET HOLD. Brief 7 admits an electrolytic",
+    "hydrogen production project at or above 100 MW of electrolyser capacity on a",
+    "company-confirmed site. Every entry below clears that bar: a company source names the",
+    "site and states a figure at or above the threshold. What most of them do not yet have",
+    "is a POSITION, and the perimeter's other half — every site carries a latitude and a",
+    "longitude from a quoted source — is what keeps them here rather than in",
+    "data/transition/projects.json.",
+    "",
+    "AND THAT IS THE FINDING OF THIS PASS, not a defect in it. Batteries stalled on company",
+    "confirmation: the sweep found sites the operator had never named. Hydrogen stalls",
+    "somewhere else entirely. The companies name their sites plainly and publish the",
+    "megawatts; what is missing is that these works mostly DO NOT EXIST YET. They are",
+    "construction fields inside refineries and chemical parks, and OpenStreetMap has drawn",
+    "two of them. The binding constraint on this dataset is the basemap's coverage of",
+    "buildings that are not built.",
+    "",
+    "`coordinate_source` is one of the values in sector_map.LOCATION_SOURCE_TYPES or null.",
+    "Null means outstanding, and outstanding is the thing this file is for. Where a",
+    "position was looked for and not found, `coordinate_ref` says where it was looked for,",
+    "so the next person does not repeat the search.",
+    "",
+    "`capacity_mw_input` is the electrolyser figure the company states, in MW of electrical",
+    "input, and is null where the company states the project in another unit only —",
+    "hoest-ptx-esbjerg is the case. Never converted. See sources/scope.md, 'Three units for",
+    "one electrolyser, and no conversion between them'.",
+    "",
+    "REFUSALS ARE NOT HERE. This file is the admitted set; what the perimeter refuses, and",
+    "why, is in sources/hydrogen_docket.md, which is the reviewed record. The one exception",
+    "the brief names is blue hydrogen, which goes to candidates with a reason rather than to",
+    "refusals, because the class is a ruling George has not made yet.",
+    "",
+    "`benchmarks` CARRIES THE EXTERNAL IDS FOR CANDIDATES TOO, not only for rows. The brief asks",
+    "the benchmark file to compare every admitted row, candidate and refusal, and a candidate whose",
+    "id lived only in a row would drop out of the comparison at exactly the point the comparison is",
+    "most interesting: eufabric holds thirteen sites the outside lists also hold, and cannot draw",
+    "them. null means the list was searched and the site is not in it."
+  ],
+  "sector": "clean",
+  "perimeter": "sources/hydrogen_docket.md",
+  "candidates": [
+    {
+      "id": "rwe-get-h2-nukleus-lingen",
+      "company": "RWE Generation SE",
+      "site": "Lingen (Ems)",
+      "country": "DE",
+      "status": "construction",
+      "capacity_mw_input": 300,
+      "company_source": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1377883415 GET H₂ Nukleus (300 MW) — the electrolyser itself, drawn as a construction site and carrying the project's own name",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1632,
+          885,
+          1436
+        ],
+        "iea_hydrogen_production_projects": [
+          1632,
+          885,
+          1436
+        ]
+      }
+    },
+    {
+      "id": "bp-lingen-green-hydrogen",
+      "company": "BP Europa SE",
+      "site": "Lingen (Ems)",
+      "country": "DE",
+      "status": "construction",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.bp.com/de_de/germany/home/presse/pressemeldungen/pm-2024-12-18-bp-verkuendet-investitionsentscheidung-fuer-projekt-lingen-green-hydrogen.html",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/147468367 BP Lingen, operator=BP Europa SE — the refinery the electrolyser is being built on, not the electrolyser",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          622,
+          1034
+        ],
+        "iea_hydrogen_production_projects": 622
+      }
+    },
+    {
+      "id": "airliquide-normandhy-port-jerome",
+      "company": "Air Liquide",
+      "site": "Port-Jérôme, Saint-Jean-de-Folleville",
+      "country": "FR",
+      "status": "fid",
+      "capacity_mw_input": 200,
+      "company_source": "https://www.airliquide.com/group/press-releases-news/2023-09-14/air-liquide-takes-further-step-developing-hydrogen-sector-france",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/1451191745 Normand’Hy, operator=Air Liquide, product=H2, ref:FR:DREAL=0003902012",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 807,
+        "iea_hydrogen_production_projects": 807
+      }
+    },
+    {
+      "id": "shell-refhyne-2-wesseling",
+      "company": "Shell Deutschland GmbH",
+      "site": "Wesseling",
+      "country": "DE",
+      "status": "fid",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.refhyne.eu/final-investment-decision-taken-by-shell-for-refhyne-2/",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/38321216 Shell Energy & Chemicals Park Rheinland Werk Wesseling",
+      "company_source_blocked": "https://www.shell.com/what-we-do/hydrogen/latest-news-from-shell-hydrogen/shell-to-build-100-megawatt-renewable-hydrogen-electrolyser-in-germany.html",
+      "note": "SHELL'S OWN RELEASE IS NOT A SOURCE THIS PIPELINE CAN READ. shell.com answers a declared reader with HTTP 200 and a document containing the page title and nothing else — the body renders in the browser. The row therefore quotes the REFHYNE consortium's site, which is the operator speaking through the project it leads, and Shell's URL is queued for a human read.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 942,
+        "iea_hydrogen_production_projects": 942
+      }
+    },
+    {
+      "id": "repsol-petronor-muskiz",
+      "company": "Repsol",
+      "site": "Muskiz",
+      "country": "ES",
+      "status": "fid",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/27532632 Petronor birfindegia, operator=Petronor",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": 3554
+      }
+    },
+    {
+      "id": "galp-sines-electrolyser",
+      "company": "Galp",
+      "site": "Sines",
+      "country": "PT",
+      "status": "construction",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.galp.com/corp/en/media/press-releases/press-release/id/1490/final-investment-decision-on-green-hydrogen-and-hvosaf-projects",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/291921227 Refinaria de Sines, operator=Galp Energia",
+      "note": "The company release is readable and UNDATED to a declared reader: Galp renders its publication dates in the browser. The row's events are therefore dated from the EIB's release of 29 September 2025 and the Galp page is cited beside them without carrying a date.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1169,
+        "iea_hydrogen_production_projects": 1877
+      }
+    },
+    {
+      "id": "moeve-onuba-huelva",
+      "company": "Moeve",
+      "site": "Palos de la Frontera",
+      "country": "ES",
+      "status": "fid",
+      "capacity_mw_input": 300,
+      "company_source": "https://www.moeveglobal.com/en/press/moeve-investment-andalusian-green-hydrogen-valley-onuba-huelva",
+      "coordinate_source": "basemap",
+      "coordinate_ref": "way/43025211 Refinería de La Rábida, operator:-2024=Cepsa",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1997,
+        "iea_hydrogen_production_projects": 1997
+      }
+    },
+    {
+      "id": "shell-holland-hydrogen-1",
+      "company": "Shell Nederland",
+      "site": "Tweede Maasvlakte, Rotterdam",
+      "country": "NL",
+      "status": "construction",
+      "capacity_mw_input": 200,
+      "company_source": "https://www.shell.nl/about-us/what-we-do/waterstof/_jcr_content/root/main/section_1793187481/call_to_action/links/item0.stream/1750150411678/bc686db41e4e2aff092b4ae379a466326fd5626d/250513_HH1-leaflet_v43.pdf",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT FOUND. Every named man_made/landuse/power feature on Maasvlakte and Maasvlakte 2 was listed from Overpass on 9 September 2026 (bbox 51.94,4.00 to 52.00,4.15): the Porthos compressor station, the Gate LNG extension, three TenneT converter stations and the container terminals are drawn, and Holland Hydrogen 1 is not. The Dutch permit route has not been tried and is the next thing to try.",
+      "note": "COMPANY SOURCE IN HAND AND IT IS A PDF, because shell.com serves a declared reader nothing. Shell Nederland's own HH1 leaflet states the figure twice — 'the 200-megawatts HH1 plant' and '10 parallel connected electrolysers of 20 megawatts each, 200 megawatts in total' — and gives the schedule: 'Commissioning of this plant in the 200-MW range is expected to start in late 2026, with production ramping up in 2027 to around 60 tons of hydrogen per day.' The row waits on a position and on nothing else.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 771,
+        "iea_hydrogen_production_projects": 771
+      }
+    },
+    {
+      "id": "airliquide-elygator-maasvlakte",
+      "company": "Air Liquide",
+      "site": "Maasvlakte, Port of Rotterdam",
+      "country": "NL",
+      "status": "fid",
+      "capacity_mw_input": 200,
+      "company_source": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT FOUND in the same Maasvlakte sweep as Holland Hydrogen 1.",
+      "note": "FID taken 23 July 2025: 'the final investment decision to launch the construction of ELYgator, a 200 MW electrolyzer project in Maasvlakte, in the Port of Rotterdam'. NOTE THE SITE MOVED AND THE BENCHMARKS DID NOT: both external lists place ELYgator in the Netherlands from an earlier plan at Terneuzen, and the FID release puts it at Maasvlakte. Matching by company and site has to follow the company.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1116,
+        "iea_hydrogen_production_projects": 1116
+      }
+    },
+    {
+      "id": "ewe-emden-electrolysis",
+      "company": "EWE AG",
+      "site": "Emden",
+      "country": "DE",
+      "status": "construction",
+      "capacity_mw_input": 320,
+      "company_source": "https://www.ewe.com/en/media-center/press-releases/2025/11/official-start-of-construction-of-320-megawatt-generation-plant-in-emdenewe-ag",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT FOUND. Every named man_made=works, landuse=construction and power=plant feature in the Emden bbox was listed on 9 September 2026; the Volkswagen works, the Außenhafen and the Amprion converter station are drawn and the electrolyser is not. Statkraft's Kraftwerk Emden (way/104878489) is a different works and must not be used for this row.",
+      "note": "Construction started November 2025 and the company states the figure repeatedly: 'In subproject 1 \"Clean Hydrogen Coastline – Electrolysis East Frisia\", EWE is building a 320-megawatt hydrogen production plant in Emden, East Frisia.' Around €500 million of federal and state co-financing under IPCEI Hy2Infra, and a conditional FID taken before the notifications.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 2171,
+        "iea_hydrogen_production_projects": 2549
+      }
+    },
+    {
+      "id": "hghh-moorburg",
+      "company": "Hamburg Green Hydrogen Hub (Luxcara and Hamburger Energiewerke)",
+      "site": "Hamburg-Moorburg",
+      "country": "DE",
+      "status": "construction",
+      "capacity_mw_input": 100,
+      "company_source": "https://hghh.eu/",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT FOUND. The Moorburg bbox was swept on 9 September 2026 and carries no named feature for either the former power station or the electrolyser.",
+      "note": "The project company's own site: 'Am Standort des ehemaligen Kohlekraftwerks Moorburg realisiert die Projektgesellschaft Hamburg Green Hydrogen Hub (HGHH) eine 100-MW-Elektrolyseanlage für grünen Wasserstoff', producing 'rund 10.000 Tonnen grüner Wasserstoff' a year, with commercial operation planned for 2027. THE OWNER TYPE IS SPLIT and the row will have to say so: Hamburger Energiewerke is owned by the city, Luxcara is a private asset manager.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 900,
+        "iea_hydrogen_production_projects": 900
+      }
+    },
+    {
+      "id": "omv-bruck-an-der-leitha",
+      "company": "OMV",
+      "site": "Bruck an der Leitha",
+      "country": "AT",
+      "status": "construction",
+      "capacity_mw_input": 140,
+      "company_source": "https://www.omv.com/en/media/press-releases/2025/250929-omv-builds-one-of-the-largest-electrolysis-plants-for-green-hydrogen-in-europe",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT FOUND in the Bruck an der Leitha bbox on 9 September 2026.",
+      "note": "THE RICHEST HISTORY IN THE DOCKET AND IT IS WAITING ON A DOT. FID in May 2025, foundation stone laid 29 September 2025, a binding joint-venture agreement with Masdar on 6 November 2025 giving Masdar 49 per cent — an OWNERSHIP event — and an aws funding agreement of up to €123 million on 7 January 2026 following a positive assessment by the European Hydrogen Bank. 23,000 t of hydrogen a year, into operation at the end of 2027, and a 22 km pipeline to the Schwechat refinery.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": 3419
+      }
+    },
+    {
+      "id": "repsol-cartagena",
+      "company": "Repsol",
+      "site": "Cartagena",
+      "country": "ES",
+      "status": "fid",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.repsol.com/en/press-room/press-releases/2025/repsol-to-build-its-first-large-scale-renewable-hydrogen-plant-cartagena/index.cshtml",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT FOUND. The Escombreras bbox was swept on 9 September 2026 and returns the Repsol substation and the Cartagena–Puertollano pipeline; the refinery itself carries no feature naming Repsol.",
+      "note": "Approved 30 September 2025 with Enagás Renovable holding 25 per cent, €155 million through IDAE, about 15,000 t of hydrogen a year, operational 2029.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 833,
+        "iea_hydrogen_production_projects": 833
+      }
+    },
+    {
+      "id": "la-robla-green",
+      "company": "Reolum",
+      "site": "El Crispín, La Robla, León",
+      "country": "ES",
+      "status": "announced",
+      "capacity_mw_input": 200,
+      "company_source": "https://laroblagreen.com/en/proyecto/",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT FOUND for the electrolyser. way/189577212 is the brownfield of the former La Robla coal station, which the company names as the site of the BIOMASS plant; the electrolyser is stated as being at the El Crispín industrial estate, which is a different place, and using the brownfield would put the mark on the wrong half of the project.",
+      "note": "THE E-FUEL RULE'S FIRST CASE. A green e-methanol plant is out of this perimeter; its electrolyser is in it if it clears the threshold, and this one does: 'Thanks to a 200 MW electrolyzer, electrolysis is carried out using PEM technology' with 'Green hydrogen production: 28,000 tons'. So the electrolyser is the project and the 100,000 t/y methanol plant is a note on it.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": 3433
+      }
+    },
+    {
+      "id": "hoest-ptx-esbjerg",
+      "company": "Copenhagen Infrastructure Partners",
+      "site": "Måde industrial area, Esbjerg",
+      "country": "DK",
+      "status": "announced",
+      "capacity_mw_input": null,
+      "company_source": "https://hoestptxesbjerg.dk/about-ptx/",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT FOUND. Nominatim returns node/13198011777, 'Copenhagen Infrastructure Partners - Høst PtX', which is an OFFICE and not the works — the same refusal the batteries perimeter made of a registered address.",
+      "note": "THE AMMONIA CASE, AND THE NO-MEGAWATTS CASE. The project's own site states no MW at all: 'HØST PtX Esbjerg will use renewable resources to produce approx. 100.000 tonnes of green hydrogen' and 'Expected annual production of 600,000 t green ammonia'. Both are recorded as stated, neither is converted, and the row will carry t_h2_per_year as its lead figure because MW input is absent. TRANSITION IS decarbonisation AND NOT THE AMMONIA DEFAULT: the brief's default is supply_security unless the source states decarbonisation, and this source does — 'By producing green hydrogen and ammonia, HØST PtX Esbjerg will open the door to decarbonization of hard-to-abate sectors'.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 532,
+        "iea_hydrogen_production_projects": 532
+      }
+    },
+    {
+      "id": "h2apex-lubmin-hh2e",
+      "company": "H2APEX Group SCA",
+      "site": "Lubmin",
+      "country": "DE",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://h2apex.com/en/h2apex-news/closing-of-the-acquisition-of-hh2e-werk-lubmin-gmbh/",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT FOUND in the Lubmin bbox on 9 September 2026.",
+      "note": "THE ATTRITION CASE THIS SECTOR NEEDS, and the one candidate here with a stop on its record. HH2E filed for insolvency in December 2024 after its majority shareholder declined further financing — stop_reason `finance` — and its own website now refuses a connection outright, which is why nothing on this entry cites hh2e.de. H2APEX Nova Holding became sole owner of HH2E Werk Lubmin GmbH on 2 July 2025 through a completed insolvency plan procedure, an OWNERSHIP event, and states '100 MW plant in the first expansion stage by 2028'. H2APEX runs a SECOND, SEPARATE 100 MW project on its own land at Lubmin and the two must not be merged.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 2447,
+        "iea_hydrogen_production_projects": 2447
+      }
+    },
+    {
+      "id": "hytechhafen-rostock",
+      "company": "ROSTOCK PORT, RheinEnergie, EnBW Neue Energien and RWE Generation (joint venture)",
+      "site": "Rostock port",
+      "country": "DE",
+      "status": "funded",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT SOUGHT beyond a Nominatim query for 'Rostock Port', which returns the port development company's office. The port is large and the site within it is not named by the source.",
+      "note": "'A 100-MW electrolyser will be constructed at Rostock port as part of the HyTechHafen Rostock project and will produce green hydrogen from 2027.' A consortium project: under the brief's default the operator or lead developer is the company, and the source names the operating company as a joint venture of four without saying which of them leads — which is itself the thing to settle before this becomes a row.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1086,
+        "iea_hydrogen_production_projects": 1086
+      }
+    },
+    {
+      "id": "uniper-h2maasvlakte",
+      "company": "Uniper",
+      "site": "Maasvlakte, Rotterdam",
+      "country": "NL",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.uniper.energy/news/uniper-selected-plug-to-design-the-100mw-electrolyzer-package-for-the-netherlands-plant-to-accelerate-european-green-energy-adoption",
+      "coordinate_source": null,
+      "coordinate_ref": "NOT FOUND in the Maasvlakte sweep. way/1275268357 'Centrale Maasvlakte', operator=Uniper, is the power station on the same site and is a candidate position to argue about rather than to use silently.",
+      "note": "COMPANY SOURCE NAMED AND NOT YET READ THROUGH THIS PIPELINE. Listed here because the perimeter admits it on its face — 100 MW at a named site — and because the row, when it lands, is a schedule story: the 2023 announcement targets 2026, and the live IEA list now carries the site at feasibility study.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 927,
+        "iea_hydrogen_production_projects": 927
+      }
+    },
+    {
+      "id": "catalina-teruel-sagunto",
+      "company": "Copenhagen Infrastructure Partners",
+      "site": "Andorra, Teruel (electrolyser) and Sagunto (ammonia)",
+      "country": "ES",
+      "status": "announced",
+      "capacity_mw_input": 500,
+      "company_source": null,
+      "coordinate_source": null,
+      "note": "IDENTIFIED AND NOT YET SOURCED THROUGH THIS PIPELINE. Phase I is stated in partner materials as 1.7 GW of wind and solar, a 500 MW electrolyser and a 200,000 t/y green ammonia plant connected by pipeline. Two things need settling before it is a row: which company source names the electrolyser site, and whether a project whose electrolyser and ammonia plant are 250 km apart is one row with two locations — which the location list already allows, and which the ArcelorMittal row is the precedent for.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1489,
+        "iea_hydrogen_production_projects": 1489
+      }
+    },
+    {
+      "id": "repsol-tarragona",
+      "company": "Repsol",
+      "site": "Tarragona",
+      "country": "ES",
+      "status": "announced",
+      "capacity_mw_input": 150,
+      "company_source": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
+      "coordinate_source": null,
+      "note": "Named inside the Petronor release rather than in one of its own: 'The new renewable hydrogen plant will soon be joined by a large electrolyzer in Tarragona, with a capacity of 150 MW.' Above the threshold and company-confirmed as to site and country; it needs a release of its own before it carries a history.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 2246,
+        "iea_hydrogen_production_projects": 2246
+      }
+    }
+  ]
+}

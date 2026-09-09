@@ -20,7 +20,12 @@
     "are the rows it would change.",
     "",
     "Printed on every build by report_candidate_gaps.py, and an entry drops out the moment its",
-    "row gets a stated_schedule."
+    "row gets a stated_schedule.",
+    "",
+    "HYDROGEN ENTRIES ADDED 9 SEPTEMBER 2026, and they are a different kind of gap from the",
+    "battery ones. The battery rows mostly had a date somebody had said and a source rule that",
+    "would not admit it. These two have no date at all: the operator announced a decision and",
+    "did not say when the plant runs."
   ],
   "outstanding": [
     {
@@ -259,6 +264,20 @@
       "status": "construction",
       "kind": "render",
       "reason": "The company's project page answers 200 but renders its content by script and serves no readable text to a declared reader."
+    },
+    {
+      "project": "shell-refhyne-2-wesseling",
+      "sector": "clean",
+      "status": "fid",
+      "kind": "searched_none",
+      "reason": "The REFHYNE consortium's FID page and project page were both read on 9 September 2026 and neither states a production start, a commissioning date or a construction start. Shell's own release, which trade press quotes as putting the electrolyser in operation in 2027, is on shell.com and serves a declared reader a document containing its title and nothing else; it is queued in sources/manual/MANIFEST.json, and the date will land with it."
+    },
+    {
+      "project": "moeve-onuba-huelva",
+      "sector": "clean",
+      "status": "fid",
+      "kind": "searched_none",
+      "reason": "Moeve's FID release of 11 May 2026 and its PERTE ERHA release of 16 September 2025 were both read and neither gives a date for anything: the FID release says construction begins 'in the coming weeks' and stops there. A project with a €1 billion investment decision and no public schedule is worth seeing as such rather than as a missing lookup."
     }
   ]
 }
