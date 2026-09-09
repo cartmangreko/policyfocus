@@ -121,6 +121,7 @@
         {
           "event_kind": "status",
           "date": "2024-12-02",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -132,6 +133,7 @@
         {
           "event_kind": "status",
           "date": "2025-06-18",
+          "date_precision": "day",
           "status_from": "construction",
           "status_to": "operating",
           "status": "operating",
@@ -222,6 +224,7 @@
         {
           "event_kind": "status",
           "date": "2023-12-15",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "funded",
           "status": "funded",
@@ -242,6 +245,7 @@
       "stated_schedule": [
         {
           "date": "2023-12-15",
+          "date_precision": "day",
           "milestone": "construction_start",
           "target_date": "2026",
           "target_precision": "year",
@@ -253,6 +257,7 @@
         },
         {
           "date": "2023-12-15",
+          "date_precision": "day",
           "milestone": "commissioning",
           "target_date": "2029",
           "target_precision": "year",
@@ -264,6 +269,7 @@
         },
         {
           "date": "2023-12-15",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2029",
           "target_precision": "year",
@@ -334,6 +340,7 @@
         {
           "event_kind": "status",
           "date": "2023-01-20",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "funded",
           "status": "funded",
@@ -354,6 +361,7 @@
       "stated_schedule": [
         {
           "date": "2023-01-20",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2028",
           "target_precision": "year",
@@ -416,6 +424,7 @@
         {
           "event_kind": "status",
           "date": "2024-05-16",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -436,6 +445,7 @@
       "stated_schedule": [
         {
           "date": "2024-05-16",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2029",
           "target_precision": "year",
@@ -503,18 +513,20 @@
       "status_history": [
         {
           "event_kind": "status",
-          "date": "2023",
+          "date": "2023-01-01",
+          "date_precision": "year",
           "status_from": null,
           "status_to": "funded",
           "status": "funded",
           "source_url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
           "source_type": "company",
           "evidence_mode": "retrospective",
-          "note": "The project page states a grant from the EU Innovation Fund received in 2023; no month is given, so the date is the year."
+          "note": "The project page states a grant from the EU Innovation Fund received in 2023; no month is given. RECORDED AS 1 JANUARY 2023 AT YEAR PRECISION from 9 September 2026: the date was a bare '2023' until then, which the schema tolerated and no count could compare with a dated event."
         },
         {
           "event_kind": "status",
           "date": "2024-04-22",
+          "date_precision": "day",
           "status_from": "funded",
           "status_to": "construction",
           "status": "construction",
@@ -535,6 +547,7 @@
       "stated_schedule": [
         {
           "date": "2024-04-22",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2029",
           "target_precision": "year",
@@ -592,6 +605,7 @@
         {
           "event_kind": "status",
           "date": "2025-11-19",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "paused",
           "status": "paused",
@@ -609,6 +623,7 @@
         {
           "event_kind": "status",
           "date": "2026-01-01",
+          "date_precision": "day",
           "status_from": "paused",
           "status_to": "paused",
           "status": "paused",
@@ -687,6 +702,7 @@
         {
           "event_kind": "status",
           "date": "2023-07-14",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -752,6 +768,7 @@
         {
           "event_kind": "status",
           "date": "2024-02-15",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -821,6 +838,7 @@
         {
           "event_kind": "status",
           "date": "2024-01-22",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "funded",
           "status": "funded",
@@ -832,6 +850,7 @@
         {
           "event_kind": "status",
           "date": "2026-04-04",
+          "date_precision": "day",
           "status_from": "funded",
           "status_to": "construction",
           "status": "construction",
@@ -912,6 +931,7 @@
         {
           "event_kind": "status",
           "date": "2023-07-20",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "funded",
           "status": "funded",
@@ -923,6 +943,7 @@
         {
           "event_kind": "status",
           "date": "2023-07-20",
+          "date_precision": "day",
           "status_from": "funded",
           "status_to": "construction",
           "status": "construction",
@@ -951,6 +972,7 @@
       "stated_schedule": [
         {
           "date": "2022-09-08",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026",
           "target_precision": "year",
@@ -1011,6 +1033,7 @@
         {
           "event_kind": "status",
           "date": "2023-04-18",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "funded",
           "status": "funded",
@@ -1022,6 +1045,7 @@
         {
           "event_kind": "status",
           "date": "2024-03-07",
+          "date_precision": "day",
           "status_from": "funded",
           "status_to": "construction",
           "status": "construction",
@@ -1048,6 +1072,7 @@
       "stated_schedule": [
         {
           "date": "2023-05-24",
+          "date_precision": "day",
           "milestone": "commissioning",
           "target_date": "2025",
           "target_precision": "year",
@@ -1059,6 +1084,7 @@
         },
         {
           "date": "2023-05-24",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026",
           "target_precision": "year",
@@ -1121,6 +1147,7 @@
         {
           "event_kind": "status",
           "date": "2025-06-23",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "cancelled",
           "status": "cancelled",
@@ -1188,6 +1215,7 @@
         {
           "event_kind": "status",
           "date": "2021-06-21",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -1253,6 +1281,7 @@
         {
           "event_kind": "status",
           "date": "2024-03-14",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -1319,6 +1348,7 @@
         {
           "event_kind": "status",
           "date": "2026-06-18",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -1339,6 +1369,7 @@
       "stated_schedule": [
         {
           "date": "2026-06-18",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2027",
           "target_precision": "year",
@@ -1392,6 +1423,7 @@
         {
           "event_kind": "status",
           "date": "2026-06-18",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -1412,6 +1444,7 @@
       "stated_schedule": [
         {
           "date": "2026-06-18",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2027",
           "target_precision": "year",
@@ -1462,6 +1495,7 @@
         {
           "event_kind": "status",
           "date": "2025-08-25",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -1525,6 +1559,7 @@
         {
           "event_kind": "status",
           "date": "2022-07-18",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -1589,6 +1624,7 @@
         {
           "event_kind": "status",
           "date": "2026-07-02",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -1615,6 +1651,7 @@
       "stated_schedule": [
         {
           "date": "2026-07-02",
+          "date_precision": "day",
           "milestone": "construction_start",
           "target_date": "2026-10",
           "target_precision": "month",
@@ -1666,6 +1703,7 @@
         {
           "event_kind": "status",
           "date": "2023-05-30",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -1693,6 +1731,7 @@
       "stated_schedule": [
         {
           "date": "2023-05-30",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2023",
           "target_precision": "year",
@@ -1740,6 +1779,7 @@
         {
           "event_kind": "status",
           "date": "2024-06-05",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "paused",
           "status": "paused",
@@ -1757,6 +1797,7 @@
         {
           "event_kind": "status",
           "date": "2026-02-09",
+          "date_precision": "day",
           "status_from": "paused",
           "status_to": "cancelled",
           "status": "cancelled",
@@ -1849,6 +1890,7 @@
         {
           "event_kind": "status",
           "date": "2025-12-11",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -1876,6 +1918,7 @@
       "stated_schedule": [
         {
           "date": "2025-12-11",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026",
           "target_precision": "year",
@@ -1928,6 +1971,7 @@
         {
           "event_kind": "status",
           "date": "2025-12-17",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -1991,6 +2035,7 @@
         {
           "event_kind": "status",
           "date": "2025-03-12",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "paused",
           "status": "paused",
@@ -2009,6 +2054,7 @@
         {
           "event_kind": "ownership",
           "date": "2026-02-26",
+          "date_precision": "day",
           "status_from": "paused",
           "status_to": "paused",
           "status": "paused",
@@ -2044,6 +2090,7 @@
       "stated_schedule": [
         {
           "date": "2026-02-26",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026-H2",
           "target_precision": "half",
@@ -2102,6 +2149,7 @@
         {
           "event_kind": "status",
           "date": "2024-12-10",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -2129,6 +2177,7 @@
       "stated_schedule": [
         {
           "date": "2024-12-10",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026",
           "target_precision": "year",
@@ -2181,6 +2230,7 @@
         {
           "event_kind": "status",
           "date": "2022-12-21",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -2247,6 +2297,7 @@
         {
           "event_kind": "status",
           "date": "2023-07-27",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -2319,6 +2370,7 @@
         {
           "event_kind": "status",
           "date": "2022-08-12",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -2386,6 +2438,7 @@
         {
           "event_kind": "status",
           "date": "2024-03-25",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -2397,6 +2450,7 @@
         {
           "event_kind": "status",
           "date": "2024-11-21",
+          "date_precision": "day",
           "status_from": "construction",
           "status_to": "paused",
           "status": "paused",
@@ -2412,6 +2466,7 @@
         {
           "event_kind": "status",
           "date": "2026-04-10",
+          "date_precision": "day",
           "status_from": "paused",
           "status_to": "paused",
           "status": "paused",
@@ -2423,6 +2478,7 @@
         {
           "event_kind": "status",
           "date": "2026-07-01",
+          "date_precision": "day",
           "status_from": "paused",
           "status_to": "paused",
           "status": "paused",
@@ -2488,6 +2544,7 @@
       "stated_schedule": [
         {
           "date": "2024-03-25",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026",
           "target_precision": "year",
@@ -2539,6 +2596,7 @@
         {
           "event_kind": "status",
           "date": "2024-08-16",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -2550,6 +2608,7 @@
         {
           "event_kind": "status",
           "date": "2026-05-06",
+          "date_precision": "day",
           "status_from": "operating",
           "status_to": "cancelled",
           "status": "cancelled",
@@ -2627,6 +2686,7 @@
         {
           "event_kind": "status",
           "date": "2023-03-17",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -2693,6 +2753,7 @@
         {
           "event_kind": "status",
           "date": "2025-08-22",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -2726,6 +2787,7 @@
       "stated_schedule": [
         {
           "date": "2023-07-19",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026",
           "target_precision": "year",
@@ -2777,6 +2839,7 @@
         {
           "event_kind": "status",
           "date": "2024-06-20",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -2804,6 +2867,7 @@
       "stated_schedule": [
         {
           "date": "2024-06-20",
+          "date_precision": "day",
           "milestone": "construction_start",
           "target_date": "2024",
           "target_precision": "year",
@@ -2852,6 +2916,7 @@
         {
           "event_kind": "status",
           "date": "2022-08-01",
+          "date_precision": "month",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -2918,6 +2983,7 @@
         {
           "event_kind": "status",
           "date": "2021-09-10",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -2928,14 +2994,15 @@
         },
         {
           "event_kind": "status",
-          "date": "2024-01-31",
+          "date": "2024-01-01",
+          "date_precision": "month",
           "status_from": "announced",
           "status_to": "cancelled",
           "status": "cancelled",
           "source_url": "https://www.bestmag.co.uk/battery-gigafactories-facing-a-temporary-dip-or-a-full-scale-crisis/",
           "source_type": "press",
           "evidence_mode": "retrospective",
-          "note": "'The second project, Italvolt, in Italy also went bankrupt in January 2024.' Trade press, recorded as such: the company is dissolved and issued no closing statement, and the day within January is not given, so the date is the month's end rather than a claim to precision.",
+          "note": "'The second project, Italvolt, in Italy also went bankrupt in January 2024.' Trade press, recorded as such: the company is dissolved and issued no closing statement, and the day within January is not given.\n\nDATE CORRECTED 9 SEPTEMBER 2026, FROM 31 JANUARY TO 1 JANUARY. It sat at the month's END on a convention written in this note — putting it late so as not to claim precision — which contradicted the padding rule in scope.md and which no count could read: a series measuring how long this project lasted would have taken the 31st for a day somebody knew. It is now padded to the first of its month, which is the earliest the bankruptcy can have happened, and `date_precision` says `month` where the note used to.",
           "stop_reason": [
             "finance"
           ],
@@ -3006,6 +3073,7 @@
         {
           "event_kind": "status",
           "date": "2025-06-03",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -3086,6 +3154,7 @@
         {
           "event_kind": "status",
           "date": "2025-12-16",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -3164,6 +3233,7 @@
         {
           "event_kind": "status",
           "date": "2026-07-22",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -3245,6 +3315,7 @@
         {
           "event_kind": "status",
           "date": "2023-07-27",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -3343,6 +3414,7 @@
         {
           "event_kind": "status",
           "date": "2025-02-24",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -3384,6 +3456,7 @@
       "stated_schedule": [
         {
           "date": "2025-02-24",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2027",
           "target_precision": "year",
@@ -3395,6 +3468,7 @@
         },
         {
           "date": "2025-02-24",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2028",
           "target_precision": "year",
@@ -3450,6 +3524,7 @@
         {
           "event_kind": "status",
           "date": "2021-01-29",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -3461,6 +3536,7 @@
         {
           "event_kind": "status",
           "date": "2022-03-23",
+          "date_precision": "day",
           "status_from": "announced",
           "status_to": "construction",
           "status": "construction",
@@ -3553,6 +3629,7 @@
         {
           "event_kind": "status",
           "date": "2021-01-29",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "operating",
           "status": "operating",
@@ -3641,6 +3718,7 @@
         {
           "event_kind": "status",
           "date": "2024-07-08",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -3703,6 +3781,7 @@
       "stated_schedule": [
         {
           "date": "2024-07-08",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026",
           "target_precision": "year",
@@ -3714,6 +3793,7 @@
         },
         {
           "date": "2026-06-08",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2028-12",
           "target_precision": "month",
@@ -3781,6 +3861,7 @@
         {
           "event_kind": "status",
           "date": "2024-07-24",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -3792,6 +3873,7 @@
         {
           "event_kind": "status",
           "date": "2026-05-07",
+          "date_precision": "day",
           "status_from": "announced",
           "status_to": "cancelled",
           "status": "cancelled",
@@ -3875,6 +3957,7 @@
         {
           "event_kind": "status",
           "date": "2024-02-29",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -3886,6 +3969,7 @@
         {
           "event_kind": "status",
           "date": "2026-03-31",
+          "date_precision": "day",
           "status_from": "construction",
           "status_to": "cancelled",
           "status": "cancelled",
@@ -3958,6 +4042,7 @@
         {
           "event_kind": "status",
           "date": "2026-02-07",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "cancelled",
           "status": "cancelled",
@@ -4006,6 +4091,7 @@
       "stated_schedule": [
         {
           "date": "2026-09-07",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2025",
           "target_precision": "year",
@@ -4035,6 +4121,7 @@
         {
           "event_kind": "status",
           "date": "2022-09-09",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -4046,6 +4133,7 @@
         {
           "event_kind": "status",
           "date": "2024-05-27",
+          "date_precision": "day",
           "status_from": "announced",
           "status_to": "cancelled",
           "status": "cancelled",
@@ -4108,6 +4196,7 @@
         {
           "event_kind": "status",
           "date": "2022-05-23",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "paused",
           "status": "paused",
@@ -4163,6 +4252,7 @@
         {
           "event_kind": "status",
           "date": "2020-12-10",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -4174,6 +4264,7 @@
         {
           "event_kind": "status",
           "date": "2023-01-17",
+          "date_precision": "day",
           "status_from": "announced",
           "status_to": "cancelled",
           "status": "cancelled",
@@ -4240,6 +4331,7 @@
         {
           "event_kind": "status",
           "date": "2026-01-13",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "paused",
           "status": "paused",
@@ -4343,6 +4435,7 @@
         {
           "event_kind": "status",
           "date": "2025-09-29",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -4383,6 +4476,7 @@
       "stated_schedule": [
         {
           "date": "2025-09-29",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026",
           "target_precision": "year",
@@ -4445,6 +4539,7 @@
         {
           "event_kind": "status",
           "date": "2023-01-31",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -4456,6 +4551,7 @@
         {
           "event_kind": "status",
           "date": "2024-07-15",
+          "date_precision": "day",
           "status_from": "announced",
           "status_to": "funded",
           "status": "funded",
@@ -4467,6 +4563,7 @@
         {
           "event_kind": "status",
           "date": "2026-08-04",
+          "date_precision": "day",
           "status_from": "funded",
           "status_to": "commissioning",
           "status": "commissioning",
@@ -4479,6 +4576,7 @@
       "stated_schedule": [
         {
           "date": "2023-01-31",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2024",
           "target_precision": "year",
@@ -4490,6 +4588,7 @@
         },
         {
           "date": "2024-07-15",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2025",
           "target_precision": "year",
@@ -4501,6 +4600,7 @@
         },
         {
           "date": "2026-08-04",
+          "date_precision": "day",
           "milestone": "commissioning",
           "target_date": "2026",
           "target_precision": "year",
@@ -4657,6 +4757,7 @@
         {
           "event_kind": "status",
           "date": "2024-12-18",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "fid",
           "status": "fid",
@@ -4668,6 +4769,7 @@
         {
           "event_kind": "status",
           "date": "2026-07-23",
+          "date_precision": "day",
           "status_from": "fid",
           "status_to": "construction",
           "status": "construction",
@@ -4680,6 +4782,7 @@
       "stated_schedule": [
         {
           "date": "2026-07-23",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2027-H2",
           "target_precision": "half",
@@ -4797,6 +4900,7 @@
         {
           "event_kind": "status",
           "date": "2022-01-19",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -4808,6 +4912,7 @@
         {
           "event_kind": "status",
           "date": "2023-09-14",
+          "date_precision": "day",
           "status_from": "announced",
           "status_to": "fid",
           "status": "fid",
@@ -4820,6 +4925,7 @@
       "stated_schedule": [
         {
           "date": "2022-01-19",
+          "date_precision": "day",
           "milestone": "commissioning",
           "target_date": "2025",
           "target_precision": "year",
@@ -4831,6 +4937,7 @@
         },
         {
           "date": "2023-09-14",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026-H2",
           "target_precision": "half",
@@ -4966,6 +5073,7 @@
         {
           "event_kind": "status",
           "date": "2024-07-29",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "fid",
           "status": "fid",
@@ -5079,6 +5187,7 @@
         {
           "event_kind": "status",
           "date": "2026-01-26",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "fid",
           "status": "fid",
@@ -5091,6 +5200,7 @@
       "stated_schedule": [
         {
           "date": "2026-01-26",
+          "date_precision": "day",
           "milestone": "commissioning",
           "target_date": "2029",
           "target_precision": "year",
@@ -5193,7 +5303,7 @@
       "capacity_basis": "announced",
       "capacity_source_url": "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-sines-with-eur430-million",
       "capacity_as_of": "2025-09-29",
-      "capacity_note": "'In parallel, Galp is building in the same site a 100MW electrolyser, a €250 million investment of which the EIB will finance €180 million.' THE FIGURE IS ON A LENDER'S PAGE AND NOT ON A DATED COMPANY ONE, and the reason is worth writing down: Galp's own release, 'Final Investment Decision on Green Hydrogen and HVO/SAF projects', states the same '100 MW of electrolysers for the production of green hydrogen' and renders its publication date in the browser, so a declared reader gets the text without the date. An undated company statement cannot date an event, so the EIB's dated page carries the figure and the company page is cited beside it. Per the brief's own rule, an EIB approval is `announced` and not `fid`, even though Galp has taken one. GALP'S OWN PAGE DATES THE DECISION TO A YEAR, found 9 September 2026 while measuring which of its pages a declared reader can read: 'In 2023, Galp took a decisive step by making the final investment decision on two large-scale projects: an advanced biofuel production unit (HVO and SAF), in partnership with Mitsui, and 100 MW of electrolysers for the production of green hydrogen.' A year is not a date and still cannot carry an event, so the history is unchanged; what it does settle is that the FID was 2023 and not 2025.",
+      "capacity_note": "'In parallel, Galp is building in the same site a 100MW electrolyser, a €250 million investment of which the EIB will finance €180 million.' THE FIGURE IS ON A LENDER'S PAGE AND NOT ON A DATED COMPANY ONE, and the reason is worth writing down: Galp's own release, 'Final Investment Decision on Green Hydrogen and HVO/SAF projects', states the same '100 MW of electrolysers for the production of green hydrogen' and renders its publication date in the browser, so a declared reader gets the text without the date. An undated company statement cannot date an event, so the EIB's dated page carries the figure and the company page is cited beside it. Per the brief's own rule, an EIB approval is `announced` and not `fid`, even though Galp has taken one. GALP'S OWN PAGE DATES THE DECISION TO A YEAR, found 9 September 2026 while measuring which of its pages a declared reader can read: 'In 2023, Galp took a decisive step by making the final investment decision on two large-scale projects: an advanced biofuel production unit (HVO and SAF), in partnership with Mitsui, and 100 MW of electrolysers for the production of green hydrogen.' A year is not a date and still cannot carry an event, so the history is unchanged; what it does settle is that the FID was 2023 and not 2025. THE BASIS STAYS `announced` NOW THAT THE FID IS ON THE HISTORY, and the reason is the standing ruling that capacity_basis is read from the source sentence and never derived from status. The sentence this figure is quoted from is the EIB's, and the brief's own rule makes an EIB approval `announced`. Galp's page states the same 100 MW in the sentence that states the decision, so a `fid` basis is available; what is not available is a DATE for it better than a year, and moving the figure onto that sentence would put a year-padded capacity_as_of on the row with no field to say so. The figure stays where it is dated.",
       "capacity_alternates": [
         {
           "value": 15000,
@@ -5209,19 +5319,33 @@
       "status_history": [
         {
           "event_kind": "status",
-          "date": "2025-09-29",
+          "date": "2023-01-01",
+          "date_precision": "year",
           "status_from": null,
+          "status_to": "fid",
+          "status": "fid",
+          "source_url": "https://www.galp.com/corp/en/about-us/what-we-do/industrial-and-midstream/green-hydrogen",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "GALP'S OWN DECISION, ON GALP'S OWN PAGE, AT THE PRECISION GALP GAVE IT. 'In 2023, Galp took a decisive step by making the final investment decision on two large-scale projects: an advanced biofuel production unit (HVO and SAF), in partnership with Mitsui, and 100 MW of electrolysers for the production of green hydrogen.'\n\nTHIS EVENT COULD NOT BE FILED UNTIL 9 SEPTEMBER 2026, and the reason is worth keeping. galp.com renders its publication dates in the browser, so the company's own FID release came back to a declared reader with its text and no date — and an undated statement cannot date an event. The history therefore began at the EIB's release of 29 September 2025, with a construction event and a lender for a source, and the row said so. What changed is not the evidence but the schema: an event date may now carry year precision, padded to 1 January, with the precision recorded. The company said 2023 and the register can now hold 2023 as 2023 rather than as either a false day or nothing at all."
+        },
+        {
+          "event_kind": "status",
+          "date": "2025-09-29",
+          "date_precision": "day",
+          "status_from": "fid",
           "status_to": "construction",
           "status": "construction",
           "source_url": "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-sines-with-eur430-million",
           "source_type": "grant_register",
           "evidence_mode": "retrospective",
-          "note": "'The two projects, already in construction at the Sines Refinery, represent a total investment of €650 million.' THE SOURCE TYPE IS THE NEAREST FIT AND NOT A GOOD ONE: the European Investment Bank is a lender publishing a financing decision, and this vocabulary has no value for a lender — `grant_register` is the closest, `regulator` would say the EIB acted on the project, and `official_register` would say the state wrote down a fact. The gap is on the docket as a candidate class for a later ruling. The history starts at the construction event because Galp's own FID release carries no date a declared reader can read."
+          "note": "'The two projects, already in construction at the Sines Refinery, represent a total investment of €650 million.' THE SOURCE TYPE IS THE NEAREST FIT AND NOT A GOOD ONE: the European Investment Bank is a lender publishing a financing decision, and this vocabulary has no value for a lender — `grant_register` is the closest, `regulator` would say the EIB acted on the project, and `official_register` would say the state wrote down a fact. The gap is on the docket as a candidate class for a later ruling. IT IS NO LONGER THE FIRST ENTRY. Until 9 September 2026 this was where the history began, because Galp's own FID release carries no date a declared reader can read; the company's project page dates the decision to 2023 and now carries it, at year precision. The EIB entry keeps its date and its source and becomes what it always was — the corroboration rather than the spine."
         }
       ],
       "stated_schedule": [
         {
           "date": "2025-09-29",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2026",
           "target_precision": "year",
@@ -5365,6 +5489,7 @@
         {
           "event_kind": "status",
           "date": "2025-09-16",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "funded",
           "status": "funded",
@@ -5376,6 +5501,7 @@
         {
           "event_kind": "status",
           "date": "2026-05-11",
+          "date_precision": "day",
           "status_from": "funded",
           "status_to": "fid",
           "status": "fid",
@@ -5508,6 +5634,7 @@
         {
           "event_kind": "status",
           "date": "2025-12-01",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -5520,6 +5647,7 @@
       "stated_schedule": [
         {
           "date": "2025-12-01",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2027-H2",
           "target_precision": "half",
@@ -5531,6 +5659,7 @@
         },
         {
           "date": "2025-12-01",
+          "date_precision": "day",
           "milestone": "construction_start",
           "target_date": "2026-06-30",
           "target_precision": "day",
@@ -5647,6 +5776,7 @@
         {
           "event_kind": "status",
           "date": "2023-03-07",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -5659,6 +5789,7 @@
       "stated_schedule": [
         {
           "date": "2023-03-07",
+          "date_precision": "day",
           "milestone": "commissioning",
           "target_date": "2026",
           "target_precision": "year",
@@ -5754,6 +5885,7 @@
         {
           "event_kind": "status",
           "date": "2026-01-26",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -5823,6 +5955,7 @@
         {
           "event_kind": "status",
           "date": "2025-05-13",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -5835,6 +5968,7 @@
       "stated_schedule": [
         {
           "date": "2025-05-13",
+          "date_precision": "day",
           "milestone": "commissioning",
           "target_date": "2026",
           "target_precision": "year",
@@ -5846,6 +5980,7 @@
         },
         {
           "date": "2025-05-13",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2027",
           "target_precision": "year",
@@ -5949,6 +6084,7 @@
         {
           "event_kind": "status",
           "date": "2025-07-23",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "fid",
           "status": "fid",
@@ -5961,6 +6097,7 @@
       "stated_schedule": [
         {
           "date": "2025-07-23",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2027",
           "target_precision": "year",
@@ -6028,6 +6165,7 @@
         {
           "event_kind": "status",
           "date": "2024-07-15",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "funded",
           "status": "funded",
@@ -6039,6 +6177,7 @@
         {
           "event_kind": "status",
           "date": "2025-11-28",
+          "date_precision": "day",
           "status_from": "funded",
           "status_to": "construction",
           "status": "construction",
@@ -6051,6 +6190,7 @@
       "stated_schedule": [
         {
           "date": "2025-11-28",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2027",
           "target_precision": "year",
@@ -6164,6 +6304,7 @@
         {
           "event_kind": "status",
           "date": "2025-09-29",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "construction",
           "status": "construction",
@@ -6175,6 +6316,7 @@
         {
           "event_kind": "ownership",
           "date": "2025-11-06",
+          "date_precision": "day",
           "status_from": "construction",
           "status_to": "construction",
           "status": "construction",
@@ -6188,6 +6330,7 @@
         {
           "event_kind": "financing",
           "date": "2026-01-07",
+          "date_precision": "day",
           "status_from": "construction",
           "status_to": "construction",
           "status": "construction",
@@ -6200,6 +6343,7 @@
       "stated_schedule": [
         {
           "date": "2025-09-29",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2027",
           "target_precision": "year",
@@ -6318,6 +6462,7 @@
         {
           "event_kind": "status",
           "date": "2025-09-30",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "fid",
           "status": "fid",
@@ -6330,6 +6475,7 @@
       "stated_schedule": [
         {
           "date": "2025-09-30",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2029",
           "target_precision": "year",
@@ -6415,6 +6561,7 @@
         {
           "event_kind": "status",
           "date": "2026-09-09",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -6515,6 +6662,7 @@
         {
           "event_kind": "status",
           "date": "2026-09-09",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -6606,6 +6754,7 @@
         {
           "event_kind": "status",
           "date": "2024-12-01",
+          "date_precision": "month",
           "status_from": null,
           "status_to": "paused",
           "status": "paused",
@@ -6622,6 +6771,7 @@
         {
           "event_kind": "ownership",
           "date": "2025-07-02",
+          "date_precision": "day",
           "status_from": "paused",
           "status_to": "paused",
           "status": "paused",
@@ -6635,6 +6785,7 @@
         {
           "event_kind": "status",
           "date": "2025-07-02",
+          "date_precision": "day",
           "status_from": "paused",
           "status_to": "announced",
           "status": "announced",
@@ -6647,6 +6798,7 @@
       "stated_schedule": [
         {
           "date": "2025-07-02",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2028",
           "target_precision": "year",
@@ -6737,6 +6889,7 @@
         {
           "event_kind": "status",
           "date": "2024-07-15",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "funded",
           "status": "funded",
@@ -6749,6 +6902,7 @@
       "stated_schedule": [
         {
           "date": "2024-07-15",
+          "date_precision": "day",
           "milestone": "production_start",
           "target_date": "2027",
           "target_precision": "year",
@@ -6855,6 +7009,7 @@
         {
           "event_kind": "status",
           "date": "2023-03-10",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -6997,6 +7152,7 @@
         {
           "event_kind": "status",
           "date": "2021-11-01",
+          "date_precision": "month",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",
@@ -7008,6 +7164,7 @@
         {
           "event_kind": "status",
           "date": "2023-08-18",
+          "date_precision": "day",
           "status_from": "announced",
           "status_to": "paused",
           "status": "paused",
@@ -7027,6 +7184,7 @@
       "stated_schedule": [
         {
           "date": "2021-11-01",
+          "date_precision": "month",
           "milestone": "production_start",
           "target_date": "2025",
           "target_precision": "year",
@@ -7038,6 +7196,7 @@
         },
         {
           "date": "2021-11-01",
+          "date_precision": "month",
           "milestone": "fid_target",
           "target_date": "2023",
           "target_precision": "year",
@@ -7138,6 +7297,7 @@
         {
           "event_kind": "status",
           "date": "2021-10-19",
+          "date_precision": "day",
           "status_from": null,
           "status_to": "announced",
           "status": "announced",

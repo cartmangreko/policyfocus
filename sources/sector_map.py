@@ -364,6 +364,36 @@ SCHEDULE_SPEAKERS = (
 # convention from a history DATE, which is padded to the first of its period
 # because that is the earliest the event can have happened -- both choices are the
 # reading that does not overstate.
+# HOW EXACTLY AN EVENT WAS DATED, which is a different question from how exactly
+# a TARGET was stated and needed its own field once the answer stopped always
+# being "to the day".
+#
+# Most events on this file come from a dated release and are known to the day.
+# Some are not: a company page says a grant arrived "in 2023"; a filing says a
+# project went bankrupt "in January 2024"; a quarterly result reports something
+# that happened in a quarter. Those events are real, they belong on the history,
+# and the register has been storing them as a padded date with the padding
+# explained in prose — which no count can read.
+#
+# SO THE DATE IS ALWAYS A FULL YYYY-MM-DD AND THE PRECISION SAYS WHAT IT MEANS.
+# A month-precision event is padded to the FIRST of its month and a
+# year-precision event to 1 January, because that is the earliest the event can
+# have happened and it is the reading that does not overstate. This is the
+# opposite convention from a stated TARGET, which is read at the END of its
+# period for the same reason: neither may claim more than the source did.
+#
+# A DATE THAT IS PADDED AND DOES NOT SAY SO IS THE FAILURE THIS CLOSES. Before
+# this field, "2024-01-31" on the Italvolt row meant "sometime in January 2024,
+# and I have put it at the end so as not to claim precision" — a convention that
+# was written in a note, that contradicted the padding rule in scope.md, and that
+# a series computing how long a project took would have read as the 31st.
+EVENT_DATE_PRECISIONS = (
+    "day",
+    "month",
+    "year",
+)
+
+
 TARGET_PRECISIONS = (
     "year",
     "half",

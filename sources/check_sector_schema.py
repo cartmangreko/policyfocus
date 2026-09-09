@@ -774,6 +774,12 @@ def _schedule(e: Errors, where: str, row: dict) -> None:
         _vocab(e, w, h, "source_type", sm.PROJECT_SOURCE_TYPES)
         _vocab(e, w, h, "evidence_mode", sm.EVIDENCE_MODES)
         _date(e, w, h, "date")
+        # A STATEMENT IS AN EVENT TOO. The date on a schedule entry is the day
+        # the promise was made, and it is dated exactly as a status event is —
+        # padded, with the precision recorded — because a company that said
+        # something "in November 2021" said it then whether or not the page
+        # carries a day.
+        _event_date(e, w, h)
         _url(e, w, h.get("source_url"), "source_url")
         t, p = h.get("target_date"), h.get("target_precision")
         if t is not None and not TARGET_RE.match(str(t)):
@@ -787,6 +793,40 @@ def _schedule(e: Errors, where: str, row: dict) -> None:
     if dates != sorted(dates):
         e.add(where, "stated_schedule is not in date order; it is append-only and a "
                      "revision is a new entry after the statement it revises")
+
+
+EVENT_DATE_SHAPE = {
+    "day":   re.compile(r"^\d{4}-\d{2}-\d{2}$"),
+    "month": re.compile(r"^\d{4}-\d{2}-01$"),
+    "year":  re.compile(r"^\d{4}-01-01$"),
+}
+
+
+def _event_date(e: Errors, where: str, h: dict) -> None:
+    """An event date, always written to the day, with what the source actually
+    gave it to.
+
+    THE DATE IS STORED PADDED AND THE PRECISION SAYS SO. A month-precision event
+    sits on the first of its month and a year-precision one on 1 January, which
+    is the earliest the event can have happened — the reading that does not
+    overstate, and the opposite of the convention for a stated target, which is
+    read at the end of its period for the same reason.
+
+    The pairing is checked, not just the vocabulary: a `year` on 2024-06-01 would
+    be a padded date somebody had padded to the wrong place, and a `day` on a date
+    nobody knows to the day is the claim this field exists to stop.
+    """
+    _req(e, where, h, "date_precision")
+    _vocab(e, where, h, "date_precision", sm.EVENT_DATE_PRECISIONS)
+    date, prec = str(h.get("date") or ""), h.get("date_precision")
+    if not EVENT_DATE_SHAPE["day"].match(date):
+        e.add(where, f"date={date!r} is not YYYY-MM-DD — an event date is always written "
+                     f"to the day and `date_precision` says what the source gave it to")
+    elif prec in EVENT_DATE_SHAPE and not EVENT_DATE_SHAPE[prec].match(date):
+        pad = "1 January" if prec == "year" else "the first of its month"
+        e.add(where, f"date={date!r} with date_precision={prec!r} — a {prec}-precision "
+                     f"event is padded to {pad}, which is the earliest it can have "
+                     f"happened; anything else claims a precision the source did not give")
 
 
 def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> None:
@@ -804,6 +844,7 @@ def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> N
     from drifting into a second, quieter source of truth.
     """
     _req(e, where, h, "event_kind", "source_type", "evidence_mode")
+    _event_date(e, where, h)
     _vocab(e, where, h, "event_kind", sm.PROJECT_EVENT_KINDS)
     _vocab(e, where, h, "source_type", sm.PROJECT_SOURCE_TYPES)
     _vocab(e, where, h, "evidence_mode", sm.EVIDENCE_MODES)

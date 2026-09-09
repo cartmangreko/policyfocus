@@ -526,6 +526,34 @@ a capacity of 150 MW" — and has no release of its own. That clears the perimet
 which asks for a company-confirmed site and a figure, and the row says in its own
 capacity note that this is all it rests on.
 
+### Step 4 decisions, after the event-date ruling of 9 September 2026
+
+**D28. `date_precision` goes on `stated_schedule` as well as on `status_history`.**
+The ruling names event dates. A schedule entry's `date` is the day the promise was
+made, which is an event, and Gigastack's two schedule entries come from a page
+dated to a month. What the entry PROMISES keeps its own `target_precision`, read
+at the end of its period; the two fields sit side by side and answer opposite
+questions about the same line.
+
+**D29. Italvolt's cancellation moved from 31 January to 1 January 2024.** It sat
+at the month's END on a convention written in its own note — putting it late so as
+not to claim precision — which contradicted the padding rule and which no count
+could read. The note now records the correction rather than the old convention.
+
+**D30. Four events were month-padded and one was a bare year, and all five were
+already on the file.** carbon2business-lagerdorf carried `"2023"`, which the date
+regex tolerated and no count could compare with a dated event. The other four —
+Italvolt, H2APEX Lubmin, Gigastack and Samsung SDI Göd — were padded correctly
+and said so only in prose. The field makes all five machine-readable and changed
+one date.
+
+**D31. Galp's capacity stays `announced` although its row now shows an FID.**
+capacity_basis is read from the source sentence and never derived from status. The
+figure is quoted from the EIB's release, and the brief makes an EIB approval
+`announced`. Galp's own sentence states the same 100 MW and would give a `fid`
+basis — and a `capacity_as_of` padded to a year, with no field on it to say so.
+The figure stays where it is dated.
+
 ### Step 3 decisions, after the second set of rulings on 9 September 2026
 
 **D21. `location_precision: "none"` is a ROW-level field and the other three are
@@ -668,3 +696,8 @@ twenty and the comparison is simply this register against the two lists.
     `partner`: the owner cites its own readiness, in technology or in supply
     chain. Gigastack was filed at `policy` for part of a day, read from what the
     consortium DID rather than what it SAID.
+20. **`capacity_as_of` has no precision field and now needs one.** The event
+    dates got `date_precision` and the capacity date did not, which is why Galp's
+    figure stays on its lender's sentence rather than moving to the company's: the
+    company's sentence is dated to a year and `capacity_as_of` cannot say so. The
+    same argument applies to a parameter's `date_of_value`.

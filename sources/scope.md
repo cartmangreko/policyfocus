@@ -1244,6 +1244,53 @@ would have recorded its existence and never its pause: **a project that vanishes
 from a database is a project whose failure nobody counts.** The report is re-run
 whenever either list is refreshed.
 
+### An event date carries its precision, and is padded to the earliest it can be
+
+**Ruled 9 September 2026.** An event date is always written as a full
+`YYYY-MM-DD`, and `date_precision` — `day`, `month` or `year` — says what the
+source actually gave it to. A month-precision event sits on the **first of its
+month** and a year-precision event on **1 January**, because that is the earliest
+the event can have happened.
+
+**It is the opposite convention from a stated target and for the same reason.** A
+target is read at the END of its period — "2029" is not missed until 31 December
+2029 — and an event is padded to the START of its. Neither may claim more than
+the source did, and the two rules point in opposite directions because
+overstating a promise and overstating a date are opposite errors.
+
+**What it closes is a convention that lived in prose.** The Italvolt row carried
+`2024-01-31` for a bankruptcy the source dated only to "January 2024", with a
+note explaining that the month's END had been chosen "rather than a claim to
+precision". That contradicted the padding rule above, and no count could read it:
+a series measuring how long that project lasted would have taken the 31st for a
+day somebody knew. It is now `2024-01-01` at `month`, and the note records the
+correction rather than the old convention.
+
+**And it is what let Galp's own decision onto its own row.** galp.com renders its
+publication dates in the browser, so the company's FID release comes back to a
+declared reader with its text and no date; an undated statement cannot date an
+event, and that row's history therefore began at its LENDER's release, with a
+construction event, more than two years after the decision it was about. Galp's
+project page says "In 2023, Galp took a decisive step by making the final
+investment decision … and 100 MW of electrolysers for the production of green
+hydrogen." The company said a year. The register can now hold a year as a year,
+rather than as a false day or as nothing at all, and the EIB entry becomes what
+it always was — the corroboration rather than the spine.
+
+**A STATEMENT IS AN EVENT TOO.** `stated_schedule` entries carry the same field
+on the same rule: the date there is the day the promise was made, and a company
+that said something "in November 2021" said it then whether or not the page
+carries a day. What the ENTRY promises keeps its own `target_precision`, read at
+the end of its period; the two fields sit side by side and answer opposite
+questions about the same line.
+
+**The basis of a figure is still read from its own sentence.** Galp's row now
+shows a final investment decision and its capacity is still `announced`, because
+the sentence the figure is quoted from is the EIB's and the brief makes an EIB
+approval `announced`. The alternative was to move the figure onto the company's
+sentence, which states the same 100 MW — and to date it to a padded year with no
+field on `capacity_as_of` to say so. The figure stays where it is dated.
+
 ### A slip is one speaker changing its mind
 
 `stated_schedule` records what a project said it would do. Every entry carries a
