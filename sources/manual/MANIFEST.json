@@ -30,7 +30,12 @@
     "navigation and no article: the release renders in the browser. A link checker calls that a",
     "live page, because it is one. What it is not is a source anybody can quote, and the two",
     "entries below are queued for the same reason a 403 is — a person with a browser closes it",
-    "in a minute, and until they do the row cannot carry a sentence nobody has read."
+    "in a minute, and until they do the row cannot carry a sentence nobody has read.",
+    "",
+    "AND ONE ENTRY HERE IS NOT ABOUT A ROW AT ALL. The benchmark gap report has a class for a",
+    "company source somebody located and could not read, and its members are queued here like any",
+    "other — a person with a browser closes one in a minute. A queue that only accepted work on",
+    "rows would have nowhere to put the reason three entries in an outside list are unresolved."
   ],
   "retrieved": [
     {
@@ -169,6 +174,14 @@
       "why": "galp.com serves the article text to a declared reader and renders its PUBLICATION DATE in the browser; the announcement list renders every date the same way.",
       "needed_for": "The text is already quoted on the row — '100 MW of electrolysers', 'up to 15 ktpa of renewable hydrogen', 'c.€250 m' — and it dates nothing, so the row's history starts at the EIB release of 29 September 2025 instead of at Galp's own decision. A dated copy would give this project its FID event and make the EIB entry the corroboration rather than the spine.",
       "drop_as": "sources/manual/galp-sines-electrolyser--final-investment-decision-green-hydrogen-hvo-saf.html",
+      "priority": "normal"
+    },
+    {
+      "candidate": "benchmark-gap-shell-mitsubishi",
+      "url": "https://www.shell.com/what-we-do/hydrogen/shell-hydrogen-projects.html",
+      "why": "Shell's own list of its hydrogen projects answers a declared reader with HTTP 200 and thirty-eight characters of text — the page title. Measured 9 September 2026.",
+      "needed_for": "NOT FOR A ROW, FOR A GAP. sources/report_benchmark_gap.py classifies every European entry at or above 100 MW in the two outside lists that this register does not hold, and three of them — 'MoU Shell - Mitsubishi' phases 1 and 2, in both lists — sit in the class `company source unreadable` because THIS is the natural company source for a Shell project and it cannot be quoted. A readable copy would move them into whichever class they belong in: a project this perimeter admits, or one it refuses, or one nobody has confirmed a site for. Until then they are counted as looked-for and refused, which is the honest place for them and not the final one.",
+      "drop_as": "sources/manual/benchmark-gap--shell-hydrogen-projects.html",
       "priority": "normal"
     }
   ]

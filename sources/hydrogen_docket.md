@@ -215,11 +215,46 @@ that excluded fossil-with-capture could never report how much of it there is.
 | duplicate of a held row | 4 | 2 |
 | DRI or other perimeter exclusion | 25 | 31 |
 | blue | 0 | 22 |
-| below threshold on reading | 22 | 9 |
-| no company-confirmed site | 183 | 159 |
+| below threshold on reading | 1 | 0 |
+| benchmark gives no location | 202 | 0 |
+| benchmark gives a location, no company or permit source names the site | 0 | 167 |
+| company source unreadable | 2 | 1 |
 | **not searched** | **0** | **0** |
 | held by eufabric | 21 | 14 |
 | **TOTAL** | **255** | **237** |
+
+### The three states the old class hid
+
+"no company-confirmed site" held nine in ten of the gap and a reader could not
+tell from it whether the benchmark had said where a project is, whether anybody
+had looked for a company source, or whether somebody had looked and been refused.
+Those are three different things and they are now three classes.
+
+**The split falls almost entirely along the line between the two files, and that
+is the finding.** The October 2023 quality-checked file **has no location column
+at all** — Ref, name, country, dates, status, technology, end use, capacity,
+references, and nothing that says where. So every unresolved entry in it is
+`benchmark gives no location`: a project this register would have to place cannot
+even be looked for from that file, because the name is all there is. The IEA's
+live endpoint publishes **a latitude and a longitude for all 237** of its European
+entries, so every unresolved entry there is `benchmark gives a location`. **That
+coordinate is not a position this register may use** — a third party's coordinate
+is refused here and always has been — but it does mean the entry says where, and
+what is missing is a company or permit source naming the site.
+
+**`company source unreadable` has three members and they are all one page.**
+Shell's own list of its hydrogen projects answers a declared reader with HTTP 200
+and thirty-eight characters of text: the page title. The "MoU Shell – Mitsubishi"
+entries — phases 1 and 2 in the academic list, phase 2 in the live one — sit here
+rather than among the projects nobody has looked at, because somebody looked. The
+page is queued in `sources/manual/wanted`.
+
+**`below threshold on reading` fell from 22 to 1 when the test was corrected, and
+the correction is worth recording.** The first version read "no megawatt figure
+in `Announced Size`" as "below 100 MW", which quietly moved projects of several
+gigawatts — quoted in tonnes or Nm³ — into a class that says they are small. It
+now means only what it says: a stated figure that is below the threshold. One
+entry in either list is that.
 
 **`not searched` is the only class that is a defect**, and the report prints its
 members by name rather than counting them, because the answer to it is to go and
@@ -233,6 +268,16 @@ following a project rather than recorded that the project stopped.
 | Gigastack–Hornsea 2, phase II (ref 1374) | a later phase of the same site — duplicate once phase I is held |
 | INEOS Köln site (ref 1388) | **landed.** 100 MW announced October 2021, and nothing since |
 | Centurion (ref 580) | **refused by name**, on two clauses at once |
+
+**The inputs are snapshotted by identity.** `sources/benchmark_snapshots.json`
+records each file's publisher URL, the day it was fetched, its size and its
+SHA-256, and the report verifies the cache against it on every run. The bytes are
+NOT archived, and the difference is a licence rather than a preference: both files
+are the IEA's database and this repository may not redistribute it. A hash does
+what the snapshot rule asks — makes every published number reconstructible — with
+no copy nobody may pass on. The record is append-only, so a refreshed benchmark is
+a new entry and the counts in this docket stay attached to the file they were
+computed from.
 
 **THIS IS A DISCOVERY ROUTE, AND THE BATTERIES FILE PREDICTED IT.** That file
 recorded that the funding trail found two candidates the perimeter sweep had
@@ -613,3 +658,13 @@ twenty and the comparison is simply this register against the two lists.
     list would have recorded this project's existence and never its pause. The
     gap report is the mechanism that caught it and it should be re-run whenever
     either list is refreshed.
+18. **A class that holds nine in ten of a gap is not a class.** "no
+    company-confirmed site" was three states — the benchmark says nothing about
+    where, the benchmark says where and nobody has read a company source, and
+    somebody read one and was refused — and the count was useless until they were
+    separated. The general lesson is that a residual class should be watched for
+    growth, not just for members.
+19. **`maturity` is the third value a re-read forced.** After `strategy` and
+    `partner`: the owner cites its own readiness, in technology or in supply
+    chain. Gigastack was filed at `policy` for part of a day, read from what the
+    consortium DID rather than what it SAID.

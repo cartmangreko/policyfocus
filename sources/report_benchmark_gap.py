@@ -52,6 +52,8 @@ register already holds is not a gap at all.
 from __future__ import annotations
 
 import csv
+import hashlib
+import json
 import os
 import re
 import sys
@@ -62,9 +64,73 @@ import build_hydrogen_benchmark as bench  # noqa: E402
 import sector_map as sm  # noqa: E402
 
 OUT = bench.ROOT / "scratch" / "hydrogen_benchmark_gap.csv"
+SNAPSHOTS = bench.ROOT / "sources" / "benchmark_snapshots.json"
 
+
+def verify_inputs() -> list[str]:
+    """Check the cached benchmark files against their recorded identity.
+
+    THE SNAPSHOT RULE, APPLIED TO AN INPUT NOBODY MAY REDISTRIBUTE. Every number
+    in this report and in the docket was computed from two files; the licence
+    stops this repository holding copies of them, so what is held is the
+    publisher's URL, the day, the size and the SHA-256, in
+    sources/benchmark_snapshots.json. This function proves the file on disk is
+    still the one the numbers are about, and says so out loud either way —
+    silence would let a refreshed input change the counts without anybody being
+    told which file they now describe.
+    """
+    doc = json.loads(SNAPSHOTS.read_text(encoding="utf-8"))
+    newest: dict[str, dict] = {}
+    for rec in doc["snapshots"]:
+        cur = newest.get(rec["benchmark"])
+        if cur is None or rec["fetched"] >= cur["fetched"]:
+            newest[rec["benchmark"]] = rec
+    lines = []
+    for name, rec in sorted(newest.items()):
+        path = bench.CACHE / rec["file"]
+        if not path.exists():
+            lines.append(f"  {name}: not cached; it will be fetched from {rec['url']}")
+            continue
+        got = hashlib.sha256(path.read_bytes()).hexdigest()
+        if got == rec["sha256"]:
+            lines.append(f"  {name}: matches the snapshot of {rec['fetched']} "
+                         f"({rec['bytes']:,} bytes, {got[:16]}…)")
+        else:
+            lines.append(f"  {name}: DOES NOT MATCH the snapshot of {rec['fetched']} — "
+                         f"on disk {got[:16]}…, recorded {rec['sha256'][:16]}…. The numbers "
+                         f"below are about a different file from the one the docket "
+                         f"reports; append a new entry to {SNAPSHOTS.name} before "
+                         f"publishing them.")
+    return lines
+
+# THE CLASS "no company-confirmed site" WAS THREE THINGS AND HID THE DIFFERENCE.
+# It held 183 and 159 entries — nine in ten of the gap — and a reader could not
+# tell from it whether the benchmark had said where a project is, whether anybody
+# had looked for a company source, or whether somebody had looked and been
+# refused. Split on 9 September 2026 into the three states those are:
+#
+#   benchmark gives no location
+#       The entry names a country and nothing else. THIS IS A FACT ABOUT THE
+#       ACADEMIC LIST AND NOT ABOUT ITS PROJECTS: the October 2023 quality-checked
+#       file has no location column at all — Ref, name, country, dates, status,
+#       technology, end use, capacity, references, and no site. So a project this
+#       register would have to place cannot even be looked for from that file
+#       alone; the name is all there is.
+#   benchmark gives a location, no company or permit source names the site
+#       The IEA's live endpoint publishes a latitude and a longitude for every
+#       one of its European entries. THAT IS NOT A POSITION THIS REGISTER MAY
+#       USE — a third party's coordinate is refused here, and always has been —
+#       but it does mean the entry says where, and what is missing is a company
+#       or permit source naming the site. Nobody here has read one.
+#   company source unreadable
+#       Somebody looked, found the operator's own source, and could not read it:
+#       an empty body or a refusal. Named one at a time in UNREADABLE_BY_NAME and
+#       queued in sources/manual/wanted, because a person with a browser closes
+#       one in a minute.
 CLASSES = ("duplicate of a held row", "DRI or other perimeter exclusion", "blue",
-           "below threshold on reading", "no company-confirmed site", "not searched")
+           "below threshold on reading", "benchmark gives no location",
+           "benchmark gives a location, no company or permit source names the site",
+           "company source unreadable", "not searched")
 
 STEEL = re.compile(r"steel|hybrit|stegra|h2gs|\bdri\b|sponge iron|salcos|gravithy|blastr"
                    r"|iron\s*&|ironmaking|thyssenkrupp|arcelor", re.I)
@@ -98,6 +164,31 @@ REFUSED_BY_NAME = {
 
 # The announced size as the project stated it. "100 MW" and "1GW" clear the
 # threshold; "50MW", "22 MW" and a figure quoted only in tonnes or Nm3 do not.
+# COMPANY SOURCES LOCATED AND UNREADABLE, one entry at a time, with what was
+# measured. The third state named in scope.md, "A 200 with an empty body is a
+# refusal": the publisher answers a declared reader with HTTP 200 and a document
+# containing the page title, and a link checker calls the line green because by
+# every test it has, it is.
+#
+# EACH ENTRY IS QUEUED IN sources/manual/wanted, because a person with a browser
+# closes one in a minute — and until they do, the entry sits here rather than
+# among the projects nobody has looked at, which is a different and less honest
+# thing to say about it.
+UNREADABLE_BY_NAME = {
+    ("odenweller_ueckerdt_2025", "1910"): (
+        "MoU Shell - Mitsubishi, phase1 — Shell's own list of its hydrogen projects, at "
+        "shell.com/what-we-do/hydrogen/shell-hydrogen-projects.html, answers a declared "
+        "reader with HTTP 200 and THIRTY-EIGHT CHARACTERS of text: the page title. "
+        "Measured 9 September 2026. It is the natural company source for any Shell "
+        "project and it cannot be quoted."),
+    ("odenweller_ueckerdt_2025", "1911"): (
+        "MoU Shell - Mitsubishi, phase2 — the same page and the same measurement."),
+    ("iea_hydrogen_production_projects", "1911"): (
+        "MoU Shell - Mitsubishi, phase2 — the same page and the same measurement. The "
+        "live IEA list carries phase 2 and has dropped phase 1."),
+}
+
+
 MW = re.compile(r"(\d+(?:[.,]\d+)?)\s*(?:MW|MWel|MW el)", re.I)
 GW = re.compile(r"(\d+(?:[.,]\d+)?)\s*GW", re.I)
 
@@ -128,7 +219,8 @@ def stem(name: str) -> str:
 
 
 def classify(entry: dict, name: str, status: str, tech: str, size: str,
-             held_stems: set[str], key: tuple[str, str] | None = None) -> str:
+             held_stems: set[str], key: tuple[str, str] | None = None,
+             has_location: bool = False) -> str:
     if key in REFUSED_BY_NAME:
         return "DRI or other perimeter exclusion"
     if stem(name) in held_stems:
@@ -139,16 +231,32 @@ def classify(entry: dict, name: str, status: str, tech: str, size: str,
         return "blue"
     if FUEL.search(name):
         return "DRI or other perimeter exclusion"
+    # BELOW THRESHOLD ON READING MEANS A STATED FIGURE THAT IS BELOW IT, and
+    # nothing else. An entry whose `Announced Size` is quoted in tonnes or Nm3
+    # states no electrolyser rating at all: its place above the threshold rests
+    # entirely on the benchmark's own normalisation, which is a different
+    # complaint and one this register cannot settle without reading the company.
+    # Treating "no megawatts stated" as "below 100 MW" was the first version of
+    # this test and it quietly moved projects of several gigawatts into a class
+    # that says they are small.
     mw = stated_mw(size)
-    if size and (mw is None or mw < 100):
+    if mw is not None and mw < 100:
         return "below threshold on reading"
     if status in ("Concept", "Feasibility study"):
-        return "no company-confirmed site"
+        # THE THREE STATES THE OLD SINGLE CLASS HID, tested in the order they
+        # answer: did somebody look and get refused; does the benchmark even say
+        # where; and otherwise it says where and nobody here has read a company
+        # or permit source naming it.
+        if key in UNREADABLE_BY_NAME:
+            return "company source unreadable"
+        return ("benchmark gives a location, no company or permit source names the site"
+                if has_location else "benchmark gives no location")
     return "not searched"
 
 
 def main() -> int:
     ou_all, iea_all = bench.load_ou(), bench.load_iea()
+    checks = verify_inputs()
     rows = bench.held()
 
     def f(v):
@@ -183,7 +291,9 @@ def main() -> int:
             continue
         c = classify(r, str(r["Project name"]), str(r["Status"]),
                      str(r.get("Technology") or ""), str(r.get("Announced Size") or ""),
-                     held_stems, ("odenweller_ueckerdt_2025", i))
+                     held_stems, ("odenweller_ueckerdt_2025", i),
+                     # The academic file carries no location column at all.
+                     has_location=False)
         counts["odenweller_ueckerdt_2025"][c] += 1
         out.append({"benchmark": "odenweller_ueckerdt_2025", "ref": i,
                     "country": r["Country"], "name": r["Project name"],
@@ -195,7 +305,13 @@ def main() -> int:
             continue
         c = classify(r, str(r["projectName"]), str(r["status"]), str(r.get("technolgy") or ""),
                      str((ou.get(i) or {}).get("Announced Size") or ""), held_stems,
-                     ("iea_hydrogen_production_projects", i))
+                     ("iea_hydrogen_production_projects", i),
+                     # The live endpoint publishes a latitude and a longitude for
+                     # every European entry. It is not a position this register
+                     # may use — a third party's coordinate is refused here — but
+                     # it does mean the entry says where.
+                     has_location=r.get("latitude") not in (None, 0)
+                     and r.get("longitude") not in (None, 0))
         counts["iea_hydrogen_production_projects"][c] += 1
         out.append({"benchmark": "iea_hydrogen_production_projects", "ref": i,
                     "country": r["country"]["iso3"], "name": r["projectName"],
@@ -232,9 +348,17 @@ def main() -> int:
                   f"{r['normalised_mwel'] or '?':>6} MW  {r['status'][:18]:18} {r['name'][:58]}")
     else:
         print("\nNOT SEARCHED (0) — every absence is a decision.")
+    print(f"\ncompany source unreadable ({len(UNREADABLE_BY_NAME)}) — located, measured "
+          f"and queued in sources/manual/wanted:")
+    for (b, ref), why in sorted(UNREADABLE_BY_NAME.items()):
+        print(f"  {b[:4]} ref {ref}: {why}")
+
     print(f"\nrefused by name ({len(REFUSED_BY_NAME)}) — recorded, never silent:")
     for (b, ref), why in sorted(REFUSED_BY_NAME.items()):
         print(f"  {b[:4]} ref {ref}: {why}")
+
+    print("\nbenchmark inputs, by identity (sources/benchmark_snapshots.json):")
+    print("\n".join(checks))
 
     print(f"\n  {OUT}")
     return 0

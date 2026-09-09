@@ -5193,7 +5193,7 @@
       "capacity_basis": "announced",
       "capacity_source_url": "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-sines-with-eur430-million",
       "capacity_as_of": "2025-09-29",
-      "capacity_note": "'In parallel, Galp is building in the same site a 100MW electrolyser, a €250 million investment of which the EIB will finance €180 million.' THE FIGURE IS ON A LENDER'S PAGE AND NOT ON A DATED COMPANY ONE, and the reason is worth writing down: Galp's own release, 'Final Investment Decision on Green Hydrogen and HVO/SAF projects', states the same '100 MW of electrolysers for the production of green hydrogen' and renders its publication date in the browser, so a declared reader gets the text without the date. An undated company statement cannot date an event, so the EIB's dated page carries the figure and the company page is cited beside it. Per the brief's own rule, an EIB approval is `announced` and not `fid`, even though Galp has taken one.",
+      "capacity_note": "'In parallel, Galp is building in the same site a 100MW electrolyser, a €250 million investment of which the EIB will finance €180 million.' THE FIGURE IS ON A LENDER'S PAGE AND NOT ON A DATED COMPANY ONE, and the reason is worth writing down: Galp's own release, 'Final Investment Decision on Green Hydrogen and HVO/SAF projects', states the same '100 MW of electrolysers for the production of green hydrogen' and renders its publication date in the browser, so a declared reader gets the text without the date. An undated company statement cannot date an event, so the EIB's dated page carries the figure and the company page is cited beside it. Per the brief's own rule, an EIB approval is `announced` and not `fid`, even though Galp has taken one. GALP'S OWN PAGE DATES THE DECISION TO A YEAR, found 9 September 2026 while measuring which of its pages a declared reader can read: 'In 2023, Galp took a decisive step by making the final investment decision on two large-scale projects: an advanced biofuel production unit (HVO and SAF), in partnership with Mitsui, and 100 MW of electrolysers for the production of green hydrogen.' A year is not a date and still cannot carry an event, so the history is unchanged; what it does settle is that the FID was 2023 and not 2025.",
       "capacity_alternates": [
         {
           "value": 15000,
@@ -5275,6 +5275,14 @@
           "publisher": "European Investment Bank",
           "date": "2025-09-29",
           "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.galp.com/corp/en/about-us/what-we-do/industrial-and-midstream/green-hydrogen",
+          "title": "Galp — Industrial and Midstream, green hydrogen",
+          "publisher": "Galp",
+          "date": "2026-09-09",
+          "retrieved_date": "2026-09-09",
+          "note": "Readable and undated, like the rest of galp.com. Cited for the sentence dating the final investment decision to 2023, which is the year and not the day."
         }
       ]
     },
@@ -7007,11 +7015,12 @@
           "source_type": "press",
           "evidence_mode": "retrospective",
           "stop_reason": [
+            "maturity",
             "policy"
           ],
           "stop_reason_verbatim": "The partners are pausing the project, saying further project maturation and supply chain development is needed.",
           "stop_reason_source_url": "https://www.offshore-energy.biz/two-offshore-wind-to-hydrogen-projects-withdraw-from-uks-first-electrolytic-allocation-round/",
-          "stop_reason_note": "THE VALUE IS THE NEAREST AND THE CONSORTIUM'S OWN WORDS ARE NOT IN THIS VOCABULARY. What they say is that the project needs more maturation and more supply chain, which is neither finance, offtake, policy, infrastructure, cost, ownership, strategy nor partner. What is filed is `policy`, read from WHAT THEY DID: they withdrew the bid from the UK's first electrolytic allocation round, which is the revenue-support process their own 2021 report made the 2025 date conditional on — 'The consortium will seek to work with UK Government over the next twelve-months to secure revenue support … and ensure the Gigastack deployment target of 2025 is achieved.' A readiness value is named in the docket as a candidate class.",
+          "stop_reason_note": "REFILED 9 SEPTEMBER 2026, FROM `policy` TO `maturity` FIRST. The consortium's own words are about readiness — 'further project maturation and supply chain development is needed' — and for part of a day this register filed that at `policy`, read from what they DID rather than what they SAID: they withdrew the bid from the UK's first electrolytic allocation round, which is the revenue-support process their 2021 report made the 2025 date conditional on. Both are true and the order now says which is which. `maturity` is what stopped it; `policy` is the condition it stopped against, and it stays as the second value because the withdrawal is a fact and not an inference.",
           "note": "Phillips 66 and Ørsted, with ITM Power and Element Energy, withdrew the Gigastack bid from HAR1 and paused the project. THE SOURCE IS PRESS and is said to be: neither Phillips 66 nor Ørsted published the withdrawal where a declared reader could read it, and orsted.co.uk answers this pipeline 403."
         }
       ],

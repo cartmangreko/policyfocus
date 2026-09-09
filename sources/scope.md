@@ -1174,14 +1174,22 @@ stopped the project now, as against the conditions it was already living with �
 and it is what a single-reason series should be built on. `unstated` may only
 appear alone.
 
-**Two values were added because the first re-read demanded them.** `strategy` is
-the owner changing the business it is in, which FREYR did and which `ownership`
+**Three values were added because re-reads demanded them.** `strategy` is the
+owner changing the business it is in, which FREYR did and which `ownership`
 described as the owner changing hands. `partner` is a party the project cannot
 proceed without withdrawing or failing, and it is neither the owner nor the
-customer: NOVO Energy has money, a site and a customer, and no technology. Both
-had been filed at their nearest value with the misfit written on the row; both
-are now filed at a value that fits, and the notes keep the record of the day
-they did not.
+customer: NOVO Energy has money, a site and a customer, and no technology.
+`maturity` is the owner citing its OWN readiness — the technology or the supply
+chain that would build it — which is what Gigastack's consortium said and what
+`policy` could only describe by reading their actions instead of their words.
+Each had been filed at its nearest value with the misfit written on the row, and
+each note keeps the record of the day it did not fit.
+
+**THE PATTERN IS WORTH NAMING.** Three values in one day, each found by reading a
+source rather than by designing a vocabulary. A closed list is right and it will
+keep being wrong, and the way it gets fixed is that a row says plainly it does not
+fit — which is what the notes are for and why a nearest-value filing is recorded
+rather than smoothed.
 
 ### Every absence from a benchmark is a decision, and the residue is printed
 
@@ -1207,6 +1215,27 @@ missed and said the lesson was worth remembering. This is the second such route
 and it is better, because it is exhaustive over a published list and it can be
 re-run. It found a paused 100 MW electrolyser at a British refinery that nothing
 else here would have reached.
+
+**A RESIDUAL CLASS IS WATCHED FOR GROWTH, NOT ONLY FOR MEMBERS.** "no
+company-confirmed site" held nine in ten of the gap on the first run and was
+split on the same day into the three states it was hiding: the benchmark says
+nothing about where; the benchmark says where and nobody here has read a company
+or permit source naming it; somebody read one and was refused. The split falls
+almost exactly along the line between the two files — **the academic file has no
+location column at all**, and the IEA's live endpoint publishes a coordinate for
+every European entry. That coordinate is still refused as a position here, and it
+still means the entry says where.
+
+**THE INPUTS ARE SNAPSHOTTED BY IDENTITY AND NOT BY COPY.**
+`sources/benchmark_snapshots.json` holds each file's publisher URL, the day it
+was fetched, its size and its SHA-256, append-only, and the report verifies the
+cache against it on every run and says so either way. The bytes are not archived
+because both files are the IEA's database and this repository may not
+redistribute it — and a hash does what "Snapshots are append-only" asks of an
+archive, which is to make a published number reconstructible after the register
+has moved on, without holding a copy nobody may pass on. A refreshed benchmark is
+a new entry: the counts in the docket stay attached to the file they were computed
+from.
 
 **And it found the reason a register cannot simply follow a list.** That project
 is in the October 2023 academic file twice, with an unknown status, and is gone

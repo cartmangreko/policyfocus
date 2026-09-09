@@ -533,6 +533,22 @@ STOP_REASONS = (
     #             customer, and no technology.
     "strategy",
     "partner",
+    # AND `maturity` IS THE THIRD THE RE-READS FORCED, added 9 September 2026.
+    # The owner cites its own readiness — the technology is not ready, or the
+    # supply chain that would build it is not — rather than a fact about money,
+    # a customer, a rule or an owner. Gigastack is the case: Phillips 66, Ørsted,
+    # ITM Power and Element Energy paused a 100 MW electrolyser at a working
+    # refinery saying "further project maturation and supply chain development is
+    # needed", which none of the eight other values could hold. It was filed at
+    # `policy` for part of a day, read from the fact that they had withdrawn from
+    # the revenue-support round, which described what they DID and not what they
+    # SAID.
+    #
+    # IT IS NOT A POLITE `unstated`. A reason is given and it is specific: the
+    # thing that is not ready is the project itself. An attrition series that can
+    # separate "nobody would pay for it" from "it could not be built yet" is
+    # answering a different question from one that cannot.
+    "maturity",
     "unstated",
 )
 
