@@ -63,7 +63,7 @@ OUT = ROOT / "scratch"
 # So this is four groups where the schema has three and the site has two, and
 # all three readings stand — they answer different questions.
 REPORTING_GROUPS = {
-    "active": ("announced", "funded", "fid", "construction"),
+    "active": ("announced", "funded", "fid", "construction", "commissioning"),
     "paused": ("paused",),
     "stopped": ("cancelled", "withdrawn"),
     "operating": ("operating",),

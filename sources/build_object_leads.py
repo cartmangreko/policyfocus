@@ -82,6 +82,7 @@ STATUS_MEANING = {
     "funded": "It has money awarded and has not taken a final investment decision.",
     "fid": "The money is committed.",
     "construction": "It is being built.",
+    "commissioning": "It is built and is being started up.",
     "operating": "It is running.",
     "paused": "Work has stopped, and the reason is in its history below.",
     "cancelled": "It will not be built.",

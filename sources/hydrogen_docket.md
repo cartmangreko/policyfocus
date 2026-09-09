@@ -434,12 +434,16 @@ capacity note that this is all it rests on.
 5. **`stop_reason` and `stop_reason_verbatim`.** Required on every event landing
    in a stopped status, refused on every other, `unstated` a real answer, and a
    verbatim required for every answer that is not `unstated`.
-6. **A commissioning rung is missing and this pass did not add one.** RWE's Lingen
-   works is producing hydrogen and is not in commercial operation, and the ladder
-   has nowhere to put that. Adding a rung touches `PROJECT_STATUSES`, the
-   transition parity gate on both sides, the counting groups and the paper's own
-   groups, which is more than this brief should do on its own. **Named here so it
-   is a decision rather than a silence.**
+6. **A commissioning rung was missing, was named here, and is now on its own
+   branch.** RWE's Lingen works was producing hydrogen and was not in commercial
+   operation, and the ladder had nowhere to put that: `construction` said nothing
+   was being made, `operating` said the project had arrived, and the company
+   denied both in one paragraph. George ruled it in on 9 September 2026 and it is
+   built on `status-commissioning`, cut from this branch — `commissioning` sits
+   between construction and operating, is ALIVE for the counting groups and
+   `active` for the paper's, is not terminal, and the parity gate now proves the
+   two readings agree over 14,762 histories instead of 9,362. RWE's row moves on
+   its own source; nothing else moves.
 7. **`owner_listing`.** `listed` / `private` / `state-owned` on the row, for the
    disclosure-by-owner-type comparison the paper makes. Six of the seven rows are
    listed companies; Moeve is the private case. Hamburg Green Hydrogen Hub, when it

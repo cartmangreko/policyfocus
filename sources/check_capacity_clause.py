@@ -71,7 +71,8 @@ TOLERANCE = 0.005   # a rendered figure may be rounded; 0.5% is not a coincidenc
 GROUPS = {"operating": ("operating",),
           "stopped": ("cancelled",),
           "paused": ("paused",),
-          "under way": ("announced", "funded", "fid", "construction")}
+          "under way": ("announced", "funded", "fid", "construction",
+                        "commissioning")}
 
 
 def text_of(p: Path) -> str:
