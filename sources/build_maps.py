@@ -1220,7 +1220,13 @@ def sector_map(sector: str, projects: list[dict]) -> dict:
         "projects": len(left_off),
         "sites": sum(len(_sites(row)) for row in left_off),
         "rows": [{"id": row["id"], "name": row["name"], "status": row["status"],
-                  "sited": bool(_sites(row))}
+                  "sited": bool(_sites(row)),
+                  # WHY IT IS NOT DRAWN, and there are now three answers rather
+                  # than two: cancelled, unsited because nobody looked, and
+                  # unsited because somebody looked and there is nothing to draw.
+                  # The third arrived with the ruling that position is not an
+                  # admission leg, and the sentence over the picture says it.
+                  "stopped": row["status"] in sm.STOPPED_STATUSES}
                  for row in sorted(left_off, key=lambda r: r["name"])],
     }
     return doc

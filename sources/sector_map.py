@@ -518,14 +518,53 @@ STOP_REASONS = (
     "infrastructure",
     "cost",
     "ownership",
+    # TWO VALUES THE FIRST RE-READ FORCED, added 9 September 2026. Fifteen
+    # stopping transitions were read against their own sources and two of them
+    # stated a cause the original seven could not hold:
+    #
+    #   strategy  the owner changed the business it is in. FREYR did not fail and
+    #             did not change hands; it pivoted to solar in the United States
+    #             and classified its European battery assets as held for sale.
+    #             Filed as `ownership` for one day, which said the owner changed
+    #             when the owner's MIND changed.
+    #   partner   a party the project cannot proceed without withdrew or failed,
+    #             and it is not the owner and not the customer. NOVO Energy lost
+    #             its technology partner; the plant has money, a site and a
+    #             customer, and no technology.
+    "strategy",
+    "partner",
     "unstated",
 )
+
+# STOP REASONS ARE AN ORDERED LIST, FIRST ENTRY PRIMARY. Sources give more than
+# one: SVOLT names threatened tariffs, unevenly distributed subsidies AND a lost
+# customer project in a single sentence; ArcelorMittal names energy costs and
+# then weak demand and high imports. A single-valued field made the register
+# choose one and drop the rest into prose, where nothing can count them.
+#
+# THE FIRST ENTRY IS THE ONE THAT CHANGED — what stopped the project now, as
+# against the conditions it was already living with — and it is what a
+# single-reason series should be built on. The rest are the conditions, in the
+# order the source gives them. `unstated` may only appear alone: a source that
+# gives no reason cannot also give a secondary one.
 
 # The statuses that owe a stop_reason. Read from the same place the drawing rule
 # reads, so the two cannot drift.
 STOP_REASON_STATUSES = STOPPED_STATUSES
 
 
+# WHO OWNS THE OPERATOR, AS A LIST, because a project company is usually more
+# than one party and a single label loses the thing the paper is asking about.
+# `owners` is [{name, share, listing}] — share is the percentage where a source
+# states one and null where it does not, and listing is one of OWNER_LISTINGS
+# below, for that party.
+#
+# `owner_listing` IS DERIVED FROM IT AND STILL STORED, because the comparison the
+# paper makes is per row and a reader should not have to compute it: it is the
+# listing of the party holding more than half, and `mixed` where nobody does. The
+# gate checks the derivation rather than trusting it, so a row cannot say
+# `listed` over a list that does not support it.
+#
 # WHETHER THE OWNER PUBLISHES. The paper this dataset feeds compares how much a
 # project discloses against who owns it, and that comparison needs the owner type
 # on the row rather than in somebody's head: a listed company files, a state-owned
@@ -535,6 +574,12 @@ OWNER_LISTINGS = (
     "listed",
     "private",
     "state-owned",
+    # NOBODY HOLDS A MAJORITY, so nothing about the operating company's
+    # disclosure follows from who owns it. Ruled 9 September 2026 after Hamburg
+    # Green Hydrogen Hub — 74.9 per cent a private asset manager, 25.1 per cent a
+    # city utility — showed that the single-value field only worked because that
+    # split happened to have a majority. A 50:50 venture had no honest answer.
+    "mixed",
 )
 
 
@@ -840,10 +885,25 @@ LOCATION_PRECISIONS_ALLOWED = ("plant", "site")
 # place: ArcelorMittal covers Bremen and Eisenhüttenstadt, and one field on the
 # row would have to pick between two answers or average them. Every row carries it
 # in the only place it can be true — on each of its sites.
-SITE_PRECISIONS = (
+LOCATION_PRECISION_VALUES = (
     "works",
     "parcel",
     "point",
+    # NO POSITION, AND THE ROW IS ADMITTED ANYWAY. Ruled 9 September 2026:
+    # position is not an admission leg. A works a company has confirmed, with a
+    # capacity it has published, is a fact about European industry whether or not
+    # a volunteer has drawn a polygon around it — and the ten hydrogen sites this
+    # value landed are construction fields inside ports, industrial parks and
+    # greenfield, where the choice was never between a good coordinate and a bad
+    # one but between a row and nothing.
+    #
+    # IT IS A POSITIVE STATE AND NOT AN ABSENCE. The row says `none`, carries the
+    # note recording where a polygon was looked for, is counted in every
+    # count-based statistic, is named in the sentence over the overview as a row
+    # the picture does not draw, and renders its own page without the location
+    # section rather than with an empty one. A reader is told, everywhere it
+    # matters, that this project is on file and is not on the paper.
+    "none",
 )
 
 # WHICH PRECISION EACH KIND OF SOURCE CAN SUPPORT. Declared rather than left to
@@ -852,7 +912,7 @@ SITE_PRECISIONS = (
 # parcel list, and an address or a grid reference is a stated point. A row that
 # claimed `point` on a basemap polygon would be claiming a precision the source
 # does not have.
-SITE_PRECISION_BY_SOURCE = {
+LOCATION_PRECISION_BY_SOURCE = {
     "basemap": "works",
     "plan_parcels": "parcel",
     "company": "point",

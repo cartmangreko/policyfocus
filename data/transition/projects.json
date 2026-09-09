@@ -75,7 +75,7 @@
           "lat": 59.0644,
           "lon": 9.6912,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/relation/1437635",
@@ -168,7 +168,7 @@
           "lat": 51.6191,
           "lon": 8.5118,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/231449793",
@@ -285,7 +285,7 @@
           "lat": 43.2343,
           "lon": 27.5951,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/196776675",
@@ -374,7 +374,7 @@
           "lat": 50.4709,
           "lon": 3.9948,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/relation/10785798",
@@ -455,7 +455,7 @@
           "lat": 53.8759,
           "lon": 9.5822,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/29202456",
@@ -553,7 +553,7 @@
           "lat": 57.7121,
           "lon": 18.8015,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/198541727",
@@ -593,7 +593,9 @@
           "source_type": "press",
           "evidence_mode": "retrospective",
           "note": "Paused after the Swedish Energy Agency rejected the co-financing application under the Industrial Step programme.",
-          "stop_reason": "policy",
+          "stop_reason": [
+            "policy"
+          ],
           "stop_reason_verbatim": "Beskedet kommer efter att Energimyndigheten avslagit bolagets ansökan om medfinansiering för införande av teknik för koldioxidinfångning (CCS) inom ramen för Industriklivet.",
           "stop_reason_source_url": "https://www.cement.heidelbergmaterials.se/sv/ccs-satsningen-vid-cementfabriken-i-slite-pausas",
           "stop_reason_note": "POLICY AND NOT FINANCE, and the two readings are close enough to be worth separating. Money did not fail to arrive from a market; a state programme decided not to pay, and the company says so in the same breath as the pause: 'utan statens fortsatta stöd för genomförande finns just nu inte tillräckliga förutsättningar för att realisera projektet i Sverige'. The quote is from Heidelberg Materials' own Swedish release rather than from this event's source, which is a trade publisher that refuses a declared reader."
@@ -638,7 +640,7 @@
           "lat": 38.1292,
           "lon": 23.5218,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/188683552",
@@ -709,7 +711,7 @@
           "lat": 50.6946,
           "lon": 2.106,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/670671322",
@@ -773,7 +775,7 @@
           "lat": 65.8098,
           "lon": 21.792,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/1388001960",
@@ -864,7 +866,7 @@
           "lat": 51.4907,
           "lon": 6.7272,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/relation/5148195",
@@ -962,7 +964,7 @@
           "lat": 52.1631,
           "lon": 10.4107,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/100545500",
@@ -1069,7 +1071,7 @@
           "lat": 53.1331,
           "lon": 8.689,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/relation/3942800",
@@ -1085,7 +1087,7 @@
           "lat": 52.1892,
           "lon": 14.6213,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/41196685",
@@ -1114,9 +1116,12 @@
           "source_type": "press",
           "evidence_mode": "retrospective",
           "note": "The conversion of both sites was dropped and €1.3 billion of German subsidies turned down, the company citing energy costs. No primary source for the earlier announcement has been read, so the history starts here.",
-          "stop_reason": "cost",
+          "stop_reason": [
+            "cost",
+            "offtake"
+          ],
           "stop_reason_verbatim": "Luxembourg-based ArcelorMittal said it would drop its plans for converting two plants in the country, in Bremen and Eisenhüttenstadt, to carbon-neutral production, arguing that energy costs in Germany were too high to allow for profitable operations.",
-          "stop_reason_note": "The company names one cause and the same source names a second condition — 'the European steel market is under unprecedented pressure due to weak demand and high imports'. The field takes one value and takes the one the company gives for the decision itself."
+          "stop_reason_note": "TWO REASONS, IN THE SOURCE'S OWN ORDER. The company gives energy costs for the decision — 'arguing that energy costs in Germany were too high to allow for profitable operations' — and then the condition it was taken in: 'the European steel market is under unprecedented pressure due to weak demand and high imports'. Cost is what changed; offtake is what it changed against."
         }
       ],
       "sources": [
@@ -1141,7 +1146,7 @@
           "lat": 65.5557,
           "lon": 22.2057,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/847533124",
@@ -1201,7 +1206,7 @@
           "lat": 51.0362,
           "lon": 2.298,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/618631514",
@@ -1265,7 +1270,7 @@
           "lat": 47.3831,
           "lon": 15.0604,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/relation/11365499",
@@ -1342,7 +1347,7 @@
           "lat": 48.2785,
           "lon": 14.3196,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/28854956",
@@ -1414,7 +1419,7 @@
           "lat": 60.5539,
           "lon": 4.8856,
           "precision": "site",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/relation/4777286",
@@ -1477,7 +1482,7 @@
           "lat": 43.0446,
           "lon": 28.1932,
           "precision": "site",
-          "site_precision": "point",
+          "location_precision": "point",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://en.wikipedia.org/wiki/Galata_gas_field",
@@ -1539,7 +1544,7 @@
           "lat": 40.7987,
           "lon": 24.4976,
           "precision": "site",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-08-28",
           "source": {
             "url": "https://www.openstreetmap.org/way/1155096048",
@@ -1614,7 +1619,7 @@
           "lat": 50.5186,
           "lon": 2.8485,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-01",
           "source": {
             "url": "https://www.openstreetmap.org/way/1196306304",
@@ -1691,7 +1696,7 @@
           "lat": 41.9553,
           "lon": 15.0031,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-01",
           "source": {
             "url": "https://www.openstreetmap.org/way/77616014",
@@ -1721,9 +1726,12 @@
           "source_type": "press",
           "evidence_mode": "retrospective",
           "note": "Work on Termoli and Kaiserslautern put on hold from May 2024 while ACC weighed a move to lithium iron phosphate.",
-          "stop_reason": "offtake",
+          "stop_reason": [
+            "offtake",
+            "cost"
+          ],
           "stop_reason_verbatim": "The reason given is the declining demand for electric vehicles.",
-          "stop_reason_note": "Demand for the customer's product rather than a contract falling away, which is the nearest this vocabulary comes. The same source gives a second reason for the pause — the switch 'from its nickel-based cell chemistry to more cost-effective battery technologies' — which would be `cost`. One field, two stated reasons; see the docket."
+          "stop_reason_note": "The source gives both and this register no longer has to choose. 'The reason given is the declining demand for electric vehicles' is the primary; the switch 'from its nickel-based cell chemistry to more cost-effective battery technologies' is the second."
         },
         {
           "event_kind": "status",
@@ -1735,7 +1743,9 @@
           "source_type": "press",
           "evidence_mode": "retrospective",
           "note": "Status unchanged, and the sources disagree about what happened. The Italian union UILM said on 7 February 2026 that the project was 'definitively shelved'. ACC's own words are that the conditions for restarting the projects 'are unlikely to be met', and that it has begun a 'constructive dialogue' with unions about potential discontinuation. Under the standing press ruling the status follows the project's own sources, which describe a condition and a talks process rather than a decision, so it stays paused. ——— CORRECTED 6 SEPTEMBER 2026, and the paragraph above is left standing as what this register said at the time. The reading was wrong: ACC's statement of 7 February 2026 is the same sentence that cancels Kaiserslautern, and one statement cannot cancel one project and pause another. The event keeps the date it reached this register; the statement it rests on is of 7 February, which is the date the Kaiserslautern row carries.",
-          "stop_reason": "unstated",
+          "stop_reason": [
+            "unstated"
+          ],
           "stop_reason_note": "A REAL `unstated`, and the commonest shape of one. ACC's statement of 7 February 2026 gives a condition and not a cause: the 'prerequisites' to restart the projects 'were unlikely to be met'. What made them unlikely is not said, and the reason recorded against the 2024 pause is not carried forward onto the cancellation as though it had been restated."
         }
       ],
@@ -1790,7 +1800,7 @@
           "lat": 50.9665,
           "lon": 2.1935,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-01",
           "source": {
             "url": "https://www.openstreetmap.org/way/947606985",
@@ -1867,7 +1877,7 @@
           "lat": 52.187,
           "lon": 10.4432,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "host_works": "Volkswagen AG Salzgitter works",
           "retrieved_date": "2026-09-01",
           "source": {
@@ -1933,7 +1943,7 @@
           "lat": 64.734,
           "lon": 21.0871,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-01",
           "source": {
             "url": "https://www.openstreetmap.org/way/906692713",
@@ -1964,9 +1974,13 @@
           "source_type": "company",
           "evidence_mode": "retrospective",
           "note": "Northvolt AB, Northvolt Ett AB, Northvolt Labs AB, Northvolt Revolt AB and Northvolt Systems AB filed for bankruptcy in Sweden on 12 March 2025. A court-appointed trustee was to determine the future of the production facilities. The history starts here because it is the first event sourced on this row; the site produced cells from 2021.",
-          "stop_reason": "finance",
+          "stop_reason": [
+            "finance",
+            "cost",
+            "offtake"
+          ],
           "stop_reason_verbatim": "Despite pursuing all available options to negotiate and implement a financial restructuring, including a Chapter 11 restructuring process in the United States, and despite liquidity support from our lenders and key counterparties, the company was unable to secure the necessary financial conditions to continue in its current form.",
-          "stop_reason_note": "The company's own filing statement. It also lists what eroded the position — 'rising capital costs, geopolitical instability, subsequent supply chain disruptions, and shifts in market demand' — which is a list of four and not a value."
+          "stop_reason_note": "The company states the immediate cause — it 'was unable to secure the necessary financial conditions to continue in its current form' — and then lists what eroded the position: 'rising capital costs, geopolitical instability, subsequent supply chain disruptions, and shifts in market demand'. Cost and offtake are the two of those four this vocabulary can hold; geopolitical instability and supply-chain disruption are in the quote and in no field."
         },
         {
           "event_kind": "ownership",
@@ -2029,7 +2043,7 @@
           "lat": 41.7523,
           "lon": -1.1792,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-01",
           "source": {
             "url": "https://www.openstreetmap.org/way/134929549",
@@ -2113,7 +2127,7 @@
           "lat": 50.8611,
           "lon": 10.9502,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-02",
           "source": {
             "url": "https://www.openstreetmap.org/way/776264491",
@@ -2179,7 +2193,7 @@
           "lat": 51.0205,
           "lon": 16.886,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-02",
           "source": {
             "url": "https://www.openstreetmap.org/way/922173635",
@@ -2244,7 +2258,7 @@
           "lat": 47.4632,
           "lon": 21.6201,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-02",
           "source": {
             "url": "https://www.openstreetmap.org/relation/18559299",
@@ -2315,7 +2329,7 @@
           "lat": 54.1953,
           "lon": 9.0547,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-02",
           "source": {
             "url": "https://www.openstreetmap.org/way/1238083686",
@@ -2361,7 +2375,9 @@
           "source_type": "company",
           "evidence_mode": "retrospective",
           "note": "Northvolt AB and subsidiaries filed for Chapter 11 reorganisation in the United States, with about $245 million of new financing and a stated intention that operations continue. Heide stopped: the German project company was left to the restructuring, and no work has been recorded on the site since. The Swedish bankruptcy followed on 12 March 2025 and is on the Northvolt Ett row.",
-          "stop_reason": "unstated",
+          "stop_reason": [
+            "unstated"
+          ],
           "stop_reason_note": "THE SOURCE SAYS THE OPPOSITE OF WHAT THIS ROW RECORDS, and that is why the reason is unstated rather than `finance`. Northvolt's Chapter 11 release says the German subsidiary is financed separately and 'will continue to operate as usual outside of the Chapter 11 process'. Heide stopped anyway; no source read here says why, and inferring the parent's cause onto a subsidiary the parent said was unaffected would be this register writing the sentence itself."
         },
         {
@@ -2466,7 +2482,7 @@
           "lat": 58.5004,
           "lon": 8.803,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-02",
           "source": {
             "url": "https://www.openstreetmap.org/way/1308751286",
@@ -2511,9 +2527,12 @@
           "source_type": "press",
           "evidence_mode": "retrospective",
           "note": "Morrow Batteries ASA filed for bankruptcy in Norway. The bankruptcy is carried by trade press; no company statement has been read, and the company's own newsroom is still up but silent on it.",
-          "stop_reason": "finance",
+          "stop_reason": [
+            "finance",
+            "cost"
+          ],
           "stop_reason_verbatim": "In a statement, the company said it was not possible to complete the process of securing a new industrial investor and financing the group in light of ‘constraints imposed by the group’s liquidity situation’.",
-          "stop_reason_note": "Reported speech quoting the company's own statement; the company's newsroom is still up and silent on the bankruptcy, which is why the quote is the reporter's."
+          "stop_reason_note": "'it was not possible to complete the process of securing a new industrial investor and financing the group in light of constraints imposed by the group's liquidity situation'. The report says the company gave FOUR reasons and quotes one of them, 'capital costs have increased'; that is the second value here, and the other two are not on this file because the fetch did not carry them."
         }
       ],
       "sources": [
@@ -2551,7 +2570,7 @@
           "lat": 39.6482,
           "lon": -0.2683,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-02",
           "source": {
             "url": "https://www.openstreetmap.org/way/1180219207",
@@ -2615,7 +2634,7 @@
           "lat": 51.177,
           "lon": -2.9549,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-02",
           "source": {
             "url": "https://www.openstreetmap.org/way/125139808",
@@ -2698,7 +2717,7 @@
           "lat": 48.0686,
           "lon": 18.1629,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-02",
           "source": {
             "url": "https://www.openstreetmap.org/way/1445839308",
@@ -2775,7 +2794,7 @@
           "lat": 47.674,
           "lon": 19.1631,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-02",
           "source": {
             "url": "https://www.openstreetmap.org/way/1009198739",
@@ -2837,7 +2856,7 @@
           "lat": 45.46,
           "lon": 7.876,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-03",
           "source": {
             "url": "https://www.openstreetmap.org/way/162150670",
@@ -2882,7 +2901,9 @@
           "source_type": "press",
           "evidence_mode": "retrospective",
           "note": "'The second project, Italvolt, in Italy also went bankrupt in January 2024.' Trade press, recorded as such: the company is dissolved and issued no closing statement, and the day within January is not given, so the date is the month's end rather than a claim to precision.",
-          "stop_reason": "finance",
+          "stop_reason": [
+            "finance"
+          ],
           "stop_reason_verbatim": "The second project, Italvolt, in Italy also went bankrupt in January 2024.",
           "stop_reason_note": "THE INSOLVENCY IS THE REASON AND IS ALSO THE WHOLE OF WHAT THE SOURCE GIVES. A company that went bankrupt is a company whose money stopped, so `finance` is read from the sentence rather than inferred behind it — but nothing here says what caused the bankruptcy, and the row does not pretend otherwise."
         }
@@ -2922,7 +2943,7 @@
           "lat": 50.3556,
           "lon": 3.0266,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-02",
           "source": {
             "url": "https://www.openstreetmap.org/way/1547499346",
@@ -2988,7 +3009,7 @@
           "lat": 54.9221,
           "lon": -1.4837,
           "precision": "plant",
-          "site_precision": "point",
+          "location_precision": "point",
           "retrieved_date": "2026-09-04",
           "grid_reference": {
             "system": "OSGB36",
@@ -3080,7 +3101,7 @@
           "lat": 52.3972,
           "lon": 13.7948,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "host_works": "Tesla Gigafactory Berlin-Brandenburg",
           "retrieved_date": "2026-09-04",
           "source": {
@@ -3138,7 +3159,7 @@
           "lat": 47.8953,
           "lon": 21.7435,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-04",
           "source": {
             "url": "https://www.openstreetmap.org/way/1263927003",
@@ -3223,7 +3244,7 @@
           "lat": 37.9871,
           "lon": -8.7974,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-05",
           "source": {
             "url": "https://www.openstreetmap.org/way/1262719042",
@@ -3357,7 +3378,7 @@
           "lat": 47.134,
           "lon": 18.8204,
           "precision": "plant",
-          "site_precision": "point",
+          "location_precision": "point",
           "retrieved_date": "2026-09-05",
           "source": {
             "url": "https://skonhungary.com/",
@@ -3459,7 +3480,7 @@
           "lat": 47.7401,
           "lon": 18.0685,
           "precision": "plant",
-          "site_precision": "point",
+          "location_precision": "point",
           "retrieved_date": "2026-09-05",
           "source": {
             "url": "https://skonhungary.com/",
@@ -3544,7 +3565,7 @@
           "lat": 39.9152,
           "lon": -5.5116,
           "precision": "plant",
-          "site_precision": "point",
+          "location_precision": "point",
           "retrieved_date": "2026-09-05",
           "grid_reference": {
             "system": "ETRS89 / UTM 30N",
@@ -3673,7 +3694,7 @@
           "lat": 49.2442,
           "lon": 6.7259,
           "precision": "site",
-          "site_precision": "parcel",
+          "location_precision": "parcel",
           "retrieved_date": "2026-09-05",
           "source": {
             "url": "https://ueberherrn.de/wp-content/uploads/2026/06/Begruendung.pdf",
@@ -3734,7 +3755,9 @@
           "source_type": "permit",
           "evidence_mode": "retrospective",
           "note": "THE CANCELLATION IS THE AUTHORITY'S OWN, not press. The Überherrn council resolved on 7 May 2026 to repeal the plan, and the notice says why: 'Gegenstand der Aufhebung ist der Vorhabenbezogene Bebauungsplan „Industriegebiet Linsler Feld“, der die planungsrechtlichen Voraussetzungen für die Ansiedlung einer Batteriezellfabrik schaffen sollte. Das Vorhaben wird nicht mehr umgesetzt.' The repeal Begründung records the mechanism: gwSaar, the Vorhabenträger that had bought the land to grant SVOLT a heritable building right, declared it would not hold to the project, which triggers the municipality's duty to repeal under § 12 Abs. 6 BauGB. SVOLT's European withdrawal was reported earlier in trade press and no company statement of it has been read here, so the date this row carries is the authority's.",
-          "stop_reason": "unstated",
+          "stop_reason": [
+            "unstated"
+          ],
           "stop_reason_note": "THE AUTHORITY RECORDS THE FACT AND NOT THE CAUSE. The repeal notice says 'Das Vorhaben wird nicht mehr umgesetzt' and the Begründung gives the mechanism — gwSaar declared it would not hold to the project, which triggers the municipality's duty to repeal under § 12 Abs. 6 BauGB — and neither is a reason. SVOLT's own stated reasons for withdrawing from Europe are on the Lauchhammer row, where the company said them; they are not copied here, because the company did not say them about this site."
         }
       ],
@@ -3796,6 +3819,7 @@
       "company": "T1 Energy",
       "plant": "Mo i Rana",
       "country": "NO",
+      "location_precision": "none",
       "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. The company that was building it is now a solar manufacturer with a different name, and its European battery assets are held for sale; part of the Giga Arctic site is being rezoned for a data centre. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked.",
       "sector": "batsol",
       "transition": "supply_security",
@@ -3825,9 +3849,11 @@
           "source_type": "company",
           "evidence_mode": "retrospective",
           "note": "THE COMPANY'S OWN FILING, and the rename is in the register: EDGAR carries the filer as T1 Energy Inc. with the former name FREYR Battery, Inc. The FY2025 10-K reports that 'the assets of our European businesses and our business in Coweta County, Georgia met the criteria for classification as held for sale as of December 31, 2024' and that 'the ultimate disposal represents a strategic shift that has had a major effect on our operations', so the European battery businesses are presented as discontinued operations. Mo i Rana appears in Properties as a lease of the CQP and of the LAND for Giga Arctic — the plan is a landholding, not a works. The date is the filing's; the decision is the pivot to US solar that preceded it. In late August 2026 Rana municipality approved rezoning part of the site for a data centre, reported and not filed, which is why it is a note and not a status.",
-          "stop_reason": "ownership",
+          "stop_reason": [
+            "strategy"
+          ],
           "stop_reason_verbatim": "the ultimate disposal represents a strategic shift that has had a major effect on our operations",
-          "stop_reason_note": "NEAREST FIT AND A BAD ONE. Nothing failed and nobody changed hands: the owner changed the business it is in, pivoting to solar in the United States and classifying the European battery assets as held for sale. `ownership` is the closest of the seven and none of them is 'the owner changed its mind about what it does'. Named in the docket as a candidate class for a ruling."
+          "stop_reason_note": "REFILED 9 SEPTEMBER 2026, FROM `ownership` TO `strategy`. It was filed at `ownership` for one day, on the reading that the nearest value should be used with the misfit written beside it. The misfit was real: nothing changed hands and nothing failed. FREYR's owner changed the business it is in — 'the ultimate disposal represents a strategic shift that has had a major effect on our operations' — and `ownership` said the owner changed when the owner's mind did."
         }
       ],
       "sources": [
@@ -3876,6 +3902,7 @@
       "company": "Automotive Cells Company",
       "plant": "Kaiserslautern",
       "country": "DE",
+      "location_precision": "none",
       "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. It was on standby from May 2024 and never left it; nothing was built, and the basemap sweep of the Kaiserslautern industrial area returns the Opel works as numbered halls and nothing naming ACC. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked.",
       "sector": "batsol",
       "transition": "supply_security",
@@ -3894,7 +3921,9 @@
           "source_type": "press",
           "evidence_mode": "retrospective",
           "note": "ACC's own statement of 7 February 2026, made to unions and confirmed publicly the same day: the projects in Germany and Italy 'had been on standby since May 2024' and the 'prerequisites' to restart them 'were unlikely to be met', with 'different scenarios' under consideration. The Italian union UILM, which made it public, says management called Termoli and Kaiserslautern 'definitively shelved'. NO EARLIER STATUS EVENT IS RECORDED: the standby of May 2024 was not read into this register at the time and is not being back-dated from a sentence written twenty-one months later.",
-          "stop_reason": "unstated",
+          "stop_reason": [
+            "unstated"
+          ],
           "stop_reason_note": "ACC's own statement of 7 February 2026 gives a condition and not a cause — the 'prerequisites' to restart 'were unlikely to be met'. The same sentence cancels Termoli and the same `unstated` is recorded there."
         }
       ],
@@ -3950,6 +3979,7 @@
       "company": "SVOLT",
       "plant": "Lauchhammer",
       "country": "DE",
+      "location_precision": "none",
       "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. SVOLT bought the former Vestas rotor-blade works and never converted it, and no basemap feature carries either name; the only address for the site comes from commercial directories, which are not a source type this register admits. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked.",
       "sector": "batsol",
       "transition": "supply_security",
@@ -3979,9 +4009,12 @@
           "source_type": "press",
           "evidence_mode": "retrospective",
           "note": "SVOLT will not build in Lauchhammer. The company gave a re-evaluated location strategy, a volatile automotive market, missing planning and legal certainty, and a large customer project that would not be realised. THE COMPANY RELEASE ITSELF COULD NOT BE FETCHED: svolt-eu.com/presse/svolt-europe-reagiert-auf-aktuelle-marktentwicklungen/ is in the Internet Archive's index for 30 May 2024 and the capture is a 404 — the Archive reached the URL after the page was gone. So the statement is carried through reporting that quotes it, and said to be.",
-          "stop_reason": "offtake",
+          "stop_reason": [
+            "offtake",
+            "policy"
+          ],
           "stop_reason_verbatim": "Bei SVolt ist neben einer ohnehin geringen Planungssicherheit auf unterschiedlichsten Ebenen – von international drohenden Strafzöllen bis hin zu Marktverzerrungen durch langwierige sowie ungleich verteilte Fördermittel – nun außerdem ein signifikantes Kundenprojekt weggefallen.",
-          "stop_reason_note": "ONE SENTENCE, THREE REASONS, ONE FIELD. The company names tariffs and unevenly distributed subsidies as standing conditions — `policy` — and then names what changed: a significant customer project fell away. The field takes the thing that changed, because that is what stopped the site, and the standing conditions are in the quote where a reader can see them."
+          "stop_reason_note": "ONE SENTENCE, TWO VALUES, IN THE ORDER THE SENTENCE PUTS THEM. What changed is the customer: 'nun außerdem ein signifikantes Kundenprojekt weggefallen'. What it changed against is policy: 'von international drohenden Strafzöllen bis hin zu Marktverzerrungen durch langwierige sowie ungleich verteilte Fördermittel'. Under the single-valued field the second was in the quote and in no count."
         }
       ],
       "sources": [
@@ -4019,6 +4052,7 @@
       "company": "Farasis Energy",
       "plant": "Bitterfeld-Wolfen",
       "country": "DE",
+      "location_precision": "none",
       "location_note": "LOCATION NOT SOUGHT: PROJECT PAUSED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. Nothing was ever built on the Solar Valley plot, the town has taken its urban development contract back, and the company has postponed rather than ended the project. What would be bought by finding the parcel is a dot a reader would take for a building. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked.",
       "sector": "batsol",
       "transition": "supply_security",
@@ -4037,7 +4071,9 @@
           "source_type": "press",
           "evidence_mode": "retrospective",
           "note": "PAUSED AND NOT CANCELLED, and the distinction is the company's own words. Farasis told the Mitteldeutsche Zeitung 'wir die Konkretisierung unserer Pläne für den Standort Bitterfeld-Wolfen vorläufig zurückgestellt haben' — the concretisation of the plans is provisionally set aside. Bitterfeld-Wolfen had already terminated the städtebaulicher Vertrag, and the mayor said the factory will not come as planned and that the town is working with Farasis on alternatives. THIRD PARTIES CALL IT CANCELLED AND THIS ROW DOES NOT: a municipality ending a contract is the municipality's act, a headline is a headline, and neither is the company saying it has stopped. Nothing was ever built. The row moves to cancelled the day Farasis says so, and not before.",
-          "stop_reason": "unstated",
+          "stop_reason": [
+            "unstated"
+          ],
           "stop_reason_note": "Farasis told a newspaper that it had 'die Konkretisierung unserer Pläne für den Standort Bitterfeld-Wolfen vorläufig zurückgestellt' and gave no reason for doing so. The municipality's termination of the städtebaulicher Vertrag is the municipality's act and is not the company saying why it stopped."
         }
       ],
@@ -4066,6 +4102,7 @@
       "company": "Britishvolt",
       "plant": "Cambois, Blyth",
       "country": "GB",
+      "location_precision": "none",
       "location_note": "LOCATION NOT SOUGHT: PROJECT CANCELLED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. The company went into administration in January 2023 and is now in liquidation; nothing was built on the Cambois site and what stands there now is somebody else's project. THE POSITION IS KNOWN TO BE FINDABLE AND IS NOT BEING FOUND: Northumberland's permit 21/00818/FULES names the parcel — 'Land At Former Power Station Site On Northern Side Of Cambois', 92.2 hectares — and the committee report that carries it refuses this pipeline. A person could open it in a minute. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked.",
       "sector": "batsol",
       "transition": "supply_security",
@@ -4100,7 +4137,9 @@
           "source_type": "official_register",
           "evidence_mode": "retrospective",
           "note": "ADMINISTRATORS APPOINTED, from the official record rather than from reporting. The London Gazette's notice 4260297 of 19 January 2023, category Corporate Insolvency, type Appointment of Administrators: POWER BY BRITISHVOLT LIMITED (company number 12381543), 'Date of Appointment: 17 January 2023', administrators Joanne Honor Robinson and Alan Michael Hudson of Ernst & Young LLP and Daniel Christopher Hurd. Companies House carries the same case — administration started 17 January 2023, ended 28 October 2024 — and the company's status is now Liquidation, a creditors' voluntary liquidation whose winding up commenced on 28 October 2024. The status date is the appointment and not the publication: the company stopped on the 17th and the Gazette said so on the 19th.",
-          "stop_reason": "finance",
+          "stop_reason": [
+            "finance"
+          ],
           "stop_reason_verbatim": "Date of Appointment: 17 January 2023",
           "stop_reason_note": "THE OFFICIAL RECORD STATES AN INSOLVENCY AND NOTHING ELSE. A Gazette notice of the appointment of administrators is the state writing down that a company ran out of money; `finance` is read from that and from nothing more. No cause appears in the notice, and none is imported from the reporting around it."
         }
@@ -4145,6 +4184,7 @@
       "company": "NOVO Energy",
       "plant": "Gothenburg",
       "country": "SE",
+      "location_precision": "none",
       "location_note": "LOCATION NOT SOUGHT: PROJECT PAUSED. The perimeter asks for a site the company has confirmed and a citable source can place, and the second half is research that only pays for itself on a works somebody might visit. NOVO Energy has laid off every employee and cannot say when production might start or in what organisational structure; the works in the Gothenburg area is confirmed by the company and is not being placed while the project is stopped. The absence is recorded as a decision rather than left as a gap: this register looks for a position on projects that are being built, and says so where it has not looked.",
       "sector": "batsol",
       "transition": "supply_security",
@@ -4163,9 +4203,11 @@
           "source_type": "company",
           "evidence_mode": "retrospective",
           "note": "NOVO Energy's own statement: 'until a new technology partner is secured, NOVO Energy can no longer proceed with its operations as previously planned', with layoffs affecting all positions in the company — 75 in all, notified to the unions and to Arbetsförmedlingen. Volvo Cars, the owner, 'maintains its long-term ambition to produce batteries for its electric cars in the Gothenburg, Sweden area' and cannot say when production might start or in what structure. THE HISTORY STARTS HERE because it is the first event on this site sourced to the company: the venture was formed with Northvolt in 2021 and the site was reported under construction from 2023, and neither is read into this register. Volvo Cars took full ownership on 29 January 2025, on Northvolt's own release, which is on file below as the record of how the ownership got here.",
-          "stop_reason": "ownership",
+          "stop_reason": [
+            "partner"
+          ],
           "stop_reason_verbatim": "However, until a new technology partner is secured, NOVO Energy can no longer proceed with its operations as previously planned.",
-          "stop_reason_note": "NEAREST FIT, AND THE READER HAS TO BE TOLD WHY. The stated cause is the loss of a TECHNOLOGY PARTNER, which is not one of the seven. It is filed as `ownership` because the partner in question was Northvolt, the venture's own co-owner until Volvo Cars bought it out on 29 January 2025, so the thing that failed was half the owner. That is a fact a reader needs and the field cannot carry. Named in the docket as a candidate class for a ruling."
+          "stop_reason_note": "REFILED 9 SEPTEMBER 2026, FROM `ownership` TO `partner`. The stated cause is the loss of a technology partner — 'until a new technology partner is secured, NOVO Energy can no longer proceed with its operations as previously planned' — and filing that as `ownership` made a reader carry the fact that the partner was Northvolt, the venture's own co-owner, in order to read the field at all. The plant has money, a site and a customer, and no technology. That is its own kind of stop and now has its own value."
         }
       ],
       "sources": [
@@ -4215,7 +4257,7 @@
           "lat": 47.5806,
           "lon": 21.5154,
           "precision": "plant",
-          "site_precision": "point",
+          "location_precision": "point",
           "retrieved_date": "2026-09-07",
           "grid_reference": {
             "system": "HD72 / EOV",
@@ -4319,7 +4361,7 @@
           "lat": 52.4852,
           "lon": 7.303,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-09",
           "source": {
             "url": "https://www.openstreetmap.org/way/1377883415",
@@ -4335,6 +4377,13 @@
       "transition": "decarbonisation",
       "technology": [
         "hydrogen-supply"
+      ],
+      "owners": [
+        {
+          "name": "RWE AG",
+          "share": 100,
+          "listing": "listed"
+        }
       ],
       "owner_listing": "listed",
       "owner_listing_note": "RWE AG is listed in Frankfurt and consolidates RWE Generation SE.",
@@ -4510,7 +4559,7 @@
           "lat": 52.5605,
           "lon": 7.3073,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "host_works": "bp Raffinerie Lingen",
           "retrieved_date": "2026-09-09",
           "source": {
@@ -4528,6 +4577,13 @@
       "transition": "decarbonisation",
       "technology": [
         "hydrogen-supply"
+      ],
+      "owners": [
+        {
+          "name": "bp p.l.c.",
+          "share": 100,
+          "listing": "listed"
+        }
       ],
       "owner_listing": "listed",
       "owner_listing_note": "BP p.l.c. is listed in London and New York; BP Europa SE is its German subsidiary.",
@@ -4654,7 +4710,7 @@
           "lat": 49.4955,
           "lon": 0.5021,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "retrieved_date": "2026-09-09",
           "source": {
             "url": "https://www.openstreetmap.org/way/1451191745",
@@ -4671,6 +4727,13 @@
       "transition": "decarbonisation",
       "technology": [
         "hydrogen-supply"
+      ],
+      "owners": [
+        {
+          "name": "L'Air Liquide S.A.",
+          "share": 100,
+          "listing": "listed"
+        }
       ],
       "owner_listing": "listed",
       "owner_listing_note": "L'Air Liquide S.A. is listed in Paris.",
@@ -4803,7 +4866,7 @@
           "lat": 50.8171,
           "lon": 7.0069,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "host_works": "Shell Energy & Chemicals Park Rheinland, Werk Wesseling",
           "retrieved_date": "2026-09-09",
           "source": {
@@ -4821,6 +4884,13 @@
       "transition": "decarbonisation",
       "technology": [
         "hydrogen-supply"
+      ],
+      "owners": [
+        {
+          "name": "Shell plc",
+          "share": 100,
+          "listing": "listed"
+        }
       ],
       "owner_listing": "listed",
       "owner_listing_note": "Shell plc is listed in London, Amsterdam and New York.",
@@ -4908,7 +4978,7 @@
           "lat": 43.3312,
           "lon": -3.1089,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "host_works": "Refinería de Petronor, Muskiz",
           "retrieved_date": "2026-09-09",
           "source": {
@@ -4927,8 +4997,15 @@
       "technology": [
         "hydrogen-supply"
       ],
-      "owner_listing": "listed",
-      "owner_listing_note": "Repsol S.A. is listed in Madrid; Petronor is its Basque refining subsidiary.",
+      "owners": [
+        {
+          "name": "Repsol S.A.",
+          "share": null,
+          "listing": "listed"
+        }
+      ],
+      "owner_listing": "mixed",
+      "owner_listing_note": "Enagás Renovable holds 25 per cent of the sibling project at Cartagena; no source read here states a split for Petronor, so only the parent is recorded and the share is null.",
       "capacity_value": 100,
       "capacity_unit": "MW_input",
       "capacity_product": "hydrogen",
@@ -5031,7 +5108,7 @@
           "lat": 37.9586,
           "lon": -8.8114,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "host_works": "Refinaria de Sines",
           "retrieved_date": "2026-09-09",
           "source": {
@@ -5049,6 +5126,13 @@
       "transition": "decarbonisation",
       "technology": [
         "hydrogen-supply"
+      ],
+      "owners": [
+        {
+          "name": "Galp Energia SGPS S.A.",
+          "share": 100,
+          "listing": "listed"
+        }
       ],
       "owner_listing": "listed",
       "owner_listing_note": "Galp Energia SGPS S.A. is listed in Lisbon.",
@@ -5155,7 +5239,7 @@
           "lat": 37.1811,
           "lon": -6.9027,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "host_works": "Refinería de La Rábida, Palos de la Frontera",
           "retrieved_date": "2026-09-09",
           "source": {
@@ -5174,8 +5258,30 @@
       "technology": [
         "hydrogen-supply"
       ],
-      "owner_listing": "private",
-      "owner_listing_note": "Moeve, formerly Cepsa, is privately held; it is not listed and it is not state-owned. Recorded because the paper compares disclosure by owner type and this row is the private-ownership case among the seven.",
+      "owners": [
+        {
+          "name": "Moeve",
+          "share": null,
+          "listing": "private"
+        },
+        {
+          "name": "Enagás Renovable",
+          "share": null,
+          "listing": "listed"
+        },
+        {
+          "name": "Masdar",
+          "share": null,
+          "listing": "state-owned"
+        },
+        {
+          "name": "Enalter",
+          "share": null,
+          "listing": "private"
+        }
+      ],
+      "owner_listing": "mixed",
+      "owner_listing_note": "NO SHARE IS RECORDED BECAUSE NO SOURCE READ HERE STATES ONE. Moeve's FID release names the parties — 'minority participation from Masdar and Enalter, majority controlled by Enagás Renovable' — of a holding structure it does not size, and Moeve itself is the operator. Nobody is stated to hold more than half of the OPERATING company, so the row is `mixed`, which is the honest answer and not a hedge.",
       "capacity_value": 300,
       "capacity_unit": "MW_input",
       "capacity_product": "hydrogen",
@@ -5285,7 +5391,7 @@
           "lat": 53.4885,
           "lon": 9.95,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "host_works": "Kohlekraftwerk Moorburg (stillgelegt)",
           "retrieved_date": "2026-09-09",
           "source": {
@@ -5304,8 +5410,20 @@
       "technology": [
         "hydrogen-supply"
       ],
+      "owners": [
+        {
+          "name": "Luxcara",
+          "share": 74.9,
+          "listing": "private"
+        },
+        {
+          "name": "Hamburger Energiewerke",
+          "share": 25.1,
+          "listing": "state-owned"
+        }
+      ],
       "owner_listing": "private",
-      "owner_listing_note": "THE FIRST SPLIT CASE, AND IT RESOLVES. HGHH GmbH & Co. KG is Luxcara (74.9 per cent), an independent asset manager, and Hamburger Energiewerke (25.1 per cent), which the Free and Hanseatic City of Hamburg owns outright. The field is about the party that operates, and the majority of the operating company is private. Had the split been the other way this row would have had nothing honest to say — see the docket's new rules.",
+      "owner_listing_note": "THE CASE THAT FORCED THE LIST. 74.9 per cent a private asset manager and 25.1 per cent a city utility: the majority settles it, and a 50:50 venture would not have been settled at all. Under the single-value field this row said `private` and a reader had no way to see that a quarter of it is the Free and Hanseatic City of Hamburg.",
       "capacity_value": 100,
       "capacity_unit": "MW_input",
       "capacity_product": "hydrogen",
@@ -5427,7 +5545,7 @@
           "lat": 51.9644,
           "lon": 4.0221,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "host_works": "Centrale Maasvlakte",
           "retrieved_date": "2026-09-09",
           "source": {
@@ -5445,6 +5563,13 @@
       "transition": "decarbonisation",
       "technology": [
         "hydrogen-supply"
+      ],
+      "owners": [
+        {
+          "name": "Uniper SE",
+          "share": 100,
+          "listing": "listed"
+        }
       ],
       "owner_listing": "listed",
       "owner_listing_note": "Uniper SE is listed in Frankfurt; the German state holds the majority of it, which the field cannot say and which is worth knowing when this row is read against the disclosure comparison.",
@@ -5526,7 +5651,7 @@
           "lat": 41.1754,
           "lon": 1.2226,
           "precision": "plant",
-          "site_precision": "works",
+          "location_precision": "works",
           "host_works": "Repsol Tarragona Refinery",
           "retrieved_date": "2026-09-09",
           "source": {
@@ -5544,6 +5669,13 @@
       "transition": "decarbonisation",
       "technology": [
         "hydrogen-supply"
+      ],
+      "owners": [
+        {
+          "name": "Repsol S.A.",
+          "share": 100,
+          "listing": "listed"
+        }
       ],
       "owner_listing": "listed",
       "owner_listing_note": "Repsol S.A. is listed in Madrid.",
@@ -5599,6 +5731,1139 @@
           "retrieved_date": "2026-09-09"
         }
       ]
+    },
+    {
+      "id": "shell-holland-hydrogen-1",
+      "name": "Holland Hydrogen 1",
+      "company": "Shell Nederland",
+      "plant": "Tweede Maasvlakte, Rotterdam",
+      "country": "NL",
+      "location_note": "NO POSITION, AND IT WAS LOOKED FOR. Every named man_made, landuse, power and plant:source feature on Maasvlakte and Maasvlakte 2 was listed from Overpass on 9 September 2026, in a box from 51.94 N 4.00 E to 52.00 N 4.15 E: the Porthos compressor station, the Gate LNG extension, three TenneT converter stations, Uniper's Centrale Maasvlakte and the container terminals are all drawn, and Holland Hydrogen 1 is not. There is no host works either — the plant stands on reclaimed land with nothing of Shell's beside it, its offtake reaching Pernis by pipeline. The Dutch permit route has not been tried and is the next thing to try.",
+      "owners": [
+        {
+          "name": "Shell plc",
+          "share": 100,
+          "listing": "listed"
+        }
+      ],
+      "owner_listing": "listed",
+      "capacity_value": 200,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.shell.nl/about-us/what-we-do/waterstof/_jcr_content/root/main/section_1793187481/call_to_action/links/item0.stream/1750150411678/bc686db41e4e2aff092b4ae379a466326fd5626d/250513_HH1-leaflet_v43.pdf",
+      "capacity_as_of": "2025-05-13",
+      "capacity_note": "Shell Nederland's own HH1 leaflet states the figure twice: 'the 200-megawatts HH1 plant', and 'The splitting will be done by 10 parallel connected electrolysers of 20 megawatts each, 200 megawatts in total.' `announced` and not `fid`: Shell took a final investment decision in July 2022 and its release is on shell.com, which serves a declared reader a document containing the page title and nothing else.",
+      "status": "construction",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2025-05-13",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
+          "source_url": "https://www.shell.nl/about-us/what-we-do/waterstof/_jcr_content/root/main/section_1793187481/call_to_action/links/item0.stream/1750150411678/bc686db41e4e2aff092b4ae379a466326fd5626d/250513_HH1-leaflet_v43.pdf",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "'Shell, together with contractors and vendors, is building Europe's first big renewable hydrogen plant: Holland Hydrogen 1 (HH1).' The date is the leaflet's own, carried in its filename and its content; the FID of July 2022 is not on this history because no source a declared reader can read states it."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2025-05-13",
+          "milestone": "commissioning",
+          "target_date": "2026",
+          "target_precision": "year",
+          "source_url": "https://www.shell.nl/about-us/what-we-do/waterstof/_jcr_content/root/main/section_1793187481/call_to_action/links/item0.stream/1750150411678/bc686db41e4e2aff092b4ae379a466326fd5626d/250513_HH1-leaflet_v43.pdf",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'Commissioning of this plant in the 200-MW range is expected to start in late 2026, with production ramping up in 2027 to around 60 tons of hydrogen per day.' Read at year precision: 'late 2026' names a year and not a half."
+        },
+        {
+          "date": "2025-05-13",
+          "milestone": "production_start",
+          "target_date": "2027",
+          "target_precision": "year",
+          "source_url": "https://www.shell.nl/about-us/what-we-do/waterstof/_jcr_content/root/main/section_1793187481/call_to_action/links/item0.stream/1750150411678/bc686db41e4e2aff092b4ae379a466326fd5626d/250513_HH1-leaflet_v43.pdf",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'with production ramping up in 2027 to around 60 tons of hydrogen per day'."
+        }
+      ],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:shell-energy-and-chemicals-park-rotterdam",
+          "target_name": "Shell Energy and Chemicals Park Rotterdam (Pernis)",
+          "type": "material",
+          "class": "asserted",
+          "since": "2025-05-13",
+          "evidence": {
+            "url": "https://www.shell.nl/about-us/what-we-do/waterstof/_jcr_content/root/main/section_1793187481/call_to_action/links/item0.stream/1750150411678/bc686db41e4e2aff092b4ae379a466326fd5626d/250513_HH1-leaflet_v43.pdf",
+            "publisher": "Shell Nederland",
+            "source_type": "company",
+            "verbatim": "The Holland Hydrogen 1 plant will initially help the factories of Shell Energy and Chemicals Park Rotterdam (Pernis) to decarbonise."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:rotterdam-hydrogen-pipeline-network",
+          "target_name": "Dedicated hydrogen pipeline to the Port of Rotterdam",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2025-05-13",
+          "evidence": {
+            "url": "https://www.shell.nl/about-us/what-we-do/waterstof/_jcr_content/root/main/section_1793187481/call_to_action/links/item0.stream/1750150411678/bc686db41e4e2aff092b4ae379a466326fd5626d/250513_HH1-leaflet_v43.pdf",
+            "publisher": "Shell Nederland",
+            "source_type": "company",
+            "verbatim": "A dedicated hydrogen pipeline will connect the plant with the Port of Rotterdam and its hydrogen customers."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:hollandse-kust-noord-wind-farm",
+          "target_name": "Hollandse Kust Noord offshore wind farm (CrossWind)",
+          "type": "material",
+          "class": "asserted",
+          "since": "2025-05-13",
+          "evidence": {
+            "url": "https://www.shell.nl/about-us/what-we-do/waterstof/_jcr_content/root/main/section_1793187481/call_to_action/links/item0.stream/1750150411678/bc686db41e4e2aff092b4ae379a466326fd5626d/250513_HH1-leaflet_v43.pdf",
+            "publisher": "Shell Nederland",
+            "source_type": "company",
+            "verbatim": "The electricity for the HH1 plant comes from the offshore wind farm Hollandse Kust Noord (HKN)."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 771,
+        "iea_hydrogen_production_projects": 771,
+        "note": "Both lists carry 'Holland Hydrogen - phase 1' at FID/Construction and both agree with Shell at 200 MW-equivalent. Both also carry a phase 2 at 200 MW, ref 1806, which this register does not hold on the phase rule."
+      },
+      "sources": [
+        {
+          "url": "https://www.shell.nl/about-us/what-we-do/waterstof/_jcr_content/root/main/section_1793187481/call_to_action/links/item0.stream/1750150411678/bc686db41e4e2aff092b4ae379a466326fd5626d/250513_HH1-leaflet_v43.pdf",
+          "title": "Shell Holland Hydrogen 1 — Kick-starting the hydrogen economy of the Netherlands",
+          "publisher": "Shell Nederland",
+          "date": "2025-05-13",
+          "retrieved_date": "2026-09-09",
+          "note": "A PDF, because shell.com serves a declared reader nothing. Filed as the row's only source and quoted throughout."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "location_precision": "none"
+    },
+    {
+      "id": "airliquide-elygator-maasvlakte",
+      "name": "ELYgator",
+      "company": "Air Liquide",
+      "plant": "Maasvlakte, Port of Rotterdam",
+      "country": "NL",
+      "location_note": "NO POSITION, AND IT WAS LOOKED FOR — the same Maasvlakte sweep of 9 September 2026 that failed to place Holland Hydrogen 1. No host works either: Air Liquide's existing Dutch assets are elsewhere in the port. NOTE THAT THE SITE MOVED AND THE BENCHMARKS DID NOT: both external lists place ELYgator in the Netherlands from an earlier plan at Terneuzen, and the FID release puts it at Maasvlakte. Matching by company and site has to follow the company.",
+      "owners": [
+        {
+          "name": "L'Air Liquide S.A.",
+          "share": 100,
+          "listing": "listed"
+        }
+      ],
+      "owner_listing": "listed",
+      "capacity_value": 200,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
+      "capacity_as_of": "2025-07-23",
+      "capacity_note": "'Air Liquide takes a major step forward in European decarbonization efforts with the final investment decision to launch the construction of ELYgator, a 200 MW electrolyzer project in Maasvlakte, in the Port of Rotterdam.' The company uses the words this time, which is why this row is `fid` and Normand'Hy needed an argument.",
+      "status": "fid",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2025-07-23",
+          "status_from": null,
+          "status_to": "fid",
+          "status": "fid",
+          "source_url": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "Air Liquide took the final investment decision on 23 July 2025, having announced the investment in February 2025: 'As announced in February 2025, Air Liquide will invest more than 500 million euros to build, own and operate the electrolyzer.' The February announcement is not on this history because no source for it has been read here."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2025-07-23",
+          "milestone": "production_start",
+          "target_date": "2027",
+          "target_precision": "year",
+          "source_url": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'The project aims to be operational by the end of 2027.'"
+        }
+      ],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:totalenergies-industrial-platform-netherlands",
+          "target_name": "TotalEnergies' industrial platform",
+          "type": "material",
+          "class": "asserted",
+          "since": "2025-07-23",
+          "evidence": {
+            "url": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
+            "publisher": "Air Liquide",
+            "source_type": "company",
+            "verbatim": "As announced in February 2025 , Air Liquide will invest more than 500 million euros to build, own and operate the electrolyzer, supplying notably TotalEnergies’ industrial platform through a long term contract ."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1116,
+        "iea_hydrogen_production_projects": 1116,
+        "note": "Both carry 'ELYgator' at 200 MW-equivalent; the 2023 file has it at feasibility study and the live IEA list at FID/Construction. Neither has caught the move from Terneuzen to Maasvlakte."
+      },
+      "sources": [
+        {
+          "url": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
+          "title": "Air Liquide takes the final investment decision to build ELYgator, a large-scale electrolyzer in the Netherlands",
+          "publisher": "Air Liquide",
+          "date": "2025-07-23",
+          "retrieved_date": "2026-09-09"
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "location_precision": "none"
+    },
+    {
+      "id": "ewe-emden-electrolysis",
+      "name": "Clean Hydrogen Coastline — Electrolysis East Frisia, Emden",
+      "company": "EWE AG",
+      "plant": "Emden",
+      "country": "DE",
+      "location_note": "NO POSITION, AND IT WAS LOOKED FOR. Every named man_made=works, landuse=construction and power=plant feature in a box over Emden was listed from Overpass on 9 September 2026: the Volkswagen works, the Außenhafen, the Amprion converter station at Petkum and thirty-odd builders' yards are drawn, and the electrolyser is not. There is no host works — EWE is building on its own ground and the basemap carries nothing of EWE's in Emden. Statkraft's Kraftwerk Emden, way/104878489, is a DIFFERENT works and must not be used for this row.",
+      "owner_listing_note": "NO OWNER TYPE IS RECORDED, AND THAT IS THE ANSWER RATHER THAN A GAP. EWE AG is not listed on an exchange; its shares are held by East Frisian and Oldenburg municipal associations together with a private infrastructure investor, and no source read here states the split. `private` and `state-owned` would each be an assertion this register cannot make, and `mixed` describes a row rather than a party. So the field is empty and this note says why, which is a different state from nobody having looked.",
+      "capacity_value": 320,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.ewe.com/en/media-center/press-releases/2025/11/official-start-of-construction-of-320-megawatt-generation-plant-in-emdenewe-ag",
+      "capacity_as_of": "2025-11-28",
+      "capacity_note": "'In subproject 1 \"Clean Hydrogen Coastline – Electrolysis East Frisia\", EWE is building a 320-megawatt hydrogen production plant in Emden, East Frisia.' The largest single electrolyser figure any company on this file states. `announced` rather than `fid`: EWE's board took a final investment decision subject to the grant notifications before July 2024 — 'Die EWE-Gremien hatten die finale Investitionsentscheidung unter Vorbehalt der Förderbescheide bereits vor kurzem getroffen' — and a decision conditional on a grant it had not yet received is not the figure being fixed at one.",
+      "status": "construction",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2024-07-15",
+          "status_from": null,
+          "status_to": "funded",
+          "status": "funded",
+          "source_url": "https://www.ewe.com/de/media-center/pressemitteilungen/2024/07/bundeswirtschaftsminister-robert-habeck-bergibt-frdermittelbescheide-fr-aufbau-der-norddeutschen-was",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "Germany's economy minister handed over the funding notifications for the IPCEI Hy2Infra wave in Berlin. EWE: 'Mit der substanziellen öffentlichen Co-Finanzierung vom Bundeswirtschaftsministerium und den Ländern Niedersachsen und Bremen in Höhe von rund 500 Millionen Euro kann die Detailplanung der Einzelprojekte beginnen.'"
+        },
+        {
+          "event_kind": "status",
+          "date": "2025-11-28",
+          "status_from": "funded",
+          "status_to": "construction",
+          "status": "construction",
+          "source_url": "https://www.ewe.com/en/media-center/press-releases/2025/11/official-start-of-construction-of-320-megawatt-generation-plant-in-emdenewe-ag",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "'Now it's time to get started: EWE has officially started construction of the 320-megawatt generation plant in Emden, taking a decisive step as part of the Clean Hydrogen Coastline hydrogen programme.'"
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2025-11-28",
+          "milestone": "production_start",
+          "target_date": "2027",
+          "target_precision": "year",
+          "source_url": "https://www.ewe.com/en/media-center/press-releases/2025/11/official-start-of-construction-of-320-megawatt-generation-plant-in-emdenewe-ag",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'From the end of 2027, the first green hydrogen is to be produced in Emden and delivered to industrial customers.' Read at year precision: 'the end of 2027' names a year."
+        }
+      ],
+      "edges": [
+        {
+          "kind": "depends_on",
+          "target": "external:ewe-huntorf-hydrogen-cavern",
+          "target_name": "EWE hydrogen cavern storage, Huntorf",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2025-11-28",
+          "evidence": {
+            "url": "https://www.ewe.com/en/media-center/press-releases/2025/11/official-start-of-construction-of-320-megawatt-generation-plant-in-emdenewe-ag",
+            "publisher": "EWE AG",
+            "source_type": "company",
+            "verbatim": "The plant in Emden is part of a system-serving overall concept of generation, storage and transport – including a large-scale hydrogen storage facility in Huntorf and a pipeline axis between Wilhelmshaven, Leer and Emden, as part of the nationwide hydrogen core network."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:german-hydrogen-core-network",
+          "target_name": "German hydrogen core network — Wilhelmshaven–Leer–Emden axis",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2025-11-28",
+          "evidence": {
+            "url": "https://www.ewe.com/en/media-center/press-releases/2025/11/official-start-of-construction-of-320-megawatt-generation-plant-in-emdenewe-ag",
+            "publisher": "EWE AG",
+            "source_type": "company",
+            "verbatim": "a pipeline axis between Wilhelmshaven, Leer and Emden, as part of the nationwide hydrogen core network"
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 2171,
+        "iea_hydrogen_production_projects": 2549,
+        "note": "THE SAME PROJECT UNDER TWO NAMES AND TWO NUMBERS. The 2023 quality-checked list has it as 'IPCEI - Clean Hydrogen Coastline', ref 2171, 400 MW, concept; the live IEA list has 'EWE - Clean Hydrogen Coastline, project Emdem', ref 2549, 41.98 kt H2/y — about 242 MW on the IEA's own factor, against the 320 MW EWE states. Three figures for one plant, none of them the company's."
+      },
+      "sources": [
+        {
+          "url": "https://www.ewe.com/en/media-center/press-releases/2025/11/official-start-of-construction-of-320-megawatt-generation-plant-in-emdenewe-ag",
+          "title": "Official start of construction of 320-megawatt generation plant in Emden",
+          "publisher": "EWE AG",
+          "date": "2025-11-28",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.ewe.com/de/media-center/pressemitteilungen/2024/07/bundeswirtschaftsminister-robert-habeck-bergibt-frdermittelbescheide-fr-aufbau-der-norddeutschen-was",
+          "title": "Bundeswirtschaftsminister Robert Habeck übergibt Fördermittelbescheide für Aufbau der Norddeutschen Wasserstoffwirtschaft",
+          "publisher": "EWE AG",
+          "date": "2024-07-15",
+          "retrieved_date": "2026-09-09"
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "location_precision": "none"
+    },
+    {
+      "id": "omv-bruck-an-der-leitha",
+      "name": "OMV green hydrogen plant, Bruck an der Leitha",
+      "company": "OMV",
+      "plant": "Bruck an der Leitha",
+      "country": "AT",
+      "location_note": "NO POSITION, AND IT WAS LOOKED FOR. A Nominatim search and an Overpass sweep of the Bruck an der Leitha district on 9 September 2026 return the sewage works and the Biogas Bruck/Leitha plant and nothing of OMV's. There is no host works: OMV's own works is the Schwechat refinery, twenty-two kilometres away at the far end of the pipeline this plant is being built to feed, and placing the electrolyser on the refinery would put the mark in the wrong town.",
+      "owners": [
+        {
+          "name": "OMV Aktiengesellschaft",
+          "share": 51,
+          "listing": "listed"
+        },
+        {
+          "name": "Masdar",
+          "share": 49,
+          "listing": "state-owned"
+        }
+      ],
+      "owner_listing": "listed",
+      "owner_listing_note": "The joint venture is 'majority-owned by OMV, with Masdar holding a 49 percent share'; OMV's own share is recorded as 51 because that is what a majority of a two-party venture means and OMV states the other side exactly. Masdar is owned by Abu Dhabi state entities.",
+      "capacity_value": 140,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.omv.com/en/media/press-releases/2025/250929-omv-builds-one-of-the-largest-electrolysis-plants-for-green-hydrogen-in-europe",
+      "capacity_as_of": "2025-09-29",
+      "capacity_note": "'The 140 MW plant in Bruck an der Leitha is scheduled to go into operation at the end of 2027.' OMV took the investment decision in May 2025 and laid the foundation stone on 29 September 2025; the figure has not moved between the two.",
+      "capacity_alternates": [
+        {
+          "value": 23000,
+          "unit": "t_h2_per_year",
+          "product": "hydrogen",
+          "basis": "fid",
+          "source_url": "https://www.omv.com/en/media/press-releases/2026/260107-omv-receives-eur-123-mn-in-funding-for-the-largest-green-hydrogen-project-in-austria",
+          "as_of": "2026-01-07",
+          "note": "'In Bruck an der Leitha, OMV is building a 140 MW plant with an annual capacity of up to 23,000 tons of green hydrogen starting from the end of 2027.'"
+        }
+      ],
+      "status": "construction",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2025-09-29",
+          "status_from": null,
+          "status_to": "construction",
+          "status": "construction",
+          "source_url": "https://www.omv.com/en/media/press-releases/2025/250929-omv-builds-one-of-the-largest-electrolysis-plants-for-green-hydrogen-in-europe",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "'OMV is setting another milestone on the road toward a climate-neutral energy future by laying the foundation stone for one of the largest electrolysis plants for green hydrogen in Europe.' The history starts at the foundation stone: OMV announced the investment in May 2025 and no source for that announcement has been read here."
+        },
+        {
+          "event_kind": "ownership",
+          "date": "2025-11-06",
+          "status_from": "construction",
+          "status_to": "construction",
+          "status": "construction",
+          "from": "OMV Aktiengesellschaft (sole)",
+          "to": "OMV Aktiengesellschaft and Masdar joint venture",
+          "source_url": "https://www.omv.com/en/media/press-releases/2025/251106-omv-and-masdar-sign-binding-agreement-to-develop-and-operate-new-140-mw-green-hydrogen-plant-in-austria",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "'OMV, Austria's integrated energy, fuels and chemicals company, and Masdar, a global clean energy leader, have signed a binding agreement to establish a joint venture (JV) for the financing, construction and operation of the 140 MW green hydrogen electrolyzer plant in Bruck an der Leitha, Austria.' The site is continuous and its owner broke: exactly the case the ownership event kind was added for."
+        },
+        {
+          "event_kind": "financing",
+          "date": "2026-01-07",
+          "status_from": "construction",
+          "status_to": "construction",
+          "status": "construction",
+          "source_url": "https://www.omv.com/en/media/press-releases/2026/260107-omv-receives-eur-123-mn-in-funding-for-the-largest-green-hydrogen-project-in-austria",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "note": "'OMV and Austria Wirtschaftsservice GmbH (aws) have signed a funding agreement that will guarantee production funding of up to EUR 123 million for the planned green hydrogen plant in Bruck an der Leitha (Lower Austria).' A financing event and not a rung: the project was already in construction and money reaching it does not move it."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2025-09-29",
+          "milestone": "production_start",
+          "target_date": "2027",
+          "target_precision": "year",
+          "source_url": "https://www.omv.com/en/media/press-releases/2025/250929-omv-builds-one-of-the-largest-electrolysis-plants-for-green-hydrogen-in-europe",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'The 140 MW plant in Bruck an der Leitha is scheduled to go into operation at the end of 2027.'"
+        }
+      ],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:omv-schwechat-refinery",
+          "target_name": "OMV Schwechat refinery",
+          "type": "material",
+          "class": "asserted",
+          "since": "2025-09-29",
+          "evidence": {
+            "url": "https://www.omv.com/en/media/press-releases/2025/250929-omv-builds-one-of-the-largest-electrolysis-plants-for-green-hydrogen-in-europe",
+            "publisher": "OMV",
+            "source_type": "company",
+            "verbatim": "The company will construct a hydrogen pipeline around 22 kilometers long as part of this investment, connecting the electrolysis plant in Bruck an der Leitha directly to the refinery in Schwechat."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:european-hydrogen-bank-aws-austria",
+          "target_name": "European Hydrogen Bank, paid through Austria Wirtschaftsservice",
+          "type": "funding",
+          "class": "asserted",
+          "since": "2026-01-07",
+          "evidence": {
+            "url": "https://www.omv.com/en/media/press-releases/2026/260107-omv-receives-eur-123-mn-in-funding-for-the-largest-green-hydrogen-project-in-austria",
+            "publisher": "OMV",
+            "source_type": "company",
+            "verbatim": "The project was previously assessed positively and recommended for funding by the European Hydrogen Bank (EHB)."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": 3419,
+        "note": "The live IEA list carries 'UpHy, large' at FID/Construction, 20.99 kt H2/y, about 121 MW on the IEA's own factor against the 140 MW OMV states. The October 2023 list holds only 'UpHy', ref 813, at 10 MW — the pilot at Schwechat, which is a different works on a different site and is below this perimeter."
+      },
+      "sources": [
+        {
+          "url": "https://www.omv.com/en/media/press-releases/2025/250929-omv-builds-one-of-the-largest-electrolysis-plants-for-green-hydrogen-in-europe",
+          "title": "OMV builds one of the largest electrolysis plants for green hydrogen in Europe",
+          "publisher": "OMV",
+          "date": "2025-09-29",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.omv.com/en/media/press-releases/2025/251106-omv-and-masdar-sign-binding-agreement-to-develop-and-operate-new-140-mw-green-hydrogen-plant-in-austria",
+          "title": "OMV and Masdar sign binding agreement to develop and operate new 140 MW green hydrogen plant in Austria",
+          "publisher": "OMV",
+          "date": "2025-11-06",
+          "retrieved_date": "2026-09-09"
+        },
+        {
+          "url": "https://www.omv.com/en/media/press-releases/2026/260107-omv-receives-eur-123-mn-in-funding-for-the-largest-green-hydrogen-project-in-austria",
+          "title": "OMV receives EUR 123 mn in funding for the largest green hydrogen project in Austria",
+          "publisher": "OMV",
+          "date": "2026-01-07",
+          "retrieved_date": "2026-09-09"
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "location_precision": "none"
+    },
+    {
+      "id": "repsol-cartagena",
+      "name": "Cartagena 100 MW electrolyser",
+      "company": "Repsol",
+      "plant": "Cartagena",
+      "country": "ES",
+      "location_note": "NO POSITION, AND IT WAS LOOKED FOR. The Escombreras valley was swept for every named landuse=industrial and man_made=works feature on 9 September 2026: Engie's and Naturgy's power stations, Iberdrola's Central Térmica de Escombreras, ILBOC, Ecocarburantes and the port terminals are drawn, and the Repsol refinery is not — the only Repsol features returned are a substation and the Cartagena–Puertollano pipeline. The estate polygon, 'Complejo Industrial Valle de Escombreras', is refused as an estate on the rule Subotica and Mo i Rana settled. So there is no host works to fall back on either.",
+      "owners": [
+        {
+          "name": "Repsol S.A.",
+          "share": 75,
+          "listing": "listed"
+        },
+        {
+          "name": "Enagás Renovable",
+          "share": 25,
+          "listing": "listed"
+        }
+      ],
+      "owner_listing": "listed",
+      "capacity_value": 100,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "fid",
+      "capacity_source_url": "https://www.repsol.com/en/press-room/press-releases/2025/repsol-to-build-its-first-large-scale-renewable-hydrogen-plant-cartagena/index.cshtml",
+      "capacity_as_of": "2025-09-30",
+      "capacity_note": "'The company, in collaboration with Enagas Renovable, has approved the construction of a 100 MW electrolyzer in Cartagena (Spain), with an investment of more than €300 million.'",
+      "capacity_alternates": [
+        {
+          "value": 15000,
+          "unit": "t_h2_per_year",
+          "product": "hydrogen",
+          "basis": "fid",
+          "source_url": "https://www.repsol.com/en/press-room/press-releases/2025/repsol-to-build-its-first-large-scale-renewable-hydrogen-plant-cartagena/index.cshtml",
+          "as_of": "2025-09-30",
+          "note": "'The new facility will have the capacity to produce approximately 15,000 tonnes of renewable hydrogen per year and will avoid the emission of up to 167,000 tonnes of CO 2 each year.'"
+        }
+      ],
+      "status": "fid",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2025-09-30",
+          "status_from": null,
+          "status_to": "fid",
+          "status": "fid",
+          "source_url": "https://www.repsol.com/en/press-room/press-releases/2025/repsol-to-build-its-first-large-scale-renewable-hydrogen-plant-cartagena/index.cshtml",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "'Repsol continues to make solid progress in its strategic plan and has given the green light to its first large electrolyzer, with 100 MW of capacity, at the company's industrial complex in Cartagena in eastern Spain.' The first of the three Repsol electrolysers this register holds; Petronor followed in January 2026 and Tarragona is named and undated."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2025-09-30",
+          "milestone": "production_start",
+          "target_date": "2029",
+          "target_precision": "year",
+          "source_url": "https://www.repsol.com/en/press-room/press-releases/2025/repsol-to-build-its-first-large-scale-renewable-hydrogen-plant-cartagena/index.cshtml",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'The plant is expected to be operational in 2029, representing a milestone for the Hydrogen Valley of the Region of Murcia.'"
+        }
+      ],
+      "edges": [
+        {
+          "kind": "depends_on",
+          "target": "external:idae-ipcei-spain-repsol-cartagena",
+          "target_name": "IPCEI support through IDAE",
+          "type": "funding",
+          "class": "asserted",
+          "since": "2025-09-30",
+          "evidence": {
+            "url": "https://www.repsol.com/en/press-room/press-releases/2025/repsol-to-build-its-first-large-scale-renewable-hydrogen-plant-cartagena/index.cshtml",
+            "publisher": "Repsol",
+            "source_type": "company",
+            "verbatim": "The project has been recognized by the European Commission and the Government of Spain as strategic and of common European interest (IPCEI) and will receive €155 million through the Spanish Institute for the Diversification and Saving of Energy (IDAE)."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 833,
+        "iea_hydrogen_production_projects": 833,
+        "note": "Both lists carry 'Repsol Cartagena, phase 1' at 100 MW-equivalent, which agrees with Repsol; the 2023 file has it at feasibility study and the live list at FID/Construction, which is where the September 2025 decision put it."
+      },
+      "sources": [
+        {
+          "url": "https://www.repsol.com/en/press-room/press-releases/2025/repsol-to-build-its-first-large-scale-renewable-hydrogen-plant-cartagena/index.cshtml",
+          "title": "Repsol to build its first large-scale renewable hydrogen plant in Cartagena",
+          "publisher": "Repsol",
+          "date": "2025-09-30",
+          "retrieved_date": "2026-09-09"
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "location_precision": "none"
+    },
+    {
+      "id": "la-robla-green",
+      "name": "La Robla Green — 200 MW electrolyser",
+      "company": "Reolum",
+      "plant": "El Crispín, La Robla, León",
+      "country": "ES",
+      "location_note": "NO POSITION, AND THE ONE POLYGON FOUND IS THE WRONG HALF OF THE PROJECT. way/189577212, 'Antigua Central Térmica de La Robla', is the brownfield of the former coal station, which the company names as the site of the BIOMASS plant; the electrolyser is stated as being at the El Crispín industrial estate, a different place with no feature of its own. Using the brownfield would put the mark on the half of the project this perimeter does not hold. Searched 9 September 2026.",
+      "owners": [
+        {
+          "name": "Reolum",
+          "share": 100,
+          "listing": "private"
+        }
+      ],
+      "owner_listing": "private",
+      "capacity_value": 200,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://laroblagreen.com/en/proyecto/",
+      "capacity_as_of": "2026-09-09",
+      "capacity_note": "'Thanks to a 200 MW electrolyzer, electrolysis is carried out using PEM technology.' THE E-FUEL RULE'S FIRST CASE: a green e-methanol plant is out of this perimeter and its electrolyser is in it where it clears the threshold, so the electrolyser is the project and the 100,000 t/y methanol plant is a note on it. The page is undated by its publisher and is therefore dated at the day it was read, on the same reading refhyne.eu gets.",
+      "capacity_alternates": [
+        {
+          "value": 28000,
+          "unit": "t_h2_per_year",
+          "product": "hydrogen",
+          "basis": "announced",
+          "source_url": "https://laroblagreen.com/en/proyecto/",
+          "as_of": "2026-09-09",
+          "note": "'Green hydrogen production: 28,000 tons'. Trade press reports 28,800; the company's own page says 28,000 and the company's own page is what this row carries."
+        }
+      ],
+      "status": "announced",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2026-09-09",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
+          "source_url": "https://laroblagreen.com/en/proyecto/",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "note": "THE THINNEST HISTORY ON THIS FILE AND THE DATE IS THE DAY IT WAS READ. The project's own site describes a 200 MW electrolyser at El Crispín and carries no date on anything; no dated company source for any event has been read. A short history is honest and this one is as short as they get."
+        }
+      ],
+      "stated_schedule": [],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:la-robla-e-methanol-plant",
+          "target_name": "La Robla green e-methanol plant",
+          "type": "material",
+          "class": "asserted",
+          "since": "2026-09-09",
+          "evidence": {
+            "url": "https://laroblagreen.com/en/proyecto/",
+            "publisher": "Reolum",
+            "source_type": "company",
+            "verbatim": "All green hydrogen production will be used as a supply for the e-Methanol plant."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:la-robla-biomass-co2-capture",
+          "target_name": "La Robla biomass plant and its CO2 capture",
+          "type": "material",
+          "class": "asserted",
+          "since": "2026-09-09",
+          "evidence": {
+            "url": "https://laroblagreen.com/en/proyecto/",
+            "publisher": "Reolum",
+            "source_type": "company",
+            "verbatim": "The CO₂ extracted from the biomass plant is mixed with hydrogen to produce green e-methanol, a new generation product."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": 3433,
+        "note": "The live IEA list carries 'La Robla Green' at FID/Construction, 34.65 kt H2/y, about 200 MW on the IEA's own factor — which agrees with the company while this register still calls the project `announced`, because no company source states a decision. The October 2023 list has 'Green Crane - La Robla' at 60 and 220 MW, refs 607 and 1270, which is a different developer's project at the same town and is not matched."
+      },
+      "sources": [
+        {
+          "url": "https://laroblagreen.com/en/proyecto/",
+          "title": "La Robla Green — Proyecto",
+          "publisher": "Reolum",
+          "date": "2026-09-09",
+          "retrieved_date": "2026-09-09",
+          "note": "Undated by its publisher; dated at the day it was read, which is the honest reading of a standing project page and the same one refhyne.eu gets."
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "location_precision": "none"
+    },
+    {
+      "id": "hoest-ptx-esbjerg",
+      "name": "HØST PtX Esbjerg",
+      "company": "Copenhagen Infrastructure Partners",
+      "plant": "Måde, Esbjerg",
+      "country": "DK",
+      "location_note": "NO POSITION, AND THE ONE FEATURE FOUND IS AN OFFICE. Nominatim returns node/13198011777, 'Copenhagen Infrastructure Partners - Høst PtX', tagged office=company at Nordre Dokkaj in Esbjerg — a place where the project is administered and not where it is built, refused on the same rule that refused a registered address for the battery rows. The Måde industrial area the company names carries no works polygon and there is no host works: the site is greenfield. Searched 9 September 2026.",
+      "owners": [
+        {
+          "name": "Copenhagen Infrastructure Partners",
+          "share": 100,
+          "listing": "private"
+        }
+      ],
+      "owner_listing": "private",
+      "capacity_value": 100000,
+      "capacity_unit": "t_h2_per_year",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://hoestptxesbjerg.dk/about-ptx/",
+      "capacity_as_of": "2026-09-09",
+      "capacity_note": "THE ONE ROW ON THIS FILE WITH NO MEGAWATTS, and it is why the no-conversion rule was worth writing. The project's own site states an annual mass and nothing else: 'HØST PtX Esbjerg will use renewable resources to produce approx. 100.000 tonnes of green hydrogen that can be supplied to the future hydrogen grid.' The gigawatt figure that circulates for this project is not on any company page read here, and computing one from the tonnes would put a number on the paper that nobody published. The page is undated and is dated at the day it was read.",
+      "capacity_alternates": [
+        {
+          "value": 600000,
+          "unit": "t_nh3_per_year",
+          "product": "ammonia",
+          "basis": "announced",
+          "source_url": "https://hoestptxesbjerg.dk/about-ptx/",
+          "as_of": "2026-09-09",
+          "note": "'Expected annual production of 600,000 t green ammonia'. A DIFFERENT PRODUCT IN A DIFFERENT UNIT, kept as an alternate because it is the figure the project is best known by and because the two can never be added: the unit is the only thing stopping a tonne of ammonia joining a tonne of hydrogen in a total."
+        }
+      ],
+      "status": "announced",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2026-09-09",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
+          "source_url": "https://hoestptxesbjerg.dk/about-ptx/",
+          "source_type": "company",
+          "evidence_mode": "live",
+          "note": "'HØST PtX Esbjerg is a hydrogen plant under development, deploying industrial use of electrolysis-technology on GW-level.' Under development, with a capital cost of 'more than 2 billion EUR' and no decision stated. The page carries no date and the event is dated at the day it was read."
+        }
+      ],
+      "stated_schedule": [],
+      "edges": [
+        {
+          "kind": "depends_on",
+          "target": "external:danish-hydrogen-grid",
+          "target_name": "The future Danish hydrogen grid",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2026-09-09",
+          "evidence": {
+            "url": "https://hoestptxesbjerg.dk/about-ptx/",
+            "publisher": "HØST PtX Esbjerg",
+            "source_type": "company",
+            "verbatim": "HØST PtX Esbjerg will use renewable resources to produce approx. 100.000 tonnes of green hydrogen that can be supplied to the future hydrogen grid ."
+          }
+        },
+        {
+          "kind": "supplies",
+          "target": "external:din-forsyning-esbjerg-district-heating",
+          "target_name": "DIN Forsyning district heating, Esbjerg and Varde",
+          "type": "material",
+          "class": "asserted",
+          "since": "2026-09-09",
+          "evidence": {
+            "url": "https://hoestptxesbjerg.dk/about-ptx/",
+            "publisher": "HØST PtX Esbjerg",
+            "source_type": "company",
+            "verbatim": "Furthermore, the process heat from the production of hydrogen and ammonia will be utilized for district heating of 15,000 households in the Esbjerg/Varde area by the local utility company, DIN Forsyning."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 532,
+        "iea_hydrogen_production_projects": 532,
+        "note": "Both lists carry 'Høst - Esbjerg green ammonia plant' at 1,000 MW-equivalent — 173.25 kt H2/y in the live list, which is the IEA's factor applied to a gigawatt. This register holds 100,000 t H2/y because that is what the company says, and the two figures are not comparable without the conversion this register does not make. The clearest case on the file of why the benchmark's normalised column and this one's stated column answer different questions."
+      },
+      "sources": [
+        {
+          "url": "https://hoestptxesbjerg.dk/about-ptx/",
+          "title": "About the plant — HØST PtX Esbjerg",
+          "publisher": "HØST PtX Esbjerg",
+          "date": "2026-09-09",
+          "retrieved_date": "2026-09-09",
+          "note": "Undated by its publisher; dated at the day it was read."
+        }
+      ],
+      "transition_note": "DECARBONISATION AND NOT THE AMMONIA DEFAULT. Brief 7 §9 sets `supply_security` for ammonia rows unless the source states decarbonisation. This source states it: 'By producing green hydrogen and ammonia, HØST PtX Esbjerg will open the door to decarbonization of hard-to-abate sectors such as shipping, agriculture, and industrial applications.'",
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "location_precision": "none"
+    },
+    {
+      "id": "h2apex-lubmin-hh2e",
+      "name": "Lubmin 100 MW electrolyser (formerly HH2E)",
+      "company": "H2APEX Group SCA",
+      "plant": "Lubmin",
+      "country": "DE",
+      "location_note": "NO POSITION, AND WHAT WAS FOUND IS AN ESTATE. way/177888468, 'Energie- und Technologiepark Lubmin', is the industrial park the site sits in, and an estate polygon is refused on the rule Subotica and Mo i Rana settled: it places a park, not a works, and every tenant of it would get the same dot. way/1068737977 is the port administration BUILDING. Neither is a host works. Searched 9 September 2026.",
+      "owners": [
+        {
+          "name": "H2APEX Group SCA",
+          "share": 100,
+          "listing": "listed"
+        }
+      ],
+      "owner_listing": "listed",
+      "owner_listing_note": "H2APEX Group SCA is listed in Frankfurt, ISIN LU0472835155; H2APEX Nova Holding GmbH, the direct owner of HH2E Werk Lubmin GmbH, is its wholly owned subsidiary.",
+      "capacity_value": 100,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://h2apex.com/en/h2apex-news/closing-of-the-acquisition-of-hh2e-werk-lubmin-gmbh/",
+      "capacity_as_of": "2025-07-02",
+      "capacity_note": "'With the acquisition of the project from HH2E, H2APEX plans to build a 100 MW plant in the first expansion stage by 2028, which is to be expanded to 1,000 MW in the medium term.' The row carries 100 and not 1,000: the perimeter sums phases only where the company states a total, and 'in the medium term' is not one. H2APEX RUNS A SECOND, SEPARATE 100 MW PROJECT ON ITS OWN LAND AT LUBMIN and the two must not be merged — this row is the one it bought out of insolvency.",
+      "status": "announced",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2024-12-01",
+          "status_from": null,
+          "status_to": "paused",
+          "status": "paused",
+          "source_url": "https://h2apex.com/en/h2apex-news/closing-of-the-acquisition-of-hh2e-werk-lubmin-gmbh/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "stop_reason": [
+            "finance"
+          ],
+          "stop_reason_verbatim": "H2APEX Nova Holding GmbH, a 100% subsidiary of H2APEX Group SCA (“H2APEX”; ISIN: LU0472835155), has become the sole owner of all shares in HH2E Werk Lubmin GmbH (“HH2E”) following the completion of the insolvency plan proceedings.",
+          "stop_reason_note": "THE QUOTE IS THE ACQUIRER'S AND IT IS THE ONLY COMPANY SOURCE LEFT. HH2E's own site answers a connection refused — the domain is gone, which is itself the record of what happened — so nothing on this row cites hh2e.de. The insolvency is what stopped the project and `finance` is read from the insolvency plan proceedings the acquirer names. The month is dated to its first day, on the padding rule: reporting puts the filing in December 2024 and no day is on file.",
+          "note": "HH2E filed for insolvency in self-administration and the Lubmin works stopped. The history starts at the pause rather than at the announcement because no primary source for the earlier events has been read, and because the company that made them no longer exists to be read."
+        },
+        {
+          "event_kind": "ownership",
+          "date": "2025-07-02",
+          "status_from": "paused",
+          "status_to": "paused",
+          "status": "paused",
+          "from": "HH2E AG",
+          "to": "H2APEX Nova Holding GmbH (H2APEX Group SCA)",
+          "source_url": "https://h2apex.com/en/h2apex-news/closing-of-the-acquisition-of-hh2e-werk-lubmin-gmbh/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "'Rostock, Grevenmacher (Grand Duchy of Luxembourg), Lubmin, 2 July, 2025 – H2APEX Nova Holding GmbH … has become the sole owner of all shares in HH2E Werk Lubmin GmbH … following the completion of the insolvency plan proceedings.' The site is continuous and its owner broke; the status does not move, because a change of hands is not a restart."
+        },
+        {
+          "event_kind": "status",
+          "date": "2025-07-02",
+          "status_from": "paused",
+          "status_to": "announced",
+          "status": "announced",
+          "source_url": "https://h2apex.com/en/h2apex-news/closing-of-the-acquisition-of-hh2e-werk-lubmin-gmbh/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "AND THEN IT RESTARTS, on the same release and the same day, which is why the two are separate entries: 'With the acquisition of the project from HH2E, H2APEX plans to build a 100 MW plant in the first expansion stage by 2028.' One entry saying both would read as the acquisition causing the restart in a way the schema's one-fact rule refuses; two say what happened, in order."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2025-07-02",
+          "milestone": "production_start",
+          "target_date": "2028",
+          "target_precision": "year",
+          "source_url": "https://h2apex.com/en/h2apex-news/closing-of-the-acquisition-of-hh2e-werk-lubmin-gmbh/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'H2APEX plans to build a 100 MW plant in the first expansion stage by 2028'."
+        }
+      ],
+      "edges": [
+        {
+          "kind": "depends_on",
+          "target": "external:flow-hydrogen-network",
+          "target_name": "FLOW hydrogen gas network",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2025-07-02",
+          "evidence": {
+            "url": "https://h2apex.com/en/h2apex-news/closing-of-the-acquisition-of-hh2e-werk-lubmin-gmbh/",
+            "publisher": "H2APEX Group SCA",
+            "source_type": "company",
+            "verbatim": "We are firmly convinced that Lubmin is the most interesting location for domestic hydrogen production, as it has direct access to offshore wind farms and thus to sustainably generated energy in sufficient quantities, as well as to the future hydrogen gas network „FLOW”."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 2447,
+        "iea_hydrogen_production_projects": 2447,
+        "note": "Ref 2447 is 'Apex Lubmin' at 600 MW and feasibility study in the 2023 file and 'H2APEX Lubmin, phase 1' at 17.33 kt H2/y — about 100 MW — in the live list. NEITHER OF THEM IS UNAMBIGUOUSLY THIS PROJECT: H2APEX has two Lubmin projects, its own and the one it bought from HH2E, and the external lists carry 'HH2E - Met Northeast Germany, phase 2' (ref 1766) separately. The id is recorded with the ambiguity stated rather than left to be discovered."
+      },
+      "sources": [
+        {
+          "url": "https://h2apex.com/en/h2apex-news/closing-of-the-acquisition-of-hh2e-werk-lubmin-gmbh/",
+          "title": "Closing of the acquisition of HH2E Werk Lubmin GmbH: H2APEX now sole owner of the strategically important hydrogen project in Lubmin",
+          "publisher": "H2APEX Group SCA",
+          "date": "2025-07-02",
+          "retrieved_date": "2026-09-09"
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "location_precision": "none"
+    },
+    {
+      "id": "hytechhafen-rostock",
+      "name": "HyTechHafen Rostock",
+      "company": "RWE Generation SE",
+      "plant": "Rostock port",
+      "country": "DE",
+      "location_note": "NO POSITION. The port was searched on 9 September 2026 and returns the port development company's office and a place=suburb node for Überseehafen — an office and a neighbourhood, both refused. THE SOURCE DOES NOT NAME A SITE WITHIN THE PORT either, so there is nothing to look for a polygon of: 'a 100-MW electrolyser will be constructed at Rostock port' is the whole of what the company states about where.",
+      "owners": [
+        {
+          "name": "ROSTOCK PORT GmbH",
+          "share": null,
+          "listing": "state-owned"
+        },
+        {
+          "name": "RheinEnergie AG",
+          "share": null,
+          "listing": "state-owned"
+        },
+        {
+          "name": "EnBW Neue Energien GmbH",
+          "share": null,
+          "listing": "listed"
+        },
+        {
+          "name": "RWE Generation SE",
+          "share": null,
+          "listing": "listed"
+        }
+      ],
+      "owner_listing": "mixed",
+      "owner_listing_note": "A FOUR-WAY JOINT VENTURE WITH NO STATED SHARES, which is exactly what `mixed` was added for. RWE names the operating company as 'a joint venture of ROSTOCK PORT GmbH, RheinEnergie AG, EnBW Neue Energien AG, and RWE Generation SE' and gives no split. RWE is carried in the `company` field as the source of the row rather than as the stated lead: WHICH OF THE FOUR LEADS IS NOT ON FILE, and the brief's default — the operator or lead developer is the company — cannot be applied to a source that does not say.",
+      "capacity_value": 100,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+      "capacity_as_of": "2024-07-15",
+      "capacity_note": "'A 100-MW electrolyser will be constructed at Rostock port as part of the HyTechHafen Rostock project and will produce green hydrogen from 2027.'",
+      "status": "funded",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2024-07-15",
+          "status_from": null,
+          "status_to": "funded",
+          "status": "funded",
+          "source_url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "'A third strand of funding has been granted to a consortium developing a 100-MW electrolyser plant at the port of Rostock (Mecklenburg-Western Pomerania) as part of the HyTechHafen Rostock project. RWE is a member of this consortium.' The IPCEI Hy2Infra notifications, handed over in Berlin the same day as Lingen's and Gronau-Epe's."
+        }
+      ],
+      "stated_schedule": [
+        {
+          "date": "2024-07-15",
+          "milestone": "production_start",
+          "target_date": "2027",
+          "target_precision": "year",
+          "source_url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "speaker": "company",
+          "note": "'will produce green hydrogen from 2027'."
+        }
+      ],
+      "edges": [
+        {
+          "kind": "depends_on",
+          "target": "external:german-hydrogen-core-network",
+          "target_name": "German hydrogen core network",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2024-07-15",
+          "evidence": {
+            "url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+            "publisher": "RWE AG",
+            "source_type": "company",
+            "verbatim": "Some of the hydrogen is intended to supply local consumers, the rest to be fed into the Germany-wide hydrogen core grid that is currently being developed."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1086,
+        "iea_hydrogen_production_projects": 1086,
+        "note": "Both carry 'Rostock - RWE - (HyTechHafen-Rostock)' at 100 MW-equivalent and feasibility study, which is a fairer reading of this project's stage than `funded` sounds: the money is granted and nothing has been built."
+      },
+      "sources": [
+        {
+          "url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+          "title": "German and state governments grant funding for large hydrogen projects by RWE",
+          "publisher": "RWE AG",
+          "date": "2024-07-15",
+          "retrieved_date": "2026-09-09"
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "location_precision": "none"
+    },
+    {
+      "id": "catalina-teruel-sagunto",
+      "name": "Project Catalina, phase I",
+      "company": "Copenhagen Infrastructure Partners",
+      "plant": "Andorra, Teruel",
+      "country": "ES",
+      "location_note": "NO POSITION. The company source names the municipality and the grid auction it is applying to — 'Catalina Phase I is applying for grid connection in Andorra (Teruel), at the Mudejar auction' — and no site within it. There is nothing to look for a polygon of, and a municipality is not a works. THE PROJECT ALSO HAS A SECOND PLACE, an ammonia plant at Sagunto 250 km away, which the location list would hold as a second site if either could be placed; the ArcelorMittal row is the precedent for a project on two sites.",
+      "owners": [
+        {
+          "name": "Copenhagen Infrastructure Partners",
+          "share": null,
+          "listing": "private"
+        },
+        {
+          "name": "Enagás",
+          "share": null,
+          "listing": "listed"
+        },
+        {
+          "name": "Naturgy",
+          "share": null,
+          "listing": "listed"
+        },
+        {
+          "name": "Fertiberia",
+          "share": null,
+          "listing": "private"
+        },
+        {
+          "name": "Vestas",
+          "share": null,
+          "listing": "listed"
+        }
+      ],
+      "owner_listing": "mixed",
+      "owner_listing_note": "A five-way consortium with no stated shares. CIP is carried as the company because the release names it as the party announcing the partnership and developing the project; the other four are partners in it.",
+      "capacity_value": 500,
+      "capacity_unit": "MW_input",
+      "capacity_product": "hydrogen",
+      "capacity_basis": "announced",
+      "capacity_source_url": "https://www.naturgy.com/en/press-release/copenhagen-infrastructure-partners-announces-partnership-with-enagas-naturgy-fertiberia-and-vestas-to-build-a-project-for-the-large-scale-production-of-green-hydrogen-and-ammonia-in-spain/",
+      "capacity_as_of": "2023-03-10",
+      "capacity_note": "'The project will consist of 1.7GW of wind and solar energy facilities as well as a 500MW electrolyser capable of producing over 40,000 tons of green hydrogen per year.' The row carries phase I's 500 MW and not the 2 GW the same release states as the full intention: 'Project Catalina intends to develop 5GW of combined wind and solar in Aragon (Spain) and produce green hydrogen through a 2GW electrolyser' is an intention for a project, not a total for a phase.",
+      "capacity_alternates": [
+        {
+          "value": 40000,
+          "unit": "t_h2_per_year",
+          "product": "hydrogen",
+          "basis": "announced",
+          "source_url": "https://www.naturgy.com/en/press-release/copenhagen-infrastructure-partners-announces-partnership-with-enagas-naturgy-fertiberia-and-vestas-to-build-a-project-for-the-large-scale-production-of-green-hydrogen-and-ammonia-in-spain/",
+          "as_of": "2023-03-10",
+          "note": "'a 500MW electrolyser capable of producing over 40,000 tons of green hydrogen per year'. A lower bound the company states — 'over' — recorded as the figure it is."
+        }
+      ],
+      "status": "announced",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2023-03-10",
+          "status_from": null,
+          "status_to": "announced",
+          "status": "announced",
+          "source_url": "https://www.naturgy.com/en/press-release/copenhagen-infrastructure-partners-announces-partnership-with-enagas-naturgy-fertiberia-and-vestas-to-build-a-project-for-the-large-scale-production-of-green-hydrogen-and-ammonia-in-spain/",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "THE SOURCE IS A PARTNER'S AND NOT THE LEAD'S. Naturgy, one of the five, published the partnership announcement; CIP is the party it names as developing the project. A consortium member speaking about the consortium's own project is the company speaking, on the same reading the REFHYNE consortium's site gets, and the row says which member said it."
+        }
+      ],
+      "stated_schedule": [],
+      "edges": [
+        {
+          "kind": "supplies",
+          "target": "external:fertiberia-sagunto-fertiliser-plant",
+          "target_name": "Fertiberia's Sagunto plant",
+          "type": "material",
+          "class": "asserted",
+          "since": "2023-03-10",
+          "evidence": {
+            "url": "https://www.naturgy.com/en/press-release/copenhagen-infrastructure-partners-announces-partnership-with-enagas-naturgy-fertiberia-and-vestas-to-build-a-project-for-the-large-scale-production-of-green-hydrogen-and-ammonia-in-spain/",
+            "publisher": "Naturgy",
+            "source_type": "company",
+            "verbatim": "Green ammonia will be further upgraded into green and sustainable fertilisers within Fertiberia’s existing assets at Sagunto (Valencia), a breakthrough in the decarbonisation of the agriculture industry."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:aragon-valencia-hydrogen-pipeline",
+          "target_name": "Aragón–Valencia hydrogen pipeline",
+          "type": "infrastructure",
+          "class": "asserted",
+          "since": "2023-03-10",
+          "evidence": {
+            "url": "https://www.naturgy.com/en/press-release/copenhagen-infrastructure-partners-announces-partnership-with-enagas-naturgy-fertiberia-and-vestas-to-build-a-project-for-the-large-scale-production-of-green-hydrogen-and-ammonia-in-spain/",
+            "publisher": "Naturgy",
+            "source_type": "company",
+            "verbatim": "It will connect Aragón and Valencia via a pipeline transporting green hydrogen to supply a newly built, state-of-the-art green ammonia plant with annual capacity of 200,000 tons."
+          }
+        },
+        {
+          "kind": "depends_on",
+          "target": "external:mudejar-grid-auction-teruel",
+          "target_name": "Mudejar grid connection auction, Andorra (Teruel)",
+          "type": "regulatory",
+          "class": "asserted",
+          "since": "2023-03-10",
+          "evidence": {
+            "url": "https://www.naturgy.com/en/press-release/copenhagen-infrastructure-partners-announces-partnership-with-enagas-naturgy-fertiberia-and-vestas-to-build-a-project-for-the-large-scale-production-of-green-hydrogen-and-ammonia-in-spain/",
+            "publisher": "Naturgy",
+            "source_type": "company",
+            "verbatim": "Catalina Phase I is applying for grid connection in Andorra (Teruel), at the Mudejar auction, where it will have a large socioeconomic impact in local Municipalities."
+          }
+        }
+      ],
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": 1489,
+        "iea_hydrogen_production_projects": 1489,
+        "note": "Both carry 'Catalina Project, Phase 1' at 500 MW-equivalent and feasibility study, agreeing with the company. Both also carry a phase 2 at 1,500 MW, ref 1490, which this register does not hold."
+      },
+      "sources": [
+        {
+          "url": "https://www.naturgy.com/en/press-release/copenhagen-infrastructure-partners-announces-partnership-with-enagas-naturgy-fertiberia-and-vestas-to-build-a-project-for-the-large-scale-production-of-green-hydrogen-and-ammonia-in-spain/",
+          "title": "Copenhagen Infrastructure Partners announces partnership with Enagás, Naturgy, Fertiberia and Vestas to build a project for the large-scale production of green hydrogen and ammonia in Spain",
+          "publisher": "Naturgy",
+          "date": "2023-03-10",
+          "retrieved_date": "2026-09-09"
+        }
+      ],
+      "sector": "clean",
+      "transition": "decarbonisation",
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "location_precision": "none"
     }
   ]
 }

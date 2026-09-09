@@ -186,6 +186,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 status: project.status,
                 plant: project.plant,
                 country: countryName(project.country, project.country),
+                stopped: project.status === "paused" || project.status === "cancelled",
               })}
             </p>
             <p className="note">{project.location_note}</p>

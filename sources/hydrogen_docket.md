@@ -1,14 +1,16 @@
 # Hydrogen — perimeter and candidate docket
 
-**Brief 7, Steps 1 and 2.** This file is the stop the brief asks for: the
+**Brief 7, Steps 1 and 2, complete.** This file is the stop the brief asks for: the
 perimeter as proposed reviewed prose, the docket with its counts, and the
 judgements the rows forced.
 
-**UPDATED 9 SEPTEMBER 2026 ON GEORGE'S RULINGS.** D13 was accepted — a site may
-be placed on the works it stands on — and Step 2 ran under it. What that ruling
-landed, and what it did not, is in §2. Sections 4 and 5 carry the Step 1
-decisions unchanged, with the Step 2 ones after them, because a decision that is
-edited out of a docket is a decision nobody can see was made. It is the same object `sources/batteries_docket.md` is, written to
+**UPDATED TWICE ON 9 SEPTEMBER 2026, ON TWO SETS OF GEORGE'S RULINGS.** The
+first accepted D13 — a site may be placed on the works it stands on — and landed
+three of thirteen. The second went further and settled the question the first one
+left: **position is not an admission leg.** All twenty admitted candidates are now
+rows. Sections 4 and 5 carry every decision in the order it was made, including
+the ones later rulings overtook, because a decision edited out of a docket is a
+decision nobody can see was made. It is the same object `sources/batteries_docket.md` is, written to
 the same standard, and it stays in the repository after the rows land because it
 is the record of what was refused and why.
 
@@ -88,105 +90,109 @@ this docket names its own site plainly.
 | | count |
 |---|---|
 | Candidates the perimeter admits | **20** |
-| — of them, rows on file in `data/transition/projects.json` | **10** |
-| — of them, still candidates | **10** |
+| — of them, rows on file in `data/transition/projects.json` | **20** |
+| — of them, still candidates | **0** |
 | Refused, by class, below | **8 classes named; 27 named instances** |
 | In the manual queue for a browser | **2** |
 | In `sources/schedule_queue.json` — no date from any admissible source | **2** |
 
 `sources/report_candidate_gaps.py` prints the first three lines on every build:
-`report_candidate_gaps: clean — 10 of 20 candidate(s) on file, 10 outstanding`.
+`report_candidate_gaps: clean — 20 of 20 candidate(s) on file, 0 outstanding`.
 
-### WHAT THE HOST-WORKS RULING MOVED, AND WHAT IT DID NOT
+### THE DOCKET IS AT ITS END, AND IT TOOK TWO RULINGS TO GET THERE
 
 Read this before the rows.
 
 Batteries stalled on **company confirmation**: the sweep kept finding sites the
-operator had never named, and the composite standard was written for exactly that.
-Hydrogen does not stall there at all. Every one of the twenty candidates has a
-company source that names its site and states its megawatts, usually in the first
-paragraph of a press release. Thirteen of them failed on one thing: **no citable
-source said where the works is**, because the works mostly do not exist yet. They
-are construction fields inside refineries and chemical parks, and OpenStreetMap
-has drawn two of them.
+operator had never named. Hydrogen never stalled there — every one of the twenty
+candidates has a company source naming its site and stating its megawatts, usually
+in the first paragraph of a release. It stalled on **position**, and on nothing
+else, for thirteen of them.
 
-**D13 was accepted and the rule is now standing** — `sources/scope.md`, "A site
-may be placed on the works it stands on". It landed **three** of the thirteen:
+**Ruling one, D13: a site may be placed on the works it stands on.** It landed
+three — Hamburg Green Hydrogen Hub onto the dead Moorburg coal station, Uniper
+onto its own Maasvlakte power station, Repsol onto its Tarragona refinery.
 
-| Landed on the ruling | The works its mark is |
+**Ruling two: position is not an admission leg.** It landed the other ten, and it
+is the larger of the two. The ten have no works polygon of ANY kind — not their
+own, not a host's — because they are construction fields on reclaimed land, in
+ports, inside industrial parks and on greenfield. Under the old rule this register
+would have reported European hydrogen while omitting Shell's largest plant, Air
+Liquide's second, the biggest single electrolyser figure any company on the file
+states, and the only project here with an insolvency in its history. That is not a
+cautious register; it is a register that reports OpenStreetMap's coverage and
+calls it industry.
+
+### How the twenty are placed
+
+| how the position was resolved | rows |
 |---|---|
-| Hamburg Green Hydrogen Hub, Moorburg | the dead Moorburg coal station, closed 7 July 2021 and still carrying Vattenfall as operator |
-| Uniper H2Maasvlakte | Uniper's own Centrale Maasvlakte power station |
-| Repsol, Tarragona | the Repsol Tarragona refinery |
+| `works` — the installation's own polygon | 2 |
+| `works` — a host works, named on the row | 8 |
+| `none` — admitted, undrawn, and it says so | 10 |
 
-**The other ten have no works polygon of any kind — not the installation's, not a
-host's.** That is the honest limit of the ruling and it is worth stating plainly,
-because it would be easy to read "host works admissible" as "everything lands".
-Shell's Holland Hydrogen 1 and Air Liquide's ELYgator are on reclaimed land on
-Maasvlakte 2 with nothing of their owners' beside them; OMV's is a greenfield
-outside Bruck an der Leitha; HØST's is the Måde industrial area, where the only
-feature carrying the developer's name is an OFFICE, refused on the rule a
-registered address already failed; H2APEX's Lubmin site and HyTechHafen Rostock
-are inside an industrial park and a port, and an estate polygon is refused on the
-rule Subotica and Mo i Rana settled; Repsol's Cartagena refinery and Reolum's El
-Crispín estate are simply not drawn. **The constraint moved. It did not vanish.**
+The two on their own outlines are RWE's `GET H₂ Nukleus (300 MW)` at Lingen and
+Air Liquide's `Normand'Hy`, both tagged `landuse=construction` and both carrying
+the operator's name.
 
-Where a position was hunted and not found, the entry in
-`sources/hydrogen_candidates.json` says where it was hunted, so nobody repeats
-the sweep: Maasvlakte, Emden, Moorburg, Bruck an der Leitha, Lubmin, Escombreras,
-Tarragona and La Robla were each swept for every named `man_made`, `landuse`,
-`power` and `plant:source` feature on 9 September 2026.
+**The ten `none` rows carry their sweep on the row.** Each `location_note` says
+where a polygon was looked for and what was found instead: the Maasvlakte box
+from 51.94 N to 52.00 N, where the Porthos compressor station and three TenneT
+converter stations are drawn and two 200 MW electrolysers are not; Emden, with
+the Volkswagen works and thirty builders' yards; HØST, whose only feature naming
+the developer is an *office*; Lubmin and Rostock, where what exists is an estate
+and a port, both refused on the rule Subotica and Mo i Rana settled; La Robla,
+where the one polygon found is the biomass half of a project this perimeter holds
+the electrolyser of.
 
-**Six of the ten rows now stand on a host works** and each says so three ways:
-`site_precision: works` with `host_works` naming it, a note in words, and a clause
-in the sentence over its own picture.
+**And they are named, not merely absent.** The sector overview's sentence gains a
+third clause — "no citable source places the works" — beside "cancelled" and
+"location not sought", because the three are different facts. Each row's own page
+renders without the location section and says in words that the company has
+confirmed the site, that nobody has drawn it, and that the row is held anyway.
 
-### The ten rows
+### The twenty rows
 
-| # | Company | Site | Country | Capacity | Status | Position stands on |
+| # | Company | Site | Country | Capacity | Status | Position |
 |---|---|---|---|---|---|---|
-| 1 | RWE Generation SE | Lingen (Ems) | DE | 300 MW_input | construction | the electrolyser itself |
-| 2 | BP Europa SE | Lingen (Ems) | DE | 100 MW_input · 11,000 t/y | construction | the refinery |
-| 3 | Air Liquide | Port-Jérôme | FR | 200 MW_input | fid | the electrolyser itself |
-| 4 | Shell Deutschland | Wesseling | DE | 100 MW_input · 15,000 t/y | fid | the chemicals park |
-| 5 | Repsol | Muskiz | ES | 100 MW_input · 15,000 t/y | fid | the refinery |
-| 6 | Galp | Sines | PT | 100 MW_input · 15,000 t/y | construction | the refinery |
-| 7 | Moeve | Palos de la Frontera | ES | 300 MW_input · 45,000 t/y | fid | the refinery |
-| 8 | Hamburg Green Hydrogen Hub | Hamburg-Moorburg | DE | 100 MW_input · 10,000 t/y | construction | a dead coal station |
-| 9 | Uniper | Maasvlakte, Rotterdam | NL | 100 MW_input | announced | its own power station |
-| 10 | Repsol | La Pobla de Mafumet | ES | 150 MW_input | announced | the refinery |
+| 1 | RWE Generation SE | Lingen (Ems) | DE | 300 MW | commissioning | its own outline |
+| 2 | BP Europa SE | Lingen (Ems) | DE | 100 MW · 11,000 t/y | construction | host: the refinery |
+| 3 | Air Liquide | Port-Jérôme | FR | 200 MW | fid | its own outline |
+| 4 | Shell Deutschland | Wesseling | DE | 100 MW · 15,000 t/y | fid | host: the chemicals park |
+| 5 | Repsol | Muskiz | ES | 100 MW · 15,000 t/y | fid | host: the refinery |
+| 6 | Galp | Sines | PT | 100 MW · 15,000 t/y | construction | host: the refinery |
+| 7 | Moeve | Palos de la Frontera | ES | 300 MW · 45,000 t/y | fid | host: the refinery |
+| 8 | Hamburg Green Hydrogen Hub | Hamburg-Moorburg | DE | 100 MW · 10,000 t/y | construction | host: a dead coal station |
+| 9 | Uniper | Maasvlakte | NL | 100 MW | announced | host: its own power station |
+| 10 | Repsol | La Pobla de Mafumet | ES | 150 MW | announced | host: the refinery |
+| 11 | Shell Nederland | Tweede Maasvlakte | NL | 200 MW | construction | none |
+| 12 | Air Liquide | Maasvlakte | NL | 200 MW | fid | none |
+| 13 | EWE AG | Emden | DE | 320 MW | construction | none |
+| 14 | OMV | Bruck an der Leitha | AT | 140 MW · 23,000 t/y | construction | none |
+| 15 | Repsol | Cartagena | ES | 100 MW · 15,000 t/y | fid | none |
+| 16 | Reolum | La Robla, León | ES | 200 MW · 28,000 t/y | announced | none |
+| 17 | Copenhagen Infrastructure Partners | Måde, Esbjerg | DK | 100,000 t H2/y · 600,000 t NH3/y | announced | none |
+| 18 | H2APEX Group | Lubmin | DE | 100 MW | announced | none |
+| 19 | RWE Generation SE (JV of four) | Rostock port | DE | 100 MW | funded | none |
+| 20 | Copenhagen Infrastructure Partners | Andorra, Teruel | ES | 500 MW · 40,000 t/y | announced | none |
 
-1,550 MW of electrolyser capacity, all ten with a stated figure —
-`check_capacity_clause` prints `clean: 10 of 10 plants with a stated capacity`,
-which is still the only sector on this platform where that is true.
+**3,410 MW of electrolyser capacity, plus one row stated in tonnes.** All twenty
+carry a stated figure — `clean: 20 of 20 plants with a stated capacity`, still
+the only sector on this platform where that is true. Row 17 is the reason the
+no-conversion rule was worth writing: HØST states an annual mass and no megawatts
+at all, and the gigawatt figure that circulates for it is on no company page read
+here.
 
-**The first slip anywhere in this dataset is on row 1.** RWE said the first
+**Two ownership events and one insolvency.** OMV's venture with Masdar on
+6 November 2025 (49 per cent), and H2APEX taking sole ownership of HH2E Werk
+Lubmin out of insolvency plan proceedings on 2 July 2025 — this sector's first
+stop, `finance`, whose only surviving company source is the acquirer's, because
+HH2E's own domain now refuses a connection outright.
+
+**The first slip anywhere in this dataset is still row 1.** RWE said the first
 Lingen electrolyser would be commissioned in 2024, then in 2025 — one speaker,
 one milestone, twelve months. Across three other sectors the slip table has only
 ever held disagreements.
-
-### The ten candidates, and what each waits on
-
-Every one is in `sources/hydrogen_candidates.json` with the sentence its capacity
-was read from.
-
-| Candidate | Country | MW | Waiting on |
-|---|---|---|---|
-| Shell Holland Hydrogen 1, Maasvlakte | NL | 200 | no works polygon of any kind — Maasvlakte swept |
-| Air Liquide ELYgator, Maasvlakte | NL | 200 | same sweep, same answer |
-| EWE, Emden | DE | 320 | no works polygon — Emden swept; Statkraft's Kraftwerk Emden is a different works and must not be used |
-| OMV, Bruck an der Leitha | AT | 140 | greenfield — nothing drawn |
-| Repsol, Cartagena | ES | 100 | the refinery itself is not drawn; the Escombreras estate polygon is refused |
-| Reolum, La Robla Green | ES | 200 | the only polygon found is the biomass half's brownfield |
-| CIP, HØST PtX Esbjerg | DK | — (100 kt H2/y) | the only feature naming the developer is an office, refused |
-| H2APEX, Lubmin (ex-HH2E) | DE | 100 | an industrial park, refused as an estate |
-| HyTechHafen Rostock | DE | 100 | a port, refused as an estate; and which of four JV partners is the operator |
-| CIP, Catalina | ES | 500 | a company source naming the electrolyser site |
-
-**Nine of the ten now wait on the same thing and it is not the same thing they
-waited on yesterday.** Before the ruling they waited on a polygon of the
-installation. Now they wait on a polygon of anything at all that is a works
-rather than an estate.
 
 ### Refused, by class
 
@@ -361,9 +367,9 @@ looked for. If the answer is to admit a site on the host works alone, that is a
 ruling that would land most of the thirteen immediately, and it is the single
 most valuable thing to decide on this read.
 
-### Step 2 decisions, after George's rulings of 9 September 2026
+### Step 2 decisions, after the first set of rulings on 9 September 2026
 
-**D14. `site_precision` is recorded per SITE, not per row.** The ruling says
+**D14. `location_precision` is recorded per SITE, not per row.** The ruling says
 "every project row", and a row is not always at one place: ArcelorMittal covers
 Bremen and Eisenhüttenstadt. One field on the row would have to pick between two
 answers. Every row carries it in the only place it can be true — on each of its
@@ -411,6 +417,52 @@ It is named inside the Petronor release — "a large electrolyzer in Tarragona, 
 a capacity of 150 MW" — and has no release of its own. That clears the perimeter,
 which asks for a company-confirmed site and a figure, and the row says in its own
 capacity note that this is all it rests on.
+
+### Step 3 decisions, after the second set of rulings on 9 September 2026
+
+**D21. `location_precision: "none"` is a ROW-level field and the other three are
+per-site.** A row with sites carries the precision on each of them, because a row
+is not always at one place; a row with no sites carries `none` on itself, because
+there is nothing to hang it on. The gate refuses a row-level value where sites
+exist and refuses a row with no sites that does not say `none` — so the state is
+always positive and never inferred from an absence.
+
+**D22. The no-position sentence branches on whether the project stopped.** A
+stopped row's location was never sought; an active row's was sought and not
+found. Telling the reader of a live 200 MW electrolyser that "looking for one was
+not thought worth doing" would be false about work that was done, so
+`projectNoLocationProse` has two sentences and the row's own note carries the
+sweep.
+
+**D23. The overview's undrawn clause has three reasons, not two.** Cancelled,
+location not sought, and no citable source places the works. Folding the third
+into the second would have said nobody looked.
+
+**D24. EWE AG carries no owner type at all, and the gate now requires that to be
+a decision.** EWE is not listed on an exchange and is held by municipal
+associations together with a private investor; no source read here states the
+split, so `private` and `state-owned` would both be assertions and `mixed`
+describes a row rather than a party. The row carries a note instead, and a row
+with neither value nor note now fails — on the sectors that have adopted the
+field. The fifty-one that predate it are reported, not failed, on the same
+reading the stop-reason backfill was done under.
+
+**D25. Repsol Cartagena's owners are recorded as 75/25 and the 75 is derived.**
+The release states that Enagás Renovable "holds a 25% stake in the project" and
+says nothing about the rest. Recording Repsol at 75 is arithmetic on a two-party
+statement rather than a figure the company gives, and it is the only share on
+these rows that is not quoted. It changes nothing — the majority is Repsol's
+either way — and it is written here because a share that looks sourced and is not
+is exactly the thing this docket exists to catch.
+
+**D26. FREYR and NOVO were refiled and the notes keep the day they were wrong.**
+`strategy` and `partner` now exist; both rows were filed at `ownership` for one
+day with the misfit written beside them, and the note on each says so rather than
+being rewritten as though the values had always been there.
+
+**D27. Twenty rows, and the benchmark file no longer has a candidate column
+worth reading.** Every admitted object is a row, so `state` is `row` for all
+twenty and the comparison is simply this register against the two lists.
 
 ---
 
@@ -467,8 +519,20 @@ capacity note that this is all it rests on.
     Northvolt lists four things. The field takes what CHANGED and the verbatim
     keeps the rest, which works and is a convention rather than a rule anything
     enforces.
-12. **`site_precision` and `precision` are two fields about one coordinate and a
+12. **`location_precision` and `precision` are two fields about one coordinate and a
     reader will confuse them.** `precision` says what kind of place the point is
-    (a works or a site); `site_precision` says how the position was resolved.
+    (a works or a site); `location_precision` says how the position was resolved.
     Both are needed, both are gated, and the names do not tell them apart. Worth
     renaming before a third sector arrives.
+13. **A party's listing has no value for "not listed and the split is unknown".**
+    EWE AG is the case. The row-level `mixed` cannot be used, because it is a
+    statement about a split between named parties, and neither `private` nor
+    `state-owned` is sourced. The row carries no value and a note, which works
+    and is not a vocabulary.
+14. **`location_precision` at row level and at site level is one name for two
+    scopes.** `none` can only be a row and `works`/`parcel`/`point` can only be a
+    site, which is coherent and is not obvious from the name. Rule 12 asked for a
+    rename before a third sector; this makes it two names, not one.
+15. **The undrawn clause will not scale.** It names every undrawn row, which is
+    right at ten and unreadable at fifty. The hydrogen overview is not drawn yet,
+    so nothing renders it today; the sentence needs a cutoff before it does.

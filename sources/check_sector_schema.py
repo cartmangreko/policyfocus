@@ -88,6 +88,8 @@ class Errors:
     def __init__(self) -> None:
         self.errors: list[str] = []
         self.stale: list[str] = []
+        # Rows on sectors that have not yet adopted owners-as-a-list.
+        self.ownerless: list[str] = []
 
     def add(self, where: str, msg: str) -> None:
         self.errors.append(f"  {where}: {msg}")
@@ -367,24 +369,34 @@ def _location(e: Errors, where: str, row: dict) -> None:
     """
     sites = row.get("location")
     note = (row.get("location_note") or "").strip()
-    stopped = row.get("status") in sm.STOPPED_STATUSES
+    row_precision = row.get("location_precision")
     if not sites:
-        # A STOPPED ROW MAY STAND WITHOUT A POSITION, AND ONLY WITH A NOTE. The
-        # rule the note carries is the whole of the allowance: location is sought
-        # for active rows, and a cancelled or paused project says that it was not
-        # sought rather than leaving an absence that reads like an oversight.
-        # Both halves are required, and the second is what stops this from
-        # becoming the place coordinates go to be avoided.
-        if not stopped:
-            e.add(where, f"no location, and status={row.get('status')!r} is not one of "
-                         f"{list(sm.STOPPED_STATUSES)} — an active project carries at "
-                         f"least one site with a latitude and a longitude. A row that "
-                         f"returns to an active status needs its position found")
-        elif not note:
-            e.add(where, "no location and no location_note — a stopped row may stand "
-                         "without a position, and only where it says so. Write what was "
-                         "not sought and why, so the absence is a decision on the record")
+        # POSITION IS NOT AN ADMISSION LEG. Ruled 9 September 2026. A row with no
+        # site says so POSITIVELY — `location_precision: "none"` on the row —
+        # rather than by an absence a reader has to notice. It is admitted, it is
+        # counted, it is named in the sentence over the overview as a row the
+        # picture does not draw, and its own page renders without the location
+        # section instead of with an empty one.
+        #
+        # THE NOTE IS STILL REQUIRED AND IS DOING MORE WORK THAN BEFORE. It is
+        # the record of where a polygon was looked for, which is what stops this
+        # from becoming the place coordinates go to be avoided: a reader can see
+        # that Maasvlakte was swept, that HØST's only feature is an office, that
+        # an industrial park is refused as an estate.
+        if row_precision != "none":
+            e.add(where, f"no location and location_precision={row_precision!r} — a row "
+                         f"with no site says so with location_precision \"none\", which "
+                         f"is a state on the record rather than an absence a reader has "
+                         f"to infer")
+        if not note:
+            e.add(where, "no location and no location_note — write where a position was "
+                         "looked for and what was found, so the absence is a decision on "
+                         "the record and nobody repeats the sweep")
         return
+    if row_precision is not None:
+        e.add(where, f"carries location_precision={row_precision!r} at row level and has "
+                     f"{len(sites)} site(s) — the row-level field says `none` and nothing "
+                     f"else; where there are sites, each carries its own")
     if note:
         e.add(where, "carries both a location and a location_note — the note explains an "
                      "absence, and there is nothing absent here")
@@ -393,12 +405,12 @@ def _location(e: Errors, where: str, row: dict) -> None:
         return
     for i, s in enumerate(sites):
         w = f"{where} location[{i}]"
-        _req(e, w, s, "site", "precision", "site_precision", "retrieved_date",
+        _req(e, w, s, "site", "precision", "location_precision", "retrieved_date",
              "confidence")
         _date(e, w, s, "retrieved_date")
         _vocab(e, w, s, "confidence", sm.CONFIDENCE)
         _vocab(e, w, s, "precision", sm.LOCATION_PRECISIONS)
-        _vocab(e, w, s, "site_precision", sm.SITE_PRECISIONS)
+        _vocab(e, w, s, "location_precision", sm.LOCATION_PRECISION_VALUES)
         if s.get("precision") == "town":
             e.add(w, "precision=town — a town centroid is not a plant site. Find the "
                      "works, or leave the project out of the register until somebody has")
@@ -447,12 +459,12 @@ def _location(e: Errors, where: str, row: dict) -> None:
             _date(e, f"{w} refused_declared_reader", refused, "last_verified")
 
         # HOW THE POSITION WAS RESOLVED HAS TO AGREE WITH WHAT RESOLVED IT.
-        # sm.SITE_PRECISION_BY_SOURCE is the table; a source type absent from it
+        # sm.LOCATION_PRECISION_BY_SOURCE is the table; a source type absent from it
         # is one this check has nothing to say about, which today is only the
         # named coordinate-source exception.
-        want = sm.SITE_PRECISION_BY_SOURCE.get((src or {}).get("type"))
-        if want and s.get("site_precision") != want:
-            e.add(w, f"site_precision={s.get('site_precision')!r} on a "
+        want = sm.LOCATION_PRECISION_BY_SOURCE.get((src or {}).get("type"))
+        if want and s.get("location_precision") != want:
+            e.add(w, f"location_precision={s.get('location_precision')!r} on a "
                      f"{src.get('type')!r} source, which supports {want!r} — the field "
                      f"is read off the evidence, and a precision the source cannot "
                      f"carry is a claim about the coordinate that nothing backs")
@@ -466,8 +478,8 @@ def _location(e: Errors, where: str, row: dict) -> None:
         # about the project's own ground by construction.
         host = s.get("host_works")
         if host is not None:
-            if s.get("site_precision") != "works":
-                e.add(w, f"host_works on a site_precision={s.get('site_precision')!r} "
+            if s.get("location_precision") != "works":
+                e.add(w, f"host_works on a location_precision={s.get('location_precision')!r} "
                          f"coordinate — a host works is a works polygon, and a parcel "
                          f"list or a stated point is already the project's own ground")
             if not str(host).strip():
@@ -903,8 +915,20 @@ def _stop_reason(e: Errors, where: str, h: dict, transition: bool) -> None:
     elif reason is not None and h.get("status_to") not in sm.STOP_REASON_STATUSES:
         e.add(where, "carries a stop_reason and does not stop the project")
     if reason is not None:
-        _vocab(e, where, h, "stop_reason", sm.STOP_REASONS)
-        if reason != "unstated" and not h.get("stop_reason_verbatim"):
+        if not isinstance(reason, list) or not reason:
+            e.add(where, "stop_reason must be a non-empty list, first entry primary — "
+                         "sources give more than one reason and the field used to make "
+                         "the register choose one and drop the rest into prose")
+            reason = []
+        for one in reason:
+            if one not in sm.STOP_REASONS:
+                e.add(where, f"stop_reason {one!r} is not one of {list(sm.STOP_REASONS)}")
+        if len(reason) != len(set(reason)):
+            e.add(where, "stop_reason repeats a value")
+        if "unstated" in reason and len(reason) > 1:
+            e.add(where, "stop_reason lists `unstated` beside another value — a source "
+                         "that gives no reason cannot also give a secondary one")
+        if reason and reason != ["unstated"] and not h.get("stop_reason_verbatim"):
             e.add(where, f"stop_reason={reason!r} with no stop_reason_verbatim — a reason "
                          f"that is not 'unstated' was read from a sentence, and the "
                          f"sentence is what makes it checkable")
@@ -920,10 +944,80 @@ def _stop_reason(e: Errors, where: str, h: dict, transition: bool) -> None:
         e.add(where, "carries a stop_reason quote and no stop_reason")
 
 
-def _owner_and_benchmarks(e: Errors, where: str, row: dict) -> None:
-    """Who owns the operator, and what the outside lists call this project."""
+# THE SECTORS THAT HAVE ADOPTED owners-as-a-list. Hydrogen is written to it from
+# the first row. The fifty-one rows that predate it are REPORTED and not failed,
+# on the same reading the stop-reason backfill was done under: the honest way to
+# fill an owner type is to read who owns the operator, and writing a plausible
+# one across fifty-one rows to turn a gate green is the failure the field exists
+# to prevent. The count is printed on every run until somebody does the reading.
+OWNER_SECTORS = ("clean",)
+
+
+def _owner_and_benchmarks(e: Errors, where: str, row: dict, sector: str | None) -> None:
+    """Who owns the operator, and what the outside lists call this project.
+
+    `owners` IS THE FACT AND `owner_listing` IS READ OFF IT. A project company is
+    usually more than one party, and a single label was only ever workable
+    because the first split this register met happened to have a majority. The
+    list carries each party with its share and its own listing; the summary is
+    the listing of whoever holds more than half, and `mixed` where nobody does.
+
+    THE DERIVATION IS CHECKED RATHER THAN TRUSTED, because the whole point of
+    storing a derived value is that a reader does not have to compute it — and a
+    stored value nothing checks is a second source of truth waiting to drift.
+    """
+    owners = row.get("owners")
+    if owners is not None:
+        if not isinstance(owners, list) or not owners:
+            e.add(where, "owners must be a non-empty list of {name, share, listing}")
+            owners = None
+        else:
+            total = 0.0
+            for i, o in enumerate(owners):
+                w = f"{where} owners[{i}]"
+                _req(e, w, o, "name", "listing")
+                _vocab(e, w, o, "listing", sm.OWNER_LISTINGS)
+                if o.get("listing") == "mixed":
+                    e.add(w, "`mixed` describes a row and not a party — an owner is "
+                             "listed, private or state-owned")
+                if "share" not in o:
+                    e.add(w, "no share; use null where no source states one")
+                elif o["share"] is not None:
+                    if not isinstance(o["share"], (int, float)) or not 0 < o["share"] <= 100:
+                        e.add(w, f"share={o['share']!r} is not a percentage in (0, 100]")
+                    else:
+                        total += float(o["share"])
+            if total > 100.0001:
+                e.add(where, f"owner shares total {total:g} per cent")
     if row.get("owner_listing") is not None:
         _vocab(e, where, row, "owner_listing", sm.OWNER_LISTINGS)
+    if owners:
+        majority = [o for o in owners
+                    if isinstance(o.get("share"), (int, float)) and o["share"] > 50]
+        want = majority[0]["listing"] if majority else "mixed"
+        if row.get("owner_listing") != want:
+            e.add(where, f"owner_listing={row.get('owner_listing')!r} but the owners list "
+                         f"gives {want!r} — it is the listing of the party holding more "
+                         f"than half, and `mixed` where nobody does")
+    elif row.get("owner_listing") == "mixed":
+        e.add(where, "owner_listing=`mixed` with no owners list — `mixed` is a statement "
+                     "about a split, and the split has to be on the row")
+    # AN ABSENT OWNER TYPE IS A DECISION AND SAYS SO. The paper compares
+    # disclosure by owner type, so a row with no answer is a row missing from
+    # that comparison; leaving the field empty and silent would make "nobody
+    # looked" and "the sources do not say" the same state. EWE is the case: it is
+    # not listed on an exchange, it is held by municipal associations together
+    # with a private investor, and no source read here states the split — so
+    # `private` and `state-owned` would both be assertions and the row says that
+    # instead of picking one.
+    if row.get("owner_listing") is None and not (row.get("owner_listing_note") or "").strip():
+        msg = ("no owner_listing and no owner_listing_note — the disclosure comparison "
+               "the field exists for needs to know whether this row has no answer or was "
+               "never asked")
+        if sector in OWNER_SECTORS:
+            e.add(where, msg)
+        else:
+            e.ownerless.append(f"  {where}")
     marks = row.get("benchmarks")
     if marks is None:
         return
@@ -1037,7 +1131,7 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
         _location(e, w, r)
         _storage(e, w, r, technologies, project_ids)
         _edges(e, w, r, project_ids)
-        _owner_and_benchmarks(e, w, r)
+        _owner_and_benchmarks(e, w, r, r.get("sector"))
         _source_list(e, w, r)
 
 
@@ -1724,6 +1818,11 @@ def main() -> int:
         print(f"\ndraft prose awaiting review ({len(drafts)}) — the page renders the computed "
               f"sentence until the block in data/prose.json is approved:")
         print("\n".join(drafts))
+    if e.ownerless:
+        print(f"\nrows with no owner type ({len(e.ownerless)}) — reported, not failed: "
+              f"these predate owners-as-a-list, and filling an owner type honestly means "
+              f"reading who owns the operator. See OWNER_SECTORS:")
+        print("\n".join(e.ownerless))
     if e.stale:
         print(f"\nstale parameters ({len(e.stale)}) — reported, not failed:")
         print("\n".join(e.stale))

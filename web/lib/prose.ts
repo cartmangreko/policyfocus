@@ -231,9 +231,14 @@ export interface UndrawnRow {
   id: string;
   name: string;
   status: string;
-  /** Whether the row has a position at all. False is a stopped project whose
-   *  location was never sought — see its own `location_note`. */
+  /** Whether the row has a position at all. False is a row the picture cannot
+   *  draw; `stopped` says which of the two reasons applies. */
   sited: boolean;
+  /** Whether the project has stopped. A stopped unsited row was never looked
+   *  for; an ACTIVE unsited row was looked for and not found. The sentence over
+   *  the picture names the two separately, because a reader counting sites
+   *  against the projects table is owed the difference. */
+  stopped: boolean;
 }
 
 export function sectorGeoProse(c: {
@@ -262,11 +267,19 @@ export function sectorGeoProse(c: {
   const { projects, rows } = c.undrawn;
   const named = rows ?? [];
   const off = named.filter((r) => r.sited).map((r) => r.name);
-  const unsited = named.filter((r) => !r.sited);
+  const unsitedStopped = named.filter((r) => !r.sited && r.stopped);
+  const unsitedLive = named.filter((r) => !r.sited && !r.stopped);
   const clauses = [
     off.length > 0 ? `${list(off)} — cancelled` : null,
-    unsited.length > 0
-      ? `${list(unsited.map((r) => `${r.name} (${r.status})`))} — location not sought`
+    unsitedStopped.length > 0
+      ? `${list(unsitedStopped.map((r) => `${r.name} (${r.status})`))} — location not sought`
+      : null,
+    // THE THIRD REASON, ADDED 9 SEPTEMBER 2026. A row that is being built and
+    // that nobody has drawn is on file and off the paper, and it is neither
+    // cancelled nor unlooked-for. Naming it separately is the whole of what
+    // stops the picture from reading as the sector.
+    unsitedLive.length > 0
+      ? `${list(unsitedLive.map((r) => `${r.name} (${r.status})`))} — no citable source places the works`
       : null,
   ].filter(Boolean) as string[];
   const left =
@@ -315,14 +328,32 @@ export function projectNoLocationProse(c: {
   status: string;
   plant?: string;
   country: string;
+  /** Whether the project has stopped. TWO REASONS A ROW HAS NO POSITION AND
+   *  THEY ARE NOT THE SAME FACT, which is why this branches rather than
+   *  softening one sentence to cover both. A stopped project was never looked
+   *  for: location is sought for active rows and hunting the parcel of a works
+   *  nobody will build buys a dot no reader should trust. An ACTIVE row with no
+   *  position was looked for and not found — position stopped being an
+   *  admission leg on 9 September 2026 — and telling that reader "nobody
+   *  thought it worth doing" would be false about work that was done. */
+  stopped: boolean;
 }): string {
   const place = c.plant ? `${c.plant}, ${c.country}` : c.country;
-  const stopped = c.status === "cancelled" ? "cancelled" : c.status;
+  if (c.stopped) {
+    const stopped = c.status === "cancelled" ? "cancelled" : c.status;
+    return (
+      `${c.name} is ${stopped}, and this register holds no position for it. ` +
+      `It was to be at ${place}; the works was never placed to the precision a ` +
+      `mark on a picture would claim, and looking for one was not thought worth ` +
+      `doing on a project that stopped.`
+    );
+  }
   return (
-    `${c.name} is ${stopped}, and this register holds no position for it. ` +
-    `It was to be at ${place}; the works was never placed to the precision a ` +
-    `mark on a picture would claim, and looking for one was not thought worth ` +
-    `doing on a project that stopped.`
+    `${c.name} is at ${place}, and this register holds no position for it. ` +
+    `The company has confirmed the site and no citable source places the works: ` +
+    `it is being built where nobody has yet drawn it. The row is held anyway — ` +
+    `position is not a condition of being on file — and what was searched, and ` +
+    `what was found instead, is below.`
   );
 }
 

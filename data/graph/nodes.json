@@ -8641,7 +8641,7 @@
      "lat": 51.0362,
      "lon": 2.298,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/618631514",
@@ -8673,7 +8673,7 @@
      "lat": 50.5186,
      "lon": 2.8485,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-01",
      "source": {
       "url": "https://www.openstreetmap.org/way/1196306304",
@@ -8720,7 +8720,7 @@
      "lat": 41.9553,
      "lon": 15.0031,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-01",
      "source": {
       "url": "https://www.openstreetmap.org/way/77616014",
@@ -8753,7 +8753,7 @@
      "lat": 51.177,
      "lon": -2.9549,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-02",
      "source": {
       "url": "https://www.openstreetmap.org/way/125139808",
@@ -8767,6 +8767,21 @@
     }
    ],
    "location_note": null
+  }
+ },
+ {
+  "id": "project:airliquide-elygator-maasvlakte",
+  "kind": "project",
+  "label": "ELYgator",
+  "attrs": {
+   "company": "Air Liquide",
+   "plant": "Maasvlakte, Port of Rotterdam",
+   "country": "NL",
+   "status": "fid",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION, AND IT WAS LOOKED FOR — the same Maasvlakte sweep of 9 September 2026 that failed to place Holland Hydrogen 1. No host works either: Air Liquide's existing Dutch assets are elsewhere in the port. NOTE THAT THE SITE MOVED AND THE BENCHMARKS DID NOT: both external lists place ELYgator in the Netherlands from an earlier plan at Terneuzen, and the FID release puts it at Maasvlakte. Matching by company and site has to follow the company."
   }
  },
  {
@@ -8786,7 +8801,7 @@
      "lat": 49.4955,
      "lon": 0.5021,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-09",
      "source": {
       "url": "https://www.openstreetmap.org/way/1451191745",
@@ -8819,7 +8834,7 @@
      "lat": 53.1331,
      "lon": 8.689,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/3942800",
@@ -8835,7 +8850,7 @@
      "lat": 52.1892,
      "lon": 14.6213,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/41196685",
@@ -8867,7 +8882,7 @@
      "lat": 43.2343,
      "lon": 27.5951,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/196776675",
@@ -8899,7 +8914,7 @@
      "lat": 52.5605,
      "lon": 7.3073,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "host_works": "bp Raffinerie Lingen",
      "retrieved_date": "2026-09-09",
      "source": {
@@ -8933,7 +8948,7 @@
      "lat": 59.0644,
      "lon": 9.6912,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/1437635",
@@ -8980,7 +8995,7 @@
      "lat": 37.9871,
      "lon": -8.7974,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-05",
      "source": {
       "url": "https://www.openstreetmap.org/way/1262719042",
@@ -9038,7 +9053,7 @@
      "lat": 53.8759,
      "lon": 9.5822,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/29202456",
@@ -9051,6 +9066,21 @@
     }
    ],
    "location_note": null
+  }
+ },
+ {
+  "id": "project:catalina-teruel-sagunto",
+  "kind": "project",
+  "label": "Project Catalina, phase I",
+  "attrs": {
+   "company": "Copenhagen Infrastructure Partners",
+   "plant": "Andorra, Teruel",
+   "country": "ES",
+   "status": "announced",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION. The company source names the municipality and the grid auction it is applying to — 'Catalina Phase I is applying for grid connection in Andorra (Teruel), at the Mudejar auction' — and no site within it. There is nothing to look for a polygon of, and a municipality is not a works. THE PROJECT ALSO HAS A SECOND PLACE, an ammonia plant at Sagunto 250 km away, which the location list would hold as a second site if either could be placed; the ArcelorMittal row is the precedent for a project on two sites."
   }
  },
  {
@@ -9070,7 +9100,7 @@
      "lat": 50.8611,
      "lon": 10.9502,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-02",
      "source": {
       "url": "https://www.openstreetmap.org/way/776264491",
@@ -9103,7 +9133,7 @@
      "lat": 47.4632,
      "lon": 21.6201,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-02",
      "source": {
       "url": "https://www.openstreetmap.org/relation/18559299",
@@ -9136,7 +9166,7 @@
      "lat": 41.7523,
      "lon": -1.1792,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-01",
      "source": {
       "url": "https://www.openstreetmap.org/way/134929549",
@@ -9169,7 +9199,7 @@
      "lat": 50.3556,
      "lon": 3.0266,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-02",
      "source": {
       "url": "https://www.openstreetmap.org/way/1547499346",
@@ -9201,7 +9231,7 @@
      "lat": 39.9152,
      "lon": -5.5116,
      "precision": "plant",
-     "site_precision": "point",
+     "location_precision": "point",
      "retrieved_date": "2026-09-05",
      "grid_reference": {
       "system": "ETRS89 / UTM 30N",
@@ -9238,7 +9268,7 @@
      "lat": 54.9221,
      "lon": -1.4837,
      "precision": "plant",
-     "site_precision": "point",
+     "location_precision": "point",
      "retrieved_date": "2026-09-04",
      "grid_reference": {
       "system": "OSGB36",
@@ -9283,7 +9313,7 @@
      "lat": 47.5806,
      "lon": 21.5154,
      "precision": "plant",
-     "site_precision": "point",
+     "location_precision": "point",
      "retrieved_date": "2026-09-07",
      "grid_reference": {
       "system": "HD72 / EOV",
@@ -9311,6 +9341,21 @@
     }
    ],
    "location_note": null
+  }
+ },
+ {
+  "id": "project:ewe-emden-electrolysis",
+  "kind": "project",
+  "label": "Clean Hydrogen Coastline — Electrolysis East Frisia, Emden",
+  "attrs": {
+   "company": "EWE AG",
+   "plant": "Emden",
+   "country": "DE",
+   "status": "construction",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION, AND IT WAS LOOKED FOR. Every named man_made=works, landuse=construction and power=plant feature in a box over Emden was listed from Overpass on 9 September 2026: the Volkswagen works, the Außenhafen, the Amprion converter station at Petkum and thirty-odd builders' yards are drawn, and the electrolyser is not. There is no host works — EWE is building on its own ground and the basemap carries nothing of EWE's in Emden. Statkraft's Kraftwerk Emden, way/104878489, is a DIFFERENT works and must not be used for this row."
   }
  },
  {
@@ -9360,7 +9405,7 @@
      "lat": 43.0446,
      "lon": 28.1932,
      "precision": "site",
-     "site_precision": "point",
+     "location_precision": "point",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://en.wikipedia.org/wiki/Galata_gas_field",
@@ -9392,7 +9437,7 @@
      "lat": 37.9586,
      "lon": -8.8114,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "host_works": "Refinaria de Sines",
      "retrieved_date": "2026-09-09",
      "source": {
@@ -9426,7 +9471,7 @@
      "lat": 51.6191,
      "lon": 8.5118,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/231449793",
@@ -9465,7 +9510,7 @@
      "lat": 48.0686,
      "lon": 18.1629,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-02",
      "source": {
       "url": "https://www.openstreetmap.org/way/1445839308",
@@ -9498,7 +9543,7 @@
      "lat": 50.4709,
      "lon": 3.9948,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/10785798",
@@ -9530,7 +9575,7 @@
      "lat": 47.3831,
      "lon": 15.0604,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/11365499",
@@ -9562,7 +9607,7 @@
      "lat": 48.2785,
      "lon": 14.3196,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/28854956",
@@ -9585,6 +9630,21 @@
   }
  },
  {
+  "id": "project:h2apex-lubmin-hh2e",
+  "kind": "project",
+  "label": "Lubmin 100 MW electrolyser (formerly HH2E)",
+  "attrs": {
+   "company": "H2APEX Group SCA",
+   "plant": "Lubmin",
+   "country": "DE",
+   "status": "announced",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION, AND WHAT WAS FOUND IS AN ESTATE. way/177888468, 'Energie- und Technologiepark Lubmin', is the industrial park the site sits in, and an estate polygon is refused on the rule Subotica and Mo i Rana settled: it places a park, not a works, and every tenant of it would get the same dot. way/1068737977 is the port administration BUILDING. Neither is a host works. Searched 9 September 2026."
+  }
+ },
+ {
   "id": "project:hghh-moorburg",
   "kind": "project",
   "label": "Hamburg Green Hydrogen Hub, Moorburg",
@@ -9601,7 +9661,7 @@
      "lat": 53.4885,
      "lon": 9.95,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "host_works": "Kohlekraftwerk Moorburg (stillgelegt)",
      "retrieved_date": "2026-09-09",
      "source": {
@@ -9616,6 +9676,21 @@
     }
    ],
    "location_note": null
+  }
+ },
+ {
+  "id": "project:hoest-ptx-esbjerg",
+  "kind": "project",
+  "label": "HØST PtX Esbjerg",
+  "attrs": {
+   "company": "Copenhagen Infrastructure Partners",
+   "plant": "Måde, Esbjerg",
+   "country": "DK",
+   "status": "announced",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION, AND THE ONE FEATURE FOUND IS AN OFFICE. Nominatim returns node/13198011777, 'Copenhagen Infrastructure Partners - Høst PtX', tagged office=company at Nordre Dokkaj in Esbjerg — a place where the project is administered and not where it is built, refused on the same rule that refused a registered address for the battery rows. The Måde industrial area the company names carries no works polygon and there is no host works: the site is greenfield. Searched 9 September 2026."
   }
  },
  {
@@ -9635,7 +9710,7 @@
      "lat": 65.5557,
      "lon": 22.2057,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/847533124",
@@ -9649,6 +9724,21 @@
     }
    ],
    "location_note": null
+  }
+ },
+ {
+  "id": "project:hytechhafen-rostock",
+  "kind": "project",
+  "label": "HyTechHafen Rostock",
+  "attrs": {
+   "company": "RWE Generation SE",
+   "plant": "Rostock port",
+   "country": "DE",
+   "status": "funded",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION. The port was searched on 9 September 2026 and returns the port development company's office and a place=suburb node for Überseehafen — an office and a neighbourhood, both refused. THE SOURCE DOES NOT NAME A SITE WITHIN THE PORT either, so there is nothing to look for a polygon of: 'a 100-MW electrolyser will be constructed at Rostock port' is the whole of what the company states about where."
   }
  },
  {
@@ -9668,7 +9758,7 @@
      "lat": 38.1292,
      "lon": 23.5218,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/188683552",
@@ -9701,7 +9791,7 @@
      "lat": 45.46,
      "lon": 7.876,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-03",
      "source": {
       "url": "https://www.openstreetmap.org/way/162150670",
@@ -9734,7 +9824,7 @@
      "lat": 50.6946,
      "lon": 2.106,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/670671322",
@@ -9747,6 +9837,21 @@
     }
    ],
    "location_note": null
+  }
+ },
+ {
+  "id": "project:la-robla-green",
+  "kind": "project",
+  "label": "La Robla Green — 200 MW electrolyser",
+  "attrs": {
+   "company": "Reolum",
+   "plant": "El Crispín, La Robla, León",
+   "country": "ES",
+   "status": "announced",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION, AND THE ONE POLYGON FOUND IS THE WRONG HALF OF THE PROJECT. way/189577212, 'Antigua Central Térmica de La Robla', is the brownfield of the former coal station, which the company names as the site of the BIOMASS plant; the electrolyser is stated as being at the El Crispín industrial estate, a different place with no feature of its own. Using the brownfield would put the mark on the half of the project this perimeter does not hold. Searched 9 September 2026."
   }
  },
  {
@@ -9766,7 +9871,7 @@
      "lat": 51.0205,
      "lon": 16.886,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-02",
      "source": {
       "url": "https://www.openstreetmap.org/way/922173635",
@@ -9798,7 +9903,7 @@
      "lat": 54.1953,
      "lon": 9.0547,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-02",
      "source": {
       "url": "https://www.openstreetmap.org/way/1238083686",
@@ -9830,7 +9935,7 @@
      "lat": 37.1811,
      "lon": -6.9027,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "host_works": "Refinería de La Rábida, Palos de la Frontera",
      "retrieved_date": "2026-09-09",
      "source": {
@@ -9864,7 +9969,7 @@
      "lat": 58.5004,
      "lon": 8.803,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-02",
      "source": {
       "url": "https://www.openstreetmap.org/way/1308751286",
@@ -9896,7 +10001,7 @@
      "lat": 60.5539,
      "lon": 4.8856,
      "precision": "site",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/4777286",
@@ -9929,7 +10034,7 @@
      "lat": 64.734,
      "lon": 21.0871,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-01",
      "source": {
       "url": "https://www.openstreetmap.org/way/906692713",
@@ -9961,6 +10066,21 @@
   }
  },
  {
+  "id": "project:omv-bruck-an-der-leitha",
+  "kind": "project",
+  "label": "OMV green hydrogen plant, Bruck an der Leitha",
+  "attrs": {
+   "company": "OMV",
+   "plant": "Bruck an der Leitha",
+   "country": "AT",
+   "status": "construction",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION, AND IT WAS LOOKED FOR. A Nominatim search and an Overpass sweep of the Bruck an der Leitha district on 9 September 2026 return the sewage works and the Biogas Bruck/Leitha plant and nothing of OMV's. There is no host works: OMV's own works is the Schwechat refinery, twenty-two kilometres away at the far end of the pipeline this plant is being built to feed, and placing the electrolyser on the refinery would put the mark in the wrong town."
+  }
+ },
+ {
   "id": "project:powerco-sagunto",
   "kind": "project",
   "label": "PowerCo Valencia",
@@ -9977,7 +10097,7 @@
      "lat": 39.6482,
      "lon": -0.2683,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-02",
      "source": {
       "url": "https://www.openstreetmap.org/way/1180219207",
@@ -10009,7 +10129,7 @@
      "lat": 52.187,
      "lon": 10.4432,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "host_works": "Volkswagen AG Salzgitter works",
      "retrieved_date": "2026-09-01",
      "source": {
@@ -10043,7 +10163,7 @@
      "lat": 40.7987,
      "lon": 24.4976,
      "precision": "site",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/1155096048",
@@ -10057,6 +10177,21 @@
     }
    ],
    "location_note": null
+  }
+ },
+ {
+  "id": "project:repsol-cartagena",
+  "kind": "project",
+  "label": "Cartagena 100 MW electrolyser",
+  "attrs": {
+   "company": "Repsol",
+   "plant": "Cartagena",
+   "country": "ES",
+   "status": "fid",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION, AND IT WAS LOOKED FOR. The Escombreras valley was swept for every named landuse=industrial and man_made=works feature on 9 September 2026: Engie's and Naturgy's power stations, Iberdrola's Central Térmica de Escombreras, ILBOC, Ecocarburantes and the port terminals are drawn, and the Repsol refinery is not — the only Repsol features returned are a substation and the Cartagena–Puertollano pipeline. The estate polygon, 'Complejo Industrial Valle de Escombreras', is refused as an estate on the rule Subotica and Mo i Rana settled. So there is no host works to fall back on either."
   }
  },
  {
@@ -10076,7 +10211,7 @@
      "lat": 43.3312,
      "lon": -3.1089,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "host_works": "Refinería de Petronor, Muskiz",
      "retrieved_date": "2026-09-09",
      "source": {
@@ -10110,7 +10245,7 @@
      "lat": 41.1754,
      "lon": 1.2226,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "host_works": "Repsol Tarragona Refinery",
      "retrieved_date": "2026-09-09",
      "source": {
@@ -10144,7 +10279,7 @@
      "lat": 52.4852,
      "lon": 7.303,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-09",
      "source": {
       "url": "https://www.openstreetmap.org/way/1377883415",
@@ -10176,7 +10311,7 @@
      "lat": 52.1631,
      "lon": 10.4107,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/100545500",
@@ -10208,7 +10343,7 @@
      "lat": 47.674,
      "lon": 19.1631,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-02",
      "source": {
       "url": "https://www.openstreetmap.org/way/1009198739",
@@ -10222,6 +10357,21 @@
     }
    ],
    "location_note": null
+  }
+ },
+ {
+  "id": "project:shell-holland-hydrogen-1",
+  "kind": "project",
+  "label": "Holland Hydrogen 1",
+  "attrs": {
+   "company": "Shell Nederland",
+   "plant": "Tweede Maasvlakte, Rotterdam",
+   "country": "NL",
+   "status": "construction",
+   "transition": "decarbonisation",
+   "role": "plant",
+   "location": [],
+   "location_note": "NO POSITION, AND IT WAS LOOKED FOR. Every named man_made, landuse, power and plant:source feature on Maasvlakte and Maasvlakte 2 was listed from Overpass on 9 September 2026, in a box from 51.94 N 4.00 E to 52.00 N 4.15 E: the Porthos compressor station, the Gate LNG extension, three TenneT converter stations, Uniper's Centrale Maasvlakte and the container terminals are all drawn, and Holland Hydrogen 1 is not. There is no host works either — the plant stands on reclaimed land with nothing of Shell's beside it, its offtake reaching Pernis by pipeline. The Dutch permit route has not been tried and is the next thing to try."
   }
  },
  {
@@ -10241,7 +10391,7 @@
      "lat": 50.8171,
      "lon": 7.0069,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "host_works": "Shell Energy & Chemicals Park Rheinland, Werk Wesseling",
      "retrieved_date": "2026-09-09",
      "source": {
@@ -10275,7 +10425,7 @@
      "lat": 47.134,
      "lon": 18.8204,
      "precision": "plant",
-     "site_precision": "point",
+     "location_precision": "point",
      "retrieved_date": "2026-09-05",
      "source": {
       "url": "https://skonhungary.com/",
@@ -10316,7 +10466,7 @@
      "lat": 47.7401,
      "lon": 18.0685,
      "precision": "plant",
-     "site_precision": "point",
+     "location_precision": "point",
      "retrieved_date": "2026-09-05",
      "source": {
       "url": "https://skonhungary.com/",
@@ -10357,7 +10507,7 @@
      "lat": 57.7121,
      "lon": 18.8015,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/198541727",
@@ -10389,7 +10539,7 @@
      "lat": 65.8098,
      "lon": 21.792,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/way/1388001960",
@@ -10422,7 +10572,7 @@
      "lat": 47.8953,
      "lon": 21.7435,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-04",
      "source": {
       "url": "https://www.openstreetmap.org/way/1263927003",
@@ -10494,7 +10644,7 @@
      "lat": 49.2442,
      "lon": 6.7259,
      "precision": "site",
-     "site_precision": "parcel",
+     "location_precision": "parcel",
      "retrieved_date": "2026-09-05",
      "source": {
       "url": "https://ueberherrn.de/wp-content/uploads/2026/06/Begruendung.pdf",
@@ -10542,7 +10692,7 @@
      "lat": 52.3972,
      "lon": 13.7948,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "host_works": "Tesla Gigafactory Berlin-Brandenburg",
      "retrieved_date": "2026-09-04",
      "source": {
@@ -10576,7 +10726,7 @@
      "lat": 51.4907,
      "lon": 6.7272,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-08-28",
      "source": {
       "url": "https://www.openstreetmap.org/relation/5148195",
@@ -10608,7 +10758,7 @@
      "lat": 51.9644,
      "lon": 4.0221,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "host_works": "Centrale Maasvlakte",
      "retrieved_date": "2026-09-09",
      "source": {
@@ -10642,7 +10792,7 @@
      "lat": 50.9665,
      "lon": 2.1935,
      "precision": "plant",
-     "site_precision": "works",
+     "location_precision": "works",
      "retrieved_date": "2026-09-01",
      "source": {
       "url": "https://www.openstreetmap.org/way/947606985",

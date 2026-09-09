@@ -1054,7 +1054,7 @@ than a green line nobody checked.
 **Ruled 9 September 2026, on the hydrogen docket's D13.** A project whose own
 outline nobody has drawn may take its position from the **host works** — the
 refinery, chemical park or power station it is being built inside — and the row
-says so in three places: `site_precision`, `host_works`, and the sentence over
+says so in three places: `location_precision`, `host_works`, and the sentence over
 the picture.
 
 **Why the earlier reading had to give.** The hydrogen pass admitted twenty sites
@@ -1073,8 +1073,8 @@ changes is which works: the point is the ground the installation stands on rathe
 than its own outline, and the difference is a few hundred metres inside a fence
 the company named.
 
-**So it is recorded rather than absorbed.** `site_precision` — `works`, `parcel`
-or `point` — says how the position was resolved, on every site of every project
+**So it is recorded rather than absorbed.** `location_precision` — `works`, `parcel`,
+`point` or `none` — says how the position was resolved, on every site of every project
 in every sector, and is checked against the source type that produced it.
 `host_works` names the works where the point is not the installation's, and the
 gate refuses one without a note. The standfirst over a project's crop says
@@ -1090,6 +1090,89 @@ have no works polygon of ANY kind — not the installation's, not a host's — b
 they are greenfield sites, port estates and industrial parks, and an estate
 polygon is refused on the rule Subotica and Mo i Rana already settled. The
 constraint moved; it did not vanish.
+
+### Position is not an admission leg
+
+**Ruled 9 September 2026, and it reverses the oldest rule on the geography
+layer.** A project the perimeter admits is held whether or not anybody can place
+it. `location_precision: "none"` on the row is the state, and it is a state
+rather than an absence.
+
+**Why the old rule had to go, and it is not the reason the host-works ruling
+went.** That one was about which works a coordinate may be taken from. This one
+is about whether a coordinate is a condition of existing. The hydrogen pass
+settled it: twenty sites whose operators name them and publish their capacities,
+of which ten had no works polygon of any kind — not their own, not a host's —
+because they are construction fields on reclaimed land, in ports, inside
+industrial parks and on greenfield. Holding position as an admission leg meant a
+register of European hydrogen that omitted Shell's largest plant, Air Liquide's
+second one, the largest single electrolyser figure any company on the file
+states, and the only project on the file with an insolvency in its history.
+**That is not a cautious register. It is a register that reports the coverage of
+OpenStreetMap and calls it industry.**
+
+**What the row owes instead.** A `location_note` saying WHERE A POSITION WAS
+LOOKED FOR AND WHAT WAS FOUND, which is what stops this from becoming the place
+coordinates go to be avoided. The ten notes name the sweeps: Maasvlakte from
+51.94 N to 52.00 N; Emden, where the Volkswagen works and thirty builders' yards
+are drawn and the electrolyser is not; HØST, whose only feature is an office;
+Lubmin and Rostock, where what exists is an estate and a port and both are
+refused on the rule Subotica and Mo i Rana settled; La Robla, where the one
+polygon found is the biomass half of a project this perimeter holds the
+electrolyser of.
+
+**And it is said everywhere it matters.** The row is counted in every count-based
+statistic. The sentence over the sector overview names it in a clause of its own
+— **"no citable source places the works"**, which is a third reason beside
+"cancelled" and "location not sought", and the three do not mean the same thing.
+Its own page renders **without** the location section rather than with an empty
+one, and the sentence there says the company has confirmed the site, that nobody
+has drawn it, and that the row is held anyway.
+
+**What has not changed is what a coordinate means.** A row that HAS one still
+carries a shape somebody independent drew, quoted with its tags, at a stated
+precision. Nothing was softened; a second, honest state was added beside it.
+
+### An owner is a list, and a stop has an ordered list of reasons
+
+**Two fields became lists on 9 September 2026, for the same reason: a single
+value was making the register choose, and the choice was invisible.**
+
+**`owners` is `[{name, share, listing}]` and `owner_listing` is read off it** —
+the listing of the party holding more than half, and `mixed` where nobody does.
+The gate checks the derivation rather than trusting it. Hamburg Green Hydrogen
+Hub is the case that forced it: 74.9 per cent a private asset manager and 25.1
+per cent a city utility, where the single field said `private` and a reader had
+no way to see that a quarter of it is the Free and Hanseatic City of Hamburg. A
+50:50 venture would not have been sayable at all. HyTechHafen Rostock is a
+four-way venture with no stated shares and is `mixed`; Catalina is five-way.
+
+**AND AN ABSENT OWNER TYPE IS A DECISION.** EWE AG is not listed on an exchange
+and is held by municipal associations together with a private investor, and no
+source read here states the split — so `private` and `state-owned` would both be
+assertions. The row carries no value and a note saying that, because a comparison
+of disclosure by owner type needs to know whether a row has no answer or was
+never asked. The fifty-one rows that predate the field are reported on every run,
+not failed, on the same reading the stop-reason backfill was done under.
+
+**`stop_reason` is an ordered list, first entry primary.** Sources give more than
+one and the single-valued field pushed the rest into prose where nothing could
+count them: SVOLT names threatened tariffs, unevenly distributed subsidies AND a
+lost customer project in one sentence; Northvolt names a financing failure and
+then four things that eroded the position; ArcelorMittal names energy costs and
+then weak demand and high imports. **The first entry is what CHANGED** — what
+stopped the project now, as against the conditions it was already living with —
+and it is what a single-reason series should be built on. `unstated` may only
+appear alone.
+
+**Two values were added because the first re-read demanded them.** `strategy` is
+the owner changing the business it is in, which FREYR did and which `ownership`
+described as the owner changing hands. `partner` is a party the project cannot
+proceed without withdrawing or failing, and it is neither the owner nor the
+customer: NOVO Energy has money, a site and a customer, and no technology. Both
+had been filed at their nearest value with the misfit written on the row; both
+are now filed at a value that fits, and the notes keep the record of the day
+they did not.
 
 ### A slip is one speaker changing its mind
 

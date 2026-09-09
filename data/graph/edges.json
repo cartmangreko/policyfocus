@@ -29149,6 +29149,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:airliquide-elygator-maasvlakte",
+  "to": "technology:hydrogen-supply",
+  "since": "2025-07-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=airliquide-elygator-maasvlakte].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:airliquide-normandhy-port-jerome",
   "to": "technology:hydrogen-supply",
   "since": "2022-01-19",
@@ -29245,6 +29255,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=carbon2business-lagerdorf].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:catalina-teruel-sagunto",
+  "to": "technology:hydrogen-supply",
+  "since": "2023-03-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catalina-teruel-sagunto].technology"
   }
  },
  {
@@ -29369,6 +29389,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:ewe-emden-electrolysis",
+  "to": "technology:hydrogen-supply",
+  "since": "2024-07-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ewe-emden-electrolysis].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:farasis-bitterfeld",
   "to": "technology:cell-manufacturing",
   "since": "2022-05-23",
@@ -29479,12 +29509,32 @@
  },
  {
   "rel": "deploys",
+  "from": "project:h2apex-lubmin-hh2e",
+  "to": "technology:hydrogen-supply",
+  "since": "2024-12-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=h2apex-lubmin-hh2e].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:hghh-moorburg",
   "to": "technology:hydrogen-supply",
   "since": "2025-12-01",
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=hghh-moorburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:hoest-ptx-esbjerg",
+  "to": "technology:hydrogen-supply",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hoest-ptx-esbjerg].technology"
   }
  },
  {
@@ -29505,6 +29555,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=hybrit-pilot-lulea].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:hytechhafen-rostock",
+  "to": "technology:hydrogen-supply",
+  "since": "2024-07-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hytechhafen-rostock].technology"
   }
  },
  {
@@ -29555,6 +29615,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=k6-lumbres].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:la-robla-green",
+  "to": "technology:hydrogen-supply",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=la-robla-green].technology"
   }
  },
  {
@@ -29659,6 +29729,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:omv-bruck-an-der-leitha",
+  "to": "technology:hydrogen-supply",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=omv-bruck-an-der-leitha].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:powerco-sagunto",
   "to": "technology:cell-manufacturing",
   "since": "2023-03-17",
@@ -29685,6 +29765,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=prinos-co2-storage].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:repsol-cartagena",
+  "to": "technology:hydrogen-supply",
+  "since": "2025-09-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=repsol-cartagena].technology"
   }
  },
  {
@@ -29765,6 +29855,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=samsung-sdi-god].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:shell-holland-hydrogen-1",
+  "to": "technology:hydrogen-supply",
+  "since": "2025-05-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=shell-holland-hydrogen-1].technology"
   }
  },
  {
@@ -32502,6 +32602,28 @@
  },
  {
   "rel": "in",
+  "from": "project:airliquide-elygator-maasvlakte",
+  "to": "country:NL",
+  "since": "2025-07-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=airliquide-elygator-maasvlakte].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:airliquide-elygator-maasvlakte",
+  "to": "sector:clean",
+  "since": "2025-07-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=airliquide-elygator-maasvlakte].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:airliquide-normandhy-port-jerome",
   "to": "country:FR",
   "since": "2022-01-19",
@@ -32678,6 +32800,28 @@
  },
  {
   "rel": "in",
+  "from": "project:catalina-teruel-sagunto",
+  "to": "country:ES",
+  "since": "2023-03-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catalina-teruel-sagunto].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:catalina-teruel-sagunto",
+  "to": "sector:clean",
+  "since": "2023-03-10",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catalina-teruel-sagunto].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:catl-arnstadt",
   "to": "country:DE",
   "since": "2022-12-21",
@@ -32827,6 +32971,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=eve-power-debrecen].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:ewe-emden-electrolysis",
+  "to": "country:DE",
+  "since": "2024-07-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ewe-emden-electrolysis].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:ewe-emden-electrolysis",
+  "to": "sector:clean",
+  "since": "2024-07-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ewe-emden-electrolysis].sector"
   },
   "basis": "sector"
  },
@@ -33030,6 +33196,28 @@
  },
  {
   "rel": "in",
+  "from": "project:h2apex-lubmin-hh2e",
+  "to": "country:DE",
+  "since": "2024-12-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=h2apex-lubmin-hh2e].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:h2apex-lubmin-hh2e",
+  "to": "sector:clean",
+  "since": "2024-12-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=h2apex-lubmin-hh2e].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:hghh-moorburg",
   "to": "country:DE",
   "since": "2025-12-01",
@@ -33052,6 +33240,28 @@
  },
  {
   "rel": "in",
+  "from": "project:hoest-ptx-esbjerg",
+  "to": "country:DK",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hoest-ptx-esbjerg].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:hoest-ptx-esbjerg",
+  "to": "sector:clean",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hoest-ptx-esbjerg].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:hybrit-pilot-lulea",
   "to": "country:SE",
   "since": "2021-06-21",
@@ -33069,6 +33279,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=hybrit-pilot-lulea].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:hytechhafen-rostock",
+  "to": "country:DE",
+  "since": "2024-07-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hytechhafen-rostock].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:hytechhafen-rostock",
+  "to": "sector:clean",
+  "since": "2024-07-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hytechhafen-rostock].sector"
   },
   "basis": "sector"
  },
@@ -33135,6 +33367,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=k6-lumbres].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:la-robla-green",
+  "to": "country:ES",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=la-robla-green].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:la-robla-green",
+  "to": "sector:clean",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=la-robla-green].sector"
   },
   "basis": "sector"
  },
@@ -33294,6 +33548,28 @@
  },
  {
   "rel": "in",
+  "from": "project:omv-bruck-an-der-leitha",
+  "to": "country:AT",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=omv-bruck-an-der-leitha].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:omv-bruck-an-der-leitha",
+  "to": "sector:clean",
+  "since": "2025-09-29",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=omv-bruck-an-der-leitha].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:powerco-sagunto",
   "to": "country:ES",
   "since": "2023-03-17",
@@ -33355,6 +33631,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=prinos-co2-storage].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:repsol-cartagena",
+  "to": "country:ES",
+  "since": "2025-09-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=repsol-cartagena].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:repsol-cartagena",
+  "to": "sector:clean",
+  "since": "2025-09-30",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=repsol-cartagena].sector"
   },
   "basis": "sector"
  },
@@ -33465,6 +33763,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=samsung-sdi-god].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:shell-holland-hydrogen-1",
+  "to": "country:NL",
+  "since": "2025-05-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=shell-holland-hydrogen-1].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:shell-holland-hydrogen-1",
+  "to": "sector:clean",
+  "since": "2025-05-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=shell-holland-hydrogen-1].sector"
   },
   "basis": "sector"
  },
