@@ -1496,3 +1496,47 @@ nobody watching.
 
 A background job should carry its own deadline. Where it cannot, the check is the
 deadline.
+
+### A municipality name is not a point
+
+`location_precision: "point"` requires a **stated address or a stated coordinate**, from
+a company or a permit source. A release that names only the town does not place a works,
+and a row whose best source says "in Kokkola" is `located: "no"` — not a point at the town
+centre.
+
+The reason is that a town centre is a real position that is wrong. Drawn on a map it
+looks exactly like a works somebody surveyed, and nothing on the surface distinguishes
+"we know where this is" from "we know which municipality wrote the permit". The register
+already refuses an industrial estate's polygon for the same reason at one scale down; a
+municipality is that error two scales up.
+
+**This is what most of the forty-four are waiting on.** Of the sources that name a site in
+the admission search of 10 September 2026, the commonest shape by far is a company naming
+a town — Kokkola, Kristinestad, Esbjerg, Albacete, Nivala — and the second commonest is a
+company naming somebody else's works, which the host-works rule already handles. An
+address appears in one: Carlton Power publishes "Manchester Rd Carrington, Manchester,
+M31 4AY".
+
+### A benchmark's coordinate corroborates a position; it is never one
+
+The IEA's live endpoint publishes a latitude and a longitude for every European entry.
+Those coordinates may be used to **decide where to look** and to **agree with** a position
+a company or a permit has stated. They may never become the position on a row, and they
+may never be the reason a row is drawn.
+
+**Barsebäck Hydrogen Hub is the recorded reason.** The entry is named for a place in
+Skåne and its coordinate falls at Njurunda in Medelpad, **seven hundred kilometres north**.
+Nothing in the row disagrees with itself except the row. A register that took that
+coordinate would have drawn a hydrogen project in the wrong half of Sweden and been unable
+to say why, because the only source that placed it there was the one that also named it
+after somewhere else.
+
+It is not an isolated defect. The same search found the IEA's second row for Eneco's
+Europoort electrolyser at Warffum, 200 km away; ENERTRAG's Falkenhagen plant at
+Schwedt/Oder, 150 km away; ErasmoPower2X at Almodóvar del Campo when Power2X says
+Saceruela; EnergHys at Borssele when the project's own site says the Van Citters harbour
+at Vlissingen-Oost. Eleven site disagreements in fifty-four entries is not noise.
+
+**Corroboration is still worth having.** A permit that gives an address and a benchmark
+coordinate that falls on it are two speakers agreeing, and that is worth recording. What
+the coordinate cannot do is stand alone.

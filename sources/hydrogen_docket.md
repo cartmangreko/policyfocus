@@ -708,6 +708,74 @@ correction on the record. **The machine proposed a place mismatch it could not
 explain and a person found out why**, which is the whole of what the machine-versus-
 person rule is for.
 
+### Rulings of 10 September 2026, second set — the 36, the 44, and drawing
+
+**D54. A NAME STEM IS NOT A VERDICT, and 30 of the 36 were never stem matches.**
+`duplicate of a held row` moved from 4 to 40 on the academic side when the
+candidates landed, and nobody had read one of them. Reading them found three
+different things.
+
+- **Thirty were the same row, reachable by number.** The two benchmark files share
+  a reference numbering — the academic file *is* the IEA's October 2023 database,
+  quality-checked — so an entry a candidate already claims in the live list is very
+  often the same numbered row in the academic one. Nobody had written the number
+  down. Each of the 35 pairs was read: 29 carry the same name in both files and six
+  carry a name the live list has since edited (`BayH2` became `Bay.H2 Project -
+  Bayern Oil Refinery`; `Besaya H2` gained `, phase 1`). **The candidates now carry
+  their `odenweller_ueckerdt_2025` references**, and the match is by identifier.
+- **Five were genuine stem matches and are confirmed by hand.** The academic file
+  carries H2V Marseille-Fos six times, refs 1476, 2381–2384 and 1477, each of 100
+  MWel, with `Announced Size` running 100, 200, 300, 400, 500 and 600 MW and dates
+  online 2026 to 2031. That is a cumulative ladder. The port of Marseille Fos's own
+  page settles it: "six 100MW production units, giving a total capacity of 600MW".
+  They are in `CONFIRMED_DUPLICATES` with that reason written down.
+- **One was wrong.** The academic file's second Orsted–Skovgaard row is 3 GW at
+  Concept where the held one is 150 MW at Feasibility. Not the same row: a later
+  phase of the same site, which Orsted's own release describes — "The facility will
+  be built in several phases", "the facility's electrolysis capacity will be able to
+  increase to more than 3 GW". It is now held by reference with a `phasing`
+  disagreement, which is what it always was.
+
+**D55. THE CLASS NO LONGER ACCEPTS A MACHINE MATCH.** `classify()` returns
+`duplicate of a held row` for a reference match or for an entry a person has written
+into `CONFIRMED_DUPLICATES`, and everything else a stem catches goes to **`possible
+duplicate, not confirmed`**, printed by name with what would settle it. The rule
+applied evenly took the four pre-existing stem matches down with the new ones: Uniper
+Maasvlakte phase II, Catalina phase 2, Holland Hydrogen phase 2 and Sines refinery
+phase 3 were **all** machine matches nobody had read, and three of the four cannot be
+settled at all because the company source refuses a declared reader. Holland Hydrogen
+2 may well be a separate project rather than a duplicate, which would mean the
+register has been explaining away an absence it never checked.
+
+**D56. THE FORTY-FOUR ARE ADMITTED, UNDRAWN.** Position is not an admission leg, so
+they come in with `located: "no"` and a note that says the position was **NOT
+SEARCHED** — deliberately distinct from the eleven whose notes record a sweep that
+ran and failed. An absence somebody produced and an absence nobody has attempted must
+not read alike.
+
+| | before | after |
+|---|---|---|
+| hydrogen rows | 22 | **66** |
+| — drawn | 11 | **11** |
+| — admitted undrawn | 11 | **55** |
+| electrolyser capacity | 3,610 MW | **19,503 MW** |
+
+**D57. AND TWO SOURCES WENT DARK BETWEEN THE READING AND THE PUSH.** ignis.es and
+orsted.com both served the declared reader on 10 September and both answered 403 the
+same evening, when `check_links` ran on the push. This is D38 again, twice in one day,
+and the gate caught it again. Both rows now cite Internet Archive captures — 16 April
+2026 and 2 October 2023 — with copies filed in `sources/manual/` and the live URL in
+the note. The Orsted capture carries every quote the row uses, including the 3 GW
+sentence that settled D54.
+
+**D58. `stated_schedule` IS EMPTY ON ALL FORTY-FOUR AND SAYS WHY IN A FIELD OF ITS
+OWN.** The gate's convention is that `[]` means no source on file states a date. On
+these rows it would have meant something else — the search asked one question of every
+source and did not collect schedules — and several of these pages plainly state a
+target. Rather than half-populate from search summaries this register cannot attribute
+to the cited page, each row carries `schedule_note` saying the source was read for
+something else. Re-reading them for dates is coverage work.
+
 ### Step 5 decisions, after the source-date ruling of 9 September 2026
 
 **D38. Uniper's source was archived on 10 September, one day after it was read.**
@@ -982,6 +1050,18 @@ twenty and the comparison is simply this register against the two lists.
     about a date; nothing carries two speakers on a size or a place. The first of
     these forty-four to become a row will need one, and inventing it at that moment
     is how a schema gets a field shaped like one project.
+30. **A shared reference numbering is worth writing down before it is worth
+    guessing.** Thirty of the thirty-six "new duplicates" were the same numbered row
+    in both benchmark files, and the register reached for a name stem because nobody
+    had recorded the number. The general form: where two sources share identifiers,
+    record the identifier on the object the first time it is seen, or a fuzzy match
+    will be invented to do its job.
+31. **Coverage is two numbers and has been reported as one.** A sector's row count has
+    been read as its coverage, and since position stopped being an admission leg it
+    cannot be: hydrogen went from 22 rows to 66 and from 11 drawn to 11 drawn.
+    `report_candidate_gaps.py` now prints rows drawn against rows admitted undrawn for
+    every sector, and the gap between them is the drawing backlog rather than a defect
+    in the data.
 29. **A background job should carry its own deadline.** Six shells outlived the
     search; two were armed to overwrite a corrected pull request body with the text
     it corrected. `sources/check_orphan_jobs.py` is the deadline where the job has

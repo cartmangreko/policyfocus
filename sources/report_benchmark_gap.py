@@ -157,7 +157,51 @@ def verify_inputs() -> list[str]:
 # build_hydrogen_benchmark.held(). This matters to the arithmetic of the split:
 # the search moved 54 entries out of the class, and they became 44 candidates,
 # because the IEA carries ten of those projects twice, as two phases.
-CLASSES = ("duplicate of a held row", "DRI or other perimeter exclusion", "blue",
+# A STEM MATCH IS A MACHINE'S GUESS AND MAY NOT BE A VERDICT, 10 September 2026.
+# `duplicate of a held row` used to be reached two ways: the entry's own reference is
+# one this register holds, or its name stem matches the name stem of something held.
+# The first is the benchmark's own identifier. The second is a guess, and it was
+# wrong at least once — the academic file's second Orsted-Skovgaard row is 3 GW at
+# Concept where the held one is 150 MW at Feasibility, which is a later phase of the
+# same site and not the same row. A guess now goes to `possible duplicate, not
+# confirmed`, is printed by name with the stem it matched and the object it matched,
+# and is promoted only by a person writing it below.
+CONFIRMED_DUPLICATES = {
+    # (benchmark, ref): (held object, why — read by a person)
+    ("odenweller_ueckerdt_2025", "1476"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 1"),
+    ("odenweller_ueckerdt_2025", "2381"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 2"),
+    ("odenweller_ueckerdt_2025", "2382"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 3"),
+    ("odenweller_ueckerdt_2025", "2383"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 4"),
+    ("odenweller_ueckerdt_2025", "2384"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 5"),
+}
+# THE H2V CONFIRMATION, READ ONCE AND WRITTEN DOWN. The academic file carries six rows
+# for this project, refs 1476 and 2381-2384 and 1477, each of 100 MWel, with an
+# `Announced Size` running 100, 200, 300, 400, 500 and 600 MW and a date online running
+# 2026 to 2031. That is a cumulative ladder, not six projects. The port of Marseille
+# Fos's own page settles it: "six 100MW production units, giving a total capacity of
+# 600MW". Six rows, six units, one works.
+
+# WHAT WOULD SETTLE EACH ONE, so the next person does not start from the stem again.
+POSSIBLE_DUPLICATE_NOTES = {
+    "928": "Uniper's H2Maasvlakte is a row here at 100 MW on ref 927. Whether the "
+           "benchmark's phase II is the same works enlarged or a second project needs "
+           "Uniper's own page, which has answered 403 to a declared reader four times "
+           "in this pass.",
+    "1490": "Catalina is a row here at 500 MW on ref 1489, electrolyser at Andorra and "
+            "ammonia at Sagunto. A 1,500 MW phase 2 is plausible as the same programme "
+            "and is not in any source this register has read.",
+    "1806": "Shell's Holland Hydrogen 1 is a row here at 200 MW. Holland Hydrogen 2 is "
+            "discussed publicly as a SEPARATE later project on the same Maasvlakte, "
+            "which would make this not a duplicate at all. shell.com answers 200 with "
+            "thirty-eight characters, so nobody here can tell.",
+    "1877": "Galp's Sines electrolyser is a row here at 100 MW on ref 1169, and Galp's "
+            "published plan runs 100 MW, then 600 MW, then 1.5 GW at the same refinery. "
+            "The identity of the works is not seriously in doubt; the confirmation is, "
+            "because galp.com answers with an empty body.",
+}
+
+CLASSES = ("duplicate of a held row", "possible duplicate, not confirmed",
+           "DRI or other perimeter exclusion", "blue",
            "below threshold on reading", "benchmark gives no location",
            "searched, no owner or permit source found",
            "owner or permit source names the site, not admitted",
@@ -270,8 +314,13 @@ def classify(entry: dict, name: str, status: str, tech: str, size: str,
              has_location: bool = False) -> str:
     if key in REFUSED_BY_NAME:
         return "DRI or other perimeter exclusion"
-    if stem(name) in held_stems:
+    if key in CONFIRMED_DUPLICATES:
         return "duplicate of a held row"
+    if stem(name) in held_stems:
+        # NOT A VERDICT. The reference route never reaches here — an entry whose own
+        # reference is held is filtered out before classify() is called — so anything
+        # arriving on a stem alone is a proposal for a person.
+        return "possible duplicate, not confirmed"
     if STEEL.search(name) or MAKER.search(name):
         return "DRI or other perimeter exclusion"
     if "ccus" in tech.lower() or "fossil" in tech.lower() or BLUE.search(name):
@@ -375,13 +424,31 @@ def disagreements() -> str:
     `normalisation_gap` is excluded on purpose. A difference under a fifth is the round
     trip through tonnes, not a speaker.
     """
+    # THREE PLACES, BECAUSE THE OBJECT MOVES. A disagreement is recorded on whatever
+    # this register holds: the row once the entry is admitted, the candidate before
+    # that, the search record where there is no eufabric object at all. `disagreements`
+    # on a row carries a speaker list; `benchmark_disagreements` on the other two is
+    # the flatter shape it grew from.
+    rows = []
+    pdoc = json.loads((bench.ROOT / "data/transition/projects.json").read_text("utf-8"))
+    for obj in (pdoc["projects"] if isinstance(pdoc, dict) else pdoc):
+        for d in obj.get("disagreements") or []:
+            if d["kind"] in DISAGREEMENT_KINDS:
+                vals = [sp.get("value") for sp in d["speakers"]]
+                ref = next((sp.get("ref") for sp in d["speakers"] if sp.get("ref")), "-")
+                rows.append((d["kind"], str(obj["id"]),
+                             {"ref": ref, "eufabric_value_mw": vals[0],
+                              "benchmark_value_mw": vals[1],
+                              "eufabric_value": vals[0], "benchmark_value": vals[1]}))
+    held = {r[1] for r in rows}
     files = [(bench.ROOT / "sources/hydrogen_candidates.json", "candidates", "id"),
              (SEARCH, "entries", "ref")]
-    rows = []
     for path, key, idf in files:
         if not path.exists():
             continue
         for obj in json.loads(path.read_text(encoding="utf-8"))[key]:
+            if str(obj[idf]) in held:
+                continue          # it is a row now, and the row is where it lives
             for d in obj.get("benchmark_disagreements") or []:
                 if d["kind"] in DISAGREEMENT_KINDS:
                     rows.append((d["kind"], str(obj[idf]), d))
@@ -404,6 +471,8 @@ def disagreements() -> str:
             else:
                 out.append(f"    {who[:44]:44} ref {d['ref']:>5}  the benchmark splits "
                            f"what the owner publishes whole")
+    # NORMALISATION GAPS STAY ON THE CANDIDATE and are never moved to a row: they are
+    # evidence about a conversion, not about a project.
     gaps = sum(1 for path, key, idf in files if path.exists()
                for obj in json.loads(path.read_text(encoding="utf-8"))[key]
                for d in (obj.get("benchmark_disagreements") or [])
@@ -520,6 +589,22 @@ def main() -> int:
     print(f"\nrefused by name ({len(REFUSED_BY_NAME)}) — recorded, never silent:")
     for (b, ref), why in sorted(REFUSED_BY_NAME.items()):
         print(f"  {b[:4]} ref {ref}: {why}")
+
+    possible = [r for r in out if r["class"] == "possible duplicate, not confirmed"]
+    if possible:
+        print(f"\npossible duplicates, NOT CONFIRMED ({len(possible)}) — a name stem matched "
+              f"something held.\nA person confirms these into CONFIRMED_DUPLICATES or they "
+              f"stay here:")
+        for r in possible:
+            print(f"  {r['benchmark'][:4]} ref {r['ref']:>5}  {r['country']}  "
+                  f"{r['normalised_mwel'] or '?':>6} MW  {r['status'][:18]:18} "
+                  f"{r['name'][:52]}")
+            why = POSSIBLE_DUPLICATE_NOTES.get(r["ref"])
+            if why:
+                print(f"        {why}")
+    else:
+        print("\npossible duplicates, NOT CONFIRMED (0) — every duplicate on file was "
+              "reached\nby the benchmark's own reference or confirmed by a person.")
 
     print(search_crosstab())
     print(disagreements())
