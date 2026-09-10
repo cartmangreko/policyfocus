@@ -50,6 +50,7 @@
           "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway marks new era of sustainable construction",
           "publisher": "Heidelberg Materials",
           "date": "2025-06-18",
+          "date_precision": "day",
           "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
         }
       ],
@@ -87,6 +88,7 @@
           "title": "Holcim breaks ground of state-of-the-art GO4ZERO plant in Belgium for net zero cement",
           "publisher": "Holcim",
           "date": "2024-05-16",
+          "date_precision": "day",
           "verbatim": "With a planned investment of over EUR 500 million, the GO4ZERO project will put innovation to work to advance Europe's decarbonization."
         },
         {
@@ -94,6 +96,7 @@
           "title": "Carbon2Business CCUS project",
           "publisher": "Holcim",
           "date": "2024-04-22",
+          "date_precision": "day",
           "verbatim": "On April 22, 2024, we officially launched our Carbon2Business carbon capture"
         }
       ],
@@ -131,6 +134,7 @@
           "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway marks new era of sustainable construction",
           "publisher": "Heidelberg Materials",
           "date": "2025-06-18",
+          "date_precision": "day",
           "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
         },
         {
@@ -138,6 +142,7 @@
           "title": "Regulation (EU) 2024/1735 (Net-Zero Industry Act), Article 20",
           "publisher": "EUR-Lex",
           "date": "2024-06-13",
+          "date_precision": "day",
           "verbatim": "An annual injection capacity of at least 50 million tonnes of CO2 shall be achieved by 2030 in storage sites"
         }
       ]
@@ -164,6 +169,7 @@
           "title": "Projet K6 : lancement de la première phase",
           "publisher": "EQIOM",
           "date": "2024-02-15",
+          "date_precision": "day",
           "verbatim": "EQIOM construira une nouvelle ligne de production de clinker, innovante, qui augmentera de manière significative l'efficacité thermique"
         }
       ]
@@ -190,6 +196,7 @@
           "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
           "publisher": "thyssenkrupp",
           "date": "2023-07-20",
+          "date_precision": "day",
           "verbatim": "The 100% hydrogen-capable DR plant with two melters has a production capacity of 2.5 million metric tons of directly reduced iron per year"
         },
         {
@@ -197,6 +204,7 @@
           "title": "Salzgitter AG receives official notice of government funding for the SALCOS low-CO2 steel production program",
           "publisher": "Salzgitter AG",
           "date": "2023-04-18",
+          "date_precision": "day",
           "verbatim": "1.9 million tonnes of crude steel per year"
         }
       ]
@@ -233,6 +241,7 @@
           "title": "HYBRIT: SSAB, LKAB and Vattenfall first in the world with hydrogen-reduced sponge iron",
           "publisher": "SSAB",
           "date": "2021-06-21",
+          "date_precision": "day",
           "verbatim": "SSAB, LKAB and Vattenfall have now produced the world's first hydrogen-reduced sponge iron at a pilot scale."
         }
       ]
@@ -241,7 +250,7 @@
       "id": "hydrogen-supply",
       "transition": "decarbonisation",
       "name": "Renewable hydrogen supply",
-      "description": "The electrolysers, power contracts and pipelines that have to deliver hydrogen at industrial volume and at a price the iron pays for, and which no single steel site can build for itself. It stands beside CO2 transport and storage as the other thing this sector is waiting for rather than doing.",
+      "description": "The electrolysers, power contracts and pipelines that have to deliver hydrogen at industrial volume and at a price the iron pays for, and which no single steel site can build for itself. It stands beside CO2 transport and storage as the other thing that sector is waiting for rather than doing. IT IS NOW SHARED. Steel reached it as a dependency; the hydrogen dataset reaches it as the thing being built, so the technology carries both sectors rather than being duplicated under a second name.",
       "plain_action": "getting the hydrogen its furnaces are being built to run on",
       "readiness": {
         "level": "demonstration",
@@ -251,7 +260,8 @@
       },
       "dependency": [],
       "sectors": [
-        "steel"
+        "steel",
+        "clean"
       ],
       "sources": [
         {
@@ -259,6 +269,7 @@
           "title": "Europe's largest green hydrogen plant takes shape as Stegra installs final electrolyser",
           "publisher": "BioEnergy Times",
           "date": "2026-04-04",
+          "date_precision": "day",
           "verbatim": "all 37 modules are now in place at the 740-megawatt facility"
         },
         {
@@ -266,6 +277,7 @@
           "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
           "publisher": "thyssenkrupp",
           "date": "2023-07-20",
+          "date_precision": "day",
           "verbatim": "The plant is scheduled to operate as early as 2029 with around 143,000 metric tons of hydrogen per year"
         }
       ]
@@ -294,6 +306,7 @@
           "title": "Successful demonstration in Dunkirk of the CO2 capture DMX process",
           "publisher": "Axens",
           "date": "2024-03-14",
+          "date_precision": "day",
           "verbatim": "capture the CO2 present in blast furnace gases emitted during steel production at ArcelorMittal's Dunkirk site"
         }
       ]
@@ -320,6 +333,7 @@
           "title": "Learn about steel — how steel is made",
           "publisher": "EUROFER — the European Steel Association",
           "date": "2025-09-29",
+          "date_precision": "day",
           "verbatim": "Just over 40% of EU steel is produced via the EAF production route."
         },
         {
@@ -327,6 +341,7 @@
           "title": "voestalpine unveils further expansion plans for greentec steel at its Donawitz location",
           "publisher": "voestalpine",
           "date": "2026-06-18",
+          "date_precision": "day",
           "verbatim": "The EAF plant currently under construction will be capable of producing around 850,000 tons of CO2‐reduced steel annually as of 2027."
         }
       ]
@@ -352,6 +367,7 @@
           "title": "Start of European battery cell production: PowerCo commissions Salzgitter gigafactory",
           "publisher": "Volkswagen Group",
           "date": "2025-12-17",
+          "date_precision": "day",
           "verbatim": "PowerCo SE today commissioned the Salzgitter gigafactory as planned and produced the first Unified Cells 'made in Europe'."
         }
       ]
@@ -377,6 +393,7 @@
           "title": "Stellantis and CATL to invest up to €4.1 billion in joint venture for large-scale LFP battery plant in Spain",
           "publisher": "Stellantis",
           "date": "2024-12-10",
+          "date_precision": "day",
           "verbatim": "Targeted to start production by end of 2026 at Stellantis' Zaragoza, Spain site, the facility could reach up to 50 GWh capacity, subject to the evolution of the electrical market in Europe and continued support from authorities in Spain and the European Union."
         }
       ]
@@ -402,6 +419,7 @@
           "title": "Verkor reaches a decisive milestone and opens its first gigafactory",
           "publisher": "Verkor",
           "date": "2025-12-11",
+          "date_precision": "day",
           "verbatim": "For several months, the Gigafactory has been assembling modules from VIC cells and is now manufacturing its own cells."
         }
       ]
@@ -427,6 +445,7 @@
           "title": "Naxtra Battery Breakthrough & Dual-Power Architecture: CATL Pioneers the Multi-Power Era",
           "publisher": "CATL",
           "date": "2025-04-21",
+          "date_precision": "day",
           "verbatim": "Naxtra Battery"
         }
       ]

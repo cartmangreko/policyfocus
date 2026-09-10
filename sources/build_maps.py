@@ -461,6 +461,12 @@ def _mark(row: dict, site: dict, relation: str, frame, canvas) -> dict:
         "href": f"/projects/{row['id']}",
         "lat": site["lat"],
         "lon": site["lon"],
+        # THE WORKS THE MARK IS ACTUALLY ON, where that is not the installation.
+        # Carried onto the mark so the sentence over the picture can count it:
+        # after the ruling of 9 September 2026 a mark means one of two things,
+        # and a reader looking at a dot has no way to tell which without being
+        # told. Absent on a mark that is the installation's own polygon.
+        "host_works": site.get("host_works"),
         "as_of": site["retrieved_date"],
         "x": round((px - x0) * scale, 1),
         "y": round((py - y0) * scale, 1),
@@ -1214,7 +1220,13 @@ def sector_map(sector: str, projects: list[dict]) -> dict:
         "projects": len(left_off),
         "sites": sum(len(_sites(row)) for row in left_off),
         "rows": [{"id": row["id"], "name": row["name"], "status": row["status"],
-                  "sited": bool(_sites(row))}
+                  "sited": bool(_sites(row)),
+                  # WHY IT IS NOT DRAWN, and there are now three answers rather
+                  # than two: cancelled, unsited because nobody looked, and
+                  # unsited because somebody looked and there is nothing to draw.
+                  # The third arrived with the ruling that position is not an
+                  # admission leg, and the sentence over the picture says it.
+                  "stopped": row["status"] in sm.STOPPED_STATUSES}
                  for row in sorted(left_off, key=lambda r: r["name"])],
     }
     return doc

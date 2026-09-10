@@ -117,6 +117,21 @@ PROJECT_STATUSES = (
     "funded",
     "fid",
     "construction",
+    # BUILT AND NOT YET IN COMMERCIAL OPERATION, and it is a rung because a real
+    # project sat between two others with nowhere to be. RWE's Lingen works was
+    # making certified hydrogen in August 2026 while the company said in the same
+    # release that it would "prepare the plants for commercial operation" over
+    # the coming months. `construction` says nothing is being produced, which was
+    # false; `operating` says the ladder has been climbed, which was also false.
+    # The gap is not a hydrogen quirk: every large process plant has a
+    # commissioning period, and cement and steel will reach it too.
+    #
+    # IT IS ALIVE AND IT IS NOT TERMINAL. A plant in commissioning is going
+    # somewhere, so it joins PROJECT_ALIVE and the paper's `active` group; it has
+    # not arrived, so TERMINAL_STATUSES is untouched and an attrition series can
+    # still see a project that stalls in commissioning, which is a real way to
+    # fail and one nothing here could previously record.
+    "commissioning",
     "operating",
     "paused",
     "cancelled",
@@ -144,7 +159,8 @@ PROJECT_STATUSES = (
 # not mirrored into web/lib/transition.ts and the parity half of
 # check_status_groups does not apply to them. When a surface does read them, the
 # mirror and its check are what to add.
-PROJECT_ALIVE = ("announced", "funded", "fid", "construction", "paused")
+PROJECT_ALIVE = ("announced", "funded", "fid", "construction", "commissioning",
+                 "paused")
 PROJECT_STOPPED = ("cancelled",)
 PROJECT_COMPLETE = ("operating",)
 
@@ -348,6 +364,51 @@ SCHEDULE_SPEAKERS = (
 # convention from a history DATE, which is padded to the first of its period
 # because that is the earliest the event can have happened -- both choices are the
 # reading that does not overstate.
+# HOW EXACTLY AN EVENT WAS DATED, which is a different question from how exactly
+# a TARGET was stated and needed its own field once the answer stopped always
+# being "to the day".
+#
+# Most events on this file come from a dated release and are known to the day.
+# Some are not: a company page says a grant arrived "in 2023"; a filing says a
+# project went bankrupt "in January 2024"; a quarterly result reports something
+# that happened in a quarter. Those events are real, they belong on the history,
+# and the register has been storing them as a padded date with the padding
+# explained in prose — which no count can read.
+#
+# SO THE DATE IS ALWAYS A FULL YYYY-MM-DD AND THE PRECISION SAYS WHAT IT MEANS.
+# A month-precision event is padded to the FIRST of its month and a
+# year-precision event to 1 January, because that is the earliest the event can
+# have happened and it is the reading that does not overstate. This is the
+# opposite convention from a stated TARGET, which is read at the END of its
+# period for the same reason: neither may claim more than the source did.
+#
+# A DATE THAT IS PADDED AND DOES NOT SAY SO IS THE FAILURE THIS CLOSES. Before
+# this field, "2024-01-31" on the Italvolt row meant "sometime in January 2024,
+# and I have put it at the end so as not to claim precision" — a convention that
+# was written in a note, that contradicted the padding rule in scope.md, and that
+# a series computing how long a project took would have read as the 31st.
+EVENT_DATE_PRECISIONS = (
+    "day",
+    "month",
+    "year",
+)
+
+# AND IT IS NOT ONLY EVENTS. Ruled 9 September 2026, one ruling after the events
+# got it: `capacity_as_of` and a parameter's `date_of_value` are dates of the same
+# kind, answering the same question — when was this true, and how exactly does the
+# source say so — and they were left without a precision for exactly one day. The
+# cost of that day is on the Galp row, whose capacity had to stay on its lender's
+# sentence rather than the company's, because the company's sentence is dated to a
+# year and the field could not say so.
+#
+# The vocabulary and the padding are the same, deliberately: one convention for
+# every date on this layer that records when something WAS, and the opposite one
+# for a target, which records when something WILL BE and is read at the end of its
+# period. Two rules, pointing in opposite directions, each the reading that does
+# not overstate.
+VALUE_DATE_PRECISIONS = EVENT_DATE_PRECISIONS
+
+
 TARGET_PRECISIONS = (
     "year",
     "half",
@@ -364,10 +425,44 @@ TARGET_PRECISIONS = (
 # is GWh. A denominator has to be one quantity, so the capacity_* fields are the
 # PRODUCT the plant makes, in two units and nothing else, and a row whose known
 # figure is not that leaves them empty rather than bending it to fit.
+#
+# HYDROGEN ADDED FOUR UNITS AND A RULE ABOUT NOT ADDING THEM. An electrolysis
+# project is quoted three ways by three different kinds of source -- the
+# electrical rating of the electrolyser (MW input), the hydrogen it makes stated
+# as a power or a flow (MW output, Nm3/h), and the tonnes a year it is expected
+# to produce -- and the three are related only through an efficiency and a
+# capacity factor that the source does not state. Converting between them here
+# would put a number on the page that nobody published, computed from an
+# assumption nobody wrote down; the IEA's own database does convert, calls the
+# result "normalised capacity", and its definitions sheet describes that column
+# once as MW electrical and once as "MW H2 output (LHV)" -- which is exactly the
+# ambiguity this register refuses to inherit. See sources/scope.md, "Three units
+# for one electrolyser, and no conversion between them".
+#
+# SO A ROW RECORDS THE FIGURE IN THE UNIT ITS SOURCE USED, and where a source
+# states the same phase in two units both are kept, in `capacity_alternates`,
+# with the row's own capacity_value being the one the export prefers.
 CAPACITY_UNITS = (
     "t_per_year",
     "GWh_per_year",
     "t_co2_per_year",
+    "MW_input",         # the electrolyser's electrical rating
+    "MW_output",        # the hydrogen, stated as a power
+    "Nm3_h",            # the hydrogen, stated as a flow
+    "t_h2_per_year",    # the hydrogen, stated as an annual mass
+    "t_nh3_per_year",   # ammonia, where the source states ammonia only
+)
+
+# WHICH UNIT THE EXPORT PREFERS WHEN A ROW STATES TWO. MW input is the figure the
+# perimeter's threshold is measured on and the figure every other source in this
+# sector can be compared against, so it wins where it is present; the order below
+# is the fallback chain and nothing outside it is ever chosen automatically.
+CAPACITY_UNIT_PREFERENCE = (
+    "MW_input",
+    "MW_output",
+    "Nm3_h",
+    "t_h2_per_year",
+    "t_nh3_per_year",
 )
 
 # HOW FIRM THE FIGURE IS. The same number means different things at these
@@ -405,6 +500,15 @@ CAPACITY_PRODUCTS = (
     "steel",
     "co2_reduced_steel",
     "battery_cells",
+    # WHAT AN ELECTROLYSIS SITE MAKES. `hydrogen` is the molecule; `ammonia` is
+    # here because a synthesis plant fed by its own electrolyser is sometimes the
+    # only thing its source quotes a tonnage for, and a register that could only
+    # record hydrogen would have to leave the figure out or invent one. The two
+    # are kept apart by their units -- t_nh3_per_year is the only annual mass
+    # `ammonia` ever takes -- so a tonne of ammonia can never be added to a tonne
+    # of hydrogen.
+    "hydrogen",
+    "ammonia",
     # NOT A PRODUCT THE PLANT SELLS, and it is in this list anyway. A capture
     # retrofit's output is the tonne it stops: the cement rows' known figure is
     # CO2 captured per year, the works makes the same clinker it always did, and
@@ -419,7 +523,204 @@ CAPACITY_PRODUCTS = (
 # product capacity that means anything — a CO2 store's capacity is a different
 # quantity in a different unit — so the gate asks for these three and is silent
 # about the rest.
-CAPACITY_SECTORS = ("cement", "steel", "batsol", "ccs")
+CAPACITY_SECTORS = ("cement", "steel", "batsol", "ccs", "clean")
+
+
+# WHICH PRODUCT EACH UNIT CAN BE A UNIT OF. A closed vocabulary of units and a
+# closed vocabulary of products still lets a row say "45,000 t_nh3_per_year of
+# hydrogen", which is a sentence nobody can act on and which a later total would
+# add to the hydrogen column. The pairing is therefore declared, and a unit that
+# is not in this table is a unit no product constrains -- the three original
+# units stay unconstrained because their sectors have one product each and the
+# `capacity_product` field already carries it.
+UNIT_PRODUCTS = {
+    "MW_input": ("hydrogen",),
+    "MW_output": ("hydrogen",),
+    "Nm3_h": ("hydrogen",),
+    "t_h2_per_year": ("hydrogen",),
+    "t_nh3_per_year": ("ammonia",),
+}
+
+
+# WHY A SITE IS NOT MOVING, IN THE SOURCE'S OWN TERMS. Every pause and every
+# cancellation carries one of these, and it is read off what the source says
+# rather than inferred from what happened around it. `unstated` is the ordinary
+# answer and is not a failure: a company that stops a project without saying why
+# has told us something, and recording a guess in that space would turn the
+# commonest fact in this dataset -- that reasons are not given -- into a
+# distribution of reasons somebody made up.
+#
+# The vocabulary is the one the hydrogen brief names, and it is deliberately
+# about the WORLD rather than about the company: `finance` is money not arriving,
+# `offtake` is nobody contracting to buy, `policy` is a rule or a subsidy moving,
+# `infrastructure` is a pipeline, a grid connection or a store not being there,
+# `cost` is the build costing more than the plan, `ownership` is the owner
+# changing or failing.
+STOP_REASONS = (
+    "finance",
+    "offtake",
+    "policy",
+    "infrastructure",
+    "cost",
+    "ownership",
+    # TWO VALUES THE FIRST RE-READ FORCED, added 9 September 2026. Fifteen
+    # stopping transitions were read against their own sources and two of them
+    # stated a cause the original seven could not hold:
+    #
+    #   strategy  the owner changed the business it is in. FREYR did not fail and
+    #             did not change hands; it pivoted to solar in the United States
+    #             and classified its European battery assets as held for sale.
+    #             Filed as `ownership` for one day, which said the owner changed
+    #             when the owner's MIND changed.
+    #   partner   a party the project cannot proceed without withdrew or failed,
+    #             and it is not the owner and not the customer. NOVO Energy lost
+    #             its technology partner; the plant has money, a site and a
+    #             customer, and no technology.
+    "strategy",
+    "partner",
+    # AND `maturity` IS THE THIRD THE RE-READS FORCED, added 9 September 2026.
+    # The owner cites its own readiness — the technology is not ready, or the
+    # supply chain that would build it is not — rather than a fact about money,
+    # a customer, a rule or an owner. Gigastack is the case: Phillips 66, Ørsted,
+    # ITM Power and Element Energy paused a 100 MW electrolyser at a working
+    # refinery saying "further project maturation and supply chain development is
+    # needed", which none of the eight other values could hold. It was filed at
+    # `policy` for part of a day, read from the fact that they had withdrawn from
+    # the revenue-support round, which described what they DID and not what they
+    # SAID.
+    #
+    # IT IS NOT A POLITE `unstated`. A reason is given and it is specific: the
+    # thing that is not ready is the project itself. An attrition series that can
+    # separate "nobody would pay for it" from "it could not be built yet" is
+    # answering a different question from one that cannot.
+    "maturity",
+    "unstated",
+)
+
+# STOP REASONS ARE AN ORDERED LIST, FIRST ENTRY PRIMARY. Sources give more than
+# one: SVOLT names threatened tariffs, unevenly distributed subsidies AND a lost
+# customer project in a single sentence; ArcelorMittal names energy costs and
+# then weak demand and high imports. A single-valued field made the register
+# choose one and drop the rest into prose, where nothing can count them.
+#
+# THE FIRST ENTRY IS THE ONE THAT CHANGED — what stopped the project now, as
+# against the conditions it was already living with — and it is what a
+# single-reason series should be built on. The rest are the conditions, in the
+# order the source gives them. `unstated` may only appear alone: a source that
+# gives no reason cannot also give a secondary one.
+
+# The statuses that owe a stop_reason. Read from the same place the drawing rule
+# reads, so the two cannot drift.
+STOP_REASON_STATUSES = STOPPED_STATUSES
+
+
+# WHO OWNS THE OPERATOR, AS A LIST, because a project company is usually more
+# than one party and a single label loses the thing the paper is asking about.
+# `owners` is [{name, share, listing}] — share is the percentage where a source
+# states one and null where it does not, and listing is one of OWNER_LISTINGS
+# below, for that party.
+#
+# `owner_listing` IS DERIVED FROM IT AND STILL STORED, because the comparison the
+# paper makes is per row and a reader should not have to compute it: it is the
+# listing of the party holding more than half, and `mixed` where nobody does. The
+# gate checks the derivation rather than trusting it, so a row cannot say
+# `listed` over a list that does not support it.
+#
+# WHETHER THE OWNER PUBLISHES. The paper this dataset feeds compares how much a
+# project discloses against who owns it, and that comparison needs the owner type
+# on the row rather than in somebody's head: a listed company files, a state-owned
+# one answers to a parliament, and a private one need do neither. It is about the
+# party that OPERATES the site -- for a joint venture, the lead named on the row.
+OWNER_LISTINGS = (
+    "listed",
+    "private",
+    "state-owned",
+    # NOBODY HOLDS A MAJORITY, so nothing about the operating company's
+    # disclosure follows from who owns it. Ruled 9 September 2026 after Hamburg
+    # Green Hydrogen Hub — 74.9 per cent a private asset manager, 25.1 per cent a
+    # city utility — showed that the single-value field only worked because that
+    # split happened to have a majority. A 50:50 venture had no honest answer.
+    "mixed",
+    # AND `unknown` IS THE FOURTH, ADDED THE SAME DAY. `mixed` is a statement
+    # about a split between named parties; this is the state where the split
+    # itself is not on file. EWE AG is the case: not listed on any exchange, held
+    # by East Frisian and Oldenburg municipal associations together with a
+    # private infrastructure investor, and no source read here says in what
+    # proportion. `private` and `state-owned` would each be an assertion.
+    #
+    # IT IS NOT THE SAME AS AN EMPTY FIELD and that is the whole of why it
+    # exists: an empty field cannot tell "the sources do not say" from "nobody
+    # asked", and a comparison of disclosure by owner type needs the difference.
+    # A row that carries it still carries the note saying what was looked at.
+    "unknown",
+)
+
+
+# DEPENDENCY EDGES, AND THE ONE CLASS THIS STEP CODES
+# ===================================================
+# A hydrogen site is defined by what it is attached to. It needs power, water and
+# a grid connection; it reaches its customer through a pipeline or a truck; and
+# the customer is usually a works that already exists and is in this register
+# under another sector. None of that is visible on a row that only says how many
+# megawatts it is.
+#
+# TWO CLASSES OF EDGE, AND ONLY ONE OF THEM IS DATA. An ASSERTED edge is one the
+# project's own source names: "the hydrogen will be delivered to the refinery in
+# Gonfreville", "connected directly to the hydrogen core network". It is evidence,
+# it carries the sentence it was read from, and it is what this step codes. A
+# STRUCTURAL edge is one that follows from the technology -- every electrolyser
+# needs a grid connection whether or not anybody said so -- and it is NOT coded
+# here: it belongs to a technology rule, applied once, in a later step. Writing
+# structural edges by hand now would produce a graph in which the two kinds look
+# identical and only the author knows which is which.
+EDGE_CLASSES = (
+    "asserted",
+    "structural",   # declared, and not written by hand -- see above
+)
+
+# WHICH WAY THE EDGE POINTS. `supplies` is the project sending something out;
+# `depends_on` is the project waiting for something. Both are recorded from the
+# project's own end, so a reader of one row sees both halves of its position.
+EDGE_KINDS = (
+    "supplies",
+    "depends_on",
+)
+
+# WHAT KIND OF THING IS ON THE OTHER END. The brief's four, unchanged:
+#   infrastructure  a pipeline, a store, a terminal, a grid or a water connection
+#   material        a molecule or a tonne moving between two works
+#   regulatory      a consent, a designation or a rule the project waits on
+#   funding         money the project is waiting for or standing on
+EDGE_TYPES = (
+    "infrastructure",
+    "material",
+    "regulatory",
+    "funding",
+)
+
+
+# THE OUTSIDE LISTS THIS REGISTER IS MEASURED AGAINST. Named here rather than in
+# the export, because the ids live on the rows and a row carrying an id under a
+# key nothing recognises is an id nobody can resolve.
+#
+#   odenweller_ueckerdt_2025
+#       The project list behind Odenweller and Ueckerdt, "The green hydrogen
+#       ambition and implementation gap", Nature Energy (2025). It is the IEA's
+#       October 2023 database after their own quality check, and the id is that
+#       file's `Ref` column.
+#   iea_hydrogen_production_projects
+#       The IEA's own live Hydrogen Production Projects database, read through
+#       its public project endpoint. The id is `projectReference`.
+#
+# THE TWO ARE NOT INDEPENDENT and the benchmark file says so: the first is a
+# quality-checked snapshot of the second, two years older. Matching against both
+# measures two different things -- whether this register holds what the published
+# academic list held, and whether it holds what the IEA holds today.
+BENCHMARKS = (
+    "odenweller_ueckerdt_2025",
+    "iea_hydrogen_production_projects",
+)
+
 
 
 # NOT EVERY ENTRY IN A STATUS HISTORY IS A STATUS CHANGE, and the difference has
@@ -624,6 +925,87 @@ LOCATION_PRECISIONS = (
 
 # The precisions a project or a plant may actually carry. See the note above.
 LOCATION_PRECISIONS_ALLOWED = ("plant", "site")
+
+
+# HOW THE POSITION WAS RESOLVED, WHICH IS A DIFFERENT QUESTION FROM HOW EXACT IT IS
+# =================================================================================
+# `precision` above says what KIND of place the point is — a works or a site — and
+# it has said so since the geo layer landed. It cannot say how the point was
+# arrived at, and after the hydrogen ruling of 9 September 2026 that is the
+# question a reader has to be able to ask.
+#
+# The ruling admits a site whose position is the HOST WORKS it stands on: an
+# electrolyser being built inside a refinery is placed on the refinery, because
+# that is where it is and because waiting for a volunteer to draw a building that
+# does not exist yet is a rule about OpenStreetMap's coverage rather than about
+# evidence. That is right, and it costs something: a mark on the paper now means
+# one of three different things, and nothing on the row said which.
+#
+#   works   the coordinate is a WORKS POLYGON somebody drew — the installation
+#           itself where the basemap has it, the works it stands on where it does
+#           not. `host_works` names the second case, so the two are never
+#           confused, and the sentence over the picture says how many of its marks
+#           are which.
+#   parcel  the coordinate was computed from named cadastral parcels: a plan says
+#           which parcels, a state register holds their geometry, and neither
+#           alone places anything.
+#   point   the coordinate is a POSITION SOMEBODY STATED — a grid reference in a
+#           permit, an address the operator published, a coordinate pair in a
+#           technical source. The most precise of the three where the source is
+#           good, and the one that rests on the fewest shapes.
+#
+# IT IS RECORDED PER SITE AND NOT PER ROW, because a row is not always at one
+# place: ArcelorMittal covers Bremen and Eisenhüttenstadt, and one field on the
+# row would have to pick between two answers or average them. Every row carries it
+# in the only place it can be true — on each of its sites.
+# WHETHER THE ROW HAS A POSITION AT ALL, AT ROW LEVEL, AS ITS OWN QUESTION.
+# Split from location_precision on 9 September 2026, and the reason is that one
+# name was doing two jobs at two scopes: `none` could only ever be a row and
+# `works`/`parcel`/`point` could only ever be a site, which is coherent and is
+# not readable. Two fields, two scopes, and neither has to be explained.
+#
+#   yes   the row has at least one site, each with a coordinate and a precision.
+#   no    it has none, it is admitted anyway, and its `location_note` says where
+#         a polygon was looked for and what was found instead.
+LOCATED = (
+    "yes",
+    "no",
+)
+
+# HOW THE POSITION WAS RESOLVED, PER SITE, and only on a row that has one.
+#
+#   works   the coordinate is a WORKS POLYGON somebody drew — the installation
+#           itself where the basemap has it, the works it stands on where it does
+#           not. `host_works` names the second case, so the two are never
+#           confused, and the sentence over the picture says how many are which.
+#   parcel  the coordinate was computed from named cadastral parcels: a plan says
+#           which parcels, a state register holds their geometry, and neither
+#           alone places anything.
+#   point   the coordinate is a POSITION SOMEBODY STATED — a grid reference in a
+#           permit, an address the operator published, a coordinate pair in a
+#           technical source.
+#
+# IT IS RECORDED PER SITE AND NOT PER ROW, because a row is not always at one
+# place: ArcelorMittal covers Bremen and Eisenhüttenstadt, and one field on the
+# row would have to pick between two answers or average them.
+LOCATION_PRECISION_VALUES = (
+    "works",
+    "parcel",
+    "point",
+)
+
+# WHICH PRECISION EACH KIND OF SOURCE CAN SUPPORT. Declared rather than left to
+# judgement, and gated, because the whole value of the field is that it is read
+# off the evidence: a basemap feature is a shape, a plan-and-cadastre pair is a
+# parcel list, and an address or a grid reference is a stated point. A row that
+# claimed `point` on a basemap polygon would be claiming a precision the source
+# does not have.
+LOCATION_PRECISION_BY_SOURCE = {
+    "basemap": "works",
+    "plan_parcels": "parcel",
+    "company": "point",
+    "permit": "point",
+}
 
 # The legal device a measure acts with, as a diagram says it. Closed for the
 # usual reason and one extra: these words are the only part of a measure label

@@ -68,6 +68,12 @@
       "held_by": "Claude, pending George's release",
       "reason": "The batsol draw hold was released on 2026-09-06 and that release reasons about the OVERVIEW -- what the map draws, and which seven rows on file it leaves out. It says nothing about the sector's 32 project pages, which classify() makes indexable unconditionally and which would have entered the sitemap on this merge without any decision naming them. Held so that publishing them is a decision rather than a side effect. The pages are built, linked from the released sector page, and carry noindex, follow; lifting the hold is one line and one deploy.",
       "released_by": "George"
+    },
+    "clean": {
+      "held_since": "2026-09-09",
+      "held_by": "Claude, pending George's release",
+      "reason": "Brief 7 §7: nothing hydrogen surfaces in this step. The rows land under the `clean` sector key, and classify() in web/lib/routes.ts makes a project page indexable the moment a row exists — so seven pages would enter the sitemap as a side effect of this merge rather than as anybody's decision. Held for the same reason batsol's were. The sector itself draws nothing: hasMap is false while `clean` has no bottleneck and no ranking, so there is no sector page to hold yet and no hold is placed for one.",
+      "released_by": "George"
     }
   },
   "project_pages_released": {}

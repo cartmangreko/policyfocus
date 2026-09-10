@@ -28,6 +28,7 @@ import {
   type ProjectStatus,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
+import { atPrecision } from "@/lib/dates";
 
 // One installation, and what has happened to it. Five blocks and nothing else:
 // header, status timeline, technology and measures, funding, sources.
@@ -62,13 +63,14 @@ export async function generateMetadata({
   // project pages are still held; a held one carries `noindex, follow` so the
   // crawler still walks through to the sector page that links it.
   const robots = projectIsIndexable(p.id) ? SITE_ROBOTS : DEMOTED;
+  const last = p.status_history[p.status_history.length - 1];
   return {
     robots,
     title: `${p.name} — ${p.company}`,
     description:
       `${p.name}, ${p.company}'s ${p.plant ?? p.country} project: ` +
       `${STATUS_LABEL[p.status].toLowerCase()} as of ` +
-      `${p.status_history[p.status_history.length - 1]?.date}, deploying ` +
+      `${atPrecision(last?.date ?? "", last?.date_precision)}, deploying ` +
       `${p.technology.join(", ")}.`,
   };
 }
@@ -96,6 +98,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         // nothing about the mark itself distinguishes it from a hollow
         // neighbour that IS drawn elsewhere.
         subjectCancelled: project.status === "cancelled",
+        // Only the subject's own marks: a neighbour placed on its host works is
+        // that project's fact and is stated on its own page.
+        hostWorks: frame.marks
+          .filter((m) => m.relation === "subject" && m.host_works)
+          .map((m) => m.host_works as string),
       })
     : null;
 
@@ -116,7 +123,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   // application was withdrawn, rather than 19 November 2025, the date it was
   // paused. The full history is still drawn underneath, both entries and both
   // sources; it is only the rung that has to name the moment.
-  const dateOf = new Map(statusTransitions(project).map((h) => [h.status, h.date]));
+  const dateOf = new Map(
+    statusTransitions(project).map((h) => [h.status, atPrecision(h.date, h.date_precision)]),
+  );
 
   return (
     <main className="rise project-page" style={{ ["--accent" as string]: `var(${accentVar(sector)})` }}>
@@ -181,6 +190,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 status: project.status,
                 plant: project.plant,
                 country: countryName(project.country, project.country),
+                stopped: project.status === "paused" || project.status === "cancelled",
               })}
             </p>
             <p className="note">{project.location_note}</p>
@@ -210,7 +220,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 and hide the one new fact. */}
             {project.status_history.map((h) => (
               <li key={`${h.kind ?? "status"}-${h.status}-${h.date}`}>
-                <span className="date">{h.date}</span>
+                <span className="date">{atPrecision(h.date, h.date_precision)}</span>
                 {h.kind === "ownership" ? (
                   <span className="tstatus ownership">
                     {h.from} → {h.to}
@@ -296,7 +306,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                     attribution that lives only in the data is not one. */}
                 <span className="note">
                   {s.publisher}
-                  {s.date ? ` · ${s.date}` : ""}
+                  {s.date ? ` · ${atPrecision(s.date, s.date_precision)}` : ""}
                   {s.retrieved_date ? ` · read ${s.retrieved_date}` : ""}
                   {/* The three fixed words say the file was fetched from
                       somebody other than its author, and the host is named

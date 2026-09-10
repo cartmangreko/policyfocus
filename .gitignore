@@ -47,3 +47,11 @@ docs/design/canvas/*.html
 # sources/export_status_history.py and friends. Nothing on the site reads what
 # they write, which is why none of it is tracked.
 scratch/
+
+# The hydrogen benchmark inputs, fetched by sources/build_hydrogen_benchmark.py.
+# NOT COMMITTED ON PURPOSE: the content of both files is the IEA's Hydrogen
+# Projects Database — directly in one case, quality-checked by Odenweller and
+# Ueckerdt in the other — and this repository is not licensed to redistribute it.
+# The script fetches them from the publishers on first run and the ids on the
+# rows are what makes the comparison reproducible without a copy living here.
+sources/cache/hydrogen/

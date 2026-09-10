@@ -839,6 +839,545 @@ built and what stops. It also had the effect of making the dataset look complete
 not see it. A register that improves its own numbers by dropping the rows that
 embarrass them is measuring itself and not the sector.
 
+### The hydrogen perimeter
+
+**Written 9 September 2026, brief 7.** The fourth sector this platform holds
+projects for, and the first whose boundary had to be drawn against three
+neighbouring datasets at once — steel, chemicals and clean-technology
+manufacturing — rather than against a product.
+
+The reviewed prose, which is what `/coverage` renders:
+
+> **Hydrogen.** Eufabric holds an electrolytic hydrogen production site when three
+> things are true of it at once: it makes hydrogen by splitting water, it stands in
+> Europe as this platform draws it, and the company itself has confirmed a named
+> site with an electrolyser capacity of at least 100 MW. Phases count towards that
+> figure only where the company states the total; a first line stated on its own is
+> a phase and not a smaller project.
+>
+> Europe here is the same named list of countries the battery boundary uses: the
+> twenty-seven member states, together with the United Kingdom, Norway,
+> Switzerland, the Western Balkans and Ukraine, with Türkiye outside it.
+>
+> Six things follow, and each is stated rather than left to judgement. Hydrogen
+> made from methane with the carbon captured is out of this boundary for now, and
+> is listed rather than refused, because whether it belongs is a question nobody
+> here has answered. Steelworks that make their own hydrogen to reduce iron are
+> steel sites and are already held as such. Pipelines, stores and import terminals
+> are out: they are what a site depends on rather than sites in their own right,
+> and they appear as links from the sites that name them. Works that build
+> electrolysers are out, and belong with the rest of clean-technology
+> manufacturing. Ammonia synthesis fed by electrolytic hydrogen is in. Methanol,
+> e-fuel and aviation-fuel works are out unless their own electrolyser clears the
+> threshold, in which case the electrolyser is what is held and the fuel works is a
+> note on it.
+>
+> Capacity for an electrolyser is quoted three ways — the electricity it draws, the
+> hydrogen it makes stated as a power or a flow, and the tonnes a year it is
+> expected to produce — and this platform keeps whichever the source used and
+> never converts between them. Where one source states two, both are kept. A site
+> whose capacity nobody has stated is still held, and is listed as outstanding
+> until a figure exists.
+
+**Six exclusions, each stated rather than left to judgement:**
+
+- **Hydrogen-DRI steelworks are OUT.** A works that makes its own hydrogen to
+  reduce iron is a steel project and is already held as one. Stegra at Boden,
+  HYBRIT, SALCOS and tkH2Steel are steel rows, not hydrogen rows, and the
+  740 MW electrolyser at Boden is a fact about a steel row.
+- **Blue hydrogen is OUT of this dataset and is LISTED rather than refused.**
+  Methane reforming with capture is a class nobody here has ruled on; it goes to
+  `sources/hydrogen_candidates.json` with the reason "blue, out of perimeter", so
+  that the day somebody rules, the list of what the ruling affects already exists.
+- **Pipelines, stores and import terminals are OUT.** They are what a site
+  depends on rather than sites in their own right, and they arrive as asserted
+  `depends_on` edges from the sites whose sources name them.
+- **Electrolyser manufacturing is OUT.** It is NZIA manufacturing and belongs to a
+  later sector, however tempting it is to hold the supplier beside the customer.
+- **Pilots and demonstrators below the threshold are OUT.** REFHYNE 1 at Wesseling
+  is the case that shows the threshold is doing work: at 10 MW it is still the
+  largest PEM electrolyser operating in Europe, and it is out while REFHYNE 2 on
+  the same site is in.
+- **Methanol, e-fuel and SAF works are OUT unless their own electrolyser clears
+  the threshold**, in which case the electrolyser is the project and the fuel
+  works is a note on it. La Robla Green is the first case: a 200 MW electrolyser
+  feeding a 100,000 t/y e-methanol plant, held as the electrolyser.
+
+**Ammonia synthesis fed by electrolytic hydrogen is IN**, with `transition` read
+as `supply_security` unless the source states decarbonisation.
+
+**And the perimeter's binding constraint here is not the one batteries had.**
+Batteries stalled on company confirmation — sites the operator had never named,
+which is what the composite standard was written for. Hydrogen does not stall
+there: these operators name their sites and publish their megawatts. It stalls on
+POSITION, because these works are mostly not built yet, and the basemap draws
+buildings rather than intentions. That is a fact about the sector's stage, it is
+counted in `sources/hydrogen_docket.md` rather than described, and it is the
+reason the first pass landed seven rows out of twenty admitted candidates.
+
+### Three units for one electrolyser, and no conversion between them
+
+An electrolysis project is quoted three ways, by three different kinds of source:
+the **electricity the electrolyser draws** (MW input), the **hydrogen it makes**
+stated as a power or as a flow (MW output, Nm³/h), and the **tonnes a year** it is
+expected to produce. They are related only through an efficiency and a capacity
+factor, and the source almost never states either.
+
+**So a row records the figure in the unit its source used, and this platform
+never converts between them.** Where one source states the same phase in two
+units, both are kept — `capacity_alternates` on the row, with every companion
+field the main figure carries — and the row leads with the unit that comes first
+in `CAPACITY_UNIT_PREFERENCE`, which is MW input where it exists. The gate refuses
+a row that leads with a lower-ranked unit while carrying a higher-ranked
+alternate, so the choice is enforced on the row rather than made invisibly in an
+export.
+
+**The reason this is a ruling and not a preference is the IEA's own database.**
+Its "estimated normalised capacity" column is the number every hydrogen study
+compares against. Its definitions sheet describes that column as
+"estimated normalised hydrogen production capacity in MW H₂ output (LHV)", and
+then gives the factors it was computed with — 0.0046 MW per Nm³/h for alkaline,
+0.0052 for PEM, and the gloss "0.0045 MW/Nm³ H₂/hour (equivalent to 50 kWh/kg
+H₂)". Fifty kilowatt-hours per kilogram is electrical input; the lower heating
+value of hydrogen is thirty-three. **The column is input and the sentence above it
+says output.** Two readings of one column, in one file, from the body that
+publishes it.
+
+A register that converted between these units would inherit that ambiguity and
+hide it behind a number of its own. So it does not convert, and the one place a
+factor is applied — counting the benchmarks' European entries at or above 100 MW
+in `sources/build_hydrogen_benchmark.py` — applies the IEA's own factor to the
+IEA's own rows, labels every count that rests on it, and touches no row here.
+
+### Reason as stated, or unstated
+
+**Every event that moves a project to `paused` or `cancelled` carries a
+`stop_reason`** from a closed list — `finance`, `offtake`, `policy`,
+`infrastructure`, `cost`, `ownership`, `unstated` — read from what the source
+says and from nothing else. A reason that is not `unstated` carries the sentence
+it was read from, in `stop_reason_verbatim`.
+
+**`unstated` is a real answer and is expected to be the commonest one.** A company
+that stops a project without saying why has told us something. Filling that space
+with the most plausible reason would turn the single most interesting fact about
+industrial attrition — that reasons are usually not given — into a distribution of
+reasons somebody invented, and it would do so in whichever direction the person
+filling it in found natural.
+
+**The rule is required on the event that STOPS the project and on no other.** A
+later entry about an already-paused project reports on it rather than stopping
+it — Slite's withdrawn permit application, Lyten's memorandum over a site that
+has been still since 2024 — and asking each of those for a reason would make the
+register restate one cause every time somebody wrote about a consequence. The
+test is the positional one the whole layer uses.
+
+**It binds on every sector, and it did not on the day it landed.** Nineteen
+stopped events predated it and were reported rather than failed, on the ruling
+that the only honest backfill is a re-read. The re-read was done on 9 September
+2026 and the exemption is gone. Fifteen stopping transitions now carry a reason
+from their own sources; where the quote comes from somewhere other than the
+event's own source — a company saying why on the day a trade publisher this
+pipeline cannot read reported it — `stop_reason_source_url` carries it, so the
+event keeps its date and the quote keeps its provenance.
+
+**What the re-read found is the argument for the field.** Six of the fifteen give
+no cause at all: a company that stops two factories and says only that the
+"prerequisites" to restart them "were unlikely to be met"; a council that records
+"Das Vorhaben wird nicht mehr umgesetzt"; a Gazette notice that states an
+appointment of administrators and nothing else. Two more state a cause the
+vocabulary cannot hold — an owner changing the business it is in, and a venture
+losing its technology partner — and both are filed at their nearest value with
+the quote beside them and the misfit written on the row rather than smoothed
+into it. **And several sources give more than one reason** where the field takes
+one: SVOLT names tariffs, unevenly distributed subsidies and a lost customer
+project in a single sentence. The field takes the thing that changed and the
+quote keeps the rest.
+
+### An asserted edge carries the sentence; a structural edge is not written by hand
+
+A hydrogen site is defined by what it is attached to: the power it draws, the
+pipeline it feeds, the works that buys the molecule. Two kinds of edge say so and
+only one of them is data.
+
+- **Asserted.** The project's own source names the thing — "the hydrogen will be
+  delivered to the refinery in Gonfreville", "directly connected to the hydrogen
+  core network". It carries `kind` (`supplies` or `depends_on`), `type`
+  (`infrastructure`, `material`, `regulatory`, `funding`), a `since` date and the
+  evidence with its verbatim. This is what is authored.
+- **Structural.** It follows from the technology — every electrolyser needs a grid
+  connection and water, every DRI furnace needs hydrogen — and it is **not**
+  authored on a row. It follows from a technology rule, applied once, so that the
+  graph can always say which of its edges somebody asserted and which it derived.
+
+**The gate refuses a hand-written structural edge**, by name, for that reason: two
+kinds of edge that look identical on the page, with only the author knowing which
+is which, is a graph nobody can audit. `EDGE_CLASSES` carries the value so the
+refusal reads as a rule rather than as a missing feature.
+
+### A 200 with an empty body is a refusal, and the link checker cannot see it
+
+A publisher that answers a declared reader with **HTTP 200 and a document
+containing the page title, the navigation and no article** has refused it. The
+page is there; a browser renders it; a link checker calls the line green,
+because by every test a link checker has, it is.
+
+**This is a third state and it needed naming.** The first is a 403, which says
+"not to you" and which `BOT_HOSTILE` in `sources/check_links.py` reports and does
+not fail. The second is `refused_declared_reader`, which is stronger than a host
+list: a named person opened this exact URL on a stated day and found the document
+there. The third is this one, and it is the quietest of the three — nothing fails,
+nothing is reported, and the only symptom is that a source nobody can quote sits
+on a row looking exactly like a source somebody can.
+
+**Two publishers on this file are in it and they cost different things.**
+shell.com serves eighty-five characters to a declared reader: the row for
+REFHYNE 2 therefore quotes the REFHYNE consortium's own site instead, which is
+the operator speaking through the project it leads, and Shell's URL is queued.
+galp.com is worse and more interesting: the article text comes back and the
+**publication date does not**, because Galp renders every date in the browser. An
+undated statement cannot date an event, so a project with a final investment
+decision has its history dated from its lender's release instead, and Galp's page
+is cited beside it carrying no date and dating nothing.
+
+**Both are queued in `sources/manual/wanted`,** with what filing each would close
+— a schedule this register does not hold, and an FID event this register cannot
+date. A person with a browser closes either in a minute.
+
+**What is NOT the answer is a browser's name in the User-Agent.** That recovers
+the appearance of a citation and none of it, and the reasoning is the same one
+`check_links.py` already sets out for the 403s: an honest identity is what makes
+a refusal visible, and a refusal that is visible is a fact on the record rather
+than a green line nobody checked.
+
+### A site may be placed on the works it stands on
+
+**Ruled 9 September 2026, on the hydrogen docket's D13.** A project whose own
+outline nobody has drawn may take its position from the **host works** — the
+refinery, chemical park or power station it is being built inside — and the row
+says so in three places: `location_precision`, `host_works`, and the sentence over
+the picture.
+
+**Why the earlier reading had to give.** The hydrogen pass admitted twenty sites
+whose operators name them plainly and publish their capacities, and could draw
+seven. The other thirteen failed on position alone, and not because anybody was
+hiding anything: these works mostly do not exist yet. They are construction
+fields inside somebody else's fence, and a rule that admits a site only once a
+volunteer has drawn the building is a rule about OpenStreetMap's coverage of
+things that have not been built. That is the same reasoning that widened the
+coordinate vocabulary past `basemap` when batteries hit ACC's Kaiserslautern
+site, applied one turn further on.
+
+**What it does not do is lower the standard.** The coordinate is still a shape
+somebody independent drew, carrying a works' own name, quoted with its tags. What
+changes is which works: the point is the ground the installation stands on rather
+than its own outline, and the difference is a few hundred metres inside a fence
+the company named.
+
+**So it is recorded rather than absorbed.** `location_precision` — `works`, `parcel`,
+`point` or `none` — says how the position was resolved, on every site of every project
+in every sector, and is checked against the source type that produced it.
+`host_works` names the works where the point is not the installation's, and the
+gate refuses one without a note. The standfirst over a project's crop says
+"Its position is the Petronor refinery, the works it stands on, rather than the
+installation itself", and the sector overview says how many of its marks are
+which. A reader who thinks the ruling is wrong can see exactly which marks it
+moved.
+
+**And the ruling did not land everything.** Three of the thirteen came in on it:
+Hamburg Green Hydrogen Hub onto the dead Moorburg coal station, Uniper onto its
+own Maasvlakte power station, Repsol onto its Tarragona refinery. The other ten
+have no works polygon of ANY kind — not the installation's, not a host's — because
+they are greenfield sites, port estates and industrial parks, and an estate
+polygon is refused on the rule Subotica and Mo i Rana already settled. The
+constraint moved; it did not vanish.
+
+### Position is not an admission leg
+
+**Ruled 9 September 2026, and it reverses the oldest rule on the geography
+layer.** A project the perimeter admits is held whether or not anybody can place
+it. `located: "no"` on the row is the state, and it is a state rather than an
+absence.
+
+**Why the old rule had to go, and it is not the reason the host-works ruling
+went.** That one was about which works a coordinate may be taken from. This one
+is about whether a coordinate is a condition of existing. The hydrogen pass
+settled it: twenty sites whose operators name them and publish their capacities,
+of which ten had no works polygon of any kind — not their own, not a host's —
+because they are construction fields on reclaimed land, in ports, inside
+industrial parks and on greenfield. Holding position as an admission leg meant a
+register of European hydrogen that omitted Shell's largest plant, Air Liquide's
+second one, the largest single electrolyser figure any company on the file
+states, and the only project on the file with an insolvency in its history.
+**That is not a cautious register. It is a register that reports the coverage of
+OpenStreetMap and calls it industry.**
+
+**TWO FIELDS, TWO SCOPES, from later the same day.** `located` is `yes` or `no`
+and sits on the ROW; `location_precision` is `works`, `parcel` or `point` and
+sits on each SITE, only where the row is located. One name was doing two jobs at
+two scales — `none` could only ever be a row and the other three could only ever
+be a site — which is coherent and unreadable, and the gate now refuses each in
+the other's place.
+
+**What the row owes instead.** A `location_note` saying WHERE A POSITION WAS
+LOOKED FOR AND WHAT WAS FOUND, which is what stops this from becoming the place
+coordinates go to be avoided. The ten notes name the sweeps: Maasvlakte from
+51.94 N to 52.00 N; Emden, where the Volkswagen works and thirty builders' yards
+are drawn and the electrolyser is not; HØST, whose only feature is an office;
+Lubmin and Rostock, where what exists is an estate and a port and both are
+refused on the rule Subotica and Mo i Rana settled; La Robla, where the one
+polygon found is the biomass half of a project this perimeter holds the
+electrolyser of.
+
+**And it is said everywhere it matters.** The row is counted in every count-based
+statistic. The sentence over the sector overview names it in a clause of its own
+— **"no citable source places the works"**, which is a third reason beside
+"cancelled" and "location not sought", and the three do not mean the same thing.
+Its own page renders **without** the location section rather than with an empty
+one, and the sentence there says the company has confirmed the site, that nobody
+has drawn it, and that the row is held anyway.
+
+**What has not changed is what a coordinate means.** A row that HAS one still
+carries a shape somebody independent drew, quoted with its tags, at a stated
+precision. Nothing was softened; a second, honest state was added beside it.
+
+### An owner is a list, and a stop has an ordered list of reasons
+
+**Two fields became lists on 9 September 2026, for the same reason: a single
+value was making the register choose, and the choice was invisible.**
+
+**`owners` is `[{name, share, listing}]` and `owner_listing` is read off it** —
+the listing of the party holding more than half, and `mixed` where nobody does.
+The gate checks the derivation rather than trusting it. Hamburg Green Hydrogen
+Hub is the case that forced it: 74.9 per cent a private asset manager and 25.1
+per cent a city utility, where the single field said `private` and a reader had
+no way to see that a quarter of it is the Free and Hanseatic City of Hamburg. A
+50:50 venture would not have been sayable at all. HyTechHafen Rostock is a
+four-way venture with no stated shares and is `mixed`; Catalina is five-way.
+
+**AND `unknown` IS THE FOURTH VALUE, for the state where the split itself is not
+on file.** EWE AG is not listed on an exchange and is held by municipal
+associations together with a private investor, and no source read here says in
+what proportion — so `private` and `state-owned` would both be assertions, and
+`mixed` is a statement about a split between named parties rather than about one
+nobody here can see. The row carried nothing at all for part of a day, which
+could not tell "the sources do not say" from "nobody asked". `unknown` can, and
+it still carries the note. The fifty-one rows that predate the field are reported on every run,
+not failed, on the same reading the stop-reason backfill was done under.
+
+**`stop_reason` is an ordered list, first entry primary.** Sources give more than
+one and the single-valued field pushed the rest into prose where nothing could
+count them: SVOLT names threatened tariffs, unevenly distributed subsidies AND a
+lost customer project in one sentence; Northvolt names a financing failure and
+then four things that eroded the position; ArcelorMittal names energy costs and
+then weak demand and high imports. **The first entry is what CHANGED** — what
+stopped the project now, as against the conditions it was already living with —
+and it is what a single-reason series should be built on. `unstated` may only
+appear alone.
+
+**Three values were added because re-reads demanded them.** `strategy` is the
+owner changing the business it is in, which FREYR did and which `ownership`
+described as the owner changing hands. `partner` is a party the project cannot
+proceed without withdrawing or failing, and it is neither the owner nor the
+customer: NOVO Energy has money, a site and a customer, and no technology.
+`maturity` is the owner citing its OWN readiness — the technology or the supply
+chain that would build it — which is what Gigastack's consortium said and what
+`policy` could only describe by reading their actions instead of their words.
+Each had been filed at its nearest value with the misfit written on the row, and
+each note keeps the record of the day it did not fit.
+
+**THE PATTERN IS WORTH NAMING.** Three values in one day, each found by reading a
+source rather than by designing a vocabulary. A closed list is right and it will
+keep being wrong, and the way it gets fixed is that a row says plainly it does not
+fit — which is what the notes are for and why a nearest-value filing is recorded
+rather than smoothed.
+
+### Every absence from a benchmark is a decision, and the residue is printed
+
+`sources/report_benchmark_gap.py` asks the question a reader distrusts a register
+over: **what do the outside lists hold that you do not, and is each absence a
+decision or an oversight.** It runs over every European entry at or above 100 MW
+in either benchmark, at any technology, and puts each into one of six classes —
+duplicate of a held row, DRI or other perimeter exclusion, blue, below threshold
+on reading, no company-confirmed site, and **not searched**.
+
+**Only the last is a defect, and it is printed by name rather than counted**,
+because the answer to it is to go and look. On the first run it held four
+entries, of which three carried the benchmark's status "Other/Unknown" — what a
+list looks like when it has stopped following a project rather than recorded that
+the project stopped. Two became rows, one was a later phase of the first, and one
+is refused in `REFUSED_BY_NAME` with its clause, on the same device the
+coordinate-source exceptions use: an entry leaves the residue by somebody
+deciding, never by a regex widening.
+
+**THE BENCHMARK IS A DISCOVERY ROUTE AND NOT ONLY A SCORE.** The batteries file
+recorded that the funding trail found two candidates the perimeter sweep had
+missed and said the lesson was worth remembering. This is the second such route
+and it is better, because it is exhaustive over a published list and it can be
+re-run. It found a paused 100 MW electrolyser at a British refinery that nothing
+else here would have reached.
+
+**A RESIDUAL CLASS IS WATCHED FOR GROWTH, NOT ONLY FOR MEMBERS.** "no
+company-confirmed site" held nine in ten of the gap on the first run and was
+split on the same day into the three states it was hiding: the benchmark says
+nothing about where; the benchmark says where and nobody here has read a company
+or permit source naming it; somebody read one and was refused. The split falls
+almost exactly along the line between the two files — **the academic file has no
+location column at all**, and the IEA's live endpoint publishes a coordinate for
+every European entry. That coordinate is still refused as a position here, and it
+still means the entry says where.
+
+**THE INPUTS ARE SNAPSHOTTED BY IDENTITY AND NOT BY COPY.**
+`sources/benchmark_snapshots.json` holds each file's publisher URL, the day it
+was fetched, its size and its SHA-256, append-only, and the report verifies the
+cache against it on every run and says so either way. The bytes are not archived
+because both files are the IEA's database and this repository may not
+redistribute it — and a hash does what "Snapshots are append-only" asks of an
+archive, which is to make a published number reconstructible after the register
+has moved on, without holding a copy nobody may pass on. A refreshed benchmark is
+a new entry: the counts in the docket stay attached to the file they were computed
+from.
+
+**And it found the reason a register cannot simply follow a list.** That project
+is in the October 2023 academic file twice, with an unknown status, and is gone
+from the live IEA file altogether. A register built by tracking the benchmark
+would have recorded its existence and never its pause: **a project that vanishes
+from a database is a project whose failure nobody counts.** The report is re-run
+whenever either list is refreshed.
+
+### An event date carries its precision, and is padded to the earliest it can be
+
+**Ruled 9 September 2026.** An event date is always written as a full
+`YYYY-MM-DD`, and `date_precision` — `day`, `month` or `year` — says what the
+source actually gave it to. A month-precision event sits on the **first of its
+month** and a year-precision event on **1 January**, because that is the earliest
+the event can have happened.
+
+**It is the opposite convention from a stated target and for the same reason.** A
+target is read at the END of its period — "2029" is not missed until 31 December
+2029 — and an event is padded to the START of its. Neither may claim more than
+the source did, and the two rules point in opposite directions because
+overstating a promise and overstating a date are opposite errors.
+
+**What it closes is a convention that lived in prose.** The Italvolt row carried
+`2024-01-31` for a bankruptcy the source dated only to "January 2024", with a
+note explaining that the month's END had been chosen "rather than a claim to
+precision". That contradicted the padding rule above, and no count could read it:
+a series measuring how long that project lasted would have taken the 31st for a
+day somebody knew. It is now `2024-01-01` at `month`, and the note records the
+correction rather than the old convention.
+
+**And it is what let Galp's own decision onto its own row.** galp.com renders its
+publication dates in the browser, so the company's FID release comes back to a
+declared reader with its text and no date; an undated statement cannot date an
+event, and that row's history therefore began at its LENDER's release, with a
+construction event, more than two years after the decision it was about. Galp's
+project page says "In 2023, Galp took a decisive step by making the final
+investment decision … and 100 MW of electrolysers for the production of green
+hydrogen." The company said a year. The register can now hold a year as a year,
+rather than as a false day or as nothing at all, and the EIB entry becomes what
+it always was — the corroboration rather than the spine.
+
+**A STATEMENT IS AN EVENT TOO.** `stated_schedule` entries carry the same field
+on the same rule: the date there is the day the promise was made, and a company
+that said something "in November 2021" said it then whether or not the page
+carries a day. What the ENTRY promises keeps its own `target_precision`, read at
+the end of its period; the two fields sit side by side and answer opposite
+questions about the same line.
+
+**AND IT IS NOT ONLY EVENTS — ruled one turn later, the same day.**
+`capacity_as_of`, an alternate's `as_of` and a parameter's `date_of_value` carry
+`..._precision` on the same vocabulary and the same padding. They are dates of the
+same kind, answering the same question: when was this true, and how exactly does
+the source say so.
+
+The cost of their not having it was visible for exactly one day, on the Galp row.
+Its capacity had to stay on the EIB's sentence — `announced`, because the brief
+makes a lender's approval that — while the row's own history showed a final
+investment decision, because the company's sentence states the figure and the
+decision together and is dated to a year, and `capacity_as_of` could not say so.
+It can now. **The figure is on the company's sentence at `fid`, dated 2023 at year
+precision**, and the EIB's sentence stays on the row as what it is: a second
+source, two years later, on the same 100 MW.
+
+**Nine other values moved with it**, all of them already padded and saying so only
+in prose — four Innovation Fund grants dated to a month, a journal figure dated to
+a month, two Comext import totals and two cost premiums dated to a year, and one
+capacity from a permit application dated to a month.
+
+**PADDED IN STORAGE, UNPADDED ON THE PAGE.** The padding is right for storage and
+for arithmetic and wrong on a surface: "as of 2025-01-01" under a cost premium the
+source dates to 2025 claims a day nobody published, which is the error the field
+was added to prevent, arriving one layer further out. So `sources/build_lead.py`
+undoes the padding for display from the same field, in one place — a year shows as
+a year, a month as a month — and the cement and steel lead blocks went back to
+saying "as of 2025" the moment they were rebuilt. A source's own `date` has no
+precision field yet and is printed as stored; that is the next one to look at.
+
+**One convention for every date that says when something WAS, and the opposite one
+for a target.** Padded to the earliest it can be, against read at the end of its
+period. Both are the reading that does not overstate, and they point in opposite
+directions because overstating a promise and overstating a fact are opposite
+errors.
+
+### A source date carries its precision; a retrieval date is always a day
+
+**Ruled 9 September 2026, closing rule 21.** Every entry in a `sources` list
+carries `date_precision` beside its `date`, on the same vocabulary and the same
+padding as an event. `retrieved_date` does not, and is gated to the day shape
+instead — the two are different kinds of date and the rule says so rather than
+treating them alike.
+
+**A publisher's date is as exact as the publisher made it.** Most are days. ITM
+Power's Gigastack phase-2 report carries November 2021 and no day; a journal issue
+is a month; a statistical release can be a year. Those are stored padded to the
+first, like every other date on this layer that says when something WAS.
+
+**A retrieval date is a day because there is no vaguer version of the fact.**
+Somebody here fetched a page, on a day. The asymmetry is enforced rather than
+remembered: a `retrieved_date` that is not `YYYY-MM-DD` fails.
+
+**AND A SOURCE DATED TO THE DAY IT WAS READ IS STILL A DAY.** Several sources on
+this file are standing pages their publishers never dated — refhyne.eu, hghh.eu,
+laroblagreen.com, hoestptxesbjerg.dk, galp.com — and their `date` is the day this
+register read them. That is `day` precision and it is honest: the date IS known
+to the day, because it is a fact about the reading. What it is not is a
+publication date, and each of those rows says so in its own note. The precision
+field cannot carry that distinction and is not being asked to.
+
+### No surface renders a date at finer precision than its field records
+
+`sources/check_date_precision.py`, in the postbuild chain beside the anchor and
+capacity-clause gates. It exists because **a page had already broken the rule**:
+the first build after the precision fields landed printed "as of 2025-01-01" on
+the cement and steel lead blocks, under a cost premium the International Energy
+Agency dates to 2025. A day nobody published, rendered confidently, from a field
+that knew better.
+
+**Two checks, and the second is the honest half of the first.**
+
+- **The built data a surface reads.** Every lead file, with each `as_of` traced
+  to the field it was copied from. Exact and exhaustive.
+- **The rendered pages, by literal.** Every padded date on the layer is looked
+  for in the built HTML, with the React flight payload stripped first — that blob
+  carries the stored row, padding and all, because the client needs the data and
+  not only the text, and a gate that read it would fail every page for holding a
+  date correctly.
+
+**AMBIGUOUS LITERALS ARE REPORTED AND NOT FAILED, and the list is the interesting
+part.** The Innovation Fund's Ifestos grant was signed on 1 January 2024 and
+Italvolt's bankruptcy is padded to the same string; Slite's permit application
+really was withdrawn on 1 January 2026. A page printing one of those in full may
+be right, and this gate cannot tell which row it came from. Failing them would
+push somebody to stop recording real first-of-month dates, so they are printed on
+every run with a count of the pages that show them. **A literal that is padded on
+the file and never a genuine day anywhere is unambiguous, and IS failed.**
+
+The gate found three surfaces on its first run: the status rail on a project page,
+the object lead built by `build_object_leads.py`, and the sector lead already
+fixed by hand. All three now render through one function, `atPrecision` in
+`web/lib/dates.ts`, and a fourth surface that forgets it will be caught by the
+build rather than by a reader.
+
 ### A slip is one speaker changing its mind
 
 `stated_schedule` records what a project said it would do. Every entry carries a

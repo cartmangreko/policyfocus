@@ -35,6 +35,15 @@
     "",
     "WHAT IS NOT HERE. Carbon capture. It was on the first list of six and it is the one",
     "entry that is not an industry: it is an abatement route several industries take, so",
+    "HYDROGEN IS THE FIRST EDGE-DEFINED INSTANCE, and it is what the paragraph above",
+    "was written for. It has no sector edge, because hydrogen is not a FIGARO industry",
+    "and a pseudo-key would corrupt the join; its rows are filed under the `clean`",
+    "sector key, which no ecosystem claims by sector, and the instance names them one",
+    "by one in `project`. So the boundary rule is satisfied by exactly one claim per",
+    "row — the explicit edge — and `sector_scope` stays null because there is no sector",
+    "key to narrow. A scope note on an instance with no sector edge would be a caveat",
+    "on a relationship that does not exist, which is why the gate refuses one.",
+    "",
     "it is a technology node with edges from cement, steel and chemicals, and the CO2",
     "transport and storage projects that serve them are shared project nodes.",
     "",
@@ -53,7 +62,9 @@
       "id": "cement",
       "name": "Cement",
       "icon": "cement",
-      "sectors": ["cement"],
+      "sectors": [
+        "cement"
+      ],
       "sector_scope": null,
       "technology": [],
       "project": [],
@@ -64,7 +75,9 @@
       "id": "steel",
       "name": "Steel",
       "icon": "steel",
-      "sectors": ["steel"],
+      "sectors": [
+        "steel"
+      ],
       "sector_scope": null,
       "technology": [],
       "project": [],
@@ -75,7 +88,10 @@
       "id": "chemicals",
       "name": "Chemicals",
       "icon": "chem",
-      "sectors": ["chem", "chem/plastics"],
+      "sectors": [
+        "chem",
+        "chem/plastics"
+      ],
       "sector_scope": "Organic chemicals and plastics. Fertilisers are excluded; ammonia and the fertiliser line are read under hydrogen.",
       "technology": [],
       "project": [],
@@ -86,7 +102,9 @@
       "id": "batteries",
       "name": "Batteries",
       "icon": "batsol",
-      "sectors": ["batsol"],
+      "sectors": [
+        "batsol"
+      ],
       "sector_scope": "Batteries only. The sector key covers batteries and solar because FIGARO does; solar stays in the register and carries no ecosystem edge.",
       "technology": [],
       "project": [],
@@ -99,8 +117,33 @@
       "icon": "hydrogen",
       "sectors": [],
       "sector_scope": null,
-      "technology": [],
-      "project": [],
+      "technology": [
+        "hydrogen-supply"
+      ],
+      "project": [
+        "airliquide-elygator-maasvlakte",
+        "airliquide-normandhy-port-jerome",
+        "bp-lingen-green-hydrogen",
+        "catalina-teruel-sagunto",
+        "ewe-emden-electrolysis",
+        "galp-sines-electrolyser",
+        "gigastack-humber",
+        "h2apex-lubmin-hh2e",
+        "hghh-moorburg",
+        "hoest-ptx-esbjerg",
+        "hytechhafen-rostock",
+        "ineos-koeln-electrolyser",
+        "la-robla-green",
+        "moeve-onuba-huelva",
+        "omv-bruck-an-der-leitha",
+        "repsol-cartagena",
+        "repsol-petronor-muskiz",
+        "repsol-tarragona",
+        "rwe-get-h2-nukleus-lingen",
+        "shell-holland-hydrogen-1",
+        "shell-refhyne-2-wesseling",
+        "uniper-h2maasvlakte"
+      ],
       "measure": [],
       "material": []
     },

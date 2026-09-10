@@ -88,6 +88,8 @@ class Errors:
     def __init__(self) -> None:
         self.errors: list[str] = []
         self.stale: list[str] = []
+        # Rows on sectors that have not yet adopted owners-as-a-list.
+        self.ownerless: list[str] = []
 
     def add(self, where: str, msg: str) -> None:
         self.errors.append(f"  {where}: {msg}")
@@ -164,7 +166,26 @@ def _source_list(e: Errors, where: str, row: dict) -> None:
         w = f"{where} sources[{i}]"
         _url(e, w, s.get("url"))
         _req(e, w, s, "title", "publisher", "date")
-        _date(e, w, s, "date")
+        # A SOURCE'S DATE CARRIES ITS PRECISION, from 9 September 2026, and
+        # `retrieved_date` does not — the two are different kinds of date and the
+        # rule says so rather than treating them alike.
+        #
+        # A PUBLISHER'S DATE IS AS EXACT AS THE PUBLISHER MADE IT. Most are days.
+        # ITM Power's Gigastack phase-2 report carries November 2021 and no day;
+        # a journal issue is a month; a statistical release can be a year. Those
+        # are stored padded to the first, like every other date on this layer that
+        # says when something WAS.
+        #
+        # `retrieved_date` IS ALWAYS A DAY, because it is the day somebody here
+        # fetched the page and there is no version of that fact that is vaguer.
+        # It is gated to the day shape rather than given a precision field, so
+        # the asymmetry is enforced instead of remembered.
+        _dated(e, w, s, "date", "date_precision")
+        if s.get("retrieved_date") is not None:
+            if not EVENT_DATE_SHAPE["day"].match(str(s["retrieved_date"])):
+                e.add(w, f"retrieved_date={s['retrieved_date']!r} is not YYYY-MM-DD — it "
+                         f"is the day somebody fetched the page and there is no vaguer "
+                         f"version of that fact, so it carries no precision field")
         if s.get("hosted_copy") is not None:
             _hosted_copy(e, w, s)
 
@@ -289,7 +310,7 @@ def check_parameters(e: Errors, rows: list[dict], tech_ids: set, sectors: dict) 
         _req(e, w, r, "id", "name", "value", "unit", "scope",
              "date_of_value", "retrieved_date", "source", "confidence")
         _vocab(e, w, r, "confidence", sm.CONFIDENCE)
-        _date(e, w, r, "date_of_value")
+        _dated(e, w, r, "date_of_value", "date_of_value_precision")
         _date(e, w, r, "retrieved_date")
         scope = r.get("scope")
         if scope and scope not in sm.SCOPE_LITERALS and not scope.startswith(sm.SCOPE_PREFIXES):
@@ -367,36 +388,50 @@ def _location(e: Errors, where: str, row: dict) -> None:
     """
     sites = row.get("location")
     note = (row.get("location_note") or "").strip()
-    stopped = row.get("status") in sm.STOPPED_STATUSES
+    located = row.get("located")
+    _vocab(e, where, row, "located", sm.LOCATED)
+    if "located" not in row:
+        e.add(where, "no `located` — whether the row has a position is a question the row "
+                     "answers, not one a reader works out from whether a list is empty")
+    if row.get("location_precision") is not None:
+        e.add(where, "carries location_precision at row level — that field is per SITE and "
+                     "says how a position was resolved; whether there is one at all is "
+                     "`located`")
     if not sites:
-        # A STOPPED ROW MAY STAND WITHOUT A POSITION, AND ONLY WITH A NOTE. The
-        # rule the note carries is the whole of the allowance: location is sought
-        # for active rows, and a cancelled or paused project says that it was not
-        # sought rather than leaving an absence that reads like an oversight.
-        # Both halves are required, and the second is what stops this from
-        # becoming the place coordinates go to be avoided.
-        if not stopped:
-            e.add(where, f"no location, and status={row.get('status')!r} is not one of "
-                         f"{list(sm.STOPPED_STATUSES)} — an active project carries at "
-                         f"least one site with a latitude and a longitude. A row that "
-                         f"returns to an active status needs its position found")
-        elif not note:
-            e.add(where, "no location and no location_note — a stopped row may stand "
-                         "without a position, and only where it says so. Write what was "
-                         "not sought and why, so the absence is a decision on the record")
+        # POSITION IS NOT AN ADMISSION LEG. Ruled 9 September 2026. A row with no
+        # site says so POSITIVELY — `located: "no"` — rather than by an absence a
+        # reader has to notice. It is admitted, it is counted, it is named in the
+        # sentence over the overview as a row the picture does not draw, and its
+        # own page renders without the location section instead of with an empty
+        # one.
+        #
+        # THE NOTE IS STILL REQUIRED AND IS DOING MORE WORK THAN BEFORE. It is
+        # the record of where a polygon was looked for, which is what stops this
+        # from becoming the place coordinates go to be avoided: a reader can see
+        # that Maasvlakte was swept, that HØST's only feature is an office, that
+        # an industrial park is refused as an estate.
+        if located != "no":
+            e.add(where, f"no location and located={located!r} — a row with no site says "
+                         f"so with located \"no\", which is a state on the record rather "
+                         f"than an absence a reader has to infer")
+        if not note:
+            e.add(where, "no location and no location_note — write where a position was "
+                         "looked for and what was found, so the absence is a decision on "
+                         "the record and nobody repeats the sweep")
         return
-    if note:
-        e.add(where, "carries both a location and a location_note — the note explains an "
-                     "absence, and there is nothing absent here")
+    if located != "yes":
+        e.add(where, f"located={located!r} and the row carries {len(sites)} site(s)")
     if not isinstance(sites, list):
         e.add(where, "location must be a list of sites, even where there is one")
         return
     for i, s in enumerate(sites):
         w = f"{where} location[{i}]"
-        _req(e, w, s, "site", "precision", "retrieved_date", "confidence")
+        _req(e, w, s, "site", "precision", "location_precision", "retrieved_date",
+             "confidence")
         _date(e, w, s, "retrieved_date")
         _vocab(e, w, s, "confidence", sm.CONFIDENCE)
         _vocab(e, w, s, "precision", sm.LOCATION_PRECISIONS)
+        _vocab(e, w, s, "location_precision", sm.LOCATION_PRECISION_VALUES)
         if s.get("precision") == "town":
             e.add(w, "precision=town — a town centroid is not a plant site. Find the "
                      "works, or leave the project out of the register until somebody has")
@@ -443,6 +478,37 @@ def _location(e: Errors, where: str, row: dict) -> None:
         if refused is not None:
             _req(e, f"{w} refused_declared_reader", refused, "last_verified", "by", "note")
             _date(e, f"{w} refused_declared_reader", refused, "last_verified")
+
+        # HOW THE POSITION WAS RESOLVED HAS TO AGREE WITH WHAT RESOLVED IT.
+        # sm.LOCATION_PRECISION_BY_SOURCE is the table; a source type absent from it
+        # is one this check has nothing to say about, which today is only the
+        # named coordinate-source exception.
+        want = sm.LOCATION_PRECISION_BY_SOURCE.get((src or {}).get("type"))
+        if want and s.get("location_precision") != want:
+            e.add(w, f"location_precision={s.get('location_precision')!r} on a "
+                     f"{src.get('type')!r} source, which supports {want!r} — the field "
+                     f"is read off the evidence, and a precision the source cannot "
+                     f"carry is a claim about the coordinate that nothing backs")
+
+        # THE HOST WORKS, NAMED WHERE THE POINT IS NOT THE INSTALLATION'S OWN.
+        # The hydrogen ruling of 9 September 2026 admits a site placed on the
+        # works it stands on. That is a real position and it is not the same
+        # claim as a polygon of the installation, so the row says which, the note
+        # says it in words, and the sentence over the picture counts them. Only
+        # a `works` precision can have one: a parcel list and a stated point are
+        # about the project's own ground by construction.
+        host = s.get("host_works")
+        if host is not None:
+            if s.get("location_precision") != "works":
+                e.add(w, f"host_works on a location_precision={s.get('location_precision')!r} "
+                         f"coordinate — a host works is a works polygon, and a parcel "
+                         f"list or a stated point is already the project's own ground")
+            if not str(host).strip():
+                e.add(w, "host_works is empty — name the works, or leave the field out")
+            if not (s.get("note") or "").strip():
+                e.add(w, "host_works with no note — the reader is being told the mark is "
+                         "not the installation, and the note is where that is said in "
+                         "words rather than in a field")
 
         excused = (row.get("id"), s.get("site")) in COORDINATE_SOURCE_EXCEPTIONS
         if not excused:
@@ -592,19 +658,96 @@ def _capacity(e: Errors, where: str, row: dict) -> None:
         return
     if not isinstance(row.get("capacity_value"), (int, float)):
         e.add(where, "capacity_value is not a number")
-    for f in ("capacity_unit", "capacity_basis", "capacity_source_url", "capacity_as_of"):
+    for f in ("capacity_unit", "capacity_basis", "capacity_source_url", "capacity_as_of",
+              "capacity_as_of_precision"):
         if row.get(f) in (None, ""):
             e.add(where, f"capacity_value is set but {f} is missing — a figure without "
                          f"its unit, basis, source and date cannot be read")
     _vocab(e, where, row, "capacity_unit", sm.CAPACITY_UNITS)
     _vocab(e, where, row, "capacity_basis", sm.CAPACITY_BASES)
     _vocab(e, where, row, "capacity_product", sm.CAPACITY_PRODUCTS)
-    _date(e, where, row, "capacity_as_of")
+    _dated(e, where, row, "capacity_as_of", "capacity_as_of_precision")
     if row.get("capacity_source_url"):
         _url(e, where, row.get("capacity_source_url"), "capacity_source_url")
     if row.get("sector") in sm.CAPACITY_SECTORS and not row.get("capacity_product"):
         e.add(where, "capacity_value is set but capacity_product is missing — tonnes of "
                      "clinker and tonnes of crude steel are not the same tonne")
+    _unit_product(e, where, row.get("capacity_unit"), row.get("capacity_product"))
+    _alternates(e, where, row)
+
+
+def _unit_product(e: Errors, where: str, unit, product) -> None:
+    """A unit and a product that cannot be each other's.
+
+    sm.UNIT_PRODUCTS is the pairing. Only the hydrogen units are constrained by
+    it, because their sector makes two products and the others make one; a unit
+    absent from the table is a unit this check has nothing to say about. See the
+    note there.
+    """
+    allowed = sm.UNIT_PRODUCTS.get(unit)
+    if allowed and product not in allowed:
+        e.add(where, f"capacity_unit={unit!r} with capacity_product={product!r} — that "
+                     f"unit measures {' or '.join(allowed)} and nothing else, and a total "
+                     f"would add this figure into the wrong column")
+
+
+def _alternates(e: Errors, where: str, row: dict) -> None:
+    """The same phase, stated by the same source in a second unit.
+
+    WHY THE LIST EXISTS. Electrolysis is quoted three ways and this register does
+    not convert between them (sources/scope.md, "Three units for one
+    electrolyser"). Where a source gives two of the three for one phase, throwing
+    one away would lose a figure the source actually published, and putting it in
+    a note would put it somewhere no total can reach. So it is a row of its own
+    shape, with every companion the main figure carries, and the export picks
+    between them by sm.CAPACITY_UNIT_PREFERENCE rather than by which was typed
+    first.
+
+    AN ALTERNATE MAY NOT REPEAT THE ROW'S OWN UNIT. Two figures in one unit for
+    one phase is not an alternate reading, it is a disagreement, and it belongs in
+    capacity_note where a reader is told which one the row stands on.
+    """
+    alts = row.get("capacity_alternates")
+    if alts is None:
+        return
+    if not isinstance(alts, list):
+        e.add(where, "capacity_alternates must be a list")
+        return
+    if alts and row.get("capacity_value") in (None, ""):
+        e.add(where, "capacity_alternates with no capacity_value — an alternate reading "
+                     "of a figure the row does not carry has nothing to be an alternate of")
+    seen = {row.get("capacity_unit")}
+    for i, a in enumerate(alts):
+        w = f"{where} capacity_alternates[{i}]"
+        _req(e, w, a, "value", "unit", "product", "basis", "source_url", "as_of")
+        _vocab(e, w, a, "unit", sm.CAPACITY_UNITS)
+        _vocab(e, w, a, "basis", sm.CAPACITY_BASES)
+        _vocab(e, w, a, "product", sm.CAPACITY_PRODUCTS)
+        _dated(e, w, a, "as_of", "as_of_precision")
+        _url(e, w, a.get("source_url"), "source_url")
+        if not isinstance(a.get("value"), (int, float)):
+            e.add(w, "value is not a number")
+        _unit_product(e, w, a.get("unit"), a.get("product"))
+        if a.get("unit") in seen:
+            e.add(w, f"unit={a.get('unit')!r} is already carried by this row — two figures "
+                     f"in one unit is a disagreement, not an alternate reading, and the "
+                     f"row has to say in capacity_note which one it stands on")
+        seen.add(a.get("unit"))
+    # WHICH OF THE READINGS THE ROW LEADS WITH, enforced here rather than chosen
+    # in the export. sm.CAPACITY_UNIT_PREFERENCE says MW input wins where it is
+    # present, and the cheapest place to hold that is at authoring time: a
+    # selection made in the export would be a second rule, invisible on the row,
+    # and a reader comparing the row with the total would not be able to see why
+    # they disagree.
+    order = sm.CAPACITY_UNIT_PREFERENCE
+    if row.get("capacity_unit") in order:
+        mine = order.index(row["capacity_unit"])
+        for a in alts:
+            if a.get("unit") in order and order.index(a["unit"]) < mine:
+                e.add(where, f"capacity_unit={row['capacity_unit']!r} while an alternate "
+                             f"carries {a['unit']!r}, which comes first in "
+                             f"CAPACITY_UNIT_PREFERENCE — the row leads with the figure "
+                             f"the export totals, and the alternate is the other reading")
 
 
 TARGET_RE = re.compile(r"^\d{4}(-(H[12]|Q[1-4]|\d{2}(-\d{2})?))?$")
@@ -651,6 +794,12 @@ def _schedule(e: Errors, where: str, row: dict) -> None:
         _vocab(e, w, h, "source_type", sm.PROJECT_SOURCE_TYPES)
         _vocab(e, w, h, "evidence_mode", sm.EVIDENCE_MODES)
         _date(e, w, h, "date")
+        # A STATEMENT IS AN EVENT TOO. The date on a schedule entry is the day
+        # the promise was made, and it is dated exactly as a status event is —
+        # padded, with the precision recorded — because a company that said
+        # something "in November 2021" said it then whether or not the page
+        # carries a day.
+        _event_date(e, w, h)
         _url(e, w, h.get("source_url"), "source_url")
         t, p = h.get("target_date"), h.get("target_precision")
         if t is not None and not TARGET_RE.match(str(t)):
@@ -664,6 +813,54 @@ def _schedule(e: Errors, where: str, row: dict) -> None:
     if dates != sorted(dates):
         e.add(where, "stated_schedule is not in date order; it is append-only and a "
                      "revision is a new entry after the statement it revises")
+
+
+EVENT_DATE_SHAPE = {
+    "day":   re.compile(r"^\d{4}-\d{2}-\d{2}$"),
+    "month": re.compile(r"^\d{4}-\d{2}-01$"),
+    "year":  re.compile(r"^\d{4}-01-01$"),
+}
+
+
+def _dated(e: Errors, where: str, obj: dict, date_field: str, prec_field: str) -> None:
+    """A date and the precision the source gave it to, checked as a pair.
+
+    The general form of _event_date, which is now one caller of it. Every date on
+    this layer that records WHEN SOMETHING WAS — an event, the day a capacity was
+    stated, the day a parameter's value held — is written to the day and padded
+    to the earliest it can be, with a field saying how exactly the source put it.
+    A target, which records when something WILL BE, keeps the opposite convention
+    and its own field.
+    """
+    _req(e, where, obj, prec_field)
+    _vocab(e, where, obj, prec_field, sm.VALUE_DATE_PRECISIONS)
+    date, prec = str(obj.get(date_field) or ""), obj.get(prec_field)
+    if not EVENT_DATE_SHAPE["day"].match(date):
+        e.add(where, f"{date_field}={date!r} is not YYYY-MM-DD — a date on this layer is "
+                     f"always written to the day and `{prec_field}` says what the source "
+                     f"gave it to")
+    elif prec in EVENT_DATE_SHAPE and not EVENT_DATE_SHAPE[prec].match(date):
+        pad = "1 January" if prec == "year" else "the first of its month"
+        e.add(where, f"{date_field}={date!r} with {prec_field}={prec!r} — a {prec}-precision "
+                     f"date is padded to {pad}, which is the earliest it can be; anything "
+                     f"else claims a precision the source did not give")
+
+
+def _event_date(e: Errors, where: str, h: dict) -> None:
+    """An event date, always written to the day, with what the source actually
+    gave it to.
+
+    THE DATE IS STORED PADDED AND THE PRECISION SAYS SO. A month-precision event
+    sits on the first of its month and a year-precision one on 1 January, which
+    is the earliest the event can have happened — the reading that does not
+    overstate, and the opposite of the convention for a stated target, which is
+    read at the end of its period for the same reason.
+
+    The pairing is checked, not just the vocabulary: a `year` on 2024-06-01 would
+    be a padded date somebody had padded to the wrong place, and a `day` on a date
+    nobody knows to the day is the claim this field exists to stop.
+    """
+    _dated(e, where, h, "date", "date_precision")
 
 
 def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> None:
@@ -681,6 +878,7 @@ def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> N
     from drifting into a second, quieter source of truth.
     """
     _req(e, where, h, "event_kind", "source_type", "evidence_mode")
+    _event_date(e, where, h)
     _vocab(e, where, h, "event_kind", sm.PROJECT_EVENT_KINDS)
     _vocab(e, where, h, "source_type", sm.PROJECT_SOURCE_TYPES)
     _vocab(e, where, h, "evidence_mode", sm.EVIDENCE_MODES)
@@ -697,6 +895,233 @@ def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> N
                      f"{prev_status!r}")
     if i == 0 and h.get("status_from") is not None:
         e.add(where, "the first entry has nothing to come from; status_from must be null")
+
+
+def _edges(e: Errors, where: str, row: dict, project_ids: set) -> None:
+    """What this project is attached to, as its own source names it.
+
+    ASSERTED ONLY, AND THE CLASS SAYS SO. Every edge written by hand is one a
+    source states in words, and it carries the words. A structural edge -- the
+    grid connection every electrolyser needs whether or not anybody wrote it down
+    -- is NOT written here; it follows from a technology rule in a later step, and
+    the gate refuses a hand-written one so that the two kinds cannot be confused
+    once both exist. See sm.EDGE_CLASSES.
+
+    A TARGET IS A PROJECT ID OR IT IS NAMED PROSE. `project:<id>` points at a row
+    in this file and is checked; anything else is `external:<slug>` and carries a
+    `target_name`, because most of what a hydrogen site is attached to -- a
+    pipeline, a store, a refinery in another sector -- has no row yet. An edge
+    that could point at nothing and say nothing would be a claim with no referent.
+    """
+    edges = row.get("edges")
+    if edges is None:
+        return
+    if not isinstance(edges, list):
+        e.add(where, "edges must be a list")
+        return
+    for i, g in enumerate(edges):
+        w = f"{where} edges[{i}]"
+        _req(e, w, g, "kind", "target", "type", "class", "since", "evidence")
+        _vocab(e, w, g, "kind", sm.EDGE_KINDS)
+        _vocab(e, w, g, "type", sm.EDGE_TYPES)
+        _vocab(e, w, g, "class", sm.EDGE_CLASSES)
+        _date(e, w, g, "since")
+        if g.get("class") == "structural":
+            e.add(w, "is written as a structural edge — structural edges follow from a "
+                     "technology rule and are not authored on a row; write the asserted "
+                     "edge the source states, or wait for the rule")
+        target = str(g.get("target") or "")
+        if target.startswith("project:"):
+            if target.split(":", 1)[1] not in project_ids:
+                e.add(w, f"target {target!r} is not a project id")
+        elif target.startswith("external:"):
+            if not g.get("target_name"):
+                e.add(w, "an external target has no target_name — an edge to something "
+                         "with no row has to say what the thing is called")
+        else:
+            e.add(w, f"target={target!r} must be project:<id> or external:<slug>")
+        ev = g.get("evidence")
+        if not isinstance(ev, dict):
+            e.add(w, "evidence is missing — an asserted edge is asserted by somebody, in "
+                     "a sentence, and the sentence is the whole of the claim")
+            continue
+        _req(e, f"{w} evidence", ev, "url", "publisher", "verbatim")
+        _url(e, f"{w} evidence", ev.get("url"))
+        _vocab(e, f"{w} evidence", ev, "source_type", sm.PROJECT_SOURCE_TYPES)
+
+
+# REASON-AS-STATED BINDS EVERYWHERE, since 9 September 2026. It did not on the
+# day it landed: nineteen stopped events across batteries, cement, steel and CCS
+# predated the rule, and they were REPORTED rather than failed on the ruling that
+# the only honest backfill is a re-read. The re-read happened. Every stopping
+# transition on this file now carries a reason read from its own sources, six of
+# them `unstated` because the source gives none, so the exemption has nothing
+# left to exempt and is gone rather than left standing as a door.
+#
+# WHAT THE RE-READ FOUND, because it is the reason the field was worth having.
+# Of fifteen stopping transitions, six give no cause at all — a company that
+# stops a project and says only that the "prerequisites were unlikely to be met",
+# an authority that records "Das Vorhaben wird nicht mehr umgesetzt", a filing
+# that notes an appointment of administrators. Two more state a cause this
+# vocabulary cannot hold: an owner changing the business it is in, and a venture
+# losing its technology partner. Both are filed at their nearest value with the
+# quote beside them and the misfit written on the row.
+
+def _stop_reason(e: Errors, where: str, h: dict, transition: bool) -> None:
+    """Why a project stopped, in the source's own terms or `unstated`.
+
+    REQUIRED ON EVERY ENTRY THAT LANDS IN A STOPPED STATUS, and refused on every
+    other, so the field cannot drift into a general note. `unstated` is a real
+    answer and the commonest one: a company that pauses a project without giving a
+    reason has told us that, and a gate that accepted an empty field here would
+    let a guess be written in the same space as a quotation.
+    """
+    # REQUIRED ON THE EVENT THAT STOPS THE PROJECT, AND ONLY THAT ONE. A later
+    # entry about an already-paused project reports on it rather than stopping
+    # it — Slite's withdrawn permit application, Lyten's memorandum over a site
+    # that has been still since 2024 — and demanding a reason from each would
+    # make the register restate one cause every time somebody wrote about the
+    # consequence. The test is the positional one the whole layer uses: an entry
+    # is a transition if its status differs from the entry before it.
+    stopped = h.get("status_to") in sm.STOP_REASON_STATUSES and transition
+    reason = h.get("stop_reason")
+    if stopped and reason is None:
+        msg = (f"moves to {h.get('status_to')!r} and states no stop_reason — write "
+               f"the reason the source gives, or 'unstated' where it gives none")
+        e.add(where, msg)
+    elif reason is not None and h.get("status_to") not in sm.STOP_REASON_STATUSES:
+        e.add(where, "carries a stop_reason and does not stop the project")
+    if reason is not None:
+        if not isinstance(reason, list) or not reason:
+            e.add(where, "stop_reason must be a non-empty list, first entry primary — "
+                         "sources give more than one reason and the field used to make "
+                         "the register choose one and drop the rest into prose")
+            reason = []
+        for one in reason:
+            if one not in sm.STOP_REASONS:
+                e.add(where, f"stop_reason {one!r} is not one of {list(sm.STOP_REASONS)}")
+        if len(reason) != len(set(reason)):
+            e.add(where, "stop_reason repeats a value")
+        if "unstated" in reason and len(reason) > 1:
+            e.add(where, "stop_reason lists `unstated` beside another value — a source "
+                         "that gives no reason cannot also give a secondary one")
+        if reason and reason != ["unstated"] and not h.get("stop_reason_verbatim"):
+            e.add(where, f"stop_reason={reason!r} with no stop_reason_verbatim — a reason "
+                         f"that is not 'unstated' was read from a sentence, and the "
+                         f"sentence is what makes it checkable")
+        # WHERE THE SENTENCE CAME FROM, WHEN IT IS NOT THE EVENT'S OWN SOURCE.
+        # Several of these events are dated from a filing or a notice that
+        # records what happened and says nothing about why, while the company
+        # said why somewhere else on the same day. Rather than move the event
+        # onto the second source — which would re-date it — the quote carries
+        # its own URL, and its absence means the quote is in the event's source.
+        if h.get("stop_reason_source_url"):
+            _url(e, where, h["stop_reason_source_url"], "stop_reason_source_url")
+    elif h.get("stop_reason_verbatim") or h.get("stop_reason_source_url"):
+        e.add(where, "carries a stop_reason quote and no stop_reason")
+
+
+# THE SECTORS THAT HAVE ADOPTED owners-as-a-list. Hydrogen is written to it from
+# the first row. The fifty-one rows that predate it are REPORTED and not failed,
+# on the same reading the stop-reason backfill was done under: the honest way to
+# fill an owner type is to read who owns the operator, and writing a plausible
+# one across fifty-one rows to turn a gate green is the failure the field exists
+# to prevent. The count is printed on every run until somebody does the reading.
+OWNER_SECTORS = ("clean",)
+
+
+def _owner_and_benchmarks(e: Errors, where: str, row: dict, sector: str | None) -> None:
+    """Who owns the operator, and what the outside lists call this project.
+
+    `owners` IS THE FACT AND `owner_listing` IS READ OFF IT. A project company is
+    usually more than one party, and a single label was only ever workable
+    because the first split this register met happened to have a majority. The
+    list carries each party with its share and its own listing; the summary is
+    the listing of whoever holds more than half, and `mixed` where nobody does.
+
+    THE DERIVATION IS CHECKED RATHER THAN TRUSTED, because the whole point of
+    storing a derived value is that a reader does not have to compute it — and a
+    stored value nothing checks is a second source of truth waiting to drift.
+    """
+    owners = row.get("owners")
+    if owners is not None:
+        if not isinstance(owners, list) or not owners:
+            e.add(where, "owners must be a non-empty list of {name, share, listing}")
+            owners = None
+        else:
+            total = 0.0
+            for i, o in enumerate(owners):
+                w = f"{where} owners[{i}]"
+                _req(e, w, o, "name", "listing")
+                _vocab(e, w, o, "listing", sm.OWNER_LISTINGS)
+                if o.get("listing") == "mixed":
+                    e.add(w, "`mixed` describes a row and not a party — an owner is "
+                             "listed, private or state-owned")
+                if "share" not in o:
+                    e.add(w, "no share; use null where no source states one")
+                elif o["share"] is not None:
+                    if not isinstance(o["share"], (int, float)) or not 0 < o["share"] <= 100:
+                        e.add(w, f"share={o['share']!r} is not a percentage in (0, 100]")
+                    else:
+                        total += float(o["share"])
+            if total > 100.0001:
+                e.add(where, f"owner shares total {total:g} per cent")
+    if row.get("owner_listing") is not None:
+        _vocab(e, where, row, "owner_listing", sm.OWNER_LISTINGS)
+    if owners:
+        majority = [o for o in owners
+                    if isinstance(o.get("share"), (int, float)) and o["share"] > 50]
+        want = majority[0]["listing"] if majority else "mixed"
+        if row.get("owner_listing") != want:
+            e.add(where, f"owner_listing={row.get('owner_listing')!r} but the owners list "
+                         f"gives {want!r} — it is the listing of the party holding more "
+                         f"than half, and `mixed` where nobody does")
+    elif row.get("owner_listing") == "mixed":
+        e.add(where, "owner_listing=`mixed` with no owners list — `mixed` is a statement "
+                     "about a split, and the split has to be on the row")
+    # AN ABSENT OWNER TYPE IS A DECISION AND SAYS SO. The paper compares
+    # disclosure by owner type, so a row with no answer is a row missing from
+    # that comparison; leaving the field empty and silent would make "nobody
+    # looked" and "the sources do not say" the same state. EWE is the case: it is
+    # not listed on an exchange, it is held by municipal associations together
+    # with a private investor, and no source read here states the split — so
+    # `private` and `state-owned` would both be assertions and the row says that
+    # instead of picking one.
+    if row.get("owner_listing") is None and not (row.get("owner_listing_note") or "").strip():
+        msg = ("no owner_listing and no owner_listing_note — the disclosure comparison "
+               "the field exists for needs to know whether this row has no answer or was "
+               "never asked")
+        if sector in OWNER_SECTORS:
+            e.add(where, msg)
+        else:
+            e.ownerless.append(f"  {where}")
+    marks = row.get("benchmarks")
+    if marks is None:
+        return
+    if not isinstance(marks, dict):
+        e.add(where, "benchmarks must be an object keyed by benchmark name")
+        return
+    for k, v in marks.items():
+        if k == "note":
+            continue
+        if k not in sm.BENCHMARKS:
+            e.add(where, f"benchmarks names {k!r}, which is not one of "
+                         f"{list(sm.BENCHMARKS)} — an id under a key nothing resolves is "
+                         f"an id nobody can look up")
+            continue
+        # A LIST IS A REAL ANSWER AND NOT A CONVENIENCE. Both benchmarks count
+        # PHASES as projects where this register counts a SITE, so a row that
+        # holds one works matches three of their rows, and collapsing that to one
+        # id would hide the mismatch the benchmark file exists to measure.
+        ids = v if isinstance(v, list) else [v]
+        if v is not None and not ids:
+            e.add(where, f"benchmarks.{k} is an empty list; use null for 'searched and "
+                         f"not there', which is a different fact from 'not searched'")
+        for one in ids:
+            if one is not None and not isinstance(one, (str, int)):
+                e.add(where, f"benchmarks.{k} carries {one!r}, which is neither an id nor "
+                             f"null; null is the record that the list was searched and "
+                             f"this project is not in it")
 
 
 def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
@@ -727,6 +1152,7 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
             _date(e, hw, h, "date")
             _url(e, hw, h.get("source_url"), "source_url")
             _event(e, hw, h, i, prev_status)
+            _stop_reason(e, hw, h, sm.is_transition(history, i))
             # AN OWNERSHIP EVENT IS ONE FACT AND SAYS BOTH ENDS OF IT. `from` and
             # `to` are required because "the owner changed" without naming the
             # owners is an event nobody can check, and they are refused on every
@@ -781,6 +1207,8 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
                      "is where it is defended")
         _location(e, w, r)
         _storage(e, w, r, technologies, project_ids)
+        _edges(e, w, r, project_ids)
+        _owner_and_benchmarks(e, w, r, r.get("sector"))
         _source_list(e, w, r)
 
 
@@ -1467,6 +1895,11 @@ def main() -> int:
         print(f"\ndraft prose awaiting review ({len(drafts)}) — the page renders the computed "
               f"sentence until the block in data/prose.json is approved:")
         print("\n".join(drafts))
+    if e.ownerless:
+        print(f"\nrows with no owner type ({len(e.ownerless)}) — reported, not failed: "
+              f"these predate owners-as-a-list, and filling an owner type honestly means "
+              f"reading who owns the operator. See OWNER_SECTORS:")
+        print("\n".join(e.ownerless))
     if e.stale:
         print(f"\nstale parameters ({len(e.stale)}) — reported, not failed:")
         print("\n".join(e.stale))

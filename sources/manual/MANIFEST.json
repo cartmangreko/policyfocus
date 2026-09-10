@@ -23,7 +23,19 @@
     "ACTIVE rows only. They landed as rows carrying their status, their company source and a",
     "location_note saying the position was not sought. A queue entry for a works nobody will build",
     "is a job that would never be worth doing, and leaving it here would have made the list read",
-    "as work outstanding. See sources/scope.md, 'A stopped row does not enter the location queue'."
+    "as work outstanding. See sources/scope.md, 'A stopped row does not enter the location queue'.",
+    "",
+    "HYDROGEN ADDED A THIRD KIND OF REFUSAL, and it is not a 403. shell.com and galp.com both",
+    "answer a declared reader with HTTP 200 and a document that contains the page title, the",
+    "navigation and no article: the release renders in the browser. A link checker calls that a",
+    "live page, because it is one. What it is not is a source anybody can quote, and the two",
+    "entries below are queued for the same reason a 403 is — a person with a browser closes it",
+    "in a minute, and until they do the row cannot carry a sentence nobody has read.",
+    "",
+    "AND ONE ENTRY HERE IS NOT ABOUT A ROW AT ALL. The benchmark gap report has a class for a",
+    "company source somebody located and could not read, and its members are queued here like any",
+    "other — a person with a browser closes one in a minute. A queue that only accepted work on",
+    "rows would have nowhere to put the reason three entries in an outside list are unresolved."
   ],
   "retrieved": [
     {
@@ -81,6 +93,13 @@
       "retrieved_date": "2026-09-05",
       "retrieved_by": "George Christopoulos",
       "note": "AESC's own first-stone release of 8 July 2024, from the Internet Archive. THE CAPTURE FILED IS 2 OCTOBER 2024, not the 19 September one the retrieval was described against: the Wayback bar on this copy reads 20241002033752, and the row cites the capture that is actually here. Six captures of the page exist between 12 August 2024 and 18 February 2026. Payload: the site named as Navalmoral de la Mata (Cáceres), production 'scheduled to begin in 2026', LFP batteries 'at scale', over one billion euros in the first phase, up to 900 direct jobs, and an attendance list — Sánchez, Guardiola, the mayor — that corroborates La Moncloa's record of the same ceremony. NOT A RETRIEVED_MANUALLY SOURCE: the live page is gone from AESC's rebuilt site, so the row cites this capture with archived: true and this file as its snapshot, on the SVOLT pattern."
+    },
+    {
+      "file": "uniper-h2maasvlakte--plug-100mw-electrolyzer-package.html",
+      "url": "https://web.archive.org/web/20230315064140/https://www.uniper.energy/news/uniper-selected-plug-to-design-the-100mw-electrolyzer-package-for-the-netherlands-plant-to-accelerate-european-green-energy-adoption",
+      "retrieved_date": "2026-09-10",
+      "retrieved_by": "Claude, through the declared crawler",
+      "note": "NOT A HAND RETRIEVAL AND FILED HERE ANYWAY. uniper.energy answered the declared reader on 9 September 2026 — every quote on the uniper-h2maasvlakte row was taken from the live page that day — and answered 403 on the 10th, which check_links caught on the push. This is the Internet Archive's capture of 15 March 2023, carrying the same text, fetched by the same crawler. It is in this folder because this is where a copy a row stands on lives, whoever fetched it."
     }
   ],
   "wanted": [
@@ -147,6 +166,30 @@
       "needed_for": "THE ONLY STATED PRODUCTION DATE FOR EUROPE'S LARGEST GREENFIELD STEEL PROJECT. stated_schedule is empty for stegra-boden after the fetch pass because nothing this pipeline can read states one. The Boden plant page is understood to carry the start of operations; a saved copy would let the row take it as a company statement rather than leave the row silent.",
       "drop_as": "sources/manual/stegra-boden--the-boden-plant.html",
       "priority": "medium"
+    },
+    {
+      "candidate": "shell-refhyne-2-wesseling",
+      "url": "https://www.shell.com/what-we-do/hydrogen/latest-news-from-shell-hydrogen/shell-to-build-100-megawatt-renewable-hydrogen-electrolyser-in-germany.html",
+      "why": "shell.com answers a declared reader with 200 and a body of 85 characters — the page title. The article renders client-side.",
+      "needed_for": "The row stands on refhyne.eu, the project consortium's own site, which carries Shell's FID and the 100 MW figure. What Shell's own release adds is the SCHEDULE: it is the source trade press quotes for the electrolyser starting up in 2027, and this register holds no date for the project at all. Filing it closes sources/schedule_queue.json entry shell-refhyne-2-wesseling.",
+      "drop_as": "sources/manual/shell-refhyne-2-wesseling--shell-to-build-100-megawatt-electrolyser-in-germany.html",
+      "priority": "normal"
+    },
+    {
+      "candidate": "galp-sines-electrolyser",
+      "url": "https://www.galp.com/corp/en/media/press-releases/press-release/id/1490/final-investment-decision-on-green-hydrogen-and-hvosaf-projects",
+      "why": "galp.com serves the article text to a declared reader and renders its PUBLICATION DATE in the browser; the announcement list renders every date the same way.",
+      "needed_for": "The text is already quoted on the row — '100 MW of electrolysers', 'up to 15 ktpa of renewable hydrogen', 'c.€250 m' — and it dates nothing, so the row's history starts at the EIB release of 29 September 2025 instead of at Galp's own decision. A dated copy would give this project its FID event and make the EIB entry the corroboration rather than the spine.",
+      "drop_as": "sources/manual/galp-sines-electrolyser--final-investment-decision-green-hydrogen-hvo-saf.html",
+      "priority": "normal"
+    },
+    {
+      "candidate": "benchmark-gap-shell-mitsubishi",
+      "url": "https://www.shell.com/what-we-do/hydrogen/shell-hydrogen-projects.html",
+      "why": "Shell's own list of its hydrogen projects answers a declared reader with HTTP 200 and thirty-eight characters of text — the page title. Measured 9 September 2026.",
+      "needed_for": "NOT FOR A ROW, FOR A GAP. sources/report_benchmark_gap.py classifies every European entry at or above 100 MW in the two outside lists that this register does not hold, and three of them — 'MoU Shell - Mitsubishi' phases 1 and 2, in both lists — sit in the class `company source unreadable` because THIS is the natural company source for a Shell project and it cannot be quoted. A readable copy would move them into whichever class they belong in: a project this perimeter admits, or one it refuses, or one nobody has confirmed a site for. Until then they are counted as looked-for and refused, which is the honest place for them and not the final one.",
+      "drop_as": "sources/manual/benchmark-gap--shell-hydrogen-projects.html",
+      "priority": "normal"
     }
   ]
 }

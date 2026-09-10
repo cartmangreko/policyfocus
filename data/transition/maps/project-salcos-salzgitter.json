@@ -78,6 +78,7 @@
       "href": "/projects/salcos-salzgitter",
       "lat": 52.1631,
       "lon": 10.4107,
+      "host_works": null,
       "as_of": "2026-08-28",
       "x": 380.0,
       "y": 215.0,
@@ -121,6 +122,273 @@
       }
     },
     {
+      "id": "bp-lingen-green-hydrogen",
+      "site": "bp Raffinerie Lingen",
+      "country": "DE",
+      "role": "plant",
+      "relation": "technology",
+      "status": "construction",
+      "label": "Lingen Green Hydrogen (LGH2)",
+      "name_line": "Lingen Green Hydrogen (LGH2)",
+      "sub": "BP Europa SE",
+      "href": "/projects/bp-lingen-green-hydrogen",
+      "lat": 52.5605,
+      "lon": 7.3073,
+      "host_works": "bp Raffinerie Lingen",
+      "as_of": "2026-09-09",
+      "x": 159.8,
+      "y": 165.3,
+      "labels": {
+        "wide": {
+          "x": 173.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Lingen Green Hydrogen (LGH2)",
+              "role": "name",
+              "size": 11.0,
+              "y": 161.6
+            },
+            {
+              "text": "BP Europa SE",
+              "role": "company",
+              "size": 9.5,
+              "y": 173.6
+            }
+          ]
+        },
+        "narrow": {
+          "x": 179.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Lingen Green",
+              "role": "name",
+              "size": 21.0,
+              "y": 145.6
+            },
+            {
+              "text": "Hydrogen (LGH2)",
+              "role": "name",
+              "size": 21.0,
+              "y": 170.8
+            },
+            {
+              "text": "BP Europa SE",
+              "role": "company",
+              "size": 18.1,
+              "y": 193.8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "hghh-moorburg",
+      "site": "Kraftwerksgelände Moorburg, Hamburg",
+      "country": "DE",
+      "role": "plant",
+      "relation": "technology",
+      "status": "construction",
+      "label": "Hamburg Green Hydrogen Hub, Moorburg",
+      "name_line": "Hamburg Green Hydrogen Hub, Moorburg",
+      "sub": "Hamburg Green Hydrogen Hub GmbH & Co. KG",
+      "href": "/projects/hghh-moorburg",
+      "lat": 53.4885,
+      "lon": 9.95,
+      "host_works": "Kohlekraftwerk Moorburg (stillgelegt)",
+      "as_of": "2026-09-09",
+      "x": 347.2,
+      "y": 60.5,
+      "labels": {
+        "wide": {
+          "x": 361.1,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Hamburg Green Hydrogen Hub, Moorburg",
+              "role": "name",
+              "size": 11.0,
+              "y": 56.8
+            },
+            {
+              "text": "Hamburg Green Hydrogen Hub GmbH & Co. KG",
+              "role": "company",
+              "size": 9.5,
+              "y": 68.8
+            }
+          ]
+        },
+        "narrow": {
+          "x": 366.6,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "Hamburg Green",
+              "role": "name",
+              "size": 21.0,
+              "y": 39.1
+            },
+            {
+              "text": "Hydrogen Hub,",
+              "role": "name",
+              "size": 21.0,
+              "y": 64.3
+            },
+            {
+              "text": "Moorburg",
+              "role": "name",
+              "size": 21.0,
+              "y": 89.5
+            }
+          ],
+          "shortened": true
+        }
+      }
+    },
+    {
+      "id": "rwe-get-h2-nukleus-lingen",
+      "site": "GET H₂ Nukleus, Lingen (Ems)",
+      "country": "DE",
+      "role": "plant",
+      "relation": "technology",
+      "status": "commissioning",
+      "label": "GET H2 Nukleus — Lingen",
+      "name_line": "GET H2 Nukleus — Lingen",
+      "sub": "RWE Generation SE",
+      "href": "/projects/rwe-get-h2-nukleus-lingen",
+      "lat": 52.4852,
+      "lon": 7.303,
+      "host_works": null,
+      "as_of": "2026-09-09",
+      "x": 159.1,
+      "y": 174.0,
+      "labels": {
+        "wide": {
+          "x": 145.2,
+          "anchor": "end",
+          "lines": [
+            {
+              "text": "GET H2 Nukleus — Lingen",
+              "role": "name",
+              "size": 11.0,
+              "y": 170.3
+            },
+            {
+              "text": "RWE Generation SE",
+              "role": "company",
+              "size": 9.5,
+              "y": 182.3
+            }
+          ]
+        },
+        "narrow": {
+          "x": 159.1,
+          "anchor": "middle",
+          "lines": [
+            {
+              "text": "GET H2 Nukleus —",
+              "role": "name",
+              "size": 21.0,
+              "y": 42.8
+            },
+            {
+              "text": "Lingen",
+              "role": "name",
+              "size": 21.0,
+              "y": 68.0
+            },
+            {
+              "text": "RWE Generation SE",
+              "role": "company",
+              "size": 18.1,
+              "y": 90.9
+            }
+          ],
+          "leader": [
+            159.1,
+            168.2,
+            159.1,
+            98.5
+          ]
+        }
+      }
+    },
+    {
+      "id": "shell-refhyne-2-wesseling",
+      "site": "Shell Energy & Chemicals Park Rheinland, Werk Wesseling",
+      "country": "DE",
+      "role": "plant",
+      "relation": "technology",
+      "status": "fid",
+      "label": "REFHYNE 2 — Shell Energy and Chemicals Park Rheinland",
+      "name_line": "REFHYNE 2 — Shell Energy and Chemicals Park Rheinland",
+      "sub": "Shell Deutschland GmbH",
+      "href": "/projects/shell-refhyne-2-wesseling",
+      "lat": 50.8171,
+      "lon": 7.0069,
+      "host_works": "Shell Energy & Chemicals Park Rheinland, Werk Wesseling",
+      "as_of": "2026-09-09",
+      "x": 130.3,
+      "y": 367.5,
+      "labels": {
+        "wide": {
+          "x": 144.2,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "REFHYNE 2 — Shell Energy and Chemicals",
+              "role": "name",
+              "size": 11.0,
+              "y": 357.2
+            },
+            {
+              "text": "Park Rheinland",
+              "role": "name",
+              "size": 11.0,
+              "y": 370.4
+            },
+            {
+              "text": "Shell Deutschland GmbH",
+              "role": "company",
+              "size": 9.5,
+              "y": 382.4
+            }
+          ]
+        },
+        "narrow": {
+          "x": 149.7,
+          "anchor": "start",
+          "lines": [
+            {
+              "text": "REFHYNE 2 — Shell",
+              "role": "name",
+              "size": 21.0,
+              "y": 335.2
+            },
+            {
+              "text": "Energy and Chemicals",
+              "role": "name",
+              "size": 21.0,
+              "y": 360.4
+            },
+            {
+              "text": "Park Rheinland",
+              "role": "name",
+              "size": 21.0,
+              "y": 385.6
+            },
+            {
+              "text": "Shell Deutschland GmbH",
+              "role": "company",
+              "size": 18.1,
+              "y": 408.6
+            }
+          ]
+        }
+      }
+    },
+    {
       "id": "tkh2steel-duisburg",
       "site": "Duisburg steelworks",
       "country": "DE",
@@ -133,6 +401,7 @@
       "href": "/projects/tkh2steel-duisburg",
       "lat": 51.4907,
       "lon": 6.7272,
+      "host_works": null,
       "as_of": "2026-08-28",
       "x": 113.2,
       "y": 288.2,
@@ -272,26 +541,26 @@
       "text": "Netherlands",
       "labels": {
         "wide": {
-          "x": 41.4,
-          "anchor": "middle",
+          "x": 55.7,
+          "anchor": "start",
           "lines": [
             {
               "text": "Netherlands",
               "role": "country",
               "size": 9.0,
-              "y": 177.2
+              "y": 196.9
             }
           ]
         },
         "narrow": {
-          "x": 53.4,
+          "x": 50.1,
           "anchor": "start",
           "lines": [
             {
               "text": "Netherlands",
               "role": "country",
               "size": 17.2,
-              "y": 178.7
+              "y": 159.7
             }
           ]
         }
@@ -328,7 +597,7 @@
       }
     }
   ],
-  "as_of": "2026-08-28",
+  "as_of": "2026-09-09",
   "coordinates": [
     {
       "site": "Salzgitter steelworks",

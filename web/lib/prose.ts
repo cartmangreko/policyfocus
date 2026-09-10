@@ -140,6 +140,10 @@ export interface GeoCounts {
   sector: number;
   /** The subject is cancelled, so this crop is the one frame it appears on. */
   subjectCancelled: boolean;
+  /** The works the subject's own marks stand on, where the position is the host
+   *  works rather than the installation. Empty where every mark is the
+   *  installation's own polygon. */
+  hostWorks: string[];
 }
 
 /** The regional crop on a project page.
@@ -165,6 +169,21 @@ export function projectGeoProse(c: GeoCounts): { heading: string; standfirst: st
   ];
   if (c.subjectCancelled) {
     parts.push("It was cancelled, and is drawn here and on no other frame.");
+  }
+  // WHERE THE MARK IS THE WORKS IT STANDS ON. The ruling of 9 September 2026
+  // admits a position taken from the host works — an electrolyser being built
+  // inside a refinery is placed on the refinery, because that is where it is.
+  // A dot cannot say that, so the sentence does: the reader is told the mark is
+  // the works and not the installation, and told which works.
+  if (c.hostWorks.length === 1) {
+    parts.push(
+      `Its position is ${c.hostWorks[0]}, the works it stands on, rather than the installation itself.`,
+    );
+  } else if (c.hostWorks.length > 1) {
+    parts.push(
+      `${n(c.hostWorks.length, "of its marks is", "of its marks are")} the works it stands on — ` +
+        `${list(c.hostWorks)} — rather than the installation itself.`,
+    );
   }
   if (c.dependency === 1) {
     parts.push("The store its captured CO₂ reaches is drawn with it.");
@@ -212,9 +231,14 @@ export interface UndrawnRow {
   id: string;
   name: string;
   status: string;
-  /** Whether the row has a position at all. False is a stopped project whose
-   *  location was never sought — see its own `location_note`. */
+  /** Whether the row has a position at all. False is a row the picture cannot
+   *  draw; `stopped` says which of the two reasons applies. */
   sited: boolean;
+  /** Whether the project has stopped. A stopped unsited row was never looked
+   *  for; an ACTIVE unsited row was looked for and not found. The sentence over
+   *  the picture names the two separately, because a reader counting sites
+   *  against the projects table is owed the difference. */
+  stopped: boolean;
 }
 
 export function sectorGeoProse(c: {
@@ -225,9 +249,12 @@ export function sectorGeoProse(c: {
   pending: number;
   paused: number;
   undrawn: { projects: number; sites: number; rows?: UndrawnRow[] };
+  /** How many drawn marks are the works the installation stands on rather than
+   *  the installation's own outline. See projectGeoProse. */
+  hostWorks: number;
 }): { heading: string; standfirst: string } {
   const state = list([
-    c.running > 0 ? `${c.running} operating or under construction` : null,
+    c.running > 0 ? `${c.running} operating, commissioning or under construction` : null,
     c.pending > 0 ? `${c.pending} announced or funded and not yet built` : null,
     c.paused > 0 ? `${c.paused} paused` : null,
   ]);
@@ -240,11 +267,32 @@ export function sectorGeoProse(c: {
   const { projects, rows } = c.undrawn;
   const named = rows ?? [];
   const off = named.filter((r) => r.sited).map((r) => r.name);
-  const unsited = named.filter((r) => !r.sited);
+  const unsitedStopped = named.filter((r) => !r.sited && r.stopped);
+  const unsitedLive = named.filter((r) => !r.sited && !r.stopped);
+  // NAME UP TO FIVE AND THEN COUNT. The clause was written when the largest
+  // group was two; hydrogen made it ten and it would be fifty before this
+  // sector is finished. A sentence that names fifty projects is a list wearing a
+  // sentence's clothes, and a reader stops reading it — which loses the fact the
+  // clause exists to carry. So the names stop at five and the rest are counted,
+  // and THE FULL LIST IS RENDERED UNDER THE PICTURE where a list belongs. The
+  // number in the sentence and the length of that list are the same number, and
+  // both come from `undrawn.rows`.
+  const NAMED_LIMIT = 5;
+  const capped = (names: string[]): string =>
+    names.length <= NAMED_LIMIT
+      ? list(names)
+      : `${names.slice(0, NAMED_LIMIT).join(", ")} and ${names.length - NAMED_LIMIT} more`;
   const clauses = [
-    off.length > 0 ? `${list(off)} — cancelled` : null,
-    unsited.length > 0
-      ? `${list(unsited.map((r) => `${r.name} (${r.status})`))} — location not sought`
+    off.length > 0 ? `${capped(off)} — cancelled` : null,
+    unsitedStopped.length > 0
+      ? `${capped(unsitedStopped.map((r) => `${r.name} (${r.status})`))} — location not sought`
+      : null,
+    // THE THIRD REASON, ADDED 9 SEPTEMBER 2026. A row that is being built and
+    // that nobody has drawn is on file and off the paper, and it is neither
+    // cancelled nor unlooked-for. Naming it separately is the whole of what
+    // stops the picture from reading as the sector.
+    unsitedLive.length > 0
+      ? `${capped(unsitedLive.map((r) => `${r.name} (${r.status})`))} — no citable source places the works`
       : null,
   ].filter(Boolean) as string[];
   const left =
@@ -254,12 +302,22 @@ export function sectorGeoProse(c: {
       : projects > 0
         ? ` ${n(projects, "project")} on file ${projects === 1 ? "is" : "are"} not drawn.`
         : "";
+  // HOW MANY MARKS ARE THE HOST WORKS. Stated as a share of what is drawn,
+  // because it is a fact about the picture's precision rather than about any
+  // one site: on a sector where most installations are being built inside
+  // somebody else's works, most of the dots are that works.
+  const host =
+    c.hostWorks > 0
+      ? ` ${c.hostWorks} of ${n(c.sites, "mark")} ${c.hostWorks === 1 ? "is" : "are"} ` +
+        `the works the installation stands on rather than its own outline.`
+      : "";
   return {
     heading: `Where Europe is building ${c.sector}`,
     standfirst:
       `${n(c.sites, "site")} in ${n(c.countries, "country", "countries")}` +
       (state ? `: ${state}.` : ".") +
       " Each one opens its own page." +
+      host +
       left,
   };
 }
@@ -283,14 +341,32 @@ export function projectNoLocationProse(c: {
   status: string;
   plant?: string;
   country: string;
+  /** Whether the project has stopped. TWO REASONS A ROW HAS NO POSITION AND
+   *  THEY ARE NOT THE SAME FACT, which is why this branches rather than
+   *  softening one sentence to cover both. A stopped project was never looked
+   *  for: location is sought for active rows and hunting the parcel of a works
+   *  nobody will build buys a dot no reader should trust. An ACTIVE row with no
+   *  position was looked for and not found — position stopped being an
+   *  admission leg on 9 September 2026 — and telling that reader "nobody
+   *  thought it worth doing" would be false about work that was done. */
+  stopped: boolean;
 }): string {
   const place = c.plant ? `${c.plant}, ${c.country}` : c.country;
-  const stopped = c.status === "cancelled" ? "cancelled" : c.status;
+  if (c.stopped) {
+    const stopped = c.status === "cancelled" ? "cancelled" : c.status;
+    return (
+      `${c.name} is ${stopped}, and this register holds no position for it. ` +
+      `It was to be at ${place}; the works was never placed to the precision a ` +
+      `mark on a picture would claim, and looking for one was not thought worth ` +
+      `doing on a project that stopped.`
+    );
+  }
   return (
-    `${c.name} is ${stopped}, and this register holds no position for it. ` +
-    `It was to be at ${place}; the works was never placed to the precision a ` +
-    `mark on a picture would claim, and looking for one was not thought worth ` +
-    `doing on a project that stopped.`
+    `${c.name} is at ${place}, and this register holds no position for it. ` +
+    `The company has confirmed the site and no citable source places the works: ` +
+    `it is being built where nobody has yet drawn it. The row is held anyway — ` +
+    `position is not a condition of being on file — and what was searched, and ` +
+    `what was found instead, is below.`
   );
 }
 
@@ -371,7 +447,7 @@ export function geoKeyProse(o: {
           { role: "storage" as const, running: true, text: "a triangle is a store" },
         ])
       : []),
-    { role: "plant", running: true, text: "filled: operating or under construction" },
+    { role: "plant", running: true, text: "filled: operating, commissioning or under construction" },
     { role: "plant", running: false, text: "hollow: announced, funded, or paused" },
     ...(o.subject
       ? [

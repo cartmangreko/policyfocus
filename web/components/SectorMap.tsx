@@ -54,6 +54,7 @@ import {
   type StatusEvent,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
+import { atPrecision } from "@/lib/dates";
 
 // THE SECTOR PAGE: the product, and the only template that answers the whole
 // question. Brief 5 restructures it around a fixed sequence of QUESTIONS —
@@ -312,10 +313,11 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
         sector: SECTORS[slug].toLowerCase(),
         sites: geoFrame.marks.length,
         countries: new Set(geoFrame.marks.map((m) => m.country)).size,
-        running: geoMarks(["operating", "construction"]),
+        running: geoMarks(["operating", "construction", "commissioning"]),
         pending: geoMarks(["announced", "funded", "fid"]),
         paused: geoMarks(["paused"]),
         undrawn: geoFrame.undrawn ?? { projects: 0, sites: 0 },
+        hostWorks: geoFrame.marks.filter((m) => m.host_works).length,
       })
     : null;
 
@@ -492,6 +494,32 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
               heading={geoProse.heading}
               standfirst={geoProse.standfirst}
             />
+          ) : null}
+          {/* THE FULL UNDRAWN LIST, UNDER THE PICTURE. The standfirst names five
+              and counts the rest, because a sentence that names fifty projects
+              is a list wearing a sentence's clothes. This is where the list
+              belongs, and every row in it links to its own page — which is the
+              other half of the point: a project the picture cannot draw is still
+              a project a reader can open. */}
+          {geoFrame && (geoFrame.undrawn?.rows ?? []).length > 0 ? (
+            <details className="tmap-undrawn">
+              <summary>
+                {`On file and not drawn: ${(geoFrame.undrawn?.rows ?? []).length}`}
+              </summary>
+              <ul>
+                {(geoFrame.undrawn?.rows ?? []).map((r) => (
+                  <li key={r.id}>
+                    <Link href={`/projects/${r.id}`}>{r.name}</Link>
+                    {` — ${r.status}, `}
+                    {r.sited
+                      ? "cancelled and drawn on its own crop only"
+                      : r.stopped
+                        ? "location not sought"
+                        : "no citable source places the works"}
+                  </li>
+                ))}
+              </ul>
+            </details>
           ) : null}
           <p className="tmap-sub">Sorted by last status change. Every change carries its source.</p>
           <div className="tprojects-scroll">
@@ -875,7 +903,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
             <ul className="tmoved-list">
               {moved.map(({ project, event }) => (
                 <li key={project.id}>
-                  <span className="tmoved-date">{event.date}</span>
+                  <span className="tmoved-date">{atPrecision(event.date, event.date_precision)}</span>
                   <Link href={projectHref(project.id)}>{project.name}</Link>
                   <span className="tmoved-to">{STATUS_LABEL[event.status]}</span>
                 </li>
@@ -890,7 +918,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                   The last change was{" "}
                   <Link href={projectHref(latestMove.project.id)}>{latestMove.project.name}</Link>{" "}
                   to {STATUS_LABEL[latestMove.event.status]} on{" "}
-                  <span className="tmoved-date">{latestMove.event.date}</span>.
+                  <span className="tmoved-date">{atPrecision(latestMove.event.date, latestMove.event.date_precision)}</span>.
                 </>
               ) : null}
             </p>
@@ -979,7 +1007,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                     {/* A separator a reader can see and a copy keeps, rather
                         than two strings run together. */}
                     {s.date ? (
-                      <span className="tscore-note">{`${SEPARATOR}${s.date}`}</span>
+                      <span className="tscore-note">{`${SEPARATOR}${atPrecision(s.date!, s.date_precision)}`}</span>
                     ) : null}
                     {/* The day it was read, and the terms it is reused under.
                         Both absent on almost every source; both load-bearing on

@@ -139,11 +139,12 @@ TEMPLATE_VERSION = 5
 # A project at or past this point has committed the money. `funded` is a grant
 # award and is deliberately below the line: an Innovation Fund letter is not a
 # final investment decision, and the pipeline fact would overstate itself.
-COMMITTED = ("fid", "construction", "operating")
+COMMITTED = ("fid", "construction", "commissioning", "operating")
 
 # Ordered as a project advances. paused/cancelled are not on the ladder: they
 # are where a project left it.
-ADVANCE = ("announced", "funded", "fid", "construction", "operating")
+ADVANCE = ("announced", "funded", "fid", "construction", "commissioning",
+           "operating")
 
 # Words that make a claim the facts cannot carry. The generated sentences are
 # templates and should never produce one; the gate is here because a template
@@ -209,6 +210,7 @@ STATUS_VERB = {
     "funded": "was awarded public funding",
     "fid": "took a final investment decision",
     "construction": "went into construction",
+    "commissioning": "began commissioning",
     "operating": "started operating",
     "paused": "was paused",
     "cancelled": "was cancelled",
@@ -278,6 +280,24 @@ def _upper_bound(value) -> float:
     return max(float(p) for p in parts if p.strip())
 
 
+# A DATE SHOWN AT THE PRECISION ITS SOURCE GAVE IT.
+#
+# Every value date on this layer is STORED padded to the day — a month-precision
+# figure on the first of its month, a year-precision one on 1 January — with
+# `..._precision` saying what the source actually said. That is right for storage
+# and for arithmetic, and it is wrong on a page: "as of 2025-01-01" under a cost
+# premium the source dates to 2025 claims a day nobody published, which is
+# precisely the error the precision field was added to prevent.
+#
+# So the padding is undone for display, from the same field, in one place.
+def _at_precision(date: str, precision: str | None) -> str:
+    if precision == "year":
+        return str(date)[:4]
+    if precision == "month":
+        return str(date)[:7]
+    return str(date)
+
+
 def _fact(fid, label, text, as_of, numbers, parts, sourced=(), href=None) -> dict:
     """One fact line.
 
@@ -334,6 +354,9 @@ def fact_binding_constraint(bottlenecks: list[dict]) -> dict | None:
     if not scored:
         return None
     weight, count, b = max(scored, key=lambda s: (s[0], s[1], s[2]["id"]))
+    # A SOURCE'S OWN `date` CARRIES NO PRECISION FIELD YET — see the docket's
+    # rule 21 — so it is printed as stored. Where a bottleneck's newest source is
+    # a standing page dated to the day it was read, that is what shows.
     as_of = max((s.get("date") or "" for s in b["sources"]), default="")
     return _fact(
         "binding_constraint", "Binding constraint",
@@ -371,8 +394,10 @@ def fact_decisive_exposure(imp: dict, params: dict, labels: dict, sector: str) -
         numbers = [nf.digits_of(figure)]
 
     bearer = money["bearer"].replace("_", " ")
-    as_of = max((params[p]["date_of_value"] for p in money["inputs"] if p in params),
-                default="")
+    dated = [params[p] for p in money["inputs"] if p in params]
+    newest = max(dated, key=lambda x: x["date_of_value"], default=None)
+    as_of = _at_precision(newest["date_of_value"],
+                          newest.get("date_of_value_precision")) if newest else ""
     model = money["model"]
     if model not in MODEL_LINE:
         raise SystemExit(
@@ -410,7 +435,14 @@ def fact_pipeline_state(projects: list[dict], sector: str) -> dict | None:
     committed = sum(1 for p in projects if p["status"] in COMMITTED)
     paused = sum(1 for p in projects if p["status"] == "paused")
     cancelled = sum(1 for p in projects if p["status"] == "cancelled")
-    as_of = max((h["date"] for p in projects for h in p["status_history"]), default="")
+    # THE LATEST EVENT ON THE PIPELINE, SHOWN AT ITS OWN PRECISION. An event
+    # padded to 1 January is stored that way and must not be printed that way:
+    # "as of 2026-01-01" for a grant a page dates to 2026 is a day nobody
+    # published.
+    events = [h for p in projects for h in p["status_history"]]
+    newest_event = max(events, key=lambda h: h["date"], default=None)
+    as_of = (_at_precision(newest_event["date"], newest_event.get("date_precision"))
+             if newest_event else "")
 
     stopped = []
     if paused:
@@ -547,7 +579,8 @@ def fact_the_gap(params: dict, sector: str, bottlenecks: list[dict],
         "the_gap", "The gap",
         f"Low-carbon {sector_word} costs {figure}{' ' + rest if rest else ''} to make, "
         f"on the {publisher}'s figures.",
-        p["date_of_value"], [str(p["value"])],
+        _at_precision(p["date_of_value"], p.get("date_of_value_precision")),
+        [str(p["value"])],
         {"figure": figure, "rest": rest, "name": p["name"], "publisher": publisher},
         sourced=(p["name"], p["unit"], rest, publisher),
         href=f"#bottleneck-{owner['id']}" if owner else "#bottlenecks",
