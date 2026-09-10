@@ -577,6 +577,68 @@ individual investigations, and a register that let a machine make them would be
 asserting sourcing nobody had done — which is precisely what the rename was
 written to correct.
 
+**D44. THE SEARCH WAS RUN, ALL 167 OF IT, ON 10 SEPTEMBER 2026**, by hand, one
+entry at a time, and the record is `sources/hydrogen_gap_search.json`: 881 fetches
+over 167 entries, each with its domain, its source type and its outcome, and one
+of three verdicts on the entry. It came out
+
+| | Concept | Feasibility study | total |
+|---|---|---|---|
+| owner or permit source names the site | 33 | 68 | **101** |
+| searched, none found | 25 | 23 | **48** |
+| source unreadable | 7 | 11 | **18** |
+
+FID, Construction and Operational are zero **by construction and not by finding**:
+an entry at FID or beyond never reaches this class, because `classify()` sends it
+to `unexplained at FID or beyond` first. What the two columns do show is that a
+feasibility study is likelier to have a source naming its site than a concept is —
+two in three against one in two — which is what you would expect of a project that
+has had to tell somebody where it is.
+
+**D45. THE THING THAT ANSWERED WAS OFTEN NOT THE COMPANY.** Of the 101 that name a
+site, a quarter were settled by somebody other than the owner: the Spanish state
+gazette's water concession for Coreses, Cartagena city council for Escombreras,
+the CNDP consultation files for five French e-fuel projects, aicep Global Parques
+for the Sines reservation, the Liepaja special economic zone for its own tenant,
+the city of Oulu for three plants at Pyyryvainen, the port of Marseille Fos for
+H2V. The admission procedure names permit portals and port authorities alongside
+company newsrooms, and this is the pass where that clause earned its place.
+
+**D46. THE OWNER'S FIGURE AND THE BENCHMARK'S FIGURE DISAGREE OFTEN ENOUGH THAT THE
+BENCHMARK CANNOT BE READ AS A CAPACITY SOURCE.** Eneco's Europoort electrolyser is
+800 MW on the company's page and 225 MW on the IEA's row; ErasmoPower2X is 650 MW
+at Saceruela and 325 MW at Almodovar del Campo; Endesa's As Pontes agrees at 100
+MW; Galp's Sines phase II is a 600 MW expansion the owner cannot be read on at
+all. **The places disagree too**: Orange.bat is at Onda and the benchmark puts it
+at the port of Valencia; Koppo Energia is at Kristinestad and the benchmark's
+coordinate falls at Kokkola; Barsebaeck Hydrogen Hub's coordinate is 700 km from
+Barsebaeck. A third party's coordinate was already refused as a position. This is
+the same finding on the capacity side.
+
+**D47. FORTY-FOUR ENTRIES CLEARED ADMISSION AND WENT TO THE CANDIDATES FILE. NONE
+WAS ADMITTED.** The bar is the one the perimeter already sets: electrolytic, inside
+the geography, at or above 100 MW **on a figure its owner or a permit states**, and
+a source this register read naming the site. Every one of the forty-four arrives
+with `coordinate_source: null` and a `coordinate_ref` that says "not searched",
+because position is a separate leg and nobody has walked it for these. Of the 101
+that name a site, 57 did not clear: most because the source names the place and no
+megawatts (Figueira da Foz, Estarreja, Sullom Voe, Alby, Skellefteaa), some because
+the owner's own figure is below the threshold (Hellenic Hydrogen's 50 MW first
+stage), some because they are studies rather than projects (Markinch, Kvinesdal),
+one because the works is a ship (P2XFloater), and five because they are already on
+this file under another name — Lingen, Emden, Cartagena, La Robla and Galp's Sines
+electrolyser are all rows or candidates already, which the benchmark did not know.
+
+**D48. THE CLASS FELL FROM 167 TO 113 AND THE GAP REPORT NOW SAYS SO.** `held by
+eufabric` on the IEA side went from 14 to 68, because a candidate counts as held.
+The 113 that remain are the entries the search could not settle: 48 where sources
+were fetched and none names a site, 18 where the natural source could not be read,
+and the 47 that name a site without clearing admission. **The class name is still
+accurate for none of them**, which is the next thing to fix: a class called `not
+searched by eufabric` that has now been searched needs splitting along the lines
+the search actually found. That is a ruling, not a tidy-up, and it is not made
+here.
+
 ### Step 5 decisions, after the source-date ruling of 9 September 2026
 
 **D38. Uniper's source was archived on 10 September, one day after it was read.**
@@ -834,3 +896,20 @@ twenty and the comparison is simply this register against the two lists.
 25. **`not searched by eufabric` will not shrink without per-entry work**, and its
     size — 167, four fifths of the IEA gap — is the honest measure of how much of
     the outside list this register has never looked at.
+
+    **CLOSED 10 SEPTEMBER 2026.** The per-entry work was done: 167 investigations,
+    881 fetches, 101 sites named, 44 new candidates, and the class down to 113.
+    The rule was right about the remedy and wrong about nothing except how long it
+    would take.
+26. **A permit source settles what a company newsroom will not.** A quarter of the
+    sites this pass could name were named by a gazette, a council, a port, a
+    consultation file or an estate's managing body — and in four cases (Emil'Hy,
+    the RVO offshore demonstrators, Grey2Green's Innovation Fund fiche, the Dutch
+    enterprise agency) the permit source was the one that refused or could not be
+    read. Neither leg is reliably the better one; the procedure needs both.
+27. **A company that is bankrupt has no sources.** Flexens Oy filed for bankruptcy
+    on 27 May 2025 and flexens.com no longer resolves; its 300 MW Kokkola plant is
+    named by the Finnish press and by the industrial park and by nobody who owned
+    it. A dead domain is not a refusal and not a finding — it is the source class
+    disappearing — and it should be recorded as its own outcome the next time the
+    vocabulary is opened.

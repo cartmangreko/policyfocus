@@ -260,6 +260,56 @@ def classify(entry: dict, name: str, status: str, tech: str, size: str,
     return "unexplained at FID or beyond"
 
 
+SEARCH = bench.ROOT / "sources" / "hydrogen_gap_search.json"
+SEARCH_OUTCOMES = ("owner or permit source names the site", "searched, none found",
+                   "source unreadable")
+
+
+def search_crosstab() -> str:
+    """The admission search over `not searched by eufabric`, crossed with the IEA's own
+    status field.
+
+    THE CLASS IS THE FILTER, so two of the IEA's five statuses are absent from this table
+    by construction and not by finding: an entry at FID or beyond never reaches this class,
+    because classify() routes it to `unexplained at FID or beyond` first. What the table
+    can say is how the search went, and whether it went differently for a concept than for
+    a feasibility study."""
+    if not SEARCH.exists():
+        return "\nadmission search: sources/hydrogen_gap_search.json not present."
+    doc = json.loads(SEARCH.read_text(encoding="utf-8"))
+    rows = doc["entries"]
+    statuses = sorted({r["status"] for r in rows})
+    grid = {o: {s: 0 for s in statuses} for o in SEARCH_OUTCOMES}
+    unclassified = 0
+    for r in rows:
+        if r.get("outcome") in grid:
+            grid[r["outcome"]][r["status"]] += 1
+        else:
+            unclassified += 1
+    fetches = sum(len(r["fetches"]) for r in rows)
+    guessed = sum(1 for r in rows for f in r["fetches"]
+                  if str(f.get("note", "")).startswith("MACHINE DOMAIN GUESS"))
+
+    w = max(len(s) for s in statuses) + 2
+    out = [f"\nthe admission search over `not searched by eufabric` "
+           f"({len(rows)} entries, {fetches - guessed} fetches, searched {doc['searched']}):",
+           f"| {'search outcome':38} | " + " | ".join(f"{s:>{w}}" for s in statuses) + " | total |",
+           "|" + "-" * 40 + "|" + "|".join("-" * (w + 2) for s in statuses) + "|-------|"]
+    for o in SEARCH_OUTCOMES:
+        row = [grid[o][s] for s in statuses]
+        out.append(f"| {o:38} | " + " | ".join(f"{n:>{w}}" for n in row)
+                   + f" | {sum(row):5} |")
+    out.append(f"| {'TOTAL':38} | "
+               + " | ".join(f"{sum(grid[o][s] for o in SEARCH_OUTCOMES):>{w}}" for s in statuses)
+               + f" | {len(rows) - unclassified:5} |")
+    if unclassified:
+        out.append(f"  {unclassified} entries carry no outcome.")
+    out.append("  FID, Construction and Operational are zero by construction: an entry at "
+               "FID or beyond\n  is routed to `unexplained at FID or beyond` before it can "
+               "reach this class.")
+    return "\n".join(out)
+
+
 def main() -> int:
     ou_all, iea_all = bench.load_ou(), bench.load_iea()
     checks = verify_inputs()
@@ -362,6 +412,8 @@ def main() -> int:
     print(f"\nrefused by name ({len(REFUSED_BY_NAME)}) — recorded, never silent:")
     for (b, ref), why in sorted(REFUSED_BY_NAME.items()):
         print(f"  {b[:4]} ref {ref}: {why}")
+
+    print(search_crosstab())
 
     print("\nbenchmark inputs, by identity (sources/benchmark_snapshots.json):")
     print("\n".join(checks))
