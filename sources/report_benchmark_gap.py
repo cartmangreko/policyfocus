@@ -116,27 +116,68 @@ def verify_inputs() -> list[str]:
 #       technology, end use, capacity, references, and no site. So a project this
 #       register would have to place cannot even be looked for from that file
 #       alone; the name is all there is.
-#   not searched by eufabric
-#       The benchmark says where — the IEA's live endpoint publishes a latitude
-#       and a longitude for every one of its European entries — and NO FETCH HAD
-#       BEEN ATTEMPTED FOR ANY MEMBER OF THIS CLASS. That is the whole of what it
-#       said, and the first name it carried, "no company or permit source names
-#       the site", said something stronger and untrue: it read as though somebody
-#       had looked and found nothing. Nobody had looked. Renamed 10 September
-#       2026 so the class states the work that was not done rather than a
-#       conclusion nobody had earned.
+#   searched, no owner or permit source found
+#   owner or permit source names the site, not admitted
+#       WHAT `not searched by eufabric` BECAME WHEN IT WAS SEARCHED, 10 September
+#       2026. That class held 167 entries and said one thing about all of them:
+#       no fetch had been attempted. The search attempted them — 881 fetches, one
+#       entry at a time, recorded in sources/hydrogen_gap_search.json — so the
+#       name became false the day the work was done, and a class whose name is
+#       false is worse than one whose name is unflattering. RETIRED, and its
+#       members distributed along the three lines the search actually found:
+#
+#         - nothing names a site  -> searched, no owner or permit source found
+#         - a source names it and the entry does not clear admission
+#                                 -> owner or permit source names the site,
+#                                    not admitted
+#         - the source could not be read
+#                                 -> company source unreadable, below
+#         - a source names it AND it clears admission
+#                                 -> it is a candidate, and candidates are held
+#
+#       The second class is not a defect and not a finding against the benchmark:
+#       it is the ordinary state of a project this register knows where to find
+#       and cannot yet carry — most often because the source names the place and
+#       states no megawatts, sometimes because the owner's own figure is below the
+#       threshold, sometimes because what is named is a study rather than a
+#       project.
 #
 #       (A third party's coordinate is still not a position this register may
-#       use. What the coordinate does is tell a searcher where to look.)
+#       use. What the coordinate did was tell the searcher where to look.)
 #   company source unreadable
-#       Somebody looked, found the operator's own source, and could not read it:
-#       an empty body or a refusal. Named one at a time in UNREADABLE_BY_NAME and
-#       queued in sources/manual/wanted, because a person with a browser closes
-#       one in a minute.
+#       Somebody looked, found the operator's own or the permit source, and could
+#       not read it: an empty body, a refusal, a dead domain, a scanned PDF. Named
+#       one at a time in UNREADABLE_BY_NAME and queued in sources/manual/wanted,
+#       because a person with a browser closes one in a minute — and, since the
+#       search, read from the search record too, which carries eighteen more.
+#
+# AND "held by eufabric" COUNTS A CANDIDATE AS HELD. It is not a row in
+# data/transition/projects.json and it is not drawn on any map; what it is, is an
+# entry this register has admitted, whose only outstanding leg is a position. See
+# build_hydrogen_benchmark.held(). This matters to the arithmetic of the split:
+# the search moved 54 entries out of the class, and they became 44 candidates,
+# because the IEA carries ten of those projects twice, as two phases.
 CLASSES = ("duplicate of a held row", "DRI or other perimeter exclusion", "blue",
            "below threshold on reading", "benchmark gives no location",
-           "not searched by eufabric",
+           "searched, no owner or permit source found",
+           "owner or permit source names the site, not admitted",
            "company source unreadable", "unexplained at FID or beyond")
+
+# The search record keyed by IEA reference, read once. An entry the search never
+# reached — one that entered the class after 10 September 2026, or an entry of the
+# academic file, which the search did not cover — has no outcome here, and
+# classify() falls back to saying so rather than guessing.
+SEARCH = bench.ROOT / "sources" / "hydrogen_gap_search.json"
+
+
+def search_outcomes() -> dict[str, str]:
+    if not SEARCH.exists():
+        return {}
+    doc = json.loads(SEARCH.read_text(encoding="utf-8"))
+    return {str(e["ref"]): e["outcome"] for e in doc["entries"] if e.get("outcome")}
+
+
+SEARCHED = search_outcomes()
 
 STEEL = re.compile(r"steel|hybrit|stegra|h2gs|\bdri\b|sponge iron|salcos|gravithy|blastr"
                    r"|iron\s*&|ironmaking|thyssenkrupp|arcelor", re.I)
@@ -255,19 +296,29 @@ def classify(entry: dict, name: str, status: str, tech: str, size: str,
         # or permit source naming it.
         if key in UNREADABLE_BY_NAME:
             return "company source unreadable"
-        return ("not searched by eufabric"
-                if has_location else "benchmark gives no location")
+        if not has_location:
+            return "benchmark gives no location"
+        # THE SEARCH RECORD DECIDES THE REST. An entry it settled carries its
+        # verdict; an entry it never reached says that, in the only class left
+        # that is honest about work nobody has done.
+        found = SEARCHED.get(key[1]) if key else None
+        if found == "source unreadable":
+            return "company source unreadable"
+        if found == "searched, none found":
+            return "searched, no owner or permit source found"
+        if found == "owner or permit source names the site":
+            return "owner or permit source names the site, not admitted"
+        return "searched, no owner or permit source found"
     return "unexplained at FID or beyond"
 
 
-SEARCH = bench.ROOT / "sources" / "hydrogen_gap_search.json"
 SEARCH_OUTCOMES = ("owner or permit source names the site", "searched, none found",
                    "source unreadable")
 
 
 def search_crosstab() -> str:
-    """The admission search over `not searched by eufabric`, crossed with the IEA's own
-    status field.
+    """The admission search that retired `not searched by eufabric`, crossed with the
+    IEA's own status field.
 
     THE CLASS IS THE FILTER, so two of the IEA's five statuses are absent from this table
     by construction and not by finding: an entry at FID or beyond never reaches this class,
@@ -291,7 +342,7 @@ def search_crosstab() -> str:
                   if str(f.get("note", "")).startswith("MACHINE DOMAIN GUESS"))
 
     w = max(len(s) for s in statuses) + 2
-    out = [f"\nthe admission search over `not searched by eufabric` "
+    out = [f"\nthe admission search that retired `not searched by eufabric` "
            f"({len(rows)} entries, {fetches - guessed} fetches, searched {doc['searched']}):",
            f"| {'search outcome':38} | " + " | ".join(f"{s:>{w}}" for s in statuses) + " | total |",
            "|" + "-" * 40 + "|" + "|".join("-" * (w + 2) for s in statuses) + "|-------|"]
@@ -307,6 +358,60 @@ def search_crosstab() -> str:
     out.append("  FID, Construction and Operational are zero by construction: an entry at "
                "FID or beyond\n  is routed to `unexplained at FID or beyond` before it can "
                "reach this class.")
+    return "\n".join(out)
+
+
+DISAGREEMENT_KINDS = ("capacity", "phasing", "site")
+
+
+def disagreements() -> str:
+    """WHERE THE BENCHMARK AND THE OWNER SAY DIFFERENT THINGS, printed and not resolved.
+
+    Same principle as the schedule disagreements the transition rows already carry: when
+    two speakers are asked and answer differently, the register records both and names the
+    speakers. It does not pick. What is new here is the field — those are about dates, and
+    these are about how big a thing is and where it stands.
+
+    `normalisation_gap` is excluded on purpose. A difference under a fifth is the round
+    trip through tonnes, not a speaker.
+    """
+    files = [(bench.ROOT / "sources/hydrogen_candidates.json", "candidates", "id"),
+             (SEARCH, "entries", "ref")]
+    rows = []
+    for path, key, idf in files:
+        if not path.exists():
+            continue
+        for obj in json.loads(path.read_text(encoding="utf-8"))[key]:
+            for d in obj.get("benchmark_disagreements") or []:
+                if d["kind"] in DISAGREEMENT_KINDS:
+                    rows.append((d["kind"], str(obj[idf]), d))
+    if not rows:
+        return "\nbenchmark disagreements: none recorded."
+    out = [f"\nbenchmark disagreements ({len(rows)}) — recorded, and not resolved:"]
+    for kind in DISAGREEMENT_KINDS:
+        here = [r for r in rows if r[0] == kind]
+        if not here:
+            continue
+        out.append(f"\n  {kind} ({len(here)}):")
+        for _, who, d in sorted(here, key=lambda r: r[1]):
+            if kind == "capacity":
+                out.append(f"    {who[:44]:44} ref {d['ref']:>5}  "
+                           f"owner {d['eufabric_value_mw']:>5} MW  vs  benchmark "
+                           f"{d['benchmark_value_mw']:>5} MW")
+            elif kind == "site":
+                out.append(f"    {who[:44]:44} ref {d['ref']:>5}  "
+                           f"{d['eufabric_value']}  vs  {d['benchmark_value']}")
+            else:
+                out.append(f"    {who[:44]:44} ref {d['ref']:>5}  the benchmark splits "
+                           f"what the owner publishes whole")
+    gaps = sum(1 for path, key, idf in files if path.exists()
+               for obj in json.loads(path.read_text(encoding="utf-8"))[key]
+               for d in (obj.get("benchmark_disagreements") or [])
+               if d["kind"] == "normalisation_gap")
+    out.append(f"\n  and {gaps} normalisation gaps, under a fifth and excluded above: the "
+               f"IEA states\n  kt H2/y and this register normalises at a fixed factor, so an "
+               f"owner's megawatts\n  and the benchmark's cannot agree exactly even when the "
+               f"speakers do.")
     return "\n".join(out)
 
 
@@ -385,14 +490,17 @@ def main() -> int:
     print(f"report_benchmark_gap: {len(ou)} O&U and {len(iea)} IEA European entries at or "
           f"above 100 MW; eufabric holds {len(held_ou & set(ou))} and "
           f"{len(held_iea & set(iea))}.\n")
-    print(f"| {'class':32} | {'O&U':>5} | {'IEA':>5} |")
-    print(f"|{'-' * 34}|{'-' * 7}|{'-' * 7}|")
+    # The class names outgrew the column when the split landed; the width is
+    # measured rather than fixed so the next rename does not break the table.
+    w = max(len("held by eufabric (rows and candidates)"), *(len(c) for c in CLASSES))
+    print(f"| {'class':{w}} | {'O&U':>5} | {'IEA':>5} |")
+    print(f"|{'-' * (w + 2)}|{'-' * 7}|{'-' * 7}|")
     for c in CLASSES:
-        print(f"| {c:32} | {counts['odenweller_ueckerdt_2025'][c]:5} | "
+        print(f"| {c:{w}} | {counts['odenweller_ueckerdt_2025'][c]:5} | "
               f"{counts['iea_hydrogen_production_projects'][c]:5} |")
-    print(f"| {'held by eufabric':32} | {len(held_ou & set(ou)):5} | "
+    print(f"| {'held by eufabric (rows and candidates)':{w}} | {len(held_ou & set(ou)):5} | "
           f"{len(held_iea & set(iea)):5} |")
-    print(f"| {'TOTAL':32} | {len(ou):5} | {len(iea):5} |")
+    print(f"| {'TOTAL':{w}} | {len(ou):5} | {len(iea):5} |")
 
     residue = [r for r in out if r["class"] == "unexplained at FID or beyond"]
     if residue:
@@ -414,6 +522,7 @@ def main() -> int:
         print(f"  {b[:4]} ref {ref}: {why}")
 
     print(search_crosstab())
+    print(disagreements())
 
     print("\nbenchmark inputs, by identity (sources/benchmark_snapshots.json):")
     print("\n".join(checks))

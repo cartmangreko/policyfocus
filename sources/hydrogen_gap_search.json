@@ -3540,7 +3540,18 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "Enagas's own HyDeal Espana release says the production is 'based in Northern Spain' and gives 2030 totals only. No municipality, no first-phase figure. The benchmark places it at Puebla de Alcocer, in Extremadura, which is not northern Spain."
+   "outcome_note": "Enagas's own HyDeal Espana release says the production is 'based in Northern Spain' and gives 2030 totals only. No municipality, no first-phase figure. The benchmark places it at Puebla de Alcocer, in Extremadura, which is not northern Spain.",
+   "benchmark_disagreements": [
+    {
+     "kind": "site",
+     "benchmark": "iea_hydrogen_production_projects",
+     "ref": "1549",
+     "eufabric_speaker": "owner or permit source",
+     "eufabric_value": "'based in Northern Spain'",
+     "benchmark_value": "Puebla de Alcocer, Extremadura",
+     "note": "Enagas's own release for HyDeal Espana says the production is in northern Spain. Extremadura is in the south-west. The disagreement is at the level of half a country and neither speaker gives a works."
+    }
+   ]
   },
   {
    "ref": "1612",
@@ -3992,7 +4003,18 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "No owner or permit source names a hydrogen hub at Barsebaeck. The benchmark's coordinate falls at Njurunda, 700 km north of Barsebaeck, so the entry does not agree with itself either."
+   "outcome_note": "No owner or permit source names a hydrogen hub at Barsebaeck. The benchmark's coordinate falls at Njurunda, 700 km north of Barsebaeck, so the entry does not agree with itself either.",
+   "benchmark_disagreements": [
+    {
+     "kind": "site",
+     "benchmark": "iea_hydrogen_production_projects",
+     "ref": "1662",
+     "eufabric_speaker": "owner or permit source",
+     "eufabric_value": "Barsebaeck (from the benchmark's own project name)",
+     "benchmark_value": "Njurunda, Vasternorrland",
+     "note": "About 700 km apart, and the entry does not agree with itself: it is NAMED for a place in Skane and its coordinate falls in Medelpad. No owner source names either."
+    }
+   ]
   },
   {
    "ref": "1663",
@@ -8367,7 +8389,18 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "CPC Finland's own cluster page names Kristinestad for the plant and quotes the wind rather than the electrolyser: 'The electricity suply of the plant will be mainly served by 460 MW of wind power over several wind farms in Kristinestad and in the surrounding municipalities.' The benchmark's coordinate falls at Kokkola, 200 km north."
+   "outcome_note": "CPC Finland's own cluster page names Kristinestad for the plant and quotes the wind rather than the electrolyser: 'The electricity suply of the plant will be mainly served by 460 MW of wind power over several wind farms in Kristinestad and in the surrounding municipalities.' The benchmark's coordinate falls at Kokkola, 200 km north.",
+   "benchmark_disagreements": [
+    {
+     "kind": "site",
+     "benchmark": "iea_hydrogen_production_projects",
+     "ref": "2426",
+     "eufabric_speaker": "owner or permit source",
+     "eufabric_value": "Kristinestad",
+     "benchmark_value": "Kokkola",
+     "note": "About 200 km apart. CPC Finland's own cluster page puts the Koppo Energia plant at Kristinestad; the benchmark's coordinate falls at Kokkola, where three other projects in this same list also sit."
+    }
+   ]
   },
   {
    "ref": "2427",
@@ -13327,7 +13360,18 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "ENERTRAG's own release says only that '(t)he capacity of the Electrolysis Corridor East Germany is spread across two locations in Mecklenburg-Vorpommern and Brandenburg' - 185 MW in all, with no split and no works. The two places are named in trade coverage as Rostock-Laage and Falkenhagen; the benchmark puts this row at Schwedt/Oder, which is neither."
+   "outcome_note": "ENERTRAG's own release says only that '(t)he capacity of the Electrolysis Corridor East Germany is spread across two locations in Mecklenburg-Vorpommern and Brandenburg' - 185 MW in all, with no split and no works. The two places are named in trade coverage as Rostock-Laage and Falkenhagen; the benchmark puts this row at Schwedt/Oder, which is neither.",
+   "benchmark_disagreements": [
+    {
+     "kind": "site",
+     "benchmark": "iea_hydrogen_production_projects",
+     "ref": "3427",
+     "eufabric_speaker": "owner or permit source",
+     "eufabric_value": "Rostock-Laage and Falkenhagen/Prignitz",
+     "benchmark_value": "Schwedt/Oder",
+     "note": "ENERTRAG's own release places the corridor's two sites in Mecklenburg-Vorpommern and Brandenburg; trade coverage names Rostock-Laage and Falkenhagen. Schwedt is neither."
+    }
+   ]
   },
   {
    "ref": "3558",

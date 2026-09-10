@@ -1417,3 +1417,82 @@ it. That project shows a slip of zero, and nothing in this layer distinguishes i
 from one that is on time. The summary says so wherever the slip column is
 printed, because a zero that means "no second statement exists" and a zero that
 means "the date held" cannot be told apart here.
+
+### A disagreement is two speakers on the same fact, in any field
+
+The slip rule above settled this for dates. The benchmark search of 10 September
+2026 found that the same thing happens to **size** and to **place**, and far more
+often: eleven capacity disagreements, nine phasing disagreements and eleven site
+disagreements over 54 entries, against two schedule disagreements in the whole
+transition file.
+
+The treatment is the same and the fields are new. A `benchmark_disagreements`
+entry on a candidate or on a search record carries the `kind`, the reference it
+disagrees with, both values, and which speaker said which. **The register does not
+pick.** Eneco's own release says its Europoort electrolyser reaches 800 MW and the
+IEA's row for it says 225 MW; both are on file, attributed, and the row would
+carry the owner's figure with the disagreement beside it, exactly as a schedule
+carries the company's date with the government's beside it.
+
+**Three kinds, kept apart, because they are three different claims.**
+
+- `capacity` — the two speakers state a different size for the same thing.
+- `phasing` — the benchmark carries as two rows what the owner publishes as one
+  plant. This is not a size disagreement even when the megawatts differ, and
+  filing it as one double-counts: three entries were mis-filed under `capacity`
+  for an hour and were caught because the report printed the same number in both
+  columns.
+- `site` — the benchmark's coordinate or its own project name puts the works
+  somewhere the owner does not. Distances run from 7 km to 700 km, and the largest
+  is an entry that contradicts itself: "Barsebäck Hydrogen Hub" is named for a
+  place in Skåne and carries a coordinate in Medelpad.
+
+**And a gap under a fifth is not a disagreement.** The IEA states kt H2/y and this
+register normalises at a fixed factor, so an owner's megawatts and the benchmark's
+normalised megawatts cannot agree exactly even when the speakers agree completely.
+Those are recorded as `normalisation_gap` and excluded from the count, because a
+conversion artefact filed as a disagreement would make the benchmark look less
+reliable than it is — the mirror of the error the slip rule prevents.
+
+**What has no home yet is the row.** These live on candidates and on the search
+record because that is where the objects are. `data/transition/projects.json` has
+no field for a capacity or a site disagreement, and the first of these forty-four
+to become a row will need one.
+
+### A machine classification never writes to the record
+
+It writes to a file whose name says it is machine output, with every verdict null,
+and a person moves what survives review. Nothing reaches `sources/` or `data/`
+except through that review.
+
+This is not a preference. A classifier built to clear the benchmark gap at scale
+matched `nemo.eu` for a Greek project whose place name normalises to an empty
+ASCII string — and an empty string is contained in every document; matched
+`wilhelmshaven.de`, the city's own website, for a project named after the town;
+and searched `crane.com`, a valve manufacturer, for "Green Crane". It wrote all of
+that straight into the worklist, where it was indistinguishable from work somebody
+had done. Worse, the process that wrote it **outlived the decision to throw it
+away**: four copies were still running hours later, quietly restoring the rejected
+verdicts under a review that had already rejected them.
+
+The same discipline caught its own error the second time round. The disagreement
+sweep of 10 September 2026 wrote 54 proposals to a machine file with `verdict:
+null`, and the hand review kept 31, rejected 23 as artefacts of ASCII folding and
+adjacent villages, and found one thing neither had expected: a candidate this
+register had placed at Bremanger, which is a different project's municipality 150
+km up the coast, on no source at all. **A machine that proposes is useful. A
+machine that files is a forgery.**
+
+### No run ends with a shell still alive
+
+`python3 sources/check_orphan_jobs.py` at the end of every turn, and act on what
+it prints. Background work that outlives the reason it was started is not idle: it
+holds a stale view of the world and acts on it. Six shells survived the hydrogen
+search — four polling `git log` for commit hashes that had already been superseded,
+two waiting on a log file whose writer was dead — and **two of them were armed to
+run `gh pr edit 52` with a body that had since been corrected.** They would have
+overwritten the correction with the text it corrected, hours after the fact, with
+nobody watching.
+
+A background job should carry its own deadline. Where it cannot, the check is the
+deadline.

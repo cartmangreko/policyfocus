@@ -639,6 +639,75 @@ searched by eufabric` that has now been searched needs splitting along the lines
 the search actually found. That is a ruling, not a tidy-up, and it is not made
 here.
 
+### Rulings of 10 September 2026, on the search
+
+**D49. THE ARITHMETIC, RECONCILED.** The pull request said 101 named a site, 44 went
+to candidates and 47 named-but-not-clearing, which leaves ten unaccounted for. The
+ten are real and they are not missing entries: **44 candidates cover 54 benchmark
+entries, because the IEA carries ten of these projects twice, as two phases.**
+
+| | |
+|---|---|
+| named a site | **101** |
+| — cleared admission, and left the class | **54** |
+| — named, not clearing | **47** |
+| searched, nothing names a site | 48 |
+| source unreadable | 18 |
+| **total** | **167** |
+
+Those 54 became 44 candidates: HyNetherlands, Pembroke, Madoqua Sines, Kintore,
+Saltend, Los Barrios, Albamed, Eneco's Europoort, Reni and Besaya are each one
+project and two benchmark rows. **The class fell by 54 and `held by eufabric` rose
+by 54**, which is the same 54 and not a coincidence.
+
+**D50. `held by eufabric` COUNTS A CANDIDATE AS HELD, and the class definition now
+says so.** It always did — `build_hydrogen_benchmark.held()` has said it since the
+benchmark file was written — but it was said in the builder and not in the table
+that prints the number, and a reader of the table could reasonably have read "held"
+as "on the map". A candidate is on none: it is an entry the perimeter has admitted
+whose only outstanding leg is a position. **No project was admitted in this pass.**
+
+**D51. `not searched by eufabric` IS RETIRED, and the class is split three ways.**
+A class whose name is false is worse than one whose name is unflattering, and the
+name became false the day the search ran. Its 113 members go to
+
+- **`searched, no owner or permit source found`** — 48. Sources were fetched and
+  none names a site.
+- **`owner or permit source names the site, not admitted`** — 47. Not a defect and
+  not a finding against the benchmark: the ordinary state of a project this
+  register knows where to find and cannot yet carry. Mostly the source names the
+  place and states no megawatts.
+- **`company source unreadable`** — the existing class, which absorbs 18 and goes
+  from 1 to 19.
+
+The table is nine classes now, and the IEA column adds to 237 exactly.
+
+**D52. THE DISAGREEMENTS ARE RECORDED AND NOT RESOLVED, on the rule the schedules
+already use.** Thirty-one of them: 11 capacity, 9 phasing, 11 site. The largest is
+Eneco's Europoort electrolyser at 800 MW to its owner and 225 MW to the IEA; the
+strangest is Barsebaeck Hydrogen Hub, which is named for a place in Skaane and
+carries a coordinate in Medelpad, 700 km away; the most instructive is Orange.bat,
+where the disagreement is not in a coordinate at all but in the benchmark's own
+**project name**, which places at the port of Valencia an electrolyser its owner
+puts at Onda.
+
+Three were mis-filed under `capacity` for an hour — Reni, Besaya and Kintore, where
+the two speakers state the SAME megawatts and disagree about whether it is one
+project or two — and were caught because the report printed the same number in both
+columns. They are `phasing`.
+
+**A gap under a fifth is not a disagreement** and is recorded separately as
+`normalisation_gap`: the IEA states kt H2/y and this register normalises at a fixed
+factor, so the two cannot agree exactly even when the speakers do. Eleven of those.
+
+**D53. AND THE SWEEP FOUND AN ERROR OF OURS.** `fuella-skipavika-skiga` said the
+works is at Bremanger. Bremanger is Holmaneset's municipality — a different project
+150 km up the coast, ref 2218 — and no source this register read ever said it. It
+now reads "Skipavika Havneterminal", which is what Fuella's own page says, with the
+correction on the record. **The machine proposed a place mismatch it could not
+explain and a person found out why**, which is the whole of what the machine-versus-
+person rule is for.
+
 ### Step 5 decisions, after the source-date ruling of 9 September 2026
 
 **D38. Uniper's source was archived on 10 September, one day after it was read.**
@@ -907,6 +976,17 @@ twenty and the comparison is simply this register against the two lists.
     the RVO offshore demonstrators, Grey2Green's Innovation Fund fiche, the Dutch
     enterprise agency) the permit source was the one that refused or could not be
     read. Neither leg is reliably the better one; the procedure needs both.
+28. **The row schema has no field for a capacity or a site disagreement.** These
+    thirty-one live on candidates and on the search record because that is where the
+    objects are. `stated_schedule` carries a speaker and lets two of them disagree
+    about a date; nothing carries two speakers on a size or a place. The first of
+    these forty-four to become a row will need one, and inventing it at that moment
+    is how a schema gets a field shaped like one project.
+29. **A background job should carry its own deadline.** Six shells outlived the
+    search; two were armed to overwrite a corrected pull request body with the text
+    it corrected. `sources/check_orphan_jobs.py` is the deadline where the job has
+    none, and it is run at the end of a turn rather than in the build chain, because
+    on a build server there is nothing for it to find.
 27. **A company that is bankrupt has no sources.** Flexens Oy filed for bankruptcy
     on 27 May 2025 and flexens.com no longer resolves; its 300 MW Kokkola plant is
     named by the Finnish press and by the industrial park and by nobody who owned
