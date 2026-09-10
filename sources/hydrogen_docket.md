@@ -776,6 +776,28 @@ target. Rather than half-populate from search summaries this register cannot att
 to the cited page, each row carries `schedule_note` saying the source was read for
 something else. Re-reading them for dates is coverage work.
 
+**D59. THE BASEMAP SAMPLE IS TWO OF TEN, AND THE OTHER EIGHT ARE ON THE RECORD AS
+BLOCKED.** `sources/hydrogen_basemap_sample.json`. overpass.kumi.systems answered 504
+or timed out on read across three attempts and two query shapes on 10 September 2026,
+having answered a small test query in 39 seconds the same hour; overpass-api.de
+answers 406 to the declared reader and is therefore not a fallback. A failure you
+observe is blocking, so the eight are recorded as attempted-and-blocked rather than
+quietly dropped, and the sample is not finished.
+
+**NO RULE ON ESTATES FOLLOWS.** The condition was a report before a rule and two
+measurements are not the report.
+
+What the two do show is worth having, because they agree with each other. At
+Wilhelmshaven, within 5 km of the hint, OpenStreetMap has **69 named industrial
+features and 81 unnamed parcels**, and the named ones are the asphalt mixer, the oil
+pipeline company and the cavern company — none of them VoltH2's four hectares. At
+Wittenberg, 25 named and 73 unnamed, and the named ones are a boatbuilder, a pump
+factory and the harbour. **The basemap is not empty at these places; it is full of the
+wrong things.** In both, what could be taken as a position is an estate or a port,
+which is exactly the class the Subotica and Mo i Rana rule refuses — so the binding
+question for the remaining eight is not "is anything drawn" but "is anything drawn
+that is the works", and the two answers so far are no.
+
 ### Step 5 decisions, after the source-date ruling of 9 September 2026
 
 **D38. Uniper's source was archived on 10 September, one day after it was read.**

@@ -1540,3 +1540,27 @@ at Vlissingen-Oost. Eleven site disagreements in fifty-four entries is not noise
 **Corroboration is still worth having.** A permit that gives an address and a benchmark
 coordinate that falls on it are two speakers agreeing, and that is worth recording. What
 the coordinate cannot do is stand alone.
+
+### The 44 coordinate sweeps are coverage work, batched and recorded
+
+Forty-four rows came in undrawn on 10 September 2026 with `located: "no"` and a note
+saying the position was **not searched**. Closing that is coverage work with its own
+order and its own record.
+
+**Feasibility entries first.** A project whose owner has taken it far enough to file for
+a permit is the one most likely to have produced a document that states an address, and
+the admission search already showed the pattern: two in three feasibility entries had a
+source naming the site, against one in two concepts.
+
+**Every attempt is recorded whether or not it lands.** A sweep that ran and found nothing
+is a different object from a sweep nobody ran, and the row note must be able to tell them
+apart — which is the whole reason these forty-four say "not searched" rather than nothing
+at all. `sources/hydrogen_basemap_sample.json` is the first instalment and shows why the
+record has to include failure: eight of its ten could not be measured because the Overpass
+endpoint was down, and an unrecorded blocked attempt would have read as a site nobody
+tried.
+
+**Coverage is reported as two numbers per sector**, rows drawn against rows admitted
+undrawn, by `report_candidate_gaps.py` on every build. Hydrogen is 11 drawn and 55
+undrawn. Where a sector surfaces, its page states both, because a row count that has
+absorbed the undrawn tells a reader the picture is larger than it is.
