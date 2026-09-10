@@ -12,6 +12,7 @@ import {
   projectHref,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
+import { atPrecision } from "@/lib/dates";
 
 // The home page's feed: what moved, most recent first.
 //
@@ -44,7 +45,7 @@ export default function ProjectChanges({ limit = 6 }: { limit?: number }) {
         const funded = fundingTotals(fundingForProject(p.id), params).committed;
         return (
           <li key={p.id} className={`pchange ${event!.status}`}>
-            <span className="pchange-date">{event!.date}</span>
+            <span className="pchange-date">{atPrecision(event!.date, event!.date_precision)}</span>
             <span className={`tstatus ${event!.status}`}>{STATUS_LABEL[event!.status]}</span>
             <span className="pchange-body">
               <Link href={projectHref(p.id)} className="pchange-name">

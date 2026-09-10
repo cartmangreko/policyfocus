@@ -526,6 +526,54 @@ a capacity of 150 MW" — and has no release of its own. That clears the perimet
 which asks for a company-confirmed site and a figure, and the row says in its own
 capacity note that this is all it rests on.
 
+### Step 5 decisions, after the source-date ruling of 9 September 2026
+
+**D38. Uniper's source was archived on 10 September, one day after it was read.**
+uniper.energy served the H2Maasvlakte release to the declared reader on 9
+September 2026 — every quote on that row was taken from the live page that day —
+and answered 403 the next morning. `check_links` caught it on the push, which is
+the gate doing exactly what it is for. It is neither the empty-body refusal
+shell.com makes nor a dead page: it is a live URL that has closed to this
+pipeline. The row now cites the Internet Archive's capture of 15 March 2023,
+which carries the same text, with `archived: true` and a copy filed in
+`sources/manual/`; the live URL is in the source note so a reader can try it.
+**THE LESSON IS ABOUT TIMING, NOT ABOUT UNIPER.** A source read today may be
+unreadable tomorrow, and the only thing that made this recoverable was that the
+gate ran before the branch moved.
+
+**D33. A source dated to the day it was read is `day` precision, not `unknown`.**
+Several sources here are standing pages their publishers never dated —
+refhyne.eu, hghh.eu, laroblagreen.com, hoestptxesbjerg.dk, galp.com — and their
+`date` is the day this register read them. That IS known to the day, because it
+is a fact about the reading; what it is not is a publication date, and each row
+says so in its own note. The precision field cannot carry that distinction and is
+not being asked to.
+
+**D34. `retrieved_date` was given no precision field and a day-shape gate
+instead.** There is no vaguer version of "somebody fetched this page". Enforcing
+the asymmetry beats remembering it.
+
+**D35. The surface gate strips the React flight payload before scanning.** A
+Next.js page ships the stored row inside `<script>` tags, padding and all,
+because the client needs the data and not only the text. A gate that read it
+would fail every page for holding a date correctly, which is the opposite of what
+it checks. The question is what a reader SEES.
+
+**D36. Ambiguous literals are reported, not failed, and the reason is a real
+one.** The Innovation Fund's Ifestos grant was signed on 1 January 2024 and
+Italvolt's bankruptcy is padded to the same string; Slite's permit application
+really was withdrawn on 1 January 2026. Failing those would push somebody to stop
+recording genuine first-of-month dates in order to keep a gate green — which is
+the failure mode every reported-not-failed rule on this file exists to avoid.
+Four literals are in that state today and the gate prints them with a page count.
+
+**D37. The gate found three surfaces on its first run**, and only one of them was
+the one that prompted it. The sector lead was fixed by hand before the gate
+existed; the gate then caught the status rail on every project page and the object
+lead behind every project's standfirst. Two of three would have shipped. All three
+now render through one function — `atPrecision` in `web/lib/dates.ts` — and a
+fourth surface that forgets it fails the build.
+
 ### Step 4 decisions, after the event-date ruling of 9 September 2026
 
 **D28. `date_precision` goes on `stated_schedule` as well as on `status_history`.**

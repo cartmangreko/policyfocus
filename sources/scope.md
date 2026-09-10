@@ -1319,6 +1319,65 @@ period. Both are the reading that does not overstate, and they point in opposite
 directions because overstating a promise and overstating a fact are opposite
 errors.
 
+### A source date carries its precision; a retrieval date is always a day
+
+**Ruled 9 September 2026, closing rule 21.** Every entry in a `sources` list
+carries `date_precision` beside its `date`, on the same vocabulary and the same
+padding as an event. `retrieved_date` does not, and is gated to the day shape
+instead — the two are different kinds of date and the rule says so rather than
+treating them alike.
+
+**A publisher's date is as exact as the publisher made it.** Most are days. ITM
+Power's Gigastack phase-2 report carries November 2021 and no day; a journal issue
+is a month; a statistical release can be a year. Those are stored padded to the
+first, like every other date on this layer that says when something WAS.
+
+**A retrieval date is a day because there is no vaguer version of the fact.**
+Somebody here fetched a page, on a day. The asymmetry is enforced rather than
+remembered: a `retrieved_date` that is not `YYYY-MM-DD` fails.
+
+**AND A SOURCE DATED TO THE DAY IT WAS READ IS STILL A DAY.** Several sources on
+this file are standing pages their publishers never dated — refhyne.eu, hghh.eu,
+laroblagreen.com, hoestptxesbjerg.dk, galp.com — and their `date` is the day this
+register read them. That is `day` precision and it is honest: the date IS known
+to the day, because it is a fact about the reading. What it is not is a
+publication date, and each of those rows says so in its own note. The precision
+field cannot carry that distinction and is not being asked to.
+
+### No surface renders a date at finer precision than its field records
+
+`sources/check_date_precision.py`, in the postbuild chain beside the anchor and
+capacity-clause gates. It exists because **a page had already broken the rule**:
+the first build after the precision fields landed printed "as of 2025-01-01" on
+the cement and steel lead blocks, under a cost premium the International Energy
+Agency dates to 2025. A day nobody published, rendered confidently, from a field
+that knew better.
+
+**Two checks, and the second is the honest half of the first.**
+
+- **The built data a surface reads.** Every lead file, with each `as_of` traced
+  to the field it was copied from. Exact and exhaustive.
+- **The rendered pages, by literal.** Every padded date on the layer is looked
+  for in the built HTML, with the React flight payload stripped first — that blob
+  carries the stored row, padding and all, because the client needs the data and
+  not only the text, and a gate that read it would fail every page for holding a
+  date correctly.
+
+**AMBIGUOUS LITERALS ARE REPORTED AND NOT FAILED, and the list is the interesting
+part.** The Innovation Fund's Ifestos grant was signed on 1 January 2024 and
+Italvolt's bankruptcy is padded to the same string; Slite's permit application
+really was withdrawn on 1 January 2026. A page printing one of those in full may
+be right, and this gate cannot tell which row it came from. Failing them would
+push somebody to stop recording real first-of-month dates, so they are printed on
+every run with a count of the pages that show them. **A literal that is padded on
+the file and never a genuine day anywhere is unambiguous, and IS failed.**
+
+The gate found three surfaces on its first run: the status rail on a project page,
+the object lead built by `build_object_leads.py`, and the sector lead already
+fixed by hand. All three now render through one function, `atPrecision` in
+`web/lib/dates.ts`, and a fourth surface that forgets it will be caught by the
+build rather than by a reader.
+
 ### A slip is one speaker changing its mind
 
 `stated_schedule` records what a project said it would do. Every entry carries a

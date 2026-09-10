@@ -179,6 +179,18 @@ def _where_sentence(project: dict, status: str, place: str) -> str:
     return f"Its site is at {place}."
 
 
+# A DATE SHOWN AT THE PRECISION ITS SOURCE GAVE IT. The same helper
+# build_lead.py carries, for the same reason: every value date on this layer is
+# STORED padded to the day and must not be PRINTED that way. See
+# sources/check_date_precision.py, which fails a page that does.
+def _at_precision(date: str, precision: str | None) -> str:
+    if precision == "year":
+        return str(date)[:4]
+    if precision == "month":
+        return str(date)[:7]
+    return str(date)
+
+
 def _fact(fid, text, as_of, numbers=(), sourced=(), href=None) -> dict:
     return {
         "id": fid,
@@ -340,15 +352,18 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
     # it was paused, not the date of the most recent thing written about it.
     # `as_of`, which is a different claim, still takes the latest source.
     last = sm.entered(p) or history[-1]
-    source_dates = [s["date"] for s in p.get("sources", []) if s.get("date")]
-    as_of = max(source_dates) if source_dates else history[-1]["date"]
+    dated = [s for s in p.get("sources", []) if s.get("date")]
+    newest = max(dated, key=lambda s: s["date"], default=None)
+    as_of = (_at_precision(newest["date"], newest.get("date_precision")) if newest
+             else _at_precision(history[-1]["date"], history[-1].get("date_precision")))
     where = countries.get(p.get("country", ""), p.get("country", ""))
     place = f"{p['plant']}, {where}" if p.get("plant") else where
 
     facts = [
         _fact("status", f"{p['name']} {bl.STATUS_VERB[last['status']]} on "
                         f"{bl._long_date(last['date'])}.",
-              last["date"], sourced=(p["name"],), href=last.get("source_url")),
+              _at_precision(last["date"], last.get("date_precision")),
+              sourced=(p["name"],), href=last.get("source_url")),
         # THREE SENTENCES, AND THE STATUS PICKS BETWEEN THEM.
         #
         #   a position          "It is at Skellefteå, Sweden."
@@ -413,7 +428,8 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
                 "capacity",
                 f"It was planned for {cap['value']:,} {cap['unit']} by "
                 f"{cap['planned_by']}.",
-                (param or {}).get("date_of_value") or as_of,
+                _at_precision((param or {}).get("date_of_value") or as_of,
+                              (param or {}).get("date_of_value_precision")),
                 [f"{cap['value']:,}"], sourced=(cap["unit"], cap["planned_by"]),
             ))
             cap = {}
@@ -421,7 +437,8 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
             facts.append(_fact(
                 "capacity",
                 f"It {verb} {cap['value']:,} {cap['unit']}.",
-                (param or {}).get("date_of_value") or as_of,
+                _at_precision((param or {}).get("date_of_value") or as_of,
+                              (param or {}).get("date_of_value_precision")),
                 [f"{cap['value']:,}"], sourced=(cap["unit"],),
             ))
 

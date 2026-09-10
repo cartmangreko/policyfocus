@@ -166,7 +166,26 @@ def _source_list(e: Errors, where: str, row: dict) -> None:
         w = f"{where} sources[{i}]"
         _url(e, w, s.get("url"))
         _req(e, w, s, "title", "publisher", "date")
-        _date(e, w, s, "date")
+        # A SOURCE'S DATE CARRIES ITS PRECISION, from 9 September 2026, and
+        # `retrieved_date` does not — the two are different kinds of date and the
+        # rule says so rather than treating them alike.
+        #
+        # A PUBLISHER'S DATE IS AS EXACT AS THE PUBLISHER MADE IT. Most are days.
+        # ITM Power's Gigastack phase-2 report carries November 2021 and no day;
+        # a journal issue is a month; a statistical release can be a year. Those
+        # are stored padded to the first, like every other date on this layer that
+        # says when something WAS.
+        #
+        # `retrieved_date` IS ALWAYS A DAY, because it is the day somebody here
+        # fetched the page and there is no version of that fact that is vaguer.
+        # It is gated to the day shape rather than given a precision field, so
+        # the asymmetry is enforced instead of remembered.
+        _dated(e, w, s, "date", "date_precision")
+        if s.get("retrieved_date") is not None:
+            if not EVENT_DATE_SHAPE["day"].match(str(s["retrieved_date"])):
+                e.add(w, f"retrieved_date={s['retrieved_date']!r} is not YYYY-MM-DD — it "
+                         f"is the day somebody fetched the page and there is no vaguer "
+                         f"version of that fact, so it carries no precision field")
         if s.get("hosted_copy") is not None:
             _hosted_copy(e, w, s)
 

@@ -57,6 +57,9 @@ export interface Source {
   title?: string;
   publisher: string;
   date?: string;
+  /** How exactly the publisher dated it. Absent on sources outside the
+   *  transition layer; see web/lib/dates.ts. */
+  date_precision?: "day" | "month" | "year";
   verbatim?: string;
   snapshot?: string;
   archived?: boolean;
@@ -178,6 +181,9 @@ export interface StatusEvent {
   kind?: "status" | "ownership";
   status: ProjectStatus;
   date: string;
+  /** How exactly the source dated the event. The date is always stored to the
+   *  day, padded to the earliest it can be; this says what may be printed. */
+  date_precision: "day" | "month" | "year";
   source_url: string;
   note?: string;
   /** Ownership events only: who it was, and who it is now. */

@@ -16,6 +16,7 @@ import {
   type MaterialEdge,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
+import { atPrecision } from "@/lib/dates";
 
 // One material, and every edge that touches it. The spoke the Materials
 // section on a sector page points at — brief 5 §6, which is also why there is
@@ -185,7 +186,7 @@ export default async function MaterialPage({ params }: { params: Promise<{ id: s
                 </a>
                 <span className="mat-since">{s.publisher}</span>
                 {s.date ? (
-                  <span className="mat-since">{`${SEPARATOR.trimStart()}${s.date}`}</span>
+                  <span className="mat-since">{`${SEPARATOR.trimStart()}${atPrecision(s.date!, s.date_precision)}`}</span>
                 ) : null}
               </li>
             ))}
