@@ -116,12 +116,18 @@ def verify_inputs() -> list[str]:
 #       technology, end use, capacity, references, and no site. So a project this
 #       register would have to place cannot even be looked for from that file
 #       alone; the name is all there is.
-#   benchmark gives a location, no company or permit source names the site
-#       The IEA's live endpoint publishes a latitude and a longitude for every
-#       one of its European entries. THAT IS NOT A POSITION THIS REGISTER MAY
-#       USE — a third party's coordinate is refused here, and always has been —
-#       but it does mean the entry says where, and what is missing is a company
-#       or permit source naming the site. Nobody here has read one.
+#   not searched by eufabric
+#       The benchmark says where — the IEA's live endpoint publishes a latitude
+#       and a longitude for every one of its European entries — and NO FETCH HAD
+#       BEEN ATTEMPTED FOR ANY MEMBER OF THIS CLASS. That is the whole of what it
+#       said, and the first name it carried, "no company or permit source names
+#       the site", said something stronger and untrue: it read as though somebody
+#       had looked and found nothing. Nobody had looked. Renamed 10 September
+#       2026 so the class states the work that was not done rather than a
+#       conclusion nobody had earned.
+#
+#       (A third party's coordinate is still not a position this register may
+#       use. What the coordinate does is tell a searcher where to look.)
 #   company source unreadable
 #       Somebody looked, found the operator's own source, and could not read it:
 #       an empty body or a refusal. Named one at a time in UNREADABLE_BY_NAME and
@@ -129,8 +135,8 @@ def verify_inputs() -> list[str]:
 #       one in a minute.
 CLASSES = ("duplicate of a held row", "DRI or other perimeter exclusion", "blue",
            "below threshold on reading", "benchmark gives no location",
-           "benchmark gives a location, no company or permit source names the site",
-           "company source unreadable", "not searched")
+           "not searched by eufabric",
+           "company source unreadable", "unexplained at FID or beyond")
 
 STEEL = re.compile(r"steel|hybrit|stegra|h2gs|\bdri\b|sponge iron|salcos|gravithy|blastr"
                    r"|iron\s*&|ironmaking|thyssenkrupp|arcelor", re.I)
@@ -249,9 +255,9 @@ def classify(entry: dict, name: str, status: str, tech: str, size: str,
         # or permit source naming it.
         if key in UNREADABLE_BY_NAME:
             return "company source unreadable"
-        return ("benchmark gives a location, no company or permit source names the site"
+        return ("not searched by eufabric"
                 if has_location else "benchmark gives no location")
-    return "not searched"
+    return "unexplained at FID or beyond"
 
 
 def main() -> int:
@@ -338,16 +344,16 @@ def main() -> int:
           f"{len(held_iea & set(iea)):5} |")
     print(f"| {'TOTAL':32} | {len(ou):5} | {len(iea):5} |")
 
-    residue = [r for r in out if r["class"] == "not searched"]
+    residue = [r for r in out if r["class"] == "unexplained at FID or beyond"]
     if residue:
-        print(f"\nNOT SEARCHED ({len(residue)}) — the only class that is a defect. Each of "
+        print(f"\nUNEXPLAINED AT FID OR BEYOND ({len(residue)}) — the only class that is a defect. Each of "
               f"these is at FID, in construction or operating, in the geography, above the "
               f"threshold, and neither held nor explained:")
         for r in residue:
             print(f"  {r['benchmark'][:4]:4} ref {r['ref']:>5}  {r['country']}  "
                   f"{r['normalised_mwel'] or '?':>6} MW  {r['status'][:18]:18} {r['name'][:58]}")
     else:
-        print("\nNOT SEARCHED (0) — every absence is a decision.")
+        print("\nUNEXPLAINED AT FID OR BEYOND (0) — every absence is a decision.")
     print(f"\ncompany source unreadable ({len(UNREADABLE_BY_NAME)}) — located, measured "
           f"and queued in sources/manual/wanted:")
     for (b, ref), why in sorted(UNREADABLE_BY_NAME.items()):

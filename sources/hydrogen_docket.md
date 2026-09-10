@@ -526,6 +526,57 @@ a capacity of 150 MW" — and has no release of its own. That clears the perimet
 which asks for a company-confirmed site and a figure, and the row says in its own
 capacity note that this is all it rests on.
 
+### Step 6 decisions, after the class rename of 10 September 2026
+
+**D39. The class is renamed `not searched by eufabric`, and its old name asserted
+work nobody had done.** "benchmark gives a location, no company or permit source
+names the site" reads as a finding — somebody looked and found nothing. Nobody had
+looked. **No fetch had been attempted for any of its 167 members** at the time it
+was named. The new name states the work that was not done rather than a
+conclusion nobody had earned.
+
+**D40. The residual class was renamed too, to `unexplained at FID or beyond`.**
+Not asked for, and necessary: the residue was called "not searched", and two
+classes a word apart would have been read as one.
+
+**D41. THE EU's OWN GRANT REGISTERS ARE UNREADABLE TO A DECLARED READER, and this
+is now measured rather than assumed.** The admission procedure names IPCEI,
+Innovation Fund and Hydrogen Bank pages as a leg. All four were fetched and all
+four answer HTTP 200 with a body of **40 characters** — the empty-body refusal
+scope.md already names for shell.com. The attempt is recorded against every one
+of the 167 entries, because it was made for every one of them and the answer was
+the same. **The register leg of the admission procedure is closed to this
+pipeline**, and the only EU artefact that reads is a per-project CINEA fiche PDF,
+which requires already knowing the project is an Innovation Fund project.
+
+**D42. A machine classification was built, run over twelve entries, reviewed and
+REJECTED.** The pass fetched the operator's site where the project name
+identified one and a domain guessed from the name where it did not, then judged
+each entry on whether the text carried the project's words and the place's. The
+results do not survive reading:
+
+- **Nemo Hydrogen Project** matched `nemo.eu` and `nemo.gr`, neither the operator.
+  Its place reverse-geocoded to `Δημοτική Ενότητα Βάρης`, which normalises to an
+  EMPTY ascii string — and an empty string is contained in every document.
+- **Wilhelmshaven phase 1** matched `wilhelmshaven.de`, the CITY's website. The
+  project is named after the town, so the test was circular.
+- **Puglia green hydrogen valley** matched `puglia.com`, a regional portal.
+- **Green Crane Pais Vasco** was "searched" at `crane.com`, a valve manufacturer,
+  and called `source unreadable` on its empty body.
+
+The 713 fetch records are kept, because those retrievals happened and those were
+their outcomes. The classifications are moved to `outcome_machine_rejected` and
+`outcome` is null on all 167.
+
+**D43. WHAT THAT ESTABLISHES IS THE SHAPE OF THE WORK, and it is the reason item 2
+is not finished.** Identifying the operator behind a benchmark entry, and judging
+whether a page names the site, are judgements. Neither can be derived from a
+project name: the benchmarks carry no company field at all, and of 167 names only
+85 carry a brand this register can recognise. The remaining work is 167
+individual investigations, and a register that let a machine make them would be
+asserting sourcing nobody had done — which is precisely what the rename was
+written to correct.
+
 ### Step 5 decisions, after the source-date ruling of 9 September 2026
 
 **D38. Uniper's source was archived on 10 September, one day after it was read.**
@@ -774,3 +825,12 @@ twenty and the comparison is simply this register against the two lists.
     undated page was read, and one, ITM Power's phase-2 report, is a page dated to
     a month and stored as its first day with the padding in a note. The same
     argument that closed rule 20 applies, one layer down.
+24. **The admission search does not mechanise, and the attempt is the evidence.**
+    Twelve entries through a machine classifier produced three false positives and
+    a false negative, each traceable to a different defect: an empty normalised
+    place string matching everything, a project named after its own town, a
+    regional portal, and a domain guess landing on an unrelated company. Any future
+    attempt to clear this class at scale should start from that list.
+25. **`not searched by eufabric` will not shrink without per-entry work**, and its
+    size — 167, four fifths of the IEA gap — is the honest measure of how much of
+    the outside list this register has never looked at.
