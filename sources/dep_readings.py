@@ -90,11 +90,13 @@ E("nel", "Iberdrola", "framework_agreement", "supplier", "supplier_press",
 E("nel", "Everfuel A/S", "equipment_order", "supplier", "supplier_press",
   N + "awarded-everfuel-contract-for-fredericia-hydrogen-project/", "2020-12-30",
   quantity=(20, "MW"), country="DK", sector="hydrogen",
-  note="HySynergy, adjacent to the Fredericia refinery.")
+  note="HySynergy, adjacent to the Fredericia refinery.",
+  site="Fredericia HySynergy")
 E("nel", "Everfuel A/S", "equipment_order", "supplier", "supplier_press",
   N + "approval-of-everfuel-contract-nel-asa/", "2021-01-10", quantity=(20, "MW"),
   country="DK", sector="hydrogen",
-  note="Board approval of the 2020-12-30 contract. Same order, second document.")
+  note="Board approval of the 2020-12-30 contract. Same order, second document.",
+  site="Fredericia HySynergy")
 E("nel", "Iberdrola", "equipment_order", "supplier", "supplier_press",
   N + "awarded-iberdrola-contract-for-20-mw-green-fertilizer-project-in-spain/",
   "2021-01-14", quantity=(20, "MW"), country="ES", sector="fertiliser",
@@ -117,7 +119,8 @@ E("nel", "Ovako", "equipment_order", "supplier", "supplier_press",
   "2021-11-25", quantity=(20, "MW"), country="SE", sector="steel",
   note="Hofors, Sweden — hydrogen to replace propane in steel REHEATING furnaces, not "
        "iron reduction. A steel customer that the register's steel perimeter does not "
-       "hold, which is the finding, not a miss.")
+       "hold, which is the finding, not a miss.",
+  site="Hofors")
 E("nel", "a new, European customer", "equipment_order", "supplier", "supplier_press",
   N + "nel-asa-receives-purchase-order-for-alkaline-electrolyser-system/", "2021-12-24",
   quantity=None, note="Customer undisclosed.")
@@ -150,9 +153,7 @@ E("nel", "Glencore Nikkelverk", "equipment_order", "supplier", "supplier_press",
 E("nel", "Skovgaard Energy ApS", "equipment_order", "supplier", "supplier_press",
   N + "nel-asa-receives-purchase-order-for-an-alkaline-electrolyser-system-from-skovgaard-"
       "energy/", "2022-07-08", quantity=None, country="DK", sector="hydrogen / ammonia",
-  note="Lemvig, western Jutland. The register holds a Skovgaard row in the hydrogen "
-       "class, which is out of the owner-side perimeter on this branch until #54 "
-       "merges — DECISION D-5.")
+  note="Lemvig, western Jutland.")
 E("nel", "an undisclosed European client", "equipment_order", "supplier", "supplier_press",
   N + "nel-asa-receives-purchase-order-for-multiple-h2station-units-in-the-netherlands/",
   "2022-08-10", quantity=None,
@@ -171,7 +172,8 @@ E("nel", "HH2E", "framework_agreement", "supplier", "supplier_press",
 E("nel", "HyCC", "equipment_order", "supplier", "supplier_press",
   N + "nel-asa-receives-purchase-order-for-40-mw-electrolyser-equipment-from-hycc/",
   "2023-02-06", quantity=(40, "MW"), country="NL", sector="hydrogen",
-  note="H2eron, Delfzijl. About EUR 12 million.")
+  note="H2eron, Delfzijl. About EUR 12 million.",
+  site="H2eron Delfzijl")
 E("nel", "HH2E", "equipment_order", "supplier", "supplier_press",
   N + "nel-asa-receives-firm-purchase-order-from-hh2e-for-120-mw-of-electrolyser-equipment/",
   "2023-03-14", quantity=(120, "MW"), country="DE", sector="hydrogen",
@@ -179,16 +181,19 @@ E("nel", "HH2E", "equipment_order", "supplier", "supplier_press",
 E("nel", "Hyd'Occ", "equipment_order", "supplier", "supplier_press",
   N + "nel-asa-receives-purchase-order-for-20-mw-electrolyser-equipment-from-hydocc/",
   "2023-07-14", quantity=(20, "MW"), country="FR", sector="hydrogen",
-  note="Port-la-Nouvelle. About EUR 9 million.")
+  note="Port-la-Nouvelle. About EUR 9 million.",
+  site="Port-la-Nouvelle")
 E("nel", "Bondalti", "equipment_order", "supplier", "supplier_press",
   N + "nel-asa-receives-purchase-order-for-40-mw-electrolyser-equipment-from-bondalti/",
   "2023-07-17", quantity=(40, "MW"), country="PT", sector="chemicals",
-  note="H2 Enable phase one, Estarreja. About EUR 11 million.")
+  note="H2 Enable phase one, Estarreja. About EUR 11 million.",
+  site="Estarreja")
 E("nel", "HyCC", "equipment_order", "supplier", "supplier_press",
   N + "nel-asa-hycc-has-cancelled-the-40-mw-purchase-order-due-to-market-conditions/",
   "2023-12-12", quantity=(40, "MW"), country="NL", sector="hydrogen",
   note="CANCELLATION of the 2023-02-06 order. Recorded as an edge so the backlog it "
-       "left can be seen leaving.")
+       "left can be seen leaving.",
+  site="H2eron Delfzijl")
 E("nel", "an undisclosed customer (a European project)", "equipment_order", "supplier",
   "supplier_press",
   N + "nel-asa-receives-purchase-order-for-electrolyser-equipment/", "2024-07-01",
@@ -204,7 +209,8 @@ E("nel", "Aberdeen Hydrogen Hub", "equipment_order", "supplier", "supplier_press
   N + "nel-asa-receives-purchase-order-for-one-mc500-containerized-pem-electrolyser/",
   "2025-03-20", quantity=(2.5, "MW"), country="GB", sector="hydrogen",
   note="One MC500 for the Aberdeen Hydrogen Hub, north-east Scotland. Announced by "
-       "Nel Hydrogen US, which is where the order was booked and not where it lands.")
+       "Nel Hydrogen US, which is where the order was booked and not where it lands.",
+  site="Aberdeen Hydrogen Hub")
 E("nel", "Statkraft", "equipment_order", "supplier", "supplier_press",
   N + "nel-asa-statkraft-has-cancelled-the-40-mw-alkaline-electrolyser-contract/",
   "2025-04-30", quantity=(40, "MW"), country="NO", sector="hydrogen",
@@ -222,7 +228,8 @@ E("nel", "Kaupanes Hydrogen AS and HyFuel AS", "equipment_order", "supplier",
   N + "nel-asa-receives-pem-purchase-order-from-the-hyfuel-and-kaupanes-hydrogen-projects-"
       "valued-at-more-than-usd-50-million/", "2025-11-05", quantity=None, country="NO",
   sector="hydrogen", note="More than USD 50 million; developed by Hydrogen Solutions AS "
-                          "(HYDS). No MW figure in the release.")
+                          "(HYDS). No MW figure in the release.",
+  site="Kaupanes HyFuel")
 
 # --- ITM Power plc ------------------------------------------------------------
 # Newsroom swept from itm-power.com/sitemap.xml: 133 news items, all fetched (the
@@ -254,7 +261,8 @@ E("itm-power", "Linde", "equipment_order", "supplier", "supplier_press",
   quantity=(24, "MW"), country="DE", sector="industrial gases",
   note="For the Leuna Chemical Complex, Germany. Linde is itself a node on this "
        "perimeter (capture_technology) and here is the buyer — the same firm appears "
-       "on both sides of the sweep, which is the finding, not a clash.")
+       "on both sides of the sweep, which is the finding, not a clash.",
+  site="Leuna Chemical Complex")
 E("itm-power", "an undisclosed customer", "equipment_order", "supplier",
   "supplier_press", I + "12mw-electrolyser-sale", "2021-11-15", quantity=(12, "MW"),
   note="'The customer and location remain confidential due to commercial sensitivities.'")
@@ -262,7 +270,8 @@ E("itm-power", "Linde Engineering (for Yara Norge AS)", "equipment_order", "supp
   "supplier_press", I + "24mw-sale-to-yara", "2022-01-28", quantity=(24, "MW"),
   country="NO", sector="fertiliser",
   note="Sold to Linde Engineering, installed at Yara's Herøya site outside Porsgrunn. "
-       "Two parties again; the buyer is Linde Engineering and the site is Yara's.")
+       "Two parties again; the buyer is Linde Engineering and the site is Yara's.",
+  site="Herøya Porsgrunn")
 E("itm-power", "Linde Engineering (for RWE, Lingen)", "equipment_order", "supplier",
   "supplier_press", I + "two-100-mw-electrolyser-contracts-signed", "2023-01-31",
   quantity=(200, "MW"), country="DE", sector="power / hydrogen",
@@ -299,7 +308,8 @@ E("itm-power", "a large utility company", "framework_agreement", "supplier",
 E("itm-power", "Shell (REFHYNE II, Rheinland)", "equipment_order", "supplier",
   "supplier_press", I + "100mw-refhyne-ii-contract-signed", "2024-08-13",
   quantity=(100, "MW"), country="DE", sector="refining",
-  note="Following Shell's FID; Linde Engineering is the EPC integrator.")
+  note="Following Shell's FID; Linde Engineering is the EPC integrator.",
+  site="Shell Energy and Chemicals Park Rheinland Wesseling")
 E("itm-power", "Guttroff GmbH", "equipment_order", "supplier", "supplier_press",
   I + "first-contract-signed-for-neptune-v", "2024-11-08", quantity=(5, "MW"),
   country="DE", sector="industrial gases", note="One NEPTUNE V unit, 5 MW.")
@@ -323,7 +333,8 @@ E("itm-power", "EDF Renewables UK and Hynamics", "equipment_order", "supplier",
   "supplier_press", I + "engineering-integration-package-for-hynamics", "2025-03-27",
   quantity=(8, "MW"), country="GB", sector="energy",
   note="Plant integration engineering package for Tees Green Hydrogen phase 1; four "
-       "NEPTUNE II units, and the release names this as the 2024-07-16 reservation.")
+       "NEPTUNE II units, and the release names this as the 2024-07-16 reservation.",
+  site="Tees Green Hydrogen")
 E("itm-power", "Deutsche Bahn AG", "framework_agreement", "supplier", "supplier_press",
   I + "itm-and-deutsche-bahn-forge-partnership-for-sustainable-transportation-and-infrastructure", "2025-03-31",
   quantity=None, country="DE", sector="rail")
@@ -334,7 +345,8 @@ E("itm-power", "Uniper", "framework_agreement", "supplier", "supplier_press",
   I + "selected-by-uniper-for-120mw-green-hydrogen-project", "2025-05-08",
   quantity=(120, "MW"), country="GB", sector="power",
   note="Selection, not a contract: Humber H2ub (Green), six 20MW POSEIDON modules, "
-       "shortlisted in HAR2.")
+       "shortlisted in HAR2.",
+  site="Humber H2ub")
 E("itm-power", "a leading Spanish cement producer", "equipment_order", "supplier",
   "supplier_press", I + "sale-of-neptune-ii", "2025-05-09", quantity=(2, "MW"),
   country="ES", sector="cement",
@@ -350,11 +362,13 @@ E("itm-power", "an undisclosed customer (a UK HAR2 project and a smaller UK proj
 E("itm-power", "Uniper", "framework_agreement", "supplier", "supplier_press",
   I + "feed-contract-for-uniper's-120mw-green-hydrogen-project", "2025-06-23",
   quantity=(120, "MW"), country="GB", sector="power",
-  note="FEED contract following the 8 May selection. Still subject to FID.")
+  note="FEED contract following the 8 May selection. Still subject to FID.",
+  site="Humber H2ub")
 E("itm-power", "MorGen Energy", "equipment_order", "supplier", "supplier_press",
   I + "20mw-supply-agreement-signed", "2025-08-13", quantity=(20, "MW"), country="GB",
   sector="hydrogen", note="West Wales Hydrogen, Milford Haven; HAR1. Supply agreement "
-                          "and binding heads of terms.")
+                          "and binding heads of terms.",
+  site="West Wales Hydrogen Milford Haven")
 E("itm-power", "RWE", "framework_agreement", "supplier", "supplier_press",
   I + "capacity-reservation-with-rwe-for-150mw-of-neptune-v-units", "2025-09-22",
   quantity=(150, "MW"), country="DE", sector="power",
@@ -366,16 +380,19 @@ E("itm-power", "Stablegrid Group", "framework_agreement", "supplier", "supplier_
   sector="grid balancing / hydrogen",
   note="Two named German projects: Netzbrücke 410 at Rüstringen (30 MW, FID expected "
        "2026) and a second of 680 MW (pre-FEED from January 2026, FID anticipated "
-       "2028). 710 MW is the sum the release states, and 680 of it is a 2028 decision.")
+       "2028). 710 MW is the sum the release states, and 680 of it is a 2028 decision.",
+  site="Netzbrücke 410 Rüstringen")
 E("itm-power", "a project managed by Octopus Energy Generation (Kimberly-Clark "
   "Northfleet)", "equipment_order", "supplier", "supplier_press",
   I + "12.5-mw-contract-with-octopus-energy-generation", "2025-12-18",
   quantity=(12.5, "MW"), country="GB", sector="paper / consumer products",
-  note="NEPTUNE V systems at Kimberly-Clark's Northfleet plant, Gravesend, Kent.")
+  note="NEPTUNE V systems at Kimberly-Clark's Northfleet plant, Gravesend, Kent.",
+  site="Kimberly-Clark Northfleet Gravesend")
 E("itm-power", "MorGen Energy", "equipment_order", "supplier", "supplier_press",
   I + "morgen-energy-20-mw-project-fid-and-ltsa-signed", "2026-03-11",
   quantity=(20, "MW"), country="GB", sector="hydrogen",
-  note="FID and long-term services agreement on the 2025-08-13 supply agreement.")
+  note="FID and long-term services agreement on the 2025-08-13 supply agreement.",
+  site="West Wales Hydrogen Milford Haven")
 E("itm-power", "Rheinmetall", "framework_agreement", "supplier", "supplier_press",
   I + "strategic-collaboration-with-rheinmetall-for-the-giga-ptx-project", "2026-04-17",
   quantity=None, country="DE", sector="defence / e-fuels",
@@ -423,7 +440,8 @@ E("tk-nucera", "Shell (Holland Hydrogen I)", "equipment_order", "supplier",
   K + "thyssenkrupp-to-install-200-mw-green-hydrogen-facility-for-shell-in-port-of-"
       "rotterdam", "2022-01-13", quantity=(200, "MW"), country="NL", sector="refining",
   note="Engineer, procure and fabricate; ten 20 MW alkaline modules. Signed as "
-       "thyssenkrupp Uhde Chlorine Engineers, the node's former name.")
+       "thyssenkrupp Uhde Chlorine Engineers, the node's former name.",
+  site="Holland Hydrogen I Tweede Maasvlakte Rotterdam")
 E("tk-nucera", "a European customer from a carbon-intensive industry",
   "framework_agreement", "supplier", "supplier_press",
   K + "thyssenkrupp-nucera-and-customer-signed-contract-to-reserve-large-scale-"
@@ -437,19 +455,22 @@ E("tk-nucera", "H2 Green Steel", "equipment_order", "supplier", "supplier_press"
   quantity=(700, "MW"), country="SE", sector="steel",
   note="'more than 700 MW' of 20 MW scalum modules at Boden. H2 Green Steel is the "
        "former name of Stegra and the register's stegra-boden row is the same plant; "
-       "the alias index matches on 'Boden'.")
+       "the alias index matches on 'Boden'.",
+  site="Boden")
 E("tk-nucera", "Neste", "framework_agreement", "supplier", "supplier_press",
   K + "thyssenkrupp-nucera-and-neste-sign-agreement-to-reserve-production-capacities-for-"
       "120-mw-water-electrolyser-at-nestes-refinery-in-finland", "2023-10-10",
   quantity=(120, "MW"), country="FI", sector="refining",
   note="Six 20 MW scalum modules for the Porvoo refinery. A reservation agreement, not "
-       "an order.")
+       "an order.",
+  site="Porvoo")
 E("tk-nucera", "Cepsa", "framework_agreement", "supplier", "supplier_press",
   K + "cepsa-selects-thyssenkrupp-nucera-as-preferred-supplier-of-a300-mw-electrolyzer-"
       "for-green-hydrogen-plant-in-spain", "2024-05-13", quantity=(300, "MW"),
   country="ES", sector="refining / energy",
   note="Preferred supplier plus a basic engineering design package through to FID; "
-       "15 scalum units. Cepsa is now Moeve — see the 2026-03-18 edge.")
+       "15 scalum units. Cepsa is now Moeve — see the 2026-03-18 edge.",
+  site="Andalusian Green Hydrogen Valley Huelva")
 E("tk-nucera", "an anonymous customer (a 600 MW project in Europe)",
   "framework_agreement", "supplier", "supplier_press",
   K + "thyssenkrupp-nucera-signs-feed-study-for-a-600-mw-green-hydrogen-project-in-europe",
@@ -462,7 +483,8 @@ E("tk-nucera", "Moeve", "equipment_order", "supplier", "supplier_press",
   note="Engineering, procurement, fabrication and supply; 15 units of 20 MW for phase "
        "one (Onuba) of the Andalusian Green Hydrogen Valley at La Rábida, Huelva. "
        "Moeve took FID in early March 2026. Same 300 MW as the 2024 Cepsa selection, "
-       "two years and a company rename later.")
+       "two years and a company rename later.",
+  site="Onuba La Rábida Huelva")
 E("tk-nucera", "an unnamed alliance of European transmission operators and industry",
   "framework_agreement", "supplier", "supplier_press",
   K + "european-multinational-industry-alliance-to-establish-hydrogen-single-market-via-"
@@ -502,7 +524,8 @@ E("siemens-energy", "European Energy", "equipment_order", "supplier", "supplier_
   G + "siemens-energy-secures-electrolyzer-order-european-energy-worlds-first-large-"
       "scale.html", "2022-03-02", quantity=(50, "MW"), country="DK",
   sector="e-methanol / renewables", note="Kassø, near Aabenraa; e-methanol for Maersk "
-                                         "and Circle K. Three full PEM arrays.")
+                                         "and Circle K. Three full PEM arrays.",
+  site="Kassø Aabenraa")
 E("siemens-energy", "Air Liquide", "framework_agreement", "supplier", "supplier_press",
   G + "siemens-energy-and-air-liquide-form-joint-venture-european-production-large-"
       "scale.html", "2022-06-23", quantity=None, country="FR", sector="industrial gases",
@@ -519,7 +542,8 @@ E("siemens-energy", "EWE", "equipment_order", "supplier", "supplier_press",
   G + "siemens-energy-wins-contract-for-large-scale-hydrogen-project-fr.html",
   "2024-07-25", quantity=(280, "MW"), country="DE", sector="utility",
   note="Emden, part of Clean Hydrogen Coastline; operation expected 2027, up to 26,000 "
-       "t/yr. A ten-year service contract was agreed alongside.")
+       "t/yr. A ten-year service contract was agreed alongside.",
+  site="Emden Clean Hydrogen Coastline")
 
 # --- Sunfire GmbH / SE --------------------------------------------------------
 # Newsroom swept in full from the sitemap: 100 English items under /en/news/, all
@@ -547,7 +571,8 @@ E("sunfire", "Salzgitter Flachstahl GmbH", "equipment_order", "supplier",
 E("sunfire", "TotalEnergies", "equipment_order", "supplier", "supplier_press",
   F + "totalenergies-sunfire-and-fraunhofer-give-the-go-ahead-for-green-methanol-in-leuna/",
   "2021-06-15", quantity=(1, "MW"), country="FR", sector="refining",
-  note="e-CO2Met at Leuna; 1 MW high-temperature electrolyser.")
+  note="e-CO2Met at Leuna; 1 MW high-temperature electrolyser.",
+  site="Leuna e-CO2Met")
 E("sunfire", "ENERTRAG", "framework_agreement", "supplier", "supplier_press",
   F + "new-hydrogen-center-enertrag-and-sunfire-start-cooperation-to-operate-a-10-mw-"
       "pressurized-alkaline-electrolyzer/", "2021-09-09", quantity=(10, "MW"),
@@ -563,19 +588,23 @@ E("sunfire", "Demo4Grid project partners (MPREIS)", "equipment_order", "supplier
 E("sunfire", "P2X Solutions", "equipment_order", "supplier", "supplier_press",
   F + "finlands-first-green-hydrogen-production-plant-will-run-on-sunfires-electrolysis-"
       "technology/", "2022-03-22", quantity=(20, "MW"), country="FI", sector="hydrogen",
-  note="Harjavalta; Finland's first industrial green hydrogen plant.")
+  note="Harjavalta; Finland's first industrial green hydrogen plant.",
+  site="Harjavalta")
 E("sunfire", "RWE", "equipment_order", "supplier", "supplier_press",
   F + "rwe-realizes-electrolysis-project-with-sunfire/", "2022-05-03", quantity=(10, "MW"),
-  country="DE", sector="power", note="Pressurized alkaline; the Lingen site.")
+  country="DE", sector="power", note="Pressurized alkaline; the Lingen site.",
+  site="Lingen")
 E("sunfire", "Neste", "equipment_order", "supplier", "supplier_press",
   F + "worlds-largest-high-temperature-electrolysis-module-deliveries-started/",
   "2022-07-05", quantity=(2.6, "MW"), country="NL", sector="refining",
   note="MultiPLHY, Neste's Rotterdam refinery. EU-funded under Clean Hydrogen "
-       "Partnership grant 875123.")
+       "Partnership grant 875123.",
+  site="MultiPLHY Neste Rotterdam refinery")
 E("sunfire", "Uniper", "equipment_order", "supplier", "supplier_press",
   F + "bad-lauchstaedt-uniper-orders-sunfire-electrolyzer/", "2022-08-04",
   quantity=(30, "MW"), country="DE", sector="utility",
-  note="Bad Lauchstädt Energy Park, Central German Chemical Triangle.")
+  note="Bad Lauchstädt Energy Park, Central German Chemical Triangle.",
+  site="Bad Lauchstädt Energy Park")
 E("sunfire", "Vitesco Technologies", "framework_agreement", "supplier", "supplier_press",
   F + "sunfire-and-vitesco-technologies-become-strategic-partners/", "2023-01-12",
   quantity=None, country="DE", sector="automotive components",
@@ -585,7 +614,8 @@ E("sunfire", "Vitesco Technologies", "framework_agreement", "supplier", "supplie
 E("sunfire", "Uniper (Project Air)", "equipment_order", "supplier", "supplier_press",
   F + "project-air-in-sweden-uniper-commissions-sunfire-to-build-a-30-mw-electrolyzer/",
   "2023-01-31", quantity=(30, "MW"), country="SE", sector="chemicals",
-  note="Stenungsund, Sweden; Project Air, with Perstorp as the site owner.")
+  note="Stenungsund, Sweden; Project Air, with Perstorp as the site owner.",
+  site="Stenungsund Project Air")
 E("sunfire", "a leading refinery in Europe", "equipment_order", "supplier",
   "supplier_press",
   F + "sunfire-receives-purchase-order-for-100-mw-pressurized-alkaline-electrolyzer/",
@@ -600,23 +630,28 @@ E("sunfire", "an undisclosed customer (a 500 MW European project)", "framework_a
        "hydrogen for refinery operations and ammonia.")
 E("sunfire", "RWE", "equipment_order", "supplier", "supplier_press",
   F + "sunfire-builds-100-megawatt-electrolyzer-for-rwe/", "2024-09-11",
-  quantity=(100, "MW"), country="DE", sector="power", note="RWE's Lingen site.")
+  quantity=(100, "MW"), country="DE", sector="power", note="RWE's Lingen site.",
+  site="Lingen")
 E("sunfire", "Ren-Gas", "equipment_order", "supplier", "supplier_press",
   F + "ren-gas-selects-sunfire-electrolyzer-for-its-tampere-e-methane-plant/",
-  "2024-11-19", quantity=(50, "MW"), country="FI", sector="e-methane")
+  "2024-11-19", quantity=(50, "MW"), country="FI", sector="e-methane",
+  site="Tampere")
 E("sunfire", "Basque Hydrogen (Petronor / Repsol, Enagás Renovable, Ente Vasco de la "
   "Energía)", "equipment_order", "supplier", "supplier_press",
   F + "sunfire-enters-spanish-market-with-new-electrolysis-project/", "2025-04-09",
-  quantity=(10, "MW"), country="ES", sector="refining")
+  quantity=(10, "MW"), country="ES", sector="refining",
+  site="port of Bilbao")
 E("sunfire", "Neste", "equipment_order", "supplier", "supplier_press",
   F + "worlds-largest-soec-electrolyzer-startet-up-at-nestes-rotterdam-refinery/",
   "2025-10-06", quantity=(2.6, "MW"), country="NL", sector="refining",
   note="START-UP of the 2022-07-05 delivery, twelve SOEC modules. Same plant, second "
-       "document.")
+       "document.",
+  site="MultiPLHY Neste Rotterdam refinery")
 E("sunfire", "P2X Solutions", "framework_agreement", "supplier", "supplier_press",
   F + "p2x-solutions-and-sunfire-expand-partnership-with-new-hydrogen-project/",
   "2025-10-08", quantity=(40, "MW"), country="FI", sector="hydrogen",
-  note="FEED study for a 40 MW project at Joensuu.")
+  note="FEED study for a 40 MW project at Joensuu.",
+  site="Joensuu")
 E("sunfire", "Rheinmetall (Giga PtX)", "framework_agreement", "supplier", "supplier_press",
   F + "german-industrial-giants-and-tech-companies-announce-rheinmetall-partnership-for-"
       "giga-ptx/", "2025-11-03", quantity=None, country="DE", sector="defence / e-fuels",
@@ -628,7 +663,8 @@ E("sunfire", "Repsol and Enagás Renovable (Cartagena); Petronor (Muskiz)",
   quantity=(200, "MW"), country="ES", sector="refining",
   note="TWO 100 MW plants stated in one release — Cartagena and Muskiz — recorded as "
        "one 200 MW edge because that is how the release states the order. Ten 10 MW "
-       "modules each, commissioning 2029, up to 15,000 t H2/yr each.")
+       "modules each, commissioning 2029, up to 15,000 t H2/yr each.",
+  site="Cartagena Muskiz")
 E("sunfire", "Nordic Ren-Gas", "framework_agreement", "supplier", "supplier_press",
   F + "nordic-ren-gas-announces-partnership-agreement-with-sunfire/", "2026-07-22",
   quantity=None, country="FI", sector="e-methane")
@@ -636,7 +672,8 @@ E("sunfire", "BASF", "equipment_order", "supplier", "supplier_press",
   F + "sunfire-to-build-electrolysis-test-facility-at-basf-site-in-schwarzheide/",
   "2026-05-11", quantity=None, country="DE", sector="chemicals",
   note="An SOEC TEST facility at BASF's Schwarzheide site under the H2Giga flagship. "
-       "A test rig is not plant demand and is recorded with no quantity.")
+       "A test rig is not plant demand and is recorded with no quantity.",
+  site="Schwarzheide")
 
 # --- Plug Power Inc. ----------------------------------------------------------
 # 317 releases 2020–2026, listed and read through the Q4 investor-relations feed
@@ -686,13 +723,15 @@ E("plug-power", "Lhyfe", "equipment_order", "supplier", "supplier_press",
 E("plug-power", "Uniper", "framework_agreement", "supplier", "supplier_press",
   PF(2023), "2023-03-07", quantity=(100, "MW"), country="NL", sector="utility",
   note="Selected to DESIGN the 100 MW electrolyser package for H2Maasvlakte at the Port "
-       "of Rotterdam. A design selection, not a supply order.")
+       "of Rotterdam. A design selection, not a supply order.",
+  site="H2Maasvlakte Maasvlakte Rotterdam")
 E("plug-power", "Ardagh Glass Limmared AB", "equipment_order", "supplier",
   "supplier_press", PF(2023), "2023-05-22", quantity=(5, "MW"), country="SE",
   sector="glass packaging",
   note="One of three deals in one release. East of Gothenburg; 2.1 t/day of hydrogen "
        "replacing part of the natural gas at the works. First industrial-scale green "
-       "hydrogen in glass manufacture.")
+       "hydrogen in glass manufacture.",
+  site="Limmared")
 E("plug-power", "Hydro Havrand", "equipment_order", "supplier", "supplier_press",
   PF(2023), "2023-05-22", quantity=(5, "MW"), country="NO", sector="aluminium recycling",
   note="A unit of Norsk Hydro ASA. Second of the three deals in the 22 May release.")
@@ -724,10 +763,12 @@ E("plug-power", "an undisclosed customer in Europe", "equipment_order", "supplie
 E("plug-power", "Castellón Green Hydrogen S.L. (bp and Iberdrola joint venture)",
   "equipment_order", "supplier", "supplier_press", PF(2024), "2024-09-18",
   quantity=(25, "MW"), country="ES", sector="refining",
-  note="Five 5 MW units to decarbonise bp's Castellón refinery, Valencia.")
+  note="Five 5 MW units to decarbonise bp's Castellón refinery, Valencia.",
+  site="Castellón refinery")
 E("plug-power", "Galp", "equipment_order", "supplier", "supplier_press",
   PF(2025), "2025-10-01", quantity=(100, "MW"), country="PT", sector="refining",
-  note="First 10 MW module delivered of ten for the Sines refinery.")
+  note="First 10 MW module delivered of ten for the Sines refinery.",
+  site="Sines refinery")
 E("plug-power", "Gasunie and STORAG ETZEL (H2CAST)", "equipment_order", "supplier",
   "supplier_press", PF(2025), "2025-10-21", quantity=(44.5, "tonnes of hydrogen"),
   country="DE", sector="gas storage",
@@ -743,14 +784,16 @@ E("plug-power", "Carlton Power", "framework_agreement", "supplier", "supplier_pr
   note="Equipment supply and LTSA for three UK projects, SUBJECT TO FID: Barrow-in-"
        "Furness 30 MW (offtake to Kimberly-Clark), Trafford 15 MW, Langage 10 MW. "
        "Kimberly-Clark also appears as ITM Power's Northfleet offtaker — the same "
-       "offtaker behind two different electrolyser suppliers.")
+       "offtaker behind two different electrolyser suppliers.",
+  site="Barrow-in-Furness Trafford Langage")
 E("plug-power", "Hy2gen", "framework_agreement", "supplier", "supplier_press",
   PF(2025), "2025-12-04", quantity=(5, "MW"), country="FR", sector="e-fuels",
   note="Letter of intent for the Sunrhyse project, Provence-Alpes-Côte d'Azur.")
 E("plug-power", "Galp", "equipment_order", "supplier", "supplier_press",
   PF(2026), "2026-01-23", quantity=(100, "MW"), country="PT", sector="refining",
   note="INSTALLATION COMPLETE — all ten arrays at Sines. Same order as 2025-10-01, "
-       "third document if the 2023-07-13 anonymous edge is the same project.")
+       "third document if the 2023-07-13 anonymous edge is the same project.",
+  site="Sines refinery")
 E("plug-power", "Hynetwork", "co2_transport", "supplier", "supplier_press",
   PF(2026), "2026-02-04", quantity=(32, "tonnes of hydrogen"), country="NL",
   sector="hydrogen network",
@@ -761,7 +804,15 @@ E("plug-power", "European Energy", "equipment_order", "supplier", "supplier_pres
   PF(2026), "2026-06-24", quantity=(5, "MW"), country="DK", sector="e-fuels",
   note="Commissioning complete at the Måde Power-to-X facility, Esbjerg. European "
        "Energy is also Siemens Energy's Kassø customer — one owner, two suppliers on "
-       "this perimeter.")
+       "this perimeter.",
+  site="Måde Esbjerg",
+  refuse_match="The site alias 'Måde' resolves to hoest-ptx-esbjerg, whose plant "
+               "field is literally 'Måde, Esbjerg' — but that row's company is "
+               "Copenhagen Infrastructure Partners and this release says the facility "
+               "is 'developed and operated by European Energy'. One project whose "
+               "ownership two speakers state differently, or two plants in one place; "
+               "the sweep cannot tell and does not link. Logged as a speaker "
+               "disagreement in the docket.")
 
 # --- John Cockerill -----------------------------------------------------------
 # The two news sitemaps list 1,060 items; 118 whose slug mentions hydrogen,
@@ -807,7 +858,8 @@ E("john-cockerill", "Hyoffwind (Fluxys and Virya Energy) with BESIX",
       "installation-de-production-dhydrogene-vert-a-zeebruges/", "2022-02-15", quantity=None,
   country="BE", sector="gas network / renewables",
   note="Agreement to design and build a green hydrogen production unit at Zeebrugge. "
-       "The capacity (25 MW) is stated in the later releases, not this one.")
+       "The capacity (25 MW) is stated in the later releases, not this one.",
+  site="Zeebrugge")
 E("john-cockerill", "Technip Energies", "framework_agreement", "supplier",
   "supplier_press",
   J + "john-cockerill-and-technip-energies-create-rely-integrated-green-hydrogen-"
@@ -836,12 +888,14 @@ E("john-cockerill", "Virya Energy, HyoffGreen and Messer (Hyoffwind)", "equipmen
   J + "hyoffwind-25mw-green-hydrogen-production-plant-in-belgium-with-besix/", "2024-07-25", quantity=(25, "MW"), country="BE",
   sector="renewables / industrial gases",
   note="Financial close on Belgium's first renewable hydrogen production plant, "
-       "Zeebrugge. Messer appears here as an owner and at Siemens Energy as a customer.")
+       "Zeebrugge. Messer appears here as an owner and at Siemens Energy as a customer.",
+  site="Zeebrugge")
 E("john-cockerill", "Hyoffwind", "equipment_order", "supplier", "supplier_press",
   J + "john-cockerill-has-installed-four-electrolyzers-at-the-hyoffwind-site/",
   "2026-04-29", quantity=(25, "MW"), country="BE", sector="renewables",
   note="INSTALLATION: four electrolysers, 25 MW physically in place. Same plant, third "
-       "document.")
+       "document.",
+  site="Zeebrugge")
 E("john-cockerill", "an undisclosed customer (a green hydrogen project in the "
   "Netherlands)", "equipment_order", "supplier", "supplier_press",
   J + "hydrogen-electrolyseur-belfort-prod-aspach/", "2026-07-13", quantity=(40, "MW"),

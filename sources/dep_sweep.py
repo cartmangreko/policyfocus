@@ -97,9 +97,14 @@ EUROPE = {
     "ME","MK","AL","XK","UA","IS",
 }
 
-# Owner-side sectors read on this branch. Hydrogen ("clean") is excluded until #54
-# merges, per the brief.
-OWNER_SECTORS = ("cement", "steel", "ccs", "batsol")
+# Owner-side sectors read on this branch. Hydrogen ("clean") joined the register
+# when #54 merged on 11 September 2026 and is in: all 66 rows, none held back.
+#
+# THE THREE "unreadable, queued" ITEMS ARE NOT ROWS. They are benchmark candidates
+# whose duplicate match to a held row is unconfirmed, and the class lands on the
+# candidate side in the follow-up to #54. Nothing on the row side is withheld from
+# this sweep, and shell-holland-hydrogen-1 takes supplier edges like any other row.
+OWNER_SECTORS = ("cement", "steel", "ccs", "batsol", "clean")
 
 
 def strip(s: str) -> str:
@@ -116,47 +121,85 @@ def register_rows() -> list[dict]:
     return [p for p in P if p["sector"] in OWNER_SECTORS]
 
 
-def aliases(row: dict) -> list[str]:
-    """Every string a supplier might use to name this customer or its site."""
-    out = {row["company"], row.get("plant") or "", row.get("name") or ""}
-    # A joint venture is named by its parents as often as by itself.
-    for part in re.split(r"\s*(?:,| and | & |/)\s*", row["company"]):
-        part = re.sub(r"\((.*?)\)", r"\1", part).strip()
-        if len(part) > 3:
-            out.add(part)
+def aliases(row: dict) -> dict[str, str]:
+    """Every string a supplier might use for this row, and WHICH KIND it is.
+
+    Two kinds, and the distinction is the whole of the matcher's honesty:
+
+      site     the works, the project, the place — "Boden", "GET H2 Nukleus",
+               "Tweede Maasvlakte". Naming one of these identifies a row.
+      company  the owner — "Uniper", "Shell", "RWE". Naming one of these
+               identifies a COMPANY, and a company is not a site.
+
+    THE FIRST VERSION OF THIS DID NOT MAKE THE DISTINCTION AND IT WAS WRONG IN
+    PUBLIC. It matched ITM Power's Uniper Humber H2ub contract — a project in the
+    United Kingdom — onto `uniper-h2maasvlakte` in Rotterdam, because "Uniper"
+    resolved to exactly one row and a one-candidate match looked unambiguous. It
+    matched Sunfire's Bad Lauchstädt order onto the same Rotterdam row, and
+    Sunfire's Ren-Gas order at Tampere onto Ren-Gas's Pori site. Ambiguity between
+    two rows was caught; a confident match to the wrong single row was not, which
+    is the worse failure, because it produces a link a reader would believe.
+
+    It also read the shareholders out of a joint venture's name — "Northern Lights
+    JV DA (Equinor, Shell, TotalEnergies)" made "Shell" an alias of the CO2 store,
+    so every Shell electrolyser contract in Europe pointed at a reservoir under the
+    North Sea. A parenthetical is kept only when it holds no comma, which is what
+    an alternate name looks like and what a shareholder list does not.
+    """
+    out: dict[str, str] = {}
+
+    def add(text: str, kind: str) -> None:
+        a = norm(text)
+        if len(a) > 3 and (a not in out or kind == "site"):
+            out[a] = kind
+
+    for field in ("plant", "name"):
+        if row.get(field):
+            add(row[field], "site")
+            # "Tweede Maasvlakte, Rotterdam" is two site names, not one.
+            for part in re.split(r"\s*[,/]\s*", row[field]):
+                add(part, "site")
+
+    add(row["company"], "company")
     m = re.search(r"\((.*?)\)", row["company"])
-    if m:
-        out.add(m.group(1))
-    return sorted({norm(a) for a in out if a and len(norm(a)) > 3})
+    if m and "," not in m.group(1):
+        add(m.group(1), "company")
+        add(re.sub(r"\s*\(.*?\)", "", row["company"]), "company")
+    for owner in row.get("owners") or []:
+        if isinstance(owner, dict) and owner.get("name"):
+            add(owner["name"], "company")
+    return out
 
 
-def register_index() -> dict[str, list[str]]:
-    """alias -> the project ids it could mean.
+def register_index() -> dict[str, tuple[list[str], str]]:
+    """alias -> (the project ids it could mean, kind).
 
     A LIST AND NOT A WINNER. "Automotive Cells Company" names three rows in this
     register and "AESC" names three more; a matcher that resolved either to one id
-    would be inventing the site the supplier did not name. An alias that resolves
-    to several ids is ambiguous, and an ambiguous match makes an edge with
-    project_id null and a note, never a guess -- see DECISION D-2.
+    would be inventing the site the supplier did not name.
     """
-    idx: dict[str, list[str]] = {}
+    idx: dict[str, tuple[list[str], str]] = {}
     for row in register_rows():
-        for a in aliases(row):
-            idx.setdefault(a, [])
-            if row["id"] not in idx[a]:
-                idx[a].append(row["id"])
+        for a, kind in aliases(row).items():
+            ids, k = idx.get(a, ([], kind))
+            if row["id"] not in ids:
+                ids = ids + [row["id"]]
+            idx[a] = (ids, "site" if "site" in (k, kind) else "company")
     return idx
 
 
-def matches(text: str, idx: dict[str, list[str]]) -> list[tuple[str, list[str]]]:
-    """(alias, candidate project ids) for every register alias appearing in the
-    page. Aliases contained in a longer matched alias are dropped: a page naming
+def matches(text: str, idx: dict[str, tuple[list[str], str]]
+            ) -> list[tuple[str, list[str], str]]:
+    """(alias, candidate project ids, kind) for every register alias in the text.
+
+    Aliases contained in a longer matched alias are dropped: a page naming
     "Billy-Berclau/Douvrin" has also matched "Douvrin", and reporting both would
-    count one mention twice."""
+    count one mention twice.
+    """
     t = f" {norm(text)} "
-    hit = [(a, ids) for a, ids in idx.items() if f" {a} " in t]
-    return sorted((a, ids) for a, ids in hit
-                  if not any(a != b and f" {a} " in f" {b} " for b, _ in hit))
+    hit = [(a, ids, kind) for a, (ids, kind) in idx.items() if f" {a} " in t]
+    return sorted((a, ids, kind) for a, ids, kind in hit
+                  if not any(a != b and f" {a} " in f" {b} " for b, _, _ in hit))
 
 
 # --- the title filter --------------------------------------------------------

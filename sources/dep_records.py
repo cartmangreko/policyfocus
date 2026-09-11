@@ -37,24 +37,67 @@ def _idx() -> dict[str, list[str]]:
 
 
 def resolve(customer: str, site: str = "") -> tuple[str | None, str | None]:
-    """(project_id, ambiguity note) for a customer name as the supplier stated it."""
+    """(project_id, note) for a customer and site as the supplier stated them.
+
+    A ROW IS IDENTIFIED BY A SITE, AND A SITE NAME IS NOT ENOUGH ON ITS OWN. Both
+    halves of that were learned the hard way:
+
+      * Matching on the company alone linked ITM Power's Uniper contract for the
+        Humber, in England, to Uniper's Maasvlakte row in Rotterdam — the only
+        Uniper row in the register, and therefore an unambiguous-looking match to
+        the wrong site.
+      * Matching on the site alone linked Nel's HyCC order at DELFZIJL to
+        `lhyfe-delfzijl`, because two different companies are building two
+        different plants in the same Dutch town and the town is the site alias of
+        one of them.
+
+    So the site says which row and the company is asked to agree with it. Where
+    they disagree, or where the site is ambiguous and the company cannot break the
+    tie, the edge keeps project_id null and the note says what was seen. Nothing
+    here creates a row and nothing here guesses — DECISION D-2.
+    """
     hits = S.matches(f"{customer} {site}", _idx())
-    ids = sorted({i for _, cand in hits for i in cand})
-    if not ids:
-        return None, None
-    if len(ids) == 1:
-        return ids[0], None
-    return None, ("names " + ", ".join(a for a, _ in hits) +
-                  ", which in this register could be " + " or ".join(ids) +
-                  "; the source does not say which — DECISION D-2")
+    sites = sorted({i for _, cand, k in hits if k == "site" for i in cand})
+    firms = sorted({i for _, cand, k in hits if k == "company" for i in cand})
+    both = [i for i in sites if i in firms]
+
+    if len(both) == 1:
+        return both[0], None
+    if len(sites) == 1 and not firms:
+        return sites[0], None
+    if len(sites) == 1 and firms:
+        return None, (f"the site named matches {sites[0]} while the company named "
+                      f"matches {', '.join(firms)} — two different rows, so the "
+                      "source has not identified one. DECISION D-2")
+    if len(sites) > 1:
+        named = ", ".join(a for a, _, k in hits if k == "site")
+        return None, (f"names {named}, which in this register could be " +
+                      " or ".join(sites) + "; the source does not say which — "
+                      "DECISION D-2")
+    if firms:
+        named = ", ".join(a for a, _, k in hits if k == "company")
+        return None, (f"names the company {named} but no site this register holds; "
+                      "its rows are " + ", ".join(firms) +
+                      ". A company is not a site — DECISION D-2")
+    return None, None
 
 
 def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
              source_type: str, url: str, date: str, date_precision: str = "day",
              quantity: tuple[float, str] | None = None, project_id: str | None = None,
              site: str = "", note: str | None = None, country: str | None = None,
-             sector: str | None = None) -> dict:
-    pid, amb = (project_id, None) if project_id else resolve(customer, site)
+             sector: str | None = None, refuse_match: str | None = None) -> dict:
+    # `refuse_match` is the reader overruling the matcher, with the reason. It
+    # exists because the matcher can be confidently wrong in a way no rule fixes:
+    # Plug Power's release puts European Energy's Måde PtX plant at Måde, Esbjerg,
+    # and the register's only Måde row is Copenhagen Infrastructure Partners'
+    # HØST PtX. Either they are one project whose ownership two speakers state
+    # differently, or they are two plants in one place. A matcher cannot tell, and
+    # a link that might be either is worse than no link.
+    if refuse_match:
+        pid, amb = None, refuse_match
+    else:
+        pid, amb = (project_id, None) if project_id else resolve(customer, site)
     if amb:
         note = f"{note}. {amb}" if note else amb
     e = {"id": f"e{len(EDGES) + 1:04d}",
