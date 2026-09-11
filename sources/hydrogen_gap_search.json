@@ -28,7 +28,19 @@
   "D42 in sources/hydrogen_docket.md.",
   "",
   "PLACE NAMES UNDER `place` ARE REVERSE-GEOCODED FROM THE BENCHMARK'S COORDINATE AND ARE A",
-  "DISCOVERY AID, NOT A COORDINATE SOURCE. Nothing here may become a position on a row."
+  "DISCOVERY AID, NOT A COORDINATE SOURCE. Nothing here may become a position on a row.",
+  "",
+  "PER-ENTRY DETAIL ON THE TWO RESIDUAL CLASSES, added 11 September 2026.",
+  "",
+  "`admission` on an entry that named a site and was not admitted: which leg failed,",
+  "and which source named the site, with its SPEAKER. Brief 10 scores rung 1 for every",
+  "entry on the external list, admitted or not, and this is where rung 1 is read for",
+  "these forty-seven. The commonest failure by a distance is that the source names the",
+  "place and states no megawatts.",
+  "",
+  "`looked_in_order` on an entry where nothing named a site: the sequence somebody",
+  "tried, not a count. The next person starts after the last line rather than at the",
+  "beginning. Machine domain guesses are excluded — they were never a search (D42)."
  ],
  "searched": "2026-09-10",
  "entries": [
@@ -142,7 +154,57 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "CRI's own project list carries China, Iceland and the EU projects and names no Norwegian site. The Norwegian plant is reported at Finnfjord with Statkraft; CRI's own pages do not say so."
+   "outcome_note": "CRI's own project list carries China, Iceland and the EU projects and names no Norwegian site. The Norwegian plant is reported at Finnfjord with Statkraft; CRI's own pages do not say so.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "crinorway.com",
+     "source_type": "company",
+     "outcome": "domain does not resolve"
+    },
+    {
+     "n": 6,
+     "domain": "crinorway.eu",
+     "source_type": "company",
+     "outcome": "domain does not resolve"
+    },
+    {
+     "n": 7,
+     "domain": "crinorway.no",
+     "source_type": "company",
+     "outcome": "domain does not resolve"
+    },
+    {
+     "n": 8,
+     "domain": "carbonrecycling.com",
+     "source_type": "company",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "508",
@@ -600,7 +662,57 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Green Crane is an Enagas-led corridor; its published western route lands at La Robla. No owner or permit source found for a Basque hub at Mallabia."
+   "outcome_note": "Green Crane is an Enagas-led corridor; its published western route lands at La Robla. No owner or permit source found for a Basque hub at Mallabia.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "crane.com",
+     "source_type": "company",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 6,
+     "domain": "crane.eu",
+     "source_type": "company",
+     "outcome": "ERR <urlopen error [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:992)>"
+    },
+    {
+     "n": 7,
+     "domain": "crane.es",
+     "source_type": "company",
+     "outcome": "403"
+    },
+    {
+     "n": 8,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "607",
@@ -712,7 +824,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Naturgy's own release: the plant 'se ubicara en los terrenos de la antigua central termica de Naturgy' at La Robla, 'hasta 280 MW', commissioning 2026."
+   "outcome_note": "Naturgy's own release: the plant 'se ubicara en los terrenos de la antigua central termica de Naturgy' at La Robla, 'hasta 280 MW', commissioning 2026.",
+   "admission": {
+    "failed_leg": "same works as a row here, reference not recorded",
+    "note": "Naturgy and Enagas Renovable at the old La Robla power station is la-robla-green on this file, at 200 MW where the benchmark says 280. One works, and nobody has written the reference onto the row.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "naturgy.com",
+     "source_url": "https://www.naturgy.com/notas-de-prensa/naturgy-y-enagas-renovable-presentan-en-la-robla-la-futura-planta-de-hidrogeno-renovable-cuya-capacidad-de-produccion-se-multiplicara-hasta-280-mw/"
+    }
+   }
   },
   {
    "ref": "819",
@@ -936,7 +1058,57 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "No owner or permit source names a Nemo hydrogen project in Greece. Greek 100 MW electrolysers that are named belong to Hellenic Hydrogen in Western Macedonia and to H2Crete, neither of them this."
+   "outcome_note": "No owner or permit source names a Nemo hydrogen project in Greece. Greek 100 MW electrolysers that are named belong to Hellenic Hydrogen in Western Macedonia and to H2Crete, neither of them this.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "nemo.com",
+     "source_type": "company",
+     "outcome": "ERR <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.nemo.com'. (_ssl.c:992)>"
+    },
+    {
+     "n": 6,
+     "domain": "nemo.eu",
+     "source_type": "company",
+     "outcome": "names project and place"
+    },
+    {
+     "n": 7,
+     "domain": "nemo.gr",
+     "source_type": "company",
+     "outcome": "names project and place"
+    },
+    {
+     "n": 8,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "844",
@@ -1273,7 +1445,57 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "RWE's own NortH2 page names Eemshaven for the first electrolysis and says of the later phase only that it 'may be further expanded with large-scale electrolysis at sea'. The owner names no site for phase 2."
+   "outcome_note": "RWE's own NortH2 page names Eemshaven for the first electrolysis and says of the later phase only that it 'may be further expanded with large-scale electrolysis at sea'. The owner names no site for phase 2.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "north2.com",
+     "source_type": "company",
+     "outcome": "domain does not resolve"
+    },
+    {
+     "n": 6,
+     "domain": "north2.eu",
+     "source_type": "company",
+     "outcome": "names project only"
+    },
+    {
+     "n": 7,
+     "domain": "north2.nl",
+     "source_type": "company",
+     "outcome": "ERR <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.north2.nl'. (_ssl.c:992)>"
+    },
+    {
+     "n": 8,
+     "domain": "rwe.com",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "906",
@@ -1497,7 +1719,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The same Endesa release names Huelva among its peninsular projects. It gives no separate megawatt figure for Huelva - the electrolysers other than As Pontes are quoted together at 215 MW - so the site is named and the size is not."
+   "outcome_note": "The same Endesa release names Huelva among its peninsular projects. It gives no separate megawatt figure for Huelva - the electrolysers other than As Pontes are quoted together at 215 MW - so the site is named and the size is not.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Endesa names Huelva and gives no megawatts for it; its release quotes the non-As-Pontes electrolysers together at 215 MW.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "endesa.com",
+     "source_url": "https://www.endesa.com/en/press/press-room/news/energy-transition/endesa-studies-developing-23-green-hydrogen-projects-spain"
+    }
+   }
   },
   {
    "ref": "945",
@@ -1722,7 +1954,17 @@
    ],
    "outcome_machine_rejected": "owner or permit source names the site",
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Saipem's own release names 'three green hydrogen production plants in Brindisi, Taranto and Cerignola (FG)' for 'a combined electrolysis capacity of 220 MW'. Taranto is named; its own share of the 220 MW is not."
+   "outcome_note": "Saipem's own release names 'three green hydrogen production plants in Brindisi, Taranto and Cerignola (FG)' for 'a combined electrolysis capacity of 220 MW'. Taranto is named; its own share of the 220 MW is not.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Saipem gives 220 MW across three plants and does not say how much of it is Taranto's.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "saipem.com",
+     "source_url": "https://www.saipem.com/en/media/press-releases/2022-09-08/edison-and-saipem-join-together-special-purpose-vehicle-implement"
+    }
+   }
   },
   {
    "ref": "1048",
@@ -1958,7 +2200,45 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "Gasunie's own release names 'potential sites ... in the vicinity of the TenneT substations in Diele and Conneforde' at 100 MW. Two candidates and no chosen one is not a site, and the owner names no third phase at all."
+   "outcome_note": "Gasunie's own release names 'potential sites ... in the vicinity of the TenneT substations in Diele and Conneforde' at 100 MW. Two candidates and no chosen one is not a site, and the owner names no third phase at all.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "element-eins.eu",
+     "source_type": "company",
+     "outcome": "domain does not resolve"
+    },
+    {
+     "n": 6,
+     "domain": "gasunie.de",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "1119",
@@ -2071,7 +2351,17 @@
    ],
    "outcome_machine_rejected": "source unreadable",
    "outcome": "owner or permit source names the site",
-   "outcome_note": "RWE's own FUREC page names the works: waste dried 'in Zevenellen', pellets 'transported to the plant at the Chemelot site'. It also settles a perimeter question - FUREC converts waste, it is not electrolysis, so it is outside this register's hydrogen perimeter whatever the benchmark says."
+   "outcome_note": "RWE's own FUREC page names the works: waste dried 'in Zevenellen', pellets 'transported to the plant at the Chemelot site'. It also settles a perimeter question - FUREC converts waste, it is not electrolysis, so it is outside this register's hydrogen perimeter whatever the benchmark says.",
+   "admission": {
+    "failed_leg": "not electrolysis",
+    "note": "RWE's own page describes waste conversion, not electrolysis. Outside the perimeter whatever the benchmark says.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "rwe.com",
+     "source_url": "https://www.rwe.com/en/research-and-development/hydrogen-projects/furec/"
+    }
+   }
   },
   {
    "ref": "1191",
@@ -2184,7 +2474,39 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "AquaVentus's own site names only sea areas and a pipeline - 'Demonstrator electrolyser - 1 to 5 MW at sea', 'First large-scale offshore hydrogen production - 1,000 MW on 102 km2'. No onshore works is named, and a 102 square kilometre sea area is not a site this register can place."
+   "outcome_note": "AquaVentus's own site names only sea areas and a pipeline - 'Demonstrator electrolyser - 1 to 5 MW at sea', 'First large-scale offshore hydrogen production - 1,000 MW on 102 km2'. No onshore works is named, and a 102 square kilometre sea area is not a site this register can place.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "aquaventus.org",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "1221",
@@ -2749,7 +3071,17 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "owner or permit source names the site",
-   "outcome_note": "GET H2's own page: 'the construction of an electrolysis plant at the site of the Emsland gas-fired power station in Lingen (Ems), Emsland district, Lower Saxony', 'three stages with a total capacity of 300 megawatts'."
+   "outcome_note": "GET H2's own page: 'the construction of an electrolysis plant at the site of the Emsland gas-fired power station in Lingen (Ems), Emsland district, Lower Saxony', 'three stages with a total capacity of 300 megawatts'.",
+   "admission": {
+    "failed_leg": "a phase the owner does not publish",
+    "note": "GET H2's page publishes 300 MW in three stages at the Emsland power station, which is rwe-get-h2-nukleus-lingen here. The benchmark's 1,500 MW 'Wasserstoffpark Lingen' is a wider programme no owner source sizes.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "get-h2.de",
+     "source_url": "https://www.get-h2.de/en/implementation/"
+    }
+   }
   },
   {
    "ref": "1477",
@@ -3088,7 +3420,39 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "What answers to Aalborg and CCU is a methanol refuelling and infrastructure programme run through a regional cluster. No owner or permit source names an electrolyser works of this size at Aalborg."
+   "outcome_note": "What answers to Aalborg and CCU is a methanol refuelling and infrastructure programme run through a regional cluster. No owner or permit source names an electrolyser works of this size at Aalborg.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "1505",
@@ -3201,7 +3565,39 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "GreenLab's own page names neither a capacity nor a third phase. What is documented at Skive is GreenHyScale, a 100 MW plant reached through 6 MW and 7.5 MW test modules. No owner source names a 226 MW phase III."
+   "outcome_note": "GreenLab's own page names neither a capacity nor a third phase. What is documented at Skive is GreenHyScale, a 100 MW plant reached through 6 MW and 7.5 MW test modules. No owner source names a 226 MW phase III.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "greenlab.dk",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "1541",
@@ -3314,7 +3710,39 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "What is documented at bp's Castellon refinery is the 25 MW first phase, which has its environmental approval and is in commissioning. Phase 2 exists as a grant: the Valencian government awarded 76 million euros to bp Energia Espana and to a company called Castellon Green Hydrogen Phase 2 S.L. for a plant 'between 60 and 100 megawatts'. That is reported by the Spanish press; no page of bp's or of the Generalitat's was reached."
+   "outcome_note": "What is documented at bp's Castellon refinery is the 25 MW first phase, which has its environmental approval and is in commissioning. Phase 2 exists as a grant: the Valencian government awarded 76 million euros to bp Energia Espana and to a company called Castellon Green Hydrogen Phase 2 S.L. for a plant 'between 60 and 100 megawatts'. That is reported by the Spanish press; no page of bp's or of the Generalitat's was reached.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "1548",
@@ -3427,7 +3855,39 @@
    ],
    "outcome_machine_rejected": "source unreadable",
    "outcome": "searched, none found",
-   "outcome_note": "Enagas's own release on Lacq Hydrogen names no Spanish municipality and no megawatt figure - it speaks of 'solar and electrolysis facilities in Spain'. The benchmark places it at Cuenca; no owner source says so."
+   "outcome_note": "Enagas's own release on Lacq Hydrogen names no Spanish municipality and no megawatt figure - it speaks of 'solar and electrolysis facilities in Spain'. The benchmark places it at Cuenca; no owner source says so.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "enagas.es",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "1549",
@@ -3551,6 +4011,38 @@
      "benchmark_value": "Puebla de Alcocer, Extremadura",
      "note": "Enagas's own release for HyDeal Espana says the production is in northern Spain. Extremadura is in the south-west. The disagreement is at the level of half a country and neither speaker gives a works."
     }
+   ],
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "enagas.es",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
    ]
   },
   {
@@ -3664,7 +4156,17 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The Spanish state gazette carries the water concession: promoter 'Hidroversol Castilla y Leon, S.L. (B06796635)', 'Terminos municipales donde radican las obras: Coreses y Zamora (Zamora)', 'Uso industrial (planta de generacion de hidrogeno verde)'. A permit source, not a company one."
+   "outcome_note": "The Spanish state gazette carries the water concession: promoter 'Hidroversol Castilla y Leon, S.L. (B06796635)', 'Terminos municipales donde radican las obras: Coreses y Zamora (Zamora)', 'Uso industrial (planta de generacion de hidrogeno verde)'. A permit source, not a company one.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "The state gazette's water concession names the works and the promoter and states a water flow, not an electrolyser.",
+    "named_by": {
+     "speaker": "permit",
+     "source_type": "permit",
+     "domain": "boe.es",
+     "source_url": "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2024-32888"
+    }
+   }
   },
   {
    "ref": "1623",
@@ -3890,7 +4392,39 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "HyKero is EDL's e-SAF plant at Boehlen-Lippendorf south of Leipzig. The technology partners' releases carry the place; EDL's own source was not reached, and the figure that is published - about 1,000 t of electrolytic hydrogen a year - is far below the benchmark's 380 MW."
+   "outcome_note": "HyKero is EDL's e-SAF plant at Boehlen-Lippendorf south of Leipzig. The technology partners' releases carry the place; EDL's own source was not reached, and the figure that is published - about 1,000 t of electrolytic hydrogen a year - is far below the benchmark's 380 MW.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "1662",
@@ -4013,6 +4547,38 @@
      "eufabric_value": "Barsebaeck (from the benchmark's own project name)",
      "benchmark_value": "Njurunda, Vasternorrland",
      "note": "About 700 km apart, and the entry does not agree with itself: it is NAMED for a place in Skane and its coordinate falls in Medelpad. No owner source names either."
+    }
+   ],
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names neither"
     }
    ]
   },
@@ -4363,7 +4929,45 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "EDF's own page names no land: the electrolyser is 7.5 MW in its initial phase and 'Future phases will seek to deliver up to 300MW in Teesside before 2030'. Teesside is a district, the phases are not separated, and the benchmark's 104 MW appears nowhere."
+   "outcome_note": "EDF's own page names no land: the electrolyser is 7.5 MW in its initial phase and 'Future phases will seek to deliver up to 300MW in Teesside before 2030'. Teesside is a district, the phases are not separated, and the benchmark's 104 MW appears nowhere.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "edf-re.uk",
+     "source_type": "company",
+     "outcome": "redirect"
+    },
+    {
+     "n": 6,
+     "domain": "edf-powersolutions.uk",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "1816",
@@ -4476,7 +5080,17 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "owner or permit source names the site",
-   "outcome_note": "P2X-Europe's own release: 'The establishment in Navigator's Figueira da Foz site marks a key milestone'. It gives no electrolyser megawatts, only 'several hundred megawatts of new renewable energy capacity'."
+   "outcome_note": "P2X-Europe's own release: 'The establishment in Navigator's Figueira da Foz site marks a key milestone'. It gives no electrolyser megawatts, only 'several hundred megawatts of new renewable energy capacity'.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "P2X-Europe names Figueira da Foz and quotes 'several hundred megawatts of new renewable energy capacity', which is generation.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "p2x-europe.com",
+     "source_url": "https://www.p2x-europe.com/news/detail/the-navigator-company-and-p2x-europe-announce-a-unique-joint-venture-in-portugal-to-produce-green-non-fossil-synthetic-efuels-and-scale-up-power-to-liquid-business/"
+    }
+   }
   },
   {
    "ref": "1826",
@@ -4599,7 +5213,45 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "Burgenland Energie's own release names no municipality: 'Im Burgenland wird der bisher groesste Elektrolyseur Oesterreichs entstehen', and quotes the wind and solar input - 'Aus 300 MW Wind- und Sonnenenergie' - not the electrolyser. Zurndorf is named by the regional press and by the Commission's approval, not by the owner's own page, and no second phase is separated."
+   "outcome_note": "Burgenland Energie's own release names no municipality: 'Im Burgenland wird der bisher groesste Elektrolyseur Oesterreichs entstehen', and quotes the wind and solar input - 'Aus 300 MW Wind- und Sonnenenergie' - not the electrolyser. Zurndorf is named by the regional press and by the Commission's approval, not by the owner's own page, and no second phase is separated.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "hypa.at",
+     "source_type": "company",
+     "outcome": "readable, names neither"
+    },
+    {
+     "n": 6,
+     "domain": "burgenlandenergie.at",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "1843",
@@ -4712,7 +5364,39 @@
    ],
    "outcome_machine_rejected": "source unreadable",
    "outcome": "searched, none found",
-   "outcome_note": "No owner or permit source names a UK hydrogen project called Dylan. The only 300 MW ammonia project that answers is SwitcH2's floating vessel off southern Europe, which is not this."
+   "outcome_note": "No owner or permit source names a UK hydrogen project called Dylan. The only 300 MW ammonia project that answers is SwitcH2's floating vessel off southern Europe, which is not this.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "1866",
@@ -5051,7 +5735,39 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "CIP's own page: 'BrintO is envisaged to be established on the Danish part of Dogger Bank', 'connected to 10 GW of offshore wind'. A sandbank in the North Sea is not a site this register can place, and no landfall works is named."
+   "outcome_note": "CIP's own page: 'BrintO is envisaged to be established on the Danish part of Dogger Bank', 'connected to 10 GW of offshore wind'. A sandbank in the North Sea is not a site this register can place, and no landfall works is named.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "cip.com",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "1881",
@@ -5277,7 +5993,39 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "Nordic Electrofuel's own site names no plant location at all - only an Oslo visiting address - and no electrolyser megawatts. The pilot at Heroya is named by the industrial park and by partners, not by the owner's own pages, and the benchmark's second phase is not there."
+   "outcome_note": "Nordic Electrofuel's own site names no plant location at all - only an Oslo visiting address - and no electrolyser megawatts. The pilot at Heroya is named by the industrial park and by partners, not by the owner's own pages, and the benchmark's second phase is not there.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "nordicelectrofuel.no",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "1969",
@@ -5616,7 +6364,17 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Moeve's own page names the two energy parks - San Roque (Cadiz) and Palos de la Frontera (Huelva) - inside a 2 GW Andalusian valley, with 'an electrolysis capacity of 405 MW in Palos de la Frontera' as the first phase, Onuba. The owner does not cut San Roque into the phases the benchmark carries."
+   "outcome_note": "Moeve's own page names the two energy parks - San Roque (Cadiz) and Palos de la Frontera (Huelva) - inside a 2 GW Andalusian valley, with 'an electrolysis capacity of 405 MW in Palos de la Frontera' as the first phase, Onuba. The owner does not cut San Roque into the phases the benchmark carries.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Moeve publishes 2 GW across the valley and 405 MW at Palos; San Roque carries no figure of its own on the owner's page.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "moeveglobal.com",
+     "source_url": "https://www.moeveglobal.com/en/businesses/commercial-clean-energies/green-hydrogen/green-hydrogen-production-at-moeve"
+    }
+   }
   },
   {
    "ref": "2004",
@@ -5729,7 +6487,17 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Hellenic Hydrogen's own page: 'At the site of the former lignite-fired Amyntaion - Filota Steam Power Plant', 'Initial capacity of 50 MW with the possibility of expansion up to 200 MW'. Environmental terms were approved in May 2025."
+   "outcome_note": "Hellenic Hydrogen's own page: 'At the site of the former lignite-fired Amyntaion - Filota Steam Power Plant', 'Initial capacity of 50 MW with the possibility of expansion up to 200 MW'. Environmental terms were approved in May 2025.",
+   "admission": {
+    "failed_leg": "owner's own figure is below 100 MW",
+    "note": "Hellenic Hydrogen's own page: 'Initial capacity of 50 MW with the possibility of expansion up to 200 MW'. Fifty is the figure the owner states for what is being built.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "hellenic-hydrogen.gr",
+     "source_url": "https://www.hellenic-hydrogen.gr/en/projects/"
+    }
+   }
   },
   {
    "ref": "2015",
@@ -6068,7 +6836,17 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Same Plug Power release names Porvoo and gives output, 'up to 100TPD by 2030', but no electrolyser megawatts for that site."
+   "outcome_note": "Same Plug Power release names Porvoo and gives output, 'up to 100TPD by 2030', but no electrolyser megawatts for that site.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Plug Power gives Porvoo as output, 'up to 100TPD by 2030', and no electrolyser megawatts.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "plugpower.com",
+     "source_url": "https://www.ir.plugpower.com/press-releases/news-details/2023/Plug-Power-Makes-Major-Strategic-Move-into-Finlands-Green-Hydrogen-Economy-with-its-Proven-PEM-Electrolyzer-and-Liquefaction-Technology/default.aspx"
+    }
+   }
   },
   {
    "ref": "2033",
@@ -6294,7 +7072,39 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "Flexens Oy Ab filed for bankruptcy on 27 May 2025 and its domain no longer resolves. There is no owner source left to read: the 300 MW Kokkola plant is named by the Finnish press and by the industrial park, and by nobody who owns it."
+   "outcome_note": "Flexens Oy Ab filed for bankruptcy on 27 May 2025 and its domain no longer resolves. There is no owner source left to read: the 300 MW Kokkola plant is named by the Finnish press and by the industrial park, and by nobody who owns it.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "flexens.com",
+     "source_type": "company",
+     "outcome": "domain does not resolve"
+    }
+   ]
   },
   {
    "ref": "2056",
@@ -6407,7 +7217,17 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Same Moeve page: 'a green hydrogen plant with an electrolysis capacity of 405 MW in Palos de la Frontera (Huelva)', first phase Onuba, 'with an option to expand by 100 MW'. The owner names one plant and one option; the benchmark carries three La Rabida phases."
+   "outcome_note": "Same Moeve page: 'a green hydrogen plant with an electrolysis capacity of 405 MW in Palos de la Frontera (Huelva)', first phase Onuba, 'with an option to expand by 100 MW'. The owner names one plant and one option; the benchmark carries three La Rabida phases.",
+   "admission": {
+    "failed_leg": "a phase the owner does not publish",
+    "note": "Moeve publishes one Palos plant at 405 MW with an option of 100 MW more. The benchmark's second and third La Rabida phases are not the owner's.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "moeveglobal.com",
+     "source_url": "https://www.moeveglobal.com/en/businesses/commercial-clean-energies/green-hydrogen/green-hydrogen-production-at-moeve"
+    }
+   }
   },
   {
    "ref": "2058",
@@ -6633,7 +7453,39 @@
    ],
    "outcome_machine_rejected": "searched, none found",
    "outcome": "searched, none found",
-   "outcome_note": "HyMed is a floating wind and hydrogen project in Italian ultra-deep water whose promoters say the location has not been revealed. No site to name, and nobody claiming to know it."
+   "outcome_note": "HyMed is a floating wind and hydrogen project in Italian ultra-deep water whose promoters say the location has not been revealed. No site to name, and nobody claiming to know it.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "2117",
@@ -6935,7 +7787,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Cartagena city council's own page names 'la nueva planta de hidrogeno verde que Repsol y Enagas Renovable construiran en el complejo industrial de Escombreras' with 'un electrolizador de 100 megavatios'. The benchmark calls the row Cobra Cartagena; the promoter on the permit is Cartagena Hydrogen Network (Repsol and Enagas Renovable), not Cobra."
+   "outcome_note": "Cartagena city council's own page names 'la nueva planta de hidrogeno verde que Repsol y Enagas Renovable construiran en el complejo industrial de Escombreras' with 'un electrolizador de 100 megavatios'. The benchmark calls the row Cobra Cartagena; the promoter on the permit is Cartagena Hydrogen Network (Repsol and Enagas Renovable), not Cobra.",
+   "admission": {
+    "failed_leg": "same works as a row here, reference not recorded",
+    "note": "The city council names Repsol and Enagas Renovable at Escombreras with a 100 MW electrolyser. repsol-cartagena is on this file at 100 MW. The benchmark calls the row Cobra Cartagena, which is a third company.",
+    "named_by": {
+     "speaker": "permit",
+     "source_type": "permit",
+     "domain": "cartagena.es",
+     "source_url": "https://www.cartagena.es/detalle_noticias.asp?id=84902"
+    }
+   }
   },
   {
    "ref": "2149",
@@ -7391,7 +8253,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "What was reached is a hub site reprinting the Almerian press, which places Nascar at the paraje of Los Retamares and names Innde CETAER as promoter but gives no electrolyser megawatts. A reprint is not the owner speaking, and no owner page was found."
+   "outcome_note": "What was reached is a hub site reprinting the Almerian press, which places Nascar at the paraje of Los Retamares and names Innde CETAER as promoter but gives no electrolyser megawatts. A reprint is not the owner speaking, and no owner page was found.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "cetaer.com",
+     "source_type": "aggregator",
+     "outcome": "readable, press reprint"
+    }
+   ]
   },
   {
    "ref": "2193",
@@ -7467,7 +8361,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "EWE's own release: 'EWE is building a 320-megawatt hydrogen production plant in Emden, East Frisia', construction started, hydrogen from end 2027. The owner names the town, not the land, and publishes no second phase - the benchmark's 190 MW phase 2 is not there."
+   "outcome_note": "EWE's own release: 'EWE is building a 320-megawatt hydrogen production plant in Emden, East Frisia', construction started, hydrogen from end 2027. The owner names the town, not the land, and publishes no second phase - the benchmark's 190 MW phase 2 is not there.",
+   "admission": {
+    "failed_leg": "a phase the owner does not publish",
+    "note": "EWE publishes one 320 MW plant at Emden, which is ewe-emden-electrolysis here. The benchmark's 190 MW phase 2 is not on the owner's page.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "ewe.com",
+     "source_url": "https://www.ewe.com/en/media-center/press-releases/2025/11/official-start-of-construction-of-320-megawatt-generation-plant-in-emdenewe-ag"
+    }
+   }
   },
   {
    "ref": "2211",
@@ -7543,7 +8447,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "OX2's own release places Neptunus 'in the Swedish economic zone, about 50 kilometers of the coast of Blekinge' at 1.9 GW installed, and names no place for the conversion plant. An economic zone is not a site."
+   "outcome_note": "OX2's own release places Neptunus 'in the Swedish economic zone, about 50 kilometers of the coast of Blekinge' at 1.9 GW installed, and names no place for the conversion plant. An economic zone is not a site.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "ox2.com",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "2214",
@@ -7781,7 +8717,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The project's own site: 'located on the coast of the Nordgulen fjord, approximately 8 kilometres west of Svelgen in Bremanger Municipality in western Norway'. It gives ammonia output, '+225,000 tons per annum', and no electrolyser megawatts."
+   "outcome_note": "The project's own site: 'located on the coast of the Nordgulen fjord, approximately 8 kilometres west of Svelgen in Bremanger Municipality in western Norway'. It gives ammonia output, '+225,000 tons per annum', and no electrolyser megawatts.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Fortescue's project site gives ammonia tonnage and no electrolyser megawatts.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "holmanesetproject.no",
+     "source_url": "https://holmanesetproject.no/en"
+    }
+   }
   },
   {
    "ref": "2227",
@@ -8085,7 +9031,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "EDF's own release names Saint-Pierre-la-Cour only as the source of the CO2 - 'the capture of biogenic CO2 of its cement plant located in Saint-Pierre-La-Cour in Mayenne' - and says of the plant itself only that 'The production of hydrogen and synthetic fuels would take place in Loire-Atlantique'. A departement is not a site, and the benchmark has put the electrolyser at the cement works."
+   "outcome_note": "EDF's own release names Saint-Pierre-la-Cour only as the source of the CO2 - 'the capture of biogenic CO2 of its cement plant located in Saint-Pierre-La-Cour in Mayenne' - and says of the plant itself only that 'The production of hydrogen and synthetic fuels would take place in Loire-Atlantique'. A departement is not a site, and the benchmark has put the electrolyser at the cement works.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "edf.fr",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "2324",
@@ -8161,7 +9139,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "No owner or permit source names an electrolyser 'with network related function' in Apulia. What is documented there is Snam's Brindisi hydrogen valley, up to about 110 MW in later phases, which is a different thing at a different place, and the Puglia Green Hydrogen Valley of ref 965."
+   "outcome_note": "No owner or permit source names an electrolyser 'with network related function' in Apulia. What is documented there is Snam's Brindisi hydrogen valley, up to about 110 MW in later phases, which is a different thing at a different place, and the Puglia Green Hydrogen Valley of ref 965.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "2326",
@@ -8237,7 +9247,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Same for Sicily. The Sicilian electrolyser that is documented is a 1 MW De Nora pilot at Duferco's Giammoro works - four hundred times smaller than the benchmark's 610 MW and in a different province from its coordinate at Sortino."
+   "outcome_note": "Same for Sicily. The Sicilian electrolyser that is documented is a 1 MW De Nora pilot at Duferco's Giammoro works - four hundred times smaller than the benchmark's 610 MW and in a different province from its coordinate at Sortino.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "2409",
@@ -8400,7 +9442,17 @@
      "benchmark_value": "Kokkola",
      "note": "About 200 km apart. CPC Finland's own cluster page puts the Koppo Energia plant at Kristinestad; the benchmark's coordinate falls at Kokkola, where three other projects in this same list also sit."
     }
-   ]
+   ],
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "CPC Finland quotes 460 MW of wind feeding the plant, which is not the electrolyser.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "cpc-finland.com",
+     "source_url": "https://cpc-finland.com/en/projekt/koppoe-cluster/"
+    }
+   }
   },
   {
    "ref": "2427",
@@ -8476,7 +9528,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Green North Energy's own project page names Naantali and nothing else. Kemi appears only in a Business Finland funding story as a place the company will 'examine the feasibility' of repeating the concept."
+   "outcome_note": "Green North Energy's own project page names Naantali and nothing else. Kemi appears only in a Business Finland funding story as a place the company will 'examine the feasibility' of repeating the concept.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "greennorth.energy",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "2430",
@@ -8552,7 +9636,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Ren-Gas's own page: 'The e-methane plant will be located close to the Kymijarvi power plant' at Lahti. The company publishes about 800 MW of electrolysis across its whole portfolio and no figure for Lahti alone."
+   "outcome_note": "Ren-Gas's own page: 'The e-methane plant will be located close to the Kymijarvi power plant' at Lahti. The company publishes about 800 MW of electrolysis across its whole portfolio and no figure for Lahti alone.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Ren-Gas publishes about 800 MW across its whole portfolio and no figure for Lahti alone.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "ren-gas.com",
+     "source_url": "https://ren-gas.com/en/projekti/lahti-2/"
+    }
+   }
   },
   {
    "ref": "2434",
@@ -8704,7 +9798,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Hidroelectrica's hydrogen plan is known through the press and through a tender for a feasibility study: a PV park and an electrolyser of at least 100 MW on land the company owns along the Olt at Hoghiz, Sercaia and Mandra. No owner or permit source was found that names a works, and a consultancy tender is not a project."
+   "outcome_note": "Hidroelectrica's hydrogen plan is known through the press and through a tender for a feasibility study: a PV park and an electrolyser of at least 100 MW on land the company owns along the Olt at Hoghiz, Sercaia and Mandra. No owner or permit source was found that names a works, and a consultancy tender is not a project.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "2499",
@@ -8856,7 +9982,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Vanadis Fuels is TEH2 and Aliceco Energy's e-methanol project in Kokkola Industrial Park, up to 400,000 t/y from 2029, and the Finnish state has committed 27.9 million euros to it. Every account of it is a trade report of the partners' announcement; neither owner's own pages were reached."
+   "outcome_note": "Vanadis Fuels is TEH2 and Aliceco Energy's e-methanol project in Kokkola Industrial Park, up to 400,000 t/y from 2029, and the Finnish state has committed 27.9 million euros to it. Every account of it is a trade report of the partners' announcement; neither owner's own pages were reached.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "2523",
@@ -9388,7 +10546,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Same Moeve page and the same Palos de la Frontera works."
+   "outcome_note": "Same Moeve page and the same Palos de la Frontera works.",
+   "admission": {
+    "failed_leg": "a phase the owner does not publish",
+    "note": "As 2056: the third La Rabida phase is the benchmark's, not Moeve's.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "moeveglobal.com",
+     "source_url": "https://www.moeveglobal.com/en/businesses/commercial-clean-energies/green-hydrogen/green-hydrogen-production-at-moeve"
+    }
+   }
   },
   {
    "ref": "2630",
@@ -9464,7 +10632,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The benchmark's 'Kymijarvi power (Lahti)' is the same works as ref 2430: Ren-Gas's own page places the e-methane plant next to Lahti Energia's Kymijarvi complex. Two benchmark rows, one plant."
+   "outcome_note": "The benchmark's 'Kymijarvi power (Lahti)' is the same works as ref 2430: Ren-Gas's own page places the e-methane plant next to Lahti Energia's Kymijarvi complex. Two benchmark rows, one plant.",
+   "admission": {
+    "failed_leg": "same works as a row here, reference not recorded",
+    "note": "The benchmark carries the Ren-Gas Lahti plant twice, once under the name of the power station it stands beside. Same works as ref 2430.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "ren-gas.com",
+     "source_url": "https://ren-gas.com/en/projekti/lahti-2/"
+    }
+   }
   },
   {
    "ref": "2700",
@@ -9540,7 +10718,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "What exists is a memorandum of understanding between Serbia's mining and energy ministry, Shanghai Fengling Renewables and Serbia Zijin Copper, for 1.5 GW of wind, 500 MW of solar and about 30 kt a year of hydrogen near Bor. No owner or permit source names a works, and a memorandum is not a project."
+   "outcome_note": "What exists is a memorandum of understanding between Serbia's mining and energy ministry, Shanghai Fengling Renewables and Serbia Zijin Copper, for 1.5 GW of wind, 500 MW of solar and about 30 kt a year of hydrogen near Bor. No owner or permit source names a works, and a memorandum is not a project.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "2707",
@@ -9702,7 +10912,45 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Arcadia eFuels's own site lists 'Vordingborg, Denmark, Teesside, United Kingdom and Portland/Corpus Christi, Texas, USA' and names no land on Teesside and no capacity. The 360 MW electrolyser and the Wilton siting are in trade coverage and in a Plug Power announcement."
+   "outcome_note": "Arcadia eFuels's own site lists 'Vordingborg, Denmark, Teesside, United Kingdom and Portland/Corpus Christi, Texas, USA' and names no land on Teesside and no capacity. The 360 MW electrolyser and the Wilton siting are in trade coverage and in a Plug Power announcement.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "backbritishsaf.com",
+     "source_type": "aggregator",
+     "outcome": "404"
+    },
+    {
+     "n": 6,
+     "domain": "arcadiaefuels.com",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "2742",
@@ -9778,7 +11026,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "LH2 Europe's own project page names no Scottish site and no electrolyser megawatts - only 'Initial phase 1; project 100 t/d hydrogen supply from Scotland to Germany'. The benchmark's coordinate falls at Arbirlot in Angus; the hydrogen plant proposed near Arbroath belongs to Protium, a different company."
+   "outcome_note": "LH2 Europe's own project page names no Scottish site and no electrolyser megawatts - only 'Initial phase 1; project 100 t/d hydrogen supply from Scotland to Germany'. The benchmark's coordinate falls at Arbirlot in Angus; the hydrogen plant proposed near Arbroath belongs to Protium, a different company.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "lh2europe.com",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "2766",
@@ -10006,7 +11286,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "H2Carrier's own release names both wind farms - 'Oksefjorden wind farm, is localized at the Skjotningberg/Nordkyn peninsula in the municipalities of Lebesby and Gamvik' and Rubbedalshogda on the Varanger peninsula - at '1,55GW' installed. The electrolysers sit on a vessel: 'The P2XFloater does not require leasing or purchasing of land'. A named place, and no works."
+   "outcome_note": "H2Carrier's own release names both wind farms - 'Oksefjorden wind farm, is localized at the Skjotningberg/Nordkyn peninsula in the municipalities of Lebesby and Gamvik' and Rubbedalshogda on the Varanger peninsula - at '1,55GW' installed. The electrolysers sit on a vessel: 'The P2XFloater does not require leasing or purchasing of land'. A named place, and no works.",
+   "admission": {
+    "failed_leg": "no works to place: the plant is a vessel or a sea area",
+    "note": "H2Carrier's electrolysers sit on a vessel: 'The P2XFloater does not require leasing or purchasing of land'. There is no works to place.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "h2carrier.com",
+     "source_url": "https://www.h2carrier.com/post/h2carrier-to-establish-norway-s-first-integrated-ptx-and-wind-power-project"
+    }
+   }
   },
   {
    "ref": "2863",
@@ -10082,7 +11372,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "MetGreenPort is Hydron's - Grupo Ansasol's - green methanol plant at the Port of Huelva, 200 MW of electrolysis in a first phase, on a concession from the Huelva port authority. It is carried by the Spanish trade and regional press; no page of Hydron's, Ansasol's or the port authority's was reached."
+   "outcome_note": "MetGreenPort is Hydron's - Grupo Ansasol's - green methanol plant at the Port of Huelva, 200 MW of electrolysis in a first phase, on a concession from the Huelva port authority. It is carried by the Spanish trade and regional press; no page of Hydron's, Ansasol's or the port authority's was reached.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "2875",
@@ -10234,7 +11556,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "No owner or permit source names a Siram Veolia hydrogen plant at Termoli. What Italian electrolysers are documented at that scale belong to other companies and other towns."
+   "outcome_note": "No owner or permit source names a Siram Veolia hydrogen plant at Termoli. What Italian electrolysers are documented at that scale belong to other companies and other towns.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "2909",
@@ -10310,7 +11664,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Power2X's own Estonian site: 'Power2X is developing an innovative green methanol production unit in Estonia's Parnu, targeting 500,000 tons/year green methanol starting operations in 2028'. The town is named; the Niidu industrial area and the 300-400 MW electrolyser are reported elsewhere, not by the owner."
+   "outcome_note": "Power2X's own Estonian site: 'Power2X is developing an innovative green methanol production unit in Estonia's Parnu, targeting 500,000 tons/year green methanol starting operations in 2028'. The town is named; the Niidu industrial area and the 300-400 MW electrolyser are reported elsewhere, not by the owner.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Power2X's own Estonian page gives methanol tonnage; the 300-400 MW electrolyser is in trade coverage, not on the owner's page.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "power2x.ee",
+     "source_url": "https://www.power2x.ee/"
+    }
+   }
   },
   {
    "ref": "2957",
@@ -10386,7 +11750,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "IGNIS's own hydrogen page names only the Galician project. Armonia Green Sevilla is named by the European Hydrogen Bank's second auction and by the Andalusian press, which put it in the Torrecuellar industrial polygon; the owner's own pages do not carry it."
+   "outcome_note": "IGNIS's own hydrogen page names only the Galician project. Armonia Green Sevilla is named by the European Hydrogen Bank's second auction and by the Andalusian press, which put it in the Torrecuellar industrial polygon; the owner's own pages do not carry it.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "ignis.es",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "3009",
@@ -10614,7 +12010,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Same IGNIS page: Castellon is absent from it. The Comunitat Valenciana project is reported at 1,425 million euros of investment by the Spanish financial press, with no owner statement naming a works."
+   "outcome_note": "Same IGNIS page: Castellon is absent from it. The Comunitat Valenciana project is reported at 1,425 million euros of investment by the Spanish financial press, with no owner statement naming a works.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "ignis.es",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "3013",
@@ -10690,7 +12118,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Same IGNIS page and the same silence about Castellon. The benchmark carries three Castellon phases; the owner publishes none of them."
+   "outcome_note": "Same IGNIS page and the same silence about Castellon. The benchmark carries three Castellon phases; the owner publishes none of them.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "ignis.es",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "3014",
@@ -10766,7 +12226,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Same IGNIS page and the same silence about Castellon."
+   "outcome_note": "Same IGNIS page and the same silence about Castellon.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "ignis.es",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "3015",
@@ -10918,7 +12410,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Same Moeve page, same San Roque energy park. The owner publishes no second San Roque phase; the benchmark carries two."
+   "outcome_note": "Same Moeve page, same San Roque energy park. The owner publishes no second San Roque phase; the benchmark carries two.",
+   "admission": {
+    "failed_leg": "a phase the owner does not publish",
+    "note": "Moeve publishes no second San Roque phase.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "moeveglobal.com",
+     "source_url": "https://www.moeveglobal.com/en/businesses/commercial-clean-energies/green-hydrogen/green-hydrogen-production-at-moeve"
+    }
+   }
   },
   {
    "ref": "3051",
@@ -10994,7 +12496,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "RWE's own release: 'A feasibility study will also be conducted over the coming months into a 100-megawatt (MW) electrolyser at RWE's Markinch CHP biomass plant.' The works is named, and what is named with it is a study."
+   "outcome_note": "RWE's own release: 'A feasibility study will also be conducted over the coming months into a 100-megawatt (MW) electrolyser at RWE's Markinch CHP biomass plant.' The works is named, and what is named with it is a study.",
+   "admission": {
+    "failed_leg": "a study, not a project",
+    "note": "RWE's release announces 'a feasibility study ... into a 100-megawatt electrolyser'. A study of a project is not a project.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "rwe.com",
+     "source_url": "https://www.rwe.com/en/press/rwe-generation/2022-06-14-rwe-and-sgn-announce-green-hydrogen-partnership-for-domestic-heat-in-scotland/"
+    }
+   }
   },
   {
    "ref": "3053",
@@ -11146,7 +12658,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "RWE's own consultation page: 'RWE's Grangemouth Green Hydrogen Production Facility will be located within the Grangemouth industrial area. Primary access to the site will be from the A905 Wholeflats Road.' It quotes output, 'up to 1.8 tonnes of hydrogen every hour', and no megawatts; the 200 MW figure comes from the company's 2024 announcement."
+   "outcome_note": "RWE's own consultation page: 'RWE's Grangemouth Green Hydrogen Production Facility will be located within the Grangemouth industrial area. Primary access to the site will be from the A905 Wholeflats Road.' It quotes output, 'up to 1.8 tonnes of hydrogen every hour', and no megawatts; the 200 MW figure comes from the company's 2024 announcement.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "RWE's consultation page gives output, 'up to 1.8 tonnes of hydrogen every hour', and no megawatts; the 200 MW is in the 2024 announcement, which was not the page read.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "rwe.com",
+     "source_url": "https://uk.rwe.com/project-proposals/grangemouth-green-hydrogen/"
+    }
+   }
   },
   {
    "ref": "3060",
@@ -11222,7 +12744,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "ERM's Dolphyn is floating production on the water: phases 1 and 2 were Welsh Government studies and what followed was a 10 MW commercial demonstration unit. No owner source names a third phase, and none names a site for 3,900 MW."
+   "outcome_note": "ERM's Dolphyn is floating production on the water: phases 1 and 2 were Welsh Government studies and what followed was a 10 MW commercial demonstration unit. No owner source names a third phase, and none names a site for 3,900 MW.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "3070",
@@ -11298,7 +12852,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Equinor's own release names 'the transformation of the Easington gas terminal' and says the site 'could produce up to 1.2GW of blue hydrogen production and up to 1GW of green hydrogen at Easington', with the first electrolytic system 'operational by early 2029'."
+   "outcome_note": "Equinor's own release names 'the transformation of the Easington gas terminal' and says the site 'could produce up to 1.2GW of blue hydrogen production and up to 1GW of green hydrogen at Easington', with the first electrolytic system 'operational by early 2029'.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Equinor's release says the site 'could produce up to 1GW of green hydrogen', which is a ceiling for a multi-stage programme rather than a plant's rating.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "equinor.com",
+     "source_url": "https://www.equinor.com/news/uk/h2heasingtonhumberhydrogenhublaunch"
+    }
+   }
   },
   {
    "ref": "3076",
@@ -11450,7 +13014,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Veri Energy's own page names the works - 'The 1,000 acre Sullom Voe Terminal provides several major advantages for potential development of a hydrogen project' - and gives no megawatts. The 50 MW start and 300 MW peak are reported by the Scottish government's funding announcement, not by the owner's page."
+   "outcome_note": "Veri Energy's own page names the works - 'The 1,000 acre Sullom Voe Terminal provides several major advantages for potential development of a hydrogen project' - and gives no megawatts. The 50 MW start and 300 MW peak are reported by the Scottish government's funding announcement, not by the owner's page.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Veri Energy's page names the terminal and gives no megawatts; the 50 MW start and 300 MW peak are in the Scottish government's funding announcement.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "verienergy.com",
+     "source_url": "https://verienergy.com/pages/hydrogen"
+    }
+   }
   },
   {
    "ref": "3086",
@@ -11526,7 +13100,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "A Energi's own page: 'I Kvinesdal jobber A Energi med a utrede muligheten for storskala produksjon av gronn ammoniakk.' The municipality is named and the work named with it is a study. No megawatts."
+   "outcome_note": "A Energi's own page: 'I Kvinesdal jobber A Energi med a utrede muligheten for storskala produksjon av gronn ammoniakk.' The municipality is named and the work named with it is a study. No megawatts.",
+   "admission": {
+    "failed_leg": "a study, not a project",
+    "note": "A Energi is 'utrede muligheten' — studying the possibility — and publishes no figure.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "aenergi.no",
+     "source_url": "https://www.aenergi.no/no/fornybar-energi/ammoniakk"
+    }
+   }
   },
   {
    "ref": "3087",
@@ -11602,7 +13186,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Hyperion Renewables' own project list carries six photovoltaic plants and no hydrogen project at all. The Alandroal facility is named in the Portuguese press as one of two Hyperion sites, with Setubal; the owner's own pages do not carry it, and the Setubal project they do describe is 9 MW."
+   "outcome_note": "Hyperion Renewables' own project list carries six photovoltaic plants and no hydrogen project at all. The Alandroal facility is named in the Portuguese press as one of two Hyperion sites, with Setubal; the owner's own pages do not carry it, and the Setubal project they do describe is 9 MW.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "hyperionrenewables.com",
+     "source_type": "company",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "3088",
@@ -11678,7 +13294,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Same Hyperion Renewables page and the same silence. The benchmark carries three Alandroal phases; the owner publishes none."
+   "outcome_note": "Same Hyperion Renewables page and the same silence. The benchmark carries three Alandroal phases; the owner publishes none.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "hyperionrenewables.com",
+     "source_type": "company",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "3091",
@@ -11830,7 +13478,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Green North Energy's own project page: 'We will build the first green hydrogen and ammonia production plant in Naantali, Finland.' No megawatts."
+   "outcome_note": "Green North Energy's own project page: 'We will build the first green hydrogen and ammonia production plant in Naantali, Finland.' No megawatts.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Green North Energy's project page names Naantali and states no capacity.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "greennorth.energy",
+     "source_url": "https://www.greennorth.energy/en/project/"
+    }
+   }
   },
   {
    "ref": "3096",
@@ -11906,7 +13564,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Same Green North Energy page: Pori is absent from it, as Kemi is. Both are places the company has said it will study, not sites it has named."
+   "outcome_note": "Same Green North Energy page: Pori is absent from it, as Kemi is. Both are places the company has said it will study, not sites it has named.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "greennorth.energy",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "3101",
@@ -11982,7 +13672,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Bondalti's own page names the works - 'construction of an infrastructure for the production of green hydrogen in the Estarreja Chemical Complex' - and no capacity. The 40 MW first stage is in the electrolyser purchase, not on this page, and the benchmark's later phases are nowhere."
+   "outcome_note": "Bondalti's own page names the works - 'construction of an infrastructure for the production of green hydrogen in the Estarreja Chemical Complex' - and no capacity. The 40 MW first stage is in the electrolyser purchase, not on this page, and the benchmark's later phases are nowhere.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Bondalti's page names the Estarreja complex and gives an investment, not a rating. The 40 MW first stage is in an equipment contract.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "bondalti.com",
+     "source_url": "https://www.bondalti.com/en/bondalti/media/projeto-de-hidrogenio-aprovado-na-europa"
+    }
+   }
   },
   {
    "ref": "3102",
@@ -12058,7 +13758,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Same Bondalti page and the same Estarreja works. The owner separates no phases at all."
+   "outcome_note": "Same Bondalti page and the same Estarreja works. The owner separates no phases at all.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "As 3101, and the owner separates no phases at all.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "bondalti.com",
+     "source_url": "https://www.bondalti.com/en/bondalti/media/projeto-de-hidrogenio-aprovado-na-europa"
+    }
+   }
   },
   {
    "ref": "3103",
@@ -12134,7 +13844,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Same Bondalti page and the same Estarreja works."
+   "outcome_note": "Same Bondalti page and the same Estarreja works.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "As 3101.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "bondalti.com",
+     "source_url": "https://www.bondalti.com/en/bondalti/media/projeto-de-hidrogenio-aprovado-na-europa"
+    }
+   }
   },
   {
    "ref": "3118",
@@ -12210,7 +13930,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "WinPower's own page: 'With the PtX Sines project, WinPower will install 160 MW for large scale production of green hydrogen.' The benchmark carries the same 160 MW."
+   "outcome_note": "WinPower's own page: 'With the PtX Sines project, WinPower will install 160 MW for large scale production of green hydrogen.' The benchmark carries the same 160 MW.",
+   "admission": {
+    "failed_leg": "same works as a row here, reference not recorded",
+    "note": "WinPower states 160 MW at Sines and the benchmark agrees; this entry is the same project as the row winpower's PtX Sines, whose reference is recorded. Listed here because the search reached it twice.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "winpowersa.com",
+     "source_url": "https://winpowersa.com/winpower-wins-eu-funding-for-hy2infra/"
+    }
+   }
   },
   {
    "ref": "3125",
@@ -12514,7 +14244,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The Liepaja Special Economic Zone authority lists the project on its own estate: 'CIS Liepaja' implementing 'A Hydrogen Production Plant and Terminal: hydrogen production plant by applying renewable energy resources'. The estate is named; no capacity, and the 1,000 MW the benchmark carries is a company claim reported in the Latvian press."
+   "outcome_note": "The Liepaja Special Economic Zone authority lists the project on its own estate: 'CIS Liepaja' implementing 'A Hydrogen Production Plant and Terminal: hydrogen production plant by applying renewable energy resources'. The estate is named; no capacity, and the 1,000 MW the benchmark carries is a company claim reported in the Latvian press.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "The special economic zone lists its tenant and states no capacity; the 1,000 MW is a company claim in the Latvian press.",
+    "named_by": {
+     "speaker": "permit",
+     "source_type": "permit",
+     "domain": "liepaja-sez.lv",
+     "source_url": "https://liepaja-sez.lv/en/home/a-sustainable-industry-hub-is-being-created-in-liepaja"
+    }
+   }
   },
   {
    "ref": "3165",
@@ -12742,7 +14482,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Eternal Power's own release names neither a site nor a capacity. The plant is reported at Dummerstorf in the district of Rostock, 80 MW first and 300 MW second, by the German trade press; the benchmark's coordinate falls at Kavelstorf, the next village, and the company's own pages carry none of it."
+   "outcome_note": "Eternal Power's own release names neither a site nor a capacity. The plant is reported at Dummerstorf in the district of Rostock, 80 MW first and 300 MW second, by the German trade press; the benchmark's coordinate falls at Kavelstorf, the next village, and the company's own pages carry none of it.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "eternal-power.de",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "3213",
@@ -12970,7 +14742,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Norsk e-Fuel's own release places Project Alby 'in the municipality of Ange' in northern Sweden and quotes fuel output, 'a minimum of 80,000 tons of e-Fuel annually', with no electrolyser megawatts. The environmental permit is final."
+   "outcome_note": "Norsk e-Fuel's own release places Project Alby 'in the municipality of Ange' in northern Sweden and quotes fuel output, 'a minimum of 80,000 tons of e-Fuel annually', with no electrolyser megawatts. The environmental permit is final.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Norsk e-Fuel gives fuel output, 'a minimum of 80,000 tons of e-Fuel annually', and no electrolyser megawatts.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "norsk-e-fuel.com",
+     "source_url": "https://www.norsk-e-fuel.com/articles/project-alby"
+    }
+   }
   },
   {
    "ref": "3326",
@@ -13132,7 +14914,45 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "H2APEX's own site carries Lubmin, WAL, HyBit Bremen and Wyhlen and no project called H2ERO. The 100 MW H2ERO at Rostock-Laage is named in the company's IPCEI funding release, which gives the capacity and not the town, and in ENERTRAG's corridor releases, which are a different company's."
+   "outcome_note": "H2APEX's own site carries Lubmin, WAL, HyBit Bremen and Wyhlen and no project called H2ERO. The 100 MW H2ERO at Rostock-Laage is named in the company's IPCEI funding release, which gives the capacity and not the town, and in ENERTRAG's corridor releases, which are a different company's.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "h2apex.com",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    },
+    {
+     "n": 6,
+     "domain": "h2apex.com",
+     "source_type": "company",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "3331",
@@ -13208,7 +15028,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The public consultation file names both communes - e-SAF at Petit-Couronne, biogenic CO2 from Alizay, a 13 km pipeline between them - and the reserved power: 'Une capacite totale de 399 MW a ete reservee aupres de ce dernier'. A permit-process source."
+   "outcome_note": "The public consultation file names both communes - e-SAF at Petit-Couronne, biogenic CO2 from Alizay, a 13 km pipeline between them - and the reserved power: 'Une capacite totale de 399 MW a ete reservee aupres de ce dernier'. A permit-process source.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "The consultation file states 399 MW RESERVED FROM THE GRID, which is a connection and not an electrolyser.",
+    "named_by": {
+     "speaker": "permit",
+     "source_type": "permit",
+     "domain": "concertation-dezir.eu",
+     "source_url": "https://concertation-dezir.eu/description-du-projet/"
+    }
+   }
   },
   {
    "ref": "3351",
@@ -13284,7 +15114,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "The Xunta declared EsuH2 Mjolnir's hydrogen and ammonia plant at As Pontes a priority business initiative, and the Spanish PERTE gave it 15 million euros. Both are reported by the Galician press; no page of the Xunta's or of Universal Kraft's own was reached that names the works, and no electrolyser figure is published anywhere."
+   "outcome_note": "The Xunta declared EsuH2 Mjolnir's hydrogen and ammonia plant at As Pontes a priority business initiative, and the Spanish PERTE gave it 15 million euros. Both are reported by the Galician press; no page of the Xunta's or of Universal Kraft's own was reached that names the works, and no electrolyser figure is published anywhere.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "3427",
@@ -13371,6 +15233,38 @@
      "benchmark_value": "Schwedt/Oder",
      "note": "ENERTRAG's own release places the corridor's two sites in Mecklenburg-Vorpommern and Brandenburg; trade coverage names Rostock-Laage and Falkenhagen. Schwedt is neither."
     }
+   ],
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "enertrag.com",
+     "source_type": "company",
+     "outcome": "readable, names project not site"
+    }
    ]
   },
   {
@@ -13447,7 +15341,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "HyCC's own page: 'H2Next will be strategically located a the first conversion park in the Port' of Rotterdam, 'With a design capacity of 250 megawatts, the plant will produce approximately 25,000 tons of green hydrogen per year.' A plot on the Maasvlakte reserved with the port authority."
+   "outcome_note": "HyCC's own page: 'H2Next will be strategically located a the first conversion park in the Port' of Rotterdam, 'With a design capacity of 250 megawatts, the plant will produce approximately 25,000 tons of green hydrogen per year.' A plot on the Maasvlakte reserved with the port authority.",
+   "admission": {
+    "failed_leg": "same works as a row here, reference not recorded",
+    "note": "HyCC's H2Next is hycc-h2next on this file. The reference is recorded on the row; the search reached the entry again from the other side.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "hycc.com",
+     "source_url": "https://www.hycc.com/en/projects/h2next"
+    }
+   }
   },
   {
    "ref": "3566",
@@ -13599,7 +15503,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Vattenfall's own release: 'The new electrolyzer will be built at the Maasvlakte at the Port of Rotterdam', called only 'large-scale' - no megawatts. Zeevonk is the Vattenfall-CIP joint venture; the mandatory electrolysis was later cut to at least 500 MW, against the benchmark's 506 MW."
+   "outcome_note": "Vattenfall's own release: 'The new electrolyzer will be built at the Maasvlakte at the Port of Rotterdam', called only 'large-scale' - no megawatts. Zeevonk is the Vattenfall-CIP joint venture; the mandatory electrolysis was later cut to at least 500 MW, against the benchmark's 506 MW.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Vattenfall calls the Maasvlakte electrolyser 'large-scale' and gives no number.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "vattenfall.com",
+     "source_url": "https://group.vattenfall.com/press-and-media/pressreleases/2024/vattenfall-and-copenhagen-infrastructure-partners-awarded-ijmuiden-ver-beta-offshore-wind-farm/"
+    }
+   }
   },
   {
    "ref": "3677",
@@ -13675,7 +15589,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The City of Oulu's own page names the site and the steps: Energiequelle Oy at Pyyryvainen, 'up to five megawatts (MW)' first, then '10-50 MW', then '100-500 MW'. A municipality, not the company."
+   "outcome_note": "The City of Oulu's own page names the site and the steps: Energiequelle Oy at Pyyryvainen, 'up to five megawatts (MW)' first, then '10-50 MW', then '100-500 MW'. A municipality, not the company.",
+   "admission": {
+    "failed_leg": "owner's own figure is below 100 MW",
+    "note": "The City of Oulu gives Energiequelle's first phase as 'up to five megawatts', with 10-50 MW and 100-500 MW as later steps nobody has committed to.",
+    "named_by": {
+     "speaker": "permit",
+     "source_type": "permit",
+     "domain": "ouka.fi",
+     "source_url": "https://www.ouka.fi/en/news/three-new-hydrogen-plants-planned-oulu"
+    }
+   }
   },
   {
    "ref": "3678",
@@ -13751,7 +15675,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "IGNIS's own release names 'la fabrica de Holcim en Villaluenga de la Sagra (Toledo)' and gives outputs - 700,000 t of CO2 captured, about 100,000 t of e-SAF - and no electrolyser megawatts. The benchmark's 909 MW is nobody's published figure."
+   "outcome_note": "IGNIS's own release names 'la fabrica de Holcim en Villaluenga de la Sagra (Toledo)' and gives outputs - 700,000 t of CO2 captured, about 100,000 t of e-SAF - and no electrolyser megawatts. The benchmark's 909 MW is nobody's published figure.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "IGNIS gives CO2 captured and e-SAF produced, and no electrolyser.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "ignis.es",
+     "source_url": "https://ignis.es/ignis-p2x-holcim-y-exolum-presentan-eco2fly-un-proyecto-pionero-para-descarbonizar-la-industria-de-los-materiales-de-construccion-y-el-transporte-aereo/"
+    }
+   }
   },
   {
    "ref": "3685",
@@ -13903,7 +15837,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "No owner or permit source names a hydrogen project called Kaskade at Sangerhausen. Saxony-Anhalt's own electrolyser funding pages carry the programme and not this project."
+   "outcome_note": "No owner or permit source names a hydrogen project called Kaskade at Sangerhausen. Saxony-Anhalt's own electrolyser funding pages carry the programme and not this project.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "3723",
@@ -14055,7 +16021,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "Occi'Jet is MGH Energy's e-SAF project of about 35,000 t/y in the Toulouse region, reported through the regional development agency and the region's own aviation-fuel programme. No owner or permit source was found that names a works, and the company is siting at Muret rather than Toulouse."
+   "outcome_note": "Occi'Jet is MGH Energy's e-SAF project of about 35,000 t/y in the Toulouse region, reported through the regional development agency and the region's own aviation-fuel programme. No owner or permit source was found that names a works, and the company is siting at Muret rather than Toulouse.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names project not site"
+    }
+   ]
   },
   {
    "ref": "3725",
@@ -14131,7 +16129,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The consultation site names both communes: 'CONSTRUCTION DU SITE VERSO ENERGY sur les COMMUNES D'ETAGNAC ET SAILLAT-SUR-VIENNE entre 2027-2030'. It gives no megawatts; the file quotes 94,000 t/y of hydrogen and 630,000 t/y of CO2 from the Sylvamo mill."
+   "outcome_note": "The consultation site names both communes: 'CONSTRUCTION DU SITE VERSO ENERGY sur les COMMUNES D'ETAGNAC ET SAILLAT-SUR-VIENNE entre 2027-2030'. It gives no megawatts; the file quotes 94,000 t/y of hydrogen and 630,000 t/y of CO2 from the Sylvamo mill.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "The consultation file gives hydrogen tonnage, 94,000 t/y, and no megawatts.",
+    "named_by": {
+     "speaker": "permit",
+     "source_type": "permit",
+     "domain": "concertation-lichen.eu",
+     "source_url": "https://concertation-lichen.eu/vos-questions/"
+    }
+   }
   },
   {
    "ref": "3726",
@@ -14207,7 +16215,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The consultation site: 'Creation d'une unite de capture de CO2 de production de carburant d'aviation durable a Tartas et Begaar', 1.4 billion euros. No megawatts, and the CO2 comes from the RYAM cellulose works."
+   "outcome_note": "The consultation site: 'Creation d'une unite de capture de CO2 de production de carburant d'aviation durable a Tartas et Begaar', 1.4 billion euros. No megawatts, and the CO2 comes from the RYAM cellulose works.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "The consultation file gives an investment and no megawatts.",
+    "named_by": {
+     "speaker": "permit",
+     "source_type": "permit",
+     "domain": "restart-concertation.eu",
+     "source_url": "https://restart-concertation.eu/"
+    }
+   }
   },
   {
    "ref": "3727",
@@ -14283,7 +16301,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The consultation site: 'La societe francaise VERSO ENERGY envisage de produire sur la commune d'Origny-Sainte-Benoite (Aisne) de l'e-methanol', up to 850 million euros. No megawatts; the CO2 is Tereos's."
+   "outcome_note": "The consultation site: 'La societe francaise VERSO ENERGY envisage de produire sur la commune d'Origny-Sainte-Benoite (Aisne) de l'e-methanol', up to 850 million euros. No megawatts; the CO2 is Tereos's.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "The consultation file gives an investment and no megawatts.",
+    "named_by": {
+     "speaker": "permit",
+     "source_type": "permit",
+     "domain": "concertation-orchyde.eu",
+     "source_url": "https://concertation-orchyde.eu/"
+    }
+   }
   },
   {
    "ref": "3729",
@@ -14359,7 +16387,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The CNDP file names Verso Energy and RTE and the commune - 'Chavelot - Vosges - Grand Est' - and says the electrolyser stands 'sur un site a determiner'. Hydrogen output 48,000 t/y; no megawatts. The commune is named and the land is not chosen."
+   "outcome_note": "The CNDP file names Verso Energy and RTE and the commune - 'Chavelot - Vosges - Grand Est' - and says the electrolyser stands 'sur un site a determiner'. Hydrogen output 48,000 t/y; no megawatts. The commune is named and the land is not chosen.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "The CNDP file gives 48,000 t/y of hydrogen and no megawatts, and says the electrolyser stands 'sur un site a determiner'.",
+    "named_by": {
+     "speaker": "permit",
+     "source_type": "permit",
+     "domain": "debatpublic.fr",
+     "source_url": "https://www.debatpublic.fr/usine-de-production-de-carburant-de-synthese-pour-laviation-chavelot-ephyne-6703"
+    }
+   }
   },
   {
    "ref": "3732",
@@ -14435,7 +16473,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The CNDP coordination page names the developer and the land: 'Elyse Energy', 'The project site covers 51 hectares and is located in the Caban area at the heart of the Fos ZIP', 'Production of hydrogen would amount to 40,000 tonnes per year'. No megawatts."
+   "outcome_note": "The CNDP coordination page names the developer and the land: 'Elyse Energy', 'The project site covers 51 hectares and is located in the Caban area at the heart of the Fos ZIP', 'Production of hydrogen would amount to 40,000 tonnes per year'. No megawatts.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "The CNDP page gives 40,000 t/y of hydrogen and no megawatts.",
+    "named_by": {
+     "speaker": "permit",
+     "source_type": "permit",
+     "domain": "debatpublic.fr",
+     "source_url": "https://www.debatpublic.fr/coordination-des-concertations-carbon-h2v-gravithy-deos-medhyterra-et-neocarb-4495"
+    }
+   }
   },
   {
    "ref": "3734",
@@ -14511,7 +16559,39 @@
     }
    ],
    "outcome": "searched, none found",
-   "outcome_note": "No owner or permit source names a project called Elyfos at Fos-sur-Mer. What is documented on that industrial zone is NeoCarb (ref 3732), H2V (ref 1477), Carbon, GravitHy, DEOS and Medhyterra - and none of them is this name."
+   "outcome_note": "No owner or permit source names a project called Elyfos at Fos-sur-Mer. What is documented on that industrial zone is NeoCarb (ref 3732), H2V (ref 1477), Carbon, GravitHy, DEOS and Medhyterra - and none of them is this name.",
+   "looked_in_order": [
+    {
+     "n": 1,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 2,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 3,
+     "domain": "ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 4,
+     "domain": "cinea.ec.europa.eu",
+     "source_type": "grant_register",
+     "outcome": "200, empty body"
+    },
+    {
+     "n": 5,
+     "domain": "(search)",
+     "source_type": "search",
+     "outcome": "readable, names neither"
+    }
+   ]
   },
   {
    "ref": "3736",
@@ -14739,7 +16819,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "VolagHy's own page carries 'its Kuopio flagship site' and the publication of the environmental impact assessment programme, naming Sorsasalo in a related headline. No electrolyser megawatts anywhere on the company's pages."
+   "outcome_note": "VolagHy's own page carries 'its Kuopio flagship site' and the publication of the environmental impact assessment programme, naming Sorsasalo in a related headline. No electrolyser megawatts anywhere on the company's pages.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "VolagHy's page names the Kuopio site and states no capacity.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "volaghy.com",
+     "source_url": "https://volaghy.com/volaghy-publishes-eia-programme-kuopio/"
+    }
+   }
   },
   {
    "ref": "3796",
@@ -14891,7 +16981,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "Same Moeve page and the same Palos de la Frontera works. The 405 MW the owner publishes is the whole of the first phase."
+   "outcome_note": "Same Moeve page and the same Palos de la Frontera works. The 405 MW the owner publishes is the whole of the first phase.",
+   "admission": {
+    "failed_leg": "a phase the owner does not publish",
+    "note": "As 2056.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "moeveglobal.com",
+     "source_url": "https://www.moeveglobal.com/en/businesses/commercial-clean-energies/green-hydrogen/green-hydrogen-production-at-moeve"
+    }
+   }
   },
   {
    "ref": "3904",
@@ -14967,7 +17067,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "The project's own page places the plant 'right next to Aalborg Forsyning and close to the Port of Aalborg' with an address, Skibsbyggerivej 5, and gives the draw rather than the electrolyser: 'consuming up 585 MW of electricity at peak power production'."
+   "outcome_note": "The project's own page places the plant 'right next to Aalborg Forsyning and close to the Port of Aalborg' with an address, Skibsbyggerivej 5, and gives the draw rather than the electrolyser: 'consuming up 585 MW of electricity at peak power production'.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "Fjord PtX publishes the plant's DRAW — 'consuming up 585 MW of electricity at peak power production' — which is not the electrolyser's rating.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "fjord-ptx.com",
+     "source_url": "https://www.fjord-ptx.com/about-the-plant/"
+    }
+   }
   },
   {
    "ref": "3907",
@@ -15043,7 +17153,17 @@
     }
    ],
    "outcome": "owner or permit source names the site",
-   "outcome_note": "SkyNRG's own page names Skelleftea and the harbour - 'Strategically located by Skelleftea harbor' - and no megawatts. The land at Nasudden in the Port of Skelleftea is named in the Swedish Energy Agency's grant."
+   "outcome_note": "SkyNRG's own page names Skelleftea and the harbour - 'Strategically located by Skelleftea harbor' - and no megawatts. The land at Nasudden in the Port of Skelleftea is named in the Swedish Energy Agency's grant.",
+   "admission": {
+    "failed_leg": "no capacity figure from the owner or a permit",
+    "note": "SkyNRG names Skelleftea harbour and states no capacity.",
+    "named_by": {
+     "speaker": "company",
+     "source_type": "company",
+     "domain": "skynrg.com",
+     "source_url": "https://skynrg.com/producing-saf/esaf-production-plant-in-skelleftea/"
+    }
+   }
   }
  ]
 }

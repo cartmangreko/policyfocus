@@ -213,9 +213,27 @@ POSSIBLE_DUPLICATE_NOTES = {
             "because galp.com answers with an empty body.",
 }
 
-CLASSES = ("duplicate of a held row",
-           "DRI or other perimeter exclusion", "blue",
-           "below threshold on reading", "benchmark gives no location",
+# THREE CLASSES LEFT THE TABLE ON 11 SEPTEMBER 2026 AND THEIR DEFINITIONS DID NOT.
+# They are in sources/scope.md, because a class that can have no members is still a
+# ruling somebody made and a reader may need to know why nothing is there.
+#
+#   duplicate of a held row      Empty by construction since identifier match became the
+#                                only duplicate route: an entry whose reference this
+#                                register holds never reaches classify() at all.
+#   benchmark gives no location  A fact about the October 2023 vintage, which has no
+#                                location column. The current file publishes a latitude
+#                                and a longitude for every European entry, so the class
+#                                could only ever be zero against it.
+#   below threshold on reading   Same: it tested the `Announced Size` column, which only
+#                                the older vintage carries.
+#
+# WHAT IS KEPT AT ZERO IS `unexplained at FID or beyond`, because THAT zero is the
+# claim — every absence at FID or beyond is a decision somebody made — and a table that
+# stopped printing it would stop making it.
+RETIRED_CLASSES = ("duplicate of a held row", "benchmark gives no location",
+                   "below threshold on reading")
+
+CLASSES = ("DRI or other perimeter exclusion", "blue",
            "searched, no owner or permit source found",
            "owner or permit source names the site, not admitted",
            "company source unreadable", "unexplained at FID or beyond")
@@ -522,7 +540,7 @@ def disagreements() -> str:
     return "\n".join(out)
 
 
-def drift(ou: dict, iea: dict, held_ou: set, held_iea: set) -> str:
+def drift(ou: dict, iea: dict, held_ou: set, held_iea: set, rows: list) -> str:
     """WHAT CHANGED BETWEEN THE TWO VINTAGES, which is the only question the older file
     can answer on its own.
 
@@ -555,13 +573,61 @@ def drift(ou: dict, iea: dict, held_ou: set, held_iea: set) -> str:
         if ref not in ou:
             added.append((ref, str(row["projectName"]), str(row["status"])))
 
+    carried = set(ou) & set(iea)
+    # THE ROWS SUM, AND THEY ONLY SUM IF `renamed` IS SHOWN INSIDE `carried over`. A
+    # renamed entry did not leave and did not arrive: it is carried over under an edited
+    # name. Printed flat, the four numbers add to more than either vintage holds and a
+    # reader has to work out which of them overlap.
     out = [f"\nDRIFT BETWEEN THE TWO VINTAGES of one benchmark — October 2023 against the "
            f"current file.\nThe academic file is the IEA's own past and is read for this "
            f"and not as a second gap:",
-           f"  left the list   {len(left):>4}   in October 2023, absent now",
-           f"  renamed         {len(renamed):>4}   same reference, different name",
-           f"  added           {len(added):>4}   in the current file, absent from October 2023",
-           f"  carried over    {len(set(ou) & set(iea)):>4}"]
+           f"  left the list      {len(left):>4}   in October 2023, absent now",
+           f"  carried over       {len(carried):>4}   in both vintages",
+           f"    of which renamed {len(renamed):>4}   same reference, edited name",
+           f"  added              {len(added):>4}   in the current file, absent from Oct 2023",
+           f"  ---",
+           f"  October 2023 total {len(left) + len(carried):>4}   = left + carried over",
+           f"  current total      {len(carried) + len(added):>4}   = carried over + added",
+           "",
+           "  LEAVING THE LIST IS VINTAGE DRIFT AND NOTHING ELSE. It is not a stop event, it "
+           "is not a\n  stop class, and no row's status_history is touched on the strength "
+           "of it. A database\n  that drops a row has said nothing about the project."]
+
+    # WHAT THIS REGISTER MADE OF THE ONES THAT LEFT, which is the question drift is for:
+    # did we notice, and on what terms.
+    row_refs, cand_refs, ids = set(), set(), {r["id"] for r in rows}
+    for r in rows:
+        for x in bench.as_list((r.get("benchmarks") or {}).get("odenweller_ueckerdt_2025")):
+            row_refs.add(str(x))
+    cand_path = bench.ROOT / "sources" / "hydrogen_candidates.json"
+    if cand_path.exists():
+        for c in json.loads(cand_path.read_text(encoding="utf-8"))["candidates"]:
+            if c["id"] in ids:
+                continue
+            for x in bench.as_list(c["benchmarks"].get("odenweller_ueckerdt_2025")):
+                cand_refs.add(str(x))
+    refused = {ref for b, ref in REFUSED_BY_NAME if b == "odenweller_ueckerdt_2025"}
+    buckets = {"admitted, a row here": [], "candidate, not yet a row": [],
+               "refused with a clause": [], "never seen by this register": []}
+    for ref, name, status in left:
+        if ref in row_refs:
+            buckets["admitted, a row here"].append((ref, name, status))
+        elif ref in cand_refs:
+            buckets["candidate, not yet a row"].append((ref, name, status))
+        elif ref in refused:
+            buckets["refused with a clause"].append((ref, name, status))
+        else:
+            buckets["never seen by this register"].append((ref, name, status))
+    out.append("\n  THE 149 THAT LEFT, AGAINST THIS REGISTER'S OWN CLASSES:")
+    for b, items in buckets.items():
+        out.append(f"    {b:32} {len(items):>4}")
+    out.append(f"    {'':32} {sum(len(v) for v in buckets.values()):>4}   total")
+    shown = buckets["admitted, a row here"]
+    if shown:
+        out.append("\n  ADMITTED HERE AND GONE FROM THE LIST — the case rule 17 was written "
+                   "for:")
+        for ref, name, status in shown:
+            out.append(f"    ref {ref:>5}  {status[:18]:18} {name[:58]}")
     if left:
         out.append("\n  LEFT THE LIST — a project that vanishes from a database is a project "
                    "whose failure\n  nobody counts (rule 17). Each of these was in the "
@@ -669,8 +735,18 @@ def main() -> int:
     print(f"|{'-' * (w + 2)}|{'-' * 9}|")
     for c in CLASSES:
         print(f"| {c:{w}} | {counts['iea_hydrogen_production_projects'][c]:7} |")
+    hidden = {c: counts["iea_hydrogen_production_projects"][c] for c in RETIRED_CLASSES
+              if counts["iea_hydrogen_production_projects"][c]}
+    if hidden:
+        print(f"| {'RETIRED CLASS WITH MEMBERS — see scope.md':{w}} | {'':7} |")
+        for c, n in hidden.items():
+            print(f"| {c:{w}} | {n:7} |")
     print(f"| {'held by eufabric (rows and candidates)':{w}} | {len(held_iea & set(iea)):7} |")
     print(f"| {'TOTAL':{w}} | {len(iea):7} |")
+    if not hidden:
+        print(f"  Three classes are retired and empty — duplicate of a held row, benchmark "
+              f"gives no\n  location, below threshold on reading. Their definitions are in "
+              f"scope.md; they print\n  here only if something lands in one.")
 
     residue = [r for r in out if r["class"] == "unexplained at FID or beyond"]
     if residue:
@@ -707,7 +783,7 @@ def main() -> int:
         print("\npossible duplicates, NOT CONFIRMED (0) — every duplicate on file was "
               "reached\nby the benchmark's own reference or confirmed by a person.")
 
-    print(drift(ou, iea, held_ou, held_iea))
+    print(drift(ou, iea, held_ou, held_iea, rows))
     print(search_crosstab())
     print(disagreements())
 

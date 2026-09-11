@@ -1,0 +1,173 @@
+{
+ "_comment": [
+  "WHICH OF THE FORTY-FOUR SWEEPS ARE WORTH RUNNING, ruled 11 September 2026.",
+  "",
+  "A sweep runs only where the owner or a permit names a HOST WORKS, an ADDRESS, or a place",
+  "smaller than the municipality. Where the owner names a municipality and nothing more, the",
+  "row stays undrawn without a sweep: the sample of ten already showed what a",
+  "municipality-centred sweep returns, and running thirty more to be told the same thing is",
+  "exercise rather than evidence.",
+  "",
+  "AN ESTATE IS NOT A HOST WORKS. Six of these name an industrial estate or a port and",
+  "nothing inside it, and an estate polygon has been refused as a position since Subotica.",
+  "Naming one does not make a sweep worth running; it makes the entry wait for an address.",
+  "",
+  "EACH SWEEP IS CENTRED ON THE OWNER-NAMED PLACE, read from the extract's own place node —",
+  "never an external geocoder, which is a third party's coordinate under another name — and",
+  "THE CENTRE IS NEVER WRITTEN AS A COORDINATE. It is scaffolding, discarded when the search",
+  "ends."
+ ],
+ "ruled": "2026-09-11",
+ "already_sampled": [
+  "edp-green-h2-los-barrios",
+  "eneco-diamond-hydrogen-europoort",
+  "enertrag-prignitz-falkenhagen",
+  "engie-hynetherlands-eemshaven",
+  "lhyfe-lubmin",
+  "plugpower-kokkola",
+  "rwe-pembroke-green-hydrogen",
+  "vicat-hynovi-montalieu",
+  "vng-hycc-greenroot-wittenberg",
+  "volth2-wilhelmshaven"
+ ],
+ "to_sweep": [
+  {
+   "id": "aboenergy-pyyryvainen-oulu",
+   "why": "Pyyryvainen — a named locality within Oulu"
+  },
+  {
+   "id": "bayh2-bayernoil",
+   "why": "BAYERNOIL's refinery — a host works the owner names"
+  },
+  {
+   "id": "carlton-trafford-green-hydrogen",
+   "why": "a postal address, Manchester Rd Carrington, M31 4AY"
+  },
+  {
+   "id": "fuella-skipavika-skiga",
+   "why": "Skipavika Havneterminal — a named terminal"
+  },
+  {
+   "id": "gen2-monstad-afjord",
+   "why": "Monstad — a named locality within Afjord"
+  },
+  {
+   "id": "gen2-nesbruket-mosjoen",
+   "why": "Nesbruket — a named locality within Vefsn"
+  },
+  {
+   "id": "hycc-h2ermes-ijmuiden",
+   "why": "Tata Steel IJmuiden — a host works the grant register names"
+  },
+  {
+   "id": "ignis-armonia-green-galicia",
+   "why": "the port of Punta Langosteira — a named port, not a municipality"
+  },
+  {
+   "id": "luoto-energia-rauma",
+   "why": "Iso Jarviluoto in the Port of Rauma — a named locality"
+  },
+  {
+   "id": "orsted-skovgaard-idomlund",
+   "why": "Idomlund — a named locality near Holstebro, not the municipality"
+  },
+  {
+   "id": "rengas-pori-kaanaa",
+   "why": "Kirrinsanta and Aittaluoto, and Pori Energia's Bio-CHP plant as the CO2 host"
+  },
+  {
+   "id": "ricenergy-besaya-torrelavega",
+   "why": "the former Sniace grounds — a host works, now derelict"
+  },
+  {
+   "id": "totalenergies-airliquide-zeeland",
+   "why": "'near the Zeeland refinery' — a host works"
+  },
+  {
+   "id": "totalenergies-energhys-vlissingen",
+   "why": "the Van Citters harbour at Vlissingen-Oost — a named basin"
+  }
+ ],
+ "no_sweep": [
+  {
+   "id": "aboenergy-nivala",
+   "why": "municipality only"
+  },
+  {
+   "id": "endesa-as-pontes",
+   "why": "municipality only"
+  },
+  {
+   "id": "h2energy-njordkraft-esbjerg",
+   "why": "municipality only"
+  },
+  {
+   "id": "h2u-reni",
+   "why": "municipality only"
+  },
+  {
+   "id": "h2v-fos-marseille",
+   "why": "port only (Port of Marseille Fos), 36 hectares unnamed within it"
+  },
+  {
+   "id": "hive-albamed-albacete",
+   "why": "municipality only"
+  },
+  {
+   "id": "hycc-h2era-amsterdam",
+   "why": "port only (Port of Amsterdam), which is an estate at port scale"
+  },
+  {
+   "id": "lhyfe-delfzijl",
+   "why": "municipality only"
+  },
+  {
+   "id": "madoqua-power2x-sines",
+   "why": "estate only (ZILS), and an estate polygon is refused"
+  },
+  {
+   "id": "meld-saltend-hull",
+   "why": "estate only (Saltend Chemicals Park)"
+  },
+  {
+   "id": "neogreen-sines",
+   "why": "estate only (ZILS)"
+  },
+  {
+   "id": "plugpower-kristinestad",
+   "why": "municipality only"
+  },
+  {
+   "id": "power2x-erasmo-saceruela",
+   "why": "municipality only"
+  },
+  {
+   "id": "qair-methavert-le-havre",
+   "why": "Rogerville is a commune; the 60 hectares within it are unnamed"
+  },
+  {
+   "id": "rwe-wilton-green-hydrogen",
+   "why": "estate only (Wilton International)"
+  },
+  {
+   "id": "smartenergy-orangebat-onda",
+   "why": "estate only (El Colomer industrial estate)"
+  },
+  {
+   "id": "smartenergy-porto-torres",
+   "why": "estate only (Porto Torres industrial complex)"
+  },
+  {
+   "id": "statera-kintore-hydrogen",
+   "why": "municipality only"
+  },
+  {
+   "id": "tes-ewe-wilhelmshaven",
+   "why": "a hub that does not exist yet, named after the town"
+  },
+  {
+   "id": "versoenergy-carlhyng-carling",
+   "why": "commune only"
+  }
+ ]
+}

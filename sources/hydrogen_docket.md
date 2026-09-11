@@ -879,6 +879,97 @@ showing eleven marks is the exact reading the standfirst rule exists to prevent.
 and 100,000 t H2/y admitted undrawn.** No built surface sums capacity across rows, so
 those two were the whole exposure.
 
+### Rulings of 11 September 2026, second set — after the #55 read
+
+**D68. THE DRIFT ROWS SUM ONLY IF `renamed` SITS INSIDE `carried over`,** and the table
+now says so: 149 left + 106 carried over = 255, the October 2023 total; 106 + 131 added
+= 237, the current total. A renamed entry neither left nor arrived.
+
+**D69. LEAVING THE LIST IS VINTAGE DRIFT AND NOTHING ELSE.** Not a stop event, not a stop
+class, and **no row's `status_history` is touched on the strength of it**. Recorded in
+scope.md against rule 17, because the two are one step apart and easy to run together:
+rule 17 says go and look when an entry disappears, since the disappearance may hide a
+failure nobody counted. It does not say the disappearance IS the failure. Reading 149
+departures as 149 stops would manufacture exactly what rule 17 exists to catch honestly.
+
+**The 149, against this register's own classes:**
+
+| | |
+|---|---|
+| admitted, a row here | **16** |
+| candidate, not yet a row | 0 |
+| refused with a clause | 1 |
+| never seen by this register | **132** |
+
+Gigastack is in the 16, twice — refs 552 and 1374, both at "Other/Unknown" — the case
+rule 17 was written for and the only one anybody had caught by hand. The zero in the
+second line is new: it was 5 until the candidate and row benchmark references were
+brought into line, which is an error this cross-tab found. **h2v-fos-marseille's row
+carried one O&U reference where its candidate carried six**, because the row was built
+before the five phase rows were recorded.
+
+**D70. THE ARCHIVE DATE RULE WAS WRITTEN THE WRONG WAY ROUND AND IS CORRECTED.** Both
+rows were re-dated to their captures, which threw away IGNIS's own dateline in order to
+record how we reached it. The rule now has three clauses: `date` keeps the document's
+own dateline at its stated precision; the capture goes in **`captured_at`**; and a
+document with **no dateline** takes `date = captured_at` with precision **`not_after`**.
+
+- **IGNIS** carries `article:published_time` of 23 September 2024. That is the date; the
+  capture of 16 April 2026 is `captured_at`.
+- **Ørsted** carries no dateline at all — no meta date, none in the body. `date` is the
+  capture, 2 October 2023, at `not_after`. The URL path reads `/news/2022/12/`, which is
+  the publisher's filing and not the document's dateline, and is recorded in the note
+  rather than used.
+
+`not_after` is a new value on a new vocabulary, `SOURCE_DATE_PRECISIONS`, and the gate
+requires `captured_at` beside it. **It is not `day`:** a day says the publisher published
+then; an upper bound says nobody knows, and the register's slip and disagreement
+arithmetic would otherwise compute delay out of when a crawler happened to visit.
+
+**D71. NO ESTATE RULE.** The sample settles it in the negative. One hit in ten, and the
+hit came through the host-works rule, which needs no estate. Position continues to come
+from a stated address, a stated coordinate from a company or permit source, or a host
+works the owner names.
+
+**D72. TWENTY OF THE REMAINING THIRTY-FOUR SWEEPS ARE NOT WORTH RUNNING.** Fourteen are:
+where the owner or a permit names a host works, an address, or a place smaller than the
+municipality. Twenty are not, and **six of those name only an estate** — ZILS twice,
+Saltend Chemicals Park, El Colomer, Porto Torres, Wilton International — which is not a
+host works and does not become one by being specific. The plan is
+`sources/hydrogen_sweep_plan.json`, with a reason on every line.
+
+Each sweep is centred on the owner-named place read from the extract's own place node,
+**never an external geocoder** — which is a third party's coordinate under another name —
+and **the centre is never written as a coordinate**.
+
+**D73. THE FORTY-SEVEN AND THE FORTY-EIGHT NOW CARRY THEIR OWN DETAIL.** On each of the
+47 that named a site and were not admitted: which leg failed, and which source named the
+site with its speaker. On each of the 48 where nothing named a site: where somebody
+looked, in order, so the next person starts after the last line.
+
+| failed leg | |
+|---|---|
+| no capacity figure from the owner or a permit | **30** |
+| a phase the owner does not publish | 6 |
+| same works as a row here, reference not recorded | 5 |
+| owner's own figure is below 100 MW | 2 |
+| a study, not a project | 2 |
+| not electrolysis | 1 |
+| no works to place: the plant is a vessel or a sea area | 1 |
+
+**Thirty of forty-seven fail on capacity alone**, which is the single most useful number
+in this pass: the perimeter's binding constraint on the hydrogen gap is not that owners
+hide where their plants are, it is that they publish tonnes, euros, jobs and grid
+connections and not the electrolyser's rating. **The five marked `same works as a row
+here` are a reference-recording debt**, not a merge — each needs a source that identifies
+the two, and rule 30 says record the identifier rather than guess the join.
+
+**D74. THREE CLASSES LEFT THE TABLE AND THEIR DEFINITIONS DID NOT.** `duplicate of a held
+row`, `benchmark gives no location` and `below threshold on reading` are empty by
+construction against the current vintage; they are defined in scope.md and print again
+the moment something lands in one. `unexplained at FID or beyond` stays at zero, because
+that zero is the claim.
+
 ### Step 5 decisions, after the source-date ruling of 9 September 2026
 
 **D38. Uniper's source was archived on 10 September, one day after it was read.**
