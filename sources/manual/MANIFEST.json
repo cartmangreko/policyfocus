@@ -204,6 +204,14 @@
       "needed_for": "NOT FOR A ROW, FOR A GAP. sources/report_benchmark_gap.py classifies every European entry at or above 100 MW in the two outside lists that this register does not hold, and three of them — 'MoU Shell - Mitsubishi' phases 1 and 2, in both lists — sit in the class `company source unreadable` because THIS is the natural company source for a Shell project and it cannot be quoted. A readable copy would move them into whichever class they belong in: a project this perimeter admits, or one it refuses, or one nobody has confirmed a site for. Until then they are counted as looked-for and refused, which is the honest place for them and not the final one.",
       "drop_as": "sources/manual/benchmark-gap--shell-hydrogen-projects.html",
       "priority": "normal"
+    },
+    {
+      "candidate": "dependency-sweep-shell-cansolv",
+      "url": "https://www.shell.com/business-customers/catalysts-technologies/resources-library/how-shells-cansolv-co2-capture-system-could-help-decarbonise-steel.html",
+      "why": "TWO REFUSALS ON ONE NODE, and they are different refusals. shell.com answers a declared reader with HTTP 200 and 10,475 bytes of markup containing ZERO characters of readable text — the article renders client-side, the same failure the two Shell hydrogen entries above record. And humberzero.co.uk, the one European owner source located for a Cansolv installation (VPI Immingham), answers 404 on every path: a page that is gone, not a page that will not speak. Every other Cansolv path on shell.com is 404 or nothing.",
+      "needed_for": "NOT FOR A ROW, FOR A NODE. Brief 9 sweeps Shell Cansolv as one of five capture-technology suppliers and it is the only node on the perimeter with NOTHING READABLE AT ALL: no capacity, no edges, no status. It stands in sources/nodes.json saying so rather than being dropped, because a supplier nobody can read is a finding about who can be read and not an absence of suppliers. A readable copy would say whether Cansolv has European customers this register should hold; until then the node is a hole with a shape.",
+      "drop_as": "sources/manual/dependency-sweep-shell-cansolv--cansolv-co2-capture-system.html",
+      "priority": "normal"
     }
   ]
 }

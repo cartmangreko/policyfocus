@@ -47,7 +47,16 @@ NODES = [
     ("john-cockerill", "electrolyser_oem", "John Cockerill", "https://johncockerill.com", "unlisted"),
     ("mcphy", "electrolyser_oem", "McPhy Energy S.A.", "https://mcphy.com", "listed"),
 
-    ("slb-capturi", "capture_technology", "SLB Capturi", "https://www.slbcapturi.com", "unlisted"),
+    # TWO NODES, ONE BUSINESS, AND THE SECOND IS NOT THE FIRST. Aker Carbon Capture
+    # signed fourteen of the edges in this file under its own name and its own
+    # listing on Oslo Børs; on 14 June 2024 that business closed into the SLB joint
+    # venture and on 16 September 2024 the venture took the name SLB Capturi. The
+    # edges stay where they were signed and are INHERITED by reference, exactly as
+    # McPhy's are by John Cockerill -- DECISION D-11, applied here by D-16. Folding
+    # them onto one node would lose the speaker and double any sum that read both.
+    ("aker-carbon-capture", "capture_technology", "Aker Carbon Capture ASA",
+     "https://akercarboncapture.com", "listed"),
+    ("slb-capturi", "capture_technology", "SLB Capturi", "https://capturi.slb.com", "unlisted"),
     ("mhi", "capture_technology", "Mitsubishi Heavy Industries, Ltd.",
      "https://www.mhi.com", "listed"),
     ("shell-cansolv", "capture_technology", "Shell Cansolv", "https://www.shell.com", "listed"),
@@ -87,6 +96,19 @@ SPEAKERS = ["owner", "supplier", "permit", "grant", "other"]
 SOURCE_TYPES = ["supplier_press", "supplier_annual_report", "supplier_quarterly_report",
                 "investor_presentation", "owner_press", "permit", "grant_award"]
 BASES = ["nameplate", "backlog", "delivery_commitment"]
+
+# HOW FIRM THE DOCUMENT SAYS THE RELATIONSHIP IS, and it is a second axis, not a
+# refinement of `edge_kind`. An equipment_order can be a signed purchase order or
+# a letter of intent; a co2_storage edge can be a binding transport agreement or
+# an agreement to investigate one. The confirmation ladder's rung 6 -- "an input
+# contracted" -- passes on `contract` only, which is why the value has to be read
+# off the source sentence and cited rather than inferred from the kind.
+#
+#   contract   a firm order or a signed supply agreement
+#   framework  an agreement with no named site or no quantity
+#   intent     an MoU, a study, a pre-FEED, a letter of intent, a selection that
+#              the document itself says is subject to something
+FIRMNESS = ["contract", "framework", "intent"]
 
 # Europe as the register already draws it (sources/batteries_docket.md, the
 # perimeter prose): the 27, plus the UK, Norway, Switzerland, the Western Balkans

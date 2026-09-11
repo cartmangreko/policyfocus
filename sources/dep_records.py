@@ -89,12 +89,18 @@ def resolve(customer: str, site: str = "") -> tuple[str | None, str | None]:
     return None, None
 
 
+FRAMEWORK_EN_BLOC = ("edge_kind framework_agreement. Ruled en bloc on 11 September "
+                     "2026: a framework agreement is `framework` by its kind and no "
+                     "source was re-read for it — DECISION D-14.")
+
+
 def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
              source_type: str, url: str, date: str, date_precision: str = "day",
              quantity: tuple[float, str] | None = None, project_id: str | None = None,
              site: str = "", note: str | None = None, country: str | None = None,
              sector: str | None = None, refuse_match: str | None = None,
-             inherited_by: dict | None = None) -> dict:
+             inherited_by: dict | None = None, firmness: str | None = None,
+             firmness_basis: str | None = None, no_dateline: bool = False) -> dict:
     # `refuse_match` is the reader overruling the matcher, with the reason. It
     # exists because the matcher can be confidently wrong in a way no rule fixes:
     # Plug Power's release puts European Energy's Måde PtX plant at Måde, Esbjerg,
@@ -112,21 +118,48 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
                  "site only" if pid else "unmatched")
     if amb:
         note = f"{note}. {amb}" if note else amb
+    # FIRMNESS IS READ, EXCEPT WHERE THE KIND ALREADY SAYS IT. `framework_agreement`
+    # is the firmness as well as the kind, so it maps rather than being recorded
+    # twice -- DECISION D-14, and the reason the 98 of them needed no re-read.
+    if edge_kind == "framework_agreement" and firmness is None:
+        firmness, firmness_basis = "framework", FRAMEWORK_EN_BLOC
+
+    captured = capture_date(url)
+    if no_dateline:
+        # DECISION D-7 as ruled on 11 September 2026: a document that carries no
+        # dateline of its own is dated by the copy on file, and that date is an
+        # UPPER BOUND -- the release exists at or before it and the file will not
+        # say how much before.
+        captured = captured or fetched_date(url)
+        date, date_precision = captured or date, "capture_upper_bound"
+
     e = {"id": f"e{len(EDGES) + 1:04d}",
          "project_id": pid,
          "customer_name_as_stated": customer,
+         "site_as_stated": site or None,
+         "sector": sector,
          "node_id": node_id,
          "edge_kind": edge_kind,
+         "firmness": firmness,
+         "firmness_basis": firmness_basis,
          "quantity": None if quantity is None else {"value": quantity[0], "unit": quantity[1]},
          "speaker": speaker,
          "source_type": source_type,
          "url": url,
          "date": date,
          "date_precision": date_precision,
+         "captured_at": captured,
          "verdict": None,
          "match_basis": basis,
+         # THE SUPPLIER'S CUSTOMER THAT THIS REGISTER DOES NOT HOLD. A named site
+         # that resolves to no admitted row is demand on the same capacity as a
+         # matched one, and the supplier's totals count it -- DECISION D-15. A
+         # company named without a site is NOT this: it may well be a row nobody
+         # could identify, which is a different fact and stays false here.
+         "outside_perimeter": bool(site) and pid is None and basis == "unmatched"
+                              and country is not None,
          "inherited_by": inherited_by,
-         "note": capture_note(url, note)}
+         "note": note}
     EDGES.append(e)
     if pid is None and country is not None:
         u = UNMATCHED.setdefault(customer, {
@@ -139,26 +172,39 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
 
 
 ARCHIVE = re.compile(r"web\.archive\.org/web/(\d{4})(\d{2})(\d{2})\d{6}id_/")
-_MONTHS = ("January February March April May June July August September October "
-           "November December").split()
 
 
-def capture_note(url: str, note: str | None) -> str | None:
-    """Append the Internet Archive capture date to a note, from the URL itself.
+def capture_date(url: str) -> str | None:
+    """The date of the copy on file, from the Internet Archive URL itself.
 
-    DECISION D-7 says an archived copy is cited with its capture timestamp as the
-    source date. That timestamp is already in the URL, so writing it into the note
-    by hand only creates a second copy that can disagree with the first — and it
-    did, twice, before this function existed. Derived here, it cannot.
+    DECISION D-7, AS RULED ON 11 SEPTEMBER 2026. The capture timestamp is not the
+    source date -- `date` keeps the release's own dateline, because that is what
+    the sweep period is measured against and a 2020 release captured in 2024 would
+    otherwise leave the period. It is a field of its own, `captured_at`, and it
+    supersedes the earlier wording that made it the source date.
+
+    IT IS DERIVED, NEVER TYPED. The timestamp is already in the URL, so writing it
+    out by hand only creates a second copy that can disagree with the first -- and
+    it did, twice, before this function existed. Derived here, it cannot.
     """
     m = ARCHIVE.search(url)
-    if not m:
-        return note
-    y, mo, d = m.groups()
-    stamp = (f"Read from the Internet Archive capture of {int(d)} "
-             f"{_MONTHS[int(mo) - 1]} {y}; the supplier's own domain no longer "
-             f"serves it (DECISION D-7).")
-    return f"{note} {stamp}" if note else stamp
+    return f"{m.group(1)}-{m.group(2)}-{m.group(3)}" if m else None
+
+
+def fetched_date(url: str) -> str | None:
+    """The date this sweep fetched a live page, from the fetch cache index.
+
+    The other half of D-7, and the narrower half. A document with no dateline is
+    dated by the copy on file; where that copy is an archive capture the URL says
+    when, and where it is this sweep's own fetch the cache index does. Both are
+    upper bounds and both are recorded as `captured_at`, because "when somebody
+    could last see this page" is one fact whoever took the copy.
+    """
+    import hashlib
+    import dep_text as T
+    e = T.index().get(hashlib.sha1(url.encode()).hexdigest()[:16]) or {}
+    at = e.get("fetched_at")
+    return at[:10] if at else None
 
 
 def status_event(node_id: str, date: str, status_from: str | None, status_to: str,
@@ -189,14 +235,87 @@ def status_event(node_id: str, date: str, status_from: str | None, status_to: st
 
 def add_capacity(node_id: str, value: float, unit: str, basis: str, speaker: str,
                  source_type: str, url: str, date: str, date_precision: str = "day",
-                 note: str | None = None) -> None:
+                 note: str | None = None, phase: str | None = None,
+                 available_from: str | None = None) -> None:
+    """One figure a node states for itself, with the date it was stated.
+
+    `phase` AND `available_from` ARE WHY A STORE'S CAPACITY IS A DATED LIST. A CO2
+    store is not one number: Northern Lights phase 1 could take 1.5 Mt/yr from 2024
+    and phase 2 a minimum of 5 Mt/yr from the second half of 2028, and a contract
+    signed in 2025 for delivery from 2028 is demand on the second, not the first.
+    Summing every contract against the phase 1 nameplate produced an overshoot of
+    890,000 t/yr that the dates dissolve -- see the docket's arithmetic section.
+    Both fields are null where the source states no phase and no availability date,
+    which is most of the file.
+    """
     NODE_CAPACITY.setdefault(node_id, []).append(
-        {"value": value, "unit": unit, "basis": basis, "speaker": speaker,
+        {"value": value, "unit": unit, "basis": basis, "phase": phase,
+         "available_from": available_from, "speaker": speaker,
          "source_type": source_type, "url": url, "date": date,
-         "date_precision": date_precision, "note": capture_note(url, note)})
+         "date_precision": date_precision, "captured_at": capture_date(url),
+         "note": note})
+
+
+NODE_DISAGREEMENT: dict[str, list[dict]] = {}
+NODE_COMPARISON: dict[str, dict] = {}
+NODE_STATE: dict[str, dict] = {}
+
+
+def disagreement(node_id: str, field: str, values: list[dict], note: str) -> None:
+    """Two speakers, one field, two numbers, and neither is corrected.
+
+    SAME SHAPE AS `projects.json`'s `disagreements`, for the same reason
+    status_history has the same shape as the register's: the fact is the same kind
+    of fact. A supplier states an order backlog at a date; this file sums the edges
+    that supplier announced; the two do not agree. Both values stand with the date
+    each was stated on, because a backlog is a snapshot and a sum of announcements
+    is not, and deciding which is right is not arithmetic.
+    """
+    NODE_DISAGREEMENT.setdefault(node_id, []).append(
+        {"field": field, "values": values, "note": note})
+
+
+def not_comparable(node_id: str, node_unit: str | None, edge_unit: str,
+                   reason: str) -> None:
+    """This node's stated capacity and its edges cannot be subtracted, and why.
+
+    RECORDED RATHER THAN CONVERTED. An edge is a plant of n megawatts; a node
+    capacity is a factory that builds n megawatts A YEAR, and six years of orders
+    minus an annual rate is not a number. `node_unit` is null where the node states
+    no capacity at all, which is a different obstacle from a unit clash and is told
+    apart here rather than in prose. No derived figure is written anywhere, and no
+    delivery window is assumed.
+    """
+    NODE_COMPARISON[node_id] = {"comparable": False, "node_unit": node_unit,
+                                "edge_unit": edge_unit, "reason": reason}
+
+
+def node_state(node_id: str, *, incomplete: bool = False,
+               manual_queue: str | None = None, refusal_class: str | None = None,
+               note: str = "") -> None:
+    """What is true of the SWEEP of this node rather than of the node.
+
+    `incomplete` says the sweep did not finish and the node's edges are a sample of
+    unknown size -- Danieli, at nine of 107 captures. `manual_queue` names the file
+    that will carry what a machine could not fetch, and `refusal_class` says what
+    the door did: a 403, a WAF, an empty body, a domain that no longer resolves.
+    A reader who sums this file without reading these is summing a sample.
+    """
+    NODE_STATE[node_id] = {"incomplete": incomplete, "manual_queue": manual_queue,
+                           "refusal_class": refusal_class, "note": note or None}
 
 
 # --- gates and output --------------------------------------------------------
+
+def cites(sentence: str, url: str) -> bool:
+    """Is this sentence on that page? Unknown counts as yes."""
+    import dep_text as T
+    body = T.body(url)
+    if body is None:
+        return True
+    page = re.sub(r"\s+", " ", T.to_text(body))
+    return re.sub(r"\s+", " ", sentence).rstrip("\u2026") in page
+
 
 def check() -> list[str]:
     """Every way a reading can be wrong that a machine can see.
@@ -224,8 +343,24 @@ def check() -> list[str]:
             bad.append(f"{w}: speaker {e['speaker']!r} is not in the vocabulary")
         if e["source_type"] not in S.SOURCE_TYPES:
             bad.append(f"{w}: source_type {e['source_type']!r} is not in the vocabulary")
-        if e["date_precision"] not in ("day", "month", "year"):
+        if e["date_precision"] not in ("day", "month", "year", "capture_upper_bound"):
             bad.append(f"{w}: date_precision {e['date_precision']!r}")
+        if e["date_precision"] == "capture_upper_bound" and e["date"] != e["captured_at"]:
+            bad.append(f"{w}: dated as an upper bound but date {e['date']} is not "
+                       f"captured_at {e['captured_at']}")
+        if e["firmness"] not in S.FIRMNESS:
+            bad.append(f"{w}: firmness {e['firmness']!r} is not in the vocabulary")
+        if not e["firmness_basis"]:
+            bad.append(f"{w}: firmness {e['firmness']!r} with nothing cited for it")
+        elif e["firmness_basis"] != FRAMEWORK_EN_BLOC and not cites(e["firmness_basis"], e["url"]):
+            # THE CITATION GATE. `firmness` decides whether rung 6 of the
+            # confirmation ladder passes, so the sentence it rests on has to be a
+            # sentence that is actually on the page. Checked against the cached
+            # body, and skipped -- not failed -- where the body is not on this
+            # machine, because the bodies are gitignored (D-9) and a clone must
+            # still be able to run this.
+            bad.append(f"{w}: firmness_basis is not in the cached page — "
+                       f"{e['firmness_basis'][:60]!r}")
         if not (S.PERIOD[0] <= e["date"] <= S.PERIOD[1]):
             bad.append(f"{w}: date {e['date']} is outside the sweep period")
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", e["date"]):
@@ -255,6 +390,31 @@ def check() -> list[str]:
                 bad.append(f"{w}: basis {c['basis']!r} is not in the vocabulary")
             if c["source_type"] not in S.SOURCE_TYPES:
                 bad.append(f"{w}: source_type {c['source_type']!r}")
+            if c["available_from"] and not re.fullmatch(r"\d{4}(-\d{2}-\d{2})?",
+                                                       c["available_from"]):
+                bad.append(f"{w}: available_from {c['available_from']!r} is not a year "
+                           "or a YYYY-MM-DD date")
+    known = {n[0] for n in S.NODES}
+    for nid in list(NODE_DISAGREEMENT) + list(NODE_COMPARISON) + list(NODE_STATE):
+        if nid not in known:
+            bad.append(f"a node record names {nid!r}, which is not on the perimeter")
+    for nid, ds in NODE_DISAGREEMENT.items():
+        for d in ds:
+            if len(d["values"]) < 2:
+                bad.append(f"disagreement on {nid} ({d['field']}): one value is not a "
+                           "disagreement")
+            for v in d["values"]:
+                if not v.get("date") or not v.get("speaker"):
+                    bad.append(f"disagreement on {nid} ({d['field']}): a value with no "
+                               "speaker or no date")
+    # A NODE THE SWEEP COULD NOT READ MAY NOT LOOK LIKE ONE IT COULD. `listed`
+    # above `fetched` is ordinary -- the title filter does that on every newsroom.
+    # A door that refused a reader is not ordinary, and the node has to say so
+    # where somebody reading nodes.json will see it without reading prose.
+    for nid, sw in SEARCHED.items():
+        if sw.get("blocked") and nid not in NODE_STATE:
+            bad.append(f"{nid}: swept behind a refusal and carries no node_state "
+                       "saying which refusal")
     return bad
 
 
@@ -300,6 +460,9 @@ def build() -> None:
                       "stated_capacity": NODE_CAPACITY.get(nid, []),
                       "status_history": sorted(NODE_STATUS.get(nid, []),
                                                key=lambda e: e["date"]),
+                      "disagreements": NODE_DISAGREEMENT.get(nid, []),
+                      "comparison": NODE_COMPARISON.get(nid),
+                      "state": NODE_STATE.get(nid),
                       "sweep": SEARCHED.get(nid)})
     (HERE / "nodes.json").write_text(
         json.dumps({"_comment": NODES_COMMENT, "nodes": nodes},
@@ -335,6 +498,23 @@ NODES_COMMENT = [
     "many items they listed, how many were fetched, and where the sweep could not go.",
     "A node with sweep null was not searched, which is a different fact from a node",
     "that was searched and yielded nothing.",
+    "",
+    "`comparison` SAYS WHETHER THE SUMS IN THIS FILE MAY BE SUBTRACTED AT ALL, and for",
+    "24 of the 28 nodes the answer is no. Both units are named. `node_unit` null means",
+    "the node states no capacity for itself, which is a different obstacle from a unit",
+    "clash and is not the same finding. Nothing is converted and no delivery window is",
+    "assumed anywhere in this file.",
+    "",
+    "`disagreements` has the shape projects.json uses: the field, the values, who said",
+    "which and when. Two of them, both a supplier's own order backlog against this",
+    "file's sum of the contracts it had announced by the date the backlog was stated.",
+    "NEITHER FIGURE IS CORRECTED.",
+    "",
+    "`state` is about the SWEEP, not the node. `incomplete` means the node's edges are",
+    "a sample of unknown size -- Danieli, at nine of 107 captures. `refusal_class` says",
+    "what the door did, and the four kinds are not interchangeable: a 403, a WAF",
+    "challenge, a 200 with no text in it, and a domain that has gone are four different",
+    "facts about whether anybody can read this supplier at all.",
 ]
 EDGES_COMMENT = [
     "One edge is one document stating one relationship between a supplier or store on",
@@ -353,6 +533,27 @@ EDGES_COMMENT = [
     "`project_id` is null when the customer matches no admitted row, AND when the",
     "customer names a company that holds several rows and the document does not say",
     "which site -- DECISION D-2. The two cases are told apart by `note`.",
+    "",
+    "`firmness` IS THE SECOND AXIS AND RUNG 6 OF THE LADDER READS IT, NOT `edge_kind`.",
+    "contract is a firm order or a signed supply agreement; framework is an agreement",
+    "with no named site or no quantity; intent is an MoU, a study, a pre-FEED or a",
+    "selection the document itself calls conditional. `firmness_basis` is the sentence",
+    "it was read off, quoted from the page at `url`, and a gate refuses any edge whose",
+    "cited sentence is not in the cached body. The 98 framework_agreement edges are the",
+    "one exception: their kind already says their firmness, so it is mapped rather than",
+    "read twice, and the basis says so -- DECISION D-14.",
+    "",
+    "`captured_at` IS NOT THE SOURCE DATE. `date` is the release's own dateline, which",
+    "is what the sweep period is measured against; `captured_at` is when the copy on",
+    "file was taken, derived from the Internet Archive URL or from this sweep's own",
+    "fetch. Where a document has no dateline at all, and only there, the two are the",
+    "same and `date_precision` says `capture_upper_bound`: the release exists at or",
+    "before that date and this file will not say how much before -- DECISION D-7.",
+    "",
+    "`outside_perimeter` is a named site that resolves to no admitted row. It is demand",
+    "on the same supplier capacity as a matched edge and the supplier's totals count",
+    "it -- DECISION D-15. A company named without a site is NOT this, because it may",
+    "be a row nobody could identify, and that edge carries false.",
     "",
     "`verdict` is null on every edge in this file. It is the reader's field.",
     "",
@@ -373,3 +574,33 @@ UNMATCHED_COMMENT = [
     "nobody named, not a customer nobody matched, and putting it in this file would",
     "turn the supplier's silence into a candidate.",
 ]
+
+
+if __name__ == "__main__":
+    # THE DOCSTRING PROMISED THESE TWO AND THE MODULE DID NOT HAVE THEM. Both
+    # commands worked in the only way anybody had actually run them -- by importing
+    # dep_readings and calling build() -- and `python3 dep_records.py --build`
+    # exited 0 having done nothing at all, which is the worst way for a build to
+    # fail. Here they are.
+    import sys
+
+    # RUN AGAINST THE IMPORTED MODULE, NOT AGAINST __main__. `python3
+    # dep_records.py` makes this file the module `__main__`, and dep_readings
+    # imports `dep_records` -- a second module object with a second, empty EDGES.
+    # Calling check() here would check nothing and build() would write an empty
+    # file, which is what the first version of this block did.
+    import dep_records as M
+    import dep_readings  # noqa: F401  -- importing it IS the reading pass
+
+    argv = sys.argv[1:] or ["--check"]
+    problems = M.check()
+    for line in problems:
+        print(line, file=sys.stderr)
+    if problems:
+        print(f"{len(problems)} problem(s).", file=sys.stderr)
+        raise SystemExit(1)
+    if "--build" in argv:
+        M.build()
+        print(f"{len(M.EDGES)} edges, {len(M.NODE_CAPACITY)} nodes with a stated capacity.")
+    else:
+        print(f"{len(M.EDGES)} edges check out.")

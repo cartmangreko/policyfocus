@@ -1,20 +1,33 @@
 # Supplier-side dependency sweep — docket
 
 **Brief 9. Nothing here surfaces.** `projects.json`, `scope.md` and every rendered
-page are untouched on this branch. The outputs are four new files under `sources/`
-— this docket, `nodes.json`, `edges.json`, `dependency_unmatched.json` — plus the
-machinery that produced them and the fetch cache index that says what was read.
+page are untouched on this branch. The outputs are six files under `sources/` —
+this docket, `nodes.json`, `edges.json`, `dependency_unmatched.json`,
+`dependency_worklist.md` and `cement_candidates.json` — plus the machinery that
+produced them and the fetch cache index that says what was read.
 
 Every `verdict` in `edges.json` is null. Every ruling below is provisional and is
 listed in DECISIONS with the ids it touches, so a later ruling maps to a known
 re-run.
 
+**REVISED 11 SEPTEMBER 2026 AGAINST GEORGE'S BATCH RULINGS.** What the sweep now
+serves is a confirmation-ladder audit whose rung 6 is "an input contracted",
+scored per project with a speaker, and a supplier-side view of the same edges for
+listed equipment makers. The ladder itself is brief 10 and is not built here. What
+this batch did was leave the edges in a shape brief 10 can read: keyed by register
+row where matched, and carrying **speaker, firmness, date, source and verdict on
+every edge**. Sections 2.5, 2.6 and 3 are the ones that changed most, and two
+findings in 2.5 were withdrawn — they were arithmetic, and the dates dissolved
+them.
+
 ---
 
 ## 1. What was swept
 
-Twenty-seven suppliers and stores across five node kinds, 1 January 2020 to 11
-September 2026. The perimeter is the brief's and is copied into
+Twenty-eight suppliers and stores across five node kinds, 1 January 2020 to 11
+September 2026. It was twenty-seven until this batch: Aker Carbon Capture ASA is
+now its own node beside SLB Capturi, under the McPhy ruling, and the fourteen
+edges it signed stay where they were signed. The perimeter is the brief's and is copied into
 `sources/dep_sweep.py:NODES` rather than inferred.
 
 The sweep read **2,673 index and article pages** into a fetch cache that records
@@ -29,15 +42,42 @@ url, fetch date, byte size and SHA-256 for every one of them (2,583 returned a b
 | Kind | Nodes | Swept as intended | Blocked or partial |
 |---|---|---|---|
 | electrolyser_oem | 8 | 6 | plug-power (detail pages 403, read through the IR feed), mcphy (domain gone) |
-| capture_technology | 5 | 4 | shell-cansolv (**nothing readable at all**) |
+| capture_technology | 6 | 4 | shell-cansolv (**nothing readable at all**), aker-carbon-capture (own domain serves nothing) |
 | dri_plant | 5 | 3 | danieli (403, archive partial), sms-group (WAF, archive holds none of its European decarbonisation orders) |
 | battery_equipment | 3 | 2 | hitachi (subsidiary 403, corporate page lists five items) |
 | co2_storage_or_transport | 6 | 5 | ravenna-ccs (index renders by script; release reached directly) |
 
-**Eight of twenty-seven nodes could not be swept the way the brief intends.** That
-is the largest single fact in this docket and it is not a defect in the method:
-three supplier websites that existed when these orders were placed do not exist
-now, and four more refuse a reader at the door.
+**Nine of twenty-eight nodes could not be swept the way the brief intends** — it
+was eight of twenty-seven before the Aker split, and the same two dead domains now
+belong to two nodes. That is the largest single fact in this docket and it is not
+a defect in the method: supplier websites that existed when these orders were
+placed do not exist now, and others refuse a reader at the door.
+
+Each of the nine now carries a `state` block in `nodes.json` naming its
+**refusal class**, because the four kinds are not interchangeable and a reader
+should not have to infer which from prose:
+
+| Node | Refusal class | What the door actually does |
+|---|---|---|
+| plug-power | `403` | Detail pages 403; the IR feed answers 200 with the same text (D-6) |
+| danieli | `403` | Every path, http and https, with and without www, full browser headers. **incomplete** |
+| hitachi | `403` | hitachi-hightech.com newsroom and sitemap both. **incomplete** |
+| sms-group | `waf_challenge` | AWS WAF, 202 and a JavaScript challenge, sitemap included. **incomplete** |
+| shell-cansolv | `empty_body_200` | 10,475 bytes of markup, **zero characters of text** |
+| mcphy | `domain_gone` | mcphy.com does not resolve; www redirects to the acquirer |
+| slb-capturi | `domain_unaddressed` | slbcapturi.com has no address record — SLB holds the domain and publishes no host for it |
+| aker-carbon-capture | `domain_resolves_serves_nothing` | Resolves to 35.187.120.37; nginx 404 over http, wrong certificate over https |
+| ravenna-ccs | `script_rendered_index` | The media index renders by script; the release was reached directly |
+
+**Three of those were checked again on 11 September 2026 and one earlier line was
+wrong.** The sweep had recorded that "akercarboncapture.com and slbcapturi.com do
+not resolve". Only one of them does not. slbcapturi.com publishes no A record at
+all and therefore resolves nowhere on slb.com — but it is not abandoned, because
+its nameservers are `dns0/dns1.slb.com` and `dns0/dns1.slb.net`: SLB holds the
+domain and serves no host from it, and the live home is capturi.slb.com, which
+answers 200. akercarboncapture.com **does** resolve, and serves nothing. "Resolves
+and serves nothing" and "does not resolve" are different facts about who can still
+read a supplier, and the file now tells them apart.
 
 ---
 
@@ -79,6 +119,36 @@ a different technology in December 2025 — and in the last of those says the tw
 | co2_storage_or_transport | — | 8 | — | 12 | — |
 | battery_equipment | 1 | — | — | — | — |
 
+**And now by FIRMNESS, which is the axis rung 6 of the ladder reads.** It is a
+second axis and not a refinement of the first: an `equipment_order` can be a signed
+purchase order or a letter of intent, and a `co2_storage` edge can be a binding
+transport agreement or an agreement to investigate one.
+
+| | contract | framework | intent | total |
+|---|---|---|---|---|
+| electrolyser_oem | 90 | 53 | 5 | 148 |
+| capture_technology | 12 | 33 | 5 | 50 |
+| dri_plant | 13 | 5 | 3 | 21 |
+| co2_storage_or_transport | 11 | 8 | 1 | 20 |
+| battery_equipment | 1 | — | — | 1 |
+| **all** | **127** | **99** | **14** | **240** |
+
+**Every one of the 127 contracts and 14 intents cites the sentence it was read
+off**, in `firmness_basis`, quoted from the page at `url` — and a gate refuses any
+edge whose cited sentence is not in the cached body. That gate caught six bad
+citations while this batch was being written, all of them the same mistake, and
+none of them would have been visible in a diff.
+
+The 99 frameworks are the 98 `framework_agreement` edges, ruled en bloc under
+D-14, plus one `equipment_order` that had to be read down: ITM Power's four
+NEPTUNE II units for EDF Renewables and Hynamics at Tees Green Hydrogen (`e0055`,
+8 MW) announce an engineering package against **a capacity reservation** the same
+release names, and a reservation is not a contracted input.
+
+**Only 14 rows in this register have a contracted supplier edge at all** — 21
+contract edges across 14 admitted rows. That is the number rung 6 starts from, and
+it is a sixth of the 117 rows on file.
+
 By speaker: **supplier 239, owner 1**. By source type: supplier_press 237,
 grant_award 2, owner_press 1.
 
@@ -90,10 +160,22 @@ file is a supplier talking about itself.** The brief's third instruction — rec
 both sides where owner and supplier state the same edge — is therefore satisfied
 almost nowhere, and §2.3 is why.
 
-**A framework agreement with no named site is 98 of the 240**, 41%. Under the
-brief these are recorded with `project_id` null and whether they count as demand
-is your ruling. They range from a signed capacity reservation with money behind it
-(ITM Power/Shell, 100 MW) to a memorandum to explore a possibility (Aramis, no
+**A framework agreement is 98 of the 240**, 41%, and your ruling of 11 September
+2026 settles them: they stay as edges to the supplier node, they count toward the
+supplier's contracted total, and they never reach rung 6 for any project. They are
+verdicted en bloc as `framework` and no source was re-read for one.
+
+**One correction to the sentence this paragraph used to carry.** It said a
+framework agreement has no named site. **Thirty-seven of the 98 do name a site**,
+and four of those resolve to an admitted row — `uniper-h2maasvlakte`,
+`3d-dunkirk`, `salcos-salzgitter` and `northern-lights` itself. The sites are kept
+rather than nulled, because a site the source states is a fact about the source,
+and the four `project_id`s are kept too: rung 6 excludes them on firmness, which
+is the axis the ruling actually turns on, so nothing is gained by throwing the
+identification away as well.
+
+They still range from a signed capacity reservation with money behind it (ITM
+Power/Shell, 100 MW) to a memorandum to explore a possibility (Aramis, no
 counterparty named).
 
 ### 2.3 Owner side: 117 rows, 12 that name a supplier
@@ -147,7 +229,17 @@ Three unmatched customers deserve naming on their own:
 
 - **Heidelberg Materials appears at three cement works the register does not
   hold** — Padeswood (MHI, 800 kt/yr, in execution after FID), Lengfurt (Linde, 70
-  kt/yr) and Edmonton, Alberta — while holding three rows that it does.
+  kt/yr) and Edmonton, Alberta — while holding four rows that it does (Brevik,
+  Geseke, Devnya, Slite). **These now have a file.** `sources/cement_candidates.json`
+  opens the cement candidate list for the brief 8 census, in the same shape as the
+  hydrogen and batteries lists and read by `report_candidate_gaps.py` on every
+  build like both of them. Padeswood and Lengfurt are candidates, each carrying
+  `discovered_by` — the edge ids that found it — and the supplier's release as the
+  company source. Edmonton is in an `outside_perimeter` list in the same file
+  rather than among the candidates: it is in Alberta, this sweep records European
+  delivery only, and there is therefore **no edge for it** and no document in this
+  file. It is named so that a reader of the candidate list does not have to wonder
+  where the third works went.
 - **Aalborg Portland / Cementir** (Air Liquide, ACCSION, 1.5 Mt CO2/yr avoided,
   EUR 220m from the Innovation Fund) is the largest single unmatched cement tonnage
   in the sweep.
@@ -155,59 +247,95 @@ Three unmatched customers deserve naming on their own:
   into the cement industry. A cement edge with an anonymous cement customer is
   exactly the shape the register cannot yet hold.
 
-### 2.5 First read: edge sums against stated capacity
+### 2.5 Second read: edge sums against stated capacity, with the dates kept
 
-No drafting. Four things are true and they are different from each other.
+**TWO OF THE THREE OVERSHOOTS THE FIRST READ REPORTED ARE NOT THERE.** They were
+arithmetic done without the dates and without the firmness, and your ruling asked
+for both. Nothing was corrected in either speaker's figures; the sums were rebuilt.
 
-**(a) Where units match, two nodes are oversubscribed against their own stated
-figure.**
+**(a) Neither electrolyser OEM is oversubscribed against its own stated backlog.**
+A backlog is a snapshot at a date. The honest comparison is against the edges that
+existed when the snapshot was taken, split by how firm each one is.
 
-| Node | Edge sum | Stated | Difference |
-|---|---|---|---|
-| tk-nucera | 2,220 MW | 1,500 MW backlog (2025-08-28) | +720 MW |
-| sunfire | 1,110.1 MW | 800 MW backlog (2024-12-19) | +310.1 MW |
+| Node | Backlog stated | As of | Contract, on or before | Framework, on or before | Announced after |
+|---|---|---|---|---|---|
+| tk-nucera | 1,500 MW | 2025-08-28 | **900 MW** | 1,020 MW | 300 MW |
+| sunfire | 800 MW | 2024-12-19 | **347.5 MW** | 510 MW | 252.6 MW |
 
-The arithmetic: tk-nucera 200 (Shell) + 700 (H2 Green Steel) + 120 (Neste) + 300
-(Cepsa) + 600 (anonymous FEED) + 300 (Moeve) = 2,220 MW against a backlog the
-company stated as "around 1.5 gigawatts". Sunfire 0.72 + 1 + 10 + 3.2 + 20 + 10 +
-2.6 + 30 + 30 + 100 + 500 + 100 + 50 + 10 + 2.6 + 40 + 200 = 1,110.1 MW against
-"an order backlog exceeding 800 megawatts".
+tk-nucera's 900 MW is Shell's Holland Hydrogen I (200 MW, January 2022) and
+H2 Green Steel's Boden plant (700 MW, May 2023). The +720 MW the first read
+reported came from summing 1,020 MW of frameworks — Neste 120, Cepsa 300, an
+anonymous 600 MW FEED — into the total, and from a 300 MW contract with Moeve
+signed in **March 2026**, seven months after the company spoke.
 
-**Neither is necessarily a contradiction**, and the docket will not call it one.
-A backlog is a snapshot at a date and these sums run past it; an order announced
-can be cancelled, and this file records cancellations as edges rather than
-removing them. What the arithmetic does say is that the announced total and the
-stated backlog are not the same number and never were.
+Sunfire's 347.5 MW is eleven contracts from Salzgitter's 0.72 MW in August 2020 to
+Ren-Gas's 50 MW in November 2024, and it includes a 2.6 MW double count: Neste's
+MultiPLHY appears as a delivery in 2022 and a start-up in 2025, because this file
+records statements and not a reconciled position. The +310.1 MW came from 550 MW
+of frameworks — one of them a single anonymous 500 MW agreement — plus 252.6 MW
+announced after the backlog was stated.
 
-**(b) One store is oversubscribed against its phase 1 nameplate.** Northern Lights:
-Yara 800,000 + Ørsted 430,000 + Stockholm Exergi 900,000 + Eramet 260,000 =
-2,390,000 t CO2/yr against a phase 1 nameplate of 1,500,000 t/yr — **+890,000**.
-It is comfortably inside phase 2's "minimum of 5 million", and phase 2's FID was
-taken on the strength of the Stockholm Exergi contract that causes the overrun.
-The capacity and the demand that justified it are in one release.
+**What is left is still a disagreement and it points the other way.** A supplier's
+stated backlog is larger than the sum of the contracts it has named, which is
+ordinary — not every order is announced — and is the opposite of oversubscription.
+Both are recorded as disagreements on the node in §2.6, with both values, both
+dates and both speakers, and neither figure is corrected.
 
-**(c) One store is contracted exactly to its nameplate and says so.** Porthos:
-2.5 Mt/yr, and the FID release states "Porthos has contracted its full storage
-capacity". Its four edges — Air Liquide, Air Products, ExxonMobil, Shell — carry
-**no quantity at all**, because the release gives only a combined figure and
-splitting it would be inventing the split. A store sold out with an unsplit
-customer list is a real shape and the file holds it honestly.
+**(b) The Northern Lights overshoot is not there either, and the dates are why.**
+The store's capacity is now a dated list: phase and availability date on each
+entry, from the one release that states both.
 
-**(d) Units prevent the comparison on eighteen of the twenty-seven nodes.** The
-cases, by reason:
+| Phase | Capacity | Available from | Contracted against it | Of which contract |
+|---|---|---|---|---|
+| phase 1 | 1,500,000 t/yr | 2024 | Yara 800,000 (from 2026) + Ørsted 430,000 (from 1 Jan 2026) | 1,230,000 |
+| phase 2 | ≥ 5,000,000 t/yr | second half of 2028 | Stockholm Exergi 900,000 (from 2028) + Eramet 260,000 (MoU, from 2028) | 900,000 |
+
+Phase 1 is **270,000 t/yr short of full**, not 890,000 over. The +890,000 came
+from summing all four agreements against the first phase's nameplate when two of
+them do not start until the second phase opens — and one of those two is an MoU,
+not a contract. The release that announces the expansion says both halves in its
+own words: "Ready to receive CO2 from 2024" for phase 1, and "the expansion is
+expected to be completed and ready for operation in the second half of 2028" for
+phase 2.
+
+**(c) Porthos stands exactly as it was, by your ruling, and it is the cleanest
+case in the file.** 2.5 Mt/yr, and the FID release states "Porthos has contracted
+its full storage capacity". Its four edges — Air Liquide, Air Products, ExxonMobil,
+Shell — carry **no quantity at all**, because the release gives only a combined
+figure and splitting it would be inventing the split. A store sold out with an
+unsplit customer list is a real shape and the file holds it honestly. It is
+recorded as `not_comparable` for that reason and not for a unit clash: the units
+would agree if the edges carried a number.
+
+**(d) 24 of the 28 nodes cannot be compared at all, and for two different
+reasons.** Each is recorded on the node in a `comparison` block with **both units
+named**, rather than described in prose here. No derived figure is written
+anywhere in this file and no delivery window is assumed.
+
+| | Nodes | |
+|---|---|---|
+| The units clash | **8** | nel, itm-power, siemens-energy, mcphy, john-cockerill, slb-capturi, mhi, porthos |
+| The node states no capacity at all | **16** | plug-power, aker-carbon-capture, shell-cansolv, linde, air-liquide, midrex, primetals, tenova, danieli, sms-group, wuxi-lead, manz, hitachi, aramis, greensand, endurance-nep |
+| Comparable | **4** | tk-nucera, sunfire, northern-lights, ravenna-ccs |
+
+The first read gave this as "eighteen of the twenty-seven nodes", which mixed the
+two classes together and counted one node twice. They are different obstacles with
+different remedies: a unit clash is a vocabulary problem somebody could rule on, and
+a node with no stated capacity is a supplier that has never published a rate.
+
+The clashes themselves, by kind:
 
 - **MW against MW/yr.** Every electrolyser OEM except the two in (a). An edge is a
   plant of *n* megawatts; a node capacity is a factory that builds *n* megawatts
   *a year*. ITM Power's 2,753.5 MW of edges against 1,500 MW/yr is six years of
-  orders against an annual rate, and subtracting one from the other would be
-  meaningless. **This is the single most common obstacle in the file.**
+  orders against an annual rate. **The single most common obstacle in the file.**
 - **A count of things against a rate.** SLB Capturi states "seven carbon capture
   plants" and then "eight"; MHI states "13 commercial facilities". Their edges are
-  in tonnes of CO2 a year (3,590,000 and 2,450,000 respectively). Plants cannot be
-  divided into tonnes.
-- **No stated capacity at all.** All five dri_plant nodes, plus plug-power, linde,
-  air-liquide, wuxi-lead, greensand, porthos's customers, aramis, endurance-nep,
-  manz, hitachi, shell-cansolv, sms-group.
+  in tonnes of CO2 a year. Plants cannot be divided into tonnes.
+- **The units match and the bases do not.** John Cockerill's one figure is "close
+  to 200 megawatts" *sold in 2021* — a year's sales, filed as
+  `delivery_commitment` because the vocabulary has no value for it — against plant
+  sizes across six years. Same unit, different question.
 - **Mixed units inside one node.** Nel carries MW, "H2Station fuelling station",
   "H2Station fuelling system" and "hydrogen fuelling site" — four units, because
   four releases said four different things and nothing was converted. Air Liquide
@@ -227,6 +355,25 @@ accident; it has said what it was willing to say.
 
 Recorded in the same shape as `projects.json`'s `disagreements` field: the field,
 the two values, and which speaker said which.
+
+**Two of them are now on the node rather than in this prose** — `disagreements` in
+`nodes.json`, same shape — because they are the arithmetic of §2.5(a) and a number
+kept only in a docket is a number nobody recomputes.
+
+**D-0a — `backlog_mw`, on tk-nucera.**
+- Speaker 1, thyssenkrupp nucera (2025-08-28): "engineering orders totaling 1.5
+  gigawatts", in the Q3 report. **1,500 MW.**
+- Speaker 2, this file's sum (2025-08-28): the contracts the company had announced
+  by that date. **900 MW.**
+- The company's own backlog is larger than the orders it has named. Neither figure
+  is corrected.
+
+**D-0b — `backlog_mw`, on sunfire.**
+- Speaker 1, Sunfire (2024-12-19): "an order backlog exceeding 800 megawatts".
+  **800 MW.**
+- Speaker 2, this file's sum (2024-12-19): eleven contracts, one of which is a
+  restatement of another. **347.5 MW.**
+- Same shape, and a wider gap. Sunfire is unlisted and publishes no order book.
 
 **D-A — `company`, at Måde, Esbjerg.**
 - Speaker 1, Plug Power (2026-06-24): the Måde Power-to-X facility in Esbjerg is
@@ -288,10 +435,13 @@ edge keeps `project_id` null and the note says what was seen. Every edge carries
 (4), `unmatched` (211).
 *Touches:* every edge. The nine `site only` matches are the ones to review first.
 
-**D-3 — Edges and nodes carry three fields the brief did not specify: `note`,
-`match_basis` and `inherited_by`.** A null field cannot say why it is null. `note`
-carries the sentence that makes a reading honest; `match_basis` says what a link
-rests on; `inherited_by` records an acquirer.
+**D-3 — Edges and nodes carry fields the brief did not specify.** A null field
+cannot say why it is null. `note` carries the sentence that makes a reading
+honest; `match_basis` says what a link rests on; `inherited_by` records an
+acquirer. Your batch rulings added `firmness` and `firmness_basis` (D-14),
+`captured_at` (D-7), `site_as_stated`, `sector` and `outside_perimeter` (D-15) to
+edges, and `phase` and `available_from` (D-17), `disagreements`, `comparison` and
+`state` to nodes.
 *Touches:* the shape of `edges.json` and `nodes.json`.
 
 **D-4 — A node is swept for the product its kind names.** Siemens Energy's
@@ -318,19 +468,110 @@ the public permalink is in the note. Citing a page nobody could open would be
 citing something nobody read.
 *Touches:* all 22 `plug-power` edges.
 
-**D-7 — (Yours, 11 September 2026.)** A Wayback capture of a release published on
-the speaker's own domain is the speaker's document; cite it with the capture
-timestamp as source date and file the copy. Applied to McPhy (whole node) and
-Danieli (partial). **The capture timestamp is DERIVED from the URL by
-`dep_records.capture_note`, never typed** — the two hand-written capture dates had
-already drifted from the captures they named before the function existed.
-**One thing to confirm:** the edge's `date` field holds the release's own dateline,
-not the capture date, because that field is what the sweep period is measured
-against and a 2020 release captured in 2024 would otherwise leave the period. The
-capture date is recorded in the note. If you meant `date` itself, it is a one-line
-change and a re-run.
-*Touches:* `e0195`–`e0203` (McPhy), `e0239` and `e0240` (Danieli), and both `mcphy`
-capacity entries.
+**D-7 — (Yours, 11 September 2026, and REVISED by you the same day.)** A Wayback
+capture of a release published on the speaker's own domain is the speaker's
+document; cite it and file the copy.
+
+**THIS SUPERSEDES THE "CAPTURE TIMESTAMP AS SOURCE DATE" WORDING.** The capture
+timestamp is not the source date. It is a field of its own, `captured_at`, on
+edges and on capacity entries alike; `date` keeps the release's own dateline,
+because that is what the sweep period is measured against and a 2020 release
+captured in 2024 would otherwise leave the period. **A document with no dateline
+takes `date = captured_at`, and `date_precision` says `capture_upper_bound`** —
+the release exists at or before that date and this file will not say how much
+before. The hydrogen-gap session aligns to the same shape.
+
+`captured_at` is DERIVED, never typed: from the Internet Archive URL where there
+is one, and from this sweep's own `fetched_at` in the cache index where the copy
+on file is a live fetch. The two hand-written capture dates had already drifted
+from the captures they named before the function existed.
+
+**Three things fell out of the re-read, and two of them were errors.**
+
+- **Both Danieli captures carry a dateline after all.** The first pass dated them
+  by year — 2025-01-01 and 2022-01-01 — because danieli.com prints the category,
+  then the date, then the headline in one run of text that reads as navigation.
+  `e0239` is **3 February 2025** and `e0240` is **23 May 2022**, both to the day.
+- **`e0240`'s body is readable after all.** The note said the capture had a
+  headline and nothing else. It has an article: a ministerial visit to Cargnacco
+  and an expansion announcement, which is why its firmness is `intent` and not
+  `contract`. Nothing is claimed about what was sold.
+- **One document in the whole file has no dateline at all** — Midrex's page on
+  thyssenkrupp Steel's construction approval (`e0194`), which carries no printed
+  date and no metadata date. It now takes this sweep's own fetch date as an upper
+  bound, and the year the first pass inferred from the text is withdrawn.
+
+*Touches:* `e0195`–`e0203` (McPhy), `e0239` and `e0240` (Danieli), `e0194`
+(Midrex), and both `mcphy` capacity entries.
+
+**D-14 — (Yours.) Every edge carries `firmness`, and `edge_kind` maps rather than
+being recorded twice.** `contract` is a firm order or a signed supply agreement;
+`framework` is an agreement with no named site or no quantity; `intent` is an MoU,
+a study, a pre-FEED, a letter of intent or a selection the document itself calls
+conditional. **Read from the source sentence and cited** — `firmness_basis` quotes
+it, and a gate refuses any edge whose cited sentence is not in the cached body.
+
+`framework_agreement` already encodes its own firmness, so the 98 edges of that
+kind map to `framework` and carry the en-bloc ruling as their basis rather than a
+second field saying the same thing. **No source was re-read for one of them**, as
+you ruled. The other 142 were read: 127 contract, 14 intent, and one
+`equipment_order` read down to `framework` because the release says its megawatts
+sit on a capacity reservation (`e0055`).
+
+*Touches:* every edge; `dep_sweep.FIRMNESS`; the citation gate in
+`dep_records.check`.
+
+**D-15 — (Yours.) A named site that matches no admitted row stays on the supplier
+node, with a sector tag and `outside_perimeter: true`.** Ninety-four edges. They
+are demand on the same supplier capacity as a matched edge and they belong in the
+supplier's totals; they belong to no project. A company named **without** a site
+is not this — it may well be a row nobody could identify — and those edges carry
+`outside_perimeter: false`, which is a different fact and is kept as one.
+
+Heidelberg Materials' three cement works leave this class for
+`sources/cement_candidates.json` and the brief 8 census, each carrying the edge
+that discovered it.
+
+*Touches:* 94 edges; `sources/cement_candidates.json`, new.
+
+**D-16 — (Yours.) Aker Carbon Capture takes the McPhy ruling: its own node, a
+status event for the transfer, and its edges inherited by reference.** Fourteen
+edges signed between April 2023 and April 2024 under the company's own name and
+its own listing stay on `aker-carbon-capture`, each carrying
+`inherited_by: {node_id: "slb-capturi", since: "2024-06-14", source_url: ...}`.
+The transfer is a `status_history` event on both sides — the seller's and the
+receiver's — with the date on each. Folding them onto one node would lose the
+speaker and double any sum that read both.
+
+**It is not defunct in the way the file said it was**, and the check you asked for
+is in §1: slbcapturi.com resolves **nowhere** on slb.com, publishing no address
+record while SLB's own nameservers hold the domain; akercarboncapture.com resolves
+and serves nothing. Both are recorded as refusal classes rather than as one
+sentence about domains being gone.
+
+*Touches:* `e0140`–`e0153`; `dep_sweep.NODES`; `slb-capturi`'s `home`, which was
+pointing at the domain with no address record and now points at capturi.slb.com.
+
+**D-17 — (Yours.) A store's capacity is a dated list, and the dates decide the
+arithmetic.** `phase` and `available_from` on every capacity entry that states
+them. Northern Lights gets phase 1 and phase 2 as separate entries and each
+contract is summed against the phase whose availability date it states; Ravenna
+CCS gets the same treatment from the same kind of release; Porthos stands as it
+was, by your ruling. The +890,000 t/yr overshoot does not survive it — see
+§2.5(b).
+
+*Touches:* both `northern-lights` capacity entries, both `ravenna-ccs` entries,
+`dep_records.add_capacity`.
+
+**D-18 — (Mine, and flagged rather than acted on.) One reading is not supported by
+the page it cites.** `e0023` records an undisclosed Dutch H2Station order dated
+10 August 2022. The page now cached at that URL is Nel's release of **17 December
+2019** about a named customer, OrangeGas — a different customer and a date before
+this sweep's period. Either Nel reused the slug or the reading took its date from
+somewhere the document does not say it. The edge stands, with the whole of that in
+its note, because deleting a reading is your call and not a re-run's.
+
+*Touches:* `e0023`.
 
 **D-8 — The four false links the matcher produced, and the rule each forced.**
 Recorded here as the basis for alias kinds, at your instruction.
@@ -361,8 +602,10 @@ corpus has taken on a licensing question it was never asked.
 **D-10 — Supplier nodes carry a `status_history` in the shape `projects.json`
 uses.** (Yours.) Same field names, same append-only discipline, same
 source-per-entry rule; the `status` vocabulary is the supplier's own, because
-`operating` says nothing useful about a company. Nine events on three nodes:
-`slb-capturi` (2), `mcphy` (1), `manz` (6).
+`operating` says nothing useful about a company. Ten events on four nodes:
+`manz` (6), `slb-capturi` (2), `mcphy` (1), `aker-carbon-capture` (1) — the last
+added by D-16, and it is the seller's side of the same transfer slb-capturi
+records as the receiver's.
 
 **D-11 — John Cockerill inherits McPhy's edges by reference, not by copy.** Each
 of McPhy's nine edges carries
@@ -434,13 +677,36 @@ outside this sweep's Europe (McPhy/CEOG, `e0203`) and no country is recorded for
 
 ## 6. What a re-run should do first
 
-1. **Rule on D-7's date field** — one line, one re-run, and it moves McPhy's and
-   Danieli's eleven edges.
-2. **Review the nine `site only` matches.** All nine read correctly by hand, but
-   each rests on a place name with no company agreement.
-3. **Finish Danieli.** Nine of 107 archive captures retrieved; the Internet Archive
-   throttles hard enough that this needs its own run.
-4. **Decide whether the 98 framework agreements are demand.** They are 41% of the
-   file and the brief reserved the ruling.
+Rewritten 11 September 2026. Four of the five items the first version listed are
+now done: D-7's date field is ruled and applied, the 98 frameworks are ruled, the
+Aker node is split and the storage phases are dated.
+
+1. **Verdict the edges, in the order in `sources/dependency_worklist.md`.** 25
+   matched to a register row first, grouped by row; then the 94 at a site this
+   register does not hold, grouped by site; then the other 121. Every verdict is
+   still null. The worklist regenerates — `python3 sources/dep_worklist.py --write`
+   — because a pasted list of outstanding work is wrong by the following morning.
+2. **Finish Danieli.** Nine of 107 archive captures retrieved; the node is marked
+   `incomplete: true` in `nodes.json` and **anybody summing it is summing a
+   sample**. The Internet Archive throttles hard enough that this needs its own
+   run, and this batch deliberately did not start one.
+3. **Rule on `e0023`** — DECISION D-18. A reading whose cited page is a different
+   release about a different customer, flagged rather than deleted.
+4. **Review the nine `site only` matches.** All nine read correctly by hand, but
+   each rests on a place name with no company agreement, and rung 6 will score
+   them.
 5. **The two Plug Power URLs the register cites that a reader cannot open.**
    `plugpower-kokkola` and `plugpower-kristinestad`. The text is in the Q4 feed.
+6. **Retrieve the Shell Cansolv page by hand.** Queued in
+   `sources/manual/MANIFEST.json` beside the two Shell hydrogen items, for the same
+   refusal and one other: shell.com answers 200 with zero characters of text, and
+   humberzero.co.uk answers 404 on every path.
+7. **The three counts in the batch report did not reconcile with the file**, and
+   the file is what this docket reports. The ruling asked for 94 edges matched to
+   register rows: the matched set is **25** (11 `site+company`, 9 `site only`, 5
+   explicit), and 94 is the count of the *other* class — the site-named edges
+   outside the perimeter, which is where that ruling landed. The ruling asked for
+   48 of those; there are **94**. And the 18 unit mismatches are **8**, with a
+   further 16 nodes stating no capacity at all — the first read had mixed the two
+   classes into one number. Nothing was bent to fit a count; the classes are ruled
+   as ruled and the numbers are recomputed on every build.
