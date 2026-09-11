@@ -1,14 +1,28 @@
 #!/usr/bin/env python3
-"""Every European entry at or above 100 MW in the two benchmark lists that this
-register does NOT hold, classified — and the residue named so it can be worked.
+"""Every European entry at or above 100 MW in the benchmark that this register does
+NOT hold, classified — and the residue named so it can be worked. Plus the drift
+between the benchmark's two vintages.
+
+ONE BENCHMARK IN TWO VINTAGES, NOT TWO BENCHMARKS. Recorded 11 September 2026.
+Odenweller & Ueckerdt (2025) IS the IEA's Hydrogen Projects Database of October
+2023, quality-checked, keeping the IEA's own reference numbers. It is the live
+file's own past, so it cannot corroborate it and its absences are not independent
+evidence of anything. THE GAP IS MEASURED AGAINST THE CURRENT FILE ALONE; the
+October 2023 vintage is read for drift — what left the list, what was renamed,
+what is new — and for nothing else. See sources/benchmark_snapshots.json,
+"relationship".
+
+The earlier reading, two columns side by side, double-counted every absence and
+then needed a name-stem join to reconcile the two — which is how a machine guess
+got into a class as a verdict (D54). The dependency was there the whole time: 35
+of the 54 references the admission search settled exist in both files under the
+same number.
 
 WHY A SECOND SCRIPT AND NOT A COLUMN IN THE FIRST. build_hydrogen_benchmark.py
 answers "what does this register hold, and how does each row compare". This one
 answers the opposite question, which is the one a reader distrusts a register
-over: what do the outside lists hold that you do not, and is each absence a
-decision or an oversight. Those are different populations — the first is over
-twenty rows, this is over four hundred and ninety-two entries — and a column
-that tried to be both would be a column nobody could total.
+over: what does the outside list hold that you do not, and is each absence a
+decision or an oversight.
 
 THE POPULATION IS WIDER HERE, DELIBERATELY. The first script counts electrolysis
 only, because that is the perimeter. This one counts EVERY technology at or above
@@ -166,14 +180,13 @@ def verify_inputs() -> list[str]:
 # same site and not the same row. A guess now goes to `possible duplicate, not
 # confirmed`, is printed by name with the stem it matched and the object it matched,
 # and is promoted only by a person writing it below.
-CONFIRMED_DUPLICATES = {
-    # (benchmark, ref): (held object, why — read by a person)
-    ("odenweller_ueckerdt_2025", "1476"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 1"),
-    ("odenweller_ueckerdt_2025", "2381"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 2"),
-    ("odenweller_ueckerdt_2025", "2382"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 3"),
-    ("odenweller_ueckerdt_2025", "2383"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 4"),
-    ("odenweller_ueckerdt_2025", "2384"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 5"),
-}
+CONFIRMED_DUPLICATES: dict[tuple[str, str], tuple[str, str]] = {}
+# EMPTY, AND KEPT. Its five members — the H2V Marseille-Fos phase rows — were confirmed by
+# hand and then written onto h2v-fos-marseille as references, which is where a confirmed
+# match belongs. The dict stays as the place a future hand confirmation lands before
+# somebody gets round to recording the identifier, and an entry in it is a debt rather
+# than an answer.
+
 # THE H2V CONFIRMATION, READ ONCE AND WRITTEN DOWN. The academic file carries six rows
 # for this project, refs 1476 and 2381-2384 and 1477, each of 100 MWel, with an
 # `Announced Size` running 100, 200, 300, 400, 500 and 600 MW and a date online running
@@ -200,9 +213,27 @@ POSSIBLE_DUPLICATE_NOTES = {
             "because galp.com answers with an empty body.",
 }
 
-CLASSES = ("duplicate of a held row", "possible duplicate, not confirmed",
-           "DRI or other perimeter exclusion", "blue",
-           "below threshold on reading", "benchmark gives no location",
+# THREE CLASSES LEFT THE TABLE ON 11 SEPTEMBER 2026 AND THEIR DEFINITIONS DID NOT.
+# They are in sources/scope.md, because a class that can have no members is still a
+# ruling somebody made and a reader may need to know why nothing is there.
+#
+#   duplicate of a held row      Empty by construction since identifier match became the
+#                                only duplicate route: an entry whose reference this
+#                                register holds never reaches classify() at all.
+#   benchmark gives no location  A fact about the October 2023 vintage, which has no
+#                                location column. The current file publishes a latitude
+#                                and a longitude for every European entry, so the class
+#                                could only ever be zero against it.
+#   below threshold on reading   Same: it tested the `Announced Size` column, which only
+#                                the older vintage carries.
+#
+# WHAT IS KEPT AT ZERO IS `unexplained at FID or beyond`, because THAT zero is the
+# claim — every absence at FID or beyond is a decision somebody made — and a table that
+# stopped printing it would stop making it.
+RETIRED_CLASSES = ("duplicate of a held row", "benchmark gives no location",
+                   "below threshold on reading")
+
+CLASSES = ("DRI or other perimeter exclusion", "blue",
            "searched, no owner or permit source found",
            "owner or permit source names the site, not admitted",
            "company source unreadable", "unexplained at FID or beyond")
@@ -266,6 +297,31 @@ REFUSED_BY_NAME = {
 # among the projects nobody has looked at, which is a different and less honest
 # thing to say about it.
 UNREADABLE_BY_NAME = {
+    # THE THREE THE STEM ROUTE LEFT BEHIND, moved here 11 September 2026. Each was matched
+    # to a held row by name and by nothing else, and each is a phase-II row that MIGHT be
+    # the same works enlarged or MIGHT be a second project. None can be settled, because in
+    # all three the company's own source refuses a declared reader — which is what this
+    # class is for. THEY DO NOT COUNT AS HELD AND THEY DO NOT COUNT AS DUPLICATE. They
+    # count as unread, and they are queued in sources/manual/wanted.
+    ("iea_hydrogen_production_projects", "928"):
+        "Uniper H2Maasvlakte, phase II. H2Maasvlakte is a row here at 100 MW on ref 927. "
+        "Whether phase II is that works enlarged or a second project needs uniper.energy, "
+        "which answered 403 to a declared reader four times in the admission search.",
+    ("odenweller_ueckerdt_2025", "928"):
+        "The October 2023 vintage of the same entry, and the same unread question.",
+    ("iea_hydrogen_production_projects", "1806"):
+        "Holland Hydrogen - phase 2. Holland Hydrogen 1 is a row here at 200 MW. Holland "
+        "Hydrogen 2 is discussed publicly as a SEPARATE later project on the same "
+        "Maasvlakte, which would make this not a duplicate at all but a gap the register "
+        "has been explaining away. shell.com answers 200 with thirty-eight characters.",
+    ("odenweller_ueckerdt_2025", "1806"):
+        "The October 2023 vintage of the same entry, and the same unread question.",
+    ("odenweller_ueckerdt_2025", "1877"):
+        "Sines refinery (phase 3), 600 MW. Galp's Sines electrolyser is a row here at 100 "
+        "MW on ref 1169 and Galp's published plan runs 100, then 600, then 1,500 MW at the "
+        "same refinery. The identity of the works is not seriously in doubt; the "
+        "confirmation is, because galp.com answers with an empty body.",
+
     ("odenweller_ueckerdt_2025", "1910"): (
         "MoU Shell - Mitsubishi, phase1 — Shell's own list of its hydrogen projects, at "
         "shell.com/what-we-do/hydrogen/shell-hydrogen-projects.html, answers a declared "
@@ -314,13 +370,13 @@ def classify(entry: dict, name: str, status: str, tech: str, size: str,
              has_location: bool = False) -> str:
     if key in REFUSED_BY_NAME:
         return "DRI or other perimeter exclusion"
-    if key in CONFIRMED_DUPLICATES:
-        return "duplicate of a held row"
-    if stem(name) in held_stems:
-        # NOT A VERDICT. The reference route never reaches here — an entry whose own
-        # reference is held is filtered out before classify() is called — so anything
-        # arriving on a stem alone is a proposal for a person.
-        return "possible duplicate, not confirmed"
+    # IDENTIFIER MATCH IS THE ONLY DUPLICATE ROUTE, from 11 September 2026. An entry
+    # whose own reference is held never reaches classify() at all, so there is nothing
+    # left here to test: a duplicate is a reference this register has written down.
+    # STEM MATCHING IS RETIRED AS A CLASS and survives as a discovery aid — it proposes,
+    # a person reads, and what survives is written onto the object as a reference. That
+    # is how the five H2V Marseille-Fos phases became part of h2v-fos-marseille rather
+    # than a class called "probably".
     if STEEL.search(name) or MAKER.search(name):
         return "DRI or other perimeter exclusion"
     if "ccus" in tech.lower() or "fossil" in tech.lower() or BLUE.search(name):
@@ -484,6 +540,115 @@ def disagreements() -> str:
     return "\n".join(out)
 
 
+def drift(ou: dict, iea: dict, held_ou: set, held_iea: set, rows: list) -> str:
+    """WHAT CHANGED BETWEEN THE TWO VINTAGES, which is the only question the older file
+    can answer on its own.
+
+    Odenweller & Ueckerdt (2025) IS the IEA's October 2023 database, quality-checked, under
+    the IEA's own reference numbers (sources/benchmark_snapshots.json, "relationship"). It
+    is not a second opinion and it cannot corroborate the live file, because it is the live
+    file's own past. Reading it as an independent benchmark produced a second gap column
+    that double-counted every absence and invited a name-stem join to reconcile them.
+
+    So it is read for DRIFT: three numbers over the European entries at or above the
+    threshold in either vintage.
+
+        left      in October 2023, gone from the current file
+        renamed   in both, under a different name
+        added     in the current file, absent from October 2023
+
+    A PROJECT THAT VANISHES FROM A DATABASE IS A PROJECT WHOSE FAILURE NOBODY COUNTS
+    (rule 17). `left` is where that shows, and it is the reason this recast is worth more
+    than the column it replaces: Gigastack was found exactly this way, twice in the old
+    vintage with an unknown status and absent from the new one.
+    """
+    left, renamed, added = [], [], []
+    for ref, row in sorted(ou.items(), key=lambda kv: int(kv[0])):
+        now = iea.get(ref)
+        if now is None:
+            left.append((ref, str(row["Project name"]), str(row["Status"])))
+        elif str(row["Project name"]).strip().lower() != str(now["projectName"]).strip().lower():
+            renamed.append((ref, str(row["Project name"]), str(now["projectName"])))
+    for ref, row in sorted(iea.items(), key=lambda kv: int(kv[0])):
+        if ref not in ou:
+            added.append((ref, str(row["projectName"]), str(row["status"])))
+
+    carried = set(ou) & set(iea)
+    # THE ROWS SUM, AND THEY ONLY SUM IF `renamed` IS SHOWN INSIDE `carried over`. A
+    # renamed entry did not leave and did not arrive: it is carried over under an edited
+    # name. Printed flat, the four numbers add to more than either vintage holds and a
+    # reader has to work out which of them overlap.
+    out = [f"\nDRIFT BETWEEN THE TWO VINTAGES of one benchmark — October 2023 against the "
+           f"current file.\nThe academic file is the IEA's own past and is read for this "
+           f"and not as a second gap:",
+           f"  left the list      {len(left):>4}   in October 2023, absent now",
+           f"  carried over       {len(carried):>4}   in both vintages",
+           f"    of which renamed {len(renamed):>4}   same reference, edited name",
+           f"  added              {len(added):>4}   in the current file, absent from Oct 2023",
+           f"  ---",
+           f"  October 2023 total {len(left) + len(carried):>4}   = left + carried over",
+           f"  current total      {len(carried) + len(added):>4}   = carried over + added",
+           "",
+           "  LEAVING THE LIST IS VINTAGE DRIFT AND NOTHING ELSE. It is not a stop event, it "
+           "is not a\n  stop class, and no row's status_history is touched on the strength "
+           "of it. A database\n  that drops a row has said nothing about the project."]
+
+    # WHAT THIS REGISTER MADE OF THE ONES THAT LEFT, which is the question drift is for:
+    # did we notice, and on what terms.
+    row_refs, cand_refs, ids = set(), set(), {r["id"] for r in rows}
+    for r in rows:
+        for x in bench.as_list((r.get("benchmarks") or {}).get("odenweller_ueckerdt_2025")):
+            row_refs.add(str(x))
+    cand_path = bench.ROOT / "sources" / "hydrogen_candidates.json"
+    if cand_path.exists():
+        for c in json.loads(cand_path.read_text(encoding="utf-8"))["candidates"]:
+            if c["id"] in ids:
+                continue
+            for x in bench.as_list(c["benchmarks"].get("odenweller_ueckerdt_2025")):
+                cand_refs.add(str(x))
+    refused = {ref for b, ref in REFUSED_BY_NAME if b == "odenweller_ueckerdt_2025"}
+    buckets = {"admitted, a row here": [], "candidate, not yet a row": [],
+               "refused with a clause": [], "never seen by this register": []}
+    for ref, name, status in left:
+        if ref in row_refs:
+            buckets["admitted, a row here"].append((ref, name, status))
+        elif ref in cand_refs:
+            buckets["candidate, not yet a row"].append((ref, name, status))
+        elif ref in refused:
+            buckets["refused with a clause"].append((ref, name, status))
+        else:
+            buckets["never seen by this register"].append((ref, name, status))
+    out.append("\n  THE 149 THAT LEFT, AGAINST THIS REGISTER'S OWN CLASSES:")
+    for b, items in buckets.items():
+        out.append(f"    {b:32} {len(items):>4}")
+    out.append(f"    {'':32} {sum(len(v) for v in buckets.values()):>4}   total")
+    shown = buckets["admitted, a row here"]
+    if shown:
+        out.append("\n  ADMITTED HERE AND GONE FROM THE LIST — the case rule 17 was written "
+                   "for:")
+        for ref, name, status in shown:
+            out.append(f"    ref {ref:>5}  {status[:18]:18} {name[:58]}")
+    if left:
+        out.append("\n  LEFT THE LIST — a project that vanishes from a database is a project "
+                   "whose failure\n  nobody counts (rule 17). Each of these was in the "
+                   "October 2023 file and is not in the\n  current one, and the list says "
+                   "nothing about why:")
+        for ref, name, status in left[:40]:
+            mark = "held" if ref in held_ou else "    "
+            out.append(f"    {mark} ref {ref:>5}  {status[:18]:18} {name[:60]}")
+        if len(left) > 40:
+            out.append(f"    and {len(left) - 40} more")
+    if renamed:
+        out.append("\n  RENAMED — the same reference under a different name. Every one of "
+                   "these would have\n  broken a name-stem join, which is the other half of "
+                   "why stem matching is retired:")
+        for ref, was, now in renamed[:20]:
+            out.append(f"    ref {ref:>5}  {was[:44]:44} -> {now[:44]}")
+        if len(renamed) > 20:
+            out.append(f"    and {len(renamed) - 20} more")
+    return "\n".join(out)
+
+
 def main() -> int:
     ou_all, iea_all = bench.load_ou(), bench.load_iea()
     checks = verify_inputs()
@@ -556,20 +721,32 @@ def main() -> int:
         w.writeheader()
         w.writerows(out)
 
-    print(f"report_benchmark_gap: {len(ou)} O&U and {len(iea)} IEA European entries at or "
-          f"above 100 MW; eufabric holds {len(held_ou & set(ou))} and "
-          f"{len(held_iea & set(iea))}.\n")
+    print(f"report_benchmark_gap: {len(iea)} European entries at or above 100 MW in the "
+          f"benchmark; eufabric holds {len(held_iea & set(iea))} of them as rows or "
+          f"candidates.\nThe October 2023 vintage of the same benchmark carries {len(ou)} "
+          f"and is read for drift, below.\n")
     # The class names outgrew the column when the split landed; the width is
     # measured rather than fixed so the next rename does not break the table.
+    # ONE COLUMN. The October 2023 vintage had a column here until 11 September 2026 and
+    # it was double counting: the same project absent from both files is one absence, not
+    # two, because one file is the other's past.
     w = max(len("held by eufabric (rows and candidates)"), *(len(c) for c in CLASSES))
-    print(f"| {'class':{w}} | {'O&U':>5} | {'IEA':>5} |")
-    print(f"|{'-' * (w + 2)}|{'-' * 7}|{'-' * 7}|")
+    print(f"| {'class':{w}} | {'entries':>7} |")
+    print(f"|{'-' * (w + 2)}|{'-' * 9}|")
     for c in CLASSES:
-        print(f"| {c:{w}} | {counts['odenweller_ueckerdt_2025'][c]:5} | "
-              f"{counts['iea_hydrogen_production_projects'][c]:5} |")
-    print(f"| {'held by eufabric (rows and candidates)':{w}} | {len(held_ou & set(ou)):5} | "
-          f"{len(held_iea & set(iea)):5} |")
-    print(f"| {'TOTAL':{w}} | {len(ou):5} | {len(iea):5} |")
+        print(f"| {c:{w}} | {counts['iea_hydrogen_production_projects'][c]:7} |")
+    hidden = {c: counts["iea_hydrogen_production_projects"][c] for c in RETIRED_CLASSES
+              if counts["iea_hydrogen_production_projects"][c]}
+    if hidden:
+        print(f"| {'RETIRED CLASS WITH MEMBERS — see scope.md':{w}} | {'':7} |")
+        for c, n in hidden.items():
+            print(f"| {c:{w}} | {n:7} |")
+    print(f"| {'held by eufabric (rows and candidates)':{w}} | {len(held_iea & set(iea)):7} |")
+    print(f"| {'TOTAL':{w}} | {len(iea):7} |")
+    if not hidden:
+        print(f"  Three classes are retired and empty — duplicate of a held row, benchmark "
+              f"gives no\n  location, below threshold on reading. Their definitions are in "
+              f"scope.md; they print\n  here only if something lands in one.")
 
     residue = [r for r in out if r["class"] == "unexplained at FID or beyond"]
     if residue:
@@ -606,6 +783,7 @@ def main() -> int:
         print("\npossible duplicates, NOT CONFIRMED (0) — every duplicate on file was "
               "reached\nby the benchmark's own reference or confirmed by a person.")
 
+    print(drift(ou, iea, held_ou, held_iea, rows))
     print(search_crosstab())
     print(disagreements())
 

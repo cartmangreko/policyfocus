@@ -180,7 +180,25 @@ def _source_list(e: Errors, where: str, row: dict) -> None:
         # fetched the page and there is no version of that fact that is vaguer.
         # It is gated to the day shape rather than given a precision field, so
         # the asymmetry is enforced instead of remembered.
-        _dated(e, w, s, "date", "date_precision")
+        # A SOURCE'S DATE MAY BE AN UPPER BOUND, which no other date on this layer
+        # may be, so this call cannot share the event vocabulary.
+        if s.get("date_precision") == "not_after":
+            if not s.get("captured_at"):
+                e.add(w, "date_precision=\"not_after\" with no captured_at — an upper "
+                         "bound on a publication date is the capture that proves the text "
+                         "existed, and without the capture it is a guess")
+            if not EVENT_DATE_SHAPE["day"].match(str(s.get("date") or "")):
+                e.add(w, "date_precision=\"not_after\" but date is not a day — the bound "
+                         "is a capture, and a capture happens on a day")
+        else:
+            _dated(e, w, s, "date", "date_precision")
+        if s.get("captured_at") is not None:
+            if not EVENT_DATE_SHAPE["day"].match(str(s["captured_at"])):
+                e.add(w, f"captured_at={s['captured_at']!r} is not YYYY-MM-DD — it is the "
+                         f"day a crawler took the copy")
+            if not s.get("archived"):
+                e.add(w, "captured_at without archived: true — the field records an "
+                         "archive capture and nothing else")
         if s.get("retrieved_date") is not None:
             if not EVENT_DATE_SHAPE["day"].match(str(s["retrieved_date"])):
                 e.add(w, f"retrieved_date={s['retrieved_date']!r} is not YYYY-MM-DD — it "

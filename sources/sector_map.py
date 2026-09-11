@@ -409,6 +409,29 @@ EVENT_DATE_PRECISIONS = (
 VALUE_DATE_PRECISIONS = EVENT_DATE_PRECISIONS
 
 
+# AND A SOURCE'S DATE HAS A FOURTH STATE THE OTHER THREE CANNOT SAY. Ruled 11
+# September 2026, with the archive fallback.
+#
+# `not_after` MEANS THE DOCUMENT CARRIES NO DATELINE AND THIS IS THE LATEST IT CAN
+# BE. It is used where a source survives only as an Internet Archive capture and
+# the publisher never dated the page: the capture proves the text existed on that
+# day and says nothing about when it was written. Ørsted's Skovgaard release is
+# the case — no meta date, no date in the body, and a URL path saying 2022/12
+# which is the publisher's filing and not the document's dateline.
+#
+# IT IS NOT `day`. A day says the publisher published on that day. An upper bound
+# says nobody knows, and the difference matters to anything that reads a date as
+# evidence of when a thing was said: the register's own slip and disagreement
+# arithmetic would otherwise treat a capture date as a statement date and compute
+# delays out of when somebody happened to crawl a page.
+#
+# WHERE THE DOCUMENT DOES CARRY A DATELINE, THE DATELINE WINS AND THE CAPTURE GOES
+# TO `captured_at`. IGNIS's page is the case on the other side: its own metadata
+# says 23 September 2024, which is the date, while the capture of 16 April 2026 is
+# only how this register reached it.
+SOURCE_DATE_PRECISIONS = EVENT_DATE_PRECISIONS + ("not_after",)
+
+
 TARGET_PRECISIONS = (
     "year",
     "half",

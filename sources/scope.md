@@ -1564,3 +1564,164 @@ tried.
 undrawn, by `report_candidate_gaps.py` on every build. Hydrogen is 11 drawn and 55
 undrawn. Where a sector surfaces, its page states both, because a row count that has
 absorbed the undrawn tells a reader the picture is larger than it is.
+
+### One benchmark in two vintages, and a stem match is not a join
+
+Odenweller & Ueckerdt (2025) **is** the IEA's Hydrogen Projects Database of October 2023,
+quality-checked, keeping the IEA's own reference numbers. The register held it as a second
+benchmark for a week and that was wrong in a way that cost real work: two gap columns
+double-counted every absence, neither could corroborate the other, and reconciling them
+invited a **name-stem join** — which put a machine's guess into a class as a verdict.
+
+**The gap is measured against the current vintage alone.** The older one is read for
+**drift** — what left the list, what was renamed, what is new — and for nothing else. The
+dependency is recorded in `sources/benchmark_snapshots.json` under `relationship`.
+
+**The drift rows only sum if `renamed` sits inside `carried over`**, and the table says so:
+left (149) + carried over (106) = the October 2023 total of 255; carried over + added (131)
+= the current total of 237. A renamed entry neither left nor arrived.
+
+**LEAVING THE LIST IS VINTAGE DRIFT AND NOTHING ELSE.** It is not a stop event, it is not a
+stop class, and no row's `status_history` is touched on the strength of it. This sits
+directly against rule 17 in the hydrogen docket — *a benchmark that drops a project drops
+its failure* — and the two are easy to confuse, so: rule 17 says the register must go and
+look when an entry disappears, because the disappearance may be hiding a failure nobody
+counted. It does not say the disappearance IS the failure. A database that drops a row has
+said nothing about the project, and reading 149 departures as 149 stops would manufacture
+the very thing rule 17 exists to catch honestly.
+
+**What the departures are read against is this register's own classes.** Of the 149: 16 are
+rows here, 1 is refused with a clause, 132 were never seen at all, and none is a candidate
+without a row. Gigastack is in the 16, twice — the case rule 17 was written for, and the
+only one anybody had caught by hand.
+
+Drift earns its place immediately: **149 of the 255 European entries at or above 100 MW in
+the October 2023 vintage are absent from the current file**, against 131 added and 31
+renamed. A project that vanishes from a database is a project whose failure nobody counts,
+and `left` is the only place that shows.
+
+**Identifier match is the only accepted duplicate route.** An entry is a duplicate of a
+row when this register has written that entry's reference onto the row, and never because
+two names resemble each other. **Stem matching is retired as a class** and survives as a
+discovery aid: it proposes, a person reads, and what survives is recorded as a reference on
+the object — which is how the five H2V Marseille-Fos phase rows became part of
+`h2v-fos-marseille` rather than a class called "probably". The 31 renamed references are
+the other half of the argument: every one of them would have broken a name join, and the
+same edit that breaks a join silently invents one somewhere else.
+
+**An entry nobody can read is neither held nor duplicate.** Three phase-II rows — Uniper
+H2Maasvlakte, Holland Hydrogen 2, Sines refinery phase 3 — were matched to held rows by
+name alone, and in all three the company's own source refuses a declared reader. They are
+`company source unreadable`, queued in `sources/manual/wanted`, and **counted as unread**.
+Holland Hydrogen 2 in particular is discussed publicly as a separate later project, which
+would make it a gap the register had been explaining away.
+
+### When a publisher goes dark after a page was read, cite the capture
+
+A source read today may be unreadable tomorrow: uniper.energy closed overnight on 10
+September 2026, and ignis.es and orsted.com both closed within hours of being read on the
+same day. The gate catches it, because `check_links` runs on every push and a 403 fails the
+build.
+
+**The fallback is the Internet Archive, and the date rule has three clauses.**
+
+1. **`date` keeps the document's own dateline**, at the precision the document states it.
+   A capture does not overwrite a publication date; it is only how the register reached
+   the document. IGNIS's page carries `article:published_time` of 23 September 2024, so
+   that is the date, and the capture of 16 April 2026 is not.
+2. **The capture timestamp goes in `captured_at`**, derived from the Wayback URL, at day
+   precision, with `archived: true` and the copy filed under `sources/manual/` with a
+   manifest entry. The live URL stays in the note so a reader can try it.
+3. **A document with no dateline takes `date = captured_at`, with precision `not_after`.**
+   That is an upper bound and says so: the text existed on the day it was captured and
+   nobody here knows when it was written. Ørsted's Skovgaard release is the case — no meta
+   date, none in the body, and a URL path reading `/news/2022/12/` which is the publisher's
+   filing and not the document's dateline.
+
+**`not_after` is not `day`, and the difference is not pedantry.** A day says the publisher
+published then. An upper bound says nobody knows. Anything that reads a date as evidence of
+when a thing was *said* — this register's slip and disagreement arithmetic, above all —
+would otherwise compute delay out of when a crawler happened to visit.
+
+The rule was written the wrong way round first: both rows were re-dated to their captures,
+which threw away IGNIS's own dateline to record how we reached it. Corrected 11 September
+2026.
+
+### There is no estate rule, and the sample is why
+
+The question was whether an industrial estate's polygon could ever place a works, given
+that most of the forty-four stand on estates. **Ten sweeps answered it in the negative and
+the ruling is that no estate rule is written.**
+
+One hit in ten, and the hit did not need an estate: `cimenterie Vicat` is the cement works
+Hynovi's electrolyser is to stand on, and the **host-works rule already admits it**. The
+other nine returned substations, scrap yards, a bus depot, nine street cabinets labelled
+"Substation", and between 2 and 195 unnamed industrial parcels each. **The basemap is not
+empty at these places; it is full of unrelated named industry** — which is precisely what
+an estate polygon would launder into a position.
+
+**Position continues to come from one of three things:** a stated address, a stated
+coordinate from a company or a permit source, or **a host works the owner names**. Nothing
+else. The full sample, with the machine's bucket and the hand verdict side by side, is in
+`sources/hydrogen_basemap_sample.json`.
+
+### Which sweeps are worth running, and where they are centred
+
+**A sweep is run only where the owner or a permit names a host works or an address**, or a
+named place smaller than the municipality. Where the owner names a municipality and nothing
+more, the row stays undrawn **without a sweep** — the sample already showed what a
+municipality-centred sweep returns, and running thirty more to be told the same thing is
+not evidence-gathering, it is exercise.
+
+**A sweep is centred on the owner-named place, read from the extract's own place node.**
+Never an external geocoder: a geocoder is a third party's coordinate under another name,
+and this register has refused those since the perimeter was written. **And the centre is
+never written as a coordinate** — it is scaffolding for a search, discarded when the search
+ends, exactly as the benchmark's coordinate is.
+
+**Because the sweep inherits whatever error is in its centre.** Two of the ten were aimed
+at benchmark coordinates 25 km and 150 km from where the owner says the plant is, and could
+only ever have returned nothing. Both are recorded as site disagreements on their rows, in
+the shape Barsebäck set.
+
+### A recorded sweep runs against a dated extract, not a public endpoint
+
+A coordinate sweep is evidence, and evidence has to be repeatable. A public Overpass
+endpoint is not: `overpass.kumi.systems` answered a small query in 39 seconds and then
+returned 504 for an hour on 10 September 2026, and eight of ten sample sweeps were lost to
+it.
+
+**So sweeps run against a Geofabrik extract, read locally**, and the extract's date is part
+of the answer. `sources/osm/sweep.py` refuses a file whose Geofabrik date it cannot read
+from the filename, because a sweep that cannot say which day's basemap it read cannot be
+checked.
+
+**On overpass-api.de, and a correction.** This register recorded that endpoint as "Apache
+rejecting the User-Agent". That is wrong and the test says so: `/api/interpreter` answers
+406 to every encoding tried (query in path, `--data-urlencode`, POST form), with and
+without an explicit `Accept` header, and **identically to a plain `Mozilla/5.0`** — so it is
+not the honest User-Agent. `/api/status` answers that same client normally and reports
+slots available, so neither the client nor the network is blocked. It is a rule on that one
+path. The corrected reading: **overpass-api.de refuses this client's requests to the
+interpreter path at the web-server layer, for a reason it does not state.**
+
+
+### Three gap classes are retired, and their definitions are kept here
+
+A class that can have no members is still a ruling somebody made, and a reader who finds
+nothing where one used to be needs to know why. Dropped from the printed table on 11
+September 2026; `report_benchmark_gap.py` prints any of them again the moment something
+lands in one.
+
+- **`duplicate of a held row`** — empty by construction since identifier match became the
+  only duplicate route. An entry whose reference this register holds never reaches the
+  classifier at all.
+- **`benchmark gives no location`** — a fact about the October 2023 vintage, which has no
+  location column. The current file publishes a latitude and a longitude for every European
+  entry, so the class could only ever be zero against it.
+- **`below threshold on reading`** — the same: it tested the `Announced Size` column, which
+  only the older vintage carries.
+
+**`unexplained at FID or beyond` stays in the table at zero**, because that zero is the
+claim — every absence at FID or beyond is a decision somebody made — and a table that
+stopped printing it would stop making it.

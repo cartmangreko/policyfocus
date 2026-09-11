@@ -19,7 +19,22 @@
     "hash; the old one stays, because the counts in sources/hydrogen_docket.md and in pull request",
     "#52 were computed against it and a reader checking them a year from now needs to know which",
     "file they are about. sources/report_benchmark_gap.py verifies the live cache against the newest",
-    "entry per benchmark and says so on every run."
+    "entry per benchmark and says so on every run.",
+    "",
+    "ONE BENCHMARK IN TWO VINTAGES, NOT TWO BENCHMARKS. Recorded 11 September 2026, after the",
+    "admission search made the relationship impossible to keep ignoring. Odenweller & Ueckerdt",
+    "(2025) IS the IEA's October 2023 database, quality-checked, and it keeps the IEA's own",
+    "reference numbers: 35 of the 54 references the search settled exist in both files under the",
+    "same number, 29 of them under the same name. The register had been treating them as two",
+    "independent lists and reaching for a NAME STEM to join rows that shared an identifier all",
+    "along — which is how a machine guess got into a class as a verdict (D54).",
+    "",
+    "WHAT FOLLOWS FROM THE DEPENDENCY. The two files cannot be summed, cannot corroborate each",
+    "other, and a gap in one is not independent evidence of a gap in the other. What the older",
+    "vintage CAN do, and what it is now read for, is DRIFT: which entries left the list between",
+    "October 2023 and now, which were renamed, which are new. A project that vanishes from a",
+    "database is a project whose failure nobody counts (rule 17), and drift is the only place",
+    "that fact can be seen."
   ],
   "snapshots": [
     {
@@ -38,5 +53,24 @@
       "bytes": 496671,
       "sha256": "7cbeede384e61a5ba18479ac30ead37885555ea4a80f1e931f4eb47a48d70768"
     }
-  ]
+  ],
+  "relationship": {
+    "benchmark": "iea_hydrogen_production_projects",
+    "vintages": [
+      {
+        "id": "iea_hydrogen_production_projects",
+        "vintage": "current",
+        "publisher": "International Energy Agency",
+        "note": "The live endpoint. The current vintage and the one the register measures against."
+      },
+      {
+        "id": "odenweller_ueckerdt_2025",
+        "vintage": "2023-10",
+        "derived_from": "iea_hydrogen_production_projects",
+        "publisher": "Odenweller & Ueckerdt (2025)",
+        "note": "The IEA's October 2023 database, quality-checked, under the IEA's own reference numbering. NOT AN INDEPENDENT BENCHMARK: it cannot corroborate the live file because it is the live file's own past. It is read for drift between the two vintages and for nothing else."
+      }
+    ],
+    "recorded": "2026-09-11"
+  }
 }

@@ -8718,7 +8718,12 @@
       ],
       "benchmarks": {
         "odenweller_ueckerdt_2025": [
-          1477
+          1476,
+          1477,
+          2381,
+          2382,
+          2383,
+          2384
         ],
         "iea_hydrogen_production_projects": [
           1477
@@ -8767,6 +8772,31 @@
             }
           ],
           "note": "The port authority's page states 'six 100MW production units, giving a total capacity of 600MW'. The IEA carries 300 MW, and the academic file splits the same works into six phase rows."
+        },
+        {
+          "kind": "phasing",
+          "field": "id",
+          "speakers": [
+            {
+              "speaker": "company",
+              "source_url": "https://www.marseille-port.fr/en/projets/h2v-fos-et-le-port-de-marseille-fos",
+              "source_type": "company",
+              "date": "2026-09-10",
+              "date_precision": "day",
+              "value": "one works"
+            },
+            {
+              "speaker": "benchmark",
+              "benchmark": "odenweller_ueckerdt_2025",
+              "ref": "1476,2381,2382,2383,2384",
+              "source_url": "https://github.com/aodenweller/green-hydrogen-gap",
+              "publisher": "Odenweller & Ueckerdt (2025), the IEA October 2023 vintage",
+              "date": "2026-09-09",
+              "date_precision": "day",
+              "value": "a separate row"
+            }
+          ],
+          "note": "The October 2023 vintage carries this works SIX times — one row per 100 MW unit, with Announced Size climbing 100, 200, 300, 400, 500, 600 MW and dates online 2026 to 2031. The port of Marseille Fos publishes it as one project: 'six 100MW production units, giving a total capacity of 600MW'. Confirmed by hand on 10 September 2026 and recorded as references on 11 September, so the match is by identifier and not by name."
         }
       ],
       "stated_schedule": [],
@@ -9021,12 +9051,13 @@
           "url": "https://web.archive.org/web/20260416133218/https://www.ignis.es/en/green-hydrogen-as-a-key-driver-for-decarbonization-and-energy-transformation/",
           "title": "Armonia Green Galicia — the owner's page",
           "publisher": "IGNIS",
-          "date": "2026-09-10",
+          "date": "2024-09-23",
           "date_precision": "day",
           "retrieved_date": "2026-09-10",
-          "note": "A standing page with no publication date of its own. `date` is the day it was read, which is D33's convention and is a fact about the reading rather than about the publisher. The title describes the page's role; it is not a transcription of its own heading. WENT DARK BETWEEN THE READING AND THE PUSH. This page answered a declared reader on 10 September 2026 — every quote on this row was taken from it that day — and answered 403 the same evening, when check_links ran on the push. Same shape as D38, where uniper.energy closed overnight. The row now cites the Internet Archive's capture of 16 April 2026, which carries the same text, with a copy filed in sources/manual/; the live URL is here so a reader can try it: https://ignis.es/en/green-hydrogen-as-a-key-driver-for-decarbonization-and-energy-transformation/",
+          "note": "IGNIS's own page. `date` IS THE DOCUMENT'S OWN DATELINE — its metadata carries article:published_time 2024-09-23 — and the capture of 16 April 2026 is only how this register reached it, recorded in `captured_at`. The live URL, https://ignis.es/en/green-hydrogen-as-a-key-driver-for-decarbonization-and-energy-transformation/, served a declared reader on 10 September 2026 and answered 403 the same evening; a copy is filed in sources/manual/.",
           "archived": true,
-          "snapshot": "sources/manual/ignis-armonia-green-galicia--ignis-green-hydrogen.html"
+          "snapshot": "sources/manual/ignis-armonia-green-galicia--ignis-green-hydrogen.html",
+          "captured_at": "2026-04-16"
         }
       ],
       "sector": "clean",
@@ -9520,12 +9551,13 @@
           "url": "https://web.archive.org/web/20231002002541/https://orsted.com/en/media/newsroom/news/2022/12/13665899",
           "title": "Idomlund Power-to-X — the owner's release",
           "publisher": "Orsted",
-          "date": "2026-09-10",
-          "date_precision": "day",
+          "date": "2023-10-02",
+          "date_precision": "not_after",
           "retrieved_date": "2026-09-10",
-          "note": "A standing page with no publication date of its own. `date` is the day it was read, which is D33's convention and is a fact about the reading rather than about the publisher. The title describes the page's role; it is not a transcription of its own heading. WENT DARK BETWEEN THE READING AND THE PUSH. This page answered a declared reader on 10 September 2026 — every quote on this row was taken from it that day — and answered 403 the same evening, when check_links ran on the push. Same shape as D38, where uniper.energy closed overnight. The row now cites the Internet Archive's capture of 2 October 2023, which carries the same text, with a copy filed in sources/manual/; the live URL is here so a reader can try it: https://orsted.com/en/media/newsroom/news/2022/12/13665899",
+          "note": "Orsted's own release. THE DOCUMENT CARRIES NO DATELINE — no meta date, none in the body — so `date` takes the capture and says so with precision `not_after`: the text existed on 2 October 2023 and nobody here knows when it was written. The URL path says /news/2022/12/, which is the publisher's filing and not the document's dateline, and is recorded here rather than used as the date. The live URL, https://orsted.com/en/media/newsroom/news/2022/12/13665899, served a declared reader on 10 September 2026 and answered 403 the same evening; a copy is filed in sources/manual/.",
           "archived": true,
-          "snapshot": "sources/manual/orsted-skovgaard-idomlund--orsted-skovgaard-ptx.html"
+          "snapshot": "sources/manual/orsted-skovgaard-idomlund--orsted-skovgaard-ptx.html",
+          "captured_at": "2023-10-02"
         }
       ],
       "sector": "clean",

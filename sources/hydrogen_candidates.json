@@ -614,7 +614,12 @@
       "coordinate_ref": "not searched; the port names 36 hectares and no land",
       "benchmarks": {
         "odenweller_ueckerdt_2025": [
-          1477
+          1476,
+          1477,
+          2381,
+          2382,
+          2383,
+          2384
         ],
         "iea_hydrogen_production_projects": [
           1477
@@ -629,6 +634,13 @@
           "eufabric_value_mw": 600,
           "benchmark_value_mw": 300,
           "note": "The port authority's page states 'six 100MW production units, giving a total capacity of 600MW'. The IEA carries 300 MW, and the academic file splits the same works into six phase rows."
+        },
+        {
+          "kind": "phasing",
+          "benchmark": "odenweller_ueckerdt_2025",
+          "ref": "1476,2381,2382,2383,2384",
+          "eufabric_speaker": "owner or permit source",
+          "note": "The October 2023 vintage carries this works SIX times — one row per 100 MW unit, with Announced Size climbing 100, 200, 300, 400, 500, 600 MW and dates online 2026 to 2031. The port of Marseille Fos publishes it as one project: 'six 100MW production units, giving a total capacity of 600MW'. Confirmed by hand on 10 September 2026 and recorded as references on 11 September, so the match is by identifier and not by name."
         }
       ]
     },

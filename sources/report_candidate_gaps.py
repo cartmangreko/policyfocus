@@ -207,25 +207,37 @@ def coverage(projects: dict[str, dict]) -> None:
     So both are stated, always, and the gap between them is the drawing backlog rather
     than a defect in the data.
     """
-    by = {}
+    by: dict[str, list] = {}
     for row in projects.values():
         sector = row.get("sector") or "?"
-        drawn, undrawn = by.setdefault(sector, [0, 0])
-        if row.get("located") == "yes":
-            by[sector] = [drawn + 1, undrawn]
-        else:
-            by[sector] = [drawn, undrawn + 1]
+        e = by.setdefault(sector, [0, 0, {}, {}])
+        drawn = row.get("located") == "yes"
+        e[0 if drawn else 1] += 1
+        v, unit = row.get("capacity_value"), row.get("capacity_unit")
+        if v not in (None, "") and unit:
+            pot = e[2] if drawn else e[3]
+            pot[unit] = pot.get(unit, 0) + v
+
+    def cap(pot: dict) -> str:
+        # SUMMED PER UNIT AND NEVER ACROSS UNITS. Three units measure one electrolyser
+        # here and the register does not convert between them.
+        return "; ".join(f"{v:,.0f} {u}" for u, v in sorted(pot.items())) or "-"
+
     print("\nreport_candidate_gaps: coverage — rows drawn against rows admitted undrawn")
-    print(f"  {'sector':10} {'drawn':>7} {'undrawn':>9} {'rows':>7}")
+    print(f"  {'sector':10} {'drawn':>7} {'undrawn':>9} {'rows':>7}   "
+          f"{'capacity drawn':>28}   capacity admitted undrawn")
     for sector in sorted(by):
-        d, u = by[sector]
-        print(f"  {sector:10} {d:>7} {u:>9} {d + u:>7}")
+        d, u, cd, cu = by[sector]
+        print(f"  {sector:10} {d:>7} {u:>9} {d + u:>7}   {cap(cd):>28}   {cap(cu)}")
     d = sum(v[0] for v in by.values())
     u = sum(v[1] for v in by.values())
     print(f"  {'all':10} {d:>7} {u:>9} {d + u:>7}")
     print("  A row admitted undrawn is on file and on no map. The two numbers are stated "
           "side by\n  side because the first has been read as the second, and since "
-          "position stopped being\n  an admission leg it cannot be.")
+          "position stopped being\n  an admission leg it cannot be. THE CAPACITIES ARE "
+          "NOT ADDED EITHER: megawatts on a\n  row nobody has placed are not sited "
+          "capacity, and a single total beside a map showing\n  eleven marks would invite "
+          "exactly the reading the standfirst rule exists to prevent.")
 
 
 def main() -> int:
