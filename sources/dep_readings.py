@@ -24,6 +24,7 @@ CONVENTIONS, all of them consequences of the brief:
 """
 from __future__ import annotations
 
+import dep_records as R_
 from dep_records import add_capacity as C
 from dep_records import add_edge as E
 
@@ -908,3 +909,381 @@ E("john-cockerill", "Shell (with Rely)", "framework_agreement", "supplier",
   note="A joint technology evaluation of safety, operability and maintainability. Not "
        "an order; recorded because Shell is a named European counterparty and the "
        "evaluation is a step towards one.")
+
+# =============================================================================
+# capture_technology
+# =============================================================================
+
+# --- SLB Capturi (formerly Aker Carbon Capture) -------------------------------
+# THE SUPPLIER'S OWN DOMAIN IS GONE. akercarboncapture.com and slbcapturi.com both
+# fail to resolve; the newsroom now lives at capturi.slb.com, which carries the
+# Aker Carbon Capture releases back to 2023 under the new host. 40 news items there
+# plus 9 SLB corporate press releases naming the joint venture were fetched and
+# read. Releases from 2020 to 2022 — which include the Brevik award itself — are
+# on the dead domain and are read from the Internet Archive under DECISION D-7.
+Q = "https://capturi.slb.com/resources/news/"
+
+R_.status_event(
+    "slb-capturi", "2024-06-14", "Aker Carbon Capture ASA", "SLB / Aker Carbon "
+    "Capture joint venture",
+    Q + "2024/slb-and-aker-carbon-capture-announce-closing-of-carbon-capture-joint-"
+        "venture", "supplier_press",
+    "Closing of the joint venture combining SLB's carbon capture business with Aker "
+    "Carbon Capture. SLB 80%, Aker Carbon Capture 20%.")
+R_.status_event(
+    "slb-capturi", "2024-09-16", "SLB / Aker Carbon Capture joint venture",
+    "SLB Capturi", Q + "2024/introducing-slb-capturi-pioneering-industrial-"
+                       "decarbonization", "supplier_press",
+    "The joint venture takes the name SLB Capturi. Every release before this date is "
+    "signed 'Aker Carbon Capture' and every one after is signed 'SLB Capturi'; they "
+    "are one supplier and the edges below say so.")
+
+C("slb-capturi", 7, "carbon capture plants", "backlog", "supplier", "supplier_press",
+  Q + "2024/slb-capturi-completes-construction-of-the-worlds-first-industrial-scale-"
+      "carbon-capture-plant", "2024-12-02",
+  note="'currently delivering seven carbon capture plants to bioenergy, waste to "
+       "energy, and cement facilities'. A COUNT OF PLANTS, not a rate and not a "
+       "tonnage — this node's capacity cannot be compared with the tonnes on its "
+       "edges, and the docket's arithmetic section says so rather than converting.")
+C("slb-capturi", 8, "carbon capture plants", "backlog", "supplier", "supplier_press",
+  Q + "2026/2026-0728-slb-capturi-uniper", "2026-07-28",
+  note="'eight plants in operation or under delivery', nineteen months after seven.")
+
+E("slb-capturi", "Fortum Waste Solutions", "framework_agreement", "supplier",
+  "supplier_press",
+  Q + "2023/aker-carbon-capture-awarded-test-campaign-and-study-for-fortum-waste-"
+      "solutions-in-denmark", "2023-04-19",
+  quantity=(170000, "tonnes CO2 per year"), country="DK", sector="waste-to-energy",
+  site="Nyborg", note="Test campaign and feasibility study. 'around 170,000 tonnes'.")
+E("slb-capturi", "Ørsted", "equipment_order", "supplier", "supplier_press",
+  Q + "2023/aker-carbon-capture-and-oersted-sign-contract-for-delivery-of-five-just-"
+      "catch-units", "2023-06-15", quantity=(500000, "tonnes CO2 per year"),
+  country="DK", sector="bioenergy", site="Kalundborg Asnæs Avedøre",
+  note="Five Just Catch units plus liquefaction, temporary storage and loading; "
+       "contract value above EUR 200 million. Asnæs (wood chip) and Avedøre (straw).")
+E("slb-capturi", "a Swedish energy company", "framework_agreement", "supplier",
+  "supplier_press",
+  Q + "2023/aker-carbon-capture-awarded-pre-feed-in-sweden-covering-more-than-"
+      "200,000-tonnes-of-co2-per-year", "2023-10-16", quantity=None,
+  note="Pre-FEED for a Just Catch application. Customer not named.")
+E("slb-capturi", "a major European power company", "framework_agreement", "supplier",
+  "supplier_press",
+  Q + "2023/aker-carbon-capture-signed-pre-feed-contract-for-several-power-generation-"
+      "facilities-in-europe", "2023-10-19", quantity=None,
+  note="Pre-FEED across 'a portfolio of power plants in ma[ny countries]'. Neither "
+       "the company nor any site is named — a multi-country framework with no "
+       "geography at all.")
+E("slb-capturi", "TES", "framework_agreement", "supplier", "supplier_press",
+  Q + "2023/aker-carbon-capture-awarded-study-by-tes-to-capture-400,000-tonnes-co2-"
+      "per-year-in-germany", "2023-10-30",
+  quantity=(400000, "tonnes CO2 per year"), country="DE", sector="waste-to-energy",
+  note="Feasibility study; CO2 to be railed to TES's Wilhelmshaven e-NG plant.")
+E("slb-capturi", "MAN Energy Solutions", "framework_agreement", "supplier",
+  "supplier_press",
+  Q + "2023/aker-carbon-capture-awarded-feasibility-study-by-man-energy-solutions",
+  "2023-11-15", quantity=None, country="DE", sector="engineering")
+E("slb-capturi", "Hafslund Oslo Celsio", "framework_agreement", "supplier",
+  "supplier_press",
+  Q + "2023/aker-carbon-capture-awarded-feed-for-hafslund-oslo-celsios-ccs-project",
+  "2023-11-24", quantity=(400000, "tonnes CO2 per year"), country="NO",
+  sector="waste-to-energy", site="Klemetsrud Oslo",
+  note="Full FEED with Aker Solutions; Just Catch 400.")
+E("slb-capturi", "an undisclosed customer (an e-fuel project in Finland)",
+  "framework_agreement", "supplier", "supplier_press",
+  Q + "2023/aker-carbon-capture-awarded-feasibility-study-for-e-fuel-project-in-"
+      "finland", "2023-11-29", quantity=None)
+E("slb-capturi", "Hafslund Oslo Celsio", "framework_agreement", "supplier",
+  "supplier_press", Q + "2023/aker-carbon-capture-signs-feed-contract-with-hafslund-"
+                        "oslo-celsio", "2023-12-04",
+  quantity=(400000, "tonnes CO2 per year"), country="NO", sector="waste-to-energy",
+  site="Klemetsrud Oslo", note="FEED contract signed. Same project, second document.")
+E("slb-capturi", "Uniper", "framework_agreement", "supplier", "supplier_press",
+  Q + "2023/aker-carbon-capture-awarded-process-design-package-for-unipers-grain-"
+      "power-station-in-the-uk", "2023-12-13", quantity=None, country="GB",
+  sector="power", site="Isle of Grain Kent",
+  note="Process Design Package for a post-combustion plant on the existing CCGT units.")
+E("slb-capturi", "Limeco", "framework_agreement", "supplier", "supplier_press",
+  Q + "2023/aker-carbon-capture-awarded-feasibility-study-by-waste-to-energy-player-"
+      "in-switzerland", "2023-12-18", quantity=None, country="CH",
+  sector="waste-to-energy", site="Dietikon")
+E("slb-capturi", "a European developer", "framework_agreement", "supplier",
+  "supplier_press", Q + "2024/aker-carbon-capture-awarded-study-for-waste-to-energy-"
+                        "plants-in-northern-europe", "2024-02-22", quantity=None,
+  note="Feasibility of carbon capture at multiple biomass and waste-to-energy plants. "
+       "Developer not named, sites not named.")
+E("slb-capturi", "WACKER", "framework_agreement", "supplier", "supplier_press",
+  Q + "2024/aker-carbon-capture-awarded-study-and-test-campaign-from-wacker",
+  "2024-03-22", quantity=None, country="NO", sector="silicon / chemicals",
+  site="Holla Kyrksæterøra",
+  note="Feasibility study and an eight-month test campaign on metallurgical-grade "
+       "silicon production. WACKER is German; the plant is Norwegian.")
+E("slb-capturi", "Statkraft", "framework_agreement", "supplier", "supplier_press",
+  Q + "2024/aker-carbon-capture-awarded-pre-feed-from-statkraft-in-norway",
+  "2024-04-01", quantity=(220000, "tonnes CO2 per year"), country="NO",
+  sector="waste-to-energy", site="Heimdal Trondheim")
+E("slb-capturi", "Twence", "equipment_order", "supplier", "supplier_press",
+  Q + "2024/slb-capturi-completes-construction-of-the-worlds-first-industrial-scale-"
+      "carbon-capture-plant", "2024-12-02",
+  quantity=(100000, "tonnes CO2 per year"), country="NL", sector="waste-to-energy",
+  site="Hengelo", note="Construction complete on the first modular Just Catch 100.")
+E("slb-capturi", "Twence", "equipment_order", "supplier", "supplier_press",
+  Q + "2025/slb-capturi-powers-up-its-first-modular-carbon-capture-plant",
+  "2025-01-23", quantity=(100000, "tonnes CO2 per year"), country="NL",
+  sector="waste-to-energy", site="Hengelo",
+  note="POWERED UP and handed over. Same plant, second document.")
+E("slb-capturi", "Hafslund Celsio AS", "equipment_order", "supplier", "supplier_press",
+  Q + "2025/slb-capturi-and-aker-solutions-win-contract-to-deliver-carbon-capture-"
+      "solution-for-hafslund-celsio", "2025-01-27",
+  quantity=(350000, "tonnes CO2 per year"), country="NO", sector="waste-to-energy",
+  site="Klemetsrud Oslo",
+  note="EPCIC. THE DESIGN FIGURE MOVED: the 2023 FEED releases say 400,000 t/yr and "
+       "this one says 350,000. Logged as a slip — one speaker, two figures — in the "
+       "docket. CO2 goes to Northern Lights, which is a node on this perimeter.")
+E("slb-capturi", "ACCIONA, Sener and SLB Capturi consortium (for AEB Amsterdam)",
+  "framework_agreement", "supplier", "supplier_press",
+  Q + "2025/slb-capturi-to-take-part-in-carbon-capture-feed-delivery-to-aeb-amsterdam",
+  "2025-04-07", quantity=(550000, "tonnes CO2 per year"), country="NL",
+  sector="waste processing", site="Westpoort Amsterdam",
+  note="Project Aurora, two-phase design-and-implement contract won on a European "
+       "tender. The 550,000 t is the fossil CO2 the two incinerators release, not a "
+       "stated capture capacity — recorded with that said here.")
+E("slb-capturi", "Heidelberg Materials", "equipment_order", "supplier", "supplier_press",
+  Q + "2025/slb-capturi-achieves-first-1000-metric-tons-co2-captured-at-brevik-carbon-"
+      "capture-plant", "2025-05-12", quantity=(400000, "tonnes CO2 per year"),
+  country="NO", sector="cement", site="Brevik",
+  note="Big Catch at Brevik, part of Longship; mechanical completion December 2024, "
+       "first 1,000 t captured. THE SUPPLIER SIDE OF brevik-ccs, which the register "
+       "holds from the owner's side at the same 400,000 t/yr.")
+E("slb-capturi", "Uniper", "framework_agreement", "supplier", "supplier_press",
+  Q + "2025/slb-capturi-partners-with-worley-and-siemens-energy-for-unipers-low-carbon-"
+      "power-project", "2025-03-24", quantity=None, country="GB", sector="power",
+  site="Connah's Quay Deeside",
+  note="FEED partnership with Worley and Siemens Energy — Siemens Energy is a node on "
+       "this perimeter, here as a partner rather than a competitor.")
+E("slb-capturi", "Uniper", "technology_licence", "supplier", "supplier_press",
+  Q + "2026/2026-0728-slb-capturi-uniper", "2026-07-28", quantity=None, country="GB",
+  sector="power", site="Connah's Quay Deeside",
+  note="Selected as preferred carbon capture technology licensor after a FEED that "
+       "began in December 2024. Plant 'multi-million-tonnes-per-annum'; no figure.")
+
+# --- Mitsubishi Heavy Industries, Ltd. ----------------------------------------
+# The corporate sitemap lists 6,334 /news/ URLs whose slugs are dates and carry no
+# words, so no filter can be applied to them. The year index pages DO carry titles:
+# mhi.com/news/{2020..2025,index}.html were fetched and parsed for 836 items across
+# the period, 125 of which name CO2, capture, cement, steel or a European country
+# and were fetched in full. THE REST OF MHI'S NEWSROOM IS NOT READ AND IS NOT
+# CLAIMED TO BE — this node is on the perimeter as capture_technology, and MHI's
+# gas turbines, ships, forklifts and air conditioners are a different company's
+# worth of output that no reading of this file should be taken to cover.
+M = "https://www.mhi.com/news/"
+
+C("mhi", 13, "commercial facilities", "delivery_commitment", "supplier",
+  "supplier_press", M + "22042501.html", "2022-04-25",
+  note="'already been deployed at 13 commercial facilities around the world' — the KM "
+       "CDR Process, cumulative and worldwide. A COUNT OF INSTALLATIONS, not a rate, "
+       "not European, and not comparable with the tonnes on the edges below.")
+
+E("mhi", "Drax", "framework_agreement", "supplier", "supplier_press",
+  M + "200624.html", "2020-06-24", quantity=None, country="GB", sector="bioenergy",
+  note="A BECCS pilot at the UK's largest renewable power generator.")
+E("mhi", "Drax", "framework_agreement", "supplier", "supplier_press",
+  M + "210610.html", "2021-06-10", quantity=None, country="GB", sector="bioenergy",
+  note="Wider agreement; MHI also to open a CCUS centre of excellence in London and "
+       "to look at producing its solvent in the UK.")
+E("mhi", "Technology Centre Mongstad", "framework_agreement", "supplier",
+  "supplier_press", M + "210304.html", "2021-03-04", quantity=None, country="NO",
+  sector="test centre", site="Mongstad",
+  note="Agreement to test the KS-21 solvent at TCM's amine plant. A test campaign at "
+       "a public test centre, not plant demand.")
+E("mhi", "Technology Centre Mongstad", "framework_agreement", "supplier",
+  "supplier_press", M + "211019.html", "2021-10-19", quantity=None, country="NO",
+  sector="test centre", site="Mongstad",
+  note="Result of the campaign: 95–99% capture rate confirmed. Same engagement, "
+       "second document.")
+E("mhi", "Eni S.p.A. (through NextChem)", "technology_licence", "supplier",
+  "supplier_press", M + "22042501.html", "2022-04-25",
+  quantity=(25000, "tonnes CO2 per year"), country="IT", sector="oil and gas",
+  site="Casalborsetti Ravenna",
+  note="Licence and process design package for phase 1 of Italy's first CCUS project. "
+       "The store is the Ravenna CCS node on this perimeter.")
+E("mhi", "an undisclosed customer (Peterhead Power Station)", "framework_agreement",
+  "supplier", "supplier_press", M + "22083001.html", "2022-08-30", quantity=None,
+  country="GB", sector="power", site="Peterhead Aberdeenshire",
+  note="FEED for a GTCC power plant and CO2 capture plant. The release names the "
+       "station and not the customer.",
+  refuse_match="'Aberdeenshire' is a site alias of statera-kintore-hydrogen and it is "
+               "a COUNTY. A gas-fired power station at Peterhead is not a hydrogen "
+               "project at Kintore; they share a local authority and nothing else.")
+E("mhi", "ArcelorMittal (with BHP and Mitsubishi Development)", "framework_agreement",
+  "supplier", "supplier_press", M + "221027.html", "2022-10-27", quantity=None,
+  country="BE", sector="steel", site="Gent",
+  note="Multi-year trial of MHIENG carbon capture at ArcelorMittal's Gent steel plant "
+       "and one North American site, plus a feasibility and design study. Gent is not "
+       "a row in this register's steel perimeter, which holds ArcelorMittal at Bremen/"
+       "Eisenhüttenstadt and Dunkirk.")
+E("mhi", "Hanson UK", "framework_agreement", "supplier", "supplier_press",
+  M + "22121502.html", "2022-12-15", quantity=(800000, "tonnes CO2 per year"),
+  country="GB", sector="cement", site="Padeswood Flintshire",
+  note="Pre-FEED. Hanson UK is Heidelberg Materials' UK arm and the later releases "
+       "call the same works Heidelberg Materials' — one plant, two company names, "
+       "three years apart.")
+E("mhi", "Saipem S.p.A.", "technology_licence", "supplier", "supplier_press",
+  M + "230427.html", "2023-04-27", quantity=None, country="IT", sector="engineering",
+  note="General License Agreement. Saipem is a route to market, not an emitter.")
+E("mhi", "Essar Oil UK Limited (EET Industrial Carbon Capture)", "technology_licence",
+  "supplier", "supplier_press", M + "23110902.html", "2023-11-09", quantity=None,
+  country="GB", sector="refining", site="Stanlow Cheshire",
+  note="Selected as licensor; basic engineering design package, Advanced KM CDR.")
+E("mhi", "Evero Energy Group Limited", "framework_agreement", "supplier",
+  "supplier_press", M + "23110903.html", "2023-11-09", quantity=None, country="GB",
+  sector="waste-to-energy", site="Ince Protos",
+  note="InBECCS at Ince Bio Power, on the Protos energy park beside HyNet's "
+       "prospective CO2 pipeline.")
+E("mhi", "Heidelberg Materials UK", "framework_agreement", "supplier", "supplier_press",
+  M + "24020601.html", "2024-02-06", quantity=(800000, "tonnes CO2 per year"),
+  country="GB", sector="cement", site="Padeswood Flintshire",
+  note="FEED with Worley, following the 2022 pre-FEED. 'UK's first CO2 capture plant "
+       "at a cement production facility'.")
+E("mhi", "ArcelorMittal", "framework_agreement", "supplier", "supplier_press",
+  M + "24052102.html", "2024-05-21", quantity=None, country="BE", sector="steel",
+  site="Gent", note="Trial carbon capture unit begins operation at Gent. Same trial "
+                    "as 2022-10-27, second document.")
+E("mhi", "Eni and Snam (Ravenna CCS)", "technology_licence", "supplier",
+  "supplier_press", M + "24091802.html", "2024-09-18",
+  quantity=(25000, "tonnes CO2 per year"), country="IT", sector="oil and gas",
+  site="Casalborsetti Ravenna",
+  note="OPERATIONAL — 'Europe's first fully operational post-combustion carbon capture "
+       "plant'. Same 25,000 t/yr as the 2022 licence, now running. CO2 injected into a "
+       "depleted offshore Eni gas field.")
+E("mhi", "Heidelberg Materials UK", "equipment_order", "supplier", "supplier_press",
+  M + "251208.html", "2025-12-08", quantity=(800000, "tonnes CO2 per year"),
+  country="GB", sector="cement", site="Padeswood Flintshire",
+  note="EXECUTION PHASE, after Heidelberg Materials' FID with the UK government. "
+       "'the first in Europe to deploy MHI's Advanced KM CDR Process' at a cement "
+       "works; CO2 to depleted gas fields under Liverpool Bay via HyNet North West. "
+       "Padeswood is NOT a row in this register's cement perimeter, and Heidelberg "
+       "Materials holds three rows that are — the largest single unmatched cement "
+       "customer this sweep found.")
+
+# --- Linde plc ----------------------------------------------------------------
+# 278 items under linde.com/news-and-media in the sitemap; 31 in period whose slug
+# names carbon, CO2, capture, CCS, hydrogen or electrolysis were fetched and read.
+# ONLY THE CAPTURE EDGES ARE RECORDED (DECISION D-4): Linde is on this perimeter as
+# capture_technology, and the great majority of what was read is industrial-gas
+# supply — oxygen to steelworks, hydrogen to refineries, air separation units. That
+# is a real and much larger European business and it is not this node's product.
+#
+# Linde also appears on this sweep as a BUYER: ITM Power's 24 MW Leuna electrolyser
+# and both 100 MW Lingen units were sold to Linde Engineering. A node that is a
+# customer of another node is not a contradiction; it is what a supply chain is.
+L = "https://www.linde.com/news-and-media/"
+
+E("linde", "Snam", "framework_agreement", "supplier", "supplier_press",
+  L + "2020/linde-and-snam-sign-agreement-to-jointly-develop-clean-hydrogen-projects",
+  "2020-12-07", quantity=None, country="IT", sector="gas infrastructure",
+  note="MoU on clean hydrogen projects and infrastructure in Europe. No site.")
+E("linde", "SLB", "framework_agreement", "supplier", "supplier_press",
+  L + "2022/linde-and-slb-collaborate-on-carbon-capture-and-sequestration", "2022-10-31",
+  quantity=None, note="Collaboration on CCUS in hydrogen, ammonia and natural gas "
+                      "processing. SLB is half of the slb-capturi node on this "
+                      "perimeter — two capture suppliers collaborating rather than "
+                      "competing, with no customer and no site named.")
+E("linde", "Heidelberg Materials", "equipment_order", "supplier", "supplier_press",
+  L + "2023/linde-and-heidelberg-materials-announce-large-scale-carbon-capture-project",
+  "2023-04-12", quantity=(70000, "tonnes CO2 per year"), country="DE", sector="cement",
+  site="Lengfurt",
+  note="Jointly build, own and operate a capture and liquefaction facility at the "
+       "Lengfurt works; most of the liquid CO2 to be sold by Linde into the merchant "
+       "market. A THIRD Heidelberg Materials cement site outside the register's "
+       "perimeter, after Padeswood and Edmonton.")
+
+# --- Air Liquide S.A. ---------------------------------------------------------
+# The two sitemap pages list 1,809 press items; 177 in period whose slug names
+# carbon, CO2, capture, CCS, hydrogen, electrolysis, cement or steel were listed and
+# the 74 English ones naming carbon, capture or a heavy industry were fetched. As
+# with Linde, ONLY THE CAPTURE EDGES ARE RECORDED — Air Liquide's long-term oxygen
+# and nitrogen contracts with steelmakers are the larger business and the wrong
+# product for this node kind.
+A = "https://www.airliquide.com/group/press-releases-news/"
+
+E("air-liquide", "ArcelorMittal", "framework_agreement", "supplier", "supplier_press",
+  A + "2021-03-17/air-liquide-and-arcelormittal-join-forces-accelerate-decarbonization-"
+      "steel-production-basin-dunkirk", "2021-03-17", quantity=None, country="FR",
+  sector="steel", site="Dunkirk",
+  note="MoU on low-carbon steel in the Dunkirk basin. The register holds 3d-dunkirk "
+       "— ArcelorMittal's DMX capture demonstration at the same works — and whether "
+       "this MoU is that project or a second one beside it is not decidable from "
+       "this release.")
+E("air-liquide", "BASF", "framework_agreement", "supplier", "supplier_press",
+  A + "2021-11-22/air-liquide-and-basf-welcome-support-european-innovation-fund-joint-"
+      "ccs-project", "2021-11-22", quantity=None, country="BE", sector="chemicals",
+  site="Antwerp", note="Kairos@C, selected for EU Innovation Fund support; 'the "
+                       "world's largest cross-border CCS value chain', feeding the "
+                       "Antwerp@C liquefaction and export terminal.")
+E("air-liquide", "Eni", "framework_agreement", "supplier", "supplier_press",
+  A + "2022-03-21/air-liquide-and-eni-cooperate-decarbonization-hard-abate-industries-"
+      "europe", "2022-03-21", quantity=None, country="IT",
+  sector="oil and gas")
+E("air-liquide", "Sogestran", "co2_transport", "supplier", "supplier_press",
+  A + "2022-04-05/air-liquide-and-sogestran-partner-develop-shipping-solutions-carbon-"
+      "management", "2022-04-05", quantity=None, country="FR", sector="shipping",
+  note="Joint venture for large-scale liquid CO2 shipping and barging.")
+E("air-liquide", "Lhoist", "framework_agreement", "supplier", "supplier_press",
+  A + "2022-05-09/air-liquide-and-lhoist-join-forces-launch-first-its-kind-"
+      "decarbonization-project-lime-production", "2022-05-09", quantity=None,
+  country="FR", sector="lime", site="Réty Hauts-de-France",
+  note="MoU to put Cryocap on Lhoist's lime plant; co-application to the EU "
+       "Innovation Fund. LIME, not cement — a heavy-industry customer class the "
+       "register's perimeter does not hold at all.")
+E("air-liquide", "Fluxys Belgium and Port of Antwerp-Bruges", "co2_transport",
+  "supplier", "grant_award",
+  A + "2022-12-12/air-liquide-fluxys-belgium-and-port-antwerp-bruges-awarded-eu-funding-"
+      "building-antwerpc-co2-export", "2022-12-12", quantity=None, country="BE",
+  sector="port / gas infrastructure",
+  note="EUR 144.6 million under the Connecting Europe Facility. A GRANT AWARD, and "
+       "the source_type says so: this is the Commission's money, described by one of "
+       "the recipients.")
+E("air-liquide", "Holcim", "framework_agreement", "supplier", "supplier_press",
+  A + "2023-05-02/air-liquide-and-holcim-collaborate-project-decarbonize-cement-"
+      "production-belgium", "2023-05-02", quantity=None, country="BE", sector="cement",
+  note="MoU on 'Holcim's new cement production plant under development in Belgium', "
+       "with a joint EU Innovation Fund application. The 2026 agreement names that "
+       "plant as Obourg; this release does not, so it is not linked to a row.")
+E("air-liquide", "Stockholm Exergi", "equipment_order", "supplier", "supplier_press",
+  A + "2024-07-17/air-liquide-innovative-co2-liquefaction-technology-selected-stockholm-"
+      "exergi-world-scale-carbon", "2024-07-17",
+  quantity=(3500, "tonnes CO2 per day"), country="SE", sector="bioenergy",
+  site="Stockholm",
+  note="Cryocap LQ liquefaction unit, 'one of the largest in the world'. THE UNIT IS "
+       "TONNES PER DAY while every other CO2 quantity in this file is tonnes per "
+       "year; not converted, per the brief. The release separately says the BECCS "
+       "facility aims to store around 8 Mt over its first ten years.")
+E("air-liquide", "Cementir Holding Group (Aalborg Portland)", "framework_agreement",
+  "supplier", "grant_award",
+  A + "2024-10-24/air-liquide-and-cementir-holding-group-receive-support-european-"
+      "innovation-fund-carbon-capture-and", "2024-10-24",
+  quantity=(1500000, "tonnes CO2 per year"), country="DK", sector="cement",
+  site="Aalborg",
+  note="ACCSION, EUR 220 million from the EU Innovation Fund; 'one of the first full "
+       "onshore CCS value chains in Europe'. Pre-FID. Aalborg Portland is a cement "
+       "works outside the register's perimeter and the largest single tonnage of any "
+       "unmatched cement customer in this sweep.")
+E("air-liquide", "Dunkerque LNG (D'Artagnan)", "co2_transport", "supplier",
+  "supplier_press",
+  A + "2024-06-18/decarbonization-dunkirk-basin-air-liquide-and-dunkerque-lng-co2-"
+      "infrastructure-project-takes-major", "2024-06-18", quantity=None, country="FR",
+  sector="CO2 infrastructure", site="Dunkirk",
+  note="CO2 infrastructure; more than EUR 400m investment with more than EUR 160m of "
+       "CEF-E grant. FID linked to signing 'CO2 management and capture as a service' "
+       "contracts — the offtake does not exist yet.",
+  refuse_match="'Dunkirk' is a site alias of 3d-dunkirk and it is a CITY. D'Artagnan "
+               "is a CO2 export terminal with Dunkerque LNG; 3d-dunkirk is "
+               "ArcelorMittal's DMX capture demonstration at the steelworks. Both "
+               "stand in Dunkirk and they are not the same thing.")
+E("air-liquide", "Holcim", "equipment_order", "supplier", "supplier_press",
+  A + "2026-02-27/air-liquide-and-holcim-sign-agreement-decarbonize-cement-production-"
+      "carbon-capture-project-belgium", "2026-02-27", quantity=None, country="BE",
+  sector="cement", site="Obourg",
+  note="Agreement to supply oxygen for the oxyfuel-ready clinker line and Cryocap OXY "
+       "for capture at Obourg; CO2 to an export hub such as Antwerp@C for offshore "
+       "storage. THE SUPPLIER SIDE OF go4zero-obourg. No tonnage is stated.")

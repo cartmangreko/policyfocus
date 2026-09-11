@@ -25,6 +25,7 @@ HERE = Path(__file__).resolve().parent
 EDGES: list[dict] = []
 NODE_CAPACITY: dict[str, list[dict]] = {}
 UNMATCHED: dict[str, dict] = {}
+NODE_STATUS: dict[str, list[dict]] = {}
 
 _IDX: dict[str, list[str]] | None = None
 
@@ -64,7 +65,13 @@ def resolve(customer: str, site: str = "") -> tuple[str | None, str | None]:
     if len(both) == 1:
         return both[0], None
     if len(sites) == 1 and not firms:
-        return sites[0], None
+        # A PLACE NAME ALONE. Right for "Boden", where the supplier used the site's
+        # name and the register's company for it is a later rename; wrong for
+        # "Dunkirk" and "Aberdeenshire", which are a city and a county and match
+        # whichever row happens to stand in them. Every one of these is listed in
+        # the docket as a weak match so a reader can see what the link rests on.
+        return sites[0], "MATCHED ON A PLACE NAME ALONE: the source names " \
+                         f"{sites[0]}'s site but not its company."
     if len(sites) == 1 and firms:
         return None, (f"the site named matches {sites[0]} while the company named "
                       f"matches {', '.join(firms)} — two different rows, so the "
@@ -86,7 +93,8 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
              source_type: str, url: str, date: str, date_precision: str = "day",
              quantity: tuple[float, str] | None = None, project_id: str | None = None,
              site: str = "", note: str | None = None, country: str | None = None,
-             sector: str | None = None, refuse_match: str | None = None) -> dict:
+             sector: str | None = None, refuse_match: str | None = None,
+             inherited_by: dict | None = None) -> dict:
     # `refuse_match` is the reader overruling the matcher, with the reason. It
     # exists because the matcher can be confidently wrong in a way no rule fixes:
     # Plug Power's release puts European Energy's Måde PtX plant at Måde, Esbjerg,
@@ -95,9 +103,13 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
     # differently, or they are two plants in one place. A matcher cannot tell, and
     # a link that might be either is worse than no link.
     if refuse_match:
-        pid, amb = None, refuse_match
+        pid, amb, basis = None, refuse_match, "refused"
+    elif project_id:
+        pid, amb, basis = project_id, None, "explicit"
     else:
-        pid, amb = (project_id, None) if project_id else resolve(customer, site)
+        pid, amb = resolve(customer, site)
+        basis = ("site+company" if pid and not amb else
+                 "site only" if pid else "unmatched")
     if amb:
         note = f"{note}. {amb}" if note else amb
     e = {"id": f"e{len(EDGES) + 1:04d}",
@@ -112,6 +124,8 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
          "date": date,
          "date_precision": date_precision,
          "verdict": None,
+         "match_basis": basis,
+         "inherited_by": inherited_by,
          "note": note}
     EDGES.append(e)
     if pid is None and country is not None:
@@ -122,6 +136,32 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
             u["sources"].append(url)
         u["edge_ids"].append(e["id"])
     return e
+
+
+def status_event(node_id: str, date: str, status_from: str | None, status_to: str,
+                 source_url: str, source_type: str, note: str,
+                 date_precision: str = "day", event_kind: str = "status",
+                 evidence_mode: str = "retrospective") -> None:
+    """A supplier's own history, in the shape data/transition/projects.json uses.
+
+    SAME SHAPE ON PURPOSE. A supplier is an installation's other half and it has
+    the same kind of history: it is founded, it is listed, it is acquired, it goes
+    into administration. The register already decided what that record looks like —
+    append-only, in date order, every entry carrying a source — and inventing a
+    second shape for the same fact would mean two things to read and two gates to
+    write. The vocabulary of `status` is the supplier's own and NOT the project
+    vocabulary: `operating` says nothing useful about a company.
+
+    It exists because of McPhy. A node whose entire published record vanished from
+    the web between one sweep and the next cannot be described by a capacity figure
+    and a list of orders; the fact that matters most about it is what happened to
+    it, and there was nowhere to put that.
+    """
+    NODE_STATUS.setdefault(node_id, []).append(
+        {"event_kind": event_kind, "date": date, "date_precision": date_precision,
+         "status_from": status_from, "status_to": status_to, "status": status_to,
+         "source_url": source_url, "source_type": source_type,
+         "evidence_mode": evidence_mode, "note": note})
 
 
 def add_capacity(node_id: str, value: float, unit: str, basis: str, speaker: str,
@@ -169,6 +209,20 @@ def check() -> list[str]:
             bad.append(f"{w}: date {e['date']!r} is not YYYY-MM-DD")
         if e["node_id"] not in {n[0] for n in S.NODES}:
             bad.append(f"{w}: node_id {e['node_id']!r} is not on the perimeter")
+        ib = e.get("inherited_by")
+        if ib and ib["node_id"] not in {n[0] for n in S.NODES}:
+            bad.append(f"{w}: inherited_by names {ib['node_id']!r}, not on the perimeter")
+    for nid, events in NODE_STATUS.items():
+        dates = [ev["date"] for ev in events]
+        if dates != sorted(dates):
+            bad.append(f"status_history on {nid} is not in date order")
+        for ev in events:
+            if ev["source_url"] not in ok:
+                bad.append(f"status_history on {nid} ({ev['date']}): url not in the "
+                           f"fetch cache as a 200 — {ev['source_url']}")
+            if ev["source_type"] not in S.SOURCE_TYPES:
+                bad.append(f"status_history on {nid} ({ev['date']}): source_type "
+                           f"{ev['source_type']!r}")
     for nid, caps in NODE_CAPACITY.items():
         for c in caps:
             w = f"capacity on {nid} ({c['value']} {c['unit']})"
@@ -200,6 +254,8 @@ def build() -> None:
         nodes.append({"id": nid, "kind": kind, "name": name, "listing": listing,
                       "home": home,
                       "stated_capacity": NODE_CAPACITY.get(nid, []),
+                      "status_history": sorted(NODE_STATUS.get(nid, []),
+                                               key=lambda e: e["date"]),
                       "sweep": SEARCHED.get(nid)})
     (HERE / "nodes.json").write_text(
         json.dumps({"_comment": NODES_COMMENT, "nodes": nodes},

@@ -36,6 +36,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import os
 import subprocess
 import sys
 import time
@@ -64,8 +65,50 @@ def load() -> dict:
 
 
 def save(idx: dict) -> None:
+    """Merge into whatever is on disk, under a lock, and replace atomically.
+
+    WHY THIS IS NOT A PLAIN WRITE. It was, and it lost forty-nine entries. Two
+    fetches were running at once — one in the foreground reading a supplier's
+    newsroom, one in the background pulling archived pages — and each had loaded
+    the index at its own start and wrote the whole dict back. The second to finish
+    erased everything the first had recorded, while leaving the BODIES on disk: the
+    cache then held forty-nine pages with no provenance, which is precisely the
+    "a file sitting in a folder announces nothing" failure that
+    check_manual_sources.py exists to prevent.
+
+    So: take the lock, re-read, merge (this process's entries win for keys it
+    actually touched), write a temporary file, rename over. The rename is atomic on
+    POSIX, so a reader never sees a half-written index.
+    """
     CACHE.mkdir(parents=True, exist_ok=True)
-    INDEX.write_text(json.dumps(idx, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
+    lock = CACHE / ".index.lock"
+    for _ in range(200):
+        try:
+            fd = os.open(str(lock), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            os.close(fd)
+            break
+        except FileExistsError:
+            time.sleep(0.05)
+    else:
+        lock.unlink(missing_ok=True)          # a stale lock is worse than no lock
+    try:
+        merged = {}
+        if INDEX.exists():
+            merged.update(json.loads(INDEX.read_text()))
+        merged.update(idx)
+        tmp = CACHE / ".index.tmp"
+        tmp.write_text(json.dumps(merged, indent=1, sort_keys=True,
+                                  ensure_ascii=False) + "\n")
+        tmp.replace(INDEX)
+        idx.update(merged)
+    finally:
+        lock.unlink(missing_ok=True)
+
+
+def orphans() -> list[str]:
+    """Body files with no index entry — what a lost write leaves behind."""
+    known = {e["file"] for e in load().values() if e.get("file")}
+    return sorted(p.name for p in CACHE.glob("*.gz") if p.name not in known)
 
 
 def key(url: str) -> str:
