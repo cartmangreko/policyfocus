@@ -784,6 +784,21 @@ def main() -> int:
               "reached\nby the benchmark's own reference or confirmed by a person.")
 
     print(drift(ou, iea, held_ou, held_iea, rows))
+    # THE ONE LINE BRIEF 10 WILL READ. The per-entry failed leg lives in
+    # sources/hydrogen_gap_search.json; this is the shape of it, computed on every run so
+    # it cannot drift from the file it summarises.
+    if SEARCH.exists():
+        sdoc = json.loads(SEARCH.read_text(encoding="utf-8"))
+        legs = Counter(e["admission"]["failed_leg"] for e in sdoc["entries"]
+                       if e.get("admission"))
+        total = sum(legs.values())
+        cap = legs.get("no capacity figure from the owner or a permit", 0)
+        if total:
+            print(f"\nWHY THE 47 THAT NAMED A SITE WERE NOT ADMITTED: {cap} of {total} fail "
+                  f"on capacity alone — the\nsource names the place and states no "
+                  f"megawatts. Per entry in sources/hydrogen_gap_search.json:")
+            for leg, n in legs.most_common():
+                print(f"  {n:>3}  {leg}")
     print(search_crosstab())
     print(disagreements())
 

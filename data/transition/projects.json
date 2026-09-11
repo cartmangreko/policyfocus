@@ -4833,7 +4833,25 @@
           "date_precision": "day",
           "retrieved_date": "2026-09-09"
         }
-      ]
+      ],
+      "dropped_from_benchmark": {
+        "benchmark": "iea_hydrogen_production_projects",
+        "present_in": "2023-10",
+        "absent_from": "current",
+        "entries": [
+          {
+            "ref": "885",
+            "name": "Get H2 Lingen, phase 2",
+            "last_status": "Feasibility study"
+          },
+          {
+            "ref": "1436",
+            "name": "Get H2 Lingen, phase 3",
+            "last_status": "Feasibility study"
+          }
+        ],
+        "note": "A ROW COVARIATE AND NOTHING ELSE. The entry was in the October 2023 vintage of the benchmark and is not in the current one. It is never a rung, never a status, and no status_history event is written from it: a database that drops a row has said nothing about the project. Under rule 17 the row is queued for a look at whether the owner's own source still stands."
+      }
     },
     {
       "id": "bp-lingen-green-hydrogen",
@@ -4992,7 +5010,25 @@
           "date_precision": "day",
           "retrieved_date": "2026-09-09"
         }
-      ]
+      ],
+      "dropped_from_benchmark": {
+        "benchmark": "iea_hydrogen_production_projects",
+        "present_in": "2023-10",
+        "absent_from": "current",
+        "entries": [
+          {
+            "ref": "622",
+            "name": "Lingen Green Hydrogen (LGH2) Phase 1",
+            "last_status": "Feasibility study"
+          },
+          {
+            "ref": "1034",
+            "name": "Lingen Green Hydrogen (LGH2) Phase 2",
+            "last_status": "Concept"
+          }
+        ],
+        "note": "A ROW COVARIATE AND NOTHING ELSE. The entry was in the October 2023 vintage of the benchmark and is not in the current one. It is never a rung, never a status, and no status_history event is written from it: a database that drops a row has said nothing about the project. Under rule 17 the row is queued for a look at whether the owner's own source still stands."
+      }
     },
     {
       "id": "airliquide-normandhy-port-jerome",
@@ -5571,7 +5607,20 @@
           "retrieved_date": "2026-09-09",
           "note": "Readable and undated, like the rest of galp.com. Cited for the sentence dating the final investment decision to 2023, which is the year and not the day."
         }
-      ]
+      ],
+      "dropped_from_benchmark": {
+        "benchmark": "iea_hydrogen_production_projects",
+        "present_in": "2023-10",
+        "absent_from": "current",
+        "entries": [
+          {
+            "ref": "1169",
+            "name": "Sines refinery (phase 2)",
+            "last_status": "FID/Construction"
+          }
+        ],
+        "note": "A ROW COVARIATE AND NOTHING ELSE. The entry was in the October 2023 vintage of the benchmark and is not in the current one. It is never a rung, never a status, and no status_history event is written from it: a database that drops a row has said nothing about the project. Under rule 17 the row is queued for a look at whether the owner's own source still stands."
+      }
     },
     {
       "id": "moeve-onuba-huelva",
@@ -5892,7 +5941,20 @@
           "retrieved_date": "2026-09-09",
           "note": "The project company's own site, cited and NOT used to date anything: it carries no date on any of its items, so every event on this row rests on the partner's dated release instead."
         }
-      ]
+      ],
+      "dropped_from_benchmark": {
+        "benchmark": "iea_hydrogen_production_projects",
+        "present_in": "2023-10",
+        "absent_from": "current",
+        "entries": [
+          {
+            "ref": "900",
+            "name": "Hamburg Green Hydrogen Hub (HGHH) project - old Moorburg plant",
+            "last_status": "Feasibility study"
+          }
+        ],
+        "note": "A ROW COVARIATE AND NOTHING ELSE. The entry was in the October 2023 vintage of the benchmark and is not in the current one. It is never a rung, never a status, and no status_history event is written from it: a database that drops a row has said nothing about the project. Under rule 17 the row is queued for a look at whether the owner's own source still stands."
+      }
     },
     {
       "id": "uniper-h2maasvlakte",
@@ -6442,7 +6504,20 @@
       "technology": [
         "hydrogen-supply"
       ],
-      "owner_listing": "unknown"
+      "owner_listing": "unknown",
+      "dropped_from_benchmark": {
+        "benchmark": "iea_hydrogen_production_projects",
+        "present_in": "2023-10",
+        "absent_from": "current",
+        "entries": [
+          {
+            "ref": "2171",
+            "name": "IPCEI - Clean Hydrogen Coastline",
+            "last_status": "Concept"
+          }
+        ],
+        "note": "A ROW COVARIATE AND NOTHING ELSE. The entry was in the October 2023 vintage of the benchmark and is not in the current one. It is never a rung, never a status, and no status_history event is written from it: a database that drops a row has said nothing about the project. Under rule 17 the row is queued for a look at whether the owner's own source still stands."
+      }
     },
     {
       "id": "omv-bruck-an-der-leitha",
@@ -6713,7 +6788,20 @@
       "transition": "decarbonisation",
       "technology": [
         "hydrogen-supply"
-      ]
+      ],
+      "dropped_from_benchmark": {
+        "benchmark": "iea_hydrogen_production_projects",
+        "present_in": "2023-10",
+        "absent_from": "current",
+        "entries": [
+          {
+            "ref": "833",
+            "name": "Repsol Cartagena, phase 1",
+            "last_status": "Feasibility study"
+          }
+        ],
+        "note": "A ROW COVARIATE AND NOTHING ELSE. The entry was in the October 2023 vintage of the benchmark and is not in the current one. It is never a rung, never a status, and no status_history event is written from it: a database that drops a row has said nothing about the project. Under rule 17 the row is queued for a look at whether the owner's own source still stands."
+      }
     },
     {
       "id": "la-robla-green",
@@ -7470,7 +7558,25 @@
           "date_precision": "day",
           "retrieved_date": "2026-09-09"
         }
-      ]
+      ],
+      "dropped_from_benchmark": {
+        "benchmark": "iea_hydrogen_production_projects",
+        "present_in": "2023-10",
+        "absent_from": "current",
+        "entries": [
+          {
+            "ref": "552",
+            "name": "Gigastack-Hornsea 2, phase I",
+            "last_status": "Other/Unknown"
+          },
+          {
+            "ref": "1374",
+            "name": "Gigastack-Hornsea 2, phase II",
+            "last_status": "Other/Unknown"
+          }
+        ],
+        "note": "A ROW COVARIATE AND NOTHING ELSE. The entry was in the October 2023 vintage of the benchmark and is not in the current one. It is never a rung, never a status, and no status_history event is written from it: a database that drops a row has said nothing about the project. Under rule 17 the row is queued for a look at whether the owner's own source still stands."
+      }
     },
     {
       "id": "ineos-koeln-electrolyser",
@@ -8801,7 +8907,40 @@
       ],
       "stated_schedule": [],
       "schedule_note": "EMPTY BECAUSE NOBODY LOOKED, AND SAYING SO HERE RATHER THAN IN THE LIST. The admission search of 10 September 2026 asked one question of every source — does an owner or a permit name this site — and did not collect schedules. Several of these pages plainly state a target date; none was taken down against this row. An empty stated_schedule elsewhere on this file means no source on file states a date; on these forty-four it means the source was read for something else. Re-reading them for dates is coverage work and is not done.",
-      "owner_listing_note": "Not asked in this pass. The admission search read each source for a site and a figure; who owns the operator, and whether that owner is listed, was not read."
+      "owner_listing_note": "Not asked in this pass. The admission search read each source for a site and a figure; who owns the operator, and whether that owner is listed, was not read.",
+      "dropped_from_benchmark": {
+        "benchmark": "iea_hydrogen_production_projects",
+        "present_in": "2023-10",
+        "absent_from": "current",
+        "entries": [
+          {
+            "ref": "1476",
+            "name": "H2V Marseille - Fos (Phase 1)",
+            "last_status": "Feasibility study"
+          },
+          {
+            "ref": "2381",
+            "name": "H2V Marseille - Fos (Phase 2)",
+            "last_status": "Feasibility study"
+          },
+          {
+            "ref": "2382",
+            "name": "H2V Marseille - Fos (Phase 3)",
+            "last_status": "Feasibility study"
+          },
+          {
+            "ref": "2383",
+            "name": "H2V Marseille - Fos (Phase 4)",
+            "last_status": "Feasibility study"
+          },
+          {
+            "ref": "2384",
+            "name": "H2V Marseille - Fos (Phase 5)",
+            "last_status": "Feasibility study"
+          }
+        ],
+        "note": "A ROW COVARIATE AND NOTHING ELSE. The entry was in the October 2023 vintage of the benchmark and is not in the current one. It is never a rung, never a status, and no status_history event is written from it: a database that drops a row has said nothing about the project. Under rule 17 the row is queued for a look at whether the owner's own source still stands."
+      }
     },
     {
       "id": "hive-albamed-albacete",
@@ -9594,7 +9733,20 @@
       ],
       "stated_schedule": [],
       "schedule_note": "EMPTY BECAUSE NOBODY LOOKED, AND SAYING SO HERE RATHER THAN IN THE LIST. The admission search of 10 September 2026 asked one question of every source — does an owner or a permit name this site — and did not collect schedules. Several of these pages plainly state a target date; none was taken down against this row. An empty stated_schedule elsewhere on this file means no source on file states a date; on these forty-four it means the source was read for something else. Re-reading them for dates is coverage work and is not done.",
-      "owner_listing_note": "Not asked in this pass. The admission search read each source for a site and a figure; who owns the operator, and whether that owner is listed, was not read."
+      "owner_listing_note": "Not asked in this pass. The admission search read each source for a site and a figure; who owns the operator, and whether that owner is listed, was not read.",
+      "dropped_from_benchmark": {
+        "benchmark": "iea_hydrogen_production_projects",
+        "present_in": "2023-10",
+        "absent_from": "current",
+        "entries": [
+          {
+            "ref": "2150",
+            "name": "Orsted - Skovgaard Energy project in western Denmark",
+            "last_status": "Concept"
+          }
+        ],
+        "note": "A ROW COVARIATE AND NOTHING ELSE. The entry was in the October 2023 vintage of the benchmark and is not in the current one. It is never a rung, never a status, and no status_history event is written from it: a database that drops a row has said nothing about the project. Under rule 17 the row is queued for a look at whether the owner's own source still stands."
+      }
     },
     {
       "id": "plugpower-kokkola",

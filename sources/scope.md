@@ -1725,3 +1725,36 @@ lands in one.
 **`unexplained at FID or beyond` stays in the table at zero**, because that zero is the
 claim — every absence at FID or beyond is a decision somebody made — and a table that
 stopped printing it would stop making it.
+
+
+### `dropped_from_benchmark` is a covariate, and rule 17 is a queue
+
+A row whose benchmark entry was in the October 2023 vintage and is not in the current one
+carries **`dropped_from_benchmark`**: the vintage pair and the entry's last status in the
+benchmark. Nine rows carry it, covering sixteen entries.
+
+**It is never a rung, never a status, and no `status_history` event is written from it.**
+A database that drops a row has said nothing about the project, and the field exists so
+that the fact is available to anything scoring these rows without being mistaken for one
+of the register's own observations. Gigastack's two entries carry `Other/Unknown`, which
+is what a list looks like when it has stopped following a project rather than recorded
+that the project stopped.
+
+**Rule 17 makes each of the sixteen a task, and the task is narrow:** look at whether the
+**owner's** source still stands. Not whether the project stopped — the benchmark's silence
+is evidence about the benchmark. `report_candidate_gaps.py` prints the queue on every
+build; it is not worked by the run that found it.
+
+### The per-entry failed leg, and the one line that summarises it
+
+Each of the 47 entries in `owner or permit source names the site, not admitted` carries
+which admission leg failed and which source named the site, with its speaker. Each of the
+48 in `searched, no owner or permit source found` carries where somebody looked, in order.
+Both live per entry in `sources/hydrogen_gap_search.json`.
+
+`report_benchmark_gap.py` prints the distribution on every run, computed from that file so
+the two cannot drift apart. **Thirty of forty-seven fail on capacity alone** — the source
+names the place and states no megawatts. That is the binding constraint on this gap, and
+it is not the one the register expected: owners are not hiding where their plants are,
+they are publishing tonnes, euros, jobs and grid connections instead of the electrolyser's
+rating.
