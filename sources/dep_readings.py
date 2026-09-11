@@ -255,22 +255,23 @@ E("nel", "Skovgaard Energy ApS", "equipment_order", "supplier", "supplier_press"
   "electrolyser system from Skovgaard Energy Aps in Lemvig in Western "
   "Jutland, Denmark.")
 E("nel", "an undisclosed European client", "equipment_order", "supplier", "supplier_press",
-  N + "nel-asa-receives-purchase-order-for-multiple-h2station-units-in-the-netherlands/",
-  "2022-08-10", quantity=None,
-  note="'several H2Station™ units' for light- and heavy-duty vehicles; the title places "
-       "them in the Netherlands. UNSUPPORTED AND FLAGGED, NOT RULED ON: the page now "
-       "cached at this URL is Nel's 17 December 2019 OrangeGas release — a named "
-       "customer, and a date before this sweep's period. Either Nel reused the slug or "
-       "the reading took its date from somewhere the document does not say it. The "
-       "edge stands with this note rather than being deleted, because deleting a "
-       "reading is George's call and not the re-run's.",
+  N + "nel-asa-receives-purchase-order-for-multiple-h2station-units-from-a-european-"
+      "client/", "2022-08-10", quantity=None,
+  note="'several H2Station™ units' for fueling of light- and heavy-duty fuel cell "
+       "electric vehicles. About EUR 8 million including service and maintenance; "
+       "delivery planned for early 2023. RE-CITED 11 September 2026 — DECISION D-18. "
+       "The first pass cited Nel's Netherlands slug, which is a DIFFERENT release: "
+       "17 December 2019, OrangeGas, a named customer and a date before this sweep's "
+       "period. The reading itself was right in every particular — date, undisclosed "
+       "European client, 'several H2Station™ units', light- and heavy-duty — and only "
+       "the url was wrong. The claim that the title places these units in the "
+       "Netherlands came from the wrong page and is withdrawn: this release names no "
+       "country, which is why this edge carries none.",
   firmness="contract", firmness_basis=
-  "(Oslo, 17 December 2019) Nel Hydrogen A/S, a subsidiary of Nel ASA (Nel, "
-  "OSE:NEL), has received a purchase order from OrangeGas for the delivery "
-  "of multiple H2Station® units for fueling of predominately light duty "
-  "fuel cell electric vehicles in the Netherlands. “We are delighted to be "
-  "chosen as supplier for OrangeGas for their first fueling stations "
-  "(H2Station®) which will predominately serve…")
+  "(Oslo, 10 August 2022) Nel Hydrogen A/S, a subsidiary of Nel ASA (Nel, "
+  "OSE: NEL) has received a purchase order from an undisclosed European "
+  "client for the delivery of several H2Station™ units for fueling of light- "
+  "and heavy-duty fuel cell electric vehicles.")
 E("nel", "a high quality North European energy company", "equipment_order", "supplier",
   "supplier_press",
   N + "nel-asa-receives-40-mw-electrolyser-order-from-undisclosed-north-european-client/",
@@ -2905,10 +2906,15 @@ R_.disagreement(
       "note": "'engineering orders totaling 1.5 gigawatts', stated in the Q3 report."},
      {"speaker": "eufabric sum of edges", "value": 900, "unit": "MW",
       "date": "2025-08-28",
+      "bound": "lower",
       "note": "Edges of firmness `contract` dated on or before the backlog's own "
               "as-of date: Shell 200 MW (2022-01-13) and H2 Green Steel 700 MW "
-              "(2023-05-22). BELOW the stated backlog, not above it."}],
-    "THE +720 MW OVERSHOOT IS NOT THERE ONCE THE DATES AND THE FIRMNESS ARE KEPT. The "
+              "(2023-05-22). A LOWER BOUND ON THE STATED BACKLOG, not a rival "
+              "measurement of it: this sweep sees only the orders the OEM published "
+              "with a counterparty or a figure, and an order book contains orders "
+              "nobody announced. 900 of 1,500 is what can be seen, not what there is."}],
+    "A LOWER BOUND, NOT A CONTRADICTION. THE +720 MW OVERSHOOT IS NOT THERE ONCE THE "
+    "DATES AND THE FIRMNESS ARE KEPT. The "
     "first pass summed all six MW edges — 2,220 MW — against a backlog stated on "
     "28 August 2025. Of that, 1,020 MW is framework (Neste 120, Cepsa 300, the "
     "anonymous 600 MW FEED) and 300 MW is a contract signed in March 2026, seven "
@@ -2923,12 +2929,18 @@ R_.disagreement(
       "note": "'an order backlog exceeding 800 megawatts'."},
      {"speaker": "eufabric sum of edges", "value": 347.5, "unit": "MW",
       "date": "2024-12-19",
+      "bound": "lower",
       "note": "Eleven edges of firmness `contract` dated on or before the backlog's "
               "own as-of date, from Salzgitter's 0.72 MW in August 2020 to Ren-Gas's "
-              "50 MW in November 2024. Includes a 2.6 MW double count: Neste's "
-              "MultiPLHY appears as a delivery in 2022 and a start-up in 2025, and "
-              "this file records statements rather than a reconciled position."}],
-    "THE +310.1 MW OVERSHOOT IS NOT THERE EITHER. Of the 1,110.1 MW the first pass "
+              "50 MW in November 2024. A LOWER BOUND ON THE STATED BACKLOG for the "
+              "same reason as tk-nucera — only published orders are visible — and a "
+              "wider gap, which is what an unlisted company with no order book to "
+              "publish should produce. 347.5 of 800 is what can be seen. Includes a "
+              "2.6 MW double count: Neste's MultiPLHY appears as a delivery in 2022 "
+              "and a start-up in 2025, and this file records statements rather than a "
+              "reconciled position."}],
+    "A LOWER BOUND HERE TOO. THE +310.1 MW OVERSHOOT IS NOT THERE EITHER. Of the "
+    "1,110.1 MW the first pass "
     "summed, 550 MW is framework — including a single anonymous 500 MW agreement — and "
     "252.6 MW was announced after the backlog was stated. What Sunfire had announced "
     "as contracts by 19 December 2024 is 347.5 MW against a backlog it put above 800. "
@@ -2945,11 +2957,11 @@ _st("plug-power", refusal_class="403",
 _st("mcphy", refusal_class="domain_gone",
     note="mcphy.com does not resolve and www.mcphy.com redirects to John Cockerill. "
          "23 of 125 identified captures retrieved, 21 with a readable body.")
-_st("aker-carbon-capture", refusal_class="domain_resolves_serves_nothing",
+_st("aker-carbon-capture", refusal_class="resolves, serves 404",
     note="akercarboncapture.com resolves to 35.187.120.37 and serves nothing: nginx "
          "404 over http, a certificate that does not match the name over https. "
          "Checked 11 September 2026. Every edge is read from the successor's host.")
-_st("slb-capturi", refusal_class="domain_unaddressed",
+_st("slb-capturi", refusal_class="domain held, no host",
     note="slbcapturi.com has NO address record and resolves nowhere on slb.com, but "
          "SLB holds the domain — its nameservers are dns0/dns1.slb.com and "
          "dns0/dns1.slb.net. Checked 11 September 2026. capturi.slb.com answers 200 "

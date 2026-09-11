@@ -65,8 +65,8 @@ should not have to infer which from prose:
 | sms-group | `waf_challenge` | AWS WAF, 202 and a JavaScript challenge, sitemap included. **incomplete** |
 | shell-cansolv | `empty_body_200` | 10,475 bytes of markup, **zero characters of text** |
 | mcphy | `domain_gone` | mcphy.com does not resolve; www redirects to the acquirer |
-| slb-capturi | `domain_unaddressed` | slbcapturi.com has no address record — SLB holds the domain and publishes no host for it |
-| aker-carbon-capture | `domain_resolves_serves_nothing` | Resolves to 35.187.120.37; nginx 404 over http, wrong certificate over https |
+| slb-capturi | `domain held, no host` | slbcapturi.com has no address record — SLB holds the domain, its own nameservers answer for it, and it publishes no host |
+| aker-carbon-capture | `resolves, serves 404` | Resolves to 35.187.120.37; nginx 404 over http, wrong certificate over https |
 | ravenna-ccs | `script_rendered_index` | The media index renders by script; the release was reached directly |
 
 **Three of those were checked again on 11 September 2026 and one earlier line was
@@ -168,11 +168,12 @@ verdicted en bloc as `framework` and no source was re-read for one.
 **One correction to the sentence this paragraph used to carry.** It said a
 framework agreement has no named site. **Thirty-seven of the 98 do name a site**,
 and four of those resolve to an admitted row — `uniper-h2maasvlakte`,
-`3d-dunkirk`, `salcos-salzgitter` and `northern-lights` itself. The sites are kept
-rather than nulled, because a site the source states is a fact about the source,
-and the four `project_id`s are kept too: rung 6 excludes them on firmness, which
-is the axis the ruling actually turns on, so nothing is gained by throwing the
-identification away as well.
+`3d-dunkirk`, `salcos-salzgitter` and `northern-lights` itself. **They keep the
+site and they keep the `project_id`**, on your ruling of the second batch. What
+keeps a framework out of rung 6 is its **firmness**, not the absence of a site:
+the exclusion would hold just the same if every one of the 98 named a site and
+matched a row, so nulling an identification the source actually makes would throw
+away a fact in order to duplicate a rule. See D-14.
 
 They still range from a signed capacity reservation with money behind it (ITM
 Power/Shell, 100 MW) to a memorandum to explore a possibility (Aramis, no
@@ -253,9 +254,15 @@ Three unmatched customers deserve naming on their own:
 arithmetic done without the dates and without the firmness, and your ruling asked
 for both. Nothing was corrected in either speaker's figures; the sums were rebuilt.
 
-**(a) Neither electrolyser OEM is oversubscribed against its own stated backlog.**
-A backlog is a snapshot at a date. The honest comparison is against the edges that
-existed when the snapshot was taken, split by how firm each one is.
+**(a) Neither electrolyser OEM is oversubscribed against its own stated backlog,
+and the sum this file can build is a LOWER BOUND on it.** A backlog is a snapshot
+at a date. The honest comparison is against the edges that existed when the
+snapshot was taken, split by how firm each one is — and it can only ever be a
+floor, because **this sweep sees only the orders the OEM published with a
+counterparty or a figure**, and an order book contains orders nobody announced.
+900 of 1,500 and 347.5 of 800 are what can be seen, not what there is. Recorded on
+each node as `bound: "lower"` on the sum, so that nobody reads the gap as a
+contradiction.
 
 | Node | Backlog stated | As of | Contract, on or before | Framework, on or before | Announced after |
 |---|---|---|---|---|---|
@@ -365,7 +372,8 @@ kept only in a docket is a number nobody recomputes.
   gigawatts", in the Q3 report. **1,500 MW.**
 - Speaker 2, this file's sum (2025-08-28): the contracts the company had announced
   by that date. **900 MW.**
-- The company's own backlog is larger than the orders it has named. Neither figure
+- **A lower bound, not a rival measurement.** The company's own backlog is larger
+  than the orders it has named, which is what an order book is for. Neither figure
   is corrected.
 
 **D-0b — `backlog_mw`, on sunfire.**
@@ -373,7 +381,8 @@ kept only in a docket is a number nobody recomputes.
   **800 MW.**
 - Speaker 2, this file's sum (2024-12-19): eleven contracts, one of which is a
   restatement of another. **347.5 MW.**
-- Same shape, and a wider gap. Sunfire is unlisted and publishes no order book.
+- **A lower bound here too**, and a wider gap — which is what an unlisted company
+  with no order book to publish should produce. Neither figure is corrected.
 
 **D-A — `company`, at Måde, Esbjerg.**
 - Speaker 1, Plug Power (2026-06-24): the Måde Power-to-X facility in Esbjerg is
@@ -518,8 +527,32 @@ you ruled. The other 142 were read: 127 contract, 14 intent, and one
 `equipment_order` read down to `framework` because the release says its megawatts
 sit on a capacity reservation (`e0055`).
 
+**FIRMNESS IS WHAT KEEPS A FRAMEWORK OUT OF RUNG 6, AND THE ABSENCE OF A SITE IS
+NOT.** (Ruled 11 September 2026, on the second batch.) Thirty-seven of the 98
+framework agreements name a site and four of those resolve to an admitted row —
+`uniper-h2maasvlakte`, `3d-dunkirk`, `salcos-salzgitter` and `northern-lights`.
+**They keep the site and they keep the `project_id`.** Rung 6 excludes them
+because `firmness` is `framework`, which is the axis the ruling turns on, and it
+would exclude them just the same if every one of them named a site and matched a
+row. Nulling an identification the source actually makes, in order to reach an
+answer the firmness field already reaches, would throw away a fact to duplicate a
+rule. The 98 count toward the supplier's contracted total and toward no project's
+rung 6.
+
 *Touches:* every edge; `dep_sweep.FIRMNESS`; the citation gate in
-`dep_records.check`.
+`dep_records.check`; `e0058`, `e0061`, `e0064`, `e0074`, `e0075`, `e0101`,
+`e0112`, `e0124`, `e0132`, `e0140`, `e0146`, `e0148`, `e0149`, `e0150`, `e0152`,
+`e0153`, `e0157`, `e0159`, `e0163`, `e0164`, `e0166`, `e0167`, `e0168`, `e0171`,
+`e0172`, `e0173`, `e0179`, `e0180`, `e0183`, `e0187`, `e0199`, `e0200`, `e0208`,
+`e0213`, `e0215`, `e0223`, `e0225` — the 37 that name a site.
+
+**D-19 — (Yours.) `verdict` is written by George and by nobody else.** Not by a
+sweep, not by a re-run, and not by a ruling that settles a class. The 98
+frameworks were ruled en bloc and that ruling is recorded as **`firmness`**, which
+is data; their `verdict` is null like every other edge's. A re-run that filled in
+a verdict would be a re-run overwriting the reader.
+
+*Touches:* `verdict` on all 240 edges, which is null and stays null.
 
 **D-15 — (Yours.) A named site that matches no admitted row stays on the supplier
 node, with a sector tag and `outside_perimeter: true`.** Ninety-four edges. They
@@ -563,72 +596,43 @@ was, by your ruling. The +890,000 t/yr overshoot does not survive it — see
 *Touches:* both `northern-lights` capacity entries, both `ravenna-ccs` entries,
 `dep_records.add_capacity`.
 
-**D-18 — (Mine, and flagged rather than acted on.) One reading is not supported by
-the page it cites.** `e0023` records an undisclosed Dutch H2Station order dated
-10 August 2022. The page now cached at that URL is Nel's release of **17 December
+**D-18 — (Flagged by me, searched on your authority, and RESOLVED WITHOUT THE
+DELETION.)** `e0023` records an undisclosed European order for several H2Station
+units, dated 10 August 2022. The page it cited was Nel's release of **17 December
 2019** about a named customer, OrangeGas — a different customer and a date before
-this sweep's period. Either Nel reused the slug or the reading took its date from
-somewhere the document does not say it. The edge stands, with the whole of that in
-its note, because deleting a reading is your call and not a re-run's.
+this sweep's period.
+
+You authorised the deletion if a search of Nel's own 2022 output found nothing.
+**It found the release.** The reading was right in every particular and only the
+url was wrong.
+
+*The search, so that nobody runs it again.* Three passes over the 229 cached
+nelhydrogen.com pages that carry a body:
+
+1. **Every Nel page naming the Netherlands and H2Station** — nine, of which the
+   only one in period is the 2019 OrangeGas release itself. Nel has announced no
+   Dutch fuelling order since.
+2. **Every occurrence of "several H2Station" or "multiple H2Station" anywhere in
+   the Nel cache** — eleven. One of them is
+   `nel-asa-receives-purchase-order-for-multiple-h2station-units-from-a-european-client`,
+   datelined **(Oslo, 10 August 2022)**: "has received a purchase order from an
+   undisclosed European client for the delivery of several H2Station™ units for
+   fueling of light- and heavy-duty fuel cell electric vehicles."
+3. **Every Nel release page whose own dateline falls in 2022** — twenty-two,
+   confirming there is exactly one August 2022 fuelling order and no second
+   candidate. Nel's Q2 2022 index page lists it under 10 August 2022 under that
+   same title, which is the second witness.
+
+**The edge is re-cited and stands. No date correction was needed** — 10 August
+2022 was already the release's own dateline. Two things did change: the note now
+carries what the release actually says (about EUR 8 million including service and
+maintenance, delivery planned for early 2023), and **the claim that the title
+places these units in the Netherlands is withdrawn**, because it came from the
+wrong page. This release names no country, which is why the edge carries none.
+
+The authorisation to delete is recorded here and was not used.
 
 *Touches:* `e0023`.
-
-**D-8 — The four false links the matcher produced, and the rule each forced.**
-Recorded here as the basis for alias kinds, at your instruction.
-
-| Wrong link | Cause | Rule it forced |
-|---|---|---|
-| ITM Power's Uniper **Humber H2ub** contract → `uniper-h2maasvlakte` | Company-only match. "Uniper" resolved to exactly one row, so it looked unambiguous — the worst case, because a confident match to the wrong single row produces a link a reader would believe | A company name never resolves a row |
-| Sunfire's **Bad Lauchstädt** and **Stenungsund** orders → the same Rotterdam row | Same cause | Same rule |
-| Nel's HyCC order at **Delfzijl** → `lhyfe-delfzijl` | Site-only match. Two companies are building two plants in one Dutch town and the town is one of them's site alias | A site match is refused when a company alias points at a different row |
-| Every **Shell** and **TotalEnergies** contract in Europe → `northern-lights` | The JV shareholder list in "Northern Lights JV DA (Equinor, Shell, TotalEnergies)" had been split into aliases, making "Shell" an alias of a reservoir under the North Sea | A parenthetical becomes an alias only when it holds no comma |
-
-Two more were caught after the rule was written, both coarse places, and both are
-refused by hand rather than by a rule: **"Aberdeenshire"** is a county and put a
-gas-fired station at Peterhead onto a hydrogen project at Kintore (`e0166`);
-**"Dunkirk"** is a city and put a CO2 export terminal onto ArcelorMittal's DMX unit
-(`e0188`). **"Duisburg"** would have put HKM's furnace onto thyssenkrupp's plant
-(`e0239`). A rule for "this alias is too coarse" is not attempted; `refuse_match`
-with a reason is.
-*Touches:* `dep_sweep.aliases`, `dep_records.resolve`, and `e0026`, `e0030`,
-`e0058`, `e0061`, `e0092`, `e0094`, `e0128`, `e0166`, `e0188`, `e0239`.
-
-**D-9 — The fetch cache index is tracked; the bodies are not.** Url, date, size and
-SHA-256 for all 2,673 fetches are in `sources/dependency_cache/index.json` and in
-git history. The bodies are gitignored on the `sources/cache/hydrogen/` precedent,
-which was set for the right reason: a repository that redistributes somebody else's
-corpus has taken on a licensing question it was never asked.
-
-**D-10 — Supplier nodes carry a `status_history` in the shape `projects.json`
-uses.** (Yours.) Same field names, same append-only discipline, same
-source-per-entry rule; the `status` vocabulary is the supplier's own, because
-`operating` says nothing useful about a company. Ten events on four nodes:
-`manz` (6), `slb-capturi` (2), `mcphy` (1), `aker-carbon-capture` (1) — the last
-added by D-16, and it is the seller's side of the same transfer slb-capturi
-records as the receiver's.
-
-**D-11 — John Cockerill inherits McPhy's edges by reference, not by copy.** Each
-of McPhy's nine edges carries
-`inherited_by: {node_id: "john-cockerill", since: "2025-07-08", source_url: ...}`.
-The edges stay on `mcphy` because McPhy is who signed them; duplicating them onto
-`john-cockerill` would double every sum in §2.5.
-*Touches:* `e0195`–`e0203`.
-
-**D-12 — Where an aggregator is cited as a source, the owner-side scan skips it.**
-`api.iea.org/hydrogen/project` is one JSON blob listing every hydrogen project in
-the world and 22 rows cite it as a benchmark. Scanning it matched six nodes on
-every one of those rows. A haystack that matches every needle is not evidence.
-*Touches:* the owner-side counts in §2.3 — without this, 39 rows would appear to
-name a supplier instead of 12.
-
-**D-13 — The owner-side scan reads paragraphs, not pages, and flags self-naming.**
-A page's navigation and related-articles rail name companies the article never
-mentions. And a row whose owner is itself a node names that node trivially:
-`airliquide-elygator-maasvlakte`, `totalenergies-airliquide-zeeland` and
-`northern-lights` name only their own owners, and are flagged rather than filtered,
-because "the owner is the supplier" is a finding about the market.
-
----
 
 ## 4. New vocabulary the sweep forced
 
@@ -677,9 +681,11 @@ outside this sweep's Europe (McPhy/CEOG, `e0203`) and no country is recorded for
 
 ## 6. What a re-run should do first
 
-Rewritten 11 September 2026. Four of the five items the first version listed are
-now done: D-7's date field is ruled and applied, the 98 frameworks are ruled, the
-Aker node is split and the storage phases are dated.
+Rewritten 11 September 2026, twice. Four of the five items the first version
+listed are done: D-7's date field is ruled and applied, the 98 frameworks are
+ruled, the Aker node is split and the storage phases are dated. `e0023` left this
+list on the second batch: it was searched, found and re-cited, and the deletion
+George authorised was not needed (D-18).
 
 1. **Verdict the edges, in the order in `sources/dependency_worklist.md`.** 25
    matched to a register row first, grouped by row; then the 94 at a site this
@@ -690,23 +696,22 @@ Aker node is split and the storage phases are dated.
    `incomplete: true` in `nodes.json` and **anybody summing it is summing a
    sample**. The Internet Archive throttles hard enough that this needs its own
    run, and this batch deliberately did not start one.
-3. **Rule on `e0023`** — DECISION D-18. A reading whose cited page is a different
-   release about a different customer, flagged rather than deleted.
-4. **Review the nine `site only` matches.** All nine read correctly by hand, but
+3. **Review the nine `site only` matches.** All nine read correctly by hand, but
    each rests on a place name with no company agreement, and rung 6 will score
    them.
-5. **The two Plug Power URLs the register cites that a reader cannot open.**
+4. **The two Plug Power URLs the register cites that a reader cannot open.**
    `plugpower-kokkola` and `plugpower-kristinestad`. The text is in the Q4 feed.
-6. **Retrieve the Shell Cansolv page by hand.** Queued in
+5. **Retrieve the Shell Cansolv page by hand.** Queued in
    `sources/manual/MANIFEST.json` beside the two Shell hydrogen items, for the same
    refusal and one other: shell.com answers 200 with zero characters of text, and
    humberzero.co.uk answers 404 on every path.
-7. **The three counts in the batch report did not reconcile with the file**, and
-   the file is what this docket reports. The ruling asked for 94 edges matched to
+6. **The three counts in the first batch report did not reconcile with the file**,
+   and the file is what this docket reports. It asked for 94 edges matched to
    register rows: the matched set is **25** (11 `site+company`, 9 `site only`, 5
    explicit), and 94 is the count of the *other* class — the site-named edges
-   outside the perimeter, which is where that ruling landed. The ruling asked for
-   48 of those; there are **94**. And the 18 unit mismatches are **8**, with a
-   further 16 nodes stating no capacity at all — the first read had mixed the two
-   classes into one number. Nothing was bent to fit a count; the classes are ruled
-   as ruled and the numbers are recomputed on every build.
+   outside the perimeter, which is where that ruling landed. It asked for 48 of
+   those; there are **94**. And the 18 unit mismatches are **8**, with a further 16
+   nodes stating no capacity at all — the first read had mixed the two classes into
+   one number. Nothing was bent to fit a count. **George confirmed all three as his
+   own errors on 11 September 2026; these numbers stand**, and they are recomputed
+   on every build rather than repeated from here.

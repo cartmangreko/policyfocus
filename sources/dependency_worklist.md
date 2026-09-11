@@ -1119,8 +1119,8 @@ A customer nobody named, or a company named without a site. Grouped by node.
   - cited for firmness: “(Oslo, 8 July 2022) Nel Hydrogen Electrolyser AS, a subsidiary of Nel ASA (Nel, OSE:NEL), has received a purchase order for an alkaline electrolyser system from Skovgaard Energy Aps in Lemvig in Western Jutland, Denmark.”
 - **e0023**  `contract`  2022-08-10  speaker: supplier  verdict: **null**
   - Nel ASA → an undisclosed European client — no quantity stated
-  - source: https://nelhydrogen.com/press-release/nel-asa-receives-purchase-order-for-multiple-h2station-units-in-the-netherlands/
-  - cited for firmness: “(Oslo, 17 December 2019) Nel Hydrogen A/S, a subsidiary of Nel ASA (Nel, OSE:NEL), has received a purchase order from OrangeGas for the delivery of multiple H2Station® units for fueling of predominately light duty fuel cell electric vehicles in the Netherlands. “We are delighted to be chosen as supplier for OrangeGas for their first fueling stations (H2Station®) which will predominately serve…”
+  - source: https://nelhydrogen.com/press-release/nel-asa-receives-purchase-order-for-multiple-h2station-units-from-a-european-client/
+  - cited for firmness: “(Oslo, 10 August 2022) Nel Hydrogen A/S, a subsidiary of Nel ASA (Nel, OSE: NEL) has received a purchase order from an undisclosed European client for the delivery of several H2Station™ units for fueling of light- and heavy-duty fuel cell electric vehicles.”
 - **e0024**  `contract`  2022-11-14  speaker: supplier  verdict: **null**
   - Nel ASA → a high quality North European energy company — 40 MW
   - source: https://nelhydrogen.com/press-release/nel-asa-receives-40-mw-electrolyser-order-from-undisclosed-north-european-client/
