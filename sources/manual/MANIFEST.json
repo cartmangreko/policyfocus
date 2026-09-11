@@ -35,7 +35,12 @@
     "AND ONE ENTRY HERE IS NOT ABOUT A ROW AT ALL. The benchmark gap report has a class for a",
     "company source somebody located and could not read, and its members are queued here like any",
     "other — a person with a browser closes one in a minute. A queue that only accepted work on",
-    "rows would have nowhere to put the reason three entries in an outside list are unresolved."
+    "rows would have nowhere to put the reason three entries in an outside list are unresolved.",
+    "",
+    "REFERENCE DEBTS, from 11 September 2026. Five entries in this queue are not pages a",
+    "fetcher cannot reach: they are pairs of objects this register believes are one works and",
+    "has no source identifying as one. Rule 30 says record the identifier rather than guess the",
+    "join, so they wait here, named, rather than being merged on a resemblance."
   ],
   "retrieved": [
     {
@@ -206,10 +211,46 @@
       "priority": "normal"
     },
     {
-      "id": "benchmark-gap-uniper-maasvlakte-phase-2",
       "url": "https://www.uniper.energy/netherlands/h2maasvlakte",
       "drop_as": "sources/manual/benchmark-gap--uniper-h2maasvlakte-phase-2.html",
-      "note": "Whether the benchmark's H2Maasvlakte phase II is the held 100 MW works enlarged or a second project. uniper.energy answered 403 to a declared reader four times in the admission search of 10 September 2026. Until it is read the entry counts as unread — not held, not duplicate."
+      "candidate": "benchmark-gap-uniper-maasvlakte-phase-2",
+      "why": "Whether the benchmark's H2Maasvlakte phase II is the held 100 MW works enlarged or a second project. uniper.energy answered 403 to a declared reader four times in the admission search of 10 September 2026. Until it is read the entry counts as unread — not held, not duplicate.",
+      "needed_for": "benchmark entry that cannot be settled without this page"
+    },
+    {
+      "url": "https://www.naturgy.com/notas-de-prensa/naturgy-y-enagas-renovable-presentan-en-la-robla-la-futura-planta-de-hidrogeno-renovable-cuya-capacidad-de-produccion-se-multiplicara-hasta-280-mw/",
+      "drop_as": "sources/manual/reference-debt--la-robla-naturgy-enagas.html",
+      "candidate": "reference-debt-la-robla",
+      "why": "REFERENCE DEBT, NOT A MERGE. Two objects: the row `la-robla-green` on this file, 200 MW at El Crispin, La Robla; and benchmark entry iea/oden ref 607, 'La Robla', 280 MW, whose search read Naturgy's release placing the plant on the old La Robla power station. NEEDED: a source that identifies the two as one works — a company or permit page naming both the El Crispin land and the 280 MW figure, or the IPCEI/Innovation Fund record for the grant. Until then ref 607 stays in `owner or permit source names the site, not admitted` and the row carries no 607.",
+      "needed_for": "reference debt — two objects, no source identifying them as one works"
+    },
+    {
+      "url": "https://www.cartagena.es/detalle_noticias.asp?id=84902",
+      "drop_as": "sources/manual/reference-debt--cartagena-escombreras.html",
+      "candidate": "reference-debt-cartagena",
+      "why": "REFERENCE DEBT, NOT A MERGE. Two objects: the row `repsol-cartagena`, 100 MW; and benchmark ref 2123, which the benchmark names 'Cobra Cartagena' at 115 MW. Cartagena city council's page names REPSOL AND ENAGAS RENOVABLE building a 100 MW electrolyser at Escombreras, and the promoter on the permit is Cartagena Hydrogen Network. NEEDED: a source that says whether Cobra's project and Repsol's are the same works or two — the benchmark names a third company, which is exactly the condition under which a name join goes wrong.",
+      "needed_for": "reference debt — two objects, no source identifying them as one works"
+    },
+    {
+      "url": "https://ren-gas.com/en/projekti/lahti-2/",
+      "drop_as": "sources/manual/reference-debt--rengas-lahti-kymijarvi.html",
+      "candidate": "reference-debt-rengas-lahti",
+      "why": "REFERENCE DEBT, NOT A MERGE. Two benchmark entries, refs 2430 'Ren-Gas P2X Lahti' and 2630 'Kymijarvi power (Lahti)', both 100 MW, which the admission search read as one plant: Ren-Gas's own page puts the e-methane plant next to Lahti Energia's Kymijarvi complex, so the second entry appears to be the works named after the power station beside it. NEEDED: a source that states the two names belong to one project. Neither is a row here yet, so this debt is between two benchmark entries rather than between an entry and a row.",
+      "needed_for": "reference debt — two objects, no source identifying them as one works"
+    },
+    {
+      "url": "https://winpowersa.com/winpower-wins-eu-funding-for-hy2infra/",
+      "drop_as": "sources/manual/reference-debt--winpower-ptx-sines.html",
+      "candidate": "reference-debt-winpower-sines",
+      "why": "REFERENCE DEBT, NOT A MERGE. Two objects: the row `winpower-ptx-sines` and benchmark ref 3118, 'WinPower - PtX Sines project', 160 MW. The search reached the entry from the benchmark side and the figures agree exactly, but the reference is not on the row, so the gap report counts the entry as unadmitted. NEEDED: nothing more than a reading that confirms the row and the entry are the same project, and then the reference written onto the row.",
+      "needed_for": "reference debt — two objects, no source identifying them as one works"
+    },
+    {
+      "url": "https://www.hycc.com/en/projects/h2next",
+      "drop_as": "sources/manual/reference-debt--hycc-h2next.html",
+      "candidate": "reference-debt-hycc-h2next",
+      "why": "REFERENCE DEBT, NOT A MERGE. Two objects: the row `hycc-h2next` and benchmark ref 3558, 'H2Next', 250 MW on the Maasvlakte. Same shape as WinPower: the search reached the entry from the benchmark side, the figures agree, and the reference was never recorded on the row. NEEDED: a reading that confirms the identity, then the reference.",
+      "needed_for": "reference debt — two objects, no source identifying them as one works"
     }
   ]
 }

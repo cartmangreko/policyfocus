@@ -240,6 +240,34 @@ def coverage(projects: dict[str, dict]) -> None:
           "exactly the reading the standfirst rule exists to prevent.")
 
 
+def dropped_from_benchmark(projects: dict[str, dict]) -> None:
+    """Rows whose benchmark entry left the list between vintages — RULE 17'S QUEUE.
+
+    A project that vanishes from a database is a project whose failure nobody counts, so
+    the register goes and looks. WHAT IT LOOKS AT IS WHETHER THE OWNER'S SOURCE STILL
+    STANDS — not whether the project stopped. The benchmark's silence is evidence about
+    the benchmark.
+
+    `dropped_from_benchmark` is a ROW COVARIATE. It is never a rung, never a status, and
+    no status_history event is written from it. Printed here as a queue so the look is
+    somebody's task rather than somebody's memory.
+    """
+    queue = [(pid, r) for pid, r in sorted(projects.items())
+             if r.get("dropped_from_benchmark")]
+    if not queue:
+        return
+    n = sum(len(r["dropped_from_benchmark"]["entries"]) for _, r in queue)
+    print(f"\nreport_candidate_gaps: dropped from the benchmark between vintages — "
+          f"{len(queue)} row(s), {n} entr(ies).\n  RULE 17'S QUEUE: each is to be looked at "
+          f"for whether the OWNER'S source still stands. The benchmark's\n  silence is "
+          f"evidence about the benchmark. Not worked here.")
+    for pid, r in queue:
+        d = r["dropped_from_benchmark"]
+        print(f"  {pid:34} {d['present_in']} -> absent")
+        for e in d["entries"]:
+            print(f"      ref {e['ref']:>5}  last status {e['last_status']:<18} {e['name'][:52]}")
+
+
 def main() -> int:
     files = candidate_files()
     if not files:
@@ -252,6 +280,7 @@ def main() -> int:
     capacity_queue()
     schedule_queue()
     coverage(projects)
+    dropped_from_benchmark(projects)
     return 0
 
 
