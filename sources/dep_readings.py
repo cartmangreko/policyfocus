@@ -1287,3 +1287,168 @@ E("air-liquide", "Holcim", "equipment_order", "supplier", "supplier_press",
   note="Agreement to supply oxygen for the oxyfuel-ready clinker line and Cryocap OXY "
        "for capture at Obourg; CO2 to an export hub such as Antwerp@C for offshore "
        "storage. THE SUPPLIER SIDE OF go4zero-obourg. No tonnage is stated.")
+
+# =============================================================================
+# dri_plant
+# =============================================================================
+
+# --- Midrex Technologies, Inc. ------------------------------------------------
+# 175 items across the press-release and news sitemaps, ALL fetched and read — the
+# whole newsroom, which is small enough to take whole. Midrex is UNLISTED (a Kobe
+# Steel subsidiary) and publishes no order book.
+#
+# NO stated_capacity IS RECORDED FOR THIS NODE, and that is a statement rather than
+# a gap. Midrex licenses a process and engineers plants; it has no line with a rate.
+# The tonnages below are the CUSTOMERS' plants, which is why they sit on edges and
+# not on the node — and it is why the docket's arithmetic section cannot compare
+# them with anything for this node kind.
+X = "https://www.midrex.com/"
+
+E("midrex", "H2 Green Steel", "equipment_order", "supplier", "supplier_press",
+  X + "press-releases/midrex-and-paul-wurth-selected-by-h2-green-steel/", "2022-10-11",
+  quantity=(2100000, "tonnes DRI per year"), country="SE", sector="steel", site="Boden",
+  note="MIDREX H2 plant, with Paul Wurth (an SMS group company — SMS is also a node "
+       "on this perimeter). 'the world's first commercial 100 percent hydrogen direct "
+       "reduced iron plant'. Production expected 2025, ramp-up 2026.")
+E("midrex", "thyssenkrupp Steel Europe AG", "equipment_order", "supplier",
+  "supplier_press",
+  X + "press-releases/thyssenkrupp-steel-selects-midrex-flex-for-immediate-co2-"
+      "emissions-reduction/", "2023-03-13",
+  quantity=(2500000, "tonnes DRI per year"), country="DE", sector="steel",
+  site="Duisburg",
+  note="MIDREX Flex with Paul Wurth, combined with SMS group melting technology. "
+       "Starts on reformed natural gas at 50%+ hydrogen and transitions to up to 100%. "
+       "Start-up planned end of 2026.")
+E("midrex", "ArcelorMittal Germany", "equipment_order", "owner", "owner_press",
+  X + "news/german-federal-government-to-provide-e55-million-for-arcelormittals-"
+      "hydrogen-dri-plant/", "2021-09-07", quantity=None, country="DE", sector="steel",
+  site="Hamburg",
+  note="SPEAKER IS THE OWNER, not Midrex: the page says it is 'adapted from a 7 "
+       "September 2021 ArcelorMittal news release'. A supplier's newsroom carrying "
+       "somebody else's announcement does not make the supplier the speaker. EUR 55m "
+       "of federal funding for Germany's first industrial-scale hydrogen DRI plant. "
+       "Hamburg is not a row in the register's steel perimeter.")
+E("midrex", "Blastr Green Steel", "equipment_order", "supplier", "supplier_press",
+  X + "press-releases/midrex-and-primetals-selected-by-blastr/", "2024-07-09",
+  quantity=(2000000, "tonnes DRI per year"), country="FI", sector="steel", site="Inkoo",
+  note="MIDREX H2 plant with Primetals — another node on this perimeter — inside a "
+       "2.5 Mt/yr steelmaking facility. Blastr is not a row in this register.")
+E("midrex", "thyssenkrupp Steel Europe AG", "equipment_order", "supplier",
+  "supplier_press",
+  X + "news/thyssenkrupp-steel-receives-construction-approval-for-hydrogen-ready-dri-"
+      "smelter-project/", "2026-01-01", date_precision="year",
+  quantity=(2500000, "tonnes DRI per year"), country="DE", sector="steel",
+  site="Duisburg",
+  note="CONSTRUCTION APPROVAL on the 2023 order — 'the largest single order in TKS "
+       "history', about EUR 2bn of federal and state funding against just under EUR 1bn "
+       "of TKS's own. DATE PRECISION IS YEAR: this page carries no dateline and no "
+       "metadata date, and the sweep will not invent a day for it.")
+
+# --- McPhy Energy S.A. --------------------------------------------------------
+# THE SUPPLIER'S WEBSITE NO LONGER EXISTS. mcphy.com does not resolve; www.mcphy.com
+# serves a 107-byte redirect that ends at hydrogen.johncockerill.com. Every release
+# below is read from an Internet Archive capture of mcphy.com under DECISION D-7 —
+# the speaker's own document on the speaker's own domain, served by a third party.
+# The Wayback capture timestamp is in each URL and dep_records appends it to the
+# note as the archived copy's source date — DERIVED, never typed, because a
+# hand-written capture date drifts the moment a better capture is substituted.
+# `date` itself
+# is the release's own dateline, because that is what the field means everywhere
+# else in this file and what the sweep period is measured against.
+#
+# The CDX index returned 125 distinct captures of mcphy.com/en/press-releases/*;
+# 23 were fetched and 21 carry a readable body. One capture — the 20 MW Netherlands
+# project of 22 January 2020 — is a navigation-only snapshot with no article text,
+# so no edge is recorded from it. There is no way to go back for a better one.
+#
+# EIGHT OF THE TWENTY-ONE ARE OUT OF PERIOD (2016–2018). They are in the cache
+# because the archive indexed them together, and they are not edges.
+W = "https://web.archive.org/web/"
+
+R_.status_event(
+    "mcphy", "2025-07-08", "listed (Euronext Paris: MCPHY)",
+    "key assets acquired by John Cockerill Hydrogen",
+    "https://johncockerill.com/en/press-and-news/news/hydrogen-electrolyseur-belfort-"
+    "prod-aspach/", "supplier_press",
+    "'On July 8, 2025, the Belfort Commercial Court accepted John Cockerill Hydrogen's "
+    "bid to acquire McPhy's key assets, including the Belfort plant, innovative "
+    "technologies, intellectual property, and approximately 80 employees in Europe.' "
+    "Stated by the acquirer, a year later. McPhy's own domain was gone before this "
+    "sweep ran, so there is no seller-side document to set beside it.")
+
+C("mcphy", 1000, "MW/yr", "nameplate", "supplier", "supplier_press",
+  W + "20221102091939id_/https://mcphy.com/en/press-releases/the-launch-of-the-mcphys-"
+      "gigafactory-on-the-belfort-site/", "2022-11-02",
+  note="Belfort gigafactory at full ramp-up. PLANNED: FID taken 26 October 2022, "
+       "commissioning from the first half of 2024, EUR 114m of French state aid under "
+       "IPCEI. The plant never reached this rate — the "
+       "company's assets were sold by a commercial court two and a half years later.")
+C("mcphy", 1300, "MW/yr", "nameplate", "supplier", "supplier_press",
+  W + "20221102091939id_/https://mcphy.com/en/press-releases/the-launch-of-the-mcphys-"
+      "gigafactory-on-the-belfort-site/", "2022-11-02",
+  note="Group total including San Miniato, Italy. Same release, same day, a second "
+       "figure on a wider boundary — both recorded because the brief says no value is "
+       "superseded.")
+
+_MCPHY_TO_JC = {"node_id": "john-cockerill", "since": "2025-07-08",
+                "source_url": "https://johncockerill.com/en/press-and-news/news/"
+                              "hydrogen-electrolyseur-belfort-prod-aspach/"}
+
+E("mcphy", "Apex Energy", "equipment_order", "supplier", "supplier_press",
+  W + "20200815135550id_/https://mcphy.com/en/press-releases/2-mw-of-electrolysis-in-"
+      "germany/", "2020-06-30", quantity=(2, "MW"), country="DE", sector="hydrogen",
+  site="Rostock-Laage", inherited_by=_MCPHY_TO_JC,
+  note=" Construction completed 12 June 2020.")
+E("mcphy", "DIAX", "equipment_order", "supplier", "supplier_press",
+  W + "20200830195327id_/https://mcphy.com/en/press-releases/hydrogen-for-light-"
+      "industry/", "2020-06-04", quantity=None, country="BA",
+  sector="diamond tools / sintering", inherited_by=_MCPHY_TO_JC,
+  note="Piel by McPhy hydrogen and nitrogen generators for a sintering line in Bosnia. "
+       " A Western Balkans customer — inside this sweep's "
+       "Europe and outside almost every other boundary anyone draws.")
+E("mcphy", "HYPORT (ENGIE Solutions and AREC Occitanie)", "equipment_order", "supplier",
+  "supplier_press",
+  W + "20210304065556id_/https://mcphy.com/en/press-releases/hyport/", "2021-03-04",
+  quantity=(1, "MW"), country="FR", sector="airport / mobility",
+  site="Toulouse-Francazal", inherited_by=_MCPHY_TO_JC,
+  note="Two hydrogen stations and 1 MW of electrolysis (400 kg/day) at an airport. "
+       "")
+E("mcphy", "R-Hynoca (Strasbourg)", "equipment_order", "supplier", "supplier_press",
+  W + "20210907053824id_/https://mcphy.com/en/press-releases/mcphy-will-equip-the-r-"
+      "hynoca-project-in-strasbourg/", "2021-09-07", quantity=None, country="FR",
+  sector="hydrogen", site="Strasbourg", inherited_by=_MCPHY_TO_JC,
+  note="")
+E("mcphy", "Enel Green Power", "framework_agreement", "supplier", "supplier_press",
+  W + "20211202001156id_/https://mcphy.com/en/press-releases/cooperation-agreement-with-"
+      "enel-green-power/", "2021-11-30", quantity=(4, "MW"), country="IT",
+  sector="renewables", site="Carlentini Sicily", inherited_by=_MCPHY_TO_JC,
+  note="MoU for a 4 MW Augmented McLyzer on a renewable park.")
+E("mcphy", "GreenH2Atlantic", "framework_agreement", "supplier", "supplier_press",
+  W + "20211222191058id_/https://mcphy.com/en/press-releases/greenh2atlantic-project/",
+  "2021-12-21", quantity=(100, "MW"), country="PT", sector="hydrogen", site="Sines",
+  inherited_by=_MCPHY_TO_JC,
+  note="Preferred supplier for a 100 MW plant on the Sines coal power station site; "
+       "heads of terms, supply agreement expected in H1 2022; EUR 30m Horizon 2020 "
+       "Green Deal grant. SINES IS AMBIGUOUS in this "
+       "register — CALB's battery works and Galp's electrolyser both stand there.")
+E("mcphy", "Hype", "equipment_order", "supplier", "supplier_press",
+  W + "20220425160803id_/https://mcphy.com/en/press-releases/mcphy-signs-a-first-order-"
+      "with-hype/", "2022-04-25", quantity=None, country="FR",
+  sector="hydrogen mobility", inherited_by=_MCPHY_TO_JC,
+  note="")
+E("mcphy", "Hype", "equipment_order", "supplier", "supplier_press",
+  W + "20220704163153id_/https://mcphy.com/en/press-releases/mcphy-registers-a-new-order-"
+      "for-hype-as-part-of-their-strategic-partnership/", "2022-07-04",
+  quantity=(4, "MW"), country="FR", sector="hydrogen mobility",
+  inherited_by=_MCPHY_TO_JC,
+  note="'a second 2 to 4 MW electrolyzer and a second large capacity station'. The "
+       "upper bound of the stated range is recorded.")
+E("mcphy", "Siemens Energy (for the CEOG project)", "framework_agreement", "supplier",
+  "supplier_press",
+  W + "20221025160231id_/https://mcphy.com/en/press-releases/mcphy-signs-an-8-year-"
+      "maintenance-contract-with-siemens-energy-within-the-framework-of-the-ceog-"
+      "project/", "2022-10-25", quantity=None, inherited_by=_MCPHY_TO_JC,
+  note="An 8-year MAINTENANCE contract, with Siemens Energy — a node on this perimeter "
+       "— as the manufacturer and operator. The plant is in French Guiana, which is an "
+       "EU outermost region and is not in this sweep's Europe, so no country is "
+       "recorded and no unmatched customer is created.")

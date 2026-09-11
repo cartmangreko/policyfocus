@@ -126,7 +126,7 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
          "verdict": None,
          "match_basis": basis,
          "inherited_by": inherited_by,
-         "note": note}
+         "note": capture_note(url, note)}
     EDGES.append(e)
     if pid is None and country is not None:
         u = UNMATCHED.setdefault(customer, {
@@ -136,6 +136,29 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
             u["sources"].append(url)
         u["edge_ids"].append(e["id"])
     return e
+
+
+ARCHIVE = re.compile(r"web\.archive\.org/web/(\d{4})(\d{2})(\d{2})\d{6}id_/")
+_MONTHS = ("January February March April May June July August September October "
+           "November December").split()
+
+
+def capture_note(url: str, note: str | None) -> str | None:
+    """Append the Internet Archive capture date to a note, from the URL itself.
+
+    DECISION D-7 says an archived copy is cited with its capture timestamp as the
+    source date. That timestamp is already in the URL, so writing it into the note
+    by hand only creates a second copy that can disagree with the first — and it
+    did, twice, before this function existed. Derived here, it cannot.
+    """
+    m = ARCHIVE.search(url)
+    if not m:
+        return note
+    y, mo, d = m.groups()
+    stamp = (f"Read from the Internet Archive capture of {int(d)} "
+             f"{_MONTHS[int(mo) - 1]} {y}; the supplier's own domain no longer "
+             f"serves it (DECISION D-7).")
+    return f"{note} {stamp}" if note else stamp
 
 
 def status_event(node_id: str, date: str, status_from: str | None, status_to: str,
@@ -170,7 +193,7 @@ def add_capacity(node_id: str, value: float, unit: str, basis: str, speaker: str
     NODE_CAPACITY.setdefault(node_id, []).append(
         {"value": value, "unit": unit, "basis": basis, "speaker": speaker,
          "source_type": source_type, "url": url, "date": date,
-         "date_precision": date_precision, "note": note})
+         "date_precision": date_precision, "note": capture_note(url, note)})
 
 
 # --- gates and output --------------------------------------------------------
