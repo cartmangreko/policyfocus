@@ -195,6 +195,39 @@ def schedule_queue() -> None:
         print(f"  {e.get('sector', '?'):8} {e['project']:30} [{e.get('kind', '?')}]")
 
 
+def coverage(projects: dict[str, dict]) -> None:
+    """TWO NUMBERS PER SECTOR, because one of them has been doing the work of both.
+
+    A sector's row count has always been read as its coverage, and since the ruling of
+    9 September 2026 that POSITION IS NOT AN ADMISSION LEG, it cannot be: a row admitted
+    with `located: "no"` is on file, counted, and on no map. Hydrogen went from 22 rows
+    to 66 on 10 September and from 11 drawn to 11 drawn. A reader given only "66" would
+    have concluded the picture had trebled.
+
+    So both are stated, always, and the gap between them is the drawing backlog rather
+    than a defect in the data.
+    """
+    by = {}
+    for row in projects.values():
+        sector = row.get("sector") or "?"
+        drawn, undrawn = by.setdefault(sector, [0, 0])
+        if row.get("located") == "yes":
+            by[sector] = [drawn + 1, undrawn]
+        else:
+            by[sector] = [drawn, undrawn + 1]
+    print("\nreport_candidate_gaps: coverage — rows drawn against rows admitted undrawn")
+    print(f"  {'sector':10} {'drawn':>7} {'undrawn':>9} {'rows':>7}")
+    for sector in sorted(by):
+        d, u = by[sector]
+        print(f"  {sector:10} {d:>7} {u:>9} {d + u:>7}")
+    d = sum(v[0] for v in by.values())
+    u = sum(v[1] for v in by.values())
+    print(f"  {'all':10} {d:>7} {u:>9} {d + u:>7}")
+    print("  A row admitted undrawn is on file and on no map. The two numbers are stated "
+          "side by\n  side because the first has been read as the second, and since "
+          "position stopped being\n  an admission leg it cannot be.")
+
+
 def main() -> int:
     files = candidate_files()
     if not files:
@@ -206,6 +239,7 @@ def main() -> int:
     draw_holds()
     capacity_queue()
     schedule_queue()
+    coverage(projects)
     return 0
 
 

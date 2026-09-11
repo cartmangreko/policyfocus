@@ -526,6 +526,278 @@ a capacity of 150 MW" — and has no release of its own. That clears the perimet
 which asks for a company-confirmed site and a figure, and the row says in its own
 capacity note that this is all it rests on.
 
+### Step 6 decisions, after the class rename of 10 September 2026
+
+**D39. The class is renamed `not searched by eufabric`, and its old name asserted
+work nobody had done.** "benchmark gives a location, no company or permit source
+names the site" reads as a finding — somebody looked and found nothing. Nobody had
+looked. **No fetch had been attempted for any of its 167 members** at the time it
+was named. The new name states the work that was not done rather than a
+conclusion nobody had earned.
+
+**D40. The residual class was renamed too, to `unexplained at FID or beyond`.**
+Not asked for, and necessary: the residue was called "not searched", and two
+classes a word apart would have been read as one.
+
+**D41. THE EU's OWN GRANT REGISTERS ARE UNREADABLE TO A DECLARED READER, and this
+is now measured rather than assumed.** The admission procedure names IPCEI,
+Innovation Fund and Hydrogen Bank pages as a leg. All four were fetched and all
+four answer HTTP 200 with a body of **40 characters** — the empty-body refusal
+scope.md already names for shell.com. The attempt is recorded against every one
+of the 167 entries, because it was made for every one of them and the answer was
+the same. **The register leg of the admission procedure is closed to this
+pipeline**, and the only EU artefact that reads is a per-project CINEA fiche PDF,
+which requires already knowing the project is an Innovation Fund project.
+
+**D42. A machine classification was built, run over twelve entries, reviewed and
+REJECTED.** The pass fetched the operator's site where the project name
+identified one and a domain guessed from the name where it did not, then judged
+each entry on whether the text carried the project's words and the place's. The
+results do not survive reading:
+
+- **Nemo Hydrogen Project** matched `nemo.eu` and `nemo.gr`, neither the operator.
+  Its place reverse-geocoded to `Δημοτική Ενότητα Βάρης`, which normalises to an
+  EMPTY ascii string — and an empty string is contained in every document.
+- **Wilhelmshaven phase 1** matched `wilhelmshaven.de`, the CITY's website. The
+  project is named after the town, so the test was circular.
+- **Puglia green hydrogen valley** matched `puglia.com`, a regional portal.
+- **Green Crane Pais Vasco** was "searched" at `crane.com`, a valve manufacturer,
+  and called `source unreadable` on its empty body.
+
+The 713 fetch records are kept, because those retrievals happened and those were
+their outcomes. The classifications are moved to `outcome_machine_rejected` and
+`outcome` is null on all 167.
+
+**D43. WHAT THAT ESTABLISHES IS THE SHAPE OF THE WORK, and it is the reason item 2
+is not finished.** Identifying the operator behind a benchmark entry, and judging
+whether a page names the site, are judgements. Neither can be derived from a
+project name: the benchmarks carry no company field at all, and of 167 names only
+85 carry a brand this register can recognise. The remaining work is 167
+individual investigations, and a register that let a machine make them would be
+asserting sourcing nobody had done — which is precisely what the rename was
+written to correct.
+
+**D44. THE SEARCH WAS RUN, ALL 167 OF IT, ON 10 SEPTEMBER 2026**, by hand, one
+entry at a time, and the record is `sources/hydrogen_gap_search.json`: 881 fetches
+over 167 entries, each with its domain, its source type and its outcome, and one
+of three verdicts on the entry. It came out
+
+| | Concept | Feasibility study | total |
+|---|---|---|---|
+| owner or permit source names the site | 33 | 68 | **101** |
+| searched, none found | 25 | 23 | **48** |
+| source unreadable | 7 | 11 | **18** |
+
+FID, Construction and Operational are zero **by construction and not by finding**:
+an entry at FID or beyond never reaches this class, because `classify()` sends it
+to `unexplained at FID or beyond` first. What the two columns do show is that a
+feasibility study is likelier to have a source naming its site than a concept is —
+two in three against one in two — which is what you would expect of a project that
+has had to tell somebody where it is.
+
+**D45. THE THING THAT ANSWERED WAS OFTEN NOT THE COMPANY.** Of the 101 that name a
+site, a quarter were settled by somebody other than the owner: the Spanish state
+gazette's water concession for Coreses, Cartagena city council for Escombreras,
+the CNDP consultation files for five French e-fuel projects, aicep Global Parques
+for the Sines reservation, the Liepaja special economic zone for its own tenant,
+the city of Oulu for three plants at Pyyryvainen, the port of Marseille Fos for
+H2V. The admission procedure names permit portals and port authorities alongside
+company newsrooms, and this is the pass where that clause earned its place.
+
+**D46. THE OWNER'S FIGURE AND THE BENCHMARK'S FIGURE DISAGREE OFTEN ENOUGH THAT THE
+BENCHMARK CANNOT BE READ AS A CAPACITY SOURCE.** Eneco's Europoort electrolyser is
+800 MW on the company's page and 225 MW on the IEA's row; ErasmoPower2X is 650 MW
+at Saceruela and 325 MW at Almodovar del Campo; Endesa's As Pontes agrees at 100
+MW; Galp's Sines phase II is a 600 MW expansion the owner cannot be read on at
+all. **The places disagree too**: Orange.bat is at Onda and the benchmark puts it
+at the port of Valencia; Koppo Energia is at Kristinestad and the benchmark's
+coordinate falls at Kokkola; Barsebaeck Hydrogen Hub's coordinate is 700 km from
+Barsebaeck. A third party's coordinate was already refused as a position. This is
+the same finding on the capacity side.
+
+**D47. FORTY-FOUR ENTRIES CLEARED ADMISSION AND WENT TO THE CANDIDATES FILE. NONE
+WAS ADMITTED.** The bar is the one the perimeter already sets: electrolytic, inside
+the geography, at or above 100 MW **on a figure its owner or a permit states**, and
+a source this register read naming the site. Every one of the forty-four arrives
+with `coordinate_source: null` and a `coordinate_ref` that says "not searched",
+because position is a separate leg and nobody has walked it for these. Of the 101
+that name a site, 57 did not clear: most because the source names the place and no
+megawatts (Figueira da Foz, Estarreja, Sullom Voe, Alby, Skellefteaa), some because
+the owner's own figure is below the threshold (Hellenic Hydrogen's 50 MW first
+stage), some because they are studies rather than projects (Markinch, Kvinesdal),
+one because the works is a ship (P2XFloater), and five because they are already on
+this file under another name — Lingen, Emden, Cartagena, La Robla and Galp's Sines
+electrolyser are all rows or candidates already, which the benchmark did not know.
+
+**D48. THE CLASS FELL FROM 167 TO 113 AND THE GAP REPORT NOW SAYS SO.** `held by
+eufabric` on the IEA side went from 14 to 68, because a candidate counts as held.
+The 113 that remain are the entries the search could not settle: 48 where sources
+were fetched and none names a site, 18 where the natural source could not be read,
+and the 47 that name a site without clearing admission. **The class name is still
+accurate for none of them**, which is the next thing to fix: a class called `not
+searched by eufabric` that has now been searched needs splitting along the lines
+the search actually found. That is a ruling, not a tidy-up, and it is not made
+here.
+
+### Rulings of 10 September 2026, on the search
+
+**D49. THE ARITHMETIC, RECONCILED.** The pull request said 101 named a site, 44 went
+to candidates and 47 named-but-not-clearing, which leaves ten unaccounted for. The
+ten are real and they are not missing entries: **44 candidates cover 54 benchmark
+entries, because the IEA carries ten of these projects twice, as two phases.**
+
+| | |
+|---|---|
+| named a site | **101** |
+| — cleared admission, and left the class | **54** |
+| — named, not clearing | **47** |
+| searched, nothing names a site | 48 |
+| source unreadable | 18 |
+| **total** | **167** |
+
+Those 54 became 44 candidates: HyNetherlands, Pembroke, Madoqua Sines, Kintore,
+Saltend, Los Barrios, Albamed, Eneco's Europoort, Reni and Besaya are each one
+project and two benchmark rows. **The class fell by 54 and `held by eufabric` rose
+by 54**, which is the same 54 and not a coincidence.
+
+**D50. `held by eufabric` COUNTS A CANDIDATE AS HELD, and the class definition now
+says so.** It always did — `build_hydrogen_benchmark.held()` has said it since the
+benchmark file was written — but it was said in the builder and not in the table
+that prints the number, and a reader of the table could reasonably have read "held"
+as "on the map". A candidate is on none: it is an entry the perimeter has admitted
+whose only outstanding leg is a position. **No project was admitted in this pass.**
+
+**D51. `not searched by eufabric` IS RETIRED, and the class is split three ways.**
+A class whose name is false is worse than one whose name is unflattering, and the
+name became false the day the search ran. Its 113 members go to
+
+- **`searched, no owner or permit source found`** — 48. Sources were fetched and
+  none names a site.
+- **`owner or permit source names the site, not admitted`** — 47. Not a defect and
+  not a finding against the benchmark: the ordinary state of a project this
+  register knows where to find and cannot yet carry. Mostly the source names the
+  place and states no megawatts.
+- **`company source unreadable`** — the existing class, which absorbs 18 and goes
+  from 1 to 19.
+
+The table is nine classes now, and the IEA column adds to 237 exactly.
+
+**D52. THE DISAGREEMENTS ARE RECORDED AND NOT RESOLVED, on the rule the schedules
+already use.** Thirty-one of them: 11 capacity, 9 phasing, 11 site. The largest is
+Eneco's Europoort electrolyser at 800 MW to its owner and 225 MW to the IEA; the
+strangest is Barsebaeck Hydrogen Hub, which is named for a place in Skaane and
+carries a coordinate in Medelpad, 700 km away; the most instructive is Orange.bat,
+where the disagreement is not in a coordinate at all but in the benchmark's own
+**project name**, which places at the port of Valencia an electrolyser its owner
+puts at Onda.
+
+Three were mis-filed under `capacity` for an hour — Reni, Besaya and Kintore, where
+the two speakers state the SAME megawatts and disagree about whether it is one
+project or two — and were caught because the report printed the same number in both
+columns. They are `phasing`.
+
+**A gap under a fifth is not a disagreement** and is recorded separately as
+`normalisation_gap`: the IEA states kt H2/y and this register normalises at a fixed
+factor, so the two cannot agree exactly even when the speakers do. Eleven of those.
+
+**D53. AND THE SWEEP FOUND AN ERROR OF OURS.** `fuella-skipavika-skiga` said the
+works is at Bremanger. Bremanger is Holmaneset's municipality — a different project
+150 km up the coast, ref 2218 — and no source this register read ever said it. It
+now reads "Skipavika Havneterminal", which is what Fuella's own page says, with the
+correction on the record. **The machine proposed a place mismatch it could not
+explain and a person found out why**, which is the whole of what the machine-versus-
+person rule is for.
+
+### Rulings of 10 September 2026, second set — the 36, the 44, and drawing
+
+**D54. A NAME STEM IS NOT A VERDICT, and 30 of the 36 were never stem matches.**
+`duplicate of a held row` moved from 4 to 40 on the academic side when the
+candidates landed, and nobody had read one of them. Reading them found three
+different things.
+
+- **Thirty were the same row, reachable by number.** The two benchmark files share
+  a reference numbering — the academic file *is* the IEA's October 2023 database,
+  quality-checked — so an entry a candidate already claims in the live list is very
+  often the same numbered row in the academic one. Nobody had written the number
+  down. Each of the 35 pairs was read: 29 carry the same name in both files and six
+  carry a name the live list has since edited (`BayH2` became `Bay.H2 Project -
+  Bayern Oil Refinery`; `Besaya H2` gained `, phase 1`). **The candidates now carry
+  their `odenweller_ueckerdt_2025` references**, and the match is by identifier.
+- **Five were genuine stem matches and are confirmed by hand.** The academic file
+  carries H2V Marseille-Fos six times, refs 1476, 2381–2384 and 1477, each of 100
+  MWel, with `Announced Size` running 100, 200, 300, 400, 500 and 600 MW and dates
+  online 2026 to 2031. That is a cumulative ladder. The port of Marseille Fos's own
+  page settles it: "six 100MW production units, giving a total capacity of 600MW".
+  They are in `CONFIRMED_DUPLICATES` with that reason written down.
+- **One was wrong.** The academic file's second Orsted–Skovgaard row is 3 GW at
+  Concept where the held one is 150 MW at Feasibility. Not the same row: a later
+  phase of the same site, which Orsted's own release describes — "The facility will
+  be built in several phases", "the facility's electrolysis capacity will be able to
+  increase to more than 3 GW". It is now held by reference with a `phasing`
+  disagreement, which is what it always was.
+
+**D55. THE CLASS NO LONGER ACCEPTS A MACHINE MATCH.** `classify()` returns
+`duplicate of a held row` for a reference match or for an entry a person has written
+into `CONFIRMED_DUPLICATES`, and everything else a stem catches goes to **`possible
+duplicate, not confirmed`**, printed by name with what would settle it. The rule
+applied evenly took the four pre-existing stem matches down with the new ones: Uniper
+Maasvlakte phase II, Catalina phase 2, Holland Hydrogen phase 2 and Sines refinery
+phase 3 were **all** machine matches nobody had read, and three of the four cannot be
+settled at all because the company source refuses a declared reader. Holland Hydrogen
+2 may well be a separate project rather than a duplicate, which would mean the
+register has been explaining away an absence it never checked.
+
+**D56. THE FORTY-FOUR ARE ADMITTED, UNDRAWN.** Position is not an admission leg, so
+they come in with `located: "no"` and a note that says the position was **NOT
+SEARCHED** — deliberately distinct from the eleven whose notes record a sweep that
+ran and failed. An absence somebody produced and an absence nobody has attempted must
+not read alike.
+
+| | before | after |
+|---|---|---|
+| hydrogen rows | 22 | **66** |
+| — drawn | 11 | **11** |
+| — admitted undrawn | 11 | **55** |
+| electrolyser capacity | 3,610 MW | **19,503 MW** |
+
+**D57. AND TWO SOURCES WENT DARK BETWEEN THE READING AND THE PUSH.** ignis.es and
+orsted.com both served the declared reader on 10 September and both answered 403 the
+same evening, when `check_links` ran on the push. This is D38 again, twice in one day,
+and the gate caught it again. Both rows now cite Internet Archive captures — 16 April
+2026 and 2 October 2023 — with copies filed in `sources/manual/` and the live URL in
+the note. The Orsted capture carries every quote the row uses, including the 3 GW
+sentence that settled D54.
+
+**D58. `stated_schedule` IS EMPTY ON ALL FORTY-FOUR AND SAYS WHY IN A FIELD OF ITS
+OWN.** The gate's convention is that `[]` means no source on file states a date. On
+these rows it would have meant something else — the search asked one question of every
+source and did not collect schedules — and several of these pages plainly state a
+target. Rather than half-populate from search summaries this register cannot attribute
+to the cited page, each row carries `schedule_note` saying the source was read for
+something else. Re-reading them for dates is coverage work.
+
+**D59. THE BASEMAP SAMPLE IS TWO OF TEN, AND THE OTHER EIGHT ARE ON THE RECORD AS
+BLOCKED.** `sources/hydrogen_basemap_sample.json`. overpass.kumi.systems answered 504
+or timed out on read across three attempts and two query shapes on 10 September 2026,
+having answered a small test query in 39 seconds the same hour; overpass-api.de
+answers 406 to the declared reader and is therefore not a fallback. A failure you
+observe is blocking, so the eight are recorded as attempted-and-blocked rather than
+quietly dropped, and the sample is not finished.
+
+**NO RULE ON ESTATES FOLLOWS.** The condition was a report before a rule and two
+measurements are not the report.
+
+What the two do show is worth having, because they agree with each other. At
+Wilhelmshaven, within 5 km of the hint, OpenStreetMap has **69 named industrial
+features and 81 unnamed parcels**, and the named ones are the asphalt mixer, the oil
+pipeline company and the cavern company — none of them VoltH2's four hectares. At
+Wittenberg, 25 named and 73 unnamed, and the named ones are a boatbuilder, a pump
+factory and the harbour. **The basemap is not empty at these places; it is full of the
+wrong things.** In both, what could be taken as a position is an estate or a port,
+which is exactly the class the Subotica and Mo i Rana rule refuses — so the binding
+question for the remaining eight is not "is anything drawn" but "is anything drawn
+that is the works", and the two answers so far are no.
+
 ### Step 5 decisions, after the source-date ruling of 9 September 2026
 
 **D38. Uniper's source was archived on 10 September, one day after it was read.**
@@ -774,3 +1046,52 @@ twenty and the comparison is simply this register against the two lists.
     undated page was read, and one, ITM Power's phase-2 report, is a page dated to
     a month and stored as its first day with the padding in a note. The same
     argument that closed rule 20 applies, one layer down.
+24. **The admission search does not mechanise, and the attempt is the evidence.**
+    Twelve entries through a machine classifier produced three false positives and
+    a false negative, each traceable to a different defect: an empty normalised
+    place string matching everything, a project named after its own town, a
+    regional portal, and a domain guess landing on an unrelated company. Any future
+    attempt to clear this class at scale should start from that list.
+25. **`not searched by eufabric` will not shrink without per-entry work**, and its
+    size — 167, four fifths of the IEA gap — is the honest measure of how much of
+    the outside list this register has never looked at.
+
+    **CLOSED 10 SEPTEMBER 2026.** The per-entry work was done: 167 investigations,
+    881 fetches, 101 sites named, 44 new candidates, and the class down to 113.
+    The rule was right about the remedy and wrong about nothing except how long it
+    would take.
+26. **A permit source settles what a company newsroom will not.** A quarter of the
+    sites this pass could name were named by a gazette, a council, a port, a
+    consultation file or an estate's managing body — and in four cases (Emil'Hy,
+    the RVO offshore demonstrators, Grey2Green's Innovation Fund fiche, the Dutch
+    enterprise agency) the permit source was the one that refused or could not be
+    read. Neither leg is reliably the better one; the procedure needs both.
+28. **The row schema has no field for a capacity or a site disagreement.** These
+    thirty-one live on candidates and on the search record because that is where the
+    objects are. `stated_schedule` carries a speaker and lets two of them disagree
+    about a date; nothing carries two speakers on a size or a place. The first of
+    these forty-four to become a row will need one, and inventing it at that moment
+    is how a schema gets a field shaped like one project.
+30. **A shared reference numbering is worth writing down before it is worth
+    guessing.** Thirty of the thirty-six "new duplicates" were the same numbered row
+    in both benchmark files, and the register reached for a name stem because nobody
+    had recorded the number. The general form: where two sources share identifiers,
+    record the identifier on the object the first time it is seen, or a fuzzy match
+    will be invented to do its job.
+31. **Coverage is two numbers and has been reported as one.** A sector's row count has
+    been read as its coverage, and since position stopped being an admission leg it
+    cannot be: hydrogen went from 22 rows to 66 and from 11 drawn to 11 drawn.
+    `report_candidate_gaps.py` now prints rows drawn against rows admitted undrawn for
+    every sector, and the gap between them is the drawing backlog rather than a defect
+    in the data.
+29. **A background job should carry its own deadline.** Six shells outlived the
+    search; two were armed to overwrite a corrected pull request body with the text
+    it corrected. `sources/check_orphan_jobs.py` is the deadline where the job has
+    none, and it is run at the end of a turn rather than in the build chain, because
+    on a build server there is nothing for it to find.
+27. **A company that is bankrupt has no sources.** Flexens Oy filed for bankruptcy
+    on 27 May 2025 and flexens.com no longer resolves; its 300 MW Kokkola plant is
+    named by the Finnish press and by the industrial park and by nobody who owned
+    it. A dead domain is not a refusal and not a finding — it is the source class
+    disappearing — and it should be recorded as its own outcome the next time the
+    vocabulary is opened.

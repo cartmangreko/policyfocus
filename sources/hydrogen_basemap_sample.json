@@ -1,0 +1,137 @@
+{
+ "_comment": [
+  "WHAT THE BASEMAP HAS FOR TEN OF THE FORTY-FOUR — AND IT IS TWO OF TEN, NOT TEN.",
+  "",
+  "THE SAMPLE IS INCOMPLETE AND THAT IS ON THE RECORD RATHER THAN IN SOMEBODY'S HEAD.",
+  "Eight of the ten could not be measured on 10 September 2026: overpass.kumi.systems",
+  "answered 504 or timed out on read across three attempts and two query shapes, having",
+  "answered a small test query in 39 seconds the same hour. overpass-api.de answers 406",
+  "to the declared reader, so there is no second endpoint. A failure you observe is",
+  "blocking (scope.md), and the eight are recorded as attempted-and-blocked rather than",
+  "quietly dropped.",
+  "",
+  "NO RULE ON ESTATES FOLLOWS FROM THIS. George's condition was a report before a rule,",
+  "and two measurements are not the report. What the two do show is the shape of the",
+  "problem: at Wilhelmshaven and at Wittenberg the basemap has plenty of named",
+  "industry and none of it is the hydrogen plant, and the named things that ARE there",
+  "are mostly estates and ports — the class the Subotica and Mo i Rana rule refuses.",
+  "",
+  "THE BENCHMARK COORDINATE IS THE SEARCH HINT AND NEVER AN ANSWER. It says where to",
+  "look. What an answer contains is what OpenStreetMap has drawn near there, with its",
+  "own name and tags."
+ ],
+ "sampled": "2026-09-10",
+ "endpoint": "https://overpass.kumi.systems/api/interpreter",
+ "measured": 2,
+ "blocked": 8,
+ "results": [
+  {
+   "id": "engie-hynetherlands-eemshaven",
+   "status": "endpoint unavailable",
+   "attempts": 3,
+   "verdict": null,
+   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+  },
+  {
+   "id": "vicat-hynovi-montalieu",
+   "status": "endpoint unavailable",
+   "attempts": 3,
+   "verdict": null,
+   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+  },
+  {
+   "id": "rwe-pembroke-green-hydrogen",
+   "status": "endpoint unavailable",
+   "attempts": 3,
+   "verdict": null,
+   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+  },
+  {
+   "id": "volth2-wilhelmshaven",
+   "ref": "1973",
+   "radius_m": 5000,
+   "verdict": "works",
+   "features": 150,
+   "named": 69,
+   "works": [
+    "NWM Nordwestdeutsche Mischwerke Wilhelmshaven",
+    "Nord-West Oelleitung GmbH",
+    "Nord-West Kavernen Gesellschaft",
+    "Engie SA Steinkohlekraftwerk Wilhelmshaven"
+   ],
+   "estates": [
+    "NWM Nordwestdeutsche Mischwerke Wilhelmshaven",
+    "Nord-West Oelleitung GmbH",
+    "Uniper Kraftwerk Wilhelmshaven",
+    "Nord-West Kavernen Gesellschaft",
+    "Jade-Dienst GmbH",
+    "GEW Lager Ladestraße"
+   ],
+   "unnamed": 81,
+   "attempts": 1,
+   "status": "measured"
+  },
+  {
+   "id": "plugpower-kokkola",
+   "status": "endpoint unavailable",
+   "attempts": 3,
+   "verdict": null,
+   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+  },
+  {
+   "id": "edp-green-h2-los-barrios",
+   "status": "endpoint unavailable",
+   "attempts": 3,
+   "verdict": null,
+   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+  },
+  {
+   "id": "enertrag-prignitz-falkenhagen",
+   "status": "endpoint unavailable",
+   "attempts": 3,
+   "verdict": null,
+   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+  },
+  {
+   "id": "eneco-diamond-hydrogen-europoort",
+   "status": "endpoint unavailable",
+   "attempts": 3,
+   "verdict": null,
+   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+  },
+  {
+   "id": "lhyfe-lubmin",
+   "status": "endpoint unavailable",
+   "attempts": 3,
+   "verdict": null,
+   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+  },
+  {
+   "id": "vng-hycc-greenroot-wittenberg",
+   "ref": "3266",
+   "radius_m": 4000,
+   "verdict": "works",
+   "features": 98,
+   "named": 25,
+   "works": [
+    "Spezialboot Wittenberg",
+    "EInfahrt ACP-Süd",
+    "a Pumpenfabrik GmbH Metallverarbeitungsunternehmen",
+    "Frigosped Internationale Spedition",
+    "Homa Pumpenfabrik GmbH Metallverarbeitungsunternehmen",
+    "Homa Pumpenfabrik GmbH Metallverarbeitungsunternehmen"
+   ],
+   "estates": [
+    "Feldbinder Spezialfahrzeugwerke",
+    "Hafen",
+    "Wikana Keks und Nahrungsmittel GmbH",
+    "Frigosped Internationale Spedition",
+    "Fenger Beton und Kies GmbH & Co.KG",
+    "Stadtwerke Lutherstadt Wittenberg Heizkraftwerk BHKW"
+   ],
+   "unnamed": 73,
+   "attempts": 1,
+   "status": "measured"
+  }
+ ]
+}

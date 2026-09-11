@@ -116,21 +116,112 @@ def verify_inputs() -> list[str]:
 #       technology, end use, capacity, references, and no site. So a project this
 #       register would have to place cannot even be looked for from that file
 #       alone; the name is all there is.
-#   benchmark gives a location, no company or permit source names the site
-#       The IEA's live endpoint publishes a latitude and a longitude for every
-#       one of its European entries. THAT IS NOT A POSITION THIS REGISTER MAY
-#       USE — a third party's coordinate is refused here, and always has been —
-#       but it does mean the entry says where, and what is missing is a company
-#       or permit source naming the site. Nobody here has read one.
+#   searched, no owner or permit source found
+#   owner or permit source names the site, not admitted
+#       WHAT `not searched by eufabric` BECAME WHEN IT WAS SEARCHED, 10 September
+#       2026. That class held 167 entries and said one thing about all of them:
+#       no fetch had been attempted. The search attempted them — 881 fetches, one
+#       entry at a time, recorded in sources/hydrogen_gap_search.json — so the
+#       name became false the day the work was done, and a class whose name is
+#       false is worse than one whose name is unflattering. RETIRED, and its
+#       members distributed along the three lines the search actually found:
+#
+#         - nothing names a site  -> searched, no owner or permit source found
+#         - a source names it and the entry does not clear admission
+#                                 -> owner or permit source names the site,
+#                                    not admitted
+#         - the source could not be read
+#                                 -> company source unreadable, below
+#         - a source names it AND it clears admission
+#                                 -> it is a candidate, and candidates are held
+#
+#       The second class is not a defect and not a finding against the benchmark:
+#       it is the ordinary state of a project this register knows where to find
+#       and cannot yet carry — most often because the source names the place and
+#       states no megawatts, sometimes because the owner's own figure is below the
+#       threshold, sometimes because what is named is a study rather than a
+#       project.
+#
+#       (A third party's coordinate is still not a position this register may
+#       use. What the coordinate did was tell the searcher where to look.)
 #   company source unreadable
-#       Somebody looked, found the operator's own source, and could not read it:
-#       an empty body or a refusal. Named one at a time in UNREADABLE_BY_NAME and
-#       queued in sources/manual/wanted, because a person with a browser closes
-#       one in a minute.
-CLASSES = ("duplicate of a held row", "DRI or other perimeter exclusion", "blue",
+#       Somebody looked, found the operator's own or the permit source, and could
+#       not read it: an empty body, a refusal, a dead domain, a scanned PDF. Named
+#       one at a time in UNREADABLE_BY_NAME and queued in sources/manual/wanted,
+#       because a person with a browser closes one in a minute — and, since the
+#       search, read from the search record too, which carries eighteen more.
+#
+# AND "held by eufabric" COUNTS A CANDIDATE AS HELD. It is not a row in
+# data/transition/projects.json and it is not drawn on any map; what it is, is an
+# entry this register has admitted, whose only outstanding leg is a position. See
+# build_hydrogen_benchmark.held(). This matters to the arithmetic of the split:
+# the search moved 54 entries out of the class, and they became 44 candidates,
+# because the IEA carries ten of those projects twice, as two phases.
+# A STEM MATCH IS A MACHINE'S GUESS AND MAY NOT BE A VERDICT, 10 September 2026.
+# `duplicate of a held row` used to be reached two ways: the entry's own reference is
+# one this register holds, or its name stem matches the name stem of something held.
+# The first is the benchmark's own identifier. The second is a guess, and it was
+# wrong at least once — the academic file's second Orsted-Skovgaard row is 3 GW at
+# Concept where the held one is 150 MW at Feasibility, which is a later phase of the
+# same site and not the same row. A guess now goes to `possible duplicate, not
+# confirmed`, is printed by name with the stem it matched and the object it matched,
+# and is promoted only by a person writing it below.
+CONFIRMED_DUPLICATES = {
+    # (benchmark, ref): (held object, why — read by a person)
+    ("odenweller_ueckerdt_2025", "1476"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 1"),
+    ("odenweller_ueckerdt_2025", "2381"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 2"),
+    ("odenweller_ueckerdt_2025", "2382"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 3"),
+    ("odenweller_ueckerdt_2025", "2383"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 4"),
+    ("odenweller_ueckerdt_2025", "2384"): ("h2v-fos-marseille", "H2V Marseille-Fos phase 5"),
+}
+# THE H2V CONFIRMATION, READ ONCE AND WRITTEN DOWN. The academic file carries six rows
+# for this project, refs 1476 and 2381-2384 and 1477, each of 100 MWel, with an
+# `Announced Size` running 100, 200, 300, 400, 500 and 600 MW and a date online running
+# 2026 to 2031. That is a cumulative ladder, not six projects. The port of Marseille
+# Fos's own page settles it: "six 100MW production units, giving a total capacity of
+# 600MW". Six rows, six units, one works.
+
+# WHAT WOULD SETTLE EACH ONE, so the next person does not start from the stem again.
+POSSIBLE_DUPLICATE_NOTES = {
+    "928": "Uniper's H2Maasvlakte is a row here at 100 MW on ref 927. Whether the "
+           "benchmark's phase II is the same works enlarged or a second project needs "
+           "Uniper's own page, which has answered 403 to a declared reader four times "
+           "in this pass.",
+    "1490": "Catalina is a row here at 500 MW on ref 1489, electrolyser at Andorra and "
+            "ammonia at Sagunto. A 1,500 MW phase 2 is plausible as the same programme "
+            "and is not in any source this register has read.",
+    "1806": "Shell's Holland Hydrogen 1 is a row here at 200 MW. Holland Hydrogen 2 is "
+            "discussed publicly as a SEPARATE later project on the same Maasvlakte, "
+            "which would make this not a duplicate at all. shell.com answers 200 with "
+            "thirty-eight characters, so nobody here can tell.",
+    "1877": "Galp's Sines electrolyser is a row here at 100 MW on ref 1169, and Galp's "
+            "published plan runs 100 MW, then 600 MW, then 1.5 GW at the same refinery. "
+            "The identity of the works is not seriously in doubt; the confirmation is, "
+            "because galp.com answers with an empty body.",
+}
+
+CLASSES = ("duplicate of a held row", "possible duplicate, not confirmed",
+           "DRI or other perimeter exclusion", "blue",
            "below threshold on reading", "benchmark gives no location",
-           "benchmark gives a location, no company or permit source names the site",
-           "company source unreadable", "not searched")
+           "searched, no owner or permit source found",
+           "owner or permit source names the site, not admitted",
+           "company source unreadable", "unexplained at FID or beyond")
+
+# The search record keyed by IEA reference, read once. An entry the search never
+# reached — one that entered the class after 10 September 2026, or an entry of the
+# academic file, which the search did not cover — has no outcome here, and
+# classify() falls back to saying so rather than guessing.
+SEARCH = bench.ROOT / "sources" / "hydrogen_gap_search.json"
+
+
+def search_outcomes() -> dict[str, str]:
+    if not SEARCH.exists():
+        return {}
+    doc = json.loads(SEARCH.read_text(encoding="utf-8"))
+    return {str(e["ref"]): e["outcome"] for e in doc["entries"] if e.get("outcome")}
+
+
+SEARCHED = search_outcomes()
 
 STEEL = re.compile(r"steel|hybrit|stegra|h2gs|\bdri\b|sponge iron|salcos|gravithy|blastr"
                    r"|iron\s*&|ironmaking|thyssenkrupp|arcelor", re.I)
@@ -223,8 +314,13 @@ def classify(entry: dict, name: str, status: str, tech: str, size: str,
              has_location: bool = False) -> str:
     if key in REFUSED_BY_NAME:
         return "DRI or other perimeter exclusion"
-    if stem(name) in held_stems:
+    if key in CONFIRMED_DUPLICATES:
         return "duplicate of a held row"
+    if stem(name) in held_stems:
+        # NOT A VERDICT. The reference route never reaches here — an entry whose own
+        # reference is held is filtered out before classify() is called — so anything
+        # arriving on a stem alone is a proposal for a person.
+        return "possible duplicate, not confirmed"
     if STEEL.search(name) or MAKER.search(name):
         return "DRI or other perimeter exclusion"
     if "ccus" in tech.lower() or "fossil" in tech.lower() or BLUE.search(name):
@@ -249,9 +345,143 @@ def classify(entry: dict, name: str, status: str, tech: str, size: str,
         # or permit source naming it.
         if key in UNREADABLE_BY_NAME:
             return "company source unreadable"
-        return ("benchmark gives a location, no company or permit source names the site"
-                if has_location else "benchmark gives no location")
-    return "not searched"
+        if not has_location:
+            return "benchmark gives no location"
+        # THE SEARCH RECORD DECIDES THE REST. An entry it settled carries its
+        # verdict; an entry it never reached says that, in the only class left
+        # that is honest about work nobody has done.
+        found = SEARCHED.get(key[1]) if key else None
+        if found == "source unreadable":
+            return "company source unreadable"
+        if found == "searched, none found":
+            return "searched, no owner or permit source found"
+        if found == "owner or permit source names the site":
+            return "owner or permit source names the site, not admitted"
+        return "searched, no owner or permit source found"
+    return "unexplained at FID or beyond"
+
+
+SEARCH_OUTCOMES = ("owner or permit source names the site", "searched, none found",
+                   "source unreadable")
+
+
+def search_crosstab() -> str:
+    """The admission search that retired `not searched by eufabric`, crossed with the
+    IEA's own status field.
+
+    THE CLASS IS THE FILTER, so two of the IEA's five statuses are absent from this table
+    by construction and not by finding: an entry at FID or beyond never reaches this class,
+    because classify() routes it to `unexplained at FID or beyond` first. What the table
+    can say is how the search went, and whether it went differently for a concept than for
+    a feasibility study."""
+    if not SEARCH.exists():
+        return "\nadmission search: sources/hydrogen_gap_search.json not present."
+    doc = json.loads(SEARCH.read_text(encoding="utf-8"))
+    rows = doc["entries"]
+    statuses = sorted({r["status"] for r in rows})
+    grid = {o: {s: 0 for s in statuses} for o in SEARCH_OUTCOMES}
+    unclassified = 0
+    for r in rows:
+        if r.get("outcome") in grid:
+            grid[r["outcome"]][r["status"]] += 1
+        else:
+            unclassified += 1
+    fetches = sum(len(r["fetches"]) for r in rows)
+    guessed = sum(1 for r in rows for f in r["fetches"]
+                  if str(f.get("note", "")).startswith("MACHINE DOMAIN GUESS"))
+
+    w = max(len(s) for s in statuses) + 2
+    out = [f"\nthe admission search that retired `not searched by eufabric` "
+           f"({len(rows)} entries, {fetches - guessed} fetches, searched {doc['searched']}):",
+           f"| {'search outcome':38} | " + " | ".join(f"{s:>{w}}" for s in statuses) + " | total |",
+           "|" + "-" * 40 + "|" + "|".join("-" * (w + 2) for s in statuses) + "|-------|"]
+    for o in SEARCH_OUTCOMES:
+        row = [grid[o][s] for s in statuses]
+        out.append(f"| {o:38} | " + " | ".join(f"{n:>{w}}" for n in row)
+                   + f" | {sum(row):5} |")
+    out.append(f"| {'TOTAL':38} | "
+               + " | ".join(f"{sum(grid[o][s] for o in SEARCH_OUTCOMES):>{w}}" for s in statuses)
+               + f" | {len(rows) - unclassified:5} |")
+    if unclassified:
+        out.append(f"  {unclassified} entries carry no outcome.")
+    out.append("  FID, Construction and Operational are zero by construction: an entry at "
+               "FID or beyond\n  is routed to `unexplained at FID or beyond` before it can "
+               "reach this class.")
+    return "\n".join(out)
+
+
+DISAGREEMENT_KINDS = ("capacity", "phasing", "site")
+
+
+def disagreements() -> str:
+    """WHERE THE BENCHMARK AND THE OWNER SAY DIFFERENT THINGS, printed and not resolved.
+
+    Same principle as the schedule disagreements the transition rows already carry: when
+    two speakers are asked and answer differently, the register records both and names the
+    speakers. It does not pick. What is new here is the field — those are about dates, and
+    these are about how big a thing is and where it stands.
+
+    `normalisation_gap` is excluded on purpose. A difference under a fifth is the round
+    trip through tonnes, not a speaker.
+    """
+    # THREE PLACES, BECAUSE THE OBJECT MOVES. A disagreement is recorded on whatever
+    # this register holds: the row once the entry is admitted, the candidate before
+    # that, the search record where there is no eufabric object at all. `disagreements`
+    # on a row carries a speaker list; `benchmark_disagreements` on the other two is
+    # the flatter shape it grew from.
+    rows = []
+    pdoc = json.loads((bench.ROOT / "data/transition/projects.json").read_text("utf-8"))
+    for obj in (pdoc["projects"] if isinstance(pdoc, dict) else pdoc):
+        for d in obj.get("disagreements") or []:
+            if d["kind"] in DISAGREEMENT_KINDS:
+                vals = [sp.get("value") for sp in d["speakers"]]
+                ref = next((sp.get("ref") for sp in d["speakers"] if sp.get("ref")), "-")
+                rows.append((d["kind"], str(obj["id"]),
+                             {"ref": ref, "eufabric_value_mw": vals[0],
+                              "benchmark_value_mw": vals[1],
+                              "eufabric_value": vals[0], "benchmark_value": vals[1]}))
+    held = {r[1] for r in rows}
+    files = [(bench.ROOT / "sources/hydrogen_candidates.json", "candidates", "id"),
+             (SEARCH, "entries", "ref")]
+    for path, key, idf in files:
+        if not path.exists():
+            continue
+        for obj in json.loads(path.read_text(encoding="utf-8"))[key]:
+            if str(obj[idf]) in held:
+                continue          # it is a row now, and the row is where it lives
+            for d in obj.get("benchmark_disagreements") or []:
+                if d["kind"] in DISAGREEMENT_KINDS:
+                    rows.append((d["kind"], str(obj[idf]), d))
+    if not rows:
+        return "\nbenchmark disagreements: none recorded."
+    out = [f"\nbenchmark disagreements ({len(rows)}) — recorded, and not resolved:"]
+    for kind in DISAGREEMENT_KINDS:
+        here = [r for r in rows if r[0] == kind]
+        if not here:
+            continue
+        out.append(f"\n  {kind} ({len(here)}):")
+        for _, who, d in sorted(here, key=lambda r: r[1]):
+            if kind == "capacity":
+                out.append(f"    {who[:44]:44} ref {d['ref']:>5}  "
+                           f"owner {d['eufabric_value_mw']:>5} MW  vs  benchmark "
+                           f"{d['benchmark_value_mw']:>5} MW")
+            elif kind == "site":
+                out.append(f"    {who[:44]:44} ref {d['ref']:>5}  "
+                           f"{d['eufabric_value']}  vs  {d['benchmark_value']}")
+            else:
+                out.append(f"    {who[:44]:44} ref {d['ref']:>5}  the benchmark splits "
+                           f"what the owner publishes whole")
+    # NORMALISATION GAPS STAY ON THE CANDIDATE and are never moved to a row: they are
+    # evidence about a conversion, not about a project.
+    gaps = sum(1 for path, key, idf in files if path.exists()
+               for obj in json.loads(path.read_text(encoding="utf-8"))[key]
+               for d in (obj.get("benchmark_disagreements") or [])
+               if d["kind"] == "normalisation_gap")
+    out.append(f"\n  and {gaps} normalisation gaps, under a fifth and excluded above: the "
+               f"IEA states\n  kt H2/y and this register normalises at a fixed factor, so an "
+               f"owner's megawatts\n  and the benchmark's cannot agree exactly even when the "
+               f"speakers do.")
+    return "\n".join(out)
 
 
 def main() -> int:
@@ -329,25 +559,28 @@ def main() -> int:
     print(f"report_benchmark_gap: {len(ou)} O&U and {len(iea)} IEA European entries at or "
           f"above 100 MW; eufabric holds {len(held_ou & set(ou))} and "
           f"{len(held_iea & set(iea))}.\n")
-    print(f"| {'class':32} | {'O&U':>5} | {'IEA':>5} |")
-    print(f"|{'-' * 34}|{'-' * 7}|{'-' * 7}|")
+    # The class names outgrew the column when the split landed; the width is
+    # measured rather than fixed so the next rename does not break the table.
+    w = max(len("held by eufabric (rows and candidates)"), *(len(c) for c in CLASSES))
+    print(f"| {'class':{w}} | {'O&U':>5} | {'IEA':>5} |")
+    print(f"|{'-' * (w + 2)}|{'-' * 7}|{'-' * 7}|")
     for c in CLASSES:
-        print(f"| {c:32} | {counts['odenweller_ueckerdt_2025'][c]:5} | "
+        print(f"| {c:{w}} | {counts['odenweller_ueckerdt_2025'][c]:5} | "
               f"{counts['iea_hydrogen_production_projects'][c]:5} |")
-    print(f"| {'held by eufabric':32} | {len(held_ou & set(ou)):5} | "
+    print(f"| {'held by eufabric (rows and candidates)':{w}} | {len(held_ou & set(ou)):5} | "
           f"{len(held_iea & set(iea)):5} |")
-    print(f"| {'TOTAL':32} | {len(ou):5} | {len(iea):5} |")
+    print(f"| {'TOTAL':{w}} | {len(ou):5} | {len(iea):5} |")
 
-    residue = [r for r in out if r["class"] == "not searched"]
+    residue = [r for r in out if r["class"] == "unexplained at FID or beyond"]
     if residue:
-        print(f"\nNOT SEARCHED ({len(residue)}) — the only class that is a defect. Each of "
+        print(f"\nUNEXPLAINED AT FID OR BEYOND ({len(residue)}) — the only class that is a defect. Each of "
               f"these is at FID, in construction or operating, in the geography, above the "
               f"threshold, and neither held nor explained:")
         for r in residue:
             print(f"  {r['benchmark'][:4]:4} ref {r['ref']:>5}  {r['country']}  "
                   f"{r['normalised_mwel'] or '?':>6} MW  {r['status'][:18]:18} {r['name'][:58]}")
     else:
-        print("\nNOT SEARCHED (0) — every absence is a decision.")
+        print("\nUNEXPLAINED AT FID OR BEYOND (0) — every absence is a decision.")
     print(f"\ncompany source unreadable ({len(UNREADABLE_BY_NAME)}) — located, measured "
           f"and queued in sources/manual/wanted:")
     for (b, ref), why in sorted(UNREADABLE_BY_NAME.items()):
@@ -356,6 +589,25 @@ def main() -> int:
     print(f"\nrefused by name ({len(REFUSED_BY_NAME)}) — recorded, never silent:")
     for (b, ref), why in sorted(REFUSED_BY_NAME.items()):
         print(f"  {b[:4]} ref {ref}: {why}")
+
+    possible = [r for r in out if r["class"] == "possible duplicate, not confirmed"]
+    if possible:
+        print(f"\npossible duplicates, NOT CONFIRMED ({len(possible)}) — a name stem matched "
+              f"something held.\nA person confirms these into CONFIRMED_DUPLICATES or they "
+              f"stay here:")
+        for r in possible:
+            print(f"  {r['benchmark'][:4]} ref {r['ref']:>5}  {r['country']}  "
+                  f"{r['normalised_mwel'] or '?':>6} MW  {r['status'][:18]:18} "
+                  f"{r['name'][:52]}")
+            why = POSSIBLE_DUPLICATE_NOTES.get(r["ref"])
+            if why:
+                print(f"        {why}")
+    else:
+        print("\npossible duplicates, NOT CONFIRMED (0) — every duplicate on file was "
+              "reached\nby the benchmark's own reference or confirmed by a person.")
+
+    print(search_crosstab())
+    print(disagreements())
 
     print("\nbenchmark inputs, by identity (sources/benchmark_snapshots.json):")
     print("\n".join(checks))

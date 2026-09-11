@@ -434,6 +434,1193 @@
         "iea_hydrogen_production_projects": 1388
       },
       "note": "FOUND BY THE BENCHMARK GAP REPORT, 9 September 2026 — the one entry in either list at FID or beyond that this register did not hold and could not explain. INEOS announced it in October 2021 and no source read here says anything after that."
+    },
+    {
+      "id": "engie-hynetherlands-eemshaven",
+      "company": "ENGIE Energie Nederland",
+      "site": "Eems power plant site, Eemshaven",
+      "country": "NL",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.hynetherlands.nl/en/project/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched: the works is a field beside the Eems power plant",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          595,
+          596
+        ],
+        "iea_hydrogen_production_projects": [
+          595,
+          596
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "phasing",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "596",
+          "eufabric_speaker": "owner or permit source",
+          "note": "The owner publishes one site 'increasing production capacity from 100MW in 2028 to 1.85 GW after 2035'; the benchmark carries a second row of 900 MW."
+        },
+        {
+          "kind": "site",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "595",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value": "Eems power plant site, Eemshaven",
+          "benchmark_value": "Pieterburen",
+          "note": "About 25 km apart. The owner names a specific power station site."
+        }
+      ]
+    },
+    {
+      "id": "hycc-h2ermes-ijmuiden",
+      "company": "HyCC (Nobian/Macquarie)",
+      "site": "Tata Steel IJmuiden",
+      "country": "NL",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://ipcei.observatory.clean-hydrogen.europa.eu/hycc-h2ermes-nl30",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          819
+        ],
+        "iea_hydrogen_production_projects": [
+          819
+        ]
+      }
+    },
+    {
+      "id": "smartenergy-orangebat-onda",
+      "company": "Smartenergy Group",
+      "site": "El Colomer industrial estate, Onda",
+      "country": "ES",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.smartenergy.net/orange-bat-is-the-first-green-hydrogen-project-to-obtain-the-iea-in-the-valencian-community/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; the IEA places this project at the port of Valencia and the owner at Onda",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          859
+        ],
+        "iea_hydrogen_production_projects": [
+          859
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "site",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "859",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value": "El Colomer industrial estate, Onda",
+          "benchmark_value": "port of Valencia (from the benchmark's own project name)",
+          "note": "About 60 km apart, and this one is not a coordinate: the benchmark NAMES the project 'Orange-BAT Puerto Valencia'. Smartenergy's own page puts the 100 MWe electrolyser at Onda in Castellon. A port demonstration project of the same name does exist at Valencia; the electrolyser is not there."
+        }
+      ]
+    },
+    {
+      "id": "endesa-as-pontes",
+      "company": "Endesa",
+      "site": "As Pontes de Garcia Rodriguez",
+      "country": "ES",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://www.endesa.com/en/press/press-room/news/energy-transition/endesa-studies-developing-23-green-hydrogen-projects-spain",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          906
+        ],
+        "iea_hydrogen_production_projects": [
+          906
+        ]
+      }
+    },
+    {
+      "id": "bayh2-bayernoil",
+      "company": "BayH2 (BAYERNOIL and partners)",
+      "site": "BAYERNOIL refinery, Neustadt an der Donau and Vohburg",
+      "country": "DE",
+      "status": "announced",
+      "capacity_mw_input": 128,
+      "company_source": "https://bayh2.de/regenerativer-wasserstoff/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; the owner does not say which of the two refinery parts takes it",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1221
+        ],
+        "iea_hydrogen_production_projects": [
+          1221
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "1221",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 128,
+          "benchmark_value_mw": 104,
+          "note": "BayH2's own page states a 128 MW electrolyser; the IEA's tonnage normalises to 104 MW."
+        }
+      ]
+    },
+    {
+      "id": "vicat-hynovi-montalieu",
+      "company": "Vicat with Hynamics (EDF)",
+      "site": "Montalieu-Vercieu cement plant",
+      "country": "FR",
+      "status": "announced",
+      "capacity_mw_input": 330,
+      "company_source": "https://www.vicat.com/news/low-carbon-trajectory-vicat-and-hynamics-unveil-hynovi-project",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1351
+        ],
+        "iea_hydrogen_production_projects": [
+          1351
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "site",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "1351",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value": "Montalieu-Vercieu cement plant",
+          "benchmark_value": "Bouvesse-Quirieu",
+          "note": "Neighbouring communes. The cement works is at Montalieu-Vercieu on Vicat's own release."
+        }
+      ]
+    },
+    {
+      "id": "h2v-fos-marseille",
+      "company": "H2V",
+      "site": "Port of Marseille Fos",
+      "country": "FR",
+      "status": "announced",
+      "capacity_mw_input": 600,
+      "company_source": "https://www.marseille-port.fr/en/projets/h2v-fos-et-le-port-de-marseille-fos",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; the port names 36 hectares and no land",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1477
+        ],
+        "iea_hydrogen_production_projects": [
+          1477
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "1477",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 600,
+          "benchmark_value_mw": 300,
+          "note": "The port authority's page states 'six 100MW production units, giving a total capacity of 600MW'. The IEA carries 300 MW, and the academic file splits the same works into six phase rows."
+        }
+      ]
+    },
+    {
+      "id": "rwe-pembroke-green-hydrogen",
+      "company": "RWE",
+      "site": "Land west of Pembroke Power Station",
+      "country": "GB",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://uk.rwe.com/innovation/pembroke-net-zero-centre-pnzc/pembroke-green-hydrogen/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1493
+        ],
+        "iea_hydrogen_production_projects": [
+          1493,
+          3053
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "phasing",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "3053",
+          "eufabric_speaker": "owner or permit source",
+          "note": "The benchmark carries the same works twice, at 110 MW and at 200 MW. RWE publishes one '100-110MWe electrolysis plant'."
+        },
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "hycc-h2era-amsterdam",
+      "company": "HyCC",
+      "site": "Port of Amsterdam",
+      "country": "NL",
+      "status": "announced",
+      "capacity_mw_input": 500,
+      "company_source": "https://www.hycc.com/en/projects/h2era",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1807
+        ],
+        "iea_hydrogen_production_projects": [
+          1807
+        ]
+      }
+    },
+    {
+      "id": "gen2-nesbruket-mosjoen",
+      "company": "Gen2 Energy",
+      "site": "Nesbruket, Mosjoen (Vefsn)",
+      "country": "NO",
+      "status": "announced",
+      "capacity_mw_input": 195,
+      "company_source": "https://gen2energy.com/production-sites/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1866
+        ],
+        "iea_hydrogen_production_projects": [
+          1866
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "1866",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 195,
+          "benchmark_value_mw": 100,
+          "note": "Gen2 Energy publishes 195 MW of reserved grid capacity at Nesbruket; the benchmark carries 100 MW."
+        }
+      ]
+    },
+    {
+      "id": "gen2-monstad-afjord",
+      "company": "Gen2 Energy",
+      "site": "Monstad, Afjord",
+      "country": "NO",
+      "status": "announced",
+      "capacity_mw_input": 150,
+      "company_source": "https://gen2energy.com/production-sites/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1867
+        ],
+        "iea_hydrogen_production_projects": [
+          1867
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "madoqua-power2x-sines",
+      "company": "MadoquaPower2X (Madoqua, Power2X, CIP)",
+      "site": "Zona Industrial e Logistica de Sines",
+      "country": "PT",
+      "status": "announced",
+      "capacity_mw_input": 500,
+      "company_source": "https://madoquapower2x.com/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1881
+        ],
+        "iea_hydrogen_production_projects": [
+          1881,
+          2570
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2570",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 1200,
+          "benchmark_value_mw": 700,
+          "note": "The owner separates 'Phase 2: 1.2 GW'; the benchmark's second row carries 700 MW."
+        },
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "carlton-trafford-green-hydrogen",
+      "company": "Carlton Power",
+      "site": "Trafford Low Carbon Energy Park, Carrington",
+      "country": "GB",
+      "status": "announced",
+      "capacity_mw_input": 200,
+      "company_source": "https://www.traffordgreenhydrogen.co.uk/theproject",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; the owner publishes a postal address",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1969
+        ],
+        "iea_hydrogen_production_projects": [
+          1969
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "volth2-wilhelmshaven",
+      "company": "VoltH2",
+      "site": "NPorts land, Wilhelmshaven",
+      "country": "DE",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://en.volth2.com/wilhelmshaven",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; four hectares leased from the state port company",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1973
+        ],
+        "iea_hydrogen_production_projects": [
+          1973
+        ]
+      }
+    },
+    {
+      "id": "plugpower-kokkola",
+      "company": "Plug Power",
+      "site": "Kokkola",
+      "country": "FI",
+      "status": "announced",
+      "capacity_mw_input": 1000,
+      "company_source": "https://www.ir.plugpower.com/press-releases/news-details/2023/Plug-Power-Makes-Major-Strategic-Move-into-Finlands-Green-Hydrogen-Economy-with-its-Proven-PEM-Electrolyzer-and-Liquefaction-Technology/default.aspx",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2015
+        ],
+        "iea_hydrogen_production_projects": [
+          2015
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "plugpower-kristinestad",
+      "company": "Plug Power",
+      "site": "Kristinestad",
+      "country": "FI",
+      "status": "announced",
+      "capacity_mw_input": 1000,
+      "company_source": "https://www.ir.plugpower.com/press-releases/news-details/2023/Plug-Power-Makes-Major-Strategic-Move-into-Finlands-Green-Hydrogen-Economy-with-its-Proven-PEM-Electrolyzer-and-Liquefaction-Technology/default.aspx",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2016
+        ],
+        "iea_hydrogen_production_projects": [
+          2016
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "tes-ewe-wilhelmshaven",
+      "company": "Tree Energy Solutions with EWE",
+      "site": "TES Green Energy Hub, Wilhelmshaven",
+      "country": "DE",
+      "status": "announced",
+      "capacity_mw_input": 500,
+      "company_source": "https://tes-h2.com/news/tes-and-ewe-to-build-500mw-electrolyser-at-wilhelmshaven-green-energy-hub",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2058
+        ],
+        "iea_hydrogen_production_projects": [
+          2058
+        ]
+      }
+    },
+    {
+      "id": "lhyfe-delfzijl",
+      "company": "Lhyfe",
+      "site": "Delfzijl",
+      "country": "NL",
+      "status": "announced",
+      "capacity_mw_input": 200,
+      "company_source": "https://www.lhyfe.com/press/green-and-renewable-hydrogen-producer-lhyfe-to-develop-200-mw-plant-in-delfzijl-netherlands/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; the owner says a plot is secured and does not say which",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2117
+        ],
+        "iea_hydrogen_production_projects": [
+          2117
+        ]
+      }
+    },
+    {
+      "id": "smartenergy-porto-torres",
+      "company": "Smartenergy Group",
+      "site": "Porto Torres industrial complex",
+      "country": "IT",
+      "status": "announced",
+      "capacity_mw_input": 200,
+      "company_source": "https://www.smartenergy.net/smartenergy-develops-a-200-mwe-green-hydrogen-plant-in-sardinia-italy/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; consented by the Sassari provincial industrial consortium",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2120
+        ],
+        "iea_hydrogen_production_projects": [
+          2120
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "orsted-skovgaard-idomlund",
+      "company": "Orsted with Skovgaard Energy",
+      "site": "Idomlund, near Holstebro",
+      "country": "DK",
+      "status": "announced",
+      "capacity_mw_input": 150,
+      "company_source": "https://orsted.com/en/media/newsroom/news/2022/12/13665899",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2149,
+          2150
+        ],
+        "iea_hydrogen_production_projects": [
+          2149
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "phasing",
+          "benchmark": "odenweller_ueckerdt_2025",
+          "ref": "2150",
+          "eufabric_speaker": "owner or permit source",
+          "note": "The academic file carries this site twice: 150 MW at Feasibility with a date online of 2028, and 3 GW at Concept with no date. Orsted's own release names one site at Idomlund and says the facility 'will be built in several phases', with 'The first phase ... 150 MW'. One works, two rows, and the second is the phase the owner has not sized."
+        }
+      ]
+    },
+    {
+      "id": "statera-kintore-hydrogen",
+      "company": "Statera Energy",
+      "site": "Kintore, Aberdeenshire",
+      "country": "GB",
+      "status": "announced",
+      "capacity_mw_input": 500,
+      "company_source": "https://stateraenergy.co.uk/projects/kintore-hydrogen",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; 3 GW consented, first 500 MW by 2030",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2163,
+          2164
+        ],
+        "iea_hydrogen_production_projects": [
+          2163,
+          2164
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "phasing",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2164",
+          "eufabric_speaker": "owner or permit source",
+          "note": "FILED AS A CAPACITY DISAGREEMENT FOR AN HOUR AND CORRECTED: the two speakers state the SAME megawatts and disagree about whether this is one project or two. The owner publishes 3 GW consented with 'the first 500MW' by 2030; the benchmark's second row carries the 2,500 MW remainder. The two agree on the arithmetic and disagree on whether it is one project or two."
+        }
+      ]
+    },
+    {
+      "id": "meld-saltend-hull",
+      "company": "Meld Energy",
+      "site": "Saltend Chemicals Park, Hull",
+      "country": "GB",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://meld.energy/projects/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2173
+        ],
+        "iea_hydrogen_production_projects": [
+          2173,
+          3076
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "phasing",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "3076",
+          "eufabric_speaker": "owner or permit source",
+          "note": "The benchmark carries the same works twice at 100 MW. Meld Energy publishes one 100 MW facility and an aim 'to at least double' it, with no second figure."
+        }
+      ]
+    },
+    {
+      "id": "edp-green-h2-los-barrios",
+      "company": "EDP",
+      "site": "Los Barrios coal-fired power station site, Palmones",
+      "country": "ES",
+      "status": "announced",
+      "capacity_mw_input": 130,
+      "company_source": "https://edp.com/en/europe/spain/projects/energy-transition/green-h2-los-barrios",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2214,
+          2215
+        ],
+        "iea_hydrogen_production_projects": [
+          2214,
+          2215
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2214",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 130,
+          "benchmark_value_mw": 100,
+          "note": "EDP publishes 130 MW as the total of three steps — 5 MW Pioneros I, 25 MW Pioneros II, 100 MW IPCEI. The benchmark's row carries the IPCEI step alone."
+        },
+        {
+          "kind": "phasing",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2215",
+          "eufabric_speaker": "owner or permit source",
+          "note": "The benchmark carries a third phase of 400 MW. EDP's published total is 130 MW and its 500 MW second stage is described as a feasibility study, not a plan."
+        }
+      ]
+    },
+    {
+      "id": "hive-albamed-albacete",
+      "company": "Hive Energy",
+      "site": "Albacete",
+      "country": "ES",
+      "status": "announced",
+      "capacity_mw_input": 800,
+      "company_source": "https://www.hiveenergy.co.uk/clean-futures/green-hydrogen/albamed-green-hydrogen-project/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2227,
+          2228
+        ],
+        "iea_hydrogen_production_projects": [
+          2227,
+          2228
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "phasing",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2228",
+          "eufabric_speaker": "owner or permit source",
+          "note": "The benchmark carries a second row of 3,200 MW. Hive Energy publishes 800 MW for phase 1 and about 4 GW by 2030, and separates nothing in between."
+        }
+      ]
+    },
+    {
+      "id": "power2x-erasmo-saceruela",
+      "company": "Power2X with Soto Solar",
+      "site": "Saceruela, Ciudad Real",
+      "country": "ES",
+      "status": "announced",
+      "capacity_mw_input": 650,
+      "company_source": "https://www.power2x.com/erasmop2x/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; the IEA places this project at Almodovar del Campo, 40 km away",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2232
+        ],
+        "iea_hydrogen_production_projects": [
+          2232
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2232",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 650,
+          "benchmark_value_mw": 325,
+          "note": "Power2X states 'Electrolyzer: 650 MW'; the benchmark carries 325 MW — exactly half, which is suggestive and is not evidence."
+        },
+        {
+          "kind": "site",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2232",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value": "Saceruela, Ciudad Real",
+          "benchmark_value": "Almodovar del Campo",
+          "note": "About 40 km apart, same province."
+        }
+      ]
+    },
+    {
+      "id": "rengas-pori-kaanaa",
+      "company": "Ren-Gas",
+      "site": "Kirrinsanta and Aittaluoto, Pori",
+      "country": "FI",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://ren-gas.com/projekti/pori-2/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2434
+        ],
+        "iea_hydrogen_production_projects": [
+          2434
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2434",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 100,
+          "benchmark_value_mw": 150,
+          "note": "Ren-Gas states 100 MW at Pori; the benchmark carries 150 MW. The benchmark is the LARGER speaker here, which is the minority direction in this pass."
+        }
+      ]
+    },
+    {
+      "id": "enertrag-prignitz-falkenhagen",
+      "company": "ENERTRAG",
+      "site": "Gewerbepark Prignitz-Falkenhagen",
+      "country": "DE",
+      "status": "announced",
+      "capacity_mw_input": 130,
+      "company_source": "https://enertrag.com/news-and-press/pressemitteilungen/enertrag-et-l-arrondissement-de-prignitz-posent-un-nouveau-jalon-pour-la-strategie-de-l-hydrogene-dans-le-brandebourg",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; 8.6 hectares in the south-east corner of the estate, and an estate is not a works",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2499
+        ],
+        "iea_hydrogen_production_projects": [
+          2499
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "site",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2499",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value": "Gewerbepark Prignitz-Falkenhagen",
+          "benchmark_value": "Schwedt/Oder",
+          "note": "About 150 km apart, and both places are real ENERTRAG territory — the company is separately involved at Schwedt — which is what makes the benchmark's coordinate misleading rather than merely wrong."
+        }
+      ]
+    },
+    {
+      "id": "fuella-skipavika-skiga",
+      "company": "Fuella",
+      "site": "Skipavika Havneterminal",
+      "country": "NO",
+      "status": "announced",
+      "capacity_mw_input": 120,
+      "company_source": "https://fuella.no/projects/project-skipavika/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; Fuella's own page says 'Skipavika Havneterminal' and 'in the vicinity of the Mongstad basin outside Bergen' and names no municipality. CORRECTED 10 September 2026: this entry said Bremanger, which is Holmaneset's municipality and not this one, and no source read here ever said it.",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2534
+        ],
+        "iea_hydrogen_production_projects": [
+          2534
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "neogreen-sines",
+      "company": "NeoGreen Portugal",
+      "site": "ZILS, Zona Industrial e Logistica de Sines",
+      "country": "PT",
+      "status": "announced",
+      "capacity_mw_input": 500,
+      "company_source": "https://globalparques.pt/en/news/neogreen-portugal-develops-a-green-hydrogen-project-in-sines/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; 10.5 hectares reserved from the estate's managing body",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2538
+        ],
+        "iea_hydrogen_production_projects": [
+          2538
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2538",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 500,
+          "benchmark_value_mw": 330,
+          "note": "The estate's managing body records a '500MW+ electrolyser complex'; the benchmark carries 330 MW."
+        }
+      ]
+    },
+    {
+      "id": "eneco-diamond-hydrogen-europoort",
+      "company": "Eneco Diamond Hydrogen (Eneco and Mitsubishi)",
+      "site": "Beside the Enecogen power station, Europoort",
+      "country": "NL",
+      "status": "announced",
+      "capacity_mw_input": 800,
+      "company_source": "https://news.eneco.com/eneco-takes-important-step-towards-building-green-hydrogen-plant/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; the IEA places one of its two rows for this project at Warffum, 200 km away",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          2599,
+          2875
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2599",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 800,
+          "benchmark_value_mw": 225,
+          "note": "THE LARGEST DISAGREEMENT IN THE PASS. Eneco's own release says 'a capacity of eventually 800 megawatts'; the IEA's row normalises to 225 MW. The same list's other row for this project (2875) carries 800."
+        },
+        {
+          "kind": "phasing",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2875",
+          "eufabric_speaker": "owner or permit source",
+          "note": "The benchmark carries this project twice, once at 225 MW in Rotterdam and once at 800 MW at Warffum. The owner publishes one 800 MW plant at Europoort."
+        },
+        {
+          "kind": "site",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2875",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value": "Europoort, Rotterdam",
+          "benchmark_value": "Warffum, Groningen",
+          "note": "About 200 km apart. The benchmark's second row for this project puts it at the other end of the country from the owner's own release."
+        }
+      ]
+    },
+    {
+      "id": "rwe-wilton-green-hydrogen",
+      "company": "RWE",
+      "site": "Wilton International, Teesside",
+      "country": "GB",
+      "status": "announced",
+      "capacity_mw_input": 260,
+      "company_source": "https://uk.rwe.com/press-and-news/2024-03-18-wilton-green-hydrogen-project-gains-momentum-in-advancing-sustainable-energy-solutions/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          2766
+        ]
+      }
+    },
+    {
+      "id": "totalenergies-energhys-vlissingen",
+      "company": "TotalEnergies Renewables Nederland",
+      "site": "Van Citters harbour, Vlissingen-Oost",
+      "country": "NL",
+      "status": "announced",
+      "capacity_mw_input": 300,
+      "company_source": "https://www.energhys.com/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; the IEA places it at Borssele",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          2793
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "site",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "2793",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value": "Van Citters harbour, Vlissingen-Oost",
+          "benchmark_value": "Borssele",
+          "note": "Adjacent parishes, about 7 km. Small, and recorded because the perimeter's whole argument is that a third party's coordinate is not a position."
+        }
+      ]
+    },
+    {
+      "id": "ignis-armonia-green-galicia",
+      "company": "Armonia Green Galicia (IGNIS)",
+      "site": "Port of Punta Langosteira, A Coruna",
+      "country": "ES",
+      "status": "announced",
+      "capacity_mw_input": 200,
+      "company_source": "https://ignis.es/en/green-hydrogen-as-a-key-driver-for-decarbonization-and-energy-transformation/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; environmental authorisation obtained",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          3015
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "lhyfe-lubmin",
+      "company": "Lhyfe",
+      "site": "Site of the decommissioned Lubmin nuclear power station",
+      "country": "DE",
+      "status": "announced",
+      "capacity_mw_input": 800,
+      "company_source": "https://www.lhyfe.com/press/lhyfe-at-the-cutting-edge-of-hydrogen-strategies-with-a-new-800mw-project-in-lubmin-germany-to-supply-the-future-european-hydrogen-backbone-network/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          3125
+        ]
+      }
+    },
+    {
+      "id": "h2u-reni",
+      "company": "Hydrogen Ukraine",
+      "site": "Reni, Odesa region",
+      "country": "UA",
+      "status": "announced",
+      "capacity_mw_input": 100,
+      "company_source": "https://h2u.ua/en/projects/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          3165,
+          3166
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "phasing",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "3166",
+          "eufabric_speaker": "owner or permit source",
+          "note": "FILED AS A CAPACITY DISAGREEMENT FOR AN HOUR AND CORRECTED: the two speakers state the SAME megawatts and disagree about whether this is one project or two. Hydrogen Ukraine publishes one site scaling from 100 MW in 2028 to 200 MW in 2030; the benchmark carries two 100 MW rows."
+        }
+      ]
+    },
+    {
+      "id": "vng-hycc-greenroot-wittenberg",
+      "company": "VNG with HyCC",
+      "site": "Former waterworks, Lutherstadt Wittenberg",
+      "country": "DE",
+      "status": "announced",
+      "capacity_mw_input": 500,
+      "company_source": "https://www.vng.de/en/newsroom/2024-12-04-vng-and-hycc-plan-produce-green-hydrogen-lutherstadt-wittenberg",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          3266
+        ]
+      }
+    },
+    {
+      "id": "totalenergies-airliquide-zeeland",
+      "company": "TotalEnergies and Air Liquide joint venture",
+      "site": "Beside the Zeeland refinery, Nieuwdorp",
+      "country": "NL",
+      "status": "announced",
+      "capacity_mw_input": 250,
+      "company_source": "https://totalenergies.com/newsroom/totalenergies-joins-forces-air-liquide-decarbonize-its-refineries-northern/?lang=eng",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          3326
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "aboenergy-nivala",
+      "company": "ABO Energy Suomi",
+      "site": "Nivala",
+      "country": "FI",
+      "status": "announced",
+      "capacity_mw_input": 200,
+      "company_source": "https://www.aboenergy.com/en/development-construction/green-hydrogen.html",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; the owner does not use the name Kurunpuhto that the IEA carries",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          3796
+        ]
+      }
+    },
+    {
+      "id": "aboenergy-pyyryvainen-oulu",
+      "company": "ABO Energy Suomi",
+      "site": "Pyyryvainen, Oulu",
+      "country": "FI",
+      "status": "announced",
+      "capacity_mw_input": 600,
+      "company_source": "https://www.ouka.fi/en/news/three-new-hydrogen-plants-planned-oulu",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          3685
+        ]
+      }
+    },
+    {
+      "id": "qair-methavert-le-havre",
+      "company": "Qair",
+      "site": "Rogerville, Le Havre industrial and port zone",
+      "country": "FR",
+      "status": "announced",
+      "capacity_mw_input": 300,
+      "company_source": "https://france.qair.energy/realisations/methavert/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; 60 hectares, 140 MW in the first phase",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          3723
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "3723",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 300,
+          "benchmark_value_mw": 150,
+          "note": "Qair states '300 MW, dont 140 MW seront deployes en phase initiale'. The benchmark's 150 MW matches neither the whole nor the first phase."
+        }
+      ]
+    },
+    {
+      "id": "versoenergy-carlhyng-carling",
+      "company": "Verso Energy",
+      "site": "Carling, Moselle",
+      "country": "FR",
+      "status": "announced",
+      "capacity_mw_input": 300,
+      "company_source": "https://www.concertation-carlhyng.eu/fr/le-projet-carlhyng",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; three units of 100 MW",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          3736
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "capacity",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "3736",
+          "eufabric_speaker": "owner or permit source",
+          "eufabric_value_mw": 300,
+          "benchmark_value_mw": 199,
+          "note": "Verso Energy's consultation file describes three units of 100 MW at Carling; the benchmark carries 199 MW."
+        }
+      ]
+    },
+    {
+      "id": "luoto-energia-rauma",
+      "company": "Luoto Energia (TES and CPC Finland)",
+      "site": "Iso Jarviluoto, Port of Rauma",
+      "country": "FI",
+      "status": "announced",
+      "capacity_mw_input": 500,
+      "company_source": "https://tes-h2.com/news/tes-and-cpc-finland-to-develop-500mw-e-ng-project-at-the-port-of-rauma-in-finland",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; 20 hectares",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": null,
+        "iea_hydrogen_production_projects": [
+          3742
+        ]
+      }
+    },
+    {
+      "id": "h2energy-njordkraft-esbjerg",
+      "company": "H2 Energy Esbjerg (Trafigura)",
+      "site": "Esbjerg",
+      "country": "DK",
+      "status": "announced",
+      "capacity_mw_input": 1000,
+      "company_source": "https://morgenenergy.com/njordkraft/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; environmental permit January 2024, building permit June 2024",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          1315
+        ],
+        "iea_hydrogen_production_projects": [
+          1315
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "normalisation_gap",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": null,
+          "note": "The owner's megawatts and the benchmark's differ by less than a fifth. The IEA states kt H2/y and this register normalises at a fixed factor, so the two cannot agree exactly even when the speakers do. NOT A DISAGREEMENT: evidence about the conversion, not about anybody's claim."
+        }
+      ]
+    },
+    {
+      "id": "ricenergy-besaya-torrelavega",
+      "company": "RIC Energy with Copsesa",
+      "site": "Former Sniace grounds, Torrelavega and Santillana del Mar",
+      "country": "ES",
+      "status": "announced",
+      "capacity_mw_input": 500,
+      "company_source": "https://ric.energy/besaya-h2-proyecto-ric-energy-impulsara-descarbonizacion-cantabria/",
+      "coordinate_source": null,
+      "coordinate_ref": "not searched; declared a strategic project by Cantabria",
+      "benchmarks": {
+        "odenweller_ueckerdt_2025": [
+          2033
+        ],
+        "iea_hydrogen_production_projects": [
+          2033,
+          3213
+        ]
+      },
+      "benchmark_disagreements": [
+        {
+          "kind": "phasing",
+          "benchmark": "iea_hydrogen_production_projects",
+          "ref": "3213",
+          "eufabric_speaker": "owner or permit source",
+          "note": "FILED AS A CAPACITY DISAGREEMENT FOR AN HOUR AND CORRECTED: the two speakers state the SAME megawatts and disagree about whether this is one project or two. RIC Energy publishes 500 MW initially rising to 1,000 MW in a second phase; the benchmark carries two rows of 500 MW each. Same total, different shape."
+        }
+      ]
     }
   ]
 }
