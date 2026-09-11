@@ -55,3 +55,10 @@ scratch/
 # The script fetches them from the publishers on first run and the ids on the
 # rows are what makes the comparison reproducible without a copy living here.
 sources/cache/hydrogen/
+
+# The dependency sweep body cache (Brief 9). sources/dependency_cache/index.json IS
+# tracked: url, date, size and SHA-256 of every fetch is the part that has to survive.
+# The bodies are not, on the sources/cache/hydrogen/ precedent above — a few hundred
+# suppliers' press pages are their copy, not this repository's to redistribute.
+sources/dependency_cache/*
+!sources/dependency_cache/index.json
