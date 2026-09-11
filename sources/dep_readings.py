@@ -1879,3 +1879,153 @@ E("endurance-nep", "Net Zero Teesside Power", "co2_storage", "supplier",
   note="Financial close and entry into execution for both NZT Power and NEP. NEP's "
        "infrastructure will 'serve three initial carbon capture projects on Teesside'; "
        "the other two are not named here and no tonnage is given for any of them.")
+
+# --- Danieli & C. Officine Meccaniche S.p.A. ----------------------------------
+# danieli.com ANSWERS 403 TO EVERY PATH, with and without www, http and https, with
+# a full browser header set. Its releases are therefore read from the Internet
+# Archive under DECISION D-7 — and the archive is rate-limiting this sweep hard
+# enough that only a fraction of the 107 captures identified were retrieved in the
+# time available. THE SWEEP OF THIS NODE IS PARTIAL AND SAYS SO. Danieli also
+# reaches this file from the other side: it co-developed ENERGIRON with Tenova and
+# is named in the Salzgitter SALCOS consortium by Tenova's own release.
+#
+# The captures carry no dateline, so date_precision is `year` on both edges.
+D_ = "https://web.archive.org/web/"
+
+E("danieli", "Acciaierie Venete", "equipment_order", "supplier", "supplier_press",
+  D_ + "20250214112716id_/https://www.danieli.com/en/news-media/news/acciaierie-venete-"
+       "contracts-danieli-eaf-green-steel-production_37_939.htm", "2025-01-01",
+  date_precision="year", quantity=None, country="IT", sector="steel", site="Padova",
+  note="A 100-tonne EAF with fume treatment and material handling for Padova Works. "
+       "Recorded on the D-8 boundary because the release's own headline calls it green "
+       "steel production; it names no decarbonisation programme and no tonnage, and it "
+       "is the weakest edge of its kind in this file.")
+E("danieli", "ABS Sisak", "equipment_order", "supplier", "supplier_press",
+  D_ + "20220627234645id_/https://www.danieli.com/en/news-media/news/abs-sisak-secure-"
+       "competitive-and-green-steel-production-croatia_37_723.htm", "2022-01-01",
+  date_precision="year", quantity=None, country="HR", sector="steel", site="Sisak",
+  note="The capture has a headline and no readable body — 'secure competitive and green "
+       "steel production in Croatia' is the whole of what this sweep can quote. "
+       "Recorded so that the Croatian customer is not invisible, with nothing claimed "
+       "about what was sold.")
+
+# --- SMS group GmbH -----------------------------------------------------------
+# ZERO EDGES FROM THE SUPPLIER'S OWN VOICE. sms-group.com sits behind an AWS WAF
+# that answers a declared reader with HTTP 202 and a 2 KB JavaScript challenge —
+# not a refusal a reader can argue with and not a page. Its sitemap.xml is the same
+# challenge. The Internet Archive holds 325 captures of /press-media/press-detail/
+# in the period, and they are overwhelmingly 2020–2022 conventional millwork; none
+# of SMS's large European decarbonisation orders is among them.
+#
+# SO THE COMPANY IS PRESENT IN THIS FILE ONLY THROUGH OTHER PEOPLE'S DOCUMENTS:
+# Midrex names Paul Wurth, an SMS group company, in both the H2 Green Steel and the
+# thyssenkrupp Duisburg contracts, and names 'the SMS group in consortium with
+# Midrex' as holding the largest single order in thyssenkrupp Steel's history. Those
+# are edges on the midrex node and they are not duplicated here, because the sweep
+# records the speaker and Midrex is the speaker. What SMS itself said, this sweep
+# could not read.
+
+# --- Shell Cansolv ------------------------------------------------------------
+# ZERO EDGES, AND THE REASON IS ALREADY IN THE REGISTER. shell.com answers a
+# declared reader with HTTP 200 and an EMPTY BODY — sources/manual/MANIFEST.json
+# records exactly this for two hydrogen rows and queues them for a person with a
+# browser. Every Cansolv path tried here returns either 404 or 200-with-nothing:
+# /what-we-do/oil-and-natural-gas/cansolv.html, the catalysts-and-technologies
+# licensed-technologies pages, the newsroom index, and the resources-library page
+# that a search engine still indexes by title.
+#
+# The one European owner-side source located — humberzero.co.uk's announcement that
+# Shell Catalysts & Technologies would provide CANSOLV at VPI Immingham — is a dead
+# domain: every path on it now answers 404. So the supplier cannot be read and the
+# customer's own site is gone.
+#
+# This node is on the perimeter and it has been searched. It has no edges because
+# nothing about it is readable, which is a different finding from a supplier with no
+# European customers, and the report says which.
+
+
+# =============================================================================
+# How deep the sweep went, node by node
+# =============================================================================
+# `listed` is what the index or sitemap offered; `fetched` is what was retrieved in
+# full; `read` is what a person put eyes on. A node whose `blocked` is not empty
+# could not be swept as intended and the reason is stated, because "no edges" and
+# "no access" are the two findings this sweep must never let a reader confuse.
+
+def _s(node, listed, fetched, index, blocked=None, note=None):
+    R_.searched(node, listed=listed, fetched=fetched, index=index,
+                blocked=blocked, note=note)
+
+_s("nel", 573, 166, "nelhydrogen.com/press-releases/ over 58 listing pages")
+_s("itm-power", 133, 133, "itm-power.com/sitemap.xml",
+   note="The sitemap lists 12 items for 2021 and 11 for 2022 against 20 for 2020; the "
+        "RNS record on the investors/news page may hold items this sweep did not see.")
+_s("tk-nucera", 93, 93, "thyssenkrupp-nucera.com TYPO3 sitemap",
+   note="Article pages carry no date; every date comes from the listing page.")
+_s("siemens-energy", 353, 353, "siemens-energy.com global/en sitemap, /press-releases/",
+   note="22 of the 353 concern electrolysis; the rest are turbines, grids and wind and "
+        "are counted, not read.")
+_s("sunfire", 100, 100, "sunfire.de sitemap, /en/news/")
+_s("plug-power", 317, 317, "ir.plugpower.com Q4 feed, one call per year, bodyType=1",
+   blocked="plugpower.com answers 403 to every /press-releases/news-details/ URL; the "
+           "feed the same site publishes answers 200 with the same text.")
+_s("john-cockerill", 1060, 118, "two news sitemaps",
+   note="118 fetched on slug keywords; the newsroom prints no date and every date "
+        "comes from schema.org datePublished.")
+_s("mcphy", 125, 23, "Internet Archive CDX of mcphy.com/en/press-releases/*",
+   blocked="mcphy.com does not resolve; www.mcphy.com redirects to John Cockerill. The "
+           "supplier's own site no longer exists (DECISION D-7).",
+   note="21 of 23 captures carry a readable body; one is navigation only.")
+_s("slb-capturi", 49, 49, "capturi.slb.com sitemap plus slb.com newsroom",
+   blocked="akercarboncapture.com and slbcapturi.com do not resolve.",
+   note="The surviving archive starts in 2023; the 2020–2022 Aker Carbon Capture "
+        "releases, which include the Brevik award itself, are on the dead domain.")
+_s("mhi", 836, 125, "mhi.com year index pages 2020–2026",
+   note="The 6,334 /news/ URLs in the sitemap are date slugs carrying no words, so the "
+        "year index pages were parsed for titles instead. 106 of 836 concern CO2.")
+_s("shell-cansolv", 0, 0, "shell.com",
+   blocked="shell.com answers 200 with an empty body to a declared reader — the failure "
+           "sources/manual/MANIFEST.json already records for two hydrogen rows. Every "
+           "Cansolv path returns 404 or nothing. humberzero.co.uk, the one European "
+           "owner source located, now 404s on every path.")
+_s("linde", 278, 31, "linde.com sitemap, /news-and-media/")
+_s("air-liquide", 1809, 74, "airliquide.com sitemap pages 1 and 2")
+_s("midrex", 175, 175, "midrex.com press-release and news sitemaps",
+   note="The whole newsroom, taken whole.")
+_s("primetals", 588, 327, "primetals.com/en sitemap")
+_s("tenova", 171, 83, "tenova.com sitemap, /newsroom/press-releases and /news")
+_s("danieli", 107, 9, "Internet Archive CDX of danieli.com news paths",
+   blocked="danieli.com answers 403 on every path, http and https, with and without "
+           "www, with a full browser header set. The archive is rate-limiting the "
+           "sweep; 9 of 107 identified captures were retrieved.",
+   note="PARTIAL. This node is the least swept on the perimeter.")
+_s("sms-group", 325, 0, "Internet Archive CDX of sms-group.com press-detail paths",
+   blocked="sms-group.com sits behind an AWS WAF answering 202 with a JavaScript "
+           "challenge, sitemap included. The archive's 325 captures are 2020–2022 "
+           "millwork and hold none of SMS's European decarbonisation orders.",
+   note="Present in this file only through Midrex's releases, where Midrex is the "
+        "speaker.")
+_s("wuxi-lead", 117, 1, "leadintelligent.com/en/news, eight pages",
+   note="All 117 titles read; the English newsroom is marketing, and one item names a "
+        "European customer and a contract.")
+_s("manz", 16, 16, "manz.com blog-posts sitemap",
+   note="All sixteen are insolvency notices or disposals. There is no customer "
+        "announcement left on the site.")
+_s("hitachi", 5, 0, "hitachi.com/en/press/",
+   blocked="hitachi-hightech.com — the group unit that makes battery production "
+           "equipment — answers 403 on its newsroom and its sitemap. The corporate "
+           "press page lists five items with no walkable archive; /en/press/archive/"
+           "<year>/ and /New/cnews/<year>/ are 404.")
+_s("northern-lights", 86, 86, "norlights.com WordPress sitemap")
+_s("porthos", 77, 77, "porthosco2.nl post sitemap, /en/ items")
+_s("aramis", 65, 65, "aramis-ccs.com/news",
+   note="Pre-FID: permitting, tendering, subsidy and engineering. No emitter contract.")
+_s("greensand", 43, 43, "greensandfuture.com/news",
+   note="projectgreensand.com now resolves to greensandfuture.com. Much of the 2023 "
+        "first-injection record is in Danish and was read only as far as its slugs.")
+_s("ravenna-ccs", 2, 2, "eni.com press release located by search",
+   blocked="eni.com's media index renders by script and the CCS pages have moved; the "
+           "launch release was reached directly rather than by walking an index.")
+_s("endurance-nep", 34, 32, "netzeroteesside.co.uk post sitemap",
+   note="Shared newsroom with NZT Power. Contractor awards and supply-chain news; no "
+        "emitter contract with a tonnage anywhere in it.")

@@ -271,6 +271,27 @@ def owner(project_id: str, urls_read: int, found: list[str], note: str = "") -> 
                          "supplier_or_store_named": found, "note": note}
 
 
+def owner_side() -> list[dict]:
+    """The owner-side pass, run rather than transcribed.
+
+    dep_owner scans the sources the register itself cites; calling it here means
+    edges.json cannot drift from what that scan actually found, which a pasted list
+    would do the first time a row gained a source.
+    """
+    import dep_owner
+    scan = dep_owner.scan()
+    out = []
+    for pid, r in sorted(scan.items()):
+        others = [n for n in r["named"] if n not in r["names_its_own_owner"]]
+        out.append({"project_id": pid,
+                    "sources_cited": r["cited"],
+                    "sources_read": r["read"],
+                    "unreadable": r["unreadable"],
+                    "supplier_or_store_named": others,
+                    "names_its_own_owner": r["names_its_own_owner"]})
+    return out
+
+
 def build() -> None:
     nodes = []
     for nid, kind, name, home, listing in S.NODES:
@@ -285,7 +306,7 @@ def build() -> None:
                    indent=1, ensure_ascii=False) + "\n")
     (HERE / "edges.json").write_text(
         json.dumps({"_comment": EDGES_COMMENT, "edges": EDGES,
-                    "owner_side": list(OWNER.values())},
+                    "owner_side": owner_side()},
                    indent=1, ensure_ascii=False) + "\n")
     (HERE / "dependency_unmatched.json").write_text(
         json.dumps({"_comment": UNMATCHED_COMMENT,

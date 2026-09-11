@@ -42,11 +42,15 @@ def to_text(raw: bytes) -> str:
 
 
 def pdf_text(raw: bytes) -> str:
+    # `import pymupdf`, NOT `import fitz`. The legacy alias prints a deprecation
+    # warning to STDOUT, not stderr, which put a line of English at the top of this
+    # module's JSON output and made it unparseable. A library that writes to stdout
+    # is a library that has to be imported by its current name.
     try:
-        import fitz                                   # pymupdf, per requirements.txt
+        import pymupdf
     except ImportError:
         return ""
-    with fitz.open(stream=raw, filetype="pdf") as doc:
+    with pymupdf.open(stream=raw, filetype="pdf") as doc:
         return "\n".join(page.get_text() for page in doc)
 
 
