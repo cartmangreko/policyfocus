@@ -30,8 +30,18 @@ import sys
 # What a stray from this workflow looks like: a poll loop, a wait on a log, or a
 # fetch left running. Matched on the command line, because that is the only thing
 # that says what a shell was for.
+# TWO SHAPES OF STRAY, and the first version of this check only knew one.
+#
+#   a poll loop, waiting for a condition that may never come
+#   ANY long-running job started from a session scratchpad — which is where this
+#   workflow's own background work lives
+#
+# The second was added on 11 September 2026 after the check reported "no stray shells"
+# while a ten-site basemap sweep of this author's own was running in the background. A
+# check that only catches other people's mistakes is not a check.
 SUSPECT = re.compile(r"until\s+git\s+log|until\s+grep|while\s+.*sleep|"
-                     r"\bpass\d+\.py|\bchunk\.py|overpass|curl\s+.*--max-time", re.I)
+                     r"\bpass\d+\.py|\bchunk\.py|overpass|curl\s+.*--max-time|"
+                     r"claude-\d+/[^ ]*scratchpad", re.I)
 SELF = os.path.basename(__file__)
 
 
@@ -45,7 +55,7 @@ def main() -> int:
 
     hits = []
     for line in ps.splitlines()[1:]:
-        if SELF in line or " ps -eo" in line:
+        if SELF in line or " ps -eo" in line or "check_orphan_jobs" in line:
             continue
         if SUSPECT.search(line):
             pid, ppid, etime, cmd = line.split(None, 3)
