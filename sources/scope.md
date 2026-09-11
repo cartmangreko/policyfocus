@@ -1564,3 +1564,80 @@ tried.
 undrawn, by `report_candidate_gaps.py` on every build. Hydrogen is 11 drawn and 55
 undrawn. Where a sector surfaces, its page states both, because a row count that has
 absorbed the undrawn tells a reader the picture is larger than it is.
+
+### One benchmark in two vintages, and a stem match is not a join
+
+Odenweller & Ueckerdt (2025) **is** the IEA's Hydrogen Projects Database of October 2023,
+quality-checked, keeping the IEA's own reference numbers. The register held it as a second
+benchmark for a week and that was wrong in a way that cost real work: two gap columns
+double-counted every absence, neither could corroborate the other, and reconciling them
+invited a **name-stem join** — which put a machine's guess into a class as a verdict.
+
+**The gap is measured against the current vintage alone.** The older one is read for
+**drift** — what left the list, what was renamed, what is new — and for nothing else. The
+dependency is recorded in `sources/benchmark_snapshots.json` under `relationship`.
+
+Drift earns its place immediately: **149 of the 255 European entries at or above 100 MW in
+the October 2023 vintage are absent from the current file**, against 131 added and 31
+renamed. A project that vanishes from a database is a project whose failure nobody counts,
+and `left` is the only place that shows.
+
+**Identifier match is the only accepted duplicate route.** An entry is a duplicate of a
+row when this register has written that entry's reference onto the row, and never because
+two names resemble each other. **Stem matching is retired as a class** and survives as a
+discovery aid: it proposes, a person reads, and what survives is recorded as a reference on
+the object — which is how the five H2V Marseille-Fos phase rows became part of
+`h2v-fos-marseille` rather than a class called "probably". The 31 renamed references are
+the other half of the argument: every one of them would have broken a name join, and the
+same edit that breaks a join silently invents one somewhere else.
+
+**An entry nobody can read is neither held nor duplicate.** Three phase-II rows — Uniper
+H2Maasvlakte, Holland Hydrogen 2, Sines refinery phase 3 — were matched to held rows by
+name alone, and in all three the company's own source refuses a declared reader. They are
+`company source unreadable`, queued in `sources/manual/wanted`, and **counted as unread**.
+Holland Hydrogen 2 in particular is discussed publicly as a separate later project, which
+would make it a gap the register had been explaining away.
+
+### When a publisher goes dark after a page was read, cite the capture
+
+A source read today may be unreadable tomorrow: uniper.energy closed overnight on 10
+September 2026, and ignis.es and orsted.com both closed within hours of being read on the
+same day. The gate catches it, because `check_links` runs on every push and a 403 fails the
+build.
+
+**The fallback is the Internet Archive, and it has three parts.**
+
+1. **Cite the capture**, not the live URL, as the row's `url`, with `archived: true`.
+2. **The source `date` is the capture timestamp**, at day precision — not the day the live
+   page was read. The capture is the document that exists; the reading is gone. Where the
+   publisher dated the page itself, that date still wins, as it always did.
+3. **File the copy** under `sources/manual/` with a manifest entry naming the capture and
+   why it was needed, and keep the live URL in the note so a reader can try it.
+
+Applied to `ignis-armonia-green-galicia` (capture of 16 April 2026) and
+`orsted-skovgaard-idomlund` (capture of 2 October 2023). The second capture carries a
+sentence the live page had when it was read and which settled a duplicate question — "the
+facility's electrolysis capacity will be able to increase to more than 3 GW" — which is the
+argument for the rule in one line: **the archive holds what the publisher has stopped
+saying.**
+
+### A recorded sweep runs against a dated extract, not a public endpoint
+
+A coordinate sweep is evidence, and evidence has to be repeatable. A public Overpass
+endpoint is not: `overpass.kumi.systems` answered a small query in 39 seconds and then
+returned 504 for an hour on 10 September 2026, and eight of ten sample sweeps were lost to
+it.
+
+**So sweeps run against a Geofabrik extract, read locally**, and the extract's date is part
+of the answer. `sources/osm/sweep.py` refuses a file whose Geofabrik date it cannot read
+from the filename, because a sweep that cannot say which day's basemap it read cannot be
+checked.
+
+**On overpass-api.de, and a correction.** This register recorded that endpoint as "Apache
+rejecting the User-Agent". That is wrong and the test says so: `/api/interpreter` answers
+406 to every encoding tried (query in path, `--data-urlencode`, POST form), with and
+without an explicit `Accept` header, and **identically to a plain `Mozilla/5.0`** — so it is
+not the honest User-Agent. `/api/status` answers that same client normally and reports
+slots available, so neither the client nor the network is blocked. It is a rule on that one
+path. The corrected reading: **overpass-api.de refuses this client's requests to the
+interpreter path at the web-server layer, for a reason it does not state.**
