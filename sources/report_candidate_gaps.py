@@ -207,25 +207,65 @@ def coverage(projects: dict[str, dict]) -> None:
     So both are stated, always, and the gap between them is the drawing backlog rather
     than a defect in the data.
     """
-    by = {}
+    by: dict[str, list] = {}
     for row in projects.values():
         sector = row.get("sector") or "?"
-        drawn, undrawn = by.setdefault(sector, [0, 0])
-        if row.get("located") == "yes":
-            by[sector] = [drawn + 1, undrawn]
-        else:
-            by[sector] = [drawn, undrawn + 1]
+        e = by.setdefault(sector, [0, 0, {}, {}])
+        drawn = row.get("located") == "yes"
+        e[0 if drawn else 1] += 1
+        v, unit = row.get("capacity_value"), row.get("capacity_unit")
+        if v not in (None, "") and unit:
+            pot = e[2] if drawn else e[3]
+            pot[unit] = pot.get(unit, 0) + v
+
+    def cap(pot: dict) -> str:
+        # SUMMED PER UNIT AND NEVER ACROSS UNITS. Three units measure one electrolyser
+        # here and the register does not convert between them.
+        return "; ".join(f"{v:,.0f} {u}" for u, v in sorted(pot.items())) or "-"
+
     print("\nreport_candidate_gaps: coverage — rows drawn against rows admitted undrawn")
-    print(f"  {'sector':10} {'drawn':>7} {'undrawn':>9} {'rows':>7}")
+    print(f"  {'sector':10} {'drawn':>7} {'undrawn':>9} {'rows':>7}   "
+          f"{'capacity drawn':>28}   capacity admitted undrawn")
     for sector in sorted(by):
-        d, u = by[sector]
-        print(f"  {sector:10} {d:>7} {u:>9} {d + u:>7}")
+        d, u, cd, cu = by[sector]
+        print(f"  {sector:10} {d:>7} {u:>9} {d + u:>7}   {cap(cd):>28}   {cap(cu)}")
     d = sum(v[0] for v in by.values())
     u = sum(v[1] for v in by.values())
     print(f"  {'all':10} {d:>7} {u:>9} {d + u:>7}")
     print("  A row admitted undrawn is on file and on no map. The two numbers are stated "
           "side by\n  side because the first has been read as the second, and since "
-          "position stopped being\n  an admission leg it cannot be.")
+          "position stopped being\n  an admission leg it cannot be. THE CAPACITIES ARE "
+          "NOT ADDED EITHER: megawatts on a\n  row nobody has placed are not sited "
+          "capacity, and a single total beside a map showing\n  eleven marks would invite "
+          "exactly the reading the standfirst rule exists to prevent.")
+
+
+def dropped_from_benchmark(projects: dict[str, dict]) -> None:
+    """Rows whose benchmark entry left the list between vintages — RULE 17'S QUEUE.
+
+    A project that vanishes from a database is a project whose failure nobody counts, so
+    the register goes and looks. WHAT IT LOOKS AT IS WHETHER THE OWNER'S SOURCE STILL
+    STANDS — not whether the project stopped. The benchmark's silence is evidence about
+    the benchmark.
+
+    `dropped_from_benchmark` is a ROW COVARIATE. It is never a rung, never a status, and
+    no status_history event is written from it. Printed here as a queue so the look is
+    somebody's task rather than somebody's memory.
+    """
+    queue = [(pid, r) for pid, r in sorted(projects.items())
+             if r.get("dropped_from_benchmark")]
+    if not queue:
+        return
+    n = sum(len(r["dropped_from_benchmark"]["entries"]) for _, r in queue)
+    print(f"\nreport_candidate_gaps: dropped from the benchmark between vintages — "
+          f"{len(queue)} row(s), {n} entr(ies).\n  RULE 17'S QUEUE: each is to be looked at "
+          f"for whether the OWNER'S source still stands. The benchmark's\n  silence is "
+          f"evidence about the benchmark. Not worked here.")
+    for pid, r in queue:
+        d = r["dropped_from_benchmark"]
+        print(f"  {pid:34} {d['present_in']} -> absent")
+        for e in d["entries"]:
+            print(f"      ref {e['ref']:>5}  last status {e['last_status']:<18} {e['name'][:52]}")
 
 
 def main() -> int:
@@ -240,6 +280,7 @@ def main() -> int:
     capacity_queue()
     schedule_queue()
     coverage(projects)
+    dropped_from_benchmark(projects)
     return 0
 
 

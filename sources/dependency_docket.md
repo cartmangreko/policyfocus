@@ -486,9 +486,24 @@ timestamp is not the source date. It is a field of its own, `captured_at`, on
 edges and on capacity entries alike; `date` keeps the release's own dateline,
 because that is what the sweep period is measured against and a 2020 release
 captured in 2024 would otherwise leave the period. **A document with no dateline
-takes `date = captured_at`, and `date_precision` says `capture_upper_bound`** —
-the release exists at or before that date and this file will not say how much
-before. The hydrogen-gap session aligns to the same shape.
+takes `date = captured_at`, and `date_precision` says `not_after`** — the release
+exists at or before that date and this file will not say how much before.
+
+**THE PRECISION VALUE IS THE REGISTER'S, NOT THIS SWEEP'S.** This file had coined
+`capture_upper_bound` for the idea a few hours before #55 landed the register's
+own version of the rule on main — `sources/scope.md`, "When a publisher goes dark
+after a page was read", whose three clauses are the three clauses above and whose
+value for the upper bound is `not_after`. Converted on the merge of 11 September
+2026: two names for one concept in one repository is one name too many, and the
+register's is the one other gates read. No rule text was touched.
+
+One place the sweep's use is WIDER than the register's rule, and it is flagged
+rather than hidden. main's clause ties `captured_at` to an Internet Archive
+capture; this sweep also uses it for its own fetch of a live page that carries no
+dateline, which is the same fact about a different copy. **`archived` says which**
+— true on the eleven archive captures, false on the one live fetch, null where
+there is no copy date at all — so the two never look alike. The hydrogen-gap
+session aligns to the same shape.
 
 `captured_at` is DERIVED, never typed: from the Internet Archive URL where there
 is one, and from this sweep's own `fetched_at` in the cache index where the copy

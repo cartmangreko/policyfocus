@@ -339,15 +339,27 @@ def main() -> int:
           f"{len(rows)} projects, {len(events)} events.",
           ""]
 
-    md += ["## Projects and capacity", ""]
+    # CAPACITY IS SUMMED OVER DRAWN ROWS AND OVER UNDRAWN ROWS SEPARATELY, and never
+    # into one number. Since position stopped being an admission leg a sector can hold
+    # far more capacity than it can draw — hydrogen is 66 rows and 11 of them placed —
+    # and a single "capacity total" beside a map showing eleven marks invites exactly
+    # the reading the standfirst rule exists to prevent: that the picture is the
+    # register. The two columns cannot be added by a reader who has not noticed, which
+    # is the point.
+    md += ["## Projects and capacity", "",
+           "Capacity is summed over DRAWN rows and over UNDRAWN rows separately. A row "
+           "admitted with `located: \"no\"` is on file and on no map, and its megawatts "
+           "are not sited capacity.", ""]
     body = []
     for s in sectors:
         rs = [r for r in rows if r.get("sector") == s]
         filled = [r for r in rs if r.get("capacity_value") not in (None, "")]
+        drawn = [r for r in filled if r.get("located") == "yes"]
+        undrawn = [r for r in filled if r.get("located") != "yes"]
         body.append([s, len(rs), len(filled), len(rs) - len(filled),
-                     by_unit(filled) or "-"])
+                     by_unit(drawn) or "-", by_unit(undrawn) or "-"])
     md += [table(["sector", "projects", "capacity filled", "capacity empty",
-                  "capacity total"], body)]
+                  "capacity drawn", "capacity admitted undrawn"], body)]
 
     md += ["", "## Events by kind", ""]
     kinds = list(sm.PROJECT_EVENT_KINDS)

@@ -110,6 +110,14 @@ BASES = ["nameplate", "backlog", "delivery_commitment"]
 #              the document itself says is subject to something
 FIRMNESS = ["contract", "framework", "intent"]
 
+# THE SAME VALUES THE REGISTER USES, IMPORTED RATHER THAN RE-COINED. `not_after` is
+# sector_map.SOURCE_DATE_PRECISIONS's value for "the document carries no dateline
+# and this is the latest it can be", landed on main by #55 and written up in
+# sources/scope.md. This sweep had coined `capture_upper_bound` for the same idea
+# hours earlier; the merge took main's name, because two names for one concept is
+# one too many and the register's name is the one other gates read.
+DATE_PRECISIONS = ["day", "month", "year", "not_after"]
+
 # Europe as the register already draws it (sources/batteries_docket.md, the
 # perimeter prose): the 27, plus the UK, Norway, Switzerland, the Western Balkans
 # and Ukraine. Türkiye is outside. Used only to label an unmatched customer.

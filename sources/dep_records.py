@@ -130,8 +130,14 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
         # dateline of its own is dated by the copy on file, and that date is an
         # UPPER BOUND -- the release exists at or before it and the file will not
         # say how much before.
+        #
+        # `not_after` IS MAIN'S VALUE AND THIS FILE TOOK IT. The sweep had coined
+        # `capture_upper_bound` for the same idea a few hours before #55 landed
+        # the register's version of the rule (sources/scope.md, "When a publisher
+        # goes dark after a page was read"), and two names for one concept in one
+        # repository is one name too many. Converted on the merge.
         captured = captured or fetched_date(url)
-        date, date_precision = captured or date, "capture_upper_bound"
+        date, date_precision = captured or date, "not_after"
 
     e = {"id": f"e{len(EDGES) + 1:04d}",
          "project_id": pid,
@@ -149,6 +155,12 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
          "date": date,
          "date_precision": date_precision,
          "captured_at": captured,
+         # WHOSE COPY IT IS. main's rule ties `captured_at` to an Internet Archive
+         # capture and nothing else; this sweep also uses it for its own fetch of
+         # a live page that carries no dateline, which is the same fact about a
+         # different copy. `archived` says which, rather than letting the two look
+         # alike -- and it is null where there is no copy date at all.
+         "archived": None if captured is None else bool(capture_date(url)),
          "verdict": None,
          "match_basis": basis,
          # THE SUPPLIER'S CUSTOMER THAT THIS REGISTER DOES NOT HOLD. A named site
@@ -253,6 +265,7 @@ def add_capacity(node_id: str, value: float, unit: str, basis: str, speaker: str
          "available_from": available_from, "speaker": speaker,
          "source_type": source_type, "url": url, "date": date,
          "date_precision": date_precision, "captured_at": capture_date(url),
+         "archived": True if capture_date(url) else None,
          "note": note})
 
 
@@ -343,9 +356,9 @@ def check() -> list[str]:
             bad.append(f"{w}: speaker {e['speaker']!r} is not in the vocabulary")
         if e["source_type"] not in S.SOURCE_TYPES:
             bad.append(f"{w}: source_type {e['source_type']!r} is not in the vocabulary")
-        if e["date_precision"] not in ("day", "month", "year", "capture_upper_bound"):
+        if e["date_precision"] not in S.DATE_PRECISIONS:
             bad.append(f"{w}: date_precision {e['date_precision']!r}")
-        if e["date_precision"] == "capture_upper_bound" and e["date"] != e["captured_at"]:
+        if e["date_precision"] == "not_after" and e["date"] != e["captured_at"]:
             bad.append(f"{w}: dated as an upper bound but date {e['date']} is not "
                        f"captured_at {e['captured_at']}")
         if e["firmness"] not in S.FIRMNESS:
@@ -550,7 +563,8 @@ EDGES_COMMENT = [
     "is what the sweep period is measured against; `captured_at` is when the copy on",
     "file was taken, derived from the Internet Archive URL or from this sweep's own",
     "fetch. Where a document has no dateline at all, and only there, the two are the",
-    "same and `date_precision` says `capture_upper_bound`: the release exists at or",
+    "same and `date_precision` says `not_after` -- the register's own value, from",
+    "sources/scope.md: the release exists at or",
     "before that date and this file will not say how much before -- DECISION D-7.",
     "",
     "`outside_perimeter` is a named site that resolves to no admitted row. It is demand",

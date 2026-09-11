@@ -1,137 +1,331 @@
 {
  "_comment": [
-  "WHAT THE BASEMAP HAS FOR TEN OF THE FORTY-FOUR — AND IT IS TWO OF TEN, NOT TEN.",
+  "WHAT THE BASEMAP HAS FOR TEN OF THE FORTY-FOUR. Complete, 11 September 2026.",
   "",
-  "THE SAMPLE IS INCOMPLETE AND THAT IS ON THE RECORD RATHER THAN IN SOMEBODY'S HEAD.",
-  "Eight of the ten could not be measured on 10 September 2026: overpass.kumi.systems",
-  "answered 504 or timed out on read across three attempts and two query shapes, having",
-  "answered a small test query in 39 seconds the same hour. overpass-api.de answers 406",
-  "to the declared reader, so there is no second endpoint. A failure you observe is",
-  "blocking (scope.md), and the eight are recorded as attempted-and-blocked rather than",
-  "quietly dropped.",
+  "ONE HIT IN TEN. Only Hynovi's host works — 'cimenterie Vicat' — is drawn and named, and",
+  "it qualifies under the rule that a site may be placed on the works it stands on. The",
+  "other nine have plenty drawn nearby and none of it is the plant: substations, scrap",
+  "yards, bus depots, street cabinets labelled Substation, and between 2 and 195 unnamed",
+  "industrial parcels each. THE BASEMAP IS NOT EMPTY AT THESE PLACES; IT IS FULL OF THE",
+  "WRONG THINGS.",
   "",
-  "NO RULE ON ESTATES FOLLOWS FROM THIS. George's condition was a report before a rule,",
-  "and two measurements are not the report. What the two do show is the shape of the",
-  "problem: at Wilhelmshaven and at Wittenberg the basemap has plenty of named",
-  "industry and none of it is the hydrogen plant, and the named things that ARE there",
-  "are mostly estates and ports — the class the Subotica and Mo i Rana rule refuses.",
+  "THE SWEEP INHERITS THE BENCHMARK'S ERROR, and that is the second finding. The radius is",
+  "centred on the benchmark's coordinate because that is the only hint available before a",
+  "position exists — and at Eemshaven and Falkenhagen that coordinate is 25 km and 150 km",
+  "from where the owner says the plant is. Two of the ten sweeps looked in the wrong place",
+  "and could only ever have returned nothing. A sweep should be centred on the OWNER'S",
+  "named place wherever the owner names one, which is a change to how the remaining",
+  "thirty-four are run.",
   "",
-  "THE BENCHMARK COORDINATE IS THE SEARCH HINT AND NEVER AN ANSWER. It says where to",
-  "look. What an answer contains is what OpenStreetMap has drawn near there, with its",
-  "own name and tags."
+  "MACHINE BUCKET AND HAND VERDICT ARE BOTH RECORDED AND THEY DISAGREE. `machine_bucket` is",
+  "what the tool's tag test proposed; `hand_verdict` is what a person concluded after",
+  "reading the names. Nine of ten came back `works` from the machine and one from the",
+  "person. A bucket is a discovery aid; it is not a finding.",
+  "",
+  "RUN LOCALLY AGAINST DATED GEOFABRIK EXTRACTS, NOT A PUBLIC ENDPOINT. The first attempt",
+  "lost eight of ten to Overpass timeouts. These ten are repeatable: the extract name, its",
+  "date and its SHA-256 are below, and sources/osm/sweep.py refuses a file whose date it",
+  "cannot read."
  ],
- "sampled": "2026-09-10",
- "endpoint": "https://overpass.kumi.systems/api/interpreter",
- "measured": 2,
- "blocked": 8,
+ "sampled": "2026-09-11",
+ "method": "sources/osm/sweep.py against Geofabrik extracts read locally",
+ "extracts": {
+  "groningen-260910.osm.pbf": {
+   "bytes": 56512601,
+   "sha256": "f2a347f16757b6f24d5c57a277fe43a369dcf0dc28dd4a779b9068eeb74a0cc4",
+   "basemap_date": "2026-09-10",
+   "source": "https://download.geofabrik.de/"
+  },
+  "zuid-holland-260910.osm.pbf": {
+   "bytes": 211054059,
+   "sha256": "20e40e0b6e74d0c33dee0666923d1fcdb2f961f9a047b557fe293bb52fa59d5a",
+   "basemap_date": "2026-09-10",
+   "source": "https://download.geofabrik.de/"
+  },
+  "brandenburg-260910.osm.pbf": {
+   "bytes": 299644654,
+   "sha256": "168cb90d222ab5a4f3429ba794245710a2cbc39f9b4d10de5b02322ce3f38776",
+   "basemap_date": "2026-09-10",
+   "source": "https://download.geofabrik.de/"
+  },
+  "mecklenburg-vorpommern-260910.osm.pbf": {
+   "bytes": 127841668,
+   "sha256": "f10602e5714fd5ae6627f12243d982336a8f03107d266471e43d708304bc18ee",
+   "basemap_date": "2026-09-10",
+   "source": "https://download.geofabrik.de/"
+  },
+  "niedersachsen-260910.osm.pbf": {
+   "bytes": 504682810,
+   "sha256": "1a45cb640e75551ac6b145886eaf898648b0f3389e0cbcb46f5cb92f3888e00a",
+   "basemap_date": "2026-09-10",
+   "source": "https://download.geofabrik.de/"
+  },
+  "sachsen-anhalt-260910.osm.pbf": {
+   "bytes": 174319834,
+   "sha256": "90d28cd80a70bd5e698754757d2affea508bff6dcd34b85acfb8995b912060cf",
+   "basemap_date": "2026-09-10",
+   "source": "https://download.geofabrik.de/"
+  },
+  "wales-260910.osm.pbf": {
+   "bytes": 147251370,
+   "sha256": "69f5a6bd38f7f4208b0ffb983c0965a599d2aa52ec5cba2e920a024dcbfe4755",
+   "basemap_date": "2026-09-10",
+   "source": "https://download.geofabrik.de/"
+  },
+  "rhone-alpes-260910.osm.pbf": {
+   "bytes": 528522928,
+   "sha256": "20ef7dffb660071cbc0c042d2cbbc3045f7904179eaa1d96527f1b46061c6d39",
+   "basemap_date": "2026-09-10",
+   "source": "https://download.geofabrik.de/"
+  },
+  "finland-260910.osm.pbf": {
+   "bytes": 765653567,
+   "sha256": "67b70bedc1b606f9ac960589f0c7d972dc73fe2b249ccc077a29a5f07cc0881b",
+   "basemap_date": "2026-09-10",
+   "source": "https://download.geofabrik.de/"
+  },
+  "spain-260910.osm.pbf": {
+   "bytes": 1480339886,
+   "sha256": "33d4b46d586174b1ec71382a4cc60a47ccaefc5512bfb9cb4b2b499042d2dd4b",
+   "basemap_date": "2026-09-10",
+   "source": "https://download.geofabrik.de/"
+  }
+ },
+ "hits": 1,
  "results": [
   {
    "id": "engie-hynetherlands-eemshaven",
-   "status": "endpoint unavailable",
-   "attempts": 3,
-   "verdict": null,
-   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+   "ref": "595",
+   "hand_verdict": "nothing that is the works",
+   "hand_note": "The only named feature inside 5 km is a solar park. AND THE SWEEP WAS AIMED WRONG: the hint is the benchmark's coordinate at Pieterburen, 25 km from the Eems power plant site the owner names. This is a site disagreement reaching into the basemap work.",
+   "machine_bucket": "works",
+   "extract": "groningen-260910.osm.pbf",
+   "basemap_date": "2026-09-10",
+   "radius_m": 5000,
+   "seconds": 32.8,
+   "named_works": [
+    "Zonnepark [industrial]"
+   ],
+   "named_estates": [],
+   "unnamed_industrial_parcels": 23
   },
   {
-   "id": "vicat-hynovi-montalieu",
-   "status": "endpoint unavailable",
-   "attempts": 3,
-   "verdict": null,
-   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+   "id": "eneco-diamond-hydrogen-europoort",
+   "ref": "2599",
+   "hand_verdict": "nothing that is the works",
+   "hand_note": "Five substations, a flow-measurement institute and 195 unnamed industrial parcels. The Enecogen power station the owner names as the neighbour is not among the named features returned, so not even the host works can be reached from here.",
+   "machine_bucket": "works",
+   "extract": "zuid-holland-260910.osm.pbf",
+   "basemap_date": "2026-09-10",
+   "radius_m": 5000,
+   "seconds": 131.2,
+   "named_works": [
+    "(VSL) European Center for Flow Measurement [industrial]",
+    "150 kV Dintelhaven [substation]",
+    "150 kV Maasvlakte [substation]",
+    "25 kV Euromax [substation]",
+    "25 kV GATE [substation]",
+    "25 kV LNG [substation]",
+    "25 kV MOTE [substation]",
+    "25 kV ONE [substation]",
+    "380 kV Amaliahaven [industrial]",
+    "380 kV Enecogen [substation]",
+    "380 kV Hollandse Kust Zuid Landstation [industrial]",
+    "380 kV Maasvlakte Onyx [substation]"
+   ],
+   "named_estates": [],
+   "unnamed_industrial_parcels": 195
   },
   {
-   "id": "rwe-pembroke-green-hydrogen",
-   "status": "endpoint unavailable",
-   "attempts": 3,
-   "verdict": null,
-   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+   "id": "enertrag-prignitz-falkenhagen",
+   "ref": "2499",
+   "hand_verdict": "nothing that is the works",
+   "hand_note": "The Drushba pipeline and a row of storage tanks at Schwedt. AIMED WRONG for the same reason as Eemshaven: the benchmark's coordinate is Schwedt/Oder and ENERTRAG's own release puts the plant at the Gewerbepark Prignitz-Falkenhagen, 150 km west.",
+   "machine_bucket": "works",
+   "extract": "brandenburg-260910.osm.pbf",
+   "basemap_date": "2026-09-10",
+   "radius_m": 4000,
+   "seconds": 173.6,
+   "named_works": [
+    "Drushba [industrial]",
+    "Ff Vierraden [plant]",
+    "H11 [storage_tank]",
+    "H12 [storage_tank]",
+    "H13 [storage_tank]",
+    "H21 [storage_tank]",
+    "H22 [storage_tank]",
+    "H23 [storage_tank]",
+    "H31 [storage_tank]",
+    "H32 [storage_tank]",
+    "H41 [storage_tank]",
+    "H42 [storage_tank]"
+   ],
+   "named_estates": [],
+   "unnamed_industrial_parcels": 28
+  },
+  {
+   "id": "lhyfe-lubmin",
+   "ref": "3125",
+   "hand_verdict": "nothing that is the works",
+   "hand_note": "One named feature in 3 km, the port at Vierow, and two unnamed parcels. The decommissioned nuclear station site the owner names is not drawn as anything named.",
+   "machine_bucket": "estate",
+   "extract": "mecklenburg-vorpommern-260910.osm.pbf",
+   "basemap_date": "2026-09-10",
+   "radius_m": 3000,
+   "seconds": 70.4,
+   "named_works": [],
+   "named_estates": [
+    "Hafen Vierow [industrial]"
+   ],
+   "unnamed_industrial_parcels": 2
   },
   {
    "id": "volth2-wilhelmshaven",
    "ref": "1973",
+   "hand_verdict": "nothing that is the works",
+   "hand_note": "A scrap metal yard, an industrial service company and a long list of street substations, plus 65 unnamed parcels. NPorts' four hectares are not named.",
+   "machine_bucket": "works",
+   "extract": "niedersachsen-260910.osm.pbf",
+   "basemap_date": "2026-09-10",
    "radius_m": 5000,
-   "verdict": "works",
-   "features": 150,
-   "named": 69,
-   "works": [
-    "NWM Nordwestdeutsche Mischwerke Wilhelmshaven",
-    "Nord-West Oelleitung GmbH",
-    "Nord-West Kavernen Gesellschaft",
-    "Engie SA Steinkohlekraftwerk Wilhelmshaven"
+   "seconds": 491.0,
+   "named_works": [
+    "AFG - Industrie-Service [industrial]",
+    "ALBA Metall Nord GmbH Betriebsstätte Wilhelmshaven [industrial]",
+    "Accumer Straße/Schaarreihe [substation]",
+    "Achtern Diek [substation]",
+    "Bahnhofstraße/Metzer Weg [substation]",
+    "Banter Weg [substation]",
+    "Banter Weg/Alter Banter Weg [substation]",
+    "Bauhof WSA [industrial]",
+    "Bauhof des Wasserstraßen- und Schifffahrtsamt Weser-Jade-Nordsee [industrial]",
+    "Bismarkstraße/Schaarreihe [substation]",
+    "Bordumplatz [substation]",
+    "Bremer Straße/Banter Weg [substation]"
    ],
-   "estates": [
-    "NWM Nordwestdeutsche Mischwerke Wilhelmshaven",
-    "Nord-West Oelleitung GmbH",
-    "Uniper Kraftwerk Wilhelmshaven",
-    "Nord-West Kavernen Gesellschaft",
-    "Jade-Dienst GmbH",
-    "GEW Lager Ladestraße"
-   ],
-   "unnamed": 81,
-   "attempts": 1,
-   "status": "measured"
-  },
-  {
-   "id": "plugpower-kokkola",
-   "status": "endpoint unavailable",
-   "attempts": 3,
-   "verdict": null,
-   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
-  },
-  {
-   "id": "edp-green-h2-los-barrios",
-   "status": "endpoint unavailable",
-   "attempts": 3,
-   "verdict": null,
-   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
-  },
-  {
-   "id": "enertrag-prignitz-falkenhagen",
-   "status": "endpoint unavailable",
-   "attempts": 3,
-   "verdict": null,
-   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
-  },
-  {
-   "id": "eneco-diamond-hydrogen-europoort",
-   "status": "endpoint unavailable",
-   "attempts": 3,
-   "verdict": null,
-   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
-  },
-  {
-   "id": "lhyfe-lubmin",
-   "status": "endpoint unavailable",
-   "attempts": 3,
-   "verdict": null,
-   "note": "overpass.kumi.systems answered 504 Gateway Timeout or timed out on read, three attempts across two query shapes on 10 September 2026. overpass-api.de answers 406 to the declared reader and is not a fallback."
+   "named_estates": [],
+   "unnamed_industrial_parcels": 65
   },
   {
    "id": "vng-hycc-greenroot-wittenberg",
    "ref": "3266",
+   "hand_verdict": "nothing that is the works",
+   "hand_note": "A pumping station, a boatbuilder, a vehicle works and the harbour. The former waterworks VNG names is not drawn under that or any name.",
+   "machine_bucket": "works",
+   "extract": "sachsen-anhalt-260910.osm.pbf",
+   "basemap_date": "2026-09-10",
    "radius_m": 4000,
-   "verdict": "works",
-   "features": 98,
-   "named": 25,
-   "works": [
-    "Spezialboot Wittenberg",
-    "EInfahrt ACP-Süd",
-    "a Pumpenfabrik GmbH Metallverarbeitungsunternehmen",
-    "Frigosped Internationale Spedition",
-    "Homa Pumpenfabrik GmbH Metallverarbeitungsunternehmen",
-    "Homa Pumpenfabrik GmbH Metallverarbeitungsunternehmen"
+   "seconds": 99.9,
+   "named_works": [
+    "A.T.U [industrial]",
+    "Abwasserpumpwerk Elbtor [pumping_station]",
+    "Baumaschinenverleih [industrial]",
+    "EInfahrt ACP-Süd [works]",
+    "Feldbinder Spezialfahrzeugwerke [industrial]",
+    "Fenger Beton und Kies GmbH & Co.KG [industrial]",
+    "Frigosped Internationale Spedition [industrial]",
+    "Gesundheitszentrum [substation]",
+    "Homa Pumpenfabrik GmbH Metallverarbeitungsunternehmen [works]",
+    "Loetec Elektronische Fertigungssysteme [industrial]",
+    "Mercedes-Benz [industrial]",
+    "OBI [industrial]"
    ],
-   "estates": [
-    "Feldbinder Spezialfahrzeugwerke",
-    "Hafen",
-    "Wikana Keks und Nahrungsmittel GmbH",
-    "Frigosped Internationale Spedition",
-    "Fenger Beton und Kies GmbH & Co.KG",
-    "Stadtwerke Lutherstadt Wittenberg Heizkraftwerk BHKW"
+   "named_estates": [
+    "Hafen [industrial]"
    ],
-   "unnamed": 73,
-   "attempts": 1,
-   "status": "measured"
+   "unnamed_industrial_parcels": 85
+  },
+  {
+   "id": "rwe-pembroke-green-hydrogen",
+   "ref": "1493",
+   "hand_verdict": "nothing that is the works",
+   "hand_note": "Eleven named features, of which nine are street cabinets carrying the word Substation, plus the Dragon LNG terminal. Pembroke Power Station — the works RWE's land sits west of — is not among them.",
+   "machine_bucket": "works",
+   "extract": "wales-260910.osm.pbf",
+   "basemap_date": "2026-09-10",
+   "radius_m": 3000,
+   "seconds": 90.4,
+   "named_works": [
+    "Admiralty Pembroke Dock Substation [street_cabinet]",
+    "Bethany Corner Pembroke Substation [street_cabinet]",
+    "Charlton Place Substation [street_cabinet]",
+    "Coventry Climax Substation [street_cabinet]",
+    "Cross Park Substation [street_cabinet]",
+    "Dockyard Flats Substation [street_cabinet]",
+    "Dragon LNG Terminal [industrial]",
+    "East Hangar Substation [street_cabinet]",
+    "Edgar Morgan Way Pembroke Dock Substation [street_cabinet]",
+    "Ferry Rd Pennar Substation [street_cabinet]",
+    "Golf Club Pembroke Dock Substation [street_cabinet]",
+    "Hoplass Solar Farm Pv Gen [substation]"
+   ],
+   "named_estates": [
+    "Port Services Substation [street_cabinet]"
+   ],
+   "unnamed_industrial_parcels": 11
+  },
+  {
+   "id": "vicat-hynovi-montalieu",
+   "ref": "1351",
+   "hand_verdict": "the host works is drawn and named",
+   "hand_note": "'cimenterie Vicat' is there, tagged landuse=industrial. Vicat's own release puts the 330 MW electrolyser at 'the cement plant in Montalieu-Vercieu', and the host-works rule already admits a site placed on the works it stands on. THE ONE HIT IN TEN, and the reason the bucket rule had to be corrected: the first version sent every landuse=industrial feature to `estate` and buried it.",
+   "machine_bucket": "works",
+   "extract": "rhone-alpes-260910.osm.pbf",
+   "basemap_date": "2026-09-10",
+   "radius_m": 2500,
+   "seconds": 295.7,
+   "named_works": [
+    "Poste EDF de Montalieu [substation]",
+    "Savoye Et Cie - Usine a Vélo [industrial]",
+    "Zone d'activités de Bouvesse [industrial]",
+    "cimenterie Vicat [industrial]"
+   ],
+   "named_estates": [],
+   "unnamed_industrial_parcels": 3
+  },
+  {
+   "id": "plugpower-kokkola",
+   "ref": "2015",
+   "hand_verdict": "nothing that is the works",
+   "hand_note": "Twelve named companies in the Kokkola industrial park and 63 unnamed parcels. Plug Power's plant is not among them; the park is, which is the estate the perimeter refuses.",
+   "machine_bucket": "works",
+   "extract": "finland-260910.osm.pbf",
+   "basemap_date": "2026-09-10",
+   "radius_m": 4000,
+   "seconds": 477.1,
+   "named_works": [
+    "AP-Tela Oy [industrial]",
+    "Akvaterm [works]",
+    "Alfa-Bag [works]",
+    "Apex Automation [industrial]",
+    "Bang & Bonsomer [industrial]",
+    "Boliden Kokkola [works]",
+    "Botnia Print [industrial]",
+    "Hyötykäyttöasema [industrial]",
+    "Häggblom [works]",
+    "Kokkolan Energia [industrial]",
+    "Kokkolan vaunupalvelu [works]",
+    "Laser Coating Centre [industrial]"
+   ],
+   "named_estates": [],
+   "unnamed_industrial_parcels": 63
+  },
+  {
+   "id": "edp-green-h2-los-barrios",
+   "ref": "2214",
+   "hand_verdict": "nothing that is the works",
+   "hand_note": "A bus depot and a substation, three unnamed parcels. The Los Barrios coal-fired station whose site EDP is reusing is not drawn under a name.",
+   "machine_bucket": "works",
+   "extract": "spain-260910.osm.pbf",
+   "basemap_date": "2026-09-10",
+   "radius_m": 3000,
+   "seconds": 1460.2,
+   "named_works": [
+    "Apeadero de Autobuses de Los Barrios [industrial]",
+    "Subestación Fresno [substation]"
+   ],
+   "named_estates": [],
+   "unnamed_industrial_parcels": 3
   }
  ]
 }

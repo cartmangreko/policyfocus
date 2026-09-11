@@ -151,7 +151,7 @@ A verdict here attaches a supplier to an admitted row, or refuses to. `match_bas
   - Midrex Technologies, Inc. → thyssenkrupp Steel Europe AG — 2.5e+06 tonnes DRI per year
   - source: https://www.midrex.com/press-releases/thyssenkrupp-steel-selects-midrex-flex-for-immediate-co2-emissions-reduction/
   - cited for firmness: “thyssenkrupp Steel Selects MIDREX Flex™ for Immediate CO2 Emissions Reduction March 2023 Share”
-- **e0194**  `contract`  2026-09-11 (capture_upper_bound)  speaker: supplier  verdict: **null**
+- **e0194**  `contract`  2026-09-11 (not_after)  speaker: supplier  verdict: **null**
   - Midrex Technologies, Inc. → thyssenkrupp Steel Europe AG — 2.5e+06 tonnes DRI per year
   - source: https://www.midrex.com/news/thyssenkrupp-steel-receives-construction-approval-for-hydrogen-ready-dri-smelter-project/
   - copy on file captured 2026-09-11
