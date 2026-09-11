@@ -1452,3 +1452,430 @@ E("mcphy", "Siemens Energy (for the CEOG project)", "framework_agreement", "supp
        "— as the manufacturer and operator. The plant is in French Guiana, which is an "
        "EU outermost region and is not in this sweep's Europe, so no country is "
        "recorded and no unmatched customer is created.")
+
+# --- Primetals Technologies ---------------------------------------------------
+# 327 news items whose slug names DRI, direct reduction, hydrogen, green, steel or
+# a European steelmaker were fetched from the en sitemap and read; 59 of those name
+# a European customer or country.
+#
+# MOST OF THEM ARE NOT EDGES, AND THAT IS THE PRODUCT RULE (DECISION D-4 extended
+# here — DECISION D-8). Primetals is on this perimeter as dri_plant. Its European
+# order book in this period is overwhelmingly conventional millwork: converters,
+# casters, cold mills, drive systems, dedusting, gas cleaning, automation upgrades
+# at voestalpine, thyssenkrupp, Salzgitter, ArcelorMittal, Liberty, Marcegaglia,
+# Aperam and Tata. Every one of those is a real order from a European steelmaker
+# and none is a direct reduction plant. What is recorded is the ironmaking route:
+# direct reduction, smelters, and the electric arc furnaces that replace a blast
+# furnace as part of a stated green-steel programme. The boundary is arguable — an
+# EAF is not a DRI plant — and it is drawn where the OWNER's own release says the
+# furnace is part of the hydrogen transition.
+T_ = "https://www.primetals.com/en/news/"
+
+E("primetals", "voestalpine", "equipment_order", "supplier", "supplier_press",
+  T_ + "hyfor-pilot-plant-under-operation-the-next-step-for-carbon-free-hydrogen-based-"
+       "direct-reduction-is-done/", "2021-06-24", quantity=None, country="AT",
+  sector="steel", site="Donawitz",
+  note="HYFOR hydrogen fine-ore reduction PILOT commissioned at voestalpine's Donawitz "
+       "site. A pilot, not a plant; no capacity stated.")
+E("primetals", "GravitHy", "framework_agreement", "supplier", "supplier_press",
+  T_ + "gravithy-imminent-market-leader-in-green-iron-and-steel-is-launched-today-by-"
+       "world-class-industrial-consortium/", "2022-06-30", quantity=None, country="FR",
+  sector="steel", note="Launch of the GravitHy consortium for DRI plus EAF in France. "
+                       "Primetals is a consortium member; no order, no site named here.")
+E("primetals", "Salzgitter", "equipment_order", "supplier", "supplier_press",
+  T_ + "salzgitter-places-large-order-with-primetals-technologies-for-electric-arc-"
+       "furnace-as-part-of-major-green-steel-transformation-program/", "2022-08-25",
+  quantity=(1900000, "tonnes steel per year"), country="DE", sector="steel",
+  site="Salzgitter SALCOS", project_id="salcos-salzgitter",
+  note="A 220-tonne EAF Ultimate, 1.9 Mt/yr, start-up end of 2025, stated by Primetals "
+       "as 'the first step' of SALCOS — which plans two direct reduction plants and "
+       "three electric furnaces by 2033. project_id set by hand for the same reason as "
+       "the Sunfire edge: the bare alias 'Salzgitter' is ambiguous with the PowerCo "
+       "battery row and an EAF inside a steelworks is not.")
+E("primetals", "voestalpine (with Fortescue and Mitsubishi Corporation)",
+  "framework_agreement", "supplier", "supplier_press",
+  T_ + "primetals-technologies-fortescue-and-voestalpine-to-jointly-evaluate-"
+       "groundbreaking-green-ironmaking-plant/", "2022-12-19", quantity=None,
+  country="AT", sector="steel",
+  note="MoU to evaluate a green ironmaking plant. No site and no capacity.")
+E("primetals", "Hydnum Steel", "framework_agreement", "supplier", "supplier_press",
+  T_ + "primetals-technologies-and-hydnum-steel-join-forces-for-new-green-steel-"
+       "production-plant-in-spain/", "2023-06-15", quantity=None, country="ES",
+  sector="steel", site="Puertollano",
+  note="MoU for a greenfield green steel plant at Puertollano, with Russula, ABEI "
+       "Energy and Siemens. Hydnum Steel is not a row in this register.")
+E("primetals", "voestalpine", "equipment_order", "supplier", "supplier_press",
+  T_ + "primetals-technologies-chosen-as-supplier-of-electric-arc-furnace-based-"
+       "steelmaking-plant-in-austria/", "2024-01-12", quantity=None, country="AT",
+  sector="steel", site="Linz",
+  note="A 180-tonne EAF Ultimate for Linz, start-up 2027, stated as a first step of "
+       "voestalpine's greentec steel programme — 'one electric arc furnace will be "
+       "built at each of voestalpine's sites, in Linz and Donawitz'. No tonnage given "
+       "for the furnace.")
+E("primetals", "Blastr Green Steel", "equipment_order", "supplier", "supplier_press",
+  T_ + "blastr-green-steel-chooses-primetals-technologies-as-"
+       "technological-partner-for-low-carbon-emissions-plant/", "2024-07-09",
+  quantity=(2500000, "tonnes steel per year"), country="FI", sector="steel",
+  site="Inkoo",
+  note="EAF-based meltshop with a 300-tonne EAF Ultimate for direct charging of hot "
+       "DRI. The DRI plant beside it is Midrex's — the two suppliers announced the "
+       "same project on the same day, and both edges are recorded.")
+E("primetals", "voestalpine (Hy4Smelt, with Rio Tinto and Mitsubishi Corporation)",
+  "equipment_order", "supplier", "supplier_press",
+  T_ + "construction-begins-on-hydrogen-based-ironmaking-plant-in-linz-austria/",
+  "2025-09-25", quantity=(3, "tonnes per hour"), country="AT", sector="steel",
+  site="Linz",
+  note="Hy4Smelt industrial-scale DEMONSTRATION plant combining HYFOR direct reduction "
+       "with a smelter; start-up end of 2027. THE UNIT IS TONNES PER HOUR, the only "
+       "one in this file, and it is not converted.")
+
+# --- Tenova S.p.A. ------------------------------------------------------------
+# 171 press and news items in the sitemap; 83 whose slug names DRI, hydrogen,
+# green, EAF or a European steelmaker were fetched and read. The same product rule
+# as Primetals (DECISION D-8) applies: reheating furnaces, rolling mills, digital
+# systems and heat-treatment orders to European steelmakers are read and not
+# recorded; direct reduction and the EAFs of a stated decarbonisation programme are.
+V = "https://tenova.com/newsroom/press-releases/"
+
+E("tenova", "Salzgitter Flachstahl GmbH", "equipment_order", "supplier",
+  "supplier_press", V + "tenova-received-order-dri-plant-salzgitter-flachstahl-germany",
+  "2020-12-17", quantity=None, country="DE", sector="steel",
+  project_id="salcos-salzgitter", site="Salzgitter",
+  note="An ENERGIRON direct reduction plant for Salzgitter Flachstahl. No capacity in "
+       "the text this sweep could read; the 2022 MoU states 2.1 Mt/yr and the 2023 "
+       "contract 'more than 2 million tons'.")
+E("tenova", "Salzgitter AG", "framework_agreement", "supplier", "supplier_press",
+  V + "mou-salzgitter-and-tenova-salcosr", "2022-03-08",
+  quantity=(2100000, "tonnes DRI per year"), country="DE", sector="steel",
+  project_id="salcos-salzgitter", site="Salzgitter SALCOS",
+  note="MoU. 'Conditional on the respective funding approvals, Salzgitter AG intends "
+       "to order a DRI plant from Tenova with an annual capacity of 2.1 million tons'. "
+       "ENERGIRON is jointly developed by Tenova and Danieli — two nodes on this "
+       "perimeter behind one technology.")
+E("tenova", "Salzgitter AG", "equipment_order", "supplier", "supplier_press",
+  V + "energironr-direct-reduction-plant-contracted-salzgitter-ag-represents",
+  "2023-05-24", quantity=(2000000, "tonnes DRI per year"), country="DE", sector="steel",
+  project_id="salcos-salzgitter", site="Salzgitter Flachstahl SALCOS",
+  note="CONTRACT, by a consortium of Tenova, Danieli and DSD Steel Group. 'more than 2 "
+       "million tons of DRI per year' — a DIFFERENT FIGURE from the 2.1 Mt/yr of the "
+       "2022 MoU, one speaker, fourteen months apart. Logged as a slip in the docket. "
+       "The release also states SALCOS stage one as a DRI plant, an electric arc "
+       "furnace and a 100 MW electrolyser, in operation from end-2025.")
+E("tenova", "LKAB", "framework_agreement", "supplier", "supplier_press",
+  V + "lkab-selects-energironr-its-demonstration-plant-northern-sweden", "2024-02-12",
+  quantity=(1350000, "tonnes DRI per year"), country="SE", sector="iron ore / steel",
+  site="Gällivare",
+  note="BASIC ENGINEERING ONLY — 'future equipment supply and construction are pending "
+       "waiting for prerequisites like environmental permits and Final Investment "
+       "Decision'. Combines HYBRIT with ENERGIRON. The register holds hybrit-pilot-"
+       "lulea, which is the pilot at Luleå and not this demonstration plant at "
+       "Gällivare.")
+E("tenova", "RINA (Hydra project)", "equipment_order", "supplier", "supplier_press",
+  V + "tenova-joins-rinas-100-hydrogen-fueled-hydra-project-backed-european", "2024-03-20",
+  quantity=(7, "tonnes per hour"), country="IT", sector="steel research",
+  note="A 30 m hydrogen DRI tower and an EAF for a PILOT plant, EU-backed. Seven "
+       "tonnes per hour at full capability within 2025.")
+E("tenova", "Hüttenwerke Krupp Mannesmann (HKM)", "equipment_order", "supplier",
+  "supplier_press", V + "tenova-supply-germanys-largest-electric-arc-furnace-hkms-"
+                        "transformation", "2026-08-03",
+  quantity=(2500000, "tonnes steel per year"), country="DE", sector="steel",
+  site="Duisburg",
+  note="'the largest in Germany and one of the largest in Europe'. HKM's new owner is "
+       "Salzgitter AG — the register holds Salzgitter's own SALCOS row and not HKM, so "
+       "this is a second Duisburg steelworks outside the perimeter beside "
+       "thyssenkrupp's. The site alias 'Duisburg' would have matched tkh2steel-"
+       "duisburg, which is a different company's plant in the same city.",
+  refuse_match="'Duisburg' is a site alias of tkh2steel-duisburg and it is a CITY. HKM "
+               "and thyssenkrupp Steel are two different works in it.")
+
+# =============================================================================
+# battery_equipment
+# =============================================================================
+#
+# THE WHOLE KIND IS ALMOST EMPTY, AND THAT IS THE FINDING. Three suppliers were
+# swept and they produced one European edge between them. The brief asked that a
+# supplier publishing no English-language order announcements be written down
+# rather than filled in from press; two of these three go further than that — one
+# was liquidated and one refuses a reader at the door.
+
+# --- Wuxi Lead Intelligent Equipment Co., Ltd. --------------------------------
+# leadintelligent.com/en/news paginates to eight pages and lists 117 English items
+# over the period, all listed and their titles read. THE ENGLISH NEWSROOM IS
+# MARKETING, not an order book: product launches, trade-fair appearances, chairman
+# interviews, technology explainers and awards. Seventeen mention Europe or a
+# customer at all and exactly ONE names a European customer and a contract.
+#
+# Wuxi Lead is listed in Shenzhen and files in Chinese; this sweep reads English,
+# and what it can say is about the English record and not about the company.
+U = "https://www.leadintelligent.com/en/"
+
+E("wuxi-lead", "FAAM – Energy Saving Battery (Seri Industrial S.p.A.)", "equipment_order",
+  "supplier", "supplier_press",
+  U + "lead-intelligent-equipment-signs-major-contract-with-faam-to-deliver-advanced-"
+      "end-of-line-lithium-battery-production-solution-for-8-gwh-facility-in-italy/",
+  "2025-04-28", quantity=(8, "GWh per year"), country="IT", sector="battery cells",
+  site="Teverola 2 Naples",
+  note="An end-of-line solution for the Teverola 2 plant near Naples. The 8 GWh is the "
+       "FACILITY's capacity as the title states it, not the value of the equipment "
+       "order — the release does not size the order. FAAM is not a row in the "
+       "register's battery perimeter.")
+
+# --- Manz AG ------------------------------------------------------------------
+# ZERO EDGES, AND NOT BECAUSE NOBODY LOOKED. manz.com's sitemap lists sixteen posts
+# and all sixteen were fetched. Every one of them is an insolvency notice or a
+# disposal: the December 2024 filing, the opening of proceedings, the sale of the
+# core business to Tesla Automation, of Slovakia to Greatech, of Asia in a
+# management buy-out and of the US business to ekvip automation. There is no
+# customer announcement left on the site at all, because there is no longer a
+# company to have made one. A search that returns nothing here is not a thin sweep.
+Z = "https://www.manz.com/post/"
+
+R_.status_event(
+    "manz", "2025-01-10", "listed (Prime Standard)", "insolvent",
+    Z + "manz-ag-provides-information-on-the-current-status-of-the-preliminary-"
+        "insolvency-proceedings", "supplier_press",
+    "'Manz AG's insolvency filing in December 2024 had become necessary because the "
+    "company had built up expertise at an early stage and invested heavily in "
+    "expanding capacities' — the company's own account of why. The filing itself is "
+    "December 2024 and is not on the site; this is the earliest document that is.")
+R_.status_event(
+    "manz", "2025-01-23", "insolvent", "moved to General Standard",
+    Z + "manz-ag-is-going-to-switch-from-the-prime-standard-to-the-general-standard",
+    "supplier_press", "Listing segment change during the proceedings.")
+R_.status_event(
+    "manz", "2025-02-25", "moved to General Standard",
+    "insolvency proceedings opened; core business sold to Tesla Automation GmbH",
+    Z + "manz-ag-opening-of-insolvency-proceedings", "supplier_press",
+    "Purchase agreement signed with Tesla Automation GmbH of Prüm, a subsidiary of "
+    "Tesla, Inc. The battery-equipment supplier was bought by a battery-cell maker "
+    "this register holds a row for — tesla-gruenheide-cells.")
+R_.status_event(
+    "manz", "2025-02-28", "insolvency proceedings opened; core business sold to Tesla "
+    "Automation GmbH", "Slovak subsidiary sold to Greatech; Asian business sold in a "
+    "management buy-out", Z + "manz-ag-sells-subsidiary-in-slovakia", "supplier_press",
+    "Two disposals announced the same day; the Asia sale is in a separate release.")
+R_.status_event(
+    "manz", "2025-04-24", "Slovak subsidiary sold to Greatech; Asian business sold in a "
+    "management buy-out", "sales to Tesla, Greatech and the Asia buy-out completed",
+    Z + "manz-ag-completes-sales-to-tesla-greatech-and-asia-management-buy-out",
+    "supplier_press", "Closing conditions all fulfilled.")
+R_.status_event(
+    "manz", "2025-07-11", "sales to Tesla, Greatech and the Asia buy-out completed",
+    "US subsidiary sold to ekvip automation GmbH",
+    Z + "manz-ag-sells-subsidiary-in-the-usa-to-ekvip-automation-gmbh", "supplier_press",
+    "The last disposal on the site.")
+
+# --- Hitachi, Ltd. ------------------------------------------------------------
+# ZERO EDGES, AND THE SWEEP COULD NOT GET IN. The perimeter names "Hitachi", and the
+# group unit that makes battery production equipment is Hitachi High-Tech, whose
+# newsroom (hitachi-hightech.com/global/en/about/news/) and sitemap both answer 403
+# to a declared reader carrying a full browser header set. The group's corporate
+# press page at hitachi.com/en/press/ answers 200 and lists FIVE items — the most
+# recent five — with no archive a reader can walk and no year index (the obvious
+# /en/press/archive/<year>/ and /New/cnews/<year>/ paths are 404).
+#
+# So: no European battery-equipment order was found, and the reason is that the two
+# places one would be announced are a 403 and a five-item page. That is a different
+# fact from a supplier who announced nothing, and the docket says which this is.
+
+# =============================================================================
+# co2_storage_or_transport
+# =============================================================================
+
+# --- Northern Lights JV DA ----------------------------------------------------
+# 86 news items in the WordPress sitemap, all fetched and read. Northern Lights
+# sells transport and storage AS A SERVICE, so its edges run the other way from
+# every other node here: the counterparty is an emitter buying storage, and the
+# edge_kind is co2_storage. Quantities are tonnes of CO2 a year throughout, which
+# makes this the one node kind whose edges CAN be summed against its own stated
+# capacity — see the arithmetic section of the docket.
+N_ = "https://norlights.com/news/"
+
+C("northern-lights", 1500000, "tonnes CO2 per year", "nameplate", "supplier",
+  "supplier_press", N_ + "northern-lights-is-expanding-capacity-through-commercial-"
+                         "agreement/", "2025-03-27",
+  note="Phase 1 capacity, stated in the release that announces its expansion.")
+C("northern-lights", 5000000, "tonnes CO2 per year", "nameplate", "supplier",
+  "supplier_press", N_ + "northern-lights-is-expanding-capacity-through-commercial-"
+                         "agreement/", "2025-03-27",
+  note="Phase 2, 'a minimum of 5 million tonnes'. FID taken on the strength of the "
+       "Stockholm Exergi agreement announced in the same release — the expansion and "
+       "the contract that justified it are one document.")
+
+E("northern-lights", "Climeworks", "framework_agreement", "supplier", "supplier_press",
+  N_ + "climeworks-and-northern-lights-to-jointly-explore-direct-air-capture-and-"
+       "co2-storage-in-norway/", "2021-03-09", quantity=None, country="CH",
+  sector="direct air capture")
+E("northern-lights", "Borg CO2", "framework_agreement", "supplier", "supplier_press",
+  N_ + "collaboration-with-borg-co2-on-carbon-capture-and-storage/", "2021-04-16",
+  quantity=None, country="NO", sector="industrial cluster")
+E("northern-lights", "Future Biogas", "framework_agreement", "supplier",
+  "supplier_press", N_ + "northern-lights-signs-memorandum-of-understanding-mou-with-"
+                         "future-biogas/", "2021-06-25", quantity=None, country="GB",
+  sector="biogas")
+E("northern-lights", "Aker Carbon Capture", "framework_agreement", "supplier",
+  "supplier_press", N_ + "aker-carbon-capture-and-northern-lights-jv-to-collaborate-"
+                         "on-accelerating-the-carbon-capture-and-storage-market-"
+                         "through-full-value-chain-offerings/", "2022-02-17", quantity=None, country="NO",
+  sector="capture technology",
+  note="Non-exclusive MoU. Aker Carbon Capture is the slb-capturi node on this "
+       "perimeter — a capture supplier and a storage supplier agreeing to sell "
+       "together, which is a supply-chain edge and not demand on either.")
+E("northern-lights", "CCB Energy Holding", "framework_agreement", "supplier",
+  "supplier_press", N_ + "ccb-energy-and-northern-lights-collaboration-on-co2-"
+                         "management-in-oygarden/", "2022-04-22", quantity=None,
+  country="NO", sector="industrial services", site="Øygarden")
+E("northern-lights", "Cory", "framework_agreement", "supplier", "supplier_press",
+  N_ + "cory-and-northern-lights-announce-pioneering-international-carbon-partnership/",
+  "2022-05-13", quantity=None, country="GB", sector="energy from waste",
+  note="MoU to ship CO2 from Cory's energy-from-waste operations on the Thames.")
+E("northern-lights", "Eramet Norway", "framework_agreement", "supplier",
+  "supplier_press", N_ + "eramet-norway-and-northern-lights-announce-collaboration/",
+  "2022-08-09", quantity=(260000, "tonnes CO2 per year"), country="NO",
+  sector="manganese smelting", site="Sauda",
+  note="MoU; capture of 70% of the smelter's emissions, an estimated 260,000 t/yr, "
+       "full-scale from 2028. The capture technology named is Air Liquide's Cryocap — "
+       "a third node on this perimeter inside one MoU.")
+E("northern-lights", "Yara", "co2_storage", "supplier", "supplier_press",
+  N_ + "major-milestone-for-decarbonising-europe/", "2022-08-29", quantity=None,
+  country="NL", sector="ammonia and fertiliser", site="Sluiskil",
+  note="Main commercial terms agreed — 'the world's first commercial agreement on "
+       "cross border CO2 transport and storage'. No tonnage in this release; the "
+       "binding agreement fifteen months later states 800,000 t/yr.")
+E("northern-lights", "Ørsted", "co2_storage", "supplier", "supplier_press",
+  N_ + "northern-lights-enters-into-cross-border-transport-and-storage-agreement-with-"
+       "orsted/", "2023-05-15", quantity=(430000, "tonnes CO2 per year"), country="DK",
+  sector="bioenergy", site="Asnæs Avedøre",
+  note="Transport and Services Agreement, effective 1 January 2026, for ten years. "
+       "THE PAGE DATE WAS NEARLY WRONG: its own dateline is 'May 15, 2023' in a line "
+       "the paragraph filter drops, and the body says 'The agreement is effective from "
+       "1 January 2026' — which the date heuristic picked up as the page date. Read by "
+       "hand, corrected by hand. The same Asnæs and Avedøre stations are SLB Capturi's "
+       "2023-06-15 capture order: both halves of one chain are on this perimeter.")
+E("northern-lights", "Yara International", "co2_storage", "supplier", "supplier_press",
+  N_ + "northern-lights-and-yara-signs-binding-agreement-on-co2-transport-and-storage/",
+  "2023-11-20", quantity=(800000, "tonnes CO2 per year"), country="NL",
+  sector="ammonia and fertiliser", site="Sluiskil",
+  note="BINDING agreement, from 2026. The commercial terms of August 2022 made firm.")
+E("northern-lights", "Stockholm Exergi", "co2_storage", "supplier", "supplier_press",
+  N_ + "northern-lights-is-expanding-capacity-through-commercial-agreement/",
+  "2025-03-27", quantity=(900000, "tonnes CO2 per year"), country="SE",
+  sector="bioenergy", site="Stockholm",
+  note="Up to 900,000 t/yr of biogenic CO2 for 15 years from 2028. The same Stockholm "
+       "BECCS plant whose liquefaction unit Air Liquide supplies — capture, "
+       "liquefaction and storage each sold by a different node on this perimeter.")
+E("northern-lights", "Inherit", "co2_storage", "supplier", "supplier_press",
+  N_ + "northern-lights-has-injected-first-co%e2%82%82-from-wastewater/", "2026-03-24",
+  quantity=None, country="NO", sector="biogas / carbon removal",
+  note="A pilot: first CO2 from Inherit injected.")
+
+# --- Porthos CO2 Transport & Storage C.V. -------------------------------------
+# 77 English items in the WordPress sitemap, all fetched and read. Porthos is a
+# joint venture of EBN, Gasunie and the Port of Rotterdam Authority, and its
+# newsroom is overwhelmingly construction progress: drilling under seawalls, pipe
+# pulls, compressor stations, contractor profiles. THE CUSTOMER SIDE IS ONE
+# DOCUMENT, and it contracts the whole store at once.
+O = "https://www.porthosco2.nl/en/"
+
+C("porthos", 2500000, "tonnes CO2 per year", "nameplate", "supplier", "supplier_press",
+  O + "first-co2-storage-project-in-the-netherlands-is-launched/", "2023-10-18",
+  note="'Porthos plans to store about 2.5 Mton per year for 15 years, totalling around "
+       "37 Mton. With that, Porthos has contracted its full storage capacity.' A store "
+       "that is SOLD OUT at FID — the clearest case on this perimeter of demand "
+       "meeting a stated capacity exactly, and the reason the arithmetic section can "
+       "say something about this node.")
+
+E("porthos", "Air Liquide", "co2_storage", "supplier", "supplier_press",
+  O + "rotterdam-companies-and-porthos-sign-contracts-for-transport-and-storage-of-co2/",
+  "2021-12-20", quantity=None, country="NL", sector="industrial gases",
+  site="Rotterdam",
+  note="One of four final contracts signed the same day for a COMBINED 2.5 Mt/yr; the "
+       "release does not split the tonnage between the four, so no quantity is "
+       "recorded on any of them. Air Liquide is also a node on this perimeter.")
+E("porthos", "Air Products", "co2_storage", "supplier", "supplier_press",
+  O + "rotterdam-companies-and-porthos-sign-contracts-for-transport-and-storage-of-co2/",
+  "2021-12-20", quantity=None, country="NL", sector="industrial gases", site="Rotterdam",
+  note="Second of the four. Combined 2.5 Mt/yr, unsplit.")
+E("porthos", "ExxonMobil", "co2_storage", "supplier", "supplier_press",
+  O + "rotterdam-companies-and-porthos-sign-contracts-for-transport-and-storage-of-co2/",
+  "2021-12-20", quantity=None, country="NL", sector="refining", site="Rotterdam",
+  note="Third of the four. Combined 2.5 Mt/yr, unsplit.")
+E("porthos", "Shell", "co2_storage", "supplier", "supplier_press",
+  O + "rotterdam-companies-and-porthos-sign-contracts-for-transport-and-storage-of-co2/",
+  "2021-12-20", quantity=None, country="NL", sector="refining", site="Rotterdam",
+  note="Fourth of the four. Combined 2.5 Mt/yr, unsplit. Shell's Pernis capture plant "
+       "was welded to the Porthos main line in March 2026.")
+
+# --- Aramis CCS ---------------------------------------------------------------
+# 65 news items fetched and read. ZERO CUSTOMER EDGES, and the reason is the stage:
+# Aramis is pre-FID, and its entire newsroom is permitting, tendering, subsidy
+# schemes, appeals and engineering explainers. No emitter has signed anything this
+# sweep can read. The one counterparty document is a cross-border MoU.
+Y = "https://www.aramis-ccs.com/news/"
+
+E("aramis", "an unnamed group of European energy companies", "framework_agreement",
+  "supplier", "supplier_press",
+  Y + "european-energy-leaders-sign-mou-to-develop-major-cross-border-co2-infrastructure-"
+      "between-germany-and-the-netherlands/", "2026-06-10", quantity=None,
+  note="MoU on cross-border CO2 infrastructure between Germany and the Netherlands. "
+       "The counterparties are not named in the headline text this sweep read.")
+
+# --- Project Greensand / Greensand Future -------------------------------------
+# projectgreensand.com now resolves to greensandfuture.com; 43 news items fetched
+# from the live site and read. Much of the early record is in DANISH, which this
+# sweep reads only as far as its slugs — the brief's instruction about a supplier
+# publishing no English announcements applies in a milder form here: Greensand
+# publishes in both, and the 2023 first-injection sequence is mostly Danish.
+G_ = "https://greensandfuture.com/news/"
+
+E("greensand", "Öresundskraft Kraft & Värme AB", "co2_storage", "supplier",
+  "supplier_press",
+  G_ + "oresundskraft-and-ineos-led-project-greensand-sign-agreement-to-store-210-000-ton",
+  "2025-04-14", quantity=(210000, "tonnes CO2 per year"), country="SE",
+  sector="energy from waste / district heating",
+  note="An agreement to INVESTIGATE storing up to 210,000 t/yr from Sweden in Denmark "
+       "from 2028; Öresundskraft's capture side has EUR 54m from the EU Innovation "
+       "Fund. Cross-border, like Northern Lights' Yara and Stockholm Exergi deals.")
+
+# --- Ravenna CCS (Eni / Snam) -------------------------------------------------
+# eni.com's media index renders by script and its CCS pages moved; the launch
+# release was located by search and fetched directly. The capture side of phase 1
+# is MHI's, and both halves are on this perimeter.
+C("ravenna-ccs", 25000, "tonnes CO2 per year", "nameplate", "supplier",
+  "supplier_press",
+  "https://www.eni.com/en-IT/media/press-release/2024/09/eni-snam-launch-ravenna-css-"
+  "italy-s-first-carbon-capture-storage-project.html", "2024-09-03",
+  note="Phase 1, in operation: CO2 from Eni's Casalborsetti gas treatment plant, stored "
+       "3,000 m down in the depleted Porto Corsini Mare Ovest field. Capture efficiency "
+       "over 90%, peaks of 96%.")
+C("ravenna-ccs", 4000000, "tonnes CO2 per year", "nameplate", "supplier",
+  "supplier_press",
+  "https://www.eni.com/en-IT/media/press-release/2024/09/eni-snam-launch-ravenna-css-"
+  "italy-s-first-carbon-capture-storage-project.html", "2024-09-03",
+  note="Phase 2, 'up to 4 million tonnes of CO2 per year by 2030'. A 2030 target stated "
+       "in 2024, 160 times phase 1, and recorded beside it rather than instead of it.")
+
+E("ravenna-ccs", "Eni", "co2_storage", "supplier", "supplier_press",
+  "https://www.eni.com/en-IT/media/press-release/2024/09/eni-snam-launch-ravenna-css-"
+  "italy-s-first-carbon-capture-storage-project.html", "2024-09-03",
+  quantity=(25000, "tonnes CO2 per year"), country="IT", sector="oil and gas",
+  site="Casalborsetti Ravenna",
+  note="THE STORE'S ONLY CUSTOMER IS ITS OWN PARENT. Phase 1 stores Eni's own emissions "
+       "from its own gas plant, and Eni is half the joint venture that owns the store. "
+       "Recorded as an edge because it is a stated storage relationship; whether an "
+       "emitter storing with itself is demand is a ruling for the reader.")
+
+# --- Northern Endurance Partnership / Endurance store -------------------------
+# 34 posts on netzeroteesside.co.uk fetched; 32 readable. NEP is a joint venture of
+# bp, Equinor and TotalEnergies and shares a newsroom with NZT Power, the gas-fired
+# power station that is its anchor customer. THE NEWSROOM IS ABOUT THE SUPPLY CHAIN,
+# not about emitters: contractor awards, apprenticeships, quay upgrades, supplier
+# spotlights. No emitter contract with a tonnage appears anywhere in it.
+NZ = "https://www.netzeroteesside.co.uk/news/"
+
+E("endurance-nep", "Net Zero Teesside Power", "co2_storage", "supplier",
+  "supplier_press", NZ + "greenlight-for-net-zero-teesside-power/", "2024-12-10",
+  quantity=None, country="GB", sector="power",
+  note="Financial close and entry into execution for both NZT Power and NEP. NEP's "
+       "infrastructure will 'serve three initial carbon capture projects on Teesside'; "
+       "the other two are not named here and no tonnage is given for any of them.")
