@@ -1497,6 +1497,17 @@ nobody watching.
 A background job should carry its own deadline. Where it cannot, the check is the
 deadline.
 
+**AND A WAITER MUST NOT MATCH ITSELF.** `until ! pgrep -f run14.py; do sleep 90; done`
+never ends: the waiting shell's own command line contains `run14.py`, so `pgrep` finds the
+waiter and the waiter waits for itself. Three shells sat in that loop for nine and a half
+hours on 11 September 2026 while the job they were watching had long exited. Wait on a
+**sentinel file** the job writes when it finishes, or use a pattern that cannot match the
+watcher — `pgrep -f "[r]un14.py"` — and never on a bare `pgrep -f` of the script's own
+name.
+
+The failure is quiet in the worst way: the waiter reports nothing, the job is finished, and
+the only symptom is a turn that never returns.
+
 ### A municipality name is not a point
 
 `location_precision: "point"` requires a **stated address or a stated coordinate**, from
@@ -1758,3 +1769,81 @@ names the place and states no megawatts. That is the binding constraint on this 
 it is not the one the register expected: owners are not hiding where their plants are,
 they are publishing tonnes, euros, jobs and grid connections instead of the electrolyser's
 rating.
+
+
+### Rung 2, noted and not implemented
+
+A ruling recorded ahead of the work it governs, so that the work does not quietly settle
+it. **Nothing here is built.** Brief 10 is where the ladder is implemented; this is what it
+inherits.
+
+**Capacity by owner passes on ANY STATED UNIT, recorded as stated.** An owner who says
+100,000 tonnes of hydrogen a year, or 60 tonnes a day, or 450 metric tonnes per day of
+e-methanol, has stated a capacity, and rung 2 is satisfied by the statement. The unit is
+recorded as the owner gave it and **is not converted** — that rule is already settled under
+"Three units for one electrolyser, and no conversion between them", and the ladder does not
+get to relax it in order to make a comparison easier.
+
+**The 100 MW perimeter threshold is NOT a rung.** It decides what this register admits; it
+does not score an outside list. The ladder's population is the external list, which
+contains entries of every size, and applying an admission threshold as a rung would mark a
+project down for being small rather than for being unevidenced. A 20 MW plant whose owner
+publishes its rating has cleared rung 2 exactly as a 900 MW one has.
+
+**The two are separable and this pass is why the distinction matters.** The admission search
+of 10 September 2026 found 47 entries where a source names the site and the entry was not
+admitted, and **30 of those fail on capacity alone** — the source names the place and states
+no megawatts. Under the perimeter that is a refusal. Under rung 2 it is a score of zero on
+one leg, and several of those 30 do state a capacity in tonnes or in tonnes per day, which
+the perimeter cannot use and the ladder can. **The same entry is scored differently by the
+two instruments, and that is correct rather than a defect to be reconciled.**
+
+
+### A sweep is centred on the owner's place or it is not run
+
+One place node in the extract matching the place the **owner** names: sweep it. **None**:
+the entry is `not swept`, because the owner-named place is not in the basemap — a fact
+about the basemap, not a miss. **Several**: `not swept`, because picking one is a guess.
+
+The rule exists because the alternative was tried and produced findings about the wrong
+towns. A name set containing the owner's place *plus fallbacks* — the parent city, the
+village the benchmark's coordinate fell in — silently centred Europoort on **Rotterdam city
+centre**, twenty kilometres away, and Eemshaven on **Pieterburen**. Both returned long
+lists of real named industry, and both would have been recorded as the works not being
+drawn. On the strict rule, Europoort's own place node exists and the sweep finds
+**Enecogen**, the works Eneco's release names.
+
+Brandenburg has three villages called Falkenhagen and Finland six places called Kokkola.
+There is no tie-break that is not a guess, and a guess here does not produce a weaker
+finding — it produces a confident finding about somewhere else.
+
+### A position cites the feature it came from
+
+A sweep that yields a drawing records the OSM element — `way/413256388` — not just a
+latitude and a longitude. A coordinate with no way of saying which drawn thing it is, is
+the unsourced coordinate this register refuses from a geocoder, arriving by another door.
+The cached layer keeps each feature's id for exactly this.
+
+**And the sweep's CENTRE is never written down.** The distinction is the whole of it: the
+centre is scaffolding, a place name used to bound a search; the position is a feature
+somebody drew and somebody can check.
+
+### A cached layer, and a check the reader cannot satisfy by accident
+
+Sweeps read a layer built once per extract — named places, and every industrial, works,
+power and construction feature with its position, name and OSM id. A sweep that took
+twenty-five minutes against the raw extract takes **0.03 seconds** against the layer, which
+is what makes it possible to run them in the foreground and stop leaving background jobs
+behind.
+
+**The layer is refused unless the read was whole.** `pbf.scan_blobs()` walks the blob
+headers — decompressing nothing, parsing no primitive — and reports how many blobs the
+container holds and the byte at which it ends; the reader must reach the same two numbers
+by actually reading every blob, and the end must equal the file size. Both numbers are
+stored with the layer and printed with every build.
+
+**There is no feature-count reference and there will not be one** until a tool other than
+this reader can produce it. The first attempt at a self-check carried typed numbers, failed
+on its own first run, and was then "repaired" by setting the numbers to what the reader had
+just produced — which made it pass by construction for ever. **A reference taken from the
+thing it checks is a mirror.** See D77.

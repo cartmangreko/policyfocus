@@ -10909,8 +10909,8 @@
       "company": "Vicat with Hynamics (EDF)",
       "plant": "Montalieu-Vercieu cement plant",
       "country": "FR",
-      "located": "no",
-      "location_note": "POSITION NOT SEARCHED. This row came in through the benchmark admission search of 10 September 2026, which asked one question — does an owner or a permit source name the site — and answered it. NO COORDINATE SWEEP HAS BEEN RUN FOR THIS WORKS. That is a different state from the rows whose notes record a sweep that ran and found nothing, and saying so is the point: an absence somebody produced and an absence nobody has attempted should not read alike.",
+      "located": "yes",
+      "location_note": "PLACED ON THE HOST WORKS, 12 September 2026. Vicat's own release says the electrolyser goes in 'the cement plant in Montalieu-Vercieu' — AT the works, which is what the host-works rule admits — and OpenStreetMap draws that cement plant as way 413256388, named 'cimenterie Vicat', 1.4 km from the Montalieu-Vercieu place node. BASEMAP DATE 2026-09-10, from the Geofabrik extract rhone-alpes-260910.osm.pbf, 7,920 blobs and 528,522,928 bytes. The sweep was centred on the place node the owner's own sentence names; that centre is scaffolding and is not recorded anywhere. THE ONLY DRAWING OUT OF TWENTY-ONE SWEEPS: of the others, five found something named after the works rather than the works, four found a works the owner's sentence places the plant BESIDE rather than on, one found only the estate occupying the site, four found nothing, and six could not be swept at all.",
       "capacity_value": 330,
       "capacity_unit": "MW_input",
       "capacity_product": "hydrogen",
@@ -10987,7 +10987,25 @@
       ],
       "stated_schedule": [],
       "schedule_note": "EMPTY BECAUSE NOBODY LOOKED, AND SAYING SO HERE RATHER THAN IN THE LIST. The admission search of 10 September 2026 asked one question of every source — does an owner or a permit name this site — and did not collect schedules. Several of these pages plainly state a target date; none was taken down against this row. An empty stated_schedule elsewhere on this file means no source on file states a date; on these forty-four it means the source was read for something else. Re-reading them for dates is coverage work and is not done.",
-      "owner_listing_note": "Not asked in this pass. The admission search read each source for a site and a figure; who owns the operator, and whether that owner is listed, was not read."
+      "owner_listing_note": "Not asked in this pass. The admission search read each source for a site and a figure; who owns the operator, and whether that owner is listed, was not read.",
+      "location": [
+        {
+          "site": "Cimenterie Vicat, Montalieu-Vercieu",
+          "lat": 45.806292,
+          "lon": 5.415392,
+          "precision": "plant",
+          "location_precision": "works",
+          "retrieved_date": "2026-09-12",
+          "source": {
+            "url": "https://www.openstreetmap.org/way/413256388",
+            "type": "basemap",
+            "publisher": "OpenStreetMap contributors",
+            "verbatim": "landuse=industrial; name=cimenterie Vicat",
+            "licence": "ODbL 1.0"
+          },
+          "confidence": "secondary"
+        }
+      ]
     },
     {
       "id": "vng-hycc-greenroot-wittenberg",
