@@ -1,0 +1,76 @@
+{
+ "_comment": [
+  "CEMENT WORKS THE SUPPLIER-SIDE SWEEP FOUND AND THIS REGISTER DOES NOT HOLD.",
+  "Opened 11 September 2026 by Brief 9's batch ruling, for the Brief 8 census. Same",
+  "shape and same purpose as sources/hydrogen_candidates.json and",
+  "sources/batteries_candidates.json, and read by sources/report_candidate_gaps.py",
+  "on every build like both of them.",
+  "",
+  "THE DISCOVERY SOURCE IS AN EDGE, WHICH IS WHAT MAKES THIS FILE DIFFERENT. Every",
+  "other candidate list was built by searching for projects. These were found by",
+  "reading what a capture-technology supplier said about its own order book, from the",
+  "other end: MHI and Linde each named a Heidelberg Materials cement works that this",
+  "register's cement perimeter does not hold, in a release about a contract they had",
+  "signed. `discovered_by` carries the edge id and `company_source` the document.",
+  "",
+  "HEIDELBERG MATERIALS HOLDS FOUR ROWS HERE AND THE SWEEP FOUND THREE MORE WORKS.",
+  "Brevik, Geseke, Devnya and Slite are on file; Padeswood and Lengfurt are below and",
+  "Edmonton, Alberta is in `outside_perimeter`. One company, seven capture projects,",
+  "and the register holds four of them -- which is the census's question, not this",
+  "file's answer.",
+  "",
+  "`capacity_t_co2_per_year` IS THE CAPTURE RATE THE SUPPLIER STATES, in tonnes of CO2",
+  "a year, never converted. It is not the works' clinker capacity, which neither",
+  "release gives.",
+  "",
+  "NO ROW WAS CREATED AND NO POSITION WAS SOUGHT. `coordinate_source` is null on both",
+  "and that is the outstanding work, exactly as it is for the hydrogen list."
+ ],
+ "sector": "cement",
+ "perimeter": "sources/dependency_docket.md",
+ "candidates": [
+  {
+   "id": "padeswood-ccs",
+   "company": "Heidelberg Materials UK",
+   "site": "Padeswood, Flintshire",
+   "country": "GB",
+   "status": "construction",
+   "capacity_t_co2_per_year": 800000,
+   "company_source": "https://www.mhi.com/news/251208.html",
+   "company_source_blocked": null,
+   "coordinate_source": null,
+   "coordinate_ref": null,
+   "discovered_by": [
+    "e0168",
+    "e0172",
+    "e0175"
+   ],
+   "note": "Three edges over three years and one works: MHI pre-FEED in December 2022 with the plant still called Hanson UK's, FEED with Worley in February 2024, and execution in December 2025 after Heidelberg Materials' final investment decision with the UK government. 'The first in Europe to deploy MHI's Advanced KM CDR Process' at a cement works; CO2 to depleted gas fields under Liverpool Bay via HyNet North West. The capture side is contracted and the census has to decide whether the works is a cement row."
+  },
+  {
+   "id": "lengfurt-ccs",
+   "company": "Heidelberg Materials",
+   "site": "Lengfurt",
+   "country": "DE",
+   "status": "announced",
+   "capacity_t_co2_per_year": 70000,
+   "company_source": "https://www.linde.com/news-and-media/2023/linde-and-heidelberg-materials-announce-large-scale-carbon-capture-project",
+   "company_source_blocked": null,
+   "coordinate_source": null,
+   "coordinate_ref": null,
+   "discovered_by": [
+    "e0178"
+   ],
+   "note": "Linde and Heidelberg Materials to jointly build, own and operate a capture and liquefaction facility at the Lengfurt works, with most of the liquid CO2 sold by Linde into the merchant market. A CAPTURE PROJECT WHOSE CO2 IS SOLD RATHER THAN STORED, which is a shape the cement perimeter has not had to rule on, and 70,000 t/yr is an order of magnitude below Padeswood."
+  }
+ ],
+ "outside_perimeter": [
+  {
+   "id": "edmonton-ccs",
+   "company": "Heidelberg Materials",
+   "site": "Edmonton, Alberta",
+   "country": "CA",
+   "why": "NOT IN EUROPE, and no edge. The sweep records European delivery only, so MHI's Edmonton work was read and deliberately not recorded — see the docket's 'counterparties read and deliberately not recorded'. It is named here because the docket named it as the third Heidelberg Materials works outside this register, and a reader of this file should not have to wonder where it went. NOTHING IS CLAIMED ABOUT IT: this file holds no document for it."
+  }
+ ]
+}

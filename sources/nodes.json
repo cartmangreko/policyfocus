@@ -1,0 +1,1239 @@
+{
+ "_comment": [
+  "Suppliers and stores swept for Brief 9, and the capacity each STATES for itself.",
+  "",
+  "The perimeter is sources/dep_sweep.py:NODES and is fixed by the brief. `listing`",
+  "is the node's own equity status, which decides whether an annual or quarterly",
+  "report exists for it at all -- eleven of these twenty-seven are unlisted and",
+  "publish no order backlog anywhere.",
+  "",
+  "`stated_capacity` IS A LIST AND IS NOT RECONCILED. A supplier states its capacity",
+  "many times over six years and the figures do not agree, because they are answers",
+  "to different questions: nameplate is what a line can build, backlog is what has",
+  "been sold, delivery_commitment is what has been promised for a date. No value here",
+  "is converted, averaged or superseded -- the 2022 Herxya nameplate and the 2025",
+  "sentence saying those same lines are idling both stand, and the second is why the",
+  "first cannot be read as output.",
+  "",
+  "`sweep` records what was actually read for this node: the index pages walked, how",
+  "many items they listed, how many were fetched, and where the sweep could not go.",
+  "A node with sweep null was not searched, which is a different fact from a node",
+  "that was searched and yielded nothing.",
+  "",
+  "`comparison` SAYS WHETHER THE SUMS IN THIS FILE MAY BE SUBTRACTED AT ALL, and for",
+  "24 of the 28 nodes the answer is no. Both units are named. `node_unit` null means",
+  "the node states no capacity for itself, which is a different obstacle from a unit",
+  "clash and is not the same finding. Nothing is converted and no delivery window is",
+  "assumed anywhere in this file.",
+  "",
+  "`disagreements` has the shape projects.json uses: the field, the values, who said",
+  "which and when. Two of them, both a supplier's own order backlog against this",
+  "file's sum of the contracts it had announced by the date the backlog was stated.",
+  "NEITHER FIGURE IS CORRECTED, and the sum carries `bound: \"lower\"` because it can",
+  "only ever be a floor: this sweep sees the orders the OEM PUBLISHED with a",
+  "counterparty or a figure, and an order book contains orders nobody announced. The",
+  "gap is not a contradiction and must not be read as one.",
+  "",
+  "`state` is about the SWEEP, not the node. `incomplete` means the node's edges are",
+  "a sample of unknown size -- Danieli, at nine of 107 captures. `refusal_class` says",
+  "what the door did, and the four kinds are not interchangeable: a 403, a WAF",
+  "challenge, a 200 with no text in it, and a domain that has gone are four different",
+  "facts about whether anybody can read this supplier at all."
+ ],
+ "nodes": [
+  {
+   "id": "nel",
+   "kind": "electrolyser_oem",
+   "name": "Nel ASA",
+   "listing": "listed",
+   "home": "https://nelhydrogen.com",
+   "stated_capacity": [
+    {
+     "value": 500,
+     "unit": "MW/yr",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://nelhydrogen.com/press-release/nel-asa-official-opening-of-the-heroya-facility/",
+     "date": "2022-04-20",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "Herøya alkaline stack line at opening. Same release states it can rise to 2 GW with further investment and that Nel targets 10 GW by 2025 'if required by the market' — an ambition, not a nameplate, and not recorded as one."
+    },
+    {
+     "value": 1000,
+     "unit": "MW/yr",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://nelhydrogen.com/press-release/nel-asa-will-build-a-second-production-line-at-heroya/",
+     "date": "2022-08-11",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "Second fully automated Herøya line, 'doubling its capacity ... to ~1 GW'."
+    },
+    {
+     "value": 500,
+     "unit": "MW/yr",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://nelhydrogen.com/press-release/nel-asa-expanding-production-capacity-in-wallingford/",
+     "date": "2023-02-28",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "Wallingford, Connecticut PEM line, 'towards 500 MW in 2025'. US capacity; recorded because the node is the supplier, not the site."
+    },
+    {
+     "value": 1000,
+     "unit": "MW/yr",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://nelhydrogen.com/press-release/nel-asa-strengthens-its-industry-leadership-as-the-final-investment-decision-has-been-taken-to-industrialize-the-next-generation-pressurized-alkaline-platform/",
+     "date": "2025-12-12",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "FID on up to 1 GW of pressurized-alkaline capacity at Herøya. The same release says the two 500 MW atmospheric alkaline lines are 'currently idling' — so the 2022 nameplate above is stated capacity that is not stated output."
+    }
+   ],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": "MW/yr",
+    "edge_unit": "MW",
+    "reason": "A factory rate against a plant size, and then three more units besides: nel's edges carry MW, 'H2Station fuelling station', 'H2Station fuelling system' and 'hydrogen fuelling site', because four releases said four things and nothing is converted. Six years of orders minus an annual rate is not a number."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 573,
+    "fetched": 166,
+    "index": "nelhydrogen.com/press-releases/ over 58 listing pages",
+    "blocked": null,
+    "note": null
+   }
+  },
+  {
+   "id": "itm-power",
+   "kind": "electrolyser_oem",
+   "name": "ITM Power plc",
+   "listing": "listed",
+   "home": "https://itm-power.com",
+   "stated_capacity": [
+    {
+     "value": 1000,
+     "unit": "MW/yr",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://itm-power.com/news/manufacturing-commences-at-the-itm-power-gigafactory",
+     "date": "2021-01-04",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "Bessemer Park, Sheffield, at practical completion: '1GW (1,000MW) per annum'."
+    },
+    {
+     "value": 1500,
+     "unit": "MW/yr",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://itm-power.com/news/appointment-of-chief-executive-officer",
+     "date": "2022-11-25",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "'capacity planned to reach 1.5 GW (1,500 MW) per annum'. PLANNED, not built — the same sentence adds an ambition of 5 GW, which is not recorded at all."
+    }
+   ],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": "MW/yr",
+    "edge_unit": "MW",
+    "reason": "2,753.5 MW of edges against 1,500 MW/yr of factory. Six years of orders against an annual rate; subtracting one from the other would be meaningless. The single most common obstacle in this file."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 133,
+    "fetched": 133,
+    "index": "itm-power.com/sitemap.xml",
+    "blocked": null,
+    "note": "The sitemap lists 12 items for 2021 and 11 for 2022 against 20 for 2020; the RNS record on the investors/news page may hold items this sweep did not see."
+   }
+  },
+  {
+   "id": "tk-nucera",
+   "kind": "electrolyser_oem",
+   "name": "thyssenkrupp nucera AG & Co. KGaA",
+   "listing": "listed",
+   "home": "https://thyssenkrupp-nucera.com",
+   "stated_capacity": [
+    {
+     "value": 1000,
+     "unit": "MW/yr",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://www.thyssenkrupp-nucera.com/newsroom/news-press-releases/expansion-to-5-gigawatts-of-annual-production-capacity-bmbf",
+     "date": "2021-10-08",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "'the existing supply chain of 1 gigawatt (GW) of electrolysis cells'. The release is about a EUR 8.5m BMBF subsidy for R&D towards 5 GW; the 5 GW is the aim of the research and is not recorded as capacity."
+    },
+    {
+     "value": 1500,
+     "unit": "MW",
+     "basis": "backlog",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_quarterly_report",
+     "url": "https://www.thyssenkrupp-nucera.com/newsroom/news-press-releases/thyssenkrupp-nucera-continues-stable-business-development-in-the-third-quarter",
+     "date": "2025-08-28",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "'a capacity of around 1.5 gigawatts (GW) produced last year', and in the same paragraph 'engineering orders totaling 1.5 gigawatts'. Two different 1.5 GWs — one delivered, one in engineering — stated one sentence apart. Recorded once, as backlog, with the ambiguity written here rather than resolved."
+    }
+   ],
+   "status_history": [],
+   "disagreements": [
+    {
+     "field": "backlog_mw",
+     "values": [
+      {
+       "speaker": "supplier",
+       "value": 1500,
+       "unit": "MW",
+       "date": "2025-08-28",
+       "source_url": "https://www.thyssenkrupp-nucera.com/newsroom/news-press-releases/thyssenkrupp-nucera-continues-stable-business-development-in-the-third-quarter",
+       "note": "'engineering orders totaling 1.5 gigawatts', stated in the Q3 report."
+      },
+      {
+       "speaker": "eufabric sum of edges",
+       "value": 900,
+       "unit": "MW",
+       "date": "2025-08-28",
+       "bound": "lower",
+       "note": "Edges of firmness `contract` dated on or before the backlog's own as-of date: Shell 200 MW (2022-01-13) and H2 Green Steel 700 MW (2023-05-22). A LOWER BOUND ON THE STATED BACKLOG, not a rival measurement of it: this sweep sees only the orders the OEM published with a counterparty or a figure, and an order book contains orders nobody announced. 900 of 1,500 is what can be seen, not what there is."
+      }
+     ],
+     "note": "A LOWER BOUND, NOT A CONTRADICTION. THE +720 MW OVERSHOOT IS NOT THERE ONCE THE DATES AND THE FIRMNESS ARE KEPT. The first pass summed all six MW edges — 2,220 MW — against a backlog stated on 28 August 2025. Of that, 1,020 MW is framework (Neste 120, Cepsa 300, the anonymous 600 MW FEED) and 300 MW is a contract signed in March 2026, seven months AFTER the snapshot. Contracted and already announced when the company spoke: 900 MW. The two numbers still are not the same number and never were, which is the finding; the direction of the gap is the opposite of the one reported."
+    }
+   ],
+   "comparison": null,
+   "state": null,
+   "sweep": {
+    "listed": 93,
+    "fetched": 93,
+    "index": "thyssenkrupp-nucera.com TYPO3 sitemap",
+    "blocked": null,
+    "note": "Article pages carry no date; every date comes from the listing page."
+   }
+  },
+  {
+   "id": "siemens-energy",
+   "kind": "electrolyser_oem",
+   "name": "Siemens Energy AG",
+   "listing": "listed",
+   "home": "https://www.siemens-energy.com",
+   "stated_capacity": [
+    {
+     "value": 3000,
+     "unit": "MW/yr",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://www.siemens-energy.com/global/en/home/press-releases/opening-of-the-siemens-energy-electrolyzer-factory.html",
+     "date": "2023-11-08",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "Berlin, opened with Air Liquide: 'By 2025, at least three gigawatts of electrolysis capacity per year are to be brought to market from there.' A 2025 target stated in 2023 — the release does not say the line ran at that rate on the day it opened."
+    }
+   ],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": "MW/yr",
+    "edge_unit": "MW",
+    "reason": "A factory rate against plant sizes."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 353,
+    "fetched": 353,
+    "index": "siemens-energy.com global/en sitemap, /press-releases/",
+    "blocked": null,
+    "note": "22 of the 353 concern electrolysis; the rest are turbines, grids and wind and are counted, not read."
+   }
+  },
+  {
+   "id": "sunfire",
+   "kind": "electrolyser_oem",
+   "name": "Sunfire GmbH",
+   "listing": "unlisted",
+   "home": "https://www.sunfire.de",
+   "stated_capacity": [
+    {
+     "value": 800,
+     "unit": "MW",
+     "basis": "backlog",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://sunfire.de/en/news/sunfire-year-in-review-2024/",
+     "date": "2024-12-19",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "'an order backlog exceeding 800 megawatts'. Backlog, not factory capacity — Sunfire is unlisted and publishes no nameplate figure for its lines. The one capacity statement it does make (2022-01-14) is that it will manufacture 'for hydrogen projects on the 100 MW scale', which is a product size and not a rate."
+    }
+   ],
+   "status_history": [],
+   "disagreements": [
+    {
+     "field": "backlog_mw",
+     "values": [
+      {
+       "speaker": "supplier",
+       "value": 800,
+       "unit": "MW",
+       "date": "2024-12-19",
+       "source_url": "https://sunfire.de/en/news/sunfire-year-in-review-2024/",
+       "note": "'an order backlog exceeding 800 megawatts'."
+      },
+      {
+       "speaker": "eufabric sum of edges",
+       "value": 347.5,
+       "unit": "MW",
+       "date": "2024-12-19",
+       "bound": "lower",
+       "note": "Eleven edges of firmness `contract` dated on or before the backlog's own as-of date, from Salzgitter's 0.72 MW in August 2020 to Ren-Gas's 50 MW in November 2024. A LOWER BOUND ON THE STATED BACKLOG for the same reason as tk-nucera — only published orders are visible — and a wider gap, which is what an unlisted company with no order book to publish should produce. 347.5 of 800 is what can be seen. Includes a 2.6 MW double count: Neste's MultiPLHY appears as a delivery in 2022 and a start-up in 2025, and this file records statements rather than a reconciled position."
+      }
+     ],
+     "note": "A LOWER BOUND HERE TOO. THE +310.1 MW OVERSHOOT IS NOT THERE EITHER. Of the 1,110.1 MW the first pass summed, 550 MW is framework — including a single anonymous 500 MW agreement — and 252.6 MW was announced after the backlog was stated. What Sunfire had announced as contracts by 19 December 2024 is 347.5 MW against a backlog it put above 800. A supplier's backlog is bigger than the orders it has named, which is ordinary and is the opposite of oversubscription."
+    }
+   ],
+   "comparison": null,
+   "state": null,
+   "sweep": {
+    "listed": 100,
+    "fetched": 100,
+    "index": "sunfire.de sitemap, /en/news/",
+    "blocked": null,
+    "note": null
+   }
+  },
+  {
+   "id": "plug-power",
+   "kind": "electrolyser_oem",
+   "name": "Plug Power Inc.",
+   "listing": "listed",
+   "home": "https://www.plugpower.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": "MW",
+    "reason": "NO STATED CAPACITY. Publishes gigawatts of pipeline and no line rate."
+   },
+   "state": {
+    "incomplete": false,
+    "manual_queue": null,
+    "refusal_class": "403",
+    "note": "plugpower.com answers 403 to every /press-releases/news-details/ URL. The same text is in the ir.plugpower.com Q4 feed, which answers 200, and every Plug edge cites the feed — DECISION D-6. The node is fully swept THROUGH A SUBSTITUTE, which is not the same as fully swept."
+   },
+   "sweep": {
+    "listed": 317,
+    "fetched": 317,
+    "index": "ir.plugpower.com Q4 feed, one call per year, bodyType=1",
+    "blocked": "plugpower.com answers 403 to every /press-releases/news-details/ URL; the feed the same site publishes answers 200 with the same text.",
+    "note": null
+   }
+  },
+  {
+   "id": "john-cockerill",
+   "kind": "electrolyser_oem",
+   "name": "John Cockerill",
+   "listing": "unlisted",
+   "home": "https://johncockerill.com",
+   "stated_capacity": [
+    {
+     "value": 200,
+     "unit": "MW",
+     "basis": "delivery_commitment",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://johncockerill.com/en/press-and-news/news/green-hydrogen-john-cockerill-unveils-outstanding-track-record-in-2021-with-33-market-share-of-global-electrolysers-deliveries-100-takeover-of-cockerill-jingli-in-china-and-major-strategic-partners/",
+     "date": "2022-03-24",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "'exceptional sales in 2021, totaling close to 200 megawatts'. SALES IN A YEAR, which is neither nameplate nor backlog; delivery_commitment is the closest value in the vocabulary and it is not a good fit — flagged in the docket. The same release claims a 33% world market share of shipments, which is a share and not a capacity and is not recorded."
+    }
+   ],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": "MW",
+    "edge_unit": "MW",
+    "reason": "THE UNITS MATCH AND THE BASES DO NOT. The node's one figure is 'close to 200 megawatts' SOLD IN 2021 — a year's sales, filed as delivery_commitment because the vocabulary has no value for it — and the edges are plant sizes across six years. Same unit, different question, and the docket flags the missing basis value rather than subtracting them."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 1060,
+    "fetched": 118,
+    "index": "two news sitemaps",
+    "blocked": null,
+    "note": "118 fetched on slug keywords; the newsroom prints no date and every date comes from schema.org datePublished."
+   }
+  },
+  {
+   "id": "mcphy",
+   "kind": "electrolyser_oem",
+   "name": "McPhy Energy S.A.",
+   "listing": "listed",
+   "home": "https://mcphy.com",
+   "stated_capacity": [
+    {
+     "value": 1000,
+     "unit": "MW/yr",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://web.archive.org/web/20221102091939id_/https://mcphy.com/en/press-releases/the-launch-of-the-mcphys-gigafactory-on-the-belfort-site/",
+     "date": "2022-11-02",
+     "date_precision": "day",
+     "captured_at": "2022-11-02",
+     "archived": true,
+     "note": "Belfort gigafactory at full ramp-up. PLANNED: FID taken 26 October 2022, commissioning from the first half of 2024, EUR 114m of French state aid under IPCEI. The plant never reached this rate — the company's assets were sold by a commercial court two and a half years later."
+    },
+    {
+     "value": 1300,
+     "unit": "MW/yr",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://web.archive.org/web/20221102091939id_/https://mcphy.com/en/press-releases/the-launch-of-the-mcphys-gigafactory-on-the-belfort-site/",
+     "date": "2022-11-02",
+     "date_precision": "day",
+     "captured_at": "2022-11-02",
+     "archived": true,
+     "note": "Group total including San Miniato, Italy. Same release, same day, a second figure on a wider boundary — both recorded because the brief says no value is superseded."
+    }
+   ],
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2025-07-08",
+     "date_precision": "day",
+     "status_from": "listed (Euronext Paris: MCPHY)",
+     "status_to": "key assets acquired by John Cockerill Hydrogen",
+     "status": "key assets acquired by John Cockerill Hydrogen",
+     "source_url": "https://johncockerill.com/en/press-and-news/news/hydrogen-electrolyseur-belfort-prod-aspach/",
+     "source_type": "supplier_press",
+     "evidence_mode": "retrospective",
+     "note": "'On July 8, 2025, the Belfort Commercial Court accepted John Cockerill Hydrogen's bid to acquire McPhy's key assets, including the Belfort plant, innovative technologies, intellectual property, and approximately 80 employees in Europe.' Stated by the acquirer, a year later. McPhy's own domain was gone before this sweep ran, so there is no seller-side document to set beside it."
+    }
+   ],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": "MW/yr",
+    "edge_unit": "MW",
+    "reason": "A gigafactory rate against plant sizes — and the rate was never reached: the company's assets were sold by a commercial court two and a half years after the figure was stated."
+   },
+   "state": {
+    "incomplete": false,
+    "manual_queue": null,
+    "refusal_class": "domain_gone",
+    "note": "mcphy.com does not resolve and www.mcphy.com redirects to John Cockerill. 23 of 125 identified captures retrieved, 21 with a readable body."
+   },
+   "sweep": {
+    "listed": 125,
+    "fetched": 23,
+    "index": "Internet Archive CDX of mcphy.com/en/press-releases/*",
+    "blocked": "mcphy.com does not resolve; www.mcphy.com redirects to John Cockerill. The supplier's own site no longer exists (DECISION D-7).",
+    "note": "21 of 23 captures carry a readable body; one is navigation only."
+   }
+  },
+  {
+   "id": "aker-carbon-capture",
+   "kind": "capture_technology",
+   "name": "Aker Carbon Capture ASA",
+   "listing": "listed",
+   "home": "https://akercarboncapture.com",
+   "stated_capacity": [],
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2024-06-14",
+     "date_precision": "day",
+     "status_from": "Aker Carbon Capture ASA",
+     "status_to": "carbon capture business transferred into the SLB / Aker Carbon Capture joint venture",
+     "status": "carbon capture business transferred into the SLB / Aker Carbon Capture joint venture",
+     "source_url": "https://capturi.slb.com/resources/news/2024/slb-and-aker-carbon-capture-announce-closing-of-carbon-capture-joint-venture",
+     "source_type": "supplier_press",
+     "evidence_mode": "retrospective",
+     "note": "THE TRANSFER. Aker Carbon Capture's carbon capture business closed into a joint venture with SLB — SLB 80%, Aker Carbon Capture 20% — and every edge this node signed is inherited from this date by slb-capturi. Stated by the acquirer's own newsroom, which is also the only host the seller's releases survive on."
+    }
+   ],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": "tonnes CO2 per year",
+    "reason": "NO STATED CAPACITY. Stated no capacity for itself before the business transferred; the two 'carbon capture plants' counts are the successor's and stay on slb-capturi."
+   },
+   "state": {
+    "incomplete": false,
+    "manual_queue": null,
+    "refusal_class": "resolves, serves 404",
+    "note": "akercarboncapture.com resolves to 35.187.120.37 and serves nothing: nginx 404 over http, a certificate that does not match the name over https. Checked 11 September 2026. Every edge is read from the successor's host."
+   },
+   "sweep": {
+    "listed": 14,
+    "fetched": 14,
+    "index": "capturi.slb.com sitemap, the successor's host",
+    "blocked": "akercarboncapture.com RESOLVES (35.187.120.37) and serves nothing: nginx answers 404 over http and the https certificate does not match the name. That is a different refusal from a domain that has gone, and the earlier line saying it does not resolve was wrong. Every release this node signed is read from capturi.slb.com, the acquirer's host.",
+    "note": "Fourteen edges, all signed 'Aker Carbon Capture' between April 2023 and April 2024, all inherited by slb-capturi from 14 June 2024. The 2020–2022 releases, which include the Brevik award itself, are on neither host."
+   }
+  },
+  {
+   "id": "slb-capturi",
+   "kind": "capture_technology",
+   "name": "SLB Capturi",
+   "listing": "unlisted",
+   "home": "https://capturi.slb.com",
+   "stated_capacity": [
+    {
+     "value": 7,
+     "unit": "carbon capture plants",
+     "basis": "backlog",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://capturi.slb.com/resources/news/2024/slb-capturi-completes-construction-of-the-worlds-first-industrial-scale-carbon-capture-plant",
+     "date": "2024-12-02",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "'currently delivering seven carbon capture plants to bioenergy, waste to energy, and cement facilities'. A COUNT OF PLANTS, not a rate and not a tonnage — this node's capacity cannot be compared with the tonnes on its edges, and the docket's arithmetic section says so rather than converting."
+    },
+    {
+     "value": 8,
+     "unit": "carbon capture plants",
+     "basis": "backlog",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://capturi.slb.com/resources/news/2026/2026-0728-slb-capturi-uniper",
+     "date": "2026-07-28",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "'eight plants in operation or under delivery', nineteen months after seven."
+    }
+   ],
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2024-06-14",
+     "date_precision": "day",
+     "status_from": "Aker Carbon Capture ASA",
+     "status_to": "SLB / Aker Carbon Capture joint venture",
+     "status": "SLB / Aker Carbon Capture joint venture",
+     "source_url": "https://capturi.slb.com/resources/news/2024/slb-and-aker-carbon-capture-announce-closing-of-carbon-capture-joint-venture",
+     "source_type": "supplier_press",
+     "evidence_mode": "retrospective",
+     "note": "Closing of the joint venture combining SLB's carbon capture business with Aker Carbon Capture. SLB 80%, Aker Carbon Capture 20%. The receiving side of the same event; the fourteen inherited edges stay on aker-carbon-capture."
+    },
+    {
+     "event_kind": "status",
+     "date": "2024-09-16",
+     "date_precision": "day",
+     "status_from": "SLB / Aker Carbon Capture joint venture",
+     "status_to": "SLB Capturi",
+     "status": "SLB Capturi",
+     "source_url": "https://capturi.slb.com/resources/news/2024/introducing-slb-capturi-pioneering-industrial-decarbonization",
+     "source_type": "supplier_press",
+     "evidence_mode": "retrospective",
+     "note": "The joint venture takes the name SLB Capturi. Every release before this date is signed 'Aker Carbon Capture' and every one after is signed 'SLB Capturi'; they are one supplier and the edges below say so."
+    }
+   ],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": "carbon capture plants",
+    "edge_unit": "tonnes CO2 per year",
+    "reason": "A COUNT OF THINGS AGAINST A RATE. 'Seven carbon capture plants', then 'eight' nineteen months later, against edges in tonnes of CO2 a year. Plants cannot be divided into tonnes."
+   },
+   "state": {
+    "incomplete": false,
+    "manual_queue": null,
+    "refusal_class": "domain held, no host",
+    "note": "slbcapturi.com has NO address record and resolves nowhere on slb.com, but SLB holds the domain — its nameservers are dns0/dns1.slb.com and dns0/dns1.slb.net. Checked 11 September 2026. capturi.slb.com answers 200 and is swept in full; the 2020–2022 releases are on neither."
+   },
+   "sweep": {
+    "listed": 49,
+    "fetched": 49,
+    "index": "capturi.slb.com sitemap plus slb.com newsroom",
+    "blocked": "slbcapturi.com HAS NO ADDRESS RECORD and therefore resolves nowhere on slb.com — checked 11 September 2026, and it is not abandoned: the domain's nameservers are dns0/dns1.slb.com and dns0/dns1.slb.net, so SLB holds it and publishes no host for it. capturi.slb.com answers 200 and is the home this file records.",
+    "note": "The surviving archive starts in 2023; the 2020–2022 Aker Carbon Capture releases, which include the Brevik award itself, are on neither domain."
+   }
+  },
+  {
+   "id": "mhi",
+   "kind": "capture_technology",
+   "name": "Mitsubishi Heavy Industries, Ltd.",
+   "listing": "listed",
+   "home": "https://www.mhi.com",
+   "stated_capacity": [
+    {
+     "value": 13,
+     "unit": "commercial facilities",
+     "basis": "delivery_commitment",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://www.mhi.com/news/22042501.html",
+     "date": "2022-04-25",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "'already been deployed at 13 commercial facilities around the world' — the KM CDR Process, cumulative and worldwide. A COUNT OF INSTALLATIONS, not a rate, not European, and not comparable with the tonnes on the edges below."
+    }
+   ],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": "commercial facilities",
+    "edge_unit": "tonnes CO2 per year",
+    "reason": "'13 commercial facilities' against 2,450,000 tonnes of CO2 a year. The same obstacle as slb-capturi and for the same reason."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 836,
+    "fetched": 125,
+    "index": "mhi.com year index pages 2020–2026",
+    "blocked": null,
+    "note": "The 6,334 /news/ URLs in the sitemap are date slugs carrying no words, so the year index pages were parsed for titles instead. 106 of 836 concern CO2."
+   }
+  },
+  {
+   "id": "shell-cansolv",
+   "kind": "capture_technology",
+   "name": "Shell Cansolv",
+   "listing": "listed",
+   "home": "https://www.shell.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": null,
+    "reason": "NO STATED CAPACITY. Nothing readable at all — see this node's state record."
+   },
+   "state": {
+    "incomplete": false,
+    "manual_queue": "sources/manual/MANIFEST.json",
+    "refusal_class": "empty_body_200",
+    "note": "TWO REFUSALS, AND THEY ARE DIFFERENT ONES. shell.com answers a declared reader with HTTP 200 and a document that contains no text at all: the one Cansolv page this sweep located returns 10,475 bytes of markup and ZERO characters of readable text, because the article renders client-side. humberzero.co.uk, the one European owner source located, answers 404 on every path — a page that is gone rather than a page that will not speak. The node stands with no capacity and no edges, and joins the manual queue beside the two Shell hydrogen items already in it."
+   },
+   "sweep": {
+    "listed": 0,
+    "fetched": 0,
+    "index": "shell.com",
+    "blocked": "shell.com answers 200 with an empty body to a declared reader — the failure sources/manual/MANIFEST.json already records for two hydrogen rows. Every Cansolv path returns 404 or nothing. humberzero.co.uk, the one European owner source located, now 404s on every path.",
+    "note": null
+   }
+  },
+  {
+   "id": "linde",
+   "kind": "capture_technology",
+   "name": "Linde plc",
+   "listing": "listed",
+   "home": "https://www.linde.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": "tonnes CO2 per year",
+    "reason": "NO STATED CAPACITY. An industrial-gas major that states no capture capacity of its own."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 278,
+    "fetched": 31,
+    "index": "linde.com sitemap, /news-and-media/",
+    "blocked": null,
+    "note": null
+   }
+  },
+  {
+   "id": "air-liquide",
+   "kind": "capture_technology",
+   "name": "Air Liquide S.A.",
+   "listing": "listed",
+   "home": "https://www.airliquide.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": "tonnes CO2 per year",
+    "reason": "NO STATED CAPACITY. States no capture capacity of its own, and its edges are in tonnes per DAY (Stockholm Exergi) beside tonnes per YEAR (Cementir). Not converted."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 1809,
+    "fetched": 74,
+    "index": "airliquide.com sitemap pages 1 and 2",
+    "blocked": null,
+    "note": null
+   }
+  },
+  {
+   "id": "midrex",
+   "kind": "dri_plant",
+   "name": "Midrex Technologies, Inc.",
+   "listing": "unlisted",
+   "home": "https://www.midrex.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": "tonnes DRI per year",
+    "reason": "NO STATED CAPACITY. A DRI supplier licenses a process and engineers a plant; it has no line with a rate, and the tonnages on its edges are its customers' plants."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 175,
+    "fetched": 175,
+    "index": "midrex.com press-release and news sitemaps",
+    "blocked": null,
+    "note": "The whole newsroom, taken whole."
+   }
+  },
+  {
+   "id": "primetals",
+   "kind": "dri_plant",
+   "name": "Primetals Technologies",
+   "listing": "unlisted",
+   "home": "https://www.primetals.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": "tonnes steel per year",
+    "reason": "NO STATED CAPACITY. Same as midrex, and its edges mix tonnes of DRI a year, tonnes of steel a year and tonnes per hour."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 588,
+    "fetched": 327,
+    "index": "primetals.com/en sitemap",
+    "blocked": null,
+    "note": null
+   }
+  },
+  {
+   "id": "tenova",
+   "kind": "dri_plant",
+   "name": "Tenova S.p.A.",
+   "listing": "unlisted",
+   "home": "https://tenova.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": "tonnes DRI per year",
+    "reason": "NO STATED CAPACITY. Same as midrex, and the same mixed units."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 171,
+    "fetched": 83,
+    "index": "tenova.com sitemap, /newsroom/press-releases and /news",
+    "blocked": null,
+    "note": null
+   }
+  },
+  {
+   "id": "danieli",
+   "kind": "dri_plant",
+   "name": "Danieli & C. Officine Meccaniche S.p.A.",
+   "listing": "listed",
+   "home": "https://www.danieli.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": null,
+    "reason": "NO STATED CAPACITY. Same as midrex, and the sweep of it is incomplete besides."
+   },
+   "state": {
+    "incomplete": true,
+    "manual_queue": null,
+    "refusal_class": "403",
+    "note": "INCOMPLETE, AND THE LEAST SWEPT NODE ON THE PERIMETER. danieli.com answers 403 on every path, http and https, with and without www, with a full browser header set; the Internet Archive rate-limits hard enough that 9 of 107 identified captures were retrieved. Its two edges are a sample of unknown size and anybody summing this node is summing a sample. NEEDS ITS OWN THROTTLED RUN, which this batch did not start."
+   },
+   "sweep": {
+    "listed": 107,
+    "fetched": 9,
+    "index": "Internet Archive CDX of danieli.com news paths",
+    "blocked": "danieli.com answers 403 on every path, http and https, with and without www, with a full browser header set. The archive is rate-limiting the sweep; 9 of 107 identified captures were retrieved.",
+    "note": "PARTIAL. This node is the least swept on the perimeter."
+   }
+  },
+  {
+   "id": "sms-group",
+   "kind": "dri_plant",
+   "name": "SMS group GmbH",
+   "listing": "unlisted",
+   "home": "https://www.sms-group.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": null,
+    "reason": "NO STATED CAPACITY. Same as midrex, and no edge in its own voice at all."
+   },
+   "state": {
+    "incomplete": true,
+    "manual_queue": null,
+    "refusal_class": "waf_challenge",
+    "note": "sms-group.com sits behind an AWS WAF answering 202 with a JavaScript challenge, sitemap included. The archive's 325 captures are 2020–2022 millwork and hold none of SMS's European decarbonisation orders. ZERO edges in this supplier's own voice; it reaches this file only through Midrex's releases, where Midrex is the speaker."
+   },
+   "sweep": {
+    "listed": 325,
+    "fetched": 0,
+    "index": "Internet Archive CDX of sms-group.com press-detail paths",
+    "blocked": "sms-group.com sits behind an AWS WAF answering 202 with a JavaScript challenge, sitemap included. The archive's 325 captures are 2020–2022 millwork and hold none of SMS's European decarbonisation orders.",
+    "note": "Present in this file only through Midrex's releases, where Midrex is the speaker."
+   }
+  },
+  {
+   "id": "wuxi-lead",
+   "kind": "battery_equipment",
+   "name": "Wuxi Lead Intelligent Equipment Co., Ltd.",
+   "listing": "listed",
+   "home": "https://www.leadintelligent.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": "GWh per year",
+    "reason": "NO STATED CAPACITY. Its one edge carries the CUSTOMER's facility capacity, 8 GWh, which is not the size of the equipment order — the release does not size it."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 117,
+    "fetched": 1,
+    "index": "leadintelligent.com/en/news, eight pages",
+    "blocked": null,
+    "note": "All 117 titles read; the English newsroom is marketing, and one item names a European customer and a contract."
+   }
+  },
+  {
+   "id": "manz",
+   "kind": "battery_equipment",
+   "name": "Manz AG",
+   "listing": "listed",
+   "home": "https://www.manz.com",
+   "stated_capacity": [],
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2025-01-10",
+     "date_precision": "day",
+     "status_from": "listed (Prime Standard)",
+     "status_to": "insolvent",
+     "status": "insolvent",
+     "source_url": "https://www.manz.com/post/manz-ag-provides-information-on-the-current-status-of-the-preliminary-insolvency-proceedings",
+     "source_type": "supplier_press",
+     "evidence_mode": "retrospective",
+     "note": "'Manz AG's insolvency filing in December 2024 had become necessary because the company had built up expertise at an early stage and invested heavily in expanding capacities' — the company's own account of why. The filing itself is December 2024 and is not on the site; this is the earliest document that is."
+    },
+    {
+     "event_kind": "status",
+     "date": "2025-01-23",
+     "date_precision": "day",
+     "status_from": "insolvent",
+     "status_to": "moved to General Standard",
+     "status": "moved to General Standard",
+     "source_url": "https://www.manz.com/post/manz-ag-is-going-to-switch-from-the-prime-standard-to-the-general-standard",
+     "source_type": "supplier_press",
+     "evidence_mode": "retrospective",
+     "note": "Listing segment change during the proceedings."
+    },
+    {
+     "event_kind": "status",
+     "date": "2025-02-25",
+     "date_precision": "day",
+     "status_from": "moved to General Standard",
+     "status_to": "insolvency proceedings opened; core business sold to Tesla Automation GmbH",
+     "status": "insolvency proceedings opened; core business sold to Tesla Automation GmbH",
+     "source_url": "https://www.manz.com/post/manz-ag-opening-of-insolvency-proceedings",
+     "source_type": "supplier_press",
+     "evidence_mode": "retrospective",
+     "note": "Purchase agreement signed with Tesla Automation GmbH of Prüm, a subsidiary of Tesla, Inc. The battery-equipment supplier was bought by a battery-cell maker this register holds a row for — tesla-gruenheide-cells."
+    },
+    {
+     "event_kind": "status",
+     "date": "2025-02-28",
+     "date_precision": "day",
+     "status_from": "insolvency proceedings opened; core business sold to Tesla Automation GmbH",
+     "status_to": "Slovak subsidiary sold to Greatech; Asian business sold in a management buy-out",
+     "status": "Slovak subsidiary sold to Greatech; Asian business sold in a management buy-out",
+     "source_url": "https://www.manz.com/post/manz-ag-sells-subsidiary-in-slovakia",
+     "source_type": "supplier_press",
+     "evidence_mode": "retrospective",
+     "note": "Two disposals announced the same day; the Asia sale is in a separate release."
+    },
+    {
+     "event_kind": "status",
+     "date": "2025-04-24",
+     "date_precision": "day",
+     "status_from": "Slovak subsidiary sold to Greatech; Asian business sold in a management buy-out",
+     "status_to": "sales to Tesla, Greatech and the Asia buy-out completed",
+     "status": "sales to Tesla, Greatech and the Asia buy-out completed",
+     "source_url": "https://www.manz.com/post/manz-ag-completes-sales-to-tesla-greatech-and-asia-management-buy-out",
+     "source_type": "supplier_press",
+     "evidence_mode": "retrospective",
+     "note": "Closing conditions all fulfilled."
+    },
+    {
+     "event_kind": "status",
+     "date": "2025-07-11",
+     "date_precision": "day",
+     "status_from": "sales to Tesla, Greatech and the Asia buy-out completed",
+     "status_to": "US subsidiary sold to ekvip automation GmbH",
+     "status": "US subsidiary sold to ekvip automation GmbH",
+     "source_url": "https://www.manz.com/post/manz-ag-sells-subsidiary-in-the-usa-to-ekvip-automation-gmbh",
+     "source_type": "supplier_press",
+     "evidence_mode": "retrospective",
+     "note": "The last disposal on the site."
+    }
+   ],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": null,
+    "reason": "NO STATED CAPACITY. Sixteen items on the site, all insolvency notices or disposals."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 16,
+    "fetched": 16,
+    "index": "manz.com blog-posts sitemap",
+    "blocked": null,
+    "note": "All sixteen are insolvency notices or disposals. There is no customer announcement left on the site."
+   }
+  },
+  {
+   "id": "hitachi",
+   "kind": "battery_equipment",
+   "name": "Hitachi, Ltd.",
+   "listing": "listed",
+   "home": "https://www.hitachi.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": null,
+    "reason": "NO STATED CAPACITY. The unit that makes the equipment refuses a reader."
+   },
+   "state": {
+    "incomplete": true,
+    "manual_queue": null,
+    "refusal_class": "403",
+    "note": "hitachi-hightech.com — the group unit that makes battery production equipment — answers 403 on its newsroom and its sitemap. The corporate press page lists five items with no walkable archive."
+   },
+   "sweep": {
+    "listed": 5,
+    "fetched": 0,
+    "index": "hitachi.com/en/press/",
+    "blocked": "hitachi-hightech.com — the group unit that makes battery production equipment — answers 403 on its newsroom and its sitemap. The corporate press page lists five items with no walkable archive; /en/press/archive/<year>/ and /New/cnews/<year>/ are 404.",
+    "note": null
+   }
+  },
+  {
+   "id": "northern-lights",
+   "kind": "co2_storage_or_transport",
+   "name": "Northern Lights JV DA",
+   "listing": "unlisted",
+   "home": "https://norlights.com",
+   "stated_capacity": [
+    {
+     "value": 1500000,
+     "unit": "tonnes CO2 per year",
+     "basis": "nameplate",
+     "phase": "phase 1",
+     "available_from": "2024",
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://norlights.com/news/northern-lights-is-expanding-capacity-through-commercial-agreement/",
+     "date": "2025-03-27",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "Phase 1 capacity, stated in the release that announces its expansion. 'Ready to receive CO2 from 2024, Northern Lights is the first company to offer commercial CCS services', and the same release says operations start in the summer of 2025 with Heidelberg Materials' Brevik cement works."
+    },
+    {
+     "value": 5000000,
+     "unit": "tonnes CO2 per year",
+     "basis": "nameplate",
+     "phase": "phase 2",
+     "available_from": "2028",
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://norlights.com/news/northern-lights-is-expanding-capacity-through-commercial-agreement/",
+     "date": "2025-03-27",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "Phase 2, 'a minimum of 5 million tonnes'. 'The expansion is expected to be completed and ready for operation in the second half of 2028.' FID taken on the strength of the Stockholm Exergi agreement announced in the same release — the expansion and the contract that justified it are one document, and that contract runs from 2028, which is this phase and not the one before it."
+    }
+   ],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": null,
+   "sweep": {
+    "listed": 86,
+    "fetched": 86,
+    "index": "norlights.com WordPress sitemap",
+    "blocked": null,
+    "note": null
+   }
+  },
+  {
+   "id": "porthos",
+   "kind": "co2_storage_or_transport",
+   "name": "Porthos CO2 Transport & Storage C.V.",
+   "listing": "unlisted",
+   "home": "https://www.porthosco2.nl",
+   "stated_capacity": [
+    {
+     "value": 2500000,
+     "unit": "tonnes CO2 per year",
+     "basis": "nameplate",
+     "phase": null,
+     "available_from": null,
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://www.porthosco2.nl/en/first-co2-storage-project-in-the-netherlands-is-launched/",
+     "date": "2023-10-18",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "'Porthos plans to store about 2.5 Mton per year for 15 years, totalling around 37 Mton. With that, Porthos has contracted its full storage capacity.' A store that is SOLD OUT at FID — the clearest case on this perimeter of demand meeting a stated capacity exactly, and the reason the arithmetic section can say something about this node."
+    }
+   ],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": "tonnes CO2 per year",
+    "edge_unit": null,
+    "reason": "THE UNITS WOULD MATCH IF THE EDGES CARRIED A QUANTITY. The store is contracted to exactly its nameplate and says so — 'Porthos has contracted its full storage capacity' — but the release gives one combined 2.5 Mt/yr for four customers and does not split it, so all four edges carry no quantity and the sum cannot be built from them. A store sold out with an unsplit customer list."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 77,
+    "fetched": 77,
+    "index": "porthosco2.nl post sitemap, /en/ items",
+    "blocked": null,
+    "note": null
+   }
+  },
+  {
+   "id": "aramis",
+   "kind": "co2_storage_or_transport",
+   "name": "Aramis CCS",
+   "listing": "unlisted",
+   "home": "https://www.aramis-ccs.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": null,
+    "reason": "NO STATED CAPACITY. Pre-FID: permitting, tendering, subsidy and engineering, and no emitter contract."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 65,
+    "fetched": 65,
+    "index": "aramis-ccs.com/news",
+    "blocked": null,
+    "note": "Pre-FID: permitting, tendering, subsidy and engineering. No emitter contract."
+   }
+  },
+  {
+   "id": "greensand",
+   "kind": "co2_storage_or_transport",
+   "name": "Project Greensand / Greensand Future",
+   "listing": "unlisted",
+   "home": "https://www.projectgreensand.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": "tonnes CO2 per year",
+    "reason": "NO STATED CAPACITY. States no injection rate for itself."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 43,
+    "fetched": 43,
+    "index": "greensandfuture.com/news",
+    "blocked": null,
+    "note": "projectgreensand.com now resolves to greensandfuture.com. Much of the 2023 first-injection record is in Danish and was read only as far as its slugs."
+   }
+  },
+  {
+   "id": "ravenna-ccs",
+   "kind": "co2_storage_or_transport",
+   "name": "Ravenna CCS (Eni / Snam)",
+   "listing": "listed",
+   "home": "https://www.eni.com",
+   "stated_capacity": [
+    {
+     "value": 25000,
+     "unit": "tonnes CO2 per year",
+     "basis": "nameplate",
+     "phase": "phase 1",
+     "available_from": "2024",
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://www.eni.com/en-IT/media/press-release/2024/09/eni-snam-launch-ravenna-css-italy-s-first-carbon-capture-storage-project.html",
+     "date": "2024-09-03",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "Phase 1, in operation: CO2 from Eni's Casalborsetti gas treatment plant, stored 3,000 m down in the depleted Porto Corsini Mare Ovest field. Capture efficiency over 90%, peaks of 96%."
+    },
+    {
+     "value": 4000000,
+     "unit": "tonnes CO2 per year",
+     "basis": "nameplate",
+     "phase": "phase 2",
+     "available_from": "2030",
+     "speaker": "supplier",
+     "source_type": "supplier_press",
+     "url": "https://www.eni.com/en-IT/media/press-release/2024/09/eni-snam-launch-ravenna-css-italy-s-first-carbon-capture-storage-project.html",
+     "date": "2024-09-03",
+     "date_precision": "day",
+     "captured_at": null,
+     "archived": null,
+     "note": "Phase 2, 'up to 4 million tonnes of CO2 per year by 2030'. A 2030 target stated in 2024, 160 times phase 1, and recorded beside it rather than instead of it."
+    }
+   ],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": {
+    "incomplete": false,
+    "manual_queue": null,
+    "refusal_class": "script_rendered_index",
+    "note": "eni.com's media index renders by script and the CCS pages have moved. The launch release was reached directly rather than by walking an index, so the node rests on two pages located by search — there may be more and this sweep cannot say there are not."
+   },
+   "sweep": {
+    "listed": 2,
+    "fetched": 2,
+    "index": "eni.com press release located by search",
+    "blocked": "eni.com's media index renders by script and the CCS pages have moved; the launch release was reached directly rather than by walking an index.",
+    "note": null
+   }
+  },
+  {
+   "id": "endurance-nep",
+   "kind": "co2_storage_or_transport",
+   "name": "Northern Endurance Partnership / Endurance store",
+   "listing": "unlisted",
+   "home": "https://www.netzeroteesside.co.uk",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": {
+    "comparable": false,
+    "node_unit": null,
+    "edge_unit": null,
+    "reason": "NO STATED CAPACITY. Contractor awards and supply-chain news; no emitter contract with a tonnage anywhere in it."
+   },
+   "state": null,
+   "sweep": {
+    "listed": 34,
+    "fetched": 32,
+    "index": "netzeroteesside.co.uk post sitemap",
+    "blocked": null,
+    "note": "Shared newsroom with NZT Power. Contractor awards and supply-chain news; no emitter contract with a tonnage anywhere in it."
+   }
+  }
+ ]
+}
