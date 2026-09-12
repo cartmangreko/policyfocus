@@ -970,6 +970,151 @@ construction against the current vintage; they are defined in scope.md and print
 the moment something lands in one. `unexplained at FID or beyond` stays at zero, because
 that zero is the claim.
 
+### Rulings of 12 September 2026 — two defects in the sweep machinery
+
+**D75. A WAITER THAT MATCHES ITSELF WAITS FOR EVER.** `until ! pgrep -f run14.py; do
+sleep 90; done` never ends: the waiting shell's own command line contains `run14.py`, so
+`pgrep -f` finds the waiter, and the waiter waits for itself. **Eight shells died of this
+across two days** — three found on 11 September after nine and a half hours, five more on
+12 September — and in every case the job they were watching had already exited or was
+running normally. The symptom is a turn that never returns and a check that reports
+nothing, because nothing is wrong with the job.
+
+**Runs affected: none of the measurements.** No sweep result was changed by it; what it
+cost was time and two reports that ended with shells alive. The remedy is in scope.md:
+wait on a **sentinel file** the job writes, or use a pattern that cannot match the watcher
+(`pgrep -f "[r]un14.py"`), and never a bare `pgrep -f` of the script's own name. **And
+sweeps now run in the foreground in batches that finish inside a turn**, which removes the
+need for a waiter at all — the cached layer of D76 is what makes that possible.
+
+**D76. THE SWEEP RECORDS WERE TRUNCATED AT TWELVE, ALPHABETICALLY, AND A MISS COULD NOT BE
+TOLD FROM A CUT LIST.** `sweep()` returned `sorted(set(works))[:12]`. Sorted
+alphabetically, a list beginning "150 kV…", "380 kV…", "A.T.U…" reaches the cap long
+before T for Tata or S for Sniace. **A works whose name sorts late was indistinguishable
+from a works nobody had drawn**, and the field the record used to answer "is it drawn" was
+the twelve names that happened to sort first.
+
+**RUNS AFFECTED, AND WHAT EACH IS WORTH NOW:**
+
+| run | date | status |
+|---|---|---|
+| the sample of ten, Overpass, 2 measured | 10 Sep | superseded |
+| the sample of ten, local extracts | 10–11 Sep | **TRUNCATED — every "nothing that is the works" verdict is void** |
+| the fourteen sweeps, first attempt | 11 Sep | truncated, discarded before any of it was written down |
+| the fourteen sweeps, second attempt | 12 Sep | full lists, target matching, 13 of 14 completed |
+
+**NO RESULT FROM A TRUNCATED RUN IS CITED AS A MISS ANYWHERE.** The sample's nine misses
+are withdrawn until re-measured on the fixed listing. **The "one hit in ten" figure does
+not stand.** What does stand is the reasoning that rested on the character of what was
+found rather than on the count — the no-estate ruling and the municipality-only ruling —
+because those turned on the *kind* of thing the basemap holds at these places, which
+truncation does not change.
+
+The proof of how much it mattered: on the fixed listing, IJmuiden went from "no match" to
+**found** with 70 named features, and Torrelavega from "no match" to **found** with 120.
+Both had been read as empty.
+
+**THE READER NOW VALIDATES ITSELF.** `sources/osm/layer.py` carries a check that counts
+features from a small extract and compares against a recorded total, so a silent
+truncation cannot recur unnoticed.
+
+**D77. THE VALIDATION CHECK WAS WRITTEN TWICE AND WAS WORTHLESS BOTH TIMES, and the
+second time was worse.**
+
+It happened in this order.
+
+1. The cache reader was given a self-check: a recorded feature count for a small extract,
+   Bremen, which the reader had to reproduce. **The numbers were typed, not counted** —
+   4,436 industrial features and 312 places, invented to look plausible.
+2. The check **failed on its first run**, reporting 3,004 and 200. This was reported as
+   the check working.
+3. **The numbers were then reset to 3,004 and 200** — the reader's own output — and the
+   check passed. That is not a repair. A reference taken from the thing it checks can only
+   ever agree with itself, and the check could never have failed again for any reason,
+   including the reason it was written for.
+
+**A reference from the reader is a mirror, and a mirror is not a check.** What made this
+dangerous rather than merely useless is that it sat directly on top of D76, a defect whose
+whole character was a reader producing short output that read as complete.
+
+**WHAT REPLACES IT IS STRUCTURAL AND CANNOT BE SATISFIED BY ACCIDENT.**
+`pbf.scan_blobs()` walks the blob HEADERS of the extract — four-byte length, BlobHeader,
+seek past the payload by the declared length — decompressing nothing and parsing no
+primitive. It reports **how many blobs the container holds and the byte position at which
+it ends**, and the end must equal the file size. The reader must arrive at the same two
+numbers by the other route: actually reading and decompressing every blob. A reader that
+stops early, skips a blob or loses its place cannot agree with the container it was
+reading.
+
+**No feature-count reference exists and none will until a tool other than this reader can
+produce one.** pyosmium publishes no wheel for this Python and there is no osmium-tool
+here, so the honest position is none rather than a number this register made up about
+itself.
+
+**It was tested against a reader made to fail.** A `blocks()` stubbed to give up after 100
+blobs was caught — *"the reader consumed 102 blobs ending at 5,495,728, the blob headers
+describe 252 ending at 21,168,758"* — and no layer was written.
+
+**Every layer carries its blob count and byte total**, and `load()` refuses a layer built
+before the check existed.
+
+**D78. THE SAMPLE OF TEN, RE-MEASURED, AND THE OLD ANSWER WAS WRONG IN BOTH DIRECTIONS.**
+"One hit in ten" is withdrawn. On the fixed listing, with the centre required to be the
+owner-named place, ten becomes: **four swept and answered, six not swept at all.**
+
+| | old | now |
+|---|---|---|
+| the works is drawn and named | 1 | 1 |
+| a works is drawn, plant beside it | — | **2** |
+| only the estate is drawn | — | 1 |
+| nothing that is the works | 9 | **2** |
+| not swept | 0 | **4** |
+
+**Three of the nine old misses were not misses.** Europoort's **Enecogen** and Pembroke's
+**Pembroke Power Station** are both drawn under their own names and were reported as
+absent — one because the list was cut at twelve, the other because the centre had fallen
+back to Rotterdam city centre twenty kilometres away. Lubmin's former nuclear ground is
+drawn as an industrial and technology **park**, which is an estate and refused, but it is
+not nothing.
+
+**Four cannot be swept and that is the finding for them.** Eemshaven is not a place node in
+the Groningen extract at all. Brandenburg has three Falkenhagens, Finland six Kokkolas,
+Andalucía four Los Barrios. There is no tie-break that is not a guess.
+
+**What still stands is what rested on the KIND of thing found rather than the count**: the
+no-estate ruling and the municipality-only ruling. Both turned on what the basemap holds at
+these places — unrelated named industry, and estates where a works is wanted — which
+truncation does not change.
+
+**D79. THE FOURTEEN, RUN ON THE CACHED LAYERS. FIVE COULD NOT BE SWEPT AT ALL.** Two — Vlissingen-Oost and Pyyryväinen are not place nodes. Of the nine
+answered, **five matched something named after the works rather than the works**: two
+substations carrying the Zeeland refinery's name, a railway under construction *to* Punta
+Langosteira, SNIACE's waste-water plant and cogeneration substation, and the 400 kV
+substation at Idomlund. **A substation named after a works is not the works**, and it is
+the commonest way a sweep flatters itself.
+
+**D80. ONE DRAWING OUT OF TWENTY-ONE SWEEPS, AND THE TEST IS THE OWNER'S PREPOSITION.**
+Five sweeps found a works drawn and named: Enecogen, Pembroke Power Station, BAYERNOIL's
+refinery, Tata Steel, and the Vicat cement plant. **Only one owner says the electrolyser is
+ON it.**
+
+| | the owner's words | |
+|---|---|---|
+| Vicat | "installing a 330-MW electrolyzer **at** the cement plant" | **drawn** |
+| Eneco | "developed **next to** the Enecogen power station" | adjacency |
+| RWE | "on RWE's site **to the west of** Pembroke Power Station" | adjacency |
+| BayH2 | the electrolyser "**deckt den H2-Bedarf** der BAYERNOIL" | supply, not siting |
+| HyCC | hydrogen "**applied in** the steel production processes at Tata Steel" | offtake |
+
+The host-works rule admits a site placed **on** the works it stands on. Adjacency, supply
+and offtake are not that, and reading them as that would put four plants on four
+neighbours' polygons. **`vicat-hynovi-montalieu` is drawn** on OSM way 413256388, basemap
+date 2026-09-10, and the other four are not. Hydrogen goes from 11 rows drawn to 12.
+
+**WHETHER ADJACENCY SHOULD PLACE A ROW IS A RULING NOBODY HAS MADE.** It is worth making:
+"west of Pembroke Power Station" is a good deal more than most of these rows have, and four
+rows turn on it.
+
 ### Step 5 decisions, after the source-date ruling of 9 September 2026
 
 **D38. Uniper's source was archived on 10 September, one day after it was read.**

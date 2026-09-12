@@ -1,45 +1,38 @@
-"""A coordinate sweep against a dated Geofabrik extract, read locally.
+"""A coordinate sweep against a cached layer built from a dated Geofabrik extract.
 
-    python3 sources/osm/sweep.py <extract.osm.pbf> <lat> <lon> <radius_m> [label]
+    python3 sources/osm/sweep.py <layer.json> <place name> <radius_m> [target ...]
 
 WHAT A SWEEP ANSWERS is not "is anything drawn here" but "is anything drawn here that is
-the works". Four buckets, in the order the perimeter cares about:
+THE WORKS". The targets are the names the owner or the permit uses, and `target_hits` is
+the finding; everything else in the record is context.
 
-    works   a named man_made=works, power=plant or tagged industrial feature that could be
-            the plant itself
-    estate  a named industrial park, port or business park — REFUSED as a position under
-            the Subotica and Mo i Rana rule, and counted to size the problem
-    parcel  unnamed industrial landuse or buildings, which a permit could later confirm
-    none    nothing of any of those inside the radius
+THE CENTRE COMES FROM THE LAYER'S OWN PLACE NODES and is never written down. Never a
+geocoder — a geocoding service returns a third party's coordinate, which this register has
+refused as a position since the perimeter was written, and calling it a search hint would
+launder the refusal. The centre is scaffolding, discarded when the search ends; what is
+recorded is the NAME of the place matched, so a reader can see where the search pointed.
 
-THE EXTRACT DATE IS PART OF THE ANSWER. Geofabrik redirects `-latest` to a dated filename
-and this tool refuses a file whose date it cannot read, because a sweep that cannot say
-which day's basemap it read is not repeatable and is therefore not evidence.
+NOTHING IS TRUNCATED. The named lists are returned whole. They were cut at twelve
+alphabetically until 12 September 2026, which made a works whose name sorts late — Tata
+Steel, Sniace — indistinguishable from a works nobody had drawn, and every miss measured
+that way was void (D76).
 """
 from __future__ import annotations
 
 import json
 import math
-import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import pbf  # noqa: E402
+import layer as osm_layer  # noqa: E402
 
 ESTATE_WORDS = ("industriegebiet", "gewerbe", "industrial estate", "industrial park",
                 "polígono", "poligono", "zona industrial", "parque", "hafen", "port ",
-                "puerto", "industripark", "zone industrielle", "bedrijventerrein")
-DATED = re.compile(r"-(\d{6})\.osm\.pbf$")
-
-
-def extract_date(path: Path) -> str:
-    m = DATED.search(path.name)
-    if not m:
-        raise SystemExit(f"{path.name} carries no Geofabrik date; re-download the dated "
-                         f"filename so the sweep can say which basemap it read")
-    y, mo, d = m.group(1)[:2], m.group(1)[2:4], m.group(1)[4:]
-    return f"20{y}-{mo}-{d}"
+                "puerto", "industripark", "zone industrielle", "bedrijventerrein",
+                "zone d'activités", "zone d'activites", "teollisuusalue")
+PLACE_RANK = {"city": 0, "town": 1, "suburb": 2, "village": 3, "quarter": 4,
+              "neighbourhood": 5, "hamlet": 6, "locality": 7, "isolated_dwelling": 8}
 
 
 def metres(lat1, lon1, lat2, lon2) -> float:
@@ -50,80 +43,71 @@ def metres(lat1, lon1, lat2, lon2) -> float:
     return 2 * r * math.asin(math.sqrt(a))
 
 
-def interesting(tags: dict) -> bool:
-    return (tags.get("man_made") == "works" or tags.get("power") in ("plant", "substation")
-            or tags.get("landuse") in ("industrial", "port") or "industrial" in tags
-            or tags.get("building") == "industrial")
+def centre(doc: dict, names: set[str]):
+    """Every place node whose name is one of `names`. THE CALLER DECIDES, AND MAY NOT GUESS.
+
+    An earlier version returned the highest-ranked single match and the caller passed it a
+    set that included fallbacks — the owner's place plus its parent city plus the village
+    the benchmark's coordinate fell in. It silently centred Europoort on ROTTERDAM CITY
+    CENTRE, twenty kilometres away, and Eemshaven on Pieterburen, and both returned lists
+    of real named industry that would have been recorded as the works not being drawn.
+    That is the truncation defect wearing different clothes: a wrong answer shaped like a
+    right one.
+
+    So this returns all of them and the three outcomes are kept apart by the caller:
+
+        one match    sweep it
+        no match     NOT SWEPT — the owner-named place is not a place node in this
+                     extract, which is a fact about the basemap and not a miss
+        many         NOT SWEPT — ambiguous. Brandenburg has three villages called
+                     Falkenhagen; picking one is a guess, and a guess here produces a
+                     finding about somewhere else.
+    """
+    return [(PLACE_RANK.get(p["k"], 9), p["n"], p["k"], p["lat"], p["lon"])
+            for p in doc["places"] if p["n"].casefold() in names]
 
 
-def sweep(path: Path, lat: float, lon: float, radius: int) -> dict:
+def sweep(doc: dict, lat: float, lon: float, radius: int,
+          targets: list[str] | None = None) -> dict:
+    works, estates, parcels = [], [], 0
     box = radius / 111320.0 * 1.6
-    want_nodes: dict[int, list] = {}
-    ways: list[tuple] = []
-    named_here, parcels = [], 0
-
-    for raw in pbf.blocks(path):
-        for item in pbf.parse_block(raw):
-            if item[0] == "node":
-                _, _, la, lo, tags = item
-                if not tags or not interesting(tags):
-                    continue
-                if abs(la - lat) > box or abs(lo - lon) > box:
-                    continue
-                if metres(lat, lon, la, lo) > radius:
-                    continue
-                if tags.get("name"):
-                    named_here.append((tags["name"], tags))
-                else:
-                    parcels += 1
-            else:
-                _, _, refs, tags = item
-                if not tags or not interesting(tags) or not refs:
-                    continue
-                ways.append((refs[0], tags))
-                want_nodes[refs[0]] = None
-
-    if want_nodes:                       # second pass: resolve one node per way
-        for raw in pbf.blocks(path):
-            for item in pbf.parse_block(raw):
-                if item[0] != "node":
-                    continue
-                _, nid, la, lo, _ = item
-                if nid in want_nodes:
-                    want_nodes[nid] = (la, lo)
-
-    for ref, tags in ways:
-        pos = want_nodes.get(ref)
-        if not pos or metres(lat, lon, pos[0], pos[1]) > radius:
+    for f in doc["industrial"]:
+        if abs(f["lat"] - lat) > box or abs(f["lon"] - lon) > box:
             continue
-        if tags.get("name"):
-            named_here.append((tags["name"], tags))
-        else:
+        if metres(lat, lon, f["lat"], f["lon"]) > radius:
+            continue
+        name = f.get("n")
+        if not name:
             parcels += 1
+            continue
+        label = f"{name} [{f['t']}]"
+        low = name.casefold()
+        (estates if any(w in low for w in ESTATE_WORDS) else works).append(label)
 
-    # AN ESTATE IS NAMED LIKE AN ESTATE. The first version of this test also sent every
-    # landuse=industrial feature to `estate`, and that put "cimenterie Vicat" — the cement
-    # works Hynovi's electrolyser is to stand on, drawn and named by its operator — in the
-    # bucket the perimeter refuses. A polygon's landuse tag says what the land is used for,
-    # not whether it is one company's works or forty companies' park; the NAME is what
-    # distinguishes them, and where the name is a company's it is a works.
-    works, estates = [], []
-    for name, tags in named_here:
-        low = name.lower()
-        (estates if any(w in low for w in ESTATE_WORDS) else works).append(
-            f"{name} [{tags.get('landuse') or tags.get('man_made') or tags.get('power') or 'industrial'}]")
-    return {"basemap_date": extract_date(path), "extract": path.name,
-            "lat": lat, "lon": lon, "radius_m": radius,
-            "verdict": "works" if works else "estate" if estates
-                       else "parcel" if parcels else "none",
-            "named_works": sorted(set(works))[:12],
-            "named_estates": sorted(set(estates))[:12],
-            "unnamed_industrial_parcels": parcels}
+    named_works, named_estates = sorted(set(works)), sorted(set(estates))
+    out = {"basemap_date": doc["basemap_date"], "extract": doc["extract"],
+           "radius_m": radius,
+           "verdict": "works" if works else "estate" if estates
+                      else "parcel" if parcels else "none",
+           "named_works": named_works, "named_estates": named_estates,
+           "named_count": len(named_works) + len(named_estates),
+           "unnamed_industrial_parcels": parcels}
+    if targets:
+        hits = {t: [n for n in named_works + named_estates if t.casefold() in n.casefold()]
+                for t in targets}
+        out["target_hits"] = {k: v for k, v in hits.items() if v}
+        out["target_found"] = any(hits.values())
+    return out
 
 
 if __name__ == "__main__":
-    p = Path(sys.argv[1])
-    out = sweep(p, float(sys.argv[2]), float(sys.argv[3]), int(sys.argv[4]))
-    if len(sys.argv) > 5:
-        out["id"] = sys.argv[5]
-    print(json.dumps(out, ensure_ascii=False, indent=1))
+    doc = osm_layer.load(Path(sys.argv[1]))
+    cs = centre(doc, {sys.argv[2].casefold()})
+    if len(cs) != 1:
+        raise SystemExit(f"{len(cs)} place nodes named {sys.argv[2]!r} in {doc['extract']} "
+                         f"— one is required; none means the place is not in the basemap "
+                         f"and several means picking one would be a guess")
+    _, pname, pkind, la, lo = cs[0]
+    res = sweep(doc, la, lo, int(sys.argv[3]), sys.argv[4:] or None)
+    res["centre_place"] = f"{pname} ({pkind})"
+    print(json.dumps(res, ensure_ascii=False, indent=1))

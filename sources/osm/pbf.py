@@ -68,8 +68,47 @@ def _packed(buf: bytes, zig: bool = False):
         yield _zigzag(v) if zig else v
 
 
-def blocks(path: Path):
-    """Every OSMData PrimitiveBlock in the file, decompressed."""
+def scan_blobs(path: Path) -> tuple[int, int]:
+    """Walk the blob HEADERS only: how many blobs, and where the file ends.
+
+    INDEPENDENT OF EVERYTHING THE READER DOES. It decompresses nothing, parses no
+    primitive, and knows nothing about tags, ways or features. It reads a four-byte
+    length, the BlobHeader that follows, and then SEEKS PAST the payload by the length the
+    header declares. If the file is well formed this lands exactly on the next header and,
+    at the end, exactly on the last byte of the file.
+
+    That is what makes it a check rather than a mirror. A reference taken from the reader's
+    own output can only ever agree with itself; this one is computed from the container and
+    the reader has to arrive at the same two numbers by a different route.
+    """
+    n, pos = 0, 0
+    with open(path, "rb") as fh:
+        while True:
+            head = fh.read(4)
+            if len(head) < 4:
+                return n, pos
+            (hlen,) = struct.unpack(">I", head)
+            header = fh.read(hlen)
+            dsize = 0
+            for fn, _, v in fields(header):
+                if fn == 3:
+                    dsize = v
+            fh.seek(dsize, 1)
+            n += 1
+            pos = fh.tell()
+
+
+def blocks(path: Path, stats: dict | None = None):
+    """Every OSMData PrimitiveBlock in the file, decompressed.
+
+    `stats`, if given, is filled with the number of blobs consumed and the byte position
+    reached, so a caller can prove the whole file was read. EVERY blob is counted, header
+    blobs included, because the structural walk counts them too and two numbers that
+    measure different things cannot check each other.
+    """
+    if stats is not None:
+        stats["blobs"] = 0
+        stats["bytes"] = 0
     with open(path, "rb") as fh:
         while True:
             head = fh.read(4)
@@ -84,6 +123,9 @@ def blocks(path: Path):
                 elif fn == 3:
                     dsize = v
             blob = fh.read(dsize)
+            if stats is not None:
+                stats["blobs"] += 1
+                stats["bytes"] = fh.tell()
             if btype != "OSMData":
                 continue
             raw = None
