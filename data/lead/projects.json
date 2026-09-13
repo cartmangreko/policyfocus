@@ -8577,6 +8577,89 @@
       ],
       "override_stale": false,
       "notes": []
+    },
+    "univercell-flintbek": {
+      "id": "univercell-flintbek",
+      "template_version": 1,
+      "fingerprint": "d192d0ff76e322cd",
+      "sentence": {
+        "text": "UniverCell Flintbek is UniverCell Holding GmbH's batteries and solar project at Flintbek, Germany.",
+        "from": [
+          "where"
+        ],
+        "sourced": [
+          "UniverCell Flintbek",
+          "UniverCell Holding GmbH",
+          "Flintbek, Germany"
+        ],
+        "source": "generated"
+      },
+      "why_it_matters": {
+        "text": "It is running.",
+        "from": [
+          "status"
+        ],
+        "source": "generated"
+      },
+      "facts": [
+        {
+          "id": "status",
+          "text": "UniverCell Flintbek started operating on 12 September 2026.",
+          "as_of": "2026-09-12",
+          "numbers": [],
+          "sourced": [
+            "UniverCell Flintbek"
+          ],
+          "href": "https://www.univercell.de/unternehmen",
+          "surface": true
+        },
+        {
+          "id": "where",
+          "text": "Its site is at Flintbek, Germany.",
+          "as_of": "2026-09-12",
+          "numbers": [],
+          "sourced": [
+            "Flintbek, Germany"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "technology",
+          "text": "It uses gigafactory-scale cell manufacturing.",
+          "as_of": "2026-09-12",
+          "numbers": [],
+          "sourced": [
+            "gigafactory-scale cell manufacturing"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "capacity",
+          "text": "It is built for 1.5 GWh per year.",
+          "as_of": "2026-09-12",
+          "numbers": [
+            "1.5"
+          ],
+          "sourced": [
+            "GWh per year"
+          ],
+          "href": null,
+          "surface": true
+        },
+        {
+          "id": "funding",
+          "text": "No committed public money is on file for it.",
+          "as_of": "2026-09-12",
+          "numbers": [],
+          "sourced": [],
+          "href": null,
+          "surface": true
+        }
+      ],
+      "override_stale": false,
+      "notes": []
     }
   }
 }
