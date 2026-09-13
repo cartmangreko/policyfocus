@@ -1847,3 +1847,91 @@ this reader can produce it. The first attempt at a self-check carried typed numb
 on its own first run, and was then "repaired" by setting the numbers to what the reader had
 just produced — which made it pass by construction for ever. **A reference taken from the
 thing it checks is a mirror.** See D77.
+
+### Adjacency does not place a row
+
+An owner who says the plant is **next to**, **west of** or **near** a works has located the
+project relative to a feature. **They have not said which ground it is on**, and a marker
+on the anchor would be wrong by an unknown distance — a few hundred metres at Europoort,
+possibly more at Pembroke, and nothing in the sentence says which.
+
+So the anchor is **recorded and not drawn**. `location_statement` on the row carries the
+anchor feature with its OSM id, the owner's own preposition, the verbatim sentence, and the
+source with its date. `located` stays `"no"`.
+
+**For the ladder it is still a location.** Rung 1 asks whether the owner names the location
+finer than the municipality, and naming a works and a side of it plainly does. **That is the
+ladder's test, not the map's, and the two give different answers here on purpose**: one
+scores what an owner has disclosed, the other decides what may be drawn. A register that
+made them agree would be letting the map decide what counts as disclosure.
+
+**Three rows carry an adjacency statement**: Eneco at Europoort ("next to the Enecogen power
+station"), RWE at Pembroke ("to the west of Pembroke Power Station"), TotalEnergies and Air
+Liquide in Zeeland ("near the Zeeland refinery").
+
+**And two carry something weaker that must not be mistaken for it.** BayH2's page says the
+electrolyser *supplies* BAYERNOIL; the IPCEI register says H2ermes's hydrogen is *applied
+in* Tata Steel's processes. Those name a works for a reason that is not siting. They are
+recorded — the works is drawn and somebody will otherwise reach for it — with
+`names_location_finer_than_municipality: false`, and they should not clear rung 1 on their
+own.
+
+### A host works is matched by tag, not by name
+
+A sweep may treat a feature as the host works only where its tag is `landuse=industrial` or
+`man_made=works`. **A name match on anything else is not a host works.**
+
+Five of nine answered sweeps matched on a name alone and were wrong: two substations called
+"Zeeland refinery", the 400 kV substation at Idomlund, SNIACE's cogeneration substation, and
+"Obras tren a Punta Langosteira" — which is the *railway being built to* the port. Pembroke
+produced nine street cabinets carrying the word Substation. **The electricity that leaves a
+works and the railway that reaches it are named after it and are not it.**
+
+`power=plant` is excluded deliberately. A power station is a works for its own purposes, and
+where a hydrogen project stands on one the row says so through a named target rather than
+through a tag that also matches every solar farm.
+
+**Matches on the wrong kind of feature are kept, not discarded**, under
+`named_after_but_not_the_works`: that a substation carries a works's name is evidence the
+works is *there*, and no evidence at all of where its ground is.
+
+### A cadastral parcel may be a drawing, one cadastre at a time
+
+**Narrowly, and for Norway only so far.** Where a permit **states a cadastral parcel**, and
+the national cadastre publishes that parcel's geometry under an **open licence**, the parcel
+polygon is a permit-derived drawing: the basemap is named as the cadastre rather than
+OpenStreetMap, its date is recorded, the parcel identifier goes on the row, and **the permit
+is the source**.
+
+**Norway's cadastre qualifies on licence.** Kartverket publishes its open data under
+**Creative Commons Attribution 4.0 International**, requiring that "the name of the
+Norwegian Mapping Authority will appear in all contexts where the products or extracts of
+these are used", as **©Kartverket**. Read 13 September 2026.
+
+**Both conditions are required and Nesbruket meets only one.** Gen2 Energy holds a general
+building permit from Vefsn municipality for the hydrogen plant at Nesbruket, and **no source
+this register can read states the gnr/bnr**: not Gen2's own release, not the trade coverage,
+not the municipality's public pages, which answer 404 to a declared reader. **Nesbruket is
+not drawn.** The permit is queued in `sources/manual/wanted`; the day somebody reads a
+parcel number off it, the rule is already written.
+
+**Every other country's cadastre comes one at a time, with its licence read first.** A
+cadastre that publishes geometry without an open licence is not a basemap this register may
+draw from, however authoritative it is about the ground.
+
+### A verdict is written from the full result set, never from an excerpt
+
+D76 was a tool that truncated its output. Its lesson was taken to be about the tool, and it
+was not: **the same error was committed again the next day in the reading.** The sweep
+records were complete; the hand verdicts in pull request #58 were written from a printed
+excerpt cut to two entries per row, and two works were declared absent that were in the data
+throughout — the Zeeland refinery and the SNIACE works at Torrelavega. One of them, once
+looked at properly, turned out to be a drawing.
+
+**A display cut hides a works exactly as well as a data cut does**, and it leaves no trace
+in the record to find later. So: a verdict is written against the full result set. Print
+what you like, but read all of it before concluding anything, and where a result is
+summarised for a person the summary says how many it is summarising.
+
+The general form: **truncation is a property of a pipeline, not of a function.** Fixing the
+one place it was found does not fix it, because the next cut is in the next stage.
