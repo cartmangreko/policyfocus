@@ -1,0 +1,55 @@
+{
+  "_comment": [
+    "PROPOSED EDGES — VERDICT NULL. Nothing here is on a row.",
+    "",
+    "sources/scope.md, 'A machine classification never writes to the record': a proposal",
+    "goes to a file whose name says it is a proposal, with every verdict null, and a person",
+    "moves what survives review. This file is that, for the batteries census of 12-13",
+    "September 2026.",
+    "",
+    "ONE EDGE, FROM THE QUANTUMSCAPE RULING OF 13 SEPTEMBER 2026. T&E's list carries",
+    "'QuantumScape Salzgitter' as a gigafactory entry. It is not one: QuantumScape licenses a",
+    "cell that PowerCo makes, and PowerCo's Salzgitter works is already a row here. The entry",
+    "is refused with the clause 'licensor, no works of its own', and the relationship the list",
+    "was pointing at is recorded here as an edge into the works rather than lost with the",
+    "refusal.",
+    "",
+    "`type: technology_licence` IS NEW, added to sector_map.EDGE_TYPES by the same ruling. It",
+    "is not `material`: nothing moves. A licence is a right to make something, and filing it",
+    "as a molecule would put a tonne on a graph that counts tonnes.",
+    "",
+    "FIRMNESS IS AS THE SOURCE STATES IT AND NO FIRMER. The source read is QuantumScape's own",
+    "newsroom headline. It reports a TEST RESULT under an existing agreement; it is not a",
+    "supply contract and is not read as one.",
+    "",
+    "SET `verdict` TO 'accept' OR 'reject' AND THE EDGE MOVES TO THE ROW, or does not."
+  ],
+  "sector": "batsol",
+  "proposed": "2026-09-13",
+  "edges": [
+    {
+      "verdict": null,
+      "on_row": "powerco-salzgitter",
+      "edge": {
+        "kind": "depends_on",
+        "target": "external:quantumscape",
+        "target_name": "QuantumScape Corporation",
+        "type": "technology_licence",
+        "class": "asserted",
+        "since": "2026-09-12",
+        "firmness": "agreement in force, test result reported",
+        "firmness_note": "AS THE SOURCE STATES IT AND NO FIRMER. The page reports that a cell has passed a first endurance test and that PowerCo confirmed the result. That establishes a live technical relationship between the two companies. It does NOT state a licence term, a volume, a date or an exclusivity, and none is read in.",
+        "speaker": "QuantumScape Corporation",
+        "speaker_note": "THE SPEAKER IS THE LICENSOR, NOT THE OPERATOR. QuantumScape publishes this about a works it does not own. PowerCo is named as confirming the result, on QuantumScape's page rather than on its own — which is why the speaker is recorded and why the edge is proposed rather than filed.",
+        "evidence": {
+          "url": "https://www.quantumscape.com/newsroom/",
+          "publisher": "QuantumScape Corporation",
+          "source_type": "company",
+          "retrieved_date": "2026-09-12",
+          "verbatim": "PowerCo confirms results: QuantumScape's solid-state cell passes first endurance test"
+        }
+      },
+      "why_not_filed": "The verbatim is a newsroom headline on an index page, not an article read in full. An asserted edge carries the sentence it was read from, and this register does not write one from a headline without the release behind it. The release is the next thing to read."
+    }
+  ]
+}

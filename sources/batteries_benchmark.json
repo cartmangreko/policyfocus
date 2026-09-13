@@ -1,0 +1,1413 @@
+{
+ "_comment": [
+  "The batteries census: two outside lists, every entry in exactly one class.",
+  "",
+  "    python3 sources/build_batteries_benchmark.py     # the tables, and the gate",
+  "",
+  "WHAT THE BENCHMARK IS, AND WHY IT TOOK A READ RATHER THAN A DOWNLOAD.",
+  "T&E publishes no dataset behind its gigafactory work. The per-factory assignment",
+  "is a CHART in both editions -- Figure 5 on page 15 of the March 2023 report, and",
+  "Annex 1 on page 61 of the May 2024 one -- and `sources/te_backtest.py` recorded,",
+  "correctly, that no list of plants with a class and a 2030 capacity can be read",
+  "out of the PDFs' TEXT LAYER. That finding was about the text layer and was read",
+  "here for a year as a finding about the reports.",
+  "",
+  "IT IS NOT. The charts are raster PNGs with the works' NAMES printed along the",
+  "axis, and the names are legible. So the entry list exists, it is the publisher's",
+  "own, and it is enumerable:",
+  "",
+  "    2023 Figure 5   51 rows -- 50 named works and one \"Others\"",
+  "    2024 Annex 1    50 rows -- 49 named works and one \"Others\"",
+  "",
+  "Both counts were taken twice and by different means: transcribed by reading the",
+  "label column at 600 dpi, and counted independently by finding the label blocks in",
+  "the pixels. The two agree, which is the only reason a gap table is allowed to",
+  "claim it sums to the list.",
+  "",
+  "WHAT IS READ OFF THE CHART AND WHAT IS NOT. The NAMES are text and are recorded.",
+  "The CAPACITIES are bar lengths and are NOT: a number read off a pixel offset is",
+  "a number this register invented, and no entry below carries a capacity from a",
+  "T&E chart. The RISK CLASS is a colour, and it is recorded only as the colour the",
+  "publisher used, never converted into a judgement of this register's own. Several",
+  "bars are stacked across two classes, which is T&E splitting one works' capacity",
+  "by phase; where that happens the entry carries both.",
+  "",
+  "THE SECOND LIST IS BATTERY-NEWS.DE and it is genuinely independent: different",
+  "authors (Gerrit Bockey and Heiner Heimes, PEM at RWTH Aachen), a different method",
+  "(official announcements), and a vintage fourteen months newer than T&E's latest.",
+  "Its atlas is a graphic too, but its figures are TYPED into the graphic rather",
+  "than drawn, so its capacities ARE readable and are recorded as the list's own.",
+  "",
+  "MATCHING, AND WHAT IS NOT A JOIN. T&E's entries carry no identifier, so THE",
+  "BENCHMARK'S OWN IDENTIFIER IS ITS CHART LABEL -- a company and a works, together.",
+  "An entry is matched to a row here when the company AND the works agree; that is",
+  "two stated attributes agreeing, not a name stem, and it is the only route used.",
+  "Where a label names a company and a COUNTRY -- \"SVOLT Finland\", \"VW East.",
+  "Europe\", \"Freyr Nordic Battery Belt\" -- there is no works to agree with and no",
+  "join is attempted. Every match below is printed for confirmation, because the",
+  "standing rule is that a resemblance proposes and a person disposes.",
+  "",
+  "THE CLASSES, AND THE GATE. Each entry ends in exactly one, and the counts must",
+  "sum to the list's own row count or this script exits non-zero. `not searched` is",
+  "the only class that is a defect, and it is printed by name."
+ ],
+ "generated": "2026-09-12",
+ "benchmarks": {
+  "te_2024_annex_1": [
+   {
+    "label": "LG Energy Solution Wroclaw",
+    "class": "held",
+    "ref": "lges-wroclaw",
+    "note": ""
+   },
+   {
+    "label": "Tesla Berlin",
+    "class": "held",
+    "ref": "tesla-gruenheide-cells",
+    "note": ""
+   },
+   {
+    "label": "CATL Debrecen",
+    "class": "held",
+    "ref": "catl-debrecen",
+    "note": ""
+   },
+   {
+    "label": "Envision AESC Navalmoral de la Mata",
+    "class": "held",
+    "ref": "envision-aesc-extremadura",
+    "note": ""
+   },
+   {
+    "label": "West Midlands Gigafactory Coventry",
+    "class": "searched none found",
+    "ref": "",
+    "note": "wmgigafactory.com and wmgigafactory.co.uk both fail to resolve; coventry.gov.uk answers 200 with a council home page that names no works. The project's own site is gone, which is itself the interesting fact and is not read here as a stop."
+   },
+   {
+    "label": "Northvolt Skellefteå",
+    "class": "held",
+    "ref": "northvolt-ett-skelleftea",
+    "note": ""
+   },
+   {
+    "label": "Northvolt Heide",
+    "class": "held",
+    "ref": "lyten-heide",
+    "note": ""
+   },
+   {
+    "label": "Volvo & Northvolt Gothenburg",
+    "class": "held",
+    "ref": "novo-energy-gothenburg",
+    "note": ""
+   },
+   {
+    "label": "Verkor Dunkirk",
+    "class": "held",
+    "ref": "verkor-dunkirk",
+    "note": ""
+   },
+   {
+    "label": "SVOLT Finland",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: SITE. The entry names a company and a country and no works. svolt-eu.com answers 200 with an empty body, so the company's own statement could not be read either."
+   },
+   {
+    "label": "Prologium Dunkirk",
+    "class": "searched none found",
+    "ref": "",
+    "note": "prologium.com/news answers 200 with 12,831 characters and the string 'Dunkirk' is not among them. The company's own newsroom does not name the works T&E names."
+   },
+   {
+    "label": "ElevenEs Subotica",
+    "class": "held",
+    "ref": "elevenes-subotica",
+    "note": "A CANDIDATE, NOT A ROW. Open question C in the batteries docket: 8 GWh or 1 GWh, the sources conflict, and the scale rule cannot be applied until it is settled."
+   },
+   {
+    "label": "Morrow Arendal",
+    "class": "held",
+    "ref": "morrow-arendal",
+    "note": ""
+   },
+   {
+    "label": "VW PowerCo Salzgitter",
+    "class": "held",
+    "ref": "powerco-salzgitter",
+    "note": ""
+   },
+   {
+    "label": "VW PowerCo Sagunto",
+    "class": "held",
+    "ref": "powerco-sagunto",
+    "note": ""
+   },
+   {
+    "label": "Tata Group/JLR Bridgwater",
+    "class": "held",
+    "ref": "agratas-bridgwater",
+    "note": ""
+   },
+   {
+    "label": "Samsung SDI Göd",
+    "class": "held",
+    "ref": "samsung-sdi-god",
+    "note": ""
+   },
+   {
+    "label": "Elinor Batteries Orkland",
+    "class": "searched none found",
+    "ref": "",
+    "note": "elinorbatteries.com answers 200 with 1,349 characters of navigation and no works; its /news path is 404."
+   },
+   {
+    "label": "ACC Termoli",
+    "class": "held",
+    "ref": "acc-termoli",
+    "note": ""
+   },
+   {
+    "label": "ACC Kaiserslautern",
+    "class": "held",
+    "ref": "acc-kaiserslautern",
+    "note": ""
+   },
+   {
+    "label": "ACC Douvrin",
+    "class": "held",
+    "ref": "acc-billy-berclau",
+    "note": ""
+   },
+   {
+    "label": "BMZ/TerraE Karlstein am Main",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: COMPANY-CONFIRMED CELL WORKS. bmz-group.com names Karlstein am Main exactly once, in the imprint — 'BMZ Battery Solutions GmbH … Sitz der Gesellschaft: Zeche Gustav 1, 63791 Karlstein am Main' — which is a registered office. Under the address corollary a Sitz der Gesellschaft never places a works, and it does not confirm one either."
+   },
+   {
+    "label": "InoBat Cuprija",
+    "class": "searched none found",
+    "ref": "",
+    "note": "inobat.eu answers 200 with 7,484 characters and neither 'Cuprija' nor 'Ćuprija' appears in them."
+   },
+   {
+    "label": "Envision AESC Sunderland",
+    "class": "held",
+    "ref": "envision-aesc-sunderland",
+    "note": ""
+   },
+   {
+    "label": "SK On Ivancsa",
+    "class": "held",
+    "ref": "sk-on-ivancsa",
+    "note": ""
+   },
+   {
+    "label": "Envision AESC Douai",
+    "class": "held",
+    "ref": "envision-aesc-douai",
+    "note": ""
+   },
+   {
+    "label": "Freyr Mo i Rana",
+    "class": "held",
+    "ref": "freyr-mo-i-rana",
+    "note": ""
+   },
+   {
+    "label": "EVE Energy Debrecen",
+    "class": "held",
+    "ref": "eve-power-debrecen",
+    "note": ""
+   },
+   {
+    "label": "FMG Group Kotka",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: BATTERY MATERIALS. Finnish Minerals Group's own news index calls it 'the Kotka CAM plant' — cathode active material. Cathode works are refused by name in the battery perimeter, and this is the entry the clause was named for in scope.md's Sector perimeters: an outside list carries it among battery cell entries and it is not one."
+   },
+   {
+    "label": "SVOLT Überherrn",
+    "class": "held",
+    "ref": "svolt-uberherrn",
+    "note": ""
+   },
+   {
+    "label": "InoBat Valladolid",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: SITE, on the register's standing refusal. inobat.eu answers 200 and does not name Valladolid at all."
+   },
+   {
+    "label": "Romvolt (ABEE) Galati",
+    "class": "unreadable",
+    "ref": "",
+    "note": "REFUSAL CLASS: DNS. abee.eu and www.abee.eu both fail to resolve for the declared reader. Queued for a browser."
+   },
+   {
+    "label": "QuantumScape Salzgitter",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: LICENSOR, NO WORKS OF ITS OWN. RULED 13 SEPTEMBER 2026, on the DRI precedent — a licensor is a SUPPLIER, not a project, exactly as a steelworks making its own hydrogen is a steel row and the electrolyser is a fact about it. quantumscape.com/newsroom answers 200, names PowerCo repeatedly and Salzgitter never: QuantumScape licenses a cell that PowerCo makes. The works is held here as powerco-salzgitter and the licence is an EDGE into it, not a second project. The edge is proposed in sources/batteries_edges_proposed.json with verdict null and reaches the row when the verdict is set."
+   },
+   {
+    "label": "InoBat & Gotion Surany",
+    "class": "held",
+    "ref": "gib-surany",
+    "note": ""
+   },
+   {
+    "label": "SK On Komarom",
+    "class": "held",
+    "ref": "sk-on-komarom",
+    "note": ""
+   },
+   {
+    "label": "CTAG Vigo",
+    "class": "searched none found",
+    "ref": "",
+    "note": "ctag.com/en/news answers 200 with 25,024 characters and none of 'cell', 'GWh', 'bater' or 'Vigo' appears in a battery-works sense. CTAG is an automotive technology centre."
+   },
+   {
+    "label": "MES Horní Suchá",
+    "class": "unreadable",
+    "ref": "",
+    "note": "REFUSAL CLASS: DNS. mes-battery.com and www.mes-battery.com both fail to resolve."
+   },
+   {
+    "label": "CALB Sines",
+    "class": "held",
+    "ref": "calb-sines",
+    "note": ""
+   },
+   {
+    "label": "CATL Arnstadt",
+    "class": "held",
+    "ref": "catl-arnstadt",
+    "note": ""
+   },
+   {
+    "label": "SVOLT Lauchhammer",
+    "class": "held",
+    "ref": "svolt-lauchhammer",
+    "note": ""
+   },
+   {
+    "label": "Phi4Tech Badajoz",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: PRODUCT. phi4tech.com's own news says the Badajoz works is a 'fábrica de celdas de supercondensadores' — supercapacitor cells — with a nanomaterials research centre beside it. A supercapacitor is not a battery cell, and the perimeter is a rule about what a works makes."
+   },
+   {
+    "label": "InoBat Voderady",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: PILOT/R&D. inobat.eu's own timeline: 'Received investment from Rio Tinto to support the completion of R&D centre and pilot battery line in Voderady'. The perimeter refuses a pilot line unless the company states it as a phase of a commercial project, and InoBat states the opposite — the pilot 'will provide the foundation for a manufacturing production line'."
+   },
+   {
+    "label": "Beyonder Rogaland",
+    "class": "unreadable",
+    "ref": "",
+    "note": "REFUSAL CLASS: 200 WITH AN EMPTY BODY. beyonder.no answers 200 to the declared reader with a document carrying no article. Queued for a browser."
+   },
+   {
+    "label": "Basquevolt Alava",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: CAPACITY, AND A COMMERCIAL WORKS. basquevolt.com/en answers 200 and the only Álava address on it is 'Parque Tecnológico, C/Albert Einstein 35, 01510 Vitoria-Gasteiz' — a technology park, stated as the company's address rather than as a works. No GWh anywhere on the page."
+   },
+   {
+    "label": "AMTE Power Thurso",
+    "class": "unreadable",
+    "ref": "",
+    "note": "REFUSAL CLASS: DNS. amteplc.com does not resolve. AMTE Power went into administration in 2024, which is the likely reason and is not read here as a status event on anything."
+   },
+   {
+    "label": "FAAM Teverola",
+    "class": "searched none found",
+    "ref": "",
+    "note": "seri-industrial.it/en — FAAM's parent — answers 200 with 3,366 characters and does not name Teverola."
+   },
+   {
+    "label": "Swiss Clean Battery Domat-Ems",
+    "class": "searched none found",
+    "ref": "",
+    "note": "swisscleanbattery.ch answers 200 with 3,409 characters and names neither Domat nor Ems nor a capacity."
+   },
+   {
+    "label": "Leclanché Willstätt",
+    "class": "held",
+    "ref": "leclanche-willstatt",
+    "note": "A CANDIDATE, NOT A ROW."
+   },
+   {
+    "label": "Varta Ellwangen",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: SCALE, on the register's standing refusal — VARTA's Ellwangen and Nördlingen works make small-format cells."
+   },
+   {
+    "label": "Others",
+    "class": "benchmark aggregate",
+    "ref": "",
+    "note": "A BENCHMARK AGGREGATE IS NOT AN ENTRY. RULED 13 SEPTEMBER 2026. T&E's own residual bar: capacity the publisher did not attribute to any named works. It keeps its own class, it is NEVER SEARCHED, and it is carried in the table because the table must sum to the list the publisher printed. WHAT THE ROW IS: a residual with no names — there is nothing in it to look for, and a class that left it out would make the table sum to a number T&E never published."
+   }
+  ],
+  "te_2023_figure_5": [
+   {
+    "label": "Tesla Grünheide",
+    "class": "held",
+    "ref": "tesla-gruenheide-cells",
+    "note": ""
+   },
+   {
+    "label": "LG Chem Wroclaw",
+    "class": "held",
+    "ref": "lges-wroclaw",
+    "note": ""
+   },
+   {
+    "label": "CATL Debrecen",
+    "class": "held",
+    "ref": "catl-debrecen",
+    "note": ""
+   },
+   {
+    "label": "CATL Erfurt",
+    "class": "held",
+    "ref": "catl-arnstadt",
+    "note": "The works T&E calls Erfurt in 2023 and Arnstadt in 2024. One works, two names, and the rename is in the drift table."
+   },
+   {
+    "label": "West Midlands",
+    "class": "searched none found",
+    "ref": "",
+    "note": "As 2024."
+   },
+   {
+    "label": "Northvolt Skellefteå",
+    "class": "held",
+    "ref": "northvolt-ett-skelleftea",
+    "note": ""
+   },
+   {
+    "label": "Northvolt Heide",
+    "class": "held",
+    "ref": "lyten-heide",
+    "note": ""
+   },
+   {
+    "label": "Volvo & Northvolt",
+    "class": "held",
+    "ref": "novo-energy-gothenburg",
+    "note": ""
+   },
+   {
+    "label": "Verkor Dunkerque",
+    "class": "held",
+    "ref": "verkor-dunkirk",
+    "note": ""
+   },
+   {
+    "label": "Italvolt Scarmagno",
+    "class": "held",
+    "ref": "italvolt-scarmagno",
+    "note": ""
+   },
+   {
+    "label": "CALB Sines",
+    "class": "held",
+    "ref": "calb-sines",
+    "note": ""
+   },
+   {
+    "label": "Morrow Arendal",
+    "class": "held",
+    "ref": "morrow-arendal",
+    "note": ""
+   },
+   {
+    "label": "Freyr Mo i Rana",
+    "class": "held",
+    "ref": "freyr-mo-i-rana",
+    "note": ""
+   },
+   {
+    "label": "VW Salzgitter",
+    "class": "held",
+    "ref": "powerco-salzgitter",
+    "note": ""
+   },
+   {
+    "label": "VW Valencia",
+    "class": "held",
+    "ref": "powerco-sagunto",
+    "note": "Sagunto is in the province of Valencia; T&E names the province in 2023 and the town in 2024."
+   },
+   {
+    "label": "VW East. Europe",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: SITE. A company and a region. VW never named the works and the project is in T&E's own 2024 table as cancelled."
+   },
+   {
+    "label": "Samsung SDI Göd",
+    "class": "held",
+    "ref": "samsung-sdi-god",
+    "note": ""
+   },
+   {
+    "label": "InoBat & Gotion",
+    "class": "held",
+    "ref": "gib-surany",
+    "note": ""
+   },
+   {
+    "label": "Freyr Vaasa",
+    "class": "searched none found",
+    "ref": "",
+    "note": "t1energy.com — FREYR's successor — answers 200 with 3,067 characters and names neither Vaasa nor Finland."
+   },
+   {
+    "label": "Freyr Nordic Battery Belt",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: SITE. A programme name covering no named works."
+   },
+   {
+    "label": "ACC Termoli",
+    "class": "held",
+    "ref": "acc-termoli",
+    "note": ""
+   },
+   {
+    "label": "ACC Kaiserslautern",
+    "class": "held",
+    "ref": "acc-kaiserslautern",
+    "note": ""
+   },
+   {
+    "label": "ACC Douvrin",
+    "class": "held",
+    "ref": "acc-billy-berclau",
+    "note": ""
+   },
+   {
+    "label": "InoBat Serbia",
+    "class": "searched none found",
+    "ref": "",
+    "note": "inobat.eu answers 200 and names no Serbian works. T&E's 2024 vintage calls the same entry InoBat Cuprija, which is in the rename table."
+   },
+   {
+    "label": "Envision AESC France",
+    "class": "held",
+    "ref": "envision-aesc-douai",
+    "note": ""
+   },
+   {
+    "label": "SKI Iváncsa",
+    "class": "held",
+    "ref": "sk-on-ivancsa",
+    "note": ""
+   },
+   {
+    "label": "Eve Energy Debrecen",
+    "class": "held",
+    "ref": "eve-power-debrecen",
+    "note": ""
+   },
+   {
+    "label": "Envision AESC Spain",
+    "class": "held",
+    "ref": "envision-aesc-extremadura",
+    "note": ""
+   },
+   {
+    "label": "Envision AESC Sunderland",
+    "class": "held",
+    "ref": "envision-aesc-sunderland",
+    "note": ""
+   },
+   {
+    "label": "SKI Komarom",
+    "class": "held",
+    "ref": "sk-on-komarom",
+    "note": ""
+   },
+   {
+    "label": "SVOLT Saarland",
+    "class": "held",
+    "ref": "svolt-uberherrn",
+    "note": ""
+   },
+   {
+    "label": "QuantumScape",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: LICENSOR, NO WORKS OF ITS OWN. RULED 13 SEPTEMBER 2026, on the DRI precedent — a licensor is a SUPPLIER, not a project, exactly as a steelworks making its own hydrogen is a steel row and the electrolyser is a fact about it. quantumscape.com/newsroom answers 200, names PowerCo repeatedly and Salzgitter never: QuantumScape licenses a cell that PowerCo makes. The works is held here as powerco-salzgitter and the licence is an EDGE into it, not a second project. The edge is proposed in sources/batteries_edges_proposed.json with verdict null and reaches the row when the verdict is set."
+   },
+   {
+    "label": "Phi4Tech",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: PRODUCT. As 2024 — supercapacitors."
+   },
+   {
+    "label": "Gotion Göttingen",
+    "class": "unreadable",
+    "ref": "",
+    "note": "REFUSAL CLASS: DNS. gotion.com.hk does not resolve for the declared reader."
+   },
+   {
+    "label": "SVOLT Brandenburg",
+    "class": "held",
+    "ref": "svolt-lauchhammer",
+    "note": ""
+   },
+   {
+    "label": "Farasis",
+    "class": "held",
+    "ref": "farasis-bitterfeld",
+    "note": ""
+   },
+   {
+    "label": "ElevenEs",
+    "class": "held",
+    "ref": "elevenes-subotica",
+    "note": "A CANDIDATE, NOT A ROW."
+   },
+   {
+    "label": "MES",
+    "class": "unreadable",
+    "ref": "",
+    "note": "REFUSAL CLASS: DNS. As 2024."
+   },
+   {
+    "label": "Customcells",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: SCALE, on the register's standing refusal."
+   },
+   {
+    "label": "Microvast",
+    "class": "unreadable",
+    "ref": "",
+    "note": "REFUSAL CLASS: DNS. microvast.com does not resolve for the declared reader."
+   },
+   {
+    "label": "InoBat Slovakia",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: PILOT/R&D. The Slovak works is Voderady; see 2024."
+   },
+   {
+    "label": "Blackstone Resources",
+    "class": "unreadable",
+    "ref": "",
+    "note": "REFUSAL CLASS: DNS. blackstoneresources.ch does not resolve."
+   },
+   {
+    "label": "Basquevolt",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "As 2024."
+   },
+   {
+    "label": "AMTE Power Thurso",
+    "class": "unreadable",
+    "ref": "",
+    "note": "REFUSAL CLASS: DNS. As 2024."
+   },
+   {
+    "label": "FAAM Teverola",
+    "class": "searched none found",
+    "ref": "",
+    "note": "As 2024."
+   },
+   {
+    "label": "Swiss Clean Battery",
+    "class": "searched none found",
+    "ref": "",
+    "note": "As 2024."
+   },
+   {
+    "label": "Leclanché",
+    "class": "held",
+    "ref": "leclanche-willstatt",
+    "note": "A CANDIDATE, NOT A ROW."
+   },
+   {
+    "label": "Eurocell",
+    "class": "not searched",
+    "ref": "",
+    "note": "THE ONE DEFECT IN THIS TABLE, AND IT IS PRINTED BY NAME. A Dutch entry T&E's 2024 table carries as cancelled, with no company domain identified in this pass. Nobody has looked, and the answer is to go and look."
+   },
+   {
+    "label": "Varta",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: SCALE, on the standing refusal."
+   },
+   {
+    "label": "EAS Batteries",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: CAPACITY NOT COMPANY-STATED. RULED 13 SEPTEMBER 2026 — the scale rule is tested on what the COMPANY states, and a figure only a list published is the list's claim. eas-batteries.com answers 200 and confirms the works ('EAS Batteries GmbH, Lokomotivenstraße 21, 99734 Nordhausen') and cells for heavy duty and space, and states NO capacity at all. Battery-News.de's 0.5 GWh is recorded as a benchmark claim on this entry and is NOT used to apply the 1 GWh rule: the entry fails because the company has stated nothing, not because 0.5 is less than 1.",
+    "benchmark_claim": {
+     "claimed_by": "battery_news_europe_cells",
+     "value": 0.5,
+     "unit": "GWh per year",
+     "company_states": null,
+     "note": "Battery-News.de's February 2026 atlas states 0.5 GWh against a 202X date. eas-batteries.com states no capacity at all. The entry fails on 'capacity not company-stated'; this figure is the list's claim and is not the reason it fails."
+    }
+   },
+   {
+    "label": "Others",
+    "class": "benchmark aggregate",
+    "ref": "",
+    "note": "A BENCHMARK AGGREGATE IS NOT AN ENTRY. RULED 13 SEPTEMBER 2026. T&E's own residual bar: capacity the publisher did not attribute to any named works. It keeps its own class, it is NEVER SEARCHED, and it is carried in the table because the table must sum to the list the publisher printed. WHAT THE ROW IS: a residual with no names — there is nothing in it to look for, and a class that left it out would make the table sum to a number T&E never published."
+   }
+  ],
+  "battery_news_2026_02": [
+   {
+    "label": "NOVO Gothenburg",
+    "country": "SE",
+    "company": "NOVO",
+    "site": "Gothenburg",
+    "benchmark_year": "2026",
+    "benchmark_gwh": "50",
+    "class": "held",
+    "ref": "novo-energy-gothenburg",
+    "note": "The list marks it '(Paused)', which agrees with the row."
+   },
+   {
+    "label": "Volvo Mariestad",
+    "country": "SE",
+    "company": "Volvo",
+    "site": "Mariestad",
+    "benchmark_year": "2030",
+    "benchmark_gwh": "X",
+    "class": "searched none found",
+    "ref": "",
+    "note": "volvogroup.com's news index answers 200 with 3,465 characters and does not name Mariestad."
+   },
+   {
+    "label": "LYTEN Skelleftea",
+    "country": "SE",
+    "company": "LYTEN",
+    "site": "Skelleftea",
+    "benchmark_year": "X",
+    "benchmark_gwh": "X",
+    "class": "held",
+    "ref": "northvolt-ett-skelleftea",
+    "note": ""
+   },
+   {
+    "label": "AGRATAS Sommerset",
+    "country": "GB",
+    "company": "AGRATAS",
+    "site": "Sommerset",
+    "benchmark_year": "2027",
+    "benchmark_gwh": "40",
+    "class": "held",
+    "ref": "agratas-bridgwater",
+    "note": "The list spells the county 'Sommerset'; the works is at Bridgwater in Somerset."
+   },
+   {
+    "label": "AESC Sunderland",
+    "country": "GB",
+    "company": "AESC",
+    "site": "Sunderland",
+    "benchmark_year": "2030",
+    "benchmark_gwh": "35",
+    "class": "held",
+    "ref": "envision-aesc-sunderland",
+    "note": ""
+   },
+   {
+    "label": "TIAMAT Douvrin",
+    "country": "FR",
+    "company": "TIAMAT",
+    "site": "Douvrin",
+    "benchmark_year": "2029",
+    "benchmark_gwh": "5",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: SITE, AND IT IS A DISAGREEMENT RATHER THAN A GAP. Tiamat's own site says 'TIAMAT plan to build a gigafactory to produce Sodium ion batteries, 10km south-east of the city of Amiens in the ZAC Jules Verne 2 industrial estate close to the commune of Boves'. The company names Amiens/Boves; the second list names Douvrin, 120 km away. Two speakers on one fact, and the company is the one the perimeter asks."
+   },
+   {
+    "label": "ACC Douvrin",
+    "country": "FR",
+    "company": "ACC",
+    "site": "Douvrin",
+    "benchmark_year": "2030",
+    "benchmark_gwh": "40",
+    "class": "held",
+    "ref": "acc-billy-berclau",
+    "note": ""
+   },
+   {
+    "label": "VERKOR Dunkirk",
+    "country": "FR",
+    "company": "VERKOR",
+    "site": "Dunkirk",
+    "benchmark_year": "2030",
+    "benchmark_gwh": "50",
+    "class": "held",
+    "ref": "verkor-dunkirk",
+    "note": ""
+   },
+   {
+    "label": "Blue Solutions Quimper",
+    "country": "FR",
+    "company": "Blue Solutions",
+    "site": "Quimper",
+    "benchmark_year": "2032",
+    "benchmark_gwh": "25",
+    "class": "searched none found",
+    "ref": "",
+    "note": "blue-solutions.com answers 200 with 5,532 characters and names neither Quimper nor a capacity."
+   },
+   {
+    "label": "AESC Douai",
+    "country": "FR",
+    "company": "AESC",
+    "site": "Douai",
+    "benchmark_year": "2029",
+    "benchmark_gwh": "30",
+    "class": "held",
+    "ref": "envision-aesc-douai",
+    "note": ""
+   },
+   {
+    "label": "ProLogium Dunkirk",
+    "country": "FR",
+    "company": "ProLogium",
+    "site": "Dunkirk",
+    "benchmark_year": "2030",
+    "benchmark_gwh": "16",
+    "class": "searched none found",
+    "ref": "",
+    "note": "As T&E 2024."
+   },
+   {
+    "label": "CALB Sines",
+    "country": "PT",
+    "company": "CALB",
+    "site": "Sines",
+    "benchmark_year": "2028",
+    "benchmark_gwh": "15",
+    "class": "held",
+    "ref": "calb-sines",
+    "note": ""
+   },
+   {
+    "label": "PowerCo Sagunt",
+    "country": "ES",
+    "company": "PowerCo",
+    "site": "Sagunt",
+    "benchmark_year": "202X",
+    "benchmark_gwh": "40",
+    "class": "held",
+    "ref": "powerco-sagunto",
+    "note": ""
+   },
+   {
+    "label": "BASQUEVOLT Vitoria-Gasteiz",
+    "country": "ES",
+    "company": "BASQUEVOLT",
+    "site": "Vitoria-Gasteiz",
+    "benchmark_year": "2027",
+    "benchmark_gwh": "10",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: CAPACITY FROM THE COMPANY. The 10 GWh is the second list's figure; basquevolt.com states none."
+   },
+   {
+    "label": "AESC Navalmoral de la Mata",
+    "country": "ES",
+    "company": "AESC",
+    "site": "Navalmoral de la Mata",
+    "benchmark_year": "2025",
+    "benchmark_gwh": "50",
+    "class": "held",
+    "ref": "envision-aesc-extremadura",
+    "note": ""
+   },
+   {
+    "label": "CATL / STELLANTIS Zaragoza",
+    "country": "ES",
+    "company": "CATL / STELLANTIS",
+    "site": "Zaragoza",
+    "benchmark_year": "20XX",
+    "benchmark_gwh": "50",
+    "class": "held",
+    "ref": "catl-stellantis-zaragoza",
+    "note": ""
+   },
+   {
+    "label": "InoBat Valladolid",
+    "country": "ES",
+    "company": "InoBat",
+    "site": "Valladolid",
+    "benchmark_year": "2029",
+    "benchmark_gwh": "32",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: SITE, on the standing refusal. As T&E 2024."
+   },
+   {
+    "label": "MORROW Agder",
+    "country": "NO",
+    "company": "MORROW",
+    "site": "Agder",
+    "benchmark_year": "20XX",
+    "benchmark_gwh": "X",
+    "class": "held",
+    "ref": "morrow-arendal",
+    "note": "Arendal is in Agder county; the list names the county. Marked '(Paused)' by the list, where this register holds the row as cancelled — Morrow filed for bankruptcy on 6 May 2026, three months after the list's vintage. A disagreement of vintage, not of fact, and it is in the disagreements table."
+   },
+   {
+    "label": "BEYONDER Rogaland",
+    "country": "NO",
+    "company": "BEYONDER",
+    "site": "Rogaland",
+    "benchmark_year": "202X",
+    "benchmark_gwh": "X",
+    "class": "unreadable",
+    "ref": "",
+    "note": "REFUSAL CLASS: 200 WITH AN EMPTY BODY. As T&E 2024."
+   },
+   {
+    "label": "Leclanché Willstätt",
+    "country": "DE",
+    "company": "Leclanché",
+    "site": "Willstätt",
+    "benchmark_year": "2020",
+    "benchmark_gwh": "2.5",
+    "class": "held",
+    "ref": "leclanche-willstatt",
+    "note": "A CANDIDATE, NOT A ROW."
+   },
+   {
+    "label": "PowerCo Salzgitter",
+    "country": "DE",
+    "company": "PowerCo",
+    "site": "Salzgitter",
+    "benchmark_year": "202X",
+    "benchmark_gwh": "40",
+    "class": "held",
+    "ref": "powerco-salzgitter",
+    "note": ""
+   },
+   {
+    "label": "CATL Erfurt",
+    "country": "DE",
+    "company": "CATL",
+    "site": "Erfurt",
+    "benchmark_year": "202X",
+    "benchmark_gwh": "14",
+    "class": "held",
+    "ref": "catl-arnstadt",
+    "note": ""
+   },
+   {
+    "label": "EAS Nordhausen",
+    "country": "DE",
+    "company": "EAS",
+    "site": "Nordhausen",
+    "benchmark_year": "202X",
+    "benchmark_gwh": "0.5",
+    "class": "named not admitted",
+    "ref": "",
+    "note": "FAILED LEG: CAPACITY NOT COMPANY-STATED. RULED 13 SEPTEMBER 2026 — the scale rule is tested on what the COMPANY states, and a figure only a list published is the list's claim. eas-batteries.com answers 200 and confirms the works ('EAS Batteries GmbH, Lokomotivenstraße 21, 99734 Nordhausen') and cells for heavy duty and space, and states NO capacity at all. Battery-News.de's 0.5 GWh is recorded as a benchmark claim on this entry and is NOT used to apply the 1 GWh rule: the entry fails because the company has stated nothing, not because 0.5 is less than 1."
+   },
+   {
+    "label": "LYTEN Heide",
+    "country": "DE",
+    "company": "LYTEN",
+    "site": "Heide",
+    "benchmark_year": "202X",
+    "benchmark_gwh": "X",
+    "class": "held",
+    "ref": "lyten-heide",
+    "note": ""
+   },
+   {
+    "label": "UniverCell Flintbek",
+    "country": "DE",
+    "company": "UniverCell",
+    "site": "Flintbek",
+    "benchmark_year": "2026",
+    "benchmark_gwh": "10",
+    "class": "admitted",
+    "ref": "univercell-flintbek",
+    "note": "ADMITTED BY THIS PASS, AND THE SECOND LIST IS WHY IT WAS FOUND. Neither T&E vintage carries this works. UniverCell's own company page carries all three admission legs: 'jetzt betreiben wir eine erfolgreiche Gigafactory, die bereit ist, über 1,5 GWh hinaus zu skalieren', 'Unser Standort: Konrad-Zuse-Ring 1, 24220 Flintbek, Deutschland', and electrode AND cell production. The row carries 1.5 GWh, the company's figure; the list's 10 GWh is a disagreement and is recorded as one."
+   },
+   {
+    "label": "TESLA Grünheide",
+    "country": "DE",
+    "company": "TESLA",
+    "site": "Grünheide",
+    "benchmark_year": "2027",
+    "benchmark_gwh": "X",
+    "class": "held",
+    "ref": "tesla-gruenheide-cells",
+    "note": ""
+   },
+   {
+    "label": "V4SMART Nördlingen",
+    "country": "DE",
+    "company": "V4SMART",
+    "site": "Nördlingen",
+    "benchmark_year": "2024",
+    "benchmark_gwh": "X",
+    "class": "searched none found",
+    "ref": "",
+    "note": "WORKED AS ITS OWN ENTRY, ON ITS OWN SOURCES. RULED 13 SEPTEMBER 2026 — a refusal attaches to a project and its owner, never to a town, so the register's standing VARTA Nördlingen refusal does NOT reach V4Smart. Searched in this order: v4drive.com (200, 2,774 chars), v4smart.de and www.v4smart.de (200, same document), varta-ag.com/en/company/v4drive (404), v4smart.de/en/about-us/overview (404), /en/about-us/news (404), /en/contact (200, 1,102 chars). V4Smart GmbH & Co. KG is confirmed as a company making 'high-power cells for high-performance applications'. ACROSS ALL SEVEN FETCHES IT NAMES NO SITE AND NO CAPACITY — 'Nördlingen' appears nowhere and no GWh appears anywhere."
+   },
+   {
+    "label": "LG Energy Solution Wroclaw",
+    "country": "PL",
+    "company": "LG Energy Solution",
+    "site": "Wroclaw",
+    "benchmark_year": "2025",
+    "benchmark_gwh": "115",
+    "class": "held",
+    "ref": "lges-wroclaw",
+    "note": ""
+   },
+   {
+    "label": "InoBat Voderady",
+    "country": "SK",
+    "company": "InoBat",
+    "site": "Voderady",
+    "benchmark_year": "2020",
+    "benchmark_gwh": "10",
+    "class": "perimeter exclusion",
+    "ref": "",
+    "note": "CLAUSE: PILOT/R&D. As T&E 2024."
+   },
+   {
+    "label": "InoBat / Gotion Šurany",
+    "country": "SK",
+    "company": "InoBat / Gotion",
+    "site": "Šurany",
+    "benchmark_year": "202X",
+    "benchmark_gwh": "40",
+    "class": "held",
+    "ref": "gib-surany",
+    "note": ""
+   },
+   {
+    "label": "CATL Debrecen",
+    "country": "HU",
+    "company": "CATL",
+    "site": "Debrecen",
+    "benchmark_year": "2025",
+    "benchmark_gwh": "100",
+    "class": "held",
+    "ref": "catl-debrecen",
+    "note": ""
+   },
+   {
+    "label": "EVE Debrecen",
+    "country": "HU",
+    "company": "EVE",
+    "site": "Debrecen",
+    "benchmark_year": "2026",
+    "benchmark_gwh": "28",
+    "class": "held",
+    "ref": "eve-power-debrecen",
+    "note": ""
+   },
+   {
+    "label": "SAMSUNG Göd",
+    "country": "HU",
+    "company": "SAMSUNG",
+    "site": "Göd",
+    "benchmark_year": "202X",
+    "benchmark_gwh": "40",
+    "class": "held",
+    "ref": "samsung-sdi-god",
+    "note": ""
+   },
+   {
+    "label": "SK innovation Komarom & Ivancsa",
+    "country": "HU",
+    "company": "SK innovation",
+    "site": "Komarom & Ivancsa",
+    "benchmark_year": "2028",
+    "benchmark_gwh": "47.3",
+    "class": "held",
+    "ref": "sk-on-komarom|sk-on-ivancsa",
+    "note": "ONE BENCHMARK ENTRY OVER TWO HELD ROWS, counted ONCE as held. RULED 13 SEPTEMBER 2026. The reference is written onto BOTH rows — sk-on-komarom and sk-on-ivancsa carry `benchmarks.battery_news_europe_cells` — and the 47.3 GWh STAYS ON THE LIST SIDE as the list's claim. Nothing here splits it, and neither row's capacity is touched by it. The reference debt stands as written."
+   },
+   {
+    "label": "SUNWODA Nyiregyhaza",
+    "country": "HU",
+    "company": "SUNWODA",
+    "site": "Nyiregyhaza",
+    "benchmark_year": "202X",
+    "benchmark_gwh": "X",
+    "class": "held",
+    "ref": "sunwoda-nyiregyhaza",
+    "note": ""
+   },
+   {
+    "label": "FAAM Terevola",
+    "country": "IT",
+    "company": "FAAM",
+    "site": "Terevola",
+    "benchmark_year": "2024",
+    "benchmark_gwh": "8",
+    "class": "searched none found",
+    "ref": "",
+    "note": "The list spells it 'Terevola'; the works is Teverola. As T&E 2024."
+   },
+   {
+    "label": "InoBat Serbia",
+    "country": "RS",
+    "company": "InoBat",
+    "site": "Serbia",
+    "benchmark_year": "2032",
+    "benchmark_gwh": "32",
+    "class": "searched none found",
+    "ref": "",
+    "note": "As T&E 2023."
+   },
+   {
+    "label": "ElevenEs Subotica",
+    "country": "RS",
+    "company": "ElevenEs",
+    "site": "Subotica",
+    "benchmark_year": "2027",
+    "benchmark_gwh": "48",
+    "class": "held",
+    "ref": "elevenes-subotica",
+    "note": "A CANDIDATE, NOT A ROW."
+   }
+  ]
+ },
+ "drift_te_vintages": {
+  "left": [
+   {
+    "label": "Italvolt Scarmagno",
+    "eufabric_class": "held",
+    "ref": "italvolt-scarmagno"
+   },
+   {
+    "label": "VW East. Europe",
+    "eufabric_class": "named not admitted",
+    "ref": ""
+   },
+   {
+    "label": "Freyr Vaasa",
+    "eufabric_class": "searched none found",
+    "ref": ""
+   },
+   {
+    "label": "Freyr Nordic Battery Belt",
+    "eufabric_class": "named not admitted",
+    "ref": ""
+   },
+   {
+    "label": "Gotion Göttingen",
+    "eufabric_class": "unreadable",
+    "ref": ""
+   },
+   {
+    "label": "Farasis",
+    "eufabric_class": "held",
+    "ref": "farasis-bitterfeld"
+   },
+   {
+    "label": "Customcells",
+    "eufabric_class": "perimeter exclusion",
+    "ref": ""
+   },
+   {
+    "label": "Microvast",
+    "eufabric_class": "unreadable",
+    "ref": ""
+   },
+   {
+    "label": "Blackstone Resources",
+    "eufabric_class": "unreadable",
+    "ref": ""
+   },
+   {
+    "label": "Eurocell",
+    "eufabric_class": "not searched",
+    "ref": ""
+   },
+   {
+    "label": "EAS Batteries",
+    "eufabric_class": "named not admitted",
+    "ref": ""
+   }
+  ],
+  "renamed": [
+   {
+    "from": "Tesla Grünheide",
+    "to": "Tesla Berlin"
+   },
+   {
+    "from": "LG Chem Wroclaw",
+    "to": "LG Energy Solution Wroclaw"
+   },
+   {
+    "from": "CATL Erfurt",
+    "to": "CATL Arnstadt"
+   },
+   {
+    "from": "West Midlands",
+    "to": "West Midlands Gigafactory Coventry"
+   },
+   {
+    "from": "Volvo & Northvolt",
+    "to": "Volvo & Northvolt Gothenburg"
+   },
+   {
+    "from": "Verkor Dunkerque",
+    "to": "Verkor Dunkirk"
+   },
+   {
+    "from": "VW Salzgitter",
+    "to": "VW PowerCo Salzgitter"
+   },
+   {
+    "from": "VW Valencia",
+    "to": "VW PowerCo Sagunto"
+   },
+   {
+    "from": "InoBat & Gotion",
+    "to": "InoBat & Gotion Surany"
+   },
+   {
+    "from": "InoBat Serbia",
+    "to": "InoBat Cuprija"
+   },
+   {
+    "from": "Envision AESC France",
+    "to": "Envision AESC Douai"
+   },
+   {
+    "from": "SKI Iváncsa",
+    "to": "SK On Ivancsa"
+   },
+   {
+    "from": "Eve Energy Debrecen",
+    "to": "EVE Energy Debrecen"
+   },
+   {
+    "from": "Envision AESC Spain",
+    "to": "Envision AESC Navalmoral de la Mata"
+   },
+   {
+    "from": "SKI Komarom",
+    "to": "SK On Komarom"
+   },
+   {
+    "from": "SVOLT Saarland",
+    "to": "SVOLT Überherrn"
+   },
+   {
+    "from": "QuantumScape",
+    "to": "QuantumScape Salzgitter"
+   },
+   {
+    "from": "Phi4Tech",
+    "to": "Phi4Tech Badajoz"
+   },
+   {
+    "from": "SVOLT Brandenburg",
+    "to": "SVOLT Lauchhammer"
+   },
+   {
+    "from": "ElevenEs",
+    "to": "ElevenEs Subotica"
+   },
+   {
+    "from": "MES",
+    "to": "MES Horní Suchá"
+   },
+   {
+    "from": "InoBat Slovakia",
+    "to": "InoBat Voderady"
+   },
+   {
+    "from": "Basquevolt",
+    "to": "Basquevolt Alava"
+   },
+   {
+    "from": "Swiss Clean Battery",
+    "to": "Swiss Clean Battery Domat-Ems"
+   },
+   {
+    "from": "Leclanché",
+    "to": "Leclanché Willstätt"
+   },
+   {
+    "from": "Varta",
+    "to": "Varta Ellwangen"
+   }
+  ],
+  "carried_over": 40,
+  "added": [
+   "SVOLT Finland",
+   "Prologium Dunkirk",
+   "Tata Group/JLR Bridgwater",
+   "Elinor Batteries Orkland",
+   "BMZ/TerraE Karlstein am Main",
+   "FMG Group Kotka",
+   "InoBat Valladolid",
+   "Romvolt (ABEE) Galati",
+   "CTAG Vigo",
+   "Beyonder Rogaland"
+  ]
+ },
+ "disagreements": [
+  {
+   "object": "univercell-flintbek",
+   "field": "capacity",
+   "speakers": [
+    {
+     "who": "UniverCell Holding GmbH",
+     "type": "company",
+     "says": "1.5 GWh available, ready to scale beyond it",
+     "url": "https://www.univercell.de/unternehmen"
+    },
+    {
+     "who": "Battery-News.de",
+     "type": "benchmark",
+     "says": "10 GWh against a 2026 date",
+     "url": "https://battery-news.de/en/europe-battery-cell-production/"
+    }
+   ],
+   "held": "The company's figure is on the row. The list's is here."
+  },
+  {
+   "object": "morrow-arendal",
+   "field": "status",
+   "speakers": [
+    {
+     "who": "Morrow Batteries",
+     "type": "company",
+     "says": "bankruptcy filed 6 May 2026 — the row is cancelled",
+     "url": ""
+    },
+    {
+     "who": "Battery-News.de",
+     "type": "benchmark",
+     "says": "(Paused), as of February 2026",
+     "url": "https://battery-news.de/en/europe-battery-cell-production/"
+    }
+   ],
+   "held": "A disagreement of VINTAGE, not of fact: the list is dated three months before the filing. It is recorded because a reader comparing the two needs to know which is older, and NOT read as the list being wrong."
+  },
+  {
+   "object": "tiamat",
+   "field": "site",
+   "speakers": [
+    {
+     "who": "Tiamat Energy",
+     "type": "company",
+     "says": "a gigafactory 10 km south-east of Amiens, at ZAC Jules Verne 2 near Boves",
+     "url": "https://www.tiamat-energy.com/"
+    },
+    {
+     "who": "Battery-News.de",
+     "type": "benchmark",
+     "says": "Douvrin",
+     "url": "https://battery-news.de/en/europe-battery-cell-production/"
+    }
+   ],
+   "held": "No row either way — the entry fails the site leg. The disagreement is the reason it fails rather than a detail of a row that exists."
+  }
+ ],
+ "reference_debts": [
+  {
+   "pair": [
+    "T&E 2023 'CATL Erfurt'",
+    "T&E 2024 'CATL Arnstadt'"
+   ],
+   "believed": "one works, held here as catl-arnstadt",
+   "missing": "T&E never states that the two labels are the same entry. The rename is read from position in an ordered list and from the register's own knowledge of the works, not from a source that names both."
+  },
+  {
+   "pair": [
+    "T&E 2023 'VW Valencia'",
+    "T&E 2024 'VW PowerCo Sagunto'"
+   ],
+   "believed": "one works, held here as powerco-sagunto",
+   "missing": "Same. Sagunto is in Valencia province and T&E says so nowhere."
+  },
+  {
+   "pair": [
+    "T&E 2023 'InoBat Serbia'",
+    "T&E 2024 'InoBat Cuprija'"
+   ],
+   "believed": "one entry",
+   "missing": "Same, and neither is held here, so the debt is between two benchmark entries rather than between a benchmark and a row."
+  },
+  {
+   "pair": [
+    "T&E 2023 'SVOLT Saarland'",
+    "T&E 2024 'SVOLT Überherrn'"
+   ],
+   "believed": "one works, held here as svolt-uberherrn",
+   "missing": "Same. Überherrn is in Saarland."
+  },
+  {
+   "pair": [
+    "T&E 2023 'SVOLT Brandenburg'",
+    "T&E 2024 'SVOLT Lauchhammer'"
+   ],
+   "believed": "one works, held here as svolt-lauchhammer",
+   "missing": "Same. Lauchhammer is in Brandenburg."
+  },
+  {
+   "pair": [
+    "T&E 2023 'Envision AESC France'",
+    "T&E 2024 'Envision AESC Douai'"
+   ],
+   "believed": "one works, held here as envision-aesc-douai",
+   "missing": "Same."
+  },
+  {
+   "pair": [
+    "T&E 2023 'Envision AESC Spain'",
+    "T&E 2024 'Envision AESC Navalmoral de la Mata'"
+   ],
+   "believed": "one works, held here as envision-aesc-extremadura",
+   "missing": "Same."
+  },
+  {
+   "pair": [
+    "T&E 2023 'InoBat Slovakia'",
+    "T&E 2024 'InoBat Voderady'"
+   ],
+   "believed": "one works",
+   "missing": "Same. Both are refused on the pilot/R&D clause either way."
+  },
+  {
+   "pair": [
+    "Battery-News 'MORROW Agder'",
+    "T&E 'Morrow Arendal'"
+   ],
+   "believed": "one works, held here as morrow-arendal",
+   "missing": "One list names the county and the other the town; no source names both."
+  },
+  {
+   "pair": [
+    "Battery-News 'SK innovation Komarom & Ivancsa'",
+    "sk-on-komarom and sk-on-ivancsa"
+   ],
+   "believed": "one benchmark line over two held works",
+   "missing": "The list gives one capacity for two works and no split. Nothing here can divide 47.3 GWh between them."
+  }
+ ]
+}

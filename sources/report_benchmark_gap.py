@@ -80,6 +80,11 @@ import sector_map as sm  # noqa: E402
 OUT = bench.ROOT / "scratch" / "hydrogen_benchmark_gap.csv"
 SNAPSHOTS = bench.ROOT / "sources" / "benchmark_snapshots.json"
 
+# The benchmarks THIS report is about. The snapshot file is shared with the
+# battery, cement/CCS and steel censuses from brief 8 onwards.
+HYDROGEN_BENCHMARKS = {"iea_hydrogen_production_projects",
+                       "odenweller_ueckerdt_2025"}
+
 
 def verify_inputs() -> list[str]:
     """Check the cached benchmark files against their recorded identity.
@@ -96,6 +101,11 @@ def verify_inputs() -> list[str]:
     doc = json.loads(SNAPSHOTS.read_text(encoding="utf-8"))
     newest: dict[str, dict] = {}
     for rec in doc["snapshots"]:
+        # sources/benchmark_snapshots.json is shared across sectors from brief 8.
+        # This report is about hydrogen, and a snapshot for another sector's list
+        # would be reported here as a missing hydrogen input.
+        if rec["benchmark"] not in HYDROGEN_BENCHMARKS:
+            continue
         cur = newest.get(rec["benchmark"])
         if cur is None or rec["fetched"] >= cur["fetched"]:
             newest[rec["benchmark"]] = rec

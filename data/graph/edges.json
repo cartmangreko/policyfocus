@@ -30459,6 +30459,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:univercell-flintbek",
+  "to": "technology:cell-manufacturing",
+  "since": "2026-09-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=univercell-flintbek].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:verkor-dunkirk",
   "to": "technology:cell-manufacturing",
   "since": "2025-12-11",
@@ -35411,6 +35421,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=uniper-h2maasvlakte].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:univercell-flintbek",
+  "to": "country:DE",
+  "since": "2026-09-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=univercell-flintbek].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:univercell-flintbek",
+  "to": "sector:batsol",
+  "since": "2026-09-12",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=univercell-flintbek].sector"
   },
   "basis": "sector"
  },

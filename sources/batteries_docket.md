@@ -1933,3 +1933,171 @@ published. What is left, in order:
    batteries blocks that exist are drafts awaiting review. The most visible gap
    on the platform, now that the page is published.
 5. **The exposure exclusion**, decided and not yet written into a page.
+
+---
+
+## 5. The census against the outside lists — 12 September 2026, brief 8
+
+Every entry of a recognised external list worked to a class, a gap table that sums to
+the list's own row count, and drift measured against a second list. The procedure is
+hydrogen's, applied to batteries.
+
+### D78. THE T&E LISTS ARE ENUMERABLE, AND THIS REGISTER HAD RECORDED THAT THEY WERE NOT
+
+`sources/te_backtest.py` states, correctly, that "a list of 50 plants each with a class
+and a 2030 capacity cannot be read out of these files". That finding is about the PDFs'
+**text layer**, and it is true of it: page 15 of the 2023 report carries 106 characters
+and two images, and page 61 of the 2024 report carries 62 characters and two images.
+
+It was then read for a year as a finding about the reports, and it is not one. **The
+charts are raster PNGs with the works' names printed along the axis, and the names are
+legible.** The entry list exists, it is T&E's own, and it enumerates:
+
+| vintage | figure | rows |
+|---|---|---|
+| March 2023 | Figure 5, p.15, "Risk assessment of European battery cell production capacities in 2030 by factory" | **51** — 50 named works and one "Others" |
+| May 2024 | Annex 1, p.61, "Risk assessment of European gigafactories" | **50** — 49 named works and one "Others" |
+
+**Both counts were taken twice, by different means.** Transcribed by reading the label
+column at 600 dpi, and counted independently by finding the label blocks in the pixels.
+The two agree. A gap table is only allowed to claim it sums to a list where the list's
+own count has been established without reference to the transcription it is checking —
+a count taken from the thing it checks is the mirror D77 was written about.
+
+**What is read off the chart and what is not.** The NAMES are text and are recorded. The
+CAPACITIES are bar lengths and are **not**: a number read off a pixel offset is a number
+this register invented, and no entry carries a capacity from a T&E chart. The risk class
+is a colour and is recorded as the publisher's colour, never converted into a judgement
+of this register's own.
+
+### The gap tables
+
+| class | 2024 Annex 1 | 2023 Figure 5 | Battery-News 2026-02 |
+|---|---|---|---|
+| held (row or candidate) | 29 | 30 | 25 |
+| admitted by this pass | 0 | 0 | 1 |
+| named but not admitted | 4 | 4 | 4 |
+| searched, none found | 7 | 5 | 6 |
+| unreadable | 4 | 5 | 1 |
+| perimeter exclusion | 5 | 5 | 1 |
+| not searched | 0 | 1 | 0 |
+| benchmark aggregate | 1 | 1 | 0 |
+| **TOTAL** | **50** | **51** | **38** |
+
+**A benchmark aggregate is not an entry, and the table says what the row is.** "Others"
+is a residual with no names — capacity T&E did not attribute to any named works. It keeps
+its own class, it is never searched, and the gate stays at the list's full row count
+because that is what the publisher printed.
+
+Each column sums to its list's own row count, and
+`sources/build_batteries_benchmark.py` exits non-zero if one stops doing so.
+
+**One entry is not searched and it is printed by name: Eurocell**, a Dutch entry T&E's
+2024 table carries as cancelled. Nobody has looked, and the answer is to go and look.
+
+### What the perimeter caught that a name would not
+
+Four entries leave on a clause rather than on a failure to find anything, and three of
+them are works an outside list carries among battery cells that are not battery cells:
+
+- **FMG Group Kotka** — Finnish Minerals Group's own news index calls it "the Kotka CAM
+  plant". Cathode active material. This is the entry the clause **"battery materials"**
+  was named for in scope.md's Sector perimeters.
+- **Phi4Tech Badajoz** — phi4tech.com: "fábrica de celdas de supercondensadores". A
+  supercapacitor is not a battery cell.
+- **InoBat Voderady** — inobat.eu: "R&D centre and pilot battery line in Voderady", and
+  the pilot "will provide the foundation for a manufacturing production line". The
+  perimeter refuses a pilot unless the company states it as a phase of a commercial
+  project, and the company states the opposite.
+- **Varta Ellwangen** — scale, on the register's standing refusal.
+
+### Drift, and the one row it found
+
+| movement | entries |
+|---|---|
+| left | 11 |
+| carried over | 40 |
+| — of which renamed | 26 |
+| added | 10 |
+| **2023 total** (left + carried over) | **51** |
+| **2024 total** (carried over + added) | **50** |
+
+**Renamed sits inside carried over**, as the hydrogen table does: a renamed entry
+neither left nor arrived. **Twenty-six of forty carried-over entries were renamed** —
+more than half — and every one of them would have broken a name join. T&E renamed CATL's
+German works from Erfurt to Arnstadt, VW's Spanish works from Valencia to Sagunto,
+SVOLT's from Saarland to Überherrn and from Brandenburg to Lauchhammer, and InoBat's
+Serbian entry from Serbia to Cuprija. That is the argument for rule 30 restated in a
+second sector.
+
+**The eleven departures, against this register's own classes:** 2 are rows here
+(Italvolt Scarmagno, Farasis Bitterfeld), 3 are named but not admitted, 3 are
+unreadable, 1 is a perimeter exclusion, 1 was searched and not found, and 1 is the
+unsearched Eurocell. **Leaving a list is drift and nothing else** — no `status_history`
+is touched on the strength of it.
+
+### The second list earns its place on the first run
+
+Battery-News.de's February 2026 atlas is independent of T&E: different authors (Gerrit
+Bockey and Heiner Heimes, PEM at RWTH Aachen), different method, and a vintage fourteen
+months newer. Three of its rows correspond to works T&E's latest vintage does not carry
+at all — CATL/Stellantis Zaragoza, Sunwoda Nyíregyháza, and **UniverCell Flintbek, which
+nothing here would otherwise have reached.**
+
+**UniverCell Flintbek is admitted**, the one row this pass adds. UniverCell's own company
+page carries all three admission legs in one paragraph: "jetzt betreiben wir eine
+erfolgreiche Gigafactory, die bereit ist, über 1,5 GWh hinaus zu skalieren"; "Unser
+Standort: Konrad-Zuse-Ring 1, 24220 Flintbek, Deutschland"; and electrode **and** cell
+production. The row carries **1.5 GWh, the company's figure**, at
+`capacity_basis: "operating"` because the company states it as capacity available rather
+than announced. Battery-News states 10 GWh, and that is recorded as a disagreement
+rather than blended into the row. **Position is outstanding**: the address is presented
+as the address of the works, which is the Iváncsa case and not the Giga Arctic one, but
+an address is not a coordinate and this register does not geocode.
+
+### Disagreements, and the one that is a vintage
+
+Three, in `sources/batteries_benchmark.json`. Two are two speakers on one fact —
+UniverCell's capacity, and Tiamat's site, where the company says a gigafactory near
+**Amiens** and Battery-News says **Douvrin**, 120 km away. The third is not a
+disagreement about the world: Battery-News marks Morrow "(Paused)" where this register
+holds it cancelled, and the list's vintage is three months before Morrow's bankruptcy
+filing. **It is recorded as a disagreement of vintage and explicitly not as the list
+being wrong**, because a reader comparing the two needs to know which is older.
+
+### Reference debts
+
+Ten, in `sources/batteries_benchmark.json`. Every rename above is one: T&E nowhere
+states that "CATL Erfurt" and "CATL Arnstadt" are the same entry, and the pairing is
+read from position in an ordered list and from this register's own knowledge of the
+works. **They are recorded as debts rather than joined**, and printed for confirmation.
+
+### Five questions raised, and ruled on 13 September 2026
+
+`sources/batteries_questions.json` keeps each question beside its answer. **The rulings,
+and what each moved:**
+
+- **A benchmark aggregate is not an entry.** Class `benchmark aggregate`, unsearched, and
+  the gap report says what the row is. Touches both "Others" rows.
+- **A licensor is a supplier, not a project — the DRI precedent.** QuantumScape moves from
+  `named not admitted` to **`perimeter exclusion`** with the clause **"licensor, no works
+  of its own"**, in both vintages. The relationship the list was pointing at is not lost
+  with the refusal: it is recorded as an edge into `powerco-salzgitter`, under a new edge
+  type **`technology_licence`** on `sector_map.EDGE_TYPES` — a licence is not `material`,
+  because nothing moves. The edge is **proposed with verdict null** in
+  `sources/batteries_edges_proposed.json` and is not on the row; the source read is a
+  newsroom headline, and an asserted edge carries the sentence it was read from.
+- **The scale rule is tested on what the company states.** EAS Nordhausen stays
+  `named not admitted` and its failed leg becomes **"capacity not company-stated"**.
+  Battery-News's 0.5 GWh is recorded as a **benchmark claim** against the entry and is not
+  used to apply the threshold: the entry fails because the company stated nothing, not
+  because 0.5 is less than 1.
+- **A refusal attaches to a project and its owner, never to a town.** V4Smart is worked as
+  its own entry on its own sources — seven fetches across v4drive.com, v4smart.de and
+  varta-ag.com. The company is confirmed as making high-power cells and **names no site and
+  no capacity anywhere**. `searched none found`, on its own evidence rather than folded
+  into VARTA's refusal.
+- **One list entry, two works here.** The Battery-News reference is now on **both**
+  `sk-on-komarom` and `sk-on-ivancsa`, the entry is counted **once** as held, and the
+  list's 47.3 GWh stays on the list side as its claim — nothing here splits it. The
+  reference debt stands as written.

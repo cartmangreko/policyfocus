@@ -3680,7 +3680,11 @@
       "capacity_as_of": "2022-03-23",
       "capacity_as_of_precision": "day",
       "capacity_note": "PRESS-TIER, AND SAID TO BE. The perimeter allows capacity at any tier with the tier written down, and this is the only tier available: electrive gives 'an annual capacity of 30 GWh with the final expansion in 2028', and SK On's own newsroom is served under a certificate for a different host and cannot be read here. The figure is trade press reporting the company, not the company, and it should be replaced the day an SK On page can be read.",
-      "stated_schedule": []
+      "stated_schedule": [],
+      "benchmarks": {
+        "battery_news_europe_cells": "SK innovation Komarom & Ivancsa",
+        "note": "ONE BENCHMARK ENTRY OVER TWO WORKS, RULED 13 SEPTEMBER 2026. Battery-News.de's February 2026 atlas carries a single row — 'SK innovation | Komarom & Ivancsa | 2028 | 47.3 GWh' — covering both of this company's Hungarian works. The reference is recorded on BOTH rows and the entry is counted ONCE as held in the gap table, because the table's population is the list's rows. THE 47.3 GWh STAYS ON THE LIST SIDE as the list's own claim: it is a figure for two works and nothing here can divide it, so neither row's capacity is touched by it. The pairing is a reference debt — no source names the two works as one entry — and it is recorded as one in sources/batteries_benchmark.json rather than joined."
+      }
     },
     {
       "id": "sk-on-komarom",
@@ -3771,7 +3775,11 @@
           "note": "The basemap feature the point is taken from. Cited as a source and not as the site's evidence type: what admits this coordinate is the operator's published address, and this building is what stands at it."
         }
       ],
-      "stated_schedule": []
+      "stated_schedule": [],
+      "benchmarks": {
+        "battery_news_europe_cells": "SK innovation Komarom & Ivancsa",
+        "note": "ONE BENCHMARK ENTRY OVER TWO WORKS, RULED 13 SEPTEMBER 2026. Battery-News.de's February 2026 atlas carries a single row — 'SK innovation | Komarom & Ivancsa | 2028 | 47.3 GWh' — covering both of this company's Hungarian works. The reference is recorded on BOTH rows and the entry is counted ONCE as held in the gap table, because the table's population is the list's rows. THE 47.3 GWh STAYS ON THE LIST SIDE as the list's own claim: it is a figure for two works and nothing here can divide it, so neither row's capacity is touched by it. The pairing is a reference debt — no source names the two works as one entry — and it is recorded as one in sources/batteries_benchmark.json rather than joined."
+      }
     },
     {
       "id": "envision-aesc-extremadura",
@@ -11230,6 +11238,68 @@
       "stated_schedule": [],
       "schedule_note": "EMPTY BECAUSE NOBODY LOOKED, AND SAYING SO HERE RATHER THAN IN THE LIST. The admission search of 10 September 2026 asked one question of every source — does an owner or a permit name this site — and did not collect schedules. Several of these pages plainly state a target date; none was taken down against this row. An empty stated_schedule elsewhere on this file means no source on file states a date; on these forty-four it means the source was read for something else. Re-reading them for dates is coverage work and is not done.",
       "owner_listing_note": "Not asked in this pass. The admission search read each source for a site and a figure; who owns the operator, and whether that owner is listed, was not read."
+    },
+    {
+      "id": "univercell-flintbek",
+      "name": "UniverCell Flintbek",
+      "company": "UniverCell Holding GmbH",
+      "plant": "Flintbek",
+      "country": "DE",
+      "located": "no",
+      "location_note": "POSITION OUTSTANDING, AND THE ADDRESS IS ON FILE RATHER THAN DRAWN. UniverCell publishes 'Unser Standort: Konrad-Zuse-Ring 1, 24220 Flintbek, Deutschland' on its own company page, in the same paragraph as the sentence that says it operates the works — which is the Iváncsa case and not the Giga Arctic one: the address is presented as the address OF the works, not as a filing address. What it is not is a coordinate, and this register does not geocode. The drawing is queued: a sweep centred on Flintbek against a dated extract is what turns the address into a position citing the feature it came from. Recorded here so the absence is a decision and nobody repeats the reasoning.",
+      "sector": "batsol",
+      "transition": "supply_security",
+      "technology": [
+        "cell-manufacturing"
+      ],
+      "capacity": {
+        "value": 1.5,
+        "unit": "GWh per year"
+      },
+      "capacity_basis": "operating",
+      "capacity_note": "THE COMPANY'S OWN FIGURE, AND IT IS A FLOOR RATHER THAN A TARGET. UniverCell's company page says the works is 'bereit, über 1,5 GWh hinaus zu skalieren' and its home page states '1,5 GWh verfügbare Kapazität'. 1.5 GWh is therefore capacity available now, not capacity announced for a future phase, which is why the basis is `operating` and not `announced`. Battery-News.de's February 2026 atlas states 10 GWh for this works against a 2026 date; that figure is the second list's and is recorded as a disagreement in sources/batteries_benchmark.json rather than blended into this one.",
+      "status": "operating",
+      "status_history": [
+        {
+          "event_kind": "status",
+          "date": "2026-09-12",
+          "date_precision": "day",
+          "status_from": null,
+          "status_to": "operating",
+          "status": "operating",
+          "source_url": "https://www.univercell.de/unternehmen",
+          "source_type": "company",
+          "evidence_mode": "retrospective",
+          "note": "THE HISTORY STARTS HERE BECAUSE THIS IS THE FIRST EVENT ON THIS WORKS THIS REGISTER HAS SOURCED, and the date is the day the statement was read rather than the day production began. UniverCell's company page carries no dateline, on the page or in its markup, so the day it was read is an upper bound on when the company said it: 'jetzt betreiben wir eine erfolgreiche Gigafactory, die bereit ist, über 1,5 GWh hinaus zu skalieren'. The home page carries the same claim as 'die größte aktive Gigafactory Europas'. NOTHING EARLIER IS READ IN. The works is older than this sentence and this register has read no primary source for when it started, so it records what it verified."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.univercell.de/unternehmen",
+          "title": "Unternehmen — UniverCell",
+          "publisher": "UniverCell Holding GmbH",
+          "date": "2026-09-12",
+          "date_precision": "day",
+          "retrieved_date": "2026-09-12",
+          "note": "THE ADMITTING SOURCE. Fetched with the declared Eufabric User-Agent and recorded in sources/cache/batteries/index.json. Carries all three admission legs at once: the company confirms the works ('jetzt betreiben wir eine erfolgreiche Gigafactory'), names the site ('Unser Standort: Konrad-Zuse-Ring 1, 24220 Flintbek, Deutschland') and states a capacity over the 1 GWh threshold. The page carries no date, on the page or in its markup, so the date recorded is the retrieval date and is said to be that rather than passed off as the company's own dating — which is how envision-aesc-douai and novo-energy-gothenburg already handle an undated company page."
+        },
+        {
+          "url": "https://www.univercell.de/",
+          "title": "Elektroden- und Zellproduktion in Europa — UniverCell",
+          "publisher": "UniverCell Holding GmbH",
+          "date": "2026-09-12",
+          "date_precision": "day",
+          "retrieved_date": "2026-09-12",
+          "note": "The capacity sentence in its second form: '1,5 GWh verfügbare Kapazität für Premiummärkte machen UniverCell zur größten aktiven Gigafactory Europas', beside '64.000 m² Elektroden'. Cited for the capacity and for the product — the company describes electrode AND cell production, which is what puts it inside the cell-manufacturing perimeter rather than in the battery-materials refusal. Undated in the same way as the page above, and dated the same way."
+        }
+      ],
+      "capacity_value": 1.5,
+      "capacity_unit": "GWh_per_year",
+      "capacity_product": "battery_cells",
+      "capacity_source_url": "https://www.univercell.de/unternehmen",
+      "capacity_as_of": "2026-09-12",
+      "capacity_as_of_precision": "day",
+      "stated_schedule": []
     }
   ]
 }
