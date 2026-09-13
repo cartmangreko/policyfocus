@@ -273,6 +273,13 @@
       "priority": "normal"
     },
     {
+      "candidate": "gen2-nesbruket-mosjoen",
+      "url": "https://www.vefsn.kommune.no/byggesak.413095.no.html",
+      "drop_as": "sources/manual/gen2-nesbruket-mosjoen--vefsn-rammetillatelse.pdf",
+      "needed_for": "the cadastral parcel, which would make this a permit-derived drawing",
+      "why": "Vefsn municipality's general building permit for Gen2 Energy's hydrogen plant at Nesbruket. THE ONE FACT WANTED IS THE GNR/BNR. Kartverket publishes parcel geometry under CC BY 4.0, so a stated parcel becomes a drawing under the cadastre rule; without it the row stays undrawn. Gen2's own release names Nesbruket and no parcel, the municipality's case pages answer 404 to a declared reader, and Nesbruket is not a place node in OpenStreetMap either."
+    },
+    {
       "candidate": "BENCHMARK — cement and CCS, first list",
       "url": "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database",
       "why": "IEA account login. The file is 'IEA CCUS Projects Database 2026.xlsx', updated 27/03/2026, on the Download tab; the page answers 'You are either not logged in or your login session has expired, please login again or create an IEA account to download data.' THE TERMS DO NOT FORBID THE SNAPSHOT — the product page states Licence CC BY 4.0 — so the barrier is the acceptance, which is the account holder's to give and not this pipeline's.",
