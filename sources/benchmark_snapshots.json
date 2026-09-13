@@ -1,158 +1,160 @@
 {
-  "_comment": [
-    "BENCHMARK INPUTS, SNAPSHOTTED BY IDENTITY AND NOT BY COPY.",
-    "",
-    "sources/scope.md, 'Snapshots are append-only': each release archives the register state and",
-    "every fetched source version under a dated path with a SHA-256 manifest, and a prior entry is",
-    "never overwritten. The two benchmark inputs are held to that rule with one difference, and the",
-    "difference is a licence rather than a preference: THE BYTES ARE NOT ARCHIVED. The content of",
-    "both files is the IEA's Hydrogen Projects Database — directly in one case, quality-checked by",
-    "Odenweller and Ueckerdt in the other — and this repository is not licensed to redistribute it.",
-    "",
-    "SO WHAT IS ARCHIVED IS THE IDENTITY: the publisher's URL, the day it was fetched, the size and",
-    "the SHA-256. That is enough for anybody to fetch the same file from the publisher and prove it",
-    "is the one these numbers were computed from, which is the whole purpose the snapshot rule",
-    "serves — 'the archive is what makes every published number reconstructible after the register",
-    "has moved on'. A hash does that without holding a copy nobody may pass on.",
-    "",
-    "APPEND-ONLY, LIKE THE SNAPSHOTS. A refreshed benchmark is a NEW entry with a new date and a new",
-    "hash; the old one stays, because the counts in sources/hydrogen_docket.md and in pull request",
-    "#52 were computed against it and a reader checking them a year from now needs to know which",
-    "file they are about. sources/report_benchmark_gap.py verifies the live cache against the newest",
-    "entry per benchmark and says so on every run.",
-    "",
-    "ONE BENCHMARK IN TWO VINTAGES, NOT TWO BENCHMARKS. Recorded 11 September 2026, after the",
-    "admission search made the relationship impossible to keep ignoring. Odenweller & Ueckerdt",
-    "(2025) IS the IEA's October 2023 database, quality-checked, and it keeps the IEA's own",
-    "reference numbers: 35 of the 54 references the search settled exist in both files under the",
-    "same number, 29 of them under the same name. The register had been treating them as two",
-    "independent lists and reaching for a NAME STEM to join rows that shared an identifier all",
-    "along — which is how a machine guess got into a class as a verdict (D54).",
-    "",
-    "WHAT FOLLOWS FROM THE DEPENDENCY. The two files cannot be summed, cannot corroborate each",
-    "other, and a gap in one is not independent evidence of a gap in the other. What the older",
-    "vintage CAN do, and what it is now read for, is DRIFT: which entries left the list between",
-    "October 2023 and now, which were renamed, which are new. A project that vanishes from a",
-    "database is a project whose failure nobody counts (rule 17), and drift is the only place",
-    "that fact can be seen.",
-    "",
-    "BRIEF 8 ADDS THREE SECTORS, AND EACH PUBLISHER'S LICENCE IS READ BEFORE ITS SNAPSHOT.",
-    "The rule above -- identity, not copy -- was written for two files nobody here may",
-    "redistribute. Brief 8's inputs are not all like that, so each snapshot below carries a",
-    "`licence` block saying what was read, where, and what it permits. A snapshot taken",
-    "without that block would be a snapshot somebody assumed was allowed."
-  ],
-  "snapshots": [
-    {
-      "benchmark": "odenweller_ueckerdt_2025",
-      "file": "ou_quality_checked_2023.xlsx",
-      "url": "https://raw.githubusercontent.com/aodenweller/green-hydrogen-gap/master/data/IEA_H2_DB_2023-10/quality_checked/IEA_Hydrogen_Projects_Database_2023_quality_checked.xlsx",
-      "fetched": "2026-09-09",
-      "bytes": 975026,
-      "sha256": "bb9d3aba38738a5c5864c145469b658c4f274a3b6e2697f52fc7a5dccec71345"
-    },
-    {
-      "benchmark": "iea_hydrogen_production_projects",
-      "file": "iea_live_projects.json",
-      "url": "https://api.iea.org/hydrogen/project",
-      "fetched": "2026-09-09",
-      "bytes": 496671,
-      "sha256": "7cbeede384e61a5ba18479ac30ead37885555ea4a80f1e931f4eb47a48d70768"
-    },
-    {
-      "benchmark": "te_gigafactory_risk",
-      "vintage": "2023-03",
-      "file": "te2023.pdf",
-      "url": "https://uploads.transportenvironment.org/production/files/TE-Battery-risk-report.pdf",
-      "fetched": "2026-09-12",
-      "bytes": 2113145,
-      "sha256": "5bf79d3052d24566af076e842ae597c0f0e3b438dd8229cad4a2c66226435f9c",
-      "entry_list": "Figure 5, page 15: 'Risk assessment of European battery cell production capacities in 2030 by factory'. 51 rows -- 50 named works and one 'Others'.",
-      "licence": "transport_environment"
-    },
-    {
-      "benchmark": "te_gigafactory_risk",
-      "vintage": "2024-05",
-      "file": "te2024.pdf",
-      "url": "https://uploads.transportenvironment.org/production/files/An-industrial-blueprint-for-batteries-in-Europe-How-Europe-can-successfully-build-a-sustainable-battery-value-chain.pdf",
-      "fetched": "2026-09-12",
-      "bytes": 4241705,
-      "sha256": "5dd9cd52613cf0d499d46aa6828f6affc27199ebc83e2f4f3700a9b507ea97fc",
-      "entry_list": "Annex 1, page 61: 'Risk assessment of European gigafactories'. 50 rows -- 49 named works and one 'Others'.",
-      "licence": "transport_environment"
-    },
-    {
-      "benchmark": "battery_news_europe_cells",
-      "vintage": "2026-02",
-      "file": "bn_europe_map.jpg",
-      "url": "https://battery-news.de/wp-content/uploads/2026/03/EUROPE_Battery_Cell_Manufacturers_2026-02-1-scaled.jpg",
-      "fetched": "2026-09-12",
-      "bytes": 369788,
-      "sha256": "74758aacae0b2dcefb482a276d21bfd58617caf5883c888abe7bc299a6d8ec42",
-      "entry_list": "'Battery Cell Manufacturers (Europe) as of February 2026', published 03/2026, authors Gerrit Bockey and Heiner Heimes (PEM, RWTH Aachen). 38 rows across 12 countries, each company, site, year and GWh stated as text.",
-      "licence": "battery_news_de"
-    }
-  ],
-  "relationship": [
-    {
-      "benchmark": "iea_hydrogen_production_projects",
-      "vintages": [
-        {
-          "id": "iea_hydrogen_production_projects",
-          "vintage": "current",
-          "publisher": "International Energy Agency",
-          "note": "The live endpoint. The current vintage and the one the register measures against."
-        },
-        {
-          "id": "odenweller_ueckerdt_2025",
-          "vintage": "2023-10",
-          "derived_from": "iea_hydrogen_production_projects",
-          "publisher": "Odenweller & Ueckerdt (2025)",
-          "note": "The IEA's October 2023 database, quality-checked, under the IEA's own reference numbering. NOT AN INDEPENDENT BENCHMARK: it cannot corroborate the live file because it is the live file's own past. It is read for drift between the two vintages and for nothing else."
-        }
-      ],
-      "recorded": "2026-09-11"
-    },
-    {
-      "benchmark": "te_gigafactory_risk",
-      "vintages": [
-        {
-          "id": "te_gigafactory_risk",
-          "vintage": "2024-05",
-          "publisher": "Transport & Environment",
-          "note": "The current vintage of T&E's own list and the one the gap is measured against."
-        },
-        {
-          "id": "te_gigafactory_risk",
-          "vintage": "2023-03",
-          "publisher": "Transport & Environment",
-          "note": "The same list fourteen months earlier. NOT AN INDEPENDENT BENCHMARK -- it is the 2024 list's own past, on the same method, so it cannot corroborate it. Read for drift and for nothing else."
-        }
-      ],
-      "second_list": {
-        "id": "battery_news_europe_cells",
-        "publisher": "Battery-News.de",
-        "note": "Independent of T&E: different authors, different method (official announcements compiled by PEM at RWTH Aachen), different vintage. This is the list drift is measured against, in the sense the brief asks for -- what one list holds that the other does not."
-      },
-      "recorded": "2026-09-12"
-    }
-  ],
-  "licences": {
-    "transport_environment": {
-      "publisher": "Transport & Environment",
-      "read": "https://www.transportenvironment.org/copyright",
-      "read_on": "2026-09-12",
-      "verbatim": "T&E's graphs and charts are licensed under CC BY-NC-ND 4.0. Photographs on this site are not licensed by T&E to be shared. You are free to share the material in any medium or format. You must give appropriate credit but not in any way that suggests the licensor endorses you or your use. This material may not be used for commercial purposes without prior written permission.",
-      "robots": "robots.txt allows User-agent: * outside /cpresources/, /vendor/, /.env and /cache/, and disallows GPTBot and Google-Extended by name. The declared reader is neither of those and is not a training crawler; it is recorded here because a publisher that names AI crawlers has said something, and a reader that ignored it would be deciding on the publisher's behalf.",
-      "what_this_pass_does": "Reads the two reports at reading pace with the declared reader, holds them in sources/cache/batteries/ which is not committed, and cites every entry by T&E's own chart label. ND is why no derived chart is published and NC is why nothing is sold; neither bites on reading a list and counting against it."
-    },
-    "battery_news_de": {
-      "publisher": "Battery-News.de",
-      "read": "https://battery-news.de/impressum/",
-      "read_on": "2026-09-12",
-      "verbatim": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors beziehungsweise Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht-kommerziellen Gebrauch gestattet.",
-      "robots": "robots.txt: User-agent: * / Disallow: (empty) -- everything allowed.",
-      "what_this_pass_does": "All rights reserved, with downloads permitted for private non-commercial use. The atlas is read at reading pace, held in the uncommitted cache, and cited by the publisher's own row -- company, site, year. Nothing is redistributed."
-    }
+ "_comment": [
+  "BENCHMARK INPUTS, SNAPSHOTTED BY IDENTITY AND NOT BY COPY.",
+  "",
+  "sources/scope.md, 'Snapshots are append-only': each release archives the register state and",
+  "every fetched source version under a dated path with a SHA-256 manifest, and a prior entry is",
+  "never overwritten. The two benchmark inputs are held to that rule with one difference, and the",
+  "difference is a licence rather than a preference: THE BYTES ARE NOT ARCHIVED. The content of",
+  "both files is the IEA's Hydrogen Projects Database — directly in one case, quality-checked by",
+  "Odenweller and Ueckerdt in the other — and this repository is not licensed to redistribute it.",
+  "",
+  "SO WHAT IS ARCHIVED IS THE IDENTITY: the publisher's URL, the day it was fetched, the size and",
+  "the SHA-256. That is enough for anybody to fetch the same file from the publisher and prove it",
+  "is the one these numbers were computed from, which is the whole purpose the snapshot rule",
+  "serves — 'the archive is what makes every published number reconstructible after the register",
+  "has moved on'. A hash does that without holding a copy nobody may pass on.",
+  "",
+  "APPEND-ONLY, LIKE THE SNAPSHOTS. A refreshed benchmark is a NEW entry with a new date and a new",
+  "hash; the old one stays, because the counts in sources/hydrogen_docket.md and in pull request",
+  "#52 were computed against it and a reader checking them a year from now needs to know which",
+  "file they are about. sources/report_benchmark_gap.py verifies the live cache against the newest",
+  "entry per benchmark and says so on every run.",
+  "",
+  "ONE BENCHMARK IN TWO VINTAGES, NOT TWO BENCHMARKS. Recorded 11 September 2026, after the",
+  "admission search made the relationship impossible to keep ignoring. Odenweller & Ueckerdt",
+  "(2025) IS the IEA's October 2023 database, quality-checked, and it keeps the IEA's own",
+  "reference numbers: 35 of the 54 references the search settled exist in both files under the",
+  "same number, 29 of them under the same name. The register had been treating them as two",
+  "independent lists and reaching for a NAME STEM to join rows that shared an identifier all",
+  "along — which is how a machine guess got into a class as a verdict (D54).",
+  "",
+  "WHAT FOLLOWS FROM THE DEPENDENCY. The two files cannot be summed, cannot corroborate each",
+  "other, and a gap in one is not independent evidence of a gap in the other. What the older",
+  "vintage CAN do, and what it is now read for, is DRIFT: which entries left the list between",
+  "October 2023 and now, which were renamed, which are new. A project that vanishes from a",
+  "database is a project whose failure nobody counts (rule 17), and drift is the only place",
+  "that fact can be seen.",
+  "",
+  "BRIEF 8 ADDS THREE SECTORS, AND EACH PUBLISHER'S LICENCE IS READ BEFORE ITS SNAPSHOT.",
+  "The rule above -- identity, not copy -- was written for two files nobody here may",
+  "redistribute. Brief 8's inputs are not all like that, so each snapshot below carries a",
+  "`licence` block saying what was read, where, and what it permits. A snapshot taken",
+  "without that block would be a snapshot somebody assumed was allowed."
+ ],
+ "snapshots": [
+  {
+   "benchmark": "odenweller_ueckerdt_2025",
+   "file": "ou_quality_checked_2023.xlsx",
+   "url": "https://raw.githubusercontent.com/aodenweller/green-hydrogen-gap/master/data/IEA_H2_DB_2023-10/quality_checked/IEA_Hydrogen_Projects_Database_2023_quality_checked.xlsx",
+   "fetched": "2026-09-09",
+   "bytes": 975026,
+   "sha256": "bb9d3aba38738a5c5864c145469b658c4f274a3b6e2697f52fc7a5dccec71345"
+  },
+  {
+   "benchmark": "iea_hydrogen_production_projects",
+   "file": "iea_live_projects.json",
+   "url": "https://api.iea.org/hydrogen/project",
+   "fetched": "2026-09-09",
+   "bytes": 496671,
+   "sha256": "7cbeede384e61a5ba18479ac30ead37885555ea4a80f1e931f4eb47a48d70768",
+   "entry_list": "MEASURED FROM THE FILE THIS SHA-256 IDENTIFIES, on 13 September 2026: 237 European entries at or above 100 MW across ALL technologies -- 214 Electrolysis, 22 Fossil fuels with CCUS, 1 Other. Europe is sources/build_hydrogen_benchmark.py GEO; the threshold is 100 MW converted at IEA_KT_PER_MW to 17.325 ktH2/y and applied to `capacity (ktH2Y)`. Electrolysis alone is 214, which is the narrower population build_hydrogen_benchmark.py counts and NOT the ladder's.",
+   "entry_list_why": "THE COUNT IS RECORDED BECAUSE THE FILE CANNOT BE. The bytes are not redistributable and the cache is gitignored, so on any machine without it check_ladder.py cannot recount the population -- it reconciles the committed ladder against this figure instead, which is a measurement of an identified file rather than a number somebody typed. Where the cache IS present the gate recounts and must agree with this line; a cache that has drifted from this hash therefore fails rather than passing quietly."
+  },
+  {
+   "benchmark": "te_gigafactory_risk",
+   "vintage": "2023-03",
+   "file": "te2023.pdf",
+   "url": "https://uploads.transportenvironment.org/production/files/TE-Battery-risk-report.pdf",
+   "fetched": "2026-09-12",
+   "bytes": 2113145,
+   "sha256": "5bf79d3052d24566af076e842ae597c0f0e3b438dd8229cad4a2c66226435f9c",
+   "entry_list": "Figure 5, page 15: 'Risk assessment of European battery cell production capacities in 2030 by factory'. 51 rows -- 50 named works and one 'Others'.",
+   "licence": "transport_environment"
+  },
+  {
+   "benchmark": "te_gigafactory_risk",
+   "vintage": "2024-05",
+   "file": "te2024.pdf",
+   "url": "https://uploads.transportenvironment.org/production/files/An-industrial-blueprint-for-batteries-in-Europe-How-Europe-can-successfully-build-a-sustainable-battery-value-chain.pdf",
+   "fetched": "2026-09-12",
+   "bytes": 4241705,
+   "sha256": "5dd9cd52613cf0d499d46aa6828f6affc27199ebc83e2f4f3700a9b507ea97fc",
+   "entry_list": "Annex 1, page 61: 'Risk assessment of European gigafactories'. 50 rows -- 49 named works and one 'Others'.",
+   "licence": "transport_environment"
+  },
+  {
+   "benchmark": "battery_news_europe_cells",
+   "vintage": "2026-02",
+   "file": "bn_europe_map.jpg",
+   "url": "https://battery-news.de/wp-content/uploads/2026/03/EUROPE_Battery_Cell_Manufacturers_2026-02-1-scaled.jpg",
+   "fetched": "2026-09-12",
+   "bytes": 369788,
+   "sha256": "74758aacae0b2dcefb482a276d21bfd58617caf5883c888abe7bc299a6d8ec42",
+   "entry_list": "'Battery Cell Manufacturers (Europe) as of February 2026', published 03/2026, authors Gerrit Bockey and Heiner Heimes (PEM, RWTH Aachen). 38 rows across 12 countries, each company, site, year and GWh stated as text.",
+   "licence": "battery_news_de"
   }
+ ],
+ "relationship": [
+  {
+   "benchmark": "iea_hydrogen_production_projects",
+   "vintages": [
+    {
+     "id": "iea_hydrogen_production_projects",
+     "vintage": "current",
+     "publisher": "International Energy Agency",
+     "note": "The live endpoint. The current vintage and the one the register measures against."
+    },
+    {
+     "id": "odenweller_ueckerdt_2025",
+     "vintage": "2023-10",
+     "derived_from": "iea_hydrogen_production_projects",
+     "publisher": "Odenweller & Ueckerdt (2025)",
+     "note": "The IEA's October 2023 database, quality-checked, under the IEA's own reference numbering. NOT AN INDEPENDENT BENCHMARK: it cannot corroborate the live file because it is the live file's own past. It is read for drift between the two vintages and for nothing else."
+    }
+   ],
+   "recorded": "2026-09-11"
+  },
+  {
+   "benchmark": "te_gigafactory_risk",
+   "vintages": [
+    {
+     "id": "te_gigafactory_risk",
+     "vintage": "2024-05",
+     "publisher": "Transport & Environment",
+     "note": "The current vintage of T&E's own list and the one the gap is measured against."
+    },
+    {
+     "id": "te_gigafactory_risk",
+     "vintage": "2023-03",
+     "publisher": "Transport & Environment",
+     "note": "The same list fourteen months earlier. NOT AN INDEPENDENT BENCHMARK -- it is the 2024 list's own past, on the same method, so it cannot corroborate it. Read for drift and for nothing else."
+    }
+   ],
+   "second_list": {
+    "id": "battery_news_europe_cells",
+    "publisher": "Battery-News.de",
+    "note": "Independent of T&E: different authors, different method (official announcements compiled by PEM at RWTH Aachen), different vintage. This is the list drift is measured against, in the sense the brief asks for -- what one list holds that the other does not."
+   },
+   "recorded": "2026-09-12"
+  }
+ ],
+ "licences": {
+  "transport_environment": {
+   "publisher": "Transport & Environment",
+   "read": "https://www.transportenvironment.org/copyright",
+   "read_on": "2026-09-12",
+   "verbatim": "T&E's graphs and charts are licensed under CC BY-NC-ND 4.0. Photographs on this site are not licensed by T&E to be shared. You are free to share the material in any medium or format. You must give appropriate credit but not in any way that suggests the licensor endorses you or your use. This material may not be used for commercial purposes without prior written permission.",
+   "robots": "robots.txt allows User-agent: * outside /cpresources/, /vendor/, /.env and /cache/, and disallows GPTBot and Google-Extended by name. The declared reader is neither of those and is not a training crawler; it is recorded here because a publisher that names AI crawlers has said something, and a reader that ignored it would be deciding on the publisher's behalf.",
+   "what_this_pass_does": "Reads the two reports at reading pace with the declared reader, holds them in sources/cache/batteries/ which is not committed, and cites every entry by T&E's own chart label. ND is why no derived chart is published and NC is why nothing is sold; neither bites on reading a list and counting against it."
+  },
+  "battery_news_de": {
+   "publisher": "Battery-News.de",
+   "read": "https://battery-news.de/impressum/",
+   "read_on": "2026-09-12",
+   "verbatim": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors beziehungsweise Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht-kommerziellen Gebrauch gestattet.",
+   "robots": "robots.txt: User-agent: * / Disallow: (empty) -- everything allowed.",
+   "what_this_pass_does": "All rights reserved, with downloads permitted for private non-commercial use. The atlas is read at reading pace, held in the uncommitted cache, and cited by the publisher's own row -- company, site, year. Nothing is redistributed."
+  }
+ }
 }

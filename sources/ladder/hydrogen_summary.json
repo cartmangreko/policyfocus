@@ -1,0 +1,75 @@
+{
+ "_comment": [
+  "COMPUTED FROM sources/ladder/hydrogen.csv BY build_ladder.py.",
+  "Never edited by hand: the reconciliation gate check_ladder.py recomputes",
+  "it and refuses a mismatch. See scope.md, 'The ladder is computed, never",
+  "typed'."
+ ],
+ "population": 245,
+ "entries_by_rungs_passed": {
+  "0": 122,
+  "1": 96,
+  "2": 12,
+  "3": 6,
+  "4": 6,
+  "5": 2,
+  "6": 1
+ },
+ "pass_count_per_rung_by_register_class": {
+  "site": {
+   "admitted": 19,
+   "named not admitted": 47
+  },
+  "capacity": {
+   "admitted": 76
+  },
+  "fid": {
+   "admitted": 13
+  },
+  "funding": {
+   "admitted": 1
+  },
+  "start": {
+   "admitted": 15
+  },
+  "input": {
+   "admitted": 7
+  }
+ },
+ "rungs_passed_by_iea_status": {
+  "(not on the list)": {
+   "3": 2,
+   "4": 4,
+   "5": 1,
+   "6": 1
+  },
+  "Concept": {
+   "0": 41,
+   "1": 31,
+   "2": 3
+  },
+  "FID/Construction": {
+   "0": 6,
+   "1": 1,
+   "3": 3,
+   "4": 2,
+   "5": 1
+  },
+  "Feasibility study": {
+   "0": 73,
+   "1": 64,
+   "2": 9,
+   "3": 1
+  },
+  "Operational": {
+   "0": 2
+  }
+ },
+ "rung6_provisional": 76,
+ "unread_entries": 21,
+ "reconciliation": {
+  "iea_current_vintage": 237,
+  "register_rows_not_on_the_list": 8,
+  "population": 245
+ }
+}
