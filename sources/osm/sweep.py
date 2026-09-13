@@ -30,7 +30,21 @@ import layer as osm_layer  # noqa: E402
 ESTATE_WORDS = ("industriegebiet", "gewerbe", "industrial estate", "industrial park",
                 "polígono", "poligono", "zona industrial", "parque", "hafen", "port ",
                 "puerto", "industripark", "zone industrielle", "bedrijventerrein",
-                "zone d'activités", "zone d'activites", "teollisuusalue")
+                "zone d'activités", "zone d'activites", "teollisuusalue",
+                # ADDED 13 SEPTEMBER 2026: "Energie- und Technologiepark Lubmin" is the
+                # estate occupying the decommissioned nuclear station's ground, and it was
+                # being offered as a host works because none of the words above appear in
+                # it. A park by any of its national names is an estate.
+                "technologiepark", "technology park", "business park", "science park",
+                "energiepark", "erhvervspark", "næringspark", "naringspark")
+# WHAT MAY BE A HOST WORKS, by tag and not by name. `industrial` is the landuse of works
+# ground; `works` is man_made=works. Everything else the layer keeps — substations, power
+# plants, construction sites, pumping stations, street cabinets — may be NEAR a works, may
+# be named after one, and is not one. `plant` is excluded deliberately: a power station is
+# a works for its own purposes, and where a hydrogen project stands on one the row says so
+# through a named target, not through a tag that also matches every solar farm.
+HOST_WORKS_TAGS = ("industrial", "works")
+
 PLACE_RANK = {"city": 0, "town": 1, "suburb": 2, "village": 3, "quarter": 4,
               "neighbourhood": 5, "hamlet": 6, "locality": 7, "isolated_dwelling": 8}
 
@@ -69,7 +83,7 @@ def centre(doc: dict, names: set[str]):
 
 def sweep(doc: dict, lat: float, lon: float, radius: int,
           targets: list[str] | None = None) -> dict:
-    works, estates, parcels = [], [], 0
+    works, estates, host_works, parcels = [], [], [], 0
     box = radius / 111320.0 * 1.6
     for f in doc["industrial"]:
         if abs(f["lat"] - lat) > box or abs(f["lon"] - lon) > box:
@@ -82,7 +96,10 @@ def sweep(doc: dict, lat: float, lon: float, radius: int,
             continue
         label = f"{name} [{f['t']}]"
         low = name.casefold()
-        (estates if any(w in low for w in ESTATE_WORDS) else works).append(label)
+        is_estate = any(w in low for w in ESTATE_WORDS)
+        (estates if is_estate else works).append(label)
+        if f["t"] in HOST_WORKS_TAGS and not is_estate:
+            host_works.append(label)
 
     named_works, named_estates = sorted(set(works)), sorted(set(estates))
     out = {"basemap_date": doc["basemap_date"], "extract": doc["extract"],
@@ -90,13 +107,28 @@ def sweep(doc: dict, lat: float, lon: float, radius: int,
            "verdict": "works" if works else "estate" if estates
                       else "parcel" if parcels else "none",
            "named_works": named_works, "named_estates": named_estates,
+           "host_works_candidates": sorted(set(host_works)),
            "named_count": len(named_works) + len(named_estates),
            "unnamed_industrial_parcels": parcels}
     if targets:
-        hits = {t: [n for n in named_works + named_estates if t.casefold() in n.casefold()]
-                for t in targets}
+        # A NAME MATCH ON THE WRONG KIND OF FEATURE IS NOT A HOST WORKS. Ruled 13
+        # September 2026 after five of nine answered sweeps matched a substation or a
+        # railway carrying a works's name: two substations called "Zeeland refinery", the
+        # 400 kV substation at Idomlund, SNIACE's cogeneration substation, and "Obras tren
+        # a Punta Langosteira", which is the railway being built TO the port. Pembroke
+        # produced nine street cabinets with the word Substation in them.
+        #
+        # A works is industrial GROUND or a works feature. The electricity that leaves it
+        # and the railway that reaches it are named after it and are not it.
+        hits = {t: [n for n in host_works if t.casefold() in n.casefold()] for t in targets}
         out["target_hits"] = {k: v for k, v in hits.items() if v}
         out["target_found"] = any(hits.values())
+        # Kept apart rather than discarded: a name match on an ancillary is evidence the
+        # works is THERE, and it is not evidence of where its ground is.
+        named_by = {t: [n for n in named_works + named_estates
+                        if t.casefold() in n.casefold() and n not in host_works]
+                    for t in targets}
+        out["named_after_but_not_the_works"] = {k: v for k, v in named_by.items() if v}
     return out
 
 

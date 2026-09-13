@@ -10792,8 +10792,25 @@
    "status": "announced",
    "transition": "decarbonisation",
    "role": "plant",
-   "location": [],
-   "location_note": "POSITION NOT SEARCHED. This row came in through the benchmark admission search of 10 September 2026, which asked one question — does an owner or a permit source name the site — and answered it. NO COORDINATE SWEEP HAS BEEN RUN FOR THIS WORKS. That is a different state from the rows whose notes record a sweep that ran and found nothing, and saying so is the point: an absence somebody produced and an absence nobody has attempted should not read alike. Declared a strategic project by cantabria"
+   "location": [
+    {
+     "site": "Former SNIACE works, Torrelavega",
+     "lat": 43.363357,
+     "lon": -4.056384,
+     "precision": "plant",
+     "location_precision": "works",
+     "retrieved_date": "2026-09-13",
+     "source": {
+      "url": "https://www.openstreetmap.org/way/46171915",
+      "type": "basemap",
+      "publisher": "OpenStreetMap contributors",
+      "verbatim": "landuse=industrial; name=SNIACE",
+      "licence": "ODbL 1.0"
+     },
+     "confidence": "secondary"
+    }
+   ],
+   "location_note": "PLACED ON THE HOST WORKS, 13 September 2026, AND IT SHOULD HAVE BEEN A DAY EARLIER. RIC Energy's own page says 'Besaya H2 se ubicara en los antiguos terrenos de Sniace situados en las localidades de Torrelavega y Santillana del Mar' — ON the former Sniace grounds, which is tenancy and not adjacency, and which the host-works rule admits. OpenStreetMap draws those grounds as way 46171915, landuse=industrial, named SNIACE, 1.7 km from the Torrelavega place node. BASEMAP DATE 2026-09-10 from cantabria-260910.osm.pbf, 591 blobs and 35,482,886 bytes. THE ROW WAS REPORTED AS NOT DRAWN IN PULL REQUEST #58 AND THAT WAS WRONG: the sweep had found SNIACE's works and its two ancillary plants, and the hand reading was done from a PRINTED EXCERPT cut to two entries rather than from the data. Restricting host-works matching to industrial and works tags surfaced it. The same correction applies to the Zeeland refinery, which #58 also reported as undrawn."
   }
  },
  {
