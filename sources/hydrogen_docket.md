@@ -1115,6 +1115,79 @@ date 2026-09-10, and the other four are not. Hydrogen goes from 11 rows drawn to
 "west of Pembroke Power Station" is a good deal more than most of these rows have, and four
 rows turn on it.
 
+### Rulings of 13 September 2026 — adjacency, tags, and a cadastre
+
+**D81. ADJACENCY DOES NOT PLACE A ROW.** "West of Pembroke Power Station" locates the
+project relative to a feature; it does not say which ground it is on, and a marker on the
+anchor would be wrong by an unknown distance. The anchor is **recorded, not drawn**:
+`location_statement` carries the anchor feature with its OSM id, the owner's preposition,
+the verbatim sentence, the source and its date. `located` stays `"no"`.
+
+**IT STILL COUNTS FOR RUNG 1.** Naming a works and a side of it is finer than naming a
+municipality, which is the ladder's test. The map's test is different and the two disagree
+here deliberately: one scores what an owner disclosed, the other decides what may be drawn.
+
+| row | anchor | the owner's words | rung 1 |
+|---|---|---|---|
+| eneco-diamond-hydrogen-europoort | Enecogen, way/451582875 | "next to" | yes |
+| rwe-pembroke-green-hydrogen | Pembroke Power Station, way/16075498 | "to the west of" | yes |
+| totalenergies-airliquide-zeeland | Zeeland Refinery, way/174730745 | "near" | yes |
+| bayh2-bayernoil | Bayernoil Raffinerie Neustadt, way/39217578 | "supplies" | **no** |
+| hycc-h2ermes-ijmuiden | Tata Steel, way/6320127 | "applied in" | **no** |
+
+**The last two are not location statements and must not be counted as one.** BayH2's page
+says the electrolyser supplies the refinery; the IPCEI register says H2ermes's hydrogen is
+applied in Tata Steel's processes. Both name a works for a reason that is not siting. They
+are recorded because the works is drawn and somebody will otherwise reach for it.
+
+**D82. A HOST WORKS IS MATCHED BY TAG, NOT BY NAME — AND THE FIX FOUND TWO OF MY OWN
+ERRORS.** Matching is now restricted to `landuse=industrial` and `man_made=works`. That
+correctly drops the 400 kV substation at Idomlund and the railway under construction to
+Punta Langosteira, which #58 counted as name matches.
+
+**It also surfaced two works this register had reported as absent.**
+
+| | #58 said | it is |
+|---|---|---|
+| Zeeland Refinery | "not among the 66 named features" | **way/174730745, drawn** |
+| SNIACE, Torrelavega | "not drawn as anything" | **way/46171915, drawn** |
+
+Both were in the data the whole time. **The hand reading was done from a printed excerpt
+cut to two entries**, which is the truncation defect of D76 committed a second time — not in
+the record this time, but in the reading of it. The lesson D76 was supposed to have taught
+was about the tool; it is actually about looking at all of the evidence before writing a
+verdict, and a display cut is as good at hiding a works as a data cut.
+
+**AND IT PRODUCED A SECOND DRAWING.** RIC Energy says "Besaya H2 se ubicará en los antiguos
+terrenos de Sniace" — ON the grounds, which the host-works rule admits.
+`ricenergy-besaya-torrelavega` is drawn on way 46171915. Hydrogen goes from 12 rows drawn
+to 13.
+
+`power=plant` stays excluded: a power station is a works for its own purposes, and a tag
+that also matches every solar farm is not a test. Matches on the wrong kind of feature are
+kept under `named_after_but_not_the_works` rather than discarded — a substation carrying a
+works's name is evidence the works is *there* and no evidence of where its ground is.
+
+**D83. A CADASTRAL PARCEL MAY BE A DRAWING, ONE CADASTRE AT A TIME — AND NESBRUKET IS NOT
+ONE.** Where a permit **states a cadastral parcel** and the national cadastre publishes that
+parcel's geometry under an **open licence**, the parcel polygon is a permit-derived drawing:
+the basemap is the cadastre, its date is recorded, the parcel identifier goes on the row,
+and the permit is the source.
+
+**Norway qualifies on licence.** Kartverket publishes under **CC BY 4.0**, requiring
+©Kartverket attribution in all contexts. Read 13 September 2026.
+
+**Nesbruket meets the licence condition and fails the other one.** Gen2 Energy holds a
+general building permit from Vefsn municipality, and **no source this register can read
+states the gnr/bnr** — not Gen2's release, not the trade coverage, not the municipality's
+case pages, which answer 404. **The row is not drawn.** The permit is queued with the one
+fact wanted written on it.
+
+It is worth saying what this row now is: **a project whose permit exists, whose parcel is
+therefore recorded somewhere official, and whose place is not in OpenStreetMap at all** —
+Nesbruket is not a place node, so it cannot even be swept. The cadastre rule is written for
+exactly this shape and cannot be used until somebody opens the permit.
+
 ### Step 5 decisions, after the source-date ruling of 9 September 2026
 
 **D38. Uniper's source was archived on 10 September, one day after it was read.**

@@ -127,6 +127,7 @@
    "centre_place": null,
    "machine_target_found": null,
    "machine_target_hits": null,
+   "named_after_but_not_the_works": null,
    "named_features_in_radius": null,
    "unnamed_industrial_parcels": null,
    "hand_verdict": "not swept",
@@ -147,14 +148,18 @@
    "machine_target_found": true,
    "machine_target_hits": {
     "Enecogen": [
-     "380 kV Enecogen [substation]",
      "Enecogen [industrial]"
+    ]
+   },
+   "named_after_but_not_the_works": {
+    "Enecogen": [
+     "380 kV Enecogen [substation]"
     ]
    },
    "named_features_in_radius": 135,
    "unnamed_industrial_parcels": 2214,
-   "hand_verdict": "a works is drawn, but the owner's sentence puts the plant beside it, not on it",
-   "what_matched": "Enecogen [industrial]",
+   "hand_verdict": "anchor recorded, not drawn: the owner locates the plant relative to a drawn works",
+   "what_matched": "Enecogen [industrial], way/451582875",
    "hand_note": "The host works is drawn under its own name, with its 380 kV substation. Eneco's release says the electrolyser 'will be developed NEXT TO the Enecogen power station' — adjacency, which the host-works rule does not cover. The earlier run centred this on Rotterdam city centre and found nothing.",
    "not_swept_because": null,
    "candidates": null
@@ -170,6 +175,7 @@
    "centre_place": null,
    "machine_target_found": null,
    "machine_target_hits": null,
+   "named_after_but_not_the_works": null,
    "named_features_in_radius": null,
    "unnamed_industrial_parcels": null,
    "hand_verdict": "not swept",
@@ -191,8 +197,9 @@
    "blobs": 1777,
    "bytes": 127841668,
    "centre_place": "Lubmin (village)",
-   "machine_target_found": true,
-   "machine_target_hits": {
+   "machine_target_found": false,
+   "machine_target_hits": {},
+   "named_after_but_not_the_works": {
     "Energie- und Technologiepark": [
      "Energie- und Technologiepark Lubmin [industrial]"
     ]
@@ -200,7 +207,7 @@
    "named_features_in_radius": 11,
    "unnamed_industrial_parcels": 6,
    "hand_verdict": "only the estate that occupies the site is drawn, and an estate is refused",
-   "what_matched": "Energie- und Technologiepark Lubmin [industrial]",
+   "what_matched": "Energie- und Technologiepark Lubmin [industrial, estate]",
    "hand_note": "What occupies the decommissioned nuclear station's ground is drawn as an industrial and technology PARK. Lhyfe names 'the site of a decommissioned nuclear power plant'; the estate polygon is refused as a position under the Subotica rule.",
    "not_swept_because": null,
    "candidates": null
@@ -216,6 +223,7 @@
    "centre_place": "Wilhelmshaven (town)",
    "machine_target_found": false,
    "machine_target_hits": {},
+   "named_after_but_not_the_works": {},
    "named_features_in_radius": 93,
    "unnamed_industrial_parcels": 92,
    "hand_verdict": "nothing that is the works",
@@ -235,6 +243,7 @@
    "centre_place": "Lutherstadt Wittenberg (town)",
    "machine_target_found": false,
    "machine_target_hits": {},
+   "named_after_but_not_the_works": {},
    "named_features_in_radius": 30,
    "unnamed_industrial_parcels": 92,
    "hand_verdict": "nothing that is the works",
@@ -258,10 +267,11 @@
      "Pembroke Power Station [industrial]"
     ]
    },
+   "named_after_but_not_the_works": {},
    "named_features_in_radius": 125,
    "unnamed_industrial_parcels": 13,
-   "hand_verdict": "a works is drawn, but the owner's sentence puts the plant beside it, not on it",
-   "what_matched": "Pembroke Power Station [industrial]",
+   "hand_verdict": "anchor recorded, not drawn: the owner locates the plant relative to a drawn works",
+   "what_matched": "Pembroke Power Station [industrial], way/16075498",
    "hand_note": "The power station is drawn under its own name. RWE's page says the plant is 'on RWE's site to the WEST OF Pembroke Power Station' — adjacency again. The earlier run, truncated, returned nine street cabinets carrying the word Substation and no station.",
    "not_swept_because": null,
    "candidates": null
@@ -281,10 +291,11 @@
      "cimenterie Vicat [industrial]"
     ]
    },
+   "named_after_but_not_the_works": {},
    "named_features_in_radius": 9,
    "unnamed_industrial_parcels": 9,
-   "hand_verdict": "the works the owner names is drawn and named",
-   "what_matched": "cimenterie Vicat [industrial]",
+   "hand_verdict": "drawn: the works the owner names is drawn, and the owner says the plant is ON it",
+   "what_matched": "cimenterie Vicat [industrial], way/413256388",
    "hand_note": "Vicat's release: 'By installing a 330-MW electrolyzer AT the cement plant' at Montalieu-Vercieu. On the works, which the host-works rule admits. THE ONE DRAWING IN THE WHOLE SAMPLE.",
    "not_swept_because": null,
    "candidates": null
@@ -300,6 +311,7 @@
    "centre_place": null,
    "machine_target_found": null,
    "machine_target_hits": null,
+   "named_after_but_not_the_works": null,
    "named_features_in_radius": null,
    "unnamed_industrial_parcels": null,
    "hand_verdict": "not swept",
@@ -326,6 +338,7 @@
    "centre_place": null,
    "machine_target_found": null,
    "machine_target_hits": null,
+   "named_after_but_not_the_works": null,
    "named_features_in_radius": null,
    "unnamed_industrial_parcels": null,
    "hand_verdict": "not swept",
@@ -354,10 +367,11 @@
      "Bayernoil Raffinerie Neustadt [industrial]"
     ]
    },
+   "named_after_but_not_the_works": {},
    "named_features_in_radius": 14,
    "unnamed_industrial_parcels": 126,
-   "hand_verdict": "a works is drawn, but the owner's sentence puts the plant beside it, not on it",
-   "what_matched": "Bayernoil Raffinerie Neustadt [industrial]",
+   "hand_verdict": "anchor recorded, not drawn: the owner locates the plant relative to a drawn works",
+   "what_matched": "Bayernoil Raffinerie Neustadt [industrial], way/39217578",
    "hand_note": "The refinery is drawn under its own name. BayH2's page says the 128 MW electrolyser 'deckt den H2-Bedarf der BAYERNOIL' — it supplies the refinery, and does not say it stands on it.",
    "not_swept_because": null,
    "candidates": null
@@ -377,9 +391,10 @@
      "Carrington Power Station [industrial]"
     ]
    },
+   "named_after_but_not_the_works": {},
    "named_features_in_radius": 20,
    "unnamed_industrial_parcels": 195,
-   "hand_verdict": "something named after the works is drawn; the works is not",
+   "hand_verdict": "only something named after the works is drawn; the works is not",
    "what_matched": "Carrington Power Station [industrial]",
    "hand_note": "Carrington Power Station is drawn; the Trafford Low Carbon Energy Park that Carlton Power gives a postal address for is not. A different works on neighbouring ground.",
    "not_swept_because": null,
@@ -400,10 +415,11 @@
      "Tata Steel [industrial]"
     ]
    },
+   "named_after_but_not_the_works": {},
    "named_features_in_radius": 94,
    "unnamed_industrial_parcels": 2180,
-   "hand_verdict": "a works is drawn, but the owner's sentence puts the plant beside it, not on it",
-   "what_matched": "Tata Steel [industrial]",
+   "hand_verdict": "anchor recorded, not drawn: the owner locates the plant relative to a drawn works",
+   "what_matched": "Tata Steel [industrial], way/6320127",
    "hand_note": "Tata Steel's works is drawn. The IPCEI register names it as where the hydrogen is APPLIED — an offtake relation, not a statement about where the electrolyser stands.",
    "not_swept_because": null,
    "candidates": null
@@ -420,23 +436,29 @@
    "machine_target_found": true,
    "machine_target_hits": {
     "Zeeland Refinery": [
+     "Zonnepark Zeeland Refinery [industrial]",
+     "Zeeland Refinery [industrial]"
+    ],
+    "Zeeland refinery": [
+     "Zonnepark Zeeland Refinery [industrial]",
+     "Zeeland Refinery [industrial]"
+    ]
+   },
+   "named_after_but_not_the_works": {
+    "Zeeland Refinery": [
      "150 kV Zeeland refinery [substation]",
-     "50 kV Zeeland refinery [substation]",
-     "Zeeland Refinery [industrial]",
-     "Zonnepark Zeeland Refinery [industrial]"
+     "50 kV Zeeland refinery [substation]"
     ],
     "Zeeland refinery": [
      "150 kV Zeeland refinery [substation]",
-     "50 kV Zeeland refinery [substation]",
-     "Zeeland Refinery [industrial]",
-     "Zonnepark Zeeland Refinery [industrial]"
+     "50 kV Zeeland refinery [substation]"
     ]
    },
    "named_features_in_radius": 66,
    "unnamed_industrial_parcels": 319,
-   "hand_verdict": "something named after the works is drawn; the works is not",
-   "what_matched": "150 kV Zeeland refinery [substation]",
-   "hand_note": "Two substations carry the refinery's name. The refinery itself is not among the 66 named features. A substation named after a works is not the works — the same trap as Pembroke's street cabinets.",
+   "hand_verdict": "anchor recorded, not drawn: the owner locates the plant relative to a drawn works",
+   "what_matched": "Zeeland Refinery [industrial], way/174730745",
+   "hand_note": "CORRECTED 13 SEPTEMBER 2026. Pull request #58 said the refinery was not among the 66 named features and that only two substations carried its name. THE REFINERY IS THERE and always was; the hand reading was done from a printed excerpt cut to two entries. TotalEnergies says the electrolyser goes 'near the Zeeland refinery' — adjacency, so the anchor is recorded and the row is not drawn.",
    "not_swept_because": null,
    "candidates": null
   },
@@ -451,6 +473,7 @@
    "centre_place": null,
    "machine_target_found": null,
    "machine_target_hits": null,
+   "named_after_but_not_the_works": null,
    "named_features_in_radius": null,
    "unnamed_industrial_parcels": null,
    "hand_verdict": "not swept",
@@ -471,17 +494,21 @@
    "machine_target_found": true,
    "machine_target_hits": {
     "Sniace": [
-     "Estación Depuradora de Aguas Residuales de SNIACE [industrial]",
-     "Planta de cogeneración de SNIACE [substation]",
+     "SNIACE [industrial]",
      "Planta eléctrica de cogeneración de SNIACE [industrial]",
-     "SNIACE [industrial]"
+     "Estación Depuradora de Aguas Residuales de SNIACE [industrial]"
+    ]
+   },
+   "named_after_but_not_the_works": {
+    "Sniace": [
+     "Planta de cogeneración de SNIACE [substation]"
     ]
    },
    "named_features_in_radius": 136,
    "unnamed_industrial_parcels": 650,
-   "hand_verdict": "something named after the works is drawn; the works is not",
-   "what_matched": "Estación Depuradora de Aguas Residuales de SNIACE [industrial]",
-   "hand_note": "Two ancillary installations of SNIACE are drawn — its waste-water plant and its cogeneration substation — and the former factory grounds RIC Energy names are not drawn as anything. The site is partly mapped through its utilities.",
+   "hand_verdict": "drawn: the works the owner names is drawn, and the owner says the plant is ON it",
+   "what_matched": "SNIACE [industrial], way/46171915",
+   "hand_note": "CORRECTED 13 SEPTEMBER 2026, and this one became a drawing. #58 said the former factory grounds were not drawn as anything; they are drawn as way 46171915, named SNIACE, and the same printed-excerpt error hid it. RIC Energy says 'Besaya H2 se ubicara en los antiguos terrenos de Sniace' — ON the grounds, which the host-works rule admits.",
    "not_swept_because": null,
    "candidates": null
   },
@@ -494,17 +521,18 @@
    "blobs": 1877,
    "bytes": 111201220,
    "centre_place": "Arteixo (town)",
-   "machine_target_found": true,
-   "machine_target_hits": {
+   "machine_target_found": false,
+   "machine_target_hits": {},
+   "named_after_but_not_the_works": {
     "Langosteira": [
      "Obras tren a Punta Langosteira [construction]"
     ]
    },
    "named_features_in_radius": 35,
    "unnamed_industrial_parcels": 147,
-   "hand_verdict": "something named after the works is drawn; the works is not",
-   "what_matched": "Obras tren a Punta Langosteira [construction]",
-   "hand_note": "What is drawn is the RAILWAY WORKS to the port, tagged construction. The port of Punta Langosteira itself is not among the 35 named features.",
+   "hand_verdict": "nothing that is the works",
+   "what_matched": null,
+   "hand_note": "The only name match is 'Obras tren a Punta Langosteira', the RAILWAY being built TO the port, tagged construction. Under the tag rule of 13 September it no longer counts as a host works and the entry is a clean miss.",
    "not_swept_because": null,
    "candidates": null
   },
@@ -519,6 +547,7 @@
    "centre_place": "Rauma (town)",
    "machine_target_found": false,
    "machine_target_hits": {},
+   "named_after_but_not_the_works": {},
    "named_features_in_radius": 49,
    "unnamed_industrial_parcels": 111,
    "hand_verdict": "nothing that is the works",
@@ -538,6 +567,7 @@
    "centre_place": "Aittaluoto (suburb)",
    "machine_target_found": false,
    "machine_target_hits": {},
+   "named_after_but_not_the_works": {},
    "named_features_in_radius": 23,
    "unnamed_industrial_parcels": 164,
    "hand_verdict": "nothing that is the works",
@@ -557,6 +587,7 @@
    "centre_place": null,
    "machine_target_found": null,
    "machine_target_hits": null,
+   "named_after_but_not_the_works": null,
    "named_features_in_radius": null,
    "unnamed_industrial_parcels": null,
    "hand_verdict": "not swept",
@@ -574,17 +605,18 @@
    "blobs": 7538,
    "bytes": 494158261,
    "centre_place": "Idomlund (hamlet)",
-   "machine_target_found": true,
-   "machine_target_hits": {
+   "machine_target_found": false,
+   "machine_target_hits": {},
+   "named_after_but_not_the_works": {
     "Idomlund": [
      "400 kV Idomlund [substation]"
     ]
    },
    "named_features_in_radius": 5,
    "unnamed_industrial_parcels": 43,
-   "hand_verdict": "something named after the works is drawn; the works is not",
-   "what_matched": "400 kV Idomlund [substation]",
-   "hand_note": "The 400 kV substation Idomlund is known for is drawn. Ørsted's facility is not, and a substation is not a Power-to-X plant.",
+   "hand_verdict": "nothing that is the works",
+   "what_matched": null,
+   "hand_note": "The 400 kV substation Idomlund is known for is drawn and, under the tag rule, is not a host works. Orsted's facility is not drawn.",
    "not_swept_because": null,
    "candidates": null
   },
@@ -599,6 +631,7 @@
    "centre_place": null,
    "machine_target_found": null,
    "machine_target_hits": null,
+   "named_after_but_not_the_works": null,
    "named_features_in_radius": null,
    "unnamed_industrial_parcels": null,
    "hand_verdict": "not swept",
@@ -618,6 +651,7 @@
    "centre_place": null,
    "machine_target_found": null,
    "machine_target_hits": null,
+   "named_after_but_not_the_works": null,
    "named_features_in_radius": null,
    "unnamed_industrial_parcels": null,
    "hand_verdict": "not swept",
@@ -637,6 +671,7 @@
    "centre_place": "Monstad (quarter)",
    "machine_target_found": false,
    "machine_target_hits": {},
+   "named_after_but_not_the_works": {},
    "named_features_in_radius": 2,
    "unnamed_industrial_parcels": 19,
    "hand_verdict": "nothing that is the works",
