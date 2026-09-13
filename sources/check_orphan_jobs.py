@@ -50,6 +50,17 @@ SUSPECT = re.compile(r"until\s+git\s+log|until\s+grep|while\s+.*sleep|"
                      # because its command line says nothing about loops or scratchpads.
                      r"git-upload-pack|git-receive-pack", re.I)
 
+# EVERY RULE IS SCOPED BY ANCESTRY, NOT JUST THE AGE RULE. Corrected 13 September 2026.
+# The pattern rule above used to match any line in the process table, so running this check
+# from a second session reported the FIRST session's `run14.py` as a stray and invited a
+# kill of work that was doing exactly what it was told. A check that reports other sessions'
+# live jobs as strays is worse than no check: it is a standing instruction to kill them.
+#
+# ANCESTRY, NOT COMMAND TEXT, because the shapes that matter do not name themselves. An
+# `ssh git-receive-pack` left behind by a push carries nothing in its command line tying it
+# to this session — but its parent chain runs back to the shell that ran `git push`. Walking
+# ppid to the snapshot catches it; matching on the command line cannot.
+#
 # AND A CATCH-ALL BY AGE, SCOPED TO THIS SESSION. Everything above matches a pattern
 # somebody thought of after being caught by it, which is a poor way to find the next one.
 # A shell of THIS session still alive after ten minutes at the end of a turn is a stray
@@ -60,6 +71,21 @@ SUSPECT = re.compile(r"until\s+git\s+log|until\s+grep|while\s+.*sleep|"
 # a snapshot file; this check finds its own by reading its own ancestry, and if it cannot
 # it says so rather than guessing.
 OLD_ENOUGH_MIN = 10
+
+# THE BLIND SPOT, STATED RATHER THAN PAPERED OVER. When a backgrounded grandchild
+# outlives the `zsh -c` that started it, macOS reparents it to launchd and the ancestry
+# is gone. If its own command line does not carry the snapshot either, NOTHING ON THIS
+# MACHINE STILL SAYS WHOSE IT WAS: `ps -E` will not show another process's environment
+# under SIP, and `SESS` is 0 for every process here, so neither the session id nor the
+# inherited CLAUDE_CODE_SESSION_ID can be read back. Measured on 13 September 2026.
+#
+# Such a process is NOT reported, and that is the deliberate choice: the alternative is
+# to report every long-running job on the machine and invite a kill of a concurrent
+# session's work, which is the exact bug this scoping fixes. The poll loops that caused
+# this check to be written are `zsh -c source .../snapshot-...sh && until git log ...`
+# and DO carry the snapshot in their own command line, so the shapes on record are still
+# caught after reparenting. A stray that names nothing and has outlived its parent is
+# not.
 
 
 def my_snapshot() -> str | None:
@@ -93,6 +119,54 @@ def main() -> int:
         return 0
 
     snap = my_snapshot()
+
+    # THE PROCESS TREE, so a pattern hit can be asked whose it is.
+    parent, command = {}, {}
+    for line in ps.splitlines()[1:]:
+        try:
+            pid, ppid, etime, cmd = line.split(None, 3)
+        except ValueError:
+            continue
+        parent[pid], command[pid] = ppid, cmd
+
+    claude = os.environ.get("CLAUDE_PID") or ""
+
+    def mine(pid: str) -> bool:
+        """Does this process belong to THIS session?
+
+        Two signals, because one of them is not always there:
+
+          the command line carries this session's snapshot path -- true of every
+          `zsh -c source .../snapshot-zsh-N-x.sh && ...` the tool starts, which is
+          the shape the classic poll-loop strays actually have; it survives the
+          parent's death because it is the process's own text
+
+          the ancestry reaches such a shell, or reaches this session's `claude`
+          process -- which is how a child that names nothing is claimed, the
+          `ssh git-receive-pack` left by a push being the case that prompted it
+
+        Without a snapshot nothing is claimed. Guessing here gets another session's
+        work killed, which is the failure this scoping exists to prevent.
+        """
+        if not snap:
+            return False
+        seen = set()
+        while pid and pid not in seen and pid != "0":
+            seen.add(pid)
+            if snap in command.get(pid, "") or (claude and pid == claude):
+                return True
+            pid = parent.get(pid, "")
+        return False
+
+    # THE SESSION'S OWN SPINE IS NOT A STRAY. `claude` itself, the shell it runs in and
+    # the terminal above it are this session, not jobs it left behind; claiming the
+    # ancestry made the check report `claude code` as a stray of nearly seven days. Only
+    # DESCENDANTS are candidates, so every ancestor of this very process is excluded.
+    spine, cur = set(), str(os.getpid())
+    while cur and cur not in spine and cur != "0":
+        spine.add(cur)
+        cur = parent.get(cur, "")
+
     hits = []
     for line in ps.splitlines()[1:]:
         if SELF in line or " ps -eo" in line or "check_orphan_jobs" in line:
@@ -101,18 +175,25 @@ def main() -> int:
             pid, ppid, etime, cmd = line.split(None, 3)
         except ValueError:
             continue
+        if pid in spine:
+            continue          # THE SESSION ITSELF, NOT A JOB IT LEFT RUNNING.
+        if not mine(pid):
+            continue          # ANOTHER SESSION'S JOB IS NOT THIS CHECK'S BUSINESS.
+                              # AND SO IS AN UNATTRIBUTABLE ONE -- see BLIND SPOT.
         why = None
         if SUSPECT.search(line):
             why = "matches a known stray shape"
-        elif snap and snap in cmd and minutes(etime) >= OLD_ENOUGH_MIN:
+        elif minutes(etime) >= OLD_ENOUGH_MIN:
             why = f"this session's shell, alive {minutes(etime):.0f} min"
         if why:
             hits.append((pid, etime, cmd, why))
 
     if not hits:
-        scope = f" (age rule scoped to {snap})" if snap else \
-                " (age rule OFF: this session's shell snapshot could not be read)"
+        scope = f" (scoped to {snap})" if snap else \
+                " (SCOPE OFF: this session's shell snapshot could not be read, so no "
         print(f"check_orphan_jobs: no stray shells{scope}.")
+        if not snap:
+            print("  process was claimed. Nothing was checked; do not read this as clean.")
         return 0
 
     print(f"check_orphan_jobs: {len(hits)} still running — CLOSE THESE BEFORE THE "

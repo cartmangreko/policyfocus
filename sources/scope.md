@@ -1640,9 +1640,21 @@ build.
    A capture does not overwrite a publication date; it is only how the register reached
    the document. IGNIS's page carries `article:published_time` of 23 September 2024, so
    that is the date, and the capture of 16 April 2026 is not.
-2. **The capture timestamp goes in `captured_at`**, derived from the Wayback URL, at day
-   precision, with `archived: true` and the copy filed under `sources/manual/` with a
-   manifest entry. The live URL stays in the note so a reader can try it.
+2. **`captured_at` is the date of the copy on file**, at day precision, with the copy
+   filed under `sources/manual/` and a manifest entry. The live URL stays in the note so a
+   reader can try it.
+
+   **The copy is not always an archive's, and `archived` says which it is.** Where the copy
+   came from the Internet Archive, `captured_at` is derived from the Wayback URL and
+   `archived` is `true`. Where this register fetched the publisher directly and filed what
+   came back, `captured_at` is the day of that fetch and `archived` is `false`. Both are
+   copies on file and both date the copy rather than the document; the field that
+   distinguishes them is `archived`, and it is never omitted when `captured_at` is set.
+
+   That is the shape #56 landed, and the rule text is corrected to match the data rather
+   than the other way round: the wording said "derived from the Wayback URL" while rows
+   already carried own-fetch captures, which would have made every such row a rule breach
+   on a reading nobody intended.
 3. **A document with no dateline takes `date = captured_at`, with precision `not_after`.**
    That is an upper bound and says so: the text existed on the day it was captured and
    nobody here knows when it was written. Ørsted's Skovgaard release is the case — no meta
@@ -2016,3 +2028,95 @@ throw away the one fact that makes the later read possible.
 **This is the sector where `shared` is not an exception.** A store or a pipeline serving
 cement, steel and chemicals at once is claimed by no single ecosystem, and the standing
 rule under "`shared`: OPTIONAL, AND ONLY EVER TRUE" is what carries it.
+
+## The confirmation ladder
+
+Six independent checks, each answered `pass`, `fail` or `unread` **from a dated document on
+file by a named speaker**. Brief 10 builds it for hydrogen; brief 11 extends the same table
+to the other sectors. **Nothing here renders on a page**, and scoring a rung never edits a
+row.
+
+### What a rung is, and what it is not
+
+**A rung is a question about evidence, not about merit.** It asks whether a particular kind
+of statement, by a particular speaker, is on file with a date. A project can be excellent
+and score two; a project can be abandoned and score five, because the rungs record what was
+said, not what came of it.
+
+**Every pass carries four things**: the source id, the speaker, the date and the date
+precision. A rung with a result and no source is a bug, not a pass — the reconciliation gate
+refuses the file. `unread` is the third answer and it is not a failure: it says this
+register has not been able to read a source that would settle the rung.
+
+**The rungs are independent and monotonicity is not imposed.** A project may pass rung 5 and
+fail rung 2 — an owner who names a start year and never states a capacity. Ladders that
+force ordering turn six observations into one number and then cannot say which observation
+moved. **The table shows the pattern; it does not sort it away.**
+
+**Drawn status is not a rung, and neither is a threshold.** Whether a row is on a map is a
+property of the basemap and the position rule, not of what the owner has said. The 100 MW
+perimeter threshold is not a rung either, because **the ladder's population is the external
+list**, which is already filtered to it; a rung that every member passes measures nothing.
+
+### The six rungs
+
+**Rung 1, site.** The owner or the permitting authority names the location at municipality
+or finer. A `location_statement` with `names_location_finer_than_municipality: true` passes.
+A release naming only the town passes at municipality level only where the speaker is the
+owner or the authority; a third party naming the town does not. **Drawn status is a separate
+fact and not a rung** — an adjacency statement that places no marker still passes rung 1,
+because the ladder's test is what the owner said, not what the map can show.
+
+**Rung 2, capacity.** The owner states a capacity **in any unit, recorded as stated**. The
+three hydrogen units are never converted to make a rung pass. The 100 MW perimeter threshold
+is not a rung, per the ruling above.
+
+**Rung 3, investment decision.** The owner states that **FID has been taken**. "Expected",
+"targeted", "subject to" and "planned for" all **fail** — they are statements about a future
+decision, and the rung asks whether the decision is on file as made.
+
+**Rung 4, funding.** **A funder publishes an award naming the project** — Innovation Fund,
+IPCEI, a national programme. **The funder is the speaker.** The owner's claim of an award is
+not a pass: the whole point of the rung is that a second party with its own register has
+confirmed it. An owner's press release announcing a grant scores rung 4 `fail` until the
+funder's own publication is on file.
+
+**Rung 5, start date.** The owner states a production or operation start **with a date
+precision**. A year passes at `year` precision. "Mid-decade", "by the end of the decade" and
+"in due course" **fail**, because they carry no precision this register's vocabulary can
+record.
+
+**Rung 6, input contracted.** An edge in the dependency graph, or an owner statement naming
+the supplier, **with `firmness: contract`**. `framework` and `intent` **fail** — brief 9's
+second axis exists precisely so that an agreement to agree is not read as a supply.
+
+**Rung 6 is provisional in this vintage.** `verdict` is null on every edge brief 9 landed,
+so no rung 6 result has been hand-verdicted and **every one of them carries
+`provisional: true`**. The count is printed with the table. When the verdicts land the
+ladder recomputes and the flag clears; nothing is written into a row in the meantime.
+
+### The population is the external list plus what it misses
+
+The population is **the current IEA vintage plus every register row not on it**, one line
+each, keyed by IEA reference where one exists and by row id otherwise. **Every class is in
+and every class is scored**: admitted rows, named-not-admitted entries, none-found entries
+and unreadable entries alike.
+
+**An unreadable entry scores `unread` on all six rungs**, and the count of unread is printed
+rather than buried. A browser pass on those entries follows, so **the ladder must recompute
+from files when the copies land** — which is why it is computed by a script on every build
+and never assembled by hand.
+
+### The ladder is computed, never typed
+
+`sources/ladder/hydrogen.csv` and `sources/ladder/hydrogen_summary.json` are **derived
+files**. The summary is computed from the CSV, not alongside it, so the two cannot disagree.
+
+**A reconciliation gate checks two things on every build**: that the population count equals
+the current vintage plus the non-IEA register rows, and that **every rung cell carries a
+source or is `unread`**. The `h2v-fos` error is the reason the gate exists — a hand-typed
+line survived three readings because nothing recomputed it.
+
+**Where scoring a rung reveals a fact a row lacks** — an owner-stated start date not yet on
+the row — **it is printed as a queue item and not written**. The ladder reads the register;
+it does not edit it.
