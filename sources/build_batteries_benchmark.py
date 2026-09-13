@@ -66,7 +66,7 @@ OUT = ROOT / "sources" / "batteries_benchmark.json"
 
 CLASSES = ("held", "admitted", "named not admitted", "searched none found",
            "unreadable", "perimeter exclusion", "not searched",
-           "held for ruling", "aggregate")
+           "held for ruling", "benchmark aggregate")
 
 # ---------------------------------------------------------------------------
 # The register's standing battery refusals, from sources/batteries_docket.md
@@ -81,6 +81,51 @@ STANDING_REFUSALS = {
                              "declaration of intent with Valladolid of 19 October 2022, "
                              "'if Spain is selected', and nothing since"),
 }
+
+
+# ---------------------------------------------------------------------------
+# THE FIVE RULINGS OF 13 SEPTEMBER 2026. Each was raised by this census in
+# sources/batteries_questions.json, ruled by George, and applied here. The
+# question file keeps the question and now records the answer.
+
+AGGREGATE_NOTE = (
+    "A BENCHMARK AGGREGATE IS NOT AN ENTRY. RULED 13 SEPTEMBER 2026. T&E's own "
+    "residual bar: capacity the publisher did not attribute to any named works. It "
+    "keeps its own class, it is NEVER SEARCHED, and it is carried in the table "
+    "because the table must sum to the list the publisher printed. WHAT THE ROW IS: "
+    "a residual with no names — there is nothing in it to look for, and a class that "
+    "left it out would make the table sum to a number T&E never published.")
+
+QUANTUMSCAPE_NOTE = (
+    "CLAUSE: LICENSOR, NO WORKS OF ITS OWN. RULED 13 SEPTEMBER 2026, on the DRI "
+    "precedent — a licensor is a SUPPLIER, not a project, exactly as a steelworks "
+    "making its own hydrogen is a steel row and the electrolyser is a fact about it. "
+    "quantumscape.com/newsroom answers 200, names PowerCo repeatedly and Salzgitter "
+    "never: QuantumScape licenses a cell that PowerCo makes. The works is held here "
+    "as powerco-salzgitter and the licence is an EDGE into it, not a second project. "
+    "The edge is proposed in sources/batteries_edges_proposed.json with verdict null "
+    "and reaches the row when the verdict is set.")
+
+EAS_NOTE = (
+    "FAILED LEG: CAPACITY NOT COMPANY-STATED. RULED 13 SEPTEMBER 2026 — the scale "
+    "rule is tested on what the COMPANY states, and a figure only a list published is "
+    "the list's claim. eas-batteries.com answers 200 and confirms the works ('EAS "
+    "Batteries GmbH, Lokomotivenstraße 21, 99734 Nordhausen') and cells for heavy duty "
+    "and space, and states NO capacity at all. Battery-News.de's 0.5 GWh is recorded "
+    "as a benchmark claim on this entry and is NOT used to apply the 1 GWh rule: the "
+    "entry fails because the company has stated nothing, not because 0.5 is less "
+    "than 1.")
+
+V4_NOTE = (
+    "WORKED AS ITS OWN ENTRY, ON ITS OWN SOURCES. RULED 13 SEPTEMBER 2026 — a refusal "
+    "attaches to a project and its owner, never to a town, so the register's standing "
+    "VARTA Nördlingen refusal does NOT reach V4Smart. Searched in this order: "
+    "v4drive.com (200, 2,774 chars), v4smart.de and www.v4smart.de (200, same "
+    "document), varta-ag.com/en/company/v4drive (404), v4smart.de/en/about-us/overview "
+    "(404), /en/about-us/news (404), /en/contact (200, 1,102 chars). V4Smart GmbH & "
+    "Co. KG is confirmed as a company making 'high-power cells for high-performance "
+    "applications'. ACROSS ALL SEVEN FETCHES IT NAMES NO SITE AND NO CAPACITY — "
+    "'Nördlingen' appears nowhere and no GWh appears anywhere.")
 
 # ---------------------------------------------------------------------------
 # T&E 2024, Annex 1, page 61. In the chart's own order, top to bottom.
@@ -146,12 +191,7 @@ TE2024 = [
  ("Romvolt (ABEE) Galati", "unreadable", "",
   "REFUSAL CLASS: DNS. abee.eu and www.abee.eu both fail to resolve for the declared "
   "reader. Queued for a browser."),
- ("QuantumScape Salzgitter", "named not admitted", "",
-  "FAILED LEG: WHOSE WORKS IT IS. quantumscape.com/newsroom answers 200 and names "
-  "PowerCo repeatedly and Salzgitter never: QuantumScape licenses cells that PowerCo "
-  "makes. The Salzgitter works is held here as powerco-salzgitter. This is NOT filed as "
-  "a duplicate, because identifier match is the only duplicate route and nobody has "
-  "written T&E's entry onto that row."),
+ ("QuantumScape Salzgitter", "perimeter exclusion", "", QUANTUMSCAPE_NOTE),
  ("InoBat & Gotion Surany", "held", "gib-surany", ""),
  ("SK On Komarom", "held", "sk-on-komarom", ""),
  ("CTAG Vigo", "searched none found", "",
@@ -197,10 +237,7 @@ TE2024 = [
  ("Varta Ellwangen", "perimeter exclusion", "",
   "CLAUSE: SCALE, on the register's standing refusal — VARTA's Ellwangen and Nördlingen "
   "works make small-format cells."),
- ("Others", "aggregate", "",
-  "T&E's own residual bar. Not a works and not a gap: it is the publisher saying that "
-  "capacity exists below its naming threshold. It is carried in the table because the "
-  "table must sum to the list, and it is never searched."),
+ ("Others", "benchmark aggregate", "", AGGREGATE_NOTE),
 ]
 
 # ---------------------------------------------------------------------------
@@ -248,7 +285,7 @@ TE2023 = [
  ("Envision AESC Sunderland", "held", "envision-aesc-sunderland", ""),
  ("SKI Komarom", "held", "sk-on-komarom", ""),
  ("SVOLT Saarland", "held", "svolt-uberherrn", ""),
- ("QuantumScape", "named not admitted", "", "As 2024."),
+ ("QuantumScape", "perimeter exclusion", "", QUANTUMSCAPE_NOTE),
  ("Phi4Tech", "perimeter exclusion", "", "CLAUSE: PRODUCT. As 2024 — supercapacitors."),
  ("Gotion Göttingen", "unreadable", "",
   "REFUSAL CLASS: DNS. gotion.com.hk does not resolve for the declared reader."),
@@ -274,14 +311,8 @@ TE2023 = [
   "table carries as cancelled, with no company domain identified in this pass. Nobody "
   "has looked, and the answer is to go and look."),
  ("Varta", "perimeter exclusion", "", "CLAUSE: SCALE, on the standing refusal."),
- ("EAS Batteries", "named not admitted", "",
-  "FAILED LEG: SCALE. eas-batteries.com answers 200 and confirms the works — 'EAS "
-  "Batteries GmbH, Lokomotivenstraße 21, 99734 Nordhausen' — and cells for heavy duty "
-  "and space, and states no capacity. The only figure anybody publishes is "
-  "Battery-News.de's 0.5 GWh, which is below the 1 GWh rule and is the SECOND LIST'S "
-  "figure rather than the company's. Recorded as failing on scale with the source of "
-  "the figure named, not as a refusal on a number the company never gave."),
- ("Others", "aggregate", "", "T&E's own residual bar. As 2024."),
+ ("EAS Batteries", "named not admitted", "", EAS_NOTE),
+ ("Others", "benchmark aggregate", "", AGGREGATE_NOTE),
 ]
 
 # ---------------------------------------------------------------------------
@@ -333,9 +364,7 @@ BN2026 = [
   "A CANDIDATE, NOT A ROW."),
  ("DE", "PowerCo", "Salzgitter", "202X", "40", "held", "powerco-salzgitter", ""),
  ("DE", "CATL", "Erfurt", "202X", "14", "held", "catl-arnstadt", ""),
- ("DE", "EAS", "Nordhausen", "202X", "0.5", "named not admitted", "",
-  "FAILED LEG: SCALE. 0.5 GWh is the list's own figure and is below the 1 GWh rule; the "
-  "company states no capacity at all. See T&E 2023."),
+ ("DE", "EAS", "Nordhausen", "202X", "0.5", "named not admitted", "", EAS_NOTE),
  ("DE", "LYTEN", "Heide", "202X", "X", "held", "lyten-heide", ""),
  ("DE", "UniverCell", "Flintbek", "2026", "10", "admitted", "univercell-flintbek",
   "ADMITTED BY THIS PASS, AND THE SECOND LIST IS WHY IT WAS FOUND. Neither T&E vintage "
@@ -345,11 +374,7 @@ BN2026 = [
   "Deutschland', and electrode AND cell production. The row carries 1.5 GWh, the "
   "company's figure; the list's 10 GWh is a disagreement and is recorded as one."),
  ("DE", "TESLA", "Grünheide", "2027", "X", "held", "tesla-gruenheide-cells", ""),
- ("DE", "V4SMART", "Nördlingen", "2024", "X", "searched none found", "",
-  "varta-ag.com/en answers 200 with 2,348 characters and names neither Nördlingen nor "
-  "V4Smart. VARTA's Nördlingen works is separately refused on scale in the register's "
-  "standing refusals; V4Smart is the VARTA/Porsche venture and is not the same object, "
-  "so it is recorded as searched rather than folded into that refusal."),
+ ("DE", "V4SMART", "Nördlingen", "2024", "X", "searched none found", "", V4_NOTE),
  ("PL", "LG Energy Solution", "Wroclaw", "2025", "115", "held", "lges-wroclaw", ""),
  ("SK", "InoBat", "Voderady", "2020", "10", "perimeter exclusion", "",
   "CLAUSE: PILOT/R&D. As T&E 2024."),
@@ -359,9 +384,11 @@ BN2026 = [
  ("HU", "SAMSUNG", "Göd", "202X", "40", "held", "samsung-sdi-god", ""),
  ("HU", "SK innovation", "Komarom & Ivancsa", "2028", "47.3", "held",
   "sk-on-komarom|sk-on-ivancsa",
-  "ONE BENCHMARK ENTRY OVER TWO HELD ROWS. The list sums two works into one line and "
-  "one capacity. This register holds them separately because they are two works, and "
-  "the 47.3 GWh cannot be split between them by anybody here."),
+  "ONE BENCHMARK ENTRY OVER TWO HELD ROWS, counted ONCE as held. RULED 13 SEPTEMBER "
+  "2026. The reference is written onto BOTH rows — sk-on-komarom and sk-on-ivancsa "
+  "carry `benchmarks.battery_news_europe_cells` — and the 47.3 GWh STAYS ON THE LIST "
+  "SIDE as the list's claim. Nothing here splits it, and neither row's capacity is "
+  "touched by it. The reference debt stands as written."),
  ("HU", "SUNWODA", "Nyiregyhaza", "202X", "X", "held", "sunwoda-nyiregyhaza", ""),
  ("IT", "FAAM", "Terevola", "2024", "8", "searched none found", "",
   "The list spells it 'Terevola'; the works is Teverola. As T&E 2024."),
@@ -475,6 +502,21 @@ RENAMED = OrderedDict([
 ])
 
 
+# A FIGURE NO COMPANY HAS STATED, CARRIED AS THE LIST'S CLAIM AND NOT AS A CAPACITY.
+# Ruling Q3 of 13 September 2026: the scale rule is tested on what the company states.
+# Where a list publishes a figure and the company publishes none, the figure is recorded
+# HERE, against the entry, and is never read onto a row or used to apply the threshold.
+BENCHMARK_CLAIMS = {
+ "EAS Batteries": {"claimed_by": "battery_news_europe_cells", "value": 0.5,
+                   "unit": "GWh per year",
+                   "company_states": None,
+                   "note": "Battery-News.de's February 2026 atlas states 0.5 GWh against a "
+                           "202X date. eas-batteries.com states no capacity at all. The "
+                           "entry fails on 'capacity not company-stated'; this figure is "
+                           "the list's claim and is not the reason it fails."},
+}
+
+
 def _rows(spec, kind):
     out = []
     for rec in spec:
@@ -486,7 +528,10 @@ def _rows(spec, kind):
                         "class": klass, "ref": ref, "note": note})
         else:
             label, klass, ref, note = rec
-            out.append({"label": label, "class": klass, "ref": ref, "note": note})
+            row = {"label": label, "class": klass, "ref": ref, "note": note}
+            if label in BENCHMARK_CLAIMS:
+                row["benchmark_claim"] = BENCHMARK_CLAIMS[label]
+            out.append(row)
     return out
 
 
@@ -589,6 +634,14 @@ def main() -> int:
     print("  Battery-News only: " + ", ".join(sorted(bn_refs - te_refs)))
 
     # --- the defect class, by name -----------------------------------------
+    print("\nBENCHMARK AGGREGATE — what the row is, printed rather than assumed")
+    for n, rows in (("2024", te24), ("2023", te23), ("BN", bn)):
+        for r in rows:
+            if r["class"] == "benchmark aggregate":
+                print(f"  {n}: '{r['label']}' — a residual with no names. Capacity the "
+                      f"publisher did not attribute to any named works. Never searched: "
+                      f"there is nothing in it to look for.")
+
     print("\nNOT SEARCHED — the only class that is a defect, printed by name")
     ns = [(n, r["label"]) for n, rows in (("2024", te24), ("2023", te23), ("BN", bn))
           for r in rows if r["class"] == "not searched"]

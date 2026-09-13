@@ -248,9 +248,9 @@
    },
    {
     "label": "QuantumScape Salzgitter",
-    "class": "named not admitted",
+    "class": "perimeter exclusion",
     "ref": "",
-    "note": "FAILED LEG: WHOSE WORKS IT IS. quantumscape.com/newsroom answers 200 and names PowerCo repeatedly and Salzgitter never: QuantumScape licenses cells that PowerCo makes. The Salzgitter works is held here as powerco-salzgitter. This is NOT filed as a duplicate, because identifier match is the only duplicate route and nobody has written T&E's entry onto that row."
+    "note": "CLAUSE: LICENSOR, NO WORKS OF ITS OWN. RULED 13 SEPTEMBER 2026, on the DRI precedent — a licensor is a SUPPLIER, not a project, exactly as a steelworks making its own hydrogen is a steel row and the electrolyser is a fact about it. quantumscape.com/newsroom answers 200, names PowerCo repeatedly and Salzgitter never: QuantumScape licenses a cell that PowerCo makes. The works is held here as powerco-salzgitter and the licence is an EDGE into it, not a second project. The edge is proposed in sources/batteries_edges_proposed.json with verdict null and reaches the row when the verdict is set."
    },
    {
     "label": "InoBat & Gotion Surany",
@@ -350,9 +350,9 @@
    },
    {
     "label": "Others",
-    "class": "aggregate",
+    "class": "benchmark aggregate",
     "ref": "",
-    "note": "T&E's own residual bar. Not a works and not a gap: it is the publisher saying that capacity exists below its naming threshold. It is carried in the table because the table must sum to the list, and it is never searched."
+    "note": "A BENCHMARK AGGREGATE IS NOT AN ENTRY. RULED 13 SEPTEMBER 2026. T&E's own residual bar: capacity the publisher did not attribute to any named works. It keeps its own class, it is NEVER SEARCHED, and it is carried in the table because the table must sum to the list the publisher printed. WHAT THE ROW IS: a residual with no names — there is nothing in it to look for, and a class that left it out would make the table sum to a number T&E never published."
    }
   ],
   "te_2023_figure_5": [
@@ -544,9 +544,9 @@
    },
    {
     "label": "QuantumScape",
-    "class": "named not admitted",
+    "class": "perimeter exclusion",
     "ref": "",
-    "note": "As 2024."
+    "note": "CLAUSE: LICENSOR, NO WORKS OF ITS OWN. RULED 13 SEPTEMBER 2026, on the DRI precedent — a licensor is a SUPPLIER, not a project, exactly as a steelworks making its own hydrogen is a steel row and the electrolyser is a fact about it. quantumscape.com/newsroom answers 200, names PowerCo repeatedly and Salzgitter never: QuantumScape licenses a cell that PowerCo makes. The works is held here as powerco-salzgitter and the licence is an EDGE into it, not a second project. The edge is proposed in sources/batteries_edges_proposed.json with verdict null and reaches the row when the verdict is set."
    },
    {
     "label": "Phi4Tech",
@@ -654,13 +654,20 @@
     "label": "EAS Batteries",
     "class": "named not admitted",
     "ref": "",
-    "note": "FAILED LEG: SCALE. eas-batteries.com answers 200 and confirms the works — 'EAS Batteries GmbH, Lokomotivenstraße 21, 99734 Nordhausen' — and cells for heavy duty and space, and states no capacity. The only figure anybody publishes is Battery-News.de's 0.5 GWh, which is below the 1 GWh rule and is the SECOND LIST'S figure rather than the company's. Recorded as failing on scale with the source of the figure named, not as a refusal on a number the company never gave."
+    "note": "FAILED LEG: CAPACITY NOT COMPANY-STATED. RULED 13 SEPTEMBER 2026 — the scale rule is tested on what the COMPANY states, and a figure only a list published is the list's claim. eas-batteries.com answers 200 and confirms the works ('EAS Batteries GmbH, Lokomotivenstraße 21, 99734 Nordhausen') and cells for heavy duty and space, and states NO capacity at all. Battery-News.de's 0.5 GWh is recorded as a benchmark claim on this entry and is NOT used to apply the 1 GWh rule: the entry fails because the company has stated nothing, not because 0.5 is less than 1.",
+    "benchmark_claim": {
+     "claimed_by": "battery_news_europe_cells",
+     "value": 0.5,
+     "unit": "GWh per year",
+     "company_states": null,
+     "note": "Battery-News.de's February 2026 atlas states 0.5 GWh against a 202X date. eas-batteries.com states no capacity at all. The entry fails on 'capacity not company-stated'; this figure is the list's claim and is not the reason it fails."
+    }
    },
    {
     "label": "Others",
-    "class": "aggregate",
+    "class": "benchmark aggregate",
     "ref": "",
-    "note": "T&E's own residual bar. As 2024."
+    "note": "A BENCHMARK AGGREGATE IS NOT AN ENTRY. RULED 13 SEPTEMBER 2026. T&E's own residual bar: capacity the publisher did not attribute to any named works. It keeps its own class, it is NEVER SEARCHED, and it is carried in the table because the table must sum to the list the publisher printed. WHAT THE ROW IS: a residual with no names — there is nothing in it to look for, and a class that left it out would make the table sum to a number T&E never published."
    }
   ],
   "battery_news_2026_02": [
@@ -915,7 +922,7 @@
     "benchmark_gwh": "0.5",
     "class": "named not admitted",
     "ref": "",
-    "note": "FAILED LEG: SCALE. 0.5 GWh is the list's own figure and is below the 1 GWh rule; the company states no capacity at all. See T&E 2023."
+    "note": "FAILED LEG: CAPACITY NOT COMPANY-STATED. RULED 13 SEPTEMBER 2026 — the scale rule is tested on what the COMPANY states, and a figure only a list published is the list's claim. eas-batteries.com answers 200 and confirms the works ('EAS Batteries GmbH, Lokomotivenstraße 21, 99734 Nordhausen') and cells for heavy duty and space, and states NO capacity at all. Battery-News.de's 0.5 GWh is recorded as a benchmark claim on this entry and is NOT used to apply the 1 GWh rule: the entry fails because the company has stated nothing, not because 0.5 is less than 1."
    },
    {
     "label": "LYTEN Heide",
@@ -959,7 +966,7 @@
     "benchmark_gwh": "X",
     "class": "searched none found",
     "ref": "",
-    "note": "varta-ag.com/en answers 200 with 2,348 characters and names neither Nördlingen nor V4Smart. VARTA's Nördlingen works is separately refused on scale in the register's standing refusals; V4Smart is the VARTA/Porsche venture and is not the same object, so it is recorded as searched rather than folded into that refusal."
+    "note": "WORKED AS ITS OWN ENTRY, ON ITS OWN SOURCES. RULED 13 SEPTEMBER 2026 — a refusal attaches to a project and its owner, never to a town, so the register's standing VARTA Nördlingen refusal does NOT reach V4Smart. Searched in this order: v4drive.com (200, 2,774 chars), v4smart.de and www.v4smart.de (200, same document), varta-ag.com/en/company/v4drive (404), v4smart.de/en/about-us/overview (404), /en/about-us/news (404), /en/contact (200, 1,102 chars). V4Smart GmbH & Co. KG is confirmed as a company making 'high-power cells for high-performance applications'. ACROSS ALL SEVEN FETCHES IT NAMES NO SITE AND NO CAPACITY — 'Nördlingen' appears nowhere and no GWh appears anywhere."
    },
    {
     "label": "LG Energy Solution Wroclaw",
@@ -1036,7 +1043,7 @@
     "benchmark_gwh": "47.3",
     "class": "held",
     "ref": "sk-on-komarom|sk-on-ivancsa",
-    "note": "ONE BENCHMARK ENTRY OVER TWO HELD ROWS. The list sums two works into one line and one capacity. This register holds them separately because they are two works, and the 47.3 GWh cannot be split between them by anybody here."
+    "note": "ONE BENCHMARK ENTRY OVER TWO HELD ROWS, counted ONCE as held. RULED 13 SEPTEMBER 2026. The reference is written onto BOTH rows — sk-on-komarom and sk-on-ivancsa carry `benchmarks.battery_news_europe_cells` — and the 47.3 GWh STAYS ON THE LIST SIDE as the list's claim. Nothing here splits it, and neither row's capacity is touched by it. The reference debt stands as written."
    },
    {
     "label": "SUNWODA Nyiregyhaza",

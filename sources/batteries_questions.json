@@ -8,55 +8,83 @@
     "stated below, and the class moves if the ruling goes the other way.",
     "",
     "This file is not the batteries docket's open questions A–E. Those are about",
-    "candidates and predate the census. These are about the census itself."
+    "candidates and predate the census. These are about the census itself.",
+    "",
+    "ALL FIVE WERE RULED ON 13 SEPTEMBER 2026 and each carries `ruling` and `ruled` below.",
+    "The questions are kept rather than deleted: a class that moved needs the reason it moved",
+    "to be readable beside the reason it was first filed."
   ],
   "sector": "batsol",
   "raised": "2026-09-12",
   "questions": [
     {
       "id": "Q1-aggregate-row",
-      "entries": ["T&E 2023 Figure 5 'Others'", "T&E 2024 Annex 1 'Others'"],
+      "entries": [
+        "T&E 2023 Figure 5 'Others'",
+        "T&E 2024 Annex 1 'Others'"
+      ],
       "source_sentence": "A bar labelled 'Others', carrying capacity T&E did not attribute to a named works.",
       "the_question": "Does a benchmark's own residual row belong in a gap table at all?",
-      "classed_as": "aggregate",
+      "classed_as": "benchmark aggregate",
       "reading_taken": "Carried in the table with its own class, and never searched. The gate is that the table sums to the list's row count, and dropping the residual would make the table sum to something the publisher did not print.",
-      "what_a_rule_would_need_to_say": "Either that a residual row is an entry of the list and gets a class of its own — which is this pass's reading — or that the list's entry count for gate purposes is its NAMED rows only, in which case the 2023 gate becomes 50 and the 2024 gate 49, and the class disappears."
+      "what_a_rule_would_need_to_say": "Either that a residual row is an entry of the list and gets a class of its own — which is this pass's reading — or that the list's entry count for gate purposes is its NAMED rows only, in which case the 2023 gate becomes 50 and the 2024 gate 49, and the class disappears.",
+      "ruling": "A BENCHMARK AGGREGATE IS NOT AN ENTRY. The class keeps its own name — `benchmark aggregate` — it is never searched, and the gap report says what the row is: a residual with no names. The gate stays at the list's full row count, 51 and 50, because that is what the publisher printed.",
+      "ruled": "2026-09-13"
     },
     {
       "id": "Q2-licensor-at-another-works",
-      "entries": ["T&E 2023 'QuantumScape'", "T&E 2024 'QuantumScape Salzgitter'"],
+      "entries": [
+        "T&E 2023 'QuantumScape'",
+        "T&E 2024 'QuantumScape Salzgitter'"
+      ],
       "source_sentence": "quantumscape.com's newsroom: 'PowerCo confirms results: QuantumScape's solid-state cell passes first endurance test'. Salzgitter appears nowhere on the page.",
       "the_question": "When an outside list names a cell TECHNOLOGY LICENSOR at a works this register holds under the OPERATOR's name, is that entry a duplicate of the held row or an entry in its own right that fails the admission test?",
-      "classed_as": "named not admitted",
+      "classed_as": "perimeter exclusion",
       "reading_taken": "Not a duplicate. Identifier match is the only duplicate route and nobody has written T&E's entry onto powerco-salzgitter, so calling it a duplicate would be the name join the register retired. It fails on whose works it is.",
-      "what_a_rule_would_need_to_say": "Whether 'the same works under a different company's name' is a duplicate route distinct from a name-stem join — and if so, what source is required to establish it."
+      "what_a_rule_would_need_to_say": "Whether 'the same works under a different company's name' is a duplicate route distinct from a name-stem join — and if so, what source is required to establish it.",
+      "ruling": "A LICENSOR IS A SUPPLIER, NOT A PROJECT — the DRI precedent. The entry is a PERIMETER EXCLUSION with the clause 'licensor, no works of its own'. Where the source names the licence to a works that is a row here, the relationship is recorded as an EDGE in the dependency graph: a new edge type `technology_licence` on sector_map.EDGE_TYPES, firmness as the source states it, speaker recorded. The edge is proposed with VERDICT NULL in sources/batteries_edges_proposed.json and is not on the row.",
+      "ruled": "2026-09-13"
     },
     {
       "id": "Q3-capacity-from-the-second-list",
-      "entries": ["T&E 2023 'EAS Batteries'", "Battery-News 'EAS Nordhausen'"],
+      "entries": [
+        "T&E 2023 'EAS Batteries'",
+        "Battery-News 'EAS Nordhausen'"
+      ],
       "source_sentence": "eas-batteries.com confirms the works and the product and states no capacity. Battery-News.de states 0.5 GWh.",
       "the_question": "May the perimeter's 1 GWh scale rule be applied using a capacity figure NOBODY BUT AN OUTSIDE LIST has published?",
-      "classed_as": "named not admitted, failed leg: scale",
+      "classed_as": "named not admitted",
       "reading_taken": "Recorded as failing on scale WITH THE SOURCE OF THE FIGURE NAMED, rather than as a refusal on a number the company never gave. The distinction matters because 'Admission and capacity are separate questions' says a row with no stated capacity stays admitted with an empty capacity — which would pull this entry the other way if the works otherwise qualified.",
-      "what_a_rule_would_need_to_say": "Whether the scale rule takes any published figure or only the company's and an official record's — the two origins capacity_basis already distinguishes. A benchmark is neither."
+      "what_a_rule_would_need_to_say": "Whether the scale rule takes any published figure or only the company's and an official record's — the two origins capacity_basis already distinguishes. A benchmark is neither.",
+      "ruling": "NO. The scale rule is tested on WHAT THE COMPANY STATES; a figure only a list published is the list's claim. The entry is NAMED NOT ADMITTED with the failed leg 'capacity not company-stated', and Battery-News's 0.5 GWh is recorded as a benchmark claim on the entry rather than used to apply the 1 GWh rule. The entry fails because the company has stated nothing, not because 0.5 is less than 1.",
+      "ruled": "2026-09-13"
     },
     {
       "id": "Q4-same-town-different-venture",
-      "entries": ["Battery-News 'V4SMART Nördlingen'"],
+      "entries": [
+        "Battery-News 'V4SMART Nördlingen'"
+      ],
       "source_sentence": "The register's standing refusals carry 'VARTA, Ellwangen / Nördlingen | scale | Small-format cells'. Battery-News carries V4Smart at Nördlingen, which is the VARTA/Porsche venture.",
       "the_question": "Does a standing refusal of a company's works at a town cover a DIFFERENT venture's works at the same town?",
       "classed_as": "searched none found",
       "reading_taken": "It does not. The entry was searched on its own — varta-ag.com/en answers 200 and names neither Nördlingen nor V4Smart — and recorded as searched rather than folded into the VARTA refusal. Folding it in would have refused a works on a clause written about a different one.",
-      "what_a_rule_would_need_to_say": "Whether a refusal is keyed to the company, the works, or the pair — and what happens when a joint venture takes over a refused works."
+      "what_a_rule_would_need_to_say": "Whether a refusal is keyed to the company, the works, or the pair — and what happens when a joint venture takes over a refused works.",
+      "ruling": "A REFUSAL ATTACHES TO A PROJECT AND ITS OWNER, NEVER TO A TOWN. V4Smart is worked as its own entry from its own sources. Seven fetches across v4drive.com, v4smart.de and varta-ag.com: the company is confirmed as making high-power cells and names no site and no capacity anywhere. SEARCHED, NONE FOUND — on its own evidence, not on VARTA's.",
+      "ruled": "2026-09-13"
     },
     {
       "id": "Q5-one-line-two-works",
-      "entries": ["Battery-News 'SK innovation Komarom & Ivancsa'"],
+      "entries": [
+        "Battery-News 'SK innovation Komarom & Ivancsa'"
+      ],
       "source_sentence": "One row: 'SK innovation | Komarom & Ivancsa | 2028 | 47.3 GWh'.",
       "the_question": "How does a gap table count one benchmark row that covers two works this register holds separately?",
       "classed_as": "held",
       "reading_taken": "One entry, one class, with both row ids on it. The table counts benchmark ROWS, because the gate is that it sums to the list. The 47.3 GWh is not split: nothing here can divide it.",
-      "what_a_rule_would_need_to_say": "Whether the gap table's population is the list's rows or the works behind them — and, if the latter, how a capacity stated once for two works is handled, given this register does not apportion figures."
+      "what_a_rule_would_need_to_say": "Whether the gap table's population is the list's rows or the works behind them — and, if the latter, how a capacity stated once for two works is handled, given this register does not apportion figures.",
+      "ruling": "ONE LIST ENTRY, TWO WORKS HERE. The benchmark reference is recorded on BOTH rows, the entry is counted ONCE as held, and the list's 47.3 GWh stays on the list side as its claim — nothing here splits it. The reference debt stands as written.",
+      "ruled": "2026-09-13"
     }
-  ]
+  ],
+  "ruled": "2026-09-13"
 }

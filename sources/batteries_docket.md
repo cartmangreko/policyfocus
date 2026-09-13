@@ -1976,13 +1976,18 @@ of this register's own.
 |---|---|---|---|
 | held (row or candidate) | 29 | 30 | 25 |
 | admitted by this pass | 0 | 0 | 1 |
-| named but not admitted | 5 | 5 | 4 |
+| named but not admitted | 4 | 4 | 4 |
 | searched, none found | 7 | 5 | 6 |
 | unreadable | 4 | 5 | 1 |
-| perimeter exclusion | 4 | 4 | 1 |
+| perimeter exclusion | 5 | 5 | 1 |
 | not searched | 0 | 1 | 0 |
 | benchmark aggregate | 1 | 1 | 0 |
 | **TOTAL** | **50** | **51** | **38** |
+
+**A benchmark aggregate is not an entry, and the table says what the row is.** "Others"
+is a residual with no names — capacity T&E did not attribute to any named works. It keeps
+its own class, it is never searched, and the gate stays at the list's full row count
+because that is what the publisher printed.
 
 Each column sums to its list's own row count, and
 `sources/build_batteries_benchmark.py` exits non-zero if one stops doing so.
@@ -2067,10 +2072,32 @@ states that "CATL Erfurt" and "CATL Arnstadt" are the same entry, and the pairin
 read from position in an ordered list and from this register's own knowledge of the
 works. **They are recorded as debts rather than joined**, and printed for confirmation.
 
-### Five questions held for ruling
+### Five questions raised, and ruled on 13 September 2026
 
-`sources/batteries_questions.json`. The residual "Others" row, the licensor named at
-another operator's works, whether the scale rule may use a figure only an outside list
-published, whether a standing refusal covers a different venture in the same town, and
-how one benchmark row covering two works is counted. **None of them changed a rule and
-none was decided by this pass.**
+`sources/batteries_questions.json` keeps each question beside its answer. **The rulings,
+and what each moved:**
+
+- **A benchmark aggregate is not an entry.** Class `benchmark aggregate`, unsearched, and
+  the gap report says what the row is. Touches both "Others" rows.
+- **A licensor is a supplier, not a project — the DRI precedent.** QuantumScape moves from
+  `named not admitted` to **`perimeter exclusion`** with the clause **"licensor, no works
+  of its own"**, in both vintages. The relationship the list was pointing at is not lost
+  with the refusal: it is recorded as an edge into `powerco-salzgitter`, under a new edge
+  type **`technology_licence`** on `sector_map.EDGE_TYPES` — a licence is not `material`,
+  because nothing moves. The edge is **proposed with verdict null** in
+  `sources/batteries_edges_proposed.json` and is not on the row; the source read is a
+  newsroom headline, and an asserted edge carries the sentence it was read from.
+- **The scale rule is tested on what the company states.** EAS Nordhausen stays
+  `named not admitted` and its failed leg becomes **"capacity not company-stated"**.
+  Battery-News's 0.5 GWh is recorded as a **benchmark claim** against the entry and is not
+  used to apply the threshold: the entry fails because the company stated nothing, not
+  because 0.5 is less than 1.
+- **A refusal attaches to a project and its owner, never to a town.** V4Smart is worked as
+  its own entry on its own sources — seven fetches across v4drive.com, v4smart.de and
+  varta-ag.com. The company is confirmed as making high-power cells and **names no site and
+  no capacity anywhere**. `searched none found`, on its own evidence rather than folded
+  into VARTA's refusal.
+- **One list entry, two works here.** The Battery-News reference is now on **both**
+  `sk-on-komarom` and `sk-on-ivancsa`, the entry is counted **once** as held, and the
+  list's 47.3 GWh stays on the list side as its claim — nothing here splits it. The
+  reference debt stands as written.
