@@ -34,7 +34,13 @@
     "vintage CAN do, and what it is now read for, is DRIFT: which entries left the list between",
     "October 2023 and now, which were renamed, which are new. A project that vanishes from a",
     "database is a project whose failure nobody counts (rule 17), and drift is the only place",
-    "that fact can be seen."
+    "that fact can be seen.",
+    "",
+    "BRIEF 8 ADDS THREE SECTORS, AND EACH PUBLISHER'S LICENCE IS READ BEFORE ITS SNAPSHOT.",
+    "The rule above -- identity, not copy -- was written for two files nobody here may",
+    "redistribute. Brief 8's inputs are not all like that, so each snapshot below carries a",
+    "`licence` block saying what was read, where, and what it permits. A snapshot taken",
+    "without that block would be a snapshot somebody assumed was allowed."
   ],
   "snapshots": [
     {
@@ -52,25 +58,101 @@
       "fetched": "2026-09-09",
       "bytes": 496671,
       "sha256": "7cbeede384e61a5ba18479ac30ead37885555ea4a80f1e931f4eb47a48d70768"
+    },
+    {
+      "benchmark": "te_gigafactory_risk",
+      "vintage": "2023-03",
+      "file": "te2023.pdf",
+      "url": "https://uploads.transportenvironment.org/production/files/TE-Battery-risk-report.pdf",
+      "fetched": "2026-09-12",
+      "bytes": 2113145,
+      "sha256": "5bf79d3052d24566af076e842ae597c0f0e3b438dd8229cad4a2c66226435f9c",
+      "entry_list": "Figure 5, page 15: 'Risk assessment of European battery cell production capacities in 2030 by factory'. 51 rows -- 50 named works and one 'Others'.",
+      "licence": "transport_environment"
+    },
+    {
+      "benchmark": "te_gigafactory_risk",
+      "vintage": "2024-05",
+      "file": "te2024.pdf",
+      "url": "https://uploads.transportenvironment.org/production/files/An-industrial-blueprint-for-batteries-in-Europe-How-Europe-can-successfully-build-a-sustainable-battery-value-chain.pdf",
+      "fetched": "2026-09-12",
+      "bytes": 4241705,
+      "sha256": "5dd9cd52613cf0d499d46aa6828f6affc27199ebc83e2f4f3700a9b507ea97fc",
+      "entry_list": "Annex 1, page 61: 'Risk assessment of European gigafactories'. 50 rows -- 49 named works and one 'Others'.",
+      "licence": "transport_environment"
+    },
+    {
+      "benchmark": "battery_news_europe_cells",
+      "vintage": "2026-02",
+      "file": "bn_europe_map.jpg",
+      "url": "https://battery-news.de/wp-content/uploads/2026/03/EUROPE_Battery_Cell_Manufacturers_2026-02-1-scaled.jpg",
+      "fetched": "2026-09-12",
+      "bytes": 369788,
+      "sha256": "74758aacae0b2dcefb482a276d21bfd58617caf5883c888abe7bc299a6d8ec42",
+      "entry_list": "'Battery Cell Manufacturers (Europe) as of February 2026', published 03/2026, authors Gerrit Bockey and Heiner Heimes (PEM, RWTH Aachen). 38 rows across 12 countries, each company, site, year and GWh stated as text.",
+      "licence": "battery_news_de"
     }
   ],
-  "relationship": {
-    "benchmark": "iea_hydrogen_production_projects",
-    "vintages": [
-      {
-        "id": "iea_hydrogen_production_projects",
-        "vintage": "current",
-        "publisher": "International Energy Agency",
-        "note": "The live endpoint. The current vintage and the one the register measures against."
+  "relationship": [
+    {
+      "benchmark": "iea_hydrogen_production_projects",
+      "vintages": [
+        {
+          "id": "iea_hydrogen_production_projects",
+          "vintage": "current",
+          "publisher": "International Energy Agency",
+          "note": "The live endpoint. The current vintage and the one the register measures against."
+        },
+        {
+          "id": "odenweller_ueckerdt_2025",
+          "vintage": "2023-10",
+          "derived_from": "iea_hydrogen_production_projects",
+          "publisher": "Odenweller & Ueckerdt (2025)",
+          "note": "The IEA's October 2023 database, quality-checked, under the IEA's own reference numbering. NOT AN INDEPENDENT BENCHMARK: it cannot corroborate the live file because it is the live file's own past. It is read for drift between the two vintages and for nothing else."
+        }
+      ],
+      "recorded": "2026-09-11"
+    },
+    {
+      "benchmark": "te_gigafactory_risk",
+      "vintages": [
+        {
+          "id": "te_gigafactory_risk",
+          "vintage": "2024-05",
+          "publisher": "Transport & Environment",
+          "note": "The current vintage of T&E's own list and the one the gap is measured against."
+        },
+        {
+          "id": "te_gigafactory_risk",
+          "vintage": "2023-03",
+          "publisher": "Transport & Environment",
+          "note": "The same list fourteen months earlier. NOT AN INDEPENDENT BENCHMARK -- it is the 2024 list's own past, on the same method, so it cannot corroborate it. Read for drift and for nothing else."
+        }
+      ],
+      "second_list": {
+        "id": "battery_news_europe_cells",
+        "publisher": "Battery-News.de",
+        "note": "Independent of T&E: different authors, different method (official announcements compiled by PEM at RWTH Aachen), different vintage. This is the list drift is measured against, in the sense the brief asks for -- what one list holds that the other does not."
       },
-      {
-        "id": "odenweller_ueckerdt_2025",
-        "vintage": "2023-10",
-        "derived_from": "iea_hydrogen_production_projects",
-        "publisher": "Odenweller & Ueckerdt (2025)",
-        "note": "The IEA's October 2023 database, quality-checked, under the IEA's own reference numbering. NOT AN INDEPENDENT BENCHMARK: it cannot corroborate the live file because it is the live file's own past. It is read for drift between the two vintages and for nothing else."
-      }
-    ],
-    "recorded": "2026-09-11"
+      "recorded": "2026-09-12"
+    }
+  ],
+  "licences": {
+    "transport_environment": {
+      "publisher": "Transport & Environment",
+      "read": "https://www.transportenvironment.org/copyright",
+      "read_on": "2026-09-12",
+      "verbatim": "T&E's graphs and charts are licensed under CC BY-NC-ND 4.0. Photographs on this site are not licensed by T&E to be shared. You are free to share the material in any medium or format. You must give appropriate credit but not in any way that suggests the licensor endorses you or your use. This material may not be used for commercial purposes without prior written permission.",
+      "robots": "robots.txt allows User-agent: * outside /cpresources/, /vendor/, /.env and /cache/, and disallows GPTBot and Google-Extended by name. The declared reader is neither of those and is not a training crawler; it is recorded here because a publisher that names AI crawlers has said something, and a reader that ignored it would be deciding on the publisher's behalf.",
+      "what_this_pass_does": "Reads the two reports at reading pace with the declared reader, holds them in sources/cache/batteries/ which is not committed, and cites every entry by T&E's own chart label. ND is why no derived chart is published and NC is why nothing is sold; neither bites on reading a list and counting against it."
+    },
+    "battery_news_de": {
+      "publisher": "Battery-News.de",
+      "read": "https://battery-news.de/impressum/",
+      "read_on": "2026-09-12",
+      "verbatim": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors beziehungsweise Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht-kommerziellen Gebrauch gestattet.",
+      "robots": "robots.txt: User-agent: * / Disallow: (empty) -- everything allowed.",
+      "what_this_pass_does": "All rights reserved, with downloads permitted for private non-commercial use. The atlas is read at reading pace, held in the uncommitted cache, and cited by the publisher's own row -- company, site, year. Nothing is redistributed."
+    }
   }
 }

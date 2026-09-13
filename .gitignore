@@ -62,3 +62,10 @@ sources/cache/hydrogen/
 # suppliers' press pages are their copy, not this repository's to redistribute.
 sources/dependency_cache/*
 !sources/dependency_cache/index.json
+
+# The batteries census inputs and its fetch cache. NOT COMMITTED: T&E licences its
+# graphs CC BY-NC-ND 4.0 and Battery-News.de permits copies for private,
+# non-commercial use only, so the bytes stay out of the repository and
+# sources/benchmark_snapshots.json holds the identity instead.
+sources/cache/batteries/*
+!sources/cache/batteries/index.json

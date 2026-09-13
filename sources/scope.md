@@ -1847,3 +1847,84 @@ this reader can produce it. The first attempt at a self-check carried typed numb
 on its own first run, and was then "repaired" by setting the numbers to what the reader had
 just produced — which made it pass by construction for ever. **A reference taken from the
 thing it checks is a mirror.** See D77.
+
+## Sector perimeters
+
+**Written 12 September 2026, brief 8.** The boundaries for the three sectors this
+register censuses against an outside list, stated as rules rather than described. The
+hydrogen and battery perimeters above are unchanged by this section; steel, cement and
+CCS are drawn here for the first time.
+
+Europe, in every rule below, is the same named list the battery boundary uses: the
+twenty-seven member states, together with the United Kingdom, Norway, Switzerland, the
+Western Balkans and Ukraine, with Türkiye outside it — **except where a rule below names
+a narrower list**, and the steel rule does.
+
+### Batteries: unchanged, and one clause named
+
+The existing cell-manufacturing perimeter stands exactly as written in
+`sources/batteries_docket.md` §1. Nothing in this section widens or narrows it.
+
+**Cathode, anode and recycling works are REFUSED with the clause "battery materials"**,
+and are not admitted. They were already out; what is new is that the refusal has one
+name, so that a reader counting refusals can tell a material works from a works refused
+on scale or on site. Finnish Minerals Group's Kotka plant is the case the clause was
+named for: an outside list carries it among battery cell entries, and it is a cathode
+active material plant.
+
+### Steel
+
+Eufabric holds a steel project when it is one of four things, in the EU, the United
+Kingdom, Norway or Switzerland, and the company itself has confirmed it:
+
+- an **announced DRI plant**;
+- an **EAF replacing blast-furnace capacity at an existing works**;
+- **greenfield DRI/EAF primary steelmaking**;
+- a **hydrogen-ready furnace**.
+
+**There is no tonnage threshold.** Steel is the one sector here whose boundary is drawn
+by what the investment does to the iron, not by how much of it there is: a small DRI
+module and a large one are the same kind of fact about a works leaving the blast furnace,
+and a threshold would drop the early ones — which are disproportionately the ones that
+stop.
+
+**The geography is narrower than the platform's Europe, and deliberately.** The four
+named countries are where the announced primary-steel transition is; the Western Balkans
+and Ukraine are out of this perimeter for now rather than refused, because nobody here
+has read their works.
+
+**Two refusals, each with its clause:**
+
+- **A standalone scrap-EAF mill at a site with no primary steelmaking is refused with
+  the clause "scrap EAF, no primary capacity".** An EAF that replaces a blast furnace is
+  the transition; an EAF that never had one is the ordinary way a large part of European
+  steel has always been made, and admitting it would fill the sector with works that
+  changed nothing.
+- **Rolling and downstream investments are perimeter exclusions.** A hot strip mill is
+  not a route change.
+
+### Cement
+
+Eufabric holds a cement project when it is a **capture project at a cement works**, of
+**any capture technology — including oxyfuel with capture** — company-confirmed.
+
+**Any other investment at a cement works is refused with the clause "cement, no
+capture".** A kiln efficiency programme, a clinker-factor reduction and an alternative-fuel
+conversion are all real decarbonisation and none of them is this dataset: the boundary is
+capture, and a perimeter that admitted everything a cement maker does about carbon would
+have no edge at all.
+
+### CCS
+
+Eufabric holds **CO₂ transport and storage infrastructure**: stores, pipelines, shipping
+terminals and hubs.
+
+**Capture at works in industries outside the four sectors is refused with the industry
+named in the clause** — "capture, refinery", "capture, waste-to-energy", "capture,
+chemicals" — rather than with one clause covering all of them. Those entries are read
+later for the supplier nodes, and a refusal that recorded only "out of perimeter" would
+throw away the one fact that makes the later read possible.
+
+**This is the sector where `shared` is not an exception.** A store or a pipeline serving
+cement, steel and chemicals at once is claimed by no single ecosystem, and the standing
+rule under "`shared`: OPTIONAL, AND ONLY EVER TRUE" is what carries it.
