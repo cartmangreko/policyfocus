@@ -719,6 +719,17 @@ EDGE_TYPES = (
     "material",
     "regulatory",
     "funding",
+    # A FIFTH, ADDED 13 SEPTEMBER 2026 BY RULING, and the batteries census is why.
+    # T&E's list carries "QuantumScape Salzgitter" as a gigafactory entry.
+    # QuantumScape builds no works: it licenses a cell to PowerCo, whose Salzgitter
+    # works is already a row here. That is a SUPPLIER relationship and not a
+    # project, on the same reading that puts a hydrogen-DRI steelworks in steel
+    # rather than in hydrogen -- the thing held is the works, and what flows into
+    # it is an edge.
+    #
+    # IT IS NOT `material`. Nothing moves. A licence is a right to make something,
+    # and filing it as a molecule would put a tonne on a graph that counts tonnes.
+    "technology_licence",
 )
 
 
@@ -742,6 +753,14 @@ EDGE_TYPES = (
 BENCHMARKS = (
     "odenweller_ueckerdt_2025",
     "iea_hydrogen_production_projects",
+    # THE BATTERY LISTS, from brief 8. Neither publisher issues an identifier, so
+    # the reference recorded on a row is the LIST'S OWN ROW LABEL -- a company and
+    # a works together, which is what T&E prints along its chart axis and what
+    # Battery-News prints in its atlas. A label is a weaker key than the IEA's
+    # reference number and is treated as one: it is written onto a row only where
+    # a person read the pair, and every pairing is printed for confirmation.
+    "te_gigafactory_risk",
+    "battery_news_europe_cells",
 )
 
 
