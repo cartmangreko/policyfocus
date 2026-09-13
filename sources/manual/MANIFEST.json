@@ -40,7 +40,19 @@
     "REFERENCE DEBTS, from 11 September 2026. Five entries in this queue are not pages a",
     "fetcher cannot reach: they are pairs of objects this register believes are one works and",
     "has no source identifying as one. Rule 30 says record the identifier rather than guess the",
-    "join, so they wait here, named, rather than being merged on a resemblance."
+    "join, so they wait here, named, rather than being merged on a resemblance.",
+    "",
+    "AND FROM 13 SEPTEMBER 2026 THE QUEUE CARRIES A SECOND KIND OF ITEM: A BENCHMARK INPUT.",
+    "Everything above is a PAGE a row cites and the fetcher cannot reach. The three entries",
+    "below are whole LISTS this register is measured against, each behind an affirmative",
+    "acceptance -- an IEA account login, a CO2RE click-through, a GEM registration form.",
+    "Their `drop_as` paths are under sources/cache/, not sources/manual/, because they are",
+    "benchmark inputs rather than cited pages, and those directories are gitignored except",
+    "their index: the bytes are not this repository's to redistribute and the identity is.",
+    "",
+    "check_manual_sources.py PRINTS this queue and validates nothing in it, which is why a",
+    "drop_as outside sources/manual/ is safe here. THE CENSUS FOR TWO SECTORS IS STOPPED ON",
+    "THESE THREE FILES: cement/CCS on the first two, steel on the third."
   ],
   "retrieved": [
     {
@@ -259,6 +271,30 @@
       "needed_for": "NOT FOR A ROW, FOR A NODE. Brief 9 sweeps Shell Cansolv as one of five capture-technology suppliers and it is the only node on the perimeter with NOTHING READABLE AT ALL: no capacity, no edges, no status. It stands in sources/nodes.json saying so rather than being dropped, because a supplier nobody can read is a finding about who can be read and not an absence of suppliers. A readable copy would say whether Cansolv has European customers this register should hold; until then the node is a hole with a shape.",
       "drop_as": "sources/manual/dependency-sweep-shell-cansolv--cansolv-co2-capture-system.html",
       "priority": "normal"
+    },
+    {
+      "candidate": "BENCHMARK — cement and CCS, first list",
+      "url": "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database",
+      "why": "IEA account login. The file is 'IEA CCUS Projects Database 2026.xlsx', updated 27/03/2026, on the Download tab; the page answers 'You are either not logged in or your login session has expired, please login again or create an IEA account to download data.' THE TERMS DO NOT FORBID THE SNAPSHOT — the product page states Licence CC BY 4.0 — so the barrier is the acceptance, which is the account holder's to give and not this pipeline's.",
+      "needed_for": "THE CEMENT AND CCS CENSUS CANNOT START WITHOUT IT. It is the brief's first list for the sector: every entry worked to a class, a gap table that sums to the list's own entry count, and drift against the Global CCS Institute list below. No open route exists — api.iea.org/ccus is the CCUS legal and regulatory database, not the projects one, and five other endpoint guesses and two SDMX hosts answer 404 or do not resolve.",
+      "drop_as": "sources/cache/ccs/iea_ccus_projects_2026.xlsx",
+      "priority": "blocking"
+    },
+    {
+      "candidate": "BENCHMARK — cement and CCS, second list",
+      "url": "https://co2re.co/FacilityData",
+      "why": "Click-through acceptance, then a Power BI embed with no data behind it. The page presents 'Check here to indicate that you have read and agree to the Terms and Data Use Policy'; the table itself is an app.powerbi.com embed and the page carries no .json, .csv or .xlsx URL and no /api path. The Terms WERE read (globalccsinstitute.com/terms-of-use/) and they do not forbid a hash-referenced snapshot: nothing transfers, and nothing needs to.",
+      "needed_for": "The second list for the sector, which is what drift is measured against. An export of the facility table in any form it offers -- xlsx or csv -- is what is needed; the entry ids matter more than the layout, because entries are cited by the publisher's own identifier.",
+      "drop_as": "sources/cache/ccs/co2re_facilities.xlsx",
+      "priority": "blocking"
+    },
+    {
+      "candidate": "BENCHMARK — steel, first list",
+      "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker#download",
+      "why": "Registration form before the xlsx. /projects/global-iron-steel-tracker/download-data/ redirects to the tracker page and the download sits behind a form at the #download anchor, with no direct file URL in the markup.",
+      "needed_for": "THE STEEL CENSUS CANNOT START WITHOUT IT. NOTE THE NAME HAS CHANGED: brief 8 names 'GEM's Global Steel Plant Tracker' and the current product is the GLOBAL IRON AND STEEL TRACKER (GIST), June 2026 (V1) release. Recorded so the census does not silently measure itself against a differently scoped list under the brief's name. The brief records GEM as CC BY; the tracker page states a recommended citation and no licence, so the licence is outstanding rather than assumed.",
+      "drop_as": "sources/cache/steel/gem_gist_2026_v1.xlsx",
+      "priority": "blocking"
     }
   ]
 }
