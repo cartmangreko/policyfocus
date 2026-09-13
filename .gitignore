@@ -69,3 +69,22 @@ sources/dependency_cache/*
 # sources/benchmark_snapshots.json holds the identity instead.
 sources/cache/batteries/*
 !sources/cache/batteries/index.json
+
+# The cement/CCS census inputs and its fetch cache, brief 8 sector 2. NOT COMMITTED:
+# the IEA's CCUS Projects Database is a standalone database its general Terms exclude
+# from the CC BY 4.0 Open Use Terms — while the product page states CC BY 4.0 for this
+# very file, which is two statements by one publisher and is recorded as such in
+# sources/benchmark_snapshots.json. The Global CCS Institute's Terms of Use put every
+# intellectual property right in Content "including data" with the Institute and
+# transfer nothing. Under either reading a HASH-REFERENCED SNAPSHOT redistributes
+# nothing and needs no transfer, so that is what is held. index.json IS tracked: url,
+# date, size and SHA-256 of every fetch is the part that has to survive.
+sources/cache/ccs/*
+!sources/cache/ccs/index.json
+
+# The steel census inputs and its fetch cache, brief 8 sector 3. GEM's Global Iron and
+# Steel Tracker is CC BY, which would permit a copy; the bodies stay out anyway, on the
+# hydrogen and batteries precedent above — this repository holds identities and its own
+# reasoning, and a publisher's file is reproducible from its hash and its URL.
+sources/cache/steel/*
+!sources/cache/steel/index.json

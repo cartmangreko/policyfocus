@@ -40,7 +40,24 @@
     "The rule above -- identity, not copy -- was written for two files nobody here may",
     "redistribute. Brief 8's inputs are not all like that, so each snapshot below carries a",
     "`licence` block saying what was read, where, and what it permits. A snapshot taken",
-    "without that block would be a snapshot somebody assumed was allowed."
+    "without that block would be a snapshot somebody assumed was allowed.",
+    "",
+    "SECTOR 2 AND 3 LICENCES, READ 12-13 SEPTEMBER 2026, BEFORE ANY SNAPSHOT AND WITHOUT ONE.",
+    "The three lists the cement/CCS and steel censuses are measured against are each behind an",
+    "affirmative acceptance -- an account login, a click-through, a registration form -- and",
+    "none of them was passed. What is recorded below is the LICENCE ONLY: no bytes, no hash,",
+    "no entry in `snapshots`, because nothing was fetched. `pending_snapshots` names what is",
+    "awaited and at what path it will land.",
+    "",
+    "THE IEA CCUS DATABASE IS DESCRIBED TWO WAYS BY ITS OWN PUBLISHER and both are recorded",
+    "rather than reconciled. The product page for this very file states 'Licence CC BY 4.0'",
+    "and prints a CC BY citation string for it; the general Terms and Conditions exclude",
+    "'Standalone datasets, data explorers and databases' from the CC BY 4.0 Open Use Terms.",
+    "This register does not decide between two statements by one speaker -- that is a",
+    "disagreement, and it is held as one. IT DOES NOT NEED TO DECIDE: a hash-referenced",
+    "snapshot redistributes nothing and requires no transfer of rights, so it is permitted",
+    "under the stricter reading as well as the looser one, and the stricter reading is what",
+    "this register works to."
   ],
   "snapshots": [
     {
@@ -153,6 +170,78 @@
       "verbatim": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors beziehungsweise Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht-kommerziellen Gebrauch gestattet.",
       "robots": "robots.txt: User-agent: * / Disallow: (empty) -- everything allowed.",
       "what_this_pass_does": "All rights reserved, with downloads permitted for private non-commercial use. The atlas is read at reading pace, held in the uncommitted cache, and cited by the publisher's own row -- company, site, year. Nothing is redistributed."
+    },
+    "iea_ccus_projects_database": {
+      "publisher": "International Energy Agency",
+      "read": [
+        "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database",
+        "https://www.iea.org/terms"
+      ],
+      "read_on": "2026-09-12",
+      "two_statements_by_one_publisher": [
+        {
+          "where": "the product page for this file",
+          "verbatim": "Licence CC BY 4.0",
+          "also": "The page's own citation string: 'IEA, CCUS Projects Database, IEA, Paris https://www.iea.org/data-and-statistics/data-product/ccus-projects-database, Licence: CC BY 4.0'",
+          "reading": "This database is CC BY 4.0."
+        },
+        {
+          "where": "the general Terms and Conditions",
+          "verbatim": "The following content is not made available under a CC BY 4.0 licence as part of the Open Use Terms: The Oil Market Report; Standalone datasets, data explorers and databases, including those listed at https://www.iea.org/data-and-statistics/data-sets; Data annexes to the World Energy Outlook or other IEA publications; Any content identified as a joint or collaborative work with one or more third parties; and The Policies and Measures Databases.",
+          "reading": "A standalone database is outside the CC BY Open Use Terms."
+        }
+      ],
+      "held": "NOT RECONCILED, AND IT DOES NOT HAVE TO BE. A hash-referenced snapshot redistributes nothing and needs no grant of rights, so it is permitted on either reading. This register works to the stricter one: the bytes stay out of the repository, entries are cited by the publisher's own identifier, and sources/cache/ccs/ is gitignored except its index.",
+      "barrier": "ACCOUNT LOGIN. The file is 'IEA CCUS Projects Database 2026.xlsx', updated 27/03/2026, and the product page answers 'You are either not logged in or your login session has expired, please login again or create an IEA account to download data.' No open route exists: api.iea.org/ccus answers 200 but is the CCUS LEGAL AND REGULATORY database (89 rows, keys Base legislation / Description / Issue / Link / Region / Regulation or law), not the projects database; api.iea.org/ccus/projects, /ccus/project, /ccusprojects, /ccus/projects-database and /ccus-projects-database/ccus all answer 404; api.iea.org/sdmx/dataflow answers 404 and sdmx.iea.org and data.iea.org do not resolve. THE BARRIER IS AN ACCEPTANCE, NOT A PROHIBITION, and accepting an account agreement is the account holder's to give."
+    },
+    "global_ccs_institute": {
+      "publisher": "Global CCS Institute (CO2RE facility database)",
+      "read": [
+        "https://www.globalccsinstitute.com/terms-of-use/",
+        "https://co2re.co/FacilityData"
+      ],
+      "read_on": "2026-09-12",
+      "verbatim": "Content: All content (including data, text, video, images, audio, and other material) accessible on the Website… 5. Intellectual Property Rights — Content. All intellectual property rights in Content (other than your Contributions) are owned or licensed by the Global CCS Institute. Nothing transfers to you.",
+      "held": "ALL RIGHTS RESERVED, AND COMPATIBLE WITH WHAT THIS PASS DOES. Nothing transfers, and nothing needs to: a hash-referenced snapshot holds an identity rather than a copy, and entries are cited by the publisher's own identifier. Nothing is redistributed.",
+      "barrier": "CLICK-THROUGH, THEN AN EMBED WITH NO DATA BEHIND IT. co2re.co/FacilityData presents a modal — 'Check here to indicate that you have read and agree to the Terms and Data Use Policy' — and the table itself is an app.powerbi.com embed. The page carries no .json, .csv or .xlsx URL and no /api path. Both the 'Terms' and the 'Data Use Policy' links point at the same Terms of Use page quoted above, which WAS read. THE BARRIER IS THE ACCEPTANCE AND THE EMBED, not the terms."
+    },
+    "gem_global_iron_steel_tracker": {
+      "publisher": "Global Energy Monitor",
+      "read": [
+        "https://globalenergymonitor.org/projects/global-iron-steel-tracker"
+      ],
+      "read_on": "2026-09-12",
+      "verbatim": "The recommended citation is 'Global Iron and Steel Tracker, Global Energy Monitor, June 2026 (V1) release.'",
+      "held": "THE BRIEF RECORDS GEM AS CC BY AND THIS PASS COULD NOT CONFIRM IT FROM THE PAGE IT READ. The tracker page states a recommended citation and no licence; the licence is not quoted here because it was not read. It is recorded as outstanding rather than assumed, and the bytes stay out of the repository either way on the hydrogen and batteries precedent.",
+      "barrier": "REGISTRATION FORM. The Global Steel Plant Tracker is now the GLOBAL IRON AND STEEL TRACKER (GIST), June 2026 (V1) release. /projects/global-iron-steel-tracker/download-data/ redirects to the tracker page, where the download sits behind a form at the #download anchor with no direct file URL in the markup.",
+      "note_for_the_pass": "THE NAME CHANGED AND THE BRIEF'S NAME IS THE OLD ONE. Brief 8 names 'GEM's Global Steel Plant Tracker'. Recorded here so the steel census does not silently measure itself against a differently scoped list under the brief's name."
     }
+  },
+  "pending_snapshots": {
+    "_comment": "AWAITED, NOT FETCHED. Each of these is a benchmark this register is measured against and cannot reach: the barrier is an acceptance a person gives, not a term that forbids the snapshot. NO ENTRY IS ADDED TO `snapshots` UNTIL THE BYTES EXIST AND ARE HASHED — a snapshot is an identity, and an identity of a file nobody has is nothing. The queue with exact URLs and drop paths is in sources/manual/MANIFEST.json under `wanted`.",
+    "raised": "2026-09-13",
+    "awaiting": [
+      {
+        "benchmark": "iea_ccus_projects_database",
+        "sector": "cement and CCS",
+        "role": "first list",
+        "file": "IEA CCUS Projects Database 2026.xlsx",
+        "drop_as": "sources/cache/ccs/iea_ccus_projects_2026.xlsx"
+      },
+      {
+        "benchmark": "global_ccs_institute",
+        "sector": "cement and CCS",
+        "role": "second list",
+        "file": "CO2RE facilities export",
+        "drop_as": "sources/cache/ccs/co2re_facilities.xlsx"
+      },
+      {
+        "benchmark": "gem_global_iron_steel_tracker",
+        "sector": "steel",
+        "role": "first list",
+        "file": "Global Iron and Steel Tracker, June 2026 (V1)",
+        "drop_as": "sources/cache/steel/gem_gist_2026_v1.xlsx"
+      }
+    ]
   }
 }
