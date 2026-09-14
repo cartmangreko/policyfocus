@@ -715,7 +715,17 @@ def _transition_edges(g: Graph):
     """
     kinds = sector_map.load_all()
 
-    for t in kinds["technology"]:
+    # A PLACEHOLDER IS NOT A NODE AND ITS DEPENDENCY IS NOT AN EDGE. Ruled 14
+    # September 2026 with ccs-capture-unspecified, which records that a project's
+    # owner has not stated a capture method. It is excluded from every count,
+    # tile and diagram, and the graph is the same kind of surface: a node here
+    # would be walkable from an act to a plant as though somebody were building
+    # it. THE DEPENDENCY STILL BINDS WHERE IT MATTERS -- sector_map.captures_co2
+    # reads technologies.json directly, so the twelve rows carrying the
+    # placeholder still owe an answer about where the tonne goes.
+    technologies = [t for t in kinds["technology"] if not t.get("placeholder")]
+
+    for t in technologies:
         g.add_node(f"technology:{t['id']}", "technology", t["name"],
                    transition=t["transition"],
                    readiness=(t.get("readiness") or {}).get("level"),
@@ -755,7 +765,7 @@ def _transition_edges(g: Graph):
                    status=f["status"], date=f["date"], country=f["country"])
 
     # technology -> technology, technology -> bottleneck
-    for t in kinds["technology"]:
+    for t in technologies:
         src = f"technology:{t['id']}"
         since = (t.get("readiness") or {}).get("date", "")
         for dep in t.get("dependency", []):
@@ -805,7 +815,14 @@ def _transition_edges(g: Graph):
     for pr in kinds["project"]:
         src = f"project:{pr['id']}"
         first = pr["status_history"][0]["date"] if pr.get("status_history") else ""
+        # A `deploys` EDGE TO A PLACEHOLDER IS NOT DRAWN, for the reason the node
+        # is not: ccs-capture-unspecified records that this project's owner has
+        # NOT stated a method, and an edge saying the project deploys it would
+        # put the register's silence on the graph as a thing being built.
+        placeholder_tech = {t["id"] for t in kinds["technology"] if t.get("placeholder")}
         for tid in pr.get("technology", []):
+            if tid in placeholder_tech:
+                continue
             g.add_edge("deploys", src, f"technology:{tid}", first,
                        {"source": "data/transition/projects.json",
                         "path": f"[id={pr['id']}].technology"})

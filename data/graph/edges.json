@@ -29039,6 +29039,16 @@
  },
  {
   "rel": "depends_on",
+  "from": "technology:ccs-direct-separation",
+  "to": "technology:co2-transport-storage",
+  "since": "2025-02-26",
+  "evidence": {
+   "source": "data/transition/technologies.json",
+   "path": "[id=ccs-direct-separation].dependency"
+  }
+ },
+ {
+  "rel": "depends_on",
   "from": "technology:ccs-oxyfuel",
   "to": "technology:co2-transport-storage",
   "since": "2024-05-16",
@@ -29159,6 +29169,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:accsion-aalborg",
+  "to": "technology:ccs-post-combustion",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=accsion-aalborg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:agratas-bridgwater",
   "to": "technology:cell-manufacturing",
   "since": "2025-08-22",
@@ -29219,6 +29239,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:anthemis-antoing",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2025-11-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=anthemis-antoing].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:bayh2-bayernoil",
   "to": "technology:hydrogen-supply",
   "since": "2026-09-10",
@@ -29269,6 +29299,26 @@
  },
  {
   "rel": "deploys",
+  "from": "project:broceni-ccs",
+  "to": "technology:ccs-post-combustion",
+  "since": "2024-11-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=broceni-ccs].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:c2pat-mannersdorf",
+  "to": "technology:ccs-post-combustion",
+  "since": "2026-09-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=c2pat-mannersdorf].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:calb-sines",
   "to": "technology:cell-manufacturing",
   "since": "2025-02-24",
@@ -29305,6 +29355,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=catalina-teruel-sagunto].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:catch4climate-mergelstetten",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2020-11-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catch4climate-mergelstetten].technology"
   }
  },
  {
@@ -29355,6 +29415,56 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=catl-stellantis-zaragoza].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:co2llect-rudersdorf",
+  "to": "technology:ccs-post-combustion",
+  "since": "2026-09-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=co2llect-rudersdorf].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:co2ntessa-nasice",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2023-03-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=co2ntessa-nasice].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:cpt01-campulung",
+  "to": "technology:ccs-post-combustion",
+  "since": "2025-11-04",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=cpt01-campulung].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:cyclonecc-rudersdorf",
+  "to": "technology:ccs-post-combustion",
+  "since": "2022-07-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=cyclonecc-rudersdorf].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:ecco2-lh-carboneras",
+  "to": "technology:ccs-post-combustion",
+  "since": "2022-02-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ecco2-lh-carboneras].technology"
   }
  },
  {
@@ -29829,12 +29939,32 @@
  },
  {
   "rel": "deploys",
+  "from": "project:kodeco-koromacno",
+  "to": "technology:ccs-post-combustion",
+  "since": "2023-03-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=kodeco-koromacno].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:la-robla-green",
   "to": "technology:hydrogen-supply",
   "since": "2026-09-09",
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=la-robla-green].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:leilac2-hannover",
+  "to": "technology:ccs-direct-separation",
+  "since": "2021-02-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=leilac2-hannover].technology"
   }
  },
  {
@@ -29999,6 +30129,26 @@
  },
  {
   "rel": "deploys",
+  "from": "project:olympus-milaki",
+  "to": "technology:ccs-oxyfuel",
+  "since": "2024-12-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=olympus-milaki].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:olympus-milaki",
+  "to": "technology:ccs-post-combustion",
+  "since": "2024-12-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=olympus-milaki].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:omv-bruck-an-der-leitha",
   "to": "technology:hydrogen-supply",
   "since": "2025-09-29",
@@ -30015,6 +30165,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=orsted-skovgaard-idomlund].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:padeswood-ccs",
+  "to": "technology:ccs-post-combustion",
+  "since": "2022-12-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=padeswood-ccs].technology"
   }
  },
  {
@@ -33094,6 +33254,28 @@
  },
  {
   "rel": "in",
+  "from": "project:accsion-aalborg",
+  "to": "country:DK",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=accsion-aalborg].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:accsion-aalborg",
+  "to": "sector:cement",
+  "since": "2025-06-23",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=accsion-aalborg].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:agratas-bridgwater",
   "to": "country:GB",
   "since": "2025-08-22",
@@ -33160,6 +33342,28 @@
  },
  {
   "rel": "in",
+  "from": "project:airvault-goco2",
+  "to": "country:FR",
+  "since": "2024-03-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=airvault-goco2].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:airvault-goco2",
+  "to": "sector:cement",
+  "since": "2024-03-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=airvault-goco2].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:am-bremen-eisenhuettenstadt",
   "to": "country:DE",
   "since": "2025-06-23",
@@ -33199,6 +33403,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=anrav-devnya].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:anthemis-antoing",
+  "to": "country:BE",
+  "since": "2025-11-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=anthemis-antoing].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:anthemis-antoing",
+  "to": "sector:cement",
+  "since": "2025-11-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=anthemis-antoing].sector"
   },
   "basis": "sector"
  },
@@ -33292,6 +33518,50 @@
  },
  {
   "rel": "in",
+  "from": "project:broceni-ccs",
+  "to": "country:LV",
+  "since": "2024-11-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=broceni-ccs].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:broceni-ccs",
+  "to": "sector:cement",
+  "since": "2024-11-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=broceni-ccs].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:c2pat-mannersdorf",
+  "to": "country:AT",
+  "since": "2026-09-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=c2pat-mannersdorf].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:c2pat-mannersdorf",
+  "to": "sector:cement",
+  "since": "2026-09-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=c2pat-mannersdorf].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:calb-sines",
   "to": "country:PT",
   "since": "2025-02-24",
@@ -33309,6 +33579,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=calb-sines].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:carbocleartech-martres-tolosane",
+  "to": "country:FR",
+  "since": "2024-10-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=carbocleartech-martres-tolosane].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:carbocleartech-martres-tolosane",
+  "to": "sector:cement",
+  "since": "2024-10-24",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=carbocleartech-martres-tolosane].sector"
   },
   "basis": "sector"
  },
@@ -33380,6 +33672,28 @@
  },
  {
   "rel": "in",
+  "from": "project:catch4climate-mergelstetten",
+  "to": "country:DE",
+  "since": "2020-11-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catch4climate-mergelstetten].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:catch4climate-mergelstetten",
+  "to": "sector:cement",
+  "since": "2020-11-18",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=catch4climate-mergelstetten].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:catl-arnstadt",
   "to": "country:DE",
   "since": "2022-12-21",
@@ -33441,6 +33755,226 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=catl-stellantis-zaragoza].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:co2llect-rudersdorf",
+  "to": "country:DE",
+  "since": "2026-09-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=co2llect-rudersdorf].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:co2llect-rudersdorf",
+  "to": "sector:cement",
+  "since": "2026-09-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=co2llect-rudersdorf].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:co2necta-sagunto",
+  "to": "country:ES",
+  "since": "2025-01-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=co2necta-sagunto].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:co2necta-sagunto",
+  "to": "sector:cement",
+  "since": "2025-01-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=co2necta-sagunto].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:co2ntessa-nasice",
+  "to": "country:HR",
+  "since": "2023-03-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=co2ntessa-nasice].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:co2ntessa-nasice",
+  "to": "sector:cement",
+  "since": "2023-03-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=co2ntessa-nasice].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:cpt01-campulung",
+  "to": "country:RO",
+  "since": "2025-11-04",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=cpt01-campulung].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:cpt01-campulung",
+  "to": "sector:cement",
+  "since": "2025-11-04",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=cpt01-campulung].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:cyclonecc-rudersdorf",
+  "to": "country:DE",
+  "since": "2022-07-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=cyclonecc-rudersdorf].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:cyclonecc-rudersdorf",
+  "to": "sector:cement",
+  "since": "2022-07-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=cyclonecc-rudersdorf].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:deuna-ccs",
+  "to": "country:DE",
+  "since": "2024-05-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=deuna-ccs].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:deuna-ccs",
+  "to": "sector:cement",
+  "since": "2024-05-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=deuna-ccs].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:dream-rezzato-mazzano",
+  "to": "country:IT",
+  "since": "2025-11-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=dream-rezzato-mazzano].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:dream-rezzato-mazzano",
+  "to": "sector:cement",
+  "since": "2025-11-03",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=dream-rezzato-mazzano].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:ecapt-rhone-le-teil",
+  "to": "country:FR",
+  "since": "2023-09-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ecapt-rhone-le-teil].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:ecapt-rhone-le-teil",
+  "to": "sector:cement",
+  "since": "2023-09-22",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ecapt-rhone-le-teil].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:ecco2-lh-carboneras",
+  "to": "country:ES",
+  "since": "2022-02-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ecco2-lh-carboneras].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:ecco2-lh-carboneras",
+  "to": "sector:cement",
+  "since": "2022-02-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=ecco2-lh-carboneras].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:eco2fly-villaluenga",
+  "to": "country:ES",
+  "since": "2025-04-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=eco2fly-villaluenga].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:eco2fly-villaluenga",
+  "to": "sector:cement",
+  "since": "2025-04-07",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=eco2fly-villaluenga].sector"
   },
   "basis": "sector"
  },
@@ -33886,6 +34420,28 @@
  },
  {
   "rel": "in",
+  "from": "project:go4ecoplanet-kujawy",
+  "to": "country:PL",
+  "since": "2026-09-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=go4ecoplanet-kujawy].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:go4ecoplanet-kujawy",
+  "to": "sector:cement",
+  "since": "2026-09-14",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=go4ecoplanet-kujawy].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:go4zero-obourg",
   "to": "country:BE",
   "since": "2024-05-16",
@@ -34106,6 +34662,28 @@
  },
  {
   "rel": "in",
+  "from": "project:hoever-ccs",
+  "to": "country:DE",
+  "since": "2026-08-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hoever-ccs].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:hoever-ccs",
+  "to": "sector:cement",
+  "since": "2026-08-21",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hoever-ccs].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:hybrit-pilot-lulea",
   "to": "country:SE",
   "since": "2021-06-21",
@@ -34304,6 +34882,28 @@
  },
  {
   "rel": "in",
+  "from": "project:kodeco-koromacno",
+  "to": "country:HR",
+  "since": "2023-03-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=kodeco-koromacno].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:kodeco-koromacno",
+  "to": "sector:cement",
+  "since": "2023-03-20",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=kodeco-koromacno].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:la-robla-green",
   "to": "country:ES",
   "since": "2026-09-09",
@@ -34321,6 +34921,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=la-robla-green].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:leilac2-hannover",
+  "to": "country:DE",
+  "since": "2021-02-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=leilac2-hannover].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:leilac2-hannover",
+  "to": "sector:cement",
+  "since": "2021-02-01",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=leilac2-hannover].sector"
   },
   "basis": "sector"
  },
@@ -34524,6 +35146,28 @@
  },
  {
   "rel": "in",
+  "from": "project:mosusol-sant-vicenc-dels-horts",
+  "to": "country:ES",
+  "since": "2025-02-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=mosusol-sant-vicenc-dels-horts].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:mosusol-sant-vicenc-dels-horts",
+  "to": "sector:cement",
+  "since": "2025-02-13",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=mosusol-sant-vicenc-dels-horts].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:neogreen-sines",
   "to": "country:PT",
   "since": "2026-09-10",
@@ -34612,6 +35256,28 @@
  },
  {
   "rel": "in",
+  "from": "project:olympus-milaki",
+  "to": "country:GR",
+  "since": "2024-12-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=olympus-milaki].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:olympus-milaki",
+  "to": "sector:cement",
+  "since": "2024-12-19",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=olympus-milaki].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:omv-bruck-an-der-leitha",
   "to": "country:AT",
   "since": "2025-09-29",
@@ -34651,6 +35317,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=orsted-skovgaard-idomlund].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:padeswood-ccs",
+  "to": "country:GB",
+  "since": "2022-12-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=padeswood-ccs].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:padeswood-ccs",
+  "to": "sector:cement",
+  "since": "2022-12-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=padeswood-ccs].sector"
   },
   "basis": "sector"
  },
@@ -34981,6 +35669,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=rwe-wilton-green-hydrogen].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:saint-pierre-la-cour-goco2",
+  "to": "country:FR",
+  "since": "2025-12-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=saint-pierre-la-cour-goco2].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:saint-pierre-la-cour-goco2",
+  "to": "sector:cement",
+  "since": "2025-12-17",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=saint-pierre-la-cour-goco2].sector"
   },
   "basis": "sector"
  },
@@ -35443,6 +36153,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=univercell-flintbek].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:vaia-montalieu-vercieu",
+  "to": "country:FR",
+  "since": "2025-03-04",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=vaia-montalieu-vercieu].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:vaia-montalieu-vercieu",
+  "to": "sector:cement",
+  "since": "2025-03-04",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=vaia-montalieu-vercieu].sector"
   },
   "basis": "sector"
  },
