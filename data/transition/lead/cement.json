@@ -7,7 +7,7 @@
   ],
   "sector": "cement",
   "template_version": 5,
-  "fingerprint": "01f25ef02b068da7",
+  "fingerprint": "09182e3652afd820",
   "sentence": {
     "text": "European cement is cutting its emissions.",
     "from": [
@@ -27,21 +27,19 @@
     {
       "id": "routes",
       "label": "Routes",
-      "text": "Five routes are being built: post-combustion carbon capture (15 projects), carbon capture, method not stated (12), oxyfuel carbon capture (6), alternative fuels in the kiln (1) and direct separation carbon capture (1).",
+      "text": "Four routes are being built: post-combustion carbon capture (15 projects), oxyfuel carbon capture (6), alternative fuels in the kiln (1) and direct separation carbon capture (1).",
       "as_of": "2026-09-14",
       "numbers": [
         "15",
-        "12",
         "6",
         "1",
         "1"
       ],
       "parts": {
-        "count": 5,
-        "list": "post-combustion carbon capture (15 projects), carbon capture, method not stated (12), oxyfuel carbon capture (6), alternative fuels in the kiln (1) and direct separation carbon capture (1)",
+        "count": 4,
+        "list": "post-combustion carbon capture (15 projects), oxyfuel carbon capture (6), alternative fuels in the kiln (1) and direct separation carbon capture (1)",
         "names": [
           "Post-combustion carbon capture",
-          "Carbon capture, method not stated",
           "Oxyfuel carbon capture",
           "Alternative fuels in the kiln",
           "Direct separation carbon capture"
@@ -49,7 +47,6 @@
       },
       "sourced": [
         "Post-combustion carbon capture",
-        "Carbon capture, method not stated",
         "Oxyfuel carbon capture",
         "Alternative fuels in the kiln",
         "Direct separation carbon capture"
@@ -129,13 +126,14 @@
     {
       "id": "the_latest",
       "label": "The latest",
-      "text": "Go4ECOPlanet was announced on 14 September 2026.",
+      "text": "Go4ECOPlanet was announced by 14 September 2026.",
       "as_of": "2026-09-14",
       "numbers": [],
       "parts": {
         "project": "Go4ECOPlanet",
         "status": "announced",
-        "date": "14 September 2026"
+        "date": "14 September 2026",
+        "date_is_upper_bound": true
       },
       "sourced": [
         "Go4ECOPlanet"
