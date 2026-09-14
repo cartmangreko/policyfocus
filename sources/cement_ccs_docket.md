@@ -251,6 +251,41 @@ Holcim states 2 million tonnes of **near-zero cement** a year at Câmpulung; the
 them does not read one as the other. The same shape appears at Sagunto, where the owner
 states 560,000 t of CO₂ **avoided** and the list states 0.6 Mt of capture **capacity**.
 
+**D86. A FILENAME IS THE PUBLISHER'S FILING AND NOT THE DOCUMENT'S DATELINE.** The OLYMPUS
+FEED release is served at a path ending `…feed-contract-for-olympus-ccs-project-12-12-2024_vs2.pdf`
+and its first line reads **"Athens, 19 December 2024"**. The row takes the 19th. This is the
+same shape as the Ørsted case in scope.md — a URL path reading `/news/2022/12/` which is the
+publisher's filing — and it is recorded separately because a filename is more tempting than a
+path: it carries a full date, it looks authoritative, and a dating pass that trusted it would
+have been a week out with no way to notice. **Every dateline in this pass was read off the
+document**, not off its URL.
+
+A second case in the same pass ran the other way. The first-pass extractor returned
+2020-06-24 for the C2PAT release from deep in the body; the raw markup carries **no date
+metadata of any kind**, so that number was a stray and not a dateline. The row is dated
+`not_after` 2026-09-14 instead. **A date found in a document is not the same thing as a
+document's dateline**, and only reading tells the two apart.
+
+**D87. AN EVENT MAY NOW BE AN UPPER BOUND, AND TWELVE ROWS RECORD A SILENCE AS A
+TECHNOLOGY.** Two vocabulary changes this census forced, both ruled 14 September 2026.
+
+`not_after` joins `EVENT_DATE_PRECISIONS`, with the meaning it already had on a source: the
+event is dated by the copy on file, as a bound. Three admitted rows — C2PAT Mannersdorf,
+CO2LLECT Rüdersdorf, Go4ECOPlanet Kujawy — have an announcement that is real, read and
+quoted, and an owner document that carries no dateline. The old vocabulary offered a false
+`day` or no event at all. Display renders it **"by 14 September 2026"**.
+
+And `ccs-capture-unspecified` enters the technology registry as a **placeholder**: twelve of
+the twenty-six admitted cement projects have an owner who confirms the works, the project and
+often the tonnage and never says how the CO₂ is to be captured. Filing them under
+post-combustion because it is the commonest retrofit would have attributed a method to twelve
+real works on this register's guess. **It is excluded from every technology count, tile and
+diagram node** — a reader meeting it on a page would read it as a thing somebody is building —
+and it keeps `co2-transport-storage` as a dependency, so those rows still owe an answer about
+where the tonne goes. Thirteen rows carry what their owners said; OLYMPUS carries two ids
+because HERACLES names two. LEILAC 2 gets `ccs-direct-separation`, a third method the registry
+did not have, sourced to Calix's own design description.
+
 ## 9. Disagreements, held and not resolved
 
 Six, in `sources/cement_ccs_benchmark.json`:

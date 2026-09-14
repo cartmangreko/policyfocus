@@ -391,6 +391,26 @@ EVENT_DATE_PRECISIONS = (
     "day",
     "month",
     "year",
+    # `not_after` ON AN EVENT, ruled 14 September 2026 by the cement census.
+    # It means exactly what it means on a source: the event is dated by the
+    # COPY ON FILE, as an UPPER BOUND, because the document that reports it
+    # carries no dateline of its own.
+    #
+    # WHY IT HAD TO REACH THE EVENTS. The archive rule of #55 gave a source an
+    # upper bound and stopped there, and three cement rows then arrived whose
+    # ONLY owner document is undated — Holcim's C2PAT release, the CO2LLECT
+    # project page, the Go4ECOPlanet post. Their announcement is real, read and
+    # quoted, and under the old vocabulary it could not be dated at all: the
+    # choice was a false `day` saying the company announced on the afternoon
+    # this register happened to read the page, or no event, which would have
+    # left three admitted rows with an empty history. Both are worse than an
+    # honest bound.
+    #
+    # IT IS STILL NOT `day`, and the arithmetic must keep treating it as a
+    # bound: anything computing how long a project took, or how far a statement
+    # slipped, reads a `not_after` event as "at or before" and never as "on".
+    # Display renders it "by <date>" for the same reason.
+    "not_after",
 )
 
 # AND IT IS NOT ONLY EVENTS. Ruled 9 September 2026, one ruling after the events
@@ -429,7 +449,11 @@ VALUE_DATE_PRECISIONS = EVENT_DATE_PRECISIONS
 # TO `captured_at`. IGNIS's page is the case on the other side: its own metadata
 # says 23 September 2024, which is the date, while the capture of 16 April 2026 is
 # only how this register reached it.
-SOURCE_DATE_PRECISIONS = EVENT_DATE_PRECISIONS + ("not_after",)
+# SOURCE DATES AND EVENT DATES NOW SHARE ONE VOCABULARY. Until 14 September 2026
+# `not_after` was a source's alone and this line added it; the cement census gave
+# the events the same need and the same meaning, so the two are the same tuple
+# rather than one being the other plus a special case.
+SOURCE_DATE_PRECISIONS = EVENT_DATE_PRECISIONS
 
 
 TARGET_PRECISIONS = (
@@ -474,6 +498,13 @@ CAPACITY_UNITS = (
     "Nm3_h",            # the hydrogen, stated as a flow
     "t_h2_per_year",    # the hydrogen, stated as an annual mass
     "t_nh3_per_year",   # ammonia, where the source states ammonia only
+    # D80, 14 September 2026: A CAPACITY IS NEVER ANNUALISED TO MAKE PROJECTS
+    # COMPARABLE. CEMEX's CycloneCC unit at Rüdersdorf is stated by its
+    # technology partner at 100 tonnes of CO2 per DAY, and the row carries it
+    # per day. Annualising it would be this register inventing an operating
+    # pattern nobody stated, in the direction that makes a small project look
+    # like a comparable one.
+    "t_co2_per_day",
 )
 
 # WHICH UNIT THE EXPORT PREFERS WHEN A ROW STATES TWO. MW input is the figure the
@@ -761,6 +792,12 @@ BENCHMARKS = (
     # a person read the pair, and every pairing is printed for confirmation.
     "te_gigafactory_risk",
     "battery_news_europe_cells",
+    # THE CEMENT AND CCS LIST, from brief 8 sector 2. The IEA CCUS Projects
+    # Database issues its own `ID` per project, so unlike the two battery lists
+    # the key here is the publisher's identifier and not a row label. The
+    # register is measured against the 425 entries the publisher's own `Region`
+    # column calls Europe.
+    "iea_ccus_projects_database",
 )
 
 

@@ -71,8 +71,21 @@ export async function generateMetadata({
       `${p.name}, ${p.company}'s ${p.plant ?? p.country} project: ` +
       `${STATUS_LABEL[p.status].toLowerCase()} as of ` +
       `${atPrecision(last?.date ?? "", last?.date_precision)}, deploying ` +
-      `${p.technology.join(", ")}.`,
+      `${shownTechnology(p).join(", ")}.`,
   };
+}
+
+/*  A PLACEHOLDER TECHNOLOGY IS NEVER SHOWN AS A TECHNOLOGY. `ccs-capture-unspecified`
+ *  records that a project's owner has not stated how the CO2 is to be captured, so
+ *  that the silence is countable in the data; a reader meeting it in this list would
+ *  read it as a thing somebody is building. It is filtered out of the tile list and
+ *  out of the page's own description. Ruled 14 September 2026. */
+function shownTechnologyIds(p: { technology: string[] }): string[] {
+  return p.technology.filter((id) => !getTechnology(id)?.placeholder);
+}
+
+function shownTechnology(p: { technology: string[] }): string[] {
+  return shownTechnologyIds(p).map((id) => getTechnology(id)?.name ?? id);
 }
 
 const FLOW: ProjectStatus[] = ["announced", "funded", "fid", "construction", "operating"];
@@ -240,12 +253,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         <section className="proj-section">
           <h2>Technology and measures</h2>
           <ul className="proj-tech">
-            {project.technology.map((id) => {
+            {shownTechnologyIds(project).map((id) => {
               const t = getTechnology(id);
               return (
                 <li key={id}>
                   <Link href={`/sectors/${sector}#technology-${id}`}>{t?.name ?? id}</Link>
-                  {t ? <span className={`tready ${t.readiness.level}`}>{t.readiness.level}</span> : null}
+                  {t?.readiness ? (
+                    <span className={`tready ${t.readiness.level}`}>{t.readiness.level}</span>
+                  ) : null}
                   {t ? <span className="note">{t.description}</span> : null}
                 </li>
               );
