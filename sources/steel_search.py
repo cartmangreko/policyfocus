@@ -79,7 +79,25 @@ def fetch(url: str, source_type: str, note: str = "") -> dict:
            "http": None, "bytes": 0, "sha256": "", "text_chars": 0,
            "outcome": "", "note": note}
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        # A NON-ASCII URL IS STILL A URL. urllib refuses to send one — it encodes
+        # the request line as ASCII — and raised UnicodeEncodeError on twenty of
+        # this census's plants, every one of them a works whose name carries a
+        # diacritic: SSAB Luleå and Oxelösund, ArcelorMittal Kraków and Dąbrowa
+        # Górnicza, Eisenhüttenstadt, Liepājas Metalurgs. THE FAILURE WAS SILENT
+        # IN THE WORST WAY: the entry recorded a fetch that had happened and
+        # returned nothing, so the plant looked searched and was not — and the
+        # twenty were disproportionately the large integrated works this
+        # perimeter is most about. Percent-encode the path and the query, leave
+        # the scheme and host alone, and record the URL as the publisher writes
+        # it so a reader can still follow it.
+        parts = urllib.parse.urlsplit(url)
+        safe = urllib.parse.urlunsplit((
+            parts.scheme, parts.netloc.encode("idna").decode("ascii")
+            if any(ord(c) > 127 for c in parts.netloc) else parts.netloc,
+            urllib.parse.quote(parts.path, safe="/%:@&=+$,~()'*!"),
+            urllib.parse.quote(parts.query, safe="/%:@&=+$,~()'*!?"),
+            ""))
+        req = urllib.request.Request(safe, headers={"User-Agent": UA})
         with urllib.request.urlopen(req, timeout=45) as r:
             body = r.read()
             rec["http"] = r.status
