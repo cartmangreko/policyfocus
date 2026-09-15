@@ -1,0 +1,132 @@
+{
+ "_comment": [
+  "THE CACHE INDEX FOR THE STEEL CENSUS, brief 8 sector 3. One entry per fetch: the URL,",
+  "the day, the byte count and the SHA-256 of what came back. Bodies are held beside this",
+  "file under their hash and are NOT committed -- the index is the part that makes a claim",
+  "checkable, and it holds no publisher's text.",
+  "",
+  "THE THREE BENCHMARK FILES ARE INDEXED HERE TOO, as fetches with no http status: they were",
+  "retrieved by hand past a registration form. Their hashes are the snapshot -- see",
+  "sources/benchmark_snapshots.json, `gem_global_iron_steel_tracker`.",
+  "",
+  "MOVED HERE 15 September 2026, and the reason is worth keeping. steel_search.py was copied",
+  "from ccs_search.py with a text substitution that replaced the string 'sources/cache/ccs'",
+  "and MISSED the path built from separate quoted segments, so the first steel fetches wrote",
+  "into the cement-and-CCS index. Caught when a later read looked for the steel index and",
+  "found none. The entries are moved rather than re-fetched: they are the same bytes under",
+  "the same hashes, and a re-fetch would have recorded a second reading that never happened."
+ ],
+ "fetches": [
+  {
+   "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/",
+   "domain": "globalenergymonitor.org",
+   "source_type": "benchmark",
+   "date": "2026-09-15",
+   "http": null,
+   "bytes": 735833,
+   "sha256": "a5768b59cd7e6cec217692ae45eda80ea70aab1666aef74332cc1b41dd5338eb",
+   "text_chars": 0,
+   "outcome": "retrieved by hand past an account login",
+   "note": "Global Iron and Steel Tracker, June 2026 (V1) — the tracker. Retrieved by George Christopoulos on 14 September 2026 past the registration form. CC BY 4.0, stated on the file's own About tab.",
+   "file": "sources/cache/steel/Plant-level_data_Global_Iron_and_Steel_Tracker_June_2026_V1.xlsx"
+  },
+  {
+   "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/",
+   "domain": "globalenergymonitor.org",
+   "source_type": "benchmark",
+   "date": "2026-09-15",
+   "http": null,
+   "bytes": 489109,
+   "sha256": "d5355acd307930c0104d21dc9c6e6d62451856e044ce1aa3c576d9cb14b4d425",
+   "text_chars": 0,
+   "outcome": "retrieved by hand past an account login",
+   "note": "Global Iron and Steel Tracker, June 2026 (V1) — steel unit table. Retrieved by George Christopoulos on 14 September 2026 past the registration form. CC BY 4.0, stated on the file's own About tab.",
+   "file": "sources/cache/steel/Steel_unit_data_Global_Iron_and_Steel_Tracker_June_2026_V1.xlsx"
+  },
+  {
+   "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/",
+   "domain": "globalenergymonitor.org",
+   "source_type": "benchmark",
+   "date": "2026-09-15",
+   "http": null,
+   "bytes": 397828,
+   "sha256": "a770dddb8ddc6475eccb32d9b54981f5f81a53253b097adb8715c193e9f73f6a",
+   "text_chars": 0,
+   "outcome": "retrieved by hand past an account login",
+   "note": "Global Iron and Steel Tracker, June 2026 (V1) — iron unit table. Retrieved by George Christopoulos on 14 September 2026 past the registration form. CC BY 4.0, stated on the file's own About tab.",
+   "file": "sources/cache/steel/Iron_unit_data_Global_Iron_and_Steel_Tracker_June_2026_V1.xlsx"
+  },
+  {
+   "url": "https://www.industrytransition.org/green-steel-tracker/",
+   "domain": "www.industrytransition.org",
+   "source_type": "benchmark",
+   "date": "2026-09-15",
+   "http": 200,
+   "bytes": 124519,
+   "sha256": "01fd6e1d4df4e3ace3b60de1dea4f916725030781a26561e799f3cb3265bdd0e",
+   "text_chars": 4587,
+   "outcome": "200, 4587 chars",
+   "note": "LeadIT Green Steel Tracker — the second list"
+  },
+  {
+   "url": "https://www.industrytransition.org/green-steel-tracker/#data",
+   "domain": "www.industrytransition.org",
+   "source_type": "benchmark",
+   "date": "2026-09-15",
+   "http": 200,
+   "bytes": 124519,
+   "sha256": "6d8cb8c69650def293260a9cf64b233d3ea1c6718cd4fe47557f6b3d957d906c",
+   "text_chars": 4587,
+   "outcome": "200, 4587 chars",
+   "note": "LeadIT Green Steel Tracker — the second list"
+  },
+  {
+   "url": "https://leadit.org/green-steel-tracker",
+   "domain": "leadit.org",
+   "source_type": "benchmark",
+   "date": "2026-09-15",
+   "http": 200,
+   "bytes": 3527,
+   "sha256": "082290986984f02afb46697e361464fc43735bff6051b8a243029a2e6ae3054f",
+   "text_chars": 80,
+   "outcome": "200, empty body",
+   "note": "LeadIT Green Steel Tracker — the second list"
+  },
+  {
+   "url": "https://www.industrytransition.org/trackers/green-steel-tracker/download-green-steel-dataset/",
+   "domain": "www.industrytransition.org",
+   "source_type": "benchmark",
+   "date": "2026-09-15",
+   "http": 200,
+   "bytes": 130345,
+   "sha256": "c760888c1632a39ea298b748b7923cf8b2f89a2a8ca0c508fe649e4e5e86f69d",
+   "text_chars": 6253,
+   "outcome": "200, 6253 chars",
+   "note": "LeadIT Green Steel Tracker — dataset and methodology"
+  },
+  {
+   "url": "https://www.industrytransition.org/trackers/green-steel-tracker/",
+   "domain": "www.industrytransition.org",
+   "source_type": "benchmark",
+   "date": "2026-09-15",
+   "http": 200,
+   "bytes": 124519,
+   "sha256": "003e1c8f63959654030c17603de5016d470b17486e6c0aea18d5e919d2cbb61c",
+   "text_chars": 4587,
+   "outcome": "200, 4587 chars",
+   "note": "LeadIT Green Steel Tracker — dataset and methodology"
+  },
+  {
+   "url": "https://www.industrytransition.org/wp-content/uploads/2026/01/Green-Steel-Tracker-methodology.pdf",
+   "domain": "www.industrytransition.org",
+   "source_type": "benchmark",
+   "date": "2026-09-15",
+   "http": 200,
+   "bytes": 184258,
+   "sha256": "24cc202f5c411c4205520b2d7d6283686d46cb4b451ba336cf6bd46fa327457f",
+   "text_chars": 90332,
+   "outcome": "200, 90332 chars",
+   "note": "LeadIT Green Steel Tracker — dataset and methodology"
+  }
+ ]
+}

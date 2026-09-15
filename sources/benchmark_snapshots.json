@@ -278,11 +278,31 @@
    "barrier": "REGISTRATION FORM. The Global Steel Plant Tracker is now the GLOBAL IRON AND STEEL TRACKER (GIST), June 2026 (V1) release. /projects/global-iron-steel-tracker/download-data/ redirects to the tracker page, where the download sits behind a form at the #download anchor with no direct file URL in the markup.",
    "barrier_cleared": "2026-09-14. George passed the registration form and dropped three files. The barrier was a form, not a term.",
    "name_change": "THE NAME CHANGED AND BRIEF 8'S NAME IS THE OLD ONE. The brief names 'GEM's Global Steel Plant Tracker'; the current product is the GLOBAL IRON AND STEEL TRACKER (GIST), and its own About tab says why: 'The GIST is a rebranding of GEM's Global Steel Plant Tracker and Global Blast Furnace Tracker, and includes all data previously tracked in those datasets.' It is a merge of two trackers rather than a rename of one, which is a wider list than the brief's name implies and is recorded so the census is not read as measuring the older, narrower thing."
+  },
+  "leadit_green_steel_tracker": {
+   "publisher": "Leadership Group for Industry Transition (LeadIT), hosted by SEI",
+   "read": [
+    "https://www.industrytransition.org/wp-content/uploads/2026/01/Green-Steel-Tracker-methodology.pdf",
+    "https://www.industrytransition.org/trackers/green-steel-tracker/download-green-steel-dataset/"
+   ],
+   "read_on": "2026-09-15",
+   "verbatim": "The dataset might be used by others under a CC BY license. It should be cited as: Green Steel Tracker (2026) Leadership Group for Industry Transition.",
+   "held": "CC BY, STATED IN THE METHODOLOGY RATHER THAN ON THE DOWNLOAD PAGE. Both of this sector's lists are CC BY, which is the first sector in brief 8 where neither licence had to be held as a disagreement or read as all-rights-reserved.",
+   "scope": "PRIMARY STEEL, AND NO TONNAGE FLOOR. The methodology states the tracker 'consolidates and classifies low-carbon projects in the primary steel sector' and that 'regardless of technology, we consider projects with technologies able to reach 85% reduction compared to average emission'. Main tracking is renewable energy and renewable-sourced hydrogen — including molten oxide electrolysis, electrowinning and electric smelting reduction; complementary tracking adds biochar where the biomass source is transparently articulated. NOTHING IN THE METHODOLOGY SETS A CAPACITY FLOOR, which is exactly what GEM's 0.5 mtpa floor hides and why this list is read alongside it.",
+   "barrier": "EMAIL FORM. industrytransition.org/trackers/green-steel-tracker/download-green-steel-dataset/ answers a declared reader with the page and no file: 'Fill out the form below to receive the dataset in .xlxs file.' The tracker view carries no readable data embed and the page exposes no .xlsx or .csv URL. The methodology PDF IS readable and is what the licence and scope above are read from."
   }
  },
  "pending_snapshots": {
-  "_comment": "AWAITED, NOT FETCHED. Each of these is a benchmark this register is measured against and cannot reach: the barrier is an acceptance a person gives, not a term that forbids the snapshot. NO ENTRY IS ADDED TO `snapshots` UNTIL THE BYTES EXIST AND ARE HASHED — a snapshot is an identity, and an identity of a file nobody has is nothing. The queue with exact URLs and drop paths is in sources/manual/MANIFEST.json under `wanted`. UPDATED 14 September 2026: the IEA CCUS Projects Database is retrieved and is in `snapshots`; CO2RE is dropped rather than awaited, with its refusal class recorded under `licences`. Only the steel tracker is still awaited here. CLEARED 15 September 2026: the steel tracker is retrieved and in `snapshots`, and nothing is awaited here any more.",
+  "_comment": "AWAITED, NOT FETCHED. Each of these is a benchmark this register is measured against and cannot reach: the barrier is an acceptance a person gives, not a term that forbids the snapshot. NO ENTRY IS ADDED TO `snapshots` UNTIL THE BYTES EXIST AND ARE HASHED — a snapshot is an identity, and an identity of a file nobody has is nothing. The queue with exact URLs and drop paths is in sources/manual/MANIFEST.json under `wanted`. UPDATED 14 September 2026: the IEA CCUS Projects Database is retrieved and is in `snapshots`; CO2RE is dropped rather than awaited, with its refusal class recorded under `licences`. Only the steel tracker is still awaited here. 15 September 2026: GEM's tracker is retrieved and in `snapshots`. LeadIT's dataset is awaited — an email form, which is an acceptance a person gives.",
   "raised": "2026-09-13",
-  "awaiting": []
+  "awaiting": [
+   {
+    "benchmark": "leadit_green_steel_tracker",
+    "sector": "steel",
+    "role": "second list",
+    "file": "Green Steel Tracker dataset (.xlsx)",
+    "drop_as": "sources/cache/steel/leadit_green_steel_tracker.xlsx"
+   }
+  ]
  }
 }

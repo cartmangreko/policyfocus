@@ -325,6 +325,14 @@
    "needed_for": "NORTHERN ENDURANCE, IEA 294/452/460, named and not admitted by the cement-and-CCS census. The transport-and-storage partnership behind Net Zero Teesside, and the entry in this census most likely to be mistaken for an error: the IEA's own reference (netzeroteesside.co.uk/northern-endurance-partnership/) answers 404; the cluster site that remains describes NZT POWER, a gas-fired power station with capture, which this sector's perimeter refuses with the clause 'capture, power (gas)'; nzt.co.uk answers 200 with an empty body; phase 2's reference is a dead Eni link and phase 3's is the Louisiana governor's office (D83). BP, Equinor and TotalEnergies are the named partners and none of their own pages could be read. The third partner.",
    "drop_as": "sources/manual/northern-endurance--totalenergies-ccs-page.html",
    "priority": "normal"
+  },
+  {
+   "candidate": "BENCHMARK — steel, second list",
+   "url": "https://www.industrytransition.org/trackers/green-steel-tracker/download-green-steel-dataset/",
+   "why": "EMAIL FORM BEFORE THE XLSX. The page answers a declared reader and says 'Fill out the form below to receive the dataset in .xlxs file.' The tracker view carries no readable data embed — no Flourish, Tableau, Datawrapper or Power BI source in the markup — and no .xlsx or .csv URL appears anywhere on either page. The licence is CC BY and is not the barrier; the form is.",
+   "needed_for": "THE SECOND LIST FOR STEEL, AND THE ONLY THING THAT CAN SEE UNDER GEM'S FLOOR. The Global Iron and Steel Tracker states its own inclusion rule on its About tab: 'This database only includes plants with crude iron/steelmaking capacity of five hundred thousand tonnes per annum (0.5 mtpa) and greater.' The steel perimeter has NO tonnage threshold, deliberately — a small DRI module and a large one are the same fact about a works leaving the blast furnace. So GEM cannot show this register anything below 0.5 mtpa, and a gap table over GEM alone would inherit that floor silently. LeadIT's methodology sets no capacity floor, so it is what lets the census see below GEM's. Drift is measured between the two, and each entry records which list it came from.",
+   "drop_as": "sources/cache/steel/leadit_green_steel_tracker.xlsx",
+   "priority": "blocking"
   }
  ]
 }

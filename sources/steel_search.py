@@ -36,7 +36,7 @@ from __future__ import annotations
 import hashlib, json, pathlib, re, sys, time, urllib.error, urllib.parse, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-CACHE = ROOT / "sources" / "cache" / "ccs"
+CACHE = ROOT / "sources" / "cache" / "steel"
 INDEX = CACHE / "index.json"
 UA = ("Mozilla/5.0 (compatible; Eufabric/1.0; "
       "+https://www.eufabric.eu; data@eufabric.eu)")
