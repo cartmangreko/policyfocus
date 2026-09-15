@@ -571,6 +571,14 @@ CAPACITY_PRODUCTS = (
     # t_co2_per_year is the only unit it ever takes -- so nothing can add a tonne
     # of captured CO2 to a tonne of crude steel.
     "CO2 captured",
+    # A PIPELINE'S CAPACITY IS NOT A CAPTURE CAPACITY. Added 15 September 2026 with
+    # the transport-and-storage census: forty CCS rows landed whose figure, where
+    # their owner states one, is the CO2 the infrastructure can MOVE. Recording
+    # that as "CO2 captured" would have put a transport rating into every
+    # capture-weighted total the sector produces, and the two must never be summed
+    # -- the IEA's own workbook says so in as many words: "transport capacity of
+    # individual projects is not cumulative and cannot be summed".
+    "CO2 transported",
 )
 
 # THE SECTORS A CAPACITY FIGURE IS SOUGHT FOR. Not every sector in the file has a

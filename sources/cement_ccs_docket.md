@@ -517,15 +517,58 @@ written onto a row.
 states "20 MtCO₂ annual capacity for phase 1" on its own site, and that figure **is** on the
 row.
 
-## 14. What is still to come on this branch
+### The 40 rows, and what writing them cost
 
-- **The 40 CCS rows themselves.** The classification is complete and gated; writing the rows
-  is the same job the 26 cement rows were — datelines read page by page, `not_after` where a
-  document carries none, capacities at the owner's unit, storage blocks, retrospective
-  status histories, then the derived-artefact chain. They land as a second commit on this
-  branch before it merges. The sector holds 3 CCS rows today and will hold 43.
-- **Northern Endurance**, until its three partner pages are read in a browser. Queued.
-- **Drift**, for the reason in §11: one vintage, and the product page offers only the 2026
-  file.
-- **The reverse gap is still not measured by this table.** `galata-co2-storage` is carried by
-  no IEA entry, and the table counts the list's entries rather than the register's rows.
+**43 CCS rows where there were 3.** Every one is `located: "no"` with a location note — no
+geocoding in a census, and transport and storage is where that bites hardest: **a pipeline is
+a route rather than a place, and a store is a reservoir whose position its operator rarely
+publishes.**
+
+**Dating: 22 rows carry a dateline, 18 are `not_after`.** That ratio is the reverse of
+cement's (23 of 26 dated) and it has a cause worth naming. Cement admissions rest on **press
+releases**, which carry `datePublished`. Transport and storage admissions rest on **project
+landing pages** — porthosco2.nl, vikingccs.co.uk, peakcluster.co.uk, greenstore.dk — and a
+landing page is a standing description rather than an announcement, so it has no dateline to
+carry. The bound is the honest record of that, and it is why `not_after` had to reach the
+events before this sector could land at all.
+
+**D90. A PIPELINE'S CAPACITY IS NOT A CAPTURE CAPACITY.** `capacity_product` gains
+`CO2 transported`, because three admitted rows state a figure for what the infrastructure can
+MOVE. Filing that as `CO2 captured` would have put a transport rating into every
+capture-weighted total the sector produces, and **the IEA's own workbook forbids the sum in as
+many words**: "transport capacity of individual projects is not cumulative and cannot be
+summed."
+
+**Only 3 of the 43 CCS rows carry a capacity at all**, and that is the sector's most
+consequential number. `check_capacity_clause` prints it beside every capacity-weighted figure.
+The reason is in §13's list of figures that are not capacities: this sector's published
+numbers are overwhelmingly **totals a field holds**, **potentials an area might have**,
+**avoided emissions for a whole cluster**, or **the list's own announced figure** — and none
+of those is an owner stating an annual rate. Aramis, Antwerp@C and Highway58 are the three
+that do.
+
+**A citation defect this pass made and caught.** Twenty-seven admitted entries first cited a
+canonical-looking URL on the right publisher that **this register had never fetched** — a URL
+composed rather than read. They were re-pointed, programmatically rather than by hand, to the
+URL actually in `sources/cache/ccs/index.json` with a body on disk under its hash, and the
+repair is recorded on each entry. **A citation nobody fetched is a citation nobody can check**,
+and it is D88 pointing the other way: there, a real page that named no project; here, a
+plausible URL that named a project and was never read. The lesson is the same one twice — the
+only thing that makes a source evidence is somebody having read *that* page.
+
+**A gap in the role vocabulary, recorded and not filled.** `PROJECT_ROLES` is `plant` and
+`storage`, closed and short on purpose. Stores here take `storage`; **pipelines, terminals and
+hubs take neither**, because no role names them, and the rows carry no role at all rather than
+being marked as works. Nothing breaks — `captures_co2` reads the dependency graph and not the
+role — but a sector whose rows are mostly routes and quays is the one that would notice. Left
+for a ruling rather than widened by this pass.
+
+## 14. What is not in this pull request
+
+- **Northern Endurance**, until its three partner pages are read in a browser. Queued in
+  `sources/manual/MANIFEST.json` with the outcome each gave.
+- **Drift**, for the reason in §11: one vintage, and the product page offers only the 2026 file.
+- **A role for a pipeline**, above.
+- **The reverse gap.** `galata-co2-storage` is carried by no IEA entry, and this table counts
+  the list's entries rather than the register's rows. With 43 CCS rows where there were 3, the
+  reverse direction is now the larger unknown of the two.
