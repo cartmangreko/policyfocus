@@ -626,6 +626,15 @@ a single working session. **The gate is the only reason the row does not now cit
 it is worth recording that a census which took a week rather than a day would have shipped
 several of these without noticing.
 
+**CCS HAS 43 ROWS AND NO LEAD BLOCK AND NO DIAGRAM, AND THAT IS LEFT FOR A RULING.**
+`data/sectors.json` carries `ccs` as a sector beside cement, steel and batteries, and unlike
+those three it has never had `data/transition/lead/ccs.json` or a diagram — reasonably, when
+it held three rows. It now holds 43. The prebuild chain does not demand either file, so
+building them would be a visible change to the site that nobody asked for, and this pass
+deleted the ones its rebuild commands produced rather than ship them by accident. **The
+sector is now large enough that their absence is a decision rather than an oversight**, and
+it is George's.
+
 ## 14. What is not in this pull request
 
 - **Northern Endurance**, until its three partner pages are read in a browser. Queued in
