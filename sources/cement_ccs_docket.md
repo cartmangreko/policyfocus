@@ -286,6 +286,32 @@ where the tonne goes. Thirteen rows carry what their owners said; OLYMPUS carrie
 because HERACLES names two. LEILAC 2 gets `ccs-direct-separation`, a third method the registry
 did not have, sourced to Calix's own design description.
 
+**D88. A READABLE REFERENCE ABOUT A DIFFERENT PROJECT IS THE WORST KIND, AND FIVE ENTRIES
+CARRY ONE.** D83 recorded that the IEA's `Ref` columns are not reliable per entry, on three
+cases that announce themselves — a United States atlas, the Louisiana governor's office, an
+article about a different Poseidon. **This is the form that does not announce itself.** The
+reference answers 200, carries thousands of characters of real prose about a real CO₂
+project, and never mentions the entry it is filed against:
+
+- **IEA 654, 655, 656** — the three C Zero phases (Air Liquide, Lhoist, Duisport) cite
+  `carbonbridge.de`, which is **IEA 1471**, a different project at Bremerhaven, and reads as
+  22,000 characters of CCS prose.
+- **IEA 679, 1361** — both NL CCS Direct Injection phases (Eni, EBN, OneDyas) cite
+  `benelux.rwe.com`, which is about **NoordKaap**, a different network project.
+
+All five are `searched none found`. **NO ADMISSION EVER RESTS ON A REFERENCE THAT DOES NOT
+NAME THE PROJECT**, and the rule has to be stated because the failure is invisible to every
+check this register runs: `check_links` calls the page live because it is, the fetch cache
+records a healthy 200 with a high character count, and a reader skimming for CCS vocabulary
+finds it in abundance. The only thing that catches it is reading the page for the project's
+name. That is now what the reading step is for.
+
+**The near-name family this belongs to.** Rule 30 says record the identifier, never guess
+the join; D83 says a reference is where a search starts. D88 is the third face of the same
+thing: **a source is evidence for an entry only if it names that entry.** Resemblance
+between a reference and a project — shared vocabulary, shared sector, a plausible domain —
+proposes nothing at all.
+
 ## 9. Disagreements, held and not resolved
 
 Six, in `sources/cement_ccs_benchmark.json`:
@@ -370,16 +396,136 @@ row.** IEA 1277, SOMZERO CO₂, is `searched none found` because CEMEX is the on
 partner and its Spanish site will not speak to a declared reader. That is the hydrogen lesson
 again — a link checker calls that page live, because it is.
 
-## 13. What is not in this pull request
+## 13. Transport and storage, 15 September 2026 — the sector closes
 
-- **The 133 CO₂ transport and storage entries.** They stand as `not searched`, which the gate
-  prints by name. 143 fetches against them are already in the cache index, and the Norwegian
-  exploration-licence ruling (Q2) is recorded in `sources/cement_ccs_questions.json` for the
-  pass that applies it.
-- **Drift for the sector**, for the reason in §11.
-- **`galata-co2-storage` and Górażdże are absent from the list, not from the register.**
-  Bulgaria's only two European entries are its two cement works, so the Galata store this
-  register holds is carried by no IEA entry; and Heidelberg's own release names a Górażdże,
-  Poland plant among its EU Innovation Fund grants where the IEA's European cement entries
-  carry none. **The gap runs both ways and the reverse direction is not measured by this
-  table**, which counts the list's entries and not the register's rows.
+**The gap table now has no defect class.** `not searched` is zero: every one of the
+publisher's 425 European entries is in exactly one class.
+
+| class | entries |
+|---|---|
+| held | 12 |
+| admitted | 83 |
+| named not admitted | 23 |
+| searched none found | 25 |
+| unreadable | 12 |
+| perimeter exclusion | 270 |
+| **TOTAL** | **425** |
+
+**83 admitted entries over 66 works** — 26 cement rows, merged in #61, and **40 new CCS
+rows** from 57 transport-and-storage entries.
+
+### The list splits a project and the register does not
+
+The IEA carries a project by leg, by phase and by operation year. The register holds **one
+row per works**, and every entry still takes its own class so the table keeps summing to the
+publisher's count:
+
+| works | list entries |
+|---|---|
+| Porthos | 2 — offshore T&S and onshore transport |
+| Aramis | 3 — storage phase 1, storage phase 2, transport phase 1 |
+| Viking CCS | 3 phases |
+| Sullom Voe hub | 3, by operation year: 2033, 2038, 2040 |
+| STARFISH / Havstjerne | 3, under two of the IEA's own hub names |
+| Norne | 5 entries over **4 works** — two stores, two terminals |
+| Acorn, Antwerp@C, CO2next, Bifrost, Greensand, Grenaa, Liverpool Bay | 2 each |
+
+**Norne is the one that is not a phase split.** Five entries, four works: the Gassum and
+Havnsø stores are different places from the Aalborg and Kalundborg terminals, and Kalundborg
+is one terminal the IEA carries twice at 4 and 8 Mt. Splitting on phase would have merged
+two stores; splitting on place is what the register's rule already says.
+
+### Twenty-three licences leave, and two regulators drew the line first
+
+The Q2 ruling reaches beyond the ten Norwegian entries it was asked about: Perenco's UK
+Poseidon in three phases, EnQuest, Orion in two, the three Tellus entries **whose names are
+their licence numbers** (CS020, CS021, CS022), Humberside, Thorning, and both Smeaheia
+phases. Every excluded entry keeps its licensee's stated capacity and timing.
+
+**The Danish Energy Agency states the test in one sentence**: exploration licence first, and
+"if the area is shown to be suitable for environmentally safe storage of CO₂, the licensee
+can apply for a storage permit". **And Sodir's own legend distinguishes `EL`, an exploitation
+licence, from `EXL`, an exploration licence** — every Norwegian entry here is an EXL.
+
+**Sullom Voe splits the way the ruling asks.** Veri Energy holds four carbon storage
+licences and a terminal. The **terminal is admitted**; the licences are not.
+
+**Smeaheia is the hard case and it is excluded.** Equinor has acquired 3D seismic and drilled
+two appraisal wells under the licence — which is finding out whether the store is there,
+not a plan to build one. It is the store the Wilhelmshaven chain is drawn to, and it stays
+out until its licensee says it is a store.
+
+### Enhanced oil recovery, ruled 15 September 2026
+
+**D89. EOR IS REFUSED WITH THE CLAUSE "enhanced oil recovery", AND THE TEST IS THE
+PUBLISHER'S COLUMN.** The perimeter holds infrastructure whose purpose is permanent storage;
+EOR injects CO₂ in order to produce oil. The IEA's `Fate of carbon` already separates
+`Dedicated storage` from `EOR`, so the boundary is checkable by anybody holding the same
+file. Written into `sources/scope.md`, Sector perimeters, CCS.
+
+It reaches **one** entry here, and a working one: **Žutica South, Operational since 2020**,
+the register's only European CO₂ T&S entry with an EOR fate. The clause removes an
+installation that runs, not a plan. **INA/MOL's own words stay on the entry** — "permanent
+disposal of 2.9 billion m3 CO2 or 5.4 million tonnes" — because the ruling takes the
+publisher's column as the test and does not contradict the operator about what its injection
+achieves.
+
+**The second EOR entry keeps the clause it already had.** IEA 669, MOL Szank field, is
+capture at a natural gas processing plant and is refused with "capture, natural gas
+processing". A refusal in this sector names the **industry**, because those entries are read
+later for the supplier nodes; overwriting that with a fate would throw the industry away.
+
+**Both appear in the second list too**, and it is the only use this register has made of
+CO2RE: the filed capture shows "MOL Szank Field CO2-EOR Site (HUN), Operational, 1992" and
+"INA/MOL CO2 EOR Croatia (HRV), Operational, 2014" among its ten visible European rows.
+
+### Northern Endurance is named and not admitted, and it is queued
+
+The entry most likely to be read as an error. The IEA's own reference 404s; the surviving
+cluster site describes **NZT Power**, a gas-fired station with capture that this perimeter
+refuses anyway; `nzt.co.uk` answers 200 with an empty body; phase 2's reference is a dead Eni
+link and phase 3's is the Louisiana governor's office. BP, Equinor and TotalEnergies are the
+partners and none of their own pages could be read — **Equinor's partnership page answers 200
+with an empty body**, which is the class a link checker cannot see.
+
+All three partner pages are in `sources/manual/MANIFEST.json` under `wanted`, with the
+outcome each gave. **The class stands until somebody reads them in a browser.**
+
+### What the sector could not read
+
+25 entries searched with nothing found, 12 unreadable. Beyond the five D88 cases:
+
+- **Two entries carry no reference at all** — Gismarvik CO₂ hub, and **OCAP**, which has
+  moved CO₂ to Dutch greenhouses since 2005 and is the oldest operational entry in the
+  European set. Eighteen European entries have an empty `Ref` column.
+- **An owner lost with its company.** `neptuneenergy.com` no longer answers since Eni's
+  acquisition, so the one owner page cited for L10 is gone with the publisher.
+- **A video is not a source this reader can quote**, and the IEA cites one for both Protos
+  phases.
+- **The EU record says "tbd" twice** for ORLEN's Baltic Sea Storage — the clearest statement
+  in this census that a project exists and its size does not.
+
+### Figures that are not capacities, kept off their rows
+
+Eni's **330 Mt** is what the Hewett field holds, not a yearly rate. The Bluestreak **30 Mt**
+is a market estimate the IEA carries as an announced capacity. Greensand's **0.5-1 Mt/yr** is
+a stated *potential*. The Peak cluster's **3 Mt** is avoided emissions for a whole cluster.
+CinfraCap's **4 Mt** is what an investigation examined the possibility of handling. None is
+written onto a row.
+
+**Highway58 is the counter-example and the reason the distinction is worth drawing**: Pipe58
+states "20 MtCO₂ annual capacity for phase 1" on its own site, and that figure **is** on the
+row.
+
+## 14. What is still to come on this branch
+
+- **The 40 CCS rows themselves.** The classification is complete and gated; writing the rows
+  is the same job the 26 cement rows were — datelines read page by page, `not_after` where a
+  document carries none, capacities at the owner's unit, storage blocks, retrospective
+  status histories, then the derived-artefact chain. They land as a second commit on this
+  branch before it merges. The sector holds 3 CCS rows today and will hold 43.
+- **Northern Endurance**, until its three partner pages are read in a browser. Queued.
+- **Drift**, for the reason in §11: one vintage, and the product page offers only the 2026
+  file.
+- **The reverse gap is still not measured by this table.** `galata-co2-storage` is carried by
+  no IEA entry, and the table counts the list's entries rather than the register's rows.
