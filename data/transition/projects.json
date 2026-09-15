@@ -13825,28 +13825,29 @@
    "status_history": [
     {
      "event_kind": "status",
-     "date": "2026-09-15",
+     "date": "2026-05-16",
      "date_precision": "not_after",
      "status_from": null,
      "status_to": "announced",
      "status": "announced",
-     "source_url": "https://greenstore.dk/en/home-page/",
+     "source_url": "https://web.archive.org/web/20260516020918/https://greenstore.dk/en/home-page/",
      "source_type": "company",
      "evidence_mode": "retrospective",
-     "note": "Projekt Greenstore (Harbour Energy, INEOS Energy, Nordsofonden), own site: “In 1996, a capture plant was installed in the Norwegian North Sea, which has since captured and stored 1 million tonnes of CO2 annually.”"
+     "note": "Projekt Greenstore (Harbour Energy, INEOS Energy, Nordsofonden), own site: “In 1996, a capture plant was installed in the Norwegian North Sea, which has since captured and stored 1 million tonnes of CO2 annually.” SOURCE NOW THE ARCHIVE CAPTURE: greenstore.dk answered 200 when read and 404 on the push the same day."
     }
    ],
    "stated_schedule": [],
    "sources": [
     {
-     "url": "https://greenstore.dk/en/home-page/",
+     "url": "https://web.archive.org/web/20260516020918/https://greenstore.dk/en/home-page/",
      "title": "Projekt Greenstore",
      "publisher": "Projekt Greenstore (Harbour Energy",
-     "date": "2026-09-15",
+     "date": "2026-05-16",
      "date_precision": "not_after",
-     "captured_at": "2026-09-15",
-     "archived": false,
-     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+     "captured_at": "2026-05-16",
+     "archived": true,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE AND ITS PUBLISHER HAS GONE DARK. The live page answered 200 when this census read it on 15 September 2026 and 404 hours later on the push; the row cites the Internet Archive's capture of 16 May 2026, which is both the copy on file and the upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'.",
+     "snapshot": "sources/manual/greenstore--project-page.html"
     }
    ],
    "benchmarks": {

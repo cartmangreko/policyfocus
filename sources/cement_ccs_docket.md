@@ -613,6 +613,19 @@ stops a new composed URL getting in — and a URL on the list that nothing cites
 **also** fails, so the debt cannot be padded and clearing a citation means deleting its line.
 **234 is the number to watch, and it should only ever go down.**
 
+**A publisher went dark between the fetch and the push, and it is the third time.**
+`greenstore.dk` answered 200 with 7,865 characters when this census read it on 15 September
+2026 and **404 when `check_links` ran on the push the same day** — hours apart. The site root
+now answers 403 and `/en/` answers 404. The row cites the Internet Archive's capture of 16 May
+2026, filed under `sources/manual/` with a manifest entry, `archived: true` and a `snapshot`
+path, dated `not_after` because the page carries no dateline.
+
+This is uniper.energy, ignis.es and orsted.com again — the case #55 was written for. What is
+new is the **interval**: the earlier three went dark overnight, and this one went dark inside
+a single working session. **The gate is the only reason the row does not now cite a 404**, and
+it is worth recording that a census which took a week rather than a day would have shipped
+several of these without noticing.
+
 ## 14. What is not in this pull request
 
 - **Northern Endurance**, until its three partner pages are read in a browser. Queued in
