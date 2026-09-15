@@ -123,6 +123,48 @@
    "entry_list": "Sheet 'DRAFT CCUS Projects Database', 1110 project rows worldwide, 34 columns, updated 27/03/2026, project announcements as of February 2026. 425 rows carry Region=Europe and those are the census population. THE SUBSET IS THE PUBLISHER'S OWN COLUMN and not a judgement of this register's, which is the only reason a gap table over them may claim to sum to the list.",
    "licence": "iea_ccus_projects_database",
    "note": "THE BYTES ARE NOT IN THE REPOSITORY. sources/cache/ccs/ is gitignored except index.json, where this same hash is recorded as a fetch with no http status because nothing here made a request. Entries are cited by the IEA's own `ID`."
+  },
+  {
+   "benchmark": "gem_global_iron_steel_tracker",
+   "vintage": "June 2026 (V1)",
+   "file": "Plant-level_data_Global_Iron_and_Steel_Tracker_June_2026_V1.xlsx",
+   "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/",
+   "fetched": "2026-09-14",
+   "retrieved_by": "George Christopoulos, by hand past the registration form",
+   "bytes": 735833,
+   "sha256": "a5768b59cd7e6cec217692ae45eda80ea70aab1666aef74332cc1b41dd5338eb",
+   "role": "THE TRACKER ITSELF, and the census population",
+   "entry_list": "Tab 'Plant data': 1293 plants worldwide, 44 columns. 132 carry a Country/area in the steel perimeter's named Europe — the EU, the United Kingdom, Norway and Switzerland — and those 132 are the census population. GEM states the file's own floor on its About tab: 'This database only includes plants with crude iron/steelmaking capacity of five hundred thousand tonnes per annum (0.5 mtpa) and greater.'",
+   "licence": "gem_global_iron_steel_tracker",
+   "note": "THE BYTES ARE NOT IN THE REPOSITORY, and here that is a choice rather than a constraint. CC BY 4.0 would permit the copy; sources/cache/steel/ is gitignored except index.json anyway, on the hydrogen and batteries precedent — this repository holds identities and its own reasoning. THE DOWNLOAD CAME AS THREE FILES and all three are snapshotted: the tracker is the plant-level file and the other two are its unit tables, which is where operating status lives."
+  },
+  {
+   "benchmark": "gem_global_iron_steel_tracker",
+   "vintage": "June 2026 (V1)",
+   "file": "Steel_unit_data_Global_Iron_and_Steel_Tracker_June_2026_V1.xlsx",
+   "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/",
+   "fetched": "2026-09-14",
+   "retrieved_by": "George Christopoulos, by hand past the registration form",
+   "bytes": 489109,
+   "sha256": "d5355acd307930c0104d21dc9c6e6d62451856e044ce1aa3c576d9cb14b4d425",
+   "role": "the steelmaking unit table below the tracker",
+   "entry_list": "Tabs: Electric arc furnaces (1408 worldwide, 169 in the named Europe), Basic oxygen furnaces, Induction furnaces, Open hearth furnaces. Unit status is tracked HERE and not at plant level.",
+   "licence": "gem_global_iron_steel_tracker",
+   "note": "THE BYTES ARE NOT IN THE REPOSITORY, and here that is a choice rather than a constraint. CC BY 4.0 would permit the copy; sources/cache/steel/ is gitignored except index.json anyway, on the hydrogen and batteries precedent — this repository holds identities and its own reasoning. THE DOWNLOAD CAME AS THREE FILES and all three are snapshotted: the tracker is the plant-level file and the other two are its unit tables, which is where operating status lives."
+  },
+  {
+   "benchmark": "gem_global_iron_steel_tracker",
+   "vintage": "June 2026 (V1)",
+   "file": "Iron_unit_data_Global_Iron_and_Steel_Tracker_June_2026_V1.xlsx",
+   "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/",
+   "fetched": "2026-09-14",
+   "retrieved_by": "George Christopoulos, by hand past the registration form",
+   "bytes": 397828,
+   "sha256": "a770dddb8ddc6475eccb32d9b54981f5f81a53253b097adb8715c193e9f73f6a",
+   "role": "the ironmaking unit table below the tracker",
+   "entry_list": "Tabs: Blast furnaces (1656 worldwide, 59 in the named Europe), Direct reduced iron furnaces (650 worldwide, 31 in the named Europe), Blast furnace relinings.",
+   "licence": "gem_global_iron_steel_tracker",
+   "note": "THE BYTES ARE NOT IN THE REPOSITORY, and here that is a choice rather than a constraint. CC BY 4.0 would permit the copy; sources/cache/steel/ is gitignored except index.json anyway, on the hydrogen and batteries precedent — this repository holds identities and its own reasoning. THE DOWNLOAD CAME AS THREE FILES and all three are snapshotted: the tracker is the plant-level file and the other two are its unit tables, which is where operating status lives."
   }
  ],
  "relationship": [
@@ -227,26 +269,20 @@
   "gem_global_iron_steel_tracker": {
    "publisher": "Global Energy Monitor",
    "read": [
+    "the About tab of the downloaded workbook itself",
     "https://globalenergymonitor.org/projects/global-iron-steel-tracker"
    ],
-   "read_on": "2026-09-12",
-   "verbatim": "The recommended citation is 'Global Iron and Steel Tracker, Global Energy Monitor, June 2026 (V1) release.'",
-   "held": "THE BRIEF RECORDS GEM AS CC BY AND THIS PASS COULD NOT CONFIRM IT FROM THE PAGE IT READ. The tracker page states a recommended citation and no licence; the licence is not quoted here because it was not read. It is recorded as outstanding rather than assumed, and the bytes stay out of the repository either way on the hydrogen and batteries precedent.",
+   "read_on": "2026-09-15",
+   "verbatim": "Copyright © Global Energy Monitor. Global Iron and Steel Tracker, June 2026 (V1) release. Distributed under a Creative Commons Attribution 4.0 International License. Recommended citation: \"Global Energy Monitor, Global Iron and Steel Tracker, June 2026 (V1) release.\"",
+   "held": "SETTLED, AND BY THE FILE ITSELF. On 12 September this register recorded the licence as OUTSTANDING: 'The brief records GEM as CC BY and this pass could not confirm it from the page it read... the licence is not quoted here because it was not read.' The downloaded workbook states it on its own About tab, so the confirmation came from the artefact rather than from the page advertising it. THE ONLY BENCHMARK IN BRIEF 8 WHOSE TERMS NEEDED NO INTERPRETATION: the IEA describes its CCUS database two ways and the disagreement is held unresolved; the Global CCS Institute reserves everything; T&E is CC BY-NC-ND. This one says CC BY 4.0 in the file.",
    "barrier": "REGISTRATION FORM. The Global Steel Plant Tracker is now the GLOBAL IRON AND STEEL TRACKER (GIST), June 2026 (V1) release. /projects/global-iron-steel-tracker/download-data/ redirects to the tracker page, where the download sits behind a form at the #download anchor with no direct file URL in the markup.",
-   "note_for_the_pass": "THE NAME CHANGED AND THE BRIEF'S NAME IS THE OLD ONE. Brief 8 names 'GEM's Global Steel Plant Tracker'. Recorded here so the steel census does not silently measure itself against a differently scoped list under the brief's name."
+   "barrier_cleared": "2026-09-14. George passed the registration form and dropped three files. The barrier was a form, not a term.",
+   "name_change": "THE NAME CHANGED AND BRIEF 8'S NAME IS THE OLD ONE. The brief names 'GEM's Global Steel Plant Tracker'; the current product is the GLOBAL IRON AND STEEL TRACKER (GIST), and its own About tab says why: 'The GIST is a rebranding of GEM's Global Steel Plant Tracker and Global Blast Furnace Tracker, and includes all data previously tracked in those datasets.' It is a merge of two trackers rather than a rename of one, which is a wider list than the brief's name implies and is recorded so the census is not read as measuring the older, narrower thing."
   }
  },
  "pending_snapshots": {
-  "_comment": "AWAITED, NOT FETCHED. Each of these is a benchmark this register is measured against and cannot reach: the barrier is an acceptance a person gives, not a term that forbids the snapshot. NO ENTRY IS ADDED TO `snapshots` UNTIL THE BYTES EXIST AND ARE HASHED — a snapshot is an identity, and an identity of a file nobody has is nothing. The queue with exact URLs and drop paths is in sources/manual/MANIFEST.json under `wanted`. UPDATED 14 September 2026: the IEA CCUS Projects Database is retrieved and is in `snapshots`; CO2RE is dropped rather than awaited, with its refusal class recorded under `licences`. Only the steel tracker is still awaited here.",
+  "_comment": "AWAITED, NOT FETCHED. Each of these is a benchmark this register is measured against and cannot reach: the barrier is an acceptance a person gives, not a term that forbids the snapshot. NO ENTRY IS ADDED TO `snapshots` UNTIL THE BYTES EXIST AND ARE HASHED — a snapshot is an identity, and an identity of a file nobody has is nothing. The queue with exact URLs and drop paths is in sources/manual/MANIFEST.json under `wanted`. UPDATED 14 September 2026: the IEA CCUS Projects Database is retrieved and is in `snapshots`; CO2RE is dropped rather than awaited, with its refusal class recorded under `licences`. Only the steel tracker is still awaited here. CLEARED 15 September 2026: the steel tracker is retrieved and in `snapshots`, and nothing is awaited here any more.",
   "raised": "2026-09-13",
-  "awaiting": [
-   {
-    "benchmark": "gem_global_iron_steel_tracker",
-    "sector": "steel",
-    "role": "first list",
-    "file": "Global Iron and Steel Tracker, June 2026 (V1)",
-    "drop_as": "sources/cache/steel/gem_gist_2026_v1.xlsx"
-   }
-  ]
+  "awaiting": []
  }
 }
