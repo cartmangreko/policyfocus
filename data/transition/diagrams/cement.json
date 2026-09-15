@@ -6,7 +6,7 @@
   ],
   "sector": "cement",
   "width": 1160,
-  "height": 440,
+  "height": 1844,
   "columns": [
     {
       "kind": "measure",
@@ -21,12 +21,12 @@
     {
       "kind": "technology",
       "x": 600,
-      "count": 4
+      "count": 5
     },
     {
       "kind": "project",
       "x": 900,
-      "count": 8
+      "count": 34
     }
   ],
   "nodes": [
@@ -40,7 +40,7 @@
       "direction": "cost",
       "measure_id": "cbam:FIN-03",
       "x": 0,
-      "y": 12.0,
+      "y": 714.0,
       "w": 236,
       "h": 38
     },
@@ -54,7 +54,7 @@
       "direction": "cost",
       "measure_id": "ets:CBAM-01",
       "x": 0,
-      "y": 66.0,
+      "y": 768.0,
       "w": 236,
       "h": 38
     },
@@ -68,7 +68,7 @@
       "direction": "support",
       "measure_id": "ets:FND-03",
       "x": 0,
-      "y": 120.0,
+      "y": 822.0,
       "w": 236,
       "h": 38
     },
@@ -82,7 +82,7 @@
       "direction": null,
       "measure_id": "iaa:LM-03a",
       "x": 0,
-      "y": 174.0,
+      "y": 876.0,
       "w": 236,
       "h": 38
     },
@@ -96,7 +96,7 @@
       "direction": null,
       "measure_id": "nzia:CO2-02",
       "x": 0,
-      "y": 228.0,
+      "y": 930.0,
       "w": 236,
       "h": 38
     },
@@ -110,7 +110,7 @@
       "direction": null,
       "measure_id": "iaa:LM-06a",
       "x": 0,
-      "y": 282.0,
+      "y": 984.0,
       "w": 236,
       "h": 38
     },
@@ -124,7 +124,7 @@
       "direction": null,
       "measure_id": "nzia:CO2-10",
       "x": 0,
-      "y": 336.0,
+      "y": 1038.0,
       "w": 236,
       "h": 38
     },
@@ -138,7 +138,7 @@
       "direction": null,
       "measure_id": "nzia:SP-02",
       "x": 0,
-      "y": 390.0,
+      "y": 1092.0,
       "w": 236,
       "h": 38
     },
@@ -150,7 +150,7 @@
       "href": "#bottleneck-co2-transport-storage-network",
       "type": "infrastructure",
       "x": 300,
-      "y": 93.0,
+      "y": 795.0,
       "w": 236,
       "h": 38
     },
@@ -162,7 +162,7 @@
       "href": "#bottleneck-cement-process-emissions",
       "type": "technical",
       "x": 300,
-      "y": 147.0,
+      "y": 849.0,
       "w": 236,
       "h": 38
     },
@@ -174,7 +174,7 @@
       "href": "#bottleneck-cement-retrofit-finance",
       "type": "financial",
       "x": 300,
-      "y": 201.0,
+      "y": 903.0,
       "w": 236,
       "h": 38
     },
@@ -186,7 +186,7 @@
       "href": "#bottleneck-cement-subsidy-dependence",
       "type": "political",
       "x": 300,
-      "y": 255.0,
+      "y": 957.0,
       "w": 236,
       "h": 38
     },
@@ -198,7 +198,7 @@
       "href": "#bottleneck-cement-green-premium",
       "type": "market",
       "x": 300,
-      "y": 309.0,
+      "y": 1011.0,
       "w": 236,
       "h": 38
     },
@@ -210,7 +210,7 @@
       "href": "#technology-ccs-oxyfuel",
       "readiness": "demonstration",
       "x": 600,
-      "y": 120.0,
+      "y": 795.0,
       "w": 236,
       "h": 38
     },
@@ -222,7 +222,7 @@
       "href": "#technology-co2-transport-storage",
       "readiness": "early-commercial",
       "x": 600,
-      "y": 174.0,
+      "y": 849.0,
       "w": 236,
       "h": 38
     },
@@ -234,7 +234,7 @@
       "href": "#technology-ccs-post-combustion",
       "readiness": "early-commercial",
       "x": 600,
-      "y": 228.0,
+      "y": 903.0,
       "w": 236,
       "h": 38
     },
@@ -246,7 +246,19 @@
       "href": "#technology-alternative-fuels",
       "readiness": "commercial",
       "x": 600,
-      "y": 282.0,
+      "y": 957.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:ccs-direct-separation",
+      "kind": "technology",
+      "label": "Direct separation carbon capture",
+      "sub": "demonstration",
+      "href": "#technology-ccs-direct-separation",
+      "readiness": "demonstration",
+      "x": 600,
+      "y": 1011.0,
       "w": 236,
       "h": 38
     },
@@ -275,6 +287,18 @@
       "h": 38
     },
     {
+      "id": "project:anthemis-antoing",
+      "kind": "project",
+      "label": "Anthemis",
+      "sub": "BE · announced",
+      "href": "/projects/anthemis-antoing",
+      "status": "announced",
+      "x": 900,
+      "y": 120.0,
+      "w": 236,
+      "h": 38
+    },
+    {
       "id": "project:brevik-ccs",
       "kind": "project",
       "label": "Brevik CCS",
@@ -282,7 +306,7 @@
       "href": "/projects/brevik-ccs",
       "status": "operating",
       "x": 900,
-      "y": 120.0,
+      "y": 174.0,
       "w": 236,
       "h": 38
     },
@@ -294,7 +318,31 @@
       "href": "/projects/carbon2business-lagerdorf",
       "status": "construction",
       "x": 900,
-      "y": 174.0,
+      "y": 228.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:catch4climate-mergelstetten",
+      "kind": "project",
+      "label": "catch4climate",
+      "sub": "DE · announced",
+      "href": "/projects/catch4climate-mergelstetten",
+      "status": "announced",
+      "x": 900,
+      "y": 282.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:co2ntessa-nasice",
+      "kind": "project",
+      "label": "CO2NTESSA",
+      "sub": "HR · announced",
+      "href": "/projects/co2ntessa-nasice",
+      "status": "announced",
+      "x": 900,
+      "y": 336.0,
       "w": 236,
       "h": 38
     },
@@ -306,7 +354,7 @@
       "href": "/projects/gezero-geseke",
       "status": "funded",
       "x": 900,
-      "y": 228.0,
+      "y": 390.0,
       "w": 236,
       "h": 38
     },
@@ -318,7 +366,7 @@
       "href": "/projects/ifestos-kamari",
       "status": "announced",
       "x": 900,
-      "y": 282.0,
+      "y": 444.0,
       "w": 236,
       "h": 38
     },
@@ -330,7 +378,127 @@
       "href": "/projects/slite-ccs",
       "status": "paused",
       "x": 900,
-      "y": 336.0,
+      "y": 498.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:olympus-milaki",
+      "kind": "project",
+      "label": "OLYMPUS",
+      "sub": "GR · announced",
+      "href": "/projects/olympus-milaki",
+      "status": "announced",
+      "x": 900,
+      "y": 552.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:accsion-aalborg",
+      "kind": "project",
+      "label": "ACCSION",
+      "sub": "DK · announced",
+      "href": "/projects/accsion-aalborg",
+      "status": "announced",
+      "x": 900,
+      "y": 606.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:broceni-ccs",
+      "kind": "project",
+      "label": "Broceni CCS",
+      "sub": "LV · announced",
+      "href": "/projects/broceni-ccs",
+      "status": "announced",
+      "x": 900,
+      "y": 660.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:cpt01-campulung",
+      "kind": "project",
+      "label": "Carbon Hub CPT 01",
+      "sub": "RO · announced",
+      "href": "/projects/cpt01-campulung",
+      "status": "announced",
+      "x": 900,
+      "y": 714.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:c2pat-mannersdorf",
+      "kind": "project",
+      "label": "Carbon2ProductAustria",
+      "sub": "AT · announced",
+      "href": "/projects/c2pat-mannersdorf",
+      "status": "announced",
+      "x": 900,
+      "y": 768.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:co2llect-rudersdorf",
+      "kind": "project",
+      "label": "CO2LLECT",
+      "sub": "DE · announced",
+      "href": "/projects/co2llect-rudersdorf",
+      "status": "announced",
+      "x": 900,
+      "y": 822.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:cyclonecc-rudersdorf",
+      "kind": "project",
+      "label": "CycloneCC Rudersdorf",
+      "sub": "DE · announced",
+      "href": "/projects/cyclonecc-rudersdorf",
+      "status": "announced",
+      "x": 900,
+      "y": 876.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:ecco2-lh-carboneras",
+      "kind": "project",
+      "label": "ECCO2-LH",
+      "sub": "ES · announced",
+      "href": "/projects/ecco2-lh-carboneras",
+      "status": "announced",
+      "x": 900,
+      "y": 930.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:kodeco-koromacno",
+      "kind": "project",
+      "label": "KOdeCO net zero",
+      "sub": "HR · announced",
+      "href": "/projects/kodeco-koromacno",
+      "status": "announced",
+      "x": 900,
+      "y": 984.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:padeswood-ccs",
+      "kind": "project",
+      "label": "Padeswood CCS",
+      "sub": "GB · fid",
+      "href": "/projects/padeswood-ccs",
+      "status": "fid",
+      "x": 900,
+      "y": 1038.0,
       "w": 236,
       "h": 38
     },
@@ -342,7 +510,163 @@
       "href": "/projects/k6-lumbres",
       "status": "construction",
       "x": 900,
-      "y": 390.0,
+      "y": 1092.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:leilac2-hannover",
+      "kind": "project",
+      "label": "LEILAC 2",
+      "sub": "DE · announced",
+      "href": "/projects/leilac2-hannover",
+      "status": "announced",
+      "x": 900,
+      "y": 1146.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:airvault-goco2",
+      "kind": "project",
+      "label": "AirvaultGOCO2",
+      "sub": "FR · announced",
+      "href": "/projects/airvault-goco2",
+      "status": "announced",
+      "x": 900,
+      "y": 1200.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:carbocleartech-martres-tolosane",
+      "kind": "project",
+      "label": "CarboClearTech",
+      "sub": "FR · announced",
+      "href": "/projects/carbocleartech-martres-tolosane",
+      "status": "announced",
+      "x": 900,
+      "y": 1254.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:co2necta-sagunto",
+      "kind": "project",
+      "label": "CO2necta",
+      "sub": "ES · announced",
+      "href": "/projects/co2necta-sagunto",
+      "status": "announced",
+      "x": 900,
+      "y": 1308.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:deuna-ccs",
+      "kind": "project",
+      "label": "Deuna carbon capture",
+      "sub": "DE · announced",
+      "href": "/projects/deuna-ccs",
+      "status": "announced",
+      "x": 900,
+      "y": 1362.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:dream-rezzato-mazzano",
+      "kind": "project",
+      "label": "DREAM",
+      "sub": "IT · announced",
+      "href": "/projects/dream-rezzato-mazzano",
+      "status": "announced",
+      "x": 900,
+      "y": 1416.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:ecapt-rhone-le-teil",
+      "kind": "project",
+      "label": "eCapt-Rhone",
+      "sub": "FR · announced",
+      "href": "/projects/ecapt-rhone-le-teil",
+      "status": "announced",
+      "x": 900,
+      "y": 1470.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:eco2fly-villaluenga",
+      "kind": "project",
+      "label": "ECO2FLY",
+      "sub": "ES · announced",
+      "href": "/projects/eco2fly-villaluenga",
+      "status": "announced",
+      "x": 900,
+      "y": 1524.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:go4ecoplanet-kujawy",
+      "kind": "project",
+      "label": "Go4ECOPlanet",
+      "sub": "PL · announced",
+      "href": "/projects/go4ecoplanet-kujawy",
+      "status": "announced",
+      "x": 900,
+      "y": 1578.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:hoever-ccs",
+      "kind": "project",
+      "label": "Hoever carbon capture",
+      "sub": "DE · announced",
+      "href": "/projects/hoever-ccs",
+      "status": "announced",
+      "x": 900,
+      "y": 1632.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:mosusol-sant-vicenc-dels-horts",
+      "kind": "project",
+      "label": "Mosusol netCO2",
+      "sub": "ES · announced",
+      "href": "/projects/mosusol-sant-vicenc-dels-horts",
+      "status": "announced",
+      "x": 900,
+      "y": 1686.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:saint-pierre-la-cour-goco2",
+      "kind": "project",
+      "label": "Saint-Pierre-la-Cour GOCO2",
+      "sub": "FR · announced",
+      "href": "/projects/saint-pierre-la-cour-goco2",
+      "status": "announced",
+      "x": 900,
+      "y": 1740.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:vaia-montalieu-vercieu",
+      "kind": "project",
+      "label": "VAIA",
+      "sub": "FR · announced",
+      "href": "/projects/vaia-montalieu-vercieu",
+      "status": "announced",
+      "x": 900,
+      "y": 1794.0,
       "w": 236,
       "h": 38
     }
@@ -397,6 +721,12 @@
       "weight": 0.5
     },
     {
+      "from": "project:accsion-aalborg",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
       "from": "project:anrav-devnya",
       "to": "technology:ccs-post-combustion",
       "rel": "deploys",
@@ -409,6 +739,12 @@
       "weight": 1
     },
     {
+      "from": "project:anthemis-antoing",
+      "to": "technology:ccs-oxyfuel",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
       "from": "project:brevik-ccs",
       "to": "technology:ccs-post-combustion",
       "rel": "deploys",
@@ -417,12 +753,60 @@
     {
       "from": "project:brevik-ccs",
       "to": "technology:co2-transport-storage",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:broceni-ccs",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:c2pat-mannersdorf",
+      "to": "technology:ccs-post-combustion",
       "rel": "deploys",
       "weight": 1
     },
     {
       "from": "project:carbon2business-lagerdorf",
       "to": "technology:ccs-oxyfuel",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:catch4climate-mergelstetten",
+      "to": "technology:ccs-oxyfuel",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:co2llect-rudersdorf",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:co2ntessa-nasice",
+      "to": "technology:ccs-oxyfuel",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:cpt01-campulung",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:cyclonecc-rudersdorf",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:ecco2-lh-carboneras",
+      "to": "technology:ccs-post-combustion",
       "rel": "deploys",
       "weight": 1
     },
@@ -470,6 +854,36 @@
     },
     {
       "from": "project:k6-lumbres",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:kodeco-koromacno",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:leilac2-hannover",
+      "to": "technology:ccs-direct-separation",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:olympus-milaki",
+      "to": "technology:ccs-oxyfuel",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:olympus-milaki",
+      "to": "technology:ccs-post-combustion",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:padeswood-ccs",
       "to": "technology:ccs-post-combustion",
       "rel": "deploys",
       "weight": 1

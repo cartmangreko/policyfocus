@@ -40,7 +40,24 @@
   "The rule above -- identity, not copy -- was written for two files nobody here may",
   "redistribute. Brief 8's inputs are not all like that, so each snapshot below carries a",
   "`licence` block saying what was read, where, and what it permits. A snapshot taken",
-  "without that block would be a snapshot somebody assumed was allowed."
+  "without that block would be a snapshot somebody assumed was allowed.",
+  "",
+  "SECTOR 2 AND 3 LICENCES, READ 12-13 SEPTEMBER 2026, BEFORE ANY SNAPSHOT AND WITHOUT ONE.",
+  "The three lists the cement/CCS and steel censuses are measured against are each behind an",
+  "affirmative acceptance -- an account login, a click-through, a registration form -- and",
+  "none of them was passed. What is recorded below is the LICENCE ONLY: no bytes, no hash,",
+  "no entry in `snapshots`, because nothing was fetched. `pending_snapshots` names what is",
+  "awaited and at what path it will land.",
+  "",
+  "THE IEA CCUS DATABASE IS DESCRIBED TWO WAYS BY ITS OWN PUBLISHER and both are recorded",
+  "rather than reconciled. The product page for this very file states 'Licence CC BY 4.0'",
+  "and prints a CC BY citation string for it; the general Terms and Conditions exclude",
+  "'Standalone datasets, data explorers and databases' from the CC BY 4.0 Open Use Terms.",
+  "This register does not decide between two statements by one speaker -- that is a",
+  "disagreement, and it is held as one. IT DOES NOT NEED TO DECIDE: a hash-referenced",
+  "snapshot redistributes nothing and requires no transfer of rights, so it is permitted",
+  "under the stricter reading as well as the looser one, and the stricter reading is what",
+  "this register works to."
  ],
  "snapshots": [
   {
@@ -93,6 +110,19 @@
    "sha256": "74758aacae0b2dcefb482a276d21bfd58617caf5883c888abe7bc299a6d8ec42",
    "entry_list": "'Battery Cell Manufacturers (Europe) as of February 2026', published 03/2026, authors Gerrit Bockey and Heiner Heimes (PEM, RWTH Aachen). 38 rows across 12 countries, each company, site, year and GWh stated as text.",
    "licence": "battery_news_de"
+  },
+  {
+   "benchmark": "iea_ccus_projects_database",
+   "vintage": "2026 edition",
+   "file": "iea_ccus_projects_2026.xlsx",
+   "url": "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database",
+   "fetched": "2026-09-14",
+   "retrieved_by": "George Christopoulos, by hand past the IEA account login",
+   "bytes": 618023,
+   "sha256": "9afde5c0ba8f8b3f314ebc44eed7bdaa0a54d479be70c242369e696857272bd8",
+   "entry_list": "Sheet 'DRAFT CCUS Projects Database', 1110 project rows worldwide, 34 columns, updated 27/03/2026, project announcements as of February 2026. 425 rows carry Region=Europe and those are the census population. THE SUBSET IS THE PUBLISHER'S OWN COLUMN and not a judgement of this register's, which is the only reason a gap table over them may claim to sum to the list.",
+   "licence": "iea_ccus_projects_database",
+   "note": "THE BYTES ARE NOT IN THE REPOSITORY. sources/cache/ccs/ is gitignored except index.json, where this same hash is recorded as a fetch with no http status because nothing here made a request. Entries are cited by the IEA's own `ID`."
   }
  ],
  "relationship": [
@@ -155,6 +185,68 @@
    "verbatim": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors beziehungsweise Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht-kommerziellen Gebrauch gestattet.",
    "robots": "robots.txt: User-agent: * / Disallow: (empty) -- everything allowed.",
    "what_this_pass_does": "All rights reserved, with downloads permitted for private non-commercial use. The atlas is read at reading pace, held in the uncommitted cache, and cited by the publisher's own row -- company, site, year. Nothing is redistributed."
+  },
+  "iea_ccus_projects_database": {
+   "publisher": "International Energy Agency",
+   "read": [
+    "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database",
+    "https://www.iea.org/terms"
+   ],
+   "read_on": "2026-09-12",
+   "two_statements_by_one_publisher": [
+    {
+     "where": "the product page for this file",
+     "verbatim": "Licence CC BY 4.0",
+     "also": "The page's own citation string: 'IEA, CCUS Projects Database, IEA, Paris https://www.iea.org/data-and-statistics/data-product/ccus-projects-database, Licence: CC BY 4.0'",
+     "reading": "This database is CC BY 4.0."
+    },
+    {
+     "where": "the general Terms and Conditions",
+     "verbatim": "The following content is not made available under a CC BY 4.0 licence as part of the Open Use Terms: The Oil Market Report; Standalone datasets, data explorers and databases, including those listed at https://www.iea.org/data-and-statistics/data-sets; Data annexes to the World Energy Outlook or other IEA publications; Any content identified as a joint or collaborative work with one or more third parties; and The Policies and Measures Databases.",
+     "reading": "A standalone database is outside the CC BY Open Use Terms."
+    }
+   ],
+   "held": "NOT RECONCILED, AND IT DOES NOT HAVE TO BE. A hash-referenced snapshot redistributes nothing and needs no grant of rights, so it is permitted on either reading. This register works to the stricter one: the bytes stay out of the repository, entries are cited by the publisher's own identifier, and sources/cache/ccs/ is gitignored except its index.",
+   "barrier": "ACCOUNT LOGIN. The file is 'IEA CCUS Projects Database 2026.xlsx', updated 27/03/2026, and the product page answers 'You are either not logged in or your login session has expired, please login again or create an IEA account to download data.' No open route exists: api.iea.org/ccus answers 200 but is the CCUS LEGAL AND REGULATORY database (89 rows, keys Base legislation / Description / Issue / Link / Region / Regulation or law), not the projects database; api.iea.org/ccus/projects, /ccus/project, /ccusprojects, /ccus/projects-database and /ccus-projects-database/ccus all answer 404; api.iea.org/sdmx/dataflow answers 404 and sdmx.iea.org and data.iea.org do not resolve. THE BARRIER IS AN ACCEPTANCE, NOT A PROHIBITION, and accepting an account agreement is the account holder's to give.",
+   "barrier_cleared": "2026-09-14. George passed the account login and dropped the file at the path sources/manual/MANIFEST.json named. The barrier was always an acceptance and never a prohibition; the acceptance was the account holder's to give and he gave it."
+  },
+  "global_ccs_institute": {
+   "publisher": "Global CCS Institute (CO2RE facility database)",
+   "read": [
+    "https://www.globalccsinstitute.com/terms-of-use/",
+    "https://co2re.co/FacilityData"
+   ],
+   "read_on": "2026-09-12",
+   "verbatim": "Content: All content (including data, text, video, images, audio, and other material) accessible on the Website… 5. Intellectual Property Rights — Content. All intellectual property rights in Content (other than your Contributions) are owned or licensed by the Global CCS Institute. Nothing transfers to you.",
+   "held": "ALL RIGHTS RESERVED, AND COMPATIBLE WITH WHAT THIS PASS DOES. Nothing transfers, and nothing needs to: a hash-referenced snapshot holds an identity rather than a copy, and entries are cited by the publisher's own identifier. Nothing is redistributed.",
+   "barrier": "CLICK-THROUGH, THEN AN EMBED WITH NO DATA BEHIND IT. co2re.co/FacilityData presents a modal — 'Check here to indicate that you have read and agree to the Terms and Data Use Policy' — and the table itself is an app.powerbi.com embed. The page carries no .json, .csv or .xlsx URL and no /api path. Both the 'Terms' and the 'Data Use Policy' links point at the same Terms of Use page quoted above, which WAS read. THE BARRIER IS THE ACCEPTANCE AND THE EMBED, not the terms.",
+   "outcome": "DROPPED AS THE SECTOR'S SECOND LIST, 14 September 2026.",
+   "refusal_class": "readable, not enumerable",
+   "refusal_note": "Read in a browser by George Christopoulos on 14 September 2026 at 08:36, Region EUROPE, Location All, Facility Status All, sorted ascending by Operational Year. The facilities table is an app.powerbi.com publish-to-web embed with export disabled. IT RENDERS ROWS A PERSON CAN READ -- seven columns, Country, Name, Facility Status, Operational Year, Industry, Facility Type, Capture Capacity (Max; mtpa) -- AND IT NEVER STATES HOW MANY ROWS THE EUROPE FILTER RETURNS. A gap table is gated on summing to the list's own entry count, and a list that shows its rows without stating their number cannot supply one. The capture is filed at sources/manual/co2re-facilities--europe-filter-2026-09-14.png with a manifest entry. This is the first refusal class this register has recorded that is about counting rather than about reading."
+  },
+  "gem_global_iron_steel_tracker": {
+   "publisher": "Global Energy Monitor",
+   "read": [
+    "https://globalenergymonitor.org/projects/global-iron-steel-tracker"
+   ],
+   "read_on": "2026-09-12",
+   "verbatim": "The recommended citation is 'Global Iron and Steel Tracker, Global Energy Monitor, June 2026 (V1) release.'",
+   "held": "THE BRIEF RECORDS GEM AS CC BY AND THIS PASS COULD NOT CONFIRM IT FROM THE PAGE IT READ. The tracker page states a recommended citation and no licence; the licence is not quoted here because it was not read. It is recorded as outstanding rather than assumed, and the bytes stay out of the repository either way on the hydrogen and batteries precedent.",
+   "barrier": "REGISTRATION FORM. The Global Steel Plant Tracker is now the GLOBAL IRON AND STEEL TRACKER (GIST), June 2026 (V1) release. /projects/global-iron-steel-tracker/download-data/ redirects to the tracker page, where the download sits behind a form at the #download anchor with no direct file URL in the markup.",
+   "note_for_the_pass": "THE NAME CHANGED AND THE BRIEF'S NAME IS THE OLD ONE. Brief 8 names 'GEM's Global Steel Plant Tracker'. Recorded here so the steel census does not silently measure itself against a differently scoped list under the brief's name."
   }
+ },
+ "pending_snapshots": {
+  "_comment": "AWAITED, NOT FETCHED. Each of these is a benchmark this register is measured against and cannot reach: the barrier is an acceptance a person gives, not a term that forbids the snapshot. NO ENTRY IS ADDED TO `snapshots` UNTIL THE BYTES EXIST AND ARE HASHED — a snapshot is an identity, and an identity of a file nobody has is nothing. The queue with exact URLs and drop paths is in sources/manual/MANIFEST.json under `wanted`. UPDATED 14 September 2026: the IEA CCUS Projects Database is retrieved and is in `snapshots`; CO2RE is dropped rather than awaited, with its refusal class recorded under `licences`. Only the steel tracker is still awaited here.",
+  "raised": "2026-09-13",
+  "awaiting": [
+   {
+    "benchmark": "gem_global_iron_steel_tracker",
+    "sector": "steel",
+    "role": "first list",
+    "file": "Global Iron and Steel Tracker, June 2026 (V1)",
+    "drop_as": "sources/cache/steel/gem_gist_2026_v1.xlsx"
+   }
+  ]
  }
 }

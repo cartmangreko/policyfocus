@@ -123,7 +123,15 @@ export interface Technology {
   transition: Transition;
   name: string;
   description: string;
-  readiness: { level: Readiness; source: string; date: string; note?: string };
+  /** ABSENT ON A PLACEHOLDER, and only there. See `placeholder` below. */
+  readiness?: { level: Readiness; source: string; date: string; note?: string };
+  /** NOT A TECHNOLOGY, AND NEVER RENDERED AS ONE. `ccs-capture-unspecified` is
+   *  the case: an id that records that a project's owner has not stated how the
+   *  CO2 is to be captured, so that the silence is countable in the data
+   *  instead of being laundered into whichever method is commonest. Filtered
+   *  out of getTechnologies and out of every project's technology list, because
+   *  a reader who met it on a page would read it as a thing somebody builds. */
+  placeholder?: boolean;
   abatement_share?: { low: number; high: number; unit: string; source: string; date: string; note?: string };
   cost?: { low: number; high: number; unit: string; source: string; date: string; parameter?: string; note?: string };
   /** Technologies this one cannot run without. ABSENT ON A TECHNOLOGY THAT
@@ -541,7 +549,9 @@ export function getBottlenecks(sector: string): Bottleneck[] {
 /** Technologies deployed in a sector. Shared nodes: a technology lists its
  *  sectors, and the same row serves cement and steel. */
 export function getTechnologies(sector: string): Technology[] {
-  return all().technologies.filter((t) => t.sectors.includes(sector));
+  return all()
+    .technologies.filter((t) => t.sectors.includes(sector))
+    .filter((t) => !t.placeholder);
 }
 
 export function getTechnology(id: string): Technology | undefined {

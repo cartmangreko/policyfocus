@@ -196,9 +196,11 @@ def _source_list(e: Errors, where: str, row: dict) -> None:
             if not EVENT_DATE_SHAPE["day"].match(str(s["captured_at"])):
                 e.add(w, f"captured_at={s['captured_at']!r} is not YYYY-MM-DD — it is the "
                          f"day a crawler took the copy")
-            if not s.get("archived"):
-                e.add(w, "captured_at without archived: true — the field records an "
-                         "archive capture and nothing else")
+            if s.get("archived") is None:
+                e.add(w, "captured_at without archived — `captured_at` is the day the "
+                         "copy on file was taken and `archived` says who took it, so a "
+                         "copy with no answer to the second question is a copy nobody "
+                         "can place")
         if s.get("retrieved_date") is not None:
             if not EVENT_DATE_SHAPE["day"].match(str(s["retrieved_date"])):
                 e.add(w, f"retrieved_date={s['retrieved_date']!r} is not YYYY-MM-DD — it "
@@ -257,8 +259,18 @@ def check_technologies(e: Errors, rows: list[dict], sectors: dict) -> None:
         # sector: which technology leads is a fact about today's project count,
         # and a field that only the leader had to fill in would go missing the
         # week the count changed.
-        _req(e, w, r, "id", "transition", "name", "description", "plain_action",
-             "readiness", "sectors")
+        # `placeholder` MEANS THIS ROW IS NOT A TECHNOLOGY, and it is the one
+        # state in which readiness may be absent. Ruled 14 September 2026 with
+        # ccs-capture-unspecified: a placeholder records that an owner has NOT
+        # stated a method, so there is no method to be ready. A readiness level
+        # on it would be a claim about a thing that does not exist. Everything
+        # else a technology owes -- a name, a description, a plain_action, its
+        # sectors and its sources -- it still owes, because a reader who meets
+        # the id in the data is entitled to the same account of it.
+        base = ["id", "transition", "name", "description", "plain_action", "sectors"]
+        if not r.get("placeholder"):
+            base.append("readiness")
+        _req(e, w, r, *base)
         action = (r.get("plain_action") or "").strip()
         if action:
             if action[0].isupper() or action.endswith("."):
@@ -1217,7 +1229,16 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
                      "attribution is for a figure the project has outlived; a current "
                      "capacity is the project's own")
 
-        _vocab(e, w, r, "role", sm.PROJECT_ROLES)
+        # `role` IS A STRING OR A LIST OF THEM, because a works can be two things
+        # at once: Sullom Voe is a terminal and a hub its owner describes as both.
+        # Ruled 15 September 2026 with the transport and terminal roles.
+        roles = r.get("role")
+        if roles is not None:
+            for one in ([roles] if isinstance(roles, str) else roles):
+                if one not in sm.PROJECT_ROLES:
+                    e.add(w, f"role={one!r} is not one of {'|'.join(sm.PROJECT_ROLES)}")
+            if not isinstance(roles, (str, list)):
+                e.add(w, "role is neither a string nor a list of them")
         if r.get("shared") is not None and r.get("shared") is not True:
             e.add(w, "shared is only ever true — a project that is not shared omits it")
         if r.get("shared") and not r.get("shared_note"):

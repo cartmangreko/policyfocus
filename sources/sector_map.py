@@ -391,6 +391,26 @@ EVENT_DATE_PRECISIONS = (
     "day",
     "month",
     "year",
+    # `not_after` ON AN EVENT, ruled 14 September 2026 by the cement census.
+    # It means exactly what it means on a source: the event is dated by the
+    # COPY ON FILE, as an UPPER BOUND, because the document that reports it
+    # carries no dateline of its own.
+    #
+    # WHY IT HAD TO REACH THE EVENTS. The archive rule of #55 gave a source an
+    # upper bound and stopped there, and three cement rows then arrived whose
+    # ONLY owner document is undated — Holcim's C2PAT release, the CO2LLECT
+    # project page, the Go4ECOPlanet post. Their announcement is real, read and
+    # quoted, and under the old vocabulary it could not be dated at all: the
+    # choice was a false `day` saying the company announced on the afternoon
+    # this register happened to read the page, or no event, which would have
+    # left three admitted rows with an empty history. Both are worse than an
+    # honest bound.
+    #
+    # IT IS STILL NOT `day`, and the arithmetic must keep treating it as a
+    # bound: anything computing how long a project took, or how far a statement
+    # slipped, reads a `not_after` event as "at or before" and never as "on".
+    # Display renders it "by <date>" for the same reason.
+    "not_after",
 )
 
 # AND IT IS NOT ONLY EVENTS. Ruled 9 September 2026, one ruling after the events
@@ -429,7 +449,11 @@ VALUE_DATE_PRECISIONS = EVENT_DATE_PRECISIONS
 # TO `captured_at`. IGNIS's page is the case on the other side: its own metadata
 # says 23 September 2024, which is the date, while the capture of 16 April 2026 is
 # only how this register reached it.
-SOURCE_DATE_PRECISIONS = EVENT_DATE_PRECISIONS + ("not_after",)
+# SOURCE DATES AND EVENT DATES NOW SHARE ONE VOCABULARY. Until 14 September 2026
+# `not_after` was a source's alone and this line added it; the cement census gave
+# the events the same need and the same meaning, so the two are the same tuple
+# rather than one being the other plus a special case.
+SOURCE_DATE_PRECISIONS = EVENT_DATE_PRECISIONS
 
 
 TARGET_PRECISIONS = (
@@ -474,6 +498,13 @@ CAPACITY_UNITS = (
     "Nm3_h",            # the hydrogen, stated as a flow
     "t_h2_per_year",    # the hydrogen, stated as an annual mass
     "t_nh3_per_year",   # ammonia, where the source states ammonia only
+    # D80, 14 September 2026: A CAPACITY IS NEVER ANNUALISED TO MAKE PROJECTS
+    # COMPARABLE. CEMEX's CycloneCC unit at Rüdersdorf is stated by its
+    # technology partner at 100 tonnes of CO2 per DAY, and the row carries it
+    # per day. Annualising it would be this register inventing an operating
+    # pattern nobody stated, in the direction that makes a small project look
+    # like a comparable one.
+    "t_co2_per_day",
 )
 
 # WHICH UNIT THE EXPORT PREFERS WHEN A ROW STATES TWO. MW input is the figure the
@@ -540,6 +571,29 @@ CAPACITY_PRODUCTS = (
     # t_co2_per_year is the only unit it ever takes -- so nothing can add a tonne
     # of captured CO2 to a tonne of crude steel.
     "CO2 captured",
+    # A PIPELINE'S CAPACITY IS NOT A CAPTURE CAPACITY. Added 15 September 2026 with
+    # the transport-and-storage census: forty CCS rows landed whose figure, where
+    # their owner states one, is the CO2 the infrastructure can MOVE.
+    #
+    # *** THIS PRODUCT IS NEVER SUMMED, WITH ANYTHING, INCLUDING ITSELF. ***
+    #
+    # Ruled 15 September 2026, and the authority is the publisher of the list this
+    # sector is measured against. The IEA's own workbook, Definitions and
+    # assumptions tab, under Aggregation notes:
+    #
+    #     "Important note on transport: transport capacity of individual projects
+    #      is not cumulative and cannot be summed."
+    #
+    # The reason is physical rather than clerical. A tonne moving down a chain is
+    # counted by every leg it passes -- Porthos onshore and Porthos offshore would
+    # each claim it, and Aramis's 22 Mt is the same tonne CO2next's terminal
+    # handles. ADDING TWO PIPELINES GIVES A NUMBER THAT IS TRUE OF NO SYSTEM.
+    #
+    # Recording it as "CO2 captured" would have been worse than not recording it:
+    # a transport rating would have entered every capture-weighted total the
+    # sector produces, silently and in the direction that flatters it. The product
+    # exists to keep a false sum OUT, which is the only job it has.
+    "CO2 transported",
 )
 
 # THE SECTORS A CAPACITY FIGURE IS SOUGHT FOR. Not every sector in the file has a
@@ -761,6 +815,12 @@ BENCHMARKS = (
     # a person read the pair, and every pairing is printed for confirmation.
     "te_gigafactory_risk",
     "battery_news_europe_cells",
+    # THE CEMENT AND CCS LIST, from brief 8 sector 2. The IEA CCUS Projects
+    # Database issues its own `ID` per project, so unlike the two battery lists
+    # the key here is the publisher's identifier and not a row label. The
+    # register is measured against the 425 entries the publisher's own `Region`
+    # column calls Europe.
+    "iea_ccus_projects_database",
 )
 
 
@@ -832,9 +892,32 @@ def entered(project: dict) -> dict | None:
 # to as a technology long before it named one. Closed, and short on purpose: a
 # role is a mark on a map, and a vocabulary with eight of them would be eight
 # marks nobody can tell apart.
+# WIDENED 15 September 2026, by the transport-and-storage census, and still closed
+# and still short. Forty CCS rows landed that are neither works nor stores: a
+# pipeline is a route, a terminal is a quay, and calling either a `plant` would
+# have put a factory mark on a map where there is neither building nor boundary.
+#
+#   plant      the default, and left off the row. A works.
+#   storage    a permitted or proposed geological store -- the place a captured
+#              tonne ends.
+#   transport  a pipeline or a shipping route. Infrastructure the tonne moves
+#              ALONG, which has two ends and no single place.
+#   terminal   an import or export terminal, a liquefaction or receiving quay.
+#              Infrastructure the tonne moves THROUGH, which does have a place.
+#
+# A HUB TAKES WHICHEVER ITS OWNER DESCRIBES IT AS, and a row that is both takes
+# both: `role` is a string or a list of them. Antwerp@C calls itself an export
+# hub and is a terminal; Fluxys c-grid calls itself a pipeline network and is
+# transport; Sullom Voe is a terminal AND a hub its owner describes as both.
+#
+# NOTHING READS THE ROLE FOR THE LADDER. It is here so the sector can be
+# described -- captures_co2 reads the dependency graph and not this field, and no
+# score, rung or weighting consults it.
 PROJECT_ROLES = (
     "plant",
     "storage",
+    "transport",
+    "terminal",
 )
 
 # WHERE A COORDINATE CAME FROM, and it is recorded per site rather than assumed.
@@ -1219,7 +1302,10 @@ def captures_co2(project: dict, technologies: dict[str, dict]) -> bool:
     end of that chain and owes nothing -- it is the answer, not the question.
     """
     tech_ids = project.get("technology") or []
-    if CO2_STORAGE_TECHNOLOGY in tech_ids and project.get("role") == "storage":
+    roles = project.get("role") or []
+    if isinstance(roles, str):
+        roles = [roles]
+    if CO2_STORAGE_TECHNOLOGY in tech_ids and "storage" in roles:
         return False
     for tid in tech_ids:
         row = technologies.get(tid) or {}

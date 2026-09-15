@@ -513,6 +513,13 @@ def fact_routes(projects: list[dict], technologies: list[dict]) -> dict | None:
     so these counts sum above the pipeline total by construction. The sentence
     says "on" rather than "of" for that reason and states no total of its own.
     """
+    # A PLACEHOLDER IS NOT A ROUTE. ccs-capture-unspecified records that a
+    # project's owner has NOT stated a capture method, and counting it here
+    # would put "carbon capture, method not stated (12)" in the sector's
+    # opening sentence as though it were a twelfth of the sector's answer.
+    # Ruled 14 September 2026: the id exists so the silence is countable in
+    # the data, and it is excluded from every count and tile on a page.
+    technologies = [x for x in technologies if not x.get("placeholder")]
     own = [x for x in technologies
            if x["id"] not in {d for y in technologies for d in y.get("dependency", [])}]
     live = [p for p in projects if p["status"] in ADVANCE]
@@ -603,11 +610,26 @@ def fact_the_latest(projects: list[dict]) -> dict | None:
         raise SystemExit(
             f"build_lead: project status {h['status']!r} has no verb in STATUS_VERB"
         )
+    # "ON <date>" IS A CLAIM THE SOURCE MAY NOT SUPPORT. Where the event's
+    # precision is `not_after` the owner's document carries no dateline, and the
+    # date is the day the copy on file was taken -- an upper bound. Saying a
+    # project "was announced on 14 September 2026" would date the announcement
+    # to the afternoon this register happened to read the page. The preposition
+    # carries the difference, the same way the site renders it: "by <date>".
+    # Ruled 14 September 2026 with `not_after` on events.
+    bound = h.get("date_precision") == "not_after"
+    when = f"{'by' if bound else 'on'} {_long_date(h['date'])}"
     return _fact(
         "the_latest", "The latest",
-        f"{p['name']} {STATUS_VERB[h['status']]} on {_long_date(h['date'])}.",
+        f"{p['name']} {STATUS_VERB[h['status']]} {when}.",
         h["date"], [],
-        {"project": p["name"], "status": h["status"], "date": _long_date(h["date"])},
+        # The flag is carried ONLY where it is true. A key added to every payload
+        # would move the fingerprint of every sector's held lead the day this
+        # rule landed, and a review queue that fills up with sectors whose text
+        # has not changed is a queue nobody reads.
+        ({"project": p["name"], "status": h["status"], "date": _long_date(h["date"]),
+          "date_is_upper_bound": True} if bound else
+         {"project": p["name"], "status": h["status"], "date": _long_date(h["date"])}),
         sourced=(p["name"],),
         href=f"/projects/{p['id']}",
     )

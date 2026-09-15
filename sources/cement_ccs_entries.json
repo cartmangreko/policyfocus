@@ -1,0 +1,2035 @@
+{
+ "_comment": [
+  "THE IN-PERIMETER ENTRIES OF THE IEA CCUS PROJECTS DATABASE 2026, worked one at a",
+  "time. 179 of the list's 425 European entries: 42 cement and 137 CO2 transport and",
+  "storage. The other 246 are refused by the perimeter on the publisher's own",
+  "Subsector and are DERIVED in sources/build_cement_ccs_benchmark.py rather than",
+  "listed here -- hand-listing 246 mechanical refusals would have invited a typo to",
+  "become a class.",
+  "",
+  "KEYED BY THE IEA'S OWN `ID`, which is what the brief means by the benchmark's own",
+  "identifier. The key is a string because JSON keys are.",
+  "",
+  "MATCHING TO A ROW IS BY COMPANY AND WORKS AGREEING, never by a name stem. That is",
+  "the batteries rule (sources/build_batteries_benchmark.py, 'MATCHING, AND WHAT IS",
+  "NOT A JOIN') and it is the only route used here. Every match is printed on every",
+  "run for confirmation. Where two objects look like one works and no source says so,",
+  "the pair goes to `reference_debts` and NOT into a join.",
+  "",
+  "CAPACITY ON AN ADMITTED ROW IS THE OWNER'S FIGURE AT THE OWNER'S UNIT. Neither IEA",
+  "capacity column is ever written onto a row: 'Announced capacity' is the list's",
+  "claim and 'Estimated capacity by IEA' is the IEA's own computation through the",
+  "conversion factors on the workbook's Definitions tab. Where the two speakers",
+  "differ, the pair is recorded in `disagreements` and neither is reconciled.",
+  "",
+  "A PHASE IS AN ENTRY. The IEA lists announced phases as separate rows with separate",
+  "IDs -- Viking CCS Phase 1/2/3, Northern Endurance 1/2/3, Aramis storage 1/2. The",
+  "gate sums to the list's entry count, so each phase takes its own class; where the",
+  "works is held here, every phase entry classes `held` and names the same row, on",
+  "the batteries precedent that one benchmark line over two held works is counted",
+  "once per LIST ENTRY and the reference is written onto the row."
+ ],
+ "entries": {
+  "201": {
+   "class": "held",
+   "row": "brevik-ccs",
+   "match": "Heidelberg Materials (Norcem) AND Brevik. Company and works both agree.",
+   "note": "The IEA calls it Operational with operation 2025; the row is `operating`."
+  },
+  "1012": {
+   "class": "held",
+   "row": "gezero-geseke",
+   "match": "Heidelberg Materials AND Geseke. Company and works both agree."
+  },
+  "560": {
+   "class": "held",
+   "row": "anrav-devnya",
+   "match": "Heidelberg Materials AND Devnya. Company and works both agree.",
+   "note": "IEA type Full chain: capture at the cement works plus transport and storage. The row is the cement works."
+  },
+  "557": {
+   "class": "held",
+   "row": "go4zero-obourg",
+   "match": "Holcim AND Obourg. Company and works both agree."
+  },
+  "207": {
+   "class": "held",
+   "row": "carbon2business-lagerdorf",
+   "match": "Holcim AND Lagerdorf/Lagerdorf. Company and works both agree. The IEA spells it 'Laegerdorf', the register 'lagerdorf'; the works is Lagerdorf in Schleswig-Holstein."
+  },
+  "79": {
+   "class": "held",
+   "row": "slite-ccs",
+   "match": "Heidelberg Materials (Cementa) AND Slite. Company and works both agree.",
+   "note": "DISAGREEMENT OF STATUS, recorded below. The IEA calls it Planned with operation 2032; the row is `paused`."
+  },
+  "1141": {
+   "class": "held",
+   "row": "ifestos-kamari",
+   "match": "Titan Group AND Kamari. Company and works both agree."
+  },
+  "236": {
+   "class": "held",
+   "row": "k6-lumbres",
+   "match": "EQIOM AND Lumbres. Company and works both agree."
+  },
+  "295": {
+   "class": "held",
+   "row": "northern-lights",
+   "match": "Northern Lights, phase 1. The project's own name is the identifier.",
+   "note": "The IEA carries Northern Lights as two entries by phase; both class held and both name this row."
+  },
+  "296": {
+   "class": "held",
+   "row": "northern-lights",
+   "match": "Northern Lights, phase 2.",
+   "note": "Second of two phase entries over one held row."
+  },
+  "688": {
+   "class": "held",
+   "row": "prinos-co2-storage",
+   "match": "Prinos, phase 1. The project's own name is the identifier.",
+   "note": "The IEA carries Prinos CCS as two entries by phase; both class held and both name this row."
+  },
+  "689": {
+   "class": "held",
+   "row": "prinos-co2-storage",
+   "match": "Prinos, phase 2.",
+   "note": "Second of two phase entries over one held row."
+  },
+  "72": {
+   "class": "admitted",
+   "row": "c2pat-mannersdorf",
+   "match": "Holcim/Lafarge Zementwerke AND Mannersdorf.",
+   "source": "https://www.borealisgroup.com/news/lafarge-omv-verbund-and-borealis-join-hands-to-capture-and-utilize-co2-on-an-industrial-scale",
+   "speaker": "Borealis, with Lafarge, OMV and VERBUND, joint release of the project partners",
+   "verbatim": "to operate a full-scale plant by 2030 which will eventually capture almost 100% of the annually emitted 700,000 tons of CO2 at Lafarge's cement plant in Mannersdorf, Austria",
+   "capacity_stated": "700,000 t CO2/yr (full scale)",
+   "capacity_unit": "t CO2 per year",
+   "note": "The demonstration stage is 10,000 t/yr (europeanfiles.eu, the consortium's own account). The full-scale figure is the one the owner states for the works."
+  },
+  "303": {
+   "class": "admitted",
+   "row": "padeswood-ccs",
+   "match": "Heidelberg Materials (Hanson) AND Padeswood.",
+   "source": "https://www.mhi.com/news/22121502.html",
+   "speaker": "Mitsubishi Heavy Industries Engineering, the appointed Pre-FEED contractor, naming its client and the works",
+   "verbatim": "a CO2 capture plant at its Padeswood cement works located in Flintshire, Wales... Once operational, the plant will capture 800,000 tonnes of CO2 per year",
+   "capacity_stated": "800,000 t CO2/yr",
+   "capacity_unit": "t CO2 per year",
+   "note": "IEA FID 2025, operation 2029, status Under construction."
+  },
+  "540": {
+   "class": "admitted",
+   "row": "co2llect-rudersdorf",
+   "match": "CEMEX AND Ruedersdorf.",
+   "source": "https://www.co2llect.de/en/project/",
+   "speaker": "CO2LLECT, the project's own site (CEMEX and Linde)",
+   "verbatim": "The new plant aims to capture, liquefy and purify around 1.3 million tons of CO2 from cement production every year",
+   "capacity_stated": "1.3 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "Construction from 2028, completion Q1 2030, per the same page. IEA 539 is a SECOND entry at this works and is held for ruling, not merged."
+  },
+  "556": {
+   "class": "admitted",
+   "row": "hoever-ccs",
+   "match": "Holcim Deutschland AND Hoever. The IEA spells the works 'Hover'; Holcim spells it Hoever.",
+   "source": "https://www.holcim.de/meilenstein-zukunftsfaehige-zementproduktion-hoever",
+   "speaker": "Holcim Deutschland, own release of 21 August 2026",
+   "verbatim": "Nach der finalen Ausbaustufe sollen in Hoever rund 90 Prozent der jaehrlich rund 500.000 Tonnen CO2-Emissionen abgeschieden... werden",
+   "capacity_stated": null,
+   "capacity_note": "NO CAPTURE CAPACITY IS STATED BY THE OWNER. Holcim states the works' annual emissions (about 500,000 t CO2) and the share the final stage would capture (about 90 per cent). Multiplying the two would be this register inventing a figure, so the row carries none and the two statements are recorded as they were made.",
+   "note": "A test plant for industrial CO2 capture went into operation at the works on 21 August 2026, with Cool Planet Technologies and Helmholtz-Zentrum Hereon as technology partners; the release puts its near-term capture at up to ten thousand tonnes. The IEA entry is the full phase 2."
+  },
+  "565": {
+   "class": "admitted",
+   "row": "go4ecoplanet-kujawy",
+   "match": "Holcim Polska AND Kujawy.",
+   "source": "https://www.go4ecoplanet.com/blog/lafarge-projekt-kujawy-go4ecoplanet-z-pozytywna-decyzja-srodowiskowa",
+   "speaker": "Go4ECOPlanet, the project's own site (Holcim Polska)",
+   "verbatim": "Uruchomienie instalacji wychwytujacej dwutlenek wegla w Cementowni Kujawy przewidujemy w 2027 r.",
+   "capacity_stated": null,
+   "capacity_note": "The owner states a start year and no capture capacity. The EU Innovation Fund pre-selection list describes the chain -- capture and liquefaction at Kujawy, LCO2 by rail to Gdansk, shipping to offshore storage -- and states no figure for the works either.",
+   "note": "DISAGREEMENT OF DATE, recorded below: the owner says the capture installation starts in 2027, the IEA gives FID 2027 and operation 2031."
+  },
+  "657": {
+   "class": "admitted",
+   "row": "olympus-milaki",
+   "match": "Holcim (HERACLES) AND Milaki.",
+   "source": "https://www.lafarge.gr/sites/greece/files/docs/heracles-group-and-air-liquide-signed-a-front-end-engineering-design-feed-contract-for-olympus-ccs-project-12-12-2024_vs2.pdf",
+   "speaker": "HERACLES Group (Holcim Greece), own release of 12 December 2024",
+   "verbatim": "enabling the HERACLES plant's CO2 emissions in the area of Milaki to capture and store 1 million tons of CO2 annually",
+   "capacity_stated": "1 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "Captured CO2 to be liquefied and shipped to Prinos, which this register holds as prinos-co2-storage. An adjacency, recorded and not drawn."
+  },
+  "658": {
+   "class": "admitted",
+   "row": "kodeco-koromacno",
+   "match": "Holcim AND Koromacno.",
+   "source": "https://www.holcim.hr/KOdeCO-net-zero",
+   "speaker": "Holcim Hrvatska, own project page",
+   "verbatim": "U sklopu projekta KOdeCO net zero postojeca tvornica cementa u Koromacnu bit ce unaprijedena novim tehnologijama koje omogucuju hvatanje, obradu i sigurno zbrinjavanje CO2 nastalog tijekom proizvodnje cementa",
+   "capacity_stated": null,
+   "capacity_note": "The owner's page states no capture capacity. The IEA announces 0.366 Mt CO2/yr; that figure stays on the list side."
+  },
+  "660": {
+   "class": "admitted",
+   "row": "anthemis-antoing",
+   "match": "Heidelberg Materials (CBR) AND Antoing.",
+   "source": "https://www.heidelbergmaterials.com/en/pr-2025-11-03",
+   "speaker": "Heidelberg Materials, own release of 3 November 2025",
+   "verbatim": "As part of the Anthemis project in Belgium, Heidelberg Materials plans to equip its Antoing clinker plant with an innovative oxyfuel carbon capture unit. Once operational, the unit will capture over 95% of the site's emissions - equivalent to more than 800,000 tonnes of CO2 annually.",
+   "capacity_stated": "more than 800,000 t CO2/yr",
+   "capacity_unit": "t CO2 per year",
+   "note": "Oxyfuel with capture, which the cement perimeter names in explicitly."
+  },
+  "728": {
+   "class": "admitted",
+   "row": "accsion-aalborg",
+   "match": "Aalborg Portland (Cementir) AND Aalborg.",
+   "source": "https://www.aalborgportland.dk/accsion/",
+   "speaker": "Aalborg Portland, own project page",
+   "verbatim": "Aalborg Portland is collaborating with Air Liquide, which will develop, build and operate the CO2 capture plant, which is expected to reduce CO2 emissions by up to 1.5 million tons annually from 2030",
+   "capacity_stated": "up to 1.5 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "DISAGREEMENT OF CAPACITY, recorded below: the owner says up to 1.5 Mt, the IEA announces 1.4 Mt."
+  },
+  "732": {
+   "class": "admitted",
+   "row": "dream-rezzato-mazzano",
+   "match": "Heidelberg Materials AND Rezzato-Mazzano.",
+   "source": "https://www.heidelbergmaterials.com/en/pr-2025-11-03",
+   "speaker": "Heidelberg Materials, own release of 3 November 2025",
+   "verbatim": "DREAM aims to capture around 1 million tonnes of CO2 per year, enabling the large-scale production of carbon captured cements for the Italian market.",
+   "capacity_stated": "around 1 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "The IEA carries no announced capacity for this entry; the owner states one. The gap runs the other way here and the row takes the owner's figure."
+  },
+  "1042": {
+   "class": "admitted",
+   "row": "broceni-ccs",
+   "match": "SCHWENK AND Broceni.",
+   "source": "https://schwenk.lv/en/pressrelease/schwenk-northern-europe-announces-commitment-to-decarbonize-cement-production-in-latvia/",
+   "speaker": "SCHWENK Latvija, own release",
+   "verbatim": "the final investment decision is planned to be made in 2027 with full-scale carbon capture at the Broceni cement plant starting around 2030... It will capture around 800 000 tonnes of CO2 annually",
+   "capacity_stated": "around 800,000 t CO2/yr",
+   "capacity_unit": "t CO2 per year",
+   "note": "A reduced-scale test unit capturing about 2 t CO2 per day ran at the works from spring to December 2025, per the same release. The entry is the full-scale project. THE IEA ANNOUNCES A RANGE, '0.75 - 0.8', which is the only range in the European cement entries."
+  },
+  "1094": {
+   "class": "admitted",
+   "row": "ecapt-rhone-le-teil",
+   "match": "Lafarge France (Holcim) AND Le Teil.",
+   "source": "https://elyse.energy/en/elyse-energy-announces-the-opening-of-an-e-methanol-plant-on-the-roches-roussillon-chemical-hub",
+   "speaker": "Elyse Energy, the project partner, naming the owner and the works",
+   "verbatim": "The installation of a capture unit at the Lafarge plant in Le Teil is a new stage in the partnership initiated in July 2022",
+   "capacity_stated": null,
+   "capacity_note": "NO FIGURE FOR THIS WORKS. The 213,000 t CO2/yr in the same release is the eM-Rhone methanol plant's total feed, drawn from the OSIRIS site AND Le Teil, and no source read splits it. Reading it onto Le Teil would be this register attributing a number nobody attributed."
+  },
+  "1116": {
+   "class": "admitted",
+   "row": "saint-pierre-la-cour-goco2",
+   "match": "Lafarge Ciments (Holcim) AND Saint-Pierre-la-Cour.",
+   "source": "https://www.lafarge.fr/cloture-de-la-concertation-prealable-du-projet-goco2-et-poursuite-du-dialogue",
+   "speaker": "Lafarge France, own page on the close of the GOCO2 public consultation",
+   "verbatim": "Le captage du CO2 de la cimenterie Lafarge Ciments de Saint-Pierre-la-Cour, dans la Mayenne",
+   "capacity_stated": null,
+   "capacity_note": "NO PER-WORKS FIGURE EXISTS YET AND THE PROJECT SAYS SO. GOCO2's own carbon figure is 2.2 Mt/yr across four emitters, and Lhoist's decarbonisation lead is quoted on the same page: 'On nous a souvent demande des chiffres plus precis : nous les presenterons des que nous les aurons.' The IEA's 1 Mt for this works is the list's claim and is not written onto the row."
+  },
+  "1138": {
+   "class": "admitted",
+   "row": "co2ntessa-nasice",
+   "match": "Nexe Group (Nasice cement) AND Nasice.",
+   "source": "https://www.nexe.hr/en/co2ntessa/",
+   "speaker": "NEXE Group, own project page",
+   "verbatim": "the CO2NTESSA project will allow capture > 700 thousand t CO2 per year, making cement production at NEXE close to zero emissions",
+   "capacity_stated": "more than 700,000 t CO2/yr",
+   "capacity_unit": "t CO2 per year",
+   "note": "The owner states a lower bound and the IEA a point value of 0.739 Mt. Recorded as the owner stated it -- a bound is not a number, and converting it to one would be inventing precision."
+  },
+  "1204": {
+   "class": "admitted",
+   "row": "carbocleartech-martres-tolosane",
+   "match": "Lafarge France (Holcim) AND Martres-Tolosane.",
+   "source": "https://www.lafarge.fr/le-projet-carbocleartech-concu-pour-capter-et-stocker-le-carbone-residuel-de-lusine-lafarge-de",
+   "speaker": "Lafarge France, own release",
+   "verbatim": "Avec 700 000 tonnes de CO2 captees par an, CarboClearTech aura un impact decisif sur les emissions industrielles du Sud-Ouest",
+   "capacity_stated": "700,000 t CO2/yr",
+   "capacity_unit": "t CO2 per year",
+   "note": "The works also hosts an open-innovation test platform for capture technologies from 2025/2026, per the same source. That is a facility at the works, not a separate capture project, and it is not a second row."
+  },
+  "1265": {
+   "class": "admitted",
+   "row": "airvault-goco2",
+   "match": "Heidelberg Materials France AND Airvault.",
+   "source": "https://www.heidelbergmaterials.com/en/pr-2024-03-13",
+   "speaker": "Heidelberg Materials, own release of 13 March 2024",
+   "verbatim": "The AirvaultGOCO2 project, with a planned capture capacity of approx. 1 million tonnes annually, is part of the GOCO2 initiative to decarbonise the West of France.",
+   "capacity_stated": "approximately 1 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "Same GOCO2 chain as 1116; two cement works, two entries, two rows."
+  },
+  "1445": {
+   "class": "admitted",
+   "row": "cpt01-campulung",
+   "match": "Holcim AND Campulung.",
+   "source": "https://www.holcim.com/media/media-releases/eu-innovation-fund-carbon-hub-romania",
+   "speaker": "Holcim, own release",
+   "verbatim": "Campulung, Romania, will be Eastern Europe's first full-scale onshore CCS project... Carbon Hub CPT 01 project will produce an estimated 2 million tons of near-zero cement per annum from 2032",
+   "capacity_stated": null,
+   "capacity_note": "THE OWNER STATES A CEMENT TONNAGE, NOT A CO2 CAPACITY -- 2 Mt of near-zero cement a year. The IEA announces 1 Mt CO2/yr. The two are different quantities of different substances and neither is the other; the row carries no capture capacity and the list's figure stays on the list."
+  },
+  "1460": {
+   "class": "admitted",
+   "row": "deuna-ccs",
+   "match": "Dyckerhoff AND Deuna.",
+   "source": "https://www.dyckerhoff.com/en/w/co2-abscheideanlage-im-werk-deuna?languageId=en_US",
+   "speaker": "Dyckerhoff, own release",
+   "verbatim": "The aim of the investment project in Deuna is to capture these CO2 emissions in order to produce a Net-Zero cement... According to the current planning status, the carbon capture facility could go into operation in 2029.",
+   "capacity_stated": null,
+   "capacity_note": "The owner states an investment of more than EUR 350 million and a 2029 start and no capture capacity. The IEA announces 0.62 Mt CO2/yr."
+  },
+  "1461": {
+   "class": "admitted",
+   "row": "vaia-montalieu-vercieu",
+   "match": "Vicat AND Montalieu-Vercieu.",
+   "source": "https://www.vicat.com/news/vicat-group-launches-vaia-project-accelerator-decarbonization-ambitions",
+   "speaker": "Vicat, own release",
+   "verbatim": "This project will capture and sequester 1.2 million tons of CO2 per year at the Montalieu-Vercieu site (Isere), making it the first cement plant in France to achieve such a high level of environmental performance.",
+   "capacity_stated": "1.2 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "IEA 561 (VAIA HyNoVi) is a SECOND entry at this works. It is not merged into this row -- see the reference debt."
+  },
+  "1463": {
+   "class": "admitted",
+   "row": "mosusol-sant-vicenc-dels-horts",
+   "match": "Molins AND Sant Vicenc dels Horts.",
+   "source": "https://www.enagas.es/en/press-room/news-room/press-releases/co2-cement-molins-agreement/",
+   "speaker": "Enagas, joint release with Molins, naming the owner and the works",
+   "verbatim": "The project foresees the capture of one million tonnes of CO2 per year through a capture facility in Molins, located in Sant Vicenc dels Horts (Barcelona), which will be transported by Enagas for subsequent storage.",
+   "capacity_stated": "1 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "The same release carries Molins' own goal: carbon neutrality at the Sant Vicenc dels Horts plant by 2031."
+  },
+  "1475": {
+   "class": "admitted",
+   "row": "eco2fly-villaluenga",
+   "match": "Holcim Espana AND Villaluenga de la Sagra.",
+   "source": "https://www.holcim.es/eco2fly-proyecto-pionero-para-descarbonizar-la-industria",
+   "speaker": "Holcim Espana, own release",
+   "verbatim": "La nueva instalacion, que se ubicaria en la fabrica de Holcim en Villaluenga de la Sagra (Toledo), esta disenada para capturar mas de 700.000 toneladas anuales de CO2 generado durante la produccion de cemento",
+   "capacity_stated": "more than 700,000 t CO2/yr",
+   "capacity_unit": "t CO2 per year"
+  },
+  "1476": {
+   "class": "admitted",
+   "row": "co2necta-sagunto",
+   "match": "Holcim Espana AND Sagunto.",
+   "source": "https://www.holcim.es/CO2necta-para-CCUS-de-Enagas-Holcim-y-Saggas-en-Valencia",
+   "speaker": "Holcim Espana, own release with Enagas and Saggas",
+   "verbatim": "El proyecto desarrollara en la fabrica de Holcim en Sagunto una planta de captura de CO2, que sera trasladado a traves de las infraestructuras de Enagas hasta la terminal de Saggas",
+   "capacity_stated": null,
+   "capacity_note": "THE OWNER STATES AN AVOIDED FIGURE, NOT A CAPTURE CAPACITY -- 'evitara la emision de mas de 560.000 toneladas al ano de CO2'. Avoided emissions and capture capacity are different quantities; the IEA announces 0.6 Mt of capacity. Neither is written onto the row as the other."
+  },
+  "202": {
+   "class": "admitted",
+   "source": "https://www.heidelbergcement.com/en/pr-01-02-2021",
+   "speaker": "HeidelbergCement, own release of 1 February 2021",
+   "verbatim": "it has been decided to build the LEILAC 2 demonstration installation for carbon capture at the HeidelbergCement cement plant in Hanover, Germany... an installation around four times as large will be operated in Hanover, which will capture 20% of the cement plant's capacity, corresponding to around 100,000 tonnes of CO2 per year",
+   "note": "ADMITTED ON THE PILOT RULING. The site carries the Hanover reference debt: this entry and IEA 556 name a cement works at Hanover under two different owners and no owner states a relocation. The row is admitted on HeidelbergCement's own 2021 statement of the host plant, and the debt is recorded against it rather than resolved by it.",
+   "row": "leilac2-hannover",
+   "match": "Heidelberg Materials AND the cement plant at Hanover.",
+   "owner_designation": "demonstration installation",
+   "designation_speaker": "HeidelbergCement, own release of 1 February 2021",
+   "capacity_stated": "around 100,000 t CO2/yr",
+   "capacity_unit": "t CO2 per year",
+   "ruling": "RULED 14 September 2026, by George. THE CEMENT PERIMETER HAS NO PILOT CLAUSE AND NOW SAYS SO. A capture project at a cement works is in perimeter AT ANY SCALE; the register does not convert and does not rank. The owner's own designation is kept on the row as a stated attribute rather than used to refuse it. Raised by this census as a question over four entries and answered without a rule being changed under it -- the clause was written into sources/scope.md, Sector perimeters, Cement."
+  },
+  "539": {
+   "class": "admitted",
+   "source": "https://www.carbonclean.com/news/kbr-carbonclean",
+   "speaker": "Carbon Clean, the technology partner, naming CEMEX and the works",
+   "verbatim": "KBR will provide FEED services for the initial stage of the project which aims to develop and deploy Carbon Clean's breakthrough modular carbon capture technology - CycloneCC - to initially capture 100 tonnes per day (TPD) of CO2 at the plant",
+   "note": "ADMITTED ON THE PILOT RULING, AND THE CAPACITY IS KEPT AT THE OWNER'S UNIT. 100 t/day is not annualised: the register does not convert. A SECOND ROW AT ONE WORKS -- IEA 540 (CO2LLECT, 1.3 Mt/yr, Linde) is the other. Both are admitted because both are capture projects at a cement works and neither owner says the one is a stage of the other; the reference debt records that nobody has related them.",
+   "row": "cyclonecc-rudersdorf",
+   "match": "CEMEX AND Ruedersdorf.",
+   "owner_designation": "initial stage, phase 1, modular unit",
+   "designation_speaker": "Carbon Clean and KBR, the technology and FEED partners, naming CEMEX and the works",
+   "capacity_stated": "100 tonnes of CO2 per day",
+   "capacity_unit": "t CO2 per day",
+   "ruling": "RULED 14 September 2026, by George. THE CEMENT PERIMETER HAS NO PILOT CLAUSE AND NOW SAYS SO. A capture project at a cement works is in perimeter AT ANY SCALE; the register does not convert and does not rank. The owner's own designation is kept on the row as a stated attribute rather than used to refuse it. Raised by this census as a question over four entries and answered without a rule being changed under it -- the clause was written into sources/scope.md, Sector perimeters, Cement."
+  },
+  "1359": {
+   "class": "admitted",
+   "source": "https://www.heidelbergmaterials.com/en/pr-18-11-2020",
+   "speaker": "HeidelbergCement, for the CI4C consortium",
+   "verbatim": "At the site of the Mergelstetten cement plant in southern Germany, the consortium intends to build and operate its own demonstration plant on a semi-industrial scale, where the so-called oxyfuel process will be applied for CO2 capture.",
+   "row": "catch4climate-mergelstetten",
+   "match": "CI4C (Dyckerhoff, Heidelberg Materials, SCHWENK, Vicat) AND Mergelstetten.",
+   "owner_designation": "pilot project, demonstration plant on a semi-industrial scale",
+   "designation_speaker": "HeidelbergCement for the CI4C consortium, release of 18 November 2020",
+   "capacity_stated": null,
+   "capacity_note": "The consortium states the aim as capturing almost 100 per cent of a cement works' CO2 and no capacity for the plant. The IEA announces 0.1 Mt/yr; that stays on the list side.",
+   "ruling": "RULED 14 September 2026, by George. THE CEMENT PERIMETER HAS NO PILOT CLAUSE AND NOW SAYS SO. A capture project at a cement works is in perimeter AT ANY SCALE; the register does not convert and does not rank. The owner's own designation is kept on the row as a stated attribute rather than used to refuse it. Raised by this census as a question over four entries and answered without a rule being changed under it -- the clause was written into sources/scope.md, Sector perimeters, Cement.",
+   "note": "ADMITTED ON THE PILOT RULING. Oxyfuel with capture, which the cement perimeter already named in explicitly. IEA status Under construction, operation 2026. Heidelberg Materials Deutschland's own CCUS project list carries it as 'catch4climate - Mergelstetten', read 14 September 2026."
+  },
+  "1459": {
+   "class": "admitted",
+   "source": "https://www.holcim.com/media/media-releases/media-release-carbon-capture-projects-USA-germany",
+   "speaker": "LafargeHolcim, own release",
+   "verbatim": "LafargeHolcim recently added to its portfolio of CCUS pilots with the ECCO2-LH project in Spain, in collaboration with Carbon Clean and Sistemas de Calor, which will capture CO2 from flue gas at its Carboneras plant and turn it to agricultural use",
+   "row": "ecco2-lh-carboneras",
+   "match": "Holcim Espana (LafargeHolcim) AND Carboneras.",
+   "owner_designation": "CCUS pilot",
+   "designation_speaker": "LafargeHolcim, own release",
+   "capacity_stated": null,
+   "capacity_note": "No owner figure. The IEA announces 0.6 Mt/yr as the list's claim.",
+   "ruling": "RULED 14 September 2026, by George. THE CEMENT PERIMETER HAS NO PILOT CLAUSE AND NOW SAYS SO. A capture project at a cement works is in perimeter AT ANY SCALE; the register does not convert and does not rank. The owner's own designation is kept on the row as a stated attribute rather than used to refuse it. Raised by this census as a question over four entries and answered without a rule being changed under it -- the clause was written into sources/scope.md, Sector perimeters, Cement.",
+   "status_ruling": "RULED 14 September 2026, by George. A CANCELLATION IS A STOP EVENT ONLY FROM THE OWNER'S OR THE CONSORTIUM'S OWN STATEMENT. The IEA carries this entry as 'Cancelled' and nothing read here is Holcim saying so, so the row does NOT take a stopped status_history event on the list's word. The list's status is recorded as a BENCHMARK CLAIM against the row, with its speaker and the vintage it was made in.",
+   "benchmark_claim": {
+    "claimed_by": "iea_ccus_projects_database",
+    "vintage": "2026 edition, announcements as of February 2026",
+    "field": "status",
+    "value": "Cancelled",
+    "owner_states": null,
+    "note": "No owner or consortium statement of cancellation was found. Searched: holcim.com media releases (the IEA's own reference, read), holcim.es CCUS page and root (read), holcim.es/sala-de-prensa (404). The row lands on its announcement and carries this claim unresolved."
+   },
+   "note": "ADMITTED ON THE PILOT RULING. IEA 1478 (CO2nscious) is a later entry at the same Carboneras works and is named not admitted; the pair is a reference debt and is not merged."
+  },
+  "561": {
+   "class": "named not admitted",
+   "failed_leg": "one works, two entries, and no source joining them",
+   "source": "https://www.vicat.com/news/low-carbon-trajectory-vicat-and-hynamics-unveil-hynovi-project",
+   "speaker": "Vicat, own release",
+   "verbatim": "The Hynovi project aims to capture 40% of the CO2 emitted by Vicat's Montalieu-Vercieu cement plant in eastern France.",
+   "why": "CAPTURE AT A CEMENT WORKS, COMPANY-CONFIRMED, AND THE WORKS IS ALREADY ADMITTED UNDER IEA 1461. HyNoVi (2021, 40% of the works' CO2, oxycombustion into methanol) and VAIA (2025, 1.2 Mt, nearly 100% of the works' emissions) are two IEA entries for capture at one Vicat works. No source read says whether HyNoVi is a phase of VAIA, its predecessor, or a separate unit, so the two are NOT merged and this entry does not open a second row. Rule 30: record the identifier, never guess the join. See the reference debt."
+  },
+  "1065": {
+   "class": "named not admitted",
+   "failed_leg": "capture at the works is not company-stated",
+   "source": "https://www.aggregate.com/cauldon-cement-plant",
+   "speaker": "Aggregate Industries (Holcim UK), own page for the works",
+   "verbatim": "Holcim UK are part of a ground-breaking Carbon Capture partnership known as Peak Cluster.",
+   "why": "THE OWNER'S OWN PAGE FOR THIS WORKS NAMES THE PARTNERSHIP AND NOT A PROJECT AT THE WORKS. It states no capture plant at Cauldon, no capacity and no date. The trade press does: cemnet.com reports Petrofac winning a capture role and says CO2 captured at Cauldon would go to the Peak cluster. Trade press is not the owner, and the perimeter asks for company confirmation.",
+   "looked_in_order": [
+    "globalcement.com item 17135 - 403",
+    "gateway.euronext.com corporate page - 200, empty body",
+    "cemnet.com story 176287 - 200, trade press, not the owner",
+    "aggregate.com/sustainability/carbon-capture-and-storage - 404",
+    "aggregate.com/cauldon-cement-plant - 200, the quote above",
+    "aggregate.com/sustainability/decarbonisation - 200, no Cauldon capture project"
+   ],
+   "note": "THE IEA CARRIES NO ANNOUNCED CAPACITY FOR THIS ENTRY, only its own estimate of 0.54 Mt. That column is the IEA's computation and is never read onto anything here."
+  },
+  "1462": {
+   "class": "named not admitted",
+   "failed_leg": "a route stated, not a project",
+   "source": "https://www.holcim.bg/bg/vaglerodna-neutralnost",
+   "speaker": "Holcim Bulgaria, own carbon-neutrality page",
+   "verbatim": "Resenieto: Vnedrjavane na inovativni visoki tehnologii za ulavjane i predotvratjavane na izpuskaneto na ostatacnija vaglerodyen dioksid v atmosferata (Carbon Capture and Storage - CCS).",
+   "why": "The page names the Beli Izvor works and names CCS as the route to net zero for it. It states no project, no capacity, no date and no decision, and the IEA entry carries no capacity, no FID and no operation year either. A stated route is not a company-confirmed capture project.",
+   "looked_in_order": [
+    "holcim.bg carbon-neutrality page - 200, the quote above"
+   ]
+  },
+  "1478": {
+   "class": "named not admitted",
+   "failed_leg": "the owner does not name this works for this project",
+   "source": "https://www.holcim.es/captura-uso-y-almacenamiento-de-carbono-ccus",
+   "speaker": "Holcim Espana, own CCUS page",
+   "verbatim": "Con proyectos en todos nuestros complejos industriales, contamos con un potencial de capturar anualmente mas de 2,5 millones de toneladas de CO2 y producir cemento ECOPlanet Zero",
+   "why": "HOLCIM ESPANA NAMES THREE CCUS PROJECTS BY NAME AND WORKS -- CO2necta at Sagunto and ECO2FLY at Villaluenga, both admitted by this pass -- and for Carboneras it states only that it has projects at all its industrial complexes. CO2nscious is not named and Carboneras is not named for it. The blanket sentence is not a statement about this works.",
+   "looked_in_order": [
+    "strategic-technologies.europa.eu STEP seal dashboard - 200, a EU funding dashboard, not the owner",
+    "holcim.es/sala-de-prensa - 404",
+    "holcim.es root - 200, link harvest",
+    "holcim.es CCUS page - 200, the quote above"
+   ]
+  },
+  "686": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "zeroemissionsplatform.eu candidate-projects PDF (the IEA's only reference) - 200, carries no statement about Augusta",
+    "buzzi.com/en/sustainability/carbon-capture - 404",
+    "buzzi.com - 200, no link to a capture project",
+    "buzzi.com/en/ - 200, no link to a capture project"
+   ],
+   "note": "Buzzi Unicem is the named and only partner. Nothing read states a capture project at the Augusta works. The IEA announces 0.6 Mt against a 2033 operation date."
+  },
+  "1142": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "zeroemissionsplatform.eu candidate-projects PDF - 200, nothing on Beremend",
+    "total-croatia-news.com - 200, a Croatian news page about Nexe, nothing on Beremend",
+    "duna-drava.hu root - 200, link harvest",
+    "duna-drava.hu/hu/beremendi-cementgyar (the works' own page) - 200, alternative fuels and emissions monitoring, no capture project",
+    "duna-drava.hu/hu/fenntarthatosagi-torekveseink - 200, nothing"
+   ],
+   "note": "DDC is Duna-Drava Cement, the named partner. Its own page for the Beremend works describes alternative fuels and continuous emissions monitoring and no capture project."
+  },
+  "1210": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "capsoltechnologies.com, the IEA's only reference - 200, read in full"
+   ],
+   "note": "THE ENTRY NAMES NO WORKS AND NO OWNER. The IEA's Partners column reads 'Capsol, unknown companies' and the project name is 'Capsol feasibility study cement Germany'. Capsol's own release says only 'a cement producer in Germany' and 'a plant aiming to capture 400,000 tons of CO2 per annum'. There is no site to find, and the search that would find one has nowhere to start. This is the hydrogen class exactly: sources were fetched and none of them names a site."
+  },
+  "1277": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "climate.ec.europa.eu CCS implementation presentation PDF (the IEA's only reference) - 200, read; it covers other projects and says nothing about SOMZERO",
+    "cemex.es - 200, empty body",
+    "cemex.es/-/somzero - 200, empty body"
+   ],
+   "note": "CEMEX is the named and only partner. cemex.es answers 200 with a body carrying no readable text, which this register records as a refusal rather than as a page that spoke."
+  },
+  "1271": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Equinor",
+   "licensee_claim": {
+    "speaker": "Equinor, own release of 20 June 2024",
+    "says": "The new licences are each expected to have the capacity to store around 5 million tonnes of CO2 per year when in operation.",
+    "url": "https://www.equinor.com/news/20240620-two-new-co2-storage-licenses-in-the-north-sea",
+    "date": "2024-06-20"
+   },
+   "note": "The IEA carries this entry as Cancelled. A cancelled exploration licence is still an exploration licence."
+  },
+  "1270": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Equinor Low Carbon Solution",
+   "licensee_claim": {
+    "speaker": "Equinor, own release of 20 June 2024",
+    "says": "The new licences are each expected to have the capacity to store around 5 million tonnes of CO2 per year when in operation.",
+    "url": "https://www.equinor.com/news/20240620-two-new-co2-storage-licenses-in-the-north-sea",
+    "date": "2024-06-20"
+   }
+  },
+  "1272": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Aker BP (80%), ORLEN Upstream Norway (20%)",
+   "licensee_claim": {
+    "speaker": "Aker BP, own release of 20 June 2024",
+    "says": "The storage licence is named Atlas and is located in Norwegian North Sea, near the Yggdrasil area, where the Aker BP-operated Yggdrasil field development project is currently underway.",
+    "url": "https://akerbp.com/en/borsmelding/aker-bp-awarded-licence-for-co2-storage-in-norway-2/",
+    "date": "2024-06-20"
+   }
+  },
+  "1269": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Var Energi CCS (40%), OMV Norge (30%), Lime Petroleum",
+   "licensee_claim": {
+    "speaker": "Var Energi, own release",
+    "says": "The Iroko area has the potential to store up to 7,5 million tonnes of CO2 annually for at least 30 years, a total of approximately 215 million tonnes.",
+    "url": "https://varenergi.no/news/var-energi-and-partners-awarded-co2-storage-licence-in-north-sea/",
+    "date": "2024-06-21"
+   }
+  },
+  "1349": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Harbour Energy Norge (60%), Equinor Low Carbon Solution",
+   "licensee_claim": {
+    "speaker": "Sodir (Norwegian Offshore Directorate), licence work programme",
+    "says": "EXL012 15/8, 15/9, 15/11 and 15/12 Harbour Energy Norge AS, Equinor Low Carbon Solution — work obligations and decisions.",
+    "url": "https://www.sodir.no/globalassets/1-sodir/fakta/co-to/tillatelser/nr-2-2024/eng/2024-2-workprogramme.pdf",
+    "date": "2024-01-01"
+   },
+   "note": "THE REGULATOR'S OWN WORK-PROGRAMME TABLE, which is what an exploration licence is: blocks, companies, shares, a phase and a duration in years, with work obligations and a decision point. No store."
+  },
+  "1350": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Aker BP (50%), Equinor Low Carbon Solution (50%)",
+   "licensee_claim": {
+    "speaker": "Sodir, licence work programme",
+    "says": "EXL 013 (Forsete/2024) — blocks, companies, work obligations and decisions.",
+    "url": "https://www.sodir.no/globalassets/1-sodir/fakta/co-to/tillatelser/nr-2-2024/eng/2024-2-workprogramme.pdf",
+    "date": "2024-01-01"
+   }
+  },
+  "1488": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Equinor Low Carbon Solution (100%)",
+   "licensee_claim": {
+    "speaker": "Sodir, licence register",
+    "says": "EXL 014: Equinor LCS (Fritos/2025). EL: Exploitation license. EXL: Exploration license.",
+    "url": "https://factpages.sodir.no/en/storage/pageview/licence/all/41319945",
+    "date": "2025-11-06"
+   },
+   "note": "SODIR'S OWN LEGEND DISTINGUISHES THE TWO, which is the distinction the ruling turns on: EL is an exploitation licence and EXL an exploration licence. This entry is an EXL."
+  },
+  "710": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Eni (30%), Sval and partners",
+   "licensee_claim": null,
+   "speaker": "IEA entry; both of the IEA's references answer URLError to a declared reader",
+   "note": "UNREADABLE AS WELL AS EXCLUDED. Both IEA references -- neptuneenergy.com and carboncapturejournal.com -- answer URLError. The exclusion stands on the entry's own name and licence number, EXL007, which is Sodir's exploration-licence series; no licensee claim could be read, so none is recorded."
+  },
+  "530": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Harbour Energy (60%), TotalEnergies (40%), formerly Wintershall Dea",
+   "licensee_claim": {
+    "speaker": "Wintershall Dea, own release",
+    "says": "Wintershall Dea will be operator of the Luna licence which is located 120km west of Bergen, and is estimated to hold a CO2 storage injection capacity of up to 5 million tonnes per year.",
+    "url": "https://wintershalldea.com/en/newsroom/wintershall-dea-awarded-its-first-co2-licence-norway",
+    "date": "2022-01-01"
+   },
+   "note": "The same publisher's second release states 'up to seven million tonnes' for a licence; which licence that figure belongs to is not stated, so only the figure named against Luna is recorded here."
+  },
+  "775": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Aker BP (50%), OMV (50%)",
+   "licensee_claim": {
+    "speaker": "Aker BP, own release",
+    "says": "Aker BP and OMV awarded licence for CO2 storage. The intention is to inject CO2 captured from multiple identified industrial emitters in North-West Europe.",
+    "url": "https://akerbp.com/en/borsmelding/aker-bp-and-omv-awarded-licence-for-co2-storage-2/",
+    "date": "2024-01-01"
+   },
+   "note": "NOT THE UK POSEIDON. IEA 845/846/847 are Perenco's UK Poseidon CCS project in the Southern North Sea, a different project with the same name, and the IEA's own reference list for THIS entry includes an article about the UK one (D83)."
+  },
+  "845": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Perenco UK, Carbon Catalyst",
+   "licensee_claim": {
+    "speaker": "Oil & Gas Journal, reporting the award",
+    "says": "Perenco UK received a carbon storage license from the North Sea Transition Authority's first competitive carbon capture and storage (CCS) license round to progress the Poseidon project. Initial CO2 injection rates will be about 1.5 million tonnes/year, ramping up to 10 million tpy by 2030, and peaking at 40 million tpy by 2040.",
+    "url": "https://www.ogj.com/energy-transition/article/14297727/perenco-granted-storage-license-for-ukcs-poseidon-ccs-project",
+    "date": "2023-01-01"
+   },
+   "note": "THE CLAIM IS TRADE PRESS AND IS RECORDED AS SUCH, not as the licensee speaking. The exclusion does not turn on it."
+  },
+  "846": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Perenco UK, Carbon Catalyst",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "Phase 2 of the same licence-stage project."
+  },
+  "847": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Perenco UK, Carbon Catalyst",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "Phase 3 of the same licence-stage project."
+  },
+  "849": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "EnQuest",
+   "licensee_claim": {
+    "speaker": "EnQuest, own release",
+    "says": "EnQuest PLC awarded offer of carbon storage licences.",
+    "url": "https://www.enquest.com/media/news/2023/enquest-plc-awarded-offer-of-carbon-storage-licences.html",
+    "date": "2023-05-18"
+   },
+   "note": "AN OFFER OF LICENCES, which is one step earlier again than an award."
+  },
+  "850": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Perenco, Carbon Catalyst Limited",
+   "licensee_claim": {
+    "speaker": "Carbon Catalyst, quoted on the award",
+    "says": "CCSL is looking forward to supporting Perenco as they advance this important project towards final investment decision, ultimately aiming for first CO2 injection by 2031.",
+    "url": "https://www.offshore-energy.biz/perenco-and-carbon-catalyst-win-two-more-carbon-storage-licenses/",
+    "date": "2023-01-01"
+   },
+   "note": "THE LICENSEE'S OWN WORDS PUT FID IN THE FUTURE, which is the ruling's test failing on the licensee's own account."
+  },
+  "851": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Perenco, Carbon Catalyst Limited",
+   "licensee_claim": {
+    "speaker": "Carbon Catalyst, quoted on the award",
+    "says": "CCSL is looking forward to supporting Perenco as they advance this important project towards final investment decision, ultimately aiming for first CO2 injection by 2031.",
+    "url": "https://www.offshore-energy.biz/perenco-and-carbon-catalyst-win-two-more-carbon-storage-licenses/",
+    "date": "2023-01-01"
+   },
+   "note": "Phase 2 of the same licence-stage project."
+  },
+  "853": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Tellus (the licensee named on the NSTA award)",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "The entry's own name is the licence number: CS020 (Area 1). A licence number is not a store."
+  },
+  "854": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Tellus (the licensee named on the NSTA award)",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "The entry's own name is the licence number: CS021 (Area 5). A licence number is not a store."
+  },
+  "855": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Tellus (the licensee named on the NSTA award)",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "The entry's own name is the licence number: CS022 (Area 7). A licence number is not a store."
+  },
+  "856": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Shell, Esso",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "The IEA carries no capacity and no operation year for this entry."
+  },
+  "1069": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "the licensee of the Thorning exploration area",
+   "licensee_claim": {
+    "speaker": "Danish Energy Agency, the licensing authority",
+    "says": "On September 30th 2024, the DEA opened a licensing round for exploration in the subsurface around Thorning. If the area is shown to be suitable for environmentally safe storage of CO2, the licensee can apply for a storage permit. This permit can have a duration of up to 30 years.",
+    "url": "https://ens.dk/en/our-responsibilities/oil-gas/co2-storage",
+    "date": "2024-09-30"
+   },
+   "note": "THE REGULATOR STATES THE RULING'S OWN TEST. The Danish Energy Agency sets out the sequence in one sentence -- exploration licence first, storage permit only if the area proves suitable -- which is exactly the line the clause draws. Quoted here because a rule this register wrote is better carried by the authority that already drew it."
+  },
+  "841": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Equinor Low Carbon Solution",
+   "licensee_claim": {
+    "speaker": "Equinor, own account of work under the licence",
+    "says": "Deepsea Stavanger started drilling two appraisal wells at Smeaheia towards the end of 2024. One of the first things we did immediately after being awarded the Smeaheia licence was to acquire a new 3D seismic dataset.",
+    "url": "https://www.equinor.com/news/20240620-two-new-co2-storage-licenses-in-the-north-sea",
+    "date": "2024-06-20"
+   },
+   "note": "APPRAISAL DRILLING IS WORK UNDER A LICENCE, NOT A DEVELOPMENT PLAN. Equinor's own sentences describe seismic acquisition and two appraisal wells -- finding out whether the store is there, which is what the licence is for. Nothing read states a development plan or a storage permit. The entry is the store the Wilhelmshaven chain is drawn to, and it is excluded until its licensee says it is one."
+  },
+  "676": {
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Equinor Low Carbon Solution",
+   "licensee_claim": {
+    "speaker": "Equinor, same account",
+    "says": "Equinor has ambitions to develop further storage licenses in the North Sea in the coming years.",
+    "url": "https://www.equinor.com/news/20240620-two-new-co2-storage-licenses-in-the-north-sea",
+    "date": "2024-06-20"
+   },
+   "note": "Phase 2 of the same licence, and the IEA carries it as Cancelled. A cancelled phase of an exploration licence is still an exploration licence."
+  },
+  "325": {
+   "class": "admitted",
+   "row": "porthos",
+   "speaker": "Porthos (EBN, Gasunie, Port of Rotterdam), the project's own site",
+   "source": "https://www.porthosco2.nl/en/",
+   "verbatim": "Porthos is an innovative system for transporting and permanently and safely storing CO2 beneath the North Sea.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "IEA status Under construction, operation 2026."
+  },
+  "249": {
+   "class": "admitted",
+   "row": "porthos",
+   "speaker": "Porthos, the project's own site",
+   "source": "https://www.porthosco2.nl/en/",
+   "verbatim": "Porthos is an innovative system for transporting and permanently and safely storing CO2 beneath the North Sea.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "ONE PROJECT, TWO LIST ENTRIES: the IEA splits Porthos into offshore transport-and-storage (325) and onshore transport (249). Both class admitted and both name the one row, on the precedent set for Northern Lights and Prinos."
+  },
+  "32": {
+   "class": "admitted",
+   "row": "aramis",
+   "speaker": "Aramis (TotalEnergies, Shell, EBN, Gasunie), the project's own FAQ",
+   "source": "https://www.aramis-ccs.com/faq",
+   "verbatim": "The project expects to transport approximately 22 Million tonnes per annum (Mtpa) of CO2 to the storage locations.",
+   "capacity_stated": "approximately 22 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "ONE PROJECT, THREE LIST ENTRIES (storage phase 1). The 22 Mtpa is the project's figure for the whole chain and is recorded once, on the row."
+  },
+  "33": {
+   "class": "admitted",
+   "row": "aramis",
+   "speaker": "Aramis (TotalEnergies, Shell, EBN, Gasunie), the project's own FAQ",
+   "source": "https://www.aramis-ccs.com/faq",
+   "verbatim": "The project expects to transport approximately 22 Million tonnes per annum (Mtpa) of CO2 to the storage locations.",
+   "capacity_stated": "approximately 22 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "ONE PROJECT, THREE LIST ENTRIES (storage phase 2). The 22 Mtpa is the project's figure for the whole chain and is recorded once, on the row."
+  },
+  "19": {
+   "class": "admitted",
+   "row": "aramis",
+   "speaker": "Aramis (TotalEnergies, Shell, EBN, Gasunie), the project's own FAQ",
+   "source": "https://www.aramis-ccs.com/faq",
+   "verbatim": "The project expects to transport approximately 22 Million tonnes per annum (Mtpa) of CO2 to the storage locations.",
+   "capacity_stated": "approximately 22 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "ONE PROJECT, THREE LIST ENTRIES (transport phase 1). The 22 Mtpa is the project's figure for the whole chain and is recorded once, on the row."
+  },
+  "950": {
+   "class": "admitted",
+   "row": "co2next",
+   "speaker": "CO2next (Vopak, Gasunie), the project's own site",
+   "source": "https://co2next.nl/appeal-against-permits-for-aramis-initiative-2/",
+   "verbatim": "Given this duration and the necessary period after the ruling to reach a final investment decision (FID), the date for FID may move to 2027.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1. A LIQUID CO2 TERMINAL, which the CCS perimeter names in. The project's own page puts FID ahead of it, so the row lands announced."
+  },
+  "951": {
+   "class": "admitted",
+   "row": "co2next",
+   "speaker": "CO2next (Vopak, Gasunie), the project's own site",
+   "source": "https://co2next.nl/appeal-against-permits-for-aramis-initiative-2/",
+   "verbatim": "Given this duration and the necessary period after the ruling to reach a final investment decision (FID), the date for FID may move to 2027.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. A LIQUID CO2 TERMINAL, which the CCS perimeter names in. The project's own page puts FID ahead of it, so the row lands announced."
+  },
+  "1483": {
+   "class": "admitted",
+   "row": "seaseas-amsterdam",
+   "speaker": "SeaSeaS, the project's own site",
+   "source": "https://www.seaseas.nl/news/2922573_great-news-for-seaseas-amsterdam",
+   "verbatim": "It will be accessible via truck, rail and inland shipping, and will connect Amsterdam via seagoing vessels to all relevant offshore European CO2 storage sites.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "A shipping terminal at the Port of Amsterdam."
+  },
+  "285": {
+   "class": "unreadable",
+   "refusal_class": "URLError on the owner, trade press only",
+   "looked_in_order": [
+    "neptuneenergy.com/esg/l10-area-ccs-development — URLError, the owner's own project page",
+    "offshore-mag.com — 200, trade press reporting a study, not the owner"
+   ],
+   "note": "THE OWNER CANNOT BE READ. Eni acquired Neptune Energy and neptuneenergy.com no longer answers a declared reader, so the one owner page the IEA cites is gone with the company that published it."
+  },
+  "286": {
+   "class": "unreadable",
+   "refusal_class": "URLError on the owner, trade press only",
+   "looked_in_order": [
+    "neptuneenergy.com/esg/l10-area-ccs-development — URLError, the owner's own project page",
+    "offshore-mag.com — 200, trade press reporting a study, not the owner"
+   ],
+   "note": "THE OWNER CANNOT BE READ. Eni acquired Neptune Energy and neptuneenergy.com no longer answers a declared reader, so the one owner page the IEA cites is gone with the company that published it. The IEA carries this entry as Cancelled; nothing read here is the owner saying so."
+  },
+  "1409": {
+   "class": "admitted",
+   "row": "fluxys-c-grid-antwerp",
+   "speaker": "Fluxys, own release of 26 May 2025",
+   "source": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-started-in-antwerp-port-area",
+   "verbatim": "With this pipeline network Fluxys c-grid Antwerp will provide an essential part of the value chain through which the captured CO2 from Antwerp's industry and beyond can be transported.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "IEA status Under construction, operation 2029.",
+   "source_cited_before_repair": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-starts",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "31": {
+   "class": "admitted",
+   "row": "antwerp-c-export-hub",
+   "speaker": "Air Liquide, the lead partner, naming the hub",
+   "source": "https://www.airliquide.com/group/press-releases-news/2022-12-12/air-liquide-fluxys-belgium-and-port-antwerp-bruges-awarded-eu-funding-building-antwerpc-co2-export",
+   "verbatim": "The Antwerp@C CO2 Export Hub will have an initial export capacity of 2.5 million tonnes per annum (Mtpa), with the ambition to reach up to 10 Mtpa by 2030.",
+   "capacity_stated": "2.5 Mt CO2/yr initial, up to 10 Mt CO2/yr by 2030",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "phase 1. One hub, two list entries; the capacity is the hub's own figure and is recorded once.",
+   "source_cited_before_repair": "https://www.airliquide.com/group/press-releases-news/antwerp-c-co2-export-hub",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "585": {
+   "class": "admitted",
+   "row": "antwerp-c-export-hub",
+   "speaker": "Air Liquide, the lead partner, naming the hub",
+   "source": "https://www.airliquide.com/group/press-releases-news/2024-10-24/air-liquide-and-cementir-holding-group-receive-support-european-innovation-fund-carbon-capture-and",
+   "verbatim": "The Antwerp@C CO2 Export Hub will have an initial export capacity of 2.5 million tonnes per annum (Mtpa), with the ambition to reach up to 10 Mtpa by 2030.",
+   "capacity_stated": "2.5 Mt CO2/yr initial, up to 10 Mt CO2/yr by 2030",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "phase 2. One hub, two list entries; the capacity is the hub's own figure and is recorded once.",
+   "source_cited_before_repair": "https://www.airliquide.com/group/press-releases-news/antwerp-c-co2-export-hub",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "1477": {
+   "class": "admitted",
+   "row": "fluxys-c-grid-belgium",
+   "speaker": "Fluxys, own press release",
+   "source": "https://www.fluxys.com/en/press-releases/fluxys-belgium/2023/230920_press_co2-network-operator-fluxys-c-grid",
+   "verbatim": "The phased development of this open-access pipeline network in the Walloon Region will connect industrial CO2 emitters with CO2 exit points towards permanent storage or reuse.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "source_cited_before_repair": "https://www.fluxys.com/en/press-releases/fluxys-belgium/2025/251025-press-fluxys-c-grid-walloon",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "532": {
+   "class": "admitted",
+   "row": "ghent-carbon-hub",
+   "speaker": "Fluxys, with ArcelorMittal and North Sea Port",
+   "source": "https://www.fluxys.com/en/press-releases/fluxys-group/2022/220818_press_ghent_carbon_hub",
+   "verbatim": "Carbon capture, utilisation and storage (CCUS) is essential for CO2 intensive industries to achieve net zero emissions.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "A hub, which the CCS perimeter names in. `shared` is the standing rule here: a hub serving steel and other industries is claimed by no single ecosystem.",
+   "source_cited_before_repair": "https://www.fluxys.com/en/projects/ghent-carbon-hub",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "677": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "wintershalldea.com — 200, but the readable sentences are about that company's own 30 Mt ambition and do not name this corridor",
+    "wintershalldea.com second reference — 404",
+    "oge.net/de/co2/co2-netz — 200, OGE's own corridor list names German Carbon Transport Grid, WHV CO2 Corridor, Delta Rhine Corridor, DK CO2 Corridor and Cluster Elbe, and does NOT name a Zeebrugge-Germany North Sea corridor"
+   ],
+   "note": "Fluxys and OGE are the named partners and neither names this corridor on the pages read. The IEA announces 20 Mt/yr against a 2030 date."
+  },
+  "664": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU funder's",
+   "source": "https://cinea.ec.europa.eu/",
+   "speaker": "CINEA, the EU funding agency",
+   "verbatim": "This funding supports the construction of a 33 km long onshore pipeline connecting industrial emitters in the port of Rotterdam, a compressor station of 20 MW located at Aziëweg.",
+   "note": "AN OFFICIAL RECORD IS NOT THE COMPANY. The admission test asks for the operator's own confirmation, and the partners named — Port of Rotterdam, Port of Antwerp, North Sea Port, Fluxys — say nothing readable here about this phase. The EU record is kept because it names the works precisely, and it is what a later pass starts from."
+  },
+  "1474": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "energy.ec.europa.eu document download — 404, the IEA's only reference"
+   ],
+   "note": "Interconnector and Fluxys are the named partners. The IEA's single reference is a dead EU document link and nothing else was located."
+  },
+  "335": {
+   "class": "admitted",
+   "row": "greensand",
+   "speaker": "Project Greensand (INEOS, Harbour Energy, Welltec), the project's own site",
+   "source": "https://projectgreensand.com/",
+   "verbatim": "Carbon Capture & Storage (CCS) is an important technology in this transition.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1, Under construction, operation 2026. Wintershall Dea's release states the area 'is expected to hold storage potential of 0.5-1 million tonnes of CO2 per year by 2025, increasing to a potential 4-8 million tonnes of CO2 per year by 2030' — A POTENTIAL, NOT A CAPACITY, and it is not written onto the row."
+  },
+  "336": {
+   "class": "admitted",
+   "row": "greensand",
+   "speaker": "Project Greensand (INEOS, Harbour Energy, Welltec), the project's own site",
+   "source": "https://projectgreensand.com/",
+   "verbatim": "Carbon Capture & Storage (CCS) is an important technology in this transition.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. Wintershall Dea's release states the area 'is expected to hold storage potential of 0.5-1 million tonnes of CO2 per year by 2025, increasing to a potential 4-8 million tonnes of CO2 per year by 2030' — A POTENTIAL, NOT A CAPACITY, and it is not written onto the row."
+  },
+  "331": {
+   "class": "admitted",
+   "row": "bifrost",
+   "speaker": "Project Bifrost, the project's own site",
+   "source": "https://bifrost-ccs.com/",
+   "verbatim": "When oil and gas production gradually cease, the use of existing infrastructure for carbon capture and storage is an attractive alternative from both a climate and economic perspective.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1. One project, two list entries.",
+   "source_cited_before_repair": "https://news.cision.com/totalenergies/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "682": {
+   "class": "admitted",
+   "row": "bifrost",
+   "speaker": "Project Bifrost, the project's own site",
+   "source": "https://bifrost-ccs.com/",
+   "verbatim": "When oil and gas production gradually cease, the use of existing infrastructure for carbon capture and storage is an attractive alternative from both a climate and economic perspective.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. One project, two list entries.",
+   "source_cited_before_repair": "https://news.cision.com/totalenergies/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "670": {
+   "class": "admitted",
+   "row": "norne-gassum",
+   "speaker": "Fidelis New Energy, own release",
+   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+   "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Gassum store and the Fyrkat network. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "671": {
+   "class": "admitted",
+   "row": "norne-havnso",
+   "speaker": "Fidelis New Energy, own release",
+   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+   "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Havnso store and the Trelleborg network. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "672": {
+   "class": "admitted",
+   "row": "norne-aalborg-terminal",
+   "speaker": "Fidelis New Energy, own release",
+   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+   "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Port of Aalborg terminal and its pipeline to Fyrkat. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it. IEA status Under construction, operation 2026.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "673": {
+   "class": "admitted",
+   "row": "norne-kalundborg-terminal",
+   "speaker": "Fidelis New Energy, own release",
+   "source": "https://norneccs.com/en/news/",
+   "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Port of Kalundborg terminal and its pipeline. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "674": {
+   "class": "admitted",
+   "row": "norne-kalundborg-terminal",
+   "speaker": "Fidelis New Energy, own release",
+   "source": "https://norneccs.com/en/news/",
+   "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the same Kalundborg terminal at a second announced capacity. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "784": {
+   "class": "unreadable",
+   "refusal_class": "404 on both references, owner included",
+   "looked_in_order": [
+    "ens.dk — 404",
+    "carboncuts.dk — 404, the owner's own site"
+   ],
+   "note": "CarbonCuts is the named owner and its own domain answers 404 on the path the IEA cites. phase 1."
+  },
+  "785": {
+   "class": "unreadable",
+   "refusal_class": "404 on both references, owner included",
+   "looked_in_order": [
+    "ens.dk — 404",
+    "carboncuts.dk — 404, the owner's own site"
+   ],
+   "note": "CarbonCuts is the named owner and its own domain answers 404 on the path the IEA cites. phase 2."
+  },
+  "786": {
+   "class": "unreadable",
+   "refusal_class": "404 on the regulator, 403 on the trade wire",
+   "looked_in_order": [
+    "ens.dk — 404",
+    "businesswire.com — 403"
+   ],
+   "note": "Gas Storage Denmark is the named owner and neither reference reaches anything readable."
+  },
+  "675": {
+   "class": "admitted",
+   "row": "german-carbon-transport-grid",
+   "speaker": "Open Grid Europe, own CO2 network page",
+   "source": "https://www.oge.net/de/co2/co2-netz",
+   "verbatim": "Projekte und Korridore: German Carbon Transport Grid, WHV CO2 Corridor, Delta Rhine Corridor, Ruhbens, DK CO2 Corridor, Cluster Elbe.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE OWNER'S OWN CORRIDOR LIST IS THE CONFIRMATION. OGE names this grid among the projects it is building, and the same page is what refuses IEA 677: no Zeebrugge-Germany North Sea corridor appears on it."
+  },
+  "1114": {
+   "class": "admitted",
+   "row": "goco2-transport",
+   "speaker": "Heidelberg Materials France, a named partner, on the GOCO2 chain",
+   "source": "https://www.heidelbergmaterials.fr/fr/groupe-goco2-un-projet-denvergure-de-captage-de-conditionnement-et-de-transport-du-co2-dorigine-industrielle-en-pays-de-la-loire-et-pour-le-grand-ouest",
+   "verbatim": "GOCO2 rassemble plusieurs operations complementaires permettant le captage du CO2 et son transport, en vue de son stockage geologique permanent.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE TRANSPORT LEG OF THE CHAIN THIS CENSUS ALREADY ADMITTED TWO CAPTURE ROWS INTO — airvault-goco2 and saint-pierre-la-cour-goco2. An adjacency, recorded and not drawn.",
+   "source_cited_before_repair": "https://www.heidelbergmaterials.fr/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "1139": {
+   "class": "admitted",
+   "row": "natran-co2-backbone",
+   "speaker": "Natran (formerly GRTgaz), own CCUS pages",
+   "source": "https://www.grtgaz.com/en/our-energy-transition/co2-transport",
+   "verbatim": "GRTgaz is developing dedicated transmission networks contributing to transport CO2 from the French industrial sites where it is captured to storage and utilisation sites.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE COMPANY RENAMED ITSELF. The IEA carries 'Natran Group' and the readable pages are GRTgaz's; the rename is the publisher's own and is recorded rather than treated as two companies.",
+   "source_cited_before_repair": "https://www.grtgaz.com/en/our-activities/our-projects/ccus",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "1179": {
+   "class": "admitted",
+   "row": "co2-highway-europe",
+   "speaker": "Equinor, with Fluxys and Natran",
+   "source": "https://www.equinor.com/energy/co2highwayeurope",
+   "verbatim": "It includes 16 emitters in 10 countries, 31 capture sites, and storage of around 34 million tonnes of CO2 per year at two storage sites in the North Sea.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE 34 Mt IS THE WHOLE EUROPEAN CHAIN'S FIGURE, not this pipeline's, and is not written onto the row. The IEA announces 18-27 Mt/yr for the entry.",
+   "source_cited_before_repair": "https://www.equinor.com/news/co2-highway-europe",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "1471": {
+   "class": "admitted",
+   "row": "carbonbridge",
+   "speaker": "Ambrian Energy, Messer and Bremenports, the project's own site",
+   "source": "https://www.carbonbridge.de/",
+   "verbatim": "CO2 storage involves two main steps: First, CO2 is captured directly from sources like power plants or industrial facilities.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "A CO2 terminal project at Bremerhaven. The project site is the owner's; the gasworld report of the completed early-stage study corroborates it and is not the admitting source."
+  },
+  "1267": {
+   "class": "admitted",
+   "row": "carbon-connect-delta",
+   "speaker": "Fluxys, a named partner",
+   "source": "https://www.fluxys.com/en/news/fluxys-group/2020/200527_news_carbon_emissions_scheldt_delta",
+   "verbatim": "Carbon Connect Delta project: potential to cut CO2 emissions 30% by 2030.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "benchmark_claim": {
+    "claimed_by": "iea_ccus_projects_database",
+    "field": "status",
+    "value": "Cancelled",
+    "owner_states": null,
+    "note": "D81: a cancellation is a stop event only from the owner or the consortium. Smart Delta Resources' own page answers with 905 characters and says nothing about a cancellation, and Fluxys' project page still carries the project. The row lands on its announcement and carries the list's status as the list's claim."
+   },
+   "source_cited_before_repair": "https://www.fluxys.com/en/projects/carbon-connect-delta",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "121": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU funder's",
+   "speaker": "European Commission funding record",
+   "source": "https://ec.europa.eu/",
+   "note": "AN OFFICIAL RECORD IS NOT THE COMPANY, as at IEA 664. Air Liquide France Industrie and the Port of Dunkerque are named partners and neither is readable here on D'Artagnan phase 1. The register already holds k6-lumbres, whose storage note cites Dunkerque l'Energie Creative naming Lumbres as feeding this hub — a third party describing the chain, which is not the hub's operator confirming the hub."
+  },
+  "122": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU funder's",
+   "speaker": "European Commission funding record",
+   "source": "https://ec.europa.eu/",
+   "note": "AN OFFICIAL RECORD IS NOT THE COMPANY, as at IEA 664. Air Liquide France Industrie and the Port of Dunkerque are named partners and neither is readable here on D'Artagnan phase 2. The register already holds k6-lumbres, whose storage note cites Dunkerque l'Energie Creative naming Lumbres as feeding this hub — a third party describing the chain, which is not the hub's operator confirming the hub."
+  },
+  "123": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU funder's",
+   "speaker": "European Commission funding record",
+   "source": "https://ec.europa.eu/",
+   "note": "AN OFFICIAL RECORD IS NOT THE COMPANY, as at IEA 664. Air Liquide France Industrie and the Port of Dunkerque are named partners and neither is readable here on D'Artagnan phase 3. The register already holds k6-lumbres, whose storage note cites Dunkerque l'Energie Creative naming Lumbres as feeding this hub — a third party describing the chain, which is not the hub's operator confirming the hub."
+  },
+  "126": {
+   "class": "unreadable",
+   "refusal_class": "200 with an empty body",
+   "looked_in_order": [
+    "shell.nl — 200, empty body, twice; the article renders client-side"
+   ],
+   "note": "THE HYDROGEN LESSON AGAIN. A link checker calls this page live because it is; what it is not is a source anybody can quote. Gasunie, OGE, Shell and BASF are the named partners and only Shell's domain is cited."
+  },
+  "343": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "reuters.com — 401",
+    "carbongap.org — 403",
+    "zeroemissionsplatform.eu candidate-projects PDF — 200, carries nothing about PYCASSO"
+   ],
+   "note": "Terega is the lead named partner and nothing readable names the hub. phase 1. The IEA announces 1-3 Mt/yr for phase 1 and 6 Mt/yr for phase 2."
+  },
+  "685": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "reuters.com — 401",
+    "carbongap.org — 403",
+    "zeroemissionsplatform.eu candidate-projects PDF — 200, carries nothing about PYCASSO"
+   ],
+   "note": "Terega is the lead named partner and nothing readable names the hub. phase 2. The IEA announces 1-3 Mt/yr for phase 1 and 6 Mt/yr for phase 2."
+  },
+  "527": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "wintershalldea.com — 404, the sole named partner's own domain"
+   ],
+   "note": "Harbour Energy (formerly Wintershall Dea) is the only named partner and the IEA's only reference is a dead path on its site."
+  },
+  "528": {
+   "class": "named not admitted",
+   "failed_leg": "the partner speaks about itself, not about this project",
+   "speaker": "Wintershall Dea",
+   "source": "https://wintershalldea.com/en/newsroom/",
+   "verbatim": "In addition, we plan to reduce emissions resulting from the use of hydrocarbons by applying CCS and low-carbon hydrogen technologies, potentially building up a business abating 20-30 million tonnes of CO2 per annum by 2040.",
+   "note": "A company ambition, not a statement about the CO2T pipeline. Gassco, Equinor, Harbour, Northern Lights and TotalEnergies are the named partners."
+  },
+  "652": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "ec.europa.eu — 404, the IEA's only reference"
+   ],
+   "note": "Air Liquide, Eni and Snam are the named partners; the IEA's single reference is a dead EU link. phase 1."
+  },
+  "653": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "ec.europa.eu — 404, the IEA's only reference"
+   ],
+   "note": "Air Liquide, Eni and Snam are the named partners; the IEA's single reference is a dead EU link. phase 2."
+  },
+  "654": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "ec.europa.eu — 404",
+    "carbonbridge.de — 200, but it is a DIFFERENT project (IEA 1471) and says nothing about C Zero"
+   ],
+   "note": "Air Liquide, Lhoist and Duisport are the named partners. phase 1. THE SECOND REFERENCE IS A NEAR-NAME TRAP: carbonbridge.de is readable and is not about this entry."
+  },
+  "655": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "ec.europa.eu — 404",
+    "carbonbridge.de — 200, but it is a DIFFERENT project (IEA 1471) and says nothing about C Zero"
+   ],
+   "note": "Air Liquide, Lhoist and Duisport are the named partners. phase 2. THE SECOND REFERENCE IS A NEAR-NAME TRAP: carbonbridge.de is readable and is not about this entry."
+  },
+  "656": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "ec.europa.eu — 404",
+    "carbonbridge.de — 200, but it is a DIFFERENT project (IEA 1471) and says nothing about C Zero"
+   ],
+   "note": "Air Liquide, Lhoist and Duisport are the named partners. phase 3. THE SECOND REFERENCE IS A NEAR-NAME TRAP: carbonbridge.de is readable and is not about this entry."
+  },
+  "678": {
+   "class": "named not admitted",
+   "failed_leg": "the hub is readable and this terminal is not named on it",
+   "speaker": "Energy Hub Wilhelmshaven, the site association",
+   "source": "https://www.energyhub-wilhelmshaven.de/projekte",
+   "verbatim": "Tree Energy Solutions GmbH — TES: Oxyfuel-Kraftwerk Green Energy Hub WHV, 2030.",
+   "note": "TES is the named partner and the Wilhelmshaven hub's own project list carries a TES oxyfuel power plant and an LNG terminal, and no WH2V CO2 terminal. The IEA's country for this entry is 'Multiple Europe', which is the only such value in the European set."
+  },
+  "649": {
+   "class": "named not admitted",
+   "failed_leg": "the partner states its own CCS ambition and does not name this project",
+   "speaker": "Air Liquide",
+   "source": "https://www.airliquide.com/",
+   "verbatim": "Carbon Capture and Storage is essential in achieving our mid-term ambition of a 30 % reduction in absolute CO2 emissions in 2030 compared to 2018.",
+   "note": "Air Liquide, Borealis, North Atlantic and TotalEnergies are the named partners; the ExxonMobil reference carries nothing about ECO2Normandy either."
+  },
+  "8": {
+   "class": "admitted",
+   "row": "acorn-ccs",
+   "speaker": "The Acorn Project (Storegga, Shell, Harbour, North Sea Midstream), own site",
+   "source": "https://www.theacornproject.uk/",
+   "verbatim": "Scotland's CO2 transport and storage network. Delivering carbon storage infrastructure to support economic growth, jobs and the UK's energy transition.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1. One project, two list entries."
+  },
+  "9": {
+   "class": "admitted",
+   "row": "acorn-ccs",
+   "speaker": "The Acorn Project (Storegga, Shell, Harbour, North Sea Midstream), own site",
+   "source": "https://www.theacornproject.uk/",
+   "verbatim": "Scotland's CO2 transport and storage network. Delivering carbon storage infrastructure to support economic growth, jobs and the UK's energy transition.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. One project, two list entries."
+  },
+  "265": {
+   "class": "admitted",
+   "row": "liverpool-bay-ccs",
+   "speaker": "Eni, the operator of transport and storage for HyNet North West",
+   "source": "https://www.eni.com/en-IT/media/press-release/2023/03/eni-as-the-key-ccs-developer-in-the-uk.html",
+   "verbatim": "Eni, operator of the transport and storage of carbon dioxide for HyNet North West... the CO2 will be gathered, transported and permanently stored by Eni in its own depleted gas fields off the coast of Liverpool Bay.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1, Under construction, operation 2028."
+  },
+  "266": {
+   "class": "admitted",
+   "row": "liverpool-bay-ccs",
+   "speaker": "Eni, the operator of transport and storage for HyNet North West",
+   "source": "https://www.eni.com/en-IT/media/press-release/2023/03/eni-as-the-key-ccs-developer-in-the-uk.html",
+   "verbatim": "Eni, operator of the transport and storage of carbon dioxide for HyNet North West... the CO2 will be gathered, transported and permanently stored by Eni in its own depleted gas fields off the coast of Liverpool Bay.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2."
+  },
+  "519": {
+   "class": "admitted",
+   "row": "bacton-ccs",
+   "speaker": "Eni UK, own release",
+   "source": "https://www.eni.com/en-IT/media/press-release/2022/09/eni-uk-applies-for-carbon-storage-license-for-hewett-depleted-field.html",
+   "verbatim": "Eni UK will play a pivotal role in this industry-led initiative by transporting and storing CO2 in its Hewett depleted gas field, that could be operational as early as 2027. The Hewett depleted gas field is an ideal site for permanent and safe CO2 storage with a total capacity of about 330 million tonnes.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "A TOTAL CAPACITY IS NOT AN ANNUAL ONE. Eni states 330 Mt as what the field holds; the IEA announces 5-10 Mt per YEAR. Different quantities, and neither is written onto the row as the other.",
+   "source_cited_before_repair": "https://www.eni.com/en-IT/media/press-release/2022/09/eni-uk-applies-for-carbon-storage-license.html",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "403": {
+   "class": "admitted",
+   "row": "viking-ccs",
+   "speaker": "Viking CCS (Harbour Energy operator, BP), own site",
+   "source": "https://www.vikingccs.co.uk/",
+   "verbatim": "Viking CCS — our onshore pipeline, our offshore pipeline, secure CO2 storage.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1. One project, three list entries. Phase 3's own page adds that shipping options are under discussion with Associated British Ports."
+  },
+  "404": {
+   "class": "admitted",
+   "row": "viking-ccs",
+   "speaker": "Viking CCS (Harbour Energy operator, BP), own site",
+   "source": "https://www.vikingccs.co.uk/",
+   "verbatim": "Viking CCS — our onshore pipeline, our offshore pipeline, secure CO2 storage.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. One project, three list entries. Phase 3's own page adds that shipping options are under discussion with Associated British Ports."
+  },
+  "705": {
+   "class": "admitted",
+   "row": "viking-ccs",
+   "speaker": "Viking CCS (Harbour Energy operator, BP), own site",
+   "source": "https://www.vikingccs.co.uk/",
+   "verbatim": "Viking CCS — our onshore pipeline, our offshore pipeline, secure CO2 storage.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 3. One project, three list entries. Phase 3's own page adds that shipping options are under discussion with Associated British Ports."
+  },
+  "570": {
+   "class": "admitted",
+   "row": "medway-hub-ccs",
+   "speaker": "Synergia Energy, own technical presentation",
+   "source": "https://www.synergiaenergy.com/sites/synergia-energy-ltd/files/synergia-energy-ltd/operations/united-kingdom/medway-hub-ccs-r7-we.pdf",
+   "verbatim": "Forbes CO2 Storage Reservoir — Forbes depth structure map at top of Bunter SST.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE OWNER'S OWN DOCUMENT IS A PDF and is read as one. The entry also holds an NSTA carbon storage licence, and unlike the licence-only entries it names a hub and a reservoir the owner has mapped.",
+   "source_cited_before_repair": "https://www.synergiaenergy.com/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "615": {
+   "class": "admitted",
+   "row": "morecambe-net-zero",
+   "speaker": "Spirit Energy, own release quoting its chief executive",
+   "source": "https://www.spirit-energy.com/newsroom/press-releases/spirit-energy-launches-plan-for-carbon-storage-cluster/",
+   "verbatim": "Neil McCulloch, CEO of Spirit Energy, said: “Our project will introduce cost-effective decarbonisation to businesses all over the UK, with a multi-billion-pound investment.”",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "mnzcluster.com, the project's own cluster site, answers URLError.",
+   "source_cited_before_repair": "https://www.spirit-energy.com/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "768": {
+   "class": "admitted",
+   "row": "peak-cluster-transport",
+   "speaker": "The Peak Cluster, the project's own site",
+   "source": "https://www.peakcluster.co.uk/",
+   "verbatim": "Located in the Peak District, the project will prevent over 3 million tonnes of carbon dioxide emissions each year by 2030.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE FIGURE IS AN AVOIDED-EMISSIONS FIGURE FOR THE WHOLE CLUSTER, not this pipeline's capacity, and is not written onto the row. IEA 1065, Cauldon, is one of the cement works this cluster would carry; that entry is named and not admitted.",
+   "source_cited_before_repair": "https://www.peakcluster.co.uk/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "904": {
+   "class": "admitted",
+   "row": "tranmere-stanlow-terminal",
+   "speaker": "Stanlow Terminals (Essar Energy Transition), own site",
+   "source": "https://www.stanlowterminals.co.uk/stanlow-terminals-and-eni-uk-sign-a-mou-to-develop-carbon-dioxide-transport-and-storage-projects/",
+   "verbatim": "The proposed terminal will play a critical role in enabling carbon capture, utilisation and storage (CCUS) infrastructure by facilitating the import and handling of CO2.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "source_cited_before_repair": "https://www.stanlowterminals.co.uk/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "1233": {
+   "class": "admitted",
+   "row": "sullom-voe-hub",
+   "speaker": "Veri Energy (EnQuest), own site",
+   "source": "https://verienergy.com/pages/sullom-voe-terminal",
+   "verbatim": "The captured CO2, anticipated to be up to 1 million tonnes per annum, will be transported a short distance to Veri Energy's planned carbon storage hub for permanent sequestration.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "One terminal and hub, three list entries by date (operation 2033). THE TERMINAL IS ADMITTED AND THE STORE IS NOT: Veri Energy holds four carbon storage licences, and a licence is excluded by the Q2 ruling. What the row holds is the terminal at Sullom Voe."
+  },
+  "1510": {
+   "class": "admitted",
+   "row": "sullom-voe-hub",
+   "speaker": "Veri Energy (EnQuest), own site",
+   "source": "https://verienergy.com/pages/sullom-voe-terminal",
+   "verbatim": "The captured CO2, anticipated to be up to 1 million tonnes per annum, will be transported a short distance to Veri Energy's planned carbon storage hub for permanent sequestration.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "One terminal and hub, three list entries by date (operation 2038). THE TERMINAL IS ADMITTED AND THE STORE IS NOT: Veri Energy holds four carbon storage licences, and a licence is excluded by the Q2 ruling. What the row holds is the terminal at Sullom Voe."
+  },
+  "1511": {
+   "class": "admitted",
+   "row": "sullom-voe-hub",
+   "speaker": "Veri Energy (EnQuest), own site",
+   "source": "https://verienergy.com/pages/sullom-voe-terminal",
+   "verbatim": "The captured CO2, anticipated to be up to 1 million tonnes per annum, will be transported a short distance to Veri Energy's planned carbon storage hub for permanent sequestration.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "One terminal and hub, three list entries by date (operation 2040). THE TERMINAL IS ADMITTED AND THE STORE IS NOT: Veri Energy holds four carbon storage licences, and a licence is excluded by the Q2 ruling. What the row holds is the terminal at Sullom Voe."
+  },
+  "294": {
+   "class": "named not admitted",
+   "failed_leg": "no readable owner source for the transport-and-storage partnership",
+   "speaker": "Net Zero Teesside, the cluster site",
+   "source": "https://www.netzeroteesside.co.uk/",
+   "verbatim": "NZT Power aims to be the world's first gas-fired power station with carbon capture and storage. Construction work is underway, with start-up expected in 2028.",
+   "looked_in_order": [
+    "netzeroteesside.co.uk/northern-endurance-partnership/ — 404, the IEA's own reference",
+    "netzeroteesside.co.uk root — 200, and it describes NZT POWER, the capture plant, not the NEP transport and storage partnership",
+    "nzt.co.uk — 200, empty body",
+    "upstreamonline.com — 200, trade press",
+    "eni.com (phase 2's reference) — 404",
+    "gov.louisiana.gov (phase 3's reference) — 404, and it is a reference to a different project on another continent (D83)"
+   ],
+   "note": "phase 1, which the IEA calls Under construction. BP, Equinor and TotalEnergies are the named partners and none of their own pages was read. THE CLUSTER SITE IS NOT THE PARTNERSHIP: NZT Power is a gas-fired power station with capture, which this sector's perimeter refuses anyway with the clause 'capture, power (gas)'. A later pass should read BP's own page; this class is what says nobody has."
+  },
+  "452": {
+   "class": "named not admitted",
+   "failed_leg": "no readable owner source for the transport-and-storage partnership",
+   "speaker": "Net Zero Teesside, the cluster site",
+   "source": "https://www.netzeroteesside.co.uk/",
+   "verbatim": "NZT Power aims to be the world's first gas-fired power station with carbon capture and storage. Construction work is underway, with start-up expected in 2028.",
+   "looked_in_order": [
+    "netzeroteesside.co.uk/northern-endurance-partnership/ — 404, the IEA's own reference",
+    "netzeroteesside.co.uk root — 200, and it describes NZT POWER, the capture plant, not the NEP transport and storage partnership",
+    "nzt.co.uk — 200, empty body",
+    "upstreamonline.com — 200, trade press",
+    "eni.com (phase 2's reference) — 404",
+    "gov.louisiana.gov (phase 3's reference) — 404, and it is a reference to a different project on another continent (D83)"
+   ],
+   "note": "phase 2. BP, Equinor and TotalEnergies are the named partners and none of their own pages was read. THE CLUSTER SITE IS NOT THE PARTNERSHIP: NZT Power is a gas-fired power station with capture, which this sector's perimeter refuses anyway with the clause 'capture, power (gas)'. A later pass should read BP's own page; this class is what says nobody has."
+  },
+  "460": {
+   "class": "named not admitted",
+   "failed_leg": "no readable owner source for the transport-and-storage partnership",
+   "speaker": "Net Zero Teesside, the cluster site",
+   "source": "https://www.netzeroteesside.co.uk/",
+   "verbatim": "NZT Power aims to be the world's first gas-fired power station with carbon capture and storage. Construction work is underway, with start-up expected in 2028.",
+   "looked_in_order": [
+    "netzeroteesside.co.uk/northern-endurance-partnership/ — 404, the IEA's own reference",
+    "netzeroteesside.co.uk root — 200, and it describes NZT POWER, the capture plant, not the NEP transport and storage partnership",
+    "nzt.co.uk — 200, empty body",
+    "upstreamonline.com — 200, trade press",
+    "eni.com (phase 2's reference) — 404",
+    "gov.louisiana.gov (phase 3's reference) — 404, and it is a reference to a different project on another continent (D83)"
+   ],
+   "note": "phase 3. BP, Equinor and TotalEnergies are the named partners and none of their own pages was read. THE CLUSTER SITE IS NOT THE PARTNERSHIP: NZT Power is a gas-fired power station with capture, which this sector's perimeter refuses anyway with the clause 'capture, power (gas)'. A later pass should read BP's own page; this class is what says nobody has."
+  },
+  "546": {
+   "class": "unreadable",
+   "refusal_class": "URLError on the owner, empty body on the second reference",
+   "looked_in_order": [
+    "protos.co.uk — URLError, the project's own site",
+    "youtube.com — 200, empty body"
+   ],
+   "note": "Peel NRE and Progressive Energy are the named partners. phase 1. A VIDEO IS NOT A SOURCE THIS READER CAN QUOTE, and the IEA cites one."
+  },
+  "547": {
+   "class": "unreadable",
+   "refusal_class": "URLError on the owner, empty body on the second reference",
+   "looked_in_order": [
+    "protos.co.uk — URLError, the project's own site",
+    "youtube.com — 200, empty body"
+   ],
+   "note": "Peel NRE and Progressive Energy are the named partners. phase 2. A VIDEO IS NOT A SOURCE THIS READER CAN QUOTE, and the IEA cites one."
+  },
+  "907": {
+   "class": "named not admitted",
+   "failed_leg": "trade press only; no source from either joint-venture partner",
+   "speaker": "Offshore Energy, trade press",
+   "source": "https://www.offshore-energy.biz/",
+   "verbatim": "It is estimated that the potential market in the United Kingdom alone is over 30 million tonnes of CO2 per annum from emitters who are not proximate to existing infrastructure.",
+   "note": "THE 30 Mt IS A MARKET ESTIMATE, NOT A CAPACITY, and the IEA carries 30 Mt/yr as this entry's announced capacity. Navigator Holdings and Bumi Armada are the named partners and neither was read."
+  },
+  "1018": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "netl.doe.gov/coal/carbon-storage/atlas/secarb — 403, AND IT IS A UNITED STATES ATLAS (D83), not a reference to this project at all"
+   ],
+   "note": "THE IEA'S ONLY REFERENCE FOR THIS ENTRY IS ABOUT A DIFFERENT CONTINENT. Acorn and Uniper are the named partners; the Acorn project's own site was read for IEA 8 and 9 and says nothing about an Isle of Grain to Peterhead shipping route."
+  },
+  "774": {
+   "class": "named not admitted",
+   "failed_leg": "the partner announces its own funding and does not name this terminal train",
+   "speaker": "enfinium",
+   "source": "https://enfinium.co.uk/",
+   "verbatim": "The announcement follows the Government's commitment in the Spring Statement to support the UK's fledgling carbon capture and storage industry with up to £20bn.",
+   "note": "Enfinium, Navigator CO2 and Bechtel are the named partners. The IEA carries no capacity and no operation year for this entry either."
+  },
+  "1403": {
+   "class": "admitted",
+   "row": "grenaa-port-terminal",
+   "speaker": "Normod Carbon, own site",
+   "source": "https://normodcarbon.com/",
+   "verbatim": "The industrial regions of Northern Europe face more than 70 million tonnes per year of planned CO2 capture - but very few have access to practical export routes.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1. One terminal, two list entries."
+  },
+  "1404": {
+   "class": "admitted",
+   "row": "grenaa-port-terminal",
+   "speaker": "Normod Carbon, own site",
+   "source": "https://normodcarbon.com/",
+   "verbatim": "The industrial regions of Northern Europe face more than 70 million tonnes per year of planned CO2 capture - but very few have access to practical export routes.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. One terminal, two list entries."
+  },
+  "1503": {
+   "class": "admitted",
+   "row": "co2-storage-kalundborg",
+   "speaker": "CO2 Storage Kalundborg (Equinor, Orsted, Nordsofonden), the project's own site",
+   "source": "https://co2storagekalundborg.com/",
+   "verbatim": "Three companies are behind CO2 Storage Kalundborg.",
+   "capacity_stated": null,
+   "capacity_unit": null
+  },
+  "1504": {
+   "class": "admitted",
+   "row": "greenstore",
+   "speaker": "Projekt Greenstore (Harbour Energy, INEOS Energy, Nordsofonden), own site",
+   "source": "https://greenstore.dk/en/home-page/",
+   "verbatim": "In 1996, a capture plant was installed in the Norwegian North Sea, which has since captured and stored 1 million tonnes of CO2 annually.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE QUOTED SENTENCE IS ABOUT SLEIPNER, NOT THIS PROJECT — it is the page's framing. The admission rests on the project site existing under the operators' names and describing the Greenstore project; no capacity is taken from it."
+  },
+  "1446": {
+   "class": "admitted",
+   "row": "apolloco2-revithoussa",
+   "speaker": "DESFA, the Greek gas transmission operator and named partner",
+   "source": "https://www.desfa.gr/en/desfa-secures-e169-3-million-eu-innovation-fund-grant-for-apolloco%e2%82%82-advancing-greeces-first-large-scale-ccs-midstream-infrastructure/",
+   "verbatim": "APOLLOCO2 provides the critical midstream link in Greece's emerging CCS value chain, connecting CO2 capture investments with storage facilities.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "The midstream link for the chain this census already admitted olympus-milaki into, and which prinos-co2-storage sits at the end of. An adjacency, recorded and not drawn.",
+   "source_cited_before_repair": "https://www.desfa.gr/en/desfa-secures-e169-3-million-eu-innovation-fund-grant-for-apolloco2",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "683": {
+   "class": "admitted",
+   "row": "ccs-baltic-klaipeda",
+   "speaker": "CCS Baltic Consortium, the project's own site",
+   "source": "https://ccs-baltic.eu/",
+   "verbatim": "The CO2 emissions will be captured at cement plants operated by SCHWENK Latvija (Latvia) and Akmenes cementas (Lithuania).",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE PROJECT NAMES THE CEMENT WORKS AT THE OTHER END, and one of them is broceni-ccs, admitted by this census. An adjacency."
+  },
+  "772": {
+   "class": "admitted",
+   "row": "starfish-havstjerne",
+   "speaker": "Altera Infrastructure, own article",
+   "source": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
+   "verbatim": "The storage, with an annual capacity estimated at 7 million tonnes per annum (Mtpa), is located 100 kilometers southwest of Egersund, Norway.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "ONE PROJECT FAMILY OVER THREE LIST ENTRIES (the STARFISH project); the IEA's own hub column puts all three under Altera Stella Maris or STARFISH. THE VESSEL IS ADMITTED AND THE LICENCE IS NOT: what the row holds is the floating storage and injection infrastructure, not the Havstjerne exploration licence, which the Q2 ruling excludes. The 7 Mtpa is an estimate for the storage and is not written onto the row.",
+   "source_cited_before_repair": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "1397": {
+   "class": "admitted",
+   "row": "starfish-havstjerne",
+   "speaker": "Altera Infrastructure, own article",
+   "source": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
+   "verbatim": "The storage, with an annual capacity estimated at 7 million tonnes per annum (Mtpa), is located 100 kilometers southwest of Egersund, Norway.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "ONE PROJECT FAMILY OVER THREE LIST ENTRIES (the Havstjerne floating storage injection unit); the IEA's own hub column puts all three under Altera Stella Maris or STARFISH. THE VESSEL IS ADMITTED AND THE LICENCE IS NOT: what the row holds is the floating storage and injection infrastructure, not the Havstjerne exploration licence, which the Q2 ruling excludes. The 7 Mtpa is an estimate for the storage and is not written onto the row.",
+   "source_cited_before_repair": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "28": {
+   "class": "admitted",
+   "row": "starfish-havstjerne",
+   "speaker": "Altera Infrastructure, own article",
+   "source": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
+   "verbatim": "The storage, with an annual capacity estimated at 7 million tonnes per annum (Mtpa), is located 100 kilometers southwest of Egersund, Norway.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "ONE PROJECT FAMILY OVER THREE LIST ENTRIES (Stella Maris phase 2); the IEA's own hub column puts all three under Altera Stella Maris or STARFISH. THE VESSEL IS ADMITTED AND THE LICENCE IS NOT: what the row holds is the floating storage and injection infrastructure, not the Havstjerne exploration licence, which the Q2 ruling excludes. The 7 Mtpa is an estimate for the storage and is not written onto the row.",
+   "source_cited_before_repair": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "1088": {
+   "class": "admitted",
+   "row": "celsio-ccs-terminal",
+   "speaker": "Aker Solutions, the contractor, naming the project and the chain",
+   "source": "https://www.akersolutions.com/news/news-archive/2024/aker-solutions-awarded-feed-for-celsios-ccs-terminal-at-the-port-of-oslo/",
+   "verbatim": "The Celsio CCS project and the Northern Lights storage are part of Longship, the Norwegian Government's carbon capture and storage project.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE TERMINAL IS IN PERIMETER AND THE PLANT IS NOT: Hafslund Oslo Celsio is a waste-to-energy works, which this sector refuses with the clause 'capture, waste-to-energy'. This entry is the transport terminal.",
+   "source_cited_before_repair": "https://www.akersolutions.com/news/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "1529": {
+   "class": "admitted",
+   "row": "golianovo-storage",
+   "speaker": "ENGAS, own CCS pages",
+   "source": "https://www.engas.sk/ccs",
+   "verbatim": "ENGAS CCS - underground storage. CO2 capture and storage.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "The Slovak Spectator reports the site 'is expected to hold up to 20 million tonnes of CO2, roughly half the country's annual emissions' — A TOTAL, NOT AN ANNUAL RATE, and trade press rather than the owner. The IEA announces 1.5 Mt/yr. Neither figure is on the row."
+  },
+  "87": {
+   "class": "admitted",
+   "row": "cinfracap",
+   "speaker": "Nordion Energi with Goteborg Energi, Renova and the Port of Gothenburg, own document",
+   "source": "https://nordionenergi.se/download/18.11d52c40197a1b26e2329b/1750772049126/NORDION%20HA%CC%8AR%20LA%CC%88NK%20ENG_PUBL_28maj.pdf",
+   "verbatim": "The project has investigated the possibility of handling up to 4 million tonnes of captured carbon per year.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "An investigation of a possibility is not a stated capacity, and the 4 Mt is not written onto the row.",
+   "source_cited_before_repair": "https://nordionenergi.se/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way."
+  },
+  "746": {
+   "class": "admitted",
+   "row": "norvik-nice",
+   "speaker": "Ports of Stockholm, own page",
+   "source": "https://www.portsofstockholm.com/about-us/environmental-work/ccs-at-stockholm-norvik-port/",
+   "verbatim": "CCS at Stockholm Norvik Port.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "The IEA's own reference for this entry is a 404 on the same host; the page above is the port's own and was located from its root."
+  },
+  "1507": {
+   "class": "admitted",
+   "row": "highway58",
+   "speaker": "Pipe58 with Progressive Energy, the project's own site",
+   "source": "https://pipe58.se/",
+   "verbatim": "20 MtCO2 annual capacity for phase 1. >1000 km length of phase 1 backbone. Early 2030s phase 1 aimed to be operational.",
+   "capacity_stated": "20 Mt CO2/yr (phase 1)",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "THE PROJECT STATES ITS OWN FIGURE ON ITS OWN SITE, which is the admission and the capacity in one page."
+  },
+  "725": {
+   "class": "perimeter exclusion",
+   "clause": "enhanced oil recovery",
+   "ruling": "RULED 15 September 2026, by George, on question Q3 of this census. THE CCS PERIMETER IS INFRASTRUCTURE FOR PERMANENT STORAGE AS ITS PURPOSE. Enhanced oil recovery injects CO2 in order to produce oil, and the IEA's own `Fate of carbon` column is the test: an entry whose fate is EOR is refused with this clause. The operator's own claim stays on the entry.",
+   "operator_claim": {
+    "speaker": "INA/MOL, own document",
+    "date": "2020-01-01",
+    "date_precision": "year",
+    "url": "https://molgroup.info/",
+    "says": "By application of the EOR project CO2 emissions will be significantly reduced (permanent disposal of 2.9 billion m3 CO2 or 5.4 million tonnes)."
+   },
+   "note": "THE OPERATOR CALLS IT PERMANENT DISPOSAL AND THE PUBLISHER CALLS IT EOR, and the ruling takes the publisher's column as the test rather than the operator's word for what the injection achieves. Both are recorded. This is the register's only European CO2 T&S entry with an EOR fate, and it is Operational, running since 2020 — so the exclusion removes a working installation from the sector rather than a plan, which is the case a reader should see the clause applied to.\n\nTHE SECOND EOR ENTRY IS ALREADY OUT ON A DIFFERENT CLAUSE AND STAYS THERE. IEA 669, MOL Szank field CO2 EOR in Hungary, also carries Fate of carbon = EOR, and its Subsector is Natural gas processing/LNG, so it is refused with 'capture, natural gas processing'. That clause is not replaced: the CCS perimeter's rule is that a refusal NAMES THE INDUSTRY because those entries are read later for the supplier nodes, and overwriting it with the EOR clause would throw the industry away to record a fate. BOTH FIELDS ARE NOW CARRIED ON EVERY EXCLUDED ENTRY, ruled 15 September 2026: `clause` says which perimeter rule refused it and the supplier sweep reads it, `fate` is the publisher's own Fate of carbon. Szank keeps 'capture, natural gas processing' and still shows as EOR.\n\nBOTH APPEAR IN THE SECOND LIST TOO. The CO2RE capture filed for this census shows 'MOL Szank Field CO2-EOR Site (HUN), Operational, 1992' and 'INA/MOL CO2 EOR Croatia (HRV), Operational, 2014' among the ten European rows it renders — which is the only use this register has been able to make of that list.",
+   "fate": "EOR",
+   "industry": null
+  },
+  "684": {
+   "class": "searched none found",
+   "note": "Hydrocarbons Agency Croatia is the sole named partner and the ZEP candidate-projects PDF, the IEA's only reference, carries nothing about it.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ]
+  },
+  "687": {
+   "class": "searched none found",
+   "note": "Buzzi Unicem is the sole named partner and the same ZEP PDF carries nothing about Augusta C2. The IEA announces 0.2 Mt/yr, the smallest figure in the European transport set.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ]
+  },
+  "349": {
+   "class": "searched none found",
+   "note": "Eni and Snam are the named partners and the IEA's only reference is a 404 on eni.com. Ravenna CCS is named by two entries this census admitted elsewhere — dream-rezzato-mazzano's storage note cites it — and being named by somebody else's project is not the operator confirming it.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ]
+  },
+  "1525": {
+   "class": "searched none found",
+   "note": "The IEA's only reference is a 404 on climate.ec.europa.eu, and the Partners column reads '0'.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ]
+  },
+  "322": {
+   "class": "searched none found",
+   "note": "Horisont Energi's own site answers 404 on the cited path and the second reference is about a blue-ammonia plant's capture rate, not this store.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ]
+  },
+  "661": {
+   "class": "searched none found",
+   "note": "Bellona's page returns no readable text and Equinor's is about the Bayou Bend project in the United States. The IEA carries this entry as Cancelled.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ]
+  },
+  "917": {
+   "class": "searched none found",
+   "note": "THE IEA CARRIES NO REFERENCE AT ALL for this entry — one of eighteen European entries with an empty Ref column. Horisont Energi and E.ON are named and nothing was located.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ]
+  },
+  "1096": {
+   "class": "searched none found",
+   "note": "THE IEA CARRIES NO REFERENCE AT ALL, and this is the oldest operational entry in the European set: OCAP has moved CO2 to Dutch greenhouses since 2005. Its fate of carbon is 'Use', not storage.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ]
+  },
+  "679": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "zeroemissionsplatform.eu candidate-projects PDF — 200, nothing about this entry",
+    "benelux.rwe.com — 200, AND IT IS ABOUT NOORDKAAP, a different project"
+   ],
+   "note": "phase 1, which the IEA carries as Cancelled. Eni, EBN and OneDyas are the named partners. A NEAR-NAME TRAP of the same shape as the C Zero entries: the second reference reads perfectly and is about something else."
+  },
+  "1361": {
+   "class": "searched none found",
+   "looked_in_order": [
+    "zeroemissionsplatform.eu candidate-projects PDF — 200, nothing about this entry",
+    "benelux.rwe.com — 200, AND IT IS ABOUT NOORDKAAP, a different project"
+   ],
+   "note": "phase 2, which the IEA carries as Cancelled. Eni, EBN and OneDyas are the named partners. A NEAR-NAME TRAP of the same shape as the C Zero entries: the second reference reads perfectly and is about something else."
+  },
+  "1498": {
+   "class": "unreadable",
+   "refusal_class": "200 with an empty body",
+   "looked_in_order": [
+    "snam.it — 200, empty body"
+   ],
+   "note": "Snam is the sole named partner and its own CCS page renders client-side."
+  },
+  "526": {
+   "class": "unreadable",
+   "refusal_class": "URLError and 404, owner included",
+   "looked_in_order": [
+    "neptuneenergy.com — URLError",
+    "horisontenergi.no — 404"
+   ],
+   "note": "Both named partners' domains fail. The IEA carries this entry as Cancelled."
+  },
+  "1509": {
+   "class": "unreadable",
+   "refusal_class": "URLError on the owner",
+   "looked_in_order": [
+    "interterminals.com — URLError"
+   ],
+   "note": "Port of Sodertalje is the named partner and the IEA's only reference is the terminal operator's own site."
+  },
+  "1515": {
+   "class": "unreadable",
+   "refusal_class": "403 on both references",
+   "looked_in_order": [
+    "eon.se — 403",
+    "carbonherald.com — 403"
+   ],
+   "note": "E.ON, Sysav, Copenhagen Malmo Port and Nordion Energi are named; the owner's own domain refuses a declared reader."
+  },
+  "1203": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the readable record is a funder's, a contractor's or trade press",
+   "speaker": "European Commission project factsheet",
+   "source": "https://ec.europa.eu/",
+   "verbatim": "TarraCO2 - Storage aims to unlock 54 million tonnes (Mt) of CO2 storage capacity for hard-to-abate industries in North-Eastern Spain.",
+   "note": "Repsol is the sole named partner and no Repsol page was read. AN OFFICIAL RECORD IS NOT THE COMPANY, as at IEA 664 and the D'Artagnan entries."
+  },
+  "1278": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the readable record is a funder's, a contractor's or trade press",
+   "speaker": "European Commission CCS implementation record",
+   "source": "https://climate.ec.europa.eu/",
+   "verbatim": "Project location: Baltic Sea. Entry into operation: 2030. Total storage capacity (Mt): tbd. Injection capacity in (Mtpa): tbd.",
+   "note": "ORLEN is the sole named partner. THE EU RECORD ITSELF SAYS 'tbd' TWICE, which is the clearest statement in this census that a project exists and its size does not."
+  },
+  "1501": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the readable record is a funder's, a contractor's or trade press",
+   "speaker": "Bioenergy International, trade press",
+   "source": "https://bioenergyinternational.com/",
+   "verbatim": "CNetSS is a collaborative infrastructure project between leading players in energy and infrastructure and was launched in 2022 for the transport and permanent storage of CO2.",
+   "note": "Nordion Energi's own project path answers 404. Vaxjo Energi, Copenhagen Malmo Port, E.ON and Nordion Energi are named."
+  },
+  "1506": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the readable record is a funder's, a contractor's or trade press",
+   "speaker": "Penspen, the study contractor",
+   "source": "https://www.penspen.com/",
+   "verbatim": "Penspen awarded major CO2 pipeline study in Switzerland.",
+   "note": "THE CONTRACTOR ANNOUNCES ITS OWN AWARD, which says a study exists and not that a corridor is being built. The IEA's Partners column for this entry reads 'Schweiz'."
+  },
+  "319": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU's",
+   "speaker": "European Commission",
+   "source": "https://ec.europa.eu/",
+   "note": "phase 1. Air Liquide Polska, PKN Orlen and Lafarge Cement are the named partners and none was read. Phase 3's own reference is a 404."
+  },
+  "320": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU's",
+   "speaker": "European Commission",
+   "source": "https://ec.europa.eu/",
+   "note": "phase 2. Air Liquide Polska, PKN Orlen and Lafarge Cement are the named partners and none was read. Phase 3's own reference is a 404."
+  },
+  "648": {
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU's",
+   "speaker": "European Commission",
+   "source": "https://ec.europa.eu/",
+   "note": "phase 3. Air Liquide Polska, PKN Orlen and Lafarge Cement are the named partners and none was read. Phase 3's own reference is a 404."
+  }
+ },
+ "disagreements": [
+  {
+   "object": "slite-ccs",
+   "field": "status",
+   "speakers": [
+    {
+     "who": "Heidelberg Materials",
+     "type": "company",
+     "says": "the row is `paused` on the company's own statement",
+     "url": ""
+    },
+    {
+     "who": "IEA CCUS Projects Database 2026",
+     "type": "benchmark",
+     "says": "Project status `Planned`, operation 2032",
+     "url": "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database"
+    }
+   ],
+   "held": "Recorded, not reconciled. A list that carries a paused project as planned is saying something about the list's own vintage and resolution, and the row keeps the company's word."
+  },
+  {
+   "object": "accsion-aalborg",
+   "field": "capacity",
+   "speakers": [
+    {
+     "who": "Aalborg Portland",
+     "type": "company",
+     "says": "up to 1.5 million tons of CO2 annually from 2030",
+     "url": "https://www.aalborgportland.dk/accsion/"
+    },
+    {
+     "who": "IEA CCUS Projects Database 2026",
+     "type": "benchmark",
+     "says": "Announced capacity 1.4 Mt CO2/yr",
+     "url": "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database"
+    }
+   ],
+   "held": "The row takes the owner's figure. The list's is here. Air Liquide, the technology partner, states the same 1.5 Mt on its own release of 24 October 2024."
+  },
+  {
+   "object": "go4ecoplanet-kujawy",
+   "field": "date",
+   "speakers": [
+    {
+     "who": "Holcim Polska (Go4ECOPlanet)",
+     "type": "company",
+     "says": "the capture installation at Cementownia Kujawy starts in 2027",
+     "url": "https://www.go4ecoplanet.com/blog/lafarge-projekt-kujawy-go4ecoplanet-z-pozytywna-decyzja-srodowiskowa"
+    },
+    {
+     "who": "IEA CCUS Projects Database 2026",
+     "type": "benchmark",
+     "says": "FID 2027, Operation 2031",
+     "url": "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database"
+    }
+   ],
+   "held": "Four years apart on the same works. Recorded, not reconciled: the owner's page is the later reading and the list may be carrying an older vintage of the same plan, and nothing read here says which."
+  },
+  {
+   "object": "co2ntessa-nasice",
+   "field": "capacity",
+   "speakers": [
+    {
+     "who": "NEXE Group",
+     "type": "company",
+     "says": "capture > 700 thousand t CO2 per year",
+     "url": "https://www.nexe.hr/en/co2ntessa/"
+    },
+    {
+     "who": "IEA CCUS Projects Database 2026",
+     "type": "benchmark",
+     "says": "Announced capacity 0.739 Mt CO2/yr",
+     "url": "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database"
+    }
+   ],
+   "held": "A BOUND AGAINST A POINT VALUE, and they are not the same kind of statement. The owner states a lower bound; the list states a number that satisfies it. The row carries the bound as the owner made it."
+  },
+  {
+   "object": "hoever-ccs",
+   "field": "capacity",
+   "speakers": [
+    {
+     "who": "Holcim Deutschland",
+     "type": "company",
+     "says": "about 90 per cent of the works' roughly 500,000 t CO2 annual emissions, after the final expansion stage",
+     "url": "https://www.holcim.de/meilenstein-zukunftsfaehige-zementproduktion-hoever"
+    },
+    {
+     "who": "IEA CCUS Projects Database 2026",
+     "type": "benchmark",
+     "says": "Announced capacity 0.8 Mt CO2/yr, phase 2",
+     "url": "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database"
+    }
+   ],
+   "held": "The list's 0.8 Mt exceeds the works' own stated total emissions of about 0.5 Mt. Recorded as a disagreement rather than resolved, and no capture capacity is written onto the row."
+  },
+  {
+   "object": "cpt01-campulung",
+   "field": "capacity",
+   "speakers": [
+    {
+     "who": "Holcim",
+     "type": "company",
+     "says": "an estimated 2 million tons of near-zero cement per annum from 2032",
+     "url": "https://www.holcim.com/media/media-releases/eu-innovation-fund-carbon-hub-romania"
+    },
+    {
+     "who": "IEA CCUS Projects Database 2026",
+     "type": "benchmark",
+     "says": "Announced capacity 1 Mt CO2/yr",
+     "url": "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database"
+    }
+   ],
+   "held": "NOT A DISAGREEMENT ABOUT A NUMBER BUT ABOUT WHICH SUBSTANCE IS BEING COUNTED -- tonnes of cement against tonnes of CO2. Recorded here so a reader comparing the two does not read one as the other."
+  }
+ ],
+ "reference_debts": [
+  {
+   "pair": [
+    "IEA 561, 'VAIA HyNoVi project (Vicat Montalieu plant)'",
+    "IEA 1461, 'VAIA project Montalieu-Vercieu site'"
+   ],
+   "believed": "capture at one works, Vicat's Montalieu-Vercieu cement plant, admitted once as vaia-montalieu-vercieu",
+   "missing": "No source read says whether HyNoVi is a phase of VAIA, its predecessor, or a separate unit. Vicat's 2021 release has HyNoVi capturing 40 per cent of the works' CO2 with a 330 MW electrolyser into methanol; its 2025 release has VAIA capturing 1.2 Mt, nearly 100 per cent, into sequestration. Both are Vicat and both are Montalieu-Vercieu, and the company never states the relation.",
+   "needed": "A Vicat page or permit naming both project names, or naming HyNoVi as superseded."
+  },
+  {
+   "pair": [
+    "IEA 202, 'Heidelberg Materials LEILAC 2' - a cement plant at Hanover, owner HeidelbergCement",
+    "IEA 556, 'Hover cement works Hannover phase 2' - a cement works at Hoever, owner Holcim Deutschland"
+   ],
+   "believed": "NOTHING IS BELIEVED HERE, WHICH IS THE POINT",
+   "missing": "Two entries name a cement works at Hanover under two different owners. HeidelbergCement's 2021 release says LEILAC 2 was decided for 'the HeidelbergCement cement plant in Hanover'; Holcim Deutschland's 2026 release puts its test plant at 'Zementwerk Hoever, Niedersachsen'. Hoever is in the Hanover region. Either these are two works, or one of the two statements is about a works its speaker no longer owns, or LEILAC 2 moved. NO SOURCE READ HERE SETTLES IT, so the two entries are kept apart and neither is merged into the other.",
+   "needed": "A Heidelberg Materials statement giving LEILAC 2's host works after 2021, or a permit for either works naming its operator and its place together.",
+   "location_statements": [
+    {
+     "date": "2021-02-01",
+     "speaker": "HeidelbergCement",
+     "url": "https://www.heidelbergcement.com/en/pr-01-02-2021",
+     "says": "After examining different locations, it has been decided to build the LEILAC 2 demonstration installation for carbon capture at the HeidelbergCement cement plant in Hanover, Germany."
+    },
+    {
+     "date": "2025-02-26",
+     "speaker": "Leilac (Calix), project page as captured by the Internet Archive",
+     "url": "https://web.archive.org/web/20250226101313/https://www.leilac.com/project-leilac-2/",
+     "says": "Scalable and modular design will be retrofitted into a Heidelberg Materials (formerly HeidelbergCement) plant with a low-impact integration into the host plant's operations. THE PAGE NAMES NO SITE -- by 2025 the technology partner had stopped naming the host works. leilac.com answers 403 to a declared reader, so this is the archived copy."
+    },
+    {
+     "date": "2026-09-14",
+     "speaker": "Heidelberg Materials Deutschland, own list of its German cement works",
+     "url": "https://www.heidelbergmaterials.de/de/zement/zementwerke",
+     "says": "Ten works named: Burglengenfeld, Ennigerloh, Geseke, HANNOVER, Koenigs Wusterhausen, Leimen, Lengfurt, Mainz, Paderborn, Schelklingen. Hoever is not among them. The same site's CCUS project list names GeZero-Geseke, CAP2U-Lengfurt and catch4climate-Mergelstetten and does NOT carry LEILAC 2."
+    },
+    {
+     "date": "2026-08-21",
+     "speaker": "Holcim Deutschland",
+     "url": "https://www.holcim.de/meilenstein-zukunftsfaehige-zementproduktion-hoever",
+     "says": "Its own works is 'Zementwerk Hoever, Niedersachsen'."
+    }
+   ],
+   "still_missing": "NO OWNER STATES A RELOCATION, so under the ruling of 14 September 2026 the debt stays. What the four statements above establish is that each company names a works of its own and neither names the other's: Heidelberg names Hannover, Holcim names Hoever. Calling those two places different would be this register reading a map, not a source, and calling them the same would be merging two owners' works on a resemblance. Both entries are admitted as separate rows and the debt is carried on both."
+  },
+  {
+   "pair": [
+    "IEA 539, 'Carbon Clean CEMEX Rudersdorf plant phase 1'",
+    "IEA 540, 'Cemex Rudersdorf CO2llect'"
+   ],
+   "believed": "two capture projects at one works, CEMEX's Ruedersdorf plant",
+   "missing": "Both are CEMEX at Ruedersdorf and they are different technologies at different scales with different partners -- Carbon Clean's CycloneCC at 100 t/day, Linde's at 1.3 Mt/yr. Whether the first is a stage of the second or a separate installation is not stated by anyone read. 540 is admitted; 539 is held for ruling and is not merged into it.",
+   "needed": "A CEMEX statement relating the two."
+  },
+  {
+   "pair": [
+    "IEA 1459, 'ECCO2-LH (Lighthouse) LafargeHolcim Carboneras cement factory phase 2'",
+    "IEA 1478, 'CO2nscious (Carboneras)'"
+   ],
+   "believed": "two entries at one works, Holcim Espana's Carboneras plant",
+   "missing": "ECCO2-LH is a 2020 CCU pilot the IEA carries as Cancelled; CO2nscious is a 2025 capture entry the IEA carries as Planned. Whether the second replaces the first is stated nowhere read. Neither is admitted, so no row turns on it, and the pair is recorded so a later pass does not merge them on the shared works name.",
+   "needed": "A Holcim Espana statement naming both."
+  }
+ ]
+}
