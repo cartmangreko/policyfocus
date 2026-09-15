@@ -2036,6 +2036,26 @@ chemicals" — rather than with one clause covering all of them. Those entries a
 later for the supplier nodes, and a refusal that recorded only "out of perimeter" would
 throw away the one fact that makes the later read possible.
 
+**Enhanced oil recovery is refused with the clause "enhanced oil recovery". Ruled
+15 September 2026**, on a question this census raised over the one European entry
+it reaches. The perimeter holds infrastructure whose **purpose** is permanent
+storage. EOR injects CO₂ in order to produce oil, and the fact that the CO₂ stays
+down is a by-product of that purpose rather than the point of the works.
+
+**The test is the publisher's own column, not this register's reading of a
+process.** The IEA's `Fate of carbon` separates `Dedicated storage`, `EOR`,
+`Use`, `Vented`, `Mixed` and `Unknown/unspecified`; an entry whose fate is `EOR`
+is refused. That keeps the boundary checkable by anybody holding the same file,
+and it means the register is not arguing with an operator about what its own
+injection achieves — INA/MOL calls Žutica South "permanent disposal of 2.9
+billion m3 CO2", and the clause does not contradict that. It says this dataset is
+about works built to store.
+
+**Where an EOR entry is already refused on an industry clause, the industry
+clause stands.** A refusal in this sector names the industry because those
+entries are read later for the supplier nodes, and replacing that with a fate
+would throw away the one fact the later read needs.
+
 **This is the sector where `shared` is not an exception.** A store or a pipeline serving
 cement, steel and chemicals at once is claimed by no single ecosystem, and the standing
 rule under "`shared`: OPTIONAL, AND ONLY EVER TRUE" is what carries it.

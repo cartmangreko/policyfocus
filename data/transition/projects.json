@@ -12932,6 +12932,2049 @@
     }
    },
    "technology_note": "Holcim Espana states the chain to the Saggas terminal and no capture method."
+  },
+  {
+   "id": "porthos",
+   "name": "Porthos",
+   "company": "Porthos (EBN, Gasunie, Port of Rotterdam)",
+   "plant": "Rotterdam",
+   "country": "NL",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Rotterdam and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2020-03-16",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.porthosco2.nl/en/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Porthos, the project's own site: “Porthos is an innovative system for transporting and permanently and safely storing CO2 beneath the North Sea.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.porthosco2.nl/en/",
+     "title": "Porthos",
+     "publisher": "Porthos",
+     "date": "2020-03-16",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     249,
+     325
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 249 (“Porthos onshore transport”), 325 (“Porthos offshore transport and storage”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "role": [
+    "transport",
+    "storage"
+   ],
+   "shared": true,
+   "shared_note": "A store and pipeline taking CO2 from Rotterdam industry that cannot yet decarbonise; refineries, hydrogen and chemicals are its declared customers, so it belongs to no one industry.",
+   "role_note": "Its own site: 'a system for transporting and permanently and safely storing CO2 beneath the North Sea' — both, in one sentence. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "aramis",
+   "name": "Aramis",
+   "company": "TotalEnergies, Shell, EBN, Gasunie",
+   "plant": "North Sea",
+   "country": "NL",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names North Sea and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2021-07-07",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.aramis-ccs.com/faq",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Aramis (TotalEnergies, Shell, EBN, Gasunie), the project's own FAQ: “The project expects to transport approximately 22 Million tonnes per annum (Mtpa) of CO2 to the storage locations.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.aramis-ccs.com/faq",
+     "title": "Aramis",
+     "publisher": "Aramis (TotalEnergies",
+     "date": "2021-07-07",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     19,
+     32,
+     33
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 19 (“Aramis CCS transport phase 1”), 32 (“Aramis CCS storage phase 1”), 33 (“Aramis CCS storage phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "role": [
+    "transport",
+    "storage"
+   ],
+   "shared": true,
+   "shared_note": "Open-access transport and storage for industrial emitters across the Netherlands and beyond.",
+   "capacity_value": 22000000,
+   "capacity_unit": "t_co2_per_year",
+   "capacity_product": "CO2 transported",
+   "capacity_basis": "announced",
+   "capacity_source_url": "https://www.aramis-ccs.com/faq",
+   "capacity_as_of": "2021-07-07",
+   "capacity_as_of_precision": "day",
+   "capacity_note": "Aramis (TotalEnergies, Shell, EBN, Gasunie), the project's own FAQ: “The project expects to transport approximately 22 Million tonnes per annum (Mtpa) of CO2 to the storage locations.” The project states its own figure on its own site, which is the admission and the capacity in one page. THE FIGURE ON THIS ROW IS approximately 22 Mtpa, the project's figure for the whole chain. AT THE OWNER'S UNIT AND NOT CONVERTED (D80).",
+   "role_note": "The project's FAQ describes transport to the storage locations and the storage itself; the IEA splits it into transport and storage entries for the same reason. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "co2next",
+   "name": "CO2next",
+   "company": "Vopak, Gasunie",
+   "plant": "Maasvlakte, Rotterdam",
+   "country": "NL",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Maasvlakte, Rotterdam and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2025-08-05",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://co2next.nl/appeal-against-permits-for-aramis-initiative-2/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "CO2next (Vopak, Gasunie), the project's own site: “Given this duration and the necessary period after the ruling to reach a final investment decision (FID), the date for FID may move to 2027.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://co2next.nl/appeal-against-permits-for-aramis-initiative-2/",
+     "title": "CO2next",
+     "publisher": "CO2next (Vopak",
+     "date": "2025-08-05",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     950,
+     951
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 950 (“CO2NEXT terminal phase 1”), 951 (“CO2NEXT terminal phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "shared": true,
+   "shared_note": "A liquid CO2 terminal open to third-party volumes.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "seaseas-amsterdam",
+   "name": "SeaSeaS Amsterdam",
+   "company": "SeaSeaS",
+   "plant": "Port of Amsterdam",
+   "country": "NL",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Port of Amsterdam and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-01-08",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.seaseas.nl/news/2922573_great-news-for-seaseas-amsterdam",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "SeaSeaS, the project's own site: “It will be accessible via truck, rail and inland shipping, and will connect Amsterdam via seagoing vessels to all relevant offshore European CO2 storage sites.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.seaseas.nl/news/2922573_great-news-for-seaseas-amsterdam",
+     "title": "SeaSeaS Amsterdam",
+     "publisher": "SeaSeaS",
+     "date": "2026-01-08",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1483,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1483 (“SeaSeaS (Port of Amsterdam)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "A terminal for land-locked emitters, connecting to all relevant offshore European stores.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "fluxys-c-grid-antwerp",
+   "name": "Fluxys c-grid Antwerp",
+   "company": "Fluxys c-grid Antwerp (Fluxys Belgium, Pipelink, Air Liquide)",
+   "plant": "Antwerp",
+   "country": "BE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Antwerp and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-started-in-antwerp-port-area",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Fluxys, own release of 26 May 2025: “With this pipeline network Fluxys c-grid Antwerp will provide an essential part of the value chain through which the captured CO2 from Antwerp's industry and beyond can be transported.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-started-in-antwerp-port-area",
+     "title": "Fluxys c-grid Antwerp",
+     "publisher": "Fluxys",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1409,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1409 (“Antwerp CO2 Pipeline Network”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "An open-access CO2 pipeline network for Antwerp industry and beyond.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "antwerp-c-export-hub",
+   "name": "Antwerp@C CO2 Export Hub",
+   "company": "Air Liquide, BASF, Borealis, ExxonMobil, INEOS, TotalEnergies",
+   "plant": "Antwerp",
+   "country": "BE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Antwerp and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2022-12-12",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.airliquide.com/group/press-releases-news/2022-12-12/air-liquide-fluxys-belgium-and-port-antwerp-bruges-awarded-eu-funding-building-antwerpc-co2-export",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Air Liquide, the lead partner, naming the hub: “The Antwerp@C CO2 Export Hub will have an initial export capacity of 2.5 million tonnes per annum (Mtpa), with the ambition to reach up to 10 Mtpa by 2030.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.airliquide.com/group/press-releases-news/2022-12-12/air-liquide-fluxys-belgium-and-port-antwerp-bruges-awarded-eu-funding-building-antwerpc-co2-export",
+     "title": "Antwerp@C CO2 Export Hub",
+     "publisher": "Air Liquide",
+     "date": "2022-12-12",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     31,
+     585
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 31 (“Antwerp@ C CO2 Export Hub phase 1”), 585 (“Antwerp@C CO2 Export Hub phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "shared": true,
+   "shared_note": "An export hub built by six industrial partners across chemicals, refining and gases.",
+   "capacity_value": 2500000,
+   "capacity_unit": "t_co2_per_year",
+   "capacity_product": "CO2 transported",
+   "capacity_basis": "announced",
+   "capacity_source_url": "https://www.airliquide.com/group/press-releases-news/2022-12-12/air-liquide-fluxys-belgium-and-port-antwerp-bruges-awarded-eu-funding-building-antwerpc-co2-export",
+   "capacity_as_of": "2022-12-12",
+   "capacity_as_of_precision": "day",
+   "capacity_note": "Air Liquide, the lead partner, naming the hub: “The Antwerp@C CO2 Export Hub will have an initial export capacity of 2.5 million tonnes per annum (Mtpa), with the ambition to reach up to 10 Mtpa by 2030.” The project states its own figure on its own site, which is the admission and the capacity in one page. THE FIGURE ON THIS ROW IS the hub's INITIAL export capacity of 2.5 Mtpa; the same sentence states an ambition of up to 10 Mtpa by 2030, which is an ambition and is not the figure on the row. AT THE OWNER'S UNIT AND NOT CONVERTED (D80).",
+   "role": "terminal",
+   "role_note": "Air Liquide calls it an EXPORT HUB with an export capacity; a quay rather than a route. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "fluxys-c-grid-belgium",
+   "name": "Fluxys c-grid Wallonia",
+   "company": "Fluxys c-grid (Fluxys Belgium, Pipelink, Socofe, SFPI)",
+   "plant": "Wallonia",
+   "country": "BE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Wallonia and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.fluxys.com/en/press-releases/fluxys-belgium/2023/230920_press_co2-network-operator-fluxys-c-grid",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Fluxys, own press release: “The phased development of this open-access pipeline network in the Walloon Region will connect industrial CO2 emitters with CO2 exit points towards permanent storage or reuse.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.fluxys.com/en/press-releases/fluxys-belgium/2023/230920_press_co2-network-operator-fluxys-c-grid",
+     "title": "Fluxys c-grid Wallonia",
+     "publisher": "Fluxys",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1477,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1477 (“Belgian CO2 Pipeline Network (CO2 backbone for Belgium)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "An open-access pipeline network connecting Walloon industrial emitters to exit points.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "ghent-carbon-hub",
+   "name": "Ghent Carbon Hub",
+   "company": "Fluxys, ArcelorMittal, North Sea Port",
+   "plant": "Ghent",
+   "country": "BE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Ghent and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.fluxys.com/en/press-releases/fluxys-group/2022/220818_press_ghent_carbon_hub",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Fluxys, with ArcelorMittal and North Sea Port: “Carbon capture, utilisation and storage (CCUS) is essential for CO2 intensive industries to achieve net zero emissions.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.fluxys.com/en/press-releases/fluxys-group/2022/220818_press_ghent_carbon_hub",
+     "title": "Ghent Carbon Hub",
+     "publisher": "Fluxys",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 532,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 532 (“Ghent Carbon Hub”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "A hub whose anchor emitter is steel and which is open to other industry at North Sea Port.",
+   "role": [
+    "transport",
+    "terminal"
+   ],
+   "role_note": "A hub at North Sea Port: Fluxys' pipeline and the port's handling together. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "carbon-connect-delta",
+   "name": "Carbon Connect Delta",
+   "company": "Smart Delta Resources, North Sea Port, Gasunie, Fluxys",
+   "plant": "Zeeland",
+   "country": "NL",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Zeeland and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.fluxys.com/en/news/fluxys-group/2020/200527_news_carbon_emissions_scheldt_delta",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Fluxys, a named partner: “Carbon Connect Delta project: potential to cut CO2 emissions 30% by 2030.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.fluxys.com/en/news/fluxys-group/2020/200527_news_carbon_emissions_scheldt_delta",
+     "title": "Carbon Connect Delta",
+     "publisher": "Fluxys",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1267,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1267 (“Carbon Connect Delta ”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). AND THE LIST SAYS SOMETHING THIS ROW DOES NOT: the IEA carries the entry as ‘Cancelled’ and no owner or consortium statement of cancellation was found. Under D81 a cancellation is a stop event only from the owner or the consortium, so the row takes no stopped event and the list's status stays here as the list's claim. D81: a cancellation is a stop event only from the owner or the consortium. Smart Delta Resources' own page answers with 905 characters and says nothing about a cancellation, and Fluxys' project page still carries the project. The row lands on its announcement and carries the list's status as the list's claim."
+   },
+   "shared": true,
+   "shared_note": "A cross-border network for the Scheldt Delta's industrial cluster.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "greensand",
+   "name": "Project Greensand",
+   "company": "INEOS Energy, Harbour Energy, Welltec",
+   "plant": "Nini West, Danish North Sea",
+   "country": "DK",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Nini West, Danish North Sea and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-04-28",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://projectgreensand.com/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Project Greensand (INEOS, Harbour Energy, Welltec), the project's own site: “Carbon Capture & Storage (CCS) is an important technology in this transition.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://projectgreensand.com/",
+     "title": "Project Greensand",
+     "publisher": "Project Greensand (INEOS",
+     "date": "2026-04-28",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     335,
+     336
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 335 (“Greensand Future phase 1”), 336 (“Project Greensand phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "bifrost",
+   "name": "Project Bifrost",
+   "company": "TotalEnergies, Nordsofonden, Mitsui & Co",
+   "plant": "Harald field, Danish North Sea",
+   "country": "DK",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Harald field, Danish North Sea and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2025-03-11",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://bifrost-ccs.com/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Project Bifrost, the project's own site: “When oil and gas production gradually cease, the use of existing infrastructure for carbon capture and storage is an attractive alternative from both a climate and economic perspective.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://bifrost-ccs.com/",
+     "title": "Project Bifrost",
+     "publisher": "Project Bifrost",
+     "date": "2025-03-11",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     331,
+     682
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 331 (“Project Bifrost Phase 1”), 682 (“Project Bifrost Phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "norne-gassum",
+   "name": "Norne — Gassum store",
+   "company": "Fidelis New Energy, Gas Storage Denmark",
+   "plant": "Gassum",
+   "country": "DK",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Gassum and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2022-10-03",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Fidelis New Energy, own release: “Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+     "title": "Norne — Gassum store",
+     "publisher": "Fidelis New Energy",
+     "date": "2022-10-03",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 670,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 670 (“Gassum storage/Fyrkat network (Norne carbon storage hub)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "norne-havnso",
+   "name": "Norne — Havnso store",
+   "company": "Fidelis New Energy, Gas Storage Denmark",
+   "plant": "Havnso",
+   "country": "DK",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Havnso and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2022-10-03",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Fidelis New Energy, own release: “Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+     "title": "Norne — Havnso store",
+     "publisher": "Fidelis New Energy",
+     "date": "2022-10-03",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 671,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 671 (“Havnso storage/Trelleborg network (Norne carbon storage hub)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "norne-aalborg-terminal",
+   "name": "Norne — Port of Aalborg terminal",
+   "company": "Fidelis New Energy",
+   "plant": "Port of Aalborg",
+   "country": "DK",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Port of Aalborg and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2022-10-03",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Fidelis New Energy, own release: “Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+     "title": "Norne — Port of Aalborg terminal",
+     "publisher": "Fidelis New Energy",
+     "date": "2022-10-03",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 672,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 672 (“Port of Aalborg terminal and pipeline to Fyrkat (Norne carbon storage hub)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "norne-kalundborg-terminal",
+   "name": "Norne — Port of Kalundborg terminal",
+   "company": "Fidelis New Energy",
+   "plant": "Port of Kalundborg",
+   "country": "DK",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Port of Kalundborg and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2022-07-20",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://norneccs.com/en/news/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Fidelis New Energy, own release: “Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://norneccs.com/en/news/",
+     "title": "Norne — Port of Kalundborg terminal",
+     "publisher": "Fidelis New Energy",
+     "date": "2022-07-20",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     673,
+     674
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 673 (“Port of Kalundborg terminal and pipeline to Trelleborg phase 1 (Norne carbon storage hub)”), 674 (“Port of Kalundborg terminal and pipeline to Trelleborg phase 2 (Norne carbon storage hub)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "grenaa-port-terminal",
+   "name": "Grenaa Port CO2 terminal",
+   "company": "Normod Carbon",
+   "plant": "Port of Grenaa",
+   "country": "DK",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Port of Grenaa and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://normodcarbon.com/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Normod Carbon, own site: “The industrial regions of Northern Europe face more than 70 million tonnes per year of planned CO2 capture - but very few have access to practical export routes.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://normodcarbon.com/",
+     "title": "Grenaa Port CO2 terminal",
+     "publisher": "Normod Carbon",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     1403,
+     1404
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 1403 (“Grenaa Port phase 1”), 1404 (“Grenaa Port phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "shared": true,
+   "shared_note": "An export terminal for Northern European emitters without their own route.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "co2-storage-kalundborg",
+   "name": "CO2 Storage Kalundborg",
+   "company": "Equinor, Orsted, Nordsofonden",
+   "plant": "Kalundborg",
+   "country": "DK",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Kalundborg and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://co2storagekalundborg.com/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "CO2 Storage Kalundborg (Equinor, Orsted, Nordsofonden), the project's own site: “Three companies are behind CO2 Storage Kalundborg.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://co2storagekalundborg.com/",
+     "title": "CO2 Storage Kalundborg",
+     "publisher": "CO2 Storage Kalundborg (Equinor",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1503,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1503 (“CO2 Storage Kalundborg”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "greenstore",
+   "name": "Projekt Greenstore",
+   "company": "Harbour Energy, INEOS Energy, Nordsofonden",
+   "plant": "Danish North Sea",
+   "country": "DK",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Danish North Sea and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-05-16",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://web.archive.org/web/20260516020918/https://greenstore.dk/en/home-page/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Projekt Greenstore (Harbour Energy, INEOS Energy, Nordsofonden), own site: “In 1996, a capture plant was installed in the Norwegian North Sea, which has since captured and stored 1 million tonnes of CO2 annually.” SOURCE NOW THE ARCHIVE CAPTURE: greenstore.dk answered 200 when read and 404 on the push the same day."
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://web.archive.org/web/20260516020918/https://greenstore.dk/en/home-page/",
+     "title": "Projekt Greenstore",
+     "publisher": "Projekt Greenstore (Harbour Energy",
+     "date": "2026-05-16",
+     "date_precision": "not_after",
+     "captured_at": "2026-05-16",
+     "archived": true,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE AND ITS PUBLISHER HAS GONE DARK. The live page answered 200 when this census read it on 15 September 2026 and 404 hours later on the push; the row cites the Internet Archive's capture of 16 May 2026, which is both the copy on file and the upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'.",
+     "snapshot": "sources/manual/greenstore--project-page.html"
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1504,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1504 (“Projekt Greenstore”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "acorn-ccs",
+   "name": "Acorn",
+   "company": "Storegga, Shell, Harbour Energy, North Sea Midstream Partners",
+   "plant": "St Fergus",
+   "country": "GB",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names St Fergus and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.theacornproject.uk/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "The Acorn Project (Storegga, Shell, Harbour, North Sea Midstream), own site: “Scotland's CO2 transport and storage network. Delivering carbon storage infrastructure to support economic growth, jobs and the UK's energy transition.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.theacornproject.uk/",
+     "title": "Acorn",
+     "publisher": "The Acorn Project (Storegga",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     8,
+     9
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 8 (“Acorn CCS phase 1-T&S”), 9 (“Acorn CCS phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "role": [
+    "transport",
+    "storage"
+   ],
+   "shared": true,
+   "shared_note": "Scotland's CO2 transport and storage network, open to the Scottish Cluster's emitters.",
+   "role_note": "Its own site: 'Scotland's CO2 transport and storage network'. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "liverpool-bay-ccs",
+   "name": "Liverpool Bay CCS",
+   "company": "Eni",
+   "plant": "Liverpool Bay",
+   "country": "GB",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Liverpool Bay and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-05-06",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.eni.com/en-IT/media/press-release/2023/03/eni-as-the-key-ccs-developer-in-the-uk.html",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Eni, the operator of transport and storage for HyNet North West: “Eni, operator of the transport and storage of carbon dioxide for HyNet North West... the CO2 will be gathered, transported and permanently stored by Eni in its own depleted gas fields off the coast of Liverpool Bay.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.eni.com/en-IT/media/press-release/2023/03/eni-as-the-key-ccs-developer-in-the-uk.html",
+     "title": "Liverpool Bay CCS",
+     "publisher": "Eni",
+     "date": "2026-05-06",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     265,
+     266
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 265 (“Liverpool Bay CCS project phase 1”), 266 (“Liverpool Bay CCS expansion project (phase 2)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "role": [
+    "transport",
+    "storage"
+   ],
+   "shared": true,
+   "shared_note": "The transport and storage operator for HyNet North West, serving cement, hydrogen and waste-to-energy.",
+   "role_note": "Eni is 'operator of the transport and storage of carbon dioxide for HyNet North West'. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "bacton-ccs",
+   "name": "Bacton Thames Net Zero",
+   "company": "Eni UK",
+   "plant": "Hewett field, Southern North Sea",
+   "country": "GB",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Hewett field, Southern North Sea and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-05-06",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.eni.com/en-IT/media/press-release/2022/09/eni-uk-applies-for-carbon-storage-license-for-hewett-depleted-field.html",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Eni UK, own release: “Eni UK will play a pivotal role in this industry-led initiative by transporting and storing CO2 in its Hewett depleted gas field, that could be operational as early as 2027. The Hewett depleted gas field is an ideal site for permanent and safe CO2 storage with a total capacity of about 330 million tonnes.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.eni.com/en-IT/media/press-release/2022/09/eni-uk-applies-for-carbon-storage-license-for-hewett-depleted-field.html",
+     "title": "Bacton Thames Net Zero",
+     "publisher": "Eni UK",
+     "date": "2026-05-06",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 519,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 519 (“Bacton CCS”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": [
+    "transport",
+    "storage"
+   ],
+   "shared": true,
+   "shared_note": "A store for emitters around Bacton and the Thames estuary.",
+   "role_note": "Eni UK is 'transporting and storing CO2 in its Hewett depleted gas field'. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "viking-ccs",
+   "name": "Viking CCS",
+   "company": "Harbour Energy, BP",
+   "plant": "Immingham and the Humber",
+   "country": "GB",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Immingham and the Humber and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.vikingccs.co.uk/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Viking CCS (Harbour Energy operator, BP), own site: “Viking CCS — our onshore pipeline, our offshore pipeline, secure CO2 storage.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.vikingccs.co.uk/",
+     "title": "Viking CCS",
+     "publisher": "Viking CCS (Harbour Energy operator",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     403,
+     404,
+     705
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 403 (“Viking CCS Phase 1”), 404 (“Viking CCS Phase 2”), 705 (“Viking CCS Phase 3”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "role": [
+    "transport",
+    "storage"
+   ],
+   "shared": true,
+   "shared_note": "A Humber network open to third-party emitters, with shipping options under discussion.",
+   "role_note": "Its own navigation names an onshore pipeline, an offshore pipeline and CO2 storage. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "medway-hub-ccs",
+   "name": "Medway Hub CCS",
+   "company": "Synergia Energy",
+   "plant": "Forbes reservoir, Southern North Sea",
+   "country": "GB",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Forbes reservoir, Southern North Sea and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.synergiaenergy.com/sites/synergia-energy-ltd/files/synergia-energy-ltd/operations/united-kingdom/medway-hub-ccs-r7-we.pdf",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Synergia Energy, own technical presentation: “Forbes CO2 Storage Reservoir — Forbes depth structure map at top of Bunter SST.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.synergiaenergy.com/sites/synergia-energy-ltd/files/synergia-energy-ltd/operations/united-kingdom/medway-hub-ccs-r7-we.pdf",
+     "title": "Medway Hub CCS",
+     "publisher": "Synergia Energy",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 570,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 570 (“Medway Hub CCS”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "morecambe-net-zero",
+   "name": "Morecambe Net Zero",
+   "company": "Spirit Energy",
+   "plant": "Morecambe Bay",
+   "country": "GB",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Morecambe Bay and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2023-01-31",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.spirit-energy.com/newsroom/press-releases/spirit-energy-launches-plan-for-carbon-storage-cluster/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Spirit Energy, own release quoting its chief executive: “Neil McCulloch, CEO of Spirit Energy, said: “Our project will introduce cost-effective decarbonisation to businesses all over the UK, with a multi-billion-pound investment.””"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.spirit-energy.com/newsroom/press-releases/spirit-energy-launches-plan-for-carbon-storage-cluster/",
+     "title": "Morecambe Net Zero",
+     "publisher": "Spirit Energy",
+     "date": "2023-01-31",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 615,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 615 (“Morecambe Net Zero”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "storage",
+   "shared": true,
+   "shared_note": "A store offering decarbonisation to businesses all over the UK.",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "peak-cluster-transport",
+   "name": "Peak Cluster transport",
+   "company": "Summit Energy Evolution (Sumitomo), Progressive Energy",
+   "plant": "Peak District",
+   "country": "GB",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Peak District and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.peakcluster.co.uk/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "The Peak Cluster, the project's own site: “Located in the Peak District, the project will prevent over 3 million tonnes of carbon dioxide emissions each year by 2030.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.peakcluster.co.uk/",
+     "title": "Peak Cluster transport",
+     "publisher": "The Peak Cluster",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 768,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 768 (“Peak cluster transport”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "A pipeline for the Peak District's cement and lime works.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "tranmere-stanlow-terminal",
+   "name": "Tranmere and Stanlow terminal",
+   "company": "Stanlow Terminals (Essar Energy Transition)",
+   "plant": "Tranmere and Stanlow",
+   "country": "GB",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Tranmere and Stanlow and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2023-08-08",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.stanlowterminals.co.uk/stanlow-terminals-and-eni-uk-sign-a-mou-to-develop-carbon-dioxide-transport-and-storage-projects/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Stanlow Terminals (Essar Energy Transition), own site: “The proposed terminal will play a critical role in enabling carbon capture, utilisation and storage (CCUS) infrastructure by facilitating the import and handling of CO2.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.stanlowterminals.co.uk/stanlow-terminals-and-eni-uk-sign-a-mou-to-develop-carbon-dioxide-transport-and-storage-projects/",
+     "title": "Tranmere and Stanlow terminal",
+     "publisher": "Stanlow Terminals (Essar Energy Transition)",
+     "date": "2023-08-08",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 904,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 904 (“Tranmere and Stanlow Terminal”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "A terminal opening CO2 transport to industrial companies beyond the immediate cluster.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "sullom-voe-hub",
+   "name": "Sullom Voe terminal and Shetland basin hub",
+   "company": "Veri Energy (EnQuest)",
+   "plant": "Sullom Voe, Shetland",
+   "country": "GB",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Sullom Voe, Shetland and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://verienergy.com/pages/sullom-voe-terminal",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Veri Energy (EnQuest), own site: “The captured CO2, anticipated to be up to 1 million tonnes per annum, will be transported a short distance to Veri Energy's planned carbon storage hub for permanent sequestration.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://verienergy.com/pages/sullom-voe-terminal",
+     "title": "Sullom Voe terminal and Shetland basin hub",
+     "publisher": "Veri Energy (EnQuest)",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     1233,
+     1510,
+     1511
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 1233 (“Sullom voe terminal and Shetland basin hub (SVT) - Thistle injection phase 1”), 1510 (“Sullom voe terminal and Shetland basin hub (SVT) - Magnus phase 2”), 1511 (“Sullom voe terminal and Shetland basin hub (SVT) - Regional Expansion phase 3”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "role": [
+    "terminal",
+    "storage"
+   ],
+   "role_note": "A terminal and a storage hub, and its owner describes it as both. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "norvik-nice",
+   "name": "Norvik Infrastructure CCS East",
+   "company": "Ports of Stockholm, Stockholm Exergi, Malarenergi",
+   "plant": "Stockholm Norvik Port",
+   "country": "SE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Stockholm Norvik Port and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.portsofstockholm.com/about-us/environmental-work/ccs-at-stockholm-norvik-port/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Ports of Stockholm, own page: “CCS at Stockholm Norvik Port.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.portsofstockholm.com/about-us/environmental-work/ccs-at-stockholm-norvik-port/",
+     "title": "Norvik Infrastructure CCS East",
+     "publisher": "Ports of Stockholm",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 746,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 746 (“Norvik Infrastructure CCS East (NICE)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "cinfracap",
+   "name": "CinfraCap",
+   "company": "Nordion Energi, Goteborg Energi, Renova, Port of Gothenburg",
+   "plant": "Gothenburg",
+   "country": "SE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Gothenburg and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://nordionenergi.se/download/18.11d52c40197a1b26e2329b/1750772049126/NORDION%20HA%CC%8AR%20LA%CC%88NK%20ENG_PUBL_28maj.pdf",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Nordion Energi with Goteborg Energi, Renova and the Port of Gothenburg, own document: “The project has investigated the possibility of handling up to 4 million tonnes of captured carbon per year.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://nordionenergi.se/download/18.11d52c40197a1b26e2329b/1750772049126/NORDION%20HA%CC%8AR%20LA%CC%88NK%20ENG_PUBL_28maj.pdf",
+     "title": "CinfraCap",
+     "publisher": "Nordion Energi with Goteborg Energi",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 87,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 87 (“CinfraCap (Carbon Infrastructure Capture) - Port of Gothenburg”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "Shared CO2 infrastructure for Gothenburg's industrial and energy emitters.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "highway58",
+   "name": "Highway58",
+   "company": "Pipe58, Progressive Energy",
+   "plant": "Baltic Sea",
+   "country": "SE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Baltic Sea and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-01-27",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://pipe58.se/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Pipe58 with Progressive Energy, the project's own site: “20 MtCO2 annual capacity for phase 1. >1000 km length of phase 1 backbone. Early 2030s phase 1 aimed to be operational.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://pipe58.se/",
+     "title": "Highway58",
+     "publisher": "Pipe58 with Progressive Energy",
+     "date": "2026-01-27",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1507,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1507 (“Highway58 (Baltic Sea CO2 backbone)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "A Baltic Sea backbone for emitters in Sweden and Finland.",
+   "capacity_value": 20000000,
+   "capacity_unit": "t_co2_per_year",
+   "capacity_product": "CO2 transported",
+   "capacity_basis": "announced",
+   "capacity_source_url": "https://pipe58.se/",
+   "capacity_as_of": "2026-01-27",
+   "capacity_as_of_precision": "day",
+   "capacity_note": "Pipe58 with Progressive Energy, the project's own site: “20 MtCO2 annual capacity for phase 1. >1000 km length of phase 1 backbone. Early 2030s phase 1 aimed to be operational.” The project states its own figure on its own site, which is the admission and the capacity in one page. THE FIGURE ON THIS ROW IS 20 MtCO2 annual capacity for phase 1. AT THE OWNER'S UNIT AND NOT CONVERTED (D80).",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "german-carbon-transport-grid",
+   "name": "German Carbon Transport Grid",
+   "company": "Open Grid Europe, TES",
+   "plant": "Germany",
+   "country": "DE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Germany and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.oge.net/de/co2/co2-netz",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Open Grid Europe, own CO2 network page: “Projekte und Korridore: German Carbon Transport Grid, WHV CO2 Corridor, Delta Rhine Corridor, Ruhbens, DK CO2 Corridor, Cluster Elbe.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.oge.net/de/co2/co2-netz",
+     "title": "German Carbon Transport Grid",
+     "publisher": "Open Grid Europe",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 675,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 675 (“German carbon transport grid”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "An open-access CO2 transport grid across German industry.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "carbonbridge",
+   "name": "CarbonBridge",
+   "company": "Ambrian Energy, Messer, Bremenports",
+   "plant": "Bremerhaven",
+   "country": "DE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Bremerhaven and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2025-06-19",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.carbonbridge.de/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Ambrian Energy, Messer and Bremenports, the project's own site: “CO2 storage involves two main steps: First, CO2 is captured directly from sources like power plants or industrial facilities.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.carbonbridge.de/",
+     "title": "CarbonBridge",
+     "publisher": "Ambrian Energy",
+     "date": "2025-06-19",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1471,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1471 (“CarbonBridge”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "goco2-transport",
+   "name": "GOCO2 transport",
+   "company": "GRT Gaz, Heidelberg Materials, Lhoist, Lafarge, Elengy",
+   "plant": "Saint-Nazaire and western France",
+   "country": "FR",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Saint-Nazaire and western France and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2023-07-11",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.heidelbergmaterials.fr/fr/groupe-goco2-un-projet-denvergure-de-captage-de-conditionnement-et-de-transport-du-co2-dorigine-industrielle-en-pays-de-la-loire-et-pour-le-grand-ouest",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Heidelberg Materials France, a named partner, on the GOCO2 chain: “GOCO2 rassemble plusieurs operations complementaires permettant le captage du CO2 et son transport, en vue de son stockage geologique permanent.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.heidelbergmaterials.fr/fr/groupe-goco2-un-projet-denvergure-de-captage-de-conditionnement-et-de-transport-du-co2-dorigine-industrielle-en-pays-de-la-loire-et-pour-le-grand-ouest",
+     "title": "GOCO2 transport",
+     "publisher": "Heidelberg Materials France",
+     "date": "2023-07-11",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1114,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1114 (“Grand Ouest CO2 (GOCO₂) transport”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "A 375 km pipeline serving cement and lime works in western France.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "natran-co2-backbone",
+   "name": "Natran CO2 backbone",
+   "company": "Natran (formerly GRTgaz)",
+   "plant": "France",
+   "country": "FR",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names France and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.grtgaz.com/en/our-energy-transition/co2-transport",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Natran (formerly GRTgaz), own CCUS pages: “GRTgaz is developing dedicated transmission networks contributing to transport CO2 from the French industrial sites where it is captured to storage and utilisation sites.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.grtgaz.com/en/our-energy-transition/co2-transport",
+     "title": "Natran CO2 backbone",
+     "publisher": "Natran (formerly GRTgaz)",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1139,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1139 (“Natran Group CO2 backbone”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "Dedicated transmission networks for French industrial emitters.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "co2-highway-europe",
+   "name": "CO2 Highway Europe",
+   "company": "Equinor, Fluxys, Natran",
+   "plant": "Zeebrugge to the North Sea",
+   "country": "BE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Zeebrugge to the North Sea and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.equinor.com/energy/co2highwayeurope",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Equinor, with Fluxys and Natran: “It includes 16 emitters in 10 countries, 31 capture sites, and storage of around 34 million tonnes of CO2 per year at two storage sites in the North Sea.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.equinor.com/energy/co2highwayeurope",
+     "title": "CO2 Highway Europe",
+     "publisher": "Equinor",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1179,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1179 (“CO2 Highway Europe (Zeebrugge offshore CO2 pipeline)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "A pipeline in a chain of 16 emitters across 10 countries.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "starfish-havstjerne",
+   "name": "STARFISH / Havstjerne",
+   "company": "Altera Infrastructure, Harbour Energy",
+   "plant": "Egersund basin",
+   "country": "NO",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Egersund basin and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Altera Infrastructure, own article: “The storage, with an annual capacity estimated at 7 million tonnes per annum (Mtpa), is located 100 kilometers southwest of Egersund, Norway.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
+     "title": "STARFISH / Havstjerne",
+     "publisher": "Altera Infrastructure",
+     "date": "2026-09-15",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-15",
+     "archived": false,
+     "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body — the ordinary case for a project landing page, as against a press release. Under sources/scope.md the date is the day this register read the page and it is an UPPER BOUND: the text existed then and nobody here knows when it was written."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": [
+     28,
+     772,
+     1397
+    ],
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entries 28 (“Altera Stella Maris CCS Project Phase 2”), 772 (“STARFISH project (Havstjerne CO2 storage/Altera Stella Maris CCS Project Phase 1)”), 1397 (“Havstjerne CO2 Storage (FSIU)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
+   },
+   "role": [
+    "terminal",
+    "storage"
+   ],
+   "role_note": "A floating storage and injection unit: a quay that is also the store's wellhead. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "celsio-ccs-terminal",
+   "name": "Celsio CCS terminal",
+   "company": "Hafslund Oslo Celsio",
+   "plant": "Oslo",
+   "country": "NO",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Oslo and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2024-02-12",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.akersolutions.com/news/news-archive/2024/aker-solutions-awarded-feed-for-celsios-ccs-terminal-at-the-port-of-oslo/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "Aker Solutions, the contractor, naming the project and the chain: “The Celsio CCS project and the Northern Lights storage are part of Longship, the Norwegian Government's carbon capture and storage project.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.akersolutions.com/news/news-archive/2024/aker-solutions-awarded-feed-for-celsios-ccs-terminal-at-the-port-of-oslo/",
+     "title": "Celsio CCS terminal",
+     "publisher": "Aker Solutions",
+     "date": "2024-02-12",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1088,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1088 (“Celsio CCS project terminal”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "apolloco2-revithoussa",
+   "name": "APOLLOCO2-LT",
+   "company": "DESFA, ECOLOG",
+   "plant": "Revithoussa",
+   "country": "GR",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Revithoussa and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2025-11-03",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.desfa.gr/en/desfa-secures-e169-3-million-eu-innovation-fund-grant-for-apolloco%e2%82%82-advancing-greeces-first-large-scale-ccs-midstream-infrastructure/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "DESFA, the Greek gas transmission operator and named partner: “APOLLOCO2 provides the critical midstream link in Greece's emerging CCS value chain, connecting CO2 capture investments with storage facilities.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.desfa.gr/en/desfa-secures-e169-3-million-eu-innovation-fund-grant-for-apolloco%e2%82%82-advancing-greeces-first-large-scale-ccs-midstream-infrastructure/",
+     "title": "APOLLOCO2-LT",
+     "publisher": "DESFA",
+     "date": "2025-11-03",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1446,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1446 (“APOLLOCO2-LT Revithoussa Island”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "The midstream link in Greece's CCS chain, between capture investments and storage.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "ccs-baltic-klaipeda",
+   "name": "CCS Baltic — Klaipeda terminal",
+   "company": "KN Energies, Klaipedos Nafta",
+   "plant": "Klaipeda",
+   "country": "LT",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Klaipeda and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2023-06-01",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://ccs-baltic.eu/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "CCS Baltic Consortium, the project's own site: “The CO2 emissions will be captured at cement plants operated by SCHWENK Latvija (Latvia) and Akmenes cementas (Lithuania).”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://ccs-baltic.eu/",
+     "title": "CCS Baltic — Klaipeda terminal",
+     "publisher": "CCS Baltic Consortium",
+     "date": "2023-06-01",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 683,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 683 (“CCS Baltic Consortium, Klapeida terminal”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "shared": true,
+   "shared_note": "A terminal for Latvian and Lithuanian cement works.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "golianovo-storage",
+   "name": "Golianovo CO2 storage",
+   "company": "ENGAS, Duslo",
+   "plant": "Golianovo",
+   "country": "SK",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and the source that admits this row names Golianovo and not a position. Transport and storage is the sector where that bites hardest: a pipeline is a route rather than a place, and a store is a reservoir whose position its operator rarely publishes. The row is admitted without one, on the rule that position is not an admission leg.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2025-10-31",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.engas.sk/ccs",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "ENGAS, own CCS pages: “ENGAS CCS - underground storage. CO2 capture and storage.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.engas.sk/ccs",
+     "title": "Golianovo CO2 storage",
+     "publisher": "ENGAS",
+     "date": "2025-10-31",
+     "date_precision": "day",
+     "captured_at": "2026-09-15",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1529,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1529 (“Golianovo CO₂ Storage Site ”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+   },
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   }
  ]
 }

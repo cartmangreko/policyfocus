@@ -216,6 +216,21 @@ def build() -> tuple[list[dict], list[str]]:
         if clause is not None and iid not in h:
             rec["class"] = "perimeter exclusion"
             rec["clause"] = clause
+            # A REFUSAL MAY CARRY AN INDUSTRY AND A FATE, AS TWO FIELDS. Ruled 15
+            # September 2026. The two answer different questions and neither
+            # substitutes for the other: the CLAUSE says which perimeter rule
+            # refused the entry, and the supplier sweep reads it for the industry;
+            # the FATE is the publisher's own `Fate of carbon` and says where the
+            # tonne was going.
+            #
+            # MOL SZANK IS THE CASE IT WAS WRITTEN FOR. It is capture at a natural
+            # gas processing plant, so its clause is "capture, natural gas
+            # processing" and the supplier sweep needs that; and its fate is EOR,
+            # so a reader asking which European entries are enhanced oil recovery
+            # must be able to find it. Recording only one would have lost the
+            # other, and overwriting the clause with the fate would have thrown
+            # away the industry to record a destination.
+            rec["fate"] = d["Fate of carbon"]
             rec["derived"] = True
         elif iid in h:
             rec.update(h[iid])
@@ -282,6 +297,15 @@ def main() -> int:
     print("|---|---|")
     for c, n in by_clause.most_common():
         print(f"| {c} | {n} |")
+
+    print("\nENHANCED OIL RECOVERY — every European entry whose fate is EOR, by clause")
+    print("A refusal carries an industry AND a fate, and neither substitutes for the other.")
+    eor = [r for r in rows if str(r.get("fate") or "").strip() == "EOR"
+           or r.get("clause") == "enhanced oil recovery"]
+    for r in eor:
+        print(f"  {r['iea_id']:>5} {r['name'][:46]:<46} clause={r.get('clause')!r}"
+              f" fate={r.get('fate')!r}")
+    print(f"  {len(eor)} entr{'y' if len(eor) == 1 else 'ies'}.")
 
     print("\nNOT SEARCHED — the only class that is a defect, printed by name")
     ns = [r for r in rows if r["class"] == "not searched"]

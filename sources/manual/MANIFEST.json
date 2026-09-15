@@ -146,6 +146,14 @@
    "retrieved_by": "eufabric crawler",
    "note": "Leilac's (Calix's) own Leilac-2 project page, from the Internet Archive's capture of 26 February 2025, because leilac.com answers 403 to a declared reader on both the project page and the root. IT IS THE SOURCE FOR THE TECHNOLOGY ROW ccs-direct-separation, and it carries two things nothing else read does. THE METHOD, in Calix's own design terms: 'Four calciner tubes in one furnace chamber; A preheater string for heat transfer from flue gas', targeting '100,000 tonnes per year of >95% purity CO2'. AND THE STORAGE ANSWER: 'While there are no current plans to actually store or use the CO2 from Leilac-2, this analysis will enable a better understanding of the potential uses or safe geological storage options.' THE PAGE NAMES NO SITE -- see the Hanover reference debt in sources/cement_ccs_docket.md.",
    "archived": true
+  },
+  {
+   "file": "greenstore--project-page.html",
+   "url": "https://web.archive.org/web/20260516020918/https://greenstore.dk/en/home-page/",
+   "retrieved_date": "2026-09-15",
+   "retrieved_by": "eufabric crawler",
+   "archived": true,
+   "note": "PROJEKT GREENSTORE'S OWN PAGE, from the Internet Archive's capture of 16 May 2026, because the publisher WENT DARK BETWEEN THE FETCH AND THE PUSH. greenstore.dk/en/home-page/ answered 200 with 7,865 characters when the transport-and-storage census read it earlier on 15 September 2026, and answered 404 when check_links ran on the push the same day; the site root now answers 403 and /en/ answers 404. This is the uniper.energy case again -- see sources/scope.md, 'When a publisher goes dark after a page was read, cite the capture' -- and the third time this register has been caught by it. The capture carries Harbour Energy's Danish country manager on the project in his own words."
   }
  ],
  "wanted": [
@@ -301,6 +309,30 @@
    "needed_for": "THE STEEL CENSUS CANNOT START WITHOUT IT. NOTE THE NAME HAS CHANGED: brief 8 names 'GEM's Global Steel Plant Tracker' and the current product is the GLOBAL IRON AND STEEL TRACKER (GIST), June 2026 (V1) release. Recorded so the census does not silently measure itself against a differently scoped list under the brief's name. The brief records GEM as CC BY; the tracker page states a recommended citation and no licence, so the licence is outstanding rather than assumed.",
    "drop_as": "sources/cache/steel/gem_gist_2026_v1.xlsx",
    "priority": "blocking"
+  },
+  {
+   "candidate": "BENCHMARK ROW — northern-endurance-partnership (Equinor)",
+   "url": "https://www.equinor.com/energy/northern-endurance-partnership",
+   "why": "200 WITH AN EMPTY BODY, which is the class a link checker cannot see. The page exists and renders in a browser; a declared reader gets markup with no readable article. Same shape as shell.com and galp.com in the hydrogen queue.",
+   "needed_for": "NORTHERN ENDURANCE, IEA 294/452/460, named and not admitted by the cement-and-CCS census. The transport-and-storage partnership behind Net Zero Teesside, and the entry in this census most likely to be mistaken for an error: the IEA's own reference (netzeroteesside.co.uk/northern-endurance-partnership/) answers 404; the cluster site that remains describes NZT POWER, a gas-fired power station with capture, which this sector's perimeter refuses with the clause 'capture, power (gas)'; nzt.co.uk answers 200 with an empty body; phase 2's reference is a dead Eni link and phase 3's is the Louisiana governor's office (D83). BP, Equinor and TotalEnergies are the named partners and none of their own pages could be read. This is the partner page most likely to carry the partnership in its own words.",
+   "drop_as": "sources/manual/northern-endurance--equinor-partnership-page.html",
+   "priority": "normal"
+  },
+  {
+   "candidate": "BENCHMARK ROW — northern-endurance-partnership (BP)",
+   "url": "https://www.bp.com/en/global/corporate/what-we-do/carbon-capture-and-storage.html",
+   "why": "200 with 1,191 characters — a navigation shell rather than an article. The UK path that would carry Net Zero Teesside, /en_gb/united-kingdom/home/what-we-do/net-zero-teesside.html, answers 404.",
+   "needed_for": "NORTHERN ENDURANCE, IEA 294/452/460, named and not admitted by the cement-and-CCS census. The transport-and-storage partnership behind Net Zero Teesside, and the entry in this census most likely to be mistaken for an error: the IEA's own reference (netzeroteesside.co.uk/northern-endurance-partnership/) answers 404; the cluster site that remains describes NZT POWER, a gas-fired power station with capture, which this sector's perimeter refuses with the clause 'capture, power (gas)'; nzt.co.uk answers 200 with an empty body; phase 2's reference is a dead Eni link and phase 3's is the Louisiana governor's office (D83). BP, Equinor and TotalEnergies are the named partners and none of their own pages could be read. BP is the operator of the NEP joint venture.",
+   "drop_as": "sources/manual/northern-endurance--bp-ccs-page.html",
+   "priority": "normal"
+  },
+  {
+   "candidate": "BENCHMARK ROW — northern-endurance-partnership (TotalEnergies)",
+   "url": "https://totalenergies.com/projects/carbon-capture-and-storage",
+   "why": "404 on the natural CCS path; no readable TotalEnergies page for the partnership was located.",
+   "needed_for": "NORTHERN ENDURANCE, IEA 294/452/460, named and not admitted by the cement-and-CCS census. The transport-and-storage partnership behind Net Zero Teesside, and the entry in this census most likely to be mistaken for an error: the IEA's own reference (netzeroteesside.co.uk/northern-endurance-partnership/) answers 404; the cluster site that remains describes NZT POWER, a gas-fired power station with capture, which this sector's perimeter refuses with the clause 'capture, power (gas)'; nzt.co.uk answers 200 with an empty body; phase 2's reference is a dead Eni link and phase 3's is the Louisiana governor's office (D83). BP, Equinor and TotalEnergies are the named partners and none of their own pages could be read. The third partner.",
+   "drop_as": "sources/manual/northern-endurance--totalenergies-ccs-page.html",
+   "priority": "normal"
   }
  ]
 }

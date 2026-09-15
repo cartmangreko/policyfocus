@@ -89,6 +89,7 @@
    "iea_estimated_capacity_mt": 0.7,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -103,6 +104,7 @@
    "iea_estimated_capacity_mt": 0.3,
    "class": "perimeter exclusion",
    "clause": "capture, natural gas processing",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -115,7 +117,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": "0.3 - 0.8",
    "iea_estimated_capacity_mt": 0.8,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "acorn-ccs",
+   "speaker": "The Acorn Project (Storegga, Shell, Harbour, North Sea Midstream), own site",
+   "source": "https://www.theacornproject.uk/",
+   "verbatim": "Scotland's CO2 transport and storage network. Delivering carbon storage infrastructure to support economic growth, jobs and the UK's energy transition.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1. One project, two list entries.",
    "derived": false
   },
   {
@@ -128,7 +137,14 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "acorn-ccs",
+   "speaker": "The Acorn Project (Storegga, Shell, Harbour, North Sea Midstream), own site",
+   "source": "https://www.theacornproject.uk/",
+   "verbatim": "Scotland's CO2 transport and storage network. Delivering carbon storage infrastructure to support economic growth, jobs and the UK's energy transition.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. One project, two list entries.",
    "derived": false
   },
   {
@@ -143,6 +159,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -157,6 +174,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -169,7 +187,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 22,
    "iea_estimated_capacity_mt": 12.9,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "aramis",
+   "speaker": "Aramis (TotalEnergies, Shell, EBN, Gasunie), the project's own FAQ",
+   "source": "https://www.aramis-ccs.com/faq",
+   "verbatim": "The project expects to transport approximately 22 Million tonnes per annum (Mtpa) of CO2 to the storage locations.",
+   "capacity_stated": "approximately 22 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "ONE PROJECT, THREE LIST ENTRIES (transport phase 1). The 22 Mtpa is the project's figure for the whole chain and is recorded once, on the row.",
    "derived": false
   },
   {
@@ -182,7 +207,16 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 3,
    "iea_estimated_capacity_mt": 3,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "starfish-havstjerne",
+   "speaker": "Altera Infrastructure, own article",
+   "source": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
+   "verbatim": "The storage, with an annual capacity estimated at 7 million tonnes per annum (Mtpa), is located 100 kilometers southwest of Egersund, Norway.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "ONE PROJECT FAMILY OVER THREE LIST ENTRIES (Stella Maris phase 2); the IEA's own hub column puts all three under Altera Stella Maris or STARFISH. THE VESSEL IS ADMITTED AND THE LICENCE IS NOT: what the row holds is the floating storage and injection infrastructure, not the Havstjerne exploration licence, which the Q2 ruling excludes. The 7 Mtpa is an estimate for the storage and is not written onto the row.",
+   "source_cited_before_repair": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -195,7 +229,16 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 2.5,
    "iea_estimated_capacity_mt": 2.5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "antwerp-c-export-hub",
+   "speaker": "Air Liquide, the lead partner, naming the hub",
+   "source": "https://www.airliquide.com/group/press-releases-news/2022-12-12/air-liquide-fluxys-belgium-and-port-antwerp-bruges-awarded-eu-funding-building-antwerpc-co2-export",
+   "verbatim": "The Antwerp@C CO2 Export Hub will have an initial export capacity of 2.5 million tonnes per annum (Mtpa), with the ambition to reach up to 10 Mtpa by 2030.",
+   "capacity_stated": "2.5 Mt CO2/yr initial, up to 10 Mt CO2/yr by 2030",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "phase 1. One hub, two list entries; the capacity is the hub's own figure and is recorded once.",
+   "source_cited_before_repair": "https://www.airliquide.com/group/press-releases-news/antwerp-c-co2-export-hub",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -208,7 +251,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 7.5,
    "iea_estimated_capacity_mt": 7.5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "aramis",
+   "speaker": "Aramis (TotalEnergies, Shell, EBN, Gasunie), the project's own FAQ",
+   "source": "https://www.aramis-ccs.com/faq",
+   "verbatim": "The project expects to transport approximately 22 Million tonnes per annum (Mtpa) of CO2 to the storage locations.",
+   "capacity_stated": "approximately 22 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "ONE PROJECT, THREE LIST ENTRIES (storage phase 1). The 22 Mtpa is the project's figure for the whole chain and is recorded once, on the row.",
    "derived": false
   },
   {
@@ -221,7 +271,14 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 3.1,
    "iea_estimated_capacity_mt": 3.1,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "aramis",
+   "speaker": "Aramis (TotalEnergies, Shell, EBN, Gasunie), the project's own FAQ",
+   "source": "https://www.aramis-ccs.com/faq",
+   "verbatim": "The project expects to transport approximately 22 Million tonnes per annum (Mtpa) of CO2 to the storage locations.",
+   "capacity_stated": "approximately 22 Mt CO2/yr",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "ONE PROJECT, THREE LIST ENTRIES (storage phase 2). The 22 Mtpa is the project's figure for the whole chain and is recorded once, on the row.",
    "derived": false
   },
   {
@@ -236,6 +293,7 @@
    "iea_estimated_capacity_mt": 0.125,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -250,6 +308,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -264,6 +323,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -278,6 +338,7 @@
    "iea_estimated_capacity_mt": 2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -292,6 +353,7 @@
    "iea_estimated_capacity_mt": 2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -306,6 +368,7 @@
    "iea_estimated_capacity_mt": 2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -320,6 +383,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -334,6 +398,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -348,6 +413,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -362,6 +428,7 @@
    "iea_estimated_capacity_mt": 3,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -376,6 +443,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, fertiliser",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -425,7 +493,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 4,
    "iea_estimated_capacity_mt": 4,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "cinfracap",
+   "speaker": "Nordion Energi with Goteborg Energi, Renova and the Port of Gothenburg, own document",
+   "source": "https://nordionenergi.se/download/18.11d52c40197a1b26e2329b/1750772049126/NORDION%20HA%CC%8AR%20LA%CC%88NK%20ENG_PUBL_28maj.pdf",
+   "verbatim": "The project has investigated the possibility of handling up to 4 million tonnes of captured carbon per year.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "An investigation of a possibility is not a stated capacity, and the 4 Mt is not written onto the row.",
+   "source_cited_before_repair": "https://nordionenergi.se/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -440,6 +517,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -454,6 +532,7 @@
    "iea_estimated_capacity_mt": 0.039,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -468,6 +547,7 @@
    "iea_estimated_capacity_mt": 0.035,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -482,6 +562,7 @@
    "iea_estimated_capacity_mt": 0.184,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -496,6 +577,7 @@
    "iea_estimated_capacity_mt": 0.3,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -510,6 +592,7 @@
    "iea_estimated_capacity_mt": 0.7,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -524,6 +607,7 @@
    "iea_estimated_capacity_mt": 0.7,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -538,6 +622,7 @@
    "iea_estimated_capacity_mt": 1.6,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -552,6 +637,7 @@
    "iea_estimated_capacity_mt": 1.3,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -564,7 +650,11 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 1.5,
    "iea_estimated_capacity_mt": 1.5,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU funder's",
+   "speaker": "European Commission funding record",
+   "source": "https://ec.europa.eu/",
+   "note": "AN OFFICIAL RECORD IS NOT THE COMPANY, as at IEA 664. Air Liquide France Industrie and the Port of Dunkerque are named partners and neither is readable here on D'Artagnan phase 1. The register already holds k6-lumbres, whose storage note cites Dunkerque l'Energie Creative naming Lumbres as feeding this hub — a third party describing the chain, which is not the hub's operator confirming the hub.",
    "derived": false
   },
   {
@@ -577,7 +667,11 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 1.4,
    "iea_estimated_capacity_mt": 1.4,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU funder's",
+   "speaker": "European Commission funding record",
+   "source": "https://ec.europa.eu/",
+   "note": "AN OFFICIAL RECORD IS NOT THE COMPANY, as at IEA 664. Air Liquide France Industrie and the Port of Dunkerque are named partners and neither is readable here on D'Artagnan phase 2. The register already holds k6-lumbres, whose storage note cites Dunkerque l'Energie Creative naming Lumbres as feeding this hub — a third party describing the chain, which is not the hub's operator confirming the hub.",
    "derived": false
   },
   {
@@ -590,7 +684,11 @@
    "iea_phase": 3,
    "iea_announced_capacity_mt": 5.6,
    "iea_estimated_capacity_mt": 5.6,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU funder's",
+   "speaker": "European Commission funding record",
+   "source": "https://ec.europa.eu/",
+   "note": "AN OFFICIAL RECORD IS NOT THE COMPANY, as at IEA 664. Air Liquide France Industrie and the Port of Dunkerque are named partners and neither is readable here on D'Artagnan phase 3. The register already holds k6-lumbres, whose storage note cites Dunkerque l'Energie Creative naming Lumbres as feeding this hub — a third party describing the chain, which is not the hub's operator confirming the hub.",
    "derived": false
   },
   {
@@ -605,6 +703,7 @@
    "iea_estimated_capacity_mt": 5,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -617,7 +716,12 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 22,
    "iea_estimated_capacity_mt": 22,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "200 with an empty body",
+   "looked_in_order": [
+    "shell.nl — 200, empty body, twice; the article renders client-side"
+   ],
+   "note": "THE HYDROGEN LESSON AGAIN. A link checker calls this page live because it is; what it is not is a source anybody can quote. Gasunie, OGE, Shell and BASF are the named partners and only Shell's domain is cited.",
    "derived": false
   },
   {
@@ -632,6 +736,7 @@
    "iea_estimated_capacity_mt": 4.3,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -646,6 +751,7 @@
    "iea_estimated_capacity_mt": 3.7,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -660,6 +766,7 @@
    "iea_estimated_capacity_mt": 2.5,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -674,6 +781,7 @@
    "iea_estimated_capacity_mt": 0.8,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -688,6 +796,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -702,6 +811,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -716,6 +826,7 @@
    "iea_estimated_capacity_mt": 2.5,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -730,6 +841,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -744,6 +856,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -758,6 +871,7 @@
    "iea_estimated_capacity_mt": 0.958,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -772,6 +886,7 @@
    "iea_estimated_capacity_mt": 0.12,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -786,6 +901,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, biogas",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -800,6 +916,7 @@
    "iea_estimated_capacity_mt": 0.345,
    "class": "perimeter exclusion",
    "clause": "capture, biogas",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -814,6 +931,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -828,6 +946,7 @@
    "iea_estimated_capacity_mt": 1.7,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -842,6 +961,7 @@
    "iea_estimated_capacity_mt": 0.823,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -856,6 +976,7 @@
    "iea_estimated_capacity_mt": 1.495,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -870,6 +991,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -884,6 +1006,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -953,6 +1076,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -967,6 +1091,7 @@
    "iea_estimated_capacity_mt": 1.3,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -981,6 +1106,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -995,6 +1121,7 @@
    "iea_estimated_capacity_mt": 1.3,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1009,6 +1136,7 @@
    "iea_estimated_capacity_mt": 0.89,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1023,6 +1151,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -1037,6 +1166,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1066,6 +1196,7 @@
    "iea_estimated_capacity_mt": 1.42,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1080,6 +1211,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1094,6 +1226,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1106,7 +1239,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 10,
    "iea_estimated_capacity_mt": 10,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "porthos",
+   "speaker": "Porthos, the project's own site",
+   "source": "https://www.porthosco2.nl/en/",
+   "verbatim": "Porthos is an innovative system for transporting and permanently and safely storing CO2 beneath the North Sea.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "ONE PROJECT, TWO LIST ENTRIES: the IEA splits Porthos into offshore transport-and-storage (325) and onshore transport (249). Both class admitted and both name the one row, on the precedent set for Northern Lights and Prinos.",
    "derived": false
   },
   {
@@ -1121,6 +1261,7 @@
    "iea_estimated_capacity_mt": 0.7,
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1135,6 +1276,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -1147,7 +1289,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 4.5,
    "iea_estimated_capacity_mt": 4.5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "liverpool-bay-ccs",
+   "speaker": "Eni, the operator of transport and storage for HyNet North West",
+   "source": "https://www.eni.com/en-IT/media/press-release/2023/03/eni-as-the-key-ccs-developer-in-the-uk.html",
+   "verbatim": "Eni, operator of the transport and storage of carbon dioxide for HyNet North West... the CO2 will be gathered, transported and permanently stored by Eni in its own depleted gas fields off the coast of Liverpool Bay.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1, Under construction, operation 2028.",
    "derived": false
   },
   {
@@ -1160,7 +1309,14 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 5.5,
    "iea_estimated_capacity_mt": 5.5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "liverpool-bay-ccs",
+   "speaker": "Eni, the operator of transport and storage for HyNet North West",
+   "source": "https://www.eni.com/en-IT/media/press-release/2023/03/eni-as-the-key-ccs-developer-in-the-uk.html",
+   "verbatim": "Eni, operator of the transport and storage of carbon dioxide for HyNet North West... the CO2 will be gathered, transported and permanently stored by Eni in its own depleted gas fields off the coast of Liverpool Bay.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2.",
    "derived": false
   },
   {
@@ -1175,6 +1331,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1187,7 +1344,13 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "URLError on the owner, trade press only",
+   "looked_in_order": [
+    "neptuneenergy.com/esg/l10-area-ccs-development — URLError, the owner's own project page",
+    "offshore-mag.com — 200, trade press reporting a study, not the owner"
+   ],
+   "note": "THE OWNER CANNOT BE READ. Eni acquired Neptune Energy and neptuneenergy.com no longer answers a declared reader, so the one owner page the IEA cites is gone with the company that published it.",
    "derived": false
   },
   {
@@ -1200,7 +1363,13 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 3,
    "iea_estimated_capacity_mt": 3,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "URLError on the owner, trade press only",
+   "looked_in_order": [
+    "neptuneenergy.com/esg/l10-area-ccs-development — URLError, the owner's own project page",
+    "offshore-mag.com — 200, trade press reporting a study, not the owner"
+   ],
+   "note": "THE OWNER CANNOT BE READ. Eni acquired Neptune Energy and neptuneenergy.com no longer answers a declared reader, so the one owner page the IEA cites is gone with the company that published it. The IEA carries this entry as Cancelled; nothing read here is the owner saying so.",
    "derived": false
   },
   {
@@ -1215,6 +1384,7 @@
    "iea_estimated_capacity_mt": 2.4,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1229,6 +1399,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, pulp and paper",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1241,7 +1412,20 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 4,
    "iea_estimated_capacity_mt": 4,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no readable owner source for the transport-and-storage partnership",
+   "speaker": "Net Zero Teesside, the cluster site",
+   "source": "https://www.netzeroteesside.co.uk/",
+   "verbatim": "NZT Power aims to be the world's first gas-fired power station with carbon capture and storage. Construction work is underway, with start-up expected in 2028.",
+   "looked_in_order": [
+    "netzeroteesside.co.uk/northern-endurance-partnership/ — 404, the IEA's own reference",
+    "netzeroteesside.co.uk root — 200, and it describes NZT POWER, the capture plant, not the NEP transport and storage partnership",
+    "nzt.co.uk — 200, empty body",
+    "upstreamonline.com — 200, trade press",
+    "eni.com (phase 2's reference) — 404",
+    "gov.louisiana.gov (phase 3's reference) — 404, and it is a reference to a different project on another continent (D83)"
+   ],
+   "note": "phase 1, which the IEA calls Under construction. BP, Equinor and TotalEnergies are the named partners and none of their own pages was read. THE CLUSTER SITE IS NOT THE PARTNERSHIP: NZT Power is a gas-fired power station with capture, which this sector's perimeter refuses anyway with the clause 'capture, power (gas)'. A later pass should read BP's own page; this class is what says nobody has.",
    "derived": false
   },
   {
@@ -1288,6 +1472,7 @@
    "iea_estimated_capacity_mt": 0.35,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1323,6 +1508,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1337,6 +1523,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1351,6 +1538,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1363,7 +1551,11 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 3,
    "iea_estimated_capacity_mt": 3,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU's",
+   "speaker": "European Commission",
+   "source": "https://ec.europa.eu/",
+   "note": "phase 1. Air Liquide Polska, PKN Orlen and Lafarge Cement are the named partners and none was read. Phase 3's own reference is a 404.",
    "derived": false
   },
   {
@@ -1376,7 +1568,11 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 6,
    "iea_estimated_capacity_mt": 6,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU's",
+   "speaker": "European Commission",
+   "source": "https://ec.europa.eu/",
+   "note": "phase 2. Air Liquide Polska, PKN Orlen and Lafarge Cement are the named partners and none was read. Phase 3's own reference is a 404.",
    "derived": false
   },
   {
@@ -1389,7 +1585,11 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "4 - 8",
    "iea_estimated_capacity_mt": 8,
-   "class": "not searched",
+   "class": "searched none found",
+   "note": "Horisont Energi's own site answers 404 on the cited path and the second reference is about a blue-ammonia plant's capture rate, not this store.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ],
    "derived": false
   },
   {
@@ -1402,7 +1602,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 2.5,
    "iea_estimated_capacity_mt": 2.5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "porthos",
+   "speaker": "Porthos (EBN, Gasunie, Port of Rotterdam), the project's own site",
+   "source": "https://www.porthosco2.nl/en/",
+   "verbatim": "Porthos is an innovative system for transporting and permanently and safely storing CO2 beneath the North Sea.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "IEA status Under construction, operation 2026.",
    "derived": false
   },
   {
@@ -1417,6 +1624,7 @@
    "iea_estimated_capacity_mt": 0.55,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1431,6 +1639,7 @@
    "iea_estimated_capacity_mt": 0.55,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1445,6 +1654,7 @@
    "iea_estimated_capacity_mt": 0.3,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1457,7 +1667,16 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": "2 - 5",
    "iea_estimated_capacity_mt": 3,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "bifrost",
+   "speaker": "Project Bifrost, the project's own site",
+   "source": "https://bifrost-ccs.com/",
+   "verbatim": "When oil and gas production gradually cease, the use of existing infrastructure for carbon capture and storage is an attractive alternative from both a climate and economic perspective.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1. One project, two list entries.",
+   "source_cited_before_repair": "https://news.cision.com/totalenergies/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -1472,6 +1691,7 @@
    "iea_estimated_capacity_mt": 1.2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1486,6 +1706,7 @@
    "iea_estimated_capacity_mt": 1.8,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1498,7 +1719,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 0.4,
    "iea_estimated_capacity_mt": 0.4,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "greensand",
+   "speaker": "Project Greensand (INEOS, Harbour Energy, Welltec), the project's own site",
+   "source": "https://projectgreensand.com/",
+   "verbatim": "Carbon Capture & Storage (CCS) is an important technology in this transition.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1, Under construction, operation 2026. Wintershall Dea's release states the area 'is expected to hold storage potential of 0.5-1 million tonnes of CO2 per year by 2025, increasing to a potential 4-8 million tonnes of CO2 per year by 2030' — A POTENTIAL, NOT A CAPACITY, and it is not written onto the row.",
    "derived": false
   },
   {
@@ -1511,7 +1739,14 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 7.6,
    "iea_estimated_capacity_mt": 7.6,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "greensand",
+   "speaker": "Project Greensand (INEOS, Harbour Energy, Welltec), the project's own site",
+   "source": "https://projectgreensand.com/",
+   "verbatim": "Carbon Capture & Storage (CCS) is an important technology in this transition.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. Wintershall Dea's release states the area 'is expected to hold storage potential of 0.5-1 million tonnes of CO2 per year by 2025, increasing to a potential 4-8 million tonnes of CO2 per year by 2030' — A POTENTIAL, NOT A CAPACITY, and it is not written onto the row.",
    "derived": false
   },
   {
@@ -1524,7 +1759,13 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": "1 - 3",
    "iea_estimated_capacity_mt": 1,
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "reuters.com — 401",
+    "carbongap.org — 403",
+    "zeroemissionsplatform.eu candidate-projects PDF — 200, carries nothing about PYCASSO"
+   ],
+   "note": "Terega is the lead named partner and nothing readable names the hub. phase 1. The IEA announces 1-3 Mt/yr for phase 1 and 6 Mt/yr for phase 2.",
    "derived": false
   },
   {
@@ -1537,7 +1778,11 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 4,
    "iea_estimated_capacity_mt": 4,
-   "class": "not searched",
+   "class": "searched none found",
+   "note": "Eni and Snam are the named partners and the IEA's only reference is a 404 on eni.com. Ravenna CCS is named by two entries this census admitted elsewhere — dream-rezzato-mazzano's storage note cites it — and being named by somebody else's project is not the operator confirming it.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ],
    "derived": false
   },
   {
@@ -1552,6 +1797,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1566,6 +1812,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1580,6 +1827,7 @@
    "iea_estimated_capacity_mt": 0.38,
    "class": "perimeter exclusion",
    "clause": "capture, biodiesel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1594,6 +1842,7 @@
    "iea_estimated_capacity_mt": 0.75,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -1608,6 +1857,7 @@
    "iea_estimated_capacity_mt": 1.6,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1622,6 +1872,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, natural gas processing",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1636,6 +1887,7 @@
    "iea_estimated_capacity_mt": 0.7,
    "class": "perimeter exclusion",
    "clause": "capture, natural gas processing",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1650,6 +1902,7 @@
    "iea_estimated_capacity_mt": 0.65,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1664,6 +1917,7 @@
    "iea_estimated_capacity_mt": 0.8,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1678,6 +1932,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1692,6 +1947,7 @@
    "iea_estimated_capacity_mt": 0.24,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1706,6 +1962,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -1720,6 +1977,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -1734,6 +1992,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1748,6 +2007,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1762,6 +2022,7 @@
    "iea_estimated_capacity_mt": 0.9,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1774,7 +2035,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 3.6,
    "iea_estimated_capacity_mt": 3.6,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "viking-ccs",
+   "speaker": "Viking CCS (Harbour Energy operator, BP), own site",
+   "source": "https://www.vikingccs.co.uk/",
+   "verbatim": "Viking CCS — our onshore pipeline, our offshore pipeline, secure CO2 storage.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1. One project, three list entries. Phase 3's own page adds that shipping options are under discussion with Associated British Ports.",
    "derived": false
   },
   {
@@ -1787,7 +2055,14 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 6.4,
    "iea_estimated_capacity_mt": 6.4,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "viking-ccs",
+   "speaker": "Viking CCS (Harbour Energy operator, BP), own site",
+   "source": "https://www.vikingccs.co.uk/",
+   "verbatim": "Viking CCS — our onshore pipeline, our offshore pipeline, secure CO2 storage.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. One project, three list entries. Phase 3's own page adds that shipping options are under discussion with Associated British Ports.",
    "derived": false
   },
   {
@@ -1802,6 +2077,7 @@
    "iea_estimated_capacity_mt": 3.3,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1816,6 +2092,7 @@
    "iea_estimated_capacity_mt": 0.8,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1830,6 +2107,7 @@
    "iea_estimated_capacity_mt": 1.3,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1844,6 +2122,7 @@
    "iea_estimated_capacity_mt": 0.8,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1858,6 +2137,7 @@
    "iea_estimated_capacity_mt": 0.004,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1872,6 +2152,7 @@
    "iea_estimated_capacity_mt": 0.05,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1886,6 +2167,7 @@
    "iea_estimated_capacity_mt": 0.006,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1900,6 +2182,7 @@
    "iea_estimated_capacity_mt": 8.1,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1912,7 +2195,20 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 4,
    "iea_estimated_capacity_mt": 4,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no readable owner source for the transport-and-storage partnership",
+   "speaker": "Net Zero Teesside, the cluster site",
+   "source": "https://www.netzeroteesside.co.uk/",
+   "verbatim": "NZT Power aims to be the world's first gas-fired power station with carbon capture and storage. Construction work is underway, with start-up expected in 2028.",
+   "looked_in_order": [
+    "netzeroteesside.co.uk/northern-endurance-partnership/ — 404, the IEA's own reference",
+    "netzeroteesside.co.uk root — 200, and it describes NZT POWER, the capture plant, not the NEP transport and storage partnership",
+    "nzt.co.uk — 200, empty body",
+    "upstreamonline.com — 200, trade press",
+    "eni.com (phase 2's reference) — 404",
+    "gov.louisiana.gov (phase 3's reference) — 404, and it is a reference to a different project on another continent (D83)"
+   ],
+   "note": "phase 2. BP, Equinor and TotalEnergies are the named partners and none of their own pages was read. THE CLUSTER SITE IS NOT THE PARTNERSHIP: NZT Power is a gas-fired power station with capture, which this sector's perimeter refuses anyway with the clause 'capture, power (gas)'. A later pass should read BP's own page; this class is what says nobody has.",
    "derived": false
   },
   {
@@ -1927,6 +2223,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1941,6 +2238,7 @@
    "iea_estimated_capacity_mt": 2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1953,7 +2251,20 @@
    "iea_phase": 3,
    "iea_announced_capacity_mt": 2,
    "iea_estimated_capacity_mt": 2,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no readable owner source for the transport-and-storage partnership",
+   "speaker": "Net Zero Teesside, the cluster site",
+   "source": "https://www.netzeroteesside.co.uk/",
+   "verbatim": "NZT Power aims to be the world's first gas-fired power station with carbon capture and storage. Construction work is underway, with start-up expected in 2028.",
+   "looked_in_order": [
+    "netzeroteesside.co.uk/northern-endurance-partnership/ — 404, the IEA's own reference",
+    "netzeroteesside.co.uk root — 200, and it describes NZT POWER, the capture plant, not the NEP transport and storage partnership",
+    "nzt.co.uk — 200, empty body",
+    "upstreamonline.com — 200, trade press",
+    "eni.com (phase 2's reference) — 404",
+    "gov.louisiana.gov (phase 3's reference) — 404, and it is a reference to a different project on another continent (D83)"
+   ],
+   "note": "phase 3. BP, Equinor and TotalEnergies are the named partners and none of their own pages was read. THE CLUSTER SITE IS NOT THE PARTNERSHIP: NZT Power is a gas-fired power station with capture, which this sector's perimeter refuses anyway with the clause 'capture, power (gas)'. A later pass should read BP's own page; this class is what says nobody has.",
    "derived": false
   },
   {
@@ -1968,6 +2279,7 @@
    "iea_estimated_capacity_mt": 0.8,
    "class": "perimeter exclusion",
    "clause": "capture, fertiliser",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1982,6 +2294,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1996,6 +2309,7 @@
    "iea_estimated_capacity_mt": 5,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2008,7 +2322,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "5 - 10",
    "iea_estimated_capacity_mt": 10,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "bacton-ccs",
+   "speaker": "Eni UK, own release",
+   "source": "https://www.eni.com/en-IT/media/press-release/2022/09/eni-uk-applies-for-carbon-storage-license-for-hewett-depleted-field.html",
+   "verbatim": "Eni UK will play a pivotal role in this industry-led initiative by transporting and storing CO2 in its Hewett depleted gas field, that could be operational as early as 2027. The Hewett depleted gas field is an ideal site for permanent and safe CO2 storage with a total capacity of about 330 million tonnes.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "A TOTAL CAPACITY IS NOT AN ANNUAL ONE. Eni states 330 Mt as what the field holds; the IEA announces 5-10 Mt per YEAR. Different quantities, and neither is written onto the row as the other.",
+   "source_cited_before_repair": "https://www.eni.com/en-IT/media/press-release/2022/09/eni-uk-applies-for-carbon-storage-license.html",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2021,7 +2344,13 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "4 - 8",
    "iea_estimated_capacity_mt": 8,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "URLError and 404, owner included",
+   "looked_in_order": [
+    "neptuneenergy.com — URLError",
+    "horisontenergi.no — 404"
+   ],
+   "note": "Both named partners' domains fail. The IEA carries this entry as Cancelled.",
    "derived": false
   },
   {
@@ -2034,7 +2363,11 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 10,
    "iea_estimated_capacity_mt": 10,
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "wintershalldea.com — 404, the sole named partner's own domain"
+   ],
+   "note": "Harbour Energy (formerly Wintershall Dea) is the only named partner and the IEA's only reference is a dead path on its site.",
    "derived": false
   },
   {
@@ -2047,7 +2380,12 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 20,
    "iea_estimated_capacity_mt": 20,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "the partner speaks about itself, not about this project",
+   "speaker": "Wintershall Dea",
+   "source": "https://wintershalldea.com/en/newsroom/",
+   "verbatim": "In addition, we plan to reduce emissions resulting from the use of hydrocarbons by applying CCS and low-carbon hydrogen technologies, potentially building up a business abating 20-30 million tonnes of CO2 per annum by 2040.",
+   "note": "A company ambition, not a statement about the CO2T pipeline. Gassco, Equinor, Harbour, Northern Lights and TotalEnergies are the named partners.",
    "derived": false
   },
   {
@@ -2060,7 +2398,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Harbour Energy (60%), TotalEnergies (40%), formerly Wintershall Dea",
+   "licensee_claim": {
+    "speaker": "Wintershall Dea, own release",
+    "says": "Wintershall Dea will be operator of the Luna licence which is located 120km west of Bergen, and is estimated to hold a CO2 storage injection capacity of up to 5 million tonnes per year.",
+    "url": "https://wintershalldea.com/en/newsroom/wintershall-dea-awarded-its-first-co2-licence-norway",
+    "date": "2022-01-01"
+   },
+   "note": "The same publisher's second release states 'up to seven million tonnes' for a licence; which licence that figure belongs to is not stated, so only the figure named against Luna is recorded here.",
    "derived": false
   },
   {
@@ -2073,7 +2421,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 6,
    "iea_estimated_capacity_mt": 6,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "ghent-carbon-hub",
+   "speaker": "Fluxys, with ArcelorMittal and North Sea Port",
+   "source": "https://www.fluxys.com/en/press-releases/fluxys-group/2022/220818_press_ghent_carbon_hub",
+   "verbatim": "Carbon capture, utilisation and storage (CCUS) is essential for CO2 intensive industries to achieve net zero emissions.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "A hub, which the CCS perimeter names in. `shared` is the standing rule here: a hub serving steel and other industries is claimed by no single ecosystem.",
+   "source_cited_before_repair": "https://www.fluxys.com/en/projects/ghent-carbon-hub",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2088,6 +2445,7 @@
    "iea_estimated_capacity_mt": 0.002,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2147,6 +2505,7 @@
    "iea_estimated_capacity_mt": 0.25,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2159,7 +2518,13 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 0.8,
    "iea_estimated_capacity_mt": 0.8,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "URLError on the owner, empty body on the second reference",
+   "looked_in_order": [
+    "protos.co.uk — URLError, the project's own site",
+    "youtube.com — 200, empty body"
+   ],
+   "note": "Peel NRE and Progressive Energy are the named partners. phase 1. A VIDEO IS NOT A SOURCE THIS READER CAN QUOTE, and the IEA cites one.",
    "derived": false
   },
   {
@@ -2172,7 +2537,13 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 0.4,
    "iea_estimated_capacity_mt": 0.4,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "URLError on the owner, empty body on the second reference",
+   "looked_in_order": [
+    "protos.co.uk — URLError, the project's own site",
+    "youtube.com — 200, empty body"
+   ],
+   "note": "Peel NRE and Progressive Energy are the named partners. phase 2. A VIDEO IS NOT A SOURCE THIS READER CAN QUOTE, and the IEA cites one.",
    "derived": false
   },
   {
@@ -2257,6 +2628,7 @@
    "iea_estimated_capacity_mt": 0.07,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -2271,6 +2643,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -2306,6 +2679,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2320,6 +2694,7 @@
    "iea_estimated_capacity_mt": 2,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2334,6 +2709,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2346,7 +2722,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 6,
    "iea_estimated_capacity_mt": 6,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "medway-hub-ccs",
+   "speaker": "Synergia Energy, own technical presentation",
+   "source": "https://www.synergiaenergy.com/sites/synergia-energy-ltd/files/synergia-energy-ltd/operations/united-kingdom/medway-hub-ccs-r7-we.pdf",
+   "verbatim": "Forbes CO2 Storage Reservoir — Forbes depth structure map at top of Bunter SST.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE OWNER'S OWN DOCUMENT IS A PDF and is read as one. The entry also holds an NSTA carbon storage licence, and unlike the licence-only entries it names a hub and a reservoir the owner has mapped.",
+   "source_cited_before_repair": "https://www.synergiaenergy.com/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2361,6 +2746,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -2375,6 +2761,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2389,6 +2776,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2401,7 +2789,16 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 7.5,
    "iea_estimated_capacity_mt": 7.5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "antwerp-c-export-hub",
+   "speaker": "Air Liquide, the lead partner, naming the hub",
+   "source": "https://www.airliquide.com/group/press-releases-news/2024-10-24/air-liquide-and-cementir-holding-group-receive-support-european-innovation-fund-carbon-capture-and",
+   "verbatim": "The Antwerp@C CO2 Export Hub will have an initial export capacity of 2.5 million tonnes per annum (Mtpa), with the ambition to reach up to 10 Mtpa by 2030.",
+   "capacity_stated": "2.5 Mt CO2/yr initial, up to 10 Mt CO2/yr by 2030",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "phase 2. One hub, two list entries; the capacity is the hub's own figure and is recorded once.",
+   "source_cited_before_repair": "https://www.airliquide.com/group/press-releases-news/antwerp-c-co2-export-hub",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2416,6 +2813,7 @@
    "iea_estimated_capacity_mt": 0.86,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2428,7 +2826,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 3,
    "iea_estimated_capacity_mt": 3,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "morecambe-net-zero",
+   "speaker": "Spirit Energy, own release quoting its chief executive",
+   "source": "https://www.spirit-energy.com/newsroom/press-releases/spirit-energy-launches-plan-for-carbon-storage-cluster/",
+   "verbatim": "Neil McCulloch, CEO of Spirit Energy, said: “Our project will introduce cost-effective decarbonisation to businesses all over the UK, with a multi-billion-pound investment.”",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "mnzcluster.com, the project's own cluster site, answers URLError.",
+   "source_cited_before_repair": "https://www.spirit-energy.com/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2443,6 +2850,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -2457,6 +2865,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, fertiliser",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2471,6 +2880,7 @@
    "iea_estimated_capacity_mt": 0.38,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2485,6 +2895,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2499,6 +2910,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2513,6 +2925,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2527,6 +2940,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -2541,6 +2955,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -2553,7 +2968,11 @@
    "iea_phase": 3,
    "iea_announced_capacity_mt": 0.3,
    "iea_estimated_capacity_mt": 0.3,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU's",
+   "speaker": "European Commission",
+   "source": "https://ec.europa.eu/",
+   "note": "phase 3. Air Liquide Polska, PKN Orlen and Lafarge Cement are the named partners and none was read. Phase 3's own reference is a 404.",
    "derived": false
   },
   {
@@ -2566,7 +2985,12 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 3,
    "iea_estimated_capacity_mt": 3,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "the partner states its own CCS ambition and does not name this project",
+   "speaker": "Air Liquide",
+   "source": "https://www.airliquide.com/",
+   "verbatim": "Carbon Capture and Storage is essential in achieving our mid-term ambition of a 30 % reduction in absolute CO2 emissions in 2030 compared to 2018.",
+   "note": "Air Liquide, Borealis, North Atlantic and TotalEnergies are the named partners; the ExxonMobil reference carries nothing about ECO2Normandy either.",
    "derived": false
   },
   {
@@ -2579,7 +3003,11 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 3.6,
    "iea_estimated_capacity_mt": 3.6,
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "ec.europa.eu — 404, the IEA's only reference"
+   ],
+   "note": "Air Liquide, Eni and Snam are the named partners; the IEA's single reference is a dead EU link. phase 1.",
    "derived": false
   },
   {
@@ -2592,7 +3020,11 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 2.8,
    "iea_estimated_capacity_mt": 2.8,
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "ec.europa.eu — 404, the IEA's only reference"
+   ],
+   "note": "Air Liquide, Eni and Snam are the named partners; the IEA's single reference is a dead EU link. phase 2.",
    "derived": false
   },
   {
@@ -2605,7 +3037,12 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "ec.europa.eu — 404",
+    "carbonbridge.de — 200, but it is a DIFFERENT project (IEA 1471) and says nothing about C Zero"
+   ],
+   "note": "Air Liquide, Lhoist and Duisport are the named partners. phase 1. THE SECOND REFERENCE IS A NEAR-NAME TRAP: carbonbridge.de is readable and is not about this entry.",
    "derived": false
   },
   {
@@ -2618,7 +3055,12 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "ec.europa.eu — 404",
+    "carbonbridge.de — 200, but it is a DIFFERENT project (IEA 1471) and says nothing about C Zero"
+   ],
+   "note": "Air Liquide, Lhoist and Duisport are the named partners. phase 2. THE SECOND REFERENCE IS A NEAR-NAME TRAP: carbonbridge.de is readable and is not about this entry.",
    "derived": false
   },
   {
@@ -2631,7 +3073,12 @@
    "iea_phase": 3,
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "ec.europa.eu — 404",
+    "carbonbridge.de — 200, but it is a DIFFERENT project (IEA 1471) and says nothing about C Zero"
+   ],
+   "note": "Air Liquide, Lhoist and Duisport are the named partners. phase 3. THE SECOND REFERENCE IS A NEAR-NAME TRAP: carbonbridge.de is readable and is not about this entry.",
    "derived": false
   },
   {
@@ -2706,7 +3153,11 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "20 - 50",
    "iea_estimated_capacity_mt": 20,
-   "class": "not searched",
+   "class": "searched none found",
+   "note": "Bellona's page returns no readable text and Equinor's is about the Bayou Bend project in the United States. The IEA carries this entry as Cancelled.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ],
    "derived": false
   },
   {
@@ -2719,7 +3170,12 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the only readable record is the EU funder's",
+   "source": "https://cinea.ec.europa.eu/",
+   "speaker": "CINEA, the EU funding agency",
+   "verbatim": "This funding supports the construction of a 33 km long onshore pipeline connecting industrial emitters in the port of Rotterdam, a compressor station of 20 MW located at Aziëweg.",
+   "note": "AN OFFICIAL RECORD IS NOT THE COMPANY. The admission test asks for the operator's own confirmation, and the partners named — Port of Rotterdam, Port of Antwerp, North Sea Port, Fluxys — say nothing readable here about this phase. The EU record is kept because it names the works precisely, and it is what a later pass starts from.",
    "derived": false
   },
   {
@@ -2734,6 +3190,7 @@
    "iea_estimated_capacity_mt": 0.16,
    "class": "perimeter exclusion",
    "clause": "capture, natural gas processing",
+   "fate": "EOR",
    "derived": true
   },
   {
@@ -2746,7 +3203,16 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 2.6,
    "iea_estimated_capacity_mt": 2.6,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "norne-gassum",
+   "speaker": "Fidelis New Energy, own release",
+   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+   "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Gassum store and the Fyrkat network. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2759,7 +3225,16 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 16.4,
    "iea_estimated_capacity_mt": 16.4,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "norne-havnso",
+   "speaker": "Fidelis New Energy, own release",
+   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+   "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Havnso store and the Trelleborg network. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2772,7 +3247,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 15,
    "iea_estimated_capacity_mt": 15,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "norne-aalborg-terminal",
+   "speaker": "Fidelis New Energy, own release",
+   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
+   "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Port of Aalborg terminal and its pipeline to Fyrkat. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it. IEA status Under construction, operation 2026.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2785,7 +3269,16 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 4,
    "iea_estimated_capacity_mt": 4,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "norne-kalundborg-terminal",
+   "speaker": "Fidelis New Energy, own release",
+   "source": "https://norneccs.com/en/news/",
+   "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Port of Kalundborg terminal and its pipeline. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2798,7 +3291,16 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 8,
    "iea_estimated_capacity_mt": 8,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "norne-kalundborg-terminal",
+   "speaker": "Fidelis New Energy, own release",
+   "source": "https://norneccs.com/en/news/",
+   "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the same Kalundborg terminal at a second announced capacity. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2811,7 +3313,14 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "18.8 - 25.8",
    "iea_estimated_capacity_mt": 25.8,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "german-carbon-transport-grid",
+   "speaker": "Open Grid Europe, own CO2 network page",
+   "source": "https://www.oge.net/de/co2/co2-netz",
+   "verbatim": "Projekte und Korridore: German Carbon Transport Grid, WHV CO2 Corridor, Delta Rhine Corridor, Ruhbens, DK CO2 Corridor, Cluster Elbe.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE OWNER'S OWN CORRIDOR LIST IS THE CONFIRMATION. OGE names this grid among the projects it is building, and the same page is what refuses IEA 677: no Zeebrugge-Germany North Sea corridor appears on it.",
    "derived": false
   },
   {
@@ -2824,7 +3333,17 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 24,
    "iea_estimated_capacity_mt": 24,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Equinor Low Carbon Solution",
+   "licensee_claim": {
+    "speaker": "Equinor, same account",
+    "says": "Equinor has ambitions to develop further storage licenses in the North Sea in the coming years.",
+    "url": "https://www.equinor.com/news/20240620-two-new-co2-storage-licenses-in-the-north-sea",
+    "date": "2024-06-20"
+   },
+   "note": "Phase 2 of the same licence, and the IEA carries it as Cancelled. A cancelled phase of an exploration licence is still an exploration licence.",
    "derived": false
   },
   {
@@ -2837,7 +3356,13 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 20,
    "iea_estimated_capacity_mt": 20,
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "wintershalldea.com — 200, but the readable sentences are about that company's own 30 Mt ambition and do not name this corridor",
+    "wintershalldea.com second reference — 404",
+    "oge.net/de/co2/co2-netz — 200, OGE's own corridor list names German Carbon Transport Grid, WHV CO2 Corridor, Delta Rhine Corridor, DK CO2 Corridor and Cluster Elbe, and does NOT name a Zeebrugge-Germany North Sea corridor"
+   ],
+   "note": "Fluxys and OGE are the named partners and neither names this corridor on the pages read. The IEA announces 20 Mt/yr against a 2030 date.",
    "derived": false
   },
   {
@@ -2850,7 +3375,12 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 10,
    "iea_estimated_capacity_mt": 10,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "the hub is readable and this terminal is not named on it",
+   "speaker": "Energy Hub Wilhelmshaven, the site association",
+   "source": "https://www.energyhub-wilhelmshaven.de/projekte",
+   "verbatim": "Tree Energy Solutions GmbH — TES: Oxyfuel-Kraftwerk Green Energy Hub WHV, 2030.",
+   "note": "TES is the named partner and the Wilhelmshaven hub's own project list carries a TES oxyfuel power plant and an LNG terminal, and no WH2V CO2 terminal. The IEA's country for this entry is 'Multiple Europe', which is the only such value in the European set.",
    "derived": false
   },
   {
@@ -2863,7 +3393,12 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 3,
    "iea_estimated_capacity_mt": 3,
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "zeroemissionsplatform.eu candidate-projects PDF — 200, nothing about this entry",
+    "benelux.rwe.com — 200, AND IT IS ABOUT NOORDKAAP, a different project"
+   ],
+   "note": "phase 1, which the IEA carries as Cancelled. Eni, EBN and OneDyas are the named partners. A NEAR-NAME TRAP of the same shape as the C Zero entries: the second reference reads perfectly and is about something else.",
    "derived": false
   },
   {
@@ -2878,6 +3413,7 @@
    "iea_estimated_capacity_mt": 8,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2892,6 +3428,7 @@
    "iea_estimated_capacity_mt": 3,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2904,7 +3441,16 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 10,
    "iea_estimated_capacity_mt": 10,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "bifrost",
+   "speaker": "Project Bifrost, the project's own site",
+   "source": "https://bifrost-ccs.com/",
+   "verbatim": "When oil and gas production gradually cease, the use of existing infrastructure for carbon capture and storage is an attractive alternative from both a climate and economic perspective.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. One project, two list entries.",
+   "source_cited_before_repair": "https://news.cision.com/totalenergies/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2917,7 +3463,14 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 4,
    "iea_estimated_capacity_mt": 4,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "ccs-baltic-klaipeda",
+   "speaker": "CCS Baltic Consortium, the project's own site",
+   "source": "https://ccs-baltic.eu/",
+   "verbatim": "The CO2 emissions will be captured at cement plants operated by SCHWENK Latvija (Latvia) and Akmenes cementas (Lithuania).",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE PROJECT NAMES THE CEMENT WORKS AT THE OTHER END, and one of them is broceni-ccs, admitted by this census. An adjacency.",
    "derived": false
   },
   {
@@ -2930,7 +3483,11 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 0.63,
    "iea_estimated_capacity_mt": 0.63,
-   "class": "not searched",
+   "class": "searched none found",
+   "note": "Hydrocarbons Agency Croatia is the sole named partner and the ZEP candidate-projects PDF, the IEA's only reference, carries nothing about it.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ],
    "derived": false
   },
   {
@@ -2943,7 +3500,13 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 6,
    "iea_estimated_capacity_mt": 6,
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "reuters.com — 401",
+    "carbongap.org — 403",
+    "zeroemissionsplatform.eu candidate-projects PDF — 200, carries nothing about PYCASSO"
+   ],
+   "note": "Terega is the lead named partner and nothing readable names the hub. phase 2. The IEA announces 1-3 Mt/yr for phase 1 and 6 Mt/yr for phase 2.",
    "derived": false
   },
   {
@@ -2976,7 +3539,11 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 0.2,
    "iea_estimated_capacity_mt": 0.2,
-   "class": "not searched",
+   "class": "searched none found",
+   "note": "Buzzi Unicem is the sole named partner and the same ZEP PDF carries nothing about Augusta C2. The IEA announces 0.2 Mt/yr, the smallest figure in the European transport set.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ],
    "derived": false
   },
   {
@@ -3023,6 +3590,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, natural gas processing",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3035,7 +3603,14 @@
    "iea_phase": 3,
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "viking-ccs",
+   "speaker": "Viking CCS (Harbour Energy operator, BP), own site",
+   "source": "https://www.vikingccs.co.uk/",
+   "verbatim": "Viking CCS — our onshore pipeline, our offshore pipeline, secure CO2 storage.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 3. One project, three list entries. Phase 3's own page adds that shipping options are under discussion with Associated British Ports.",
    "derived": false
   },
   {
@@ -3050,6 +3625,7 @@
    "iea_estimated_capacity_mt": 3.7,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3062,7 +3638,13 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "5 - 10",
    "iea_estimated_capacity_mt": 10,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Eni (30%), Sval and partners",
+   "licensee_claim": null,
+   "speaker": "IEA entry; both of the IEA's references answer URLError to a declared reader",
+   "note": "UNREADABLE AS WELL AS EXCLUDED. Both IEA references -- neptuneenergy.com and carboncapturejournal.com -- answer URLError. The exclusion stands on the entry's own name and licence number, EXL007, which is Sodir's exploration-licence series; no licensee claim could be read, so none is recorded.",
    "derived": false
   },
   {
@@ -3075,7 +3657,19 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "enhanced oil recovery",
+   "ruling": "RULED 15 September 2026, by George, on question Q3 of this census. THE CCS PERIMETER IS INFRASTRUCTURE FOR PERMANENT STORAGE AS ITS PURPOSE. Enhanced oil recovery injects CO2 in order to produce oil, and the IEA's own `Fate of carbon` column is the test: an entry whose fate is EOR is refused with this clause. The operator's own claim stays on the entry.",
+   "operator_claim": {
+    "speaker": "INA/MOL, own document",
+    "date": "2020-01-01",
+    "date_precision": "year",
+    "url": "https://molgroup.info/",
+    "says": "By application of the EOR project CO2 emissions will be significantly reduced (permanent disposal of 2.9 billion m3 CO2 or 5.4 million tonnes)."
+   },
+   "note": "THE OPERATOR CALLS IT PERMANENT DISPOSAL AND THE PUBLISHER CALLS IT EOR, and the ruling takes the publisher's column as the test rather than the operator's word for what the injection achieves. Both are recorded. This is the register's only European CO2 T&S entry with an EOR fate, and it is Operational, running since 2020 — so the exclusion removes a working installation from the sector rather than a plan, which is the case a reader should see the clause applied to.\n\nTHE SECOND EOR ENTRY IS ALREADY OUT ON A DIFFERENT CLAUSE AND STAYS THERE. IEA 669, MOL Szank field CO2 EOR in Hungary, also carries Fate of carbon = EOR, and its Subsector is Natural gas processing/LNG, so it is refused with 'capture, natural gas processing'. That clause is not replaced: the CCS perimeter's rule is that a refusal NAMES THE INDUSTRY because those entries are read later for the supplier nodes, and overwriting it with the EOR clause would throw the industry away to record a fate. BOTH FIELDS ARE NOW CARRIED ON EVERY EXCLUDED ENTRY, ruled 15 September 2026: `clause` says which perimeter rule refused it and the supplier sweep reads it, `fate` is the publisher's own Fate of carbon. Szank keeps 'capture, natural gas processing' and still shows as EOR.\n\nBOTH APPEAR IN THE SECOND LIST TOO. The CO2RE capture filed for this census shows 'MOL Szank Field CO2-EOR Site (HUN), Operational, 1992' and 'INA/MOL CO2 EOR Croatia (HRV), Operational, 2014' among the ten European rows it renders — which is the only use this register has been able to make of that list.",
+   "fate": "EOR",
+   "industry": null,
    "derived": false
   },
   {
@@ -3090,6 +3684,7 @@
    "iea_estimated_capacity_mt": 0.19,
    "class": "perimeter exclusion",
    "clause": "capture, fertiliser",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3104,6 +3699,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3139,6 +3735,7 @@
    "iea_estimated_capacity_mt": 0.35,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3153,6 +3750,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3188,6 +3786,7 @@
    "iea_estimated_capacity_mt": 1.3,
    "class": "perimeter exclusion",
    "clause": "capture, power (coal)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3202,6 +3801,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, bioethanol",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3214,7 +3814,14 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 9,
    "iea_estimated_capacity_mt": 9,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "norvik-nice",
+   "speaker": "Ports of Stockholm, own page",
+   "source": "https://www.portsofstockholm.com/about-us/environmental-work/ccs-at-stockholm-norvik-port/",
+   "verbatim": "CCS at Stockholm Norvik Port.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "The IEA's own reference for this entry is a 404 on the same host; the page above is the port's own and was located from its root.",
    "derived": false
   },
   {
@@ -3229,6 +3836,7 @@
    "iea_estimated_capacity_mt": 0.3,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3243,6 +3851,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, biodiesel",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3257,6 +3866,7 @@
    "iea_estimated_capacity_mt": 0.28,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3271,6 +3881,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3283,7 +3894,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 3,
    "iea_estimated_capacity_mt": 3,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "peak-cluster-transport",
+   "speaker": "The Peak Cluster, the project's own site",
+   "source": "https://www.peakcluster.co.uk/",
+   "verbatim": "Located in the Peak District, the project will prevent over 3 million tonnes of carbon dioxide emissions each year by 2030.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE FIGURE IS AN AVOIDED-EMISSIONS FIGURE FOR THE WHOLE CLUSTER, not this pipeline's capacity, and is not written onto the row. IEA 1065, Cauldon, is one of the cement works this cluster would carry; that entry is named and not admitted.",
+   "source_cited_before_repair": "https://www.peakcluster.co.uk/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3296,7 +3916,16 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 4.275,
    "iea_estimated_capacity_mt": 4.275,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "starfish-havstjerne",
+   "speaker": "Altera Infrastructure, own article",
+   "source": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
+   "verbatim": "The storage, with an annual capacity estimated at 7 million tonnes per annum (Mtpa), is located 100 kilometers southwest of Egersund, Norway.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "ONE PROJECT FAMILY OVER THREE LIST ENTRIES (the STARFISH project); the IEA's own hub column puts all three under Altera Stella Maris or STARFISH. THE VESSEL IS ADMITTED AND THE LICENCE IS NOT: what the row holds is the floating storage and injection infrastructure, not the Havstjerne exploration licence, which the Q2 ruling excludes. The 7 Mtpa is an estimate for the storage and is not written onto the row.",
+   "source_cited_before_repair": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3311,6 +3940,7 @@
    "iea_estimated_capacity_mt": 1.2,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3323,7 +3953,12 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "the partner announces its own funding and does not name this terminal train",
+   "speaker": "enfinium",
+   "source": "https://enfinium.co.uk/",
+   "verbatim": "The announcement follows the Government's commitment in the Spring Statement to support the UK's fledgling carbon capture and storage industry with up to £20bn.",
+   "note": "Enfinium, Navigator CO2 and Bechtel are the named partners. The IEA carries no capacity and no operation year for this entry either.",
    "derived": false
   },
   {
@@ -3336,7 +3971,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Aker BP (50%), OMV (50%)",
+   "licensee_claim": {
+    "speaker": "Aker BP, own release",
+    "says": "Aker BP and OMV awarded licence for CO2 storage. The intention is to inject CO2 captured from multiple identified industrial emitters in North-West Europe.",
+    "url": "https://akerbp.com/en/borsmelding/aker-bp-and-omv-awarded-licence-for-co2-storage-2/",
+    "date": "2024-01-01"
+   },
+   "note": "NOT THE UK POSEIDON. IEA 845/846/847 are Perenco's UK Poseidon CCS project in the Southern North Sea, a different project with the same name, and the IEA's own reference list for THIS entry includes an article about the UK one (D83).",
    "derived": false
   },
   {
@@ -3351,6 +3996,7 @@
    "iea_estimated_capacity_mt": 0.17,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3363,7 +4009,13 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 1,
    "iea_estimated_capacity_mt": 1,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "404 on both references, owner included",
+   "looked_in_order": [
+    "ens.dk — 404",
+    "carboncuts.dk — 404, the owner's own site"
+   ],
+   "note": "CarbonCuts is the named owner and its own domain answers 404 on the path the IEA cites. phase 1.",
    "derived": false
   },
   {
@@ -3376,7 +4028,13 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": "4 - 9",
    "iea_estimated_capacity_mt": 6.5,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "404 on both references, owner included",
+   "looked_in_order": [
+    "ens.dk — 404",
+    "carboncuts.dk — 404, the owner's own site"
+   ],
+   "note": "CarbonCuts is the named owner and its own domain answers 404 on the path the IEA cites. phase 2.",
    "derived": false
   },
   {
@@ -3389,7 +4047,13 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 0.5,
    "iea_estimated_capacity_mt": 0.5,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "404 on the regulator, 403 on the trade wire",
+   "looked_in_order": [
+    "ens.dk — 404",
+    "businesswire.com — 403"
+   ],
+   "note": "Gas Storage Denmark is the named owner and neither reference reaches anything readable.",
    "derived": false
   },
   {
@@ -3404,6 +4068,7 @@
    "iea_estimated_capacity_mt": 0.05,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3418,6 +4083,7 @@
    "iea_estimated_capacity_mt": 1.87,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3432,6 +4098,7 @@
    "iea_estimated_capacity_mt": 0.24,
    "class": "perimeter exclusion",
    "clause": "capture, aluminium",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3446,6 +4113,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3460,6 +4128,7 @@
    "iea_estimated_capacity_mt": 1.8,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3474,6 +4143,7 @@
    "iea_estimated_capacity_mt": 0.6,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3486,7 +4156,17 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": "5 - 15",
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Equinor Low Carbon Solution",
+   "licensee_claim": {
+    "speaker": "Equinor, own account of work under the licence",
+    "says": "Deepsea Stavanger started drilling two appraisal wells at Smeaheia towards the end of 2024. One of the first things we did immediately after being awarded the Smeaheia licence was to acquire a new 3D seismic dataset.",
+    "url": "https://www.equinor.com/news/20240620-two-new-co2-storage-licenses-in-the-north-sea",
+    "date": "2024-06-20"
+   },
+   "note": "APPRAISAL DRILLING IS WORK UNDER A LICENCE, NOT A DEVELOPMENT PLAN. Equinor's own sentences describe seismic acquisition and two appraisal wells -- finding out whether the store is there, which is what the licence is for. Nothing read states a development plan or a storage permit. The entry is the store the Wilhelmshaven chain is drawn to, and it is excluded until its licensee says it is one.",
    "derived": false
   },
   {
@@ -3499,7 +4179,17 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 1.5,
    "iea_estimated_capacity_mt": 1.5,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Perenco UK, Carbon Catalyst",
+   "licensee_claim": {
+    "speaker": "Oil & Gas Journal, reporting the award",
+    "says": "Perenco UK received a carbon storage license from the North Sea Transition Authority's first competitive carbon capture and storage (CCS) license round to progress the Poseidon project. Initial CO2 injection rates will be about 1.5 million tonnes/year, ramping up to 10 million tpy by 2030, and peaking at 40 million tpy by 2040.",
+    "url": "https://www.ogj.com/energy-transition/article/14297727/perenco-granted-storage-license-for-ukcs-poseidon-ccs-project",
+    "date": "2023-01-01"
+   },
+   "note": "THE CLAIM IS TRADE PRESS AND IS RECORDED AS SUCH, not as the licensee speaking. The exclusion does not turn on it.",
    "derived": false
   },
   {
@@ -3512,7 +4202,17 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 8.5,
    "iea_estimated_capacity_mt": 8.5,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Perenco UK, Carbon Catalyst",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "Phase 2 of the same licence-stage project.",
    "derived": false
   },
   {
@@ -3525,7 +4225,17 @@
    "iea_phase": 3,
    "iea_announced_capacity_mt": 30,
    "iea_estimated_capacity_mt": 30,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Perenco UK, Carbon Catalyst",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "Phase 3 of the same licence-stage project.",
    "derived": false
   },
   {
@@ -3538,7 +4248,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 10,
    "iea_estimated_capacity_mt": 10,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "EnQuest",
+   "licensee_claim": {
+    "speaker": "EnQuest, own release",
+    "says": "EnQuest PLC awarded offer of carbon storage licences.",
+    "url": "https://www.enquest.com/media/news/2023/enquest-plc-awarded-offer-of-carbon-storage-licences.html",
+    "date": "2023-05-18"
+   },
+   "note": "AN OFFER OF LICENCES, which is one step earlier again than an award.",
    "derived": false
   },
   {
@@ -3551,7 +4271,17 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 1,
    "iea_estimated_capacity_mt": 1,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Perenco, Carbon Catalyst Limited",
+   "licensee_claim": {
+    "speaker": "Carbon Catalyst, quoted on the award",
+    "says": "CCSL is looking forward to supporting Perenco as they advance this important project towards final investment decision, ultimately aiming for first CO2 injection by 2031.",
+    "url": "https://www.offshore-energy.biz/perenco-and-carbon-catalyst-win-two-more-carbon-storage-licenses/",
+    "date": "2023-01-01"
+   },
+   "note": "THE LICENSEE'S OWN WORDS PUT FID IN THE FUTURE, which is the ruling's test failing on the licensee's own account.",
    "derived": false
   },
   {
@@ -3564,7 +4294,17 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Perenco, Carbon Catalyst Limited",
+   "licensee_claim": {
+    "speaker": "Carbon Catalyst, quoted on the award",
+    "says": "CCSL is looking forward to supporting Perenco as they advance this important project towards final investment decision, ultimately aiming for first CO2 injection by 2031.",
+    "url": "https://www.offshore-energy.biz/perenco-and-carbon-catalyst-win-two-more-carbon-storage-licenses/",
+    "date": "2023-01-01"
+   },
+   "note": "Phase 2 of the same licence-stage project.",
    "derived": false
   },
   {
@@ -3577,7 +4317,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "4 - 10",
    "iea_estimated_capacity_mt": 10,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Tellus (the licensee named on the NSTA award)",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "The entry's own name is the licence number: CS020 (Area 1). A licence number is not a store.",
    "derived": false
   },
   {
@@ -3590,7 +4340,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "4 - 6",
    "iea_estimated_capacity_mt": 6,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Tellus (the licensee named on the NSTA award)",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "The entry's own name is the licence number: CS021 (Area 5). A licence number is not a store.",
    "derived": false
   },
   {
@@ -3603,7 +4363,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "4 - 6",
    "iea_estimated_capacity_mt": 6,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Tellus (the licensee named on the NSTA award)",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "The entry's own name is the licence number: CS022 (Area 7). A licence number is not a store.",
    "derived": false
   },
   {
@@ -3616,7 +4386,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Shell, Esso",
+   "licensee_claim": {
+    "speaker": "North Sea Transition Authority, the licensing authority",
+    "says": "It is exciting to award these licences and our teams will support the licensees to bring about first injection of carbon dioxide as soon as possible.",
+    "url": "https://www.nstauthority.co.uk/news-publications/net-zero-boost-as-carbon-storage-licences-accepted/",
+    "date": "2023-05-18"
+   },
+   "note": "The IEA carries no capacity and no operation year for this entry.",
    "derived": false
   },
   {
@@ -3629,7 +4409,15 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "admitted",
+   "row": "tranmere-stanlow-terminal",
+   "speaker": "Stanlow Terminals (Essar Energy Transition), own site",
+   "source": "https://www.stanlowterminals.co.uk/stanlow-terminals-and-eni-uk-sign-a-mou-to-develop-carbon-dioxide-transport-and-storage-projects/",
+   "verbatim": "The proposed terminal will play a critical role in enabling carbon capture, utilisation and storage (CCUS) infrastructure by facilitating the import and handling of CO2.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "source_cited_before_repair": "https://www.stanlowterminals.co.uk/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3644,6 +4432,7 @@
    "iea_estimated_capacity_mt": 0.235,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3656,7 +4445,12 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 30,
    "iea_estimated_capacity_mt": 30,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "trade press only; no source from either joint-venture partner",
+   "speaker": "Offshore Energy, trade press",
+   "source": "https://www.offshore-energy.biz/",
+   "verbatim": "It is estimated that the potential market in the United Kingdom alone is over 30 million tonnes of CO2 per annum from emitters who are not proximate to existing infrastructure.",
+   "note": "THE 30 Mt IS A MARKET ESTIMATE, NOT A CAPACITY, and the IEA carries 30 Mt/yr as this entry's announced capacity. Navigator Holdings and Bumi Armada are the named partners and neither was read.",
    "derived": false
   },
   {
@@ -3671,6 +4465,7 @@
    "iea_estimated_capacity_mt": 1.9,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3683,7 +4478,11 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "20 - 24",
    "iea_estimated_capacity_mt": 24,
-   "class": "not searched",
+   "class": "searched none found",
+   "note": "THE IEA CARRIES NO REFERENCE AT ALL for this entry — one of eighteen European entries with an empty Ref column. Horisont Energi and E.ON are named and nothing was located.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ],
    "derived": false
   },
   {
@@ -3698,6 +4497,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3712,6 +4512,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3726,6 +4527,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3738,7 +4540,14 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 5.4,
    "iea_estimated_capacity_mt": 5.4,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "co2next",
+   "speaker": "CO2next (Vopak, Gasunie), the project's own site",
+   "source": "https://co2next.nl/appeal-against-permits-for-aramis-initiative-2/",
+   "verbatim": "Given this duration and the necessary period after the ruling to reach a final investment decision (FID), the date for FID may move to 2027.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1. A LIQUID CO2 TERMINAL, which the CCS perimeter names in. The project's own page puts FID ahead of it, so the row lands announced.",
    "derived": false
   },
   {
@@ -3751,7 +4560,14 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 10.3,
    "iea_estimated_capacity_mt": 10.3,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "co2next",
+   "speaker": "CO2next (Vopak, Gasunie), the project's own site",
+   "source": "https://co2next.nl/appeal-against-permits-for-aramis-initiative-2/",
+   "verbatim": "Given this duration and the necessary period after the ruling to reach a final investment decision (FID), the date for FID may move to 2027.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. A LIQUID CO2 TERMINAL, which the CCS perimeter names in. The project's own page puts FID ahead of it, so the row lands announced.",
    "derived": false
   },
   {
@@ -3766,6 +4582,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3780,6 +4597,7 @@
    "iea_estimated_capacity_mt": 0.21,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3794,6 +4612,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3808,6 +4627,7 @@
    "iea_estimated_capacity_mt": 0.084,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3822,6 +4642,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3836,6 +4657,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3865,6 +4687,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3877,7 +4700,11 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 2,
    "iea_estimated_capacity_mt": 2,
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "netl.doe.gov/coal/carbon-storage/atlas/secarb — 403, AND IT IS A UNITED STATES ATLAS (D83), not a reference to this project at all"
+   ],
+   "note": "THE IEA'S ONLY REFERENCE FOR THIS ENTRY IS ABOUT A DIFFERENT CONTINENT. Acorn and Uniper are the named partners; the Acorn project's own site was read for IEA 8 and 9 and says nothing about an Isle of Grain to Peterhead shipping route.",
    "derived": false
   },
   {
@@ -3892,6 +4719,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3906,6 +4734,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3920,6 +4749,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3934,6 +4764,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3948,6 +4779,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3962,6 +4794,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3997,6 +4830,7 @@
    "iea_estimated_capacity_mt": 0.274,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4011,6 +4845,7 @@
    "iea_estimated_capacity_mt": 0.123,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4050,7 +4885,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "the licensee of the Thorning exploration area",
+   "licensee_claim": {
+    "speaker": "Danish Energy Agency, the licensing authority",
+    "says": "On September 30th 2024, the DEA opened a licensing round for exploration in the subsurface around Thorning. If the area is shown to be suitable for environmentally safe storage of CO2, the licensee can apply for a storage permit. This permit can have a duration of up to 30 years.",
+    "url": "https://ens.dk/en/our-responsibilities/oil-gas/co2-storage",
+    "date": "2024-09-30"
+   },
+   "note": "THE REGULATOR STATES THE RULING'S OWN TEST. The Danish Energy Agency sets out the sequence in one sentence -- exploration licence first, storage permit only if the area proves suitable -- which is exactly the line the clause draws. Quoted here because a rule this register wrote is better carried by the authority that already drew it.",
    "derived": false
   },
   {
@@ -4065,6 +4910,7 @@
    "iea_estimated_capacity_mt": 0.36,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4079,6 +4925,7 @@
    "iea_estimated_capacity_mt": 0.9,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4093,6 +4940,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4107,6 +4955,7 @@
    "iea_estimated_capacity_mt": 0.25,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4119,7 +4968,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 0.4,
    "iea_estimated_capacity_mt": 0.4,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "celsio-ccs-terminal",
+   "speaker": "Aker Solutions, the contractor, naming the project and the chain",
+   "source": "https://www.akersolutions.com/news/news-archive/2024/aker-solutions-awarded-feed-for-celsios-ccs-terminal-at-the-port-of-oslo/",
+   "verbatim": "The Celsio CCS project and the Northern Lights storage are part of Longship, the Norwegian Government's carbon capture and storage project.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE TERMINAL IS IN PERIMETER AND THE PLANT IS NOT: Hafslund Oslo Celsio is a waste-to-energy works, which this sector refuses with the clause 'capture, waste-to-energy'. This entry is the transport terminal.",
+   "source_cited_before_repair": "https://www.akersolutions.com/news/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -4134,6 +4992,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4148,6 +5007,7 @@
    "iea_estimated_capacity_mt": 1.4,
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4180,7 +5040,11 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 0.5,
    "iea_estimated_capacity_mt": 0.5,
-   "class": "not searched",
+   "class": "searched none found",
+   "note": "THE IEA CARRIES NO REFERENCE AT ALL, and this is the oldest operational entry in the European set: OCAP has moved CO2 to Dutch greenhouses since 2005. Its fate of carbon is 'Use', not storage.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ],
    "derived": false
   },
   {
@@ -4195,6 +5059,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4209,6 +5074,7 @@
    "iea_estimated_capacity_mt": 0.25,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4223,6 +5089,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4237,6 +5104,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4251,6 +5119,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, biodiesel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4265,6 +5134,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4279,6 +5149,7 @@
    "iea_estimated_capacity_mt": 0.65,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4293,6 +5164,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, biodiesel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4307,6 +5179,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4321,6 +5194,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, other industry",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4335,6 +5209,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4349,6 +5224,7 @@
    "iea_estimated_capacity_mt": 0.26,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4363,6 +5239,7 @@
    "iea_estimated_capacity_mt": 0.22,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4377,6 +5254,7 @@
    "iea_estimated_capacity_mt": 0.13,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4389,7 +5267,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 2.6,
    "iea_estimated_capacity_mt": 2.6,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "goco2-transport",
+   "speaker": "Heidelberg Materials France, a named partner, on the GOCO2 chain",
+   "source": "https://www.heidelbergmaterials.fr/fr/groupe-goco2-un-projet-denvergure-de-captage-de-conditionnement-et-de-transport-du-co2-dorigine-industrielle-en-pays-de-la-loire-et-pour-le-grand-ouest",
+   "verbatim": "GOCO2 rassemble plusieurs operations complementaires permettant le captage du CO2 et son transport, en vue de son stockage geologique permanent.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE TRANSPORT LEG OF THE CHAIN THIS CENSUS ALREADY ADMITTED TWO CAPTURE ROWS INTO — airvault-goco2 and saint-pierre-la-cour-goco2. An adjacency, recorded and not drawn.",
+   "source_cited_before_repair": "https://www.heidelbergmaterials.fr/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -4404,6 +5291,7 @@
    "iea_estimated_capacity_mt": 1.6,
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4457,7 +5345,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "natran-co2-backbone",
+   "speaker": "Natran (formerly GRTgaz), own CCUS pages",
+   "source": "https://www.grtgaz.com/en/our-energy-transition/co2-transport",
+   "verbatim": "GRTgaz is developing dedicated transmission networks contributing to transport CO2 from the French industrial sites where it is captured to storage and utilisation sites.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE COMPANY RENAMED ITSELF. The IEA carries 'Natran Group' and the readable pages are GRTgaz's; the rename is the publisher's own and is recorded rather than treated as two companies.",
+   "source_cited_before_repair": "https://www.grtgaz.com/en/our-activities/our-projects/ccus",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -4472,6 +5369,7 @@
    "iea_estimated_capacity_mt": 0.858,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4522,6 +5420,7 @@
    "iea_estimated_capacity_mt": 0.3,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4536,6 +5435,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4550,6 +5450,7 @@
    "iea_estimated_capacity_mt": 0.34,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4564,6 +5465,7 @@
    "iea_estimated_capacity_mt": 0.131,
    "class": "perimeter exclusion",
    "clause": "capture, biogas",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4578,6 +5480,7 @@
    "iea_estimated_capacity_mt": 0.18,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4592,6 +5495,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4606,6 +5510,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4620,6 +5525,7 @@
    "iea_estimated_capacity_mt": 3.7,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4634,6 +5540,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, biogas",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4648,6 +5555,7 @@
    "iea_estimated_capacity_mt": 0.03,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4662,6 +5570,7 @@
    "iea_estimated_capacity_mt": 0.75,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4674,7 +5583,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "18 - 27",
    "iea_estimated_capacity_mt": 18,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "co2-highway-europe",
+   "speaker": "Equinor, with Fluxys and Natran",
+   "source": "https://www.equinor.com/energy/co2highwayeurope",
+   "verbatim": "It includes 16 emitters in 10 countries, 31 capture sites, and storage of around 34 million tonnes of CO2 per year at two storage sites in the North Sea.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE 34 Mt IS THE WHOLE EUROPEAN CHAIN'S FIGURE, not this pipeline's, and is not written onto the row. The IEA announces 18-27 Mt/yr for the entry.",
+   "source_cited_before_repair": "https://www.equinor.com/news/co2-highway-europe",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -4689,6 +5607,7 @@
    "iea_estimated_capacity_mt": 4,
    "class": "perimeter exclusion",
    "clause": "capture, pulp and paper",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4703,6 +5622,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4717,6 +5637,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4731,6 +5652,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4745,6 +5667,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, other industry",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4757,7 +5680,12 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 2,
    "iea_estimated_capacity_mt": 2,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the readable record is a funder's, a contractor's or trade press",
+   "speaker": "European Commission project factsheet",
+   "source": "https://ec.europa.eu/",
+   "verbatim": "TarraCO2 - Storage aims to unlock 54 million tonnes (Mt) of CO2 storage capacity for hard-to-abate industries in North-Eastern Spain.",
+   "note": "Repsol is the sole named partner and no Repsol page was read. AN OFFICIAL RECORD IS NOT THE COMPANY, as at IEA 664 and the D'Artagnan entries.",
    "derived": false
   },
   {
@@ -4793,6 +5721,7 @@
    "iea_estimated_capacity_mt": 0.112,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4824,6 +5753,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4836,7 +5766,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": "2 - 3",
    "iea_estimated_capacity_mt": 2,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "sullom-voe-hub",
+   "speaker": "Veri Energy (EnQuest), own site",
+   "source": "https://verienergy.com/pages/sullom-voe-terminal",
+   "verbatim": "The captured CO2, anticipated to be up to 1 million tonnes per annum, will be transported a short distance to Veri Energy's planned carbon storage hub for permanent sequestration.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "One terminal and hub, three list entries by date (operation 2033). THE TERMINAL IS ADMITTED AND THE STORE IS NOT: Veri Energy holds four carbon storage licences, and a licence is excluded by the Q2 ruling. What the row holds is the terminal at Sullom Voe.",
    "derived": false
   },
   {
@@ -4851,6 +5788,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4865,6 +5803,7 @@
    "iea_estimated_capacity_mt": 0.35,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4879,6 +5818,7 @@
    "iea_estimated_capacity_mt": 0.6,
    "class": "perimeter exclusion",
    "clause": "capture, pulp and paper",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4893,6 +5833,7 @@
    "iea_estimated_capacity_mt": 0.33,
    "class": "perimeter exclusion",
    "clause": "capture, pulp and paper",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4907,6 +5848,7 @@
    "iea_estimated_capacity_mt": 0.74,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4921,6 +5863,7 @@
    "iea_estimated_capacity_mt": 0.46,
    "class": "perimeter exclusion",
    "clause": "capture, bioethanol",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4954,7 +5897,22 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "3.3 - 6.5",
    "iea_estimated_capacity_mt": 6.5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "carbon-connect-delta",
+   "speaker": "Fluxys, a named partner",
+   "source": "https://www.fluxys.com/en/news/fluxys-group/2020/200527_news_carbon_emissions_scheldt_delta",
+   "verbatim": "Carbon Connect Delta project: potential to cut CO2 emissions 30% by 2030.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "benchmark_claim": {
+    "claimed_by": "iea_ccus_projects_database",
+    "field": "status",
+    "value": "Cancelled",
+    "owner_states": null,
+    "note": "D81: a cancellation is a stop event only from the owner or the consortium. Smart Delta Resources' own page answers with 905 characters and says nothing about a cancellation, and Fluxys' project page still carries the project. The row lands on its announcement and carries the list's status as the list's claim."
+   },
+   "source_cited_before_repair": "https://www.fluxys.com/en/projects/carbon-connect-delta",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -4967,7 +5925,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 7.5,
    "iea_estimated_capacity_mt": 7.5,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Var Energi CCS (40%), OMV Norge (30%), Lime Petroleum",
+   "licensee_claim": {
+    "speaker": "Var Energi, own release",
+    "says": "The Iroko area has the potential to store up to 7,5 million tonnes of CO2 annually for at least 30 years, a total of approximately 215 million tonnes.",
+    "url": "https://varenergi.no/news/var-energi-and-partners-awarded-co2-storage-licence-in-north-sea/",
+    "date": "2024-06-21"
+   },
    "derived": false
   },
   {
@@ -4980,7 +5947,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Equinor Low Carbon Solution",
+   "licensee_claim": {
+    "speaker": "Equinor, own release of 20 June 2024",
+    "says": "The new licences are each expected to have the capacity to store around 5 million tonnes of CO2 per year when in operation.",
+    "url": "https://www.equinor.com/news/20240620-two-new-co2-storage-licenses-in-the-north-sea",
+    "date": "2024-06-20"
+   },
    "derived": false
   },
   {
@@ -4993,7 +5969,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Equinor",
+   "licensee_claim": {
+    "speaker": "Equinor, own release of 20 June 2024",
+    "says": "The new licences are each expected to have the capacity to store around 5 million tonnes of CO2 per year when in operation.",
+    "url": "https://www.equinor.com/news/20240620-two-new-co2-storage-licenses-in-the-north-sea",
+    "date": "2024-06-20"
+   },
+   "note": "The IEA carries this entry as Cancelled. A cancelled exploration licence is still an exploration licence.",
    "derived": false
   },
   {
@@ -5006,7 +5992,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Aker BP (80%), ORLEN Upstream Norway (20%)",
+   "licensee_claim": {
+    "speaker": "Aker BP, own release of 20 June 2024",
+    "says": "The storage licence is named Atlas and is located in Norwegian North Sea, near the Yggdrasil area, where the Aker BP-operated Yggdrasil field development project is currently underway.",
+    "url": "https://akerbp.com/en/borsmelding/aker-bp-awarded-licence-for-co2-storage-in-norway-2/",
+    "date": "2024-06-20"
+   },
    "derived": false
   },
   {
@@ -5038,7 +6033,12 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the readable record is a funder's, a contractor's or trade press",
+   "speaker": "European Commission CCS implementation record",
+   "source": "https://climate.ec.europa.eu/",
+   "verbatim": "Project location: Baltic Sea. Entry into operation: 2030. Total storage capacity (Mt): tbd. Injection capacity in (Mtpa): tbd.",
+   "note": "ORLEN is the sole named partner. THE EU RECORD ITSELF SAYS 'tbd' TWICE, which is the clearest statement in this census that a project exists and its size does not.",
    "derived": false
   },
   {
@@ -5053,6 +6053,7 @@
    "iea_estimated_capacity_mt": 0.28,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5067,6 +6068,7 @@
    "iea_estimated_capacity_mt": 0.33,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5081,6 +6083,7 @@
    "iea_estimated_capacity_mt": 0.23,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5095,6 +6098,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, biogas",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5109,6 +6113,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5123,6 +6128,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5137,6 +6143,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5151,6 +6158,7 @@
    "iea_estimated_capacity_mt": 2.5,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5165,6 +6173,7 @@
    "iea_estimated_capacity_mt": 0.175,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5179,6 +6188,7 @@
    "iea_estimated_capacity_mt": 1.837,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5193,6 +6203,7 @@
    "iea_estimated_capacity_mt": 1.2,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5207,6 +6218,7 @@
    "iea_estimated_capacity_mt": 0.001,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5221,6 +6233,7 @@
    "iea_estimated_capacity_mt": 0.029,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5235,6 +6248,7 @@
    "iea_estimated_capacity_mt": 0.07,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5249,6 +6263,7 @@
    "iea_estimated_capacity_mt": 0.03,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5263,6 +6278,7 @@
    "iea_estimated_capacity_mt": 0.07,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5277,6 +6293,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5289,7 +6306,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Harbour Energy Norge (60%), Equinor Low Carbon Solution",
+   "licensee_claim": {
+    "speaker": "Sodir (Norwegian Offshore Directorate), licence work programme",
+    "says": "EXL012 15/8, 15/9, 15/11 and 15/12 Harbour Energy Norge AS, Equinor Low Carbon Solution — work obligations and decisions.",
+    "url": "https://www.sodir.no/globalassets/1-sodir/fakta/co-to/tillatelser/nr-2-2024/eng/2024-2-workprogramme.pdf",
+    "date": "2024-01-01"
+   },
+   "note": "THE REGULATOR'S OWN WORK-PROGRAMME TABLE, which is what an exploration licence is: blocks, companies, shares, a phase and a duration in years, with work obligations and a decision point. No store.",
    "derived": false
   },
   {
@@ -5302,7 +6329,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Aker BP (50%), Equinor Low Carbon Solution (50%)",
+   "licensee_claim": {
+    "speaker": "Sodir, licence work programme",
+    "says": "EXL 013 (Forsete/2024) — blocks, companies, work obligations and decisions.",
+    "url": "https://www.sodir.no/globalassets/1-sodir/fakta/co-to/tillatelser/nr-2-2024/eng/2024-2-workprogramme.pdf",
+    "date": "2024-01-01"
+   },
    "derived": false
   },
   {
@@ -5317,6 +6353,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5355,6 +6392,7 @@
    "iea_estimated_capacity_mt": 2.3,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5367,7 +6405,12 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": "3 - 5",
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "zeroemissionsplatform.eu candidate-projects PDF — 200, nothing about this entry",
+    "benelux.rwe.com — 200, AND IT IS ABOUT NOORDKAAP, a different project"
+   ],
+   "note": "phase 2, which the IEA carries as Cancelled. Eni, EBN and OneDyas are the named partners. A NEAR-NAME TRAP of the same shape as the C Zero entries: the second reference reads perfectly and is about something else.",
    "derived": false
   },
   {
@@ -5382,6 +6425,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5396,6 +6440,7 @@
    "iea_estimated_capacity_mt": 0.12,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5408,7 +6453,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "admitted",
+   "row": "starfish-havstjerne",
+   "speaker": "Altera Infrastructure, own article",
+   "source": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
+   "verbatim": "The storage, with an annual capacity estimated at 7 million tonnes per annum (Mtpa), is located 100 kilometers southwest of Egersund, Norway.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "ONE PROJECT FAMILY OVER THREE LIST ENTRIES (the Havstjerne floating storage injection unit); the IEA's own hub column puts all three under Altera Stella Maris or STARFISH. THE VESSEL IS ADMITTED AND THE LICENCE IS NOT: what the row holds is the floating storage and injection infrastructure, not the Havstjerne exploration licence, which the Q2 ruling excludes. The 7 Mtpa is an estimate for the storage and is not written onto the row.",
+   "source_cited_before_repair": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -5421,7 +6475,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "admitted",
+   "row": "grenaa-port-terminal",
+   "speaker": "Normod Carbon, own site",
+   "source": "https://normodcarbon.com/",
+   "verbatim": "The industrial regions of Northern Europe face more than 70 million tonnes per year of planned CO2 capture - but very few have access to practical export routes.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 1. One terminal, two list entries.",
    "derived": false
   },
   {
@@ -5434,7 +6495,14 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": 10,
    "iea_estimated_capacity_mt": 10,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "grenaa-port-terminal",
+   "speaker": "Normod Carbon, own site",
+   "source": "https://normodcarbon.com/",
+   "verbatim": "The industrial regions of Northern Europe face more than 70 million tonnes per year of planned CO2 capture - but very few have access to practical export routes.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "phase 2. One terminal, two list entries.",
    "derived": false
   },
   {
@@ -5447,7 +6515,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 10,
    "iea_estimated_capacity_mt": 10,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "fluxys-c-grid-antwerp",
+   "speaker": "Fluxys, own release of 26 May 2025",
+   "source": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-started-in-antwerp-port-area",
+   "verbatim": "With this pipeline network Fluxys c-grid Antwerp will provide an essential part of the value chain through which the captured CO2 from Antwerp's industry and beyond can be transported.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "IEA status Under construction, operation 2029.",
+   "source_cited_before_repair": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-starts",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -5462,6 +6539,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5494,7 +6572,16 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "3 - 5",
    "iea_estimated_capacity_mt": 3,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "apolloco2-revithoussa",
+   "speaker": "DESFA, the Greek gas transmission operator and named partner",
+   "source": "https://www.desfa.gr/en/desfa-secures-e169-3-million-eu-innovation-fund-grant-for-apolloco%e2%82%82-advancing-greeces-first-large-scale-ccs-midstream-infrastructure/",
+   "verbatim": "APOLLOCO2 provides the critical midstream link in Greece's emerging CCS value chain, connecting CO2 capture investments with storage facilities.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "The midstream link for the chain this census already admitted olympus-milaki into, and which prinos-co2-storage sits at the end of. An adjacency, recorded and not drawn.",
+   "source_cited_before_repair": "https://www.desfa.gr/en/desfa-secures-e169-3-million-eu-innovation-fund-grant-for-apolloco2",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -5623,7 +6710,14 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "admitted",
+   "row": "carbonbridge",
+   "speaker": "Ambrian Energy, Messer and Bremenports, the project's own site",
+   "source": "https://www.carbonbridge.de/",
+   "verbatim": "CO2 storage involves two main steps: First, CO2 is captured directly from sources like power plants or industrial facilities.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "A CO2 terminal project at Bremerhaven. The project site is the owner's; the gasworld report of the completed early-stage study corroborates it and is not the admitting source.",
    "derived": false
   },
   {
@@ -5636,7 +6730,11 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 20,
    "iea_estimated_capacity_mt": 20,
-   "class": "not searched",
+   "class": "searched none found",
+   "looked_in_order": [
+    "energy.ec.europa.eu document download — 404, the IEA's only reference"
+   ],
+   "note": "Interconnector and Fluxys are the named partners. The IEA's single reference is a dead EU document link and nothing else was located.",
    "derived": false
   },
   {
@@ -5689,7 +6787,15 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 40,
    "iea_estimated_capacity_mt": 40,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "fluxys-c-grid-belgium",
+   "speaker": "Fluxys, own press release",
+   "source": "https://www.fluxys.com/en/press-releases/fluxys-belgium/2023/230920_press_co2-network-operator-fluxys-c-grid",
+   "verbatim": "The phased development of this open-access pipeline network in the Walloon Region will connect industrial CO2 emitters with CO2 exit points towards permanent storage or reuse.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "source_cited_before_repair": "https://www.fluxys.com/en/press-releases/fluxys-belgium/2025/251025-press-fluxys-c-grid-walloon",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -5728,6 +6834,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5740,7 +6847,14 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "admitted",
+   "row": "seaseas-amsterdam",
+   "speaker": "SeaSeaS, the project's own site",
+   "source": "https://www.seaseas.nl/news/2922573_great-news-for-seaseas-amsterdam",
+   "verbatim": "It will be accessible via truck, rail and inland shipping, and will connect Amsterdam via seagoing vessels to all relevant offshore European CO2 storage sites.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "A shipping terminal at the Port of Amsterdam.",
    "derived": false
   },
   {
@@ -5755,6 +6869,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5769,6 +6884,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5781,7 +6897,17 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "perimeter exclusion",
+   "clause": "exploration licence; becomes a store on a development plan or storage permit",
+   "ruling": "RULED 14 September 2026, by George, on question Q2 of this census. AN EXPLORATION LICENCE IS A RIGHT OVER AN AREA, NOT A STORE. The CCS perimeter holds stores, pipelines, shipping terminals and hubs; a licence is the right to find out whether a store is there. THE LICENSEE'S OWN CLAIMS ARE KEPT ON THE EXCLUDED ENTRY -- injection capacity, timing, partners, with speaker and date -- so nothing said is lost and the entry can be admitted the day the licensee states a store. The clause names what would change that.",
+   "licensee": "Equinor Low Carbon Solution (100%)",
+   "licensee_claim": {
+    "speaker": "Sodir, licence register",
+    "says": "EXL 014: Equinor LCS (Fritos/2025). EL: Exploitation license. EXL: Exploration license.",
+    "url": "https://factpages.sodir.no/en/storage/pageview/licence/all/41319945",
+    "date": "2025-11-06"
+   },
+   "note": "SODIR'S OWN LEGEND DISTINGUISHES THE TWO, which is the distinction the ruling turns on: EL is an exploitation licence and EXL an exploration licence. This entry is an EXL.",
    "derived": false
   },
   {
@@ -5796,6 +6922,7 @@
    "iea_estimated_capacity_mt": 0.6,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5810,6 +6937,7 @@
    "iea_estimated_capacity_mt": 0.009,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5824,6 +6952,7 @@
    "iea_estimated_capacity_mt": 0.03,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5836,7 +6965,12 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 4,
    "iea_estimated_capacity_mt": 4,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "200 with an empty body",
+   "looked_in_order": [
+    "snam.it — 200, empty body"
+   ],
+   "note": "Snam is the sole named partner and its own CCS page renders client-side.",
    "derived": false
   },
   {
@@ -5851,6 +6985,7 @@
    "iea_estimated_capacity_mt": 0.56,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5865,6 +7000,7 @@
    "iea_estimated_capacity_mt": 0.14,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5877,7 +7013,12 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 2,
    "iea_estimated_capacity_mt": 2,
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the readable record is a funder's, a contractor's or trade press",
+   "speaker": "Bioenergy International, trade press",
+   "source": "https://bioenergyinternational.com/",
+   "verbatim": "CNetSS is a collaborative infrastructure project between leading players in energy and infrastructure and was launched in 2022 for the transport and permanent storage of CO2.",
+   "note": "Nordion Energi's own project path answers 404. Vaxjo Energi, Copenhagen Malmo Port, E.ON and Nordion Energi are named.",
    "derived": false
   },
   {
@@ -5890,7 +7031,13 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "3 - 12",
    "iea_estimated_capacity_mt": 12,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "co2-storage-kalundborg",
+   "speaker": "CO2 Storage Kalundborg (Equinor, Orsted, Nordsofonden), the project's own site",
+   "source": "https://co2storagekalundborg.com/",
+   "verbatim": "Three companies are behind CO2 Storage Kalundborg.",
+   "capacity_stated": null,
+   "capacity_unit": null,
    "derived": false
   },
   {
@@ -5903,7 +7050,14 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "admitted",
+   "row": "greenstore",
+   "speaker": "Projekt Greenstore (Harbour Energy, INEOS Energy, Nordsofonden), own site",
+   "source": "https://greenstore.dk/en/home-page/",
+   "verbatim": "In 1996, a capture plant was installed in the Norwegian North Sea, which has since captured and stored 1 million tonnes of CO2 annually.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "THE QUOTED SENTENCE IS ABOUT SLEIPNER, NOT THIS PROJECT — it is the page's framing. The admission rests on the project site existing under the operators' names and describing the Greenstore project; no capacity is taken from it.",
    "derived": false
   },
   {
@@ -5918,6 +7072,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5930,7 +7085,12 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "named not admitted",
+   "failed_leg": "no company source; the readable record is a funder's, a contractor's or trade press",
+   "speaker": "Penspen, the study contractor",
+   "source": "https://www.penspen.com/",
+   "verbatim": "Penspen awarded major CO2 pipeline study in Switzerland.",
+   "note": "THE CONTRACTOR ANNOUNCES ITS OWN AWARD, which says a study exists and not that a corridor is being built. The IEA's Partners column for this entry reads 'Schweiz'.",
    "derived": false
   },
   {
@@ -5943,7 +7103,14 @@
    "iea_phase": 1,
    "iea_announced_capacity_mt": 20,
    "iea_estimated_capacity_mt": 20,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "highway58",
+   "speaker": "Pipe58 with Progressive Energy, the project's own site",
+   "source": "https://pipe58.se/",
+   "verbatim": "20 MtCO2 annual capacity for phase 1. >1000 km length of phase 1 backbone. Early 2030s phase 1 aimed to be operational.",
+   "capacity_stated": "20 Mt CO2/yr (phase 1)",
+   "capacity_unit": "Mt CO2 per year",
+   "note": "THE PROJECT STATES ITS OWN FIGURE ON ITS OWN SITE, which is the admission and the capacity in one page.",
    "derived": false
   },
   {
@@ -5956,7 +7123,12 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": "",
    "iea_estimated_capacity_mt": "",
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "URLError on the owner",
+   "looked_in_order": [
+    "interterminals.com — URLError"
+   ],
+   "note": "Port of Sodertalje is the named partner and the IEA's only reference is the terminal operator's own site.",
    "derived": false
   },
   {
@@ -5969,7 +7141,14 @@
    "iea_phase": 2,
    "iea_announced_capacity_mt": "2 - 3",
    "iea_estimated_capacity_mt": 3,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "sullom-voe-hub",
+   "speaker": "Veri Energy (EnQuest), own site",
+   "source": "https://verienergy.com/pages/sullom-voe-terminal",
+   "verbatim": "The captured CO2, anticipated to be up to 1 million tonnes per annum, will be transported a short distance to Veri Energy's planned carbon storage hub for permanent sequestration.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "One terminal and hub, three list entries by date (operation 2038). THE TERMINAL IS ADMITTED AND THE STORE IS NOT: Veri Energy holds four carbon storage licences, and a licence is excluded by the Q2 ruling. What the row holds is the terminal at Sullom Voe.",
    "derived": false
   },
   {
@@ -5982,7 +7161,14 @@
    "iea_phase": 3,
    "iea_announced_capacity_mt": 5,
    "iea_estimated_capacity_mt": 5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "sullom-voe-hub",
+   "speaker": "Veri Energy (EnQuest), own site",
+   "source": "https://verienergy.com/pages/sullom-voe-terminal",
+   "verbatim": "The captured CO2, anticipated to be up to 1 million tonnes per annum, will be transported a short distance to Veri Energy's planned carbon storage hub for permanent sequestration.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "One terminal and hub, three list entries by date (operation 2040). THE TERMINAL IS ADMITTED AND THE STORE IS NOT: Veri Energy holds four carbon storage licences, and a licence is excluded by the Q2 ruling. What the row holds is the terminal at Sullom Voe.",
    "derived": false
   },
   {
@@ -5997,6 +7183,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6011,6 +7198,7 @@
    "iea_estimated_capacity_mt": 0.45,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6023,7 +7211,13 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 1.3,
    "iea_estimated_capacity_mt": 1.3,
-   "class": "not searched",
+   "class": "unreadable",
+   "refusal_class": "403 on both references",
+   "looked_in_order": [
+    "eon.se — 403",
+    "carbonherald.com — 403"
+   ],
+   "note": "E.ON, Sysav, Copenhagen Malmo Port and Nordion Energi are named; the owner's own domain refuses a declared reader.",
    "derived": false
   },
   {
@@ -6038,6 +7232,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6052,6 +7247,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6066,6 +7262,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -6080,6 +7277,7 @@
    "iea_estimated_capacity_mt": 0.17,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -6094,6 +7292,7 @@
    "iea_estimated_capacity_mt": 0.27,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -6108,6 +7307,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -6122,6 +7322,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -6134,7 +7335,11 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 0.6,
    "iea_estimated_capacity_mt": 0.6,
-   "class": "not searched",
+   "class": "searched none found",
+   "note": "The IEA's only reference is a 404 on climate.ec.europa.eu, and the Partners column reads '0'.",
+   "looked_in_order": [
+    "the IEA's own references, read in order; see sources/cache/ccs/index.json for each fetch"
+   ],
    "derived": false
   },
   {
@@ -6147,7 +7352,14 @@
    "iea_phase": "",
    "iea_announced_capacity_mt": 1.5,
    "iea_estimated_capacity_mt": 1.5,
-   "class": "not searched",
+   "class": "admitted",
+   "row": "golianovo-storage",
+   "speaker": "ENGAS, own CCS pages",
+   "source": "https://www.engas.sk/ccs",
+   "verbatim": "ENGAS CCS - underground storage. CO2 capture and storage.",
+   "capacity_stated": null,
+   "capacity_unit": null,
+   "note": "The Slovak Spectator reports the site 'is expected to hold up to 20 million tonnes of CO2, roughly half the country's annual emissions' — A TOTAL, NOT AN ANNUAL RATE, and trade press rather than the owner. The IEA announces 1.5 Mt/yr. Neither figure is on the row.",
    "derived": false
   },
   {
@@ -6162,6 +7374,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   }
  ],
