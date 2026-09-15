@@ -1115,6 +1115,72 @@ date 2026-09-10, and the other four are not. Hydrogen goes from 11 rows drawn to
 "west of Pembroke Power Station" is a good deal more than most of these rows have, and four
 rows turn on it.
 
+### Rulings of 15 September 2026 — the ladder was measuring its own reading
+
+Four corrections, and three of them are the same mistake: **a cell reported a fact about a
+project when what it held was a fact about this register's reading of one.**
+
+**D-L1. THE POPULATION HAS THREE PARTS AND ONLY ONE IS SCORED.** "Rungs passed" was reported
+over all 245 entries, which put **53 perimeter exclusions** and **21 unreadable entries** in
+the zero-rung column and made the ladder read as a register that had failed to confirm 122
+projects. It had failed to confirm **48**. The identity is printed on every run and the gate
+recomputes it:
+
+    53 perimeter exclusions + 21 unread + 48 at 0 + 54 at 1 + 51 at 2
+        + 5 at 3 + 6 at 4 + 5 at 5 + 2 at 6 rungs = 245
+
+A perimeter exclusion is a project this dataset is **not about** — 31 DRI, steel and fuels;
+22 blue, methane reforming with capture. Asking an electrolysis question of a steam reformer
+produces six fails that say nothing about either. They are carried with their clause, out of
+the scored population. **The clause is read from `report_benchmark_gap`'s own classifier**,
+never re-implemented, because a second copy of a boundary is a boundary that drifts.
+
+**D-L2. A FAIL WITH NOTHING SEARCHED IS NOT A FAIL.** Every cell gains `searched`, meaning
+whether the source class that rung reads was examined for that entry — owner or permit for
+1, 2, 3 and 5; **funder publications for 4**; the dependency graph or an owner statement for
+6. A fail with `searched` false is reported `not_searched`. **Rung 4 is `not_searched` on 71
+of the 171 scored entries**: nobody has read a funder list for them, and recording that as
+the project's failure was a claim about the project made out of a gap in this register's
+reading.
+
+**D-L3. RUNG 1 WAS TESTING A RULE IT DOES NOT HAVE.** The rung is *"owner or permitting
+authority names the location at **municipality or finer**"*. The scorer passed only
+`names_location_finer_than_municipality`, and otherwise looked at `located` — which is a
+question about whether somebody has **drawn** the row, and scope.md says in as many words
+that position is not an admission leg and drawn status is not consulted here.
+
+**It never read `plant`, which is where the company-stated site name lives.** Fifty admitted
+rows were failing a rung they answer: `Maasvlakte, Port of Rotterdam` (Air Liquide),
+`Trafford Low Carbon Energy Park, Carrington` (Carlton Power), `Pyyryvainen, Oulu` — that
+last one stated by the **City of Oulu**, a permitting authority, which is the rung's own
+second speaker. Rung 1 passes on all fifty. Admitted passes go **19 → 69**.
+
+**Seven admitted rows still fail, and every one is an adjacency.** `location_statement`
+carries a `relation` — offtake, supply, adjacency — naming a feature the project serves:
+Tata Steel IJmuiden, the BAYERNOIL refinery, Pembroke Power Station, Enecogen, Zeeland
+Refinery. Under the ruling of 13 September 2026 adjacency does not place a row: the owner is
+naming **somebody else's works**. The fail stands and its note now says so, where it used to
+claim the row named a municipality and no finer.
+
+**D-L4. RUNG 4 READ THE WRONG LAYER, AND IT IS D-L3'S MISTAKE TWICE.** `public_funding` moved
+off the project into `data/transition/funding.json`, where one award can finance several
+projects; the scorer went on reading `status_history` for a funder event that no longer lands
+there. **Four admitted rows with an award on file from the funder itself** were reported as
+fails — IPCEI Hy2Infra for bp and for RWE at Lingen, PERTE ERHA for Moeve at Huelva, IPCEI
+for Repsol at Muskiz. Rung 4 passes go **1 → 5**.
+
+**What the corrections did to the picture.** Not one entry at IEA `FID/Construction` now
+sits at zero rungs. The six that did are all perimeter exclusions: **HYBRIT demo** and
+**Stegra**, which are DRI steelworks and belong to the steel sector, and **Shell heavy
+residue gasification**, **Air Liquide Botlek**, **Air Products Botlek** and **Grandpuits
+biorefinery**, which are blue. The register was not missing six confirmed projects; it was
+scoring six projects it is not about.
+
+**Rung 2 needs no reconciliation and that is worth stating.** All 76 admitted rows pass; no
+admitted row fails. The 47 named-not-admitted and 48 searched-none-found fail it, correctly
+and with the search on file — they have an IEA capacity and no owner-stated one, which is
+the distinction the rung exists to draw.
+
 ### Rulings of 13 September 2026 — adjacency, tags, and a cadastre
 
 **D81. ADJACENCY DOES NOT PLACE A ROW.** "West of Pembroke Power Station" locates the

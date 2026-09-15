@@ -1,0 +1,104 @@
+{
+ "_comment": [
+  "COMPUTED FROM sources/ladder/hydrogen.csv BY build_ladder.py.",
+  "Never edited by hand: the reconciliation gate check_ladder.py recomputes",
+  "it and refuses a mismatch. See scope.md, 'The ladder is computed, never",
+  "typed'.",
+  "",
+  "THREE POPULATIONS, AND `rungs_passed` IS REPORTED ON ONE OF THEM.",
+  "A perimeter exclusion is a project this dataset is not about; an unread",
+  "entry is a publisher this register could not reach. Neither is a project",
+  "that failed to confirm itself, and scoring them zero out of six said that",
+  "they were."
+ ],
+ "population": 245,
+ "population_structure": {
+  "perimeter_exclusions": 53,
+  "unread": 21,
+  "scored": 171,
+  "identity": "53 perimeter exclusions + 21 unread + 48 at 0 + 54 at 1 + 51 at 2 + 5 at 3 + 6 at 4 + 5 at 5 + 2 at 6 rungs = 245",
+  "identity_holds": true
+ },
+ "scored_entries_by_rungs_passed": {
+  "0": 48,
+  "1": 54,
+  "2": 51,
+  "3": 5,
+  "4": 6,
+  "5": 5,
+  "6": 2
+ },
+ "not_searched_cells_among_scored": {
+  "site": 0,
+  "capacity": 0,
+  "fid": 0,
+  "funding": 71,
+  "start": 0,
+  "input": 0
+ },
+ "entries_by_rungs_passed_all_245_deprecated": {
+  "0": 122,
+  "1": 54,
+  "2": 51,
+  "3": 5,
+  "4": 6,
+  "5": 5,
+  "6": 2
+ },
+ "pass_count_per_rung_by_register_class": {
+  "site": {
+   "admitted": 69,
+   "named not admitted": 47
+  },
+  "capacity": {
+   "admitted": 76
+  },
+  "fid": {
+   "admitted": 13
+  },
+  "funding": {
+   "admitted": 5
+  },
+  "start": {
+   "admitted": 15
+  },
+  "input": {
+   "admitted": 7
+  }
+ },
+ "rungs_passed_by_iea_status": {
+  "(not on the list)": {
+   "3": 1,
+   "4": 3,
+   "5": 2,
+   "6": 2
+  },
+  "Concept": {
+   "0": 41,
+   "1": 17,
+   "2": 17
+  },
+  "FID/Construction": {
+   "0": 6,
+   "2": 1,
+   "4": 3,
+   "5": 3
+  },
+  "Feasibility study": {
+   "0": 73,
+   "1": 37,
+   "2": 33,
+   "3": 4
+  },
+  "Operational": {
+   "0": 2
+  }
+ },
+ "rung6_provisional": 76,
+ "unread_entries": 21,
+ "reconciliation": {
+  "iea_current_vintage": 237,
+  "register_rows_not_on_the_list": 8,
+  "population": 245
+ }
+}

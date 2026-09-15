@@ -74,7 +74,9 @@
    "url": "https://api.iea.org/hydrogen/project",
    "fetched": "2026-09-09",
    "bytes": 496671,
-   "sha256": "7cbeede384e61a5ba18479ac30ead37885555ea4a80f1e931f4eb47a48d70768"
+   "sha256": "7cbeede384e61a5ba18479ac30ead37885555ea4a80f1e931f4eb47a48d70768",
+   "entry_list": "MEASURED FROM THE FILE THIS SHA-256 IDENTIFIES, on 13 September 2026: 237 European entries at or above 100 MW across ALL technologies -- 214 Electrolysis, 22 Fossil fuels with CCUS, 1 Other. Europe is sources/build_hydrogen_benchmark.py GEO; the threshold is 100 MW converted at IEA_KT_PER_MW to 17.325 ktH2/y and applied to `capacity (ktH2Y)`. Electrolysis alone is 214, which is the narrower population build_hydrogen_benchmark.py counts and NOT the ladder's.",
+   "entry_list_why": "THE COUNT IS RECORDED BECAUSE THE FILE CANNOT BE. The bytes are not redistributable and the cache is gitignored, so on any machine without it check_ladder.py cannot recount the population -- it reconciles the committed ladder against this figure instead, which is a measurement of an identified file rather than a number somebody typed. Where the cache IS present the gate recounts and must agree with this line; a cache that has drifted from this hash therefore fails rather than passing quietly."
   },
   {
    "benchmark": "te_gigafactory_risk",
