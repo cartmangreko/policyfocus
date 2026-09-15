@@ -7,7 +7,7 @@
   ],
   "sector": "cement",
   "template_version": 5,
-  "fingerprint": "7605e66f4b2b3d21",
+  "fingerprint": "09182e3652afd820",
   "sentence": {
     "text": "European cement is cutting its emissions.",
     "from": [
@@ -27,26 +27,29 @@
     {
       "id": "routes",
       "label": "Routes",
-      "text": "Three routes are being built: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
-      "as_of": "2025-06-18",
+      "text": "Four routes are being built: post-combustion carbon capture (15 projects), oxyfuel carbon capture (6), alternative fuels in the kiln (1) and direct separation carbon capture (1).",
+      "as_of": "2026-09-14",
       "numbers": [
-        "5",
-        "2",
+        "15",
+        "6",
+        "1",
         "1"
       ],
       "parts": {
-        "count": 3,
-        "list": "post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1)",
+        "count": 4,
+        "list": "post-combustion carbon capture (15 projects), oxyfuel carbon capture (6), alternative fuels in the kiln (1) and direct separation carbon capture (1)",
         "names": [
           "Post-combustion carbon capture",
           "Oxyfuel carbon capture",
-          "Alternative fuels in the kiln"
+          "Alternative fuels in the kiln",
+          "Direct separation carbon capture"
         ]
       },
       "sourced": [
         "Post-combustion carbon capture",
         "Oxyfuel carbon capture",
-        "Alternative fuels in the kiln"
+        "Alternative fuels in the kiln",
+        "Direct separation carbon capture"
       ],
       "href": "#technologies",
       "surface": true
@@ -77,16 +80,16 @@
     {
       "id": "pipeline_state",
       "label": "Pipeline",
-      "text": "7 European cement projects are under way, 4 of them have taken a final investment decision, and 1 is paused.",
-      "as_of": "2026-01-01",
+      "text": "33 European cement projects are under way, 5 of them have taken a final investment decision, and 1 is paused.",
+      "as_of": "2026-09-14",
       "numbers": [
-        "7",
-        "4",
+        "33",
+        "5",
         "1"
       ],
       "parts": {
-        "total": "7",
-        "committed": "4",
+        "total": "33",
+        "committed": "5",
         "committed_is_all": false,
         "paused": "1",
         "cancelled": "0",
@@ -123,18 +126,19 @@
     {
       "id": "the_latest",
       "label": "The latest",
-      "text": "Slite CCS was paused on 19 November 2025.",
-      "as_of": "2025-11-19",
+      "text": "Go4ECOPlanet was announced by 14 September 2026.",
+      "as_of": "2026-09-14",
       "numbers": [],
       "parts": {
-        "project": "Slite CCS",
-        "status": "paused",
-        "date": "19 November 2025"
+        "project": "Go4ECOPlanet",
+        "status": "announced",
+        "date": "14 September 2026",
+        "date_is_upper_bound": true
       },
       "sourced": [
-        "Slite CCS"
+        "Go4ECOPlanet"
       ],
-      "href": "/projects/slite-ccs",
+      "href": "/projects/go4ecoplanet-kujawy",
       "surface": true
     },
     {

@@ -123,7 +123,11 @@ def build(sector: str) -> dict:
     imp = bi.build(sector, bi.date.today().year)
     labels = sm.measure_labels()
     bottlenecks = [b for b in sm.load("bottleneck") if b["sector"] == sector]
-    technologies = [t for t in sm.load("technology") if sector in t["sectors"]]
+    # A PLACEHOLDER IS NOT A DIAGRAM NODE. ccs-capture-unspecified records that
+    # an owner has not stated a capture method; drawing it would put a box on the
+    # picture for a thing nobody is building. Ruled 14 September 2026.
+    technologies = [t for t in sm.load("technology")
+                    if sector in t["sectors"] and not t.get("placeholder")]
     projects = [p for p in sm.load("project") if p["sector"] == sector]
     in_view = [m for m in imp["measures"] if m["in_sector_view"]]
 

@@ -1,0 +1,96 @@
+{
+ "_comment": [
+  "QUESTIONS THE CEMENT AND CCS CENSUS RAISED AND DID NOT ANSWER, with the rulings that",
+  "came back. Brief 8: where an entry raises a question the perimeter rules do not settle,",
+  "the entry is classed `held for ruling`, the question is written here with the source",
+  "sentence and what the rule would need to say, and the pass continues. A QUESTION OF THIS",
+  "KIND NEVER CHANGES A RULE BY ITSELF -- the ruling does, and the ruling is George's.",
+  "",
+  "This file keeps the question after it has been answered, on the batteries precedent",
+  "(sources/batteries_questions.json). A reader who finds a clause in scope.md is entitled",
+  "to see the entries that made somebody write it."
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "raised": "2026-09-14",
+   "sector": "cement",
+   "question": "Does a pilot, demonstration or semi-industrial capture unit at a cement works clear the cement perimeter, and if so is there a floor?",
+   "why_the_rules_did_not_settle_it": "The cement perimeter holds 'a capture project at a cement works, of any capture technology, company-confirmed' and states no floor and no pilot clause. The BATTERIES perimeter has one and refuses a pilot unless the company states it as a phase of a commercial line. Four entries are described by their own owners as pilot, demonstration, semi-industrial or phase 1, and nothing in the cement rule reaches them.",
+   "entries": [
+    {
+     "iea_id": 202,
+     "name": "Heidelberg Materials LEILAC 2",
+     "source_sentence": "After examining different locations, it has been decided to build the LEILAC 2 demonstration installation for carbon capture at the HeidelbergCement cement plant in Hanover, Germany... an installation around four times as large will be operated in Hanover, which will capture 20% of the cement plant's capacity, corresponding to around 100,000 tonnes of CO2 per year.",
+     "speaker": "HeidelbergCement, own release of 1 February 2021",
+     "note": "Under construction, FID 2022, 100,000 t/yr -- larger than several entries this pass admitted without the question arising."
+    },
+    {
+     "iea_id": 539,
+     "name": "Carbon Clean CEMEX Rudersdorf plant phase 1",
+     "source_sentence": "KBR will provide FEED services for the initial stage of the project which aims to develop and deploy Carbon Clean's breakthrough modular carbon capture technology - CycloneCC - to initially capture 100 tonnes per day (TPD) of CO2 at the plant.",
+     "speaker": "Carbon Clean, the technology partner, naming CEMEX and the works",
+     "note": "Also raises whether two capture projects at one works are one row or two: IEA 540 (CO2LLECT, 1.3 Mt/yr) is at the same Ruedersdorf works."
+    },
+    {
+     "iea_id": 1359,
+     "name": "Catch4Climate Mergelstetten",
+     "source_sentence": "At the site of the Mergelstetten cement plant in southern Germany, the consortium intends to build and operate its own demonstration plant on a semi-industrial scale, where the so-called oxyfuel process will be applied for CO2 capture.",
+     "speaker": "HeidelbergCement for the CI4C consortium, release of 18 November 2020",
+     "note": "The perimeter names oxyfuel with capture IN explicitly, which pulls one way; the owner calls it a Pilotprojekt, which pulls the other."
+    },
+    {
+     "iea_id": 1459,
+     "name": "ECCO2-LH (Lighthouse) LafargeHolcim Carboneras",
+     "source_sentence": "LafargeHolcim recently added to its portfolio of CCUS pilots with the ECCO2-LH project in Spain, in collaboration with Carbon Clean and Sistemas de Calor, which will capture CO2 from flue gas at its Carboneras plant and turn it to agricultural use for accelerated crop production.",
+     "speaker": "LafargeHolcim, own release",
+     "note": "Carries a second leg: the IEA calls this entry Cancelled and no owner statement of cancellation was found."
+    }
+   ],
+   "rule_would_need_to_say": "Whether scale or owner designation bears on the cement perimeter at all, and if so where the line sits.",
+   "ruling": {
+    "ruled": "2026-09-14",
+    "by": "George Christopoulos",
+    "says": "No pilot clause for cement. A capture project at a cement works is in perimeter at any scale, and the register does not convert or rank. Admit all four, with the owner's own designation recorded as a stated attribute on the row, and capacity as stated or absent. On Carboneras: a cancellation is a stop event only from the owner's or the consortium's own statement; the list's 'cancelled' is a benchmark claim and is recorded as one.",
+    "applied": "All four moved from `held for ruling` to `admitted`, each carrying `owner_designation` with its speaker. IEA 539 keeps its capacity at the owner's unit, 100 t CO2 per DAY, un-annualised. IEA 1459 lands on its announcement and carries the IEA's `Cancelled` as a `benchmark_claim` with the vintage it was made in, and takes no stopped status_history event. The clause is written into sources/scope.md, Sector perimeters, Cement."
+   }
+  },
+  {
+   "id": "Q2",
+   "raised": "2026-09-14",
+   "sector": "ccs",
+   "question": "Is a CO2 storage EXPLORATION LICENCE a store for the CCS perimeter?",
+   "why_the_rules_did_not_settle_it": "The CCS perimeter holds 'CO2 transport and storage infrastructure: stores, pipelines, shipping terminals and hubs'. An exploration licence is a right awarded over an area of shelf, with an operator, partners and often a stated injection capacity, and no store built or permitted. Ten European entries are licences of this kind and the perimeter sentence does not reach them either way.",
+   "entries": [
+    {"iea_id": 1271, "name": "Albondigas carbon storage (EXL008)", "licensee": "Equinor",
+     "source_sentence": "The new licences are each expected to have the capacity to store around 5 million tonnes of CO2 per year when in operation.",
+     "speaker": "Equinor, own release of 20 June 2024"},
+    {"iea_id": 1270, "name": "Kinno carbon storage (EXL010)", "licensee": "Equinor Low Carbon Solution",
+     "source_sentence": "The new licences are each expected to have the capacity to store around 5 million tonnes of CO2 per year when in operation.",
+     "speaker": "Equinor, own release of 20 June 2024"},
+    {"iea_id": 1272, "name": "Atlas carbon storage", "licensee": "Aker BP (80%), ORLEN Upstream Norway (20%)",
+     "source_sentence": "The storage licence is named Atlas and is located in Norwegian North Sea, near the Yggdrasil area.",
+     "speaker": "Aker BP, own release of 20 June 2024"},
+    {"iea_id": 1269, "name": "Iroko carbon storage", "licensee": "Var Energi CCS (40%), OMV Norge (30%), Lime Petroleum",
+     "source_sentence": "The Iroko area has the potential to store up to 7,5 million tonnes of CO2 annually for at least 30 years, a total of approximately 215 million tonnes.",
+     "speaker": "Var Energi, own release"},
+    {"iea_id": 1349, "name": "Kaupang carbon storage (EXL012)", "licensee": "Harbour Energy Norge (60%), Equinor Low Carbon Solution"},
+    {"iea_id": 1350, "name": "Forsete carbon storage (EXL013)", "licensee": "Aker BP (50%), Equinor Low Carbon Solution (50%)"},
+    {"iea_id": 1488, "name": "Fritos carbon storage (EXL014)", "licensee": "Equinor Low Carbon Solution (100%)"},
+    {"iea_id": 710, "name": "Trudvang storage project (EXL007)", "licensee": "Eni (30%), Sval, and partners"},
+    {"iea_id": 530, "name": "Luna storage", "licensee": "Harbour Energy (60%), TotalEnergies (40%), formerly Wintershall Dea",
+     "source_sentence": "Wintershall Dea will be operator of the Luna licence which is located 120km west of Bergen, and is estimated to hold a CO2 storage injection capacity of up to 5 million tonnes per year.",
+     "speaker": "Wintershall Dea, own release"},
+    {"iea_id": 775, "name": "Poseidon CO2 storage", "licensee": "Aker BP (50%), OMV (50%)",
+     "note": "NOT THE UK POSEIDON. IEA 845/846/847 are Perenco's UK Poseidon CCS project in the Southern North Sea, a different project with the same name, and the IEA's own reference list for this Norwegian entry includes an article about the UK one."}
+   ],
+   "rule_would_need_to_say": "Whether a right over an area is infrastructure, and if not, what event turns it into one.",
+   "ruling": {
+    "ruled": "2026-09-14",
+    "by": "George Christopoulos",
+    "says": "An exploration licence is a right over an area, not a store. Class the ten perimeter exclusion with the clause 'exploration licence; becomes a store on a development plan or storage permit'. Keep on each excluded entry the licensee's own stated injection capacity and timing as claims with speaker and date, so nothing said is lost and the entry can be admitted the day the licensee states a store. Same rule for any other country's licence entries.",
+    "applied": "NOT IN THIS PULL REQUEST. These are transport-and-storage entries and they are classed in the T&S pass, which goes on its own branch cut from main after this one merges. The ruling is recorded here so it is not carried between sessions in a message."
+   }
+  }
+ ]
+}

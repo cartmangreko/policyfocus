@@ -1,657 +1,659 @@
 {
-  "_comment": "Reviewed prose stored as data — tier 2 of the three-tier rule in sources/scope.md ('No free-generated text on the site'). Each block carries a status: every tier-2 text passes through one review before flipping to 'approved', with the review date recorded in 'reviewed'; 'final' marks the masthead pair George signed off as-is. Slots in {braces} are filled at build time from gate-checked objects — never hardcoded here. The site-wide blocks resolve their slots against the site summary object (data/summaries/site.json) in web/lib/sitetext.ts; 'ego_notes' resolves its slots against the computed ego view in sources/build_ego_views.py, which bakes the rendered sentence into data/graph/ego/<file>.json.",
-  "masthead": {
-    "status": "final",
-    "_comment": [
-      "The two lines under the logo, in the order they render.",
-      "",
-      "`descriptor` is the line that sits under the wordmark on every surface that carries",
-      "one. `positioning` is the sentence that says what the platform is; it is George's",
-      "wording, reviewed, and it is locked — no surface paraphrases it, and nothing computes",
-      "a variant of it.",
-      "",
-      "They were `tagline` and `subline` and said what the register did. The rename is not",
-      "cosmetic: the old pair described a decoding pipeline, and the platform's claim is now",
-      "that it connects technologies, policy, projects and capital. See amendment brief 2 §1."
-    ],
-    "descriptor": "Intelligence on what Europe builds next.",
-    "positioning": "Eufabric is the intelligence platform that connects Europe's industrial technologies, the policies that shape them, and the projects and capital that bring them to life."
+ "_comment": "Reviewed prose stored as data — tier 2 of the three-tier rule in sources/scope.md ('No free-generated text on the site'). Each block carries a status: every tier-2 text passes through one review before flipping to 'approved', with the review date recorded in 'reviewed'; 'final' marks the masthead pair George signed off as-is. Slots in {braces} are filled at build time from gate-checked objects — never hardcoded here. The site-wide blocks resolve their slots against the site summary object (data/summaries/site.json) in web/lib/sitetext.ts; 'ego_notes' resolves its slots against the computed ego view in sources/build_ego_views.py, which bakes the rendered sentence into data/graph/ego/<file>.json.",
+ "masthead": {
+  "status": "final",
+  "_comment": [
+   "The two lines under the logo, in the order they render.",
+   "",
+   "`descriptor` is the line that sits under the wordmark on every surface that carries",
+   "one. `positioning` is the sentence that says what the platform is; it is George's",
+   "wording, reviewed, and it is locked — no surface paraphrases it, and nothing computes",
+   "a variant of it.",
+   "",
+   "They were `tagline` and `subline` and said what the register did. The rename is not",
+   "cosmetic: the old pair described a decoding pipeline, and the platform's claim is now",
+   "that it connects technologies, policy, projects and capital. See amendment brief 2 §1."
+  ],
+  "descriptor": "Intelligence on what Europe builds next.",
+  "positioning": "Eufabric is the intelligence platform that connects Europe's industrial technologies, the policies that shape them, and the projects and capital that bring them to life."
+ },
+ "perimeter": {
+  "status": "approved",
+  "template": "Eufabric decodes EU legislation into data. Each act is read provision by provision into individual measures: obligations, prohibitions, incentives, and rights, every one carrying the verbatim source text and a link to the official version. Measures are mapped to sectors in two ways: sectors an act names directly, and sectors it reaches through supply chains, regulatory dependencies, or procurement channels, with supply-chain reach computed from Eurostat input-output data. The measures are then aggregated per sector, so each sector page shows its full position across all legislation on the platform: what binds it directly, what reaches it indirectly, and through which channel. The platform currently holds {measures_count} measures from {acts_count} legislative acts across {sectors_count} sectors, and it grows as new legislation is adopted. Every act's verification status is stated on the coverage page. The platform does not cover national implementing measures or guidance documents, and nothing on this site is legal advice.",
+  "reviewed": "2026-08-18",
+  "vocabulary_sweep": "2026-08-19"
+ },
+ "launch_perimeter": {
+  "status": "approved",
+  "reviewed": "2026-08-24",
+  "_comment": [
+   "The launch perimeter, stated on the coverage page. George's ruling in brief 4 §1,",
+   "transcribed rather than composed: what the platform covers at launch, what it does",
+   "not, and why electricity is a parameter on every page rather than a tile of its own.",
+   "",
+   "It sits beside the perimeter paragraph rather than inside it. That paragraph is",
+   "about METHOD — how an act becomes measures and how a measure reaches a sector — and",
+   "it was reviewed as such on 2026-08-18. This one is about SCOPE, it will move when",
+   "the seventh industry lands, and folding the two together would put a sentence with a",
+   "short life inside a paragraph with a long one."
+  ],
+  "paragraph": "Eufabric launches narrow: Europe's energy-intensive industries and the materials they make. Six are covered at launch — cement, steel, chemicals (organic chemicals and plastics), batteries, hydrogen production including ammonia, and circular materials, meaning the recovery industry that turns used material back into feedstock. Semiconductors, automotive and defence are out of scope for launch. They are a different genre: nothing at their centre carries a carbon cost, and what they need built is capability rather than cleaner ways of making the same thing. Electricity and grids are not one of the six either. Power prices and grid connection decide what happens in all of them, so they are stated on each industry's own page rather than given a heading of their own. Every other sector listed on this page is one the legislation reaches without being one of the six."
+ },
+ "coverage_declarations": {
+  "status": "approved",
+  "files": {
+   "ppwr": "The packaging regulation's classifications are from a preliminary reading and have not yet been independently confirmed.",
+   "battery": "The batteries regulation's classifications are from a preliminary reading and have not yet been independently confirmed.",
+   "fleet": "The CO2 standards for cars and vans are from a preliminary reading and have not yet been independently confirmed."
   },
-  "perimeter": {
-    "status": "approved",
-    "template": "Eufabric decodes EU legislation into data. Each act is read provision by provision into individual measures: obligations, prohibitions, incentives, and rights, every one carrying the verbatim source text and a link to the official version. Measures are mapped to sectors in two ways: sectors an act names directly, and sectors it reaches through supply chains, regulatory dependencies, or procurement channels, with supply-chain reach computed from Eurostat input-output data. The measures are then aggregated per sector, so each sector page shows its full position across all legislation on the platform: what binds it directly, what reaches it indirectly, and through which channel. The platform currently holds {measures_count} measures from {acts_count} legislative acts across {sectors_count} sectors, and it grows as new legislation is adopted. Every act's verification status is stated on the coverage page. The platform does not cover national implementing measures or guidance documents, and nothing on this site is legal advice.",
-    "reviewed": "2026-08-18",
-    "vocabulary_sweep": "2026-08-19"
-  },
-  "launch_perimeter": {
-    "status": "approved",
-    "reviewed": "2026-08-24",
-    "_comment": [
-      "The launch perimeter, stated on the coverage page. George's ruling in brief 4 §1,",
-      "transcribed rather than composed: what the platform covers at launch, what it does",
-      "not, and why electricity is a parameter on every page rather than a tile of its own.",
-      "",
-      "It sits beside the perimeter paragraph rather than inside it. That paragraph is",
-      "about METHOD — how an act becomes measures and how a measure reaches a sector — and",
-      "it was reviewed as such on 2026-08-18. This one is about SCOPE, it will move when",
-      "the seventh industry lands, and folding the two together would put a sentence with a",
-      "short life inside a paragraph with a long one."
-    ],
-    "paragraph": "Eufabric launches narrow: Europe's energy-intensive industries and the materials they make. Six are covered at launch — cement, steel, chemicals (organic chemicals and plastics), batteries, hydrogen production including ammonia, and circular materials, meaning the recovery industry that turns used material back into feedstock. Semiconductors, automotive and defence are out of scope for launch. They are a different genre: nothing at their centre carries a carbon cost, and what they need built is capability rather than cleaner ways of making the same thing. Electricity and grids are not one of the six either. Power prices and grid connection decide what happens in all of them, so they are stated on each industry's own page rather than given a heading of their own. Every other sector listed on this page is one the legislation reaches without being one of the six."
-  },
-  "coverage_declarations": {
-    "status": "approved",
-    "files": {
-      "ppwr": "The packaging regulation's classifications are from a preliminary reading and have not yet been independently confirmed.",
-      "battery": "The batteries regulation's classifications are from a preliminary reading and have not yet been independently confirmed.",
-      "fleet": "The CO2 standards for cars and vans are from a preliminary reading and have not yet been independently confirmed."
-    },
-    "reviewed": "2026-09-04"
-  },
-  "coverage_line": {
-    "_comment": [
-      "NOT RENDERED ANYWHERE, deliberately, since the acts-decoded counter was removed",
-      "from the front page. The line ran at the foot of that page beside a link to",
-      "/coverage, and what it sold was the register: a count of acts read is a fact",
-      "about the pipeline, and the front page is about the industries.",
-      "",
-      "Kept rather than deleted because it is approved prose and still accurate. If an",
-      "About or Method page is built, this is the sentence it would carry, and keeping",
-      "it here means it comes back without another review pass.",
-      "",
-      "/coverage itself is unchanged: still live, still indexable, still in the",
-      "sitemap, and linked from nowhere on the site."
-    ],
-    "status": "approved",
-    "reviewed": "2026-08-19",
-    "template": "{acts_count} acts decoded so far; the platform grows as new legislation is adopted."
-  },
-  "ego_notes": {
-    "status": "approved",
-    "reviewed": "2026-08-19",
-    "_comment": "One note per register file whose measures name and reach no sector at all. A note is REQUIRED for such a file: build_ego_views.py fails rather than composing one, because the sentence has to say what a missing sector ring means, and only a person can decide that. Slots are computed by the builder from the view it has just built — {measure_count} is the file's own measure count, {act_count} the number of distinct acts its spokes point at. Both are filled the same way; nothing in the sentence is a typed-in number.",
-    "files": {
-      "omnibus": "None of the omnibus's {measure_count} measures names a specific sector. The act applies horizontally, to companies across the whole economy based on size and activity. Zero named sectors means no sector-specific provisions, not zero impact. Every connection shown is one of the {act_count} acts its measures amend, cite or depend on."
-    }
-  },
-  "record_templates": {
-    "status": "approved",
-    "reviewed": "2026-08-20",
-    "_comment": "One template family per legislative-event shape. Slots in {braces} are computed by sources/build_records.py from the register and the manifest and filled at build time; a slot the builder cannot compute fails the build rather than rendering empty, and a record whose event fits no family here fails the build rather than being composed. Every family carries TWO bodies: 'body', and 'body_no_reach' for an act whose reach may not be stated — an amending proposal, whose reach is computed against the proposal rather than the consolidated base it amends (sources/scope.md, 'Reach is not stated on a record about an amending proposal'). The builder drops the reach slot for such an act, so a body that mentions reach fails the build instead of rendering. Written in display vocabulary from the start, per the display-vocabulary ruling in sources/scope.md: measures and sectors, never rows or register. REVIEWED AND APPROVED 2026-08-20, after George read all four backfilled records rendered. The page layer must still refuse to render a family whose status is not 'approved': a later edit to any sentence here drops it back to draft and stops rendering until it is read again.",
-    "families": {
-      "new_act_ingested": {
-        "headline": "{act_name}: {measure_count} measures now on the platform, naming {named_count} sectors",
-        "body": "{act_name} is now on the platform. Its {measure_count} measures have been read one provision at a time. The act names {named_count} sectors in its own text — most often {top_sector}, on {top_sector_named_count} measures — and reaches {reached_count} more through supply chains, dependencies on other acts, or procurement.",
-        "body_no_reach": "{act_name} is now on the platform. Its {measure_count} measures have been read one provision at a time. The act names {named_count} sectors in its own text — most often {top_sector}, on {top_sector_named_count} measures."
-      },
-      "amendment": {
-        "_comment": "The verb is computed, not written: {relationship} comes from what the manifest records between the two acts — an act that repeals its predecessor replaces it, and an act that amends one amends it. PPWR is the live case for the first (sources/scope.md, 'Carry-overs come from repeal, not from amendment'), and a family template that hardcoded 'amended' would state the wrong relationship on its first record.",
-        "headline": "{act_name} {relationship} {prior_act_name}: {measure_count} measures change",
-        "body": "{act_name} {relationship} the {prior_act_name}. {measure_count} measures change, and the earlier wording is on file for {prior_resolved_count} of them, shown against what each requires now. These measures name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them — and reach {reached_count} more through supply chains, dependencies on other acts, or procurement.",
-        "body_no_reach": "{act_name} {relationship} the {prior_act_name}. {measure_count} measures change, and the earlier wording is on file for {prior_resolved_count} of them, shown against what each requires now. These measures name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them."
-      },
-      "delegated_act": {
-        "headline": "{act_name}: {measure_count} measures set by a delegated act",
-        "body": "A delegated act has landed under {act_name}. It settles {measure_count} measures the parent act left to be filled in later. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them — and reach {reached_count} more through supply chains, dependencies on other acts, or procurement.",
-        "body_no_reach": "A delegated act has landed under {act_name}. It settles {measure_count} measures the parent act left to be filled in later. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them."
-      },
-      "status_change": {
-        "headline": "{act_name} moves from proposal to adopted law",
-        "body": "{act_name} is no longer a proposal. Its {measure_count} measures are adopted law. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them — and reach {reached_count} more through supply chains, dependencies on other acts, or procurement.",
-        "body_no_reach": "{act_name} is no longer a proposal. Its {measure_count} measures are adopted law. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them."
-      }
-    },
-    "status_notes": {
-      "_comment": "Appended to every record body, chosen by the legal standing of the act the record is about — the same STATUS_RULE the findings gate applies. A record about a proposal has to say so on its own face: the record is permanent and will outlive the proposal.",
-      "adopted": "This act is adopted. It is law, not a proposal.",
-      "proposed": "This is a Commission proposal, {com}, under procedure {procedure}. It is not law yet, and it can change before it is.",
-      "mixed": "The proposal {com}, under procedure {procedure}, would change an act already in force. What it adds is not law yet; the act it changes is."
-    }
-  },
-  "transition_notes": {
-    "status": "draft",
-    "_comment": [
-      "One reviewed sentence per sector that has a transition map, naming the transitions it",
-      "covers. Same discipline as ego_notes: reviewed prose stored as data, tier 2 of the",
-      "three-tier rule in sources/scope.md.",
-      "",
-      "WHILE THE STATUS IS `draft`, NOTHING HERE RENDERS. web/lib/prose.ts falls back to the",
-      "computed sentence — counts of measures, bottlenecks and projects, template-rendered from",
-      "the data — which is tier 1 and needs no review. The sentence below is what the page",
-      "SHOULD say and cannot say yet. Flip the status to `approved` and the page takes it.",
-      "",
-      "sources/check_sector_schema.py prints the pending drafts on every run so that a sentence",
-      "written and forgotten stays visible."
-    ],
-    "reviewed": null,
-    "sectors": {
-      "cement": {
-        "transitions": [
-          "decarbonisation"
-        ],
-        "sentence": "European cement is under one transition, decarbonisation, and it turns on a fact no energy choice can reach: most of a kiln's CO2 comes out of the limestone rather than the fuel, which is why the sector's future runs through capture, the pipes and stores that capture depends on, and whoever is willing to pay for the result."
-      },
-      "steel": {
-        "transitions": [
-          "decarbonisation",
-          "circularity"
-        ],
-        "sentence": ""
-      },
-      "batsol": {
-        "transitions": [
-          "supply_security",
-          "decarbonisation"
-        ],
-        "sentence": "European batteries is the one sector here with no incumbent base to convert: the works are new ground rather than retrofits, which is why it moves under two headings at once — building the capacity Europe does not yet have, and supplying the vehicles the CO2 standards oblige carmakers to sell."
-      }
-    }
-  },
-  "sector_orientation": {
-    "status": "draft",
-    "_comment": [
-      "One reviewed paragraph per sector that has a transition map: the orientation a reader",
-      "needs before the page's own numbers mean anything. Tier 2 of the three-tier rule in",
-      "sources/scope.md — reviewed prose stored as data, never generated, never per-page free",
-      "text.",
-      "",
-      "IT SITS ABOVE THE COMPUTED LEAD AND REPLACES NOTHING. The lead block below it is",
-      "unchanged and still computed from the panels; this paragraph is the standing context",
-      "that does not move when the data does, which is exactly why it is written once and",
-      "reviewed rather than templated.",
-      "",
-      "FOUR BEATS, THE SAME ORDER EVERY TIME, so a reader who has read one sector can read any",
-      "other: what the sector is and its weight in Europe; why decarbonising it is structurally",
-      "hard; the technology paths; how EU policy frames it. It closes on the question the",
-      "page's data answers, so the handoff into the detail below is deliberate.",
-      "",
-      "NEARLY NUMBER-FREE ON PURPOSE. Every figure on this site carries a source link and an",
-      "as-of date (§0.1 of eufabric-page-specifications.md). A number in standing prose would",
-      "need both and would go stale silently, and the sourced figures are one line further down",
-      "the page in any case.",
-      "",
-      "While the status is `draft` nothing here renders and the page opens on the lead block as",
-      "before. sources/check_sector_schema.py fails for a mapped sector with no paragraph and",
-      "prints the drafts on every run."
-    ],
-    "reviewed": null,
-    "sectors": {
-      "cement": {
-        "paragraph": "Cement is the binding agent of the built environment. Concrete is the most used man-made material on earth, and European construction depends on a domestic industry that operates on thin margins with high energy and carbon intensity. Most of the sector's emissions come not from burning fuel but from the chemistry of clinker, the limestone-derived core of cement, which releases CO2 as it is processed. That makes cement one of the hardest sectors to decarbonise: efficiency and clean electricity cannot remove process emissions, so the transition runs through carbon capture, clinker substitution and alternative fuels. EU policy treats it accordingly: carbon pricing raises the cost of conventional production, a border adjustment shields producers from unpriced imports, and public funding underwrites the first capture projects. The open question is who pays for low-carbon cement while it costs more than conventional supply."
-      },
-      "steel": {
-        "paragraph": "European steel is attempting two transitions at once. Some plants are fitting capture equipment to their existing blast furnaces. Others are being rebuilt around a new process, reducing iron with hydrogen or gas and melting it in electric arc furnaces. The deciding factors sit mostly outside the steelworks: hydrogen at scale, electricity prices, and somewhere to put captured CO2. EU law has set the schedule. Free allowances are being withdrawn year by year, a carbon border charge phases in against imports, and the funding tracked below backs both processes."
-      },
-      "batsol": {
-        "paragraph": "Battery cells are the one part of Europe's industrial transition where the factories did not exist before. Cement and steel have plants to convert; batteries have sites to build, and almost every one of them was announced in the last six years. Europe's carmakers, grid operators and defence buyers will need cells in volumes that today come mostly from Asia, and the question Brussels has asked since 2017 is whether those cells will be made here.\n\nBuilding the industry is structurally hard. A cell plant is capital-intensive at a scale few European firms have raised, the learning curve rewards whoever has already run a line for years, and the incumbents in China, Korea and Japan have. Energy prices in Europe are higher, demand depends on how fast electric vehicles and grid storage are bought, and the choice of cell chemistry is not settled: a plant built for one chemistry can be the wrong plant by the time it opens. Several of the largest announced projects have been paused or cancelled for exactly these reasons.\n\nThe technology paths are fewer than in cement or steel. Nickel-based cells for range and performance, iron-phosphate cells for cost, sodium-ion as a lithium-free option, and solid-state designs still moving from pilot to line. Each carries its own dependency on materials that Europe mines or refines only in part, which is why the materials on this page matter as much as the plants.\n\nEU law frames the sector from both sides. Demand comes from two directions: fleet emission standards for cars and vans fix the share of new vehicles that must be electric, and the build-out of wind and solar under the renewable energy targets needs storage to hold power from when it is made to when it is used. Storage is the faster-growing of the two and the one where Europe's cells compete on cost alone, since a grid battery has no brand on it. The Battery Regulation sets the requirements for the cells themselves: a carbon footprint declaration, recycled content, supply-chain due diligence and a digital battery passport. Public money follows through the Innovation Fund, state aid approvals and the joint European battery projects. Which of the announced plants are actually being built, by whom, and with whose money?",
-        "status": "approved",
-        "reviewed": "2026-09-06",
-        "_comment": "Four beats: what is different about this sector, why building it is hard, what the technology paths are, and what EU law does to it — ending on the question the page exists to answer. Approved per sector: the block's own status is still draft, and cement's and steel's paragraphs are unaffected by this approval."
-      }
-    }
-  },
-  "sector_names": {
-    "status": "approved",
-    "reviewed": "2026-09-06",
-    "_comment": [
-      "THE TWO NAME SLOTS, brief 5 §2.1. Every heading on a sector page is a",
-      "template, and a template needs the sector's name in two grammatical shapes:",
-      "",
-      "    short   the bare noun, used inside a sentence — 'cement', 'circular",
-      "            materials'. Never carries 'European': the templates that want it",
-      "            say it themselves, which is why the projects heading reads 'in",
-      "            European {short}' and the feed heading reads 'in {short}'.",
-      "    phrase  the full noun phrase for a heading about the sector as a whole —",
-      "            'the European cement industry'. Lower case as stored; the",
-      "            renderer capitalises the first letter only where the slot OPENS a",
-      "            heading, which no template does today.",
-      "",
-      "KEYED ON ECOSYSTEM ID, NOT SECTOR SLUG. The keys are the six instances in",
-      "data/transition/ecosystems.json. The chemicals ecosystem spans two FIGARO",
-      "slugs (chem, chem/plastics) and batteries covers part of one (batsol), so a",
-      "slug-keyed store would have to say the chemicals name twice and would have no",
-      "key at all for hydrogen or circular materials. web/lib/ecosystems.ts resolves",
-      "a sector slug to its instance; a slug that belongs to no instance has no",
-      "name slots and cannot render the template, which is a build failure rather",
-      "than a fallback.",
-      "",
-      "BOTH SLOTS ARE REQUIRED for all six, and sources/check_h2_templates.py fails",
-      "the build on an empty one. Unlike the ecosystem descriptions these are not",
-      "optional prose a surface can omit — a heading with an unfilled slot is not a",
-      "heading."
-    ],
-    "sectors": {
-      "cement": {
-        "short": "cement",
-        "phrase": "the European cement industry"
-      },
-      "steel": {
-        "short": "steel",
-        "phrase": "the European steel industry"
-      },
-      "chemicals": {
-        "short": "chemicals",
-        "phrase": "the European chemicals industry"
-      },
-      "batteries": {
-        "short": "batteries",
-        "phrase": "the European battery cell industry"
-      },
-      "hydrogen": {
-        "short": "hydrogen",
-        "phrase": "European hydrogen"
-      },
-      "circular-materials": {
-        "short": "circular materials",
-        "phrase": "circular materials in Europe"
-      }
-    }
-  },
-  "sector_sections": {
-    "status": "approved",
-    "reviewed": "2026-08-25",
-    "_comment": [
-      "THE FIXED SEQUENCE, brief 5 §2. The sector page answers the same questions in",
-      "the same order on every sector, so the interface is learned once. The order of",
-      "the `sections` array below IS the render order and the nav order —",
-      "sources/check_section_order.py reads this array and fails the build if the",
-      "template disagrees with it.",
-      "",
-      "EVERY HEADING IS A QUESTION, and every question is stored here rather than",
-      "written in the component, so the wording is reviewable in one place and cannot",
-      "drift between sectors. Slots are {short} and {phrase} from sector_names above.",
-      "",
-      "A SECTION WITH NO DATA IS OMITTED, from the page and from the nav both — brief",
-      "5 §2, which amends the fixed-presence rule in page specifications §0.5 for",
-      "this page type. An empty section is not rendered with a 'none tracked' line",
-      "here: nine sections of which four say nothing is a worse page than five that",
-      "say something. Which sections have data is a question for the data, not for",
-      "this file, so no entry below is marked optional.",
-      "",
-      "NOT IN THE LIST. The lead block, which opens the page with no H2 and is",
-      "excluded from the nav (row 0). Sources, which page specifications §0.5 makes",
-      "the final section of every sector page and which brief 5 §2 does not number —",
-      "it renders last, unnumbered, outside the nav, on the same footing as the lead",
-      "block, and §2 is amended to say so in step 6."
-    ],
-    "h1": "{Short} in Europe's industrial transition",
-    "h1_comment": "`phrase` is deliberately not used in the H1: it already carries 'European', and 'The European cement industry in Europe's industrial transition' says Europe twice.",
-    "sections": [
-      {
-        "id": "projects",
-        "nav": "Projects",
-        "h2": "What is being built in European {short}"
-      },
-      {
-        "id": "technologies",
-        "nav": "Technologies",
-        "h2": "Which technologies could change {short}"
-      },
-      {
-        "id": "materials",
-        "nav": "Materials",
-        "h2": "Which materials flow through {short}"
-      },
-      {
-        "id": "opportunity",
-        "nav": "Opportunity",
-        "h2": "What EU rules and money support in {short}"
-      },
-      {
-        "id": "bottlenecks",
-        "nav": "Bottlenecks",
-        "h2": "What constrains {phrase}"
-      },
-      {
-        "id": "policies",
-        "nav": "Policies",
-        "h2": "Which EU rules matter for {short}"
-      },
-      {
-        "id": "companies",
-        "nav": "Companies",
-        "h2": "Who are the companies in {phrase}"
-      },
-      {
-        "id": "feed",
-        "nav": "Feed",
-        "h2": "What changed in {short}"
-      },
-      {
-        "id": "connections",
-        "nav": "Connections",
-        "h2": "How {short} connects"
-      }
-    ],
-    "unnumbered": [
-      {
-        "id": "sources",
-        "h2": "Sources",
-        "why": "Page specifications §0.5 makes this the final section of every sector page. Brief 5 §2 numbers nine questions and this is not one of them: it answers what the page stands on rather than anything about the industry, so it renders last, outside the nav, on the same footing as the lead block renders first. Stored here anyway, because the gate's rule is that no heading on this page is free text and an exception carved for one heading is an exception somebody will widen."
-      }
-    ]
-  },
-  "opportunity": {
-    "status": "approved",
-    "reviewed": "2026-08-28",
-    "_comment": [
-      "THE OPPORTUNITY SECTION'S OWN WORDS, brief 5 §4.",
-      "",
-      "The section is four computed views and no written judgement. What is stored",
-      "here is the wording of those views: the sub-headings, the one generated lead",
-      "sentence (§4.5), and the templates that say what a support measure PAYS",
-      "(§4.2). Nothing here states a fact; every slot is filled from",
-      "data/transition/opportunity/<sector>.json, which sources/build_opportunity.py",
-      "computes and gates.",
-      "",
-      "WHY THE SUPPORT FACT IS NOT THE MEASURE'S ONE-LINER. Brief 5 §5: the same",
-      "measure may appear in Policies, in Opportunity and under a Bottleneck, and the",
-      "same SENTENCE may not appear twice. Policies renders the standard one-liner",
-      "and is the only section that may — sources/check_one_liner_scope.py enforces",
-      "that. Here the measure says what it pays, in the template below, keyed on the",
-      "money model that produced the figure, because the model is what the number",
-      "MEANS. A model with no template raises rather than falling back to a generic",
-      "sentence: a grant programme and an auction floor are not the same offer, and a",
-      "template that covered both would be saying nothing about either.",
-      "",
-      "COUNTS AND SUMS ONLY (§4.5). No adjective in the lead sentence, and no",
-      "cost-versus-price comparison anywhere in the section — §4 rules technology",
-      "cost figures, abatement costs and carbon-price arithmetic out of it entirely.",
-      "",
-      "ANNOUNCED MONEY IS NOT SUMMED, ruled on brief 5 §4.1. There is no template",
-      "below that takes an announced total, and web/lib/transition.ts does not compute",
-      "one, so the sentence cannot be written by accident."
-    ],
-    "lead": {
-      "template": "{committed} is committed to {projects} in European {short}, and {support_measures} in EU law {support_verb} money into it.",
-      "template_no_support": "{committed} is committed to {projects} in European {short}.",
-      "template_no_money": "{support_measures} in EU law {support_verb} money into European {short}.",
-      "_slots": "committed: the committed sum, worded by the builder. projects: the count of projects it finances, with its noun. support_measures: the count of support-direction measures reaching the sector, with its noun. support_verb: agrees with that count. short: the sector name slot."
-    },
-    "headings": {
-      "money_in": "Money flowing in",
-      "rules_that_pay": "Rules that pay",
-      "committed": "Committed",
-      "announced": "Announced",
-      "withdrawn": "Withdrawn",
-      "_comment": "Sub-headings inside the Opportunity section. §4.1's three status groups keep the schema's own words because they are the words the money is described with everywhere else on the site — a committed allocation is committed on the project page and in the funding store too."
-    },
-    "support_fact": {
-      "grant_programme": "{amount} of the {committed} committed to this sector was awarded under it, to {recipients}.",
-      "_comment": "Keyed on money.model. One entry today, because one model produces a support figure. A model that reaches this template with no entry stops the build. \n\nTHE RELATION TO THE SECTION'S OWN TOTAL IS STATED, not left to the reader. Two euro figures sit a few lines apart in this section — what is committed to the sector and what one measure paid — and the second is a SUBSET of the first. On cement they are EUR 421 m and EUR 381 m, and the EUR 40 m between them is the France Relance award to K6, which is under no measure the register has read. Printed side by side with no relation between them, two such figures read as a discrepancy. \n\nThe subset is guaranteed rather than asserted: web/lib/opportunity.ts sums the SECTOR'S OWN committed allocations that name this measure, not the measure's all-sector total from the importance store. Those coincide for cement and would not for a measure that also pays another industry, and a sentence saying 'X of the Y' when X is not inside Y is the one thing this template must never say."
-    },
-    "support_window": {
-      "ongoing": "eligibility ongoing",
-      "dated": "call open until {date}",
-      "_comment": "The eligibility window, said in words. Two forms and no third: a standing scheme has eligibility rather than an opening, and a call has a date it closes on. \n\n`ongoing` renders for a measure whose register `when` is that word. `dated` renders where `when` is a date, and nothing on the platform carries one yet — the dated windows arrive with watch channel three in step 4 of brief 5 §9. A `when` that is neither renders NO window clause at all rather than its raw value: `when` is the register's phrasing about when a provision bites, which is not always a window and is never a promise about when somebody can apply."
-    },
-    "signals": {
-      "chip": "Opportunity signals",
-      "_comment": "§4.6. Not a feed of its own and not a new data structure: a filter over the change records, for records whose object is a funding node, a support-direction measure or a measure that creates demand. It renders as a chip on the Feed section and as a query parameter on the change-record list, and it renders at all only where the sector has at least one such record — a filter chip that filters to nothing is a promise the data does not keep."
-    }
-  },
-  "sector_lead": {
-    "status": "draft",
-    "reviewed": null,
-    "_comment": [
-      "THE REGENERATED LEAD, HELD FOR REVIEW — brief 4 §6, step 2.",
-      "",
-      "What the sector page actually renders is the BUILT lead in",
-      "data/transition/lead/<sector>.json: computed from the panels, gated, tier 1 of the",
-      "three-tier rule in sources/scope.md, and needing no review by that rule. This block",
-      "is a copy of what the rewritten templates produce, put where George reads prose so",
-      "that the new register can be read, edited and approved as words rather than as a",
-      "build artifact.",
-      "",
-      "IT IS NOT A SECOND SOURCE OF TRUTH AND MUST NOT BECOME ONE. Nothing in web/ reads",
-      "it. Editing a sentence here changes nothing on the site: what an approval does is",
-      "move the edited text into data/transition/overrides.json under summary_overrides,",
-      "with the fact fingerprint recorded beside it, at which point sources/build_lead.py",
-      "renders the reviewed sentence and flags it the day the facts move under it.",
-      "",
-      "Regenerate this block from the built file after any template change, or it becomes a",
-      "record of a sentence the site stopped saying."
-    ],
-    "sectors": {
-      "cement": {
-        "fingerprint": "7605e66f4b2b3d21",
-        "template_version": 5,
-        "sentence": "European cement is cutting its emissions.",
-        "why_it_matters": "Cement made this way costs more than the cement it replaces, so whether Europe gets it depends on who covers the difference.",
-        "facts": [
-          {
-            "id": "routes",
-            "text": "Three routes are being built: post-combustion carbon capture (5 projects), oxyfuel carbon capture (2) and alternative fuels in the kiln (1).",
-            "as_of": "2025-06-18"
-          },
-          {
-            "id": "the_gap",
-            "text": "Low-carbon cement costs 75-150% above a conventional plant to make, on the International Energy Agency's figures.",
-            "as_of": "2025"
-          },
-          {
-            "id": "pipeline_state",
-            "text": "7 European cement projects are under way, 4 of them have taken a final investment decision, and 1 is paused.",
-            "as_of": "2026-01-01"
-          },
-          {
-            "id": "decisive_exposure",
-            "text": "Importers of cement pay for the carbon in what they bring into Europe, currently €75.46 per tonne.",
-            "as_of": "2026-08-21"
-          },
-          {
-            "id": "the_latest",
-            "text": "Slite CCS was paused on 19 November 2025.",
-            "as_of": "2025-11-19"
-          },
-          {
-            "id": "binding_constraint",
-            "text": "Green premium against willingness to pay — a market constraint, acted on by 4 ranked measures at 3 of combined weight.",
-            "as_of": "2026-01-01"
-          }
-        ]
-      },
-      "steel": {
-        "fingerprint": "089abd52c55b7788",
-        "template_version": 5,
-        "sentence": "European steel is cutting its emissions and shifting to recycled material.",
-        "why_it_matters": "Steel made this way costs more than the steel it replaces, so whether Europe gets it depends on who covers the difference.",
-        "facts": [
-          {
-            "id": "routes",
-            "text": "Four routes are being built: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
-            "as_of": "2026-06-18"
-          },
-          {
-            "id": "the_gap",
-            "text": "Low-carbon steel costs 50-140% above a conventional BF-BOF plant to make, on the International Energy Agency's figures.",
-            "as_of": "2025"
-          },
-          {
-            "id": "pipeline_state",
-            "text": "7 European steel projects are under way, all of them have taken a final investment decision, and 1 has been cancelled.",
-            "as_of": "2026-06-18"
-          },
-          {
-            "id": "decisive_exposure",
-            "text": "European steel makers are losing the free carbon allowances they used to get, worth €2.58 per tonne at today's carbon price.",
-            "as_of": "2026-08-21"
-          },
-          {
-            "id": "the_latest",
-            "text": "greentec steel Linz went into construction on 18 June 2026.",
-            "as_of": "2026-06-18"
-          }
-        ]
-      }
-    }
-  },
-  "ecosystem_descriptions": {
-    "status": "draft",
-    "reviewed": null,
-    "_comment": [
-      "One reviewed description per ecosystem instance — page specifications §4.2. Two",
-      "sentences: what the ecosystem contains, and where its boundary runs. The boundaries",
-      "are the whole point of the block — that chemicals excludes fertilisers, that ammonia",
-      "is read under hydrogen, that batteries does not mean solar — and none of them can be",
-      "computed from the edges, because a boundary is a decision rather than a fact about",
-      "the data.",
-      "",
-      "WHERE IT RENDERS: the coverage page, and the tile's hover text. NEVER on the tile",
-      "face (§4.2): the tile carries the name and the icon, and a paragraph on it would be",
-      "the perimeter argument competing with the six names the grid exists to present.",
-      "",
-      "EMPTY UNTIL GEORGE SUPPLIES THE TEXT. The slot, the getter and the gate are built;",
-      "the words are not written here. web/lib/sitetext.ts returns null for an empty or",
-      "unreviewed entry, and every surface renders nothing rather than a placeholder — the",
-      "same discipline as the orientation paragraph. sources/check_sector_schema.py lists",
-      "which instances are still outstanding on every run."
-    ],
-    "ecosystems": {
-      "cement": {
-        "description": ""
-      },
-      "steel": {
-        "description": ""
-      },
-      "chemicals": {
-        "description": ""
-      },
-      "batteries": {
-        "description": ""
-      },
-      "hydrogen": {
-        "description": ""
-      },
-      "circular-materials": {
-        "description": ""
-      }
-    }
-  },
-  "country_names": {
-    "status": "approved",
-    "reviewed": "2026-09-01",
-    "_comment": [
-      "THE COUNTRY NAMES ON THE GEOGRAPHY, in English, worded once here and read",
-      "by nobody else. sources/build_maps.py takes the string from this block to",
-      "MEASURE it -- a label's box has to be known before it can be placed -- and",
-      "bakes it into data/transition/maps/*.json, so the component draws a name it",
-      "never chose. That is why the names are here and not in web/lib/prose.ts",
-      "with the geography's sentences: the layout runs in Python at build time,",
-      "and a name the placement cannot see is a name it cannot fit.",
-      "",
-      "KEYED ON ISO 3166-1 alpha-2, as natural_earth.py keys the polygons, so a",
-      "name and a shape cannot be matched to each other wrongly. XK is the code",
-      "Natural Earth carries for Kosovo and is not an ISO assignment.",
-      "",
-      "REQUIRED RATHER THAN DEFAULTED. build_maps.py fails if a frame shows a",
-      "country this block does not name, rather than falling back to the code or",
-      "to the basemap's own NAME_EN. A two-letter code on the paper would look",
-      "like a label and read like a fault, and the basemap's names are neither",
-      "reviewed nor in house style -- it carries 'Turkey' and 'Czech Republic'.",
-      "",
-      "The list covers what the nineteen project crops and the sector overviews",
-      "show today. A twentieth project somewhere new will fail the build until",
-      "its neighbours are named, which is the point.",
-      "",
-      "MA ADDED 9 SEPTEMBER 2026 WITH THE HYDROGEN ROWS, and it is the mechanism working",
-      "rather than a gap being patched. Galp's Sines works sits at 37.96 N, 8.81 W, which",
-      "is the westernmost and one of the southernmost sites this platform holds; its own",
-      "crop reaches far enough south to show Morocco, and the build refused to draw a",
-      "two-letter code. The block still covers exactly what is drawn and nothing else."
-    ],
-    "names": {
-      "AL": "Albania",
-      "AT": "Austria",
-      "BA": "Bosnia and Herzegovina",
-      "BE": "Belgium",
-      "BG": "Bulgaria",
-      "CH": "Switzerland",
-      "CZ": "Czechia",
-      "DE": "Germany",
-      "DK": "Denmark",
-      "EE": "Estonia",
-      "ES": "Spain",
-      "FI": "Finland",
-      "FR": "France",
-      "GB": "United Kingdom",
-      "GR": "Greece",
-      "HR": "Croatia",
-      "HU": "Hungary",
-      "IE": "Ireland",
-      "IT": "Italy",
-      "LT": "Lithuania",
-      "LU": "Luxembourg",
-      "LV": "Latvia",
-      "MA": "Morocco",
-      "MD": "Moldova",
-      "ME": "Montenegro",
-      "MK": "North Macedonia",
-      "NL": "Netherlands",
-      "NO": "Norway",
-      "PL": "Poland",
-      "PT": "Portugal",
-      "RO": "Romania",
-      "RS": "Serbia",
-      "RU": "Russia",
-      "SE": "Sweden",
-      "SI": "Slovenia",
-      "SK": "Slovakia",
-      "TR": "Türkiye",
-      "UA": "Ukraine",
-      "XK": "Kosovo"
-    }
-  },
-  "sector_plain": {
-    "status": "approved",
-    "reviewed": "2026-09-06",
-    "_comment": [
-      "THE PAGE'S OWN EXPLANATIONS OF ITSELF, per sector, keyed by topic and placed by section.",
-      "",
-      "Every other prose block here is either a heading template or a sentence about the sector. These are",
-      "different: they explain HOW THE PAGE COUNTS. What is summed and what is only listed, why a figure",
-      "another sector shows is missing here, what admits a project to the file, what the picture draws and",
-      "what it leaves out. They are the answers a careful reader asks of any number, and they were being",
-      "asked of the batteries page in review.",
-      "",
-      "KEYED BY TOPIC AND PLACED BY SECTION. `section` names the section id from sector_sections, which is",
-      "where the block renders — under that heading, before the data it is about. Two blocks may share a",
-      "section and the order here is the order on the page.",
-      "",
-      "PER SECTOR, AND ABSENT IS THE ORDINARY CASE. Cement and steel have none of these today: their pages",
-      "are older than this block and nobody has written the equivalents. A missing block renders nothing.",
-      "What must not happen is one sector's explanation rendering on another's page, which is why this is",
-      "keyed by sector and not shared -- 'cell plants do not pay for their emissions under the EU carbon",
-      "market' is true here and false two pages away."
-    ],
-    "sectors": {
-      "batsol": {
-        "money_counted": {
-          "section": "opportunity",
-          "title": "How money is counted here",
-          "text": "Figures on this page are public funding attached to the plants on file: grants and state aid that have been approved, signed or paid are summed as committed; support that has only been announced is listed but not added. Research and pilot grants are left out. Every figure carries its date and its source."
-        },
-        "no_carbon_cost": {
-          "section": "policies",
-          "title": "Why there is no carbon-cost figure",
-          "text": "For cement and steel this platform computes what carbon pricing costs each plant. Cell plants do not pay for their emissions under the EU carbon market, and the Battery Regulation's method for calculating a battery's carbon footprint has not yet been adopted, so no per-plant cost can be computed honestly. The requirement is on file; the number is not."
-        },
-        "demand_sources": {
-          "section": "policies",
-          "title": "Where demand comes from",
-          "text": "Demand for European cells has two sources. Vehicles, where the fleet emission standards for cars and vans set how many new vehicles must be electric by given dates. And the power system, where every wind and solar target adds hours of generation that must be stored before it can be used, and where grid operators and utilities buy cells by the gigawatt-hour on price. The rules on this page that create demand are shown as demand drivers; storage-side rules are being added."
-        },
-        "what_counts": {
-          "section": "projects",
-          "title": "What counts as a plant here",
-          "text": "A project is on file when the company itself has confirmed a cell plant at a named site in Europe with a capacity of at least one gigawatt-hour a year. Pack assembly, materials, recycling and pilot lines are not counted. Cancelled and paused projects stay on file, named and dated, because the failures are part of the picture."
-        },
-        "what_is_drawn": {
-          "section": "projects",
-          "title": "What is drawn and what is not",
-          "text": "The picture draws plants that are built, under construction, funded or announced. Cancelled plants are named beneath it. For stopped projects no position was sought, and the page says so."
-        }
-      }
-    }
+  "reviewed": "2026-09-04"
+ },
+ "coverage_line": {
+  "_comment": [
+   "NOT RENDERED ANYWHERE, deliberately, since the acts-decoded counter was removed",
+   "from the front page. The line ran at the foot of that page beside a link to",
+   "/coverage, and what it sold was the register: a count of acts read is a fact",
+   "about the pipeline, and the front page is about the industries.",
+   "",
+   "Kept rather than deleted because it is approved prose and still accurate. If an",
+   "About or Method page is built, this is the sentence it would carry, and keeping",
+   "it here means it comes back without another review pass.",
+   "",
+   "/coverage itself is unchanged: still live, still indexable, still in the",
+   "sitemap, and linked from nowhere on the site."
+  ],
+  "status": "approved",
+  "reviewed": "2026-08-19",
+  "template": "{acts_count} acts decoded so far; the platform grows as new legislation is adopted."
+ },
+ "ego_notes": {
+  "status": "approved",
+  "reviewed": "2026-08-19",
+  "_comment": "One note per register file whose measures name and reach no sector at all. A note is REQUIRED for such a file: build_ego_views.py fails rather than composing one, because the sentence has to say what a missing sector ring means, and only a person can decide that. Slots are computed by the builder from the view it has just built — {measure_count} is the file's own measure count, {act_count} the number of distinct acts its spokes point at. Both are filled the same way; nothing in the sentence is a typed-in number.",
+  "files": {
+   "omnibus": "None of the omnibus's {measure_count} measures names a specific sector. The act applies horizontally, to companies across the whole economy based on size and activity. Zero named sectors means no sector-specific provisions, not zero impact. Every connection shown is one of the {act_count} acts its measures amend, cite or depend on."
   }
+ },
+ "record_templates": {
+  "status": "approved",
+  "reviewed": "2026-08-20",
+  "_comment": "One template family per legislative-event shape. Slots in {braces} are computed by sources/build_records.py from the register and the manifest and filled at build time; a slot the builder cannot compute fails the build rather than rendering empty, and a record whose event fits no family here fails the build rather than being composed. Every family carries TWO bodies: 'body', and 'body_no_reach' for an act whose reach may not be stated — an amending proposal, whose reach is computed against the proposal rather than the consolidated base it amends (sources/scope.md, 'Reach is not stated on a record about an amending proposal'). The builder drops the reach slot for such an act, so a body that mentions reach fails the build instead of rendering. Written in display vocabulary from the start, per the display-vocabulary ruling in sources/scope.md: measures and sectors, never rows or register. REVIEWED AND APPROVED 2026-08-20, after George read all four backfilled records rendered. The page layer must still refuse to render a family whose status is not 'approved': a later edit to any sentence here drops it back to draft and stops rendering until it is read again.",
+  "families": {
+   "new_act_ingested": {
+    "headline": "{act_name}: {measure_count} measures now on the platform, naming {named_count} sectors",
+    "body": "{act_name} is now on the platform. Its {measure_count} measures have been read one provision at a time. The act names {named_count} sectors in its own text — most often {top_sector}, on {top_sector_named_count} measures — and reaches {reached_count} more through supply chains, dependencies on other acts, or procurement.",
+    "body_no_reach": "{act_name} is now on the platform. Its {measure_count} measures have been read one provision at a time. The act names {named_count} sectors in its own text — most often {top_sector}, on {top_sector_named_count} measures."
+   },
+   "amendment": {
+    "_comment": "The verb is computed, not written: {relationship} comes from what the manifest records between the two acts — an act that repeals its predecessor replaces it, and an act that amends one amends it. PPWR is the live case for the first (sources/scope.md, 'Carry-overs come from repeal, not from amendment'), and a family template that hardcoded 'amended' would state the wrong relationship on its first record.",
+    "headline": "{act_name} {relationship} {prior_act_name}: {measure_count} measures change",
+    "body": "{act_name} {relationship} the {prior_act_name}. {measure_count} measures change, and the earlier wording is on file for {prior_resolved_count} of them, shown against what each requires now. These measures name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them — and reach {reached_count} more through supply chains, dependencies on other acts, or procurement.",
+    "body_no_reach": "{act_name} {relationship} the {prior_act_name}. {measure_count} measures change, and the earlier wording is on file for {prior_resolved_count} of them, shown against what each requires now. These measures name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them."
+   },
+   "delegated_act": {
+    "headline": "{act_name}: {measure_count} measures set by a delegated act",
+    "body": "A delegated act has landed under {act_name}. It settles {measure_count} measures the parent act left to be filled in later. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them — and reach {reached_count} more through supply chains, dependencies on other acts, or procurement.",
+    "body_no_reach": "A delegated act has landed under {act_name}. It settles {measure_count} measures the parent act left to be filled in later. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them."
+   },
+   "status_change": {
+    "headline": "{act_name} moves from proposal to adopted law",
+    "body": "{act_name} is no longer a proposal. Its {measure_count} measures are adopted law. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them — and reach {reached_count} more through supply chains, dependencies on other acts, or procurement.",
+    "body_no_reach": "{act_name} is no longer a proposal. Its {measure_count} measures are adopted law. They name {named_count} sectors — most often {top_sector}, on {top_sector_named_count} of them."
+   }
+  },
+  "status_notes": {
+   "_comment": "Appended to every record body, chosen by the legal standing of the act the record is about — the same STATUS_RULE the findings gate applies. A record about a proposal has to say so on its own face: the record is permanent and will outlive the proposal.",
+   "adopted": "This act is adopted. It is law, not a proposal.",
+   "proposed": "This is a Commission proposal, {com}, under procedure {procedure}. It is not law yet, and it can change before it is.",
+   "mixed": "The proposal {com}, under procedure {procedure}, would change an act already in force. What it adds is not law yet; the act it changes is."
+  }
+ },
+ "transition_notes": {
+  "status": "draft",
+  "_comment": [
+   "One reviewed sentence per sector that has a transition map, naming the transitions it",
+   "covers. Same discipline as ego_notes: reviewed prose stored as data, tier 2 of the",
+   "three-tier rule in sources/scope.md.",
+   "",
+   "WHILE THE STATUS IS `draft`, NOTHING HERE RENDERS. web/lib/prose.ts falls back to the",
+   "computed sentence — counts of measures, bottlenecks and projects, template-rendered from",
+   "the data — which is tier 1 and needs no review. The sentence below is what the page",
+   "SHOULD say and cannot say yet. Flip the status to `approved` and the page takes it.",
+   "",
+   "sources/check_sector_schema.py prints the pending drafts on every run so that a sentence",
+   "written and forgotten stays visible."
+  ],
+  "reviewed": null,
+  "sectors": {
+   "cement": {
+    "transitions": [
+     "decarbonisation"
+    ],
+    "sentence": "European cement is under one transition, decarbonisation, and it turns on a fact no energy choice can reach: most of a kiln's CO2 comes out of the limestone rather than the fuel, which is why the sector's future runs through capture, the pipes and stores that capture depends on, and whoever is willing to pay for the result."
+   },
+   "steel": {
+    "transitions": [
+     "decarbonisation",
+     "circularity"
+    ],
+    "sentence": ""
+   },
+   "batsol": {
+    "transitions": [
+     "supply_security",
+     "decarbonisation"
+    ],
+    "sentence": "European batteries is the one sector here with no incumbent base to convert: the works are new ground rather than retrofits, which is why it moves under two headings at once — building the capacity Europe does not yet have, and supplying the vehicles the CO2 standards oblige carmakers to sell."
+   }
+  }
+ },
+ "sector_orientation": {
+  "status": "draft",
+  "_comment": [
+   "One reviewed paragraph per sector that has a transition map: the orientation a reader",
+   "needs before the page's own numbers mean anything. Tier 2 of the three-tier rule in",
+   "sources/scope.md — reviewed prose stored as data, never generated, never per-page free",
+   "text.",
+   "",
+   "IT SITS ABOVE THE COMPUTED LEAD AND REPLACES NOTHING. The lead block below it is",
+   "unchanged and still computed from the panels; this paragraph is the standing context",
+   "that does not move when the data does, which is exactly why it is written once and",
+   "reviewed rather than templated.",
+   "",
+   "FOUR BEATS, THE SAME ORDER EVERY TIME, so a reader who has read one sector can read any",
+   "other: what the sector is and its weight in Europe; why decarbonising it is structurally",
+   "hard; the technology paths; how EU policy frames it. It closes on the question the",
+   "page's data answers, so the handoff into the detail below is deliberate.",
+   "",
+   "NEARLY NUMBER-FREE ON PURPOSE. Every figure on this site carries a source link and an",
+   "as-of date (§0.1 of eufabric-page-specifications.md). A number in standing prose would",
+   "need both and would go stale silently, and the sourced figures are one line further down",
+   "the page in any case.",
+   "",
+   "While the status is `draft` nothing here renders and the page opens on the lead block as",
+   "before. sources/check_sector_schema.py fails for a mapped sector with no paragraph and",
+   "prints the drafts on every run."
+  ],
+  "reviewed": null,
+  "sectors": {
+   "cement": {
+    "paragraph": "Cement is the binding agent of the built environment. Concrete is the most used man-made material on earth, and European construction depends on a domestic industry that operates on thin margins with high energy and carbon intensity. Most of the sector's emissions come not from burning fuel but from the chemistry of clinker, the limestone-derived core of cement, which releases CO2 as it is processed. That makes cement one of the hardest sectors to decarbonise: efficiency and clean electricity cannot remove process emissions, so the transition runs through carbon capture, clinker substitution and alternative fuels. EU policy treats it accordingly: carbon pricing raises the cost of conventional production, a border adjustment shields producers from unpriced imports, and public funding underwrites the first capture projects. The open question is who pays for low-carbon cement while it costs more than conventional supply."
+   },
+   "steel": {
+    "paragraph": "European steel is attempting two transitions at once. Some plants are fitting capture equipment to their existing blast furnaces. Others are being rebuilt around a new process, reducing iron with hydrogen or gas and melting it in electric arc furnaces. The deciding factors sit mostly outside the steelworks: hydrogen at scale, electricity prices, and somewhere to put captured CO2. EU law has set the schedule. Free allowances are being withdrawn year by year, a carbon border charge phases in against imports, and the funding tracked below backs both processes."
+   },
+   "batsol": {
+    "paragraph": "Battery cells are the one part of Europe's industrial transition where the factories did not exist before. Cement and steel have plants to convert; batteries have sites to build, and almost every one of them was announced in the last six years. Europe's carmakers, grid operators and defence buyers will need cells in volumes that today come mostly from Asia, and the question Brussels has asked since 2017 is whether those cells will be made here.\n\nBuilding the industry is structurally hard. A cell plant is capital-intensive at a scale few European firms have raised, the learning curve rewards whoever has already run a line for years, and the incumbents in China, Korea and Japan have. Energy prices in Europe are higher, demand depends on how fast electric vehicles and grid storage are bought, and the choice of cell chemistry is not settled: a plant built for one chemistry can be the wrong plant by the time it opens. Several of the largest announced projects have been paused or cancelled for exactly these reasons.\n\nThe technology paths are fewer than in cement or steel. Nickel-based cells for range and performance, iron-phosphate cells for cost, sodium-ion as a lithium-free option, and solid-state designs still moving from pilot to line. Each carries its own dependency on materials that Europe mines or refines only in part, which is why the materials on this page matter as much as the plants.\n\nEU law frames the sector from both sides. Demand comes from two directions: fleet emission standards for cars and vans fix the share of new vehicles that must be electric, and the build-out of wind and solar under the renewable energy targets needs storage to hold power from when it is made to when it is used. Storage is the faster-growing of the two and the one where Europe's cells compete on cost alone, since a grid battery has no brand on it. The Battery Regulation sets the requirements for the cells themselves: a carbon footprint declaration, recycled content, supply-chain due diligence and a digital battery passport. Public money follows through the Innovation Fund, state aid approvals and the joint European battery projects. Which of the announced plants are actually being built, by whom, and with whose money?",
+    "status": "approved",
+    "reviewed": "2026-09-06",
+    "_comment": "Four beats: what is different about this sector, why building it is hard, what the technology paths are, and what EU law does to it — ending on the question the page exists to answer. Approved per sector: the block's own status is still draft, and cement's and steel's paragraphs are unaffected by this approval."
+   }
+  }
+ },
+ "sector_names": {
+  "status": "approved",
+  "reviewed": "2026-09-06",
+  "_comment": [
+   "THE TWO NAME SLOTS, brief 5 §2.1. Every heading on a sector page is a",
+   "template, and a template needs the sector's name in two grammatical shapes:",
+   "",
+   "    short   the bare noun, used inside a sentence — 'cement', 'circular",
+   "            materials'. Never carries 'European': the templates that want it",
+   "            say it themselves, which is why the projects heading reads 'in",
+   "            European {short}' and the feed heading reads 'in {short}'.",
+   "    phrase  the full noun phrase for a heading about the sector as a whole —",
+   "            'the European cement industry'. Lower case as stored; the",
+   "            renderer capitalises the first letter only where the slot OPENS a",
+   "            heading, which no template does today.",
+   "",
+   "KEYED ON ECOSYSTEM ID, NOT SECTOR SLUG. The keys are the six instances in",
+   "data/transition/ecosystems.json. The chemicals ecosystem spans two FIGARO",
+   "slugs (chem, chem/plastics) and batteries covers part of one (batsol), so a",
+   "slug-keyed store would have to say the chemicals name twice and would have no",
+   "key at all for hydrogen or circular materials. web/lib/ecosystems.ts resolves",
+   "a sector slug to its instance; a slug that belongs to no instance has no",
+   "name slots and cannot render the template, which is a build failure rather",
+   "than a fallback.",
+   "",
+   "BOTH SLOTS ARE REQUIRED for all six, and sources/check_h2_templates.py fails",
+   "the build on an empty one. Unlike the ecosystem descriptions these are not",
+   "optional prose a surface can omit — a heading with an unfilled slot is not a",
+   "heading."
+  ],
+  "sectors": {
+   "cement": {
+    "short": "cement",
+    "phrase": "the European cement industry"
+   },
+   "steel": {
+    "short": "steel",
+    "phrase": "the European steel industry"
+   },
+   "chemicals": {
+    "short": "chemicals",
+    "phrase": "the European chemicals industry"
+   },
+   "batteries": {
+    "short": "batteries",
+    "phrase": "the European battery cell industry"
+   },
+   "hydrogen": {
+    "short": "hydrogen",
+    "phrase": "European hydrogen"
+   },
+   "circular-materials": {
+    "short": "circular materials",
+    "phrase": "circular materials in Europe"
+   }
+  }
+ },
+ "sector_sections": {
+  "status": "approved",
+  "reviewed": "2026-08-25",
+  "_comment": [
+   "THE FIXED SEQUENCE, brief 5 §2. The sector page answers the same questions in",
+   "the same order on every sector, so the interface is learned once. The order of",
+   "the `sections` array below IS the render order and the nav order —",
+   "sources/check_section_order.py reads this array and fails the build if the",
+   "template disagrees with it.",
+   "",
+   "EVERY HEADING IS A QUESTION, and every question is stored here rather than",
+   "written in the component, so the wording is reviewable in one place and cannot",
+   "drift between sectors. Slots are {short} and {phrase} from sector_names above.",
+   "",
+   "A SECTION WITH NO DATA IS OMITTED, from the page and from the nav both — brief",
+   "5 §2, which amends the fixed-presence rule in page specifications §0.5 for",
+   "this page type. An empty section is not rendered with a 'none tracked' line",
+   "here: nine sections of which four say nothing is a worse page than five that",
+   "say something. Which sections have data is a question for the data, not for",
+   "this file, so no entry below is marked optional.",
+   "",
+   "NOT IN THE LIST. The lead block, which opens the page with no H2 and is",
+   "excluded from the nav (row 0). Sources, which page specifications §0.5 makes",
+   "the final section of every sector page and which brief 5 §2 does not number —",
+   "it renders last, unnumbered, outside the nav, on the same footing as the lead",
+   "block, and §2 is amended to say so in step 6."
+  ],
+  "h1": "{Short} in Europe's industrial transition",
+  "h1_comment": "`phrase` is deliberately not used in the H1: it already carries 'European', and 'The European cement industry in Europe's industrial transition' says Europe twice.",
+  "sections": [
+   {
+    "id": "projects",
+    "nav": "Projects",
+    "h2": "What is being built in European {short}"
+   },
+   {
+    "id": "technologies",
+    "nav": "Technologies",
+    "h2": "Which technologies could change {short}"
+   },
+   {
+    "id": "materials",
+    "nav": "Materials",
+    "h2": "Which materials flow through {short}"
+   },
+   {
+    "id": "opportunity",
+    "nav": "Opportunity",
+    "h2": "What EU rules and money support in {short}"
+   },
+   {
+    "id": "bottlenecks",
+    "nav": "Bottlenecks",
+    "h2": "What constrains {phrase}"
+   },
+   {
+    "id": "policies",
+    "nav": "Policies",
+    "h2": "Which EU rules matter for {short}"
+   },
+   {
+    "id": "companies",
+    "nav": "Companies",
+    "h2": "Who are the companies in {phrase}"
+   },
+   {
+    "id": "feed",
+    "nav": "Feed",
+    "h2": "What changed in {short}"
+   },
+   {
+    "id": "connections",
+    "nav": "Connections",
+    "h2": "How {short} connects"
+   }
+  ],
+  "unnumbered": [
+   {
+    "id": "sources",
+    "h2": "Sources",
+    "why": "Page specifications §0.5 makes this the final section of every sector page. Brief 5 §2 numbers nine questions and this is not one of them: it answers what the page stands on rather than anything about the industry, so it renders last, outside the nav, on the same footing as the lead block renders first. Stored here anyway, because the gate's rule is that no heading on this page is free text and an exception carved for one heading is an exception somebody will widen."
+   }
+  ]
+ },
+ "opportunity": {
+  "status": "approved",
+  "reviewed": "2026-08-28",
+  "_comment": [
+   "THE OPPORTUNITY SECTION'S OWN WORDS, brief 5 §4.",
+   "",
+   "The section is four computed views and no written judgement. What is stored",
+   "here is the wording of those views: the sub-headings, the one generated lead",
+   "sentence (§4.5), and the templates that say what a support measure PAYS",
+   "(§4.2). Nothing here states a fact; every slot is filled from",
+   "data/transition/opportunity/<sector>.json, which sources/build_opportunity.py",
+   "computes and gates.",
+   "",
+   "WHY THE SUPPORT FACT IS NOT THE MEASURE'S ONE-LINER. Brief 5 §5: the same",
+   "measure may appear in Policies, in Opportunity and under a Bottleneck, and the",
+   "same SENTENCE may not appear twice. Policies renders the standard one-liner",
+   "and is the only section that may — sources/check_one_liner_scope.py enforces",
+   "that. Here the measure says what it pays, in the template below, keyed on the",
+   "money model that produced the figure, because the model is what the number",
+   "MEANS. A model with no template raises rather than falling back to a generic",
+   "sentence: a grant programme and an auction floor are not the same offer, and a",
+   "template that covered both would be saying nothing about either.",
+   "",
+   "COUNTS AND SUMS ONLY (§4.5). No adjective in the lead sentence, and no",
+   "cost-versus-price comparison anywhere in the section — §4 rules technology",
+   "cost figures, abatement costs and carbon-price arithmetic out of it entirely.",
+   "",
+   "ANNOUNCED MONEY IS NOT SUMMED, ruled on brief 5 §4.1. There is no template",
+   "below that takes an announced total, and web/lib/transition.ts does not compute",
+   "one, so the sentence cannot be written by accident."
+  ],
+  "lead": {
+   "template": "{committed} is committed to {projects} in European {short}, and {support_measures} in EU law {support_verb} money into it.",
+   "template_no_support": "{committed} is committed to {projects} in European {short}.",
+   "template_no_money": "{support_measures} in EU law {support_verb} money into European {short}.",
+   "_slots": "committed: the committed sum, worded by the builder. projects: the count of projects it finances, with its noun. support_measures: the count of support-direction measures reaching the sector, with its noun. support_verb: agrees with that count. short: the sector name slot."
+  },
+  "headings": {
+   "money_in": "Money flowing in",
+   "rules_that_pay": "Rules that pay",
+   "committed": "Committed",
+   "announced": "Announced",
+   "withdrawn": "Withdrawn",
+   "_comment": "Sub-headings inside the Opportunity section. §4.1's three status groups keep the schema's own words because they are the words the money is described with everywhere else on the site — a committed allocation is committed on the project page and in the funding store too."
+  },
+  "support_fact": {
+   "grant_programme": "{amount} of the {committed} committed to this sector was awarded under it, to {recipients}.",
+   "_comment": "Keyed on money.model. One entry today, because one model produces a support figure. A model that reaches this template with no entry stops the build. \n\nTHE RELATION TO THE SECTION'S OWN TOTAL IS STATED, not left to the reader. Two euro figures sit a few lines apart in this section — what is committed to the sector and what one measure paid — and the second is a SUBSET of the first. On cement they are EUR 421 m and EUR 381 m, and the EUR 40 m between them is the France Relance award to K6, which is under no measure the register has read. Printed side by side with no relation between them, two such figures read as a discrepancy. \n\nThe subset is guaranteed rather than asserted: web/lib/opportunity.ts sums the SECTOR'S OWN committed allocations that name this measure, not the measure's all-sector total from the importance store. Those coincide for cement and would not for a measure that also pays another industry, and a sentence saying 'X of the Y' when X is not inside Y is the one thing this template must never say."
+  },
+  "support_window": {
+   "ongoing": "eligibility ongoing",
+   "dated": "call open until {date}",
+   "_comment": "The eligibility window, said in words. Two forms and no third: a standing scheme has eligibility rather than an opening, and a call has a date it closes on. \n\n`ongoing` renders for a measure whose register `when` is that word. `dated` renders where `when` is a date, and nothing on the platform carries one yet — the dated windows arrive with watch channel three in step 4 of brief 5 §9. A `when` that is neither renders NO window clause at all rather than its raw value: `when` is the register's phrasing about when a provision bites, which is not always a window and is never a promise about when somebody can apply."
+  },
+  "signals": {
+   "chip": "Opportunity signals",
+   "_comment": "§4.6. Not a feed of its own and not a new data structure: a filter over the change records, for records whose object is a funding node, a support-direction measure or a measure that creates demand. It renders as a chip on the Feed section and as a query parameter on the change-record list, and it renders at all only where the sector has at least one such record — a filter chip that filters to nothing is a promise the data does not keep."
+  }
+ },
+ "sector_lead": {
+  "status": "draft",
+  "reviewed": null,
+  "_comment": [
+   "THE REGENERATED LEAD, HELD FOR REVIEW — brief 4 §6, step 2.",
+   "",
+   "What the sector page actually renders is the BUILT lead in",
+   "data/transition/lead/<sector>.json: computed from the panels, gated, tier 1 of the",
+   "three-tier rule in sources/scope.md, and needing no review by that rule. This block",
+   "is a copy of what the rewritten templates produce, put where George reads prose so",
+   "that the new register can be read, edited and approved as words rather than as a",
+   "build artifact.",
+   "",
+   "IT IS NOT A SECOND SOURCE OF TRUTH AND MUST NOT BECOME ONE. Nothing in web/ reads",
+   "it. Editing a sentence here changes nothing on the site: what an approval does is",
+   "move the edited text into data/transition/overrides.json under summary_overrides,",
+   "with the fact fingerprint recorded beside it, at which point sources/build_lead.py",
+   "renders the reviewed sentence and flags it the day the facts move under it.",
+   "",
+   "Regenerate this block from the built file after any template change, or it becomes a",
+   "record of a sentence the site stopped saying."
+  ],
+  "sectors": {
+   "cement": {
+    "fingerprint": "09182e3652afd820",
+    "template_version": 5,
+    "sentence": "European cement is cutting its emissions.",
+    "why_it_matters": "Cement made this way costs more than the cement it replaces, so whether Europe gets it depends on who covers the difference.",
+    "facts": [
+     {
+      "id": "routes",
+      "text": "Four routes are being built: post-combustion carbon capture (15 projects), oxyfuel carbon capture (6), alternative fuels in the kiln (1) and direct separation carbon capture (1).",
+      "as_of": "2026-09-14"
+     },
+     {
+      "id": "the_gap",
+      "text": "Low-carbon cement costs 75-150% above a conventional plant to make, on the International Energy Agency's figures.",
+      "as_of": "2025"
+     },
+     {
+      "id": "pipeline_state",
+      "text": "33 European cement projects are under way, 5 of them have taken a final investment decision, and 1 is paused.",
+      "as_of": "2026-09-14"
+     },
+     {
+      "id": "decisive_exposure",
+      "text": "Importers of cement pay for the carbon in what they bring into Europe, currently €75.46 per tonne.",
+      "as_of": "2026-08-21"
+     },
+     {
+      "id": "the_latest",
+      "text": "Go4ECOPlanet was announced by 14 September 2026.",
+      "as_of": "2026-09-14"
+     },
+     {
+      "id": "binding_constraint",
+      "text": "Green premium against willingness to pay — a market constraint, acted on by 4 ranked measures at 3 of combined weight.",
+      "as_of": "2026-01-01"
+     }
+    ],
+    "regenerated": "2026-09-14",
+    "regenerated_why": "The cement census admitted twenty-six rows, so every count the lead computes moved. The held copy is a COPY of the built lead awaiting review, never an input to it: regenerating it changes nothing on the site and stops the file recording a sentence the page has stopped saying. It stays in the review queue."
+   },
+   "steel": {
+    "fingerprint": "089abd52c55b7788",
+    "template_version": 5,
+    "sentence": "European steel is cutting its emissions and shifting to recycled material.",
+    "why_it_matters": "Steel made this way costs more than the steel it replaces, so whether Europe gets it depends on who covers the difference.",
+    "facts": [
+     {
+      "id": "routes",
+      "text": "Four routes are being built: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
+      "as_of": "2026-06-18"
+     },
+     {
+      "id": "the_gap",
+      "text": "Low-carbon steel costs 50-140% above a conventional BF-BOF plant to make, on the International Energy Agency's figures.",
+      "as_of": "2025"
+     },
+     {
+      "id": "pipeline_state",
+      "text": "7 European steel projects are under way, all of them have taken a final investment decision, and 1 has been cancelled.",
+      "as_of": "2026-06-18"
+     },
+     {
+      "id": "decisive_exposure",
+      "text": "European steel makers are losing the free carbon allowances they used to get, worth €2.58 per tonne at today's carbon price.",
+      "as_of": "2026-08-21"
+     },
+     {
+      "id": "the_latest",
+      "text": "greentec steel Linz went into construction on 18 June 2026.",
+      "as_of": "2026-06-18"
+     }
+    ]
+   }
+  }
+ },
+ "ecosystem_descriptions": {
+  "status": "draft",
+  "reviewed": null,
+  "_comment": [
+   "One reviewed description per ecosystem instance — page specifications §4.2. Two",
+   "sentences: what the ecosystem contains, and where its boundary runs. The boundaries",
+   "are the whole point of the block — that chemicals excludes fertilisers, that ammonia",
+   "is read under hydrogen, that batteries does not mean solar — and none of them can be",
+   "computed from the edges, because a boundary is a decision rather than a fact about",
+   "the data.",
+   "",
+   "WHERE IT RENDERS: the coverage page, and the tile's hover text. NEVER on the tile",
+   "face (§4.2): the tile carries the name and the icon, and a paragraph on it would be",
+   "the perimeter argument competing with the six names the grid exists to present.",
+   "",
+   "EMPTY UNTIL GEORGE SUPPLIES THE TEXT. The slot, the getter and the gate are built;",
+   "the words are not written here. web/lib/sitetext.ts returns null for an empty or",
+   "unreviewed entry, and every surface renders nothing rather than a placeholder — the",
+   "same discipline as the orientation paragraph. sources/check_sector_schema.py lists",
+   "which instances are still outstanding on every run."
+  ],
+  "ecosystems": {
+   "cement": {
+    "description": ""
+   },
+   "steel": {
+    "description": ""
+   },
+   "chemicals": {
+    "description": ""
+   },
+   "batteries": {
+    "description": ""
+   },
+   "hydrogen": {
+    "description": ""
+   },
+   "circular-materials": {
+    "description": ""
+   }
+  }
+ },
+ "country_names": {
+  "status": "approved",
+  "reviewed": "2026-09-01",
+  "_comment": [
+   "THE COUNTRY NAMES ON THE GEOGRAPHY, in English, worded once here and read",
+   "by nobody else. sources/build_maps.py takes the string from this block to",
+   "MEASURE it -- a label's box has to be known before it can be placed -- and",
+   "bakes it into data/transition/maps/*.json, so the component draws a name it",
+   "never chose. That is why the names are here and not in web/lib/prose.ts",
+   "with the geography's sentences: the layout runs in Python at build time,",
+   "and a name the placement cannot see is a name it cannot fit.",
+   "",
+   "KEYED ON ISO 3166-1 alpha-2, as natural_earth.py keys the polygons, so a",
+   "name and a shape cannot be matched to each other wrongly. XK is the code",
+   "Natural Earth carries for Kosovo and is not an ISO assignment.",
+   "",
+   "REQUIRED RATHER THAN DEFAULTED. build_maps.py fails if a frame shows a",
+   "country this block does not name, rather than falling back to the code or",
+   "to the basemap's own NAME_EN. A two-letter code on the paper would look",
+   "like a label and read like a fault, and the basemap's names are neither",
+   "reviewed nor in house style -- it carries 'Turkey' and 'Czech Republic'.",
+   "",
+   "The list covers what the nineteen project crops and the sector overviews",
+   "show today. A twentieth project somewhere new will fail the build until",
+   "its neighbours are named, which is the point.",
+   "",
+   "MA ADDED 9 SEPTEMBER 2026 WITH THE HYDROGEN ROWS, and it is the mechanism working",
+   "rather than a gap being patched. Galp's Sines works sits at 37.96 N, 8.81 W, which",
+   "is the westernmost and one of the southernmost sites this platform holds; its own",
+   "crop reaches far enough south to show Morocco, and the build refused to draw a",
+   "two-letter code. The block still covers exactly what is drawn and nothing else."
+  ],
+  "names": {
+   "AL": "Albania",
+   "AT": "Austria",
+   "BA": "Bosnia and Herzegovina",
+   "BE": "Belgium",
+   "BG": "Bulgaria",
+   "CH": "Switzerland",
+   "CZ": "Czechia",
+   "DE": "Germany",
+   "DK": "Denmark",
+   "EE": "Estonia",
+   "ES": "Spain",
+   "FI": "Finland",
+   "FR": "France",
+   "GB": "United Kingdom",
+   "GR": "Greece",
+   "HR": "Croatia",
+   "HU": "Hungary",
+   "IE": "Ireland",
+   "IT": "Italy",
+   "LT": "Lithuania",
+   "LU": "Luxembourg",
+   "LV": "Latvia",
+   "MA": "Morocco",
+   "MD": "Moldova",
+   "ME": "Montenegro",
+   "MK": "North Macedonia",
+   "NL": "Netherlands",
+   "NO": "Norway",
+   "PL": "Poland",
+   "PT": "Portugal",
+   "RO": "Romania",
+   "RS": "Serbia",
+   "RU": "Russia",
+   "SE": "Sweden",
+   "SI": "Slovenia",
+   "SK": "Slovakia",
+   "TR": "Türkiye",
+   "UA": "Ukraine",
+   "XK": "Kosovo"
+  }
+ },
+ "sector_plain": {
+  "status": "approved",
+  "reviewed": "2026-09-06",
+  "_comment": [
+   "THE PAGE'S OWN EXPLANATIONS OF ITSELF, per sector, keyed by topic and placed by section.",
+   "",
+   "Every other prose block here is either a heading template or a sentence about the sector. These are",
+   "different: they explain HOW THE PAGE COUNTS. What is summed and what is only listed, why a figure",
+   "another sector shows is missing here, what admits a project to the file, what the picture draws and",
+   "what it leaves out. They are the answers a careful reader asks of any number, and they were being",
+   "asked of the batteries page in review.",
+   "",
+   "KEYED BY TOPIC AND PLACED BY SECTION. `section` names the section id from sector_sections, which is",
+   "where the block renders — under that heading, before the data it is about. Two blocks may share a",
+   "section and the order here is the order on the page.",
+   "",
+   "PER SECTOR, AND ABSENT IS THE ORDINARY CASE. Cement and steel have none of these today: their pages",
+   "are older than this block and nobody has written the equivalents. A missing block renders nothing.",
+   "What must not happen is one sector's explanation rendering on another's page, which is why this is",
+   "keyed by sector and not shared -- 'cell plants do not pay for their emissions under the EU carbon",
+   "market' is true here and false two pages away."
+  ],
+  "sectors": {
+   "batsol": {
+    "money_counted": {
+     "section": "opportunity",
+     "title": "How money is counted here",
+     "text": "Figures on this page are public funding attached to the plants on file: grants and state aid that have been approved, signed or paid are summed as committed; support that has only been announced is listed but not added. Research and pilot grants are left out. Every figure carries its date and its source."
+    },
+    "no_carbon_cost": {
+     "section": "policies",
+     "title": "Why there is no carbon-cost figure",
+     "text": "For cement and steel this platform computes what carbon pricing costs each plant. Cell plants do not pay for their emissions under the EU carbon market, and the Battery Regulation's method for calculating a battery's carbon footprint has not yet been adopted, so no per-plant cost can be computed honestly. The requirement is on file; the number is not."
+    },
+    "demand_sources": {
+     "section": "policies",
+     "title": "Where demand comes from",
+     "text": "Demand for European cells has two sources. Vehicles, where the fleet emission standards for cars and vans set how many new vehicles must be electric by given dates. And the power system, where every wind and solar target adds hours of generation that must be stored before it can be used, and where grid operators and utilities buy cells by the gigawatt-hour on price. The rules on this page that create demand are shown as demand drivers; storage-side rules are being added."
+    },
+    "what_counts": {
+     "section": "projects",
+     "title": "What counts as a plant here",
+     "text": "A project is on file when the company itself has confirmed a cell plant at a named site in Europe with a capacity of at least one gigawatt-hour a year. Pack assembly, materials, recycling and pilot lines are not counted. Cancelled and paused projects stay on file, named and dated, because the failures are part of the picture."
+    },
+    "what_is_drawn": {
+     "section": "projects",
+     "title": "What is drawn and what is not",
+     "text": "The picture draws plants that are built, under construction, funded or announced. Cancelled plants are named beneath it. For stopped projects no position was sought, and the page says so."
+    }
+   }
+  }
+ }
 }

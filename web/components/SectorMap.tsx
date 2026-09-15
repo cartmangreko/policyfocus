@@ -577,18 +577,29 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
             {technologies.map((t) => (
               <article key={t.id} id={`technology-${t.id}`} className="ttech">
                 <h3>
-                  {t.name} <span className={`tready ${t.readiness.level}`}>{t.readiness.level}</span>
+                  {t.name}{" "}
+                  {t.readiness ? (
+                    <span className={`tready ${t.readiness.level}`}>{t.readiness.level}</span>
+                  ) : null}
                 </h3>
                 <p>{t.description}</p>
                 <dl>
-                  <dt>Readiness</dt>
-                  <dd>
-                    {t.readiness.level} — {t.readiness.note}{" "}
-                    <a href={t.readiness.source} target="_blank" rel="noreferrer">
-                      source
-                    </a>{" "}
-                    ({t.readiness.date})
-                  </dd>
+                  {/*  READINESS IS OPTIONAL BECAUSE A PLACEHOLDER HAS NONE — there is
+                      no method to be ready. getTechnologies already filters placeholders
+                      out of this list, so in practice every row here has one; the guard
+                      is what lets the type say so rather than the render assuming it. */}
+                  {t.readiness ? (
+                    <>
+                      <dt>Readiness</dt>
+                      <dd>
+                        {t.readiness.level} — {t.readiness.note}{" "}
+                        <a href={t.readiness.source} target="_blank" rel="noreferrer">
+                          source
+                        </a>{" "}
+                        ({t.readiness.date})
+                      </dd>
+                    </>
+                  ) : null}
                   {t.abatement_share ? (
                     <>
                       <dt>Abatement</dt>

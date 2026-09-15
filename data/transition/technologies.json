@@ -1,454 +1,513 @@
 {
-  "_comment": [
-    "Technologies, SHARED across sectors and never duplicated per sector. A technology",
-    "that cement and steel both deploy is one row with two entries in `sectors`; two rows",
-    "would drift the moment one of them was updated.",
-    "",
-    "Schema and vocabularies: sources/sector_map.py. Gate: sources/check_sector_schema.py.",
-    "",
-    "`readiness` is where this layer is most easily wrong, so it carries a source and a",
-    "date rather than a judgement. The level is read off what is actually running: a",
-    "technology is early-commercial when a full-scale plant is operating commercially,",
-    "demonstration when one is being built, pilot when one is being tested. Brevik is why",
-    "post-combustion capture on cement is early-commercial and not demonstration, and the",
-    "date on the readiness field is the date that evidence was published, not today.",
-    "",
-    "`cost` is omitted rather than estimated where no source states one. An absent cost",
-    "reads as a gap on the sector page, which is true; an invented range reads as a fact,",
-    "which is not. See data/transition/GAPS.md for what is missing and what would fill it."
-  ],
-  "technologies": [
+ "_comment": [
+  "Technologies, SHARED across sectors and never duplicated per sector. A technology",
+  "that cement and steel both deploy is one row with two entries in `sectors`; two rows",
+  "would drift the moment one of them was updated.",
+  "",
+  "Schema and vocabularies: sources/sector_map.py. Gate: sources/check_sector_schema.py.",
+  "",
+  "`readiness` is where this layer is most easily wrong, so it carries a source and a",
+  "date rather than a judgement. The level is read off what is actually running: a",
+  "technology is early-commercial when a full-scale plant is operating commercially,",
+  "demonstration when one is being built, pilot when one is being tested. Brevik is why",
+  "post-combustion capture on cement is early-commercial and not demonstration, and the",
+  "date on the readiness field is the date that evidence was published, not today.",
+  "",
+  "`cost` is omitted rather than estimated where no source states one. An absent cost",
+  "reads as a gap on the sector page, which is true; an invented range reads as a fact,",
+  "which is not. See data/transition/GAPS.md for what is missing and what would fill it."
+ ],
+ "technologies": [
+  {
+   "id": "ccs-post-combustion",
+   "transition": "decarbonisation",
+   "name": "Post-combustion carbon capture",
+   "description": "CO2 is separated from the kiln's flue gas after combustion, using an amine or solvent process bolted onto an existing plant, which is what makes it the retrofit route for kilns that are not being rebuilt.",
+   "plain_action": "capturing the CO2 its kilns emit",
+   "readiness": {
+    "level": "early-commercial",
+    "source": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+    "date": "2025-06-18",
+    "note": "Brevik, the first industrial-scale capture plant in the cement industry, opened on 18 June 2025 and is capturing at full scale. One operating plant is early-commercial, not commercial."
+   },
+   "abatement_share": {
+    "low": 50,
+    "high": 50,
+    "unit": "% of plant CO2 emissions",
+    "source": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+    "date": "2025-06-18",
+    "note": "The Brevik installation captures half the plant's emissions; it is a single-line retrofit, not a design ceiling for the technology."
+   },
+   "dependency": [
+    "co2-transport-storage"
+   ],
+   "sectors": [
+    "cement"
+   ],
+   "sources": [
     {
-      "id": "ccs-post-combustion",
-      "transition": "decarbonisation",
-      "name": "Post-combustion carbon capture",
-      "description": "CO2 is separated from the kiln's flue gas after combustion, using an amine or solvent process bolted onto an existing plant, which is what makes it the retrofit route for kilns that are not being rebuilt.",
-      "plain_action": "capturing the CO2 its kilns emit",
-      "readiness": {
-        "level": "early-commercial",
-        "source": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
-        "date": "2025-06-18",
-        "note": "Brevik, the first industrial-scale capture plant in the cement industry, opened on 18 June 2025 and is capturing at full scale. One operating plant is early-commercial, not commercial."
-      },
-      "abatement_share": {
-        "low": 50,
-        "high": 50,
-        "unit": "% of plant CO2 emissions",
-        "source": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
-        "date": "2025-06-18",
-        "note": "The Brevik installation captures half the plant's emissions; it is a single-line retrofit, not a design ceiling for the technology."
-      },
-      "dependency": [
-        "co2-transport-storage"
-      ],
-      "sectors": [
-        "cement"
-      ],
-      "sources": [
-        {
-          "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
-          "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway marks new era of sustainable construction",
-          "publisher": "Heidelberg Materials",
-          "date": "2025-06-18",
-          "date_precision": "day",
-          "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
-        }
-      ],
-      "cost": {
-        "low": 100,
-        "high": 300,
-        "unit": "EUR million per plant retrofit",
-        "source": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
-        "date": "2025-12-07",
-        "parameter": "ccs-retrofit-capex-post-combustion",
-        "note": "CEMBUREAU's own estimate, read from the Internet Archive; the live page serves a self-signed certificate."
-      }
-    },
-    {
-      "id": "ccs-oxyfuel",
-      "transition": "decarbonisation",
-      "name": "Oxyfuel carbon capture",
-      "description": "The kiln is fired with oxygen rather than air, so the flue gas is concentrated CO2 and needs far less separation, at the price of rebuilding the kiln rather than bolting equipment onto it.",
-      "plain_action": "burning its fuel in pure oxygen so that the CO2 comes off clean enough to capture",
-      "readiness": {
-        "level": "demonstration",
-        "source": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
-        "date": "2024-05-16",
-        "note": "Two full-scale oxyfuel kilns are under construction in Europe — GO4ZERO at Obourg and Carbon2Business at Lägerdorf — and none is operating. Under construction is demonstration."
-      },
-      "dependency": [
-        "co2-transport-storage"
-      ],
-      "sectors": [
-        "cement"
-      ],
-      "sources": [
-        {
-          "url": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
-          "title": "Holcim breaks ground of state-of-the-art GO4ZERO plant in Belgium for net zero cement",
-          "publisher": "Holcim",
-          "date": "2024-05-16",
-          "date_precision": "day",
-          "verbatim": "With a planned investment of over EUR 500 million, the GO4ZERO project will put innovation to work to advance Europe's decarbonization."
-        },
-        {
-          "url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
-          "title": "Carbon2Business CCUS project",
-          "publisher": "Holcim",
-          "date": "2024-04-22",
-          "date_precision": "day",
-          "verbatim": "On April 22, 2024, we officially launched our Carbon2Business carbon capture"
-        }
-      ],
-      "cost": {
-        "low": 100,
-        "high": 360,
-        "unit": "EUR million per plant",
-        "source": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
-        "date": "2025-12-07",
-        "parameter": "ccs-retrofit-capex-oxyfuel",
-        "note": "€100 million to retrofit an existing kiln, €330-360 million for a new 1 Mt/year plant — the range spans two different projects, not one uncertainty."
-      }
-    },
-    {
-      "id": "co2-transport-storage",
-      "transition": "decarbonisation",
-      "name": "CO2 transport and storage",
-      "description": "The pipelines, ships, terminals and permitted geological stores that a captured tonne has to reach before it counts as abated, and which no single site that captures can build for itself.",
-      "plain_action": "moving the CO2 it captures to somewhere it can be put underground for good",
-      "readiness": {
-        "level": "early-commercial",
-        "source": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
-        "date": "2025-06-18",
-        "note": "Captured CO2 from Brevik is shipped and stored under the Norwegian Longship chain, which is the first full chain in Europe to take third-party industrial CO2. One chain in service is early-commercial."
-      },
-      "dependency": [],
-      "sectors": [
-        "cement",
-        "steel",
-        "chem"
-      ],
-      "sources": [
-        {
-          "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
-          "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway marks new era of sustainable construction",
-          "publisher": "Heidelberg Materials",
-          "date": "2025-06-18",
-          "date_precision": "day",
-          "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
-        },
-        {
-          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735",
-          "title": "Regulation (EU) 2024/1735 (Net-Zero Industry Act), Article 20",
-          "publisher": "EUR-Lex",
-          "date": "2024-06-13",
-          "date_precision": "day",
-          "verbatim": "An annual injection capacity of at least 50 million tonnes of CO2 shall be achieved by 2030 in storage sites"
-        }
-      ]
-    },
-    {
-      "id": "alternative-fuels",
-      "transition": "decarbonisation",
-      "name": "Alternative fuels in the kiln",
-      "description": "Waste-derived and biomass fuels replace coal and petcoke in the kiln, which cuts combustion emissions and nothing else — the calcination CO2 is untouched, so this route has a ceiling below half the plant's emissions.",
-      "plain_action": "burning waste and biomass in place of coal",
-      "readiness": {
-        "level": "commercial",
-        "source": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
-        "date": "2024-02-15",
-        "note": "Substitution rates are set as ordinary operating targets in plant investment plans rather than trialled; EQIOM's Lumbres line is built around 80% substitution by 2027."
-      },
-      "dependency": [],
-      "sectors": [
-        "cement"
-      ],
-      "sources": [
-        {
-          "url": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
-          "title": "Projet K6 : lancement de la première phase",
-          "publisher": "EQIOM",
-          "date": "2024-02-15",
-          "date_precision": "day",
-          "verbatim": "EQIOM construira une nouvelle ligne de production de clinker, innovante, qui augmentera de manière significative l'efficacité thermique"
-        }
-      ]
-    },
-    {
-      "id": "dri-eaf",
-      "transition": "decarbonisation",
-      "name": "Direct reduction with an electric furnace",
-      "description": "Iron ore is reduced in the solid state with gas rather than smelted with coke in a blast furnace, and the resulting iron is melted in an electric furnace. It is the route Europe's integrated sites are converting to, and it is being built to run on natural gas first and hydrogen later, which is why the conversion and the fuel are two different questions with two different timetables.",
-      "plain_action": "replacing its blast furnaces with direct reduction and electric furnaces",
-      "readiness": {
-        "level": "demonstration",
-        "source": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
-        "date": "2023-07-20",
-        "note": "Full-scale units are under construction in Europe and none is operating: 2.5 Mt at Duisburg, 1.9 Mt at Salzgitter, and the Boden site. Under construction is demonstration, the same reading applied to the oxyfuel kilns in cement."
-      },
-      "dependency": [],
-      "sectors": [
-        "steel"
-      ],
-      "sources": [
-        {
-          "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
-          "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
-          "publisher": "thyssenkrupp",
-          "date": "2023-07-20",
-          "date_precision": "day",
-          "verbatim": "The 100% hydrogen-capable DR plant with two melters has a production capacity of 2.5 million metric tons of directly reduced iron per year"
-        },
-        {
-          "url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
-          "title": "Salzgitter AG receives official notice of government funding for the SALCOS low-CO2 steel production program",
-          "publisher": "Salzgitter AG",
-          "date": "2023-04-18",
-          "date_precision": "day",
-          "verbatim": "1.9 million tonnes of crude steel per year"
-        }
-      ]
-    },
-    {
-      "id": "h2-dri",
-      "transition": "decarbonisation",
-      "name": "Hydrogen direct reduction",
-      "description": "The reducing gas is hydrogen rather than natural gas, so what leaves the furnace is water rather than CO2. It is the only route that takes the chemistry of ironmaking to near zero, and it is separated from the conversion itself because every European unit under construction is being commissioned on natural gas and switched later.",
-      "plain_action": "reducing iron ore with hydrogen instead of coke",
-      "readiness": {
-        "level": "pilot",
-        "source": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
-        "date": "2021-06-21",
-        "note": "The HYBRIT pilot at Luleå made the world's first hydrogen-reduced sponge iron in 2021, around 100 tonnes of it, and no full-scale unit is yet running on hydrogen anywhere in Europe. One unit being tested is pilot."
-      },
-      "abatement_share": {
-        "low": 90,
-        "high": 90,
-        "unit": "% of ironmaking CO2 emissions",
-        "source": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
-        "date": "2021-06-21",
-        "note": "The partners state the initiative eliminates around 90% of the emissions of steelmaking. It is the route's design claim rather than a measured figure from an operating unit, which is what pilot readiness means."
-      },
-      "dependency": [
-        "hydrogen-supply"
-      ],
-      "sectors": [
-        "steel"
-      ],
-      "sources": [
-        {
-          "url": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
-          "title": "HYBRIT: SSAB, LKAB and Vattenfall first in the world with hydrogen-reduced sponge iron",
-          "publisher": "SSAB",
-          "date": "2021-06-21",
-          "date_precision": "day",
-          "verbatim": "SSAB, LKAB and Vattenfall have now produced the world's first hydrogen-reduced sponge iron at a pilot scale."
-        }
-      ]
-    },
-    {
-      "id": "hydrogen-supply",
-      "transition": "decarbonisation",
-      "name": "Renewable hydrogen supply",
-      "description": "The electrolysers, power contracts and pipelines that have to deliver hydrogen at industrial volume and at a price the iron pays for, and which no single steel site can build for itself. It stands beside CO2 transport and storage as the other thing that sector is waiting for rather than doing. IT IS NOW SHARED. Steel reached it as a dependency; the hydrogen dataset reaches it as the thing being built, so the technology carries both sectors rather than being duplicated under a second name.",
-      "plain_action": "getting the hydrogen its furnaces are being built to run on",
-      "readiness": {
-        "level": "demonstration",
-        "source": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
-        "date": "2026-04-04",
-        "note": "The largest unit built for a European steel site, 740 MW at Boden, has all 37 of its modules in place and has not been commissioned. Built and not operating is demonstration."
-      },
-      "dependency": [],
-      "sectors": [
-        "steel",
-        "clean"
-      ],
-      "sources": [
-        {
-          "url": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
-          "title": "Europe's largest green hydrogen plant takes shape as Stegra installs final electrolyser",
-          "publisher": "BioEnergy Times",
-          "date": "2026-04-04",
-          "date_precision": "day",
-          "verbatim": "all 37 modules are now in place at the 740-megawatt facility"
-        },
-        {
-          "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
-          "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
-          "publisher": "thyssenkrupp",
-          "date": "2023-07-20",
-          "date_precision": "day",
-          "verbatim": "The plant is scheduled to operate as early as 2029 with around 143,000 metric tons of hydrogen per year"
-        }
-      ]
-    },
-    {
-      "id": "ccs-blast-furnace",
-      "transition": "decarbonisation",
-      "name": "Carbon capture on blast-furnace gas",
-      "description": "CO2 is separated from the gases a blast furnace gives off, which leaves the ironmaking route in place and treats its output instead. It is the competitor to conversion rather than a part of it: a site that captures keeps the asset it has, and a site that converts writes it off.",
-      "plain_action": "capturing the CO2 its blast furnaces give off",
-      "readiness": {
-        "level": "pilot",
-        "source": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
-        "date": "2024-03-14",
-        "note": "The DMX unit on blast-furnace gas at Dunkirk is a pilot and has run stably since 2023; no full-scale capture unit is operating or under construction on a European blast furnace. Cement reached early-commercial on one operating industrial plant, and steel has none — the two readiness levels are different facts about different applications, which is why they are different nodes."
-      },
-      "dependency": [
-        "co2-transport-storage"
-      ],
-      "sectors": [
-        "steel"
-      ],
-      "sources": [
-        {
-          "url": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
-          "title": "Successful demonstration in Dunkirk of the CO2 capture DMX process",
-          "publisher": "Axens",
-          "date": "2024-03-14",
-          "date_precision": "day",
-          "verbatim": "capture the CO2 present in blast furnace gases emitted during steel production at ArcelorMittal's Dunkirk site"
-        }
-      ]
-    },
-    {
-      "id": "eaf-scrap",
-      "transition": "circularity",
-      "name": "Electric arc furnace on scrap",
-      "description": "Steel is remelted from scrap in an electric furnace, with no ironmaking step and therefore none of its CO2. It is not an emerging route — it is already two fifths of European output — and what limits it is how much scrap of the right quality Europe collects and keeps, not whether the furnace works.",
-      "plain_action": "melting scrap in electric furnaces instead of smelting ore",
-      "readiness": {
-        "level": "commercial",
-        "source": "https://www.eurofer.eu/about-steel/learn-about-steel/what-is-steel-and-how-is-steel-made/",
-        "date": "2025-09-29",
-        "note": "Just over 40% of EU steel already comes out of this route. Commercial is what a route that is two fifths of an industry's output is."
-      },
-      "dependency": [],
-      "sectors": [
-        "steel"
-      ],
-      "sources": [
-        {
-          "url": "https://www.eurofer.eu/about-steel/learn-about-steel/what-is-steel-and-how-is-steel-made/",
-          "title": "Learn about steel — how steel is made",
-          "publisher": "EUROFER — the European Steel Association",
-          "date": "2025-09-29",
-          "date_precision": "day",
-          "verbatim": "Just over 40% of EU steel is produced via the EAF production route."
-        },
-        {
-          "url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
-          "title": "voestalpine unveils further expansion plans for greentec steel at its Donawitz location",
-          "publisher": "voestalpine",
-          "date": "2026-06-18",
-          "date_precision": "day",
-          "verbatim": "The EAF plant currently under construction will be capable of producing around 850,000 tons of CO2‐reduced steel annually as of 2027."
-        }
-      ]
-    },
-    {
-      "id": "cell-manufacturing",
-      "transition": "supply_security",
-      "name": "Gigafactory-scale cell manufacturing",
-      "description": "Electrode coating, cell assembly and formation run at gigawatt-hour scale on one site. It is the process node rather than a chemistry: the same lines make several chemistries, and what decides whether Europe has cells is whether the lines exist and yield, not which cathode runs through them.",
-      "plain_action": "building cell factories at gigawatt-hour scale",
-      "readiness": {
-        "level": "commercial",
-        "source": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
-        "date": "2025-12-17",
-        "note": "Several European sites are producing at scale. PowerCo commissioned Salzgitter on 17 December 2025 and produced the first Unified Cells made in Europe; ACC has been running at Billy-Berclau since 2023 and Verkor opened Bourbourg in December 2025."
-      },
-      "sectors": [
-        "batsol"
-      ],
-      "sources": [
-        {
-          "url": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
-          "title": "Start of European battery cell production: PowerCo commissions Salzgitter gigafactory",
-          "publisher": "Volkswagen Group",
-          "date": "2025-12-17",
-          "date_precision": "day",
-          "verbatim": "PowerCo SE today commissioned the Salzgitter gigafactory as planned and produced the first Unified Cells 'made in Europe'."
-        }
-      ]
-    },
-    {
-      "id": "lfp-cells",
-      "transition": "supply_security",
-      "name": "Lithium iron phosphate cells",
-      "description": "A cathode of iron and phosphate rather than nickel, manganese and cobalt. Lower energy density and lower cost, and it removes the two metals whose supply is most concentrated outside Europe, which is why it is the chemistry the volume end of the market has moved to.",
-      "plain_action": "shifting its cells to lithium iron phosphate",
-      "readiness": {
-        "level": "commercial",
-        "source": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
-        "date": "2024-12-10",
-        "note": "Commercial worldwide and being built in Europe rather than made here at scale yet: the Stellantis and CATL joint venture at Zaragoza is a 50 GWh LFP site targeted to start production by the end of 2026."
-      },
-      "sectors": [
-        "batsol"
-      ],
-      "sources": [
-        {
-          "url": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
-          "title": "Stellantis and CATL to invest up to €4.1 billion in joint venture for large-scale LFP battery plant in Spain",
-          "publisher": "Stellantis",
-          "date": "2024-12-10",
-          "date_precision": "day",
-          "verbatim": "Targeted to start production by end of 2026 at Stellantis' Zaragoza, Spain site, the facility could reach up to 50 GWh capacity, subject to the evolution of the electrical market in Europe and continued support from authorities in Spain and the European Union."
-        }
-      ]
-    },
-    {
-      "id": "nmc-nca-cells",
-      "transition": "decarbonisation",
-      "name": "Nickel-rich cells",
-      "description": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes. Higher energy density than iron phosphate and the chemistry most European cell capacity was designed around, at the cost of depending on nickel and cobalt.",
-      "plain_action": "making nickel-rich cells for longer range",
-      "readiness": {
-        "level": "commercial",
-        "source": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
-        "date": "2025-12-11",
-        "note": "The chemistry most European lines run. Verkor opened Bourbourg on 11 December 2025 making high-performance cells for Renault and Alpine."
-      },
-      "sectors": [
-        "batsol"
-      ],
-      "sources": [
-        {
-          "url": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
-          "title": "Verkor reaches a decisive milestone and opens its first gigafactory",
-          "publisher": "Verkor",
-          "date": "2025-12-11",
-          "date_precision": "day",
-          "verbatim": "For several months, the Gigafactory has been assembling modules from VIC cells and is now manufacturing its own cells."
-        }
-      ]
-    },
-    {
-      "id": "sodium-ion-cells",
-      "transition": "supply_security",
-      "name": "Sodium-ion cells",
-      "description": "Sodium in place of lithium in the cell. Lower energy density than either lithium chemistry and it removes lithium from the bill of materials entirely, which is the reason it is on this list: the constraint it answers is supply rather than emissions.",
-      "plain_action": "moving some cells to sodium, which uses no lithium",
-      "readiness": {
-        "level": "early-commercial",
-        "source": "https://www.catl.com/en/news/6401.html",
-        "date": "2025-04-21",
-        "note": "CATL launched Naxtra as a mass-production sodium-ion cell in April 2025. No European site makes sodium-ion cells, so the readiness is the technology's and not this sector's — which is the gap it is on this list to mark."
-      },
-      "sectors": [
-        "batsol"
-      ],
-      "sources": [
-        {
-          "url": "https://www.catl.com/en/news/6401.html",
-          "title": "Naxtra Battery Breakthrough & Dual-Power Architecture: CATL Pioneers the Multi-Power Era",
-          "publisher": "CATL",
-          "date": "2025-04-21",
-          "date_precision": "day",
-          "verbatim": "Naxtra Battery"
-        }
-      ]
+     "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+     "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway marks new era of sustainable construction",
+     "publisher": "Heidelberg Materials",
+     "date": "2025-06-18",
+     "date_precision": "day",
+     "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
     }
-  ]
+   ],
+   "cost": {
+    "low": 100,
+    "high": 300,
+    "unit": "EUR million per plant retrofit",
+    "source": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+    "date": "2025-12-07",
+    "parameter": "ccs-retrofit-capex-post-combustion",
+    "note": "CEMBUREAU's own estimate, read from the Internet Archive; the live page serves a self-signed certificate."
+   }
+  },
+  {
+   "id": "ccs-oxyfuel",
+   "transition": "decarbonisation",
+   "name": "Oxyfuel carbon capture",
+   "description": "The kiln is fired with oxygen rather than air, so the flue gas is concentrated CO2 and needs far less separation, at the price of rebuilding the kiln rather than bolting equipment onto it.",
+   "plain_action": "burning its fuel in pure oxygen so that the CO2 comes off clean enough to capture",
+   "readiness": {
+    "level": "demonstration",
+    "source": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
+    "date": "2024-05-16",
+    "note": "Two full-scale oxyfuel kilns are under construction in Europe — GO4ZERO at Obourg and Carbon2Business at Lägerdorf — and none is operating. Under construction is demonstration."
+   },
+   "dependency": [
+    "co2-transport-storage"
+   ],
+   "sectors": [
+    "cement"
+   ],
+   "sources": [
+    {
+     "url": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
+     "title": "Holcim breaks ground of state-of-the-art GO4ZERO plant in Belgium for net zero cement",
+     "publisher": "Holcim",
+     "date": "2024-05-16",
+     "date_precision": "day",
+     "verbatim": "With a planned investment of over EUR 500 million, the GO4ZERO project will put innovation to work to advance Europe's decarbonization."
+    },
+    {
+     "url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+     "title": "Carbon2Business CCUS project",
+     "publisher": "Holcim",
+     "date": "2024-04-22",
+     "date_precision": "day",
+     "verbatim": "On April 22, 2024, we officially launched our Carbon2Business carbon capture"
+    }
+   ],
+   "cost": {
+    "low": 100,
+    "high": 360,
+    "unit": "EUR million per plant",
+    "source": "https://web.archive.org/web/20251207185103/https://lowcarboneconomy.cembureau.eu/5-parallel-routes/carbon-sequestration-and-reuse/carbon-sequestration-and-reuse/",
+    "date": "2025-12-07",
+    "parameter": "ccs-retrofit-capex-oxyfuel",
+    "note": "€100 million to retrofit an existing kiln, €330-360 million for a new 1 Mt/year plant — the range spans two different projects, not one uncertainty."
+   }
+  },
+  {
+   "id": "co2-transport-storage",
+   "transition": "decarbonisation",
+   "name": "CO2 transport and storage",
+   "description": "The pipelines, ships, terminals and permitted geological stores that a captured tonne has to reach before it counts as abated, and which no single site that captures can build for itself.",
+   "plain_action": "moving the CO2 it captures to somewhere it can be put underground for good",
+   "readiness": {
+    "level": "early-commercial",
+    "source": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+    "date": "2025-06-18",
+    "note": "Captured CO2 from Brevik is shipped and stored under the Norwegian Longship chain, which is the first full chain in Europe to take third-party industrial CO2. One chain in service is early-commercial."
+   },
+   "dependency": [],
+   "sectors": [
+    "cement",
+    "steel",
+    "chem"
+   ],
+   "sources": [
+    {
+     "url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+     "title": "World premiere at Heidelberg Materials: Opening of CCS facility in Norway marks new era of sustainable construction",
+     "publisher": "Heidelberg Materials",
+     "date": "2025-06-18",
+     "date_precision": "day",
+     "verbatim": "Brevik CCS will capture around 400,000 tonnes of CO₂ per year, representing 50% of the plant's emissions."
+    },
+    {
+     "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735",
+     "title": "Regulation (EU) 2024/1735 (Net-Zero Industry Act), Article 20",
+     "publisher": "EUR-Lex",
+     "date": "2024-06-13",
+     "date_precision": "day",
+     "verbatim": "An annual injection capacity of at least 50 million tonnes of CO2 shall be achieved by 2030 in storage sites"
+    }
+   ]
+  },
+  {
+   "id": "alternative-fuels",
+   "transition": "decarbonisation",
+   "name": "Alternative fuels in the kiln",
+   "description": "Waste-derived and biomass fuels replace coal and petcoke in the kiln, which cuts combustion emissions and nothing else — the calcination CO2 is untouched, so this route has a ceiling below half the plant's emissions.",
+   "plain_action": "burning waste and biomass in place of coal",
+   "readiness": {
+    "level": "commercial",
+    "source": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
+    "date": "2024-02-15",
+    "note": "Substitution rates are set as ordinary operating targets in plant investment plans rather than trialled; EQIOM's Lumbres line is built around 80% substitution by 2027."
+   },
+   "dependency": [],
+   "sectors": [
+    "cement"
+   ],
+   "sources": [
+    {
+     "url": "https://www.eqiom.com/actus/projet-k6-lancement-de-la-premiere-phase",
+     "title": "Projet K6 : lancement de la première phase",
+     "publisher": "EQIOM",
+     "date": "2024-02-15",
+     "date_precision": "day",
+     "verbatim": "EQIOM construira une nouvelle ligne de production de clinker, innovante, qui augmentera de manière significative l'efficacité thermique"
+    }
+   ]
+  },
+  {
+   "id": "dri-eaf",
+   "transition": "decarbonisation",
+   "name": "Direct reduction with an electric furnace",
+   "description": "Iron ore is reduced in the solid state with gas rather than smelted with coke in a blast furnace, and the resulting iron is melted in an electric furnace. It is the route Europe's integrated sites are converting to, and it is being built to run on natural gas first and hydrogen later, which is why the conversion and the fuel are two different questions with two different timetables.",
+   "plain_action": "replacing its blast furnaces with direct reduction and electric furnaces",
+   "readiness": {
+    "level": "demonstration",
+    "source": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+    "date": "2023-07-20",
+    "note": "Full-scale units are under construction in Europe and none is operating: 2.5 Mt at Duisburg, 1.9 Mt at Salzgitter, and the Boden site. Under construction is demonstration, the same reading applied to the oxyfuel kilns in cement."
+   },
+   "dependency": [],
+   "sectors": [
+    "steel"
+   ],
+   "sources": [
+    {
+     "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+     "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
+     "publisher": "thyssenkrupp",
+     "date": "2023-07-20",
+     "date_precision": "day",
+     "verbatim": "The 100% hydrogen-capable DR plant with two melters has a production capacity of 2.5 million metric tons of directly reduced iron per year"
+    },
+    {
+     "url": "https://www.salzgitter-ag.com/en/newsroom/press-releases/details/salzgitter-ag-receives-official-notice-of-government-funding-for-the-salcosr-low-co2-steel-production-program-20702.html",
+     "title": "Salzgitter AG receives official notice of government funding for the SALCOS low-CO2 steel production program",
+     "publisher": "Salzgitter AG",
+     "date": "2023-04-18",
+     "date_precision": "day",
+     "verbatim": "1.9 million tonnes of crude steel per year"
+    }
+   ]
+  },
+  {
+   "id": "h2-dri",
+   "transition": "decarbonisation",
+   "name": "Hydrogen direct reduction",
+   "description": "The reducing gas is hydrogen rather than natural gas, so what leaves the furnace is water rather than CO2. It is the only route that takes the chemistry of ironmaking to near zero, and it is separated from the conversion itself because every European unit under construction is being commissioned on natural gas and switched later.",
+   "plain_action": "reducing iron ore with hydrogen instead of coke",
+   "readiness": {
+    "level": "pilot",
+    "source": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+    "date": "2021-06-21",
+    "note": "The HYBRIT pilot at Luleå made the world's first hydrogen-reduced sponge iron in 2021, around 100 tonnes of it, and no full-scale unit is yet running on hydrogen anywhere in Europe. One unit being tested is pilot."
+   },
+   "abatement_share": {
+    "low": 90,
+    "high": 90,
+    "unit": "% of ironmaking CO2 emissions",
+    "source": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+    "date": "2021-06-21",
+    "note": "The partners state the initiative eliminates around 90% of the emissions of steelmaking. It is the route's design claim rather than a measured figure from an operating unit, which is what pilot readiness means."
+   },
+   "dependency": [
+    "hydrogen-supply"
+   ],
+   "sectors": [
+    "steel"
+   ],
+   "sources": [
+    {
+     "url": "https://www.ssab.com/en/news/2021/06/hybrit-ssab-lkab-and-vattenfall-first-in-the-world-with-hydrogenreduced-sponge-iron",
+     "title": "HYBRIT: SSAB, LKAB and Vattenfall first in the world with hydrogen-reduced sponge iron",
+     "publisher": "SSAB",
+     "date": "2021-06-21",
+     "date_precision": "day",
+     "verbatim": "SSAB, LKAB and Vattenfall have now produced the world's first hydrogen-reduced sponge iron at a pilot scale."
+    }
+   ]
+  },
+  {
+   "id": "hydrogen-supply",
+   "transition": "decarbonisation",
+   "name": "Renewable hydrogen supply",
+   "description": "The electrolysers, power contracts and pipelines that have to deliver hydrogen at industrial volume and at a price the iron pays for, and which no single steel site can build for itself. It stands beside CO2 transport and storage as the other thing that sector is waiting for rather than doing. IT IS NOW SHARED. Steel reached it as a dependency; the hydrogen dataset reaches it as the thing being built, so the technology carries both sectors rather than being duplicated under a second name.",
+   "plain_action": "getting the hydrogen its furnaces are being built to run on",
+   "readiness": {
+    "level": "demonstration",
+    "source": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
+    "date": "2026-04-04",
+    "note": "The largest unit built for a European steel site, 740 MW at Boden, has all 37 of its modules in place and has not been commissioned. Built and not operating is demonstration."
+   },
+   "dependency": [],
+   "sectors": [
+    "steel",
+    "clean"
+   ],
+   "sources": [
+    {
+     "url": "https://bioenergytimes.com/europes-largest-green-hydrogen-plant-takes-shape-as-stegra-installs-final-electrolyser/",
+     "title": "Europe's largest green hydrogen plant takes shape as Stegra installs final electrolyser",
+     "publisher": "BioEnergy Times",
+     "date": "2026-04-04",
+     "date_precision": "day",
+     "verbatim": "all 37 modules are now in place at the 740-megawatt facility"
+    },
+    {
+     "url": "https://www.thyssenkrupp.com/en/newsroom/press-releases/pressdetailpage/eu-commission-approves-german-federal-and-state-government-fund-ing-for-thyssenkrupp-steels-tkh2steel-decarbonization-project-228875",
+     "title": "EU Commission approves German federal and state government funding for thyssenkrupp Steel's \"tkH2Steel\" decarbonization project",
+     "publisher": "thyssenkrupp",
+     "date": "2023-07-20",
+     "date_precision": "day",
+     "verbatim": "The plant is scheduled to operate as early as 2029 with around 143,000 metric tons of hydrogen per year"
+    }
+   ]
+  },
+  {
+   "id": "ccs-blast-furnace",
+   "transition": "decarbonisation",
+   "name": "Carbon capture on blast-furnace gas",
+   "description": "CO2 is separated from the gases a blast furnace gives off, which leaves the ironmaking route in place and treats its output instead. It is the competitor to conversion rather than a part of it: a site that captures keeps the asset it has, and a site that converts writes it off.",
+   "plain_action": "capturing the CO2 its blast furnaces give off",
+   "readiness": {
+    "level": "pilot",
+    "source": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
+    "date": "2024-03-14",
+    "note": "The DMX unit on blast-furnace gas at Dunkirk is a pilot and has run stably since 2023; no full-scale capture unit is operating or under construction on a European blast furnace. Cement reached early-commercial on one operating industrial plant, and steel has none — the two readiness levels are different facts about different applications, which is why they are different nodes."
+   },
+   "dependency": [
+    "co2-transport-storage"
+   ],
+   "sectors": [
+    "steel"
+   ],
+   "sources": [
+    {
+     "url": "https://www.axens.net/resources-events/news/pr-successful-demonstration-dunkirk-co2-capture-dmx-process",
+     "title": "Successful demonstration in Dunkirk of the CO2 capture DMX process",
+     "publisher": "Axens",
+     "date": "2024-03-14",
+     "date_precision": "day",
+     "verbatim": "capture the CO2 present in blast furnace gases emitted during steel production at ArcelorMittal's Dunkirk site"
+    }
+   ]
+  },
+  {
+   "id": "eaf-scrap",
+   "transition": "circularity",
+   "name": "Electric arc furnace on scrap",
+   "description": "Steel is remelted from scrap in an electric furnace, with no ironmaking step and therefore none of its CO2. It is not an emerging route — it is already two fifths of European output — and what limits it is how much scrap of the right quality Europe collects and keeps, not whether the furnace works.",
+   "plain_action": "melting scrap in electric furnaces instead of smelting ore",
+   "readiness": {
+    "level": "commercial",
+    "source": "https://www.eurofer.eu/about-steel/learn-about-steel/what-is-steel-and-how-is-steel-made/",
+    "date": "2025-09-29",
+    "note": "Just over 40% of EU steel already comes out of this route. Commercial is what a route that is two fifths of an industry's output is."
+   },
+   "dependency": [],
+   "sectors": [
+    "steel"
+   ],
+   "sources": [
+    {
+     "url": "https://www.eurofer.eu/about-steel/learn-about-steel/what-is-steel-and-how-is-steel-made/",
+     "title": "Learn about steel — how steel is made",
+     "publisher": "EUROFER — the European Steel Association",
+     "date": "2025-09-29",
+     "date_precision": "day",
+     "verbatim": "Just over 40% of EU steel is produced via the EAF production route."
+    },
+    {
+     "url": "https://www.voestalpine.com/group/en/media/press-releases/2026-06-18-voestalpine-unveils-further-expansion-plans-for-greentec-steel-at-its-donawitz-location/",
+     "title": "voestalpine unveils further expansion plans for greentec steel at its Donawitz location",
+     "publisher": "voestalpine",
+     "date": "2026-06-18",
+     "date_precision": "day",
+     "verbatim": "The EAF plant currently under construction will be capable of producing around 850,000 tons of CO2‐reduced steel annually as of 2027."
+    }
+   ]
+  },
+  {
+   "id": "cell-manufacturing",
+   "transition": "supply_security",
+   "name": "Gigafactory-scale cell manufacturing",
+   "description": "Electrode coating, cell assembly and formation run at gigawatt-hour scale on one site. It is the process node rather than a chemistry: the same lines make several chemistries, and what decides whether Europe has cells is whether the lines exist and yield, not which cathode runs through them.",
+   "plain_action": "building cell factories at gigawatt-hour scale",
+   "readiness": {
+    "level": "commercial",
+    "source": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
+    "date": "2025-12-17",
+    "note": "Several European sites are producing at scale. PowerCo commissioned Salzgitter on 17 December 2025 and produced the first Unified Cells made in Europe; ACC has been running at Billy-Berclau since 2023 and Verkor opened Bourbourg in December 2025."
+   },
+   "sectors": [
+    "batsol"
+   ],
+   "sources": [
+    {
+     "url": "https://www.volkswagen-group.com/en/press-releases/start-of-european-battery-cell-production-powerco-commissions-salzgitter-gigafactory-20045",
+     "title": "Start of European battery cell production: PowerCo commissions Salzgitter gigafactory",
+     "publisher": "Volkswagen Group",
+     "date": "2025-12-17",
+     "date_precision": "day",
+     "verbatim": "PowerCo SE today commissioned the Salzgitter gigafactory as planned and produced the first Unified Cells 'made in Europe'."
+    }
+   ]
+  },
+  {
+   "id": "lfp-cells",
+   "transition": "supply_security",
+   "name": "Lithium iron phosphate cells",
+   "description": "A cathode of iron and phosphate rather than nickel, manganese and cobalt. Lower energy density and lower cost, and it removes the two metals whose supply is most concentrated outside Europe, which is why it is the chemistry the volume end of the market has moved to.",
+   "plain_action": "shifting its cells to lithium iron phosphate",
+   "readiness": {
+    "level": "commercial",
+    "source": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+    "date": "2024-12-10",
+    "note": "Commercial worldwide and being built in Europe rather than made here at scale yet: the Stellantis and CATL joint venture at Zaragoza is a 50 GWh LFP site targeted to start production by the end of 2026."
+   },
+   "sectors": [
+    "batsol"
+   ],
+   "sources": [
+    {
+     "url": "https://www.stellantis.com/en/news/press-releases/2024/december/stellantis-and-calt-to-invest-up-to-4-1-billion-in-joint-venture-for-large-scale-lfp-battery-plant-in-spain",
+     "title": "Stellantis and CATL to invest up to €4.1 billion in joint venture for large-scale LFP battery plant in Spain",
+     "publisher": "Stellantis",
+     "date": "2024-12-10",
+     "date_precision": "day",
+     "verbatim": "Targeted to start production by end of 2026 at Stellantis' Zaragoza, Spain site, the facility could reach up to 50 GWh capacity, subject to the evolution of the electrical market in Europe and continued support from authorities in Spain and the European Union."
+    }
+   ]
+  },
+  {
+   "id": "nmc-nca-cells",
+   "transition": "decarbonisation",
+   "name": "Nickel-rich cells",
+   "description": "Nickel-manganese-cobalt and nickel-cobalt-aluminium cathodes. Higher energy density than iron phosphate and the chemistry most European cell capacity was designed around, at the cost of depending on nickel and cobalt.",
+   "plain_action": "making nickel-rich cells for longer range",
+   "readiness": {
+    "level": "commercial",
+    "source": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+    "date": "2025-12-11",
+    "note": "The chemistry most European lines run. Verkor opened Bourbourg on 11 December 2025 making high-performance cells for Renault and Alpine."
+   },
+   "sectors": [
+    "batsol"
+   ],
+   "sources": [
+    {
+     "url": "https://verkor.com/en/verkor-reaches-a-decisive-milestone-and-opens-its-first-gigafactory/",
+     "title": "Verkor reaches a decisive milestone and opens its first gigafactory",
+     "publisher": "Verkor",
+     "date": "2025-12-11",
+     "date_precision": "day",
+     "verbatim": "For several months, the Gigafactory has been assembling modules from VIC cells and is now manufacturing its own cells."
+    }
+   ]
+  },
+  {
+   "id": "sodium-ion-cells",
+   "transition": "supply_security",
+   "name": "Sodium-ion cells",
+   "description": "Sodium in place of lithium in the cell. Lower energy density than either lithium chemistry and it removes lithium from the bill of materials entirely, which is the reason it is on this list: the constraint it answers is supply rather than emissions.",
+   "plain_action": "moving some cells to sodium, which uses no lithium",
+   "readiness": {
+    "level": "early-commercial",
+    "source": "https://www.catl.com/en/news/6401.html",
+    "date": "2025-04-21",
+    "note": "CATL launched Naxtra as a mass-production sodium-ion cell in April 2025. No European site makes sodium-ion cells, so the readiness is the technology's and not this sector's — which is the gap it is on this list to mark."
+   },
+   "sectors": [
+    "batsol"
+   ],
+   "sources": [
+    {
+     "url": "https://www.catl.com/en/news/6401.html",
+     "title": "Naxtra Battery Breakthrough & Dual-Power Architecture: CATL Pioneers the Multi-Power Era",
+     "publisher": "CATL",
+     "date": "2025-04-21",
+     "date_precision": "day",
+     "verbatim": "Naxtra Battery"
+    }
+   ]
+  },
+  {
+   "id": "ccs-direct-separation",
+   "transition": "decarbonisation",
+   "name": "Direct separation carbon capture",
+   "description": "The raw meal is calcined inside steel tubes heated from outside, so the process CO2 leaves in its own stream rather than mixed into the flue gas, and needs no solvent, no sorbent and no oxygen plant to separate it. Calix's Leilac-2 design puts four calciner tubes in one furnace chamber with a preheater string taking heat off the flue gas, and targets CO2 of better than 95 per cent purity.",
+   "plain_action": "calcining its raw meal in heated tubes so the process CO2 comes off in a stream of its own",
+   "readiness": {
+    "level": "demonstration",
+    "source": "https://web.archive.org/web/20250226101313/https://www.leilac.com/project-leilac-2/",
+    "date": "2025-02-26",
+    "date_precision": "not_after",
+    "note": "Calix's own milestone list for Leilac-2: financial investment decision approved (2022), value engineering completed (2022), FEED study published (2023), procurement of long lead items underway (2023). One demonstration plant at 100,000 t/yr and none operating. THE PAGE CARRIES NO DATELINE, so the date is the capture that proves the text existed and is an upper bound.",
+    "snapshot": "sources/manual/leilac2--project-page-calix.html",
+    "archived": true
+   },
+   "dependency": [
+    "co2-transport-storage"
+   ],
+   "sectors": [
+    "cement"
+   ],
+   "sources": [
+    {
+     "url": "https://web.archive.org/web/20250226101313/https://www.leilac.com/project-leilac-2/",
+     "title": "Project Leilac-2",
+     "publisher": "Leilac (Calix)",
+     "date": "2025-02-26",
+     "date_precision": "not_after",
+     "captured_at": "2026-09-14",
+     "archived": true,
+     "verbatim": "The key features of Leilac-2's design now include: Targeted capture capacity of 100,000 tonnes per year of >95% purity CO2; Four calciner tubes in one furnace chamber; A preheater string for heat transfer from flue gas.",
+     "snapshot": "sources/manual/leilac2--project-page-calix.html"
+    }
+   ]
+  },
+  {
+   "id": "ccs-capture-unspecified",
+   "transition": "decarbonisation",
+   "name": "Carbon capture, method not stated",
+   "description": "NOT A TECHNOLOGY. A placeholder for a capture project at a works whose owner has not said how the CO2 is to be captured. Twelve of the twenty-six cement projects admitted by the census of 14 September 2026 are in this state: the company confirms the works, the project and often the tonnage, and names no method. Filing them under post-combustion because it is the commonest retrofit would have attributed a technology to twelve real works on this register's guess, and filing them under nothing was not available because every project row must name what it deploys. So the silence is given an id and becomes countable. IT IS NEVER SHOWN AS A TECHNOLOGY: excluded from every technology count, tile and diagram node, because a reader seeing it on a page would read it as a thing somebody is building.",
+   "plain_action": "building capture equipment whose method its owner has not stated",
+   "placeholder": true,
+   "dependency": [
+    "co2-transport-storage"
+   ],
+   "sectors": [
+    "cement"
+   ],
+   "sources": [
+    {
+     "url": "https://www.iea.org/data-and-statistics/data-product/ccus-projects-database",
+     "title": "IEA CCUS Projects Database 2026 — the census that found the silence",
+     "publisher": "International Energy Agency",
+     "date": "2026-03-27",
+     "date_precision": "day",
+     "verbatim": "Data collection and processing by the IEA. All public references are available by project."
+    }
+   ]
+  }
+ ]
 }

@@ -1996,6 +1996,29 @@ has read their works.
 Eufabric holds a cement project when it is a **capture project at a cement works**, of
 **any capture technology — including oxyfuel with capture** — company-confirmed.
 
+**There is no pilot clause, and no scale floor. Ruled 14 September 2026**, on a
+question the cement census raised over four entries: LEILAC 2 at Hanover, CEMEX's
+CycloneCC unit at Rüdersdorf, catch4climate at Mergelstetten and ECCO2-LH at
+Carboneras. A capture project at a cement works is in perimeter **at any scale**,
+and the register neither converts the figure nor ranks the project by it. The
+batteries perimeter refuses a pilot unless the company states it as a phase of a
+commercial line; **cement does not**, and the difference is deliberate. A cement
+works has one kiln line and a capture unit bolted to it is the same kind of fact
+about that works whether it takes a tenth of the flue gas or all of it — and the
+small ones are disproportionately the ones that stop, which is the reason the
+steel rule gives for having no tonnage threshold either.
+
+**The owner's own designation is kept and is not a refusal.** Where a company
+calls its project a pilot, a demonstration, a semi-industrial plant or a phase 1,
+that word is recorded on the row as a stated attribute with its speaker. It says
+what the owner thinks it is building; it does not decide whether this register
+holds it.
+
+**A capacity is never annualised to make projects comparable.** CEMEX's unit is
+stated at 100 tonnes of CO₂ per day and the row carries it per day. Turning that
+into a yearly figure would be this register inventing an operating pattern nobody
+stated.
+
 **Any other investment at a cement works is refused with the clause "cement, no
 capture".** A kiln efficiency programme, a clinker-factor reduction and an alternative-fuel
 conversion are all real decarbonisation and none of them is this dataset: the boundary is

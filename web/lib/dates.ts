@@ -17,8 +17,18 @@
  *  `retrieved_date` carry no precision field, because each is a day by
  *  construction: a decision was taken on a day, a reading was made on a day.
  *  `undefined` therefore means "as exact as it looks" rather than "unknown". */
-export function atPrecision(date: string, precision?: "day" | "month" | "year"): string {
+export function atPrecision(
+  date: string,
+  precision?: "day" | "month" | "year" | "not_after",
+): string {
   if (precision === "year") return date.slice(0, 4);
   if (precision === "month") return date.slice(0, 7);
+  /*  `not_after` IS AN UPPER BOUND AND HAS TO READ AS ONE. The document carries
+   *  no dateline, so the date is the day the copy on file was taken and the
+   *  event happened at or before it. Rendered "by 14 September 2026" — never as
+   *  a bare day, which would say the company announced that afternoon. Ruled 14
+   *  September 2026 when the cement census admitted three rows whose only owner
+   *  document is undated. */
+  if (precision === "not_after") return `by ${date}`;
   return date;
 }
