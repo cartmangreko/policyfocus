@@ -821,3 +821,27 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+def perimeter_exclusions_by_ref() -> dict[str, str]:
+    """{iea ref: clause} for the entries this perimeter refuses.
+
+    EXPORTED FOR THE CONFIRMATION LADDER, 15 September 2026, so the ladder tests
+    the boundary with this module's own classification rather than a second copy
+    of it. It reads the classification this report has already written, which is
+    the same rule applied once.
+
+    Two clauses reach the current vintage: `DRI or other perimeter exclusion` --
+    steel, fuels and the refusals by name -- and `blue`, methane reforming with
+    capture, which is out of a dataset about electrolytic hydrogen.
+    """
+    import csv as _csv
+    if not OUT.exists():
+        return {}
+    out: dict[str, str] = {}
+    with OUT.open(encoding="utf-8") as fh:
+        for r in _csv.DictReader(fh):
+            if (r.get("benchmark") == "iea_hydrogen_production_projects"
+                    and r.get("class") in ("DRI or other perimeter exclusion", "blue")):
+                out[str(r["ref"])] = r["class"]
+    return out

@@ -126,12 +126,20 @@ def main() -> int:
     for l in lines:
         for r in L.RUNGS:
             res = l[f"{r}_result"]
-            if res not in ("pass", "fail", "unread"):
+            if res not in ("pass", "fail", "unread", "not_searched"):
                 bad.append(f"{l['key']} rung {r}: result {res!r} is not in the "
                            f"vocabulary")
                 continue
             if res == "unread":
                 continue
+            # `not_searched` STILL CITES WHAT WAS NOT SEARCHED. Added 15 September
+            # 2026 with the searched flag: the cell says which source class the
+            # rung reads and records that it was not examined for this entry, so
+            # it carries a source and a date like any other non-unread cell.
+            # A FAIL AND A not_searched ARE DIFFERENT FINDINGS: the first is about
+            # the project, the second about this register's reading.
+            if res == "not_searched" and l.get(f"{r}_searched") != "false":
+                bad.append(f"{l['key']} rung {r}: not_searched with searched!=false")
             if not l[f"{r}_source"].strip():
                 bad.append(f"{l['key']} rung {r}: {res} with nothing cited")
             if not l[f"{r}_date"].strip():

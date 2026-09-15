@@ -74,9 +74,25 @@ START_MILESTONES = ("production_start", "commissioning", "operation_start")
 FIRM_PASS = "contract"
 
 
-def cell(result, source=None, speaker=None, date=None, precision=None, note=""):
+def cell(result, source=None, speaker=None, date=None, precision=None, note="",
+         searched=True):
+    """One rung cell.
+
+    `searched` SAYS WHETHER THE SOURCE CLASS THIS RUNG READS WAS EXAMINED for this
+    entry -- owner or permit sources for rungs 1, 2, 3 and 5; funder publications
+    for rung 4; the dependency graph or an owner statement for rung 6.
+
+    A FAIL WITH `searched` FALSE IS NOT A FAIL. It is reported as `not_searched`,
+    because "the owner does not state an FID" and "nobody has looked for one" are
+    different findings and only the first is about the project. Ruled 15 September
+    2026, after rung 4 was found reporting 71 fails on a question nobody had asked
+    of those entries.
+    """
+    if result == "fail" and not searched:
+        result = "not_searched"
     return {"result": result, "source": source or "", "speaker": speaker or "",
-            "date": date or "", "precision": precision or "", "note": note}
+            "date": date or "", "precision": precision or "", "note": note,
+            "searched": bool(searched)}
 
 
 UNREAD = cell("unread")
@@ -143,8 +159,9 @@ def search_records():
 # SCORING A ROW -- the only entries with register evidence behind them
 
 
-def score_row(row, edges_by_project, graph_date=""):
+def score_row(row, edges_by_project, graph_date="", funding_by_project=None):
     """Six cells from a register row's own fields."""
+    funding_by_project = funding_by_project or {}
     out = {}
     sources = row.get("sources") or []
     base = newest(sources)
@@ -156,22 +173,51 @@ def score_row(row, edges_by_project, graph_date=""):
     # RUNG 1, SITE. The location_statement is the direct answer where there is one;
     # a located row whose position came from a company or permit source names the
     # site at least as finely. DRAWN STATUS IS NOT CONSULTED -- see scope.md.
+    # THE RUNG IS "MUNICIPALITY OR FINER" AND THIS USED TO TEST "FINER THAN
+    # MUNICIPALITY". Corrected 15 September 2026. Two defects, and between them
+    # they failed 50 admitted rows that answer the question the rung asks:
+    #
+    #   A location_statement naming exactly the municipality was failed. The rung
+    #   admits a municipality by its own words, so it now passes.
+    #
+    #   THE `plant` FIELD WAS NEVER READ, and it is where a company-stated site
+    #   name actually lives on these rows: "Maasvlakte, Port of Rotterdam",
+    #   "Trafford Low Carbon Energy Park, Carrington", "Pyyryvainen, Oulu". The
+    #   scorer looked only at `location_statement` and at `located`, which is a
+    #   question about whether somebody has DRAWN the row -- and scope.md says in
+    #   as many words that position is not an admission leg and drawn status is
+    #   not consulted here.
+    #
+    # AN ADJACENCY STILL FAILS, and that is the one case that stays. A
+    # location_statement with a `relation` names a feature the project supplies or
+    # is applied in -- Tata Steel IJmuiden, the BAYERNOIL refinery -- and the
+    # ruling of 13 September 2026 is that adjacency does not place a row. The
+    # owner is naming somebody else's works, not its own site.
     ls = row.get("location_statement")
     ls = ls[0] if isinstance(ls, list) and ls else ls
-    if isinstance(ls, dict) and ls.get("names_location_finer_than_municipality"):
-        out["site"] = cell("pass", ls.get("source_url"), "owner",
-                           ls.get("source_date"), ls.get("source_date_precision"),
-                           "location_statement names finer than municipality")
-    elif isinstance(ls, dict):
+    plant = (row.get("plant") or "").strip()
+    if isinstance(ls, dict) and ls.get("relation"):
         out["site"] = cell("fail", ls.get("source_url"), "owner",
                            ls.get("source_date"), ls.get("source_date_precision"),
-                           "location_statement names the municipality and no finer")
+                           f"location_statement is an adjacency ({ls['relation']}) to "
+                           f"{ls.get('anchor_feature', 'another works')}, which does not "
+                           f"place this row")
+    elif isinstance(ls, dict):
+        finer = ls.get("names_location_finer_than_municipality")
+        out["site"] = cell("pass", ls.get("source_url"), "owner",
+                           ls.get("source_date"), ls.get("source_date_precision"),
+                           "location_statement names " +
+                           ("finer than municipality" if finer else "the municipality") +
+                           ", which the rung admits")
     elif row.get("located") == "yes":
         out["site"] = cell("pass", base_id, "owner", base_date, base_prec,
                            "row carries a position from a company or permit source")
+    elif plant:
+        out["site"] = cell("pass", base_id, base_pub or "owner", base_date, base_prec,
+                           f"the admitting source names the site as {plant!r}")
     else:
         out["site"] = cell("fail", base_id, "owner", base_date, base_prec,
-                           "no location statement finer than municipality on the row")
+                           "the row names no location at municipality or finer")
 
     # RUNG 2, CAPACITY. Any unit, recorded as stated. Never converted.
     if row.get("capacity_value") is not None and row.get("capacity_unit"):
@@ -200,19 +246,44 @@ def score_row(row, edges_by_project, graph_date=""):
         out["fid"] = cell("fail", base_id, "owner", base_date, base_prec, note)
 
     # RUNG 4, FUNDING. THE FUNDER IS THE SPEAKER.
+    #
+    # THIS READ THE WRONG LAYER UNTIL 15 September 2026, and it is the same defect
+    # as rung 1's: `public_funding` MOVED OFF THE ROW into
+    # data/transition/funding.json, where capital allocation is a node with edges
+    # out of it, and this scorer went on reading `status_history` for a funder
+    # event that no longer lands there. Four admitted rows with an award on file
+    # from the funder itself -- IPCEI Hy2Infra for bp and RWE at Lingen, PERTE ERHA
+    # for Moeve at Huelva, IPCEI for Repsol at Muskiz -- were being reported as
+    # fails on a question the register had already answered.
+    #
+    # AND A FAIL HERE IS ONLY A FAIL IF SOMEBODY READ A FUNDER LIST. Where no
+    # funder publication has been examined for an entry, the cell is
+    # `not_searched`: nobody has asked whether a funder named this project, and
+    # recording that as the project's failure would be a claim about the project
+    # made out of a gap in this register's reading.
+    funder_rows = funding_by_project.get(row["id"], [])
     award = newest([e for e in hist
                     if e.get("source_type") in FUNDER_SOURCE_TYPES
                     or e.get("event_kind") == "financing"
                     and e.get("source_type") in FUNDER_SOURCE_TYPES])
-    if award:
+    if funder_rows:
+        f = newest(funder_rows) or funder_rows[0]
+        fsrc = (f.get("sources") or [{}])[0]
+        out["funding"] = cell("pass", fsrc.get("url") or base_id, "funder",
+                              f.get("date"), "day",
+                              f"{f.get('programme', 'a funder')} publishes an award "
+                              f"naming this project")
+    elif award:
         out["funding"] = cell("pass", award.get("source_url"), "funder",
                               award.get("date"), award.get("date_precision"),
                               "award published by the funder")
     else:
         owner_claim = any(e.get("status_to") == "funded" for e in hist)
-        note = ("the owner states an award and no funder publication is on file"
-                if owner_claim else "no funder award naming the project on file")
-        out["funding"] = cell("fail", base_id, "owner", base_date, base_prec, note)
+        note = ("the owner states an award and no funder publication has been read "
+                "for this project"
+                if owner_claim else "no funder list has been read for this project")
+        out["funding"] = cell("fail", base_id, "owner", base_date, base_prec, note,
+                              searched=False)
 
     # RUNG 5, START DATE, WITH A PRECISION.
     st = newest([s for s in (row.get("stated_schedule") or [])
@@ -284,7 +355,7 @@ def score_input(row, edges_by_project, graph_date=""):
 # SCORING A BENCHMARK ENTRY NOBODY HAS ADMITTED
 
 
-def score_unadmitted(ref, rec, searched_on, unreadable):
+def score_unadmitted(ref, rec, searched_on, unreadable, excluded=False):
     """Rung 1 is scored for EVERY entry on the external list, admitted or not; the
     admission search is what scores it. The other five have no owner document on
     file at all -- the search is the record of looking and finding none.
@@ -296,13 +367,26 @@ def score_unadmitted(ref, rec, searched_on, unreadable):
         return {r: dict(UNREAD, note="company source unreadable; queued for a "
                         "browser pass") for r in RUNGS}
 
+    if excluded:
+        # OUT OF PERIMETER. Not scored at all: the six questions are asked of
+        # projects this dataset is about, and asking them of a blue-hydrogen plant
+        # or a DRI works produces six fails that say nothing about either. The
+        # clause travels with the entry instead.
+        return {r: cell("not_searched", "sources/report_benchmark_gap.py",
+                        "eufabric perimeter", searched_on, "day",
+                        "out of perimeter; not scored", searched=False)
+                for r in RUNGS}
+
     if rec is None:
         # On the list, not in the admission search: the search covered the class
         # `not searched by eufabric` and the rest were classified before it ran.
+        # NOTHING WAS READ FOR THESE, so the cells are not_searched rather than
+        # fails -- a fail would be a finding about the project made out of a gap
+        # in this register's own reading.
         return {r: cell("fail", "sources/hydrogen_gap_search.json", "eufabric search",
                         searched_on, "day",
                         "classified before the admission search; no owner document "
-                        "on file") for r in RUNGS}
+                        "on file", searched=False) for r in RUNGS}
 
     src = "sources/hydrogen_gap_search.json"
     names = rec.get("outcome") == "owner or permit source names the site"
@@ -355,11 +439,45 @@ def unreadable_refs(records):
     return out
 
 
+def load_funding():
+    """{project_id: [funding rows]} from the capital-allocation layer.
+
+    RUNG 4 READS THIS AND NOT THE ROW. `public_funding` moved off the project into
+    data/transition/funding.json, where one award can finance several projects and
+    a field on the recipient could only say so by repeating itself. The rung asks
+    whether a FUNDER published an award naming the project, and this file is where
+    the register records exactly that.
+    """
+    doc = json.loads((sm.DATA / "funding.json").read_text(encoding="utf-8"))
+    out = defaultdict(list)
+    for f in doc.get("funding", doc if isinstance(doc, list) else []):
+        tgts = f.get("finances")
+        for t in (tgts if isinstance(tgts, list) else [tgts]):
+            if isinstance(t, str) and t.startswith("project:"):
+                out[t.split(":", 1)[1]].append(f)
+    return out
+
+
+def perimeter_excluded():
+    """{ref: clause} for the entries the hydrogen perimeter refuses.
+
+    READ FROM report_benchmark_gap's OWN CLASSIFIER, never re-implemented here. A
+    second copy of a boundary is a boundary that drifts, and this one has already
+    been argued out once: `DRI or other perimeter exclusion` is steel, fuels and
+    the refusals by name; `blue` is methane reforming with capture, which is out
+    of a dataset about electrolytic hydrogen.
+    """
+    import report_benchmark_gap as gap
+    return gap.perimeter_exclusions_by_ref()
+
+
 def build():
     iea, rows, by_ref, offlist = population()
     records, searched_on = search_records()
     cands = candidate_refs()
     unread_refs = unreadable_refs(records)
+    excluded = perimeter_excluded()
+    funding_by_project = load_funding()
 
     edoc = json.loads(EDGES.read_text(encoding="utf-8"))
     edges_by_project = defaultdict(list)
@@ -375,7 +493,8 @@ def build():
         cand = cands.get(ref)
         if held:
             row = held[0]
-            cells = score_row(row, edges_by_project, graph_date)
+            cells = score_row(row, edges_by_project, graph_date,
+                              funding_by_project)
             klass, rid = "admitted", row["id"]
         elif cand:
             cells = score_unadmitted(ref, records.get(ref), searched_on,
@@ -384,9 +503,17 @@ def build():
         else:
             unreadable = ref in unread_refs
             rec = records.get(ref)
-            cells = score_unadmitted(ref, rec, searched_on, unreadable)
+            cells = score_unadmitted(ref, rec, searched_on, unreadable,
+                                     excluded=ref in excluded)
             if unreadable:
                 klass = "unread"
+            elif ref in excluded:
+                # A PERIMETER EXCLUSION IS NOT A PROJECT THAT FAILED TO PROVE
+                # ITSELF. It is a project this dataset is not about, and scoring
+                # it zero out of six put 53 entries into the failure column that
+                # no amount of reading could ever move. Carried with its clause
+                # and left out of the scored population entirely.
+                klass = "perimeter exclusion"
             elif rec is None:
                 klass = "none found"
             elif rec.get("outcome") == "owner or permit source names the site":
@@ -395,16 +522,17 @@ def build():
                 klass = "none found"
             rid = ""
         lines.append(line_for(key=f"iea:{ref}", ref=ref, rid=rid, entry=entry,
-                              row=held[0] if held else None, klass=klass, cells=cells))
+                              row=held[0] if held else None, klass=klass, cells=cells,
+                              clause=excluded.get(ref, "")))
 
     for row in offlist:
-        cells = score_row(row, edges_by_project, graph_date)
+        cells = score_row(row, edges_by_project, graph_date, funding_by_project)
         lines.append(line_for(key=f"row:{row['id']}", ref="", rid=row["id"],
                               entry=None, row=row, klass="admitted", cells=cells))
     return lines, iea, offlist
 
 
-def line_for(key, ref, rid, entry, row, klass, cells):
+def line_for(key, ref, rid, entry, row, klass, cells, clause=""):
     cap_v = cap_u = ""
     if row is not None:
         cap_v = row.get("capacity_value") if row.get("capacity_value") is not None else ""
@@ -438,7 +566,7 @@ def line_for(key, ref, rid, entry, row, klass, cells):
                         if row is not None else ""),
             "dropped_from_benchmark": dropped,
             "capacity_value": cap_v, "capacity_unit": cap_u,
-            "stop_event": stop}
+            "stop_event": stop, "perimeter_clause": clause}
     passed = 0
     for r in RUNGS:
         c = cells[r]
@@ -447,6 +575,7 @@ def line_for(key, ref, rid, entry, row, klass, cells):
         line[f"{r}_speaker"] = c["speaker"]
         line[f"{r}_date"] = c["date"]
         line[f"{r}_precision"] = c["precision"]
+        line[f"{r}_searched"] = "true" if c.get("searched", True) else "false"
         line[f"{r}_note"] = c["note"]
         if r == "input":
             line["input_provisional"] = "true" if c.get("provisional") else "false"
@@ -459,9 +588,10 @@ def line_for(key, ref, rid, entry, row, klass, cells):
 
 FIELDS = (["key", "iea_ref", "row_id", "name", "sector", "country", "register_class",
            "iea_status", "dropped_from_benchmark", "capacity_value", "capacity_unit",
-           "stop_event", "rungs_passed", "unread"]
+           "stop_event", "perimeter_clause", "rungs_passed", "unread"]
           + [f"{r}_{f}" for r in RUNGS
-             for f in ("result", "source", "speaker", "date", "precision", "note")]
+             for f in ("result", "searched", "source", "speaker", "date",
+                       "precision", "note")]
           + ["input_provisional"])
 
 
@@ -476,15 +606,48 @@ def summarise(lines):
     cross = defaultdict(Counter)
     for l in lines:
         cross[l["iea_status"] or "(not on the list)"][l["rungs_passed"]] += 1
+    # THE POPULATION HAS THREE PARTS AND ONLY ONE OF THEM IS SCORED.
+    # Ruled 15 September 2026. "Rungs passed" used to be reported over all 245
+    # entries, which put 53 perimeter exclusions and 21 unreadable entries into the
+    # zero-rung column and made the ladder look like a register that had failed to
+    # confirm 122 projects. It had failed to confirm 48.
+    excluded = [l for l in lines if l["register_class"] == "perimeter exclusion"]
+    unread = [l for l in lines if l["unread"] == "true"]
+    scored = [l for l in lines
+              if l["register_class"] != "perimeter exclusion" and l["unread"] != "true"]
+    scored_by_passed = Counter(l["rungs_passed"] for l in scored)
+    keys = sorted(scored_by_passed, key=lambda k: int(k))
+    identity = (f"{len(excluded)} perimeter exclusions + {len(unread)} unread + "
+                + " + ".join(f"{scored_by_passed[k]} at {k}" for k in keys)
+                + f" rungs = {len(lines)}")
+    not_searched = {r: sum(1 for l in scored if l[f"{r}_result"] == "not_searched")
+                    for r in RUNGS}
     return {
         "_comment": [
             "COMPUTED FROM sources/ladder/hydrogen.csv BY build_ladder.py.",
             "Never edited by hand: the reconciliation gate check_ladder.py recomputes",
             "it and refuses a mismatch. See scope.md, 'The ladder is computed, never",
             "typed'.",
+            "",
+            "THREE POPULATIONS, AND `rungs_passed` IS REPORTED ON ONE OF THEM.",
+            "A perimeter exclusion is a project this dataset is not about; an unread",
+            "entry is a publisher this register could not reach. Neither is a project",
+            "that failed to confirm itself, and scoring them zero out of six said that",
+            "they were.",
         ],
         "population": len(lines),
-        "entries_by_rungs_passed": {str(k): by_passed[k] for k in sorted(by_passed)},
+        "population_structure": {
+            "perimeter_exclusions": len(excluded),
+            "unread": len(unread),
+            "scored": len(scored),
+            "identity": identity,
+            "identity_holds": len(excluded) + len(unread) + len(scored) == len(lines),
+        },
+        "scored_entries_by_rungs_passed":
+            {str(k): scored_by_passed[k] for k in keys},
+        "not_searched_cells_among_scored": not_searched,
+        "entries_by_rungs_passed_all_245_deprecated":
+            {str(k): by_passed[k] for k in sorted(by_passed, key=lambda x: int(x))},
         "pass_count_per_rung_by_register_class":
             {r: dict(sorted(per_rung[r].items())) for r in RUNGS},
         "rungs_passed_by_iea_status":
