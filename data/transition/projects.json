@@ -12980,9 +12980,13 @@
     ],
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 249 (“Porthos onshore transport”), 325 (“Porthos offshore transport and storage”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
    },
-   "role": "storage",
+   "role": [
+    "transport",
+    "storage"
+   ],
    "shared": true,
-   "shared_note": "A store and pipeline taking CO2 from Rotterdam industry that cannot yet decarbonise; refineries, hydrogen and chemicals are its declared customers, so it belongs to no one industry."
+   "shared_note": "A store and pipeline taking CO2 from Rotterdam industry that cannot yet decarbonise; refineries, hydrogen and chemicals are its declared customers, so it belongs to no one industry.",
+   "role_note": "Its own site: 'a system for transporting and permanently and safely storing CO2 beneath the North Sea' — both, in one sentence. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "aramis",
@@ -13032,7 +13036,10 @@
     ],
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 19 (“Aramis CCS transport phase 1”), 32 (“Aramis CCS storage phase 1”), 33 (“Aramis CCS storage phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
    },
-   "role": "storage",
+   "role": [
+    "transport",
+    "storage"
+   ],
    "shared": true,
    "shared_note": "Open-access transport and storage for industrial emitters across the Netherlands and beyond.",
    "capacity_value": 22000000,
@@ -13042,7 +13049,8 @@
    "capacity_source_url": "https://www.aramis-ccs.com/faq",
    "capacity_as_of": "2021-07-07",
    "capacity_as_of_precision": "day",
-   "capacity_note": "Aramis (TotalEnergies, Shell, EBN, Gasunie), the project's own FAQ: “The project expects to transport approximately 22 Million tonnes per annum (Mtpa) of CO2 to the storage locations.” The project states its own figure on its own site, which is the admission and the capacity in one page. THE FIGURE ON THIS ROW IS approximately 22 Mtpa, the project's figure for the whole chain. AT THE OWNER'S UNIT AND NOT CONVERTED (D80)."
+   "capacity_note": "Aramis (TotalEnergies, Shell, EBN, Gasunie), the project's own FAQ: “The project expects to transport approximately 22 Million tonnes per annum (Mtpa) of CO2 to the storage locations.” The project states its own figure on its own site, which is the admission and the capacity in one page. THE FIGURE ON THIS ROW IS approximately 22 Mtpa, the project's figure for the whole chain. AT THE OWNER'S UNIT AND NOT CONVERTED (D80).",
+   "role_note": "The project's FAQ describes transport to the storage locations and the storage itself; the IEA splits it into transport and storage entries for the same reason. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "co2next",
@@ -13092,7 +13100,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 950 (“CO2NEXT terminal phase 1”), 951 (“CO2NEXT terminal phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
    },
    "shared": true,
-   "shared_note": "A liquid CO2 terminal open to third-party volumes."
+   "shared_note": "A liquid CO2 terminal open to third-party volumes.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "seaseas-amsterdam",
@@ -13139,7 +13149,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1483 (“SeaSeaS (Port of Amsterdam)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "A terminal for land-locked emitters, connecting to all relevant offshore European stores."
+   "shared_note": "A terminal for land-locked emitters, connecting to all relevant offshore European stores.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "fluxys-c-grid-antwerp",
@@ -13187,7 +13199,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1409 (“Antwerp CO2 Pipeline Network”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "An open-access CO2 pipeline network for Antwerp industry and beyond."
+   "shared_note": "An open-access CO2 pipeline network for Antwerp industry and beyond.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "antwerp-c-export-hub",
@@ -13245,7 +13259,9 @@
    "capacity_source_url": "https://www.airliquide.com/group/press-releases-news/2022-12-12/air-liquide-fluxys-belgium-and-port-antwerp-bruges-awarded-eu-funding-building-antwerpc-co2-export",
    "capacity_as_of": "2022-12-12",
    "capacity_as_of_precision": "day",
-   "capacity_note": "Air Liquide, the lead partner, naming the hub: “The Antwerp@C CO2 Export Hub will have an initial export capacity of 2.5 million tonnes per annum (Mtpa), with the ambition to reach up to 10 Mtpa by 2030.” The project states its own figure on its own site, which is the admission and the capacity in one page. THE FIGURE ON THIS ROW IS the hub's INITIAL export capacity of 2.5 Mtpa; the same sentence states an ambition of up to 10 Mtpa by 2030, which is an ambition and is not the figure on the row. AT THE OWNER'S UNIT AND NOT CONVERTED (D80)."
+   "capacity_note": "Air Liquide, the lead partner, naming the hub: “The Antwerp@C CO2 Export Hub will have an initial export capacity of 2.5 million tonnes per annum (Mtpa), with the ambition to reach up to 10 Mtpa by 2030.” The project states its own figure on its own site, which is the admission and the capacity in one page. THE FIGURE ON THIS ROW IS the hub's INITIAL export capacity of 2.5 Mtpa; the same sentence states an ambition of up to 10 Mtpa by 2030, which is an ambition and is not the figure on the row. AT THE OWNER'S UNIT AND NOT CONVERTED (D80).",
+   "role": "terminal",
+   "role_note": "Air Liquide calls it an EXPORT HUB with an export capacity; a quay rather than a route. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "fluxys-c-grid-belgium",
@@ -13293,7 +13309,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1477 (“Belgian CO2 Pipeline Network (CO2 backbone for Belgium)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "An open-access pipeline network connecting Walloon industrial emitters to exit points."
+   "shared_note": "An open-access pipeline network connecting Walloon industrial emitters to exit points.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "ghent-carbon-hub",
@@ -13341,7 +13359,12 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 532 (“Ghent Carbon Hub”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "A hub whose anchor emitter is steel and which is open to other industry at North Sea Port."
+   "shared_note": "A hub whose anchor emitter is steel and which is open to other industry at North Sea Port.",
+   "role": [
+    "transport",
+    "terminal"
+   ],
+   "role_note": "A hub at North Sea Port: Fluxys' pipeline and the port's handling together. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "carbon-connect-delta",
@@ -13389,7 +13412,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1267 (“Carbon Connect Delta ”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). AND THE LIST SAYS SOMETHING THIS ROW DOES NOT: the IEA carries the entry as ‘Cancelled’ and no owner or consortium statement of cancellation was found. Under D81 a cancellation is a stop event only from the owner or the consortium, so the row takes no stopped event and the list's status stays here as the list's claim. D81: a cancellation is a stop event only from the owner or the consortium. Smart Delta Resources' own page answers with 905 characters and says nothing about a cancellation, and Fluxys' project page still carries the project. The row lands on its announcement and carries the list's status as the list's claim."
    },
    "shared": true,
-   "shared_note": "A cross-border network for the Scheldt Delta's industrial cluster."
+   "shared_note": "A cross-border network for the Scheldt Delta's industrial cluster.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "greensand",
@@ -13438,7 +13463,8 @@
     ],
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 335 (“Greensand Future phase 1”), 336 (“Project Greensand phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
    },
-   "role": "storage"
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "bifrost",
@@ -13487,7 +13513,8 @@
     ],
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 331 (“Project Bifrost Phase 1”), 682 (“Project Bifrost Phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
    },
-   "role": "storage"
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "norne-gassum",
@@ -13533,7 +13560,8 @@
     "iea_ccus_projects_database": 670,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 670 (“Gassum storage/Fyrkat network (Norne carbon storage hub)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
-   "role": "storage"
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "norne-havnso",
@@ -13579,7 +13607,8 @@
     "iea_ccus_projects_database": 671,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 671 (“Havnso storage/Trelleborg network (Norne carbon storage hub)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
-   "role": "storage"
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "norne-aalborg-terminal",
@@ -13624,7 +13653,9 @@
    "benchmarks": {
     "iea_ccus_projects_database": 672,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 672 (“Port of Aalborg terminal and pipeline to Fyrkat (Norne carbon storage hub)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
-   }
+   },
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "norne-kalundborg-terminal",
@@ -13672,7 +13703,9 @@
      674
     ],
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 673 (“Port of Kalundborg terminal and pipeline to Trelleborg phase 1 (Norne carbon storage hub)”), 674 (“Port of Kalundborg terminal and pipeline to Trelleborg phase 2 (Norne carbon storage hub)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
-   }
+   },
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "grenaa-port-terminal",
@@ -13723,7 +13756,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 1403 (“Grenaa Port phase 1”), 1404 (“Grenaa Port phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
    },
    "shared": true,
-   "shared_note": "An export terminal for Northern European emitters without their own route."
+   "shared_note": "An export terminal for Northern European emitters without their own route.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "co2-storage-kalundborg",
@@ -13770,7 +13805,8 @@
     "iea_ccus_projects_database": 1503,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1503 (“CO2 Storage Kalundborg”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
-   "role": "storage"
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "greenstore",
@@ -13817,7 +13853,8 @@
     "iea_ccus_projects_database": 1504,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1504 (“Projekt Greenstore”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
-   "role": "storage"
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "acorn-ccs",
@@ -13867,9 +13904,13 @@
     ],
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 8 (“Acorn CCS phase 1-T&S”), 9 (“Acorn CCS phase 2”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
    },
-   "role": "storage",
+   "role": [
+    "transport",
+    "storage"
+   ],
    "shared": true,
-   "shared_note": "Scotland's CO2 transport and storage network, open to the Scottish Cluster's emitters."
+   "shared_note": "Scotland's CO2 transport and storage network, open to the Scottish Cluster's emitters.",
+   "role_note": "Its own site: 'Scotland's CO2 transport and storage network'. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "liverpool-bay-ccs",
@@ -13918,9 +13959,13 @@
     ],
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 265 (“Liverpool Bay CCS project phase 1”), 266 (“Liverpool Bay CCS expansion project (phase 2)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
    },
-   "role": "storage",
+   "role": [
+    "transport",
+    "storage"
+   ],
    "shared": true,
-   "shared_note": "The transport and storage operator for HyNet North West, serving cement, hydrogen and waste-to-energy."
+   "shared_note": "The transport and storage operator for HyNet North West, serving cement, hydrogen and waste-to-energy.",
+   "role_note": "Eni is 'operator of the transport and storage of carbon dioxide for HyNet North West'. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "bacton-ccs",
@@ -13966,9 +14011,13 @@
     "iea_ccus_projects_database": 519,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 519 (“Bacton CCS”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
-   "role": "storage",
+   "role": [
+    "transport",
+    "storage"
+   ],
    "shared": true,
-   "shared_note": "A store for emitters around Bacton and the Thames estuary."
+   "shared_note": "A store for emitters around Bacton and the Thames estuary.",
+   "role_note": "Eni UK is 'transporting and storing CO2 in its Hewett depleted gas field'. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "viking-ccs",
@@ -14019,9 +14068,13 @@
     ],
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 403 (“Viking CCS Phase 1”), 404 (“Viking CCS Phase 2”), 705 (“Viking CCS Phase 3”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
    },
-   "role": "storage",
+   "role": [
+    "transport",
+    "storage"
+   ],
    "shared": true,
-   "shared_note": "A Humber network open to third-party emitters, with shipping options under discussion."
+   "shared_note": "A Humber network open to third-party emitters, with shipping options under discussion.",
+   "role_note": "Its own navigation names an onshore pipeline, an offshore pipeline and CO2 storage. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "medway-hub-ccs",
@@ -14068,7 +14121,8 @@
     "iea_ccus_projects_database": 570,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 570 (“Medway Hub CCS”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
-   "role": "storage"
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "morecambe-net-zero",
@@ -14116,7 +14170,8 @@
    },
    "role": "storage",
    "shared": true,
-   "shared_note": "A store offering decarbonisation to businesses all over the UK."
+   "shared_note": "A store offering decarbonisation to businesses all over the UK.",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "peak-cluster-transport",
@@ -14164,7 +14219,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 768 (“Peak cluster transport”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "A pipeline for the Peak District's cement and lime works."
+   "shared_note": "A pipeline for the Peak District's cement and lime works.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "tranmere-stanlow-terminal",
@@ -14211,7 +14268,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 904 (“Tranmere and Stanlow Terminal”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "A terminal opening CO2 transport to industrial companies beyond the immediate cluster."
+   "shared_note": "A terminal opening CO2 transport to industrial companies beyond the immediate cluster.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "sullom-voe-hub",
@@ -14261,7 +14320,12 @@
      1511
     ],
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 1233 (“Sullom voe terminal and Shetland basin hub (SVT) - Thistle injection phase 1”), 1510 (“Sullom voe terminal and Shetland basin hub (SVT) - Magnus phase 2”), 1511 (“Sullom voe terminal and Shetland basin hub (SVT) - Regional Expansion phase 3”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
-   }
+   },
+   "role": [
+    "terminal",
+    "storage"
+   ],
+   "role_note": "A terminal and a storage hub, and its owner describes it as both. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "norvik-nice",
@@ -14307,7 +14371,9 @@
    "benchmarks": {
     "iea_ccus_projects_database": 746,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 746 (“Norvik Infrastructure CCS East (NICE)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
-   }
+   },
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "cinfracap",
@@ -14355,7 +14421,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 87 (“CinfraCap (Carbon Infrastructure Capture) - Port of Gothenburg”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "Shared CO2 infrastructure for Gothenburg's industrial and energy emitters."
+   "shared_note": "Shared CO2 infrastructure for Gothenburg's industrial and energy emitters.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "highway58",
@@ -14410,7 +14478,9 @@
    "capacity_source_url": "https://pipe58.se/",
    "capacity_as_of": "2026-01-27",
    "capacity_as_of_precision": "day",
-   "capacity_note": "Pipe58 with Progressive Energy, the project's own site: “20 MtCO2 annual capacity for phase 1. >1000 km length of phase 1 backbone. Early 2030s phase 1 aimed to be operational.” The project states its own figure on its own site, which is the admission and the capacity in one page. THE FIGURE ON THIS ROW IS 20 MtCO2 annual capacity for phase 1. AT THE OWNER'S UNIT AND NOT CONVERTED (D80)."
+   "capacity_note": "Pipe58 with Progressive Energy, the project's own site: “20 MtCO2 annual capacity for phase 1. >1000 km length of phase 1 backbone. Early 2030s phase 1 aimed to be operational.” The project states its own figure on its own site, which is the admission and the capacity in one page. THE FIGURE ON THIS ROW IS 20 MtCO2 annual capacity for phase 1. AT THE OWNER'S UNIT AND NOT CONVERTED (D80).",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "german-carbon-transport-grid",
@@ -14458,7 +14528,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 675 (“German carbon transport grid”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "An open-access CO2 transport grid across German industry."
+   "shared_note": "An open-access CO2 transport grid across German industry.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "carbonbridge",
@@ -14503,7 +14575,9 @@
    "benchmarks": {
     "iea_ccus_projects_database": 1471,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1471 (“CarbonBridge”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
-   }
+   },
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "goco2-transport",
@@ -14550,7 +14624,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1114 (“Grand Ouest CO2 (GOCO₂) transport”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "A 375 km pipeline serving cement and lime works in western France."
+   "shared_note": "A 375 km pipeline serving cement and lime works in western France.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "natran-co2-backbone",
@@ -14598,7 +14674,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1139 (“Natran Group CO2 backbone”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "Dedicated transmission networks for French industrial emitters."
+   "shared_note": "Dedicated transmission networks for French industrial emitters.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "co2-highway-europe",
@@ -14646,7 +14724,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1179 (“CO2 Highway Europe (Zeebrugge offshore CO2 pipeline)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "A pipeline in a chain of 16 emitters across 10 countries."
+   "shared_note": "A pipeline in a chain of 16 emitters across 10 countries.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "starfish-havstjerne",
@@ -14697,7 +14777,11 @@
     ],
     "note": "The IEA CCUS Projects Database 2026 carries this works as entries 28 (“Altera Stella Maris CCS Project Phase 2”), 772 (“STARFISH project (Havstjerne CO2 storage/Altera Stella Maris CCS Project Phase 1)”), 1397 (“Havstjerne CO2 Storage (FSIU)”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). ONE WORKS, SEVERAL LIST ENTRIES: the IEA splits this project by leg, phase or operation year and the register holds one row per works. Each entry still takes its own class, so the gap table keeps summing to the publisher's count."
    },
-   "role": "storage"
+   "role": [
+    "terminal",
+    "storage"
+   ],
+   "role_note": "A floating storage and injection unit: a quay that is also the store's wellhead. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "celsio-ccs-terminal",
@@ -14742,7 +14826,9 @@
    "benchmarks": {
     "iea_ccus_projects_database": 1088,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1088 (“Celsio CCS project terminal”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
-   }
+   },
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "apolloco2-revithoussa",
@@ -14789,7 +14875,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1446 (“APOLLOCO2-LT Revithoussa Island”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "The midstream link in Greece's CCS chain, between capture investments and storage."
+   "shared_note": "The midstream link in Greece's CCS chain, between capture investments and storage.",
+   "role": "transport",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "ccs-baltic-klaipeda",
@@ -14836,7 +14924,9 @@
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 683 (“CCS Baltic Consortium, Klapeida terminal”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
    "shared": true,
-   "shared_note": "A terminal for Latvian and Lithuanian cement works."
+   "shared_note": "A terminal for Latvian and Lithuanian cement works.",
+   "role": "terminal",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   },
   {
    "id": "golianovo-storage",
@@ -14882,7 +14972,8 @@
     "iea_ccus_projects_database": 1529,
     "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1529 (“Golianovo CO₂ Storage Site ”). Matched on the project's own name and its operator agreeing; every match is printed on each run of sources/build_cement_ccs_benchmark.py. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
    },
-   "role": "storage"
+   "role": "storage",
+   "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
   }
  ]
 }

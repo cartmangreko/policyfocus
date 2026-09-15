@@ -563,6 +563,56 @@ being marked as works. Nothing breaks — `captures_co2` reads the dependency gr
 role — but a sector whose rows are mostly routes and quays is the one that would notice. Left
 for a ruling rather than widened by this pass.
 
+### The rulings of 15 September 2026, and a gate that makes a hand-catch mechanical
+
+**D91. `CO2 transported` STANDS, AND IS NEVER SUMMED.** The product keeps a transport rating
+out of every capture-weighted total. The prohibition is written into the vocabulary itself
+rather than into a habit, and the authority is the publisher of the list this sector is
+measured against — the IEA's own Aggregation notes: *"transport capacity of individual
+projects is not cumulative and cannot be summed."* The reason is physical: a tonne moving down
+a chain is claimed by every leg it passes, so **adding two pipelines gives a number that is
+true of no system**.
+
+**D92. `PROJECT_ROLES` GAINS `transport` AND `terminal`**, still closed and still short. A
+pipeline is a route, a terminal is a quay, and calling either a `plant` would have put a
+factory mark on a map where there is neither building nor boundary. **A row may hold both** —
+`role` is a string or a list — because Sullom Voe is a terminal and a hub its owner describes
+as both, and Porthos transports and stores in one sentence of its own site. Of the 43 CCS
+rows: 20 storage, 17 transport, 15 terminal. **Nothing reads the role for the ladder**; it
+exists so the sector can be described.
+
+**D93. A REFUSAL MAY CARRY AN INDUSTRY AND A FATE, AS TWO FIELDS**, and neither substitutes
+for the other. `clause` says which perimeter rule refused the entry and the supplier sweep
+reads it; `fate` is the publisher's own `Fate of carbon`. **MOL Szank is the case it was
+written for**: it keeps `capture, natural gas processing` for the sweep and still shows as
+EOR, so a reader asking which European entries are enhanced oil recovery finds both of them.
+The census prints that table on every run.
+
+**D94. `check_citations`, AND IT EXISTS BECAUSE THIS PASS FAILED.** Twenty-seven rows cited a
+URL that had never been fetched — composed from what a page was expected to be called rather
+than copied from what was read. Every one looked right in review; the defect was caught by
+counting rows against the fetch index **by hand**, which is not a thing anybody should have to
+remember to do. The gate now asks of every cited URL on a row or a technology: is it in a cache
+index with a body, or in the hand-retrieval manifest? It does **not** ask whether the page says
+what the row says — that is reading, and no gate can do it. It asks only whether anybody has
+been there.
+
+**The gate was proved by planting one.** A plausible composed URL on the Porthos row —
+`porthosco2.nl/en/about-the-project/`, the right publisher and a shape that site would
+plausibly use — fails the gate. That test is the reason to believe it works.
+
+**AND IT SHOWED SOMETHING NOBODY HAD COUNTED.** Of 314 distinct cited URLs across the whole
+register, **68 are in a cache index and 12 are hand-read and filed. 234 are neither** — pages
+read before this repository kept a fetch index at all, which the hydrogen and batteries passes
+long predate. They are **unproven rather than wrong**, and failing them would have made the
+gate unrunnable on the day it was written, which is how gates get switched off.
+
+So they are carried in `sources/citation_baseline.json`, dated, counted, and **the list can
+only shrink**: a URL that is neither fetched, nor hand-read, nor on the list fails — which
+stops a new composed URL getting in — and a URL on the list that nothing cites any more
+**also** fails, so the debt cannot be padded and clearing a citation means deleting its line.
+**234 is the number to watch, and it should only ever go down.**
+
 ## 14. What is not in this pull request
 
 - **Northern Endurance**, until its three partner pages are read in a browser. Queued in

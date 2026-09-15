@@ -1229,7 +1229,16 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
                      "attribution is for a figure the project has outlived; a current "
                      "capacity is the project's own")
 
-        _vocab(e, w, r, "role", sm.PROJECT_ROLES)
+        # `role` IS A STRING OR A LIST OF THEM, because a works can be two things
+        # at once: Sullom Voe is a terminal and a hub its owner describes as both.
+        # Ruled 15 September 2026 with the transport and terminal roles.
+        roles = r.get("role")
+        if roles is not None:
+            for one in ([roles] if isinstance(roles, str) else roles):
+                if one not in sm.PROJECT_ROLES:
+                    e.add(w, f"role={one!r} is not one of {'|'.join(sm.PROJECT_ROLES)}")
+            if not isinstance(roles, (str, list)):
+                e.add(w, "role is neither a string nor a list of them")
         if r.get("shared") is not None and r.get("shared") is not True:
             e.add(w, "shared is only ever true — a project that is not shared omits it")
         if r.get("shared") and not r.get("shared_note"):

@@ -89,6 +89,7 @@
    "iea_estimated_capacity_mt": 0.7,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -103,6 +104,7 @@
    "iea_estimated_capacity_mt": 0.3,
    "class": "perimeter exclusion",
    "clause": "capture, natural gas processing",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -157,6 +159,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -171,6 +174,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -205,12 +209,14 @@
    "iea_estimated_capacity_mt": 3,
    "class": "admitted",
    "row": "starfish-havstjerne",
-   "speaker": "Altera Infrastructure with Harbour Energy, own release",
-   "source": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "speaker": "Altera Infrastructure, own article",
+   "source": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
    "verbatim": "The storage, with an annual capacity estimated at 7 million tonnes per annum (Mtpa), is located 100 kilometers southwest of Egersund, Norway.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "ONE PROJECT FAMILY OVER THREE LIST ENTRIES (Stella Maris phase 2); the IEA's own hub column puts all three under Altera Stella Maris or STARFISH. THE VESSEL IS ADMITTED AND THE LICENCE IS NOT: what the row holds is the floating storage and injection infrastructure, not the Havstjerne exploration licence, which the Q2 ruling excludes. The 7 Mtpa is an estimate for the storage and is not written onto the row.",
+   "source_cited_before_repair": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -226,11 +232,13 @@
    "class": "admitted",
    "row": "antwerp-c-export-hub",
    "speaker": "Air Liquide, the lead partner, naming the hub",
-   "source": "https://www.airliquide.com/group/press-releases-news/antwerp-c-co2-export-hub",
+   "source": "https://www.airliquide.com/group/press-releases-news/2022-12-12/air-liquide-fluxys-belgium-and-port-antwerp-bruges-awarded-eu-funding-building-antwerpc-co2-export",
    "verbatim": "The Antwerp@C CO2 Export Hub will have an initial export capacity of 2.5 million tonnes per annum (Mtpa), with the ambition to reach up to 10 Mtpa by 2030.",
    "capacity_stated": "2.5 Mt CO2/yr initial, up to 10 Mt CO2/yr by 2030",
    "capacity_unit": "Mt CO2 per year",
    "note": "phase 1. One hub, two list entries; the capacity is the hub's own figure and is recorded once.",
+   "source_cited_before_repair": "https://www.airliquide.com/group/press-releases-news/antwerp-c-co2-export-hub",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -285,6 +293,7 @@
    "iea_estimated_capacity_mt": 0.125,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -299,6 +308,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -313,6 +323,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -327,6 +338,7 @@
    "iea_estimated_capacity_mt": 2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -341,6 +353,7 @@
    "iea_estimated_capacity_mt": 2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -355,6 +368,7 @@
    "iea_estimated_capacity_mt": 2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -369,6 +383,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -383,6 +398,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -397,6 +413,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -411,6 +428,7 @@
    "iea_estimated_capacity_mt": 3,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -425,6 +443,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, fertiliser",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -477,11 +496,13 @@
    "class": "admitted",
    "row": "cinfracap",
    "speaker": "Nordion Energi with Goteborg Energi, Renova and the Port of Gothenburg, own document",
-   "source": "https://nordionenergi.se/",
+   "source": "https://nordionenergi.se/download/18.11d52c40197a1b26e2329b/1750772049126/NORDION%20HA%CC%8AR%20LA%CC%88NK%20ENG_PUBL_28maj.pdf",
    "verbatim": "The project has investigated the possibility of handling up to 4 million tonnes of captured carbon per year.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "An investigation of a possibility is not a stated capacity, and the 4 Mt is not written onto the row.",
+   "source_cited_before_repair": "https://nordionenergi.se/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -496,6 +517,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -510,6 +532,7 @@
    "iea_estimated_capacity_mt": 0.039,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -524,6 +547,7 @@
    "iea_estimated_capacity_mt": 0.035,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -538,6 +562,7 @@
    "iea_estimated_capacity_mt": 0.184,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -552,6 +577,7 @@
    "iea_estimated_capacity_mt": 0.3,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -566,6 +592,7 @@
    "iea_estimated_capacity_mt": 0.7,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -580,6 +607,7 @@
    "iea_estimated_capacity_mt": 0.7,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -594,6 +622,7 @@
    "iea_estimated_capacity_mt": 1.6,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -608,6 +637,7 @@
    "iea_estimated_capacity_mt": 1.3,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -673,6 +703,7 @@
    "iea_estimated_capacity_mt": 5,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -705,6 +736,7 @@
    "iea_estimated_capacity_mt": 4.3,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -719,6 +751,7 @@
    "iea_estimated_capacity_mt": 3.7,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -733,6 +766,7 @@
    "iea_estimated_capacity_mt": 2.5,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -747,6 +781,7 @@
    "iea_estimated_capacity_mt": 0.8,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -761,6 +796,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -775,6 +811,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -789,6 +826,7 @@
    "iea_estimated_capacity_mt": 2.5,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -803,6 +841,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -817,6 +856,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -831,6 +871,7 @@
    "iea_estimated_capacity_mt": 0.958,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -845,6 +886,7 @@
    "iea_estimated_capacity_mt": 0.12,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -859,6 +901,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, biogas",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -873,6 +916,7 @@
    "iea_estimated_capacity_mt": 0.345,
    "class": "perimeter exclusion",
    "clause": "capture, biogas",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -887,6 +931,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -901,6 +946,7 @@
    "iea_estimated_capacity_mt": 1.7,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -915,6 +961,7 @@
    "iea_estimated_capacity_mt": 0.823,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -929,6 +976,7 @@
    "iea_estimated_capacity_mt": 1.495,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -943,6 +991,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -957,6 +1006,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1026,6 +1076,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -1040,6 +1091,7 @@
    "iea_estimated_capacity_mt": 1.3,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1054,6 +1106,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1068,6 +1121,7 @@
    "iea_estimated_capacity_mt": 1.3,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1082,6 +1136,7 @@
    "iea_estimated_capacity_mt": 0.89,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1096,6 +1151,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -1110,6 +1166,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1139,6 +1196,7 @@
    "iea_estimated_capacity_mt": 1.42,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1153,6 +1211,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1167,6 +1226,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1201,6 +1261,7 @@
    "iea_estimated_capacity_mt": 0.7,
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1215,6 +1276,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -1269,6 +1331,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1321,6 +1384,7 @@
    "iea_estimated_capacity_mt": 2.4,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1335,6 +1399,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, pulp and paper",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1407,6 +1472,7 @@
    "iea_estimated_capacity_mt": 0.35,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1442,6 +1508,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1456,6 +1523,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1470,6 +1538,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1555,6 +1624,7 @@
    "iea_estimated_capacity_mt": 0.55,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1569,6 +1639,7 @@
    "iea_estimated_capacity_mt": 0.55,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1583,6 +1654,7 @@
    "iea_estimated_capacity_mt": 0.3,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1597,12 +1669,14 @@
    "iea_estimated_capacity_mt": 3,
    "class": "admitted",
    "row": "bifrost",
-   "speaker": "TotalEnergies, own release",
-   "source": "https://news.cision.com/totalenergies/",
+   "speaker": "Project Bifrost, the project's own site",
+   "source": "https://bifrost-ccs.com/",
    "verbatim": "When oil and gas production gradually cease, the use of existing infrastructure for carbon capture and storage is an attractive alternative from both a climate and economic perspective.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "phase 1. One project, two list entries.",
+   "source_cited_before_repair": "https://news.cision.com/totalenergies/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -1617,6 +1691,7 @@
    "iea_estimated_capacity_mt": 1.2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1631,6 +1706,7 @@
    "iea_estimated_capacity_mt": 1.8,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1721,6 +1797,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1735,6 +1812,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1749,6 +1827,7 @@
    "iea_estimated_capacity_mt": 0.38,
    "class": "perimeter exclusion",
    "clause": "capture, biodiesel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1763,6 +1842,7 @@
    "iea_estimated_capacity_mt": 0.75,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -1777,6 +1857,7 @@
    "iea_estimated_capacity_mt": 1.6,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1791,6 +1872,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, natural gas processing",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1805,6 +1887,7 @@
    "iea_estimated_capacity_mt": 0.7,
    "class": "perimeter exclusion",
    "clause": "capture, natural gas processing",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1819,6 +1902,7 @@
    "iea_estimated_capacity_mt": 0.65,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1833,6 +1917,7 @@
    "iea_estimated_capacity_mt": 0.8,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1847,6 +1932,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1861,6 +1947,7 @@
    "iea_estimated_capacity_mt": 0.24,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1875,6 +1962,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -1889,6 +1977,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -1903,6 +1992,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1917,6 +2007,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1931,6 +2022,7 @@
    "iea_estimated_capacity_mt": 0.9,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1985,6 +2077,7 @@
    "iea_estimated_capacity_mt": 3.3,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -1999,6 +2092,7 @@
    "iea_estimated_capacity_mt": 0.8,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2013,6 +2107,7 @@
    "iea_estimated_capacity_mt": 1.3,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2027,6 +2122,7 @@
    "iea_estimated_capacity_mt": 0.8,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2041,6 +2137,7 @@
    "iea_estimated_capacity_mt": 0.004,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2055,6 +2152,7 @@
    "iea_estimated_capacity_mt": 0.05,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2069,6 +2167,7 @@
    "iea_estimated_capacity_mt": 0.006,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2083,6 +2182,7 @@
    "iea_estimated_capacity_mt": 8.1,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2123,6 +2223,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2137,6 +2238,7 @@
    "iea_estimated_capacity_mt": 2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2177,6 +2279,7 @@
    "iea_estimated_capacity_mt": 0.8,
    "class": "perimeter exclusion",
    "clause": "capture, fertiliser",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2191,6 +2294,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2205,6 +2309,7 @@
    "iea_estimated_capacity_mt": 5,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2220,11 +2325,13 @@
    "class": "admitted",
    "row": "bacton-ccs",
    "speaker": "Eni UK, own release",
-   "source": "https://www.eni.com/en-IT/media/press-release/2022/09/eni-uk-applies-for-carbon-storage-license.html",
+   "source": "https://www.eni.com/en-IT/media/press-release/2022/09/eni-uk-applies-for-carbon-storage-license-for-hewett-depleted-field.html",
    "verbatim": "Eni UK will play a pivotal role in this industry-led initiative by transporting and storing CO2 in its Hewett depleted gas field, that could be operational as early as 2027. The Hewett depleted gas field is an ideal site for permanent and safe CO2 storage with a total capacity of about 330 million tonnes.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "A TOTAL CAPACITY IS NOT AN ANNUAL ONE. Eni states 330 Mt as what the field holds; the IEA announces 5-10 Mt per YEAR. Different quantities, and neither is written onto the row as the other.",
+   "source_cited_before_repair": "https://www.eni.com/en-IT/media/press-release/2022/09/eni-uk-applies-for-carbon-storage-license.html",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2317,11 +2424,13 @@
    "class": "admitted",
    "row": "ghent-carbon-hub",
    "speaker": "Fluxys, with ArcelorMittal and North Sea Port",
-   "source": "https://www.fluxys.com/en/projects/ghent-carbon-hub",
+   "source": "https://www.fluxys.com/en/press-releases/fluxys-group/2022/220818_press_ghent_carbon_hub",
    "verbatim": "Carbon capture, utilisation and storage (CCUS) is essential for CO2 intensive industries to achieve net zero emissions.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "A hub, which the CCS perimeter names in. `shared` is the standing rule here: a hub serving steel and other industries is claimed by no single ecosystem.",
+   "source_cited_before_repair": "https://www.fluxys.com/en/projects/ghent-carbon-hub",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2336,6 +2445,7 @@
    "iea_estimated_capacity_mt": 0.002,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2395,6 +2505,7 @@
    "iea_estimated_capacity_mt": 0.25,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2517,6 +2628,7 @@
    "iea_estimated_capacity_mt": 0.07,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -2531,6 +2643,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -2566,6 +2679,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2580,6 +2694,7 @@
    "iea_estimated_capacity_mt": 2,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2594,6 +2709,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2609,11 +2725,13 @@
    "class": "admitted",
    "row": "medway-hub-ccs",
    "speaker": "Synergia Energy, own technical presentation",
-   "source": "https://www.synergiaenergy.com/",
+   "source": "https://www.synergiaenergy.com/sites/synergia-energy-ltd/files/synergia-energy-ltd/operations/united-kingdom/medway-hub-ccs-r7-we.pdf",
    "verbatim": "Forbes CO2 Storage Reservoir — Forbes depth structure map at top of Bunter SST.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "THE OWNER'S OWN DOCUMENT IS A PDF and is read as one. The entry also holds an NSTA carbon storage licence, and unlike the licence-only entries it names a hub and a reservoir the owner has mapped.",
+   "source_cited_before_repair": "https://www.synergiaenergy.com/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2628,6 +2746,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -2642,6 +2761,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2656,6 +2776,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2671,11 +2792,13 @@
    "class": "admitted",
    "row": "antwerp-c-export-hub",
    "speaker": "Air Liquide, the lead partner, naming the hub",
-   "source": "https://www.airliquide.com/group/press-releases-news/antwerp-c-co2-export-hub",
+   "source": "https://www.airliquide.com/group/press-releases-news/2024-10-24/air-liquide-and-cementir-holding-group-receive-support-european-innovation-fund-carbon-capture-and",
    "verbatim": "The Antwerp@C CO2 Export Hub will have an initial export capacity of 2.5 million tonnes per annum (Mtpa), with the ambition to reach up to 10 Mtpa by 2030.",
    "capacity_stated": "2.5 Mt CO2/yr initial, up to 10 Mt CO2/yr by 2030",
    "capacity_unit": "Mt CO2 per year",
    "note": "phase 2. One hub, two list entries; the capacity is the hub's own figure and is recorded once.",
+   "source_cited_before_repair": "https://www.airliquide.com/group/press-releases-news/antwerp-c-co2-export-hub",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2690,6 +2813,7 @@
    "iea_estimated_capacity_mt": 0.86,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2705,11 +2829,13 @@
    "class": "admitted",
    "row": "morecambe-net-zero",
    "speaker": "Spirit Energy, own release quoting its chief executive",
-   "source": "https://www.spirit-energy.com/",
+   "source": "https://www.spirit-energy.com/newsroom/press-releases/spirit-energy-launches-plan-for-carbon-storage-cluster/",
    "verbatim": "Neil McCulloch, CEO of Spirit Energy, said: “Our project will introduce cost-effective decarbonisation to businesses all over the UK, with a multi-billion-pound investment.”",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "mnzcluster.com, the project's own cluster site, answers URLError.",
+   "source_cited_before_repair": "https://www.spirit-energy.com/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -2724,6 +2850,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -2738,6 +2865,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, fertiliser",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2752,6 +2880,7 @@
    "iea_estimated_capacity_mt": 0.38,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2766,6 +2895,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2780,6 +2910,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2794,6 +2925,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -2808,6 +2940,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -2822,6 +2955,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3056,6 +3190,7 @@
    "iea_estimated_capacity_mt": 0.16,
    "class": "perimeter exclusion",
    "clause": "capture, natural gas processing",
+   "fate": "EOR",
    "derived": true
   },
   {
@@ -3071,11 +3206,13 @@
    "class": "admitted",
    "row": "norne-gassum",
    "speaker": "Fidelis New Energy, own release",
-   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
    "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Gassum store and the Fyrkat network. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3091,11 +3228,13 @@
    "class": "admitted",
    "row": "norne-havnso",
    "speaker": "Fidelis New Energy, own release",
-   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
    "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Havnso store and the Trelleborg network. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3111,11 +3250,13 @@
    "class": "admitted",
    "row": "norne-aalborg-terminal",
    "speaker": "Fidelis New Energy, own release",
-   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energy-to-store-3-million-tons-of-co2-in-denmark-in-2026-and-10-million-tons-by-2028-301638454.html",
    "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Port of Aalborg terminal and its pipeline to Fyrkat. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it. IEA status Under construction, operation 2026.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3131,11 +3272,13 @@
    "class": "admitted",
    "row": "norne-kalundborg-terminal",
    "speaker": "Fidelis New Energy, own release",
-   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source": "https://norneccs.com/en/news/",
    "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the Port of Kalundborg terminal and its pipeline. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3151,11 +3294,13 @@
    "class": "admitted",
    "row": "norne-kalundborg-terminal",
    "speaker": "Fidelis New Energy, own release",
-   "source": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source": "https://norneccs.com/en/news/",
    "verbatim": "Fidelis New Energy expects to offer 3 million tons of CO2 storage capacity per year starting in 2026.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "NORNE IS ONE PROGRAMME OVER FIVE LIST ENTRIES AND FOUR WORKS: the same Kalundborg terminal at a second announced capacity. The stores and the terminals are different places and take different rows; 673 and 674 are one terminal the IEA carries twice at 4 and 8 Mt. The 3 Mt/yr figure is the programme's and is not split across works, so no row takes it.",
+   "source_cited_before_repair": "https://www.prnewswire.com/news-releases/fidelis-new-energys-new-receiving-facility-will",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3268,6 +3413,7 @@
    "iea_estimated_capacity_mt": 8,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3282,6 +3428,7 @@
    "iea_estimated_capacity_mt": 3,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3296,12 +3443,14 @@
    "iea_estimated_capacity_mt": 10,
    "class": "admitted",
    "row": "bifrost",
-   "speaker": "TotalEnergies, own release",
-   "source": "https://news.cision.com/totalenergies/",
+   "speaker": "Project Bifrost, the project's own site",
+   "source": "https://bifrost-ccs.com/",
    "verbatim": "When oil and gas production gradually cease, the use of existing infrastructure for carbon capture and storage is an attractive alternative from both a climate and economic perspective.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "phase 2. One project, two list entries.",
+   "source_cited_before_repair": "https://news.cision.com/totalenergies/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3441,6 +3590,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, natural gas processing",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3475,6 +3625,7 @@
    "iea_estimated_capacity_mt": 3.7,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3516,7 +3667,9 @@
     "url": "https://molgroup.info/",
     "says": "By application of the EOR project CO2 emissions will be significantly reduced (permanent disposal of 2.9 billion m3 CO2 or 5.4 million tonnes)."
    },
-   "note": "THE OPERATOR CALLS IT PERMANENT DISPOSAL AND THE PUBLISHER CALLS IT EOR, and the ruling takes the publisher's column as the test rather than the operator's word for what the injection achieves. Both are recorded. This is the register's only European CO2 T&S entry with an EOR fate, and it is Operational, running since 2020 — so the exclusion removes a working installation from the sector rather than a plan, which is the case a reader should see the clause applied to.\n\nTHE SECOND EOR ENTRY IS ALREADY OUT ON A DIFFERENT CLAUSE AND STAYS THERE. IEA 669, MOL Szank field CO2 EOR in Hungary, also carries Fate of carbon = EOR, and its Subsector is Natural gas processing/LNG, so it is refused with 'capture, natural gas processing'. That clause is not replaced: the CCS perimeter's rule is that a refusal NAMES THE INDUSTRY because those entries are read later for the supplier nodes, and overwriting it with the EOR clause would throw the industry away to record a fate. The EOR fate is noted here instead.\n\nBOTH APPEAR IN THE SECOND LIST TOO. The CO2RE capture filed for this census shows 'MOL Szank Field CO2-EOR Site (HUN), Operational, 1992' and 'INA/MOL CO2 EOR Croatia (HRV), Operational, 2014' among the ten European rows it renders — which is the only use this register has been able to make of that list.",
+   "note": "THE OPERATOR CALLS IT PERMANENT DISPOSAL AND THE PUBLISHER CALLS IT EOR, and the ruling takes the publisher's column as the test rather than the operator's word for what the injection achieves. Both are recorded. This is the register's only European CO2 T&S entry with an EOR fate, and it is Operational, running since 2020 — so the exclusion removes a working installation from the sector rather than a plan, which is the case a reader should see the clause applied to.\n\nTHE SECOND EOR ENTRY IS ALREADY OUT ON A DIFFERENT CLAUSE AND STAYS THERE. IEA 669, MOL Szank field CO2 EOR in Hungary, also carries Fate of carbon = EOR, and its Subsector is Natural gas processing/LNG, so it is refused with 'capture, natural gas processing'. That clause is not replaced: the CCS perimeter's rule is that a refusal NAMES THE INDUSTRY because those entries are read later for the supplier nodes, and overwriting it with the EOR clause would throw the industry away to record a fate. BOTH FIELDS ARE NOW CARRIED ON EVERY EXCLUDED ENTRY, ruled 15 September 2026: `clause` says which perimeter rule refused it and the supplier sweep reads it, `fate` is the publisher's own Fate of carbon. Szank keeps 'capture, natural gas processing' and still shows as EOR.\n\nBOTH APPEAR IN THE SECOND LIST TOO. The CO2RE capture filed for this census shows 'MOL Szank Field CO2-EOR Site (HUN), Operational, 1992' and 'INA/MOL CO2 EOR Croatia (HRV), Operational, 2014' among the ten European rows it renders — which is the only use this register has been able to make of that list.",
+   "fate": "EOR",
+   "industry": null,
    "derived": false
   },
   {
@@ -3531,6 +3684,7 @@
    "iea_estimated_capacity_mt": 0.19,
    "class": "perimeter exclusion",
    "clause": "capture, fertiliser",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3545,6 +3699,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3580,6 +3735,7 @@
    "iea_estimated_capacity_mt": 0.35,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3594,6 +3750,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3629,6 +3786,7 @@
    "iea_estimated_capacity_mt": 1.3,
    "class": "perimeter exclusion",
    "clause": "capture, power (coal)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3643,6 +3801,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, bioethanol",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3677,6 +3836,7 @@
    "iea_estimated_capacity_mt": 0.3,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3691,6 +3851,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, biodiesel",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3705,6 +3866,7 @@
    "iea_estimated_capacity_mt": 0.28,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3719,6 +3881,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -3739,6 +3902,8 @@
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "THE FIGURE IS AN AVOIDED-EMISSIONS FIGURE FOR THE WHOLE CLUSTER, not this pipeline's capacity, and is not written onto the row. IEA 1065, Cauldon, is one of the cement works this cluster would carry; that entry is named and not admitted.",
+   "source_cited_before_repair": "https://www.peakcluster.co.uk/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3753,12 +3918,14 @@
    "iea_estimated_capacity_mt": 4.275,
    "class": "admitted",
    "row": "starfish-havstjerne",
-   "speaker": "Altera Infrastructure with Harbour Energy, own release",
-   "source": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "speaker": "Altera Infrastructure, own article",
+   "source": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
    "verbatim": "The storage, with an annual capacity estimated at 7 million tonnes per annum (Mtpa), is located 100 kilometers southwest of Egersund, Norway.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "ONE PROJECT FAMILY OVER THREE LIST ENTRIES (the STARFISH project); the IEA's own hub column puts all three under Altera Stella Maris or STARFISH. THE VESSEL IS ADMITTED AND THE LICENCE IS NOT: what the row holds is the floating storage and injection infrastructure, not the Havstjerne exploration licence, which the Q2 ruling excludes. The 7 Mtpa is an estimate for the storage and is not written onto the row.",
+   "source_cited_before_repair": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -3773,6 +3940,7 @@
    "iea_estimated_capacity_mt": 1.2,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3828,6 +3996,7 @@
    "iea_estimated_capacity_mt": 0.17,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3899,6 +4068,7 @@
    "iea_estimated_capacity_mt": 0.05,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3913,6 +4083,7 @@
    "iea_estimated_capacity_mt": 1.87,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3927,6 +4098,7 @@
    "iea_estimated_capacity_mt": 0.24,
    "class": "perimeter exclusion",
    "clause": "capture, aluminium",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -3941,6 +4113,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3955,6 +4128,7 @@
    "iea_estimated_capacity_mt": 1.8,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -3969,6 +4143,7 @@
    "iea_estimated_capacity_mt": 0.6,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4237,10 +4412,12 @@
    "class": "admitted",
    "row": "tranmere-stanlow-terminal",
    "speaker": "Stanlow Terminals (Essar Energy Transition), own site",
-   "source": "https://www.stanlowterminals.co.uk/",
+   "source": "https://www.stanlowterminals.co.uk/stanlow-terminals-and-eni-uk-sign-a-mou-to-develop-carbon-dioxide-transport-and-storage-projects/",
    "verbatim": "The proposed terminal will play a critical role in enabling carbon capture, utilisation and storage (CCUS) infrastructure by facilitating the import and handling of CO2.",
    "capacity_stated": null,
    "capacity_unit": null,
+   "source_cited_before_repair": "https://www.stanlowterminals.co.uk/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -4255,6 +4432,7 @@
    "iea_estimated_capacity_mt": 0.235,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4287,6 +4465,7 @@
    "iea_estimated_capacity_mt": 1.9,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4318,6 +4497,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4332,6 +4512,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4346,6 +4527,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4400,6 +4582,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4414,6 +4597,7 @@
    "iea_estimated_capacity_mt": 0.21,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4428,6 +4612,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4442,6 +4627,7 @@
    "iea_estimated_capacity_mt": 0.084,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4456,6 +4642,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4470,6 +4657,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4499,6 +4687,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4530,6 +4719,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4544,6 +4734,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4558,6 +4749,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4572,6 +4764,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4586,6 +4779,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4600,6 +4794,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4635,6 +4830,7 @@
    "iea_estimated_capacity_mt": 0.274,
    "class": "perimeter exclusion",
    "clause": "capture, chemicals",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4649,6 +4845,7 @@
    "iea_estimated_capacity_mt": 0.123,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4713,6 +4910,7 @@
    "iea_estimated_capacity_mt": 0.36,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4727,6 +4925,7 @@
    "iea_estimated_capacity_mt": 0.9,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4741,6 +4940,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4755,6 +4955,7 @@
    "iea_estimated_capacity_mt": 0.25,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4770,11 +4971,13 @@
    "class": "admitted",
    "row": "celsio-ccs-terminal",
    "speaker": "Aker Solutions, the contractor, naming the project and the chain",
-   "source": "https://www.akersolutions.com/news/",
+   "source": "https://www.akersolutions.com/news/news-archive/2024/aker-solutions-awarded-feed-for-celsios-ccs-terminal-at-the-port-of-oslo/",
    "verbatim": "The Celsio CCS project and the Northern Lights storage are part of Longship, the Norwegian Government's carbon capture and storage project.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "THE TERMINAL IS IN PERIMETER AND THE PLANT IS NOT: Hafslund Oslo Celsio is a waste-to-energy works, which this sector refuses with the clause 'capture, waste-to-energy'. This entry is the transport terminal.",
+   "source_cited_before_repair": "https://www.akersolutions.com/news/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -4789,6 +4992,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4803,6 +5007,7 @@
    "iea_estimated_capacity_mt": 1.4,
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4854,6 +5059,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -4868,6 +5074,7 @@
    "iea_estimated_capacity_mt": 0.25,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4882,6 +5089,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4896,6 +5104,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -4910,6 +5119,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, biodiesel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4924,6 +5134,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4938,6 +5149,7 @@
    "iea_estimated_capacity_mt": 0.65,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4952,6 +5164,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, biodiesel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4966,6 +5179,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4980,6 +5194,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, other industry",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -4994,6 +5209,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5008,6 +5224,7 @@
    "iea_estimated_capacity_mt": 0.26,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5022,6 +5239,7 @@
    "iea_estimated_capacity_mt": 0.22,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5036,6 +5254,7 @@
    "iea_estimated_capacity_mt": 0.13,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5051,11 +5270,13 @@
    "class": "admitted",
    "row": "goco2-transport",
    "speaker": "Heidelberg Materials France, a named partner, on the GOCO2 chain",
-   "source": "https://www.heidelbergmaterials.fr/",
+   "source": "https://www.heidelbergmaterials.fr/fr/groupe-goco2-un-projet-denvergure-de-captage-de-conditionnement-et-de-transport-du-co2-dorigine-industrielle-en-pays-de-la-loire-et-pour-le-grand-ouest",
    "verbatim": "GOCO2 rassemble plusieurs operations complementaires permettant le captage du CO2 et son transport, en vue de son stockage geologique permanent.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "THE TRANSPORT LEG OF THE CHAIN THIS CENSUS ALREADY ADMITTED TWO CAPTURE ROWS INTO — airvault-goco2 and saint-pierre-la-cour-goco2. An adjacency, recorded and not drawn.",
+   "source_cited_before_repair": "https://www.heidelbergmaterials.fr/",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -5070,6 +5291,7 @@
    "iea_estimated_capacity_mt": 1.6,
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5126,11 +5348,13 @@
    "class": "admitted",
    "row": "natran-co2-backbone",
    "speaker": "Natran (formerly GRTgaz), own CCUS pages",
-   "source": "https://www.grtgaz.com/en/our-activities/our-projects/ccus",
+   "source": "https://www.grtgaz.com/en/our-energy-transition/co2-transport",
    "verbatim": "GRTgaz is developing dedicated transmission networks contributing to transport CO2 from the French industrial sites where it is captured to storage and utilisation sites.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "THE COMPANY RENAMED ITSELF. The IEA carries 'Natran Group' and the readable pages are GRTgaz's; the rename is the publisher's own and is recorded rather than treated as two companies.",
+   "source_cited_before_repair": "https://www.grtgaz.com/en/our-activities/our-projects/ccus",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -5145,6 +5369,7 @@
    "iea_estimated_capacity_mt": 0.858,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5195,6 +5420,7 @@
    "iea_estimated_capacity_mt": 0.3,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5209,6 +5435,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5223,6 +5450,7 @@
    "iea_estimated_capacity_mt": 0.34,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5237,6 +5465,7 @@
    "iea_estimated_capacity_mt": 0.131,
    "class": "perimeter exclusion",
    "clause": "capture, biogas",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5251,6 +5480,7 @@
    "iea_estimated_capacity_mt": 0.18,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5265,6 +5495,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5279,6 +5510,7 @@
    "iea_estimated_capacity_mt": 1.5,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5293,6 +5525,7 @@
    "iea_estimated_capacity_mt": 3.7,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5307,6 +5540,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, biogas",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5321,6 +5555,7 @@
    "iea_estimated_capacity_mt": 0.03,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5335,6 +5570,7 @@
    "iea_estimated_capacity_mt": 0.75,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5350,11 +5586,13 @@
    "class": "admitted",
    "row": "co2-highway-europe",
    "speaker": "Equinor, with Fluxys and Natran",
-   "source": "https://www.equinor.com/news/co2-highway-europe",
+   "source": "https://www.equinor.com/energy/co2highwayeurope",
    "verbatim": "It includes 16 emitters in 10 countries, 31 capture sites, and storage of around 34 million tonnes of CO2 per year at two storage sites in the North Sea.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "THE 34 Mt IS THE WHOLE EUROPEAN CHAIN'S FIGURE, not this pipeline's, and is not written onto the row. The IEA announces 18-27 Mt/yr for the entry.",
+   "source_cited_before_repair": "https://www.equinor.com/news/co2-highway-europe",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -5369,6 +5607,7 @@
    "iea_estimated_capacity_mt": 4,
    "class": "perimeter exclusion",
    "clause": "capture, pulp and paper",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5383,6 +5622,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5397,6 +5637,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5411,6 +5652,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "geography, outside the named Europe (Iceland)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5425,6 +5667,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, other industry",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5478,6 +5721,7 @@
    "iea_estimated_capacity_mt": 0.112,
    "class": "perimeter exclusion",
    "clause": "capture, iron and steel",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5509,6 +5753,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5543,6 +5788,7 @@
    "iea_estimated_capacity_mt": 1,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5557,6 +5803,7 @@
    "iea_estimated_capacity_mt": 0.35,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5571,6 +5818,7 @@
    "iea_estimated_capacity_mt": 0.6,
    "class": "perimeter exclusion",
    "clause": "capture, pulp and paper",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5585,6 +5833,7 @@
    "iea_estimated_capacity_mt": 0.33,
    "class": "perimeter exclusion",
    "clause": "capture, pulp and paper",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5599,6 +5848,7 @@
    "iea_estimated_capacity_mt": 0.74,
    "class": "perimeter exclusion",
    "clause": "capture, refining",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5613,6 +5863,7 @@
    "iea_estimated_capacity_mt": 0.46,
    "class": "perimeter exclusion",
    "clause": "capture, bioethanol",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5649,7 +5900,7 @@
    "class": "admitted",
    "row": "carbon-connect-delta",
    "speaker": "Fluxys, a named partner",
-   "source": "https://www.fluxys.com/en/projects/carbon-connect-delta",
+   "source": "https://www.fluxys.com/en/news/fluxys-group/2020/200527_news_carbon_emissions_scheldt_delta",
    "verbatim": "Carbon Connect Delta project: potential to cut CO2 emissions 30% by 2030.",
    "capacity_stated": null,
    "capacity_unit": null,
@@ -5660,6 +5911,8 @@
     "owner_states": null,
     "note": "D81: a cancellation is a stop event only from the owner or the consortium. Smart Delta Resources' own page answers with 905 characters and says nothing about a cancellation, and Fluxys' project page still carries the project. The row lands on its announcement and carries the list's status as the list's claim."
    },
+   "source_cited_before_repair": "https://www.fluxys.com/en/projects/carbon-connect-delta",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -5800,6 +6053,7 @@
    "iea_estimated_capacity_mt": 0.28,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5814,6 +6068,7 @@
    "iea_estimated_capacity_mt": 0.33,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5828,6 +6083,7 @@
    "iea_estimated_capacity_mt": 0.23,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5842,6 +6098,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, biogas",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -5856,6 +6113,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5870,6 +6128,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5884,6 +6143,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5898,6 +6158,7 @@
    "iea_estimated_capacity_mt": 2.5,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5912,6 +6173,7 @@
    "iea_estimated_capacity_mt": 0.175,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -5926,6 +6188,7 @@
    "iea_estimated_capacity_mt": 1.837,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5940,6 +6203,7 @@
    "iea_estimated_capacity_mt": 1.2,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5954,6 +6218,7 @@
    "iea_estimated_capacity_mt": 0.001,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5968,6 +6233,7 @@
    "iea_estimated_capacity_mt": 0.029,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5982,6 +6248,7 @@
    "iea_estimated_capacity_mt": 0.07,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -5996,6 +6263,7 @@
    "iea_estimated_capacity_mt": 0.03,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6010,6 +6278,7 @@
    "iea_estimated_capacity_mt": 0.07,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6024,6 +6293,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6083,6 +6353,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, lime",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6121,6 +6392,7 @@
    "iea_estimated_capacity_mt": 2.3,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6153,6 +6425,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6167,6 +6440,7 @@
    "iea_estimated_capacity_mt": 0.12,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -6181,12 +6455,14 @@
    "iea_estimated_capacity_mt": "",
    "class": "admitted",
    "row": "starfish-havstjerne",
-   "speaker": "Altera Infrastructure with Harbour Energy, own release",
-   "source": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "speaker": "Altera Infrastructure, own article",
+   "source": "https://alterainfra.com/articles/one-step-closer-to-realising-stella-maris-ccs",
    "verbatim": "The storage, with an annual capacity estimated at 7 million tonnes per annum (Mtpa), is located 100 kilometers southwest of Egersund, Norway.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "ONE PROJECT FAMILY OVER THREE LIST ENTRIES (the Havstjerne floating storage injection unit); the IEA's own hub column puts all three under Altera Stella Maris or STARFISH. THE VESSEL IS ADMITTED AND THE LICENCE IS NOT: what the row holds is the floating storage and injection infrastructure, not the Havstjerne exploration licence, which the Q2 ruling excludes. The 7 Mtpa is an estimate for the storage and is not written onto the row.",
+   "source_cited_before_repair": "https://www.globenewswire.com/news-release/altera-stella-maris-starfish",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -6242,11 +6518,13 @@
    "class": "admitted",
    "row": "fluxys-c-grid-antwerp",
    "speaker": "Fluxys, own release of 26 May 2025",
-   "source": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-starts",
+   "source": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-started-in-antwerp-port-area",
    "verbatim": "With this pipeline network Fluxys c-grid Antwerp will provide an essential part of the value chain through which the captured CO2 from Antwerp's industry and beyond can be transported.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "IEA status Under construction, operation 2029.",
+   "source_cited_before_repair": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-starts",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -6261,6 +6539,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -6296,11 +6575,13 @@
    "class": "admitted",
    "row": "apolloco2-revithoussa",
    "speaker": "DESFA, the Greek gas transmission operator and named partner",
-   "source": "https://www.desfa.gr/en/desfa-secures-e169-3-million-eu-innovation-fund-grant-for-apolloco2",
+   "source": "https://www.desfa.gr/en/desfa-secures-e169-3-million-eu-innovation-fund-grant-for-apolloco%e2%82%82-advancing-greeces-first-large-scale-ccs-midstream-infrastructure/",
    "verbatim": "APOLLOCO2 provides the critical midstream link in Greece's emerging CCS value chain, connecting CO2 capture investments with storage facilities.",
    "capacity_stated": null,
    "capacity_unit": null,
    "note": "The midstream link for the chain this census already admitted olympus-milaki into, and which prinos-co2-storage sits at the end of. An adjacency, recorded and not drawn.",
+   "source_cited_before_repair": "https://www.desfa.gr/en/desfa-secures-e169-3-million-eu-innovation-fund-grant-for-apolloco2",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -6509,10 +6790,12 @@
    "class": "admitted",
    "row": "fluxys-c-grid-belgium",
    "speaker": "Fluxys, own press release",
-   "source": "https://www.fluxys.com/en/press-releases/fluxys-belgium/2025/251025-press-fluxys-c-grid-walloon",
+   "source": "https://www.fluxys.com/en/press-releases/fluxys-belgium/2023/230920_press_co2-network-operator-fluxys-c-grid",
    "verbatim": "The phased development of this open-access pipeline network in the Walloon Region will connect industrial CO2 emitters with CO2 exit points towards permanent storage or reuse.",
    "capacity_stated": null,
    "capacity_unit": null,
+   "source_cited_before_repair": "https://www.fluxys.com/en/press-releases/fluxys-belgium/2025/251025-press-fluxys-c-grid-walloon",
+   "source_repair_note": "CITATION REPAIRED 15 September 2026. The entry first cited a canonical-looking URL on the right publisher that this register had NEVER FETCHED. The source is now the URL actually in sources/cache/ccs/index.json, with a body on disk under its hash. A citation nobody fetched is a citation nobody can check, and it is the same failure as D88 pointed the other way.",
    "derived": false
   },
   {
@@ -6551,6 +6834,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6585,6 +6869,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -6599,6 +6884,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Use",
    "derived": true
   },
   {
@@ -6636,6 +6922,7 @@
    "iea_estimated_capacity_mt": 0.6,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6650,6 +6937,7 @@
    "iea_estimated_capacity_mt": 0.009,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6664,6 +6952,7 @@
    "iea_estimated_capacity_mt": 0.03,
    "class": "perimeter exclusion",
    "clause": "direct air capture, no host works",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6696,6 +6985,7 @@
    "iea_estimated_capacity_mt": 0.56,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -6710,6 +7000,7 @@
    "iea_estimated_capacity_mt": 0.14,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6781,6 +7072,7 @@
    "iea_estimated_capacity_mt": 0.15,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6891,6 +7183,7 @@
    "iea_estimated_capacity_mt": 0.5,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6905,6 +7198,7 @@
    "iea_estimated_capacity_mt": 0.45,
    "class": "perimeter exclusion",
    "clause": "capture, power (gas)",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6938,6 +7232,7 @@
    "iea_estimated_capacity_mt": "",
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6952,6 +7247,7 @@
    "iea_estimated_capacity_mt": 0.4,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Dedicated storage",
    "derived": true
   },
   {
@@ -6966,6 +7262,7 @@
    "iea_estimated_capacity_mt": 0.11,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -6980,6 +7277,7 @@
    "iea_estimated_capacity_mt": 0.17,
    "class": "perimeter exclusion",
    "clause": "capture, power (bioenergy)",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -6994,6 +7292,7 @@
    "iea_estimated_capacity_mt": 0.27,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -7008,6 +7307,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -7022,6 +7322,7 @@
    "iea_estimated_capacity_mt": 0.1,
    "class": "perimeter exclusion",
    "clause": "capture, waste-to-energy",
+   "fate": "Unknown/unspecified",
    "derived": true
   },
   {
@@ -7073,6 +7374,7 @@
    "iea_estimated_capacity_mt": 0.2,
    "class": "perimeter exclusion",
    "clause": "capture, hydrogen or ammonia",
+   "fate": "Unknown/unspecified",
    "derived": true
   }
  ],
