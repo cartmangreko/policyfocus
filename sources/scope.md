@@ -1627,6 +1627,38 @@ name alone, and in all three the company's own source refuses a declared reader.
 Holland Hydrogen 2 in particular is discussed publicly as a separate later project, which
 would make it a gap the register had been explaining away.
 
+### The order a source is searched in, and a tracker's citations are not the search
+
+**Ruled 16 September 2026**, after the steel census failed a works it should have found
+first time. The order is:
+
+1. **The owner's own domain.** The newsroom, the project page, the investor material.
+2. **The permitting authority**, and any funder that published an award.
+3. **Any tracker's citation list**, last.
+
+**A TRACKER'S CITATION LIST IS A STARTING POINT AND NEVER THE SEARCH.** GEM's gem.wiki
+pages, the IEA's `Ref 1..7` columns, LeadIT's dataset rows — each is a record of what
+*that* publisher read. Following it tells you where somebody else looked. It does not tell
+you what the owner says, and it is not evidence of absence when it comes back empty.
+
+**The case it was written from.** Tata Steel's Port Talbot electric arc furnace is the
+largest single steel investment in the United Kingdom. The census followed **sixteen**
+citations from the works' gem.wiki page and reached no Tata Steel document, and classed
+the entry `named not admitted` — a real project, recorded as unsourced. `tatasteeluk.com`
+answered **on the first request**, with the capacity, the hybrid planning application
+quoted in full, the February 2025 planning consent and a timeline to operation in late
+2027. The owner had said everything; nobody had asked the owner.
+
+**Why the order matters more than the effort.** The failure is not that the wiki was read —
+it is a reasonable place to start and this register will go on starting there. The failure
+is that reading it **felt like searching**: sixteen documents, every one fetched, indexed
+and hashed, producing a rich and entirely misdirected record of work. **An exhaustive
+search of the wrong list is indistinguishable from diligence** until somebody tries the
+right one.
+
+This sits beside "A document is sourced by its author, not by its host". That rule says
+who a document belongs to; this one says whose door to knock on first.
+
 ### When a publisher goes dark after a page was read, cite the capture
 
 A source read today may be unreadable tomorrow: uniper.energy closed overnight on 10
