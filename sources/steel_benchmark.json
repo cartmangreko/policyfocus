@@ -1,20 +1,46 @@
 {
  "_comment": [
-  "THE 132 EUROPEAN PLANTS OF THE GLOBAL IRON AND STEEL TRACKER, June 2026 (V1), worked one at a time.",
+  "The steel census: GEM's tracker worked entry by entry, and the gate.",
   "",
-  "KEYED BY GEM'S OWN `GEM plant ID`, which is the benchmark's own identifier.",
+  "    python3 sources/build_steel_benchmark.py",
   "",
-  "GEM'S FORWARD STATUS IS RECORDED ON EVERY ENTRY AS A CLAIM WITH ITS VINTAGE, and never as a",
-  "class. The unit tables say what GEM knows, not what exists: a plant GEM shows with no",
-  "announced or construction unit may have an owner-announced DRI, EAF or hydrogen-ready furnace",
-  "GEM has not recorded. The 37 plants with a forward unit are where the perimeter is likely to",
-  "bite; THE 95 WITHOUT ONE ARE WHERE THE CENSUS EARNS ITS NAME.",
+  "THE FIRST LIST. GEM's Global Iron and Steel Tracker, June 2026 (V1), CC BY 4.0 by",
+  "the file's own About tab. 1293 plants worldwide; the census is of the 132 whose",
+  "`Country/area` is in the steel perimeter's named Europe — the EU, the United",
+  "Kingdom, Norway and Switzerland. THE SUBSET IS THE PUBLISHER'S OWN COLUMN, which",
+  "is the only reason a gap table over it may claim to sum to the list.",
   "",
-  "EVERY ENTRY RECORDS WHICH LIST IT CAME FROM. GEM's floor is 0.5 mtpa, stated on its own About",
-  "tab; LeadIT sets no capacity floor. An entry on one list and not the other is a fact about the",
-  "lists, and the coverage and drift claims name the source list in every case."
+  "GEM'S FORWARD STATUS IS A CLAIM AND NEVER A CLASS. The unit tables say what GEM",
+  "knows, not what exists, and all 132 were searched against their owners' own",
+  "documents before any was classed — 823 fetches, gem.wiki used as a starting point",
+  "and never cited. Of the 95 plants GEM shows nothing forward at, ONE turned out to",
+  "carry an owner statement GEM has not recorded, and it is a question rather than",
+  "an admission.",
+  "",
+  "THE 0.5 MTPA FLOOR IS GEM'S, NOT THIS REGISTER'S, and it bounds every coverage",
+  "figure below. GEM states it on its own About tab: \"This database only includes",
+  "plants with crude iron/steelmaking capacity of five hundred thousand tonnes per",
+  "annum (0.5 mtpa) and greater.\" The steel perimeter has NO tonnage threshold,",
+  "deliberately. So a works under half a million tonnes cannot appear in this table",
+  "at all, and no figure here may be read as coverage of European steel. LeadIT sets",
+  "no capacity floor and is the second list for exactly that reason; until it is in,",
+  "every number below carries the floor."
  ],
+ "generated": "2026-09-16",
+ "first_list": "gem_global_iron_steel_tracker",
+ "second_list": {
+  "benchmark": "leadit_green_steel_tracker",
+  "status": "awaited — an email form",
+  "why": "sets no capacity floor; GEM's is 0.5 mtpa"
+ },
  "population": 132,
+ "counts": {
+  "admitted": 26,
+  "perimeter exclusion": 88,
+  "searched none found": 12,
+  "held for ruling": 1,
+  "named not admitted": 5
+ },
  "entries": {
   "P100000120620": {
    "name": "Acciaierie d'Italia Taranto steel plant",
