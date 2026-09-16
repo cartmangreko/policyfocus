@@ -14,7 +14,13 @@
   "and MISSED the path built from separate quoted segments, so the first steel fetches wrote",
   "into the cement-and-CCS index. Caught when a later read looked for the steel index and",
   "found none. The entries are moved rather than re-fetched: they are the same bytes under",
-  "the same hashes, and a re-fetch would have recorded a second reading that never happened."
+  "the same hashes, and a re-fetch would have recorded a second reading that never happened.",
+  "",
+  "TWENTY RECORDS CARRY `defect` AND `superseded_by`, from 15 September 2026. They are the",
+  "UnicodeEncodeError failures that hid twenty of the largest works in Europe: the request was",
+  "never sent, so the record says nothing about the publisher. They are kept because this",
+  "register does not delete fetches, and each names the successful re-fetch that replaced it.",
+  "check_fetch_records.py accepts a defective record only when it carries that supersession."
  ],
  "fetches": [
   {
@@ -162,7 +168,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120423 AG der Dillinger Hüttenwerke Dillingen steel plant"
+   "note": "steel census: P100000120423 AG der Dillinger Hüttenwerke Dillingen steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "43092370f43ab49ee3c4591151e10cb60906326c0c9f988abb731833f43235de",
+    "outcome": "200, 19988 chars",
+    "bytes": 143294
+   }
   },
   {
    "url": "https://www.gem.wiki/Acciaierie_Venete_Borgo_Valsugana_steel_plant",
@@ -258,7 +272,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120029 Aperam Stainless Belgium Châtelet steel plant"
+   "note": "steel census: P100000120029 Aperam Stainless Belgium Châtelet steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "e45937baecb342e5012b39823a0a19468519b0f1281ecb2f9b2e4a4d8a50172a",
+    "outcome": "200, 10646 chars",
+    "bytes": 86547
+   }
   },
   {
    "url": "https://www.gem.wiki/Aperam_Stainless_Belgium_Genk_steel_plant",
@@ -294,7 +316,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120452 ArcelorMittal Asturias (Gijón) steel plant"
+   "note": "steel census: P100000120452 ArcelorMittal Asturias (Gijón) steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "4affbea8126bf89ef40000f1cdb5ff83f029e8dd020fe1dc9a14d1c6bfa9768d",
+    "outcome": "200, 16273 chars",
+    "bytes": 120543
+   }
   },
   {
    "url": "https://www.gem.wiki/ArcelorMittal_Bremen_steel_plant",
@@ -354,7 +384,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120785 ArcelorMittal Dąbrowa Górnicza steel plant"
+   "note": "steel census: P100000120785 ArcelorMittal Dąbrowa Górnicza steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "b967cc79f1e3aab28853d149e9c72287cae321c0a7d2544db87b077fd5596343",
+    "outcome": "200, 13906 chars",
+    "bytes": 112355
+   }
   },
   {
    "url": "https://www.gem.wiki/ArcelorMittal_Eisenhüttenstadt_steel_plant",
@@ -366,7 +404,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120425 ArcelorMittal Eisenhüttenstadt steel plant"
+   "note": "steel census: P100000120425 ArcelorMittal Eisenhüttenstadt steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "94c0fc58409b21596de06caa51210991136d8663e3cfa308759036da4b23c0cb",
+    "outcome": "200, 19839 chars",
+    "bytes": 144693
+   }
   },
   {
    "url": "https://www.gem.wiki/ArcelorMittal_Esch-Belval_steel_plant",
@@ -426,7 +472,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120786 ArcelorMittal Kraków steel plant"
+   "note": "steel census: P100000120786 ArcelorMittal Kraków steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "0a95b0997a5022996dee80f83c04f1f1c204f396e09a24299cdb7e82b81a1d7f",
+    "outcome": "200, 10107 chars",
+    "bytes": 86456
+   }
   },
   {
    "url": "https://www.gem.wiki/ArcelorMittal_Méditerranée_Fos_sur_Mer_steel_plant",
@@ -438,7 +492,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120473 ArcelorMittal Méditerranée Fos sur Mer steel plant"
+   "note": "steel census: P100000120473 ArcelorMittal Méditerranée Fos sur Mer steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "7580de06cbb398343a60aaf5bd0c0c1d5a8c4ba61970e6500da6b34f1a1ccc77",
+    "outcome": "200, 21648 chars",
+    "bytes": 133324
+   }
   },
   {
    "url": "https://www.gem.wiki/ArcelorMittal_Olaberria-Bergara_(Olaberria)_steel_plant",
@@ -546,7 +608,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120434 CSN Stahlwerk Thüringen Unterwellenborn steel plant"
+   "note": "steel census: P100000120434 CSN Stahlwerk Thüringen Unterwellenborn steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "6cf4ebd05b3741ac3a5ec05dc708b87fab8527c4247fbd8c0bd95d1544a11de8",
+    "outcome": "200, 9550 chars",
+    "bytes": 78635
+   }
   },
   {
    "url": "https://www.gem.wiki/Celsa_Barcelona_Castellbisbal_steel_plant",
@@ -786,7 +856,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100001045310 Georgsmarienhütte Osnabrück steel plant"
+   "note": "steel census: P100001045310 Georgsmarienhütte Osnabrück steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "9deb5293d6a756d63dbefbfbab2efe55c1c355f5f7c1f7a380992056b2339dec",
+    "outcome": "200, 6512 chars",
+    "bytes": 61260
+   }
   },
   {
    "url": "https://www.gem.wiki/GravitHy_Fos_sur_Mer_iron_plant",
@@ -918,7 +996,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120422 Hüttenwerke Krupp Mannesmann (HKM) steel plant"
+   "note": "steel census: P100000120422 Hüttenwerke Krupp Mannesmann (HKM) steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "6f8d3fcd8c1d4d22d2013966ab906c9a3fd9a637c72a5f90c40e1a25087c8201",
+    "outcome": "200, 14825 chars",
+    "bytes": 108258
+   }
   },
   {
    "url": "https://www.gem.wiki/IRO_Odolo_steel_plant",
@@ -966,7 +1052,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120476 LME Trith-Saint-Léger steel plant"
+   "note": "steel census: P100000120476 LME Trith-Saint-Léger steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "39464496fc0a0714b05d1daeb05bd9debc53020c30d0bd34743ef731abde747b",
+    "outcome": "200, 6342 chars",
+    "bytes": 61337
+   }
   },
   {
    "url": "https://www.gem.wiki/Lech_Stahlwerke_Meitingen_steel_plant",
@@ -990,7 +1084,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120496 Liberty Steel Dunaferr Dunaújváros steel plant"
+   "note": "steel census: P100000120496 Liberty Steel Dunaferr Dunaújváros steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "f258b31c6c5d33ecaf121a2d4ae89d403cb3434a4fbe08ccb97d385781251636",
+    "outcome": "200, 16675 chars",
+    "bytes": 127968
+   }
   },
   {
    "url": "https://www.gem.wiki/Liberty_Steel_Dunkerque_DRI_plant",
@@ -1014,7 +1116,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120716 Liepājas Metalurgs steel plant"
+   "note": "steel census: P100000120716 Liepājas Metalurgs steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "1838fb520c4dba7afd5a9107fc55b2743b2928079332f55cd3dab3e684f8aade",
+    "outcome": "200, 6287 chars",
+    "bytes": 60219
+   }
   },
   {
    "url": "https://www.gem.wiki/Marcegaglia_Fos_Sur_Mer_steel_plant",
@@ -1062,7 +1172,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120463 Megasa Siderúrgica Narón steel plant"
+   "note": "steel census: P100000120463 Megasa Siderúrgica Narón steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "20574b0d96e79fbde0487855d6608d1cc5c1212c6fc519eaef9572e06651ca4e",
+    "outcome": "200, 5504 chars",
+    "bytes": 54713
+   }
   },
   {
    "url": "https://www.gem.wiki/Megasider_Zaragoza_steel_plant",
@@ -1362,7 +1480,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120845 SSAB Luleå steel plant"
+   "note": "steel census: P100000120845 SSAB Luleå steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "f0645c467438acb3e5574087a051cc1d72e28c272d3f25f69cadc91aa34522b1",
+    "outcome": "200, 14881 chars",
+    "bytes": 118113
+   }
   },
   {
    "url": "https://www.gem.wiki/SSAB_Oxelösund_steel_plant",
@@ -1374,7 +1500,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120844 SSAB Oxelösund steel plant"
+   "note": "steel census: P100000120844 SSAB Oxelösund steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "65e68fa3b0a0c487c6d7c273d262a6ca42e1afe4fc7bd3598f88497a8f28c76f",
+    "outcome": "200, 13574 chars",
+    "bytes": 104089
+   }
   },
   {
    "url": "https://www.gem.wiki/SSAB_Raahe_steel_plant",
@@ -1410,7 +1544,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120432 Saarstahl Völklingen steel plant"
+   "note": "steel census: P100000120432 Saarstahl Völklingen steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "5d2df2179f9b106ed1a3cc2e8e17c4dc2124a91435f381b9cbf1901dc2aab2fd",
+    "outcome": "200, 11568 chars",
+    "bytes": 94314
+   }
   },
   {
    "url": "https://www.gem.wiki/Salzgitter_Flachstahl_steel_plant",
@@ -1434,7 +1576,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120433 Salzgitter Peiner Träger Peine steel plant"
+   "note": "steel census: P100000120433 Salzgitter Peiner Träger Peine steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "34840a3565fe884367ee8e618eded824da8207669875eecddd27d2eeaa2a8717",
+    "outcome": "200, 7252 chars",
+    "bytes": 62992
+   }
   },
   {
    "url": "https://www.gem.wiki/Se.ven_GI_Cardiff_steel_plant",
@@ -1554,7 +1704,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000121227 Swiss Steel Emmenbrücke plant"
+   "note": "steel census: P100000121227 Swiss Steel Emmenbrücke plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "cf5fad2e95f68d3309d14a5db2ae74b338d25999515facef1431e5c1e63c77b9",
+    "outcome": "200, 7202 chars",
+    "bytes": 64788
+   }
   },
   {
    "url": "https://www.gem.wiki/Tata_Steel_IJmuiden_steel_plant",
@@ -1638,7 +1796,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "UnicodeEncodeError",
-   "note": "steel census: P100000120854 U. S. Steel Košice steel plant"
+   "note": "steel census: P100000120854 U. S. Steel Košice steel plant",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the diacritic in it. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader.",
+   "superseded_by": {
+    "date": "2026-09-16",
+    "sha256": "88496204daecd7c287adc5b88bf5f0ad0697a6c44ffa85348440dfb9e2fd9e77",
+    "outcome": "200, 10853 chars",
+    "bytes": 94902
+   }
   },
   {
    "url": "https://www.gem.wiki/UMB_Hunedoara_steel_plant",
