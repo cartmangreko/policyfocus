@@ -66,14 +66,26 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "admitted",
-   "row": "acciaierie-ditalia-taranto",
-   "leg": "announced DRI plant; EAF at an existing BF-BOF works",
-   "speaker": "Il Sole 24 Ore, reporting the plan Acciaierie d'Italia presented to the Italian government at MIMIT on 14 July",
-   "source": "https://en.ilsole24ore.com/art/former-ilva-plan-8-million-tonnes-and-new-tender-AH8aOmiB",
-   "verbatim": "In support of the four furnaces, as many pre-drilling plants (Dri), but all in Taranto because it is not feasible to build a Dri in Genoa as was first thought. Second phase from 2028 to 2031 with a second electric furnace and a third Dri, fourth and final phase from 2030 to 2033 with the third furnace and the fourth Dri.",
-   "note": "THE ADMITTING SOURCE IS A NEWSPAPER REPORTING A PLAN PRESENTED TO A MINISTRY, not the company's own page. acciaierieditalia.com, archived, states only a conditional ambition — production with green hydrogen 'to be reached when technologies will allow'. THE COMPANY'S OWN VOICE IS WEAKER THAN THE REPORT OF WHAT IT TOLD THE GOVERNMENT, and that is recorded rather than smoothed over. Four DRI and three EAFs, which matches GEM's four announced units.",
-   "source_list": "gem_global_iron_steel_tracker"
+   "class": "named not admitted",
+   "speaker": "Acciaierie d'Italia, own site (archived)",
+   "source": "https://web.archive.org/web/20240125052617/https://www.acciaierieditalia.com/en/company/",
+   "verbatim": "...with the mid-term objective, to be reached when technologies will allow to produce green hydrogen (exclusively with renewable energies).",
+   "note": "CORRECTED 16 September 2026. The earlier pass admitted this entry on the newspaper's report. THE PERIMETER ASKS FOR COMPANY CONFIRMATION and the company's own words are conditional — 'when technologies will allow'. THE MINISTRY'S OWN DOCUMENT WOULD BE A GOVERNMENT SPEAKER and was looked for: mimit.gov.it answers with navigation and no release text to a declared reader. Queued for a browser. AND THE COMPANY IS IN EXTRAORDINARY ADMINISTRATION — its own home page carries 'Acciaierie d'Italia ammessa all'Amministrazione Straordinaria' — which is context for why its own voice on a 2033 plan is thin.",
+   "source_list": "gem_global_iron_steel_tracker",
+   "failed_leg": "the perimeter is company-confirmed and the company confirms an ambition, not a project",
+   "benchmark_claim": {
+    "claimed_by": "Il Sole 24 Ore, reporting the plan presented to MIMIT on 14 July",
+    "url": "https://en.ilsole24ore.com/art/former-ilva-plan-8-million-tonnes-and-new-tender-AH8aOmiB",
+    "says": "In support of the four furnaces, as many pre-drilling plants (Dri), but all in Taranto... Second phase from 2028 to 2031 with a second electric furnace and a third Dri, fourth and final phase from 2030 to 2033 with the third furnace and the fourth Dri.",
+    "note": "A NEWSPAPER'S REPORT OF WHAT A COMPANY TOLD A MINISTRY IS NEITHER SPEAKER."
+   },
+   "looked_in_order": [
+    "acciaierieditalia.com — 200 with 1,814 characters, a navigation shell; the live site carries no project page readable by a declared reader",
+    "acciaierieditalia.com/en/ — 404",
+    "the archived company page of 25 January 2024 — a conditional ambition, quoted above",
+    "mimit.gov.it — 200 with 3,939 characters, a shell",
+    "mimit.gov.it/it/notizie-stampa — 200 with 9,097 characters, a navigation shell with no release text"
+   ]
   },
   "P100000120634": {
    "name": "Acciaierie Venete Borgo Valsugana steel plant",
@@ -504,7 +516,15 @@
    "capacity_stated": "2.3 Mt DRI per year; 1.1 Mt EAF",
    "capacity_unit": "Mt per year",
    "note": "THE ADMITTING SENTENCE IS CARRIED BY A NEWSWIRE REPRODUCING ArcelorMittal's OWN ANNOUNCEMENT. corporate.arcelormittal.com is read for Fos and Dunkerque; for Gijón this is the readable copy on file.",
-   "source_list": "gem_global_iron_steel_tracker"
+   "source_list": "gem_global_iron_steel_tracker",
+   "location_statement": {
+    "relation": "offtake",
+    "anchor_works": "ArcelorMittal Sestao (P100000120453)",
+    "speaker": "ArcelorMittal, own announcement with the Government of Spain",
+    "source_url": "https://www.globenewswire.com/news-release/2021/07/13/2261838/0/en/ArcelorMittal-Sestao",
+    "verbatim": "The Gijón DRI will also feed the company's Sestao plant, situated approximately 250km from Gijón, where production is already entirely from the electric arc furnace route. The construction of the new green hydrogen DRI plant in Gijón will not only enable us to reduce emissions from our Spanish operations by half but will also result in the world's first full-scale zero carbon-emissions steel plant in Sestao.",
+    "note": "ADDED 16 September 2026 under the S1 ruling. Sestao is refused as a fuel switch; its stated dependence on this works is recorded HERE, on the works that makes the iron. ADJACENCY DOES NOT PLACE A ROW — the 13 September 2026 ruling — so this names a relation and not a position."
+   }
   },
   "P100000120426": {
    "name": "ArcelorMittal Bremen steel plant",
@@ -928,20 +948,21 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "held for ruling",
-   "clause": "scrap EAF, no primary capacity",
-   "ruling": "THE CLAUSE IS APPLIED ONLY AFTER THE OWNER HAS BEEN READ, ruled 15 September 2026. Every plant below was searched against the documents its own owner or permitting authority published — the search that GEM's silence does not substitute for — and none states a DRI plant, an EAF against blast-furnace capacity, greenfield primary steelmaking or a hydrogen-ready furnace. GEM's furnace type agrees, and the clause rests on the owner.",
+   "class": "perimeter exclusion",
+   "clause": "fuel switch, no primary route change",
+   "ruling": "RULED 16 September 2026, on question S1. A HYDROGEN-READY FURNACE MEANS THE UNIT THAT MAKES IRON OR STEEL — a DRI shaft, an EAF, or a furnace the owner states replaces blast-furnace capacity. Hydrogen fed to reheat or burner equipment is a fuel switch and is outside the perimeter.",
    "source_list": "gem_global_iron_steel_tracker",
    "looked_in_order": [
     "https://www.globenewswire.com/news-release/2021/07/13/2261838/0/en/ArcelorMittal-Sestao-to-become-the-world-s-first-full-scale-zero-carbon-emissions1-steel-plant.html"
    ],
-   "note": "THE ONE PLANT IN NINETY-FIVE WHERE GEM'S SILENCE HID SOMETHING. GEM records nothing forward at Sestao; the owner announces an investment there in the same breath as the Gijón DRI. It is not a DRI or an EAF, which is why it is a question rather than an admission.",
+   "note": "THE WORKS' STEELMAKING FURNACE IS AN EXISTING SCRAP EAF AND NOTHING REPLACES IT. What the investment changes is the fuel in the burners and the iron that arrives from somewhere else. THE IRON IS THE POINT AND IT IS MADE AT GIJÓN: Sestao's own zero-carbon claim rests on a DRI plant at another works, which this census admits as its own entry. Recorded there as a location statement rather than here as a project, so the tonne is counted once and at the place it is made.",
    "question": "Is hydrogen fired in a works' BURNERS a 'hydrogen-ready furnace' for the steel perimeter, at a works whose steelmaking furnace is an existing scrap EAF?",
    "speaker": "ArcelorMittal, own announcement with the Government of Spain",
    "source": "https://www.globenewswire.com/news-release/2021/07/13/2261838/0/en/ArcelorMittal-Sestao",
    "verbatim": "In addition to the investments in the DRI and EAF installations in Gijón, ArcelorMittal will invest €50 million in Sestao. This, together with the green DRI and hydrogen feeding the burners, will result in the Sestao plant achieving zero carbon-emissions.",
    "why_the_rules_did_not_settle_it": "The perimeter's four legs are an announced DRI plant, an EAF replacing blast-furnace capacity, greenfield DRI/EAF primary steelmaking, and a hydrogen-ready furnace. Sestao has no blast furnace, is not greenfield, and its DRI is at GIJÓN — a different works, already admitted. What is at Sestao is €50 million and hydrogen fed to burners. Whether that is 'a hydrogen-ready furnace' turns on whether the leg means the steelmaking furnace or any furnace at the works, and the rule does not say.",
-   "rule_would_need_to_say": "Whether 'hydrogen-ready furnace' names the vessel that makes the steel, or any fired equipment at the works. If the former, Sestao is refused and its zero-carbon claim rests on iron made elsewhere; if the latter, reheat and annealing furnaces across the sector come into scope."
+   "rule_would_need_to_say": "Whether 'hydrogen-ready furnace' names the vessel that makes the steel, or any fired equipment at the works. If the former, Sestao is refused and its zero-carbon claim rests on iron made elsewhere; if the latter, reheat and annealing furnaces across the sector come into scope.",
+   "question_resolved": "S1"
   },
   "P100000120790": {
    "name": "ArcelorMittal Warszawa steel plant",
@@ -3966,13 +3987,18 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "named not admitted",
+   "class": "admitted",
    "failed_leg": "THE EAF IS IN CONSTRUCTION ON GEM'S ACCOUNT AND NO OWNER DOCUMENT WAS REACHED",
-   "speaker": "GEM's unit table only",
-   "source": "",
-   "verbatim": "",
-   "note": "THE EAF IS IN CONSTRUCTION ON GEM'S ACCOUNT AND NO OWNER DOCUMENT WAS REACHED. Sixteen citations from the works' wiki page were followed and none is a Tata Steel page about the project. This is the largest single steel investment in the United Kingdom and this register cannot yet source it, which is a finding about the search and not about the works.",
-   "source_list": "gem_global_iron_steel_tracker"
+   "speaker": "Tata Steel UK, own transition and planning pages",
+   "source": "https://www.tatasteeluk.com/green-steel-future/planning",
+   "verbatim": "Building a new 3.2 million tonne capacity state-of-the-art electric arc furnace in Port Talbot, the same capacity as we have now. Two new metallurgy ladle furnaces. [Hybrid planning application:] full planning permission for the demolition of existing buildings and structures, partial infill of the BOS lagoon, and construction of a new electric arc furnace-based steel production facility.",
+   "note": "RECLASSED FROM `named not admitted` UNDER THE S3 RULING, and the ruling is the finding. The earlier pass followed sixteen citations from the works' gem.wiki page and reached no Tata Steel document; the owner's own domain answered on the first try. THE WIKI'S CITATION LIST IS A STARTING POINT AND IT IS NOT A SEARCH: where a works has an owner with a newsroom, the newsroom is where the search should start. The owner also dates the consent — 'the planning permission milestone of February 2025 that enabled construction work to begin on Europe's largest EAF' — and the timeline: equipment orders from September 2024, construction from August 2025, operation by late 2027.",
+   "source_list": "gem_global_iron_steel_tracker",
+   "row": "tata-steel-port-talbot",
+   "leg": "EAF replacing blast-furnace capacity at an existing works",
+   "capacity_stated": "3.2 Mt crude steel per year",
+   "capacity_unit": "Mt per year",
+   "question_resolved": "S3"
   },
   "P100000120625": {
    "name": "Tenaris Dalmine steel plant",
@@ -4185,16 +4211,19 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "admitted",
+   "class": "perimeter exclusion",
    "row": "ussuri-romania",
    "leg": "greenfield EAF primary steelmaking",
    "speaker": "Ussuri Capital, own site",
    "source": "https://ussuricapital.com",
-   "verbatim": "At Phase-2 of the project, EAF and continuous strip casting module will be built to produce ~1.2 MT/year of crude steel and hot rolled coils using local scrap.",
+   "verbatim": "Multi-stage approach to reach fully vertically-integrated steel production via scrap-EAF route (without the complexity of DRI-EAF technology, or only when it becomes commercially viable). At Phase-2 of the project, EAF and continuous strip casting module will be built to produce ~1.2 MT/year of crude steel and hot rolled coils using local scrap.",
    "capacity_stated": "1.2 Mt crude steel per year",
    "capacity_unit": "Mt per year",
-   "note": "A GREENFIELD SCRAP-EAF WORKS, and the clause does not refuse it: 'scrap EAF, no primary capacity' refuses an EAF at a site that never had primary steelmaking, and the perimeter admits GREENFIELD DRI/EAF primary steelmaking. The owner states crude steel from an EAF at a new works. HELD FOR RULING instead? No — the perimeter's third leg is 'greenfield DRI/EAF primary steelmaking' and this is an EAF making crude steel on a greenfield site. Admitted, and the tension with the scrap clause is written to the questions file.",
-   "source_list": "gem_global_iron_steel_tracker"
+   "note": "RECLASSED FROM `admitted`. The owner names its route in its own words and rules the ironmaking step OUT: 'scrap-EAF route (without the complexity of DRI-EAF technology, or only when it becomes commercially viable)'. It states no ironmaking step and replaces no primary capacity — the works is greenfield and there is none to replace. That the output is called crude steel does not make the route primary, which is what the S2 ruling settles.",
+   "source_list": "gem_global_iron_steel_tracker",
+   "clause": "scrap EAF, no primary capacity",
+   "ruling": "RULED 16 September 2026, on question S2. THE DISTINCTION IS THE ROUTE, NOT THE OWNER'S VOCABULARY. Greenfield primary steelmaking means the owner states an IRONMAKING STEP — DRI, hydrogen or otherwise — or states that the plant replaces primary capacity. A greenfield plant that melts scrap and states nothing else is a scrap EAF whatever it calls its output. RE-READ AGAINST THAT TEST, USSURI AND VAN MERKSTEIJN FALL ON THE SAME SIDE, and the earlier pass had them on opposite sides on the strength of the phrase 'crude steel'.",
+   "question_resolved": "S2"
   },
   "P100000120759": {
    "name": "Van Merksteijn International steel plant",
@@ -4224,12 +4253,13 @@
    },
    "class": "perimeter exclusion",
    "clause": "scrap EAF, no primary capacity",
-   "ruling": "THE CLAUSE IS APPLIED ONLY AFTER THE OWNER HAS BEEN READ, ruled 15 September 2026. GEM's furnace type is GEM's claim and not the test: an EAF GEM records as scrap-fed may be an owner's stated replacement for a blast furnace, and the perimeter asks what the investment does to the iron. On each entry below the owner's own materials were read first and describe a scrap works with no primary ironmaking, which is what the clause refuses.",
+   "ruling": "RULED 16 September 2026, on question S2. THE DISTINCTION IS THE ROUTE, NOT THE OWNER'S VOCABULARY. Greenfield primary steelmaking means the owner states an IRONMAKING STEP — DRI, hydrogen or otherwise — or states that the plant replaces primary capacity. A greenfield plant that melts scrap and states nothing else is a scrap EAF whatever it calls its output. RE-READ AGAINST THAT TEST, USSURI AND VAN MERKSTEIJN FALL ON THE SAME SIDE, and the earlier pass had them on opposite sides on the strength of the phrase 'crude steel'.",
    "speaker": "Van Merksteijn International, reported by Kallanish and Groningen Seaports",
    "source": "https://web.archive.org/web/20230802115538/https://www.groningen-seaports.com/en/nieuws/",
    "verbatim": "At the new factory in Eemshaven Van Merksteijn International will be producing its own wire rod from the secondary raw material cleaned scrap steel for the existing factory in Almelo.",
-   "note": "A GREENFIELD SCRAP-EAF WIRE-ROD MILL. The owner's stated feed is 'the secondary raw material cleaned scrap steel'. THE PERIMETER'S THIRD LEG IS GREENFIELD DRI/EAF PRIMARY STEELMAKING and this is greenfield EAF melting scrap, not primary. eurometal reports the mill was put on hold. THE TENSION WITH USSURI CAPITAL, admitted on the same leg, goes to the questions file: both are greenfield scrap EAFs and one is admitted.",
-   "source_list": "gem_global_iron_steel_tracker"
+   "note": "A GREENFIELD SCRAP-EAF WIRE-ROD MILL. The owner's stated feed is 'the secondary raw material cleaned scrap steel'. THE PERIMETER'S THIRD LEG IS GREENFIELD DRI/EAF PRIMARY STEELMAKING and this is greenfield EAF melting scrap, not primary. eurometal reports the mill was put on hold. CONFIRMED UNDER THE S2 RULING: the owner states scrap as the feed and no ironmaking step, so the clause holds. Ussuri Capital, which the earlier pass admitted, falls on this same side once the route rather than the vocabulary is the test.",
+   "source_list": "gem_global_iron_steel_tracker",
+   "question_resolved": "S2"
   },
   "P100000120011": {
    "name": "Voestalpine Stahl Donawitz steel plant",

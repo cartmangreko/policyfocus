@@ -2002,6 +2002,30 @@ has read their works.
   changed nothing.
 - **Rolling and downstream investments are perimeter exclusions.** A hot strip mill is
   not a route change.
+- **Hydrogen fed to reheat or burner equipment is refused with the clause "fuel switch,
+  no primary route change". Ruled 16 September 2026.** A **hydrogen-ready furnace** means
+  the unit that makes the iron or the steel — a DRI shaft, an EAF, or a furnace the owner
+  states replaces blast-furnace capacity. Firing hydrogen in a reheat furnace or a set of
+  burners changes the fuel and leaves the route alone. ArcelorMittal Sestao is the case
+  the clause was named for: its own zero-carbon claim rests on **hydrogen in the burners
+  and DRI made 250 km away at Gijón**, and the iron is counted once, at the works that
+  makes it.
+
+**What "greenfield DRI/EAF primary steelmaking" means, and it is the route rather than
+the vocabulary. Ruled 16 September 2026.** The third leg is satisfied when the owner
+states an **ironmaking step** — DRI, hydrogen or otherwise — or states that the plant
+**replaces primary capacity**. A greenfield plant that melts scrap and states nothing
+else is a scrap EAF *whatever it calls its output*, and the first refusal clause takes
+it.
+
+**The case that forced the wording** is Ussuri Capital's Romanian project, which this
+register admitted and then reclassed. Its owner writes that it will "reach fully
+vertically-integrated steel production via scrap-EAF route (**without the complexity of
+DRI-EAF technology**, or only when it becomes commercially viable)" — and separately that
+phase two produces "1.2 MT/year of **crude steel**". The first pass read "crude steel" as
+primary steelmaking and admitted it; the owner had ruled the ironmaking step out in its
+own words. **A works that says it is not doing the thing is not doing the thing**, and the
+output's name does not overrule it.
 
 ### Cement
 

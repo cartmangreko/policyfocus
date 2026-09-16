@@ -333,6 +333,14 @@
    "needed_for": "THE SECOND LIST FOR STEEL, AND THE ONLY THING THAT CAN SEE UNDER GEM'S FLOOR. The Global Iron and Steel Tracker states its own inclusion rule on its About tab: 'This database only includes plants with crude iron/steelmaking capacity of five hundred thousand tonnes per annum (0.5 mtpa) and greater.' The steel perimeter has NO tonnage threshold, deliberately — a small DRI module and a large one are the same fact about a works leaving the blast furnace. So GEM cannot show this register anything below 0.5 mtpa, and a gap table over GEM alone would inherit that floor silently. LeadIT's methodology sets no capacity floor, so it is what lets the census see below GEM's. Drift is measured between the two, and each entry records which list it came from.",
    "drop_as": "sources/cache/steel/leadit_green_steel_tracker.xlsx",
    "priority": "blocking"
+  },
+  {
+   "candidate": "P100000120620 Acciaierie d'Italia Taranto — the ministry's own record",
+   "url": "https://www.mimit.gov.it/it/notizie-stampa",
+   "why": "mimit.gov.it answers a declared reader with navigation and no release text — 3,939 characters on the root and 9,097 on the news index, all of it menu. The company's own live site is a 1,814-character shell and its /en/ path answers 404.",
+   "needed_for": "A GOVERNMENT SPEAKER ON THE LARGEST STEEL DECARBONISATION PLAN IN ITALY. GEM records one DRI and three EAFs announced at Taranto. The only readable account is Il Sole 24 Ore's report of the plan Acciaierie d'Italia presented to MIMIT on 14 July — a newspaper's report of what a company told a ministry, which is neither speaker. The perimeter asks for company confirmation and the company's own archived page offers a conditional ambition, 'when technologies will allow'. THE MINISTRY'S OWN RELEASE OR DECREE WOULD SETTLE IT as a government speaker, and the company is in extraordinary administration, which is why its own voice on a 2033 plan is thin. Entry stands as named-not-admitted until then.",
+   "drop_as": "sources/manual/acciaierie-ditalia-taranto--mimit-decarbonisation-plan.html",
+   "priority": "normal"
   }
  ]
 }
