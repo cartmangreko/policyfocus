@@ -2189,6 +2189,70 @@ an entry that begins operating inside the window, which this pass would read as 
 rather than being resolved by moving the assessment date to whatever day the reading
 happened to finish.
 
+### Silence is an outcome about the project; refusal is a fact about reading
+
+**AMENDED 18 SEPTEMBER 2026, AFTER THE READING AND ON PURPOSE.** The ruling above was
+frozen at commit 58ce11f before a single outcome was read, and it stays there, word for
+word, so that what changed can be seen. This is the amendment, and it is recorded as one:
+D-C13 gives the reason, the test prints **both** tables — the outcomes under the frozen
+definitions and the outcomes under these — and any claim about the 2023 population says
+which it is quoting.
+
+**WHY AMEND AT ALL.** The frozen six put two unlike things in one word. Under them, 159 of
+255 entries came out `unread`, and that single count covered a publisher who refuses a
+reader, an owner whose site answers perfectly and has not mentioned the project in three
+years, and an entry for which this register has never known an owner's domain to ask.
+**The first is a fact about reading. The second is a fact about the project.** An owner
+that publishes weekly and has said nothing about a plant since 2023 has told you
+something, and the frozen vocabulary had nowhere to put it.
+
+**THE PRECEDENCE IS EXPLICIT, AND IT RUNS IN THIS ORDER.** The frozen ruling defined six
+values and did not say which wins when an entry qualifies for two, which is the gap Q12
+raised.
+
+    1  OWNER-STATED EVENTS FIRST, and among them: `stopped`, `operating`, `committed`.
+       What a speaker the rules admit has SAID beats anything inferred from a date.
+    2  THEN THE DATE CLASSES, for an entry with a readable owner document: `delayed`
+       where the announced start is on or before the assessment date, `pending` where it
+       is after. These say only that a date has or has not passed.
+    3  THEN `silent`.
+    4  `unread` LAST, and only on its narrowed definition below.
+
+    silent       THE OWNER'S DOMAIN, OR THE PERMIT AUTHORITY'S, ANSWERED A DECLARED READER
+                 IN 2026 AND CARRIES NO STATEMENT ABOUT THIS PROJECT SINCE THE CUT-OFF.
+                 The pages read are listed on the line, because the claim is about what
+                 was looked at: a front page, a newsroom index, a project list. This is an
+                 outcome about the project. A developer's site that is maintained, dated
+                 and current, and that has not named this plant in three years, is
+                 evidence about the plant.
+    unread       THE PUBLISHER REFUSES THIS REGISTER'S DECLARED READER AND NO PERMIT,
+                 FUNDER OR ARCHIVE COPY ANSWERS. Narrowed from the frozen definition,
+                 which also swallowed the two cases above. It is a measurement of a
+                 request, never of a project, and the line says WHICH of two reasons it
+                 rests on:
+                   `the publisher refuses this register's reader` — something was asked
+                   and refused, on the three-state reading rule.
+                   `no owner domain is known for this entry` — THERE WAS NOBODY TO ASK.
+                   The entry was never company-confirmed: its publisher's references are
+                   third parties or absent, and no owner page has ever been identified for
+                   it. This is reported on its own line and never mixed with a refusal,
+                   because a refusal is at least a measurement and this is the absence of
+                   one.
+
+**`silent` IS NOT A STOP AND NEVER BECOMES ONE.** It says the owner has not spoken since
+the cut-off, which is what the register can observe. Reading a cancellation out of silence
+is the error `dropped_from_benchmark` was made a covariate to prevent, one layer over, and
+the same answer applies: the silence is recorded, the status does not move, and where the
+entry is a row the owner look is queued.
+
+**AND A CLAIM BY ANY OTHER SPEAKER IS LISTED, NEVER SCORED.** Where operation, an
+investment decision or construction is stated by a regulator, a grid operator, a funder or
+a trade title rather than by the owner, the test records it as a CLAIM with its speaker
+and leaves the outcome where the owner's own words left it. The count of entries whose
+operation rests only on such a claim is printed on every run: the test counts owner
+statements, and a reader needs to know how many plants may be running unacknowledged by the
+companies that own them.
+
 ## Sector perimeters
 
 **Written 12 September 2026, brief 8.** The boundaries for the three sectors this
