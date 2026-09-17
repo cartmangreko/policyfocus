@@ -70,6 +70,8 @@ BANDS = ((100, 200), (200, 500), (500, 1000), (1000, 10 ** 9))
 # have to find the docket to know what it was scored under.
 FROZEN_RUNGS = "a9542fe28f93eac7f66a3050070af6db93684e7e"
 FROZEN_OUTCOMES = "58ce11f0282a44368f4842176a4844d49aa416d2"
+# The day the outcome reading began. See scope.md's last clause on the outcome ruling.
+READING_STARTED = "2026-09-17"
 
 
 def band(mw) -> str:
@@ -582,6 +584,17 @@ def summarise(lines, rows_from_csv=None, check=None):
         "scored_entries": len(scored),
         "perimeter_exclusions": sum(1 for l in lines if l["perimeter_clause"]),
         "outcomes_not_read_yet": sum(1 for l in lines if l["outcome"] == "not_read_yet"),
+        # THE WINDOW THE READING DID NOT SEE, COUNTED RATHER THAN RESOLVED. scope.md's
+        # outcome ruling fixes the assessment date at 30 September 2026 and the reading
+        # ran from 17 September, so an entry whose start falls inside those thirteen days
+        # would read as `delayed` here and might be `operating` to a reader on the
+        # assessment day. The rule says the count is printed on every run; this is it.
+        "announced_starts_inside_the_reading_window": sum(
+            1 for l in lines
+            if READING_STARTED < str(l["announced_start"])[:10] <= ASSESSED_ON
+            and len(str(l["announced_start"])) == 10),
+        "entries_with_no_announced_start": sum(
+            1 for l in lines if l["announced_start_read_from"].startswith("neither")),
         "independent_check": check,
     }
 
@@ -718,6 +731,13 @@ def main() -> int:
               f"{r['name'][:34]}")
     print(f"\n  size:  " + ", ".join(f"{k} {v}" for k, v in chk["size"].items()))
     print(f"  date:  " + ", ".join(f"{k} {v}" for k, v in chk["date"].items()))
+    print(f"\n  announced starts inside the reading window ({READING_STARTED} to "
+          f"{ASSESSED_ON}):  "
+          f"{s['announced_starts_inside_the_reading_window']}")
+    print(f"  entries where neither the owner nor the vintage states a start:    "
+          f"{s['entries_with_no_announced_start']}  (Q13)")
+    print(f"  perimeter exclusions carried as a covariate:                      "
+          f"{s['perimeter_exclusions']}  (D-C2)")
     print(f"\n  -> {CSV_OUT.relative_to(ROOT)}\n  -> {JSON_OUT.relative_to(ROOT)}")
     return 0
 
