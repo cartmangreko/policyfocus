@@ -925,6 +925,51 @@ def _event(e: Errors, where: str, h: dict, i: int, prev_status: str | None) -> N
                      f"{prev_status!r}")
     if i == 0 and h.get("status_from") is not None:
         e.add(where, "the first entry has nothing to come from; status_from must be null")
+    _owner_look(e, where, h)
+
+
+def _owner_look(e: Errors, where: str, h: dict) -> None:
+    """RULE 17'S QUEUE, CARRIED ON THE EVENT THAT RAISED IT.
+
+    An optional block on a status_history entry saying that a THIRD PARTY has reported
+    something about this project and the OWNER has not spoken, with the sources somebody
+    is to read. It exists because rule 17's shape turned up one step over from the case it
+    was written for: that rule says a project vanishing from a benchmark is a project
+    whose failure nobody counts, so go and look at whether the owner's source still
+    stands. A funder terminating its own award is the same shape — evidence about the
+    award, not about the project — and the same look is owed.
+
+    IT IS NEVER A STATUS AND NEVER A RUNG. Nothing is derived from it; it is printed as a
+    task by report_candidate_gaps.py so the look is somebody's job rather than somebody's
+    memory. The block is gated rather than left loose because an unknown key on this layer
+    is a key nothing checks, which is how a field becomes a second quiet source of truth.
+
+    EVERY URL IS A DICT SO check_links WALKS IT. A queue that pointed at pages nobody
+    checked would rot exactly as fast as the pages do.
+    """
+    ol = h.get("owner_look")
+    if ol is None:
+        return
+    if not isinstance(ol, dict):
+        e.add(where, "owner_look must be an object")
+        return
+    _req(e, f"{where} owner_look", ol, "rule", "why", "urls")
+    if ol.get("rule") != "rule 17":
+        e.add(f"{where} owner_look", f"rule={ol.get('rule')!r} — the only rule that opens "
+              f"this queue today is 'rule 17'; widening it is a ruling")
+    urls = ol.get("urls")
+    if not isinstance(urls, list) or not urls:
+        e.add(f"{where} owner_look", "urls must be a non-empty list — a queue with nothing "
+              "to read is not a queue")
+        return
+    for j, u in enumerate(urls):
+        w = f"{where} owner_look urls[{j}]"
+        if not isinstance(u, dict):
+            e.add(w, "each entry is an object carrying url, publisher and note, so that "
+                     "check_links walks it and a reader knows whose page it is")
+            continue
+        _req(e, w, u, "url", "publisher", "note")
+        _url(e, w, u.get("url"))
 
 
 def _edges(e: Errors, where: str, row: dict, project_ids: set) -> None:

@@ -7318,6 +7318,39 @@
      "source_type": "company",
      "evidence_mode": "retrospective",
      "note": "THE SOURCE IS A PARTNER'S AND NOT THE LEAD'S. Naturgy, one of the five, published the partnership announcement; CIP is the party it names as developing the project. A consortium member speaking about the consortium's own project is the company speaking, on the same reading the REFHYNE consortium's site gets, and the row says which member said it."
+    },
+    {
+     "event_kind": "financing",
+     "date": "2026-09-09",
+     "date_precision": "not_after",
+     "status_from": "announced",
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101179454.pdf",
+     "source_type": "grant_register",
+     "evidence_mode": "retrospective",
+     "note": "AWARD TERMINATED. The Innovation Fund's own project factsheet for grant 101179454 carries the word TERMINATED twice — once under the project title and once beside the participant — over an award of 'EUR 230,463,819' to a '500 Megawatt electric' electrolyser, and states 'FINANCIAL CLOSE 31 December, 2025' and 'ENTRY INTO OPERATION DATE 31 December, 2028'. The funder is the speaker and this is money leaving the project, which is what event_kind `financing` is for: 'money reached, or left, the project'. THE DATE IS AN UPPER BOUND AND NOT THE DATE OF THE TERMINATION. The fiche says 'Updated on 09 September 2026' and gives no date for the termination itself, so the event is `not_after` that day: it happened at or before then and nobody here knows when. THE STATUS DOES NOT MOVE. The row stays `announced` because that is where the OWNER's own statement leaves it, and a funder withdrawing its money is a fact about the award, not about what the company says it is building. Nothing is inferred from the termination alone; the owner look is queued below.",
+     "owner_look": {
+      "rule": "rule 17",
+      "why": "RULE 17'S SHAPE, APPLIED TO A FUNDER RATHER THAN TO A LIST. A project that vanishes from a database is a project whose failure nobody counts, so the register goes and looks — and what it looks at is whether the OWNER's source still stands, not whether the project stopped. A terminated award is the same shape one step over: it is evidence about the award, and the owner has not spoken. WHAT WOULD SETTLE IT is a statement by Copenhagen Infrastructure Partners, Enagas Renovable, Naturgy, Fertiberia or Vestas about Project Catalina, or by the grant coordinator CI ETF I Renato Ptx Holdco S.L.U. Until one is read the status stays where the owner left it on 10 March 2023. Fertiberia's own site answers 403 to a declared reader and is not listed below; enagasrenovable.com does not resolve. Both were tried on 17 September 2026 and are recorded in sources/cache/hydrogen/index.json.",
+      "urls": [
+       {
+        "url": "https://www.cip.com/news",
+        "publisher": "Copenhagen Infrastructure Partners",
+        "note": "the lead partner's newsroom; 200 to a declared reader on 17 September 2026"
+       },
+       {
+        "url": "https://www.enagas.es/en/press-room/",
+        "publisher": "Enagas",
+        "note": "parent of Enagas Renovable, the other shareholder in the grant coordinator; 200 to a declared reader on 17 September 2026"
+       },
+       {
+        "url": "https://www.naturgy.com/en/press-room/",
+        "publisher": "Naturgy",
+        "note": "the partner that published the 2023 announcement this row's only status event rests on; 200 to a declared reader on 17 September 2026"
+       }
+      ]
+     }
     }
    ],
    "stated_schedule": [],
@@ -7378,6 +7411,14 @@
      "date": "2023-03-10",
      "date_precision": "day",
      "retrieved_date": "2026-09-09"
+    },
+    {
+     "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101179454.pdf",
+     "title": "Catalina | Project Factsheet — Innovation Fund grant 101179454",
+     "publisher": "European Commission — CINEA · Innovation Fund",
+     "date": "2026-09-09",
+     "date_precision": "day",
+     "retrieved_date": "2026-09-17"
     }
    ],
    "sector": "clean",
