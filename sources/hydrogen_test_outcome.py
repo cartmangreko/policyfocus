@@ -39,6 +39,7 @@ import os
 import sys
 import time
 import urllib.parse
+from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_hydrogen_benchmark as bench  # noqa: E402
@@ -135,6 +136,7 @@ def main() -> int:
     ap.add_argument("--report", action="store_true")
     ap.add_argument("--limit", type=int, default=1000)
     ap.add_argument("--offset", type=int, default=0)
+    ap.add_argument("--workers", type=int, default=t23.DEFAULT_WORKERS)
     a = ap.parse_args()
 
     archive_doc = json.loads(t23.OUT.read_text(encoding="utf-8")) if t23.OUT.exists() \
@@ -149,15 +151,29 @@ def main() -> int:
         todo = [e for e in pop if e["ref"] not in done][a.offset:a.offset + a.limit]
         print(f"outcome pass: {len(pop)} entries, {len(done)} already on file, "
               f"{len(todo)} this batch")
-        for i, e in enumerate(todo, 1):
+        order = {e["ref"]: i for i, e in enumerate(pop)}
+        counter = {"n": 0}
+
+        def one(e):
             merged = dict(e, host_legs=(arch_by_ref.get(e["ref"], {}).get("host_legs")
                                         or []))
-            doc["entries"].append(fetch_entry(merged, rows_by_ref, archive_doc))
-            save(doc)
-            last = doc["entries"][-1]
-            print(f"  {i:>3}/{len(todo)} ref {e['ref']:>5} {e['name'][:38]:40} "
-                  f"{len(last['fetches'])} fetched, {last['readable_2026_documents']} "
-                  f"readable{', a row' if last['row_id'] else ''}")
+            rec = fetch_entry(merged, rows_by_ref, archive_doc)
+            with t23._DOC_LOCK:
+                doc["entries"].append(rec)
+                doc["entries"].sort(key=lambda x: order.get(x["ref"], 10 ** 6))
+                save(doc)
+                counter["n"] += 1
+                n = counter["n"]
+            print(f"  {n:>3}/{len(todo)} ref {e['ref']:>5} {e['name'][:38]:40} "
+                  f"{len(rec['fetches'])} fetched, {rec['readable_2026_documents']} "
+                  f"readable{', a row' if rec['row_id'] else ''}", flush=True)
+
+        if a.workers <= 1:
+            for e in todo:
+                one(e)
+        else:
+            with ThreadPoolExecutor(max_workers=a.workers) as pool:
+                list(pool.map(one, todo))
         return 0
 
     n = len(doc["entries"])

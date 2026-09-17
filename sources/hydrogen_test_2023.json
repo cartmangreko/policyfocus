@@ -1483,6 +1483,1266 @@
     }
    ],
    "resolved_on": "2023-10-03"
+  },
+  "ec.europa.eu": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://ec.europa.eu/",
+     "read_url": "https://web.archive.org/web/20221219104234/https://ec.europa.eu/",
+     "archived": true,
+     "captured_at": "2022-12-19",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "permit_or_official",
+     "host": "ec.europa.eu",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "http://ec.europa.eu:80/news/",
+     "read_url": "https://web.archive.org/web/20170209132346/http://ec.europa.eu:80/news/",
+     "archived": true,
+     "captured_at": "2017-02-09",
+     "http": 200,
+     "outcome": "200, 23050 chars",
+     "sha256": "84b92b930fa9b963f1563f6be561af2ce7ca391c58ed14f2155e4a5809d979d4",
+     "text_chars": 23050,
+     "source_type": "permit_or_official",
+     "host": "ec.europa.eu",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2022-12-19"
+  },
+  "www.aquaventus.org": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.aquaventus.org/",
+     "read_url": "https://web.archive.org/web/20230929070127/https://aquaventus.org/",
+     "archived": true,
+     "captured_at": "2023-09-29",
+     "http": 200,
+     "outcome": "200, 17463 chars",
+     "sha256": "6a27455b1ad6d82d8f29f5a4995bb89703b711ca3cb7f47d1619ffed8c556817",
+     "text_chars": 17463,
+     "source_type": "unclassified",
+     "host": "www.aquaventus.org",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.aquaventus.org/presse",
+     "read_url": "https://web.archive.org/web/20211130022030/https://www.aquaventus.org/presse",
+     "archived": true,
+     "captured_at": "2021-11-30",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.aquaventus.org",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-09-29"
+  },
+  "www.greenlab.dk": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.greenlab.dk/",
+     "read_url": "https://web.archive.org/web/20231010183714/https://www.greenlab.dk/",
+     "archived": true,
+     "captured_at": "2023-10-10",
+     "http": 200,
+     "outcome": "200, 14311 chars",
+     "sha256": "dce154d84670db5690979dda601c42304902546253118d4db8cafade0f747394",
+     "text_chars": 14311,
+     "source_type": "unclassified",
+     "host": "www.greenlab.dk",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "http://www.greenlab.dk/news/capital-injection-will-enable-first-intelligent-energy-symbiosis-at-greenlab-skive/",
+     "read_url": "https://web.archive.org/web/20191117095849/http://www.greenlab.dk/news/capital-injection-will-enable-first-intelligent-energy-symbiosis-at-greenlab-skive/",
+     "archived": true,
+     "captured_at": "2019-11-17",
+     "http": 200,
+     "outcome": "200, 5686 chars",
+     "sha256": "333202d61801d3a7ae8e063c9ea2c8f6fb9d34d91b8a7596188c74b806ec0325",
+     "text_chars": 5686,
+     "source_type": "unclassified",
+     "host": "www.greenlab.dk",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-10"
+  },
+  "www.enagas.es": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.enagas.es/",
+     "read_url": "https://web.archive.org/web/20020524114704/https://www.enagas.es/",
+     "archived": true,
+     "captured_at": "2002-05-24",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.enagas.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.enagas.es/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "the CDX index would not answer for this host",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.enagas.es",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2002-05-24"
+  },
+  "www.yara.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.yara.com/",
+     "read_url": "https://web.archive.org/web/20231028120322/https://www.yara.com/",
+     "archived": true,
+     "captured_at": "2023-10-28",
+     "http": 200,
+     "outcome": "200, 5714 chars",
+     "sha256": "805e94280cc5d6cbfabc43e87439470280e174511569203d4c811a45f4b9b7c6",
+     "text_chars": 5714,
+     "source_type": "unclassified",
+     "host": "www.yara.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.yara.com/news/",
+     "read_url": "https://web.archive.org/web/20220426215757/https://www.yara.com/news/",
+     "archived": true,
+     "captured_at": "2022-04-26",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "6600b053d6828ac65d12c23b8a3effe80621fdef47854d52fb4de7aa2b10fe6b",
+     "text_chars": 217,
+     "source_type": "unclassified",
+     "host": "www.yara.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-28"
+  },
+  "www.eib.org": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.eib.org/",
+     "read_url": "https://www.eib.org/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 7973 chars",
+     "sha256": "a93ca558b9fa0ae6102be1f80480ec517ac3a37fe9cf1cec7fb0bac290dafbef",
+     "text_chars": 7973,
+     "source_type": "unclassified",
+     "host": "www.eib.org",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.eib.org/en/press/",
+     "read_url": "https://web.archive.org/web/20230828170000/https://www.eib.org/en/press/",
+     "archived": true,
+     "captured_at": "2023-08-28",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.eib.org",
+     "signals": {}
+    }
+   ],
+   "resolved_on": ""
+  },
+  "eng.heroya-industripark.no": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://eng.heroya-industripark.no/",
+     "read_url": "https://web.archive.org/web/20231010095530/https://eng.heroya-industripark.no/",
+     "archived": true,
+     "captured_at": "2023-10-10",
+     "http": 200,
+     "outcome": "200, 2340 chars",
+     "sha256": "f39e1fb2f90c2ac5b755022bbdf961eae66f967f43d356c824c7ae4f830d1fbb",
+     "text_chars": 2340,
+     "source_type": "unclassified",
+     "host": "eng.heroya-industripark.no",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://eng.heroya-industripark.no/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "eng.heroya-industripark.no",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-10"
+  },
+  "www.naturgy.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.naturgy.com/",
+     "read_url": "https://web.archive.org/web/20231030085504/https://www.naturgy.com/",
+     "archived": true,
+     "captured_at": "2023-10-30",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.naturgy.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.naturgy.com/press_room/press_releases/en_1s_2018",
+     "read_url": "https://web.archive.org/web/20230329161916/https://www.naturgy.com/press_room/press_releases/en_1s_2018",
+     "archived": true,
+     "captured_at": "2023-03-29",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.naturgy.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-30"
+  },
+  "www.galp.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.galp.com/",
+     "read_url": "https://www.galp.com/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 4241 chars",
+     "sha256": "4cd52f5ce061cec278d3a2b9175a3f137a67fbbbfb8f8f5ee5f8b1345ddca981",
+     "text_chars": 4241,
+     "source_type": "unclassified",
+     "host": "www.galp.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.galp.com/corp/en/media/",
+     "read_url": "https://web.archive.org/web/20230923082002/https://www.galp.com/corp/en/media/",
+     "archived": true,
+     "captured_at": "2023-09-23",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.galp.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": ""
+  },
+  "ens.dk": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://ens.dk/",
+     "read_url": "https://web.archive.org/web/20231031202906/https://ens.dk/",
+     "archived": true,
+     "captured_at": "2023-10-31",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "permit_or_official",
+     "host": "ens.dk",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "http://www.ens.dk:80/presse",
+     "read_url": "https://web.archive.org/web/20230921155722/http://www.ens.dk:80/presse",
+     "archived": true,
+     "captured_at": "2023-09-21",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "permit_or_official",
+     "host": "ens.dk",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-31"
+  },
+  "www.grupofertiberia.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.grupofertiberia.com/",
+     "read_url": "https://web.archive.org/web/20230720122459/https://www.grupofertiberia.com/",
+     "archived": true,
+     "captured_at": "2023-07-20",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.grupofertiberia.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.grupofertiberia.com/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.grupofertiberia.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-07-20"
+  },
+  "www.sasgroup.net": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.sasgroup.net/",
+     "read_url": "https://web.archive.org/web/20231031233230/https://www.sasgroup.net/",
+     "archived": true,
+     "captured_at": "2023-10-31",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.sasgroup.net",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.sasgroup.net/newsroom/",
+     "read_url": "https://web.archive.org/web/20231006141245/https://www.sasgroup.net/newsroom/",
+     "archived": true,
+     "captured_at": "2023-10-06",
+     "http": 200,
+     "outcome": "200, 6434 chars",
+     "sha256": "c4b2876c3e90da31c3021560d7df0d1277ca67a74552cb4796695da90443f9f6",
+     "text_chars": 6434,
+     "source_type": "unclassified",
+     "host": "www.sasgroup.net",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-31"
+  },
+  "www.ineos.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.ineos.com/",
+     "read_url": "https://web.archive.org/web/20231030061029/https://www.ineos.com/",
+     "archived": true,
+     "captured_at": "2023-10-30",
+     "http": 200,
+     "outcome": "200, 3898 chars",
+     "sha256": "df81d8d59335f3de4e2876b9b72e10f1b38ce4215e3622800e3fa57a84da1a4d",
+     "text_chars": 3898,
+     "source_type": "unclassified",
+     "host": "www.ineos.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.ineos.com/news/",
+     "read_url": "https://web.archive.org/web/20231014133423/https://www.ineos.com/news/",
+     "archived": true,
+     "captured_at": "2023-10-14",
+     "http": 200,
+     "outcome": "200, 4105 chars",
+     "sha256": "2022cca09ff9c107c6bb04bf44249794e5f82bbd78ed2b65544a8b60815ed318",
+     "text_chars": 4105,
+     "source_type": "unclassified",
+     "host": "www.ineos.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-30"
+  },
+  "www.h2greensteel.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.h2greensteel.com/",
+     "read_url": "https://web.archive.org/web/20231030103613/https://www.h2greensteel.com/",
+     "archived": true,
+     "captured_at": "2023-10-30",
+     "http": 200,
+     "outcome": "200, 2130 chars",
+     "sha256": "b56cf2120018a29aa36c653a146b020a449500b0fae43e4b006108731164d29b",
+     "text_chars": 2130,
+     "source_type": "unclassified",
+     "host": "www.h2greensteel.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.h2greensteel.com/news",
+     "read_url": "https://web.archive.org/web/20220609122827/https://www.h2greensteel.com/news",
+     "archived": true,
+     "captured_at": "2022-06-09",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.h2greensteel.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-30"
+  },
+  "www.ir.plugpower.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.ir.plugpower.com/",
+     "read_url": "https://web.archive.org/web/20150907042457/https://www.ir.plugpower.com/",
+     "archived": true,
+     "captured_at": "2015-09-07",
+     "http": 200,
+     "outcome": "200, 3377 chars",
+     "sha256": "87680f2cbbbb9f82c2922b11ef44e25bcd101b5dcedd9fe5f54101b63f35e228",
+     "text_chars": 3377,
+     "source_type": "unclassified",
+     "host": "www.ir.plugpower.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.ir.plugpower.com/press-releases/",
+     "read_url": "https://web.archive.org/web/20230315081139/https://www.ir.plugpower.com/Press-Releases/",
+     "archived": true,
+     "captured_at": "2023-03-15",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.ir.plugpower.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2015-09-07"
+  },
+  "global.kawasaki.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://global.kawasaki.com/",
+     "read_url": "https://web.archive.org/web/20231010121037/https://global.kawasaki.com/",
+     "archived": true,
+     "captured_at": "2023-10-10",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "global.kawasaki.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://global.kawasaki.com/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "global.kawasaki.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-10"
+  },
+  "www.marseille-port.fr": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.marseille-port.fr/",
+     "read_url": "https://web.archive.org/web/20231004031849/https://www.marseille-port.fr/",
+     "archived": true,
+     "captured_at": "2023-10-04",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.marseille-port.fr",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "http://www.marseille-port.fr:80/presse/",
+     "read_url": "https://web.archive.org/web/20041206072334/http://www.marseille-port.fr:80/presse/",
+     "archived": true,
+     "captured_at": "2004-12-06",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "2c4b263ce47c4195936949c6346a720116325fd5d5fcbe003b617e79d8bba181",
+     "text_chars": 230,
+     "source_type": "unclassified",
+     "host": "www.marseille-port.fr",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-04"
+  },
+  "www.vicat.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.vicat.com/",
+     "read_url": "https://web.archive.org/web/20231006191631/https://www.vicat.com/",
+     "archived": true,
+     "captured_at": "2023-10-06",
+     "http": 200,
+     "outcome": "200, 5206 chars",
+     "sha256": "3d7a4a3d9df88892956125a773d3018bd92e57275194cd58303acd7f53b3c40f",
+     "text_chars": 5206,
+     "source_type": "unclassified",
+     "host": "www.vicat.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.vicat.com/news",
+     "read_url": "https://web.archive.org/web/20230714061923/https://www.vicat.com/news",
+     "archived": true,
+     "captured_at": "2023-07-14",
+     "http": 200,
+     "outcome": "200, 12173 chars",
+     "sha256": "3f9f667c0fa77db1c3381c4a3c328593fb70b045ecf034d1745ec0f3a04dea1f",
+     "text_chars": 12173,
+     "source_type": "unclassified",
+     "host": "www.vicat.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-06"
+  },
+  "mcphy.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://mcphy.com/",
+     "read_url": "https://web.archive.org/web/20190622204008/https://mcphy.com/",
+     "archived": true,
+     "captured_at": "2019-06-22",
+     "http": 200,
+     "outcome": "200, 26483 chars",
+     "sha256": "b76e6d2cfa3dc1cd1ff87e5394eae3ec0346a07cd217ab34578fdc735e855306",
+     "text_chars": 26483,
+     "source_type": "unclassified",
+     "host": "mcphy.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://mcphy.com/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "mcphy.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2019-06-22"
+  },
+  "uk.rwe.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://uk.rwe.com/",
+     "read_url": "https://uk.rwe.com/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 7492 chars",
+     "sha256": "ecfa0948d5e5d68dbb4c5916740d05a51b4fab9d4d139114077de81cfc47b083",
+     "text_chars": 7492,
+     "source_type": "unclassified",
+     "host": "uk.rwe.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://uk.rwe.com/press-and-news/",
+     "read_url": "https://web.archive.org/web/20231020232511/https://uk.rwe.com/press-and-news/",
+     "archived": true,
+     "captured_at": "2023-10-20",
+     "http": 200,
+     "outcome": "200, 2946 chars",
+     "sha256": "8a6e490b18538ad067c7dc05753db018772ec94bc53c2bc344c3a1b8ef9ff06e",
+     "text_chars": 2946,
+     "source_type": "unclassified",
+     "host": "uk.rwe.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": ""
+  },
+  "www.engie.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.engie.com/",
+     "read_url": "https://web.archive.org/web/20231026203509/https://www.engie.com/",
+     "archived": true,
+     "captured_at": "2023-10-26",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.engie.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.engie.com/en/journalists/press-releases/",
+     "read_url": "https://web.archive.org/web/20191113131743/https://www.engie.com/en/journalists/press-releases/",
+     "archived": true,
+     "captured_at": "2019-11-13",
+     "http": 200,
+     "outcome": "200, 14806 chars",
+     "sha256": "4e9882a6d5d0a66639fe5fd2ea20f3f34a828faebe110ef2e3f584d23673be4e",
+     "text_chars": 14806,
+     "source_type": "unclassified",
+     "host": "www.engie.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-26"
+  },
+  "www.trafigura.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.trafigura.com/",
+     "read_url": "https://web.archive.org/web/20231024053825/https://www.trafigura.com/",
+     "archived": true,
+     "captured_at": "2023-10-24",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.trafigura.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "http://www.trafigura.com:80/news?",
+     "read_url": "https://web.archive.org/web/20160924211813/http://www.trafigura.com:80/news?",
+     "archived": true,
+     "captured_at": "2016-09-24",
+     "http": 200,
+     "outcome": "200, 2373 chars",
+     "sha256": "f7ff354cef6cfba3fcdbc3b3898062ffb1e237c73fc1377bfd46c8c621d0763c",
+     "text_chars": 2373,
+     "source_type": "unclassified",
+     "host": "www.trafigura.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-24"
+  },
+  "catalinaptx.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://catalinaptx.com/",
+     "read_url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "archived": true,
+     "captured_at": "2023-05-17",
+     "http": 200,
+     "outcome": "200, 14452 chars",
+     "sha256": "a589485d6f8674c661dfb101287052dde99a0a382e0cd8e3ffadcbd5fc049c3f",
+     "text_chars": 14452,
+     "source_type": "unclassified",
+     "host": "catalinaptx.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://catalinaptx.com/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "catalinaptx.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-05-17"
+  },
+  "www.hydeal.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.hydeal.com/",
+     "read_url": "https://web.archive.org/web/20230614130752/https://www.hydeal.com/",
+     "archived": true,
+     "captured_at": "2023-06-14",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.hydeal.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.hydeal.com/news",
+     "read_url": "https://web.archive.org/web/20230614154057/https://www.hydeal.com/news",
+     "archived": true,
+     "captured_at": "2023-06-14",
+     "http": 200,
+     "outcome": "200, 5477 chars",
+     "sha256": "b9978cc31fb7901ae9da8c31707994eefbc2826af2b5213c3e125937593e71bd",
+     "text_chars": 5477,
+     "source_type": "unclassified",
+     "host": "www.hydeal.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-06-14"
+  },
+  "esenergia.es": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://esenergia.es/",
+     "read_url": "https://web.archive.org/web/20231015123259/https://esenergia.es/",
+     "archived": true,
+     "captured_at": "2023-10-15",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "esenergia.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://esenergia.es/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "esenergia.es",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-15"
+  },
+  "grande-region-hydrogen.eu": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://grande-region-hydrogen.eu/",
+     "read_url": "https://web.archive.org/web/20220502204633/https://grande-region-hydrogen.eu/",
+     "archived": true,
+     "captured_at": "2022-05-02",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "grande-region-hydrogen.eu",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://grande-region-hydrogen.eu/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "grande-region-hydrogen.eu",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2022-05-02"
+  },
+  "www.dena.de": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.dena.de/",
+     "read_url": "https://web.archive.org/web/20161030001315/http://www.dena.de:80/",
+     "archived": true,
+     "captured_at": "2016-10-30",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.dena.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.dena.de/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "the CDX index would not answer for this host",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.dena.de",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2016-10-30"
+  },
+  "www.norsk-e-fuel.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.norsk-e-fuel.com/",
+     "read_url": "https://web.archive.org/web/20231005031810/https://www.norsk-e-fuel.com/",
+     "archived": true,
+     "captured_at": "2023-10-05",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.norsk-e-fuel.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.norsk-e-fuel.com/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.norsk-e-fuel.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-05"
+  },
+  "blog.topsoe.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://blog.topsoe.com/",
+     "read_url": "https://web.archive.org/web/20230208210023/https://blog.topsoe.com/",
+     "archived": true,
+     "captured_at": "2023-02-08",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "blog.topsoe.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://blog.topsoe.com/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "blog.topsoe.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-02-08"
+  },
+  "corporate.arcelormittal.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://corporate.arcelormittal.com/",
+     "read_url": "https://web.archive.org/web/20231031214818/https://corporate.arcelormittal.com/",
+     "archived": true,
+     "captured_at": "2023-10-31",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "5fdfb94103cbc9fb3a2a253967c32b7d7085286f0b8d3ed16b1845750760831c",
+     "text_chars": 200,
+     "source_type": "unclassified",
+     "host": "corporate.arcelormittal.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://corporate.arcelormittal.com/media/",
+     "read_url": "https://web.archive.org/web/20231029221458/https://corporate.arcelormittal.com/media/",
+     "archived": true,
+     "captured_at": "2023-10-29",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "corporate.arcelormittal.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-31"
+  },
+  "www.klimaschutz.nrw.de": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.klimaschutz.nrw.de/",
+     "read_url": "https://web.archive.org/web/20231024052107/https://www.klimaschutz.nrw.de/",
+     "archived": true,
+     "captured_at": "2023-10-24",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.klimaschutz.nrw.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "http://www.klimaschutz.nrw.de:80/news/",
+     "read_url": "https://web.archive.org/web/20150325080255/http://www.klimaschutz.nrw.de:80/news/",
+     "archived": true,
+     "captured_at": "2015-03-25",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.klimaschutz.nrw.de",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-10-24"
+  },
+  "xfuels.de": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://xfuels.de/",
+     "read_url": "https://web.archive.org/web/20220612203253/https://xfuels.de/",
+     "archived": true,
+     "captured_at": "2022-06-12",
+     "http": 200,
+     "outcome": "200, 2083 chars",
+     "sha256": "62cbfb143ae1a5a00f543c340ab4b563a7baf16f1c3e6a95ef5f299307bca8f8",
+     "text_chars": 2083,
+     "source_type": "unclassified",
+     "host": "xfuels.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://xfuels.de/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "xfuels.de",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2022-06-12"
+  },
+  "espana.edp.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://espana.edp.com/",
+     "read_url": "https://web.archive.org/web/20211129192517/https://espana.edp.com/",
+     "archived": true,
+     "captured_at": "2021-11-29",
+     "http": 200,
+     "outcome": "200, 5420 chars",
+     "sha256": "682bc2a9a9e1623af1f88cb7a2b38bb60feec1b7d3bfb518cbfc14fef1314956",
+     "text_chars": 5420,
+     "source_type": "unclassified",
+     "host": "espana.edp.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://espana.edp.com/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "espana.edp.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2021-11-29"
+  },
+  "hh2e.de": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://hh2e.de/",
+     "read_url": "https://web.archive.org/web/20230928112031/https://hh2e.de/",
+     "archived": true,
+     "captured_at": "2023-09-28",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "4e1e4c26bfe0e118dbe1d59474692ce40364a2dfb8695f8c2a9f6bcf6ba939a8",
+     "text_chars": 258,
+     "source_type": "unclassified",
+     "host": "hh2e.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://hh2e.de/press-eng/",
+     "read_url": "https://web.archive.org/web/20210618063531/https://hh2e.de/press-eng/",
+     "archived": true,
+     "captured_at": "2021-06-18",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "hh2e.de",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2023-09-28"
+  },
+  "www.hycc.com": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.hycc.com/",
+     "read_url": "https://web.archive.org/web/20190629003055/https://www.hycc.com/",
+     "archived": true,
+     "captured_at": "2019-06-29",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.hycc.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.hycc.com/",
+     "read_url": "",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "no newsroom path in the CDX index at or before 2023-10-31",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.hycc.com",
+     "signals": {}
+    }
+   ],
+   "resolved_on": "2019-06-29"
+  },
+  "www.wirtschaft.nrw": {
+   "legs": [
+    {
+     "leg": "host_root",
+     "reference_url": "https://www.wirtschaft.nrw/",
+     "read_url": "https://www.wirtschaft.nrw/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 16337 chars",
+     "sha256": "9f84c955768cdf12540553b0127684f3b8eabce9cd11d95194d898975399abb8",
+     "text_chars": 16337,
+     "source_type": "unclassified",
+     "host": "www.wirtschaft.nrw",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "host_newsroom",
+     "reference_url": "https://www.wirtschaft.nrw/presse",
+     "read_url": "https://web.archive.org/web/20231004132515/https://www.wirtschaft.nrw/presse",
+     "archived": true,
+     "captured_at": "2023-10-04",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.wirtschaft.nrw",
+     "signals": {}
+    }
+   ],
+   "resolved_on": ""
   }
  },
  "entries": [
@@ -5765,6 +7025,110 @@
    "verdict": null
   },
   {
+   "ref": "1116",
+   "name": "ELYgator",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "920",
+    "1437",
+    "1662"
+   ],
+   "iea_references": [
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+    "https://ec.europa.eu/clima/document/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en",
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+     "read_url": "https://web.archive.org/web/20220126164014/https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+     "archived": true,
+     "captured_at": "2022-01-26",
+     "http": null,
+     "outcome": "InvalidURL",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.topsectorenergie.nl",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://ec.europa.eu/clima/document/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en",
+     "read_url": "https://web.archive.org/web/20220901020921/https://ec.europa.eu/clima/document/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en",
+     "archived": true,
+     "captured_at": "2022-09-01",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "permit_or_official",
+     "host": "ec.europa.eu",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "read_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "topsectorenergie.nl",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
+     "read_url": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 5972 chars",
+     "sha256": "b9cc314f2a0a7bc404578828f6873696179fa053a89db54927a655dbac3516a0",
+     "text_chars": 5972,
+     "source_type": "unclassified",
+     "host": "www.airliquide.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "www.topsectorenergie.nl",
+    "ec.europa.eu"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
    "ref": "1118",
    "name": "Zeeland Refinery - H2ero",
    "country": "NLD",
@@ -5805,6 +7169,94 @@
    ],
    "iea_references_not_read": 0,
    "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1126",
+   "name": "GreenHyScale",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2024",
+   "technology": "ALK",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "924",
+    "1101",
+    "1231"
+   ],
+   "iea_references": [
+    "https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+    "https://www.greenlab.dk/knowledge/greenhyscale-project-official-kick-off/",
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/lc-gd-2-2-2020;callCode=H2020-LC-GD-2020;freeTextSearchKeyword=;matchWholeText=true;typeCodes=1;statusCodes=31094501,31094502,31094503;programmePeriod=null;programCcm2Id=null;programDivisionCode=null;focusAreaCode=null;destination=null;mission=null;geographicalZonesCode=null;programmeDivisionProspect=null;startDateLte=null;startDateGte=null;crossCuttingPriorityCode=null;cpvCode=null;performanceOfDelivery=null;sortQuery=sortStatus;orderBy=asc;onlyTenders=false;topicListKey=callTopicSearchTableState"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+     "read_url": "https://web.archive.org/web/20220126055626/https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+     "archived": true,
+     "captured_at": "2022-01-26",
+     "http": 200,
+     "outcome": "200, 2798 chars",
+     "sha256": "842b90d2d01d7fe768850fa46211625dc52599205a05230aaf81ce9332c8bb1c",
+     "text_chars": 2798,
+     "source_type": "unclassified",
+     "host": "www.greenlab.dk",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.greenlab.dk/knowledge/greenhyscale-project-official-kick-off/",
+     "read_url": "https://www.greenlab.dk/knowledge/greenhyscale-project-official-kick-off/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 22521 chars",
+     "sha256": "f294649342af1e109a7fa8e595f765db86709f5c5e9537c70165d6441e1c6473",
+     "text_chars": 22521,
+     "source_type": "unclassified",
+     "host": "www.greenlab.dk",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/lc-gd-2-2-2020;callCode=H2020-LC-GD-2020;freeTextSearchKeyword=;matchWholeText=true;typeCodes=1;statusCodes=31094501,31094502,31094503;programmePeriod=null;programCcm2Id=null;programDivisionCode=null;focusAreaCode=null;destination=null;mission=null;geographicalZonesCode=null;programmeDivisionProspect=null;startDateLte=null;startDateGte=null;crossCuttingPriorityCode=null;cpvCode=null;performanceOfDelivery=null;sortQuery=sortStatus;orderBy=asc;onlyTenders=false;topicListKey=callTopicSearchTableState",
+     "read_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/lc-gd-2-2-2020;callCode=H2020-LC-GD-2020;freeTextSearchKeyword=;matchWholeText=true;typeCodes=1;statusCodes=31094501,31094502,31094503;programmePeriod=null;programCcm2Id=null;programDivisionCode=null;focusAreaCode=null;destination=null;mission=null;geographicalZonesCode=null;programmeDivisionProspect=null;startDateLte=null;startDateGte=null;crossCuttingPriorityCode=null;cpvCode=null;performanceOfDelivery=null;sortQuery=sortStatus;orderBy=asc;onlyTenders=false;topicListKey=callTopicSearchTableState",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "4639abe26545e4d9a8351935cd8eca7d95aa70047969bbf0e6a98af52fd3120c",
+     "text_chars": 289,
+     "source_type": "permit_or_official",
+     "host": "ec.europa.eu",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.greenlab.dk",
+    "ec.europa.eu"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
    "owner_or_permit_pre_cutoff": null,
    "owner_or_permit_url": null,
    "names_site": null,
@@ -6023,6 +7475,292 @@
    "verdict": null
   },
   {
+   "ref": "1169",
+   "name": "Sines refinery (phase 2)",
+   "country": "PRT",
+   "status_2023_vintage": "FID/Construction",
+   "date_online_2023_vintage": "2025",
+   "technology": "PEM",
+   "announced_size": "102MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 14.993076923076922,
+   "iea_reference_numbers": [
+    "952",
+    "2117"
+   ],
+   "iea_references": [
+    "https://www.reuters.com/business/energy/portugals-galp-moves-green-hydrogen-refinery-eyes-12-bln-investment-2021-06-14/",
+    "https://direct.argusmedia.com/newsandanalysis/Article/2492610"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.reuters.com/business/energy/portugals-galp-moves-green-hydrogen-refinery-eyes-12-bln-investment-2021-06-14/",
+     "read_url": "https://web.archive.org/web/20230526221043/https://www.reuters.com/business/energy/portugals-galp-moves-green-hydrogen-refinery-eyes-12-bln-investment-2021-06-14/",
+     "archived": true,
+     "captured_at": "2023-05-26",
+     "http": 200,
+     "outcome": "200, 6574 chars",
+     "sha256": "af09a68eb9ff8eb8458887a0638d7bc27ad4b402cab5a2a47310712dc982e4b7",
+     "text_chars": 6574,
+     "source_type": "unclassified",
+     "host": "www.reuters.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://direct.argusmedia.com/newsandanalysis/Article/2492610",
+     "read_url": "https://direct.argusmedia.com/newsandanalysis/Article/2492610",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "e9508966acfbc337770712feee5f48c6d7004ed51ce8497b153539e0298bcbe3",
+     "text_chars": 13,
+     "source_type": "unclassified",
+     "host": "direct.argusmedia.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-sines-with-eur430-million",
+     "read_url": "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-sines-with-eur430-million",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 13865 chars",
+     "sha256": "8d90d56eefa160646e12a4077411cf8efe440014ed44390044d8a032df54f649",
+     "text_chars": 13865,
+     "source_type": "unclassified",
+     "host": "www.eib.org",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.galp.com/corp/en/media/press-releases/press-release/id/1490/final-investment-decision-on-green-hydrogen-and-hvosaf-projects",
+     "read_url": "https://web.archive.org/web/20230925193537/https://www.galp.com/corp/en/media/press-releases/press-release/id/1490/final-investment-decision-on-green-hydrogen-and-hvosaf-projects",
+     "archived": true,
+     "captured_at": "2023-09-25",
+     "http": 200,
+     "outcome": "200, 7281 chars",
+     "sha256": "7f0839bc3ab89dcd852456db939d5d2ec2c33d314e9b694ab58063d63900ab24",
+     "text_chars": 7281,
+     "source_type": "unclassified",
+     "host": "www.galp.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.eib.org/en/projects/pipelines/all/20230533",
+     "read_url": "https://www.eib.org/en/projects/pipelines/all/20230533",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 13944 chars",
+     "sha256": "84e09d19fddae6da430903ad3a215f35dd076e83106a9db541a4e767fba6e4e3",
+     "text_chars": 13944,
+     "source_type": "unclassified",
+     "host": "www.eib.org",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.eib.org",
+    "www.galp.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1191",
+   "name": "AquaVentus (completion)",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2035",
+   "technology": "Other Electrolysis",
+   "announced_size": "10GW",
+   "capacity_mwel": 5000.0,
+   "capacity_kth2y": 866.2666666666667,
+   "iea_reference_numbers": [
+    "677",
+    "980"
+   ],
+   "iea_references": [
+    "https://www.aquaventus.org/#section-2",
+    "https://www.rechargenews.com/energy-transition/global-green-hydrogen-pipeline-exceeds-200gw-heres-the-25-largest-gigawatt-scale-projects/2-1-933755"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.aquaventus.org/#section-2",
+     "read_url": "https://web.archive.org/web/20230929070127/https://www.aquaventus.org/#section-2",
+     "archived": true,
+     "captured_at": "2023-09-29",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.aquaventus.org",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.rechargenews.com/energy-transition/global-green-hydrogen-pipeline-exceeds-200gw-heres-the-25-largest-gigawatt-scale-projects/2-1-933755",
+     "read_url": "https://web.archive.org/web/20210709234703/https://www.rechargenews.com/energy-transition/global-green-hydrogen-pipeline-exceeds-200gw-heres-the-25-largest-gigawatt-scale-projects/2-1-933755",
+     "archived": true,
+     "captured_at": "2021-07-09",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.rechargenews.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.aquaventus.org"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1192",
+   "name": "EI-H2 - Aghada (phase 2)",
+   "country": "IRL",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "2.7GW",
+   "capacity_mwel": 2650.0,
+   "capacity_kth2y": 459.1213333333333,
+   "iea_reference_numbers": [
+    "981"
+   ],
+   "iea_references": [
+    "https://www.independent.ie/business/irish/ei-h2-and-zenith-announce-plans-for-green-hydrogen-plant-in-bantry-bay-40623074.html"
+   ],
+   "quality_check_reference_numbers": [
+    "103",
+    "104"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://fuelcellsworks.com/news/irish-hydrogen-company-eih2-port-of-amsterdam-port-of-cork-sign-mou-on-green-hydrogen/",
+     "reference_date": "2022-09-13",
+     "date_checked": "2024-08-01",
+     "comment": "MoU signed",
+     "number": "103"
+    },
+    {
+     "url": "https://www.independent.ie/business/irish/ei-h2-and-zenith-announce-plans-for-green-hydrogen-plant-in-bantry-bay/40623074.html",
+     "reference_date": "2021-07-07",
+     "date_checked": "2024-07-25",
+     "comment": "\"2.7 GW hydrogen production facility and a 500 megawatt (MW) green ammonia facility, which could be up and running by 2028\"",
+     "number": "104"
+    }
+   ],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.independent.ie/business/irish/ei-h2-and-zenith-announce-plans-for-green-hydrogen-plant-in-bantry-bay-40623074.html",
+     "read_url": "https://web.archive.org/web/20221008173000/https://www.independent.ie/business/irish/ei-h2-and-zenith-announce-plans-for-green-hydrogen-plant-in-bantry-bay-40623074.html",
+     "archived": true,
+     "captured_at": "2022-10-08",
+     "http": 200,
+     "outcome": "200, 7926 chars",
+     "sha256": "d33bbae62aac8ad87e240a076a6acddd56c2d34a036d02e9e89eabd30d5d5324",
+     "text_chars": 7926,
+     "source_type": "unclassified",
+     "host": "www.independent.ie",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "quality_check_reference",
+     "reference_url": "https://fuelcellsworks.com/news/irish-hydrogen-company-eih2-port-of-amsterdam-port-of-cork-sign-mou-on-green-hydrogen/",
+     "read_url": "https://web.archive.org/web/20220913161622/https://fuelcellsworks.com/news/irish-hydrogen-company-eih2-port-of-amsterdam-port-of-cork-sign-mou-on-green-hydrogen/",
+     "archived": true,
+     "captured_at": "2022-09-13",
+     "http": 200,
+     "outcome": "200, 5270 chars",
+     "sha256": "d3d7ff358a2fb041d7eb9616559ef8c92eef1a28349c60678b87f0a5cce8b35c",
+     "text_chars": 5270,
+     "source_type": "unclassified",
+     "host": "fuelcellsworks.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "quality_check_reference",
+     "reference_url": "https://www.independent.ie/business/irish/ei-h2-and-zenith-announce-plans-for-green-hydrogen-plant-in-bantry-bay/40623074.html",
+     "read_url": "https://www.independent.ie/business/irish/ei-h2-and-zenith-announce-plans-for-green-hydrogen-plant-in-bantry-bay/40623074.html",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.independent.ie",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
    "ref": "1193",
    "name": "EI-H2 - Aghada (phase 3)",
    "country": "IRL",
@@ -6111,6 +7849,3895 @@
    "host_legs": [],
    "iea_references_not_read": 0,
    "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1200",
+   "name": "Algeciras Bay",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "237MW",
+   "capacity_mwel": 237.0,
+   "capacity_kth2y": 41.061040000000006,
+   "iea_reference_numbers": [
+    "988",
+    "991"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/new-237mw-green-hydrogen-plant-set-for-the-spanish-bay-of-algeciras/",
+    "https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/21_06_2021_NP_Proyecto_hidr%C3%B3geno_verde_Algeciras_Fisterra_y_White_Summit"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.h2-view.com/story/new-237mw-green-hydrogen-plant-set-for-the-spanish-bay-of-algeciras/",
+     "read_url": "https://web.archive.org/web/20230610043913/https://www.h2-view.com/story/new-237mw-green-hydrogen-plant-set-for-the-spanish-bay-of-algeciras/",
+     "archived": true,
+     "captured_at": "2023-06-10",
+     "http": 200,
+     "outcome": "200, 12205 chars",
+     "sha256": "491f1f3d0af5687c484f4335212dd22140d26cbf97e64b66daf7538cb9d3075a",
+     "text_chars": 12205,
+     "source_type": "unclassified",
+     "host": "www.h2-view.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/21_06_2021_NP_Proyecto_hidr%C3%B3geno_verde_Algeciras_Fisterra_y_White_Summit",
+     "read_url": "https://web.archive.org/web/20210622141553/https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/21_06_2021_NP_Proyecto_hidr%C3%B3geno_verde_Algeciras_Fisterra_y_White_Summit",
+     "archived": true,
+     "captured_at": "2021-06-22",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.enagas.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.enagas.es"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1233",
+   "name": "Lysekil refinery (phase 2)",
+   "country": "SWE",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "200-500MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "722"
+   ],
+   "iea_references": [
+    "https://group.vattenfall.com/press-and-media/pressreleases/2021/vattenfall-and-preem-look-into-large-scale-production-of-fossil-free-hydrogen-in-lysekil"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://group.vattenfall.com/press-and-media/pressreleases/2021/vattenfall-and-preem-look-into-large-scale-production-of-fossil-free-hydrogen-in-lysekil",
+     "read_url": "https://web.archive.org/web/20230602155442/https://group.vattenfall.com/press-and-media/pressreleases/2021/vattenfall-and-preem-look-into-large-scale-production-of-fossil-free-hydrogen-in-lysekil",
+     "archived": true,
+     "captured_at": "2023-06-02",
+     "http": 200,
+     "outcome": "200, 9940 chars",
+     "sha256": "443a73eb3ddfc5cf8322407888621e3434c2a0958106cf9b4aebd6bcb7bbac3f",
+     "text_chars": 9940,
+     "source_type": "unclassified",
+     "host": "group.vattenfall.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "group.vattenfall.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1249",
+   "name": "Iberdrola-Foresa Green Methanol (phase 2)",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "150MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "1023"
+   ],
+   "iea_references": [
+    "https://www.iberdrola.com/sala-comunicacion/noticias/detalle/iberdrola-foresa-proyectan-inversiones-hidrogeno-renovable-para-produccion-metanol-verde-galicia"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.iberdrola.com/sala-comunicacion/noticias/detalle/iberdrola-foresa-proyectan-inversiones-hidrogeno-renovable-para-produccion-metanol-verde-galicia",
+     "read_url": "https://web.archive.org/web/20230601200907/https://www.iberdrola.com/sala-comunicacion/noticias/detalle/iberdrola-foresa-proyectan-inversiones-hidrogeno-renovable-para-produccion-metanol-verde-galicia",
+     "archived": true,
+     "captured_at": "2023-06-01",
+     "http": 200,
+     "outcome": "200, 13976 chars",
+     "sha256": "5cf939b5470b1c303b0593feef6df08f3bc26a1acde0c9c5325a9ed167005d35",
+     "text_chars": 13976,
+     "source_type": "unclassified",
+     "host": "www.iberdrola.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.iberdrola.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1267",
+   "name": "AquaSector",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 272.0,
+   "capacity_kth2y": 47.12490666666666,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1270",
+   "name": "Green Crane - La Robla, Phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "280MW",
+   "capacity_mwel": 220.0,
+   "capacity_kth2y": 38.11573333333334,
+   "iea_reference_numbers": [
+    "647",
+    "648",
+    "697"
+   ],
+   "iea_references": [
+    "https://assets.ey.com/content/dam/ey-sites/ey-com/it_it/news/2020/ey-summary-report-green-recovery-v2.pdf",
+    "https://www.eleconomista.es/empresas-finanzas/noticias/10896511/11/20/Repsol-invertira-hasta-2900-millones-en-hidrogeno-en-cinco-anos-.html",
+    "https://www.naturgy.com/enagas_y_naturgy_impulsan_en_leon_la_mayor_planta_de__hidrogeno_verde_de_espana"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://assets.ey.com/content/dam/ey-sites/ey-com/it_it/news/2020/ey-summary-report-green-recovery-v2.pdf",
+     "read_url": "https://web.archive.org/web/20220126201400/https://assets.ey.com/content/dam/ey-sites/ey-com/it_it/news/2020/ey-summary-report-green-recovery-v2.pdf",
+     "archived": true,
+     "captured_at": "2022-01-26",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "assets.ey.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.eleconomista.es/empresas-finanzas/noticias/10896511/11/20/Repsol-invertira-hasta-2900-millones-en-hidrogeno-en-cinco-anos-.html",
+     "read_url": "https://www.eleconomista.es/empresas-finanzas/noticias/10896511/11/20/Repsol-invertira-hasta-2900-millones-en-hidrogeno-en-cinco-anos-.html",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.eleconomista.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.naturgy.com/enagas_y_naturgy_impulsan_en_leon_la_mayor_planta_de__hidrogeno_verde_de_espana",
+     "read_url": "https://web.archive.org/web/20210620194721/https://www.naturgy.com/enagas_y_naturgy_impulsan_en_leon_la_mayor_planta_de__hidrogeno_verde_de_espana",
+     "archived": true,
+     "captured_at": "2021-06-20",
+     "http": 200,
+     "outcome": "200, 11415 chars",
+     "sha256": "0287d269b7d3f9591987bc4e454b9aa42c38f46f014e33e424072f0a9391e93f",
+     "text_chars": 11415,
+     "source_type": "unclassified",
+     "host": "www.naturgy.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "www.naturgy.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1271",
+   "name": "Meirama plant, phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "648"
+   ],
+   "iea_references": [
+    "https://www.eleconomista.es/empresas-finanzas/noticias/10896511/11/20/Repsol-invertira-hasta-2900-millones-en-hidrogeno-en-cinco-anos-.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.eleconomista.es/empresas-finanzas/noticias/10896511/11/20/Repsol-invertira-hasta-2900-millones-en-hidrogeno-en-cinco-anos-.html",
+     "read_url": "https://web.archive.org/web/20221208053509/https://www.eleconomista.es/empresas-finanzas/noticias/10896511/11/20/Repsol-invertira-hasta-2900-millones-en-hidrogeno-en-cinco-anos-.html",
+     "archived": true,
+     "captured_at": "2022-12-08",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.eleconomista.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1278",
+   "name": "Green fertilizer project Porsgrunn-Heroya, phase 2 - HEGRA",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "480 MW - 400kt NH3/y",
+   "capacity_mwel": 456.0,
+   "capacity_kth2y": 72.02826577660986,
+   "iea_reference_numbers": [
+    "1565",
+    "1566"
+   ],
+   "iea_references": [
+    "https://www.yara.com/corporate-releases/yara-and-linde-engineering-agree-to-build-a-24-mw-green-hydrogen-demonstration-plant-in-norway.-both-companies-aim-to-achieve-a-significant-carbon-dioxide-reduction-in-the-production-of-fertilizers-in-norway/",
+    "https://eng.heroya-industripark.no/latest-news/first-step-towards-full-decarbonisation-of-the-ammonia-plant-at-heroeya"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.yara.com/corporate-releases/yara-and-linde-engineering-agree-to-build-a-24-mw-green-hydrogen-demonstration-plant-in-norway.-both-companies-aim-to-achieve-a-significant-carbon-dioxide-reduction-in-the-production-of-fertilizers-in-norway/",
+     "read_url": "https://web.archive.org/web/20230606022411/https://www.yara.com/corporate-releases/yara-and-linde-engineering-agree-to-build-a-24-mw-green-hydrogen-demonstration-plant-in-norway.-both-companies-aim-to-achieve-a-significant-carbon-dioxide-reduction-in-the-production-of-fertilizers-in-norway/",
+     "archived": true,
+     "captured_at": "2023-06-06",
+     "http": 200,
+     "outcome": "200, 9954 chars",
+     "sha256": "fa16ffb5d12aad14a1bc12ec9b20e900dde1af46a096ba6093a44d4eeeeab0cd",
+     "text_chars": 9954,
+     "source_type": "unclassified",
+     "host": "www.yara.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://eng.heroya-industripark.no/latest-news/first-step-towards-full-decarbonisation-of-the-ammonia-plant-at-heroeya",
+     "read_url": "https://web.archive.org/web/20220808100727/https://eng.heroya-industripark.no/latest-news/first-step-towards-full-decarbonisation-of-the-ammonia-plant-at-heroeya",
+     "archived": true,
+     "captured_at": "2022-08-08",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "eng.heroya-industripark.no",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.yara.com",
+    "eng.heroya-industripark.no"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1315",
+   "name": "H2 Energy Europe Esbjerg green hydrogen",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "PEM",
+   "announced_size": "1GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 149.93076923076922,
+   "iea_reference_numbers": [
+    "1249",
+    "1510"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+    "https://www.ir.plugpower.com/press-releases/news-details/2022/Plug-Lands-1-GW-Electrolyzer-Order-with-H2-Energy-Europe/default.aspx"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "read_url": "https://web.archive.org/web/20230522174018/https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "archived": true,
+     "captured_at": "2023-05-22",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "9278b7de8e976d421112a78becce086db957567fde4f694ff757e32727ce6150",
+     "text_chars": 246,
+     "source_type": "permit_or_official",
+     "host": "ens.dk",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.ir.plugpower.com/press-releases/news-details/2022/Plug-Lands-1-GW-Electrolyzer-Order-with-H2-Energy-Europe/default.aspx",
+     "read_url": "https://web.archive.org/web/20230925023245/https://www.ir.plugpower.com/press-releases/news-details/2022/Plug-Lands-1-GW-Electrolyzer-Order-with-H2-Energy-Europe/default.aspx",
+     "archived": true,
+     "captured_at": "2023-09-25",
+     "http": 200,
+     "outcome": "200, 11781 chars",
+     "sha256": "223f4731f798b6f6749d15e071dd117fa86ce4b6608b52ea05e205e3fb90b1ef",
+     "text_chars": 11781,
+     "source_type": "unclassified",
+     "host": "www.ir.plugpower.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://morgenenergy.com/njordkraft/",
+     "read_url": "https://morgenenergy.com/njordkraft/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 4410 chars",
+     "sha256": "22523e43d9aaee4d6224fbe67c74e8f6db50a815a3e6e0b5d84a9d4e3f4786e8",
+     "text_chars": 4410,
+     "source_type": "unclassified",
+     "host": "morgenenergy.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "ens.dk",
+    "www.ir.plugpower.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1331",
+   "name": "Green Wolverine",
+   "country": "SWE",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 600.0,
+   "capacity_kth2y": 103.952,
+   "iea_reference_numbers": [
+    "1084"
+   ],
+   "iea_references": [
+    "https://www.grupofertiberia.com/media/605649/20211015-np-planta-fertiberia-suecia_def_en-1.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.grupofertiberia.com/media/605649/20211015-np-planta-fertiberia-suecia_def_en-1.pdf",
+     "read_url": "https://web.archive.org/web/20220126174825/https://www.grupofertiberia.com/media/605649/20211015-np-planta-fertiberia-suecia_def_en-1.pdf",
+     "archived": true,
+     "captured_at": "2022-01-26",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "12bef107052d8ffdd8cf486c1f1e3eedb2bbb6946c9107832bf86fbdcc846c3a",
+     "text_chars": 285,
+     "source_type": "unclassified",
+     "host": "www.grupofertiberia.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.grupofertiberia.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1351",
+   "name": "Hynovi - Vicat Montalieu-Vercieu cement plant",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "180MW",
+   "capacity_mwel": 180.0,
+   "capacity_kth2y": 31.1856,
+   "iea_reference_numbers": [
+    "1107"
+   ],
+   "iea_references": [
+    "https://www.constructioncayola.com/batiment/article/2021/09/09/136025/vicat-hynamics-edf-partenariat-dans-sens-neutralite-carbone"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.constructioncayola.com/batiment/article/2021/09/09/136025/vicat-hynamics-edf-partenariat-dans-sens-neutralite-carbone",
+     "read_url": "https://web.archive.org/web/20221204013732/https://www.constructioncayola.com/batiment/article/2021/09/09/136025/vicat-hynamics-edf-partenariat-dans-sens-neutralite-carbone",
+     "archived": true,
+     "captured_at": "2022-12-04",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.constructioncayola.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.vicat.com/news/low-carbon-trajectory-vicat-and-hynamics-unveil-hynovi-project",
+     "read_url": "https://web.archive.org/web/20230924000825/https://www.vicat.com/news/low-carbon-trajectory-vicat-and-hynamics-unveil-hynovi-project",
+     "archived": true,
+     "captured_at": "2023-09-24",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.vicat.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.vicat.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1356",
+   "name": "H2opZee",
+   "country": "NLD",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2031",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1267"
+   ],
+   "iea_references": [
+    "https://www.reuters.com/business/energy/rwe-neptune-energy-join-forces-dutch-north-sea-green-hydrogen-plan-2022-02-15/#:~:text=OSLO%2FFRANKFURT%2C%20Feb%2015%20(,Dutch%20North%20Sea%20by%202030."
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.reuters.com/business/energy/rwe-neptune-energy-join-forces-dutch-north-sea-green-hydrogen-plan-2022-02-15/#:~:text=OSLO%2FFRANKFURT%2C%20Feb%2015%20(,Dutch%20North%20Sea%20by%202030.",
+     "read_url": "https://web.archive.org/web/20220220215328/https://www.reuters.com/business/energy/rwe-neptune-energy-join-forces-dutch-north-sea-green-hydrogen-plan-2022-02-15/#:~:text=OSLO%2FFRANKFURT%2C%20Feb%2015%20(,Dutch%20North%20Sea%20by%202030.",
+     "archived": true,
+     "captured_at": "2022-02-20",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.reuters.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1374",
+   "name": "Gigastack-Hornsea 2, phase II",
+   "country": "GBR",
+   "status_2023_vintage": "Other/Unknown",
+   "date_online_2023_vintage": "2030",
+   "technology": "PEM",
+   "announced_size": "1 GW",
+   "capacity_mwel": 900.0,
+   "capacity_kth2y": 134.93769230769232,
+   "iea_reference_numbers": [
+    "1124"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/humber-green-hydrogen-gigastack-project-one-step-closer-to-renewable-hydrogen-at-industrial-scale-as-phase-2-concludes/?mc_cid=57729a593d&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://fuelcellsworks.com/news/humber-green-hydrogen-gigastack-project-one-step-closer-to-renewable-hydrogen-at-industrial-scale-as-phase-2-concludes/?mc_cid=57729a593d&mc_eid=da4624d261",
+     "read_url": "https://fuelcellsworks.com/news/humber-green-hydrogen-gigastack-project-one-step-closer-to-renewable-hydrogen-at-industrial-scale-as-phase-2-concludes/?mc_cid=57729a593d&mc_eid=da4624d261",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 522 chars",
+     "sha256": "8bcb1495782492c67a31911c4b2bce0c93d1e61bf9a2ffd59eb679f85ca47b53",
+     "text_chars": 522,
+     "source_type": "unclassified",
+     "host": "fuelcellsworks.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://itm-power.com/news/gigastack-project-one-step-closer-to-renewable-hydrogen-at-industrial-scale-as-phase-2-concludes",
+     "read_url": "https://web.archive.org/web/20220520095112/https://itm-power.com/news/gigastack-project-one-step-closer-to-renewable-hydrogen-at-industrial-scale-as-phase-2-concludes",
+     "archived": true,
+     "captured_at": "2022-05-20",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "itm-power.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.offshore-energy.biz/two-offshore-wind-to-hydrogen-projects-withdraw-from-uks-first-electrolytic-allocation-round/",
+     "read_url": "https://web.archive.org/web/20230927023412/https://www.offshore-energy.biz/two-offshore-wind-to-hydrogen-projects-withdraw-from-uks-first-electrolytic-allocation-round/",
+     "archived": true,
+     "captured_at": "2023-09-27",
+     "http": 200,
+     "outcome": "200, 9296 chars",
+     "sha256": "b1e1fcf6ea8538f15733731f54002d124daf38c1a8016c0b0801bb24b4afa054",
+     "text_chars": 9296,
+     "source_type": "unclassified",
+     "host": "www.offshore-energy.biz",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "itm-power.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1388",
+   "name": "INEOS Köln site",
+   "country": "DEU",
+   "status_2023_vintage": "FID/Construction",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1135",
+    "1152"
+   ],
+   "iea_references": [
+    "https://www.ineos.com/news/ineos-group/ineos-green-hydrogen-project-accelerates-towards-net-zero-future-in-germany-by-2045/",
+    "https://fuelcellsworks.com/news/ineos-announces-over-e2-billion-investment-in-green-hydrogen-production/?mc_cid=8a8bc1ef04&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.ineos.com/news/ineos-group/ineos-green-hydrogen-project-accelerates-towards-net-zero-future-in-germany-by-2045/",
+     "read_url": "https://web.archive.org/web/20230921191739/https://www.ineos.com/news/ineos-group/ineos-green-hydrogen-project-accelerates-towards-net-zero-future-in-germany-by-2045/",
+     "archived": true,
+     "captured_at": "2023-09-21",
+     "http": 200,
+     "outcome": "200, 6124 chars",
+     "sha256": "7da32dfb699c236ac2b13fcb8397da1ab5d4108ea011402dfea4f0826596f455",
+     "text_chars": 6124,
+     "source_type": "unclassified",
+     "host": "www.ineos.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://fuelcellsworks.com/news/ineos-announces-over-e2-billion-investment-in-green-hydrogen-production/?mc_cid=8a8bc1ef04&mc_eid=da4624d261",
+     "read_url": "https://fuelcellsworks.com/news/ineos-announces-over-e2-billion-investment-in-green-hydrogen-production/?mc_cid=8a8bc1ef04&mc_eid=da4624d261",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 429 chars",
+     "sha256": "1012166cacbde2ca1d88364ebb408327530ca9cd72cdeb46b5ff5ca5b332073e",
+     "text_chars": 429,
+     "source_type": "unclassified",
+     "host": "fuelcellsworks.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "www.ineos.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1394",
+   "name": "Iberdrola - H2 Green Steel",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "800MW",
+   "capacity_mwel": 800.0,
+   "capacity_kth2y": 138.60266666666666,
+   "iea_reference_numbers": [
+    "1142"
+   ],
+   "iea_references": [
+    "https://www.h2greensteel.com/h2-green-steel-and-iberdrola-announce-23-billion-green-hydrogen-venture"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.h2greensteel.com/h2-green-steel-and-iberdrola-announce-23-billion-green-hydrogen-venture",
+     "read_url": "https://web.archive.org/web/20220609122837/https://www.h2greensteel.com/h2-green-steel-and-iberdrola-announce-23-billion-green-hydrogen-venture",
+     "archived": true,
+     "captured_at": "2022-06-09",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.h2greensteel.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.h2greensteel.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1413",
+   "name": "Wilhelmshaven , phase 2",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "410MW",
+   "capacity_mwel": 340.0,
+   "capacity_kth2y": 58.90613333333334,
+   "iea_reference_numbers": [
+    "750",
+    "1270"
+   ],
+   "iea_references": [
+    "http://www.finanztreff.de/news/uniper-plant-anlandeterminal-fuer-gruenes-ammoniak-in-wilhemshaven/23760196",
+    "https://www.rechargenews.com/energy-transition/germany-s-first-major-hydrogen-hub-uniper-to-supply-salzgitter-steel-plant-with-green-h2/2-1-1171937"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "http://www.finanztreff.de/news/uniper-plant-anlandeterminal-fuer-gruenes-ammoniak-in-wilhemshaven/23760196",
+     "read_url": "http://www.finanztreff.de/news/uniper-plant-anlandeterminal-fuer-gruenes-ammoniak-in-wilhemshaven/23760196",
+     "archived": false,
+     "captured_at": "",
+     "http": 404,
+     "outcome": "404",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.finanztreff.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.rechargenews.com/energy-transition/germany-s-first-major-hydrogen-hub-uniper-to-supply-salzgitter-steel-plant-with-green-h2/2-1-1171937",
+     "read_url": "https://web.archive.org/web/20220702195856/https://www.rechargenews.com/energy-transition/germany-s-first-major-hydrogen-hub-uniper-to-supply-salzgitter-steel-plant-with-green-h2/2-1-1171937",
+     "archived": true,
+     "captured_at": "2022-07-02",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.rechargenews.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1414",
+   "name": "HySkies",
+   "country": "SWE",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "50kt synthetic kerosene/y production",
+   "capacity_mwel": 185.31340070548887,
+   "capacity_kth2y": 32.10616438356164,
+   "iea_reference_numbers": [
+    "1162",
+    "1437"
+   ],
+   "iea_references": [
+    "https://www.sasgroup.net/newsroom/press-releases/2021/sas-vattenfall-shell-and-lanzatech-to-explore-synthetic-sustainable-aviation-fuel-production/",
+    "https://ec.europa.eu/clima/document/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.sasgroup.net/newsroom/press-releases/2021/sas-vattenfall-shell-and-lanzatech-to-explore-synthetic-sustainable-aviation-fuel-production/",
+     "read_url": "https://web.archive.org/web/20230529092032/https://www.sasgroup.net/newsroom/press-releases/2021/sas-vattenfall-shell-and-lanzatech-to-explore-synthetic-sustainable-aviation-fuel-production/",
+     "archived": true,
+     "captured_at": "2023-05-29",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.sasgroup.net",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://ec.europa.eu/clima/document/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en",
+     "read_url": "https://web.archive.org/web/20220901020921/https://ec.europa.eu/clima/document/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en",
+     "archived": true,
+     "captured_at": "2022-09-01",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "permit_or_official",
+     "host": "ec.europa.eu",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.sasgroup.net",
+    "ec.europa.eu"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1436",
+   "name": "Get H2 Lingen, phase 3",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "300 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "314",
+    "945",
+    "1180",
+    "1212"
+   ],
+   "iea_references": [
+    "https://www.get-h2.de/en/project-lingen/",
+    "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+    "https://global.kawasaki.com/news_211209-2e.pdf",
+    "https://www.rwe.com/en/press/rwe-generation/2021-12-20-rwe-working-with-linde-to-develop-electrolyser-plant-in-lingen"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.get-h2.de/en/project-lingen/",
+     "read_url": "https://web.archive.org/web/20221005022438/https://www.get-h2.de/en/project-lingen/",
+     "archived": true,
+     "captured_at": "2022-10-05",
+     "http": 200,
+     "outcome": "200, 2058 chars",
+     "sha256": "1e6149eb35187130a06ffe527bd34f68ad99cad787a7aebdd891ef499f2da59b",
+     "text_chars": 2058,
+     "source_type": "unclassified",
+     "host": "www.get-h2.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+     "read_url": "https://web.archive.org/web/20210621045819/https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+     "archived": true,
+     "captured_at": "2021-06-21",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.spglobal.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://global.kawasaki.com/news_211209-2e.pdf",
+     "read_url": "https://global.kawasaki.com/news_211209-2e.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 0 chars",
+     "sha256": "b6cf89247ddfb241019cdaa54b71b510595347e6ab4ebcf2c748b78d2eb79185",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "global.kawasaki.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.rwe.com/en/press/rwe-generation/2023-01-31-rwe-orders-two-100-megawatt-electrolysis-plants-for-get-h2-in-lingen/",
+     "read_url": "https://web.archive.org/web/20230502032137/https://www.rwe.com/en/press/rwe-generation/2023-01-31-rwe-orders-two-100-megawatt-electrolysis-plants-for-get-h2-in-lingen/",
+     "archived": true,
+     "captured_at": "2023-05-02",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.rwe.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+     "read_url": "https://www.rwe.com/en/press/rwe-ag/2024-07-15-german-and-state-governments-grant-funding-for-large-hydrogen-projects-by-rwe/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 8911 chars",
+     "sha256": "468cc94d0f288b00b8223d126c4f0c4605c3d2b75986ad23f88eb787ace696ac",
+     "text_chars": 8911,
+     "source_type": "unclassified",
+     "host": "www.rwe.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.rwe.com/en/press/rwe-generation/2026-08-04-get-h2-nukleus-gains-momentum/",
+     "read_url": "https://www.rwe.com/en/press/rwe-generation/2026-08-04-get-h2-nukleus-gains-momentum/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 10696 chars",
+     "sha256": "5c605e68364dd98f0934bf69bf541eb1d27020b38d373e12f4d4a1fd75842c56",
+     "text_chars": 10696,
+     "source_type": "unclassified",
+     "host": "www.rwe.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "www.get-h2.de",
+    "global.kawasaki.com"
+   ],
+   "iea_references_not_read": 1,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1437",
+   "name": "Wasserstoffpark Lingen",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2035",
+   "technology": "Other Electrolysis",
+   "announced_size": "1.8GW",
+   "capacity_mwel": 1800.0,
+   "capacity_kth2y": 311.856,
+   "iea_reference_numbers": [
+    "314",
+    "945",
+    "1180"
+   ],
+   "iea_references": [
+    "https://www.get-h2.de/en/project-lingen/",
+    "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+    "https://global.kawasaki.com/news_211209-2e.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.get-h2.de/en/project-lingen/",
+     "read_url": "https://web.archive.org/web/20221005022438/https://www.get-h2.de/en/project-lingen/",
+     "archived": true,
+     "captured_at": "2022-10-05",
+     "http": 200,
+     "outcome": "200, 2058 chars",
+     "sha256": "1e6149eb35187130a06ffe527bd34f68ad99cad787a7aebdd891ef499f2da59b",
+     "text_chars": 2058,
+     "source_type": "unclassified",
+     "host": "www.get-h2.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+     "read_url": "https://web.archive.org/web/20210621045819/https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+     "archived": true,
+     "captured_at": "2021-06-21",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.spglobal.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://global.kawasaki.com/news_211209-2e.pdf",
+     "read_url": "https://web.archive.org/web/20220810113152/https://global.kawasaki.com/news_211209-2e.pdf",
+     "archived": true,
+     "captured_at": "2022-08-10",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "cdc9f8a4f50c579089cc772d538c162a2f23f48157ab1063c63c2ad3c2f7cb97",
+     "text_chars": 237,
+     "source_type": "unclassified",
+     "host": "global.kawasaki.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.get-h2.de",
+    "global.kawasaki.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1476",
+   "name": "H2V Marseille - Fos (Phase 1)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1222",
+    "1316"
+   ],
+   "iea_references": [
+    "https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+    "https://h2v.net/projet/projet-h2v-marseille-fos/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+     "read_url": "https://web.archive.org/web/20220808052027/https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+     "archived": true,
+     "captured_at": "2022-08-08",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.marseille-port.fr",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://h2v.net/projet/projet-h2v-marseille-fos/",
+     "read_url": "https://web.archive.org/web/20231003161949/https://h2v.net/projet/projet-h2v-marseille-fos/",
+     "archived": true,
+     "captured_at": "2023-10-03",
+     "http": 200,
+     "outcome": "200, 6054 chars",
+     "sha256": "0c5493cdd5fbc3a751c7dc520e10d840fc99cd7111ed1bac047ab473582b6863",
+     "text_chars": 6054,
+     "source_type": "unclassified",
+     "host": "h2v.net",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.marseille-port.fr/en/projets/h2v-fos-et-le-port-de-marseille-fos",
+     "read_url": "https://www.marseille-port.fr/en/projets/h2v-fos-et-le-port-de-marseille-fos",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 5712 chars",
+     "sha256": "ce6312ce31cbd38b26c68ac3ae1244383ff6eef09328c9757257d74a0ace0177",
+     "text_chars": 5712,
+     "source_type": "unclassified",
+     "host": "www.marseille-port.fr",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.marseille-port.fr"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1477",
+   "name": "H2V Marseille - Fos (Phase 6, final)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2031",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1222",
+    "1316"
+   ],
+   "iea_references": [
+    "https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+    "https://h2v.net/projet/projet-h2v-marseille-fos/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+     "read_url": "https://web.archive.org/web/20220808052027/https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+     "archived": true,
+     "captured_at": "2022-08-08",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "6e932bcdb644b3423fbd84ba924fdfd7046904437a1321383ebd4cdbc92787ab",
+     "text_chars": 274,
+     "source_type": "unclassified",
+     "host": "www.marseille-port.fr",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://h2v.net/projet/projet-h2v-marseille-fos/",
+     "read_url": "https://web.archive.org/web/20231003161949/https://h2v.net/projet/projet-h2v-marseille-fos/",
+     "archived": true,
+     "captured_at": "2023-10-03",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "h2v.net",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.marseille-port.fr/en/projets/h2v-fos-et-le-port-de-marseille-fos",
+     "read_url": "https://www.marseille-port.fr/en/projets/h2v-fos-et-le-port-de-marseille-fos",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 5712 chars",
+     "sha256": "ce6312ce31cbd38b26c68ac3ae1244383ff6eef09328c9757257d74a0ace0177",
+     "text_chars": 5712,
+     "source_type": "unclassified",
+     "host": "www.marseille-port.fr",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.marseille-port.fr"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1488",
+   "name": "GreenH2Atlantic",
+   "country": "PRT",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "1230",
+    "1231"
+   ],
+   "iea_references": [
+    "https://mcphy.com/en/press-releases/greenh2atlantic-project/?cn-reloaded=1",
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/lc-gd-2-2-2020;callCode=H2020-LC-GD-2020;freeTextSearchKeyword=;matchWholeText=true;typeCodes=1;statusCodes=31094501,31094502,31094503;programmePeriod=null;programCcm2Id=null;programDivisionCode=null;focusAreaCode=null;destination=null;mission=null;geographicalZonesCode=null;programmeDivisionProspect=null;startDateLte=null;startDateGte=null;crossCuttingPriorityCode=null;cpvCode=null;performanceOfDelivery=null;sortQuery=sortStatus;orderBy=asc;onlyTenders=false;topicListKey=callTopicSearchTableState"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://mcphy.com/en/press-releases/greenh2atlantic-project/?cn-reloaded=1",
+     "read_url": "https://web.archive.org/web/20230610051920/https://mcphy.com/en/press-releases/greenh2atlantic-project/?cn-reloaded=1",
+     "archived": true,
+     "captured_at": "2023-06-10",
+     "http": 200,
+     "outcome": "200, 16445 chars",
+     "sha256": "a6e6902b40c758dbf78403db253725a83f3dbb06979a12b1c7e13a61996ba815",
+     "text_chars": 16445,
+     "source_type": "unclassified",
+     "host": "mcphy.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/lc-gd-2-2-2020;callCode=H2020-LC-GD-2020;freeTextSearchKeyword=;matchWholeText=true;typeCodes=1;statusCodes=31094501,31094502,31094503;programmePeriod=null;programCcm2Id=null;programDivisionCode=null;focusAreaCode=null;destination=null;mission=null;geographicalZonesCode=null;programmeDivisionProspect=null;startDateLte=null;startDateGte=null;crossCuttingPriorityCode=null;cpvCode=null;performanceOfDelivery=null;sortQuery=sortStatus;orderBy=asc;onlyTenders=false;topicListKey=callTopicSearchTableState",
+     "read_url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/lc-gd-2-2-2020;callCode=H2020-LC-GD-2020;freeTextSearchKeyword=;matchWholeText=true;typeCodes=1;statusCodes=31094501,31094502,31094503;programmePeriod=null;programCcm2Id=null;programDivisionCode=null;focusAreaCode=null;destination=null;mission=null;geographicalZonesCode=null;programmeDivisionProspect=null;startDateLte=null;startDateGte=null;crossCuttingPriorityCode=null;cpvCode=null;performanceOfDelivery=null;sortQuery=sortStatus;orderBy=asc;onlyTenders=false;topicListKey=callTopicSearchTableState",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "4639abe26545e4d9a8351935cd8eca7d95aa70047969bbf0e6a98af52fd3120c",
+     "text_chars": 289,
+     "source_type": "permit_or_official",
+     "host": "ec.europa.eu",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "mcphy.com",
+    "ec.europa.eu"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1489",
+   "name": "Catalina Project, Phase 1",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW - 40 kt H2/y",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1232",
+    "1703"
+   ],
+   "iea_references": [
+    "https://www.eleconomista.es/energia/noticias/11594929/02/22/El-fondo-de-Copenhague-lanza-un-megaproyecto-de-hidrogeno-con-Naturgy-Enagas-Fertiberia-y-Vestas.html",
+    "https://catalinaptx.com/"
+   ],
+   "quality_check_reference_numbers": [
+    "141"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "reference_date": "2023-05-17",
+     "date_checked": "2024-08-01",
+     "comment": "\"installation of a large-scale green hydrogen plant with 500 MW electrolyser capacity by 2027 and scalable to 2 GW by 2030.\"",
+     "number": "141"
+    }
+   ],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.eleconomista.es/energia/noticias/11594929/02/22/El-fondo-de-Copenhague-lanza-un-megaproyecto-de-hidrogeno-con-Naturgy-Enagas-Fertiberia-y-Vestas.html",
+     "read_url": "https://web.archive.org/web/20230930095010/https://www.eleconomista.es/energia/noticias/11594929/02/22/El-fondo-de-Copenhague-lanza-un-megaproyecto-de-hidrogeno-con-Naturgy-Enagas-Fertiberia-y-Vestas.html",
+     "archived": true,
+     "captured_at": "2023-09-30",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.eleconomista.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://catalinaptx.com/",
+     "read_url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "archived": true,
+     "captured_at": "2023-05-17",
+     "http": 200,
+     "outcome": "200, 14452 chars",
+     "sha256": "a589485d6f8674c661dfb101287052dde99a0a382e0cd8e3ffadcbd5fc049c3f",
+     "text_chars": 14452,
+     "source_type": "unclassified",
+     "host": "catalinaptx.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "quality_check_reference",
+     "reference_url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "read_url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 14452 chars",
+     "sha256": "a589485d6f8674c661dfb101287052dde99a0a382e0cd8e3ffadcbd5fc049c3f",
+     "text_chars": 14452,
+     "source_type": "unclassified",
+     "host": "web.archive.org",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://www.naturgy.com/en/press-release/copenhagen-infrastructure-partners-announces-partnership-with-enagas-naturgy-fertiberia-and-vestas-to-build-a-project-for-the-large-scale-production-of-green-hydrogen-and-ammonia-in-spain/",
+     "read_url": "https://www.naturgy.com/en/press-release/copenhagen-infrastructure-partners-announces-partnership-with-enagas-naturgy-fertiberia-and-vestas-to-build-a-project-for-the-large-scale-production-of-green-hydrogen-and-ammonia-in-spain/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 14257 chars",
+     "sha256": "88c7dc971460c0a48b538f5018d8966faec70934604d41baa98e59d22687956e",
+     "text_chars": 14257,
+     "source_type": "unclassified",
+     "host": "www.naturgy.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101179454.pdf",
+     "read_url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101179454.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 0 chars",
+     "sha256": "9ad7b482ac3f3036b379fe096f1a8c7f56869128d6b8d50bdefa408bd57ca2f2",
+     "text_chars": 0,
+     "source_type": "permit_or_official",
+     "host": "ec.europa.eu",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "catalinaptx.com",
+    "www.naturgy.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1490",
+   "name": "Catalina Project, Phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "2GW",
+   "capacity_mwel": 1500.0,
+   "capacity_kth2y": 259.88,
+   "iea_reference_numbers": [
+    "1232",
+    "1703"
+   ],
+   "iea_references": [
+    "https://www.eleconomista.es/energia/noticias/11594929/02/22/El-fondo-de-Copenhague-lanza-un-megaproyecto-de-hidrogeno-con-Naturgy-Enagas-Fertiberia-y-Vestas.html",
+    "https://catalinaptx.com/"
+   ],
+   "quality_check_reference_numbers": [
+    "141"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "reference_date": "2023-05-17",
+     "date_checked": "2024-08-01",
+     "comment": "\"installation of a large-scale green hydrogen plant with 500 MW electrolyser capacity by 2027 and scalable to 2 GW by 2030.\"",
+     "number": "141"
+    }
+   ],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.eleconomista.es/energia/noticias/11594929/02/22/El-fondo-de-Copenhague-lanza-un-megaproyecto-de-hidrogeno-con-Naturgy-Enagas-Fertiberia-y-Vestas.html",
+     "read_url": "https://web.archive.org/web/20230930095010/https://www.eleconomista.es/energia/noticias/11594929/02/22/El-fondo-de-Copenhague-lanza-un-megaproyecto-de-hidrogeno-con-Naturgy-Enagas-Fertiberia-y-Vestas.html",
+     "archived": true,
+     "captured_at": "2023-09-30",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.eleconomista.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://catalinaptx.com/",
+     "read_url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "archived": true,
+     "captured_at": "2023-05-17",
+     "http": 200,
+     "outcome": "200, 14452 chars",
+     "sha256": "a589485d6f8674c661dfb101287052dde99a0a382e0cd8e3ffadcbd5fc049c3f",
+     "text_chars": 14452,
+     "source_type": "unclassified",
+     "host": "catalinaptx.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "quality_check_reference",
+     "reference_url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "read_url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "web.archive.org",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "catalinaptx.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1493",
+   "name": "Pembroke power station",
+   "country": "GBR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "110MW",
+   "capacity_mwel": 110.0,
+   "capacity_kth2y": 19.05786666666667,
+   "iea_reference_numbers": [
+    "1582"
+   ],
+   "iea_references": [
+    "https://renewablesnow.com/news/rwe-to-study-gigawatt-scale-green-hydrogen-production-in-wales-766409/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://renewablesnow.com/news/rwe-to-study-gigawatt-scale-green-hydrogen-production-in-wales-766409/",
+     "read_url": "https://web.archive.org/web/20230204230059/https://renewablesnow.com/news/rwe-to-study-gigawatt-scale-green-hydrogen-production-in-wales-766409/",
+     "archived": true,
+     "captured_at": "2023-02-04",
+     "http": 200,
+     "outcome": "200, 4191 chars",
+     "sha256": "bddfe080a9cb1fbe9c09109fb278b5d83cda089c81d4c65cc05614ae17b7a21f",
+     "text_chars": 4191,
+     "source_type": "unclassified",
+     "host": "renewablesnow.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "register_row_source",
+     "reference_url": "https://uk.rwe.com/innovation/pembroke-net-zero-centre-pnzc/pembroke-green-hydrogen/",
+     "read_url": "https://uk.rwe.com/innovation/pembroke-net-zero-centre-pnzc/pembroke-green-hydrogen/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 6736 chars",
+     "sha256": "ea265d6cb2e4fcaf6e588d3579bddd4cf8e8eacd5a8fd86c08eaeb75238f7093",
+     "text_chars": 6736,
+     "source_type": "unclassified",
+     "host": "uk.rwe.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "uk.rwe.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1499",
+   "name": "Hy2gen Sauda project",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "300 MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "1243",
+    "1499"
+   ],
+   "iea_references": [
+    "https://www.trafigura.com/press-releases/green-ammonia-production-facility-planned-in-norway-s-municipality-of-sauda-feed-study-underway/",
+    "https://fuelcellsworks.com/news/technip-energies-selected-by-iverson-efuels-for-a-green-ammonia-production-project/?mc_cid=790c1a9648&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.trafigura.com/press-releases/green-ammonia-production-facility-planned-in-norway-s-municipality-of-sauda-feed-study-underway/",
+     "read_url": "https://www.trafigura.com/press-releases/green-ammonia-production-facility-planned-in-norway-s-municipality-of-sauda-feed-study-underway/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 6843 chars",
+     "sha256": "1e46a5557c9cf692a6ae8b980c6161a620823323516368fb98d3e45adc1ae524",
+     "text_chars": 6843,
+     "source_type": "unclassified",
+     "host": "www.trafigura.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://fuelcellsworks.com/news/technip-energies-selected-by-iverson-efuels-for-a-green-ammonia-production-project/?mc_cid=790c1a9648&mc_eid=da4624d261",
+     "read_url": "https://fuelcellsworks.com/news/technip-energies-selected-by-iverson-efuels-for-a-green-ammonia-production-project/?mc_cid=790c1a9648&mc_eid=da4624d261",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 447 chars",
+     "sha256": "16fee6e844fd12224e458aaf2921d91eee60e61649b70db7a90445599ec69620",
+     "text_chars": 447,
+     "source_type": "unclassified",
+     "host": "fuelcellsworks.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.trafigura.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1503",
+   "name": "Green CCU Hub Aalborg",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2024",
+   "technology": "Other Electrolysis",
+   "announced_size": "120 MW",
+   "capacity_mwel": 120.0,
+   "capacity_kth2y": 20.7904,
+   "iea_reference_numbers": [
+    "1249"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "read_url": "https://web.archive.org/web/20230522174018/https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "archived": true,
+     "captured_at": "2023-05-22",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "421d5a6cfa925241618f42b3e6fb9b3f56bbb1ebc4b9048b5110a1c75340e0d8",
+     "text_chars": 246,
+     "source_type": "permit_or_official",
+     "host": "ens.dk",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "ens.dk"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1505",
+   "name": "Green lab skive (Phase III)",
+   "country": "DNK",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "250MW",
+   "capacity_mwel": 226.0,
+   "capacity_kth2y": 39.155253333333334,
+   "iea_reference_numbers": [
+    "641",
+    "924",
+    "926",
+    "1249"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/danish-company-greenlab-to-create-worlds-largest-scale-production-facility-for-green-hydrogen/",
+    "https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+    "https://www.h2-view.com/story/new-24mw-electrolysis-plant-set-for-large-scale-green-hydrogen-production/",
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://fuelcellsworks.com/news/danish-company-greenlab-to-create-worlds-largest-scale-production-facility-for-green-hydrogen/",
+     "read_url": "https://web.archive.org/web/20210803195009/https://fuelcellsworks.com/news/danish-company-greenlab-to-create-worlds-largest-scale-production-facility-for-green-hydrogen/",
+     "archived": true,
+     "captured_at": "2021-08-03",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "fuelcellsworks.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+     "read_url": "https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 22521 chars",
+     "sha256": "f294649342af1e109a7fa8e595f765db86709f5c5e9537c70165d6441e1c6473",
+     "text_chars": 22521,
+     "source_type": "unclassified",
+     "host": "www.greenlab.dk",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.h2-view.com/story/new-24mw-electrolysis-plant-set-for-large-scale-green-hydrogen-production/",
+     "read_url": "https://www.h2-view.com/story/new-24mw-electrolysis-plant-set-for-large-scale-green-hydrogen-production/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 11052 chars",
+     "sha256": "f0d4f56ab6021a7ec26dccc34992021db761bf5a8f7e976768293d30fdc5c1d6",
+     "text_chars": 11052,
+     "source_type": "unclassified",
+     "host": "www.h2-view.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.greenlab.dk"
+   ],
+   "iea_references_not_read": 1,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1510",
+   "name": "Port of Aabenraa",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1249"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "read_url": "https://web.archive.org/web/20230522174018/https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "archived": true,
+     "captured_at": "2023-05-22",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "95bf1a9d89afa9415a80db14dae096c9668866d3a0e86dbbbe532e27ec35894f",
+     "text_chars": 246,
+     "source_type": "permit_or_official",
+     "host": "ens.dk",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "ens.dk"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1512",
+   "name": "Vordingborg biofuels",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 kt MeOH/y production",
+   "capacity_mwel": 220.86386024318918,
+   "capacity_kth2y": 38.2654,
+   "iea_reference_numbers": [
+    "1249"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "read_url": "https://web.archive.org/web/20230522174018/https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "archived": true,
+     "captured_at": "2023-05-22",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "c622dd7f7ed3be6de31d4d8868f62ee78de9f911beaba2ebad2a080ece71967a",
+     "text_chars": 246,
+     "source_type": "permit_or_official",
+     "host": "ens.dk",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "ens.dk"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1513",
+   "name": "Aalborg MeOH project",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "300-400MW",
+   "capacity_mwel": 350.0,
+   "capacity_kth2y": 60.63866666666667,
+   "iea_reference_numbers": [
+    "1249"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "read_url": "https://web.archive.org/web/20230522174018/https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "archived": true,
+     "captured_at": "2023-05-22",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "permit_or_official",
+     "host": "ens.dk",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "ens.dk"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1514",
+   "name": "CCU biogas (11x36MW)",
+   "country": "DNK",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "11x36MW",
+   "capacity_mwel": 396.0,
+   "capacity_kth2y": 68.60832,
+   "iea_reference_numbers": [
+    "1249"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "read_url": "https://web.archive.org/web/20230522174018/https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "archived": true,
+     "captured_at": "2023-05-22",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "permit_or_official",
+     "host": "ens.dk",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "ens.dk"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1529",
+   "name": "Reuze",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "400MW",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "1264"
+   ],
+   "iea_references": [
+    "https://www.engie.com/en/journalists/press-releases/engie-and-infinium-unveil-a-partnership-to-develop-an-industrial-hub-on-an-european-scale-to-produce-synthetic-fuel-in-dunkirk"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.engie.com/en/journalists/press-releases/engie-and-infinium-unveil-a-partnership-to-develop-an-industrial-hub-on-an-european-scale-to-produce-synthetic-fuel-in-dunkirk",
+     "read_url": "https://web.archive.org/web/20230128234244/https://www.engie.com/en/journalists/press-releases/engie-and-infinium-unveil-a-partnership-to-develop-an-industrial-hub-on-an-european-scale-to-produce-synthetic-fuel-in-dunkirk",
+     "archived": true,
+     "captured_at": "2023-01-28",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.engie.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.engie.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1537",
+   "name": "Aker - Berlevag",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1553"
+   ],
+   "iea_references": [
+    "https://news.cision.com/aker-clean-hydrogen/r/berlevag-project-to-decarbonize-arctic-shipping-forges-ahead,c3382425"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://news.cision.com/aker-clean-hydrogen/r/berlevag-project-to-decarbonize-arctic-shipping-forges-ahead,c3382425",
+     "read_url": "https://web.archive.org/web/20221128214611/https://news.cision.com/aker-clean-hydrogen/r/berlevag-project-to-decarbonize-arctic-shipping-forges-ahead,c3382425",
+     "archived": true,
+     "captured_at": "2022-11-28",
+     "http": 200,
+     "outcome": "200, 4761 chars",
+     "sha256": "737394ea594d0b918d8e2ef55c164fd23e181a497ee3b3e5f447834e1397b4fb",
+     "text_chars": 4761,
+     "source_type": "unclassified",
+     "host": "news.cision.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1541",
+   "name": "BP Castellon refinery, phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "175MW",
+   "capacity_mwel": 175.0,
+   "capacity_kth2y": 30.319333333333336,
+   "iea_reference_numbers": [
+    "1269"
+   ],
+   "iea_references": [
+    "https://www.enagas.es/stfls/ENAGAS/Notas%20de%20prensa/Nota%20de%20prensa%20conjunta%20MoU%20H2%20(bp%20Iberdrola%20Enagas)%2028042021_EN_pr.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.enagas.es/stfls/ENAGAS/Notas%20de%20prensa/Nota%20de%20prensa%20conjunta%20MoU%20H2%20(bp%20Iberdrola%20Enagas)%2028042021_EN_pr.pdf",
+     "read_url": "https://www.enagas.es/stfls/ENAGAS/Notas%20de%20prensa/Nota%20de%20prensa%20conjunta%20MoU%20H2%20(bp%20Iberdrola%20Enagas)%2028042021_EN_pr.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 9994 chars",
+     "sha256": "631f0f0eae34987fbb0669c7ef363baa464027a817bcf218cdb622bcc81d35be",
+     "text_chars": 9994,
+     "source_type": "unclassified",
+     "host": "www.enagas.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.enagas.es"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1542",
+   "name": "Wilhelmshaven , phase 3",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW",
+   "capacity_mwel": 590.0,
+   "capacity_kth2y": 102.21946666666668,
+   "iea_reference_numbers": [
+    "750",
+    "1270"
+   ],
+   "iea_references": [
+    "http://www.finanztreff.de/news/uniper-plant-anlandeterminal-fuer-gruenes-ammoniak-in-wilhemshaven/23760196",
+    "https://www.rechargenews.com/energy-transition/germany-s-first-major-hydrogen-hub-uniper-to-supply-salzgitter-steel-plant-with-green-h2/2-1-1171937"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "http://www.finanztreff.de/news/uniper-plant-anlandeterminal-fuer-gruenes-ammoniak-in-wilhemshaven/23760196",
+     "read_url": "http://www.finanztreff.de/news/uniper-plant-anlandeterminal-fuer-gruenes-ammoniak-in-wilhemshaven/23760196",
+     "archived": false,
+     "captured_at": "",
+     "http": 404,
+     "outcome": "404",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.finanztreff.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.rechargenews.com/energy-transition/germany-s-first-major-hydrogen-hub-uniper-to-supply-salzgitter-steel-plant-with-green-h2/2-1-1171937",
+     "read_url": "https://web.archive.org/web/20220702195856/https://www.rechargenews.com/energy-transition/germany-s-first-major-hydrogen-hub-uniper-to-supply-salzgitter-steel-plant-with-green-h2/2-1-1171937",
+     "archived": true,
+     "captured_at": "2022-07-02",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.rechargenews.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1545",
+   "name": "Nazare Green Hydrogen Valley, phase 2",
+   "country": "PRT",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 540.0,
+   "capacity_kth2y": 93.5568,
+   "iea_reference_numbers": [
+    "1272"
+   ],
+   "iea_references": [
+    "https://www.reuters.com/business/environment/portugals-top-cement-glass-makers-join-new-consortium-green-hydrogen-plant-2022-02-22/#:~:text=LISBON%2C%20Feb%2022%20(Reuters),launch%20a%20green%20hydrogen%20plant."
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.reuters.com/business/environment/portugals-top-cement-glass-makers-join-new-consortium-green-hydrogen-plant-2022-02-22/#:~:text=LISBON%2C%20Feb%2022%20(Reuters),launch%20a%20green%20hydrogen%20plant.",
+     "read_url": "https://web.archive.org/web/20221217034821/https://www.reuters.com/business/environment/portugals-top-cement-glass-makers-join-new-consortium-green-hydrogen-plant-2022-02-22/#:~:text=LISBON%2C%20Feb%2022%20(Reuters),launch%20a%20green%20hydrogen%20plant.",
+     "archived": true,
+     "captured_at": "2022-12-17",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.reuters.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1547",
+   "name": "Green Crane, Murcia (part of Green Crane Gigafactory)",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "25 kt H2/y",
+   "capacity_mwel": 144.2973680160074,
+   "capacity_kth2y": 25.0,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1549",
+   "name": "First HyDeal hub, phase 1",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "3.3 GW",
+   "capacity_mwel": 3300.0,
+   "capacity_kth2y": 571.736,
+   "iea_reference_numbers": [
+    "1274",
+    "1772",
+    "2098"
+   ],
+   "iea_references": [
+    "https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/15_02_2022_NP_HyDeal_Espan%CC%83a",
+    "https://www.hydeal.com/copie-de-hydeal-ambition",
+    "https://www.hydeal.com/copie-de-hydeal-ambition"
+   ],
+   "quality_check_reference_numbers": [
+    "92"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://web.archive.org/web/20231029182925/https://www.hydeal.com/copie-de-hydeal-ambition",
+     "reference_date": "2023-10-29",
+     "date_checked": "2024-07-31",
+     "comment": "\"Production will start in 2028 and total installed capacity will reach 4.8 GW of solar power and 3.3 GW of electrolyzers.\"",
+     "number": "92"
+    }
+   ],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/15_02_2022_NP_HyDeal_Espan%CC%83a",
+     "read_url": "https://web.archive.org/web/20220630095125/https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/15_02_2022_NP_HyDeal_Espan%CC%83a",
+     "archived": true,
+     "captured_at": "2022-06-30",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.enagas.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.hydeal.com/copie-de-hydeal-ambition",
+     "read_url": "https://web.archive.org/web/20231029182925/https://www.hydeal.com/copie-de-hydeal-ambition",
+     "archived": true,
+     "captured_at": "2023-10-29",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.hydeal.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.hydeal.com/copie-de-hydeal-ambition",
+     "read_url": "https://web.archive.org/web/20231029182925/https://www.hydeal.com/copie-de-hydeal-ambition",
+     "archived": true,
+     "captured_at": "2023-10-29",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.hydeal.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "quality_check_reference",
+     "reference_url": "https://web.archive.org/web/20231029182925/https://www.hydeal.com/copie-de-hydeal-ambition",
+     "read_url": "https://web.archive.org/web/20231029182925/https://www.hydeal.com/copie-de-hydeal-ambition",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "web.archive.org",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.enagas.es",
+    "www.hydeal.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1550",
+   "name": "First HyDeal hub, completion",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "7.4 GW",
+   "capacity_mwel": 4100.0,
+   "capacity_kth2y": 710.3386666666667,
+   "iea_reference_numbers": [
+    "1274",
+    "2098"
+   ],
+   "iea_references": [
+    "https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/15_02_2022_NP_HyDeal_Espan%CC%83a",
+    "https://www.hydeal.com/copie-de-hydeal-ambition"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/15_02_2022_NP_HyDeal_Espan%CC%83a",
+     "read_url": "https://web.archive.org/web/20220630095125/https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/15_02_2022_NP_HyDeal_Espan%CC%83a",
+     "archived": true,
+     "captured_at": "2022-06-30",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.enagas.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.hydeal.com/copie-de-hydeal-ambition",
+     "read_url": "https://web.archive.org/web/20231029182925/https://www.hydeal.com/copie-de-hydeal-ambition",
+     "archived": true,
+     "captured_at": "2023-10-29",
+     "http": 200,
+     "outcome": "200, 3752 chars",
+     "sha256": "b84203c67619302a5ffdd31a62f090c53db0b3a5e359596b1bcf0b60c10eeac9",
+     "text_chars": 3752,
+     "source_type": "unclassified",
+     "host": "www.hydeal.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.enagas.es",
+    "www.hydeal.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1598",
+   "name": "Norsk e-Fuel Phase 3",
+   "country": "NOR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2029",
+   "technology": "SOEC",
+   "announced_size": "100 million litres of synthetic kerosene per year production",
+   "capacity_mwel": 301.5814991534555,
+   "capacity_kth2y": 61.87500000000001,
+   "iea_reference_numbers": [
+    "414",
+    "521",
+    "1288"
+   ],
+   "iea_references": [
+    "https://www.dena.de/fileadmin/dena/Dokumente/Veranstaltungen/PtG-Dialogforum_III/Praesentationen/6_Karl_Hauptmeier_sunfire_GmbH.pdf",
+    "https://www.norsk-e-fuel.com/en/",
+    "https://www.norsk-e-fuel.com/about-us"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.dena.de/fileadmin/dena/Dokumente/Veranstaltungen/PtG-Dialogforum_III/Praesentationen/6_Karl_Hauptmeier_sunfire_GmbH.pdf",
+     "read_url": "https://web.archive.org/web/20220901035521/https://www.dena.de/fileadmin/dena/Dokumente/Veranstaltungen/PtG-Dialogforum_III/Praesentationen/6_Karl_Hauptmeier_sunfire_GmbH.pdf",
+     "archived": true,
+     "captured_at": "2022-09-01",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.dena.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.norsk-e-fuel.com/en/",
+     "read_url": "https://web.archive.org/web/20220214115150/https://www.norsk-e-fuel.com/en/",
+     "archived": true,
+     "captured_at": "2022-02-14",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.norsk-e-fuel.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.norsk-e-fuel.com/about-us",
+     "read_url": "https://web.archive.org/web/20231005013827/https://www.norsk-e-fuel.com/about-us",
+     "archived": true,
+     "captured_at": "2023-10-05",
+     "http": 200,
+     "outcome": "200, 4998 chars",
+     "sha256": "ece467be6670d64340c1d9181d3bd05ecd465087f997ee78b44f5d4a3e571b54",
+     "text_chars": 4998,
+     "source_type": "unclassified",
+     "host": "www.norsk-e-fuel.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.dena.de",
+    "www.norsk-e-fuel.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1602",
+   "name": "Air Liquide Dunkirk",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "400MW",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "1291"
+   ],
+   "iea_references": [
+    "https://www.h2-mobile.fr/actus/piiec-hydrogene-15-projets-francais-presentes-europe/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.h2-mobile.fr/actus/piiec-hydrogene-15-projets-francais-presentes-europe/",
+     "read_url": "https://web.archive.org/web/20230930092318/https://www.h2-mobile.fr/actus/piiec-hydrogene-15-projets-francais-presentes-europe/",
+     "archived": true,
+     "captured_at": "2023-09-30",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.h2-mobile.fr",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1608",
+   "name": "H2ercules",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 173.25333333333333,
+   "iea_reference_numbers": [
+    "1298",
+    "1301"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/e3-5bn-project-to-create-1500km-hydrogen-backbone-pipeline-for-germany/",
+    "https://www.rwe.com/en/press/rwe-ag/2022-03-24-oge-and-rwe-present-national-infrastructure-concept--h2ercules"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.h2-view.com/story/e3-5bn-project-to-create-1500km-hydrogen-backbone-pipeline-for-germany/",
+     "read_url": "https://web.archive.org/web/20230208122053/https://www.h2-view.com/story/e3-5bn-project-to-create-1500km-hydrogen-backbone-pipeline-for-germany/",
+     "archived": true,
+     "captured_at": "2023-02-08",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.h2-view.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.rwe.com/en/press/rwe-ag/2022-03-24-oge-and-rwe-present-national-infrastructure-concept--h2ercules",
+     "read_url": "https://web.archive.org/web/20230604032015/https://www.rwe.com/en/press/rwe-ag/2022-03-24-oge-and-rwe-present-national-infrastructure-concept--h2ercules/",
+     "archived": true,
+     "captured_at": "2023-06-04",
+     "http": 200,
+     "outcome": "200, 12139 chars",
+     "sha256": "1833300eb4ade97136cb191436603e4d9f6e4f1643a7bbc63f7a79c912d084ca",
+     "text_chars": 12139,
+     "source_type": "unclassified",
+     "host": "www.rwe.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "www.rwe.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1612",
+   "name": "Hidroversol Castilla y León",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "200 MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "1304"
+   ],
+   "iea_references": [
+    "https://esenergia.es/planta-de-hidrogeno-verde/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://esenergia.es/planta-de-hidrogeno-verde/",
+     "read_url": "https://web.archive.org/web/20230922111732/https://esenergia.es/planta-de-hidrogeno-verde/",
+     "archived": true,
+     "captured_at": "2023-09-22",
+     "http": 200,
+     "outcome": "200, 7499 chars",
+     "sha256": "ed79a8533270644ecab443facde1b65370f7ffc0db80c2c907e2a00967dcad64",
+     "text_chars": 7499,
+     "source_type": "unclassified",
+     "host": "esenergia.es",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "esenergia.es"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1614",
+   "name": "AsturiasH2Valley, Abono",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "150 MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "1305",
+    "1306"
+   ],
+   "iea_references": [
+    "https://www.lavozdeasturias.es/noticia/asturias/2021/10/14/edppretende-crear-valle-hidrogeno-asturias/00031634225270324999555.htm",
+    "https://espana.edp.com/en/news/2021/05/21/edp-presents-its-energy-transition-projects-asturias-offshore-wind-farm-and"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.lavozdeasturias.es/noticia/asturias/2021/10/14/edppretende-crear-valle-hidrogeno-asturias/00031634225270324999555.htm",
+     "read_url": "https://web.archive.org/web/20211206114311/https://www.lavozdeasturias.es/noticia/asturias/2021/10/14/edppretende-crear-valle-hidrogeno-asturias/00031634225270324999555.htm",
+     "archived": true,
+     "captured_at": "2021-12-06",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.lavozdeasturias.es",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://espana.edp.com/en/news/2021/05/21/edp-presents-its-energy-transition-projects-asturias-offshore-wind-farm-and",
+     "read_url": "https://espana.edp.com/en/news/2021/05/21/edp-presents-its-energy-transition-projects-asturias-offshore-wind-farm-and",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 6309 chars",
+     "sha256": "c21970ca243ead0ff67720c5e80f1845def76b1f8e0a50c7cea1281c85edcd7f",
+     "text_chars": 6309,
+     "source_type": "unclassified",
+     "host": "espana.edp.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "espana.edp.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1623",
+   "name": "H2V WN Warndt Naborien (Phase 1)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1316",
+    "1317"
+   ],
+   "iea_references": [
+    "https://h2v.net/projet/projet-h2v-marseille-fos/",
+    "https://grande-region-hydrogen.eu/en/projects/h2v-warndt-naborien-h2v-wn/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://h2v.net/projet/projet-h2v-marseille-fos/",
+     "read_url": "https://web.archive.org/web/20231003161949/https://h2v.net/projet/projet-h2v-marseille-fos/",
+     "archived": true,
+     "captured_at": "2023-10-03",
+     "http": 200,
+     "outcome": "200, 6054 chars",
+     "sha256": "0c5493cdd5fbc3a751c7dc520e10d840fc99cd7111ed1bac047ab473582b6863",
+     "text_chars": 6054,
+     "source_type": "unclassified",
+     "host": "h2v.net",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://grande-region-hydrogen.eu/en/projects/h2v-warndt-naborien-h2v-wn/",
+     "read_url": "https://web.archive.org/web/20230602090637/https://grande-region-hydrogen.eu/en/projects/h2v-warndt-naborien-h2v-wn/",
+     "archived": true,
+     "captured_at": "2023-06-02",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "grande-region-hydrogen.eu",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "grande-region-hydrogen.eu"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1624",
+   "name": "H2V WN Warndt Naborien (Phase 2, final)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "400 MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "1316",
+    "1317"
+   ],
+   "iea_references": [
+    "https://h2v.net/projet/projet-h2v-marseille-fos/",
+    "https://grande-region-hydrogen.eu/en/projects/h2v-warndt-naborien-h2v-wn/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://h2v.net/projet/projet-h2v-marseille-fos/",
+     "read_url": "https://web.archive.org/web/20231003161949/https://h2v.net/projet/projet-h2v-marseille-fos/",
+     "archived": true,
+     "captured_at": "2023-10-03",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "h2v.net",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://grande-region-hydrogen.eu/en/projects/h2v-warndt-naborien-h2v-wn/",
+     "read_url": "https://web.archive.org/web/20230602090637/https://grande-region-hydrogen.eu/en/projects/h2v-warndt-naborien-h2v-wn/",
+     "archived": true,
+     "captured_at": "2023-06-02",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "grande-region-hydrogen.eu",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "grande-region-hydrogen.eu"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1625",
+   "name": "H2V Vigneux (Phase 1)",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1318"
+   ],
+   "iea_references": [
+    "https://h2v.net/projet/projet-h2v-idf/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://h2v.net/projet/projet-h2v-idf/",
+     "read_url": "https://web.archive.org/web/20230321170012/https://h2v.net/projet/projet-h2v-idf/",
+     "archived": true,
+     "captured_at": "2023-03-21",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "h2v.net",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1626",
+   "name": "H2V Vigneux (Phase 3, final)",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1318"
+   ],
+   "iea_references": [
+    "https://h2v.net/projet/projet-h2v-idf/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://h2v.net/projet/projet-h2v-idf/",
+     "read_url": "https://web.archive.org/web/20230321170012/https://h2v.net/projet/projet-h2v-idf/",
+     "archived": true,
+     "captured_at": "2023-03-21",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "h2v.net",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1630",
+   "name": "H2V Gandrange",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "200 MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "1321"
+   ],
+   "iea_references": [
+    "https://www.usinenouvelle.com/article/h2v-produira-de-l-hydrogene-vert-sur-le-site-de-l-ancienne-acierie-de-gandrange.N1073449"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.usinenouvelle.com/article/h2v-produira-de-l-hydrogene-vert-sur-le-site-de-l-ancienne-acierie-de-gandrange.N1073449",
+     "read_url": "https://web.archive.org/web/20230130034522/https://www.usinenouvelle.com/article/h2v-produira-de-l-hydrogene-vert-sur-le-site-de-l-ancienne-acierie-de-gandrange.N1073449",
+     "archived": true,
+     "captured_at": "2023-01-30",
+     "http": 200,
+     "outcome": "200, 10662 chars",
+     "sha256": "0aee39bb8c49e546fac316db7d41dea18466c7fd6b3f5c556d0961cc03014ce8",
+     "text_chars": 10662,
+     "source_type": "unclassified",
+     "host": "www.usinenouvelle.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1646",
+   "name": "HydrGEN I",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2024",
+   "technology": "SOEC",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 20.516842105263155,
+   "iea_reference_numbers": [
+    "1346"
+   ],
+   "iea_references": [
+    "https://blog.topsoe.com/haldor-topsoe-and-aquamarine-enters-into-a-memorandum-of-understanding-with-the-purpose-of-building-a-green-ammonia-facility-based-on-soec-electrolysis?hsLang=en-us"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://blog.topsoe.com/haldor-topsoe-and-aquamarine-enters-into-a-memorandum-of-understanding-with-the-purpose-of-building-a-green-ammonia-facility-based-on-soec-electrolysis?hsLang=en-us",
+     "read_url": "https://blog.topsoe.com/haldor-topsoe-and-aquamarine-enters-into-a-memorandum-of-understanding-with-the-purpose-of-building-a-green-ammonia-facility-based-on-soec-electrolysis?hsLang=en-us",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 12678 chars",
+     "sha256": "8869031bb46b56e9e0b095e59be205dd77c4d61f15d924620e0cdddc6e837b2b",
+     "text_chars": 12678,
+     "source_type": "unclassified",
+     "host": "blog.topsoe.com",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "blog.topsoe.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1651",
+   "name": "GreenMotionSteel",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2024",
+   "technology": "Other Electrolysis",
+   "announced_size": "120 MW",
+   "capacity_mwel": 120.0,
+   "capacity_kth2y": 20.7904,
+   "iea_reference_numbers": [
+    "1352",
+    "1642"
+   ],
+   "iea_references": [
+    "https://www.klimaschutz.nrw.de/aktuelles/detail/europas-wasserstoffwirtschaft-nimmt-fahrt-auf-nordrhein-westfalen-beteiligt-sich-mit-zehn-projekten-am-groessten-wasserstoff-verbundvorhaben-in-der-eu",
+    "https://www.wirtschaft.nrw/pressemitteilung/europas-wasserstoffwirtschaft-nimmt-fahrt-auf-nordrhein-westfalen-beteiligt-sich"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.klimaschutz.nrw.de/aktuelles/detail/europas-wasserstoffwirtschaft-nimmt-fahrt-auf-nordrhein-westfalen-beteiligt-sich-mit-zehn-projekten-am-groessten-wasserstoff-verbundvorhaben-in-der-eu",
+     "read_url": "https://www.klimaschutz.nrw.de/aktuelles/detail/europas-wasserstoffwirtschaft-nimmt-fahrt-auf-nordrhein-westfalen-beteiligt-sich-mit-zehn-projekten-am-groessten-wasserstoff-verbundvorhaben-in-der-eu",
+     "archived": false,
+     "captured_at": "",
+     "http": 404,
+     "outcome": "404",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.klimaschutz.nrw.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.wirtschaft.nrw/pressemitteilung/europas-wasserstoffwirtschaft-nimmt-fahrt-auf-nordrhein-westfalen-beteiligt-sich",
+     "read_url": "https://web.archive.org/web/20230523123819/https://www.wirtschaft.nrw/pressemitteilung/europas-wasserstoffwirtschaft-nimmt-fahrt-auf-nordrhein-westfalen-beteiligt-sich",
+     "archived": true,
+     "captured_at": "2023-05-23",
+     "http": 200,
+     "outcome": "200, 15360 chars",
+     "sha256": "1e4738e71988d87f4c6e0fcd7ba405a0cdcc6da421094255fb68ad97b66c7963",
+     "text_chars": 15360,
+     "source_type": "unclassified",
+     "host": "www.wirtschaft.nrw",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "www.klimaschutz.nrw.de",
+    "www.wirtschaft.nrw"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1654",
+   "name": "HyKero",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "50kt synthetic kerosene/y production",
+   "capacity_mwel": 296.50144112878223,
+   "capacity_kth2y": 51.36986301369863,
+   "iea_reference_numbers": [
+    "1355"
+   ],
+   "iea_references": [
+    "https://xfuels.de/hykero/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://xfuels.de/hykero/",
+     "read_url": "https://xfuels.de/hykero/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "a2b1b3622b94a055bb2a167a321680a9c584ef28c441c2d048f93bab5e88e952",
+     "text_chars": 58,
+     "source_type": "unclassified",
+     "host": "xfuels.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "xfuels.de"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1662",
+   "name": "Barsebäck Hydrogen Hub",
+   "country": "SWE",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1663",
+   "name": "BotnialänkenH2",
+   "country": "SWE",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1361"
+   ],
+   "iea_references": [
+    "https://www.uniper.energy/sv/sverige/om-uniper-i-sverige/vatgas-i-sverige"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.uniper.energy/sv/sverige/om-uniper-i-sverige/vatgas-i-sverige",
+     "read_url": "https://web.archive.org/web/20230521162446/https://www.uniper.energy/sv/sverige/om-uniper-i-sverige/vatgas-i-sverige",
+     "archived": true,
+     "captured_at": "2023-05-21",
+     "http": 200,
+     "outcome": "200, 18501 chars",
+     "sha256": "c632ef8aad3087d720e7c9313548e7804d2721f8da6ab360d7fe03a76a9b7468",
+     "text_chars": 18501,
+     "source_type": "unclassified",
+     "host": "www.uniper.energy",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "host_legs": [
+    "www.uniper.energy"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1669",
+   "name": "SHARC - Sustainable Hydrogen and Recovery of Carbon (phase 3)",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2029",
+   "technology": "Other Electrolysis",
+   "announced_size": "270 MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "1365"
+   ],
+   "iea_references": [
+    "https://www.greencarcongress.com/2021/11/20211118-neste.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.greencarcongress.com/2021/11/20211118-neste.html",
+     "read_url": "https://www.greencarcongress.com/2021/11/20211118-neste.html",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.greencarcongress.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1676",
+   "name": "NeptHyne, phase 2",
+   "country": "POL",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1 GW",
+   "capacity_mwel": 999.0,
+   "capacity_kth2y": 173.08008,
+   "iea_reference_numbers": [
+    "1368"
+   ],
+   "iea_references": [
+    "http://h2est.ee/wp-content/uploads/2021/07/8_NeptHyne_from-Innovation-to-International-Cooperation_Tomasz-Pelc.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "http://h2est.ee/wp-content/uploads/2021/07/8_NeptHyne_from-Innovation-to-International-Cooperation_Tomasz-Pelc.pdf",
+     "read_url": "https://web.archive.org/web/20210927132313/http://h2est.ee/wp-content/uploads/2021/07/8_NeptHyne_from-Innovation-to-International-Cooperation_Tomasz-Pelc.pdf",
+     "archived": true,
+     "captured_at": "2021-09-27",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "h2est.ee",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "h2est.ee"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1693",
+   "name": "AM Gent H2 consumption Hub",
+   "country": "BEL",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "90 kt H2/year",
+   "capacity_mwel": 519.4705248576266,
+   "capacity_kth2y": 90.0,
+   "iea_reference_numbers": [
+    "1381"
+   ],
+   "iea_references": [
+    "https://corporate.arcelormittal.com/media/press-releases/arcelormittal-signs-letter-of-intent-with-the-governments-of-belgium-and-flanders-supporting-1-1-billion-investment-in-decarbonisation-technologies-at-its-flagship-gent-plant#"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://corporate.arcelormittal.com/media/press-releases/arcelormittal-signs-letter-of-intent-with-the-governments-of-belgium-and-flanders-supporting-1-1-billion-investment-in-decarbonisation-technologies-at-its-flagship-gent-plant#",
+     "read_url": "https://web.archive.org/web/20231029182534/https://corporate.arcelormittal.com/media/press-releases/arcelormittal-signs-letter-of-intent-with-the-governments-of-belgium-and-flanders-supporting-1-1-billion-investment-in-decarbonisation-technologies-at-its-flagship-gent-plant#",
+     "archived": true,
+     "captured_at": "2023-10-29",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "corporate.arcelormittal.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "corporate.arcelormittal.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1733",
+   "name": "HY2 Lausitz",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "155 MW",
+   "capacity_mwel": 155.0,
+   "capacity_kth2y": 26.854266666666668,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1748",
+   "name": "GH2 Ambès (Phase 1)",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "1416"
+   ],
+   "iea_references": [
+    "https://hydrogen-central.com/gh2-port-bordeaux-largest-hydrogen-production-unit-project/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://hydrogen-central.com/gh2-port-bordeaux-largest-hydrogen-production-unit-project/",
+     "read_url": "https://web.archive.org/web/20210426104427/https://hydrogen-central.com/gh2-port-bordeaux-largest-hydrogen-production-unit-project/",
+     "archived": true,
+     "captured_at": "2021-04-26",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "hydrogen-central.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1765",
+   "name": "HH2E - Met Northeast Germany, phase 1",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "1426"
+   ],
+   "iea_references": [
+    "https://hh2e.de/en/news/hh2e-and-met-group-establish-a-joint-project-company-to-develop-one-of-europes-largest-green-hydrogen-production-plants-in-lubmin-germany/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://hh2e.de/en/news/hh2e-and-met-group-establish-a-joint-project-company-to-develop-one-of-europes-largest-green-hydrogen-production-plants-in-lubmin-germany/",
+     "read_url": "https://web.archive.org/web/20230323183747/https://hh2e.de/en/news/hh2e-and-met-group-establish-a-joint-project-company-to-develop-one-of-europes-largest-green-hydrogen-production-plants-in-lubmin-germany/",
+     "archived": true,
+     "captured_at": "2023-03-23",
+     "http": 200,
+     "outcome": "200, 531 chars",
+     "sha256": "582df28531431d385e7ae86bc917a5a4b21e23d5a59e05413b39859316f937cc",
+     "text_chars": 531,
+     "source_type": "unclassified",
+     "host": "hh2e.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "hh2e.de"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1766",
+   "name": "HH2E - Met Northeast Germany, phase 2",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1 GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 173.25333333333333,
+   "iea_reference_numbers": [
+    "1426"
+   ],
+   "iea_references": [
+    "https://hh2e.de/en/news/hh2e-and-met-group-establish-a-joint-project-company-to-develop-one-of-europes-largest-green-hydrogen-production-plants-in-lubmin-germany/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://hh2e.de/en/news/hh2e-and-met-group-establish-a-joint-project-company-to-develop-one-of-europes-largest-green-hydrogen-production-plants-in-lubmin-germany/",
+     "read_url": "https://web.archive.org/web/20230323183747/https://hh2e.de/en/news/hh2e-and-met-group-establish-a-joint-project-company-to-develop-one-of-europes-largest-green-hydrogen-production-plants-in-lubmin-germany/",
+     "archived": true,
+     "captured_at": "2023-03-23",
+     "http": 200,
+     "outcome": "200, 531 chars",
+     "sha256": "582df28531431d385e7ae86bc917a5a4b21e23d5a59e05413b39859316f937cc",
+     "text_chars": 531,
+     "source_type": "unclassified",
+     "host": "hh2e.de",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "hh2e.de"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": true,
+   "owner_or_permit_pre_cutoff": null,
+   "owner_or_permit_url": null,
+   "names_site": null,
+   "site_named": null,
+   "site_speaker": null,
+   "site_fetch_url": null,
+   "site_captured_at": null,
+   "site_archived": null,
+   "verdict": null
+  },
+  {
+   "ref": "1807",
+   "name": "H2era",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1438"
+   ],
+   "iea_references": [
+    "https://www.hycc.com/en/projects/h2era"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "leg": "iea_reference",
+     "reference_url": "https://www.hycc.com/en/projects/h2era",
+     "read_url": "https://web.archive.org/web/20230929212520/https://www.hycc.com/en/projects/h2era",
+     "archived": true,
+     "captured_at": "2023-09-29",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "host": "www.hycc.com",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "host_legs": [
+    "www.hycc.com"
+   ],
+   "iea_references_not_read": 0,
+   "any_pre_cutoff_document": false,
    "owner_or_permit_pre_cutoff": null,
    "owner_or_permit_url": null,
    "names_site": null,

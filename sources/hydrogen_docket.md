@@ -1476,6 +1476,102 @@ It was not resolved by moving the assessment date to the day the reading finishe
 a definition that follows the reading around is the thing these two entries exist to
 prevent.
 
+**D-C2. A PERIMETER EXCLUSION IS A COVARIATE IN THIS TEST AND NOT A THIRD POPULATION,
+because the classifier cannot see most of this population.** The live ladder splits its
+entries three ways -- perimeter exclusions, unread, scored -- on the reading that asking
+six questions of a blue-hydrogen plant produces six fails that say nothing about either.
+That split cannot be applied here. `report_benchmark_gap`'s perimeter classifier was built
+over the CURRENT vintage and knows only the entries still in it: nine of the 255 carry a
+clause and the 134 that left the file carry none, not because they are inside the perimeter
+but because nobody has classified them. Splitting the population on a label that exists for
+121 of 255 would split it unevenly and then report the unevenness as a finding.
+
+**So the clause travels with the entry, the cells still carry what was read, and the count
+is printed.** A reader who wants the ladder's three-way split can have it for the entries
+that have a clause; what this test will not do is let a partial classification decide who
+is in the table.
+
+**D-C3. AN OWNER'S NEWSROOM THAT NEVER NAMES THE PROJECT IS A RECORD OF LOOKING, NOT A
+DOCUMENT ABOUT THE ENTRY.** The archive pass fetches, for every entry, the newsroom of a
+host the publisher itself cited, and dozens of those are the owner's own site captured
+weeks before the cut-off. EDP's newsroom of 20 June 2023 is on file for the Sines entry;
+TenneT's press page is on file for both Element Eins phases; H2 Green Steel's own front
+page is on file for the Iberdrola joint venture. NONE OF THEM MENTIONS THE PROJECT.
+
+**Reading those as owner documents would turn every rung into a fail and every fail into a
+finding about the project.** The rungs ask what the owner said about THIS project, so the
+coverage flag asks the same: is there a document by the owner, a permit authority or a
+regulator, dated at or before 31 October 2023, that NAMES THIS PROJECT. Where there is
+not, the entry is `not_searched` on rungs 1, 2, 3 and 5 and is reported rather than scored
+-- which is the 15 September ruling applied to a wider kind of gap. The newsroom is still
+in the record, because the fact that the owner was publishing weekly and never mentioned
+this project is worth being able to count later.
+
+**D-C4. ONE DOCUMENT MAY ANSWER FOR SEVERAL ENTRIES, AND THE LINE SAYS WHICH DOCUMENT.**
+The IEA splits one project across several reference numbers -- phases, expansions, a
+programme's sites -- and its `Refs` column does not follow the split: Iberdrola's release
+of 28 October 2020 is cited under one of the four Fertiberia entries and names all of
+them; Endesa's release of 1 February 2021 names eight sites and is cited under two of
+them; the h2v.net page that gives H2V 59's first phase its 200 MW was fetched under the
+SECOND phase's reference number.
+
+**Ref 808 is why this is a ruling and not a convenience.** Reviewed on its own legs it had
+no owner document at all -- the reference its publisher gives it is another project's
+consultation file, 300 kilometres away -- and it was written down as unsearched. Reading
+ref 821 two entries later produced both of its answers: the commune of Loon-Plage and
+'2 unites de production de 100 MW (= 200 MW)', the exact figure the vintage carries for it.
+**Failing an entry for want of a document this register demonstrably holds would be
+scoring the register's own filing convention as the owner's silence.** So the review may
+cite any document in the pass, and every cell names the URL it rests on, which is what
+makes the borrowing visible rather than convenient.
+
+**D-C5. THE WAITING IS OVERLAPPED AND THE PACE IS NOT CHANGED.** The archive pass ran at
+150 seconds an entry sequentially -- nine and a half hours for the population -- and almost
+all of that was one worker waiting: a CDX lookup is eight to fourteen seconds of somebody
+else's server thinking, on top of the declared reader's own two-second pause. Six workers
+bring it to 23 seconds an entry.
+
+**What changed is scheduling, not politeness.** Every worker still waits `PAUSE` after its
+own fetch, so the rate any one of them offers is what the declared reader has always
+offered; what six of them do is stop the machine idling between its own requests. Two
+things were added to make it safe rather than merely fast: `hydrogen_search.fetch` now
+writes the cache index under a lock, because two threads appending to one file lose one of
+the two records and a fetch that happened and is not in the index is the single failure
+that whole file exists to prevent; and a host is resolved once behind a per-host lock, so
+the nine entries citing `topsectorenergie.nl` do not fetch its front page nine times.
+**The entries are sorted back into population order before every save**, so the file reads
+as a diff and not as a shuffle.
+
+**D-C6. TWO HOSTS ON THE PRESS LIST WERE THE OWNERS' OWN DOMAINS, AND THE LIST IS IN THE
+DIFF FOR EXACTLY THIS REASON.** The pass keeps a hand-written list of wires, trade titles
+and aggregators whose front pages and newsrooms are not worth a second request. `h2v.net`
+was on it and it is the developer H2V's own site -- 'H2V investit, developpe et construit
+des gigafactory' -- and `www.smartenergy.net` was on it and it is Smartenergy's, the
+developer of the Valencia project. Thirteen entries cite the first and two the second, and
+each of them lost its host legs until the list was corrected and they were re-fetched.
+
+**A hand list of hosts is as fallible as a machine's guess about a domain.** What makes it
+acceptable where the classifier ruling of 10 September 2026 says a machine's guess is not
+is that it is short, that it is read by a person, that it decides only whether to spend a
+request rather than whether a document counts, and that a mistake in it appears in a diff.
+The entry's own cited document is fetched whatever its host, so the worst this list can do
+is cost an entry a newsroom -- which it did, twice, and which is recorded here rather than
+quietly repaired.
+
+**D-C7. THE INSTRUMENT IS ONE INSTRUMENT ACROSS THE POPULATION, AND THAT IS WHY THE ROWS
+ARE NOT SCORED FROM THEIR OWN FIELDS.** Sixty-one of the 255 are admitted rows and the live
+ladder scores a row from what the row holds. As of 31 October 2023 that would have been two
+instruments in one table: a row's sources are mostly dated 2024 to 2026, the cut-off rule
+turns them into `not_searched`, and the admitted rows would have scored BELOW unadmitted
+entries whose 2023 captures happen to be on file. The register would have been measuring
+the age of its own reading again, which is the defect D-L2 and D-L3 were written to correct.
+
+**So every entry is scored from the same archive pass**, and a row's own sources enter that
+pass as a leg like any other, fetched at their last capture at or before the cut-off.
+Rungs 4 and 6 are the exceptions and they are exceptions in the brief: the funder pass and
+the dependency graph are population-wide files with their own dates, and they are read for
+every entry exactly as brief 12 read them.
+
 ### Rulings of 15 September 2026 — the ladder was measuring its own reading
 
 Four corrections, and three of them are the same mistake: **a cell reported a fact about a
