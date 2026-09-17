@@ -1652,6 +1652,66 @@ brief's author chose and which decides this entry and no other.
 reporting, not about attrition**: the projects that disappear do not announce it, which is
 what rule 17 said in 2026 and what this test measures at a scale rule 17 could not.
 
+### Rulings of 18 September 2026, brief 13 — the amendment, after the reading
+
+**D-C13. THE OUTCOME DEFINITIONS ARE AMENDED AT COMMIT
+e062b50916bd261cd529c8dce7cd6c6b0ee2db09, AFTER THE READING, AND THIS ENTRY IS THE RECORD
+THAT THEY WERE.** D-C1 froze them at 58ce11f before a single outcome was read, and the
+freeze did its job: the definitions were applied as written, the table was produced under
+them, and the gap the reading exposed is on the record as Q12 rather than as a quiet edit.
+**That is the difference between an instrument tuned to its answer and an instrument
+corrected by it.**
+
+**WHAT THE FREEZE BOUGHT AND WHAT IT COST.** It bought a table nobody can accuse of having
+been fitted: `pending` and `delayed` were recomputed mechanically from the columns by
+`check_hydrogen_test.py`, so those two classes are checkable without trusting the reader.
+It cost one word doing three jobs. Under the frozen six, **159 of 255 entries were
+`unread`**, and that count covered:
+
+  - a publisher that refuses this register's declared reader;
+  - an owner whose site answers perfectly, is dated and current, and has not named this
+    project since before the cut-off;
+  - an entry for which this register has never known an owner's domain to ask at all.
+
+**The first is a fact about reading. The second is a fact about the project.** An owner
+publishing weekly and silent on a plant for three years has told a reader something, and
+the frozen vocabulary had nowhere to put it. The third is neither: it is the absence of a
+measurement, and it was being counted with a refusal, which is at least a measurement.
+
+**THE FROZEN RULING IS NOT EDITED AND ITS HASH STILL VERIFIES.** Its SHA-256 over the same
+span — from its `###` heading to the line before the amendment's heading, which is where
+`## Sector perimeters` used to be — is still
+`b851091f42fe9ed66722013f17417b8cd7ec1bc293a5db449438638b78c93ef7`. The amendment's own
+hash is `8c9c72e5ea55a8202d591c80854de5ecdc43b52903ce70c045004645fd0158b7`, which is its
+second form: the first, `632fb57d…`, said only "a readable owner document", and the
+reading showed that six entries qualified for a date class on the strength of an owner site
+that answers and no longer mentions the plant. The clause now reads "about this entry", and
+those six are `silent`. **BOTH TABLES
+ARE COMPUTED AND PRINTED ON EVERY RUN** — the outcome distribution under the frozen
+definitions and under the amended ones, side by side, with the reclassification counted
+between them — so the paper can report the change rather than inherit it. The csv carries
+both columns, `outcome_frozen` beside `outcome`, and the gate checks that the frozen column
+is still what the frozen rules give.
+
+**WHAT THE AMENDMENT DOES NOT TOUCH.** The rung tests, frozen at a9542fe under D-B1, are
+unchanged and no cell moved. The assessment date is unchanged. `operating`, `committed`,
+`pending`, `delayed` and `stopped` keep the words they were frozen with; what is added is a
+precedence between them, a seventh value, and a narrowing of the eighth.
+
+**D-C14. A CLAIM BY ANYBODY BUT THE OWNER IS LISTED AND NEVER SCORED, AND THE COUNT THAT
+MATTERS IS HOW MANY PLANTS MIGHT BE RUNNING UNACKNOWLEDGED.** The speaker rule stands: the
+test counts owner statements. But a regulator, a grid operator, a funder or a trade title
+stating that a plant is operating, that FID was taken or that construction has begun is
+worth recording as a CLAIM against the entry, with its speaker, because a reader of the
+attrition question needs to know how much of the picture rests on speakers this test does
+not admit.
+
+**Gigastack is the case that fixes the shape.** It is held `paused` from 18 August 2023 on
+Offshore Energy's reporting, and it stays where it is: a trade title is a claim, the
+outcome reads off the announced start, and **the owner look is queued on the row** under
+the rule that opened one for Catalina — the rule it is opened under, why, and the pages
+somebody is to read, each as an object so `check_links` walks it.
+
 ### Rulings of 15 September 2026 — the ladder was measuring its own reading
 
 Four corrections, and three of them are the same mistake: **a cell reported a fact about a

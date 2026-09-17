@@ -2212,9 +2212,14 @@ raised.
 
     1  OWNER-STATED EVENTS FIRST, and among them: `stopped`, `operating`, `committed`.
        What a speaker the rules admit has SAID beats anything inferred from a date.
-    2  THEN THE DATE CLASSES, for an entry with a readable owner document: `delayed`
-       where the announced start is on or before the assessment date, `pending` where it
-       is after. These say only that a date has or has not passed.
+    2  THEN THE DATE CLASSES, for an entry with a readable owner document ABOUT THIS
+       ENTRY: `delayed` where the announced start is on or before the assessment date,
+       `pending` where it is after. These say only that a date has or has not passed.
+       **ABOUT THIS ENTRY is what separates them from `silent`**, and it does real work:
+       six entries were `delayed` or `pending` under the frozen rules on the strength of
+       an owner site that answers and no longer mentions the plant at all -- H2V's three
+       Vigneux phases among them, whose project page h2v.net has stopped serving. An
+       owner's site that answers and has dropped the project is silent about it, not late.
     3  THEN `silent`.
     4  `unread` LAST, and only on its narrowed definition below.
 
