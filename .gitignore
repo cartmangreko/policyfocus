@@ -49,12 +49,17 @@ docs/design/canvas/*.html
 scratch/
 
 # The hydrogen benchmark inputs, fetched by sources/build_hydrogen_benchmark.py.
-# NOT COMMITTED ON PURPOSE: the content of both files is the IEA's Hydrogen
+# NOT COMMITTED ON PURPOSE: the content of every file here is the IEA's Hydrogen
 # Projects Database — directly in one case, quality-checked by Odenweller and
-# Ueckerdt in the other — and this repository is not licensed to redistribute it.
+# Ueckerdt in the others — and this repository is not licensed to redistribute it.
 # The script fetches them from the publishers on first run and the ids on the
 # rows are what makes the comparison reproducible without a copy living here.
-sources/cache/hydrogen/
+#
+# index.json IS TRACKED, on the batteries and CCS precedent below: url, date, size
+# and SHA-256 of every fetch is the part that has to survive, and it holds no
+# publisher's text. Brief 12's funder pass writes it.
+sources/cache/hydrogen/*
+!sources/cache/hydrogen/index.json
 
 # The dependency sweep body cache (Brief 9). sources/dependency_cache/index.json IS
 # tracked: url, date, size and SHA-256 of every fetch is the part that has to survive.

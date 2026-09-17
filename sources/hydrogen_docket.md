@@ -1115,6 +1115,33 @@ date 2026-09-10, and the other four are not. Hydrogen goes from 11 rows drawn to
 "west of Pembroke Power Station" is a good deal more than most of these rows have, and four
 rows turn on it.
 
+### Rulings of 17 September 2026, brief 12 — the freeze, before anything was joined
+
+**D-B1. THE RUNG TESTS ARE FROZEN AT COMMIT a9542fe28f93eac7f66a3050070af6db93684e7e,
+and this entry was written before the cohort was scored.** That commit — *"The rungs are
+written down before anything scores them, and the orphan check minds its own session"*,
+13 September 2026 — is the last one to touch `sources/scope.md` lines 2075–2165, which is
+"## The confirmation ladder" through the end of the file: what a rung is, the six rungs,
+the population, and "the ladder is computed, never typed". The section's SHA-256 as of
+this entry is `03012746c995b84c412c697e5310ec0e6085d8ff73fa94108bfb7e6057398087`.
+
+**No rung test changes from this point in brief 12 onwards.** A proposed change goes to
+`sources/hydrogen_questions.json` and is not made here.
+
+**WHY A FREEZE, AND WHY BEFORE THE JOIN.** Brief 12 scores a cohort of projects against an
+outside assessment of whether they came on time. That is the first time this register's own
+instrument is measured against somebody else's outcome, and it is the exact situation in
+which a rung test quietly loosens: a rung that scores badly against a known outcome looks
+like a defect in the rung. It may be. It is also how an instrument gets tuned to its answer.
+So the tests are fixed by commit hash first, the join is computed second, and any argument
+that a rung is wrong is made against a table that was produced under the frozen rule.
+
+**What this does NOT freeze** is the scorer. `sources/build_ladder.py` gained `--as-of` and
+a funder-pass reading in this brief, and both are changes to what evidence the scorer can
+see, not to what a rung asks. The distinction is the one D-L2 and D-L3 turn on: those were
+corrections to a scorer that was answering a different question from the one scope.md sets,
+and correcting a scorer towards its stated test is the opposite of loosening the test.
+
 ### Rulings of 15 September 2026 — the ladder was measuring its own reading
 
 Four corrections, and three of them are the same mistake: **a cell reported a fact about a

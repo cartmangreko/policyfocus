@@ -57,7 +57,25 @@
   "disagreement, and it is held as one. IT DOES NOT NEED TO DECIDE: a hash-referenced",
   "snapshot redistributes nothing and requires no transfer of rights, so it is permitted",
   "under the stricter reading as well as the looser one, and the stricter reading is what",
-  "this register works to."
+  "this register works to.",
+  "",
+  "BRIEF 12 ADDS THREE VINTAGES AND AN OUTCOME FILE, AND EVERY HASH NOW CARRIES AN ENTRY",
+  "COUNT. Odenweller and Ueckerdt publish the IEA's October 2021, 2022 and 2023 databases",
+  "quality-checked, plus their outcome assessment for the projects announced for 2023.",
+  "All four were verified against the publisher's own copy by SHA-256 before anything was",
+  "counted from them, and `entry_list` on each snapshot states what was measured from the",
+  "file that hash identifies -- so a cohort or drift gate on a machine without the bytes",
+  "reconciles against a measurement of an identified file rather than a number somebody",
+  "typed. The 2023-10 snapshot already pinned here gained its count and nothing else: the",
+  "file dropped under odenweller/ is byte-identical to it, which is itself the check.",
+  "",
+  "TWO RIGHTS IN ONE FILE, AND THE WRAPPER DOES NOT RELICENSE THE CONTENTS. The",
+  "repository is MIT (Adrian Odenweller, 2024) and that covers the AUTHORS' additions --",
+  "the 'Refs (quality check)' column and the 'References (quality check)' sheets -- which",
+  "may be copied and cited freely with the notice kept, and which this register cites by",
+  "the authors' own reference number. The IEA project rows inside each workbook are the",
+  "IEA's and stay under the IEA's own terms as already recorded above: held by hash, not",
+  "by copy. See `licences.odenweller_ueckerdt_repository`."
  ],
  "snapshots": [
   {
@@ -66,7 +84,11 @@
    "url": "https://raw.githubusercontent.com/aodenweller/green-hydrogen-gap/master/data/IEA_H2_DB_2023-10/quality_checked/IEA_Hydrogen_Projects_Database_2023_quality_checked.xlsx",
    "fetched": "2026-09-09",
    "bytes": 975026,
-   "sha256": "bb9d3aba38738a5c5864c145469b658c4f274a3b6e2697f52fc7a5dccec71345"
+   "sha256": "bb9d3aba38738a5c5864c145469b658c4f274a3b6e2697f52fc7a5dccec71345",
+   "entry_list": "MEASURED FROM THE FILE THIS SHA-256 IDENTIFIES, on 17 September 2026: sheet 'Projects', 1994 project rows carrying 1993 distinct references (ref 5000 is used twice, for Chifeng phase 2 in China and H2-hub Gladstone phase 3 in Australia -- a reference is NOT unique in this vintage, and neither of the two is European). 1082 rows are European on sources/build_hydrogen_benchmark GEO; 255 of those are at or above 100 MW on `Capacity_MWel` at any technology, which is the population report_benchmark_gap and the drift table count. 73 European rows carry `Date online` 2023, which is brief 12's cohort, and NONE of the 73 reaches 100 MW. Sheet 'References (quality check)' carries 172 numbered references; sheet 'References', the IEA's own, carries 2157.",
+   "also_at": "sources/cache/hydrogen/odenweller/IEA_Hydrogen_Projects_Database_2023_quality_checked.xlsx",
+   "licence": "odenweller_ueckerdt_repository",
+   "vintage": "2023-10"
   },
   {
    "benchmark": "iea_hydrogen_production_projects",
@@ -123,6 +145,42 @@
    "entry_list": "Sheet 'DRAFT CCUS Projects Database', 1110 project rows worldwide, 34 columns, updated 27/03/2026, project announcements as of February 2026. 425 rows carry Region=Europe and those are the census population. THE SUBSET IS THE PUBLISHER'S OWN COLUMN and not a judgement of this register's, which is the only reason a gap table over them may claim to sum to the list.",
    "licence": "iea_ccus_projects_database",
    "note": "THE BYTES ARE NOT IN THE REPOSITORY. sources/cache/ccs/ is gitignored except index.json, where this same hash is recorded as a fetch with no http status because nothing here made a request. Entries are cited by the IEA's own `ID`."
+  },
+  {
+   "benchmark": "odenweller_ueckerdt_2021",
+   "vintage": "2021-10",
+   "file": "odenweller/IEA_Hydrogen_Projects_Database_2021_quality_checked.xlsx",
+   "url": "https://raw.githubusercontent.com/aodenweller/green-hydrogen-gap/master/data/IEA_H2_DB_2021-10/quality_checked/IEA_Hydrogen_Projects_Database_2021_quality_checked.xlsx",
+   "fetched": "2026-09-17",
+   "bytes": 524866,
+   "sha256": "b97eff98e9737709c58d1679e20ae32a1b5599d76185288b804986394bed0a62",
+   "entry_list": "MEASURED FROM THE FILE THIS SHA-256 IDENTIFIES, on 17 September 2026: sheet 'Projects', 990 project rows carrying 985 distinct references -- six rows sit under reference 0, which is the aggregate line 'Other projects from confidential sources' and is not a project reference. 617 rows are European on sources/build_hydrogen_benchmark GEO; 98 of those are at or above 100 MW on `Capacity_MWel` at any technology, which is the drift table's population for this vintage. Sheet 'References (quality check)' carries 101 numbered references; sheet 'References', the IEA's own, carries 1082.",
+   "licence": "odenweller_ueckerdt_repository",
+   "note": "The IEA's Hydrogen Projects Database of October 2021, quality-checked by Odenweller and Ueckerdt, under the IEA's own reference numbering. NOT AN INDEPENDENT BENCHMARK: it is the same list's own past and cannot corroborate any later vintage. Read for drift and for nothing else. The bytes are not in the repository -- sources/cache/hydrogen/ is gitignored except index.json, where this same hash is recorded as a fetch."
+  },
+  {
+   "benchmark": "odenweller_ueckerdt_2022",
+   "vintage": "2022-10",
+   "file": "odenweller/IEA_Hydrogen_Projects_Database_2022_quality_checked.xlsx",
+   "url": "https://raw.githubusercontent.com/aodenweller/green-hydrogen-gap/master/data/IEA_H2_DB_2022-10/quality_checked/IEA_Hydrogen_Projects_Database_2022_quality_checked.xlsx",
+   "fetched": "2026-09-17",
+   "bytes": 702992,
+   "sha256": "f4eab620f46d751c92a5e0995580a68a700348dbc6509442b43154d7af464a3a",
+   "entry_list": "MEASURED FROM THE FILE THIS SHA-256 IDENTIFIES, on 17 September 2026: sheet 'Projects', 1477 project rows carrying 1472 distinct references -- six rows sit under reference 0, the aggregate line. 866 rows are European on sources/build_hydrogen_benchmark GEO; 176 of those are at or above 100 MW on `Capacity_MWel` at any technology. Sheet 'References (quality check)' carries 155 numbered references; sheet 'References', the IEA's own, carries 1583.",
+   "licence": "odenweller_ueckerdt_repository",
+   "note": "The IEA's Hydrogen Projects Database of October 2022, quality-checked. Same standing as the 2021 vintage above: the list's own past, read for drift."
+  },
+  {
+   "benchmark": "odenweller_ueckerdt_2023_outcome",
+   "vintage": "2023-10, outcome as of 2024-07-30",
+   "file": "odenweller/IEA_Hydrogen_Projects_Database_2023_only2023_outcome.xlsx",
+   "url": "https://raw.githubusercontent.com/aodenweller/green-hydrogen-gap/master/data/IEA_H2_DB_2023-10_2023outcome/IEA_Hydrogen_Projects_Database_2023_only2023_outcome.xlsx",
+   "fetched": "2026-09-17",
+   "bytes": 473279,
+   "sha256": "a04d204162e9db78e5c53074f26278ca7d3862e1e28debf812a7273a2c5ff480",
+   "entry_list": "MEASURED FROM THE FILE THIS SHA-256 IDENTIFIES, on 17 September 2026: sheet 'Projects', 124 project rows, 124 distinct references, worldwide. 72 of the 124 are European on sources/build_hydrogen_benchmark GEO. The rows are the SAME references as the October 2023 vintage carries, with `Status` and `Date online` RESTATED after the authors' re-check; the quality-check references are dated `Checked on` 2024-07-30. Sheet 'References (quality check)' carries 122 numbered references; sheet 'References', the IEA's own, carries 2157, the same as the full 2023 file.",
+   "licence": "odenweller_ueckerdt_repository",
+   "note": "THE AUTHORS' OUTCOME ASSESSMENT FOR PROJECTS ANNOUNCED FOR 2023. It carries no outcome COLUMN: what it publishes is the same reference with the status and the online date as they stood after a re-check, plus a quality-check reference per row giving the URL, its date, the day it was checked and a comment. Any three-way on time / delayed / disappeared reading is derived from those two restated columns, and the derivation is stated in sources/build_hydrogen_cohort.py rather than attributed to the file."
   }
  ],
  "relationship": [
@@ -141,9 +199,32 @@
      "derived_from": "iea_hydrogen_production_projects",
      "publisher": "Odenweller & Ueckerdt (2025)",
      "note": "The IEA's October 2023 database, quality-checked, under the IEA's own reference numbering. NOT AN INDEPENDENT BENCHMARK: it cannot corroborate the live file because it is the live file's own past. It is read for drift between the two vintages and for nothing else."
+    },
+    {
+     "id": "odenweller_ueckerdt_2021",
+     "vintage": "2021-10",
+     "derived_from": "iea_hydrogen_production_projects",
+     "publisher": "Odenweller & Ueckerdt",
+     "note": "The IEA's October 2021 database, quality-checked. The oldest vintage on file and the start of the drift chain."
+    },
+    {
+     "id": "odenweller_ueckerdt_2022",
+     "vintage": "2022-10",
+     "derived_from": "iea_hydrogen_production_projects",
+     "publisher": "Odenweller & Ueckerdt",
+     "note": "The IEA's October 2022 database, quality-checked."
+    },
+    {
+     "id": "odenweller_ueckerdt_2023_outcome",
+     "vintage": "2023-10 outcome",
+     "derived_from": "iea_hydrogen_production_projects",
+     "publisher": "Odenweller & Ueckerdt",
+     "note": "Not a vintage of the list: the 2023-10 vintage's own cohort of projects announced for 2023, restated after a re-check dated 2024-07-30. It is read for outcome and for nothing else."
     }
    ],
-   "recorded": "2026-09-11"
+   "recorded": "2026-09-11",
+   "extended": "2026-09-17",
+   "chain": "FOUR VINTAGES, THREE INTERVALS: 2021-10 -> 2022-10 -> 2023-10 -> current. None of the four can corroborate another; each earlier one is a later one's own past. sources/build_hydrogen_drift.py reads the chain and writes sources/ladder/hydrogen_drift.json."
   },
   {
    "benchmark": "te_gigafactory_risk",
@@ -234,6 +315,27 @@
    "held": "THE BRIEF RECORDS GEM AS CC BY AND THIS PASS COULD NOT CONFIRM IT FROM THE PAGE IT READ. The tracker page states a recommended citation and no licence; the licence is not quoted here because it was not read. It is recorded as outstanding rather than assumed, and the bytes stay out of the repository either way on the hydrogen and batteries precedent.",
    "barrier": "REGISTRATION FORM. The Global Steel Plant Tracker is now the GLOBAL IRON AND STEEL TRACKER (GIST), June 2026 (V1) release. /projects/global-iron-steel-tracker/download-data/ redirects to the tracker page, where the download sits behind a form at the #download anchor with no direct file URL in the markup.",
    "note_for_the_pass": "THE NAME CHANGED AND THE BRIEF'S NAME IS THE OLD ONE. Brief 8 names 'GEM's Global Steel Plant Tracker'. Recorded here so the steel census does not silently measure itself against a differently scoped list under the brief's name."
+  },
+  "odenweller_ueckerdt_repository": {
+   "publisher": "Adrian Odenweller (aodenweller/green-hydrogen-gap), for the authors' additions",
+   "read": [
+    "https://raw.githubusercontent.com/aodenweller/green-hydrogen-gap/master/LICENSE"
+   ],
+   "read_on": "2026-09-17",
+   "verbatim": "MIT License. Copyright (c) 2024 Adrian Odenweller. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.",
+   "two_rights_in_one_file": [
+    {
+     "whose": "the authors'",
+     "what": "the \"Refs (quality check)\" column on the Projects sheet and the \"References (quality check)\" sheet -- the URL, the reference date, the day it was checked and the comment",
+     "held": "MIT. May be copied and cited freely with the notice above kept. This register cites them by the authors' own reference number."
+    },
+    {
+     "whose": "the IEA's",
+     "what": "every project row inside each workbook, and the \"References\" sheet",
+     "held": "THE IEA'S DATABASE, UNDER THE IEA'S OWN TERMS, unchanged by the wrapper it arrives in. An MIT licence on a repository is the repository owner licensing what is the repository owner's; it cannot and does not relicense somebody else's database. So the IEA rows stay hash-referenced like every other IEA file here: the bytes are not in the repository, nothing is redistributed, and entries are cited by the IEA's own reference number."
+    }
+   ],
+   "what_this_pass_does": "Reads four workbooks at reading pace through the declared reader, verifies each against the publisher's own copy by SHA-256, holds them in the uncommitted cache, and records url, date, size and hash here and in sources/cache/hydrogen/index.json. The authors' quality-check references are read as data -- URL, reference date, date checked, comment -- and cited by reference number. Nothing is redistributed under either right."
   }
  },
  "pending_snapshots": {
