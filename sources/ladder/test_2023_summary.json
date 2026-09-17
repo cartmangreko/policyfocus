@@ -16,97 +16,109 @@
  "frozen_rung_tests_at": "a9542fe28f93eac7f66a3050070af6db93684e7e",
  "frozen_outcome_definitions_at": "58ce11f0282a44368f4842176a4844d49aa416d2",
  "coverage": {
-  "entries_with_a_document_at_or_before_the_cutoff": 14,
-  "entries_with_an_owner_or_permit_document": 2,
-  "entries_with_no_document_at_or_before_the_cutoff": 241,
+  "entries_with_a_document_at_or_before_the_cutoff": 170,
+  "entries_with_an_owner_or_permit_document": 89,
+  "entries_with_no_document_at_or_before_the_cutoff": 85,
   "by_2023_status": {
    "Concept": {
-    "covered": 1,
+    "covered": 62,
     "total": 105
    },
    "FID/Construction": {
-    "covered": 2,
+    "covered": 6,
     "total": 6
    },
    "Feasibility study": {
-    "covered": 9,
+    "covered": 99,
     "total": 141
    },
    "Other/Unknown": {
-    "covered": 2,
+    "covered": 3,
     "total": 3
    }
   },
   "by_capacity_band": {
    "100-200 MW": {
-    "covered": 6,
+    "covered": 65,
     "total": 97
    },
    "1000+ MW": {
-    "covered": 2,
+    "covered": 22,
     "total": 35
    },
    "200-500 MW": {
-    "covered": 4,
+    "covered": 54,
     "total": 79
    },
    "500-1000 MW": {
-    "covered": 2,
+    "covered": 29,
     "total": 44
    }
   }
  },
  "rungs_cleared_against_outcome": {
   "0": {
-   "not_read_yet": 249,
-   "total": 249
+   "not_read_yet": 178,
+   "total": 178
   },
   "1": {
-   "not_read_yet": 5,
-   "total": 5
+   "not_read_yet": 26,
+   "total": 26
   },
   "2": {
-   "not_read_yet": 1,
-   "total": 1
+   "not_read_yet": 27,
+   "total": 27
+  },
+  "3": {
+   "not_read_yet": 21,
+   "total": 21
+  },
+  "4": {
+   "not_read_yet": 3,
+   "total": 3
   }
  },
  "each_rung_against_outcome": {
   "site": {
    "fail": {
-    "not_read_yet": 1,
-    "total": 1
+    "not_read_yet": 19,
+    "total": 19
    },
    "not_searched": {
-    "not_read_yet": 253,
-    "total": 253
+    "not_read_yet": 168,
+    "total": 168
    },
    "pass": {
-    "not_read_yet": 1,
-    "total": 1
+    "not_read_yet": 68,
+    "total": 68
    }
   },
   "capacity": {
    "fail": {
-    "not_read_yet": 1,
-    "total": 1
+    "not_read_yet": 44,
+    "total": 44
    },
    "not_searched": {
-    "not_read_yet": 253,
-    "total": 253
+    "not_read_yet": 168,
+    "total": 168
    },
    "pass": {
-    "not_read_yet": 1,
-    "total": 1
+    "not_read_yet": 43,
+    "total": 43
    }
   },
   "fid": {
    "fail": {
-    "not_read_yet": 2,
-    "total": 2
+    "not_read_yet": 85,
+    "total": 85
    },
    "not_searched": {
-    "not_read_yet": 253,
-    "total": 253
+    "not_read_yet": 168,
+    "total": 168
+   },
+   "pass": {
+    "not_read_yet": 2,
+    "total": 2
    }
   },
   "funding": {
@@ -121,22 +133,26 @@
   },
   "start": {
    "fail": {
-    "not_read_yet": 2,
-    "total": 2
+    "not_read_yet": 50,
+    "total": 50
    },
    "not_searched": {
-    "not_read_yet": 253,
-    "total": 253
+    "not_read_yet": 168,
+    "total": 168
+   },
+   "pass": {
+    "not_read_yet": 37,
+    "total": 37
    }
   },
   "input": {
    "fail": {
-    "not_read_yet": 8,
-    "total": 8
+    "not_read_yet": 58,
+    "total": 58
    },
    "not_searched": {
-    "not_read_yet": 247,
-    "total": 247
+    "not_read_yet": 197,
+    "total": 197
    }
   }
  },
@@ -160,25 +176,37 @@
  },
  "rungs_cleared_against_dropped_from_benchmark": {
   "0": {
-   "no": 116,
-   "yes": 133,
-   "total": 249
+   "no": 74,
+   "yes": 104,
+   "total": 178
   },
   "1": {
-   "no": 5,
-   "total": 5
+   "no": 19,
+   "yes": 7,
+   "total": 26
   },
   "2": {
+   "no": 16,
+   "yes": 11,
+   "total": 27
+  },
+  "3": {
+   "no": 10,
+   "yes": 11,
+   "total": 21
+  },
+  "4": {
+   "no": 2,
    "yes": 1,
-   "total": 1
+   "total": 3
   }
  },
  "outcome_of_covered_against_uncovered": {
   "covered": {
-   "not_read_yet": 2
+   "not_read_yet": 89
   },
   "uncovered": {
-   "not_read_yet": 253
+   "not_read_yet": 166
   },
   "_comment": "SELECTION FROM ARCHIVE COVERAGE, PUT WHERE IT CAN BE SEEN. Whether an entry has an owner's document on file from before the cut-off is a fact about the archive and about this register's reading, not about the project. If the two columns have different outcome distributions then the rungs are being scored on a selected part of the population, and any statement about the instrument has to carry that."
  },
@@ -280,11 +308,11 @@
     "validated_date_online": "2027",
     "authors_checked_on": "2024-08-01",
     "authors_comment": "\"installation of a large-scale green hydrogen plant with 500 MW electrolyser capacity by 2027 and scalable to 2 GW by 2030.\"",
-    "owner_stated_size": "",
-    "owner_stated_mw": null,
-    "owner_stated_start": "",
-    "size": "not read: no owner capacity on file from before the cut-off",
-    "date": "not read: no owner start on file from before the cut-off"
+    "owner_stated_size": "'a first-of-a-kind 500 MW electrolyser'; '500 MW Electrolyser Capacity'; 'up to 55,000 tonnes of green hydrogen per year'",
+    "owner_stated_mw": 500.0,
+    "owner_stated_start": "'the installation of a large-scale green hydrogen plant with 500 MW electrolyser capacity by 2027 and scalable to 2 GW by 2030'",
+    "size": "agree",
+    "date": "not comparable"
    },
    {
     "iea_ref": "1490",
@@ -296,9 +324,9 @@
     "authors_comment": "\"installation of a large-scale green hydrogen plant with 500 MW electrolyser capacity by 2027 and scalable to 2 GW by 2030.\"",
     "owner_stated_size": "",
     "owner_stated_mw": null,
-    "owner_stated_start": "",
+    "owner_stated_start": "'scalable to 2 GW by 2030'",
     "size": "not read: no owner capacity on file from before the cut-off",
-    "date": "not read: no owner start on file from before the cut-off"
+    "date": "not comparable"
    },
    {
     "iea_ref": "1549",
@@ -308,11 +336,11 @@
     "validated_date_online": "2028",
     "authors_checked_on": "2024-07-31",
     "authors_comment": "\"Production will start in 2028 and total installed capacity will reach 4.8 GW of solar power and 3.3 GW of electrolyzers.\"",
-    "owner_stated_size": "",
-    "owner_stated_mw": null,
-    "owner_stated_start": "",
-    "size": "not read: no owner capacity on file from before the cut-off",
-    "date": "not read: no owner start on file from before the cut-off"
+    "owner_stated_size": "'total installed capacity will reach 4.8 GW of solar power and 3.3 GW of electrolyzers'",
+    "owner_stated_mw": 4800.0,
+    "owner_stated_start": "'Production will start in 2028'; 'starting operations in 2028'",
+    "size": "disagree",
+    "date": "not comparable"
    },
    {
     "iea_ref": "1806",
@@ -420,10 +448,10 @@
     "validated_date_online": "2030",
     "authors_checked_on": "2024-08-01",
     "authors_comment": "2 GW electrolysis, \"can be operational before 2030\"",
-    "owner_stated_size": "",
-    "owner_stated_mw": null,
+    "owner_stated_size": "'GreenGo Energy develops 4GW, 8 billion EUR green energy park in Ringkoebing-Skjern municipality ... where the core will be 2GW electrolysis'",
+    "owner_stated_mw": 4000.0,
     "owner_stated_start": "",
-    "size": "not read: no owner capacity on file from before the cut-off",
+    "size": "disagree",
     "date": "not read: no owner start on file from before the cut-off"
    },
    {
@@ -456,11 +484,14 @@
    }
   ],
   "size": {
-   "not read: no owner capacity on file from before the cut-off": 18,
-   "not comparable: the owner states another unit": 1
+   "not read: no owner capacity on file from before the cut-off": 15,
+   "not comparable: the owner states another unit": 1,
+   "agree": 1,
+   "disagree": 2
   },
   "date": {
-   "not read: no owner start on file from before the cut-off": 19
+   "not read: no owner start on file from before the cut-off": 16,
+   "not comparable": 3
   },
   "_comment": "DISAGREEMENTS ARE RECORDED AND NOT RESOLVED. Where the owner and the authors' validated figure differ, both are on the line and neither is corrected: scope.md, 'A disagreement is two speakers on the same fact, in any field'."
  }
