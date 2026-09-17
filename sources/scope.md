@@ -1948,6 +1948,142 @@ summarised for a person the summary says how many it is summarising.
 The general form: **truncation is a property of a pipeline, not of a function.** Fixing the
 one place it was found does not fix it, because the next cut is in the next stage.
 
+### A refusal is a measurement of a request, not of a publisher
+
+**Ruled 17 September 2026.** On 10 September this register recorded that "the EU's own
+grant registers are unreadable to a declared reader" and that "the register leg of the
+admission procedure is closed to this pipeline". The measurement behind it was four URLs
+answering HTTP 200 with a forty-character body, and the measurement still holds: those same
+presscorner pages refuse the same reader today. **The conclusion did not.**
+
+The same publisher serves the same documents elsewhere and in full. The Commission's own
+state-aid decisions are PDFs at `ec.europa.eu/competition/state_aid/cases1/`; DG COMP
+publishes participant infographics per IPCEI; CINEA's news articles carry the auction award
+tables; and for some references the presscorner itself answers at
+`/api/files/document/print/en/<ref>/<REF>_EN.pdf` — which works for IP/26/1004 and 404s for
+IP/22/3298, so it is a route that sometimes exists rather than a general answer. Eleven
+Commission documents were read this way in one pass.
+
+**So a refusal is recorded against the URL that refused, and a conclusion about a publisher
+needs more than one shape of request.** The honest form of the earlier finding was always
+"these four URLs refuse", which is exactly what it measured. This is the mirror of the
+machine-classification ruling: that one was a machine guessing domains and finding nothing,
+this was a person reading one URL shape and recording the publisher as closed.
+
+What does not change is that a 200 with an empty body IS a refusal and is recorded as one.
+The three-state reading stands; what is added is that the third state is a property of a
+route.
+
+### Once a funder's list is read, absence from it is a finding
+
+**Ruled 17 September 2026, brief 12.** Rung 4 asks whether a funder has published an award
+naming the project. Before this brief no funder list had been read for 71 of the 171 scored
+entries, and those cells were `not_searched` — correctly, because a fail there would have
+been a claim about the project made out of a gap in this register's reading.
+
+**A list that publishes over the whole population asks the rung's question of every entry
+in it.** The Innovation Fund's hydrogen auctions and the four hydrogen IPCEIs publish over
+the European Economic Area, which contains every entry in this population. Once they are on
+file, `searched` is true for every entry and **absence from them is a fail**: the funders
+have published who they funded, and this project is not on the list.
+
+**A national list adds awards and does not narrow that.** The United Kingdom's, Denmark's,
+Norway's, Spain's and France's were read; the Netherlands' answers a declared reader with a
+200 and an empty body and is recorded as refused, with the note that the Dutch projects are
+not lost because the Commission's own decisions name them. **A funder nobody could read is
+a different fact from a funder who named nobody**, and the table prints both.
+
+**AND A SHORTLIST IS NOT AN AWARD.** Two documents read in this pass are a funder naming
+projects on a list that is explicitly not yet an award, and both publishers say so
+themselves — DESNZ's HAR2 shortlist ("does not guarantee Government support") and IDAE's H2
+Valles provisional resolution ("aún sujeta a alegaciones técnicas"). Neither passes rung 4.
+Both were read, which is what makes rung 4 `searched` for the entries they cover. Whether
+the rung needs a third value for this is an open question and is not settled here.
+
+### An award is matched by identifier or by a document naming both, never by a name
+
+The duplicate rule already says this for benchmark entries. It binds on funding with the
+same force and for the same reason, and the funder pass of brief 12 produced four
+near-misses that a name join would have taken:
+
+- **eNRG Lahti**, Nordic Ren-Gas Oy — the same developer as a held row, at a **different
+  town**: the funder says Lahti and the row is Pori.
+- **Kristinestad PtX**, Koppö Energia Oy — the same **town** as a held row, under a
+  different owner; the row is Plug Power's.
+- **IPCEI Hy2Use's Ørsted project** — the same **parent** as a held row, in a different
+  country: the participant is Ørsted Hydrogen Netherlands, off Zeeland, and the row is in
+  western Denmark.
+- **IF25's Gen2-LH2** — the right company and **no place at all**. An award naming a
+  company does not name a project.
+
+Every match carries which route it took and the sentence that does the naming; every
+refusal carries why. **Awards to projects outside the population stay on the funding layer
+with no row**, listed so the funding layer is complete and so the next admission pass has
+them.
+
+### An as-of cut-off applies to a fail as well as to a pass
+
+**Ruled 17 September 2026.** `--as-of DATE` scores the ladder on the evidence a reader
+could have held on a day. A rung passes only on a document whose dateline, or `captured_at`,
+or `not_after` bound, is on or before the date.
+
+**The rule binds on a fail too, and that is the whole of it.** Every cell carries a source
+because a fail is a finding about the evidence examined. A fail resting on a document
+published after the cut-off is a finding nobody could have made on that day — it is not a
+fail as of then, it is nothing as of then, and the cell reads `not_searched`. Leaving it a
+fail would let a ladder score a 2023 cohort out of what this register read in 2026, which
+is the error the instrument exists to avoid.
+
+**A cell with no date at all fails the test.** An undated document cannot be placed before
+a cut-off, and placing it there anyway would date the register's reading from the day it
+happened to look.
+
+**A COARSE DATE IS ADMITTED AT ITS EARLIEST DAY AND THE COUNT IS PRINTED.** A document
+dated to a year is stored on 1 January under the padding rule, so a cut-off in October
+admits it although it may have been published in December. Reading a year as its last day
+would invent a month the publisher did not state, so the passes resting on a date coarser
+than the cut-off are counted and printed on every run rather than resolved.
+
+**The as-of table is a second file and never overwrites the ladder.** The ladder is what
+this register can see today; the as-of table is what it could have seen on a day, and a
+reader has to be able to hold both.
+
+### A departure from a benchmark's population is not a departure from its file
+
+**Ruled 17 September 2026, and it corrects a number this register has published.** Drift is
+measured over the European entries at or above 100 MW in each vintage, and an entry can
+leave that population two ways: the publisher drops it, or the publisher revises what it
+says until the entry no longer clears the threshold.
+
+**Only the first is what rule 17 is about.** Of the 149 departures reported between the
+October 2023 vintage and the current file, **fifteen are still in the current file** —
+twelve of them at exactly the megawatts the IEA's own normalisation gives a 100 MW project.
+So every interval now counts the two apart, and the earlier intervals show a third shape
+the same split catches: six of the eight that left the 2021 population without leaving the
+file are the publisher splitting one entry into phases and keeping the old reference on the
+smallest, so "Get H2 Lingen" goes from 300 MW to "phase 1" at 10 MW. **Nothing shrank; a
+list re-described itself.**
+
+Which figure the register should quote as its headline is an open question and is not
+settled here. What is settled is that both are computed and neither is dropped.
+
+### A capture dated before a cut-off is what makes a back-dated score possible
+
+**Ruled 17 September 2026, and it is the archived-source rule put to a new use.** Scoring a
+cohort as of a past date needs documents a reader could have held on that date. So a census
+pass run for an as-of question asks the Wayback CDX index for the **last capture at or
+before the cut-off** and reads that, rather than reading the live page and dating the
+finding from today: `captured_at` is the capture's day, `archived` is true, and the
+document's own dateline still governs `date` exactly as the standing rule says.
+
+Where no capture exists at or before the cut-off, the live page is read and **the record
+says which it was**. That page is still evidence — it is simply not evidence about the
+cut-off date, and the as-of rule scores it `not_searched` rather than admitting it.
+
+Thirty-six of the 2023 cohort's seventy-three entries have at least one readable capture
+dated at or before 31 October 2023. That number is the ceiling on what any as-of score over
+that cohort can say, and it is printed with the table.
+
 ## Sector perimeters
 
 **Written 12 September 2026, brief 8.** The boundaries for the three sectors this

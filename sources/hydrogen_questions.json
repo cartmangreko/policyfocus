@@ -1,0 +1,80 @@
+{
+ "_comment": [
+  "QUESTIONS BRIEF 12 RAISED AND DID NOT ANSWER. The standing rule for every session is",
+  "that a question the rules do not settle goes to a questions file and is not decided, and",
+  "brief 12 adds a second reason for this one: DECISIONS D-B1 freezes the rung tests at",
+  "commit a9542fe for the length of this brief, so a proposed change to a rung test has",
+  "nowhere else to go.",
+  "",
+  "This file keeps a question after it has been answered, on the batteries and cement",
+  "precedent. A reader who finds a clause in scope.md is entitled to see what made somebody",
+  "write it."
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "raised": "2026-09-17",
+   "touches": "a rung test — FROZEN, see DECISIONS D-B1",
+   "question": "Should rung 4 accept a funder's SHORTLIST, or a PROVISIONAL resolution, as an award?",
+   "why_the_rules_did_not_settle_it": "Rung 4 says 'a funder publishes an award naming the project'. Two documents read in the funder pass are a funder publishing a list of named projects that is explicitly not yet an award, and both publishers say so in their own words. This pass read both as fails and the question is whether that is right.",
+   "instances": [
+    {
+     "programme": "Hydrogen Allocation Round 2 (HAR2), DESNZ",
+     "published": "2025-04-07",
+     "what_it_is": "27 shortlisted projects, named, with lead developer and location",
+     "publisher_verbatim": "A project's inclusion on the shortlist does not guarantee Government support and, similar to the First Hydrogen Allocation Round (HAR1), it is unlikely that all projects will be successful. As such being on the shortlist does not imply availability of funding for any of the shortlisted projects."
+    },
+    {
+     "programme": "H2 Valles (PERTE ERHA), IDAE / MITECO",
+     "published": "2025-02-21",
+     "what_it_is": "a provisional resolution naming seven clusters, 2,278 MW over 11 installations, EUR 1,214 million, including installations at Andorra (Teruel) and La Robla where this register holds rows",
+     "publisher_verbatim": "La propuesta esta aun sujeta a alegaciones tecnicas que pueden propiciar cambios en la lista de seleccionados, de acuerdo con la puntuacion final obtenida por cada proyecto."
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Either that rung 4 takes only a decided award, in which case these stay fails and the rung's note should say 'shortlisted' rather than 'no award' so a reader is not told nothing was found; or that a funder naming a project on a competitive list is itself the second-party confirmation the rung is for, in which case a third value is needed between pass and fail, because a shortlist and a signed grant agreement are not the same evidence.",
+   "how_this_pass_read_it": "As a fail, with the list recorded and rung 4 marked searched. The conservative direction: a shortlist that is read as an award cannot be un-read.",
+   "verdict": null
+  },
+  {
+   "id": "Q2",
+   "raised": "2026-09-17",
+   "touches": "a rung test — FROZEN, see DECISIONS D-B1",
+   "question": "Under an as-of cut-off, should a date stored at YEAR or MONTH precision be read at the earliest day it can be, as it is stored, or at the latest?",
+   "why_the_rules_did_not_settle_it": "scope.md settles the storage: an event date is padded to the earliest day its precision allows, and a target is read at the end of its period, and the two point in opposite directions because overstating a promise and overstating a fact are opposite errors. It does not settle which reading a CUT-OFF takes. A document dated '2023' is stored 2023-01-01 and is admitted by a cut-off of 2023-10-31; it may have been published in December.",
+   "how_this_pass_read_it": "As stored, which is the permissive direction, AND the passes that rest on a date coarser than the cut-off are counted and printed separately on every --as-of run rather than resolved. Reading a year as its last day would be this register inventing a month the publisher did not state.",
+   "measured": "One pass on the 2023-10-31 ladder rests on a date whose stated precision covers days after the cut-off.",
+   "what_a_ruling_would_need_to_say": "Whether a cut-off is a question about what was CERTAINLY on file (read a coarse date at its end, and admit fewer) or about what MAY have been (read it at its start, and admit more), and whether the answer differs for a pass and for a fail.",
+   "verdict": null
+  },
+  {
+   "id": "Q3",
+   "raised": "2026-09-17",
+   "touches": "the drift table, and rule 17",
+   "question": "Is an entry that leaves the population but stays in the file a departure at all?",
+   "why_the_rules_did_not_settle_it": "Rule 17 is about a project that VANISHES from a database, because the disappearance may hide a failure nobody counted. The published drift table reported 149 departures between October 2023 and the current file, measured over the European entries at or above 100 MW. Fifteen of those 149 are still in the current file: the publisher revised the capacity below the threshold, and twelve of the fifteen sit at exactly the megawatts the IEA's own normalisation gives a 100 MW project.",
+   "how_this_pass_read_it": "Both kinds are counted, apart, in every interval of the extended drift table: 'absent from the end vintage's file' and 'still on the list, below the threshold'. Neither number is dropped, because the first is rule 17's case and the second is a fact about the threshold and the normalisation.",
+   "what_a_ruling_would_need_to_say": "Whether the headline drift figure this register quotes is the departures from the file (134 for 2023-10 to current) or from the population (149). The docket and pull request #55 quote 149.",
+   "verdict": null
+  },
+  {
+   "id": "Q4",
+   "raised": "2026-09-17",
+   "touches": "the outcome join, and the vocabulary",
+   "question": "Is `disappeared` a class about the project or about the database?",
+   "why_the_rules_did_not_settle_it": "The brief names three outcomes — on time, delayed, disappeared — and the authors' outcome workbook carries no outcome column. The three are derived here from the two columns the authors restate. `disappeared` is the state where the restated row carries no online date at all, and the authors' own comments show it is not one thing: some are projects that stopped ('Project rejected', 'Archived - project did not progress'), some are the authors REMOVING A DUPLICATE they had found ('Very likely the same project as Strandmollen Ljungby'), and one is a misclassification they struck out ('not a specific electrolyser project, but a research institute').",
+   "how_this_pass_read_it": "The class is derived by the stated rule and EVERY line carries the authors' comment, so a reader can separate a project that stopped from the authors' housekeeping. The counts are printed split rather than merged.",
+   "what_a_ruling_would_need_to_say": "Whether the register should split `disappeared` into `stopped` and `withdrawn by the assessor`, which would make the cross-tab answer a different and probably better question — and which would be this register editing somebody else's classification, which is the thing it has refused to do for the benchmark's coordinates and capacities.",
+   "verdict": null
+  },
+  {
+   "id": "Q5",
+   "raised": "2026-09-17",
+   "touches": "the cohort, and what it can measure",
+   "question": "What does the register learn from a cohort none of whose members it holds?",
+   "why_the_rules_did_not_settle_it": "The brief asks for the 2023 cohort joined by reference number to the ladder population. The join is empty: none of the 73 European entries announced for 2023 reaches 100 MW on the vintage's own Capacity_MWel, and the ladder's population is filtered to 100 MW. The cross-tabs are therefore between the register's rung scores and the authors' outcome over a set of projects the register has never held.",
+   "how_this_pass_read_it": "Computed and reported with the empty join stated first, because an empty join is the finding: the register's instrument and the cohort's outcome do not meet at this threshold. The census pass was run on all 73 anyway, which is what the brief asks and what makes the tables mean anything.",
+   "what_a_ruling_would_need_to_say": "Whether a future cohort test should be run at a threshold the cohort can clear — the 2021 or 2022 vintage's own announced-for cohorts, or a threshold of zero — and whether the ladder should have a second population for exactly this.",
+   "verdict": null
+  }
+ ]
+}
