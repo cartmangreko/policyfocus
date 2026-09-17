@@ -1433,6 +1433,49 @@ coordinator CI ETF I Renato Ptx Holdco S.L.U., about Project Catalina. Until the
 says what the company said and the funder's fiche sits beside it saying something else,
 which is the honest state and not a defect.
 
+### Rulings of 17 September 2026, brief 13 — the outcome, frozen before it was read
+
+**D-C1. THE OUTCOME DEFINITIONS ARE FROZEN AT COMMIT
+58ce11f0282a44368f4842176a4844d49aa416d2, and this entry was written before a single
+outcome was read.** That commit — *"The outcome definitions are written down before any
+outcome is read"* — adds one standing ruling to `sources/scope.md`, *"An outcome is one of
+six values, fixed on a stated day, and it is not a status"*: the six values, the assessment
+date of 30 September 2026, the speaker rule, the pause clause, and the covariate clause
+that keeps `dropped_from_benchmark` out of the outcome column. The ruling's SHA-256 as of
+this entry is `b851091f42fe9ed66722013f17417b8cd7ec1bc293a5db449438638b78c93ef7`, taken over the
+text from its `###` heading to the line before `## Sector perimeters`.
+
+**No outcome definition changes from this point in brief 13 onwards.** A proposed change
+goes to `sources/hydrogen_questions.json` and is not made here.
+
+**WHY A SECOND FREEZE, WHEN D-B1 ALREADY FROZE THE RUNGS.** D-B1 fixed the INSTRUMENT.
+This fixes the ANSWER SHEET, and brief 13 is the first pass where this register writes one.
+Brief 12 did not need it: the outcome there was derived from Odenweller and Ueckerdt's own
+restated `Status` and `Date online` columns, so the classes were somebody else's data read
+under a rule — a rule that could be argued with, but not one that could be quietly bent to
+the scores, because the inputs were fixed by a third party's workbook. Here the input is
+this register reading owners' documents in 2026 and deciding what each one says. Both ends
+of the comparison are now ours, and the only thing standing between that and an instrument
+tuned to its own answer is that the tests and the definitions were both written down, by
+commit hash, before the data arrived.
+
+**THE TWO FREEZES ARE INDEPENDENT AND BOTH BIND.** A rung test is a question about
+evidence; an outcome value is a question about what became of a project. Nothing in this
+brief may loosen either. What this brief MAY do, and does, is add machinery — an archive
+pass, a scorer flag, a test file — because reading more documents is not changing what a
+question asks.
+
+**WHAT THE FREEZE COSTS, STATED HERE RATHER THAN DISCOVERED LATER.** Two of the six values
+are defined against a date this register had not reached when it read. The assessment date
+is 30 September 2026 and the reading ran from 17 September, so an entry that begins
+operating inside that window is read as `delayed` and would be `operating` to a reader on
+the assessment day itself. The `pending`/`delayed` boundary is untouched by it — that is an
+announced start against a fixed date, and both are on file before the window opens. The
+count of entries whose announced start falls inside the window is printed on every run.
+It was not resolved by moving the assessment date to the day the reading finished, because
+a definition that follows the reading around is the thing these two entries exist to
+prevent.
+
 ### Rulings of 15 September 2026 — the ladder was measuring its own reading
 
 Four corrections, and three of them are the same mistake: **a cell reported a fact about a
