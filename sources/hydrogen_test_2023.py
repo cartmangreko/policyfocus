@@ -53,8 +53,10 @@ import json
 import os
 import re
 import sys
+import threading
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_hydrogen_benchmark as bench  # noqa: E402
@@ -69,13 +71,36 @@ CUTOFF = "2023-10-31"
 MAX_REFS = 3
 MAX_OWNER_HOSTS = 2
 
+# THE WAITING IS OVERLAPPED AND THE PACE IS NOT CHANGED. Ruled and recorded 17 September
+# 2026 as D-C5. Sequentially this pass ran at 150 seconds an entry, nine and a half hours
+# for the population, and almost all of it was one worker WAITING: a CDX lookup takes
+# eight to fourteen seconds of somebody else's server thinking, and the register's own
+# two-second pause is on top of that. Threads do not make the requests come faster; they
+# make the idle time of one request coincide with the idle time of another. Every worker
+# still waits PAUSE after its own fetch, so the request rate to the archive stays where
+# the declared reader set it, and the cache index is written under a lock because a fetch
+# that happened and is not in the index is the one failure this whole apparatus exists to
+# prevent.
+DEFAULT_WORKERS = 6
+
+_HOST_LOCK = threading.Lock()
+_HOST_LOCKS: dict[str, threading.Lock] = {}
+_DOC_LOCK = threading.Lock()
+
 # A COARSE LABEL AND NOT A VERDICT, written by hand and kept here where it can be read in
-# a diff. A host on this list is a wire, a trade title, a newspaper, an aggregator or a
+# a diff. IT WAS WRONG TWICE ON THE FIRST WRITING, and the corrections are the argument for
+# keeping it where a diff can find it: `h2v.net` is the developer H2V's own site -- "H2V
+# investit, developpe et construit des gigafactory" -- and `www.smartenergy.net` is
+# Smartenergy's, the developer of the Valencia project, and both were listed here as trade
+# press. Thirteen entries cite the first and two the second, and each of them lost its
+# host legs to the mistake until they were re-fetched. A hand list of hosts is exactly as
+# fallible as the classifier ruling of 10 September 2026 says a machine's guess is; what
+# makes it acceptable is that it is short, it is read by a person, and it is in the diff. A host on this list is a wire, a trade title, a newspaper, an aggregator or a
 # search engine: its front page and its newsroom say nothing about any one project, so no
 # second request is spent on them. THE ENTRY'S OWN REFERENCE IS STILL FETCHED whatever the
 # host, because the publisher cited it and what it says is a question for the reading.
 PRESS_HOSTS = {
-    "direct.argusmedia.com", "www.argusmedia.com", "fuelcellsworks.com", "h2v.net",
+    "direct.argusmedia.com", "www.argusmedia.com", "fuelcellsworks.com",
     "www.h2-view.com", "www.rechargenews.com", "renewablesnow.com", "www.spglobal.com",
     "www.reuters.com", "www.wsj.com", "www.ft.com", "www.barrons.com",
     "hydrogen-central.com", "www.hydrogeninsight.com", "www.hydrogenfuelnews.com",
@@ -90,7 +115,7 @@ PRESS_HOSTS = {
     "www.euro-petrole.com", "www.finanztreff.de", "www.energate-messenger.com",
     "www.enerdata.net", "reneweconomy.com.au", "thewest.com.au", "ijglobal.com",
     "renewable-carbon.eu", "www.h2-mobile.fr", "www.hydroreview.com", "w3.windfair.net",
-    "www.smartenergy.net", "news.cision.com", "www.epressi.com", "www.google.com",
+    "news.cision.com", "www.epressi.com", "www.google.com",
     "web.archive.org", "static1.squarespace.com", "assets.ey.com", "ir.q4europe.com",
 }
 
@@ -200,9 +225,50 @@ def cdx_paths(host: str, cutoff: str = CUTOFF, limit: int = 50):
     return out, refused
 
 
+AVAIL = "https://archive.org/wayback/available"
+
+
+def availability_before(url: str, cutoff: str = CUTOFF):
+    """THE FAST ROUTE TO THE SAME CAPTURE, and it is the same capture for a reason worth
+    stating. The availability endpoint answers in about a second where the CDX index takes
+    twelve, and what it returns is the capture CLOSEST to the timestamp asked for. Ask it
+    for the cut-off and, IF the answer is dated at or before the cut-off, that answer is
+    necessarily the LAST capture at or before it -- any later one on the right side of the
+    cut-off would have been closer. So this is not a different rule read faster; it is the
+    same rule.
+
+    A MISS PROVES NOTHING AND IS NOT RECORDED AS ONE. The endpoint returns an empty
+    `archived_snapshots` for URLs the CDX index does answer for -- gasunie.nl's own news
+    page among them -- so an empty answer, or an answer dated after the cut-off, falls
+    through to the index. Two shapes of request, and a conclusion only from the one that
+    can support it: scope.md, "A refusal is a measurement of a request, not of a
+    publisher".
+    """
+    q = urllib.parse.urlencode({"url": url,
+                                "timestamp": cutoff.replace("-", "") + "235959"})
+    try:
+        req = urllib.request.Request(AVAIL + "?" + q, headers={"User-Agent": hs.UA})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            doc = json.loads(r.read().decode("utf-8", "replace") or "{}")
+    except Exception:                                          # noqa: BLE001
+        return None
+    snap = ((doc.get("archived_snapshots") or {}).get("closest") or {})
+    ts = str(snap.get("timestamp") or "")
+    if not snap.get("available") or str(snap.get("status")) != "200" or len(ts) < 8:
+        return None
+    day = f"{ts[0:4]}-{ts[4:6]}-{ts[6:8]}"
+    if day > cutoff:
+        return None
+    return {"timestamp": ts, "captured_at": day,
+            "url": f"https://web.archive.org/web/{ts}/{url}"}
+
+
 def wayback_before(url: str, cutoff: str = CUTOFF):
     """The LAST capture at or before the cut-off, or None; None also where the index
     refused, and the caller records which."""
+    fast = availability_before(url, cutoff)
+    if fast:
+        return fast
     rows = cdx([("url", url), ("output", "json"), ("fl", "timestamp,original"),
                 ("filter", "statuscode:200"),
                 ("to", cutoff.replace("-", "") + "235959"), ("limit", "-1")])
@@ -310,6 +376,17 @@ def host_legs(host: str, doc: dict, hints=()) -> list[dict]:
     cached = doc.setdefault("hosts", {})
     if host in cached:
         return cached[host]["legs"]
+    # ONE HOST IS RESOLVED ONCE EVEN WITH SIX WORKERS. Without this, two entries citing
+    # the same host would both resolve it, spend the requests twice and race on the dict.
+    with _HOST_LOCK:
+        lock = _HOST_LOCKS.setdefault(host, threading.Lock())
+    with lock:
+        if host in cached:
+            return cached[host]["legs"]
+        return _host_legs_uncached(host, cached, hints)
+
+
+def _host_legs_uncached(host: str, cached: dict, hints=()) -> list[dict]:
     legs = [read(f"https://{host}/", "host_root",
                  f"2023 population test: the front page of a host the publisher cited, "
                  f"as captured at or before {CUTOFF}", "")]
@@ -333,7 +410,8 @@ def host_legs(host: str, doc: dict, hints=()) -> list[dict]:
                         else f"no newsroom path in the CDX index at or before {CUTOFF}"),
             "sha256": "", "text_chars": 0, "source_type": "unclassified",
             "host": host, "signals": {}})
-    cached[host] = {"legs": legs, "resolved_on": legs[0].get("captured_at") or ""}
+    with _DOC_LOCK:
+        cached[host] = {"legs": legs, "resolved_on": legs[0].get("captured_at") or ""}
     return legs
 
 
@@ -420,6 +498,7 @@ def main() -> int:
     ap.add_argument("--report", action="store_true")
     ap.add_argument("--limit", type=int, default=1000)
     ap.add_argument("--offset", type=int, default=0)
+    ap.add_argument("--workers", type=int, default=DEFAULT_WORKERS)
     a = ap.parse_args()
 
     doc = load()
@@ -428,18 +507,34 @@ def main() -> int:
     if a.fetch:
         rows_by_ref = register_rows_by_ref()
         todo = [e for e in all_ if e["ref"] not in done][a.offset:a.offset + a.limit]
+        order = {e["ref"]: i for i, e in enumerate(all_)}
         print(f"2023 population test: {len(all_)} entries, {len(done)} already on file, "
-              f"{len(todo)} this batch")
-        for i, e in enumerate(todo, 1):
-            doc["entries"].append(fetch_entry(e, rows_by_ref, doc))
-            save(doc)
-            last = doc["entries"][-1]
-            ok = sum(1 for g in last["fetches"] if g["text_chars"] >= 400)
-            arch = sum(1 for g in last["fetches"]
+              f"{len(todo)} this batch, {a.workers} worker(s)")
+        counter = {"n": 0}
+
+        def one(e):
+            rec = fetch_entry(e, rows_by_ref, doc)
+            with _DOC_LOCK:
+                doc["entries"].append(rec)
+                # THE FILE STAYS IN POPULATION ORDER whatever order the workers finish in,
+                # so a diff of it reads as a diff and not as a shuffle.
+                doc["entries"].sort(key=lambda x: order.get(x["ref"], 10 ** 6))
+                save(doc)
+                counter["n"] += 1
+                n = counter["n"]
+            ok = sum(1 for g in rec["fetches"] if g["text_chars"] >= 400)
+            arch = sum(1 for g in rec["fetches"]
                        if g["archived"] and g["captured_at"] <= CUTOFF)
-            print(f"  {i:>3}/{len(todo)} ref {e['ref']:>5} {e['name'][:38]:40} "
-                  f"{len(last['fetches'])} fetched, {ok} readable, {arch} from a capture "
-                  f"at or before {CUTOFF}")
+            print(f"  {n:>3}/{len(todo)} ref {e['ref']:>5} {e['name'][:38]:40} "
+                  f"{len(rec['fetches'])} fetched, {ok} readable, {arch} from a capture "
+                  f"at or before {CUTOFF}", flush=True)
+
+        if a.workers <= 1:
+            for e in todo:
+                one(e)
+        else:
+            with ThreadPoolExecutor(max_workers=a.workers) as pool:
+                list(pool.map(one, todo))
         return 0
 
     n = len(doc["entries"])

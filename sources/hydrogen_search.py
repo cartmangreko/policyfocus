@@ -22,7 +22,7 @@ registers on 10 September 2026, and the funder pass of brief 12 re-measures it
 rather than inheriting the answer.
 """
 from __future__ import annotations
-import hashlib, json, pathlib, re, sys, time, urllib.error, urllib.parse, urllib.request
+import hashlib, json, pathlib, re, sys, threading, time, urllib.error, urllib.parse, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CACHE = ROOT / "sources" / "cache" / "hydrogen"
@@ -30,6 +30,14 @@ INDEX = CACHE / "index.json"
 UA = ("Mozilla/5.0 (compatible; Eufabric/1.0; "
       "+https://www.eufabric.eu; data@eufabric.eu)")
 PAUSE = 2.0
+
+# THE INDEX IS ONE FILE AND A FETCH IS A READ-MODIFY-WRITE OF IT. Added 17 September 2026,
+# when the 2023-population pass began fetching on several threads: the pace is unchanged --
+# every worker still waits PAUSE after its own request -- but two workers appending to the
+# index at once would lose one of the two records, and a fetch that happened and is not in
+# the index is exactly the thing this file exists to prevent. A lock is cheap; a silently
+# unrecorded fetch is not recoverable.
+_LOCK = threading.Lock()
 
 _HEAD = [
     "THE CACHE INDEX FOR THE HYDROGEN PASSES. One entry per fetch: the URL, the day,",
@@ -67,7 +75,6 @@ def text_of(body: bytes, ctype: str) -> str:
 def fetch(url: str, source_type: str, note: str = "") -> dict:
     """One request, recorded either way. Never raises."""
     CACHE.mkdir(parents=True, exist_ok=True)
-    idx = _index()
     rec = {"url": url, "domain": urllib.parse.urlsplit(url).netloc,
            "source_type": source_type, "date": time.strftime("%Y-%m-%d"),
            "http": None, "bytes": 0, "sha256": "", "text_chars": 0,
@@ -92,8 +99,10 @@ def fetch(url: str, source_type: str, note: str = "") -> dict:
         rec["outcome"] = f"{e.code}"
     except Exception as e:                                    # noqa: BLE001
         rec["outcome"] = f"{type(e).__name__}"
-    idx["fetches"].append(rec)
-    _write(idx)
+    with _LOCK:
+        idx = _index()
+        idx["fetches"].append(rec)
+        _write(idx)
     time.sleep(PAUSE)
     return rec
 
