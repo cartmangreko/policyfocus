@@ -1391,6 +1391,48 @@ project. The fifth, the Rosselló paper factory, is `Other Electrolysis` and is 
 absent. `not assessed` is carried as its own column rather than folded into `delayed`,
 because an assessor who did not look has said nothing.
 
+**D-B19. THE TERMINATION IS RECORDED AS A FINANCING EVENT AND THE STATUS DOES NOT MOVE.**
+George ruled on the #64 read that the Innovation Fund's fiche is a funder speaking and the
+fact belongs on the row. `catalina-teruel-sagunto` gains a second `status_history` entry:
+`event_kind: financing`, source the fiche, `source_type: grant_register`, and a note
+carrying the funder's own figures. **`financing` is the right kind because the vocabulary
+already says what it is for — "money reached, or LEFT, the project" — and the fiche is
+money leaving.**
+
+**THE DATE IS `not_after` 2026-09-09.** The fiche says "Updated on 09 September 2026" and
+gives no date for the termination itself, so the event is dated by the document as an upper
+bound: it happened at or before that day and nobody here knows when. The SOURCE entry is
+dated `day` on the same date, because that IS the document's own dateline — the two dates
+are different kinds and the precision fields say which is which. That distinction is the
+one the cement census opened `not_after` on events for, arriving in a new place.
+
+**THE STATUS STAYS `announced`, WHICH IS WHERE THE OWNER LEFT IT ON 10 MARCH 2023.** A
+funder withdrawing its money is a fact about the award. Reading a cancellation out of it
+would be this register inferring the project's fate from a third party's accounting — the
+same error `dropped_from_benchmark` exists to prevent, one layer over. **Nothing is
+inferred from the termination alone.**
+
+**D-B20. RULE 17 HAS A SECOND QUEUE, AND IT IS DRIVEN BY AN EVENT RATHER THAN BY A
+BENCHMARK.** The existing queue is rows whose benchmark entry left the list. This one is
+rows where a THIRD PARTY has spoken and the owner has not, carried as an `owner_look` block
+on the event that raised it: the rule it is opened under, why, and the URLs to read. It is
+gated — `_owner_look` in `check_sector_schema.py` — because an unknown key on this layer is
+a key nothing checks, and every URL is an object so `check_links` walks it and the queue
+cannot rot quietly. `report_candidate_gaps.py` prints it on every build.
+
+**The three URLs are the ones that answer.** CIP's newsroom, Enagás's press room and
+Naturgy's press room all returned 200 to the declared reader on 17 September 2026 — Naturgy
+being the partner that published the 2023 announcement this row's only other event rests
+on. **Fertiberia's site answers 403 and enagasrenovable.com does not resolve**; both were
+tried, both are in `sources/cache/hydrogen/index.json`, and neither is listed as a URL to
+read because a queue pointing at a refusal is a queue that will be worked once and
+abandoned.
+
+**WHAT WOULD CLOSE IT** is one sentence from any of the five owners, or from the grant
+coordinator CI ETF I Renato Ptx Holdco S.L.U., about Project Catalina. Until then the row
+says what the company said and the funder's fiche sits beside it saying something else,
+which is the honest state and not a defect.
+
 ### Rulings of 15 September 2026 — the ladder was measuring its own reading
 
 Four corrections, and three of them are the same mistake: **a cell reported a fact about a

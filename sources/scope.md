@@ -2084,6 +2084,33 @@ Thirty-six of the 2023 cohort's seventy-three entries have at least one readable
 dated at or before 31 October 2023. That number is the ceiling on what any as-of score over
 that cohort can say, and it is printed with the table.
 
+### A third party's word opens a queue, not a status
+
+**Ruled 17 September 2026.** Rule 17 says that a project vanishing from a benchmark is a
+project whose failure nobody counts, so the register goes and looks — and that what it
+looks at is whether the OWNER's source still stands, never whether the project stopped. The
+benchmark's silence is evidence about the benchmark.
+
+**A funder terminating its own award is the same shape one step over.** The Innovation
+Fund's factsheet for grant 101179454 carries TERMINATED over a €230 million award to a
+project this register holds as announced. That is a funder speaking, with its own figures,
+and it is recorded: an `event_kind: financing` entry on the row — the vocabulary already
+reads that kind as "money reached, or LEFT, the project" — sourced to the fiche, dated
+`not_after` the day the fiche says it was updated, because the fiche dates itself and does
+not date the termination.
+
+**THE STATUS DOES NOT MOVE.** It stays where the OWNER's own statement left it until the
+owner speaks. A funder withdrawing its money is a fact about the award; reading a
+cancellation out of it would infer a project's fate from a third party's accounting, which
+is the error `dropped_from_benchmark` was made a covariate to prevent.
+
+**What the event owes instead is `owner_look`**: the rule it is opened under, why, and the
+sources somebody is to read, each as an object with a URL so `check_links` walks it. The
+block is gated, because an unknown key on this layer is a key nothing checks, and
+`report_candidate_gaps.py` prints it on every build so the look is somebody's task rather
+than somebody's memory. A URL that refuses a declared reader is recorded in the cache index
+and is NOT put in the queue: a queue pointing at a refusal is worked once and abandoned.
+
 ## Sector perimeters
 
 **Written 12 September 2026, brief 8.** The boundaries for the three sectors this

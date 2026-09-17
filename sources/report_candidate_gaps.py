@@ -268,6 +268,38 @@ def dropped_from_benchmark(projects: dict[str, dict]) -> None:
             print(f"      ref {e['ref']:>5}  last status {e['last_status']:<18} {e['name'][:52]}")
 
 
+def owner_look(projects: dict[str, dict]) -> None:
+    """RULE 17'S SECOND QUEUE: a third party has spoken and the owner has not.
+
+    The queue above is driven by a benchmark dropping a row. This one is driven by an
+    event on the row itself — a funder, a register or a list saying something about a
+    project whose owner has said nothing since. The look is the same one rule 17 asks
+    for: whether the OWNER's source still stands, not whether the project stopped.
+
+    NOTHING IS DERIVED FROM IT. No status moves, no rung changes; the block is a task with
+    the URLs on it, printed on every build so the look is somebody's job rather than
+    somebody's memory.
+    """
+    queue = []
+    for pid, r in sorted(projects.items()):
+        for i, h in enumerate(r.get("status_history") or []):
+            if h.get("owner_look"):
+                queue.append((pid, r, h))
+    if not queue:
+        return
+    print(f"\nreport_candidate_gaps: a third party has spoken and the owner has not — "
+          f"{len(queue)} event(s).\n  RULE 17'S SECOND QUEUE: each is to be looked at for "
+          f"whether the OWNER'S source still stands.\n  Not worked here, and no status "
+          f"moves on it.")
+    for pid, r, h in queue:
+        first = str(h.get("note") or "").split(".")[0][:96]
+        print(f"  {pid:34} {h['event_kind']:10} {h.get('date_precision','')} "
+              f"{h['date']}  status stays {r['status']!r}")
+        print(f"      {first}")
+        for u in h["owner_look"]["urls"]:
+            print(f"      read  {u['publisher'][:34]:36} {u['url']}")
+
+
 def main() -> int:
     files = candidate_files()
     if not files:
@@ -281,6 +313,7 @@ def main() -> int:
     schedule_queue()
     coverage(projects)
     dropped_from_benchmark(projects)
+    owner_look(projects)
     return 0
 
 
