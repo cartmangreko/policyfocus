@@ -338,9 +338,33 @@ def newsroom_of(host: str, cutoff: str = CUTOFF, hints=()):
             "original": best[1]["original"]}
 
 
+# A URL THAT IS ALREADY A CAPTURE CARRIES ITS OWN DATE, AND THE FIRST FORM OF THIS PASS
+# THREW IT AWAY. The register stores a source as a Wayback URL wherever the publisher went
+# dark after the page was read -- scope.md, "When a publisher goes dark after a page was
+# read, cite the capture" -- so seven of the row-source legs arrive as
+# web.archive.org/web/<timestamp>/<original>. Asking the CDX index for a capture OF a
+# capture finds nothing, so those legs were read live and recorded `archived: false` with
+# no `captured_at`, and the as-of rule then scored them out of the table although the
+# document on file is demonstrably a copy taken before the cut-off. The timestamp is in
+# the URL; it is read from there.
+CAPTURE_URL = re.compile(r"^https?://web\.archive\.org/web/(\d{14})(?:[a-z_]+)?/(.*)$")
+
+
+def already_a_capture(url: str):
+    m = CAPTURE_URL.match(url)
+    if not m:
+        return None
+    ts = m.group(1)
+    return {"timestamp": ts, "captured_at": f"{ts[0:4]}-{ts[4:6]}-{ts[6:8]}", "url": url}
+
+
 def read(url: str, leg: str, note: str, name: str, prefer_capture: bool = True) -> dict:
     """One leg: the pre-cut-off capture where there is one, the live page where not."""
-    cap = wayback_before(url) if prefer_capture else None
+    cap = already_a_capture(url)
+    if cap is None:
+        cap = wayback_before(url) if prefer_capture else None
+    elif cap["captured_at"] > CUTOFF:
+        cap = None
     target, archived, captured_at = url, False, ""
     if cap:
         target, archived, captured_at = cap["url"], True, cap["captured_at"]

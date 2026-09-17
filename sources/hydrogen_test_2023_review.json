@@ -755,8 +755,19 @@
   {
    "ref": "1089",
    "read_on": "2026-09-17",
-   "owner_or_permit_pre_cutoff": false,
-   "note": "Gen2 Energy is the owner and all three of its legs -- the reference, the front page and the newsroom, the last two captured within a month of the cut-off -- answered with nothing, as did Hydro Review. Nothing readable at or before the cut-off."
+   "owner_or_permit_pre_cutoff": true,
+   "note": "REVISED AFTER READING REF 1866 (D-C4). This entry's own legs all answered with nothing, and Gen2 Energy's projects page -- fetched under ref 1866 and captured 2023-10-04 -- names this site in the owner's own words: 'At Jelsa in Suldal municipality, we have started the design process for a green hydrogen facility. The site is planned to be developed in phases, initially with a production capacity of 10 MW.' So rung 1 passes. Rung 2 fails on the figure being 10 MW initially against the vintage's 290 MWel for a second phase, and there is no decision and no start date.",
+   "owner_or_permit_url": "https://web.archive.org/web/20231004000000/https://gen2energy.com/projects/",
+   "site_named": "'Suldal in Ryfylke region. At Jelsa in Suldal municipality, we have started the design process for a green hydrogen facility'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20231004000000/https://gen2energy.com/projects/",
+   "site_date": "2023-10-04",
+   "site_precision": "not_after",
+   "site_captured_at": "2023-10-04",
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null
   },
   {
    "ref": "1115",
@@ -1450,6 +1461,12 @@
    "note": "The reference is Topsoe's corporate blog and Topsoe is the technology licensor, not the owner; it was read live in 2026 in any case, and the pre-cut-off capture of the blog's front page answered with nothing."
   },
   {
+   "ref": "1651",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "THE ONLY DOCUMENT HAS ALL THREE FACTS AND THE WRONG SPEAKER. North Rhine-Westphalia's Ministry of Economic Affairs, captured 2023-05-23, writes: 'Das von Air Liquide entwickelte Projekt will am Standort Duisburg bis 2024 eine Wasserelektrolyseanlage mit einer Kapazitaet von 120 Megawatt in Betrieb nehmen.' That is the site, the capacity the vintage carries to the megawatt, and the year the vintage carries -- and it is a Land ministry speaking, which is neither the owner nor the permitting authority nor a regulator acting on the project. Rung 1 admits the owner or the permit authority and nobody else, so the entry is reported and not scored, and the ministry's three facts sit in this note where a later ruling can find them. Air Liquide's own pages carry nothing about it before the cut-off. Asked of the questions file as Q11."
+  },
+  {
    "ref": "1654",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": true,
@@ -1513,6 +1530,781 @@
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "One reference, Hydrogen Central, a trade title, and it answered with nothing. Nothing readable at or before the cut-off."
+  },
+  {
+   "ref": "1749",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20220818000000/https://gh2.eu/news/",
+   "site_named": "'consolidates its agreement with the Grand Port Maritime de Bordeaux allowing the eventual increase of its eFuel project on the Ambes peninsula'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20220818000000/https://gh2.eu/news/",
+   "site_date": "2022-03-30",
+   "site_precision": "day",
+   "site_captured_at": "2022-08-18",
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": "'the commissioning of the plant is scheduled for the year 2027'",
+   "start_speaker": "owner",
+   "start_source": "https://web.archive.org/web/20220818000000/https://gh2.eu/news/",
+   "start_date": "2022-03-30",
+   "start_precision": "year",
+   "start_captured_at": "2022-08-18",
+   "input_stated": null,
+   "note": "GH2's own release of 30 March 2022, captured 2022-08-18. FID FAILS IN THE CLEAREST WORDS ANY DOCUMENT IN THIS POPULATION USES: 'once the final investment decision has been taken, planned in 2024' -- the decision named, dated and explicitly not yet made. Rung 5 passes on 'the commissioning of the plant is scheduled for the year 2027', the year the vintage carries for this phase. Rung 2 fails on the usual arithmetic: the owner says the plant 'intends to triple its electrolysis capacity to reach 300 MegaWatts' and the vintage splits that into 100 and 200."
+  },
+  {
+   "ref": "1750",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230605041252/https://totalenergies.com/media/news/press-releases/total-and-engie-partner-develop-frances-largest-site-production-green",
+   "site_named": "'France's largest renewable hydrogen production site at Chateauneuf-les-Martigues in the Provence-Alpes-Cote d'Azur South region. Located at the heart of Total's La Mede biorefinery'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230605041252/https://totalenergies.com/media/news/press-releases/total-and-engie-partner-develop-frances-largest-site-production-green",
+   "site_date": "2021-01-13",
+   "site_precision": "day",
+   "site_captured_at": "2023-06-05",
+   "capacity_as_stated": "'the 40 MW electrolyser will produce 5 tonnes of green hydrogen per day'; beyond the first phase, an electrolyser 'which has the capacity to produce up to 15 tonnes of green hydrogen per day'",
+   "capacity_speaker": "owner",
+   "capacity_source": "https://web.archive.org/web/20230605041252/https://totalenergies.com/media/news/press-releases/total-and-engie-partner-develop-frances-largest-site-production-green",
+   "capacity_date": "2021-01-13",
+   "capacity_precision": "day",
+   "capacity_captured_at": "2023-06-05",
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "TotalEnergies' news of 13 January 2021, captured 2023-06-05. The site is named twice over, at a commune and at a named works. A DISAGREEMENT ON THE MEGAWATTS, RECORDED: the owner says 'the 40 MW electrolyser' for the first phase and up to 15 tonnes a day beyond it, and the vintage carries 125 MWel -- which is about what 15 tonnes a day converts to, so the list appears to have sized the entry from the ultimate hydrogen figure while the owner sized the plant at 40 MW. Both are on the line. FID fails on a cooperation agreement 'to design, develop, build and operate'; no start date is stated anywhere in the release, and the vintage's 2026 is not in it."
+  },
+  {
+   "ref": "1765",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "HH2E is the owner and every one of its three legs answered with 46 characters or nothing -- a refusal under the empty-body rule, measured three times against the same host in the month before the cut-off."
+  },
+  {
+   "ref": "1766",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "The same hh2e.de refusals as ref 1765."
+  },
+  {
+   "ref": "1803",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230811230008/https://www.liquidwind.se/news",
+   "site_named": null,
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "Liquid Wind's own newsroom, captured 2023-08-11, speaking about this facility without naming it: 'we partnered with two new site hosts for establishing our second and third facilities ... located in north-eastern Sweden. With a planned production capacity of 100,000 tons of fossil-free electrofuel per year, the two facilities will have twice the capacity compared to FlagshipONE.' So the owner spoke before the cut-off and every rung still fails. Rung 1 fails on 'north-eastern Sweden', a quarter of a country. Rung 2 fails on a PRODUCT figure -- tonnes of electrofuel, not the electrolyser (Q9) -- and the vintage's 2,208 MWel is a conversion of it. RUNG 3 FAILS ON SOMEBODY ELSE'S FID, and the page is explicit about whose: 'our first electrofuel facility project FlagshipONE in Oernskoeldsvik reached the Final Investment Decision (FID) and was sold to Orsted'. FlagshipONE is a different entry."
+  },
+  {
+   "ref": "1806",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Every leg is a Commission page and every one of them answered with nothing except a 2017 capture of the newsroom, which does not name the project. Shell's own pages are not on file for this phase, as they were not for phase 1 at ref 771."
+  },
+  {
+   "ref": "1807",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "HyCC is the owner and its reference and front page both answered with nothing. Nothing readable at or before the cut-off."
+  },
+  {
+   "ref": "1812",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "EDF's media centre, captured 2023-10-28 three days before the cut-off, is on file and is entirely about nuclear decommissioning, standing charges and Hinkley Point C. It does not name Tees Green Hydrogen; the reference that would have answered returned nothing (D-C3)."
+  },
+  {
+   "ref": "1813",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20231002000000/https://gravithy.eu/",
+   "site_named": null,
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "GravitHy's own site, captured 2023-10-02, and it says the land had not been found: 'GROUPE IDEC ... will provide support for the SEARCH FOR LAND'. The only figure is the global investment of 2.2 billion euros, there is no electrolyser rating, no decision and no date, and the plant is described only as 'its first green iron and steel plant in France'. So rung 1 fails not because the owner was silent but because at the cut-off there was no site to name. The entry is also a DRI perimeter exclusion and the clause travels with it."
+  },
+  {
+   "ref": "1816",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "The Navigator Company's own front page, captured 2023-10-01, names its four industrial poles -- Cacia, Figueira da Foz, Vila Velha de Rodao and Setubal -- and does not name the P2X-Europe joint venture; its reference answered with 307 characters and renewable-carbon.eu with nothing (D-C3)."
+  },
+  {
+   "ref": "1824",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "ScottishPower's own front page, captured 2023-10-28, is on file and does not name the project; its reference answered with nothing and the only newsroom capture the index holds before the cut-off is from 2013."
+  },
+  {
+   "ref": "1826",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "HyPA's front page, captured 2023-10-25, does not name this phase and its reference answered with nothing; renews.biz answered with nothing either."
+  },
+  {
+   "ref": "1829",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230602000000/https://www.ir.plugpower.com/press-releases/news-details/2022/Plug-to-Build-Large-Scale-Green-Hydrogen-Generation-Plant-in-Europe-at-Port-of-Antwerp-Bruges/default.aspx",
+   "site_named": "'will build a 35-tons-per-day green hydrogen generation plant at Port of Antwerp-Bruges'; 'Plug signed a 30-year concession agreement to build the plant at the Belgian port'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230602000000/https://www.ir.plugpower.com/press-releases/news-details/2022/Plug-to-Build-Large-Scale-Green-Hydrogen-Generation-Plant-in-Europe-at-Port-of-Antwerp-Bruges/default.aspx",
+   "site_date": "2022-06-08",
+   "site_precision": "day",
+   "site_captured_at": "2023-06-02",
+   "capacity_as_stated": "'Plug's 100 MW Electrolyzers Will Produce 35 Tons Per Day of Green Hydrogen for European Market'",
+   "capacity_speaker": "owner",
+   "capacity_source": "https://web.archive.org/web/20230602000000/https://www.ir.plugpower.com/press-releases/news-details/2022/Plug-to-Build-Large-Scale-Green-Hydrogen-Generation-Plant-in-Europe-at-Port-of-Antwerp-Bruges/default.aspx",
+   "capacity_date": "2022-06-08",
+   "capacity_precision": "day",
+   "capacity_captured_at": "2023-06-02",
+   "fid_stated": null,
+   "start_as_stated": "'Initial production of green hydrogen is expected in late 2024, and plant commissioning will be in 2025'",
+   "start_speaker": "owner",
+   "start_source": "https://web.archive.org/web/20230602000000/https://www.ir.plugpower.com/press-releases/news-details/2022/Plug-to-Build-Large-Scale-Green-Hydrogen-Generation-Plant-in-Europe-at-Port-of-Antwerp-Bruges/default.aspx",
+   "start_date": "2022-06-08",
+   "start_precision": "year",
+   "start_captured_at": "2023-06-02",
+   "input_stated": null,
+   "announced_start": "2024",
+   "announced_start_precision": "year",
+   "announced_start_speaker": "owner",
+   "note": "HERE PLUG POWER IS THE OWNER AND NOT THE SUPPLIER, which is worth saying because at refs 1315 and 1488 the same kind of page was a supplier's. Plug's own release of 8 June 2022, captured 2023-06-02: it is building its own plant at Port of Antwerp-Bruges under a 30-year concession. Three rungs pass. FID fails on the concession being the agreement and the erection being 'upon completion of the permitting process, anticipated in late 2023'. THE OWNER GIVES TWO DATES AND THEY MEAN DIFFERENT THINGS: initial production in late 2024 and commissioning in 2025, which is exactly the distinction the register's own commissioning status exists for. The announced start is the production one, 2024, and the vintage carries 2025."
+  },
+  {
+   "ref": "1843",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "THE TECHNOLOGY PARTNER SPEAKS AND IT HAS ALL THREE FACTS. ERM's own page, captured 2023-08-02, says 'The Source Energie team is seeking to use Dolphyn technology to develop a 300MW wind farm named Dylan by 2028, with expansion to GW scale to follow in the 2030s', and quotes ERM's own Director for ERM Dolphyn. Source Energie is the owner and ERM is the technology partner, so this is the same shape as Nel at ref 1130, Plug at ref 1315 and McPhy at ref 1488: informative, and not the speaker rung 1 admits. Source Energie's own pages -- its reference, front page and newsroom, all captured before the cut-off -- do not name Dylan. Note also that the 300 MW is a WIND farm with hydrogen produced on the turbines, in the Celtic Sea, so the site would have failed rung 1 offshore in any case (Q8)."
+  },
+  {
+   "ref": "1844",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "The same ERM and Source Energie legs as ref 1843, and this entry's own capture of the ERM page returned nothing. 'Expansion to GW scale to follow in the 2030s' is the only thing said about a second phase, and the speaker is the technology partner."
+  },
+  {
+   "ref": "1862",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One document from before the cut-off, Euractiv captured 2022-07-15, and it is a news outlet. First Ammonia's own pages are not on file."
+  },
+  {
+   "ref": "1866",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20231004000000/https://gen2energy.com/projects/",
+   "site_named": "'Mosjoen in Helgeland region. Gen2 Energy plans to build two production facilities ... one in the Nesbruket area and one in the Holandsvika area. Both areas are now prepared for hydrogen production'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20231004000000/https://gen2energy.com/projects/",
+   "site_date": "2023-10-04",
+   "site_precision": "not_after",
+   "site_captured_at": "2023-10-04",
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": "'Gen2 Energy plans to start production of green hydrogen in 2026 with the presumption that all necessary approvals are in place'",
+   "start_speaker": "owner",
+   "start_source": "https://web.archive.org/web/20231004000000/https://gen2energy.com/projects/",
+   "start_date": "2023-10-04",
+   "start_precision": "year",
+   "start_captured_at": "2023-10-04",
+   "input_stated": null,
+   "note": "Gen2 Energy's own projects page, captured 2023-10-04. The site passes at two named areas within Mosjoen and rung 5 on the 2026 the vintage also carries. RUNG 2 FAILS WHILE THE PAGE GIVES MEGAWATTS FOR TWO OTHER SITES: 20 MW at Meraaker and 10 MW at Jelsa in Suldal, and nothing for Mosjoen. This page is also what answers for ref 1089, whose own legs returned nothing."
+  },
+  {
+   "ref": "1874",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One document from before the cut-off, Energias Renovables captured 2023-03-27, and it is a trade title. Ansasol's own pages are not on file."
+  },
+  {
+   "ref": "1877",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230925193537/https://www.galp.com/corp/en/media/press-releases",
+   "site_named": "'two large scale projects to reduce the carbon footprint of the Sines refinery and of its products'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230925193537/https://www.galp.com/corp/en/media/press-releases",
+   "site_date": "2023-09-25",
+   "site_precision": "day",
+   "site_captured_at": "2023-09-25",
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "THE SAME DOCUMENT THAT CARRIES FOUR RUNGS AT REF 1169 CARRIES ONE HERE, and the difference is what the document actually says. Galp's release of 25 September 2023 takes the final investment decision on two named projects -- a 270 ktpa biofuels unit and 100 MW of electrolysers -- and this entry is a 600 MW third phase that appears nowhere in it. So the site passes, because the refinery is named, and the capacity, the decision and the start all fail: the FID on file is a decision about a different 100 MW."
+  },
+  {
+   "ref": "1878",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20231003000000/https://hydrogenisland.dk/",
+   "site_named": null,
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "Copenhagen Infrastructure Partners' Hydrogen Island page, captured 2023-10-03. Rung 1 fails for the reason Q8 records: 'The island is expected to be placed on the Danish part of Dogger Bank, around 200 km off Denmark's west coast' is as precise as an offshore location gets and there is no municipality in it. The only gigawatts on the page are the North Sea Summit's pledge of 150 GW of offshore wind by 2050, which is a political target and not this project's rating, so the vintage's 10,494 MWel -- the largest figure in this population -- has nothing of the owner's behind it. No decision and no date."
+  },
+  {
+   "ref": "1881",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230927153701/https://madoquapower2x.com/",
+   "site_named": "'the project will be located in Portugal in the Sines industrial zone - ZILS'; 'a 500 MW electrolyser in the Sines Industrial and Logistics Zone (ZILS)'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230927153701/https://madoquapower2x.com/",
+   "site_date": "2023-09-27",
+   "site_precision": "not_after",
+   "site_captured_at": "2023-09-27",
+   "capacity_as_stated": "'MadoquaPower2X will use renewable energy and 500 MW of electrolysis capacity to produce annually 50,000 tons of green hydrogen and 500,000 tons of green ammonia'",
+   "capacity_speaker": "owner",
+   "capacity_source": "https://web.archive.org/web/20230927153701/https://madoquapower2x.com/",
+   "capacity_date": "2023-09-27",
+   "capacity_precision": "not_after",
+   "capacity_captured_at": "2023-09-27",
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "The project's own site, captured 2023-09-27, naming the consortium -- Madoqua Renewables, Power2X and Copenhagen Infrastructure Partners -- the industrial zone and 500 MW, which is the vintage's figure exactly. No decision and no date: the page's own counters render as '~ 0 MW' because they animate on scroll, and the sentences behind them carry the figures. The vintage's 2027 is not in the document."
+  },
+  {
+   "ref": "1883",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230903000000/https://river-wind.com/",
+   "site_named": null,
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "River Wind Ukraine's own site, captured 2023-09-03, in Ukrainian. It describes a hybrid wind and solar park 'of about 5 GW' whose hydrogen is to be exported to western Europe, says the project will be carried out in several stages 'and will last until 2028', and puts USD 5 billion of intended investment against it. NONE OF THAT IS A SITE, AN ELECTROLYSER RATING OR AN OPERATION START: the 5 GW is generation, the only address on the page is the company's office in Kyiv, and 'will last until 2028' is a programme's end. The same page is the only document on file for all three phases."
+  },
+  {
+   "ref": "1884",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230903000000/https://river-wind.com/",
+   "site_named": null,
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "The same River Wind Ukraine page as ref 1883, which says nothing about a second phase beyond 'several stages'."
+  },
+  {
+   "ref": "1885",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230903000000/https://river-wind.com/",
+   "site_named": null,
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "The same River Wind Ukraine page as refs 1883 and 1884."
+  },
+  {
+   "ref": "1887",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Hy2gen's own front page, captured 2023-09-11, carries IVERSON in its list of projects and says nothing else about it -- the page's prose is about the company's product range and the countries it builds in. A project name in a menu is not the owner saying anything about the project, which is the reading taken at ref 1493."
+  },
+  {
+   "ref": "1895",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Lhyfe is the owner and all three of its legs -- reference, front page and newsroom, the last two captured in the month before the cut-off -- answered with nothing."
+  },
+  {
+   "ref": "1907",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Mabanaft's reference answered with nothing and the only front-page capture the index holds before the cut-off is from 2005 with nine characters. Nothing readable at or before the cut-off."
+  },
+  {
+   "ref": "1910",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "The single reference is The Japan Times and it answered with nothing. Nothing readable at or before the cut-off."
+  },
+  {
+   "ref": "1911",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "The same Japan Times reference as ref 1910 and the same empty answer."
+  },
+  {
+   "ref": "1927",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230930000000/https://www.storegga.earth/news/",
+   "site_named": null,
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "Storegga's own news page, captured 2023-09-30, names the project twice: 'Cromarty Hydrogen enters UK Government negotiation stage -- The Cromarty Hydrogen Project is moving forward to commercial negotiations and further due diligence' and 'Storegga prepares to take Cromarty Hydrogen forward, engages with Track-2 process'. The owner was speaking, a month before the cut-off, and said nothing about where, how big, whether decided or when -- so four rungs fail on the evidence rather than on a gap. Green Car Congress and Argus are third parties."
+  },
+  {
+   "ref": "1969",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20221018144550/https://www.traffordgreenhydrogen.co.uk/press",
+   "site_named": "'Set to be located at the Trafford Low Carbon Energy Park, the plans would see sustainable hydrogen fuel produced at scale in the North West'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20221018144550/https://www.traffordgreenhydrogen.co.uk/press",
+   "site_date": "2022-10-18",
+   "site_precision": "not_after",
+   "site_captured_at": "2022-10-18",
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "The project's own press page, captured 2022-10-18, carrying the announcement of 11 August 2021: 'the submission of a planning application to develop the city's first hydrogen fuel hub'. The site is named at the works. A PLANNING APPLICATION IS NOT AN INVESTMENT DECISION, and no capacity or start is given for a second phase -- the 50MW/250MWh CRYOBattery on the same page is Carlton Power's battery with Highview, a different project at the same park."
+  },
+  {
+   "ref": "1973",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "VoltH2's own pages were read live in 2026 and have no capture at or before the cut-off; what is on file from before it is S&P Global, a trade title, captured 2023-03-08."
+  },
+  {
+   "ref": "1985",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One reference, a release on Cision, and it answered with nothing. Nothing readable at or before the cut-off."
+  },
+  {
+   "ref": "1987",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Both references -- Recharge and Hydrogen Fuel News -- answered with nothing, and both are trade titles. Nothing readable at or before the cut-off."
+  },
+  {
+   "ref": "1996",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230926084913/https://www.cepsa.com/en/press/first-green-hydrogen-corridor-europe",
+   "site_named": "'Cepsa plans to export hydrogen produced at its San Roque Energy Park near the Bay of Algeciras'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230926084913/https://www.cepsa.com/en/press/first-green-hydrogen-corridor-europe",
+   "site_date": "2022-11-01",
+   "site_precision": "month",
+   "site_captured_at": "2023-09-26",
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "Cepsa's own release about the Rotterdam-Algeciras hydrogen corridor, captured 2023-09-26; the page dates itself to November 2022 without a day, so the date is recorded at month precision. The site is named at a works. WHAT THE RELEASE IS ABOUT IS A MEMORANDUM OF UNDERSTANDING with the Port of Rotterdam, so there is no decision, no capacity and no start in it -- the vintage's 1,000 MWel and 2029 are elsewhere. EDP Renovaveis' reference, the co-owner's, answered with nothing."
+  },
+  {
+   "ref": "1997",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Moeve -- Cepsa's new name -- has three pages on file for this entry and all three were read live in 2026, with no capture at or before the cut-off. What is on file from before it is Offshore Energy, captured 2023-06-08, a trade title. The register holds this entry as a row at status fid on a 2026 document; none of that is evidence about 31 October 2023."
+  },
+  {
+   "ref": "2004",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One reference, Balkan Green Energy News, and it answered with nothing. Nothing readable at or before the cut-off."
+  },
+  {
+   "ref": "2015",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230925034821/https://www.ir.plugpower.com/press-releases",
+   "site_named": "'Kokkola, Finland: This site is expected to generate 85TPD of liquid green hydrogen ... The liquid green hydrogen will be produced for local use and for export to western Europe from the Port of Kokkola'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230925034821/https://www.ir.plugpower.com/press-releases",
+   "site_date": "2023-09-25",
+   "site_precision": "not_after",
+   "site_captured_at": "2023-09-25",
+   "capacity_as_stated": "'using 1GW of electrolyzers'; '85TPD of liquid green hydrogen, and up to 700 kt of green ammonia per year'",
+   "capacity_speaker": "owner",
+   "capacity_source": "https://web.archive.org/web/20230925034821/https://www.ir.plugpower.com/press-releases",
+   "capacity_date": "2023-09-25",
+   "capacity_precision": "not_after",
+   "capacity_captured_at": "2023-09-25",
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "Plug Power's own release, captured 2023-09-25, announcing three Finnish sites; Plug is the owner here, as at ref 1829 and unlike refs 1315 and 1488 where the same company is a supplier. Site and capacity pass, and the 1 GW is the vintage's 1,000 MWel exactly. RUNG 3 AND RUNG 5 BOTH FAIL ON THE SAME SENTENCE, AND RUNG 5 FAILS IN THE RUNG'S OWN WORDS: '2.2 gigawatts (GW) of electrolyzer capacity, BY THE END OF THE DECADE with final investment decision (FID) BY 2025/2026'. 'By the end of the decade' is one of the two phrases rung 5 names as carrying no precision this register can record, and an FID dated to a future two-year window is the opposite of one taken."
+  },
+  {
+   "ref": "2016",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230925034821/https://www.ir.plugpower.com/press-releases",
+   "site_named": "'Kristinestad, Finland: The 1GW electrolyzer plant located close to a former coal plant will generate green hydrogen for green steel production ... exported from the port of Kristinestad'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230925034821/https://www.ir.plugpower.com/press-releases",
+   "site_date": "2023-09-25",
+   "site_precision": "not_after",
+   "site_captured_at": "2023-09-25",
+   "capacity_as_stated": "'The 1GW electrolyzer plant located close to a former coal plant'",
+   "capacity_speaker": "owner",
+   "capacity_source": "https://web.archive.org/web/20230925034821/https://www.ir.plugpower.com/press-releases",
+   "capacity_date": "2023-09-25",
+   "capacity_precision": "not_after",
+   "capacity_captured_at": "2023-09-25",
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "The same Plug release as ref 2015. Site and capacity pass, 1 GW against the vintage's 1,000 MWel. The FID is 'by 2025/2026' and the timing is 'by the end of the decade', so rungs 3 and 5 fail. The steel end of it is GravitHy's, which this register holds at ref 1813."
+  },
+  {
+   "ref": "2017",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230925034821/https://www.ir.plugpower.com/press-releases",
+   "site_named": "'Porvoo, Finland: This site will produce up to 100TPD by 2030. The hydrogen will be used for local mobility and exported through pipeline injection to Western Europe'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230925034821/https://www.ir.plugpower.com/press-releases",
+   "site_date": "2023-09-25",
+   "site_precision": "not_after",
+   "site_captured_at": "2023-09-25",
+   "capacity_as_stated": "'This site will produce up to 100TPD'",
+   "capacity_speaker": "owner",
+   "capacity_source": "https://web.archive.org/web/20230925034821/https://www.ir.plugpower.com/press-releases",
+   "capacity_date": "2023-09-25",
+   "capacity_precision": "not_after",
+   "capacity_captured_at": "2023-09-25",
+   "start_as_stated": "'This site will produce up to 100TPD by 2030'",
+   "start_speaker": "owner",
+   "start_source": "https://web.archive.org/web/20230925034821/https://www.ir.plugpower.com/press-releases",
+   "start_date": "2023-09-25",
+   "start_precision": "year",
+   "start_captured_at": "2023-09-25",
+   "fid_stated": null,
+   "input_stated": null,
+   "note": "The third of Plug's Finnish sites, and the only one of the three that gets a year of its own: 'up to 100TPD by 2030', which is the year the vintage carries. So this entry clears three rungs and its two siblings clear two, out of one release -- the difference being one phrase. The capacity is in tonnes a day, which is hydrogen and passes, and the vintage's 200 MWel is a conversion of it."
+  },
+  {
+   "ref": "2029",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One document from before the cut-off, Renewables Now captured 2023-09-27, and it is a trade title. Energie Steiermark's own pages are not on file."
+  },
+  {
+   "ref": "2033",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "RIC Energy's page naming Besaya was read live in 2026; its newsroom capture is from 2020 and does not name the project, and Energynews answered with nothing. Nothing about this entry at or before the cut-off."
+  },
+  {
+   "ref": "2035",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "hidrogeno-verde.es answered with nothing on the reference and its front page, captured 2023-10-20, does not name the project."
+  },
+  {
+   "ref": "2036",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Flexens is the owner and both its legs answered with nothing, the front page captured the day before the cut-off."
+  },
+  {
+   "ref": "2045",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Fortum's front page, captured 2023-10-30 the day before the cut-off, is on file and is entirely navigation and investor material; the Fortum page that names the project was read live in 2026, and Energynews answered with nothing (D-C3)."
+  },
+  {
+   "ref": "2056",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One document from before the cut-off, Offshore Energy captured 2023-06-08, and it is a trade title. Cepsa's own release about La Rabida is not on file for this entry -- its San Roque release, read at ref 1996, mentions 'a similar supply chain from its La Rabida Energy Park in Huelva' and nothing more, which names no site for this entry and no figure."
+  },
+  {
+   "ref": "2058",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20231014100900/https://tes-h2.com/news",
+   "site_named": "'we are in the process of developing our first green energy import hub in Wilhelmshaven, Germany'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20231014044737/https://tes-h2.com/",
+   "site_date": "2023-10-14",
+   "site_precision": "not_after",
+   "site_captured_at": "2023-10-14",
+   "capacity_as_stated": "'TES and EWE to Build 500MW Electrolyser at Wilhelmshaven Green Energy Hub', 25 November 2022",
+   "capacity_speaker": "owner",
+   "capacity_source": "https://web.archive.org/web/20231014100900/https://tes-h2.com/news",
+   "capacity_date": "2022-11-25",
+   "capacity_precision": "day",
+   "capacity_captured_at": "2023-10-14",
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "TES's own site and news index, both captured 2023-10-14. THE CAPACITY COMES OFF A HEADLINE IN THE OWNER'S OWN NEWSROOM, dated 25 November 2022: 'TES and EWE to Build 500MW Electrolyser at Wilhelmshaven Green Energy Hub' -- the owner, dated, with the figure the vintage carries. 'To build' is an announcement and not a decision, so rung 3 fails, and no operation start appears anywhere in the twenty-odd releases the index lists. The newsroom is a good example of the leg being worth its request: the front page gives the site and the index gives the megawatts."
+  },
+  {
+   "ref": "2060",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20231012000000/https://madoquaventures.com/",
+   "site_named": null,
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "Madoqua Ventures' own front page, captured 2023-10-12, which lists this project among its activities -- 'Synthetic Fuels e-MeOH and SAF production. Bunkering and offtake at Port of Aveiro or Sines' and 'e-Methanol CO2 capture and utilisation, a path to cement industry decarbonisation'. THE SITE FAILS ON AN EITHER-OR: 'Port of Aveiro or Sines' is the owner naming two ports and choosing neither, which is not a location statement at municipality or finer. The only figure on the page is 'Total investment 2b+', there is no electrolyser rating and no date. The entry is also a perimeter exclusion and the clause travels with it."
+  },
+  {
+   "ref": "2062",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Iberdrola's reference for this entry answered with nothing; its front page and press room, both captured before the cut-off, are on file and neither names the Trammo joint project (D-C3). The 2020 release that answers for the four Fertiberia entries does not mention it."
+  },
+  {
+   "ref": "2111",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One reference, H2 View, and it answered with nothing."
+  },
+  {
+   "ref": "2115",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One document from before the cut-off, H2 View captured 2022-12-03, and it is a trade title that does not name this project."
+  },
+  {
+   "ref": "2117",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230528070657/https://www.lhyfe.com/press/green-and-renewable-hydrogen-producer-lhyfe-to-develop-200-mw-plant-in-delfzijl-netherlands",
+   "site_named": "'Green and renewable hydrogen producer Lhyfe to develop 200 MW Plant in Delfzijl, Netherlands'; 'Lhyfe's Delfzijl plant will be able to supply green hydrogen throughout the Netherlands'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230528070657/https://www.lhyfe.com/press/green-and-renewable-hydrogen-producer-lhyfe-to-develop-200-mw-plant-in-delfzijl-netherlands",
+   "site_date": "2022-10-06",
+   "site_precision": "day",
+   "site_captured_at": "2023-05-28",
+   "capacity_as_stated": "'to develop 200 MW Plant in Delfzijl, Netherlands'",
+   "capacity_speaker": "owner",
+   "capacity_source": "https://web.archive.org/web/20230528070657/https://www.lhyfe.com/press/green-and-renewable-hydrogen-producer-lhyfe-to-develop-200-mw-plant-in-delfzijl-netherlands",
+   "capacity_date": "2022-10-06",
+   "capacity_precision": "day",
+   "capacity_captured_at": "2023-05-28",
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "Lhyfe's own release of 6 October 2022, captured 2023-05-28. Site and capacity pass and the 200 MW is the vintage's figure. RUNG 3 FAILS IN A SENTENCE THAT NAMES ALL THREE THINGS IT IS WAITING FOR: 'The project execution is subject to obtaining required operation licences and building permission as well as financial investment decision.' That is 'subject to' in the rung's own words. No operation start is stated and the vintage's 2026 is not in the release."
+  },
+  {
+   "ref": "2120",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Smartenergy is the owner and its reference answered with nothing. Its own domain was on the press list when this entry was first fetched, which cost it a newsroom leg; the list was corrected under D-C6 and the entry re-fetched, and the reference still answers with nothing."
+  },
+  {
+   "ref": "2123",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One reference, Europa Press, and it answered with nothing. Nothing readable at or before the cut-off."
+  },
+  {
+   "ref": "2149",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20231002002541/https://orsted.com/en/media/newsroom/news/2022/12/1366589",
+   "site_named": "'The Power-to-X facility will be located in Idomlund near Holstebro in the western part of Denmark'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20231002002541/https://orsted.com/en/media/newsroom/news/2022/12/1366589",
+   "site_date": "2022-12-06",
+   "site_precision": "day",
+   "site_captured_at": "2023-10-02",
+   "capacity_as_stated": "'The first phase of the project will have an expected electrolysis capacity of 150 MW and will be powered by onshore wind and solar PV'",
+   "capacity_speaker": "owner",
+   "capacity_source": "https://web.archive.org/web/20231002002541/https://orsted.com/en/media/newsroom/news/2022/12/1366589",
+   "capacity_date": "2022-12-06",
+   "capacity_precision": "day",
+   "capacity_captured_at": "2023-10-02",
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "THIS ENTRY WAS ALMOST LOST TO A DEFECT IN THIS PASS, AND IT IS WORTH SAYING WHERE. The register holds this row's source as a WAYBACK URL, because the standing rule is to cite the capture where a publisher has gone dark -- and the archive pass asked the CDX index for a capture OF that capture, found none, read it live and recorded archived false with no capture date, so the as-of rule scored it out. The timestamp is in the URL: 2 October 2023, four weeks before the cut-off. Corrected, and the correction is D-C8. What the document says: Orsted's release of 6 December 2022 names Idomlund near Holstebro and 'an expected electrolysis capacity of 150 MW' for the first phase, which is the vintage's figure exactly. FID fails on 'have signed a letter of intent to jointly develop', which is also why rung 6 fails."
+  },
+  {
+   "ref": "2150",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20231002002541/https://orsted.com/en/media/newsroom/news/2022/12/1366589",
+   "site_named": "'The Power-to-X facility will be located in Idomlund near Holstebro in the western part of Denmark'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20231002002541/https://orsted.com/en/media/newsroom/news/2022/12/1366589",
+   "site_date": "2022-12-06",
+   "site_precision": "day",
+   "site_captured_at": "2023-10-02",
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "The same Orsted release as ref 2149, which says of the later phases only that 'The facility will be built in several phases'. So the site passes and the vintage's 2,850 MWel has no figure of the owner's behind it; the vintage gives this entry no date online either."
+  },
+  {
+   "ref": "2152",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "The single reference is Argus Media, which answered with thirteen characters -- a refusal under the empty-body rule. Argus is cited for twenty-three entries in this population and answers this way for all of them."
+  },
+  {
+   "ref": "2154",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Argus answered with thirteen characters and the authors' quality-check reference, Green Car Congress, with nothing. The entry is also a DRI perimeter exclusion."
+  },
+  {
+   "ref": "2155",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Argus again, thirteen characters. Liquid Wind's own pages, read at ref 1803, do not name a third facility beyond 'our second and third facilities'."
+  },
+  {
+   "ref": "2163",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230711000000/https://stateraenergy.co.uk/news/",
+   "site_named": "'Statera Energy to develop 3GW Kintore Hydrogen project', 30 March 2023 -- the location is in the project's name as the owner writes it, and nothing else in the index says where",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230711000000/https://stateraenergy.co.uk/news/",
+   "site_date": "2023-03-30",
+   "site_precision": "day",
+   "site_captured_at": "2023-07-11",
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "Statera Energy's own news index, captured 2023-07-11. RUNG 1 PASSES ON A PROJECT NAME AND THE HEDGE IS ON THE LINE: the owner writes 'Kintore Hydrogen project' and Kintore is a town in Aberdeenshire, so the owner has named the town -- which the rung admits from an owner -- but it has not said in as many words that the plant is there. It is the same class as ref 931's 'nearby Castellon' and is asked of the questions file as Q10. What the rung 1 pass is NOT is a position: the coordinate rules refuse to place a row on a municipality name, so nothing gets drawn from this. Rung 2 fails on the arithmetic: the owner says 3 GW and the vintage splits it into 500 MW and 2,500 MW. Enerdata is a data provider, not the owner, and Statera's own project pages were read live in 2026."
+  },
+  {
+   "ref": "2164",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230711000000/https://stateraenergy.co.uk/news/",
+   "site_named": "'Statera Energy to develop 3GW Kintore Hydrogen project', 30 March 2023",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230711000000/https://stateraenergy.co.uk/news/",
+   "site_date": "2023-03-30",
+   "site_precision": "day",
+   "site_captured_at": "2023-07-11",
+   "capacity_as_stated": null,
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "The same Statera index as ref 2163. The owner's 3 GW is the whole project and the vintage's 2,500 MWel for a second phase is 3 GW less the first phase's 500."
+  },
+  {
+   "ref": "2170",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One reference, Hydrogen Central, and it answered with nothing."
+  },
+  {
+   "ref": "2171",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "EWE's own newsroom, captured 2023-09-23, carries the word hydrogen and not this project's name; its front page, captured the day before the cut-off, answered with nothing, and both energate-messenger references answered with nothing. The two EWE pages that do name Clean Hydrogen Coastline were read live in 2026. The register holds this entry as a row at status construction on a 2025 document, which is not evidence about the cut-off (D-C3)."
+  },
+  {
+   "ref": "2173",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Meld Energy is the owner and its row source answered with 720 characters and its front page with nothing -- refusals under the empty-body rule. What is readable from before the cut-off is Renewables Now, a trade title, captured 2023-06-09."
+  },
+  {
+   "ref": "2176",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "The same hh2e.de refusals as refs 1765 and 1766: 46 characters on the reference and the front page, nothing on the newsroom."
+  },
+  {
+   "ref": "2177",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "The same hh2e.de refusals as ref 2176."
+  },
+  {
+   "ref": "2182",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One document from before the cut-off, Renewables Now captured 2023-06-09, and it is a trade title."
+  },
+  {
+   "ref": "2185",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One reference, Energias Renovables, and it answered with nothing."
+  },
+  {
+   "ref": "2188",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "THE CITY'S INNOVATION MAGAZINE, NOT THE OWNER. future.hamburg, captured 2023-10-10, carries a well-sourced article -- 'The chemical park in Stade ... already produces around 50,000 metric tons of hydrogen per year in Europe's largest electrolyzer. Converted into electricity, this would correspond to around 300 megawatts' -- and future.hamburg is Hamburg's location-marketing site, not Dow. Dow's own pages are not on file. The same shape as the NRW ministry at ref 1651 and asked of the questions file there."
+  },
+  {
+   "ref": "2189",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Swiss Liquid Future is the owner and both its legs -- the reference and the front page -- answered with nothing."
+  },
+  {
+   "ref": "2193",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Argus again, thirteen characters."
+  },
+  {
+   "ref": "2194",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": true,
+   "owner_or_permit_url": "https://web.archive.org/web/20230825000000/https://www.greengoenergy.com/",
+   "site_named": "'The Energy Park will be established at the future Stovstrup 400kV substation east of Tarm in Ringkoebing-Skjern municipality'",
+   "site_speaker": "owner",
+   "site_source": "https://web.archive.org/web/20230825000000/https://www.greengoenergy.com/",
+   "site_date": "2023-01-24",
+   "site_precision": "day",
+   "site_captured_at": "2023-08-25",
+   "capacity_as_stated": "'GreenGo Energy develops 4GW, 8 billion EUR green energy park in Ringkoebing-Skjern municipality ... where the core will be 2GW electrolysis'",
+   "capacity_speaker": "owner",
+   "capacity_source": "https://web.archive.org/web/20230825000000/https://www.greengoenergy.com/",
+   "capacity_date": "2023-01-24",
+   "capacity_precision": "day",
+   "capacity_captured_at": "2023-08-25",
+   "fid_stated": null,
+   "start_as_stated": null,
+   "input_stated": null,
+   "note": "GreenGo Energy's own site, captured 2023-08-25, carrying its announcement of 24 January 2023. THE BEST SITE STATEMENT IN THE POPULATION: a named substation, a named town, a named municipality -- 'at the future Stovstrup 400kV substation east of Tarm in Ringkoebing-Skjern municipality'. And the capacity is stated as the electrolysis core, 2 GW, which is the vintage's 2,000 MWel exactly, with the 4 GW beside it being the renewable generation feeding it -- the two figures the other entries in this population keep confusing, kept apart by the owner itself. 'Develops' is not a decision and no start date is given; the vintage's 2030 is not in the document. Argus answered with thirteen characters and the authors' quality-check reference with nothing."
+  },
+  {
+   "ref": "2211",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "One reference, Offshore Wind, and it answered with nothing. OX2's own pages are not on file."
+  },
+  {
+   "ref": "2213",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "The single reference is Argus Media, thirteen characters."
+  },
+  {
+   "ref": "2214",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "Argus answered with thirteen characters; EDP's page naming Los Barrios was read live in 2026; and the only pre-cut-off capture of edp.com is the 2017 front page already read at ref 1. No owner document about this entry before the cut-off."
+  },
+  {
+   "ref": "2229",
+   "read_on": "2026-09-17",
+   "owner_or_permit_pre_cutoff": false,
+   "note": "The single reference is Argus Media and it answered with nothing."
   }
  ]
 }
