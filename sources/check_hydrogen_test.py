@@ -159,9 +159,20 @@ def main() -> int:
     for l in lines:
         y = T.start_year(l["announced_start"])
         if l["outcome"] == "pending":
-            if y is None:
+            # AN ENTRY WITH NO ANNOUNCED START AT ALL IS THE ONE CASE THE FROZEN
+            # DEFINITIONS DO NOT COVER, and the gate makes the gap visible rather than
+            # closing it. `pending` and `delayed` are both defined against an announced
+            # start, and six entries have none: the vintage gives them no date online and
+            # no owner stated one at or before the cut-off. They are read as pending --
+            # nothing has been promised by a day that has passed -- and what the gate
+            # enforces is that the ABSENCE IS RECORDED on the line, in
+            # `announced_start_read_from`, rather than assumed by whoever filled the
+            # column. The question goes to the questions file as Q13; the definition is
+            # not amended here, because D-C1 says it is not amended in this brief.
+            if y is None and not l["announced_start_read_from"].startswith("neither"):
                 bad.append(f"ref {l['iea_ref']}: pending with no announced start to be "
-                           f"pending against")
+                           f"pending against, and no record that neither speaker "
+                           f"states one")
             elif f"{y}-01-01" <= T.ASSESSED_ON and l["announced_start_precision"] == "year":
                 bad.append(f"ref {l['iea_ref']}: pending on an announced start of "
                            f"{l['announced_start']}, which is on or before "
@@ -198,15 +209,19 @@ def main() -> int:
     for l in lines:
         n = int(l["documents_pre_cutoff"] or 0)
         cov = l["coverage"]
-        if n == 0 and not cov.startswith("no document"):
+        if n == 0 and not (cov.startswith("no document")
+                           or cov.startswith("owner or permit document held under")):
             bad.append(f"ref {l['iea_ref']}: no pre-cut-off document but coverage says "
                        f"{cov!r}")
         if n and cov.startswith("no document"):
             bad.append(f"ref {l['iea_ref']}: {n} pre-cut-off document(s) but coverage "
                        f"says {cov!r}")
-        if cov.startswith("owner or permit") and not n:
+        if cov == "owner or permit document at or before the cut-off" and not n:
             bad.append(f"ref {l['iea_ref']}: an owner or permit document and no "
                        f"pre-cut-off document count")
+        if cov.startswith("owner or permit document held under another") and n:
+            bad.append(f"ref {l['iea_ref']}: coverage says the document is held under "
+                       f"another entry's legs, but this entry has {n} of its own")
 
     # 8. THE SUMMARY IS THE CSV'S OWN ARITHMETIC.
     recomputed = T.summarise(None, lines, T.check_block())

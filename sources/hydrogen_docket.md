@@ -1572,6 +1572,86 @@ Rungs 4 and 6 are the exceptions and they are exceptions in the brief: the funde
 the dependency graph are population-wide files with their own dates, and they are read for
 every entry exactly as brief 12 read them.
 
+**D-C8. A URL THAT IS ALREADY A CAPTURE CARRIES ITS OWN DATE, AND THE FIRST FORM OF THIS
+PASS THREW IT AWAY.** The register stores a source as a Wayback URL wherever the publisher
+went dark after the page was read, so eight of the legs arrived as
+`web.archive.org/web/<timestamp>/<original>`. The pass asked the CDX index for a capture OF
+a capture, found none, read the page live and wrote `archived: false` with no capture date
+— and the as-of rule then scored the cell out of the table, although the document on file
+is demonstrably a copy taken before the cut-off. **The timestamp is in the URL.**
+
+**Ørsted and Skovgaard's Idomlund release is the case that shows the cost.** It is dated 6
+December 2022, the register holds it at a capture of 2 October 2023, and under the defect
+the entry read as unsearched on every rung. Repaired, it clears two: Idomlund near
+Holstebro, and "an expected electrolysis capacity of 150 MW" — the vintage's figure exactly.
+
+**D-C9. EIGHTEEN ROWS ARE REDATED FROM THE DAY THIS REGISTER LOOKED TO THE DAY THE OWNER
+SPOKE, and that is what "the register is the record" means when a pass finds evidence.**
+Brief 13 item 4 says that owner-stated events found in this pass are facts about the row.
+The largest class of them is not new events but OLD ONES: fifteen rows carried a first
+`status_history` entry dated 10 September 2026 with the note that the date "is the day the
+page was read, not the day the project was announced, which none of these pages states".
+
+**For thirteen of the eighteen, a capture shows the owner said it years earlier, and for
+five the page carries a dateline the live read had missed.** Lhyfe's Delfzijl release is
+the sharpest: the row's note says no page states the day, and the capture of 28 May 2023
+shows "Published the 06/10/2022" on the same release. Endesa's As Pontes announcement moves
+to 1 February 2021, Trafford's to 11 August 2021, TES's to 25 November 2022, Ørsted's to 6
+December 2022, Statera's to 30 March 2023. Where the page is genuinely undated the event
+takes the capture day at `not_after` precision, which is an upper bound and says so.
+
+**TWO OF THE EIGHTEEN GAIN AN EVENT RATHER THAN A DATE.** Hamburg Green Hydrogen Hub's row
+began at `construction` in December 2025 and Rostock's at `funded` in July 2024; both were
+`announced` before the cut-off on their own sites, and that earlier status is now on the
+row. **Nothing is deleted and no status is invented**: the corrections move a date onto the
+document that carries it, and every one of them cites the capture and carries the capture
+day beside the dateline.
+
+**D-C10. THE TEST'S HEADLINE IS ABOUT READING, NOT ABOUT PROJECTS, AND THE CROSS-TAB SAYS
+SO IN ONE LINE.** Of 255 entries, 159 are `unread` as of 30 September 2026 — and 141 of
+those 159 are entries with no owner or permit document from before the cut-off either. The
+same entries are missing from both ends. So the instrument's zero is overwhelmingly a
+silence: **148 of the 176 entries that clear no rung are `unread`**, and only 5 of them are
+`delayed`.
+
+**Among the 89 entries where an owner or permit authority did speak before the cut-off, the
+picture inverts**: 6 committed, 44 pending, 20 delayed, 1 stopped, 18 unread. Among the 166
+where none did, 141 are unread. **A reader who takes the rungs as a measure of projects is
+reading a measure of which publishers keep their pages up and which were captured.** That
+is the selection the brief asked to be made visible, and it is the largest single fact in
+the table.
+
+**D-C11. NOTHING IN THE POPULATION CLEARS MORE THAN FOUR RUNGS, AND FOUR IS REACHED FOUR
+TIMES.** The distribution is 176 at zero, 28 at one, 27 at two, 20 at three, 4 at four, and
+nothing at five or six. **Rung 3 passes twice in 255** — Galp on "has taken the final
+investment decision" and Air Liquide on "announces an investment of over 400 million euros
+for the construction" — and **rung 6 passes once**, on FUELLA saying Casale "has been chosen
+as the licensor and EPC contractor". Rung 4 passes five times, all from the funder pass.
+
+**The rungs that fail are not the ones a reader would guess.** Rung 1 passes 70 times and
+rung 2 only 43: owners say where far more often than they say how big, which is the same
+shape brief 11's gap analysis found from the other side — thirty of forty-seven entries
+there failed on capacity alone. **What owners publish is a place and a date; what they do
+not publish is a rating and a decision.**
+
+**D-C12. THE ONE PROJECT THAT VISIBLY STOPPED IS NOT COUNTED AS STOPPED, BECAUSE THE
+SPEAKER IS A TRADE TITLE.** Gigastack at Immingham is held by this register as `paused`
+from 18 August 2023, and the source is Offshore Energy reporting that Phillips 66 and
+Ørsted withdrew the bid from the United Kingdom's first allocation round. The outcome rules
+admit the owner, a permit authority or a regulator and nobody else, so both Gigastack
+entries carry `paused: yes` and an outcome read off the announced start instead. ITM
+Power's own page, re-read in 2026, is still the 2022 phase-2 release.
+
+**The only `stopped` in 255 is Synkero**, and it is stopped because SkyNRG says so on its
+own page: "Grid congestion and the resulting limitations for obtaining a grid connection
+for the project. Consequently, the project is on hold so that these issues can be addressed
+before development continues." **A pause with no resumption date**, which is the clause the
+brief's author chose and which decides this entry and no other.
+
+**ONE PROJECT IN 255 HAS AN OWNER-STATED STOP ON FILE. That is a finding about attrition
+reporting, not about attrition**: the projects that disappear do not announce it, which is
+what rule 17 said in 2026 and what this test measures at a scale rule 17 could not.
+
 ### Rulings of 15 September 2026 — the ladder was measuring its own reading
 
 Four corrections, and three of them are the same mistake: **a cell reported a fact about a

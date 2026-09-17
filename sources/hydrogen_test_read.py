@@ -125,6 +125,8 @@ def main() -> int:
     ap.add_argument("--digest", action="store_true")
     ap.add_argument("--propose", action="store_true")
     ap.add_argument("--todo", action="store_true")
+    ap.add_argument("--outcome-todo", dest="outcome_todo", action="store_true")
+    ap.add_argument("--outcome-digest", dest="outcome_digest", action="store_true")
     a = ap.parse_args()
 
     arch = json.loads(t23.OUT.read_text(encoding="utf-8"))
@@ -136,6 +138,42 @@ def main() -> int:
                 json.loads(tout.OUT.read_text(encoding="utf-8"))["entries"]}
     if a.list_refs:
         print(" ".join(e["ref"] for e in arch["entries"]))
+        return 0
+
+    if a.outcome_todo or a.outcome_digest:
+        # THE OUTCOME SIDE OF THE SAME TRIAGE. For each entry: what the register's own row
+        # says, if it has one; what the 2026 legs answered; and the announced start the
+        # builder will use. It proposes nothing and decides nothing -- the six values are
+        # a judgement about who was speaking and what they said, and they go in the review
+        # file by hand.
+        rp = t23.ROOT / "sources" / "hydrogen_test_2023_review.json"
+        rev = {e["ref"]: e for e in json.loads(rp.read_text())["entries"]} if rp.exists() \
+            else {}
+        pop = {e["ref"]: e for e in t23.population()}
+        refs = a.refs or [e["ref"] for e in arch["entries"]]
+        if a.outcome_todo:
+            todo = [r for r in refs if rev.get(r, {}).get("outcome") is None]
+            print(f"{len(todo)} of {len(refs)} entries have no outcome written")
+            print(" ".join(todo))
+            return 0
+        for ref in refs:
+            e, lr, rv = pop.get(ref), live.get(ref), rev.get(ref, {})
+            if not e:
+                continue
+            owner_start = rv.get("announced_start") or rv.get("start_as_stated")
+            print(f"{ref:>6}  {e['name'][:40]:42} {e['country']} "
+                  f"{str(e['capacity_mwel'])[:7]:>7}MW  vintage online "
+                  f"{e['date_online_2023_vintage'] or '-':>5}  owner start "
+                  f"{str(owner_start)[:34] or '-'}")
+            if lr and lr.get("row_id"):
+                print(f"         ROW {lr['row_id']} status={lr.get('row_status')}")
+                for h in lr.get("row_status_history") or []:
+                    print(f"           {h.get('date')} ({h.get('date_precision')}) -> "
+                          f"{h.get('status_to')} [{h.get('source_type')}] "
+                          f"{(h.get('note') or '')[:90]}")
+            for g in (lr or {}).get("fetches") or []:
+                print(f"         2026 {g.get('leg'):26} {g.get('outcome')[:28]:30} "
+                      f"{g.get('host')[:34]}")
         return 0
 
     if a.todo:

@@ -121,7 +121,15 @@ def score(entry: dict, rev: dict, hosts: dict, funder_by_key, funder_read, funde
     covered = bool(hand(rev, "owner_or_permit_pre_cutoff", False))
     cells = {}
 
-    if not pre:
+    # COVERAGE IS TESTED BEFORE THE LEG COUNT, AND THE ORDER IS THE WHOLE OF D-C4. Two
+    # entries -- Gen2 Energy at Suldal and the later phases at Idomlund -- have an owner
+    # document on file and NONE OF THEIR OWN LEGS: the document was fetched under a
+    # neighbouring reference number and answers for them too. Testing `pre` first, as this
+    # scorer did until the gate caught it, threw those hand verdicts away and reported both
+    # entries as unsearched while the register held the answer.
+    if covered:
+        pass
+    elif not pre:
         # NOTHING A 2023 READER COULD HAVE HELD. Reported, not scored.
         why = ("no reference of this entry answered a declared reader"
                if not (entry.get("fetches") or entry.get("host_legs"))
@@ -131,7 +139,7 @@ def score(entry: dict, rev: dict, hosts: dict, funder_by_key, funder_read, funde
             cells[r] = L.cell("fail", src_of_looking, "eufabric 2023 population test",
                               CUTOFF, "day", f"{why}; the archive pass is the record of "
                               f"looking", searched=False)
-    elif not covered:
+    elif True:
         # DOCUMENTS, BUT NONE OF THEM THE OWNER'S OR A PERMIT AUTHORITY'S. The rungs ask
         # what a particular speaker said, so press coverage of a project answers none of
         # them -- and a fail read off a trade title would be this register scoring a
@@ -143,10 +151,10 @@ def score(entry: dict, rev: dict, hosts: dict, funder_by_key, funder_read, funde
                               f"{len(pre)} document(s) on file from at or before the "
                               f"cut-off, none of them the owner's or a permit "
                               f"authority's", searched=False)
-    else:
-        best = hand(rev, "owner_or_permit_url") or pre[0]["read_url"]
+    if covered:
+        best = hand(rev, "owner_or_permit_url") or (pre[0]["read_url"] if pre else "")
         best_cap = next((g["captured_at"] for g in pre if g["read_url"] == best),
-                        pre[0]["captured_at"])
+                        pre[0]["captured_at"] if pre else CUTOFF)
         for r, field, note in (
                 ("site", "site_named",
                  "the owner or permit sources read name no site at municipality or finer"),
@@ -195,7 +203,15 @@ def score(entry: dict, rev: dict, hosts: dict, funder_by_key, funder_read, funde
     # keyed by project id and 194 of these entries have none, so for those the cell stays
     # what the archive pass made it.
     if row is not None:
-        cells["input"] = L.score_input(row, edges_by_project, graph_date)
+        # THE GRAPH DOES NOT GET TO SILENCE THE OWNER. Rung 6 admits "an edge in the
+        # dependency graph, OR an owner statement naming the supplier, with firmness
+        # contract", and reading the graph over a row unconditionally threw away the one
+        # owner statement in this population that meets the rung -- FUELLA's, that Casale
+        # "has been chosen as the licensor and EPC contractor" for Skipavika. The graph
+        # answers where it has something to say; the hand review answers where it does not.
+        graph_cell = L.score_input(row, edges_by_project, graph_date)
+        if graph_cell["result"] == "pass" or cells["input"]["result"] != "pass":
+            cells["input"] = graph_cell
 
     if clause:
         # OUT OF PERIMETER. The clause travels with the entry as a covariate and the cells
@@ -246,24 +262,30 @@ def outcome_of(rev: dict) -> str:
 # THE INDEPENDENT CHECK, brief 13 item 6
 
 
-def owner_mw(stated: str):
-    """MEGAWATTS FROM THE OWNER'S OWN SENTENCE, OR NOTHING. No conversion, ever.
+def owner_mw(rev: dict):
+    """MEGAWATTS FROM THE REVIEW'S OWN FIELD, NEVER PARSED OUT OF THE SENTENCE.
 
-    scope.md, "Three units for one electrolyser, and no conversion between them": an owner
-    stating 30,000 tonnes a year and a list stating 200 MWel are two claims in two units,
-    and turning one into the other to make them agree or disagree would be this register
-    inventing an efficiency neither speaker stated. So a comparison happens only where the
-    owner states megawatts, and "not comparable, the owner states another unit" is a
-    result of the check rather than a gap in it.
+    The first form of this check read the first MW or GW figure out of the quoted capacity
+    sentence, and it was wrong twice out of two on entries where anything turned on it:
+    HyDeal's 'total installed capacity will reach 4.8 GW of solar power and 3.3 GW of
+    electrolyzers' became 4,800 MW, and GreenGo's '4GW ... green energy park ... where the
+    core will be 2GW electrolysis' became 4,000 MW. BOTH FALSE DISAGREEMENTS WERE WITH THE
+    SOLAR FARM. A regex cannot tell which number is the electrolyser and this register has
+    a ruling about machines that guess, so the number is a hand field: `owner_capacity_mw`,
+    written by the person who read the sentence, and null where the owner states no
+    electrolyser rating in megawatts at all.
+
+    scope.md's three-units rule still binds: a null here is not a gap to be filled by
+    converting the owner's tonnes.
     """
-    if not stated:
-        return None
-    s = str(stated).lower().replace(",", "").replace("\u00a0", " ")
-    m = re.search(r"([0-9]+(?:\.[0-9]+)?)\s*(gw|mw)", s)
-    if not m:
-        return None
-    v = float(m.group(1))
-    return v * 1000 if m.group(2) == "gw" else v
+    v = rev.get("owner_capacity_mw")
+    return float(v) if v is not None else None
+
+
+def owner_year(rev: dict):
+    """The owner's stated start year, from the review's own field, for the same reason."""
+    v = rev.get("owner_start_year")
+    return int(v) if v is not None else None
 
 
 def independent_check(pop, rev_by_ref):
@@ -286,7 +308,7 @@ def independent_check(pop, rev_by_ref):
         rev = rev_by_ref.get(e["ref"], {})
         os_size = hand(rev, "capacity_as_stated", "")
         os_start = hand(rev, "start_as_stated", "")
-        mw = owner_mw(os_size)
+        mw = owner_mw(rev)
         if not os_size:
             size_verdict = "not read: no owner capacity on file from before the cut-off"
         elif mw is None:
@@ -297,11 +319,13 @@ def independent_check(pop, rev_by_ref):
             size_verdict = "agree"
         else:
             size_verdict = "disagree"
-        oy, vy = start_year(os_start), start_year(e["date_online_2023_vintage"])
-        if not os_start:
+        oy, vy = owner_year(rev), start_year(e["date_online_2023_vintage"])
+        if oy is None and not os_start:
             date_verdict = "not read: no owner start on file from before the cut-off"
-        elif oy is None or vy is None:
-            date_verdict = "not comparable"
+        elif oy is None:
+            date_verdict = "not comparable: the owner states no single year"
+        elif vy is None:
+            date_verdict = "not comparable: the vintage states no year"
         elif oy == vy:
             date_verdict = "agree"
         else:
@@ -315,7 +339,7 @@ def independent_check(pop, rev_by_ref):
             "authors_checked_on": qc.get("date_checked", ""),
             "authors_comment": qc.get("comment", ""),
             "owner_stated_size": os_size, "owner_stated_mw": mw,
-            "owner_stated_start": os_start,
+            "owner_stated_start": os_start, "owner_stated_year": oy,
             "size": size_verdict, "date": date_verdict,
         })
     return out
@@ -422,7 +446,9 @@ def build():
             "status_2023_vintage": e["status_2023_vintage"],
             "announced_start": a_start, "announced_start_precision": a_prec,
             "announced_start_speaker": a_speaker, "announced_start_read_from": a_from,
-            "coverage": ("owner or permit document at or before the cut-off" if covered
+            "coverage": ("owner or permit document at or before the cut-off" if covered and pre
+                         else "owner or permit document held under another entry's legs"
+                         if covered
                          else "documents but none of them the owner's or a permit "
                               "authority's" if pre
                          else "no document at or before the cut-off"),
@@ -606,7 +632,12 @@ def main() -> int:
     lines = build()
     text = csv_text(lines)
     if a.check:
-        cur = CSV_OUT.read_text(encoding="utf-8") if CSV_OUT.exists() else ""
+        # READ WITHOUT NEWLINE TRANSLATION. `read_text` applies universal newlines and
+        # turns the file's \r\n into \n, so the check compared a file against itself and
+        # failed. The csv module writes \r\n by the standard it implements, and the
+        # comparison has to read what is actually there.
+        with CSV_OUT.open(encoding="utf-8", newline="") as fh:
+            cur = fh.read() if CSV_OUT.exists() else ""
         if text != cur:
             print("build_hydrogen_test --check: sources/ladder/test_2023.csv is not what "
                   "the population,\n  the archive pass and the outcome pass produce. Run "
@@ -622,12 +653,13 @@ def main() -> int:
               f"summary match their sources.")
         return 0
 
+    # THE WRITER AND THE CHECKER ARE ONE CODE PATH. They were two, and the two disagreed
+    # about line terminators inside quoted fields, so --check failed on a file it had just
+    # written. A gate that fails for a reason that is not about the data is a gate people
+    # learn to ignore.
     CSV_OUT.parent.mkdir(parents=True, exist_ok=True)
-    with CSV_OUT.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=FIELDS)
-        w.writeheader()
-        for l in lines:
-            w.writerow(l)
+    with CSV_OUT.open("w", encoding="utf-8", newline="") as fh:
+        fh.write(text)
     # THE SUMMARY IS COMPUTED FROM THE FILE ON DISK, not from the objects in memory, so
     # that the two cannot disagree about anything the csv round-trip changes.
     s = summarise(lines, read_csv(), check_block())
@@ -682,7 +714,7 @@ def main() -> int:
         print(f"  {r['iea_ref']:>5}  {str(r['validated_mwel'] or ''):>12} "
               f"{str(r['owner_stated_mw'] or '-'):>12}  {r['size'][:12]:<12} "
               f"{str(r['validated_date_online'] or ''):>9} "
-              f"{str(r['owner_stated_start'] or '-'):>7}  {r['date'][:12]:<12} "
+              f"{str(r['owner_stated_year'] or '-'):>7}  {r['date'][:22]:<24} "
               f"{r['name'][:34]}")
     print(f"\n  size:  " + ", ".join(f"{k} {v}" for k, v in chk["size"].items()))
     print(f"  date:  " + ", ".join(f"{k} {v}" for k, v in chk["date"].items()))
