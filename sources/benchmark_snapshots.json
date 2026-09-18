@@ -165,6 +165,20 @@
    "entry_list": "Tabs: Blast furnaces (1656 worldwide, 59 in the named Europe), Direct reduced iron furnaces (650 worldwide, 31 in the named Europe), Blast furnace relinings.",
    "licence": "gem_global_iron_steel_tracker",
    "note": "THE BYTES ARE NOT IN THE REPOSITORY, and here that is a choice rather than a constraint. CC BY 4.0 would permit the copy; sources/cache/steel/ is gitignored except index.json anyway, on the hydrogen and batteries precedent — this repository holds identities and its own reasoning. THE DOWNLOAD CAME AS THREE FILES and all three are snapshotted: the tracker is the plant-level file and the other two are its unit tables, which is where operating status lives."
+  },
+  {
+   "benchmark": "leadit_green_steel_tracker",
+   "vintage": "2026-09-04",
+   "file": "leadit_green_steel_tracker.xlsx",
+   "url": "https://www.industrytransition.org/green-steel-tracker/",
+   "fetched": "2026-09-18",
+   "retrieved_by": "George Christopoulos, by hand past the email form",
+   "bytes": 8840510,
+   "sha256": "52f646487fe314c4fb0b4ac1192c562fe966fa4e407fc2c2d17303b357ce8099",
+   "role": "THE SECOND LIST for steel, and the reason there is one: it sets no capacity floor",
+   "entry_list": "MEASURED FROM THE FILE THIS SHA-256 IDENTIFIES, on 18 September 2026. Tab '3. All Projects': 161 project rows worldwide, 69 columns. Tab '2. Qualified Projects': 61 rows, LeadIT's own qualified subset. 68 of the 161 carry Continent 'Europe'; 65 of those carry a Country in the steel perimeter's named Europe — the EU, the United Kingdom, Norway and Switzerland — and those 65 are the second-list census population. Türkiye (2) and Russia (1) are in LeadIT's Europe and not in the perimeter's. THE FILE SETS NO CAPACITY FLOOR, which is the whole reason it is read beside GEM, whose own About tab sets one at 0.5 mtpa. It carries a `GEM Plant ID` column: 49 of the 65 name a plant in GEM's 132 and join on it; three more are at plants GEM carries and are not linked, and were matched by hand.",
+   "licence": "leadit_green_steel_tracker",
+   "note": "THE FILE CONFIRMS THE TERMS THE METHODOLOGY STATED. The licence was read from LeadIT's methodology PDF on 15 September, before the file was in hand; the workbook's own About tab now says the same — 'The dataset might be used by others under a CC BY license', with the 4.0 deed linked and a 'Please cite as' line — so the artefact and the paperwork agree, which is not true of every benchmark here. THE BYTES STAY OUT OF THE REPOSITORY on the same reading as GEM's: CC BY would permit a copy and this repository holds identities and its own reasoning. A research collaboration of LeadIT and Stockholm Environment Institute."
   }
  ],
  "relationship": [
@@ -209,6 +223,24 @@
     "note": "Independent of T&E: different authors, different method (official announcements compiled by PEM at RWTH Aachen), different vintage. This is the list drift is measured against, in the sense the brief asks for -- what one list holds that the other does not."
    },
    "recorded": "2026-09-12"
+  },
+  {
+   "benchmark": "steel — two publishers, one population",
+   "vintages": [
+    {
+     "id": "gem_global_iron_steel_tracker",
+     "vintage": "June 2026 (V1)",
+     "publisher": "Global Energy Monitor",
+     "note": "THE FIRST LIST. Plant-level, worldwide, with a floor its own About tab sets at 0.5 mtpa crude iron/steel. 132 European plants."
+    },
+    {
+     "id": "leadit_green_steel_tracker",
+     "vintage": "2026-09-04",
+     "publisher": "Leadership Group for Industry Transition, hosted by SEI",
+     "note": "THE SECOND LIST. Project-level, no capacity floor, with an editorial qualification test of its own. 65 entries in the perimeter's Europe."
+    }
+   ],
+   "note": "DRIFT HERE IS BETWEEN TWO PUBLISHERS ON ONE DAY, NOT BETWEEN TWO VINTAGES OF ONE LIST. The hydrogen relationship above records one publisher changing its mind over four years; this one records two publishers looking at the same industry at the same time and seeing different things. They are not the same measurement and the tables must not be read as if they were: GEM's floor decides what GEM can see, LeadIT's qualification test decides what LeadIT shows, and NEITHER IS THE POPULATION. LeadIT publishes a `GEM Plant ID` column, so the join is on a publisher's key rather than on a folded name — which matters in this sector more than most, for the reason sources/steel_docket.md records as D-S1."
   }
  ],
  "licences": {
@@ -287,7 +319,7 @@
    ],
    "read_on": "2026-09-15",
    "verbatim": "The dataset might be used by others under a CC BY license. It should be cited as: Green Steel Tracker (2026) Leadership Group for Industry Transition.",
-   "held": "CC BY, STATED IN THE METHODOLOGY RATHER THAN ON THE DOWNLOAD PAGE. Both of this sector's lists are CC BY, which is the first sector in brief 8 where neither licence had to be held as a disagreement or read as all-rights-reserved.",
+   "held": "CC BY, STATED IN THE METHODOLOGY RATHER THAN ON THE DOWNLOAD PAGE. Both of this sector's lists are CC BY, which is the first sector in brief 8 where neither licence had to be held as a disagreement or read as all-rights-reserved. CONFIRMED BY THE FILE ON 18 SEPTEMBER 2026: the workbook's own About tab carries the same sentence and the 4.0 deed's URL, so both of this sector's licences are now settled by the artefact rather than by a page about it.",
    "scope": "PRIMARY STEEL, AND NO TONNAGE FLOOR. The methodology states the tracker 'consolidates and classifies low-carbon projects in the primary steel sector' and that 'regardless of technology, we consider projects with technologies able to reach 85% reduction compared to average emission'. Main tracking is renewable energy and renewable-sourced hydrogen — including molten oxide electrolysis, electrowinning and electric smelting reduction; complementary tracking adds biochar where the biomass source is transparently articulated. NOTHING IN THE METHODOLOGY SETS A CAPACITY FLOOR, which is exactly what GEM's 0.5 mtpa floor hides and why this list is read alongside it.",
    "barrier": "EMAIL FORM. industrytransition.org/trackers/green-steel-tracker/download-green-steel-dataset/ answers a declared reader with the page and no file: 'Fill out the form below to receive the dataset in .xlxs file.' The tracker view carries no readable data embed and the page exposes no .xlsx or .csv URL. The methodology PDF IS readable and is what the licence and scope above are read from."
   }

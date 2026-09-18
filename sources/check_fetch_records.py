@@ -50,6 +50,12 @@ INDEXES = {
     "cement and CCS": ("sources/cache/ccs/index.json", "flat"),
     "batteries": ("sources/cache/batteries/index.json", "flat"),
     "steel": ("sources/cache/steel/index.json", "flat"),
+    # ADDED 18 SEPTEMBER 2026. The audit named four indexes and the largest was not among
+    # them: the hydrogen pass has more fetch records than the other three together, and it
+    # carries records whose outcome is `InvalidURL` — the same client-side failure as the
+    # diacritic one, from a space in a path. An audit that omits the biggest index is an
+    # audit of the indexes somebody remembered.
+    "hydrogen": ("sources/cache/hydrogen/index.json", "flat"),
     "dependency sweep": ("sources/dependency_cache/index.json", "keyed"),
 }
 

@@ -52,7 +52,24 @@ def fetch(url: str, source_type: str, note: str = "") -> dict:
            "http": None, "bytes": 0, "sha256": "", "text_chars": 0,
            "outcome": "", "note": note}
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        # A NON-ASCII URL IS STILL A URL, and urllib will not send one: it encodes the
+        # request line as ASCII and raises UnicodeEncodeError, so the request never
+        # leaves. THE STEEL CENSUS LOST TWENTY OF THE LARGEST WORKS IN EUROPE TO THIS
+        # in September 2026 — every plant whose name carries a diacritic — and recorded
+        # each as a fetch that had happened and returned nothing, which made an
+        # unsearched works look searched. The same shape bites on a space in a path
+        # (InvalidURL). Percent-encode the path and the query, punycode the host, and
+        # keep the URL as the publisher writes it in the record so a reader can follow
+        # it. See sources/steel_docket.md, D-S1, and sources/check_fetch_records.py.
+        parts = urllib.parse.urlsplit(url)
+        safe = urllib.parse.urlunsplit((
+            parts.scheme,
+            parts.netloc.encode("idna").decode("ascii")
+            if any(ord(c) > 127 for c in parts.netloc) else parts.netloc,
+            urllib.parse.quote(parts.path, safe="/%:@&=+$,~()'*!"),
+            urllib.parse.quote(parts.query, safe="/%:@&=+$,~()'*!?"),
+            ""))
+        req = urllib.request.Request(safe, headers={"User-Agent": UA})
         with urllib.request.urlopen(req, timeout=45) as r:
             body = r.read()
             rec["http"] = r.status

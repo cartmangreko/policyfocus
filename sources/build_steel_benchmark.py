@@ -33,6 +33,18 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 ENTRIES = ROOT / "sources" / "steel_entries.json"
 OUT = ROOT / "sources" / "steel_benchmark.json"
 
+# A ROW THIS REGISTER HOLDS THAT THE CENSUS DOES NOT REACH, AND WHY. An absence here is a
+# decision on the record; an absence NOT here fails the gate. Two so far, and neither is a
+# defect: one is under GEM's floor and one is a different fact at a works the census does
+# carry.
+ROW_ABSENCE = {
+    "hybrit-pilot-lulea": "the HYBRIT pilot at Luleå is below GEM's 0.5 mtpa floor; the "
+                          "list cannot carry it, which is why there is a second list",
+    "3d-dunkirk": "a CCS row at a works the census carries for a different fact — "
+                  "ArcelorMittal Dunkerque is admitted for its announced DRI plant, and "
+                  "carbon capture on a blast furnace is not one of the four legs",
+}
+
 CLASSES = ("held", "admitted", "named not admitted", "searched none found",
            "unreadable", "perimeter exclusion", "not searched", "held for ruling",
            "benchmark aggregate")
@@ -65,11 +77,13 @@ def main() -> int:
     print("\nWHAT GEM SHOWED, AND WHAT THE OWNERS SAID")
     fwd = [v for v in E.values() if v["gem_claim"]["forward_units"]]
     quiet = [v for v in E.values() if not v["gem_claim"]["forward_units"]]
-    print(f"  GEM shows a forward unit at {len(fwd)}; of those "
-          f"{sum(1 for v in fwd if v['class'] == 'admitted')} are admitted.")
-    print(f"  GEM shows nothing forward at {len(quiet)}; of those "
-          f"{sum(1 for v in quiet if v['class'] == 'admitted')} are admitted and "
-          f"{sum(1 for v in quiet if v['class'] == 'held for ruling')} is a question.")
+    inp = lambda vs: sum(1 for v in vs if v["class"] in ("admitted", "held"))
+    print(f"  GEM shows a forward unit at {len(fwd)}; of those {inp(fwd)} are in "
+          f"perimeter ({sum(1 for v in fwd if v['class'] == 'admitted')} admitted, "
+          f"{sum(1 for v in fwd if v['class'] == 'held')} already held here).")
+    print(f"  GEM shows nothing forward at {len(quiet)}; of those {inp(quiet)} are in "
+          f"perimeter ({sum(1 for v in quiet if v['class'] == 'admitted')} admitted, "
+          f"{sum(1 for v in quiet if v['class'] == 'held')} already held here).")
     print("  A PLANT GEM IS QUIET ABOUT IS NOT A PLANT WITH NOTHING HAPPENING. All "
           "132 were searched against their owners before any was classed.")
 
@@ -82,11 +96,36 @@ def main() -> int:
         if v.get("class") == "held for ruling":
             print(f"  {k} {v['name']} — {v.get('question','')[:96]}")
 
-    print("\nADMITTED, and the leg of the perimeter each entry clears")
+    print("\nADMITTED AND HELD, and the leg of the perimeter each entry clears")
     for k, v in sorted(E.items(), key=lambda x: x[1]["name"] or ""):
-        if v.get("class") == "admitted":
+        if v.get("class") in ("admitted", "held"):
             cap = v.get("capacity_stated") or "no capacity stated by the owner"
             print(f"  {v['name'][:44]:<44} {v.get('leg','?')[:46]:<46} {cap}")
+
+    # THE ROW AUDIT. Added 18 September 2026 after the second list found the census
+    # reporting "no announced route change" at a works this register already held.
+    # A census of an outside list that never asks what the register holds can report a
+    # silence at its own rows, and it did.
+    print("\nTHE ROW AUDIT — every steel row this register holds, against the census")
+    import json as _json
+    rows = {p["id"]: p for p in _json.loads(
+        (ROOT / "data" / "transition" / "projects.json").read_text(encoding="utf-8")
+    )["projects"] if p.get("sector") == "steel"}
+    pointed = {v.get("row") for v in E.values() if v.get("row")}
+    for rid in sorted(rows):
+        where = [v["name"] for v in E.values() if v.get("row") == rid]
+        if where:
+            print(f"  {rid:32} held at {where[0][:44]}")
+        else:
+            print(f"  {rid:32} NOT IN THIS LIST — {ROW_ABSENCE.get(rid, 'unexplained')}")
+            if rid not in ROW_ABSENCE:
+                problems.append(f"{rid} is a steel row and no census entry points at it, "
+                                f"and no reason is recorded in ROW_ABSENCE")
+    for k, v in E.items():
+        if v.get("row") in rows and v.get("class") not in ("held",):
+            problems.append(f"{k} points at the existing row {v['row']} and is classed "
+                            f"{v.get('class')!r}; a works the register already holds is "
+                            f"`held`")
 
     print("\nTHE FLOOR THIS TABLE INHERITS")
     print("  GEM includes only plants at 0.5 mtpa crude iron/steel and above, by its")
@@ -98,8 +137,10 @@ def main() -> int:
                "generated": "2026-09-16",
                "first_list": "gem_global_iron_steel_tracker",
                "second_list": {"benchmark": "leadit_green_steel_tracker",
-                               "status": "awaited — an email form",
-                               "why": "sets no capacity floor; GEM's is 0.5 mtpa"},
+                               "status": "in, 18 September 2026",
+                               "why": "sets no capacity floor; GEM's is 0.5 mtpa",
+                               "table": "sources/steel_second_list.json",
+                               "docket": "sources/steel_docket.md, D-S2"},
                "population": doc["population"],
                "counts": dict(counts),
                "entries": E}

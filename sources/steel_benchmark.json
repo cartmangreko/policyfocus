@@ -30,15 +30,18 @@
  "first_list": "gem_global_iron_steel_tracker",
  "second_list": {
   "benchmark": "leadit_green_steel_tracker",
-  "status": "awaited — an email form",
-  "why": "sets no capacity floor; GEM's is 0.5 mtpa"
+  "status": "in, 18 September 2026",
+  "why": "sets no capacity floor; GEM's is 0.5 mtpa",
+  "table": "sources/steel_second_list.json",
+  "docket": "sources/steel_docket.md, D-S2"
  },
  "population": 132,
  "counts": {
   "named not admitted": 5,
   "perimeter exclusion": 90,
-  "admitted": 25,
-  "searched none found": 12
+  "admitted": 20,
+  "searched none found": 10,
+  "held": 7
  },
  "entries": {
   "P100000120620": {
@@ -572,13 +575,15 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "searched none found",
+   "class": "held",
    "source_list": "gem_global_iron_steel_tracker",
    "looked_in_order": [
     "https://web.archive.org/web/https://hybit.org/en",
     "https://www.weser-kurier.de/bremen/bremen-wirtschaft_artikel,-Die-Geschichte-der-Bremer-Stahlproduktion-_arid,1301619.html"
    ],
-   "note": "AN INTEGRATED WORKS WITH NO ANNOUNCED ROUTE CHANGE. GEM records BF/BOF/DRI/EAF and no unit at announced or construction status; the owner's own documents, read for this census, name no DRI plant, no EAF against the blast furnace, no greenfield primary steelmaking and no hydrogen-ready furnace. THE SEARCH IS THE FINDING: this is a works still on the blast-furnace route with nothing published to leave it."
+   "note": "CORRECTED 18 SEPTEMBER 2026 BY THE SECOND LIST, AND THE CLASS WAS THE WRONG KIND OF STATEMENT. This entry read `searched none found` — 'an integrated works with no announced route change' — at a works for which THIS REGISTER ALREADY HOLDS A ROW: am-bremen-eisenhuettenstadt, status cancelled, ArcelorMittal dropping the conversion of Bremen and Eisenhuettenstadt on 23 June 2025. The search was not wrong: ArcelorMittal's own pages carry nothing about it, and the row itself says so — 'No primary source for the earlier announcement has been read'. What was wrong is that a census of an outside list never asked whether the register already held the works. LeadIT is what found it: its GST-036 and GST-037 qualify ArcelorMittal Bremen DRI and Eisenhuettenstadt DRI at status Cancelled. AN INTEGRATED WORKS WITH NO ANNOUNCED ROUTE CHANGE. GEM records BF/BOF/DRI/EAF and no unit at announced or construction status; the owner's own documents, read for this census, name no DRI plant, no EAF against the blast furnace, no greenfield primary steelmaking and no hydrogen-ready furnace. THE SEARCH IS THE FINDING: this is a works still on the blast-furnace route with nothing published to leave it.",
+   "class_before_18_september": "searched none found",
+   "row": "am-bremen-eisenhuettenstadt"
   },
   "P100000120785": {
    "name": "ArcelorMittal Dąbrowa Górnicza steel plant",
@@ -731,7 +736,7 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "searched none found",
+   "class": "held",
    "source_list": "gem_global_iron_steel_tracker",
    "looked_in_order": [
     "https://eisenhuettenstadt.arcelormittal.com/icc/arcelor-ehst-de/broker.jsp?uMen=18c104f2-bae5-aa51-de77-2dc37d7b2f25",
@@ -739,7 +744,9 @@
     "https://eisenhuettenstadt.arcelormittal.com/icc/arcelor-ehst-de/broker.jsp?uMen=ebd422ba-1fff-a51e-8fe1-a327d7b2f25d",
     "https://www.steeltimesint.com/news/arcelormittal-plans-dri-eaf-plants-for-bremen-and-eisenhuttenstadt"
    ],
-   "note": "AN INTEGRATED WORKS WITH NO ANNOUNCED ROUTE CHANGE. GEM records BF/BOF/DRI/EAF and no unit at announced or construction status; the owner's own documents, read for this census, name no DRI plant, no EAF against the blast furnace, no greenfield primary steelmaking and no hydrogen-ready furnace. THE SEARCH IS THE FINDING: this is a works still on the blast-furnace route with nothing published to leave it."
+   "note": "The second of the two works on one row, corrected with it. See the Bremen entry. AN INTEGRATED WORKS WITH NO ANNOUNCED ROUTE CHANGE. GEM records BF/BOF/DRI/EAF and no unit at announced or construction status; the owner's own documents, read for this census, name no DRI plant, no EAF against the blast furnace, no greenfield primary steelmaking and no hydrogen-ready furnace. THE SEARCH IS THE FINDING: this is a works still on the blast-furnace route with nothing published to leave it.",
+   "class_before_18_september": "searched none found",
+   "row": "am-bremen-eisenhuettenstadt"
   },
   "P100000120715": {
    "name": "ArcelorMittal Esch-Belval steel plant",
@@ -3362,13 +3369,15 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "admitted",
+   "class": "held",
    "row": "salcos-salzgitter",
    "leg": "announced DRI plant replacing blast furnaces",
    "speaker": "Salzgitter AG, own SALCOS programme site",
    "source": "https://salcos.salzgitter-ag.com/en/salcos.html",
    "verbatim": "Our SALCOS transformation program aims to gradually replace our blast furnaces with direct reduction plants. The hydrogen reacts directly with the oxygen in the iron ore (iron oxide) in its solid state, converting it into direct reduced iron (DRI).",
-   "source_list": "gem_global_iron_steel_tracker"
+   "source_list": "gem_global_iron_steel_tracker",
+   "class_before_18_september": "admitted",
+   "note": "RECLASSED FROM `admitted` TO `held` ON 18 SEPTEMBER 2026. The row exists — salcos-salzgitter — and `admitted` is for a works this census admits to the perimeter and proposes as a row. Where the row is already here the census is confirming, not admitting, and the two are different facts. "
   },
   "P100000120433": {
    "name": "Salzgitter Peiner Träger Peine steel plant",
@@ -3822,14 +3831,15 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "admitted",
+   "class": "held",
    "row": "stegra-boden",
    "leg": "greenfield DRI/EAF primary steelmaking",
    "speaker": "Stegra (formerly H2 Green Steel), own Q&A",
    "source": "https://www.h2greensteel.com/questions-and-answers",
    "verbatim": "Our steelmaking method is based on a new production process whereby hydrogen replaces carbon in the iron production, reducing carbon dioxide emissions by up to 95 percent.",
-   "note": "ALREADY IN THE MANUAL QUEUE: stegra.com/en/the-boden-plant renders by script and carries the only stated production date. The row lands on the archived Q&A.",
-   "source_list": "gem_global_iron_steel_tracker"
+   "note": "Reclassed from `admitted` to `held`: stegra-boden is already a row. See the Salzgitter entry. ALREADY IN THE MANUAL QUEUE: stegra.com/en/the-boden-plant renders by script and carries the only stated production date. The row lands on the archived Q&A.",
+   "source_list": "gem_global_iron_steel_tracker",
+   "class_before_18_september": "admitted"
   },
   "P100000121222": {
    "name": "Stegra Spain steel plant",
@@ -4142,14 +4152,15 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "admitted",
+   "class": "held",
    "row": "tkh2steel-duisburg",
    "leg": "announced DRI plant replacing blast-furnace processes; hydrogen-ready",
    "speaker": "thyssenkrupp Steel, own sustainability pages",
    "source": "https://www.thyssenkrupp-steel.com/en/company/sustainability",
    "verbatim": "At the heart of the concept is a hydrogen-compatible DR plant with two electrically powered melting furnaces... The direct reduction tower is the central unit of a reduced-CO2 steel production plant that replaces the conventional blast furnace processes.",
-   "note": "ALREADY A ROW ON THIS REGISTER as tkh2steel-duisburg. Argus reports thyssenkrupp warning the plant 'may not be economically viable under current conditions' — recorded as a disagreement, not a stop.",
-   "source_list": "gem_global_iron_steel_tracker"
+   "note": "Reclassed from `admitted` to `held`: tkh2steel-duisburg is already a row. See the Salzgitter entry. ALREADY A ROW ON THIS REGISTER as tkh2steel-duisburg. Argus reports thyssenkrupp warning the plant 'may not be economically viable under current conditions' — recorded as a disagreement, not a stop.",
+   "source_list": "gem_global_iron_steel_tracker",
+   "class_before_18_september": "admitted"
   },
   "P100000120854": {
    "name": "U. S. Steel Košice steel plant",
@@ -4322,13 +4333,15 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "admitted",
-   "row": "voestalpine-donawitz",
+   "class": "held",
+   "row": "greentec-donawitz",
    "leg": "EAF replacing blast-furnace capacity at an existing works",
    "speaker": "voestalpine, own greentec steel programme",
    "source": "https://www.voestalpine.com/greentecsteel/en",
    "verbatim": "The integration of the two green-power-driven electric arc furnaces into steel production starting in the first half of 2027 will make it possible to electrify energy-intensive processes... As planned, we will shut down one additional blast furnace each in Linz and Donawitz starting in 2030.",
-   "source_list": "gem_global_iron_steel_tracker"
+   "source_list": "gem_global_iron_steel_tracker",
+   "class_before_18_september": "admitted",
+   "note": "RECLASSED, AND THE PROPOSED ROW ID WOULD HAVE DUPLICATED AN EXISTING ROW. The census proposed `voestalpine-donawitz` for a works the register already holds as `greentec-donawitz` — voestalpine's greentec steel EAF at Donawitz, in construction. Landing the proposal would have put the same works in the register twice under two ids. Found by the row audit the second list prompted. "
   },
   "P100000120010": {
    "name": "Voestalpine Stahl Linz steel plant",
@@ -4366,14 +4379,15 @@
     ],
     "note": "A BENCHMARK CLAIM, NOT A CLASS. GEM's unit tables say what GEM knows as of its June 2026 (V1) vintage. A plant it shows with no forward unit may still have an owner-announced DRI, EAF or hydrogen-ready furnace that GEM has not recorded, and the only way to find out is to read the owner. Every one of the 132 is searched before it is classed."
    },
-   "class": "admitted",
-   "row": "voestalpine-linz",
+   "class": "held",
+   "row": "greentec-linz",
    "leg": "EAF replacing blast-furnace capacity at an existing works",
    "speaker": "voestalpine, own greentec steel programme",
    "source": "https://www.voestalpine.com/greentecsteel/en",
    "verbatim": "The integration of the two green-power-driven electric arc furnaces into steel production starting in the first half of 2027... As planned, we will shut down one additional blast furnace each in Linz and Donawitz starting in 2030.",
-   "note": "ONE PROGRAMME OVER TWO WORKS, Linz and Donawitz, an EAF at each against a blast furnace at each.",
-   "source_list": "gem_global_iron_steel_tracker"
+   "note": "The Linz half of the same duplication, corrected with it. See the Donawitz entry. ONE PROGRAMME OVER TWO WORKS, Linz and Donawitz, an EAF at each against a blast furnace at each.",
+   "source_list": "gem_global_iron_steel_tracker",
+   "class_before_18_september": "admitted"
   },
   "P100000120791": {
    "name": "Weglokoks Ruda Slaska steel plant",

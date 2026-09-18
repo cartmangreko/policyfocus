@@ -5,10 +5,14 @@
   "question is written here with the source sentence and what the rule would need to say, and",
   "the pass continues. A QUESTION OF THIS KIND NEVER CHANGES A RULE BY ITSELF.",
   "",
-  "Two of the three below are not `held for ruling` entries at all: they are tensions between",
-  "two entries this census classed in opposite directions on the same leg. They are recorded",
-  "because a reader who finds the two classes side by side is entitled to see that the pass",
-  "noticed."
+  "Not all of them are `held for ruling` entries: some are tensions between two entries this",
+  "census classed in opposite directions on the same leg, and some are questions about READING",
+  "rather than about the perimeter. They are recorded because a reader who finds the classes",
+  "side by side is entitled to see that the pass noticed.",
+  "",
+  "S1-S4 came from the first list, GEM, on 16 September 2026. S5 and S6 came from the second",
+  "list, LeadIT, on 18 September 2026 — which is the argument for reading a second list:",
+  "a publisher with a different test asks the perimeter different questions."
  ],
  "questions": [
   {
@@ -72,6 +76,33 @@
    "question": "Not a rule question. A correction, recorded so the reversal is visible.",
    "why_it_is_here": "The first pass ADMITTED Acciaierie d'Italia Taranto on Il Sole 24 Ore's report of the plan the company presented to MIMIT. George corrected it on 16 September 2026: the perimeter is company-confirmed, a newspaper's report of what a company told a ministry is neither speaker, and the company's own page states a conditional ambition — 'when technologies will allow'. The entry is named-not-admitted with the press report kept as a benchmark claim. THE MINISTRY'S OWN DOCUMENT WOULD BE A GOVERNMENT SPEAKER and is queued: mimit.gov.it answers a declared reader with navigation and no release text.",
    "rule_would_need_to_say": "Nothing. The rule was right and the pass applied it loosely, which is the failure worth recording: the admitting sentence was vivid and specific — four DRI, three EAFs, phases to 2033 — and vividness is not authority."
+  },
+  {
+   "id": "S5",
+   "raised": "2026-09-18",
+   "entries": [
+    "GST-149 SIDERWIN (ArcelorMittal, electrowinning) — perimeter exclusion"
+   ],
+   "class": "perimeter exclusion, and the class is the question",
+   "question": "Does the steel perimeter reach a primary ironmaking route that is neither hydrogen DRI nor EAF?",
+   "why_the_rules_did_not_settle_it": "The perimeter's four legs name an announced DRI plant, an EAF replacing blast-furnace capacity, greenfield DRI/EAF primary steelmaking, and a hydrogen-ready furnace. ALL FOUR NAME A TECHNOLOGY. LeadIT's own methodology tracks a wider set — renewable hydrogen, MOLTEN OXIDE ELECTROLYSIS, ELECTROWINNING and electric smelting reduction — and carries European projects in those classes. This census refused them under the DRI/EAF legs, which is what the rules say and may not be what they mean.",
+   "source_sentence": "SIDERWIN develops a breakthrough innovation from the current steel production route by using electricity from renewable energy, transforming any iron oxides, including by-products from steel industry, into steel plate through electrolysis.",
+   "speaker": "SIDERWIN project consortium, own site, an ArcelorMittal-coordinated Horizon 2020 project",
+   "rule_would_need_to_say": "Whether the perimeter is a list of TECHNOLOGIES or a test of the ROUTE. If the route — 'the owner states a primary ironmaking step that does not burn coke' — then electrowinning and molten oxide electrolysis are in, and the refusals of this pass must be re-read. If the technologies, then the perimeter should say so in as many words and accept that it will not see the route that replaces the blast furnace if it turns out not to be DRI.",
+   "note": "THE FIRST LIST COULD NOT HAVE RAISED THIS. GEM's tracker records plants by furnace type at 0.5 mtpa and above; a pilot electrolysis cell is invisible to it twice over. The question exists because a second publisher with a different test was read."
+  },
+  {
+   "id": "S6",
+   "raised": "2026-09-18",
+   "entries": [
+    "GST-090 Marcegaglia AdriatiCO2, Ravenna — named not admitted"
+   ],
+   "class": "not a rule question about the perimeter. A question about READING, and it belongs beside the scope.md reading rules rather than the steel legs.",
+   "question": "Is a site that answers every path with 200 and one identical body a refusal, and should the reading rules name that shape?",
+   "why_the_rules_did_not_settle_it": "scope.md says a 200 with an EMPTY body is a refusal: the publisher answered and said nothing. marcegaglia.com answers with 200 and 21,704 characters on the front page, the English press room, the Italian press room and a project URL — THE SAME 21,704 CHARACTERS EACH TIME. It is a single-page application that renders its text in a browser. A declared reader reaches the site and reaches nothing in it, which is the same outcome as the empty body wearing a different number, and the index currently records four successful fetches.",
+   "rule_would_need_to_say": "Whether 'a body byte-identical to the body of a different path on the same host' is a refusal like an empty body, and whether the gate should detect it — the sha256 is already in every cache record, so a host serving one digest across several paths is visible to check_fetch_records.py without a new fetch.",
+   "why_it_matters_beyond_this_entry": "A FETCH THAT LOOKS SUCCESSFUL AND CARRIES NOTHING IS THE SAME SHAPE AS THE DIACRITIC BUG — see the docket, D-S1. There the index said a page had been read that was never requested; here it says a page was read that carries no page. Both let a pass report 'searched, none found' about a publisher it never reached.",
+   "note": "Marcegaglia's AdriatiCO2 at Ravenna would be an announced DRI plant if the owner's own words could be read. The entry is `named not admitted` until they can be, which is where Port Talbot sat under S3 until the right domain was tried."
   }
  ]
 }
