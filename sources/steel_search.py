@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""The declared reader for the cement and CCS census, and its cache index.
+"""The declared reader for the steel census, and its cache index.
 
-    python3 sources/ccs_search.py URL [URL ...]
+    python3 sources/steel_search.py URL [URL ...]
 
 Every fetch this pass makes goes through here: the URL, the day, the byte count
-and the SHA-256 land in sources/cache/ccs/index.json, and the body lands beside
+and the SHA-256 land in sources/cache/steel/index.json, and the body lands beside
 it under its hash. That is what makes "somebody looked" checkable rather than
 asserted — the hydrogen pass recorded 881 fetches over 167 entries and the
 batteries pass its own, for the same reason.
@@ -15,13 +15,17 @@ a shared module would let a change made for one silently rewrite the other's
 record of what it did. The pace, the User-Agent and the empty-body threshold are
 identical and deliberately so.
 
-WHAT THIS PASS READS, AND UNDER WHOSE TERMS. The benchmark itself is the IEA's
-CCUS Projects Database, held by hash and not by copy — see
-sources/benchmark_snapshots.json, `iea_ccus_projects_database`, where the IEA's
-two statements about its own licence are recorded rather than reconciled. The
-pages read per entry are the IEA's own public references (the Ref 1..7 columns)
-and the owner and permit sources those lead to, each under its own publisher's
-terms.
+WHAT THIS PASS READS, AND UNDER WHOSE TERMS. The benchmark is GEM's Global Iron
+and Steel Tracker, June 2026 (V1), and its licence is settled in a way neither of
+the other two sectors' was: THE FILE STATES IT ITSELF, on its own About tab —
+"Distributed under a Creative Commons Attribution 4.0 International License."
+That is the first benchmark in brief 8 whose terms did not have to be read off a
+product page and held as a disagreement.
+
+THE BYTES STAY OUT OF THE REPOSITORY ANYWAY, on the hydrogen and batteries
+precedent: this repository holds identities and its own reasoning, and a
+publisher's file is reproducible from its hash and its URL. CC BY would permit a
+copy; not taking one is a choice about what this repository is for.
 
 AN EMPTY BODY IS A REFUSAL AND IT IS RECORDED AS ONE. Under 400 characters of
 readable text on a 200 is written down as "200, empty body", not as a fetch that
@@ -32,14 +36,14 @@ from __future__ import annotations
 import hashlib, json, pathlib, re, sys, time, urllib.error, urllib.parse, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-CACHE = ROOT / "sources" / "cache" / "ccs"
+CACHE = ROOT / "sources" / "cache" / "steel"
 INDEX = CACHE / "index.json"
 UA = ("Mozilla/5.0 (compatible; Eufabric/1.0; "
       "+https://www.eufabric.eu; data@eufabric.eu)")
 PAUSE = 2.0
 
 _HEAD = [
-    "THE CACHE INDEX FOR THE CEMENT AND CCS CENSUS, brief 8 sector 2. One entry per",
+    "THE CACHE INDEX FOR THE STEEL CENSUS, brief 8 sector 3. One entry per",
     "fetch: the URL, the day, the byte count and the SHA-256 of what came back. Bodies",
     "are held beside this file under their hash and are NOT committed -- the index is",
     "the part that makes a claim checkable, and it holds no publisher's text.",
@@ -75,19 +79,20 @@ def fetch(url: str, source_type: str, note: str = "") -> dict:
            "http": None, "bytes": 0, "sha256": "", "text_chars": 0,
            "outcome": "", "note": note}
     try:
-        # A NON-ASCII URL IS STILL A URL, and urllib will not send one: it encodes the
-        # request line as ASCII and raises UnicodeEncodeError, so the request never
-        # leaves. THE STEEL CENSUS LOST TWENTY OF THE LARGEST WORKS IN EUROPE TO THIS
-        # in September 2026 — every plant whose name carries a diacritic — and recorded
-        # each as a fetch that had happened and returned nothing, which made an
-        # unsearched works look searched. The same shape bites on a space in a path
-        # (InvalidURL). Percent-encode the path and the query, punycode the host, and
-        # keep the URL as the publisher writes it in the record so a reader can follow
-        # it. See sources/steel_docket.md, D-S1, and sources/check_fetch_records.py.
+        # A NON-ASCII URL IS STILL A URL. urllib refuses to send one — it encodes
+        # the request line as ASCII — and raised UnicodeEncodeError on twenty of
+        # this census's plants, every one of them a works whose name carries a
+        # diacritic: SSAB Luleå and Oxelösund, ArcelorMittal Kraków and Dąbrowa
+        # Górnicza, Eisenhüttenstadt, Liepājas Metalurgs. THE FAILURE WAS SILENT
+        # IN THE WORST WAY: the entry recorded a fetch that had happened and
+        # returned nothing, so the plant looked searched and was not — and the
+        # twenty were disproportionately the large integrated works this
+        # perimeter is most about. Percent-encode the path and the query, leave
+        # the scheme and host alone, and record the URL as the publisher writes
+        # it so a reader can still follow it.
         parts = urllib.parse.urlsplit(url)
         safe = urllib.parse.urlunsplit((
-            parts.scheme,
-            parts.netloc.encode("idna").decode("ascii")
+            parts.scheme, parts.netloc.encode("idna").decode("ascii")
             if any(ord(c) > 127 for c in parts.netloc) else parts.netloc,
             urllib.parse.quote(parts.path, safe="/%:@&=+$,~()'*!"),
             urllib.parse.quote(parts.query, safe="/%:@&=+$,~()'*!?"),

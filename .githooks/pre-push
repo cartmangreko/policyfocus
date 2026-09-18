@@ -94,17 +94,29 @@ run_stage build
 # runs the prebuild chain there. It adds about forty seconds and it is the only thing
 # that will catch the next step that reaches for a workbook; scope.md's rule is prose,
 # and prose does not fail a push.
-for check in check_hydrogen_workbook check_build_image; do
-  if ! python3 "$root/sources/$check.py" >>"$log" 2>&1; then
+#
+# A CHECK MAY TAKE ARGUMENTS, so they are run through a function rather than
+# a bare loop: build_leadit_entries wants --check.
+run_local() {
+  name=$1; shift
+  if ! python3 "$root/sources/$name.py" "$@" >>"$log" 2>&1; then
     echo >&2
-    echo "pre-push: $check FAILED. Nothing was pushed." >&2
+    echo "pre-push: $name FAILED. Nothing was pushed." >&2
     echo >&2
     tail -20 "$log" >&2
     echo >&2
     echo "pre-push: full output in $log" >&2
     exit 1
   fi
-done
+}
+
+run_local check_hydrogen_workbook
+# The second list's workbook, for the same reason and by the same shape: openpyxl and a
+# gitignored 8.8 MB xlsx. sources/leadit_entries.json is the tracked derived file, this
+# recomputes it from the workbook entry by entry, and build_steel_second_list.py checks
+# its recorded hash against benchmark_snapshots.json inside the build.
+run_local build_leadit_entries --check
+run_local check_build_image
 
 echo "pre-push: gate chain green — prebuild, build and postbuild, $(( $(date +%s) - started ))s."
-echo "pre-push: local-only checks green — check_hydrogen_workbook, check_build_image."
+echo "pre-push: local-only checks green — check_hydrogen_workbook, build_leadit_entries --check, check_build_image."

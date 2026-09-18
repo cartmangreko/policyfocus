@@ -181,6 +181,62 @@
    "entry_list": "MEASURED FROM THE FILE THIS SHA-256 IDENTIFIES, on 17 September 2026: sheet 'Projects', 124 project rows, 124 distinct references, worldwide. 72 of the 124 are European on sources/build_hydrogen_benchmark GEO. The rows are the SAME references as the October 2023 vintage carries, with `Status` and `Date online` RESTATED after the authors' re-check; the quality-check references are dated `Checked on` 2024-07-30. Sheet 'References (quality check)' carries 122 numbered references; sheet 'References', the IEA's own, carries 2157, the same as the full 2023 file.",
    "licence": "odenweller_ueckerdt_repository",
    "note": "THE AUTHORS' OUTCOME ASSESSMENT FOR PROJECTS ANNOUNCED FOR 2023. It carries no outcome COLUMN: what it publishes is the same reference with the status and the online date as they stood after a re-check, plus a quality-check reference per row giving the URL, its date, the day it was checked and a comment. Any three-way on time / delayed / disappeared reading is derived from those two restated columns, and the derivation is stated in sources/build_hydrogen_cohort.py rather than attributed to the file."
+  },
+  {
+   "benchmark": "gem_global_iron_steel_tracker",
+   "vintage": "June 2026 (V1)",
+   "file": "Plant-level_data_Global_Iron_and_Steel_Tracker_June_2026_V1.xlsx",
+   "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/",
+   "fetched": "2026-09-14",
+   "retrieved_by": "George Christopoulos, by hand past the registration form",
+   "bytes": 735833,
+   "sha256": "a5768b59cd7e6cec217692ae45eda80ea70aab1666aef74332cc1b41dd5338eb",
+   "role": "THE TRACKER ITSELF, and the census population",
+   "entry_list": "Tab 'Plant data': 1293 plants worldwide, 44 columns. 132 carry a Country/area in the steel perimeter's named Europe — the EU, the United Kingdom, Norway and Switzerland — and those 132 are the census population. GEM states the file's own floor on its About tab: 'This database only includes plants with crude iron/steelmaking capacity of five hundred thousand tonnes per annum (0.5 mtpa) and greater.'",
+   "licence": "gem_global_iron_steel_tracker",
+   "note": "THE BYTES ARE NOT IN THE REPOSITORY, and here that is a choice rather than a constraint. CC BY 4.0 would permit the copy; sources/cache/steel/ is gitignored except index.json anyway, on the hydrogen and batteries precedent — this repository holds identities and its own reasoning. THE DOWNLOAD CAME AS THREE FILES and all three are snapshotted: the tracker is the plant-level file and the other two are its unit tables, which is where operating status lives."
+  },
+  {
+   "benchmark": "gem_global_iron_steel_tracker",
+   "vintage": "June 2026 (V1)",
+   "file": "Steel_unit_data_Global_Iron_and_Steel_Tracker_June_2026_V1.xlsx",
+   "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/",
+   "fetched": "2026-09-14",
+   "retrieved_by": "George Christopoulos, by hand past the registration form",
+   "bytes": 489109,
+   "sha256": "d5355acd307930c0104d21dc9c6e6d62451856e044ce1aa3c576d9cb14b4d425",
+   "role": "the steelmaking unit table below the tracker",
+   "entry_list": "Tabs: Electric arc furnaces (1408 worldwide, 169 in the named Europe), Basic oxygen furnaces, Induction furnaces, Open hearth furnaces. Unit status is tracked HERE and not at plant level.",
+   "licence": "gem_global_iron_steel_tracker",
+   "note": "THE BYTES ARE NOT IN THE REPOSITORY, and here that is a choice rather than a constraint. CC BY 4.0 would permit the copy; sources/cache/steel/ is gitignored except index.json anyway, on the hydrogen and batteries precedent — this repository holds identities and its own reasoning. THE DOWNLOAD CAME AS THREE FILES and all three are snapshotted: the tracker is the plant-level file and the other two are its unit tables, which is where operating status lives."
+  },
+  {
+   "benchmark": "gem_global_iron_steel_tracker",
+   "vintage": "June 2026 (V1)",
+   "file": "Iron_unit_data_Global_Iron_and_Steel_Tracker_June_2026_V1.xlsx",
+   "url": "https://globalenergymonitor.org/projects/global-iron-steel-tracker/",
+   "fetched": "2026-09-14",
+   "retrieved_by": "George Christopoulos, by hand past the registration form",
+   "bytes": 397828,
+   "sha256": "a770dddb8ddc6475eccb32d9b54981f5f81a53253b097adb8715c193e9f73f6a",
+   "role": "the ironmaking unit table below the tracker",
+   "entry_list": "Tabs: Blast furnaces (1656 worldwide, 59 in the named Europe), Direct reduced iron furnaces (650 worldwide, 31 in the named Europe), Blast furnace relinings.",
+   "licence": "gem_global_iron_steel_tracker",
+   "note": "THE BYTES ARE NOT IN THE REPOSITORY, and here that is a choice rather than a constraint. CC BY 4.0 would permit the copy; sources/cache/steel/ is gitignored except index.json anyway, on the hydrogen and batteries precedent — this repository holds identities and its own reasoning. THE DOWNLOAD CAME AS THREE FILES and all three are snapshotted: the tracker is the plant-level file and the other two are its unit tables, which is where operating status lives."
+  },
+  {
+   "benchmark": "leadit_green_steel_tracker",
+   "vintage": "2026-09-04",
+   "file": "leadit_green_steel_tracker.xlsx",
+   "url": "https://www.industrytransition.org/green-steel-tracker/",
+   "fetched": "2026-09-18",
+   "retrieved_by": "George Christopoulos, by hand past the email form",
+   "bytes": 8840510,
+   "sha256": "52f646487fe314c4fb0b4ac1192c562fe966fa4e407fc2c2d17303b357ce8099",
+   "role": "THE SECOND LIST for steel, and the reason there is one: it sets no capacity floor",
+   "entry_list": "MEASURED FROM THE FILE THIS SHA-256 IDENTIFIES, on 18 September 2026. Tab '3. All Projects': 161 project rows worldwide, 69 columns. Tab '2. Qualified Projects': 61 rows, LeadIT's own qualified subset. 68 of the 161 carry Continent 'Europe'; 65 of those carry a Country in the steel perimeter's named Europe — the EU, the United Kingdom, Norway and Switzerland — and those 65 are the second-list census population. Türkiye (2) and Russia (1) are in LeadIT's Europe and not in the perimeter's. THE FILE SETS NO CAPACITY FLOOR, which is the whole reason it is read beside GEM, whose own About tab sets one at 0.5 mtpa. It carries a `GEM Plant ID` column: 49 of the 65 name a plant in GEM's 132 and join on it; three more are at plants GEM carries and are not linked, and were matched by hand.",
+   "licence": "leadit_green_steel_tracker",
+   "note": "THE FILE CONFIRMS THE TERMS THE METHODOLOGY STATED. The licence was read from LeadIT's methodology PDF on 15 September, before the file was in hand; the workbook's own About tab now says the same — 'The dataset might be used by others under a CC BY license', with the 4.0 deed linked and a 'Please cite as' line — so the artefact and the paperwork agree, which is not true of every benchmark here. THE BYTES STAY OUT OF THE REPOSITORY on the same reading as GEM's: CC BY would permit a copy and this repository holds identities and its own reasoning. A research collaboration of LeadIT and Stockholm Environment Institute."
   }
  ],
  "relationship": [
@@ -248,6 +304,24 @@
     "note": "Independent of T&E: different authors, different method (official announcements compiled by PEM at RWTH Aachen), different vintage. This is the list drift is measured against, in the sense the brief asks for -- what one list holds that the other does not."
    },
    "recorded": "2026-09-12"
+  },
+  {
+   "benchmark": "steel — two publishers, one population",
+   "vintages": [
+    {
+     "id": "gem_global_iron_steel_tracker",
+     "vintage": "June 2026 (V1)",
+     "publisher": "Global Energy Monitor",
+     "note": "THE FIRST LIST. Plant-level, worldwide, with a floor its own About tab sets at 0.5 mtpa crude iron/steel. 132 European plants."
+    },
+    {
+     "id": "leadit_green_steel_tracker",
+     "vintage": "2026-09-04",
+     "publisher": "Leadership Group for Industry Transition, hosted by SEI",
+     "note": "THE SECOND LIST. Project-level, no capacity floor, with an editorial qualification test of its own. 65 entries in the perimeter's Europe."
+    }
+   ],
+   "note": "DRIFT HERE IS BETWEEN TWO PUBLISHERS ON ONE DAY, NOT BETWEEN TWO VINTAGES OF ONE LIST. The hydrogen relationship above records one publisher changing its mind over four years; this one records two publishers looking at the same industry at the same time and seeing different things. They are not the same measurement and the tables must not be read as if they were: GEM's floor decides what GEM can see, LeadIT's qualification test decides what LeadIT shows, and NEITHER IS THE POPULATION. LeadIT publishes a `GEM Plant ID` column, so the join is on a publisher's key rather than on a folded name — which matters in this sector more than most, for the reason sources/steel_docket.md records as D-S1."
   }
  ],
  "licences": {
@@ -308,13 +382,15 @@
   "gem_global_iron_steel_tracker": {
    "publisher": "Global Energy Monitor",
    "read": [
+    "the About tab of the downloaded workbook itself",
     "https://globalenergymonitor.org/projects/global-iron-steel-tracker"
    ],
-   "read_on": "2026-09-12",
-   "verbatim": "The recommended citation is 'Global Iron and Steel Tracker, Global Energy Monitor, June 2026 (V1) release.'",
-   "held": "THE BRIEF RECORDS GEM AS CC BY AND THIS PASS COULD NOT CONFIRM IT FROM THE PAGE IT READ. The tracker page states a recommended citation and no licence; the licence is not quoted here because it was not read. It is recorded as outstanding rather than assumed, and the bytes stay out of the repository either way on the hydrogen and batteries precedent.",
+   "read_on": "2026-09-15",
+   "verbatim": "Copyright © Global Energy Monitor. Global Iron and Steel Tracker, June 2026 (V1) release. Distributed under a Creative Commons Attribution 4.0 International License. Recommended citation: \"Global Energy Monitor, Global Iron and Steel Tracker, June 2026 (V1) release.\"",
+   "held": "SETTLED, AND BY THE FILE ITSELF. On 12 September this register recorded the licence as OUTSTANDING: 'The brief records GEM as CC BY and this pass could not confirm it from the page it read... the licence is not quoted here because it was not read.' The downloaded workbook states it on its own About tab, so the confirmation came from the artefact rather than from the page advertising it. THE ONLY BENCHMARK IN BRIEF 8 WHOSE TERMS NEEDED NO INTERPRETATION: the IEA describes its CCUS database two ways and the disagreement is held unresolved; the Global CCS Institute reserves everything; T&E is CC BY-NC-ND. This one says CC BY 4.0 in the file.",
    "barrier": "REGISTRATION FORM. The Global Steel Plant Tracker is now the GLOBAL IRON AND STEEL TRACKER (GIST), June 2026 (V1) release. /projects/global-iron-steel-tracker/download-data/ redirects to the tracker page, where the download sits behind a form at the #download anchor with no direct file URL in the markup.",
-   "note_for_the_pass": "THE NAME CHANGED AND THE BRIEF'S NAME IS THE OLD ONE. Brief 8 names 'GEM's Global Steel Plant Tracker'. Recorded here so the steel census does not silently measure itself against a differently scoped list under the brief's name."
+   "barrier_cleared": "2026-09-14. George passed the registration form and dropped three files. The barrier was a form, not a term.",
+   "name_change": "THE NAME CHANGED AND BRIEF 8'S NAME IS THE OLD ONE. The brief names 'GEM's Global Steel Plant Tracker'; the current product is the GLOBAL IRON AND STEEL TRACKER (GIST), and its own About tab says why: 'The GIST is a rebranding of GEM's Global Steel Plant Tracker and Global Blast Furnace Tracker, and includes all data previously tracked in those datasets.' It is a merge of two trackers rather than a rename of one, which is a wider list than the brief's name implies and is recorded so the census is not read as measuring the older, narrower thing."
   },
   "odenweller_ueckerdt_repository": {
    "publisher": "Adrian Odenweller (aodenweller/green-hydrogen-gap), for the authors' additions",
@@ -336,18 +412,30 @@
     }
    ],
    "what_this_pass_does": "Reads four workbooks at reading pace through the declared reader, verifies each against the publisher's own copy by SHA-256, holds them in the uncommitted cache, and records url, date, size and hash here and in sources/cache/hydrogen/index.json. The authors' quality-check references are read as data -- URL, reference date, date checked, comment -- and cited by reference number. Nothing is redistributed under either right."
+  },
+  "leadit_green_steel_tracker": {
+   "publisher": "Leadership Group for Industry Transition (LeadIT), hosted by SEI",
+   "read": [
+    "https://www.industrytransition.org/wp-content/uploads/2026/01/Green-Steel-Tracker-methodology.pdf",
+    "https://www.industrytransition.org/trackers/green-steel-tracker/download-green-steel-dataset/"
+   ],
+   "read_on": "2026-09-15",
+   "verbatim": "The dataset might be used by others under a CC BY license. It should be cited as: Green Steel Tracker (2026) Leadership Group for Industry Transition.",
+   "held": "CC BY, STATED IN THE METHODOLOGY RATHER THAN ON THE DOWNLOAD PAGE. Both of this sector's lists are CC BY, which is the first sector in brief 8 where neither licence had to be held as a disagreement or read as all-rights-reserved. CONFIRMED BY THE FILE ON 18 SEPTEMBER 2026: the workbook's own About tab carries the same sentence and the 4.0 deed's URL, so both of this sector's licences are now settled by the artefact rather than by a page about it.",
+   "scope": "PRIMARY STEEL, AND NO TONNAGE FLOOR. The methodology states the tracker 'consolidates and classifies low-carbon projects in the primary steel sector' and that 'regardless of technology, we consider projects with technologies able to reach 85% reduction compared to average emission'. Main tracking is renewable energy and renewable-sourced hydrogen — including molten oxide electrolysis, electrowinning and electric smelting reduction; complementary tracking adds biochar where the biomass source is transparently articulated. NOTHING IN THE METHODOLOGY SETS A CAPACITY FLOOR, which is exactly what GEM's 0.5 mtpa floor hides and why this list is read alongside it.",
+   "barrier": "EMAIL FORM. industrytransition.org/trackers/green-steel-tracker/download-green-steel-dataset/ answers a declared reader with the page and no file: 'Fill out the form below to receive the dataset in .xlxs file.' The tracker view carries no readable data embed and the page exposes no .xlsx or .csv URL. The methodology PDF IS readable and is what the licence and scope above are read from."
   }
  },
  "pending_snapshots": {
-  "_comment": "AWAITED, NOT FETCHED. Each of these is a benchmark this register is measured against and cannot reach: the barrier is an acceptance a person gives, not a term that forbids the snapshot. NO ENTRY IS ADDED TO `snapshots` UNTIL THE BYTES EXIST AND ARE HASHED — a snapshot is an identity, and an identity of a file nobody has is nothing. The queue with exact URLs and drop paths is in sources/manual/MANIFEST.json under `wanted`. UPDATED 14 September 2026: the IEA CCUS Projects Database is retrieved and is in `snapshots`; CO2RE is dropped rather than awaited, with its refusal class recorded under `licences`. Only the steel tracker is still awaited here.",
+  "_comment": "AWAITED, NOT FETCHED. Each of these is a benchmark this register is measured against and cannot reach: the barrier is an acceptance a person gives, not a term that forbids the snapshot. NO ENTRY IS ADDED TO `snapshots` UNTIL THE BYTES EXIST AND ARE HASHED — a snapshot is an identity, and an identity of a file nobody has is nothing. The queue with exact URLs and drop paths is in sources/manual/MANIFEST.json under `wanted`. UPDATED 14 September 2026: the IEA CCUS Projects Database is retrieved and is in `snapshots`; CO2RE is dropped rather than awaited, with its refusal class recorded under `licences`. Only the steel tracker is still awaited here. 15 September 2026: GEM's tracker is retrieved and in `snapshots`. LeadIT's dataset is awaited — an email form, which is an acceptance a person gives.",
   "raised": "2026-09-13",
   "awaiting": [
    {
-    "benchmark": "gem_global_iron_steel_tracker",
+    "benchmark": "leadit_green_steel_tracker",
     "sector": "steel",
-    "role": "first list",
-    "file": "Global Iron and Steel Tracker, June 2026 (V1)",
-    "drop_as": "sources/cache/steel/gem_gist_2026_v1.xlsx"
+    "role": "second list",
+    "file": "Green Steel Tracker dataset (.xlsx)",
+    "drop_as": "sources/cache/steel/leadit_green_steel_tracker.xlsx"
    }
   ]
  }

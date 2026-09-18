@@ -1627,6 +1627,38 @@ name alone, and in all three the company's own source refuses a declared reader.
 Holland Hydrogen 2 in particular is discussed publicly as a separate later project, which
 would make it a gap the register had been explaining away.
 
+### The order a source is searched in, and a tracker's citations are not the search
+
+**Ruled 16 September 2026**, after the steel census failed a works it should have found
+first time. The order is:
+
+1. **The owner's own domain.** The newsroom, the project page, the investor material.
+2. **The permitting authority**, and any funder that published an award.
+3. **Any tracker's citation list**, last.
+
+**A TRACKER'S CITATION LIST IS A STARTING POINT AND NEVER THE SEARCH.** GEM's gem.wiki
+pages, the IEA's `Ref 1..7` columns, LeadIT's dataset rows — each is a record of what
+*that* publisher read. Following it tells you where somebody else looked. It does not tell
+you what the owner says, and it is not evidence of absence when it comes back empty.
+
+**The case it was written from.** Tata Steel's Port Talbot electric arc furnace is the
+largest single steel investment in the United Kingdom. The census followed **sixteen**
+citations from the works' gem.wiki page and reached no Tata Steel document, and classed
+the entry `named not admitted` — a real project, recorded as unsourced. `tatasteeluk.com`
+answered **on the first request**, with the capacity, the hybrid planning application
+quoted in full, the February 2025 planning consent and a timeline to operation in late
+2027. The owner had said everything; nobody had asked the owner.
+
+**Why the order matters more than the effort.** The failure is not that the wiki was read —
+it is a reasonable place to start and this register will go on starting there. The failure
+is that reading it **felt like searching**: sixteen documents, every one fetched, indexed
+and hashed, producing a rich and entirely misdirected record of work. **An exhaustive
+search of the wrong list is indistinguishable from diligence** until somebody tries the
+right one.
+
+This sits beside "A document is sourced by its author, not by its host". That rule says
+who a document belongs to; this one says whose door to knock on first.
+
 ### When a publisher goes dark after a page was read, cite the capture
 
 A source read today may be unreadable tomorrow: uniper.energy closed overnight on 10
@@ -2312,6 +2344,30 @@ has read their works.
   changed nothing.
 - **Rolling and downstream investments are perimeter exclusions.** A hot strip mill is
   not a route change.
+- **Hydrogen fed to reheat or burner equipment is refused with the clause "fuel switch,
+  no primary route change". Ruled 16 September 2026.** A **hydrogen-ready furnace** means
+  the unit that makes the iron or the steel — a DRI shaft, an EAF, or a furnace the owner
+  states replaces blast-furnace capacity. Firing hydrogen in a reheat furnace or a set of
+  burners changes the fuel and leaves the route alone. ArcelorMittal Sestao is the case
+  the clause was named for: its own zero-carbon claim rests on **hydrogen in the burners
+  and DRI made 250 km away at Gijón**, and the iron is counted once, at the works that
+  makes it.
+
+**What "greenfield DRI/EAF primary steelmaking" means, and it is the route rather than
+the vocabulary. Ruled 16 September 2026.** The third leg is satisfied when the owner
+states an **ironmaking step** — DRI, hydrogen or otherwise — or states that the plant
+**replaces primary capacity**. A greenfield plant that melts scrap and states nothing
+else is a scrap EAF *whatever it calls its output*, and the first refusal clause takes
+it.
+
+**The case that forced the wording** is Ussuri Capital's Romanian project, which this
+register admitted and then reclassed. Its owner writes that it will "reach fully
+vertically-integrated steel production via scrap-EAF route (**without the complexity of
+DRI-EAF technology**, or only when it becomes commercially viable)" — and separately that
+phase two produces "1.2 MT/year of **crude steel**". The first pass read "crude steel" as
+primary steelmaking and admitted it; the owner had ruled the ironmaking step out in its
+own words. **A works that says it is not doing the thing is not doing the thing**, and the
+output's name does not overrule it.
 
 ### Cement
 
@@ -2560,3 +2616,39 @@ green about something nobody runs.
 **It costs about forty seconds**, and it is verified against the failure that caused the
 rule: restoring the `d96903a` shape on a scratch commit makes it fail with the same
 `ImportError` Vercel produced, naming the step.
+
+### The second list is the rule's second application, and it was applied before it failed
+
+**18 September 2026, the steel second-list pass.** Three steps were wired into prebuild
+and one of them opened LeadIT's 8.8 MB workbook with `openpyxl`. Under this rule it moved
+before it ever reached a build server, which is the first time the split was made by
+reading the rule rather than by reading a red production log.
+
+| step | needs | runs in |
+|---|---|---|
+| `check_fetch_records.py` | five cache `index.json` files, **all tracked** | prebuild |
+| `build_steel_benchmark.py` | `steel_entries.json`, `projects.json` | prebuild |
+| `build_steel_second_list.py` | `leadit_entries.json`, `steel_entries.json`, `benchmark_snapshots.json` | prebuild |
+| `build_leadit_entries.py --check` | `openpyxl` and the gitignored workbook | pre-push |
+
+**`sources/leadit_entries.json` is materialised on the hydrogen precedent** and carries the
+SHA-256 and byte count of the workbook it was read from. The two halves of the check sit on
+opposite sides of the line on purpose: `--check` rebuilds all 65 entries from the workbook
+in the pre-push chain, and `build_steel_second_list.py` verifies the recorded hash against
+the pin in `benchmark_snapshots.json` **inside the build**, where the bytes are absent and
+the hash is not. A build cannot ask whether the rows are right; it can ask whether they
+claim to come from the file this register pins, and that question is worth gating.
+
+**The cache `index.json` files are tracked and only the bodies are ignored**, which is the
+distinction #66 recorded after a simulation manufactured a failure by hiding them. It is
+restated here because the steel pass had to make the same call about the same files and
+the obvious reading — *`sources/cache/` is gitignored, so nothing in it may be read* — is
+wrong.
+
+**AND THE HAND SIMULATION THIS PASS RAN IS NOW THE CHECK ABOVE.** The steel steps were
+audited by copying `git ls-files` content into a temporary tree and blocking `openpyxl` by
+hand — the same idea as `check_build_image.py`, done once, by somebody who remembered to.
+That is exactly the shape that rule says does not hold, and the two arrived within a day of
+each other. The hand run is not repeated; `check_build_image` is what enforces this table
+from here.
+

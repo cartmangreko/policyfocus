@@ -1,0 +1,108 @@
+{
+ "_comment": [
+  "QUESTIONS THE STEEL CENSUS RAISED AND DID NOT ANSWER. Brief 8: where an entry raises a",
+  "question the perimeter rules do not settle, the entry is classed `held for ruling`, the",
+  "question is written here with the source sentence and what the rule would need to say, and",
+  "the pass continues. A QUESTION OF THIS KIND NEVER CHANGES A RULE BY ITSELF.",
+  "",
+  "Not all of them are `held for ruling` entries: some are tensions between two entries this",
+  "census classed in opposite directions on the same leg, and some are questions about READING",
+  "rather than about the perimeter. They are recorded because a reader who finds the classes",
+  "side by side is entitled to see that the pass noticed.",
+  "",
+  "S1-S4 came from the first list, GEM, on 16 September 2026. S5 and S6 came from the second",
+  "list, LeadIT, on 18 September 2026 — which is the argument for reading a second list:",
+  "a publisher with a different test asks the perimeter different questions."
+ ],
+ "questions": [
+  {
+   "id": "S1",
+   "raised": "2026-09-16",
+   "entry": "P100000120453",
+   "class": "held for ruling",
+   "question": "Is hydrogen fired in a works' BURNERS a 'hydrogen-ready furnace' for the steel perimeter, at a works whose steelmaking furnace is an existing scrap EAF?",
+   "why_the_rules_did_not_settle_it": "The perimeter's four legs are an announced DRI plant, an EAF replacing blast-furnace capacity, greenfield DRI/EAF primary steelmaking, and a hydrogen-ready furnace. ArcelorMittal Sestao has no blast furnace, is not greenfield, and the DRI it will be fed by is at GIJÓN — a different works, admitted separately. What is at Sestao is EUR 50 million and hydrogen fed to burners.",
+   "source_sentence": "In addition to the investments in the DRI and EAF installations in Gijón, ArcelorMittal will invest €50 million in Sestao. This, together with the green DRI and hydrogen feeding the burners, will result in the Sestao plant achieving zero carbon-emissions.",
+   "speaker": "ArcelorMittal, own announcement with the Government of Spain",
+   "url": "https://www.globenewswire.com/news-release/2021/07/13/2261838/0/en/ArcelorMittal-Sestao",
+   "rule_would_need_to_say": "Whether 'hydrogen-ready furnace' names the vessel that makes the steel, or any fired equipment at the works. If the former, Sestao is refused and its zero-carbon claim rests on iron made elsewhere. If the latter, reheat and annealing furnaces across the sector come into scope, and the sector's population changes shape.",
+   "note": "THE ONE PLANT IN NINETY-FIVE WHERE GEM'S SILENCE HID SOMETHING. GEM records nothing forward at Sestao; the owner announces an investment there in the same breath as the Gijón DRI.",
+   "ruling": {
+    "ruled": "2026-09-16",
+    "by": "George Christopoulos",
+    "says": "A hydrogen-ready furnace means the unit that makes iron or steel: a DRI shaft, an EAF, or a furnace stated by the owner to replace blast-furnace capacity. Hydrogen fed to reheat or burner equipment is a fuel switch and is outside the perimeter. Sestao is refused with the clause 'fuel switch, no primary route change'; its stated link to the Gijón DRI is recorded as a location statement on the Gijón entry, not as a project of its own.",
+    "applied": "Sestao moved from `held for ruling` to `perimeter exclusion` with the new clause. The link is now a `location_statement` on P100000120452 (Gijón) with relation `offtake`, carrying ArcelorMittal's own sentence. The clause is written into sources/scope.md, Sector perimeters, Steel. THE IRON IS COUNTED ONCE, at the works that makes it."
+   }
+  },
+  {
+   "id": "S2",
+   "raised": "2026-09-16",
+   "entries": [
+    "P100001045064 Ussuri Capital Romania — admitted",
+    "P100000120759 Van Merksteijn International — perimeter exclusion"
+   ],
+   "question": "When is a greenfield scrap EAF 'greenfield DRI/EAF primary steelmaking', and when is it 'scrap EAF, no primary capacity'?",
+   "why_the_rules_did_not_settle_it": "The perimeter admits 'greenfield DRI/EAF primary steelmaking' in its third leg and refuses 'a standalone scrap-EAF mill at a site with no primary steelmaking' in its first clause. A NEW EAF ON A GREENFIELD SITE MELTING SCRAP SATISFIES BOTH SENTENCES. This census admitted Ussuri Capital's Romanian works, whose owner states 'EAF and continuous strip casting module will be built to produce ~1.2 MT/year of crude steel and hot rolled coils using local scrap', and refused Van Merksteijn's Eemshaven mill, whose owner states it will produce 'wire rod from the secondary raw material cleaned scrap steel'. Both are greenfield, both melt scrap, and the pass separated them on whether the owner calls the output crude steel — which is a distinction the rule does not draw.",
+   "rule_would_need_to_say": "Whether 'primary steelmaking' in the third leg means making crude steel from any feed, or making iron from ore. If the latter, a greenfield scrap EAF is always refused and Ussuri is reclassed. If the former, the refusal clause needs a narrower wording than 'no primary capacity', because a greenfield EAF has no capacity of any kind until it is built.",
+   "note": "THE PASS COULD HAVE HIDDEN THIS by classing both the same way and saying nothing. The two classes stand as the reading that seemed right at the time, and the question says why that reading is not secure.",
+   "ruling": {
+    "ruled": "2026-09-16",
+    "by": "George Christopoulos",
+    "says": "The distinction is not the owner's vocabulary but the route. Greenfield primary steelmaking means the owner states an ironmaking step (DRI, hydrogen or otherwise) or states that the plant replaces primary capacity; a greenfield plant that melts scrap and states nothing else is scrap EAF whatever it calls its output.",
+    "applied": "BOTH FALL ON THE SAME SIDE, and the answer to the question as posed is that the earlier pass was wrong about one of them. Ussuri Capital is reclassed from `admitted` to `perimeter exclusion`: its own site rules the ironmaking step out in as many words — 'scrap-EAF route (without the complexity of DRI-EAF technology, or only when it becomes commercially viable)' — and the first pass admitted it on the phrase 'crude steel' elsewhere on the same page. Van Merksteijn's exclusion is confirmed on the same test. The test is written into the perimeter."
+   }
+  },
+  {
+   "id": "S3",
+   "raised": "2026-09-16",
+   "entries": [
+    "P100000120482 Tata Steel Port Talbot — named not admitted"
+   ],
+   "question": "Not a rule question. A search question, recorded so it is not mistaken for a finding about the works.",
+   "why_it_is_here": "GEM records an EAF in construction at Port Talbot. Sixteen citations from the works' own gem.wiki page were followed and not one is a Tata Steel document about the project. It is the largest single steel investment in the United Kingdom, it is almost certainly in perimeter, and this register cannot yet source it. THE CLASS IS A STATEMENT ABOUT THE SEARCH, NOT ABOUT THE PROJECT, and it will move the moment a Tata Steel page is read.",
+   "rule_would_need_to_say": "Nothing. What is needed is a fetch, and the next pass should start at tatasteeluk.com rather than at the wiki's citation list.",
+   "ruling": {
+    "ruled": "2026-09-16",
+    "by": "George Christopoulos",
+    "says": "Before Port Talbot goes to the manual queue, search the owner's own domain directly — Tata Steel UK's newsroom and the planning authority's decision — not through the wiki's citations.",
+    "applied": "ADMITTED ON THE FIRST TRY, and the ruling is the finding. tatasteeluk.com answered immediately: '3.2 million tonne capacity state-of-the-art electric arc furnace in Port Talbot, the same capacity as we have now', the hybrid planning application quoted in full, 'the planning permission milestone of February 2025 that enabled construction work to begin on Europe's largest EAF', and a timeline to operation by late 2027. NO QUEUE ENTRY WAS NEEDED. Sixteen wiki citations had reached no Tata Steel document; the owner's own newsroom reached one on the first request. THE WIKI'S CITATION LIST IS A STARTING POINT AND IT IS NOT A SEARCH — where a works has an owner with a newsroom, that is where the search should start, and this pass will carry the lesson into the next sector."
+   }
+  },
+  {
+   "id": "S4",
+   "raised": "2026-09-16",
+   "entry": "P100000120620",
+   "class": "named not admitted",
+   "question": "Not a rule question. A correction, recorded so the reversal is visible.",
+   "why_it_is_here": "The first pass ADMITTED Acciaierie d'Italia Taranto on Il Sole 24 Ore's report of the plan the company presented to MIMIT. George corrected it on 16 September 2026: the perimeter is company-confirmed, a newspaper's report of what a company told a ministry is neither speaker, and the company's own page states a conditional ambition — 'when technologies will allow'. The entry is named-not-admitted with the press report kept as a benchmark claim. THE MINISTRY'S OWN DOCUMENT WOULD BE A GOVERNMENT SPEAKER and is queued: mimit.gov.it answers a declared reader with navigation and no release text.",
+   "rule_would_need_to_say": "Nothing. The rule was right and the pass applied it loosely, which is the failure worth recording: the admitting sentence was vivid and specific — four DRI, three EAFs, phases to 2033 — and vividness is not authority."
+  },
+  {
+   "id": "S5",
+   "raised": "2026-09-18",
+   "entries": [
+    "GST-149 SIDERWIN (ArcelorMittal, electrowinning) — perimeter exclusion"
+   ],
+   "class": "perimeter exclusion, and the class is the question",
+   "question": "Does the steel perimeter reach a primary ironmaking route that is neither hydrogen DRI nor EAF?",
+   "why_the_rules_did_not_settle_it": "The perimeter's four legs name an announced DRI plant, an EAF replacing blast-furnace capacity, greenfield DRI/EAF primary steelmaking, and a hydrogen-ready furnace. ALL FOUR NAME A TECHNOLOGY. LeadIT's own methodology tracks a wider set — renewable hydrogen, MOLTEN OXIDE ELECTROLYSIS, ELECTROWINNING and electric smelting reduction — and carries European projects in those classes. This census refused them under the DRI/EAF legs, which is what the rules say and may not be what they mean.",
+   "source_sentence": "SIDERWIN develops a breakthrough innovation from the current steel production route by using electricity from renewable energy, transforming any iron oxides, including by-products from steel industry, into steel plate through electrolysis.",
+   "speaker": "SIDERWIN project consortium, own site, an ArcelorMittal-coordinated Horizon 2020 project",
+   "rule_would_need_to_say": "Whether the perimeter is a list of TECHNOLOGIES or a test of the ROUTE. If the route — 'the owner states a primary ironmaking step that does not burn coke' — then electrowinning and molten oxide electrolysis are in, and the refusals of this pass must be re-read. If the technologies, then the perimeter should say so in as many words and accept that it will not see the route that replaces the blast furnace if it turns out not to be DRI.",
+   "note": "THE FIRST LIST COULD NOT HAVE RAISED THIS. GEM's tracker records plants by furnace type at 0.5 mtpa and above; a pilot electrolysis cell is invisible to it twice over. The question exists because a second publisher with a different test was read."
+  },
+  {
+   "id": "S6",
+   "raised": "2026-09-18",
+   "entries": [
+    "GST-090 Marcegaglia AdriatiCO2, Ravenna — named not admitted"
+   ],
+   "class": "not a rule question about the perimeter. A question about READING, and it belongs beside the scope.md reading rules rather than the steel legs.",
+   "question": "Is a site that answers every path with 200 and one identical body a refusal, and should the reading rules name that shape?",
+   "why_the_rules_did_not_settle_it": "scope.md says a 200 with an EMPTY body is a refusal: the publisher answered and said nothing. marcegaglia.com answers with 200 and 21,704 characters on the front page, the English press room, the Italian press room and a project URL — THE SAME 21,704 CHARACTERS EACH TIME. It is a single-page application that renders its text in a browser. A declared reader reaches the site and reaches nothing in it, which is the same outcome as the empty body wearing a different number, and the index currently records four successful fetches.",
+   "rule_would_need_to_say": "Whether 'a body byte-identical to the body of a different path on the same host' is a refusal like an empty body, and whether the gate should detect it — the sha256 is already in every cache record, so a host serving one digest across several paths is visible to check_fetch_records.py without a new fetch.",
+   "why_it_matters_beyond_this_entry": "A FETCH THAT LOOKS SUCCESSFUL AND CARRIES NOTHING IS THE SAME SHAPE AS THE DIACRITIC BUG — see the docket, D-S1. There the index said a page had been read that was never requested; here it says a page was read that carries no page. Both let a pass report 'searched, none found' about a publisher it never reached.",
+   "note": "Marcegaglia's AdriatiCO2 at Ravenna would be an announced DRI plant if the owner's own words could be read. The entry is `named not admitted` until they can be, which is where Port Talbot sat under S3 until the right domain was tried."
+  }
+ ]
+}

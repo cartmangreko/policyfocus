@@ -1,0 +1,2020 @@
+{
+ "_comment": [
+  "The second list, and the drift between the two: LeadIT beside GEM.",
+  "",
+  "    python3 sources/build_steel_second_list.py       # the tables, and the gate",
+  "",
+  "THE SECOND LIST. LeadIT's Green Steel Tracker, version 2026-09-04, CC BY 4.0 by the file's",
+  "own About tab. 161 project rows worldwide; 68 whose `Continent` is Europe; 65 in the steel",
+  "perimeter's own Europe -- the EU, the United Kingdom, Norway and Switzerland. Each of the",
+  "65 ends in exactly one class and the counts must sum to 65 or this script exits non-zero,",
+  "which is the same gate the first list is held to.",
+  "",
+  "WHY THERE IS A SECOND LIST HERE AND NOT IN CEMENT. The cement census recorded its second",
+  "list as DROPPED and said why: CO2RE renders rows a person can read and never states how",
+  "many there are, and a gap table is gated on summing to the list's own count. LeadIT states",
+  "its rows, carries its own identifier, and publishes a `GEM Plant ID` column -- so the two",
+  "lists can be joined on a publisher's key rather than on a name this register folded.",
+  "",
+  "DRIFT HERE IS BETWEEN TWO PUBLISHERS, NOT BETWEEN TWO VINTAGES. The hydrogen drift table",
+  "measures one list against its own past. This one measures two lists against each other on",
+  "the same day, which answers a different question: not what a publisher changed its mind",
+  "about, but what each publisher can see. GEM sees plants at 0.5 mtpa and above. LeadIT sees",
+  "projects at any size and disqualifies by an editorial test of its own. NEITHER IS THE",
+  "POPULATION, and the table's job is to say how much of each the other misses."
+ ],
+ "generated": "2026-09-18",
+ "first_list": {
+  "benchmark": "gem_global_iron_steel_tracker",
+  "vintage": "June 2026 (V1)",
+  "population": 132,
+  "floor": "0.5 mtpa crude iron/steel, GEM's own"
+ },
+ "second_list": {
+  "benchmark": "leadit_green_steel_tracker",
+  "vintage": "2026-09-04",
+  "population": 65,
+  "floor": "none"
+ },
+ "counts": {
+  "admitted": 20,
+  "held": 20,
+  "searched none found": 4,
+  "perimeter exclusion": 13,
+  "named not admitted": 8
+ },
+ "drift": {
+  "leadit_entries_at_a_gem_plant": 52,
+  "distinct_gem_plants_leadit_carries": 31,
+  "joined_on_leadit_own_key": 49,
+  "joined_by_hand_by_works": [
+   "GST-040",
+   "GST-088",
+   "GST-161"
+  ],
+  "leadit_entries_gem_does_not_carry": 13,
+  "gem_plants_leadit_does_not_carry": 101,
+  "admitted_from_the_second_list_alone": [
+   "HyIron - GEiSt"
+  ],
+  "disagreements_about_the_same_works": [
+   {
+    "leadit_id": "GST-010",
+    "name": "ArcelorMittal Steelanol Ghent",
+    "why": "LeadIT qualifies it; this register has it as searched none found"
+   },
+   {
+    "leadit_id": "GST-025",
+    "name": "HyBit Bremen",
+    "why": "LeadIT qualifies it; GEM shows no forward unit at the plant"
+   },
+   {
+    "leadit_id": "GST-036",
+    "name": "ArcelorMittal Bremen DRI (Steel4Future)",
+    "why": "LeadIT qualifies it; GEM shows no forward unit at the plant"
+   },
+   {
+    "leadit_id": "GST-037",
+    "name": "ArcelorMittal Eisenhüttenstadt DRI (Steel4Future)",
+    "why": "LeadIT qualifies it; GEM shows no forward unit at the plant"
+   },
+   {
+    "leadit_id": "GST-039",
+    "name": "FerroSilva Pilot",
+    "why": "LeadIT qualifies it; this register has it as perimeter exclusion"
+   },
+   {
+    "leadit_id": "GST-061",
+    "name": "ArcelorMittal DRI Ghent",
+    "why": "LeadIT qualifies it; this register has it as searched none found"
+   },
+   {
+    "leadit_id": "GST-068",
+    "name": "SSAB Raahe Mini Mill",
+    "why": "LeadIT qualifies it; this register has it as named not admitted"
+   }
+  ],
+  "in_perimeter_works_leadit_is_silent_on": [
+   "ArcelorMittal Duisburg steel plant",
+   "GravitHy Kristinestad iron plant",
+   "Hüttenwerke Krupp Mannesmann (HKM) steel plant",
+   "Liberty Steel Dunkerque DRI plant",
+   "Saarstahl Völklingen steel plant",
+   "Tata Steel Port Talbot steel plant"
+  ]
+ },
+ "entries": {
+  "GST-001": {
+   "name": "Tata Steel HIsarna Ijmuiden",
+   "company": "Tata Steel",
+   "country": "Netherlands",
+   "site": "Ijmuiden",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Smelting reduction with coal",
+    "project_scale": "Pilot",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2017",
+    "actual_start_year": "2018",
+    "gem_plant_named": "Tata Steel IJmuiden steel plant",
+    "gem_plant_id": "P100000120758",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120758",
+    "name": "Tata Steel IJmuiden steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-003": {
+   "name": "Voestalpine H2Future Linz",
+   "company": "voestalpine Group",
+   "country": "Austria",
+   "site": "Linz",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Green electricity electrolysis",
+    "project_scale": "Pilot",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2019",
+    "actual_start_year": "2019",
+    "gem_plant_named": "Voestalpine Stahl Linz steel plant",
+    "gem_plant_id": "P100000120010",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120010",
+    "name": "Voestalpine Stahl Linz steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-004": {
+   "name": "ArcelorMittal 3D - DMX™ Demonstration in Dunkirk",
+   "company": "ArcelorMittal",
+   "country": "France",
+   "site": "Dunkirk",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Demonstration of CCS from industrial activities",
+    "project_scale": "Pilot",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2021",
+    "actual_start_year": "2022",
+    "gem_plant_named": "ArcelorMittal Dunkerque steel plant",
+    "gem_plant_id": "P100000120472",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120472",
+    "name": "ArcelorMittal Dunkerque steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-005": {
+   "name": "Voestalpine SuSteel Donawitz",
+   "company": "voestalpine Group",
+   "country": "Austria",
+   "site": "Donawitz",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Hydrogen plasma smelting reduction",
+    "project_scale": "Pilot",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2021",
+    "actual_start_year": "2021",
+    "gem_plant_named": "Voestalpine Stahl Donawitz steel plant",
+    "gem_plant_id": "P100000120011",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120011",
+    "name": "Voestalpine Stahl Donawitz steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-006": {
+   "name": "Salzgitter GrInHy2.0",
+   "company": "Salzgitter Group",
+   "country": "Germany",
+   "site": "Salzgitter",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Green electricity electrolysis",
+    "project_scale": "Demo",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2021",
+    "actual_start_year": "2021",
+    "gem_plant_named": "Salzgitter Flachstahl steel plant",
+    "gem_plant_id": "P100000120424",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120424",
+    "name": "Salzgitter Flachstahl steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-008": {
+   "name": "Voestalpine HYFOR",
+   "company": "voestalpine Group",
+   "country": "Austria",
+   "site": "Donawitz",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "H-DRI + Hy4Smelt (not conventional EAF)",
+    "project_scale": "Pilot",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2021",
+    "actual_start_year": "2021",
+    "gem_plant_named": "Voestalpine Stahl Donawitz steel plant",
+    "gem_plant_id": "P100000120011",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120011",
+    "name": "Voestalpine Stahl Donawitz steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-009": {
+   "name": "Salzgitter WindH2 Demonstration",
+   "company": "Salzgitter Group",
+   "country": "Germany",
+   "site": "Salzgitter",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Green electricity electrolysis",
+    "project_scale": "Demo",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2021",
+    "actual_start_year": "2021",
+    "gem_plant_named": "Salzgitter Flachstahl steel plant",
+    "gem_plant_id": "P100000120424",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120424",
+    "name": "Salzgitter Flachstahl steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-010": {
+   "name": "ArcelorMittal Steelanol Ghent",
+   "company": "ArcelorMittal",
+   "country": "Belgium",
+   "site": "Ghent",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "CCU for ethanol production",
+    "project_scale": "Demo",
+    "project_status": "Operating",
+    "planned_commissioning": "2022",
+    "actual_start_year": "2022",
+    "gem_plant_named": "ArcelorMittal Gent steel plant",
+    "gem_plant_id": "P100000120027",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120027",
+    "name": "ArcelorMittal Gent steel plant",
+    "class": "searched none found",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "searched none found",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-011": {
+   "name": "ArcelorMittal SIDERWIN Maizières-lès-Metz",
+   "company": "ArcelorMittal",
+   "country": "France",
+   "site": "Maizières-lès-Metz",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Electrolysis with renewables",
+    "project_scale": "Pilot",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2022",
+    "actual_start_year": "2023",
+    "gem_plant_named": "Not available",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "perimeter exclusion",
+   "clause": "research pilot of an electrolytic iron route; none of the four legs",
+   "note": "SIDERWIN is iron by electrolysis -- neither DRI, nor an EAF against a blast furnace, nor greenfield DRI/EAF, nor a hydrogen-ready furnace. It is a primary route change and the perimeter does not name it, which is a gap in the perimeter rather than a fact about the project: asked as S5.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-012": {
+   "name": "Salzgitter μDRAL (Demo for SALCOS)",
+   "company": "Salzgitter Group",
+   "country": "Germany",
+   "site": "Salzgitter",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Flexible operation NG and H2",
+    "project_scale": "Demo",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2022",
+    "actual_start_year": "2022",
+    "gem_plant_named": "Salzgitter Flachstahl steel plant",
+    "gem_plant_id": "P100000120424",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120424",
+    "name": "Salzgitter Flachstahl steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-015": {
+   "name": "Voestalpine CMS Linz",
+   "company": "voestalpine Group",
+   "country": "Austria",
+   "site": "Linz",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Optiperm™ Carbon membrane for flue gases",
+    "project_scale": "Pilot",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2023",
+    "actual_start_year": "2024",
+    "gem_plant_named": "Voestalpine Stahl Linz steel plant",
+    "gem_plant_id": "P100000120010",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120010",
+    "name": "Voestalpine Stahl Linz steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-016": {
+   "name": "HyIron - GEiSt",
+   "company": "HyIron",
+   "country": "Germany",
+   "site": "Lingen",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Green electricity electrolysis",
+    "project_scale": "Pilot",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2023",
+    "actual_start_year": "2023",
+    "gem_plant_named": "Not in operation",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "admitted",
+   "leg": "announced DRI plant",
+   "speaker": "HyIron, own site",
+   "source": "https://hyiron.com/",
+   "verbatim": "The project GEiSt (German for “Green Iron for the steel Industry”) pilots the technology in Lingen, Germany, in cooperation with RWE and Benteler. The main purpose of the pilot plant is to optimize the process and test various iron ores",
+   "note": "THE SECOND LIST'S FIRST ADMISSION, AND IT IS EXACTLY WHAT THE FLOOR HID. A hydrogen direct-reduction plant at Lingen, confirmed by its owner on its own site, at a scale GEM's 0.5 mtpa threshold cannot carry. The perimeter sets no tonnage threshold and gives the reason in as many words -- the early ones are disproportionately the ones that stop -- so a pilot that reduces iron with hydrogen is an announced DRI plant on the perimeter's own terms. RWE and Benteler are named by the owner as partners; the register holds neither as the owner of this plant.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-017": {
+   "name": "ArcelorMittal Torero Ghent",
+   "company": "ArcelorMittal",
+   "country": "Belgium",
+   "site": "Ghent",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Insufficient carbon capture capacity",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Biocoal for BF with CCS",
+    "project_scale": "Demo",
+    "project_status": "Construction",
+    "planned_commissioning": "2024",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Gent steel plant",
+    "gem_plant_id": "P100000120027",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120027",
+    "name": "ArcelorMittal Gent steel plant",
+    "class": "searched none found",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "searched none found",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-020": {
+   "name": "Salzgitter GrInHy3.0",
+   "company": "Salzgitter Group",
+   "country": "Germany",
+   "site": "Salzgitter",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Green electricity electrolysis",
+    "project_scale": "Pilot",
+    "project_status": "Announced",
+    "planned_commissioning": "2024",
+    "actual_start_year": "",
+    "gem_plant_named": "Salzgitter Flachstahl steel plant",
+    "gem_plant_id": "P100000120424",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120424",
+    "name": "Salzgitter Flachstahl steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-023": {
+   "name": "Metso DRI Smelting Furnace Pilot Pori",
+   "company": "Metso",
+   "country": "Finland",
+   "site": "Pori",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Metso’s DRI Smelting Furnace",
+    "project_scale": "Pilot",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "2024",
+    "actual_start_year": "2024",
+    "gem_plant_named": "",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "perimeter exclusion",
+   "clause": "equipment vendor's test centre, no primary capacity at a works",
+   "note": "Metso's DRI smelting furnace pilot at Pori is a technology supplier proving a furnace at its own research centre. No works changes route here, and the perimeter holds works.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-025": {
+   "name": "HyBit Bremen",
+   "company": "ArcelorMittal",
+   "country": "Germany",
+   "site": "Bremen",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Conceptual H2 production",
+    "project_scale": "Full scale",
+    "project_status": "Construction",
+    "planned_commissioning": "2025",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Bremen steel plant",
+    "gem_plant_id": "P100000120426",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120426",
+    "name": "ArcelorMittal Bremen steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-026": {
+   "name": "ArcelorMittal Sestao (DRI from Gijón)",
+   "company": "ArcelorMittal",
+   "country": "Spain",
+   "site": "Sestao",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Project does not use any form of carbon capture to mitigate BF-BOF.",
+    "technology_category": "Secondary Steel",
+    "specific_equipment": "EAF using DRI from Gijón",
+    "project_scale": "Full scale",
+    "project_status": "Paused or postponed",
+    "planned_commissioning": "2025",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Sestao steel plant",
+    "gem_plant_id": "P100000120453",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120453",
+    "name": "ArcelorMittal Sestao steel plant",
+    "class": "perimeter exclusion",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "perimeter exclusion",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-029": {
+   "name": "Stegra Boden",
+   "company": "Stegra (formerly H2 Green Steel)",
+   "country": "Sweden",
+   "site": "Boden",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Green electricity electrolysis + EAF",
+    "project_scale": "Full scale",
+    "project_status": "Construction",
+    "planned_commissioning": "2026",
+    "actual_start_year": "",
+    "gem_plant_named": "H2 Green Steel Boden steel plant",
+    "gem_plant_id": "P100000120850",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120850",
+    "name": "Stegra Boden steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-034": {
+   "name": "SSAB Oxelösund Mini-Mill",
+   "company": "SSAB",
+   "country": "Sweden",
+   "site": "Oxelösund",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Project does not use any form of carbon capture.",
+    "technology_category": "Secondary Steel",
+    "specific_equipment": "EAF using HBI and scrap",
+    "project_scale": "Full scale",
+    "project_status": "Construction",
+    "planned_commissioning": "2027",
+    "actual_start_year": "",
+    "gem_plant_named": "SSAB Oxelösund steel plant",
+    "gem_plant_id": "P100000120844",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120844",
+    "name": "SSAB Oxelösund steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-035": {
+   "name": "ArcelorMittal Hamburg H2",
+   "company": "ArcelorMittal",
+   "country": "Germany",
+   "site": "Hamburg",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "First tested using grey hydrogen from waste gases",
+    "project_scale": "Demo",
+    "project_status": "Announced",
+    "planned_commissioning": "2026",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Hamburg steel plant",
+    "gem_plant_id": "P100000120427",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120427",
+    "name": "ArcelorMittal Hamburg steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-036": {
+   "name": "ArcelorMittal Bremen DRI (Steel4Future)",
+   "company": "ArcelorMittal",
+   "country": "Germany",
+   "site": "Bremen",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "Project has been cancelled.",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Initially natural gas for the DRI, and later hydrogen from electrolysis",
+    "project_scale": "Full scale",
+    "project_status": "Cancelled",
+    "planned_commissioning": "2026",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Bremen steel plant",
+    "gem_plant_id": "P100000120426",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120426",
+    "name": "ArcelorMittal Bremen steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-037": {
+   "name": "ArcelorMittal Eisenhüttenstadt DRI (Steel4Future)",
+   "company": "ArcelorMittal",
+   "country": "Germany",
+   "site": "Eisenhüttenstadt",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "Project has been cancelled.",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Initially natural gas for the DRI, and later hydrogen from electrolysis",
+    "project_scale": "Full scale",
+    "project_status": "Cancelled",
+    "planned_commissioning": "2026",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Eisenhüttenstadt steel plant",
+    "gem_plant_id": "P100000120425",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120425",
+    "name": "ArcelorMittal Eisenhüttenstadt steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-038": {
+   "name": "LKAB HYBRIT (Phase 1) Gällivare",
+   "company": "LKAB",
+   "country": "Sweden",
+   "site": "Gällivare",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "ENERGIRON H-DRI + EAF",
+    "project_scale": "Demo",
+    "project_status": "Construction",
+    "planned_commissioning": "2029",
+    "actual_start_year": "",
+    "gem_plant_named": "HYBRIT Gallivare sponge iron plant",
+    "gem_plant_id": "P100000120851",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120851",
+    "name": "HYBRIT Gallivare sponge iron plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-039": {
+   "name": "FerroSilva Pilot",
+   "company": "FerroSilva",
+   "country": "Sweden",
+   "site": "Hofors",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Gasification of biomass and reduction of high-value iron ore pellets in a shaft furnace",
+    "project_scale": "Pilot",
+    "project_status": "Announced",
+    "planned_commissioning": "2029",
+    "actual_start_year": "",
+    "gem_plant_named": "Ovako Hofors steel plant",
+    "gem_plant_id": "P100000120848",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120848",
+    "name": "Ovako Hofors steel plant",
+    "class": "perimeter exclusion",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "perimeter exclusion",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-040": {
+   "name": "Stegra Iberia (formerly H2 Green Steel)",
+   "company": "Stegra (formerly H2 Green Steel)",
+   "country": "Spain",
+   "site": "Iberian Peninsula",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "No new updates, project has been assumed postponed indefinitely.",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Green Hydrogen",
+    "project_scale": "Full scale",
+    "project_status": "Paused or postponed",
+    "planned_commissioning": "2026",
+    "actual_start_year": "",
+    "gem_plant_named": "Not in operation",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000121222",
+    "name": "Stegra Spain steel plant",
+    "class": "admitted",
+    "matched_on": "by works, by hand — LeadIT carries no GEM Plant ID for this row"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-041": {
+   "name": "Hydnum Steel (Phase 1) Puertollano",
+   "company": "Hydnum Steel",
+   "country": "Spain",
+   "site": "Puertollano",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Green electricity electrolysis + EAF",
+    "project_scale": "Full scale",
+    "project_status": "Construction",
+    "planned_commissioning": "2028",
+    "actual_start_year": "",
+    "gem_plant_named": "Hydnum Steel Castilla-La Mancha plant",
+    "gem_plant_id": "P100000120466",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120466",
+    "name": "Hydnum Steel Castilla-La Mancha plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-044": {
+   "name": "Voestalpine Hy4Smelt Linz",
+   "company": "voestalpine Group",
+   "country": "Austria",
+   "site": "Linz",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "HYFOR + Smelter",
+    "project_scale": "Demo",
+    "project_status": "Announced",
+    "planned_commissioning": "2027",
+    "actual_start_year": "",
+    "gem_plant_named": "Voestalpine Stahl Linz steel plant",
+    "gem_plant_id": "P100000120010",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120010",
+    "name": "Voestalpine Stahl Linz steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-046": {
+   "name": "ArcelorMittal H-DRI Dunkirk",
+   "company": "ArcelorMittal",
+   "country": "France",
+   "site": "Dunkirk",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "Project has been cancelled.",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "NG-DR to H-DR + EAF ; complemented with 3D (CCS) project. \nNatural gas will gradually be phased out as the new equipment will be fed by renewable or low-carbon hydrogen, biogas and electricity.",
+    "project_scale": "Full scale",
+    "project_status": "Cancelled",
+    "planned_commissioning": "2027",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Dunkerque steel plant",
+    "gem_plant_id": "P100000120472",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120472",
+    "name": "ArcelorMittal Dunkerque steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-047": {
+   "name": "Blastr Green Steel Project Inkoo",
+   "company": "Blastr Green Steel",
+   "country": "Finland",
+   "site": "Inkoo",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "DRI+EAF, MIDREX H2",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2029",
+    "actual_start_year": "",
+    "gem_plant_named": "Blastr Inkoo steel plant",
+    "gem_plant_id": "P100000120471",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120471",
+    "name": "Blastr Inkoo steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-048": {
+   "name": "Voestalpine Greentec Steel Linz",
+   "company": "voestalpine Group",
+   "country": "Austria",
+   "site": "Linz",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Project does not use any form of carbon capture to mitigate BF-BOF.",
+    "technology_category": "Secondary Steel",
+    "specific_equipment": "EAF using HBI and scrap",
+    "project_scale": "Full scale",
+    "project_status": "Construction",
+    "planned_commissioning": "2027",
+    "actual_start_year": "",
+    "gem_plant_named": "Voestalpine Stahl Linz steel plant",
+    "gem_plant_id": "P100000120010",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120010",
+    "name": "Voestalpine Stahl Linz steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-049": {
+   "name": "Voestalpine Greentec Steel Donawitz",
+   "company": "voestalpine Group",
+   "country": "Austria",
+   "site": "Donawitz",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Project does not use any form of carbon capture to mitigate BF-BOF.",
+    "technology_category": "Secondary Steel",
+    "specific_equipment": "EAF using HBI and scrap",
+    "project_scale": "Full scale",
+    "project_status": "Construction",
+    "planned_commissioning": "2027",
+    "actual_start_year": "",
+    "gem_plant_named": "Voestalpine Stahl Donawitz steel plant",
+    "gem_plant_id": "P100000120011",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120011",
+    "name": "Voestalpine Stahl Donawitz steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-053": {
+   "name": "Thyssenkrupp tkH2Steel Duisburg",
+   "company": "Thyssenkrupp",
+   "country": "Germany",
+   "site": "Duisburg",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Plans to swap from NG to Hydrogen have been postponed and no timeline has been made available..",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "MIDREX Flex",
+    "project_scale": "Full scale",
+    "project_status": "Paused or postponed",
+    "planned_commissioning": "2028",
+    "actual_start_year": "",
+    "gem_plant_named": "ThyssenKrupp Steel Duisburg steel plant",
+    "gem_plant_id": "P100000120421",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120421",
+    "name": "ThyssenKrupp Steel Duisburg steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-055": {
+   "name": "GravitHy For sur Mer",
+   "company": "GravitHy",
+   "country": "France",
+   "site": "Fos sur Mer",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Green electricity electrolysis",
+    "project_scale": "Full scale",
+    "project_status": "Construction",
+    "planned_commissioning": "2028",
+    "actual_start_year": "",
+    "gem_plant_named": "GravitiHy",
+    "gem_plant_id": "P100000121172",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000121172",
+    "name": "GravitHy Fos sur Mer iron plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-057": {
+   "name": "SSAB Luleå Mini-Mill",
+   "company": "SSAB",
+   "country": "Sweden",
+   "site": "Luleå",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "EAF using DRI from SSAB (Hybrit)",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2029",
+    "actual_start_year": "",
+    "gem_plant_named": "SSAB Luleå steel plant",
+    "gem_plant_id": "P100000120423",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120423",
+    "name": "AG der Dillinger Hüttenwerke Dillingen steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-059": {
+   "name": "ArcelorMittal SeaH2Land North Sea",
+   "company": "ArcelorMittal",
+   "country": "Netherlands",
+   "site": "North Sea (Dutch region)",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "H2 production from wind energy",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2030",
+    "actual_start_year": "",
+    "gem_plant_named": "Not available",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "perimeter exclusion",
+   "clause": "hydrogen supply to a works; fuel switch, no primary route change",
+   "note": "SeaH2Land is offshore-wind hydrogen for the Zeeland cluster. It is the same shape the ArcelorMittal Sestao clause was written for: the hydrogen is an input and the iron is counted at the works that makes it.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-060": {
+   "name": "Tata Steel Heracless (Hydrogen-Era-Carbon-Less) Ijmuiden",
+   "company": "Tata Steel",
+   "country": "Netherlands",
+   "site": "Ijmuiden",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "ENERGIRON DRI technology",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2030",
+    "actual_start_year": "",
+    "gem_plant_named": "Tata Steel IJmuiden steel plant",
+    "gem_plant_id": "P100000120758",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120758",
+    "name": "Tata Steel IJmuiden steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-061": {
+   "name": "ArcelorMittal DRI Ghent",
+   "company": "ArcelorMittal",
+   "country": "Belgium",
+   "site": "Ghent",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "Project has been postponed indefinitely.",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Planned gradual phase out of NG-DRI to H-DRI",
+    "project_scale": "Full scale",
+    "project_status": "Paused or postponed",
+    "planned_commissioning": "2030",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Gent steel plant",
+    "gem_plant_id": "P100000120027",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120027",
+    "name": "ArcelorMittal Gent steel plant",
+    "class": "searched none found",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "searched none found",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-064": {
+   "name": "Salzgitter SALCOS",
+   "company": "Salzgitter Group",
+   "country": "Germany",
+   "site": "Salzgitter",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "H-DRI with green hydrogen + EAF",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2036",
+    "actual_start_year": "",
+    "gem_plant_named": "Salzgitter Flachstahl steel plant",
+    "gem_plant_id": "P100000120424",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120424",
+    "name": "Salzgitter Flachstahl steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-065": {
+   "name": "Stahl Holding Saar Power4Steel Dillingen",
+   "company": "Stahl Holding Saar GmbH",
+   "country": "Germany",
+   "site": "Dillingen",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "MIDREX Flex - 3 Phases, first H2 injection to BF (2027/28), then close 1 BF and commission DRI [2,5 Mt] +2 EAF [3,5 Mt] (2030), +1 EAF [1,2 Mt] and close the other BF (2040)",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2045",
+    "actual_start_year": "",
+    "gem_plant_named": "AG der Dillinger Hüttenwerke Dillingen steel plant",
+    "gem_plant_id": "P100000120423",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120423",
+    "name": "AG der Dillinger Hüttenwerke Dillingen steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-067": {
+   "name": "Equinor Northern Lights Troll field",
+   "company": "Equinor",
+   "country": "Norway",
+   "site": "Troll field",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No - Permanenetly disqualified",
+    "reason_leadit_gives": "Not explicitly for steel",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "CCS as a service for several industries",
+    "project_scale": "R&D partnership",
+    "project_status": "Operating",
+    "planned_commissioning": "2024",
+    "actual_start_year": "2024",
+    "gem_plant_named": "Not availiable",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "perimeter exclusion",
+   "clause": "CO2 transport and storage, not steel",
+   "note": "LeadIT disqualifies it itself -- 'Not explicitly for steel'. Northern Lights is the CCS service this register holds in the CCS sector, not in steel.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-068": {
+   "name": "SSAB Raahe Mini Mill",
+   "company": "SSAB",
+   "country": "Finland",
+   "site": "Raahe",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "Project has been cancelled.",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "BF/BOF to scrap-EAF conversion",
+    "project_scale": "Full scale",
+    "project_status": "Cancelled",
+    "planned_commissioning": "2030",
+    "actual_start_year": "",
+    "gem_plant_named": "SSAB Raahe steel plant",
+    "gem_plant_id": "P100000120468",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120468",
+    "name": "SSAB Raahe steel plant",
+    "class": "named not admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "named not admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-069": {
+   "name": "Not available",
+   "company": "Liberty Steel Group",
+   "country": "Romania",
+   "site": "Galati",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Not enough information",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "DRI plant initially powered by natural gas, but using hydrogen later",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "2024",
+    "actual_start_year": "",
+    "gem_plant_named": "GFG Liberty Galati steel plant",
+    "gem_plant_id": "P100000120796",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120796",
+    "name": "GFG Liberty Galati steel plant",
+    "class": "named not admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "named not admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-070": {
+   "name": "Not available",
+   "company": "Salzgitter Group",
+   "country": "Germany",
+   "site": "Wilhelmshaven",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Not enough information",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Feasibility study DRI",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "2021",
+    "actual_start_year": "",
+    "gem_plant_named": "Not availiable",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "named not admitted",
+   "note": "THE LIST CARRIES NO PROJECT NAME: LeadIT writes 'Not available' and its own reason is 'Not enough information'. What it does carry is a company and a site -- Salzgitter at Wilhelmshaven, a DRI feasibility study. A feasibility study is not a company-confirmed plant and the entry is named not admitted rather than searched, because there is no project name to search for.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-071": {
+   "name": "Green Crane - Western route (formerly Green Spider) Asturias",
+   "company": "Green Crane",
+   "country": "Spain",
+   "site": "Asturias",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No - Permanenetly disqualified",
+    "reason_leadit_gives": "Not explicitly for steel",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "hydrogen production (green hydrogen)",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "2024",
+    "actual_start_year": "",
+    "gem_plant_named": "Not available",
+    "gem_plant_id": "P100000120452",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120452",
+    "name": "ArcelorMittal Asturias (Gijón) steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-072": {
+   "name": "Equinor Zero Carbon Humber, Hydrogen to Humber (H2H) Saltend",
+   "company": "Equinor",
+   "country": "United Kingdom",
+   "site": "Humber region",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No - Permanenetly disqualified",
+    "reason_leadit_gives": "Not explicitly for steel",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Blue Hydrogen (Natural gas)",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "2026",
+    "actual_start_year": "",
+    "gem_plant_named": "Not availiable",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "perimeter exclusion",
+   "clause": "hydrogen supply, not steel",
+   "note": "Blue hydrogen for the Humber. LeadIT's own reason is 'Not explicitly for steel' and the perimeter reaches the same answer by the four legs.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-075": {
+   "name": "Thyssenkrupp H2morrow Duisburg",
+   "company": "Thyssenkrupp",
+   "country": "Germany",
+   "site": "Duisburg (location of hydrogen use)",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "No new updates",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Reformed natural gas(blue hydrogen) +  with permanent offshore storage of CO2",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "2027",
+    "actual_start_year": "",
+    "gem_plant_named": "Not availiable",
+    "gem_plant_id": "P100000120421",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120421",
+    "name": "ThyssenKrupp Steel Duisburg steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-078": {
+   "name": "Not available",
+   "company": "Liberty Steel Group",
+   "country": "France",
+   "site": "Dunkirk",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "No new updates",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Hydrogen-based steel plant",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "Not stated",
+    "actual_start_year": "",
+    "gem_plant_named": "Saarstahl Ascoval Saint-Saulve steel plant",
+    "gem_plant_id": "P100000120477",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120477",
+    "name": "Saarstahl Ascoval Saint-Saulve steel plant",
+    "class": "perimeter exclusion",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "perimeter exclusion",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-079": {
+   "name": "Thyssenkrupp HydrOxy Hub Walsum",
+   "company": "Thyssenkrupp",
+   "country": "Germany",
+   "site": "Duisburg",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Partnership not run by steel company",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Green electricity electrolysis",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "2027",
+    "actual_start_year": "",
+    "gem_plant_named": "ThyssenKrupp Steel Duisburg steel plant",
+    "gem_plant_id": "P100000120421",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120421",
+    "name": "ThyssenKrupp Steel Duisburg steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-083": {
+   "name": "SSAB HYBRIT Luleå",
+   "company": "SSAB",
+   "country": "Sweden",
+   "site": "Luleå",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Finished, pilot stage evolved to demonstration",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "H-DR",
+    "project_scale": "Pilot",
+    "project_status": "Announced",
+    "planned_commissioning": "2021",
+    "actual_start_year": "",
+    "gem_plant_named": "HYBRIT fossil-free steel demonstration plant",
+    "gem_plant_id": "P100000120845",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120845",
+    "name": "SSAB Luleå steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-084": {
+   "name": "Thyssenkrupp H-vision Rotterdam",
+   "company": "Thyssenkrupp",
+   "country": "Netherlands",
+   "site": "Rotterdam",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "No new updates",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "H2 imports",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "2026",
+    "actual_start_year": "",
+    "gem_plant_named": "Not availiable",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "perimeter exclusion",
+   "clause": "hydrogen imports, not one of the four legs",
+   "note": "H-vision is hydrogen supply into Rotterdam. LeadIT records it as having no new updates; the perimeter refuses it whatever its state.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-088": {
+   "name": "SSAB FFS - Towards Fossil-Free Steel Raahe",
+   "company": "SSAB",
+   "country": "Finland",
+   "site": "Raahe",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Partnership - cancelled project",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "Smelting of hydrogen-reduced sponge iron in an electric arc furnace",
+    "project_scale": "R&D partnership",
+    "project_status": "Finalized (research & testing)",
+    "planned_commissioning": "Not stated",
+    "actual_start_year": "",
+    "gem_plant_named": "Not availiable",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120468",
+    "name": "SSAB Raahe steel plant",
+    "class": "named not admitted",
+    "matched_on": "by works, by hand — LeadIT carries no GEM Plant ID for this row"
+   },
+   "class": "named not admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-091": {
+   "name": "Techint Dalmine Zero Emissions",
+   "company": "Techint Group",
+   "country": "Italy",
+   "site": "Dalmine",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "No new updates",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Green electricity electrolysis",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "Not stated",
+    "actual_start_year": "",
+    "gem_plant_named": "Tenaris Dalmine steel plant",
+    "gem_plant_id": "P100000120625",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120625",
+    "name": "Tenaris Dalmine steel plant",
+    "class": "perimeter exclusion",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "perimeter exclusion",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-092": {
+   "name": "ArcellorMittal EAF Fos-sur-Mer",
+   "company": "ArcelorMittal",
+   "country": "France",
+   "site": "Fos-sur-Mer",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No - Permanenetly disqualified",
+    "reason_leadit_gives": "BF-BOF to scrap EAF (out of scope)",
+    "technology_category": "Secondary Steel",
+    "specific_equipment": "Transition to EAF scrap",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2027",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Méditerranée Fos sur Mer steel plant",
+    "gem_plant_id": "P100000120473",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120473",
+    "name": "ArcelorMittal Méditerranée Fos sur Mer steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-093": {
+   "name": "ArcelorMittal HyDeal España Asturias",
+   "company": "ArcelorMittal",
+   "country": "Spain",
+   "site": "Asturias",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No - Permanenetly disqualified",
+    "reason_leadit_gives": "Not explicitly for steel",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "H2 as a service for industries",
+    "project_scale": "R&D partnership",
+    "project_status": "Paused or postponed",
+    "planned_commissioning": "2031",
+    "actual_start_year": "",
+    "gem_plant_named": "Not availiable",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "perimeter exclusion",
+   "clause": "hydrogen supply, not steel",
+   "note": "HyDeal Espana at Asturias supplies hydrogen; ArcelorMittal's Gijon works is admitted at ref P100000120458 on its own DRI announcement, and the iron is counted once, there.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-094": {
+   "name": "Not available",
+   "company": "Salzgitter Group",
+   "country": "Germany",
+   "site": "Wilhelmshaven",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "No new updates",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Green electricity electrolysis",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "Not stated",
+    "actual_start_year": "",
+    "gem_plant_named": "Not availiable",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "named not admitted",
+   "note": "The second of LeadIT's two unnamed Salzgitter Wilhelmshaven rows, this one an electrolysis study. Same answer and for the same reason.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-101": {
+   "name": "Tata Steel Project H2ermes Ijmuiden",
+   "company": "Tata Steel",
+   "country": "Netherlands",
+   "site": "Ijmuiden",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "No new updates",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Green electricity electrolysis",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2026",
+    "actual_start_year": "",
+    "gem_plant_named": "Tata Steel IJmuiden steel plant",
+    "gem_plant_id": "P100000120758",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120758",
+    "name": "Tata Steel IJmuiden steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-108": {
+   "name": "Acciaierie d’Italia DRI MoU Taranto",
+   "company": "Acciaierie d’Italia",
+   "country": "Italy",
+   "site": "Taranto",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "MoU announcement for DRI, without detais of fuel   - Saved in prospective for future updates",
+    "technology_category": "Not Stated",
+    "specific_equipment": "DRI - no details on natural gas or hydrogen use",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "Not stated",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Acciaierie d'Italia Taranto steel plant",
+    "gem_plant_id": "P100000120620",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120620",
+    "name": "Acciaierie d'Italia Taranto steel plant",
+    "class": "named not admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "named not admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-119": {
+   "name": "ArcelorMittal Gijón DRI and EAF",
+   "company": "ArcelorMittal",
+   "country": "Spain",
+   "site": "Gijon",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "Was before NG-DRI to H-DRI ; company stated in November 2024 they postponed the DRI plans. But that EAF construction would not be stopped",
+    "technology_category": "Phasing out BF",
+    "specific_equipment": "H-DR & EAF; Natural gas gradual phase out for renewable H2 with syngas from waste gases",
+    "project_scale": "Full scale",
+    "project_status": "Paused or postponed",
+    "planned_commissioning": "2026",
+    "actual_start_year": "",
+    "gem_plant_named": "ArcelorMittal Asturias (Gijón) steel plant",
+    "gem_plant_id": "P100000120452",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120452",
+    "name": "ArcelorMittal Asturias (Gijón) steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-120": {
+   "name": "GreenIron H2 MoU Vale and GreenIron Sandviken",
+   "company": "GreenIron H2 AB",
+   "country": "Sweden",
+   "site": "Sandviken",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No",
+    "reason_leadit_gives": "MoU to explore collaboration possibilities between GreenIron and Vale for reduction of iron ore - No full details - Saved in prospective for future updates",
+    "technology_category": "Not Stated",
+    "specific_equipment": "The study will evaluate the feasibility of using green hydrogen and other innovations to reduce the environmental impact of future operations",
+    "project_scale": "R&D partnership",
+    "project_status": "Announced",
+    "planned_commissioning": "Not stated",
+    "actual_start_year": "",
+    "gem_plant_named": "Not available",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "named not admitted",
+   "note": "A memorandum of understanding between GreenIron and Vale to study hydrogen reduction at Sandviken. LeadIT's own note says it is saved 'in prospective for future updates'. An agreement to study is not a company-confirmed plant.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-125": {
+   "name": "Soladvent HyDeal Ambition Asturias",
+   "company": "Soladvent",
+   "country": "Spain",
+   "site": "Asturias",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No - Permanenetly disqualified",
+    "reason_leadit_gives": "Consortium, not a project",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Not stated",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2030",
+    "actual_start_year": "",
+    "gem_plant_named": "Not available",
+    "gem_plant_id": "N/A",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "perimeter exclusion",
+   "clause": "a consortium, not a project",
+   "note": "LeadIT's own reason, and this register's too: there is no works and no unit.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-131": {
+   "name": "Metinvest DRI-EAF Plant Piombino",
+   "company": "Metinvest Holding LLC",
+   "country": "Italy",
+   "site": "Piombino",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No - Permanenetly disqualified",
+    "reason_leadit_gives": "Plant to use NG-DRI from Ukraine to produce steel in EAF in italy (hot-rolled coils)",
+    "technology_category": "Secondary Steel",
+    "specific_equipment": "Fully integrated metallurgical",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2027",
+    "actual_start_year": "",
+    "gem_plant_named": "Metinvest Piombino steel plant",
+    "gem_plant_id": "P100000121211",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000121211",
+    "name": "Metinvest Piombino steel plant",
+    "class": "admitted",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "admitted",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-139": {
+   "name": "British Steel Scunthorpe CCS Trial",
+   "company": "British Steel Ltd",
+   "country": "United Kingdom",
+   "site": "North Lincolnshire",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No - Permanenetly disqualified",
+    "reason_leadit_gives": "Small capture to large project (not 85% reduction), directed to the power station and not to the BF",
+    "technology_category": "Secondary Steel",
+    "specific_equipment": "Carbon extraction from power station’s boiler flue",
+    "project_scale": "Pilot",
+    "project_status": "Operating",
+    "planned_commissioning": "Not stated",
+    "actual_start_year": "",
+    "gem_plant_named": "British Steel Scunthorpe plant",
+    "gem_plant_id": "P100000120483",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120483",
+    "name": "British Steel Scunthorpe plant",
+    "class": "searched none found",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "searched none found",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-142": {
+   "name": "Voestalpine H2 Sequence Impulse Process",
+   "company": "voestalpine Group",
+   "country": "Austria",
+   "site": "Linz",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No - Permanenetly disqualified",
+    "reason_leadit_gives": "H2 Injection to BF alone is insuficient to reach 85% reduction compared to average emission",
+    "technology_category": "Secondary Steel",
+    "specific_equipment": "Sequence Impulse Process (SIP) technology",
+    "project_scale": "Pilot",
+    "project_status": "Announced",
+    "planned_commissioning": "2028",
+    "actual_start_year": "",
+    "gem_plant_named": "Voestalpine Stahl Linz steel plant",
+    "gem_plant_id": "P100000120010",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120010",
+    "name": "Voestalpine Stahl Linz steel plant",
+    "class": "held",
+    "matched_on": "LeadIT's own GEM Plant ID"
+   },
+   "class": "held",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  },
+  "GST-158": {
+   "name": "Marcegaglia AdriatiCO2 Ravenna",
+   "company": "Marcegaglia",
+   "country": "Italy",
+   "site": "Ravenna",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "Yes",
+    "reason_leadit_gives": "Project claims to capture 95% of all emissions in the DRI process and uses biomass and biochar as well, resulting in a 'net negative' emissions for this project.",
+    "technology_category": "Complementing conventional steelmaking",
+    "specific_equipment": "Also uses biochar",
+    "project_scale": "Full scale",
+    "project_status": "Announced",
+    "planned_commissioning": "2028",
+    "actual_start_year": "",
+    "gem_plant_named": "",
+    "gem_plant_id": "",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": null,
+    "name": "",
+    "class": null,
+    "matched_on": "not in GEM's 132 European plants"
+   },
+   "class": "named not admitted",
+   "speaker": "Marcegaglia, own site",
+   "source": "https://www.marcegaglia.com/en/press-room",
+   "note": "QUALIFIED BY LEADIT AND NOT SOURCEABLE FROM THE OWNER, AND THE REASON IS A SHAPE THIS REGISTER HAS A RULE FOR ONE STEP OVER. marcegaglia.com answers a declared reader with 200 and 21,704 characters on EVERY path tried -- the front page, the English and Italian press rooms, and a project URL -- and the body is byte-identical each time: a single-page application serving one shell and rendering its content in a browser. scope.md calls a 200 with an EMPTY body a refusal; this is a 200 with the SAME body, which is the same failure wearing a different number, and it is recorded against the URLs rather than against the project. AdriatiCO2 at Ravenna would be an announced DRI plant if the owner's own words could be read; until they are, the entry is named not admitted, exactly as Port Talbot was under S3.",
+   "class_from": "classed by this pass; GEM does not carry this works"
+  },
+  "GST-161": {
+   "name": "Outukumpu Biocoke Green Stainless Steel",
+   "company": "Outokumpu",
+   "country": "Finland",
+   "site": "Tornio",
+   "leadit_claim": {
+    "benchmark": "leadit_green_steel_tracker",
+    "vintage": "2026-09-04",
+    "qualified_for_tracker": "No - Permanenetly disqualified",
+    "reason_leadit_gives": "Project does not produce steel, but ferrochrome which is an alloy of iron and chrome",
+    "technology_category": "Secondary Steel",
+    "specific_equipment": "Not stated",
+    "project_scale": "Pilot",
+    "project_status": "Operating",
+    "planned_commissioning": "Not stated",
+    "actual_start_year": "",
+    "gem_plant_named": "",
+    "gem_plant_id": "",
+    "note": "A BENCHMARK CLAIM, NOT A CLASS. LeadIT's columns say what LeadIT knows as of its 2026-09-04 version. Its `Qualified for Tracker` value is ITS OWN editorial test and is never this register's class: a row LeadIT disqualifies may be admitted here and a row it qualifies may be refused by the perimeter."
+   },
+   "gem": {
+    "key": "P100000120469",
+    "name": "Outokumpu Tornio steel plant",
+    "class": "perimeter exclusion",
+    "matched_on": "by works, by hand — LeadIT carries no GEM Plant ID for this row"
+   },
+   "class": "perimeter exclusion",
+   "class_from": "the first-list census, inherited on the join — this pass re-classes nothing GEM already carries"
+  }
+ }
+}

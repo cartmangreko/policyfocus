@@ -1954,7 +1954,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "InvalidURL",
-   "note": "2023 cohort census, IEA ref 1121: no capture at or before 2023-10-31; the live page was read"
+   "note": "2023 cohort census, IEA ref 1121: no capture at or before 2023-10-31; the live page was read",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the SPACES in its path. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal; the 2023 population test read four entries as 'answered with nothing' on the strength of records like this one. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader. The defect is the same one the steel census found in a diacritic: see sources/steel_docket.md, D-S1.",
+   "superseded_by": {
+    "date": "2026-09-18",
+    "sha256": "",
+    "outcome": "403",
+    "bytes": 0
+   }
   },
   {
    "url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
@@ -5410,7 +5418,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "InvalidURL",
-   "note": "2023 population test, IEA ref 1115: iea_reference, Wayback capture at or before 2023-10-31 where one exists"
+   "note": "2023 population test, IEA ref 1115: iea_reference, Wayback capture at or before 2023-10-31 where one exists",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the SPACES in its path. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal; the 2023 population test read four entries as 'answered with nothing' on the strength of records like this one. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader. The defect is the same one the steel census found in a diacritic: see sources/steel_docket.md, D-S1.",
+   "superseded_by": {
+    "date": "2026-09-18",
+    "sha256": "504e7364397162be51ae511181b6696961534bea711b3248a60725f299d2c91c",
+    "outcome": "200, empty body",
+    "bytes": 10128
+   }
   },
   {
    "url": "https://web.archive.org/web/20231030141641/https://gen2energy.com/",
@@ -5458,7 +5474,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "InvalidURL",
-   "note": "2023 population test, IEA ref 1118: iea_reference, Wayback capture at or before 2023-10-31 where one exists"
+   "note": "2023 population test, IEA ref 1118: iea_reference, Wayback capture at or before 2023-10-31 where one exists",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the SPACES in its path. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal; the 2023 population test read four entries as 'answered with nothing' on the strength of records like this one. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader. The defect is the same one the steel census found in a diacritic: see sources/steel_docket.md, D-S1.",
+   "superseded_by": {
+    "date": "2026-09-18",
+    "sha256": "504e7364397162be51ae511181b6696961534bea711b3248a60725f299d2c91c",
+    "outcome": "200, empty body",
+    "bytes": 10128
+   }
   },
   {
    "url": "https://web.archive.org/web/20220126164014/https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
@@ -5470,7 +5494,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "InvalidURL",
-   "note": "2023 population test, IEA ref 1116: iea_reference, Wayback capture at or before 2023-10-31 where one exists"
+   "note": "2023 population test, IEA ref 1116: iea_reference, Wayback capture at or before 2023-10-31 where one exists",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the SPACES in its path. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal; the 2023 population test read four entries as 'answered with nothing' on the strength of records like this one. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader. The defect is the same one the steel census found in a diacritic: see sources/steel_docket.md, D-S1.",
+   "superseded_by": {
+    "date": "2026-09-18",
+    "sha256": "504e7364397162be51ae511181b6696961534bea711b3248a60725f299d2c91c",
+    "outcome": "200, empty body",
+    "bytes": 10128
+   }
   },
   {
    "url": "https://web.archive.org/web/20210621045819/https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
@@ -11914,7 +11946,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "InvalidURL",
-   "note": "2023 population test, IEA ref 595: iea_reference_live, read live for the outcome as of 2026-09-30"
+   "note": "2023 population test, IEA ref 595: iea_reference_live, read live for the outcome as of 2026-09-30",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the SPACES in its path. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal; the 2023 population test read four entries as 'answered with nothing' on the strength of records like this one. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader. The defect is the same one the steel census found in a diacritic: see sources/steel_docket.md, D-S1.",
+   "superseded_by": {
+    "date": "2026-09-18",
+    "sha256": "",
+    "outcome": "403",
+    "bytes": 0
+   }
   },
   {
    "url": "https://www.iberdrola.com/press-room/",
@@ -11950,7 +11990,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "InvalidURL",
-   "note": "2023 population test, IEA ref 771: iea_reference_live, read live for the outcome as of 2026-09-30"
+   "note": "2023 population test, IEA ref 771: iea_reference_live, read live for the outcome as of 2026-09-30",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the SPACES in its path. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal; the 2023 population test read four entries as 'answered with nothing' on the strength of records like this one. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader. The defect is the same one the steel census found in a diacritic: see sources/steel_docket.md, D-S1.",
+   "superseded_by": {
+    "date": "2026-09-18",
+    "sha256": "",
+    "outcome": "403",
+    "bytes": 0
+   }
   },
   {
    "url": "http://h2vnormandy-concertation.net/comprendre-projet/",
@@ -13186,7 +13234,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "InvalidURL",
-   "note": "2023 population test, IEA ref 1115: iea_reference_live, read live for the outcome as of 2026-09-30"
+   "note": "2023 population test, IEA ref 1115: iea_reference_live, read live for the outcome as of 2026-09-30",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the SPACES in its path. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal; the 2023 population test read four entries as 'answered with nothing' on the strength of records like this one. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader. The defect is the same one the steel census found in a diacritic: see sources/steel_docket.md, D-S1.",
+   "superseded_by": {
+    "date": "2026-09-18",
+    "sha256": "",
+    "outcome": "403",
+    "bytes": 0
+   }
   },
   {
    "url": "https://www.entsog.eu/sites/default/files/2020-11/ENTSOG_TYNDP_2020_Annex_A_Projects_Details.pdf",
@@ -13210,7 +13266,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "InvalidURL",
-   "note": "2023 population test, IEA ref 1118: iea_reference_live, read live for the outcome as of 2026-09-30"
+   "note": "2023 population test, IEA ref 1118: iea_reference_live, read live for the outcome as of 2026-09-30",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the SPACES in its path. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal; the 2023 population test read four entries as 'answered with nothing' on the strength of records like this one. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader. The defect is the same one the steel census found in a diacritic: see sources/steel_docket.md, D-S1.",
+   "superseded_by": {
+    "date": "2026-09-18",
+    "sha256": "",
+    "outcome": "403",
+    "bytes": 0
+   }
   },
   {
    "url": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
@@ -13246,7 +13310,15 @@
    "sha256": "",
    "text_chars": 0,
    "outcome": "InvalidURL",
-   "note": "2023 population test, IEA ref 1116: iea_reference_live, read live for the outcome as of 2026-09-30"
+   "note": "2023 population test, IEA ref 1116: iea_reference_live, read live for the outcome as of 2026-09-30",
+   "defect": "client-side: the request was never sent",
+   "defect_note": "urllib encodes its request line as ASCII and refused this URL for the SPACES in its path. THE RECORD SAYS NOTHING ABOUT THE PUBLISHER and must not be read as a refusal; the 2023 population test read four entries as 'answered with nothing' on the strength of records like this one. Kept rather than deleted — this register does not delete fetches (D42) — and superseded by the re-fetch below, made through the corrected reader. The defect is the same one the steel census found in a diacritic: see sources/steel_docket.md, D-S1.",
+   "superseded_by": {
+    "date": "2026-09-18",
+    "sha256": "",
+    "outcome": "403",
+    "bytes": 0
+   }
   },
   {
    "url": "https://www.topsectorenergie.nl/",
@@ -18503,6 +18575,30 @@
    "text_chars": 0,
    "outcome": "404",
    "note": "brief 13 owner look for Gigastack: testing whether the page answers a declared reader before it is queued"
+  },
+  {
+   "url": "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+   "domain": "www.topsectorenergie.nl",
+   "source_type": "iea_reference",
+   "date": "2026-09-18",
+   "http": 403,
+   "bytes": 0,
+   "sha256": "",
+   "text_chars": 0,
+   "outcome": "403",
+   "note": "RE-FETCH THROUGH THE CORRECTED READER, 18 September 2026. The earlier record was InvalidURL — a space in the path, so the request never left this machine and the record said nothing about the publisher. See sources/steel_docket.md, D-S1."
+  },
+  {
+   "url": "https://web.archive.org/web/20220126164014/https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+   "domain": "web.archive.org",
+   "source_type": "iea_reference",
+   "date": "2026-09-18",
+   "http": 200,
+   "bytes": 10128,
+   "sha256": "504e7364397162be51ae511181b6696961534bea711b3248a60725f299d2c91c",
+   "text_chars": 364,
+   "outcome": "200, empty body",
+   "note": "RE-FETCH THROUGH THE CORRECTED READER, 18 September 2026. The earlier record was InvalidURL — a space in the path, so the request never left this machine and the record said nothing about the publisher. See sources/steel_docket.md, D-S1."
   }
  ]
 }
