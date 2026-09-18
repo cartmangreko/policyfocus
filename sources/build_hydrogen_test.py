@@ -725,6 +725,17 @@ def main() -> int:
               "this machine,\n  so the test table is not recomputed. The committed files "
               "stand.")
         return 0
+
+    # MATERIALISE THE POPULATION FIRST, and only here, where the workbooks are known to
+    # be on the machine. Everything downstream -- this builder, the gate, the ladder --
+    # then reads the tracked derived file rather than opening a workbook. A machine
+    # without the workbooks never reaches this line and leaves the tracked file alone.
+    if not a.check:
+        n = t23.write_population()
+        if n:
+            print(f"build_hydrogen_test: {n} entries materialised to "
+                  f"{t23.POPULATION_OUT.relative_to(L.ROOT)}")
+
     lines = build()
     text = csv_text(lines)
     if a.check:

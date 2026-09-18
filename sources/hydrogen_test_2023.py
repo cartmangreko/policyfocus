@@ -67,6 +67,17 @@ import hydrogen_search as hs  # noqa: E402
 ROOT = bench.ROOT
 OUT = ROOT / "sources" / "hydrogen_test_2023.json"
 VINTAGE = census.VINTAGE
+
+# THE POPULATION, MATERIALISED AND TRACKED. The workbooks are gitignored -- they are
+# Odenweller and Ueckerdt's bytes and this repository is not licensed to redistribute
+# them -- and openpyxl is not in the build image. A gate that read them therefore
+# passed locally and failed on Vercel, which is what happened at d96903a.
+#
+# SO THE WORKBOOK IS READ ONCE, HERE, AND WRITTEN DOWN. The derived file carries the
+# 255 entries and the sha256 of every workbook they came from, so a reader can prove
+# which bytes produced it without holding those bytes. See scope.md, "A build-time
+# gate reads tracked files only".
+POPULATION_OUT = ROOT / "sources" / "hydrogen_test_2023_population.json"
 CUTOFF = "2023-10-31"
 MAX_REFS = 3
 MAX_OWNER_HOSTS = 2
@@ -130,7 +141,72 @@ CDX = census.CDX
 
 
 def population() -> list[dict]:
-    """The 255, with everything the October 2023 vintage says about each."""
+    """The 255, with everything the October 2023 vintage says about each.
+
+    READS THE TRACKED DERIVED FILE where it exists, which is everywhere the repository
+    is checked out, and the workbook only when it does not. NOTHING IN THE BUILD CHAIN
+    REACHES THE WORKBOOK THROUGH THIS FUNCTION: on a build image the derived file is
+    present and openpyxl is not, and the fallback is for a machine that has just
+    deleted the derived file and still has the workbook to rebuild it from.
+    """
+    if POPULATION_OUT.exists():
+        return json.loads(POPULATION_OUT.read_text(encoding="utf-8"))["entries"]
+    return population_from_workbook()
+
+
+def workbook_sources() -> list[dict]:
+    """Every workbook the population is read from, by name, size and sha256.
+
+    RECORDED INSIDE THE DERIVED FILE so that the identity travels with the data. The
+    bytes cannot be committed; the hash can, and it is what lets anybody fetch the
+    same workbook from the authors and prove it is the one these 255 rows came from.
+    """
+    import hashlib
+    out = []
+    for path in (VINTAGE,):
+        if not path.exists():
+            continue
+        body = path.read_bytes()
+        out.append({"file": path.name, "bytes": len(body),
+                    "sha256": hashlib.sha256(body).hexdigest()})
+    return out
+
+
+def write_population() -> int:
+    """Materialise the population. Called by the build script WHEN THE WORKBOOKS ARE
+    PRESENT, and never otherwise -- a machine without them leaves the tracked file
+    exactly as it found it rather than writing an empty one over it."""
+    if not VINTAGE.exists():
+        return 0
+    entries = population_from_workbook()
+    POPULATION_OUT.write_text(json.dumps({
+        "_comment": [
+            "THE OCTOBER 2023 POPULATION, MATERIALISED FROM THE WORKBOOK. Derived and",
+            "tracked: written by build_hydrogen_test.py where the workbooks are on the",
+            "machine, read by everything else.",
+            "",
+            "WHY IT EXISTS. The workbooks are gitignored, being Odenweller and",
+            "Ueckerdt's bytes, and openpyxl is not installed in the build image. The",
+            "production build failed at d96903a because check_hydrogen_test.py read",
+            "them through this module. A build-time gate reads tracked files only;",
+            "anything needing openpyxl or a cache body runs in the local pre-push",
+            "chain. See scope.md.",
+            "",
+            "`sources` below is the identity of the workbooks these rows came from.",
+            "The bytes are not redistributable; the hash is, and it is what makes the",
+            "derivation checkable. check_hydrogen_workbook.py, which runs locally and",
+            "never in the build, recomputes these rows and refuses a mismatch.",
+        ],
+        "entries_count": len(entries),
+        "sources": workbook_sources(),
+        "entries": entries,
+    }, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    return len(entries)
+
+
+def population_from_workbook() -> list[dict]:
+    """The 255, read from the workbook itself. NEEDS openpyxl AND the gitignored
+    bytes, so it runs locally and never in the build chain."""
     refs, qc = census.sheets(VINTAGE)
     out = []
     for r in drift.load_workbook_projects(VINTAGE):
