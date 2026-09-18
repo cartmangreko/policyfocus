@@ -222,6 +222,38 @@ tracks renewable hydrogen, molten oxide electrolysis, electrowinning and electri
 reduction. **Neither is the population.** Every coverage figure in this docket names which
 list it came from, and no figure in it is offered as coverage of European steel.
 
+**D-S8. THE HYDROGEN HALF OF D-S1 IS CLOSED, AND CLOSING IT TURNED A BUILD RED FIRST.**
+D-S1 reported `hydrogen_search.py` as carrying the same defect on another branch, with nine
+`InvalidURL` records to show for it. Merging main brought that branch's work here, and with
+it the hydrogen index — so the gate this pass wrote began failing on a defect this pass had
+only described. **That is the gate working.** The reader is corrected, the two URLs behind
+all nine records were re-fetched, and the nine are marked `defect` with `superseded_by`
+rather than deleted, because this register does not delete fetches (D42).
+
+**WHAT THE PUBLISHER ACTUALLY SAID IS NOT WHAT FOUR ENTRIES RECORDED.** The URL is a TKI
+Gas overview PDF whose path carries spaces; the request never left. Asked properly,
+`topsectorenergie.nl` answers **403** — it refuses a declared reader, which is an answer —
+and the Wayback capture of 26 January 2022 returns 200 whose 10,128 bytes are the archive's
+own banner around a PDF that yields no text. The 2023 population test had written "answered
+with nothing" against refs 1115, 1116 and 1118. **The classes do not move and the reasons
+do**: no readable document still stands, on evidence rather than on a request that was
+never made.
+
+**D-S9. THE BUILD-TIME RULE WAS APPLIED BEFORE IT COULD FAIL, WHICH IS THE ONLY TIME THAT
+HAS HAPPENED.** Main's #66 settled that a step wired into `npm run build` may read tracked
+files only. Three of this branch's steps were already in prebuild when that arrived and one
+of them, `build_leadit_entries.py`, opens an 8.8 MB workbook with `openpyxl` — neither of
+which exists in the build image. It is now in the pre-push chain; `sources/leadit_entries.json`
+is a tracked derived file carrying the workbook's SHA-256 and byte count; `--check` rebuilds
+all 65 entries from the workbook locally and refuses a mismatch; and
+`build_steel_second_list.py` verifies the recorded hash against `benchmark_snapshots.json`
+**inside the build**, which is the half of the question a machine without the bytes can
+still ask. `check_fetch_records.py` and `build_steel_benchmark.py` stay in prebuild: every
+file they read, the five cache `index.json` included, is tracked.
+
+**Verified rather than reasoned about**: all 37 prebuild steps were run against a tree
+holding only `git ls-files` content with `openpyxl` blocked. The three steel steps pass.
+
 ## 6. Disagreements, held and not resolved
 
   - **Stegra's Spanish plant.** This register admits it; LeadIT's GST-040 carries it as

@@ -1980,6 +1980,316 @@ summarised for a person the summary says how many it is summarising.
 The general form: **truncation is a property of a pipeline, not of a function.** Fixing the
 one place it was found does not fix it, because the next cut is in the next stage.
 
+### A refusal is a measurement of a request, not of a publisher
+
+**Ruled 17 September 2026.** On 10 September this register recorded that "the EU's own
+grant registers are unreadable to a declared reader" and that "the register leg of the
+admission procedure is closed to this pipeline". The measurement behind it was four URLs
+answering HTTP 200 with a forty-character body, and the measurement still holds: those same
+presscorner pages refuse the same reader today. **The conclusion did not.**
+
+The same publisher serves the same documents elsewhere and in full. The Commission's own
+state-aid decisions are PDFs at `ec.europa.eu/competition/state_aid/cases1/`; DG COMP
+publishes participant infographics per IPCEI; CINEA's news articles carry the auction award
+tables; and for some references the presscorner itself answers at
+`/api/files/document/print/en/<ref>/<REF>_EN.pdf` — which works for IP/26/1004 and 404s for
+IP/22/3298, so it is a route that sometimes exists rather than a general answer. Eleven
+Commission documents were read this way in one pass.
+
+**So a refusal is recorded against the URL that refused, and a conclusion about a publisher
+needs more than one shape of request.** The honest form of the earlier finding was always
+"these four URLs refuse", which is exactly what it measured. This is the mirror of the
+machine-classification ruling: that one was a machine guessing domains and finding nothing,
+this was a person reading one URL shape and recording the publisher as closed.
+
+What does not change is that a 200 with an empty body IS a refusal and is recorded as one.
+The three-state reading stands; what is added is that the third state is a property of a
+route.
+
+### Once a funder's list is read, absence from it is a finding
+
+**Ruled 17 September 2026, brief 12.** Rung 4 asks whether a funder has published an award
+naming the project. Before this brief no funder list had been read for 71 of the 171 scored
+entries, and those cells were `not_searched` — correctly, because a fail there would have
+been a claim about the project made out of a gap in this register's reading.
+
+**A list that publishes over the whole population asks the rung's question of every entry
+in it.** The Innovation Fund's hydrogen auctions and the four hydrogen IPCEIs publish over
+the European Economic Area, which contains every entry in this population. Once they are on
+file, `searched` is true for every entry and **absence from them is a fail**: the funders
+have published who they funded, and this project is not on the list.
+
+**A national list adds awards and does not narrow that.** The United Kingdom's, Denmark's,
+Norway's, Spain's and France's were read; the Netherlands' answers a declared reader with a
+200 and an empty body and is recorded as refused, with the note that the Dutch projects are
+not lost because the Commission's own decisions name them. **A funder nobody could read is
+a different fact from a funder who named nobody**, and the table prints both.
+
+**AND A SHORTLIST IS NOT AN AWARD.** Two documents read in this pass are a funder naming
+projects on a list that is explicitly not yet an award, and both publishers say so
+themselves — DESNZ's HAR2 shortlist ("does not guarantee Government support") and IDAE's H2
+Valles provisional resolution ("aún sujeta a alegaciones técnicas"). Neither passes rung 4.
+Both were read, which is what makes rung 4 `searched` for the entries they cover. Whether
+the rung needs a third value for this is an open question and is not settled here.
+
+### An award is matched by identifier or by a document naming both, never by a name
+
+The duplicate rule already says this for benchmark entries. It binds on funding with the
+same force and for the same reason, and the funder pass of brief 12 produced four
+near-misses that a name join would have taken:
+
+- **eNRG Lahti**, Nordic Ren-Gas Oy — the same developer as a held row, at a **different
+  town**: the funder says Lahti and the row is Pori.
+- **Kristinestad PtX**, Koppö Energia Oy — the same **town** as a held row, under a
+  different owner; the row is Plug Power's.
+- **IPCEI Hy2Use's Ørsted project** — the same **parent** as a held row, in a different
+  country: the participant is Ørsted Hydrogen Netherlands, off Zeeland, and the row is in
+  western Denmark.
+- **IF25's Gen2-LH2** — the right company and **no place at all**. An award naming a
+  company does not name a project.
+
+Every match carries which route it took and the sentence that does the naming; every
+refusal carries why. **Awards to projects outside the population stay on the funding layer
+with no row**, listed so the funding layer is complete and so the next admission pass has
+them.
+
+### An as-of cut-off applies to a fail as well as to a pass
+
+**Ruled 17 September 2026.** `--as-of DATE` scores the ladder on the evidence a reader
+could have held on a day. A rung passes only on a document whose dateline, or `captured_at`,
+or `not_after` bound, is on or before the date.
+
+**The rule binds on a fail too, and that is the whole of it.** Every cell carries a source
+because a fail is a finding about the evidence examined. A fail resting on a document
+published after the cut-off is a finding nobody could have made on that day — it is not a
+fail as of then, it is nothing as of then, and the cell reads `not_searched`. Leaving it a
+fail would let a ladder score a 2023 cohort out of what this register read in 2026, which
+is the error the instrument exists to avoid.
+
+**A cell with no date at all fails the test.** An undated document cannot be placed before
+a cut-off, and placing it there anyway would date the register's reading from the day it
+happened to look.
+
+**A COARSE DATE IS ADMITTED AT ITS EARLIEST DAY AND THE COUNT IS PRINTED.** A document
+dated to a year is stored on 1 January under the padding rule, so a cut-off in October
+admits it although it may have been published in December. Reading a year as its last day
+would invent a month the publisher did not state, so the passes resting on a date coarser
+than the cut-off are counted and printed on every run rather than resolved.
+
+**The as-of table is a second file and never overwrites the ladder.** The ladder is what
+this register can see today; the as-of table is what it could have seen on a day, and a
+reader has to be able to hold both.
+
+### A departure from a benchmark's population is not a departure from its file
+
+**Ruled 17 September 2026, and it corrects a number this register has published.** Drift is
+measured over the European entries at or above 100 MW in each vintage, and an entry can
+leave that population two ways: the publisher drops it, or the publisher revises what it
+says until the entry no longer clears the threshold.
+
+**Only the first is what rule 17 is about.** Of the 149 departures reported between the
+October 2023 vintage and the current file, **fifteen are still in the current file** —
+twelve of them at exactly the megawatts the IEA's own normalisation gives a 100 MW project.
+So every interval now counts the two apart, and the earlier intervals show a third shape
+the same split catches: six of the eight that left the 2021 population without leaving the
+file are the publisher splitting one entry into phases and keeping the old reference on the
+smallest, so "Get H2 Lingen" goes from 300 MW to "phase 1" at 10 MW. **Nothing shrank; a
+list re-described itself.**
+
+Which figure the register should quote as its headline is an open question and is not
+settled here. What is settled is that both are computed and neither is dropped.
+
+### A capture dated before a cut-off is what makes a back-dated score possible
+
+**Ruled 17 September 2026, and it is the archived-source rule put to a new use.** Scoring a
+cohort as of a past date needs documents a reader could have held on that date. So a census
+pass run for an as-of question asks the Wayback CDX index for the **last capture at or
+before the cut-off** and reads that, rather than reading the live page and dating the
+finding from today: `captured_at` is the capture's day, `archived` is true, and the
+document's own dateline still governs `date` exactly as the standing rule says.
+
+Where no capture exists at or before the cut-off, the live page is read and **the record
+says which it was**. That page is still evidence — it is simply not evidence about the
+cut-off date, and the as-of rule scores it `not_searched` rather than admitting it.
+
+Thirty-six of the 2023 cohort's seventy-three entries have at least one readable capture
+dated at or before 31 October 2023. That number is the ceiling on what any as-of score over
+that cohort can say, and it is printed with the table.
+
+### A third party's word opens a queue, not a status
+
+**Ruled 17 September 2026.** Rule 17 says that a project vanishing from a benchmark is a
+project whose failure nobody counts, so the register goes and looks — and that what it
+looks at is whether the OWNER's source still stands, never whether the project stopped. The
+benchmark's silence is evidence about the benchmark.
+
+**A funder terminating its own award is the same shape one step over.** The Innovation
+Fund's factsheet for grant 101179454 carries TERMINATED over a €230 million award to a
+project this register holds as announced. That is a funder speaking, with its own figures,
+and it is recorded: an `event_kind: financing` entry on the row — the vocabulary already
+reads that kind as "money reached, or LEFT, the project" — sourced to the fiche, dated
+`not_after` the day the fiche says it was updated, because the fiche dates itself and does
+not date the termination.
+
+**THE STATUS DOES NOT MOVE.** It stays where the OWNER's own statement left it until the
+owner speaks. A funder withdrawing its money is a fact about the award; reading a
+cancellation out of it would infer a project's fate from a third party's accounting, which
+is the error `dropped_from_benchmark` was made a covariate to prevent.
+
+**What the event owes instead is `owner_look`**: the rule it is opened under, why, and the
+sources somebody is to read, each as an object with a URL so `check_links` walks it. The
+block is gated, because an unknown key on this layer is a key nothing checks, and
+`report_candidate_gaps.py` prints it on every build so the look is somebody's task rather
+than somebody's memory. A URL that refuses a declared reader is recorded in the cache index
+and is NOT put in the queue: a queue pointing at a refusal is worked once and abandoned.
+
+### An outcome is one of six values, fixed on a stated day, and it is not a status
+
+**Ruled 17 September 2026, brief 13, and written before any outcome was read.** The 2023
+population test asks what became of the 255 European entries at 100 MW and above in the
+October 2023 vintage. That is the second time this register's instrument is measured
+against what happened, and it is the first time the register writes down WHAT HAPPENED
+itself rather than reading it off somebody else's restated column. So the outcome
+vocabulary is fixed here first, by the same reasoning D-B1 froze the rung tests under: a
+definition settled after the scores are in front of you is a definition tuned to them.
+
+**THE ASSESSMENT DATE IS 30 SEPTEMBER 2026.** Every value below is the state of the entry
+on that day, and it is a single day for all 255 so that "late" means the same thing on
+every line. An entry is assessed once and carries exactly one outcome.
+
+**THE SPEAKER IS THE OWNER, A PERMIT AUTHORITY OR A REGULATOR, AND NOBODY ELSE.** The
+standing speaker rule is unchanged and applies whole: a third party reporting that a plant
+opened is not the plant opening. The existing date-precision rules apply whole too — a
+year is stored at its earliest day, an upper bound is `not_after`, and no outcome is read
+at a precision its document does not carry.
+
+    operating    the owner, a permit authority or a regulator states that operation has
+                 BEGUN, with a date. Commissioning stated as commissioning is not
+                 operation: the register's own status vocabulary separates the two because
+                 a plant making hydrogen while its owner says it is preparing for
+                 commercial operation is neither, and the outcome takes the same cut.
+    committed    FID is stated as TAKEN, or construction is stated as BEGUN, and no
+                 operation is stated. "Expected", "targeted" and "subject to" are not a
+                 decision, exactly as rung 3 already says.
+    pending      the announced start is AFTER the assessment date and no stop is stated.
+                 The announced start is the OWNER's stated start as of the cut-off where
+                 one exists, and otherwise the 2023 vintage's own `Date online`, and the
+                 line records WHICH of the two it used. A project that is not late yet
+                 has not failed, and counting it with the late ones would make the test
+                 a measure of how far ahead the population was looking.
+    delayed      the announced start is ON OR BEFORE the assessment date, no operation is
+                 stated and no stop is stated. Where the owner has stated a NEW start
+                 date, the line carries it and the slip in years; where the owner has
+                 said nothing since, the line says that instead, because a silent project
+                 and a re-dated one are different findings and a single value hides it.
+    stopped      an owner-stated stop event under the existing stop rules. **A PAUSE
+                 COUNTS AS STOPPED ONLY WHERE NO RESUMPTION DATE IS STATED**, and it is
+                 recorded as a pause either way, in its own column. This is the one place
+                 the outcome vocabulary and the register's status vocabulary disagree on
+                 purpose: `paused` is ALIVE for the register's counting groups, because a
+                 project that has stopped moving has not stopped, and an outcome read on
+                 one day has to put an open-ended pause somewhere. It puts it with the
+                 stops and it prints the count separately, so a reader who disagrees can
+                 move it back without re-reading a source.
+    unread       the publisher refuses this register's declared reader in 2026 and no
+                 archive copy and no permit copy answers the question. It is not a
+                 failure of the project. It is the third state the reading rules already
+                 name, arriving in a new column.
+
+**AN OUTCOME IS NOT A STATUS AND NEVER BECOMES ONE.** These six words are the test's
+vocabulary; `announced`, `funded`, `fid`, `construction`, `commissioning`, `operating`,
+`paused` and `cancelled` are the register's. Where an entry is an admitted row, the
+owner-stated EVENT this pass finds is written to the row through the normal path —
+`status_history`, evidence mode, a DECISIONS entry — because the register is the record of
+what owners said and a fact does not stop being one for having been found by a test. What
+is never written is the outcome word itself. For an entry that is not a row, the outcome
+and its source live in the test file alone.
+
+**LEAVING THE IEA FILE IS A COVARIATE AND NOT AN OUTCOME.** An entry in the October 2023
+vintage and not in the current one carries `dropped_from_benchmark` beside its outcome and
+is never scored on it, under rule 17 and the covariate ruling above: a database that stops
+following a project has said something about the database. The test crosses the two so the
+question can be asked, which is the opposite of letting one answer the other.
+
+**THE READING IS DATED THE DAY IT WAS MADE, AND THAT DAY IS NOT THE ASSESSMENT DATE.** The
+pass reads in September 2026 against a 30 September assessment date, so for any entry whose
+start falls in the days between, the register is asserting a state of the world it has not
+seen. The boundary between `pending` and `delayed` does not depend on those days — it is
+the announced start against a fixed date, and both are on file. What does depend on them is
+an entry that begins operating inside the window, which this pass would read as `delayed`.
+**The count of entries whose announced start falls in the window is printed on every run**,
+rather than being resolved by moving the assessment date to whatever day the reading
+happened to finish.
+
+### Silence is an outcome about the project; refusal is a fact about reading
+
+**AMENDED 18 SEPTEMBER 2026, AFTER THE READING AND ON PURPOSE.** The ruling above was
+frozen at commit 58ce11f before a single outcome was read, and it stays there, word for
+word, so that what changed can be seen. This is the amendment, and it is recorded as one:
+D-C13 gives the reason, the test prints **both** tables — the outcomes under the frozen
+definitions and the outcomes under these — and any claim about the 2023 population says
+which it is quoting.
+
+**WHY AMEND AT ALL.** The frozen six put two unlike things in one word. Under them, 159 of
+255 entries came out `unread`, and that single count covered a publisher who refuses a
+reader, an owner whose site answers perfectly and has not mentioned the project in three
+years, and an entry for which this register has never known an owner's domain to ask.
+**The first is a fact about reading. The second is a fact about the project.** An owner
+that publishes weekly and has said nothing about a plant since 2023 has told you
+something, and the frozen vocabulary had nowhere to put it.
+
+**THE PRECEDENCE IS EXPLICIT, AND IT RUNS IN THIS ORDER.** The frozen ruling defined six
+values and did not say which wins when an entry qualifies for two, which is the gap Q12
+raised.
+
+    1  OWNER-STATED EVENTS FIRST, and among them: `stopped`, `operating`, `committed`.
+       What a speaker the rules admit has SAID beats anything inferred from a date.
+    2  THEN THE DATE CLASSES, for an entry with a readable owner document ABOUT THIS
+       ENTRY: `delayed` where the announced start is on or before the assessment date,
+       `pending` where it is after. These say only that a date has or has not passed.
+       **ABOUT THIS ENTRY is what separates them from `silent`**, and it does real work:
+       six entries were `delayed` or `pending` under the frozen rules on the strength of
+       an owner site that answers and no longer mentions the plant at all -- H2V's three
+       Vigneux phases among them, whose project page h2v.net has stopped serving. An
+       owner's site that answers and has dropped the project is silent about it, not late.
+    3  THEN `silent`.
+    4  `unread` LAST, and only on its narrowed definition below.
+
+    silent       THE OWNER'S DOMAIN, OR THE PERMIT AUTHORITY'S, ANSWERED A DECLARED READER
+                 IN 2026 AND CARRIES NO STATEMENT ABOUT THIS PROJECT SINCE THE CUT-OFF.
+                 The pages read are listed on the line, because the claim is about what
+                 was looked at: a front page, a newsroom index, a project list. This is an
+                 outcome about the project. A developer's site that is maintained, dated
+                 and current, and that has not named this plant in three years, is
+                 evidence about the plant.
+    unread       THE PUBLISHER REFUSES THIS REGISTER'S DECLARED READER AND NO PERMIT,
+                 FUNDER OR ARCHIVE COPY ANSWERS. Narrowed from the frozen definition,
+                 which also swallowed the two cases above. It is a measurement of a
+                 request, never of a project, and the line says WHICH of two reasons it
+                 rests on:
+                   `the publisher refuses this register's reader` — something was asked
+                   and refused, on the three-state reading rule.
+                   `no owner domain is known for this entry` — THERE WAS NOBODY TO ASK.
+                   The entry was never company-confirmed: its publisher's references are
+                   third parties or absent, and no owner page has ever been identified for
+                   it. This is reported on its own line and never mixed with a refusal,
+                   because a refusal is at least a measurement and this is the absence of
+                   one.
+
+**`silent` IS NOT A STOP AND NEVER BECOMES ONE.** It says the owner has not spoken since
+the cut-off, which is what the register can observe. Reading a cancellation out of silence
+is the error `dropped_from_benchmark` was made a covariate to prevent, one layer over, and
+the same answer applies: the silence is recorded, the status does not move, and where the
+entry is a row the owner look is queued.
+
+**AND A CLAIM BY ANY OTHER SPEAKER IS LISTED, NEVER SCORED.** Where operation, an
+investment decision or construction is stated by a regulator, a grid operator, a funder or
+a trade title rather than by the owner, the test records it as a CLAIM with its speaker
+and leaves the outcome where the owner's own words left it. The count of entries whose
+operation rests only on such a claim is printed on every run: the test counts owner
+statements, and a reader needs to know how many plants may be running unacknowledged by the
+companies that own them.
+
 ## Sector perimeters
 
 **Written 12 September 2026, brief 8.** The boundaries for the three sectors this
@@ -2219,3 +2529,89 @@ line survived three readings because nothing recomputed it.
 **Where scoring a rung reveals a fact a row lacks** — an owner-stated start date not yet on
 the row — **it is printed as a queue item and not written**. The ladder reads the register;
 it does not edit it.
+
+## A build-time gate reads tracked files only
+
+**Anything wired into `npm run build` — prebuild, build or postbuild — may read only
+files that are committed to the repository.** It may not import a package outside the
+build image, open a gitignored cache body, or reach the network for something it needs to
+pass. A step that needs any of those runs in the **local pre-push chain** instead, where
+the machine that has those things is the one running it.
+
+**The split is by what a step NEEDS, not by what it checks.** This is the distinction that
+was missed: `check_hydrogen_test.py` is a perfectly good gate, and it belonged in the
+prebuild chain by every argument about what it verifies. It read the Odenweller workbooks
+through `hydrogen_test_2023.population()`, and Vercel has neither `openpyxl` nor the
+gitignored bytes. **It passed on every developer machine and failed the production build at
+`d96903a`** — the worst shape a gate can have, because the machines that run it most often
+are the ones that cannot fail it.
+
+### The remedy is to materialise, not to skip
+
+**A gate that quietly skips when its inputs are missing is not a gate on the build server;
+it is a gate nowhere.** So the workbook is read **once, locally**, and what the gate needs
+is written into a **tracked derived file** — `sources/hydrogen_test_2023_population.json`,
+the 255 entries of the October 2023 vintage.
+
+**The derived file carries the sha256 of every workbook it was read from.** The bytes are
+Odenweller and Ueckerdt's and are not redistributable; the hash is, and it is what lets a
+reader fetch the same workbook from the authors and prove it is the one those rows came
+from. The gate checks that recorded hash against the one `benchmark_snapshots.json` pins,
+which answers the question the old workbook recount was asking — *were these rows read from
+the file we think* — without the bytes or the package.
+
+**Written when the workbooks are present, left untouched when they are not.** A machine
+without them never rewrites the tracked file and never writes an empty one over it.
+
+### A derived file needs something that checks it
+
+Materialising removes the workbook from the build, **and with it the only thing that was
+comparing those rows to their source**. A derived file nothing verifies drifts: a row is
+edited by hand, or rebuilt from a different copy, and every gate downstream keeps passing
+because they all read the same wrong file.
+
+**So the comparison moves rather than disappearing.** `check_hydrogen_workbook.py` runs in
+the pre-push chain, recomputes the population from the workbook and compares it **entry by
+entry, not by count** — a count matches while every row is wrong. On a machine without the
+workbooks it says so and passes, because a contributor who does not hold them is still
+entitled to push.
+
+### Where each one runs
+
+| needs | runs in |
+|---|---|
+| tracked files only | `npm run build` — prebuild/postbuild, so Vercel runs it too |
+| `openpyxl`, a gitignored cache body, a workbook | the pre-push hook, local only |
+
+**The network is the one deliberate exception**, and it is named rather than assumed:
+`check_links` reaches publishers from the prebuild chain because a link that 403s is the
+thing it exists to catch, and the build image has network. Nothing else in the chain may
+depend on a fetch succeeding.
+
+### The second list is the rule's second application, and it was applied before it failed
+
+**18 September 2026, the steel second-list pass.** Three steps were wired into prebuild
+and one of them opened LeadIT's 8.8 MB workbook with `openpyxl`. Under this rule it moved
+before it ever reached a build server, which is the first time the split was made by
+reading the rule rather than by reading a red production log.
+
+| step | needs | runs in |
+|---|---|---|
+| `check_fetch_records.py` | five cache `index.json` files, **all tracked** | prebuild |
+| `build_steel_benchmark.py` | `steel_entries.json`, `projects.json` | prebuild |
+| `build_steel_second_list.py` | `leadit_entries.json`, `steel_entries.json`, `benchmark_snapshots.json` | prebuild |
+| `build_leadit_entries.py --check` | `openpyxl` and the gitignored workbook | pre-push |
+
+**`sources/leadit_entries.json` is materialised on the hydrogen precedent** and carries the
+SHA-256 and byte count of the workbook it was read from. The two halves of the check sit on
+opposite sides of the line on purpose: `--check` rebuilds all 65 entries from the workbook
+in the pre-push chain, and `build_steel_second_list.py` verifies the recorded hash against
+the pin in `benchmark_snapshots.json` **inside the build**, where the bytes are absent and
+the hash is not. A build cannot ask whether the rows are right; it can ask whether they
+claim to come from the file this register pins, and that question is worth gating.
+
+**The cache `index.json` files are tracked and only the bodies are ignored**, which is the
+distinction #66 recorded after a simulation manufactured a failure by hiding them. It is
+restated here because the steel pass had to make the same call about the same files and
+the obvious reading — *`sources/cache/` is gitignored, so nothing in it may be read* — is
+wrong.

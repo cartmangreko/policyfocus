@@ -1,0 +1,257 @@
+{
+ "_comment": [
+  "QUESTIONS BRIEF 12 RAISED AND DID NOT ANSWER. The standing rule for every session is",
+  "that a question the rules do not settle goes to a questions file and is not decided, and",
+  "brief 12 adds a second reason for this one: DECISIONS D-B1 freezes the rung tests at",
+  "commit a9542fe for the length of this brief, so a proposed change to a rung test has",
+  "nowhere else to go.",
+  "",
+  "This file keeps a question after it has been answered, on the batteries and cement",
+  "precedent. A reader who finds a clause in scope.md is entitled to see what made somebody",
+  "",
+  "BRIEF 13 ADDS Q6 TO Q10, AND THEY ARE ALL OF ONE KIND. The 2023-population test read",
+  "owners' own documents for 255 entries under rung tests frozen at a9542fe and outcome",
+  "definitions frozen at 58ce11f, and neither freeze may be loosened by the pass applying",
+  "it. Five boundary cases came up often enough to be classes rather than curiosities, and",
+  "each names how this pass read it so a later ruling can see what it is overturning."
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "raised": "2026-09-17",
+   "touches": "a rung test — FROZEN, see DECISIONS D-B1",
+   "question": "Should rung 4 accept a funder's SHORTLIST, or a PROVISIONAL resolution, as an award?",
+   "why_the_rules_did_not_settle_it": "Rung 4 says 'a funder publishes an award naming the project'. Two documents read in the funder pass are a funder publishing a list of named projects that is explicitly not yet an award, and both publishers say so in their own words. This pass read both as fails and the question is whether that is right.",
+   "instances": [
+    {
+     "programme": "Hydrogen Allocation Round 2 (HAR2), DESNZ",
+     "published": "2025-04-07",
+     "what_it_is": "27 shortlisted projects, named, with lead developer and location",
+     "publisher_verbatim": "A project's inclusion on the shortlist does not guarantee Government support and, similar to the First Hydrogen Allocation Round (HAR1), it is unlikely that all projects will be successful. As such being on the shortlist does not imply availability of funding for any of the shortlisted projects."
+    },
+    {
+     "programme": "H2 Valles (PERTE ERHA), IDAE / MITECO",
+     "published": "2025-02-21",
+     "what_it_is": "a provisional resolution naming seven clusters, 2,278 MW over 11 installations, EUR 1,214 million, including installations at Andorra (Teruel) and La Robla where this register holds rows",
+     "publisher_verbatim": "La propuesta esta aun sujeta a alegaciones tecnicas que pueden propiciar cambios en la lista de seleccionados, de acuerdo con la puntuacion final obtenida por cada proyecto."
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Either that rung 4 takes only a decided award, in which case these stay fails and the rung's note should say 'shortlisted' rather than 'no award' so a reader is not told nothing was found; or that a funder naming a project on a competitive list is itself the second-party confirmation the rung is for, in which case a third value is needed between pass and fail, because a shortlist and a signed grant agreement are not the same evidence.",
+   "how_this_pass_read_it": "As a fail, with the list recorded and rung 4 marked searched. The conservative direction: a shortlist that is read as an award cannot be un-read.",
+   "verdict": null
+  },
+  {
+   "id": "Q2",
+   "raised": "2026-09-17",
+   "touches": "a rung test — FROZEN, see DECISIONS D-B1",
+   "question": "Under an as-of cut-off, should a date stored at YEAR or MONTH precision be read at the earliest day it can be, as it is stored, or at the latest?",
+   "why_the_rules_did_not_settle_it": "scope.md settles the storage: an event date is padded to the earliest day its precision allows, and a target is read at the end of its period, and the two point in opposite directions because overstating a promise and overstating a fact are opposite errors. It does not settle which reading a CUT-OFF takes. A document dated '2023' is stored 2023-01-01 and is admitted by a cut-off of 2023-10-31; it may have been published in December.",
+   "how_this_pass_read_it": "As stored, which is the permissive direction, AND the passes that rest on a date coarser than the cut-off are counted and printed separately on every --as-of run rather than resolved. Reading a year as its last day would be this register inventing a month the publisher did not state.",
+   "measured": "One pass on the 2023-10-31 ladder rests on a date whose stated precision covers days after the cut-off.",
+   "what_a_ruling_would_need_to_say": "Whether a cut-off is a question about what was CERTAINLY on file (read a coarse date at its end, and admit fewer) or about what MAY have been (read it at its start, and admit more), and whether the answer differs for a pass and for a fail.",
+   "verdict": null
+  },
+  {
+   "id": "Q3",
+   "raised": "2026-09-17",
+   "touches": "the drift table, and rule 17",
+   "question": "Is an entry that leaves the population but stays in the file a departure at all?",
+   "why_the_rules_did_not_settle_it": "Rule 17 is about a project that VANISHES from a database, because the disappearance may hide a failure nobody counted. The published drift table reported 149 departures between October 2023 and the current file, measured over the European entries at or above 100 MW. Fifteen of those 149 are still in the current file: the publisher revised the capacity below the threshold, and twelve of the fifteen sit at exactly the megawatts the IEA's own normalisation gives a 100 MW project.",
+   "how_this_pass_read_it": "Both kinds are counted, apart, in every interval of the extended drift table: 'absent from the end vintage's file' and 'still on the list, below the threshold'. Neither number is dropped, because the first is rule 17's case and the second is a fact about the threshold and the normalisation.",
+   "what_a_ruling_would_need_to_say": "Whether the headline drift figure this register quotes is the departures from the file (134 for 2023-10 to current) or from the population (149). The docket and pull request #55 quote 149.",
+   "verdict": null
+  },
+  {
+   "id": "Q4",
+   "raised": "2026-09-17",
+   "touches": "the outcome join, and the vocabulary",
+   "question": "Is `disappeared` a class about the project or about the database?",
+   "why_the_rules_did_not_settle_it": "The brief names three outcomes — on time, delayed, disappeared — and the authors' outcome workbook carries no outcome column. The three are derived here from the two columns the authors restate. `disappeared` is the state where the restated row carries no online date at all, and the authors' own comments show it is not one thing: some are projects that stopped ('Project rejected', 'Archived - project did not progress'), some are the authors REMOVING A DUPLICATE they had found ('Very likely the same project as Strandmollen Ljungby'), and one is a misclassification they struck out ('not a specific electrolyser project, but a research institute').",
+   "how_this_pass_read_it": "The class is derived by the stated rule and EVERY line carries the authors' comment, so a reader can separate a project that stopped from the authors' housekeeping. The counts are printed split rather than merged.",
+   "what_a_ruling_would_need_to_say": "Whether the register should split `disappeared` into `stopped` and `withdrawn by the assessor`, which would make the cross-tab answer a different and probably better question — and which would be this register editing somebody else's classification, which is the thing it has refused to do for the benchmark's coordinates and capacities.",
+   "verdict": null
+  },
+  {
+   "id": "Q5",
+   "raised": "2026-09-17",
+   "touches": "the cohort, and what it can measure",
+   "question": "What does the register learn from a cohort none of whose members it holds?",
+   "why_the_rules_did_not_settle_it": "The brief asks for the 2023 cohort joined by reference number to the ladder population. The join is empty: none of the 73 European entries announced for 2023 reaches 100 MW on the vintage's own Capacity_MWel, and the ladder's population is filtered to 100 MW. The cross-tabs are therefore between the register's rung scores and the authors' outcome over a set of projects the register has never held.",
+   "how_this_pass_read_it": "Computed and reported with the empty join stated first, because an empty join is the finding: the register's instrument and the cohort's outcome do not meet at this threshold. The census pass was run on all 73 anyway, which is what the brief asks and what makes the tables mean anything.",
+   "what_a_ruling_would_need_to_say": "Whether a future cohort test should be run at a threshold the cohort can clear — the 2021 or 2022 vintage's own announced-for cohorts, or a threshold of zero — and whether the ladder should have a second population for exactly this.",
+   "verdict": null
+  },
+  {
+   "id": "Q6",
+   "raised": "2026-09-17",
+   "touches": "rung 5 — FROZEN, see DECISIONS D-B1",
+   "question": "Does a start stated as a TWO-YEAR RANGE pass rung 5?",
+   "why_the_rules_did_not_settle_it": "Rung 5 says a year passes at year precision, and that 'mid-decade' and 'by the end of the decade' fail because they carry no precision this register can record. A range of two named years is neither: it is precise to two years and this register's date_precision vocabulary has no value for it.",
+   "how_this_pass_read_it": "FAILED, because recording it at year precision would mean choosing one of the two years the owner declined to choose between, and the padding rule exists to stop this register inventing precision a publisher did not state.",
+   "instances": [
+    {
+     "ref": "532",
+     "project": "HOEST PtX Esbjerg",
+     "verbatim": "Expected to enter full operation in 2028/29"
+    },
+    {
+     "ref": "808",
+     "project": "H2V 59, 1st phase",
+     "verbatim": "Mise en service entre 2022 et 2023"
+    },
+    {
+     "ref": "1233",
+     "project": "Lysekil refinery",
+     "verbatim": "amounting to 200-500MW (the same shape in the capacity field, and the vintage appears to have split the range into two phases)"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Either that a range fails, in which case rung 5's note should say 'a range' rather than 'no precision', so a reader is not told the owner said nothing about timing; or that a range is admitted at its earliest year under the padding rule, which would be consistent with how a coarse date is already admitted against a cut-off, and would need a date_precision value to record it."
+  },
+  {
+   "id": "Q7",
+   "raised": "2026-09-17",
+   "touches": "rung 5 — FROZEN, see DECISIONS D-B1",
+   "question": "Is a COMPLETION or ERECTION date an operation start for rung 5?",
+   "why_the_rules_did_not_settle_it": "Rung 5 asks for a production or operation start. The register's own status vocabulary separates construction, commissioning and operating precisely because a built plant is not yet a producing one -- the commissioning value was added for RWE's Lingen works making hydrogen while its owner said it was preparing for commercial operation. An owner who says the plant will be finished in 2027 has not said when it will produce.",
+   "how_this_pass_read_it": "PASSED, with the owner's words recorded verbatim in the cell so a reader can disagree without re-reading the source. The judgement was that a completion date is the nearest thing to a start an owner has published and that failing it would report the owner as silent about timing.",
+   "instances": [
+    {
+     "ref": "977",
+     "project": "Synkero",
+     "verbatim": "The factory, which is scheduled for completion in 2027, will produce 50,000 tonnes of SAF annually"
+    },
+    {
+     "ref": "1086",
+     "project": "HyTechHafen Rostock",
+     "verbatim": "ein 100-MW-Elektrolyseur, der auf dem Gelaende des Steinkohlekraftwerks Rostock bis Ende 2026 errichtet werden soll"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether rung 5 reads completion as start, or whether it needs a separate cell -- and if it needs one, that is a seventh rung and D-B1 says a rung is not added inside a brief that is scoring with it."
+  },
+  {
+   "id": "Q8",
+   "raised": "2026-09-17",
+   "touches": "rung 1 — FROZEN, see DECISIONS D-B1",
+   "question": "Can an OFFSHORE project pass rung 1 at all?",
+   "why_the_rules_did_not_settle_it": "Rung 1 asks the owner or the permitting authority to name the location at municipality or finer. An exclusive economic zone has no municipality. So an offshore electrolyser cannot pass rung 1 however precisely its owner states where it is -- a licence block, a lease area, a coordinate -- and the rung would be measuring the sea rather than the evidence.",
+   "how_this_pass_read_it": "FAILED, under the rung as written, and recorded on the line that the failure is a property of the rung.",
+   "instances": [
+    {
+     "ref": "1191",
+     "project": "AquaVentus (completion)",
+     "verbatim": "Die gruene Energie-Revolution beginnt in der Nordsee; 10 Gigawatt Erzeugungsleistung fuer Gruenen Wasserstoff aus Offshore-Windenergie bis zum Jahr 2035"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether rung 1 admits an offshore location named at licence-block or coordinate precision as 'finer than municipality', which is what it plainly is, or whether offshore entries are reported apart from the rung the way perimeter exclusions are."
+  },
+  {
+   "id": "Q9",
+   "raised": "2026-09-17",
+   "touches": "rung 2 — FROZEN, see DECISIONS D-B1",
+   "question": "Does a PRODUCT capacity count for rung 2 when it is not hydrogen?",
+   "why_the_rules_did_not_settle_it": "Rung 2 says the owner states a capacity 'in any unit, recorded as stated', and the three-units rule says the electrolyser's rating, hydrogen output and volume flow are never converted into one another. Neither settles a plant whose only published figure is its PRODUCT: tonnes of sustainable aviation fuel, tonnes of methanol, tonnes of ammonia. Those are capacities of something, and not of the electrolyser the entry is.",
+   "how_this_pass_read_it": "FAILED where the figure is a downstream product and PASSED where it is hydrogen output, on the reading that 'any unit' means any of the units this register records for an electrolyser. So ref 5's 800,000 tonnes a year of hydrogen passes and ref 977's 50,000 tonnes a year of SAF does not.",
+   "instances": [
+    {
+     "ref": "977",
+     "project": "Synkero",
+     "verbatim": "will produce 50,000 tonnes of SAF annually",
+     "read_as": "fail"
+    },
+    {
+     "ref": "1249",
+     "project": "Iberdrola-Foresa",
+     "verbatim": "una produccion de metanol verde de 10.000 tn/ano, que podria escalar hasta 100.000 tn/ano",
+     "read_as": "fail"
+    },
+    {
+     "ref": "5",
+     "project": "NortH2, phase 1",
+     "verbatim": "Green hydrogen production ... expected to be around 800,000 tonnes per year by 2040",
+     "read_as": "pass"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether 'any unit' is any unit at all -- in which case a product tonnage passes and the rung stops being about the electrolyser -- or the three units named in the three-units rule, in which case rung 2's wording should say so."
+  },
+  {
+   "id": "Q10",
+   "raised": "2026-09-17",
+   "touches": "rung 1 — FROZEN, see DECISIONS D-B1",
+   "question": "Does an owner saying 'nearby' a named town pass rung 1?",
+   "why_the_rules_did_not_settle_it": "The rung admits a release naming only the town where the speaker is the owner. 'Deployed nearby Castellon' names the town and, in the same breath, declines to say which municipality the plant is in -- the neighbouring municipality is a different place with different neighbours, a different permit authority and a different cadastre.",
+   "how_this_pass_read_it": "PASSED, with the hedge recorded in the cell, on the reading that the rung tests what the owner said about where and the owner said Castellon.",
+   "instances": [
+    {
+     "ref": "931",
+     "project": "ORANGE.BAT Castellon",
+     "verbatim": "The planned large-scale pilot plant will be deployed nearby Castellon (Spain), in one of the most important ceramic industrial clusters in Europe"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether a hedged municipality is a municipality for rung 1. The position rules already refuse to place a row on a municipality name alone, so a rung 1 pass here is not a coordinate and never becomes one -- which is the reason this can be passed without anything being drawn."
+  },
+  {
+   "id": "Q11",
+   "raised": "2026-09-17",
+   "touches": "the speaker rule, and rung 1 — FROZEN, see DECISIONS D-B1",
+   "question": "Is a GOVERNMENT press release that carries the owner's figures an admissible speaker?",
+   "why_the_rules_did_not_settle_it": "Rung 1 admits the owner or the permitting authority. The register's source_type vocabulary has permit, regulator, grant_register and official_register beside company, and a Land ministry announcing a project fits none of them cleanly: it is not permitting, not acting on the project, not a grant register and not a statutory record. What it is, in practice, is a second party repeating what the owner told it -- which is either corroboration or press, depending on how you read a ministry.",
+   "how_this_pass_read_it": "NOT ADMITTED, so the entry is reported and not scored, and the ministry's sentence is kept verbatim in the review note.",
+   "instances": [
+    {
+     "ref": "1651",
+     "project": "GreenMotionSteel",
+     "publisher": "Ministerium fuer Wirtschaft, Industrie, Klimaschutz und Energie des Landes Nordrhein-Westfalen",
+     "captured": "2023-05-23",
+     "verbatim": "Das von Air Liquide entwickelte Projekt will am Standort Duisburg bis 2024 eine Wasserelektrolyseanlage mit einer Kapazitaet von 120 Megawatt in Betrieb nehmen.",
+     "what_it_would_have_carried": "rung 1 on Duisburg, rung 2 on 120 MW -- the vintage's figure exactly -- and rung 5 on 2024, also the vintage's"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether a public authority's announcement is corroboration of the owner or reporting about it. The cost of the current reading is visible here: one document would have carried three rungs and the entry scores none. The cost of the other reading is that a ministry's press office becomes a speaker about capacity, and ministries repeat developers' figures without checking them."
+  },
+  {
+   "id": "Q12",
+   "raised": "2026-09-17",
+   "touches": "the outcome definitions — FROZEN, see DECISIONS D-C1",
+   "question": "When an entry qualifies for both `unread` and `delayed`, which wins?",
+   "why_the_rules_did_not_settle_it": "scope.md defines `delayed` as an announced start on or before the assessment date with NO OPERATION STATED and NO STOP STATED, and `unread` as the publisher refusing this register's reader in 2026 with no archive or permit copy answering. An entry whose publisher refuses satisfies both: nothing is stated because nothing could be read. The definitions were written before the reading and this overlap was not seen.",
+   "how_this_pass_read_it": "UNREAD WINS. Where no document by an owner, a permit authority or a regulator is readable in 2026, the outcome is `unread` whatever the announced start says. The alternative reads this register's inability to reach a publisher as a fact about the project, which is the error the third reading state exists to prevent and which `not_searched` was added to the rungs for on 15 September 2026.",
+   "what_a_ruling_would_need_to_say": "Either that the precedence is as this pass read it, in which case scope.md's `delayed` clause should say 'and a document was readable'; or that `delayed` is the residual class and `unread` is only for a publisher that refuses AND an entry with no other evidence at all -- which would move entries between the two columns and should not be decided by whoever happens to be writing the table.",
+   "why_it_matters_here": "It is the largest single choice in the table. The population is 255 and most of it has no readable 2026 owner document, so the precedence decides whether the majority of the test's outcome column reads `unread` or `delayed` -- and the second reading would make the test look like a finding about European hydrogen rather than a finding about what can be read about it."
+  },
+  {
+   "id": "Q13",
+   "raised": "2026-09-17",
+   "touches": "the outcome definitions — FROZEN, see DECISIONS D-C1",
+   "question": "Where does an entry go when NEITHER speaker states a start at all?",
+   "why_the_rules_did_not_settle_it": "scope.md defines `pending` and `delayed` against the announced start, and defines the announced start as the owner's stated start as of the cut-off where one exists 'and otherwise the 2023 vintage's own Date online'. Six entries have neither: the vintage's column is empty and no owner stated a year at or before the cut-off. The definitions assume an announced start exists and the freeze was written before anybody had counted how often it does not.",
+   "how_this_pass_read_it": "PENDING, on the reading that nothing has been promised by a day that has passed, so the project cannot be late; and `announced_start_read_from` on each line says 'neither: the vintage states no year', which the gate now requires before it will accept a pending with no date.",
+   "instances": [
+    {
+     "ref": "859",
+     "project": "Orange-BAT Puerto Valencia"
+    },
+    {
+     "ref": "1089",
+     "project": "Gen2 Energy Suldal in Ryfylke, 2nd phase"
+    },
+    {
+     "ref": "1233",
+     "project": "Lysekil refinery (phase 2)"
+    },
+    {
+     "ref": "1803",
+     "project": "Liquid Wind, FlagshipTWO"
+    },
+    {
+     "ref": "2150",
+     "project": "Orsted - Skovgaard Energy project, later phases"
+    },
+    {
+     "ref": "2248",
+     "project": "Breogan project"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Either that an entry with no announced start is pending, in which case scope.md should say so and the word covers two different states -- not due yet, and never dated; or that it needs a seventh value, which is a change to the answer sheet and cannot be made by the pass that found the gap."
+  }
+ ]
+}

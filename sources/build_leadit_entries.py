@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """THE SECOND LIST, ENTRY BY ENTRY: LeadIT's Green Steel Tracker against GEM's.
 
-    python3 sources/build_leadit_entries.py        # writes sources/leadit_entries.json
+    python3 sources/build_leadit_entries.py           # writes sources/leadit_entries.json
+    python3 sources/build_leadit_entries.py --check   # recomputes and refuses a mismatch
 
 WHY A SECOND LIST AT ALL, AND WHY THIS ONE. GEM's tracker carries only plants at 0.5 mtpa
 crude iron/steel and above -- its own About tab says so -- and the steel perimeter sets NO
@@ -28,11 +29,21 @@ the docket is what a name match costs.
 THE REMAINING THIRTEEN ARE NEW TO THIS REGISTER and are classed here, against the same
 perimeter and by the same rule the first list was worked under: the company's own document
 or nothing.
+
+THIS STEP IS NOT IN THE BUILD CHAIN, AND THE RULE SAYS WHY. It opens a workbook with
+openpyxl, and the workbook is in the gitignored cache. scope.md, "A build-time gate reads
+tracked files only": a step that needs a package or a byte the build image does not have
+runs in the local pre-push chain, where the machine that has those things is the one
+running it. So `sources/leadit_entries.json` is MATERIALISED -- a tracked derived file --
+and it carries the SHA-256 of the workbook it was read from. `--check` recomputes the whole
+file from the workbook and refuses a mismatch; it passes quietly where the workbook is
+absent, because a contributor without it is still entitled to push. The tracked-only half
+of the check is in build_steel_second_list.py, which runs in prebuild and verifies the
+recorded hash against the one benchmark_snapshots.json pins.
 """
 from __future__ import annotations
-import json, pathlib, warnings
+import hashlib, json, pathlib, sys, warnings
 warnings.filterwarnings("ignore")
-import openpyxl
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BOOK = ROOT / "sources" / "cache" / "steel" / "leadit_green_steel_tracker.xlsx"
@@ -149,7 +160,8 @@ NEW = {
 }
 
 
-def main() -> int:
+def build() -> dict:
+    import openpyxl  # LAZY: the build image has neither this nor the workbook.
     wb = openpyxl.load_workbook(BOOK, read_only=True, data_only=True)
     ws = wb["3. All Projects"]
     rows = [r for r in ws.iter_rows(values_only=True)]
@@ -223,19 +235,66 @@ def main() -> int:
            "generated": "2026-09-18",
            "benchmark": "leadit_green_steel_tracker",
            "vintage": "2026-09-04",
+           "source_file": str(BOOK.relative_to(ROOT)),
+           "source_sha256": hashlib.sha256(BOOK.read_bytes()).hexdigest(),
+           "source_bytes": BOOK.stat().st_size,
+           "source_note": ("THE BYTES ARE NOT IN THE REPOSITORY AND THE HASH IS. "
+                           "This file is a tracked derived file so the build image never "
+                           "opens a workbook; the hash is what lets a reader fetch the "
+                           "same file from LeadIT and prove these rows came from it. "
+                           "build_steel_second_list.py checks it against the pin in "
+                           "benchmark_snapshots.json on every build."),
            "population": len(pop),
            "leadit_europe": len(europe),
            "outside_the_perimeter_geography": sorted(set(outside)),
            "entries": entries}
-    OUT.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"LeadIT Europe {len(europe)} rows; in the perimeter's geography {len(pop)}; "
-          f"outside it {sorted(set(outside))}")
+    return doc
+
+
+def report(doc) -> None:
+    entries = doc["entries"]
+    print(f"LeadIT Europe {doc['leadit_europe']} rows; in the perimeter's geography "
+          f"{doc['population']}; outside it {doc['outside_the_perimeter_geography']}")
     print(f"joined to GEM: {sum(1 for e in entries.values() if e['gem']['key'])} "
           f"({sum(1 for e in entries.values() if e['gem']['matched_on'].startswith('LeadIT'))} "
           f"on LeadIT's own key, "
           f"{sum(1 for e in entries.values() if e['gem']['matched_on'].startswith('by works'))} "
           f"by hand)")
     print(f"new to this register: {sum(1 for e in entries.values() if not e['gem']['key'])}")
+
+
+def main() -> int:
+    check = "--check" in sys.argv
+    if not BOOK.exists():
+        # QUIETLY, AND SAYING SO. A contributor without the workbook is still entitled to
+        # push; a step that is silent about skipping is the failure mode this split exists
+        # to avoid, so it names what it did not do.
+        print(f"build_leadit_entries: {BOOK.relative_to(ROOT)} is not on this machine, so "
+              f"the workbook was not read. sources/leadit_entries.json stands as committed; "
+              f"its hash is checked against benchmark_snapshots.json in prebuild.")
+        return 0
+    doc = build()
+    text = json.dumps(doc, indent=1, ensure_ascii=False) + "\n"
+    if check:
+        have = OUT.read_text(encoding="utf-8") if OUT.exists() else ""
+        if have != text:
+            print("build_leadit_entries --check: FAILED. The workbook does not produce the "
+                  "committed sources/leadit_entries.json.")
+            old = json.loads(have) if have else {}
+            if old.get("source_sha256") != doc["source_sha256"]:
+                print(f"  the workbook on this machine hashes "
+                      f"{doc['source_sha256'][:16]}…; the file records "
+                      f"{str(old.get('source_sha256'))[:16]}… — A DIFFERENT FILE.")
+            else:
+                print("  same workbook, different rows: the builder or a hand class "
+                      "changed and the derived file was not rebuilt.")
+            return 1
+        report(doc)
+        print(f"build_leadit_entries --check: {OUT.relative_to(ROOT)} recomputes from the "
+              f"workbook, entry by entry, and matches.")
+        return 0
+    OUT.write_text(text, encoding="utf-8")
+    report(doc)
     print(f"wrote {OUT.relative_to(ROOT)}")
     return 0
 

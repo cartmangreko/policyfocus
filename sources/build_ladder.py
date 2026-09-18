@@ -37,6 +37,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import re
 import sys
 from collections import Counter, defaultdict
 
@@ -51,6 +52,7 @@ SUMMARY = OUTDIR / "hydrogen_summary.json"
 SEARCH = ROOT / "sources" / "hydrogen_gap_search.json"
 EDGES = ROOT / "sources" / "edges.json"
 CANDIDATES = ROOT / "sources" / "hydrogen_candidates.json"
+FUNDERS = ROOT / "sources" / "hydrogen_funder_pass.json"
 
 RUNGS = ("site", "capacity", "fid", "funding", "start", "input")
 
@@ -75,7 +77,7 @@ FIRM_PASS = "contract"
 
 
 def cell(result, source=None, speaker=None, date=None, precision=None, note="",
-         searched=True):
+         searched=True, captured_at=None):
     """One rung cell.
 
     `searched` SAYS WHETHER THE SOURCE CLASS THIS RUNG READS WAS EXAMINED for this
@@ -92,10 +94,91 @@ def cell(result, source=None, speaker=None, date=None, precision=None, note="",
         result = "not_searched"
     return {"result": result, "source": source or "", "speaker": speaker or "",
             "date": date or "", "precision": precision or "", "note": note,
-            "searched": bool(searched)}
+            "searched": bool(searched), "captured_at": captured_at or ""}
 
 
 UNREAD = cell("unread")
+
+
+# --------------------------------------------------------------------------
+# THE CUT-OFF
+
+
+def on_file_by(c: dict, cutoff: str) -> bool:
+    """Was the document this cell rests on readable on or before `cutoff`?
+
+    THREE DATES ANSWER IT, in the order scope.md's archived-source rule sets them out:
+
+      `date`         the document's own dateline, stored padded to the EARLIEST day its
+                     stated precision allows -- a year sits on 1 January, a month on the
+                     first. That padding is what makes the comparison a comparison at
+                     all, and it is also why a coarse date can be admitted here on a
+                     period that straddles the cut-off. Those are counted and printed
+                     rather than resolved: reading "2023" as 31 December to be safe would
+                     be this register inventing a month the publisher did not state, in
+                     the opposite direction from the padding rule.
+      `captured_at`  the day of the copy on file. A capture is an existence proof: the
+                     text was there on the day somebody took it. It cannot make a
+                     document EARLIER than its dateline, so it is read only where the
+                     dateline is missing or later.
+      `not_after`    the precision a document with no dateline carries, where `date` IS
+                     the capture. Handled by the first clause without a special case,
+                     because the stored date is already the capture -- an upper bound
+                     that says the text existed by then, which is exactly what the
+                     cut-off asks.
+
+    A CELL WITH NO DATE AT ALL FAILS THE TEST. An undated document cannot be placed
+    before a cut-off, and placing it there anyway would date the register's reading from
+    the day it happened to look.
+    """
+    for d in (c.get("date"), c.get("captured_at")):
+        if d and str(d)[:10] <= cutoff:
+            return True
+    return False
+
+
+def straddles(c: dict, cutoff: str) -> bool:
+    """A pass admitted on a date whose stated precision covers days after the cut-off.
+
+    `2023` at year precision is stored as 2023-01-01 and admitted against a cut-off of
+    2023-10-31; the document may have been published in December. Not resolved, counted.
+    """
+    d, p = str(c.get("date") or "")[:10], c.get("precision") or ""
+    if not d or not on_file_by(c, cutoff):
+        return False
+    if p == "year":
+        return d[:4] + "-12-31" > cutoff
+    if p == "month":
+        import calendar
+        y, m = int(d[:4]), int(d[5:7])
+        return f"{y:04d}-{m:02d}-{calendar.monthrange(y, m)[1]:02d}" > cutoff
+    return False
+
+
+def apply_cutoff(cells: dict, cutoff: str) -> tuple[dict, dict]:
+    """Every cell whose document is not on file by `cutoff` becomes `not_searched`.
+
+    IT APPLIES TO A FAIL AS WELL AS TO A PASS, and that is the whole of the rule. A fail
+    is a finding about the evidence examined (see the module docstring), so a fail
+    resting on a document published after the cut-off is a finding nobody could have made
+    on that day -- it is not a fail as of then, it is nothing as of then. Leaving it a
+    fail would let the ladder score a 2023 cohort out of what this register read in 2026.
+    """
+    out, changed = {}, {}
+    for r, c in cells.items():
+        if c["result"] == "unread" or on_file_by(c, cutoff):
+            out[r] = dict(c)
+            continue
+        d = dict(c)
+        was = d["result"]
+        d["result"] = "not_searched"
+        d["searched"] = False
+        d["note"] = (f"as of {cutoff}: the document cited is dated {c.get('date') or 'nothing'}"
+                     f", after the cut-off, so this rung was {was} on evidence that did "
+                     f"not exist yet")
+        out[r] = d
+        changed[r] = was
+    return out, changed
 
 
 def newest(items, key="date"):
@@ -159,9 +242,17 @@ def search_records():
 # SCORING A ROW -- the only entries with register evidence behind them
 
 
-def score_row(row, edges_by_project, graph_date="", funding_by_project=None):
+def score_row(row, edges_by_project, graph_date="", funding_by_project=None,
+              funder_by_key=None, funder_read=False, funder_read_on="",
+              population_key=""):
     """Six cells from a register row's own fields."""
     funding_by_project = funding_by_project or {}
+    funder_by_key = funder_by_key or {}
+    pass_award = None
+    for k in (population_key, "row:" + row["id"]):
+        if k and funder_by_key.get(k):
+            pass_award = funder_by_key[k][0]
+            break
     out = {}
     sources = row.get("sources") or []
     base = newest(sources)
@@ -169,6 +260,11 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None):
     base_pub = base.get("publisher", "") if base else ""
     base_date = base.get("date", "") if base else ""
     base_prec = base.get("date_precision", "") if base else ""
+    # THE CAPTURE DATE TRAVELS WITH THE CELL. scope.md's archived-source rule puts the
+    # publication date in `date` and the day of the copy on file in `captured_at`, and an
+    # as-of cut-off has to be able to read both -- a document whose publisher has since
+    # gone dark is still a document this register held on the day it captured it.
+    captured = {s["url"]: s.get("captured_at") for s in sources if s.get("captured_at")}
 
     # RUNG 1, SITE. The location_statement is the direct answer where there is one;
     # a located row whose position came from a company or permit source names the
@@ -266,7 +362,13 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None):
                     if e.get("source_type") in FUNDER_SOURCE_TYPES
                     or e.get("event_kind") == "financing"
                     and e.get("source_type") in FUNDER_SOURCE_TYPES])
-    if funder_rows:
+    if pass_award:
+        out["funding"] = cell("pass", pass_award["source_url"], pass_award["funder"],
+                              pass_award["date"], pass_award["date_precision"],
+                              f"{pass_award['programme']} names "
+                              f"{pass_award['project_as_published']!r}; matched on "
+                              f"{pass_award['matched_on']}")
+    elif funder_rows:
         f = newest(funder_rows) or funder_rows[0]
         fsrc = (f.get("sources") or [{}])[0]
         out["funding"] = cell("pass", fsrc.get("url") or base_id, "funder",
@@ -279,11 +381,20 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None):
                               "award published by the funder")
     else:
         owner_claim = any(e.get("status_to") == "funded" for e in hist)
-        note = ("the owner states an award and no funder publication has been read "
-                "for this project"
-                if owner_claim else "no funder list has been read for this project")
-        out["funding"] = cell("fail", base_id, "owner", base_date, base_prec, note,
-                              searched=False)
+        if funder_read:
+            note = ("the funder lists of sources/hydrogen_funder_pass.json name no award "
+                    "for this project"
+                    + ("; the OWNER states one, which rung 4 does not accept"
+                       if owner_claim else ""))
+            out["funding"] = cell("fail", "sources/hydrogen_funder_pass.json",
+                                  "eufabric funder pass", funder_read_on, "day", note,
+                                  searched=True)
+        else:
+            note = ("the owner states an award and no funder publication has been read "
+                    "for this project"
+                    if owner_claim else "no funder list has been read for this project")
+            out["funding"] = cell("fail", base_id, "owner", base_date, base_prec, note,
+                                  searched=False)
 
     # RUNG 5, START DATE, WITH A PRECISION.
     st = newest([s for s in (row.get("stated_schedule") or [])
@@ -302,6 +413,9 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None):
     # own edges do not, so a row edge can only ever be the weaker evidence and is
     # read second.
     out["input"] = score_input(row, edges_by_project, graph_date)
+    for c in out.values():
+        if not c.get("captured_at") and captured.get(c.get("source")):
+            c["captured_at"] = captured[c["source"]]
     return out
 
 
@@ -410,6 +524,23 @@ def score_unadmitted(ref, rec, searched_on, unreadable, excluded=False):
     return out
 
 
+def funder_cell(key, funder_by_key, funder_read, funder_read_on):
+    """RUNG 4 FOR AN ENTRY THAT IS NOT A ROW. The funder lists cover the population, not
+    the register, so an unadmitted entry gets the same question asked of it."""
+    hit = (funder_by_key.get(key) or [None])[0]
+    if hit:
+        return cell("pass", hit["source_url"], hit["funder"], hit["date"],
+                    hit["date_precision"],
+                    f"{hit['programme']} names {hit['project_as_published']!r}; "
+                    f"matched on {hit['matched_on']}")
+    if funder_read:
+        return cell("fail", "sources/hydrogen_funder_pass.json", "eufabric funder pass",
+                    funder_read_on, "day",
+                    "the funder lists of sources/hydrogen_funder_pass.json name no award "
+                    "for this entry", searched=True)
+    return None
+
+
 # --------------------------------------------------------------------------
 
 
@@ -437,6 +568,38 @@ def unreadable_refs(records):
     out |= {ref for (b, ref) in rg.UNREADABLE_BY_NAME
             if b == "iea_hydrogen_production_projects"}
     return out
+
+
+def load_funder_pass():
+    """The funder pass of brief 12: {population key: award} and whether the lists were read.
+
+    RUNG 4 IS `searched` FOR THE WHOLE POPULATION ONCE A POPULATION-WIDE LIST HAS BEEN
+    READ, which is the brief's rule and the correction to D-L2's 71 `not_searched` cells.
+    The Innovation Fund's three hydrogen auctions and the four hydrogen IPCEIs are
+    European-Economic-Area-wide: every entry in this population is inside the geography
+    those funders publish over, so reading them asks the rung's question of every entry
+    and absence from them is a finding about the entry rather than a gap in the reading.
+
+    THE NATIONAL LISTS DO NOT WIDEN `searched` AND DO NOT NARROW IT EITHER. They add
+    awards where they were read (United Kingdom, Denmark, Norway, Spain, France) and one
+    of them was refused outright (RVO, the Netherlands, 200 with an empty body). The file
+    records both, and the refusal is printed with the table rather than buried, because a
+    funder nobody could read is a different fact from a funder who named nobody.
+    """
+    if not FUNDERS.exists():
+        return {}, False, []
+    doc = json.loads(FUNDERS.read_text(encoding="utf-8"))
+    wide = [f for f in doc["funders"]
+            if f.get("read") == "readable"
+            and "the whole ladder population" in (f.get("covers") or "")]
+    by_key = {}
+    for a in doc.get("awards", []):
+        if a.get("population_key"):
+            by_key.setdefault(a["population_key"], []).append(a)
+        if a.get("matched_to"):
+            by_key.setdefault("row:" + a["matched_to"], []).append(a)
+    refused = [f for f in doc["funders"] if str(f.get("read", "")).startswith("REFUSED")]
+    return by_key, bool(wide), refused
 
 
 def load_funding():
@@ -471,13 +634,16 @@ def perimeter_excluded():
     return gap.perimeter_exclusions_by_ref()
 
 
-def build():
+def build(cutoff: str = ""):
     iea, rows, by_ref, offlist = population()
     records, searched_on = search_records()
     cands = candidate_refs()
     unread_refs = unreadable_refs(records)
     excluded = perimeter_excluded()
     funding_by_project = load_funding()
+    funder_by_key, funder_read, funder_refused = load_funder_pass()
+    funder_read_on = (json.loads(FUNDERS.read_text(encoding="utf-8"))["read_on"]
+                      if FUNDERS.exists() else "")
 
     edoc = json.loads(EDGES.read_text(encoding="utf-8"))
     edges_by_project = defaultdict(list)
@@ -486,25 +652,46 @@ def build():
             edges_by_project[e["project_id"]].append(e)
     graph_date = graph_read(edoc)
 
-    lines = []
+    lines, changes, straddling = [], Counter(), Counter()
+
+    def cut(cells):
+        """Apply the cut-off, counting what it moved and what it admits on a coarse date."""
+        if not cutoff:
+            return cells
+        out, changed = apply_cutoff(cells, cutoff)
+        for r in changed:
+            changes[r] += 1
+        for r, c in out.items():
+            if c["result"] == "pass" and straddles(c, cutoff):
+                straddling[r] += 1
+        return out
+
     for ref in sorted(iea, key=lambda x: int(x) if x.isdigit() else 0):
         entry = iea[ref]
         held = by_ref.get(ref)
         cand = cands.get(ref)
+        key = f"iea:{ref}"
         if held:
             row = held[0]
             cells = score_row(row, edges_by_project, graph_date,
-                              funding_by_project)
+                              funding_by_project, funder_by_key, funder_read,
+                              funder_read_on, key)
             klass, rid = "admitted", row["id"]
         elif cand:
             cells = score_unadmitted(ref, records.get(ref), searched_on,
                                      ref in unread_refs)
+            fc = funder_cell(key, funder_by_key, funder_read, funder_read_on)
+            if fc and cells["funding"]["result"] != "unread":
+                cells["funding"] = fc
             klass, rid = "admitted", cand["id"]
         else:
             unreadable = ref in unread_refs
             rec = records.get(ref)
             cells = score_unadmitted(ref, rec, searched_on, unreadable,
                                      excluded=ref in excluded)
+            fc = funder_cell(key, funder_by_key, funder_read, funder_read_on)
+            if fc and not unreadable and ref not in excluded:
+                cells["funding"] = fc
             if unreadable:
                 klass = "unread"
             elif ref in excluded:
@@ -522,14 +709,16 @@ def build():
                 klass = "none found"
             rid = ""
         lines.append(line_for(key=f"iea:{ref}", ref=ref, rid=rid, entry=entry,
-                              row=held[0] if held else None, klass=klass, cells=cells,
+                              row=held[0] if held else None, klass=klass, cells=cut(cells),
                               clause=excluded.get(ref, "")))
 
     for row in offlist:
-        cells = score_row(row, edges_by_project, graph_date, funding_by_project)
+        cells = score_row(row, edges_by_project, graph_date, funding_by_project,
+                          funder_by_key, funder_read, funder_read_on,
+                          f"row:{row['id']}")
         lines.append(line_for(key=f"row:{row['id']}", ref="", rid=row["id"],
-                              entry=None, row=row, klass="admitted", cells=cells))
-    return lines, iea, offlist
+                              entry=None, row=row, klass="admitted", cells=cut(cells)))
+    return lines, iea, offlist, changes, straddling
 
 
 def line_for(key, ref, rid, entry, row, klass, cells, clause=""):
@@ -666,8 +855,28 @@ def benchmark_available() -> bool:
     return (ROOT / "sources" / "cache" / "hydrogen" / "iea_live_projects.json").exists()
 
 
+ASOF_CSV = "hydrogen_asof_{}.csv"
+
+
+def asof_path(cutoff: str):
+    """sources/ladder/hydrogen_asof_2023-10.csv for a cut-off inside October 2023.
+
+    NAMED BY THE MONTH AND NOT BY THE DAY, because a cut-off is a reading of a month's
+    state and two cut-offs a fortnight apart are the same table with a different edge.
+    The exact day is in the file's own `as_of` column on every line.
+    """
+    return OUTDIR / ASOF_CSV.format(cutoff[:7])
+
+
 def main() -> int:
     check = "--check" in sys.argv
+    cutoff = ""
+    if "--as-of" in sys.argv:
+        cutoff = sys.argv[sys.argv.index("--as-of") + 1]
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", cutoff):
+            print("build_ladder --as-of takes a full YYYY-MM-DD. A cut-off padded from a "
+                  "month\n  would claim a day nobody chose.")
+            return 2
     if not benchmark_available():
         # REPORTED, NOT FAILED. Fetching here would put api.iea.org in the build's
         # critical path and cache a file this repository may not redistribute.
@@ -676,7 +885,46 @@ def main() -> int:
               "check_ladder.py reconciles them against benchmark_snapshots.json.")
         return 0
 
-    lines, iea, offlist = build()
+    lines, iea, offlist, changes, straddling = build(cutoff)
+
+    if cutoff:
+        # THE AS-OF TABLE IS A SECOND FILE AND NEVER OVERWRITES THE LADDER. The ladder
+        # is what this register can see today; the as-of table is what it could have seen
+        # on a day, and a reader has to be able to hold both.
+        out = asof_path(cutoff)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        fields = list(FIELDS) + ["as_of"]
+        with out.open("w", newline="", encoding="utf-8") as fh:
+            w = csv.DictWriter(fh, fieldnames=fields)
+            w.writeheader()
+            for l in lines:
+                w.writerow(dict(l, as_of=cutoff))
+        print(f"build_ladder --as-of {cutoff}: {len(lines)} entries -> "
+              f"{out.relative_to(ROOT)}")
+        print(f"\n  CELLS THAT CHANGED CLASS UNDER THE CUT-OFF — each one rested on a "
+              f"document\n  published after {cutoff}, so as of that day it was not a pass "
+              f"and not a fail\n  but a rung nobody had evidence on:\n")
+        print(f"    {'rung':10} {'changed':>8} {'of':>6}")
+        for r in RUNGS:
+            print(f"    {r:10} {changes[r]:>8} {len(lines):>6}")
+        print(f"    {'total':10} {sum(changes.values()):>8} {len(lines) * len(RUNGS):>6}"
+              f"   cells")
+        if sum(straddling.values()):
+            print(f"\n  AND {sum(straddling.values())} PASSES REST ON A DATE COARSER THAN "
+                  f"THE CUT-OFF. A document dated to a year\n  is stored on 1 January, "
+                  f"which the cut-off admits, and may have been published after it.\n"
+                  f"  Counted rather than resolved: reading a year as its last day would "
+                  f"invent a month.\n")
+            for r in RUNGS:
+                if straddling[r]:
+                    print(f"    {r:10} {straddling[r]:>8}")
+        after = Counter(l["rungs_passed"] for l in lines
+                        if l["register_class"] != "perimeter exclusion"
+                        and l["unread"] != "true")
+        print(f"\n  SCORED ENTRIES BY RUNGS PASSED, as of {cutoff}: "
+              + ", ".join(f"{after[k]} at {k}" for k in sorted(after)))
+        return 0
+
     if check:
         import io
         buf = io.StringIO()

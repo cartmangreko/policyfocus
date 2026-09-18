@@ -29,6 +29,7 @@ from collections import Counter
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LEADIT = ROOT / "sources" / "leadit_entries.json"
 GEM = ROOT / "sources" / "steel_entries.json"
+SNAP = ROOT / "sources" / "benchmark_snapshots.json"
 OUT = ROOT / "sources" / "steel_second_list.json"
 
 CLASSES = ("held", "admitted", "named not admitted", "searched none found",
@@ -42,6 +43,31 @@ def main() -> int:
     G = json.loads(GEM.read_text(encoding="utf-8"))
     GE = G["entries"]
     problems = []
+
+    # THE TRACKED-ONLY HALF OF THE WORKBOOK CHECK, and the reason this step may run in
+    # prebuild at all. sources/leadit_entries.json is a derived file: the workbook it came
+    # from is gitignored and openpyxl is not in the build image, so build_leadit_entries.py
+    # reads it in the pre-push chain and records its SHA-256 here. What a build CAN do is
+    # ask whether that recorded hash is the hash this register pins for the benchmark —
+    # which answers "did these rows come from the file we say" without the bytes or the
+    # package. See scope.md, "A build-time gate reads tracked files only".
+    pinned = [x for x in json.loads(SNAP.read_text(encoding="utf-8"))["snapshots"]
+              if x["benchmark"] == "leadit_green_steel_tracker"]
+    if len(pinned) != 1:
+        problems.append(f"benchmark_snapshots.json pins {len(pinned)} LeadIT snapshots, "
+                        f"expected exactly one")
+    elif pinned[0]["sha256"] != L.get("source_sha256"):
+        problems.append(
+            f"LEADIT ENTRIES CAME FROM A FILE THIS REGISTER DOES NOT PIN: "
+            f"leadit_entries.json records {str(L.get('source_sha256'))[:16]}…, "
+            f"benchmark_snapshots.json pins {pinned[0]['sha256'][:16]}…")
+    elif pinned[0]["bytes"] != L.get("source_bytes"):
+        problems.append(f"LeadIT snapshot size disagrees: {pinned[0]['bytes']} pinned, "
+                        f"{L.get('source_bytes')} recorded")
+    else:
+        print(f"the second list's rows came from the pinned workbook: sha256 "
+              f"{pinned[0]['sha256'][:16]}…, {pinned[0]['bytes']:,} bytes, vintage "
+              f"{pinned[0]['vintage']}")
 
     counts = Counter(v.get("class") or "not searched" for v in E.values())
     total = sum(counts.values())

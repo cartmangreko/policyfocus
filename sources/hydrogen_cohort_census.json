@@ -1,0 +1,4042 @@
+{
+ "_comment": [
+  "THE CENSUS PASS OVER THE 2023 COHORT, brief 12 item 5.",
+  "",
+  "    python3 sources/hydrogen_cohort_census.py --fetch [--limit N] [--offset N]",
+  "    python3 sources/hydrogen_cohort_census.py --report",
+  "",
+  "THE COHORT is every EUROPEAN entry in the October 2023 vintage whose `Date online` is",
+  "2023 -- 73 entries. None of them is in the current 237, none is a register row, none is a",
+  "candidate, and NONE was touched by the admission search of 10 September 2026: the search",
+  "covered the class `not searched by eufabric` on the CURRENT vintage, and these are on the",
+  "old one. So the whole cohort is unsearched, and this is the pass that searches it.",
+  "",
+  "THE PUBLISHER'S OWN REFERENCES ARE THE FIRST SEARCH, on the rule the CCS census set: the",
+  "IEA carries a `Refs` column into its own References sheet, so every entry arrives with",
+  "the sources its publisher stood on, and reading those first means the search starts where",
+  "the list's claim comes from rather than at a domain this register guessed. Seventy of the",
+  "seventy-three carry at least one http reference. Odenweller and Ueckerdt's own quality-check",
+  "reference is read beside it where there is one, with its reference date, its date checked",
+  "and its comment -- those are the authors' additions, MIT-licensed, cited by their number.",
+  "",
+  "ARCHIVE CAPTURES DATED BEFORE OCTOBER 2023 ARE PREFERRED, which is the brief's instruction",
+  "and is what makes the cohort scorable as of 2023-10-31 at all. For every reference the",
+  "Wayback CDX index is asked for the LAST capture at or before the cut-off; where one exists",
+  "that capture is what is read, `captured_at` is derived from its timestamp and `archived` is",
+  "true. Where none exists the live page is read and the record says so -- and a live page read",
+  "in 2026 cannot date anything to 2023, which the as-of rule then handles by scoring the cell",
+  "`not_searched` rather than by pretending.",
+  "",
+  "NOTHING HERE WRITES A VERDICT. Every entry carries `verdict: null` and `names_site: null`",
+  "until a person fills them in, on the ruling of 10 September 2026: a machine that proposes is",
+  "useful, a machine that files is a forgery. What the script computes is `signals` -- whether",
+  "the fetched text contains the project's own name -- and a signal is not a finding."
+ ],
+ "cutoff": "2023-10-31",
+ "entries": [
+  {
+   "ref": "3",
+   "name": "H2GO Energy Park Oude-Tonge - 1st phase",
+   "country": "NLD",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "2.5MW",
+   "capacity_mwel": 2.5,
+   "capacity_kth2y": 0.4331333333333333,
+   "iea_reference_numbers": [
+    "503",
+    "630",
+    "609"
+   ],
+   "iea_references": [
+    "Slidepack from TKI Nieuw Gas",
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+    "https://www.goeree-overflakkee.nl/duurzaam-go/waterstof_46733/item/h2go-programma_232204.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+     "read_url": "https://web.archive.org/web/20220419002912/https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+     "archived": true,
+     "captured_at": "2022-04-19",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "fbc87b052f19a9927b479814f7877f07adda7c3f70d025a67a166e60adf7e906",
+     "text_chars": 331,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.goeree-overflakkee.nl/duurzaam-go/waterstof_46733/item/h2go-programma_232204.html",
+     "read_url": "https://web.archive.org/web/20210227221947/https://www.goeree-overflakkee.nl/duurzaam-go/waterstof_46733/item/h2go-programma_232204.html",
+     "archived": true,
+     "captured_at": "2021-02-27",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "b578f1e6ea40b9e0e7ca0b66e3c2aa9fc3b65ec1c4138bd328afc74b0ba397b4",
+     "text_chars": 344,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "205",
+   "name": "HySynergy, phase 1",
+   "country": "DNK",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "ALK",
+   "announced_size": "20MW",
+   "capacity_mwel": 20.0,
+   "capacity_kth2y": 3.3897391304347826,
+   "iea_reference_numbers": [
+    "288",
+    "331"
+   ],
+   "iea_references": [
+    "https://bioenergyinternational.com/storage-logistics/everfuel-and-shell-enter-into-strategic-collaboration-on-a-large-scale-hydrogen-plant",
+    "https://nelhydrogen.com/press-release/press-release-everfuel-awarded-grant-for-the-establishment-of-a-large-scale-hydrogen-production-facility-in-denmark/"
+   ],
+   "quality_check_reference_numbers": [
+    "28"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.offshore-energy.biz/first-hydrogen-produced-at-hysynergy/",
+     "reference_date": "2022-12-16",
+     "date_checked": "2024-07-29",
+     "comment": "\"Therefore, commercial production of hydrogen, although expected to commence in the second quarter of 2023, is subject to authorities’ relevant approvals.\"",
+     "number": "28"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://bioenergyinternational.com/storage-logistics/everfuel-and-shell-enter-into-strategic-collaboration-on-a-large-scale-hydrogen-plant",
+     "read_url": "https://web.archive.org/web/20220315052738/https://bioenergyinternational.com/storage-logistics/everfuel-and-shell-enter-into-strategic-collaboration-on-a-large-scale-hydrogen-plant",
+     "archived": true,
+     "captured_at": "2022-03-15",
+     "http": 200,
+     "outcome": "200, 6071 chars",
+     "sha256": "e51cb3069c6cd525071c858c619b10d55e61a86bccb04f4aa4ef0fb38ce7a7ba",
+     "text_chars": 6071,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://nelhydrogen.com/press-release/press-release-everfuel-awarded-grant-for-the-establishment-of-a-large-scale-hydrogen-production-facility-in-denmark/",
+     "read_url": "https://web.archive.org/web/20230927080222/https://nelhydrogen.com/press-release/press-release-everfuel-awarded-grant-for-the-establishment-of-a-large-scale-hydrogen-production-facility-in-denmark/",
+     "archived": true,
+     "captured_at": "2023-09-27",
+     "http": 200,
+     "outcome": "200, 6565 chars",
+     "sha256": "090caac9ee20ba089296da209beb8a4fb77235614f9b09d2972945ce3c124633",
+     "text_chars": 6565,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.offshore-energy.biz/first-hydrogen-produced-at-hysynergy/",
+     "read_url": "https://web.archive.org/web/20230330044709/https://www.offshore-energy.biz/first-hydrogen-produced-at-hysynergy/",
+     "archived": true,
+     "captured_at": "2023-03-30",
+     "http": 200,
+     "outcome": "200, 7713 chars",
+     "sha256": "ba763f5db09d85749fe558d23a0b61f490a6355824736a42f7cf74a2f54d6993",
+     "text_chars": 7713,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "500",
+   "name": "REMOTE - Spain, Canary Islands",
+   "country": "ESP",
+   "status_2023_vintage": "Operational",
+   "technology": "ALK",
+   "announced_size": "0.080MW",
+   "capacity_mwel": 0.08,
+   "capacity_kth2y": 0.01355895652173913,
+   "iea_reference_numbers": [
+    "423"
+   ],
+   "iea_references": [
+    "https://www.remote-euproject.eu/remote-project/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.remote-euproject.eu/remote-project/",
+     "read_url": "https://web.archive.org/web/20230930083540/https://www.remote-euproject.eu/remote-project/",
+     "archived": true,
+     "captured_at": "2023-09-30",
+     "http": 200,
+     "outcome": "200, 4420 chars",
+     "sha256": "5bacb21f1ee132c08ae9f077e89157595e262ae322a6295f833c3d765fbe88ac",
+     "text_chars": 4420,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "548",
+   "name": "Green fertilizer project Porsgrunn-Heroya, phase 1 - SKREI",
+   "country": "NOR",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "PEM",
+   "announced_size": "24MW",
+   "capacity_mwel": 24.0,
+   "capacity_kth2y": 3.598338461538461,
+   "iea_reference_numbers": [
+    "415",
+    "664",
+    "1197",
+    "1215"
+   ],
+   "iea_references": [
+    "https://www.yara.com/news-and-media/news/archive/2019/yara-and-nel-carbon-free-hydrogen-for-fertilizer-production/",
+    "https://www.deraktionaer.de/artikel/mobilitaet-oel-energie/nel-partner-yara-will-mit-wasserstoff-hoch-hinaus-20221908.html",
+    "https://www.yara.com/corporate-releases/yara-begins-electrifying-the-factory-at-heroya/",
+    "https://www.spglobal.com/platts/es/market-insights/latest-news/electric-power/012822-linde-engineering-wins-24-mw-electrolyzer-order-from-yara-norge"
+   ],
+   "quality_check_reference_numbers": [
+    "40"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://web.archive.org/web/20230530153002/https://eng.heroya-industripark.no/en/news/the-worlds-largest-and-first-green-hydrogen-plant-starts-production-at-heroeya-in-2023/",
+     "reference_date": "2023-05-30",
+     "date_checked": "2024-07-30",
+     "comment": "\"starts production at Herøya in 2023\"",
+     "number": "40"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://www.yara.com/news-and-media/news/archive/2019/yara-and-nel-carbon-free-hydrogen-for-fertilizer-production/",
+     "read_url": "https://web.archive.org/web/20230923084028/https://www.yara.com/news-and-media/news/archive/2019/yara-and-nel-carbon-free-hydrogen-for-fertilizer-production/",
+     "archived": true,
+     "captured_at": "2023-09-23",
+     "http": 200,
+     "outcome": "200, 6869 chars",
+     "sha256": "3d24d02168c1e10082b75679bf0fe63306dfb27685efb09f4f370b51b42d4073",
+     "text_chars": 6869,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.deraktionaer.de/artikel/mobilitaet-oel-energie/nel-partner-yara-will-mit-wasserstoff-hoch-hinaus-20221908.html",
+     "read_url": "https://web.archive.org/web/20220519182129/https://www.deraktionaer.de/artikel/mobilitaet-oel-energie/nel-partner-yara-will-mit-wasserstoff-hoch-hinaus-20221908.html",
+     "archived": true,
+     "captured_at": "2022-05-19",
+     "http": 200,
+     "outcome": "200, 6179 chars",
+     "sha256": "512114ed92bacb4c871f5511c26cb7842846c87b3c26a2403bacc9f82c52a11f",
+     "text_chars": 6179,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.yara.com/corporate-releases/yara-begins-electrifying-the-factory-at-heroya/",
+     "read_url": "https://web.archive.org/web/20230923142627/https://www.yara.com/corporate-releases/yara-begins-electrifying-the-factory-at-heroya/",
+     "archived": true,
+     "captured_at": "2023-09-23",
+     "http": 200,
+     "outcome": "200, 9220 chars",
+     "sha256": "4b5277b3ec13073cb31699218f49344d96dd68e40fc2a5358454de6dcb8bfaf1",
+     "text_chars": 9220,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://web.archive.org/web/20230530153002/https://eng.heroya-industripark.no/en/news/the-worlds-largest-and-first-green-hydrogen-plant-starts-production-at-heroeya-in-2023/",
+     "read_url": "https://web.archive.org/web/20230530153002/https://eng.heroya-industripark.no/en/news/the-worlds-largest-and-first-green-hydrogen-plant-starts-production-at-heroeya-in-2023/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 6182 chars",
+     "sha256": "1ff768b632fc1faeab58ff0d09bb0b0472df96a2479572d85d286cd46169181c",
+     "text_chars": 6182,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "Yara's own release 'Yara begins electrifying the factory at Heroya' names the Heroya works at Porsgrunn",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "Yara International",
+   "site_fetch_url": "https://web.archive.org/web/20230923142627/https://www.yara.com/corporate-releases/yara-begins-electrifying-the-factory-at-heroya/",
+   "site_captured_at": "2023-09-23",
+   "site_archived": true
+  },
+  {
+   "ref": "574",
+   "name": "H2 Pilotanlage  Lingen, phase 1",
+   "country": "DEU",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "ALK",
+   "announced_size": "14 MW (10 + 4)",
+   "capacity_mwel": 14.0,
+   "capacity_kth2y": 2.3728173913043475,
+   "iea_reference_numbers": [
+    "314",
+    "945",
+    "1180",
+    "1212",
+    "1551"
+   ],
+   "iea_references": [
+    "https://www.get-h2.de/en/project-lingen/",
+    "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+    "https://global.kawasaki.com/news_211209-2e.pdf",
+    "https://www.rwe.com/en/press/rwe-generation/2021-12-20-rwe-working-with-linde-to-develop-electrolyser-plant-in-lingen",
+    "https://www.sunfire.de/en/news/detail/rwe-realizes-electrolysis-project-with-sunfire"
+   ],
+   "quality_check_reference_numbers": [
+    "45"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.rwe.com/presse/rwe-generation/2023-09-06-get-h2-nukleus-behoerden-genehmigen-bau-und-betrieb-der-elektrolyse-grossanlage-in-lingen/",
+     "reference_date": "2023-09-06",
+     "date_checked": "2024-07-30",
+     "comment": "\"Ende 2023 nimmt RWE in Lingen bereits eine 14-Megawatt-Pilotanlage in Betrieb.\"",
+     "number": "45"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://www.get-h2.de/en/project-lingen/",
+     "read_url": "https://web.archive.org/web/20221005022438/https://www.get-h2.de/en/project-lingen/",
+     "archived": true,
+     "captured_at": "2022-10-05",
+     "http": 200,
+     "outcome": "200, 2058 chars",
+     "sha256": "c06f400bda8ca15d48e060fc4d5ad06468c7ca834066934990db7511afed5b3e",
+     "text_chars": 2058,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+     "read_url": "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://global.kawasaki.com/news_211209-2e.pdf",
+     "read_url": "https://web.archive.org/web/20220810113152/https://global.kawasaki.com/news_211209-2e.pdf",
+     "archived": true,
+     "captured_at": "2022-08-10",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "6cb783c7cd07de95c20986696ecc3f4ea604e21a48b1587fdba83d7588c1cbae",
+     "text_chars": 237,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.rwe.com/presse/rwe-generation/2023-09-06-get-h2-nukleus-behoerden-genehmigen-bau-und-betrieb-der-elektrolyse-grossanlage-in-lingen/",
+     "read_url": "https://web.archive.org/web/20231004134558/https://www.rwe.com/presse/rwe-generation/2023-09-06-get-h2-nukleus-behoerden-genehmigen-bau-und-betrieb-der-elektrolyse-grossanlage-in-lingen/",
+     "archived": true,
+     "captured_at": "2023-10-04",
+     "http": 200,
+     "outcome": "200, 9863 chars",
+     "sha256": "4b9f23223aeee2c94281a1aabd10ea87cf272f947b577fc3393203a863c87654",
+     "text_chars": 9863,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "RWE's own release names the electrolysis plant 'in Lingen' -- 'Behoerden genehmigen Bau und Betrieb der Elektrolyse-Grossanlage in Lingen'",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "RWE Generation SE",
+   "site_fetch_url": "https://web.archive.org/web/20231004134558/https://www.rwe.com/presse/rwe-generation/2023-09-06-get-h2-nukleus-behoerden-genehmigen-bau-und-betrieb-der-elektrolyse-grossanlage-in-lingen/",
+   "site_captured_at": "2023-10-04",
+   "site_archived": true
+  },
+  {
+   "ref": "597",
+   "name": "HyGreen Provence (Phase 1)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "technology": "Other Electrolysis",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.17325333333333334,
+   "iea_reference_numbers": [
+    "337",
+    "338"
+   ],
+   "iea_references": [
+    "https://www.smart-energy.com/renewable-energy/engie-signs-cooperation-deal-to-participate-in-hygreen-provence-project-air-liquede/",
+    "https://www.engie.com/business-case/engie-x-hygreen"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.smart-energy.com/renewable-energy/engie-signs-cooperation-deal-to-participate-in-hygreen-provence-project-air-liquede/",
+     "read_url": "https://web.archive.org/web/20210920022303/https://www.smart-energy.com/renewable-energy/engie-signs-cooperation-deal-to-participate-in-hygreen-provence-project-air-liquede/",
+     "archived": true,
+     "captured_at": "2021-09-20",
+     "http": 200,
+     "outcome": "200, 7922 chars",
+     "sha256": "8f0bb2397f3e58953d19c87ccb7b9246bc004bb10bbfcd6dba66b86b13bee80c",
+     "text_chars": 7922,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.engie.com/business-case/engie-x-hygreen",
+     "read_url": "https://web.archive.org/web/20230605175104/https://www.engie.com/business-case/engie-x-hygreen",
+     "archived": true,
+     "captured_at": "2023-06-05",
+     "http": 200,
+     "outcome": "200, 4896 chars",
+     "sha256": "bc0da35ee8fa7b0632c8b34c037a5b6be91a9acf42bdebfb9ab39df62c0e3563",
+     "text_chars": 4896,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "625",
+   "name": "Repsol Basque Hydrogen Corrido Bilbao, phase 1",
+   "country": "ESP",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "ALK",
+   "announced_size": "2.5MW",
+   "capacity_mwel": 2.5,
+   "capacity_kth2y": 0.4237173913043478,
+   "iea_reference_numbers": [
+    "531",
+    "532",
+    "739",
+    "757",
+    "1392"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/repsol-unveils-green-hydrogen-project/",
+    "https://www.caranddriver.com/es/coches/planeta-motor/a32864845/combustible-sintetico-repsol/",
+    "https://fuelcellsworks.com/news/basque-hydrogen-corridor-unveiled-a-e1-3billion-hydrogen-project/",
+    "https://www.europapress.es/economia/noticia-repsol-impulsa-apuesta-liderar-carrera-hidrogeno-verde-espana-primer-electrolizador-20231009104256.html",
+    "https://www.chemengonline.com/repsol-to-begin-operating-2-5-mw-electrolyzer-at-petronor-refinery/?printmode=1"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.h2-view.com/story/repsol-unveils-green-hydrogen-project/",
+     "read_url": "https://web.archive.org/web/20220926152833/https://www.h2-view.com/story/repsol-unveils-green-hydrogen-project/",
+     "archived": true,
+     "captured_at": "2022-09-26",
+     "http": 200,
+     "outcome": "200, 11077 chars",
+     "sha256": "c8e5283e663a5f870ab3b47a64be296d0a570f5cfb69b7e98041e7813d20134a",
+     "text_chars": 11077,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.caranddriver.com/es/coches/planeta-motor/a32864845/combustible-sintetico-repsol/",
+     "read_url": "https://web.archive.org/web/20230108133447/https://www.caranddriver.com/es/coches/planeta-motor/a32864845/combustible-sintetico-repsol/",
+     "archived": true,
+     "captured_at": "2023-01-08",
+     "http": 200,
+     "outcome": "200, 7306 chars",
+     "sha256": "ffbbf6307119e0f26daa538460f214c8a6be40f648c9566fd376c2fb60fb6c4a",
+     "text_chars": 7306,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://fuelcellsworks.com/news/basque-hydrogen-corridor-unveiled-a-e1-3billion-hydrogen-project/",
+     "read_url": "https://web.archive.org/web/20231001183053/https://fuelcellsworks.com/news/basque-hydrogen-corridor-unveiled-a-e1-3billion-hydrogen-project/",
+     "archived": true,
+     "captured_at": "2023-10-01",
+     "http": 200,
+     "outcome": "200, 5896 chars",
+     "sha256": "1a9bc00f3bec05fd3b2b49cc027e8f6dde388f2370853373ae47d2eb6f29dd39",
+     "text_chars": 5896,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "637",
+   "name": "Multiphly",
+   "country": "NLD",
+   "status_2023_vintage": "Operational",
+   "technology": "SOEC",
+   "announced_size": "2.5MW",
+   "capacity_mwel": 2.5,
+   "capacity_kth2y": 0.5129210526315789,
+   "iea_reference_numbers": [
+    "1669"
+   ],
+   "iea_references": [
+    "https://www.offshore-energy.biz/multiplhy-project-sunfire-installs-worlds-largest-soec-electrolyser/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.offshore-energy.biz/multiplhy-project-sunfire-installs-worlds-largest-soec-electrolyser/",
+     "read_url": "https://web.archive.org/web/20230922192516/https://www.offshore-energy.biz/multiplhy-project-sunfire-installs-worlds-largest-soec-electrolyser/",
+     "archived": true,
+     "captured_at": "2023-09-22",
+     "http": 200,
+     "outcome": "200, 6434 chars",
+     "sha256": "16056ef7600c970f2ed09d042c3cd61ea61138f21d5265366286799459b61e18",
+     "text_chars": 6434,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "645",
+   "name": "Hyport - Toulouse-Blagnac Airport",
+   "country": "FRA",
+   "status_2023_vintage": "Operational",
+   "technology": "ALK",
+   "announced_size": "2MW",
+   "capacity_mwel": 2.0,
+   "capacity_kth2y": 0.33897391304347824,
+   "iea_reference_numbers": [
+    "528",
+    "754",
+    "1200",
+    "1611"
+   ],
+   "iea_references": [
+    "https://www.engie-solutions.com/fr/actualites/station-hyport-toulouse-blagnac",
+    "https://www.h2-mobile.fr/actus/hydrogene-hyport-choisit-mcphy-transdev-future-station-h2-toulouse/",
+    "https://www.ladepeche.fr/2021/11/03/toulouse-hyport-la-premiere-unite-au-monde-de-production-dhydrogene-vert-installee-a-laeroport-9906959.php",
+    "https://www.regionalgateway.net/airbus-and-hyport-to-advance-green-hydrogen-availability-at-airports/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.engie-solutions.com/fr/actualites/station-hyport-toulouse-blagnac",
+     "read_url": "https://web.archive.org/web/20220812235318/https://www.engie-solutions.com/fr/actualites/station-hyport-toulouse-blagnac",
+     "archived": true,
+     "captured_at": "2022-08-12",
+     "http": 200,
+     "outcome": "200, 7494 chars",
+     "sha256": "fab6663c4cdd46f5cf97d152b01c796e79064c00357f0fe1508fab43f6e450e0",
+     "text_chars": 7494,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.h2-mobile.fr/actus/hydrogene-hyport-choisit-mcphy-transdev-future-station-h2-toulouse/",
+     "read_url": "https://www.h2-mobile.fr/actus/hydrogene-hyport-choisit-mcphy-transdev-future-station-h2-toulouse/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 7430 chars",
+     "sha256": "31574ee57107e40f170b82d12ad11a887c2290d40b4ca352938f1f993cc08c0e",
+     "text_chars": 7430,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.ladepeche.fr/2021/11/03/toulouse-hyport-la-premiere-unite-au-monde-de-production-dhydrogene-vert-installee-a-laeroport-9906959.php",
+     "read_url": "https://web.archive.org/web/20220124181214/https://www.ladepeche.fr/2021/11/03/toulouse-hyport-la-premiere-unite-au-monde-de-production-dhydrogene-vert-installee-a-laeroport-9906959.php",
+     "archived": true,
+     "captured_at": "2022-01-24",
+     "http": 200,
+     "outcome": "200, 10295 chars",
+     "sha256": "86305a0aaac9e6d2066984840520851c29c4ac2f1e2e5b3b1b04732c4522afb7",
+     "text_chars": 10295,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "ENGIE Solutions' own page is the HyPort station at Toulouse-Blagnac airport, finer than the municipality",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "ENGIE Solutions",
+   "site_fetch_url": "https://web.archive.org/web/20220812235318/https://www.engie-solutions.com/fr/actualites/station-hyport-toulouse-blagnac",
+   "site_captured_at": "2022-08-12",
+   "site_archived": true
+  },
+  {
+   "ref": "702",
+   "name": "GldH2",
+   "country": "NLD",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "2MW",
+   "capacity_mwel": 2.0,
+   "capacity_kth2y": 0.3465066666666667,
+   "iea_reference_numbers": [
+    "503",
+    "630",
+    "920",
+    "1662"
+   ],
+   "iea_references": [
+    "Slidepack from TKI Nieuw Gas",
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+     "read_url": "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+     "read_url": "https://web.archive.org/web/20220126164014/https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/publicaties/Overview%20Hydrogen%20projects%20in%20the%20Netherlands%20-%20version%2018%20May%202021.pdf",
+     "archived": true,
+     "captured_at": "2022-01-26",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "45f167b6963991cc8ef0a9218b81c0ea0d7ed02faae5434a10ed57096adf39b0",
+     "text_chars": 364,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "read_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "768",
+   "name": "Ribatejo natural gas power plant ",
+   "country": "PRT",
+   "status_2023_vintage": "DEMO",
+   "technology": "PEM",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.14993076923076926,
+   "iea_reference_numbers": [
+    "533",
+    "1125",
+    "1619"
+   ],
+   "iea_references": [
+    "https://expresso.pt/economia/2019-12-11-EDP-avanca-com-dois-projetos-inovadores-para-produzir-hidrogenio",
+    "https://flexnconfu.eu/demonstration/",
+    "https://www.edp.com/en/innovation/flexnconfu-power-to-increase-the-flexibility-of-thermal-plants"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://expresso.pt/economia/2019-12-11-EDP-avanca-com-dois-projetos-inovadores-para-produzir-hidrogenio",
+     "read_url": "https://expresso.pt/economia/2019-12-11-EDP-avanca-com-dois-projetos-inovadores-para-produzir-hidrogenio",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://flexnconfu.eu/demonstration/",
+     "read_url": "https://web.archive.org/web/20230929164442/https://flexnconfu.eu/demonstration/",
+     "archived": true,
+     "captured_at": "2023-09-29",
+     "http": 200,
+     "outcome": "200, 4639 chars",
+     "sha256": "14d469b06e924f0574f9cb4193f2bd2320ae614de9e1a558eebe22e40701c346",
+     "text_chars": 4639,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.edp.com/en/innovation/flexnconfu-power-to-increase-the-flexibility-of-thermal-plants",
+     "read_url": "https://web.archive.org/web/20210113225858/https://www.edp.com/en/innovation/flexnconfu-power-to-increase-the-flexibility-of-thermal-plants",
+     "archived": true,
+     "captured_at": "2021-01-13",
+     "http": 200,
+     "outcome": "200, 11207 chars",
+     "sha256": "74f0c7e2a73e32a548a8482c16207bfbf7ee1e0fbbd6e381f844b3bc64bf3448",
+     "text_chars": 11207,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "'Ribatejo Power Plant (owned and operated by EDP Gestao da Producao de Energia) ... located on the right bank of the Tejo River, about 30 km northeast of Lisbon, in Vala do Carregado'",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "the FLEXnCONFU consortium, naming EDP as owner and operator",
+   "site_fetch_url": "https://web.archive.org/web/20230929164442/https://flexnconfu.eu/demonstration/",
+   "site_captured_at": "2023-09-29",
+   "site_archived": true
+  },
+  {
+   "ref": "789",
+   "name": "Hysolar Green on Road - Nieuwegein",
+   "country": "NLD",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "2MW",
+   "capacity_mwel": 2.0,
+   "capacity_kth2y": 0.3465066666666667,
+   "iea_reference_numbers": [
+    "499",
+    "1154",
+    "1604",
+    "1662"
+   ],
+   "iea_references": [
+    "https://allesoverwaterstof.nl/mega-waterstofproject-opgestart-in-nieuwegein/",
+    "https://fuelcellsworks.com/news/hysolar-electrolyser-on-kwr-site-will-supply-yearly-250-tons-of-green-hydrogen/?mc_cid=8a8bc1ef04&mc_eid=da4624d261",
+    "https://www.hysolar.nl/nieuws/groene-waterstof-krijgt-vaart/",
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [
+    "20"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "reference_date": "2022-06",
+     "date_checked": "2024-07-29",
+     "comment": "Original source, slide 90, to be commissioned in Q2 2023 -> change to 2023 FID/Construction",
+     "number": "20"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://allesoverwaterstof.nl/mega-waterstofproject-opgestart-in-nieuwegein/",
+     "read_url": "https://web.archive.org/web/20230602025743/https://allesoverwaterstof.nl/mega-waterstofproject-opgestart-in-nieuwegein/",
+     "archived": true,
+     "captured_at": "2023-06-02",
+     "http": 200,
+     "outcome": "200, 7129 chars",
+     "sha256": "53a1c7a8ddece52a7f2b9469e517871613590966cf88509db639697577e9850f",
+     "text_chars": 7129,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://fuelcellsworks.com/news/hysolar-electrolyser-on-kwr-site-will-supply-yearly-250-tons-of-green-hydrogen/?mc_cid=8a8bc1ef04&mc_eid=da4624d261",
+     "read_url": "https://fuelcellsworks.com/news/hysolar-electrolyser-on-kwr-site-will-supply-yearly-250-tons-of-green-hydrogen/?mc_cid=8a8bc1ef04&mc_eid=da4624d261",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 462 chars",
+     "sha256": "b2ceefab396d229fafce561b5a125b498f42702bdd176b5ae164fe8933d9d88b",
+     "text_chars": 462,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.hysolar.nl/nieuws/groene-waterstof-krijgt-vaart/",
+     "read_url": "https://web.archive.org/web/20230602230058/https://www.hysolar.nl/nieuws/groene-waterstof-krijgt-vaart/",
+     "archived": true,
+     "captured_at": "2023-06-02",
+     "http": 200,
+     "outcome": "200, 3243 chars",
+     "sha256": "2cb517ede47a9737662f70d6ddec2b4bb2d0fabc509d8f3d6358c1edf723afea",
+     "text_chars": 3243,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "read_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "Hysolar's own site carries the project under the heading 'Project Nieuwegein'. THIN: the naming is a section title on the owner's site and not a sentence in the release, and it is recorded as that",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "Hysolar",
+   "site_fetch_url": "https://web.archive.org/web/20230602230058/https://www.hysolar.nl/nieuws/groene-waterstof-krijgt-vaart/",
+   "site_captured_at": "2023-06-02",
+   "site_archived": true
+  },
+  {
+   "ref": "792",
+   "name": "Kopernikus 2.0",
+   "country": "DEU",
+   "status_2023_vintage": "DEMO",
+   "technology": "SOEC",
+   "announced_size": "0.25MW",
+   "capacity_mwel": 0.25,
+   "capacity_kth2y": 0.051292105263157896,
+   "iea_reference_numbers": [
+    "445",
+    "599"
+   ],
+   "iea_references": [
+    "https://www.kopernikus-projekte.de/projekte/p2x",
+    "http://www.kit.edu/kit/pi_2019_107_kohlendioxidneutrale-kraftstoffe-aus-luft-und-strom.php"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.kopernikus-projekte.de/projekte/p2x",
+     "read_url": "https://web.archive.org/web/20231002043509/https://www.kopernikus-projekte.de/projekte/p2x",
+     "archived": true,
+     "captured_at": "2023-10-02",
+     "http": 200,
+     "outcome": "200, 13047 chars",
+     "sha256": "522b95b5eb4a9eb244eaae8c29bf2ab854a6ccb46bbc5947043dab6aa4bc128f",
+     "text_chars": 13047,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "http://www.kit.edu/kit/pi_2019_107_kohlendioxidneutrale-kraftstoffe-aus-luft-und-strom.php",
+     "read_url": "https://web.archive.org/web/20230928234126/https://www.kit.edu/kit/pi_2019_107_kohlendioxidneutrale-kraftstoffe-aus-luft-und-strom.php",
+     "archived": true,
+     "captured_at": "2023-09-28",
+     "http": 200,
+     "outcome": "200, 13971 chars",
+     "sha256": "62d7aeaddadbabd2f2ea9da5ac297a7a8a96c047421d6f099f0dba11cca1a51a",
+     "text_chars": 13971,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "793",
+   "name": "E-CO2MET Raffinerie Mitteldeutschland",
+   "country": "DEU",
+   "status_2023_vintage": "DEMO",
+   "technology": "SOEC",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.20516842105263158,
+   "iea_reference_numbers": [
+    "290",
+    "446",
+    "1024"
+   ],
+   "iea_references": [
+    "http://www.carboncapturejournal.com/ViewNews.aspx?NewsID=4220",
+    "https://www.sunfire.de/en/company/news/detail/sunfire-partners-with-total-on-highly-efficient-hydrogen-technology",
+    "https://www.sunfire.de/en/news/detail/totalenergies-sunfire-and-fraunhofer-give-the-go-ahead-for-green-methanol-in-leuna"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "http://www.carboncapturejournal.com/ViewNews.aspx?NewsID=4220",
+     "read_url": "http://www.carboncapturejournal.com/ViewNews.aspx?NewsID=4220",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.sunfire.de/en/company/news/detail/sunfire-partners-with-total-on-highly-efficient-hydrogen-technology",
+     "read_url": "https://web.archive.org/web/20201017154957/https://www.sunfire.de/en/company/news/detail/sunfire-partners-with-total-on-highly-efficient-hydrogen-technology",
+     "archived": true,
+     "captured_at": "2020-10-17",
+     "http": 200,
+     "outcome": "200, 5325 chars",
+     "sha256": "af822d22d2fd4c968560479a114e18d540a9c2af4e75668f7ca31eec65fff8fc",
+     "text_chars": 5325,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.sunfire.de/en/news/detail/totalenergies-sunfire-and-fraunhofer-give-the-go-ahead-for-green-methanol-in-leuna",
+     "read_url": "https://web.archive.org/web/20230609040156/https://www.sunfire.de/en/news/detail/totalenergies-sunfire-and-fraunhofer-give-the-go-ahead-for-green-methanol-in-leuna",
+     "archived": true,
+     "captured_at": "2023-06-09",
+     "http": 200,
+     "outcome": "200, 7822 chars",
+     "sha256": "669d926a0f9c6fd21ced00142c2fe862810458d7f6d42f57a36d677bd17ad185",
+     "text_chars": 7822,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "837",
+   "name": "Producing Hydrogen by Gasification of Biomass in 'het Groene Hart' - GH2",
+   "country": "NLD",
+   "status_2023_vintage": "DEMO",
+   "technology": "Biomass",
+   "announced_size": "1.2MW",
+   "capacity_mwel": null,
+   "capacity_kth2y": 0.1825,
+   "iea_reference_numbers": [
+    "503",
+    "630",
+    "1662"
+   ],
+   "iea_references": [
+    "Slidepack from TKI Nieuw Gas",
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+     "read_url": "https://web.archive.org/web/20220419002912/https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+     "archived": true,
+     "captured_at": "2022-04-19",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "e966ee7e88b5f115e7cad7ccba5c2cd1663d9ba3ada917b65c4c925ad3b97d00",
+     "text_chars": 331,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "read_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "850",
+   "name": "Green lab skive (Phase I)",
+   "country": "DNK",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "6MW",
+   "capacity_mwel": 6.0,
+   "capacity_kth2y": 1.03952,
+   "iea_reference_numbers": [
+    "641",
+    "924",
+    "926",
+    "1249"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/danish-company-greenlab-to-create-worlds-largest-scale-production-facility-for-green-hydrogen/",
+    "https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+    "https://www.h2-view.com/story/new-24mw-electrolysis-plant-set-for-large-scale-green-hydrogen-production/",
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [
+    "57"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.greenlab.dk/knowledge/denmark-s-first-large-scale-electrolyser-module-delivered/",
+     "reference_date": "2023-04-04",
+     "date_checked": "2024-07-30",
+     "comment": "\"The European project GreenHyScale has begun the installation process of a 6 MW prototype electrolyser in the Danish green industrial park, GreenLab\"",
+     "number": "57"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://fuelcellsworks.com/news/danish-company-greenlab-to-create-worlds-largest-scale-production-facility-for-green-hydrogen/",
+     "read_url": "https://web.archive.org/web/20210803195009/https://fuelcellsworks.com/news/danish-company-greenlab-to-create-worlds-largest-scale-production-facility-for-green-hydrogen/",
+     "archived": true,
+     "captured_at": "2021-08-03",
+     "http": 200,
+     "outcome": "200, 6671 chars",
+     "sha256": "63d7cd0e68945ef706a1a7ea75aa1b87a6f6d9062a56ef4b0dedcc7bd73231d5",
+     "text_chars": 6671,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+     "read_url": "https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 22521 chars",
+     "sha256": "f294649342af1e109a7fa8e595f765db86709f5c5e9537c70165d6441e1c6473",
+     "text_chars": 22521,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.h2-view.com/story/new-24mw-electrolysis-plant-set-for-large-scale-green-hydrogen-production/",
+     "read_url": "https://www.h2-view.com/story/new-24mw-electrolysis-plant-set-for-large-scale-green-hydrogen-production/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 11142 chars",
+     "sha256": "d020bf5cd5284fd77516e11bed78e59a2e349aadbfa14bdeff8ccd49635286d8",
+     "text_chars": 11142,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.greenlab.dk/knowledge/denmark-s-first-large-scale-electrolyser-module-delivered/",
+     "read_url": "https://web.archive.org/web/20230529215735/https://www.greenlab.dk/knowledge/denmark-s-first-large-scale-electrolyser-module-delivered/",
+     "archived": true,
+     "captured_at": "2023-05-29",
+     "http": 200,
+     "outcome": "200, 5439 chars",
+     "sha256": "9702787d9d434d6ad2748d03c02205d9d1945e7395c13b3139df01999202e35f",
+     "text_chars": 5439,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "'a 6MW test module for Power-to-X production was delivered to the green industrial park, GreenLab in Skive, Denmark'",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "GreenLab",
+   "site_fetch_url": "https://web.archive.org/web/20230529215735/https://www.greenlab.dk/knowledge/denmark-s-first-large-scale-electrolyser-module-delivered/",
+   "site_captured_at": "2023-05-29",
+   "site_archived": true
+  },
+  {
+   "ref": "938",
+   "name": "Abanto Technology Park",
+   "country": "ESP",
+   "status_2023_vintage": "Operational",
+   "technology": "ALk",
+   "announced_size": "2.5MW",
+   "capacity_mwel": 2.5,
+   "capacity_kth2y": 0.4237173913043478,
+   "iea_reference_numbers": [
+    "739",
+    "757"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/basque-hydrogen-corridor-unveiled-a-e1-3billion-hydrogen-project/",
+    "https://www.europapress.es/economia/noticia-repsol-impulsa-apuesta-liderar-carrera-hidrogeno-verde-espana-primer-electrolizador-20231009104256.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://fuelcellsworks.com/news/basque-hydrogen-corridor-unveiled-a-e1-3billion-hydrogen-project/",
+     "read_url": "https://web.archive.org/web/20231001183053/https://fuelcellsworks.com/news/basque-hydrogen-corridor-unveiled-a-e1-3billion-hydrogen-project/",
+     "archived": true,
+     "captured_at": "2023-10-01",
+     "http": 200,
+     "outcome": "200, 5896 chars",
+     "sha256": "ff9a77ad14409379929b3528503faf7e858679b4022f42bef0e62a2126c4e597",
+     "text_chars": 5896,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.europapress.es/economia/noticia-repsol-impulsa-apuesta-liderar-carrera-hidrogeno-verde-espana-primer-electrolizador-20231009104256.html",
+     "read_url": "https://web.archive.org/web/20231014204434/https://www.europapress.es/economia/noticia-repsol-impulsa-apuesta-liderar-carrera-hidrogeno-verde-espana-primer-electrolizador-20231009104256.html",
+     "archived": true,
+     "captured_at": "2023-10-14",
+     "http": 200,
+     "outcome": "200, 10353 chars",
+     "sha256": "263c918b1f44f2ff8eb4f18680291335ebb280ae52fdaf42200db39dcb3c0a9e",
+     "text_chars": 10353,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "993",
+   "name": "Aquamarine",
+   "country": "HUN",
+   "status_2023_vintage": "Operational",
+   "technology": "PEM",
+   "announced_size": "2MW",
+   "capacity_mwel": 2.0,
+   "capacity_kth2y": 0.2998615384615385,
+   "iea_reference_numbers": [
+    "807",
+    "1685"
+   ],
+   "iea_references": [
+    "https://ceenergynews.com/hydrogen/hungarian-gas-storages-aquamarine-project-to-play-an-active-role-in-the-decarbonisation-process/",
+    "https://mfgt.hu/en/Akvamarin"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://ceenergynews.com/hydrogen/hungarian-gas-storages-aquamarine-project-to-play-an-active-role-in-the-decarbonisation-process/",
+     "read_url": "https://ceenergynews.com/hydrogen/hungarian-gas-storages-aquamarine-project-to-play-an-active-role-in-the-decarbonisation-process/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "4846bcf80def177d3d31ce636221f71a9c0ecaf178313f16defca97ad1830efb",
+     "text_chars": 54,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://mfgt.hu/en/Akvamarin",
+     "read_url": "https://web.archive.org/web/20230418104431/https://mfgt.hu/en/Akvamarin",
+     "archived": true,
+     "captured_at": "2023-04-18",
+     "http": 200,
+     "outcome": "200, 7907 chars",
+     "sha256": "62a9473ec3210cb74cd3e3355378f6319ecaa3b2f25076e01b0f7d6338ddebfc",
+     "text_chars": 7907,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "'the on-site civil, mechanical, electrical and instrumentation/process control construction works of the Aquamarine project were completed at the Kardoskut UGS'",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "Magyar Foldgaztarolo Zrt (MFGT)",
+   "site_fetch_url": "https://web.archive.org/web/20230418104431/https://mfgt.hu/en/Akvamarin",
+   "site_captured_at": "2023-04-18",
+   "site_archived": true
+  },
+  {
+   "ref": "1005",
+   "name": "Rossello paper factory",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "technology": "Other Electrolysis",
+   "announced_size": "",
+   "capacity_mwel": null,
+   "capacity_kth2y": null,
+   "iea_reference_numbers": [
+    "823"
+   ],
+   "iea_references": [
+    "https://www.segre.com/es/noticias/comarcas/2021/03/21/impulsan_una_planta_pionera_lleida_para_obtener_hidrogeno_usarlo_como_combustible_129129_1091.html?"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.segre.com/es/noticias/comarcas/2021/03/21/impulsan_una_planta_pionera_lleida_para_obtener_hidrogeno_usarlo_como_combustible_129129_1091.html?",
+     "read_url": "https://web.archive.org/web/20210322205007/https://www.segre.com/es/noticias/comarcas/2021/03/21/impulsan_una_planta_pionera_lleida_para_obtener_hidrogeno_usarlo_como_combustible_129129_1091.html",
+     "archived": true,
+     "captured_at": "2021-03-22",
+     "http": 200,
+     "outcome": "200, 17626 chars",
+     "sha256": "c45a6862fb0dcc596211ed5545d7763dbc042308f4a7708abe998030cd8dbc3c",
+     "text_chars": 17626,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1022",
+   "name": "H2Pioneer - H2 Carinthia",
+   "country": "AUT",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "PEM",
+   "announced_size": "2MW",
+   "capacity_mwel": 2.0,
+   "capacity_kth2y": 0.2998615384615385,
+   "iea_reference_numbers": [
+    "837",
+    "1061"
+   ],
+   "iea_references": [
+    "https://www.wiva.at/v2/portfolio-item/h2pioneer-pave-the-way-for-green-hydrogen-for-early-adopters-in-the-light-industry/?lang=en",
+    "https://fuelcellsworks.com/news/linde-signs-long-term-agreement-with-infineon-technologies-for-on-site-green-hydrogen-production/?mc_cid=e5c7eff1d8&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.wiva.at/v2/portfolio-item/h2pioneer-pave-the-way-for-green-hydrogen-for-early-adopters-in-the-light-industry/?lang=en",
+     "read_url": "https://web.archive.org/web/20220301062301/https://www.wiva.at/v2/portfolio-item/h2pioneer-pave-the-way-for-green-hydrogen-for-early-adopters-in-the-light-industry/?lang=en",
+     "archived": true,
+     "captured_at": "2022-03-01",
+     "http": 200,
+     "outcome": "200, 4794 chars",
+     "sha256": "2d9aa46aa4211c8d8cc2144660cb7d10f859d2ddf8029e29d654cdc8e7a23e9f",
+     "text_chars": 4794,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://fuelcellsworks.com/news/linde-signs-long-term-agreement-with-infineon-technologies-for-on-site-green-hydrogen-production/?mc_cid=e5c7eff1d8&mc_eid=da4624d261",
+     "read_url": "https://fuelcellsworks.com/news/linde-signs-long-term-agreement-with-infineon-technologies-for-on-site-green-hydrogen-production/?mc_cid=e5c7eff1d8&mc_eid=da4624d261",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 479 chars",
+     "sha256": "3810531c32fd8dda6f17734c1fa9af0c10f1744efca4aa02c8c9454e142bc4cd",
+     "text_chars": 479,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1029",
+   "name": "Birsfelden power plant",
+   "country": "CHE",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "2.5MW",
+   "capacity_mwel": 2.5,
+   "capacity_kth2y": 0.4331333333333333,
+   "iea_reference_numbers": [
+    "1645"
+   ],
+   "iea_references": [
+    "https://www.world-energy.org/article/29081.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.world-energy.org/article/29081.html",
+     "read_url": "https://web.archive.org/web/20230330115415/https://www.world-energy.org/article/29081.html",
+     "archived": true,
+     "captured_at": "2023-03-30",
+     "http": 200,
+     "outcome": "200, 4682 chars",
+     "sha256": "ae59eea017c14de4f2d1a587d1945dc4635f00a4e9653c53bab3e57dbad35b9f",
+     "text_chars": 4682,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1033",
+   "name": "Greening of Gas (GoG) - Net4Gas DEMO",
+   "country": "CZE",
+   "status_2023_vintage": "Feasibility study",
+   "technology": "Other Electrolysis",
+   "announced_size": "50m3 CH4/h",
+   "capacity_mwel": 0.44999999999999996,
+   "capacity_kth2y": 0.077964,
+   "iea_reference_numbers": [
+    "843",
+    "853"
+   ],
+   "iea_references": [
+    "https://www.gie.eu/index.php/events-diary/workshops/2019-workshops/gie-gaz-system-joint-workshop-on-the-energy-transition-in-the-cee-region/27870-09-michal-slaby-net4gas/file",
+    "https://www.entsog.eu/sites/default/files/2020-11/ENTSOG_TYNDP_2020_Annex_A_Projects_Details.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.gie.eu/index.php/events-diary/workshops/2019-workshops/gie-gaz-system-joint-workshop-on-the-energy-transition-in-the-cee-region/27870-09-michal-slaby-net4gas/file",
+     "read_url": "https://web.archive.org/web/20210101022511/https://www.gie.eu/index.php/events-diary/workshops/2019-workshops/gie-gaz-system-joint-workshop-on-the-energy-transition-in-the-cee-region/27870-09-michal-slaby-net4gas/file",
+     "archived": true,
+     "captured_at": "2021-01-01",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "84ef1b7721996fa1811793a7ce6d08c4bb084353c2eaddb06c78e6b99208df8b",
+     "text_chars": 365,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.entsog.eu/sites/default/files/2020-11/ENTSOG_TYNDP_2020_Annex_A_Projects_Details.pdf",
+     "read_url": "https://web.archive.org/web/20221024110130/https://www.entsog.eu/sites/default/files/2020-11/ENTSOG_TYNDP_2020_Annex_A_Projects_Details.pdf",
+     "archived": true,
+     "captured_at": "2022-10-24",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "2fa848ce355c5b620e0d7cea84ff471e3df585fa88f3add5c40d1f495c109aaa",
+     "text_chars": 288,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "1064",
+   "name": "Vallée Hydrogène Grand Ouest (VHyGO) - Saint-Nazaire",
+   "country": "FRA",
+   "status_2023_vintage": "Operational",
+   "technology": "Other Electrolysis",
+   "announced_size": "1.5MW",
+   "capacity_mwel": 1.5,
+   "capacity_kth2y": 0.25988,
+   "iea_reference_numbers": [
+    "857",
+    "858",
+    "1628"
+   ],
+   "iea_references": [
+    "https://www.h2-mobile.fr/actus/hygo-station-hydrogene-vannes-ouvrira-octobre-2021/",
+    "https://fuelcellsworks.com/news/in-france-the-vhygo-project-grand-ouest-hydrogen-valley-will-deploy-green-hydrogen-in-three-different-regions/?mc_cid=4101eb9ee9&mc_eid=da4624d261",
+    "https://www.offshore-energy.biz/worlds-first-offshore-green-hydrogen-production-platform-inaugurated-france/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.h2-mobile.fr/actus/hygo-station-hydrogene-vannes-ouvrira-octobre-2021/",
+     "read_url": "https://web.archive.org/web/20211018200557/https://www.h2-mobile.fr/actus/hygo-station-hydrogene-vannes-ouvrira-octobre-2021/",
+     "archived": true,
+     "captured_at": "2021-10-18",
+     "http": 200,
+     "outcome": "200, 5176 chars",
+     "sha256": "37df341ef2f1d20d10f455933c93c901078a713718eaef1d8db5fcd9078b11e6",
+     "text_chars": 5176,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://fuelcellsworks.com/news/in-france-the-vhygo-project-grand-ouest-hydrogen-valley-will-deploy-green-hydrogen-in-three-different-regions/?mc_cid=4101eb9ee9&mc_eid=da4624d261",
+     "read_url": "https://fuelcellsworks.com/news/in-france-the-vhygo-project-grand-ouest-hydrogen-valley-will-deploy-green-hydrogen-in-three-different-regions/?mc_cid=4101eb9ee9&mc_eid=da4624d261",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 513 chars",
+     "sha256": "345857fb843c3918893eeeeed4168fe2a3fcc9d3af174b496bb96a7e23208ba2",
+     "text_chars": 513,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.offshore-energy.biz/worlds-first-offshore-green-hydrogen-production-platform-inaugurated-france/",
+     "read_url": "https://web.archive.org/web/20230927135018/https://www.offshore-energy.biz/worlds-first-offshore-green-hydrogen-production-platform-inaugurated-france/",
+     "archived": true,
+     "captured_at": "2023-09-27",
+     "http": 200,
+     "outcome": "200, 9682 chars",
+     "sha256": "84adbcca840f702ba7e52de2201b37db695bfaa89f910f0a80472e90e1222991",
+     "text_chars": 9682,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1091",
+   "name": "SmartQuart project - Kaisersesch ",
+   "country": "DEU",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "PEM",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.14993076923076926,
+   "iea_reference_numbers": [
+    "896",
+    "1343",
+    "1688"
+   ],
+   "iea_references": [
+    "https://gtt.fr/news/elogen-selected-equip-smartquart-project-led-eon-germany",
+    "https://www.viessmann.family/en/what-we-offer/climate-solutions/hydrogen/smartquart-a-complete-hydrogen-infrastructure-is-being-built-in-kaisersesch",
+    "https://www.kaisersesch.de/aktuelles/presse-und-oeffentlichkeitsarbeit/pressemitteilungen/2022/november/12-wasserstofftagung-in-kaisersesch-war-ein-voller-erfolg/2022-11-11-dialogforum-smartquart-kaisersesch.pdf?cid=mcs"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://gtt.fr/news/elogen-selected-equip-smartquart-project-led-eon-germany",
+     "read_url": "https://web.archive.org/web/20230930163653/https://gtt.fr/news/elogen-selected-equip-smartquart-project-led-eon-germany",
+     "archived": true,
+     "captured_at": "2023-09-30",
+     "http": 200,
+     "outcome": "200, 5261 chars",
+     "sha256": "e2fc92bdadbd1a86e8741b417c4241adebbe69dea8422aa7bac9c7e086fef791",
+     "text_chars": 5261,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.viessmann.family/en/what-we-offer/climate-solutions/hydrogen/smartquart-a-complete-hydrogen-infrastructure-is-being-built-in-kaisersesch",
+     "read_url": "https://www.viessmann.family/en/what-we-offer/climate-solutions/hydrogen/smartquart-a-complete-hydrogen-infrastructure-is-being-built-in-kaisersesch",
+     "archived": false,
+     "captured_at": "",
+     "http": 404,
+     "outcome": "404",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.kaisersesch.de/aktuelles/presse-und-oeffentlichkeitsarbeit/pressemitteilungen/2022/november/12-wasserstofftagung-in-kaisersesch-war-ein-voller-erfolg/2022-11-11-dialogforum-smartquart-kaisersesch.pdf?cid=mcs",
+     "read_url": "https://www.kaisersesch.de/aktuelles/presse-und-oeffentlichkeitsarbeit/pressemitteilungen/2022/november/12-wasserstofftagung-in-kaisersesch-war-ein-voller-erfolg/2022-11-11-dialogforum-smartquart-kaisersesch.pdf?cid=mcs",
+     "archived": false,
+     "captured_at": "",
+     "http": 404,
+     "outcome": "404",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1121",
+   "name": "Hydrogen Wind Turbine",
+   "country": "NLD",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "2.3MW",
+   "capacity_mwel": 2.3,
+   "capacity_kth2y": 0.39848266666666665,
+   "iea_reference_numbers": [
+    "920",
+    "1662"
+   ],
+   "iea_references": [
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+     "read_url": "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "InvalidURL",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "read_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "1156",
+   "name": "Hydrogen Lab Bremerhaven (phase 1)",
+   "country": "DEU",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "2MW",
+   "capacity_mwel": 2.0,
+   "capacity_kth2y": 0.3465066666666667,
+   "iea_reference_numbers": [
+    "948",
+    "949"
+   ],
+   "iea_references": [
+    "https://hydrogen-central.com/hydrogen-lab-leuna-starts-operations-germany/",
+    "https://www.awi.de/en/about-us/service/press/single-view/co2-neutral-auf-der-nordsee.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://hydrogen-central.com/hydrogen-lab-leuna-starts-operations-germany/",
+     "read_url": "https://web.archive.org/web/20210528051243/https://hydrogen-central.com/hydrogen-lab-leuna-starts-operations-germany/",
+     "archived": true,
+     "captured_at": "2021-05-28",
+     "http": 200,
+     "outcome": "200, 13515 chars",
+     "sha256": "090640b4472a81b914467d3aa9627f2b34fc8f20e0e432c70136495f1a65db4a",
+     "text_chars": 13515,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.awi.de/en/about-us/service/press/single-view/co2-neutral-auf-der-nordsee.html",
+     "read_url": "https://web.archive.org/web/20230607124243/https://www.awi.de/en/about-us/service/press/single-view/co2-neutral-auf-der-nordsee.html",
+     "archived": true,
+     "captured_at": "2023-06-07",
+     "http": 200,
+     "outcome": "200, 16303 chars",
+     "sha256": "b91641ed75b5b8cf5b94f7229d4ce0f5454f9e8f57e0c7994649804426a1c39e",
+     "text_chars": 16303,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1184",
+   "name": "Sealhyfe",
+   "country": "FRA",
+   "status_2023_vintage": "Operational",
+   "technology": "PEM",
+   "announced_size": "1MW, 400 kg H2/d",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.14993076923076926,
+   "iea_reference_numbers": [
+    "974",
+    "1584"
+   ],
+   "iea_references": [
+    "https://www.azocleantech.com/article.aspx?ArticleID=1254",
+    "https://www.h2-mobile.fr/actus/sealhyfe-premier-electrolyseur-offshore-monde-entre-services/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.azocleantech.com/article.aspx?ArticleID=1254",
+     "read_url": "https://web.archive.org/web/20230324091025/https://www.azocleantech.com/article.aspx?ArticleID=1254",
+     "archived": true,
+     "captured_at": "2023-03-24",
+     "http": 200,
+     "outcome": "200, 14263 chars",
+     "sha256": "7d29346e45b13822d70f6d04a4493b612863d3a1d1c18100a53877852b15abe4",
+     "text_chars": 14263,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.h2-mobile.fr/actus/sealhyfe-premier-electrolyseur-offshore-monde-entre-services/",
+     "read_url": "https://web.archive.org/web/20230530002003/https://www.h2-mobile.fr/actus/sealhyfe-premier-electrolyseur-offshore-monde-entre-services/",
+     "archived": true,
+     "captured_at": "2023-05-30",
+     "http": 200,
+     "outcome": "200, 15587 chars",
+     "sha256": "98b67e7902135002ba4a504160de54555c84bad8131a1daa2f522b9a93c958f0",
+     "text_chars": 15587,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1187",
+   "name": "Hofors rolling project",
+   "country": "SWE",
+   "status_2023_vintage": "Operational",
+   "technology": "ALK",
+   "announced_size": "20 MW",
+   "capacity_mwel": 20.0,
+   "capacity_kth2y": 3.3897391304347826,
+   "iea_reference_numbers": [
+    "978",
+    "1118",
+    "1677",
+    "1999",
+    "2081"
+   ],
+   "iea_references": [
+    "https://renewablesnow.com/news/swedish-steel-mill-to-install-17-mw-hydrogen-plant-745424/",
+    "https://news.cision.com/nel-asa/r/nel-asa--receives-purchase-order-for-20mw-alkaline-electrolyser-from-ovako,c3460492",
+    "https://hydrogen-central.com/environmental-permit-given-ovako-hydrogen-plant-steel-production/",
+    "https://hydrogen-central.com/environmental-permit-given-ovako-hydrogen-plant-steel-production/",
+    "http://www.fuelcellchina.com/Industry_information_details/1454.html"
+   ],
+   "quality_check_reference_numbers": [
+    "44"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.ovako.com/en/about-ovako/our-hydrogen-plant/",
+     "reference_date": "2023-09-05",
+     "date_checked": "2024-07-30",
+     "comment": "\"On September 5, 2023, the world's first plant for fossil-free hydrogen for heating steel before rolling was inaugurated.\", \"Sweden’s largest electrolysis plant, being rated at 20 MW\"",
+     "number": "44"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://renewablesnow.com/news/swedish-steel-mill-to-install-17-mw-hydrogen-plant-745424/",
+     "read_url": "https://web.archive.org/web/20230329040818/https://renewablesnow.com/news/swedish-steel-mill-to-install-17-mw-hydrogen-plant-745424/",
+     "archived": true,
+     "captured_at": "2023-03-29",
+     "http": 200,
+     "outcome": "200, 4489 chars",
+     "sha256": "5e4b666095220817de3a506d6b80cd1b80fef42d678027ab5ed624ae9d8dec3f",
+     "text_chars": 4489,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://news.cision.com/nel-asa/r/nel-asa--receives-purchase-order-for-20mw-alkaline-electrolyser-from-ovako,c3460492",
+     "read_url": "https://web.archive.org/web/20211127005519/https://news.cision.com/nel-asa/r/nel-asa--receives-purchase-order-for-20mw-alkaline-electrolyser-from-ovako,c3460492",
+     "archived": true,
+     "captured_at": "2021-11-27",
+     "http": 200,
+     "outcome": "200, 4458 chars",
+     "sha256": "6bf1276c61269f579b4f36ef013a3d619d619276ac062fa21229dacba900e66c",
+     "text_chars": 4458,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://hydrogen-central.com/environmental-permit-given-ovako-hydrogen-plant-steel-production/",
+     "read_url": "https://web.archive.org/web/20221112121217/https://hydrogen-central.com/environmental-permit-given-ovako-hydrogen-plant-steel-production/",
+     "archived": true,
+     "captured_at": "2022-11-12",
+     "http": 200,
+     "outcome": "200, 10945 chars",
+     "sha256": "1ce7b6a40fe84f7694f683b697f376c265d47874cdbfe05b69da3920a8b79dbe",
+     "text_chars": 10945,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.ovako.com/en/about-ovako/our-hydrogen-plant/",
+     "read_url": "https://web.archive.org/web/20231025092756/https://www.ovako.com/en/about-ovako/our-hydrogen-plant/",
+     "archived": true,
+     "captured_at": "2023-10-25",
+     "http": 200,
+     "outcome": "200, 9588 chars",
+     "sha256": "9ddf3720725bbdf7e987cd55eeadddd2d9ce9f24688a3aa97ffa233bf9cb6c79",
+     "text_chars": 9588,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "'The new plant in Hofors starts a new chapter in Swedish steel history ... the electrolyzer ... will be installed at Ovako's site in Hofors'",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "Ovako",
+   "site_fetch_url": "https://web.archive.org/web/20231025092756/https://www.ovako.com/en/about-ovako/our-hydrogen-plant/",
+   "site_captured_at": "2023-10-25",
+   "site_archived": true
+  },
+  {
+   "ref": "1273",
+   "name": "Trailblazer - Siemens-Air Liquide Oberhausen, Phase 1",
+   "country": "DEU",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "PEM",
+   "announced_size": "20MW",
+   "capacity_mwel": 20.0,
+   "capacity_kth2y": 2.9986153846153845,
+   "iea_reference_numbers": [
+    "1560"
+   ],
+   "iea_references": [
+    "https://www.airliquide.com/group/press-releases-news/2021-07-29/air-liquide-transforms-its-network-germany-connecting-large-electrolyzer-producing-renewable"
+   ],
+   "quality_check_reference_numbers": [
+    "43"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.chemietechnik.de/energie-utilities/air-liquide-errichtet-20-mw-elektrolyseur-in-oberhausen-89-405.html",
+     "reference_date": "2023-08-01",
+     "date_checked": "2024-07-30",
+     "comment": "\"Trailblazer wird im 4. Quartal 2023 seinen Betrieb aufnehmen. Trailblazer hat eine Kapazität von 20 Megawatt \"",
+     "number": "43"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://www.airliquide.com/group/press-releases-news/2021-07-29/air-liquide-transforms-its-network-germany-connecting-large-electrolyzer-producing-renewable",
+     "read_url": "https://web.archive.org/web/20230324185959/https://www.airliquide.com/group/press-releases-news/2021-07-29/air-liquide-transforms-its-network-germany-connecting-large-electrolyzer-producing-renewable",
+     "archived": true,
+     "captured_at": "2023-03-24",
+     "http": 200,
+     "outcome": "200, 7577 chars",
+     "sha256": "cf4a6fc89f24f4e0e6d8aa347f40e88a952979e0b92c0d0ff6b1d91ee71d0b88",
+     "text_chars": 7577,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.chemietechnik.de/energie-utilities/air-liquide-errichtet-20-mw-elektrolyseur-in-oberhausen-89-405.html",
+     "read_url": "https://web.archive.org/web/20230923142405/https://www.chemietechnik.de/energie-utilities/air-liquide-errichtet-20-mw-elektrolyseur-in-oberhausen-89-405.html",
+     "archived": true,
+     "captured_at": "2023-09-23",
+     "http": 200,
+     "outcome": "200, 5860 chars",
+     "sha256": "07a77c016a4054c5ef14065a8e7bf0323da9d28a7307c27a369e01b84f680f7f",
+     "text_chars": 5860,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "'Air Liquide is planning to build in Oberhausen, Germany, a renewable hydrogen production plant by electrolysis'",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "Air Liquide",
+   "site_fetch_url": "https://web.archive.org/web/20230324185959/https://www.airliquide.com/group/press-releases-news/2021-07-29/air-liquide-transforms-its-network-germany-connecting-large-electrolyzer-producing-renewable",
+   "site_captured_at": "2023-03-24",
+   "site_archived": true
+  },
+  {
+   "ref": "1277",
+   "name": "Wintershall Dea - VNG Turquoise H2 project",
+   "country": "DEU",
+   "status_2023_vintage": "DEMO",
+   "technology": "Other",
+   "announced_size": "400kg H2/d",
+   "capacity_mwel": null,
+   "capacity_kth2y": 0.14600000000000002,
+   "iea_reference_numbers": [
+    "1564"
+   ],
+   "iea_references": [
+    "https://wintershalldea.com/en/newsroom/wintershall-dea-and-vng-jointly-invest-hydrogen-pilot-project"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://wintershalldea.com/en/newsroom/wintershall-dea-and-vng-jointly-invest-hydrogen-pilot-project",
+     "read_url": "https://web.archive.org/web/20230325004100/https://wintershalldea.com/en/newsroom/wintershall-dea-and-vng-jointly-invest-hydrogen-pilot-project",
+     "archived": true,
+     "captured_at": "2023-03-25",
+     "http": 200,
+     "outcome": "200, 9595 chars",
+     "sha256": "f94c140c035797b5e6b8edfbbbbc61f5a407ecc84967caf24089a4386be090b2",
+     "text_chars": 9595,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1288",
+   "name": "Energy-Norweigian Catapult Centre",
+   "country": "NOR",
+   "status_2023_vintage": "Operational",
+   "technology": "ALK",
+   "announced_size": "0.9MW",
+   "capacity_mwel": 0.9,
+   "capacity_kth2y": 0.1525382608695652,
+   "iea_reference_numbers": [
+    "1055",
+    "1629"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/green-hydrogen-systems-signs-the-first-purchase-order-of-electrolysers-in-norway/?mc_cid=796d0f825a&mc_eid=da4624d261",
+    "https://hydrogensolutions.no/en/starter-gronn-hydrogenproduksjon-vestlandet/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://fuelcellsworks.com/news/green-hydrogen-systems-signs-the-first-purchase-order-of-electrolysers-in-norway/?mc_cid=796d0f825a&mc_eid=da4624d261",
+     "read_url": "https://fuelcellsworks.com/news/green-hydrogen-systems-signs-the-first-purchase-order-of-electrolysers-in-norway/?mc_cid=796d0f825a&mc_eid=da4624d261",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 446 chars",
+     "sha256": "612fd4bd4f6fe3efc2c99397a4b8fce5329bc1421e2570a1420e4a1c6f6ac6d7",
+     "text_chars": 446,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://hydrogensolutions.no/en/starter-gronn-hydrogenproduksjon-vestlandet/",
+     "read_url": "https://web.archive.org/web/20230530085641/https://hydrogensolutions.no/en/starter-gronn-hydrogenproduksjon-vestlandet/",
+     "archived": true,
+     "captured_at": "2023-05-30",
+     "http": 200,
+     "outcome": "200, 4289 chars",
+     "sha256": "7771150b23daa7f3815765b7a463cbf78ffd94806edb5446877fd48991ce8add",
+     "text_chars": 4289,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "'Newly started Stord Hydrogen can produce 140 tonnes of green hydrogen every year'",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "Hydrogen Solutions AS",
+   "site_fetch_url": "https://web.archive.org/web/20230530085641/https://hydrogensolutions.no/en/starter-gronn-hydrogenproduksjon-vestlandet/",
+   "site_captured_at": "2023-05-30",
+   "site_archived": true
+  },
+  {
+   "ref": "1294",
+   "name": "Octopus Hydrogen - MIRA Technology Park",
+   "country": "GBR",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "ALK",
+   "announced_size": "0.9MW",
+   "capacity_mwel": 0.9,
+   "capacity_kth2y": 0.1525382608695652,
+   "iea_reference_numbers": [
+    "1660"
+   ],
+   "iea_references": [
+    "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/electric-power/020123-interview-uks-octopus-hydrogen-seeks-to-unseat-conventional-production-diesel-in-transport"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/electric-power/020123-interview-uks-octopus-hydrogen-seeks-to-unseat-conventional-production-diesel-in-transport",
+     "read_url": "https://web.archive.org/web/20230201192846/https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/electric-power/020123-interview-uks-octopus-hydrogen-seeks-to-unseat-conventional-production-diesel-in-transport",
+     "archived": true,
+     "captured_at": "2023-02-01",
+     "http": 200,
+     "outcome": "200, 10917 chars",
+     "sha256": "e9a50848c486a7199870c93bd3f3681be09cbc4787992b7d34e25ef63c9428a0",
+     "text_chars": 10917,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1301",
+   "name": "H2 Évora - GreenGas II",
+   "country": "PRT",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "PEM",
+   "announced_size": "60t H2/y",
+   "capacity_mwel": 0.3001385254732954,
+   "capacity_kth2y": 0.045,
+   "iea_reference_numbers": [
+    "1064",
+    "1640"
+   ],
+   "iea_references": [
+    "https://ir.fusion-fuel.eu/static-files/1992cf1f-fe4e-4479-8ac4-e62b81eda238",
+    "https://hydrogen-central.com/fusion-fuel-signs-green-hydrogen-offtake-agreement-portuguese-gas-utility-dourogas/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://ir.fusion-fuel.eu/static-files/1992cf1f-fe4e-4479-8ac4-e62b81eda238",
+     "read_url": "https://ir.fusion-fuel.eu/static-files/1992cf1f-fe4e-4479-8ac4-e62b81eda238",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://hydrogen-central.com/fusion-fuel-signs-green-hydrogen-offtake-agreement-portuguese-gas-utility-dourogas/",
+     "read_url": "https://web.archive.org/web/20230201124324/https://hydrogen-central.com/fusion-fuel-signs-green-hydrogen-offtake-agreement-portuguese-gas-utility-dourogas/",
+     "archived": true,
+     "captured_at": "2023-02-01",
+     "http": 200,
+     "outcome": "200, 13387 chars",
+     "sha256": "fa16c4982798cc8ecc18166bbf6ff3ea5c68d13817d5b57f42d8aac771ff03ad",
+     "text_chars": 13387,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1314",
+   "name": "Heroya Industrial Park",
+   "country": "NOR",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "ALK",
+   "announced_size": "5.5 MW or 1100 Nm3 H2/hour",
+   "capacity_mwel": 5.5,
+   "capacity_kth2y": 0.9321782608695652,
+   "iea_reference_numbers": [
+    "1568",
+    "1569"
+   ],
+   "iea_references": [
+    "https://eng.heroya-industripark.no/latest-news/another-green-hydrogen-investment-for-heroeya-this-could-be-big",
+    "https://www.pv-magazine.com/2022/09/13/the-hydrogen-stream-worlds-largest-electrolyzer-to-be-deployed-in-norway/"
+   ],
+   "quality_check_reference_numbers": [
+    "5"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.pv-magazine.com/2023/10/09/mitsubishi-testing-5-5-mw-pressurized-alkaline-electrolyzers-in-japan-norway/",
+     "reference_date": "2023-10-09",
+     "date_checked": "2024-07-29",
+     "comment": "In testing phase in 2023, electrolyzers will be used commercially in USA -> count as FID/Construction for 2023",
+     "number": "5"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://eng.heroya-industripark.no/latest-news/another-green-hydrogen-investment-for-heroeya-this-could-be-big",
+     "read_url": "https://web.archive.org/web/20220327094045/https://eng.heroya-industripark.no/latest-news/another-green-hydrogen-investment-for-heroeya-this-could-be-big",
+     "archived": true,
+     "captured_at": "2022-03-27",
+     "http": 200,
+     "outcome": "200, 7788 chars",
+     "sha256": "e7d062c86bf775807d82f4b6310a8e585f2c279b8df7378ed15cace48961b57c",
+     "text_chars": 7788,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.pv-magazine.com/2022/09/13/the-hydrogen-stream-worlds-largest-electrolyzer-to-be-deployed-in-norway/",
+     "read_url": "https://web.archive.org/web/20231009133840/https://www.pv-magazine.com/2022/09/13/the-hydrogen-stream-worlds-largest-electrolyzer-to-be-deployed-in-norway/",
+     "archived": true,
+     "captured_at": "2023-10-09",
+     "http": 200,
+     "outcome": "200, 11218 chars",
+     "sha256": "6aa480f4137da35ef754a5bcc470398752f5f508a500a400f05b2982e199671a",
+     "text_chars": 11218,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.pv-magazine.com/2023/10/09/mitsubishi-testing-5-5-mw-pressurized-alkaline-electrolyzers-in-japan-norway/",
+     "read_url": "https://web.archive.org/web/20231012135523/https://www.pv-magazine.com/2023/10/09/mitsubishi-testing-5-5-mw-pressurized-alkaline-electrolyzers-in-japan-norway/",
+     "archived": true,
+     "captured_at": "2023-10-12",
+     "http": 200,
+     "outcome": "200, 7814 chars",
+     "sha256": "44f1e9b4ba98e752e65b36fc4979cdf1658671037bf14e9d53d1488038337b4c",
+     "text_chars": 7814,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "the park operator's own news page names Heroya Industrial Park as the site of the electrolyser test facility",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "Heroya Industripark AS, the host works",
+   "site_fetch_url": "https://web.archive.org/web/20220327094045/https://eng.heroya-industripark.no/latest-news/another-green-hydrogen-investment-for-heroeya-this-could-be-big",
+   "site_captured_at": "2022-03-27",
+   "site_archived": true
+  },
+  {
+   "ref": "1345",
+   "name": "Hypster",
+   "country": "FRA",
+   "status_2023_vintage": "DEMO",
+   "technology": "PEM",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.14993076923076926,
+   "iea_reference_numbers": [
+    "1102",
+    "2101"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/france-hypster-project-to-produce-400kg-of-green-hydrogen-daily/",
+    "https://fuelcellsworks.com/news/hypster-demonstrator-paves-the-way-for-the-hydrogen-industry-in-europe/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.h2-view.com/story/france-hypster-project-to-produce-400kg-of-green-hydrogen-daily/",
+     "read_url": "https://web.archive.org/web/20231003003639/https://www.h2-view.com/story/france-hypster-project-to-produce-400kg-of-green-hydrogen-daily/",
+     "archived": true,
+     "captured_at": "2023-10-03",
+     "http": 200,
+     "outcome": "200, 12334 chars",
+     "sha256": "5631d8c5fdf6154ec679443f1e18269848a9f74fe3c14a7e44c701d4e62e4373",
+     "text_chars": 12334,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://fuelcellsworks.com/news/hypster-demonstrator-paves-the-way-for-the-hydrogen-industry-in-europe/",
+     "read_url": "https://fuelcellsworks.com/news/hypster-demonstrator-paves-the-way-for-the-hydrogen-industry-in-europe/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 436 chars",
+     "sha256": "98a90b1e5b086d5450a282d92c04ee2776fe3c8ac8ef1c17b07584c32dd61034",
+     "text_chars": 436,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1355",
+   "name": "Port of Gothenburg - Statkraft",
+   "country": "SWE",
+   "status_2023_vintage": "Feasibility study",
+   "technology": "Other Electrolysis",
+   "announced_size": "4MW",
+   "capacity_mwel": 4.0,
+   "capacity_kth2y": 0.6930133333333334,
+   "iea_reference_numbers": [
+    "1109"
+   ],
+   "iea_references": [
+    "https://www.goteborgshamn.se/press/pressmeddelanden/anlaggning-for-vatgasproduktion-planeras-i-goteborgs-hamn/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.goteborgshamn.se/press/pressmeddelanden/anlaggning-for-vatgasproduktion-planeras-i-goteborgs-hamn/",
+     "read_url": "https://web.archive.org/web/20230529063317/https://www.goteborgshamn.se/press/pressmeddelanden/anlaggning-for-vatgasproduktion-planeras-i-goteborgs-hamn/",
+     "archived": true,
+     "captured_at": "2023-05-29",
+     "http": 200,
+     "outcome": "200, 6653 chars",
+     "sha256": "7273340c048422830567bc4b070dd915f170c5f45c5b182affe7029c6106b01f",
+     "text_chars": 6653,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "'Anlaeggning foer vaetgasproduktion planeras i Goeteborgs hamn' -- the port authority names its own port as the site",
+   "site_speaker": "permitting authority",
+   "verdict": "names the site",
+   "site_speaker_name": "Goteborgs Hamn AB, the port authority",
+   "site_fetch_url": "https://web.archive.org/web/20230529063317/https://www.goteborgshamn.se/press/pressmeddelanden/anlaggning-for-vatgasproduktion-planeras-i-goteborgs-hamn/",
+   "site_captured_at": "2023-05-29",
+   "site_archived": true
+  },
+  {
+   "ref": "1386",
+   "name": "Steinbeis Innovation Center Braunschweig",
+   "country": "DEU",
+   "status_2023_vintage": "DEMO",
+   "technology": "Other Electrolysis",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.17325333333333334,
+   "iea_reference_numbers": [
+    "1134",
+    "1731"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/first-order-placed-for-enapters-aem-multicore-megawatt-class-electrolyser-system/?mc_cid=9ed68568bf&mc_eid=da4624d261",
+    "https://www.linkedin.com/feed/update/urn:li:activity:7069579117104418816/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://fuelcellsworks.com/news/first-order-placed-for-enapters-aem-multicore-megawatt-class-electrolyser-system/?mc_cid=9ed68568bf&mc_eid=da4624d261",
+     "read_url": "https://fuelcellsworks.com/news/first-order-placed-for-enapters-aem-multicore-megawatt-class-electrolyser-system/?mc_cid=9ed68568bf&mc_eid=da4624d261",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 438 chars",
+     "sha256": "8b5825c4507ebf5088a049016d190266cd188ef2d3327b9a7fcb0f0c50fcbaff",
+     "text_chars": 438,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.linkedin.com/feed/update/urn:li:activity:7069579117104418816/",
+     "read_url": "https://www.linkedin.com/feed/update/urn:li:activity:7069579117104418816/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 5984 chars",
+     "sha256": "2fbfa59be904b8ee72f2ddee91b8a372f7dd3ba7b1f11ead0eb9e7df7cbd0918",
+     "text_chars": 5984,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1391",
+   "name": "Carlentini Energy park (Sicily)",
+   "country": "ITA",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "ALK",
+   "announced_size": "4MW",
+   "capacity_mwel": 4.0,
+   "capacity_kth2y": 0.6779478260869565,
+   "iea_reference_numbers": [
+    "1139"
+   ],
+   "iea_references": [
+    "https://mcphy.com/en/press-releases/cooperation-agreement-with-enel-green-power/?cn-reloaded=1&cn-reloaded=1"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://mcphy.com/en/press-releases/cooperation-agreement-with-enel-green-power/?cn-reloaded=1&cn-reloaded=1",
+     "read_url": "https://mcphy.com/en/press-releases/cooperation-agreement-with-enel-green-power/?cn-reloaded=1&cn-reloaded=1",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "URLError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "1467",
+   "name": "Los Barrios coal plant, Cadiz, phase 1",
+   "country": "ESP",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "5MW",
+   "capacity_mwel": 5.0,
+   "capacity_kth2y": 0.8662666666666666,
+   "iea_reference_numbers": [
+    "1211"
+   ],
+   "iea_references": [
+    "https://www.elconfidencial.com/espana/andalucia/2022-01-23/primera-planta-comercial-hidrogeno-verde-algeciras_3362444/"
+   ],
+   "quality_check_reference_numbers": [
+    "60",
+    "61"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://energynews.biz/govt-puts-e3-6m-in-edps-hydrogen-project-in-cadiz/",
+     "reference_date": "2022-12-05",
+     "date_checked": "2024-07-30",
+     "comment": "\"has proposed a grant of 3.6 million euros to develop 5 MW of electrolyzers in the Los Barrios plant.\"",
+     "number": "60"
+    },
+    {
+     "url": "https://espana.edp.com/en/news/edp-begins-environmental-processing-green-hydrogen-valley-campo-de-gibraltar",
+     "reference_date": "2023-03-28",
+     "date_checked": "2024-07-30",
+     "comment": "Doesn't mention the 5 MW first phase any longer, but only 130 MW by 2026 -> leave unchanged",
+     "number": "61"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://www.elconfidencial.com/espana/andalucia/2022-01-23/primera-planta-comercial-hidrogeno-verde-algeciras_3362444/",
+     "read_url": "https://web.archive.org/web/20230704205741/https://www.elconfidencial.com/espana/andalucia/2022-01-23/primera-planta-comercial-hidrogeno-verde-algeciras_3362444/",
+     "archived": true,
+     "captured_at": "2023-07-04",
+     "http": 200,
+     "outcome": "200, 9333 chars",
+     "sha256": "64a064fbf452f7536b0d830cc60ba9f2252450ebca986754443927a4c50d62aa",
+     "text_chars": 9333,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://energynews.biz/govt-puts-e3-6m-in-edps-hydrogen-project-in-cadiz/",
+     "read_url": "https://web.archive.org/web/20230207190631/https://energynews.biz/govt-puts-e3-6m-in-edps-hydrogen-project-in-cadiz/",
+     "archived": true,
+     "captured_at": "2023-02-07",
+     "http": 200,
+     "outcome": "200, 3115 chars",
+     "sha256": "7ad0b4b3431c53ae5b10ef51cd124f67a129c6ca52233aad798812107f467585",
+     "text_chars": 3115,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://espana.edp.com/en/news/edp-begins-environmental-processing-green-hydrogen-valley-campo-de-gibraltar",
+     "read_url": "https://espana.edp.com/en/news/edp-begins-environmental-processing-green-hydrogen-valley-campo-de-gibraltar",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 6309 chars",
+     "sha256": "8b4628b1697551edbf206b3e9555b16b0ef743a11d1eb97776ceb6b8355e2dc0",
+     "text_chars": 6309,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1478",
+   "name": "NFC Belfort (Phase 1)",
+   "country": "FRA",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "ALK",
+   "announced_size": "1 MW, 400 kg H2/d",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.16948695652173912,
+   "iea_reference_numbers": [
+    "1223"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/mcphy-to-install-a-1-mw-electrolyzer-and-a-refueling-station-in-belfort-to-provide-hydrogen-for-a-fleet-of-buses/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://fuelcellsworks.com/news/mcphy-to-install-a-1-mw-electrolyzer-and-a-refueling-station-in-belfort-to-provide-hydrogen-for-a-fleet-of-buses/",
+     "read_url": "https://fuelcellsworks.com/news/mcphy-to-install-a-1-mw-electrolyzer-and-a-refueling-station-in-belfort-to-provide-hydrogen-for-a-fleet-of-buses/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 511 chars",
+     "sha256": "756fb59e216797cf1cfc3ea8c17d5de7f15241b509fa6f6a953f72fb76f2deed",
+     "text_chars": 511,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1482",
+   "name": "Lhyfe-Enerparc Luckau project",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "technology": "ALK",
+   "announced_size": "5MW",
+   "capacity_mwel": 5.0,
+   "capacity_kth2y": 0.8474347826086956,
+   "iea_reference_numbers": [
+    "1581"
+   ],
+   "iea_references": [
+    "https://www.lhyfe.com/press/lhyfe-and-enerparc-join-forces-to-produce-renewable-hydrogen-from-solar-energy/"
+   ],
+   "quality_check_reference_numbers": [
+    "62"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.lhyfe.com/press/lhyfe-and-enerparc-join-forces-to-produce-renewable-hydrogen-from-solar-energy/",
+     "reference_date": "2022-01-13",
+     "date_checked": "2024-07-30",
+     "comment": "\"The 5 MW plant, which will be wholly owned by Lhyfe, will produce up to 1 200 kg of green hydrogen a day. Construction of the site will begin in the summer of 2022, with the first deliveries scheduled for the end of 2023.\"",
+     "number": "62"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://www.lhyfe.com/press/lhyfe-and-enerparc-join-forces-to-produce-renewable-hydrogen-from-solar-energy/",
+     "read_url": "https://web.archive.org/web/20230528065348/https://www.lhyfe.com/press/lhyfe-and-enerparc-join-forces-to-produce-renewable-hydrogen-from-solar-energy/",
+     "archived": true,
+     "captured_at": "2023-05-28",
+     "http": 200,
+     "outcome": "200, 3316 chars",
+     "sha256": "21f5d30ac2ac8f2c6a49ad0a3f60a48b3652108350df1a582f37ea156e2c347b",
+     "text_chars": 3316,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "'Based in Luckau, Brandenburg, this project is intended to serve industry, transport companies, filling stations and municipalities in the region'",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "Lhyfe",
+   "site_fetch_url": "https://web.archive.org/web/20230528065348/https://www.lhyfe.com/press/lhyfe-and-enerparc-join-forces-to-produce-renewable-hydrogen-from-solar-energy/",
+   "site_captured_at": "2023-05-28",
+   "site_archived": true
+  },
+  {
+   "ref": "1487",
+   "name": "Dorset Green H2 Project",
+   "country": "GBR",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "0.9MW",
+   "capacity_mwel": 0.9,
+   "capacity_kth2y": 0.155928,
+   "iea_reference_numbers": [
+    "1229"
+   ],
+   "iea_references": [
+    "https://www.dorsetlep.co.uk/dorset-green-h2"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.dorsetlep.co.uk/dorset-green-h2",
+     "read_url": "https://www.dorsetlep.co.uk/dorset-green-h2",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 5876 chars",
+     "sha256": "6817429126f4efd9b1f57a71e483c91419e24ef1d4f1d31db5de3e2914ca1a8e",
+     "text_chars": 5876,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1506",
+   "name": "European Energy, phase I",
+   "country": "DNK",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "6MW",
+   "capacity_mwel": 3.0,
+   "capacity_kth2y": 0.51976,
+   "iea_reference_numbers": [
+    "1249",
+    "1684"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+    "https://europeanenergy.com/2023/03/27/european-energy-orders-electrolyzer-from-stiesdal/"
+   ],
+   "quality_check_reference_numbers": [
+    "51"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://europeanenergy.com/2023/03/27/european-energy-orders-electrolyzer-from-stiesdal/",
+     "reference_date": "2023-03-27",
+     "date_checked": "2024-07-30",
+     "comment": "\"European Energy is responsible for designing and delivering the complete balance of plant as well as constructing the Maade facility which will have a total capacity of 12MW.\", \"Construction started late  2022 on the Maade PtX-facility and the facility will begin operation in 2023.\"",
+     "number": "51"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "read_url": "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 404,
+     "outcome": "404",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "permit_or_official",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://europeanenergy.com/2023/03/27/european-energy-orders-electrolyzer-from-stiesdal/",
+     "read_url": "https://europeanenergy.com/2023/03/27/european-energy-orders-electrolyzer-from-stiesdal/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 3284 chars",
+     "sha256": "0118ecf17bbcef3dc0c74fba4c8bf866e1c8c66583c8ea95dc175bd38790a577",
+     "text_chars": 3284,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1507",
+   "name": "European Energy, phase II",
+   "country": "DNK",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "12MW",
+   "capacity_mwel": 9.0,
+   "capacity_kth2y": 1.55928,
+   "iea_reference_numbers": [
+    "1249",
+    "1684"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+    "https://europeanenergy.com/2023/03/27/european-energy-orders-electrolyzer-from-stiesdal/"
+   ],
+   "quality_check_reference_numbers": [
+    "51"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://europeanenergy.com/2023/03/27/european-energy-orders-electrolyzer-from-stiesdal/",
+     "reference_date": "2023-03-27",
+     "date_checked": "2024-07-30",
+     "comment": "\"European Energy is responsible for designing and delivering the complete balance of plant as well as constructing the Maade facility which will have a total capacity of 12MW.\", \"Construction started late  2022 on the Maade PtX-facility and the facility will begin operation in 2023.\"",
+     "number": "51"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "read_url": "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 404,
+     "outcome": "404",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "permit_or_official",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://europeanenergy.com/2023/03/27/european-energy-orders-electrolyzer-from-stiesdal/",
+     "read_url": "https://europeanenergy.com/2023/03/27/european-energy-orders-electrolyzer-from-stiesdal/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 3284 chars",
+     "sha256": "0118ecf17bbcef3dc0c74fba4c8bf866e1c8c66583c8ea95dc175bd38790a577",
+     "text_chars": 3284,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1661",
+   "name": "Vätgas Ljungby",
+   "country": "SWE",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "2 MW",
+   "capacity_mwel": 2.0,
+   "capacity_kth2y": 0.3465066666666667,
+   "iea_reference_numbers": [
+    "1360",
+    "1686"
+   ],
+   "iea_references": [
+    "https://vatgas.se/2021/09/07/strandmollen-ab-far-investeringsstod-fran-klimatklivet-for-vatgasproduktion/",
+    "https://www.mynewsdesk.com/se/strandmoellen-ab/pressreleases/strandmoellen-ab-has-placed-a-purchase-order-for-a-3mw-electrolyser-from-fest-gmbh-3172967"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://vatgas.se/2021/09/07/strandmollen-ab-far-investeringsstod-fran-klimatklivet-for-vatgasproduktion/",
+     "read_url": "https://vatgas.se/2021/09/07/strandmollen-ab-far-investeringsstod-fran-klimatklivet-for-vatgasproduktion/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 5391 chars",
+     "sha256": "cddd4e087b234a2fc5fb16cb91bbc838103739977db8727e8bffe98b5e9300c2",
+     "text_chars": 5391,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.mynewsdesk.com/se/strandmoellen-ab/pressreleases/strandmoellen-ab-has-placed-a-purchase-order-for-a-3mw-electrolyser-from-fest-gmbh-3172967",
+     "read_url": "https://www.mynewsdesk.com/se/strandmoellen-ab/pressreleases/strandmoellen-ab-has-placed-a-purchase-order-for-a-3mw-electrolyser-from-fest-gmbh-3172967",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 4203 chars",
+     "sha256": "97953ecc78cfd33251a802e4abb8a4fb0e713e2fbe1c46674d6b9cb3c4bc2949",
+     "text_chars": 4203,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1752",
+   "name": "Dijon Métropole Smart EnergHy (DMSE) - Station 1",
+   "country": "FRA",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "ALK",
+   "announced_size": "1 MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.16948695652173912,
+   "iea_reference_numbers": [
+    "1418",
+    "1419",
+    "2005"
+   ],
+   "iea_references": [
+    "https://mcphy.com/en/achievements/hydrogen-mobility-en/dijon-metropole-smart-energhy-dmse/?cn-reloaded=1",
+    "https://www.metropole-dijon.fr/Actualites/Production-d-hydrogene2",
+    "https://vighy.france-hydrogene.org/projets/dijon-metropole-smart-energy-dmse/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://mcphy.com/en/achievements/hydrogen-mobility-en/dijon-metropole-smart-energhy-dmse/?cn-reloaded=1",
+     "read_url": "https://web.archive.org/web/20230323112507/https://mcphy.com/en/achievements/hydrogen-mobility-en/dijon-metropole-smart-energhy-dmse/?cn-reloaded=1",
+     "archived": true,
+     "captured_at": "2023-03-23",
+     "http": 200,
+     "outcome": "200, 13742 chars",
+     "sha256": "5d557360df41e4076708e21a6123f450c5294d22bb34684d7e234b662ce99f3b",
+     "text_chars": 13742,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://www.metropole-dijon.fr/Actualites/Production-d-hydrogene2",
+     "read_url": "https://www.metropole-dijon.fr/Actualites/Production-d-hydrogene2",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 9408 chars",
+     "sha256": "53f4fd02ab21c53c8d531e3737865e728513220a6a5d64913f62cbf7b3731a47",
+     "text_chars": 9408,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://vighy.france-hydrogene.org/projets/dijon-metropole-smart-energy-dmse/",
+     "read_url": "https://vighy.france-hydrogene.org/projets/dijon-metropole-smart-energy-dmse/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 1765 chars",
+     "sha256": "f5389cc073f46a26feee912edf79e0bba0dec448fb42ed4921f1277a13c3265e",
+     "text_chars": 1765,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1768",
+   "name": "Porte de St Cloud HRS station",
+   "country": "FRA",
+   "status_2023_vintage": "Operational",
+   "technology": "PEM",
+   "announced_size": "2.5MW",
+   "capacity_mwel": 2.5,
+   "capacity_kth2y": 0.37482692307692306,
+   "iea_reference_numbers": [
+    "1429"
+   ],
+   "iea_references": [
+    "https://www.cummins.com/news/releases/2022/04/04/worlds-largest-hydrogen-taxi-fleet-be-powered-cummins-electrolyzer?utm_campaign=606db7a3f585320001a13d30&utm_content=624afb9efcfe5e00018d9901&utm_medium=smarpshare&utm_source=linkedin"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.cummins.com/news/releases/2022/04/04/worlds-largest-hydrogen-taxi-fleet-be-powered-cummins-electrolyzer?utm_campaign=606db7a3f585320001a13d30&utm_content=624afb9efcfe5e00018d9901&utm_medium=smarpshare&utm_source=linkedin",
+     "read_url": "https://www.cummins.com/news/releases/2022/04/04/worlds-largest-hydrogen-taxi-fleet-be-powered-cummins-electrolyzer?utm_campaign=606db7a3f585320001a13d30&utm_content=624afb9efcfe5e00018d9901&utm_medium=smarpshare&utm_source=linkedin",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 8374 chars",
+     "sha256": "05296ab3ae02b06740c1b15fa5a99eaa4b19f6072298d6492a9957fb3ecd9f61",
+     "text_chars": 8374,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1835",
+   "name": "Pau-Lescar Biofactory",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "technology": "PEM",
+   "announced_size": "1MW electrolyzer, 13000MWh CH4/y",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.14993076923076926,
+   "iea_reference_numbers": [
+    "1467"
+   ],
+   "iea_references": [
+    "https://hydrogen-central.com/storengy-chooses-man-energy-solutions-methanation-reactor-produce-syngas-french-wastewater-treatment-plant/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://hydrogen-central.com/storengy-chooses-man-energy-solutions-methanation-reactor-produce-syngas-french-wastewater-treatment-plant/",
+     "read_url": "https://hydrogen-central.com/storengy-chooses-man-energy-solutions-methanation-reactor-produce-syngas-french-wastewater-treatment-plant/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 10050 chars",
+     "sha256": "268098626c7426fb664de46ee0d0ca1c18348a6bbdc67056af24c1447e267465",
+     "text_chars": 10050,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1845",
+   "name": "WAviatER",
+   "country": "NLD",
+   "status_2023_vintage": "DEMO",
+   "technology": "Other Electrolysis",
+   "announced_size": "",
+   "capacity_mwel": 0.0,
+   "capacity_kth2y": null,
+   "iea_reference_numbers": [
+    "1488"
+   ],
+   "iea_references": [
+    "https://www.qamarenergy.com/sites/default/files/The%20UAE%27s%20Role%20in%20the%20Global%20Hydrogen%20Economy.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.qamarenergy.com/sites/default/files/The%20UAE%27s%20Role%20in%20the%20Global%20Hydrogen%20Economy.pdf",
+     "read_url": "https://www.qamarenergy.com/sites/default/files/The%20UAE%27s%20Role%20in%20the%20Global%20Hydrogen%20Economy.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 0 chars",
+     "sha256": "25fded955439fc8c33289b5c975b925d7c2e6d66c29ba7b1eb732b0a997f7853",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "1871",
+   "name": "Norwegian Hydrogen, Hellesylt Hydrogen Hub 1st project",
+   "country": "NOR",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "PEM",
+   "announced_size": "4.5MW",
+   "capacity_mwel": 4.5,
+   "capacity_kth2y": 0.6746884615384616,
+   "iea_reference_numbers": [
+    "1503"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/norwegian-hydrogen-as-is-moving-forward-with-its-project-to-establish-green-hydrogen-production-at-hellesylt-within-q4-2023/?mc_cid=790c1a9648&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://fuelcellsworks.com/news/norwegian-hydrogen-as-is-moving-forward-with-its-project-to-establish-green-hydrogen-production-at-hellesylt-within-q4-2023/?mc_cid=790c1a9648&mc_eid=da4624d261",
+     "read_url": "https://fuelcellsworks.com/news/norwegian-hydrogen-as-is-moving-forward-with-its-project-to-establish-green-hydrogen-production-at-hellesylt-within-q4-2023/?mc_cid=790c1a9648&mc_eid=da4624d261",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 529 chars",
+     "sha256": "ddcb9d1304066adc9f9025a0ac0072da54f204951079b45d811ec02150cb584f",
+     "text_chars": 529,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1931",
+   "name": "Energy Hub at MIRA Technology Park.",
+   "country": "GBR",
+   "status_2023_vintage": "Operational",
+   "technology": "Other Electrolysis",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.17325333333333334,
+   "iea_reference_numbers": [
+    "1550"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/octopus-hydrogen-granted-environmental-permit-for-green-hydrogen-production/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.h2-view.com/story/octopus-hydrogen-granted-environmental-permit-for-green-hydrogen-production/",
+     "read_url": "https://www.h2-view.com/story/octopus-hydrogen-granted-environmental-permit-for-green-hydrogen-production/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 11142 chars",
+     "sha256": "2d158bf8b9674a43b9e73196355b4f1b462de86da18ec87271e5f78e044e197b",
+     "text_chars": 11142,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "1976",
+   "name": "Hynoca Alkmaar",
+   "country": "NLD",
+   "status_2023_vintage": "DEMO",
+   "technology": "Biomass",
+   "announced_size": "240 - 2300 t H2/year",
+   "capacity_mwel": null,
+   "capacity_kth2y": 1.27,
+   "iea_reference_numbers": [
+    "1662"
+   ],
+   "iea_references": [
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "read_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "1979",
+   "name": "GROHW",
+   "country": "NLD",
+   "status_2023_vintage": "Operational",
+   "technology": "Other Electrolysis",
+   "announced_size": "50kW",
+   "capacity_mwel": 0.5,
+   "capacity_kth2y": 0.08662666666666667,
+   "iea_reference_numbers": [
+    "1662"
+   ],
+   "iea_references": [
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "read_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "1982",
+   "name": "H2Agro",
+   "country": "NLD",
+   "status_2023_vintage": "DEMO",
+   "technology": "Other Electrolysis",
+   "announced_size": "",
+   "capacity_mwel": 0.0,
+   "capacity_kth2y": null,
+   "iea_reference_numbers": [
+    "1662"
+   ],
+   "iea_references": [
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "read_url": "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf",
+     "archived": false,
+     "captured_at": "",
+     "http": 403,
+     "outcome": "403",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "2028",
+   "name": "Energie Steiermark plant in Styria",
+   "country": "AUT",
+   "status_2023_vintage": "Operational",
+   "technology": "Other Electrolysis",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.17325333333333334,
+   "iea_reference_numbers": [
+    "1739"
+   ],
+   "iea_references": [
+    "https://renewablesnow.com/news/austrias-first-green-hydrogen-production-plant-goes-live-822650/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://renewablesnow.com/news/austrias-first-green-hydrogen-production-plant-goes-live-822650/",
+     "read_url": "https://renewablesnow.com/news/austrias-first-green-hydrogen-production-plant-goes-live-822650/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 4666 chars",
+     "sha256": "97142553e21fb2126b549b10e4a603097821d0e83824c381a4ccb064eadd4320",
+     "text_chars": 4666,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2098",
+   "name": "Pamesa - eCombustible",
+   "country": "ESP",
+   "status_2023_vintage": "Operational",
+   "technology": "Other Electrolysis",
+   "announced_size": "8MW",
+   "capacity_mwel": 8.0,
+   "capacity_kth2y": 1.3860266666666667,
+   "iea_reference_numbers": [
+    "1807",
+    "1808"
+   ],
+   "iea_references": [
+    "https://www.pamesagrupoempresarial.com/pamesa-ecombustible/",
+    "https://elperiodicodelaenergia.com/pamesa-pone-en-marcha-la-primera-planta-de-atomizacion-que-abandona-el-gas-para-trabajar-solo-con-agua-y-energia-solar/#google_vignette"
+   ],
+   "quality_check_reference_numbers": [
+    "53"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://castellonaldia-elmundo-es.translate.goog/economia/por-que-la-industria-ceramica-urge-una-fuente-energetica-alternativa-al-gas-BH15746034",
+     "reference_date": "2023-06-23",
+     "date_checked": "2024-07-30",
+     "comment": "8 MW, inaugurated",
+     "number": "53"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://www.pamesagrupoempresarial.com/pamesa-ecombustible/",
+     "read_url": "https://www.pamesagrupoempresarial.com/pamesa-ecombustible/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 537 chars",
+     "sha256": "ec383ae6fcf61e92bd23c01593cac0fcbdf508cc5cd05594fac67efdb58d3428",
+     "text_chars": 537,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://elperiodicodelaenergia.com/pamesa-pone-en-marcha-la-primera-planta-de-atomizacion-que-abandona-el-gas-para-trabajar-solo-con-agua-y-energia-solar/#google_vignette",
+     "read_url": "https://elperiodicodelaenergia.com/pamesa-pone-en-marcha-la-primera-planta-de-atomizacion-que-abandona-el-gas-para-trabajar-solo-con-agua-y-energia-solar/#google_vignette",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 8296 chars",
+     "sha256": "6f3bd71a5f58ed47c10e2ef574799113ef774b47f8d0bb2ef922fd9b30196aa0",
+     "text_chars": 8296,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://castellonaldia-elmundo-es.translate.goog/economia/por-que-la-industria-ceramica-urge-una-fuente-energetica-alternativa-al-gas-BH15746034",
+     "read_url": "https://castellonaldia-elmundo-es.translate.goog/economia/por-que-la-industria-ceramica-urge-una-fuente-energetica-alternativa-al-gas-BH15746034",
+     "archived": false,
+     "captured_at": "",
+     "http": 400,
+     "outcome": "400",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2105",
+   "name": "Hy2B plant in Pfeffenhausen",
+   "country": "DEU",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "ALK",
+   "announced_size": "5MWor 1.2t H2/d (production)",
+   "capacity_mwel": 5.0,
+   "capacity_kth2y": 0.8474347826086956,
+   "iea_reference_numbers": [
+    "1813"
+   ],
+   "iea_references": [
+    "https://hydrogen-central.com/hy2b-hydrogen-plant-technology-procurement-electrolyser-hyperformer-region-hybayern/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://hydrogen-central.com/hy2b-hydrogen-plant-technology-procurement-electrolyser-hyperformer-region-hybayern/",
+     "read_url": "https://hydrogen-central.com/hy2b-hydrogen-plant-technology-procurement-electrolyser-hyperformer-region-hybayern/",
+     "archived": false,
+     "captured_at": "",
+     "http": null,
+     "outcome": "TimeoutError",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "2113",
+   "name": "Plant Zero.1",
+   "country": "GBR",
+   "status_2023_vintage": "DEMO",
+   "technology": "Other Electrolysis",
+   "announced_size": "",
+   "capacity_mwel": 0.0,
+   "capacity_kth2y": null,
+   "iea_reference_numbers": [
+    "1820",
+    "1821"
+   ],
+   "iea_references": [
+    "https://www.zero.co/news-media/plant-zero",
+    "https://twitter.com/ZeroPetroleum/status/1670729286829916160"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.zero.co/news-media/plant-zero",
+     "read_url": "https://www.zero.co/news-media/plant-zero",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 3168 chars",
+     "sha256": "800a33f22a3d77c6e9111d5810f06822e55560d279f0d7b3afba211af5c50661",
+     "text_chars": 3168,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://twitter.com/ZeroPetroleum/status/1670729286829916160",
+     "read_url": "https://twitter.com/ZeroPetroleum/status/1670729286829916160",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 1578 chars",
+     "sha256": "cd4f5f21153639d39ec52814af1c7608b407e5c55b3f5684f8d9ad5ced68ede2",
+     "text_chars": 1578,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2243",
+   "name": "H2 production for a H2 Fuell station ",
+   "country": "NLD",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.17325333333333334,
+   "iea_reference_numbers": [
+    "1929"
+   ],
+   "iea_references": [
+    "https://www.enapter.com/newsroom/dutch-energy-company-orders-megawatt-class-electrolyser"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.enapter.com/newsroom/dutch-energy-company-orders-megawatt-class-electrolyser",
+     "read_url": "https://www.enapter.com/newsroom/dutch-energy-company-orders-megawatt-class-electrolyser",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 5174 chars",
+     "sha256": "249f07ec7c65fa0f4494c5f63b84400e4454aac61e5c9d0329bbbffb169caecb",
+     "text_chars": 5174,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2244",
+   "name": "Hydrogen for fuel cell testing and heat recovery",
+   "country": "DEU",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.17325333333333334,
+   "iea_reference_numbers": [
+    "1930"
+   ],
+   "iea_references": [
+    "https://www.enapter.com/newsroom/first-order-placed-for-enapters-aem-multicore-megawatt-class-electrolyser-system"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.enapter.com/newsroom/first-order-placed-for-enapters-aem-multicore-megawatt-class-electrolyser-system",
+     "read_url": "https://www.enapter.com/newsroom/first-order-placed-for-enapters-aem-multicore-megawatt-class-electrolyser-system",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 5780 chars",
+     "sha256": "776911a896c8475865c4b31a37ead692003135edf28f5f97a2d43386f3b51416",
+     "text_chars": 5780,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2367",
+   "name": "BÜKKABRÁNY PtG",
+   "country": "HUN",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.17325333333333334,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the vintage records no http reference for this entry",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "2370",
+   "name": "Strandmollen Ljungby",
+   "country": "SWE",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "3MW",
+   "capacity_mwel": 3.0,
+   "capacity_kth2y": 0.51976,
+   "iea_reference_numbers": [
+    "2000"
+   ],
+   "iea_references": [
+    "https://www.mynewsdesk.com/se/strandmoellen-ab/pressreleases/strandmoellen-ab-has-placed-a-purchase-order-for-a-3mw-electrolyser-from-fest-gmbh-3172967"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.mynewsdesk.com/se/strandmoellen-ab/pressreleases/strandmoellen-ab-has-placed-a-purchase-order-for-a-3mw-electrolyser-from-fest-gmbh-3172967",
+     "read_url": "https://www.mynewsdesk.com/se/strandmoellen-ab/pressreleases/strandmoellen-ab-has-placed-a-purchase-order-for-a-3mw-electrolyser-from-fest-gmbh-3172967",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 4203 chars",
+     "sha256": "97953ecc78cfd33251a802e4abb8a4fb0e713e2fbe1c46674d6b9cb3c4bc2949",
+     "text_chars": 4203,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2372",
+   "name": "Hitachi Zosen Inova HZI PtH Buchs",
+   "country": "CHE",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "2.3 MW",
+   "capacity_mwel": 2.3,
+   "capacity_kth2y": 0.39848266666666665,
+   "iea_reference_numbers": [
+    "2002"
+   ],
+   "iea_references": [
+    "https://bioenergyinternational.com/hzi-to-develop-first-small-scale-waste-to-hydrogen/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://bioenergyinternational.com/hzi-to-develop-first-small-scale-waste-to-hydrogen/",
+     "read_url": "https://bioenergyinternational.com/hzi-to-develop-first-small-scale-waste-to-hydrogen/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 10382 chars",
+     "sha256": "3dd6c7246db13e60f41d00fb08f31bf24cbbf02cccc0586f0d39f7eb999eeafd",
+     "text_chars": 10382,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2373",
+   "name": "Arbikie Distillery",
+   "country": "GBR",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Other Electrolysis",
+   "announced_size": "0.9MW",
+   "capacity_mwel": 0.9,
+   "capacity_kth2y": 0.155928,
+   "iea_reference_numbers": [
+    "2003"
+   ],
+   "iea_references": [
+    "https://www.hvnplus.co.uk/news/arbikie-distillery-begins-work-on-hydrogen-heating-installation-02-02-2023/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.hvnplus.co.uk/news/arbikie-distillery-begins-work-on-hydrogen-heating-installation-02-02-2023/",
+     "read_url": "https://www.hvnplus.co.uk/news/arbikie-distillery-begins-work-on-hydrogen-heating-installation-02-02-2023/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 6529 chars",
+     "sha256": "ca8d966084f5231872c305be5d9009e32265d62b1d916c4bae91263a6340a4b2",
+     "text_chars": 6529,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2402",
+   "name": "Usine Trangé",
+   "country": "FRA",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "Biomass",
+   "announced_size": "5MW or 110 t H2/y production",
+   "capacity_mwel": null,
+   "capacity_kth2y": 0.12222222222222222,
+   "iea_reference_numbers": [
+    "2019"
+   ],
+   "iea_references": [
+    "https://vighy.france-hydrogene.org/projets/usine-trange/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://vighy.france-hydrogene.org/projets/usine-trange/",
+     "read_url": "https://vighy.france-hydrogene.org/projets/usine-trange/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 1172 chars",
+     "sha256": "d0c14f966e55ce527c70461ff0b6aa73e17a9b6b89a7a44911c649ccfd0342fa",
+     "text_chars": 1172,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2416",
+   "name": "Wien Energie -  Simmering",
+   "country": "AUT",
+   "status_2023_vintage": "Feasibility study",
+   "technology": "Other Electrolysis",
+   "announced_size": "3 MW",
+   "capacity_mwel": 3.0,
+   "capacity_kth2y": 0.51976,
+   "iea_reference_numbers": [
+    "2036",
+    "2037"
+   ],
+   "iea_references": [
+    "https://positionen.wienenergie.at/projekte/mobilitaet/wiener-wasserstoff/",
+    "https://www.hypa.at/umsetzung/elektrolyseure#heading-3777-141"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://positionen.wienenergie.at/projekte/mobilitaet/wiener-wasserstoff/",
+     "read_url": "https://positionen.wienenergie.at/projekte/mobilitaet/wiener-wasserstoff/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 1435 chars",
+     "sha256": "0c144f2f95944641b6ddf7a9cf1c196c5b986a5654065d210123ab85a6fb8811",
+     "text_chars": 1435,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.hypa.at/umsetzung/elektrolyseure#heading-3777-141",
+     "read_url": "https://web.archive.org/web/20231020102612/https://www.hypa.at/umsetzung/elektrolyseure",
+     "archived": true,
+     "captured_at": "2023-10-20",
+     "http": 200,
+     "outcome": "200, 8297 chars",
+     "sha256": "41faa89d18989783ba44882dd3fcc5f91c337c243f077ba41146afd2ec1375a6",
+     "text_chars": 8297,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2418",
+   "name": "Renewable Gasfield",
+   "country": "AUT",
+   "status_2023_vintage": "Operational",
+   "technology": "PEM",
+   "announced_size": "300 t H2/ y",
+   "capacity_mwel": 2.0009235031553025,
+   "capacity_kth2y": 0.3,
+   "iea_reference_numbers": [
+    "2038",
+    "2039"
+   ],
+   "iea_references": [
+    "https://www.wiva.at/2022/04/13/spatenstich-im-projekt-renewable-gasfield/",
+    "https://steiermark.orf.at/stories/3151165/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.wiva.at/2022/04/13/spatenstich-im-projekt-renewable-gasfield/",
+     "read_url": "https://www.wiva.at/2022/04/13/spatenstich-im-projekt-renewable-gasfield/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 2474 chars",
+     "sha256": "31d98db20f3077c58744ba997a595e8e51c3de4847d0056f0e504fad4b714a57",
+     "text_chars": 2474,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    },
+    {
+     "reference_url": "https://steiermark.orf.at/stories/3151165/",
+     "read_url": "https://steiermark.orf.at/stories/3151165/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 4874 chars",
+     "sha256": "4c908e46df039345bf3da2031f8244dd94a963d29ca4f264eb32d4d862d769ca",
+     "text_chars": 4874,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2436",
+   "name": "H-FLEX-E​",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "technology": "Other Electrolysis",
+   "announced_size": "4.3MW",
+   "capacity_mwel": 4.3,
+   "capacity_kth2y": 0.7449893333333333,
+   "iea_reference_numbers": [
+    "2055"
+   ],
+   "iea_references": [
+    "https://www.both2nia.com/application/files/6816/7949/3478/Pre-study_on_transition_to_hydrogen_economy_specifically_in_Northern_Ostrobothnia_final_16_3.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.both2nia.com/application/files/6816/7949/3478/Pre-study_on_transition_to_hydrogen_economy_specifically_in_Northern_Ostrobothnia_final_16_3.pdf",
+     "read_url": "https://web.archive.org/web/20230523131218/https://www.both2nia.com/application/files/6816/7949/3478/Pre-study_on_transition_to_hydrogen_economy_specifically_in_Northern_Ostrobothnia_final_16_3.pdf",
+     "archived": true,
+     "captured_at": "2023-05-23",
+     "http": 200,
+     "outcome": "200, empty body",
+     "sha256": "037e775505a5d107ce5fceaf7f680f567d0140408347660243dbb411f21466df",
+     "text_chars": 345,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "no reference of this entry answered a declared reader, live or from a capture",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "2452",
+   "name": "Convion SOE R&D ELY",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "technology": "Other Electrolysis",
+   "announced_size": "0.125MW",
+   "capacity_mwel": 0.125,
+   "capacity_kth2y": 0.021656666666666668,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the vintage records no http reference for this entry",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "2503",
+   "name": "Gaznat methanation project",
+   "country": "CHE",
+   "status_2023_vintage": "Operational",
+   "technology": "ALK",
+   "announced_size": "0.5MW",
+   "capacity_mwel": 0.5,
+   "capacity_kth2y": 0.08474347826086956,
+   "iea_reference_numbers": [
+    "2096"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/gaznat-inaugurates-hydrogen-and-co2-to-syngas-project-in-switzerland/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://www.h2-view.com/story/gaznat-inaugurates-hydrogen-and-co2-to-syngas-project-in-switzerland/",
+     "read_url": "https://www.h2-view.com/story/gaznat-inaugurates-hydrogen-and-co2-to-syngas-project-in-switzerland/",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 11142 chars",
+     "sha256": "8d223e9614ec97fab40da485e4a8ca52b8e23820137f78201e15301564d53e28",
+     "text_chars": 11142,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  },
+  {
+   "ref": "2537",
+   "name": " GET H2 TransHyDE hydrogen project - Lingen",
+   "country": "DEU",
+   "status_2023_vintage": "DEMO",
+   "technology": "SOEC",
+   "announced_size": "250kW",
+   "capacity_mwel": 0.25,
+   "capacity_kth2y": 0.051292105263157896,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the vintage records no http reference for this entry",
+   "site_speaker": null,
+   "verdict": "no readable source"
+  },
+  {
+   "ref": "2550",
+   "name": "HyPilot project ",
+   "country": "NOR",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "PEM",
+   "announced_size": "1MW",
+   "capacity_mwel": 1.0,
+   "capacity_kth2y": 0.14993076923076926,
+   "iea_reference_numbers": [
+    "2154"
+   ],
+   "iea_references": [
+    "https://hystar.com/yara-clean-ammonia-joins-hypilot-project-with-hystar-equinor-and-gassco/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": [],
+   "fetches": [
+    {
+     "reference_url": "https://hystar.com/yara-clean-ammonia-joins-hypilot-project-with-hystar-equinor-and-gassco/",
+     "read_url": "https://web.archive.org/web/20231002150856/https://hystar.com/yara-clean-ammonia-joins-hypilot-project-with-hystar-equinor-and-gassco/",
+     "archived": true,
+     "captured_at": "2023-10-02",
+     "http": 200,
+     "outcome": "200, 10348 chars",
+     "sha256": "357ea9655bc54e47736a5118f2c25754d1107757f1c6f3ce4a395444f9ddbc26",
+     "text_chars": 10348,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": true
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": true,
+   "names_site": true,
+   "site_named": "'The PEM electrolyser will be commissioned in the second half of 2023 at the Karstoe Gas Processing Plant in Rogaland, Norway, operated by Gassco'",
+   "site_speaker": "owner",
+   "verdict": "names the site",
+   "site_speaker_name": "Hystar AS, which owns the electrolyser under test",
+   "site_fetch_url": "https://web.archive.org/web/20231002150856/https://hystar.com/yara-clean-ammonia-joins-hypilot-project-with-hystar-equinor-and-gassco/",
+   "site_captured_at": "2023-10-02",
+   "site_archived": true
+  },
+  {
+   "ref": "983",
+   "name": "OMV Schwechat Refinery",
+   "country": "AUT",
+   "status_2023_vintage": "FID/Construction",
+   "technology": "PEM",
+   "announced_size": "10MW",
+   "capacity_mwel": 10.0,
+   "capacity_kth2y": 1.4993076923076922,
+   "iea_reference_numbers": [
+    "796"
+   ],
+   "iea_references": [
+    "https://www.omv.com/en/news/210215-omv-and-kommunalkredit-invest-in-green-hydrogen-production"
+   ],
+   "quality_check_reference_numbers": [
+    "172"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.noen.at/schwechat/omv-raffinerie-schwechat-zwei-inbetriebnahmen-und-ein-turnaround-mannswoerth-omv-raffinerie-schwechat-reoil-print-353829887",
+     "reference_date": "2023-02-08",
+     "date_checked": "2024-10-08",
+     "comment": "10 MW in 2023",
+     "number": "172"
+    }
+   ],
+   "fetches": [
+    {
+     "reference_url": "https://www.omv.com/en/news/210215-omv-and-kommunalkredit-invest-in-green-hydrogen-production",
+     "read_url": "https://www.omv.com/en/news/210215-omv-and-kommunalkredit-invest-in-green-hydrogen-production",
+     "archived": false,
+     "captured_at": "",
+     "http": 404,
+     "outcome": "404",
+     "sha256": "",
+     "text_chars": 0,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    },
+    {
+     "reference_url": "https://www.noen.at/schwechat/omv-raffinerie-schwechat-zwei-inbetriebnahmen-und-ein-turnaround-mannswoerth-omv-raffinerie-schwechat-reoil-print-353829887",
+     "read_url": "https://www.noen.at/schwechat/omv-raffinerie-schwechat-zwei-inbetriebnahmen-und-ein-turnaround-mannswoerth-omv-raffinerie-schwechat-reoil-print-353829887",
+     "archived": false,
+     "captured_at": "",
+     "http": 200,
+     "outcome": "200, 8526 chars",
+     "sha256": "1a6f60a80ea561c0f7b9aae26dac67c045698bc83cd49a817d4fdb7d69deb4c2",
+     "text_chars": 8526,
+     "source_type": "unclassified",
+     "signals": {
+      "contains_a_name_word": false
+     }
+    }
+   ],
+   "readable_at_or_before_cutoff": false,
+   "names_site": false,
+   "site_named": "the sources read are third parties -- trade press, a supplier, a programme body -- or name no place finer than a region",
+   "site_speaker": null,
+   "verdict": "searched, no owner or permit source names the site"
+  }
+ ],
+ "reviewed_on": "2026-09-17",
+ "review_note": [
+  "VERDICTS WRITTEN BY HAND, one entry at a time, from the full fetched text of every",
+  "readable reference. A machine that proposes is useful; a machine that files is a forgery",
+  "(scope.md, 10 September 2026). The `signals` field on each fetch is the machine's",
+  "proposal and was never read as a verdict.",
+  "",
+  "THE TEST IS RUNG 1's AND NOT THE PERIMETER'S: does the OWNER or the PERMITTING AUTHORITY",
+  "name the location at municipality or finer. A trade publisher naming the town does not",
+  "pass, and neither does a supplier or a programme body -- which is what refused",
+  "SmartQuart at Kaisersesch (Elogen's parent naming its customer's site), E-CO2MET at Leuna",
+  "(Sunfire naming TotalEnergies' site) and Wien Energie at Simmering (Hydrogen Partnership",
+  "Austria's own table). Two entries were refused for naming a place COARSER than a",
+  "municipality on an owner source: REMOTE's consortium says 'Canary Island Gran Canaria'",
+  "and ENGIE says the Durance Luberon Verdon agglomeration."
+ ]
+}

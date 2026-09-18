@@ -71,4 +71,41 @@ echo "pre-push: running the whole chain — prebuild, build, postbuild (a few mi
 # two minutes for nothing. What makes this the whole chain is that `build` is
 # what is asked for; what made the old hook partial is that `prebuild` was.
 run_stage build
+
+# THE LOCAL-ONLY CHECKS, AFTER THE CHAIN AND DELIBERATELY OUTSIDE IT.
+#
+# These need openpyxl or a gitignored cache body, and neither exists in the build
+# image. Putting them in `npm run build` is what broke production at d96903a: the
+# gate read the Odenweller workbooks, passed on every developer machine, and failed
+# on Vercel where the package and the bytes are both absent.
+#
+# So the split is by what a step needs, not by what it checks. A step that reads only
+# tracked files belongs in prebuild, where Vercel runs it too. A step that needs
+# something outside the build image belongs here, where the machine that has those
+# things is the one that runs it. See sources/scope.md, "A build-time gate reads
+# tracked files only".
+#
+# EACH ONE PASSES QUIETLY ON A MACHINE THAT LACKS ITS INPUTS, because a contributor
+# without the workbooks is still entitled to push.
+run_local() {
+  name=$1; shift
+  if ! python3 "$root/sources/$name.py" "$@" >>"$log" 2>&1; then
+    echo >&2
+    echo "pre-push: $name FAILED. Nothing was pushed." >&2
+    echo >&2
+    tail -20 "$log" >&2
+    echo >&2
+    echo "pre-push: full output in $log" >&2
+    exit 1
+  fi
+}
+
+run_local check_hydrogen_workbook
+# The second list's workbook, for the same reason and by the same shape: openpyxl and a
+# gitignored 8.8 MB xlsx. sources/leadit_entries.json is the tracked derived file, this
+# recomputes it from the workbook entry by entry, and build_steel_second_list.py checks
+# its recorded hash against benchmark_snapshots.json inside the build.
+run_local build_leadit_entries --check
+
 echo "pre-push: gate chain green — prebuild, build and postbuild, $(( $(date +%s) - started ))s."
+echo "pre-push: local-only checks green — check_hydrogen_workbook, build_leadit_entries --check."

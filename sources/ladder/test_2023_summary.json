@@ -1,0 +1,819 @@
+{
+ "_comment": [
+  "COMPUTED FROM sources/ladder/test_2023.csv BY build_hydrogen_test.py.",
+  "Never edited by hand: --check rebuilds it from the csv and diffs, and the",
+  "csv is itself rebuilt from the archive pass, the outcome pass and the two",
+  "frozen rule sets. See scope.md, 'The ladder is computed, never typed'.",
+  "",
+  "COUNTS ONLY. The brief asks for the cross-tabs and nothing else: no model,",
+  "no rate, no fitted anything. A 255-line table with six outcome classes and",
+  "seven rung levels does not support one, and printing one would invite a",
+  "reader to take selection from archive coverage for a finding about projects."
+ ],
+ "population": 255,
+ "as_of": "2023-10-31",
+ "assessed_on": "2026-09-30",
+ "frozen_rung_tests_at": "a9542fe28f93eac7f66a3050070af6db93684e7e",
+ "frozen_outcome_definitions_at": "58ce11f0282a44368f4842176a4844d49aa416d2",
+ "coverage": {
+  "entries_with_a_document_at_or_before_the_cutoff": 170,
+  "entries_with_an_owner_or_permit_document": 89,
+  "entries_with_no_document_at_or_before_the_cutoff": 85,
+  "by_2023_status": {
+   "Concept": {
+    "covered": 62,
+    "total": 105
+   },
+   "FID/Construction": {
+    "covered": 6,
+    "total": 6
+   },
+   "Feasibility study": {
+    "covered": 99,
+    "total": 141
+   },
+   "Other/Unknown": {
+    "covered": 3,
+    "total": 3
+   }
+  },
+  "by_capacity_band": {
+   "100-200 MW": {
+    "covered": 65,
+    "total": 97
+   },
+   "1000+ MW": {
+    "covered": 22,
+    "total": 35
+   },
+   "200-500 MW": {
+    "covered": 54,
+    "total": 79
+   },
+   "500-1000 MW": {
+    "covered": 29,
+    "total": 44
+   }
+  }
+ },
+ "rungs_cleared_against_outcome": {
+  "0": {
+   "committed": 6,
+   "delayed": 5,
+   "pending": 17,
+   "silent": 18,
+   "unread": 130,
+   "total": 176
+  },
+  "1": {
+   "committed": 4,
+   "delayed": 3,
+   "pending": 15,
+   "silent": 1,
+   "unread": 5,
+   "total": 28
+  },
+  "2": {
+   "committed": 1,
+   "delayed": 8,
+   "pending": 12,
+   "silent": 3,
+   "stopped": 1,
+   "unread": 2,
+   "total": 27
+  },
+  "3": {
+   "committed": 1,
+   "delayed": 5,
+   "pending": 8,
+   "silent": 6,
+   "total": 20
+  },
+  "4": {
+   "committed": 2,
+   "delayed": 2,
+   "total": 4
+  }
+ },
+ "rungs_cleared_against_outcome_frozen": {
+  "0": {
+   "committed": 6,
+   "delayed": 5,
+   "pending": 17,
+   "unread": 148,
+   "total": 176
+  },
+  "1": {
+   "committed": 4,
+   "delayed": 4,
+   "pending": 15,
+   "unread": 5,
+   "total": 28
+  },
+  "2": {
+   "committed": 1,
+   "delayed": 8,
+   "pending": 13,
+   "stopped": 1,
+   "unread": 4,
+   "total": 27
+  },
+  "3": {
+   "committed": 1,
+   "delayed": 6,
+   "pending": 11,
+   "unread": 2,
+   "total": 20
+  },
+  "4": {
+   "committed": 2,
+   "delayed": 2,
+   "total": 4
+  }
+ },
+ "outcome_frozen_against_amended": {
+  "committed": {
+   "committed": 14,
+   "total": 14
+  },
+  "delayed": {
+   "delayed": 23,
+   "silent": 2,
+   "total": 25
+  },
+  "pending": {
+   "pending": 52,
+   "silent": 4,
+   "total": 56
+  },
+  "stopped": {
+   "stopped": 1,
+   "total": 1
+  },
+  "unread": {
+   "silent": 22,
+   "unread": 137,
+   "total": 159
+  }
+ },
+ "outcome_distribution": {
+  "frozen": {
+   "unread": 159,
+   "pending": 56,
+   "delayed": 25,
+   "committed": 14,
+   "stopped": 1
+  },
+  "amended": {
+   "unread": 137,
+   "pending": 52,
+   "delayed": 23,
+   "committed": 14,
+   "silent": 28,
+   "stopped": 1
+  },
+  "reclassified": 28
+ },
+ "the_frozen_unread_broken_down": {
+  "readable and silent": 22,
+  "the publisher refuses this register's reader": 35,
+  "no owner domain is known for this entry": 102
+ },
+ "silent_by_kind_of_page_that_answered": {
+  "iea_reference": 2,
+  "host_newsroom, iea_reference": 11,
+  "host_newsroom": 15
+ },
+ "rungs_cleared_against_outcome_covered_only": {
+  "0": {
+   "delayed": 2,
+   "pending": 5,
+   "unread": 7,
+   "total": 14
+  },
+  "1": {
+   "committed": 2,
+   "delayed": 1,
+   "pending": 15,
+   "silent": 1,
+   "unread": 5,
+   "total": 24
+  },
+  "2": {
+   "committed": 1,
+   "delayed": 8,
+   "pending": 12,
+   "silent": 3,
+   "stopped": 1,
+   "unread": 2,
+   "total": 27
+  },
+  "3": {
+   "committed": 1,
+   "delayed": 5,
+   "pending": 8,
+   "silent": 6,
+   "total": 20
+  },
+  "4": {
+   "committed": 2,
+   "delayed": 2,
+   "total": 4
+  }
+ },
+ "rungs_cleared_against_outcome_informative": {
+  "0": {
+   "committed": 4,
+   "delayed": 5,
+   "silent": 8,
+   "unread": 39,
+   "total": 56
+  },
+  "1": {
+   "committed": 3,
+   "delayed": 3,
+   "silent": 1,
+   "unread": 1,
+   "total": 8
+  },
+  "2": {
+   "committed": 1,
+   "delayed": 8,
+   "silent": 1,
+   "total": 10
+  },
+  "3": {
+   "committed": 1,
+   "delayed": 5,
+   "silent": 2,
+   "total": 8
+  },
+  "4": {
+   "committed": 2,
+   "delayed": 2,
+   "total": 4
+  }
+ },
+ "informative_subset_size": 86,
+ "claims_by_a_speaker_other_than_the_owner": [
+  {
+   "iea_ref": "552",
+   "name": "Gigastack-Hornsea 2, phase I",
+   "kind": "stop",
+   "speaker": "trade press",
+   "speaker_name": "Offshore Energy",
+   "date": "2023-09-27",
+   "outcome": "delayed",
+   "verbatim": "Orsted and Phillips 66 have now halted their Gigastack project",
+   "source": "https://web.archive.org/web/20230927095744/https://www.offshore-energy.biz/two-offshore-wind-to-hydrogen-projects-withdraw-from-uks-first-electrolytic-allocation-round/"
+  },
+  {
+   "iea_ref": "1374",
+   "name": "Gigastack-Hornsea 2, phase II",
+   "kind": "stop",
+   "speaker": "trade press",
+   "speaker_name": "Offshore Energy",
+   "date": "2023-09-27",
+   "outcome": "pending",
+   "verbatim": "Orsted and Phillips 66 have now halted their Gigastack project",
+   "source": "https://web.archive.org/web/20230927095744/https://www.offshore-energy.biz/two-offshore-wind-to-hydrogen-projects-withdraw-from-uks-first-electrolytic-allocation-round/"
+  },
+  {
+   "iea_ref": "2029",
+   "name": "Energie Steiermark plant in Styrua, expansion",
+   "kind": "operation",
+   "speaker": "trade press",
+   "speaker_name": "Renewables Now",
+   "date": "2023-09-27",
+   "outcome": "unread",
+   "verbatim": "Austria's first green hydrogen production plant goes live. Austria's first green hydrogen production site has commenced operations in Styria, marking the beginning of a comprehensive plan to expand the electrolysis capacity in the mountainous province to over 150 MW",
+   "source": "https://web.archive.org/web/20230927000000/https://renewablesnow.com/news/austrias-first-green-hydrogen-production-plant-goes-live/"
+  }
+ ],
+ "operation_rests_only_on_a_claim": [
+  "2029"
+ ],
+ "each_rung_against_outcome": {
+  "site": {
+   "fail": {
+    "delayed": 2,
+    "unread": 7,
+    "pending": 10,
+    "total": 19
+   },
+   "not_searched": {
+    "unread": 123,
+    "committed": 8,
+    "delayed": 5,
+    "pending": 12,
+    "silent": 18,
+    "total": 166
+   },
+   "pass": {
+    "pending": 30,
+    "unread": 7,
+    "delayed": 16,
+    "committed": 6,
+    "silent": 10,
+    "stopped": 1,
+    "total": 70
+   }
+  },
+  "capacity": {
+   "fail": {
+    "delayed": 5,
+    "unread": 14,
+    "pending": 22,
+    "stopped": 1,
+    "silent": 2,
+    "committed": 2,
+    "total": 46
+   },
+   "not_searched": {
+    "unread": 123,
+    "committed": 8,
+    "delayed": 5,
+    "pending": 12,
+    "silent": 18,
+    "total": 166
+   },
+   "pass": {
+    "pending": 18,
+    "delayed": 13,
+    "committed": 4,
+    "silent": 8,
+    "total": 43
+   }
+  },
+  "fid": {
+   "fail": {
+    "pending": 40,
+    "delayed": 18,
+    "unread": 14,
+    "silent": 10,
+    "committed": 4,
+    "stopped": 1,
+    "total": 87
+   },
+   "not_searched": {
+    "unread": 123,
+    "committed": 8,
+    "delayed": 5,
+    "pending": 12,
+    "silent": 18,
+    "total": 166
+   },
+   "pass": {
+    "committed": 2,
+    "total": 2
+   }
+  },
+  "funding": {
+   "not_searched": {
+    "unread": 137,
+    "pending": 52,
+    "delayed": 20,
+    "committed": 12,
+    "silent": 28,
+    "stopped": 1,
+    "total": 250
+   },
+   "pass": {
+    "committed": 2,
+    "delayed": 3,
+    "total": 5
+   }
+  },
+  "start": {
+   "fail": {
+    "pending": 25,
+    "delayed": 9,
+    "unread": 12,
+    "silent": 3,
+    "committed": 3,
+    "total": 52
+   },
+   "not_searched": {
+    "unread": 123,
+    "committed": 8,
+    "delayed": 5,
+    "pending": 12,
+    "silent": 18,
+    "total": 166
+   },
+   "pass": {
+    "delayed": 9,
+    "committed": 3,
+    "silent": 7,
+    "unread": 2,
+    "stopped": 1,
+    "pending": 15,
+    "total": 37
+   }
+  },
+  "input": {
+   "fail": {
+    "pending": 23,
+    "delayed": 10,
+    "unread": 14,
+    "committed": 1,
+    "silent": 10,
+    "stopped": 1,
+    "total": 59
+   },
+   "not_searched": {
+    "unread": 123,
+    "delayed": 12,
+    "pending": 29,
+    "committed": 13,
+    "silent": 18,
+    "total": 195
+   },
+   "pass": {
+    "delayed": 1,
+    "total": 1
+   }
+  }
+ },
+ "status_2023_against_outcome": {
+  "Concept": {
+   "committed": 4,
+   "delayed": 1,
+   "pending": 19,
+   "silent": 11,
+   "unread": 70,
+   "total": 105
+  },
+  "FID/Construction": {
+   "committed": 3,
+   "delayed": 2,
+   "unread": 1,
+   "total": 6
+  },
+  "Feasibility study": {
+   "committed": 7,
+   "delayed": 19,
+   "pending": 32,
+   "silent": 17,
+   "stopped": 1,
+   "unread": 65,
+   "total": 141
+  },
+  "Other/Unknown": {
+   "delayed": 1,
+   "pending": 1,
+   "unread": 1,
+   "total": 3
+  }
+ },
+ "rungs_cleared_against_dropped_from_benchmark": {
+  "0": {
+   "no": 74,
+   "yes": 102,
+   "total": 176
+  },
+  "1": {
+   "no": 19,
+   "yes": 9,
+   "total": 28
+  },
+  "2": {
+   "no": 16,
+   "yes": 11,
+   "total": 27
+  },
+  "3": {
+   "no": 9,
+   "yes": 11,
+   "total": 20
+  },
+  "4": {
+   "no": 3,
+   "yes": 1,
+   "total": 4
+  }
+ },
+ "outcome_of_covered_against_uncovered": {
+  "covered": {
+   "pending": 40,
+   "delayed": 18,
+   "unread": 14,
+   "committed": 6,
+   "silent": 10,
+   "stopped": 1
+  },
+  "uncovered": {
+   "unread": 123,
+   "committed": 8,
+   "delayed": 5,
+   "pending": 12,
+   "silent": 18
+  },
+  "_comment": "SELECTION FROM ARCHIVE COVERAGE, PUT WHERE IT CAN BE SEEN. Whether an entry has an owner's document on file from before the cut-off is a fact about the archive and about this register's reading, not about the project. If the two columns have different outcome distributions then the rungs are being scored on a selected part of the population, and any statement about the instrument has to carry that."
+ },
+ "scored_entries": 255,
+ "perimeter_exclusions": 9,
+ "outcomes_not_read_yet": 0,
+ "announced_starts_inside_the_reading_window": 0,
+ "entries_with_no_announced_start": 40,
+ "independent_check": {
+  "entries": 19,
+  "rows": [
+   {
+    "iea_ref": "1",
+    "name": "Solar PV Plant port of Sines (Phase 1)",
+    "validated_size": "100 MW",
+    "validated_mwel": 100.0,
+    "validated_date_online": "2025",
+    "authors_checked_on": "2024-07-26",
+    "authors_comment": "100 MW operational in 2025, add phase (ref 1)",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "5",
+    "name": "NortH2, phase 1",
+    "validated_size": "4GW",
+    "validated_mwel": 4000.0,
+    "validated_date_online": "2030",
+    "authors_checked_on": "2024-07-25",
+    "authors_comment": "4 GW by 2030",
+    "owner_stated_size": "green hydrogen production expected to be around 800,000 tonnes per year by 2040",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not comparable: the owner states another unit",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "771",
+    "name": "Holland Hydrogen - phase 1",
+    "validated_size": "200MW",
+    "validated_mwel": 200.0,
+    "validated_date_online": "2025",
+    "authors_checked_on": "2024-08-09",
+    "authors_comment": "200 MW by 2025, 400 MW by 2027",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "866",
+    "name": "White Dragon",
+    "validated_size": "250kt H2/y production",
+    "validated_mwel": 2885.9473603201473,
+    "validated_date_online": "2029",
+    "authors_checked_on": "2024-07-25",
+    "authors_comment": "slide 6",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "1192",
+    "name": "EI-H2 - Aghada (phase 2)",
+    "validated_size": "2.7GW",
+    "validated_mwel": 2650.0,
+    "validated_date_online": "2028",
+    "authors_checked_on": "2024-08-01",
+    "authors_comment": "MoU signed",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "1193",
+    "name": "EI-H2 - Aghada (phase 3)",
+    "validated_size": "500MW",
+    "validated_mwel": 500.0,
+    "validated_date_online": "2028",
+    "authors_checked_on": "2024-08-01",
+    "authors_comment": "MoU signed",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "1489",
+    "name": "Catalina Project, Phase 1",
+    "validated_size": "500MW - 40 kt H2/y",
+    "validated_mwel": 500.0,
+    "validated_date_online": "2027",
+    "authors_checked_on": "2024-08-01",
+    "authors_comment": "\"installation of a large-scale green hydrogen plant with 500 MW electrolyser capacity by 2027 and scalable to 2 GW by 2030.\"",
+    "owner_stated_size": "'a first-of-a-kind 500 MW electrolyser'; '500 MW Electrolyser Capacity'; 'up to 55,000 tonnes of green hydrogen per year'",
+    "owner_stated_mw": 500.0,
+    "owner_stated_start": "'the installation of a large-scale green hydrogen plant with 500 MW electrolyser capacity by 2027 and scalable to 2 GW by 2030'",
+    "owner_stated_year": 2027,
+    "size": "agree",
+    "date": "agree"
+   },
+   {
+    "iea_ref": "1490",
+    "name": "Catalina Project, Phase 2",
+    "validated_size": "2GW",
+    "validated_mwel": 1500.0,
+    "validated_date_online": "2030",
+    "authors_checked_on": "2024-08-01",
+    "authors_comment": "\"installation of a large-scale green hydrogen plant with 500 MW electrolyser capacity by 2027 and scalable to 2 GW by 2030.\"",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "'scalable to 2 GW by 2030'",
+    "owner_stated_year": 2030,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "agree"
+   },
+   {
+    "iea_ref": "1549",
+    "name": "First HyDeal hub, phase 1",
+    "validated_size": "3.3 GW",
+    "validated_mwel": 3300.0,
+    "validated_date_online": "2028",
+    "authors_checked_on": "2024-07-31",
+    "authors_comment": "\"Production will start in 2028 and total installed capacity will reach 4.8 GW of solar power and 3.3 GW of electrolyzers.\"",
+    "owner_stated_size": "'total installed capacity will reach 4.8 GW of solar power and 3.3 GW of electrolyzers'",
+    "owner_stated_mw": 3300.0,
+    "owner_stated_start": "'Production will start in 2028'; 'starting operations in 2028'",
+    "owner_stated_year": 2028,
+    "size": "agree",
+    "date": "agree"
+   },
+   {
+    "iea_ref": "1806",
+    "name": "Holland Hydrogen - phase 2",
+    "validated_size": "400MW",
+    "validated_mwel": 200.0,
+    "validated_date_online": "2027",
+    "authors_checked_on": "2024-08-09",
+    "authors_comment": "200 MW by 2025, 400 MW by 2027",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "1878",
+    "name": "BrintØ - Hydrogen Island",
+    "validated_size": "1Mt H2/y production",
+    "validated_mwel": 10494.35403752781,
+    "validated_date_online": "2030",
+    "authors_checked_on": "2024-07-31",
+    "authors_comment": "Timeline shows commissining in 2030",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "1910",
+    "name": "MoU Shell - Mitsubishi, phase1",
+    "validated_size": "400 kt H2/y production",
+    "validated_mwel": 4197.741615011124,
+    "validated_date_online": "2030",
+    "authors_checked_on": "2024-07-25",
+    "authors_comment": "\"400,000 tons of green hydrogen, a type of renewable energy that does not produce carbon dioxide, annually by 2030\"",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "1987",
+    "name": "Green Marlin",
+    "validated_size": "3.2 GW",
+    "validated_mwel": 3200.0,
+    "validated_date_online": "2026",
+    "authors_checked_on": "2024-07-31",
+    "authors_comment": "\"3.2GW green hydrogen project\"",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "2154",
+    "name": "Blastr Green Steel - Inkoo",
+    "validated_size": "2.5Mt steel",
+    "validated_mwel": 1811.5091580729568,
+    "validated_date_online": "2026",
+    "authors_checked_on": "2024-08-01",
+    "authors_comment": "",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "2163",
+    "name": "Kintore Scotland Hydrogen project - phase 1",
+    "validated_size": "500MW",
+    "validated_mwel": 500.0,
+    "validated_date_online": "2028",
+    "authors_checked_on": "2024-08-01",
+    "authors_comment": "\"The full 3 GW of production is expected by 2030.\"",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "2164",
+    "name": "Kintore Scotland Hydrogen project - phase 2",
+    "validated_size": "3GW",
+    "validated_mwel": 2500.0,
+    "validated_date_online": "2030",
+    "authors_checked_on": "2024-08-01",
+    "authors_comment": "\"The full 3 GW of production is expected by 2030.\"",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "2194",
+    "name": "GreenGo Tarm plant",
+    "validated_size": "2GW",
+    "validated_mwel": 2000.0,
+    "validated_date_online": "2030",
+    "authors_checked_on": "2024-08-01",
+    "authors_comment": "2 GW electrolysis, \"can be operational before 2030\"",
+    "owner_stated_size": "'GreenGo Energy develops 4GW, 8 billion EUR green energy park in Ringkoebing-Skjern municipality ... where the core will be 2GW electrolysis'",
+    "owner_stated_mw": 2000.0,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "agree",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "2211",
+    "name": "OX2 Neptunus Hub",
+    "validated_size": "225 kt H2/y (production)",
+    "validated_mwel": 2361.229658443757,
+    "validated_date_online": "2030",
+    "authors_checked_on": "2024-08-01",
+    "authors_comment": "\"The offshore energy hub could be in operation in the early 2030s.\", \"The planned electricity production of Neptunus would facilitate a hydrogen production of up to 225,000 tonnes yearly. \"",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   },
+   {
+    "iea_ref": "2284",
+    "name": "FertigHy",
+    "validated_size": "1Mt H2/y production",
+    "validated_mwel": 11543.78944128059,
+    "validated_date_online": "2025",
+    "authors_checked_on": "2024-07-31",
+    "authors_comment": "\"The plant will produce more than one million metric tonnes per year of low-carbon nitrogen-based fertilisers from 100% renewable electricity and green hydrogen, with construction planned to start in 2025\" -> no length of construction given, leaving unchanged",
+    "owner_stated_size": "",
+    "owner_stated_mw": null,
+    "owner_stated_start": "",
+    "owner_stated_year": null,
+    "size": "not read: no owner capacity on file from before the cut-off",
+    "date": "not read: no owner start on file from before the cut-off"
+   }
+  ],
+  "size": {
+   "not read: no owner capacity on file from before the cut-off": 15,
+   "not comparable: the owner states another unit": 1,
+   "agree": 3
+  },
+  "date": {
+   "not read: no owner start on file from before the cut-off": 16,
+   "agree": 3
+  },
+  "_comment": "DISAGREEMENTS ARE RECORDED AND NOT RESOLVED. Where the owner and the authors' validated figure differ, both are on the line and neither is corrected: scope.md, 'A disagreement is two speakers on the same fact, in any field'."
+ }
+}
