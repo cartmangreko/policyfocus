@@ -39,7 +39,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.edp.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "5",
@@ -67,7 +72,9 @@
    "outcome_source": "https://www.gasunie.nl/en/news/europes-largest-green-hydrogen-project-starts-in-groningen",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.gasunie.nl, read 2026-09-17."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.gasunie.nl, read 2026-09-17.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "9",
@@ -85,7 +92,9 @@
    "outcome_source": "https://group.vattenfall.com/press-and-media/news--press-releases/pressreleases/2019/hybrit-sek-200-million-invested-in-pilot-plant-for-storage-of-fossil-free-hydrogen-in-lulea",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as delayed as of 2026-09-30 from the owner's own page at group.vattenfall.com, read 2026-09-17."
+   "outcome_note": "Read as delayed as of 2026-09-30 from the owner's own page at group.vattenfall.com, read 2026-09-17.",
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "14",
@@ -97,7 +106,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "130",
@@ -109,7 +122,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "508",
@@ -132,7 +149,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.iberdrola.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "519",
@@ -144,7 +166,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "532",
@@ -173,7 +199,9 @@
    "outcome_date": "2026-09-09",
    "outcome_date_precision": "day",
    "outcome_note": "Read as delayed as of 2026-09-30 from the register's row hoest-ptx-esbjerg, at status announced.",
-   "owner_capacity_mw": 1000
+   "owner_capacity_mw": 1000,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "552",
@@ -213,7 +241,21 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2025
+   "owner_start_year": 2025,
+   "outcome_frozen": "delayed",
+   "unread_reason": null,
+   "claims": [
+    {
+     "kind": "stop",
+     "speaker": "trade press",
+     "speaker_name": "Offshore Energy",
+     "source": "https://web.archive.org/web/20230927095744/https://www.offshore-energy.biz/two-offshore-wind-to-hydrogen-projects-withdraw-from-uks-first-electrolytic-allocation-round/",
+     "date": "2023-09-27",
+     "date_precision": "not_after",
+     "verbatim": "Orsted and Phillips 66 have now halted their Gigastack project",
+     "note": "The claim the register's own row rests on, and it is a trade title, so the outcome does not read a stop from it. The owner look is queued on the row."
+    }
+   ]
   },
   {
    "ref": "565",
@@ -225,7 +267,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "573",
@@ -237,7 +283,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "580",
@@ -249,7 +299,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "595",
@@ -287,7 +341,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2025
+   "owner_start_year": 2025,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "596",
@@ -310,7 +366,9 @@
    "outcome_source": "https://www.hynetherlands.nl/en/project/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row engie-hynetherlands-eemshaven, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row engie-hynetherlands-eemshaven, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "598",
@@ -322,7 +380,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "599",
@@ -334,7 +396,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "601",
@@ -346,7 +412,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "605",
@@ -358,7 +428,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "622",
@@ -370,7 +444,9 @@
    "outcome_source": "https://www.bp.com/de_de/germany/home/presse/nachrichten/2026-07-23-lingen-green-hydrogen-grosskomponenten-erreichen-den-standort.html",
    "outcome_date": "2026-07-23",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as committed as of 2026-09-30 from the register's row bp-lingen-green-hydrogen, at status construction."
+   "outcome_note": "Read as committed as of 2026-09-30 from the register's row bp-lingen-green-hydrogen, at status construction.",
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "771",
@@ -382,7 +458,9 @@
    "outcome_source": "https://www.shell.nl/about-us/what-we-do/waterstof/_jcr_content/root/main/section_1793187481/call_to_action/links/item0.stream/1750150411678/bc686db41e4e2aff092b4ae379a466326fd5626d/250513_HH1-leaflet_v43.pdf",
    "outcome_date": "2025-05-13",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as committed as of 2026-09-30 from the register's row shell-holland-hydrogen-1, at status construction."
+   "outcome_note": "Read as committed as of 2026-09-30 from the register's row shell-holland-hydrogen-1, at status construction.",
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "776",
@@ -405,7 +483,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.iberdrola.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "783",
@@ -428,7 +511,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.iberdrola.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "807",
@@ -471,7 +559,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 200,
-   "owner_start_year": 2025
+   "owner_start_year": 2025,
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "808",
@@ -494,13 +584,23 @@
    "fid_stated": null,
    "start_as_stated": null,
    "input_stated": null,
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
    "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
-   "owner_capacity_mw": 200
+   "owner_capacity_mw": 200,
+   "unread_class": "silent",
+   "silent_host": "h2vnormandy-concertation.net",
+   "silent_pages_read": [
+    "http://h2vnormandy-concertation.net/comprendre-projet/"
+   ],
+   "silent_page_kinds": [
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "819",
@@ -512,7 +612,9 @@
    "outcome_source": "https://ipcei.observatory.clean-hydrogen.europa.eu/hycc-h2ermes-nl30",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row hycc-h2ermes-ijmuiden, at status announced."
+   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row hycc-h2ermes-ijmuiden, at status announced.",
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "821",
@@ -540,7 +642,7 @@
    "start_captured_at": "2023-10-27",
    "input_stated": null,
    "note": "THE CLEANEST AGREEMENT IN THE POPULATION SO FAR: the owner's own project page states 300 MW and a 2029 start for the second phase, and the vintage carries 300 MWel and 2029. Three rungs pass and the list's two numbers both have an owner's sentence behind them. FID fails on the owner's own words -- 'les etudes sont en cours pour la deuxieme phase'. Rung 6 fails on a commitment with no counterparty: 'H2V s'engage a acheter de l'electricite d'origine renouvelable, grace au systeme des garanties d'origine' names a mechanism and not a supplier, and RTE appears as the grid operator building the connection rather than as a contracted input. NOTE THE HOST LIST'S MISTAKE: h2v.net was on the press list when this entry was fetched, so no newsroom leg was taken for the owner's own site; it was corrected and the entry re-fetched.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
@@ -550,7 +652,19 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 300,
-   "owner_start_year": 2029
+   "owner_start_year": 2029,
+   "unread_class": "silent",
+   "silent_host": "h2v59-concertation.net",
+   "silent_pages_read": [
+    "http://h2v59-concertation.net/comprendre-projet/",
+    "https://h2v59-concertation.net/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "830",
@@ -562,7 +676,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "833",
@@ -574,7 +692,9 @@
    "outcome_source": "https://www.repsol.com/en/press-room/press-releases/2025/repsol-to-build-its-first-large-scale-renewable-hydrogen-plant-cartagena/index.cshtml",
    "outcome_date": "2025-09-30",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as committed as of 2026-09-30 from the register's row repsol-cartagena, at status fid."
+   "outcome_note": "Read as committed as of 2026-09-30 from the register's row repsol-cartagena, at status fid.",
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "844",
@@ -586,7 +706,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "845",
@@ -598,7 +722,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "846",
@@ -610,7 +738,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "847",
@@ -622,7 +754,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "849",
@@ -634,7 +770,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "859",
@@ -646,7 +786,9 @@
    "outcome_source": "https://www.smartenergy.net/orange-bat-is-the-first-green-hydrogen-project-to-obtain-the-iea-in-the-valencian-community/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row smartenergy-orangebat-onda, at status announced. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row smartenergy-orangebat-onda, at status announced. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "866",
@@ -658,7 +800,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "867",
@@ -676,19 +822,34 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "northccuhub.eu",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "873",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "STEAG's own reference answered with nothing and its front page with 101 characters -- both refusals under the empty-body rule -- and IJGlobal was read live. Nothing readable at or before the cut-off. The entry is also a DRI perimeter exclusion and the clause travels with it.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.steag.com",
+   "silent_pages_read": [
+    "https://www.steag.com/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "879",
@@ -700,7 +861,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "885",
@@ -729,7 +894,21 @@
    "outcome_date": "2026-08-04",
    "outcome_date_precision": "day",
    "outcome_note": "Read as committed as of 2026-09-30 from the register's row rwe-get-h2-nukleus-lingen, at status commissioning.",
-   "owner_capacity_mw": 100
+   "owner_capacity_mw": 100,
+   "outcome_frozen": "committed",
+   "unread_reason": null,
+   "claims": [
+    {
+     "kind": "operation",
+     "speaker": "owner",
+     "speaker_name": "RWE Generation SE",
+     "source": "https://www.rwe.com/en/press/rwe-generation-se/2026-08-04-get-h2-nukleus-gains-momentum-first-hydrogen-from-lingen-reaches-marl/",
+     "date": "2026-08-04",
+     "date_precision": "day",
+     "verbatim": "The first hydrogen produced in the electrolysis in Lingen, Lower Saxony, has reached Marl in the northern Ruhr area. This marks the successful interaction of all components",
+     "note": "NOT A THIRD-PARTY CLAIM AND LISTED FOR THE OPPOSITE REASON. The OWNER says hydrogen has been produced and delivered, and the outcome is `committed` rather than `operating`, because the same owner calls the plant's state commissioning and scope.md's frozen definition keeps commissioning out of operation. This is the mirror of ref 2029: there, a plant may be running and the owner has not said so; here the owner has said so and the definition does not count it."
+    }
+   ]
   },
   {
    "ref": "886",
@@ -752,7 +931,9 @@
    "outcome_source": "https://www.gasunie.nl/en/news/europes-largest-green-hydrogen-project-starts-in-groningen",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.gasunie.nl, read 2026-09-17."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.gasunie.nl, read 2026-09-17.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "899",
@@ -764,7 +945,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "900",
@@ -802,7 +987,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2026
+   "owner_start_year": 2026,
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "906",
@@ -831,7 +1018,9 @@
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
    "outcome_note": "Read as delayed as of 2026-09-30 from the register's row endesa-as-pontes, at status announced.",
-   "owner_capacity_mw": 100
+   "owner_capacity_mw": 100,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "910",
@@ -854,7 +1043,9 @@
    "outcome_source": "https://www.endesa.com/es/prensa/sala-de-prensa/noticias/transicion-energetica/endesa-contempla-desarrollo-23-proyectos-hidrogeno-verde-espana",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as delayed as of 2026-09-30 from the owner's own page at www.endesa.com, read 2026-09-17."
+   "outcome_note": "Read as delayed as of 2026-09-30 from the owner's own page at www.endesa.com, read 2026-09-17.",
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "919",
@@ -866,7 +1057,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "927",
@@ -904,7 +1099,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2026
+   "owner_start_year": 2026,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "928",
@@ -936,7 +1133,12 @@
    "announced_start": "2030",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "owner_start_year": 2030
+   "owner_start_year": 2030,
+   "unread_class": "refuses",
+   "refusing_host": "www.uniper.energy",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "931",
@@ -974,7 +1176,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2024
+   "owner_start_year": 2024,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "936",
@@ -986,7 +1190,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.h2greensteel.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "965",
@@ -998,7 +1207,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "970",
@@ -1010,7 +1223,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "977",
@@ -1044,7 +1261,9 @@
    "announced_start": "2027",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "owner_start_year": 2027
+   "owner_start_year": 2027,
+   "outcome_frozen": "stopped",
+   "unread_reason": null
   },
   {
    "ref": "985",
@@ -1056,7 +1275,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1034",
@@ -1068,7 +1291,9 @@
    "outcome_source": "https://www.bp.com/de_de/germany/home/presse/nachrichten/2026-07-23-lingen-green-hydrogen-grosskomponenten-erreichen-den-standort.html",
    "outcome_date": "2026-07-23",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as committed as of 2026-09-30 from the register's row bp-lingen-green-hydrogen, at status construction."
+   "outcome_note": "Read as committed as of 2026-09-30 from the register's row bp-lingen-green-hydrogen, at status construction.",
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "1048",
@@ -1080,7 +1305,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.uniper.energy",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1049",
@@ -1092,7 +1322,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1051",
@@ -1104,7 +1338,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.tennet.eu",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1052",
@@ -1116,7 +1355,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.tennet.eu",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1062",
@@ -1128,7 +1372,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1086",
@@ -1166,7 +1414,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2026
+   "owner_start_year": 2026,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "1089",
@@ -1189,7 +1439,9 @@
    "outcome_source": "https://web.archive.org/web/20231004001940/https://gen2energy.com/production-sites/",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at gen2energy.com, read 2026-09-17. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at gen2energy.com, read 2026-09-17. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1115",
@@ -1201,7 +1453,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1116",
@@ -1213,7 +1469,9 @@
    "outcome_source": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
    "outcome_date": "2025-07-23",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as committed as of 2026-09-30 from the register's row airliquide-elygator-maasvlakte, at status fid."
+   "outcome_note": "Read as committed as of 2026-09-30 from the register's row airliquide-elygator-maasvlakte, at status fid.",
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "1118",
@@ -1225,7 +1483,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1126",
@@ -1254,7 +1516,9 @@
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
    "outcome_note": "Read as delayed as of 2026-09-30 from the owner's own page at www.greenlab.dk, read 2026-09-17.",
-   "owner_capacity_mw": 100
+   "owner_capacity_mw": 100,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "1130",
@@ -1266,7 +1530,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1146",
@@ -1289,19 +1557,35 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1161",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "Orlen is the owner and all three of its legs answered with nothing or with 124 characters, which is a refusal under the empty-body rule. Nothing readable at or before the cut-off.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.orlen.pl",
+   "silent_pages_read": [
+    "https://www.orlen.pl/EN/PressOffice/Pages/ORLEN-Group-to-launch-international-hydrogen-program.aspx",
+    "https://www.orlen.pl/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1169",
@@ -1344,7 +1628,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2025
+   "owner_start_year": 2025,
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "1191",
@@ -1367,7 +1653,9 @@
    "outcome_source": "https://www.aquaventus.org/#section-2",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.aquaventus.org, read 2026-09-17."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.aquaventus.org, read 2026-09-17.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1192",
@@ -1379,7 +1667,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1193",
@@ -1391,19 +1683,35 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1200",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "Enagas's own reference answered with nothing and its front page has no capture nearer than 2002. The one readable pre-cut-off document is H2 View, a trade title, captured 2023-06-10.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.enagas.es",
+   "silent_pages_read": [
+    "https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/21_06_2021_NP_Proyecto_hidr%C3%B3geno_verde_Algeciras_Fisterra_y_White_Summit",
+    "https://www.enagas.es/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1233",
@@ -1426,7 +1734,9 @@
    "outcome_source": "https://group.vattenfall.com/press-and-media/pressreleases/2021/vattenfall-and-preem-look-into-large-scale-production-of-fossil-free-hydrogen-in-lysekil",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at group.vattenfall.com, read 2026-09-17. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at group.vattenfall.com, read 2026-09-17. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1249",
@@ -1444,7 +1754,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.iberdrola.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1267",
@@ -1456,7 +1771,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1270",
@@ -1474,12 +1793,22 @@
    "start_as_stated": null,
    "input_stated": null,
    "note": "Naturgy's own release, dated on the page 'Madrid, 17 de diciembre de 2020', captured 2021-06-20; Enagas is the co-promoter and Green Crane is the initiative it sits under. The site passes twice over -- the municipality of La Robla and the decommissioned Naturgy thermal power station. THE CAPACITY THE OWNER STATES IS 60 MW AND THIS ENTRY IS 220: 'un electrolizador de hasta 60 MW' alongside 'una planta fotovoltaica de 400 MW' and about 9,000 tonnes a year of renewable hydrogen. The vintage's 220 MWel for a second phase is not in the document, and the 400 MW that is in it is solar. FID fails on 'impulsan' and 'promoveran conjuntamente'; no start year is stated at all.",
-   "outcome": "delayed",
+   "outcome": "silent",
    "outcome_speaker": "owner",
    "outcome_source": "https://www.naturgy.com/press_room/press_releases/en_1s_2018",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as delayed as of 2026-09-30 from the owner's own page at www.naturgy.com, read 2026-09-17."
+   "outcome_note": "Read as delayed as of 2026-09-30 from the owner's own page at www.naturgy.com, read 2026-09-17.",
+   "unread_class": "silent",
+   "silent_host": "www.naturgy.com",
+   "silent_pages_read": [
+    "https://www.naturgy.com/press_room/press_releases/en_1s_2018"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "1271",
@@ -1491,7 +1820,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1278",
@@ -1514,7 +1847,9 @@
    "outcome_source": "https://www.yara.com/corporate-releases/yara-and-linde-engineering-agree-to-build-a-24-mw-green-hydrogen-demonstration-plant-in-norway.-both-companies-aim-to-achieve-a-significant-carbon-dioxide-reduction-in-the-production-of-fertilizers-in-norway/",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.yara.com, read 2026-09-17."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.yara.com, read 2026-09-17.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1315",
@@ -1526,7 +1861,9 @@
    "outcome_source": "https://morgenenergy.com/njordkraft/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row h2energy-njordkraft-esbjerg, at status announced."
+   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row h2energy-njordkraft-esbjerg, at status announced.",
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "1331",
@@ -1538,7 +1875,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.grupofertiberia.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1351",
@@ -1556,7 +1898,9 @@
    "outcome_source": "https://www.vicat.com/news/low-carbon-trajectory-vicat-and-hynamics-unveil-hynovi-project",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row vicat-hynovi-montalieu, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row vicat-hynovi-montalieu, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1356",
@@ -1568,7 +1912,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1374",
@@ -1602,7 +1950,21 @@
    "announced_start": "2030",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "owner_start_year": 2030
+   "owner_start_year": 2030,
+   "outcome_frozen": "pending",
+   "unread_reason": null,
+   "claims": [
+    {
+     "kind": "stop",
+     "speaker": "trade press",
+     "speaker_name": "Offshore Energy",
+     "source": "https://web.archive.org/web/20230927095744/https://www.offshore-energy.biz/two-offshore-wind-to-hydrogen-projects-withdraw-from-uks-first-electrolytic-allocation-round/",
+     "date": "2023-09-27",
+     "date_precision": "not_after",
+     "verbatim": "Orsted and Phillips 66 have now halted their Gigastack project",
+     "note": "The same claim as ref 552, against the second phase."
+    }
+   ]
   },
   {
    "ref": "1388",
@@ -1631,7 +1993,9 @@
    "outcome_date": "2021-10-19",
    "outcome_date_precision": "day",
    "outcome_note": "Read as delayed as of 2026-09-30 from the register's row ineos-koeln-electrolyser, at status announced.",
-   "owner_capacity_mw": 100
+   "owner_capacity_mw": 100,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "1394",
@@ -1643,7 +2007,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.h2greensteel.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1413",
@@ -1655,19 +2024,35 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1414",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "SAS's own reference and front page answered with nothing; its newsroom, captured 2023-10-06, does not name the project, and the other pre-cut-off document is a 2017 capture of the Commission's newsroom. No document about this entry.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.sasgroup.net",
+   "silent_pages_read": [
+    "https://www.sasgroup.net/newsroom/press-releases/2021/sas-vattenfall-shell-and-lanzatech-to-explore-synthetic-sustainable-aviation-fuel-production/",
+    "https://www.sasgroup.net/newsroom/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1436",
@@ -1690,7 +2075,21 @@
    "outcome_source": "https://www.rwe.com/en/press/rwe-generation/2026-08-04-get-h2-nukleus-gains-momentum/",
    "outcome_date": "2026-08-04",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as committed as of 2026-09-30 from the register's row rwe-get-h2-nukleus-lingen, at status commissioning."
+   "outcome_note": "Read as committed as of 2026-09-30 from the register's row rwe-get-h2-nukleus-lingen, at status commissioning.",
+   "outcome_frozen": "committed",
+   "unread_reason": null,
+   "claims": [
+    {
+     "kind": "operation",
+     "speaker": "owner",
+     "speaker_name": "RWE Generation SE",
+     "source": "https://www.rwe.com/en/press/rwe-generation-se/2026-08-04-get-h2-nukleus-gains-momentum-first-hydrogen-from-lingen-reaches-marl/",
+     "date": "2026-08-04",
+     "date_precision": "day",
+     "verbatim": "The first hydrogen produced in the electrolysis in Lingen, Lower Saxony, has reached Marl",
+     "note": "The same RWE release against the third phase of the same works."
+    }
+   ]
   },
   {
    "ref": "1437",
@@ -1713,7 +2112,9 @@
    "outcome_source": "https://www.get-h2.de/presse/",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.get-h2.de, read 2026-09-17."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.get-h2.de, read 2026-09-17.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1476",
@@ -1751,7 +2152,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2028
+   "owner_start_year": 2028,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1477",
@@ -1789,7 +2192,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2028
+   "owner_start_year": 2028,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1488",
@@ -1801,7 +2206,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.edp.com (asked at ref 1)",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1489",
@@ -1839,7 +2249,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 500,
-   "owner_start_year": 2027
+   "owner_start_year": 2027,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1490",
@@ -1871,7 +2283,11 @@
    "announced_start": "2030",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "owner_start_year": 2030
+   "owner_start_year": 2030,
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1493",
@@ -1883,7 +2299,9 @@
    "outcome_source": "https://uk.rwe.com/innovation/pembroke-net-zero-centre-pnzc/pembroke-green-hydrogen/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row rwe-pembroke-green-hydrogen, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row rwe-pembroke-green-hydrogen, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1499",
@@ -1895,19 +2313,33 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1503",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "THE PERMIT AUTHORITY IS THE REFERENCE AND IT REFUSED. ens.dk, the Danish Energy Agency, is cited for five entries in this population and answered 246 characters or nothing for every one of them, front page and newsroom included. That is a refusal measured against those URLs, not a finding about the projects.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.ens.dk:80",
+   "silent_pages_read": [
+    "http://www.ens.dk:80/presse"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1505",
@@ -1919,55 +2351,99 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1510",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "The same ens.dk reference and the same refusal as ref 1503.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.ens.dk:80",
+   "silent_pages_read": [
+    "http://www.ens.dk:80/presse"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1512",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "The same ens.dk reference and the same refusal as ref 1503.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.ens.dk:80",
+   "silent_pages_read": [
+    "http://www.ens.dk:80/presse"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1513",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "The same ens.dk reference and the same refusal as ref 1503.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.ens.dk:80",
+   "silent_pages_read": [
+    "http://www.ens.dk:80/presse"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1514",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "The same ens.dk reference and the same refusal as ref 1503.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.ens.dk:80",
+   "silent_pages_read": [
+    "http://www.ens.dk:80/presse"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1529",
@@ -1979,7 +2455,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.engie.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1537",
@@ -2010,25 +2491,47 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "note": "A WIRE RELEASE IS THE COMPANY SPEAKING, AND THE MACHINE'S SIGNAL SAID OTHERWISE. Aker Clean Hydrogen's own release of 22 June 2021, carried by Cision and captured 2022-11-28. The triage view reported 'no name words' for it, because the project name normalises to 'berlevag' and the release spells the place Berlevag with a Norwegian a-ring -- a signal is not a finding, and this is what that rule looks like when it bites. Three rungs pass. FID fails on 'The project has now successfully passed the feasibility study and concept phase', which is the stage before the one rung 3 asks about. THE VINTAGE GIVES THIS ENTRY NO DATE ONLINE AND THE OWNER GIVES ONE, so the announced start on this line is the owner's end of 2024 -- which is the order scope.md sets and the case it was written for. Rung 6 fails although power is named: Varanger Kraft's Raggovidda wind farm belongs to the joint venture's own partner and no supply contract is stated.",
-   "outcome": "delayed",
+   "outcome": "silent",
    "outcome_speaker": "owner",
    "outcome_source": "https://news.cision.com/aker-clean-hydrogen/r/berlevag-project-to-decarbonize-arctic-shipping-forges-ahead,c3382425",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
    "outcome_note": "Read as delayed as of 2026-09-30 from the owner's own page at news.cision.com, read 2026-09-17.",
-   "owner_start_year": 2024
+   "owner_start_year": 2024,
+   "unread_class": "silent",
+   "silent_host": "news.cision.com",
+   "silent_pages_read": [
+    "https://news.cision.com/aker-clean-hydrogen/r/berlevag-project-to-decarbonize-arctic-shipping-forges-ahead,c3382425"
+   ],
+   "silent_page_kinds": [
+    "iea_reference"
+   ],
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "1541",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "Enagas's reference was read live in 2026 and its only pre-cut-off front-page capture is from 2002. bp's own pages are not on file for this entry. Nothing at or before the cut-off.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.enagas.es",
+   "silent_pages_read": [
+    "https://www.enagas.es/stfls/ENAGAS/Notas%20de%20prensa/Nota%20de%20prensa%20conjunta%20MoU%20H2%20(bp%20Iberdrola%20Enagas)%2028042021_EN_pr.pdf",
+    "https://www.enagas.es/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1542",
@@ -2040,7 +2543,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1545",
@@ -2052,7 +2559,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1547",
@@ -2064,7 +2575,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1549",
@@ -2097,7 +2612,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 3300,
-   "owner_start_year": 2028
+   "owner_start_year": 2028,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1550",
@@ -2129,7 +2646,9 @@
    "announced_start": "2028",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "owner_start_year": 2028
+   "owner_start_year": 2028,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1598",
@@ -2152,7 +2671,9 @@
    "outcome_source": "https://www.norsk-e-fuel.com/en/",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.norsk-e-fuel.com, read 2026-09-17."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.norsk-e-fuel.com, read 2026-09-17.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1602",
@@ -2164,7 +2685,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1608",
@@ -2197,7 +2722,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 1000,
-   "owner_start_year": 2030
+   "owner_start_year": 2030,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1612",
@@ -2209,19 +2736,35 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1614",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "EDP Espana's front page, captured 2021-11-29, is on file and does not name the project; its reference page was read live in 2026 and La Voz de Asturias answered with nothing. The same owner, the same silence as ref 1 at the other end of EDP's portfolio.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "espana.edp.com",
+   "silent_pages_read": [
+    "https://espana.edp.com/en/news/2021/05/21/edp-presents-its-energy-transition-projects-asturias-offshore-wind-farm-and",
+    "https://espana.edp.com/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1623",
@@ -2249,7 +2792,7 @@
    "start_captured_at": "2023-06-02",
    "fid_stated": null,
    "input_stated": null,
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
@@ -2259,7 +2802,17 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2026
+   "owner_start_year": 2026,
+   "unread_class": "silent",
+   "silent_host": "h2v.net",
+   "silent_pages_read": [
+    "https://h2v.net/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1624",
@@ -2282,7 +2835,7 @@
    "start_captured_at": "2023-06-02",
    "fid_stated": null,
    "input_stated": null,
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
@@ -2291,7 +2844,17 @@
    "announced_start": "2030",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "owner_start_year": 2030
+   "owner_start_year": 2030,
+   "unread_class": "silent",
+   "silent_host": "h2v.net",
+   "silent_pages_read": [
+    "https://h2v.net/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1625",
@@ -2322,14 +2885,24 @@
    "announced_start": "2030",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "outcome": "pending",
+   "outcome": "silent",
    "outcome_speaker": "owner",
    "outcome_source": "https://h2v.net/",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at h2v.net, read 2026-09-17.",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2030
+   "owner_start_year": 2030,
+   "unread_class": "silent",
+   "silent_host": "h2v.net",
+   "silent_pages_read": [
+    "https://h2v.net/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1626",
@@ -2360,14 +2933,24 @@
    "announced_start": "2030",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "outcome": "pending",
+   "outcome": "silent",
    "outcome_speaker": "owner",
    "outcome_source": "https://h2v.net/",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at h2v.net, read 2026-09-17.",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2030
+   "owner_start_year": 2030,
+   "unread_class": "silent",
+   "silent_host": "h2v.net",
+   "silent_pages_read": [
+    "https://h2v.net/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1630",
@@ -2379,7 +2962,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1646",
@@ -2391,7 +2978,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1651",
@@ -2403,7 +2994,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1654",
@@ -2421,7 +3016,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "xfuels.de",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1662",
@@ -2433,7 +3033,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1663",
@@ -2456,7 +3060,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.uniper.energy",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1669",
@@ -2468,7 +3077,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1676",
@@ -2480,7 +3093,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1693",
@@ -2492,7 +3109,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "corporate.arcelormittal.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1733",
@@ -2504,7 +3126,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1748",
@@ -2516,7 +3142,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1749",
@@ -2548,7 +3178,9 @@
    "announced_start": "2027",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "owner_start_year": 2027
+   "owner_start_year": 2027,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1750",
@@ -2577,7 +3209,9 @@
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
    "outcome_note": "Read as delayed as of 2026-09-30 from the owner's own page at totalenergies.com, read 2026-09-17.",
-   "owner_capacity_mw": 40
+   "owner_capacity_mw": 40,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "1765",
@@ -2589,7 +3223,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "hh2e.de",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1766",
@@ -2601,7 +3240,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "hh2e.de",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1803",
@@ -2619,7 +3263,9 @@
    "outcome_source": "https://www.liquidwind.se/",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.liquidwind.se, read 2026-09-17. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.liquidwind.se, read 2026-09-17. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1806",
@@ -2631,7 +3277,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.shell.nl (asked at ref 771, 200 with an empty body)",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1807",
@@ -2643,19 +3294,33 @@
    "outcome_source": "https://www.hycc.com/en/projects/h2era",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row hycc-h2era-amsterdam, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row hycc-h2era-amsterdam, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1812",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "EDF's media centre, captured 2023-10-28 three days before the cut-off, is on file and is entirely about nuclear decommissioning, standing charges and Hinkley Point C. It does not name Tees Green Hydrogen; the reference that would have answered returned nothing (D-C3).",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.edfenergy.com",
+   "silent_pages_read": [
+    "https://www.edfenergy.com/media-centre/news-releases/new-green-hydrogen-project-edf-renewables-uk-and-hynamics-teeside",
+    "https://www.edfenergy.com/media-centre/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1813",
@@ -2673,19 +3338,31 @@
    "outcome_source": "https://gravithy.eu/#press-release",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at gravithy.eu, read 2026-09-17."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at gravithy.eu, read 2026-09-17.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1816",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "The Navigator Company's own front page, captured 2023-10-01, names its four industrial poles -- Cacia, Figueira da Foz, Vila Velha de Rodao and Setubal -- and does not name the P2X-Europe joint venture; its reference answered with 307 characters and renewable-carbon.eu with nothing (D-C3).",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.thenavigatorcompany.com",
+   "silent_pages_read": [
+    "https://www.thenavigatorcompany.com/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1824",
@@ -2697,7 +3374,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.scottishpower.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1826",
@@ -2709,7 +3391,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1829",
@@ -2747,7 +3433,9 @@
    "outcome_date_precision": "day",
    "outcome_note": "Read as delayed as of 2026-09-30 from the owner's own page at www.ir.plugpower.com, read 2026-09-17.",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2024
+   "owner_start_year": 2024,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "1843",
@@ -2759,7 +3447,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "sourceenergie.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1844",
@@ -2771,7 +3464,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "sourceenergie.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1862",
@@ -2783,7 +3481,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1866",
@@ -2818,7 +3520,9 @@
    "new_start": "2027",
    "new_start_precision": "year",
    "slip_years": 1,
-   "owner_start_year": 2026
+   "owner_start_year": 2026,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "1874",
@@ -2830,7 +3534,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1877",
@@ -2853,7 +3561,9 @@
    "outcome_source": "https://www.galp.com/corp/en/about-us/what-we-do/industrial-and-midstream/green-hydrogen",
    "outcome_date": "2023-01-01",
    "outcome_date_precision": "year",
-   "outcome_note": "Read as committed as of 2026-09-30 from the register's row galp-sines-electrolyser, at status construction."
+   "outcome_note": "Read as committed as of 2026-09-30 from the register's row galp-sines-electrolyser, at status construction.",
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "1878",
@@ -2871,7 +3581,9 @@
    "outcome_source": "https://hydrogenisland.dk/en#vision",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at hydrogenisland.dk, read 2026-09-17."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at hydrogenisland.dk, read 2026-09-17.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1881",
@@ -2900,7 +3612,9 @@
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the register's row madoqua-power2x-sines, at status announced.",
-   "owner_capacity_mw": 500
+   "owner_capacity_mw": 500,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1883",
@@ -2918,7 +3632,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "river-wind.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1884",
@@ -2936,7 +3655,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "river-wind.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1885",
@@ -2954,43 +3678,84 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "river-wind.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "1887",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "Hy2gen's own front page, captured 2023-09-11, carries IVERSON in its list of projects and says nothing else about it -- the page's prose is about the company's product range and the countries it builds in. A project name in a menu is not the owner saying anything about the project, which is the reading taken at ref 1493.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "hy2gen.com",
+   "silent_pages_read": [
+    "https://hy2gen.com/",
+    "http://hy2gen.com/news/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1895",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "Lhyfe is the owner and all three of its legs -- reference, front page and newsroom, the last two captured in the month before the cut-off -- answered with nothing.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.lhyfe.com",
+   "silent_pages_read": [
+    "https://www.lhyfe.com/press/lhyfe-and-wpd-for-production-of-green-hydrogen-in-connection-with-offshore-wind-farm-in-sweden/",
+    "https://www.lhyfe.com/press/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1907",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "Mabanaft's reference answered with nothing and the only front-page capture the index holds before the cut-off is from 2005 with nine characters. Nothing readable at or before the cut-off.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.mabanaft.com",
+   "silent_pages_read": [
+    "https://www.mabanaft.com/en/news-info/current-news-and-press-releases/news-detail/products-for-the-future-p2x-europe-and-nordic-electrofuel-cooperate-on-ptl-products/",
+    "https://www.mabanaft.com/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "1910",
@@ -3002,7 +3767,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1911",
@@ -3014,7 +3783,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1927",
@@ -3032,7 +3805,9 @@
    "outcome_source": "https://www.storegga.earth/news/2022/press-releases/scottishpower-and-storegga-form-green-hydrogen-partnership-to-transform-industry-in-the-highlands/",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.storegga.earth, read 2026-09-17."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.storegga.earth, read 2026-09-17.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1969",
@@ -3055,7 +3830,9 @@
    "outcome_source": "https://www.traffordgreenhydrogen.co.uk/theproject",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row carlton-trafford-green-hydrogen, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row carlton-trafford-green-hydrogen, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1973",
@@ -3067,7 +3844,9 @@
    "outcome_source": "https://en.volth2.com/wilhelmshaven",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row volth2-wilhelmshaven, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row volth2-wilhelmshaven, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1985",
@@ -3079,7 +3858,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1987",
@@ -3091,7 +3874,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "1996",
@@ -3114,7 +3901,9 @@
    "outcome_source": "https://www.cepsa.com/en/press/first-green-hydrogen-corridor",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.cepsa.com, read 2026-09-17."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.cepsa.com, read 2026-09-17.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "1997",
@@ -3126,7 +3915,9 @@
    "outcome_source": "https://www.moeveglobal.com/en/press/moeve-investment-andalusian-green-hydrogen-valley-onuba-huelva",
    "outcome_date": "2026-05-11",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as committed as of 2026-09-30 from the register's row moeve-onuba-huelva, at status fid."
+   "outcome_note": "Read as committed as of 2026-09-30 from the register's row moeve-onuba-huelva, at status fid.",
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "2004",
@@ -3138,7 +3929,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2015",
@@ -3167,7 +3962,9 @@
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the register's row plugpower-kokkola, at status announced.",
-   "owner_capacity_mw": 1000
+   "owner_capacity_mw": 1000,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2016",
@@ -3196,7 +3993,9 @@
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the register's row plugpower-kristinestad, at status announced.",
-   "owner_capacity_mw": 1000
+   "owner_capacity_mw": 1000,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2017",
@@ -3233,7 +4032,9 @@
    "announced_start": "2030",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "owner_start_year": 2030
+   "owner_start_year": 2030,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2029",
@@ -3245,7 +4046,24 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry",
+   "claims": [
+    {
+     "kind": "operation",
+     "speaker": "trade press",
+     "speaker_name": "Renewables Now",
+     "source": "https://web.archive.org/web/20230927000000/https://renewablesnow.com/news/austrias-first-green-hydrogen-production-plant-goes-live/",
+     "date": "2023-09-27",
+     "date_precision": "not_after",
+     "verbatim": "Austria's first green hydrogen production plant goes live. Austria's first green hydrogen production site has commenced operations in Styria, marking the beginning of a comprehensive plan to expand the electrolysis capacity in the mountainous province to over 150 MW",
+     "note": "THE ONLY OPERATION IN THIS POPULATION THAT RESTS ON NOBODY BUT A TRADE TITLE. The entry is the EXPANSION to 149 MWel and what the article says has gone live is Austria's first plant in Styria, so the claim may be about the first unit rather than this entry; either way no page of Energie Steiermark's is on file and the outcome stays unread. The paper needs this line: one plant in 255 may be running and its owner has not told this register so."
+    }
+   ],
+   "operation_rests_only_on_a_claim": true
   },
   {
    "ref": "2033",
@@ -3257,7 +4075,9 @@
    "outcome_source": "https://ric.energy/besaya-h2-proyecto-ric-energy-impulsara-descarbonizacion-cantabria/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row ricenergy-besaya-torrelavega, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row ricenergy-besaya-torrelavega, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2035",
@@ -3269,7 +4089,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2036",
@@ -3281,7 +4105,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "flexens.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "2045",
@@ -3293,7 +4122,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.fortum.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "2056",
@@ -3305,7 +4139,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2058",
@@ -3334,7 +4172,9 @@
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the register's row tes-ewe-wilhelmshaven, at status announced.",
-   "owner_capacity_mw": 500
+   "owner_capacity_mw": 500,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2060",
@@ -3352,7 +4192,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "madoquaventures.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "2062",
@@ -3364,7 +4209,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.iberdrola.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "2111",
@@ -3376,7 +4226,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2115",
@@ -3388,7 +4242,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2117",
@@ -3417,7 +4275,9 @@
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
    "outcome_note": "Read as delayed as of 2026-09-30 from the register's row lhyfe-delfzijl, at status announced.",
-   "owner_capacity_mw": 200
+   "owner_capacity_mw": 200,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "2120",
@@ -3429,7 +4289,9 @@
    "outcome_source": "https://www.smartenergy.net/smartenergy-develops-a-200-mwe-green-hydrogen-plant-in-sardinia-italy/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row smartenergy-porto-torres, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row smartenergy-porto-torres, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2123",
@@ -3441,7 +4303,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2149",
@@ -3470,7 +4336,9 @@
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the register's row orsted-skovgaard-idomlund, at status announced.",
-   "owner_capacity_mw": 150
+   "owner_capacity_mw": 150,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2150",
@@ -3493,7 +4361,9 @@
    "outcome_source": "https://web.archive.org/web/20231002002541/https://orsted.com/en/media/newsroom/news/2022/12/13665899",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row orsted-skovgaard-idomlund, at status announced. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row orsted-skovgaard-idomlund, at status announced. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2152",
@@ -3505,7 +4375,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2154",
@@ -3517,7 +4391,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2155",
@@ -3529,7 +4407,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2163",
@@ -3552,7 +4434,9 @@
    "outcome_source": "https://stateraenergy.co.uk/projects/kintore-hydrogen",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row statera-kintore-hydrogen, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row statera-kintore-hydrogen, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2164",
@@ -3575,7 +4459,9 @@
    "outcome_source": "https://stateraenergy.co.uk/projects/kintore-hydrogen",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row statera-kintore-hydrogen, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row statera-kintore-hydrogen, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2170",
@@ -3587,7 +4473,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2171",
@@ -3599,7 +4489,9 @@
    "outcome_source": "https://www.ewe.com/en/media-center/press-releases/2025/11/official-start-of-construction-of-320-megawatt-generation-plant-in-emdenewe-ag",
    "outcome_date": "2025-11-28",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as committed as of 2026-09-30 from the register's row ewe-emden-electrolysis, at status construction."
+   "outcome_note": "Read as committed as of 2026-09-30 from the register's row ewe-emden-electrolysis, at status construction.",
+   "outcome_frozen": "committed",
+   "unread_reason": null
   },
   {
    "ref": "2173",
@@ -3611,7 +4503,9 @@
    "outcome_source": "https://meld.energy/projects/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row meld-saltend-hull, at status announced."
+   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row meld-saltend-hull, at status announced.",
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "2176",
@@ -3623,7 +4517,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "hh2e.de",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "2177",
@@ -3635,7 +4534,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "hh2e.de",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "2182",
@@ -3647,7 +4551,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2185",
@@ -3659,7 +4567,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2188",
@@ -3671,19 +4583,35 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2189",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "Swiss Liquid Future is the owner and both its legs -- the reference and the front page -- answered with nothing.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "www.swiss-liquid-future.ch",
+   "silent_pages_read": [
+    "https://www.swiss-liquid-future.ch/wp-content/uploads/2020/07/2020-07-01_fast-track-CC-in-Norway_PM-Final_revised21-2.pdf",
+    "https://www.swiss-liquid-future.ch/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom",
+    "iea_reference"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "2193",
@@ -3695,7 +4623,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2194",
@@ -3724,7 +4656,9 @@
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.greengoenergy.com, read 2026-09-17.",
-   "owner_capacity_mw": 2000
+   "owner_capacity_mw": 2000,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2211",
@@ -3736,7 +4670,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2213",
@@ -3748,7 +4686,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2214",
@@ -3760,7 +4702,9 @@
    "outcome_source": "https://edp.com/en/europe/spain/projects/energy-transition/green-h2-los-barrios",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row edp-green-h2-los-barrios, at status announced."
+   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row edp-green-h2-los-barrios, at status announced.",
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "2215",
@@ -3772,19 +4716,31 @@
    "outcome_source": "https://edp.com/en/europe/spain/projects/energy-transition/green-h2-los-barrios",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row edp-green-h2-los-barrios, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row edp-green-h2-los-barrios, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2218",
    "read_on": "2026-09-17",
    "owner_or_permit_pre_cutoff": false,
    "note": "Fortescue's newsroom, captured 2023-10-14, carries Holmaneset in its list of projects and nothing else; its reference and front page answered with nothing. A project name in a menu is not a statement about the project, the reading taken at refs 1493 and 1887.",
-   "outcome": "unread",
+   "outcome": "silent",
    "outcome_speaker": null,
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "silent",
+   "silent_host": "fortescue.com",
+   "silent_pages_read": [
+    "https://fortescue.com/news-and-media"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "unread",
+   "unread_reason": null
   },
   {
    "ref": "2227",
@@ -3796,7 +4752,9 @@
    "outcome_source": "https://www.hiveenergy.co.uk/clean-futures/green-hydrogen/albamed-green-hydrogen-project/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row hive-albamed-albacete, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row hive-albamed-albacete, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2228",
@@ -3808,7 +4766,9 @@
    "outcome_source": "https://www.hiveenergy.co.uk/clean-futures/green-hydrogen/albamed-green-hydrogen-project/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row hive-albamed-albacete, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row hive-albamed-albacete, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2229",
@@ -3820,7 +4780,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2232",
@@ -3838,7 +4802,9 @@
    "outcome_source": "https://www.power2x.com/erasmop2x/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row power2x-erasmo-saceruela, at status announced."
+   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row power2x-erasmo-saceruela, at status announced.",
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "2233",
@@ -3850,7 +4816,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.doinghydrogen.com",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "2246",
@@ -3862,7 +4833,9 @@
    "outcome_source": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-installs-second-100-MW-electrolyzer-petronor/index.cshtml",
    "outcome_date": "2026-01-26",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row repsol-tarragona, at status announced."
+   "outcome_note": "Read as delayed as of 2026-09-30 from the register's row repsol-tarragona, at status announced.",
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "2248",
@@ -3885,12 +4858,22 @@
    "start_as_stated": null,
    "input_stated": null,
    "note": "Greenalia's own release of 22 May 2023 with P2X-Europe, captured 2023-06-09. Site and capacity pass. AND THE TWO FIGURES IN THAT CAPACITY SENTENCE APPEAR TO EXPLAIN THE VINTAGE'S: the owner says more than 11,000 tonnes a year of green HYDROGEN and around 20,000 tonnes of synthetic HYDROCARBONS, and the vintage carries 115.437 MWel -- which at the IEA's own normalisation of 0.17325333 kt of hydrogen per MW is 20.0 kt. That is the hydrocarbon tonnage read as though it were hydrogen. The observation is recorded and not corrected: it is a disagreement between two speakers about one fact, and both are on the line. FID fails on 'have signed a collaboration agreement'; no start date is given and the vintage gives the entry no date online either.",
-   "outcome": "pending",
+   "outcome": "silent",
    "outcome_speaker": "owner",
    "outcome_source": "http://www.greenalia.es:80/press/",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.greenalia.es:80, read 2026-09-17. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13."
+   "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at www.greenalia.es:80, read 2026-09-17. The vintage gives this entry no date online and no owner start was found at or before the cut-off, so there is no date for it to be late against. Read as pending -- nothing has been promised by a day that has passed -- and asked of the questions file as Q13.",
+   "unread_class": "silent",
+   "silent_host": "www.greenalia.es:80",
+   "silent_pages_read": [
+    "http://www.greenalia.es:80/press/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2250",
@@ -3902,7 +4885,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2255",
@@ -3914,7 +4901,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2284",
@@ -3926,7 +4917,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2297",
@@ -3938,7 +4933,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2298",
@@ -3950,7 +4949,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2324",
@@ -3962,7 +4965,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2326",
@@ -3974,7 +4981,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2380",
@@ -4005,14 +5016,24 @@
    "announced_start": "2030",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "outcome": "pending",
+   "outcome": "silent",
    "outcome_speaker": "owner",
    "outcome_source": "https://h2v.net/",
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at h2v.net, read 2026-09-17.",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2030
+   "owner_start_year": 2030,
+   "unread_class": "silent",
+   "silent_host": "h2v.net",
+   "silent_pages_read": [
+    "https://h2v.net/"
+   ],
+   "silent_page_kinds": [
+    "host_newsroom"
+   ],
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2381",
@@ -4049,7 +5070,9 @@
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the register's row h2v-fos-marseille, at status announced.",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2028
+   "owner_start_year": 2028,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2382",
@@ -4086,7 +5109,9 @@
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the register's row h2v-fos-marseille, at status announced.",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2028
+   "owner_start_year": 2028,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2383",
@@ -4123,7 +5148,9 @@
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the register's row h2v-fos-marseille, at status announced.",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2028
+   "owner_start_year": 2028,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2384",
@@ -4160,7 +5187,9 @@
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the register's row h2v-fos-marseille, at status announced.",
    "owner_capacity_mw": 100,
-   "owner_start_year": 2028
+   "owner_start_year": 2028,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2388",
@@ -4172,7 +5201,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2395",
@@ -4184,7 +5217,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2396",
@@ -4196,7 +5233,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2397",
@@ -4208,7 +5249,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2398",
@@ -4220,7 +5265,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2407",
@@ -4232,7 +5281,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2409",
@@ -4259,7 +5312,9 @@
    "outcome_date": "2026-09-17",
    "outcome_date_precision": "day",
    "outcome_note": "Read as pending as of 2026-09-30 from the owner's own page at elyse.energy, read 2026-09-17.",
-   "owner_start_year": 2027
+   "owner_start_year": 2027,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2426",
@@ -4271,7 +5326,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2427",
@@ -4283,7 +5342,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2430",
@@ -4315,7 +5378,9 @@
    "announced_start": "2026",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "owner_start_year": 2026
+   "owner_start_year": 2026,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "2439",
@@ -4327,7 +5392,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2444",
@@ -4339,7 +5408,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2447",
@@ -4351,7 +5424,9 @@
    "outcome_source": "https://h2apex.com/en/h2apex-news/closing-of-the-acquisition-of-hh2e-werk-lubmin-gmbh/",
    "outcome_date": "2025-07-02",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row h2apex-lubmin-hh2e, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row h2apex-lubmin-hh2e, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2499",
@@ -4363,7 +5438,9 @@
    "outcome_source": "https://enertrag.com/news-and-press/pressemitteilungen/enertrag-et-l-arrondissement-de-prignitz-posent-un-nouveau-jalon-pour-la-strategie-de-l-hydrogene-dans-le-brandebourg",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row enertrag-prignitz-falkenhagen, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row enertrag-prignitz-falkenhagen, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2501",
@@ -4375,7 +5452,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2504",
@@ -4407,7 +5488,9 @@
    "announced_start": "2030",
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
-   "owner_start_year": 2030
+   "owner_start_year": 2030,
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2505",
@@ -4419,7 +5502,12 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "refuses",
+   "refusing_host": "www.h2greensteel.com (asked at ref 936)",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "the publisher refuses this register's reader"
   },
   {
    "ref": "2512",
@@ -4431,7 +5519,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2516",
@@ -4443,7 +5535,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2520",
@@ -4455,7 +5551,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2522",
@@ -4467,7 +5567,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2523",
@@ -4479,7 +5583,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2524",
@@ -4491,7 +5599,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2525",
@@ -4503,7 +5615,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from nothing of this entry answered a declared reader in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2534",
@@ -4546,7 +5662,9 @@
    "announced_start_precision": "year",
    "announced_start_speaker": "owner",
    "owner_capacity_mw": 130,
-   "owner_start_year": 2026
+   "owner_start_year": 2026,
+   "outcome_frozen": "delayed",
+   "unread_reason": null
   },
   {
    "ref": "2538",
@@ -4558,7 +5676,9 @@
    "outcome_source": "https://globalparques.pt/en/news/neogreen-portugal-develops-a-green-hydrogen-project-in-sines/",
    "outcome_date": "2026-09-10",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as pending as of 2026-09-30 from the register's row neogreen-sines, at status announced."
+   "outcome_note": "Read as pending as of 2026-09-30 from the register's row neogreen-sines, at status announced.",
+   "outcome_frozen": "pending",
+   "unread_reason": null
   },
   {
    "ref": "2546",
@@ -4570,7 +5690,11 @@
    "outcome_source": null,
    "outcome_date": null,
    "outcome_date_precision": null,
-   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026."
+   "outcome_note": "Read as unread as of 2026-09-30 from the publisher refuses or carries nothing about this entry in 2026.",
+   "unread_class": "no owner page",
+   "silent_pages_read": null,
+   "outcome_frozen": "unread",
+   "unread_reason": "no owner domain is known for this entry"
   },
   {
    "ref": "2549",
@@ -4582,7 +5706,9 @@
    "outcome_source": "https://www.ewe.com/en/media-center/press-releases/2025/11/official-start-of-construction-of-320-megawatt-generation-plant-in-emdenewe-ag",
    "outcome_date": "2025-11-28",
    "outcome_date_precision": "day",
-   "outcome_note": "Read as committed as of 2026-09-30 from the register's row ewe-emden-electrolysis, at status construction."
+   "outcome_note": "Read as committed as of 2026-09-30 from the register's row ewe-emden-electrolysis, at status construction.",
+   "outcome_frozen": "committed",
+   "unread_reason": null
   }
  ]
 }

@@ -1706,6 +1706,23 @@ worth recording as a CLAIM against the entry, with its speaker, because a reader
 attrition question needs to know how much of the picture rests on speakers this test does
 not admit.
 
+**THE COUNT IS THREE CLAIMS ACROSS THREE ENTRIES, AND ONE OF THEM MATTERS MORE THAN THE
+OTHER TWO.** Offshore Energy's halt of Gigastack is carried against both of that project's
+phases, and Renewables Now's "Austria's first green hydrogen production site has commenced
+operations in Styria" is carried against ref 2029 — **the only entry in 255 whose OPERATION
+rests on nobody but a trade title.** No page of Energie Steiermark's is on file, so the
+outcome stays `unread` and the claim sits beside it. One plant in 255 may be running with
+its owner not having told this register so, and that number is printed on every run rather
+than left to be inferred from the table's silence.
+
+**The mirror case is listed too, and it is the owner speaking.** RWE says the first
+hydrogen produced at Lingen has reached Marl, on 4 August 2026, and refs 885 and 1436 are
+`committed` rather than `operating` — because the same owner calls the plant's state
+commissioning and the frozen definition keeps commissioning out of operation. **One plant
+whose owner says it has produced hydrogen and that the test does not count as operating;
+one plant that a trade title says is running and whose owner has said nothing.** Between
+them they are the whole of what an owner-statement test can and cannot see.
+
 **Gigastack is the case that fixes the shape.** It is held `paused` from 18 August 2023 on
 Offshore Energy's reporting, and it stays where it is: a trade title is a claim, the
 outcome reads off the announced start, and **the owner look is queued on the row** under

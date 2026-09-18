@@ -62,8 +62,14 @@ CSV_OUT = ROOT / "sources" / "ladder" / "test_2023.csv"
 JSON_OUT = ROOT / "sources" / "ladder" / "test_2023_summary.json"
 CUTOFF = t23.CUTOFF
 ASSESSED_ON = tout.ASSESSED_ON
-OUTCOMES = ("operating", "committed", "pending", "delayed", "stopped", "unread",
+# SEVEN VALUES UNDER THE AMENDMENT OF 18 SEPTEMBER 2026 (D-C13) AND SIX UNDER THE FREEZE.
+# Both are computed and both are printed: `outcome` is the amended reading and
+# `outcome_frozen` is what the definitions frozen at 58ce11f gave, so the change is
+# reportable rather than inherited.
+OUTCOMES = ("operating", "committed", "pending", "delayed", "stopped", "silent", "unread",
             "not_read_yet")
+FROZEN_OUTCOME_VALUES = ("operating", "committed", "pending", "delayed", "stopped",
+                         "unread", "not_read_yet")
 BANDS = ((100, 200), (200, 500), (500, 1000), (1000, 10 ** 9))
 
 # THE FROZEN COMMITS, NAMED IN THE FILE THEY GOVERN so that a reader of the table does not
@@ -260,6 +266,13 @@ def outcome_of(rev: dict) -> str:
     return hand(rev, "outcome", "not_read_yet")
 
 
+def outcome_frozen_of(rev: dict) -> str:
+    """WHAT THE FROZEN DEFINITIONS GAVE, kept beside the amended reading for the whole life
+    of this table. D-C13: the freeze is only worth having if what it produced survives the
+    amendment in a column a reader can quote."""
+    return hand(rev, "outcome_frozen", hand(rev, "outcome", "not_read_yet"))
+
+
 # --------------------------------------------------------------------------
 # THE INDEPENDENT CHECK, brief 13 item 6
 
@@ -358,7 +371,11 @@ FIELDS = (["iea_ref", "name", "country", "capacity_value", "capacity_unit",
           + [f"{r}_{f}" for r in L.RUNGS for f in ("result", "source", "speaker", "date",
                                                    "precision", "note")]
           + ["coverage", "documents_pre_cutoff", "readable_2026_documents",
-             "outcome", "outcome_speaker", "outcome_source", "outcome_date",
+             "outcome", "outcome_frozen", "unread_reason", "silent_host",
+             "silent_pages_read", "silent_page_kinds",
+             "claim_kind", "claim_speaker", "claim_speaker_name", "claim_source",
+             "claim_date", "claim_verbatim", "operation_rests_only_on_a_claim",
+             "outcome_speaker", "outcome_source", "outcome_date",
              "outcome_date_precision", "outcome_note", "new_start", "slip_years",
              "paused", "resumption_date", "dropped_from_benchmark",
              "benchmark_departure_kind", "in_current_iea_vintage", "register_class",
@@ -429,6 +446,7 @@ def build():
                                     funder_on, row, edges_by_project, graph_date,
                                     clauses.get(ref, ""))
         a_start, a_prec, a_speaker, a_from = announced_start(entry, rev)
+        claims = hand(rev, "claims", []) or []
         # THE DEPARTURE IS COUNTED TWO WAYS, on the ruling of 17 September 2026: the
         # publisher dropping an entry and the publisher revising it below the threshold
         # are not the same fact, and only the first is what rule 17 is about.
@@ -457,6 +475,19 @@ def build():
             "documents_pre_cutoff": len(pre),
             "readable_2026_documents": oc.get("readable_2026_documents", ""),
             "outcome": outcome_of(rev),
+            "outcome_frozen": outcome_frozen_of(rev),
+            "unread_reason": hand(rev, "unread_reason", ""),
+            "silent_host": hand(rev, "silent_host", ""),
+            "silent_pages_read": " | ".join(hand(rev, "silent_pages_read", []) or []),
+            "silent_page_kinds": ", ".join(hand(rev, "silent_page_kinds", []) or []),
+            "claim_kind": "; ".join(c["kind"] for c in claims),
+            "claim_speaker": "; ".join(c["speaker"] for c in claims),
+            "claim_speaker_name": "; ".join(c["speaker_name"] for c in claims),
+            "claim_source": " | ".join(c["source"] for c in claims),
+            "claim_date": "; ".join(c["date"] for c in claims),
+            "claim_verbatim": " | ".join(c["verbatim"] for c in claims),
+            "operation_rests_only_on_a_claim":
+                "yes" if hand(rev, "operation_rests_only_on_a_claim", False) else "",
             "outcome_speaker": hand(rev, "outcome_speaker", ""),
             "outcome_source": hand(rev, "outcome_source", ""),
             "outcome_date": hand(rev, "outcome_date", ""),
@@ -495,6 +526,18 @@ def build():
 
 # --------------------------------------------------------------------------
 # THE SUMMARY, COMPUTED FROM THE CSV AND NOT ALONGSIDE IT
+
+
+def informative(l) -> bool:
+    """AN ENTRY WHOSE ANNOUNCED START HAS PASSED THE ASSESSMENT DATE.
+
+    `pending` cannot be assessed: a date that has not arrived says nothing about whether a
+    project is going to happen, so a cross-tab that includes it measures how far ahead the
+    population was looking. The informative subset is the entries whose announced start is
+    on or before 30 September 2026 -- the ones where something was due.
+    """
+    y = start_year(l["announced_start"])
+    return bool(y) and f"{y}-01-01" <= ASSESSED_ON
 
 
 def crosstab(lines, rowkey, colkey, cols=None):
@@ -566,6 +609,46 @@ def summarise(lines, rows_from_csv=None, check=None):
                                  for b in sorted(cov_total_by_band)},
         },
         "rungs_cleared_against_outcome": crosstab(lines, "rungs_cleared_as_of", "outcome"),
+        # THE SAME CROSS-TAB UNDER THE FROZEN DEFINITIONS, so the amendment is reportable.
+        "rungs_cleared_against_outcome_frozen":
+            crosstab(lines, "rungs_cleared_as_of", "outcome_frozen"),
+        "outcome_frozen_against_amended": crosstab(lines, "outcome_frozen", "outcome"),
+        "outcome_distribution": {
+            "frozen": dict(Counter(l["outcome_frozen"] for l in lines)),
+            "amended": dict(Counter(l["outcome"] for l in lines)),
+            "reclassified": sum(1 for l in lines if l["outcome"] != l["outcome_frozen"]),
+        },
+        # WHAT THE 159 `unread` OF THE FROZEN TABLE TURNED OUT TO BE.
+        "the_frozen_unread_broken_down": {
+            "readable and silent": sum(1 for l in lines
+                                       if l["outcome_frozen"] == "unread"
+                                       and l["outcome"] == "silent"),
+            "the publisher refuses this register's reader": sum(
+                1 for l in lines if l["outcome_frozen"] == "unread"
+                and l["unread_reason"].startswith("the publisher refuses")),
+            "no owner domain is known for this entry": sum(
+                1 for l in lines if l["outcome_frozen"] == "unread"
+                and l["unread_reason"].startswith("no owner domain")),
+        },
+        "silent_by_kind_of_page_that_answered": dict(Counter(
+            l["silent_page_kinds"] for l in lines if l["outcome"] == "silent")),
+        # THE TWO RESTRICTED TABLES. `pending` cannot be assessed -- a date that has not
+        # arrived says nothing about a project -- so the informative subset drops it and
+        # the covered subset drops the entries this register could not read.
+        "rungs_cleared_against_outcome_covered_only": crosstab(
+            [l for l in lines if l["coverage"].startswith("owner or permit document")],
+            "rungs_cleared_as_of", "outcome"),
+        "rungs_cleared_against_outcome_informative": crosstab(
+            [l for l in lines if informative(l)], "rungs_cleared_as_of", "outcome"),
+        "informative_subset_size": sum(1 for l in lines if informative(l)),
+        "claims_by_a_speaker_other_than_the_owner": [
+            {"iea_ref": l["iea_ref"], "name": l["name"], "kind": l["claim_kind"],
+             "speaker": l["claim_speaker"], "speaker_name": l["claim_speaker_name"],
+             "date": l["claim_date"], "outcome": l["outcome"],
+             "verbatim": l["claim_verbatim"], "source": l["claim_source"]}
+            for l in lines if l["claim_kind"] and l["claim_speaker"] != "owner"],
+        "operation_rests_only_on_a_claim": [
+            l["iea_ref"] for l in lines if l["operation_rests_only_on_a_claim"] == "yes"],
         "each_rung_against_outcome": per_rung,
         "status_2023_against_outcome": crosstab(lines, "status_2023_vintage", "outcome"),
         "rungs_cleared_against_dropped_from_benchmark":
@@ -699,8 +782,32 @@ def main() -> int:
     print(render({k: {"covered": v["covered"], "total": v["total"]}
                   for k, v in c["by_capacity_band"].items()}, "band", ["covered"]))
     live = [o for o in OUTCOMES if any(l["outcome"] == o for l in lines)]
+    frozen_live = [o for o in FROZEN_OUTCOME_VALUES
+                   if any(l["outcome_frozen"] == o for l in lines)]
+    d = s["outcome_distribution"]
+    print("\nTHE OUTCOME UNDER THE FROZEN DEFINITIONS AND UNDER THE AMENDED ONES\n")
+    print(f"  {'value':12} {'frozen (58ce11f)':>18} {'amended (e062b50)':>18}")
+    print("  " + "-" * 50)
+    for v in OUTCOMES:
+        if not (d["frozen"].get(v) or d["amended"].get(v)):
+            continue
+        print(f"  {v:12} {d['frozen'].get(v, 0):>18} {d['amended'].get(v, 0):>18}")
+    print(f"  {'total':12} {sum(d['frozen'].values()):>18} "
+          f"{sum(d['amended'].values()):>18}")
+    print(f"\n  reclassified by the amendment: {d['reclassified']}")
+    b = s["the_frozen_unread_broken_down"]
+    print(f"\n  THE FROZEN TABLE'S {d['frozen'].get('unread', 0)} `unread`, BROKEN DOWN "
+          f"UNDER THE AMENDED RULES:")
+    for k, v in b.items():
+        print(f"    {v:>4}  {k}")
+    print(f"\n  silent, by the kind of page that answered:")
+    for k, v in sorted(s["silent_by_kind_of_page_that_answered"].items(),
+                       key=lambda x: -x[1]):
+        print(f"    {v:>4}  {k or '(none recorded)'}")
     print(f"\nRUNGS CLEARED AS OF {CUTOFF} AGAINST THE OUTCOME AS OF {ASSESSED_ON}\n")
     print(render(s["rungs_cleared_against_outcome"], "rungs", live))
+    print(f"\nTHE SAME, UNDER THE DEFINITIONS FROZEN AT {FROZEN_OUTCOMES[:7]}\n")
+    print(render(s["rungs_cleared_against_outcome_frozen"], "rungs", frozen_live))
     print("\nEACH RUNG'S RESULT AGAINST THE OUTCOME\n")
     for r in L.RUNGS:
         print(f"  rung {L.RUNGS.index(r) + 1}, {r}")
@@ -711,6 +818,24 @@ def main() -> int:
     print("\nRUNGS CLEARED AGAINST LEAVING THE BENCHMARK\n")
     print(render(s["rungs_cleared_against_dropped_from_benchmark"], "rungs",
                  ["yes", "no"]))
+    print(f"\nRUNGS CLEARED AGAINST THE OUTCOME, THE 89 COVERED ENTRIES ONLY\n")
+    print(render(s["rungs_cleared_against_outcome_covered_only"], "rungs", live))
+    print(f"\nRUNGS CLEARED AGAINST THE OUTCOME, THE INFORMATIVE SUBSET "
+          f"({s['informative_subset_size']} entries whose\nannounced start is on or "
+          f"before {ASSESSED_ON}, so `pending` is not in it)\n")
+    print(render(s["rungs_cleared_against_outcome_informative"], "rungs", live))
+    cl = s["claims_by_a_speaker_other_than_the_owner"]
+    print(f"\nOPERATION, FID OR CONSTRUCTION STATED BY A SPEAKER OTHER THAN THE OWNER "
+          f"({len(cl)})\n")
+    for c in cl:
+        print(f"  ref {c['iea_ref']:>5}  {c['kind']:11} {c['speaker']:12} "
+              f"{c['speaker_name'][:22]:24} {c['date']}  outcome {c['outcome']}")
+        print(f"          {c['verbatim'][:150]}")
+    only = s["operation_rests_only_on_a_claim"]
+    print(f"\n  ENTRIES WHOSE OPERATION RESTS ONLY ON SUCH A CLAIM: {len(only)}"
+          + (f" — ref {', '.join(only)}" if only else ""))
+    print(f"  The test counts owner statements. This is the count of plants that may be "
+          f"running\n  and whose owners have not told this register so.")
     o = s["outcome_of_covered_against_uncovered"]
     print("\nTHE OUTCOME OF COVERED ENTRIES AGAINST UNCOVERED ONES\n")
     print(render({"covered": dict(o["covered"], total=sum(o["covered"].values())),

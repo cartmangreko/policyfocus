@@ -61,6 +61,45 @@
    "committed": 6,
    "delayed": 5,
    "pending": 17,
+   "silent": 18,
+   "unread": 130,
+   "total": 176
+  },
+  "1": {
+   "committed": 4,
+   "delayed": 3,
+   "pending": 15,
+   "silent": 1,
+   "unread": 5,
+   "total": 28
+  },
+  "2": {
+   "committed": 1,
+   "delayed": 8,
+   "pending": 12,
+   "silent": 3,
+   "stopped": 1,
+   "unread": 2,
+   "total": 27
+  },
+  "3": {
+   "committed": 1,
+   "delayed": 5,
+   "pending": 8,
+   "silent": 6,
+   "total": 20
+  },
+  "4": {
+   "committed": 2,
+   "delayed": 2,
+   "total": 4
+  }
+ },
+ "rungs_cleared_against_outcome_frozen": {
+  "0": {
+   "committed": 6,
+   "delayed": 5,
+   "pending": 17,
    "unread": 148,
    "total": 176
   },
@@ -92,6 +131,168 @@
    "total": 4
   }
  },
+ "outcome_frozen_against_amended": {
+  "committed": {
+   "committed": 14,
+   "total": 14
+  },
+  "delayed": {
+   "delayed": 23,
+   "silent": 2,
+   "total": 25
+  },
+  "pending": {
+   "pending": 52,
+   "silent": 4,
+   "total": 56
+  },
+  "stopped": {
+   "stopped": 1,
+   "total": 1
+  },
+  "unread": {
+   "silent": 22,
+   "unread": 137,
+   "total": 159
+  }
+ },
+ "outcome_distribution": {
+  "frozen": {
+   "unread": 159,
+   "pending": 56,
+   "delayed": 25,
+   "committed": 14,
+   "stopped": 1
+  },
+  "amended": {
+   "unread": 137,
+   "pending": 52,
+   "delayed": 23,
+   "committed": 14,
+   "silent": 28,
+   "stopped": 1
+  },
+  "reclassified": 28
+ },
+ "the_frozen_unread_broken_down": {
+  "readable and silent": 22,
+  "the publisher refuses this register's reader": 35,
+  "no owner domain is known for this entry": 102
+ },
+ "silent_by_kind_of_page_that_answered": {
+  "iea_reference": 2,
+  "host_newsroom, iea_reference": 11,
+  "host_newsroom": 15
+ },
+ "rungs_cleared_against_outcome_covered_only": {
+  "0": {
+   "delayed": 2,
+   "pending": 5,
+   "unread": 7,
+   "total": 14
+  },
+  "1": {
+   "committed": 2,
+   "delayed": 1,
+   "pending": 15,
+   "silent": 1,
+   "unread": 5,
+   "total": 24
+  },
+  "2": {
+   "committed": 1,
+   "delayed": 8,
+   "pending": 12,
+   "silent": 3,
+   "stopped": 1,
+   "unread": 2,
+   "total": 27
+  },
+  "3": {
+   "committed": 1,
+   "delayed": 5,
+   "pending": 8,
+   "silent": 6,
+   "total": 20
+  },
+  "4": {
+   "committed": 2,
+   "delayed": 2,
+   "total": 4
+  }
+ },
+ "rungs_cleared_against_outcome_informative": {
+  "0": {
+   "committed": 4,
+   "delayed": 5,
+   "silent": 8,
+   "unread": 39,
+   "total": 56
+  },
+  "1": {
+   "committed": 3,
+   "delayed": 3,
+   "silent": 1,
+   "unread": 1,
+   "total": 8
+  },
+  "2": {
+   "committed": 1,
+   "delayed": 8,
+   "silent": 1,
+   "total": 10
+  },
+  "3": {
+   "committed": 1,
+   "delayed": 5,
+   "silent": 2,
+   "total": 8
+  },
+  "4": {
+   "committed": 2,
+   "delayed": 2,
+   "total": 4
+  }
+ },
+ "informative_subset_size": 86,
+ "claims_by_a_speaker_other_than_the_owner": [
+  {
+   "iea_ref": "552",
+   "name": "Gigastack-Hornsea 2, phase I",
+   "kind": "stop",
+   "speaker": "trade press",
+   "speaker_name": "Offshore Energy",
+   "date": "2023-09-27",
+   "outcome": "delayed",
+   "verbatim": "Orsted and Phillips 66 have now halted their Gigastack project",
+   "source": "https://web.archive.org/web/20230927095744/https://www.offshore-energy.biz/two-offshore-wind-to-hydrogen-projects-withdraw-from-uks-first-electrolytic-allocation-round/"
+  },
+  {
+   "iea_ref": "1374",
+   "name": "Gigastack-Hornsea 2, phase II",
+   "kind": "stop",
+   "speaker": "trade press",
+   "speaker_name": "Offshore Energy",
+   "date": "2023-09-27",
+   "outcome": "pending",
+   "verbatim": "Orsted and Phillips 66 have now halted their Gigastack project",
+   "source": "https://web.archive.org/web/20230927095744/https://www.offshore-energy.biz/two-offshore-wind-to-hydrogen-projects-withdraw-from-uks-first-electrolytic-allocation-round/"
+  },
+  {
+   "iea_ref": "2029",
+   "name": "Energie Steiermark plant in Styrua, expansion",
+   "kind": "operation",
+   "speaker": "trade press",
+   "speaker_name": "Renewables Now",
+   "date": "2023-09-27",
+   "outcome": "unread",
+   "verbatim": "Austria's first green hydrogen production plant goes live. Austria's first green hydrogen production site has commenced operations in Styria, marking the beginning of a comprehensive plan to expand the electrolysis capacity in the mountainous province to over 150 MW",
+   "source": "https://web.archive.org/web/20230927000000/https://renewablesnow.com/news/austrias-first-green-hydrogen-production-plant-goes-live/"
+  }
+ ],
+ "operation_rests_only_on_a_claim": [
+  "2029"
+ ],
  "each_rung_against_outcome": {
   "site": {
    "fail": {
@@ -101,59 +302,65 @@
     "total": 19
    },
    "not_searched": {
-    "unread": 141,
+    "unread": 123,
     "committed": 8,
     "delayed": 5,
     "pending": 12,
+    "silent": 18,
     "total": 166
    },
    "pass": {
-    "pending": 34,
-    "unread": 11,
-    "delayed": 18,
+    "pending": 30,
+    "unread": 7,
+    "delayed": 16,
     "committed": 6,
+    "silent": 10,
     "stopped": 1,
     "total": 70
    }
   },
   "capacity": {
    "fail": {
-    "delayed": 6,
-    "unread": 15,
+    "delayed": 5,
+    "unread": 14,
     "pending": 22,
     "stopped": 1,
+    "silent": 2,
     "committed": 2,
     "total": 46
    },
    "not_searched": {
-    "unread": 141,
+    "unread": 123,
     "committed": 8,
     "delayed": 5,
     "pending": 12,
+    "silent": 18,
     "total": 166
    },
    "pass": {
-    "pending": 22,
-    "delayed": 14,
+    "pending": 18,
+    "delayed": 13,
     "committed": 4,
-    "unread": 3,
+    "silent": 8,
     "total": 43
    }
   },
   "fid": {
    "fail": {
-    "pending": 44,
-    "delayed": 20,
-    "unread": 18,
+    "pending": 40,
+    "delayed": 18,
+    "unread": 14,
+    "silent": 10,
     "committed": 4,
     "stopped": 1,
     "total": 87
    },
    "not_searched": {
-    "unread": 141,
+    "unread": 123,
     "committed": 8,
     "delayed": 5,
     "pending": 12,
+    "silent": 18,
     "total": 166
    },
    "pass": {
@@ -163,10 +370,11 @@
   },
   "funding": {
    "not_searched": {
-    "unread": 159,
-    "pending": 56,
-    "delayed": 22,
+    "unread": 137,
+    "pending": 52,
+    "delayed": 20,
     "committed": 12,
+    "silent": 28,
     "stopped": 1,
     "total": 250
    },
@@ -178,42 +386,47 @@
   },
   "start": {
    "fail": {
-    "pending": 26,
-    "delayed": 10,
-    "unread": 13,
+    "pending": 25,
+    "delayed": 9,
+    "unread": 12,
+    "silent": 3,
     "committed": 3,
     "total": 52
    },
    "not_searched": {
-    "unread": 141,
+    "unread": 123,
     "committed": 8,
     "delayed": 5,
     "pending": 12,
+    "silent": 18,
     "total": 166
    },
    "pass": {
-    "delayed": 10,
+    "delayed": 9,
     "committed": 3,
-    "unread": 5,
+    "silent": 7,
+    "unread": 2,
     "stopped": 1,
-    "pending": 18,
+    "pending": 15,
     "total": 37
    }
   },
   "input": {
    "fail": {
-    "pending": 27,
-    "delayed": 12,
-    "unread": 18,
+    "pending": 23,
+    "delayed": 10,
+    "unread": 14,
     "committed": 1,
+    "silent": 10,
     "stopped": 1,
     "total": 59
    },
    "not_searched": {
-    "unread": 141,
+    "unread": 123,
     "delayed": 12,
     "pending": 29,
     "committed": 13,
+    "silent": 18,
     "total": 195
    },
    "pass": {
@@ -225,9 +438,10 @@
  "status_2023_against_outcome": {
   "Concept": {
    "committed": 4,
-   "delayed": 2,
-   "pending": 23,
-   "unread": 76,
+   "delayed": 1,
+   "pending": 19,
+   "silent": 11,
+   "unread": 70,
    "total": 105
   },
   "FID/Construction": {
@@ -238,10 +452,11 @@
   },
   "Feasibility study": {
    "committed": 7,
-   "delayed": 20,
+   "delayed": 19,
    "pending": 32,
+   "silent": 17,
    "stopped": 1,
-   "unread": 81,
+   "unread": 65,
    "total": 141
   },
   "Other/Unknown": {
@@ -280,17 +495,19 @@
  },
  "outcome_of_covered_against_uncovered": {
   "covered": {
-   "pending": 44,
-   "delayed": 20,
-   "unread": 18,
+   "pending": 40,
+   "delayed": 18,
+   "unread": 14,
    "committed": 6,
+   "silent": 10,
    "stopped": 1
   },
   "uncovered": {
-   "unread": 141,
+   "unread": 123,
    "committed": 8,
    "delayed": 5,
-   "pending": 12
+   "pending": 12,
+   "silent": 18
   },
   "_comment": "SELECTION FROM ARCHIVE COVERAGE, PUT WHERE IT CAN BE SEEN. Whether an entry has an owner's document on file from before the cut-off is a fact about the archive and about this register's reading, not about the project. If the two columns have different outcome distributions then the rungs are being scored on a selected part of the population, and any statement about the instrument has to carry that."
  },

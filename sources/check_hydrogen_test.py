@@ -17,8 +17,10 @@ WHAT IT CHECKS, AND WHY EACH CHECK IS HERE RATHER THAN IN A READING.
   AND A PASS OR A FAIL IS DATED AT OR BEFORE THE CUT-OFF, which is D-B11 made mechanical.
   A `not_searched` cell is exempt because it cites the too-new document that made it one.
 
-  EVERY OUTCOME IS ONE OF THE SIX FROZEN VALUES AND CARRIES A SPEAKER, A SOURCE AND A
-  DATE unless it is `unread` -- because `unread` is the value whose whole content is that
+  EVERY OUTCOME IS ONE OF THE SEVEN AMENDED VALUES -- and the frozen column beside it is
+  still one of the six, because D-C13 keeps both. An outcome CARRIES A SPEAKER, A SOURCE
+  AND A DATE unless it is `unread` or `silent`; `silent` carries the host that answered and
+  the pages read, and `unread` carries which of the two narrowed reasons it rests on -- because `unread` is the value whose whole content is that
   there is no document. `not_read_yet` is refused: it is the builder's placeholder for an
   entry nobody has read, and a committed table full of them would publish a test that was
   never run.
@@ -52,7 +54,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_hydrogen_test as T  # noqa: E402
 import build_ladder as L  # noqa: E402
 
-OUTCOMES = ("operating", "committed", "pending", "delayed", "stopped", "unread")
+OUTCOMES = ("operating", "committed", "pending", "delayed", "stopped", "silent", "unread")
+FROZEN_OUTCOMES_VALUES = ("operating", "committed", "pending", "delayed", "stopped",
+                          "unread")
+UNREAD_REASONS = ("the publisher refuses this register's reader",
+                  "no owner domain is known for this entry")
 SNAPSHOT = L.ROOT / "sources" / "benchmark_snapshots.json"
 VINTAGE_FILE = "ou_quality_checked_2023.xlsx"
 
@@ -137,15 +143,41 @@ def main() -> int:
                 bad.append(f"ref {l['iea_ref']} rung {r}: {res} on a document dated "
                            f"{l[f'{r}_date']}, after the {T.CUTOFF} cut-off")
 
-    # 3. EVERY OUTCOME.
+    # 3. EVERY OUTCOME, UNDER BOTH RULE SETS.
+    #    The amended column takes seven values and the frozen column still takes six: the
+    #    freeze is only worth having if what it produced survives in a column a reader can
+    #    quote, so the gate holds both to their own vocabularies (D-C13).
     for l in lines:
         o = l["outcome"]
         if o not in OUTCOMES:
-            bad.append(f"ref {l['iea_ref']}: outcome {o!r} is not one of the six frozen "
-                       f"values")
+            bad.append(f"ref {l['iea_ref']}: outcome {o!r} is not one of the seven "
+                       f"amended values")
+            continue
+        if l["outcome_frozen"] not in FROZEN_OUTCOMES_VALUES:
+            bad.append(f"ref {l['iea_ref']}: outcome_frozen "
+                       f"{l['outcome_frozen']!r} is not one of the six frozen values")
+        if o == "silent":
+            # SILENCE IS A CLAIM ABOUT WHAT WAS LOOKED AT, so the line names the host and
+            # lists the pages. A silent with no pages read is an assertion.
+            if not l["silent_host"].strip():
+                bad.append(f"ref {l['iea_ref']}: silent with no host named")
+            if not l["silent_pages_read"].strip():
+                bad.append(f"ref {l['iea_ref']}: silent with no pages listed — the class "
+                           f"is a statement about what answered, and without the pages it "
+                           f"is an assertion")
+            if l["outcome_frozen"] not in ("unread", "delayed", "pending"):
+                bad.append(f"ref {l['iea_ref']}: silent came from "
+                           f"{l['outcome_frozen']!r} under the frozen rules, which the "
+                           f"amendment does not reclassify")
             continue
         if o == "unread":
+            if l["unread_reason"] not in UNREAD_REASONS:
+                bad.append(f"ref {l['iea_ref']}: unread with reason "
+                           f"{l['unread_reason']!r}; the amendment names two and requires "
+                           f"one of them")
             continue
+        if l["silent_pages_read"].strip():
+            bad.append(f"ref {l['iea_ref']}: outcome {o} carries silent pages")
         for f in ("outcome_speaker", "outcome_source", "outcome_date"):
             if not l[f].strip():
                 bad.append(f"ref {l['iea_ref']}: outcome {o} with no {f[8:]}")
@@ -240,10 +272,14 @@ def main() -> int:
         if len(bad) > 40:
             print(f"  ... and {len(bad) - 40} more")
         return 1
+    sil = sum(1 for l in lines if l["outcome"] == "silent")
+    unr = sum(1 for l in lines if l["outcome"] == "unread")
     print(f"check_hydrogen_test: {len(lines)} lines, every rung cell sourced and dated "
-          f"at or before {T.CUTOFF},\n  every outcome one of the six frozen values, the "
-          f"two computable ones recomputed,\n  summary equal to the csv. Population "
-          f"{mode}.")
+          f"at or before {T.CUTOFF};\n  every outcome one of the seven amended values "
+          f"and every frozen outcome one of the six;\n  {sil} silent, each naming the "
+          f"host and the pages that answered; {unr} unread, each on one of\n  the two "
+          f"narrowed reasons; the two computable classes recomputed; summary equal to\n"
+          f"  the csv. Population {mode}.")
     return 0
 
 
