@@ -75,15 +75,25 @@ def snapshot_population():
     return None
 
 
-def vintage_cached() -> bool:
-    """Is the workbook on this machine, AND is it the file the snapshot names?"""
+def derived_population():
+    """The materialised population: its count and the workbooks it was read from.
+
+    THE GATE OPENS NO WORKBOOK. It reads the tracked derived file, and checks that the
+    sha256 recorded INSIDE it is the one benchmark_snapshots.json pins -- which answers
+    the question the old workbook recount was asking, "were these rows read from the
+    file we think", without needing the bytes or openpyxl. See scope.md, "A build-time
+    gate reads tracked files only".
+    """
+    path = T.t23.POPULATION_OUT
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def snapshot_sha() -> str | None:
     doc = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
-    want = next((s.get("sha256") for s in doc["snapshots"]
+    return next((s.get("sha256") for s in doc["snapshots"]
                  if s.get("file") == VINTAGE_FILE), None)
-    path = T.t23.VINTAGE
-    if not path.exists() or not want:
-        return False
-    return hashlib.sha256(path.read_bytes()).hexdigest() == want
 
 
 def main() -> int:
@@ -96,23 +106,32 @@ def main() -> int:
     summary = json.loads(T.JSON_OUT.read_text(encoding="utf-8"))
     bad = []
 
-    # 1. THE POPULATION.
+    # 1. THE POPULATION, FROM THE TRACKED DERIVED FILE AND NOTHING ELSE.
     recorded = snapshot_population()
-    if vintage_cached():
-        want = len(T.t23.population())
-        mode = "recounted from the cached October 2023 workbook"
+    derived = derived_population()
+    if derived is None:
+        want, mode = None, "not reconcilable"
+        bad.append(f"{T.t23.POPULATION_OUT.name} is missing. It is a tracked derived "
+                   f"file; run build_hydrogen_test.py on a machine with the workbooks")
+    else:
+        want = derived.get("entries_count")
+        mode = "read from the tracked derived population"
+        if want != len(derived.get("entries") or []):
+            bad.append(f"the derived population says {want} entries and carries "
+                       f"{len(derived.get('entries') or [])}")
+        # THE DERIVATION'S IDENTITY. The rows travel with the hash of the workbook they
+        # were read from, so a derived file built from some other copy is caught here
+        # rather than silently becoming the population.
+        want_sha, got = snapshot_sha(), derived.get("sources") or []
+        if want_sha and not any(s.get("sha256") == want_sha for s in got):
+            bad.append(f"the derived population was built from "
+                       f"{', '.join(s.get('file', '?') for s in got) or 'nothing'}, "
+                       f"whose sha256 is not the one benchmark_snapshots.json pins for "
+                       f"{VINTAGE_FILE}")
         if recorded is not None and want != recorded:
-            bad.append(f"the cached workbook yields {want} entries at or above 100 MW; "
+            bad.append(f"the derived population carries {want} entries; "
                        f"benchmark_snapshots.json records {recorded} for the file its "
                        f"sha256 identifies")
-    elif recorded is not None:
-        want = recorded
-        mode = ("reconciled against benchmark_snapshots.json; the workbook is not cached, "
-                "so membership is unchecked")
-    else:
-        want, mode = None, "not reconcilable"
-        bad.append("no 100 MW population recorded on the 2023 snapshot and no cached "
-                   "workbook to recount: the population cannot be reconciled")
     if want is not None and len(lines) != want:
         bad.append(f"the table has {len(lines)} lines against a population of {want}")
     refs = [l["iea_ref"] for l in lines]

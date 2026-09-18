@@ -2473,3 +2473,61 @@ line survived three readings because nothing recomputed it.
 **Where scoring a rung reveals a fact a row lacks** — an owner-stated start date not yet on
 the row — **it is printed as a queue item and not written**. The ladder reads the register;
 it does not edit it.
+
+## A build-time gate reads tracked files only
+
+**Anything wired into `npm run build` — prebuild, build or postbuild — may read only
+files that are committed to the repository.** It may not import a package outside the
+build image, open a gitignored cache body, or reach the network for something it needs to
+pass. A step that needs any of those runs in the **local pre-push chain** instead, where
+the machine that has those things is the one running it.
+
+**The split is by what a step NEEDS, not by what it checks.** This is the distinction that
+was missed: `check_hydrogen_test.py` is a perfectly good gate, and it belonged in the
+prebuild chain by every argument about what it verifies. It read the Odenweller workbooks
+through `hydrogen_test_2023.population()`, and Vercel has neither `openpyxl` nor the
+gitignored bytes. **It passed on every developer machine and failed the production build at
+`d96903a`** — the worst shape a gate can have, because the machines that run it most often
+are the ones that cannot fail it.
+
+### The remedy is to materialise, not to skip
+
+**A gate that quietly skips when its inputs are missing is not a gate on the build server;
+it is a gate nowhere.** So the workbook is read **once, locally**, and what the gate needs
+is written into a **tracked derived file** — `sources/hydrogen_test_2023_population.json`,
+the 255 entries of the October 2023 vintage.
+
+**The derived file carries the sha256 of every workbook it was read from.** The bytes are
+Odenweller and Ueckerdt's and are not redistributable; the hash is, and it is what lets a
+reader fetch the same workbook from the authors and prove it is the one those rows came
+from. The gate checks that recorded hash against the one `benchmark_snapshots.json` pins,
+which answers the question the old workbook recount was asking — *were these rows read from
+the file we think* — without the bytes or the package.
+
+**Written when the workbooks are present, left untouched when they are not.** A machine
+without them never rewrites the tracked file and never writes an empty one over it.
+
+### A derived file needs something that checks it
+
+Materialising removes the workbook from the build, **and with it the only thing that was
+comparing those rows to their source**. A derived file nothing verifies drifts: a row is
+edited by hand, or rebuilt from a different copy, and every gate downstream keeps passing
+because they all read the same wrong file.
+
+**So the comparison moves rather than disappearing.** `check_hydrogen_workbook.py` runs in
+the pre-push chain, recomputes the population from the workbook and compares it **entry by
+entry, not by count** — a count matches while every row is wrong. On a machine without the
+workbooks it says so and passes, because a contributor who does not hold them is still
+entitled to push.
+
+### Where each one runs
+
+| needs | runs in |
+|---|---|
+| tracked files only | `npm run build` — prebuild/postbuild, so Vercel runs it too |
+| `openpyxl`, a gitignored cache body, a workbook | the pre-push hook, local only |
+
+**The network is the one deliberate exception**, and it is named rather than assumed:
+`check_links` reaches publishers from the prebuild chain because a link that 403s is the
+thing it exists to catch, and the build image has network. Nothing else in the chain may
+depend on a fetch succeeding.

@@ -1,0 +1,5284 @@
+{
+ "_comment": [
+  "THE OCTOBER 2023 POPULATION, MATERIALISED FROM THE WORKBOOK. Derived and",
+  "tracked: written by build_hydrogen_test.py where the workbooks are on the",
+  "machine, read by everything else.",
+  "",
+  "WHY IT EXISTS. The workbooks are gitignored, being Odenweller and",
+  "Ueckerdt's bytes, and openpyxl is not installed in the build image. The",
+  "production build failed at d96903a because check_hydrogen_test.py read",
+  "them through this module. A build-time gate reads tracked files only;",
+  "anything needing openpyxl or a cache body runs in the local pre-push",
+  "chain. See scope.md.",
+  "",
+  "`sources` below is the identity of the workbooks these rows came from.",
+  "The bytes are not redistributable; the hash is, and it is what makes the",
+  "derivation checkable. check_hydrogen_workbook.py, which runs locally and",
+  "never in the build, recomputes these rows and refuses a mismatch."
+ ],
+ "entries_count": 255,
+ "sources": [
+  {
+   "file": "IEA_Hydrogen_Projects_Database_2023_quality_checked.xlsx",
+   "bytes": 975026,
+   "sha256": "bb9d3aba38738a5c5864c145469b658c4f274a3b6e2697f52fc7a5dccec71345"
+  }
+ ],
+ "entries": [
+  {
+   "ref": "1",
+   "name": "Solar PV Plant port of Sines (Phase 1)",
+   "country": "PRT",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1368"
+   ],
+   "iea_references": [
+    "http://h2est.ee/wp-content/uploads/2021/07/8_NeptHyne_from-Innovation-to-International-Cooperation_Tomasz-Pelc.pdf"
+   ],
+   "quality_check_reference_numbers": [
+    "170"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.edp.com/en/news/renewable-hydrogen-production-sines-advances-through-greenh2atlantic-project",
+     "reference_date": "2021-12-21",
+     "date_checked": "2024-07-26",
+     "comment": "100 MW operational in 2025, add phase (ref 1)",
+     "number": "170"
+    }
+   ]
+  },
+  {
+   "ref": "5",
+   "name": "NortH2, phase 1",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "4GW",
+   "capacity_mwel": 4000.0,
+   "capacity_kth2y": 693.0133333333333,
+   "iea_reference_numbers": [
+    "379"
+   ],
+   "iea_references": [
+    "https://www.gasunie.nl/en/news/europes-largest-green-hydrogen-project-starts-in-groningen"
+   ],
+   "quality_check_reference_numbers": [
+    "86"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://oci-global.com/news-stories/press-releases/oci-partners-with-north2-with-the-intent-to-develop-the-first-large-scale-green-ammonia-and-methanol-value-chains-in-the-netherlands/",
+     "reference_date": "2022-03-31",
+     "date_checked": "2024-07-25",
+     "comment": "4 GW by 2030",
+     "number": "86"
+    }
+   ]
+  },
+  {
+   "ref": "9",
+   "name": "HYBRIT demo",
+   "country": "SWE",
+   "status_2023_vintage": "FID/Construction",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "500 MW - 1.3 Mt DRI",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 84.74347826086957,
+   "iea_reference_numbers": [
+    "299",
+    "340",
+    "1108"
+   ],
+   "iea_references": [
+    "http://www.hybritdevelopment.com/articles/three-hybrit-pilot-projects",
+    "https://group.vattenfall.com/press-and-media/news--press-releases/pressreleases/2019/hybrit-sek-200-million-invested-in-pilot-plant-for-storage-of-fossil-free-hydrogen-in-lulea",
+    "https://ec.europa.eu/clima/system/files/2021-11/policy_funding_innovation-fund_large-scale_successful_projects_en.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "14",
+   "name": "CRI project in Norway",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100000 t MeOH/y production",
+   "capacity_mwel": 193.73975297530532,
+   "capacity_kth2y": 33.56605800214823,
+   "iea_reference_numbers": [
+    "413"
+   ],
+   "iea_references": [
+    "https://www.co2value.eu/wp-content/uploads/2019/09/2.-CRI.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "130",
+   "name": "GreenHydroChem Central German Chemical Triangle",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2024",
+   "technology": "PEM",
+   "announced_size": "120MW",
+   "capacity_mwel": 120.0,
+   "capacity_kth2y": 17.991692307692308,
+   "iea_reference_numbers": [
+    "473"
+   ],
+   "iea_references": [
+    "BNEF - Hydrogen Economy Outlook"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "508",
+   "name": "Iberdrola - Puertollano II (extension from Ref10)",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "210MW (in addition to the 20MW included in Ref 10)",
+   "capacity_mwel": 210.0,
+   "capacity_kth2y": 36.38320000000001,
+   "iea_reference_numbers": [
+    "620",
+    "631"
+   ],
+   "iea_references": [
+    "https://www.iberdrola.com/press-room/news/detail/iberdrola-fertiberia-place-spain-forefront-green-hydrogen-europe-with-1-8-billion-investment-projected-2027",
+    "Presentation of Iberdola in the Chilean Hydrogen Summit, 4 Nov 2020"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "519",
+   "name": "FUTURECEM",
+   "country": "DNK",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "532",
+   "name": "Høst - Esbjerg green ammonia plant",
+   "country": "DNK",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 173.25333333333333,
+   "iea_reference_numbers": [
+    "734"
+   ],
+   "iea_references": [
+    "https://renews.biz/66655/cip-unveils-plans-for-esbjerg-green-ammonia-plant/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "552",
+   "name": "Gigastack-Hornsea 2, phase I",
+   "country": "GBR",
+   "status_2023_vintage": "Other/Unknown",
+   "date_online_2023_vintage": "2025",
+   "technology": "PEM",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 14.993076923076922,
+   "iea_reference_numbers": [
+    "492",
+    "1124"
+   ],
+   "iea_references": [
+    "https://www.greencarcongress.com/2020/02/20200219-gigastack.html",
+    "https://fuelcellsworks.com/news/humber-green-hydrogen-gigastack-project-one-step-closer-to-renewable-hydrogen-at-industrial-scale-as-phase-2-concludes/?mc_cid=57729a593d&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "565",
+   "name": "Green Fuels for Denmark - Phase 3",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "250MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "512",
+    "515",
+    "1258"
+   ],
+   "iea_references": [
+    "https://www.ft.com/content/6d2c8d8a-a767-4e41-b0f9-3237dd711597?accessToken=zwAAAXJQhZAwkc9tLI2Kp2dOQdOw-TI33XEVlw.MEQCIFbbu4ednBgMr7ty8-leTb2ABXr6ZWZO8f7qIQdh2DBuAiArmcOs7I_iwQsuldRZyPtKHW3QuEPTIdd6OeJ-6prMfQ&sharetype=gift?token=ceb073f4-fef6-4d9f-8f7c-555db5cefb96",
+    "https://www.greentechmedia.com/articles/read/orsted-to-power-decarbonization-hub-for-land-sea-and-air-transport?utm_medium=email&utm_source=Daily&utm_campaign=GTMDaily",
+    "https://fuelcellsworks.com/news/partnership-behind-green-fuels-for-denmark-accelerates-project-and-investigates-production-of-green-jet-fuel-by-2025/?mc_cid=d03ba51fd9&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "573",
+   "name": "Westkuste 100 (Phase 2)",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "ALK",
+   "announced_size": "700MW",
+   "capacity_mwel": 670.0,
+   "capacity_kth2y": 113.55626086956522,
+   "iea_reference_numbers": [
+    "580"
+   ],
+   "iea_references": [
+    "Presentation Thyssen"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "580",
+   "name": "Centurion",
+   "country": "GBR",
+   "status_2023_vintage": "Other/Unknown",
+   "date_online_2023_vintage": "",
+   "technology": "PEM",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 14.993076923076922,
+   "iea_reference_numbers": [
+    "232",
+    "473"
+   ],
+   "iea_references": [
+    "https://reneweconomy.com.au/neoen-plans-worlds-biggest-solar-wind-powered-hydrogen-hub-in-s-a-53674/",
+    "BNEF - Hydrogen Economy Outlook"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "595",
+   "name": "HyNetherlands, 1st phase",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2024",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "275",
+    "630",
+    "920",
+    "1662"
+   ],
+   "iea_references": [
+    "https://www.e-bridge.com/wp-content/uploads/2019/04/reNEWS_April-2019.pdf",
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "596",
+   "name": "HyNetherlands 2nd phase",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "1000MW",
+   "capacity_mwel": 900.0,
+   "capacity_kth2y": 155.928,
+   "iea_reference_numbers": [
+    "275",
+    "630"
+   ],
+   "iea_references": [
+    "https://www.e-bridge.com/wp-content/uploads/2019/04/reNEWS_April-2019.pdf",
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "598",
+   "name": "HyGreen Provence (Phase 2)",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "130MW",
+   "capacity_mwel": 129.0,
+   "capacity_kth2y": 22.34968,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "599",
+   "name": "HyGreen Provence (Phase 3)",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "470MW",
+   "capacity_mwel": 340.0,
+   "capacity_kth2y": 58.90613333333334,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "601",
+   "name": "Port of Rotterdam BP refinery - H2-Fifty",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "250MW",
+   "capacity_mwel": 250.0,
+   "capacity_kth2y": 43.31333333333333,
+   "iea_reference_numbers": [
+    "266",
+    "630"
+   ],
+   "iea_references": [
+    "https://thewest.com.au/business/energy/yara-aims-to-move-wa-into-green-hydrogen-ng-b881106808z",
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "605",
+   "name": "Green Crane Pais Vasco Hub",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "150MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "319"
+   ],
+   "iea_references": [
+    "https://static1.squarespace.com/static/5d3f0387728026000121b2a2/t/5d9f24f459c7f056aca5a74f/1570710781671/4.A+Green+Spider+project.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "622",
+   "name": "Lingen Green Hydrogen (LGH2) Phase 1",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "272",
+    "638"
+   ],
+   "iea_references": [
+    "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwjE9qOVw_fhAhWD4YUKHXbAA1EQFjAAegQIAhAC&url=https%3A%2F%2Fwww.uniper.energy%2Fnews%2Fdownload%2F702078%2F20190425-jointpressrelease-uniper-realworld-laboratory-lingen-en-980949.pdf&usg=AOvVaw3QdBzSn7YcCG2garMnL725",
+    "https://www.wsj.com/articles/bp-steps-up-green-drive-with-hydrogen-deal-11605009520#:~:text=Under%20the%20deal%20announced%20Tuesday,Lingen%20refinery%20in%20northwest%20Germany.&text=Royal%20Dutch%20Shell%20PLC%20plans,refinery%20in%20Germany%20by%202030."
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "771",
+   "name": "Holland Hydrogen - phase 1",
+   "country": "NLD",
+   "status_2023_vintage": "FID/Construction",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 33.89739130434782,
+   "iea_reference_numbers": [
+    "505",
+    "920",
+    "968",
+    "1219",
+    "1435",
+    "1437"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/shell-wants-to-create-a-green-hydrogen-hub-in-the-port-of-rotterdam/",
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+    "https://www.worley.com/news-and-media/2021/contract-to-help-create-green-hydrogen-factory",
+    "https://www.ijglobal.com/articles/161019/shells-mandates-for-dutch-electrolyser",
+    "https://www.shell.nl/media/nieuwsberichten/2022/holland-hydrogen-1.html",
+    "https://ec.europa.eu/clima/document/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en"
+   ],
+   "quality_check_reference_numbers": [
+    "166"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://climate.ec.europa.eu/document/download/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en?filename=LSC2_List_of_pre-selected_projects_6.pdf",
+     "reference_date": "2022-07-13",
+     "date_checked": "2024-08-09",
+     "comment": "200 MW by 2025, 400 MW by 2027",
+     "number": "166"
+    }
+   ]
+  },
+  {
+   "ref": "776",
+   "name": "Iberdrola - Palos de la Frontera I",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "588",
+    "620",
+    "631"
+   ],
+   "iea_references": [
+    "https://sevilla.abc.es/economia/sevi-iberdrola-invertira-1000-millones-huelva-planta-hidrogeno-202009301424_noticia.html",
+    "https://www.iberdrola.com/press-room/news/detail/iberdrola-fertiberia-place-spain-forefront-green-hydrogen-europe-with-1-8-billion-investment-projected-2027",
+    "Presentation of Iberdola in the Chilean Hydrogen Summit, 4 Nov 2020"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "783",
+   "name": "Iberdrola - Palos de la Frontera II",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "360MW (in addition to the 230MW included in Ref 776)",
+   "capacity_mwel": 360.0,
+   "capacity_kth2y": 62.3712,
+   "iea_reference_numbers": [
+    "620",
+    "631"
+   ],
+   "iea_references": [
+    "https://www.iberdrola.com/press-room/news/detail/iberdrola-fertiberia-place-spain-forefront-green-hydrogen-europe-with-1-8-billion-investment-projected-2027",
+    "Presentation of Iberdola in the Chilean Hydrogen Summit, 4 Nov 2020"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "807",
+   "name": "Normand’Hy - Air Liquide ",
+   "country": "FRA",
+   "status_2023_vintage": "FID/Construction",
+   "date_online_2023_vintage": "2025",
+   "technology": "PEM",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 29.986153846153844,
+   "iea_reference_numbers": [
+    "1668"
+   ],
+   "iea_references": [
+    "https://www.airliquide.com/stories/hydrogen/building-future-renewable-hydrogen-normandhy"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "808",
+   "name": "H2V 59, 1st phase",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "ALK",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 33.89739130434782,
+   "iea_reference_numbers": [
+    "304",
+    "131",
+    "715",
+    "1315"
+   ],
+   "iea_references": [
+    "http://h2vnormandy-concertation.net/comprendre-projet/",
+    "http://news.cision.com/nel-asa/r/nel-asa--enters-into-exclusive-nok-450-million-industrial-scale-power-to-gas-framework-agreement-wit,c2286835",
+    "https://fuelcellsworks.com/news/green-hydrogen-air-liquide-electrolysis-with-h2v/?mc_cid=97c6cd5d96&mc_eid=da4624d261",
+    "https://h2v.net/projet/projet-h2v-59/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "819",
+   "name": "H2ermes",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "226",
+    "366"
+   ],
+   "iea_references": [
+    "https://www.tennet.eu/news/detail/gasunie-tennet-and-thyssengas-reveal-detailed-green-sector-coupling-plans-using-power-to-gas-tec/",
+    "https://www.portofamsterdam.com/en/press-release/nouryon-tata-steel-and-port-amsterdam-partner-develop-largest-green-hydrogen-cluster"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "821",
+   "name": "H2V 59, 2nd phase",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2029",
+   "technology": "ALK",
+   "announced_size": "500MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 50.84608695652174,
+   "iea_reference_numbers": [
+    "305",
+    "131",
+    "1315"
+   ],
+   "iea_references": [
+    "http://h2v59-concertation.net/comprendre-projet/",
+    "http://news.cision.com/nel-asa/r/nel-asa--enters-into-exclusive-nok-450-million-industrial-scale-power-to-gas-framework-agreement-wit,c2286835",
+    "https://h2v.net/projet/projet-h2v-59/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "830",
+   "name": "Nemo Hydrogen Project",
+   "country": "GRC",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "833",
+   "name": "Repsol Cartagena, phase 1",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "ALK",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "617"
+   ],
+   "iea_references": [
+    "https://www.repsol.com/en/press-room/press-releases/2020/repsol-to-build-spains-first-advanced-biofuels-plant-in-cartagena.cshtml"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "844",
+   "name": "Curthyl",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "630",
+    "1662"
+   ],
+   "iea_references": [
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI%20Gas/nieuws/Overview%20of%20Hydrogen%20project%20in%20the%20Netherlands.pdf",
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "845",
+   "name": "Deltaurus 1",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2024",
+   "technology": "Other Electrolysis",
+   "announced_size": "150MW - 1GW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "640"
+   ],
+   "iea_references": [
+    "https://www.klimaatakkoord.nl/binaries/klimaatakkoord/documenten/publicaties/2020/10/22/koplopersprogramma-cluster-smart-delta/SDR-Regioplan+2030-2050.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "846",
+   "name": "Deltaurus 3",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "700MW",
+   "capacity_mwel": 700.0,
+   "capacity_kth2y": 121.27733333333335,
+   "iea_reference_numbers": [
+    "640"
+   ],
+   "iea_references": [
+    "https://www.klimaatakkoord.nl/binaries/klimaatakkoord/documenten/publicaties/2020/10/22/koplopersprogramma-cluster-smart-delta/SDR-Regioplan+2030-2050.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "847",
+   "name": "North CCU HUB, phase 3 (Deltaurus 4)",
+   "country": "BEL",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "640"
+   ],
+   "iea_references": [
+    "https://www.klimaatakkoord.nl/binaries/klimaatakkoord/documenten/publicaties/2020/10/22/koplopersprogramma-cluster-smart-delta/SDR-Regioplan+2030-2050.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "849",
+   "name": "HySynergy, phase 2",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "300 MW",
+   "capacity_mwel": 280.0,
+   "capacity_kth2y": 48.510933333333334,
+   "iea_reference_numbers": [
+    "288",
+    "331",
+    "930"
+   ],
+   "iea_references": [
+    "https://bioenergyinternational.com/storage-logistics/everfuel-and-shell-enter-into-strategic-collaboration-on-a-large-scale-hydrogen-plant",
+    "https://nelhydrogen.com/press-release/press-release-everfuel-awarded-grant-for-the-establishment-of-a-large-scale-hydrogen-production-facility-in-denmark/",
+    "https://fuelcellsworks.com/news/everfuel-plans-300mw-hysynergy-phase-ii-electrolyser-in-fredericia/?mc_cid=5381e371d3&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "859",
+   "name": "Orange-BAT Puerto Valencia",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "651",
+    "1309"
+   ],
+   "iea_references": [
+    "https://www.hispanidad.com/semana-empresarial/repsol-endesa-iberdrola-naturgy-enagas-apuestan-por-hidrogeno-verde-alternativa-avanzar-en-descarbonizacion_12022082_102.html",
+    "https://cincodias.elpais.com/cincodias/2021/02/05/companias/1612525996_216085.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "866",
+   "name": "White Dragon",
+   "country": "GRC",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2029",
+   "technology": "Other Electrolysis",
+   "announced_size": "250kt H2/y production",
+   "capacity_mwel": 2885.9473603201473,
+   "capacity_kth2y": 500.0,
+   "iea_reference_numbers": [
+    "936"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/the-e8bn-white-dragon-project-could-produce-250000-tonnes-of-green-hydrogen-annually/"
+   ],
+   "quality_check_reference_numbers": [
+    "96",
+    "97"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://hydrogeneurope.eu/wp-content/uploads/2022/04/George-Polychron-White-Dragon-Lighthouse-Initiative-30March.pdf",
+     "reference_date": "2022-03-30",
+     "date_checked": "2024-07-25",
+     "comment": "slide 6",
+     "number": "96"
+    },
+    {
+     "url": "https://balkangreenenergynews.com/greece-plans-1-7-gw-of-electrolyzers-string-of-new-projects-to-become-green-hydrogen-leader/",
+     "reference_date": "2023-08-24",
+     "date_checked": "2024-07-25",
+     "comment": "\"However, the EUR 8 billion project did not manage to acquire European funding and was moved to the third wave of PCI projects by the European Commission.\" -> no new timeline presented, leaving unchanged",
+     "number": "97"
+    }
+   ]
+  },
+  {
+   "ref": "867",
+   "name": "North CCU HUB, phase 2. North-C -full scale",
+   "country": "BEL",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 237.0,
+   "capacity_kth2y": 41.061040000000006,
+   "iea_reference_numbers": [
+    "444",
+    "654"
+   ],
+   "iea_references": [
+    "https://stad.gent/sites/default/files/media/documents/20191106_PU_CCUhub_Rapport%20A4%20EN.pdf",
+    "https://northccuhub.eu/about-us/#Mission_%E2%80%93_Vision_%E2%80%93_Roadmap"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "873",
+   "name": "Steag-Thyssenkrupp Duisburg steel plant (HydrOxy Hub Walsum)",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "ALK",
+   "announced_size": "520MW",
+   "capacity_mwel": 520.0,
+   "capacity_kth2y": 88.13321739130436,
+   "iea_reference_numbers": [
+    "661",
+    "779"
+   ],
+   "iea_references": [
+    "https://www.steag.com/en/press-release/03-12-2020-green-hydrogen-for-green-steel-made-in-duisburg",
+    "https://ijglobal.com/articles/153847/thyssenkrupp-and-steag-to-build-500mw-green-hydrogen-plant"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "879",
+   "name": "BENORTH2 (Amorebieta-Boroa power plant), phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 180.0,
+   "capacity_kth2y": 31.1856,
+   "iea_reference_numbers": [
+    "666",
+    "690"
+   ],
+   "iea_references": [
+    "https://elperiodicodelaenergia.com/amorebieta-el-primer-ciclo-combinado-que-producira-energia-a-partir-de-hidrogeno-verde-en-espana/?__cf_chl_captcha_tk__=8039d19212f3462381df127b8a9cc3e053c1550f-1607517109-0-AYCZX-eMzYJn6vnXMGB6-bFp7IDv48P0KN3HQjXP0uU5GOfHNHtl8qXtYfHetBgLaNp3tph6XikqOD5cmxoR-Rr0Pf8bIi6RJYBrccUvdEfwvCE1ykpfBxOjGo59vI-N521zFmTL6W51lo6RUqxFb9WiGNaFyGKXhdmE7m8JZkF6dCvoAxv1SKFgMJ-OzOFKQAzma8ellPKOQMLRiCJzTLpTnunCROhEdkyP9NKjj1lkhz1bjN0CLfFFVexDkumAkbzgCbDNYJMB4HweyY2gkxdsdOW1ipXhrrF2jHWhV3fQxOBTOysX5x6fwutoo1NWrcP2dq932bNhp4K7jqUJ78p4rT2gE9hf0qxnNmG3w6pLmrhBtQECDtQXdD_3wKUR8rmyzWF8LlMCqBoFl2jFDdxCFbcaLxpYJSYMk_Ta6fyHtDjEPeKXrXPtVF1opwJlX_jH36-deMi0RePUJjQvk6Z_AseQHCYrHcME5ppXdi7b_SGEwMwMJULYy3AbWnxXgK7eQHiHuivYKmTaXJHQErOdpEpjscZJFmWWoGEDjBb4W0DLpnfxlC1ozJb-UZ65v9LgDeQIXGNkLWAmLubINgT5fudTjQzGpAqsr9tRscq9-KKf6Q1k33NE99mG4lI5RhX1tt8yY-2s52ym-UCQS9U",
+    "https://www.eleconomista.es/pais_vasco/noticias/10923476/12/20/La-primera-planta-de-hidrogeno-verde-estara-operativa-en-Amorebieta-en-2022.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "885",
+   "name": "Get H2 Lingen, phase 2",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "PEM",
+   "announced_size": "200MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 14.993076923076922,
+   "iea_reference_numbers": [
+    "674",
+    "675",
+    "1212"
+   ],
+   "iea_references": [
+    "https://www.get-h2.de/en/get-h2-nukleus/",
+    "https://www.get-h2.de/wp-content/uploads/geth2-nukleus_praesentation_en_201127.pdf",
+    "https://www.rwe.com/en/press/rwe-generation/2021-12-20-rwe-working-with-linde-to-develop-electrolyser-plant-in-lingen"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "886",
+   "name": "NortH2, phase 2",
+   "country": "NLD",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2040",
+   "technology": "Other Electrolysis",
+   "announced_size": "10GW",
+   "capacity_mwel": 6000.0,
+   "capacity_kth2y": 1039.52,
+   "iea_reference_numbers": [
+    "379"
+   ],
+   "iea_references": [
+    "https://www.gasunie.nl/en/news/europes-largest-green-hydrogen-project-starts-in-groningen"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "899",
+   "name": "Grupa Lotos refinery",
+   "country": "POL",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "698"
+   ],
+   "iea_references": [
+    "https://www.spglobal.com/marketintelligence/en/news-insights/latest-news-headlines/poland-s-hydrogen-strategy-aims-for-2-gw-of-electrolysis-by-2030-61971797"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "900",
+   "name": "Hamburg Green Hydrogen Hub (HGHH) project - old Moorburg plant",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "699",
+    "2141"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/mitsubishi-heavy-industries-shell-vattenfall-and-warme-hamburg-sign-letter-of-intent-for-100-mw-hydrogen-project-at-moorburg-in-hamburg/?mc_cid=fa471ff86a&mc_eid=da4624d261",
+    "https://renewablesnow.com/news/luxcara-joins-major-green-hydrogen-project-in-hamburg-834397/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "906",
+   "name": "As Pontes power plant",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "706"
+   ],
+   "iea_references": [
+    "https://www.lavozdegalicia.es/noticia/ferrol/as-pontes-de-garcia-rodriguez/2021/01/28/endesa-invertira-cien-millones-planta-hidrogeno-as-pontes/00031611865046071316641.htm"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "910",
+   "name": "Huelva - Endesa",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2024",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "713",
+    "714"
+   ],
+   "iea_references": [
+    "https://cincodias.elpais.com/cincodias/2021/01/29/companias/1611950644_648508.html?id_externo_rsoc=TW_CC",
+    "https://www.endesa.com/es/prensa/sala-de-prensa/noticias/transicion-energetica/endesa-contempla-desarrollo-23-proyectos-hidrogeno-verde-espana"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "919",
+   "name": "Green Crane, Asturias Hub, Phase II",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "105MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "319",
+    "715",
+    "729"
+   ],
+   "iea_references": [
+    "https://static1.squarespace.com/static/5d3f0387728026000121b2a2/t/5d9f24f459c7f056aca5a74f/1570710781671/4.A+Green+Spider+project.pdf",
+    "https://fuelcellsworks.com/news/green-hydrogen-air-liquide-electrolysis-with-h2v/?mc_cid=97c6cd5d96&mc_eid=da4624d261",
+    "https://renewablesnow.com/news/naturgy-enagas-to-go-for-h2-from-350-mw-of-onshore-floating-wind-in-spain-729879/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "927",
+   "name": "Uniper Maasvlakte, phase I",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "PEM",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 14.993076923076922,
+   "iea_reference_numbers": [
+    "723"
+   ],
+   "iea_references": [
+    "https://www.uniper.energy/news/uniper-and-port-of-rotterdam-authority-start-feasibility-study-for-green-hydrogen-plant-at-maasvlakte"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "928",
+   "name": "Uniper Maasvlakte, phase II",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "723",
+    "1662"
+   ],
+   "iea_references": [
+    "https://www.uniper.energy/news/uniper-and-port-of-rotterdam-authority-start-feasibility-study-for-green-hydrogen-plant-at-maasvlakte",
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "931",
+   "name": "ORANGE.BAT Castellon",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "ALK",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "726"
+   ],
+   "iea_references": [
+    "https://www.smartenergy.net/100mw-green-hydrogen-project-to-decarbonize-the-full-value-chain-of-one-of-the-major-european-ceramic-clusters/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "936",
+   "name": "H2 Green Steel (H2GS) ",
+   "country": "SWE",
+   "status_2023_vintage": "FID/Construction",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "800MW - 2.5 Mt steel",
+   "capacity_mwel": 800.0,
+   "capacity_kth2y": 135.58956521739128,
+   "iea_reference_numbers": [
+    "735",
+    "736",
+    "1400",
+    "1439"
+   ],
+   "iea_references": [
+    "https://www.rechargenews.com/markets/worlds-largest-green-steel-from-hydrogen-plan-backed-by-spotify-billionaire-ek/2-1-968432",
+    "https://www.barrons.com/news/investment-firm-pans-hydrogen-powered-steel-plant-in-sweden-01614087012?tesla=y#:~:text=Long%20Read-,Investment%20Firm%20Plans%20Hydrogen%20Powered%20Steel%20Plant%20In%20Sweden,a%20pioneer%20in%20the%20field.",
+    "https://w3.windfair.net/wind-energy/pr/41036-statkraft-h2-green-steel-renewables-electricity-sweden-price-hydropower-green-steel-production-industry",
+    "https://twitter.com/H2GreenSteel/status/1548942476026822656?s=20&t=gLuxq_kzs2E6wDNArSo1YQ"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "965",
+   "name": "Saipem and Alboran Hydrogen (2 plants, Taranto and Cerignola)",
+   "country": "ITA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "220MW",
+   "capacity_mwel": 160.0,
+   "capacity_kth2y": 27.720533333333332,
+   "iea_reference_numbers": [
+    "778"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/five-hydrogen-plants-planned-for-italy-and-the-mediterranean-basis/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "970",
+   "name": "Giga Stack - Green Hydrogen for Humberside",
+   "country": "GBR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "PEM",
+   "announced_size": "1GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 149.93076923076922,
+   "iea_reference_numbers": [
+    "782"
+   ],
+   "iea_references": [
+    "https://ir.q4europe.com/Tools/newsArticleHTML.aspx?solutionID=3512&customerKey=itmpower&storyID=14667777&language=en"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "977",
+   "name": "Synkero synfuels project",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "791",
+    "1448"
+   ],
+   "iea_references": [
+    "https://news.klm.com/world-first-in-the-netherlands-by-klm-shell-and-dutch-ministry-for-infrastructure-and-water-management-first-passenger-flight-performed-with-sustainable-synthetic-kerosene/",
+    "https://skynrg.com/producing-saf/saf-production-plant-in-the-port-of-amsterdam/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "985",
+   "name": "Hysencia, Phase II",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 160.0,
+   "capacity_kth2y": 27.720533333333332,
+   "iea_reference_numbers": [
+    "560",
+    "800"
+   ],
+   "iea_references": [
+    "https://www.heraldo.es/noticias/aragon/2020/07/05/tren-hidrogeno-plasencia-del-monte-planta-energias-renivables-1384258.html?utm_source=twitter.com&utm_medium=socialshare&utm_campaign=desktop",
+    "Presentation from World Hydrogen Iberia 2021"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1034",
+   "name": "Lingen Green Hydrogen (LGH2) Phase 2",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "272",
+    "638"
+   ],
+   "iea_references": [
+    "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwjE9qOVw_fhAhWD4YUKHXbAA1EQFjAAegQIAhAC&url=https%3A%2F%2Fwww.uniper.energy%2Fnews%2Fdownload%2F702078%2F20190425-jointpressrelease-uniper-realworld-laboratory-lingen-en-980949.pdf&usg=AOvVaw3QdBzSn7YcCG2garMnL725",
+    "https://www.wsj.com/articles/bp-steps-up-green-drive-with-hydrogen-deal-11605009520#:~:text=Under%20the%20deal%20announced%20Tuesday,Lingen%20refinery%20in%20northwest%20Germany.&text=Royal%20Dutch%20Shell%20PLC%20plans,refinery%20in%20Germany%20by%202030."
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1048",
+   "name": "Uniper Killingholme site",
+   "country": "GBR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "852"
+   ],
+   "iea_references": [
+    "https://www.uniper.energy/news/unipers-killingholme-the-right-place-the-right-time-the-right-plans"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1049",
+   "name": "North Sea Wind Power Hub",
+   "country": "NLD",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2032",
+   "technology": "Other Electrolysis",
+   "announced_size": "30 GWh H2/d",
+   "capacity_mwel": 1897.9653811114486,
+   "capacity_kth2y": 328.8288288288289,
+   "iea_reference_numbers": [
+    "853"
+   ],
+   "iea_references": [
+    "https://www.entsog.eu/sites/default/files/2020-11/ENTSOG_TYNDP_2020_Annex_A_Projects_Details.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1051",
+   "name": "Element One (Element Eins), phase 2",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2024",
+   "technology": "ALK",
+   "announced_size": "1.08 GWh H2/d production",
+   "capacity_mwel": 139.69025204980264,
+   "capacity_kth2y": 23.67567567567568,
+   "iea_reference_numbers": [
+    "382"
+   ],
+   "iea_references": [
+    "https://www.tennet.eu/news/detail/gasunie-tennet-and-thyssengas-reveal-detailed-green-sector-coupling-plans-using-power-to-gas-tec/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1052",
+   "name": "Element One (Element Eins), phase 3",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "ALK",
+   "announced_size": "1.8 GWh H2/d production",
+   "capacity_mwel": 232.817086749671,
+   "capacity_kth2y": 39.45945945945946,
+   "iea_reference_numbers": [
+    "382"
+   ],
+   "iea_references": [
+    "https://www.tennet.eu/news/detail/gasunie-tennet-and-thyssengas-reveal-detailed-green-sector-coupling-plans-using-power-to-gas-tec/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1062",
+   "name": "G2F - Gas to Future, phase 2",
+   "country": "SVK",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2035",
+   "technology": "Other Electrolysis",
+   "announced_size": "332MW",
+   "capacity_mwel": 248.0,
+   "capacity_kth2y": 42.96682666666667,
+   "iea_reference_numbers": [
+    "853"
+   ],
+   "iea_references": [
+    "https://www.entsog.eu/sites/default/files/2020-11/ENTSOG_TYNDP_2020_Annex_A_Projects_Details.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1086",
+   "name": "Rostock - RWE - (HyTechHafen-Rostock)",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "889",
+    "945",
+    "1988"
+   ],
+   "iea_references": [
+    "https://www.rechargenews.com/energy-transition/growing-ambition-the-worlds-20-largest-green-hydrogen-projects/2-1-933755",
+    "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+    "https://energyport-rostock.de/en/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1089",
+   "name": "Gen2 Energy Suldal in Ryfylke, 2nd phase",
+   "country": "NOR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 290.0,
+   "capacity_kth2y": 50.24346666666666,
+   "iea_reference_numbers": [
+    "894",
+    "1500"
+   ],
+   "iea_references": [
+    "https://www.hydroreview.com/business-finance/vitol-acquires-stake-in-hydrogen-company-gen2-energy-that-uses-hydropower/#gref",
+    "https://gen2energy.com/projects/production-sites/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1115",
+   "name": "Energiepark Eemshaven West (phase II)",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "920",
+    "1662"
+   ],
+   "iea_references": [
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1116",
+   "name": "ELYgator",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "920",
+    "1437",
+    "1662"
+   ],
+   "iea_references": [
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf",
+    "https://ec.europa.eu/clima/document/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en",
+    "https://topsectorenergie.nl/documents/99/TKI_Nieuw_Gas-Overview_Hydrogen_projects_in_the_Netherlands_-_version_-_220627.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1118",
+   "name": "Zeeland Refinery - H2ero",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "150MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "920"
+   ],
+   "iea_references": [
+    "https://www.topsectorenergie.nl/sites/default/files/uploads/TKI Gas/publicaties/Overview Hydrogen projects in the Netherlands - version 18 May 2021.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1126",
+   "name": "GreenHyScale",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2024",
+   "technology": "ALK",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "924",
+    "1101",
+    "1231"
+   ],
+   "iea_references": [
+    "https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+    "https://www.greenlab.dk/knowledge/greenhyscale-project-official-kick-off/",
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/lc-gd-2-2-2020;callCode=H2020-LC-GD-2020;freeTextSearchKeyword=;matchWholeText=true;typeCodes=1;statusCodes=31094501,31094502,31094503;programmePeriod=null;programCcm2Id=null;programDivisionCode=null;focusAreaCode=null;destination=null;mission=null;geographicalZonesCode=null;programmeDivisionProspect=null;startDateLte=null;startDateGte=null;crossCuttingPriorityCode=null;cpvCode=null;performanceOfDelivery=null;sortQuery=sortStatus;orderBy=asc;onlyTenders=false;topicListKey=callTopicSearchTableState"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1130",
+   "name": "HySynergy, phase 3",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1000W",
+   "capacity_mwel": 700.0,
+   "capacity_kth2y": 121.27733333333335,
+   "iea_reference_numbers": [
+    "288",
+    "331"
+   ],
+   "iea_references": [
+    "https://bioenergyinternational.com/storage-logistics/everfuel-and-shell-enter-into-strategic-collaboration-on-a-large-scale-hydrogen-plant",
+    "https://nelhydrogen.com/press-release/press-release-everfuel-awarded-grant-for-the-establishment-of-a-large-scale-hydrogen-production-facility-in-denmark/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1146",
+   "name": "Rostock - RWE (future phases)",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "1000MW",
+   "capacity_mwel": 900.0,
+   "capacity_kth2y": 155.928,
+   "iea_reference_numbers": [
+    "889",
+    "945",
+    "1998"
+   ],
+   "iea_references": [
+    "https://www.rechargenews.com/energy-transition/growing-ambition-the-worlds-20-largest-green-hydrogen-projects/2-1-933755",
+    "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+    "https://chile.hyvolution.com/en/2023/06/20/mae-exhibits-at-hyvolution-and-brings-its-experience-in-the-development-of-a-pioneering-green-hydrogen-project-in-chile/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1161",
+   "name": "Hydrogen Eagle (various hubs)",
+   "country": "POL",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "951"
+   ],
+   "iea_references": [
+    "https://www.orlen.pl/EN/PressOffice/Pages/ORLEN-Group-to-launch-international-hydrogen-program.aspx"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1169",
+   "name": "Sines refinery (phase 2)",
+   "country": "PRT",
+   "status_2023_vintage": "FID/Construction",
+   "date_online_2023_vintage": "2025",
+   "technology": "PEM",
+   "announced_size": "102MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 14.993076923076922,
+   "iea_reference_numbers": [
+    "952",
+    "2117"
+   ],
+   "iea_references": [
+    "https://www.reuters.com/business/energy/portugals-galp-moves-green-hydrogen-refinery-eyes-12-bln-investment-2021-06-14/",
+    "https://direct.argusmedia.com/newsandanalysis/Article/2492610"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1191",
+   "name": "AquaVentus (completion)",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2035",
+   "technology": "Other Electrolysis",
+   "announced_size": "10GW",
+   "capacity_mwel": 5000.0,
+   "capacity_kth2y": 866.2666666666667,
+   "iea_reference_numbers": [
+    "677",
+    "980"
+   ],
+   "iea_references": [
+    "https://www.aquaventus.org/#section-2",
+    "https://www.rechargenews.com/energy-transition/global-green-hydrogen-pipeline-exceeds-200gw-heres-the-25-largest-gigawatt-scale-projects/2-1-933755"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1192",
+   "name": "EI-H2 - Aghada (phase 2)",
+   "country": "IRL",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "2.7GW",
+   "capacity_mwel": 2650.0,
+   "capacity_kth2y": 459.1213333333333,
+   "iea_reference_numbers": [
+    "981"
+   ],
+   "iea_references": [
+    "https://www.independent.ie/business/irish/ei-h2-and-zenith-announce-plans-for-green-hydrogen-plant-in-bantry-bay-40623074.html"
+   ],
+   "quality_check_reference_numbers": [
+    "103",
+    "104"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://fuelcellsworks.com/news/irish-hydrogen-company-eih2-port-of-amsterdam-port-of-cork-sign-mou-on-green-hydrogen/",
+     "reference_date": "2022-09-13",
+     "date_checked": "2024-08-01",
+     "comment": "MoU signed",
+     "number": "103"
+    },
+    {
+     "url": "https://www.independent.ie/business/irish/ei-h2-and-zenith-announce-plans-for-green-hydrogen-plant-in-bantry-bay/40623074.html",
+     "reference_date": "2021-07-07",
+     "date_checked": "2024-07-25",
+     "comment": "\"2.7 GW hydrogen production facility and a 500 megawatt (MW) green ammonia facility, which could be up and running by 2028\"",
+     "number": "104"
+    }
+   ]
+  },
+  {
+   "ref": "1193",
+   "name": "EI-H2 - Aghada (phase 3)",
+   "country": "IRL",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "981"
+   ],
+   "iea_references": [
+    "https://www.independent.ie/business/irish/ei-h2-and-zenith-announce-plans-for-green-hydrogen-plant-in-bantry-bay-40623074.html"
+   ],
+   "quality_check_reference_numbers": [
+    "103",
+    "104"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://fuelcellsworks.com/news/irish-hydrogen-company-eih2-port-of-amsterdam-port-of-cork-sign-mou-on-green-hydrogen/",
+     "reference_date": "2022-09-13",
+     "date_checked": "2024-08-01",
+     "comment": "MoU signed",
+     "number": "103"
+    },
+    {
+     "url": "https://www.independent.ie/business/irish/ei-h2-and-zenith-announce-plans-for-green-hydrogen-plant-in-bantry-bay/40623074.html",
+     "reference_date": "2021-07-07",
+     "date_checked": "2024-07-25",
+     "comment": "\"2.7 GW hydrogen production facility and a 500 megawatt (MW) green ammonia facility, which could be up and running by 2028\"",
+     "number": "104"
+    }
+   ]
+  },
+  {
+   "ref": "1200",
+   "name": "Algeciras Bay",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "237MW",
+   "capacity_mwel": 237.0,
+   "capacity_kth2y": 41.061040000000006,
+   "iea_reference_numbers": [
+    "988",
+    "991"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/new-237mw-green-hydrogen-plant-set-for-the-spanish-bay-of-algeciras/",
+    "https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/21_06_2021_NP_Proyecto_hidr%C3%B3geno_verde_Algeciras_Fisterra_y_White_Summit"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1233",
+   "name": "Lysekil refinery (phase 2)",
+   "country": "SWE",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "200-500MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "722"
+   ],
+   "iea_references": [
+    "https://group.vattenfall.com/press-and-media/pressreleases/2021/vattenfall-and-preem-look-into-large-scale-production-of-fossil-free-hydrogen-in-lysekil"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1249",
+   "name": "Iberdrola-Foresa Green Methanol (phase 2)",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "150MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "1023"
+   ],
+   "iea_references": [
+    "https://www.iberdrola.com/sala-comunicacion/noticias/detalle/iberdrola-foresa-proyectan-inversiones-hidrogeno-renovable-para-produccion-metanol-verde-galicia"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1267",
+   "name": "AquaSector",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 272.0,
+   "capacity_kth2y": 47.12490666666666,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1270",
+   "name": "Green Crane - La Robla, Phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "280MW",
+   "capacity_mwel": 220.0,
+   "capacity_kth2y": 38.11573333333334,
+   "iea_reference_numbers": [
+    "647",
+    "648",
+    "697"
+   ],
+   "iea_references": [
+    "https://assets.ey.com/content/dam/ey-sites/ey-com/it_it/news/2020/ey-summary-report-green-recovery-v2.pdf",
+    "https://www.eleconomista.es/empresas-finanzas/noticias/10896511/11/20/Repsol-invertira-hasta-2900-millones-en-hidrogeno-en-cinco-anos-.html",
+    "https://www.naturgy.com/enagas_y_naturgy_impulsan_en_leon_la_mayor_planta_de__hidrogeno_verde_de_espana"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1271",
+   "name": "Meirama plant, phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "648"
+   ],
+   "iea_references": [
+    "https://www.eleconomista.es/empresas-finanzas/noticias/10896511/11/20/Repsol-invertira-hasta-2900-millones-en-hidrogeno-en-cinco-anos-.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1278",
+   "name": "Green fertilizer project Porsgrunn-Heroya, phase 2 - HEGRA",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "480 MW - 400kt NH3/y",
+   "capacity_mwel": 456.0,
+   "capacity_kth2y": 72.02826577660986,
+   "iea_reference_numbers": [
+    "1565",
+    "1566"
+   ],
+   "iea_references": [
+    "https://www.yara.com/corporate-releases/yara-and-linde-engineering-agree-to-build-a-24-mw-green-hydrogen-demonstration-plant-in-norway.-both-companies-aim-to-achieve-a-significant-carbon-dioxide-reduction-in-the-production-of-fertilizers-in-norway/",
+    "https://eng.heroya-industripark.no/latest-news/first-step-towards-full-decarbonisation-of-the-ammonia-plant-at-heroeya"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1315",
+   "name": "H2 Energy Europe Esbjerg green hydrogen",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "PEM",
+   "announced_size": "1GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 149.93076923076922,
+   "iea_reference_numbers": [
+    "1249",
+    "1510"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf",
+    "https://www.ir.plugpower.com/press-releases/news-details/2022/Plug-Lands-1-GW-Electrolyzer-Order-with-H2-Energy-Europe/default.aspx"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1331",
+   "name": "Green Wolverine",
+   "country": "SWE",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 600.0,
+   "capacity_kth2y": 103.952,
+   "iea_reference_numbers": [
+    "1084"
+   ],
+   "iea_references": [
+    "https://www.grupofertiberia.com/media/605649/20211015-np-planta-fertiberia-suecia_def_en-1.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1351",
+   "name": "Hynovi - Vicat Montalieu-Vercieu cement plant",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "180MW",
+   "capacity_mwel": 180.0,
+   "capacity_kth2y": 31.1856,
+   "iea_reference_numbers": [
+    "1107"
+   ],
+   "iea_references": [
+    "https://www.constructioncayola.com/batiment/article/2021/09/09/136025/vicat-hynamics-edf-partenariat-dans-sens-neutralite-carbone"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1356",
+   "name": "H2opZee",
+   "country": "NLD",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2031",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1267"
+   ],
+   "iea_references": [
+    "https://www.reuters.com/business/energy/rwe-neptune-energy-join-forces-dutch-north-sea-green-hydrogen-plan-2022-02-15/#:~:text=OSLO%2FFRANKFURT%2C%20Feb%2015%20(,Dutch%20North%20Sea%20by%202030."
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1374",
+   "name": "Gigastack-Hornsea 2, phase II",
+   "country": "GBR",
+   "status_2023_vintage": "Other/Unknown",
+   "date_online_2023_vintage": "2030",
+   "technology": "PEM",
+   "announced_size": "1 GW",
+   "capacity_mwel": 900.0,
+   "capacity_kth2y": 134.93769230769232,
+   "iea_reference_numbers": [
+    "1124"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/humber-green-hydrogen-gigastack-project-one-step-closer-to-renewable-hydrogen-at-industrial-scale-as-phase-2-concludes/?mc_cid=57729a593d&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1388",
+   "name": "INEOS Köln site",
+   "country": "DEU",
+   "status_2023_vintage": "FID/Construction",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1135",
+    "1152"
+   ],
+   "iea_references": [
+    "https://www.ineos.com/news/ineos-group/ineos-green-hydrogen-project-accelerates-towards-net-zero-future-in-germany-by-2045/",
+    "https://fuelcellsworks.com/news/ineos-announces-over-e2-billion-investment-in-green-hydrogen-production/?mc_cid=8a8bc1ef04&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1394",
+   "name": "Iberdrola - H2 Green Steel",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "800MW",
+   "capacity_mwel": 800.0,
+   "capacity_kth2y": 138.60266666666666,
+   "iea_reference_numbers": [
+    "1142"
+   ],
+   "iea_references": [
+    "https://www.h2greensteel.com/h2-green-steel-and-iberdrola-announce-23-billion-green-hydrogen-venture"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1413",
+   "name": "Wilhelmshaven , phase 2",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "410MW",
+   "capacity_mwel": 340.0,
+   "capacity_kth2y": 58.90613333333334,
+   "iea_reference_numbers": [
+    "750",
+    "1270"
+   ],
+   "iea_references": [
+    "http://www.finanztreff.de/news/uniper-plant-anlandeterminal-fuer-gruenes-ammoniak-in-wilhemshaven/23760196",
+    "https://www.rechargenews.com/energy-transition/germany-s-first-major-hydrogen-hub-uniper-to-supply-salzgitter-steel-plant-with-green-h2/2-1-1171937"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1414",
+   "name": "HySkies",
+   "country": "SWE",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "50kt synthetic kerosene/y production",
+   "capacity_mwel": 185.31340070548887,
+   "capacity_kth2y": 32.10616438356164,
+   "iea_reference_numbers": [
+    "1162",
+    "1437"
+   ],
+   "iea_references": [
+    "https://www.sasgroup.net/newsroom/press-releases/2021/sas-vattenfall-shell-and-lanzatech-to-explore-synthetic-sustainable-aviation-fuel-production/",
+    "https://ec.europa.eu/clima/document/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1436",
+   "name": "Get H2 Lingen, phase 3",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "300 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "314",
+    "945",
+    "1180",
+    "1212"
+   ],
+   "iea_references": [
+    "https://www.get-h2.de/en/project-lingen/",
+    "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+    "https://global.kawasaki.com/news_211209-2e.pdf",
+    "https://www.rwe.com/en/press/rwe-generation/2021-12-20-rwe-working-with-linde-to-develop-electrolyser-plant-in-lingen"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1437",
+   "name": "Wasserstoffpark Lingen",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2035",
+   "technology": "Other Electrolysis",
+   "announced_size": "1.8GW",
+   "capacity_mwel": 1800.0,
+   "capacity_kth2y": 311.856,
+   "iea_reference_numbers": [
+    "314",
+    "945",
+    "1180"
+   ],
+   "iea_references": [
+    "https://www.get-h2.de/en/project-lingen/",
+    "https://www.spglobal.com/platts/en/market-insights/latest-news/electric-power/052821-germany-shortlists-62-hydrogen-projects-with-2-gw-capacity-for-ipcei-state-aid",
+    "https://global.kawasaki.com/news_211209-2e.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1476",
+   "name": "H2V Marseille - Fos (Phase 1)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1222",
+    "1316"
+   ],
+   "iea_references": [
+    "https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+    "https://h2v.net/projet/projet-h2v-marseille-fos/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1477",
+   "name": "H2V Marseille - Fos (Phase 6, final)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2031",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1222",
+    "1316"
+   ],
+   "iea_references": [
+    "https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+    "https://h2v.net/projet/projet-h2v-marseille-fos/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1488",
+   "name": "GreenH2Atlantic",
+   "country": "PRT",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "1230",
+    "1231"
+   ],
+   "iea_references": [
+    "https://mcphy.com/en/press-releases/greenh2atlantic-project/?cn-reloaded=1",
+    "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/lc-gd-2-2-2020;callCode=H2020-LC-GD-2020;freeTextSearchKeyword=;matchWholeText=true;typeCodes=1;statusCodes=31094501,31094502,31094503;programmePeriod=null;programCcm2Id=null;programDivisionCode=null;focusAreaCode=null;destination=null;mission=null;geographicalZonesCode=null;programmeDivisionProspect=null;startDateLte=null;startDateGte=null;crossCuttingPriorityCode=null;cpvCode=null;performanceOfDelivery=null;sortQuery=sortStatus;orderBy=asc;onlyTenders=false;topicListKey=callTopicSearchTableState"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1489",
+   "name": "Catalina Project, Phase 1",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW - 40 kt H2/y",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1232",
+    "1703"
+   ],
+   "iea_references": [
+    "https://www.eleconomista.es/energia/noticias/11594929/02/22/El-fondo-de-Copenhague-lanza-un-megaproyecto-de-hidrogeno-con-Naturgy-Enagas-Fertiberia-y-Vestas.html",
+    "https://catalinaptx.com/"
+   ],
+   "quality_check_reference_numbers": [
+    "141"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "reference_date": "2023-05-17",
+     "date_checked": "2024-08-01",
+     "comment": "\"installation of a large-scale green hydrogen plant with 500 MW electrolyser capacity by 2027 and scalable to 2 GW by 2030.\"",
+     "number": "141"
+    }
+   ]
+  },
+  {
+   "ref": "1490",
+   "name": "Catalina Project, Phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "2GW",
+   "capacity_mwel": 1500.0,
+   "capacity_kth2y": 259.88,
+   "iea_reference_numbers": [
+    "1232",
+    "1703"
+   ],
+   "iea_references": [
+    "https://www.eleconomista.es/energia/noticias/11594929/02/22/El-fondo-de-Copenhague-lanza-un-megaproyecto-de-hidrogeno-con-Naturgy-Enagas-Fertiberia-y-Vestas.html",
+    "https://catalinaptx.com/"
+   ],
+   "quality_check_reference_numbers": [
+    "141"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://web.archive.org/web/20230517204942/https://catalinaptx.com/",
+     "reference_date": "2023-05-17",
+     "date_checked": "2024-08-01",
+     "comment": "\"installation of a large-scale green hydrogen plant with 500 MW electrolyser capacity by 2027 and scalable to 2 GW by 2030.\"",
+     "number": "141"
+    }
+   ]
+  },
+  {
+   "ref": "1493",
+   "name": "Pembroke power station",
+   "country": "GBR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "110MW",
+   "capacity_mwel": 110.0,
+   "capacity_kth2y": 19.05786666666667,
+   "iea_reference_numbers": [
+    "1582"
+   ],
+   "iea_references": [
+    "https://renewablesnow.com/news/rwe-to-study-gigawatt-scale-green-hydrogen-production-in-wales-766409/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1499",
+   "name": "Hy2gen Sauda project",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "300 MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "1243",
+    "1499"
+   ],
+   "iea_references": [
+    "https://www.trafigura.com/press-releases/green-ammonia-production-facility-planned-in-norway-s-municipality-of-sauda-feed-study-underway/",
+    "https://fuelcellsworks.com/news/technip-energies-selected-by-iverson-efuels-for-a-green-ammonia-production-project/?mc_cid=790c1a9648&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1503",
+   "name": "Green CCU Hub Aalborg",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2024",
+   "technology": "Other Electrolysis",
+   "announced_size": "120 MW",
+   "capacity_mwel": 120.0,
+   "capacity_kth2y": 20.7904,
+   "iea_reference_numbers": [
+    "1249"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1505",
+   "name": "Green lab skive (Phase III)",
+   "country": "DNK",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "250MW",
+   "capacity_mwel": 226.0,
+   "capacity_kth2y": 39.155253333333334,
+   "iea_reference_numbers": [
+    "641",
+    "924",
+    "926",
+    "1249"
+   ],
+   "iea_references": [
+    "https://fuelcellsworks.com/news/danish-company-greenlab-to-create-worlds-largest-scale-production-facility-for-green-hydrogen/",
+    "https://www.greenlab.dk/knowledge/greenhyscale-project-enter-grant-agreement-preparation-phase/",
+    "https://www.h2-view.com/story/new-24mw-electrolysis-plant-set-for-large-scale-green-hydrogen-production/",
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1510",
+   "name": "Port of Aabenraa",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1249"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1512",
+   "name": "Vordingborg biofuels",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 kt MeOH/y production",
+   "capacity_mwel": 220.86386024318918,
+   "capacity_kth2y": 38.2654,
+   "iea_reference_numbers": [
+    "1249"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1513",
+   "name": "Aalborg MeOH project",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "300-400MW",
+   "capacity_mwel": 350.0,
+   "capacity_kth2y": 60.63866666666667,
+   "iea_reference_numbers": [
+    "1249"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1514",
+   "name": "CCU biogas (11x36MW)",
+   "country": "DNK",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "11x36MW",
+   "capacity_mwel": 396.0,
+   "capacity_kth2y": 68.60832,
+   "iea_reference_numbers": [
+    "1249"
+   ],
+   "iea_references": [
+    "https://ens.dk/sites/ens.dk/files/ptx/strategy_ptx.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1529",
+   "name": "Reuze",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "400MW",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "1264"
+   ],
+   "iea_references": [
+    "https://www.engie.com/en/journalists/press-releases/engie-and-infinium-unveil-a-partnership-to-develop-an-industrial-hub-on-an-european-scale-to-produce-synthetic-fuel-in-dunkirk"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1537",
+   "name": "Aker - Berlevag",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1553"
+   ],
+   "iea_references": [
+    "https://news.cision.com/aker-clean-hydrogen/r/berlevag-project-to-decarbonize-arctic-shipping-forges-ahead,c3382425"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1541",
+   "name": "BP Castellon refinery, phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "175MW",
+   "capacity_mwel": 175.0,
+   "capacity_kth2y": 30.319333333333336,
+   "iea_reference_numbers": [
+    "1269"
+   ],
+   "iea_references": [
+    "https://www.enagas.es/stfls/ENAGAS/Notas%20de%20prensa/Nota%20de%20prensa%20conjunta%20MoU%20H2%20(bp%20Iberdrola%20Enagas)%2028042021_EN_pr.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1542",
+   "name": "Wilhelmshaven , phase 3",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW",
+   "capacity_mwel": 590.0,
+   "capacity_kth2y": 102.21946666666668,
+   "iea_reference_numbers": [
+    "750",
+    "1270"
+   ],
+   "iea_references": [
+    "http://www.finanztreff.de/news/uniper-plant-anlandeterminal-fuer-gruenes-ammoniak-in-wilhemshaven/23760196",
+    "https://www.rechargenews.com/energy-transition/germany-s-first-major-hydrogen-hub-uniper-to-supply-salzgitter-steel-plant-with-green-h2/2-1-1171937"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1545",
+   "name": "Nazare Green Hydrogen Valley, phase 2",
+   "country": "PRT",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 540.0,
+   "capacity_kth2y": 93.5568,
+   "iea_reference_numbers": [
+    "1272"
+   ],
+   "iea_references": [
+    "https://www.reuters.com/business/environment/portugals-top-cement-glass-makers-join-new-consortium-green-hydrogen-plant-2022-02-22/#:~:text=LISBON%2C%20Feb%2022%20(Reuters),launch%20a%20green%20hydrogen%20plant."
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1547",
+   "name": "Green Crane, Murcia (part of Green Crane Gigafactory)",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "25 kt H2/y",
+   "capacity_mwel": 144.2973680160074,
+   "capacity_kth2y": 25.0,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1549",
+   "name": "First HyDeal hub, phase 1",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "3.3 GW",
+   "capacity_mwel": 3300.0,
+   "capacity_kth2y": 571.736,
+   "iea_reference_numbers": [
+    "1274",
+    "1772",
+    "2098"
+   ],
+   "iea_references": [
+    "https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/15_02_2022_NP_HyDeal_Espan%CC%83a",
+    "https://www.hydeal.com/copie-de-hydeal-ambition",
+    "https://www.hydeal.com/copie-de-hydeal-ambition"
+   ],
+   "quality_check_reference_numbers": [
+    "92"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://web.archive.org/web/20231029182925/https://www.hydeal.com/copie-de-hydeal-ambition",
+     "reference_date": "2023-10-29",
+     "date_checked": "2024-07-31",
+     "comment": "\"Production will start in 2028 and total installed capacity will reach 4.8 GW of solar power and 3.3 GW of electrolyzers.\"",
+     "number": "92"
+    }
+   ]
+  },
+  {
+   "ref": "1550",
+   "name": "First HyDeal hub, completion",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "7.4 GW",
+   "capacity_mwel": 4100.0,
+   "capacity_kth2y": 710.3386666666667,
+   "iea_reference_numbers": [
+    "1274",
+    "2098"
+   ],
+   "iea_references": [
+    "https://www.enagas.es/enagas/es/Comunicacion/NotasPrensa/15_02_2022_NP_HyDeal_Espan%CC%83a",
+    "https://www.hydeal.com/copie-de-hydeal-ambition"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1598",
+   "name": "Norsk e-Fuel Phase 3",
+   "country": "NOR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2029",
+   "technology": "SOEC",
+   "announced_size": "100 million litres of synthetic kerosene per year production",
+   "capacity_mwel": 301.5814991534555,
+   "capacity_kth2y": 61.87500000000001,
+   "iea_reference_numbers": [
+    "414",
+    "521",
+    "1288"
+   ],
+   "iea_references": [
+    "https://www.dena.de/fileadmin/dena/Dokumente/Veranstaltungen/PtG-Dialogforum_III/Praesentationen/6_Karl_Hauptmeier_sunfire_GmbH.pdf",
+    "https://www.norsk-e-fuel.com/en/",
+    "https://www.norsk-e-fuel.com/about-us"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1602",
+   "name": "Air Liquide Dunkirk",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "400MW",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "1291"
+   ],
+   "iea_references": [
+    "https://www.h2-mobile.fr/actus/piiec-hydrogene-15-projets-francais-presentes-europe/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1608",
+   "name": "H2ercules",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 173.25333333333333,
+   "iea_reference_numbers": [
+    "1298",
+    "1301"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/e3-5bn-project-to-create-1500km-hydrogen-backbone-pipeline-for-germany/",
+    "https://www.rwe.com/en/press/rwe-ag/2022-03-24-oge-and-rwe-present-national-infrastructure-concept--h2ercules"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1612",
+   "name": "Hidroversol Castilla y León",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "200 MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "1304"
+   ],
+   "iea_references": [
+    "https://esenergia.es/planta-de-hidrogeno-verde/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1614",
+   "name": "AsturiasH2Valley, Abono",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "150 MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "1305",
+    "1306"
+   ],
+   "iea_references": [
+    "https://www.lavozdeasturias.es/noticia/asturias/2021/10/14/edppretende-crear-valle-hidrogeno-asturias/00031634225270324999555.htm",
+    "https://espana.edp.com/en/news/2021/05/21/edp-presents-its-energy-transition-projects-asturias-offshore-wind-farm-and"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1623",
+   "name": "H2V WN Warndt Naborien (Phase 1)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1316",
+    "1317"
+   ],
+   "iea_references": [
+    "https://h2v.net/projet/projet-h2v-marseille-fos/",
+    "https://grande-region-hydrogen.eu/en/projects/h2v-warndt-naborien-h2v-wn/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1624",
+   "name": "H2V WN Warndt Naborien (Phase 2, final)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "400 MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "1316",
+    "1317"
+   ],
+   "iea_references": [
+    "https://h2v.net/projet/projet-h2v-marseille-fos/",
+    "https://grande-region-hydrogen.eu/en/projects/h2v-warndt-naborien-h2v-wn/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1625",
+   "name": "H2V Vigneux (Phase 1)",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1318"
+   ],
+   "iea_references": [
+    "https://h2v.net/projet/projet-h2v-idf/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1626",
+   "name": "H2V Vigneux (Phase 3, final)",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1318"
+   ],
+   "iea_references": [
+    "https://h2v.net/projet/projet-h2v-idf/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1630",
+   "name": "H2V Gandrange",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "200 MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "1321"
+   ],
+   "iea_references": [
+    "https://www.usinenouvelle.com/article/h2v-produira-de-l-hydrogene-vert-sur-le-site-de-l-ancienne-acierie-de-gandrange.N1073449"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1646",
+   "name": "HydrGEN I",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2024",
+   "technology": "SOEC",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 20.516842105263155,
+   "iea_reference_numbers": [
+    "1346"
+   ],
+   "iea_references": [
+    "https://blog.topsoe.com/haldor-topsoe-and-aquamarine-enters-into-a-memorandum-of-understanding-with-the-purpose-of-building-a-green-ammonia-facility-based-on-soec-electrolysis?hsLang=en-us"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1651",
+   "name": "GreenMotionSteel",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2024",
+   "technology": "Other Electrolysis",
+   "announced_size": "120 MW",
+   "capacity_mwel": 120.0,
+   "capacity_kth2y": 20.7904,
+   "iea_reference_numbers": [
+    "1352",
+    "1642"
+   ],
+   "iea_references": [
+    "https://www.klimaschutz.nrw.de/aktuelles/detail/europas-wasserstoffwirtschaft-nimmt-fahrt-auf-nordrhein-westfalen-beteiligt-sich-mit-zehn-projekten-am-groessten-wasserstoff-verbundvorhaben-in-der-eu",
+    "https://www.wirtschaft.nrw/pressemitteilung/europas-wasserstoffwirtschaft-nimmt-fahrt-auf-nordrhein-westfalen-beteiligt-sich"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1654",
+   "name": "HyKero",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "50kt synthetic kerosene/y production",
+   "capacity_mwel": 296.50144112878223,
+   "capacity_kth2y": 51.36986301369863,
+   "iea_reference_numbers": [
+    "1355"
+   ],
+   "iea_references": [
+    "https://xfuels.de/hykero/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1662",
+   "name": "Barsebäck Hydrogen Hub",
+   "country": "SWE",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1663",
+   "name": "BotnialänkenH2",
+   "country": "SWE",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1361"
+   ],
+   "iea_references": [
+    "https://www.uniper.energy/sv/sverige/om-uniper-i-sverige/vatgas-i-sverige"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1669",
+   "name": "SHARC - Sustainable Hydrogen and Recovery of Carbon (phase 3)",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2029",
+   "technology": "Other Electrolysis",
+   "announced_size": "270 MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "1365"
+   ],
+   "iea_references": [
+    "https://www.greencarcongress.com/2021/11/20211118-neste.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1676",
+   "name": "NeptHyne, phase 2",
+   "country": "POL",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1 GW",
+   "capacity_mwel": 999.0,
+   "capacity_kth2y": 173.08008,
+   "iea_reference_numbers": [
+    "1368"
+   ],
+   "iea_references": [
+    "http://h2est.ee/wp-content/uploads/2021/07/8_NeptHyne_from-Innovation-to-International-Cooperation_Tomasz-Pelc.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1693",
+   "name": "AM Gent H2 consumption Hub",
+   "country": "BEL",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "90 kt H2/year",
+   "capacity_mwel": 519.4705248576266,
+   "capacity_kth2y": 90.0,
+   "iea_reference_numbers": [
+    "1381"
+   ],
+   "iea_references": [
+    "https://corporate.arcelormittal.com/media/press-releases/arcelormittal-signs-letter-of-intent-with-the-governments-of-belgium-and-flanders-supporting-1-1-billion-investment-in-decarbonisation-technologies-at-its-flagship-gent-plant#"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1733",
+   "name": "HY2 Lausitz",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "155 MW",
+   "capacity_mwel": 155.0,
+   "capacity_kth2y": 26.854266666666668,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1748",
+   "name": "GH2 Ambès (Phase 1)",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "1416"
+   ],
+   "iea_references": [
+    "https://hydrogen-central.com/gh2-port-bordeaux-largest-hydrogen-production-unit-project/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1749",
+   "name": "GH2 Ambès (Phase 2, final)",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "300 MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "1415"
+   ],
+   "iea_references": [
+    "https://gh2.eu/news/gh2-increases-the-capacity-of-its-green-hydrogen-based-efuel-production-plant-project-in-the-port-of"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1750",
+   "name": "Masshylia",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "125 MW",
+   "capacity_mwel": 125.0,
+   "capacity_kth2y": 21.656666666666666,
+   "iea_reference_numbers": [
+    "1417"
+   ],
+   "iea_references": [
+    "https://totalenergies.com/media/news/press-releases/total-and-engie-to-develop-france-s-largest-site-of-green-hydrogen#:~:text=Paris%2C%20January%2013%2C%202021%20%E2%80%93,C%C3%B4te%20d%27Azur%20South%20region."
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1765",
+   "name": "HH2E - Met Northeast Germany, phase 1",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "1426"
+   ],
+   "iea_references": [
+    "https://hh2e.de/en/news/hh2e-and-met-group-establish-a-joint-project-company-to-develop-one-of-europes-largest-green-hydrogen-production-plants-in-lubmin-germany/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1766",
+   "name": "HH2E - Met Northeast Germany, phase 2",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1 GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 173.25333333333333,
+   "iea_reference_numbers": [
+    "1426"
+   ],
+   "iea_references": [
+    "https://hh2e.de/en/news/hh2e-and-met-group-establish-a-joint-project-company-to-develop-one-of-europes-largest-green-hydrogen-production-plants-in-lubmin-germany/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1803",
+   "name": " Liquid Wind, FlagshipTWO",
+   "country": "SWE",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "1000kt MeOH/y production",
+   "capacity_mwel": 2208.6386024318913,
+   "capacity_kth2y": 382.654,
+   "iea_reference_numbers": [
+    "450"
+   ],
+   "iea_references": [
+    "https://www.liquidwind.se/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1806",
+   "name": "Holland Hydrogen - phase 2",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "ALK",
+   "announced_size": "400MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 33.89739130434782,
+   "iea_reference_numbers": [
+    "1437"
+   ],
+   "iea_references": [
+    "https://ec.europa.eu/clima/document/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en"
+   ],
+   "quality_check_reference_numbers": [
+    "166"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://climate.ec.europa.eu/document/download/75e0ade9-12f3-435a-8875-f5afd9b92ed8_en?filename=LSC2_List_of_pre-selected_projects_6.pdf",
+     "reference_date": "2022-07-13",
+     "date_checked": "2024-08-09",
+     "comment": "200 MW by 2025, 400 MW by 2027",
+     "number": "166"
+    }
+   ]
+  },
+  {
+   "ref": "1807",
+   "name": "H2era",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1438"
+   ],
+   "iea_references": [
+    "https://www.hycc.com/en/projects/h2era"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1812",
+   "name": "Tees Green Hydrogen, phase 2",
+   "country": "GBR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 457.5,
+   "capacity_kth2y": 79.2634,
+   "iea_reference_numbers": [
+    "1444"
+   ],
+   "iea_references": [
+    "https://www.edfenergy.com/media-centre/news-releases/new-green-hydrogen-project-edf-renewables-uk-and-hynamics-teeside"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1813",
+   "name": "GravitHy",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "700MW - 2 Mt DRI",
+   "capacity_mwel": 700.0,
+   "capacity_kth2y": 121.27733333333335,
+   "iea_reference_numbers": [
+    "1445"
+   ],
+   "iea_references": [
+    "https://gravithy.eu/#press-release"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1816",
+   "name": "Navigator - P2X-Europe JV",
+   "country": "PRT",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "80 kt Synthetic kerosene/y production",
+   "capacity_mwel": 474.4023058060516,
+   "capacity_kth2y": 82.1917808219178,
+   "iea_reference_numbers": [
+    "2075",
+    "2076"
+   ],
+   "iea_references": [
+    "https://renewable-carbon.eu/news/the-navigator-company-and-p2x-europe-have-signed-a-memorandum-of-understanding-to-create-a-unique-joint-venture-in-portugal-to-produce-green-non-fossil-synthetic-efuels/",
+    "http://www.thenavigatorcompany.com/var/ezdemo_site/storage/original/application/4470a6c498af5b4a766c860dd70cb923.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1824",
+   "name": "ScottishPower - Felixtowe Port",
+   "country": "GBR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1457"
+   ],
+   "iea_references": [
+    "https://www.scottishpower.com/news/pages/scottishpower_vision_for_green_hydrogen_fuels_hub_at_port_of_felixstowe.aspx"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1826",
+   "name": "PanHy, phase 2",
+   "country": "AUT",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW or 40kt H2/y",
+   "capacity_mwel": 240.0,
+   "capacity_kth2y": 41.5808,
+   "iea_reference_numbers": [
+    "1458",
+    "2077"
+   ],
+   "iea_references": [
+    "https://renews.biz/79315/verbund-unveils-austrian-green-hydrogen-project/",
+    "https://www.hypa.at/umsetzung/elektrolyseure#heading-3777-144"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1829",
+   "name": "Plug Power Port of Antwerp-Bruges",
+   "country": "BEL",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "PEM",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 14.993076923076922,
+   "iea_reference_numbers": [
+    "1463"
+   ],
+   "iea_references": [
+    "https://www.ir.plugpower.com/press-releases/news-details/2022/Plug-to-Build-Large-Scale-Green-Hydrogen-Generation-Plant-in-Europe-at-Port-of-Antwerp-Bruges/default.aspx"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1843",
+   "name": "Dylan, phase 1",
+   "country": "GBR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "1476",
+    "1477"
+   ],
+   "iea_references": [
+    "https://www.erm.com/news/source-energie-developing-green-hydrogen-from-gw-scale-floating-offshore-wind-projects-in-celtic-sea/",
+    "https://sourceenergie.com/erm-dolphyn-and-source-energie/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1844",
+   "name": "Dylan, phase 2",
+   "country": "GBR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW",
+   "capacity_mwel": 700.0,
+   "capacity_kth2y": 121.27733333333335,
+   "iea_reference_numbers": [
+    "1476",
+    "1477"
+   ],
+   "iea_references": [
+    "https://www.erm.com/news/source-energie-developing-green-hydrogen-from-gw-scale-floating-offshore-wind-projects-in-celtic-sea/",
+    "https://sourceenergie.com/erm-dolphyn-and-source-energie/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1862",
+   "name": "First Ammonia plant in Brunsbüttel",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "SOEC",
+   "announced_size": "400-1000MW",
+   "capacity_mwel": 700.0,
+   "capacity_kth2y": 143.6178947368421,
+   "iea_reference_numbers": [
+    "1494"
+   ],
+   "iea_references": [
+    "https://www.euractiv.com/section/energy/opinion/why-green-ammonia-will-be-the-workhorse-of-eus-future-hydrogen-economy/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1866",
+   "name": "Gen2 Energy, Mosjøen   ",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1500"
+   ],
+   "iea_references": [
+    "https://gen2energy.com/projects/production-sites/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1874",
+   "name": "Ansasol - Castilla y León",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "440 MW",
+   "capacity_mwel": 440.0,
+   "capacity_kth2y": 76.23146666666668,
+   "iea_reference_numbers": [
+    "1506"
+   ],
+   "iea_references": [
+    "https://www.energias-renovables.com/hidrogeno/ansasol-elige-castilla-y-leon-para-desarrollar-20220408"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1877",
+   "name": "Sines refinery (phase 3)",
+   "country": "PRT",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "702MW",
+   "capacity_mwel": 600.0,
+   "capacity_kth2y": 103.952,
+   "iea_reference_numbers": [
+    "952"
+   ],
+   "iea_references": [
+    "https://www.reuters.com/business/energy/portugals-galp-moves-green-hydrogen-refinery-eyes-12-bln-investment-2021-06-14/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1878",
+   "name": "BrintØ - Hydrogen Island",
+   "country": "DNK",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1Mt H2/y production",
+   "capacity_mwel": 10494.35403752781,
+   "capacity_kth2y": 1818.181818181818,
+   "iea_reference_numbers": [
+    "1508"
+   ],
+   "iea_references": [
+    "https://hydrogenisland.dk/en#vision"
+   ],
+   "quality_check_reference_numbers": [
+    "69"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://web.archive.org/web/20231003194733/https://hydrogenisland.dk/en#vision",
+     "reference_date": "2023-10-04",
+     "date_checked": "2024-07-31",
+     "comment": "Timeline shows commissining in 2030",
+     "number": "69"
+    }
+   ]
+  },
+  {
+   "ref": "1881",
+   "name": "MadoquaPower2X - Sines",
+   "country": "PRT",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1512",
+    "2078"
+   ],
+   "iea_references": [
+    "https://cipartners.dk/2022/04/20/european-consortium-madoquapower2x-announces-industrial-scale-power-to-green-hydrogen-and-ammonia-project-in-sines-portugal/#:~:text=Copenhagen%20Infrastructure%20Partners-,European%20consortium%20MadoquaPower2X%20announces%20industrial-scale%20power%20to%20green%20hydrogen,ammonia%20project%20in%20Sines%2C%20Portugal&text=Total%20investment%20of%20%E2%82%AC1,creating%20more%20than%20200%20jobs",
+    "https://madoquapower2x.com/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1883",
+   "name": "River Wind Ukraine, phase1",
+   "country": "UKR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1515"
+   ],
+   "iea_references": [
+    "https://river-wind.com/presentation.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1884",
+   "name": "River Wind Ukraine, phase 2",
+   "country": "UKR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "1700MW",
+   "capacity_mwel": 1200.0,
+   "capacity_kth2y": 207.904,
+   "iea_reference_numbers": [
+    "1515"
+   ],
+   "iea_references": [
+    "https://river-wind.com/presentation.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1885",
+   "name": "River Wind Ukraine, phase 3",
+   "country": "UKR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "3GW",
+   "capacity_mwel": 1300.0,
+   "capacity_kth2y": 225.22933333333333,
+   "iea_reference_numbers": [
+    "1515"
+   ],
+   "iea_references": [
+    "https://river-wind.com/presentation.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1887",
+   "name": "Iverson e-fuels",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "255MW",
+   "capacity_mwel": 255.0,
+   "capacity_kth2y": 44.17960000000001,
+   "iea_reference_numbers": [
+    "1516"
+   ],
+   "iea_references": [
+    "https://hy2gen.com/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1895",
+   "name": "MoU Lhyfe-wpd",
+   "country": "SWE",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 600.0,
+   "capacity_kth2y": 103.952,
+   "iea_reference_numbers": [
+    "1520"
+   ],
+   "iea_references": [
+    "https://www.lhyfe.com/press/lhyfe-and-wpd-for-production-of-green-hydrogen-in-connection-with-offshore-wind-farm-in-sweden/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1907",
+   "name": "P2X Europe - Nordic Electrofuel Porsgrunn project, phase 1",
+   "country": "NOR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2032",
+   "technology": "Other Electrolysis",
+   "announced_size": "800kt synfuels/y production",
+   "capacity_mwel": 4696.582827479911,
+   "capacity_kth2y": 813.6986301369864,
+   "iea_reference_numbers": [
+    "1531"
+   ],
+   "iea_references": [
+    "https://www.mabanaft.com/en/news-info/current-news-and-press-releases/news-detail/products-for-the-future-p2x-europe-and-nordic-electrofuel-cooperate-on-ptl-products/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1910",
+   "name": "MoU Shell - Mitsubishi, phase1",
+   "country": "NLD",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "400 kt H2/y production",
+   "capacity_mwel": 4197.741615011124,
+   "capacity_kth2y": 727.2727272727273,
+   "iea_reference_numbers": [
+    "1534"
+   ],
+   "iea_references": [
+    "https://www.japantimes.co.jp/news/2022/04/07/business/corporate-business/mitsubishi-shell-green-hydrogen/"
+   ],
+   "quality_check_reference_numbers": [
+    "85"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.japantimes.co.jp/news/2022/04/07/business/corporate-business/mitsubishi-shell-green-hydrogen/",
+     "reference_date": "2022-04-07",
+     "date_checked": "2024-07-25",
+     "comment": "\"400,000 tons of green hydrogen, a type of renewable energy that does not produce carbon dioxide, annually by 2030\"",
+     "number": "85"
+    }
+   ]
+  },
+  {
+   "ref": "1911",
+   "name": "MoU Shell - Mitsubishi, phase2",
+   "country": "NLD",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2043",
+   "technology": "Other Electrolysis",
+   "announced_size": "1Mt H2/y production",
+   "capacity_mwel": 6296.612422516685,
+   "capacity_kth2y": 1090.9090909090908,
+   "iea_reference_numbers": [
+    "1534"
+   ],
+   "iea_references": [
+    "https://www.japantimes.co.jp/news/2022/04/07/business/corporate-business/mitsubishi-shell-green-hydrogen/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1927",
+   "name": "Cromarty Firth Hydrogen Project, phase 2",
+   "country": "GBR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "PEM",
+   "announced_size": "300MW",
+   "capacity_mwel": 270.0,
+   "capacity_kth2y": 40.48130769230769,
+   "iea_reference_numbers": [
+    "1059",
+    "1547",
+    "1858"
+   ],
+   "iea_references": [
+    "https://www.greencarcongress.com/2021/08/20210819-bakken.html",
+    "https://www.storegga.earth/news/2022/press-releases/scottishpower-and-storegga-form-green-hydrogen-partnership-to-transform-industry-in-the-highlands/",
+    "https://www.argusmedia.com/en/news/2422050-scottish-300mw-h2-plant-to-decarbonise-whisky-industry"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1969",
+   "name": "Trafford Low Carbon Energy Park  - phase 2",
+   "country": "GBR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 190.0,
+   "capacity_kth2y": 32.91813333333333,
+   "iea_reference_numbers": [
+    "1561",
+    "1562"
+   ],
+   "iea_references": [
+    "https://www.traffordgreenhydrogen.co.uk/theproject",
+    "https://www.traffordgreenhydrogen.co.uk/news/carlton-power-secures-government-backing-to-develop-trafford-green-hydrogen-project"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1973",
+   "name": "Wilhelmshaven - VoltH2",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1671"
+   ],
+   "iea_references": [
+    "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/electric-power/030623-volth2-targets-mid-sized-green-hydrogen-projects-to-optimize-offshore-wind"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1985",
+   "name": "Narvik - Ammonia project",
+   "country": "NOR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "1-1.5 kt NH3/day capacity",
+   "capacity_mwel": 379.3652292377626,
+   "capacity_kth2y": 65.72629051620649,
+   "iea_reference_numbers": [
+    "1705"
+   ],
+   "iea_references": [
+    "https://news.cision.com/aker-horizons/r/aker-horizons-and-vng-sign-letter-of-intent-to-supply-green-ammonia-from-norway-to-germany,c3765868"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1987",
+   "name": "Green Marlin",
+   "country": "IRL",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "3.2 GW",
+   "capacity_mwel": 3200.0,
+   "capacity_kth2y": 554.4106666666667,
+   "iea_reference_numbers": [
+    "1710",
+    "1711"
+   ],
+   "iea_references": [
+    "https://www.rechargenews.com/energy-transition/enterprize-plans-4gw-offshore-wind-farm-off-ireland-to-power-3-2gw-green-hydrogen-project/2-1-1104575",
+    "https://www.hydrogenfuelnews.com/green-hydrogen-production-ireland/8550229/"
+   ],
+   "quality_check_reference_numbers": [
+    "93",
+    "94"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.rechargenews.com/energy-transition/enterprize-plans-4gw-offshore-wind-farm-off-ireland-to-power-3-2gw-green-hydrogen-project/2-1-1104575",
+     "reference_date": "2021-11-24",
+     "date_checked": "2024-07-31",
+     "comment": "\"3.2GW green hydrogen project\"",
+     "number": "93"
+    },
+    {
+     "url": "https://www.hydrogenfuelnews.com/green-hydrogen-production-ireland/8550229/",
+     "reference_date": "2021-11-24",
+     "date_checked": "2024-07-31",
+     "comment": "\"Green Marlin, which could begin producing H2 as early as 2026\"",
+     "number": "94"
+    }
+   ]
+  },
+  {
+   "ref": "1996",
+   "name": "Cepsa San Roque Energy Park (Algeciras) - Andalucian Green Hydrogen Valley\nCarteia Project",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2029",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 173.25333333333333,
+   "iea_reference_numbers": [
+    "1717",
+    "1764"
+   ],
+   "iea_references": [
+    "https://www.cepsa.com/en/press/first-green-hydrogen-corridor",
+    "https://www.edpr.com/en/news/2023/01/30/edp-and-cepsa-sign-alliance-promote-andalusian-green-hydrogen-valley"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "1997",
+   "name": "Cepsa La Rábida Energy Park (Huelva) - phase 1 - Andalucian Green Hydrogen Valley\nOnuba Project",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 600.0,
+   "capacity_kth2y": 103.952,
+   "iea_reference_numbers": [
+    "1718"
+   ],
+   "iea_references": [
+    "https://www.offshore-energy.biz/cepsa-and-getec-sign-green-hydrogen-agreement/#:~:text=Energy%20companies%20Cepsa%20and%20GETEC,part%20of%20their%20decarbonisation%20goals."
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2004",
+   "name": "Hellenic Hydrogen in  Western Macedonia",
+   "country": "GRC",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1724"
+   ],
+   "iea_references": [
+    "https://balkangreenenergynews.com/hellenic-hydrogen-to-install-electrolyzer-of-up-to-100-mw-in-greeces-coal-region/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2015",
+   "name": "Plug Power Kokkola plant",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "PEM",
+   "announced_size": "1GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 149.93076923076922,
+   "iea_reference_numbers": [
+    "1732"
+   ],
+   "iea_references": [
+    "https://www.ir.plugpower.com/press-releases/news-details/2023/Plug-Power-Makes-Major-Strategic-Move-into-Finlands-Green-Hydrogen-Economy-with-its-Proven-PEM-Electrolyzer-and-Liquefaction-Technology/default.aspx"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2016",
+   "name": "Plug Power Kristinestad plant",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "PEM",
+   "announced_size": "1GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 149.93076923076922,
+   "iea_reference_numbers": [
+    "1732"
+   ],
+   "iea_references": [
+    "https://www.ir.plugpower.com/press-releases/news-details/2023/Plug-Power-Makes-Major-Strategic-Move-into-Finlands-Green-Hydrogen-Economy-with-its-Proven-PEM-Electrolyzer-and-Liquefaction-Technology/default.aspx"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2017",
+   "name": "Plug Power Porvoo plant",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "PEM",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 29.986153846153844,
+   "iea_reference_numbers": [
+    "1732"
+   ],
+   "iea_references": [
+    "https://www.ir.plugpower.com/press-releases/news-details/2023/Plug-Power-Makes-Major-Strategic-Move-into-Finlands-Green-Hydrogen-Economy-with-its-Proven-PEM-Electrolyzer-and-Liquefaction-Technology/default.aspx"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2029",
+   "name": "Energie Steiermark plant in Styrua, expansion",
+   "country": "AUT",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "150MW",
+   "capacity_mwel": 149.0,
+   "capacity_kth2y": 25.814746666666668,
+   "iea_reference_numbers": [
+    "1739"
+   ],
+   "iea_references": [
+    "https://renewablesnow.com/news/austrias-first-green-hydrogen-production-plant-goes-live-822650/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2033",
+   "name": "Besaya H2",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1744"
+   ],
+   "iea_references": [
+    "https://www.energynews.es/torrelavega-besaya-2-copsesa-y-ric-energy/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2035",
+   "name": "SoutH2Port",
+   "country": "SWE",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW -240t H2/d production",
+   "capacity_mwel": 600.0,
+   "capacity_kth2y": 103.952,
+   "iea_reference_numbers": [
+    "1746"
+   ],
+   "iea_references": [
+    "https://hidrogeno-verde.es/el-nuevo-proyecto-de-hidrogeno-verde-en-aguas-de-suecia/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2036",
+   "name": "BotH2nia",
+   "country": "FIN",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "1747"
+   ],
+   "iea_references": [
+    "https://flexens.com/finlands-largest-hydrogen-plant-planned-in-kokkola/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2045",
+   "name": "Hydrogen-Reduced Sponge Iron Production",
+   "country": "FIN",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "700MW",
+   "capacity_mwel": 700.0,
+   "capacity_kth2y": 121.27733333333335,
+   "iea_reference_numbers": [
+    "1754",
+    "2079"
+   ],
+   "iea_references": [
+    "https://energynews.biz/ssab-and-fortum-explore-hydrogen-reduced-sponge-iron-production/",
+    "https://www.fortum.com/media/2023/06/fortum-explores-prerequisites-fossil-free-hydrogen-production-ssabs-site-raahe"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2056",
+   "name": "Cepsa La Rábida Energy Park (Huelva - phase 2 - Andalucian Green Hydrogen Valley\nOnuba Project",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "1718"
+   ],
+   "iea_references": [
+    "https://www.offshore-energy.biz/cepsa-and-getec-sign-green-hydrogen-agreement/#:~:text=Energy%20companies%20Cepsa%20and%20GETEC,part%20of%20their%20decarbonisation%20goals."
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2058",
+   "name": "TES’ Green Energy Hub - Wilhelmshaven Port",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1768"
+   ],
+   "iea_references": [
+    "https://www.offshore-mag.com/renewable-energy/article/14286224/tes-ewe-sign-green-hydrogen-accord-for-wilhelmshaven-hub"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2060",
+   "name": "Madoqua E-methanol",
+   "country": "PRT",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2029",
+   "technology": "ALK",
+   "announced_size": "500 MW - 260 ktpa e-methanol",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 84.74347826086957,
+   "iea_reference_numbers": [
+    "1771",
+    "2133"
+   ],
+   "iea_references": [
+    "https://madoquaventures.com/projects/",
+    "https://direct.argusmedia.com/newsandanalysis/Article/2493360"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2062",
+   "name": "Iberdrola - Trammo green hydrogen ",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "140MW or 100 kt NH3/y",
+   "capacity_mwel": 140.0,
+   "capacity_kth2y": 24.255466666666667,
+   "iea_reference_numbers": [
+    "1776"
+   ],
+   "iea_references": [
+    "https://www.iberdrola.com/press-room/news/detail/iberdrola-trammo-sign-EU-s-largest-agreement-for-the-export-green-ammonia"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2111",
+   "name": "HyMed",
+   "country": "ITA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 173.25333333333333,
+   "iea_reference_numbers": [
+    "1818"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/aquaterra-energy-and-seawind-announce-3-2gw-hymed-project/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2115",
+   "name": "Icarus",
+   "country": "GRC",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "1818"
+   ],
+   "iea_references": [
+    "https://www.h2-view.com/story/aquaterra-energy-and-seawind-announce-3-2gw-hymed-project/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2117",
+   "name": "Lhyfe Delfzijl",
+   "country": "NLD",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "1824"
+   ],
+   "iea_references": [
+    "https://fr.lhyfe.com/presse/lhyfe-va-developper-une-usine-de-200-mw-a-delfzijl-pays-bas/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2120",
+   "name": "Smartenergy Porto Torres, phase 3",
+   "country": "ITA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 180.0,
+   "capacity_kth2y": 31.1856,
+   "iea_reference_numbers": [
+    "1826"
+   ],
+   "iea_references": [
+    "https://www.smartenergy.net/smartenergy-develops-a-200-mwe-green-hydrogen-plant-in-sardinia-italy/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2123",
+   "name": "Cobra Cartagena",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2024",
+   "technology": "Other Electrolysis",
+   "announced_size": "115MW",
+   "capacity_mwel": 115.0,
+   "capacity_kth2y": 19.924133333333337,
+   "iea_reference_numbers": [
+    "1828"
+   ],
+   "iea_references": [
+    "https://www.europapress.es/economia/energia-00341/noticia-bruselas-autoriza-ayuda-espanola-220-millones-cobra-produccion-hidrogeno-renovable-20221013123418.html"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2149",
+   "name": "Orsted - Skovgaard Energy project in western Denmark",
+   "country": "DNK",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "150MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.988,
+   "iea_reference_numbers": [
+    "1847"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2399271"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2150",
+   "name": "Orsted - Skovgaard Energy project in western Denmark",
+   "country": "DNK",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "3GW",
+   "capacity_mwel": 2850.0,
+   "capacity_kth2y": 493.772,
+   "iea_reference_numbers": [
+    "1847"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2399271"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2152",
+   "name": "Meirama, phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "ALK",
+   "announced_size": "200MW",
+   "capacity_mwel": 170.0,
+   "capacity_kth2y": 28.812782608695652,
+   "iea_reference_numbers": [
+    "1848"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2395750"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2154",
+   "name": "Blastr Green Steel - Inkoo",
+   "country": "FIN",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "2.5Mt steel",
+   "capacity_mwel": 1811.5091580729568,
+   "capacity_kth2y": 313.85,
+   "iea_reference_numbers": [
+    "1849"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2405819"
+   ],
+   "quality_check_reference_numbers": [
+    "136"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.greencarcongress.com/2023/01/20230105-blastr.html",
+     "reference_date": "2023-01-05",
+     "date_checked": "2024-08-01",
+     "comment": "",
+     "number": "136"
+    }
+   ]
+  },
+  {
+   "ref": "2155",
+   "name": " Liquid Wind, Flagship 3rd plant",
+   "country": "SWE",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100kt MeOH/y production",
+   "capacity_mwel": 220.86386024318915,
+   "capacity_kth2y": 38.2654,
+   "iea_reference_numbers": [
+    "1850"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2412080"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2163",
+   "name": "Kintore Scotland Hydrogen project - phase 1",
+   "country": "GBR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1859"
+   ],
+   "iea_references": [
+    "https://www.enerdata.net/publications/daily-energy-news/statera-plans-3-gw-hydrogen-plant-scotland-uk.html"
+   ],
+   "quality_check_reference_numbers": [
+    "107",
+    "108"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.enerdata.net/publications/daily-energy-news/statera-plans-3-gw-hydrogen-plant-scotland-uk.html",
+     "reference_date": "2023-04-03",
+     "date_checked": "2024-08-01",
+     "comment": "\"The full 3 GW of production is expected by 2030.\"",
+     "number": "107"
+    },
+    {
+     "url": "https://stateraenergy.co.uk/news/statera-energy-awards-worley-feed-contract-for-first-phase",
+     "reference_date": "2023-10-23",
+     "date_checked": "2024-08-01",
+     "comment": "500 MW first phase",
+     "number": "108"
+    }
+   ]
+  },
+  {
+   "ref": "2164",
+   "name": "Kintore Scotland Hydrogen project - phase 2",
+   "country": "GBR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "3GW",
+   "capacity_mwel": 2500.0,
+   "capacity_kth2y": 433.1333333333333,
+   "iea_reference_numbers": [
+    "1859"
+   ],
+   "iea_references": [
+    "https://www.enerdata.net/publications/daily-energy-news/statera-plans-3-gw-hydrogen-plant-scotland-uk.html"
+   ],
+   "quality_check_reference_numbers": [
+    "107",
+    "108"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.enerdata.net/publications/daily-energy-news/statera-plans-3-gw-hydrogen-plant-scotland-uk.html",
+     "reference_date": "2023-04-03",
+     "date_checked": "2024-08-01",
+     "comment": "\"The full 3 GW of production is expected by 2030.\"",
+     "number": "107"
+    },
+    {
+     "url": "https://stateraenergy.co.uk/news/statera-energy-awards-worley-feed-contract-for-first-phase",
+     "reference_date": "2023-10-23",
+     "date_checked": "2024-08-01",
+     "comment": "500 MW first phase",
+     "number": "108"
+    }
+   ]
+  },
+  {
+   "ref": "2170",
+   "name": "Alesund green hydrogen project - phase 2 - FjordH2",
+   "country": "NOR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "270MW",
+   "capacity_mwel": 250.0,
+   "capacity_kth2y": 43.31333333333333,
+   "iea_reference_numbers": [
+    "1863"
+   ],
+   "iea_references": [
+    "https://hydrogen-central.com/provaris-pleased-collaborate-norwegian-hydrogen-developing-norway-largest-production-facility-for-green-hydrogen/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2171",
+   "name": "IPCEI - Clean Hydrogen Coastline",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "400MW or 40kt H2/y production",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "1864",
+    "1865"
+   ],
+   "iea_references": [
+    "https://www.energate-messenger.com/news/232487/ewe-becomes-hydrogen-supplier-for-salzgitter",
+    "https://www.energate-messenger.com/news/210798/companies-pool-investments-of-1-3-billion-euros-for-green-hydrogen"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2173",
+   "name": "Saltend Chemicals Park - Hull",
+   "country": "GBR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1867"
+   ],
+   "iea_references": [
+    "https://renewablesnow.com/news/meld-energy-plans-100-mw-hydrogen-project-at-uk-chemicals-park-825189/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2176",
+   "name": "Borna Hydrogen Plant, phase 1",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1870"
+   ],
+   "iea_references": [
+    "https://hh2e.de/en/news/hh2e-announces-its-second-major-green-hydrogen-production-project-in-germany/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2177",
+   "name": "Borna Hydrogen Plant, phase 2",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW",
+   "capacity_mwel": 900.0,
+   "capacity_kth2y": 155.928,
+   "iea_reference_numbers": [
+    "1870"
+   ],
+   "iea_references": [
+    "https://hh2e.de/en/news/hh2e-announces-its-second-major-green-hydrogen-production-project-in-germany/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2182",
+   "name": "Puertollano HydRIC project",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 16.94869565217391,
+   "iea_reference_numbers": [
+    "1874"
+   ],
+   "iea_references": [
+    "https://renewablesnow.com/news/ric-energy-unveils-green-h2-project-it-is-developing-alone-in-spain-782794/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2185",
+   "name": "Nascar",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "7.2 kt H2/y (production)",
+   "capacity_mwel": 138.52547329536708,
+   "capacity_kth2y": 24.0,
+   "iea_reference_numbers": [
+    "1878"
+   ],
+   "iea_references": [
+    "https://www.energias-renovables.com/hidrogeno/un-municipio-almeriense-recibira-15-millones-de-20230602"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2188",
+   "name": "Dow Stade",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "200kt MeOH/y",
+   "capacity_mwel": 387.4804565669985,
+   "capacity_kth2y": 67.1322807017544,
+   "iea_reference_numbers": [
+    "1881"
+   ],
+   "iea_references": [
+    "https://future.hamburg/en/artikel/dow-stade-making-chemicals-industry-carbon-neutral"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2189",
+   "name": "Swiss Liquid Future - Elkem, methanol plant",
+   "country": "NOR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "ALK",
+   "announced_size": "100 million litres of mthanol/y (production)",
+   "capacity_mwel": 819.811572952699,
+   "capacity_kth2y": 138.94736842105266,
+   "iea_reference_numbers": [
+    "1882"
+   ],
+   "iea_references": [
+    "https://www.swiss-liquid-future.ch/wp-content/uploads/2020/07/2020-07-01_fast-track-CC-in-Norway_PM-Final_revised21-2.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2193",
+   "name": "H2 Emden Electrolyzer, completion",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 190.0,
+   "capacity_kth2y": 32.91813333333333,
+   "iea_reference_numbers": [
+    "1886"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2453161"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2194",
+   "name": "GreenGo Tarm plant",
+   "country": "DNK",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "2GW",
+   "capacity_mwel": 2000.0,
+   "capacity_kth2y": 346.50666666666666,
+   "iea_reference_numbers": [
+    "1887"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2412899"
+   ],
+   "quality_check_reference_numbers": [
+    "131"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.greengoenergy.com/news/megaton1",
+     "reference_date": "2023-01-24",
+     "date_checked": "2024-08-01",
+     "comment": "2 GW electrolysis, \"can be operational before 2030\"",
+     "number": "131"
+    }
+   ]
+  },
+  {
+   "ref": "2211",
+   "name": "OX2 Neptunus Hub",
+   "country": "SWE",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "225 kt H2/y (production)",
+   "capacity_mwel": 2361.229658443757,
+   "capacity_kth2y": 409.09090909090907,
+   "iea_reference_numbers": [
+    "1902"
+   ],
+   "iea_references": [
+    "https://www.offshorewind.biz/2023/03/24/ox2-unveils-plans-for-1-9-gw-offshore-energy-hub-in-southern-baltic-sea/"
+   ],
+   "quality_check_reference_numbers": [
+    "110"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://www.offshorewind.biz/2023/03/24/ox2-unveils-plans-for-1-9-gw-offshore-energy-hub-in-southern-baltic-sea/",
+     "reference_date": "2023-03-24",
+     "date_checked": "2024-08-01",
+     "comment": "\"The offshore energy hub could be in operation in the early 2030s.\", \"The planned electricity production of Neptunus would facilitate a hydrogen production of up to 225,000 tonnes yearly. \"",
+     "number": "110"
+    }
+   ]
+  },
+  {
+   "ref": "2213",
+   "name": "Urbaser methanol plant, phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "70 kt MeOH/y (production)",
+   "capacity_mwel": 154.6047021702324,
+   "capacity_kth2y": 26.78578,
+   "iea_reference_numbers": [
+    "1903"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2433885"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2214",
+   "name": "Los Barrios coal plant, Cadiz, phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "130MW",
+   "capacity_mwel": 125.0,
+   "capacity_kth2y": 21.656666666666666,
+   "iea_reference_numbers": [
+    "1904"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2434164"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2215",
+   "name": "Los Barrios coal plant, Cadiz, phase 3",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "400MW",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "1904"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2434164"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2218",
+   "name": "FFI plant in Holmaneset ",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 51.976,
+   "iea_reference_numbers": [
+    "1907"
+   ],
+   "iea_references": [
+    "https://fortescue.com/what-we-do/our-projects/holmaneset"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2227",
+   "name": "Hive H2 Albamed, phase 1",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "800MW",
+   "capacity_mwel": 800.0,
+   "capacity_kth2y": 138.60266666666666,
+   "iea_reference_numbers": [
+    "1915"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2442315"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2228",
+   "name": "Hive H2 Albamed, phase 2",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "800MW",
+   "capacity_mwel": 800.0,
+   "capacity_kth2y": 138.60266666666666,
+   "iea_reference_numbers": [
+    "1915"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2442315"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2229",
+   "name": "Achema - green hydrogen plant",
+   "country": "LTU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "213MW",
+   "capacity_mwel": 213.0,
+   "capacity_kth2y": 36.90296,
+   "iea_reference_numbers": [
+    "1916"
+   ],
+   "iea_references": [
+    "https://www.argusmedia.com/en/news/2441235-lithuanias-achema-plans-213mw-hydrogen-facility"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2232",
+   "name": "ErasmoPower2X",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "1919"
+   ],
+   "iea_references": [
+    "https://energynews.biz/power2x-and-soto-solar-to-build-1-2-gw-pv-and-green-hydrogen-plant-in-spain/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2233",
+   "name": "Electrolysis Corridor East Germany (H2 Corridor)",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "210MW",
+   "capacity_mwel": 210.0,
+   "capacity_kth2y": 36.38320000000001,
+   "iea_reference_numbers": [
+    "1920"
+   ],
+   "iea_references": [
+    "https://www.doinghydrogen.com/partner/enertrag-ag/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2246",
+   "name": "Repsol Tarragona, phase 1",
+   "country": "ESP",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "ALK",
+   "announced_size": "150MW",
+   "capacity_mwel": 150.0,
+   "capacity_kth2y": 25.42304347826087,
+   "iea_reference_numbers": [
+    "1932"
+   ],
+   "iea_references": [
+    "Argus Hydrogen and Future Fuels, 16 May 2023"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2248",
+   "name": "Breogan project",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "10 kt H2/y (production)",
+   "capacity_mwel": 115.43789441280592,
+   "capacity_kth2y": 20.0,
+   "iea_reference_numbers": [
+    "1934"
+   ],
+   "iea_references": [
+    "https://greenalia.es/en/articles/greenalia-and-p2x-europe-join-forces-to-develop-an-efuel-production-project-in-galicia/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2250",
+   "name": "BalticSeaH2",
+   "country": "EST",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 kt H2/y (production)",
+   "capacity_mwel": 1049.435403752781,
+   "capacity_kth2y": 181.8181818181818,
+   "iea_reference_numbers": [
+    "1936"
+   ],
+   "iea_references": [
+    "Argus Hydrogen and Future Fuels, 6 June 2023"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2255",
+   "name": "Green Port Langosteira",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "150 kt NH3/y (Production)",
+   "capacity_mwel": 311.8070377296678,
+   "capacity_kth2y": 54.021608643457384,
+   "iea_reference_numbers": [
+    "1941"
+   ],
+   "iea_references": [
+    "https://hidrogeno-verde.es/planta-amoniaco-verde-en-langosteira/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2284",
+   "name": "FertigHy",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2025",
+   "technology": "Other Electrolysis",
+   "announced_size": "1Mt H2/y production",
+   "capacity_mwel": 11543.78944128059,
+   "capacity_kth2y": 2000.0,
+   "iea_reference_numbers": [
+    "1965"
+   ],
+   "iea_references": [
+    "https://www.hydrogeninsight.com/industrial/pioneer-heineken-and-siemens-launch-joint-venture-to-decarbonise-eu-fertiliser-production-with-green-hydrogen/2-1-1479482"
+   ],
+   "quality_check_reference_numbers": [
+    "67"
+   ],
+   "quality_check_references": [
+    {
+     "url": "https://web.archive.org/web/20231002120314/https://fertighy.com/",
+     "reference_date": "2023-10-02",
+     "date_checked": "2024-07-31",
+     "comment": "\"The plant will produce more than one million metric tonnes per year of low-carbon nitrogen-based fertilisers from 100% renewable electricity and green hydrogen, with construction planned to start in 2025\" -> no length of construction given, leaving unchanged",
+     "number": "67"
+    }
+   ]
+  },
+  {
+   "ref": "2297",
+   "name": "Denain - Phase II",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "120MW",
+   "capacity_mwel": 120.0,
+   "capacity_kth2y": 20.7904,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2298",
+   "name": "CarlHYng",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "PEM",
+   "announced_size": "300MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 44.97923076923077,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2324",
+   "name": "Electrolyzers with \"network related function\" in Apulia - Phase 2",
+   "country": "ITA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2031",
+   "technology": "Other Electrolysis",
+   "announced_size": "800MW",
+   "capacity_mwel": 710.0,
+   "capacity_kth2y": 123.00986666666667,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2326",
+   "name": "Electrolyzers with \"network related function\" in Sicily - Phase 2",
+   "country": "ITA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2031",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 610.0,
+   "capacity_kth2y": 105.68453333333335,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2380",
+   "name": "H2V Vigneux (Phase 2)",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2029",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1318"
+   ],
+   "iea_references": [
+    "https://h2v.net/projet/projet-h2v-idf/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2381",
+   "name": "H2V Marseille - Fos (Phase 2)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1222",
+    "1316"
+   ],
+   "iea_references": [
+    "https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+    "https://h2v.net/projet/projet-h2v-marseille-fos/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2382",
+   "name": "H2V Marseille - Fos (Phase 3)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "300MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1222",
+    "1316"
+   ],
+   "iea_references": [
+    "https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+    "https://h2v.net/projet/projet-h2v-marseille-fos/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2383",
+   "name": "H2V Marseille - Fos (Phase 4)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2029",
+   "technology": "Other Electrolysis",
+   "announced_size": "400MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1222",
+    "1316"
+   ],
+   "iea_references": [
+    "https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+    "https://h2v.net/projet/projet-h2v-marseille-fos/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2384",
+   "name": "H2V Marseille - Fos (Phase 5)",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "1222",
+    "1316"
+   ],
+   "iea_references": [
+    "https://www.marseille-port.fr/sites/default/files/2022-01/20220117CPGPMM_H2V_VF.pdf",
+    "https://h2v.net/projet/projet-h2v-marseille-fos/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2388",
+   "name": "H2V Saint-clair-du-rhône",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2029",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "2007"
+   ],
+   "iea_references": [
+    "https://vighy.france-hydrogene.org/projets/h2v-saint-clair-du-rhone/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2395",
+   "name": "H2V Thionville P1",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "2014"
+   ],
+   "iea_references": [
+    "https://vighy.france-hydrogene.org/projets/h2v-thionville/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2396",
+   "name": "H2V Thionville P2",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "400MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "2014"
+   ],
+   "iea_references": [
+    "https://vighy.france-hydrogene.org/projets/h2v-thionville/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2397",
+   "name": "H2V Valenciennes P1",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "2015"
+   ],
+   "iea_references": [
+    "https://vighy.france-hydrogene.org/projets/h2v-valenciennes/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2398",
+   "name": "H2V Valenciennes P2",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "400MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "2015"
+   ],
+   "iea_references": [
+    "https://vighy.france-hydrogene.org/projets/h2v-valenciennes/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2407",
+   "name": "eM-Lacq",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "210 MW",
+   "capacity_mwel": 210.0,
+   "capacity_kth2y": 36.38320000000001,
+   "iea_reference_numbers": [
+    "2022"
+   ],
+   "iea_references": [
+    "https://vighy.france-hydrogene.org/projets/em-lacq/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2409",
+   "name": "BioTJet",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "250 MW",
+   "capacity_mwel": 250.0,
+   "capacity_kth2y": 43.31333333333333,
+   "iea_reference_numbers": [
+    "2024"
+   ],
+   "iea_references": [
+    "https://elyse.energy/en/our-projects/biotjet"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2426",
+   "name": "Kristinestad ",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2025",
+   "technology": "ALK",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 33.89739130434782,
+   "iea_reference_numbers": [
+    "2050",
+    "2071"
+   ],
+   "iea_references": [
+    "https://www.epressi.com/tiedotteet/energia/koppo-energys-leading-energy-transition-project-of-green-hydrogen-and-sustainable-liquefied-synthetic-methane-is-progressing-in-kristinestad.html",
+    "https://fuelcellsworks.com/news/hydrogenpro-partner-with-a-large-contract-in-finland/?mc_cid=0f15718604&mc_eid=da4624d261"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2427",
+   "name": "Green NortH2 Energy",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "2051"
+   ],
+   "iea_references": [
+    "https://h2cluster.fi/projects/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2430",
+   "name": "Ren-Gas  P2X Lahti",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "120MW",
+   "capacity_mwel": 120.0,
+   "capacity_kth2y": 20.7904,
+   "iea_reference_numbers": [
+    "2054",
+    "2055"
+   ],
+   "iea_references": [
+    "https://ren-gas.com/en/news/lahti-energia-and-nordic-ren-gas-signed-a-project-development-agreement-for-the-lahti-power-to-gas-project/",
+    "https://www.both2nia.com/application/files/6816/7949/3478/Pre-study_on_transition_to_hydrogen_economy_specifically_in_Northern_Ostrobothnia_final_16_3.pdf"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2439",
+   "name": "Hidroelectrica - Sona",
+   "country": "ROU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "100 MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "2061"
+   ],
+   "iea_references": [
+    "https://balkangreenenergynews.com/hidroelectrica-makes-plans-to-enter-green-hydrogen-production/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2444",
+   "name": "H2Sines.Rdam - production",
+   "country": "PRT",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "400 MW",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "2067"
+   ],
+   "iea_references": [
+    "https://climate.ec.europa.eu/eu-action/funding-climate-action/innovation-fund/large-scale-calls/projects-selected-grant-preparation_en"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2447",
+   "name": "Apex Lubmin",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "600MW",
+   "capacity_mwel": 600.0,
+   "capacity_kth2y": 103.952,
+   "iea_reference_numbers": [
+    "2069"
+   ],
+   "iea_references": [
+    "https://hydrogen-central.com/apex-group-acquires-land-strategic-locations-lubmin-germany-order-build-600-mw-of-electrolyser-capacity-for-the-production-of-green-hydrogen/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2499",
+   "name": "Enertrag - Prignitz-Falkenhagen industrial park ",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "130MW",
+   "capacity_mwel": 130.0,
+   "capacity_kth2y": 22.522933333333334,
+   "iea_reference_numbers": [
+    "2089"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2468774"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2501",
+   "name": "Vanadis Fuels",
+   "country": "FIN",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2029",
+   "technology": "Other Electrolysis",
+   "announced_size": "400kt MeOH/y",
+   "capacity_mwel": 441.7277204863783,
+   "capacity_kth2y": 76.5308,
+   "iea_reference_numbers": [
+    "2092"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2472237"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2504",
+   "name": "HYBRIT expansion",
+   "country": "SWE",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other electrolysis",
+   "announced_size": "2.7 Mt DRI",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "2099"
+   ],
+   "iea_references": [
+    "https://www.ssab.com/en/news/2021/03/hybrit-ssab-lkab-and-vattenfall-to-begin-industrialization-of-future-fossilfree-steelmaking-by-estab"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2505",
+   "name": "H2 Green Steel (H2GS) ",
+   "country": "SWE",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "5Mt Steel",
+   "capacity_mwel": 800.0,
+   "capacity_kth2y": 138.60266666666666,
+   "iea_reference_numbers": [
+    "2100"
+   ],
+   "iea_references": [
+    "https://www.reuters.com/business/finance/swedens-h2-green-steel-raises-16-bln-private-placement-2023-09-07/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2512",
+   "name": "e-SAF France Kereauzen project",
+   "country": "FRA",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "Other Electrolysis",
+   "announced_size": "250MW or 70 kt synfuels/y capacity",
+   "capacity_mwel": 250.0,
+   "capacity_kth2y": 43.31333333333333,
+   "iea_reference_numbers": [
+    "2111"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2472537"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2516",
+   "name": "e-SAF plant",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "1GW or 200 kt synfuels/y ",
+   "capacity_mwel": 1000.0,
+   "capacity_kth2y": 173.25333333333333,
+   "iea_reference_numbers": [
+    "2118"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2492648"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2520",
+   "name": "Hydrogen project in Cadiz",
+   "country": "ESP",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "",
+   "technology": "Other Electrolysis",
+   "announced_size": "352MW",
+   "capacity_mwel": 352.0,
+   "capacity_kth2y": 60.985173333333336,
+   "iea_reference_numbers": [
+    "2124"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2477036"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2522",
+   "name": "Ratcliffe power station - H2 project - phase 1",
+   "country": "GBR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "100MW",
+   "capacity_mwel": 100.0,
+   "capacity_kth2y": 17.325333333333333,
+   "iea_reference_numbers": [
+    "2129"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2491133"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2523",
+   "name": "Ratcliffe power station - H2 project - phase 2",
+   "country": "GBR",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2030",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 400.0,
+   "capacity_kth2y": 69.30133333333333,
+   "iea_reference_numbers": [
+    "2129"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2491133"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2524",
+   "name": "H2 project Lubmin - Deutsche ReGas - phase 1",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "PEM",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 29.986153846153844,
+   "iea_reference_numbers": [
+    "2130"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2493292"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2525",
+   "name": "H2 project Lubmin - Deutsche ReGas - phase 2",
+   "country": "DEU",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2028",
+   "technology": "PEM",
+   "announced_size": "500MW",
+   "capacity_mwel": 300.0,
+   "capacity_kth2y": 44.97923076923077,
+   "iea_reference_numbers": [
+    "2130"
+   ],
+   "iea_references": [
+    "https://direct.argusmedia.com/newsandanalysis/Article/2493292"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2534",
+   "name": "Skipavika Green Ammonia - SkiGA",
+   "country": "NOR",
+   "status_2023_vintage": "Feasibility study",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "130MW",
+   "capacity_mwel": 130.0,
+   "capacity_kth2y": 22.522933333333334,
+   "iea_reference_numbers": [],
+   "iea_references": [],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2538",
+   "name": "NeoGreen Portugal - Sines projetc",
+   "country": "PRT",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2027",
+   "technology": "Other Electrolysis",
+   "announced_size": "500MW",
+   "capacity_mwel": 500.0,
+   "capacity_kth2y": 86.62666666666667,
+   "iea_reference_numbers": [
+    "2146"
+   ],
+   "iea_references": [
+    "https://www.hydrogeninsight.com/production/partners-to-spend-more-than-1bn-on-500mw-plus-green-hydrogen-project-in-portugal/2-1-1353788"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2546",
+   "name": "Gonfreville Raffinerie - Electrolysis project",
+   "country": "FRA",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "200MW",
+   "capacity_mwel": 200.0,
+   "capacity_kth2y": 34.650666666666666,
+   "iea_reference_numbers": [
+    "2150"
+   ],
+   "iea_references": [
+    "https://www.euro-petrole.com/totalenergies-et-air-liquide-sassocient-pour-decarboner-la-plateforme-de-normandie-grace-a-lhydrogene-vert-n-f-26045"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  },
+  {
+   "ref": "2549",
+   "name": "EWE hydrogen plant North Sea coast",
+   "country": "DEU",
+   "status_2023_vintage": "Concept",
+   "date_online_2023_vintage": "2026",
+   "technology": "Other Electrolysis",
+   "announced_size": "320MW",
+   "capacity_mwel": 320.0,
+   "capacity_kth2y": 55.441066666666664,
+   "iea_reference_numbers": [
+    "2153"
+   ],
+   "iea_references": [
+    "https://renewablesnow.com/news/ewe-plans-320-mw-green-hydrogen-plant-on-germanys-north-sea-coast-803869/"
+   ],
+   "quality_check_reference_numbers": [],
+   "quality_check_references": []
+  }
+ ]
+}
