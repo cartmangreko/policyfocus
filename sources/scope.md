@@ -2504,6 +2504,57 @@ so no rung 6 result has been hand-verdicted and **every one of them carries
 `provisional: true`**. The count is printed with the table. When the verdicts land the
 ladder recomputes and the flag clears; nothing is written into a row in the meantime.
 
+### Sector readings of the frozen tests
+
+**THESE ARE READINGS, NOT TESTS, AND THE TESTS ABOVE DO NOT CHANGE.** Brief 11 takes the
+six rungs to five sectors. Two of them ask a question whose *answer* is sector-shaped — what
+unit a capacity is stated in, and what kind of input a plant depends on — and a reading says
+how the frozen wording lands in a sector. **A reading may never make a rung easier or harder
+to clear**; where one would, the change is a proposed test and goes to the questions file
+instead. `### The six rungs` above is byte-identical to its text at the D-B1 freeze,
+`a9542fe`, and `check_ladder.py` recomputes its SHA-256 on every build and fails on a
+difference.
+
+**Rung 2, the unit each sector's owners state.** The frozen test is *"the owner states a
+capacity in any unit, recorded as stated"*, and "any unit" is already the whole rule. What
+a reading adds is the vocabulary each sector's owners actually use, so that a cell can be
+filled from a row without a conversion:
+
+| sector | the unit the owner states | never converted to |
+|---|---|---|
+| hydrogen | MW electrical, kt H₂ a year, tonnes a day | each other |
+| batteries | GWh a year of cell capacity | cells, packs or vehicles |
+| cement | Mt CO₂ a year captured, and clinker or cement Mt a year where stated | one another |
+| transport and storage | Mt CO₂ a year of transport or injection capacity | tonnes stored to date |
+| steel | Mt a year of crude steel or DRI, and tonnes a day where the owner states it | each other |
+
+**A capacity stated at a different unit from its sector's usual one still passes** — the
+test says *any* unit. The table says what is expected, never what is required, and the cell
+records the unit the owner used.
+
+**Rung 6, the input each sector's plants depend on.** The frozen test is *"an edge in the
+dependency graph, or an owner statement naming the supplier, with `firmness: contract`"*.
+What varies is which dependency is the one that matters:
+
+| sector | the input edge rung 6 reads |
+|---|---|
+| hydrogen | the electrolyser OEM |
+| batteries | the cell-line equipment supplier |
+| cement | the capture technology provider |
+| transport and storage | a CO₂ storage or offtake contract |
+| steel | the DRI licensor or the EAF supplier |
+
+**`firmness: contract` is the only pass in every sector, unchanged.** An equipment order is
+not a stronger fact in steel than in hydrogen, and a storage contract is not a weaker one.
+What the reading fixes is only WHICH edge is looked for, so that a cement works with a firm
+electricity contract and no capture technology provider does not clear a rung about its
+capture plant.
+
+**AND A SECTOR WITH NO EDGE OF ITS KIND FAILS RUNG 6, IT DOES NOT SKIP IT** — provided the
+dependency graph has been swept for that sector. Where it has not, the cell is
+`not_searched`, on D-L2's rule: "nobody has looked" and "there is nothing there" are
+different findings and only the second is about the project.
+
 ### The population is the external list plus what it misses
 
 The population is **the current IEA vintage plus every register row not on it**, one line
