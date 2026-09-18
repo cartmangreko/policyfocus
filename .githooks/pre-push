@@ -87,6 +87,16 @@ run_stage build
 #
 # EACH ONE PASSES QUIETLY ON A MACHINE THAT LACKS ITS INPUTS, because a contributor
 # without the workbooks is still entitled to push.
+#
+# check_build_image IS THE RULE MADE MECHANICAL. It unpacks `git archive HEAD` into a
+# temporary tree -- tracked files and nothing else, which is what a deployment checks
+# out -- blocks every third-party package requirements-gates.txt does not name, and
+# runs the prebuild chain there. It adds about forty seconds and it is the only thing
+# that will catch the next step that reaches for a workbook; scope.md's rule is prose,
+# and prose does not fail a push.
+#
+# A CHECK MAY TAKE ARGUMENTS, so they are run through a function rather than
+# a bare loop: build_leadit_entries wants --check.
 run_local() {
   name=$1; shift
   if ! python3 "$root/sources/$name.py" "$@" >>"$log" 2>&1; then
@@ -106,6 +116,7 @@ run_local check_hydrogen_workbook
 # recomputes it from the workbook entry by entry, and build_steel_second_list.py checks
 # its recorded hash against benchmark_snapshots.json inside the build.
 run_local build_leadit_entries --check
+run_local check_build_image
 
 echo "pre-push: gate chain green — prebuild, build and postbuild, $(( $(date +%s) - started ))s."
-echo "pre-push: local-only checks green — check_hydrogen_workbook, build_leadit_entries --check."
+echo "pre-push: local-only checks green — check_hydrogen_workbook, build_leadit_entries --check, check_build_image."
