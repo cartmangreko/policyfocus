@@ -8,7 +8,12 @@
   "",
   "This file keeps a question after it has been answered, on the batteries and cement",
   "precedent. A reader who finds a clause in scope.md is entitled to see what made somebody",
-  "write it."
+  "",
+  "BRIEF 13 ADDS Q6 TO Q10, AND THEY ARE ALL OF ONE KIND. The 2023-population test read",
+  "owners' own documents for 255 entries under rung tests frozen at a9542fe and outcome",
+  "definitions frozen at 58ce11f, and neither freeze may be loosened by the pass applying",
+  "it. Five boundary cases came up often enough to be classes rather than curiosities, and",
+  "each names how this pass read it so a later ruling can see what it is overturning."
  ],
  "questions": [
   {
@@ -75,6 +80,178 @@
    "how_this_pass_read_it": "Computed and reported with the empty join stated first, because an empty join is the finding: the register's instrument and the cohort's outcome do not meet at this threshold. The census pass was run on all 73 anyway, which is what the brief asks and what makes the tables mean anything.",
    "what_a_ruling_would_need_to_say": "Whether a future cohort test should be run at a threshold the cohort can clear — the 2021 or 2022 vintage's own announced-for cohorts, or a threshold of zero — and whether the ladder should have a second population for exactly this.",
    "verdict": null
+  },
+  {
+   "id": "Q6",
+   "raised": "2026-09-17",
+   "touches": "rung 5 — FROZEN, see DECISIONS D-B1",
+   "question": "Does a start stated as a TWO-YEAR RANGE pass rung 5?",
+   "why_the_rules_did_not_settle_it": "Rung 5 says a year passes at year precision, and that 'mid-decade' and 'by the end of the decade' fail because they carry no precision this register can record. A range of two named years is neither: it is precise to two years and this register's date_precision vocabulary has no value for it.",
+   "how_this_pass_read_it": "FAILED, because recording it at year precision would mean choosing one of the two years the owner declined to choose between, and the padding rule exists to stop this register inventing precision a publisher did not state.",
+   "instances": [
+    {
+     "ref": "532",
+     "project": "HOEST PtX Esbjerg",
+     "verbatim": "Expected to enter full operation in 2028/29"
+    },
+    {
+     "ref": "808",
+     "project": "H2V 59, 1st phase",
+     "verbatim": "Mise en service entre 2022 et 2023"
+    },
+    {
+     "ref": "1233",
+     "project": "Lysekil refinery",
+     "verbatim": "amounting to 200-500MW (the same shape in the capacity field, and the vintage appears to have split the range into two phases)"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Either that a range fails, in which case rung 5's note should say 'a range' rather than 'no precision', so a reader is not told the owner said nothing about timing; or that a range is admitted at its earliest year under the padding rule, which would be consistent with how a coarse date is already admitted against a cut-off, and would need a date_precision value to record it."
+  },
+  {
+   "id": "Q7",
+   "raised": "2026-09-17",
+   "touches": "rung 5 — FROZEN, see DECISIONS D-B1",
+   "question": "Is a COMPLETION or ERECTION date an operation start for rung 5?",
+   "why_the_rules_did_not_settle_it": "Rung 5 asks for a production or operation start. The register's own status vocabulary separates construction, commissioning and operating precisely because a built plant is not yet a producing one -- the commissioning value was added for RWE's Lingen works making hydrogen while its owner said it was preparing for commercial operation. An owner who says the plant will be finished in 2027 has not said when it will produce.",
+   "how_this_pass_read_it": "PASSED, with the owner's words recorded verbatim in the cell so a reader can disagree without re-reading the source. The judgement was that a completion date is the nearest thing to a start an owner has published and that failing it would report the owner as silent about timing.",
+   "instances": [
+    {
+     "ref": "977",
+     "project": "Synkero",
+     "verbatim": "The factory, which is scheduled for completion in 2027, will produce 50,000 tonnes of SAF annually"
+    },
+    {
+     "ref": "1086",
+     "project": "HyTechHafen Rostock",
+     "verbatim": "ein 100-MW-Elektrolyseur, der auf dem Gelaende des Steinkohlekraftwerks Rostock bis Ende 2026 errichtet werden soll"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether rung 5 reads completion as start, or whether it needs a separate cell -- and if it needs one, that is a seventh rung and D-B1 says a rung is not added inside a brief that is scoring with it."
+  },
+  {
+   "id": "Q8",
+   "raised": "2026-09-17",
+   "touches": "rung 1 — FROZEN, see DECISIONS D-B1",
+   "question": "Can an OFFSHORE project pass rung 1 at all?",
+   "why_the_rules_did_not_settle_it": "Rung 1 asks the owner or the permitting authority to name the location at municipality or finer. An exclusive economic zone has no municipality. So an offshore electrolyser cannot pass rung 1 however precisely its owner states where it is -- a licence block, a lease area, a coordinate -- and the rung would be measuring the sea rather than the evidence.",
+   "how_this_pass_read_it": "FAILED, under the rung as written, and recorded on the line that the failure is a property of the rung.",
+   "instances": [
+    {
+     "ref": "1191",
+     "project": "AquaVentus (completion)",
+     "verbatim": "Die gruene Energie-Revolution beginnt in der Nordsee; 10 Gigawatt Erzeugungsleistung fuer Gruenen Wasserstoff aus Offshore-Windenergie bis zum Jahr 2035"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether rung 1 admits an offshore location named at licence-block or coordinate precision as 'finer than municipality', which is what it plainly is, or whether offshore entries are reported apart from the rung the way perimeter exclusions are."
+  },
+  {
+   "id": "Q9",
+   "raised": "2026-09-17",
+   "touches": "rung 2 — FROZEN, see DECISIONS D-B1",
+   "question": "Does a PRODUCT capacity count for rung 2 when it is not hydrogen?",
+   "why_the_rules_did_not_settle_it": "Rung 2 says the owner states a capacity 'in any unit, recorded as stated', and the three-units rule says the electrolyser's rating, hydrogen output and volume flow are never converted into one another. Neither settles a plant whose only published figure is its PRODUCT: tonnes of sustainable aviation fuel, tonnes of methanol, tonnes of ammonia. Those are capacities of something, and not of the electrolyser the entry is.",
+   "how_this_pass_read_it": "FAILED where the figure is a downstream product and PASSED where it is hydrogen output, on the reading that 'any unit' means any of the units this register records for an electrolyser. So ref 5's 800,000 tonnes a year of hydrogen passes and ref 977's 50,000 tonnes a year of SAF does not.",
+   "instances": [
+    {
+     "ref": "977",
+     "project": "Synkero",
+     "verbatim": "will produce 50,000 tonnes of SAF annually",
+     "read_as": "fail"
+    },
+    {
+     "ref": "1249",
+     "project": "Iberdrola-Foresa",
+     "verbatim": "una produccion de metanol verde de 10.000 tn/ano, que podria escalar hasta 100.000 tn/ano",
+     "read_as": "fail"
+    },
+    {
+     "ref": "5",
+     "project": "NortH2, phase 1",
+     "verbatim": "Green hydrogen production ... expected to be around 800,000 tonnes per year by 2040",
+     "read_as": "pass"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether 'any unit' is any unit at all -- in which case a product tonnage passes and the rung stops being about the electrolyser -- or the three units named in the three-units rule, in which case rung 2's wording should say so."
+  },
+  {
+   "id": "Q10",
+   "raised": "2026-09-17",
+   "touches": "rung 1 — FROZEN, see DECISIONS D-B1",
+   "question": "Does an owner saying 'nearby' a named town pass rung 1?",
+   "why_the_rules_did_not_settle_it": "The rung admits a release naming only the town where the speaker is the owner. 'Deployed nearby Castellon' names the town and, in the same breath, declines to say which municipality the plant is in -- the neighbouring municipality is a different place with different neighbours, a different permit authority and a different cadastre.",
+   "how_this_pass_read_it": "PASSED, with the hedge recorded in the cell, on the reading that the rung tests what the owner said about where and the owner said Castellon.",
+   "instances": [
+    {
+     "ref": "931",
+     "project": "ORANGE.BAT Castellon",
+     "verbatim": "The planned large-scale pilot plant will be deployed nearby Castellon (Spain), in one of the most important ceramic industrial clusters in Europe"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether a hedged municipality is a municipality for rung 1. The position rules already refuse to place a row on a municipality name alone, so a rung 1 pass here is not a coordinate and never becomes one -- which is the reason this can be passed without anything being drawn."
+  },
+  {
+   "id": "Q11",
+   "raised": "2026-09-17",
+   "touches": "the speaker rule, and rung 1 — FROZEN, see DECISIONS D-B1",
+   "question": "Is a GOVERNMENT press release that carries the owner's figures an admissible speaker?",
+   "why_the_rules_did_not_settle_it": "Rung 1 admits the owner or the permitting authority. The register's source_type vocabulary has permit, regulator, grant_register and official_register beside company, and a Land ministry announcing a project fits none of them cleanly: it is not permitting, not acting on the project, not a grant register and not a statutory record. What it is, in practice, is a second party repeating what the owner told it -- which is either corroboration or press, depending on how you read a ministry.",
+   "how_this_pass_read_it": "NOT ADMITTED, so the entry is reported and not scored, and the ministry's sentence is kept verbatim in the review note.",
+   "instances": [
+    {
+     "ref": "1651",
+     "project": "GreenMotionSteel",
+     "publisher": "Ministerium fuer Wirtschaft, Industrie, Klimaschutz und Energie des Landes Nordrhein-Westfalen",
+     "captured": "2023-05-23",
+     "verbatim": "Das von Air Liquide entwickelte Projekt will am Standort Duisburg bis 2024 eine Wasserelektrolyseanlage mit einer Kapazitaet von 120 Megawatt in Betrieb nehmen.",
+     "what_it_would_have_carried": "rung 1 on Duisburg, rung 2 on 120 MW -- the vintage's figure exactly -- and rung 5 on 2024, also the vintage's"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether a public authority's announcement is corroboration of the owner or reporting about it. The cost of the current reading is visible here: one document would have carried three rungs and the entry scores none. The cost of the other reading is that a ministry's press office becomes a speaker about capacity, and ministries repeat developers' figures without checking them."
+  },
+  {
+   "id": "Q12",
+   "raised": "2026-09-17",
+   "touches": "the outcome definitions — FROZEN, see DECISIONS D-C1",
+   "question": "When an entry qualifies for both `unread` and `delayed`, which wins?",
+   "why_the_rules_did_not_settle_it": "scope.md defines `delayed` as an announced start on or before the assessment date with NO OPERATION STATED and NO STOP STATED, and `unread` as the publisher refusing this register's reader in 2026 with no archive or permit copy answering. An entry whose publisher refuses satisfies both: nothing is stated because nothing could be read. The definitions were written before the reading and this overlap was not seen.",
+   "how_this_pass_read_it": "UNREAD WINS. Where no document by an owner, a permit authority or a regulator is readable in 2026, the outcome is `unread` whatever the announced start says. The alternative reads this register's inability to reach a publisher as a fact about the project, which is the error the third reading state exists to prevent and which `not_searched` was added to the rungs for on 15 September 2026.",
+   "what_a_ruling_would_need_to_say": "Either that the precedence is as this pass read it, in which case scope.md's `delayed` clause should say 'and a document was readable'; or that `delayed` is the residual class and `unread` is only for a publisher that refuses AND an entry with no other evidence at all -- which would move entries between the two columns and should not be decided by whoever happens to be writing the table.",
+   "why_it_matters_here": "It is the largest single choice in the table. The population is 255 and most of it has no readable 2026 owner document, so the precedence decides whether the majority of the test's outcome column reads `unread` or `delayed` -- and the second reading would make the test look like a finding about European hydrogen rather than a finding about what can be read about it."
+  },
+  {
+   "id": "Q13",
+   "raised": "2026-09-17",
+   "touches": "the outcome definitions — FROZEN, see DECISIONS D-C1",
+   "question": "Where does an entry go when NEITHER speaker states a start at all?",
+   "why_the_rules_did_not_settle_it": "scope.md defines `pending` and `delayed` against the announced start, and defines the announced start as the owner's stated start as of the cut-off where one exists 'and otherwise the 2023 vintage's own Date online'. Six entries have neither: the vintage's column is empty and no owner stated a year at or before the cut-off. The definitions assume an announced start exists and the freeze was written before anybody had counted how often it does not.",
+   "how_this_pass_read_it": "PENDING, on the reading that nothing has been promised by a day that has passed, so the project cannot be late; and `announced_start_read_from` on each line says 'neither: the vintage states no year', which the gate now requires before it will accept a pending with no date.",
+   "instances": [
+    {
+     "ref": "859",
+     "project": "Orange-BAT Puerto Valencia"
+    },
+    {
+     "ref": "1089",
+     "project": "Gen2 Energy Suldal in Ryfylke, 2nd phase"
+    },
+    {
+     "ref": "1233",
+     "project": "Lysekil refinery (phase 2)"
+    },
+    {
+     "ref": "1803",
+     "project": "Liquid Wind, FlagshipTWO"
+    },
+    {
+     "ref": "2150",
+     "project": "Orsted - Skovgaard Energy project, later phases"
+    },
+    {
+     "ref": "2248",
+     "project": "Breogan project"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Either that an entry with no announced start is pending, in which case scope.md should say so and the word covers two different states -- not due yet, and never dated; or that it needs a seventh value, which is a change to the answer sheet and cannot be made by the pass that found the gap."
   }
  ]
 }

@@ -2111,6 +2111,153 @@ block is gated, because an unknown key on this layer is a key nothing checks, an
 than somebody's memory. A URL that refuses a declared reader is recorded in the cache index
 and is NOT put in the queue: a queue pointing at a refusal is worked once and abandoned.
 
+### An outcome is one of six values, fixed on a stated day, and it is not a status
+
+**Ruled 17 September 2026, brief 13, and written before any outcome was read.** The 2023
+population test asks what became of the 255 European entries at 100 MW and above in the
+October 2023 vintage. That is the second time this register's instrument is measured
+against what happened, and it is the first time the register writes down WHAT HAPPENED
+itself rather than reading it off somebody else's restated column. So the outcome
+vocabulary is fixed here first, by the same reasoning D-B1 froze the rung tests under: a
+definition settled after the scores are in front of you is a definition tuned to them.
+
+**THE ASSESSMENT DATE IS 30 SEPTEMBER 2026.** Every value below is the state of the entry
+on that day, and it is a single day for all 255 so that "late" means the same thing on
+every line. An entry is assessed once and carries exactly one outcome.
+
+**THE SPEAKER IS THE OWNER, A PERMIT AUTHORITY OR A REGULATOR, AND NOBODY ELSE.** The
+standing speaker rule is unchanged and applies whole: a third party reporting that a plant
+opened is not the plant opening. The existing date-precision rules apply whole too — a
+year is stored at its earliest day, an upper bound is `not_after`, and no outcome is read
+at a precision its document does not carry.
+
+    operating    the owner, a permit authority or a regulator states that operation has
+                 BEGUN, with a date. Commissioning stated as commissioning is not
+                 operation: the register's own status vocabulary separates the two because
+                 a plant making hydrogen while its owner says it is preparing for
+                 commercial operation is neither, and the outcome takes the same cut.
+    committed    FID is stated as TAKEN, or construction is stated as BEGUN, and no
+                 operation is stated. "Expected", "targeted" and "subject to" are not a
+                 decision, exactly as rung 3 already says.
+    pending      the announced start is AFTER the assessment date and no stop is stated.
+                 The announced start is the OWNER's stated start as of the cut-off where
+                 one exists, and otherwise the 2023 vintage's own `Date online`, and the
+                 line records WHICH of the two it used. A project that is not late yet
+                 has not failed, and counting it with the late ones would make the test
+                 a measure of how far ahead the population was looking.
+    delayed      the announced start is ON OR BEFORE the assessment date, no operation is
+                 stated and no stop is stated. Where the owner has stated a NEW start
+                 date, the line carries it and the slip in years; where the owner has
+                 said nothing since, the line says that instead, because a silent project
+                 and a re-dated one are different findings and a single value hides it.
+    stopped      an owner-stated stop event under the existing stop rules. **A PAUSE
+                 COUNTS AS STOPPED ONLY WHERE NO RESUMPTION DATE IS STATED**, and it is
+                 recorded as a pause either way, in its own column. This is the one place
+                 the outcome vocabulary and the register's status vocabulary disagree on
+                 purpose: `paused` is ALIVE for the register's counting groups, because a
+                 project that has stopped moving has not stopped, and an outcome read on
+                 one day has to put an open-ended pause somewhere. It puts it with the
+                 stops and it prints the count separately, so a reader who disagrees can
+                 move it back without re-reading a source.
+    unread       the publisher refuses this register's declared reader in 2026 and no
+                 archive copy and no permit copy answers the question. It is not a
+                 failure of the project. It is the third state the reading rules already
+                 name, arriving in a new column.
+
+**AN OUTCOME IS NOT A STATUS AND NEVER BECOMES ONE.** These six words are the test's
+vocabulary; `announced`, `funded`, `fid`, `construction`, `commissioning`, `operating`,
+`paused` and `cancelled` are the register's. Where an entry is an admitted row, the
+owner-stated EVENT this pass finds is written to the row through the normal path —
+`status_history`, evidence mode, a DECISIONS entry — because the register is the record of
+what owners said and a fact does not stop being one for having been found by a test. What
+is never written is the outcome word itself. For an entry that is not a row, the outcome
+and its source live in the test file alone.
+
+**LEAVING THE IEA FILE IS A COVARIATE AND NOT AN OUTCOME.** An entry in the October 2023
+vintage and not in the current one carries `dropped_from_benchmark` beside its outcome and
+is never scored on it, under rule 17 and the covariate ruling above: a database that stops
+following a project has said something about the database. The test crosses the two so the
+question can be asked, which is the opposite of letting one answer the other.
+
+**THE READING IS DATED THE DAY IT WAS MADE, AND THAT DAY IS NOT THE ASSESSMENT DATE.** The
+pass reads in September 2026 against a 30 September assessment date, so for any entry whose
+start falls in the days between, the register is asserting a state of the world it has not
+seen. The boundary between `pending` and `delayed` does not depend on those days — it is
+the announced start against a fixed date, and both are on file. What does depend on them is
+an entry that begins operating inside the window, which this pass would read as `delayed`.
+**The count of entries whose announced start falls in the window is printed on every run**,
+rather than being resolved by moving the assessment date to whatever day the reading
+happened to finish.
+
+### Silence is an outcome about the project; refusal is a fact about reading
+
+**AMENDED 18 SEPTEMBER 2026, AFTER THE READING AND ON PURPOSE.** The ruling above was
+frozen at commit 58ce11f before a single outcome was read, and it stays there, word for
+word, so that what changed can be seen. This is the amendment, and it is recorded as one:
+D-C13 gives the reason, the test prints **both** tables — the outcomes under the frozen
+definitions and the outcomes under these — and any claim about the 2023 population says
+which it is quoting.
+
+**WHY AMEND AT ALL.** The frozen six put two unlike things in one word. Under them, 159 of
+255 entries came out `unread`, and that single count covered a publisher who refuses a
+reader, an owner whose site answers perfectly and has not mentioned the project in three
+years, and an entry for which this register has never known an owner's domain to ask.
+**The first is a fact about reading. The second is a fact about the project.** An owner
+that publishes weekly and has said nothing about a plant since 2023 has told you
+something, and the frozen vocabulary had nowhere to put it.
+
+**THE PRECEDENCE IS EXPLICIT, AND IT RUNS IN THIS ORDER.** The frozen ruling defined six
+values and did not say which wins when an entry qualifies for two, which is the gap Q12
+raised.
+
+    1  OWNER-STATED EVENTS FIRST, and among them: `stopped`, `operating`, `committed`.
+       What a speaker the rules admit has SAID beats anything inferred from a date.
+    2  THEN THE DATE CLASSES, for an entry with a readable owner document ABOUT THIS
+       ENTRY: `delayed` where the announced start is on or before the assessment date,
+       `pending` where it is after. These say only that a date has or has not passed.
+       **ABOUT THIS ENTRY is what separates them from `silent`**, and it does real work:
+       six entries were `delayed` or `pending` under the frozen rules on the strength of
+       an owner site that answers and no longer mentions the plant at all -- H2V's three
+       Vigneux phases among them, whose project page h2v.net has stopped serving. An
+       owner's site that answers and has dropped the project is silent about it, not late.
+    3  THEN `silent`.
+    4  `unread` LAST, and only on its narrowed definition below.
+
+    silent       THE OWNER'S DOMAIN, OR THE PERMIT AUTHORITY'S, ANSWERED A DECLARED READER
+                 IN 2026 AND CARRIES NO STATEMENT ABOUT THIS PROJECT SINCE THE CUT-OFF.
+                 The pages read are listed on the line, because the claim is about what
+                 was looked at: a front page, a newsroom index, a project list. This is an
+                 outcome about the project. A developer's site that is maintained, dated
+                 and current, and that has not named this plant in three years, is
+                 evidence about the plant.
+    unread       THE PUBLISHER REFUSES THIS REGISTER'S DECLARED READER AND NO PERMIT,
+                 FUNDER OR ARCHIVE COPY ANSWERS. Narrowed from the frozen definition,
+                 which also swallowed the two cases above. It is a measurement of a
+                 request, never of a project, and the line says WHICH of two reasons it
+                 rests on:
+                   `the publisher refuses this register's reader` — something was asked
+                   and refused, on the three-state reading rule.
+                   `no owner domain is known for this entry` — THERE WAS NOBODY TO ASK.
+                   The entry was never company-confirmed: its publisher's references are
+                   third parties or absent, and no owner page has ever been identified for
+                   it. This is reported on its own line and never mixed with a refusal,
+                   because a refusal is at least a measurement and this is the absence of
+                   one.
+
+**`silent` IS NOT A STOP AND NEVER BECOMES ONE.** It says the owner has not spoken since
+the cut-off, which is what the register can observe. Reading a cancellation out of silence
+is the error `dropped_from_benchmark` was made a covariate to prevent, one layer over, and
+the same answer applies: the silence is recorded, the status does not move, and where the
+entry is a row the owner look is queued.
+
+**AND A CLAIM BY ANY OTHER SPEAKER IS LISTED, NEVER SCORED.** Where operation, an
+investment decision or construction is stated by a regulator, a grid operator, a funder or
+a trade title rather than by the owner, the test records it as a CLAIM with its speaker
+and leaves the outcome where the owner's own words left it. The count of entries whose
+operation rests only on such a claim is printed on every run: the test counts owner
+statements, and a reader needs to know how many plants may be running unacknowledged by the
+companies that own them.
+
 ## Sector perimeters
 
 **Written 12 September 2026, brief 8.** The boundaries for the three sectors this

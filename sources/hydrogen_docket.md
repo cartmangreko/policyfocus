@@ -1433,6 +1433,302 @@ coordinator CI ETF I Renato Ptx Holdco S.L.U., about Project Catalina. Until the
 says what the company said and the funder's fiche sits beside it saying something else,
 which is the honest state and not a defect.
 
+### Rulings of 17 September 2026, brief 13 — the outcome, frozen before it was read
+
+**D-C1. THE OUTCOME DEFINITIONS ARE FROZEN AT COMMIT
+58ce11f0282a44368f4842176a4844d49aa416d2, and this entry was written before a single
+outcome was read.** That commit — *"The outcome definitions are written down before any
+outcome is read"* — adds one standing ruling to `sources/scope.md`, *"An outcome is one of
+six values, fixed on a stated day, and it is not a status"*: the six values, the assessment
+date of 30 September 2026, the speaker rule, the pause clause, and the covariate clause
+that keeps `dropped_from_benchmark` out of the outcome column. The ruling's SHA-256 as of
+this entry is `b851091f42fe9ed66722013f17417b8cd7ec1bc293a5db449438638b78c93ef7`, taken over the
+text from its `###` heading to the line before `## Sector perimeters`.
+
+**No outcome definition changes from this point in brief 13 onwards.** A proposed change
+goes to `sources/hydrogen_questions.json` and is not made here.
+
+**WHY A SECOND FREEZE, WHEN D-B1 ALREADY FROZE THE RUNGS.** D-B1 fixed the INSTRUMENT.
+This fixes the ANSWER SHEET, and brief 13 is the first pass where this register writes one.
+Brief 12 did not need it: the outcome there was derived from Odenweller and Ueckerdt's own
+restated `Status` and `Date online` columns, so the classes were somebody else's data read
+under a rule — a rule that could be argued with, but not one that could be quietly bent to
+the scores, because the inputs were fixed by a third party's workbook. Here the input is
+this register reading owners' documents in 2026 and deciding what each one says. Both ends
+of the comparison are now ours, and the only thing standing between that and an instrument
+tuned to its own answer is that the tests and the definitions were both written down, by
+commit hash, before the data arrived.
+
+**THE TWO FREEZES ARE INDEPENDENT AND BOTH BIND.** A rung test is a question about
+evidence; an outcome value is a question about what became of a project. Nothing in this
+brief may loosen either. What this brief MAY do, and does, is add machinery — an archive
+pass, a scorer flag, a test file — because reading more documents is not changing what a
+question asks.
+
+**WHAT THE FREEZE COSTS, STATED HERE RATHER THAN DISCOVERED LATER.** Two of the six values
+are defined against a date this register had not reached when it read. The assessment date
+is 30 September 2026 and the reading ran from 17 September, so an entry that begins
+operating inside that window is read as `delayed` and would be `operating` to a reader on
+the assessment day itself. The `pending`/`delayed` boundary is untouched by it — that is an
+announced start against a fixed date, and both are on file before the window opens. The
+count of entries whose announced start falls inside the window is printed on every run.
+It was not resolved by moving the assessment date to the day the reading finished, because
+a definition that follows the reading around is the thing these two entries exist to
+prevent.
+
+**D-C2. A PERIMETER EXCLUSION IS A COVARIATE IN THIS TEST AND NOT A THIRD POPULATION,
+because the classifier cannot see most of this population.** The live ladder splits its
+entries three ways -- perimeter exclusions, unread, scored -- on the reading that asking
+six questions of a blue-hydrogen plant produces six fails that say nothing about either.
+That split cannot be applied here. `report_benchmark_gap`'s perimeter classifier was built
+over the CURRENT vintage and knows only the entries still in it: nine of the 255 carry a
+clause and the 134 that left the file carry none, not because they are inside the perimeter
+but because nobody has classified them. Splitting the population on a label that exists for
+121 of 255 would split it unevenly and then report the unevenness as a finding.
+
+**So the clause travels with the entry, the cells still carry what was read, and the count
+is printed.** A reader who wants the ladder's three-way split can have it for the entries
+that have a clause; what this test will not do is let a partial classification decide who
+is in the table.
+
+**D-C3. AN OWNER'S NEWSROOM THAT NEVER NAMES THE PROJECT IS A RECORD OF LOOKING, NOT A
+DOCUMENT ABOUT THE ENTRY.** The archive pass fetches, for every entry, the newsroom of a
+host the publisher itself cited, and dozens of those are the owner's own site captured
+weeks before the cut-off. EDP's newsroom of 20 June 2023 is on file for the Sines entry;
+TenneT's press page is on file for both Element Eins phases; H2 Green Steel's own front
+page is on file for the Iberdrola joint venture. NONE OF THEM MENTIONS THE PROJECT.
+
+**Reading those as owner documents would turn every rung into a fail and every fail into a
+finding about the project.** The rungs ask what the owner said about THIS project, so the
+coverage flag asks the same: is there a document by the owner, a permit authority or a
+regulator, dated at or before 31 October 2023, that NAMES THIS PROJECT. Where there is
+not, the entry is `not_searched` on rungs 1, 2, 3 and 5 and is reported rather than scored
+-- which is the 15 September ruling applied to a wider kind of gap. The newsroom is still
+in the record, because the fact that the owner was publishing weekly and never mentioned
+this project is worth being able to count later.
+
+**D-C4. ONE DOCUMENT MAY ANSWER FOR SEVERAL ENTRIES, AND THE LINE SAYS WHICH DOCUMENT.**
+The IEA splits one project across several reference numbers -- phases, expansions, a
+programme's sites -- and its `Refs` column does not follow the split: Iberdrola's release
+of 28 October 2020 is cited under one of the four Fertiberia entries and names all of
+them; Endesa's release of 1 February 2021 names eight sites and is cited under two of
+them; the h2v.net page that gives H2V 59's first phase its 200 MW was fetched under the
+SECOND phase's reference number.
+
+**Ref 808 is why this is a ruling and not a convenience.** Reviewed on its own legs it had
+no owner document at all -- the reference its publisher gives it is another project's
+consultation file, 300 kilometres away -- and it was written down as unsearched. Reading
+ref 821 two entries later produced both of its answers: the commune of Loon-Plage and
+'2 unites de production de 100 MW (= 200 MW)', the exact figure the vintage carries for it.
+**Failing an entry for want of a document this register demonstrably holds would be
+scoring the register's own filing convention as the owner's silence.** So the review may
+cite any document in the pass, and every cell names the URL it rests on, which is what
+makes the borrowing visible rather than convenient.
+
+**D-C5. THE WAITING IS OVERLAPPED AND THE PACE IS NOT CHANGED.** The archive pass ran at
+150 seconds an entry sequentially -- nine and a half hours for the population -- and almost
+all of that was one worker waiting: a CDX lookup is eight to fourteen seconds of somebody
+else's server thinking, on top of the declared reader's own two-second pause. Six workers
+bring it to 23 seconds an entry.
+
+**What changed is scheduling, not politeness.** Every worker still waits `PAUSE` after its
+own fetch, so the rate any one of them offers is what the declared reader has always
+offered; what six of them do is stop the machine idling between its own requests. Two
+things were added to make it safe rather than merely fast: `hydrogen_search.fetch` now
+writes the cache index under a lock, because two threads appending to one file lose one of
+the two records and a fetch that happened and is not in the index is the single failure
+that whole file exists to prevent; and a host is resolved once behind a per-host lock, so
+the nine entries citing `topsectorenergie.nl` do not fetch its front page nine times.
+**The entries are sorted back into population order before every save**, so the file reads
+as a diff and not as a shuffle.
+
+**D-C6. TWO HOSTS ON THE PRESS LIST WERE THE OWNERS' OWN DOMAINS, AND THE LIST IS IN THE
+DIFF FOR EXACTLY THIS REASON.** The pass keeps a hand-written list of wires, trade titles
+and aggregators whose front pages and newsrooms are not worth a second request. `h2v.net`
+was on it and it is the developer H2V's own site -- 'H2V investit, developpe et construit
+des gigafactory' -- and `www.smartenergy.net` was on it and it is Smartenergy's, the
+developer of the Valencia project. Thirteen entries cite the first and two the second, and
+each of them lost its host legs until the list was corrected and they were re-fetched.
+
+**A hand list of hosts is as fallible as a machine's guess about a domain.** What makes it
+acceptable where the classifier ruling of 10 September 2026 says a machine's guess is not
+is that it is short, that it is read by a person, that it decides only whether to spend a
+request rather than whether a document counts, and that a mistake in it appears in a diff.
+The entry's own cited document is fetched whatever its host, so the worst this list can do
+is cost an entry a newsroom -- which it did, twice, and which is recorded here rather than
+quietly repaired.
+
+**D-C7. THE INSTRUMENT IS ONE INSTRUMENT ACROSS THE POPULATION, AND THAT IS WHY THE ROWS
+ARE NOT SCORED FROM THEIR OWN FIELDS.** Sixty-one of the 255 are admitted rows and the live
+ladder scores a row from what the row holds. As of 31 October 2023 that would have been two
+instruments in one table: a row's sources are mostly dated 2024 to 2026, the cut-off rule
+turns them into `not_searched`, and the admitted rows would have scored BELOW unadmitted
+entries whose 2023 captures happen to be on file. The register would have been measuring
+the age of its own reading again, which is the defect D-L2 and D-L3 were written to correct.
+
+**So every entry is scored from the same archive pass**, and a row's own sources enter that
+pass as a leg like any other, fetched at their last capture at or before the cut-off.
+Rungs 4 and 6 are the exceptions and they are exceptions in the brief: the funder pass and
+the dependency graph are population-wide files with their own dates, and they are read for
+every entry exactly as brief 12 read them.
+
+**D-C8. A URL THAT IS ALREADY A CAPTURE CARRIES ITS OWN DATE, AND THE FIRST FORM OF THIS
+PASS THREW IT AWAY.** The register stores a source as a Wayback URL wherever the publisher
+went dark after the page was read, so eight of the legs arrived as
+`web.archive.org/web/<timestamp>/<original>`. The pass asked the CDX index for a capture OF
+a capture, found none, read the page live and wrote `archived: false` with no capture date
+— and the as-of rule then scored the cell out of the table, although the document on file
+is demonstrably a copy taken before the cut-off. **The timestamp is in the URL.**
+
+**Ørsted and Skovgaard's Idomlund release is the case that shows the cost.** It is dated 6
+December 2022, the register holds it at a capture of 2 October 2023, and under the defect
+the entry read as unsearched on every rung. Repaired, it clears two: Idomlund near
+Holstebro, and "an expected electrolysis capacity of 150 MW" — the vintage's figure exactly.
+
+**D-C9. EIGHTEEN ROWS ARE REDATED FROM THE DAY THIS REGISTER LOOKED TO THE DAY THE OWNER
+SPOKE, and that is what "the register is the record" means when a pass finds evidence.**
+Brief 13 item 4 says that owner-stated events found in this pass are facts about the row.
+The largest class of them is not new events but OLD ONES: fifteen rows carried a first
+`status_history` entry dated 10 September 2026 with the note that the date "is the day the
+page was read, not the day the project was announced, which none of these pages states".
+
+**For thirteen of the eighteen, a capture shows the owner said it years earlier, and for
+five the page carries a dateline the live read had missed.** Lhyfe's Delfzijl release is
+the sharpest: the row's note says no page states the day, and the capture of 28 May 2023
+shows "Published the 06/10/2022" on the same release. Endesa's As Pontes announcement moves
+to 1 February 2021, Trafford's to 11 August 2021, TES's to 25 November 2022, Ørsted's to 6
+December 2022, Statera's to 30 March 2023. Where the page is genuinely undated the event
+takes the capture day at `not_after` precision, which is an upper bound and says so.
+
+**TWO OF THE EIGHTEEN GAIN AN EVENT RATHER THAN A DATE.** Hamburg Green Hydrogen Hub's row
+began at `construction` in December 2025 and Rostock's at `funded` in July 2024; both were
+`announced` before the cut-off on their own sites, and that earlier status is now on the
+row. **Nothing is deleted and no status is invented**: the corrections move a date onto the
+document that carries it, and every one of them cites the capture and carries the capture
+day beside the dateline.
+
+**D-C10. THE TEST'S HEADLINE IS ABOUT READING, NOT ABOUT PROJECTS, AND THE CROSS-TAB SAYS
+SO IN ONE LINE.** Of 255 entries, 159 are `unread` as of 30 September 2026 — and 141 of
+those 159 are entries with no owner or permit document from before the cut-off either. The
+same entries are missing from both ends. So the instrument's zero is overwhelmingly a
+silence: **148 of the 176 entries that clear no rung are `unread`**, and only 5 of them are
+`delayed`.
+
+**Among the 89 entries where an owner or permit authority did speak before the cut-off, the
+picture inverts**: 6 committed, 44 pending, 20 delayed, 1 stopped, 18 unread. Among the 166
+where none did, 141 are unread. **A reader who takes the rungs as a measure of projects is
+reading a measure of which publishers keep their pages up and which were captured.** That
+is the selection the brief asked to be made visible, and it is the largest single fact in
+the table.
+
+**D-C11. NOTHING IN THE POPULATION CLEARS MORE THAN FOUR RUNGS, AND FOUR IS REACHED FOUR
+TIMES.** The distribution is 176 at zero, 28 at one, 27 at two, 20 at three, 4 at four, and
+nothing at five or six. **Rung 3 passes twice in 255** — Galp on "has taken the final
+investment decision" and Air Liquide on "announces an investment of over 400 million euros
+for the construction" — and **rung 6 passes once**, on FUELLA saying Casale "has been chosen
+as the licensor and EPC contractor". Rung 4 passes five times, all from the funder pass.
+
+**The rungs that fail are not the ones a reader would guess.** Rung 1 passes 70 times and
+rung 2 only 43: owners say where far more often than they say how big, which is the same
+shape brief 11's gap analysis found from the other side — thirty of forty-seven entries
+there failed on capacity alone. **What owners publish is a place and a date; what they do
+not publish is a rating and a decision.**
+
+**D-C12. THE ONE PROJECT THAT VISIBLY STOPPED IS NOT COUNTED AS STOPPED, BECAUSE THE
+SPEAKER IS A TRADE TITLE.** Gigastack at Immingham is held by this register as `paused`
+from 18 August 2023, and the source is Offshore Energy reporting that Phillips 66 and
+Ørsted withdrew the bid from the United Kingdom's first allocation round. The outcome rules
+admit the owner, a permit authority or a regulator and nobody else, so both Gigastack
+entries carry `paused: yes` and an outcome read off the announced start instead. ITM
+Power's own page, re-read in 2026, is still the 2022 phase-2 release.
+
+**The only `stopped` in 255 is Synkero**, and it is stopped because SkyNRG says so on its
+own page: "Grid congestion and the resulting limitations for obtaining a grid connection
+for the project. Consequently, the project is on hold so that these issues can be addressed
+before development continues." **A pause with no resumption date**, which is the clause the
+brief's author chose and which decides this entry and no other.
+
+**ONE PROJECT IN 255 HAS AN OWNER-STATED STOP ON FILE. That is a finding about attrition
+reporting, not about attrition**: the projects that disappear do not announce it, which is
+what rule 17 said in 2026 and what this test measures at a scale rule 17 could not.
+
+### Rulings of 18 September 2026, brief 13 — the amendment, after the reading
+
+**D-C13. THE OUTCOME DEFINITIONS ARE AMENDED AT COMMIT
+e062b50916bd261cd529c8dce7cd6c6b0ee2db09, AFTER THE READING, AND THIS ENTRY IS THE RECORD
+THAT THEY WERE.** D-C1 froze them at 58ce11f before a single outcome was read, and the
+freeze did its job: the definitions were applied as written, the table was produced under
+them, and the gap the reading exposed is on the record as Q12 rather than as a quiet edit.
+**That is the difference between an instrument tuned to its answer and an instrument
+corrected by it.**
+
+**WHAT THE FREEZE BOUGHT AND WHAT IT COST.** It bought a table nobody can accuse of having
+been fitted: `pending` and `delayed` were recomputed mechanically from the columns by
+`check_hydrogen_test.py`, so those two classes are checkable without trusting the reader.
+It cost one word doing three jobs. Under the frozen six, **159 of 255 entries were
+`unread`**, and that count covered:
+
+  - a publisher that refuses this register's declared reader;
+  - an owner whose site answers perfectly, is dated and current, and has not named this
+    project since before the cut-off;
+  - an entry for which this register has never known an owner's domain to ask at all.
+
+**The first is a fact about reading. The second is a fact about the project.** An owner
+publishing weekly and silent on a plant for three years has told a reader something, and
+the frozen vocabulary had nowhere to put it. The third is neither: it is the absence of a
+measurement, and it was being counted with a refusal, which is at least a measurement.
+
+**THE FROZEN RULING IS NOT EDITED AND ITS HASH STILL VERIFIES.** Its SHA-256 over the same
+span — from its `###` heading to the line before the amendment's heading, which is where
+`## Sector perimeters` used to be — is still
+`b851091f42fe9ed66722013f17417b8cd7ec1bc293a5db449438638b78c93ef7`. The amendment's own
+hash is `8c9c72e5ea55a8202d591c80854de5ecdc43b52903ce70c045004645fd0158b7`, which is its
+second form: the first, `632fb57d…`, said only "a readable owner document", and the
+reading showed that six entries qualified for a date class on the strength of an owner site
+that answers and no longer mentions the plant. The clause now reads "about this entry", and
+those six are `silent`. **BOTH TABLES
+ARE COMPUTED AND PRINTED ON EVERY RUN** — the outcome distribution under the frozen
+definitions and under the amended ones, side by side, with the reclassification counted
+between them — so the paper can report the change rather than inherit it. The csv carries
+both columns, `outcome_frozen` beside `outcome`, and the gate checks that the frozen column
+is still what the frozen rules give.
+
+**WHAT THE AMENDMENT DOES NOT TOUCH.** The rung tests, frozen at a9542fe under D-B1, are
+unchanged and no cell moved. The assessment date is unchanged. `operating`, `committed`,
+`pending`, `delayed` and `stopped` keep the words they were frozen with; what is added is a
+precedence between them, a seventh value, and a narrowing of the eighth.
+
+**D-C14. A CLAIM BY ANYBODY BUT THE OWNER IS LISTED AND NEVER SCORED, AND THE COUNT THAT
+MATTERS IS HOW MANY PLANTS MIGHT BE RUNNING UNACKNOWLEDGED.** The speaker rule stands: the
+test counts owner statements. But a regulator, a grid operator, a funder or a trade title
+stating that a plant is operating, that FID was taken or that construction has begun is
+worth recording as a CLAIM against the entry, with its speaker, because a reader of the
+attrition question needs to know how much of the picture rests on speakers this test does
+not admit.
+
+**THE COUNT IS THREE CLAIMS ACROSS THREE ENTRIES, AND ONE OF THEM MATTERS MORE THAN THE
+OTHER TWO.** Offshore Energy's halt of Gigastack is carried against both of that project's
+phases, and Renewables Now's "Austria's first green hydrogen production site has commenced
+operations in Styria" is carried against ref 2029 — **the only entry in 255 whose OPERATION
+rests on nobody but a trade title.** No page of Energie Steiermark's is on file, so the
+outcome stays `unread` and the claim sits beside it. One plant in 255 may be running with
+its owner not having told this register so, and that number is printed on every run rather
+than left to be inferred from the table's silence.
+
+**The mirror case is listed too, and it is the owner speaking.** RWE says the first
+hydrogen produced at Lingen has reached Marl, on 4 August 2026, and refs 885 and 1436 are
+`committed` rather than `operating` — because the same owner calls the plant's state
+commissioning and the frozen definition keeps commissioning out of operation. **One plant
+whose owner says it has produced hydrogen and that the test does not count as operating;
+one plant that a trade title says is running and whose owner has said nothing.** Between
+them they are the whole of what an owner-statement test can and cannot see.
+
+**Gigastack is the case that fixes the shape.** It is held `paused` from 18 August 2023 on
+Offshore Energy's reporting, and it stays where it is: a trade title is a claim, the
+outcome reads off the announced start, and **the owner look is queued on the row** under
+the rule that opened one for Catalina — the rule it is opened under, why, and the pages
+somebody is to read, each as an object so `check_links` walks it.
+
 ### Rulings of 15 September 2026 — the ladder was measuring its own reading
 
 Four corrections, and three of them are the same mistake: **a cell reported a fact about a
