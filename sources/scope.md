@@ -2531,3 +2531,32 @@ entitled to push.
 `check_links` reaches publishers from the prebuild chain because a link that 403s is the
 thing it exists to catch, and the build image has network. Nothing else in the chain may
 depend on a fetch succeeding.
+
+### The rule is enforced, not just written
+
+**This rule was prose for one push, and prose does not fail a build.** The audit that came
+with it was a one-off measurement — true on the day, never repeated, and no help against
+the next step that reaches for a workbook.
+
+`check_build_image.py` runs in the pre-push chain and makes it mechanical. It unpacks
+`git archive HEAD` into a temporary tree — **tracked files and nothing else, which is
+exactly what a deployment checks out** — symlinks `node_modules`, since the deployment runs
+`npm install`, blocks every third-party package `requirements-gates.txt` does not name, and
+runs the prebuild chain there.
+
+**Both halves of the rule are checked, because there are two ways to break it.** A step may
+import something the image lacks, or read a file that was never committed; the sandbox
+catches either, and the second is the one a package-only check would miss.
+
+**The block list is derived and never typed.** Every third-party import anywhere in
+`sources/` is read out of the code, and whatever `requirements-gates.txt` does not name is
+blocked — so a package added next month is blocked the day it appears. A hand-kept list
+would have to be remembered, and not remembering is precisely the failure being prevented.
+
+**The step list is parsed from `web/package.json`**, for the same reason: a copy would
+drift from the chain it claims to check, and a gate that checks yesterday's chain reports
+green about something nobody runs.
+
+**It costs about forty seconds**, and it is verified against the failure that caused the
+rule: restoring the `d96903a` shape on a scratch commit makes it fail with the same
+`ImportError` Vercel produced, naming the step.

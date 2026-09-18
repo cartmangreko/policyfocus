@@ -87,7 +87,14 @@ run_stage build
 #
 # EACH ONE PASSES QUIETLY ON A MACHINE THAT LACKS ITS INPUTS, because a contributor
 # without the workbooks is still entitled to push.
-for check in check_hydrogen_workbook; do
+#
+# check_build_image IS THE RULE MADE MECHANICAL. It unpacks `git archive HEAD` into a
+# temporary tree -- tracked files and nothing else, which is what a deployment checks
+# out -- blocks every third-party package requirements-gates.txt does not name, and
+# runs the prebuild chain there. It adds about forty seconds and it is the only thing
+# that will catch the next step that reaches for a workbook; scope.md's rule is prose,
+# and prose does not fail a push.
+for check in check_hydrogen_workbook check_build_image; do
   if ! python3 "$root/sources/$check.py" >>"$log" 2>&1; then
     echo >&2
     echo "pre-push: $check FAILED. Nothing was pushed." >&2
@@ -100,4 +107,4 @@ for check in check_hydrogen_workbook; do
 done
 
 echo "pre-push: gate chain green — prebuild, build and postbuild, $(( $(date +%s) - started ))s."
-echo "pre-push: local-only checks green — check_hydrogen_workbook."
+echo "pre-push: local-only checks green — check_hydrogen_workbook, check_build_image."
