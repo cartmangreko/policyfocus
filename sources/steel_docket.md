@@ -288,6 +288,12 @@ carries 21 steel rows, and `check_sector_schema` passes.
 
 **THE TEN ARE HELD FOR TWO DIFFERENT REASONS AND THE DIFFERENCE MATTERS.**
 
+> **CORRECTED THE SAME DAY — SEE D-S12.** The six held below for a "dead" source were
+> not dead. The census had recorded a truncated URL; the pages answer 200 and the
+> bodies were in the cache all along. Seven of the ten have since landed. The
+> paragraphs below are left as written because the wrong finding was published in
+> #72 and a reader is entitled to see what it said.
+
 *Four because the admitting document does not state the leg the census recorded.* This is
 what writing a row out of a census entry is for — it re-reads the sentence against the
 claim.
@@ -342,3 +348,66 @@ stood behind it. And HyIron's entry carried no proposed id at all, so when
 `hyiron-lingen` landed, the population grew a second line for the same works — the
 admitted count read 26 against a census that says 25. Both are fixed in the builders, and
 the population is 147 again with 25 admitted.
+
+## Rulings of 20 September 2026, later the same day
+
+**D-S12. THE SIX SOURCES DID NOT EVAPORATE. THE CENSUS WROTE DOWN THE WRONG URL, AND
+D-S10 SAID THE OPPOSITE.** Earlier today this docket recorded that six admitting sources
+had gone 404 within a week of being read, called it the stronger finding of the pass, and
+held six rows on it. **It is wrong and it is corrected here rather than quietly amended.**
+
+**WHAT ACTUALLY HAPPENED.** The census fetched the full URL and wrote a SHORTENED one onto
+the entry. `lkab.com/…/announced-important-milestone` is not a page; `…-important-
+milestone-for-lkabs-development` is, and answers 200. The same for Vargas on Stegra Spain,
+Kallanish on Piombino, and both ArcelorMittal captures. **Every one of the five was read
+on 15 or 16 September, answers 200 on 20 September, and the verbatim on the entry is in
+the cached body of the full URL.** Nothing was taken down.
+
+**THE DATES, FOR THE PAPER.** Fetched 15–16 September 2026. Probed 19 and 20 September and
+found 404 — *on the truncated form*. Re-read at the recorded full URL on 20 September: 200
+on all five, 4,095 / 15,655 / 11,373 / 10,067 / 7,722 characters. **The evaporation rate is
+zero of twenty-three, not six.** The figure that went into #72 should not be used.
+
+**HOW A WRONG FINDING GOT THAT FAR.** The probe was built from the entry's own `source`
+field and never compared against the fetch record beside it — and the fetch record is the
+thing that says what was actually read. **A citation and a fetch that disagree is exactly
+what a cache index is for catching**, and this pass had both files open and did not put
+them side by side. The finding was also flattering: "the web rots faster than a census can
+write" is a better sentence than "we truncated a URL", which is a reason to distrust it
+rather than to publish it.
+
+**THE AUDIT, AND IT IS NOT ONLY THOSE SIX.** Comparing every steel entry's `source`
+against the census-era fetch records: **16 exact, 13 that no census fetch matches, 11 whose
+source was read in another pass**. Twelve of the thirteen are repointed — a slug cut
+mid-word in eleven, and Kallanish's Piombino URL rewritten rather than merely cut. Two
+domain roots are left alone, because a root is a citation and not a truncation. **They span
+every class**: five admitted, three named-not-admitted, five perimeter exclusions. The
+class-bearing verbatim is in the cached body of the corrected URL in every case.
+
+**D-S13. CAPTURE AT A STEEL WORKS IS A STEEL PROJECT, and the perimeter now says so.** A
+fifth leg: capture on the emissions of an iron- or steelmaking works, company-confirmed at
+a named site, on the same footing as capture at a cement works. It follows from the rule of
+24 August — capture scores in the capturing sector — which had never been written into
+this sector. **The gap was visible in the register before it was visible in the rules**:
+`3d-dunkirk` has sat here as a steel row for capture on a blast furnace while the census
+refused Marcegaglia's AdriatiCO2 for being capture rather than direct reduction. One of the
+two readings had to be wrong and it was the census's.
+
+**AdriatiCO2 lands as `adriatico2-ravenna`**, route `carbon capture at works`, admitted by
+the funder at EUR 31,238,542, owner leg open, `storage.unresolved` with the funder's own
+sentence as the source that fails to name a destination, and an owner look under rule 17.
+Question S6 stays open with it.
+
+**D-S14. TWENTY OF THE TWENTY-THREE ADMISSIONS NOW HAVE A ROW, AND THE THREE THAT DO NOT
+ARE THE RULE WORKING.** ArcelorMittal Hamburg (the verbatim describes the works' existing
+DRI plant), HKM Duisburg (a raised recycling rate and hydrogen-containing gases, no
+furnace) and Hydnum Steel (an intention with no plant in it) stay held. **Their admitting
+documents are readable and do not state the leg the census recorded**, which is a different
+failure from a wrong URL and is not released by today's rulings.
+
+**D-S15. A DEAD LINK IS NOT A DEAD SOURCE, AND NO STEEL SOURCE CURRENTLY NEEDS THE RULE.**
+`dead_since` is implemented on sources and `check_links` accepts it against the cached
+body, refusing it where no body is on file or where the only body is an empty one. **Zero
+sources carry it today**, because the six that would have were never dead. The rule stands
+for when one is, and the three archived ArcelorMittal citations now carry a `snapshot` of
+the body the census read — filed out of the cache, which is what D42 keeps fetches for.

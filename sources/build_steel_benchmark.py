@@ -46,6 +46,12 @@ LANDED_BY_THIS_CENSUS = {
     "blastr-inkoo", "gravithy-fos-sur-mer", "gravithy-kristinestad",
     "liberty-dunkerque-dri", "ssab-lulea", "ssab-oxelosund", "tata-steel-ijmuiden",
     "tata-steel-port-talbot", "hyiron-lingen",
+    # LANDED 20 SEPTEMBER 2026 under the two rulings of that day. Six were held on a
+    # finding that was wrong — their URLs were truncated on the entry, not dead — and
+    # the seventh is Marcegaglia's AdriatiCO2, which the steel perimeter's new capture
+    # leg holds. sources/steel_docket.md, D-S12 and D-S13.
+    "hybrit-gallivare", "stegra-spain", "metinvest-piombino", "arcelormittal-duisburg",
+    "arcelormittal-dunkerque", "arcelormittal-fos-sur-mer", "adriatico2-ravenna",
 }
 
 ROW_ABSENCE = {
@@ -54,6 +60,10 @@ ROW_ABSENCE = {
     # entry that admits it is LeadIT's GST-016 in sources/leadit_entries.json, so no
     # entry in THIS list points at the row and that is the floor, not an oversight.
     # sources/steel_docket.md, D-S2.
+    "adriatico2-ravenna": ("admitted from the second list under the steel perimeter's "
+                           "capture leg of 20 September; GEM carries the Ravenna works "
+                           "under no forward unit and the entry that admits it is "
+                           "LeadIT's GST-158 — see leadit_entries.json"),
     "hyiron-lingen": ("admitted from the second list; below GEM's 0.5 mtpa floor, so "
                       "GEM does not carry the works — see leadit_entries.json GST-016"),
     "hybrit-pilot-lulea": "the HYBRIT pilot at Luleå is below GEM's 0.5 mtpa floor; the "

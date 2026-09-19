@@ -144,7 +144,7 @@ def _age_days(date: str) -> int | None:
 
 def urls_in(obj, path="") -> list[tuple[str, str, bool, str | None, dict | None]]:
     """Walk any of the transition files and yield
-    (url, where, archived, snapshot, refused).
+    (url, where, archived, snapshot, dead_since, refused).
     Written as a walk rather than as per-kind knowledge because the URL-bearing
     fields differ per kind and a new one should be checked the day it is added,
     not the day someone remembers to update this function."""
@@ -153,6 +153,7 @@ def urls_in(obj, path="") -> list[tuple[str, str, bool, str | None, dict | None]
         url = obj.get("url") or obj.get("source_url")
         if isinstance(url, str) and url.startswith(("http://", "https://")):
             found.append((url, path, bool(obj.get("archived")), obj.get("snapshot"),
+                          obj.get("dead_since"),
                           obj.get(REFUSED_STATE)))
         for k, v in obj.items():
             found += urls_in(v, f"{path}.{k}" if path else k)
@@ -174,8 +175,20 @@ def main() -> int:
     # reader is a fact about the publisher, recorded per source with the date a
     # person last opened it; see REFUSED_STATE.
     declared: dict[str, tuple[str, dict]] = {}
+    # A DEAD LINK IS NOT A DEAD SOURCE, ruled 20 September 2026. Where a source
+    # carries `dead_since`, the publisher has taken down a page this register READ
+    # and cached: the body is on file under its SHA-256 in the sector's index, and
+    # that copy is the document. The gate checks the copy exists rather than
+    # checking the URL still answers. sources/scope.md, "A dead link is not a dead
+    # source". A 200 with an empty body is NOT covered: `dead_since` says a page was
+    # removed, and it cannot say that about a page nobody got.
+    on_file: list[tuple[str, str, dict]] = []
     for kind in ("technology", "bottleneck", "parameter", "project"):
-        for url, where, is_archived, snapshot, refused in urls_in(sm.load(kind), kind):
+        for url, where, is_archived, snapshot, dead_since, refused in urls_in(
+                sm.load(kind), kind):
+            if dead_since is not None:
+                on_file.append((url, where, dead_since))
+                continue
             if is_archived:
                 archived.append((url, snapshot or "NO SNAPSHOT PATH"))
                 continue
@@ -239,6 +252,28 @@ def main() -> int:
         if snapshot == "NO SNAPSHOT PATH" or not (sm.ROOT / snapshot).exists():
             dead.append(f"{url} — marked archived with no readable snapshot ({snapshot})")
 
+    # THE CACHED BODY IS THE COPY ON FILE. Every fetch this register makes lands in
+    # a sector cache index with its SHA-256 and the bytes beside it, so a source
+    # whose URL has since gone is checkable against the copy rather than the URL.
+    import json as _json
+    cached: dict[str, list[dict]] = {}
+    for idxp in sorted((sm.ROOT / "sources").glob("cache/*/index.json")):
+        for rec in _json.loads(idxp.read_text(encoding="utf-8")).get("fetches", []):
+            if rec.get("sha256") and (idxp.parent / rec["sha256"]).exists():
+                cached.setdefault(rec["url"], []).append(rec)
+    for url, where, ds in on_file:
+        recs = cached.get(url) or []
+        readable = [r for r in recs if "empty body" not in str(r.get("outcome", ""))]
+        if not recs:
+            dead.append(f"{url} — carries dead_since and no cached body is on file "
+                        f"({where}); a citation whose document nobody holds is a "
+                        f"citation nobody can check")
+        elif not readable:
+            dead.append(f"{url} — carries dead_since and the only cached body is an "
+                        f"EMPTY one ({where}); a 200 with an empty body is a refusal on "
+                        f"the day it was made, and a later 404 does not turn a refusal "
+                        f"into a reading")
+
     # A SOURCE THAT DECLARES THE STATE AND IS THEN SERVED. Reported, because the
     # state is a claim about the publisher and the publisher has just contradicted
     # it: the block can come off, and leaving it on would keep a 403 excused that
@@ -248,7 +283,12 @@ def main() -> int:
             soft.append(f"{url} — declares {REFUSED_STATE} and answered normally; "
                         f"the state can be removed  ({where})")
 
-    print(f"check_links: {len(seen)} live URLs checked, {len(archived)} archived")
+    print(f"check_links: {len(seen)} live URLs checked, {len(archived)} archived, "
+          f"{len(on_file)} read before the publisher removed them and held on the "
+          f"cached body")
+    for url, where, ds in sorted(on_file):
+        print(f"  dead_since {ds.get('on', '?') if isinstance(ds, dict) else ds}  "
+              f"{url[:96]}")
     if refused_ok:
         print(f"\npublisher refuses a declared reader ({len(refused_ok)}) — verified by hand, "
               f"not failed:")

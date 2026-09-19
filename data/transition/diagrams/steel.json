@@ -6,7 +6,7 @@
   ],
   "sector": "steel",
   "width": 1160,
-  "height": 1142,
+  "height": 1520,
   "columns": [
     {
       "kind": "measure",
@@ -26,7 +26,7 @@
     {
       "kind": "project",
       "x": 900,
-      "count": 21
+      "count": 28
     }
   ],
   "nodes": [
@@ -40,7 +40,7 @@
       "direction": "cost",
       "measure_id": "ets:CBAM-01",
       "x": 0,
-      "y": 309.0,
+      "y": 498.0,
       "w": 236,
       "h": 38
     },
@@ -54,7 +54,7 @@
       "direction": "support",
       "measure_id": "ets:FND-03",
       "x": 0,
-      "y": 363.0,
+      "y": 552.0,
       "w": 236,
       "h": 38
     },
@@ -68,7 +68,7 @@
       "direction": null,
       "measure_id": "iaa:LM-03a",
       "x": 0,
-      "y": 417.0,
+      "y": 606.0,
       "w": 236,
       "h": 38
     },
@@ -82,7 +82,7 @@
       "direction": null,
       "measure_id": "iaa:LM-03b",
       "x": 0,
-      "y": 471.0,
+      "y": 660.0,
       "w": 236,
       "h": 38
     },
@@ -96,7 +96,7 @@
       "direction": null,
       "measure_id": "nzia:CO2-02",
       "x": 0,
-      "y": 525.0,
+      "y": 714.0,
       "w": 236,
       "h": 38
     },
@@ -110,7 +110,7 @@
       "direction": null,
       "measure_id": "cbam:FIN-03",
       "x": 0,
-      "y": 579.0,
+      "y": 768.0,
       "w": 236,
       "h": 38
     },
@@ -124,7 +124,7 @@
       "direction": null,
       "measure_id": "iaa:LM-01",
       "x": 0,
-      "y": 633.0,
+      "y": 822.0,
       "w": 236,
       "h": 38
     },
@@ -138,7 +138,7 @@
       "direction": null,
       "measure_id": "iaa:LM-06a",
       "x": 0,
-      "y": 687.0,
+      "y": 876.0,
       "w": 236,
       "h": 38
     },
@@ -152,7 +152,7 @@
       "direction": null,
       "measure_id": "nzia:CO2-10",
       "x": 0,
-      "y": 741.0,
+      "y": 930.0,
       "w": 236,
       "h": 38
     },
@@ -166,7 +166,7 @@
       "direction": null,
       "measure_id": "nzia:SP-02",
       "x": 0,
-      "y": 795.0,
+      "y": 984.0,
       "w": 236,
       "h": 38
     },
@@ -178,19 +178,7 @@
       "href": "#bottleneck-steel-scrap-availability",
       "type": "market",
       "x": 300,
-      "y": 417.0,
-      "w": 236,
-      "h": 38
-    },
-    {
-      "id": "bottleneck:steel-conversion-finance",
-      "kind": "bottleneck",
-      "label": "Conversion cost against site economics",
-      "sub": "financial",
-      "href": "#bottleneck-steel-conversion-finance",
-      "type": "financial",
-      "x": 300,
-      "y": 471.0,
+      "y": 606.0,
       "w": 236,
       "h": 38
     },
@@ -202,7 +190,19 @@
       "href": "#bottleneck-steel-co2-transport-storage-network",
       "type": "infrastructure",
       "x": 300,
-      "y": 525.0,
+      "y": 660.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "bottleneck:steel-conversion-finance",
+      "kind": "bottleneck",
+      "label": "Conversion cost against site economics",
+      "sub": "financial",
+      "href": "#bottleneck-steel-conversion-finance",
+      "type": "financial",
+      "x": 300,
+      "y": 714.0,
       "w": 236,
       "h": 38
     },
@@ -214,7 +214,7 @@
       "href": "#bottleneck-steel-hydrogen-supply",
       "type": "infrastructure",
       "x": 300,
-      "y": 579.0,
+      "y": 768.0,
       "w": 236,
       "h": 38
     },
@@ -226,7 +226,7 @@
       "href": "#bottleneck-steel-subsidy-dependence",
       "type": "political",
       "x": 300,
-      "y": 633.0,
+      "y": 822.0,
       "w": 236,
       "h": 38
     },
@@ -238,7 +238,7 @@
       "href": "#bottleneck-steel-green-premium",
       "type": "market",
       "x": 300,
-      "y": 687.0,
+      "y": 876.0,
       "w": 236,
       "h": 38
     },
@@ -250,19 +250,7 @@
       "href": "#technology-eaf-scrap",
       "readiness": "commercial",
       "x": 600,
-      "y": 417.0,
-      "w": 236,
-      "h": 38
-    },
-    {
-      "id": "technology:ccs-blast-furnace",
-      "kind": "technology",
-      "label": "Carbon capture on blast-furnace gas",
-      "sub": "pilot",
-      "href": "#technology-ccs-blast-furnace",
-      "readiness": "pilot",
-      "x": 600,
-      "y": 471.0,
+      "y": 606.0,
       "w": 236,
       "h": 38
     },
@@ -274,7 +262,7 @@
       "href": "#technology-co2-transport-storage",
       "readiness": "early-commercial",
       "x": 600,
-      "y": 525.0,
+      "y": 660.0,
       "w": 236,
       "h": 38
     },
@@ -286,7 +274,19 @@
       "href": "#technology-dri-eaf",
       "readiness": "demonstration",
       "x": 600,
-      "y": 579.0,
+      "y": 714.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "technology:ccs-blast-furnace",
+      "kind": "technology",
+      "label": "Carbon capture on blast-furnace gas",
+      "sub": "pilot",
+      "href": "#technology-ccs-blast-furnace",
+      "readiness": "pilot",
+      "x": 600,
+      "y": 768.0,
       "w": 236,
       "h": 38
     },
@@ -298,7 +298,7 @@
       "href": "#technology-h2-dri",
       "readiness": "pilot",
       "x": 600,
-      "y": 633.0,
+      "y": 822.0,
       "w": 236,
       "h": 38
     },
@@ -310,7 +310,7 @@
       "href": "#technology-hydrogen-supply",
       "readiness": "demonstration",
       "x": 600,
-      "y": 687.0,
+      "y": 876.0,
       "w": 236,
       "h": 38
     },
@@ -363,6 +363,18 @@
       "h": 38
     },
     {
+      "id": "project:arcelormittal-fos-sur-mer",
+      "kind": "project",
+      "label": "ArcelorMittal Méditerranée Fos sur Mer",
+      "sub": "FR · announced",
+      "href": "/projects/arcelormittal-fos-sur-mer",
+      "status": "announced",
+      "x": 900,
+      "y": 228.0,
+      "w": 236,
+      "h": 38
+    },
+    {
       "id": "project:greentec-donawitz",
       "kind": "project",
       "label": "greentec steel Donawitz",
@@ -370,7 +382,7 @@
       "href": "/projects/greentec-donawitz",
       "status": "construction",
       "x": 900,
-      "y": 228.0,
+      "y": 282.0,
       "w": 236,
       "h": 38
     },
@@ -382,7 +394,19 @@
       "href": "/projects/greentec-linz",
       "status": "construction",
       "x": 900,
-      "y": 282.0,
+      "y": 336.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:metinvest-piombino",
+      "kind": "project",
+      "label": "Metinvest Piombino",
+      "sub": "IT · announced",
+      "href": "/projects/metinvest-piombino",
+      "status": "announced",
+      "x": 900,
+      "y": 390.0,
       "w": 236,
       "h": 38
     },
@@ -394,7 +418,7 @@
       "href": "/projects/tata-steel-port-talbot",
       "status": "construction",
       "x": 900,
-      "y": 336.0,
+      "y": 444.0,
       "w": 236,
       "h": 38
     },
@@ -406,7 +430,7 @@
       "href": "/projects/3d-dunkirk",
       "status": "operating",
       "x": 900,
-      "y": 390.0,
+      "y": 498.0,
       "w": 236,
       "h": 38
     },
@@ -418,7 +442,7 @@
       "href": "/projects/power4steel-dillingen",
       "status": "construction",
       "x": 900,
-      "y": 444.0,
+      "y": 552.0,
       "w": 236,
       "h": 38
     },
@@ -430,7 +454,31 @@
       "href": "/projects/arcelormittal-gijon",
       "status": "announced",
       "x": 900,
-      "y": 498.0,
+      "y": 606.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:arcelormittal-duisburg",
+      "kind": "project",
+      "label": "ArcelorMittal Duisburg",
+      "sub": "DE · announced",
+      "href": "/projects/arcelormittal-duisburg",
+      "status": "announced",
+      "x": 900,
+      "y": 660.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:arcelormittal-dunkerque",
+      "kind": "project",
+      "label": "ArcelorMittal Dunkerque",
+      "sub": "FR · announced",
+      "href": "/projects/arcelormittal-dunkerque",
+      "status": "announced",
+      "x": 900,
+      "y": 714.0,
       "w": 236,
       "h": 38
     },
@@ -442,7 +490,7 @@
       "href": "/projects/zesta-gent",
       "status": "funded",
       "x": 900,
-      "y": 552.0,
+      "y": 768.0,
       "w": 236,
       "h": 38
     },
@@ -454,7 +502,7 @@
       "href": "/projects/blastr-inkoo",
       "status": "announced",
       "x": 900,
-      "y": 606.0,
+      "y": 822.0,
       "w": 236,
       "h": 38
     },
@@ -466,7 +514,7 @@
       "href": "/projects/power4steel-voelklingen",
       "status": "construction",
       "x": 900,
-      "y": 660.0,
+      "y": 876.0,
       "w": 236,
       "h": 38
     },
@@ -478,7 +526,7 @@
       "href": "/projects/salcos-salzgitter",
       "status": "construction",
       "x": 900,
-      "y": 714.0,
+      "y": 930.0,
       "w": 236,
       "h": 38
     },
@@ -490,7 +538,7 @@
       "href": "/projects/stegra-boden",
       "status": "construction",
       "x": 900,
-      "y": 768.0,
+      "y": 984.0,
       "w": 236,
       "h": 38
     },
@@ -502,7 +550,7 @@
       "href": "/projects/tkh2steel-duisburg",
       "status": "construction",
       "x": 900,
-      "y": 822.0,
+      "y": 1038.0,
       "w": 236,
       "h": 38
     },
@@ -514,7 +562,7 @@
       "href": "/projects/hybrit-pilot-lulea",
       "status": "operating",
       "x": 900,
-      "y": 876.0,
+      "y": 1092.0,
       "w": 236,
       "h": 38
     },
@@ -526,7 +574,31 @@
       "href": "/projects/liberty-dunkerque-dri",
       "status": "announced",
       "x": 900,
-      "y": 930.0,
+      "y": 1146.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:adriatico2-ravenna",
+      "kind": "project",
+      "label": "Marcegaglia AdriatiCO2 Ravenna",
+      "sub": "IT · funded",
+      "href": "/projects/adriatico2-ravenna",
+      "status": "funded",
+      "x": 900,
+      "y": 1200.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:stegra-spain",
+      "kind": "project",
+      "label": "Stegra Spain",
+      "sub": "ES · announced",
+      "href": "/projects/stegra-spain",
+      "status": "announced",
+      "x": 900,
+      "y": 1254.0,
       "w": 236,
       "h": 38
     },
@@ -538,7 +610,7 @@
       "href": "/projects/gravithy-fos-sur-mer",
       "status": "announced",
       "x": 900,
-      "y": 984.0,
+      "y": 1308.0,
       "w": 236,
       "h": 38
     },
@@ -550,7 +622,19 @@
       "href": "/projects/gravithy-kristinestad",
       "status": "announced",
       "x": 900,
-      "y": 1038.0,
+      "y": 1362.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:hybrit-gallivare",
+      "kind": "project",
+      "label": "HYBRIT Gallivare sponge",
+      "sub": "SE · announced",
+      "href": "/projects/hybrit-gallivare",
+      "status": "announced",
+      "x": 900,
+      "y": 1416.0,
       "w": 236,
       "h": 38
     },
@@ -562,7 +646,7 @@
       "href": "/projects/hyiron-lingen",
       "status": "construction",
       "x": 900,
-      "y": 1092.0,
+      "y": 1470.0,
       "w": 236,
       "h": 38
     }
@@ -641,8 +725,44 @@
       "weight": 1
     },
     {
+      "from": "project:adriatico2-ravenna",
+      "to": "technology:ccs-blast-furnace",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
       "from": "project:am-bremen-eisenhuettenstadt",
       "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:arcelormittal-duisburg",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:arcelormittal-duisburg",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:arcelormittal-dunkerque",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:arcelormittal-dunkerque",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:arcelormittal-fos-sur-mer",
+      "to": "technology:eaf-scrap",
       "rel": "deploys",
       "weight": 1
     },
@@ -695,6 +815,12 @@
       "weight": 1
     },
     {
+      "from": "project:hybrit-gallivare",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
       "from": "project:hybrit-pilot-lulea",
       "to": "technology:h2-dri",
       "rel": "deploys",
@@ -721,6 +847,12 @@
     {
       "from": "project:liberty-dunkerque-dri",
       "to": "technology:hydrogen-supply",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:metinvest-piombino",
+      "to": "technology:eaf-scrap",
       "rel": "deploys",
       "weight": 1
     },
@@ -792,6 +924,18 @@
     },
     {
       "from": "project:stegra-boden",
+      "to": "technology:hydrogen-supply",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:stegra-spain",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:stegra-spain",
       "to": "technology:hydrogen-supply",
       "rel": "deploys",
       "weight": 1

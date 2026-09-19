@@ -29189,6 +29189,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:adriatico2-ravenna",
+  "to": "technology:ccs-blast-furnace",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=adriatico2-ravenna].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:agratas-bridgwater",
   "to": "technology:cell-manufacturing",
   "since": "2025-08-22",
@@ -29285,6 +29295,56 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=aramis].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:arcelormittal-duisburg",
+  "to": "technology:dri-eaf",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-duisburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:arcelormittal-duisburg",
+  "to": "technology:h2-dri",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-duisburg].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:arcelormittal-dunkerque",
+  "to": "technology:dri-eaf",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-dunkerque].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:arcelormittal-dunkerque",
+  "to": "technology:h2-dri",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-dunkerque].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:arcelormittal-fos-sur-mer",
+  "to": "technology:eaf-scrap",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-fos-sur-mer].technology"
   }
  },
  {
@@ -30119,6 +30179,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:hybrit-gallivare",
+  "to": "technology:h2-dri",
+  "since": "2026-09-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hybrit-gallivare].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:hybrit-pilot-lulea",
   "to": "technology:h2-dri",
   "since": "2021-06-21",
@@ -30395,6 +30465,16 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=meld-saltend-hull].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:metinvest-piombino",
+  "to": "technology:eaf-scrap",
+  "since": "2026-09-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=metinvest-piombino].technology"
   }
  },
  {
@@ -31015,6 +31095,26 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=stegra-boden].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:stegra-spain",
+  "to": "technology:h2-dri",
+  "since": "2026-09-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=stegra-spain].technology"
+  }
+ },
+ {
+  "rel": "deploys",
+  "from": "project:stegra-spain",
+  "to": "technology:hydrogen-supply",
+  "since": "2026-09-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=stegra-spain].technology"
   }
  },
  {
@@ -33898,6 +33998,28 @@
  },
  {
   "rel": "in",
+  "from": "project:adriatico2-ravenna",
+  "to": "country:IT",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=adriatico2-ravenna].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:adriatico2-ravenna",
+  "to": "sector:steel",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=adriatico2-ravenna].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:agratas-bridgwater",
   "to": "country:GB",
   "since": "2025-08-22",
@@ -34113,6 +34235,72 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=aramis].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:arcelormittal-duisburg",
+  "to": "country:DE",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-duisburg].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:arcelormittal-duisburg",
+  "to": "sector:steel",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-duisburg].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:arcelormittal-dunkerque",
+  "to": "country:FR",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-dunkerque].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:arcelormittal-dunkerque",
+  "to": "sector:steel",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-dunkerque].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:arcelormittal-fos-sur-mer",
+  "to": "country:FR",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-fos-sur-mer].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:arcelormittal-fos-sur-mer",
+  "to": "sector:steel",
+  "since": "2026-09-16",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=arcelormittal-fos-sur-mer].sector"
   },
   "basis": "sector"
  },
@@ -35900,6 +36088,28 @@
  },
  {
   "rel": "in",
+  "from": "project:hybrit-gallivare",
+  "to": "country:SE",
+  "since": "2026-09-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hybrit-gallivare].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:hybrit-gallivare",
+  "to": "sector:steel",
+  "since": "2026-09-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=hybrit-gallivare].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
   "from": "project:hybrit-pilot-lulea",
   "to": "country:SE",
   "since": "2021-06-21",
@@ -36401,6 +36611,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=meld-saltend-hull].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:metinvest-piombino",
+  "to": "country:IT",
+  "since": "2026-09-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=metinvest-piombino].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:metinvest-piombino",
+  "to": "sector:steel",
+  "since": "2026-09-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=metinvest-piombino].sector"
   },
   "basis": "sector"
  },
@@ -37567,6 +37799,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=stegra-boden].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:stegra-spain",
+  "to": "country:ES",
+  "since": "2026-09-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=stegra-spain].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:stegra-spain",
+  "to": "sector:steel",
+  "since": "2026-09-15",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=stegra-spain].sector"
   },
   "basis": "sector"
  },
