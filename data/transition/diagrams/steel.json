@@ -6,7 +6,7 @@
   ],
   "sector": "steel",
   "width": 1160,
-  "height": 548,
+  "height": 1142,
   "columns": [
     {
       "kind": "measure",
@@ -26,7 +26,7 @@
     {
       "kind": "project",
       "x": 900,
-      "count": 8
+      "count": 21
     }
   ],
   "nodes": [
@@ -40,7 +40,7 @@
       "direction": "cost",
       "measure_id": "ets:CBAM-01",
       "x": 0,
-      "y": 12.0,
+      "y": 309.0,
       "w": 236,
       "h": 38
     },
@@ -54,7 +54,7 @@
       "direction": "support",
       "measure_id": "ets:FND-03",
       "x": 0,
-      "y": 66.0,
+      "y": 363.0,
       "w": 236,
       "h": 38
     },
@@ -68,7 +68,7 @@
       "direction": null,
       "measure_id": "iaa:LM-03a",
       "x": 0,
-      "y": 120.0,
+      "y": 417.0,
       "w": 236,
       "h": 38
     },
@@ -82,7 +82,7 @@
       "direction": null,
       "measure_id": "iaa:LM-03b",
       "x": 0,
-      "y": 174.0,
+      "y": 471.0,
       "w": 236,
       "h": 38
     },
@@ -96,7 +96,7 @@
       "direction": null,
       "measure_id": "nzia:CO2-02",
       "x": 0,
-      "y": 228.0,
+      "y": 525.0,
       "w": 236,
       "h": 38
     },
@@ -110,7 +110,7 @@
       "direction": null,
       "measure_id": "cbam:FIN-03",
       "x": 0,
-      "y": 282.0,
+      "y": 579.0,
       "w": 236,
       "h": 38
     },
@@ -124,7 +124,7 @@
       "direction": null,
       "measure_id": "iaa:LM-01",
       "x": 0,
-      "y": 336.0,
+      "y": 633.0,
       "w": 236,
       "h": 38
     },
@@ -138,7 +138,7 @@
       "direction": null,
       "measure_id": "iaa:LM-06a",
       "x": 0,
-      "y": 390.0,
+      "y": 687.0,
       "w": 236,
       "h": 38
     },
@@ -152,7 +152,7 @@
       "direction": null,
       "measure_id": "nzia:CO2-10",
       "x": 0,
-      "y": 444.0,
+      "y": 741.0,
       "w": 236,
       "h": 38
     },
@@ -166,7 +166,7 @@
       "direction": null,
       "measure_id": "nzia:SP-02",
       "x": 0,
-      "y": 498.0,
+      "y": 795.0,
       "w": 236,
       "h": 38
     },
@@ -178,7 +178,7 @@
       "href": "#bottleneck-steel-scrap-availability",
       "type": "market",
       "x": 300,
-      "y": 120.0,
+      "y": 417.0,
       "w": 236,
       "h": 38
     },
@@ -190,7 +190,7 @@
       "href": "#bottleneck-steel-conversion-finance",
       "type": "financial",
       "x": 300,
-      "y": 174.0,
+      "y": 471.0,
       "w": 236,
       "h": 38
     },
@@ -202,7 +202,7 @@
       "href": "#bottleneck-steel-co2-transport-storage-network",
       "type": "infrastructure",
       "x": 300,
-      "y": 228.0,
+      "y": 525.0,
       "w": 236,
       "h": 38
     },
@@ -214,7 +214,7 @@
       "href": "#bottleneck-steel-hydrogen-supply",
       "type": "infrastructure",
       "x": 300,
-      "y": 282.0,
+      "y": 579.0,
       "w": 236,
       "h": 38
     },
@@ -226,7 +226,7 @@
       "href": "#bottleneck-steel-subsidy-dependence",
       "type": "political",
       "x": 300,
-      "y": 336.0,
+      "y": 633.0,
       "w": 236,
       "h": 38
     },
@@ -238,7 +238,7 @@
       "href": "#bottleneck-steel-green-premium",
       "type": "market",
       "x": 300,
-      "y": 390.0,
+      "y": 687.0,
       "w": 236,
       "h": 38
     },
@@ -250,7 +250,7 @@
       "href": "#technology-eaf-scrap",
       "readiness": "commercial",
       "x": 600,
-      "y": 120.0,
+      "y": 417.0,
       "w": 236,
       "h": 38
     },
@@ -262,7 +262,7 @@
       "href": "#technology-ccs-blast-furnace",
       "readiness": "pilot",
       "x": 600,
-      "y": 174.0,
+      "y": 471.0,
       "w": 236,
       "h": 38
     },
@@ -274,7 +274,7 @@
       "href": "#technology-co2-transport-storage",
       "readiness": "early-commercial",
       "x": 600,
-      "y": 228.0,
+      "y": 525.0,
       "w": 236,
       "h": 38
     },
@@ -286,7 +286,7 @@
       "href": "#technology-dri-eaf",
       "readiness": "demonstration",
       "x": 600,
-      "y": 282.0,
+      "y": 579.0,
       "w": 236,
       "h": 38
     },
@@ -298,7 +298,7 @@
       "href": "#technology-h2-dri",
       "readiness": "pilot",
       "x": 600,
-      "y": 336.0,
+      "y": 633.0,
       "w": 236,
       "h": 38
     },
@@ -310,7 +310,7 @@
       "href": "#technology-hydrogen-supply",
       "readiness": "demonstration",
       "x": 600,
-      "y": 390.0,
+      "y": 687.0,
       "w": 236,
       "h": 38
     },
@@ -322,7 +322,43 @@
       "href": "/projects/am-bremen-eisenhuettenstadt",
       "status": "cancelled",
       "x": 900,
+      "y": 12.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:ssab-lulea",
+      "kind": "project",
+      "label": "SSAB Luleå",
+      "sub": "SE · announced",
+      "href": "/projects/ssab-lulea",
+      "status": "announced",
+      "x": 900,
       "y": 66.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:ssab-oxelosund",
+      "kind": "project",
+      "label": "SSAB Oxelösund",
+      "sub": "SE · announced",
+      "href": "/projects/ssab-oxelosund",
+      "status": "announced",
+      "x": 900,
+      "y": 120.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:tata-steel-ijmuiden",
+      "kind": "project",
+      "label": "Tata Steel IJmuiden",
+      "sub": "NL · announced",
+      "href": "/projects/tata-steel-ijmuiden",
+      "status": "announced",
+      "x": 900,
+      "y": 174.0,
       "w": 236,
       "h": 38
     },
@@ -334,7 +370,7 @@
       "href": "/projects/greentec-donawitz",
       "status": "construction",
       "x": 900,
-      "y": 120.0,
+      "y": 228.0,
       "w": 236,
       "h": 38
     },
@@ -346,7 +382,19 @@
       "href": "/projects/greentec-linz",
       "status": "construction",
       "x": 900,
-      "y": 174.0,
+      "y": 282.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:tata-steel-port-talbot",
+      "kind": "project",
+      "label": "Tata Steel Port Talbot",
+      "sub": "GB · construction",
+      "href": "/projects/tata-steel-port-talbot",
+      "status": "construction",
+      "x": 900,
+      "y": 336.0,
       "w": 236,
       "h": 38
     },
@@ -358,7 +406,67 @@
       "href": "/projects/3d-dunkirk",
       "status": "operating",
       "x": 900,
-      "y": 228.0,
+      "y": 390.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:power4steel-dillingen",
+      "kind": "project",
+      "label": "AG der Dillinger Hüttenwerke Dillingen",
+      "sub": "DE · construction",
+      "href": "/projects/power4steel-dillingen",
+      "status": "construction",
+      "x": 900,
+      "y": 444.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:arcelormittal-gijon",
+      "kind": "project",
+      "label": "ArcelorMittal Asturias (Gijón)",
+      "sub": "ES · announced",
+      "href": "/projects/arcelormittal-gijon",
+      "status": "announced",
+      "x": 900,
+      "y": 498.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:zesta-gent",
+      "kind": "project",
+      "label": "ArcelorMittal Gent",
+      "sub": "BE · funded",
+      "href": "/projects/zesta-gent",
+      "status": "funded",
+      "x": 900,
+      "y": 552.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:blastr-inkoo",
+      "kind": "project",
+      "label": "Blastr Inkoo",
+      "sub": "FI · announced",
+      "href": "/projects/blastr-inkoo",
+      "status": "announced",
+      "x": 900,
+      "y": 606.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:power4steel-voelklingen",
+      "kind": "project",
+      "label": "Saarstahl Völklingen",
+      "sub": "DE · construction",
+      "href": "/projects/power4steel-voelklingen",
+      "status": "construction",
+      "x": 900,
+      "y": 660.0,
       "w": 236,
       "h": 38
     },
@@ -370,7 +478,7 @@
       "href": "/projects/salcos-salzgitter",
       "status": "construction",
       "x": 900,
-      "y": 282.0,
+      "y": 714.0,
       "w": 236,
       "h": 38
     },
@@ -382,7 +490,7 @@
       "href": "/projects/stegra-boden",
       "status": "construction",
       "x": 900,
-      "y": 336.0,
+      "y": 768.0,
       "w": 236,
       "h": 38
     },
@@ -394,7 +502,7 @@
       "href": "/projects/tkh2steel-duisburg",
       "status": "construction",
       "x": 900,
-      "y": 390.0,
+      "y": 822.0,
       "w": 236,
       "h": 38
     },
@@ -406,7 +514,55 @@
       "href": "/projects/hybrit-pilot-lulea",
       "status": "operating",
       "x": 900,
-      "y": 444.0,
+      "y": 876.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:liberty-dunkerque-dri",
+      "kind": "project",
+      "label": "Liberty Steel Dunkerque DRI plant",
+      "sub": "FR · announced",
+      "href": "/projects/liberty-dunkerque-dri",
+      "status": "announced",
+      "x": 900,
+      "y": 930.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:gravithy-fos-sur-mer",
+      "kind": "project",
+      "label": "GravitHy Fos sur Mer",
+      "sub": "FR · announced",
+      "href": "/projects/gravithy-fos-sur-mer",
+      "status": "announced",
+      "x": 900,
+      "y": 984.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:gravithy-kristinestad",
+      "kind": "project",
+      "label": "GravitHy Kristinestad",
+      "sub": "FI · announced",
+      "href": "/projects/gravithy-kristinestad",
+      "status": "announced",
+      "x": 900,
+      "y": 1038.0,
+      "w": 236,
+      "h": 38
+    },
+    {
+      "id": "project:hyiron-lingen",
+      "kind": "project",
+      "label": "HyIron - GEiSt",
+      "sub": "DE · construction",
+      "href": "/projects/hyiron-lingen",
+      "status": "construction",
+      "x": 900,
+      "y": 1092.0,
       "w": 236,
       "h": 38
     }
@@ -491,6 +647,42 @@
       "weight": 1
     },
     {
+      "from": "project:arcelormittal-gijon",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:arcelormittal-gijon",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:blastr-inkoo",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:blastr-inkoo",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:gravithy-fos-sur-mer",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:gravithy-kristinestad",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
       "from": "project:greentec-donawitz",
       "to": "technology:eaf-scrap",
       "rel": "deploys",
@@ -515,6 +707,48 @@
       "weight": 1
     },
     {
+      "from": "project:hyiron-lingen",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:liberty-dunkerque-dri",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:liberty-dunkerque-dri",
+      "to": "technology:hydrogen-supply",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:power4steel-dillingen",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:power4steel-dillingen",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:power4steel-voelklingen",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:power4steel-voelklingen",
+      "to": "technology:h2-dri",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
       "from": "project:salcos-salzgitter",
       "to": "technology:dri-eaf",
       "rel": "deploys",
@@ -529,6 +763,18 @@
     {
       "from": "project:salcos-salzgitter",
       "to": "technology:hydrogen-supply",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:ssab-lulea",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:ssab-oxelosund",
+      "to": "technology:dri-eaf",
       "rel": "deploys",
       "weight": 1
     },
@@ -551,6 +797,18 @@
       "weight": 1
     },
     {
+      "from": "project:tata-steel-ijmuiden",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:tata-steel-port-talbot",
+      "to": "technology:eaf-scrap",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
       "from": "project:tkh2steel-duisburg",
       "to": "technology:dri-eaf",
       "rel": "deploys",
@@ -565,6 +823,18 @@
     {
       "from": "project:tkh2steel-duisburg",
       "to": "technology:hydrogen-supply",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:zesta-gent",
+      "to": "technology:dri-eaf",
+      "rel": "deploys",
+      "weight": 1
+    },
+    {
+      "from": "project:zesta-gent",
+      "to": "technology:h2-dri",
       "rel": "deploys",
       "weight": 1
     },

@@ -71,7 +71,8 @@ HAND_MATCHED = {
 # leg, and where a company was read, what it said.
 NEW = {
  "GST-016": {
-   "class": "admitted", "leg": "announced DRI plant",
+   "class": "admitted",
+   "row": "hyiron-lingen", "leg": "announced DRI plant",
    "speaker": "HyIron, own site",
    "source": "https://hyiron.com/",
    "verbatim": ("The project GEiSt (German for “Green Iron for the steel Industry”) "
@@ -144,6 +145,7 @@ NEW = {
             "plant.")},
  "GST-158": {
    "class": "admitted",
+   "row_held": "HELD FROM ROW-WRITING, 20 September 2026. The admitting document is now the Innovation Fund factsheet under the funder-admission amendment (D-A17), and it describes CARBON CAPTURE, UTILISATION AND STORAGE at Ravenna — not the direct reduction plant this entry's leg claims. The admission stands and the leg does not, which is a question about which perimeter the entry belongs to. sources/steel_docket.md, D-S10.",
    "admitted_by": "funder",
    "owner_leg": "open — no owner document on file; owner look queued under rule 17",
    "row": "adriatico2-ravenna",

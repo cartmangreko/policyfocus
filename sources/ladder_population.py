@@ -272,11 +272,18 @@ def steel():
             e["lists"].append("LeadIT Green Steel Tracker, 2026-09-04")
             e["list_claims"].append(claim)
             continue
+        # THE SAME TWO-FIELDS-ONE-NAME SPLIT AS THE GEM BRANCH ABOVE, and it was
+        # missing here: a LeadIT entry's `row` is an existing row on a held entry
+        # and the PROPOSED row on an admitted one, and reading them alike made a
+        # funder-admitted entry look as though a row already stood behind it.
         rid = v.get("row") or ""
+        proposed = rid if rid and rid not in existing else ""
+        rid = rid if rid in existing else ""
         if rid:
             linked.add(rid)
         out.append({"key": f"leadit:{k}", "name": v.get("name", ""),
                     "country": v.get("country", ""), "row_id": rid,
+                    "proposed_row_id": proposed,
                     "register_class": v.get("class", ""), "clause": v.get("clause", ""),
                     "admission": admission(v),
                     "lists": ["LeadIT Green Steel Tracker, 2026-09-04"],

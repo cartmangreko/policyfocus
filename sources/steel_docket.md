@@ -271,3 +271,74 @@ are a search question and a correction, and this pass adds **S5** (does the peri
 a primary route that is neither DRI nor EAF — SIDERWIN is electrowinning, and LeadIT tracks
 that class) and **S6** (is a single-page application that serves one body on every path a
 refusal, and should the reading rules name it).
+
+## Ruling of 20 September 2026 — the steel rows land
+
+**D-S10. THIRTEEN OF THE TWENTY-THREE STEEL ADMISSIONS LAND AS ROWS, AND THE TEN THAT DO
+NOT ARE NAMED.** The census admitted works and proposed row ids; nothing had landed. This
+pass writes them through the admission path the cement and storage rows used — a dateline
+read off each page, `not_after` where the page carries none, capacity at the owner's own
+unit, the route as the owner states it, the benchmark claims attached as claims, and a
+status history built from what was read.
+
+**THE ARITHMETIC, AGAINST THE CENSUS.** The steel population is 147 and 25 of it is
+admitted: **21 GEM admissions + 2 LeadIT-only + 2 register rows neither list carries**.
+Two had rows before this pass, **thirteen land here, ten are held**. `projects.json`
+carries 21 steel rows, and `check_sector_schema` passes.
+
+**THE TEN ARE HELD FOR TWO DIFFERENT REASONS AND THE DIFFERENCE MATTERS.**
+
+*Four because the admitting document does not state the leg the census recorded.* This is
+what writing a row out of a census entry is for — it re-reads the sentence against the
+claim.
+
+  - **ArcelorMittal Hamburg**, leg "announced DRI plant": the verbatim describes the works'
+    EXISTING direct reduction plant — *"der einzigen in Westeuropa"*, up to 700,000 t/a —
+    which is a plant that is there, not a transition project.
+  - **HKM Duisburg**, leg "EAF replacing blast-furnace capacity": the verbatim is *"we have
+    raised the metallic recycling rate and use hydrogen-containing gases"*. No furnace.
+  - **Hydnum Steel Puertollano**, leg "greenfield DRI/EAF": the verbatim is *"We eliminate
+    our impact by progressively replacing coal and natural gas with green hydrogen"* — an
+    intention, with no plant in it.
+  - **Marcegaglia AdriatiCO2**, leg "announced DRI plant": the admitting document is now
+    the Innovation Fund factsheet, and it describes **carbon capture, utilisation and
+    storage at Ravenna** — not a direct reduction plant. The funder admission of D-A17
+    stands and **the leg does not**, which is a question about which perimeter this entry
+    belongs to.
+
+*Six because the admitting source cannot be read today and nothing replaces it.* Each was
+readable when the census read it and answers 404 or an empty body today: LKAB's Gällivare
+press release, Vargas Holding on Stegra Spain, Kallanish on Metinvest Piombino, and the
+2022 Wayback capture of ArcelorMittal's German agreement. **The Wayback CDX and
+availability endpoints both returned no captures for any of them on 20 September**, so no
+archived copy could be cited either.
+
+**AND TWO MORE WERE WITHDRAWN AFTER THEY HAD BEEN WRITTEN, BY `check_links`.**
+ArcelorMittal Dunkerque and Fos-sur-Mer rest on one Wayback capture of
+corporate.arcelormittal.com that answers **200 with an empty body** — so the source is
+marked archived and there is nothing to file as a snapshot, which the gate refuses in as
+many words: *"marked archived with no readable snapshot"*. The rows were composed, the
+gate read them, and they came back out. A row whose source a reader cannot open is a row
+nobody can check.
+
+**ARCELORMITTAL IS FOUR OF THE TEN** — Duisburg, Dunkerque, Fos and, differently, Hamburg
+— and the common thread is that `corporate.arcelormittal.com` answers **403 to a declared
+reader**, while `arcelormittal.com/media/news` answered 200 to one read and 403 to the
+next on the same day. Gent is admitted only because a funder published what the owner
+will not let this register read.
+
+**THE FOUR DEAD SOURCES ARE THE STRONGER FINDING.** Three of them are among the largest
+projects in the sector — HYBRIT's Gällivare sponge iron plant, Stegra's Spanish plant,
+Metinvest at Piombino — and the census read all three five days ago. **A census that
+records a URL and a verbatim and does not file a copy has recorded a fact that can
+evaporate**, and four of twenty-three evaporated inside a week. That is an argument for
+snapshotting the admitting page at admission, and it is written here rather than acted on
+because it is a rule change.
+
+**D-S11. TWO JOINS WERE BROKEN IN THE SAME WAY AND ONE WAS FOUND BY LANDING A ROW.** The
+GEM branch of `ladder_population.py` was corrected at D-A11 to tell an existing `row` from
+a proposed one; **the LeadIT branch was not**, so GST-158 looked as though a row already
+stood behind it. And HyIron's entry carried no proposed id at all, so when
+`hyiron-lingen` landed, the population grew a second line for the same works — the
+admitted count read 26 against a census that says 25. Both are fixed in the builders, and
+the population is 147 again with 25 admitted.

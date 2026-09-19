@@ -8096,7 +8096,10 @@
      "source_url": "https://web.archive.org/web/20221018144550/https://www.traffordgreenhydrogen.co.uk/press",
      "source_type": "company",
      "evidence_mode": "retrospective",
-     "note": "The project's own press page, captured 18 October 2022, dates the announcement: 'the submission of a planning application to develop the city's first hydrogen fuel hub, Trafford Green Hydrogen revealed today (August 11)', 11/08/2021, 'Set to be located at the Trafford Low Carbon Energy Park'. REDATED BY BRIEF 13 (D-C9): the event was dated 2026-09-10, which was the day this register read the page and not the day the owner spoke."
+     "note": "The project's own press page, captured 18 October 2022, dates the announcement: 'the submission of a planning application to develop the city's first hydrogen fuel hub, Trafford Green Hydrogen revealed today (August 11)', 11/08/2021, 'Set to be located at the Trafford Low Carbon Energy Park'. REDATED BY BRIEF 13 (D-C9): the event was dated 2026-09-10, which was the day this register read the page and not the day the owner spoke. THE COPY IS NOW FILED, 20 September 2026. The Wayback replay of this capture began answering 404 on the rewritten path while the RAW path — the same timestamp with `if_` — still returns 437,347 bytes, so the capture exists and its replay is broken. check_links refuses a citation nobody can open and it was right to; the bytes are in sources/manual/ with their SHA-256 in the manifest, and the row cites the capture URL a reader would type. THE SAME SHAPE THE STEEL PASS FOUND SIX TIMES IN A WEEK — sources/steel_docket.md, D-S10.",
+     "archived": true,
+     "captured_at": "2022-10-18",
+     "snapshot": "sources/manual/carlton-trafford-green-hydrogen--press-page-20221018.html"
     }
    ],
    "benchmarks": {
@@ -15383,6 +15386,698 @@
    },
    "role": "storage",
    "role_note": "Taken from what the funder's factsheet describes: unlocking CO2 storage capacity, not capture."
+  },
+  {
+   "id": "power4steel-dillingen",
+   "name": "AG der Dillinger Hüttenwerke Dillingen",
+   "company": "AG der Dillinger Hüttenwerke AG",
+   "plant": "Dillengen",
+   "country": "DE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "dri-eaf",
+    "h2-dri"
+   ],
+   "status": "construction",
+   "route_as_stated": "announced DRI plant; EAF at an existing BF works",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2023-01-01",
+     "date_precision": "year",
+     "status_from": null,
+     "status_to": "construction",
+     "status": "construction",
+     "source_url": "https://en.pure-steel.com/power4steel",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“Construction began in 2023 on a direct reduction plant (DRI) and on one electric arc furnace (EAF) each in Dillingen and Völklingen.” The status is the owner's own word and the date is the year it gives."
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://en.pure-steel.com/power4steel",
+     "title": "Power4Steel — SHS Stahl-Holding-Saar",
+     "publisher": "SHS / Dillinger",
+     "date": "2023-01-01",
+     "date_precision": "year",
+     "date_note": "The page carries this dateline."
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000120423",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000120423 ('AG der Dillinger Hüttenwerke Dillingen steel plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md. LeadIT's Green Steel Tracker, 2026-09-04, carries this works as GST-065, status 'Announced'. A second publisher's claim, not a class.",
+    "leadit_green_steel_tracker": "GST-065"
+   },
+   "capacity_value": 2500000,
+   "capacity_unit": "t_per_year",
+   "capacity_product": "dri",
+   "capacity_basis": "announced",
+   "capacity_source_url": "https://en.pure-steel.com/power4steel",
+   "capacity_as_of": "2023-01-01",
+   "capacity_as_of_precision": "year",
+   "capacity_note": "ANNOUNCED BY THE COMPANY, AT ITS OWN UNIT AND CONVERTED ONLY TO TONNES A YEAR: “2.5 Mt DRI per year”. The product is recorded because a tonne of DRI and a tonne of crude steel are not the same tonne, and this sector's rows carry both."
+  },
+  {
+   "id": "power4steel-voelklingen",
+   "name": "Saarstahl Völklingen",
+   "company": "Saarstahl AG",
+   "plant": "Völklingen",
+   "country": "DE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "dri-eaf",
+    "h2-dri"
+   ],
+   "status": "construction",
+   "route_as_stated": "EAF replacing blast-furnace capacity at an existing works",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2023-01-01",
+     "date_precision": "year",
+     "status_from": null,
+     "status_to": "construction",
+     "status": "construction",
+     "source_url": "https://en.pure-steel.com/power4steel",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "The same Power4Steel page names Völklingen beside Dillingen: “one electric arc furnace (EAF) each in Dillingen and Völklingen”. ONE DOCUMENT, TWO WORKS, TWO ROWS."
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://en.pure-steel.com/power4steel",
+     "title": "Power4Steel — SHS Stahl-Holding-Saar",
+     "publisher": "SHS / Saarstahl",
+     "date": "2023-01-01",
+     "date_precision": "year",
+     "date_note": "The page carries this dateline."
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000120432",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000120432 ('Saarstahl Völklingen steel plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md."
+   }
+  },
+  {
+   "id": "arcelormittal-gijon",
+   "name": "ArcelorMittal Asturias (Gijón)",
+   "company": "ArcelorMittal España SA",
+   "plant": "Gijon",
+   "country": "ES",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "dri-eaf",
+    "h2-dri"
+   ],
+   "status": "announced",
+   "route_as_stated": "announced DRI plant; EAF at an existing BF-BOF works",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2021-07-13",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.yahoo.com/now/arcelormittal-signs-mou-spanish-government-114500679.html",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“At the heart of the plan is a 2.3 million-tonne green hydrogen direct reduced iron (DRI) unit, complemented by a 1.1 million-tonne hybrid electric arc furnace (EAF).” THE MEDIUM IS PRESS QUOTING THE OWNER — a wire carrying ArcelorMittal's own MoU announcement, which the amendment of 20 September admits as the owner speaking."
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.yahoo.com/now/arcelormittal-signs-mou-spanish-government-114500679.html",
+     "title": "ArcelorMittal signs MoU with Spanish government",
+     "publisher": "ArcelorMittal",
+     "date": "2021-07-13",
+     "date_precision": "day",
+     "date_note": "The page carries this dateline."
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000120452",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000120452 ('ArcelorMittal Asturias (Gijón) steel plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md. LeadIT's Green Steel Tracker, 2026-09-04, carries this works as GST-119, status 'Paused or postponed'. A second publisher's claim, not a class.",
+    "leadit_green_steel_tracker": "GST-119"
+   },
+   "capacity_value": 2300000,
+   "capacity_unit": "t_per_year",
+   "capacity_product": "dri",
+   "capacity_basis": "announced",
+   "capacity_source_url": "https://www.yahoo.com/now/arcelormittal-signs-mou-spanish-government-114500679.html",
+   "capacity_as_of": "2021-07-13",
+   "capacity_as_of_precision": "day",
+   "capacity_note": "ANNOUNCED BY THE COMPANY, AT ITS OWN UNIT AND CONVERTED ONLY TO TONNES A YEAR: “2.3 Mt DRI per year; 1.1 Mt EAF”. The product is recorded because a tonne of DRI and a tonne of crude steel are not the same tonne, and this sector's rows carry both."
+  },
+  {
+   "id": "zesta-gent",
+   "name": "ArcelorMittal Gent",
+   "company": "ArcelorMittal SA",
+   "plant": "Gent",
+   "country": "BE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "dri-eaf",
+    "h2-dri"
+   ],
+   "status": "funded",
+   "route_as_stated": "announced DRI plant; EAF replacing blast-furnace capacity",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-09",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "funded",
+     "status": "funded",
+     "source_url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191086.pdf",
+     "source_type": "grant_register",
+     "evidence_mode": "retrospective",
+     "note": "ADMITTED BY THE FUNDER, and the owner leg is open. “The project will transform the steelmaking operations of ArcelorMittal in Ghent by replacing one of the two existing Blast Furnaces (BFs) with a new Direct Reduction Plant (DRP) and two Electric Arc Furnaces (EAFs).” EUR 262,094,637. corporate.arcelormittal.com answers 403 to a declared reader and no owner document was found; an owner look is queued under rule 17.",
+     "owner_look": {
+      "rule": "rule 17",
+      "why": "A FUNDER HAS SPOKEN AND THE OWNER HAS NOT. Rule 17's narrow task: read whether the owner's own source still stands.",
+      "queued": "2026-09-20",
+      "urls": [
+       {
+        "url": "https://belgium.arcelormittal.com/en/",
+        "publisher": "ArcelorMittal Belgium",
+        "note": "Read 20 September 2026, 8,322 characters: careers and site news, no DRI and no EAF."
+       },
+       {
+        "url": "https://belgium.arcelormittal.com/nl/",
+        "publisher": "ArcelorMittal Belgium, Dutch site",
+        "note": "Read 20 September 2026, 8,189 characters: site news in Dutch, no DRI and no EAF. THE GROUP NEWSROOM IS NOT IN THIS QUEUE because arcelormittal.com/media/news answered 200 to one read and 403 to the next on the same day — a host that refuses a declared reader intermittently, which is a fact about reaching it and not a page to queue."
+       }
+      ]
+     }
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191086.pdf",
+     "title": "ZESTA — Innovation Fund project factsheet",
+     "publisher": "European Commission (CINEA)",
+     "date": "2026-09-09",
+     "date_precision": "not_after",
+     "date_note": "THE PAGE CARRIES NO DATELINE. Dated by the day this register read it, as an upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'. THE CAPTURE IS THIS REGISTER'S OWN: sources/steel_search.py took the copy on that day and it is held under its SHA-256 in sources/cache/steel/index.json. `archived: false` says the Internet Archive did not take it.",
+     "captured_at": "2026-09-09",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000120027",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000120027 ('ArcelorMittal Gent steel plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md. LeadIT's Green Steel Tracker, 2026-09-04, carries this works as GST-061, status 'Paused or postponed'. A second publisher's claim, not a class.",
+    "leadit_green_steel_tracker": "GST-061"
+   },
+   "admitted_by": "funder",
+   "owner_leg": "OPEN. No owner document is on file. corporate.arcelormittal.com answers 403 to a declared reader and belgium.arcelormittal.com carries nothing about the project. An owner look is queued under rule 17."
+  },
+  {
+   "id": "blastr-inkoo",
+   "name": "Blastr Inkoo",
+   "company": "Blastr Green Steel AS",
+   "plant": "Inkoo",
+   "country": "FI",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "dri-eaf",
+    "h2-dri"
+   ],
+   "status": "announced",
+   "route_as_stated": "greenfield DRI/EAF primary steelmaking",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.blastr.no/News",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“Blastr Green Steel chooses Primetals Technologies as its technological partner for the ultra-low CO2 emissions steel plant in Inkoo, Finland — MIDREX H2 chosen for the direct reduction plant.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.blastr.no/News",
+     "title": "Blastr Green Steel — News",
+     "publisher": "Blastr Green Steel",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "date_note": "THE PAGE CARRIES NO DATELINE. Dated by the day this register read it, as an upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'. THE CAPTURE IS THIS REGISTER'S OWN: sources/steel_search.py took the copy on that day and it is held under its SHA-256 in sources/cache/steel/index.json. `archived: false` says the Internet Archive did not take it.",
+     "captured_at": "2026-09-20",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000120471",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000120471 ('Blastr Inkoo steel plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md. LeadIT's Green Steel Tracker, 2026-09-04, carries this works as GST-047, status 'Announced'. A second publisher's claim, not a class.",
+    "leadit_green_steel_tracker": "GST-047"
+   },
+   "capacity_value": 2500000,
+   "capacity_unit": "t_per_year",
+   "capacity_product": "crude_steel",
+   "capacity_basis": "announced",
+   "capacity_source_url": "https://www.blastr.no/News",
+   "capacity_as_of": "2026-09-20",
+   "capacity_as_of_precision": "not_after",
+   "capacity_note": "ANNOUNCED BY THE COMPANY, AT ITS OWN UNIT AND CONVERTED ONLY TO TONNES A YEAR: “2.5 Mt low-carbon steel per year”. The product is recorded because a tonne of DRI and a tonne of crude steel are not the same tonne, and this sector's rows carry both."
+  },
+  {
+   "id": "gravithy-fos-sur-mer",
+   "name": "GravitHy Fos sur Mer",
+   "company": "GravitHy",
+   "plant": "Fos-Sur-Mer",
+   "country": "FR",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "h2-dri"
+   ],
+   "status": "announced",
+   "route_as_stated": "announced DRI plant (greenfield)",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.gravithy.eu/who-we-are/gravithy-fos-sur-mer-a-pioneering-plant-on-a-european-scale",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“The industrial site of Fos-sur-Mer, France, will host our first Hot Briquetted Iron production plant, based on low carbon hydrogen. The plant will produce 2 million tonnes per year of Direct Reduced Iron (DRI) and Hot Briquetted Iron.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.gravithy.eu/who-we-are/gravithy-fos-sur-mer-a-pioneering-plant-on-a-european-scale",
+     "title": "GravitHy — Fos-sur-Mer, a pioneering plant",
+     "publisher": "GravitHy",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "date_note": "THE PAGE CARRIES NO DATELINE. Dated by the day this register read it, as an upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'. THE CAPTURE IS THIS REGISTER'S OWN: sources/steel_search.py took the copy on that day and it is held under its SHA-256 in sources/cache/steel/index.json. `archived: false` says the Internet Archive did not take it.",
+     "captured_at": "2026-09-20",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000121172",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000121172 ('GravitHy Fos sur Mer iron plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md. LeadIT's Green Steel Tracker, 2026-09-04, carries this works as GST-055, status 'Construction'. A second publisher's claim, not a class.",
+    "leadit_green_steel_tracker": "GST-055"
+   },
+   "capacity_value": 2000000,
+   "capacity_unit": "t_per_year",
+   "capacity_product": "dri",
+   "capacity_basis": "announced",
+   "capacity_source_url": "https://www.gravithy.eu/who-we-are/gravithy-fos-sur-mer-a-pioneering-plant-on-a-european-scale",
+   "capacity_as_of": "2026-09-20",
+   "capacity_as_of_precision": "not_after",
+   "capacity_note": "ANNOUNCED BY THE COMPANY, AT ITS OWN UNIT AND CONVERTED ONLY TO TONNES A YEAR: “2 Mt DRI/HBI per year”. The product is recorded because a tonne of DRI and a tonne of crude steel are not the same tonne, and this sector's rows carry both."
+  },
+  {
+   "id": "gravithy-kristinestad",
+   "name": "GravitHy Kristinestad",
+   "company": "GravitHy",
+   "plant": "Kristinestad",
+   "country": "FI",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "h2-dri"
+   ],
+   "status": "announced",
+   "route_as_stated": "announced DRI plant (greenfield)",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2024-04-16",
+     "date_precision": "day",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.plugpower.com/blog/plug-doing-real-things-kristinestad-finland",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“The plant will process 3.3 million tonnes of iron ore annually that will be imported via the ports to produce 2 million tonnes of DRI iron.” THE SPEAKER IS GRAVITHY'S NAMED PARTNER Plug Power, writing about the project it supplies — the same reading the register gives a consortium member speaking about its consortium's project."
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.plugpower.com/blog/plug-doing-real-things-kristinestad-finland",
+     "title": "Plug — doing real things in Kristinestad, Finland",
+     "publisher": "Plug Power",
+     "date": "2024-04-16",
+     "date_precision": "day",
+     "date_note": "The page carries this dateline."
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000121220",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000121220 ('GravitHy Kristinestad iron plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md."
+   },
+   "capacity_value": 2000000,
+   "capacity_unit": "t_per_year",
+   "capacity_product": "dri",
+   "capacity_basis": "announced",
+   "capacity_source_url": "https://www.plugpower.com/blog/plug-doing-real-things-kristinestad-finland",
+   "capacity_as_of": "2024-04-16",
+   "capacity_as_of_precision": "day",
+   "capacity_note": "ANNOUNCED BY THE COMPANY, AT ITS OWN UNIT AND CONVERTED ONLY TO TONNES A YEAR: “2 Mt DRI per year”. The product is recorded because a tonne of DRI and a tonne of crude steel are not the same tonne, and this sector's rows carry both."
+  },
+  {
+   "id": "liberty-dunkerque-dri",
+   "name": "Liberty Steel Dunkerque DRI plant",
+   "company": "Liberty Steel Group",
+   "plant": "Dunkerque",
+   "country": "FR",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "h2-dri",
+    "hydrogen-supply"
+   ],
+   "status": "announced",
+   "route_as_stated": "announced DRI plant",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://libertysteelgroup.com/liberty-develop-hydrogen-steel-making-plant",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“The pan-European partnership will work together on a project to incorporate a 2 million tonne Direct Reduced Iron (DRI) plant, with an integrated 1 GW capacity hydrogen electrolysis production unit.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://libertysteelgroup.com/liberty-develop-hydrogen-steel-making-plant",
+     "title": "LIBERTY to develop hydrogen steel-making plant",
+     "publisher": "LIBERTY Steel Group",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "date_note": "THE PAGE CARRIES NO DATELINE. Dated by the day this register read it, as an upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'. THE CAPTURE IS THIS REGISTER'S OWN: sources/steel_search.py took the copy on that day and it is held under its SHA-256 in sources/cache/steel/index.json. `archived: false` says the Internet Archive did not take it.",
+     "captured_at": "2026-09-20",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000121177",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000121177 ('Liberty Steel Dunkerque DRI plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md."
+   },
+   "capacity_value": 2000000,
+   "capacity_unit": "t_per_year",
+   "capacity_product": "dri",
+   "capacity_basis": "announced",
+   "capacity_source_url": "https://libertysteelgroup.com/liberty-develop-hydrogen-steel-making-plant",
+   "capacity_as_of": "2026-09-20",
+   "capacity_as_of_precision": "not_after",
+   "capacity_note": "ANNOUNCED BY THE COMPANY, AT ITS OWN UNIT AND CONVERTED ONLY TO TONNES A YEAR: “2 Mt DRI per year”. The product is recorded because a tonne of DRI and a tonne of crude steel are not the same tonne, and this sector's rows carry both."
+  },
+  {
+   "id": "ssab-lulea",
+   "name": "SSAB Luleå",
+   "company": "SSAB AB",
+   "plant": "Luleå",
+   "country": "SE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "dri-eaf"
+   ],
+   "status": "announced",
+   "route_as_stated": "EAF replacing blast-furnace capacity at an existing works",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.ssab.com/company/about-ssab/ssab-in-brief/history",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“The blast furnaces and coke plants will be replaced with electric arc furnaces and integrated rolling powered by fossil-free electricity.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.ssab.com/company/about-ssab/ssab-in-brief/history",
+     "title": "SSAB — history",
+     "publisher": "SSAB",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "date_note": "THE PAGE CARRIES NO DATELINE. Dated by the day this register read it, as an upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'. THE CAPTURE IS THIS REGISTER'S OWN: sources/steel_search.py took the copy on that day and it is held under its SHA-256 in sources/cache/steel/index.json. `archived: false` says the Internet Archive did not take it.",
+     "captured_at": "2026-09-20",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000120845",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000120845 ('SSAB Luleå steel plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md. LeadIT's Green Steel Tracker, 2026-09-04, carries this works as GST-083, status 'Announced'. A second publisher's claim, not a class.",
+    "leadit_green_steel_tracker": "GST-083"
+   }
+  },
+  {
+   "id": "ssab-oxelosund",
+   "name": "SSAB Oxelösund",
+   "company": "SSAB AB",
+   "plant": "Oxelösund",
+   "country": "SE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "dri-eaf"
+   ],
+   "status": "announced",
+   "route_as_stated": "EAF replacing blast-furnace capacity at an existing works",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.ssab.com/company/about-ssab/our-business/sites-all-over-the-world",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“An estimated SEK 6.2 billion is being invested in Oxelösund to replace the blast furnaces with an electric arc furnace and associated raw material handling.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.ssab.com/company/about-ssab/our-business/sites-all-over-the-world",
+     "title": "SSAB — sites all over the world",
+     "publisher": "SSAB",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "date_note": "THE PAGE CARRIES NO DATELINE. Dated by the day this register read it, as an upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'. THE CAPTURE IS THIS REGISTER'S OWN: sources/steel_search.py took the copy on that day and it is held under its SHA-256 in sources/cache/steel/index.json. `archived: false` says the Internet Archive did not take it.",
+     "captured_at": "2026-09-20",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000120844",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000120844 ('SSAB Oxelösund steel plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md. LeadIT's Green Steel Tracker, 2026-09-04, carries this works as GST-034, status 'Construction'. A second publisher's claim, not a class.",
+    "leadit_green_steel_tracker": "GST-034"
+   }
+  },
+  {
+   "id": "tata-steel-ijmuiden",
+   "name": "Tata Steel IJmuiden",
+   "company": "Tata Steel Ijmuiden BV",
+   "plant": "Velsen-Noord",
+   "country": "NL",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "dri-eaf"
+   ],
+   "status": "announced",
+   "route_as_stated": "EAF replacing blast-furnace capacity at an existing works",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.tatasteeleurope.com/ts/sustainability/carbon-neutral-steel",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“That means we're replacing our blast furnaces for electric furnaces in the coming years.”"
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.tatasteeleurope.com/ts/sustainability/carbon-neutral-steel",
+     "title": "Tata Steel — carbon-neutral steel",
+     "publisher": "Tata Steel Nederland",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "date_note": "THE PAGE CARRIES NO DATELINE. Dated by the day this register read it, as an upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'. THE CAPTURE IS THIS REGISTER'S OWN: sources/steel_search.py took the copy on that day and it is held under its SHA-256 in sources/cache/steel/index.json. `archived: false` says the Internet Archive did not take it.",
+     "captured_at": "2026-09-20",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000120758",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000120758 ('Tata Steel IJmuiden steel plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md. LeadIT's Green Steel Tracker, 2026-09-04, carries this works as GST-101, status 'Announced'. A second publisher's claim, not a class.",
+    "leadit_green_steel_tracker": "GST-101"
+   }
+  },
+  {
+   "id": "tata-steel-port-talbot",
+   "name": "Tata Steel Port Talbot",
+   "company": "Tata Steel UK Ltd",
+   "plant": "Port Talbot",
+   "country": "GB",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "eaf-scrap"
+   ],
+   "status": "construction",
+   "route_as_stated": "EAF replacing blast-furnace capacity at an existing works",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "construction",
+     "status": "construction",
+     "source_url": "https://www.tatasteeluk.com/green-steel-future/planning",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“Building a new 3.2 million tonne capacity state-of-the-art electric arc furnace in Port Talbot, the same capacity as we have now.” The same page records the planning permission of February 2025 that let construction begin, which is the owner's own word for the status."
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://www.tatasteeluk.com/green-steel-future/planning",
+     "title": "Tata Steel UK — green steel future, planning",
+     "publisher": "Tata Steel UK",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "date_note": "THE PAGE CARRIES NO DATELINE. Dated by the day this register read it, as an upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'. THE CAPTURE IS THIS REGISTER'S OWN: sources/steel_search.py took the copy on that day and it is held under its SHA-256 in sources/cache/steel/index.json. `archived: false` says the Internet Archive did not take it.",
+     "captured_at": "2026-09-20",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "gem_global_iron_steel_tracker": "P100000120482",
+    "note": "GEM's Global Iron and Steel Tracker, June 2026 (V1), carries this works as plant P100000120482 ('Tata Steel Port Talbot steel plant'). A BENCHMARK CLAIM, NOT A CLASS: GEM's forward units say what GEM knows, and the admission rests on the owner's own document cited above. sources/steel_docket.md."
+   },
+   "capacity_value": 3200000,
+   "capacity_unit": "t_per_year",
+   "capacity_product": "crude_steel",
+   "capacity_basis": "announced",
+   "capacity_source_url": "https://www.tatasteeluk.com/green-steel-future/planning",
+   "capacity_as_of": "2026-09-20",
+   "capacity_as_of_precision": "not_after",
+   "capacity_note": "ANNOUNCED BY THE COMPANY, AT ITS OWN UNIT AND CONVERTED ONLY TO TONNES A YEAR: “3.2 Mt crude steel per year”. The product is recorded because a tonne of DRI and a tonne of crude steel are not the same tonne, and this sector's rows carry both."
+  },
+  {
+   "id": "hyiron-lingen",
+   "name": "HyIron - GEiSt",
+   "company": "HyIron",
+   "plant": "Lingen",
+   "country": "DE",
+   "located": "no",
+   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census — a municipality is not a point — and position is not an admission leg. The works is named by its owner and by GEM's own plant record; a position is a later task and the row does not wait on it.",
+   "sector": "steel",
+   "transition": "decarbonisation",
+   "technology": [
+    "h2-dri"
+   ],
+   "status": "construction",
+   "route_as_stated": "announced DRI plant",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "construction",
+     "status": "construction",
+     "source_url": "https://hyiron.com/",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "note": "“The project GEiSt (German for ‘Green Iron for the steel Industry’) pilots the technology in Lingen, Germany, in cooperation with RWE and Benteler.” THE ONE ADMISSION GEM'S 0.5 MTPA FLOOR CANNOT CARRY, found by the second list — sources/steel_docket.md, D-S2."
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://hyiron.com/",
+     "title": "HyIron",
+     "publisher": "HyIron",
+     "date": "2026-09-20",
+     "date_precision": "not_after",
+     "date_note": "THE PAGE CARRIES NO DATELINE. Dated by the day this register read it, as an upper bound on when the text existed. sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after'. THE CAPTURE IS THIS REGISTER'S OWN: sources/steel_search.py took the copy on that day and it is held under its SHA-256 in sources/cache/steel/index.json. `archived: false` says the Internet Archive did not take it.",
+     "captured_at": "2026-09-20",
+     "archived": false
+    }
+   ],
+   "benchmarks": {
+    "leadit_green_steel_tracker": "GST-016",
+    "note": "LeadIT's Green Steel Tracker, 2026-09-04, carries this works as GST-016, status 'Finalized (research & testing)'. A second publisher's claim, not a class."
+   }
   }
  ]
 }

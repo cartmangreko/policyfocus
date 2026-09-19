@@ -37,7 +37,25 @@ OUT = ROOT / "sources" / "steel_benchmark.json"
 # decision on the record; an absence NOT here fails the gate. Two so far, and neither is a
 # defect: one is under GEM's floor and one is a different fact at a works the census does
 # carry.
+# THE ROWS THIS CENSUS LANDED, 20 September 2026. Named rather than inferred, on the
+# same reasoning as ROW_ABSENCE below it: an exception a gate accepts has to be written
+# down by a person, or the gate is checking that the data agrees with itself.
+LANDED_BY_THIS_CENSUS = {
+    "power4steel-dillingen", "power4steel-voelklingen", "arcelormittal-gijon",
+    "zesta-gent",
+    "blastr-inkoo", "gravithy-fos-sur-mer", "gravithy-kristinestad",
+    "liberty-dunkerque-dri", "ssab-lulea", "ssab-oxelosund", "tata-steel-ijmuiden",
+    "tata-steel-port-talbot", "hyiron-lingen",
+}
+
 ROW_ABSENCE = {
+    # LANDED 20 SEPTEMBER 2026 FROM THE SECOND LIST, and GEM cannot carry it: HyIron's
+    # GEiSt at Lingen is a pilot below the 0.5 mtpa floor GEM's About tab sets. The
+    # entry that admits it is LeadIT's GST-016 in sources/leadit_entries.json, so no
+    # entry in THIS list points at the row and that is the floor, not an oversight.
+    # sources/steel_docket.md, D-S2.
+    "hyiron-lingen": ("admitted from the second list; below GEM's 0.5 mtpa floor, so "
+                      "GEM does not carry the works — see leadit_entries.json GST-016"),
     "hybrit-pilot-lulea": "the HYBRIT pilot at Luleå is below GEM's 0.5 mtpa floor; the "
                           "list cannot carry it, which is why there is a second list",
     "3d-dunkirk": "a CCS row at a works the census carries for a different fact — "
@@ -121,11 +139,27 @@ def main() -> int:
             if rid not in ROW_ABSENCE:
                 problems.append(f"{rid} is a steel row and no census entry points at it, "
                                 f"and no reason is recorded in ROW_ABSENCE")
+    # `held` MEANS THE REGISTER HELD THE WORKS BEFORE THIS CENSUS, and after 20
+    # September that is no longer the same thing as "a row exists". The census
+    # admitted twenty-one works and proposed row ids; fifteen of those rows have now
+    # LANDED OUT OF THOSE ADMISSIONS, so the entry points at an existing row and is
+    # rightly `admitted` — the row is the census's own product, not something the
+    # census failed to notice. The audit still has to catch what it was written for,
+    # which is a census reporting silence at a row that predates it, so the
+    # distinction is recorded per row rather than inferred: a row the census landed
+    # is named here, and anything else pointing at an existing row must be `held`.
     for k, v in E.items():
-        if v.get("row") in rows and v.get("class") not in ("held",):
-            problems.append(f"{k} points at the existing row {v['row']} and is classed "
+        rid = v.get("row")
+        if rid in rows and v.get("class") not in ("held",):
+            if rid in LANDED_BY_THIS_CENSUS and v.get("class") == "admitted":
+                continue
+            problems.append(f"{k} points at the existing row {rid} and is classed "
                             f"{v.get('class')!r}; a works the register already holds is "
                             f"`held`")
+    for rid in sorted(LANDED_BY_THIS_CENSUS):
+        if rid not in rows:
+            problems.append(f"{rid} is recorded as landed by this census and no such "
+                            f"steel row exists")
 
     print("\nTHE FLOOR THIS TABLE INHERITS")
     print("  GEM includes only plants at 0.5 mtpa crude iron/steel and above, by its")

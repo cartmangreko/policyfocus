@@ -560,7 +560,16 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
                       <td className="num">
                         {funded ? eur(funded) : pt.committedCount ? "undisclosed" : "—"}
                       </td>
-                      <td className="num">{last?.date ?? "—"}</td>
+                      {/* AT THE PRECISION THE REGISTER KNOWS IT. This cell printed
+                          `last.date` raw, so a year-precision event rendered as its
+                          padded day — "2023-01-01" for a date the source states as
+                          2023. Every other date in this file already goes through
+                          atPrecision; this one was missed, and check_date_precision
+                          caught it the first time a year-precision event reached a
+                          sector table. */}
+                      <td className="num">
+                        {last ? atPrecision(last.date, last.date_precision) : "—"}
+                      </td>
                     </tr>
                   );
                 })}

@@ -7,7 +7,7 @@
   ],
   "sector": "steel",
   "template_version": 5,
-  "fingerprint": "089abd52c55b7788",
+  "fingerprint": "5e3fb505bed1dcd3",
   "sentence": {
     "text": "European steel is cutting its emissions and shifting to recycled material.",
     "from": [
@@ -27,17 +27,17 @@
     {
       "id": "routes",
       "label": "Routes",
-      "text": "Four routes are being built: hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1).",
-      "as_of": "2026-06-18",
+      "text": "Four routes are being built: hydrogen direct reduction (13 projects), direct reduction with an electric furnace (11), electric arc furnace on scrap (3) and carbon capture on blast-furnace gas (1).",
+      "as_of": "2026-09-20",
       "numbers": [
-        "4",
+        "13",
+        "11",
         "3",
-        "2",
         "1"
       ],
       "parts": {
         "count": 4,
-        "list": "hydrogen direct reduction (4 projects), direct reduction with an electric furnace (3), electric arc furnace on scrap (2) and carbon capture on blast-furnace gas (1)",
+        "list": "hydrogen direct reduction (13 projects), direct reduction with an electric furnace (11), electric arc furnace on scrap (3) and carbon capture on blast-furnace gas (1)",
         "names": [
           "Hydrogen direct reduction",
           "Direct reduction with an electric furnace",
@@ -80,16 +80,17 @@
     {
       "id": "pipeline_state",
       "label": "Pipeline",
-      "text": "7 European steel projects are under way, all of them have taken a final investment decision, and 1 has been cancelled.",
-      "as_of": "2026-06-18",
+      "text": "20 European steel projects are under way, 11 of them have taken a final investment decision, and 1 has been cancelled.",
+      "as_of": "2026-09-20",
       "numbers": [
-        "7",
+        "20",
+        "11",
         "1"
       ],
       "parts": {
-        "total": "7",
-        "committed": "7",
-        "committed_is_all": true,
+        "total": "20",
+        "committed": "11",
+        "committed_is_all": false,
         "paused": "0",
         "cancelled": "1",
         "furthest": "HYBRIT pilot",
@@ -125,18 +126,19 @@
     {
       "id": "the_latest",
       "label": "The latest",
-      "text": "greentec steel Linz went into construction on 18 June 2026.",
-      "as_of": "2026-06-18",
+      "text": "Tata Steel Port Talbot went into construction by 20 September 2026.",
+      "as_of": "2026-09-20",
       "numbers": [],
       "parts": {
-        "project": "greentec steel Linz",
+        "project": "Tata Steel Port Talbot",
         "status": "construction",
-        "date": "18 June 2026"
+        "date": "20 September 2026",
+        "date_is_upper_bound": true
       },
       "sourced": [
-        "greentec steel Linz"
+        "Tata Steel Port Talbot"
       ],
-      "href": "/projects/greentec-linz",
+      "href": "/projects/tata-steel-port-talbot",
       "surface": true
     },
     {
