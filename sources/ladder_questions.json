@@ -1,0 +1,82 @@
+{
+ "_comment": [
+  "QUESTIONS THE CROSS-SECTOR LADDER RAISED AND DID NOT ANSWER, brief 11.",
+  "",
+  "A RUNG TEST IS FROZEN (D-B1, re-anchored at D-A1) AND A PROPOSED CHANGE TO ONE",
+  "COMES HERE. That is the whole purpose of this file: the pass that scores an",
+  "instrument is the worst possible pass to loosen it in, because a rung that scores",
+  "badly looks like a defect in the rung and may only be a finding.",
+  "",
+  "A READING OF A TEST IS NOT A CHANGE TO IT and goes in scope.md under the frozen",
+  "test — which unit a sector's owners state, which input edge rung 6 is about. The",
+  "line between the two is what several of these questions are about."
+ ],
+ "questions": [
+  {
+   "id": "L1",
+   "raised": "2026-09-19",
+   "rung": "2, capacity",
+   "sector": "transport and storage",
+   "question": "Does rung 2 ask a question CO2 storage and transport operators answer?",
+   "what_the_table_shows": "6 of 102 scored entries clear rung 2 — the lowest rate of any rung in any sector, and an order of magnitude below cement's 20 of 42 off the same publisher's list.",
+   "why_it_may_not_be_the_projects": "A capture plant has a nameplate and its owner states it. A PIPELINE is a route and a STORE is a reservoir, and what an operator publishes about either is a licence area, a first-phase injection rate, or nothing. The IEA's own file carries a capacity column for these rows and this register does not read capacity off a benchmark (D82), so the only source is the owner, and the owner is often silent by the nature of the asset rather than by reticence.",
+   "the_proposal_that_is_not_made_here": "That rung 2 admit a stated STORAGE CAPACITY in Mt, as against a rate in Mt a year, for this sector. It is not made because it would change what the rung asks in one sector and not another, and a rung that means different things per sector cannot be compared across them — which is the entire point of the cross-sector table.",
+   "what_would_settle_it": "A reading of the 96 entries that fail: if most state a total capacity and no rate, the rung is asking the wrong unit. If most state nothing at all, 6 of 102 is a finding about the sector."
+  },
+  {
+   "id": "L2",
+   "raised": "2026-09-19",
+   "rung": "4, funding",
+   "sector": "batteries",
+   "question": "When a funder's list is READ and names no participant, is rung 4 `fail` or `unread` for the entries it would have covered?",
+   "what_happened": "The two battery IPCEIs — SA.54793 and EuBatIn SA.55855 — are EUR 6.1 billion of approved State aid to 59 companies in twelve Member States, and the Commission's own page for them NAMES NOT ONE COMPANY. The participant infographics are .zip archives; the decisions are PDFs at competition-cases that yield no participant list. The four HYDROGEN IPCEIs publish readable participant infographics and brief 12 scored rung 4 from them.",
+   "why_it_matters": "Six battery entries clear rung 4, all from the Innovation Fund. If the battery IPCEIs were readable the number would very likely be higher, and every battery `fail` on rung 4 is therefore a fail measured against a smaller set of funder lists than hydrogen's — the two columns of the cross-sector table are not measuring quite the same thing.",
+   "how_this_pass_handled_it": "The programme is recorded in sources/funder_pass.json with `outcome: READ AND NOT ENUMERABLE`, and no battery entry is scored pass OR fail from it. The rung 4 fails stand on the Innovation Fund's list, which IS enumerable, so they are fails against a list that was read — which satisfies D-L2 — and this question records that the list is not all the lists there are.",
+   "the_proposal_that_is_not_made_here": "A fourth cell state, `partially searched`, or a per-entry record of WHICH funder lists covered it. Both are changes to what a rung records and neither is made in the pass that would benefit from them."
+  },
+  {
+   "id": "L3",
+   "raised": "2026-09-19",
+   "rung": "6, input contracted",
+   "sectors": [
+    "cement",
+    "transport and storage"
+   ],
+   "question": "Not a rule question. A coverage question, recorded so a reader does not mistake a gap in brief 9 for a finding about two sectors.",
+   "what_the_table_shows": "Rung 6 is `not_searched` on 34 of 42 scored cement entries and 97 of 102 in transport and storage. The dependency sweep of brief 9 recorded an owner side for 117 projects: all 66 hydrogen rows, 32 of 33 battery rows, all 8 steel rows — and 8 of 34 cement rows and 3 of 43 transport-and-storage rows.",
+   "why_it_is_here": "`not_searched` is the honest cell and it is also nearly the whole column. A reader scanning the cross-sector table sees 2 of 42 and 0 of 102 and will read it as two sectors with no contracted inputs. THE RIGHT READING IS THAT NOBODY HAS LOOKED, which is a fact about this register.",
+   "what_would_settle_it": "A dependency sweep over the 26 cement and 40 transport-and-storage rows brief 9 did not reach. That is work, not a ruling, and it is queued rather than argued."
+  },
+  {
+   "id": "L4",
+   "raised": "2026-09-19",
+   "rung": "all six",
+   "sector": "steel",
+   "question": "Should a pass rate be reported for a sector where two thirds of the population is refused by the perimeter?",
+   "what_the_table_shows": "Steel's population is 147 and 98 of them are perimeter exclusions — scrap EAFs and works with no announced route change, refused after their owners were read. 49 entries are scored. Hydrogen refuses 53 of 245; cement refuses none of 42.",
+   "why_it_is_here": "D-L1 already settled that an exclusion is not scored, and the denominator is therefore right. The question is different: the five columns of the cross-sector table have denominators that mean very different things, because each sector's list was drawn by a publisher with its own idea of what belongs in it. GEM lists every steel plant at 0.5 mtpa and above; the IEA's cement rows are all capture projects by construction. A COLUMN IS NOT A SECTOR, IT IS A LIST.",
+   "the_proposal_that_is_not_made_here": "Reporting pass rates over admitted rows only, which would make the columns comparable and would throw away the whole point of scoring the list rather than the register.",
+   "what_this_pass_does": "Prints the population, the scored count and the excluded count under every column, so the denominator is never read without the refusals beside it."
+  },
+  {
+   "id": "L5",
+   "raised": "2026-09-19",
+   "rung": "4, funding",
+   "question": "Does rung 4 record that an award WAS made, or that it stands?",
+   "what_happened": "Four of the 33 awards matched in this pass carry the funder's own status TERMINATED: Giga Arctic (Freyr, Mo i Rana, EUR 100m), ANRAV (Devnya, EUR 189.7m) and the HYBRIT demonstration (LKAB, EUR 143m), which names two works and so counts twice.",
+   "the_precedent": "D-B10 ruled on exactly this shape for Catalina in brief 12: the fiche says TERMINATED, the pass prints it in the queue and does not write it, and rung 4 passes on the award. This pass follows that without re-arguing it.",
+   "why_it_is_still_a_question": "Four in 33 is not one in 55. Rung 4 reads 'a funder publishes an award naming the project', and a funder publishing that it has ENDED an award is the same funder publishing about the same project with better information. A rung that counts the award and ignores the termination is recording the past tense of a fact the same document corrects.",
+   "the_proposal_that_is_not_made_here": "That rung 4 fail on a terminated award, or that it gain a second cell for the award's current state. Either is a change to a frozen test and neither is made in the pass that found the four."
+  },
+  {
+   "id": "L6",
+   "raised": "2026-09-19",
+   "rung": "1, site",
+   "sector": "steel",
+   "question": "Not a rule question. A finding recorded so the number is not misread.",
+   "what_the_table_shows": "Steel clears rung 1 on 18 of 49 scored entries — the lowest of the five sectors, where every other sector clears it on more than half.",
+   "why_it_is_here": "The steel population is keyed by WORKS, and GEM's own row already names the works and its municipality. What rung 1 asks is whether THE OWNER OR THE PERMITTING AUTHORITY names the site, and GEM is neither. So a works everybody can find on a map fails rung 1 when its owner has published nothing about the project — which is the rung working exactly as written, and looks like a register that cannot locate steel plants.",
+   "what_would_settle_it": "Nothing. It is recorded because the cross-sector table invites the comparison and the comparison is misleading without this sentence."
+  }
+ ]
+}
