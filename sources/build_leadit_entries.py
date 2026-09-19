@@ -143,20 +143,36 @@ NEW = {
             "for future updates'. An agreement to study is not a company-confirmed "
             "plant.")},
  "GST-158": {
-   "class": "named not admitted",
-   "speaker": "Marcegaglia, own site",
-   "source": "https://www.marcegaglia.com/en/press-room",
-   "note": ("QUALIFIED BY LEADIT AND NOT SOURCEABLE FROM THE OWNER, AND THE REASON IS A "
-            "SHAPE THIS REGISTER HAS A RULE FOR ONE STEP OVER. marcegaglia.com answers a "
-            "declared reader with 200 and 21,704 characters on EVERY path tried -- the "
-            "front page, the English and Italian press rooms, and a project URL -- and the "
-            "body is byte-identical each time: a single-page application serving one shell "
-            "and rendering its content in a browser. scope.md calls a 200 with an EMPTY "
-            "body a refusal; this is a 200 with the SAME body, which is the same failure "
-            "wearing a different number, and it is recorded against the URLs rather than "
-            "against the project. AdriatiCO2 at Ravenna would be an announced DRI plant if "
-            "the owner's own words could be read; until they are, the entry is named not "
-            "admitted, exactly as Port Talbot was under S3.")},
+   "class": "admitted",
+   "admitted_by": "funder",
+   "owner_leg": "open — no owner document on file; owner look queued under rule 17",
+   "row": "adriatico2-ravenna",
+   "leg": "announced DRI plant",
+   "speaker": "European Commission (CINEA), Innovation Fund project factsheet — THE FUNDER, NOT THE OWNER",
+   "source": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191172.pdf",
+   "verbatim": "The project, led by Marcegaglia Ravenna S.p.A., aims to reduce CO2 emissions in the Ravenna industrial district through Carbon Capture Utilisation and Storage (CCUS) technologies.",
+   "amount_as_stated": "EUR 31,238,542",
+   "class_before_20_september": "named not admitted",
+   "note": "ADMITTED BY THE FUNDER, 20 September 2026, under the amendment of that day. THE ORIGINAL CLASS WAS NOT A SEARCH MISS. `named not admitted` was correct on the evidence: question S6 records that marcegaglia.com answers 200 with one identical body on every path — 21,704 characters on 18 September, 21,711 on 20 September, the same on /en/sustainability and /en/media/press-releases — so the owner's own words are unreadable to a declared reader and no amount of searching would have reached them. The funder's document is readable and names the company, the district and the technology. The owner leg is open and an owner look is queued under rule 17; S6 stays open with it.",
+   "owner_look": {
+     "why": "A FUNDER HAS SPOKEN AND THE OWNER HAS NOT, and this entry has no register row for the event to sit on — the steel census admits a works and proposes a row id, and nothing has landed. The look is rule 17's: whether the OWNER's source still stands.",
+     "queued": "2026-09-20",
+     "no_row_yet": "adriatico2-ravenna",
+     "urls": [
+      {
+       "publisher": "Marcegaglia (one identical body on every path — S6)",
+       "url": "https://www.marcegaglia.com/en/sustainability"
+      },
+      {
+       "publisher": "Marcegaglia Ravenna",
+       "url": "https://www.marcegaglia.com/en/"
+      },
+      {
+       "publisher": "Emilia-Romagna permitting authority",
+       "url": "https://ambiente.regione.emilia-romagna.it/"
+      }
+     ]
+    }},
 }
 
 

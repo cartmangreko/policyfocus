@@ -839,6 +839,61 @@ built and what stops. It also had the effect of making the dataset look complete
 not see it. A register that improves its own numbers by dropping the rows that
 embarrass them is measuring itself and not the sector.
 
+### A funder's own award record admits a project, 20 September 2026
+
+**AN AMENDMENT TO THE ADMISSION RULE, and it is the first time anything but the company
+has been allowed to admit.** Until today the whole of the admission test was *the company
+itself has confirmed a named site*. It still is, for the owner leg. What this adds is a
+second admitting speaker.
+
+**A FUNDER'S OWN AWARD RECORD NAMING THE COMPANY AS BENEFICIARY ADMITS THE PROJECT.** An
+Innovation Fund project factsheet, an IPCEI decision, a national programme's published
+grant — a document in which **a body with its own register states that it is paying this
+company for this project at this place**. The admitting speaker is recorded as the funder,
+`admitted_by: funder`, and the document is cited like any other.
+
+**AND THE OWNER LEG STAYS OPEN.** A funder-admitted row is not a company-confirmed row and
+must never be counted as one. The row records that nobody has yet read the owner saying it,
+and **every funder-admitted row carries an owner look under rule 17** — the narrow task,
+printed on every build by `report_candidate_gaps.py`, not worked by the pass that created
+it. When the owner's own document is read the admitting speaker does not change; a second
+source lands and the owner leg closes.
+
+**WHY A FUNDER AND NOT A NEWSPAPER.** The press-quoted amendment of the same day refuses a
+title speaking in its own voice, and this admits a funder, and the two are consistent for
+one reason: **a funder is a party to the project.** It has its own register, its own money
+and its own legal exposure to the description being wrong. A trade title reporting a plant
+has none of those. The test is not *is the speaker reliable* but *is the speaker a party
+with a record of its own* — which is the same test the dependency graph applies when it
+lets a supplier's order book speak about a customer's plant.
+
+**WHAT THIS DOES NOT DO.**
+
+  - **It does not touch the perimeter.** A funder award at a works this register refuses on
+    the route test is still refused: the amendment settles who may confirm a project, not
+    which projects are in scope. The Innovation Fund's CUSTARD award to Acciaierie Bertoli
+    Safau is carbon capture and use at a scrap-EAF works, and it stays a perimeter
+    exclusion with the award recorded against it.
+  - **It does not move a rung.** Rungs score exactly as before, and rung 1 still asks
+    whether the **owner or the permitting authority** names the site. A funder-admitted row
+    with no owner document **fails rung 1 and clears rung 4**, which is the pattern that
+    made this amendment necessary and is now visible in the table rather than hidden behind
+    a refusal to admit.
+  - **It does not make an award a status.** A funder's award says money was committed. The
+    status is whatever the row's own evidence supports, and a terminated award is a
+    `financing` event and not a cancellation — D-B19, unchanged.
+
+**WHAT MADE IT NECESSARY.** Three entries in brief 11's ladder cleared rung 4 and could not
+be admitted. The Commission's own factsheet states a direct reduction plant and two
+electric arc furnaces at **ArcelorMittal Gent** at EUR 262,094,637; ArcelorMittal's own
+domains carry nothing about it and `corporate.arcelormittal.com` refuses a declared reader.
+**Marcegaglia's AdriatiCO2** at Ravenna is funded at EUR 31,238,542 and marcegaglia.com
+serves one identical body on every path, so the owner's words cannot be read at all.
+**TarraCO2** is funded at EUR 205,061,582 and Repsol's press room does not contain the
+string. In each case the register was holding that a project it had a funder's signed
+description of did not exist enough to record — **which is a rule about reading mistaken
+for a rule about the world.**
+
 ### The hydrogen perimeter
 
 **Written 9 September 2026, brief 7.** The fourth sector this platform holds
