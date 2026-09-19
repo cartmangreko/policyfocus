@@ -821,6 +821,14 @@ BENCHMARKS = (
     # register is measured against the 425 entries the publisher's own `Region`
     # column calls Europe.
     "iea_ccus_projects_database",
+    # THE TWO STEEL LISTS, from brief 8 sector 3 and the second-list pass of #67.
+    # GEM issues a `GEM Plant ID` per plant and LeadIT an `Internal ID` per project,
+    # so both keys are the publisher's own. A works carries both where both carry it
+    # — 52 of LeadIT's 65 sit at a GEM plant — and the two are separate keys rather
+    # than one merged reference because they identify different things: GEM a plant,
+    # LeadIT a project, and a plant may hold several. sources/steel_docket.md.
+    "gem_global_iron_steel_tracker",
+    "leadit_green_steel_tracker",
 )
 
 
