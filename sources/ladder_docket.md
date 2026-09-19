@@ -160,3 +160,41 @@ pass that scores an instrument is the worst possible pass to loosen it in, becau
 that scores badly looks like a defect in the rung and may only be a finding. The gate now
 enforces that rather than asking for it — `check_ladder_all.py` recomputes the SHA-256 of
 `### The six rungs` on every build and fails on a difference.
+
+## Rulings of 19 September 2026, from the gate chain
+
+**D-A9. THE LADDER'S 53 PERIMETER EXCLUSIONS WERE READ OUT OF A GITIGNORED SCRATCH FILE,
+AND THE DEFECT HID BEHIND A SECOND MISSING INPUT.** `build_ladder.perimeter_excluded()`
+calls `report_benchmark_gap.perimeter_exclusions_by_ref()`, which read
+`scratch/hydrogen_benchmark_gap.csv`. `scratch/` is gitignored. So which of the 245
+hydrogen entries were classed out of perimeter depended on **whether somebody had happened
+to run the gap report on that machine**.
+
+**IT NEVER FAILED BECAUSE IT NEVER RAN.** `build_ladder --check` is guarded on
+`benchmark_available()`, which tests for the IEA cache — also gitignored — and on a machine
+missing that it prints *"the ladder is not recomputed"* and passes. The two untracked
+inputs went missing together, so the step skipped and the gap stayed invisible. On 19
+September the census worktree fetched the IEA benchmark live; the benchmark was suddenly
+present, the scratch file was not, **and the classifier returned zero exclusions**. All 53
+came back `none found` — scored, at zero.
+
+**THE SAME SHAPE AS D-A3, ONE LAYER DOWN, AND WORSE.** D-A3 was this pass's own first draft
+making that mistake; this was the committed scorer making it, on main, since brief 10.
+
+**MATERIALISED, on the #66 precedent.** `report_benchmark_gap.py` now writes
+`sources/hydrogen_perimeter_exclusions.json` — tracked, 53 entries, 31 `DRI or other
+perimeter exclusion` and 22 `blue` — and `perimeter_exclusions_by_ref()` reads that first,
+falling back to the scratch classifier only where the tracked file is absent. With the
+scratch file deleted, `build_ladder --check` now passes and reports 245 entries matching
+their sources. **THE COMMITTED hydrogen.csv WAS RIGHT ALL ALONG**, which is the one piece
+of luck in this entry and not a reason to leave the dependency where it was.
+
+**D-A10. A LINK CHECK FAILED ON A HOST THAT IS NOT THIS BRANCH'S BUSINESS, AND IT IS
+RECORDED RATHER THAN STEPPED AROUND.** `elektroniknet.de`, cited by a battery row since that
+census, answered HTTP 403 to the declared reader on 19 September — from its own Apache, with
+no CDN header — having passed as recently as the steel chain the day before. It is added to
+`BOT_HOSTILE` in `check_links.py`, which is `reported, not failed` and not silence: the
+citation stands, no row was edited, nothing was re-read, and it moves to
+`refused_declared_reader` with a date the moment a person opens it. That is the same
+handling globalcement.com and stellantis.com have, and the comment there already describes
+this exact case — a publisher that refuses a User-Agent which says what it is.
