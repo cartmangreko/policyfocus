@@ -198,3 +198,110 @@ citation stands, no row was edited, nothing was re-read, and it moves to
 `refused_declared_reader` with a date the moment a person opens it. That is the same
 handling globalcement.com and stellantis.com have, and the comment there already describes
 this exact case — a publisher that refuses a User-Agent which says what it is.
+
+## Rulings of 20 September 2026, the follow-up to #69
+
+**D-A11. STEEL FAILED RUNG 1 TWENTY-ONE TIMES ON A FIELD ITS ENTRIES DO NOT HAVE, AND THE
+FIX IS TO THE READING.** Of the 31 scored steel entries failing rung 1, **twenty-one were
+`admitted`** — and every one of them records a municipality and an owner speaker, because
+a census admits a works precisely by reading a company document that names it. The scorer
+never looked: `row` on a steel entry is **two different fields under one name** — an
+existing row id on a `held` entry, the row the census PROPOSES on an `admitted` one — so
+all twenty went down the no-row path, where the cell cited "the census read the owner's own
+sources and none names a site for this project". **That sentence was false of every one of
+them.** SHS at Dillingen, ArcelorMittal at Gijón, Duisburg, Dunkerque, Hamburg and Fos, HKM,
+Blastr at Inkoo, GravitHy at Fos, Hydnum at Puertollano, SSAB at Luleå and Oxelösund, Tata
+at Velsen-Noord and Port Talbot: all named by their owners, all scored as unnamed.
+
+**The other ten are `searched none found` and they record no speaker at all.** They still
+fail, and correctly — the reading fix changes nothing about them, which is the check that
+it is a fix and not a loosening. Steel rung 1: **18 of 49 to 35 of 49.**
+
+**AND THE SAME CORRECTION TAKES EIGHT PASSES AWAY FROM BATTERIES.** Rung 1 was passing
+every `named not admitted` entry on the class name. Six battery entries record their own
+refusal as `FAILED LEG: SITE` — SVOLT Finland is a company and a country, Freyr's Nordic
+Battery Belt is a programme name covering no works — and an entry the census refused
+*because* no site was named cannot clear the rung that asks for one. Batteries: **41 to 33.**
+A reading fix that only ever raised a number would not be a reading fix.
+
+**D-A12. THE THREE FUNDER-FOUND ENTRIES WERE RE-SEARCHED ON THEIR OWNERS' OWN DOMAINS AND
+NOT ONE OWNER CONFIRMS.** Under S3's order — the owner's newsroom first, never the list's
+citations.
+
+  - **ArcelorMittal Gent.** `belgium.arcelormittal.com` answers and carries careers and
+    site news with no DRI, no EAF and no ZESTA; `arcelormittal.com/media/news` answers with
+    navigation; `corporate.arcelormittal.com` **403s a declared reader** on every path
+    tried. The Commission's factsheet states a direct reduction plant and two electric arc
+    furnaces at Ghent at EUR 262,094,637. **The class stands at `searched none found`**,
+    and the gap between a funder's specificity and an owner's silence is now measured
+    rather than suspected.
+  - **Marcegaglia AdriatiCO2.** `marcegaglia.com/en/sustainability` and
+    `/en/media/press-releases` both answer 200 with **21,711 characters, identical to each
+    other**; `marcegagliasteel.com` does not resolve. Question S6 re-confirmed on a second
+    day and a second pair of paths. **Class stands at `named not admitted`.**
+  - **TarraCO2.** Repsol's press room and its climate-change page are both readable and
+    **neither contains the string "Tarra"**. **Class stands at `named not admitted`.**
+
+**NO ADMISSION, NO RECLASS, AND THAT IS A RESULT AND NOT A FAILURE OF THE PASS.** D-A6 said
+these three were the ladder's independence doing its work; a re-search that found the owner
+after all would have been the better story and the evidence does not support it.
+
+**D-A13. THE FOUR TERMINATED AWARDS GET THE CATALINA TREATMENT, AND ONLY TWO OF THEM HAVE A
+ROW TO PUT IT ON.** `freyr-mo-i-rana` and `anrav-devnya` each gain a `status_history` entry:
+`event_kind: financing`, `date_precision: not_after` 2026-09-09 — the fiche's own dateline,
+because the document gives no date for the termination itself — source the factsheet,
+`source_type: grant_register`, and the funder's figures in the note. **Neither status
+moves**: Freyr's stays `cancelled` and ANRAV's stays `funded`, because a funder withdrawing
+its money is a fact about the award and reading a cancellation out of it would be this
+register deciding something the owner has not said. D-B19, applied.
+
+**HYBRIT's Gällivare and Oxelösund HAVE NO ROW.** Both are census entries the steel pass
+admitted with a proposed row id and nothing has landed; there is no `status_history` to
+write to. Both go to the owner-look queue with the other two, and the absence is recorded
+here rather than left to look like an oversight. **One award, two works, four queue items.**
+
+**D-A14. FOUR OF THIRTY RE-SEARCHED ENTRIES CHANGE CLASS, AND THE THRESHOLD WAS TWO.**
+`sources/ladder_research_audit.json`, `random.seed(11)` written down so the draw can be
+repeated. FAAM at Teverola, InoBat in Serbia, OCAP and PYCASSO all move from `searched none
+found` to `named not admitted` — **not four projects that changed but four searches that
+missed a readable owner page**, every one found by starting at the owner's own domain.
+**The four sectors get the full pass as a further brief.**
+
+**THE CORRECTED READER REPAIRED NOTHING HERE AND THE AUDIT SAYS SO.** None of the 44 URLs
+the thirty entries recorded is non-ASCII and none had failed client-side, so D-S1's fix had
+nothing to do in this sample. What the audit actually tested was the search ORDER.
+
+**AND THIRTEEN OF THE THIRTY RECORDED NO SOURCE URL AT ALL** — a class of `searched none
+found` with no list of what was searched, which cannot be audited by re-reading and only by
+searching again from the owner's name. That is a finding about the censuses' record-keeping
+and it belongs in the further brief's scope.
+
+**THE FOUR RECLASSES ARE RECORDED AND NOT WRITTEN**, because applying four corrections to a
+population a full pass is about to re-read would leave the censuses half corrected and the
+halves undated.
+
+**D-A15. THE PRESS-QUOTED AMENDMENT, AND BOTH TABLES ARE IN THE FILE.** Every rung cell now
+carries a `medium` — `owner`, `permit`, `funder`, `press_quoting_owner`, `press`,
+`register` — and `all.csv` carries `<rung>_result_amended`, `rungs_passed_amended` and
+`outcome_class_amended` beside the frozen columns. **The frozen block is untouched and the
+gate proves it**: `### The six rungs` still hashes to `47b0859d…`.
+
+**A DIRECT OWNER STATEMENT QUOTED IN THE PRESS PASSES; A TITLE IN ITS OWN VOICE DOES NOT.**
+Of 582 passing cells across five sectors: **503 owner, 60 funder, 12 permit, 6 press, and
+one press quoting the owner** — Metinvest at Piombino, reported by Kallanish from the
+company's own statement, which stands. The six move, all of them rung 1, and six entries
+gain the outcome class **`press only`**.
+
+**PRESS-ONLY IS AN OUTCOME CLASS AND NOT A FAILURE**, on the rule the hydrogen amendment of
+18 September set: silence, refusal and press-only are three different things and none of
+them may share a class. The gate enforces the shape — the amendment may only take a pass
+away, only from medium `press`, and an entry classed `press only` must clear no rung.
+
+**D-A16. THE LAYER SPLIT, AND NO DATUM MOVES.** Every entry carries `producing` or
+`infrastructure`; transport and storage is the infrastructure layer and the other four are
+producing. **The cross-sector table is computed for the producing layer and the
+infrastructure rows are summarised beneath it** rather than averaged in. Transport and
+storage clears rung 2 six times in 102 and rung 5 not once; a pipeline has no nameplate its
+owner publishes and a reservoir is not a plant, so a single rate over both describes
+neither. The same 644 lines, grouped — and question L1 is the one this makes answerable
+rather than the one it answers.

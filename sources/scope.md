@@ -2555,6 +2555,54 @@ dependency graph has been swept for that sector. Where it has not, the cell is
 `not_searched`, on D-L2's rule: "nobody has looked" and "there is nothing there" are
 different findings and only the second is about the project.
 
+### The press-quoted amendment, 20 September 2026
+
+**A POST-FREEZE AMENDMENT, RECORDED AS ONE.** The six rung tests are frozen at `a9542fe`
+and `### The six rungs` above is byte-identical to that text. This is an amendment beside
+them, not an edit to them, and **both tables are computed and published** — the frozen
+result and the amended one — so a reader can see exactly what the change moved.
+
+**EVERY RUNG CELL NOW CARRIES A MEDIUM**, which is what kind of document it rests on:
+`owner`, `permit`, `funder`, `press_quoting_owner`, `press`, `register`. **The medium is
+not a ranking.** It is recorded so the next sentence can be written precisely instead of
+by host.
+
+**A DIRECT OWNER STATEMENT QUOTED IN THE PRESS PASSES.** A trade title printing the
+company's own sentence is the company speaking through it, and refusing that would refuse
+the commonest way a company's words reach a reader. **A title reporting in its own voice
+does not pass**, whatever it reports.
+
+**AND PRESS-ONLY IS AN OUTCOME CLASS, NOT A FAILURE.** An entry whose only passing evidence
+was a title speaking for itself is `press only` — a statement about the evidence, the same
+kind of statement `unread` is, and not a finding about the project. **Silence, refusal and
+press-only are three different things and none of them may share a class**, which is the
+rule the hydrogen amendment of 18 September established and this extends.
+
+**WHAT IT MOVED, ACROSS ALL FIVE SECTORS:** six rung 1 cells, and six entries gained the
+outcome class `press only`. Of 582 passing cells, 503 rest on the owner, 60 on a funder,
+12 on a permitting authority, 6 on the press in its own voice and **one on the press
+quoting the owner** — Metinvest at Piombino, reported by Kallanish from the company's own
+statement, which stands.
+
+**THE STEEL CENSUS RULED THIS ONCE FROM THE OTHER SIDE.** D-S4's Taranto correction refused
+a newspaper's *report* of what a company told a ministry, on the rule that the perimeter
+asks for company confirmation. The amendment says the same thing precisely rather than by
+publisher, and it says the other half too: the newspaper that prints the company's sentence
+is carrying the company's confirmation, not replacing it.
+
+### The layer a sector sits on
+
+**Four of the five sectors make something at a works and one of them moves and stores
+somebody else's CO2.** `producing` is hydrogen, batteries, cement and steel; `infrastructure`
+is transport and storage. **Every entry carries its layer and no datum changes.**
+
+**THE CROSS-SECTOR TABLE IS COMPUTED FOR THE PRODUCING LAYER, and the infrastructure rows
+are summarised beneath it rather than averaged into it.** A pipeline has no nameplate its
+owner publishes and a reservoir is not a plant: transport and storage clears rung 2 six
+times in 102 and rung 5 not once, and folding that into a rate about plants describes
+neither. The layer is a label on the reporting, not a new population — the same 644 lines,
+grouped.
+
 ### The population is the external list plus what it misses
 
 The population is **the current IEA vintage plus every register row not on it**, one line

@@ -45,6 +45,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import pathlib
 import sys
 from collections import Counter, defaultdict
@@ -64,10 +65,47 @@ SECTORS = ("hydrogen", "batteries", "cement", "transport and storage", "steel")
 REGISTER_SECTOR = {"hydrogen": "clean", "batteries": "batsol", "cement": "cement",
                    "transport and storage": "ccs", "steel": "steel"}
 
+# THE LAYER A SECTOR SITS ON. Four of the five make a product at a works — hydrogen,
+# cells, clinker, steel — and one of them moves and stores somebody else's CO2. A
+# pipeline has no nameplate its owner publishes and a reservoir is not a plant, so the
+# two layers answer the six rungs differently and averaging them says nothing about
+# either. THIS IS A LABEL ON THE ENTRIES AND CHANGES NO DATA: the same lines, the same
+# cells, reported in two groups instead of one.
+LAYER = {"hydrogen": "producing", "batteries": "producing", "cement": "producing",
+         "steel": "producing", "transport and storage": "infrastructure"}
+
 CEMENT_SUBSECTORS = {"Cement"}
 TS_SUBSECTORS = {"CO2 T&S", "CO2 transport", "CO2 storage"}
 
 NOT_SCORED = ("perimeter exclusion",)
+
+
+def admission(v: dict, note_field: str = "note") -> dict:
+    """WHAT THE CENSUS READ, carried onto the ladder entry.
+
+    ADDED 20 SEPTEMBER 2026, and it is the fix for a reading and not for the data.
+    The ladder scored rung 1 for a census entry off a generic sentence — "the census
+    read the owner's own sources and none names a site" — WHICH WAS FALSE OF EVERY
+    ADMITTED ENTRY. A census admits a works precisely because it read a company
+    document naming it, and each census records that document: `source`, `speaker`,
+    `verbatim`. Twenty admitted steel works failed rung 1 on a field the steel
+    entries do not have rather than on the field they do.
+
+    `failed_leg` IS THE OTHER HALF. Where a census names a works and refuses it, the
+    leg it failed on says whether the SITE was the problem. A battery entry whose
+    note opens "FAILED LEG: SITE" must fail rung 1; one that failed on capacity has
+    a site on file and passes. Passing all of them, which is what the first version
+    did, scored rung 1 off the class name instead of off the evidence.
+    """
+    leg = (v.get("failed_leg") or "")
+    n = v.get(note_field) or ""
+    m = re.match(r"\s*FAILED LEG:\s*([^.]+)\.", n)
+    if not leg and m:
+        leg = m.group(1).strip()
+    return {"source": v.get("source") or "", "speaker": v.get("speaker") or "",
+            "verbatim": v.get("verbatim") or "", "failed_leg": leg,
+            "municipality": v.get("municipality") or v.get("site") or "",
+            "looked_in_order": v.get("looked_in_order") or []}
 
 
 def _load(name):
@@ -99,7 +137,7 @@ def batteries():
                 "key": k, "name": e["label"], "country": e.get("country", ""),
                 "row_id": ref if ref and "|" not in ref else "",
                 "register_class": e["class"], "clause": "",
-                "list_claims": [], "lists": []})
+                "admission": admission(e), "list_claims": [], "lists": []})
             cur["lists"].append(title)
             cur["list_claims"].append({
                 "benchmark": key, "label": e["label"], "class_in_census": e["class"],
@@ -158,6 +196,7 @@ def _ccus(subsectors, sector):
             "key": f"ieaccus:{k}", "name": e.get("name", ""),
             "country": e.get("country", ""), "row_id": rid,
             "register_class": e.get("class", ""), "clause": e.get("clause", ""),
+            "admission": admission(h),
             "lists": ["IEA CCUS Projects Database, 2026 edition"],
             "list_claims": [{
                 "benchmark": "iea_ccus_projects_database", "iea_id": e["iea_id"],
@@ -198,15 +237,24 @@ def steel():
     two rows neither list can hold. Joined exactly as #67 joined them."""
     gem = _load("steel_entries.json")["entries"]
     lead = _load("leadit_entries.json")["entries"]
+    existing = {p["id"] for p in sm.load("project")}
     out, linked = [], set()
     for k, v in gem.items():
+        # `row` IS TWO DIFFERENT FIELDS UNDER ONE NAME. On a `held` entry it names a
+        # row the register already carries; on an `admitted` one it names the row the
+        # census PROPOSES and nothing has landed yet. Reading them alike sent twenty
+        # admitted works down the no-row path, where the scorer cited a census
+        # sentence about finding nothing at a works the census had admitted.
         rid = v.get("row") or ""
+        proposed = rid if rid and rid not in existing else ""
+        rid = rid if rid in existing else ""
         if rid:
             linked.add(rid)
         out.append({
             "key": f"gem:{k}", "name": v.get("name", ""), "country": v.get("country", ""),
-            "row_id": rid, "register_class": v.get("class", ""),
-            "clause": v.get("clause", ""),
+            "row_id": rid, "proposed_row_id": proposed,
+            "register_class": v.get("class", ""),
+            "clause": v.get("clause", ""), "admission": admission(v),
             "lists": ["GEM Global Iron and Steel Tracker, June 2026 (V1)"],
             "list_claims": [{"benchmark": "gem_global_iron_steel_tracker",
                              "gem_plant_id": k,
@@ -229,6 +277,7 @@ def steel():
         out.append({"key": f"leadit:{k}", "name": v.get("name", ""),
                     "country": v.get("country", ""), "row_id": rid,
                     "register_class": v.get("class", ""), "clause": v.get("clause", ""),
+                    "admission": admission(v),
                     "lists": ["LeadIT Green Steel Tracker, 2026-09-04"],
                     "list_claims": [claim]})
     for r in rows_by_sector("steel"):
