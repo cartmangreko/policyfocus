@@ -116,7 +116,11 @@ run_local check_hydrogen_workbook
 # recomputes it from the workbook entry by entry, and build_steel_second_list.py checks
 # its recorded hash against benchmark_snapshots.json inside the build.
 run_local build_leadit_entries --check
+# The byte-level half of the citation gate. Reporting-only today — see L7 in
+# sources/ladder_questions.json — and here rather than in the build because the
+# cache bodies are gitignored.
+run_local check_citation_bodies
 run_local check_build_image
 
 echo "pre-push: gate chain green — prebuild, build and postbuild, $(( $(date +%s) - started ))s."
-echo "pre-push: local-only checks green — check_hydrogen_workbook, build_leadit_entries --check, check_build_image."
+echo "pre-push: local-only checks green — check_hydrogen_workbook, build_leadit_entries --check,\n  check_citation_bodies, check_build_image."

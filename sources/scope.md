@@ -839,6 +839,39 @@ built and what stops. It also had the effect of making the dataset look complete
 not see it. A register that improves its own numbers by dropping the rows that
 embarrass them is measuring itself and not the sector.
 
+### Every number in a report is quoted from a gated file, 21 September 2026
+
+**A FIGURE THAT EXISTS ONLY IN THE SESSION'S NARRATIVE IS NOT REPORTED.** Every number in
+a report, a pull request description or a docket entry is quoted from a file a gate
+recomputes — a summary JSON, a CSV the gate rebuilds and compares, a DECISIONS entry — and
+**the file is named beside the number**. A count somebody worked out while reading is a
+count nobody can re-derive, and it is exactly as convincing as the reader's trust in the
+person who typed it.
+
+**AND WHERE A FINDING FLATTERS THE ARGUMENT, IT IS CHECKED AGAINST THE RECORD BEFORE IT
+GOES IN, AND THE REPORT SAYS WHAT WAS CHECKED.** This rule has a specific cause. On 20
+September this register reported that six admitting sources had gone 404 within a week of
+being read, called it the strongest finding of the pass, and held six rows on it. **It was
+false**: the census had written a truncated URL onto the entry and the pages answered 200.
+The probe had been built from the entry's own field and never compared with the fetch
+record beside it — and *the web rots faster than a census can write* is a far better
+sentence than *we truncated a URL*, which is precisely why it should have been checked
+harder rather than published faster. See `sources/steel_docket.md`, D-S12.
+
+### Nothing is amended mid-pass, 21 September 2026
+
+**NO RULE CHANGES UNTIL BRIEF 14 AND THE SUPPLIER SWEEP ARE IN.** A case the rules do not
+settle goes to the questions file and **the entry is held**. The pass continues; the rule
+does not move under it.
+
+**WHY A MORATORIUM AND NOT JUST CARE.** Three rules changed on 20 September — funder
+admission, the press-quoted amendment, capture in the steel perimeter — and each was
+right, and each changed what an in-flight pass was measuring while it measured it. A
+register that amends its perimeter during a census cannot say afterwards which entries were
+read under which rule unless every one carries the date, and the arithmetic stops being
+checkable. **The freeze is the same instrument D-B1 used on the rung tests and for the same
+reason**: an instrument tuned while its answer is visible is not an instrument.
+
 ### A dead link is not a dead source, 20 September 2026
 
 **THE CACHED BODY IS THE COPY ON FILE, AND THAT IS WHAT D42 KEEPS FETCHES FOR.** When this

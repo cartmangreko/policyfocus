@@ -83,6 +83,16 @@ INDEXES = (
 ROW_FILES = (
     "data/transition/projects.json",
     "data/transition/technologies.json",
+    # THE CENSUS FILES, ADDED 21 SEPTEMBER 2026. They carry the document that admits
+    # or refuses an entry, which is a citation by every test that matters, and they
+    # were not walked. THAT IS HOW TWELVE TRUNCATED URLs SURVIVED: the steel census
+    # fetched a full URL and wrote a shortened one onto the entry, and no gate
+    # compared the two because no gate read the file. sources/steel_docket.md, D-S12.
+    "sources/steel_entries.json",
+    "sources/leadit_entries.json",
+    "sources/cement_ccs_entries.json",
+    "sources/batteries_benchmark.json",
+    "sources/hydrogen_gap_search.json",
 )
 
 

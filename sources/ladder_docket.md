@@ -359,3 +359,57 @@ exactly the entries the amendment creates.
 **PROSPECTIVE.** The rule applies to every funder-found entry the further brief turns up,
 in all sectors. Today's funder passes hold 33 cross-sector awards and 55 hydrogen ones, and
 these three were the only matched awards against an unadmitted, in-perimeter entry.
+
+## Brief 14 — the re-search pass, 21 September 2026
+
+**D-A18. THE ADMISSION SEARCH OF 10 SEPTEMBER INVENTED DOMAINS FROM PROJECT NAMES, AND
+THIS PASS INHERITED THEM.** Quoted from `sources/research_pass_14_summary.json`, key
+`the_admission_search_guessed_domains`: of its 167 entries, **47 had every non-EU host
+derived from the project's own name**. `www.labskive.com` for Green Lab Skive,
+`www.castellon.com` for BP's Castellón refinery, `www.ccuaalborg.com` for the Green CCU
+Hub at Aalborg — and `www.barseback.com` for the Barsebäck Hydrogen Hub, **which is a golf
+resort**.
+
+**THE GUESS IS OFTEN RIGHT, WHICH IS HOW IT SURVIVED.** Twenty-eight of the 47 came back
+`owner or permit source names the site`, because a project frequently is at its own name,
+and a guessed domain that answers and names the works is a fact however it was reached.
+**Fifteen are the problem**: classed `searched, none found` where every domain tried was
+one this register invented. For those, "none found" is a statement about a guess. Held as
+question L9.
+
+**AND BRIEF 14's OWN SEARCH READ THOSE GUESSES BACK.** `research_pass.py` takes an entry's
+owner host from the hosts in its own records and refuses to derive one from a name — and
+the records already contained derived hosts. **A rule against folding a name into a key is
+only as good as the records it reads.**
+
+**D-A19. THE PASS SEARCHED ALL 164 AND CHANGED NO CLASS, WHICH IS THE STANDING RULE
+WORKING.** 164 entries, 296 fetches, every one recorded in
+`sources/research_pass_14.json` with the entry it was made for and what the text
+contained. The before and after tables are **identical in every figure** — population,
+scored, exclusions and unread across all five sectors, quoted from
+`sources/ladder/all_summary.json` — because the rule of 21 September holds an entry rather
+than amending anything mid-pass.
+
+**THE SIGNAL IS A SUBSTRING MATCH AND IT IS SPLIT RATHER THAN COUNTED.** 59 entries have an
+owner page containing a distinctive word of the entry's name; **28 of those are the domain
+echoing the project's own name back** — `hyperionrenewables.com` contains "Hyperion" —
+which says the register had the right company's website and nothing about this works. 31
+are candidates a person should read. A report that said "the owner names 59 of them" would
+be the flattering-number failure the standing rule was written for, one day later.
+
+**TWO ARE REAL AND BOTH ARE HELD** as question L8. Volvo's own press release of 10
+September 2026 names Mariestad and "the intended battery cell production site"; ProLogium's
+front page carries "Dunkirk Gigafactory Groundbreaking". Both are classed `searched none
+found` today and neither is: something was found.
+
+**AND FOUR THAT LOOK LIKE HITS ARE NOT.** EAS Nordhausen, BMZ Karlstein and BASQUEVOLT
+Vitoria-Gasteiz match on the place name **in the imprint**, which is exactly what the
+battery census already recorded as the failure. Holcim's Carboneras match is a photo
+exhibition, *"Carboneras en fotos"*.
+
+**D-A20. THE BROWSER QUEUE IS 82 ENTRIES AND TWELVE OF THEM ARE QUEUED AGAINST A DOMAIN
+THAT NEVER EXISTED.** `python3 sources/research_pass.py --queue` prints it with the reason
+per entry: a page that answered nothing, or an entry whose own records name no owner host.
+The twelve are D-A18's, and they should be struck from the queue rather than handed to a
+person to open — reading `www.crinorway.com` in a browser will fail for the same reason it
+failed here.
