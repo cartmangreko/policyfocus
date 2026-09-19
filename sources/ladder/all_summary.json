@@ -83,6 +83,50 @@
    },
    "rung6_provisional": 76,
    "rung6_not_searched": 0,
+   "per_rung_amended": {
+    "site": {
+     "pass": 116
+    },
+    "capacity": {
+     "pass": 76
+    },
+    "fid": {
+     "pass": 13
+    },
+    "funding": {
+     "pass": 20
+    },
+    "start": {
+     "pass": 15
+    },
+    "input": {
+     "pass": 7
+    }
+   },
+   "medium_of_passing_cells": {
+    "site": {
+     "owner": 105,
+     "funder": 1,
+     "permit": 10
+    },
+    "capacity": {
+     "owner": 76
+    },
+    "fid": {
+     "owner": 13
+    },
+    "funding": {
+     "funder": 18,
+     "owner": 2
+    },
+    "start": {
+     "owner": 15
+    },
+    "input": {
+     "owner": 7
+    }
+   },
+   "outcome_class_amended": {},
    "rung4_before_this_pass": {
     "searched": true,
     "pass": 20,
@@ -94,7 +138,8 @@
     "pass": 20,
     "fail": 151,
     "not_searched": 0
-   }
+   },
+   "layer": "producing"
   },
   "batteries": {
    "population": 69,
@@ -112,8 +157,8 @@
    "unread": 5,
    "benchmark_aggregates": 1,
    "scored_entries_by_rungs_cleared": {
-    "0": 15,
-    "1": 11,
+    "0": 23,
+    "1": 3,
     "2": 9,
     "3": 15,
     "4": 5,
@@ -121,11 +166,11 @@
    },
    "per_rung": {
     "site": {
-     "pass": 41,
-     "fail": 16,
+     "pass": 33,
+     "fail": 24,
      "not_searched": 0,
      "unread": 0,
-     "pass_rate_of_scored": 0.719
+     "pass_rate_of_scored": 0.579
     },
     "capacity": {
      "pass": 26,
@@ -169,6 +214,48 @@
    "rung6_pass_by_register_class": {},
    "rung6_provisional": 33,
    "rung6_not_searched": 25,
+   "per_rung_amended": {
+    "site": {
+     "pass": 32
+    },
+    "capacity": {
+     "pass": 26
+    },
+    "fid": {
+     "pass": 21
+    },
+    "funding": {
+     "pass": 6
+    },
+    "start": {
+     "pass": 10
+    },
+    "input": {
+     "pass": 0
+    }
+   },
+   "medium_of_passing_cells": {
+    "site": {
+     "owner": 32,
+     "press": 1
+    },
+    "capacity": {
+     "owner": 26
+    },
+    "fid": {
+     "owner": 21
+    },
+    "funding": {
+     "funder": 6
+    },
+    "start": {
+     "owner": 10
+    },
+    "input": {}
+   },
+   "outcome_class_amended": {
+    "press only": 1
+   },
    "rung4_before_this_pass": {
     "searched": false,
     "pass": 0,
@@ -180,7 +267,8 @@
     "pass": 6,
     "fail": 51,
     "not_searched": 0
-   }
+   },
+   "layer": "producing"
   },
   "cement": {
    "population": 42,
@@ -255,6 +343,47 @@
    },
    "rung6_provisional": 34,
    "rung6_not_searched": 34,
+   "per_rung_amended": {
+    "site": {
+     "pass": 38
+    },
+    "capacity": {
+     "pass": 20
+    },
+    "fid": {
+     "pass": 5
+    },
+    "funding": {
+     "pass": 17
+    },
+    "start": {
+     "pass": 4
+    },
+    "input": {
+     "pass": 2
+    }
+   },
+   "medium_of_passing_cells": {
+    "site": {
+     "owner": 38
+    },
+    "capacity": {
+     "owner": 20
+    },
+    "fid": {
+     "owner": 5
+    },
+    "funding": {
+     "funder": 17
+    },
+    "start": {
+     "owner": 4
+    },
+    "input": {
+     "owner": 2
+    }
+   },
+   "outcome_class_amended": {},
    "rung4_before_this_pass": {
     "searched": false,
     "pass": 0,
@@ -266,7 +395,8 @@
     "pass": 17,
     "fail": 25,
     "not_searched": 0
-   }
+   },
+   "layer": "producing"
   },
   "transport and storage": {
    "population": 141,
@@ -337,6 +467,47 @@
    "rung6_pass_by_register_class": {},
    "rung6_provisional": 62,
    "rung6_not_searched": 97,
+   "per_rung_amended": {
+    "site": {
+     "pass": 78
+    },
+    "capacity": {
+     "pass": 6
+    },
+    "fid": {
+     "pass": 2
+    },
+    "funding": {
+     "pass": 4
+    },
+    "start": {
+     "pass": 0
+    },
+    "input": {
+     "pass": 0
+    }
+   },
+   "medium_of_passing_cells": {
+    "site": {
+     "owner": 69,
+     "funder": 9,
+     "press": 3
+    },
+    "capacity": {
+     "owner": 6
+    },
+    "fid": {
+     "owner": 2
+    },
+    "funding": {
+     "funder": 4
+    },
+    "start": {},
+    "input": {}
+   },
+   "outcome_class_amended": {
+    "press only": 3
+   },
    "rung4_before_this_pass": {
     "searched": false,
     "pass": 0,
@@ -348,7 +519,8 @@
     "pass": 4,
     "fail": 98,
     "not_searched": 0
-   }
+   },
+   "layer": "infrastructure"
   },
   "steel": {
    "population": 147,
@@ -366,19 +538,19 @@
    "unread": 0,
    "benchmark_aggregates": 0,
    "scored_entries_by_rungs_cleared": {
-    "0": 28,
-    "1": 13,
-    "2": 3,
+    "0": 13,
+    "1": 26,
+    "2": 5,
     "4": 1,
     "5": 4
    },
    "per_rung": {
     "site": {
-     "pass": 18,
-     "fail": 31,
+     "pass": 35,
+     "fail": 14,
      "not_searched": 0,
      "unread": 0,
-     "pass_rate_of_scored": 0.367
+     "pass_rate_of_scored": 0.714
     },
     "capacity": {
      "pass": 4,
@@ -427,6 +599,52 @@
    },
    "rung6_provisional": 9,
    "rung6_not_searched": 40,
+   "per_rung_amended": {
+    "site": {
+     "pass": 33
+    },
+    "capacity": {
+     "pass": 4
+    },
+    "fid": {
+     "pass": 7
+    },
+    "funding": {
+     "pass": 5
+    },
+    "start": {
+     "pass": 4
+    },
+    "input": {
+     "pass": 5
+    }
+   },
+   "medium_of_passing_cells": {
+    "site": {
+     "owner": 30,
+     "press": 2,
+     "permit": 2,
+     "press_quoting_owner": 1
+    },
+    "capacity": {
+     "owner": 4
+    },
+    "fid": {
+     "owner": 7
+    },
+    "funding": {
+     "funder": 5
+    },
+    "start": {
+     "owner": 4
+    },
+    "input": {
+     "owner": 5
+    }
+   },
+   "outcome_class_amended": {
+    "press only": 2
+   },
    "rung4_before_this_pass": {
     "searched": false,
     "pass": 0,
@@ -438,11 +656,13 @@
     "pass": 5,
     "fail": 44,
     "not_searched": 0
-   }
+   },
+   "layer": "producing"
   }
  },
  "cross_sector": {
   "_shape": "rungs are rows, sectors are columns; the cell is passes out of scored",
+  "_layer": "the columns below are the PRODUCING layer; the infrastructure layer is in `layers.infrastructure`",
   "rungs": {
    "site": {
     "hydrogen": {
@@ -450,19 +670,15 @@
      "of_scored": 171
     },
     "batteries": {
-     "pass": 41,
+     "pass": 33,
      "of_scored": 57
     },
     "cement": {
      "pass": 38,
      "of_scored": 42
     },
-    "transport and storage": {
-     "pass": 81,
-     "of_scored": 102
-    },
     "steel": {
-     "pass": 18,
+     "pass": 35,
      "of_scored": 49
     }
    },
@@ -478,10 +694,6 @@
     "cement": {
      "pass": 20,
      "of_scored": 42
-    },
-    "transport and storage": {
-     "pass": 6,
-     "of_scored": 102
     },
     "steel": {
      "pass": 4,
@@ -501,10 +713,6 @@
      "pass": 5,
      "of_scored": 42
     },
-    "transport and storage": {
-     "pass": 2,
-     "of_scored": 102
-    },
     "steel": {
      "pass": 7,
      "of_scored": 49
@@ -522,10 +730,6 @@
     "cement": {
      "pass": 17,
      "of_scored": 42
-    },
-    "transport and storage": {
-     "pass": 4,
-     "of_scored": 102
     },
     "steel": {
      "pass": 5,
@@ -545,10 +749,6 @@
      "pass": 4,
      "of_scored": 42
     },
-    "transport and storage": {
-     "pass": 0,
-     "of_scored": 102
-    },
     "steel": {
      "pass": 4,
      "of_scored": 49
@@ -567,10 +767,6 @@
      "pass": 2,
      "of_scored": 42
     },
-    "transport and storage": {
-     "pass": 0,
-     "of_scored": 102
-    },
     "steel": {
      "pass": 5,
      "of_scored": 49
@@ -581,17 +777,108 @@
    "hydrogen": 245,
    "batteries": 69,
    "cement": 42,
-   "transport and storage": 141,
    "steel": 147
   },
   "scored": {
    "hydrogen": 171,
    "batteries": 57,
    "cement": 42,
-   "transport and storage": 102,
    "steel": 49
   },
-  "total_population": 644,
-  "total_scored": 421
+  "total_population": 503,
+  "total_scored": 319,
+  "all_layers_population": 644,
+  "all_layers_scored": 421
+ },
+ "layers": {
+  "_comment": [
+   "THE CROSS-SECTOR TABLE IS COMPUTED FOR THE PRODUCING LAYER, and the",
+   "infrastructure rows are summarised beneath it rather than averaged into",
+   "it. A pipeline has no nameplate its owner publishes and a reservoir is",
+   "not a plant; transport and storage answers rung 2 six times in 102 and",
+   "rung 5 never, and mixing that into a rate about plants describes",
+   "neither. NO DATA CHANGED: the same 644 lines, grouped."
+  ],
+  "producing": {
+   "sectors": [
+    "hydrogen",
+    "batteries",
+    "cement",
+    "steel"
+   ],
+   "population": 503,
+   "scored": 319,
+   "per_rung": {
+    "site": {
+     "pass": 222,
+     "of_scored": 319,
+     "pass_rate_of_scored": 0.696
+    },
+    "capacity": {
+     "pass": 126,
+     "of_scored": 319,
+     "pass_rate_of_scored": 0.395
+    },
+    "fid": {
+     "pass": 46,
+     "of_scored": 319,
+     "pass_rate_of_scored": 0.144
+    },
+    "funding": {
+     "pass": 48,
+     "of_scored": 319,
+     "pass_rate_of_scored": 0.15
+    },
+    "start": {
+     "pass": 33,
+     "of_scored": 319,
+     "pass_rate_of_scored": 0.103
+    },
+    "input": {
+     "pass": 14,
+     "of_scored": 319,
+     "pass_rate_of_scored": 0.044
+    }
+   }
+  },
+  "infrastructure": {
+   "sectors": [
+    "transport and storage"
+   ],
+   "population": 141,
+   "scored": 102,
+   "per_rung": {
+    "site": {
+     "pass": 81,
+     "of_scored": 102,
+     "pass_rate_of_scored": 0.794
+    },
+    "capacity": {
+     "pass": 6,
+     "of_scored": 102,
+     "pass_rate_of_scored": 0.059
+    },
+    "fid": {
+     "pass": 2,
+     "of_scored": 102,
+     "pass_rate_of_scored": 0.02
+    },
+    "funding": {
+     "pass": 4,
+     "of_scored": 102,
+     "pass_rate_of_scored": 0.039
+    },
+    "start": {
+     "pass": 0,
+     "of_scored": 102,
+     "pass_rate_of_scored": 0.0
+    },
+    "input": {
+     "pass": 0,
+     "of_scored": 102,
+     "pass_rate_of_scored": 0.0
+    }
+   }
+  }
  }
 }

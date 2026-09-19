@@ -43,6 +43,7 @@ import argparse
 import csv
 import json
 import os
+import re
 import sys
 from collections import Counter, defaultdict
 
@@ -60,13 +61,14 @@ FUNDERS = ROOT / "sources" / "funder_pass.json"
 RUNGS = L.RUNGS
 SECTORS = lp.SECTORS
 
-FIELDS = (["sector", "key", "list_key", "row_id", "name", "country", "register_class",
+FIELDS = (["sector", "layer", "key", "list_key", "row_id", "name", "country", "register_class",
            "list_status", "capacity_value", "capacity_unit", "perimeter_clause",
            "rungs_passed", "scored", "unread"]
           + [f"{r}_{f}" for r in RUNGS
-             for f in ("result", "searched", "source", "speaker", "date",
+             for f in ("result", "searched", "source", "speaker", "medium", "date",
                        "precision", "note")]
-          + ["input_provisional"])
+          + [f"{r}_result_amended" for r in RUNGS]
+          + ["rungs_passed_amended", "outcome_class_amended", "input_provisional"])
 
 
 # --------------------------------------------------------------------------
@@ -176,16 +178,45 @@ def score_entry(e, sector, by_key, read_on, by_project, swept, graph_date):
         return {r: L.cell("not_searched", src, "eufabric census", on, "day", why,
                           searched=False) for r in RUNGS}
     out = {}
-    if klass == "named not admitted":
-        out["site"] = L.cell("pass", e.get("site_source") or src,
-                             e.get("site_speaker") or "owner or permit source",
-                             on, "day",
-                             "the census read an owner or permit source that names the "
-                             "site and the perimeter still refuses the entry")
+    a = e.get("admission") or {}
+    # RUNG 1 IS SCORED OFF THE DOCUMENT THE CENSUS READ, not off the class name.
+    # Corrected 20 September 2026 (D-A11). A census admits a works because it read a
+    # company document naming it, and it records that document; scoring rung 1 from
+    # a generic "none names a site" sentence failed 20 admitted steel works on
+    # evidence that was sitting in the entry. And a `named not admitted` entry whose
+    # own note says FAILED LEG: SITE must FAIL rung 1 — passing every entry of that
+    # class scored the class rather than the evidence.
+    site_is_the_failed_leg = "site" in (a.get("failed_leg") or "").lower()
+    if klass == "admitted" and a.get("source"):
+        out["site"] = L.cell(
+            "pass", a["source"], a.get("speaker") or "owner", on, "day",
+            f"the census admitted this works on the owner's own document, which "
+            f"names {a.get('municipality') or 'the works'}: "
+            f"{(a.get('verbatim') or '')[:160]}")
+    elif klass == "named not admitted" and a.get("source") and not site_is_the_failed_leg:
+        out["site"] = L.cell(
+            "pass", a["source"], a.get("speaker") or "owner or permit source", on,
+            "day",
+            f"the census read an owner or permit source that names the site and the "
+            f"perimeter still refuses the entry on another leg"
+            + (f" ({a['failed_leg']})" if a.get("failed_leg") else "") + ": "
+            + (a.get("verbatim") or "")[:140])
+    elif klass == "named not admitted" and site_is_the_failed_leg:
+        out["site"] = L.cell(
+            "fail", src, "eufabric census", on, "day",
+            f"the census named this entry and refused it ON THE SITE LEG: "
+            f"{a['failed_leg']}. A list naming a company and a country is not an "
+            f"owner naming a works.")
+    elif klass == "admitted" or klass == "named not admitted":
+        out["site"] = L.cell(
+            "fail", src, "eufabric census", on, "day",
+            "the census records no owner or permit document for this entry")
     else:
         out["site"] = L.cell("fail", src, "eufabric census", on, "day",
                              "the census read the owner's own sources and none names a "
-                             "site for this project")
+                             "site for this project"
+                             + (f"; {len(a['looked_in_order'])} sources read in order"
+                                if a.get("looked_in_order") else ""))
     for r in ("capacity", "fid", "start"):
         out[r] = L.cell("fail", src, "eufabric census", on, "day",
                         "no owner document on file; the census is the record of looking")
@@ -195,6 +226,89 @@ def score_entry(e, sector, by_key, read_on, by_project, swept, graph_date):
 
 
 # --------------------------------------------------------------------------
+
+
+# --------------------------------------------------------------------------
+# THE MEDIUM OF A RUNG CELL, and the press-quoted amendment
+
+
+TRADE_PRESS = re.compile(
+    r"trade press|Battery-News|SteelOrbis|GMK Center|Offshore Energy|Kallanish|"
+    r"Bioenergy International|Il Sole|Reuters|Montel|Recharge|H2 View|Hydrogen Insight|"
+    r"Argus|Platts|S&P Global", re.I)
+QUOTES_THE_OWNER = re.compile(
+    r"reported by [^,]+ from the compan|quoted in its own|quoting the owner|"
+    r"the owner's own words|from the company's (own )?(release|statement|presentation)",
+    re.I)
+FUNDER_SPEAK = re.compile(r"CINEA|European Commission|Innovation Fund|IPCEI|"
+                          r"grant register|funder pass", re.I)
+PERMIT_SPEAK = re.compile(r"permit|authority|planning|environmental|omgeving|préfect", re.I)
+
+
+def medium_of(c: dict) -> str:
+    """WHAT KIND OF DOCUMENT A CELL RESTS ON. Five values and they are not a ranking.
+
+    `owner`                the company's own site, release, report or filing
+    `permit`               a permitting or planning authority
+    `funder`               a funder's own register or award document
+    `press_quoting_owner`  a trade or general title QUOTING THE OWNER DIRECTLY
+    `press`                a title reporting in its own voice
+    `register`             this register's own census, search or dependency graph
+
+    THE DISTINCTION THE AMENDMENT TURNS ON IS THE LAST TWO. A newspaper saying a
+    company will build a plant is the newspaper speaking; the same newspaper printing
+    the company's own sentence is the company speaking through it, and refusing that
+    would refuse the most common way a company's words reach a reader. The steel
+    census already ruled this once, from the other side: D-S4's Taranto correction
+    refused a newspaper's REPORT of what a company told a ministry, and the ruling
+    said the perimeter asks for company confirmation. The amendment says the same
+    thing precisely rather than by host.
+    """
+    sp, src, note = c.get("speaker") or "", c.get("source") or "", c.get("note") or ""
+    blob = f"{sp} {note}"
+    if src.startswith("sources/") or "eufabric" in sp.lower():
+        return "register"
+    if FUNDER_SPEAK.search(sp):
+        return "funder"
+    if TRADE_PRESS.search(blob):
+        return "press_quoting_owner" if QUOTES_THE_OWNER.search(blob) else "press"
+    if PERMIT_SPEAK.search(sp):
+        return "permit"
+    return "owner"
+
+
+def amend(cells_line: dict) -> tuple[dict, str]:
+    """THE PRESS-QUOTED AMENDMENT, applied to one line. Returns the amended rung
+    results and the outcome class.
+
+    A PASS THAT RESTS ON A TITLE SPEAKING IN ITS OWN VOICE STOPS BEING A PASS, and
+    an entry whose only passing evidence was of that kind gets the outcome class
+    `press only` — which is a statement about the EVIDENCE and not about the project,
+    exactly as `unread` is. A pass that rests on a title quoting the owner stands,
+    because the speaker is the owner.
+
+    BOTH TABLES ARE PRINTED. The frozen columns stay in the file beside the amended
+    ones so the change is legible rather than retroactive, which is what brief 13's
+    amendment did and what this follows.
+    """
+    out, lost = {}, 0
+    for r in RUNGS:
+        res, med = cells_line[f"{r}_result"], cells_line[f"{r}_medium"]
+        if res == "pass" and med == "press":
+            out[r] = "fail"
+            lost += 1
+        else:
+            out[r] = res
+    passes = sum(1 for r in RUNGS if out[r] == "pass")
+    if cells_line["scored"] != "true":
+        klass = ""
+    elif lost and passes == 0:
+        klass = "press only"
+    elif lost:
+        klass = "press dropped, other evidence stands"
+    else:
+        klass = ""
+    return out, klass
 
 
 def line_for(sector, e, cells, row):
@@ -208,7 +322,7 @@ def line_for(sector, e, cells, row):
     status = ""
     for c in e.get("list_claims") or []:
         status = status or c.get("iea_status") or c.get("project_status") or ""
-    line = {"sector": sector, "key": e["key"], "list_key": e["key"].split(":", 1)[-1]
+    line = {"sector": sector, "layer": lp.LAYER[sector], "key": e["key"], "list_key": e["key"].split(":", 1)[-1]
             if ":" in e["key"] else "", "row_id": e.get("row_id", ""),
             "name": e.get("name", ""), "country": e.get("country", ""),
             "register_class": e["register_class"], "list_status": status,
@@ -221,6 +335,7 @@ def line_for(sector, e, cells, row):
         line[f"{r}_searched"] = "true" if c.get("searched", True) else "false"
         for f in ("source", "speaker", "date", "precision", "note"):
             line[f"{r}_{f}"] = c[f]
+        line[f"{r}_medium"] = medium_of(c)
         if r == "input":
             line["input_provisional"] = "true" if c.get("provisional") else "false"
         if c["result"] == "pass":
@@ -230,6 +345,11 @@ def line_for(sector, e, cells, row):
     line["scored"] = "false" if (line["register_class"] in lp.NOT_SCORED
                                  or line["register_class"] == "benchmark aggregate"
                                  or line["unread"] == "true") else "true"
+    am, klass = amend(line)
+    for r in RUNGS:
+        line[f"{r}_result_amended"] = am[r]
+    line["rungs_passed_amended"] = sum(1 for r in RUNGS if am[r] == "pass")
+    line["outcome_class_amended"] = klass
     return line
 
 
@@ -264,7 +384,8 @@ def hydrogen_lines():
     out = []
     with open(HYDROGEN_CSV, newline="", encoding="utf-8") as fh:
         for l in csv.DictReader(fh):
-            n = {"sector": "hydrogen", "key": l["key"], "list_key": l["iea_ref"],
+            n = {"sector": "hydrogen", "layer": lp.LAYER["hydrogen"],
+                 "key": l["key"], "list_key": l["iea_ref"],
                  "row_id": l["row_id"], "name": l["name"], "country": l["country"],
                  "register_class": l["register_class"], "list_status": l["iea_status"],
                  "capacity_value": l["capacity_value"],
@@ -276,11 +397,20 @@ def hydrogen_lines():
                           "precision", "note"):
                     n[f"{r}_{f}"] = l[f"{r}_{f}"]
             n["input_provisional"] = l["input_provisional"]
+            for r in RUNGS:
+                n[f"{r}_medium"] = medium_of(
+                    {"speaker": l[f"{r}_speaker"], "source": l[f"{r}_source"],
+                     "note": l[f"{r}_note"]})
             # `unread` is a register class in the hydrogen table and a cell state
             # here; both mean the same thing and the scored flag reads either.
             n["scored"] = "false" if (n["register_class"] in lp.NOT_SCORED
                                       or n["register_class"] == "unread"
                                       or n["unread"] == "true") else "true"
+            am, klass = amend(n)
+            for r in RUNGS:
+                n[f"{r}_result_amended"] = am[r]
+            n["rungs_passed_amended"] = sum(1 for r in RUNGS if am[r] == "pass")
+            n["outcome_class_amended"] = klass
             out.append(n)
     return out
 
@@ -408,6 +538,14 @@ def summarise(lines, parts):
             "rung6_provisional": sum(1 for l in scored
                                      if l["input_provisional"] == "true"),
             "rung6_not_searched": per_rung["input"]["not_searched"],
+            "per_rung_amended": {
+                r: {"pass": sum(1 for l in scored
+                                if l[f"{r}_result_amended"] == "pass")} for r in RUNGS},
+            "medium_of_passing_cells": {
+                r: dict(Counter(l[f"{r}_medium"] for l in scored
+                                if l[f"{r}_result"] == "pass")) for r in RUNGS},
+            "outcome_class_amended": dict(Counter(
+                l["outcome_class_amended"] for l in scored if l["outcome_class_amended"])),
             # RUNG 4 BEFORE AND AFTER THIS PASS. "Before" is the state on main: the
             # funder pass of brief 12 covered hydrogen and nothing else, so rung 4
             # for the other four sectors was a question nobody had asked and every
@@ -427,15 +565,47 @@ def summarise(lines, parts):
                 "fail": per_rung["funding"]["fail"],
                 "not_searched": per_rung["funding"]["not_searched"]},
         }
+    PRODUCING = [x for x in SECTORS if lp.LAYER[x] == "producing"]
+    INFRA = [x for x in SECTORS if lp.LAYER[x] == "infrastructure"]
+    for s2 in SECTORS:
+        out["sectors"][s2]["layer"] = lp.LAYER[s2]
+
+    def roll(group):
+        ls = [l for l in lines if l["layer"] == group]
+        sc = [l for l in ls if l["scored"] == "true"]
+        return {"sectors": [x for x in SECTORS if lp.LAYER[x] == group],
+                "population": len(ls), "scored": len(sc),
+                "per_rung": {r: {"pass": sum(1 for l in sc if l[f"{r}_result"] == "pass"),
+                                 "of_scored": len(sc),
+                                 "pass_rate_of_scored": round(
+                                     sum(1 for l in sc if l[f"{r}_result"] == "pass")
+                                     / len(sc), 3) if sc else None}
+                             for r in RUNGS}}
+
+    out["layers"] = {
+        "_comment": [
+            "THE CROSS-SECTOR TABLE IS COMPUTED FOR THE PRODUCING LAYER, and the",
+            "infrastructure rows are summarised beneath it rather than averaged into",
+            "it. A pipeline has no nameplate its owner publishes and a reservoir is",
+            "not a plant; transport and storage answers rung 2 six times in 102 and",
+            "rung 5 never, and mixing that into a rate about plants describes",
+            "neither. NO DATA CHANGED: the same 644 lines, grouped."],
+        "producing": roll("producing"),
+        "infrastructure": roll("infrastructure")}
+
     out["cross_sector"] = {
         "_shape": "rungs are rows, sectors are columns; the cell is passes out of scored",
+        "_layer": "the columns below are the PRODUCING layer; the infrastructure "
+                  "layer is in `layers.infrastructure`",
         "rungs": {r: {s: {"pass": out["sectors"][s]["per_rung"][r]["pass"],
                           "of_scored": out["sectors"][s]["scored"]}
-                      for s in SECTORS} for r in RUNGS},
-        "population": {s: out["sectors"][s]["population"] for s in SECTORS},
-        "scored": {s: out["sectors"][s]["scored"] for s in SECTORS},
-        "total_population": sum(out["sectors"][s]["population"] for s in SECTORS),
-        "total_scored": sum(out["sectors"][s]["scored"] for s in SECTORS)}
+                      for s in PRODUCING} for r in RUNGS},
+        "population": {s: out["sectors"][s]["population"] for s in PRODUCING},
+        "scored": {s: out["sectors"][s]["scored"] for s in PRODUCING},
+        "total_population": sum(out["sectors"][s]["population"] for s in PRODUCING),
+        "total_scored": sum(out["sectors"][s]["scored"] for s in PRODUCING),
+        "all_layers_population": sum(out["sectors"][s]["population"] for s in SECTORS),
+        "all_layers_scored": sum(out["sectors"][s]["scored"] for s in SECTORS)}
     return out
 
 
@@ -456,31 +626,79 @@ def read_csv():
 
 
 def tables(summary):
-    print("\nTHE CROSS-SECTOR TABLE — rungs down, sectors across, passes out of scored\n")
-    head = f"  {'rung':<10}" + "".join(f"{s[:13]:>15}" for s in SECTORS)
+    PROD = summary["layers"]["producing"]["sectors"]
+    INFRA = summary["layers"]["infrastructure"]["sectors"]
+
+    print("\nTHE CROSS-SECTOR TABLE — THE PRODUCING LAYER")
+    print("  rungs down, sectors across, passes out of scored\n")
+    head = f"  {'rung':<10}" + "".join(f"{s[:13]:>15}" for s in PROD)
     print(head)
     print("  " + "-" * (len(head) - 2))
     for i, r in enumerate(RUNGS, 1):
         row = f"  {i}. {r:<7}"
-        for s in SECTORS:
+        for s in PROD:
             c = summary["cross_sector"]["rungs"][r][s]
             row += f"{str(c['pass']) + '/' + str(c['of_scored']):>15}"
+        pl = summary["layers"]["producing"]["per_rung"][r]
+        row += f"   |{str(pl['pass']) + '/' + str(pl['of_scored']):>12}"
         print(row)
     print("  " + "-" * (len(head) - 2))
-    print(f"  {'population':<10}" + "".join(
-        f"{summary['sectors'][s]['population']:>15}" for s in SECTORS))
-    print(f"  {'scored':<10}" + "".join(
-        f"{summary['sectors'][s]['scored']:>15}" for s in SECTORS))
-    print(f"  {'excluded':<10}" + "".join(
-        f"{summary['sectors'][s]['perimeter_exclusions']:>15}" for s in SECTORS))
-    print(f"  {'unread':<10}" + "".join(
-        f"{summary['sectors'][s]['unread']:>15}" for s in SECTORS))
-    print(f"\n  {summary['cross_sector']['total_population']} entries across five "
-          f"populations; {summary['cross_sector']['total_scored']} scored.")
+    for label, key in (("population", "population"), ("scored", "scored"),
+                       ("excluded", "perimeter_exclusions"), ("unread", "unread")):
+        print(f"  {label:<10}" + "".join(
+            f"{summary['sectors'][s][key]:>15}" for s in PROD))
+    print(f"\n  the last column is the producing layer as one: "
+          f"{summary['layers']['producing']['population']} entries, "
+          f"{summary['layers']['producing']['scored']} scored.")
+
+    print("\nBENEATH IT — THE INFRASTRUCTURE LAYER, summarised and not averaged in")
+    inf = summary["layers"]["infrastructure"]
+    print(f"  {', '.join(INFRA)}: {inf['population']} entries, {inf['scored']} scored")
+    print("  " + "  ".join(f"{i}.{r} {inf['per_rung'][r]['pass']}/{inf['per_rung'][r]['of_scored']}"
+                           for i, r in enumerate(RUNGS, 1)))
+    print("  A pipeline has no nameplate its owner publishes and a reservoir is not a")
+    print("  plant. Rung 2 clears 6 times in 102 and rung 5 never; averaging that into a")
+    print("  rate about plants would describe neither. NO DATA CHANGED — the same lines.")
+    print(f"\n  {summary['cross_sector']['all_layers_population']} entries across five "
+          f"populations in total; "
+          f"{summary['cross_sector']['all_layers_scored']} scored.")
+
+    print("\nTHE PRESS-QUOTED AMENDMENT — BOTH TABLES, all five sectors")
+    print("  a pass resting on a title speaking IN ITS OWN VOICE stops being a pass;")
+    print("  a pass resting on a title QUOTING THE OWNER stands, because the speaker is")
+    print("  the owner. Frozen | amended, passes out of scored.\n")
+    hd = f"  {'rung':<10}" + "".join(f"{s[:13]:>17}" for s in SECTORS)
+    print(hd)
+    print("  " + "-" * (len(hd) - 2))
+    for i, r in enumerate(RUNGS, 1):
+        row = f"  {i}. {r:<7}"
+        for s in SECTORS:
+            d = summary["sectors"][s]
+            a = d["per_rung"][r]["pass"]
+            b = d["per_rung_amended"][r]["pass"]
+            mark = " " if a == b else "*"
+            row += f"{f'{a}|{b}{mark}':>17}"
+        print(row)
+    print("  " + "-" * (len(hd) - 2))
+    print("  * the amendment moved this cell\n")
+    print("  the medium every PASSING cell rests on, all sectors:")
+    tot = Counter()
+    for s in SECTORS:
+        for r in RUNGS:
+            tot.update(summary["sectors"][s]["medium_of_passing_cells"][r])
+    for k, v in tot.most_common():
+        print(f"    {k:<22} {v}")
+    oc = Counter()
+    for s in SECTORS:
+        oc.update(summary["sectors"][s]["outcome_class_amended"])
+    print("\n  outcome classes the amendment creates:")
+    for k, v in (oc.most_common() or [("(none — no entry lost its last pass)", 0)]):
+        print(f"    {k:<42} {v}")
 
     print("\nEACH SECTOR'S POPULATION IDENTITY")
     for s in SECTORS:
-        print(f"  {s:<24} {summary['sectors'][s]['identity']}")
+        print(f"  {s:<24} [{summary['sectors'][s]['layer'][:5]}] "
+              f"{summary['sectors'][s]['identity']}")
 
     print("\nRUNG 6 — provisional, and where the sweep did not reach")
     for s in SECTORS:
@@ -494,7 +712,7 @@ def tables(summary):
     for s in SECTORS:
         d = summary["sectors"][s]
         b, a2 = d["rung4_before_this_pass"], d["rung4_after_this_pass"]
-        print(f"  {s:<24}{b['pass']:>7} pass," 
+        print(f"  {s:<24}{b['pass']:>7} pass,"
               f"{b['not_searched']:>6} not searched"
               f"{a2['pass']:>10} pass,{a2['fail']:>5} fail,"
               f"{a2['not_searched']:>3} not searched")

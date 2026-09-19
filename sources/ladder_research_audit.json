@@ -1,0 +1,90 @@
+{
+ "_comment": [
+  "THE RE-SEARCH AUDIT, 20 September 2026. Thirty entries drawn at random from the",
+  "164 classed `searched none found` or `named not admitted` in hydrogen, batteries,",
+  "cement and transport and storage, re-searched under the current rules with the",
+  "corrected reader.",
+  "",
+  "THE SAMPLE IS REPRODUCIBLE. random.seed(11) over the eligible entries sorted by",
+  "sector and key; the seed is written down so the draw can be repeated and argued",
+  "with rather than taken on trust.",
+  "",
+  "THE CORRECTED READER CHANGED NOTHING MECHANICALLY IN THIS SAMPLE, and that is",
+  "worth saying plainly: none of the 44 URLs the thirty entries recorded is non-ASCII",
+  "and none previously failed client-side, so the percent-encoding fix of D-S1 had",
+  "nothing to repair here. WHAT THE AUDIT ACTUALLY TESTS is the search ORDER — S3's",
+  "rule that where a works has an owner with a newsroom, that is where the search",
+  "starts, not the list's citations.",
+  "",
+  "AND THIRTEEN OF THE THIRTY RECORDED NO SOURCE URL AT ALL. That is a finding about",
+  "the censuses' record-keeping rather than about the projects: a class of `searched",
+  "none found` with no list of what was searched cannot be audited by re-reading it,",
+  "only by searching again from the owner's name."
+ ],
+ "run_on": "2026-09-20",
+ "seed": 11,
+ "eligible_population": 164,
+ "sample_size": 30,
+ "by_sector_eligible": {
+  "hydrogen": 95,
+  "transport and storage": 40,
+  "batteries": 21,
+  "cement": 8
+ },
+ "entries_with_no_recorded_source_url": 13,
+ "urls_refetched": 44,
+ "class_changes": [
+  {
+   "key": "bn26:FAAM Terevola",
+   "sector": "batteries",
+   "from": "searched none found",
+   "to": "named not admitted",
+   "found_at": "https://www.faam.com/en/",
+   "why": "faam.com names 'Teverola 1 and Teverola 2' under Plants and states 'Start-up of the first plant in Italy and Southern Europe for the production of lithium-ion cells, modules and battery packs'. THE OWNER NAMES THE WORKS AND STATES NO CAPACITY — no GWh anywhere on the page — so the failed leg moves from `nothing found` to CAPACITY."
+  },
+  {
+   "key": "bn26:InoBat Serbia",
+   "sector": "batteries",
+   "from": "searched none found",
+   "to": "named not admitted",
+   "found_at": "https://inobat.eu/",
+   "why": "inobat.eu's own timeline: 'InoBat signs declarations of intent with the Republic of Serbia for the construction of a new EV battery gigafactory', January 2023. A DECLARATION OF INTENT WITH A STATE, NAMING NO WORKS — Subotica does not appear — so the entry is named and refused on the SITE leg rather than not found at all."
+  },
+  {
+   "key": "ieaccus:1096",
+   "sector": "transport and storage",
+   "from": "searched none found",
+   "to": "named not admitted",
+   "found_at": "https://www.ocap.nl/",
+   "why": "ocap.nl, Linde's own site for the project: 'OCAP levert zuivere CO2 aan glastuinbouwers via een pijpleiding'. The owner names the project and what it does and states no capacity, so the failed leg is capacity. AN ADMISSION MAY FOLLOW and is queued; a thirty-entry audit is not where a row is landed."
+  },
+  {
+   "key": "ieaccus:343",
+   "sector": "transport and storage",
+   "from": "searched none found",
+   "to": "named not admitted",
+   "found_at": "https://www.pycasso-project.eu/",
+   "why": "pycasso-project.eu resolves to Teréga's own site, and Teréga is a PYCASSO partner — a consortium member speaking about its own consortium's project, which this register reads as the company speaking (the Naturgy precedent on catalina-teruel-sagunto). It states 'le projet PYCASSO qui consiste à développer des infrastructures mutualisées de transport et de stockage... dans les gisements pétroliers et gaziers déplétés du piémont pyrénéen' and calls it 'à l'étude'. A REGION, A STUDY, NO SITE AND NO CAPACITY."
+  }
+ ],
+ "class_changes_count": 4,
+ "examined_and_unchanged": [
+  {
+   "key": "ieaccus:1065",
+   "sector": "cement",
+   "why": "the Holcim/Aggregate Industries page for Cauldon is readable and names the works; 'Carbon Capture and Storage' appears only as a navigation item and no capture project at Cauldon is stated. Class stands."
+  },
+  {
+   "key": "iea:1191",
+   "sector": "hydrogen",
+   "why": "aquaventus.org is readable and is AquaVentus Förderverein e.V., an association of stakeholders — not the owner of a works. It states 10 GW of offshore capacity for the PROGRAMME. A programme name covering no named works is the same refusal the battery census gave Freyr's Nordic Battery Belt. Class stands."
+  },
+  {
+   "key": "ieaccus:1142",
+   "sector": "cement",
+   "why": "duna-drava.hu names the Beremend Plant and states no capture project; CO2 and capture do not appear on the page. Class stands."
+  }
+ ],
+ "verdict": "FOUR OF THIRTY CHANGE CLASS, and the brief's threshold is two. All four move the same way — `searched none found` to `named not admitted` — which is not four projects that have changed but four searches that missed a readable owner page. Every one was found by starting at the owner's own domain, which is what S3 ruled on 16 September after Port Talbot was admitted on the first try having failed sixteen wiki citations. THE FOUR SECTORS GET THE FULL PASS AS A FURTHER BRIEF.",
+ "not_applied_here": "THE FOUR RECLASSES ARE RECORDED AND NOT WRITTEN. Applying four corrections out of a population a full pass is about to re-read would leave the censuses half corrected and the halves undated, and a reader could not tell which entries had been through which rules. They are listed here with the document that moves them so the further brief starts from evidence rather than from a sample size."
+}

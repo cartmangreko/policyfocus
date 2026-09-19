@@ -68,8 +68,16 @@ def main() -> int:
         lines = list(csv.DictReader(fh))
     summary = json.loads(A.SUMMARY.read_text(encoding="utf-8"))
 
-    if len(lines) != summary["cross_sector"]["total_population"]:
+    # `total_population` IS THE PRODUCING LAYER since the layer split; the file's own
+    # line count is `all_layers_population`, and conflating the two is exactly the
+    # confusion the split was made to prevent.
+    if len(lines) != summary["cross_sector"]["all_layers_population"]:
         bad.append(f"all.csv has {len(lines)} lines; the summary says "
+                   f"{summary['cross_sector']['all_layers_population']} across both "
+                   f"layers")
+    prod = sum(1 for l in lines if l["layer"] == "producing")
+    if prod != summary["cross_sector"]["total_population"]:
+        bad.append(f"the producing layer has {prod} lines; the cross-sector table says "
                    f"{summary['cross_sector']['total_population']}")
 
     for s in lp.SECTORS:
@@ -101,6 +109,25 @@ def main() -> int:
                 bad.append(f"{l['key']} {r}: a fail with searched=false should have "
                            f"been recorded not_searched (D-L2)")
 
+    # THE MEDIUM VOCABULARY IS CLOSED, AND THE AMENDMENT IS CONSISTENT WITH IT.
+    MEDIA = {"owner", "permit", "funder", "press_quoting_owner", "press", "register"}
+    for l in lines:
+        if l["layer"] not in ("producing", "infrastructure"):
+            bad.append(f"{l['key']}: layer {l['layer']!r} is not a layer")
+        for r in A.RUNGS:
+            m = l[f"{r}_medium"]
+            if m not in MEDIA:
+                bad.append(f"{l['key']} {r}: medium {m!r} is not in the vocabulary")
+            a2, fr = l[f"{r}_result_amended"], l[f"{r}_result"]
+            # THE AMENDMENT MAY ONLY TAKE A PASS AWAY, AND ONLY FROM THE PRESS.
+            if a2 != fr and not (fr == "pass" and a2 == "fail" and m == "press"):
+                bad.append(f"{l['key']} {r}: the amendment moved {fr} -> {a2} at medium "
+                           f"{m!r}, which it is not allowed to do")
+        if l["outcome_class_amended"] == "press only" and int(
+                l["rungs_passed_amended"]) != 0:
+            bad.append(f"{l['key']}: classed `press only` and still clears "
+                       f"{l['rungs_passed_amended']} rungs")
+
     # THE SUMMARY RECOMPUTES FROM THE CSV'S OWN LINES.
     rebuilt, parts = A.build()
     if A.summarise(rebuilt, parts) != summary:
@@ -118,7 +145,8 @@ def main() -> int:
         return 1
     print(f"check_ladder_all: {len(lines)} lines across five sectors; every identity "
           f"holds, every rung cell is sourced or unread,\n"
-          f"  the summary recomputes, and hydrogen's 245 lines are line-for-line "
+          f"  the summary recomputes, the medium vocabulary is closed and the amendment only "
+          f"takes a press pass away,\n  and hydrogen's 245 lines are line-for-line "
           f"sources/ladder/hydrogen.csv.\n"
           f"  the six rung tests hash to {sha[:16]}… — unchanged since the D-B1 "
           f"freeze at {FREEZE_COMMIT[:7]} ({n} bytes).")
