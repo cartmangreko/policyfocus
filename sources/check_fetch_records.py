@@ -56,6 +56,11 @@ INDEXES = {
     # diacritic one, from a space in a path. An audit that omits the biggest index is an
     # audit of the indexes somebody remembered.
     "hydrogen": ("sources/cache/hydrogen/index.json", "flat"),
+    # ADDED 19 SEPTEMBER 2026, brief 11. The cross-sector funder pass reads the
+    # Commission's own award documents and files them under `funders` rather than
+    # under a sector, because a funder is not a sector. Same rule as the five above:
+    # the index is tracked and the bodies are not.
+    "funders": ("sources/cache/funders/index.json", "flat"),
     "dependency sweep": ("sources/dependency_cache/index.json", "keyed"),
 }
 

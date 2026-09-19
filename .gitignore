@@ -93,3 +93,9 @@ sources/cache/ccs/*
 # reasoning, and a publisher's file is reproducible from its hash and its URL.
 sources/cache/steel/*
 !sources/cache/steel/index.json
+
+# THE CROSS-SECTOR FUNDER PASS, brief 11. Same split as every cache above: the index
+# is tracked because it is the record that somebody looked, and the bodies are not
+# because they are other people's documents and this repository holds identities.
+sources/cache/funders/*
+!sources/cache/funders/index.json

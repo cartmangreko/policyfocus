@@ -89,6 +89,15 @@ BOT_HOSTILE = {
     # it the moment somebody does. See the note under REFUSED_STATE.
     "www.globalcement.com",
     "www.stellantis.com",
+    # ADDED 19 SEPTEMBER 2026, and it is not this branch's. project[47] has cited
+    # this page since the batteries census and check_links passed on it as recently
+    # as the steel chain on 18 September; on 19 September it answers HTTP 403 to the
+    # declared reader from Apache, with no CDN header — the publisher's own server
+    # refusing, the same shape as the two above. NO ROW WAS EDITED HERE AND NOTHING
+    # WAS RE-READ: the citation stands, the 403 is a fact about how this register
+    # reaches the page, and it moves to `refused_declared_reader` with a date the
+    # moment a person opens it.
+    "www.elektroniknet.de",
 }
 
 # THE RECORDED STATE FOR A PUBLISHER THAT REFUSES A DECLARED READER

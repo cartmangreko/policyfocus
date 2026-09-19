@@ -1,0 +1,597 @@
+{
+ "_comment": [
+  "COMPUTED FROM sources/ladder/all.csv BY build_ladder_all.py. Never edited by",
+  "hand: --check recomputes it and refuses a mismatch.",
+  "",
+  "THREE POPULATIONS PER SECTOR AND ONLY ONE IS SCORED, on D-L1. A perimeter",
+  "exclusion is a project the dataset is not about and an unread entry is a",
+  "publisher this register could not reach; neither failed to confirm itself.",
+  "",
+  "EVERY RUNG 6 RESULT IS PROVISIONAL while `verdict` is null on every edge in",
+  "sources/edges.json. The count is per sector and is printed, not buried."
+ ],
+ "sectors": {
+  "hydrogen": {
+   "population": 245,
+   "population_parts": {
+    "note": "built by sources/build_ladder.py (brief 10)"
+   },
+   "identity": "171 scored + 53 perimeter exclusions + 21 unread + 0 benchmark aggregates = 245",
+   "identity_holds": true,
+   "scored": 171,
+   "perimeter_exclusions": 53,
+   "unread": 21,
+   "benchmark_aggregates": 0,
+   "scored_entries_by_rungs_cleared": {
+    "0": 48,
+    "1": 53,
+    "2": 45,
+    "3": 10,
+    "4": 5,
+    "5": 6,
+    "6": 4
+   },
+   "per_rung": {
+    "site": {
+     "pass": 116,
+     "fail": 55,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.678
+    },
+    "capacity": {
+     "pass": 76,
+     "fail": 95,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.444
+    },
+    "fid": {
+     "pass": 13,
+     "fail": 158,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.076
+    },
+    "funding": {
+     "pass": 20,
+     "fail": 151,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.117
+    },
+    "start": {
+     "pass": 15,
+     "fail": 156,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.088
+    },
+    "input": {
+     "pass": 7,
+     "fail": 164,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.041
+    }
+   },
+   "rung4_pass_by_register_class": {
+    "admitted": 20
+   },
+   "rung6_pass_by_register_class": {
+    "admitted": 7
+   },
+   "rung6_provisional": 76,
+   "rung6_not_searched": 0,
+   "rung4_before_this_pass": {
+    "searched": true,
+    "pass": 20,
+    "not_searched": 0,
+    "why": "unchanged: sources/hydrogen_funder_pass.json was read in brief 12 and is read again here"
+   },
+   "rung4_after_this_pass": {
+    "searched": true,
+    "pass": 20,
+    "fail": 151,
+    "not_searched": 0
+   }
+  },
+  "batteries": {
+   "population": 69,
+   "population_parts": {
+    "te_2024_annex_1": 50,
+    "battery_news_2026_02": 38,
+    "named_by_both": 22,
+    "union_of_the_two_lists": 66,
+    "register_rows_on_neither": 3
+   },
+   "identity": "57 scored + 6 perimeter exclusions + 5 unread + 1 benchmark aggregates = 69",
+   "identity_holds": true,
+   "scored": 57,
+   "perimeter_exclusions": 6,
+   "unread": 5,
+   "benchmark_aggregates": 1,
+   "scored_entries_by_rungs_cleared": {
+    "0": 15,
+    "1": 11,
+    "2": 9,
+    "3": 15,
+    "4": 5,
+    "5": 2
+   },
+   "per_rung": {
+    "site": {
+     "pass": 41,
+     "fail": 16,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.719
+    },
+    "capacity": {
+     "pass": 26,
+     "fail": 31,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.456
+    },
+    "fid": {
+     "pass": 21,
+     "fail": 36,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.368
+    },
+    "funding": {
+     "pass": 6,
+     "fail": 51,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.105
+    },
+    "start": {
+     "pass": 10,
+     "fail": 47,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.175
+    },
+    "input": {
+     "pass": 0,
+     "fail": 32,
+     "not_searched": 25,
+     "unread": 0,
+     "pass_rate_of_scored": 0.0
+    }
+   },
+   "rung4_pass_by_register_class": {
+    "held": 6
+   },
+   "rung6_pass_by_register_class": {},
+   "rung6_provisional": 33,
+   "rung6_not_searched": 25,
+   "rung4_before_this_pass": {
+    "searched": false,
+    "pass": 0,
+    "not_searched": 57,
+    "why": "no funder list had been read against this sector, so every scored entry's rung 4 was not_searched"
+   },
+   "rung4_after_this_pass": {
+    "searched": true,
+    "pass": 6,
+    "fail": 51,
+    "not_searched": 0
+   }
+  },
+  "cement": {
+   "population": 42,
+   "population_parts": {
+    "iea_ccus_entries_in_this_subsector": 42,
+    "register_rows_the_list_does_not_carry": 0
+   },
+   "identity": "42 scored + 0 perimeter exclusions + 0 unread + 0 benchmark aggregates = 42",
+   "identity_holds": true,
+   "scored": 42,
+   "perimeter_exclusions": 0,
+   "unread": 0,
+   "benchmark_aggregates": 0,
+   "scored_entries_by_rungs_cleared": {
+    "0": 4,
+    "1": 12,
+    "2": 11,
+    "3": 10,
+    "4": 3,
+    "5": 2
+   },
+   "per_rung": {
+    "site": {
+     "pass": 38,
+     "fail": 4,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.905
+    },
+    "capacity": {
+     "pass": 20,
+     "fail": 22,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.476
+    },
+    "fid": {
+     "pass": 5,
+     "fail": 37,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.119
+    },
+    "funding": {
+     "pass": 17,
+     "fail": 25,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.405
+    },
+    "start": {
+     "pass": 4,
+     "fail": 38,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.095
+    },
+    "input": {
+     "pass": 2,
+     "fail": 6,
+     "not_searched": 34,
+     "unread": 0,
+     "pass_rate_of_scored": 0.048
+    }
+   },
+   "rung4_pass_by_register_class": {
+    "held": 6,
+    "admitted": 11
+   },
+   "rung6_pass_by_register_class": {
+    "held": 2
+   },
+   "rung6_provisional": 34,
+   "rung6_not_searched": 34,
+   "rung4_before_this_pass": {
+    "searched": false,
+    "pass": 0,
+    "not_searched": 42,
+    "why": "no funder list had been read against this sector, so every scored entry's rung 4 was not_searched"
+   },
+   "rung4_after_this_pass": {
+    "searched": true,
+    "pass": 17,
+    "fail": 25,
+    "not_searched": 0
+   }
+  },
+  "transport and storage": {
+   "population": 141,
+   "population_parts": {
+    "iea_ccus_entries_in_this_subsector": 140,
+    "register_rows_the_list_does_not_carry": 1
+   },
+   "identity": "102 scored + 27 perimeter exclusions + 12 unread + 0 benchmark aggregates = 141",
+   "identity_holds": true,
+   "scored": 102,
+   "perimeter_exclusions": 27,
+   "unread": 12,
+   "benchmark_aggregates": 0,
+   "scored_entries_by_rungs_cleared": {
+    "0": 21,
+    "1": 70,
+    "2": 10,
+    "3": 1
+   },
+   "per_rung": {
+    "site": {
+     "pass": 81,
+     "fail": 21,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.794
+    },
+    "capacity": {
+     "pass": 6,
+     "fail": 96,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.059
+    },
+    "fid": {
+     "pass": 2,
+     "fail": 100,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.02
+    },
+    "funding": {
+     "pass": 4,
+     "fail": 98,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.039
+    },
+    "start": {
+     "pass": 0,
+     "fail": 102,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.0
+    },
+    "input": {
+     "pass": 0,
+     "fail": 5,
+     "not_searched": 97,
+     "unread": 0,
+     "pass_rate_of_scored": 0.0
+    }
+   },
+   "rung4_pass_by_register_class": {
+    "admitted": 3,
+    "named not admitted": 1
+   },
+   "rung6_pass_by_register_class": {},
+   "rung6_provisional": 62,
+   "rung6_not_searched": 97,
+   "rung4_before_this_pass": {
+    "searched": false,
+    "pass": 0,
+    "not_searched": 102,
+    "why": "no funder list had been read against this sector, so every scored entry's rung 4 was not_searched"
+   },
+   "rung4_after_this_pass": {
+    "searched": true,
+    "pass": 4,
+    "fail": 98,
+    "not_searched": 0
+   }
+  },
+  "steel": {
+   "population": 147,
+   "population_parts": {
+    "gem_plants": 132,
+    "leadit_entries": 65,
+    "leadit_entries_at_a_gem_plant": 52,
+    "leadit_entries_gem_does_not_carry": 13,
+    "register_rows_neither_list_carries": 2
+   },
+   "identity": "49 scored + 98 perimeter exclusions + 0 unread + 0 benchmark aggregates = 147",
+   "identity_holds": true,
+   "scored": 49,
+   "perimeter_exclusions": 98,
+   "unread": 0,
+   "benchmark_aggregates": 0,
+   "scored_entries_by_rungs_cleared": {
+    "0": 28,
+    "1": 13,
+    "2": 3,
+    "4": 1,
+    "5": 4
+   },
+   "per_rung": {
+    "site": {
+     "pass": 18,
+     "fail": 31,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.367
+    },
+    "capacity": {
+     "pass": 4,
+     "fail": 45,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.082
+    },
+    "fid": {
+     "pass": 7,
+     "fail": 42,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.143
+    },
+    "funding": {
+     "pass": 5,
+     "fail": 44,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.102
+    },
+    "start": {
+     "pass": 4,
+     "fail": 45,
+     "not_searched": 0,
+     "unread": 0,
+     "pass_rate_of_scored": 0.082
+    },
+    "input": {
+     "pass": 5,
+     "fail": 4,
+     "not_searched": 40,
+     "unread": 0,
+     "pass_rate_of_scored": 0.102
+    }
+   },
+   "rung4_pass_by_register_class": {
+    "searched none found": 1,
+    "admitted": 2,
+    "held": 1,
+    "named not admitted": 1
+   },
+   "rung6_pass_by_register_class": {
+    "held": 5
+   },
+   "rung6_provisional": 9,
+   "rung6_not_searched": 40,
+   "rung4_before_this_pass": {
+    "searched": false,
+    "pass": 0,
+    "not_searched": 49,
+    "why": "no funder list had been read against this sector, so every scored entry's rung 4 was not_searched"
+   },
+   "rung4_after_this_pass": {
+    "searched": true,
+    "pass": 5,
+    "fail": 44,
+    "not_searched": 0
+   }
+  }
+ },
+ "cross_sector": {
+  "_shape": "rungs are rows, sectors are columns; the cell is passes out of scored",
+  "rungs": {
+   "site": {
+    "hydrogen": {
+     "pass": 116,
+     "of_scored": 171
+    },
+    "batteries": {
+     "pass": 41,
+     "of_scored": 57
+    },
+    "cement": {
+     "pass": 38,
+     "of_scored": 42
+    },
+    "transport and storage": {
+     "pass": 81,
+     "of_scored": 102
+    },
+    "steel": {
+     "pass": 18,
+     "of_scored": 49
+    }
+   },
+   "capacity": {
+    "hydrogen": {
+     "pass": 76,
+     "of_scored": 171
+    },
+    "batteries": {
+     "pass": 26,
+     "of_scored": 57
+    },
+    "cement": {
+     "pass": 20,
+     "of_scored": 42
+    },
+    "transport and storage": {
+     "pass": 6,
+     "of_scored": 102
+    },
+    "steel": {
+     "pass": 4,
+     "of_scored": 49
+    }
+   },
+   "fid": {
+    "hydrogen": {
+     "pass": 13,
+     "of_scored": 171
+    },
+    "batteries": {
+     "pass": 21,
+     "of_scored": 57
+    },
+    "cement": {
+     "pass": 5,
+     "of_scored": 42
+    },
+    "transport and storage": {
+     "pass": 2,
+     "of_scored": 102
+    },
+    "steel": {
+     "pass": 7,
+     "of_scored": 49
+    }
+   },
+   "funding": {
+    "hydrogen": {
+     "pass": 20,
+     "of_scored": 171
+    },
+    "batteries": {
+     "pass": 6,
+     "of_scored": 57
+    },
+    "cement": {
+     "pass": 17,
+     "of_scored": 42
+    },
+    "transport and storage": {
+     "pass": 4,
+     "of_scored": 102
+    },
+    "steel": {
+     "pass": 5,
+     "of_scored": 49
+    }
+   },
+   "start": {
+    "hydrogen": {
+     "pass": 15,
+     "of_scored": 171
+    },
+    "batteries": {
+     "pass": 10,
+     "of_scored": 57
+    },
+    "cement": {
+     "pass": 4,
+     "of_scored": 42
+    },
+    "transport and storage": {
+     "pass": 0,
+     "of_scored": 102
+    },
+    "steel": {
+     "pass": 4,
+     "of_scored": 49
+    }
+   },
+   "input": {
+    "hydrogen": {
+     "pass": 7,
+     "of_scored": 171
+    },
+    "batteries": {
+     "pass": 0,
+     "of_scored": 57
+    },
+    "cement": {
+     "pass": 2,
+     "of_scored": 42
+    },
+    "transport and storage": {
+     "pass": 0,
+     "of_scored": 102
+    },
+    "steel": {
+     "pass": 5,
+     "of_scored": 49
+    }
+   }
+  },
+  "population": {
+   "hydrogen": 245,
+   "batteries": 69,
+   "cement": 42,
+   "transport and storage": 141,
+   "steel": 147
+  },
+  "scored": {
+   "hydrogen": 171,
+   "batteries": 57,
+   "cement": 42,
+   "transport and storage": 102,
+   "steel": 49
+  },
+  "total_population": 644,
+  "total_scored": 421
+ }
+}

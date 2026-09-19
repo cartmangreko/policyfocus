@@ -78,6 +78,7 @@ import build_hydrogen_benchmark as bench  # noqa: E402
 import sector_map as sm  # noqa: E402
 
 OUT = bench.ROOT / "scratch" / "hydrogen_benchmark_gap.csv"
+EXCLUSIONS = bench.ROOT / "sources" / "hydrogen_perimeter_exclusions.json"
 SNAPSHOTS = bench.ROOT / "sources" / "benchmark_snapshots.json"
 
 # The benchmarks THIS report is about. The snapshot file is shared with the
@@ -731,6 +732,40 @@ def main() -> int:
         w.writeheader()
         w.writerows(out)
 
+    # MATERIALISED, 19 September 2026, brief 11 (D-A9). The confirmation ladder reads
+    # this classification for its 53 perimeter exclusions, and until today it read it
+    # out of `scratch/`, WHICH IS GITIGNORED. The defect hid because the ladder's other
+    # untracked input — the IEA benchmark cache — is usually missing too, so the whole
+    # step skipped; the day the benchmark turned up and the scratch file did not,
+    # build_ladder --check failed and the 53 exclusions came back as `none found`,
+    # scored, at zero. A derived file the build depends on belongs in the repository.
+    # See sources/scope.md, "A build-time gate reads tracked files only".
+    excl = {str(r["ref"]): r["class"] for r in out
+            if r.get("benchmark") == "iea_hydrogen_production_projects"
+            and r.get("class") in ("DRI or other perimeter exclusion", "blue")}
+    EXCLUSIONS.write_text(json.dumps({
+        "_comment": [
+            "THE HYDROGEN PERIMETER EXCLUSIONS, {ref: clause}, COMPUTED BY",
+            "sources/report_benchmark_gap.py AND TRACKED.",
+            "",
+            "Written by hand never. This is the same classification the gap report",
+            "prints, materialised so that sources/build_ladder.py can read it on a",
+            "machine that does not hold the gitignored scratch file or the",
+            "gitignored benchmark cache -- which is every build server, and was",
+            "this repository's own census worktree until it was noticed.",
+            "",
+            "Two clauses reach the current vintage: `DRI or other perimeter",
+            "exclusion` -- steel, fuels and the refusals by name -- and `blue`,",
+            "methane reforming with capture, which is out of a dataset about",
+            "electrolytic hydrogen."],
+        "benchmark": "iea_hydrogen_production_projects",
+        "generated_by": "sources/report_benchmark_gap.py",
+        "count": len(excl),
+        "exclusions": dict(sorted(excl.items(), key=lambda kv: int(kv[0])))},
+        indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"report_benchmark_gap: wrote {EXCLUSIONS.relative_to(bench.ROOT)} — "
+          f"{len(excl)} perimeter exclusions the ladder reads.")
+
     print(f"report_benchmark_gap: {len(iea)} European entries at or above 100 MW in the "
           f"benchmark; eufabric holds {len(held_iea & set(iea))} of them as rows or "
           f"candidates.\nThe October 2023 vintage of the same benchmark carries {len(ou)} "
@@ -835,6 +870,11 @@ def perimeter_exclusions_by_ref() -> dict[str, str]:
     steel, fuels and the refusals by name -- and `blue`, methane reforming with
     capture, which is out of a dataset about electrolytic hydrogen.
     """
+    # THE TRACKED FILE FIRST. `scratch/` is gitignored, so reading the classification
+    # out of it made the ladder's 53 exclusions depend on whether somebody had run
+    # this report on this machine. D-A9.
+    if EXCLUSIONS.exists():
+        return dict(json.loads(EXCLUSIONS.read_text(encoding="utf-8"))["exclusions"])
     import csv as _csv
     if not OUT.exists():
         return {}
