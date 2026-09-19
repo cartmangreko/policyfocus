@@ -70,6 +70,12 @@ INDEXES = (
     "sources/cache/batteries/index.json",
     "sources/cache/steel/index.json",
     "sources/cache/hydrogen/index.json",
+    # ADDED 20 SEPTEMBER 2026. The cross-sector funder pass files the Commission's
+    # award documents under `funders` rather than under a sector, because a funder
+    # is not a sector — and two Innovation Fund factsheets are now cited from rows,
+    # as the termination events of D-A13. Without this line the gate said a citation
+    # nobody had fetched, of a document fetched twice.
+    "sources/cache/funders/index.json",
     "sources/dependency_cache/index.json",
 )
 
