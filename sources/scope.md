@@ -839,6 +839,29 @@ built and what stops. It also had the effect of making the dataset look complete
 not see it. A register that improves its own numbers by dropping the rows that
 embarrass them is measuring itself and not the sector.
 
+### A dead link is not a dead source, 20 September 2026
+
+**THE CACHED BODY IS THE COPY ON FILE, AND THAT IS WHAT D42 KEEPS FETCHES FOR.** When this
+register reads a page through a declared reader, the body lands in the sector's cache under
+its SHA-256 and the index records the URL, the day, the byte count and the hash. **If the
+live URL later answers 404, the citation does not become unsourced.** It becomes a citation
+whose document is on file and whose publisher has taken the page down, and those are
+different facts.
+
+**SO A SOURCE MAY CARRY `dead_since`** — the day a re-read found the URL gone — **and the
+link gate accepts it** on the cached record, rather than refusing the row. What the gate
+checks is that the body is genuinely on file: a hash in the index, and bytes behind it.
+
+**A SOURCE THAT RETURNED AN EMPTY BODY WHEN READ STAYS UNREADABLE.** `dead_since` says the
+publisher has since removed a page this register read; it cannot say that about a page this
+register never got. A 200 with an empty body is a refusal on the day it was made, and a
+later 404 does not turn a refusal into a reading.
+
+**AND THE ADMITTING DOCUMENT IS THEREFORE ALWAYS ON FILE AT ADMISSION**, because the fetch
+that admitted it is. That is a statement of existing practice rather than a new duty: the
+declared reader has been caching every body since brief 8, and what was missing was the
+rule that says the cache counts as the copy.
+
 ### A funder's own award record admits a project, 20 September 2026
 
 **AN AMENDMENT TO THE ADMISSION RULE, and it is the first time anything but the company
@@ -2423,6 +2446,25 @@ phase two produces "1.2 MT/year of **crude steel**". The first pass read "crude 
 primary steelmaking and admitted it; the owner had ruled the ironmaking step out in its
 own words. **A works that says it is not doing the thing is not doing the thing**, and the
 output's name does not overrule it.
+
+**CAPTURE AT A STEEL WORKS IS A STEEL PROJECT.** Ruled 20 September 2026. A fifth leg:
+**carbon capture on the emissions of an iron- or steelmaking works, company-confirmed at a
+named site**, on the same footing as capture at a cement works. The route is recorded as
+`carbon capture at works`.
+
+**IT FOLLOWS FROM THE RULE OF 24 AUGUST, WHICH SCORES CAPTURE IN THE CAPTURING SECTOR** —
+the reason the cement perimeter holds a capture plant at a cement works rather than handing
+it to transport and storage. Steel was the one sector where that rule had not been written
+down, and the gap showed: `3d-dunkirk` sits in the register as a steel row for capture on a
+blast furnace, and the census refused Marcegaglia's AdriatiCO2 at Ravenna for being capture
+rather than direct reduction. **One of those two readings had to be wrong and it was the
+census's.**
+
+**WHAT IT DOES NOT ADMIT.** Capture on a works this perimeter does not hold is still
+refused — the clause widens what counts as a steel decarbonisation project, not what counts
+as a steel works. And the CO2's onward transport and storage remains the other sector's:
+the capture plant is scored here, the pipeline and the reservoir there, and the same tonne
+is not counted twice.
 
 ### Cement
 
