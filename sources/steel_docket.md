@@ -274,7 +274,7 @@ refusal, and should the reading rules name it).
 
 ## Ruling of 20 September 2026 — the steel rows land
 
-**D-S10. FIFTEEN OF THE TWENTY-THREE STEEL ADMISSIONS LAND AS ROWS, AND THE EIGHT THAT DO
+**D-S10. THIRTEEN OF THE TWENTY-THREE STEEL ADMISSIONS LAND AS ROWS, AND THE TEN THAT DO
 NOT ARE NAMED.** The census admitted works and proposed row ids; nothing had landed. This
 pass writes them through the admission path the cement and storage rows used — a dateline
 read off each page, `not_after` where the page carries none, capacity at the owner's own
@@ -283,10 +283,10 @@ status history built from what was read.
 
 **THE ARITHMETIC, AGAINST THE CENSUS.** The steel population is 147 and 25 of it is
 admitted: **21 GEM admissions + 2 LeadIT-only + 2 register rows neither list carries**.
-Two had rows before this pass, fifteen land here, **eight are held**. `projects.json`
-carries 23 steel rows, and `check_sector_schema` counts 200 projects and passes.
+Two had rows before this pass, **thirteen land here, ten are held**. `projects.json`
+carries 21 steel rows, and `check_sector_schema` passes.
 
-**THE EIGHT ARE HELD FOR TWO DIFFERENT REASONS AND THE DIFFERENCE MATTERS.**
+**THE TEN ARE HELD FOR TWO DIFFERENT REASONS AND THE DIFFERENCE MATTERS.**
 
 *Four because the admitting document does not state the leg the census recorded.* This is
 what writing a row out of a census entry is for — it re-reads the sentence against the
@@ -306,13 +306,26 @@ claim.
     stands and **the leg does not**, which is a question about which perimeter this entry
     belongs to.
 
-*Four because the admitting source has gone and nothing readable replaces it.* Each was
+*Six because the admitting source cannot be read today and nothing replaces it.* Each was
 readable when the census read it and answers 404 or an empty body today: LKAB's Gällivare
 press release, Vargas Holding on Stegra Spain, Kallanish on Metinvest Piombino, and the
 2022 Wayback capture of ArcelorMittal's German agreement. **The Wayback CDX and
 availability endpoints both returned no captures for any of them on 20 September**, so no
-archived copy could be cited either. A row whose source a reader cannot follow is a row
-nobody can check, and `check_links` would refuse it.
+archived copy could be cited either.
+
+**AND TWO MORE WERE WITHDRAWN AFTER THEY HAD BEEN WRITTEN, BY `check_links`.**
+ArcelorMittal Dunkerque and Fos-sur-Mer rest on one Wayback capture of
+corporate.arcelormittal.com that answers **200 with an empty body** — so the source is
+marked archived and there is nothing to file as a snapshot, which the gate refuses in as
+many words: *"marked archived with no readable snapshot"*. The rows were composed, the
+gate read them, and they came back out. A row whose source a reader cannot open is a row
+nobody can check.
+
+**ARCELORMITTAL IS FOUR OF THE TEN** — Duisburg, Dunkerque, Fos and, differently, Hamburg
+— and the common thread is that `corporate.arcelormittal.com` answers **403 to a declared
+reader**, while `arcelormittal.com/media/news` answered 200 to one read and 403 to the
+next on the same day. Gent is admitted only because a funder published what the owner
+will not let this register read.
 
 **THE FOUR DEAD SOURCES ARE THE STRONGER FINDING.** Three of them are among the largest
 projects in the sector — HYBRIT's Gällivare sponge iron plant, Stegra's Spanish plant,

@@ -29289,36 +29289,6 @@
  },
  {
   "rel": "deploys",
-  "from": "project:arcelormittal-dunkerque",
-  "to": "technology:dri-eaf",
-  "since": "2025-11-12",
-  "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=arcelormittal-dunkerque].technology"
-  }
- },
- {
-  "rel": "deploys",
-  "from": "project:arcelormittal-dunkerque",
-  "to": "technology:h2-dri",
-  "since": "2025-11-12",
-  "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=arcelormittal-dunkerque].technology"
-  }
- },
- {
-  "rel": "deploys",
-  "from": "project:arcelormittal-fos-sur-mer",
-  "to": "technology:eaf-scrap",
-  "since": "2025-11-12",
-  "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=arcelormittal-fos-sur-mer].technology"
-  }
- },
- {
-  "rel": "deploys",
   "from": "project:arcelormittal-gijon",
   "to": "technology:dri-eaf",
   "since": "2021-07-13",
@@ -34143,50 +34113,6 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=aramis].sector"
-  },
-  "basis": "sector"
- },
- {
-  "rel": "in",
-  "from": "project:arcelormittal-dunkerque",
-  "to": "country:FR",
-  "since": "2025-11-12",
-  "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=arcelormittal-dunkerque].country"
-  },
-  "basis": "country"
- },
- {
-  "rel": "in",
-  "from": "project:arcelormittal-dunkerque",
-  "to": "sector:steel",
-  "since": "2025-11-12",
-  "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=arcelormittal-dunkerque].sector"
-  },
-  "basis": "sector"
- },
- {
-  "rel": "in",
-  "from": "project:arcelormittal-fos-sur-mer",
-  "to": "country:FR",
-  "since": "2025-11-12",
-  "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=arcelormittal-fos-sur-mer].country"
-  },
-  "basis": "country"
- },
- {
-  "rel": "in",
-  "from": "project:arcelormittal-fos-sur-mer",
-  "to": "sector:steel",
-  "since": "2025-11-12",
-  "evidence": {
-   "source": "data/transition/projects.json",
-   "path": "[id=arcelormittal-fos-sur-mer].sector"
   },
   "basis": "sector"
  },
