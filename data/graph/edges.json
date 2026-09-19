@@ -30909,6 +30909,16 @@
  },
  {
   "rel": "deploys",
+  "from": "project:tarraco2-storage",
+  "to": "technology:co2-transport-storage",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tarraco2-storage].technology"
+  }
+ },
+ {
+  "rel": "deploys",
   "from": "project:tes-ewe-wilhelmshaven",
   "to": "technology:hydrogen-supply",
   "since": "2022-11-25",
@@ -37235,6 +37245,28 @@
   "evidence": {
    "source": "data/transition/projects.json",
    "path": "[id=svolt-uberherrn].sector"
+  },
+  "basis": "sector"
+ },
+ {
+  "rel": "in",
+  "from": "project:tarraco2-storage",
+  "to": "country:ES",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tarraco2-storage].country"
+  },
+  "basis": "country"
+ },
+ {
+  "rel": "in",
+  "from": "project:tarraco2-storage",
+  "to": "sector:ccs",
+  "since": "2026-09-09",
+  "evidence": {
+   "source": "data/transition/projects.json",
+   "path": "[id=tarraco2-storage].sector"
   },
   "basis": "sector"
  },

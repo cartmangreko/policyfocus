@@ -298,6 +298,42 @@ def owner_look(projects: dict[str, dict]) -> None:
         print(f"      {first}")
         for u in h["owner_look"]["urls"]:
             print(f"      read  {u['publisher'][:34]:36} {u['url']}")
+    census_owner_look()
+
+
+def census_owner_look() -> None:
+    """RULE 17 FOR A FUNDER-ADMITTED ENTRY THAT HAS NO ROW YET.
+
+    The amendment of 20 September lets a funder's own award record admit a project,
+    and a census admits a works before a row lands. So some funder-admitted entries
+    have no `status_history` for the look to sit on, and the queue would have lost
+    exactly the entries the amendment created. It reads the censuses too.
+    """
+    import json as _json
+    rows = []
+    for f in ("sources/steel_entries.json", "sources/leadit_entries.json",
+              "sources/cement_ccs_entries.json", "sources/batteries_benchmark.json"):
+        path = sm.ROOT / f
+        if not path.exists():
+            continue
+        doc = _json.loads(path.read_text(encoding="utf-8"))
+        ents = doc.get("entries")
+        if not isinstance(ents, dict):
+            continue
+        for k, v in ents.items():
+            if isinstance(v, dict) and v.get("owner_look"):
+                rows.append((f, k, v))
+    if not rows:
+        return
+    print(f"\nreport_candidate_gaps: funder-admitted census entries with no row yet — "
+          f"{len(rows)}.\n  RULE 17, same task: read whether the OWNER'S source still "
+          f"stands. The admitting speaker is the funder and\n  the owner leg is open; "
+          f"nothing here moves a class.")
+    for f, k, v in rows:
+        print(f"  {k:24} {v.get('name','')[:40]:42} proposed row "
+              f"{v['owner_look'].get('no_row_yet') or '(none)'}")
+        for u in v["owner_look"]["urls"]:
+            print(f"      read  {u['publisher'][:44]:46} {u['url']}")
 
 
 def main() -> int:

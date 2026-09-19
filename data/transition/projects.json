@@ -365,7 +365,21 @@
      "source_url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101085967.pdf",
      "source_type": "grant_register",
      "evidence_mode": "retrospective",
-     "note": "AWARD TERMINATED. The Innovation Fund's own project factsheet for grant 101085967 — 'ANRAV-CCUS' — carries the word TERMINATED twice over an award of 'EUR 189,694,949' to DEVNYA CEMENT AD, and states 'FINANCIAL CLOSE DATE 30 September, 2026' and 'ENTRY INTO OPERATION DATE 31 October, 2029'. The funder is the speaker and this is money leaving the project. THE DATE IS AN UPPER BOUND: the fiche says 'Updated on 09 September 2026' and gives no date for the termination. THE STATUS DOES NOT MOVE and an owner look is queued. D-B19, applied."
+     "note": "AWARD TERMINATED. The Innovation Fund's own project factsheet for grant 101085967 — 'ANRAV-CCUS' — carries the word TERMINATED twice over an award of 'EUR 189,694,949' to DEVNYA CEMENT AD, and states 'FINANCIAL CLOSE DATE 30 September, 2026' and 'ENTRY INTO OPERATION DATE 31 October, 2029'. The funder is the speaker and this is money leaving the project. THE DATE IS AN UPPER BOUND: the fiche says 'Updated on 09 September 2026' and gives no date for the termination. THE STATUS DOES NOT MOVE and an owner look is queued. D-B19, applied.",
+     "owner_look": {
+      "why": "A FUNDER HAS SPOKEN AND THE OWNER HAS NOT. Rule 17's narrow task: read whether the owner's own source still stands — not whether the project stopped. No status moves on it.",
+      "queued": "2026-09-20",
+      "urls": [
+       {
+        "publisher": "Devnya Cement (HeidelbergCement Bulgaria)",
+        "url": "https://www.devnyacement.bg/"
+       },
+       {
+        "publisher": "Heidelberg Materials, press",
+        "url": "https://www.heidelbergmaterials.com/en/press"
+       }
+      ]
+     }
     }
    ],
    "sources": [
@@ -4127,7 +4141,21 @@
      "source_url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101133106.pdf",
      "source_type": "grant_register",
      "evidence_mode": "retrospective",
-     "note": "AWARD TERMINATED. The Innovation Fund's own project factsheet for grant 101133106 — 'Giga Arctic: Building a European future for clean batteries' — carries the word TERMINATED twice over an award of 'EUR 100,000,000' to the Mo i Rana gigafactory, and states 'FINANCIAL CLOSE DATE 30 April, 2025' and 'ENTRY INTO OPERATION DATE 31 October, 2028'. The coordinator is FREYR BATTERY GIGA ARCTIC AS; this row carries T1 Energy, which is what Freyr became, and the match is on the site the funder names. The funder is the speaker and this is money leaving the project, which is what event_kind `financing` is for. THE DATE IS AN UPPER BOUND: the fiche says 'Updated on 09 September 2026' and gives no date for the termination itself. THE STATUS DOES NOT MOVE — a funder withdrawing its money is a fact about the award, and reading a cancellation out of it would be this register deciding something the owner has not said. An owner look is queued. D-B19, applied."
+     "note": "AWARD TERMINATED. The Innovation Fund's own project factsheet for grant 101133106 — 'Giga Arctic: Building a European future for clean batteries' — carries the word TERMINATED twice over an award of 'EUR 100,000,000' to the Mo i Rana gigafactory, and states 'FINANCIAL CLOSE DATE 30 April, 2025' and 'ENTRY INTO OPERATION DATE 31 October, 2028'. The coordinator is FREYR BATTERY GIGA ARCTIC AS; this row carries T1 Energy, which is what Freyr became, and the match is on the site the funder names. The funder is the speaker and this is money leaving the project, which is what event_kind `financing` is for. THE DATE IS AN UPPER BOUND: the fiche says 'Updated on 09 September 2026' and gives no date for the termination itself. THE STATUS DOES NOT MOVE — a funder withdrawing its money is a fact about the award, and reading a cancellation out of it would be this register deciding something the owner has not said. An owner look is queued. D-B19, applied.",
+     "owner_look": {
+      "why": "A FUNDER HAS SPOKEN AND THE OWNER HAS NOT. Rule 17's narrow task: read whether the owner's own source still stands — not whether the project stopped. No status moves on it.",
+      "queued": "2026-09-20",
+      "urls": [
+       {
+        "publisher": "T1 Energy, investor news",
+        "url": "https://www.t1energy.com/news"
+       },
+       {
+        "publisher": "T1 Energy",
+        "url": "https://www.t1energy.com/"
+       }
+      ]
+     }
     }
    ],
    "sources": [
@@ -15284,6 +15312,72 @@
    },
    "role": "storage",
    "role_note": "Taken from what its owner calls it on the source that admits the row. ROLES WIDENED 15 September 2026: `transport` for a route and `terminal` for a quay, because a pipeline is neither a works nor a store. Nothing reads the role for the ladder; it is here so the sector can be described."
+  },
+  {
+   "id": "tarraco2-storage",
+   "name": "TarraCO2-Storage",
+   "company": "Repsol Exploración",
+   "plant": "North-Eastern Spain",
+   "country": "ES",
+   "located": "no",
+   "location_note": "NO POSITION. The funder's factsheet names 'North-Eastern Spain' and no site; a store is a reservoir whose position its operator rarely publishes, and position is not an admission leg. sources/scope.md, 'Position is not an admission leg'.",
+   "sector": "ccs",
+   "transition": "decarbonisation",
+   "technology": [
+    "co2-transport-storage"
+   ],
+   "status": "announced",
+   "admitted_by": "funder",
+   "owner_leg": "OPEN. No owner document is on file. Repsol's own press room and climate-change page were read on 20 September 2026 and neither contains the string 'Tarra'. An owner look is queued under rule 17 and is printed on every build.",
+   "status_history": [
+    {
+     "event_kind": "status",
+     "date": "2026-09-09",
+     "date_precision": "not_after",
+     "status_from": null,
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191313.pdf",
+     "source_type": "grant_register",
+     "evidence_mode": "retrospective",
+     "note": "ADMITTED BY THE FUNDER. The Innovation Fund project factsheet, 'Updated on 09 September 2026', states 'TarraCO2-Storage aims to unlock 54 million tonnes (Mt) of CO2 storage capacity for hard-to-abate industries in North-Eastern Spain', names REPSOL EXPLORACION SA as coordinator and carries an award of EUR 205,061,582. THE DATE IS THE DOCUMENT'S OWN DATELINE AS AN UPPER BOUND: the factsheet gives no date for the announcement itself. The admitting speaker is the funder and the owner leg is open — sources/scope.md, \"A funder's own award record admits a project\".",
+     "owner_look": {
+      "why": "A FUNDER HAS SPOKEN AND THE OWNER HAS NOT. Rule 17's narrow task: read whether the owner's own source still stands — not whether the project stopped. No status moves on it.",
+      "queued": "2026-09-20",
+      "urls": [
+       {
+        "publisher": "Repsol, press room",
+        "url": "https://www.repsol.com/en/press-room/press-releases/index.cshtml"
+       },
+       {
+        "publisher": "Repsol, climate change",
+        "url": "https://www.repsol.com/en/sustainability/climate-change/index.cshtml"
+       },
+       {
+        "publisher": "Repsol Exploración",
+        "url": "https://www.repsol.com/en/about-us/index.cshtml"
+       }
+      ]
+     }
+    }
+   ],
+   "stated_schedule": [],
+   "sources": [
+    {
+     "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191313.pdf",
+     "title": "TarraCO2-Storage — Innovation Fund project factsheet",
+     "publisher": "European Commission (CINEA)",
+     "date": "2026-09-09",
+     "date_precision": "not_after",
+     "date_note": "The factsheet carries 'Updated on 09 September 2026' and no publication date, so the dateline is an upper bound."
+    }
+   ],
+   "benchmarks": {
+    "iea_ccus_projects_database": 1203,
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 1203 ('TarraCO2'). Matched on the project's own name and its operator agreeing."
+   },
+   "role": "storage",
+   "role_note": "Taken from what the funder's factsheet describes: unlocking CO2 storage capacity, not capture."
   }
  ]
 }

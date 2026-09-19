@@ -305,3 +305,57 @@ storage clears rung 2 six times in 102 and rung 5 not once; a pipeline has no na
 owner publishes and a reservoir is not a plant, so a single rate over both describes
 neither. The same 644 lines, grouped — and question L1 is the one this makes answerable
 rather than the one it answers.
+
+## Ruling of 20 September 2026 — the admission rule is amended
+
+**D-A17. A FUNDER'S OWN AWARD RECORD ADMITS A PROJECT, AND IT IS THE FIRST TIME ANYTHING
+BUT THE COMPANY HAS BEEN ALLOWED TO.** Written into `sources/scope.md` as *"A funder's own
+award record admits a project"*, beside the company-confirmation test rather than in place
+of it. An Innovation Fund factsheet, an IPCEI decision or a national programme's published
+grant, **naming the company as beneficiary**, admits the project; the admitting speaker is
+recorded as `admitted_by: funder`; **the owner leg stays open** and carries an owner look
+under rule 17.
+
+**WHY A FUNDER AND NOT A NEWSPAPER, ON THE SAME DAY THE PRESS AMENDMENT REFUSED ONE.** A
+funder is a party to the project — its own register, its own money, its own exposure to
+the description being wrong. A trade title has none of those. The test is not whether the
+speaker is reliable but **whether the speaker is a party with a record of its own**, which
+is the same test the dependency graph already applies when it lets a supplier's order book
+speak about a customer's plant. D-A15 and D-A17 are one rule stated from two sides.
+
+**APPLIED TO THREE, AND THE THREE ARE NOT THE SAME CASE.**
+
+| entry | was | why it was that, and why it moves |
+|---|---|---|
+| ArcelorMittal Gent | `searched none found` | **NOT A SEARCH MISS.** Read on 15 September and again on 20 September under the S3 order; `corporate.arcelormittal.com` **403s a declared reader** and the readable domains carry nothing. The owner has published nothing this register can reach. |
+| Marcegaglia AdriatiCO2 | `named not admitted` | **NOT A SEARCH MISS.** S6: marcegaglia.com serves one identical body on every path — 21,704 characters on 18 September, 21,711 on 20 September. No search reaches those words. |
+| TarraCO2 | `named not admitted` | **NOT A SEARCH MISS.** Repsol's press room and climate-change page are both readable and **neither contains the string "Tarra"**. |
+
+**IN NONE OF THE THREE DID THE READING CHANGE. THE RULE CHANGED**, and the docket says so
+rather than letting three reclasses look like three better searches.
+
+**AND THE AMENDMENT MOVES NO RUNG, WHICH IS WHAT MAKES IT SAFE.** Rung 1 asks for the owner
+or the permitting authority and a funder is neither, so **a funder-admitted entry fails
+rung 1 and clears rung 4**. The scorer had to be corrected to say so: it was passing rung 1
+for any `admitted` entry with a source, which would have let the amendment quietly hand
+three entries a site statement nobody made. Steel rung 1 goes **35 to 34** on this branch —
+an admission that *lowers* a rung count, which is the shape an honest amendment has.
+
+**ONE AWARD IS NOT APPLIED, AND THE BOUNDARY IS THE POINT.** The Innovation Fund's CUSTARD
+award names Acciaierie Bertoli Safau at its own steel plant, and the entry stays a
+**perimeter exclusion**. The amendment settles **who may confirm a project, not which
+projects are in scope**; carbon capture and use at a scrap-EAF works is refused on the
+route test and a funder's money does not change the route.
+
+**WHERE THE ROW LANDED AND WHERE IT DID NOT.** `tarraco2-storage` is a new `ccs` row — the
+cement and CCS census admits with a row, so that is its normal path. The two steel entries
+are reclassed in the census with proposed row ids (`zesta-gent`, `adriatico2-ravenna`) and
+no row, **because that is where the steel census's other twenty admissions sit** and
+landing two rows out of twenty-two would make the file mean two different things.
+`report_candidate_gaps.py` gained a second rule-17 block so that the owner look for a
+funder-admitted entry with no row is printed too — without it the queue would have lost
+exactly the entries the amendment creates.
+
+**PROSPECTIVE.** The rule applies to every funder-found entry the further brief turns up,
+in all sectors. Today's funder passes hold 33 cross-sector awards and 55 hydrogen ones, and
+these three were the only matched awards against an unadmitted, in-perimeter entry.

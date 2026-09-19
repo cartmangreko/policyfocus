@@ -187,7 +187,18 @@ def score_entry(e, sector, by_key, read_on, by_project, swept, graph_date):
     # own note says FAILED LEG: SITE must FAIL rung 1 — passing every entry of that
     # class scored the class rather than the evidence.
     site_is_the_failed_leg = "site" in (a.get("failed_leg") or "").lower()
-    if klass == "admitted" and a.get("source"):
+    if klass == "admitted" and a.get("admitted_by") == "funder":
+        # THE AMENDMENT OF 20 SEPTEMBER ADMITS ON A FUNDER AND MOVES NO RUNG. Rung 1
+        # asks whether the OWNER OR THE PERMITTING AUTHORITY names the site, and a
+        # funder is neither. A funder-admitted entry with no owner document fails
+        # rung 1 and clears rung 4, which is the pattern that made the amendment
+        # necessary and is the whole reason it is allowed to change nothing here.
+        out["site"] = L.cell(
+            "fail", a.get("source") or src, a.get("speaker") or "funder", on, "day",
+            "ADMITTED BY THE FUNDER AND THE OWNER LEG IS OPEN. The admitting document "
+            "is a funder's award record, and rung 1 asks for the owner or the "
+            "permitting authority. An owner look is queued under rule 17.")
+    elif klass == "admitted" and a.get("source"):
         out["site"] = L.cell(
             "pass", a["source"], a.get("speaker") or "owner", on, "day",
             f"the census admitted this works on the owner's own document, which "

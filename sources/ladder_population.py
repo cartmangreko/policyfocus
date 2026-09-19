@@ -102,7 +102,8 @@ def admission(v: dict, note_field: str = "note") -> dict:
     m = re.match(r"\s*FAILED LEG:\s*([^.]+)\.", n)
     if not leg and m:
         leg = m.group(1).strip()
-    return {"source": v.get("source") or "", "speaker": v.get("speaker") or "",
+    return {"admitted_by": v.get("admitted_by") or "",
+            "source": v.get("source") or "", "speaker": v.get("speaker") or "",
             "verbatim": v.get("verbatim") or "", "failed_leg": leg,
             "municipality": v.get("municipality") or v.get("site") or "",
             "looked_in_order": v.get("looked_in_order") or []}
