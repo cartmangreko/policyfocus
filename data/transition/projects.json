@@ -11711,10 +11711,10 @@
    "id": "leilac2-hannover",
    "name": "LEILAC 2",
    "company": "Heidelberg Materials",
-   "plant": "Hannover",
+   "plant": "Ennigerloh",
    "country": "DE",
    "located": "no",
-   "location_note": "NO POSITION SOUGHT BY THIS PASS. Brief 8 forbids geocoding in a census -- a municipality is not a point -- and the owner statement that admits this row names the works and not a position. The works is Hannover. A polygon for it is a separate job and the row is admitted without one, on the rule that position is not an admission leg.",
+   "location_note": "THE WORKS IS ENNIGERLOH, ON THE OWNER'S OWN CURRENT STATEMENT of 6 March 2024, and the row's id still reads `leilac2-hannover` because an id is a handle and not a claim: renaming it would break every file that points at it and would say nothing the relocation event does not already say. NO POSITION SOUGHT BY THIS PASS, as before: brief 8 forbids geocoding in a census, and the owner statement names the works and not a position. A polygon for Ennigerloh is a separate job and the row stands without one, on the rule that position is not an admission leg.",
    "sector": "cement",
    "transition": "decarbonisation",
    "technology": [
@@ -11733,6 +11733,36 @@
      "source_type": "company",
      "evidence_mode": "retrospective",
      "note": "HeidelbergCement, own release of 1 February 2021: “it has been decided to build the LEILAC 2 demonstration installation for carbon capture at the HeidelbergCement cement plant in Hanover, Germany... an installation around four times as large will be operated in Hanover, which will capture 20% of the cement plant's capacity, corresponding to around 100,000 tonnes of CO2 per year”"
+    },
+    {
+     "event_kind": "relocation",
+     "date": "2024-03-06",
+     "date_precision": "day",
+     "status_from": "announced",
+     "status_to": "announced",
+     "status": "announced",
+     "source_url": "https://www.heidelbergmaterials.com/en/pr-2024-03-06",
+     "source_type": "company",
+     "evidence_mode": "retrospective",
+     "from": "Hannover",
+     "to": "Ennigerloh",
+     "note": "THE PROJECT MOVED AND THE STATUS DID NOT. Heidelberg Materials' own release: the LEILAC-2 project 'is now planned to be carried out at Heidelberg Materials' Ennigerloh cement plant', having 'previously been supposed to be realised at the Heidelberg Materials site in Hanover, Germany. Now that clinker production will end there in the second half of 2024, another location had to be found.' A works that stops making clinker cannot host a calciner retrofit. The project is still announced and still 100,000 t CO2/yr; what changed is the host works, and that is what this event records. Found by the brief 9b supplier sweep, which read the technology partner's relocation announcements of 29 January and 4 March 2024 and then the owner's own of 6 March.",
+     "location_statements": [
+      {
+       "date": "2021-02-01",
+       "speaker": "HeidelbergCement, own release of 1 February 2021",
+       "url": "https://www.heidelbergcement.com/en/pr-01-02-2021",
+       "publisher": "HeidelbergCement",
+       "says": "After examining different locations, it has been decided to build the LEILAC 2 demonstration installation for carbon capture at the HeidelbergCement cement plant in Hanover, Germany."
+      },
+      {
+       "date": "2024-03-06",
+       "speaker": "Heidelberg Materials, own release of 6 March 2024",
+       "url": "https://www.heidelbergmaterials.com/en/pr-2024-03-06",
+       "publisher": "Heidelberg Materials",
+       "says": "Heidelberg Materials and Australian environmental technology company Calix Limited have announced that the LEILAC-2 (Low Emissions Intensity Lime And Cement) research project is now planned to be carried out at Heidelberg Materials' Ennigerloh cement plant."
+      }
+     ]
     }
    ],
    "sources": [
@@ -11744,12 +11774,21 @@
      "date_precision": "day",
      "captured_at": "2026-09-14",
      "archived": false
+    },
+    {
+     "url": "https://www.heidelbergmaterials.com/en/pr-2024-03-06",
+     "title": "Heidelberg Materials plans LEILAC-2 carbon capture project at its Ennigerloh site in Germany",
+     "publisher": "Heidelberg Materials",
+     "date": "2024-03-06",
+     "date_precision": "day",
+     "captured_at": "2026-09-21",
+     "archived": false
     }
    ],
    "stated_schedule": [],
    "benchmarks": {
     "iea_ccus_projects_database": 202,
-    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 202, “LEILAC 2”. Matched on company AND works agreeing, which is the only route used; the match is printed on every run of sources/build_cement_ccs_benchmark.py for confirmation. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82)."
+    "note": "The IEA CCUS Projects Database 2026 carries this works as entry 202, “LEILAC 2”. Matched on company AND works agreeing, which is the only route used; the match is printed on every run of sources/build_cement_ccs_benchmark.py for confirmation. NEITHER IEA CAPACITY COLUMN IS ON THIS ROW (D82). THE LIST NAMES THE WORKS THE PROJECT LEFT. IEA entry 202 is 'Heidelberg Materials LEILAC 2' at a cement plant in Hanover, which is where the project was decided in 2021 and not where the owner says it is being built since 6 March 2024. The match is unchanged — one project, one entry — and the works on this row follows the owner."
    },
    "capacity_value": 100000,
    "capacity_unit": "t_co2_per_year",
@@ -11758,7 +11797,7 @@
    "capacity_source_url": "https://www.heidelbergcement.com/en/pr-01-02-2021",
    "capacity_as_of": "2021-02-01",
    "capacity_as_of_precision": "day",
-   "capacity_note": "HeidelbergCement, own release of 1 February 2021: “it has been decided to build the LEILAC 2 demonstration installation for carbon capture at the HeidelbergCement cement plant in Hanover, Germany... an installation around four times as large will be operated in Hanover, which will capture 20% of the cement plant's capacity, corresponding to around 100,000 tonnes of CO2 per year” AT THE OWNER'S UNIT AND NOT CONVERTED (D80). Neither IEA capacity column is written onto this row: 'Announced capacity' is the list's claim and 'Estimated capacity by IEA' is the IEA's own computation through the workbook's conversion factors.",
+   "capacity_note": "HeidelbergCement, own release of 1 February 2021: “it has been decided to build the LEILAC 2 demonstration installation for carbon capture at the HeidelbergCement cement plant in Hanover, Germany... an installation around four times as large will be operated in Hanover, which will capture 20% of the cement plant's capacity, corresponding to around 100,000 tonnes of CO2 per year” AT THE OWNER'S UNIT AND NOT CONVERTED (D80). Neither IEA capacity column is written onto this row: 'Announced capacity' is the list's claim and 'Estimated capacity by IEA' is the IEA's own computation through the workbook's conversion factors. RESTATED UNCHANGED AT THE NEW WORKS: the owner's relocation release of 6 March 2024 gives the same figure, 'up to 100,000 tons of unavoidable carbon dioxide emissions per year', so the move carries no capacity disagreement with it.",
    "owner_designation": "demonstration installation",
    "owner_designation_speaker": "HeidelbergCement, own release of 1 February 2021",
    "storage": {

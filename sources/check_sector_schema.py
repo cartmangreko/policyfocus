@@ -1239,20 +1239,28 @@ def check_projects(e: Errors, rows: list[dict], tech_ids: set, measure_ids: set,
             # fields _event requires. One name survives the rebase and it is the
             # one the rest of the schema uses -- two names for one fact is exactly
             # the quiet second source of truth these gates exist to prevent.
-            if h.get("event_kind") == "ownership":
+            #
+            # A RELOCATION IS THE SAME SHAPE AND TAKES THE SAME GATE. `from` and `to`
+            # are the two works rather than the two owners, and the rest of the rule
+            # is unchanged: it cannot open a history, and it may not also move the
+            # status. LEILAC-2 moved from Hanover to Ennigerloh in 2024 and stayed
+            # `announced` throughout, which is what makes it one fact.
+            if h.get("event_kind") in ("ownership", "relocation"):
+                kind = h["event_kind"]
+                what = "owner" if kind == "ownership" else "host works"
                 _req(e, hw, h, "from", "to")
                 if i == 0:
-                    e.add(hw, "an ownership event cannot open a history — there is no "
-                              "status before it for its own to be unchanged from, and "
-                              "the first entry is always read as a status change")
+                    e.add(hw, f"a {kind} event cannot open a history — there is no "
+                              f"status before it for its own to be unchanged from, and "
+                              f"the first entry is always read as a status change")
                 elif h.get("status") != history[i - 1].get("status"):
-                    e.add(hw, f"is an ownership event whose status ({h.get('status')!r}) "
+                    e.add(hw, f"is a {kind} event whose status ({h.get('status')!r}) "
                               f"differs from the entry before it "
                               f"({history[i - 1].get('status')!r}) — a project changing "
-                              f"hands and changing status is two events, and one entry "
-                              f"saying both reads as one causing the other")
+                              f"its {what} and changing status is two events, and one "
+                              f"entry saying both reads as one causing the other")
             elif "from" in h or "to" in h:
-                e.add(hw, "carries from/to and is not an ownership event")
+                e.add(hw, "carries from/to and is not an ownership or relocation event")
             prev_status = h.get("status")
             dates.append(str(h.get("date", "")))
         if dates != sorted(dates):

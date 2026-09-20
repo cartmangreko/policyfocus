@@ -109,10 +109,10 @@ def graph():
         if e.get("project_id"):
             by_project[e["project_id"]].append(e)
     swept = {o["project_id"] for o in edoc.get("owner_side", [])}
-    return by_project, swept, L.graph_read(edoc)
+    return by_project, swept, L.graph_read(edoc), L.owner_unread(edoc)
 
 
-def input_cell(row, row_id, by_project, swept, graph_date):
+def input_cell(row, row_id, by_project, swept, graph_date, unread_owner=()):
     """RUNG 6. `contract` passes; `framework` and `intent` fail; and a row the
     dependency sweep never reached is `not_searched`, not a fail.
 
@@ -122,7 +122,7 @@ def input_cell(row, row_id, by_project, swept, graph_date):
     "there is nothing there" are different findings.
     """
     if row is not None and row_id in swept:
-        return L.score_input(row, by_project, graph_date)
+        return L.score_input(row, by_project, graph_date, unread_owner)
     if row is not None:
         c = L.cell("fail", "sources/edges.json", "eufabric dependency sweep", graph_date,
                    "day", "the dependency sweep of brief 9 did not reach this row: it is "
@@ -472,7 +472,7 @@ def reconcile_hydrogen(lines):
 
 def build():
     by_key, read_on = funder_index()
-    by_project, swept, graph_date = graph()
+    by_project, swept, graph_date, unread_owner = graph()
     rows = {p["id"]: p for p in sm.load("project")}
     funding_by_project = L.load_funding()
     hyd_funder, hyd_read, _ = L.load_funder_pass()
@@ -491,7 +491,8 @@ def build():
                 cells = L.score_row(row, by_project, graph_date, funding_by_project,
                                     {}, False, "", e["key"])
                 cells["funding"] = funding_cell(e["key"], by_key, read_on)
-                cells["input"] = input_cell(row, e["row_id"], by_project, swept, graph_date)
+                cells["input"] = input_cell(row, e["row_id"], by_project, swept,
+                                            graph_date, unread_owner)
             else:
                 cells = score_entry(e, sector, by_key, read_on, by_project, swept,
                                     graph_date)

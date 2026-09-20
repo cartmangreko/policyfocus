@@ -40,6 +40,58 @@
 set -e
 
 root=$(git rev-parse --show-toplevel)
+intent="$root/.git/eufabric-push-intent"
+
+# WHAT THIS HOOK IS FOR, SECOND JOB. The first is not pushing a red build. The
+# second is proving the ref actually moved, and it was missing until 21 September
+# 2026, when two pushes of #77 ran the whole chain green and then died mid-pack —
+# "send-pack: unexpected disconnect", "Connection to github.com closed by remote
+# host" — leaving the branch not on the remote and the chain's green the only thing
+# anybody had looked at. The third push went out with --no-verify, which is recorded
+# as an exception taken in sources/dependency_docket.md, D-27, and is the temptation
+# this check exists to remove.
+#
+# GIT HAS NO POST-PUSH HOOK, and a pre-push hook cannot observe its own push: by the
+# time the pack is sent this script has exited. So the question is asked one push
+# later — WAS THE LAST INTENT FULFILLED — and it is asked before anything else, so a
+# dropped push blocks the next one instead of being discovered by somebody wondering
+# where their branch went. A person who wants the answer NOW runs
+# `.githooks/pre-push --verify-last`, which is this same check on its own.
+verify_last() {
+  [ -f "$intent" ] || { echo "pre-push: no push intent on file — nothing to verify."; return 0; }
+  bad=0
+  while read -r ref sha; do
+    [ -n "$ref" ] || continue
+    actual=$(git ls-remote origin "$ref" 2>/dev/null | awk '{print $1}')
+    if [ "$actual" != "$sha" ]; then
+      bad=1
+      echo >&2
+      echo "pre-push: THE LAST PUSH DID NOT LAND." >&2
+      echo "pre-push:   ref      $ref" >&2
+      echo "pre-push:   intended $sha" >&2
+      echo "pre-push:   remote   ${actual:-(the ref does not exist on origin)}" >&2
+      echo "pre-push: the gate chain passed and the pack did not arrive. Push it again." >&2
+      echo "pre-push: if that ref is deliberately abandoned, rm $intent" >&2
+      echo >&2
+    fi
+  done < "$intent"
+  if [ "$bad" = 0 ]; then
+    rm -f "$intent"
+    return 0
+  fi
+  return 1
+}
+
+if [ "$1" = "--verify-last" ]; then
+  verify_last
+  exit $?
+fi
+
+# THE REFS THIS PUSH IS CARRYING, read from stdin before anything consumes it. git
+# gives one line per ref: <local ref> <local sha> <remote ref> <remote sha>.
+refs=$(cat || true)
+
+verify_last || exit 1
 if [ ! -d "$root/web/node_modules" ]; then
   echo "pre-push: web/node_modules is missing — run npm install in web/ first." >&2
   echo "pre-push: refusing to push a build that cannot be checked." >&2
@@ -124,3 +176,18 @@ run_local check_build_image
 
 echo "pre-push: gate chain green — prebuild, build and postbuild, $(( $(date +%s) - started ))s."
 echo "pre-push: local-only checks green — check_hydrogen_workbook, build_leadit_entries --check,\n  check_citation_bodies, check_build_image."
+
+# THE INTENT, WRITTEN LAST. One line per ref this push is about to move, and it is
+# written only after the chain has passed, so the file never claims an intent the
+# gates refused. A deletion (an all-zero local sha) moves nothing and is skipped.
+: >"$intent"
+printf '%s\n' "$refs" | while read -r lref lsha rref rsha; do
+  [ -n "$rref" ] || continue
+  case "$lsha" in
+    *[!0]*) printf '%s %s\n' "$rref" "$lsha" >>"$intent" ;;
+  esac
+done
+if [ -s "$intent" ]; then
+  echo "pre-push: intent recorded — the next push verifies that these landed:"
+  sed 's/^/  /' "$intent"
+fi
