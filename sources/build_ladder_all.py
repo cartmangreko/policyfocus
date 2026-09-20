@@ -186,7 +186,15 @@ def score_entry(e, sector, by_key, read_on, by_project, swept, graph_date):
     # evidence that was sitting in the entry. And a `named not admitted` entry whose
     # own note says FAILED LEG: SITE must FAIL rung 1 — passing every entry of that
     # class scored the class rather than the evidence.
-    site_is_the_failed_leg = "site" in (a.get("failed_leg") or "").lower()
+    # THE FAILED LEG IS THE LEG, NOT THE SENTENCE ABOUT IT. This tested whether
+    # "site" appeared anywhere in the failed_leg text, and a leg recorded as
+    # "CAPACITY — the owner names the site and states no GWh" contains the word
+    # `site` while failing on capacity. The same substring-on-prose mistake as the
+    # Sines-inside-business screen of D-A5 and the name-derived hosts of L9; it is
+    # the third time in three days and the fix is the same each time — read the
+    # field, not the paragraph.
+    _leg = re.split(r"[—,;:(]", (a.get("failed_leg") or ""), 1)[0].strip().lower()
+    site_is_the_failed_leg = _leg.startswith("site") or _leg == "site"
     if klass == "admitted" and a.get("admitted_by") == "funder":
         # THE AMENDMENT OF 20 SEPTEMBER ADMITS ON A FUNDER AND MOVES NO RUNG. Rung 1
         # asks whether the OWNER OR THE PERMITTING AUTHORITY names the site, and a

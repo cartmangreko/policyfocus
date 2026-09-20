@@ -118,13 +118,14 @@
     "https://www.endesa.com/en/press/press-room/news/energy-transition/endesa-studies-developing-23-green-hydroge",
     "https://www.ewe.com/de/media-center/pressemitteilungen/2024/07/bundeswirtschaftsminister-robert-habeck-bergi"
    ],
-   "note_on_the_list": "The gate prints the first thirty; the count is 57. Run it for the whole list."
+   "note_on_the_list": "The gate prints the first thirty; the count is 57. Run it for the whole list.",
+   "ruled": "2026-09-21. Reporting only, as written. BEFORE THE PAPER'S TABLE IS CALLED FINAL, run check_citation_bodies in both worktrees and print the union; every citation must show a body, a hand-read copy, or a refusal somewhere. No gate blocks on which directory a session stands in."
   },
   {
    "id": "L8",
    "raised": "2026-09-21",
    "question": "Two entries classed `searched none found` have an owner page that names the works. Do they move, and to what?",
-   "held": true,
+   "held": false,
    "why_held": "THE STANDING RULE OF 21 SEPTEMBER: nothing is amended mid-pass, and a case the rules do not settle goes here with the entry held. These two are not rule questions — the rules settle them — but the pass that found them is the pass that would benefit from them, which is the shape D-B1 froze the rung tests against. They are written with the evidence so the next pass classes them rather than re-finding them.",
    "entries": [
     {
@@ -144,12 +145,13 @@
      "reading": "THE OWNER NAMES THE WORKS AND SAYS IT HAS BROKEN GROUND. A carousel caption is thin for an admission and it is not nothing: the class it supports is at least `named not admitted`, and a deeper read of prologium.com is the task."
     }
    ],
-   "confirmed_not_changes": "FOUR MORE WERE READ AND DO NOT MOVE, which is worth recording because they look like hits in the signal column. EAS Nordhausen, BMZ Karlstein and BASQUEVOLT Vitoria-Gasteiz all match on the place name IN THE IMPRINT — which is exactly what the battery census already recorded as the failure ('bmz-group.com names Karlstein am Main exactly once, in the imprint'). Holcim's Carboneras match is a photo exhibition, 'Carboneras en fotos'. AND iea:1662's owner host is barseback.com, WHICH IS A GOLF RESORT — a bad host in the earlier record, not a finding about the Barsebäck Hydrogen Hub."
+   "confirmed_not_changes": "FOUR MORE WERE READ AND DO NOT MOVE, which is worth recording because they look like hits in the signal column. EAS Nordhausen, BMZ Karlstein and BASQUEVOLT Vitoria-Gasteiz all match on the place name IN THE IMPRINT — which is exactly what the battery census already recorded as the failure ('bmz-group.com names Karlstein am Main exactly once, in the imprint'). Holcim's Carboneras match is a photo exhibition, 'Carboneras en fotos'. AND iea:1662's owner host is barseback.com, WHICH IS A GOLF RESORT — a bad host in the earlier record, not a finding about the Barsebäck Hydrogen Hub.",
+   "ruled": "2026-09-21. Both reclassed through the normal path to `named not admitted`, failed leg CAPACITY, each with the original class named as a search miss. sources/ladder_docket.md, D-A22."
   },
   {
    "id": "L9",
    "raised": "2026-09-21",
-   "held": true,
+   "held": false,
    "question": "Fifteen hydrogen entries are classed `searched, none found` on domains this register invented from the project's name. What are they classed instead?",
    "what_the_record_shows": "QUOTED FROM sources/research_pass_14_summary.json, key `the_admission_search_guessed_domains`. The admission search of 10 September ran over 167 entries and gave every one the same four EU press URLs, then for most of them `<projectname>.com` and `<projectname>.eu`. In 47 entries EVERY non-EU host it tried was derived from the project's own name. www.labskive.com for Green Lab Skive, www.castellon.com for BP's Castellón refinery, www.ccuaalborg.com for the Green CCU Hub at Aalborg — and www.barseback.com for the Barsebäck Hydrogen Hub, WHICH IS A GOLF RESORT.",
    "why_it_is_not_simply_wrong": "THE GUESS IS OFTEN RIGHT, which is how it survived: 28 of the 47 came back `owner or permit source names the site`, because a project frequently is at its own name. A guessed domain that answers and names the works is a fact, however it was reached. What cannot stand is the other column.",
@@ -172,7 +174,9 @@
    ],
    "the_problem": "For these fifteen, `searched, none found` rests on domains nobody published. A guessed domain that 404s is not a search, and the class says the register looked where the owner is. IT DID NOT LOOK ANYWHERE THE OWNER SAID IT WAS.",
    "what_would_settle_it": "A fourth outcome in the admission search's own vocabulary — `no owner domain located` — separating 'the owner's pages say nothing' from 'no owner page was found'. That is a change to a census's class vocabulary and the standing rule of 21 September holds it until brief 14 and the supplier sweep are in.",
-   "and_it_is_not_this_pass_s_mistake_alone": "BRIEF 14's OWN SEARCH INHERITED THE GUESSES. research_pass.py takes an entry's owner host from the hosts in its own records and refuses to invent one — and the records it read already contained invented hosts, so twelve of the eighty-two entries in the browser queue are queued against a domain that never existed. The rule against folding a name into a key is only as good as the records it reads."
+   "and_it_is_not_this_pass_s_mistake_alone": "BRIEF 14's OWN SEARCH INHERITED THE GUESSES. research_pass.py takes an entry's owner host from the hosts in its own records and refuses to invent one — and the records it read already contained invented hosts, so twelve of the eighty-two entries in the browser queue are queued against a domain that never existed. The rule against folding a name into a key is only as good as the records it reads.",
+   "ruled": "2026-09-21. A domain is never derived from a project's name. Every search record states how the owner's host was established and check_search_records.py gates it. The 11 confirmed-by-content guesses keep their result with the provenance recorded; the 20 whose verdict rested on unconfirmed guesses reopen as not_searched and were searched by a recorded query. D-A21.",
+   "correction": "THE FIGURES IN THIS QUESTION AND IN #74 WERE WRONG. 47/28/15 came from a substring test that counted endesa.com as derived from 'Huelva - Endesa'. Re-measured on the shape the search generated — two or more hosts sharing a stem across TLDs — the figures are 60 / 11 / 20."
   }
  ]
 }

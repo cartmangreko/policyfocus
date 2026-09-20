@@ -413,3 +413,65 @@ per entry: a page that answered nothing, or an entry whose own records name no o
 The twelve are D-A18's, and they should be struck from the queue rather than handed to a
 person to open — reading `www.crinorway.com` in a browser will fail for the same reason it
 failed here.
+
+## Rulings applied, 21 September 2026 — L7, L8, L9
+
+**D-A21. A DOMAIN IS NEVER DERIVED FROM A PROJECT'S NAME, AND EVERY SEARCH RECORD NOW SAYS
+HOW ITS HOST WAS ESTABLISHED.** `check_search_records.py` runs in the build and closes the
+vocabulary to four provenances — found in a document this pass read, guessed and confirmed
+by content, a search-engine result with the query recorded, the list's own owner field —
+plus `none`. **An entry whose provenance is `none` may not carry a verdict that claims a
+search happened**, and the gate refuses it. Across the 167 admission-search entries:
+**134 found in a document, 20 reopened by a recorded query, 11 guessed and confirmed by
+content, 2 with no owner host at all** (quoted from `check_search_records.py`).
+
+**AND THE FIGURES IN #74 WERE WRONG, WHICH IS TWICE IN TWO DAYS.** That report said 47
+entries had every non-EU host derived from the project's name, 28 of them confirmed and 15
+not. **The test was a substring: it counted `endesa.com` as name-derived under the project
+"Huelva - Endesa", and `vicat.com` under "Hynovi - Vicat".** Those are the owners' real
+domains, found in documents. Re-measured by the shape the search actually generated — two
+or more hosts sharing one stem across TLDs, which is a machine's output and not a reader's
+— the figures are **60 entries with a generated triple, 11 where a guess was confirmed by
+content, and 20 whose verdict rested on nothing else**. The standing rule asks that a
+flattering finding be checked before it is reported; this one was unflattering and went
+unchecked, which is the same failure wearing the other coat.
+
+**THE TWENTY REOPEN AS `not_searched` AND ARE SEARCHED BY A RECORDED ROUTE.**
+`sources/hydrogen_reopened_searches.json` carries the query for each. **Fourteen located an
+owner host** — Green Crane at h2v.eu, Barsebäck at Uniper, HyKero at EDL/XFuels, Vanadis
+Fuels at Total Eren and Aliceco in Kokkola, MetGreenPort at Ansasol, Elyfos at Air Liquide
+Fos-Tonkin, As Pontes at UH2, Kaskade at Meridiam, Occi'Jet at MGH Energy, Dolphyn at ERM.
+**Six did not**, and that is recorded as searched-and-not-located rather than as a finding
+about the project: Nemo, SIRAM Termoli, two Italian "network related function"
+electrolysers, Hidroelectrica Sona and Zijin's Serbian project.
+
+**D-A22. BOTH L8 ENTRIES RECLASS, AND THE ORIGINAL CLASS WAS A SEARCH MISS IN BOTH.**
+`searched none found` says the owner's own sources were read and name no works.
+
+  - **Volvo Mariestad** to `named not admitted`, failed leg CAPACITY. volvogroup.com's own
+    release of 10 September 2026: *"Volvo Group announces energy park initiative as next
+    step in Mariestad… with plans for an energy park near the intended battery cell
+    production site."*
+  - **ProLogium Dunkirk** to `named not admitted`, failed leg CAPACITY. prologium.com's own
+    front page carries *"Dunkirk Gigafactory Groundbreaking"*.
+
+**Both were found by starting at the owner's own domain**, which is S3's rule and what the
+census did not do. Batteries' check 1 goes **33 to 35 of 57**.
+
+**D-A23. THE THIRD SUBSTRING-ON-PROSE BUG IN THREE DAYS, AND THIS ONE WAS IN THE SCORER.**
+Volvo's reclass did not move check 1 at first: the scorer tested whether the word `site`
+appeared anywhere in the failed-leg text, and the leg reads *"CAPACITY — the owner names
+the site and states no GWh"*. An entry failing on capacity was read as failing on site.
+The same shape as `Sines` inside `business` (D-A5) and as the name-derived hosts above. The
+fix each time is the same: **read the field, not the paragraph** — the leg is now taken as
+the clause before the first dash or comma.
+
+**D-A24. SIXTEEN QUEUE ITEMS ARE STRUCK AND THE QUEUE IS 66.** Every host tried for those
+entries was generated from the project's name and none resolves. **Handing a person a
+browser and a domain that does not exist is not a queue item.** Quoted from
+`sources/research_pass_14_summary.json`: browser queue **82 to 66**.
+
+**D-A25. L7 STANDS AS REPORTING-ONLY AND THE PAPER'S CONDITION IS WRITTEN DOWN.** Before
+the paper's table is called final, `check_citation_bodies.py` is run in **both worktrees**
+and the union printed: every citation must show a body, a hand-read copy, or a refusal
+somewhere. No gate blocks on which directory a session stands in.
