@@ -474,6 +474,10 @@ E("itm-power", "Linde Engineering (for RWE, Lingen)", "equipment_order", "suppli
   quantity=(200, "MW"), country="DE", sector="power / hydrogen",
   note="TWO contracts of 100 MW each; recorded as one edge of 200 MW because the "
        "release states them as one signing. GET H2 Nukleus.",
+  refuse_match="'Lingen' is a site alias of hyiron-lingen, and the customer here is "
+               "RWE. Two works in one town: RWE's GET H2 Nukleus electrolysers and "
+               "HyIron's GEiSt direct-reduction plant. The register's row is the "
+               "second one and this order is on the first.",
   firmness="contract", firmness_basis=
   "ITM Power has signed two contracts, each for the sale of 100 MW of PEM "
   "electrolysers to Linde Engineering.")
@@ -906,6 +910,10 @@ E("sunfire", "RWE", "equipment_order", "supplier", "supplier_press",
   F + "rwe-realizes-electrolysis-project-with-sunfire/", "2022-05-03", quantity=(10, "MW"),
   country="DE", sector="power", note="Pressurized alkaline; the Lingen site.",
   site="Lingen",
+  refuse_match="'Lingen' is a site alias of hyiron-lingen, and the customer here is "
+               "RWE. Two works in one town: RWE's GET H2 Nukleus electrolysers and "
+               "HyIron's GEiSt direct-reduction plant. The register's row is the "
+               "second one and this order is on the first.",
   firmness="contract", firmness_basis=
   "As part of its hydrogen strategy, RWE has ordered a 10 MW pressurized "
   "alkaline electrolyzer from Sunfire.")
@@ -965,6 +973,10 @@ E("sunfire", "RWE", "equipment_order", "supplier", "supplier_press",
   F + "sunfire-builds-100-megawatt-electrolyzer-for-rwe/", "2024-09-11",
   quantity=(100, "MW"), country="DE", sector="power", note="RWE's Lingen site.",
   site="Lingen",
+  refuse_match="'Lingen' is a site alias of hyiron-lingen, and the customer here is "
+               "RWE. Two works in one town: RWE's GET H2 Nukleus electrolysers and "
+               "HyIron's GEiSt direct-reduction plant. The register's row is the "
+               "second one and this order is on the first.",
   firmness="contract", firmness_basis=
   "Sunfire, a leading global electrolysis company, has been awarded a major "
   "contract for a 100 megawatt (MW) pressurized alkaline electrolyzer at "
@@ -1626,6 +1638,10 @@ E("mhi", "Eni S.p.A. (through NextChem)", "technology_licence", "supplier",
   site="Casalborsetti Ravenna",
   note="Licence and process design package for phase 1 of Italy's first CCUS project. "
        "The store is the Ravenna CCS node on this perimeter.",
+  refuse_match="'Ravenna' is a site alias of adriatico2-ravenna, which is "
+               "Marcegaglia's steelworks project. This plant is Eni's own, at "
+               "Casalborsetti, capturing from Eni's gas treatment plant. One "
+               "industrial district, two projects, different owners.",
   firmness="contract", firmness_basis=
   "(MHIENG), a Mitsubishi Heavy Industries (MHI) Group company based in "
   "Yokohama, has agreed to license its carbon capture technology and "
@@ -1645,9 +1661,14 @@ E("mhi", "ArcelorMittal (with BHP and Mitsubishi Development)", "framework_agree
   "supplier", "supplier_press", M + "221027.html", "2022-10-27", quantity=None,
   country="BE", sector="steel", site="Gent",
   note="Multi-year trial of MHIENG carbon capture at ArcelorMittal's Gent steel plant "
-       "and one North American site, plus a feasibility and design study. Gent is not "
-       "a row in this register's steel perimeter, which holds ArcelorMittal at Bremen/"
-       "Eisenhüttenstadt and Dunkirk.")
+       "and one North American site, plus a feasibility and design study. Gent was not "
+       "a row in this register's steel perimeter when brief 9 read it; the steel census "
+       "has since admitted zesta-gent, and the refusal below is why it is still not "
+       "this edge's row.",
+  refuse_match="'Gent' is now a site alias of zesta-gent, and zesta-gent is "
+               "ArcelorMittal's direct-reduction and electric-furnace project. A "
+               "carbon capture trial on the same works is a different project at "
+               "one address, and rung 6 asks what the ROW contracted.")
 E("mhi", "Hanson UK", "framework_agreement", "supplier", "supplier_press",
   M + "22121502.html", "2022-12-15", quantity=(800000, "tonnes CO2 per year"),
   country="GB", sector="cement", site="Padeswood Flintshire",
@@ -1684,7 +1705,11 @@ E("mhi", "Heidelberg Materials UK", "framework_agreement", "supplier", "supplier
 E("mhi", "ArcelorMittal", "framework_agreement", "supplier", "supplier_press",
   M + "24052102.html", "2024-05-21", quantity=None, country="BE", sector="steel",
   site="Gent", note="Trial carbon capture unit begins operation at Gent. Same trial "
-                    "as 2022-10-27, second document.")
+                    "as 2022-10-27, second document.",
+  refuse_match="'Gent' is now a site alias of zesta-gent, and zesta-gent is "
+               "ArcelorMittal's direct-reduction and electric-furnace project. A "
+               "carbon capture trial on the same works is a different project at "
+               "one address, and rung 6 asks what the ROW contracted.")
 E("mhi", "Eni and Snam (Ravenna CCS)", "technology_licence", "supplier",
   "supplier_press", M + "24091802.html", "2024-09-18",
   quantity=(25000, "tonnes CO2 per year"), country="IT", sector="oil and gas",
@@ -1692,6 +1717,10 @@ E("mhi", "Eni and Snam (Ravenna CCS)", "technology_licence", "supplier",
   note="OPERATIONAL — 'Europe's first fully operational post-combustion carbon capture "
        "plant'. Same 25,000 t/yr as the 2022 licence, now running. CO2 injected into a "
        "depleted offshore Eni gas field.",
+  refuse_match="'Ravenna' is a site alias of adriatico2-ravenna, which is "
+               "Marcegaglia's steelworks project. This plant is Eni's own, at "
+               "Casalborsetti, capturing from Eni's gas treatment plant. One "
+               "industrial district, two projects, different owners.",
   firmness="contract", firmness_basis=
   "As well as being a significant development in the decarbonization of "
   "industry, this also represents a major milestone for \" Ravenna CCS \", "
@@ -2607,6 +2636,10 @@ E("ravenna-ccs", "Eni", "co2_storage", "supplier", "supplier_press",
        "from its own gas plant, and Eni is half the joint venture that owns the store. "
        "Recorded as an edge because it is a stated storage relationship; whether an "
        "emitter storing with itself is demand is a ruling for the reader.",
+  refuse_match="'Ravenna' is a site alias of adriatico2-ravenna, which is "
+               "Marcegaglia's steelworks project. This plant is Eni's own, at "
+               "Casalborsetti, capturing from Eni's gas treatment plant. One "
+               "industrial district, two projects, different owners.",
   firmness="contract", firmness_basis=
   "Claudio Descalzi, CEO of Eni, commented: “A project of great "
   "significance for decarbonisation has now become an industrial reality.")
@@ -2998,3 +3031,557 @@ _st("ravenna-ccs", refusal_class="script_rendered_index",
          "launch release was reached directly rather than by walking an index, so the "
          "node rests on two pages located by search — there may be more and this sweep "
          "cannot say there are not.")
+
+
+# =============================================================================
+# BRIEF 9B — the supplier side of batteries, cement and steel
+# =============================================================================
+# Same procedure, same fields, same refusal to infer: one sentence in one cached
+# page per reading, `verdict` null on every edge, the quantity in the unit the
+# supplier states. What is new is the perimeter (nine nodes, DECISION D-19) and
+# the direction of the reading: brief 9 swept electrolyser makers and found cement
+# and steel customers on the way, and this pass starts from the three censuses and
+# asks who supplies them.
+#
+# THE OWNER-SIDE EDGES ARE IN THEIR OWN SECTION BELOW and carry `speaker: owner`.
+# Rung 6 of the confirmation ladder reads "an edge in the dependency graph, OR AN
+# OWNER STATEMENT NAMING THE SUPPLIER, with firmness: contract" — so an owner's
+# own release naming its capture licensor is a reading this file has to be able to
+# hold, and it is held as an edge whose speaker is the owner rather than as a
+# second kind of object.
+
+CC = "https://www.carbonclean.com/en/press-releases/"
+
+# --- Carbon Clean Solutions ---------------------------------------------------
+# Sitemap-walked: 111 pages under /en/press-releases/ and /news/, every one fetched
+# and digested. Its European cement customers are CEMEX at Rüdersdorf and Holcim at
+# Carboneras, and both are rows.
+E("carbon-clean", "CEMEX, S.A.B. de C.V. (through CEMEX Ventures)", "framework_agreement",
+  "supplier", "supplier_press", CC + "cemex-and-carbon-clean-to-develop-low-cost-carbon-"
+  "capture-technology", "2020-09-17", quantity=None, sector="cement",
+  note="THE GROUP AGREEMENT AND NOT A PLANT. No works is named and no country: this is "
+       "CEMEX's venture arm contracting to develop the technology with the supplier, "
+       "and the Rüdersdorf edges below are what it later became at a site. No country "
+       "is recorded, so it opens no unmatched customer.")
+E("carbon-clean", "CEMEX Deutschland AG", "equipment_order", "supplier", "supplier_press",
+  CC + "cemex-carbon-capture-project", "2021-11-01", quantity=(100, "tonnes CO2 per day"),
+  country="DE", sector="cement", site="Rüdersdorf",
+  project_id="cyclonecc-rudersdorf",
+  # TWO ROWS AT ONE WORKS, AND THE SUPPLIER SAYS WHICH. `rudersdorf` resolves to
+  # both cyclonecc-rudersdorf and co2llect-rudersdorf — CEMEX runs two capture
+  # projects on the same plant — so the matcher correctly refuses to choose. The
+  # reader chooses: the CycloneCC row is named for this node's own technology and
+  # CO2LLECT is Linde's HISORP unit, which is a different edge on a different node.
+  note="THE APPOINTMENT, at 100 tonnes a day for the initial stage. The same release "
+       "states a further 300 t/d and an ultimate 2,000 t/d as CEMEX's plan and not as "
+       "anything ordered; neither is recorded as a quantity here.",
+  firmness="intent", firmness_basis=
+  "CEMEX has appointed Carbon Clean to work on a FEED study for a ground-breaking "
+  "carbon capture project at its Rüdersdorf plant in Germany, as part of its Carbon "
+  "Neutral Alliance at the site.")
+E("carbon-clean", "CEMEX Deutschland AG", "equipment_order", "supplier", "supplier_press",
+  CC + "kbr-carbonclean", "2022-07-19", quantity=(100, "tonnes CO2 per day"),
+  country="DE", sector="cement", site="Rüdersdorf",
+  project_id="cyclonecc-rudersdorf",
+  # TWO ROWS AT ONE WORKS, AND THE SUPPLIER SAYS WHICH. `rudersdorf` resolves to
+  # both cyclonecc-rudersdorf and co2llect-rudersdorf — CEMEX runs two capture
+  # projects on the same plant — so the matcher correctly refuses to choose. The
+  # reader chooses: the CycloneCC row is named for this node's own technology and
+  # CO2LLECT is Linde's HISORP unit, which is a different edge on a different node.
+  note="THE SECOND DOCUMENT ON ONE PROJECT, and the contract in it is the wrong way "
+       "round for this file: Carbon Clean AWARDED the FEED to KBR, so the node is the "
+       "buyer of that contract. The edge is recorded on what the same sentence states "
+       "about the works — a CycloneCC capture project at CEMEX's Rüdersdorf plant at "
+       "100 t/d — and its firmness is the FEED stage, not the KBR contract.",
+  firmness="intent", firmness_basis=
+  "Carbon Clean, a global leader in cost-effective carbon capture solutions, announced "
+  "today that it has awarded a Front End Engineering Design (FEED) contract to global "
+  "engineering experts, KBR, for a groundbreaking carbon capture project at CEMEX’s "
+  "Rüdersdorf plant in Germany.")
+E("carbon-clean", "LafargeHolcim (with ECCO2 and Sistemas de Calor)", "framework_agreement",
+  "supplier", "supplier_press",
+  CC + "lafargeholcim-and-carbon-clean-to-develop-large-scale-ccus-plant", "2020-10-29",
+  quantity=None, country="ES", sector="cement", site="Carboneras Almeria",
+  note="THE CO2 IS FOR CROPS, not for a store: captured from the kiln flue gas and "
+       "recycled for agricultural use, starting at 10% of the works' emissions from "
+       "2022. A percentage is not a quantity and none is recorded.",
+  firmness="framework", firmness_basis=
+  "announced today that it has signed an agreement in Spain with LafargeHolcim - the "
+  "world’s global leader in building solutions - ECCO2 and Sistemas de Calor to develop "
+  "a large-scale carbon capture and utilisation plant.")
+
+CP = "https://www.capsoltechnologies.com/"
+
+# --- Capsol Technologies ------------------------------------------------------
+# Sitemap-walked: 111 pages, 106 with a body. Cement is the largest segment in its
+# own pipeline and two of its cement customers are rows — SCHWENK at Brocēni and
+# Dyckerhoff, the second without a works named.
+E("capsol", "SCHWENK Building Materials Group", "equipment_order", "supplier",
+  "supplier_press", CP + "SCHWENK-orders-CapsolGo-demonstration-campaigns-for-two-"
+  "cement-plants", "2024-08-13", quantity=None, country="LV", sector="cement",
+  site="Brocēni",
+  note="ONE DOCUMENT, TWO WORKS, TWO EDGES. A CapsolGo demonstration campaign is a "
+       "containerised test unit and a testing programme, NOT the works' capture plant; "
+       "the sentence says what was bought and the verdict is the reader's. No quantity "
+       "is stated for either campaign.",
+  firmness="contract", firmness_basis=
+  "Capsol Technologies has signed a contract for the delivery of two CapsolGo ® carbon "
+  "capture demonstration campaigns at SCHWENK’s Building Material Group’s Brocēni "
+  "cement plant in Latvia and the Akmenės Cementas cement plant in Lithuania.")
+E("capsol", "Akmenės Cementas AB (SCHWENK)", "equipment_order", "supplier",
+  "supplier_press", CP + "SCHWENK-orders-CapsolGo-demonstration-campaigns-for-two-"
+  "cement-plants", "2024-08-13", quantity=None, country="LT", sector="cement",
+  site="Akmenė",
+  note="The second works in the same contract. Akmenė is not a row in this register.",
+  firmness="contract", firmness_basis=
+  "Capsol Technologies has signed a contract for the delivery of two CapsolGo ® carbon "
+  "capture demonstration campaigns at SCHWENK’s Building Material Group’s Brocēni "
+  "cement plant in Latvia and the Akmenės Cementas cement plant in Lithuania.")
+E("capsol", "SCHWENK Latvija", "equipment_order", "supplier", "supplier_press",
+  CP + "Latvia-prime-minister-visits-schwenk-cement-plant-to-see-carbon-capture-in-"
+  "action", "2025-09-08", quantity=None, country="LV", sector="cement", site="Brocēni",
+  note="DELIVERED AND RUNNING, and a separate edge from the order by this file's own "
+       "convention. The unit captured its first CO2 at the end of May 2025.",
+  firmness="contract", firmness_basis=
+  "End of May, the first CO₂ was successfully captured at the Brocēni cement plant "
+  "using a CapsolGo® demonstration unit based on the proven Hot Potassium Carbonate "
+  "(HPC) process.")
+E("capsol", "Holcim Süddeutschland GmbH (Holcim Group)", "framework_agreement",
+  "supplier", "supplier_press", CP + "Holcim-Group-to-test-Capsol-carbon-capture-"
+  "technology", "2024-08-27", quantity=None, country="DE", sector="cement",
+  site="Dotternhausen",
+  note="Dotternhausen is not a row: the register holds thirteen Holcim cement works "
+       "and this is not one of them. The agreement is a cooperation agreement whose "
+       "first step is one demonstration campaign; Holcim would 'consider deploying' the "
+       "technology at full scale afterwards, which is not an order and is not read as "
+       "one. The same release records an earlier feasibility study for Aggregate "
+       "Industries UK's Cauldon works at Stoke-on-Trent — also not a row.",
+  firmness="framework", firmness_basis=
+  "Capsol Technologies has signed a cooperation agreement with Holcim Group, a global "
+  "leader in innovative and sustainable building solutions. The agreement includes the "
+  "delivery of a CapsolGo ® carbon capture demonstration campaign at a plant in "
+  "southern Germany as the first step in a broader collaboration aimed at decarbonizing "
+  "Holcim’s global portfolio of industrial plants.")
+E("capsol", "a cement producer in Germany (undisclosed)", "framework_agreement",
+  "supplier", "supplier_press",
+  CP + "Capsol-awarded-feasibility-study-from-cement-producer-in-Germany", "2024-10-01",
+  quantity=(400000, "tonnes CO2 per year"), sector="cement",
+  note="THE CUSTOMER IS NOT NAMED AND THE WORKS IS NOT NAMED, so there is nothing to "
+       "match and no unmatched customer is opened: no country is recorded either, "
+       "because 'in Germany' describes the plant and this file's country field is for "
+       "a counterparty somebody could look up. The 400,000 t/yr is the PLANT'S stated "
+       "aim quoted in a study award, not a capacity anybody has contracted. "
+       "AND THE SLUG IS CASE-SENSITIVE: the lower-case form of this URL serves a "
+       "different release about gas turbines, which is what the cement census's "
+       "reference resolves to today.",
+  firmness="framework", firmness_basis=
+  "Capsol Technologies has been awarded a feasibility study for the CapsolEoP ® "
+  "(End-of-Pipe) carbon capture technology at a cement plant in Germany. The study is "
+  "for a plant aiming to capture 400,000 tons of CO 2 per annum.")
+E("capsol", "Dyckerhoff GmbH", "equipment_order", "supplier",
+  "supplier_quarterly_report",
+  CP + "capsol-technologies-Q1-2026-business-and-financial-update-unlocking-low-carbon-"
+  "power-and-industrial-decarbonization", "2026-05-13", quantity=None, country="DE",
+  sector="cement",
+  note="NO WORKS IS NAMED, which is why this edge matches nothing: Dyckerhoff is the "
+       "owner of `deuna-ccs` and of several other German cement works, and a campaign "
+       "at 'Dyckerhoff' does not say which. The company's own projects page dates the "
+       "announcement to before the end of 2025 and the campaign to six months from Q1 "
+       "2026; the quarterly report is what states it as launched.",
+  firmness="framework", firmness_basis=
+  "Demonstration campaign at Dyckerhoff launched in late Q1")
+
+Y = "https://www.yhwins.com/index.php/"
+
+# --- Shenzhen Yinghe Technology (赢合科技) ------------------------------------
+# THE FIRST BATTERY-EQUIPMENT EDGES THIS REGISTER HOLDS, and they are in Chinese.
+# Brief 9 swept three battery_equipment nodes and landed one edge between them;
+# the reason was not that Europe's cell lines have no suppliers but that the
+# suppliers who publish their orders publish them in Chinese, on sites whose
+# English pages are a shorter, later, blander subset. 311 pages were walked off
+# yhwins.com's sitemap and read in the language they are written in.
+#
+# AND THE WHOLE ARCHIVE CARRIES ONE DATE. 221 of the 311 pages print
+# `时间：2024.10.31`, which is the day the site was migrated and not the day
+# anything was published: the two readings below sit beside "下一篇" links dated
+# June 2022 and describe the European Parliament's 2035 decision as recent. A
+# stamp every page shares is not a dateline, so DECISION D-7 applies and both take
+# the date of the copy on file as an UPPER BOUND. The order is older than the file
+# says and this file will not say how much older.
+E("yinghe", "Automotive Cells Company (ACC)", "equipment_order", "supplier",
+  "supplier_press", Y + "newsinfo204.html", "2026-09-20", date_precision="day",
+  no_dateline=True, quantity=None, country="FR", sector="batteries",
+  project_id="acc-billy-berclau",
+  note="THE SITE IS NAMED BY ITS CAPACITY AND NOT BY ITS NAME: '13GWh的法国超级电池"
+       "工厂' — ACC's 13 GWh French gigafactory. The register's ACC row at "
+       "Billy-Berclau/Douvrin opened with 'more than 13 GWh' rising to 40 GWh, and it "
+       "is ACC's only French cell works here; Termoli and Kaiserslautern are Italian "
+       "and German and both cancelled. Explicit for that reason — a Chinese "
+       "transliteration matches no alias in the index. The order is for front-end "
+       "mass-production equipment, not a whole line; the same page recalls a 2020 "
+       "whole-line order and a 2021 follow-on, neither of which has a document of its "
+       "own in this cache and neither of which is recorded as an edge.",
+  firmness="contract", firmness_basis=
+  "据悉，近期赢合科技已获得ACC新锂电设备订单，将为其13GWh的法国超级电池工厂提供前段量产设备。")
+E("yinghe", "Volkswagen AG (PowerCo)", "equipment_order", "supplier", "supplier_press",
+  Y + "newsinfo212.html", "2026-09-20", date_precision="day", no_dateline=True,
+  quantity=None, country="DE", sector="batteries", project_id="powerco-salzgitter",
+  note="中标 — the tender was won, which is an award and not an intention. The works "
+       "is named in Chinese transliteration (德国萨尔茨吉特工厂) and the figures agree "
+       "with the row exactly: 20 GWh 'later extended to 40 GWh' against PowerCo's own "
+       "'first expansion stage 20 GWh, expandable to 40 GWh'. NO QUANTITY IS RECORDED: "
+       "亿级订单 is an order worth hundreds of millions of yuan, and a contract value "
+       "is not a capacity; the 20 GWh is the customer's factory, not the equipment.",
+  firmness="contract", firmness_basis=
+  "近日，赢合科技中标德国大众亿级订单，将为其20GWh超级工厂（后续将扩展为40GWh）提供生产"
+  "锂电池的核心锂电设备及解决方案。")
+
+AX = "https://www.axens.net/resources-events/news/"
+
+# --- Axens ---------------------------------------------------------------------
+# THE CAPTURE LICENSOR OF A STEEL ROW. `3d-dunkirk` is the register's row for the
+# DMX demonstration on ArcelorMittal's blast-furnace gas, and DMX is IFPEN's
+# process, commercialised by Axens, which designed the pilot. 237 news pages were
+# read off the sitemap — whose entries carry the hostname `default`, rewritten to
+# the live host — and all but a handful are refining and petrochemicals, counted
+# and not recorded under DECISION D-4.
+#
+# THE PROJECT'S OWN LAUNCH RELEASE IS OUT OF PERIOD. 28 May 2019 states the pilot,
+# its site and its 0.5 t CO2/h design rate; the sweep starts on 1 January 2020 and
+# it is named here rather than back-dated.
+E("axens", "ArcelorMittal France", "technology_licence", "supplier", "supplier_press",
+  AX + "pr-successful-demonstration-dunkirk-co2-capture-dmx-process", "2024-03-14",
+  quantity=None, country="FR", sector="steel", site="Dunkirk",
+  note="A HORIZON 2020 CONSORTIUM AND NOT A PURCHASE. Eleven partners, of whom Axens "
+       "is one and IFPEN the coordinator; the pilot is Axens's design and is running, "
+       "and no document in this sweep states an order, a price or a supply agreement "
+       "for it. Firmness is `framework` on that reading and not on the plant's "
+       "maturity — the unit is operating, which is what makes the reading worth "
+       "recording and is not what the firmness axis measures.",
+  firmness="framework", firmness_basis=
+  "The DMX™ process demonstration pilot has been operating in stable conditions since "
+  "April 2023 to capture the CO 2 present in blast furnace gases emitted during steel "
+  "production at ArcelorMittal’s Dunkirk site.")
+
+
+# =============================================================================
+# 9B, THE OWNER SIDE: rows whose own sources name a supplier or a store
+# =============================================================================
+# Rung 6 reads "an edge in the dependency graph, OR AN OWNER STATEMENT NAMING THE
+# SUPPLIER, with firmness: contract", so these are edges like any other and their
+# speaker says where they came from. dep_owner scanned all 205 rows' own cited
+# sources against the 37-node perimeter and 33 rows named somebody: cement 14,
+# clean 9, steel 6, ccs 4, batteries NONE.
+#
+# WHAT IS RECORDED HERE IS WHAT THE SUPPLIER SIDE DID NOT ALREADY HOLD. Where both
+# speak about one relationship — Salzgitter's own release and Tenova's, Blastr's
+# page and Primetals' — the supplier's document is already an edge and the owner's
+# is noted in the docket rather than filed twice; recording it again would double a
+# relationship in every count that reads this file. Six relationships were on the
+# owner side only.
+#
+# AND FOUR WERE READ AND REFUSED, each for a stated reason: a consortium partner
+# list is not a supply (3d-dunkirk naming John Cockerill), a trade-press report of
+# a signing is not the owner speaking (metinvest-piombino and Danieli, which is
+# D-S4's ruling applied here), a store named as "the most advanced" candidate is
+# not a store contracted (slite-ccs and Northern Lights, which the row's own note
+# already says), and an engineering contractor's release is not the owner's
+# (celsio-ccs-terminal and the Northern Lights terminal).
+
+E("northern-lights", "Heidelberg Materials (Brevik CCS)", "co2_storage", "supplier",
+  "supplier_press",
+  "https://www.equinor.com/news/20250825-first-co2-volumes-stored-at-northern-lights",
+  "2025-08-25", quantity=None, country="NO", sector="cement", site="Brevik",
+  project_id="brevik-ccs",
+  note="THE STORE'S FIRST CUSTOMER, AND THE SERVICE IS BEING PERFORMED rather than "
+       "agreed: the ships are sailing. Equinor speaks as the Northern Lights JV's "
+       "technical service provider, which is why the speaker is `supplier` and not "
+       "`owner`. Heidelberg Materials' own release of 18 June 2025 states the same "
+       "chain from the other side — 'the Northern Lights initiative ... is the partner "
+       "responsible for the carbon transport and storage' — and is not filed twice. "
+       "THE COPY ON FILE IS A RE-READ: the cache index records this page as read on 11 "
+       "September 2026 and the bytes on this machine are today's, so the citation gate "
+       "declines to rule on the sentence (dep_restore.py).",
+  firmness="contract", firmness_basis=
+  "The CO 2 is transported via ships from Heidelberg Materials’ cement factory in "
+  "Brevik.")
+E("air-liquide", "Aalborg Portland A/S (Cementir)", "framework_agreement", "owner",
+  "owner_press", "https://www.aalborgportland.dk/accsion/", "2025-06-23",
+  quantity=None, country="DK", sector="cement", site="Aalborg",
+  project_id="accsion-aalborg",
+  note="THE LARGEST UNMATCHED CEMENT TONNAGE IN BRIEF 9 IS A MATCHED ROW NOW. Brief 9 "
+       "read Air Liquide's side of ACCSION and could not attach it to anything, "
+       "because the cement census had not yet admitted Aalborg; the owner's own "
+       "project page names the supplier and the row exists. A collaboration to "
+       "establish a value chain is not an order, and the firmness says so.",
+  firmness="framework", firmness_basis=
+  "In collaboration with Air Liquide – a global leader in gases, technologies, and "
+  "services for industry and healthcare – a fully integrated onshore CO₂ capture value "
+  "chain is being established in Northern Jutland.")
+E("linde", "CEMEX Deutschland AG (CO2LLECT)", "framework_agreement", "owner",
+  "owner_press", "https://www.co2llect.de/en/project/", "2026-09-20",
+  no_dateline=True, quantity=(1300000, "tonnes CO2 per year"), country="DE",
+  sector="cement", site="Rüdersdorf", project_id="co2llect-rudersdorf",
+  note="THE OTHER ROW AT RÜDERSDORF, and the one CEMEX runs with Linde: CO2LLECT is "
+       "the HISORP adsorptive-cryogenic unit and CycloneCC is Carbon Clean's. The "
+       "project page carries no dateline of its own — a '2025–2030' timeline is not a "
+       "publication date — so D-7 dates it by the copy on file and the date is an "
+       "upper bound.",
+  firmness="framework", firmness_basis=
+  "In partnership with Linde , CO₂LLECT captures and liquefies 1.3 million tons of CO₂ "
+  "per year .")
+E("ravenna-ccs", "Heidelberg Materials (DREAM, Rezzato Mazzano)", "co2_storage",
+  "owner", "owner_press", "https://www.heidelbergmaterials.com/en/pr-2025-11-03",
+  "2025-11-03", quantity=None, country="IT", sector="cement",
+  site="Rezzato Mazzano", project_id="dream-rezzato-mazzano",
+  note="The owner names the store in the release announcing the Innovation Fund "
+       "award. NO QUANTITY IS RECORDED: the same sentence's 'around 1 million tonnes "
+       "of CO₂ per year' is what DREAM aims to CAPTURE, not a volume contracted with "
+       "the hub, and this file does not convert one into the other.",
+  firmness="framework", firmness_basis=
+  "As part of this initiative, CO₂ will be captured from cement production and "
+  "transported to the Ravenna CCS storage hub beneath the Adriatic Sea.")
+E("tk-polysius", "NEXE Group (Našice cement)", "technology_licence", "owner",
+  "owner_press", "https://www.nexe.hr/en/co2ntessa/", "2023-03-20", quantity=None,
+  country="HR", sector="cement", site="Našice", project_id="co2ntessa-nasice",
+  note="THE VENDOR IS NAMED BY ITS PRODUCT: 'Polysius PureOxyfuel technology developed "
+       "by thyssenkrupp'. A technology chosen for a works not yet modified is a "
+       "selection and not a supply; the same page states >700 kt CO2/yr for the "
+       "project, which is the works' capture and not an order.",
+  firmness="intent", firmness_basis=
+  "Existing plant will be modified based on the Polysius PureOxyfuel technology "
+  "developed by thyssenkrupp.")
+E("sms-group", "LIBERTY Steel Group (with SHS)", "framework_agreement", "owner",
+  "owner_press",
+  "https://libertysteelgroup.com/liberty-develop-hydrogen-steel-making-plant",
+  "2021-02-22", quantity=None, country="FR", sector="steel", site="Dunkerque",
+  project_id="liberty-dunkerque-dri",
+  note="PAUL WURTH IS SMS GROUP, which is how a node with zero edges in its own voice "
+       "gets one: sms-group.com sits behind a WAF and this reading is the customer's "
+       "own release. An MoU to ASSESS building a plant is read down to `intent` "
+       "against its kind.",
+  firmness="intent", firmness_basis=
+  "LIBERTY Steel Group, part of Sanjeev Gupta’s sustainable industry leader GFG "
+  "Alliance, has signed a Memorandum of Understanding (MoU) with Paul Wurth and SHS – "
+  "Stahl-Holding-Saar (SHS) to assess the building and operating of an "
+  "industrial-sized, hydrogen-based steel making plant at Dunkerque in France.")
+
+LC = "https://web.archive.org/web/"
+
+# --- Leilac Group / Calix ------------------------------------------------------
+# READ THROUGH THE ARCHIVE. leilac.com and calix.global both answer 403 to a
+# declared reader with a full browser header set — one refusal serving two names —
+# so every reading here cites an Internet Archive capture under DECISION D-7, with
+# `captured_at` derived from the capture URL and `archived: true`.
+#
+# THE ROW MOVED AND THE REGISTER HAS NOT. `leilac2-hannover` is the cement census's
+# row for Leilac-2 at Heidelberg Materials' Hanover works. Leilac announced on 29
+# January 2024 that the project would relocate because Heidelberg was ENDING
+# CLINKER PRODUCTION AT HANOVER, on 4 March 2024 that the new site is Ennigerloh,
+# and on 12 June 2024 a joint venture with Heidelberg for the demonstration plant
+# at Ennigerloh. The row is a works this project left; that is the cement census's
+# question and this pass does not touch projects.json — see the docket, D-22.
+E("calix-leilac", "Heidelberg Materials AG", "technology_licence", "supplier",
+  "supplier_press",
+  LC + "20221028011509id_/https://www.leilac.com/news/global-licence-agreement-"
+       "heidelberg-materials/", "2022-10-28", quantity=None, sector="cement",
+  note="PERPETUAL, GLOBAL AND WITHOUT A SITE: it 'applies to any Heidelberg Materials "
+       "facility where the Leilac decarbonisation technology is installed', across a "
+       "company operating 149 cement plants. Signed, and `framework` on D-14's axis "
+       "because no site and no quantity travel with it. No country is recorded for "
+       "the same reason, so it opens no unmatched customer.",
+  firmness="framework", firmness_basis=
+  "Cement and lime decarbonisation technology company, Leilac, is pleased to announce "
+  "it has signed a perpetual global licence agreement for the use of its "
+  "decarbonisation technology with Heidelberg Materials, one of the world’s largest "
+  "cement producers and building materials companies.")
+E("calix-leilac", "Heidelberg Materials (Leilac-2, Hanover)", "technology_licence",
+  "supplier", "supplier_press",
+  LC + "20221028011509id_/https://www.leilac.com/news/global-licence-agreement-"
+       "heidelberg-materials/", "2022-10-28",
+  quantity=(100000, "tonnes CO2 per year"), country="DE", sector="cement",
+  site="Hanover", project_id="leilac2-hannover",
+  note="THE SAME RELEASE AT THE SITE THE ROW HOLDS. Leilac-2 'due to commence "
+       "construction in 2023, will be located at Heidelberg Materials' plant in "
+       "Hanover' at 100,000 t/yr. The relocation to Ennigerloh comes fifteen months "
+       "later and is the next edge.",
+  firmness="framework", firmness_basis=
+  "Leilac-2, also supported by EU funding and due to commence construction in 2023, "
+  "will be located at Heidelberg Materials’ plant in Hanover, Germany.")
+E("calix-leilac", "Heidelberg Materials (Leilac-2)", "technology_licence", "supplier",
+  "supplier_press",
+  LC + "20240226210623id_/https://www.leilac.com/news/leilac-2-project-relocate-"
+       "heidelberg-materials-end-clinker-production-hanover/", "2024-01-29",
+  quantity=None, country="DE", sector="cement", site="Hanover",
+  project_id="leilac2-hannover",
+  note="THE PROJECT LEAVES THE WORKS THE ROW IS NAMED FOR, and the reason is the "
+       "works: Heidelberg Materials decided to end clinker production at Hanover. "
+       "Recorded against the row because it is a statement about that row's project, "
+       "and it is the strongest thing this sweep has to say to the cement census.",
+  firmness="intent", firmness_basis=
+  "Leilac-2 will move to another Heidelberg Materials’ site following a decision to "
+  "end clinker production at the Hanover cement plant.")
+E("calix-leilac", "Heidelberg Materials (Leilac-2, Ennigerloh)", "technology_licence",
+  "supplier", "supplier_press",
+  LC + "20240618200208id_/https://www.leilac.com/news/leilac-heidelberg-materials-"
+       "agree-joint-venture-leilac-2/", "2024-06-12",
+  quantity=(100000, "tonnes CO2 per year"), country="DE", sector="cement",
+  site="Ennigerloh",
+  note="THE NEW SITE, AND IT IS NOT A ROW. A joint venture for the demonstration "
+       "plant at Ennigerloh: the strongest firmness in this node's file and it "
+       "attaches to a works the register does not hold. Ennigerloh belongs on the "
+       "cement candidate list, which is where this sweep sends it.",
+  refuse_match="THE MATCHER TOOK `Leilac-2` OUT OF THE CUSTOMER STRING and read it as "
+               "the site alias of `leilac2-hannover`, which is the Hanover "
+               "installation. This joint venture is at ENNIGERLOH — the works the "
+               "project moved to when Hanover stopped making clinker — and giving the "
+               "Hanover row a contracted input on it would be rung 6 passing a row on "
+               "a contract signed for somewhere else.",
+  firmness="contract", firmness_basis=
+  "Leilac and Heidelberg Materials have formed a Joint Venture (JV) for the Leilac-2 "
+  "demonstration plant at Heidelberg Materials’ Ennigerloh cement plant in Germany.")
+
+
+# =============================================================================
+# 9B: how deep each new sweep went, and what the doors did
+# =============================================================================
+# Same fields as the block above, and the same rule: `listed` is what the index or
+# the CDX offered, `fetched` is what came back with a body. A node whose `blocked`
+# is not empty could not be swept as intended.
+#
+# NONE OF THE NINE STATES A CAPACITY FOR ITSELF, so none carries a capacity entry.
+# That is the pattern brief 9 found for dri_plant and battery_equipment and it holds
+# across the capture licensors too: a licensor sells a process and an equipment
+# maker sells a line, and the tonnes and the gigawatt-hours in this file belong to
+# their customers' works. The one figure that looks like a node capacity — Capsol's
+# "around 8 million tons of CO2 annually" — is the sum of its own project PIPELINE,
+# which is neither nameplate nor backlog nor a delivery commitment.
+
+_s("carbon-clean", 111, 111, "carbonclean.com/sitemap.xml — 336 locs, 111 under "
+   "/en/press-releases/ and /news/",
+   note="The newsroom index at /insights/tag/news renders its list by script and "
+        "offers a reader nothing; the sitemap holds every release and was walked "
+        "instead.")
+_s("capsol", 111, 106, "capsoltechnologies.com/sitemap.xml",
+   note="Five of the 111 are staff pages that answer 404 — an employee handbook, a "
+        "parking policy. AND ONE SLUG IS CASE-SENSITIVE: "
+        "/capsol-awarded-feasibility-study-from-cement-producer-in-germany serves a "
+        "release about gas turbines, and /Capsol-awarded-… serves the cement one. The "
+        "cement census cites the lower-case form.")
+_s("axens", 237, 237, "axens.net/sitemap.xml — 748 locs, 237 news items",
+   note="THE SITEMAP PRINTS `http://default/` FOR EVERY HOSTNAME and the urls have to "
+        "be rewritten onto the live host before they can be fetched. Four of the 237 "
+        "concern CO2 capture; the rest are refining, petrochemicals and biofuels, "
+        "counted and not recorded (D-4).")
+_s("calix-leilac", 52, 37, "Internet Archive CDX of leilac.com/news and /project",
+   blocked="leilac.com AND calix.global both answer 403 to a full browser header set "
+           "— one refusal serving two names for one business. Every reading is an "
+           "archive capture under D-7.",
+   note="37 of 52 captures retrieved; the index rate-limits and the rest are a "
+        "throttle, not an absence.")
+_s("prinos", 200, 129, "Internet Archive CDX of energean.com/media",
+   blocked="energean.com answers 403 to a declared reader on every media path.",
+   note="THE ARCHIVE HOLDS THE WRONG DECADE. 129 readable captures, and they are a "
+        "media centre and an ESIA library from 2010–2022: the CO2 business (EnEarth, "
+        "the Prinos store) post-dates them. Nineteen captures contain the word "
+        "`cement` and every one of them is well-cementing. ZERO EDGES, and the two "
+        "Greek cement rows that name this store rest on press rather than on the "
+        "operator.")
+_s("yinghe", 311, 311, "yhwins.com/sitemap.xml — 378 locs, 311 under /newsinfo",
+   note="READ IN CHINESE. The English pages are a shorter and later subset and carry "
+        "neither of the two orders recorded here. 221 of the 311 pages print one "
+        "migration date, `时间：2024.10.31`, which is why both readings are dated by "
+        "the copy on file under D-7.")
+_s("lyric-robot", 36, 5, "Internet Archive CDX of lyric-robot.com/newsinfo and /news",
+   blocked="lyric-robot.com answers 200 and renders its news list by script: the "
+           "markup holds the navigation and not one article link, on the Chinese "
+           "site and on en.lyric-robot.com alike.",
+   note="Five captures retrieved of 36 identified. A sample of unknown size and no "
+        "edges; the node is here because the sweep looked, and the file says how far "
+        "it got.")
+_s("grob", 8, 8, "grobgroup.com/en/news-media/newsroom/press-releases/ and /news/",
+   note="THE WHOLE NEWSROOM IS EIGHT ITEMS, all from 2026 and all about a house "
+        "exhibition, machining centres and robot cells. The news sitemap "
+        "(?sitemap=news) redirects to the home page, so there is no walkable archive. "
+        "A European battery-line builder that publishes no customer orders is the "
+        "same finding brief 9 recorded for Manz and Hitachi.")
+
+_st("calix-leilac", refusal_class="403",
+    note="leilac.com and calix.global both 403 a declared reader. Read through the "
+         "Internet Archive throughout, and the node's strongest edge — the Leilac-2 "
+         "joint venture at Ennigerloh — is a capture.")
+_st("prinos", refusal_class="403",
+    note="energean.com 403s a declared reader and the archive holds nothing about the "
+         "CO2 store. The node exists because two cement rows name it and it is here "
+         "with no edges, which is a fact about what the operator publishes.")
+_st("lyric-robot", incomplete=True, refusal_class="script_rendered_index",
+    note="The news list renders by script on both the Chinese and the English site; 5 "
+         "of 36 archive captures retrieved. INCOMPLETE — anybody reading zero edges "
+         "here is reading a sample.")
+_st("grob", refusal_class=None,
+    note="Not a refusal: the site answers everything a reader asks for. There are "
+         "eight items and none of them is a customer.")
+
+TP = ("https://web.archive.org/web/{}id_/https://www.thyssenkrupp-polysius.com/en/"
+      "media/press-detail-page/")
+
+# --- thyssenkrupp Polysius -----------------------------------------------------
+# THE LIVE NEWSROOM IS THREE ITEMS LONG. thyssenkrupp-polysius.com/en/news lists a
+# polycom modernisation, a reclaimer and a portfolio announcement, all from 2026,
+# and has no archive behind it; the CDX of polysius.com returns a TYPO3 newsroom
+# from 2007. What holds this node's European capture work is the /en/media/
+# press-detail-page path, 49 captures of it, and that is what was read.
+E("tk-polysius", "TITAN Group (TITAN Cement)", "framework_agreement", "supplier",
+  "supplier_press",
+  TP.format("20241107232757") + "thyssenkrupp-wins-engineering-contract-for-one-of-"
+  "the-largest-carbon-capture-projects-in-europe-286913", "2024-10-09",
+  quantity=(1900000, "tonnes CO2 per year"), country="GR", sector="cement",
+  site="Kamari",
+  note="THE CENSUS ADMITTED THIS ROW ON A TRADE-PRESS ITEM ABOUT AN INNOVATION FUND "
+       "SELECTION; here is the supplier, the technology and the signature. Two kiln "
+       "lines at Kamari to be equipped with oxyfuel systems, commissioning at the end "
+       "of 2029, 1.9 Mt CO2/yr — which is the PLANT'S capture and is recorded as the "
+       "quantity because the contract is for the plant that captures it. "
+       "FIRMNESS IS `framework` AND THE DOCUMENT SAYS 'contract', deliberately and "
+       "consistently with e0168 and e0172: what is signed is a FEED, which is design "
+       "and not supply, and brief 9 read MHI's Padeswood FEED the same way. The "
+       "reader verdicts; the axis does not flatter the word.",
+  firmness="framework", firmness_basis=
+  "thyssenkrupp and TITAN Group signed in the Greek capital Athens a Front-End "
+  "Engineering Design (FEED) contract for the Carbon Capture Project IFESTOS.")
+E("tk-polysius", "Ciments Calcia S.A (HeidelbergCement Group)", "equipment_order",
+  "supplier", "supplier_press",
+  TP.format("20221130131217") + "heidelbergcement-entrusts-thyssenkurpp-with-the-"
+  "modernization-of-its-airvault-cement-plant-in-fracne-135481", "2021-12-03",
+  quantity=(4000, "tonnes clinker per day"), country="FR", sector="cement",
+  site="Airvault",
+  note="A REAL ORDER AT A WORKS THIS REGISTER HOLDS, AND IT IS NOT THAT ROW'S INPUT. "
+       "The contract value is undisclosed and the line is a turnkey kiln line "
+       "replacing two existing ones.",
+  refuse_match="`airvault-goco2` is the CAPTURE project on the Airvault works — the "
+               "GOCO2 chain — and this order is the works' new kiln line. The row's "
+               "own note already says the only technology sentence on its source is "
+               "'a new dry kiln line with a pre-calciner, which is the works' "
+               "modernisation and not its capture unit'. Matching a kiln order to a "
+               "capture row would give rung 6 a contracted input the project has not "
+               "got.",
+  firmness="contract", firmness_basis=
+  "The business unit Cement Technologies of thyssenkrupp has received an order from "
+  "Ciments Calcia S.A, subsidiary of HeidelbergCement Group, for the construction of "
+  "a turnkey cement production line.")
+_s("tk-polysius", 257, 37, "thyssenkrupp-polysius.com/en/news live (6 items), plus "
+   "Internet Archive CDX of polysius.com (201 captures) and of "
+   "thyssenkrupp-polysius.com/en/media (50)",
+   blocked="Not a door that refuses: a newsroom with no archive behind it. The live "
+           "/en/news lists three releases, all from 2026, and ?page=2 serves the same "
+           "page. Everything older is in the Internet Archive or nowhere.",
+   note="THE OLD HOST IS THE WRONG DECADE. The 201 polysius.com captures are a TYPO3 "
+        "newsroom from 2007 and 5 of them came back; the 50 captures of the modern "
+        "/en/media/press-detail-page path are the ones that hold this node's European "
+        "capture work, and 26 of those were retrieved. Both figures are a throttle "
+        "and not an absence.")
+_st("tk-polysius", incomplete=True, refusal_class=None,
+    note="INCOMPLETE. The supplier publishes a three-item newsroom and keeps no "
+         "archive; 37 captures of two hosts is what the Internet Archive would give "
+         "up in this run. The IFESTOS FEED and the Airvault kiln order were both "
+         "found there, which is the measure of what a fuller run might still hold.")

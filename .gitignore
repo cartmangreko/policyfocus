@@ -67,6 +67,10 @@ sources/cache/hydrogen/*
 # suppliers' press pages are their copy, not this repository's to redistribute.
 sources/dependency_cache/*
 !sources/dependency_cache/index.json
+# And the re-read register beside it (brief 9b): where this machine holds a LATER
+# copy of a page than the one index.json records, that fact is the record and is
+# committed. The bodies it names are not, for the same licensing reason as above.
+!sources/dependency_cache/reread.json
 
 # The batteries census inputs and its fetch cache. NOT COMMITTED: T&E licences its
 # graphs CC BY-NC-ND 4.0 and Battery-News.de permits copies for private,

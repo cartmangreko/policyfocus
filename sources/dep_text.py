@@ -50,8 +50,24 @@ def pdf_text(raw: bytes) -> str:
         import pymupdf
     except ImportError:
         return ""
-    with pymupdf.open(stream=raw, filetype="pdf") as doc:
-        return "\n".join(page.get_text() for page in doc)
+    # AND IT WRITES ITS COMPLAINTS TO STDOUT TOO. A truncated capture makes MuPDF
+    # print "format error: object is not a stream" — from C, on file descriptor 1,
+    # where a shell redirect of stderr cannot catch it and where it lands in the
+    # middle of whatever this module's caller was printing. Silenced at the source.
+    try:
+        pymupdf.TOOLS.mupdf_display_errors(False)
+    except Exception:                                          # noqa: BLE001
+        pass
+    # AND A BROKEN PDF IS A PAGE WITH NO TEXT, NOT A CRASHED PASS. An Internet
+    # Archive capture of a media centre served a truncated PDF — "object is not a
+    # stream" — and the exception took the whole digest of two hundred captures with
+    # it. A document this reader cannot open is a document this reader cannot open,
+    # which is the same answer as an empty body and is what the sweep records.
+    try:
+        with pymupdf.open(stream=raw, filetype="pdf") as doc:
+            return "\n".join(page.get_text() for page in doc)
+    except Exception:                                          # noqa: BLE001
+        return ""
 
 
 def links(raw: bytes, base: str) -> list[tuple[str, str]]:
@@ -72,8 +88,29 @@ def sitemap_urls(raw: bytes) -> list[str]:
             for m in re.finditer(r"<loc>(.*?)</loc>", s, re.S | re.I)]
 
 
+REREAD = CACHE / "reread.json"
+
+
 def index() -> dict:
     return json.loads(INDEX.read_text()) if INDEX.exists() else {}
+
+
+def rereads() -> dict:
+    """Pages this machine holds a LATER copy of than the one index.json records.
+
+    Written by dep_restore.py. A re-read is a second statement about one address:
+    the publisher's page as it is now, beside the artefact a brief-9 reading was
+    made against. Kept apart rather than merged, because which copy a sentence was
+    read from is the whole of whether the citation gate may rule on it.
+    """
+    return json.loads(REREAD.read_text())["pages"] if REREAD.exists() else {}
+
+
+def original(url: str) -> bool:
+    """Is the body this machine would hand back THE artefact the index records?"""
+    import hashlib
+    e = index().get(hashlib.sha1(url.encode()).hexdigest()[:16])
+    return bool(e and e.get("file") and (CACHE / e["file"]).exists())
 
 
 def body(url: str) -> bytes | None:
@@ -81,7 +118,24 @@ def body(url: str) -> bytes | None:
     e = index().get(hashlib.sha1(url.encode()).hexdigest()[:16])
     if not e or not e.get("file"):
         return None
-    raw = (CACHE / e["file"]).read_bytes()
+    f = CACHE / e["file"]
+    if not f.exists():
+        # A LATER COPY IS BETTER THAN NO COPY FOR READING, and worse than none for
+        # citing. dep_restore.py files it separately for exactly that reason, and
+        # `original()` is what anything ruling on a sentence asks first.
+        rr = rereads().get(hashlib.sha1(url.encode()).hexdigest()[:16])
+        if rr and (CACHE / rr["file"]).exists():
+            raw = (CACHE / rr["file"]).read_bytes()
+            return gzip.decompress(raw) if rr["file"].endswith(".gz") else raw
+    # THE INDEX IS COMMITTED AND THE BODIES ARE NOT (D-9), so on a fresh clone every
+    # entry here names a file that is not on the machine. This raised
+    # FileNotFoundError and took `dep_records.py --check` with it — the citation gate
+    # documents itself as SKIPPED where the body is absent, and it could not reach
+    # that branch because the read crashed first. A body this machine does not hold
+    # is a body this machine does not hold: same answer as an unknown url.
+    if not f.exists():
+        return None
+    raw = f.read_bytes()
     return gzip.decompress(raw) if e["file"].endswith(".gz") else raw
 
 
