@@ -72,6 +72,22 @@ NAMES: dict[str, str] = {
     "ravenna-ccs": r"Ravenna CCS",
     "endurance-nep": r"Northern Endurance|\bEndurance\b(?= store| reservoir| partnership)|"
                      r"Net Zero Teesside",
+    # BRIEF 9B. Same discipline as above: anchored, and generous only where the
+    # supplier's own name is generous. `Leilac` and `Calix` are one node and two
+    # names — the technology is written LEILAC in the census and Leilac by the
+    # company. `Polysius` carries thyssenkrupp's product name `PureOxyfuel`
+    # because a cement row names the technology where it does not name the
+    # vendor. `Axens` takes `DMX` for the same reason and `IFPEN` because the
+    # process is published in both names.
+    "carbon-clean": r"Carbon Clean|CycloneCC|CaptureX",
+    "calix-leilac": r"\bLeilac\b|\bLEILAC\b|\bCalix\b",
+    "tk-polysius": r"\bPolysius\b|PureOxyfuel|pure oxyfuel",
+    "capsol": r"\bCapsol\b|CapsolGo|CapsolEoP",
+    "axens": r"\bAxens\b|\bIFPEN\b|IFP Energies nouvelles|\bDMX\b",
+    "prinos": r"\bPrinos\b|\bEnergean\b",
+    "yinghe": r"Yinghe|\u8d62\u5408\u79d1\u6280",
+    "lyric-robot": r"Lyric Robot|\u5229\u5143\u4ea8",
+    "grob": r"GROB-WERKE|\bGROB\b(?= Group|-WERKE|,)",
 }
 COMPILED = {k: re.compile(v) for k, v in NAMES.items()}
 

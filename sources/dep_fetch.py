@@ -58,6 +58,11 @@ EXT = {"text/html": ".html", "application/xhtml+xml": ".html",
        "application/json": ".json"}
 
 
+# Keys this process has written. See save(): a merge that writes back everything the
+# process once read is a merge that overwrites a concurrent writer's work.
+TOUCHED: set[str] = set()
+
+
 def load() -> dict:
     if INDEX.exists():
         return json.loads(INDEX.read_text())
@@ -95,7 +100,16 @@ def save(idx: dict) -> None:
         merged = {}
         if INDEX.exists():
             merged.update(json.loads(INDEX.read_text()))
-        merged.update(idx)
+        # ONLY THE KEYS THIS PROCESS ACTUALLY TOUCHED, and that word is load-bearing.
+        # The merge used to be `merged.update(idx)`, and `idx` is every entry this
+        # process READ AT START as well as the few it wrote — so a long-running sweep
+        # wrote its own start-of-run snapshot over everything another sweep had
+        # recorded in the meantime. It is the same lost write the lock was added to
+        # prevent, one level up: the lock stopped two writers interleaving and did
+        # nothing about one writer carrying stale copies of the other's rows. Caught
+        # on 20 September 2026 when a capture fetched successfully three times in a
+        # row came back from the index as a connection failure.
+        merged.update({k: idx[k] for k in TOUCHED if k in idx})
         tmp = CACHE / ".index.tmp"
         tmp.write_text(json.dumps(merged, indent=1, sort_keys=True,
                                   ensure_ascii=False) + "\n")
@@ -106,8 +120,19 @@ def save(idx: dict) -> None:
 
 
 def orphans() -> list[str]:
-    """Body files with no index entry — what a lost write leaves behind."""
+    """Body files with no index entry — what a lost write leaves behind.
+
+    A `.reread` body is not an orphan: dep_restore.py files it deliberately outside
+    index.json, in reread.json, because it is a LATER copy of a page the index
+    already has an older statement about. Counting those here would report 339
+    orphans on a machine whose cache is in perfect order.
+    """
     known = {e["file"] for e in load().values() if e.get("file")}
+    try:
+        known |= {e["file"] for e in
+                  json.loads((CACHE / "reread.json").read_text())["pages"].values()}
+    except (OSError, ValueError, KeyError):
+        pass
     return sorted(p.name for p in CACHE.glob("*.gz") if p.name not in known)
 
 
@@ -159,6 +184,7 @@ def fetch(url: str, idx: dict, force: bool = False) -> dict:
     if tmp.exists():
         tmp.unlink()
     idx[k] = entry
+    TOUCHED.add(k)
     return entry
 
 

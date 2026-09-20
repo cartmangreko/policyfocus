@@ -28,7 +28,11 @@ PROJECTS = ROOT / "data" / "transition" / "projects.json"
 # The brief's period: 1 January 2020 to today. The end is the last day the sweep
 # fetched anything, not a round number, so a reading dated after it is a reading
 # from a page that did not exist when the sweep ran.
-PERIOD = ("2020-01-01", "2026-09-11")
+# BRIEF 9B EXTENDS THE END AND NOTHING ELSE. Brief 9 fetched its last page on
+# 11 September 2026 and the period ended there; this pass fetched its last on
+# 20 September 2026. The start is the brief's and does not move, and no existing
+# edge changes: an end that moves forward can only admit readings nobody had yet.
+PERIOD = ("2020-01-01", "2026-09-20")
 
 # --- the perimeter -----------------------------------------------------------
 # node_id, kind, name, home page, listing. `listing` is the supplier's own equity
@@ -87,6 +91,51 @@ NODES = [
     ("endurance-nep", "co2_storage_or_transport",
      "Northern Endurance Partnership / Endurance store", "https://www.netzeroteesside.co.uk",
      "unlisted"),
+
+    # --- BRIEF 9B: THE SUPPLIER SIDE OF BATTERIES, CEMENT AND STEEL ------------
+    # Brief 9 was built around electrolyser makers and reached eight cement rows
+    # and three storage rows. These nine are the suppliers the other three
+    # censuses NAME, and each one is here because a row or the IEA CCUS file
+    # names it, not because a market report lists it — DECISION D-19.
+    #
+    # THE FIVE CAPTURE FAMILIES THE BRIEF ASKS FOR, and which node holds each:
+    # amine/solvent (carbon-clean, and mhi, shell-cansolv, slb-capturi already
+    # here), oxyfuel (tk-polysius), cryogenic (axens's DMX, and linde's HISORP
+    # and air-liquide's Cryocap already here), direct separation (calix-leilac),
+    # hot potassium carbonate (capsol). CALCIUM LOOPING HAS NO NODE AND THAT IS
+    # A FINDING: no cement row and no entry in the IEA CCUS file names a calcium
+    # looping licensor for a European works — see the docket, D-20.
+    ("carbon-clean", "capture_technology", "Carbon Clean Solutions Limited",
+     "https://www.carbonclean.com", "unlisted"),
+    ("calix-leilac", "capture_technology", "Leilac Group Ltd (Calix Limited)",
+     "https://www.leilac.com", "listed"),
+    ("tk-polysius", "capture_technology", "thyssenkrupp Polysius GmbH",
+     "https://www.thyssenkrupp-polysius.com", "unlisted"),
+    ("capsol", "capture_technology", "Capsol Technologies ASA",
+     "https://www.capsoltechnologies.com", "listed"),
+    ("axens", "capture_technology", "Axens SA", "https://www.axens.net", "unlisted"),
+
+    # A STORE TWO CEMENT ROWS NAME AND THE PERIMETER DID NOT HOLD. `ifestos-kamari`
+    # and `olympus-milaki` both send their CO2 to Prinos, off Kavala, which
+    # Energean operates. The brief says the storage operators already exist as
+    # nodes; these two rows say one of them did not — D-21.
+    ("prinos", "co2_storage_or_transport", "Prinos CO2 storage (Energean plc)",
+     "https://www.energean.com", "listed"),
+
+    # NOT ONE BATTERY ROW NAMES ITS EQUIPMENT SUPPLIER — brief 9 found that from
+    # the owner side and this pass found it again over 33 rows. So the battery
+    # nodes cannot be drawn from the register's own text the way the cement ones
+    # are, and they are drawn instead from the makers who publish cell-line
+    # orders at all. THE LANGUAGE IS THE SUPPLIER'S: yhwins.com and
+    # lyric-robot.com publish in Chinese and their English pages are a subset.
+    ("yinghe", "battery_equipment",
+     "Shenzhen Yinghe Technology Co., Ltd. (\u8d62\u5408\u79d1\u6280)",
+     "https://www.yhwins.com", "listed"),
+    ("lyric-robot", "battery_equipment",
+     "Guangdong Lyric Robot Automation Co., Ltd. (\u5229\u5143\u4ea8)",
+     "https://www.lyric-robot.com", "listed"),
+    ("grob", "battery_equipment", "GROB-WERKE GmbH & Co. KG",
+     "https://www.grobgroup.com", "unlisted"),
 ]
 
 KINDS = sorted({k for _, k, _, _, _ in NODES})
@@ -142,13 +191,52 @@ def strip(s: str) -> str:
     return "".join(c for c in s if not unicodedata.combining(c))
 
 
+# TWO SPELLINGS OF ONE GERMAN TOWN, AND THE SWEEP MATCHED NEITHER TO THE OTHER.
+# `data/transition/projects.json` writes CEMEX's works as "Ruedersdorf" and Carbon
+# Clean writes it "Rüdersdorf". Stripping the diacritic gives `rudersdorf`; the
+# register's own transliteration gives `ruedersdorf`; and the matcher compared them
+# and found no customer at a plant whose whole newsroom is about it. The same crack
+# runs under Lägerdorf/Laegerdorf, Höver/Hoever and every ß in the file.
+#
+# SO ONE FOLD IS APPLIED TO BOTH SIDES: umlaut or digraph, it lands on the bare
+# vowel. It is applied to the register's alias and to the supplier's page alike, so
+# it cannot make one of them right and the other wrong, and it widens nothing a
+# reader would not accept — "Duesseldorf", "Düsseldorf" and "Dusseldorf" are one
+# town whichever keyboard typed them.
+FOLD = [("\u00df", "ss"), ("ue", "u"), ("oe", "o"), ("ae", "a"), ("ss", "s")]
+
+
 def norm(s: str) -> str:
-    return re.sub(r"[^a-z0-9]+", " ", strip(s).lower()).strip()
+    s = strip(s).lower()
+    for a, b in FOLD:
+        s = s.replace(a, b)
+    return re.sub(r"[^a-z0-9]+", " ", s).strip()
 
 
 def register_rows() -> list[dict]:
     P = json.loads(PROJECTS.read_text())["projects"]
     return [p for p in P if p["sector"] in OWNER_SECTORS]
+
+
+# A COUNTRY IS NOT A SITE, AND TWO ROWS HAVE A COUNTRY IN THE SITE FIELD. The Natran
+# CO2 backbone's `plant` is "France" and the German Carbon Transport Grid's name carries
+# "Germany", because both rows are national pipelines and that is honestly what they
+# are. As site aliases they matched every release that mentioned either country:
+# ITM Power's undisclosed "100MW project in Germany" became the German grid, and Air
+# Liquide's Cryocap on a lime plant at Réty became a piece of Natran's pipeline. Both
+# were caught by hand and both would have come back on the next re-run.
+#
+# So a country name is not admitted as a SITE alias. It stays admissible as part of a
+# longer one — "German Carbon Transport Grid" is still an alias of the row it names.
+COUNTRY_ALIASES = {
+    "france", "germany", "italy", "spain", "poland", "netherlands", "belgium",
+    "sweden", "norway", "finland", "denmark", "austria", "portugal", "greece",
+    "ireland", "romania", "bulgaria", "croatia", "slovakia", "slovenia", "hungary",
+    "czechia", "czech republic", "estonia", "latvia", "lithuania", "luxembourg",
+    "malta", "cyprus", "iceland", "switzerland", "united kingdom", "great britain",
+    "england", "scotland", "wales", "ukraine", "serbia", "bosnia", "montenegro",
+    "north macedonia", "albania", "kosovo", "europe",
+}
 
 
 def aliases(row: dict) -> dict[str, str]:
@@ -180,6 +268,8 @@ def aliases(row: dict) -> dict[str, str]:
 
     def add(text: str, kind: str) -> None:
         a = norm(text)
+        if kind == "site" and a in COUNTRY_ALIASES:
+            return
         if len(a) > 3 and (a not in out or kind == "site"):
             out[a] = kind
 

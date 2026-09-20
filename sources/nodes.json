@@ -1234,6 +1234,202 @@
     "blocked": null,
     "note": "Shared newsroom with NZT Power. Contractor awards and supply-chain news; no emitter contract with a tonnage anywhere in it."
    }
+  },
+  {
+   "id": "carbon-clean",
+   "kind": "capture_technology",
+   "name": "Carbon Clean Solutions Limited",
+   "listing": "unlisted",
+   "home": "https://www.carbonclean.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": null,
+   "sweep": {
+    "listed": 111,
+    "fetched": 111,
+    "index": "carbonclean.com/sitemap.xml — 336 locs, 111 under /en/press-releases/ and /news/",
+    "blocked": null,
+    "note": "The newsroom index at /insights/tag/news renders its list by script and offers a reader nothing; the sitemap holds every release and was walked instead."
+   }
+  },
+  {
+   "id": "calix-leilac",
+   "kind": "capture_technology",
+   "name": "Leilac Group Ltd (Calix Limited)",
+   "listing": "listed",
+   "home": "https://www.leilac.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": {
+    "incomplete": false,
+    "manual_queue": null,
+    "refusal_class": "403",
+    "note": "leilac.com and calix.global both 403 a declared reader. Read through the Internet Archive throughout, and the node's strongest edge — the Leilac-2 joint venture at Ennigerloh — is a capture."
+   },
+   "sweep": {
+    "listed": 52,
+    "fetched": 37,
+    "index": "Internet Archive CDX of leilac.com/news and /project",
+    "blocked": "leilac.com AND calix.global both answer 403 to a full browser header set — one refusal serving two names for one business. Every reading is an archive capture under D-7.",
+    "note": "37 of 52 captures retrieved; the index rate-limits and the rest are a throttle, not an absence."
+   }
+  },
+  {
+   "id": "tk-polysius",
+   "kind": "capture_technology",
+   "name": "thyssenkrupp Polysius GmbH",
+   "listing": "unlisted",
+   "home": "https://www.thyssenkrupp-polysius.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": {
+    "incomplete": true,
+    "manual_queue": null,
+    "refusal_class": null,
+    "note": "INCOMPLETE. The supplier publishes a three-item newsroom and keeps no archive; 37 captures of two hosts is what the Internet Archive would give up in this run. The IFESTOS FEED and the Airvault kiln order were both found there, which is the measure of what a fuller run might still hold."
+   },
+   "sweep": {
+    "listed": 257,
+    "fetched": 37,
+    "index": "thyssenkrupp-polysius.com/en/news live (6 items), plus Internet Archive CDX of polysius.com (201 captures) and of thyssenkrupp-polysius.com/en/media (50)",
+    "blocked": "Not a door that refuses: a newsroom with no archive behind it. The live /en/news lists three releases, all from 2026, and ?page=2 serves the same page. Everything older is in the Internet Archive or nowhere.",
+    "note": "THE OLD HOST IS THE WRONG DECADE. The 201 polysius.com captures are a TYPO3 newsroom from 2007 and 5 of them came back; the 50 captures of the modern /en/media/press-detail-page path are the ones that hold this node's European capture work, and 26 of those were retrieved. Both figures are a throttle and not an absence."
+   }
+  },
+  {
+   "id": "capsol",
+   "kind": "capture_technology",
+   "name": "Capsol Technologies ASA",
+   "listing": "listed",
+   "home": "https://www.capsoltechnologies.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": null,
+   "sweep": {
+    "listed": 111,
+    "fetched": 106,
+    "index": "capsoltechnologies.com/sitemap.xml",
+    "blocked": null,
+    "note": "Five of the 111 are staff pages that answer 404 — an employee handbook, a parking policy. AND ONE SLUG IS CASE-SENSITIVE: /capsol-awarded-feasibility-study-from-cement-producer-in-germany serves a release about gas turbines, and /Capsol-awarded-… serves the cement one. The cement census cites the lower-case form."
+   }
+  },
+  {
+   "id": "axens",
+   "kind": "capture_technology",
+   "name": "Axens SA",
+   "listing": "unlisted",
+   "home": "https://www.axens.net",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": null,
+   "sweep": {
+    "listed": 237,
+    "fetched": 237,
+    "index": "axens.net/sitemap.xml — 748 locs, 237 news items",
+    "blocked": null,
+    "note": "THE SITEMAP PRINTS `http://default/` FOR EVERY HOSTNAME and the urls have to be rewritten onto the live host before they can be fetched. Four of the 237 concern CO2 capture; the rest are refining, petrochemicals and biofuels, counted and not recorded (D-4)."
+   }
+  },
+  {
+   "id": "prinos",
+   "kind": "co2_storage_or_transport",
+   "name": "Prinos CO2 storage (Energean plc)",
+   "listing": "listed",
+   "home": "https://www.energean.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": {
+    "incomplete": false,
+    "manual_queue": null,
+    "refusal_class": "403",
+    "note": "energean.com 403s a declared reader and the archive holds nothing about the CO2 store. The node exists because two cement rows name it and it is here with no edges, which is a fact about what the operator publishes."
+   },
+   "sweep": {
+    "listed": 200,
+    "fetched": 129,
+    "index": "Internet Archive CDX of energean.com/media",
+    "blocked": "energean.com answers 403 to a declared reader on every media path.",
+    "note": "THE ARCHIVE HOLDS THE WRONG DECADE. 129 readable captures, and they are a media centre and an ESIA library from 2010–2022: the CO2 business (EnEarth, the Prinos store) post-dates them. Nineteen captures contain the word `cement` and every one of them is well-cementing. ZERO EDGES, and the two Greek cement rows that name this store rest on press rather than on the operator."
+   }
+  },
+  {
+   "id": "yinghe",
+   "kind": "battery_equipment",
+   "name": "Shenzhen Yinghe Technology Co., Ltd. (赢合科技)",
+   "listing": "listed",
+   "home": "https://www.yhwins.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": null,
+   "sweep": {
+    "listed": 311,
+    "fetched": 311,
+    "index": "yhwins.com/sitemap.xml — 378 locs, 311 under /newsinfo",
+    "blocked": null,
+    "note": "READ IN CHINESE. The English pages are a shorter and later subset and carry neither of the two orders recorded here. 221 of the 311 pages print one migration date, `时间：2024.10.31`, which is why both readings are dated by the copy on file under D-7."
+   }
+  },
+  {
+   "id": "lyric-robot",
+   "kind": "battery_equipment",
+   "name": "Guangdong Lyric Robot Automation Co., Ltd. (利元亨)",
+   "listing": "listed",
+   "home": "https://www.lyric-robot.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": {
+    "incomplete": true,
+    "manual_queue": null,
+    "refusal_class": "script_rendered_index",
+    "note": "The news list renders by script on both the Chinese and the English site; 5 of 36 archive captures retrieved. INCOMPLETE — anybody reading zero edges here is reading a sample."
+   },
+   "sweep": {
+    "listed": 36,
+    "fetched": 5,
+    "index": "Internet Archive CDX of lyric-robot.com/newsinfo and /news",
+    "blocked": "lyric-robot.com answers 200 and renders its news list by script: the markup holds the navigation and not one article link, on the Chinese site and on en.lyric-robot.com alike.",
+    "note": "Five captures retrieved of 36 identified. A sample of unknown size and no edges; the node is here because the sweep looked, and the file says how far it got."
+   }
+  },
+  {
+   "id": "grob",
+   "kind": "battery_equipment",
+   "name": "GROB-WERKE GmbH & Co. KG",
+   "listing": "unlisted",
+   "home": "https://www.grobgroup.com",
+   "stated_capacity": [],
+   "status_history": [],
+   "disagreements": [],
+   "comparison": null,
+   "state": {
+    "incomplete": false,
+    "manual_queue": null,
+    "refusal_class": null,
+    "note": "Not a refusal: the site answers everything a reader asks for. There are eight items and none of them is a customer."
+   },
+   "sweep": {
+    "listed": 8,
+    "fetched": 8,
+    "index": "grobgroup.com/en/news-media/newsroom/press-releases/ and /news/",
+    "blocked": null,
+    "note": "THE WHOLE NEWSROOM IS EIGHT ITEMS, all from 2026 and all about a house exhibition, machining centres and robot cells. The news sitemap (?sitemap=news) redirects to the home page, so there is no walkable archive. A European battery-line builder that publishes no customer orders is the same finding brief 9 recorded for Manz and Hitachi."
+   }
   }
  ]
 }

@@ -160,9 +160,10 @@
     "0": 21,
     "1": 5,
     "2": 9,
-    "3": 15,
-    "4": 5,
-    "5": 2
+    "3": 14,
+    "4": 6,
+    "5": 1,
+    "6": 1
    },
    "per_rung": {
     "site": {
@@ -201,19 +202,21 @@
      "pass_rate_of_scored": 0.175
     },
     "input": {
-     "pass": 0,
-     "fail": 32,
-     "not_searched": 25,
+     "pass": 2,
+     "fail": 31,
+     "not_searched": 24,
      "unread": 0,
-     "pass_rate_of_scored": 0.0
+     "pass_rate_of_scored": 0.035
     }
    },
    "rung4_pass_by_register_class": {
     "held": 6
    },
-   "rung6_pass_by_register_class": {},
+   "rung6_pass_by_register_class": {
+    "held": 2
+   },
    "rung6_provisional": 33,
-   "rung6_not_searched": 25,
+   "rung6_not_searched": 24,
    "per_rung_amended": {
     "site": {
      "pass": 34
@@ -231,7 +234,7 @@
      "pass": 10
     },
     "input": {
-     "pass": 0
+     "pass": 2
     }
    },
    "medium_of_passing_cells": {
@@ -251,7 +254,9 @@
     "start": {
      "owner": 10
     },
-    "input": {}
+    "input": {
+     "owner": 2
+    }
    },
    "outcome_class_amended": {
     "press only": 1
@@ -285,9 +290,9 @@
    "scored_entries_by_rungs_cleared": {
     "0": 4,
     "1": 12,
-    "2": 11,
+    "2": 10,
     "3": 10,
-    "4": 3,
+    "4": 4,
     "5": 2
    },
    "per_rung": {
@@ -327,11 +332,11 @@
      "pass_rate_of_scored": 0.095
     },
     "input": {
-     "pass": 2,
-     "fail": 6,
-     "not_searched": 34,
+     "pass": 4,
+     "fail": 30,
+     "not_searched": 8,
      "unread": 0,
-     "pass_rate_of_scored": 0.048
+     "pass_rate_of_scored": 0.095
     }
    },
    "rung4_pass_by_register_class": {
@@ -339,10 +344,11 @@
     "admitted": 11
    },
    "rung6_pass_by_register_class": {
-    "held": 2
+    "held": 2,
+    "admitted": 2
    },
    "rung6_provisional": 34,
-   "rung6_not_searched": 34,
+   "rung6_not_searched": 8,
    "per_rung_amended": {
     "site": {
      "pass": 38
@@ -360,7 +366,7 @@
      "pass": 4
     },
     "input": {
-     "pass": 2
+     "pass": 4
     }
    },
    "medium_of_passing_cells": {
@@ -380,7 +386,7 @@
      "owner": 4
     },
     "input": {
-     "owner": 2
+     "owner": 4
     }
    },
    "outcome_class_amended": {},
@@ -412,8 +418,8 @@
    "benchmark_aggregates": 0,
    "scored_entries_by_rungs_cleared": {
     "0": 21,
-    "1": 70,
-    "2": 10,
+    "1": 69,
+    "2": 11,
     "3": 1
    },
    "per_rung": {
@@ -453,20 +459,22 @@
      "pass_rate_of_scored": 0.0
     },
     "input": {
-     "pass": 0,
-     "fail": 5,
-     "not_searched": 97,
+     "pass": 1,
+     "fail": 62,
+     "not_searched": 39,
      "unread": 0,
-     "pass_rate_of_scored": 0.0
+     "pass_rate_of_scored": 0.01
     }
    },
    "rung4_pass_by_register_class": {
     "admitted": 3,
     "named not admitted": 1
    },
-   "rung6_pass_by_register_class": {},
+   "rung6_pass_by_register_class": {
+    "admitted": 1
+   },
    "rung6_provisional": 63,
-   "rung6_not_searched": 97,
+   "rung6_not_searched": 39,
    "per_rung_amended": {
     "site": {
      "pass": 78
@@ -484,7 +492,7 @@
      "pass": 0
     },
     "input": {
-     "pass": 0
+     "pass": 1
     }
    },
    "medium_of_passing_cells": {
@@ -503,7 +511,9 @@
      "funder": 4
     },
     "start": {},
-    "input": {}
+    "input": {
+     "owner": 1
+    }
    },
    "outcome_class_amended": {
     "press only": 3
@@ -540,8 +550,8 @@
    "scored_entries_by_rungs_cleared": {
     "0": 13,
     "1": 13,
-    "2": 16,
-    "3": 2,
+    "2": 15,
+    "3": 3,
     "4": 1,
     "5": 4
    },
@@ -582,11 +592,11 @@
      "pass_rate_of_scored": 0.082
     },
     "input": {
-     "pass": 5,
-     "fail": 4,
-     "not_searched": 40,
+     "pass": 6,
+     "fail": 23,
+     "not_searched": 20,
      "unread": 0,
-     "pass_rate_of_scored": 0.102
+     "pass_rate_of_scored": 0.122
     }
    },
    "rung4_pass_by_register_class": {
@@ -594,10 +604,11 @@
     "held": 1
    },
    "rung6_pass_by_register_class": {
+    "admitted": 1,
     "held": 5
    },
    "rung6_provisional": 29,
-   "rung6_not_searched": 40,
+   "rung6_not_searched": 20,
    "per_rung_amended": {
     "site": {
      "pass": 34
@@ -615,7 +626,7 @@
      "pass": 4
     },
     "input": {
-     "pass": 5
+     "pass": 6
     }
    },
    "medium_of_passing_cells": {
@@ -637,7 +648,7 @@
      "owner": 4
     },
     "input": {
-     "owner": 5
+     "owner": 6
     }
    },
    "outcome_class_amended": {
@@ -758,15 +769,15 @@
      "of_scored": 171
     },
     "batteries": {
-     "pass": 0,
+     "pass": 2,
      "of_scored": 57
     },
     "cement": {
-     "pass": 2,
+     "pass": 4,
      "of_scored": 42
     },
     "steel": {
-     "pass": 5,
+     "pass": 6,
      "of_scored": 49
     }
    }
@@ -833,9 +844,9 @@
      "pass_rate_of_scored": 0.103
     },
     "input": {
-     "pass": 14,
+     "pass": 19,
      "of_scored": 319,
-     "pass_rate_of_scored": 0.044
+     "pass_rate_of_scored": 0.06
     }
    }
   },
@@ -872,9 +883,9 @@
      "pass_rate_of_scored": 0.0
     },
     "input": {
-     "pass": 0,
+     "pass": 1,
      "of_scored": 102,
-     "pass_rate_of_scored": 0.0
+     "pass_rate_of_scored": 0.01
     }
    }
   }

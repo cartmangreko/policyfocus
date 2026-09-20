@@ -730,3 +730,201 @@ George authorised was not needed (D-18).
    one number. Nothing was bent to fit a count. **George confirmed all three as his
    own errors on 11 September 2026; these numbers stand**, and they are recomputed
    on every build rather than repeated from here.
+
+---
+
+# Brief 9b — the supplier side of batteries, cement and steel
+
+Everything above is brief 9 and is unchanged. This section is the pass of 20
+September 2026, which extends the same perimeter, the same fields and the same
+procedure to the three censuses brief 9 reached only in passing: it read eight
+cement rows and three storage rows on the way to the electrolyser makers, and the
+register now holds 34 cement, 28 steel and 33 battery rows.
+
+## 7. What 9b swept
+
+**Nine nodes, 37 in all.** Five capture licensors, one store and three battery
+equipment makers. Every one is here because a register row or the IEA CCUS file
+names it — see D-19 — and the sweep depth of each is in `nodes.json`.
+
+| Node | Kind | Why it is on the perimeter |
+|---|---|---|
+| carbon-clean | capture_technology | CycloneCC at CEMEX Rüdersdorf; named by two cement rows and by the IEA file |
+| calix-leilac | capture_technology | LEILAC direct separation; named by `leilac2-hannover` and by the IEA file |
+| tk-polysius | capture_technology | "Polysius PureOxyfuel technology developed by thyssenkrupp", named by `co2ntessa-nasice` |
+| capsol | capture_technology | CapsolGo HPC at Brocēni; named by `broceni-ccs` and by the IEA file |
+| axens | capture_technology | the DMX process of `3d-dunkirk`, named as Axens and as IFPEN |
+| prinos | co2_storage_or_transport | the store `ifestos-kamari` and `olympus-milaki` name, and the only one the brief's "storage operators already exist" did not cover |
+| yinghe | battery_equipment | publishes European cell-line orders, in Chinese |
+| lyric-robot | battery_equipment | the same, and could not be read |
+| grob | battery_equipment | a European battery-line builder, for contrast, and it publishes no customers |
+
+**The five capture families the brief names, and where each one landed.** Amine and
+solvent: carbon-clean, beside mhi, shell-cansolv and slb-capturi from brief 9.
+Oxyfuel: tk-polysius. Cryogenic: axens's DMX, beside linde's HISORP and air-liquide's
+Cryocap. Direct separation: calix-leilac. Hot potassium carbonate: capsol.
+**Calcium looping has no node and that is the finding** — no cement row and no entry
+in the IEA CCUS file names a calcium looping licensor for a European works (D-20).
+
+**Nothing new states a capacity for itself.** Twelve nodes of 37 state one, the same
+twelve as before. A licensor sells a process and an equipment maker sells a line;
+the tonnes and the gigawatt-hours in this file belong to their customers' works.
+
+## 8. What 9b found
+
+**25 edges, 17 of them matched to a register row.** Eight `contract`, twelve
+`framework`, five `intent`; twenty in the supplier's voice and five in the owner's.
+By sector: cement 21, batteries 2, steel 2.
+
+**The owner side is now all 205 rows, and 33 of them name a supplier** — against
+brief 9's 117 rows and 12. Cement 14, clean 9, steel 6, ccs 4, **batteries none**.
+Not one of 33 battery rows names its equipment supplier, which is what brief 9
+found over 32 and is now a finding twice measured.
+
+**Which is why the battery edges had to come from Chinese.** `acc-billy-berclau` and
+`powerco-salzgitter` are the first battery rows in this register with a supplier
+edge at all, and both are Yinghe Technology's own announcements — an order for the
+front-end equipment of ACC's 13 GWh French works, and a won tender for PowerCo's
+Salzgitter line at 20 GWh rising to 40. The English pages of the same newsroom carry
+neither. The register's other two battery-equipment nodes remain what brief 9 made
+them: Manz publishes marketing, Hitachi's relevant unit answers 403.
+
+**Check 6, before and after** (`sources/ladder/all.csv`, and the gate recomputes both):
+
+| sector | before | after |
+|---|---|---|
+| batteries | 32 fail, 32 not searched, 5 unread | 31 fail, 31 not searched, **2 pass**, 5 unread |
+| cement | 6 fail, 34 not searched, 2 pass | 30 fail, **8** not searched, **4 pass** |
+| steel | 4 fail, 138 not searched, 5 pass | 23 fail, **118** not searched, **6 pass** |
+| transport and storage | 5 fail, 124 not searched, 12 unread | 62 fail, **66** not searched, **1 pass**, 12 unread |
+| hydrogen | 164 fail, 53 not searched, 7 pass, 21 unread | **unchanged** |
+
+Twenty passes across the table and **every one of them is provisional**, because
+`verdict` is null on every edge in this file and nothing about that changed.
+
+The `not_searched` counts fall because the owner side reached those rows: a row
+scored `not_searched` on rung 6 when brief 9 had not read it, and 88 rows have been
+read since. **Eight rows are scored `fail` that should be `not_searched`** and are
+not, and this pass deliberately did not fix it — see D-24.
+
+## 9. DECISIONS
+
+**D-19 — A 9b node is on the perimeter because a row or the IEA CCUS file names it.**
+Not because a market report lists it. Carbon Clean, Leilac/Calix, Polysius, Capsol
+and Axens are each named in a cement or steel row's own text or in
+`cement_ccs_benchmark.json`; Prinos is named by two cement rows. The three battery
+nodes are the exception and say so: no battery row names anybody, so they are drawn
+from the makers who publish cell-line orders at all, and the file records that this
+is a different kind of choice.
+*Touches:* `dep_sweep.NODES`, nine entries.
+
+**D-20 — Calcium looping gets no node, and the absence is recorded rather than
+filled.** The brief asks for amine, oxyfuel, cryogenic, calcium looping and direct
+separation licensors. Four of the five are in. Nothing in the register's cement rows
+or in the IEA CCUS file names a calcium looping licensor for a European works, and
+inventing one from a research consortium would be a node with no customer.
+*Touches:* the perimeter; nothing else.
+
+**D-21 — Prinos is added as a store although the brief says the stores exist.**
+`ifestos-kamari` and `olympus-milaki` both send their CO2 to Prinos, off Kavala, and
+the perimeter did not hold it. It is on with zero edges: energean.com answers 403 and
+the archive holds a media centre and an ESIA library that predate the CO2 business
+entirely. **A store two rows name that publishes nothing about them is a finding, and
+the node is where it is recorded.**
+*Touches:* `prinos`, its `sweep` and `state` blocks.
+
+**D-22 — Leilac-2 has left the works its row is named for, and this pass does not
+move the row.** Leilac announced on 29 January 2024 that the project would relocate
+because Heidelberg Materials was ending clinker production at Hanover, on 4 March
+2024 that the site is Ennigerloh, and on 12 June 2024 a joint venture with Heidelberg
+for the demonstration plant there. `leilac2-hannover` is a works the project left.
+The relocation is recorded as two edges against the row — they are statements about
+that row's project — and **the Ennigerloh joint venture is refused a match**, because
+giving the Hanover row a contracted input on a contract signed for another works is
+exactly what rung 6 must not do. Ennigerloh belongs on the cement candidate list;
+this pass does not write to `cement_candidates.json` because it was told nothing else
+moves.
+*Touches:* `e0261`–`e0263`; a queue item for the cement census.
+
+**D-23 — An owner-side edge is recorded where the supplier side did not already hold
+that relationship.** Where both speak about one relationship — Salzgitter's own
+release and Tenova's, Blastr's page and Primetals' — the supplier's document is
+already an edge and the owner's is noted here rather than filed twice, because a
+second copy would double the relationship in every count that reads this file. Six
+were on the owner side only. **Four were read and refused**, each for a stated
+reason: a consortium partner list is not a supply, a trade-press report of a signing
+is not the owner speaking (D-S4's ruling), a store named as the "most advanced"
+candidate is not a store contracted, and an engineering contractor's release is not
+the owner's.
+*Touches:* `e0254`–`e0259`.
+
+**D-24 — Eight rows whose own sources could not be read are scored `fail` on rung 6,
+and the honest value is `not_searched`.** `arcelormittal-dunkerque`,
+`arcelormittal-fos-sur-mer`, `catl-stellantis-zaragoza`, `greenstore`,
+`ignis-armonia-green-galicia`, `morecambe-net-zero`, `rengas-pori-kaanaa` and
+`tesla-gruenheide-cells` each cite exactly one source and it does not answer. The
+scorer reads "in `owner_side`" as "searched", and for these eight that is an
+overclaim of the same shape this register keeps correcting. **It is not fixed here**
+because the fix is a change to rung 6's scorer in `build_ladder.py` and
+`build_ladder_all.py`, two of the eight are hydrogen rows, and hydrogen's csv is
+frozen against brief 10's — a rule change mid-pass, which this week's standing rules
+refuse. It is a ruling for the reader.
+*Touches:* rung 6 for eight rows; nothing in this pass.
+
+**D-25 — Four defects in the sweep's own machinery, found by running it.**
+
+- **The matcher never matched Rüdersdorf.** `projects.json` writes CEMEX's works
+  "Ruedersdorf" and every supplier writes "Rüdersdorf"; stripping the diacritic gives
+  `rudersdorf` and the register's transliteration gives `ruedersdorf`. One fold is now
+  applied to both sides — umlaut or digraph, it lands on the bare vowel — and the same
+  crack ran under Lägerdorf, Höver and every ß.
+- **A country was acting as a site.** The Natran CO2 backbone's `plant` is "France"
+  and the German Carbon Transport Grid's name carries "Germany", because both rows are
+  national pipelines. As site aliases they matched every release mentioning either
+  country: ITM Power's undisclosed "100MW project in Germany" became the German grid,
+  and Air Liquide's Cryocap on a lime plant at Réty became a piece of Natran's
+  pipeline. A country name is no longer admitted as a site alias.
+- **`dep_records.py --check` could not run on a clone at all.** The bodies are
+  gitignored and the index is committed, so every `T.body()` raised FileNotFoundError
+  and took the citation gate — which documents itself as SKIPPED where the body is
+  absent — down before it could reach that branch.
+- **Two concurrent fetches lost each other's index entries.** `save()` took the lock,
+  re-read, and then wrote back `idx` — every row the process had read at start, not
+  the few it had written. A capture fetched successfully three times in a row came
+  back from the index as a connection failure. It now writes only the keys it touched,
+  and thirteen entries clobbered during this pass were re-fetched and restored.
+
+*Touches:* `dep_sweep.norm` and `aliases`, `dep_text.body`, `dep_fetch.save`; and
+sixteen existing edges re-identified on the rebuild, of which **nine were refused by
+hand** — RWE's Lingen electrolysers are not HyIron's direct-reduction works, Eni's
+Casalborsetti capture plant is not Marcegaglia's AdriatiCO2, MHI's capture trial on
+ArcelorMittal Gent is not the ZESTA direct-reduction project, and a kiln line ordered
+for Airvault is not the Airvault capture project's input.
+
+**D-26 — The cache was restored rather than re-fetched over.** This machine held the
+committed index and none of the 2,674 bodies. A build recomputes `owner_side` by
+reading them, so a rebuild without them would have written an edges.json saying every
+row is unreadable. `dep_restore.py` re-fetches what a build opens and keeps the bytes
+in one of two classes: **58 hashed to what the index records** and are the artefacts
+themselves; **339 answered with different bytes** and are filed in
+`dependency_cache/reread.json` as a later copy, never as the original. `index.json` is
+never rewritten, and the citation gate refuses to rule on a sentence whose original
+body this machine does not hold — a page the publisher has since rewritten can
+neither confirm a reading nor refute one.
+*Touches:* `dep_restore.py`, `dep_text.original()`, `dep_records.cites()`,
+`sources/dependency_restore.json`, `sources/dependency_cache/reread.json`.
+
+## 10. What a 9b re-run should do first
+
+1. **Finish the three throttled sweeps.** tk-polysius (37 captures of two hosts, and
+   both of its European readings came from there), prinos (129 captures and the wrong
+   decade), lyric-robot (5 of 36). The Internet Archive rate-limits; each needs its
+   own paced run, as Danieli did and still does.
+2. **Danieli is still nine of 107.** Brief 9's item 2 is not done and 9b did not get
+   to it; `metinvest-piombino` names Danieli in trade press and nowhere this file can
+   read.
+3. **Rule D-24**, and if it goes the way the evidence points, re-freeze hydrogen's csv
+   against the corrected scorer in the same pass.
+4. **Ennigerloh, and the two Rüdersdorf rows.** The candidate list has a new name in
+   it and the register holds two CEMEX projects on one works, which the matcher cannot
+   separate and a reader can.

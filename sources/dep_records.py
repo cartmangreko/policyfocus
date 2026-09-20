@@ -321,9 +321,17 @@ def node_state(node_id: str, *, incomplete: bool = False,
 # --- gates and output --------------------------------------------------------
 
 def cites(sentence: str, url: str) -> bool:
-    """Is this sentence on that page? Unknown counts as yes."""
+    """Is this sentence on that page? Unknown counts as yes.
+
+    THE PAGE MEANS THE PAGE THAT WAS READ. Where this machine holds only a re-read —
+    the publisher's page today, fetched because the original body was not here and
+    the bytes no longer match what index.json records — the gate declines to rule.
+    A later copy cannot confirm a sentence and cannot refute one: a newsroom that
+    has rewritten a release has not made the earlier reading false, and a newsroom
+    that still carries it has not made a mistyped one true.
+    """
     import dep_text as T
-    body = T.body(url)
+    body = T.body(url) if T.original(url) else None
     if body is None:
         return True
     page = re.sub(r"\s+", " ", T.to_text(body))

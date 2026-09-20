@@ -1,0 +1,20 @@
+{
+ "_comment": [
+  "A re-fetch of cache bodies this machine did not hold. `restored` hashed to",
+  "what sources/dependency_cache/index.json already recorded and are the",
+  "artefacts themselves; `changed` answered with different bytes and are on",
+  "file as a re-read (dependency_cache/reread.json), never as the original;",
+  "`failed` did not answer at all and stay missing."
+ ],
+ "ran": "2026-09-20T07:44:41+00:00",
+ "asked": 398,
+ "restored": 58,
+ "changed": 339,
+ "failed_count": 1,
+ "failed": [
+  {
+   "url": "https://www.mhi.com/news/23110903.html",
+   "status": 0
+  }
+ ]
+}
