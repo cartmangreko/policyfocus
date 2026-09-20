@@ -1,0 +1,4344 @@
+{
+ "_comment": [
+  "THE RE-SEARCH PASS OVER FOUR SECTORS, brief 14.",
+  "",
+  "    python3 sources/research_pass.py --plan            # the 164 entries and their targets",
+  "    python3 sources/research_pass.py --search [--limit N] [--sector S]",
+  "    python3 sources/research_pass.py --report          # what was read, what it names",
+  "    python3 sources/research_pass.py --queue           # the browser queue, consolidated",
+  "",
+  "WHAT THIS IS. The audit of 20 September re-searched thirty entries drawn at random from",
+  "the 164 classed `searched none found` or `named not admitted` in hydrogen, batteries,",
+  "cement and transport and storage, and four changed class — all of them found by starting",
+  "at the owner's own domain rather than at the list's citations. Four of thirty is above the",
+  "brief's threshold of two, so this is the full pass over all 164.",
+  "sources/ladder_research_audit.json is the audit; this is the pass it triggered.",
+  "",
+  "THE SEARCH ORDER IS THE RULE, AND IT IS S3's. \"Where a works has an owner with a newsroom,",
+  "that is where the search should start\" — ruled 16 September after Tata Steel Port Talbot",
+  "was admitted on the first request having failed sixteen wiki citations. So for every entry",
+  "this pass asks the owner's own domain FIRST and the list's citations second, which is the",
+  "opposite of what the original censuses did.",
+  "",
+  "EVERY SEARCH IS RECORDED, including the ones that find nothing. The fetch itself lands in",
+  "the sector's cache index with its URL, day, byte count and SHA-256; this file records",
+  "WHICH ENTRY each fetch was made for, in what order, and what the text contained. A search",
+  "nobody can reconstruct is a search nobody can check, and \"searched, none found\" is a claim",
+  "about a search.",
+  "",
+  "NOTHING HERE WRITES A CLASS. The standing rule of 21 September: no rule changes until this",
+  "pass and the supplier sweep are in, and a case the rules do not settle goes to the",
+  "questions file with the entry held. What this pass produces is a record, a signal per",
+  "entry, and a browser queue. A person classes."
+ ],
+ "started": "2026-09-21",
+ "search_order": "S3 — the owner's own domain first, the list's citations second",
+ "entries": {
+  "iea:14": {
+   "sector": "hydrogen",
+   "name": "CRI project in Norway (Circlenergy)",
+   "klass": "none found",
+   "country": "NOR",
+   "owner_hosts": [
+    "www.crinorway.com",
+    "www.crinorway.eu",
+    "www.crinorway.no",
+    "carbonrecycling.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.crinorway.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.crinorway.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.crinorway.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.crinorway.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:605": {
+   "sector": "hydrogen",
+   "name": "Green Crane Pais Vasco Hub",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.crane.com",
+    "www.crane.eu",
+    "www.crane.es"
+   ],
+   "searched": [
+    {
+     "url": "https://www.crane.com",
+     "outcome": "200, empty body",
+     "text_chars": 236,
+     "sha256": "2eb9d5d342fb09df8b01ef8eb4bacf0b0844277557d2b647a4e74edeff3255d2",
+     "name_words_present": [
+      "Crane"
+     ]
+    },
+    {
+     "url": "https://www.crane.com/news",
+     "outcome": "200, empty body",
+     "text_chars": 236,
+     "sha256": "2eb9d5d342fb09df8b01ef8eb4bacf0b0844277557d2b647a4e74edeff3255d2",
+     "name_words_present": [
+      "Crane"
+     ]
+    },
+    {
+     "url": "https://www.crane.com/en/news",
+     "outcome": "200, empty body",
+     "text_chars": 236,
+     "sha256": "2eb9d5d342fb09df8b01ef8eb4bacf0b0844277557d2b647a4e74edeff3255d2",
+     "name_words_present": [
+      "Crane"
+     ]
+    },
+    {
+     "url": "https://www.crane.com/press",
+     "outcome": "200, empty body",
+     "text_chars": 236,
+     "sha256": "2eb9d5d342fb09df8b01ef8eb4bacf0b0844277557d2b647a4e74edeff3255d2",
+     "name_words_present": [
+      "Crane"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": true
+  },
+  "iea:607": {
+   "sector": "hydrogen",
+   "name": "La Robla",
+   "klass": "named not admitted",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.robla.com",
+    "www.robla.eu",
+    "www.robla.es",
+    "www.naturgy.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.robla.com",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.robla.com/news",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.robla.com/en/news",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.robla.com/press",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:830": {
+   "sector": "hydrogen",
+   "name": "Nemo Hydrogen Project",
+   "klass": "none found",
+   "country": "GRC",
+   "owner_hosts": [
+    "www.nemo.com",
+    "www.nemo.eu",
+    "www.nemo.gr"
+   ],
+   "searched": [
+    {
+     "url": "https://www.nemo.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.nemo.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.nemo.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.nemo.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:886": {
+   "sector": "hydrogen",
+   "name": "NortH2, phase 2",
+   "klass": "none found",
+   "country": "NLD",
+   "owner_hosts": [
+    "www.north2.com",
+    "www.north2.eu",
+    "www.north2.nl",
+    "www.rwe.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.north2.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.north2.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.north2.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.north2.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:910": {
+   "sector": "hydrogen",
+   "name": "Huelva - Endesa",
+   "klass": "named not admitted",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.huelva.com",
+    "www.huelva.eu",
+    "www.huelva.es",
+    "www.endesa.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.huelva.com",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "35c16ccb4fa982bb5b5a6c46fea245399c2d773828c089f6413fa6b4c7f08064",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.huelva.com/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.huelva.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.huelva.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:965": {
+   "sector": "hydrogen",
+   "name": "Puglia green hydro-gen valley - Taranto plant",
+   "klass": "named not admitted",
+   "country": "ITA",
+   "owner_hosts": [
+    "www.puglia.com",
+    "www.puglia.eu",
+    "www.puglia.it",
+    "www.saipem.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.puglia.com",
+     "outcome": "200, 7142 chars",
+     "text_chars": 7142,
+     "sha256": "aab351ba088764fa01bec05334c071086ad3841af1ea3043c1d498c73e6429be",
+     "name_words_present": [
+      "Puglia"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:1052": {
+   "sector": "hydrogen",
+   "name": "Element One (Element Eins), phase 3",
+   "klass": "none found",
+   "country": "DEU",
+   "owner_hosts": [
+    "www.element.com",
+    "www.element.eu",
+    "www.element.de",
+    "www.element-eins.eu",
+    "www.gasunie.de"
+   ],
+   "searched": [
+    {
+     "url": "https://www.element.com",
+     "outcome": "200, 33360 chars",
+     "text_chars": 33360,
+     "sha256": "f06fe37d57c8521b3165b2a94e1539ee1d2bbfcd29587b728f3ecd69adb1eb79",
+     "name_words_present": [
+      "Element",
+      "Element"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:1119": {
+   "sector": "hydrogen",
+   "name": "FUREC",
+   "klass": "named not admitted",
+   "country": "NLD",
+   "owner_hosts": [
+    "www.furec.com",
+    "www.furec.eu",
+    "www.furec.nl",
+    "www.rwe.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.furec.com",
+     "outcome": "200, 729 chars",
+     "text_chars": 729,
+     "sha256": "c4df75d607a1137c7315766421b246f35444fb74a26f884a51901d2069bbfed5",
+     "name_words_present": [
+      "FUREC"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:1191": {
+   "sector": "hydrogen",
+   "name": "AquaVentus (completion)",
+   "klass": "none found",
+   "country": "DEU",
+   "owner_hosts": [
+    "www.aquaventus.com",
+    "www.aquaventus.eu",
+    "www.aquaventus.de",
+    "aquaventus.org"
+   ],
+   "searched": [
+    {
+     "url": "https://www.aquaventus.com",
+     "outcome": "200, empty body",
+     "text_chars": 13,
+     "sha256": "ba0ba6a9a1a6324f2b3802eb4a49e492ddf27405516347ce3d31a331b465b580",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.aquaventus.com/news",
+     "outcome": "200, empty body",
+     "text_chars": 13,
+     "sha256": "ba0ba6a9a1a6324f2b3802eb4a49e492ddf27405516347ce3d31a331b465b580",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.aquaventus.com/en/news",
+     "outcome": "200, empty body",
+     "text_chars": 13,
+     "sha256": "ba0ba6a9a1a6324f2b3802eb4a49e492ddf27405516347ce3d31a331b465b580",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.aquaventus.com/press",
+     "outcome": "200, empty body",
+     "text_chars": 13,
+     "sha256": "ba0ba6a9a1a6324f2b3802eb4a49e492ddf27405516347ce3d31a331b465b580",
+     "name_words_present": []
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1437": {
+   "sector": "hydrogen",
+   "name": "Wasserstoffpark Lingen",
+   "klass": "named not admitted",
+   "country": "DEU",
+   "owner_hosts": [
+    "www.wasserstoffpark.com",
+    "www.wasserstoffpark.eu",
+    "www.wasserstoffpark.de",
+    "www.get-h2.de"
+   ],
+   "searched": [
+    {
+     "url": "https://www.wasserstoffpark.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.wasserstoffpark.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.wasserstoffpark.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.wasserstoffpark.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1503": {
+   "sector": "hydrogen",
+   "name": "Green CCU Hub Aalborg",
+   "klass": "none found",
+   "country": "DNK",
+   "owner_hosts": [
+    "www.ccuaalborg.com",
+    "www.ccuaalborg.eu",
+    "www.ccuaalborg.dk"
+   ],
+   "searched": [
+    {
+     "url": "https://www.ccuaalborg.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.ccuaalborg.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.ccuaalborg.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.ccuaalborg.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1505": {
+   "sector": "hydrogen",
+   "name": "Green lab skive (Phase III)",
+   "klass": "none found",
+   "country": "DNK",
+   "owner_hosts": [
+    "www.labskive.com",
+    "www.labskive.eu",
+    "www.labskive.dk",
+    "www.greenlab.dk"
+   ],
+   "searched": [
+    {
+     "url": "https://www.labskive.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.labskive.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.labskive.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.labskive.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1541": {
+   "sector": "hydrogen",
+   "name": "BP Castellon refinery, phase 2",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.castellon.com",
+    "www.castellon.eu",
+    "www.castellon.es"
+   ],
+   "searched": [
+    {
+     "url": "https://www.castellon.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.castellon.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.castellon.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.castellon.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1548": {
+   "sector": "hydrogen",
+   "name": "Lacq Hydrogen",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.lacq.com",
+    "www.lacq.eu",
+    "www.lacq.es",
+    "www.enagas.es"
+   ],
+   "searched": [
+    {
+     "url": "https://www.lacq.com",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.lacq.com/news",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.lacq.com/en/news",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.lacq.com/press",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1549": {
+   "sector": "hydrogen",
+   "name": "First HyDeal hub, phase 1",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.hydeal.com",
+    "www.hydeal.eu",
+    "www.hydeal.es",
+    "www.enagas.es"
+   ],
+   "searched": [
+    {
+     "url": "https://www.hydeal.com",
+     "outcome": "200, 1082 chars",
+     "text_chars": 1082,
+     "sha256": "d983df0d663b8587701709efa1fb3a2e7806a517306007237aafd247f3f64e4d",
+     "name_words_present": [
+      "HyDeal"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:1612": {
+   "sector": "hydrogen",
+   "name": "Hidroversol Castilla y León",
+   "klass": "named not admitted",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.hidroversol.com",
+    "www.hidroversol.eu",
+    "www.hidroversol.es",
+    "www.boe.es"
+   ],
+   "searched": [
+    {
+     "url": "https://www.hidroversol.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.hidroversol.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.hidroversol.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.hidroversol.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1654": {
+   "sector": "hydrogen",
+   "name": "HyKero",
+   "klass": "none found",
+   "country": "DEU",
+   "owner_hosts": [
+    "www.hykero.com",
+    "www.hykero.eu",
+    "www.hykero.de"
+   ],
+   "searched": [
+    {
+     "url": "https://www.hykero.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.hykero.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.hykero.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.hykero.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1662": {
+   "sector": "hydrogen",
+   "name": "Barsebäck Hydrogen Hub",
+   "klass": "none found",
+   "country": "SWE",
+   "owner_hosts": [
+    "www.barseback.com",
+    "www.barseback.eu",
+    "www.barseback.se"
+   ],
+   "searched": [
+    {
+     "url": "https://www.barseback.com",
+     "outcome": "200, 7756 chars",
+     "text_chars": 7756,
+     "sha256": "6ba2b00ec7b403de623590145c167e8d6f6200e59d27583da07d693a02ac83c9",
+     "name_words_present": [
+      "Barsebäck"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:1812": {
+   "sector": "hydrogen",
+   "name": "Tees Green Hydrogen, phase 2",
+   "klass": "none found",
+   "country": "GBR",
+   "owner_hosts": [
+    "www.tees.com",
+    "www.tees.eu",
+    "www.tees.co.uk",
+    "www.edf-re.uk",
+    "www.edf-powersolutions.uk"
+   ],
+   "searched": [
+    {
+     "url": "https://www.tees.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.tees.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.tees.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.tees.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1816": {
+   "sector": "hydrogen",
+   "name": "Navigator - P2X-Europe JV",
+   "klass": "named not admitted",
+   "country": "PRT",
+   "owner_hosts": [
+    "www.navigator.com",
+    "www.navigator.eu",
+    "www.navigator.pt",
+    "www.p2x-europe.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.navigator.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.navigator.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.navigator.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.navigator.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1826": {
+   "sector": "hydrogen",
+   "name": "PanHy, phase 2",
+   "klass": "none found",
+   "country": "AUT",
+   "owner_hosts": [
+    "www.panhy.com",
+    "www.panhy.eu",
+    "www.panhy.at",
+    "www.hypa.at",
+    "www.burgenlandenergie.at"
+   ],
+   "searched": [
+    {
+     "url": "https://www.panhy.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.panhy.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.panhy.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.panhy.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1843": {
+   "sector": "hydrogen",
+   "name": "Dylan, phase 1",
+   "klass": "none found",
+   "country": "GBR",
+   "owner_hosts": [
+    "www.dylan.com",
+    "www.dylan.eu",
+    "www.dylan.co.uk"
+   ],
+   "searched": [
+    {
+     "url": "https://www.dylan.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.dylan.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.dylan.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.dylan.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1878": {
+   "sector": "hydrogen",
+   "name": "BrintØ - Hydrogen Island",
+   "klass": "none found",
+   "country": "DNK",
+   "owner_hosts": [
+    "www.brint.com",
+    "www.brint.eu",
+    "www.brint.dk",
+    "www.cip.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.brint.com",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.brint.com/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.brint.com/en/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.brint.com/press",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1907": {
+   "sector": "hydrogen",
+   "name": "P2X Europe - Nordic Electrofuel Porsgrunn project, phase 2",
+   "klass": "none found",
+   "country": "NOR",
+   "owner_hosts": [
+    "www.europe.com",
+    "www.europe.eu",
+    "www.europe.no",
+    "www.nordicelectrofuel.no"
+   ],
+   "searched": [
+    {
+     "url": "https://www.europe.com",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.europe.com/news",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.europe.com/en/news",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.europe.com/press",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:1996": {
+   "sector": "hydrogen",
+   "name": "Moeve San Roque Energy Park (Algeciras) - Andalusian Green Hydrogen Valley\nCARTEIA Project - Phase 1",
+   "klass": "named not admitted",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.moeve.com",
+    "www.moeve.eu",
+    "www.moeve.es",
+    "www.moeveglobal.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.moeve.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.moeve.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.moeve.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.moeve.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2004": {
+   "sector": "hydrogen",
+   "name": "Hellenic Hydrogen in  Western Macedonia",
+   "klass": "named not admitted",
+   "country": "GRC",
+   "owner_hosts": [
+    "www.hellenic.com",
+    "www.hellenic.eu",
+    "www.hellenic.gr",
+    "www.hellenic-hydrogen.gr"
+   ],
+   "searched": [
+    {
+     "url": "https://www.hellenic.com",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.hellenic.com/news",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.hellenic.com/en/news",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.hellenic.com/press",
+     "outcome": "200, empty body",
+     "text_chars": 0,
+     "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2017": {
+   "sector": "hydrogen",
+   "name": "Plug Power Porvoo plant",
+   "klass": "named not admitted",
+   "country": "FIN",
+   "owner_hosts": [
+    "www.plug.com",
+    "www.plug.eu",
+    "www.plug.fi",
+    "www.ir.plugpower.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.plug.com",
+     "outcome": "200, empty body",
+     "text_chars": 399,
+     "sha256": "da52e6a67a42be0d5bb05eba2cd7de0c4199e793c349376ad44bc8c8a3589e89",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.plug.com/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.plug.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.plug.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2036": {
+   "sector": "hydrogen",
+   "name": "BotH2nia - Flexens Kokkola",
+   "klass": "none found",
+   "country": "FIN",
+   "owner_hosts": [
+    "www.both2nia.com",
+    "www.both2nia.eu",
+    "www.both2nia.fi",
+    "flexens.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.both2nia.com",
+     "outcome": "200, 4885 chars",
+     "text_chars": 4885,
+     "sha256": "d083034e990323e3641d08cc32b960de334f53f4e5409e600b5804a91d924769",
+     "name_words_present": [
+      "BotH2nia"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:2056": {
+   "sector": "hydrogen",
+   "name": "Moeve La Rábida Energy Park (Huelva) - phase 2 - Andalusian Green Hydrogen Valley\nONUBA II Project",
+   "klass": "named not admitted",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.moeve.com",
+    "www.moeve.eu",
+    "www.moeve.es",
+    "www.moeveglobal.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.moeve.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.moeve.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.moeve.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.moeve.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2111": {
+   "sector": "hydrogen",
+   "name": "HyMed",
+   "klass": "none found",
+   "country": "ITA",
+   "owner_hosts": [
+    "www.hymed.com",
+    "www.hymed.eu",
+    "www.hymed.it"
+   ],
+   "searched": [
+    {
+     "url": "https://www.hymed.com",
+     "outcome": "200, 6791 chars",
+     "text_chars": 6791,
+     "sha256": "3ad993600b8173bd9e777ee1edfb74a8014e57a9d2d716b38785eaa5cef22ef4",
+     "name_words_present": [
+      "HyMed"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:2123": {
+   "sector": "hydrogen",
+   "name": "Cobra Cartagena",
+   "klass": "named not admitted",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.cartagena.es"
+   ],
+   "searched": [
+    {
+     "url": "https://www.cartagena.es",
+     "outcome": "200, 10464 chars",
+     "text_chars": 10464,
+     "sha256": "e7092afbf0023f4fc9b374058d08232f23fbfc46b10a3945d93994431f6c981d",
+     "name_words_present": [
+      "Cartagena"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:2185": {
+   "sector": "hydrogen",
+   "name": "Nascar",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [
+    "cetaer.com"
+   ],
+   "searched": [
+    {
+     "url": "https://cetaer.com",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://cetaer.com/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://cetaer.com/en/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://cetaer.com/press",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2193": {
+   "sector": "hydrogen",
+   "name": "H2 Emden Electrolyzer, phase 2",
+   "klass": "named not admitted",
+   "country": "DEU",
+   "owner_hosts": [
+    "www.ewe.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.ewe.com",
+     "outcome": "200, 6537 chars",
+     "text_chars": 6537,
+     "sha256": "9be764bbfd04bfeb6855497c46180114924c6ebc0d6dcb92c156f996f1b0a7f0",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.ewe.com/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.ewe.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.ewe.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:2211": {
+   "sector": "hydrogen",
+   "name": "OX2 Neptunus Hub",
+   "klass": "none found",
+   "country": "SWE",
+   "owner_hosts": [
+    "www.ox2.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.ox2.com",
+     "outcome": "200, 7446 chars",
+     "text_chars": 7446,
+     "sha256": "8442b227547a281e7e6a35df7e84d6afc83c9c81dffd9f085eae4ccc5d8e9898",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.ox2.com/news",
+     "outcome": "200, 2484 chars",
+     "text_chars": 2484,
+     "sha256": "649106a12c6d82b2cad8640f70ab4d358a3291a0641535c48756b354eeee4f31",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.ox2.com/en/news",
+     "outcome": "200, 2484 chars",
+     "text_chars": 2484,
+     "sha256": "649106a12c6d82b2cad8640f70ab4d358a3291a0641535c48756b354eeee4f31",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.ox2.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:2218": {
+   "sector": "hydrogen",
+   "name": "Holmaneset Project (GAP FFI Holmaneset)",
+   "klass": "named not admitted",
+   "country": "NOR",
+   "owner_hosts": [
+    "energy.fortescue.com",
+    "holmanesetproject.no"
+   ],
+   "searched": [
+    {
+     "url": "https://energy.fortescue.com",
+     "outcome": "200, 9534 chars",
+     "text_chars": 9534,
+     "sha256": "4e6c64a5ad83fbf697e6a3d2f5a5a39a7008aa0a9230d979f0273cc62094dab8",
+     "name_words_present": []
+    },
+    {
+     "url": "https://energy.fortescue.com/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://energy.fortescue.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://energy.fortescue.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:2316": {
+   "sector": "hydrogen",
+   "name": "Take Kair",
+   "klass": "none found",
+   "country": "FRA",
+   "owner_hosts": [
+    "www.edf.fr"
+   ],
+   "searched": [
+    {
+     "url": "https://www.edf.fr",
+     "outcome": "200, 3865 chars",
+     "text_chars": 3865,
+     "sha256": "61050ca22ca4b2491b4c5050f4761bdded56fa1ce003ba05e4d0cf6e41601ed7",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.edf.fr/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.edf.fr/en/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.edf.fr/press",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:2324": {
+   "sector": "hydrogen",
+   "name": "Electrolyzers with \"network related function\" in Apulia - Phase 2",
+   "klass": "none found",
+   "country": "ITA",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2326": {
+   "sector": "hydrogen",
+   "name": "Electrolyzers with \"network related function\" in Sicily - Phase 2",
+   "klass": "none found",
+   "country": "ITA",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2426": {
+   "sector": "hydrogen",
+   "name": "Koppo Energy Cluster - Kristinestad PtX",
+   "klass": "named not admitted",
+   "country": "FIN",
+   "owner_hosts": [
+    "cpc-finland.com"
+   ],
+   "searched": [
+    {
+     "url": "https://cpc-finland.com",
+     "outcome": "200, 13326 chars",
+     "text_chars": 13326,
+     "sha256": "1f0920042fb6fbed341fb29ce2b141a76dcb2a135f780ea7646d8a5516b3214a",
+     "name_words_present": [
+      "Kristinestad"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:2427": {
+   "sector": "hydrogen",
+   "name": "Green NortH2 Energy Kemi",
+   "klass": "none found",
+   "country": "FIN",
+   "owner_hosts": [
+    "www.greennorth.energy"
+   ],
+   "searched": [
+    {
+     "url": "https://www.greennorth.energy",
+     "outcome": "200, 3538 chars",
+     "text_chars": 3538,
+     "sha256": "8babf4445b5b7231a77e6eacfe028f318fd4b5f3755e5295d1d76eb4f1fa53d3",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.greennorth.energy/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.greennorth.energy/en/news",
+     "outcome": "200, 4995 chars",
+     "text_chars": 4995,
+     "sha256": "9472a36ce200f8e60b37153cf9b3b6011176c6b098d77a7ae982d50a24b71fbf",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.greennorth.energy/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:2430": {
+   "sector": "hydrogen",
+   "name": "Ren-Gas  P2X Lahti",
+   "klass": "named not admitted",
+   "country": "FIN",
+   "owner_hosts": [
+    "ren-gas.com"
+   ],
+   "searched": [
+    {
+     "url": "https://ren-gas.com",
+     "outcome": "200, 5089 chars",
+     "text_chars": 5089,
+     "sha256": "033f55406adcf0faf06f92c9a5fbc5a43507af61c92b91133a20a6835822f237",
+     "name_words_present": [
+      "Lahti"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:2439": {
+   "sector": "hydrogen",
+   "name": "Hidroelectrica - Sona",
+   "klass": "none found",
+   "country": "ROU",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2501": {
+   "sector": "hydrogen",
+   "name": "Vanadis Fuels",
+   "klass": "none found",
+   "country": "FIN",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2612": {
+   "sector": "hydrogen",
+   "name": "Moeve la Rábida Energy Park (Huelva) - phase 3- Andalusian Green Hydrogen Valley THARSIS Project (Together with ONUBA: LUXIA project)",
+   "klass": "named not admitted",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.moeveglobal.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.moeveglobal.com",
+     "outcome": "200, 5824 chars",
+     "text_chars": 5824,
+     "sha256": "88841b86e156f7d930f36d9e71001860e08fd845f023a2057b2e5255c142bcd5",
+     "name_words_present": [
+      "Moeve",
+      "Huelva"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:2630": {
+   "sector": "hydrogen",
+   "name": "Kymijärvi power (Lahti)",
+   "klass": "named not admitted",
+   "country": "FIN",
+   "owner_hosts": [
+    "ren-gas.com"
+   ],
+   "searched": [
+    {
+     "url": "https://ren-gas.com",
+     "outcome": "200, 5089 chars",
+     "text_chars": 5089,
+     "sha256": "033f55406adcf0faf06f92c9a5fbc5a43507af61c92b91133a20a6835822f237",
+     "name_words_present": [
+      "power",
+      "Lahti"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:2700": {
+   "sector": "hydrogen",
+   "name": "Zijing Mining Renewable energy project",
+   "klass": "none found",
+   "country": "SRB",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2733": {
+   "sector": "hydrogen",
+   "name": "NABOO",
+   "klass": "none found",
+   "country": "GBR",
+   "owner_hosts": [
+    "www.backbritishsaf.com",
+    "arcadiaefuels.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.backbritishsaf.com",
+     "outcome": "200, 6881 chars",
+     "text_chars": 6881,
+     "sha256": "db191a16dfb7c6cd349551b8682e77514ba1609356f31b71273d859c8bac8563",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.backbritishsaf.com/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.backbritishsaf.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.backbritishsaf.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:2742": {
+   "sector": "hydrogen",
+   "name": "LH2 Europe Project",
+   "klass": "none found",
+   "country": "GBR",
+   "owner_hosts": [
+    "www.lh2europe.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.lh2europe.com",
+     "outcome": "200, 824 chars",
+     "text_chars": 824,
+     "sha256": "4ff6749e6dd0f813b3fceeae2d920307af82268cc21ba449cc01ecca45cb1dbb",
+     "name_words_present": [
+      "Europe"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:2862": {
+   "sector": "hydrogen",
+   "name": "P2XFloater and Oksefjorden wind farm\n+\nP2XFloater and Rubbedalshøgda wind farm",
+   "klass": "named not admitted",
+   "country": "NOR",
+   "owner_hosts": [
+    "www.h2carrier.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.h2carrier.com",
+     "outcome": "200, 2589 chars",
+     "text_chars": 2589,
+     "sha256": "03447801b814d229949f6000d54ec8718ce4e74e6579d306453f28dc95f45d60",
+     "name_words_present": [
+      "P2XFloater",
+      "P2XFloater"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:2863": {
+   "sector": "hydrogen",
+   "name": "MetGreenPort",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2897": {
+   "sector": "hydrogen",
+   "name": "SIRAM green hydrogen plant in Termoli",
+   "klass": "none found",
+   "country": "ITA",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:2909": {
+   "sector": "hydrogen",
+   "name": "Power2X Parnu facility",
+   "klass": "named not admitted",
+   "country": "EST",
+   "owner_hosts": [
+    "www.power2x.ee"
+   ],
+   "searched": [
+    {
+     "url": "https://www.power2x.ee",
+     "outcome": "200, 1486 chars",
+     "text_chars": 1486,
+     "sha256": "df9667320a5dcd2153f6970102b99485467361d61a494d1b95e8777a35a7b691",
+     "name_words_present": [
+      "Power2X"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:2957": {
+   "sector": "hydrogen",
+   "name": "Armonia Green Sevilla phase I",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [
+    "ignis.es"
+   ],
+   "searched": [
+    {
+     "url": "https://ignis.es",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/en/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/press",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:3012": {
+   "sector": "hydrogen",
+   "name": "Armonia Green Castellon Phase I",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [
+    "ignis.es"
+   ],
+   "searched": [
+    {
+     "url": "https://ignis.es",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/en/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/press",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:3013": {
+   "sector": "hydrogen",
+   "name": "Armonia Green Castellon Phase II",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [
+    "ignis.es"
+   ],
+   "searched": [
+    {
+     "url": "https://ignis.es",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/en/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/press",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:3014": {
+   "sector": "hydrogen",
+   "name": "Armonia Green Castellon Phase III",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [
+    "ignis.es"
+   ],
+   "searched": [
+    {
+     "url": "https://ignis.es",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/en/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/press",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:3019": {
+   "sector": "hydrogen",
+   "name": "Moeve San Roque Energy Park (Algeciras) - Andalusian Green Hydrogen Valley \nCARTEIA Project - Phase 2",
+   "klass": "named not admitted",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.moeveglobal.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.moeveglobal.com",
+     "outcome": "200, 5824 chars",
+     "text_chars": 5824,
+     "sha256": "c596744387377f6d91533b51b14b3816826ee35dcb981239a16afd3f182fb0f5",
+     "name_words_present": [
+      "Moeve"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3051": {
+   "sector": "hydrogen",
+   "name": "Markinch Green Hydrogen",
+   "klass": "named not admitted",
+   "country": "GBR",
+   "owner_hosts": [
+    "www.rwe.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.rwe.com",
+     "outcome": "200, 12254 chars",
+     "text_chars": 12254,
+     "sha256": "590dcdb8376e090713503592e616981ba901d99af1ffd55653cd533b1ff98948",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.rwe.com/news",
+     "outcome": "200, 9588 chars",
+     "text_chars": 9588,
+     "sha256": "f8514b0f9010bc4c6a1c4b71e4e310698ab2c4a46778295abe0b50b9eb224bd2",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.rwe.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.rwe.com/press",
+     "outcome": "200, 8259 chars",
+     "text_chars": 8259,
+     "sha256": "5a77b598b6df840272d77299c3860616f79be2dc229f73457e396f72d65a3c5b",
+     "name_words_present": []
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:3056": {
+   "sector": "hydrogen",
+   "name": "RWE Grangemouth",
+   "klass": "named not admitted",
+   "country": "GBR",
+   "owner_hosts": [
+    "uk.rwe.com"
+   ],
+   "searched": [
+    {
+     "url": "https://uk.rwe.com",
+     "outcome": "200, 7492 chars",
+     "text_chars": 7492,
+     "sha256": "a278e4997a094e6068708ce223e27f7449b7d754c89ca027b86d748178864828",
+     "name_words_present": []
+    },
+    {
+     "url": "https://uk.rwe.com/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://uk.rwe.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://uk.rwe.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:3060": {
+   "sector": "hydrogen",
+   "name": "Dolphyn 1, phase 3",
+   "klass": "none found",
+   "country": "GBR",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:3070": {
+   "sector": "hydrogen",
+   "name": "H2H/Easington Hydrogen Production Green",
+   "klass": "named not admitted",
+   "country": "GBR",
+   "owner_hosts": [
+    "www.equinor.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.equinor.com",
+     "outcome": "200, empty body",
+     "text_chars": 304,
+     "sha256": "99d5e215b0852412dbcb8eae0772017c3b8fb2aef685aba9bd615245319c3420",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.equinor.com/news",
+     "outcome": "200, 5044 chars",
+     "text_chars": 5044,
+     "sha256": "0431408f6d96b3042c24bab53da80845bf78468551741afaa3c3fa35de770384",
+     "name_words_present": [
+      "Production"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3083": {
+   "sector": "hydrogen",
+   "name": "Sullom Voe Terminal Hydrogen Project (Phase 2)",
+   "klass": "named not admitted",
+   "country": "GBR",
+   "owner_hosts": [
+    "verienergy.com"
+   ],
+   "searched": [
+    {
+     "url": "https://verienergy.com",
+     "outcome": "200, 2751 chars",
+     "text_chars": 2751,
+     "sha256": "7e6c5623f1236d6bf6f4f06c0eb6640486ce4db84c362bdb60e88124e94703dd",
+     "name_words_present": [
+      "Sullom",
+      "Terminal"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3086": {
+   "sector": "hydrogen",
+   "name": "Kvinesdal Ammonia A Energi",
+   "klass": "named not admitted",
+   "country": "NOR",
+   "owner_hosts": [
+    "www.aenergi.no"
+   ],
+   "searched": [
+    {
+     "url": "https://www.aenergi.no",
+     "outcome": "200, 4039 chars",
+     "text_chars": 4039,
+     "sha256": "f340fae12b0e5434b0c6b46368d167a8ba70fb5894bf31ba7a9e37dbadd44763",
+     "name_words_present": [
+      "Energi"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3087": {
+   "sector": "hydrogen",
+   "name": "Hyperion H2 Alandroal- Phase 2",
+   "klass": "none found",
+   "country": "PRT",
+   "owner_hosts": [
+    "hyperionrenewables.com"
+   ],
+   "searched": [
+    {
+     "url": "https://hyperionrenewables.com",
+     "outcome": "200, 3216 chars",
+     "text_chars": 3216,
+     "sha256": "5d0d4f161e694103e0cd2fa130f235f22b850ffc5dcf53c9b70bc8a2a35cc790",
+     "name_words_present": [
+      "Hyperion"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3088": {
+   "sector": "hydrogen",
+   "name": "Hyperion H2 Alandroal- Phase 3",
+   "klass": "none found",
+   "country": "PRT",
+   "owner_hosts": [
+    "hyperionrenewables.com"
+   ],
+   "searched": [
+    {
+     "url": "https://hyperionrenewables.com",
+     "outcome": "200, 3216 chars",
+     "text_chars": 3216,
+     "sha256": "5d0d4f161e694103e0cd2fa130f235f22b850ffc5dcf53c9b70bc8a2a35cc790",
+     "name_words_present": [
+      "Hyperion"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3095": {
+   "sector": "hydrogen",
+   "name": "Green NortH2 Energy Naantali",
+   "klass": "named not admitted",
+   "country": "FIN",
+   "owner_hosts": [
+    "www.greennorth.energy"
+   ],
+   "searched": [
+    {
+     "url": "https://www.greennorth.energy",
+     "outcome": "200, 3538 chars",
+     "text_chars": 3538,
+     "sha256": "91b1580c5966fef316a45b158d3e4b00473a5e113fb28505d304d3bca9cdffb5",
+     "name_words_present": [
+      "Naantali"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3096": {
+   "sector": "hydrogen",
+   "name": "Green NortH2 Energy Pori",
+   "klass": "none found",
+   "country": "FIN",
+   "owner_hosts": [
+    "www.greennorth.energy"
+   ],
+   "searched": [
+    {
+     "url": "https://www.greennorth.energy",
+     "outcome": "200, 3538 chars",
+     "text_chars": 3538,
+     "sha256": "3e60d52278d78d9016caceb26cd5e9a44dde4f7b4be774417f0e6544170e846e",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.greennorth.energy/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.greennorth.energy/en/news",
+     "outcome": "200, 4995 chars",
+     "text_chars": 4995,
+     "sha256": "84508cd1f3da3e561d334dd21cacb5dd635a8356e4bc459412eeda2a3bd92120",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.greennorth.energy/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:3101": {
+   "sector": "hydrogen",
+   "name": "H2Enable (Phase 2)",
+   "klass": "named not admitted",
+   "country": "PRT",
+   "owner_hosts": [
+    "www.bondalti.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.bondalti.com",
+     "outcome": "200, 7392 chars",
+     "text_chars": 7392,
+     "sha256": "c917dac12a10f1ae7e163ebe6500caa43ec9b5c4b7ed23ef12b4b61c5739ec23",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.bondalti.com/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.bondalti.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.bondalti.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:3102": {
+   "sector": "hydrogen",
+   "name": "H2Enable (Phase 3)",
+   "klass": "named not admitted",
+   "country": "PRT",
+   "owner_hosts": [
+    "www.bondalti.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.bondalti.com",
+     "outcome": "200, 7392 chars",
+     "text_chars": 7392,
+     "sha256": "c917dac12a10f1ae7e163ebe6500caa43ec9b5c4b7ed23ef12b4b61c5739ec23",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.bondalti.com/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.bondalti.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.bondalti.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:3103": {
+   "sector": "hydrogen",
+   "name": "H2Enable (Phase 4)",
+   "klass": "named not admitted",
+   "country": "PRT",
+   "owner_hosts": [
+    "www.bondalti.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.bondalti.com",
+     "outcome": "200, 7392 chars",
+     "text_chars": 7392,
+     "sha256": "c917dac12a10f1ae7e163ebe6500caa43ec9b5c4b7ed23ef12b4b61c5739ec23",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.bondalti.com/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.bondalti.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.bondalti.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:3118": {
+   "sector": "hydrogen",
+   "name": "WinPower - PtX Sines project",
+   "klass": "named not admitted",
+   "country": "PRT",
+   "owner_hosts": [
+    "winpowersa.com"
+   ],
+   "searched": [
+    {
+     "url": "https://winpowersa.com",
+     "outcome": "200, 7845 chars",
+     "text_chars": 7845,
+     "sha256": "8e3c9391599f4437a122407f724a27d0069a6546fa9719f42804bb3acb4572c2",
+     "name_words_present": [
+      "WinPower",
+      "Sines"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3147": {
+   "sector": "hydrogen",
+   "name": "Liepaja Special Economic Zone (SEZ)",
+   "klass": "named not admitted",
+   "country": "LVA",
+   "owner_hosts": [
+    "liepaja-sez.lv"
+   ],
+   "searched": [
+    {
+     "url": "https://liepaja-sez.lv",
+     "outcome": "200, 4627 chars",
+     "text_chars": 4627,
+     "sha256": "5b1fb3f1f21394e776ca96bf066fc5a4f724406732abd1a625aec7529267923b",
+     "name_words_present": []
+    },
+    {
+     "url": "https://liepaja-sez.lv/news",
+     "outcome": "200, 4627 chars",
+     "text_chars": 4627,
+     "sha256": "e35513f50b5cb660c8561024aa848145e8702734f47ad7379c8133162791fcd2",
+     "name_words_present": []
+    },
+    {
+     "url": "https://liepaja-sez.lv/en/news",
+     "outcome": "200, 3746 chars",
+     "text_chars": 3746,
+     "sha256": "9de1343310c12fa06e40fda25866c9999895023a562228f8af25ea43c9114280",
+     "name_words_present": [
+      "Liepaja",
+      "Special",
+      "Economic"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3181": {
+   "sector": "hydrogen",
+   "name": "Eternal Power hydrogen project, Hamburg, phase 2",
+   "klass": "none found",
+   "country": "DEU",
+   "owner_hosts": [
+    "eternal-power.de"
+   ],
+   "searched": [
+    {
+     "url": "https://eternal-power.de",
+     "outcome": "200, 1424 chars",
+     "text_chars": 1424,
+     "sha256": "abf20d5a272182089d1bed6e1d4ab3ae3b211f3dd70e056c308e26962893dc24",
+     "name_words_present": [
+      "Eternal",
+      "Power"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3319": {
+   "sector": "hydrogen",
+   "name": "Norsk-e project Alby",
+   "klass": "named not admitted",
+   "country": "SWE",
+   "owner_hosts": [
+    "www.norsk-e-fuel.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.norsk-e-fuel.com",
+     "outcome": "200, 3055 chars",
+     "text_chars": 3055,
+     "sha256": "963f722662a1d81e1e630cc792a0a269fc9f0408c83722aaf4c85564c6c4cb8f",
+     "name_words_present": [
+      "Norsk"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3328": {
+   "sector": "hydrogen",
+   "name": "H2APEX H2ERO",
+   "klass": "none found",
+   "country": "DEU",
+   "owner_hosts": [
+    "h2apex.com"
+   ],
+   "searched": [
+    {
+     "url": "https://h2apex.com",
+     "outcome": "200, 9004 chars",
+     "text_chars": 9004,
+     "sha256": "3c319120f890364b7096f6f84e89dd345359fb12f3058c1072dd604e178a6562",
+     "name_words_present": [
+      "H2APEX"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3331": {
+   "sector": "hydrogen",
+   "name": "DEZiR project",
+   "klass": "named not admitted",
+   "country": "FRA",
+   "owner_hosts": [
+    "concertation-dezir.eu"
+   ],
+   "searched": [
+    {
+     "url": "https://concertation-dezir.eu",
+     "outcome": "200, 6250 chars",
+     "text_chars": 6250,
+     "sha256": "ab003b572f8315037a092f82070fa21b6dae47dd95afac5fc3df28e6972b7382",
+     "name_words_present": [
+      "DEZiR"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3351": {
+   "sector": "hydrogen",
+   "name": "Universal Kraft As Pontes de Garcia Rodriguez project",
+   "klass": "none found",
+   "country": "ESP",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:3427": {
+   "sector": "hydrogen",
+   "name": "Electrolysis Corridor East Germany (H2 Corridor) Phase II",
+   "klass": "none found",
+   "country": "DEU",
+   "owner_hosts": [
+    "enertrag.com"
+   ],
+   "searched": [
+    {
+     "url": "https://enertrag.com",
+     "outcome": "200, 15159 chars",
+     "text_chars": 15159,
+     "sha256": "2239f95fde909464632676cc09f5667953b69beb70477217e3a3ea8428f9f559",
+     "name_words_present": [
+      "Electrolysis",
+      "Germany"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3558": {
+   "sector": "hydrogen",
+   "name": "H2Next",
+   "klass": "named not admitted",
+   "country": "NLD",
+   "owner_hosts": [
+    "www.hycc.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.hycc.com",
+     "outcome": "200, 1889 chars",
+     "text_chars": 1889,
+     "sha256": "e6ab15fb17e8ac8c49a591503ec5df871e6f4c72a1d7bc652f9681f4a15e25a9",
+     "name_words_present": [
+      "H2Next"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3666": {
+   "sector": "hydrogen",
+   "name": "Zeevonk Hydrogen Project",
+   "klass": "named not admitted",
+   "country": "NLD",
+   "owner_hosts": [
+    "group.vattenfall.com"
+   ],
+   "searched": [
+    {
+     "url": "https://group.vattenfall.com",
+     "outcome": "200, 2849 chars",
+     "text_chars": 2849,
+     "sha256": "b747c4eef7e6883158b4beb2d945c328e7882621618a1d87f39941a60a193b0c",
+     "name_words_present": []
+    },
+    {
+     "url": "https://group.vattenfall.com/news",
+     "outcome": "200, 6421 chars",
+     "text_chars": 6421,
+     "sha256": "3f7217d268cb912a2dce9ddc34188f442ebf7aa9914f384eb292a8ac7a1683b8",
+     "name_words_present": []
+    },
+    {
+     "url": "https://group.vattenfall.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://group.vattenfall.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:3677": {
+   "sector": "hydrogen",
+   "name": "Energiequelle  green hydrogen project in Oulu, phases 2 and 3",
+   "klass": "named not admitted",
+   "country": "FIN",
+   "owner_hosts": [
+    "www.ouka.fi"
+   ],
+   "searched": [
+    {
+     "url": "https://www.ouka.fi",
+     "outcome": "200, 5862 chars",
+     "text_chars": 5862,
+     "sha256": "f10e0bc36a588e4e6decf5e18421324584db03d2c1fe6a9b686a3fe3d0d947f9",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.ouka.fi/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.ouka.fi/en/news",
+     "outcome": "200, 4994 chars",
+     "text_chars": 4994,
+     "sha256": "6c4f64cddb4f96ae5fdc8bda9e05d646754e2dc6728b2321583ef04e197d79a7",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.ouka.fi/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:3678": {
+   "sector": "hydrogen",
+   "name": "ECO2FLY",
+   "klass": "named not admitted",
+   "country": "ESP",
+   "owner_hosts": [
+    "ignis.es"
+   ],
+   "searched": [
+    {
+     "url": "https://ignis.es",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/en/news",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ignis.es/press",
+     "outcome": "403",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:3700": {
+   "sector": "hydrogen",
+   "name": "Kaskade",
+   "klass": "none found",
+   "country": "DEU",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:3724": {
+   "sector": "hydrogen",
+   "name": "Occi'Jet_T1",
+   "klass": "none found",
+   "country": "FRA",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:3725": {
+   "sector": "hydrogen",
+   "name": "LICHEN",
+   "klass": "named not admitted",
+   "country": "FRA",
+   "owner_hosts": [
+    "concertation-lichen.eu"
+   ],
+   "searched": [
+    {
+     "url": "https://concertation-lichen.eu",
+     "outcome": "200, 5672 chars",
+     "text_chars": 5672,
+     "sha256": "1d339fd7c554ada3238e04080b5ca7d516b7999e3836c935cebde8b3b1e1a92c",
+     "name_words_present": [
+      "LICHEN"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3726": {
+   "sector": "hydrogen",
+   "name": "ReSTart",
+   "klass": "named not admitted",
+   "country": "FRA",
+   "owner_hosts": [
+    "restart-concertation.eu"
+   ],
+   "searched": [
+    {
+     "url": "https://restart-concertation.eu",
+     "outcome": "200, 5810 chars",
+     "text_chars": 5810,
+     "sha256": "513d23466c251989002716c96d90f0f198d199f2b59f8a9d6d282cf3288323de",
+     "name_words_present": [
+      "ReSTart"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3727": {
+   "sector": "hydrogen",
+   "name": "OrCHyDé ",
+   "klass": "named not admitted",
+   "country": "FRA",
+   "owner_hosts": [
+    "concertation-orchyde.eu"
+   ],
+   "searched": [
+    {
+     "url": "https://concertation-orchyde.eu",
+     "outcome": "200, 8269 chars",
+     "text_chars": 8269,
+     "sha256": "bfc9a40bc3a3da82b948c55883f8b95b197b434a7442b647e087dae1b59968e5",
+     "name_words_present": [
+      "OrCHyDé"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3729": {
+   "sector": "hydrogen",
+   "name": "EpHyne",
+   "klass": "named not admitted",
+   "country": "FRA",
+   "owner_hosts": [
+    "www.debatpublic.fr"
+   ],
+   "searched": [
+    {
+     "url": "https://www.debatpublic.fr",
+     "outcome": "200, 8606 chars",
+     "text_chars": 8606,
+     "sha256": "3c7803105cddb46f5793c99fa79942e99a425f3253d24077efaf58b5e06c1a06",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.debatpublic.fr/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.debatpublic.fr/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.debatpublic.fr/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:3732": {
+   "sector": "hydrogen",
+   "name": "NeoCarb_Kerosène",
+   "klass": "named not admitted",
+   "country": "FRA",
+   "owner_hosts": [
+    "www.debatpublic.fr"
+   ],
+   "searched": [
+    {
+     "url": "https://www.debatpublic.fr",
+     "outcome": "200, 8606 chars",
+     "text_chars": 8606,
+     "sha256": "3c7803105cddb46f5793c99fa79942e99a425f3253d24077efaf58b5e06c1a06",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.debatpublic.fr/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.debatpublic.fr/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.debatpublic.fr/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "iea:3734": {
+   "sector": "hydrogen",
+   "name": "Elyfos",
+   "klass": "none found",
+   "country": "FRA",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "iea:3795": {
+   "sector": "hydrogen",
+   "name": "VolagHy Kuopio",
+   "klass": "named not admitted",
+   "country": "FIN",
+   "owner_hosts": [
+    "volaghy.com"
+   ],
+   "searched": [
+    {
+     "url": "https://volaghy.com",
+     "outcome": "200, 4519 chars",
+     "text_chars": 4519,
+     "sha256": "82544a2624afad52e7f9309960b7ac39023fcdab50188e15cdf0f3efbe7034ef",
+     "name_words_present": [
+      "VolagHy",
+      "Kuopio"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3822": {
+   "sector": "hydrogen",
+   "name": "Moeve La Rábida Energy Park (Huelva) - phase 1 (expansion) - Andalusian Green Hydrogen Valley\nONUBA I Project (Together with THARSIS: LUXIA project)",
+   "klass": "named not admitted",
+   "country": "ESP",
+   "owner_hosts": [
+    "www.moeveglobal.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.moeveglobal.com",
+     "outcome": "200, 5824 chars",
+     "text_chars": 5824,
+     "sha256": "232ae2c7d13d7b760e40e655e98540cd6e1ff0fb7e26dcf1820394d91d92da23",
+     "name_words_present": [
+      "Moeve",
+      "Huelva"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3904": {
+   "sector": "hydrogen",
+   "name": "Fjord PtX",
+   "klass": "named not admitted",
+   "country": "DNK",
+   "owner_hosts": [
+    "www.fjord-ptx.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.fjord-ptx.com",
+     "outcome": "200, 1440 chars",
+     "text_chars": 1440,
+     "sha256": "8753483a064a6e41ee383aaeb1541a7a7b1aa514aac0f37b18972970303c0e9a",
+     "name_words_present": [
+      "Fjord"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "iea:3907": {
+   "sector": "hydrogen",
+   "name": " Project SkyKraft",
+   "klass": "named not admitted",
+   "country": "SWE",
+   "owner_hosts": [
+    "skynrg.com"
+   ],
+   "searched": [
+    {
+     "url": "https://skynrg.com",
+     "outcome": "200, 6350 chars",
+     "text_chars": 6350,
+     "sha256": "3d61529857ce836c2720182c7ea45872605c2f0c1d16ebfbd5d9c90607ed911b",
+     "name_words_present": [
+      "SkyKraft"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "te24:West Midlands Gigafactory Coventry": {
+   "sector": "batteries",
+   "name": "West Midlands Gigafactory Coventry",
+   "klass": "searched none found",
+   "country": "",
+   "owner_hosts": [
+    "wmgigafactory.com",
+    "wmgigafactory.co.uk",
+    "coventry.gov.uk"
+   ],
+   "searched": [
+    {
+     "url": "https://wmgigafactory.com",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://wmgigafactory.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://wmgigafactory.com/en/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://wmgigafactory.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "te24:SVOLT Finland": {
+   "sector": "batteries",
+   "name": "SVOLT Finland",
+   "klass": "named not admitted",
+   "country": "",
+   "owner_hosts": [
+    "svolt-eu.com"
+   ],
+   "searched": [
+    {
+     "url": "https://svolt-eu.com",
+     "outcome": "200, empty body",
+     "text_chars": 92,
+     "sha256": "04ae24c833fe1d19753dd6411d259c8b830fed579b2f812a9f7c37ef7dd1a3f7",
+     "name_words_present": [
+      "SVOLT"
+     ]
+    },
+    {
+     "url": "https://svolt-eu.com/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://svolt-eu.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://svolt-eu.com/press",
+     "outcome": "200, empty body",
+     "text_chars": 92,
+     "sha256": "04ae24c833fe1d19753dd6411d259c8b830fed579b2f812a9f7c37ef7dd1a3f7",
+     "name_words_present": [
+      "SVOLT"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": true
+  },
+  "te24:Prologium Dunkirk": {
+   "sector": "batteries",
+   "name": "Prologium Dunkirk",
+   "klass": "searched none found",
+   "country": "",
+   "owner_hosts": [
+    "prologium.com"
+   ],
+   "searched": [
+    {
+     "url": "https://prologium.com",
+     "outcome": "200, 16270 chars",
+     "text_chars": 16270,
+     "sha256": "83038628cdcad8c47d41111302ed35c8c4e4038a712cae7e060e2c92813eb745",
+     "name_words_present": [
+      "Prologium",
+      "Dunkirk"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "te24:Elinor Batteries Orkland": {
+   "sector": "batteries",
+   "name": "Elinor Batteries Orkland",
+   "klass": "searched none found",
+   "country": "",
+   "owner_hosts": [
+    "elinorbatteries.com"
+   ],
+   "searched": [
+    {
+     "url": "https://elinorbatteries.com",
+     "outcome": "200, 1483 chars",
+     "text_chars": 1483,
+     "sha256": "78743f1406921c3e2efbdb882bd750bef059a64c90a493420260afa823c69df5",
+     "name_words_present": [
+      "Elinor",
+      "Batteries"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "te24:BMZ/TerraE Karlstein am Main": {
+   "sector": "batteries",
+   "name": "BMZ/TerraE Karlstein am Main",
+   "klass": "named not admitted",
+   "country": "",
+   "owner_hosts": [
+    "bmz-group.com"
+   ],
+   "searched": [
+    {
+     "url": "https://bmz-group.com",
+     "outcome": "200, 4408 chars",
+     "text_chars": 4408,
+     "sha256": "296be0f8485467fb3ac6e01060d988be3547c8b71a2c906bc1d48b4875e994f1",
+     "name_words_present": [
+      "Karlstein"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "te24:InoBat Cuprija": {
+   "sector": "batteries",
+   "name": "InoBat Cuprija",
+   "klass": "searched none found",
+   "country": "",
+   "owner_hosts": [
+    "inobat.eu"
+   ],
+   "searched": [
+    {
+     "url": "https://inobat.eu",
+     "outcome": "200, 7705 chars",
+     "text_chars": 7705,
+     "sha256": "d873213bc4aecf2f5cb0131f15ca2272f379e46dc3e65913e9992d654005376a",
+     "name_words_present": [
+      "InoBat"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "te24:InoBat Valladolid": {
+   "sector": "batteries",
+   "name": "InoBat Valladolid",
+   "klass": "named not admitted",
+   "country": "",
+   "owner_hosts": [
+    "inobat.eu"
+   ],
+   "searched": [
+    {
+     "url": "https://inobat.eu",
+     "outcome": "200, 7705 chars",
+     "text_chars": 7705,
+     "sha256": "913af8e139dcc1f881b847fdcc54c74e9eca5761f76c3e332bee3ad93da63c51",
+     "name_words_present": [
+      "InoBat"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "te24:CTAG Vigo": {
+   "sector": "batteries",
+   "name": "CTAG Vigo",
+   "klass": "searched none found",
+   "country": "",
+   "owner_hosts": [
+    "ctag.com"
+   ],
+   "searched": [
+    {
+     "url": "https://ctag.com",
+     "outcome": "200, 25924 chars",
+     "text_chars": 25924,
+     "sha256": "2474015bc941e6dbc48a585eb7f153e7866bf0eb08f86f272393e01852447a8e",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ctag.com/news",
+     "outcome": "200, 25924 chars",
+     "text_chars": 25924,
+     "sha256": "2474015bc941e6dbc48a585eb7f153e7866bf0eb08f86f272393e01852447a8e",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ctag.com/en/news",
+     "outcome": "200, 25246 chars",
+     "text_chars": 25246,
+     "sha256": "5a71047731080f0f656d6a4a7d0b995d6fd08d9dcb7cbd52a897df827f681635",
+     "name_words_present": null
+    },
+    {
+     "url": "https://ctag.com/press",
+     "outcome": "200, 25924 chars",
+     "text_chars": 25924,
+     "sha256": "2474015bc941e6dbc48a585eb7f153e7866bf0eb08f86f272393e01852447a8e",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "te24:Basquevolt Alava": {
+   "sector": "batteries",
+   "name": "Basquevolt Alava",
+   "klass": "named not admitted",
+   "country": "",
+   "owner_hosts": [
+    "basquevolt.com"
+   ],
+   "searched": [
+    {
+     "url": "https://basquevolt.com",
+     "outcome": "200, 3325 chars",
+     "text_chars": 3325,
+     "sha256": "5e142d3a130a860e33adcb049603e07e182cd4c4e4a30935c885f4008062da67",
+     "name_words_present": [
+      "Basquevolt"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "te24:FAAM Teverola": {
+   "sector": "batteries",
+   "name": "FAAM Teverola",
+   "klass": "searched none found",
+   "country": "",
+   "owner_hosts": [
+    "seri-industrial.it"
+   ],
+   "searched": [
+    {
+     "url": "https://seri-industrial.it",
+     "outcome": "200, 3511 chars",
+     "text_chars": 3511,
+     "sha256": "8e5af654d55c7204306d53f025fe58360bcf20f552f5370d3c79bec97983fe1e",
+     "name_words_present": []
+    },
+    {
+     "url": "https://seri-industrial.it/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://seri-industrial.it/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://seri-industrial.it/press",
+     "outcome": "200, 2797 chars",
+     "text_chars": 2797,
+     "sha256": "94153e04614b0a19ab62e5c524de4da0f7f8d56ceabf0d847616d5457048d8fc",
+     "name_words_present": []
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "te24:Swiss Clean Battery Domat-Ems": {
+   "sector": "batteries",
+   "name": "Swiss Clean Battery Domat-Ems",
+   "klass": "searched none found",
+   "country": "",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "bn26:Volvo Mariestad": {
+   "sector": "batteries",
+   "name": "Volvo Mariestad",
+   "klass": "searched none found",
+   "country": "SE",
+   "owner_hosts": [
+    "volvogroup.com"
+   ],
+   "searched": [
+    {
+     "url": "https://volvogroup.com",
+     "outcome": "200, 9480 chars",
+     "text_chars": 9480,
+     "sha256": "11e332db93f16cfc3c8ef691d5f0f362a24826ca1116ad352f4ec81e56cd97db",
+     "name_words_present": [
+      "Volvo",
+      "Mariestad"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "bn26:TIAMAT Douvrin": {
+   "sector": "batteries",
+   "name": "TIAMAT Douvrin",
+   "klass": "named not admitted",
+   "country": "FR",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "bn26:Blue Solutions Quimper": {
+   "sector": "batteries",
+   "name": "Blue Solutions Quimper",
+   "klass": "searched none found",
+   "country": "FR",
+   "owner_hosts": [
+    "blue-solutions.com"
+   ],
+   "searched": [
+    {
+     "url": "https://blue-solutions.com",
+     "outcome": "200, 5532 chars",
+     "text_chars": 5532,
+     "sha256": "f5d695f4551fdf8f987845b351f6c7af1f2f3bf8007c4fdc7f2dea296e12a653",
+     "name_words_present": [
+      "Solutions"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "bn26:ProLogium Dunkirk": {
+   "sector": "batteries",
+   "name": "ProLogium Dunkirk",
+   "klass": "searched none found",
+   "country": "FR",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "bn26:BASQUEVOLT Vitoria-Gasteiz": {
+   "sector": "batteries",
+   "name": "BASQUEVOLT Vitoria-Gasteiz",
+   "klass": "named not admitted",
+   "country": "ES",
+   "owner_hosts": [
+    "basquevolt.com"
+   ],
+   "searched": [
+    {
+     "url": "https://basquevolt.com",
+     "outcome": "200, 3325 chars",
+     "text_chars": 3325,
+     "sha256": "5e142d3a130a860e33adcb049603e07e182cd4c4e4a30935c885f4008062da67",
+     "name_words_present": [
+      "BASQUEVOLT",
+      "Vitoria",
+      "Gasteiz"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "bn26:InoBat Valladolid": {
+   "sector": "batteries",
+   "name": "InoBat Valladolid",
+   "klass": "named not admitted",
+   "country": "ES",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "bn26:EAS Nordhausen": {
+   "sector": "batteries",
+   "name": "EAS Nordhausen",
+   "klass": "named not admitted",
+   "country": "DE",
+   "owner_hosts": [
+    "eas-batteries.com"
+   ],
+   "searched": [
+    {
+     "url": "https://eas-batteries.com",
+     "outcome": "200, 4922 chars",
+     "text_chars": 4922,
+     "sha256": "1217aaf9d49a886d0341ad92e69f4a6787c08a4119a9ba3f2c7f2b1241b0fdc2",
+     "name_words_present": [
+      "Nordhausen"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "bn26:V4SMART Nördlingen": {
+   "sector": "batteries",
+   "name": "V4SMART Nördlingen",
+   "klass": "searched none found",
+   "country": "DE",
+   "owner_hosts": [
+    "v4drive.com",
+    "v4smart.de",
+    "www.v4smart.de",
+    "varta-ag.com"
+   ],
+   "searched": [
+    {
+     "url": "https://v4drive.com",
+     "outcome": "200, 2774 chars",
+     "text_chars": 2774,
+     "sha256": "294a3192510e299d1efc208961206b53ece236c1e0002093e1ae60e9379e366c",
+     "name_words_present": [
+      "V4SMART"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "bn26:FAAM Terevola": {
+   "sector": "batteries",
+   "name": "FAAM Terevola",
+   "klass": "searched none found",
+   "country": "IT",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "bn26:InoBat Serbia": {
+   "sector": "batteries",
+   "name": "InoBat Serbia",
+   "klass": "searched none found",
+   "country": "RS",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:561": {
+   "sector": "cement",
+   "name": "VAIA HyNoVi project (Vicat Montalieu plant)",
+   "klass": "named not admitted",
+   "country": "France",
+   "owner_hosts": [
+    "www.vicat.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.vicat.com",
+     "outcome": "200, 5637 chars",
+     "text_chars": 5637,
+     "sha256": "1b3f31adc09b62d3fd0d7b52ec39790599c7ebf701454403e32304e611f2c87a",
+     "name_words_present": [
+      "Vicat"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "ieaccus:686": {
+   "sector": "cement",
+   "name": "Buzzi Unicem Augusta cement plant",
+   "klass": "searched none found",
+   "country": "Italy",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1065": {
+   "sector": "cement",
+   "name": "Cauldon cement plant",
+   "klass": "named not admitted",
+   "country": "United Kingdom",
+   "owner_hosts": [
+    "www.aggregate.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.aggregate.com",
+     "outcome": "200, 10783 chars",
+     "text_chars": 10783,
+     "sha256": "64913ea9de3d02cb3e64796c347cafcce2477e329f14dfdf2405682fc54a2919",
+     "name_words_present": [
+      "Cauldon",
+      "cement"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "ieaccus:1142": {
+   "sector": "cement",
+   "name": "Beremend cement factory",
+   "klass": "searched none found",
+   "country": "Hungary",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1210": {
+   "sector": "cement",
+   "name": "Capsol feasibility study cement Germany",
+   "klass": "searched none found",
+   "country": "Germany",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1277": {
+   "sector": "cement",
+   "name": "SOMZERO CO2",
+   "klass": "searched none found",
+   "country": "Spain",
+   "owner_hosts": [
+    "cemex.es"
+   ],
+   "searched": [
+    {
+     "url": "https://cemex.es",
+     "outcome": "200, empty body",
+     "text_chars": 83,
+     "sha256": "3e26e36dc11cb7b56fd8f1a4ea51ea5357057ddb0516c99e46e2b954e04107b3",
+     "name_words_present": []
+    },
+    {
+     "url": "https://cemex.es/news",
+     "outcome": "200, empty body",
+     "text_chars": 83,
+     "sha256": "5c49537659c46810e90ec130d0c84ffdba98aef334f9de475dbef1c7c6461265",
+     "name_words_present": []
+    },
+    {
+     "url": "https://cemex.es/en/news",
+     "outcome": "200, empty body",
+     "text_chars": 83,
+     "sha256": "e59896afabbb5a46208cb35c4bbe8d5701c4b1cca92e22a9ad11778c149034d7",
+     "name_words_present": []
+    },
+    {
+     "url": "https://cemex.es/press",
+     "outcome": "200, empty body",
+     "text_chars": 83,
+     "sha256": "ac9260b2c6ccb47cbc5ce3c4b714f2d613eb8a9447e9ed7f1e7d9f899c011939",
+     "name_words_present": []
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1462": {
+   "sector": "cement",
+   "name": "Beli Net Zero (Beli Izvor plant)",
+   "klass": "named not admitted",
+   "country": "Bulgaria",
+   "owner_hosts": [
+    "www.holcim.bg"
+   ],
+   "searched": [
+    {
+     "url": "https://www.holcim.bg",
+     "outcome": "200, 5844 chars",
+     "text_chars": 5844,
+     "sha256": "4f50b63ae79543976dff7cd007520eb863471596ee720ea4d1cb9ace4b23f969",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.holcim.bg/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.holcim.bg/en/news",
+     "outcome": "200, 5844 chars",
+     "text_chars": 5844,
+     "sha256": "4f50b63ae79543976dff7cd007520eb863471596ee720ea4d1cb9ace4b23f969",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.holcim.bg/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "ieaccus:1478": {
+   "sector": "cement",
+   "name": "CO2nscious (Carboneras)",
+   "klass": "named not admitted",
+   "country": "Spain",
+   "owner_hosts": [
+    "www.holcim.es"
+   ],
+   "searched": [
+    {
+     "url": "https://www.holcim.es",
+     "outcome": "200, 12346 chars",
+     "text_chars": 12346,
+     "sha256": "24f76e030fe62e899908303efe944e183ad5fc16c7624c0c3ad1553ea4de1927",
+     "name_words_present": [
+      "Carboneras"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "ieaccus:121": {
+   "sector": "transport and storage",
+   "name": "D'Artagnan Dunkirk CO2 Hub Phase 1",
+   "klass": "named not admitted",
+   "country": "France",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:122": {
+   "sector": "transport and storage",
+   "name": "D'Artagnan Dunkirk CO2 Hub Phase 2",
+   "klass": "named not admitted",
+   "country": "France",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:123": {
+   "sector": "transport and storage",
+   "name": "D'Artagnan Dunkirk CO2 Hub Phase 3",
+   "klass": "named not admitted",
+   "country": "France",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:294": {
+   "sector": "transport and storage",
+   "name": "Northern Endurance Partnership phase 1",
+   "klass": "named not admitted",
+   "country": "United Kingdom",
+   "owner_hosts": [
+    "www.netzeroteesside.co.uk"
+   ],
+   "searched": [
+    {
+     "url": "https://www.netzeroteesside.co.uk",
+     "outcome": "200, 2054 chars",
+     "text_chars": 2054,
+     "sha256": "8e7afb3a4751716f7b3b7d47a6807e8deddbae74ef8a052139a6896fa37996bc",
+     "name_words_present": [
+      "Northern",
+      "Endurance",
+      "Partnership"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "ieaccus:319": {
+   "sector": "transport and storage",
+   "name": "ECO2CEE (Poland EU CCS Interconnector) phase 1",
+   "klass": "named not admitted",
+   "country": "Poland, Latvia, Lithuania",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:320": {
+   "sector": "transport and storage",
+   "name": "ECO2CEE (previously Poland EU CCS Interconnector) phase 2",
+   "klass": "named not admitted",
+   "country": "Poland, Latvia, Lithuania",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:322": {
+   "sector": "transport and storage",
+   "name": "Polaris offshore storage facility",
+   "klass": "searched none found",
+   "country": "Norway",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:343": {
+   "sector": "transport and storage",
+   "name": "PYCASSO hub phase 1 - eastern and western pipeline",
+   "klass": "searched none found",
+   "country": "France",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:349": {
+   "sector": "transport and storage",
+   "name": "Ravenna CCS phase 2",
+   "klass": "searched none found",
+   "country": "Italy",
+   "owner_hosts": [
+    "eni.com"
+   ],
+   "searched": [
+    {
+     "url": "https://eni.com",
+     "outcome": "200, 22962 chars",
+     "text_chars": 22962,
+     "sha256": "6ee4dabd0a3334a3fe79fa6c15f904d1c8ae8fa9acd2d9a8ceb525335a65f711",
+     "name_words_present": [
+      "Ravenna"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "ieaccus:452": {
+   "sector": "transport and storage",
+   "name": "Northern Endurance Partnership phase 2",
+   "klass": "named not admitted",
+   "country": "United Kingdom",
+   "owner_hosts": [
+    "www.netzeroteesside.co.uk"
+   ],
+   "searched": [
+    {
+     "url": "https://www.netzeroteesside.co.uk",
+     "outcome": "200, 2054 chars",
+     "text_chars": 2054,
+     "sha256": "8e7afb3a4751716f7b3b7d47a6807e8deddbae74ef8a052139a6896fa37996bc",
+     "name_words_present": [
+      "Northern",
+      "Endurance",
+      "Partnership"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "ieaccus:460": {
+   "sector": "transport and storage",
+   "name": "Northern Endurance Partnership phase 3",
+   "klass": "named not admitted",
+   "country": "United Kingdom",
+   "owner_hosts": [
+    "www.netzeroteesside.co.uk"
+   ],
+   "searched": [
+    {
+     "url": "https://www.netzeroteesside.co.uk",
+     "outcome": "200, 2054 chars",
+     "text_chars": 2054,
+     "sha256": "8e7afb3a4751716f7b3b7d47a6807e8deddbae74ef8a052139a6896fa37996bc",
+     "name_words_present": [
+      "Northern",
+      "Endurance",
+      "Partnership"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "ieaccus:527": {
+   "sector": "transport and storage",
+   "name": "CO2nnectNow HES Wilhelmshaven Tank Terminal phase 1",
+   "klass": "searched none found",
+   "country": "Germany",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:528": {
+   "sector": "transport and storage",
+   "name": "CO2T (formerly known as NOR-GE, Windershall DEA - Equinor pipeline)",
+   "klass": "named not admitted",
+   "country": "Netherlands-Norway",
+   "owner_hosts": [
+    "wintershalldea.com"
+   ],
+   "searched": [
+    {
+     "url": "https://wintershalldea.com",
+     "outcome": "503",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://wintershalldea.com/news",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://wintershalldea.com/en/news",
+     "outcome": "503",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://wintershalldea.com/press",
+     "outcome": "URLError",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:648": {
+   "sector": "transport and storage",
+   "name": "ECO2CEE (previously Poland EU CCS Interconnector) phase 3",
+   "klass": "named not admitted",
+   "country": "Poland, Latvia, Lithuania",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:649": {
+   "sector": "transport and storage",
+   "name": "ECO2Normandy phase 1",
+   "klass": "named not admitted",
+   "country": "France",
+   "owner_hosts": [
+    "www.airliquide.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.airliquide.com",
+     "outcome": "200, 7629 chars",
+     "text_chars": 7629,
+     "sha256": "59394baced7202b082dc6c3c3a59ed1bba6382c9c18398763b4f749a03010277",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.airliquide.com/news",
+     "outcome": "200, 6417 chars",
+     "text_chars": 6417,
+     "sha256": "6df3703f588be09741b62f2cfd436b2f40e8b48d9d0b4ee432e9d673602bece7",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.airliquide.com/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.airliquide.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "ieaccus:652": {
+   "sector": "transport and storage",
+   "name": "Callisto Mediterranean CO2 Network phase 1",
+   "klass": "searched none found",
+   "country": "France-Italy",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:653": {
+   "sector": "transport and storage",
+   "name": "Callisto Mediterranean CO2 Network phase 2",
+   "klass": "searched none found",
+   "country": "France-Italy",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:654": {
+   "sector": "transport and storage",
+   "name": "C Zero phase 1",
+   "klass": "searched none found",
+   "country": "Germany-Netherlands",
+   "owner_hosts": [
+    "carbonbridge.de"
+   ],
+   "searched": [
+    {
+     "url": "https://carbonbridge.de",
+     "outcome": "200, 22211 chars",
+     "text_chars": 22211,
+     "sha256": "6c910d0449bc37e30eaa3c525df32c2000f3ea3540470d9109411d8d95ecd324",
+     "name_words_present": null
+    },
+    {
+     "url": "https://carbonbridge.de/news",
+     "outcome": "200, 1276 chars",
+     "text_chars": 1276,
+     "sha256": "2a572016626a6634d7466a92565e2d4e21ed0bdced25fd26054a59da930ff0d6",
+     "name_words_present": null
+    },
+    {
+     "url": "https://carbonbridge.de/en/news",
+     "outcome": "200, 1276 chars",
+     "text_chars": 1276,
+     "sha256": "2a572016626a6634d7466a92565e2d4e21ed0bdced25fd26054a59da930ff0d6",
+     "name_words_present": null
+    },
+    {
+     "url": "https://carbonbridge.de/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "ieaccus:655": {
+   "sector": "transport and storage",
+   "name": "C Zero phase 2",
+   "klass": "searched none found",
+   "country": "Germany-Netherlands",
+   "owner_hosts": [
+    "carbonbridge.de"
+   ],
+   "searched": [
+    {
+     "url": "https://carbonbridge.de",
+     "outcome": "200, 22211 chars",
+     "text_chars": 22211,
+     "sha256": "6c910d0449bc37e30eaa3c525df32c2000f3ea3540470d9109411d8d95ecd324",
+     "name_words_present": null
+    },
+    {
+     "url": "https://carbonbridge.de/news",
+     "outcome": "200, 1276 chars",
+     "text_chars": 1276,
+     "sha256": "2a572016626a6634d7466a92565e2d4e21ed0bdced25fd26054a59da930ff0d6",
+     "name_words_present": null
+    },
+    {
+     "url": "https://carbonbridge.de/en/news",
+     "outcome": "200, 1276 chars",
+     "text_chars": 1276,
+     "sha256": "2a572016626a6634d7466a92565e2d4e21ed0bdced25fd26054a59da930ff0d6",
+     "name_words_present": null
+    },
+    {
+     "url": "https://carbonbridge.de/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "ieaccus:656": {
+   "sector": "transport and storage",
+   "name": "C Zero phase 3",
+   "klass": "searched none found",
+   "country": "Germany-Netherlands",
+   "owner_hosts": [
+    "carbonbridge.de"
+   ],
+   "searched": [
+    {
+     "url": "https://carbonbridge.de",
+     "outcome": "200, 22211 chars",
+     "text_chars": 22211,
+     "sha256": "6c910d0449bc37e30eaa3c525df32c2000f3ea3540470d9109411d8d95ecd324",
+     "name_words_present": null
+    },
+    {
+     "url": "https://carbonbridge.de/news",
+     "outcome": "200, 1276 chars",
+     "text_chars": 1276,
+     "sha256": "2a572016626a6634d7466a92565e2d4e21ed0bdced25fd26054a59da930ff0d6",
+     "name_words_present": null
+    },
+    {
+     "url": "https://carbonbridge.de/en/news",
+     "outcome": "200, 1276 chars",
+     "text_chars": 1276,
+     "sha256": "2a572016626a6634d7466a92565e2d4e21ed0bdced25fd26054a59da930ff0d6",
+     "name_words_present": null
+    },
+    {
+     "url": "https://carbonbridge.de/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "ieaccus:661": {
+   "sector": "transport and storage",
+   "name": "EU2NSEA PCI Project",
+   "klass": "searched none found",
+   "country": "Norway",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:664": {
+   "sector": "transport and storage",
+   "name": "CO2 TransPorts phase 2 (cross-border pipeline, phase 1 is Porthos and Antwerp?)",
+   "klass": "named not admitted",
+   "country": "Belgium-Netherlands",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:677": {
+   "sector": "transport and storage",
+   "name": "North Sea CO2 corridor (Zeebrugge - Germany)",
+   "klass": "searched none found",
+   "country": "Belgium-Germany",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:678": {
+   "sector": "transport and storage",
+   "name": "WH2V therminal (Wilhelshaven green energy hub phase 1)",
+   "klass": "named not admitted",
+   "country": "Multiple Europe",
+   "owner_hosts": [
+    "www.energyhub-wilhelmshaven.de"
+   ],
+   "searched": [
+    {
+     "url": "https://www.energyhub-wilhelmshaven.de",
+     "outcome": "200, 22408 chars",
+     "text_chars": 22408,
+     "sha256": "464091c41751dc59322bf92dbbcb76891189db85e2e17867cc22a457896de1d1",
+     "name_words_present": []
+    },
+    {
+     "url": "https://www.energyhub-wilhelmshaven.de/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.energyhub-wilhelmshaven.de/en/news",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    },
+    {
+     "url": "https://www.energyhub-wilhelmshaven.de/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "ieaccus:679": {
+   "sector": "transport and storage",
+   "name": "NL CCS Direct Injection Phase 1",
+   "klass": "searched none found",
+   "country": "Netherlands",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:684": {
+   "sector": "transport and storage",
+   "name": "Geothermal CCS Croatia",
+   "klass": "searched none found",
+   "country": "Croatia",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:685": {
+   "sector": "transport and storage",
+   "name": "PYCASSO hub phase 2 - northern and cross-border pipeline",
+   "klass": "searched none found",
+   "country": "France-Spain",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:687": {
+   "sector": "transport and storage",
+   "name": "Augusta C2 ",
+   "klass": "searched none found",
+   "country": "Italy-Greece",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:774": {
+   "sector": "transport and storage",
+   "name": "Navigator Terminal train",
+   "klass": "named not admitted",
+   "country": "United Kingdom",
+   "owner_hosts": [
+    "enfinium.co.uk"
+   ],
+   "searched": [
+    {
+     "url": "https://enfinium.co.uk",
+     "outcome": "200, 37406 chars",
+     "text_chars": 37406,
+     "sha256": "60b8cec15bebc1518a644a2841aa1dcf24945d7616df47bc1c3c7728b64a537f",
+     "name_words_present": [
+      "Terminal",
+      "train"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "ieaccus:907": {
+   "sector": "transport and storage",
+   "name": "The Bluestreak CO2 Joint Venture",
+   "klass": "named not admitted",
+   "country": "United Kingdom",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:917": {
+   "sector": "transport and storage",
+   "name": "Gismarvik CO2 hub",
+   "klass": "searched none found",
+   "country": "Norway",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1018": {
+   "sector": "transport and storage",
+   "name": "Acorn Isle of Grain to Peterhead shipping",
+   "klass": "searched none found",
+   "country": "United Kingdom",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1096": {
+   "sector": "transport and storage",
+   "name": "OCAP",
+   "klass": "searched none found",
+   "country": "Netherlands",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1203": {
+   "sector": "transport and storage",
+   "name": "TarraCO2",
+   "klass": "named not admitted",
+   "country": "Spain",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1278": {
+   "sector": "transport and storage",
+   "name": "Baltic Sea Storage",
+   "klass": "named not admitted",
+   "country": "Poland",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1361": {
+   "sector": "transport and storage",
+   "name": "NL CCS Direct Injection Phase 2",
+   "klass": "searched none found",
+   "country": "Netherlands",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1474": {
+   "sector": "transport and storage",
+   "name": "CarbonConnect",
+   "klass": "searched none found",
+   "country": "Belgium-United Kingdom",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  },
+  "ieaccus:1501": {
+   "sector": "transport and storage",
+   "name": "CNetSS",
+   "klass": "named not admitted",
+   "country": "Sweden",
+   "owner_hosts": [
+    "bioenergyinternational.com"
+   ],
+   "searched": [
+    {
+     "url": "https://bioenergyinternational.com",
+     "outcome": "200, 6363 chars",
+     "text_chars": 6363,
+     "sha256": "687766796b32f0583071a02fe83b19d27a8964d9781397672b7eb06e48c78a32",
+     "name_words_present": []
+    },
+    {
+     "url": "https://bioenergyinternational.com/news",
+     "outcome": "200, 8821 chars",
+     "text_chars": 8821,
+     "sha256": "0f43556d6233ee931f7afcb411db50bf37b645476279bc08c8beac9708a46edf",
+     "name_words_present": []
+    },
+    {
+     "url": "https://bioenergyinternational.com/en/news",
+     "outcome": "200, 8821 chars",
+     "text_chars": 8821,
+     "sha256": "0f43556d6233ee931f7afcb411db50bf37b645476279bc08c8beac9708a46edf",
+     "name_words_present": []
+    },
+    {
+     "url": "https://bioenergyinternational.com/press",
+     "outcome": "404",
+     "text_chars": 0,
+     "sha256": "",
+     "name_words_present": null
+    }
+   ],
+   "owner_page_names_it": false,
+   "browser_queue": false
+  },
+  "ieaccus:1506": {
+   "sector": "transport and storage",
+   "name": "Basel-Zurich corridor",
+   "klass": "named not admitted",
+   "country": "Switzerland",
+   "owner_hosts": [
+    "www.penspen.com"
+   ],
+   "searched": [
+    {
+     "url": "https://www.penspen.com",
+     "outcome": "200, 9861 chars",
+     "text_chars": 9861,
+     "sha256": "d29f69c8d41dc0970444c7b4dc331c9de49bd5828e2f6851e241804d0b88081f",
+     "name_words_present": [
+      "corridor"
+     ]
+    }
+   ],
+   "owner_page_names_it": true,
+   "browser_queue": false
+  },
+  "ieaccus:1525": {
+   "sector": "transport and storage",
+   "name": "Fieni-Botești ",
+   "klass": "searched none found",
+   "country": "Romania",
+   "owner_hosts": [],
+   "searched": [],
+   "owner_page_names_it": false,
+   "browser_queue": true
+  }
+ }
+}

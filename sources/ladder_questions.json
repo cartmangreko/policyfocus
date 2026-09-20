@@ -77,6 +77,102 @@
    "what_the_table_shows": "Steel clears rung 1 on 18 of 49 scored entries — the lowest of the five sectors, where every other sector clears it on more than half.",
    "why_it_is_here": "The steel population is keyed by WORKS, and GEM's own row already names the works and its municipality. What rung 1 asks is whether THE OWNER OR THE PERMITTING AUTHORITY names the site, and GEM is neither. So a works everybody can find on a map fails rung 1 when its owner has published nothing about the project — which is the rung working exactly as written, and looks like a register that cannot locate steel plants.",
    "what_would_settle_it": "Nothing. It is recorded because the cross-sector table invites the comparison and the comparison is misleading without this sentence."
+  },
+  {
+   "id": "L7",
+   "raised": "2026-09-21",
+   "question": "Should a citation whose every fetch record is a refusal fail the build?",
+   "what_was_confirmed": "THE CITATION GATE DID NOT MATCH BYTE FOR BYTE AND NOW MEASURES IT. check_citations.py asked whether a cited URL appears in a fetch index — a STRING comparison — and it walked only data/transition/projects.json and technologies.json. Two changes: the five census files are walked now, which is where the twelve truncated URLs of D-S12 lived and why no gate saw them; and sources/check_citation_bodies.py asks the stronger question, whether a body exists under the hash the index records.",
+   "what_it_found": "441 distinct citations checked against the bytes in six caches: 118 have a body on file, 28 are hand-read and filed, 30 were fetched and every record is a refusal, and 238 are in no index on this machine.",
+   "why_it_is_not_blocking_yet": "A CACHE IS PER-WORKTREE AND GITIGNORED. A body fetched in the main checkout is absent in the census checkout, so 'no bytes here' can mean the citation is bad or that the bytes are one directory over, and this gate cannot tell those apart. A gate that blocks on the difference blocks on where somebody is standing. AND IT IS MID-PASS: the standing rule of 21 September is that no rule changes until brief 14 and the supplier sweep are in.",
+   "what_would_settle_it": "Run it in the main worktree, where the hydrogen bodies are, and see how many of the 57 survive. If most do, they are real defects and the gate should block; if most resolve, the gate needs to read every worktree's cache or the caches need to be one shared store.",
+   "the_first_thirty_printed": [
+    "https://api.iea.org/hydrogen/project",
+    "https://climate.ec.europa.eu/",
+    "https://edp.com/en/europe/spain/projects/energy-transition/green-h2-los-barrios",
+    "https://en.volth2.com/wilhelmshaven",
+    "https://enertrag.com/news-and-press/pressemitteilungen/enertrag-et-l-arrondissement-de-prignitz-posent-un-no",
+    "https://fr.airliquide.com/a-propos/actualites-publications/air-liquide-obtient-lautorisation-dexploiter-son-",
+    "https://fuella.no/projects/project-skipavika/",
+    "https://gen2energy.com/production-sites/",
+    "https://globalparques.pt/en/news/neogreen-portugal-develops-a-green-hydrogen-project-in-sines/",
+    "https://h2apex.com/en/h2apex-news/closing-of-the-acquisition-of-hh2e-werk-lubmin-gmbh/",
+    "https://hghh.eu/",
+    "https://hoestptxesbjerg.dk/about-ptx/",
+    "https://ipcei.observatory.clean-hydrogen.europa.eu/hycc-h2ermes-nl30",
+    "https://itm-power.com/news/gigastack-project-one-step-closer-to-renewable-hydrogen-at-industrial-scale-as-ph",
+    "https://madoquapower2x.com/",
+    "https://meld.energy/projects/",
+    "https://morgenenergy.com/njordkraft/",
+    "https://normandhy.airliquide.com/en",
+    "https://ric.energy/besaya-h2-proyecto-ric-energy-impulsara-descarbonizacion-cantabria/",
+    "https://stateraenergy.co.uk/projects/kintore-hydrogen",
+    "https://tes-h2.com/news/tes-and-ewe-to-build-500mw-electrolyser-at-wilhelmshaven-green-energy-hub",
+    "https://uk.rwe.com/innovation/pembroke-net-zero-centre-pnzc/pembroke-green-hydrogen/",
+    "https://www.airliquide.com/group/press-releases-news/2023-09-14/air-liquide-takes-further-step-developing-hy",
+    "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-",
+    "https://www.bp.com/de_de/germany/home/presse/nachrichten/2026-07-23-lingen-green-hydrogen-grosskomponenten-e",
+    "https://www.bp.com/de_de/germany/home/presse/pressemeldungen/pm-2024-12-18-bp-verkuendet-investitionsentsche",
+    "https://www.eib.org/en/press/all/2025-107-eib-finances-galp-s-renewable-hydrogen-and-biofuels-projects-in-si",
+    "https://www.eib.org/en/projects/pipelines/all/20230533",
+    "https://www.endesa.com/en/press/press-room/news/energy-transition/endesa-studies-developing-23-green-hydroge",
+    "https://www.ewe.com/de/media-center/pressemitteilungen/2024/07/bundeswirtschaftsminister-robert-habeck-bergi"
+   ],
+   "note_on_the_list": "The gate prints the first thirty; the count is 57. Run it for the whole list."
+  },
+  {
+   "id": "L8",
+   "raised": "2026-09-21",
+   "question": "Two entries classed `searched none found` have an owner page that names the works. Do they move, and to what?",
+   "held": true,
+   "why_held": "THE STANDING RULE OF 21 SEPTEMBER: nothing is amended mid-pass, and a case the rules do not settle goes here with the entry held. These two are not rule questions — the rules settle them — but the pass that found them is the pass that would benefit from them, which is the shape D-B1 froze the rung tests against. They are written with the evidence so the next pass classes them rather than re-finding them.",
+   "entries": [
+    {
+     "key": "bn26:Volvo Mariestad",
+     "sector": "batteries",
+     "class_now": "searched none found",
+     "found_at": "https://volvogroup.com",
+     "verbatim": "Press release 2026-09-10: 'Volvo Group announces energy park initiative as next step in Mariestad. Volvo Group announces next step in the Mariestad expansion process with plans for an energy park near the intended battery cell production site.'",
+     "reading": "THE OWNER NAMES THE SITE and calls the cell plant 'intended'. That clears the site leg and leaves the capacity leg unstated, so the class it supports is `named not admitted`, failed leg CAPACITY — not an admission. `searched none found` is wrong either way: something was found."
+    },
+    {
+     "key": "te24:Prologium Dunkirk",
+     "sector": "batteries",
+     "class_now": "searched none found",
+     "found_at": "https://prologium.com",
+     "verbatim": "The front page carries 'Dunkirk Gigafactory Groundbreaking' twice, in its own carousel.",
+     "reading": "THE OWNER NAMES THE WORKS AND SAYS IT HAS BROKEN GROUND. A carousel caption is thin for an admission and it is not nothing: the class it supports is at least `named not admitted`, and a deeper read of prologium.com is the task."
+    }
+   ],
+   "confirmed_not_changes": "FOUR MORE WERE READ AND DO NOT MOVE, which is worth recording because they look like hits in the signal column. EAS Nordhausen, BMZ Karlstein and BASQUEVOLT Vitoria-Gasteiz all match on the place name IN THE IMPRINT — which is exactly what the battery census already recorded as the failure ('bmz-group.com names Karlstein am Main exactly once, in the imprint'). Holcim's Carboneras match is a photo exhibition, 'Carboneras en fotos'. AND iea:1662's owner host is barseback.com, WHICH IS A GOLF RESORT — a bad host in the earlier record, not a finding about the Barsebäck Hydrogen Hub."
+  },
+  {
+   "id": "L9",
+   "raised": "2026-09-21",
+   "held": true,
+   "question": "Fifteen hydrogen entries are classed `searched, none found` on domains this register invented from the project's name. What are they classed instead?",
+   "what_the_record_shows": "QUOTED FROM sources/research_pass_14_summary.json, key `the_admission_search_guessed_domains`. The admission search of 10 September ran over 167 entries and gave every one the same four EU press URLs, then for most of them `<projectname>.com` and `<projectname>.eu`. In 47 entries EVERY non-EU host it tried was derived from the project's own name. www.labskive.com for Green Lab Skive, www.castellon.com for BP's Castellón refinery, www.ccuaalborg.com for the Green CCU Hub at Aalborg — and www.barseback.com for the Barsebäck Hydrogen Hub, WHICH IS A GOLF RESORT.",
+   "why_it_is_not_simply_wrong": "THE GUESS IS OFTEN RIGHT, which is how it survived: 28 of the 47 came back `owner or permit source names the site`, because a project frequently is at its own name. A guessed domain that answers and names the works is a fact, however it was reached. What cannot stand is the other column.",
+   "the_fifteen": [
+    "605",
+    "830",
+    "1191",
+    "1505",
+    "1541",
+    "1654",
+    "1907",
+    "2036",
+    "2111",
+    "2211",
+    "2427",
+    "2742",
+    "3096",
+    "3181",
+    "3328"
+   ],
+   "the_problem": "For these fifteen, `searched, none found` rests on domains nobody published. A guessed domain that 404s is not a search, and the class says the register looked where the owner is. IT DID NOT LOOK ANYWHERE THE OWNER SAID IT WAS.",
+   "what_would_settle_it": "A fourth outcome in the admission search's own vocabulary — `no owner domain located` — separating 'the owner's pages say nothing' from 'no owner page was found'. That is a change to a census's class vocabulary and the standing rule of 21 September holds it until brief 14 and the supplier sweep are in.",
+   "and_it_is_not_this_pass_s_mistake_alone": "BRIEF 14's OWN SEARCH INHERITED THE GUESSES. research_pass.py takes an entry's owner host from the hosts in its own records and refuses to invent one — and the records it read already contained invented hosts, so twelve of the eighty-two entries in the browser queue are queued against a domain that never existed. The rule against folding a name into a key is only as good as the records it reads."
   }
  ]
 }
