@@ -1,0 +1,31 @@
+{
+  "_comment": "WHAT WAS ALREADY IN THE TREE when the prose-scoring rule was written, 21 September 2026. Every entry names the scorer, the prose field it decides on, and what would remove it — which is always the same shape: give the record a typed field and read that. check_prose_scoring.py fails on a NEW one and fails on a STALE one, so this list can only shrink. It is not a place to put a scorer written after today.",
+  "rule": "sources/scope.md, \"A scorer reads typed fields, and never the prose\"",
+  "written": "2026-09-21",
+  "exemptions": [
+    {
+      "file": "sources/build_ladder_all.py",
+      "function": "score_entry",
+      "field": "failed_leg",
+      "since": "2026-09-21",
+      "why": "D-A11's fix splits the leg text at its first em-dash to recover the leg — `CAPACITY — the owner names the site and states no GWh` -> `capacity`. It is the narrowest possible read and it is still a parse of a sentence: a leg written without the dash, or with the clause first, scores wrong and nothing says so.",
+      "what_removes_it": "A typed `failed_leg_code` on the admission record, from the closed leg vocabulary, written by the censuses that write `failed_leg`. The scorer then compares the code and never touches the sentence."
+    },
+    {
+      "file": "sources/build_ladder_all.py",
+      "function": "medium_of",
+      "field": "note",
+      "since": "2026-09-21",
+      "why": "The press-quoted amendment decides `press` against `press_quoting_owner` by running two regexes over the speaker and the cell's NOTE — free text written for a reader. A note that mentions a trade title while resting on the owner's own page is classed press, and the note is the only place the distinction currently lives.",
+      "what_removes_it": "A typed `medium` on the cell, set where the cell is written — the only moment anybody actually knows what kind of document was read — with `medium_of` left as the reader of that field."
+    },
+    {
+      "file": "sources/build_summaries.py",
+      "function": "infer_reach_channel",
+      "field": "addressee",
+      "since": "2026-09-21",
+      "why": "The reach channel is inferred by matching `procurement|tender|...` and `suppl(y|ier|ies)|input|...` against the addressee, duty and benefit prose concatenated together. `input` inside `inputs to the value chain` and inside `the input the authority requires` are the same match, and the residual case silently absorbs everything unmatched. The TypeScript twin in web/lib/reachChannel.ts has the same body and is NOT covered by this gate, which is a second reason to move the decision into the data.",
+      "what_removes_it": "A typed `reach_channel` on the obligation row — three values, authored once — read by both the Python and the TypeScript side, which also ends the port-and-keep-in-sync comment above the function."
+    }
+  ]
+}

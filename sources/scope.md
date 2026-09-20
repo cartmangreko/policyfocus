@@ -1570,6 +1570,53 @@ record because that is where the objects are. `data/transition/projects.json` ha
 no field for a capacity or a site disagreement, and the first of these forty-four
 to become a row will need one.
 
+### A scorer reads typed fields, and never the prose
+
+**A scorer or a classifier decides on typed fields only.** A leg description, a note,
+a verbatim, a reason, a clause — free text written for a reader — is never
+substring-matched, regex-matched or split for a verdict. Normalising a whole value
+and comparing it to a closed set is reading the field; asking what is *inside* the
+sentence is not.
+
+**Three times in three days a verdict turned on a word inside a sentence, and all
+three were wrong the same way.** The Sines screen of D-A5 excluded a project because
+"Sines" is inside `business`. L9's name-derived hosts counted `endesa.com` as a
+machine's guess because "Endesa" is inside "Huelva - Endesa" — the owner's real
+domain, found in a document. And rung 1 asked whether `site` appeared anywhere in the
+failed leg, so a leg reading `CAPACITY — the owner names the site and states no GWh`
+failed on the site leg it had passed.
+
+**The reason it keeps happening is that prose mentions whatever it needs to mention.**
+A sentence written to explain a capacity failure will name the site, because that is
+what makes it a sentence. A field means one thing. The match therefore fails in the
+direction nobody checks — on the entries whose prose is fullest, which are usually the
+entries somebody worked hardest on.
+
+**So when a verdict needs a fact that lives only in prose, the record gets a field.**
+Not a cleverer pattern, not a longer alternation, not a split on the punctuation that
+happens to be there today: a typed field, written where somebody actually knows the
+answer, from a closed vocabulary. Parsing the sentence more carefully is the same bug
+with a later failure date.
+
+`sources/check_prose_scoring.py` runs in the prebuild chain and makes it mechanical.
+It finds the scorers two ways — by the names this codebase uses (`score_*`,
+`classify*`, `*_of`, `*_cell`) and by shape, a function all of whose returns are bare
+string constants from a closed set — and follows a prose value through assignment,
+f-strings and normalisation into any `in`, `.startswith`, `.split` or `re` call.
+
+**The prose vocabulary is measured, never typed.** Every JSON key under `sources/` and
+`data/` whose string values are mostly sentence-shaped is prose, over at least three
+observations. A hand-kept list would have to be remembered, and not remembering is the
+failure being prevented; a field that becomes prose is covered the day it does.
+
+**What was already in the tree is named, dated and can only shrink.**
+`sources/prose_scoring_exemptions.json` carries three — the em-dash split that D-A11
+left behind, the press-quoted amendment deciding `press` against
+`press_quoting_owner` on a cell's note, and the reach channel inferred from the
+addressee and duty text — each with the typed field that would remove it. A new one
+fails the build, and so does an exemption whose code no longer violates the rule, so
+the list cannot outlive what it excused.
+
 ### A machine classification never writes to the record
 
 It writes to a file whose name says it is machine output, with every verdict null,
