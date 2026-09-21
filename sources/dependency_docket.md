@@ -966,3 +966,66 @@ observe its own push, so the question is asked one push later; a person who want
 the answer immediately runs `.githooks/pre-push --verify-last`, which is the same
 check on its own.
 *Touches:* `.githooks/pre-push`; nothing in the data.
+
+---
+
+## 12. The first verdict pass, 21 September 2026
+
+**42 of the 49 matched edges are verdicted** — 28 accept, 9 reject, 5 unclear —
+read and ruled by George Christopoulos from `sources/verdicts_worklist.csv`. The
+verdicts are in `sources/verdicts.json` and the build puts them on the edges;
+`apply_verdicts.py` prints what each one moves.
+
+**THIRTY RUNG 6 CELLS STOPPED BEING PROVISIONAL**, across every sector: hydrogen 7,
+cement 12, steel 8, batteries 2, transport and storage 1. No rung 6 RESULT changed
+when the verdicts landed — a verdict settles whether the cell rests on a reading
+somebody has checked, and the reading is the same reading. The results that did
+change came afterwards, from the reclasses below.
+
+**D-28 — Three edges are reclassed on the reader's verdict, through the readings
+and not by hand on the output.** Each carries the reason in its own note, and each
+keeps its verdict: the reject stands **on the firmness as filed**, which is what
+was wrong with it.
+
+- **`e0189`, Air Liquide → Holcim at Obourg: `contract` → `framework`.** What is
+  signed is an agreement to DEVELOP a capture solution; no equipment, quantity or
+  delivery is ordered in the sentence. **This is the one reclass that moves a
+  result**: `go4zero-obourg`'s rung 6 goes `pass` → `fail`, and cement's check 6
+  loses a pass.
+- **`e0264`, thyssenkrupp Polysius → TITAN at Kamari: `framework` → `intent`.** A
+  FEED is a study and D-14 puts a study at `intent` — which is where `e0242`'s FEED
+  appointment already sat. The note that filed it as framework claimed consistency
+  with `e0168` and `e0172`; that was consistency with the wrong pair.
+- **`e0257`, Ravenna CCS ← Heidelberg Materials (DREAM): `framework` → `intent`.**
+  The sentence states where the CO2 WILL GO. No agreement with the hub is stated
+  anywhere in the release.
+
+**AND SIX REJECTS ARE NOT RECLASSED, because they are not about firmness.** Four
+say the edge is about a DIFFERENT PROJECT at the same works — Primetals' HYFOR
+pilot against greentec Donawitz, Hy4Smelt against greentec Linz, Net Zero Teesside
+Power against the Wilton hydrogen project, and "chosen as technological partner"
+against Blastr — and two say the reading is a PRECURSOR demonstration at the works
+rather than an input to the plant the row describes (`e0085`, `e0212`, both at
+Salzgitter). A match refused is a bigger move than a firmness read down and it is
+the reader's, not this pass's: the verdicts stand and the edges keep their place,
+which is what a rejected reading is for.
+
+**D-29 — Seven of D-14's en-bloc frameworks have been re-read, and now carry a
+sentence.** D-14 mapped 98 `framework_agreement` edges to firmness `framework` by
+their kind and re-read none of them, so their `firmness_basis` was **the ruling that
+mapped them** — which is not a sentence anybody can verdict on. `e0179`, `e0215`,
+`e0223`, `e0168`, `e0172`, `e0213` and `e0112` now carry the sentence their source
+states, each checked against the cached page by the citation gate. **The firmness is
+untouched on all seven**: what changed is that the file now says what it rests on.
+
+The en-bloc ruling stands for the other 91. It is a reasonable default and a poor
+citation, and the seven that a reader reached are the seven that needed to be more
+than a default.
+
+**The second round is `sources/verdicts_worklist_round2.csv`** — those seven plus
+the five ruled `unclear`, each re-read for the sentence that states the agreement or
+the order, with what the re-read found. **Twice it found that the document states
+neither**: Axens's Dunkirk release reports a test result and names a consortium, and
+thyssenkrupp nucera's Boden release states a partnership and a capacity and never an
+order. That is an answer about the source, and it is the answer the reader's
+`unclear` was asking for.

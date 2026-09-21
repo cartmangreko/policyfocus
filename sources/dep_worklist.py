@@ -3,6 +3,8 @@
     python3 dep_worklist.py            # print
     python3 dep_worklist.py --write    # print and write dependency_worklist.md
     python3 dep_worklist.py --csv      # write sources/verdicts_worklist.csv
+    python3 dep_worklist.py --csv-round2   # …and the second round, from
+                                           #    sources/verdicts_round2.json
 
 WHY THIS IS A SCRIPT. Every edge in edges.json carries `verdict: null` and the
 verdict is the reader's field. The list of what is still unverdicted is therefore
@@ -31,6 +33,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 CSV_OUT = HERE / "verdicts_worklist.csv"
+ROUND2_IN = HERE / "verdicts_round2.json"
+ROUND2_OUT = HERE / "verdicts_worklist_round2.csv"
 
 # THE COLUMNS, AND THE LAST TWO ARE THE ONLY ONES A PERSON FILLS IN. Everything
 # before `verdict` is copied out of edges.json so the reader does not have to open
@@ -165,6 +169,52 @@ def write_csv() -> int:
     return len(rows)
 
 
+def write_round2() -> int:
+    """The second round: the twelve edges the first could not be ruled on.
+
+    SAME BUILDER, SAME COLUMNS, THREE MORE. `why_reread` says what sent the edge
+    back, `sentence_on_reread` carries what the source actually states where that
+    differs from what the edge carries, and `what_the_re_read_found` is the finding
+    — including, twice, that the document states no agreement at all, which is an
+    answer and not a gap.
+
+    `copy_on_file` is the column that decides how much the sentence is worth:
+    `original` means the bytes are the artefact the cache index records and the
+    citation gate rules on them; `re-read` means this machine holds a later copy of
+    the same address, the gate declines, and the sentence is as good as today's
+    page. Neither is a verdict. The verdict column is empty, as it was in round one.
+    """
+    import dep_text as T
+    pack = json.loads(ROUND2_IN.read_text(encoding="utf-8"))
+    want = {e["edge_id"]: e for e in pack["edges"]}
+    rows = [r for r in csv_rows() if r["edge_id"] in want]
+    missing = sorted(set(want) - {r["edge_id"] for r in rows})
+    if missing:
+        raise SystemExit(f"dep_worklist --csv-round2: {', '.join(missing)} is not an "
+                         f"edge matched to a register row")
+    fields = CSV_FIELDS[:-2] + ["copy_on_file", "why_reread", "sentence_on_reread",
+                                "what_the_re_read_found", "verdict", "note"]
+    for r in rows:
+        w = want[r["edge_id"]]
+        r["copy_on_file"] = "original" if T.original(r["source_url"]) else "re-read"
+        r["why_reread"] = w["why"]
+        r["sentence_on_reread"] = w.get("sentence_on_reread", "")
+        r["what_the_re_read_found"] = w.get("what_the_re_read_found", "")
+    with ROUND2_OUT.open("w", newline="", encoding="utf-8") as fh:
+        wr = csv.DictWriter(fh, fieldnames=fields)
+        wr.writeheader()
+        wr.writerows(rows)
+    orig = sum(1 for r in rows if r["copy_on_file"] == "original")
+    print(f"verdicts_worklist_round2.csv — {len(rows)} line(s): "
+          f"{sum(1 for r in rows if not r['sentence_on_reread'])} that had no sentence "
+          f"at all and now carry one, {sum(1 for r in rows if r['sentence_on_reread'])} "
+          f"ruled unclear and re-read.")
+    print(f"  {orig} rest on the artefact the index records; {len(rows) - orig} on a "
+          f"later re-read of the same address, where the citation gate declines to rule.")
+    print(f"  verdict takes one of: {' | '.join(VERDICTS)}. All twelve are empty.")
+    return len(rows)
+
+
 def render() -> str:
     edges, nodes = load()
     matched = [e for e in edges if e["project_id"]]
@@ -241,6 +291,9 @@ def render() -> str:
 
 
 if __name__ == "__main__":
+    if "--csv-round2" in sys.argv[1:]:
+        write_round2()
+        raise SystemExit(0)
     if "--csv" in sys.argv[1:]:
         write_csv()
         raise SystemExit(0)
