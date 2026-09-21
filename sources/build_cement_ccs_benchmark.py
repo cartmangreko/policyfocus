@@ -195,6 +195,50 @@ def hand() -> dict:
     return json.loads(HAND.read_text(encoding="utf-8"))
 
 
+def sync_hand() -> int:
+    """Copy the hand file's own fields onto the derived file, without the workbook.
+
+        python3 sources/build_cement_ccs_benchmark.py --sync-hand
+
+    THE FULL BUILD NEEDS THE IEA WORKBOOK AND MOST MACHINES DO NOT HAVE IT. Its bytes
+    are the publisher's and are gitignored, so a contributor who edits a hand entry
+    here — a note, a verdict, a reference debt — cannot rebuild
+    `cement_ccs_benchmark.json` and would leave the derived file quoting the sentence
+    they just corrected. That is the drift `sources/scope.md` names in "A derived file
+    needs something that checks it", arriving from the other direction: not a file
+    nothing verifies, but a file nobody on this machine can rewrite.
+
+    SO THIS WRITES BACK EXACTLY WHAT build() TAKES FROM THE HAND FILE and nothing
+    else: `rec.update(h[iid])` per entry, plus `disagreements` and
+    `reference_debts` whole. Every column that comes from the workbook — the ID, the
+    name, the IEA's own status, phase and two capacities — is untouched, because this
+    cannot see them and must not pretend to. A machine with the workbook runs the
+    build and this changes nothing; a machine without it keeps the two files saying
+    the same thing.
+    """
+    if not OUT.exists():
+        print("build_cement_ccs_benchmark --sync-hand: no derived file to sync")
+        return 1
+    doc = json.loads(OUT.read_text(encoding="utf-8"))
+    hm = hand()
+    h = hm["entries"]
+    touched = 0
+    for rec in doc["entries"]:
+        iid = str(rec["iea_id"])
+        if iid in h and rec.get("derived") is False:
+            before = dict(rec)
+            rec.update(h[iid])
+            touched += before != rec
+    doc["disagreements"] = hm.get("disagreements", [])
+    doc["reference_debts"] = hm.get("reference_debts", [])
+    OUT.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n",
+                   encoding="utf-8")
+    print(f"build_cement_ccs_benchmark --sync-hand: {touched} entr(y/ies) re-copied from "
+          f"the hand file, plus disagreements and reference debts. THE WORKBOOK COLUMNS "
+          f"ARE UNTOUCHED — run the full build on a machine that holds the workbook.")
+    return 0
+
+
 def build() -> tuple[list[dict], list[str]]:
     problems: list[str] = []
     h = hand()["entries"]
@@ -268,6 +312,8 @@ def table(rows: list[dict], title: str, expected: int) -> tuple[bool, list[str]]
 
 
 def main() -> int:
+    if "--sync-hand" in sys.argv[1:]:
+        return sync_hand()
     rows, problems = build()
     ok, p = table(rows, "THE IEA CCUS PROJECTS DATABASE 2026, European entries — "
                         "the gap table", 425)

@@ -244,7 +244,7 @@ def search_records():
 
 def score_row(row, edges_by_project, graph_date="", funding_by_project=None,
               funder_by_key=None, funder_read=False, funder_read_on="",
-              population_key=""):
+              population_key="", unread_owner=()):
     """Six cells from a register row's own fields."""
     funding_by_project = funding_by_project or {}
     funder_by_key = funder_by_key or {}
@@ -412,7 +412,7 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None,
     # RUNG 6, INPUT CONTRACTED. Brief 9's edges carry the firmness axis; the row's
     # own edges do not, so a row edge can only ever be the weaker evidence and is
     # read second.
-    out["input"] = score_input(row, edges_by_project, graph_date)
+    out["input"] = score_input(row, edges_by_project, graph_date, unread_owner)
     for c in out.values():
         if not c.get("captured_at") and captured.get(c.get("source")):
             c["captured_at"] = captured[c["source"]]
@@ -431,9 +431,39 @@ def graph_read(edoc):
     return max(dates) if dates else ""
 
 
-def score_input(row, edges_by_project, graph_date=""):
+def owner_unread(edoc) -> set:
+    """Rows whose own cited sources ALL failed to answer the dependency sweep.
+
+    `owner_side` records, per row, how many sources the register cites and how many
+    of them the sweep could read. A row with sources cited and none read has had the
+    owner half of rung 6 asked of nothing — see score_input, and DECISION D-24 in
+    sources/dependency_docket.md.
+    """
+    return {o["project_id"] for o in edoc.get("owner_side", [])
+            if o.get("sources_cited") and not o.get("sources_read")}
+
+
+def score_input(row, edges_by_project, graph_date="", unread_owner=()):
     """RUNG 6. `contract` passes, `framework` and `intent` fail, and EVERY result is
-    provisional while `verdict` is null on the edge it rests on."""
+    provisional while `verdict` is null on the edge it rests on.
+
+    AND A ROW WHOSE ONLY SOURCE DOES NOT ANSWER IS `not_searched`, not a fail.
+    Rung 6 reads two source classes — the dependency graph, and the owner's own
+    statement naming a supplier. The graph is a file and always answers. The owner
+    half is read by the sweep out of the sources the register cites, and for eight
+    rows every one of those sources refused: an archive capture that 404s, a
+    corporate page behind a login, a domain that stopped resolving. Scoring those a
+    `fail` said "no supplier is contracted" on a question nobody could put.
+
+    Corrected 21 September 2026, on D-24. It is the same ruling rung 4 took on 15
+    September, when it was found reporting 71 fails on a question nobody had asked,
+    and the same distinction D-L2 draws: "nobody looked" and "there is nothing
+    there" are different findings.
+
+    THE CONDITION IS BOTH HALVES SILENT. A row with an edge in the graph is scored
+    on the edge whatever its own sources did — the sweep found the supplier from the
+    other side, which is an answer.
+    """
     mine = edges_by_project.get(row["id"], [])
     firm = [e for e in mine if e.get("firmness") == FIRM_PASS]
     if firm:
@@ -456,6 +486,15 @@ def score_input(row, edges_by_project, graph_date=""):
         ev = e.get("evidence") or {}
         c = cell("fail", ev.get("url"), "owner", e.get("since") or graph_date, "day",
                  "row edge carries no firmness; brief 9's axis is where rung 6 reads")
+        c["provisional"] = True
+        return c
+    if row["id"] in unread_owner:
+        c = cell("not_searched", "sources/edges.json", "eufabric dependency sweep",
+                 graph_date, "day",
+                 "no edge in the dependency graph names this project AND the row's "
+                 "own cited sources could not be read, so the owner half of this "
+                 "rung was asked of nothing; the date is the graph's newest "
+                 "statement, not a sweep date", searched=False)
         c["provisional"] = True
         return c
     c = cell("fail", "sources/edges.json", "eufabric dependency sweep", graph_date,
@@ -651,6 +690,7 @@ def build(cutoff: str = ""):
         if e.get("project_id"):
             edges_by_project[e["project_id"]].append(e)
     graph_date = graph_read(edoc)
+    unread = owner_unread(edoc)
 
     lines, changes, straddling = [], Counter(), Counter()
 
@@ -675,7 +715,7 @@ def build(cutoff: str = ""):
             row = held[0]
             cells = score_row(row, edges_by_project, graph_date,
                               funding_by_project, funder_by_key, funder_read,
-                              funder_read_on, key)
+                              funder_read_on, key, unread)
             klass, rid = "admitted", row["id"]
         elif cand:
             cells = score_unadmitted(ref, records.get(ref), searched_on,
@@ -715,7 +755,7 @@ def build(cutoff: str = ""):
     for row in offlist:
         cells = score_row(row, edges_by_project, graph_date, funding_by_project,
                           funder_by_key, funder_read, funder_read_on,
-                          f"row:{row['id']}")
+                          f"row:{row['id']}", unread)
         lines.append(line_for(key=f"row:{row['id']}", ref="", rid=row["id"],
                               entry=None, row=row, klass="admitted", cells=cut(cells)))
     return lines, iea, offlist, changes, straddling

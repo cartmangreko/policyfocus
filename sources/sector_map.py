@@ -232,6 +232,17 @@ PROJECT_EVENT_KINDS = (
     "status",
     "ownership",
     "financing",
+    # A PROJECT THAT CHANGES ITS HOST WORKS, and it is neither a status change nor a
+    # change of owner. LEILAC-2 was decided for Heidelberg Materials' Hanover cement
+    # plant in 2021 and moved to its Ennigerloh plant in 2024, because Hanover was
+    # stopping clinker production and a calciner retrofit needs a kiln. The project
+    # stayed `announced` throughout and its owner never changed; what moved was the
+    # ground under it. Written as an event rather than as a silent edit to the site
+    # field so that the row says WHEN it moved and carries the owner's statement for
+    # each works — the same reason `ownership` is an event and not a rewritten
+    # company name. Same rule as the other two: ONE FACT PER ENTRY, so a relocation
+    # may not also change the status.
+    "relocation",
 )
 
 

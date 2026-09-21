@@ -104,7 +104,25 @@ def known() -> tuple[set[str], set[str]]:
         if not p.exists():
             continue
         doc = json.loads(p.read_text(encoding="utf-8"))
-        for f in doc.get("fetches", []):
+        # TWO SHAPES, AND ONE OF THEM WAS BEING READ AS EMPTY. Five of these indexes
+        # are {"fetches": [{url, sha256, ...}]}; sources/dependency_cache/index.json
+        # is the sweep's own, a flat dict keyed by the url's hash, one record per
+        # value. `doc.get("fetches", [])` returned nothing for it and said nothing
+        # about that, so the dependency sweep's 2,674 fetch records — every page
+        # brief 9 and 9b read — have never counted as evidence that somebody looked,
+        # and a citation proved by that index was reported as a citation nobody
+        # opened. Found on 21 September 2026 by a URL this repository had fetched an
+        # hour earlier. Both shapes are read now, and an index whose shape this does
+        # not recognise is a failure rather than a silence.
+        records = doc.get("fetches")
+        if records is None:
+            records = [v for k, v in doc.items()
+                       if not k.startswith("_") and isinstance(v, dict)]
+        if not records:
+            raise SystemExit(f"check_citations: {rel} holds no fetch records in either "
+                             f"shape this gate reads — a cache index that answers "
+                             f"nothing is a gate that checks nothing")
+        for f in records:
             if f.get("url"):
                 fetched.add(f["url"])
     hand: set[str] = set()

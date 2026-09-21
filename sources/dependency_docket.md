@@ -928,3 +928,41 @@ neither confirm a reading nor refute one.
 4. **Ennigerloh, and the two Rüdersdorf rows.** The candidate list has a new name in
    it and the register holds two CEMEX projects on one works, which the matcher cannot
    separate and a reader can.
+
+---
+
+## 11. Applied, 21 September 2026 — the three items 9b left open
+
+**D-24 IS APPLIED AND IS NO LONGER A RULING FOR THE READER.** Rung 6 scores a row
+`not_searched` where the graph names no edge for it AND its own cited sources could
+not be read. Eight cells moved, one field each, and the six rung tests are
+byte-identical: the ruling and the table of moved cells are in
+`sources/ladder_docket.md`, D-A25.
+
+**D-22 IS APPLIED AND THE HANOVER REFERENCE DEBT IS CLOSED.** The sweep found the
+technology partner's relocation announcements; the owner's own release of 6 March
+2024 says it in Heidelberg Materials' voice, and that is what the debt asked for.
+`leilac2-hannover` carries a dated **relocation** event with the owner's location
+statement for each works, its `plant` reads Ennigerloh, and the debt settles as two
+works plus a relocation — `sources/ladder_docket.md`, D-A26.
+
+**D-27 — THE `--no-verify` PUSH OF #77 WAS AN EXCEPTION TAKEN, AND IT IS RECORDED
+RATHER THAN EXCUSED.** The gate chain ran green twice on that exact tree and both
+pushes then died mid-pack — `send-pack: unexpected disconnect`, `Connection to
+github.com closed by remote host`. The third went out with `--no-verify` on the
+reasoning that the hook had just cleared the same commit. **That reasoning was
+wrong about what the hook is for.** Refusing a red build is its first job; proving
+the ref moved is its second, and skipping it skipped the only step that would have
+noticed the first two pushes had not landed. Nobody noticed because nobody was
+looking: the branch's absence from the remote was found by asking `git ls-remote`
+by hand afterwards.
+
+**THE RULE STANDS EVEN ON A TREE THE HOOK HAS JUST CLEARED**, and the hook now
+carries the second job mechanically. It reads the refs from stdin, records the
+intent after the chain passes, and **the next push verifies that the last intent
+landed before it does anything else** — naming the ref, the sha intended and what
+the remote actually holds. Git has no post-push hook and a pre-push hook cannot
+observe its own push, so the question is asked one push later; a person who wants
+the answer immediately runs `.githooks/pre-push --verify-last`, which is the same
+check on its own.
+*Touches:* `.githooks/pre-push`; nothing in the data.

@@ -475,3 +475,76 @@ browser and a domain that does not exist is not a queue item.** Quoted from
 the paper's table is called final, `check_citation_bodies.py` is run in **both worktrees**
 and the union printed: every citation must show a body, a hand-read copy, or a refusal
 somewhere. No gate blocks on which directory a session stands in.
+
+## Rulings applied, 21 September 2026 — D-24, and the works LEILAC 2 left
+
+**D-A25. RUNG 6 NO LONGER FAILS A ROW WHOSE ONLY SOURCE DOES NOT ANSWER.** Brief 9b
+raised it and did not fix it: `sources/dependency_docket.md` D-24 recorded eight rows
+scored `fail` on rung 6 where the honest value is `not_searched`, and said the fix was a
+scorer change in two files and a re-freeze of hydrogen's csv, which is a rule change
+mid-pass. The pass is over and the ruling is made.
+
+**WHAT "SEARCHED" MEANS, STATED ONCE.** `searched` says the source class this rung reads
+was **examined and answered**. Rung 6 reads two classes — the dependency graph, and an
+owner statement naming a supplier. The graph is a file and always answers. The owner half
+is read by the sweep out of the sources the register cites, and for these eight rows every
+one of those sources refused: an archive capture that 404s, a corporate page behind a
+login, a domain that stopped resolving. A `fail` there said *no supplier is contracted* on
+a question nobody could put.
+
+**THE CONDITION IS BOTH HALVES SILENT.** A row with an edge in the graph is scored on the
+edge whatever its own sources did — the sweep found the supplier from the other side,
+which is an answer. Only a row with no edge AND no readable source of its own is
+`not_searched`.
+
+**THE EIGHT CELLS, AND THEY ARE THE ONLY CELLS THAT MOVED.**
+
+| row | sector | before | after |
+|---|---|---|---|
+| `arcelormittal-dunkerque` | steel | fail | not_searched |
+| `arcelormittal-fos-sur-mer` | steel | fail | not_searched |
+| `catl-stellantis-zaragoza` | batteries | fail | not_searched |
+| `tesla-gruenheide-cells` | batteries | fail | not_searched |
+| `greenstore` | transport and storage | fail | not_searched |
+| `morecambe-net-zero` | transport and storage | fail | not_searched |
+| `ignis-armonia-green-galicia` | hydrogen | fail | not_searched |
+| `rengas-pori-kaanaa` | hydrogen | fail | not_searched |
+
+`sources/ladder/all.csv`: 8 lines, `input_result`, `input_searched`, `input_note` and the
+derived `input_result_amended`. `sources/ladder/hydrogen.csv`: the same two hydrogen rows.
+`sources/ladder/test_2023.csv`: **nothing** — the 2023 cut-off already scored rung 6
+`not_searched` there, on a graph dated after the cut-off. No `rungs_passed` changes, in any
+sector: a fail and a not_searched both clear no rung.
+
+**THE TESTS ARE UNTOUCHED AND THE FREEZE HOLDS.** `### The six rungs` in
+`sources/scope.md` is byte-identical and still hashes to `47b0859d…` at the D-B1 freeze
+commit `a9542fe`. This is a SCORER correction — what the code does with the test — and the
+re-freeze is the regeneration of `hydrogen.csv`, against which `check_ladder_all.py`
+reconciles all.csv line for line.
+
+**D-A26. LEILAC 2 IS AT ENNIGERLOH, ON THE OWNER'S OWN STATEMENT, AND THE HANOVER
+REFERENCE DEBT CLOSES.** Heidelberg Materials, 6 March 2024: the project "is now planned
+to be carried out at Heidelberg Materials' Ennigerloh cement plant", having "previously
+been supposed to be realised at the Heidelberg Materials site in Hanover, Germany. Now
+that clinker production will end there in the second half of 2024, another location had to
+be found." A works that stops making clinker cannot host a calciner retrofit.
+
+The row carries it as a **dated relocation event** — a fourth `event_kind` beside status,
+ownership and financing, taking the same gate: it cannot open a history, it may not also
+move the status, and it names both ends. The event carries the owner's location statement
+for each works, 2021 for Hanover and 2024 for Ennigerloh. `plant` follows the owner's
+current statement; **the row id does not**, because an id is a handle and not a claim.
+
+**THE DEBT SETTLES AS TWO WORKS PLUS A RELOCATION.** It asked for exactly this — "a
+Heidelberg Materials statement giving LEILAC 2's host works after 2021" — and what it
+refused to do in the meantime was right: IEA 202 is Heidelberg's project and IEA 556 is
+Holcim's Höver works, and neither was ever merged into the other on a resemblance. Rung 1
+now cites the 2024 release and names Ennigerloh; `rungs_passed` is unchanged at 2.
+
+**AND THE SYNC FOUND A SECOND STALE ENTRY.** `cement_ccs_benchmark.json` is derived from a
+workbook this machine does not hold, so the hand file's own fields are re-copied onto it by
+`build_cement_ccs_benchmark.py --sync-hand`. Doing that revealed that **IEA 1203, TarraCO2,
+had been admitted by the funder in the hand file on 20 September and still read `named not
+admitted` in the derived one** — which is why the ladder was printing a queue item saying a
+funder names an award for an entry this register has not admitted. It does. The queue goes
+5 to 4.
