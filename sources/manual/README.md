@@ -57,3 +57,44 @@ row goes on citing the live URL and `check_links.py` goes on checking it.
 **Not a place to put anything a fetch failed on.** A 404 is a dead source and a
 5xx is somebody's bad afternoon; neither belongs here. This is for a page that a
 person has confirmed is live and readable and that the pipeline is being refused.
+
+---
+
+## The browser queue (21 September 2026)
+
+`browser_queue.csv` is the 66 entries a declared reader could not read — a 403, a
+WAF, a page that draws itself with a script, or an entry whose own records name no
+owner host at all. It is generated, never typed:
+
+    python3 sources/research_pass.py --queue-csv
+
+Each line carries the entry id, its sector and class, **why the machine could not
+read it**, the URLs on file that are worth opening, and the folder to save into.
+**A domain this register derived from a project's name is not in the URL column** —
+it stays in the reason, with what it answered, because handing somebody a browser
+and a domain nobody published is not a queue item (L9, D-A24).
+
+### One folder per entry
+
+    sources/manual/<entry-folder>/
+      <anything>.html|.pdf|.png     the page as your browser saved it
+      <anything>.html.url           OPTIONAL: the URL it came from, one line
+
+The folder name is on the queue line beside the entry id, so nothing has to be
+derived by hand. The `.url` sidecar is needed **only** when the saved file carries
+no URL of its own and the entry has more than one queued: a page saved as "Webpage,
+Complete" carries `saved from url=(…)`, and most pages carry a `rel=canonical` or an
+`og:url`, which is where the URL is taken from first.
+
+### Then
+
+    python3 sources/ingest_manual.py            # what it sees, writing nothing
+    python3 sources/ingest_manual.py --write    # file the copies and re-run the entries
+
+It files each save in the SECTOR's cache index under its SHA-256 beside the machine's
+own fetches, adds it here as a human-read copy with the date the file was written and
+the reader's name, and re-runs the entry's search and its signal from the copy. **A
+PDF is filed and not read** — the sector readers take text from HTML and nothing from
+a PDF — so save as HTML where the site allows it, or the entry stays in the queue.
+
+Nothing in that path writes a class, a verdict or a row. A person classes.
