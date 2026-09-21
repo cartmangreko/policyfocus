@@ -1,0 +1,269 @@
+{
+ "_comment": [
+  "VERDICTS ON THE DEPENDENCY GRAPH'S EDGES, one entry per edge id.",
+  "",
+  "Written by apply_verdicts.py from sources/verdicts_worklist.csv, which is where",
+  "a person reads and rules. dep_records.py puts these onto the edges at build time,",
+  "so a verdict survives a rebuild: edges.json is derived and a value typed into it",
+  "would not be.",
+  "",
+  "`verdict` is one of accept | reject | unclear. `by` and `date` say who ruled and",
+  "when. A rejected edge KEEPS ITS PLACE in the graph with the verdict on it,",
+  "because a reading somebody refused is a fact about the reading and deleting it",
+  "would leave the file looking as though nobody had ever made it."
+ ],
+ "verdicts": {
+  "e0049": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Contract signed for REFHYNE II following Shell FID."
+  },
+  "e0070": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Two 100 MW plants being delivered to RWE in Lingen."
+  },
+  "e0071": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Supply contract signed with Shell for Hydrogen Holland I."
+  },
+  "e0073": {
+   "verdict": "unclear",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "The excerpt does not state the 700 MW order itself; re-read for the order sentence."
+  },
+  "e0083": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Delivery of 12 electrolysers, 200 MW, to Normandy as stated."
+  },
+  "e0084": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Contract awarded to supply a 280 MW electrolysis system."
+  },
+  "e0085": {
+   "verdict": "reject",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Precursor demonstration at the works, not an input to the plant this row describes."
+  },
+  "e0121": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "First 10 MW delivered of a planned 100 MW at Sines."
+  },
+  "e0126": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "All ten arrays delivered, commissioning underway."
+  },
+  "e0156": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "EPCIC contract awarded, site named."
+  },
+  "e0158": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Plant delivered and operating (first 1,000 t captured)."
+  },
+  "e0175": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Supplier commitment to deploy its technology following the customer FID and its own FEED."
+  },
+  "e0189": {
+   "verdict": "reject",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "An agreement to develop a capture solution, not an equipment order; framework, not contract."
+  },
+  "e0190": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Signed agreement to supply the DRI plant."
+  },
+  "e0191": {
+   "verdict": "unclear",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "\"Selects MIDREX Flex\" is a technology selection; the plant contract went to the engineering contractor; re-read for a licence contract."
+  },
+  "e0193": {
+   "verdict": "unclear",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "\"Selected to supply\" is a selection, not an order; re-read for contract language."
+  },
+  "e0194": {
+   "verdict": "unclear",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "The sentence is a permit statement, not a supply statement; does not support this edge on its own."
+  },
+  "e0204": {
+   "verdict": "reject",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Different project: the HYFOR pilot at Donawitz is a Primetals demonstration, not an input to the greentec steel EAF."
+  },
+  "e0206": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Contract signed for an EAF Ultimate."
+  },
+  "e0209": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Order placed for a 180-ton EAF Ultimate at Linz."
+  },
+  "e0210": {
+   "verdict": "reject",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "\"Chosen as technological partner for the development\" is a partnership, not a contract; reads as framework or intent."
+  },
+  "e0211": {
+   "verdict": "reject",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Different project: Hy4Smelt demonstration plant (with Rio Tinto and Mitsubishi), not the greentec Linz EAF."
+  },
+  "e0212": {
+   "verdict": "reject",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Precursor demonstration at the works, not an input to the plant this row describes."
+  },
+  "e0214": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Consortium contracted to build the direct reduction plant at Salzgitter."
+  },
+  "e0238": {
+   "verdict": "reject",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Different project: the sentence is about Net Zero Teesside Power, not the Wilton hydrogen project; matched on site only."
+  },
+  "e0242": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "FEED study appointment; a study is intent."
+  },
+  "e0243": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "FEED contract to KBR for the same project; still study stage; intent fits."
+  },
+  "e0244": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Agreement signed to develop a capture and utilisation plant; framework."
+  },
+  "e0245": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Contract signed for two demonstration campaigns at Broceni; a demonstration, not the full plant."
+  },
+  "e0247": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Demonstration unit delivered; first CO2 captured."
+  },
+  "e0251": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Verdict on translation: supplier states an order from ACC for front-end equipment at its 13 GWh French gigafactory."
+  },
+  "e0252": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Verdict on translation: supplier won a Volkswagen tender for core cell-production equipment for a 20 GWh plant expanding to 40 GWh; matches PowerCo Salzgitter; site not named."
+  },
+  "e0253": {
+   "verdict": "unclear",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Understated: the DMX pilot has been operating at Dunkirk since April 2023, a delivered pilot; re-read the source for the agreement and reclass firmness."
+  },
+  "e0254": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Storage service in operation: CO2 shipped from Brevik."
+  },
+  "e0255": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Collaboration stated, no order; framework fits."
+  },
+  "e0256": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Partnership as stated by the owner; framework fits."
+  },
+  "e0257": {
+   "verdict": "reject",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Intention to use the Ravenna hub, no agreement stated; framework overstates, reclass intent."
+  },
+  "e0258": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Technology chosen, no contract stated; intent fits."
+  },
+  "e0259": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "MoU to assess a plant; intent."
+  },
+  "e0261": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Supplier states the joint project at Hanover as it stood in 2022; framework fits. Row has since moved to Ennigerloh."
+  },
+  "e0262": {
+   "verdict": "accept",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "Supplier states the project moves to another Heidelberg site; relationship continuing, no new agreement; intent fits."
+  },
+  "e0264": {
+   "verdict": "reject",
+   "by": "George Christopoulos",
+   "date": "2026-09-21",
+   "note": "A FEED contract is a study; studies are intent (as e0242). Framework overstates; reclass intent."
+  }
+ }
+}

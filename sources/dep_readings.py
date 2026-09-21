@@ -1100,7 +1100,12 @@ E("plug-power", "Uniper", "framework_agreement", "supplier", "supplier_press",
   PF(2023), "2023-03-07", quantity=(100, "MW"), country="NL", sector="utility",
   note="Selected to DESIGN the 100 MW electrolyser package for H2Maasvlakte at the Port "
        "of Rotterdam. A design selection, not a supply order.",
-  site="H2Maasvlakte Maasvlakte Rotterdam")
+  site="H2Maasvlakte Maasvlakte Rotterdam"
+,
+  firmness="framework", firmness_basis=
+  "Under the agreement, Plug will deliver 10 prefabricated PEM (proton exchange "
+  "membrane) electrolyzer arrays for Uniper\u2019s flagship project, H2Maasvlakte "
+  "upon Uniper\u2019s positive FID.")
 E("plug-power", "Ardagh Glass Limmared AB", "equipment_order", "supplier",
   "supplier_press", PF(2023), "2023-05-22", quantity=(5, "MW"), country="SE",
   sector="glass packaging",
@@ -1674,7 +1679,13 @@ E("mhi", "Hanson UK", "framework_agreement", "supplier", "supplier_press",
   country="GB", sector="cement", site="Padeswood Flintshire",
   note="Pre-FEED. Hanson UK is Heidelberg Materials' UK arm and the later releases "
        "call the same works Heidelberg Materials' — one plant, two company names, "
-       "three years apart.")
+       "three years apart."
+,
+  firmness="framework", firmness_basis=
+  "has been appointed by Hanson UK(Note1), a leading supplier of low carbon heavy "
+  "building materials, to deliver the preliminary front-end engineering design "
+  "(Pre-FEED) for a CO 2 capture plant at its Padeswood cement works located in "
+  "Flintshire, Wales.")
 E("mhi", "Saipem S.p.A.", "technology_licence", "supplier", "supplier_press",
   M + "230427.html", "2023-04-27", quantity=None, country="IT", sector="engineering",
   note="General License Agreement. Saipem is a route to market, not an emitter.",
@@ -1701,7 +1712,13 @@ E("mhi", "Heidelberg Materials UK", "framework_agreement", "supplier", "supplier
   M + "24020601.html", "2024-02-06", quantity=(800000, "tonnes CO2 per year"),
   country="GB", sector="cement", site="Padeswood Flintshire",
   note="FEED with Worley, following the 2022 pre-FEED. 'UK's first CO2 capture plant "
-       "at a cement production facility'.")
+       "at a cement production facility'."
+,
+  firmness="framework", firmness_basis=
+  "technology is being deployed by leading global cement manufacturer Heidelberg "
+  "Materials UK, for Front End Engineering Design (FEED), to further study the "
+  "specifications of a CO 2 capture plant at Padeswood Cement Works in Flintshire, "
+  "UK.")
 E("mhi", "ArcelorMittal", "framework_agreement", "supplier", "supplier_press",
   M + "24052102.html", "2024-05-21", quantity=None, country="BE", sector="steel",
   site="Gent", note="Trial carbon capture unit begins operation at Gent. Same trial "
@@ -1799,7 +1816,11 @@ E("air-liquide", "ArcelorMittal", "framework_agreement", "supplier", "supplier_p
   note="MoU on low-carbon steel in the Dunkirk basin. The register holds 3d-dunkirk "
        "— ArcelorMittal's DMX capture demonstration at the same works — and whether "
        "this MoU is that project or a second one beside it is not decidable from "
-       "this release.")
+       "this release."
+,
+  firmness="framework", firmness_basis=
+  "Air Liquide and ArcelorMittal have signed an MOU that aims to contribute "
+  "significantly to the decarbonization of the Dunkirk industrial basin.")
 E("air-liquide", "BASF", "framework_agreement", "supplier", "supplier_press",
   A + "2021-11-22/air-liquide-and-basf-welcome-support-european-innovation-fund-joint-"
       "ccs-project", "2021-11-22", quantity=None, country="BE", sector="chemicals",
@@ -1887,8 +1908,11 @@ E("air-liquide", "Holcim", "equipment_order", "supplier", "supplier_press",
   sector="cement", site="Obourg",
   note="Agreement to supply oxygen for the oxyfuel-ready clinker line and Cryocap OXY "
        "for capture at Obourg; CO2 to an export hub such as Antwerp@C for offshore "
-       "storage. THE SUPPLIER SIDE OF go4zero-obourg. No tonnage is stated.",
-  firmness="contract", firmness_basis=
+       "storage. THE SUPPLIER SIDE OF go4zero-obourg. No tonnage is stated. "
+       "RECLASSED contract -> framework on 21 September 2026, on the reader's verdict "
+       "(D-28): what is signed is an agreement to DEVELOP a capture solution, and no "
+       "equipment, quantity or delivery is ordered in the sentence.",
+  firmness="framework", firmness_basis=
   "Air Liquide and Holcim reach a new stage in their collaboration with the "
   "signing of an agreement to develop a state-of-the-art carbon capture "
   "solution for Holcim’s near-zero cement plant at Obourg in Belgium.")
@@ -2243,7 +2267,11 @@ E("tenova", "Salzgitter AG", "framework_agreement", "supplier", "supplier_press"
   note="MoU. 'Conditional on the respective funding approvals, Salzgitter AG intends "
        "to order a DRI plant from Tenova with an annual capacity of 2.1 million tons'. "
        "ENERGIRON is jointly developed by Tenova and Danieli — two nodes on this "
-       "perimeter behind one technology.")
+       "perimeter behind one technology."
+,
+  firmness="framework", firmness_basis=
+  "Salzgitter AG and Tenova are stepping up their close technical cooperation and "
+  "have concluded an important agreement for the realization of SALCOS")
 E("tenova", "Salzgitter AG", "equipment_order", "supplier", "supplier_press",
   V + "energironr-direct-reduction-plant-contracted-salzgitter-ag-represents",
   "2023-05-24", quantity=(2000000, "tonnes DRI per year"), country="DE", sector="steel",
@@ -2266,7 +2294,12 @@ E("tenova", "LKAB", "framework_agreement", "supplier", "supplier_press",
        "waiting for prerequisites like environmental permits and Final Investment "
        "Decision'. Combines HYBRIT with ENERGIRON. The register holds hybrit-pilot-"
        "lulea, which is the pilot at Luleå and not this demonstration plant at "
-       "Gällivare.")
+       "Gällivare."
+,
+  firmness="framework", firmness_basis=
+  "The current contract is related to basic engineering services, while future "
+  "equipment supply and construction are pending waiting for prerequisites like "
+  "environmental permits and Final Investment Decision (FID).")
 E("tenova", "RINA (Hydra project)", "equipment_order", "supplier", "supplier_press",
   V + "tenova-joins-rinas-100-hydrogen-fueled-hydra-project-backed-european", "2024-03-20",
   quantity=(7, "tonnes per hour"), country="IT", sector="steel research",
@@ -2455,7 +2488,12 @@ E("northern-lights", "Aker Carbon Capture", "framework_agreement", "supplier",
 E("northern-lights", "CCB Energy Holding", "framework_agreement", "supplier",
   "supplier_press", N_ + "ccb-energy-and-northern-lights-collaboration-on-co2-"
                          "management-in-oygarden/", "2022-04-22", quantity=None,
-  country="NO", sector="industrial services", site="Øygarden")
+  country="NO", sector="industrial services", site="Øygarden"
+,
+  firmness="framework", firmness_basis=
+  "The companies have now entered into a co-operation agreement to facilitate the "
+  "development of infrastructure for handling and processing of local CO 2 "
+  "deliveries.")
 E("northern-lights", "Cory", "framework_agreement", "supplier", "supplier_press",
   N_ + "cory-and-northern-lights-announce-pioneering-international-carbon-partnership/",
   "2022-05-13", quantity=None, country="GB", sector="energy from waste",
@@ -3337,8 +3375,11 @@ E("ravenna-ccs", "Heidelberg Materials (DREAM, Rezzato Mazzano)", "co2_storage",
   note="The owner names the store in the release announcing the Innovation Fund "
        "award. NO QUANTITY IS RECORDED: the same sentence's 'around 1 million tonnes "
        "of CO₂ per year' is what DREAM aims to CAPTURE, not a volume contracted with "
-       "the hub, and this file does not convert one into the other.",
-  firmness="framework", firmness_basis=
+       "the hub, and this file does not convert one into the other. "
+       "RECLASSED framework -> intent on 21 September 2026, on the reader's verdict "
+       "(D-28): the sentence states where the CO2 WILL GO, which is an intention, and "
+       "no agreement with the hub is stated anywhere in the release.",
+  firmness="intent", firmness_basis=
   "As part of this initiative, CO₂ will be captured from cement production and "
   "transported to the Ravenna CCS storage hub beneath the Adriatic Sea.")
 E("tk-polysius", "NEXE Group (Našice cement)", "technology_licence", "owner",
@@ -3545,8 +3586,12 @@ E("tk-polysius", "TITAN Group (TITAN Cement)", "framework_agreement", "supplier"
        "FIRMNESS IS `framework` AND THE DOCUMENT SAYS 'contract', deliberately and "
        "consistently with e0168 and e0172: what is signed is a FEED, which is design "
        "and not supply, and brief 9 read MHI's Padeswood FEED the same way. The "
-       "reader verdicts; the axis does not flatter the word.",
-  firmness="framework", firmness_basis=
+       "reader verdicts; the axis does not flatter the word. "
+       "RECLASSED framework -> intent on 21 September 2026, on the reader's verdict "
+       "(D-28): a FEED is a study and D-14 puts a study at `intent`, which is where "
+       "e0242's FEED appointment already sat. The consistency this note claimed with "
+       "e0168 and e0172 was consistency with the wrong pair.",
+  firmness="intent", firmness_basis=
   "thyssenkrupp and TITAN Group signed in the Greek capital Athens a Front-End "
   "Engineering Design (FEED) contract for the Carbon Capture Project IFESTOS.")
 E("tk-polysius", "Ciments Calcia S.A (HeidelbergCement Group)", "equipment_order",
