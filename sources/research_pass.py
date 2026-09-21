@@ -5,6 +5,7 @@
     python3 sources/research_pass.py --search [--limit N] [--sector S]
     python3 sources/research_pass.py --report          # what was read, what it names
     python3 sources/research_pass.py --queue           # the browser queue, consolidated
+    python3 sources/research_pass.py --queue-csv       # …as sources/manual/browser_queue.csv
 
 WHAT THIS IS. The audit of 20 September re-searched thirty entries drawn at random from
 the 164 classed `searched none found` or `named not admitted` in hydrogen, batteries,
@@ -280,12 +281,119 @@ def guessed_domains():
                   "different door.")}
 
 
+QUEUE_CSV = ROOT / "sources" / "manual" / "browser_queue.csv"
+QUEUE_FIELDS = ["entry_id", "sector", "name", "country", "register_class", "reason",
+                "urls_to_open", "folder"]
+
+
+def name_derived(url: str, name: str) -> bool:
+    """Is this host's stem inside the project's own name? Then nobody published it."""
+    host = urllib.parse.urlsplit(url).netloc.lower()
+    if not host:
+        return False
+    stem = re.sub(r"[^a-z0-9]", "", host.replace("www.", "").rsplit(".", 1)[0])
+    return bool(stem) and stem in re.sub(r"[^a-z0-9]", "", (name or "").lower())
+
+
+def slug(key: str) -> str:
+    """A folder name from an entry id, and it has to be reversible by eye.
+
+    The ids are the censuses' own — `iea:1191`, `bn26:FAAM Terevola`,
+    `ieaccus:1203` — and carry colons and spaces, which are a poor thing to type at
+    a shell prompt and worse to quote in a script. Lower-cased, every run of
+    anything else folded to one dash: `iea-1191`, `bn26-faam-terevola`. The CSV
+    carries BOTH the id and the folder on every line, so nobody has to run this
+    function in their head, and the writer refuses a collision rather than letting
+    two entries share a folder.
+    """
+    return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", key.lower())).strip("-")
+
+
+def queue_csv() -> int:
+    """The browser queue as a file a person works down, one folder per entry.
+
+    WHAT A ROW IS FOR. Each of these is an entry a declared reader could not read:
+    either every URL its own records name answered nothing, or its records name no
+    owner host at all. A browser can do what urllib cannot — run the script that
+    draws the page, carry the cookie a WAF wants, be a person — so the queue is
+    handed over with the reason stated, the URLs that refused, and the folder the
+    saved page goes in.
+
+    THE URLS ARE THE ONES ON FILE AND NONE ARE INVENTED. For an entry that was
+    searched, they are the hosts this pass tried, in the order it tried them, with
+    what each answered. For an entry with no owner host they are whatever its own
+    records cite — a benchmark page, a grant register — and where there is nothing,
+    the column is EMPTY and the reason says so. L9's rule holds here: a domain is
+    never derived from a project's name, least of all in a queue that asks somebody
+    to spend their morning on it.
+    """
+    doc = load()
+    E = doc["entries"]
+    known = {e["key"]: e.get("known_urls") or [] for e in population()}
+    q = [(k, v) for k, v in sorted(E.items()) if v["browser_queue"]]
+    seen, rows = {}, []
+    for k, v in q:
+        f = slug(k)
+        if f in seen:
+            raise SystemExit(f"research_pass --queue-csv: {k!r} and {seen[f]!r} both "
+                             f"fold to the folder {f!r}; two entries cannot share one")
+        seen[f] = k
+        if v["searched"]:
+            reason = "every URL in the entry's own records answered nothing: " + "; ".join(
+                f"{g['url'].split('//')[-1]} {g['outcome']}" for g in v["searched"])
+            urls = [g["url"] for g in v["searched"]]
+        else:
+            reason = ("no owner host in the entry's own records — nothing was fetched "
+                      "for it, and nothing may be guessed (L9)")
+            urls = []
+        for u in known.get(k, []):
+            if u not in urls:
+                urls.append(u)
+        # AND A DOMAIN THIS REGISTER INVENTED IS NOT A URL TO OPEN. L9's test, the
+        # same one guessed_domains() uses: a host whose stem is inside the project's
+        # own name was derived from that name rather than found in a document —
+        # `www.europe.com` for "P2X Europe - Nordic Electrofuel", `www.crane.com` for
+        # "Green Crane". They stay in the `reason` column, because what was tried and
+        # what it answered is the record of the search; they are not handed to a
+        # person as somewhere to go. D-A24 struck sixteen ladder queue items for
+        # exactly this and the same rule applies to a queue that costs a morning.
+        urls = [u for u in urls if not name_derived(u, v["name"])]
+        rows.append({"entry_id": k, "sector": v["sector"], "name": v["name"],
+                     "country": v.get("country", ""), "register_class": v["klass"],
+                     "reason": reason, "urls_to_open": " | ".join(urls),
+                     "folder": f"sources/manual/{f}/"})
+    QUEUE_CSV.parent.mkdir(parents=True, exist_ok=True)
+    with QUEUE_CSV.open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=QUEUE_FIELDS)
+        w.writeheader()
+        w.writerows(rows)
+    no_url = sum(1 for r in rows if not r["urls_to_open"])
+    print(f"browser_queue.csv — {len(rows)} entr(y/ies) for a browser, "
+          f"{len(rows) - no_url} with a URL on file and {no_url} with none.")
+    print(f"  by sector: {dict(Counter(r['sector'] for r in rows))}")
+    print("\n  THE FOLDER LAYOUT, one per entry, created when you save into it:\n")
+    print("    sources/manual/<entry-folder>/")
+    print("      <anything>.html|.pdf|.png     the page as your browser saved it")
+    print("      <anything>.html.url           OPTIONAL: the URL it came from, one line,")
+    print("                                    needed only when the file does not carry")
+    print("                                    it and the entry has more than one URL")
+    print("\n  Then: python3 sources/ingest_manual.py")
+    print("    — files each save in the sector's cache index with its hash, adds it to")
+    print("      sources/manual/MANIFEST.json as a human-read copy, and re-runs the")
+    print("      entry's search and its signal from your copy.")
+    print("\n  Examples:")
+    for r in rows[:3]:
+        print(f"    {r['folder']:<36} {r['entry_id']}")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--plan", action="store_true")
     ap.add_argument("--search", action="store_true")
     ap.add_argument("--report", action="store_true")
     ap.add_argument("--queue", action="store_true")
+    ap.add_argument("--queue-csv", action="store_true", dest="queue_csv")
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--limit", type=int, default=10000)
     ap.add_argument("--sector", default="")
@@ -364,6 +472,9 @@ def main() -> int:
                 u = next(g["url"] for g in v["searched"] if g["name_words_present"])
                 print(f"    [{v['sector'][:12]:<12}] {k:<22} {v['name'][:34]:36} {u[:52]}")
         return 0
+
+    if a.queue_csv:
+        return queue_csv()
 
     if a.queue:
         q = [(k, v) for k, v in sorted(E.items()) if v["browser_queue"]]

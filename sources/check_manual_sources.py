@@ -12,8 +12,12 @@ replaced it with.
 
 So the pairing is checked in three directions and there is no fourth:
 
-  RECORDED    every file in sources/manual/ has an entry in MANIFEST.json. A page
-              with no provenance is a page somebody found.
+  RECORDED    every file ANYWHERE UNDER sources/manual/ has an entry in
+              MANIFEST.json, keyed by its path relative to that folder. A page with
+              no provenance is a page somebody found. The browser queue gives each
+              entry a folder of its own, so this walks the tree rather than the top
+              level — which it did until 21 September 2026, when it would have
+              looked straight past every page the queue was about to collect.
 
   PRESENT     every entry in the manifest names a file that is there. An entry
               for a file nobody dropped is a claim that a page was read.
@@ -43,7 +47,7 @@ MANUAL = sm.ROOT / "sources" / "manual"
 MANIFEST = MANUAL / "MANIFEST.json"
 
 # Not sources. The folder documents itself and lists its own queue.
-NOT_PAGES = {"README.md", "MANIFEST.json"}
+NOT_PAGES = {"README.md", "MANIFEST.json", "browser_queue.csv"}
 
 
 def cited_paths() -> list[tuple[str, str]]:
@@ -83,8 +87,17 @@ def main() -> int:
 
     problems: list[str] = []
 
-    on_disk = {p.name for p in MANUAL.iterdir()
-               if p.is_file() and p.name not in NOT_PAGES}
+    # EVERY FILE UNDER THE FOLDER, BY ITS PATH, NOT EVERY FILE IN IT, BY ITS NAME.
+    # The browser queue gives each entry its own folder — sources/manual/iea-2957/ —
+    # and `iterdir()` walked one level and asked `is_file()`, so a page saved into
+    # one of those folders was not examined at all: not recorded, not missing, not
+    # anything. A gate that exists to refuse a file with no provenance was blind to
+    # the one place files were about to arrive. Keyed by the path relative to
+    # sources/manual/ so that two entries may save a page with the same name, which
+    # they will: `index.html` twice is ordinary and is not a collision.
+    on_disk = {str(p.relative_to(MANUAL)) for p in MANUAL.rglob("*")
+               if p.is_file() and p.name not in NOT_PAGES and not p.name.startswith(".")
+               and p.suffix != ".url"}
     recorded = {}
     for i, entry in enumerate(retrieved):
         where = f"MANIFEST.retrieved[{i}]"
@@ -105,13 +118,13 @@ def main() -> int:
                         f"with no provenance is a page somebody found")
 
     for path, where in cited_paths():
-        name = Path(path).name
+        rel = path[len("sources/manual/"):]
         if not path.startswith("sources/manual/"):
             problems.append(f"{where}: retrieved_manually={path!r} is not in "
                             f"sources/manual/")
-        elif name not in on_disk:
+        elif rel not in on_disk:
             problems.append(f"{where}: cites {path}, which is not on disk")
-        elif name not in recorded:
+        elif rel not in recorded:
             problems.append(f"{where}: cites {path}, which has no manifest entry")
 
     if problems:

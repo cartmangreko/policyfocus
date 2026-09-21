@@ -22,6 +22,7 @@ from pathlib import Path
 import dep_sweep as S
 
 HERE = Path(__file__).resolve().parent
+VERDICTS_FILE = HERE / "verdicts.json"
 EDGES: list[dict] = []
 NODE_CAPACITY: dict[str, list[dict]] = {}
 UNMATCHED: dict[str, dict] = {}
@@ -35,6 +36,31 @@ def _idx() -> dict[str, list[str]]:
     if _IDX is None:
         _IDX = S.register_index()
     return _IDX
+
+
+def verdicts() -> dict:
+    """The reader's rulings, keyed by edge id. Empty until somebody has ruled.
+
+    A VERDICT IS AN INPUT TO THE BUILD, NOT AN EDIT TO ITS OUTPUT. edges.json is
+    written from the readings in dep_readings.py every time anybody rebuilds, so a
+    verdict typed into that file would last until the next build and no longer.
+    sources/verdicts.json is where apply_verdicts.py puts what a person ruled from
+    sources/verdicts_worklist.csv, and this is where it joins the edge.
+    """
+    if not VERDICTS_FILE.exists():
+        return {}
+    return json.loads(VERDICTS_FILE.read_text(encoding="utf-8")).get("verdicts", {})
+
+
+_VERDICTS: dict | None = None
+
+
+def verdict_for(edge_id: str) -> str | None:
+    global _VERDICTS
+    if _VERDICTS is None:
+        _VERDICTS = verdicts()
+    v = _VERDICTS.get(edge_id)
+    return v["verdict"] if v else None
 
 
 def resolve(customer: str, site: str = "") -> tuple[str | None, str | None]:
@@ -139,7 +165,8 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
         captured = captured or fetched_date(url)
         date, date_precision = captured or date, "not_after"
 
-    e = {"id": f"e{len(EDGES) + 1:04d}",
+    eid = f"e{len(EDGES) + 1:04d}"
+    e = {"id": eid,
          "project_id": pid,
          "customer_name_as_stated": customer,
          "site_as_stated": site or None,
@@ -161,7 +188,7 @@ def add_edge(node_id: str, customer: str, edge_kind: str, speaker: str,
          # different copy. `archived` says which, rather than letting the two look
          # alike -- and it is null where there is no copy date at all.
          "archived": None if captured is None else bool(capture_date(url)),
-         "verdict": None,
+         "verdict": verdict_for(eid),
          "match_basis": basis,
          # THE SUPPLIER'S CUSTOMER THAT THIS REGISTER DOES NOT HOLD. A named site
          # that resolves to no admitted row is demand on the same capacity as a
