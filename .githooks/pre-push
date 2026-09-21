@@ -109,6 +109,33 @@ refs=$(cat || true)
 carrying=$(printf '%s\n' "$refs" | awk 'NF>=3 {print $3}')
 
 verify_last "$carrying" || exit 1
+
+# A RETRY OF THE SAME SHA DOES NOT RE-RUN THE CHAIN, AND THAT IS THE POINT OF
+# RECORDING THE INTENT. The chain is a property of the TREE, not of the connection:
+# if the intent on file names every ref this push is carrying at exactly the sha it
+# is carrying, those gates have already passed for these bytes and running them
+# again for nine minutes proves nothing. It was that nine minutes, three times over,
+# that produced the --no-verify push of #77 (D-27) — so the rule keeps its teeth and
+# the cost of an honest retry goes to nothing.
+#
+# ANY DIFFERENCE AND THE CHAIN RUNS: a different sha, a ref not in the intent, an
+# intent file that is not there. An amended commit is a different tree and is
+# checked like any other.
+retry_of_a_checked_tree() {
+  [ -f "$intent" ] || return 1
+  [ -n "$refs" ] || return 1
+  printf '%s\n' "$refs" | while read -r lref lsha rref rsha; do
+    [ -n "$rref" ] || continue
+    grep -qx -- "$rref $lsha" "$intent" || exit 1
+  done
+}
+
+if retry_of_a_checked_tree; then
+  echo "pre-push: the gate chain already passed for this exact tree — $(cat "$intent")"
+  echo "pre-push: this is a retry of a push that did not land, so the chain is not run"
+  echo "pre-push: again. Nothing here is skipped: the same gates passed on the same bytes."
+  exit 0
+fi
 if [ ! -d "$root/web/node_modules" ]; then
   echo "pre-push: web/node_modules is missing — run npm install in web/ first." >&2
   echo "pre-push: refusing to push a build that cannot be checked." >&2
