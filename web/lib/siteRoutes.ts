@@ -2,6 +2,7 @@ import { getAllMeasures, getSectorSlugs } from "./data";
 import { measurePathsWithLead } from "./objectLeads";
 import { drawHold, getProjects, hasMap, projectPageHold } from "./transition";
 import { classify } from "./routes";
+import { SPOKE_IDS } from "./spokes";
 
 // The route policy in lib/routes.ts, applied to the data. Read by app/robots.ts
 // and app/sitemap.ts, so the disallow list and the URL set are two renderings
@@ -25,6 +26,13 @@ export function siteRoutes(): { indexable: string[]; demoted: string[] } {
     heldProjectIds: getProjects().filter((p) => !projectIsIndexable(p.id)).map((p) => p.id),
     measuresWithLead: allMeasures.filter((p) => withLead.has(p)),
     measuresWithoutLead: allMeasures.filter((p) => !withLead.has(p)),
+    // A sector serves its spokes when it renders the product template, which
+    // is `hasMap` — the same condition the route branches on and the same one
+    // generateStaticParams enumerates from. A held sector's spokes are demoted
+    // for the same reason its hub is, and by the same list.
+    spokeRoutes: slugs
+      .filter((s) => hasMap(s))
+      .flatMap((s) => SPOKE_IDS.map((spoke) => `/sectors/${s}/${spoke}`)),
   });
 }
 

@@ -89,6 +89,12 @@ export function classify(input: {
    *  and its presence in the sitemap are two readings of one file. */
   measuresWithLead?: string[];
   measuresWithoutLead?: string[];
+  /** The hub's spokes — /sectors/<slug>/projects and the rest. Demoted, all of
+   *  them: they are the evidence layer under the hub, the crawler walks through
+   *  them on `follow`, and the URL a stranger meets in search is the hub. Passed
+   *  in rather than derived here for the same reason every other list is: which
+   *  sector has spokes is a question about which sector has a dataset. */
+  spokeRoutes?: string[];
 }): { indexable: string[]; demoted: string[] } {
   return {
     indexable: [
@@ -105,6 +111,7 @@ export function classify(input: {
       ...input.unmappedSectors.map((s) => `/sectors/${s}`),
       ...(input.heldProjectIds ?? []).map((id) => `/projects/${id}`),
       ...(input.measuresWithoutLead ?? []),
+      ...(input.spokeRoutes ?? []),
     ],
   };
 }

@@ -441,6 +441,15 @@ def name_line(row: dict, site: dict) -> str:
     return f"{row['name']} — {site['site']}"
 
 
+def _dateline(row: dict) -> str:
+    """The latest date the register holds for this row: the newest status event
+    or the newest dated source, whichever is later. Empty only for a row with
+    neither, which check_geo_source.py already refuses."""
+    dates = [e["date"] for e in row.get("status_history", []) if e.get("date")]
+    dates += [s["date"] for s in row.get("sources", []) if s.get("date")]
+    return max(dates, default="")
+
+
 def _mark(row: dict, site: dict, relation: str, frame, canvas) -> dict:
     """One mark. `row` is the project, never called `project` in this file --
     that name is the projection function and shadowing it here is how a
@@ -468,6 +477,15 @@ def _mark(row: dict, site: dict, relation: str, frame, canvas) -> dict:
         # told. Absent on a mark that is the installation's own polygon.
         "host_works": site.get("host_works"),
         "as_of": site["retrieved_date"],
+        # THE ROW'S OWN LATEST DATELINE, which is a different date from the one
+        # above and answers a different question. `as_of` is when this POSITION
+        # was read -- a fact about the coordinate, and the right basis for the
+        # mark. The stamp under the picture says how current the PICTURE is, and
+        # a picture is current to the last thing that happened in it, not to the
+        # last time somebody checked a map reference. Cement's stamp read
+        # 2026-08-28 off a basemap lookup while the newest event it draws is
+        # weeks later: the page was understating its own currency.
+        "dateline": _dateline(row),
         "x": round((px - x0) * scale, 1),
         "y": round((py - y0) * scale, 1),
     }
@@ -1148,6 +1166,12 @@ def _doc(map_id, kind, subject, frame, canvas, marks, detail, isos) -> dict:
     candidates = {iso: country_points(iso, frame, canvas) for iso in isos}
     points = {key: candidates for key in BREAKPOINTS}
     countries = label_countries(isos, points, marks, canvas, placed)
+    # THE STAMP IS GATED. A frame that draws rows with datelines and stamps
+    # nothing would print "as of " with a blank after it, which is the failure
+    # this whole fix is about wearing different clothes.
+    if marks and any(m["dateline"] for m in marks) and not max(
+            (m["dateline"] for m in marks if m["dateline"]), default=""):
+        raise SystemExit(f"build_maps: {map_id} draws dated rows and has no as-of stamp")
     return {
         "id": map_id,
         "kind": kind,
@@ -1159,7 +1183,13 @@ def _doc(map_id, kind, subject, frame, canvas, marks, detail, isos) -> dict:
         "land": land_paths(frame, canvas, detail["tolerance"], detail["min_ring"]),
         "marks": marks,
         "countries": countries,
-        "as_of": max((m["as_of"] for m in marks), default=""),
+        # STAMPED FROM THE DRAWN ROWS' LATEST DATELINE. It used to be the
+        # newest `retrieved_date` over the marks -- the day somebody last looked
+        # up a coordinate -- which is a fact about this pipeline rather than
+        # about the industry, and which went stale the moment a project moved
+        # without moving house. Gated: build() refuses a frame whose stamp is
+        # empty while it draws a mark that carries a dateline.
+        "as_of": max((m["dateline"] for m in marks if m["dateline"]), default=""),
     }
 
 

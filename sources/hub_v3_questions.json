@@ -1,0 +1,80 @@
+{
+ "_comment": [
+  "QUESTIONS THE SECTOR HUB REDUCTION RAISED AND DID NOT ANSWER (brief 15).",
+  "",
+  "The brief is a DISPLAY pass: no census file, no scope rule, no ladder script, no",
+  "projects.json row and no gated summary moves in it. Where a display need looked like",
+  "it needed a data change, the rule is to write the question here and hold -- which is",
+  "what each entry below is. None of them is acted on in the pull request that raises",
+  "them.",
+  "",
+  "Same shape as sources/cement_ccs_questions.json, and the same rule: a question of this",
+  "kind never changes anything by itself. The ruling does, and the ruling is George's.",
+  "The question stays in the file after it is answered."
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "raised": "2026-09-23",
+   "area": "projects.json",
+   "question": "IFESTOS holds a SIGNED Innovation Fund grant and its project status is still `announced`. Is the row's status out of date, or is a signed grant compatible with an announced project?",
+   "why_the_rules_did_not_settle_it": "Brief 15 lists this as a display defect: 'IFESTOS shows funding with status announced while GeZero and ANRAV show funded: render the status group the funding node carries, no exception; if the node's status is what is wrong, that is data and goes to the questions file, not a display patch.' The display half is done -- the hub's project rows now print the figure with the FUNDING node's status group beside it, so all three read `committed` and the project's own status no longer decides how its money is labelled. What is left is the data half, and it is the other way round from the way the brief guessed: the funding nodes agree with each other (innovation-fund-gezero `approved`, innovation-fund-anrav `approved`, innovation-fund-ifestos `signed` -- one status group, committed). It is the PROJECT rows that disagree: gezero-geseke and anrav-devnya moved to `funded`, ifestos-kamari did not, and its status_history holds one event, `announced` on 2023-07-14.",
+   "entries": [
+    {
+     "id": "ifestos-kamari",
+     "status": "announced",
+     "status_history": ["announced:2023-07-14"],
+     "funding": "innovation-fund-ifestos, signed"
+    },
+    {
+     "id": "gezero-geseke",
+     "status": "funded",
+     "status_history": ["funded:2023-12-15"],
+     "funding": "innovation-fund-gezero, approved"
+    },
+    {
+     "id": "anrav-devnya",
+     "status": "funded",
+     "status_history": ["funded:2023-01-20", "funded:2026-09-09"],
+     "funding": "innovation-fund-anrav, approved"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether a signed grant against a project is itself a `funded` event on that project's history -- in which case ifestos-kamari is missing one and the fix is a dated event with its source, not a display change -- or whether the two layers are allowed to disagree because a grant agreement and a company's own announcement are different facts with different sources.",
+   "ruling": null
+  },
+  {
+   "id": "Q2",
+   "raised": "2026-09-23",
+   "area": "data/transition/projects.json",
+   "question": "`cinfracap` carries the company string 'Nordion Energi, Goteborg Energi, Renova, Port of Gothenburg'. Should that be 'Göteborg Energi'?",
+   "why_the_rules_did_not_settle_it": "Brief 15 lists 'diacritics stripped inconsistently on labels' among the display defects to fix in passing. Every renderer on the surfaces this pass rebuilds prints the string it is given, unchanged, and the register holds diacritics correctly everywhere they were looked for -- Luleå, Iváncsa, Komárom, Nyíregyháza, Grünheide, Polígono. The one inconsistency found is inside this row's own `company` string, where the same city is spelled 'Goteborg' in the company name and 'Gothenburg' in the plant field. That is a value in the register, not a rendering of one, so it is data and it is held.",
+   "entries": [
+    {
+     "id": "cinfracap",
+     "plant": "Gothenburg",
+     "company": "Nordion Energi, Goteborg Energi, Renova, Port of Gothenburg"
+    }
+   ],
+   "what_a_ruling_would_need_to_say": "Whether a company's name is recorded as the company writes it (Göteborg Energi AB writes it with the umlaut) and, if so, whether the same row may go on calling the city Gothenburg in the plant field, which is the English exonym and is what the sources drawn on use.",
+   "ruling": null
+  },
+  {
+   "id": "Q3",
+   "raised": "2026-09-23",
+   "area": "brief 15, the footer row",
+   "question": "What are 'the coverage link and data alias' the footer row is to carry 'as today'?",
+   "why_the_rules_did_not_settle_it": "Brief 15 §Spokes and footer: 'Footer row: the three links above, then the coverage link and data alias as today. Nothing else.' The sector hub carries neither today. /coverage is linked from nowhere on the site on purpose -- SiteFooter.tsx says so in its own note, an orphan by decision -- and nothing on this page or any sector page renders anything called a data alias. The three spoke links are built; the two unknowns are not invented.",
+   "what_a_ruling_would_need_to_say": "Either the two links with their destinations, or that the row is the three spokes and nothing else.",
+   "ruling": null
+  },
+  {
+   "id": "Q4",
+   "raised": "2026-09-23",
+   "area": "brief 15, the Opportunity block",
+   "question": "Where does the COMPLETE list of funding allocations live now?",
+   "why_the_rules_did_not_settle_it": "The hub used to render every allocation in the sector, in three status groups, with the programme, the amount, the measure it sits under and the project it finances. Brief 15 gives Opportunity a framing line (the committed sum, which is kept) and a capped list, and rules that complete lists live on spokes -- but it gives Opportunity no spoke, and names no other home for the allocation rows. They are not lost: every allocation is on its project's own page and its committed figure is in the projects block and on the projects spoke. They are no longer readable as one list of the sector's money. The Opportunity block's link goes to the support-direction filter on the policies spoke, which is the list of measures that pay rather than the list of allocations.",
+   "what_a_ruling_would_need_to_say": "Whether the allocation list wants a spoke of its own (/sectors/<slug>/funding), whether it belongs on the projects spoke as a second table, or whether the committed sum plus the per-project figures is the whole of what a reader is owed.",
+   "ruling": null
+  }
+ ]
+}
