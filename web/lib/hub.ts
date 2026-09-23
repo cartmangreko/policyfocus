@@ -370,7 +370,15 @@ export function policiesBlock(slug: string): HubBlock {
   const all = imp?.measures ?? [];
   const inView = all.filter((m) => m.in_sector_view);
   const ranked = sectorPolicyRows(slug);
-  const date = asOf(ranked.map((m) => isoIn(m.when)));
+  // THE RANKING'S AS-OF IS ITS INPUTS', and it has to be: the importance file
+  // carries no date of its own, and a measure's `when` is a clause about when a
+  // provision BITES rather than a statement of how current the ordering is.
+  // build_from.parameters names every parameter the ranking was priced on, and
+  // each of those carries the date its value is current to.
+  const params = getParameters();
+  const date = asOf(
+    (imp?.built_from.parameters ?? []).map((id) => params.get(id)?.date_of_value ?? null),
+  );
 
   const framing = imp
     ? inView.length === 0
@@ -446,7 +454,15 @@ export function opportunityBlock(slug: string): HubBlock {
       support.length > 0
         ? {
             href: `/sectors/${slug}/policies#support`,
-            label: `All ${plural(support.length, "measure")} that pay`,
+            // "All 1 measure that pay" is what a plural helper does to a
+            // relative clause: it inflects the noun and leaves the verb behind.
+            // The fixed "All {n} ..." form is kept -- it is what tells a reader
+            // the hub is showing them part of something, and
+            // check_hub_list_duplication holds every block to it -- and the
+            // agreement is done inside it.
+            label: `All ${support.length} ${
+              support.length === 1 ? "measure that pays" : "measures that pay"
+            }`,
           }
         : null,
     items: support.slice(0, HUB_BLOCK_CAP).map((m) => ({

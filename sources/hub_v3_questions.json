@@ -23,19 +23,26 @@
     {
      "id": "ifestos-kamari",
      "status": "announced",
-     "status_history": ["announced:2023-07-14"],
+     "status_history": [
+      "announced:2023-07-14"
+     ],
      "funding": "innovation-fund-ifestos, signed"
     },
     {
      "id": "gezero-geseke",
      "status": "funded",
-     "status_history": ["funded:2023-12-15"],
+     "status_history": [
+      "funded:2023-12-15"
+     ],
      "funding": "innovation-fund-gezero, approved"
     },
     {
      "id": "anrav-devnya",
      "status": "funded",
-     "status_history": ["funded:2023-01-20", "funded:2026-09-09"],
+     "status_history": [
+      "funded:2023-01-20",
+      "funded:2026-09-09"
+     ],
      "funding": "innovation-fund-anrav, approved"
     }
    ],
@@ -46,16 +53,62 @@
    "id": "Q2",
    "raised": "2026-09-23",
    "area": "data/transition/projects.json",
-   "question": "`cinfracap` carries the company string 'Nordion Energi, Goteborg Energi, Renova, Port of Gothenburg'. Should that be 'Göteborg Energi'?",
-   "why_the_rules_did_not_settle_it": "Brief 15 lists 'diacritics stripped inconsistently on labels' among the display defects to fix in passing. Every renderer on the surfaces this pass rebuilds prints the string it is given, unchanged, and the register holds diacritics correctly everywhere they were looked for -- Luleå, Iváncsa, Komárom, Nyíregyháza, Grünheide, Polígono. The one inconsistency found is inside this row's own `company` string, where the same city is spelled 'Goteborg' in the company name and 'Gothenburg' in the plant field. That is a value in the register, not a rendering of one, so it is data and it is held.",
+   "question": "Diacritics are stripped on some register rows and kept on others. Which spelling is the register's, and do the stripped rows get corrected?",
+   "why_the_rules_did_not_settle_it": "Brief 15 lists 'diacritics stripped inconsistently on labels' among the display defects to fix in passing. It is not a display defect. Every renderer on the surfaces this pass rebuilds prints the string it is handed, unchanged, and nothing in web/ or in sources/ normalises a label: the one NFKD fold in the tree is sources/dep_sweep.py, which folds a URL for matching and writes nothing to a page. The inconsistency is in the values. 23 of 205 project rows carry diacritics correctly -- Sunwoda Nyiregyhaza is stored 'Nyíregyháza', SVOLT stored 'Überherrn', Gotion InoBat stored 'Šurany', Carbon2Business stored 'Lägerdorf' -- and the rows below, in the same file, are stored folded. So this is data, and by the brief's own rule it is held.",
    "entries": [
     {
+     "id": "co2llect-rudersdorf",
+     "sector": "cement",
+     "field": "plant",
+     "stored": "Ruedersdorf",
+     "apparently": "Rüdersdorf"
+    },
+    {
+     "id": "cyclonecc-rudersdorf",
+     "sector": "cement",
+     "field": "name, plant",
+     "stored": "CycloneCC Rudersdorf / Ruedersdorf",
+     "apparently": "Rüdersdorf",
+     "note": "the two rows at the same works spell it two different folded ways"
+    },
+    {
+     "id": "hoever-ccs",
+     "sector": "cement",
+     "field": "name, plant",
+     "stored": "Hoever carbon capture / Hoever",
+     "apparently": "Höver"
+    },
+    {
+     "id": "co2necta-sagunto",
+     "sector": "cement",
+     "field": "company",
+     "stored": "Holcim Espana",
+     "apparently": "Holcim España"
+    },
+    {
+     "id": "eco2fly-villaluenga",
+     "sector": "cement",
+     "field": "company",
+     "stored": "Holcim Espana",
+     "apparently": "Holcim España"
+    },
+    {
+     "id": "ecco2-lh-carboneras",
+     "sector": "cement",
+     "field": "company",
+     "stored": "Holcim Espana (LafargeHolcim)",
+     "apparently": "Holcim España"
+    },
+    {
      "id": "cinfracap",
-     "plant": "Gothenburg",
-     "company": "Nordion Energi, Goteborg Energi, Renova, Port of Gothenburg"
+     "sector": "ccs",
+     "field": "company",
+     "stored": "Nordion Energi, Goteborg Energi, Renova, Port of Gothenburg",
+     "apparently": "Göteborg Energi",
+     "note": "and the same city is the English exonym Gothenburg in this row's plant field"
     }
    ],
-   "what_a_ruling_would_need_to_say": "Whether a company's name is recorded as the company writes it (Göteborg Energi AB writes it with the umlaut) and, if so, whether the same row may go on calling the city Gothenburg in the plant field, which is the English exonym and is what the sources drawn on use.",
+   "what_a_ruling_would_need_to_say": "Whether a place or company name is stored as its own language writes it -- which is what the 23 correct rows already do -- and if so whether the folded rows are corrected in this register or left until each is next visited by a census pass. And separately, whether a row may go on using an English exonym in one field and the local name in another, as cinfracap does with Gothenburg and Goteborg.",
    "ruling": null
   },
   {
