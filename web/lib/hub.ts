@@ -417,7 +417,22 @@ export function policiesBlock(slug: string): HubBlock {
  *  Announcements are counted and never summed: a euro figure made of
  *  intentions reads as money that exists.
  *
- *  ITS LINK goes to the support-direction filter on the policies spoke. */
+ *  AND IT IS THE ONE BLOCK WITH NO LINK. Brief 15 allowed either: the
+ *  support-direction filter on the policies spoke if one existed, or no link at
+ *  all with the PR saying so. It was first built with the filter — the policies
+ *  spoke was being written anyway, so the filter was cheap — and George ruled
+ *  against it on the cement read (24 September 2026): opportunity gets no spoke,
+ *  and the block renders without a link.
+ *
+ *  THE RULING IS NOT ABOUT THE ANCHOR, which is why it is worth writing down. A
+ *  block's link means "the complete list of what this block is showing you the
+ *  top of", and the support-direction measures are not that: the block's framing
+ *  line counts ALLOCATIONS and its rows are MEASURES, so a link to the measures
+ *  would have promised the rest of a list the line does not count. Opportunity is
+ *  the one question on this page whose complete answer has no page yet, and the
+ *  missing link says so more honestly than a link to the nearest thing would.
+ *  The support list is still on the policies spoke, under #support, reached by
+ *  reading that page rather than by being sent to an anchor from here. */
 export function sectorSupportRows(slug: string) {
   return supportMeasures(slug);
 }
@@ -450,21 +465,10 @@ export function opportunityBlock(slug: string): HubBlock {
     id: "opportunity",
     framing,
     total: support.length,
-    link:
-      support.length > 0
-        ? {
-            href: `/sectors/${slug}/policies#support`,
-            // "All 1 measure that pay" is what a plural helper does to a
-            // relative clause: it inflects the noun and leaves the verb behind.
-            // The fixed "All {n} ..." form is kept -- it is what tells a reader
-            // the hub is showing them part of something, and
-            // check_hub_list_duplication holds every block to it -- and the
-            // agreement is done inside it.
-            label: `All ${support.length} ${
-              support.length === 1 ? "measure that pays" : "measures that pay"
-            }`,
-          }
-        : null,
+    // No link, by ruling. Not `support.length > 0 ? … : null` with the true
+    // branch removed either: the absence is unconditional, so it is written as
+    // one rather than left looking like a case nobody filled in.
+    link: null,
     items: support.slice(0, HUB_BLOCK_CAP).map((m) => ({
       key: m.measure,
       name: m.plain ? m.plain.title : m.measure,

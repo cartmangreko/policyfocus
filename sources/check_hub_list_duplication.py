@@ -62,6 +62,25 @@ ALLOWED_ITERATION = {
                                       "the hub keeps",
 }
 
+# THE ONE BLOCK ALLOWED NO LINK, by name and with the reason, because an
+# exception that is not written down is a rule that has quietly stopped applying.
+#
+# A block's link means "the complete list of what this block is showing you the
+# top of". Opportunity has no such list on the platform: its framing line counts
+# ALLOCATIONS, its rows are MEASURES, and the allocations themselves have no page
+# of their own. Brief 15 allowed either a link to the support-direction filter on
+# the policies spoke or no link at all with the PR saying so; George ruled for no
+# link on the cement read, 24 September 2026, and the note in opportunityBlock
+# says why at length.
+#
+# WHAT IS STILL CHECKED FOR IT. That the absence is UNCONDITIONAL -- `link: null`
+# written as one thing, not a ternary whose true branch somebody deleted -- so a
+# block that loses its link by accident still fails here. The exemption is from
+# having a link, not from being looked at.
+LINKLESS = {
+    "opportunity": "its complete list is allocations, which have no page; ruled 2026-09-24",
+}
+
 # A list RENDERED is a `.map(` inside the component's returned JSX. The ones in
 # its working above the return -- building a lookup, counting a set of countries
 # -- are not lists on the page and are not what this is about.
@@ -151,10 +170,22 @@ def main() -> int:
         problems.append(f"{SPOKES.name} has no SPOKE_IDS this gate can read")
     for name, body in blocks:
         hrefs = re.findall(r"href: `/sectors/\$\{slug\}/([a-z]+)", body)
+        if name in LINKLESS:
+            if hrefs:
+                problems.append(
+                    f"{name}Block is on the linkless list ({LINKLESS[name]}) and renders a "
+                    f"link to /sectors/<slug>/{hrefs[0]}. One of the two is out of date")
+            elif not re.search(r"^\s*link: null,$", body, re.M):
+                problems.append(
+                    f"{name}Block has no link and does not say so as `link: null`. The "
+                    f"absence is a ruling and is written as one, so a block that loses "
+                    f"its link by accident is not mistaken for this")
+            continue
         if not hrefs:
             problems.append(
                 f"{name}Block renders no link to a spoke. A block whose complete list "
-                f"is nowhere is a block that has to carry it")
+                f"is nowhere is a block that has to carry it, and the one block ruled "
+                f"otherwise is on the linkless list in this file")
             continue
         for h in hrefs:
             if h not in spoke_ids:
@@ -192,9 +223,11 @@ def main() -> int:
             print(f"  {p}")
         return 1
 
+    linked = len(blocks) - len(LINKLESS)
     print(f"check_hub_list_duplication: OK -- {len(blocks)} blocks, all cut at "
-          f"HUB_BLOCK_CAP={caps[0]}, each linking to one of "
-          f"{len(spoke_ids)} spokes; the hub lists nothing else")
+          f"HUB_BLOCK_CAP={caps[0]}; {linked} linking to one of {len(spoke_ids)} spokes "
+          f"and {len(LINKLESS)} ruled linkless ({', '.join(sorted(LINKLESS))}); "
+          f"the hub lists nothing else")
     return 0
 
 

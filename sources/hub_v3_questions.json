@@ -47,7 +47,9 @@
     }
    ],
    "what_a_ruling_would_need_to_say": "Whether a signed grant against a project is itself a `funded` event on that project's history -- in which case ifestos-kamari is missing one and the fix is a dated event with its source, not a display change -- or whether the two layers are allowed to disagree because a grant agreement and a company's own announcement are different facts with different sources.",
-   "ruling": null
+   "ruling": "HELD, AND NOT A DISPLAY PATCH. George, 24 September 2026: IFESTOS is a CENSUS CORRECTION and goes through the census tab with the documents attached. Nothing in this pull request touches the row. The display half stands as built — a project's funding figure carries the status group the FUNDING node holds, so the project's own status no longer decides how its money reads, and all three of IFESTOS, GeZero and ANRAV read `committed`. Whether ifestos-kamari is missing a dated `funded` event is the census's question and is asked there.",
+   "ruled": "2026-09-24",
+   "ruled_by": "George"
   },
   {
    "id": "Q2",
@@ -109,7 +111,9 @@
     }
    ],
    "what_a_ruling_would_need_to_say": "Whether a place or company name is stored as its own language writes it -- which is what the 23 correct rows already do -- and if so whether the folded rows are corrected in this register or left until each is next visited by a census pass. And separately, whether a row may go on using an English exonym in one field and the local name in another, as cinfracap does with Gothenburg and Goteborg.",
-   "ruling": null
+   "ruling": "HELD, AND NOT A DISPLAY PATCH. George, 24 September 2026: the folded rows are CENSUS CORRECTIONS and go through the census tab with the documents attached — the documents being the point, since which spelling is right is a question about what the company and the municipality write, not about what this register guessed. No renderer is changed: none was wrong.",
+   "ruled": "2026-09-24",
+   "ruled_by": "George"
   },
   {
    "id": "Q3",
@@ -118,7 +122,9 @@
    "question": "What are 'the coverage link and data alias' the footer row is to carry 'as today'?",
    "why_the_rules_did_not_settle_it": "Brief 15 §Spokes and footer: 'Footer row: the three links above, then the coverage link and data alias as today. Nothing else.' The sector hub carries neither today. /coverage is linked from nowhere on the site on purpose -- SiteFooter.tsx says so in its own note, an orphan by decision -- and nothing on this page or any sector page renders anything called a data alias. The three spoke links are built; the two unknowns are not invented.",
    "what_a_ruling_would_need_to_say": "Either the two links with their destinations, or that the row is the three spokes and nothing else.",
-   "ruling": null
+   "ruling": "ANSWERED, AND THE BRIEF WAS WRONG. George, 24 September 2026: the footer row is the three spoke links and nothing else — companies, feed, connections. The coverage link and the data alias belong to the homepage and stay there; the line in brief 15 that put them on the sector hub footer was an error in the brief. This is what the pull request already built, so nothing changes; the question is kept because a reader who finds a three-link footer and a brief asking for five is entitled to see which one was corrected.",
+   "ruled": "2026-09-24",
+   "ruled_by": "George"
   },
   {
    "id": "Q4",
@@ -127,7 +133,9 @@
    "question": "Where does the COMPLETE list of funding allocations live now?",
    "why_the_rules_did_not_settle_it": "The hub used to render every allocation in the sector, in three status groups, with the programme, the amount, the measure it sits under and the project it finances. Brief 15 gives Opportunity a framing line (the committed sum, which is kept) and a capped list, and rules that complete lists live on spokes -- but it gives Opportunity no spoke, and names no other home for the allocation rows. They are not lost: every allocation is on its project's own page and its committed figure is in the projects block and on the projects spoke. They are no longer readable as one list of the sector's money. The Opportunity block's link goes to the support-direction filter on the policies spoke, which is the list of measures that pay rather than the list of allocations.",
    "what_a_ruling_would_need_to_say": "Whether the allocation list wants a spoke of its own (/sectors/<slug>/funding), whether it belongs on the projects spoke as a second table, or whether the committed sum plus the per-project figures is the whole of what a reader is owed.",
-   "ruling": null
+   "ruling": "ANSWERED: NO SPOKE, AND NO LINK. George, 24 September 2026: opportunity gets no spoke page, and the block renders without a link — which is the second of the two things brief 15 allowed, with the pull request stating it. The support-direction filter this pull request had pointed the block at is REMOVED as its destination: a block's link means the complete list of what the block is showing the top of, and the support measures are not that — the framing line counts allocations and the rows are measures, so the link promised the rest of a list the line does not count. The support list stays on the policies spoke under #support, reached by reading that page. Where the complete allocation list eventually lives is still open and is not this brief's to settle.",
+   "ruled": "2026-09-24",
+   "ruled_by": "George"
   }
  ]
 }

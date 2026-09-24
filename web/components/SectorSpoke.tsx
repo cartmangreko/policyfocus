@@ -87,7 +87,7 @@ function MaterialList({
           if (row.plants > 0) basis.push(`${row.plants} ${row.plants === 1 ? "plant" : "plants"}`);
           if (row.sectorWide) basis.push("sector-wide");
           return (
-            <li key={m.id} id={`material-${m.id}`}>
+            <li key={m.id}>
               <Link href={`/materials/${m.id}`}>{m.name}</Link>
               <span className={`tmat-type ${m.type}`}>{m.type.replace("_", " ")}</span>
               {basis.length > 0 && anchor ? (
@@ -209,6 +209,10 @@ function DependenciesSpoke({ slug }: { slug: SectorSlug }) {
   const technologies = getTechnologies(slug);
   const flows = materialFlows(slug);
   const bottlenecks = getBottlenecks(slug);
+  const dependencyCount = sectorDependencies(slug).length;
+  const materialLists = [...flows.inputs, ...flows.outputs, ...flows.substitutes];
+  const materialRows = materialLists.length;
+  const materialNodes = new Set(materialLists.map((r) => r.material.id)).size;
   const params = getParameters();
   const projectsByTech = new Map<string, { id: string; name: string }[]>();
   for (const p of sectorProjectRows(slug))
@@ -219,9 +223,27 @@ function DependenciesSpoke({ slug }: { slug: SectorSlug }) {
 
   return (
     <>
+      {/* THE TWO NUMBERS, BOTH STATED, because they differ and a reader can see
+          that they do. A DEPENDENCY IS A NODE and is counted once — which is
+          what the hub's "All {n} dependencies" promises and what
+          `sectorDependencies` returns. The material section below is the
+          sector's FLOW, and a material that both arrives and leaves appears in
+          two of its lists on the strength of two distinct edges: steel's
+          directly reduced iron is made here and consumed here, and its
+          granulated blast furnace slag leaves as a by-product and stands in for
+          clinker. materialFlows() refuses to list one twice on the SAME edge
+          (assertDisjoint); listing it twice on different ones is the fact, not
+          a fault, and the sentence says so rather than leaving a reader to count
+          six rows under a link that promised four materials. */}
       <p className="tmap-sub">
         Technologies, materials and constraints in one list, because a reader asking what a
-        sector depends on is asking one question. {sectorDependencies(slug).length} in total.
+        sector depends on is asking one question. {dependencyCount} in total
+        {materialRows > materialNodes
+          ? `, of which ${materialNodes} are materials — shown on ${materialRows} rows, because ${
+              materialRows - materialNodes === 1 ? "one of them appears" : `${materialRows - materialNodes} of them appear`
+            } in two lists on separate edges`
+          : ""}
+        .
       </p>
 
       {technologies.length > 0 ? (
