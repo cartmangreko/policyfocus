@@ -17,6 +17,15 @@ texts: the fetched version is kept, so the claim survives the publisher.
 
 WHAT IS AND IS NOT A FAILURE
   4xx                     failure. The page is gone or refuses us by URL.
+  429, after a retry      reported, not failed. A rate limiter says NOT NOW; it
+                          does not say the page is not there, and it is answering
+                          about the request rather than about the URL. The build
+                          of 21 September 2026 failed on a trade title's 429 that
+                          the same request got a 200 from on a developer machine
+                          twenty minutes earlier — a gate that fails on that makes
+                          the build depend on whose IP asked. Retried once with a
+                          pause first, because a rate limiter usually relents and
+                          a page that is really gone will not.
   5xx, timeout, DNS       reported, not failed. A publisher's bad afternoon is
                           not a defect in this repository, and failing on it
                           would make the build depend on other people's uptime.
@@ -45,6 +54,7 @@ import argparse
 import json
 import datetime as dt
 import sys
+import time
 import urllib.error
 import urllib.request
 from urllib.parse import urlparse
@@ -52,6 +62,9 @@ from urllib.parse import urlparse
 import sector_map as sm
 
 TIMEOUT = 20
+# How long to wait before asking a rate limiter a second time. Long enough that a
+# per-minute window has moved on, short enough that a build does not notice.
+RATE_LIMIT_RETRY_PAUSE = 8
 # A DECLARED IDENTITY WITH A CONTACT ADDRESS, because several publishers require
 # one and are right to. The SEC's fair-access policy is explicit: an automated
 # reader states who it is and how to reach it, and anything that does not gets a
@@ -243,6 +256,24 @@ def main() -> int:
                     f"{state['by']} opened it on {state['last_verified']}{stale}")
         elif code == 403 and host in BOT_HOSTILE:
             soft.append(f"{url} — 403 from a known bot-hostile host")
+        elif code == 429:
+            # ASKED TWICE BEFORE IT IS BELIEVED. A 429 is the only 4xx that is
+            # about the request rather than the resource, and the second ask is
+            # what tells the two apart: a rate limiter lets the next one through,
+            # a page that has gone answers the same way all day.
+            time.sleep(RATE_LIMIT_RETRY_PAUSE)
+            try:
+                code = status_of(url)
+            except OSError as exc:
+                soft.append(f"{url} — {type(exc).__name__}: {exc} (after a 429)")
+                continue
+            if code == 429:
+                soft.append(f"{url} — HTTP 429 twice; the publisher is rate-limiting "
+                            f"this reader, which says nothing about the page")
+            elif 400 <= code < 500:
+                dead.append(f"{url} — HTTP {code}  ({seen[url]})")
+            elif code >= 500:
+                soft.append(f"{url} — HTTP {code} (after a 429)")
         elif 400 <= code < 500:
             dead.append(f"{url} — HTTP {code}  ({seen[url]})")
         elif code >= 500:
