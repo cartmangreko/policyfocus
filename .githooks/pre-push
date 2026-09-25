@@ -40,7 +40,21 @@
 set -e
 
 root=$(git rev-parse --show-toplevel)
-intent="$root/.git/eufabric-push-intent"
+# THE INTENT LIVES IN THE COMMON GIT DIRECTORY, NOT IN "$root/.git". In a linked
+# worktree `.git` is a FILE pointing at the real directory, so "$root/.git/..."
+# is a path through a file and the write fails with "Not a directory" — after
+# the whole chain has run green, which is the worst possible moment to find out.
+# This repository works in worktrees by default (see `git worktree list`), and
+# every brief that asks for one was asking for a push this hook could not
+# complete.
+#
+# COMMON RATHER THAN PER-WORKTREE, and that is the meaning rather than the
+# convenience: the question the intent answers is "did the last push land on the
+# remote", which is a fact about this repository and its remote and not about
+# which worktree happened to issue it. A dropped push from one worktree should
+# block the next push from any of them, which is exactly what the hook's own
+# note says it wants.
+intent="$(git rev-parse --git-common-dir)/eufabric-push-intent"
 
 # WHAT THIS HOOK IS FOR, SECOND JOB. The first is not pushing a red build. The
 # second is proving the ref actually moved, and it was missing until 21 September

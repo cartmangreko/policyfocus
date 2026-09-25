@@ -261,7 +261,12 @@ export default function LocationMap({
   standfirst,
 }: {
   doc: MapDoc;
-  heading: string;
+  /** Null where the picture's heading is the section's own H2 — which is what
+   *  the sector hub does since brief 15 made the map a section rather than a
+   *  figure inside the projects one. The wording is the same sentence; what
+   *  changed is which element carries it, and two elements carrying it would be
+   *  the heading said twice. */
+  heading: string | null;
   standfirst: string;
 }) {
   const { width, height } = doc.canvas;
@@ -281,9 +286,12 @@ export default function LocationMap({
     : undefined;
 
   return (
-    <figure className={`geo geo-${doc.kind}`} aria-labelledby={`${doc.id}-heading`}>
+    <figure
+      className={`geo geo-${doc.kind}`}
+      {...(heading ? { "aria-labelledby": `${doc.id}-heading` } : { "aria-label": standfirst })}
+    >
       <figcaption className="geo-caption">
-        <h3 id={`${doc.id}-heading`}>{heading}</h3>
+        {heading ? <h3 id={`${doc.id}-heading`}>{heading}</h3> : null}
         <p className="geo-standfirst">{standfirst}</p>
       </figcaption>
 

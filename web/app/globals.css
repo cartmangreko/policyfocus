@@ -3066,6 +3066,128 @@ h3 {
   margin: 0 0 18px;
 }
 
+/* --- the hub blocks ---------------------------------------------- */
+
+/*  BRIEF 15. Four blocks, one shape: a heading, a framing line, rows
+    separated by a hairline, one link. Typographic and nothing else — no card,
+    no boxed panel, no icon per row, no badge beyond the status and kind labels
+    the page already has, no gradient, no shadow, no rounded container. The
+    density is the point of the pass: the cement hub is meant to fit in about
+    three screens above Sources, and every rule below is either a hairline or a
+    gap. */
+
+.hubblock-framing {
+  font-size: 13.5px;
+  color: var(--ink-55);
+  max-width: 70ch;
+  margin: 0 0 14px;
+}
+.hubblock-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/*  THE ROW. A four-part grid on desktop — name, labels, fact, date — and one
+    column on a phone, in the same order, with the date under the fact. The
+    date column is fixed and monospaced so five dates read as a column rather
+    than as five ragged ends. */
+.hubblock-row {
+  display: grid;
+  grid-template-columns: minmax(12ch, 22ch) auto 1fr auto;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 9px 0;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 14px;
+}
+.hubblock-row:first-child {
+  border-top: 0;
+}
+/*  MIN-WIDTH ZERO ON EVERY CELL. A grid track's automatic minimum is its
+    content's min-content width, so one unbreakable string in any cell widens
+    the whole row past the viewport — which is exactly how this row pushed the
+    hub sideways on a phone the first time it was measured. */
+.hubblock-row > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.hubblock-name {
+  font-weight: 500;
+}
+.hubblock-fact {
+  color: var(--ink-55);
+  font-size: 13.5px;
+}
+.hubblock-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-55);
+  white-space: nowrap;
+  text-align: right;
+}
+/*  The kind label on the one block that mixes kinds. The same weight as the
+    status label beside it, because they are the same kind of thing: a word
+    the row is filed under, not a decoration. */
+.tkind {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  white-space: nowrap;
+  border: 1px solid var(--rule);
+  color: var(--ink-55);
+}
+.hubblock-more {
+  margin: 12px 0 0;
+  font-size: 13.5px;
+}
+
+/*  THE FOOTER ROW. The three demoted spokes, and the whole of what is left of
+    Companies, Feed and Connections on this page. */
+.tmap-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  padding: 18px 0;
+  margin-top: 8px;
+  border-top: 1px solid var(--rule);
+  font-size: 13.5px;
+}
+
+/*  The companies spoke: one row per company, its projects beside it. */
+.tcompanies {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tcompanies > li {
+  display: grid;
+  grid-template-columns: minmax(12ch, 26ch) 1fr;
+  gap: 4px 12px;
+  padding: 9px 0;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 14px;
+}
+.tcompanies > li:first-child {
+  border-top: 0;
+}
+.tcompany-name {
+  font-weight: 500;
+}
+
+/*  ONE COLUMN ON A PHONE, and no horizontal scroll anywhere on the hub: the
+    grids above collapse rather than overflow. */
+@media (max-width: 720px) {
+  .hubblock-row,
+  .tcompanies > li {
+    grid-template-columns: 1fr;
+  }
+  .hubblock-date {
+    text-align: left;
+  }
+}
+
 /* --- the diagram ------------------------------------------------- */
 
 .tdiagram {

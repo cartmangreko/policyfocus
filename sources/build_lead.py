@@ -295,6 +295,15 @@ def _at_precision(date: str, precision: str | None) -> str:
         return str(date)[:4]
     if precision == "month":
         return str(date)[:7]
+    # `not_after` IS AN UPPER BOUND AND HAS TO READ AS ONE. The document carries
+    # no dateline, so the date is the day the copy on file was taken and the
+    # event happened at or before it. web/lib/dates.ts has rendered it "by
+    # <date>" since the cement census admitted its first undated owner document;
+    # these two builders had not been taught, so a bound reached the page as a
+    # bare day labelled "last change" -- the site asserting an afternoon nobody
+    # published.
+    if precision == "not_after":
+        return f"by {date}"
     return str(date)
 
 
@@ -622,7 +631,10 @@ def fact_the_latest(projects: list[dict]) -> dict | None:
     return _fact(
         "the_latest", "The latest",
         f"{p['name']} {STATUS_VERB[h['status']]} {when}.",
-        h["date"], [],
+        # THE AS-OF CARRIES THE BOUND TOO. The sentence said "by 14 September
+        # 2026" and the stamp beside it said "2026-09-14", so the page asserted
+        # the exact day it had just declined to assert.
+        _at_precision(h["date"], h.get("date_precision")), [],
         # The flag is carried ONLY where it is true. A key added to every payload
         # would move the fingerprint of every sector's held lead the day this
         # rule landed, and a review queue that fills up with sectors whose text

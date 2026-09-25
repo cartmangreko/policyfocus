@@ -30,6 +30,8 @@ import { getSectorSummary } from "@/lib/summaries";
 import { getFindingsForSector, withEvidence } from "@/lib/findings";
 import { getRecordsForSector, recordHref } from "@/lib/records";
 import { getImportance, hasMap } from "@/lib/transition";
+import SectorSpoke from "@/components/SectorSpoke";
+import { SPOKE_IDS, isSpoke, spokeTitle, type SpokeId } from "@/lib/spokes";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
 import type { Measure, SectorSlug } from "@/lib/types";
 
@@ -50,8 +52,33 @@ import type { Measure, SectorSlug } from "@/lib/types";
 // README.md, "Deploying".
 export const dynamicParams = false;
 
+// THE HUB AND ITS SPOKES. Brief 15 moves every complete list off the hub onto
+// a page of its own, so a sector that renders the product template now serves
+// six more URLs. They are enumerated here with everything else, for the reason
+// in the note above: nothing renders on demand.
+//
+// A SPOKE SEGMENT CANNOT COLLIDE WITH A CHILD SECTOR. Both are two segments —
+// /sectors/chem/plastics is a child, /sectors/cement/projects is a spoke — and
+// the six spoke names are not sector slugs and will not become them: a sector
+// slug is a FIGARO industry key. The dispatch below asks the last segment,
+// which is the cheapest way to be right and the loudest way to be wrong.
 export function generateStaticParams() {
-  return getSectorSlugs().map((slug) => ({ slug: slug.split("/") }));
+  const sectors = getSectorSlugs().map((slug) => ({ slug: slug.split("/") }));
+  const spokes = getSectorSlugs()
+    .filter((slug) => hasMap(slug))
+    .flatMap((slug) => SPOKE_IDS.map((spoke) => ({ slug: [...slug.split("/"), spoke] })));
+  return [...sectors, ...spokes];
+}
+
+/** The sector and the spoke a path names, or null where it names a sector on
+ *  its own. */
+function asSpoke(slug: string): { sector: string; spoke: SpokeId } | null {
+  const cut = slug.lastIndexOf("/");
+  if (cut < 0) return null;
+  const tail = slug.slice(cut + 1);
+  const head = slug.slice(0, cut);
+  if (!isSpoke(tail) || !(head in SECTORS)) return null;
+  return { sector: head, spoke: tail };
 }
 
 export async function generateMetadata({
@@ -60,6 +87,17 @@ export async function generateMetadata({
   params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
   const slug = (await params).slug.join("/");
+  // A SPOKE IS ALWAYS DEMOTED. It is the evidence layer under the hub: the
+  // crawler walks through it, and the URL a stranger meets in search is the
+  // hub. Stated here and in lib/routes.ts, which keeps it out of the sitemap,
+  // so the two signals cannot disagree.
+  const spoke = asSpoke(slug);
+  if (spoke) {
+    return {
+      robots: DEMOTED,
+      title: spokeTitle(spoke.sector, spoke.spoke),
+    };
+  }
   if (!(slug in SECTORS)) return { title: "Sector not found" };
   const name = SECTORS[slug as SectorSlug];
   // INDEXABILITY FOLLOWS THE TEMPLATE, which is the same thing as saying it
@@ -121,6 +159,8 @@ export default async function SectorPage({
   params: Promise<{ slug: string[] }>;
 }) {
   const slug = (await params).slug.join("/");
+  const spoke = asSpoke(slug);
+  if (spoke) return <SectorSpoke slug={spoke.sector as SectorSlug} spoke={spoke.spoke} />;
   // THE BRANCH. A sector with a transition map renders the map: the product
   // template, seven sections, the register demoted to a source of ranked
   // measures. A sector without one renders the register directory it has

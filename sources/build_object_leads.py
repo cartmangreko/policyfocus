@@ -188,6 +188,15 @@ def _at_precision(date: str, precision: str | None) -> str:
         return str(date)[:4]
     if precision == "month":
         return str(date)[:7]
+    # `not_after` IS AN UPPER BOUND AND HAS TO READ AS ONE. The document carries
+    # no dateline, so the date is the day the copy on file was taken and the
+    # event happened at or before it. web/lib/dates.ts has rendered it "by
+    # <date>" since the cement census admitted its first undated owner document;
+    # these two builders had not been taught, so a bound reached the page as a
+    # bare day labelled "last change" -- the site asserting an afternoon nobody
+    # published.
+    if precision == "not_after":
+        return f"by {date}"
     return str(date)
 
 
@@ -360,7 +369,15 @@ def project_lead(p: dict, params: dict, funding: list[dict], techs: dict,
     place = f"{p['plant']}, {where}" if p.get("plant") else where
 
     facts = [
-        _fact("status", f"{p['name']} {bl.STATUS_VERB[last['status']]} on "
+        # "ON <date>" IS A CLAIM THE SOURCE MAY NOT SUPPORT, and this sentence
+        # was making it. Where the event's precision is `not_after` the owner's
+        # document carries no dateline and the date is the day the copy on file
+        # was taken -- an upper bound. build_lead.py has said "by <date>" for
+        # that case since the rule was made; this builder had not been taught,
+        # so a project page's lead dated an announcement to the afternoon this
+        # register happened to read the page.
+        _fact("status", f"{p['name']} {bl.STATUS_VERB[last['status']]} "
+                        f"{'by' if last.get('date_precision') == 'not_after' else 'on'} "
                         f"{bl._long_date(last['date'])}.",
               _at_precision(last["date"], last.get("date_precision")),
               sourced=(p["name"],), href=last.get("source_url")),

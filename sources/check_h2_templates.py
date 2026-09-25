@@ -35,6 +35,13 @@ ROOT = Path(__file__).resolve().parent.parent
 PROSE = ROOT / "data" / "prose.json"
 ECOSYSTEMS = ROOT / "data" / "transition" / "ecosystems.json"
 TEMPLATE = ROOT / "web" / "components" / "SectorMap.tsx"
+# The four block headings do not appear in the template: the blocks render
+# through one component, which is handed the heading the template looked up. So
+# the chain has two more links and both are checked here -- that the template
+# passes h2(block.id), and that the component renders that prop and no wording
+# of its own. Without these two, brief 15 would have quietly taken four of the
+# five headings out of this gate's sight.
+BLOCK_COMPONENT = ROOT / "web" / "components" / "HubBlock.tsx"
 
 # The two slots a heading may take, and nothing else. Kept here rather than
 # inferred from the templates, because the renderer in web/lib/sitetext.ts
@@ -147,6 +154,20 @@ def main() -> int:
             problems.append(
                 f'the template asks for the heading of "{section_id}", which is not a '
                 f"section in data/prose.json")
+
+    # ---- the block headings, through the component ------------------------
+    if not re.search(r"heading=\{h2\(block\.id\)\}", tsx):
+        problems.append(
+            f"{TEMPLATE.name} does not hand each block h2(block.id). A block heading "
+            f"that came from anywhere else is free text with a lookup standing beside "
+            f"it")
+    hubtsx = BLOCK_COMPONENT.read_text(encoding="utf-8")
+    hub_h2 = [" ".join(raw.split()) for raw in H2.findall(hubtsx)]
+    if hub_h2 != ["{heading}"]:
+        problems.append(
+            f"{BLOCK_COMPONENT.name} renders {hub_h2!r} as its heading(s). It renders "
+            f"exactly one, and it is the `heading` prop: a block that wrote its own "
+            f"wording would be four headings this gate cannot see")
 
     if problems:
         print(f"check_h2_templates: {len(problems)} violations\n")

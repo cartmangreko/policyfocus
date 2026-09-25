@@ -249,78 +249,80 @@
  },
  "sector_sections": {
   "status": "approved",
-  "reviewed": "2026-08-25",
+  "reviewed": "2026-09-24",
   "_comment": [
-   "THE FIXED SEQUENCE, brief 5 §2. The sector page answers the same questions in",
-   "the same order on every sector, so the interface is learned once. The order of",
-   "the `sections` array below IS the render order and the nav order —",
+   "THE FIXED SEQUENCE, brief 15. The sector hub answers the same short sequence of",
+   "questions in the same order on every sector, so the interface is learned once.",
+   "The order of the `sections` array below IS the render order and the nav order —",
    "sources/check_section_order.py reads this array and fails the build if the",
    "template disagrees with it.",
+   "",
+   "WHAT BRIEF 15 CHANGED. The sequence was nine sections organised by node kind:",
+   "projects, technologies, materials, opportunity, bottlenecks, policies, companies,",
+   "feed, connections. Ten equal-weight things on one page, three of which repeated a",
+   "list that belongs on a page of its own. It is now five: the map, then four",
+   "blocks, then Sources. Technologies, materials and bottlenecks fold into ONE",
+   "question — what the sector depends on — because a reader asking it does not care",
+   "which of the three node kinds carries the answer. Companies, Feed and Connections",
+   "leave the hub for spoke pages reached from the footer, and the complete lists",
+   "leave it for the spokes.",
+   "",
+   "THE MAP IS A SECTION OF ITS OWN and is in the nav. It used to render inside the",
+   "projects section, under that section's H2 and behind an H3 of its own, which made",
+   "geography an attribute of the project table rather than the first answer to where",
+   "this is happening. Its heading and standfirst are unchanged; what changed is that",
+   "the heading is the section's H2, read from the template below rather than",
+   "composed in web/lib/prose.ts, so every heading on the hub comes from one reviewed",
+   "place.",
    "",
    "EVERY HEADING IS A QUESTION, and every question is stored here rather than",
    "written in the component, so the wording is reviewable in one place and cannot",
    "drift between sectors. Slots are {short} and {phrase} from sector_names above.",
    "",
-   "A SECTION WITH NO DATA IS OMITTED, from the page and from the nav both — brief",
-   "5 §2, which amends the fixed-presence rule in page specifications §0.5 for",
-   "this page type. An empty section is not rendered with a 'none tracked' line",
-   "here: nine sections of which four say nothing is a worse page than five that",
-   "say something. Which sections have data is a question for the data, not for",
-   "this file, so no entry below is marked optional.",
+   "A BLOCK WITH NOTHING ON FILE STILL RENDERS, which amends brief 5 §2 for this page",
+   "type. Brief 5 omitted an empty section. A block is not a section in that sense:",
+   "it is one of four fixed answers, and 'nothing on file, as of <date>' is one of the",
+   "answers a reader needs — an absent block reads as a page that forgot to ask. So",
+   "the four blocks are always present and a block missing from a sector's build",
+   "fails the build. The map is the one entry below a sector can lack: a sector with",
+   "no drawn frame has no picture to show.",
    "",
-   "NOT IN THE LIST. The lead block, which opens the page with no H2 and is",
-   "excluded from the nav (row 0). Sources, which page specifications §0.5 makes",
-   "the final section of every sector page and which brief 5 §2 does not number —",
-   "it renders last, unnumbered, outside the nav, on the same footing as the lead",
-   "block, and §2 is amended to say so in step 6."
+   "NOT IN THE LIST. The epigraph and the reviewed sector_context prose, and the lead",
+   "block, which open the page above the first H2 and stay out of the nav. Sources,",
+   "which page specifications §0.5 makes the final section of every sector page and",
+   "which is not one of the questions — it answers what the page stands on rather",
+   "than anything about the industry, so it renders last, unnumbered, outside the",
+   "nav, on the same footing as the lead block renders first."
   ],
   "h1": "{Short} in Europe's industrial transition",
   "h1_comment": "`phrase` is deliberately not used in the H1: it already carries 'European', and 'The European cement industry in Europe's industrial transition' says Europe twice.",
   "sections": [
    {
+    "id": "map",
+    "nav": "Map",
+    "h2": "Where Europe is building {short}",
+    "why": "Unchanged wording, moved. web/lib/prose.ts composed this same sentence from the register's sector name and LocationMap rendered it as an H3 inside the projects section. It is the hub's third part and a question of its own, so it is an H2 and it is stored with the others."
+   },
+   {
     "id": "projects",
-    "nav": "Projects",
+    "nav": "Being built",
     "h2": "What is being built in European {short}"
    },
    {
-    "id": "technologies",
-    "nav": "Technologies",
-    "h2": "Which technologies could change {short}"
+    "id": "depends",
+    "nav": "Depends on",
+    "h2": "What does {short} depend on",
+    "why": "Reviewed 24 September 2026. It was a draft slot: the other three block headings carry over from the sections they replace and were already reviewed, and this one is new — it folds technologies, materials and constraints into a single question — so the wording was a placeholder in the existing question form and said so. George read it on the cement preview and it stands as written."
    },
    {
-    "id": "materials",
-    "nav": "Materials",
-    "h2": "Which materials flow through {short}"
+    "id": "policies",
+    "nav": "Policy",
+    "h2": "Which EU rules matter for {short}"
    },
    {
     "id": "opportunity",
     "nav": "Opportunity",
     "h2": "What EU rules and money support in {short}"
-   },
-   {
-    "id": "bottlenecks",
-    "nav": "Bottlenecks",
-    "h2": "What constrains {phrase}"
-   },
-   {
-    "id": "policies",
-    "nav": "Policies",
-    "h2": "Which EU rules matter for {short}"
-   },
-   {
-    "id": "companies",
-    "nav": "Companies",
-    "h2": "Who are the companies in {phrase}"
-   },
-   {
-    "id": "feed",
-    "nav": "Feed",
-    "h2": "What changed in {short}"
-   },
-   {
-    "id": "connections",
-    "nav": "Connections",
-    "h2": "How {short} connects"
    }
   ],
   "unnumbered": [
@@ -414,7 +416,7 @@
   ],
   "sectors": {
    "cement": {
-    "fingerprint": "09182e3652afd820",
+    "fingerprint": "653a600274306108",
     "template_version": 5,
     "sentence": "European cement is cutting its emissions.",
     "why_it_matters": "Cement made this way costs more than the cement it replaces, so whether Europe gets it depends on who covers the difference.",
@@ -432,7 +434,7 @@
      {
       "id": "pipeline_state",
       "text": "33 European cement projects are under way, 5 of them have taken a final investment decision, and 1 is paused.",
-      "as_of": "2026-09-14"
+      "as_of": "by 2026-09-14"
      },
      {
       "id": "decisive_exposure",
@@ -442,7 +444,7 @@
      {
       "id": "the_latest",
       "text": "Go4ECOPlanet was announced by 14 September 2026.",
-      "as_of": "2026-09-14"
+      "as_of": "by 2026-09-14"
      },
      {
       "id": "binding_constraint",
@@ -450,11 +452,11 @@
       "as_of": "2026-01-01"
      }
     ],
-    "regenerated": "2026-09-14",
-    "regenerated_why": "The cement census admitted twenty-six rows, so every count the lead computes moved. The held copy is a COPY of the built lead awaiting review, never an input to it: regenerating it changes nothing on the site and stops the file recording a sentence the page has stopped saying. It stays in the review queue."
+    "regenerated": "2026-09-23",
+    "regenerated_why": "The `not_after` fix of brief 15: an event whose document carries no dateline is an upper bound, and the fact's as-of stamp printed it as a bare day beside a sentence that already said \"by\". Only the stamp moved; every sentence and every count is the one that was already held. The held copy is a COPY of the built lead awaiting review, never an input to it: regenerating it changes nothing on the site and stops the file recording a sentence the page has stopped saying. It stays in the review queue."
    },
    "steel": {
-    "fingerprint": "3fea93b1ba0b0841",
+    "fingerprint": "ccecd1a2982a8cef",
     "template_version": 5,
     "sentence": "European steel is cutting its emissions and shifting to recycled material.",
     "why_it_matters": "Steel made this way costs more than the steel it replaces, so whether Europe gets it depends on who covers the difference.",
@@ -472,7 +474,7 @@
      {
       "id": "pipeline_state",
       "text": "27 European steel projects are under way, 11 of them have taken a final investment decision, and 1 has been cancelled.",
-      "as_of": "2026-09-20"
+      "as_of": "by 2026-09-20"
      },
      {
       "id": "decisive_exposure",
@@ -482,10 +484,16 @@
      {
       "id": "the_latest",
       "text": "Tata Steel Port Talbot went into construction by 20 September 2026.",
-      "as_of": "2026-09-20"
+      "as_of": "by 2026-09-20"
+     },
+     {
+      "id": "binding_constraint",
+      "text": "Green premium against willingness to pay — a market constraint, acted on by 6 ranked measures at 4.5 of combined weight.",
+      "as_of": "2026-01-01"
      }
     ],
-    "regenerated_why": "REGENERATED 20 September 2026. Twenty steel rows landed across two passes and every count the lead computes moved with them. THE HELD COPY IS NOT A JUDGEMENT ABOUT THE PAGE — the steel page is held and nothing renders — it is the check that a reviewed sentence has not quietly become a sentence nobody reviewed. The prose is unchanged; only the numbers under it are."
+    "regenerated_why": "The `not_after` fix of brief 15: an event whose document carries no dateline is an upper bound, and the fact's as-of stamp printed it as a bare day beside a sentence that already said \"by\". Only the stamp moved; every sentence and every count is the one that was already held. The held copy is a COPY of the built lead awaiting review, never an input to it: regenerating it changes nothing on the site and stops the file recording a sentence the page has stopped saying. It stays in the review queue.",
+    "regenerated": "2026-09-23"
    }
   }
  },
