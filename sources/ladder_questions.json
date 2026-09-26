@@ -177,6 +177,16 @@
    "and_it_is_not_this_pass_s_mistake_alone": "BRIEF 14's OWN SEARCH INHERITED THE GUESSES. research_pass.py takes an entry's owner host from the hosts in its own records and refuses to invent one — and the records it read already contained invented hosts, so twelve of the eighty-two entries in the browser queue are queued against a domain that never existed. The rule against folding a name into a key is only as good as the records it reads.",
    "ruled": "2026-09-21. A domain is never derived from a project's name. Every search record states how the owner's host was established and check_search_records.py gates it. The 11 confirmed-by-content guesses keep their result with the provenance recorded; the 20 whose verdict rested on unconfirmed guesses reopen as not_searched and were searched by a recorded query. D-A21.",
    "correction": "THE FIGURES IN THIS QUESTION AND IN #74 WERE WRONG. 47/28/15 came from a substring test that counted endesa.com as derived from 'Huelva - Endesa'. Re-measured on the shape the search generated — two or more hosts sharing a stem across TLDs — the figures are 60 / 11 / 20."
+  },
+  {
+   "id": "L10",
+   "raised": "2026-09-26",
+   "held": false,
+   "question": "One cited URL has a fetch record that is not a refusal and no bytes on any machine here. Does a citation whose body was not kept still count as read, and on what evidence?",
+   "what_the_record_shows": "D-A25's union of `check_citation_bodies.py` over both worktrees on the paper-freeze commit leaves exactly one citation in the CITED AND NEVER READ class: https://api.iea.org/hydrogen/project, cited at data/transition/projects.json.projects[75].disagreements[0].speakers[1] — the IEA's 104 MW_input figure for BayH2 against the company's 128 MW. sources/cache/hydrogen/index.json holds one record for it: 2026-09-09, 496,671 bytes, outcome `fetched 2026-09-09 by build_hydrogen_benchmark.fetch()`. The body is under no sha in any of the four worktrees' caches.",
+   "why_it_is_not_simply_wrong": "IT IS NOT A REFUSAL AND NOT A GAP IN THE SEARCH. The document was fetched, the reading is what the benchmark file is made of, and the register's own drift and disagreement machinery has been reading IEA ref 1221 out of it since. What is missing is the COPY, and the copies are gitignored by design — `dep_restore.py` exists because this repository has always held that the index is the tracked claim and the bytes are a convenience.",
+   "why_it_was_not_cleared_before_the_tag": "A FETCH TODAY WOULD NOT BE EVIDENCE OF THE 9 SEPTEMBER READING. api.iea.org serves the current vintage; filing today's bytes under that URL would put a different document behind a dated disagreement and make the citation look checked when what had been checked is something else. So it is listed rather than cleared, and the paper's table carries it as the single open citation.",
+   "what_would_settle_it": "Either a rule that an index record naming a byte count and a date is sufficient evidence of reading where the body is absent — which is close to what check_citations already does with its 2026-09-15 baseline — or a restore path that keeps one copy of a benchmark blob per vintage, which is a decision about what the cache is for and not a fix to this row."
   }
  ]
 }
