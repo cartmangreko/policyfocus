@@ -22138,11 +22138,12 @@
    "captured_at": "2025-02-22",
    "archived": true,
    "http": null,
-   "bytes": 35182,
-   "sha256": "0eee3416a93cd49d5fc0f9cd03c488bf618afb3d70ffbbfb65ef106d356d6d49",
-   "text_chars": 18131,
-   "outcome": "archive capture, 200, 18131 chars",
-   "note": "browser queue archive pass, iea:2185: the live URL 200, 18131 chars from a capture; queued because every URL in the entry's own records answered nothing: cetaer.com 403; cetaer.com/news 403; cetaer.com/en/news 403; ceta"
+   "bytes": 143229,
+   "sha256": "549ea9f2696d543d4a37b2043a7b0fccf4e4a6c1f4e87982c3c52c132e351454",
+   "text_chars": 3888,
+   "outcome": "archive capture, 200, 3888 chars",
+   "crawl_status": "-",
+   "note": "browser queue archive pass, iea:2185: the live URL 200, 3888 chars from a capture; queued because every URL in the entry's own records answered nothing: cetaer.com 403; cetaer.com/news 403; cetaer.com/en/news 403; ceta"
   },
   {
    "url": "https://cetaer.com/hidrogeno-verde-el-proyecto-nascar-en-el-paraje-almeriense-de-los-retamares-producira-grandes-cantidades-de-hidrogeno-verde-y-e-metanol/",
@@ -22158,23 +22159,42 @@
    "sha256": "cf0929c94726531041cccd1ffa25b30e387bf19630d63106dc7bd2201128c12a",
    "text_chars": 1649,
    "outcome": "archive capture, 200, 1649 chars",
+   "crawl_status": "200",
    "note": "browser queue archive pass, iea:2185: the live URL 200, 1649 chars from a capture; queued because every URL in the entry's own records answered nothing: cetaer.com 403; cetaer.com/news 403; cetaer.com/en/news 403; ceta"
+  },
+  {
+   "url": "https://cinea.ec.europa.eu/news-events/news/european-hydrogen-bank-auction-provides-eu720-million-renewable-hydrogen-production-europe-2024-04-30_en",
+   "read_url": "https://web.archive.org/web/20240502130453id_/https://cinea.ec.europa.eu/news-events/news/european-hydrogen-bank-auction-provides-eu720-million-renewable-hydrogen-production-europe-2024-04-30_en",
+   "domain": "cinea.ec.europa.eu",
+   "source_type": "company",
+   "date": "2024-05-02",
+   "date_precision": "not_after",
+   "captured_at": "2024-05-02",
+   "archived": true,
+   "http": null,
+   "bytes": 6344,
+   "sha256": "f6eeec6696cb3c410165c11c1a71414d4d2f14b95fa627832bff935f3c07f9b3",
+   "text_chars": 34,
+   "outcome": "archive capture, 200, empty body",
+   "crawl_status": "301",
+   "note": "browser queue archive pass, iea:1191: the live URL 200, empty body from a capture; queued because every URL in the entry's own records answered nothing: www.aquaventus.com 200, empty body; www.aquaventus.com/news 200, "
   },
   {
    "url": "https://ignis.es",
    "read_url": "https://web.archive.org/web/20260925051432id_/https://ignis.es/",
    "domain": "ignis.es",
    "source_type": "company",
-   "date": "2026-09-25",
-   "date_precision": "not_after",
+   "date": "2026-04-09",
+   "date_precision": "day",
    "captured_at": "2026-09-25",
    "archived": true,
    "http": null,
-   "bytes": 38157,
-   "sha256": "b2f981bb01b9747819e82f9c08e6032ffbdda19ec3df45d6abbc73f45dc83814",
-   "text_chars": 17272,
-   "outcome": "archive capture, 200, 17272 chars",
-   "note": "browser queue archive pass, iea:2957: the live URL 200, 17272 chars from a capture; queued because every URL in the entry's own records answered nothing: ignis.es 403; ignis.es/news 403; ignis.es/en/news 403; ignis.es/p"
+   "bytes": 150832,
+   "sha256": "3188252c01b5ddd5ade5efa23f5478e8c282c080a44a97be7127c263559f7679",
+   "text_chars": 5386,
+   "outcome": "archive capture, 200, 5386 chars",
+   "crawl_status": "200",
+   "note": "browser queue archive pass, iea:2957: the live URL 200, 5386 chars from a capture; queued because every URL in the entry's own records answered nothing: ignis.es 403; ignis.es/news 403; ignis.es/en/news 403; ignis.es/p"
   },
   {
    "url": "https://ignis.es/en/green-hydrogen-as-a-key-driver-for-decarbonization-and-energy-transformation/",
@@ -22190,6 +22210,7 @@
    "sha256": "0219cc6bbf3360f3b6bce6601041ed02dad2132784824f27033b4e85ba41938e",
    "text_chars": 4059,
    "outcome": "archive capture, 200, 4059 chars",
+   "crawl_status": "200",
    "note": "browser queue archive pass, iea:2957: the live URL 200, 4059 chars from a capture; queued because every URL in the entry's own records answered nothing: ignis.es 403; ignis.es/news 403; ignis.es/en/news 403; ignis.es/p"
   },
   {
@@ -22206,6 +22227,7 @@
    "sha256": "29afaf672b20711c29eec5ccf3ce249de725fe84e9913c16452db3c5de6eb459",
    "text_chars": 5326,
    "outcome": "archive capture, 200, 5326 chars",
+   "crawl_status": "200",
    "note": "browser queue archive pass, iea:2957: the live URL 200, 5326 chars from a capture; queued because every URL in the entry's own records answered nothing: ignis.es 403; ignis.es/news 403; ignis.es/en/news 403; ignis.es/p"
   },
   {
@@ -22222,6 +22244,7 @@
    "sha256": "bb966994beb6dcd18e8b455e472e032b9727a920098ec589af1d0a9a3107cec3",
    "text_chars": 8070,
    "outcome": "archive capture, 200, 8070 chars",
+   "crawl_status": "200",
    "note": "browser queue archive pass, iea:3678: the live URL 200, 8070 chars from a capture; queued because every URL in the entry's own records answered nothing: ignis.es 403; ignis.es/news 403; ignis.es/en/news 403; ignis.es/p"
   },
   {
@@ -22238,6 +22261,7 @@
    "sha256": "e78e48f9af7b5ffc9a1bb3ad82a2b32ceff1d6fdc83a51f0158cdf3bb1a114b3",
    "text_chars": 3659,
    "outcome": "archive capture, 200, 3659 chars",
+   "crawl_status": "200",
    "note": "browser queue archive pass, iea:1878: the live URL 200, 3659 chars from a capture; queued because every URL in the entry's own records answered nothing: www.brint.com 403; www.brint.com/news 403; www.brint.com/en/news "
   },
   {
@@ -22254,6 +22278,7 @@
    "sha256": "89ccab4d46beb05ffcbcd1de7712d1b09d77d26e102ef7b280364790a310e277",
    "text_chars": 12222,
    "outcome": "archive capture, 200, 12222 chars",
+   "crawl_status": "200",
    "note": "browser queue archive pass, iea:1548: the live URL 200, 12222 chars from a capture; queued because every URL in the entry's own records answered nothing: www.lacq.com 200, empty body; www.lacq.com/news 200, empty body; "
   },
   {
@@ -22266,11 +22291,12 @@
    "captured_at": "2026-02-24",
    "archived": true,
    "http": null,
-   "bytes": 33896,
-   "sha256": "76c59ad10291f70b3749864155c6ac1d20f7928de3e1e67081a6c13b3ccb6274",
-   "text_chars": 17252,
-   "outcome": "archive capture, 200, 17252 chars",
-   "note": "browser queue archive pass, iea:2017: the live URL 200, 17252 chars from a capture; queued because every URL in the entry's own records answered nothing: www.plug.com 200, empty body; www.plug.com/news 404; www.plug.com"
+   "bytes": 106649,
+   "sha256": "04ac0d7b719b70b2490d589709eccd836c5b38f218dd0761608430d61060e39e",
+   "text_chars": 16844,
+   "outcome": "archive capture, 200, 16844 chars",
+   "crawl_status": "200",
+   "note": "browser queue archive pass, iea:2017: the live URL 200, 16844 chars from a capture; queued because every URL in the entry's own records answered nothing: www.plug.com 200, empty body; www.plug.com/news 404; www.plug.com"
   },
   {
    "url": "https://www.naturgy.com/notas-de-prensa/naturgy-y-enagas-renovable-presentan-en-la-robla-la-futura-planta-de-hidrogeno-renovable-cuya-capacidad-de-produccion-se-multiplicara-hasta-280-mw/",
@@ -22286,6 +22312,7 @@
    "sha256": "3da15f27c6f4014146e0a6b18479c24ad400533f19b86e09fd22049f3664e6a6",
    "text_chars": 14250,
    "outcome": "archive capture, 200, 14250 chars",
+   "crawl_status": "200",
    "note": "browser queue archive pass, iea:607: the live URL 200, 14250 chars from a capture; queued because every URL in the entry's own records answered nothing: www.robla.com 200, empty body; www.robla.com/news 200, empty body"
   }
  ]

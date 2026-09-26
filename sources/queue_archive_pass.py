@@ -5,6 +5,9 @@
                                                        #   nothing tracked
     python3 sources/queue_archive_pass.py --save       # …and submit the misses to
                                                        #   Save Page Now, then poll
+    python3 sources/queue_archive_pass.py --save --again   # …re-asking the misses, which
+                                                       #   is what to run once the
+                                                       #   credentials are in the env
     python3 sources/queue_archive_pass.py --write      # file what has a body, from the
                                                        #   record, asking nothing again
     python3 sources/queue_archive_pass.py --report     # cleared / empty shell / no capture
@@ -50,6 +53,18 @@ rate-limit, and both say so with a 429 or a 503. An exhausted retry is recorded 
 `refused` and counted apart from `no capture`: "the archive did not answer" and "the
 archive holds nothing" are different facts and only one of them is about the URL.
 
+AND A CLOCK RUNNING OUT IS NOT A REFUSAL AT ALL. `refused` is for what the publisher —
+here, the archive — actually answered. A socket timeout, or this pass's own per-URL
+deadline expiring, is `timed_out`: THE OUTCOME OF A REQUEST THAT WAS NEVER ANSWERED
+EITHER WAY. Its next action is `re-ask` and nothing else; it never sends an entry to the
+browser queue, because nothing has been learned about the page. `--again` re-asks it.
+
+A LINE IN THE URL COLUMN THAT IS NOT A URL IS NOT ASKED. Thirteen queue rows carry
+`search:<query>` — a search somebody is being asked to run, written there by the queue
+builder for a person to read. Asking the archive whether it holds a capture of a sentence
+produces a `no capture` that means nothing, and submitting one to Save Page Now spends a
+rate limit on it. They are counted as `not a URL` and left to the person.
+
 NOTHING HERE WRITES A CLASS. Same rule as the pass it feeds: what this produces is a
 record, a filed copy and a signal per entry. A person classes.
 """
@@ -58,9 +73,13 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import gzip
 import json
 import os
 import re
+import signal
+import socket
+import zlib
 import sys
 import time
 import urllib.error
@@ -86,6 +105,24 @@ CDX = "https://web.archive.org/cdx/search/cdx"
 UA = ("Mozilla/5.0 (compatible; Eufabric/1.0; "
       "+https://www.eufabric.eu; data@eufabric.eu)")
 PAUSE = 2.0                 # between requests, the pace the sector readers keep
+DEADLINE = 300              # seconds one URL may take, end to end, before it is abandoned
+
+# A TIMEOUT ON EVERY SOCKET AND A DEADLINE ON EVERY URL — AND THE TWENTY-HOUR STALL THAT
+# PROVOKED THEM WAS NEITHER'S FAULT. The first credentialed run stopped writing records at
+# 22:57:05 on 25 September and was found at 18:38 the next day with 5.9 seconds of CPU
+# behind it, no socket open and seventeen URLs unasked. That reads exactly like a wedged
+# read, and it was not one: `pmset -g log` puts the machine into 'Clamshell Sleep' at
+# 22:57:54, FORTY-NINE SECONDS after the last record, through ninety-three sleep entries
+# and ninety-two dark wakes with no user wake, until a full wake on lid activity at
+# 18:37:48 — a minute before the process was looked at. THE LID CLOSED. The process was
+# suspended with the machine and resumed on the same instruction; nothing hung. See
+# ladder_docket.md D-A27.
+#
+# The two bounds below stay, because a long unattended pass should carry its own deadline
+# whatever stopped it, and neither would have prevented this one: a suspended process's
+# alarm does not fire while the machine is asleep. What prevents it is running the pass
+# with the lid open, or under `caffeinate -i`.
+socket.setdefaulttimeout(90)
 READABLE = 400              # chars of text below which a body is a shell, as everywhere
 
 # THE DATELINE, WHERE THE PUBLISHER PUT ONE. Read in the order a publisher means them:
@@ -107,11 +144,17 @@ DATELINE = (
 # THE ARCHIVE, ASKED
 
 
-def _get(url: str, timeout=45, tries=3, data=None, headers=None):
-    """(body, http, refusal). A 429 or a 503 exhausted is `refused`, not `nothing`.
+TIMEOUTS = ("timed out", "TimeoutError", "timeout")
 
-    The distinction is the one ce6e1fe made in the dependency sweep and it is the same
-    here: an index that throttled this reader has not told us the URL is unheld.
+
+def _get(url: str, timeout=45, tries=3, data=None, headers=None):
+    """(body, http, problem). `problem` is "", "refused: …" or "timed_out: …".
+
+    THREE OUTCOMES AND NOT TWO. A 429 or a 503 exhausted is `refused` — the distinction
+    ce6e1fe made in the dependency sweep, an index that throttled this reader has not
+    told us the URL is unheld. A clock that ran out is `timed_out`, which is neither the
+    archive holding nothing nor the archive refusing: it is a request that got no answer,
+    and the only thing it supports is asking again.
     """
     hdr = {"User-Agent": UA}
     hdr.update(headers or {})
@@ -135,8 +178,19 @@ def _get(url: str, timeout=45, tries=3, data=None, headers=None):
             if i < tries - 1:
                 time.sleep(4 * (i + 1))
                 continue
-            return b"", None, f"refused: {type(e).__name__}"
-    return b"", None, "refused: retries exhausted"
+            name = type(e).__name__
+            if any(t.lower() in f"{name} {e}".lower() for t in TIMEOUTS):
+                return b"", None, f"timed_out: {name}"
+            return b"", None, f"refused: {name}"
+    return b"", None, "timed_out: retries exhausted"
+
+
+def _problem(problem: str) -> dict:
+    """A no-capture answer, with the problem in the field its own kind belongs in."""
+    timed = problem.startswith("timed_out")
+    return {"capture": None,
+            "refused": "" if timed else problem,
+            "timed_out": problem.split(": ", 1)[-1] if timed else ""}
 
 
 def _capture(ts: str, url: str, status: str = "", via: str = "") -> dict:
@@ -157,20 +211,21 @@ def cdx_latest(url: str) -> dict:
     q = urllib.parse.urlencode({"url": url, "output": "json",
                                 "fl": "timestamp,original,statuscode",
                                 "limit": "-5"})
-    body, http, refused = _get(f"{CDX}?{q}", timeout=90)
+    body, http, problem = _get(f"{CDX}?{q}", timeout=90)
     time.sleep(PAUSE)
-    if refused:
-        return {"capture": None, "refused": refused}
+    if problem:
+        return _problem(problem)
     try:
         rows = json.loads(body.decode("utf-8", "replace") or "[]")
     except Exception:                                          # noqa: BLE001
-        return {"capture": None, "refused": f"refused: unreadable index answer ({http})"}
+        return _problem(f"refused: unreadable index answer ({http})")
     rows = [r for r in rows if r and r[0] != "timestamp"]
     if not rows:
-        return {"capture": None, "refused": ""}
+        return {"capture": None, "refused": "", "timed_out": ""}
     ts, original = rows[-1][0], rows[-1][1]
     status = rows[-1][2] if len(rows[-1]) > 2 else ""
-    return {"refused": "", "capture": _capture(ts, original, status, "the CDX index")}
+    return {"refused": "", "timed_out": "",
+            "capture": _capture(ts, original, status, "the CDX index")}
 
 
 def latest_capture(url: str) -> dict:
@@ -188,20 +243,21 @@ def latest_capture(url: str) -> dict:
     index rather than being recorded as "no capture".
     """
     q = urllib.parse.urlencode({"url": url})
-    body, http, refused = _get(f"{AVAIL}?{q}", timeout=30)
+    body, http, problem = _get(f"{AVAIL}?{q}", timeout=30)
     time.sleep(PAUSE)
-    if refused:
-        return {"capture": None, "refused": refused}
+    if problem:
+        return _problem(problem)
     try:
         doc = json.loads(body.decode("utf-8", "replace") or "{}")
     except Exception:                                          # noqa: BLE001
-        return {"capture": None, "refused": f"refused: unreadable answer ({http})"}
+        return _problem(f"refused: unreadable answer ({http})")
     snap = ((doc.get("archived_snapshots") or {}).get("closest") or {})
     ts = str(snap.get("timestamp") or "")
     if not snap.get("available") or len(ts) < 8:
         return cdx_latest(url)
-    return {"refused": "", "capture": _capture(ts, url, str(snap.get("status") or ""),
-                                               "the availability endpoint")}
+    return {"refused": "", "timed_out": "",
+            "capture": _capture(ts, url, str(snap.get("status") or ""),
+                                "the availability endpoint")}
 
 
 def save_page_now(url: str, wait: int = 90) -> dict:
@@ -220,13 +276,20 @@ def save_page_now(url: str, wait: int = 90) -> dict:
                 "outcome": "not submitted — Save Page Now needs credentials; set "
                            "IA_ACCESS_KEY and IA_SECRET_KEY (archive.org/account/s3.php)"}
     data = urllib.parse.urlencode({"url": url, "capture_all": "1"}).encode()
-    body, http, refused = _get(SAVE, timeout=90, tries=2, data=data,
+    body, http, problem = _get(SAVE, timeout=90, tries=2, data=data,
                                headers={"Accept": "application/json",
                                         "Authorization": f"LOW {key}:{secret}",
                                         "Content-Type": "application/x-www-form-urlencoded"})
-    if refused or http not in (200, 201):
+    if problem or http not in (200, 201):
+        # WHAT THE ARCHIVE SAID BACK, WITH THE CREDENTIALS TAKEN OUT OF IT. The
+        # outcome string is written to a tracked file, and an error body that echoed
+        # the request would put a secret in the repository's history for good. The
+        # keys live outside this tree and they stay outside it.
         txt = body.decode("utf-8", "replace")[:200] if body else ""
-        return {"submitted": False, "outcome": refused or f"save refused: {http} {txt}"}
+        for value in (key, secret):
+            if value:
+                txt = txt.replace(value, "<redacted>")
+        return {"submitted": False, "outcome": problem or f"save refused: {http} {txt}"}
     waited = 0
     while waited < wait:
         time.sleep(15)
@@ -262,13 +325,64 @@ def dateline_of(body: bytes) -> tuple[str, str]:
     return "", ""
 
 
+PRINTABLE = re.compile(r"[^\x09\x0a\x0d\x20-\x7e\u00a0-\u036f\u0370-\u1fff\u2000-\u2bff]")
+
+
+def decompressed(body: bytes) -> tuple[bytes, str]:
+    """(bytes a reader can read, how they got that way).
+
+    THE `id_` FORM RETURNS THE BYTES AS CAPTURED, AND THAT INCLUDES THE PUBLISHER'S
+    CONTENT-ENCODING. urllib sends no Accept-Encoding and does not decompress, so seven of
+    the first run's captures were stored and read as gzip: `text_of()` decoded the
+    compressed stream into 2,854 characters of mojibake and the threshold that decides
+    "readable" passed it. TWO OF THOSE CLEARED SEVENTEEN ENTRIES OFF THE QUEUE ON BYTES
+    NOBODY COULD READ, which is the exact failure this pass exists to avoid at the other
+    end — an empty shell standing in for a document.
+
+    Brotli has no magic number and no decoder in the standard library, so a body that is
+    neither text nor gzip nor zlib is returned as it came and the guard below calls it
+    what it is rather than counting its bytes as text.
+    """
+    if body[:2] == b"\x1f\x8b":
+        try:
+            return gzip.decompress(body), "gzip, decompressed here"
+        except Exception:                                      # noqa: BLE001
+            return body, "gzip, and it would not decompress"
+    if body[:1] == b"\x78" and body[1:2] in (b"\x01", b"\x9c", b"\xda", b"\x5e"):
+        try:
+            return zlib.decompress(body), "zlib, decompressed here"
+        except Exception:                                      # noqa: BLE001
+            return body, "zlib, and it would not decompress"
+    return body, ""
+
+
+def is_text(text: str) -> bool:
+    """Is this text, or is it a compressed stream somebody counted the characters of?
+
+    A PROPORTION, NOT A LIST OF BAD BYTES. Decoded gzip is 20-40% characters outside any
+    writing system; a page in Greek, Polish or Norwegian is none. Anything above a
+    twentieth unprintable is not a document, and saying so here is cheaper than a reader
+    finding it in a quote.
+    """
+    if not text:
+        return False
+    return len(PRINTABLE.findall(text)) / len(text) < 0.05
+
+
 def read_capture(url: str, cap: dict, mod) -> dict:
     """The capture's own bytes, hashed, filed in the sector cache, and read for text."""
-    body, http, refused = _get(cap["read_url"], timeout=60)
+    body, http, problem = _get(cap["read_url"], timeout=60)
     time.sleep(PAUSE)
-    if refused or not body:
-        return {"outcome": refused or f"capture unreadable: {http}",
-                "bytes": 0, "sha256": "", "text_chars": 0}
+    if problem or not body:
+        out = {"outcome": problem or f"capture unreadable: {http}",
+               "bytes": 0, "sha256": "", "text_chars": 0}
+        if problem.startswith("timed_out"):
+            out["timed_out"] = problem.split(": ", 1)[-1]
+        return out
+    # THE COPY ON FILE IS THE ONE A READER CAN READ. The stored body is the decompressed
+    # one, because that is what every other fetch in these caches holds and what
+    # body_text() and the gates downstream expect; how it arrived is kept in the record.
+    body, encoding = decompressed(body)
     text = mod.text_of(body, "pdf" if body[:4] == b"%PDF" else "")
     sha = hashlib.sha256(body).hexdigest()
     mod.CACHE.mkdir(parents=True, exist_ok=True)
@@ -276,21 +390,87 @@ def read_capture(url: str, cap: dict, mod) -> dict:
     date, prec = dateline_of(body)
     if not date:
         date, prec = cap["captured_at"], "not_after"
-    return {"outcome": (f"{http}, {len(text)} chars" if len(text) >= READABLE
-                        else f"{http}, empty body"),
-            "bytes": len(body), "sha256": sha, "text_chars": len(text),
-            "date": date, "date_precision": prec}
+    if body[:4] == b"%PDF":
+        outcome = f"{http}, a PDF, filed and not read"
+    elif not is_text(text):
+        outcome = (f"{http}, not text — {len(text)} characters of an encoding this "
+                   f"reader cannot read" + (f" ({encoding})" if encoding else ""))
+        text = ""
+    elif len(text) >= READABLE:
+        outcome = f"{http}, {len(text)} chars"
+    else:
+        outcome = f"{http}, empty body"
+    rec = {"outcome": outcome, "bytes": len(body), "sha256": sha,
+           "text_chars": len(text), "date": date, "date_precision": prec}
+    if encoding:
+        rec["content_encoding"] = encoding
+    return rec
+
+
+class TimedOut(Exception):
+    """One URL took longer than DEADLINE and no answer of any kind came back."""
+
+
+def _deadline(seconds: int):
+    """A hard stop on one URL's turn, because a pass that hangs records nothing.
+
+    SIGALRM rather than a thread, because the thing being interrupted is a blocking
+    read inside urllib and a signal is what unsticks that. WHAT IT RECORDS IS
+    `timed_out` AND NOT `refused`: the archive said nothing either way, so the URL is
+    owed another ask and is owed nothing else. A deadline that wrote itself down as a
+    refusal would turn this reader's clock into a finding about a page.
+    """
+    def fire(_sig, _frm):
+        raise TimedOut(f"timed out locally after {seconds}s")
+    old = signal.signal(signal.SIGALRM, fire)
+    signal.alarm(seconds)
+    return old
+
+
+def _clear_deadline(old) -> None:
+    signal.alarm(0)
+    signal.signal(signal.SIGALRM, old)
 
 
 def verdict(rec: dict) -> str:
-    """cleared | empty shell | no capture | refused — the four a URL can end in."""
+    """cleared | empty shell | captured a refusal | no capture | refused | timed out |
+    not a URL.
+
+    THE ORDER IS THE POINT. `timed out` is tested before everything but a body, because
+    a URL whose ask never got an answer has no standing to be called anything else — its
+    next action is `re-ask` and it is not a queue item. `not a URL` is a line in the
+    queue's URL column that is a search instruction for a person, and the archive was
+    never asked about it.
+    """
+    if rec.get("not_a_url"):
+        return "not a URL"
+    if rec.get("timed_out"):
+        return "timed out"
     if rec.get("refused"):
         return "refused"
     if not rec.get("capture"):
         return "no capture"
+    # AND THE CRAWLER'S OWN STATUS DECIDES BEFORE THE BYTE COUNT DOES. cemex.es/news was
+    # captured at 404 and the stored body is Cemex's branded error page: 5,299 characters
+    # of real text, and not one of them a document. A capture of a refusal is a record
+    # that the page was gone on the day it was crawled — it is not a reading, it cannot
+    # clear an entry, and dep_archive's `filter=statuscode:200` was drawing this line all
+    # along. The status is kept rather than filtered so the record says what happened.
+    status = str((rec.get("capture") or {}).get("crawl_status") or "")
+    if status[:1] in ("4", "5"):
+        return "captured a refusal"
     if rec.get("text_chars", 0) >= READABLE:
         return "cleared"
     return "empty shell"
+
+
+NEXT_ACTION = {"cleared": "filed, and the entry leaves the queue",
+               "empty shell": "stays in the browser queue",
+               "captured a refusal": "stays in the browser queue (404/5xx when crawled)",
+               "no capture": "stays in the browser queue",
+               "refused": "re-ask (the archive refused this reader)",
+               "timed out": "re-ask (no answer either way)",
+               "not a URL": "a search for a person, never asked of the archive"}
 
 
 # --------------------------------------------------------------------------
@@ -342,7 +522,16 @@ def ask(args) -> int:
         rows = [r for r in rows if r["sector"] == args.sector]
     doc = state_load()
     asked = doc["asked"]
-    todo = [t for t in targets(rows) if t[2] not in asked or args.again]
+    # --again RE-ASKS THE MISSES AND NOTHING ELSE. A URL whose capture is already read
+    # and hashed has been answered, and asking the archive for it a second time buys
+    # nothing and spends somebody's rate limit. What is worth re-asking is a URL that
+    # came back with no capture — because Save Page Now may since have made one, which
+    # is the whole point of running with credentials — and a URL the index refused,
+    # because that was a measurement of a request rather than of the URL.
+    todo = [t for t in targets(rows)
+            if t[2] not in asked
+            or (args.again
+                and asked[t[2]].get("verdict") in ("no capture", "refused", "timed out"))]
     seen, uniq = set(), []
     for t in todo:
         if t[2] not in seen:
@@ -361,21 +550,40 @@ def ask(args) -> int:
         rec = {"url": url, "entry_ids": sorted({e for e, _, u in targets(rows)
                                                 if u == url}),
                "sector": sector, "asked_on": time.strftime("%Y-%m-%d")}
-        got = latest_capture(url)
-        rec["refused"] = got["refused"]
-        rec["capture"] = got["capture"]
-        if not rec["capture"] and not rec["refused"] and args.save:
-            spn = save_page_now(url, wait=args.wait)
-            rec["save_page_now"] = spn["outcome"]
-            if spn.get("capture"):
-                rec["capture"] = spn["capture"]
-        if rec["capture"]:
-            rec.update(read_capture(url, rec["capture"], mod))
+        if not url.lower().startswith(("http://", "https://")):
+            # NOT A URL, AND THE QUEUE SAYS SO ITSELF. `search:<query>` is what the queue
+            # builder writes where the work left to do is a search rather than a fetch.
+            rec.update({"not_a_url": True, "capture": None, "refused": "",
+                        "verdict": "not a URL",
+                        "outcome": "a search for a person, not a document to capture"})
+            asked[url] = rec
+            state_save(doc)
+            print(f"  {i:>3}/{len(uniq)}  {'not a URL':<11} {url[:64]:<66} "
+                  f"{rec['outcome']}", flush=True)
+            continue
+        old_handler = _deadline(args.deadline)
+        try:
+            got = latest_capture(url)
+            rec["refused"] = got["refused"]
+            rec["capture"] = got["capture"]
+            if not rec["capture"] and not rec["refused"] and args.save:
+                spn = save_page_now(url, wait=args.wait)
+                rec["save_page_now"] = spn["outcome"]
+                if spn.get("capture"):
+                    rec["capture"] = spn["capture"]
+            if rec["capture"]:
+                rec.update(read_capture(url, rec["capture"], mod))
+        except TimedOut as e:
+            rec["timed_out"] = str(e)
+            rec.setdefault("capture", None)
+        finally:
+            _clear_deadline(old_handler)
         rec["verdict"] = verdict(rec)
         asked[url] = rec
         state_save(doc)
         print(f"  {i:>3}/{len(uniq)}  {rec['verdict']:<11} {url[:64]:<66} "
-              f"{rec.get('outcome') or rec.get('refused') or rec.get('save_page_now', '')}")
+              f"{rec.get('outcome') or rec.get('refused') or rec.get('save_page_now', '')}",
+              flush=True)
     state_save(doc)
     return report(rows, doc)
 
@@ -421,10 +629,19 @@ def file_captures(rows: list[dict], doc: dict) -> int:
                     "captured_at": cap["captured_at"], "archived": True,
                     "http": None, "bytes": rec["bytes"], "sha256": rec["sha256"],
                     "text_chars": rec["text_chars"],
-                    "outcome": f"archive capture, {rec['outcome']}",
+                    "outcome": f"archive capture, {rec['outcome']}"
+                               + (f"; the crawler got {cap['crawl_status']}"
+                                  if str(cap.get("crawl_status") or "")[:1] in ("4", "5")
+                                  else ""),
+                    "crawl_status": cap.get("crawl_status") or "",
                     "note": note})
+            # A CAPTURE OF A REFUSAL CARRIES NO READABLE TEXT FOR THIS PURPOSE, whatever
+            # its byte count: `text_chars` is what research_pass reads to decide whether
+            # an entry still needs a person, and an error page must not answer that.
+            readable = (rec["text_chars"] if verdict(rec) in ("cleared", "empty shell")
+                        else 0)
             words = None
-            if rec["text_chars"] >= READABLE:
+            if readable >= READABLE:
                 import research_pass as R
                 words = R.names_it(mod.body_text(rec["sha256"]), entry)
             entry["searched"] = [g for g in entry["searched"]
@@ -432,8 +649,14 @@ def file_captures(rows: list[dict], doc: dict) -> int:
                                      "url": url, "read_url": cap["read_url"],
                                      "archived": True,
                                      "captured_at": cap["captured_at"],
-                                     "outcome": f"archive capture, {rec['outcome']}",
-                                     "text_chars": rec["text_chars"],
+                                     "outcome": f"archive capture, {rec['outcome']}"
+                                                + (f"; the crawler got "
+                                                   f"{cap['crawl_status']}"
+                                                   if str(cap.get("crawl_status")
+                                                          or "")[:1] in ("4", "5")
+                                                   else ""),
+                                     "crawl_status": cap.get("crawl_status") or "",
+                                     "text_chars": readable,
                                      "sha256": rec["sha256"],
                                      "name_words_present": words}]
             entry["owner_page_names_it"] = any(g.get("name_words_present")
@@ -460,13 +683,18 @@ def file_captures(rows: list[dict], doc: dict) -> int:
 def report(rows: list[dict], doc: dict) -> int:
     asked = doc["asked"]
     by_url = Counter(verdict(r) for r in asked.values())
-    print(f"\n  BY URL ({len(asked)} asked)")
-    for k in ("cleared", "empty shell", "no capture", "refused"):
-        print(f"    {k:<12} {by_url.get(k, 0):>4}")
+    print(f"\n  BY URL ({len(asked)} in the record)")
+    for k in ("cleared", "empty shell", "captured a refusal", "no capture", "refused",
+              "timed out", "not a URL"):
+        print(f"    {k:<12} {by_url.get(k, 0):>4}   {NEXT_ACTION[k]}")
     # AND BY ENTRY, WHICH IS WHAT THE QUEUE IS MADE OF. An entry clears when ONE of its
     # URLs came back with a body; an entry all of whose URLs are shells stays.
+    # AND A TIMED-OUT URL DOES NOT SPEAK FOR ITS ENTRY. It outranks `no capture` and
+    # `not a URL` because it is the thing to do next, and it loses to a shell and to a
+    # body, which are answers. It never reads as a reason to open a browser.
     best = {}
-    order = {"cleared": 3, "empty shell": 2, "refused": 1, "no capture": 0}
+    order = {"cleared": 6, "empty shell": 5, "captured a refusal": 4, "timed out": 3,
+             "refused": 2, "no capture": 1, "not a URL": 0}
     for entry_id, _s, url in targets(rows):
         v = verdict(asked[url]) if url in asked else "not asked"
         if order.get(v, -1) >= order.get(best.get(entry_id, "not asked"), -1):
@@ -481,6 +709,12 @@ def report(rows: list[dict], doc: dict) -> int:
         print(f"\n  CLEARED BY A CAPTURE — a copy on file, to be filed with --write:")
         for e in cleared:
             print(f"    {e}")
+    owed = [e for e, v in sorted(best.items()) if v in ("timed out", "refused")]
+    if owed:
+        print(f"\n  OWED ANOTHER ASK — no answer either way, and not a browser's job:")
+        for e in owed:
+            print(f"    {e:<24} {best[e]}")
+        print("    python3 sources/queue_archive_pass.py --save --again")
     return 0
 
 
@@ -492,9 +726,13 @@ def main() -> int:
                     help="file what is already recorded; asks the archive nothing")
     ap.add_argument("--report", action="store_true")
     ap.add_argument("--again", action="store_true",
-                    help="re-ask URLs already in the state file")
+                    help="re-ask the URLs that came back with no capture or a refusal")
     ap.add_argument("--limit", type=int, default=10000)
-    ap.add_argument("--wait", type=int, default=90)
+    ap.add_argument("--wait", type=int, default=90,
+                    help="seconds to poll for a Save Page Now capture to appear")
+    ap.add_argument("--deadline", type=int, default=DEADLINE,
+                    help="seconds one URL may take before it is abandoned and recorded "
+                         "as a refusal of this reader's own making")
     ap.add_argument("--sector", default="")
     a = ap.parse_args()
 
