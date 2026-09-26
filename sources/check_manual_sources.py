@@ -47,7 +47,11 @@ MANUAL = sm.ROOT / "sources" / "manual"
 MANIFEST = MANUAL / "MANIFEST.json"
 
 # Not sources. The folder documents itself and lists its own queue.
-NOT_PAGES = {"README.md", "MANIFEST.json", "browser_queue.csv"}
+# Not sources. The folder documents itself, lists its own queue, and carries the
+# worklist of URLs a reader proposed for the queue entries whose own records name no
+# host at all — none of the three is a page anybody retrieved, and a gate that asked
+# for their provenance would be asking who published this repository's own files.
+NOT_PAGES = {"README.md", "MANIFEST.json", "browser_queue.csv", "url_candidates.csv"}
 
 
 def cited_paths() -> list[tuple[str, str]]:

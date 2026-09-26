@@ -86,6 +86,62 @@ no URL of its own and the entry has more than one queued: a page saved as "Webpa
 Complete" carries `saved from url=(…)`, and most pages carry a `rel=canonical` or an
 `og:url`, which is where the URL is taken from first.
 
+### Before a browser is opened at all: the archive, and the missing URLs
+
+Two passes run over the queue first, because both of them take entries OFF it without
+anybody's morning.
+
+    python3 sources/queue_archive_pass.py            # ask the Internet Archive
+    python3 sources/queue_archive_pass.py --save     # …and submit the misses to SPN
+    python3 sources/queue_archive_pass.py --write    # file what came back with a body
+
+**The archive pass** asks the availability endpoint, and then the CDX index where that
+answers empty, for the last capture of every URL the queue carries. A capture with a
+readable body is filed through scope.md's archived-source rule — the document's own
+dateline in `date`, the capture's day in `captured_at`, `archived` true, the
+publisher's own URL in `url` and the Wayback URL in `read_url` — and the entry leaves
+the queue. **An empty-shell capture is filed too, with `empty body` in its outcome, and
+the entry stays in the queue**: a capture of a page that draws itself with a script is
+a capture of the script, and letting one stand for a document would take an entry off
+somebody's list on a copy nobody can read. `no capture` and `refused` are counted apart:
+the archive holding nothing and the archive not answering are different facts.
+
+Save Page Now needs credentials — an anonymous POST answers `401` — so `--save` reads
+`IA_ACCESS_KEY` and `IA_SECRET_KEY` (archive.org/account/s3.php) and, with neither set,
+records each miss as one it could not test rather than as one it tested.
+
+**`url_candidates.csv` is the other half**, for the 26 entries whose own records name no
+owner host at all and which L9 forbids deriving one for. A person searches owner,
+project and site, writes down THE QUERY and one candidate URL per entry, and leaves
+`verdict` empty. A reader then fills it in:
+
+    accept    this is the document's home and the queue should open it
+    reject    it is not
+              (empty)  nobody has read this line yet, and it stays out of the queue
+
+An accepted candidate is carried into `browser_queue.csv` by `--queue-csv` with the
+host named in the `reason` column as a reader's find — never as something the census
+cited, because it isn't.
+
+### The browser itself, a domain at a time
+
+    python3 sources/research_pass.py --browse              # what is left, by domain
+    python3 sources/research_pass.py --browse --batch      # open one domain's tabs
+
+`--batch` opens every URL of one domain at once (in bursts of `--tabs`, 12 by default),
+waits while you run SingleFile's *save all tabs* into `~/Downloads/eufabric-queue/`, and
+then matches each saved file to its entry **by the URL SingleFile wrote into the file's
+own header** — filing it into the entry's folder with a `.url` sidecar carrying that URL.
+A file whose header it cannot read is LISTED AND LEFT IN THE DROP FOLDER; a page filed
+against the wrong entry is worse than a page nobody filed. A file with no readable body
+is filed and named, so you can see which saves came out empty. One URL cited by several
+entries is opened once and filed for all of them. The state is per URL in
+`sources/queue_browse_state.json`, so stopping mid-domain loses nothing.
+
+**The helper never fetches a page.** It calls the operating system's `open` and reads
+files off this disk. These are the entries a declared reader was refused on, and a
+script that quietly retried them would be re-asking a question already answered.
+
 ### Then
 
     python3 sources/ingest_manual.py            # what it sees, writing nothing

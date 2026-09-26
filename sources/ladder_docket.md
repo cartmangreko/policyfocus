@@ -548,3 +548,51 @@ had been admitted by the funder in the hand file on 20 September and still read 
 admitted` in the derived one** — which is why the ladder was printing a queue item saying a
 funder names an award for an entry this register has not admitted. It does. The queue goes
 5 to 4.
+
+**D-A27. THE PASS DID NOT HANG; THE LID CLOSED. AND A CLOCK IS ITS OWN OUTCOME.** The
+first credentialed Save Page Now run over the browser queue stopped writing records at
+**22:57:05 on 25 September** and was found the next afternoon at 18:38 with 5.9 seconds of
+CPU behind twenty-one hours of wall clock, no socket open and seventeen URLs unasked. That
+reads like a wedged read and was diagnosed as one. It was not. `pmset -g log` puts the
+machine into **`Clamshell Sleep` at 22:57:54, forty-nine seconds after the last record**,
+then ninety-three sleep entries and ninety-two dark wakes with no user wake, until a full
+wake on lid activity at **18:37:48** — a minute before anybody looked. The process was
+suspended with the machine and resumed on the same instruction.
+
+**WHAT THIS COSTS AND WHAT IT DOES NOT.** No measurement was wrong and no record was lost:
+the pass writes its state file after every URL, so the fifty records taken before the lid
+closed stand exactly as taken. What it cost was a night and a wrong diagnosis. **An
+unattended pass runs under `caffeinate -i` from now on**, which is the fix; the per-URL
+deadline added while chasing the phantom stays, because a long pass should carry its own
+deadline whatever stopped it — but it would not have helped here, since a suspended
+process's alarm does not fire while the machine is asleep.
+
+**AND THE VOCABULARY GAINS `timed_out`, WHICH IS NOT `refused`.** `refused` is what the
+publisher answered — a 429, a 503, a 403, an empty body. A socket timeout or this pass's
+own deadline expiring is a request that got **no answer either way**, and its only next
+action is `re-ask`. It never sends an entry to the browser queue, because nothing has been
+learned about the page; a deadline recorded as a refusal would turn this reader's clock
+into a finding about somebody's website. Same ruling shape as "a 429 is the publisher
+throttling this reader, not a dead page", one layer further in.
+
+**A THIRD OUTCOME CAME OUT OF THE SAME PASS: `not a URL`.** Thirteen queue rows carry
+`search:<query>` in the URL column — a search a person is being asked to run. The pass had
+been asking the archive whether it held a capture of a sentence, recording fourteen
+meaningless `no capture`s, and spending Save Page Now submissions on them. They are now
+counted as what they are and left to the person.
+
+**AND THE READING DEFECT THE SAME RUN HID, WHICH IS THE ONE THAT MATTERED.** The `id_`
+form returns the bytes as captured, and that includes the publisher's `Content-Encoding`.
+urllib sends no `Accept-Encoding` and does not decompress, so **seven captures were stored
+and read as gzip**: `text_of()` decoded the compressed stream into thousands of characters
+of mojibake and the 400-character readability threshold passed it. **Two of those cleared
+seventeen entries off the queue on bytes nobody could read** — the exact failure the
+empty-shell rule exists to prevent, arriving through the other door. Captures are now
+decompressed before they are read, stored decompressed (which is what every other body in
+these caches is), and put through a printable-character guard: above a twentieth
+unprintable is not a document, whatever its length. The seven were re-judged from the
+copies already on disk without asking anybody again, **three of them fell from `cleared`
+to `empty shell`**, and the filing was withdrawn and redone from the corrected record.
+
+**The queue therefore goes 66 to 54, not 66 to 48.** The six-entry difference is the
+correction, and it is the number this pass would have reported as progress.
