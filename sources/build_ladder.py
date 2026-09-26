@@ -68,6 +68,25 @@ FID_INTENT_WORDS = ("expected", "targeted", "subject to", "planned for", "aims t
 # does not pass.
 FUNDER_SOURCE_TYPES = ("grant_register",)
 
+# AND AN AWARD THE FUNDER HAS TERMINATED DOES NOT PASS IT. Ruled 26 September 2026,
+# D-A28, and it follows the rule of 24 August that withdrawn funding is excluded.
+# Rung 4 asks whether a second party with its own register has confirmed the money;
+# a factsheet carrying TERMINATED over the award is that same party saying the money
+# is gone. Reading the award and ignoring the word next to it would score the
+# announcement rather than the register, which is the thing the rung exists to refuse.
+#
+# THE STATUS OF THE PROJECT STILL DOES NOT MOVE. D-B19 and D-A13 stand whole: a funder
+# withdrawing its money is a fact about the award, and a cancellation read out of it
+# would be this register deciding something the owner has not said. What changes here
+# is one rung's answer, and the termination is carried on the row as its own stop
+# fact — `event_kind: financing`, the funder as speaker, the factsheet as source.
+TERMINATED = re.compile(r"\bterminated\b", re.I)
+
+
+def award_is_terminated(*blobs) -> bool:
+    """Does the funder's own record say this award is terminated?"""
+    return any(TERMINATED.search(str(b or "")) for b in blobs)
+
 # RUNG 5. Milestones that are a production or operation start. `fid_target` is not
 # one of them -- it is a date for rung 3's event, and rung 3 fails on a target.
 START_MILESTONES = ("production_start", "commissioning", "operation_start")
@@ -362,7 +381,17 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None,
                     if e.get("source_type") in FUNDER_SOURCE_TYPES
                     or e.get("event_kind") == "financing"
                     and e.get("source_type") in FUNDER_SOURCE_TYPES])
-    if pass_award:
+    if pass_award and award_is_terminated(pass_award.get("funder_status_as_published")):
+        out["funding"] = cell(
+            "fail", pass_award["source_url"], pass_award["funder"],
+            pass_award["date"], pass_award["date_precision"],
+            f"THE FUNDER'S OWN RECORD SAYS THE AWARD IS TERMINATED. "
+            f"{pass_award['programme']} names "
+            f"{pass_award['project_as_published']!r} at "
+            f"{pass_award.get('amount_as_stated', 'an amount it states')} and gives its "
+            f"status as {pass_award['funder_status_as_published']!r}; withdrawn funding "
+            f"is excluded (D-A28). The project's status does not move on it.")
+    elif pass_award:
         out["funding"] = cell("pass", pass_award["source_url"], pass_award["funder"],
                               pass_award["date"], pass_award["date_precision"],
                               f"{pass_award['programme']} names "
@@ -375,6 +404,13 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None,
                               f.get("date"), "day",
                               f"{f.get('programme', 'a funder')} publishes an award "
                               f"naming this project")
+    elif award and award_is_terminated(award.get("note")):
+        out["funding"] = cell("fail", award.get("source_url"), "funder",
+                              award.get("date"), award.get("date_precision"),
+                              "THE FUNDER'S OWN RECORD SAYS THE AWARD IS TERMINATED, and "
+                              "the row carries it as a financing event: withdrawn funding "
+                              "is excluded (D-A28). The project's status does not move "
+                              "on it.")
     elif award:
         out["funding"] = cell("pass", award.get("source_url"), "funder",
                               award.get("date"), award.get("date_precision"),
@@ -400,11 +436,34 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None,
     st = newest([s for s in (row.get("stated_schedule") or [])
                  if s.get("milestone") in START_MILESTONES
                  and s.get("target_date") and s.get("target_precision")])
+    # AND A PLANT THE OWNER SAYS IS OPERATING HAS STARTED. Ruled 26 September 2026,
+    # D-A29, on Brevik: Heidelberg Materials' own release of 18 June 2025 says the
+    # capture plant is operating, the row carries it as a status event, and rung 5 was
+    # failing it for want of a `stated_schedule` entry. A schedule is a statement about
+    # a start that has not happened; the rung asks for a start WITH A DATE PRECISION,
+    # and a statement that the plant IS operating is the strongest form of that — the
+    # date is the day the owner said it and the precision is the one the statement
+    # carries. Reading a forecast as evidence and the event itself as silence is the
+    # wrong way round.
+    #
+    # THE SPEAKER RULE IS UNCHANGED AND IT DOES THE LIMITING. Only the owner's own
+    # document passes: a wire release and a grant register both carry `status_to:
+    # operating` on this layer and neither is the owner, so neither passes here — the
+    # press-quoted amendment is where a wire carrying the company's own words is read,
+    # and it already runs over every cell.
+    started = newest([e for e in hist if e.get("status_to") == "operating"
+                      and e.get("source_type") == "company"])
     if st:
         out["start"] = cell("pass", st.get("source_url"), st.get("speaker") or "owner",
                             st.get("date"), st.get("date_precision"),
                             f"{st.get('milestone')} {st.get('target_date')} "
                             f"at {st.get('target_precision')} precision")
+    elif started:
+        out["start"] = cell("pass", started.get("source_url"), "owner",
+                            started.get("date"), started.get("date_precision"),
+                            f"the owner states the plant is operating, on "
+                            f"{started.get('date')} at "
+                            f"{started.get('date_precision')} precision (D-A29)")
     else:
         out["start"] = cell("fail", base_id, "owner", base_date, base_prec,
                             "no owner-stated start carrying a date precision")
@@ -508,6 +567,25 @@ def score_input(row, edges_by_project, graph_date="", unread_owner=()):
 # SCORING A BENCHMARK ENTRY NOBODY HAS ADMITTED
 
 
+def _named_by_sentence(named_by) -> str:
+    """The admission search's `named_by`, as a sentence rather than as a dict repr.
+
+    FORTY-SEVEN ROWS CARRIED `{'speaker': 'company', 'source_type': 'company', ...}` IN
+    THE NOTE COLUMN. The field is a string in 120 entries and an object in 47, and the
+    object was being interpolated straight into the cell note — so the evidence for
+    rung 1 on those rows read as a Python literal to anybody who opened the table. The
+    object says the same thing the string does and now says it in words.
+    """
+    if isinstance(named_by, dict):
+        who = named_by.get("speaker") or named_by.get("source_type") or "a source"
+        host = named_by.get("domain") or ""
+        url = named_by.get("source_url") or ""
+        where = f" at {host}" if host else (f" at {url}" if url else "")
+        return (f"the admission search read the {who}'s own source{where}, and it names "
+                f"the site")
+    return str(named_by or "")
+
+
 def score_unadmitted(ref, rec, searched_on, unreadable, excluded=False):
     """Rung 1 is scored for EVERY entry on the external list, admitted or not; the
     admission search is what scores it. The other five have no owner document on
@@ -546,7 +624,7 @@ def score_unadmitted(ref, rec, searched_on, unreadable, excluded=False):
     out = {}
     if names:
         adm = rec.get("admission") if isinstance(rec.get("admission"), dict) else {}
-        named_by = adm.get("named_by") or ""
+        named_by = _named_by_sentence(adm.get("named_by"))
         hit = next((f for f in rec.get("fetches") or [] if f.get("names_place")), None)
         out["site"] = cell("pass", (hit or {}).get("url") or src,
                            "owner" if (hit or {}).get("source_type") == "company"
