@@ -45,6 +45,7 @@ import json
 import os
 import re
 import sys
+import urllib.parse
 from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -67,8 +68,12 @@ FIELDS = (["sector", "layer", "key", "list_key", "row_id", "name", "country", "r
           + [f"{r}_{f}" for r in RUNGS
              for f in ("result", "searched", "source", "speaker", "medium", "date",
                        "precision", "note")]
+          + [f"{r}_speaker_type" for r in RUNGS]
           + [f"{r}_result_amended" for r in RUNGS]
-          + ["rungs_passed_amended", "outcome_class_amended", "input_provisional"])
+          + ["rungs_passed_amended", "outcome_class_amended", "input_provisional",
+             "target_year_owner", "target_year_owner_source",
+             "target_year_list", "target_year_list_source",
+             "target_year", "target_year_source"])
 
 
 # --------------------------------------------------------------------------
@@ -308,6 +313,185 @@ def medium_of(c: dict) -> str:
     return "owner"
 
 
+# --------------------------------------------------------------------------
+# THE STATED TARGET YEAR, AND WHOSE IT IS
+#
+# THE OWNER FIRST AND THE LIST ONLY WHERE THE LIST HAS A FIELD. The brief's order,
+# ruled 27 September 2026: the owner's own stated start year where the row carries one,
+# then the list's own year WHERE THE LIST PUBLISHES ONE AS A FIELD, and otherwise `no
+# stated year`. Never the machine's estimate and NEVER A YEAR PARSED OUT OF A NOTE —
+# the IEA CCUS list carries no year field at all, and its operation years exist only
+# inside prose this register wrote about it ("the IEA calls it Planned with operation
+# 2032"). Reading a year out of that sentence would be this register quoting itself
+# into a data column, which is the shape of every defect in these dockets.
+#
+# SO THREE SECTORS HAVE NO LIST-SIDE FALLBACK: hydrogen (the IEA hydrogen list carries
+# a status and no year), cement and transport and storage (the IEA CCUS list carries
+# status, type and capacity). Batteries has `year_as_published` from Battery-News and
+# T&E; steel has LeadIT's `planned_commissioning` and `actual_start_year` and GEM's
+# `forward_units[].start`. Where the owner is silent in the other three, the line says
+# `no stated year`, which is a fact about what anybody has published.
+
+YEAR = re.compile(r"\b(20\d{2})\b")
+
+
+def _year_of(v) -> str:
+    m = YEAR.search(str(v or ""))
+    return m.group(1) if m else ""
+
+
+def owner_target_year(row) -> tuple[str, str]:
+    """(year, source) from the row's own stated_schedule, or ('', '').
+
+    THE START MILESTONES ARE build_ladder's, so the column and rung 5 read the same
+    field: production_start, commissioning, operation_start. `fid_target` is not a
+    start. The newest statement wins, and the precision the owner gave is carried in
+    the source string rather than dropped — a 2029 at `year` and a 2029-06 at `month`
+    are both the year 2029 and the column says which it was.
+    """
+    if row is None:
+        return "", ""
+    cands = [x for x in (row.get("stated_schedule") or [])
+             if x.get("milestone") in L.START_MILESTONES and _year_of(x.get("target_date"))]
+    if not cands:
+        return "", ""
+    best = L.newest(cands) or cands[0]
+    return (_year_of(best.get("target_date")),
+            f"owner: {best.get('source_url') or 'no url on the statement'} "
+            f"({best.get('milestone')} {best.get('target_date')} at "
+            f"{best.get('target_precision') or 'no precision'})")
+
+
+def list_target_year(e) -> tuple[str, str]:
+    """(year, source) from a STRUCTURED field on the list's own claim, or ('', '')."""
+    for c in e.get("list_claims") or []:
+        for field in ("year_as_published", "planned_commissioning", "actual_start_year"):
+            y = _year_of(c.get(field))
+            if y:
+                return y, f"list: {c.get('benchmark') or 'the list'} {field}={c[field]!r}"
+        for u in c.get("forward_units") or []:
+            y = _year_of(u.get("start"))
+            if y:
+                return y, (f"list: {c.get('benchmark') or 'the list'} "
+                           f"forward_units start={u.get('start')!r} "
+                           f"({u.get('kind')} {u.get('unit')})")
+    return "", ""
+
+
+def target_year_columns(e, row) -> dict:
+    """The owner's year, the list's year, and the one the bands read — all four columns.
+
+    THE TWO SPEAKERS GET A COLUMN EACH, ruled 27 September 2026. A single column with a
+    source string could say which speaker won and could not say what the other one said,
+    so the disagreement between them was computable only by a script outside the gate.
+    Now `target_year` is DERIVED — the owner's where there is one, the list's otherwise —
+    and both inputs sit beside it, which is the same shape the register uses everywhere
+    else: keep what each party said, and derive the reading.
+    """
+    oy, osrc = owner_target_year(row)
+    ly, lsrc = list_target_year(e)
+    if oy:
+        y, src = oy, osrc
+    elif ly:
+        y, src = ly, lsrc
+    else:
+        y, src = "no stated year", "none: neither the owner nor the list publishes a year"
+    return {"target_year_owner": oy, "target_year_owner_source": osrc,
+            "target_year_list": ly, "target_year_list_source": lsrc,
+            "target_year": y, "target_year_source": src}
+
+
+def year_gap(line) -> int | None:
+    """|owner - list| where both are years, else None."""
+    a, b = line.get("target_year_owner") or "", line.get("target_year_list") or ""
+    if a.isdigit() and b.isdigit():
+        return abs(int(a) - int(b))
+    return None
+
+
+def target_band(year: str) -> str:
+    """The four bands the brief asks for. A band is a bucket and not a judgement."""
+    if not year or not year.isdigit():
+        return "no stated year"
+    y = int(year)
+    if y <= 2027:
+        return "up to 2027"
+    if y <= 2030:
+        return "2028-2030"
+    return "after 2030"
+
+
+# --------------------------------------------------------------------------
+# WHO CONFIRMED A CELL, AS A TYPE RATHER THAN AS FREE TEXT
+#
+# THE `speaker` COLUMN IS A NAME AND IT IS NOT A VOCABULARY. It holds 94 bare
+# `owner`s, then company names — Eni UK, Heidelberg Materials, Tree Energy Solutions —
+# and `company`, `eu`, `host_government`, `funder`, `eufabric census`. A table of who
+# confirms cannot be computed off that without grouping names by hand, which is a table
+# nobody can recompute. `speaker_type` is the typed column; `speaker` keeps the name,
+# because the name is the more useful fact once the type is available.
+#
+# IT IS DERIVED INDEPENDENTLY OF `medium`, deliberately. medium_of() reads the speaker
+# and the note; this reads the speaker and the SOURCE. Two derivations that disagree
+# are a finding — see L12, which is exactly such a disagreement on two rows — and one
+# derivation that feeds the other could not produce one.
+
+SPEAKER_TYPES = ("owner", "permit", "funder", "supplier", "press", "host_government",
+                 "register", "other")
+
+# A GOVERNMENT BODY IS A FUNDER WHEN IT IS PUBLISHING AN AWARD, and a government
+# otherwise. `iea:1969` passes rung 4 on DESNZ's own Hydrogen Production Business Model
+# allocation at gov.uk — which is precisely what the frozen test means by "a national
+# programme" — and a classifier that read DESNZ as the owner of the plant would make the
+# who-confirms table say the company confirmed its own funding. So the rung is part of
+# the question: on rung 4 a state body speaking is a funder; anywhere else it is
+# `host_government`, which is a different thing a reader may want counted.
+# THE HOSTS A TRADE TITLE PUBLISHES ON. Used only to COUNT the blind spot above; no
+# result is computed from it, because changing what `medium` means is L12's job and this
+# brief adds no rule.
+TRADE_HOST = re.compile(
+    r"offshore-energy|globalcement|cemnet|battery-news|batteriesnews|steelorbis|"
+    r"gmk\.center|kallanish|hydrogeninsight|rechargenews|reuters|bloomberg|prnewswire|"
+    r"globenewswire|businesswire|electrive|carbonherald|bioenergy-news|energy-pedia|"
+    r"pv-magazine|ess-news|energynews|carboncapturemagazine", re.I)
+
+GOV_HOST = re.compile(r"(^|\.)(gov\.uk|europa\.eu|gob\.es|gouv\.fr|bund\.de|"
+                      r"kormany\.hu|government\.(se|no|nl)|regjeringen\.no|rvo\.nl)$",
+                      re.I)
+GOV_BODY = re.compile(r"DESNZ|BEIS|Ministry|Ministerio|Ministère|Bundesministerium|"
+                      r"RVO|Bpifrance|Enova|NVE|Vinnova|Energimyndigheten|"
+                      r"department for|agency", re.I)
+SUPPLIER_WORDS = re.compile(r"supplier|OEM|licensor|technology provider|Axens|Capsol|"
+                            r"Calix|Leilac|Carbon Clean|Polysius|SLB|Topsoe|Nel|"
+                            r"Siemens Energy|thyssenkrupp nucera|Cummins|Plug Power",
+                            re.I)
+
+
+def speaker_type_of(c: dict, rung: str = "") -> str:
+    """One of SPEAKER_TYPES for a rung cell. `register` is this register's own files."""
+    sp = str(c.get("speaker") or "")
+    src = str(c.get("source") or "")
+    low = sp.lower()
+    host = urllib.parse.urlsplit(src).netloc.lower() if src.startswith("http") else ""
+    if src.startswith("sources/") or "eufabric" in low:
+        return "register"
+    if FUNDER_SPEAK.search(sp) or low in ("funder", "eu"):
+        return "funder"
+    state = (low == "host_government" or GOV_BODY.search(sp)
+             or (host and GOV_HOST.search(host)))
+    if state:
+        return "funder" if rung == "funding" else "host_government"
+    if PERMIT_SPEAK.search(sp):
+        return "permit"
+    if SUPPLIER_WORDS.search(sp):
+        return "supplier"
+    if TRADE_PRESS.search(sp):
+        return "press"
+    if low in ("owner", "company") or sp:
+        return "owner"
+    return "other"
+
+
 def amend(cells_line: dict) -> tuple[dict, str]:
     """THE PRESS-QUOTED AMENDMENT, applied to one line. Returns the amended rung
     results and the outcome class.
@@ -367,6 +551,7 @@ def line_for(sector, e, cells, row):
         for f in ("source", "speaker", "date", "precision", "note"):
             line[f"{r}_{f}"] = c[f]
         line[f"{r}_medium"] = medium_of(c)
+        line[f"{r}_speaker_type"] = speaker_type_of(c, r)
         if r == "input":
             line["input_provisional"] = "true" if c.get("provisional") else "false"
         if c["result"] == "pass":
@@ -376,6 +561,7 @@ def line_for(sector, e, cells, row):
     line["scored"] = "false" if (line["register_class"] in lp.NOT_SCORED
                                  or line["register_class"] == "benchmark aggregate"
                                  or line["unread"] == "true") else "true"
+    line.update(target_year_columns(e, row))
     am, klass = amend(line)
     for r in RUNGS:
         line[f"{r}_result_amended"] = am[r]
@@ -387,7 +573,7 @@ def line_for(sector, e, cells, row):
 HYDROGEN_CSV = OUTDIR / "hydrogen.csv"
 
 
-def hydrogen_lines():
+def hydrogen_lines(rows=None):
     """HYDROGEN'S LINES ARE READ FROM sources/ladder/hydrogen.csv, NOT RESCORED.
 
     The first draft of this file called build_ladder.build() instead, which was
@@ -412,6 +598,7 @@ def hydrogen_lines():
     is a real check precisely because the two files are written by different
     code paths.
     """
+    rows = rows or {}
     out = []
     with open(HYDROGEN_CSV, newline="", encoding="utf-8") as fh:
         for l in csv.DictReader(fh):
@@ -429,9 +616,15 @@ def hydrogen_lines():
                     n[f"{r}_{f}"] = l[f"{r}_{f}"]
             n["input_provisional"] = l["input_provisional"]
             for r in RUNGS:
-                n[f"{r}_medium"] = medium_of(
-                    {"speaker": l[f"{r}_speaker"], "source": l[f"{r}_source"],
-                     "note": l[f"{r}_note"]})
+                cell = {"speaker": l[f"{r}_speaker"], "source": l[f"{r}_source"],
+                        "note": l[f"{r}_note"]}
+                n[f"{r}_medium"] = medium_of(cell)
+                n[f"{r}_speaker_type"] = speaker_type_of(cell, r)
+            # THE HYDROGEN LIST CARRIES A STATUS AND NO YEAR, so hydrogen's target year
+            # is the owner's or nothing. The row is looked up rather than rescored:
+            # hydrogen.csv is read here, not recomputed (see this function's docstring).
+            n.update(target_year_columns(
+                {"list_claims": []}, rows.get(l["row_id"]) if l["row_id"] else None))
             # `unread` is a register class in the hydrogen table and a cell state
             # here; both mean the same thing and the scored flag reads either.
             n["scored"] = "false" if (n["register_class"] in lp.NOT_SCORED
@@ -489,7 +682,7 @@ def build():
     funding_by_project = L.load_funding()
     hyd_funder, hyd_read, _ = L.load_funder_pass()
 
-    lines = hydrogen_lines()
+    lines = hydrogen_lines(rows)
     parts = {"hydrogen": {"population": sum(1 for l in lines if l["sector"] == "hydrogen"),
                           "note": "built by sources/build_ladder.py (brief 10)"}}
     for sector in SECTORS:
@@ -633,12 +826,16 @@ def summarise(lines, parts):
 
     producing_scored = [l for l in lines
                         if l["layer"] == "producing" and l["scored"] == "true"]
-    # THE LIST STATUS AGAINST THE OWNER'S OWN FID, and steel is out of it by count.
-    # 103 of steel's 147 lines carry NO list status at all — GEM's field is blank for
-    # most of the works — so a cross-tab would describe the 44 that have one while
-    # reading as though it described steel. Batteries is out for the same reason and
-    # more so: its benchmark is a chart with no status column, so every line is blank.
-    FID_VS_LIST = ("hydrogen", "cement")
+    # THE LIST STATUS AGAINST THE OWNER'S OWN FID. Steel is IN on GEM's own six values
+    # (corrected 27 September 2026: the 103-of-147 count that kept it out was over the
+    # whole population, and 31 of its 49 SCORED lines carry a status). Batteries is out
+    # on a count that does hold — all 57 scored lines are blank, the benchmark being a
+    # chart — and the two infrastructure sectors are out because their lists status a
+    # pipeline and a reservoir rather than a plant.
+    FID_VS_LIST = ("hydrogen", "cement", "steel")
+    BUILT_OR_BUILDING = {"hydrogen": ("FID/Construction",),
+                         "cement": ("Under construction", "Operational"),
+                         "steel": ("Construction", "Operating")}
     out["cross_tabs"] = {
         "_comment": [
             "FIVE PAIRS, computed from sources/ladder/all.csv over SCORED lines only.",
@@ -681,18 +878,50 @@ def summarise(lines, parts):
                 "the decision is made. A list that calls a project FID/Construction "
                 "while no owner document says FID has been taken is the disagreement "
                 "this register exists to make visible.",
-                "STEEL IS EXCLUDED AND THE REASON IS A COUNT: 103 of its 147 lines "
-                "carry no list status at all, so a cross-tab would describe the 44 that "
-                "do while reading as though it described the sector. Batteries is "
-                "excluded for the same reason — its benchmark is a chart with no status "
-                "column, so every line is blank — and so are the two infrastructure "
-                "sectors, whose lists status a pipeline and a reservoir rather than a "
-                "plant."],
+                "STEEL IS IN, ON GEM'S OWN VOCABULARY, AND THE EARLIER REASON FOR "
+                "LEAVING IT OUT WAS WRONG. It said 103 of 147 lines carry no list "
+                "status, which is true of the whole population and not of the scored "
+                "one: 18 of steel's 49 scored lines are blank and the other 31 carry "
+                "GEM's six values — Announced, Construction, Finalized (research & "
+                "testing), Cancelled, Operating, Paused or postponed. Construction and "
+                "Operating against rung 3 are exactly the pair this table is for. "
+                "Corrected 27 September 2026.",
+                "BATTERIES IS OUT and the reason is a count that holds: all 57 of its "
+                "scored lines carry no list status, because the benchmark is a chart "
+                "with no status column. The two infrastructure sectors are out because "
+                "their lists status a pipeline and a reservoir rather than a plant."],
             "sectors": list(FID_VS_LIST),
             "excluded": {
-                "steel": "103 of 147 lines carry no list status",
-                "batteries": "the benchmark is a chart with no status column",
+                "batteries": "all 57 scored lines carry no list status — the benchmark "
+                             "is a chart with no status column",
                 "transport and storage": "an infrastructure list, not a plant list"},
+            # THE COMBINED LINE THE PAPER QUOTES. Five stage values across the three
+            # sectors say the list believes the thing is being built or is running —
+            # hydrogen FID/Construction, cement Under construction and Operational,
+            # steel Construction and Operating — and rung 3 asks whether the owner has
+            # said the decision was taken. `Finalized (research & testing)` is NOT in it:
+            # a finished pilot is not a works under construction, and folding it in would
+            # move the line without saying so.
+            "built_or_building_vs_owner_fid": {
+                "stages": {"hydrogen": ["FID/Construction"],
+                           "cement": ["Under construction", "Operational"],
+                           "steel": ["Construction", "Operating"]},
+                "lines": sum(1 for l in lines if l["scored"] == "true"
+                             and l["sector"] in FID_VS_LIST
+                             and l["list_status"] in BUILT_OR_BUILDING.get(l["sector"], ())),
+                "owner_fid_pass": sum(1 for l in lines if l["scored"] == "true"
+                                      and l["sector"] in FID_VS_LIST
+                                      and l["list_status"] in BUILT_OR_BUILDING.get(l["sector"], ())
+                                      and l["fid_result"] == "pass"),
+                "per_sector": {s2: {
+                    "lines": sum(1 for l in lines if l["scored"] == "true"
+                                 and l["sector"] == s2
+                                 and l["list_status"] in BUILT_OR_BUILDING.get(s2, ())),
+                    "owner_fid_pass": sum(1 for l in lines if l["scored"] == "true"
+                                          and l["sector"] == s2
+                                          and l["list_status"] in BUILT_OR_BUILDING.get(s2, ())
+                                          and l["fid_result"] == "pass")}
+                    for s2 in FID_VS_LIST}},
             "table": {s2: {ls: dict(Counter(
                 l["fid_result"] for l in lines
                 if l["sector"] == s2 and l["scored"] == "true"
@@ -701,6 +930,180 @@ def summarise(lines, parts):
                                   if l["sector"] == s2 and l["scored"] == "true"})}
                 for s2 in FID_VS_LIST}},
     }
+
+    # ------------------------------------------------------------------
+    # THE THREE TABLES OF THE STAGE-YEAR BRIEF, 27 September 2026. Each is the six
+    # checks counted against something OUTSIDE the ladder — the list's own stage, the
+    # stated target year, and who owns the plant — so that a reader can ask whether
+    # confirmation tracks what the list claims, when the plant is meant to run, and
+    # whether the owner has to file with anybody.
+
+    def _six(group):
+        """The six checks over one group of lines, with the group's size beside them."""
+        return {"lines": len(group),
+                **{r: sum(1 for l in group if l[f"{r}_result"] == "pass")
+                   for r in RUNGS}}
+
+    def _scored(sector=None, pred=None):
+        return [l for l in lines if l["scored"] == "true"
+                and (sector is None or l["sector"] == sector)
+                and (pred is None or pred(l))]
+
+    # 1 — BY THE LIST'S OWN STAGE. Hydrogen, cement and steel split by their lists'
+    # own vocabularies; batteries takes one row because all 57 of its scored lines are
+    # blank; and the lines on NO list at all are their own group rather than being
+    # folded into a blank-status bucket, because "the list says nothing" and "there is
+    # no list" are different facts.
+    stage_tabs = {}
+    for sector in ("hydrogen", "cement", "steel"):
+        sc = _scored(sector)
+        stages = sorted({(l["list_status"] or "no list stage") for l in sc if l["list_key"]})
+        stage_tabs[sector] = {
+            "vocabulary": ("the IEA hydrogen list's own status column"
+                           if sector == "hydrogen" else
+                           "the IEA CCUS database's own status column"
+                           if sector == "cement" else
+                           "GEM's own status column, six values"),
+            "stages": {st: _six([l for l in sc if l["list_key"]
+                                 and (l["list_status"] or "no list stage") == st])
+                       for st in stages}}
+    bat = _scored("batteries")
+    stage_tabs["batteries"] = {
+        "vocabulary": "none",
+        "reason": (f"all {len(bat)} scored lines carry no list stage: the benchmark is "
+                   f"Transport & Environment's chart and Battery-News's table, neither "
+                   f"of which publishes a status column"),
+        "stages": {"no list stage": _six(bat)}}
+    off_list = [l for l in lines if l["scored"] == "true" and not l["list_key"]]
+    stage_tabs["not_on_any_list"] = {
+        "vocabulary": "none — these lines are register rows with no line on any list",
+        "sectors": dict(Counter(l["sector"] for l in off_list)),
+        "stages": {"not on any list": _six(off_list)}}
+
+    # 2 — BY THE STATED TARGET YEAR, all five sectors. The band comes from the
+    # `target_year` column, whose source is the owner first and a structured list field
+    # second; see target_year_of().
+    BANDS = ("up to 2027", "2028-2030", "after 2030", "no stated year")
+    year_tabs = {}
+    for sector in SECTORS:
+        sc = _scored(sector)
+        year_tabs[sector] = {
+            "source_split": dict(Counter(
+                l["target_year_source"].split(":")[0] for l in sc)),
+            "bands": {b: _six([l for l in sc if target_band(l["target_year"]) == b])
+                      for b in BANDS}}
+    year_tabs["all_sectors"] = {
+        "source_split": dict(Counter(
+            l["target_year_source"].split(":")[0] for l in _scored())),
+        "bands": {b: _six([l for l in _scored() if target_band(l["target_year"]) == b])
+                  for b in BANDS}}
+    # AND THE PRODUCING LAYER ON ITS OWN, WHICH IS WHAT THE PAPER REPORTS. A pipeline
+    # and a reservoir answer rung 2 six times in 102 and rung 5 twice; averaging them
+    # into a statement about plants describes neither, which is the ruling `layers`
+    # already rests on. Both versions are in the file so the difference is legible.
+    prod = [l for l in _scored() if l["layer"] == "producing"]
+    year_tabs["producing_layer"] = {
+        "_comment": ("the paper's version: hydrogen, batteries, cement and steel, "
+                     "without the two infrastructure sectors"),
+        "sectors": [x for x in SECTORS if lp.LAYER[x] == "producing"],
+        "source_split": dict(Counter(
+            l["target_year_source"].split(":")[0] for l in prod)),
+        "bands": {b: _six([l for l in prod if target_band(l["target_year"]) == b])
+                  for b in BANDS}}
+    # THE TWO SPEAKERS DISAGREEING BY MORE THAN A YEAR, computed and named. A year is
+    # not a claim about confirmation, so this moves no rung; it is the kind of thing the
+    # register exists to make visible, and it is a count with row ids rather than a
+    # sentence about batteries. The rows' own `disagreements` blocks wait for a reading
+    # pass — each needs the speaker's sentence — and that is queued as L15.
+    gaps = [(l, year_gap(l)) for l in _scored()]
+    year_tabs["owner_versus_list"] = {
+        "_comment": [
+            "OVER SCORED LINES WHERE BOTH THE OWNER AND THE LIST PUBLISH A YEAR.",
+            "`disagree_by_more_than_a_year` is the brief's threshold; the rows are named "
+            "so a reader can go to them, and the two years are printed with each.",
+            "NOT WRITTEN ONTO THE ROWS: a disagreement on this layer carries each "
+            "speaker's own sentence, which is a reading and not a computation (L15)."],
+        "both_publish_a_year": sum(1 for _l, g in gaps if g is not None),
+        "agree_within_a_year": sum(1 for _l, g in gaps if g is not None and g <= 1),
+        "disagree_by_more_than_a_year": sum(1 for _l, g in gaps if g is not None and g > 1),
+        "rows": sorted(
+            f"{l['key']} ({l['sector']}): owner {l['target_year_owner']} vs list "
+            f"{l['target_year_list']}, {int(l['target_year_owner']) - int(l['target_year_list']):+d} years"
+            for l, g in gaps if g is not None and g > 1)}
+
+    # 3 — BY OWNER TYPE, and the coverage is the first number in it. `owner_listing` is
+    # read off the `owners` list (scope.md) and is populated on 22 of 205 projects, so
+    # this table describes 22 lines and says so rather than reading as a table about the
+    # register. The field is NOT filled in this pass: who owns an operator is a reading,
+    # and L13 carries the brief for it with the source rule to be written first.
+    owner_listing = {p["id"]: p.get("owner_listing") for p in sm.load("project")}
+    by_owner = defaultdict(list)
+    for l in _scored():
+        v = owner_listing.get(l["row_id"]) if l["row_id"] else None
+        by_owner[v or ("no row" if not l["row_id"] else "not read")].append(l)
+    owner_tab = {
+        "_comment": [
+            "THE REGISTER'S OWN VOCABULARY, not the brief's words: `private` is the "
+            "brief's `unlisted` and `state-owned` is its `state`. OWNER_LISTINGS in "
+            "sector_map.py is what the gate enforces and what the data holds.",
+            "COVERAGE IS THE POINT AND IT IS SMALL: `owner_listing` is set on 22 of 205 "
+            "projects. `not read` is a line whose row carries no listing — a gap in "
+            "this register's reading, not a fact about the owner — and `no row` is a "
+            "census entry with no register row at all.",
+            "THIS TABLE DOES NOT ENTER THE PAPER until the L13 listing pass fills the "
+            "field from a source rule. Ruled 27 September 2026. It stays here because a "
+            "table computed over 22 of 205 rows is worth having and worth labelling, and "
+            "because the number it reports is the coverage."],
+        "coverage": {"projects_with_owner_listing": sum(1 for v in owner_listing.values() if v),
+                     "projects": len(owner_listing),
+                     "scored_lines_covered": sum(len(v) for k, v in by_owner.items()
+                                                 if k not in ("no row", "not read"))},
+        "by_owner_type": {k: _six(v) for k, v in sorted(by_owner.items())}}
+
+    out["cross_tabs"].update({
+        "checks_by_list_stage": stage_tabs,
+        "checks_by_target_year": year_tabs,
+        "checks_by_owner_type": owner_tab,
+        # 4 — WHO CONFIRMED, FROM THE TYPED COLUMN. The old table counted `medium`, which
+        # is derived from the speaker and the note; this counts `speaker_type`, derived
+        # from the speaker and the SOURCE. The disagreement between them is reported
+        # rather than resolved while L12 is open: medium_of() reads no hosts, so a
+        # trade-press URL under an `owner` speaker reads as an owner document.
+        "who_confirms_by_speaker_type": {
+            "_comment": [
+                "PASSING CELLS ONLY, over scored lines, per rung.",
+                "`register` means the passing cell cites this register's own census, "
+                "search or dependency graph — which for rungs 4 and 6 is the funder "
+                "pass and the edge file, both of them records of somebody else's "
+                "publication read here.",
+                "DISAGREEMENT WITH `medium` IS LISTED AND NOT RESOLVED: L12 has "
+                "medium_of() classifying from the speaker and the note rather than the "
+                "host."],
+            "per_rung": {r: dict(Counter(l[f"{r}_speaker_type"] for l in _scored()
+                                         if l[f"{r}_result"] == "pass"))
+                         for r in RUNGS},
+            # AND THE BLIND SPOT BOTH DERIVATIONS SHARE, COUNTED. Neither reads the
+            # document's host: medium_of() matches the speaker and the note, and
+            # speaker_type_of() matches the speaker and the source's PREFIX. So a
+            # passing cell whose source sits on a trade title while its speaker was set
+            # to `owner` reads as an owner document in both columns. That is L12's
+            # defect measured rather than described — 13 cells, not the 2 the first
+            # report named — and it is what the medium fix has to move.
+            "source_host_is_a_trade_title": sorted(
+                f"{l['key']} {r}: {urllib.parse.urlsplit(l[f'{r}_source']).netloc} "
+                f"(speaker_type={l[f'{r}_speaker_type']}, medium={l[f'{r}_medium']})"
+                for l in _scored() for r in RUNGS
+                if l[f"{r}_result"] == "pass"
+                and TRADE_HOST.search(urllib.parse.urlsplit(l[f"{r}_source"]).netloc or "")),
+            "disagrees_with_medium": sorted(
+                {f"{l['key']} {r}: speaker_type={l[f'{r}_speaker_type']}, "
+                 f"medium={l[f'{r}_medium']}"
+                 for l in _scored() for r in RUNGS
+                 if l[f"{r}_result"] == "pass"
+                 and {l[f"{r}_speaker_type"], l[f"{r}_medium"]} in (
+                     {"owner", "press"}, {"owner", "press_quoting_owner"},
+                     {"press", "funder"}, {"owner", "permit"})})},
+    })
 
     out["layers"] = {
         "_comment": [

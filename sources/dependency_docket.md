@@ -967,6 +967,33 @@ the answer immediately runs `.githooks/pre-push --verify-last`, which is the sam
 check on its own.
 *Touches:* `.githooks/pre-push`; nothing in the data.
 
+**D-30 — THE PUSHES THAT DIE MID-PACK ARE A PATTERN, NOT A RUN OF BAD LUCK, AND THE
+FIRST THING TO TRY IS NOT THE HOOK.** D-27 recorded two such deaths on #77. The session
+of 25–27 September 2026 added five more, all the same shape: the chain runs green, the
+intent is recorded, and the pack send ends in `send-pack: unexpected disconnect while
+reading sideband packet` or `client_loop: send disconnect: Broken pipe`. It hit
+`paper-freeze-1`'s tag, `d12cda0`, `paper-freeze-2`'s branch twice and its tag once;
+**every one landed on a retry**, and the retry is fast because the hook recognises a
+repeat of an unlanded push and does not re-run the chain on the same bytes.
+
+**THE MECHANISM IS THE HOOK'S OWN DURATION, WHICH IS NOT THE HOOK'S FAULT.** git opens
+the transport, then runs `pre-push` — `npm run build`, the node tests, `check_links.py`,
+the build chain, the local-only checks — for something near half an hour, and only then
+sends the pack. The connection sits idle for that whole time and github's end closes it.
+Nothing is wrong with the checks; what is wrong is that a connection is held open across
+them.
+
+**SO THE ORDER OF REMEDIES IS: THE TRANSPORT FIRST, THE HOOK LAST.** Try
+`ServerAliveInterval 60` for github.com in `~/.ssh/config` on this machine — a keepalive
+costs nothing and tests the diagnosis directly. Only if that fails does it become a
+question about the hook, and the answer there is NOT to shorten the chain: it is to run
+the chain before the push rather than inside it, leaving the hook to verify the last
+intent and to check that the tree it is pushing is the tree the chain cleared. **The one
+remedy that is ruled out is `--no-verify`**, which D-27 already settled: skipping the
+hook skips the step that notices a push did not land, which is the thing going wrong.
+*Touches:* `~/.ssh/config` on this machine; nothing in the repository and nothing in the
+data.
+
 ---
 
 ## 12. The first verdict pass, 21 September 2026

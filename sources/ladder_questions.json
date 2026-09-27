@@ -187,6 +187,55 @@
    "why_it_is_not_simply_wrong": "IT IS NOT A REFUSAL AND NOT A GAP IN THE SEARCH. The document was fetched, the reading is what the benchmark file is made of, and the register's own drift and disagreement machinery has been reading IEA ref 1221 out of it since. What is missing is the COPY, and the copies are gitignored by design — `dep_restore.py` exists because this repository has always held that the index is the tracked claim and the bytes are a convenience.",
    "why_it_was_not_cleared_before_the_tag": "A FETCH TODAY WOULD NOT BE EVIDENCE OF THE 9 SEPTEMBER READING. api.iea.org serves the current vintage; filing today's bytes under that URL would put a different document behind a dated disagreement and make the citation look checked when what had been checked is something else. So it is listed rather than cleared, and the paper's table carries it as the single open citation.",
    "what_would_settle_it": "Either a rule that an index record naming a byte count and a date is sufficient evidence of reading where the body is absent — which is close to what check_citations already does with its 2026-09-15 baseline — or a restore path that keeps one copy of a benchmark blob per vintage, which is a decision about what the cache is for and not a fix to this row."
+  },
+  {
+   "id": "L11",
+   "raised": "2026-09-27",
+   "held": false,
+   "question": "A date was widened to satisfy an ordering check. What is the rule that stops that happening again, and where does it live?",
+   "what_the_record_shows": "D-A28's stop fact for SSAB Oxelösund is dated `not_after` 2026-09-20 while sources/funder_pass.json records the fiche as read on 19 September. The bound was widened by a day because the row's previous status event is dated 20 September and `status_history` is append-only, so the tighter, truer date would have failed check_sector_schema's order check. HYBRIT Gällivare took the exact read date, 19 September, only because its previous event happens to be earlier.",
+   "why_it_is_not_simply_wrong": "The bound is true: a not_after of 20 September is implied by a not_after of 19 September, and it was written down in the note beside it. Nothing in the register asserts anything false. What is wrong is the REASON the date has the value it has.",
+   "the_rule_to_write": "In scope.md: A DATE IS NEVER CHOSEN TO SATISFY AN ORDERING OR A BUILD. It is the speaker's date at the speaker's precision, or the copy's date as a bound, and nothing else may move it. If `status_history`'s order check rejects a bound earlier than the entry before it, THE CHECK IS WRONG AND NOT THE DATE: a history is a list of statements, and a statement read later can be evidence about an earlier day.",
+   "what_would_settle_it": "Write that clause, tighten the Oxelösund stop fact to `not_after` 2026-09-19, and make the order check compare on the day a statement was RECORDED rather than on the day it bounds — or drop the ordering requirement for a bound. Ruled to be done in the PR after paper-freeze-2; the tag's own annotation names it as known wrong."
+  },
+  {
+   "id": "L12",
+   "raised": "2026-09-27",
+   "held": false,
+   "question": "`medium_of()` reads the speaker and the note rather than the document's host, so two passing cells claim an owner document and cite trade press. How many others are mislabelled?",
+   "what_the_record_shows": "row:gigastack-humber carries site_medium `owner` on offshore-energy.biz/two-offshore-wind-to-hydrogen-projects-withdraw-from-uks-first-elect, and ieaccus:79 carries site_medium `owner` on globalcement.com/news/20531-heidelberg-materials-withdraws-slite-ccs-permit-application. medium_of() in build_ladder_all.py matches TRADE_PRESS against the speaker and the note text; where the cell's speaker was set to `owner` by the scorer and the note says nothing about a title, a trade-press URL reads as an owner document. MEASURED, 27 September 2026, by the typed `speaker_type` column the stage-year brief added: 18 passing cells over scored lines cite a document whose HOST is a trade title, and 13 of the 18 read as `owner` in both the medium and the speaker_type columns — gigastack-humber and ieaccus:79 among them, plus catl-arnstadt (three cells on prnewswire), sk-on-ivancsa (two on electrive), italvolt-scarmagno, britishvolt-blyth, ieaccus:670/671/672 and gem:P100000121211 (two on kallanish). The count is in all_summary.json under cross_tabs.who_confirms_by_speaker_type.source_host_is_a_trade_title, computed, so the fix has a number to move.",
+   "why_it_matters": "No rung result depends on the medium, so no score is wrong. The press-quoted amendment does depend on it — `<rung>_result_amended` is computed from the medium — and the paper's who-confirms table is read off it.",
+   "what_would_settle_it": "Classify from the host first and fall back to the speaker: the same TRADE_PRESS pattern applied to urlsplit(source).netloc, with a company-host list for the cases a company publishes through a newsroom domain of its own. Then rerun the medium column and compare it against the typed `speaker_type` column added in the stage-year brief, which is derived independently."
+  },
+  {
+   "id": "L13",
+   "raised": "2026-09-27",
+   "held": false,
+   "question": "`owner_listing` is populated on 22 of 205 rows. What pass fills the rest, and what source may a listing rest on?",
+   "what_the_record_shows": "The owner-type cross-tab of the stage-year brief covers 22 rows: 12 `listed`, 5 `mixed`, 4 `private`, 1 `unknown`. `owners` is the fact and `owner_listing` is read off it (scope.md), and 183 projects carry neither. check_sector_schema already reports 139 rows with no owner type as a known gap.",
+   "why_it_is_not_a_quick_fill": "WHO OWNS AN OPERATOR IS A READING, NOT A LOOKUP. A project company is usually a subsidiary, often a joint venture, and the listing that matters is the listing of the party holding more than half. Filling 183 rows from company names is the shape of error L9 caught in the hydrogen searches: a name match wearing a fact.",
+   "the_source_rule_to_write_first": "A listing rests on A STOCK EXCHANGE'S OWN LISTING PAGE FOR THE COMPANY, or the company's own investor-relations page stating it — never on a name, never on a financial data aggregator, and never inferred from a suffix like plc or AG. `state-owned` rests on the state's own holding published by the company or the state; `mixed` is a statement about a list where nobody holds more than half and requires the shares. Where no such source is read, the value stays absent and the row says so — `unknown` is a reading too, and it means somebody looked.",
+   "what_would_settle_it": "A listing pass as its own brief, ordered: write the source rule into scope.md, then read the owners of the register's rows in a recorded order the way the sector censuses record theirs, then let `owner_listing` derive itself off `owners` as the gate already requires. Not a column filled in passing."
+  },
+  {
+   "id": "L14",
+   "raised": "2026-09-27",
+   "held": false,
+   "question": "Two rung 5 passes rest on a speaker who is not the owner. Does rung 5 fail them, or does the schedule layer's speaker field mean something else?",
+   "what_the_record_shows": "The typed speaker column found them: `row:galp-sines-electrolyser` passes rung 5 on a stated_schedule entry whose `speaker` is `eu` (production_start 2026 at year precision), and `row:envision-aesc-extremadura` on one whose speaker is `host_government` (production_start 2028-12 at month precision). build_ladder.score_row takes `st.get('speaker') or 'owner'` for the cell and never tests it, so any schedule entry with a dated start passes whoever stated it.",
+   "why_it_is_not_settled_here": "THE FROZEN TEST ALREADY SAYS OWNER — 'the owner states a production or operation start with a date precision' — so failing these two is applying the test rather than changing it. But it moves two scored lines, and the stage-year brief is scoped to three cross-tabs and a column with no rung definition changes. Ruling it inside a brief that promised to move nothing would be the same fault as scoring a class off a note.",
+   "and_the_symmetry_worth_noticing": "D-A29 has just ruled the other half of this: an owner statement that the plant is operating passes rung 5, and a wire release and a grant register do not, because the speaker rule limits it. These two are the same rule unapplied on the schedule side of the same rung.",
+   "what_would_settle_it": "Either rung 5 tests the schedule entry's speaker the way D-A29 tests the status event's source_type — `company` only — which fails both lines and is the reading the frozen text supports; or `speaker` on stated_schedule means 'who told this register', in which case the field needs a second one for who STATED the target and the gate needs to require it. The first is a one-line change and the second is a layer change.",
+   "ruling": "RULED 27 September 2026: fixed in its own PR after the stage-year brief merges, and `paper-freeze-3` is tagged after both. The paper's numbers come from that tag, so these two lines are known wrong in paper-freeze-2 and right in paper-freeze-3."
+  },
+  {
+   "id": "L15",
+   "raised": "2026-09-27",
+   "held": false,
+   "question": "Three rows carry an owner year and a list year more than a year apart. What do their `disagreements` blocks say, and who is right about each?",
+   "what_the_record_shows": "Computed in all_summary.json under cross_tabs.checks_by_target_year.owner_versus_list over scored lines: 10 rows have a year from both speakers, 7 agree within a year, and 3 do not. `row:acc-billy-berclau` — the owner says production started in 2023, Battery-News still publishes 2030, a seven-year gap. `row:verkor-dunkirk` — owner 2026 against the list's 2030. `row:envision-aesc-extremadura` — owner 2028 against the list's 2025, the only one where the LIST is the earlier of the two.",
+   "why_it_is_not_written_onto_the_rows_yet": "A disagreement on this layer carries each speaker's own sentence, its date and its precision — that is what makes it checkable rather than an assertion that two numbers differ. Two of the three owner-side years come from company releases already on file; the third, Envision at Navalmoral de la Mata, rests on a regional newspaper's report, and that same line is L14's `host_government` speaker on rung 5. Writing the blocks means reading four documents, which is a pass and not a computation.",
+   "what_would_settle_it": "A short reading pass over the three: quote the owner's sentence and the list's cell, write an `event_kind`-less disagreement block of the shape data/transition/projects.json already uses for capacity, and let the column stay derived. Envision's should also settle whether the owner-side year has an owner source at all, because a newspaper reporting a start is not the company stating one."
   }
  ]
 }
