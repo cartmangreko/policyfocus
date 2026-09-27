@@ -85,6 +85,18 @@ def funder_index():
 
 def funding_cell(key, by_key, read_on):
     hit = (by_key.get(key) or [None])[0]
+    if hit and L.award_is_terminated(hit.get("funder_status_as_published")):
+        # D-A28. THE STATUS THE FUNDER PUBLISHES IS PART OF THE AWARD IT PUBLISHES.
+        # This cell printed `the funder's own status is Terminated` inside a PASS, and
+        # build_ladder_all --queue has been printing the same four rows as a fact a
+        # rung revealed that no row carries. The rung reads the word now.
+        return L.cell("fail", hit["source_url"], hit["funder"], hit["date"],
+                      hit["date_precision"],
+                      f"THE FUNDER'S OWN RECORD SAYS THE AWARD IS TERMINATED. "
+                      f"{hit['programme']} names {hit['project_as_published']!r} at "
+                      f"{hit['amount_as_stated']} and gives its status as "
+                      f"{hit['funder_status_as_published']!r}; withdrawn funding is "
+                      f"excluded (D-A28). The project's status does not move on it.")
     if hit:
         return L.cell("pass", hit["source_url"], hit["funder"], hit["date"],
                       hit["date_precision"],
@@ -602,6 +614,94 @@ def summarise(lines, parts):
                                      / len(sc), 3) if sc else None}
                              for r in RUNGS}}
 
+    # ------------------------------------------------------------------
+    # THE FIVE CROSS-TABS, added 26 September 2026 for the paper's table. Each one
+    # is a PAIR of checks read together, because the interesting thing about this
+    # ladder is not how often a rung clears but which rungs clear WITHOUT the rung a
+    # reader would expect beside them. Computed here from the csv's own lines like
+    # everything else in this file, and --check refuses a difference.
+
+    def _passes(l, *rungs):
+        return all(l[f"{r}_result"] == "pass" for r in rungs)
+
+    def _per_sector(pred):
+        d = {s2: sum(1 for l in lines
+                     if l["sector"] == s2 and l["scored"] == "true" and pred(l))
+             for s2 in SECTORS}
+        d["all_sectors"] = sum(d.values())
+        return d
+
+    producing_scored = [l for l in lines
+                        if l["layer"] == "producing" and l["scored"] == "true"]
+    # THE LIST STATUS AGAINST THE OWNER'S OWN FID, and steel is out of it by count.
+    # 103 of steel's 147 lines carry NO list status at all — GEM's field is blank for
+    # most of the works — so a cross-tab would describe the 44 that have one while
+    # reading as though it described steel. Batteries is out for the same reason and
+    # more so: its benchmark is a chart with no status column, so every line is blank.
+    FID_VS_LIST = ("hydrogen", "cement")
+    out["cross_tabs"] = {
+        "_comment": [
+            "FIVE PAIRS, computed from sources/ladder/all.csv over SCORED lines only.",
+            "A perimeter exclusion and an unread entry are not in any of them: neither",
+            "failed to confirm itself, on D-L1.",
+            "Rung names in this repository are site, capacity, fid, funding, start,",
+            "input; `checks` in the paper's wording is the same six."],
+        "checks_passed_distribution_producing_layer": {
+            "_comment": ("how many of the six each scored line of the producing layer "
+                         "clears; the infrastructure layer is summarised under `layers` "
+                         "and is deliberately not averaged into this"),
+            "scored": len(producing_scored),
+            "sectors": [x for x in SECTORS if lp.LAYER[x] == "producing"],
+            "distribution": {str(k): v for k, v in sorted(Counter(
+                l["rungs_passed"] for l in producing_scored).items())}},
+        "funding_pass_without_fid_pass": {
+            "_comment": ("a funder has confirmed the money and the owner has not said "
+                         "the decision is made — the pair that says where public money "
+                         "is ahead of the company's own commitment"),
+            "count": _per_sector(lambda l: _passes(l, "funding")
+                                 and l["fid_result"] != "pass"),
+            "of_funding_passes": _per_sector(lambda l: _passes(l, "funding"))},
+        "site_pass_without_capacity_pass": {
+            "_comment": ("the owner names where and does not say how big; the pair that "
+                         "separates a located project from a specified one"),
+            "count": _per_sector(lambda l: _passes(l, "site")
+                                 and l["capacity_result"] != "pass"),
+            "of_site_passes": _per_sector(lambda l: _passes(l, "site"))},
+        "site_capacity_fid": {
+            "_comment": ("located, sized and decided on the owner's own documents — the "
+                         "three rungs that rest on nobody but the company"),
+            "count": _per_sector(lambda l: _passes(l, "site", "capacity", "fid"))},
+        "site_capacity_fid_start": {
+            "_comment": "the same three plus a start date the owner has put a precision on",
+            "count": _per_sector(lambda l: _passes(l, "site", "capacity", "fid",
+                                                   "start"))},
+        "list_status_vs_owner_fid": {
+            "_comment": [
+                "THE LIST'S OWN STATUS COLUMN AGAINST RUNG 3, which is the owner saying "
+                "the decision is made. A list that calls a project FID/Construction "
+                "while no owner document says FID has been taken is the disagreement "
+                "this register exists to make visible.",
+                "STEEL IS EXCLUDED AND THE REASON IS A COUNT: 103 of its 147 lines "
+                "carry no list status at all, so a cross-tab would describe the 44 that "
+                "do while reading as though it described the sector. Batteries is "
+                "excluded for the same reason — its benchmark is a chart with no status "
+                "column, so every line is blank — and so are the two infrastructure "
+                "sectors, whose lists status a pipeline and a reservoir rather than a "
+                "plant."],
+            "sectors": list(FID_VS_LIST),
+            "excluded": {
+                "steel": "103 of 147 lines carry no list status",
+                "batteries": "the benchmark is a chart with no status column",
+                "transport and storage": "an infrastructure list, not a plant list"},
+            "table": {s2: {ls: dict(Counter(
+                l["fid_result"] for l in lines
+                if l["sector"] == s2 and l["scored"] == "true"
+                and (l["list_status"] or "(none)") == ls))
+                for ls in sorted({(l["list_status"] or "(none)") for l in lines
+                                  if l["sector"] == s2 and l["scored"] == "true"})}
+                for s2 in FID_VS_LIST}},
+    }
+
     out["layers"] = {
         "_comment": [
             "THE CROSS-SECTOR TABLE IS COMPUTED FOR THE PRODUCING LAYER, and the",
@@ -753,9 +853,16 @@ def queue(lines):
             out.append((l["sector"], l["key"], l["name"],
                         "a funder names an award for an entry this register has not "
                         "admitted: " + l["funding_note"][:150]))
-        if l["funding_result"] == "pass" and "status is Terminated" in l["funding_note"]:
+        # THE TERMINATED AWARDS ARE NO LONGER A QUEUE ITEM, THEY ARE A RESULT (D-A28).
+        # What stays worth printing is the pair a terminated award leaves behind: the
+        # entry is still admitted or held on the funder's award while the same funder
+        # says the money is gone, and for the two steel entries there is no row to
+        # carry the stop fact on.
+        if l["funding_result"] == "fail" and "TERMINATED" in l["funding_note"]:
             out.append((l["sector"], l["key"], l["name"],
-                        "the funder's own factsheet says TERMINATED"))
+                        "rung 4 fails on a terminated award"
+                        + ("; there is no register row to carry the stop fact"
+                           if not l["row_id"] else "")))
     return out
 
 

@@ -596,3 +596,73 @@ to `empty shell`**, and the filing was withdrawn and redone from the corrected r
 
 **The queue therefore goes 66 to 54, not 66 to 48.** The six-entry difference is the
 correction, and it is the number this pass would have reported as progress.
+
+### Rulings of 26 September 2026 — two checks corrected for paper-freeze-2
+
+**D-A28. AN AWARD THE FUNDER HAS TERMINATED DOES NOT PASS RUNG 4.** The rule of 24 August
+excludes withdrawn funding, and `build_ladder_all --queue` has been printing the
+consequence as an unresolved fact for six days: four entries passed rung 4 on a factsheet
+whose own status column says **Terminated**, and the passing cell printed the words *the
+funder's own status is Terminated* inside a PASS. Rung 4 asks whether a second party with
+its own register has confirmed the money; a factsheet carrying TERMINATED over the award is
+that same party saying the money is gone. Reading the award and ignoring the word beside it
+scored the announcement rather than the register.
+
+**FOUR LINES MOVE, one per award except HYBRIT's, which is one award over two works:**
+`row:freyr-mo-i-rana` (batteries, 3 rungs to 2), `ieaccus:560` ANRAV-CCUS at Devnya (cement,
+4 to 3), `gem:P100000120851` HYBRIT Gällivare and `gem:P100000120844` SSAB Oxelösund (steel,
+2 to 1 each). Sector rung-4 passes: batteries 6→5, cement 17→16, steel 5→3; the producing
+layer's rung-4 rate 48/319 → 44/319.
+
+**THE STATUS DOES NOT MOVE AND D-B19 IS UNTOUCHED.** A funder withdrawing its money is a
+fact about the award; a cancellation read out of it would be this register deciding
+something the owner has not said. What each row gains is a **stop fact**: `event_kind:
+financing`, `speaker: eu` — the funder — the factsheet as `source_url` at `source_type:
+grant_register`, `status_from` and `status_to` equal, and the funder's own figures in the
+note. Freyr, ANRAV and Catalina already carried one from D-A13 and gain the speaker;
+**Gällivare and Oxelösund now have rows and gain the event**, which D-A13 could not write
+because neither had a row then.
+
+**THEIR BOUND IS LOOSER THAN THE EVIDENCE AND SAYS SO.** `funder_pass.json` records the
+fiche as read on 19 September 2026, but both steel rows already carry a later status event
+and `status_history` is append-only, so the stop fact is dated `not_after` 26 September —
+the day it was written — with the tighter bound named in the note. A `not_after` may be
+loosened and never tightened; reordering a history to fit a new event is the other way of
+solving it and it is the wrong way.
+
+**NOTHING ELSE PASSES ON A TERMINATED OR WITHDRAWN STATUS, and the check was run rather
+than assumed.** Eight documents behind a termination or a withdrawal are cited by the
+register; three passing cells cite one — Catalina's rung 1 on the terminated fiche, and
+Gigastack's and Slite's rung 1 on the pages reporting their withdrawals — and **all three
+are rung 1 resting on what the document NAMES, not on the money or the status.** A
+terminated fiche does not unsay "Andorra, Teruel". Rung 4 is the only rung the money can
+move, and it now moves.
+
+**D-A29. A PLANT THE OWNER SAYS IS OPERATING HAS STARTED, AND RUNG 5 NOW READS IT.**
+Brevik is the case. Heidelberg Materials' own release of 18 June 2025 says the capture plant
+is operating; the row carries it as a status event; rung 3 read it and passed; **rung 5
+failed it for want of a `stated_schedule` entry** — so a row whose owner says the plant is
+running scored worse on "start date" than a row whose owner forecast one. A schedule is a
+statement about a start that has not happened, and the frozen test asks for a start **with a
+date precision**. A statement that the plant IS operating is the strongest form of that: the
+date is the day the owner said it and the precision is the one the statement carries.
+
+**TWELVE LINES ACROSS ELEVEN PROJECTS MOVE**, every one of them a company's own document:
+Brevik (cement); HYBRIT Luleå and 3D Dunkirk (steel); Northern Lights, which is two lines;
+and seven battery plants — LG Wrocław, Morrow Arendal, PowerCo Salzgitter, Samsung SDI Göd
+(at `month` precision, recorded as stated), Envision AESC Douai and Sunderland, UniverCell
+Flintbek. Sector rung-5 passes: batteries 10→17, cement 4→5, transport and storage 0→2,
+steel 4→6; the producing layer's rung-5 rate 33/319 → 43/319. ACC Billy-Berclau and Verkor
+Dunkirk already passed on a schedule and do not move.
+
+**THE SPEAKER RULE DOES THE LIMITING AND TWO ROWS SHOW IT.** Only the owner's own document
+passes. `catl-arnstadt` carries `operating` from a wire release and `sk-on-komarom` from a
+grant register; **neither passes**, because neither is the owner speaking — the
+press-quoted amendment is where a wire carrying a company's own words is read, and it runs
+over every cell already.
+
+**AND THE THING BOTH RULINGS HAVE IN COMMON.** Each was visible in the register before it
+was visible in the rules: D-A28 as a queue line printed on every build, D-A29 as a rung 3
+pass and a rung 5 fail on the same sentence. The queue and the cross-tabs exist to make
+that kind of disagreement loud, and `all_summary.json` now carries five more pairs for the
+same reason.
