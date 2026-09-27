@@ -890,15 +890,16 @@
   "list_status_vs_owner_fid": {
    "_comment": [
     "THE LIST'S OWN STATUS COLUMN AGAINST RUNG 3, which is the owner saying the decision is made. A list that calls a project FID/Construction while no owner document says FID has been taken is the disagreement this register exists to make visible.",
-    "STEEL IS EXCLUDED AND THE REASON IS A COUNT: 103 of its 147 lines carry no list status at all, so a cross-tab would describe the 44 that do while reading as though it described the sector. Batteries is excluded for the same reason — its benchmark is a chart with no status column, so every line is blank — and so are the two infrastructure sectors, whose lists status a pipeline and a reservoir rather than a plant."
+    "STEEL IS IN, ON GEM'S OWN VOCABULARY, AND THE EARLIER REASON FOR LEAVING IT OUT WAS WRONG. It said 103 of 147 lines carry no list status, which is true of the whole population and not of the scored one: 18 of steel's 49 scored lines are blank and the other 31 carry GEM's six values — Announced, Construction, Finalized (research & testing), Cancelled, Operating, Paused or postponed. Construction and Operating against rung 3 are exactly the pair this table is for. Corrected 27 September 2026.",
+    "BATTERIES IS OUT and the reason is a count that holds: all 57 of its scored lines carry no list status, because the benchmark is a chart with no status column. The two infrastructure sectors are out because their lists status a pipeline and a reservoir rather than a plant."
    ],
    "sectors": [
     "hydrogen",
-    "cement"
+    "cement",
+    "steel"
    ],
    "excluded": {
-    "steel": "103 of 147 lines carry no list status",
-    "batteries": "the benchmark is a chart with no status column",
+    "batteries": "all 57 scored lines carry no list status — the benchmark is a chart with no status column",
     "transport and storage": "an infrastructure list, not a plant list"
    },
    "table": {
@@ -933,8 +934,605 @@
       "fail": 3,
       "pass": 1
      }
+    },
+    "steel": {
+     "(none)": {
+      "fail": 14,
+      "pass": 4
+     },
+     "Announced": {
+      "fail": 12,
+      "pass": 1
+     },
+     "Cancelled": {
+      "fail": 2
+     },
+     "Construction": {
+      "fail": 5,
+      "pass": 1
+     },
+     "Finalized (research & testing)": {
+      "fail": 2,
+      "pass": 4
+     },
+     "Operating": {
+      "fail": 2
+     },
+     "Paused or postponed": {
+      "fail": 1,
+      "pass": 1
+     }
     }
    }
+  },
+  "checks_by_list_stage": {
+   "hydrogen": {
+    "vocabulary": "the IEA hydrogen list's own status column",
+    "stages": {
+     "Concept": {
+      "lines": 59,
+      "site": 32,
+      "capacity": 19,
+      "fid": 0,
+      "funding": 3,
+      "start": 0,
+      "input": 0
+     },
+     "FID/Construction": {
+      "lines": 7,
+      "site": 7,
+      "capacity": 7,
+      "fid": 6,
+      "funding": 4,
+      "start": 5,
+      "input": 3
+     },
+     "Feasibility study": {
+      "lines": 97,
+      "site": 69,
+      "capacity": 42,
+      "fid": 0,
+      "funding": 7,
+      "start": 3,
+      "input": 1
+     }
+    }
+   },
+   "cement": {
+    "vocabulary": "the IEA CCUS database's own status column",
+    "stages": {
+     "Cancelled": {
+      "lines": 1,
+      "site": 1,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "Operational": {
+      "lines": 1,
+      "site": 1,
+      "capacity": 1,
+      "fid": 1,
+      "funding": 0,
+      "start": 1,
+      "input": 1
+     },
+     "Planned": {
+      "lines": 36,
+      "site": 32,
+      "capacity": 16,
+      "fid": 3,
+      "funding": 15,
+      "start": 4,
+      "input": 1
+     },
+     "Under construction": {
+      "lines": 4,
+      "site": 4,
+      "capacity": 3,
+      "fid": 1,
+      "funding": 1,
+      "start": 0,
+      "input": 1
+     }
+    }
+   },
+   "steel": {
+    "vocabulary": "GEM's own status column, six values",
+    "stages": {
+     "Announced": {
+      "lines": 13,
+      "site": 10,
+      "capacity": 4,
+      "fid": 1,
+      "funding": 1,
+      "start": 0,
+      "input": 1
+     },
+     "Cancelled": {
+      "lines": 2,
+      "site": 1,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "Construction": {
+      "lines": 6,
+      "site": 6,
+      "capacity": 2,
+      "fid": 1,
+      "funding": 1,
+      "start": 0,
+      "input": 1
+     },
+     "Finalized (research & testing)": {
+      "lines": 6,
+      "site": 6,
+      "capacity": 3,
+      "fid": 4,
+      "funding": 0,
+      "start": 3,
+      "input": 3
+     },
+     "Operating": {
+      "lines": 2,
+      "site": 1,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 1,
+      "start": 0,
+      "input": 0
+     },
+     "Paused or postponed": {
+      "lines": 2,
+      "site": 2,
+      "capacity": 2,
+      "fid": 1,
+      "funding": 0,
+      "start": 1,
+      "input": 1
+     },
+     "no list stage": {
+      "lines": 18,
+      "site": 10,
+      "capacity": 3,
+      "fid": 4,
+      "funding": 0,
+      "start": 2,
+      "input": 0
+     }
+    }
+   },
+   "batteries": {
+    "vocabulary": "none",
+    "reason": "all 57 scored lines carry no list stage: the benchmark is Transport & Environment's chart and Battery-News's table, neither of which publishes a status column",
+    "stages": {
+     "no list stage": {
+      "lines": 57,
+      "site": 35,
+      "capacity": 26,
+      "fid": 21,
+      "funding": 5,
+      "start": 17,
+      "input": 2
+     }
+    }
+   },
+   "not_on_any_list": {
+    "vocabulary": "none — these lines are register rows with no line on any list",
+    "sectors": {
+     "hydrogen": 8
+    },
+    "stages": {
+     "not on any list": {
+      "lines": 8,
+      "site": 8,
+      "capacity": 8,
+      "fid": 7,
+      "funding": 6,
+      "start": 7,
+      "input": 3
+     }
+    }
+   }
+  },
+  "checks_by_target_year": {
+   "hydrogen": {
+    "source_split": {
+     "none": 156,
+     "owner": 15
+    },
+    "bands": {
+     "up to 2027": {
+      "lines": 12,
+      "site": 12,
+      "capacity": 12,
+      "fid": 9,
+      "funding": 9,
+      "start": 12,
+      "input": 5
+     },
+     "2028-2030": {
+      "lines": 3,
+      "site": 3,
+      "capacity": 3,
+      "fid": 2,
+      "funding": 2,
+      "start": 3,
+      "input": 0
+     },
+     "after 2030": {
+      "lines": 0,
+      "site": 0,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "no stated year": {
+      "lines": 156,
+      "site": 101,
+      "capacity": 61,
+      "fid": 2,
+      "funding": 9,
+      "start": 0,
+      "input": 2
+     }
+    }
+   },
+   "batteries": {
+    "source_split": {
+     "list": 19,
+     "owner": 10,
+     "none": 28
+    },
+    "bands": {
+     "up to 2027": {
+      "lines": 19,
+      "site": 14,
+      "capacity": 13,
+      "fid": 9,
+      "funding": 5,
+      "start": 11,
+      "input": 1
+     },
+     "2028-2030": {
+      "lines": 8,
+      "site": 4,
+      "capacity": 3,
+      "fid": 3,
+      "funding": 0,
+      "start": 3,
+      "input": 0
+     },
+     "after 2030": {
+      "lines": 2,
+      "site": 0,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "no stated year": {
+      "lines": 28,
+      "site": 17,
+      "capacity": 10,
+      "fid": 9,
+      "funding": 0,
+      "start": 3,
+      "input": 1
+     }
+    }
+   },
+   "cement": {
+    "source_split": {
+     "none": 38,
+     "owner": 4
+    },
+    "bands": {
+     "up to 2027": {
+      "lines": 0,
+      "site": 0,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "2028-2030": {
+      "lines": 4,
+      "site": 4,
+      "capacity": 3,
+      "fid": 2,
+      "funding": 3,
+      "start": 4,
+      "input": 0
+     },
+     "after 2030": {
+      "lines": 0,
+      "site": 0,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "no stated year": {
+      "lines": 38,
+      "site": 34,
+      "capacity": 17,
+      "fid": 3,
+      "funding": 13,
+      "start": 1,
+      "input": 3
+     }
+    }
+   },
+   "transport and storage": {
+    "source_split": {
+     "none": 102
+    },
+    "bands": {
+     "up to 2027": {
+      "lines": 0,
+      "site": 0,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "2028-2030": {
+      "lines": 0,
+      "site": 0,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "after 2030": {
+      "lines": 0,
+      "site": 0,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "no stated year": {
+      "lines": 102,
+      "site": 81,
+      "capacity": 6,
+      "fid": 2,
+      "funding": 4,
+      "start": 2,
+      "input": 1
+     }
+    }
+   },
+   "steel": {
+    "source_split": {
+     "none": 15,
+     "list": 30,
+     "owner": 4
+    },
+    "bands": {
+     "up to 2027": {
+      "lines": 20,
+      "site": 19,
+      "capacity": 10,
+      "fid": 9,
+      "funding": 2,
+      "start": 4,
+      "input": 6
+     },
+     "2028-2030": {
+      "lines": 12,
+      "site": 11,
+      "capacity": 3,
+      "fid": 0,
+      "funding": 1,
+      "start": 0,
+      "input": 0
+     },
+     "after 2030": {
+      "lines": 2,
+      "site": 2,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "no stated year": {
+      "lines": 15,
+      "site": 4,
+      "capacity": 1,
+      "fid": 2,
+      "funding": 0,
+      "start": 2,
+      "input": 0
+     }
+    }
+   },
+   "all_sectors": {
+    "source_split": {
+     "none": 339,
+     "owner": 33,
+     "list": 49
+    },
+    "bands": {
+     "up to 2027": {
+      "lines": 51,
+      "site": 45,
+      "capacity": 35,
+      "fid": 27,
+      "funding": 16,
+      "start": 27,
+      "input": 12
+     },
+     "2028-2030": {
+      "lines": 27,
+      "site": 22,
+      "capacity": 12,
+      "fid": 7,
+      "funding": 6,
+      "start": 10,
+      "input": 0
+     },
+     "after 2030": {
+      "lines": 4,
+      "site": 2,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "no stated year": {
+      "lines": 339,
+      "site": 237,
+      "capacity": 95,
+      "fid": 18,
+      "funding": 26,
+      "start": 8,
+      "input": 7
+     }
+    }
+   }
+  },
+  "checks_by_owner_type": {
+   "_comment": [
+    "THE REGISTER'S OWN VOCABULARY, not the brief's words: `private` is the brief's `unlisted` and `state-owned` is its `state`. OWNER_LISTINGS in sector_map.py is what the gate enforces and what the data holds.",
+    "COVERAGE IS THE POINT AND IT IS SMALL: `owner_listing` is set on 22 of 205 projects. `not read` is a line whose row carries no listing — a gap in this register's reading, not a fact about the owner — and `no row` is a census entry with no register row at all."
+   ],
+   "coverage": {
+    "projects_with_owner_listing": 22,
+    "projects": 205,
+    "scored_lines_covered": 22
+   },
+   "by_owner_type": {
+    "listed": {
+     "lines": 12,
+     "site": 12,
+     "capacity": 12,
+     "fid": 9,
+     "funding": 7,
+     "start": 10,
+     "input": 5
+    },
+    "mixed": {
+     "lines": 5,
+     "site": 5,
+     "capacity": 5,
+     "fid": 2,
+     "funding": 4,
+     "start": 3,
+     "input": 0
+    },
+    "no row": {
+     "lines": 184,
+     "site": 78,
+     "capacity": 0,
+     "fid": 0,
+     "funding": 0,
+     "start": 0,
+     "input": 0
+    },
+    "not read": {
+     "lines": 215,
+     "site": 206,
+     "capacity": 120,
+     "fid": 39,
+     "funding": 35,
+     "start": 30,
+     "input": 13
+    },
+    "private": {
+     "lines": 4,
+     "site": 4,
+     "capacity": 4,
+     "fid": 1,
+     "funding": 1,
+     "start": 1,
+     "input": 0
+    },
+    "unknown": {
+     "lines": 1,
+     "site": 1,
+     "capacity": 1,
+     "fid": 1,
+     "funding": 1,
+     "start": 1,
+     "input": 1
+    }
+   }
+  },
+  "who_confirms_by_speaker_type": {
+   "_comment": [
+    "PASSING CELLS ONLY, over scored lines, per rung.",
+    "`register` means the passing cell cites this register's own census, search or dependency graph — which for rungs 4 and 6 is the funder pass and the edge file, both of them records of somebody else's publication read here.",
+    "DISAGREEMENT WITH `medium` IS LISTED AND NOT RESOLVED: L12 has medium_of() classifying from the speaker and the note rather than the host."
+   ],
+   "per_rung": {
+    "site": {
+     "owner": 271,
+     "funder": 12,
+     "permit": 10,
+     "supplier": 4,
+     "press": 5,
+     "host_government": 4
+    },
+    "capacity": {
+     "owner": 141,
+     "host_government": 1
+    },
+    "fid": {
+     "owner": 50,
+     "host_government": 2
+    },
+    "funding": {
+     "funder": 48
+    },
+    "start": {
+     "owner": 43,
+     "funder": 1,
+     "host_government": 1
+    },
+    "input": {
+     "supplier": 19
+    }
+   },
+   "source_host_is_a_trade_title": [
+    "gem:P100000120485 site: www.steelorbis.com (speaker_type=press, medium=press)",
+    "gem:P100000121211 capacity: www.kallanish.com (speaker_type=owner, medium=owner)",
+    "gem:P100000121211 site: www.kallanish.com (speaker_type=host_government, medium=owner)",
+    "gem:P100000121235 site: gmk.center (speaker_type=press, medium=press)",
+    "ieaccus:670 site: www.prnewswire.com (speaker_type=owner, medium=owner)",
+    "ieaccus:671 site: www.prnewswire.com (speaker_type=owner, medium=owner)",
+    "ieaccus:672 site: www.prnewswire.com (speaker_type=owner, medium=owner)",
+    "ieaccus:79 site: www.globalcement.com (speaker_type=owner, medium=owner)",
+    "ieaccus:907 site: www.offshore-energy.biz (speaker_type=press, medium=press)",
+    "row:britishvolt-blyth capacity: www.prnewswire.com (speaker_type=owner, medium=owner)",
+    "row:catl-arnstadt capacity: www.prnewswire.com (speaker_type=owner, medium=owner)",
+    "row:catl-arnstadt fid: www.prnewswire.com (speaker_type=owner, medium=owner)",
+    "row:catl-arnstadt site: www.prnewswire.com (speaker_type=owner, medium=owner)",
+    "row:gigastack-humber site: www.offshore-energy.biz (speaker_type=owner, medium=owner)",
+    "row:italvolt-scarmagno capacity: www.prnewswire.com (speaker_type=owner, medium=owner)",
+    "row:sk-on-ivancsa capacity: www.electrive.com (speaker_type=owner, medium=owner)",
+    "row:sk-on-ivancsa fid: www.electrive.com (speaker_type=owner, medium=owner)",
+    "row:svolt-lauchhammer site: battery-news.de (speaker_type=press, medium=press)"
+   ],
+   "disagrees_with_medium": [
+    "ieaccus:1506 site: speaker_type=owner, medium=press"
+   ]
   }
  },
  "layers": {
