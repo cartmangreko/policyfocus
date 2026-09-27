@@ -902,6 +902,37 @@
     "batteries": "all 57 scored lines carry no list status — the benchmark is a chart with no status column",
     "transport and storage": "an infrastructure list, not a plant list"
    },
+   "built_or_building_vs_owner_fid": {
+    "stages": {
+     "hydrogen": [
+      "FID/Construction"
+     ],
+     "cement": [
+      "Under construction",
+      "Operational"
+     ],
+     "steel": [
+      "Construction",
+      "Operating"
+     ]
+    },
+    "lines": 20,
+    "owner_fid_pass": 9,
+    "per_sector": {
+     "hydrogen": {
+      "lines": 7,
+      "owner_fid_pass": 6
+     },
+     "cement": {
+      "lines": 5,
+      "owner_fid_pass": 2
+     },
+     "steel": {
+      "lines": 8,
+      "owner_fid_pass": 1
+     }
+    }
+   },
    "table": {
     "hydrogen": {
      "(none)": {
@@ -1406,12 +1437,80 @@
       "input": 7
      }
     }
+   },
+   "producing_layer": {
+    "_comment": "the paper's version: hydrogen, batteries, cement and steel, without the two infrastructure sectors",
+    "sectors": [
+     "hydrogen",
+     "batteries",
+     "cement",
+     "steel"
+    ],
+    "source_split": {
+     "none": 237,
+     "owner": 33,
+     "list": 49
+    },
+    "bands": {
+     "up to 2027": {
+      "lines": 51,
+      "site": 45,
+      "capacity": 35,
+      "fid": 27,
+      "funding": 16,
+      "start": 27,
+      "input": 12
+     },
+     "2028-2030": {
+      "lines": 27,
+      "site": 22,
+      "capacity": 12,
+      "fid": 7,
+      "funding": 6,
+      "start": 10,
+      "input": 0
+     },
+     "after 2030": {
+      "lines": 4,
+      "site": 2,
+      "capacity": 0,
+      "fid": 0,
+      "funding": 0,
+      "start": 0,
+      "input": 0
+     },
+     "no stated year": {
+      "lines": 237,
+      "site": 156,
+      "capacity": 89,
+      "fid": 16,
+      "funding": 22,
+      "start": 6,
+      "input": 6
+     }
+    }
+   },
+   "owner_versus_list": {
+    "_comment": [
+     "OVER SCORED LINES WHERE BOTH THE OWNER AND THE LIST PUBLISH A YEAR.",
+     "`disagree_by_more_than_a_year` is the brief's threshold; the rows are named so a reader can go to them, and the two years are printed with each.",
+     "NOT WRITTEN ONTO THE ROWS: a disagreement on this layer carries each speaker's own sentence, which is a reading and not a computation (L15)."
+    ],
+    "both_publish_a_year": 10,
+    "agree_within_a_year": 7,
+    "disagree_by_more_than_a_year": 3,
+    "rows": [
+     "row:acc-billy-berclau (batteries): owner 2023 vs list 2030, -7 years",
+     "row:envision-aesc-extremadura (batteries): owner 2028 vs list 2025, +3 years",
+     "row:verkor-dunkirk (batteries): owner 2026 vs list 2030, -4 years"
+    ]
    }
   },
   "checks_by_owner_type": {
    "_comment": [
     "THE REGISTER'S OWN VOCABULARY, not the brief's words: `private` is the brief's `unlisted` and `state-owned` is its `state`. OWNER_LISTINGS in sector_map.py is what the gate enforces and what the data holds.",
-    "COVERAGE IS THE POINT AND IT IS SMALL: `owner_listing` is set on 22 of 205 projects. `not read` is a line whose row carries no listing — a gap in this register's reading, not a fact about the owner — and `no row` is a census entry with no register row at all."
+    "COVERAGE IS THE POINT AND IT IS SMALL: `owner_listing` is set on 22 of 205 projects. `not read` is a line whose row carries no listing — a gap in this register's reading, not a fact about the owner — and `no row` is a census entry with no register row at all.",
+    "THIS TABLE DOES NOT ENTER THE PAPER until the L13 listing pass fills the field from a source rule. Ruled 27 September 2026. It stays here because a table computed over 22 of 205 rows is worth having and worth labelling, and because the number it reports is the coverage."
    ],
    "coverage": {
     "projects_with_owner_listing": 22,

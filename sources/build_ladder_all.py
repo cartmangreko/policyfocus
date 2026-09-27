@@ -71,6 +71,8 @@ FIELDS = (["sector", "layer", "key", "list_key", "row_id", "name", "country", "r
           + [f"{r}_speaker_type" for r in RUNGS]
           + [f"{r}_result_amended" for r in RUNGS]
           + ["rungs_passed_amended", "outcome_class_amended", "input_provisional",
+             "target_year_owner", "target_year_owner_source",
+             "target_year_list", "target_year_list_source",
              "target_year", "target_year_source"])
 
 
@@ -376,14 +378,35 @@ def list_target_year(e) -> tuple[str, str]:
     return "", ""
 
 
-def target_year_of(e, row) -> tuple[str, str]:
-    y, src = owner_target_year(row)
-    if y:
-        return y, src
-    y, src = list_target_year(e)
-    if y:
-        return y, src
-    return "no stated year", "none: neither the owner nor the list publishes a year"
+def target_year_columns(e, row) -> dict:
+    """The owner's year, the list's year, and the one the bands read — all four columns.
+
+    THE TWO SPEAKERS GET A COLUMN EACH, ruled 27 September 2026. A single column with a
+    source string could say which speaker won and could not say what the other one said,
+    so the disagreement between them was computable only by a script outside the gate.
+    Now `target_year` is DERIVED — the owner's where there is one, the list's otherwise —
+    and both inputs sit beside it, which is the same shape the register uses everywhere
+    else: keep what each party said, and derive the reading.
+    """
+    oy, osrc = owner_target_year(row)
+    ly, lsrc = list_target_year(e)
+    if oy:
+        y, src = oy, osrc
+    elif ly:
+        y, src = ly, lsrc
+    else:
+        y, src = "no stated year", "none: neither the owner nor the list publishes a year"
+    return {"target_year_owner": oy, "target_year_owner_source": osrc,
+            "target_year_list": ly, "target_year_list_source": lsrc,
+            "target_year": y, "target_year_source": src}
+
+
+def year_gap(line) -> int | None:
+    """|owner - list| where both are years, else None."""
+    a, b = line.get("target_year_owner") or "", line.get("target_year_list") or ""
+    if a.isdigit() and b.isdigit():
+        return abs(int(a) - int(b))
+    return None
 
 
 def target_band(year: str) -> str:
@@ -538,7 +561,7 @@ def line_for(sector, e, cells, row):
     line["scored"] = "false" if (line["register_class"] in lp.NOT_SCORED
                                  or line["register_class"] == "benchmark aggregate"
                                  or line["unread"] == "true") else "true"
-    line["target_year"], line["target_year_source"] = target_year_of(e, row)
+    line.update(target_year_columns(e, row))
     am, klass = amend(line)
     for r in RUNGS:
         line[f"{r}_result_amended"] = am[r]
@@ -600,8 +623,8 @@ def hydrogen_lines(rows=None):
             # THE HYDROGEN LIST CARRIES A STATUS AND NO YEAR, so hydrogen's target year
             # is the owner's or nothing. The row is looked up rather than rescored:
             # hydrogen.csv is read here, not recomputed (see this function's docstring).
-            n["target_year"], n["target_year_source"] = target_year_of(
-                {"list_claims": []}, rows.get(l["row_id"]) if l["row_id"] else None)
+            n.update(target_year_columns(
+                {"list_claims": []}, rows.get(l["row_id"]) if l["row_id"] else None))
             # `unread` is a register class in the hydrogen table and a cell state
             # here; both mean the same thing and the scored flag reads either.
             n["scored"] = "false" if (n["register_class"] in lp.NOT_SCORED
@@ -810,6 +833,9 @@ def summarise(lines, parts):
     # chart — and the two infrastructure sectors are out because their lists status a
     # pipeline and a reservoir rather than a plant.
     FID_VS_LIST = ("hydrogen", "cement", "steel")
+    BUILT_OR_BUILDING = {"hydrogen": ("FID/Construction",),
+                         "cement": ("Under construction", "Operational"),
+                         "steel": ("Construction", "Operating")}
     out["cross_tabs"] = {
         "_comment": [
             "FIVE PAIRS, computed from sources/ladder/all.csv over SCORED lines only.",
@@ -869,6 +895,33 @@ def summarise(lines, parts):
                 "batteries": "all 57 scored lines carry no list status — the benchmark "
                              "is a chart with no status column",
                 "transport and storage": "an infrastructure list, not a plant list"},
+            # THE COMBINED LINE THE PAPER QUOTES. Five stage values across the three
+            # sectors say the list believes the thing is being built or is running —
+            # hydrogen FID/Construction, cement Under construction and Operational,
+            # steel Construction and Operating — and rung 3 asks whether the owner has
+            # said the decision was taken. `Finalized (research & testing)` is NOT in it:
+            # a finished pilot is not a works under construction, and folding it in would
+            # move the line without saying so.
+            "built_or_building_vs_owner_fid": {
+                "stages": {"hydrogen": ["FID/Construction"],
+                           "cement": ["Under construction", "Operational"],
+                           "steel": ["Construction", "Operating"]},
+                "lines": sum(1 for l in lines if l["scored"] == "true"
+                             and l["sector"] in FID_VS_LIST
+                             and l["list_status"] in BUILT_OR_BUILDING.get(l["sector"], ())),
+                "owner_fid_pass": sum(1 for l in lines if l["scored"] == "true"
+                                      and l["sector"] in FID_VS_LIST
+                                      and l["list_status"] in BUILT_OR_BUILDING.get(l["sector"], ())
+                                      and l["fid_result"] == "pass"),
+                "per_sector": {s2: {
+                    "lines": sum(1 for l in lines if l["scored"] == "true"
+                                 and l["sector"] == s2
+                                 and l["list_status"] in BUILT_OR_BUILDING.get(s2, ())),
+                    "owner_fid_pass": sum(1 for l in lines if l["scored"] == "true"
+                                          and l["sector"] == s2
+                                          and l["list_status"] in BUILT_OR_BUILDING.get(s2, ())
+                                          and l["fid_result"] == "pass")}
+                    for s2 in FID_VS_LIST}},
             "table": {s2: {ls: dict(Counter(
                 l["fid_result"] for l in lines
                 if l["sector"] == s2 and l["scored"] == "true"
@@ -944,6 +997,39 @@ def summarise(lines, parts):
             l["target_year_source"].split(":")[0] for l in _scored())),
         "bands": {b: _six([l for l in _scored() if target_band(l["target_year"]) == b])
                   for b in BANDS}}
+    # AND THE PRODUCING LAYER ON ITS OWN, WHICH IS WHAT THE PAPER REPORTS. A pipeline
+    # and a reservoir answer rung 2 six times in 102 and rung 5 twice; averaging them
+    # into a statement about plants describes neither, which is the ruling `layers`
+    # already rests on. Both versions are in the file so the difference is legible.
+    prod = [l for l in _scored() if l["layer"] == "producing"]
+    year_tabs["producing_layer"] = {
+        "_comment": ("the paper's version: hydrogen, batteries, cement and steel, "
+                     "without the two infrastructure sectors"),
+        "sectors": [x for x in SECTORS if lp.LAYER[x] == "producing"],
+        "source_split": dict(Counter(
+            l["target_year_source"].split(":")[0] for l in prod)),
+        "bands": {b: _six([l for l in prod if target_band(l["target_year"]) == b])
+                  for b in BANDS}}
+    # THE TWO SPEAKERS DISAGREEING BY MORE THAN A YEAR, computed and named. A year is
+    # not a claim about confirmation, so this moves no rung; it is the kind of thing the
+    # register exists to make visible, and it is a count with row ids rather than a
+    # sentence about batteries. The rows' own `disagreements` blocks wait for a reading
+    # pass — each needs the speaker's sentence — and that is queued as L15.
+    gaps = [(l, year_gap(l)) for l in _scored()]
+    year_tabs["owner_versus_list"] = {
+        "_comment": [
+            "OVER SCORED LINES WHERE BOTH THE OWNER AND THE LIST PUBLISH A YEAR.",
+            "`disagree_by_more_than_a_year` is the brief's threshold; the rows are named "
+            "so a reader can go to them, and the two years are printed with each.",
+            "NOT WRITTEN ONTO THE ROWS: a disagreement on this layer carries each "
+            "speaker's own sentence, which is a reading and not a computation (L15)."],
+        "both_publish_a_year": sum(1 for _l, g in gaps if g is not None),
+        "agree_within_a_year": sum(1 for _l, g in gaps if g is not None and g <= 1),
+        "disagree_by_more_than_a_year": sum(1 for _l, g in gaps if g is not None and g > 1),
+        "rows": sorted(
+            f"{l['key']} ({l['sector']}): owner {l['target_year_owner']} vs list "
+            f"{l['target_year_list']}, {int(l['target_year_owner']) - int(l['target_year_list']):+d} years"
+            for l, g in gaps if g is not None and g > 1)}
 
     # 3 — BY OWNER TYPE, and the coverage is the first number in it. `owner_listing` is
     # read off the `owners` list (scope.md) and is populated on 22 of 205 projects, so
@@ -963,7 +1049,11 @@ def summarise(lines, parts):
             "COVERAGE IS THE POINT AND IT IS SMALL: `owner_listing` is set on 22 of 205 "
             "projects. `not read` is a line whose row carries no listing — a gap in "
             "this register's reading, not a fact about the owner — and `no row` is a "
-            "census entry with no register row at all."],
+            "census entry with no register row at all.",
+            "THIS TABLE DOES NOT ENTER THE PAPER until the L13 listing pass fills the "
+            "field from a source rule. Ruled 27 September 2026. It stays here because a "
+            "table computed over 22 of 205 rows is worth having and worth labelling, and "
+            "because the number it reports is the coverage."],
         "coverage": {"projects_with_owner_listing": sum(1 for v in owner_listing.values() if v),
                      "projects": len(owner_listing),
                      "scored_lines_covered": sum(len(v) for k, v in by_owner.items()
