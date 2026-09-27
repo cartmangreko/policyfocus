@@ -28,8 +28,8 @@
     "2": 45,
     "3": 10,
     "4": 5,
-    "5": 6,
-    "6": 4
+    "5": 7,
+    "6": 3
    },
    "per_rung": {
     "site": {
@@ -61,11 +61,11 @@
      "pass_rate_of_scored": 0.117
     },
     "start": {
-     "pass": 15,
-     "fail": 156,
+     "pass": 14,
+     "fail": 157,
      "not_searched": 0,
      "unread": 0,
-     "pass_rate_of_scored": 0.088
+     "pass_rate_of_scored": 0.082
     },
     "input": {
      "pass": 7,
@@ -97,7 +97,7 @@
      "pass": 20
     },
     "start": {
-     "pass": 15
+     "pass": 14
     },
     "input": {
      "pass": 7
@@ -120,7 +120,7 @@
      "owner": 2
     },
     "start": {
-     "owner": 15
+     "owner": 14
     },
     "input": {
      "owner": 7
@@ -748,7 +748,7 @@
    },
    "start": {
     "hydrogen": {
-     "pass": 15,
+     "pass": 14,
      "of_scored": 171
     },
     "batteries": {
@@ -823,8 +823,8 @@
     "2": 75,
     "3": 36,
     "4": 17,
-    "5": 15,
-    "6": 5
+    "5": 16,
+    "6": 4
    }
   },
   "funding_pass_without_fid_pass": {
@@ -879,12 +879,12 @@
   "site_capacity_fid_start": {
    "_comment": "the same three plus a start date the owner has put a precision on",
    "count": {
-    "hydrogen": 11,
+    "hydrogen": 10,
     "batteries": 12,
     "cement": 2,
     "transport and storage": 0,
     "steel": 3,
-    "all_sectors": 28
+    "all_sectors": 27
    }
   },
   "list_status_vs_owner_fid": {
@@ -1165,7 +1165,7 @@
       "capacity": 8,
       "fid": 7,
       "funding": 6,
-      "start": 7,
+      "start": 6,
       "input": 3
      }
     }
@@ -1174,18 +1174,18 @@
   "checks_by_target_year": {
    "hydrogen": {
     "source_split": {
-     "none": 156,
-     "owner": 15
+     "none": 157,
+     "owner": 14
     },
     "bands": {
      "up to 2027": {
-      "lines": 12,
-      "site": 12,
-      "capacity": 12,
-      "fid": 9,
-      "funding": 9,
-      "start": 12,
-      "input": 5
+      "lines": 11,
+      "site": 11,
+      "capacity": 11,
+      "fid": 8,
+      "funding": 8,
+      "start": 11,
+      "input": 4
      },
      "2028-2030": {
       "lines": 3,
@@ -1206,13 +1206,13 @@
       "input": 0
      },
      "no stated year": {
-      "lines": 156,
-      "site": 101,
-      "capacity": 61,
-      "fid": 2,
-      "funding": 9,
+      "lines": 157,
+      "site": 102,
+      "capacity": 62,
+      "fid": 3,
+      "funding": 10,
       "start": 0,
-      "input": 2
+      "input": 3
      }
     }
    },
@@ -1224,21 +1224,21 @@
     },
     "bands": {
      "up to 2027": {
-      "lines": 19,
-      "site": 14,
-      "capacity": 13,
-      "fid": 9,
+      "lines": 20,
+      "site": 15,
+      "capacity": 14,
+      "fid": 10,
       "funding": 5,
-      "start": 11,
+      "start": 12,
       "input": 1
      },
      "2028-2030": {
-      "lines": 8,
-      "site": 4,
-      "capacity": 3,
-      "fid": 3,
+      "lines": 7,
+      "site": 3,
+      "capacity": 2,
+      "fid": 2,
       "funding": 0,
-      "start": 3,
+      "start": 2,
       "input": 0
      },
      "after 2030": {
@@ -1395,8 +1395,8 @@
    },
    "all_sectors": {
     "source_split": {
-     "none": 339,
-     "owner": 33,
+     "none": 340,
+     "owner": 32,
      "list": 49
     },
     "bands": {
@@ -1405,17 +1405,17 @@
       "site": 45,
       "capacity": 35,
       "fid": 27,
-      "funding": 16,
+      "funding": 15,
       "start": 27,
-      "input": 12
+      "input": 11
      },
      "2028-2030": {
-      "lines": 27,
-      "site": 22,
-      "capacity": 12,
-      "fid": 7,
+      "lines": 26,
+      "site": 21,
+      "capacity": 11,
+      "fid": 6,
       "funding": 6,
-      "start": 10,
+      "start": 9,
       "input": 0
      },
      "after 2030": {
@@ -1428,13 +1428,13 @@
       "input": 0
      },
      "no stated year": {
-      "lines": 339,
-      "site": 237,
-      "capacity": 95,
-      "fid": 18,
-      "funding": 26,
+      "lines": 340,
+      "site": 238,
+      "capacity": 96,
+      "fid": 19,
+      "funding": 27,
       "start": 8,
-      "input": 7
+      "input": 8
      }
     }
    },
@@ -1447,8 +1447,8 @@
      "steel"
     ],
     "source_split": {
-     "none": 237,
-     "owner": 33,
+     "none": 238,
+     "owner": 32,
      "list": 49
     },
     "bands": {
@@ -1457,17 +1457,17 @@
       "site": 45,
       "capacity": 35,
       "fid": 27,
-      "funding": 16,
+      "funding": 15,
       "start": 27,
-      "input": 12
+      "input": 11
      },
      "2028-2030": {
-      "lines": 27,
-      "site": 22,
-      "capacity": 12,
-      "fid": 7,
+      "lines": 26,
+      "site": 21,
+      "capacity": 11,
+      "fid": 6,
       "funding": 6,
-      "start": 10,
+      "start": 9,
       "input": 0
      },
      "after 2030": {
@@ -1480,13 +1480,13 @@
       "input": 0
      },
      "no stated year": {
-      "lines": 237,
-      "site": 156,
-      "capacity": 89,
-      "fid": 16,
-      "funding": 22,
+      "lines": 238,
+      "site": 157,
+      "capacity": 90,
+      "fid": 17,
+      "funding": 23,
       "start": 6,
-      "input": 6
+      "input": 7
      }
     }
    },
@@ -1497,11 +1497,10 @@
      "NOT WRITTEN ONTO THE ROWS: a disagreement on this layer carries each speaker's own sentence, which is a reading and not a computation (L15)."
     ],
     "both_publish_a_year": 10,
-    "agree_within_a_year": 7,
-    "disagree_by_more_than_a_year": 3,
+    "agree_within_a_year": 8,
+    "disagree_by_more_than_a_year": 2,
     "rows": [
      "row:acc-billy-berclau (batteries): owner 2023 vs list 2030, -7 years",
-     "row:envision-aesc-extremadura (batteries): owner 2028 vs list 2025, +3 years",
      "row:verkor-dunkirk (batteries): owner 2026 vs list 2030, -4 years"
     ]
    }
@@ -1524,7 +1523,7 @@
      "capacity": 12,
      "fid": 9,
      "funding": 7,
-     "start": 10,
+     "start": 9,
      "input": 5
     },
     "mixed": {
@@ -1601,9 +1600,7 @@
      "funder": 48
     },
     "start": {
-     "owner": 43,
-     "funder": 1,
-     "host_government": 1
+     "owner": 44
     },
     "input": {
      "supplier": 19
@@ -1674,9 +1671,9 @@
      "pass_rate_of_scored": 0.138
     },
     "start": {
-     "pass": 43,
+     "pass": 42,
      "of_scored": 319,
-     "pass_rate_of_scored": 0.135
+     "pass_rate_of_scored": 0.132
     },
     "input": {
      "pass": 18,

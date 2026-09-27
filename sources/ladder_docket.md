@@ -666,3 +666,44 @@ was visible in the rules: D-A28 as a queue line printed on every build, D-A29 as
 pass and a rung 5 fail on the same sentence. The queue and the cross-tabs exist to make
 that kind of disagreement loud, and `all_summary.json` now carries five more pairs for the
 same reason.
+
+### Ruling of 27 September 2026 — the frozen speaker rule, applied to rung 5's other half
+
+**D-A30. THE OWNER HAS TO BE THE ONE STATING THE START, AND TWO PASSES WERE NOT.** The
+frozen test reads *"the owner states a production or operation start with a date
+precision"*. `score_row` read the newest dated start milestone **whoever had stated it**,
+so `row:galp-sines-electrolyser` passed rung 5 on the EIB's press release at speaker `eu`,
+and `row:envision-aesc-extremadura` on the Junta de Extremadura's timetable reaching this
+register through a regional newspaper at `host_government`. **This is the frozen test
+applied, not changed** — and it is the same test D-A29 already uses on the other half of
+the rung, `source_type == "company"`, so the two halves now ask the same question.
+
+**IT REPOINTS MORE OFTEN THAN IT FAILS, which is why the test goes inside the candidate
+list and not on the winner.** Envision has TWO dated starts: AESC's own first-stone
+release saying 2026, and the Junta's 2028-12 eighteen months later. The newest is not the
+owner's and the owner's was on file all along, so **that row keeps rung 5** and changes the
+document and the year under it. Of 33 rung 5 passes that rest on a schedule, 31 were
+already the owner's own.
+
+**SO ONE LINE LOSES A RUNG.** Galp Sines, whose only dated start is the EIB's, goes from
+6 rungs to 5 — the only 6 in hydrogen, so hydrogen's distribution moves one line from 6 to
+5 and the producing layer's from `6:5` to `6:4`. Rung 5: hydrogen 15 → 14, the producing
+layer 43/319 → 42/319. `site+capacity+FID+start` 28 → 27. The who-confirms table for
+rung 5 becomes `owner: 44` with no `funder` and no `host_government` in it, which is what
+the rung says it is.
+
+**AND THE SAME TEST BELONGED IN THE COLUMN, which is the second half of this ruling.**
+`target_year_owner` was reading the Junta's 2028-12 for Envision for exactly the same
+reason — newest wins — so a column named for a speaker held somebody else's number. It now
+takes the owner's own statements only. Two consequences, both of them in the summary:
+Envision's stated owner year moves 2028 → 2026, and **the owner-versus-list disagreements
+fall from 3 to 2** — Envision at 2026 against the list's 2025 is inside the one-year
+threshold, so L15's reading pass is over acc-billy-berclau and verkor-dunkirk. Galp's
+`target_year` becomes `no stated year`, because hydrogen's list publishes no year and its
+owner now states none on file.
+
+**WHAT FOUND IT WAS THE TYPED COLUMN, which is the argument for having added it.** The
+stage-year brief's `speaker_type` was derived from the speaker and the source rather than
+from the note, and the first thing it printed was two rung 5 passes whose speaker was not
+the owner. No rung definition changed to catch them; a column that said out loud who was
+speaking did.

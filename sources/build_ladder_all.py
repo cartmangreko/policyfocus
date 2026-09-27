@@ -343,16 +343,24 @@ def _year_of(v) -> str:
 def owner_target_year(row) -> tuple[str, str]:
     """(year, source) from the row's own stated_schedule, or ('', '').
 
-    THE START MILESTONES ARE build_ladder's, so the column and rung 5 read the same
-    field: production_start, commissioning, operation_start. `fid_target` is not a
-    start. The newest statement wins, and the precision the owner gave is carried in
-    the source string rather than dropped — a 2029 at `year` and a 2029-06 at `month`
-    are both the year 2029 and the column says which it was.
+    THE START MILESTONES ARE build_ladder's AND SO IS THE SPEAKER TEST, so the column
+    and rung 5 read the same field on the same terms: production_start, commissioning or
+    operation_start, dated, and stated in the OWNER'S OWN DOCUMENT. `fid_target` is not a
+    start. The newest such statement wins, and the precision the owner gave is carried in
+    the source string rather than dropped — a 2029 at `year` and a 2029-06 at `month` are
+    both the year 2029 and the column says which it was.
+
+    D-A30 PUT THE SPEAKER TEST HERE TOO, and Envision at Navalmoral de la Mata is why: a
+    column called `target_year_owner` was reading the Junta de Extremadura's 2028-12
+    timetable out of a regional newspaper, because that statement is the newest. AESC's
+    own release saying 2026 was on file all along. A column named for a speaker must hold
+    that speaker's number or it is worse than no column.
     """
     if row is None:
         return "", ""
     cands = [x for x in (row.get("stated_schedule") or [])
-             if x.get("milestone") in L.START_MILESTONES and _year_of(x.get("target_date"))]
+             if x.get("milestone") in L.START_MILESTONES and _year_of(x.get("target_date"))
+             and x.get("source_type") == "company"]
     if not cands:
         return "", ""
     best = L.newest(cands) or cands[0]
