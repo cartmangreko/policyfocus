@@ -432,10 +432,32 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None,
             out["funding"] = cell("fail", base_id, "owner", base_date, base_prec, note,
                                   searched=False)
 
-    # RUNG 5, START DATE, WITH A PRECISION.
+    # RUNG 5, START DATE, WITH A PRECISION — AND THE OWNER HAS TO BE THE ONE STATING IT.
+    #
+    # D-A30, ruled 27 September 2026, and it is the frozen test applied rather than
+    # changed: "the OWNER states a production or operation start with a date precision".
+    # This scorer read the newest dated start milestone whoever had stated it, so two
+    # passes rested on somebody else — `row:galp-sines-electrolyser` on the EIB's press
+    # release at speaker `eu`, and `row:envision-aesc-extremadura` on the Junta de
+    # Extremadura's timetable reaching us through a regional newspaper at
+    # `host_government`. Found by the typed `speaker_type` column of the stage-year
+    # brief, which is what that column was added to do.
+    #
+    # THE SAME TEST D-A29 USES ON THE OTHER HALF OF THIS RUNG: `source_type == "company"`,
+    # the owner's own document. A wire release and a grant register are not it, and a
+    # newspaper is not it either — the press-quoted amendment is where a title carrying
+    # the company's own words is read, and it runs over every cell already.
+    #
+    # AND IT REPOINTS MORE OFTEN THAN IT FAILS, which is why the filter goes inside the
+    # candidate list rather than on the winner. Envision has TWO dated starts: AESC's own
+    # first-stone release saying 2026, and the Junta's 2028-12 eighteen months later. The
+    # newest is not the owner's; the owner's is still on file. So that row keeps rung 5
+    # and changes the document and the year it rests on, and only Galp Sines — whose only
+    # dated start is the EIB's — loses the rung.
     st = newest([s for s in (row.get("stated_schedule") or [])
                  if s.get("milestone") in START_MILESTONES
-                 and s.get("target_date") and s.get("target_precision")])
+                 and s.get("target_date") and s.get("target_precision")
+                 and s.get("source_type") == "company"])
     # AND A PLANT THE OWNER SAYS IS OPERATING HAS STARTED. Ruled 26 September 2026,
     # D-A29, on Brevik: Heidelberg Materials' own release of 18 June 2025 says the
     # capture plant is operating, the row carries it as a status event, and rung 5 was
