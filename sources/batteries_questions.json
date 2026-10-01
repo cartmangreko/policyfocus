@@ -12,7 +12,14 @@
     "",
     "ALL FIVE WERE RULED ON 13 SEPTEMBER 2026 and each carries `ruling` and `ruled` below.",
     "The questions are kept rather than deleted: a class that moved needs the reason it moved",
-    "to be readable beside the reason it was first filed."
+    "to be readable beside the reason it was first filed.",
+    "",
+    "Q6 AND Q7 WERE RAISED ON 1 OCTOBER 2026 AND ARE UNRULED, so the line above about all",
+    "five being ruled describes Q1–Q5 only. Both came out of reading the Internet Archive",
+    "capture of the Morrow bankruptcy report, filed because energy-storage.news now refuses",
+    "a declared reader (PR #87). Q6 is a census correction; Q7 is a defect in check_links.",
+    "Neither is acted on here and NEITHER CHANGED ANY GATE: the 21 September moratorium holds",
+    "Neither is acted on here and NEITHER CHANGED ANY GATE: the 21 September moratorium holds and the entries are held as written until ruled. Q8 joins them on 1 October, from the same push: build_maps' eight status-vs-later-source warnings on six batteries rows."
   ],
   "sector": "batsol",
   "raised": "2026-09-12",
@@ -84,6 +91,184 @@
       "what_a_rule_would_need_to_say": "Whether the gap table's population is the list's rows or the works behind them — and, if the latter, how a capacity stated once for two works is handled, given this register does not apportion figures.",
       "ruling": "ONE LIST ENTRY, TWO WORKS HERE. The benchmark reference is recorded on BOTH rows, the entry is counted ONCE as held, and the list's 47.3 GWh stays on the list side as its claim — nothing here splits it. The reference debt stands as written.",
       "ruled": "2026-09-13"
+    },
+    {
+      "id": "Q6-morrow-stop-reasons-undercounted",
+      "raised": "2026-10-01",
+      "entries": [
+        "row:morrow-arendal"
+      ],
+      "kind": "census correction",
+      "source_sentence": "Morrow gave four reasons for the bankruptcy: competition in the global battery market has intensified and brought prices down / capital costs have increased / there have been delays in its industrialisation process / the investment market has become more restrained",
+      "the_question": "The row's stop_reason_note says two of Morrow's four reasons are off the file because the fetch did not carry them. The capture carries all four. Does the note get corrected, and does stop_reason grow past ['finance', 'cost']?",
+      "the_four_reasons_as_captured": [
+        "competition in the global battery market has intensified and brought prices down",
+        "capital costs have increased",
+        "there have been delays in its industrialisation process",
+        "the investment market has become more restrained"
+      ],
+      "the_notes_current_text": "'it was not possible to complete the process of securing a new industrial investor and financing the group in light of constraints imposed by the group's liquidity situation'. The report says the company gave FOUR reasons and quotes one of them, 'capital costs have increased'; that is the second value here, and the other two are not on this file because the fetch did not carry them.",
+      "stop_reason_as_recorded": [
+        "finance",
+        "cost"
+      ],
+      "why_the_note_was_right_when_written": "The live fetch of 2026-09-11 hit the premium interstitial, which sits between the third paragraph and the reason list. The note is an honest record of what that body carried. The capture of 2026-09-12 carries the list in full, so this is a better copy of the same document rather than a different document — and it is the copy the row now cites.",
+      "the_notes_own_arithmetic_does_not_add_up_either": "It says the company gave FOUR reasons, quotes ONE, and calls the remainder the other TWO. Four minus one is three. Whatever the ruling on the reasons, that sentence is wrong as written.",
+      "reading_taken": "NONE, and deliberately. The row is held exactly as it stands: the note, the verbatim and stop_reason are untouched by PR #87, which swapped the URL and the citation dateline and nothing else. Changing a reason vocabulary mid-pass is what the 21 September moratorium forbids.",
+      "what_a_rule_would_need_to_say": "Whether stop_reason takes a value per reason the company states — which would add a market or demand value for the first and fourth, and a schedule value for the third, if those exist in the vocabulary — or whether it stays the two-value summary it is and only the note is corrected. The second is the smaller change and leaves the cross-sector counts alone; the first makes the row say what the company said. They are not the same question as fixing the arithmetic, which is wrong either way."
+    },
+    {
+      "id": "Q7-link-gate-blind-to-an-unreachable-archive",
+      "raised": "2026-10-01",
+      "entries": [
+        "sources/check_links.py"
+      ],
+      "kind": "gate defect",
+      "source_sentence": "26 of the 384 live-checked URLs are on web.archive.org, and a sweep that cannot reach the host reports every one of them as 'reported, not failed' and exits 0.",
+      "the_question": "A sweep that cannot reach web.archive.org passes without checking any archive URL. Should an unreachable host be a silence the gate refuses rather than a soft report?",
+      "counts_on_file_at_2026-10-01": {
+        "live_checked_urls": 384,
+        "of_which_web_archive_org": 26,
+        "archived_entries_never_network_checked": 32,
+        "distinct_archive_urls_behind_those": 27,
+        "dead_since_entries": 0
+      },
+      "how_it_was_found": "Three check_links sweeps in one afternoon, plus the fetches behind PR #87, got this machine rate-limited by web.archive.org. All 26 archive URLs then returned URLError errno 61, connection refused. status_of raises OSError, the caller files it in `soft`, and the gate printed 'reported, not failed' and exited 0 — including for the one URL that pull request had just added and whose whole purpose was to be checkable. The same 26 answered 200 through the gate's own client once the limit expired, so nothing was wrong with any of them.",
+      "why_this_is_the_shape_the_repository_already_refuses": "It is D-S1's shape one layer out. There the index recorded a fetch that had happened and returned nothing, and twenty works looked searched. Here the gate records a check that could not happen and 26 citations look checked. check_fetch_records draws exactly this line for fetches — a publisher refusal is an answer, a client-side failure is not — and check_links does not draw it for sweeps.",
+      "why_a_soft_report_is_nevertheless_defensible": "A contributor on a bad connection is still entitled to push, which is why OSError is soft in the first place. A gate that fails on any network hiccup is a gate that gets switched off, and that reasoning is written into this repository in several places.",
+      "what_a_rule_would_need_to_say": "Where the line sits between a flaky URL and an unreachable HOST. One shape: count the unreachable per host, and fail when every URL on a host is unreachable while other hosts answer — which separates 'the network is down' from 'this one host is refusing us', and would have failed the afternoon described above while still passing on a single timeout. A rate limit is also not a refusal of the resource, which is the distinction the 429 branch already makes by asking twice; errno 61 arguably deserves the same second ask.",
+      "not_done_here": "check_links is NOT changed by PR #87 and must not be. The gate is being ruled on, not amended, and the branch that found the defect is the wrong branch to fix it in."
+    },
+    {
+      "id": "Q8-status-against-a-later-source",
+      "raised": "2026-10-01",
+      "entries": [
+        "row:acc-kaiserslautern",
+        "row:svolt-uberherrn",
+        "row:novo-energy-gothenburg",
+        "row:britishvolt-blyth",
+        "row:svolt-lauchhammer",
+        "row:farasis-bitterfeld"
+      ],
+      "kind": "census pass",
+      "source_sentence": "build_maps: check the status — acc-kaiserslautern is cancelled as of 2026-02-07, and carries a later source (2026-09-07, Automotive Cells Company: \"Kaiserslautern — ACC is actively preparing for its deployment in Germany\") that its status has not been read against — the split now decides whether it is drawn",
+      "the_question": "Eight warnings on six rows: a cancelled or paused row carrying a source dated after the status event, which nothing has read the status against. Is each a status to re-read, or is the warning asking a question the dates cannot answer?",
+      "how_it_surfaced": "Printed by build_maps on the pre-push chain of PR #87, which touches none of these rows. Reported, not failed, and pre-existing. Recorded here rather than acted on because the branch that saw them is the Morrow 403 branch.",
+      "the_eight_warnings_by_row": [
+        {
+          "row": "acc-kaiserslautern",
+          "status": "cancelled",
+          "status_date": "2026-02-07",
+          "status_speaker": "press (CNBC, carrying ACC's own statement to unions)",
+          "later_sources": [
+            {
+              "date": "2026-02-09",
+              "speaker": "Evertiq",
+              "speaker_type": "press",
+              "title": "ACC shelves Termoli gigafactory – unions push for mechanical production",
+              "reads_against_the_status": "no — it corroborates the shelving"
+            },
+            {
+              "date": "2026-09-07",
+              "speaker": "Automotive Cells Company",
+              "speaker_type": "company",
+              "title": "Kaiserslautern — ACC is actively preparing for its deployment in Germany",
+              "quoted": "Operation should start in 2025 with an initial capacity of 13,4GWh that will ultimately ramp-up to 40 GWh.",
+              "reads_against_the_status": "YES, AND IT IS THE ONLY ONE OF THE EIGHT THAT DOES. The owner's own site, in September 2026, still says it is actively preparing a site the owner abandoned in February 2026, and still promises a start in a year already past.",
+              "but": "THE PAGE CARRIES NO DATE, on the page or in its markup, and 2026-09-07 is the RETRIEVAL date — the row says so. So it is later by when somebody fetched it, not by anything the company dated. An undated evergreen page is not a new statement about status; it is an old page nobody took down."
+            }
+          ],
+          "what_the_row_already_says": "The row records the tension in the open, in the stated_schedule note: 'the register reads, in September 2026, a company page still promising a 2025 start for a project the company abandoned in February 2026 — the statement is recorded as found, not corrected.' So this warning is not news to the row. The question is whether the register should go further than recording it."
+        },
+        {
+          "row": "svolt-uberherrn",
+          "status": "cancelled",
+          "status_date": "2026-05-07",
+          "status_speaker": "permit",
+          "later_sources": [
+            {
+              "date": "2026-09-05",
+              "speaker": "Landesamt für Vermessung, Geoinformation und Landentwicklung Saarland",
+              "speaker_type": "register (cadastre)",
+              "title": "INSPIRE-WFS SL Flurstücke Grundstücke ALKIS",
+              "reads_against_the_status": "no, and it cannot. It is the cadastral WFS capabilities document cited for where the parcels are. A parcel layer says nothing about whether a project is alive, and its 2026-09-05 is the retrieval date."
+            }
+          ],
+          "note": "THIS ROW CARRIES OTHER LATER SOURCES THE WARNING DID NOT NAME — Gemeinde Überherrn on 2026-06-29, and two on 2026-05-08 — all of them the revocation of the site's development plan, which corroborates the cancellation. build_maps appears to warn on the newest source only, which is worth knowing when reading the eight as a set."
+        },
+        {
+          "row": "novo-energy-gothenburg",
+          "status": "paused",
+          "status_date": "2026-01-13",
+          "status_speaker": "company (NOVO Energy AB)",
+          "later_sources": [
+            {
+              "date": "2026-09-07",
+              "speaker": "NOVO Energy AB",
+              "speaker_type": "company",
+              "title": "About us — NOVO Energy",
+              "reads_against_the_status": "not really. It is an 'About us' page cited for capacity — 'a potential annual cell production capacity of up to 50 gigawatt hours' — and it is silent on the pause either way.",
+              "but": "The page carries no date; 2026-09-07 is the retrieval date, as the row says."
+            }
+          ]
+        },
+        {
+          "row": "britishvolt-blyth",
+          "status": "cancelled",
+          "status_date": "2023-01-17",
+          "status_speaker": "official_register",
+          "later_sources": [
+            {
+              "date": "2023-01-19",
+              "speaker": "The Gazette (The London Gazette)",
+              "speaker_type": "official_register",
+              "title": "POWER BY BRITISHVOLT LIMITED — Appointment of Administrators, notice 4260297",
+              "reads_against_the_status": "no — administrators appointed two days after is the cancellation's own paperwork"
+            },
+            {
+              "date": "2026-09-06",
+              "speaker": "Companies House",
+              "speaker_type": "official_register",
+              "title": "Insolvency — POWER BY BRITISHVOLT LIMITED (12381543)",
+              "reads_against_the_status": "no — it carries the ending as well as the beginning: administration 17 January 2023 to 28 October 2024, then a creditors' voluntary liquidation. A dead company is more cancelled, not less.",
+              "but": "2026-09-06 is the retrieval date of a register view, not a new event."
+            }
+          ]
+        },
+        {
+          "row": "svolt-lauchhammer",
+          "status": "cancelled",
+          "status_date": "2024-05-27",
+          "status_speaker": "press (ecomento.de)",
+          "later_sources": [
+            {
+              "date": "2024-05-28",
+              "speaker": "Battery-News.de",
+              "speaker_type": "press",
+              "title": "SVOLT withdraws from Brandenburg battery site",
+              "reads_against_the_status": "no — it is the next day's report of the same withdrawal"
+            }
+          ]
+        },
+        {
+          "row": "farasis-bitterfeld",
+          "status": "paused",
+          "status_date": "2022-05-23",
+          "status_speaker": "press (ecomento.de)",
+          "later_sources": [
+            {
+              "date": "2022-05-24",
+              "speaker": "Elektronik (WEKA Fachmedien)",
+              "speaker_type": "press",
+              "title": "Vorerst keine Batteriezellen-Fabrik in Sachsen-Anhalt",
+              "reads_against_the_status": "no — and its headline is the pause: 'no battery cell factory in Saxony-Anhalt FOR NOW' is the same reading as `paused`."
+            }
+          ]
+        }
+      ],
+      "what_the_eight_actually_are": "SEVEN OF THE EIGHT CORROBORATE THE STATUS OR ARE SILENT ON IT, and three of those are undated pages whose recorded date is the day this register fetched them. Only acc-kaiserslautern's own site reads against its row, and that row already says so in writing. So the warning is ordering dates, not comparing statements — which is all a builder can do without reading, and is why it is a report and not a gate.",
+      "reading_taken": "NONE. No row is touched, by PR #87 or here. Every status stands as recorded.",
+      "what_a_rule_would_need_to_say": "Three things, and they are separable. FIRST, whether a source whose recorded date is a RETRIEVAL date can be 'later' than a status event at all — on these six rows it is what generates three of the eight, and arguably it should never fire, because the comparison wants two datelines and one of them is a fetch. SECOND, whether the warning should name every later source or only the newest: svolt-uberherrn has four and was warned on one. THIRD, and the only one about the register rather than the builder, what a row should do when an owner's own undated page contradicts a status the owner itself announced — record it as found, as acc-kaiserslautern does, or carry an explicit field saying the owner's site has not caught up. The first two would quiet seven of these eight without reading anything."
     }
   ],
   "ruled": "2026-09-13"
