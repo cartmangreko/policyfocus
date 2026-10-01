@@ -987,6 +987,18 @@
    "outcome": "archive capture, 404, empty body; the crawler got 404",
    "crawl_status": "404",
    "note": "browser queue archive pass, te24:SVOLT Finland: the live URL 404, empty body from a capture; queued because every URL in the entry's own records answered nothing: svolt-eu.com 200, empty body; svolt-eu.com/news 404; svolt-eu.com"
+  },
+  {
+   "url": "https://web.archive.org/web/20260912030949/https://www.energy-storage.news/european-ess-battery-company-morrow-files-for-bankruptcy/",
+   "domain": "web.archive.org",
+   "source_type": "press",
+   "date": "2026-09-30",
+   "http": 200,
+   "bytes": 262392,
+   "sha256": "d1b08333e678cc7570951b385437c8aff0c00e13632f05e9a57d4653d947364d",
+   "text_chars": 9045,
+   "outcome": "200, 9045 chars",
+   "note": "D-7 capture of the Energy-Storage.News Morrow bankruptcy report: the live URL now 403s a declared reader. Cited by bottleneck batsol-cell-cost-gap and by project morrow-arendal."
   }
  ]
 }
