@@ -103,6 +103,9 @@ def admission(v: dict, note_field: str = "note") -> dict:
     if not leg and m:
         leg = m.group(1).strip()
     return {"admitted_by": v.get("admitted_by") or "",
+            # D-A32: whose document the census read, typed by hand against the row's
+            # company. `""` where the census recorded no source to type.
+            "source_type": v.get("source_type") or "",
             "source": v.get("source") or "", "speaker": v.get("speaker") or "",
             "verbatim": v.get("verbatim") or "", "failed_leg": leg,
             "municipality": v.get("municipality") or v.get("site") or "",
