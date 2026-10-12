@@ -33,6 +33,16 @@ WHAT IS AND IS NOT A FAILURE
   bot-hostile publisher   reported, not failed, and listed by name below. A CDN
                           blocking a datacentre IP tells us nothing about
                           whether the page exists.
+  404 inside a section
+  that declares itself
+  under maintenance       reported, not failed. A publisher whose own section
+                          index redirects to a maintenance page, or answers 503,
+                          is making a statement about that section; the 404s
+                          inside it are that statement and not a removed page.
+                          Asked of the path the page sits under rather than of
+                          the page, for the same reason the 429 is asked twice,
+                          and it fails again the day the section is back. See
+                          section_in_maintenance.
 
 Requests are sequential and slow on purpose: this is a gate that runs at build,
 against a few dozen URLs, and hammering a trade-press site to save nine seconds
@@ -111,7 +121,86 @@ BOT_HOSTILE = {
     # reaches the page, and it moves to `refused_declared_reader` with a date the
     # moment a person opens it.
     "www.elektroniknet.de",
+    # ADDED 12 OCTOBER 2026, and like the entry above it this is not the
+    # branch's own doing. Two Lyten press releases are cited by the batteries
+    # rows that record the Northvolt acquisitions; both answer HTTP 403 from
+    # CLOUDFLARE, and they answer it to a browser User-Agent exactly as they
+    # answer it to the declared reader. That is a CDN refusing this address, not
+    # a publisher refusing this reader and not a page that has gone -- which is
+    # the case this list is for, and the reason it is this list rather than
+    # `refused_declared_reader`: that state carries the day a PERSON opened the
+    # page, and nobody has opened these. NO ROW WAS EDITED AND NOTHING WAS
+    # RE-READ. They move to the recorded state the moment somebody opens them.
+    "lyten.com",
 }
+
+# A SECTION IN MAINTENANCE IS NOT A PAGE THAT HAS BEEN REMOVED
+# ============================================================
+# A 404 means "gone", and that is why it fails: the sentence a figure walks back
+# to is not there any more. It means something else when the publisher has taken
+# the section down. co2llect.de is the case this was written from: every path
+# under /en/ answers 404, and /en/ ITSELF REDIRECTS to /en/maintenance, while the
+# German root serves normally. The page has not been removed -- its whole
+# language section is being worked on -- and the 404 will stop without anybody
+# editing anything.
+#
+# THIS IS THE 429 RULE APPLIED TO A SECOND CODE. A 429 is reported rather than
+# failed because it is about the request and not the resource, and the way the
+# two are told apart is to ASK AGAIN -- a rate limiter relents, a page that has
+# gone answers the same way all day. Here the second question is asked of the
+# PATH THE PAGE SITS UNDER instead of the page: if the section announces
+# maintenance, the 404s inside it are that announcement.
+#
+# IT WALKS UP, which is what makes it work on a site that is only partly down.
+# /en/project/ asks /en/ and then /, and stops at the first answer. A whole-host
+# outage is the case where the last step answers; co2llect is the case where the
+# first one does, and asking only the root would have missed it.
+#
+# NARROW, EVIDENCED AND SELF-CLEARING, which is what keeps it from becoming a
+# way of passing dead links. It fires only on an explicit statement by the
+# publisher about itself -- a redirect to a path saying maintenance, or a 503 --
+# never on a guess from a body; it is REPORTED rather than silent, with the
+# evidence printed; and the day the section comes back a genuinely dead page
+# fails again. At most a handful of extra requests, and only for a URL that has
+# already 404ed.
+MAINTENANCE_MARKERS = ("maintenance", "wartung", "under-construction", "under-maintenance")
+_section_state: dict[str, str | None] = {}
+
+
+def _probe_section(url: str) -> str | None:
+    """One ancestor path's own statement about itself, or None."""
+    if url in _section_state:
+        return _section_state[url]
+    verdict: str | None = None
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    try:
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+            landed = r.geturl()
+            if any(m in landed.lower() for m in MAINTENANCE_MARKERS):
+                verdict = f"{url} redirects to {landed}"
+    except urllib.error.HTTPError as exc:
+        if exc.code == 503:
+            verdict = f"{url} answers HTTP 503"
+    except OSError:
+        verdict = None
+    _section_state[url] = verdict
+    return verdict
+
+
+def section_in_maintenance(url: str) -> str | None:
+    """The publisher's own statement that the section this URL sits in is down,
+    or None. Returns the EVIDENCE rather than a boolean, because a downgrade
+    from a failure to a report has to be able to say what it rests on."""
+    parts = urlparse(url)
+    segments = [p for p in parts.path.split("/") if p]
+    # The immediate parent first, then outwards to the root.
+    for cut in range(len(segments) - 1, -1, -1):
+        prefix = "/".join(segments[:cut])
+        ancestor = f"{parts.scheme}://{parts.netloc}/" + (f"{prefix}/" if prefix else "")
+        verdict = _probe_section(ancestor)
+        if verdict:
+            return verdict
+    return None
 
 # THE RECORDED STATE FOR A PUBLISHER THAT REFUSES A DECLARED READER
 # =================================================================
@@ -275,7 +364,17 @@ def main() -> int:
             elif code >= 500:
                 soft.append(f"{url} — HTTP {code} (after a 429)")
         elif 400 <= code < 500:
-            dead.append(f"{url} — HTTP {code}  ({seen[url]})")
+            # THE SITE IS ASKED BEFORE THE PAGE IS DECLARED GONE. See
+            # site_in_maintenance: a publisher that has taken its whole site
+            # down is making a statement about itself, and the 404s underneath
+            # it are that statement rather than a removed page.
+            why = section_in_maintenance(url) if code == 404 else None
+            if why:
+                soft.append(f"{url} — HTTP 404, and {why}. A section that declares "
+                            f"itself under maintenance has not removed the page; this "
+                            f"fails again the day it is back  ({seen[url]})")
+            else:
+                dead.append(f"{url} — HTTP {code}  ({seen[url]})")
         elif code >= 500:
             soft.append(f"{url} — HTTP {code}")
 

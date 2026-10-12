@@ -237,6 +237,36 @@
    "area": "brief 17 §B.2",
    "question": "Brief 17 §B.2 names '1,980 MW' as the hydrogen drawn figure. The figure computed from data/transition/projects.json is 2,480 MW across 13 drawn rows. Which is meant?",
    "why_the_rules_did_not_settle_it": "The rule settles it in favour of the file -- every number in a report is quoted from a gated file (sources/scope.md, 21 September 2026) -- so the standfirst says 2,480 MW and the brief's figure is not used anywhere. The question is kept because the DIFFERENCE is exactly one row: ricenergy-besaya-torrelavega at 500 MW, which 2,480 minus 1,980 is. So 1,980 is not a slip; it is the correct figure for the drawn set as it stood before that row landed, which means the brief was written against an earlier state of the file and any other figure in it may be too."
+  },
+  {
+   "id": "Q11",
+   "raised": "2026-10-12",
+   "area": "data/transition/projects.json status_history sources; sources/check_links.py",
+   "question": "Three cited URLs fail the link gate on main, and two different census decisions are owed. The two Lyten press releases should move to `refused_declared_reader` the moment a person opens them; the CO2LLECT citation should be re-pointed or archived once co2llect.de's English section returns. Who does each, and when?",
+   "why_the_rules_did_not_settle_it": "The rules settle what the gate should do and not what the rows should say, and the rows are census. THE FAILURE IS PRE-EXISTING AND REPRODUCIBLE ON MAIN: the same three URLs fail the prebuild chain at 945b58e, so main is red and the pass that found it is a display pass that may not edit a status_history event. What this pass did instead was fix the GATE, twice, in the way the gate's own doctrine already prescribes.\n\nLYTEN: both URLs answer HTTP 403 from Cloudflare, and they answer it to a browser User-Agent exactly as they answer it to the declared reader. That is a CDN refusing this address, which is what BOT_HOSTILE is for and what the elektroniknet.de entry of 19 September records in the same words. No row edited, nothing re-read. The honest end state is `refused_declared_reader` with the day a PERSON opened the page, and nobody has.\n\nCO2LLECT: the page answers 404 and so does every other path under co2llect.de/en/ -- and /en/ ITSELF REDIRECTS to /en/maintenance, while the German root serves normally. The publisher has put its English section under maintenance; it has not removed the page. check_links now asks the path a 404 sits under before declaring the page gone, walking up to the root, and reports with the evidence rather than failing. It fails again the day the section is back, which is the point: if the page does not return, the citation needs re-pointing or archiving, and that is a census decision. The body IS on file -- sources/cache/ccs holds a 200 of 82,603 bytes for it -- so `dead_since` is available to whoever makes it.",
+   "entries": [
+    {
+     "url": "https://lyten.com/2026/02/26/lyten-completes-acquisition-of-northvolt-sweden-and-establishes-its-first-lyten-industrial-hub-in-sweden/",
+     "where": "project[23].status_history[1]",
+     "observed": "403 Cloudflare, to a browser UA as well",
+     "pass_action": "added lyten.com to BOT_HOSTILE",
+     "census_action_owed": "refused_declared_reader, once somebody opens it"
+    },
+    {
+     "url": "https://lyten.com/2026/07/01/lyten-signs-exclusive-mou-to-progress-acquisition-of-northvolt-drei-assets-in-germany/",
+     "where": "project[28].status_history[3]",
+     "observed": "403 Cloudflare, to a browser UA as well",
+     "pass_action": "added lyten.com to BOT_HOSTILE",
+     "census_action_owed": "refused_declared_reader, once somebody opens it"
+    },
+    {
+     "url": "https://www.co2llect.de/en/project/",
+     "where": "project[122].status_history[0]",
+     "observed": "404; /en/ redirects to /en/maintenance; the German root serves 200",
+     "pass_action": "check_links now asks the section before declaring a 404 dead",
+     "census_action_owed": "re-point or archive if the section returns without the page; the cached body is on file for dead_since"
+    }
+   ]
   }
  ]
 }
