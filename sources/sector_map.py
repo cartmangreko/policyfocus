@@ -1334,17 +1334,57 @@ def index(rows: list[dict]) -> dict[str, dict]:
 
 
 def mapped_sectors() -> list[str]:
-    """The sectors that have a transition map, which is the set every builder
-    on this layer runs over by default.
+    """The sectors that have a RANKING AND A CONSTRAINT, which is the set the
+    ranking-shaped builders run over by default.
 
-    A sector has a map when something names a constraint in it -- the same
-    condition web/lib/transition.ts `hasMap` reads and the sector route
-    branches on. It was a literal ["cement"] in four builders' argument
-    parsers, which meant the second sector had to be remembered in four places
-    and would be silently absent from --check in any one of them that was
-    missed. Derived here so the third sector arrives by having data.
+    A sector is in this set when something names a constraint in it. It was a
+    literal ["cement"] in four builders' argument parsers, which meant the
+    second sector had to be remembered in four places and would be silently
+    absent from --check in any one of them that was missed. Derived here so the
+    third sector arrives by having data.
+
+    THIS IS NO LONGER THE SAME QUESTION AS web/lib/transition.ts `hasMap`, and
+    the rename of the docstring is the whole of the change. Until 12 October 2026
+    the two were one condition: a sector rendered the product template when it
+    had a ranking and a bottleneck file, and those were also the inputs
+    build_importance, build_lead, build_opportunity and build_sector_diagram
+    need. Brief 17 §B.3 separates them. Whether a sector renders the hub is a
+    question about whether anything in it is DRAWN -- see drawn_sectors() below,
+    which is what build_maps.py runs over -- and whether a RANKING can be built
+    for it is a question about whether a constraint has been written down. Four
+    builders still want the second, and giving them the first would ask them to
+    rank measures for a sector with no bottleneck to rank them against.
     """
     return sorted({b["sector"] for b in load("bottleneck")})
+
+
+def drawn_sectors(projects: list[dict] | None = None) -> list[str]:
+    """The sectors whose overview has something on it.
+
+    THE CONDITION THE PICTURE ITSELF APPLIES, asked once here rather than
+    rediscovered by each caller: a sector is in this set when at least one of its
+    rows carries a position and is not cancelled -- which is exactly
+    build_maps.drawn() over build_maps._sites(), and is why that module's
+    UNDRAWN_STATUSES is the vocabulary this reads.
+
+    IT IS ALSO WHAT web/lib/transition.ts `hasMap` ASKS, so the two sides decide
+    which sectors render the product template from one rule stated twice;
+    sources/check_map_clusters.py fails the build if the two answers differ.
+    Hydrogen and CO2 transport and storage arrive in this set by having 13 and 3
+    placed rows respectively, without either acquiring a bottleneck file.
+    """
+    rows = load("project") if projects is None else projects
+    return sorted({r["sector"] for r in rows
+                   if (r.get("location") or []) and r.get("status") not in UNDRAWN_STATUSES})
+
+
+# WHICH STATUS IS OFF THE OVERVIEW. One frozenset, read by drawn_sectors above
+# and imported by sources/build_maps.py, which is where the reasoning lives: a
+# cancelled project is drawn on its own crop and on no other frame, because the
+# overview draws what Europe is building. Written as a status GROUP rather than
+# an inequality for the reason build_maps records beside it -- the day a ninth
+# status arrives the question has to be asked of a named thing.
+UNDRAWN_STATUSES = frozenset({"cancelled"})
 
 
 # The technology every capture route eventually leans on. Named once here rather

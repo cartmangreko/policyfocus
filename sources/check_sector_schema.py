@@ -1816,7 +1816,14 @@ def check_prose(e: Errors) -> list[str]:
     doc = _json.loads((sm.ROOT / "data" / "prose.json").read_text(encoding="utf-8"))
     block = doc.get("transition_notes") or {}
     notes = block.get("sectors", {})
-    mapped = {b["sector"] for b in sm.load("bottleneck")}
+    # WHICH SECTORS OWE PROSE: the ones that RENDER THE HUB, which since 12
+    # October 2026 is not the same set as the ones with a bottleneck file. Brief
+    # 17 §B.3 made the hub's condition "has a drawn row" (sm.drawn_sectors), and
+    # hydrogen and CO2 transport and storage render it with no bottleneck and no
+    # ranking. Read off the bottlenecks, this gate would have gone on asking
+    # cement, steel and batteries for a paragraph while two sectors published a
+    # hub with no standing context and nothing saying so.
+    mapped = set(sm.drawn_sectors())
     # A slot that exists and is empty is a DIFFERENT state from a slot nobody
     # opened, and both have to be visible. The missing key fails, because a
     # mapped sector nobody has thought about is a defect; the empty string is
@@ -1895,11 +1902,38 @@ def check_prose(e: Errors) -> list[str]:
                                      f"copy, or it records a sentence the site has stopped "
                                      f"saying")
 
+    def _reviewed(status) -> bool:
+        return status in ("approved", "final")
+
     pending = []
-    if block.get("status") not in ("approved", "final"):
+    if not _reviewed(block.get("status")):
         pending += [f"  {s}: {notes[s]['sentence'][:88]}…" for s in sorted(notes)]
-    if orient and orient.get("status") not in ("approved", "final"):
-        pending += [f"  {s} (orientation): {paras[s]['paragraph'][:76]}…" for s in sorted(paras)]
+    # APPROVAL IS PER SECTOR WHERE THE SECTOR SAYS SO, which is the reading
+    # web/lib/sitetext.ts getSectorOrientation already implements and which this
+    # list was not implementing: batsol's paragraph has carried
+    # `status: approved` since 6 September and has been rendering on the page,
+    # and this gate went on printing it as pending every run. A list of
+    # outstanding work that names something finished is a list people stop
+    # reading.
+    if orient:
+        pending += [f"  {s} (orientation): {paras[s]['paragraph'][:76]}…"
+                    for s in sorted(paras)
+                    if not _reviewed(paras[s].get("status", orient.get("status")))]
+    # THE TWO BLOCKS WITH NO COMPUTED FALLBACK, and they are the reason this
+    # list matters rather than merely being tidy. A name slot and a heading
+    # RENDER while they are drafts, because there is no computed form of a
+    # page's own title and a page headed with a hole in it is worse than a page
+    # headed with unreviewed wording. So a draft here is live on the site, and
+    # the only thing standing between that and nobody noticing is this print.
+    slots = (doc.get("sector_names") or {}).get("sector_slots") or {}
+    for slug in sorted(k for k in slots if k != "_comment"):
+        row = slots[slug]
+        if row.get("status") is not None and not _reviewed(row.get("status")):
+            pending += [f"  {slug} (name slots, RENDERING): short "
+                        f"{row.get('short')!r}, phrase {row.get('phrase')!r}"]
+    country = doc.get("country_pages") or {}
+    if country and not _reviewed(country.get("status")):
+        pending += [f"  country views (heading, RENDERING): {country.get('h1')!r}"]
     if held and held.get("status") not in ("approved", "final"):
         pending += [f"  {s} (lead): {leads[s]['sentence'][:76]}…" for s in sorted(leads)]
     if outstanding:

@@ -100,6 +100,19 @@ interface ProseDoc {
     status: ProseStatus;
     reviewed?: string | null;
     sectors: Record<string, { short: string; phrase: string }>;
+    /** THE SLUGS NO INSTANCE CLAIMS — `clean` and `ccs`. An entry either names
+     *  the `instance` whose slots it borrows, or carries slots of its own; see
+     *  getSectorSlots below and the _comment in data/prose.json. */
+    sector_slots?: Record<
+      string,
+      {
+        instance?: string;
+        short?: string;
+        phrase?: string;
+        status?: ProseStatus;
+        reviewed?: string | null;
+      }
+    >;
   };
   /** The fixed section sequence and the H1/H2 templates that head it — brief 5
    *  §2. The array's order is the render order and the nav order both, and
@@ -114,6 +127,16 @@ interface ProseDoc {
      *  nothing else today. Stored here so the no-free-text rule has no
      *  exception to be widened later. */
     unnumbered: { id: string; h2: string; why?: string }[];
+  };
+  /** The country view's heading — brief 16 §3. One template, three slots:
+   *  {short}/{phrase} from the sector and {country} from country_names, so the
+   *  heading and the name on the paper are one reviewed wording. Rendered by
+   *  getCountryH1 below, which does NOT withhold a draft: a heading has no
+   *  computed fallback, same as a name slot. */
+  country_pages?: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    h1: string;
   };
   /** The Opportunity section's wording — brief 5 §4. Sub-headings, the lead
    *  sentence templates the Python builder fills, and the support-fact and
@@ -293,6 +316,52 @@ export function getSectorNames(ecosystem: string): { short: string; phrase: stri
   return row;
 }
 
+/** The name slots for a SECTOR SLUG that no ecosystem instance reaches, or null
+ *  where the slug is not one of them.
+ *
+ *  WHY THIS EXISTS. `sector_names.sectors` is keyed on ecosystem instance, and
+ *  that is right: chemicals spans two FIGARO slugs and batteries covers part of
+ *  one. It cannot answer for a slug that renders the hub and that no instance
+ *  claims by a sector edge, and since 12 October 2026 there are two —
+ *  hydrogen's rows sit under `clean` while the hydrogen instance deliberately
+ *  carries no sector edge, and CO2 transport and storage is not an ecosystem at
+ *  all (eufabric-page-specifications.md §4.2).
+ *
+ *  AN ENTRY NAMING AN INSTANCE DUPLICATES NOTHING: it resolves to that
+ *  instance's slots, so hydrogen's wording is stored once. An entry with slots
+ *  of its own is the ccs case. Both shapes are checked in
+ *  sources/check_h2_templates.py, which refuses an entry carrying both and an
+ *  entry carrying neither.
+ *
+ *  A DRAFT SLOT STILL RENDERS, and that is deliberate rather than an oversight.
+ *  Every other prose block here returns null until it is reviewed because every
+ *  other block has a computed fallback; a name slot has none, and a page headed
+ *  with a hole in it is worse than a page headed with wording nobody has signed
+ *  off. The status is carried so the draft can be listed for review — see
+ *  sources/check_sector_schema.py, which prints it on every run. */
+export function getSectorSlots(slug: string): { short: string; phrase: string } | null {
+  const block = readProse().sector_names;
+  const row = block.sector_slots?.[slug];
+  if (!row) return null;
+  if (row.instance) return getSectorNames(row.instance);
+  if (!row.short?.trim() || !row.phrase?.trim()) {
+    throw new Error(
+      `sector_names.sector_slots["${slug}"] names no instance and has no filled ` +
+        `short and phrase of its own, so the sector has no subject for its headings`,
+    );
+  }
+  return { short: row.short, phrase: row.phrase };
+}
+
+/** Which sector slots are still drafts, for the reviewer's list. Nothing on a
+ *  page reads this; sources/check_sector_schema.py prints it. */
+export function draftSectorSlots(): string[] {
+  const block = readProse().sector_names;
+  return Object.entries(block.sector_slots ?? {})
+    .filter(([, row]) => row.status !== undefined && !isReviewed(row.status))
+    .map(([slug]) => slug);
+}
+
 /** The section sequence, in order. The array is the specification: a section
  *  renders where this says it renders, or the gate fails. */
 export function getSectionSpecs(): { id: string; nav: string; h2: string }[] {
@@ -325,6 +394,47 @@ export function renderHeading(template: string, names: { short: string; phrase: 
 /** The page's H1. One template for every sector, `short` capitalised into it. */
 export function getSectorH1(names: { short: string; phrase: string }): string {
   return renderHeading(readProse().sector_sections.h1, names);
+}
+
+/** THE COUNTRY VIEW'S H1, filled. Three slots rather than the heading
+ *  renderer's two, which is the whole reason this has its own function: the
+ *  country is not a property of the sector and a sector-only renderer would
+ *  have had to be widened to let one in.
+ *
+ *  A DRAFT STILL RENDERS, for the reason a name slot does: there is no computed
+ *  form of a page's own title, and a page headed "undefined in Germany" is a
+ *  worse way to find out the block is unreviewed than reading the draft.
+ *  `countryPagesAreDraft()` is what lists it for review. */
+export function getCountryH1(
+  names: { short: string; phrase: string },
+  country: string,
+): string {
+  const block = readProse().country_pages;
+  if (!block) {
+    throw new Error(
+      `data/prose.json has no country_pages block, so a country view has no heading`,
+    );
+  }
+  const slots: Record<string, string> = { ...names, country };
+  return block.h1.replace(/\{([A-Za-z_]+)\}/g, (_, slot: string, at: number) => {
+    const key = slot.toLowerCase();
+    const value = slots[key];
+    if (value === undefined) {
+      throw new Error(
+        `country heading template "${block.h1}" has slot {${slot}}, and the only ` +
+          `slots it takes are {short}, {phrase} and {country}`,
+      );
+    }
+    const capital = at === 0 || slot[0] === slot[0].toUpperCase();
+    return capital ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+  });
+}
+
+/** Whether the country heading is still a draft. Nothing on a page reads this;
+ *  sources/check_sector_schema.py prints it with the other outstanding drafts. */
+export function countryPagesAreDraft(): boolean {
+  const block = readProse().country_pages;
+  return !block || !isReviewed(block.status);
 }
 
 /** An unnumbered heading — Sources — by section id. Throws for an id the block

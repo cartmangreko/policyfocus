@@ -1,5 +1,11 @@
 import { ecosystemForSector } from "./ecosystems";
-import { getSectionSpecs, getSectorH1, getSectorNames, renderHeading } from "./sitetext";
+import {
+  getSectionSpecs,
+  getSectorH1,
+  getSectorNames,
+  getSectorSlots,
+  renderHeading,
+} from "./sitetext";
 
 // THE SECTION SEQUENCE, resolved for one sector — brief 5 §2.
 //
@@ -26,22 +32,37 @@ export interface RenderedSection {
   h2: string;
 }
 
-/** The sector's name slots, resolved through its ecosystem instance.
+/** The sector's name slots, resolved through its ecosystem instance, and
+ *  failing that through the slug's own entry in sector_names.sector_slots.
  *
- *  Throws for a slug outside the six. That is right rather than harsh: this
- *  template is the product page, only a sector with a dataset renders it, and
- *  every sector with a dataset is one of the six by construction. A slug that
- *  got here without an instance is a data error upstream, and a heading reading
- *  "What is being built in European undefined" is a worse way to find out. */
+ *  THE INSTANCE IS STILL THE FIRST QUESTION, because it is the right keying for
+ *  the four slugs an instance claims: chemicals spans two and batteries covers
+ *  part of one, so the wording is stored once per industry rather than once per
+ *  FIGARO key.
+ *
+ *  AND IT IS NO LONGER THE ONLY QUESTION, which is the change of 12 October 2026
+ *  (brief 17 §B.3). Two slugs render the hub and belong to no instance by a
+ *  sector edge: `clean`, because the hydrogen instance deliberately carries none
+ *  — hydrogen is not a FIGARO industry and a pseudo-key would corrupt the
+ *  input-output join — and `ccs`, because CO2 transport and storage is an
+ *  abatement route rather than an industry and is not one of the six tiles
+ *  (eufabric-page-specifications.md §4.2). Neither is a data error, and neither
+ *  should have to become a seventh ecosystem to be allowed a heading.
+ *
+ *  STILL THROWS FOR ANYTHING ELSE. A slug with no instance and no entry is a
+ *  sector rendering the product template that nobody has named, and a heading
+ *  reading "What is being built in European undefined" is a worse way to find
+ *  that out than a build failure. */
 export function sectorNames(slug: string): { short: string; phrase: string } {
   const eco = ecosystemForSector(slug);
-  if (!eco) {
-    throw new Error(
-      `sector "${slug}" belongs to no ecosystem instance, so it has no name slots ` +
-        `and cannot head its own page — see data/transition/ecosystems.json`
-    );
-  }
-  return getSectorNames(eco.id);
+  if (eco) return getSectorNames(eco.id);
+  const own = getSectorSlots(slug);
+  if (own) return own;
+  throw new Error(
+    `sector "${slug}" belongs to no ecosystem instance and has no entry in ` +
+      `data/prose.json -> sector_names.sector_slots, so it has no name slots and ` +
+      `cannot head its own page`
+  );
 }
 
 /** The page's H1: "{Short} in Europe's industrial transition". */

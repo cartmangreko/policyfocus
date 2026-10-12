@@ -554,6 +554,34 @@ export function getTechnologies(sector: string): Technology[] {
     .filter((t) => !t.placeholder);
 }
 
+/** A TECHNOLOGY THAT IS ALSO A LAYER WITH A HUB OF ITS OWN.
+ *
+ *  Two entries, and both are the same situation: a thing cement and steel
+ *  DEPEND ON which this platform holds a whole dataset about, under a sector key
+ *  of its own. CO2 transport and storage is the pipes, ships and pore space the
+ *  capture routes end in — 44 projects, filed under `ccs` — and renewable
+ *  hydrogen supply is what hydrogen direct reduction runs on — 66 projects,
+ *  filed under `clean`. A reader on the cement hub who asks what capture depends
+ *  on is asking about those projects, and until 12 October 2026 the dependency
+ *  row sent them to an anchor on cement's own technologies spoke instead, where
+ *  the answer is one paragraph about a technology.
+ *
+ *  IT CANNOT BE DERIVED FROM THE EDGES, which is why it is written here rather
+ *  than computed. A technology's `sectors` are the sectors that USE it:
+ *  co2-transport-storage is edged to cement, steel and chemicals and not to
+ *  `ccs`, because `ccs` does not use CO2 transport and storage — it is CO2
+ *  transport and storage. The claim that one is the other is a judgement about
+ *  the two datasets and belongs in one named place.
+ *
+ *  THE EVIDENCE DID NOT MOVE. The technology keeps its entry on every using
+ *  sector's technologies spoke, with its readiness, its dependencies and its
+ *  sources; what changed is where the hub's one-line dependency row points, and
+ *  it now points at the dataset rather than at the paragraph. */
+export const TECHNOLOGY_HUB: Record<string, string> = {
+  "co2-transport-storage": "ccs",
+  "hydrogen-supply": "clean",
+};
+
 export function getTechnology(id: string): Technology | undefined {
   return all().technologies.find((t) => t.id === id);
 }
@@ -712,6 +740,25 @@ export function projectPageHold(sector: string): DrawHold | undefined {
  *  a draw hold is not asked about here, and that is the change of 6 September
  *  2026.
  *
+ *  AND THE DATA IT ASKS ABOUT IS THE PICTURE, which is the change of 12 October
+ *  2026 (brief 17 §B.3). It used to ask for a RANKING and a BOTTLENECK FILE —
+ *  `getImportance(sector) && getBottlenecks(sector).length > 0` — and those are
+ *  two artefacts rather than a fact about the sector. Hydrogen has 66 rows, 13
+ *  of them placed, and no bottleneck file; CO2 transport and storage has 44 rows,
+ *  3 of them placed, and neither a bottleneck file nor an importance file. Both
+ *  were rendering the register directory and neither had anything missing that a
+ *  reader was asking for: the hub's four blocks each render their own "nothing on
+ *  file" framing line, and the one section that is conditional is the map. So the
+ *  condition is now the map's own — does any row in this sector get drawn — and a
+ *  sector arrives at the product template by having a site somebody placed rather
+ *  than by somebody computing a ranking for it.
+ *
+ *  THE SAME QUESTION IS ASKED IN PYTHON by `sector_map.drawn_sectors()`, which is
+ *  what decides which overviews sources/build_maps.py writes a frame for, and
+ *  sources/check_map_clusters.py fails the build if the two answers differ. Two
+ *  readings of one condition, held together by a gate rather than by a comment
+ *  asking somebody to edit both.
+ *
  *  WHAT THE HOLD USED TO DO, AND WHY IT WAS WRONG. `hasMap` returned false
  *  while a sector was held, so the route rendered the register directory
  *  instead of the product template and the held page was never built. It was
@@ -727,8 +774,24 @@ export function projectPageHold(sector: string): DrawHold | undefined {
  *  and puts `noindex` in its head for as long as the hold stands. See
  *  sources/scope.md, "A draw hold gates publication". */
 export function hasMap(sector: string): boolean {
-  const imp = getImportance(sector);
-  return Boolean(imp && getBottlenecks(sector).length > 0);
+  return getProjects(sector).some(isDrawable);
+}
+
+/** Whether one row puts ink on its sector's overview. The two conditions
+ *  sources/build_maps.py applies, in the same order and for the same reasons:
+ *  a row with no position has nothing to draw, and a cancelled row is off every
+ *  frame but its own because the overview draws what Europe is building
+ *  (`UNDRAWN_STATUSES`, and sources/scope.md "A stopped row does not enter the
+ *  location queue").
+ *
+ *  WRITTEN AS A STATUS GROUP rather than `!== "cancelled"`, which is the same
+ *  decision build_maps.py records beside its own copy: the day a ninth status
+ *  arrives, the question "which side is it on" has to be asked of a named thing
+ *  rather than found in an inequality. */
+const UNDRAWN_STATUSES: readonly ProjectStatus[] = ["cancelled"];
+
+export function isDrawable(p: Project): boolean {
+  return (p.location?.length ?? 0) > 0 && !UNDRAWN_STATUSES.includes(p.status);
 }
 
 /** The transitions a sector is under, in the order the page shows them: by the

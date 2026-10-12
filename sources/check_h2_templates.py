@@ -123,6 +123,54 @@ def main() -> int:
             f"sector_names carries {extra!r}, which is not an ecosystem instance in "
             f"data/transition/ecosystems.json")
 
+    # ---- the slugs no instance claims -------------------------------------
+    # `sector_slots` answers for a sector that renders the hub and that no
+    # ecosystem reaches by a sector edge: `clean`, because the hydrogen instance
+    # deliberately carries none, and `ccs`, because CO2 transport and storage is
+    # not an ecosystem. TWO SHAPES AND ONLY TWO -- an entry borrows an
+    # instance's slots or carries its own. Both is a name with two sources of
+    # truth, which is a name that drifts; neither is a sector with no subject.
+    sector_slots = names_block.get("sector_slots") or {}
+    resolved: dict[str, dict] = {}
+    for slug, row in sorted(sector_slots.items()):
+        if slug == "_comment":
+            continue
+        instance = (row.get("instance") or "").strip()
+        own = {s: (row.get(s) or "").strip() for s in SLOTS}
+        if instance and any(own.values()):
+            problems.append(
+                f"sector_slots[{slug!r}] names the instance {instance!r} AND carries "
+                f"slots of its own. One or the other: two sources of truth for one "
+                f"name is a name that drifts")
+            continue
+        if instance:
+            if instance not in slots:
+                problems.append(
+                    f"sector_slots[{slug!r}] names the instance {instance!r}, which has "
+                    f"no entry in sector_names.sectors")
+                continue
+            resolved[slug] = slots[instance]
+            continue
+        if not all(own.values()):
+            problems.append(
+                f"sector_slots[{slug!r}] names no instance and has an empty "
+                f"{', '.join(s for s in SLOTS if not own[s])!r} slot, so no heading on "
+                f"its page has a subject")
+            continue
+        resolved[slug] = own
+
+    # ---- every template fills for those too -------------------------------
+    for slug, row in sorted(resolved.items()):
+        for template in [block["h1"]] + [s["h2"] for s in sections]:
+            filled, unknown = fill(template, row)
+            for slot in unknown:
+                problems.append(
+                    f"heading {template!r} takes a slot {{{slot}}}, and the only slots "
+                    f"a heading takes are {{short}} and {{phrase}}")
+            if "{" in filled or "}" in filled:
+                problems.append(f"{slug}: {template!r} still has a brace in it after "
+                                f"filling: {filled!r}")
+
     # ---- every template fills, for every sector ---------------------------
     for eco in instances:
         row = slots.get(eco) or {}
@@ -178,8 +226,11 @@ def main() -> int:
     example = slots[instances[0]]
     print(f"check_h2_templates: OK — {len(sections)} questions and "
           f"{len(unnumbered)} unnumbered heading(s), all templated; "
-          f"{len(instances)} ecosystems with both name slots. "
+          f"{len(instances)} ecosystems with both name slots, "
+          f"{len(resolved)} sector slug(s) named outside an instance. "
           f"{instances[0]}: {fill(block['h1'], example)[0]!r}")
+    for slug, row in sorted(resolved.items()):
+        print(f"  {slug}: {fill(block['h1'], row)[0]!r}")
     return 0
 
 

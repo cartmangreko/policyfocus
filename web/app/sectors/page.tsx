@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Crumbs from "@/components/Crumbs";
 import EcosystemTiles from "@/components/EcosystemTiles";
+import { getProjects, hasMap, isDrawable } from "@/lib/transition";
+import { sectorNames } from "@/lib/sectorSections";
 
 // The six, and nothing else (brief 4 §4).
 //
@@ -45,6 +48,54 @@ export default function SectorsPage() {
           </p>
         </div>
       </section>
+
+      {/* THE SHARED LAYER, BELOW THE SIX AND NOT ONE OF THEM. Brief 17 §B.3.
+          eufabric-page-specifications.md §4.2 settles that carbon capture is
+          not an ecosystem — it is an abatement route several industries take —
+          so it gets no tile, and a seventh tile would be the perimeter argument
+          being lost by addition. What it does get is a dataset of its own and
+          a hub that draws it, and until now there was no way to reach that hub
+          from anywhere a reader would look.
+
+          THE ENTRY IS A LINK AND NOT A TILE, which is the distinction doing the
+          work: a tile is one of the industries this platform is for, and this
+          is something they all depend on. It is reached from here and from the
+          dependency row on the cement and steel hubs, which is where a reader
+          meets the question it answers. */}
+      {hasMap("ccs") ? <SharedLayer /> : null}
     </main>
+  );
+}
+
+/** CO2 transport and storage, named below the tiles.
+ *
+ *  THE TWO NUMBERS ARE COMPUTED, and they are the two a reader needs before
+ *  deciding whether to follow the link: how much is tracked, and how much of it
+ *  has been placed on the ground. The second is much the smaller, which is why
+ *  it is said here rather than left to be discovered — the hub is withheld from
+ *  search for exactly that reason (data/transition/draw_holds.json), and a page
+ *  that linked to it without saying so would be routing readers at a picture
+ *  somebody has judged incomplete. */
+function SharedLayer() {
+  const rows = getProjects("ccs");
+  const drawn = rows.filter(isDrawable).length;
+  const names = sectorNames("ccs");
+  return (
+    <section className="band band-ruled">
+      <div className="wrap">
+        <p className="eyebrow">Not an industry</p>
+        <h2>What several of them depend on</h2>
+        <p className="section-note">
+          {`${names.short} is an abatement route rather than an industry, so it is not one ` +
+            `of the six above. It is tracked as a layer of its own: ${rows.length} ` +
+            `projects, ${drawn} of them placed on the ground.`}
+        </p>
+        <p>
+          <Link href="/sectors/ccs" className="section-link">
+            {`Where Europe is building ${names.short} →`}
+          </Link>
+        </p>
+      </div>
+    </section>
   );
 }

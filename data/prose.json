@@ -144,6 +144,18 @@
      "decarbonisation"
     ],
     "sentence": "European batteries is the one sector here with no incumbent base to convert: the works are new ground rather than retrofits, which is why it moves under two headings at once — building the capacity Europe does not yet have, and supplying the vehicles the CO2 standards oblige carmakers to sell."
+   },
+   "clean": {
+    "transitions": [
+     "decarbonisation"
+    ],
+    "sentence": "European hydrogen is being rebuilt rather than built: the industry exists and runs on natural gas, so what is at stake is not whether Europe uses hydrogen but whether the clean kind finds a buyer obliged to prefer it."
+   },
+   "ccs": {
+    "transitions": [
+     "decarbonisation"
+    ],
+    "sentence": "CO2 transport and storage is the one thing on this platform that is nobody's industry and several industries' precondition, which is why it is read here as a layer the cement and steel pages depend on rather than as a sector of its own."
    }
   }
  },
@@ -187,6 +199,16 @@
     "status": "approved",
     "reviewed": "2026-09-06",
     "_comment": "Four beats: what is different about this sector, why building it is hard, what the technology paths are, and what EU law does to it — ending on the question the page exists to answer. Approved per sector: the block's own status is still draft, and cement's and steel's paragraphs are unaffected by this approval."
+   },
+   "clean": {
+    "paragraph": "Hydrogen is not an industry that sells anything to the public. It is an input, and almost all of the hydrogen Europe uses today is made from natural gas and consumed within a few kilometres of where it is made — inside refineries, in ammonia and methanol works, and in a handful of chemical processes that cannot be run on electricity. Europe already has a hydrogen industry, in other words; what it does not have is a clean one.\n\nThe difficulty is that nothing about the molecule changes when it is made cleanly, so nobody downstream can tell, and nobody downstream will pay more for it. Electrolytic hydrogen made on European power prices costs several times what the gas-fed kind costs, and the gap does not close with scale alone: it closes when somebody is obliged to buy the clean kind, or is paid the difference. Every project on this page is therefore a bet on a buyer, and the buyers are mostly the works next door.\n\nThe equipment is not the hard part and has not been for a decade. Alkaline and PEM electrolysers are sold commercially, and the shift from the ten-megawatt scale to the hundred-megawatt scale is an engineering and financing problem rather than a scientific one. What is genuinely unsettled is where the electricity comes from, whether it is clean enough to qualify, and whether the works that would use the output sits close enough to avoid building a pipe.\n\nEU law frames hydrogen almost entirely through obligation and subsidy rather than through the carbon price. Renewable-fuel sub-targets oblige refining and industry to use a share of non-biological renewable fuels; the Hydrogen Bank auctions a fixed payment per kilogram against a competitive bid; and the Net-Zero Industry Act puts electrolyser manufacturing itself inside the strategic list. The questions that decide the sector are therefore which obligations bite, on whom, and when — and whether the capacity being announced is the capacity that gets built.",
+    "status": "draft",
+    "reviewed": null
+   },
+   "ccs": {
+    "paragraph": "CO2 transport and storage is not an industry and does not make a product. It is a piece of infrastructure — compressors, ships, pipes, and pore space a kilometre or two under the seabed — that several industries depend on and none of them owns. Cement cannot avoid its process emissions by changing fuel, and lime, waste-to-energy and parts of refining are in the same position, so for all of them the only route to deep cuts ends with a captured tonne needing somewhere to go.\n\nWhat makes it structurally hard is that the two halves cannot be built in either order. A capture unit is worthless the day it is finished if no store will take its output, and a store is worthless if nothing is captured; the two sit with different companies, under different permits, usually in different countries, and on investment timetables that have no reason to agree. Almost every delay on this page is a delay in the connection rather than in the equipment.\n\nTwo routes are being built in parallel. Shipping liquefied CO2 to a coastal terminal and injecting it offshore is flexible, works for a single works a long way from anybody else, and costs more per tonne. A shared pipeline is cheaper once it is full and needs several emitters to commit before it is built at all. Which route a country ends up with is being decided now, mostly by who commits first.\n\nEU law reaches this layer from an unusual direction. The Emissions Trading System treats a tonne that is permanently stored as not emitted, which is what makes capture worth anything to the company paying for allowances; the Net-Zero Industry Act places an injection-capacity obligation on oil and gas producers rather than on the emitters, because the producers hold the geology; and the cross-border links are funded as infrastructure. The question the figures below answer is how much of this exists, how much is a signed contract, and how much is a stated intention.",
+    "status": "draft",
+    "reviewed": null
    }
   }
  },
@@ -244,6 +266,53 @@
    "circular-materials": {
     "short": "circular materials",
     "phrase": "circular materials in Europe"
+   }
+  },
+  "sector_slots": {
+   "_comment": [
+    "WHERE A SECTOR SLUG GETS ITS NAME SLOTS WHEN NO ECOSYSTEM INSTANCE CLAIMS IT.",
+    "Added 12 October 2026, brief 17 §B.3/§B.4, when hydrogen and CO2 transport and",
+    "storage started rendering the product template.",
+    "",
+    "`sectors` above is keyed on ECOSYSTEM INSTANCE, and that keying is right for the",
+    "reason its own note gives: chemicals spans two FIGARO slugs and batteries covers",
+    "part of one. What it cannot answer is a sector slug that renders the hub and that",
+    "no instance reaches by a sector edge, and there are now two of those:",
+    "",
+    "    clean   the hydrogen rows are filed under this slug, and the hydrogen",
+    "            instance deliberately carries NO sector edge -- hydrogen is not a",
+    "            FIGARO industry and a pseudo-key would corrupt the input-output join",
+    "            (data/transition/ecosystems.json). So the slug points AT the instance",
+    "            and the slots stay in one place.",
+    "    ccs     CO2 transport and storage is not an ecosystem at all and is not going",
+    "            to become one: eufabric-page-specifications.md §4.2 settles that",
+    "            carbon capture is an abatement route several industries take rather",
+    "            than an industry, which is why it is not one of the six tiles. Its hub",
+    "            is reached from the cement and steel dependency blocks and from the",
+    "            entry on /sectors below the tiles. It therefore carries its own slots",
+    "            here, and it is the one entry in this block that does.",
+    "",
+    "TWO SHAPES, AND ONLY TWO. An entry either names an `instance` -- in which case the",
+    "slots are that instance's and nothing is duplicated -- or carries `short` and",
+    "`phrase` of its own. An entry with both, or with neither, is a build failure in",
+    "sources/check_h2_templates.py: a name slot with two sources of truth is a name slot",
+    "that will drift.",
+    "",
+    "A `status` ON AN ENTRY IS READ THE WAY sector_orientation'S IS -- per entry, and it",
+    "wins over the block's. The ccs slots are a DRAFT: nobody has reviewed the wording,",
+    "and unlike every other prose block on this site a name slot has no computed",
+    "fallback, so a draft slot RENDERS and is listed for review rather than being",
+    "withheld. A heading with a hole in it is not a heading, which is the same reason",
+    "the block above throws rather than returning null."
+   ],
+   "clean": {
+    "instance": "hydrogen"
+   },
+   "ccs": {
+    "short": "CO2 transport and storage",
+    "phrase": "Europe's CO2 transport and storage",
+    "status": "draft",
+    "reviewed": null
    }
   }
  },
@@ -332,6 +401,35 @@
     "why": "Page specifications §0.5 makes this the final section of every sector page. Brief 5 §2 numbers nine questions and this is not one of them: it answers what the page stands on rather than anything about the industry, so it renders last, outside the nav, on the same footing as the lead block renders first. Stored here anyway, because the gate's rule is that no heading on this page is free text and an exception carved for one heading is an exception somebody will widen."
    }
   ]
+ },
+ "country_pages": {
+  "status": "draft",
+  "reviewed": null,
+  "_comment": [
+   "THE COUNTRY VIEW'S HEADING — brief 16 §3, drafted 12 October 2026.",
+   "",
+   "One template for all five sectors and all 29 countries, filled from the sector's",
+   "two name slots and the country's reviewed name, exactly as the hub's H1 is filled.",
+   "A heading written per page would be 29 headings nobody reviewed.",
+   "",
+   "THREE SLOTS, AND THE THIRD IS WHY THIS IS NOT IN sector_sections. {short} and",
+   "{phrase} are the sector; {country} is the country's name from the country_names",
+   "block below, which is the same string sources/build_maps.py measures to place a",
+   "label — so the heading and the name on the paper are one reviewed wording and",
+   "cannot disagree. sources/check_h2_templates.py fills this template for every",
+   "sector and every drawn country on every build.",
+   "",
+   "DRAFT, AND IT RENDERS ANYWAY. A name slot has no computed fallback and neither",
+   "has a heading: a page headed with a hole in it is worse than a page headed with",
+   "wording nobody has signed off yet. Same reading as sector_names.sector_slots.",
+   "Flip the status when the wording has been read.",
+   "",
+   "WHAT IS NOT HERE. The count line under the heading, and the sentence over the",
+   "picture. Both are computed from the built frame — tier 1 of the three-tier rule",
+   "in sources/scope.md, needing no review — and are worded in web/lib/prose.ts with",
+   "every other computed sentence on this site."
+  ],
+  "h1": "{Short} in {country}"
  },
  "opportunity": {
   "status": "approved",
@@ -577,10 +675,12 @@
    "BA": "Bosnia and Herzegovina",
    "BE": "Belgium",
    "BG": "Bulgaria",
+   "BY": "Belarus",
    "CH": "Switzerland",
    "CZ": "Czechia",
    "DE": "Germany",
    "DK": "Denmark",
+   "DZ": "Algeria",
    "EE": "Estonia",
    "ES": "Spain",
    "FI": "Finland",
