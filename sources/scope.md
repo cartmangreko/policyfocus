@@ -858,6 +858,74 @@ record beside it — and *the web rots faster than a census can write* is a far 
 sentence than *we truncated a URL*, which is precisely why it should have been checked
 harder rather than published faster. See `sources/steel_docket.md`, D-S12.
 
+### Whose document it is, typed by hand, 1 October 2026
+
+**D-A32. EVERY SOURCE CARRIES `source_type` AND NO CLASSIFIER PUTS IT THERE.** The rung
+definitions name a speaker — rung 1 the owner or the permitting authority, rungs 2, 3 and 5
+the owner — and for three of them the scorer had no field to read, so it took the newest
+document and called whoever published it the owner. The field now exists on every entry in
+a row's `sources[]`, on every capacity statement as `capacity_source_type`, and on the
+census `admission` block, from the vocabulary in `sector_map.PROJECT_SOURCE_TYPES`.
+
+**IT IS READ FROM THE DOCUMENT'S PUBLISHER AGAINST THE ROW'S COMPANY, BY HAND.** Not from
+a name match, and not from a host list. A token comparison of publisher against `company`
+was measured before it was refused: over the producing layer it returns **100 false
+positives** — `HØST PtX Esbjerg`, `RWE AG`, `MorGen Energy`, `EWE AG`, `OMV` and fifty more
+are the owner under a name the `company` field words differently. A register that typed its
+speakers that way would be the Sines-inside-business screen of D-A5 and the name-derived
+hosts of L9 again, at scale.
+
+**THE RULES, AND THEY ARE THE WHOLE OF IT.**
+
+  - **A WIRE RELEASE CARRYING THE OWNER'S OWN TEXT IS THE OWNER.** `sector_map` already
+    said so — *"the company speaking, through a distributor that keeps the page alive after
+    the company's own site has dropped it"* — and `wire_release` is in the owner set for
+    every rung. CATL at Arnstadt, Italvolt at Scarmagno and Britishvolt at Blyth stay the
+    owner's. A rule that refused a wire would fail three rows for citing the only copy of a
+    release that outlived the company.
+  - **A COMPANY IN THE OWNER'S GROUP IS THE OWNER.** A parent, a national subsidiary, a
+    former name, the project's own SPV or consortium vehicle: Volkswagen Group for PowerCo,
+    SHS for Dillinger, HeidelbergCement for Heidelberg Materials, HØST PtX Esbjerg for
+    Copenhagen Infrastructure Partners.
+  - **A PARTNER, OFFTAKER OR EQUIPMENT SUPPLIER IS `supplier`, WHATEVER THE PROJECT NAME ON
+    THE PAGE.** Carbon Clean naming *"CEMEX's Rüdersdorf plant"*, Plug Power naming
+    *"partner GravitHy's planned factory"*, Mitsubishi Heavy Industries as the appointed
+    Pre-FEED contractor, Axens, ITM Power, Elyse Energy, Naturgy at Catalina. Each is a
+    party to the project with its own exposure, and none of them is the owner naming its
+    own site.
+  - **AND A JOINT RELEASE CO-SIGNED BY THE OWNER IS THE OWNER**, because the owner is one of
+    its authors. Borealis with Lafarge, OMV and VERBUND; Enagás with Molins. The test is
+    authorship, not which party's website it sits on — which is why the same publisher can
+    be `supplier` on one row and `company` on another, and the typing is per document.
+  - **A PORT, MUNICIPALITY, DEVELOPMENT AGENCY OR MINISTRY IS `host_government`.** City of
+    Oulu, Grand Port Maritime de Marseille, aicep Global Parques, the Government of Hungary,
+    La Moncloa, the Junta de Extremadura, the Saarland survey office. It is a party with an
+    interest in the project happening and no duty to describe it as its operator would.
+  - **`permit` STAYS THE NARROWER VALUE AND WINS WHERE THE DOCUMENT IS THE PROCEDURE.** The
+    revocation of Überherrn's development plan and the Schleswig-Holstein BImSchG file are
+    the authority's own record of a procedure, not a government talking about a project.
+    `grant_register` wins the same way where the document is the award: a CINEA fiche, an
+    IPCEI register entry, the EIB's own record.
+  - **PRESS IS PRESS UNLESS THE LOCATION OR THE FIGURE IS INSIDE A DIRECT QUOTATION OF THE
+    OWNER.** *"Liberty Steel UK stated that it has committed to…"* is the title speaking;
+    D-S4's Taranto correction refused exactly that shape. A Kallanish report whose only
+    quotation is the Tuscany president's is press, however its `publisher` field was filled
+    in. ArcelorMittal *"quoted in its own MoU announcement"* is the owner.
+  - **UNRESOLVED STAYS UNRESOLVED, LISTED BY KEY WITH THE REASON.** `unresolved` scores no
+    rung and is not a fail about the project either. The alternative was a default, and a
+    default is what typed Carbon Clean as the owner of a CEMEX works.
+
+**SO RUNGS 1, 2 AND 3 EACH TEST ONE FIELD.** Site passes on `company`, `wire_release` or
+`permit`; capacity and FID on `company` or `wire_release`. **AND THE TEST GOES INSIDE THE
+CANDIDATE LIST**, on D-A30's reasoning: rung 1 cites the newest OWNER OR PERMIT source
+rather than the newest source, so a row whose owner document was merely older repoints and
+keeps its rung. Britishvolt and SVOLT Lauchhammer are the cases.
+
+**ONE THING THIS CHANGED ABOUT WRITING NOTES.** A cell note that named the displaced
+publisher made `medium_of()` read the cell as press, because that function classifies from
+the speaker and the note. The repoint note names the displaced source's TYPE and not its
+name. Two derivations reading each other's prose is how a column lies.
+
 ### Nothing is amended mid-pass, 21 September 2026
 
 **NO RULE CHANGES UNTIL BRIEF 14 AND THE SUPPLIER SWEEP ARE IN.** A case the rules do not

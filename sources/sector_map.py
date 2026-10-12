@@ -274,6 +274,36 @@ PROJECT_EVENT_KINDS = (
 #                   of administrators is the case — the Gazette did not act on
 #                   Britishvolt, it published the notice.
 #   press           anyone reporting on the project rather than acting in it.
+#   supplier        A PARTY TO THE PROJECT THAT IS NOT ITS OWNER: an equipment or
+#                   technology vendor, a licensor, an offtaker, a consortium partner.
+#                   ADDED 1 OCTOBER 2026, D-A32. It has its own register, its own money
+#                   and its own exposure to the description being wrong — which is why
+#                   the dependency graph lets it speak about a customer's plant — and it
+#                   is still not the owner naming its own site. Carbon Clean naming
+#                   "CEMEX's Rüdersdorf plant" and Plug Power naming "partner GravitHy's
+#                   planned factory" are the cases: both say whose works it is, in the
+#                   sentence the register was reading as the owner's.
+#   host_government A STATE OR MUNICIPAL BODY SPEAKING ABOUT A PROJECT IN ITS TERRITORY,
+#                   where the document is not a consent file and not a register of
+#                   awards: a port authority, a municipality, a development agency, a
+#                   ministry's announcement. ADDED 1 OCTOBER 2026, D-A32. It is a party
+#                   with an interest in the project happening and no duty to describe it
+#                   as its operator would. `permit` stays the narrower value and wins
+#                   where the document IS the procedure; `grant_register` wins where it
+#                   is the award.
+#   geodata         A BASEMAP FEATURE A COORDINATE WAS READ FROM; NEVER A SPEAKER;
+#                   PASSES NO CHECK. ADDED 1 OCTOBER 2026, D-A32. OpenStreetMap is
+#                   cited on a row because a building stands at the address the owner
+#                   published, and the way id is how a reader finds it again. It says
+#                   nothing about the project and is not a party to it, so it is not
+#                   `unresolved` either: the answer is known and it is "not a speaker".
+#                   A frozen file should carry no unresolved entry whose answer is known.
+#   unresolved      NOBODY HAS DECIDED WHOSE DOCUMENT THIS IS. ADDED 1 OCTOBER 2026,
+#                   D-A32, and it exists so that a hand pass can stop rather than guess.
+#                   A source typed `unresolved` scores no rung: it is not the owner for
+#                   rung 1 or 2 and it is not a fail about the project either, and the
+#                   key is listed in the ruling with the reason. The alternative was a
+#                   default, and a default is what typed Carbon Clean as the owner.
 PROJECT_SOURCE_TYPES = (
     "company",
     "permit",
@@ -282,7 +312,19 @@ PROJECT_SOURCE_TYPES = (
     "official_register",
     "wire_release",
     "press",
+    "supplier",
+    "host_government",
+    "geodata",
+    "unresolved",
 )
+
+# WHOSE WORD A RUNG WILL TAKE. D-A32, 1 October 2026, and it is D-A30's test given a
+# field to read. Rung 1 asks for the owner or the permitting authority; rungs 2 and 3
+# ask for the owner. `wire_release` is in the owner set because the definition above
+# says it is the company speaking through a distributor — a rule that refused it would
+# fail three rows for citing the only copy of a release that outlived the company.
+OWNER_SPOKEN = ("company", "wire_release")
+SITE_SPOKEN = ("company", "wire_release", "permit")
 
 
 # WHETHER THE RECORD WATCHED THE EVENT OR RECONSTRUCTED IT. An event dated before

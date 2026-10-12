@@ -74,6 +74,8 @@ NEW = {
    "class": "admitted",
    "row": "hyiron-lingen", "leg": "announced DRI plant",
    "speaker": "HyIron, own site",
+   # D-A32, 1 October 2026: whose document it is. The owner's own site.
+   "source_type": "company",
    "source": "https://hyiron.com/",
    "verbatim": ("The project GEiSt (German for “Green Iron for the steel Industry”) "
                 "pilots the technology in Lingen, Germany, in cooperation with RWE and "
@@ -152,6 +154,9 @@ NEW = {
    "owner_leg": "open — no owner document on file; owner look queued under rule 17",
    "row": "adriatico2-ravenna",
    "speaker": "European Commission (CINEA), Innovation Fund project factsheet — THE FUNDER, NOT THE OWNER",
+   # D-A32: the funder's own award record. The speaker string already said so in prose;
+   # this is the same fact in a field a gate can read.
+   "source_type": "grant_register",
    "source": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191172.pdf",
    "verbatim": "The project, led by Marcegaglia Ravenna S.p.A., aims to reduce CO2 emissions in the Ravenna industrial district through Carbon Capture Utilisation and Storage (CCUS) technologies.",
    "amount_as_stated": "EUR 31,238,542",

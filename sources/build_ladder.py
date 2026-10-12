@@ -275,6 +275,22 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None,
     out = {}
     sources = row.get("sources") or []
     base = newest(sources)
+    # D-A32, 1 OCTOBER 2026. THE SPEAKER TEST, GIVEN A FIELD TO READ. D-A30 put it on
+    # rung 5 by filtering the candidate list to `source_type == "company"`; these three
+    # rungs had no field to filter on until every source was typed by hand. The test
+    # goes INSIDE the candidate list and not on the winner, for the reason D-A30 gives:
+    # it repoints more often than it fails, and the owner's own document is usually
+    # already on the row.
+    def _typed(url):
+        for s in sources:
+            if s.get("url") == url:
+                return s.get("source_type") or ""
+        return ""
+
+    def _newest_spoken(allowed):
+        return newest([s for s in sources if (s.get("source_type") or "") in allowed])
+
+    site_base = _newest_spoken(sm.SITE_SPOKEN)
     base_id = base["url"] if base else ""
     base_pub = base.get("publisher", "") if base else ""
     base_date = base.get("date", "") if base else ""
@@ -324,18 +340,50 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None,
                            "location_statement names " +
                            ("finer than municipality" if finer else "the municipality") +
                            ", which the rung admits")
-    elif row.get("located") == "yes":
-        out["site"] = cell("pass", base_id, "owner", base_date, base_prec,
-                           "row carries a position from a company or permit source")
-    elif plant:
-        out["site"] = cell("pass", base_id, base_pub or "owner", base_date, base_prec,
-                           f"the admitting source names the site as {plant!r}")
+    elif row.get("located") == "yes" or plant:
+        # THE RUNG ASKS THE OWNER OR THE PERMITTING AUTHORITY, so the cell cites the
+        # newest source that is one of them rather than the newest source there is.
+        if site_base is None:
+            out["site"] = cell(
+                "fail", base_id, base_pub or "no owner source", base_date, base_prec,
+                f"NO OWNER OR PERMIT DOCUMENT ON FILE NAMES THIS SITE. The row names "
+                f"{plant!r} and every source on it is "
+                f"{', '.join(sorted({(s.get('source_type') or 'untyped') for s in sources})) or 'untyped'}"
+                f" — rung 1 asks the owner or the permitting authority (D-A32).")
+        else:
+            out["site"] = cell(
+                "pass", site_base["url"], site_base.get("publisher") or "owner",
+                site_base.get("date"), site_base.get("date_precision"),
+                ("row carries a position from a company or permit source"
+                 if row.get("located") == "yes" and site_base is base
+                 else f"the owner or permit source names the site as {plant!r}"
+                      if plant else
+                      "row carries a position from a company or permit source")
+                # THE DISPLACED PUBLISHER IS NAMED BY TYPE AND NOT BY NAME. medium_of()
+                # reads the note, so writing "Battery-News.de" here made a cell citing
+                # SVOLT's own release read as press in the medium column.
+                + (f"; REPOINTED under D-A32 off a "
+                   f"{_typed(base_id) or 'untyped'} source that was merely newer"
+                   if site_base is not base else ""))
     else:
         out["site"] = cell("fail", base_id, "owner", base_date, base_prec,
                            "the row names no location at municipality or finer")
 
     # RUNG 2, CAPACITY. Any unit, recorded as stated. Never converted.
-    if row.get("capacity_value") is not None and row.get("capacity_unit"):
+    cap_type = row.get("capacity_source_type") or ""
+    if (row.get("capacity_value") is not None and row.get("capacity_unit")
+            and cap_type not in sm.OWNER_SPOKEN):
+        # D-A32. The cell used to assert "owner" as a literal while citing whatever
+        # document the capacity came from — a funder's register entry, a supplier's
+        # release, a government announcement.
+        out["capacity"] = cell(
+            "fail", row.get("capacity_source_url") or base_id,
+            row.get("capacity_source_type") or "untyped",
+            row.get("capacity_as_of") or base_date,
+            row.get("capacity_as_of_precision") or base_prec,
+            f"{row['capacity_value']} {row['capacity_unit']} is stated by a "
+            f"{cap_type or 'untyped'} source, and rung 2 asks the owner (D-A32)")
+    elif row.get("capacity_value") is not None and row.get("capacity_unit"):
         out["capacity"] = cell(
             "pass", row.get("capacity_source_url") or base_id, "owner",
             row.get("capacity_as_of") or base_date,
@@ -348,7 +396,10 @@ def score_row(row, edges_by_project, graph_date="", funding_by_project=None,
     # RUNG 3, FID TAKEN. A status event moving the row to fid or beyond is the
     # owner saying the decision is made. A `fid_target` in stated_schedule is not.
     hist = row.get("status_history") or []
-    fid = newest([e for e in hist if e.get("status_to") in FID_TAKEN])
+    # D-A32: the owner has to be the one saying the decision is taken. `grant_register`
+    # is a state announcing an investment and `press` is a title reporting one.
+    fid = newest([e for e in hist if e.get("status_to") in FID_TAKEN
+                  and (e.get("source_type") or "") in sm.OWNER_SPOKEN])
     if fid:
         out["fid"] = cell("pass", fid.get("source_url"), "owner", fid.get("date"),
                           fid.get("date_precision"),

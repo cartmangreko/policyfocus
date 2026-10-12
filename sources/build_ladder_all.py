@@ -212,7 +212,12 @@ def score_entry(e, sector, by_key, read_on, by_project, swept, graph_date):
     # field, not the paragraph.
     _leg = re.split(r"[—,;:(]", (a.get("failed_leg") or ""), 1)[0].strip().lower()
     site_is_the_failed_leg = _leg.startswith("site") or _leg == "site"
-    if klass == "admitted" and a.get("admitted_by") == "funder":
+    # D-A32: KEYED ON THE SOURCE'S TYPE, NOT ON `admitted_by`. The branch below was
+    # written for exactly this case on 20 September and never fired on the three rows
+    # that needed it, because `admitted_by` is "" on all three while the admitting
+    # document is a CINEA fiche. `grant_register` is the funder's own award record.
+    if klass == "admitted" and (a.get("admitted_by") == "funder"
+                                or (a.get("source_type") or "") == "grant_register"):
         # THE AMENDMENT OF 20 SEPTEMBER ADMITS ON A FUNDER AND MOVES NO RUNG. Rung 1
         # asks whether the OWNER OR THE PERMITTING AUTHORITY names the site, and a
         # funder is neither. A funder-admitted entry with no owner document fails
@@ -223,12 +228,29 @@ def score_entry(e, sector, by_key, read_on, by_project, swept, graph_date):
             "ADMITTED BY THE FUNDER AND THE OWNER LEG IS OPEN. The admitting document "
             "is a funder's award record, and rung 1 asks for the owner or the "
             "permitting authority. An owner look is queued under rule 17.")
+    elif (klass == "admitted" and a.get("source")
+          and (a.get("source_type") or "") not in sm.SITE_SPOKEN):
+        # D-A32. The census recorded the document and the ladder passed rung 1 on it
+        # without asking whose it was.
+        out["site"] = L.cell(
+            "fail", a["source"], a.get("speaker") or "", on, "day",
+            f"ADMITTED ON A {(a.get('source_type') or 'untyped').upper()} DOCUMENT AND "
+            f"RUNG 1 ASKS THE OWNER OR THE PERMITTING AUTHORITY (D-A32): "
+            f"{(a.get('verbatim') or '')[:120]}")
     elif klass == "admitted" and a.get("source"):
         out["site"] = L.cell(
             "pass", a["source"], a.get("speaker") or "owner", on, "day",
             f"the census admitted this works on the owner's own document, which "
             f"names {a.get('municipality') or 'the works'}: "
             f"{(a.get('verbatim') or '')[:160]}")
+    elif (klass == "named not admitted" and a.get("source")
+          and not site_is_the_failed_leg
+          and (a.get("source_type") or "") not in sm.SITE_SPOKEN):
+        out["site"] = L.cell(
+            "fail", a["source"], a.get("speaker") or "", on, "day",
+            f"THE NAMING DOCUMENT IS A {(a.get('source_type') or 'untyped').upper()} "
+            f"ONE AND RUNG 1 ASKS THE OWNER OR THE PERMITTING AUTHORITY (D-A32): "
+            f"{(a.get('verbatim') or '')[:120]}")
     elif klass == "named not admitted" and a.get("source") and not site_is_the_failed_leg:
         out["site"] = L.cell(
             "pass", a["source"], a.get("speaker") or "owner or permit source", on,

@@ -707,3 +707,240 @@ stage-year brief's `speaker_type` was derived from the speaker and the source ra
 from the note, and the first thing it printed was two rung 5 passes whose speaker was not
 the owner. No rung definition changed to catch them; a column that said out loud who was
 speaking did.
+
+### Ruling of 1 October 2026 — D-A31, the frozen speaker rule applied to rungs 1, 2 and 3
+
+**D-A31. THE SAME TEST D-A30 PUT ON RUNG 5 BELONGS ON RUNGS 1, 2 AND 3, AND THREE
+SCORERS WERE NOT APPLYING IT.** Rung 1 reads *"the owner or the permitting authority
+names the location"*, rung 2 *"the owner states a capacity"*, rung 3 *"the owner states
+FID has been TAKEN"*. `score_row` was not asking who was speaking in any of the three:
+
+  - **RUNG 1 TOOK THE NEWEST SOURCE AND THE PUBLISHER THAT CAME WITH IT.** `base =
+    newest(sources)` and the `elif plant:` branch cites `base_pub`, so a row with a
+    `plant` field passes rung 1 on whatever document happens to be newest — a funder's
+    fiche, a supplier's press release, a trade title, a company registry.
+  - **RUNGS 2 AND 3 HARDCODE THE WORD `owner`.** `cell("pass", capacity_source_url,
+    "owner", …)` and `cell("pass", fid.source_url, "owner", …)` assert the speaker
+    rather than reading it. A cell that names its speaker from a literal cannot be
+    wrong about the document and cannot be right about it either.
+
+**THIS IS THE FROZEN TEST APPLIED, NOT CHANGED**, and it is the third time this exact
+shape has been found: D-A30 on rung 5 and `target_year_owner`, and now here. The defect
+is always *newest wins, speaker unchecked*.
+
+**AND THE REGISTER ALREADY OWNS THE VOCABULARY.** `sector_map.PROJECT_SOURCE_TYPES` has
+seven values and says what each means. The owner-spoken set for these rungs is
+`company` and `wire_release` — the second because the register's own note says it "is the
+company speaking, through a distributor that keeps the page alive after the company's own
+site has dropped it". Rung 1 additionally admits `permit`. Nothing new is coined here.
+
+**BUT THE FIELD EXISTS ON ONLY ONE OF THE THREE.** `status_history[].source_type` carries
+it on all 244 events — company 210, press 16, grant_register 12, wire_release 3, permit 2,
+official_register 1 — so **rung 3 is D-A30's test exactly**. `sources[]` carries no
+`source_type` on any of its 295 entries, and the capacity statement carries
+`capacity_basis` but no speaker. **So rungs 1 and 2 cannot be scored on a typed field
+today**, and that is recorded here rather than worked around: see THE OPEN QUESTION below.
+
+#### The seventeen cells, decided from the document
+
+The brief named sixteen; the list enumerates **seventeen** (site 3 funder + 4 supplier +
+4 host_government + 3 press = 14, plus 1 capacity, plus 2 FID). All seventeen are below.
+
+**THE PASS IS WRONG — THE CITED DOCUMENT IS A FUNDER'S (3, all site).** The funder
+amendment of 20 September already rules this: *"a funder-admitted row with no owner
+document fails rung 1 and clears rung 4"*. The `medium` column is RIGHT in all three; the
+pass is wrong.
+
+**AND THE REASON THE ENFORCING BRANCH NEVER FIRED IS NOT THE ONE THIS ENTRY FIRST GAVE.**
+It said `admission.admitted_by` was `""` on these rows. **It is not**: `admitted_by` is
+`"funder"` on `gem:P100000120027` and on `leadit:GST-158`, written there by the census on
+20 September, and the entries say so in as many words — GST-158's speaker string ends
+*"— THE FUNDER, NOT THE OWNER"*. The `""` belongs to four OTHER census entries, which are
+not funder-admitted at all, and the two observations were run together. **The real reason
+is the path:** all three of these keys carry a register `row`, so `build_ladder.py` scores
+them in `score_row` off the row's own `sources[]`, and the funder branch lives on the
+census side of `build_ladder_all.py`, which is never reached for them. A branch guarding
+one of two paths guards neither. Corrected 2 October 2026, from a workbook gate that
+refused a hand edit and sent this back to the entries.
+
+  - **iea:1489 `catalina-teruel-sagunto` → FAIL.** Cited: the Innovation Fund fiche
+    `101179454.pdf`, speaker *European Commission — CINEA · Innovation Fund*. The row's
+    company is Copenhagen Infrastructure Partners. **A repoint candidate is on file and
+    could not be read here**: Naturgy's release of 2023-03-10. naturgy.com answers a
+    Radware block page to a declared reader, the Archive was rate-limiting, and the cached
+    body (200, 204,671 bytes) is gitignored and absent on this machine. Whether it names
+    *Andorra, Teruel* is a hand check, and the fail stands until somebody makes it.
+  - **gem:P100000120027 `zesta-gent` → FAIL.** Cited: fiche `101191086.pdf`. **The fiche is
+    the only source on the row.** No owner document exists to repoint to.
+  - **leadit:GST-158 `adriatico2-ravenna` → FAIL.** Cited: fiche `101191172.pdf`. **Also
+    the only source on the row.**
+
+**THE TYPE IS WRONG AND THE PASS GOES WITH IT — A SUPPLIER NAMING ITS CUSTOMER'S WORKS
+(2 of the 4 named).**
+
+  - **ieaccus:539 `cyclonecc-rudersdorf` → type `owner` → **supplier**; FAIL.** The row's
+    company is CEMEX. The only document on file is Carbon Clean's own press release of
+    19 July 2022, which says: *"Carbon Clean … announced today that it has awarded a Front
+    End Engineering Design (FEED) contract to global engineering experts, KBR, for a
+    groundbreaking carbon capture project at **CEMEX's Rüdersdorf plant** in Germany."*
+    That is the capture-technology vendor naming its customer's works. The only person
+    quoted is KBR's. **Why the typing missed it:** `medium_of` reads the speaker string and
+    the note, and "Carbon Clean" matches no funder, press or permit pattern, so it fell
+    through to the `owner` default. The default is the bug — an unrecognised speaker is
+    unknown, not the owner.
+  - **gem:P100000121220 `gravithy-kristinestad` → type `owner` → **supplier**; FAIL.** The
+    row's company is GravitHy. The only document is Plug Power's blog of 16 April 2024:
+    *"This project … is focused on decarbonizing the production of direct reduced iron
+    (DRI) in **partner GravitHy's planned factory**."* Plug is the electrolyser supplier
+    and says so; the word is *partner*. Same fall-through to the default.
+
+**THE TYPE IS RIGHT AND SO IS THE PASS — PLUG POWER'S OWN TWO PLANTS (the other 2 of the
+4).** The brief types these as `supplier`. On these two rows Plug Power is not the
+supplier, it is the company: both rows carry `company: Plug Power`, the IEA lists them as
+*Plug Power Kokkola plant* and *Plug Power Kristinestad plant*, and Plug's own blog calls
+Kristinestad a project **Plug announced** to produce hydrogen. `supplier` is right about
+Plug's role at GravitHy's iron plant above and wrong about Plug's own plants.
+
+  - **iea:2015 `plugpower-kokkola` → NO CHANGE.** Cited: Plug Power's own IR release.
+  - **iea:2016 `plugpower-kristinestad` → NO CHANGE.** Same release.
+  - **A SEPARATE DEFECT ON BOTH ROWS, recorded because it was found here.** Each row
+    carries that one release TWICE: once at 2023-09-25 as the Archive capture, with its
+    real dateline, and once at **2026-09-10** as the live URL, titled *"Plug Power Kokkola
+    — the owner's release"*. 2026-09-10 is a retrieval date. `newest()` therefore picks the
+    duplicate, and both site cells are dated 2026-09-10 at `day` precision — a fetch date
+    presented as a source date, which is the thing D-7 exists to prevent.
+
+**HOST GOVERNMENT AND REGISTRY (4 named; 1 repoints, 1 stands, 1 fails, 1 unresolved).**
+
+  - **row:britishvolt-blyth → type `owner` → **official_register**; PASS, REPOINTED.** The
+    cited document was Companies House's insolvency view, 2026-09-06 — the state writing
+    down a fact, which `sector_map` separates from `regulator` for exactly this reason.
+    **The owner's own release is on the row** and names the site: *"Britishvolt has
+    selected **Blyth, Northumberland** as the site of its first battery Gigafactory"*
+    (2020-12-10, via PR Newswire = `wire_release`, the company speaking). Municipality or
+    finer, so rung 1 is satisfied. This is the Envision pattern — it repoints rather than
+    fails, and the document and date under the cell change.
+  - **gem:P100000120427 `ArcelorMittal Hamburg` → NO CHANGE.** The brief types this
+    `host_government`, from a speaker string that reads *"ArcelorMittal Hamburg, own site
+    (archived), **with the German environment ministry's grant**"*. The cited document is
+    not the ministry's: it is `hamburg.arcelormittal.com/Ueber-uns` under an Archive
+    capture — the works' own site. Type `owner` is right and the pass stands. **The compound
+    speaker string is the hazard**: it names two parties and the cell cites one.
+  - **gem:P100000121211 `metinvest-piombino` → type `owner` → **press**; FAIL.** The row's
+    source carries `publisher: "Metinvest"`, which is why the typing said owner. **The
+    document is not Metinvest's.** It is a Kallanish market report — and Kallanish is
+    already in the trade-press pattern, which never saw it because `medium_of` reads the
+    speaker string and the note and not the URL. The body: *"Italy's Minister of Enterprises
+    and Made in Italy (MIMT), Adolfo Urso, Metinvest, equipment maker Danieli, the region
+    of Tuscany and the city of Piombino have signed an agreement…"* — Kallanish's own
+    voice. **Not `press_quoting_owner`:** the only direct quotation in the piece is
+    *"Tuscany president Eugenio Giani said"*, a host government, and D-S4's Taranto
+    correction already refused a title's report of what a company said. It is the only
+    source on the row, so there is nothing to repoint to. **Two further defects on the same
+    source:** `publisher` is wrong, and the recorded date 2026-09-15 is a retrieval date —
+    the article's own dateline is **18 Jan 2024** — while the body behind it is a
+    subscriber wall (*"Kallanish articles are only available for active subscribers"*).
+  - **gem:P100000120466 `Hydnum Steel` → UNRESOLVED, LEFT AS A PASS.** Type `owner` is
+    right: the document is `hydnumsteel.com/en`, the company's own site. But **the pass is
+    not evidenced by what is on file.** The recorded verbatim is *"We eliminate our impact
+    by progressively replacing coal and natural gas with green hydrogen"*, which does not
+    name a place, and the census recorded `municipality: Puertollano` beside it. A live read
+    of the page today names neither *Puertollano* nor *Castilla*. The cached body the census
+    actually read (200, 85,012 bytes) is gitignored and absent here, so the sentence that
+    carried Puertollano cannot be produced. **It is not flipped**, because failing a row on
+    a gap in this register's own reading is the error D-A11 was written against; it is
+    recorded as owing a re-read.
+
+**TRADE PRESS IN ITS OWN VOICE (3; 1 repoints, 2 fail).** Type `press` is right in all
+three — rung 1 admits a title only where it prints the company's own sentence.
+
+  - **row:svolt-lauchhammer → PASS, REPOINTED.** The cited document was Battery-News.de,
+    2024-05-28. **The owner's own release is on the row, hand-filed**, at
+    `sources/manual/svolt-lauchhammer--svolt-europe-lauchhammer.html`, and its dateline
+    names the site: *"SVolt builds additional Battery Cell Factory in Brandenburg, Germany,
+    for European Market — Frankfurt am Main / **Lauchhammer**, Germany, September 9, 2022"*.
+    The company's own EU-locations menu lists Lauchhammer. Repointed, like Envision.
+  - **gem:P100000120485 `GFG Liberty Steel Rotherham` → FAIL.** SteelOrbis, and the
+    verbatim is indirect speech: *"**Liberty Steel UK stated that** it has committed to
+    restart commodity production and idled plants when the market and operating conditions
+    allow…"*. A title reporting that a company stated something is the title speaking. The
+    census's own `failed_leg` already says it: *"AN AIM REPORTED BY TRADE PRESS … and no
+    own"*.
+  - **gem:P100000121235 `Marcegaglia Fos Sur Mer` → FAIL.** GMK Center, and the verbatim is
+    the title's own description: *"The modernization project envisages increasing the
+    capacity of the electric arc furnace to 1-1.2 million tons of steel per year…"*. No
+    company sentence is printed.
+
+**RUNG 2, CAPACITY (1).**
+
+  - **iea:819 `hycc-h2ermes-ijmuiden` → type `owner` → **funder**; FAIL.** The cell's
+    speaker was the hardcoded literal. The document is the Commission's IPCEI Hydrogen
+    observatory entry, which states the figure itself: *"The H2ermes project aims to
+    develop, realize, and operate a **100 MW** water electrolyzer…"*, and the page's own
+    footer reads *"This site is managed by the Clean Hydrogen Partnership under a public
+    procurement. European Hydrogen Observatory — European Commission"*. **The row already
+    said so in words**: `capacity_note` opens *"The figure is the one European Commission,
+    IPCEI Hydrogen observatory states on the IPCEI register entry."* The register knew whose
+    number it was and the cell called it the owner's. It is the only source on the row.
+    (The brief types this `host_government`; `funder` is the value the existing vocabulary
+    gives an IPCEI register entry, and `grant_register` is its `PROJECT_SOURCE_TYPES` name.)
+
+**RUNG 3, FID (2).** Both are `grant_register` under the register's own vocabulary, and
+rung 3 asks the owner. Both FAIL, and neither can be repointed.
+
+  - **row:sk-on-komarom → type `owner` → **grant_register** (host government); FAIL.** The
+    status event is dated 2021-01-29 with `source_type: grant_register` and cites kormany.hu.
+    The row's own note is explicit that the owner did not say it: *"The Hungarian
+    government, announcing the Iváncsa investment, describes the Komárom works as already
+    running: 'A cég első két tengerentúli gyára Komáromban működik'"*. **No repoint:** SK
+    On's own hand-filed global-network page lists addresses only — *"SK On Hungary Komárom
+    2903 Komárom, Irinyi János u 9, Hungary"* — and the word *operation* does not appear on
+    it. A published address places a works; it does not say a decision was taken.
+  - **row:sunwoda-nyiregyhaza → type `owner` → **grant_register**; FAIL.** Status event
+    2023-07-27, `source_type: grant_register`, kormany.hu, and again the row says it:
+    *"NO COMPANY STATEMENT OF A BUILD START HAS BEEN READ"*. **No repoint:** Sunwoda's own
+    release of 2023-08-10, *"Accelerating Overseas Expansion! Sunwoda's First European
+    Factory Settles in Hungary"*, names Hungary and **not Nyíregyháza**, and states no
+    build start — its only use of *construction* is a general sentence about trade
+    relations.
+
+#### What this makes of the seventeen
+
+**ELEVEN PASSES FALL, TWO REPOINT AND KEEP THEIR RUNG, THREE WERE CORRECTLY TYPED AND
+CORRECTLY PASSED, AND ONE OWES A RE-READ.** Eight of the eleven are rung 1, one is rung 2,
+two are rung 3. **Four of the seventeen do not move**, and the brief's premise is wrong on
+each: Plug Power's two plants are its own, ArcelorMittal Hamburg cites the owner's site,
+and Hydnum cannot be settled from what is on this machine.
+
+#### THE OPEN QUESTION, and why nothing is recomputed here
+
+**RUNG 3 CAN BE FIXED TODAY AND RUNGS 1 AND 2 CANNOT.** Rung 3 reads
+`status_history[].source_type`, which exists on all 244 events, so its test is one line and
+is D-A30's line. **Rungs 1 and 2 have no speaker field to read.** Scoring them needs the
+publisher string classified, and classifying it was measured before being proposed: a
+token comparison of `publisher` against the row's `company` over the producing layer
+returns **100 false positives** — `HØST PtX Esbjerg`, `RWE AG`, `MorGen Energy`, `EWE AG`,
+`OMV` and fifty more are the owner under a name the `company` field words differently. A
+classifier with that error rate, run over 644 lines, is the Sines-inside-business screen of
+D-A5 and the name-derived hosts of L9 for the third and fourth time.
+
+**AND THE SEVENTEEN ARE AN UNDERCOUNT.** They were drawn from the `medium` column, and that
+column is the thing being corrected. On the conservative reading — counting only speakers
+that match the funder, press and state patterns outright — the producing layer holds **28**
+passing cells whose cited speaker is not the owner or a permitting authority: site 3 funder
++ 8 state + 6 press, capacity 1 + 4 + 3, FID 0 + 2 + 1. Among them `City of Oulu`,
+`Grand Port Maritime de Marseille` and `aicep Global Parques` pass BOTH site and capacity.
+
+**ONE OF THE 28 IS A FALSE ALARM AND MATTERS FOR THE RULE.** `CATL (via PR Newswire)`,
+`Italvolt (via PR Newswire)` and `Britishvolt (PR Newswire)` read as press and are
+`wire_release` — the company speaking through a distributor, on `sector_map`'s own
+definition. A rule that failed a wire would fail three rows for using the only copy of a
+release that outlived the company.
+
+**SO THE DECISION THAT IS NOT MINE:** whether `sources[]` and the capacity statement get a
+`source_type` from `PROJECT_SOURCE_TYPES` — a field on 295 sources, typed by hand, after
+which rungs 1 and 2 are each one line and no string is guessed — or whether a classifier is
+accepted with its error rate stated. **Until that is ruled, `build_ladder.py` is not
+touched and `all_summary.json` is not recomputed**: a recompute on a classifier I can
+already show is wrong 100 times would move numbers nobody could defend, and the summary is
+the artefact paper-freeze-3 is to be tagged on.
