@@ -152,6 +152,47 @@ PADDING_KM = 80.0
 # size question and is left alone deliberately: see BREAKPOINTS.
 MIN_SPAN_KM = 700.0
 
+# A COUNTRY VIEW. Brief 16: the same component, with a frame fitted to one
+# country, showing every one of its dots unclustered. Its own three numbers
+# because it is its own kind of picture -- wider than a works and far tighter
+# than a continent.
+#
+# THE FRAME IS FITTED TO THE COUNTRY AND NOT TO THE DOTS. A frame drawn round
+# four Spanish sites would be a crop of northern Spain that a reader has no way
+# of recognising as Spain; the question the page answers is "what is Spain
+# building", so the ground is the country. The dots' own bounds are unioned in
+# afterwards rather than trusted to be inside it, because the polygon this is
+# measured off is simplified and a coastal works can sit a kilometre outside its
+# own coastline.
+#
+# AND THE POLYGON IS CLIPPED TO EUROPE FIRST. Natural Earth's Admin 0 country is
+# the STATE, not the European part of it: France carries French Guiana, Spain
+# the Canaries, Norway Svalbard and Jan Mayen. Measured raw, the French country
+# view would be a frame from the Atlantic to the Amazon with four invisible dots
+# in the corner of it.
+COUNTRY_CANVAS = (760.0, 560.0)
+COUNTRY_PADDING_KM = 50.0
+# Enough that a country holding one site is a country rather than a dot in a
+# field: Luxembourg and Slovenia are both under this across, and a frame that
+# fitted them exactly would show no neighbour and no coast to place them by.
+COUNTRY_MIN_SPAN_KM = 300.0
+
+# HOW NEAR IS ONE PLACE, in kilometres. Brief 16's default, and the only number
+# in the clustering: two drawn sites within this of each other are one marker
+# carrying a count.
+#
+# WHY CLUSTER AT ALL. The continental frame is fixed and identical for every
+# sector, which is what makes two sectors' pictures comparable; what it cannot
+# do is separate Debrecen from Debrecen. Two works eight kilometres apart are
+# one dot at this scale, drawn twice, and the second one is a mark the reader
+# cannot see and cannot click.
+#
+# AND WHY A COUNT RATHER THAN A SPREAD. The alternative -- nudging overlapping
+# marks apart until they separate -- puts a works where it is not, on a picture
+# whose whole claim is that every mark is a place somebody sourced. A marker
+# saying "4" is honest about being a group; a dot moved forty kilometres is not.
+CLUSTER_RADIUS_KM = 40.0
+
 
 
 # Output canvases. Both are in the same units the projection produces, scaled to
@@ -495,6 +536,145 @@ def project_point(site: dict) -> tuple[float, float]:
     return project(site["lon"], site["lat"])
 
 
+# ---------------------------------------------------------------------------
+# Clustering the overview's marks -- brief 16
+# ---------------------------------------------------------------------------
+
+
+def _mark_km(a: dict, b: dict) -> float:
+    """Kilometres between two marks, in the projection's own units. The
+    projection emits kilometres, so this is a subtraction rather than a geodesy
+    problem -- and it is the same number the frame was laid out in, which is what
+    makes a radius in kilometres mean the same thing as the distance a reader
+    sees."""
+    ax, ay = project(a["lon"], a["lat"])
+    bx, by = project(b["lon"], b["lat"])
+    return math.hypot(ax - bx, ay - by)
+
+
+def cluster_marks(marks: list[dict], radius_km: float = CLUSTER_RADIUS_KM) -> list[list[int]]:
+    """Every mark assigned to exactly one group, as indices into `marks`.
+
+    DETERMINISTIC FROM A SORTED INPUT, which is the property brief 16 asks for
+    and the reason this is a seeded single pass rather than anything cleverer.
+    The marks are walked in one fixed order -- country, then project id, then
+    site -- and the first unassigned mark SEEDS a group which then takes every
+    unassigned mark within the radius OF THAT SEED. Nothing is re-centred and
+    nothing is merged afterwards, so the answer is a function of the input order
+    alone and the diff of a rebuild is empty unless the data moved.
+
+    NOT TRANSITIVE, ON PURPOSE. Single-linkage clustering would chain A to C
+    through B and produce a group whose members are a hundred kilometres apart
+    while every link in it is short -- a marker standing for a region rather
+    than for a place. A seed and a radius says exactly what the marker means:
+    these are the sites within forty kilometres of the first of them.
+
+    AND NEVER ACROSS A BORDER. A marker links to one country view and carries one
+    country's count, so a group spanning Aachen and Maastricht would be a marker
+    with two destinations and a count belonging to neither. The border wins over
+    the distance, which is also the honest reading of the picture: the question
+    the overview is asked next is "what is this country building".
+    """
+    order = sorted(range(len(marks)),
+                   key=lambda i: (marks[i]["country"], marks[i]["id"], marks[i]["site"]))
+    taken: set[int] = set()
+    groups: list[list[int]] = []
+    for i in order:
+        if i in taken:
+            continue
+        seed = marks[i]
+        members = [i]
+        taken.add(i)
+        for j in order:
+            if j in taken:
+                continue
+            other = marks[j]
+            if other["country"] != seed["country"]:
+                continue
+            if _mark_km(seed, other) <= radius_km:
+                members.append(j)
+                taken.add(j)
+        groups.append(members)
+    return groups
+
+
+def cluster_doc(sector: str, marks: list[dict],
+                radius_km: float = CLUSTER_RADIUS_KM) -> dict:
+    """The overview's clustering, as the component gets it.
+
+    A GROUP OF ONE IS NOT A CLUSTER and is not listed here: it is the mark
+    itself, drawn as the picture has always drawn it, keeping its status fill and
+    its name on the paper. Only a group of two or more becomes a marker, and the
+    marks inside it are flagged `clustered` so the component knows not to draw
+    them twice.
+
+    THE MARKER CARRIES NO STATUS. Brief 16: neutral ink and a count. Four sites
+    at one place are rarely all in one status, and a marker that took the fill of
+    whichever of them sorted first would be asserting a state for the other
+    three. The statuses are on the country view, one row each.
+    """
+    groups = cluster_marks(marks, radius_km)
+    out = []
+    for members in groups:
+        if len(members) < 2:
+            continue
+        rows = [marks[i] for i in members]
+        cc = rows[0]["country"]
+        for i in members:
+            marks[i]["clustered"] = True
+        out.append({
+            # The seed's own id and site, which is what makes the key stable
+            # across a rebuild: the seed is decided by the sort, not by the
+            # geometry, so it does not move when a neighbour lands.
+            "key": f"{rows[0]['id']}::{rows[0]['site']}",
+            "country": cc,
+            "x": round(sum(r["x"] for r in rows) / len(rows), 1),
+            "y": round(sum(r["y"] for r in rows) / len(rows), 1),
+            "count": len(rows),
+            "projects": sorted({r["id"] for r in rows}),
+            "sites": [{"id": r["id"], "site": r["site"], "status": r["status"]}
+                      for r in sorted(rows, key=lambda r: (r["id"], r["site"]))],
+            "href": country_href(sector, cc),
+        })
+    out.sort(key=lambda c: c["key"])
+    return {
+        "radius_km": radius_km,
+        "groups": out,
+        # Counted here rather than left to be derived, because these two numbers
+        # and the mark count are the identity sources/check_map_clusters.py holds
+        # the file to: singles + every group's count == len(marks).
+        "singles": sum(1 for g in groups if len(g) == 1),
+        "clustered_sites": sum(len(g) for g in groups if len(g) >= 2),
+    }
+
+
+def country_href(sector: str, iso: str) -> str:
+    """Where a marker and a legend row point. One function, so the frame, the
+    legend and the route cannot spell the same URL two ways."""
+    return f"/sectors/{sector}/projects/{iso}"
+
+
+def country_totals(sector: str, marks: list[dict]) -> list[dict]:
+    """The legend under the overview: every country holding a drawn site, with
+    what it holds and a link to its own view.
+
+    ORDERED BY WHAT THEY HOLD, most first, then alphabetically by code -- so the
+    legend answers "where is most of this" before it answers "is Portugal in
+    here", and so two rebuilds order it the same way.
+    """
+    by: dict[str, list[dict]] = {}
+    for m in marks:
+        by.setdefault(m["country"], []).append(m)
+    names = country_names()
+    return [{
+        "iso": iso,
+        "text": names.get(iso, iso),
+        "sites": len(rows),
+        "projects": len({r["id"] for r in rows}),
+        "href": country_href(sector, iso),
+    } for iso, rows in sorted(by.items(), key=lambda kv: (-len(kv[1]), kv[0]))]
+
+
 def bounds(sites: list[dict]) -> tuple[float, float, float, float]:
     xs, ys = [], []
     for s in sites:
@@ -505,8 +685,12 @@ def bounds(sites: list[dict]) -> tuple[float, float, float, float]:
 
 
 def _pad(box):
+    return _pad_by(box, PADDING_KM)
+
+
+def _pad_by(box, margin: float):
     x0, y0, x1, y1 = box
-    return x0 - PADDING_KM, y0 - PADDING_KM, x1 + PADDING_KM, y1 + PADDING_KM
+    return x0 - margin, y0 - margin, x1 + margin, y1 + margin
 
 
 def inside(frame, site) -> bool:
@@ -1152,6 +1336,42 @@ PROJECTION = {
 }
 
 
+GEO_SOURCE = sm.ROOT / "data" / "geo" / "SOURCE.json"
+
+_BASEMAP: dict | None = None
+
+
+def basemap() -> dict:
+    """What the ground is drawn from, and when the copy on file was taken.
+
+    WHY IT IS ON EVERY FRAME. The stamp under a picture used to be one date --
+    the newest dateline over the drawn rows -- which is the currency of the
+    MARKS and says nothing about the currency of the LAND they are on. A picture
+    has two ages and a reader is owed both: the industry's, which moves every
+    week, and the basemap's, which is a 2022 Natural Earth release read on a
+    stated day and will not move until somebody fetches another one. Brief 17
+    §D.4 asks for the stamp to be computed from both, and this is the second
+    half of it.
+
+    AND IT IS THE ATTRIBUTION TOO. data/geo/SOURCE.json says the site will
+    credit Natural Earth "because a map that does not say what it is drawn from
+    is a map nobody can check", and until now no surface did. Read from that
+    file rather than retyped, so the credit cannot outlive the file it describes.
+    """
+    global _BASEMAP
+    if _BASEMAP is None:
+        doc = json.loads(GEO_SOURCE.read_text(encoding="utf-8"))
+        _BASEMAP = {
+            "title": doc["title"],
+            "publisher": doc["publisher"],
+            "version": doc["version"],
+            "retrieved_date": doc["retrieved_date"],
+            "licence": doc["licence"],
+            "url": doc["page"],
+        }
+    return _BASEMAP
+
+
 def _doc(map_id, kind, subject, frame, canvas, marks, detail, isos) -> dict:
     # Labels are laid out here, once the marks are final and before anything is
     # written, so that no consumer of this file ever sees a mark without one.
@@ -1190,6 +1410,11 @@ def _doc(map_id, kind, subject, frame, canvas, marks, detail, isos) -> dict:
         # without moving house. Gated: build() refuses a frame whose stamp is
         # empty while it draws a mark that carries a dateline.
         "as_of": max((m["dateline"] for m in marks if m["dateline"]), default=""),
+        # THE OTHER HALF OF THE STAMP. `as_of` dates the marks; this dates the
+        # ground. Both are read from a file and neither is the build's own date,
+        # which is the rule: a picture built today out of data from June is a
+        # picture of June. See basemap() above.
+        "basemap": basemap(),
     }
 
 
@@ -1214,6 +1439,16 @@ def sector_map(sector: str, projects: list[dict]) -> dict:
         for site in _sites(row):
             marks.append(_mark(row, site, "sector", frame, SECTOR_CANVAS))
     marks.sort(key=lambda m: (m["id"], m["site"]))
+    # WHERE A MARKER GOES WHEN A READER PRESSES IT. Brief 16 §2: on the
+    # overview, every marker and every legend row opens the country view. The
+    # project's own page stays on the mark as `href` -- the country view's marks
+    # use it, and so does the crop's -- so the file carries both links and the
+    # component picks by the kind of picture it is drawing. One destination
+    # written into the file would have made the overview and the country view
+    # two files instead of one.
+    for mark in marks:
+        mark["country_href"] = country_href(sector, mark["country"])
+        mark["clustered"] = False
     # AN OVERVIEW NAMES ONLY WHERE IT HAS SOMETHING. Europe carries forty-five
     # countries and naming all of them makes an atlas out of a picture whose one
     # question is where this sector is; a name over a country with no site in it
@@ -1221,6 +1456,14 @@ def sector_map(sector: str, projects: list[dict]) -> dict:
     isos = sorted({m["country"] for m in marks})
     doc = _doc(f"sector-{sector.replace('/', '__')}", "sector", sector,
                frame, SECTOR_CANVAS, marks, SECTOR_DETAIL, isos)
+    # CLUSTERED AFTER THE LABELS ARE PLACED, and that order is deliberate. The
+    # labels are laid out against every mark, including the ones a marker is
+    # about to stand in for, so a name that survives next to a cluster is a name
+    # that had room next to the sites themselves. Clustering first would lay the
+    # remaining labels out against a thinner picture and then draw them on the
+    # fuller one.
+    doc["clusters"] = cluster_doc(sector, marks, CLUSTER_RADIUS_KM)
+    doc["country_totals"] = country_totals(sector, marks)
     # The coordinates line under an overview states THE EXTENT OF WHAT IS
     # MARKED, not the frame's. `extent` is the frame and is kept in the file for
     # anyone checking the projection, but it is not a line to print: a conic's
@@ -1260,6 +1503,120 @@ def sector_map(sector: str, projects: list[dict]) -> dict:
                  for row in sorted(left_off, key=lambda r: r["name"])],
     }
     return doc
+
+
+def country_bounds(iso: str) -> tuple[float, float, float, float] | None:
+    """The projected bounds of the EUROPEAN part of one country, or None where
+    the basemap shows none of it inside this continent's box.
+
+    CLIPPED TO EUROPE_DEGREES BEFORE MEASURING, which is the whole of the work
+    here: Natural Earth's Admin 0 country is the state and not its European
+    part, so France measured raw reaches French Guiana, Spain the Canaries and
+    Norway Jan Mayen. A frame fitted to that is a frame with four invisible dots
+    in one corner of an ocean.
+    """
+    w, s, e, n = EUROPE_DEGREES
+    xs, ys = [], []
+    for ring in ne.countries().get(iso, []):
+        for lon, lat in ring:
+            if w <= lon <= e and s <= lat <= n:
+                x, y = project(lon, lat)
+                xs.append(x)
+                ys.append(y)
+    if not xs:
+        return None
+    return min(xs), min(ys), max(xs), max(ys)
+
+
+def country_map(sector: str, iso: str, projects: list[dict]) -> dict:
+    """One country's drawn sites, in a frame fitted to the country, unclustered.
+
+    WHY THIS IS A FRAME AND NOT A ZOOM. The component does no layout -- every
+    coordinate in every picture on this site is computed here, once, so that the
+    picture is identical for every reader and reviewable in a diff. A client-side
+    zoom on the continental frame would move that decision into the browser and
+    would need the marks' geometry recomputed there; a second frame is thirty
+    lines and keeps the rule.
+
+    NOTHING IS CLUSTERED HERE, which is the point of the page: the overview says
+    "four sites near Debrecen" and this is where the four are. The radius has
+    nothing to do with it -- at this scale forty kilometres is a quarter of the
+    picture.
+
+    AND IT DRAWS THIS COUNTRY'S SITES ONLY. A neighbour across the border that
+    falls inside the frame is not part of the answer to "what is Hungary
+    building", and drawing it would put a site in a country total it is not in.
+    """
+    rows = [r for r in projects
+            if r["sector"] == sector and r["country"] == iso and drawn(r) and _sites(r)]
+    sites = [site for row in rows for site in _sites(row)]
+
+    # The country, then the dots, then padding, then a floor on the span.
+    box = country_bounds(iso)
+    dots = bounds(sites) if sites else None
+    if box and dots:
+        frame = (min(box[0], dots[0]), min(box[1], dots[1]),
+                 max(box[2], dots[2]), max(box[3], dots[3]))
+    else:
+        frame = box or dots
+    x0, y0, x1, y1 = _pad_by(frame, COUNTRY_PADDING_KM)
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    span_x = max(x1 - x0, COUNTRY_MIN_SPAN_KM)
+    span_y = max(y1 - y0, COUNTRY_MIN_SPAN_KM * COUNTRY_CANVAS[1] / COUNTRY_CANVAS[0])
+    frame = fit((cx - span_x / 2, cy - span_y / 2, cx + span_x / 2, cy + span_y / 2),
+                COUNTRY_CANVAS)
+
+    marks = []
+    for row in sorted(rows, key=lambda r: r["id"]):
+        for site in _sites(row):
+            marks.append(_mark(row, site, "sector", frame, COUNTRY_CANVAS))
+    marks.sort(key=lambda m: (m["id"], m["site"]))
+    for mark in marks:
+        mark["country_href"] = country_href(sector, mark["country"])
+        mark["clustered"] = False
+
+    # A COUNTRY VIEW NAMES EVERYTHING IN VIEW, the crop's rule rather than the
+    # overview's: the reader has been handed a region at four hundred kilometres
+    # across and the outlines either side of the border are not the ones anybody
+    # recognises from memory.
+    doc = _doc(f"sector-{sector.replace('/', '__')}-{iso}", "country",
+               f"{sector}/{iso}", frame, COUNTRY_CANVAS, marks, PROJECT_DETAIL,
+               visible_countries(frame, COUNTRY_CANVAS))
+    doc["country"] = iso
+    doc["sector"] = sector
+    doc["coordinates"] = [{
+        "site": f"{len(marks)} site{'' if len(marks) == 1 else 's'} in "
+                f"{country_names().get(iso, iso)}",
+        "south": min(m["lat"] for m in marks), "north": max(m["lat"] for m in marks),
+        "west": min(m["lon"] for m in marks), "east": max(m["lon"] for m in marks),
+        "as_of": doc["as_of"],
+    }] if marks else []
+    # THE COUNTRY'S OWN REMAINDER, counted the way the overview counts the
+    # sector's. A reader on the Spanish view counting four dots against a
+    # register that holds nine Spanish rows is owed the difference by name, and
+    # the same two reasons account for it: cancelled, or no position on file.
+    left_off = [row for row in projects
+                if row["sector"] == sector and row["country"] == iso
+                and (not drawn(row) or not _sites(row))]
+    doc["undrawn"] = {
+        "projects": len(left_off),
+        "sites": sum(len(_sites(row)) for row in left_off),
+        "rows": [{"id": row["id"], "name": row["name"], "status": row["status"],
+                  "sited": bool(_sites(row)),
+                  "stopped": row["status"] in sm.STOPPED_STATUSES}
+                 for row in sorted(left_off, key=lambda r: r["name"])],
+    }
+    return doc
+
+
+def drawn_countries(sector: str, projects: list[dict]) -> list[str]:
+    """The countries a sector's overview puts a mark in, which is exactly the set
+    that gets a country view. A country holding nothing but undrawn rows has no
+    marker and no legend row, so nothing links to it and it gets no page; its
+    rows are named in the undrawn list under the overview, where a reader
+    counting them finds them."""
+    return sorted({r["country"] for r in projects
+                   if r["sector"] == sector and drawn(r) and _sites(r)})
 
 
 def project_map(subject: dict, projects: list[dict]) -> dict:
@@ -1424,7 +1781,26 @@ def store_report(projects: list[dict]) -> list[str]:
 
 def build() -> list[dict]:
     projects = sm.load("project")
-    docs = [sector_map(s, projects) for s in sm.mapped_sectors()]
+    # WHICH SECTORS GET AN OVERVIEW, and it is no longer which sectors have a
+    # ranking. Until 12 October 2026 this ran over sm.mapped_sectors() -- the
+    # sectors with a bottleneck file -- which is the set four other builders
+    # need and is the wrong question to ask of a picture: hydrogen has 13 placed
+    # sites and no bottleneck file, CO2 transport and storage has 3 and neither a
+    # bottleneck nor a ranking, and both were silently without an overview
+    # because of an artefact rather than because of their data. The condition is
+    # now the picture's own, stated in sm.drawn_sectors() and read on the web side
+    # by `hasMap`; sources/check_map_clusters.py fails the build if the two
+    # readings disagree. See sources/scope.md, "A draw hold gates publication" --
+    # whether a drawn page may be PUBLISHED is still a separate question, and it
+    # is still the hold's.
+    docs = [sector_map(s, projects) for s in sm.drawn_sectors(projects)]
+    # ONE COUNTRY VIEW PER COUNTRY THAT HOLDS A MARK -- brief 16 §3. Built here
+    # rather than on demand for the reason every frame on this site is: the
+    # geometry is computed once, is identical for every reader, and is reviewable
+    # in a diff.
+    for sector in sm.drawn_sectors(projects):
+        for iso in drawn_countries(sector, projects):
+            docs.append(country_map(sector, iso, projects))
     for row in projects:
         # A ROW WITH NO POSITION GETS NO CROP, and there is nothing to design
         # around that: a crop is a picture of where something is, and a stopped
@@ -1462,13 +1838,16 @@ def main() -> int:
         # A sector overview whose frame does not hold one of its own projects
         # would drop it without saying so, which is the failure this whole layer
         # exists to make impossible.
-        if doc["kind"] == "sector":
+        if doc["kind"] in ("sector", "country"):
             w, h = doc["canvas"]["width"], doc["canvas"]["height"]
             for mark in doc["marks"]:
                 if not (0 <= mark["x"] <= w and 0 <= mark["y"] <= h):
-                    print(f"build_maps: {mark['id']} ({mark['site']}) falls outside the "
-                          f"Europe frame — widen EUROPE_DEGREES rather than letting a "
-                          f"project vanish from its own sector's overview", file=sys.stderr)
+                    where = ("the Europe frame — widen EUROPE_DEGREES"
+                             if doc["kind"] == "sector"
+                             else f"the {doc['country']} frame — widen COUNTRY_PADDING_KM")
+                    print(f"build_maps: {mark['id']} ({mark['site']}) falls outside "
+                          f"{where} rather than letting a project vanish from a frame "
+                          f"that counts it", file=sys.stderr)
                     failed = True
         path = OUT_DIR / f"{doc['id']}.json"
         written.add(path.name)
@@ -1516,10 +1895,15 @@ def main() -> int:
         return 1
     verb = "--check," if args.check else "wrote"
     sectors = sum(1 for d in docs if d["kind"] == "sector")
+    countries = sum(1 for d in docs if d["kind"] == "country")
+    groups = sum(len(d["clusters"]["groups"]) for d in docs if d["kind"] == "sector")
+    singles = sum(d["clusters"]["singles"] for d in docs if d["kind"] == "sector")
     undrawn = sum(1 for row in projects if not drawn(row) and _sites(row))
     unsited = sum(1 for row in projects if not _sites(row))
-    print(f"build_maps: {verb} {len(docs)} frame(s) — {sectors} sector, "
-          f"{len(docs) - sectors} project, "
+    print(f"build_maps: {verb} {len(docs)} frame(s) — {sectors} sector "
+          f"({groups} cluster(s) at {CLUSTER_RADIUS_KM:g} km, {singles} single(s)), "
+          f"{countries} country, "
+          f"{len(docs) - sectors - countries} project, "
           f"{undrawn} project(s) drawn only on their own crop, "
           f"{unsited} with no position and no crop, "
           f"{sum(len(d['land']) for d in docs)} stroke(s), "

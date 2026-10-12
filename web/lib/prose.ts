@@ -252,6 +252,9 @@ export function sectorGeoProse(c: {
   /** How many drawn marks are the works the installation stands on rather than
    *  the installation's own outline. See projectGeoProse. */
   hostWorks: number;
+  /** What the clustering did, where it did anything. Absent on a picture with
+   *  no numbered marker on it. */
+  clusters?: { groups: number; sites: number; radiusKm: number };
 }): { heading: string; standfirst: string } {
   const state = list([
     c.running > 0 ? `${c.running} operating, commissioning or under construction` : null,
@@ -311,12 +314,111 @@ export function sectorGeoProse(c: {
       ? ` ${c.hostWorks} of ${n(c.sites, "mark")} ${c.hostWorks === 1 ? "is" : "are"} ` +
         `the works the installation stands on rather than its own outline.`
       : "";
+  // WHAT WAS GROUPED, AND HOW NEAR IS ONE PLACE. Brief 16 clusters drawn sites
+  // within a radius, and a numbered ring is the one mark on this picture a
+  // reader cannot read off the key — so the sentence says what it means and
+  // what the radius is. Absent where nothing clustered, which is the ordinary
+  // case on four of the five sectors: a clause explaining a marker the picture
+  // does not draw would be noise.
+  const grouped =
+    c.clusters && c.clusters.groups > 0
+      ? ` ${n(c.clusters.groups, "numbered marker")} ${c.clusters.groups === 1 ? "stands" : "stand"} ` +
+        `for ${n(c.clusters.sites, "site")} within ${c.clusters.radiusKm} km of each other.`
+      : "";
   return {
     heading: `Where Europe is building ${c.sector}`,
     standfirst:
       `${n(c.sites, "site")} in ${n(c.countries, "country", "countries")}` +
       (state ? `: ${state}.` : ".") +
-      " Each one opens its own page." +
+      // THE DESTINATION CHANGED AND THE SENTENCE HAD TO. It read "Each one
+      // opens its own page", which was true while a mark opened its project.
+      // Brief 16 §2 sends every marker and every legend row to the country
+      // view, so the sentence says where a reader will land — a picture that
+      // describes a link it no longer has is the worst kind of wrong, because
+      // nothing about it looks broken.
+      " Each one opens its country's view." +
+      grouped +
+      host +
+      left,
+  };
+}
+
+/** WHAT A NUMBERED RING IS. The marker's own title, because it is the one mark
+ *  on the picture that the key does not explain: every other mark is told apart
+ *  by shape and fill, and this one deliberately has neither. */
+export function geoClusterProse(c: {
+  count: number;
+  projects: number;
+  country: string;
+  radiusKm: number;
+}): string {
+  const projects =
+    c.projects === c.count
+      ? ""
+      : `, across ${n(c.projects, "project")}`;
+  return (
+    `${n(c.count, "site")} in ${c.country} within ${c.radiusKm} km of each other${projects}. ` +
+    `Opens every tracked site in ${c.country}.`
+  );
+}
+
+/** ONE COUNTRY'S FRAME, on the country view — brief 16 §3.
+ *
+ *  THE SAME GRAMMAR AS THE OVERVIEW AND A DIFFERENT SUBJECT. The overview
+ *  counts a continent and says what it left off; this counts a country and says
+ *  the same. Nothing is clustered here, which is the point of the page, and the
+ *  sentence says so rather than leaving a reader to wonder whether a ring is
+ *  hiding something: the overview's marker said "four near Debrecen" and this is
+ *  where the four are.
+ *
+ *  AND A MARK HERE OPENS ITS PROJECT. On the overview it opens this page; from
+ *  here there is nowhere further to send a reader but the works itself. */
+export function countryGeoProse(c: {
+  sector: string;
+  country: string;
+  sites: number;
+  projects: number;
+  running: number;
+  pending: number;
+  paused: number;
+  undrawn: { projects: number; sites: number; rows?: UndrawnRow[] };
+  hostWorks: number;
+}): { heading: string; standfirst: string } {
+  const state = list([
+    c.running > 0 ? `${c.running} operating, commissioning or under construction` : null,
+    c.pending > 0 ? `${c.pending} announced or funded and not yet built` : null,
+    c.paused > 0 ? `${c.paused} paused` : null,
+  ]);
+  const named = c.undrawn.rows ?? [];
+  const off = named.filter((r) => r.sited).map((r) => r.name);
+  const unsitedStopped = named.filter((r) => !r.sited && r.stopped);
+  const unsitedLive = named.filter((r) => !r.sited && !r.stopped);
+  const clauses = [
+    off.length > 0 ? `${list(off)} — cancelled` : null,
+    unsitedStopped.length > 0
+      ? `${list(unsitedStopped.map((r) => `${r.name} (${r.status})`))} — location not sought`
+      : null,
+    unsitedLive.length > 0
+      ? `${list(unsitedLive.map((r) => `${r.name} (${r.status})`))} — no citable source places the works`
+      : null,
+  ].filter(Boolean) as string[];
+  const left =
+    named.length > 0
+      ? ` ${n(named.length, "further project")} on file in ${c.country} ` +
+        `${named.length === 1 ? "is" : "are"} not drawn: ${clauses.join("; and ")}.`
+      : "";
+  const host =
+    c.hostWorks > 0
+      ? ` ${c.hostWorks} of ${n(c.sites, "mark")} ${c.hostWorks === 1 ? "is" : "are"} ` +
+        `the works the installation stands on rather than its own outline.`
+      : "";
+  return {
+    heading: `Every tracked ${c.sector} site in ${c.country}`,
+    standfirst:
+      `${n(c.sites, "site")} in ${c.country}` +
+      (c.projects === c.sites ? "" : `, across ${n(c.projects, "project")}`) +
+      (state ? `: ${state}.` : ".") +
+      " Drawn one for one, with nothing grouped. Each one opens its own page." +
       host +
       left,
   };

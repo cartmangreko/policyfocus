@@ -59,8 +59,12 @@ test("no route can be published and demoted at once, on a list of every kind", (
     mappedSectors: ["cement", "steel"],
     unmappedSectors: ["chem/plastics", "auto"],
     projectIds: ["brevik-ccs", "stegra-boden"],
+    heldProjectIds: ["northern-lights"],
     measuresWithLead: ["/measures/cbam/fin-03", "/measures/ets/cbam-01"],
     measuresWithoutLead: ["/measures/omnibus/rpt-01"],
+    spokeRoutes: ["/sectors/cement/projects", "/sectors/cement/technologies"],
+    countryRoutes: ["/sectors/cement/projects/DE", "/sectors/steel/projects/SE"],
+    heldCountryRoutes: ["/sectors/ccs/projects/NO"],
   });
   for (const path of routes.indexable) {
     assert.equal(isDemoted(path, routes.demoted), false, `${path} is in both lists`);

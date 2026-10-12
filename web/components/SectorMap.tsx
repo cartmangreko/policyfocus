@@ -96,6 +96,17 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
         paused: geoMarks(["paused"]),
         undrawn: geoFrame.undrawn ?? { projects: 0, sites: 0 },
         hostWorks: geoFrame.marks.filter((m) => m.host_works).length,
+        // WHAT THE CLUSTERING DID, read off the built file rather than counted
+        // here: sources/build_maps.py grouped the marks and the sentence over
+        // the picture states its own arithmetic, so the clause and the markers
+        // cannot disagree about how many there are.
+        clusters: geoFrame.clusters
+          ? {
+              groups: geoFrame.clusters.groups.length,
+              sites: geoFrame.clusters.clustered_sites,
+              radiusKm: geoFrame.clusters.radius_km,
+            }
+          : undefined,
       })
     : null;
 

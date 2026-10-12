@@ -24,6 +24,13 @@
 //              /sectors/<slug>      where the sector renders the product
 //                                   template, i.e. where it has a lead block
 //              /projects/<id>       object pages; lead blocks outstanding
+//              /sectors/<slug>/projects/<CC>
+//                                   the country views (brief 16 §3). The one
+//                                   page under a hub that is indexable: it
+//                                   renders a lead — a heading, a count line
+//                                   and a picture of one real place — which is
+//                                   what §0.8 makes indexability follow. A
+//                                   spoke beside it is a list and stays demoted.
 //
 //   demoted    /measures            the browse surface, a thin list page
 //              /measures/<act>/<id> where its lead block could not be built
@@ -31,6 +38,11 @@
 //                                                where its industry is not built
 //              /sectors/<slug>      where the sector still renders the
 //                                   directory template and has no lead block
+//              /sectors/<slug>/projects/<CC>
+//                                   where the sector's own hub is held. A
+//                                   country view is a cut of a hub and cannot
+//                                   be published while the picture it is cut
+//                                   from is withheld.
 //              /acts, /acts/<file>  near-duplicates of EUR-Lex
 //              /changes, /changes/<id>            dated diffs
 //              /materials/<id>      cross-sector nodes; lead blocks outstanding
@@ -95,6 +107,13 @@ export function classify(input: {
    *  in rather than derived here for the same reason every other list is: which
    *  sector has spokes is a question about which sector has a dataset. */
   spokeRoutes?: string[];
+  /** The country views — /sectors/<slug>/projects/<CC>, brief 16 §3. Split in
+   *  two for the same reason the project pages are: whether one is published is
+   *  a question about whether its SECTOR's hub has been released, and a held
+   *  sector takes its country views down with it. A country view is a cut of a
+   *  hub, and a cut of a withheld picture is withheld. */
+  countryRoutes?: string[];
+  heldCountryRoutes?: string[];
 }): { indexable: string[]; demoted: string[] } {
   return {
     indexable: [
@@ -103,6 +122,7 @@ export function classify(input: {
       ...input.mappedSectors.map((s) => `/sectors/${s}`),
       ...input.projectIds.map((id) => `/projects/${id}`),
       ...(input.measuresWithLead ?? []),
+      ...(input.countryRoutes ?? []),
       "/coverage",
     ],
     demoted: [
@@ -112,6 +132,7 @@ export function classify(input: {
       ...(input.heldProjectIds ?? []).map((id) => `/projects/${id}`),
       ...(input.measuresWithoutLead ?? []),
       ...(input.spokeRoutes ?? []),
+      ...(input.heldCountryRoutes ?? []),
     ],
   };
 }
@@ -145,11 +166,30 @@ export function robotsRules(indexable: boolean): {
  *  indexable pages down with the list page above them. */
 export const EXACT_ONLY = [MEASURE_BROWSE];
 
+/** THE PROJECTS SPOKE, which is the second route of that kind — brief 16 §3.
+ *  `/sectors/cement/projects` is a demoted list page and the country views
+ *  under it, `/sectors/cement/projects/DE`, are classified one at a time by
+ *  whether their sector's hub has been released. Prefix-matching the spoke
+ *  would demote all 29 country views, which is exactly the trap /measures was
+ *  carved out of — found by this gate rather than in a sitemap, which is what
+ *  it is for.
+ *
+ *  ONE OR TWO SEGMENTS OF SLUG, because a child sector has two:
+ *  /sectors/chem/plastics/projects is a spoke as much as /sectors/chem/projects
+ *  is. Nothing else under a spoke is a page. */
+const PROJECTS_SPOKE = /^\/sectors\/[^/]+(?:\/[^/]+)?\/projects$/;
+
+/** Whether a demoted route demotes only itself. Two kinds and they are the same
+ *  kind: a list page whose children are classified individually. */
+export function isExactOnly(route: string): boolean {
+  return EXACT_ONLY.includes(route) || PROJECTS_SPOKE.test(route);
+}
+
 /** Whether a path falls under any demoted route. Prefix matching on segment
  *  boundaries — "/acts" covers "/acts/cbam" and must not cover a future
  *  "/actsomething" — except for the exact-only routes above. */
 export function isDemoted(path: string, demoted: string[]): boolean {
   return demoted.some(
-    (p) => path === p || (!EXACT_ONLY.includes(p) && path.startsWith(`${p}/`)),
+    (p) => path === p || (!isExactOnly(p) && path.startsWith(`${p}/`)),
   );
 }

@@ -27,6 +27,7 @@ import {
   projectHref,
   type MaterialFlow,
   type Parameter,
+  type Project,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
 
@@ -119,14 +120,36 @@ function MaterialList({
 }
 
 function ProjectsSpoke({ slug }: { slug: SectorSlug }) {
-  const rows = sectorProjectRows(slug);
-  const params = getParameters();
   return (
     <>
       <p className="tmap-sub">
         Sorted by last status change, the same order the hub&apos;s block is the top of. Every
         change carries its source.
       </p>
+      <ProjectTable rows={sectorProjectRows(slug)} />
+    </>
+  );
+}
+
+/** THE PROJECT REGISTER'S TABLE, over whatever rows the caller hands it.
+ *
+ *  Extracted from ProjectsSpoke on 12 October 2026 so the country view (brief
+ *  16 §3) renders the same eight columns over its own country's rows. A second
+ *  table would have drifted on the first column anybody added, and the two
+ *  pages are answering the same question over different populations — which is
+ *  a filter, not a different list.
+ *
+ *  IT TAKES ROWS AND NOT A SLUG, deliberately: the hub's block, the spoke and
+ *  the country view each decide their own population, and a table that filtered
+ *  for itself would be a third place deciding what is on it.
+ *
+ *  THE SCROLL CONTAINER IS PART OF THE TABLE. Eight columns do not fit a phone,
+ *  and the one thing that must not happen is the PAGE scrolling sideways — see
+ *  web/app/globals.css, .tprojects-scroll. */
+export function ProjectTable({ rows }: { rows: Project[] }) {
+  const params = getParameters();
+  return (
+    <>
       <div className="tprojects-scroll">
         <table className="tprojects">
           <thead>

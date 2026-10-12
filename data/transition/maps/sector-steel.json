@@ -378,6 +378,8 @@
       "dateline": "2024-03-14",
       "x": 280.2,
       "y": 428.2,
+      "country_href": "/sectors/steel/projects/FR",
+      "clustered": false,
       "labels": {
         "wide": {
           "x": 266.3,
@@ -447,6 +449,8 @@
       "dateline": "2026-06-18",
       "x": 450.8,
       "y": 506.5,
+      "country_href": "/sectors/steel/projects/AT",
+      "clustered": false,
       "labels": {
         "wide": {
           "x": 464.7,
@@ -510,6 +514,8 @@
       "dateline": "2026-06-18",
       "x": 439.4,
       "y": 488.7,
+      "country_href": "/sectors/steel/projects/AT",
+      "clustered": false,
       "labels": {
         "wide": {
           "x": 425.5,
@@ -567,6 +573,8 @@
       "dateline": "2021-06-21",
       "x": 487.9,
       "y": 120.9,
+      "country_href": "/sectors/steel/projects/SE",
+      "clustered": true,
       "labels": {
         "wide": {
           "x": 501.8,
@@ -630,6 +638,8 @@
       "dateline": "2024-03-07",
       "x": 385.2,
       "y": 410.2,
+      "country_href": "/sectors/steel/projects/DE",
+      "clustered": false,
       "labels": {
         "wide": {
           "x": 399.1,
@@ -687,6 +697,8 @@
       "dateline": "2026-06-24",
       "x": 483.4,
       "y": 116.1,
+      "country_href": "/sectors/steel/projects/SE",
+      "clustered": true,
       "labels": {
         "wide": {
           "x": 469.5,
@@ -744,6 +756,8 @@
       "dateline": "2023-07-20",
       "x": 337.9,
       "y": 423.1,
+      "country_href": "/sectors/steel/projects/DE",
+      "clustered": false,
       "labels": {
         "wide": {
           "x": 347.9,
@@ -913,6 +927,75 @@
     }
   ],
   "as_of": "2026-06-24",
+  "basemap": {
+    "title": "Natural Earth — Admin 0 Countries, 1:10m",
+    "publisher": "Natural Earth",
+    "version": "5.1.1",
+    "retrieved_date": "2026-08-28",
+    "licence": "public domain",
+    "url": "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/"
+  },
+  "clusters": {
+    "radius_km": 40.0,
+    "groups": [
+      {
+        "key": "hybrit-pilot-lulea::HYBRIT pilot plant, Luleå",
+        "country": "SE",
+        "x": 485.6,
+        "y": 118.5,
+        "count": 2,
+        "projects": [
+          "hybrit-pilot-lulea",
+          "stegra-boden"
+        ],
+        "sites": [
+          {
+            "id": "hybrit-pilot-lulea",
+            "site": "HYBRIT pilot plant, Luleå",
+            "status": "operating"
+          },
+          {
+            "id": "stegra-boden",
+            "site": "Boden steelworks",
+            "status": "construction"
+          }
+        ],
+        "href": "/sectors/steel/projects/SE"
+      }
+    ],
+    "singles": 5,
+    "clustered_sites": 2
+  },
+  "country_totals": [
+    {
+      "iso": "AT",
+      "text": "Austria",
+      "sites": 2,
+      "projects": 2,
+      "href": "/sectors/steel/projects/AT"
+    },
+    {
+      "iso": "DE",
+      "text": "Germany",
+      "sites": 2,
+      "projects": 2,
+      "href": "/sectors/steel/projects/DE"
+    },
+    {
+      "iso": "SE",
+      "text": "Sweden",
+      "sites": 2,
+      "projects": 2,
+      "href": "/sectors/steel/projects/SE"
+    },
+    {
+      "iso": "FR",
+      "text": "France",
+      "sites": 1,
+      "projects": 1,
+      "href": "/sectors/steel/projects/FR"
+    }
+  ],
   "coordinates": [
     {
       "site": "7 sites",

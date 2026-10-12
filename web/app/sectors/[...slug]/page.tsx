@@ -24,13 +24,17 @@ import {
 } from "@/lib/data";
 import { getExposure } from "@/lib/exposure";
 import { DEMOTED, SITE_ROBOTS } from "@/lib/launch";
-import { sectorIsIndexable } from "@/lib/siteRoutes";
+import { countryIsIndexable, sectorIsIndexable } from "@/lib/siteRoutes";
 import { arrivalProse, summaryProse } from "@/lib/prose";
 import { getSectorSummary } from "@/lib/summaries";
 import { getFindingsForSector, withEvidence } from "@/lib/findings";
 import { getRecordsForSector, recordHref } from "@/lib/records";
-import { getImportance, hasMap } from "@/lib/transition";
+import { getImportance, getProjects, hasMap, isDrawable } from "@/lib/transition";
 import SectorSpoke from "@/components/SectorSpoke";
+import SectorCountry from "@/components/SectorCountry";
+import { countryFrames, getCountryMap } from "@/lib/maps";
+import { getCountryH1 } from "@/lib/sitetext";
+import { sectorNames } from "@/lib/sectorSections";
 import { SPOKE_IDS, isSpoke, spokeTitle, type SpokeId } from "@/lib/spokes";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
 import type { Measure, SectorSlug } from "@/lib/types";
@@ -67,7 +71,34 @@ export function generateStaticParams() {
   const spokes = getSectorSlugs()
     .filter((slug) => hasMap(slug))
     .flatMap((slug) => SPOKE_IDS.map((spoke) => ({ slug: [...slug.split("/"), spoke] })));
-  return [...sectors, ...spokes];
+  // THE COUNTRY VIEWS — brief 16 §3, three segments:
+  // /sectors/<slug>/projects/<CC>. Enumerated from the BUILT FRAMES rather than
+  // from the rows, which is the same discipline as everything else on this
+  // layer: sources/build_maps.py decides which country views exist by deciding
+  // which frames to write, and a route with no frame behind it would render
+  // nothing.
+  const countries = countryFrames().map(({ sector, iso }) => ({
+    slug: [...sector.split("/"), "projects", iso],
+  }));
+  return [...sectors, ...spokes, ...countries];
+}
+
+/** The sector and the country a path names, or null where it names anything
+ *  else. Three segments and the middle one is always "projects": the country
+ *  view is a cut of the projects spoke, and its URL says so.
+ *
+ *  A TWO-LETTER UPPER-CASE TAIL CANNOT COLLIDE WITH A SPOKE OR A CHILD SECTOR.
+ *  A spoke is two segments and a child sector is two segments; this is three.
+ *  The tail is checked against the built frames rather than against a pattern,
+ *  so /sectors/cement/projects/ZZ is a 404 and not an empty picture of nowhere. */
+function asCountry(slug: string): { sector: string; iso: string } | null {
+  const parts = slug.split("/");
+  if (parts.length < 3) return null;
+  const iso = parts[parts.length - 1];
+  if (parts[parts.length - 2] !== "projects") return null;
+  const sector = parts.slice(0, parts.length - 2).join("/");
+  if (!(sector in SECTORS)) return null;
+  return getCountryMap(sector, iso) ? { sector, iso } : null;
 }
 
 /** The sector and the spoke a path names, or null where it names a sector on
@@ -87,6 +118,26 @@ export async function generateMetadata({
   params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
   const slug = (await params).slug.join("/");
+  // A COUNTRY VIEW IS INDEXABLE, and it is the one page under a hub that is.
+  // It renders a lead — a heading, a count line and a picture of a real place —
+  // which is what §0.8 makes indexability follow; a spoke is a list. The
+  // exception is a sector whose own hub is held, which takes its country views
+  // with it: see countryIsIndexable.
+  const country = asCountry(slug);
+  if (country) {
+    const frame = getCountryMap(country.sector, country.iso)!;
+    const names = sectorNames(country.sector);
+    const text = frame.countries.find((c) => c.iso === country.iso)?.text ?? country.iso;
+    const drawn = frame.marks.length;
+    return {
+      robots: countryIsIndexable(country.sector, country.iso) ? SITE_ROBOTS : DEMOTED,
+      title: getCountryH1(names, text),
+      description:
+        `Every tracked ${names.short} project in ${text}: ${drawn} ` +
+        `${drawn === 1 ? "site" : "sites"} drawn one for one, each with its status, ` +
+        `capacity, public funding and the date it last moved.`,
+    };
+  }
   // A SPOKE IS ALWAYS DEMOTED. It is the evidence layer under the hub: the
   // crawler walks through it, and the URL a stranger meets in search is the
   // hub. Stated here and in lib/routes.ts, which keeps it out of the sitemap,
@@ -117,17 +168,31 @@ export async function generateMetadata({
   const robots = sectorIsIndexable(slug) ? SITE_ROBOTS : DEMOTED;
   // A sector with a map is a different page and needs a different tag: the
   // register's measure counts describe what the OLD template shows.
+  //
+  // AND THE RANKING IS NO LONGER GUARANTEED. Until 12 October 2026 `hasMap`
+  // meant "has an importance file", so this branch could assert one; brief 17
+  // §B.3 makes it mean "has a drawn row", and hydrogen and CO2 transport and
+  // storage render the hub with no ranking at all. The clause about measures is
+  // therefore written where there is a ranking and dropped where there is not —
+  // dropped rather than zeroed, because "0 of 0 measures" is a claim about the
+  // sector and what is true is that nobody has ranked them yet.
   if (hasMap(slug)) {
-    const imp = getImportance(slug)!;
-    const inView = imp.measures.filter((m) => m.in_sector_view).length;
-    const priced = imp.measures.filter((m) => m.money.computable).length;
+    const imp = getImportance(slug);
+    const rows = getProjects(slug);
+    const drawn = rows.filter(isDrawable).length;
+    const measures = imp
+      ? `${imp.measures.filter((m) => m.in_sector_view).length} of ` +
+        `${imp.measures.length} EU measures that decide whether it pays ` +
+        `(${imp.measures.filter((m) => m.money.computable).length} priced), the ` +
+        `constraints in the way, the technologies past them, and `
+      : "";
     return {
       robots,
       title: `${name} — exposure, constraints and pipeline`,
       description:
-        `What European ${name.toLowerCase()} is under: ${inView} of ${imp.measures.length} EU ` +
-        `measures that decide whether it pays (${priced} priced), the constraints in the way, ` +
-        `the technologies past them, and every project building one.`,
+        `What European ${name.toLowerCase()} is under: ${measures}` +
+        `${rows.length} tracked ${rows.length === 1 ? "project" : "projects"}, ` +
+        `${drawn} of them placed on the ground.`,
     };
   }
   // The description is the strip's prose form — the same template, the same
@@ -159,6 +224,10 @@ export default async function SectorPage({
   params: Promise<{ slug: string[] }>;
 }) {
   const slug = (await params).slug.join("/");
+  const country = asCountry(slug);
+  if (country) {
+    return <SectorCountry slug={country.sector as SectorSlug} iso={country.iso} />;
+  }
   const spoke = asSpoke(slug);
   if (spoke) return <SectorSpoke slug={spoke.sector as SectorSlug} spoke={spoke.spoke} />;
   // THE BRANCH. A sector with a transition map renders the map: the product

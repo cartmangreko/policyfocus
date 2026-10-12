@@ -18,7 +18,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { classify, isDemoted, robotsRules, DEMOTED_PREFIXES } from "./routes.ts";
+import { classify, isDemoted, isExactOnly, robotsRules, DEMOTED_PREFIXES } from "./routes.ts";
 
 const HERE = new URL(".", import.meta.url).pathname;
 
@@ -145,6 +145,38 @@ test("a measure page follows its own lead block, not the browse page above it", 
   assert.equal(routes.demoted.includes("/measures"), true);
   assert.equal(isDemoted("/measures/cbam/fin-03", routes.demoted), false);
   assert.equal(isDemoted("/measures/omnibus/rpt-01", routes.demoted), true);
+});
+
+test("a country view follows its sector's hub, not the spoke above it", () => {
+  // The second exact-only route, and the same trap /measures was carved out of.
+  // /sectors/cement/projects is a demoted list page; the country views under it
+  // are the product (brief 16 §3) and are classified one at a time. Prefix
+  // matching the spoke would take every one of them down with it.
+  const routes = classify({
+    mappedSectors: ["cement"],
+    unmappedSectors: ["ccs"],
+    projectIds: [],
+    spokeRoutes: ["/sectors/cement/projects", "/sectors/ccs/projects"],
+    countryRoutes: ["/sectors/cement/projects/DE"],
+    heldCountryRoutes: ["/sectors/ccs/projects/NO"],
+  });
+  assert.equal(routes.demoted.includes("/sectors/cement/projects"), true);
+  assert.equal(isDemoted("/sectors/cement/projects/DE", routes.demoted), false);
+  // A held sector's country view is demoted on its own entry, not on the spoke
+  // above it — the hub is held, so every cut of it is.
+  assert.equal(isDemoted("/sectors/ccs/projects/NO", routes.demoted), true);
+  for (const path of routes.indexable) {
+    assert.equal(isDemoted(path, routes.demoted), false, `${path} is in both lists`);
+  }
+});
+
+test("a child sector's projects spoke is exact-only too", () => {
+  // /sectors/chem/plastics/projects has two slug segments, and the regex has to
+  // know it: a child sector is a sector and its spoke is a spoke.
+  assert.equal(isExactOnly("/sectors/chem/plastics/projects"), true);
+  assert.equal(isExactOnly("/sectors/cement/projects"), true);
+  assert.equal(isExactOnly("/sectors/cement/technologies"), false);
+  assert.equal(isExactOnly("/sectors/cement"), false);
 });
 
 test("demotion matches on segment boundaries", () => {
