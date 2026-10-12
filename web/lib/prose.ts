@@ -518,20 +518,29 @@ export function projectNoLocationProse(c: {
    *  thought it worth doing" would be false about work that was done. */
   stopped: boolean;
 }): string {
+  // TWO WORDS CHANGED, 12 October 2026, and they had been on 147 pages. This
+  // paragraph said "this register holds no position for it" and "The row is
+  // held anyway": `register` is on the brand list and `row` is on the internal
+  // one, and this is the sentence a reader meets on every project whose works
+  // nobody has placed. It was invisible to the vocabulary gate for two reasons
+  // at once — the gate did not read web/lib, and its string extractor paired
+  // backticks across a `+` chain and so saw only every other literal in a
+  // multi-line template. Both are fixed in
+  // sources/check_display_vocabulary.py; this is what the fixed gate found.
   const place = c.plant ? `${c.plant}, ${c.country}` : c.country;
   if (c.stopped) {
     const stopped = c.status === "cancelled" ? "cancelled" : c.status;
     return (
-      `${c.name} is ${stopped}, and this register holds no position for it. ` +
+      `${c.name} is ${stopped}, and no position for it is on file. ` +
       `It was to be at ${place}; the works was never placed to the precision a ` +
       `mark on a picture would claim, and looking for one was not thought worth ` +
       `doing on a project that stopped.`
     );
   }
   return (
-    `${c.name} is at ${place}, and this register holds no position for it. ` +
+    `${c.name} is at ${place}, and no position for it is on file. ` +
     `The company has confirmed the site and no citable source places the works: ` +
-    `it is being built where nobody has yet drawn it. The row is held anyway — ` +
+    `it is being built where nobody has yet drawn it. It is tracked anyway — ` +
     `position is not a condition of being on file — and what was searched, and ` +
     `what was found instead, is below.`
   );

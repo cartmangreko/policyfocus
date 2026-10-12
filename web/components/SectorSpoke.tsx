@@ -477,10 +477,15 @@ function CompaniesSpoke({ slug }: { slug: SectorSlug }) {
   const byId = new Map(sectorProjectRows(slug).map((p) => [p.id, p]));
   return (
     <>
+      {/* `register` and `rows` were both in this paragraph, on every sector's
+          companies spoke, and both are on the lists in
+          sources/display_vocabulary.py — one for positioning and one because it
+          is the pipeline's own word. The fact is unchanged: the list is derived
+          from the tracked projects and the names do not open anything. */}
       <p className="tmap-sub">
-        Computed from the project register, not curated: a company is here because it holds a
-        tracked project, and the count beside it is that project list. A company is not a node
-        kind on this platform yet, so this page is a list of rows rather than a set of pages.
+        Computed from the tracked projects, not curated: a company is here because it holds
+        one, and the count beside it is that project list. A company is not a node kind on
+        this platform yet, so these names are a list rather than a set of pages.
       </p>
       <ul className="tcompanies">
         {rows.map((c) => (

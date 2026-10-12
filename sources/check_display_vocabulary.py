@@ -79,8 +79,73 @@ _NON_COPY_ATTRS = (
 )
 _ATTR = re.compile(rf'\b({_NON_COPY_ATTRS})=\{{?["\'`][^"\'`]*["\'`]\}}?')
 
-_STRING = re.compile(r'"([^"\n]{4,})"|\'([^\'\n]{4,})\'|`([^`]{4,})`')
 _JSX_TEXT = re.compile(r">([^<>{}]{4,})<")
+
+# THE LITERALS ARE SCANNED, NOT MATCHED BY A REGEX, and that is a correction
+# rather than a refinement — 12 October 2026.
+#
+# WHAT THE REGEX DID. It was
+#
+#     r'"([^"\n]{4,})"|\'([^\'\n]{4,})\'|`([^`]{4,})`'
+#
+# and the backtick alternative pairs the NEAREST two backticks, which in
+#
+#     `one sentence. ` +
+#     `and the next one.`
+#
+# are the CLOSING backtick of the first literal and the OPENING backtick of the
+# second. So the thing captured is the glue — "` + `" — and the literals
+# themselves are skipped, alternately, all the way down a concatenation chain.
+# Every other sentence in a multi-line template was invisible to this gate.
+#
+# HOW IT WAS FOUND. web/lib was added to the surfaces on this pass, and
+# web/lib/prose.ts — which opens by saying it is "the ONLY place these sentences
+# are worded" — reported two hits. The paragraph a reader meets on every
+# unplaced project's page says "this register holds no position for it", and
+# `register` is on the brand list, and the gate said nothing about it. It is in
+# the second half of a `+` chain.
+#
+# A SCANNER CANNOT HAVE THAT CLASS OF BUG. It walks the source once, knows which
+# kind of quote it is inside, honours a backslash escape, and closes a literal
+# only on its own quote character. The cost is thirty lines of Python against
+# one line of regex, and the benefit is that the gate sees every string instead
+# of half of them.
+_QUOTES = "\"'`"
+
+
+def _literals(source: str) -> list[str]:
+    """Every string literal in a TypeScript source, in order.
+
+    Not a parser. It does not know a regex literal from a division, and it does
+    not need to: a `/` outside a string is passed over, and the comment strippers
+    have already run. What it is careful about is the three quote characters and
+    the backslash, which is the whole of what the old regex got wrong.
+    """
+    out: list[str] = []
+    i, n = 0, len(source)
+    while i < n:
+        ch = source[i]
+        if ch not in _QUOTES:
+            i += 1
+            continue
+        quote, i, start = ch, i + 1, i + 1
+        while i < n:
+            c = source[i]
+            if c == "\\":
+                i += 2
+                continue
+            if c == quote:
+                break
+            # An unterminated single or double quote ends at the newline, which
+            # is what the language says and what keeps an apostrophe in a
+            # comment the strippers missed from swallowing the rest of the file.
+            if c == "\n" and quote != "`":
+                break
+            i += 1
+        if i < n and source[i] == quote:
+            out.append(source[start:i])
+        i += 1
+    return out
 
 # Inside a template literal, ${...} is code. It is spliced out rather than
 # checked, so `${named.map(...)}` stops reading as the word "map".
@@ -107,9 +172,7 @@ def strings_in(source: str) -> list[str]:
     source = _BLOCK_COMMENT.sub(" ", source)
     source = _LINE_COMMENT.sub("", source)
     source = _ATTR.sub(" ", source)
-    out: list[str] = []
-    for m in _STRING.finditer(source):
-        out.append(next(g for g in m.groups() if g is not None))
+    out: list[str] = _literals(source)
     for m in _JSX_TEXT.finditer(source):
         out.append(m.group(1))
     cleaned = (_SLOT.sub(" ", t).strip() for t in out)

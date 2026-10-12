@@ -19,6 +19,7 @@ import {
   eur,
   fundingAmount,
   fundingForProject,
+  fundingTotals,
   getParameters,
   getProject,
   getProjects,
@@ -122,6 +123,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   const sector = project.sector as SectorSlug;
   const allParams = getParameters();
   const funding = fundingForProject(project.id);
+  const projectMoney = fundingTotals(funding, allParams);
   const reached = new Set(project.status_history.map((h) => h.status));
   // The rail shows the ordinary forward path, with anything off it — paused,
   // cancelled — appended, so a stopped project reads as stopped rather than as
@@ -279,6 +281,44 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           {funding.length === 0 ? (
             <p className="tscore-note">No public capital recorded for this project.</p>
           ) : (
+            <>
+            {/* BY STATUS GROUP, WHERE THERE IS MORE THAN ONE ALLOCATION. The
+                group is already on every row below; what this adds is the sum,
+                and a sum only means something over more than one term — 21 of
+                the 22 funded projects on file have a single allocation, and a
+                line restating one row as its own total would be the figure said
+                twice.
+
+                COMMITTED IS SUMMED AND ANNOUNCED IS COUNTED, which is the
+                ruling of brief 5 §4.1 and is enforced by there being no
+                announced total to render: fundingTotals computes none, so the
+                sentence cannot be written by accident. A euro figure made of
+                intentions reads as money that exists. */}
+            {funding.length > 1 ? (
+              <p className="tscore-note">
+                {[
+                  projectMoney.committedCount > 0
+                    ? `${eur(projectMoney.committed)} committed across ` +
+                      `${projectMoney.committedCount} ` +
+                      `${projectMoney.committedCount === 1 ? "allocation" : "allocations"}` +
+                      (projectMoney.undisclosed > 0
+                        ? `, ${projectMoney.undisclosed} of them carrying no published figure`
+                        : "")
+                    : null,
+                  projectMoney.announcedCount > 0
+                    ? `${projectMoney.announcedCount} ` +
+                      `${projectMoney.announcedCount === 1 ? "allocation" : "allocations"} ` +
+                      `announced and in no total`
+                    : null,
+                  projectMoney.withdrawnCount > 0
+                    ? `${projectMoney.withdrawnCount} withdrawn`
+                    : null,
+                ]
+                  .filter(Boolean)
+                  .join("; ")}
+                .
+              </p>
+            ) : null}
             <ul className="proj-funding">
               {funding.map((f) => {
                 const amount = fundingAmount(f, allParams);
@@ -305,6 +345,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 );
               })}
             </ul>
+            </>
           )}
         </section>
 
