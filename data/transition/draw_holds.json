@@ -47,7 +47,13 @@
     "Released the same way as a draw hold -- moved to `project_pages_released` with the date",
     "and who ruled it."
   ],
-  "holds": {},
+  "holds": {
+    "ccs": {
+      "since": "2026-10-12",
+      "reason": "CO2 transport and storage now renders the product template, because the overview condition is the data rather than a ranking: 3 of 44 rows carry a position and the frame draws them. 3 of 44 is the reason for the hold. An overview of European CO2 transport and storage drawn on three sites would be read as a picture of the sector, and what it would actually show is the three rows whose works somebody has placed. The hub is built, linked from the cement and steel dependency blocks and from the entry on /sectors below the six tiles, type-checked and crawled like every other page, and carries noindex, follow until somebody judges the coverage honest enough to publish. See sources/scope.md, \"A draw hold gates publication\".",
+      "released_by": "George, on an explicit judgement that 3 of 44 drawn is enough to draw."
+    }
+  },
   "released": {
     "batsol": {
       "held_since": "2026-09-04",
@@ -60,21 +66,37 @@
         "note": "THE HOLD NO LONGER RESTS ON THE FOUR UNREACHABLE CANDIDATES. FREYR at Mo i Rana, SVOLT at Lauchhammer, ACC at Kaiserslautern and Farasis at Bitterfeld are parked in sources/manual/MANIFEST.json for a browser and are not retried. Overview honesty is judged on what is on file, not on what is outstanding: a picture drawn on 25 of 34 candidates is honest if it says so and if what it leaves out is counted where a reader can see it, which the standfirst's undrawn clause does. What the hold still waits on is the judgement itself."
       },
       "reason": "Released on the judgement the hold was placed for. The overview draws 25 of 34 candidates and says what it leaves out by name: seven rows on file are not drawn — six cancelled and one paused whose location was not sought — and the standfirst names each with its status. Four of the nine outstanding candidates are stopped projects that will never be drawn and are no longer chased for a position; five are live gaps, and the coverage of the picture is a fact about the picture rather than a silence in it. Overview honesty is judged on what is on file, and what is on file now says so out loud."
+    },
+    "clean": {
+      "held_since": null,
+      "released": "2026-10-12",
+      "released_by": "George",
+      "original_reason": "No draw hold was ever placed on the hydrogen overview, and the reason is mechanical rather than a decision: holds are placed by sources/build_importance.py on the first build that writes a sector's ranking, `clean` has no ranking and no bottleneck file, so hasMap was false, so no page existed to hold. The overview was withheld by an accident of the condition rather than by anybody's judgement.",
+      "reason": "Recorded as a release rather than left as an absence, because the overview starts drawing on this pass and the condition that kept it dark is being removed. 13 of 66 rows carry a position; the standfirst sums over the drawn sites only, states the admitted-undrawn figure separately and never adds the two, and names the undrawn rows under the picture. Written down so that a later build which gives `clean` a ranking does not re-hold a sector George has released — which is exactly what hold_on_first_ranking() reads this map to avoid."
     }
   },
   "project_page_holds": {
-    "batsol": {
-      "held_since": "2026-09-09",
+    "ccs": {
+      "held_since": "2026-10-12",
       "held_by": "Claude, pending George's release",
-      "reason": "The batsol draw hold was released on 2026-09-06 and that release reasons about the OVERVIEW -- what the map draws, and which seven rows on file it leaves out. It says nothing about the sector's 32 project pages, which classify() makes indexable unconditionally and which would have entered the sitemap on this merge without any decision naming them. Held so that publishing them is a decision rather than a side effect. The pages are built, linked from the released sector page, and carry noindex, follow; lifting the hold is one line and one deploy.",
-      "released_by": "George"
-    },
-    "clean": {
-      "held_since": "2026-09-09",
-      "held_by": "Claude, pending George's release",
-      "reason": "Brief 7 §7: nothing hydrogen surfaces in this step. The rows land under the `clean` sector key, and classify() in web/lib/routes.ts makes a project page indexable the moment a row exists — so seven pages would enter the sitemap as a side effect of this merge rather than as anybody's decision. Held for the same reason batsol's were. The sector itself draws nothing: hasMap is false while `clean` has no bottleneck and no ranking, so there is no sector page to hold yet and no hold is placed for one.",
+      "reason": "The narrower hold, placed for the reason the two above it were: classify() in web/lib/routes.ts makes a project page indexable the moment a row exists, so the 44 ccs rows were already offering 44 indexable pages through search without any decision naming them — the failure the hold mechanism exists to prevent, discovered rather than avoided. They are built, linked from the ccs hub and from the cement and steel crops that reach a store, and carry noindex, follow. Releasing them is a judgement about 44 pages and is George's.",
       "released_by": "George"
     }
   },
-  "project_pages_released": {}
+  "project_pages_released": {
+    "batsol": {
+      "held_since": "2026-09-09",
+      "released": "2026-10-12",
+      "released_by": "George",
+      "original_reason": "The batsol draw hold was released on 2026-09-06 and that release reasons about the OVERVIEW -- what the map draws, and which seven rows on file it leaves out. It says nothing about the sector's 32 project pages, which classify() makes indexable unconditionally and which would have entered the sitemap on this merge without any decision naming them. Held so that publishing them is a decision rather than a side effect. The pages are built, linked from the released sector page, and carry noindex, follow; lifting the hold is one line and one deploy.",
+      "reason": "Released on the judgement the hold was placed for. The 33 batteries rows have been through the census, the overview they hang off was released on 2026-09-06, and every one of the 33 pages renders the one project template — lead block, position or the computed sentence saying why there is none, status history, capacity in the unit stated, funding by status group, sources. What the hold withheld was offering those pages to a stranger through search before anybody had said they were ready; George said so on 2026-09-24."
+    },
+    "clean": {
+      "held_since": "2026-09-09",
+      "released": "2026-10-12",
+      "released_by": "George",
+      "original_reason": "Brief 7 §7: nothing hydrogen surfaces in this step. The rows land under the `clean` sector key, and classify() in web/lib/routes.ts makes a project page indexable the moment a row exists — so seven pages would enter the sitemap as a side effect of this merge rather than as anybody's decision. Held for the same reason batsol's were. The sector itself draws nothing: hasMap is false while `clean` has no bottleneck and no ranking, so there is no sector page to hold yet and no hold is placed for one.",
+      "reason": "Released on the same judgement, taken on 2026-10-01. The 66 hydrogen rows are no longer the seven that landed under brief 7: the perimeter is written down in sources/scope.md (\"The hydrogen perimeter\"), the three-unit rule is implemented, ammonia rows are in, and each page renders the one project template. The hold was placed because seven pages would have entered the sitemap as a side effect of a merge; they now enter it as a decision."
+    }
+  }
 }
