@@ -10,7 +10,13 @@
   "",
   "Same shape as sources/cement_ccs_questions.json, and the same rule: a question of this",
   "kind never changes anything by itself. The ruling does, and the ruling is George's.",
-  "The question stays in the file after it is answered."
+  "The question stays in the file after it is answered.",
+  "",
+  "BRIEF 17 ADDS Q5 TO Q10, 12 October 2026, under the same rule. That brief is a",
+  "display pass with one hard boundary -- no census file, no gated summary, no scope",
+  "rule, no projects.json row, no status_history event and no verdict -- and each",
+  "entry below is an item it ran into, could not settle without crossing that",
+  "boundary, skipped, and named in its report."
  ],
  "questions": [
   {
@@ -136,6 +142,101 @@
    "ruling": "ANSWERED: NO SPOKE, AND NO LINK. George, 24 September 2026: opportunity gets no spoke page, and the block renders without a link — which is the second of the two things brief 15 allowed, with the pull request stating it. The support-direction filter this pull request had pointed the block at is REMOVED as its destination: a block's link means the complete list of what the block is showing the top of, and the support measures are not that — the framing line counts allocations and the rows are measures, so the link promised the rest of a list the line does not count. The support list stays on the policies spoke under #support, reached by reading that page. Where the complete allocation list eventually lives is still open and is not this brief's to settle.",
    "ruled": "2026-09-24",
    "ruled_by": "George"
+  },
+  {
+   "id": "Q5",
+   "raised": "2026-10-12",
+   "area": "web/lib/routes.ts, eufabric-page-specifications.md §0.8",
+   "question": "Is the canonical host the apex, `https://eufabric.eu`, or `https://www.eufabric.eu`? Brief 17 §E.1 states www and says 'No change to this'; the repository states the apex in three places and gates it.",
+   "why_the_rules_did_not_settle_it": "They settle it the other way, which is why this is a question rather than a fix. eufabric-page-specifications.md is the authority for the route list and says 'The canonical origin is the apex, https://eufabric.eu'; web/lib/routes.ts sets SITE_URL to the apex with the reasoning beside it (a sitemap of redirects publishes an address that is not the one that gets indexed); and web/lib/sitemap.test.mts asserts both the value AND that it does not match //www. — an assertion written to catch exactly this change. Brief 17 opens by saying it changes no rule and that the page specifications stand, so the pass kept the apex: moving to www would edit a specification rule, break a gate test, and make every one of the 668 sitemap URLs a redirect unless the edge redirect is flipped in the same change. The edge is not in this repository, which is the other half of why a builder cannot decide this.",
+   "what_would_change_it": "One line in web/lib/routes.ts, one assertion in web/lib/sitemap.test.mts, one paragraph in eufabric-page-specifications.md §0.8, and the Vercel domain redirect — in that order, together, or not at all."
+  },
+  {
+   "id": "Q6",
+   "raised": "2026-10-12",
+   "area": "data/transition/projects.json — status_history notes",
+   "question": "Four project rows render the words `rung` and `ladder` to a reader — five occurrences — from notes on status_history events. Brief 17 §D.9 says surfaces say 'check' and 'checks' and never 'rung' or 'ladder'. May those notes be rewritten, and by whom?",
+   "why_the_rules_did_not_settle_it": "The display half of §D.9 is clean: no component, no stylesheet and no prose block on the site uses either word, and the only hits are inside note text carried by census rows. A note on a status_history event is a census field, and brief 17's one hard boundary is that nothing in the pass edits a census file or a status_history event. So the words reach a reader and the pass may not touch them. The notes are also not loose prose: each explains why a row sits where it does, in the vocabulary of the confirmation work that put it there, and two of them cite a docket entry. Rewriting them is a census edit with a reviewer, not a display patch.",
+   "entries": [
+    {
+     "id": "omv-bruck-an-der-leitha",
+     "words": [
+      "rung"
+     ],
+     "where": "status_history note"
+    },
+    {
+     "id": "rwe-get-h2-nukleus-lingen",
+     "words": [
+      "ladder",
+      "rung"
+     ],
+     "where": "status_history note"
+    },
+    {
+     "id": "ssab-oxelosund",
+     "words": [
+      "rung"
+     ],
+     "where": "status_history note"
+    },
+    {
+     "id": "hybrit-gallivare",
+     "words": [
+      "rung"
+     ],
+     "where": "status_history note"
+    }
+   ]
+  },
+  {
+   "id": "Q7",
+   "raised": "2026-10-12",
+   "area": "the /sectors/batsol route",
+   "question": "Does /sectors/batsol become /sectors/batteries, and if so what serves the old path? Brief 17 lists the rename as out of scope and asks for it to be raised here with the 308 note if the pass touches the route — which it does: the route now serves nine country views beneath it.",
+   "why_the_rules_did_not_settle_it": "The slug is a FIGARO industry key and the keying is load-bearing: `batsol` covers batteries AND solar, the ecosystem instance covers batteries only, and solar stays in the register with no ecosystem edge (data/transition/ecosystems.json). Renaming the ROUTE without renaming the key would put a second name on one thing; renaming the key would move an input-output join. What this pass changed is the cost of deciding late: /sectors/batsol now has six spokes and nine country views under it, so the rename is 16 URLs rather than one, and 10 of those 16 are in the sitemap. THE 308 NOTE: a permanent redirect that preserves the method is a 308 and not a 301, and the reason to care is that these URLs are only ever fetched with GET — so either works for a crawler, and a 308 is the one that cannot be degraded to a GET by an intermediary if a form is ever posted to one of them. Whichever is chosen, every old URL has to answer with it rather than 404, and the sitemap has to carry the new one only."
+  },
+  {
+   "id": "Q8",
+   "raised": "2026-10-12",
+   "area": "web/lib/files.ts",
+   "question": "The coverage page tells a reader a file had 'Two independent reads, reconciled, rulings docketed'. `reconciled` and `docketed` are on the internal list in sources/display_vocabulary.py. What should those three labels say instead?",
+   "why_the_rules_did_not_settle_it": "The rule is decidable and the replacement is not. The internal list bans a word because it is precise inside the repository and meaningless outside it, and these three labels are the clearest case on the site: a reader meeting 'rulings docketed' learns that this platform has a docket. But the labels are a claim about METHOD -- how many independent reads a file had and whether their differences were resolved -- and that is the most load-bearing claim the coverage page makes. Paraphrasing it is a judgement about what the reader is being promised, not a word swap. FOUND BY WIDENING THE GATE: check_display_vocabulary.py read web/app and web/components and not web/lib, so the one file where every computed sentence on the site is worded was outside it. This pass added web/lib and these three are what it found that it could not also fix.",
+   "entries": [
+    {
+     "label": "Two independent reads, reconciled, rulings docketed",
+     "words": [
+      "reconciled",
+      "docketed"
+     ]
+    },
+    {
+     "label": "Two independent reads, reconciled",
+     "words": [
+      "reconciled"
+     ]
+    },
+    {
+     "label": "Two independent reads, not yet reconciled",
+     "words": [
+      "reconciled"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "Q9",
+   "raised": "2026-10-12",
+   "area": "web/lib/schema.ts",
+   "question": "The site-wide schema.org Dataset description reads 'N measures decoded from M EU acts'. Brief 17 §D.10 says there is to be no acts-decoded counter anywhere. Does 'anywhere' reach structured data?",
+   "why_the_rules_did_not_settle_it": "The counter is gone from every rendered surface -- the front page line that carried it was removed, the tiles carry no counts, and /sectors carries none -- and this is the only place either number survives. It is also not the same kind of statement: the ruling was that the register should not sell itself on a page about the industries, and a Dataset description is addressed to a crawler and is legitimately about the register. Removing it would change what the site tells search engines it is, which is a positioning decision rather than a display one."
+  },
+  {
+   "id": "Q10",
+   "raised": "2026-10-12",
+   "area": "brief 17 §B.2",
+   "question": "Brief 17 §B.2 names '1,980 MW' as the hydrogen drawn figure. The figure computed from data/transition/projects.json is 2,480 MW across 13 drawn rows. Which is meant?",
+   "why_the_rules_did_not_settle_it": "The rule settles it in favour of the file -- every number in a report is quoted from a gated file (sources/scope.md, 21 September 2026) -- so the standfirst says 2,480 MW and the brief's figure is not used anywhere. The question is kept because the DIFFERENCE is exactly one row: ricenergy-besaya-torrelavega at 500 MW, which 2,480 minus 1,980 is. So 1,980 is not a slip; it is the correct figure for the drawn set as it stood before that row landed, which means the brief was written against an earlier state of the file and any other figure in it may be too."
   }
  ]
 }

@@ -28,8 +28,9 @@ clean; it is not wired into the prebuild.
 
 WHAT IT READS
 =============
-The audience surfaces: every .tsx under web/app and web/components, and the
-reviewed prose in data/prose.json. Comments are stripped first -- an internal
+The audience surfaces: every .tsx under web/app and web/components, the .ts
+under web/lib -- which is where web/lib/prose.ts words every computed sentence
+on the site -- and the reviewed prose in data/prose.json. Comments are stripped first -- an internal
 note explaining why a word is banned should not itself be a violation -- and so
 are the attributes that carry no copy (className, href, and the rest), the
 `${...}` slots inside template literals, and anything shaped like a module path,
@@ -48,7 +49,21 @@ from pathlib import Path
 import display_vocabulary as dv
 
 ROOT = Path(__file__).resolve().parent.parent
-SURFACE_DIRS = (ROOT / "web" / "app", ROOT / "web" / "components")
+# WHAT COUNTS AS A SURFACE, and web/lib is one — added 12 October 2026.
+#
+# It was web/app and web/components, which is where the MARKUP is, and that
+# missed the one file where every computed sentence on this site is actually
+# worded: web/lib/prose.ts opens by saying it is "the ONLY place these sentences
+# are worded", and nothing was reading it. The sentence over every picture, the
+# summary prose, the arrival line and the no-location paragraph are all in there.
+# The miss was found the way these are usually found — by writing a new sentence
+# with "rows" in it and having nothing object.
+#
+# web/lib IS MOSTLY NOT COPY, and that is handled rather than worked around: the
+# filters below already strip comments, non-copy attributes, module paths and
+# template slots, which is what leaves a data loader's field names alone while
+# catching the sentence a template builds out of them.
+SURFACE_DIRS = (ROOT / "web" / "app", ROOT / "web" / "components", ROOT / "web" / "lib")
 PROSE = ROOT / "data" / "prose.json"
 
 _LINE_COMMENT = re.compile(r"^\s*//.*$", re.MULTILINE)
@@ -133,7 +148,14 @@ def main() -> int:
 
     hits: list[str] = []
     for directory in SURFACE_DIRS:
-        for path in sorted(directory.rglob("*.tsx")):
+        # .ts AS WELL AS .tsx, because web/lib has no markup in it and is where
+        # the sentences are. A test file is excluded: its strings are assertion
+        # messages addressed to whoever broke the build, not copy addressed to a
+        # reader, and "a measure page follows its own lead block" is a test name.
+        files = [p for p in directory.rglob("*.tsx")]
+        files += [p for p in directory.rglob("*.ts") if ".test." not in p.name]
+        files += [p for p in directory.rglob("*.mts") if ".test." not in p.name]
+        for path in sorted(files):
             rel = path.relative_to(ROOT)
             for text in strings_in(path.read_text(encoding="utf-8")):
                 bad = dv.violations(text)

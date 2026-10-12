@@ -8,7 +8,7 @@ import { citation } from "@/lib/citation";
 import LeadBlock from "@/components/LeadBlock";
 import LocationMap from "@/components/LocationMap";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
-import { SECTORS } from "@/lib/data";
+import { sectorLabel } from "@/lib/sectorSections";
 import { countryName } from "@/lib/countries";
 import { getProjectLead } from "@/lib/objectLeads";
 import { getProjectMap } from "@/lib/maps";
@@ -146,7 +146,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         <Crumbs
           trail={[
             { label: "Sectors", href: "/sectors" },
-            { label: SECTORS[sector], href: `/sectors/${sector}` },
+            // The name the DESTINATION gives itself, not the spine's FIGARO
+            // label: see sectorLabel. "Wind, heat pumps, hydrogen" opening a
+            // page headed "Hydrogen" is one thing called two names.
+            { label: sectorLabel(sector), href: `/sectors/${sector}` },
             { label: project.name },
           ]}
         />
@@ -156,7 +159,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           <p className="proj-who">
             {project.company} · {project.plant ?? "—"} · {project.country} ·{" "}
             <Link href={`/sectors/${sector}`}>
-              <SectorIcon slug={sector} size={14} /> {SECTORS[sector]}
+              <SectorIcon slug={sector} size={14} /> {sectorLabel(sector)}
             </Link>{" "}
             · {TRANSITION_LABEL[project.transition]}
           </p>
@@ -331,6 +334,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                     : ""}
                   {s.licence ? ` · ${s.licence}` : ""}
                 </span>
+                {/* THE CAPTURE, SAID ON THIS PAGE TOO. The hub's Sources block
+                    has marked an archived source since the Morrow capture; this
+                    block did not, so a reader on a project page saw a dateline
+                    with no indication that the copy behind it is an Internet
+                    Archive capture of a page the publisher has since removed.
+                    The DATE is already right either way — where the document
+                    carries a dateline that is what `date` holds, and where it
+                    does not `date` is the capture with `not_after` precision, so
+                    it reads "by <date>". What was missing is that the reader
+                    could not tell which case they were looking at. */}
+                {s.archived ? <span className="tarchived">archived</span> : null}
               </li>
             ))}
           </ul>

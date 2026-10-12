@@ -1,4 +1,6 @@
+import { SECTORS } from "./data";
 import { ecosystemForSector } from "./ecosystems";
+import { hasMap } from "./transition";
 import {
   getSectionSpecs,
   getSectorH1,
@@ -63,6 +65,27 @@ export function sectorNames(slug: string): { short: string; phrase: string } {
       `data/prose.json -> sector_names.sector_slots, so it has no name slots and ` +
       `cannot head its own page`
   );
+}
+
+/** WHAT TO CALL A SECTOR IN A BREADCRUMB, A FOOTER OR A LINK.
+ *
+ *  THE SPINE'S LABEL IS NOT ALWAYS THE PAGE'S NAME, and until 12 October 2026 it
+ *  did not matter. data/sectors.json is keyed on FIGARO industries and labels
+ *  them accordingly: `clean` is "Wind, heat pumps, hydrogen" and `ccs` is
+ *  "Carbon capture and fuels", because those are the industries the
+ *  input-output join covers. The moment those two slugs started rendering the
+ *  hub, a project page's breadcrumb offered "Wind, heat pumps, hydrogen" and
+ *  opened a page headed "Hydrogen in Europe's industrial transition" — the link
+ *  and its destination calling the same thing two names.
+ *
+ *  SO A SECTOR THAT RENDERS THE HUB IS CALLED BY ITS NAME SLOT, capitalised, and
+ *  every other sector keeps the spine's label — which is right, because a sector
+ *  rendering the register directory IS the FIGARO industry and has no name slot
+ *  of its own. One function, so a third caller cannot invent a third answer. */
+export function sectorLabel(slug: string): string {
+  if (!hasMap(slug)) return SECTORS[slug as keyof typeof SECTORS] ?? slug;
+  const { short } = sectorNames(slug);
+  return short.charAt(0).toUpperCase() + short.slice(1);
 }
 
 /** The page's H1: "{Short} in Europe's industrial transition". */

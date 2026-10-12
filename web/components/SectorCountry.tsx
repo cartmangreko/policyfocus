@@ -2,11 +2,12 @@ import Link from "next/link";
 import Crumbs from "@/components/Crumbs";
 import LocationMap from "@/components/LocationMap";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
+import { capacityFigures } from "@/components/SectorMap";
 import { ProjectTable } from "@/components/SectorSpoke";
 import { SECTORS } from "@/lib/data";
 import { getCountryMap } from "@/lib/maps";
 import { countryGeoProse } from "@/lib/prose";
-import { sectorNames } from "@/lib/sectorSections";
+import { sectorLabel, sectorNames } from "@/lib/sectorSections";
 import { getCountryH1 } from "@/lib/sitetext";
 import { byLastChange, getProjects, isDrawable } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
@@ -64,6 +65,7 @@ export default function SectorCountry({
   const heading = getCountryH1(names, country);
 
   const marks = (status: string[]) => frame.marks.filter((m) => status.includes(m.status)).length;
+  const countryRows = getProjects(slug).filter((p) => p.country === iso);
   const geo = countryGeoProse({
     sector: names.short,
     country,
@@ -74,6 +76,12 @@ export default function SectorCountry({
     paused: marks(["paused"]),
     undrawn: frame.undrawn ?? { projects: 0, sites: 0 },
     hostWorks: frame.marks.filter((m) => m.host_works).length,
+    // The capacity on the ground IN THIS COUNTRY, with the denominator over
+    // this country's drawn rows. The undrawn figure is not repeated here: the
+    // sector's overview states it over the sector, and a per-country split of
+    // rows nobody has placed would be a figure about a place the register does
+    // not claim the project is in.
+    drawnCapacity: capacityFigures(countryRows.filter(isDrawable)),
   });
 
   // THE ROWS THIS PAGE IS ABOUT: every row in the sector filed to this country,
@@ -81,7 +89,7 @@ export default function SectorCountry({
   // stop at what could be placed — a cancelled Spanish plant is a Spanish row.
   // Ordered by last status change, which is the order the hub's block and the
   // projects spoke both use, so a reader moving between them is not re-sorted.
-  const rows = byLastChange(getProjects(slug).filter((p) => p.country === iso));
+  const rows = byLastChange(countryRows);
   const drawnRows = rows.filter(isDrawable).length;
 
   return (
@@ -90,7 +98,7 @@ export default function SectorCountry({
         <Crumbs
           trail={[
             { label: "Sectors", href: "/sectors" },
-            { label: name, href: `/sectors/${slug}` },
+            { label: sectorLabel(slug), href: `/sectors/${slug}` },
             { label: `Every tracked project in European ${names.short}`, href: `/sectors/${slug}/projects` },
             { label: country },
           ]}
@@ -144,7 +152,7 @@ export default function SectorCountry({
         </section>
 
         <nav className="tmap-footer" aria-label="Back to the sector">
-          <Link href={`/sectors/${slug}`}>← {name}</Link>
+          <Link href={`/sectors/${slug}`}>← {sectorLabel(slug)}</Link>
           <Link href={`/sectors/${slug}/projects`}>{`All ${names.short} projects`}</Link>
         </nav>
       </div>

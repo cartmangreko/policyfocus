@@ -413,11 +413,17 @@ export function policiesBlock(slug: string): HubBlock {
     (imp?.built_from.parameters ?? []).map((id) => params.get(id)?.date_of_value ?? null),
   );
 
+  // THE THIRD BRANCH IS A SECTOR WITH NO RANKING, and it used to read "0
+  // tracked measures, in register order: no importance basis is computed for
+  // this sector" — a count of zero standing in for a measurement nobody has
+  // made, and the word `register` on an audience surface, which is on the brand
+  // list. Both went unseen because only ranked sectors rendered this page until
+  // 12 October 2026 and because the vocabulary gate did not read web/lib.
   const framing = imp
     ? inView.length === 0
       ? `No EU measure in this sector's view${stamp(date)}`
       : `${inView.length} of ${plural(all.length, "tracked measure")} are in this sector's view, ordered by what they cost or grant it${stamp(date)}`
-    : `${plural(all.length, "tracked measure")}, in register order: no importance basis is computed for this sector${stamp(date)}`;
+    : `No EU measure has been ranked against this sector: what it is under has not been priced, and nothing here orders it${stamp(date)}`;
 
   return {
     id: "policies",

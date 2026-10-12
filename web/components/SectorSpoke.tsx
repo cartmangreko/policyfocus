@@ -10,6 +10,7 @@ import { atPrecision } from "@/lib/dates";
 import { sectorDependencies, sectorPolicyRows, sectorProjectRows, sectorSupportRows } from "@/lib/hub";
 import { supportFact } from "@/lib/opportunity";
 import { getRecordsForSector, recordHref } from "@/lib/records";
+import { sectorLabel } from "@/lib/sectorSections";
 import { sectorCompanies, spokeTitle, type SpokeId } from "@/lib/spokes";
 import {
   STATUS_LABEL,
@@ -628,7 +629,7 @@ export default function SectorSpoke({ slug, spoke }: { slug: SectorSlug; spoke: 
         <Crumbs
           trail={[
             { label: "Sectors", href: "/sectors" },
-            { label: name, href: `/sectors/${slug}` },
+            { label: sectorLabel(slug), href: `/sectors/${slug}` },
             { label: spokeTitle(slug, spoke) },
           ]}
         />
@@ -641,7 +642,7 @@ export default function SectorSpoke({ slug, spoke }: { slug: SectorSlug; spoke: 
           <Body slug={slug} />
         </section>
         <nav className="tmap-footer" aria-label="Back to the sector">
-          <Link href={`/sectors/${slug}`}>← {name}</Link>
+          <Link href={`/sectors/${slug}`}>← {sectorLabel(slug)}</Link>
         </nav>
       </div>
     </main>

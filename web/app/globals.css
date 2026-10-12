@@ -2406,8 +2406,17 @@ h3 {
 /* ---------- responsive ---------- */
 
 @media (max-width: 1000px) {
+  /* THE NAV IS NOT HIDDEN ANY MORE — brief 17 §D.7, and #44 is the reason it
+     ever was. The header once carried five links (the change feed, legislation,
+     findings, coverage, sign in) and they overflowed the bar on a phone, so the
+     whole nav was taken off below 1000px. Brief 4 §3 then cut it to ONE link,
+     "Sectors", and the hiding rule stayed — which left a phone reader with no
+     route to the product at all except the wordmark back to the home page.
+     One 13.5px link cannot overflow a bar; what it needed was less room taken
+     by the gap and the left margin, which is what this does instead. */
   .site-nav {
-    display: none;
+    margin-left: 22px;
+    gap: 18px;
   }
   .exp-grid {
     grid-template-columns: 1fr;
@@ -2430,6 +2439,24 @@ h3 {
 @media (max-width: 680px) {
   :root {
     --gutter: 20px;
+  }
+  /* PHONE WIDTH. The header is the wordmark and one link, and at this width the
+     wordmark is the thing that has to keep its size — it is the only place on
+     the site the name is set. */
+  .site-nav {
+    margin-left: 14px;
+    gap: 14px;
+    font-size: 13px;
+  }
+  /* THE COUNTRY LEGEND, WRAPPING RATHER THAN RUNNING OFF. It is a flex row of
+     links with a count each, and at 390px the rows are narrow enough that the
+     spacing between them is what costs the width. The container already wraps;
+     this takes the horizontal padding out of each row so a two-word country
+     name is not pushed onto a line of its own. */
+  .geo-country-row {
+    padding-right: 0;
+    margin-right: 12px;
+    font-size: 12px;
   }
   .stats {
     grid-template-columns: 1fr 1fr;

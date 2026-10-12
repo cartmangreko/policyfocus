@@ -84,6 +84,63 @@ def weighted_totals(sector: str, rows=None) -> dict[str, float]:
     return per
 
 
+def drawn(rows) -> list[dict]:
+    """The rows whose capacity a PICTURE's figure is summed over.
+
+    THE POPULATION THE RULE WAS WRITTEN ABOUT. The example in this module's
+    docstring -- "European cement is building 3.1 Mt of capture ... the four
+    cement plants of eight that have published a figure" -- is exactly this set:
+    cement has eight placed rows, four of them state a capacity, and 3.1 Mt is
+    their sum. Until 12 October 2026 the gate could not see such a figure,
+    because the pots it computed were the whole sector and the status groups and
+    this is neither.
+
+    THE TWO CONDITIONS ARE sources/build_maps.py's, and they are the same two
+    web/lib/transition.ts isDrawable applies: a row with no position has nothing
+    to draw, and a cancelled row is off every frame but its own.
+    """
+    return [r for r in rows
+            if (r.get("location") or []) and r.get("status") not in sm.UNDRAWN_STATUSES]
+
+
+def undrawn(rows) -> list[dict]:
+    """The complement: on file, and not on the picture. Its capacity is a real
+    quantity about a real set and is stated separately, never added to the one
+    above -- a megawatt that exists and a megawatt somebody has announced are
+    not the same megawatt."""
+    kept = {id(r) for r in drawn(rows)}
+    return [r for r in rows if id(r) not in kept]
+
+
+# THE POPULATIONS A SURFACE MAY SUM OVER, named once. A caller asking for a pot
+# this does not name is asking for a figure no gate can recognise.
+POPULATIONS = {
+    "drawn": drawn,
+    "undrawn": undrawn,
+}
+
+
+def population_totals(sector: str, rows=None) -> dict[str, dict[str, float]]:
+    """{population: {unit: total}} for the two halves the picture divides a
+    sector into. The figures web/lib/prose.ts puts in the two standfirst
+    clauses, computed here so the gate looks for the numbers the page prints."""
+    rs = rows_by_sector(rows).get(sector, [])
+    return {name: _per_unit(stated(fn(rs))) for name, fn in POPULATIONS.items()}
+
+
+def population_denominators(sector: str, rows=None) -> dict[str, tuple[int, int]]:
+    rs = rows_by_sector(rows).get(sector, [])
+    return {name: (len(stated(fn(rs))), len(fn(rs))) for name, fn in POPULATIONS.items()}
+
+
+def _per_unit(rows) -> dict[str, float]:
+    per: dict[str, float] = {}
+    for r in rows:
+        u = r.get("capacity_unit") or "?"
+        per[u] = per.get(u, 0.0) + float(r["capacity_value"])
+    return per
+
+
 def group_totals(sector: str, groups: dict[str, tuple], rows=None) -> dict[str, dict[str, float]]:
     """The same, split by a caller's status groups -- a page may weight one
     group (what is operating, what was cancelled) rather than the whole sector,
@@ -101,6 +158,10 @@ def group_totals(sector: str, groups: dict[str, tuple], rows=None) -> dict[str, 
 
 if __name__ == "__main__":
     for s in SECTORS:
-        have, total = denominators(s)
         print(f"{s:8} {clause(s)}   totals: "
               + ("; ".join(f"{v:,.2f} {u}" for u, v in weighted_totals(s).items()) or "-"))
+        for name, (have, total) in population_denominators(s).items():
+            per = population_totals(s)[name]
+            print(f"         {name}: across the {have} of {total} projects with a stated "
+                  f"capacity — "
+                  + ("; ".join(f"{v:,.2f} {u}" for u, v in sorted(per.items())) or "-"))

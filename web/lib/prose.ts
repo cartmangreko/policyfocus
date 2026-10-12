@@ -93,21 +93,46 @@ export function transitionProse(cuts: {
   measuresInView: number;
   measuresTotal: number;
   bottlenecks: number;
+  /** Whether a ranking has been computed for this sector at all.
+   *
+   *  THE SECOND HALF OF THIS SENTENCE IS ABOUT A RANKING, and until 12 October
+   *  2026 only sectors with one rendered the hub, so it could be asserted. Brief
+   *  17 §B.3 changed the condition to "has a drawn site", and hydrogen and CO2
+   *  transport and storage arrived with 66 and 44 projects and no ranking at all
+   *  — at which point this sentence read "Of 0 tracked measures reaching the
+   *  sector, 0 carry money or a named constraint; 0 bottlenecks stand in the
+   *  way", which is three claims of zero where the truth is that nobody has
+   *  measured. A zero is a finding. An absence of a measurement is not, and the
+   *  page must not spend a zero it has not earned. */
+  ranked: boolean;
   projects: number;
   operating: number;
   paused: number;
 }): string {
+  // "SHIFT" RATHER THAN "TRANSITION". `transition` is on the brand list in
+  // sources/display_vocabulary.py — a platform that calls its subject a
+  // transition map is the old positioning wearing the new one's clothes — and
+  // this sentence had carried the word since before that list existed, unseen
+  // because the gate did not read web/lib. It is the same fact said in plain
+  // English, and the field in the data keeps its name.
   const t =
     cuts.transitions.length === 1
-      ? `one transition, ${cuts.transitions[0]}`
-      : `${n(cuts.transitions.length, "transition")} — ${list(cuts.transitions)}`;
+      ? `one shift, ${cuts.transitions[0]}`
+      : `${n(cuts.transitions.length, "shift")} at once — ${list(cuts.transitions)}`;
   const built = list([
     cuts.operating > 0 ? `${cuts.operating} operating` : null,
     cuts.paused > 0 ? `${cuts.paused} paused` : null,
   ]);
+  const opening = `European ${cuts.subject} is under ${t}. `;
+  if (!cuts.ranked) {
+    return (
+      `${opening}No EU measure has been ranked against it and no constraint is on ` +
+      `file for it yet; ${n(cuts.projects, "project")} ` +
+      `${cuts.projects === 1 ? "is" : "are"} tracked${built ? ` (${built})` : ""}.`
+    );
+  }
   return (
-    `European ${cuts.subject} is under ${t}. ` +
-    `Of ${n(cuts.measuresTotal, "tracked measure")} reaching the sector, ` +
+    `${opening}Of ${n(cuts.measuresTotal, "tracked measure")} reaching the sector, ` +
     `${cuts.measuresInView} carry money or a named constraint; ` +
     `${n(cuts.bottlenecks, "bottleneck")} stand in the way, and ` +
     `${n(cuts.projects, "project")} ${cuts.projects === 1 ? "is" : "are"} building past them` +
@@ -255,6 +280,10 @@ export function sectorGeoProse(c: {
   /** What the clustering did, where it did anything. Absent on a picture with
    *  no numbered marker on it. */
   clusters?: { groups: number; sites: number; radiusKm: number };
+  /** The capacity on the ground, and the capacity on file and not drawn. Two
+   *  quantities, stated separately, never added — see CapacityClause. */
+  drawnCapacity?: CapacityClause;
+  undrawnCapacity?: CapacityClause;
 }): { heading: string; standfirst: string } {
   const state = list([
     c.running > 0 ? `${c.running} operating, commissioning or under construction` : null,
@@ -337,10 +366,44 @@ export function sectorGeoProse(c: {
       // describes a link it no longer has is the worst kind of wrong, because
       // nothing about it looks broken.
       " Each one opens its country's view." +
+      // THE CAPACITY ON THE GROUND, then the capacity on file and not drawn.
+      // In that order and in two sentences, because the first is what the
+      // picture shows and the second is what it does not, and a reader who
+      // added them would have a number that is about nothing.
+      capacityPhrase(c.drawnCapacity, "What is drawn comes to") +
       grouped +
       host +
-      left,
+      left +
+      capacityPhrase(c.undrawnCapacity, "What is on file and not drawn comes to a further"),
   };
+}
+
+/** THE CAPACITY CLAUSES, over one population, with the denominator attached.
+ *
+ *  TWO FIGURES AND THEY ARE NEVER ADDED. The picture draws what is placed on the
+ *  ground, so the sum over DRAWN rows is the figure the picture is of; the rows
+ *  on file and not drawn carry capacity too, and that is a different quantity
+ *  about a different set. Brief 17 §B.2 states them separately and forbids the
+ *  sum of the two, which is right for the reason the unit rule is right: a
+ *  megawatt that exists and a megawatt somebody has announced are not the same
+ *  megawatt, and a reader shown one number cannot unmix them.
+ *
+ *  AND EVERY FIGURE CARRIES ITS DENOMINATOR, in the sentence rather than in a
+ *  footnote — "across the 4 of 8 projects with a stated capacity". A total with
+ *  a silent denominator reads as a statement about the sector when it is a
+ *  statement about the part of it that published a number, scoring the rest as
+ *  zero. sources/check_capacity_clause.py reads the built pages and fails the
+ *  build on one that prints the figure without the clause. */
+export interface CapacityClause {
+  /** One per unit present, each already worded by capacityWords. */
+  figures: string[];
+  /** The one denominator clause for the population behind them. */
+  clause: string;
+}
+
+function capacityPhrase(c: CapacityClause | undefined, lead: string): string {
+  if (!c || c.figures.length === 0) return "";
+  return ` ${lead} ${list(c.figures)}, ${c.clause}.`;
 }
 
 /** WHAT A NUMBERED RING IS. The marker's own title, because it is the one mark
@@ -383,6 +446,7 @@ export function countryGeoProse(c: {
   paused: number;
   undrawn: { projects: number; sites: number; rows?: UndrawnRow[] };
   hostWorks: number;
+  drawnCapacity?: CapacityClause;
 }): { heading: string; standfirst: string } {
   const state = list([
     c.running > 0 ? `${c.running} operating, commissioning or under construction` : null,
@@ -419,6 +483,7 @@ export function countryGeoProse(c: {
       (c.projects === c.sites ? "" : `, across ${n(c.projects, "project")}`) +
       (state ? `: ${state}.` : ".") +
       " Drawn one for one, with nothing grouped. Each one opens its own page." +
+      capacityPhrase(c.drawnCapacity, "What is drawn comes to") +
       host +
       left,
   };
