@@ -6,7 +6,7 @@ import { capacityFigures } from "@/components/SectorMap";
 import { ProjectTable } from "@/components/SectorSpoke";
 import { SECTORS } from "@/lib/data";
 import { getCountryMap } from "@/lib/maps";
-import { countryGeoProse } from "@/lib/prose";
+import { countryGeoProse, countryH1Prose } from "@/lib/prose";
 import { sectorLabel, sectorNames } from "@/lib/sectorSections";
 import { getCountryH1 } from "@/lib/sitetext";
 import { byLastChange, getProjects, isDrawable } from "@/lib/transition";
@@ -62,7 +62,9 @@ export default function SectorCountry({
   const name = SECTORS[slug];
   const names = sectorNames(slug);
   const country = frame.countries.find((c) => c.iso === iso)?.text ?? iso;
-  const heading = getCountryH1(names, country);
+  // The reviewed heading where the block has been approved, the computed one
+  // until then. Nothing marked draft reaches a surface.
+  const heading = getCountryH1(names, country) ?? countryH1Prose(names, country);
 
   const marks = (status: string[]) => frame.marks.filter((m) => status.includes(m.status)).length;
   const countryRows = getProjects(slug).filter((p) => p.country === iso);

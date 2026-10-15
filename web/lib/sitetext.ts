@@ -333,21 +333,31 @@ export function getSectorNames(ecosystem: string): { short: string; phrase: stri
  *  sources/check_h2_templates.py, which refuses an entry carrying both and an
  *  entry carrying neither.
  *
- *  A DRAFT SLOT STILL RENDERS, and that is deliberate rather than an oversight.
- *  Every other prose block here returns null until it is reviewed because every
- *  other block has a computed fallback; a name slot has none, and a page headed
- *  with a hole in it is worse than a page headed with wording nobody has signed
- *  off. The status is carried so the draft can be listed for review — see
- *  sources/check_sector_schema.py, which prints it on every run. */
+ *  A DRAFT SLOT RENDERS NOTHING, like every other prose block here. It used to
+ *  render — the argument was that a name slot has no computed fallback and a page
+ *  headed with a hole in it is worse than a page headed with unreviewed wording
+ *  — and George ruled against it on 15 October 2026: nothing marked draft reaches
+ *  a surface, and a heading that needs one gets a COMPUTED fallback instead,
+ *  which is tier 1 of the three-tier rule and needs no review. See
+ *  computedSectorNames in lib/sectorSections.ts for where the fallback comes
+ *  from. The status is still carried so the draft is listed for review —
+ *  sources/check_sector_schema.py prints it on every run. */
 export function getSectorSlots(slug: string): { short: string; phrase: string } | null {
   const block = readProse().sector_names;
   const row = block.sector_slots?.[slug];
   if (!row) return null;
+  // An entry pointing at an instance borrows that instance's slots, and those
+  // live in the `sector_names` block proper, which is approved. The entry itself
+  // carries no status in that shape and nothing is withheld.
   if (row.instance) return getSectorNames(row.instance);
+  // ITS OWN SLOTS, AND ONLY IF SOMEBODY HAS READ THEM. An entry with no status
+  // is treated as the block's, exactly as sector_orientation resolves one.
+  if (!isReviewed(row.status ?? block.status)) return null;
   if (!row.short?.trim() || !row.phrase?.trim()) {
     throw new Error(
-      `sector_names.sector_slots["${slug}"] names no instance and has no filled ` +
-        `short and phrase of its own, so the sector has no subject for its headings`,
+      `sector_names.sector_slots["${slug}"] is approved, names no instance and has ` +
+        `no filled short and phrase of its own, so the sector has no subject for ` +
+        `its headings`,
     );
   }
   return { short: row.short, phrase: row.phrase };
@@ -396,25 +406,23 @@ export function getSectorH1(names: { short: string; phrase: string }): string {
   return renderHeading(readProse().sector_sections.h1, names);
 }
 
-/** THE COUNTRY VIEW'S H1, filled. Three slots rather than the heading
- *  renderer's two, which is the whole reason this has its own function: the
- *  country is not a property of the sector and a sector-only renderer would
- *  have had to be widened to let one in.
+/** THE COUNTRY VIEW'S REVIEWED H1, filled — or null while the block is a draft.
+ *  Three slots rather than the heading renderer's two, which is the whole reason
+ *  this has its own function: the country is not a property of the sector and a
+ *  sector-only renderer would have had to be widened to let one in.
  *
- *  A DRAFT STILL RENDERS, for the reason a name slot does: there is no computed
- *  form of a page's own title, and a page headed "undefined in Germany" is a
- *  worse way to find out the block is unreviewed than reading the draft.
- *  `countryPagesAreDraft()` is what lists it for review. */
+ *  NULL IS NOT AN ERROR. The page renders the computed heading in
+ *  lib/prose.ts countryH1Prose instead — tier 1, no review needed — which is the
+ *  same arrangement transition_notes has had since it was written. It used to
+ *  render the draft on the argument that a heading has no computed form; George
+ *  ruled on 15 October 2026 that nothing marked draft reaches a surface, so the
+ *  computed form was written. `countryPagesAreDraft()` lists it for review. */
 export function getCountryH1(
   names: { short: string; phrase: string },
   country: string,
-): string {
+): string | null {
   const block = readProse().country_pages;
-  if (!block) {
-    throw new Error(
-      `data/prose.json has no country_pages block, so a country view has no heading`,
-    );
-  }
+  if (!block || !isReviewed(block.status)) return null;
   const slots: Record<string, string> = { ...names, country };
   return block.h1.replace(/\{([A-Za-z_]+)\}/g, (_, slot: string, at: number) => {
     const key = slot.toLowerCase();

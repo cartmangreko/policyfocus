@@ -425,6 +425,24 @@ export function geoClusterProse(c: {
   );
 }
 
+/** THE COUNTRY VIEW'S HEADING, computed. Tier 1: the sector's name slots and
+ *  the country's reviewed name, in a template worded here, so the page has a
+ *  heading while data/prose.json → country_pages is still a draft.
+ *
+ *  THE SLOTS AND NOTHING ELSE. "{Short} in {country}" is the whole of it, which
+ *  is what George's ruling asks for: the fallback is built from the sector name
+ *  slots only, so approving the stored template replaces this with the same
+ *  shape read by a person rather than with a different sentence. The country
+ *  string is the one build_maps.py measured to place the label on the paper, so
+ *  the heading and the map name the place the same way. */
+export function countryH1Prose(
+  names: { short: string; phrase: string },
+  country: string,
+): string {
+  const short = names.short.charAt(0).toUpperCase() + names.short.slice(1);
+  return `${short} in ${country}`;
+}
+
 /** ONE COUNTRY'S FRAME, on the country view — brief 16 §3.
  *
  *  THE SAME GRAMMAR AS THE OVERVIEW AND A DIFFERENT SUBJECT. The overview

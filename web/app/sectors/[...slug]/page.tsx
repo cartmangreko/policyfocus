@@ -25,7 +25,7 @@ import {
 import { getExposure } from "@/lib/exposure";
 import { DEMOTED, SITE_ROBOTS } from "@/lib/launch";
 import { countryIsIndexable, sectorIsIndexable } from "@/lib/siteRoutes";
-import { arrivalProse, summaryProse } from "@/lib/prose";
+import { arrivalProse, countryH1Prose, summaryProse } from "@/lib/prose";
 import { getSectorSummary } from "@/lib/summaries";
 import { getFindingsForSector, withEvidence } from "@/lib/findings";
 import { getRecordsForSector, recordHref } from "@/lib/records";
@@ -34,7 +34,7 @@ import SectorSpoke from "@/components/SectorSpoke";
 import SectorCountry from "@/components/SectorCountry";
 import { countryFrames, getCountryMap } from "@/lib/maps";
 import { getCountryH1 } from "@/lib/sitetext";
-import { sectorNames } from "@/lib/sectorSections";
+import { sectorLabel, sectorNames } from "@/lib/sectorSections";
 import { SPOKE_IDS, isSpoke, spokeTitle, type SpokeId } from "@/lib/spokes";
 import { REACH_CHANNEL_LABEL, inferReachChannel } from "@/lib/reachChannel";
 import type { Measure, SectorSlug } from "@/lib/types";
@@ -131,7 +131,7 @@ export async function generateMetadata({
     const drawn = frame.marks.length;
     return {
       robots: countryIsIndexable(country.sector, country.iso) ? SITE_ROBOTS : DEMOTED,
-      title: getCountryH1(names, text),
+      title: getCountryH1(names, text) ?? countryH1Prose(names, text),
       description:
         `Every tracked ${names.short} project in ${text}: ${drawn} ` +
         `${drawn === 1 ? "site" : "sites"} drawn one for one, each with its status, ` +
@@ -186,11 +186,19 @@ export async function generateMetadata({
         `(${imp.measures.filter((m) => m.money.computable).length} priced), the ` +
         `constraints in the way, the technologies past them, and `
       : "";
+    // THE NAME THE PAGE GIVES ITSELF, not the spine's FIGARO label — the same
+    // correction sectorLabel() made to the breadcrumbs, applied here on 15
+    // October 2026 because the tab title was the last place it was wrong. The
+    // ccs hub was headed "CO2 transport and storage in Europe's industrial
+    // transition" and titled "Carbon capture and fuels", which names fuels this
+    // sector does not cover; the hydrogen hub was titled "Wind, heat pumps,
+    // hydrogen". A tab is a surface.
+    const title = sectorLabel(slug);
     return {
       robots,
-      title: `${name} — exposure, constraints and pipeline`,
+      title: `${title} — exposure, constraints and pipeline`,
       description:
-        `What European ${name.toLowerCase()} is under: ${measures}` +
+        `What European ${sectorNames(slug).short} is under: ${measures}` +
         `${rows.length} tracked ${rows.length === 1 ? "project" : "projects"}, ` +
         `${drawn} of them placed on the ground.`,
     };

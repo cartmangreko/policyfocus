@@ -1,6 +1,6 @@
 import { SECTORS } from "./data";
 import { ecosystemForSector } from "./ecosystems";
-import { hasMap } from "./transition";
+import { TECHNOLOGY_HUB, getTechnology, hasMap } from "./transition";
 import {
   getSectionSpecs,
   getSectorH1,
@@ -60,11 +60,50 @@ export function sectorNames(slug: string): { short: string; phrase: string } {
   if (eco) return getSectorNames(eco.id);
   const own = getSectorSlots(slug);
   if (own) return own;
+  // NOTHING MARKED DRAFT RENDERS, so a slug whose stored slots are unreviewed
+  // falls through to the computed pair rather than publishing wording nobody has
+  // read. George's ruling of 15 October 2026. See computedSectorNames.
+  const computed = computedSectorNames(slug);
+  if (computed) return computed;
   throw new Error(
-    `sector "${slug}" belongs to no ecosystem instance and has no entry in ` +
-      `data/prose.json -> sector_names.sector_slots, so it has no name slots and ` +
-      `cannot head its own page`
+    `sector "${slug}" belongs to no ecosystem instance, has no approved entry in ` +
+      `data/prose.json -> sector_names.sector_slots, and no technology node names ` +
+      `it, so it has no name slots and cannot head its own page`
   );
+}
+
+/** THE COMPUTED NAME SLOTS, for a sector whose reviewed ones are not approved
+ *  yet. Tier 1 of the three-tier rule in sources/scope.md: template-rendered
+ *  from gate-checked data, so it needs no review and may render at once.
+ *
+ *  WHERE THE NAME COMES FROM, and this is the whole of the judgement. The one
+ *  sector in this position is `ccs`, and it is not a sector that happens to have
+ *  no name — it IS a technology this register already names. `TECHNOLOGY_HUB` in
+ *  lib/transition.ts asserts the identity in the other direction (the
+ *  co2-transport-storage technology's hub is /sectors/ccs), and that assertion is
+ *  what this reads backwards. So the short name is the technology node's own
+ *  `name` — "CO2 transport and storage" — out of
+ *  data/transition/technologies.json, which sources/check_sector_schema.py gates
+ *  and which no unreviewed prose block touches.
+ *
+ *  NO FREE TEXT, AND NO SECOND NAME. The phrase is the short name in the one
+ *  possessive form every reviewed phrase in the block already uses ("the European
+ *  cement industry", "Europe's CO2 transport and storage"), composed here rather
+ *  than stored, so approving the draft slots replaces a computed string with a
+ *  read one and changes nothing else.
+ *
+ *  AND IT IS NOT THE SPINE'S LABEL, deliberately. data/sectors.json calls `ccs`
+ *  "Carbon capture and fuels", which is the FIGARO-shaped label for the industry
+ *  grouping and names fuels this sector does not cover — the same class of error
+ *  as the lede that called hydrogen "Wind, heat pumps, hydrogen". The technology
+ *  node names the thing itself. */
+export function computedSectorNames(
+  slug: string,
+): { short: string; phrase: string } | null {
+  const id = Object.keys(TECHNOLOGY_HUB).find((t) => TECHNOLOGY_HUB[t] === slug);
+  const short = id ? getTechnology(id)?.name : undefined;
+  if (!short) return null;
+  return { short, phrase: `Europe's ${short}` };
 }
 
 /** WHAT TO CALL A SECTOR IN A BREADCRUMB, A FOOTER OR A LINK.

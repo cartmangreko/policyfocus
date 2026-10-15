@@ -132,6 +132,7 @@ def main() -> int:
     # truth, which is a name that drifts; neither is a sector with no subject.
     sector_slots = names_block.get("sector_slots") or {}
     resolved: dict[str, dict] = {}
+    drafted: set[str] = set()
     for slug, row in sorted(sector_slots.items()):
         if slug == "_comment":
             continue
@@ -158,6 +159,15 @@ def main() -> int:
                 f"its page has a subject")
             continue
         resolved[slug] = own
+        # WHICH OF THESE ACTUALLY RENDERS. Since George's ruling of 15 October
+        # 2026 a draft slot renders nothing and web/lib/sectorSections.ts
+        # computedSectorNames supplies the heading instead, so an entry checked
+        # here may be wording no reader is seeing yet. The templates are filled
+        # for it either way — a draft has to be ready on the day it is approved —
+        # and the print below says which state each one is in, so this gate's own
+        # output cannot imply that a draft is on the page.
+        if row.get("status") is not None and row["status"] not in ("approved", "final"):
+            drafted.add(slug)
 
     # ---- every template fills for those too -------------------------------
     for slug, row in sorted(resolved.items()):
@@ -217,6 +227,25 @@ def main() -> int:
             f"exactly one, and it is the `heading` prop: a block that wrote its own "
             f"wording would be four headings this gate cannot see")
 
+    # ---- the country view's heading, filled for every sector and country ----
+    # Added 15 October 2026. The template lives in its own block because it takes
+    # a third slot, and nothing was holding it to the same standard as the five
+    # above: a brace left in it would have reached 29 pages.
+    country = prose.get("country_pages") or {}
+    country_h1 = (country.get("h1") or "").strip()
+    if not country_h1:
+        problems.append("country_pages has no h1, so a country view has no heading")
+    else:
+        names = {s: "x" for s in SLOTS}
+        names["country"] = "Germany"
+        filled = re.sub(r"\{([A-Za-z_]+)\}",
+                        lambda m: names.get(m.group(1).lower(), m.group(0)), country_h1)
+        if "{" in filled or "}" in filled:
+            problems.append(
+                f"country_pages.h1 {country_h1!r} still has a brace in it after "
+                f"filling; the only slots it takes are {{short}}, {{phrase}} and "
+                f"{{country}}")
+
     if problems:
         print(f"check_h2_templates: {len(problems)} violations\n")
         for p in problems:
@@ -230,7 +259,9 @@ def main() -> int:
           f"{len(resolved)} sector slug(s) named outside an instance. "
           f"{instances[0]}: {fill(block['h1'], example)[0]!r}")
     for slug, row in sorted(resolved.items()):
-        print(f"  {slug}: {fill(block['h1'], row)[0]!r}")
+        state = ("DRAFT, not rendering — the page heads itself from the computed "
+                 "fallback" if slug in drafted else "approved and rendering")
+        print(f"  {slug}: {fill(block['h1'], row)[0]!r}  [{state}]")
     return 0
 
 
