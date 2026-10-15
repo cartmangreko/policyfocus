@@ -58,8 +58,18 @@ export interface Source {
   publisher: string;
   date?: string;
   /** How exactly the publisher dated it. Absent on sources outside the
-   *  transition layer; see web/lib/dates.ts. */
-  date_precision?: "day" | "month" | "year";
+   *  transition layer; see web/lib/dates.ts.
+   *
+   *  `not_after` IS IN THE UNION AND WAS MISSING FROM IT. 48 sources and 53
+   *  status events on this layer carry it — a document with no dateline, dated
+   *  by the day the copy on file was taken, so the event happened at or before
+   *  that day. web/lib/dates.ts atPrecision has rendered it "by 14 September
+   *  2026" since the ruling of 14 September 2026, and these two unions said the
+   *  value could not occur: TypeScript was therefore not asking any new renderer
+   *  to handle it, and a surface that switched on the precision would have had
+   *  three cases and needed four. Declared here so the compiler is the thing
+   *  that notices. */
+  date_precision?: "day" | "month" | "year" | "not_after";
   verbatim?: string;
   snapshot?: string;
   archived?: boolean;
@@ -190,8 +200,11 @@ export interface StatusEvent {
   status: ProjectStatus;
   date: string;
   /** How exactly the source dated the event. The date is always stored to the
-   *  day, padded to the earliest it can be; this says what may be printed. */
-  date_precision: "day" | "month" | "year";
+   *  day, padded to the earliest it can be; this says what may be printed —
+   *  and `not_after` says the event happened at or before the stored day rather
+   *  than on it, so it prints "by <date>" and never as a bare day. See the note
+   *  on Source.date_precision and web/lib/dates.ts. */
+  date_precision: "day" | "month" | "year" | "not_after";
   source_url: string;
   note?: string;
   /** Ownership events only: who it was, and who it is now. */
@@ -261,6 +274,31 @@ export interface Project {
   technology: string[];
   storage?: ProjectStorage;
   capacity?: { value: number; unit: string; parameter?: string };
+  /** THE SAME CAPACITY, NORMALISED, and the pair every sum is built from.
+   *
+   *  `capacity` above is the figure AS THE SOURCE WROTE IT and is what a project
+   *  page prints: "400,000 tonnes CO2 captured per year", the publisher's own
+   *  words. These two are the machine form — a number and a closed unit key —
+   *  and they exist because a sum needs units that can be compared. The Python
+   *  side reads exactly these fields (sources/capacity_clause.py), so a figure
+   *  summed here and a figure summed there are the same figure.
+   *
+   *  ABSENT ON A ROW WITH NO PUBLISHED CAPACITY, and that absence is a state
+   *  rather than a zero: 14 of cement's 34 rows have no figure, and they are not
+   *  building nothing. See capacitySpread, which counts them as the denominator
+   *  of every total it returns. */
+  capacity_value?: number;
+  capacity_unit?: string;
+  /** What the capacity is OF — "CO2 captured", "crude steel". The unit key says
+   *  the dimension; this says the substance. */
+  capacity_product?: string;
+  /** Which stage the figure describes: an operating rate, a nameplate, a design
+   *  intention. Read from the source sentence and never derived from the status
+   *  — sources/scope.md, "capacity_basis is read from the source sentence". */
+  capacity_basis?: string;
+  capacity_as_of?: string;
+  capacity_as_of_precision?: "day" | "month" | "year";
+  capacity_note?: string;
   investment_total?: { value: number; unit: string; parameter?: string };
   status: ProjectStatus;
   status_history: StatusEvent[];
@@ -554,6 +592,135 @@ export function getTechnologies(sector: string): Technology[] {
     .filter((t) => !t.placeholder);
 }
 
+/** CAPACITY, SUMMED OVER A SET OF ROWS, PER UNIT, WITH ITS DENOMINATOR.
+ *
+ *  THE DENOMINATOR IS THE WHOLE POINT and is why this returns a shape rather
+ *  than a number. sources/scope.md, "Admission and capacity are separate
+ *  questions": a row with no stated capacity stays admitted, is counted in
+ *  count-based statistics and is absent from a weighted one. That is safe in an
+ *  export, where the shortfall is printed beside every table, and it is a lie on
+ *  a page — "European cement is building 3.1 Mt of capture" reads as a statement
+ *  about European cement when it is a statement about the four of its eight
+ *  placed works that have published a figure. The other four are not zero. They
+ *  are unknown, and the sentence silently scores them as zero.
+ *
+ *  So every surface that prints one of these carries the clause, and
+ *  sources/check_capacity_clause.py reads the built pages and fails the build on
+ *  one that does not. sources/capacity_clause.py is the Python half; the two
+ *  compute the same figures over the same populations and the gate is what holds
+ *  them together.
+ *
+ *  NEVER ACROSS UNITS. A tonne of captured CO2 and a tonne of crude steel are
+ *  different tonnes, and a megawatt of electrolyser input is not a tonne of
+ *  anything (sources/scope.md, "Three units for one electrolyser, and no
+ *  conversion between them"). The totals are therefore a LIST, one per unit, and
+ *  there is no code path that adds two of them. */
+export interface CapacityTotal {
+  unit: string;
+  value: number;
+}
+
+export interface CapacitySpread {
+  /** Rows in the population that state a capacity — the N in the clause. */
+  stated: number;
+  /** Rows in the population — the M. */
+  total: number;
+  /** One entry per unit present, in a fixed order so two builds agree. */
+  totals: CapacityTotal[];
+}
+
+export function capacitySpread(rows: Project[]): CapacitySpread {
+  const per = new Map<string, number>();
+  let stated = 0;
+  for (const p of rows) {
+    if (p.capacity_value === undefined || p.capacity_value === null) continue;
+    stated += 1;
+    const unit = p.capacity_unit ?? "?";
+    per.set(unit, (per.get(unit) ?? 0) + p.capacity_value);
+  }
+  return {
+    stated,
+    total: rows.length,
+    totals: [...per.entries()]
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([unit, value]) => ({ unit, value })),
+  };
+}
+
+/** A machine unit as a reader writes it, with the figure.
+ *
+ *  THE UNIT IS THE SOURCE'S AND IS NEVER CONVERTED. What this does is choose the
+ *  PREFIX — tonnes or megatonnes — which is a question about how many digits a
+ *  sentence can carry and not about what was measured. 13,300,000 t CO2 per year
+ *  is a number a reader counts zeroes in; 13.3 Mt is the same figure.
+ *
+ *  AND THE SPELLING IS LOAD-BEARING. sources/check_capacity_clause.py recognises
+ *  a weighted figure on a built page by matching these words against the value,
+ *  so a unit spelled a new way here is a unit the gate stops seeing. Its
+ *  UNIT_WORDS table and this function are the two halves of one agreement. */
+export function capacityWords(t: CapacityTotal): string {
+  const group = (v: number, digits = 0) =>
+    v.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: digits });
+  const mega = (v: number, tail: string) =>
+    v >= 1e6 ? `${group(v / 1e6, 2)} Mt ${tail}` : `${group(v)} t ${tail}`;
+  switch (t.unit) {
+    case "t_co2_per_year":
+      return mega(t.value, "CO2 per year");
+    case "t_per_year":
+      return mega(t.value, "per year");
+    case "t_h2_per_year":
+      return mega(t.value, "H2 per year");
+    case "t_co2_per_day":
+      return `${group(t.value)} t CO2 per day`;
+    case "GWh_per_year":
+      return `${group(t.value, 2)} GWh per year`;
+    case "MW_input":
+      return `${group(t.value)} MW of electrolyser input`;
+    default:
+      // A UNIT NOBODY HAS WORDED YET IS PRINTED AS THE DATA HOLDS IT, not
+      // dropped. A figure that vanished because its unit was unknown would be a
+      // sum quietly missing a term; the machine name on the page is ugly and is
+      // a fault anybody can see.
+      return `${group(t.value, 2)} ${t.unit}`;
+  }
+}
+
+/** The clause that travels with every one of those figures. ONE WORDING, and it
+ *  is matched by sources/capacity_clause.py's CLAUSE_RE: a surface that said it
+ *  differently would print a denominator the gate could not find and would fail
+ *  the build, which is the right way round. */
+export function capacityClause(c: CapacitySpread, noun = "projects"): string {
+  return `across the ${c.stated} of ${c.total} ${noun} with a stated capacity`;
+}
+
+/** A TECHNOLOGY THAT IS ALSO A LAYER WITH A HUB OF ITS OWN.
+ *
+ *  Two entries, and both are the same situation: a thing cement and steel
+ *  DEPEND ON which this platform holds a whole dataset about, under a sector key
+ *  of its own. CO2 transport and storage is the pipes, ships and pore space the
+ *  capture routes end in — 44 projects, filed under `ccs` — and renewable
+ *  hydrogen supply is what hydrogen direct reduction runs on — 66 projects,
+ *  filed under `clean`. A reader on the cement hub who asks what capture depends
+ *  on is asking about those projects, and until 12 October 2026 the dependency
+ *  row sent them to an anchor on cement's own technologies spoke instead, where
+ *  the answer is one paragraph about a technology.
+ *
+ *  IT CANNOT BE DERIVED FROM THE EDGES, which is why it is written here rather
+ *  than computed. A technology's `sectors` are the sectors that USE it:
+ *  co2-transport-storage is edged to cement, steel and chemicals and not to
+ *  `ccs`, because `ccs` does not use CO2 transport and storage — it is CO2
+ *  transport and storage. The claim that one is the other is a judgement about
+ *  the two datasets and belongs in one named place.
+ *
+ *  THE EVIDENCE DID NOT MOVE. The technology keeps its entry on every using
+ *  sector's technologies spoke, with its readiness, its dependencies and its
+ *  sources; what changed is where the hub's one-line dependency row points, and
+ *  it now points at the dataset rather than at the paragraph. */
+export const TECHNOLOGY_HUB: Record<string, string> = {
+  "co2-transport-storage": "ccs",
+  "hydrogen-supply": "clean",
+};
+
 export function getTechnology(id: string): Technology | undefined {
   return all().technologies.find((t) => t.id === id);
 }
@@ -712,6 +879,25 @@ export function projectPageHold(sector: string): DrawHold | undefined {
  *  a draw hold is not asked about here, and that is the change of 6 September
  *  2026.
  *
+ *  AND THE DATA IT ASKS ABOUT IS THE PICTURE, which is the change of 12 October
+ *  2026 (brief 17 §B.3). It used to ask for a RANKING and a BOTTLENECK FILE —
+ *  `getImportance(sector) && getBottlenecks(sector).length > 0` — and those are
+ *  two artefacts rather than a fact about the sector. Hydrogen has 66 rows, 13
+ *  of them placed, and no bottleneck file; CO2 transport and storage has 44 rows,
+ *  3 of them placed, and neither a bottleneck file nor an importance file. Both
+ *  were rendering the register directory and neither had anything missing that a
+ *  reader was asking for: the hub's four blocks each render their own "nothing on
+ *  file" framing line, and the one section that is conditional is the map. So the
+ *  condition is now the map's own — does any row in this sector get drawn — and a
+ *  sector arrives at the product template by having a site somebody placed rather
+ *  than by somebody computing a ranking for it.
+ *
+ *  THE SAME QUESTION IS ASKED IN PYTHON by `sector_map.drawn_sectors()`, which is
+ *  what decides which overviews sources/build_maps.py writes a frame for, and
+ *  sources/check_map_clusters.py fails the build if the two answers differ. Two
+ *  readings of one condition, held together by a gate rather than by a comment
+ *  asking somebody to edit both.
+ *
  *  WHAT THE HOLD USED TO DO, AND WHY IT WAS WRONG. `hasMap` returned false
  *  while a sector was held, so the route rendered the register directory
  *  instead of the product template and the held page was never built. It was
@@ -727,8 +913,24 @@ export function projectPageHold(sector: string): DrawHold | undefined {
  *  and puts `noindex` in its head for as long as the hold stands. See
  *  sources/scope.md, "A draw hold gates publication". */
 export function hasMap(sector: string): boolean {
-  const imp = getImportance(sector);
-  return Boolean(imp && getBottlenecks(sector).length > 0);
+  return getProjects(sector).some(isDrawable);
+}
+
+/** Whether one row puts ink on its sector's overview. The two conditions
+ *  sources/build_maps.py applies, in the same order and for the same reasons:
+ *  a row with no position has nothing to draw, and a cancelled row is off every
+ *  frame but its own because the overview draws what Europe is building
+ *  (`UNDRAWN_STATUSES`, and sources/scope.md "A stopped row does not enter the
+ *  location queue").
+ *
+ *  WRITTEN AS A STATUS GROUP rather than `!== "cancelled"`, which is the same
+ *  decision build_maps.py records beside its own copy: the day a ninth status
+ *  arrives, the question "which side is it on" has to be asked of a named thing
+ *  rather than found in an inequality. */
+const UNDRAWN_STATUSES: readonly ProjectStatus[] = ["cancelled"];
+
+export function isDrawable(p: Project): boolean {
+  return (p.location?.length ?? 0) > 0 && !UNDRAWN_STATUSES.includes(p.status);
 }
 
 /** The transitions a sector is under, in the order the page shows them: by the

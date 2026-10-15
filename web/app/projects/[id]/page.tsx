@@ -8,7 +8,7 @@ import { citation } from "@/lib/citation";
 import LeadBlock from "@/components/LeadBlock";
 import LocationMap from "@/components/LocationMap";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
-import { SECTORS } from "@/lib/data";
+import { sectorLabel } from "@/lib/sectorSections";
 import { countryName } from "@/lib/countries";
 import { getProjectLead } from "@/lib/objectLeads";
 import { getProjectMap } from "@/lib/maps";
@@ -19,6 +19,7 @@ import {
   eur,
   fundingAmount,
   fundingForProject,
+  fundingTotals,
   getParameters,
   getProject,
   getProjects,
@@ -122,6 +123,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   const sector = project.sector as SectorSlug;
   const allParams = getParameters();
   const funding = fundingForProject(project.id);
+  const projectMoney = fundingTotals(funding, allParams);
   const reached = new Set(project.status_history.map((h) => h.status));
   // The rail shows the ordinary forward path, with anything off it — paused,
   // cancelled — appended, so a stopped project reads as stopped rather than as
@@ -146,7 +148,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         <Crumbs
           trail={[
             { label: "Sectors", href: "/sectors" },
-            { label: SECTORS[sector], href: `/sectors/${sector}` },
+            // The name the DESTINATION gives itself, not the spine's FIGARO
+            // label: see sectorLabel. "Wind, heat pumps, hydrogen" opening a
+            // page headed "Hydrogen" is one thing called two names.
+            { label: sectorLabel(sector), href: `/sectors/${sector}` },
             { label: project.name },
           ]}
         />
@@ -156,7 +161,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           <p className="proj-who">
             {project.company} · {project.plant ?? "—"} · {project.country} ·{" "}
             <Link href={`/sectors/${sector}`}>
-              <SectorIcon slug={sector} size={14} /> {SECTORS[sector]}
+              <SectorIcon slug={sector} size={14} /> {sectorLabel(sector)}
             </Link>{" "}
             · {TRANSITION_LABEL[project.transition]}
           </p>
@@ -276,6 +281,44 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           {funding.length === 0 ? (
             <p className="tscore-note">No public capital recorded for this project.</p>
           ) : (
+            <>
+            {/* BY STATUS GROUP, WHERE THERE IS MORE THAN ONE ALLOCATION. The
+                group is already on every row below; what this adds is the sum,
+                and a sum only means something over more than one term — 21 of
+                the 22 funded projects on file have a single allocation, and a
+                line restating one row as its own total would be the figure said
+                twice.
+
+                COMMITTED IS SUMMED AND ANNOUNCED IS COUNTED, which is the
+                ruling of brief 5 §4.1 and is enforced by there being no
+                announced total to render: fundingTotals computes none, so the
+                sentence cannot be written by accident. A euro figure made of
+                intentions reads as money that exists. */}
+            {funding.length > 1 ? (
+              <p className="tscore-note">
+                {[
+                  projectMoney.committedCount > 0
+                    ? `${eur(projectMoney.committed)} committed across ` +
+                      `${projectMoney.committedCount} ` +
+                      `${projectMoney.committedCount === 1 ? "allocation" : "allocations"}` +
+                      (projectMoney.undisclosed > 0
+                        ? `, ${projectMoney.undisclosed} of them carrying no published figure`
+                        : "")
+                    : null,
+                  projectMoney.announcedCount > 0
+                    ? `${projectMoney.announcedCount} ` +
+                      `${projectMoney.announcedCount === 1 ? "allocation" : "allocations"} ` +
+                      `announced and in no total`
+                    : null,
+                  projectMoney.withdrawnCount > 0
+                    ? `${projectMoney.withdrawnCount} withdrawn`
+                    : null,
+                ]
+                  .filter(Boolean)
+                  .join("; ")}
+                .
+              </p>
+            ) : null}
             <ul className="proj-funding">
               {funding.map((f) => {
                 const amount = fundingAmount(f, allParams);
@@ -302,6 +345,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 );
               })}
             </ul>
+            </>
           )}
         </section>
 
@@ -331,6 +375,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                     : ""}
                   {s.licence ? ` · ${s.licence}` : ""}
                 </span>
+                {/* THE CAPTURE, SAID ON THIS PAGE TOO. The hub's Sources block
+                    has marked an archived source since the Morrow capture; this
+                    block did not, so a reader on a project page saw a dateline
+                    with no indication that the copy behind it is an Internet
+                    Archive capture of a page the publisher has since removed.
+                    The DATE is already right either way — where the document
+                    carries a dateline that is what `date` holds, and where it
+                    does not `date` is the capture with `not_after` precision, so
+                    it reads "by <date>". What was missing is that the reader
+                    could not tell which case they were looking at. */}
+                {s.archived ? <span className="tarchived">archived</span> : null}
               </li>
             ))}
           </ul>

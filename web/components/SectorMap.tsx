@@ -8,18 +8,23 @@ import SectionNav from "@/components/SectionNav";
 import SectorIcon, { accentVar } from "@/components/SectorIcon";
 import { SECTORS } from "@/lib/data";
 import { hubBlocks } from "@/lib/hub";
-import { sectorGeoProse, transitionProse } from "@/lib/prose";
-import { renderedSections, sectorH1, sectorNames } from "@/lib/sectorSections";
+import { sectorGeoProse, transitionProse, type CapacityClause } from "@/lib/prose";
+import { renderedSections, sectorH1, sectorLabel, sectorNames } from "@/lib/sectorSections";
 import { getSectorMap } from "@/lib/maps";
 import { getSectorOrientation, getTransitionNote, getUnnumberedH2 } from "@/lib/sitetext";
 import {
   TRANSITION_LABEL,
+  capacityClause,
+  capacitySpread,
+  capacityWords,
   getBottlenecks,
   getImportance,
   getLead,
   getProjects,
   getTransitions,
+  isDrawable,
   sourcesForSector,
+  type Project,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
 import { atPrecision } from "@/lib/dates";
@@ -72,11 +77,28 @@ import { atPrecision } from "@/lib/dates";
 // NOTHING HERE COMPUTES A RANKING OR A EURO. Both come from the gated Python
 // artefacts, as they did before.
 
+/** One population's capacity, worded, with the one denominator clause that has
+ *  to travel with it. Undefined where nothing in the population states a
+ *  capacity, which is a population the sentence says nothing about rather than
+ *  one it reports as zero — CO2 transport and storage has three placed rows and
+ *  none of them has published a figure. */
+export function capacityFigures(rows: Project[]): CapacityClause | undefined {
+  const spread = capacitySpread(rows);
+  if (spread.totals.length === 0) return undefined;
+  return {
+    figures: spread.totals.map(capacityWords),
+    clause: capacityClause(spread),
+  };
+}
+
 export default function SectorMap({ slug }: { slug: SectorSlug }) {
   const name = SECTORS[slug];
   const names = sectorNames(slug);
   const transitions = getTransitions(slug);
   const geoFrame = getSectorMap(slug);
+  // Read before the standfirst rather than beside the lead, because the
+  // standfirst's capacity clauses are over these rows.
+  const projects = getProjects(slug);
 
   // EVERY COUNT IN THE MAP'S STANDFIRST IS OVER DRAWN SITES, because every mark
   // in the picture is one. Counting projects instead made steel read "9 sites …
@@ -96,6 +118,24 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
         paused: geoMarks(["paused"]),
         undrawn: geoFrame.undrawn ?? { projects: 0, sites: 0 },
         hostWorks: geoFrame.marks.filter((m) => m.host_works).length,
+        // WHAT THE CLUSTERING DID, read off the built file rather than counted
+        // here: sources/build_maps.py grouped the marks and the sentence over
+        // the picture states its own arithmetic, so the clause and the markers
+        // cannot disagree about how many there are.
+        clusters: geoFrame.clusters
+          ? {
+              groups: geoFrame.clusters.groups.length,
+              sites: geoFrame.clusters.clustered_sites,
+              radiusKm: geoFrame.clusters.radius_km,
+            }
+          : undefined,
+        // THE TWO CAPACITY QUANTITIES, over the two populations the picture
+        // divides the sector into: what is drawn, and what is on file and not.
+        // Computed off the rows rather than off the frame, because the frame
+        // holds marks and a capacity belongs to a project — a two-site row has
+        // one capacity and two dots.
+        drawnCapacity: capacityFigures(projects.filter(isDrawable)),
+        undrawnCapacity: capacityFigures(projects.filter((p) => !isDrawable(p))),
       })
     : null;
 
@@ -141,16 +181,24 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
   const orientation = getSectorOrientation(slug);
   const lead = getLead(slug);
   const imp = getImportance(slug);
-  const projects = getProjects(slug);
   const bottlenecks = getBottlenecks(slug);
   const opening =
     getTransitionNote(slug) ??
     transitionProse({
-      subject: name.toLowerCase(),
+      // THE SECTOR'S NAME SLOT, not the spine's label. SECTORS[slug] is the
+      // FIGARO industry's display label and it is the right thing in a
+      // breadcrumb; it is the wrong thing in a sentence, because the spine
+      // keeps `clean` as "Wind, heat pumps, hydrogen" and `ccs` as "Carbon
+      // capture and fuels" — so the computed lede opened "European wind, heat
+      // pumps, hydrogen is under one shift" on the day the hydrogen hub started
+      // rendering. The name slots exist for exactly this and every heading on
+      // the page already uses them.
+      subject: names.short,
       transitions: transitions.map((t) => TRANSITION_LABEL[t]),
       measuresInView: imp ? imp.measures.filter((m) => m.in_sector_view).length : 0,
       measuresTotal: imp ? imp.measures.length : 0,
       bottlenecks: bottlenecks.length,
+      ranked: Boolean(imp),
       projects: projects.length,
       operating: projects.filter((p) => p.status === "operating").length,
       paused: projects.filter((p) => p.status === "paused").length,
@@ -162,7 +210,7 @@ export default function SectorMap({ slug }: { slug: SectorSlug }) {
     <main className="rise sector-map" style={{ ["--accent" as string]: `var(${accentVar(slug)})` }}>
       <SectionNav sections={sections} />
       <div className="wrap">
-        <Crumbs trail={[{ label: "Sectors", href: "/sectors" }, { label: name }]} />
+        <Crumbs trail={[{ label: "Sectors", href: "/sectors" }, { label: sectorLabel(slug) }]} />
 
         <header className="tmap-head">
           <h1>

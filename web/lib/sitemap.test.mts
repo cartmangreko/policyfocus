@@ -23,20 +23,38 @@ import { SITE_URL, classify, isDemoted } from "./routes.ts";
 
 const HERE = new URL(".", import.meta.url).pathname;
 
-test("the canonical origin is the apex, with no trailing slash", () => {
+test("the canonical origin is www, with no trailing slash", () => {
   // A sitemap is a list of the URLs this site asks to have indexed, and asking
   // for a URL that answers with a redirect is asking for the wrong one: the
-  // crawler follows it and indexes what it lands on. One canonical host.
-  assert.equal(SITE_URL, "https://eufabric.eu");
-  assert.doesNotMatch(SITE_URL, /\/\/www\./, "the sitemap must not be built on www");
+  // crawler follows it and indexes what it lands on. One canonical host, and it
+  // is the one the EDGE SERVES — www, with the bare host 301ing to it.
+  //
+  // THIS ASSERTION USED TO SAY THE OPPOSITE, and that is the point of the
+  // comment. It read `assert.equal(SITE_URL, "https://eufabric.eu")` with a
+  // second line forbidding www outright, so it failed any build that applied
+  // George's ruling of 14 September 2026 — the gate was enforcing an
+  // instruction that had already been replaced. Corrected 15 October 2026,
+  // along with the paragraph in eufabric-page-specifications.md §0.8 that it
+  // was faithfully guarding.
+  assert.equal(SITE_URL, "https://www.eufabric.eu");
+  assert.match(SITE_URL, /^https:\/\/www\./, "the sitemap is built on www");
   assert.doesNotMatch(SITE_URL, /\/$/, "the origin must not carry a trailing slash");
 });
 
 test("a URL is the origin plus the path, and the front page is the bare origin", () => {
   const url = (path: string) => `${SITE_URL}${path === "/" ? "" : path}`;
-  assert.equal(url("/"), "https://eufabric.eu");
-  assert.equal(url("/coverage"), "https://eufabric.eu/coverage");
-  assert.equal(url("/measures/cbam/fin-03"), "https://eufabric.eu/measures/cbam/fin-03");
+  assert.equal(url("/"), "https://www.eufabric.eu");
+  assert.equal(url("/coverage"), "https://www.eufabric.eu/coverage");
+  assert.equal(
+    url("/measures/cbam/fin-03"),
+    "https://www.eufabric.eu/measures/cbam/fin-03",
+  );
+  // The country views of brief 16, which are the newest absolute URLs in the
+  // sitemap and the ones a host change would have left behind.
+  assert.equal(
+    url("/sectors/clean/projects/DE"),
+    "https://www.eufabric.eu/sectors/clean/projects/DE",
+  );
 });
 
 test("the sitemap route builds from the classification and adds nothing", () => {
@@ -59,8 +77,12 @@ test("no route can be published and demoted at once, on a list of every kind", (
     mappedSectors: ["cement", "steel"],
     unmappedSectors: ["chem/plastics", "auto"],
     projectIds: ["brevik-ccs", "stegra-boden"],
+    heldProjectIds: ["northern-lights"],
     measuresWithLead: ["/measures/cbam/fin-03", "/measures/ets/cbam-01"],
     measuresWithoutLead: ["/measures/omnibus/rpt-01"],
+    spokeRoutes: ["/sectors/cement/projects", "/sectors/cement/technologies"],
+    countryRoutes: ["/sectors/cement/projects/DE", "/sectors/steel/projects/SE"],
+    heldCountryRoutes: ["/sectors/ccs/projects/NO"],
   });
   for (const path of routes.indexable) {
     assert.equal(isDemoted(path, routes.demoted), false, `${path} is in both lists`);

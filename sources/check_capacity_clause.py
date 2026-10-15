@@ -59,6 +59,21 @@ UNIT_WORDS = {
                    (r"(?:t|tonnes)\b[^.]{0,40}?(?:per|/)\s*year", 1.0)],
     "t_co2_per_year": [(r"Mt\b[^.]{0,40}?(?:per|/)\s*year", 1e6),
                        (r"(?:t|tonnes)\b[^.]{0,40}?(?:per|/)\s*year", 1.0)],
+    # ADDED 12 OCTOBER 2026, with the three units the hydrogen and CO2 rows
+    # carry and the one cement states per day. Until the sector overviews began
+    # summing capacity (brief 17 §B.2) no page printed any of these, so the gate
+    # had nothing to recognise them by; the hydrogen standfirst's megawatt figure
+    # would have gone up unclaused and this gate would have passed it.
+    #
+    # MW IS NOT PER ANYTHING. An electrolyser's input is a rate already, which is
+    # why sources/scope.md keeps three units for one machine and converts between
+    # none of them. The pattern is correspondingly bare, and that is a deliberate
+    # looseness: it will match a megawatt figure that is not a sum, and
+    # `singles` below is what excludes one row's own.
+    "MW_input": [(r"MW\b(?:\s+of\s+electrolyser\s+input)?", 1.0)],
+    "t_h2_per_year": [(r"Mt\b[^.]{0,40}?(?:per|/)\s*year", 1e6),
+                      (r"(?:t|tonnes)\b[^.]{0,40}?(?:per|/)\s*year", 1.0)],
+    "t_co2_per_day": [(r"(?:t|tonnes)\b[^.]{0,40}?(?:per|/)\s*day", 1.0)],
 }
 
 NUM = r"(\d[\d,   ]*(?:\.\d+)?)"
@@ -87,6 +102,12 @@ def targets(rows) -> dict[str, dict[float, str]]:
     for sector in cc.SECTORS:
         pots = {"whole sector": cc.weighted_totals(sector, rows)}
         pots.update(cc.group_totals(sector, GROUPS, rows))
+        # THE TWO POPULATIONS THE PICTURE DIVIDES A SECTOR INTO, added 12 October
+        # 2026. These are the pots the sector overviews actually sum -- what is
+        # drawn, and what is on file and not drawn -- and the rule's own worked
+        # example was one of them all along: cement's 3.1 Mt across four of eight
+        # placed works is the `drawn` pot, and the gate could not see it.
+        pots.update(cc.population_totals(sector, rows))
         for label, per in pots.items():
             for unit, val in per.items():
                 if val > 0:
@@ -114,12 +135,22 @@ def scan(t: str, where: str, tgt, single) -> tuple[list[str], int]:
                     found += 1
                     window = t[max(0, m.start() - WINDOW):m.end() + WINDOW]
                     if not CLAUSE.search(window):
+                        sector, pot = label.split(" / ")
+                        # The clause for the POT the figure came from, not the
+                        # sector's: a message telling somebody to add "4 of 8"
+                        # under a figure that is over 13 of 13 would be a gate
+                        # dictating a wrong denominator.
+                        if pot in cc.POPULATIONS:
+                            have, whole = cc.population_denominators(sector)[pot]
+                            want = (f"across the {have} of {whole} projects with a "
+                                    f"stated capacity")
+                        else:
+                            want = cc.clause(sector)
                         problems.append(
                             f"  {where}: prints {m.group(0).strip()!r}, which is the "
                             f"{label} capacity total, with no denominator clause. Add "
-                            f"{cc.clause(label.split(' / ')[0])!r} to the sentence — "
-                            f"see sources/scope.md, 'Admission and capacity are "
-                            f"separate questions'.")
+                            f"{want!r} to the sentence — see sources/scope.md, "
+                            f"'Admission and capacity are separate questions'.")
                     break
     return problems, found
 
@@ -137,6 +168,15 @@ def self_check(tgt, single) -> None:
     bat = cc.weighted_totals("batsol").get("GWh_per_year")
     if not cem or not bat:
         return                          # nothing to build a fixture from
+    # THE DRAWN POTS, which are what the overviews print since brief 17 §B.2 and
+    # therefore the fixtures that matter most: a refactor that broke the
+    # recognition of a megawatt figure would otherwise leave the hydrogen
+    # standfirst unguarded and this gate green.
+    mw = cc.population_totals("clean")["drawn"].get("MW_input")
+    drawn_cem = cc.population_totals("cement")["drawn"].get("t_co2_per_year")
+    have, whole = cc.population_denominators("clean")["drawn"]
+    mw_clause = f"across the {have} of {whole} projects with a stated capacity"
+    cem_have, cem_whole = cc.population_denominators("cement")["drawn"]
     cases = [
         (f"European batteries is building {bat:,.2f} GWh per year of cells.", 1,
          "a whole-sector sum with no clause must fail"),
@@ -147,6 +187,23 @@ def self_check(tgt, single) -> None:
         ("It is built for 50 GWh per year.", 0,
          "one plant's own figure is not a weighted figure"),
     ]
+    if mw:
+        cases += [
+            (f"What is drawn comes to {mw:,.0f} MW of electrolyser input.", 1,
+             "the drawn megawatt sum with no clause must fail"),
+            (f"What is drawn comes to {mw:,.0f} MW of electrolyser input, "
+             f"{mw_clause}.", 0,
+             "the same sum with the DRAWN population's clause must pass"),
+        ]
+    if drawn_cem:
+        cases += [
+            (f"What is drawn comes to {drawn_cem / 1e6:,.2f} Mt CO2 per year.", 1,
+             "the drawn pot is a pot, and 3.1 Mt over four of eight placed works "
+             "is the figure this whole rule was written about"),
+            (f"What is drawn comes to {drawn_cem / 1e6:,.2f} Mt CO2 per year, "
+             f"across the {cem_have} of {cem_whole} projects with a stated capacity.",
+             0, "and it passes with its own denominator"),
+        ]
     for text, expect, why in cases:
         got, _ = scan(text, "self_check", tgt, single)
         if len(got) != expect:

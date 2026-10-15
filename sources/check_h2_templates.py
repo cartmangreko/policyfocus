@@ -123,6 +123,64 @@ def main() -> int:
             f"sector_names carries {extra!r}, which is not an ecosystem instance in "
             f"data/transition/ecosystems.json")
 
+    # ---- the slugs no instance claims -------------------------------------
+    # `sector_slots` answers for a sector that renders the hub and that no
+    # ecosystem reaches by a sector edge: `clean`, because the hydrogen instance
+    # deliberately carries none, and `ccs`, because CO2 transport and storage is
+    # not an ecosystem. TWO SHAPES AND ONLY TWO -- an entry borrows an
+    # instance's slots or carries its own. Both is a name with two sources of
+    # truth, which is a name that drifts; neither is a sector with no subject.
+    sector_slots = names_block.get("sector_slots") or {}
+    resolved: dict[str, dict] = {}
+    drafted: set[str] = set()
+    for slug, row in sorted(sector_slots.items()):
+        if slug == "_comment":
+            continue
+        instance = (row.get("instance") or "").strip()
+        own = {s: (row.get(s) or "").strip() for s in SLOTS}
+        if instance and any(own.values()):
+            problems.append(
+                f"sector_slots[{slug!r}] names the instance {instance!r} AND carries "
+                f"slots of its own. One or the other: two sources of truth for one "
+                f"name is a name that drifts")
+            continue
+        if instance:
+            if instance not in slots:
+                problems.append(
+                    f"sector_slots[{slug!r}] names the instance {instance!r}, which has "
+                    f"no entry in sector_names.sectors")
+                continue
+            resolved[slug] = slots[instance]
+            continue
+        if not all(own.values()):
+            problems.append(
+                f"sector_slots[{slug!r}] names no instance and has an empty "
+                f"{', '.join(s for s in SLOTS if not own[s])!r} slot, so no heading on "
+                f"its page has a subject")
+            continue
+        resolved[slug] = own
+        # WHICH OF THESE ACTUALLY RENDERS. Since George's ruling of 15 October
+        # 2026 a draft slot renders nothing and web/lib/sectorSections.ts
+        # computedSectorNames supplies the heading instead, so an entry checked
+        # here may be wording no reader is seeing yet. The templates are filled
+        # for it either way — a draft has to be ready on the day it is approved —
+        # and the print below says which state each one is in, so this gate's own
+        # output cannot imply that a draft is on the page.
+        if row.get("status") is not None and row["status"] not in ("approved", "final"):
+            drafted.add(slug)
+
+    # ---- every template fills for those too -------------------------------
+    for slug, row in sorted(resolved.items()):
+        for template in [block["h1"]] + [s["h2"] for s in sections]:
+            filled, unknown = fill(template, row)
+            for slot in unknown:
+                problems.append(
+                    f"heading {template!r} takes a slot {{{slot}}}, and the only slots "
+                    f"a heading takes are {{short}} and {{phrase}}")
+            if "{" in filled or "}" in filled:
+                problems.append(f"{slug}: {template!r} still has a brace in it after "
+                                f"filling: {filled!r}")
+
     # ---- every template fills, for every sector ---------------------------
     for eco in instances:
         row = slots.get(eco) or {}
@@ -169,6 +227,25 @@ def main() -> int:
             f"exactly one, and it is the `heading` prop: a block that wrote its own "
             f"wording would be four headings this gate cannot see")
 
+    # ---- the country view's heading, filled for every sector and country ----
+    # Added 15 October 2026. The template lives in its own block because it takes
+    # a third slot, and nothing was holding it to the same standard as the five
+    # above: a brace left in it would have reached 29 pages.
+    country = prose.get("country_pages") or {}
+    country_h1 = (country.get("h1") or "").strip()
+    if not country_h1:
+        problems.append("country_pages has no h1, so a country view has no heading")
+    else:
+        names = {s: "x" for s in SLOTS}
+        names["country"] = "Germany"
+        filled = re.sub(r"\{([A-Za-z_]+)\}",
+                        lambda m: names.get(m.group(1).lower(), m.group(0)), country_h1)
+        if "{" in filled or "}" in filled:
+            problems.append(
+                f"country_pages.h1 {country_h1!r} still has a brace in it after "
+                f"filling; the only slots it takes are {{short}}, {{phrase}} and "
+                f"{{country}}")
+
     if problems:
         print(f"check_h2_templates: {len(problems)} violations\n")
         for p in problems:
@@ -178,8 +255,13 @@ def main() -> int:
     example = slots[instances[0]]
     print(f"check_h2_templates: OK — {len(sections)} questions and "
           f"{len(unnumbered)} unnumbered heading(s), all templated; "
-          f"{len(instances)} ecosystems with both name slots. "
+          f"{len(instances)} ecosystems with both name slots, "
+          f"{len(resolved)} sector slug(s) named outside an instance. "
           f"{instances[0]}: {fill(block['h1'], example)[0]!r}")
+    for slug, row in sorted(resolved.items()):
+        state = ("DRAFT, not rendering — the page heads itself from the computed "
+                 "fallback" if slug in drafted else "approved and rendering")
+        print(f"  {slug}: {fill(block['h1'], row)[0]!r}  [{state}]")
     return 0
 
 

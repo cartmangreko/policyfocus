@@ -93,21 +93,46 @@ export function transitionProse(cuts: {
   measuresInView: number;
   measuresTotal: number;
   bottlenecks: number;
+  /** Whether a ranking has been computed for this sector at all.
+   *
+   *  THE SECOND HALF OF THIS SENTENCE IS ABOUT A RANKING, and until 12 October
+   *  2026 only sectors with one rendered the hub, so it could be asserted. Brief
+   *  17 §B.3 changed the condition to "has a drawn site", and hydrogen and CO2
+   *  transport and storage arrived with 66 and 44 projects and no ranking at all
+   *  — at which point this sentence read "Of 0 tracked measures reaching the
+   *  sector, 0 carry money or a named constraint; 0 bottlenecks stand in the
+   *  way", which is three claims of zero where the truth is that nobody has
+   *  measured. A zero is a finding. An absence of a measurement is not, and the
+   *  page must not spend a zero it has not earned. */
+  ranked: boolean;
   projects: number;
   operating: number;
   paused: number;
 }): string {
+  // "SHIFT" RATHER THAN "TRANSITION". `transition` is on the brand list in
+  // sources/display_vocabulary.py — a platform that calls its subject a
+  // transition map is the old positioning wearing the new one's clothes — and
+  // this sentence had carried the word since before that list existed, unseen
+  // because the gate did not read web/lib. It is the same fact said in plain
+  // English, and the field in the data keeps its name.
   const t =
     cuts.transitions.length === 1
-      ? `one transition, ${cuts.transitions[0]}`
-      : `${n(cuts.transitions.length, "transition")} — ${list(cuts.transitions)}`;
+      ? `one shift, ${cuts.transitions[0]}`
+      : `${n(cuts.transitions.length, "shift")} at once — ${list(cuts.transitions)}`;
   const built = list([
     cuts.operating > 0 ? `${cuts.operating} operating` : null,
     cuts.paused > 0 ? `${cuts.paused} paused` : null,
   ]);
+  const opening = `European ${cuts.subject} is under ${t}. `;
+  if (!cuts.ranked) {
+    return (
+      `${opening}No EU measure has been ranked against it and no constraint is on ` +
+      `file for it yet; ${n(cuts.projects, "project")} ` +
+      `${cuts.projects === 1 ? "is" : "are"} tracked${built ? ` (${built})` : ""}.`
+    );
+  }
   return (
-    `European ${cuts.subject} is under ${t}. ` +
-    `Of ${n(cuts.measuresTotal, "tracked measure")} reaching the sector, ` +
+    `${opening}Of ${n(cuts.measuresTotal, "tracked measure")} reaching the sector, ` +
     `${cuts.measuresInView} carry money or a named constraint; ` +
     `${n(cuts.bottlenecks, "bottleneck")} stand in the way, and ` +
     `${n(cuts.projects, "project")} ${cuts.projects === 1 ? "is" : "are"} building past them` +
@@ -252,6 +277,13 @@ export function sectorGeoProse(c: {
   /** How many drawn marks are the works the installation stands on rather than
    *  the installation's own outline. See projectGeoProse. */
   hostWorks: number;
+  /** What the clustering did, where it did anything. Absent on a picture with
+   *  no numbered marker on it. */
+  clusters?: { groups: number; sites: number; radiusKm: number };
+  /** The capacity on the ground, and the capacity on file and not drawn. Two
+   *  quantities, stated separately, never added — see CapacityClause. */
+  drawnCapacity?: CapacityClause;
+  undrawnCapacity?: CapacityClause;
 }): { heading: string; standfirst: string } {
   const state = list([
     c.running > 0 ? `${c.running} operating, commissioning or under construction` : null,
@@ -311,12 +343,165 @@ export function sectorGeoProse(c: {
       ? ` ${c.hostWorks} of ${n(c.sites, "mark")} ${c.hostWorks === 1 ? "is" : "are"} ` +
         `the works the installation stands on rather than its own outline.`
       : "";
+  // WHAT WAS GROUPED, AND HOW NEAR IS ONE PLACE. Brief 16 clusters drawn sites
+  // within a radius, and a numbered ring is the one mark on this picture a
+  // reader cannot read off the key — so the sentence says what it means and
+  // what the radius is. Absent where nothing clustered, which is the ordinary
+  // case on four of the five sectors: a clause explaining a marker the picture
+  // does not draw would be noise.
+  const grouped =
+    c.clusters && c.clusters.groups > 0
+      ? ` ${n(c.clusters.groups, "numbered marker")} ${c.clusters.groups === 1 ? "stands" : "stand"} ` +
+        `for ${n(c.clusters.sites, "site")} within ${c.clusters.radiusKm} km of each other.`
+      : "";
   return {
     heading: `Where Europe is building ${c.sector}`,
     standfirst:
       `${n(c.sites, "site")} in ${n(c.countries, "country", "countries")}` +
       (state ? `: ${state}.` : ".") +
-      " Each one opens its own page." +
+      // THE DESTINATION CHANGED AND THE SENTENCE HAD TO. It read "Each one
+      // opens its own page", which was true while a mark opened its project.
+      // Brief 16 §2 sends every marker and every legend row to the country
+      // view, so the sentence says where a reader will land — a picture that
+      // describes a link it no longer has is the worst kind of wrong, because
+      // nothing about it looks broken.
+      " Each one opens its country's view." +
+      // THE CAPACITY ON THE GROUND, then the capacity on file and not drawn.
+      // In that order and in two sentences, because the first is what the
+      // picture shows and the second is what it does not, and a reader who
+      // added them would have a number that is about nothing.
+      capacityPhrase(c.drawnCapacity, "What is drawn comes to") +
+      grouped +
+      host +
+      left +
+      capacityPhrase(c.undrawnCapacity, "What is on file and not drawn comes to a further"),
+  };
+}
+
+/** THE CAPACITY CLAUSES, over one population, with the denominator attached.
+ *
+ *  TWO FIGURES AND THEY ARE NEVER ADDED. The picture draws what is placed on the
+ *  ground, so the sum over DRAWN rows is the figure the picture is of; the rows
+ *  on file and not drawn carry capacity too, and that is a different quantity
+ *  about a different set. Brief 17 §B.2 states them separately and forbids the
+ *  sum of the two, which is right for the reason the unit rule is right: a
+ *  megawatt that exists and a megawatt somebody has announced are not the same
+ *  megawatt, and a reader shown one number cannot unmix them.
+ *
+ *  AND EVERY FIGURE CARRIES ITS DENOMINATOR, in the sentence rather than in a
+ *  footnote — "across the 4 of 8 projects with a stated capacity". A total with
+ *  a silent denominator reads as a statement about the sector when it is a
+ *  statement about the part of it that published a number, scoring the rest as
+ *  zero. sources/check_capacity_clause.py reads the built pages and fails the
+ *  build on one that prints the figure without the clause. */
+export interface CapacityClause {
+  /** One per unit present, each already worded by capacityWords. */
+  figures: string[];
+  /** The one denominator clause for the population behind them. */
+  clause: string;
+}
+
+function capacityPhrase(c: CapacityClause | undefined, lead: string): string {
+  if (!c || c.figures.length === 0) return "";
+  return ` ${lead} ${list(c.figures)}, ${c.clause}.`;
+}
+
+/** WHAT A NUMBERED RING IS. The marker's own title, because it is the one mark
+ *  on the picture that the key does not explain: every other mark is told apart
+ *  by shape and fill, and this one deliberately has neither. */
+export function geoClusterProse(c: {
+  count: number;
+  projects: number;
+  country: string;
+  radiusKm: number;
+}): string {
+  const projects =
+    c.projects === c.count
+      ? ""
+      : `, across ${n(c.projects, "project")}`;
+  return (
+    `${n(c.count, "site")} in ${c.country} within ${c.radiusKm} km of each other${projects}. ` +
+    `Opens every tracked site in ${c.country}.`
+  );
+}
+
+/** THE COUNTRY VIEW'S HEADING, computed. Tier 1: the sector's name slots and
+ *  the country's reviewed name, in a template worded here, so the page has a
+ *  heading while data/prose.json → country_pages is still a draft.
+ *
+ *  THE SLOTS AND NOTHING ELSE. "{Short} in {country}" is the whole of it, which
+ *  is what George's ruling asks for: the fallback is built from the sector name
+ *  slots only, so approving the stored template replaces this with the same
+ *  shape read by a person rather than with a different sentence. The country
+ *  string is the one build_maps.py measured to place the label on the paper, so
+ *  the heading and the map name the place the same way. */
+export function countryH1Prose(
+  names: { short: string; phrase: string },
+  country: string,
+): string {
+  const short = names.short.charAt(0).toUpperCase() + names.short.slice(1);
+  return `${short} in ${country}`;
+}
+
+/** ONE COUNTRY'S FRAME, on the country view — brief 16 §3.
+ *
+ *  THE SAME GRAMMAR AS THE OVERVIEW AND A DIFFERENT SUBJECT. The overview
+ *  counts a continent and says what it left off; this counts a country and says
+ *  the same. Nothing is clustered here, which is the point of the page, and the
+ *  sentence says so rather than leaving a reader to wonder whether a ring is
+ *  hiding something: the overview's marker said "four near Debrecen" and this is
+ *  where the four are.
+ *
+ *  AND A MARK HERE OPENS ITS PROJECT. On the overview it opens this page; from
+ *  here there is nowhere further to send a reader but the works itself. */
+export function countryGeoProse(c: {
+  sector: string;
+  country: string;
+  sites: number;
+  projects: number;
+  running: number;
+  pending: number;
+  paused: number;
+  undrawn: { projects: number; sites: number; rows?: UndrawnRow[] };
+  hostWorks: number;
+  drawnCapacity?: CapacityClause;
+}): { heading: string; standfirst: string } {
+  const state = list([
+    c.running > 0 ? `${c.running} operating, commissioning or under construction` : null,
+    c.pending > 0 ? `${c.pending} announced or funded and not yet built` : null,
+    c.paused > 0 ? `${c.paused} paused` : null,
+  ]);
+  const named = c.undrawn.rows ?? [];
+  const off = named.filter((r) => r.sited).map((r) => r.name);
+  const unsitedStopped = named.filter((r) => !r.sited && r.stopped);
+  const unsitedLive = named.filter((r) => !r.sited && !r.stopped);
+  const clauses = [
+    off.length > 0 ? `${list(off)} — cancelled` : null,
+    unsitedStopped.length > 0
+      ? `${list(unsitedStopped.map((r) => `${r.name} (${r.status})`))} — location not sought`
+      : null,
+    unsitedLive.length > 0
+      ? `${list(unsitedLive.map((r) => `${r.name} (${r.status})`))} — no citable source places the works`
+      : null,
+  ].filter(Boolean) as string[];
+  const left =
+    named.length > 0
+      ? ` ${n(named.length, "further project")} on file in ${c.country} ` +
+        `${named.length === 1 ? "is" : "are"} not drawn: ${clauses.join("; and ")}.`
+      : "";
+  const host =
+    c.hostWorks > 0
+      ? ` ${c.hostWorks} of ${n(c.sites, "mark")} ${c.hostWorks === 1 ? "is" : "are"} ` +
+        `the works the installation stands on rather than its own outline.`
+      : "";
+  return {
+    heading: `Every tracked ${c.sector} site in ${c.country}`,
+    standfirst:
+      `${n(c.sites, "site")} in ${c.country}` +
+      (c.projects === c.sites ? "" : `, across ${n(c.projects, "project")}`) +
+      (state ? `: ${state}.` : ".") +
+      " Drawn one for one, with nothing grouped. Each one opens its own page." +
+      capacityPhrase(c.drawnCapacity, "What is drawn comes to") +
       host +
       left,
   };
@@ -351,20 +536,29 @@ export function projectNoLocationProse(c: {
    *  thought it worth doing" would be false about work that was done. */
   stopped: boolean;
 }): string {
+  // TWO WORDS CHANGED, 12 October 2026, and they had been on 147 pages. This
+  // paragraph said "this register holds no position for it" and "The row is
+  // held anyway": `register` is on the brand list and `row` is on the internal
+  // one, and this is the sentence a reader meets on every project whose works
+  // nobody has placed. It was invisible to the vocabulary gate for two reasons
+  // at once — the gate did not read web/lib, and its string extractor paired
+  // backticks across a `+` chain and so saw only every other literal in a
+  // multi-line template. Both are fixed in
+  // sources/check_display_vocabulary.py; this is what the fixed gate found.
   const place = c.plant ? `${c.plant}, ${c.country}` : c.country;
   if (c.stopped) {
     const stopped = c.status === "cancelled" ? "cancelled" : c.status;
     return (
-      `${c.name} is ${stopped}, and this register holds no position for it. ` +
+      `${c.name} is ${stopped}, and no position for it is on file. ` +
       `It was to be at ${place}; the works was never placed to the precision a ` +
       `mark on a picture would claim, and looking for one was not thought worth ` +
       `doing on a project that stopped.`
     );
   }
   return (
-    `${c.name} is at ${place}, and this register holds no position for it. ` +
+    `${c.name} is at ${place}, and no position for it is on file. ` +
     `The company has confirmed the site and no citable source places the works: ` +
-    `it is being built where nobody has yet drawn it. The row is held anyway — ` +
+    `it is being built where nobody has yet drawn it. It is tracked anyway — ` +
     `position is not a condition of being on file — and what was searched, and ` +
     `what was found instead, is below.`
   );

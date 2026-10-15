@@ -26,8 +26,14 @@ export interface Ecosystem {
   icon: IconKey;
   sectors: string[];
   /** A sentence, where the sector edge is wider than the instance — batteries
-   *  is the case. Null where the edge is exact. */
+   *  and hydrogen are the two cases. Null where the edge is exact. */
   sector_scope: string | null;
+  /** Which pass put the rows under that sector key, on an instance whose sector
+   *  edge was argued about. Read by nobody here: it is a record on the data, in
+   *  the same place the edge it defends is, so the next reader of this file does
+   *  not have to re-derive the decision. Declared so the interface stays the one
+   *  description of the store's shape. */
+  sectors_evidence?: string;
   technology: string[];
   project: string[];
   measure: string[];

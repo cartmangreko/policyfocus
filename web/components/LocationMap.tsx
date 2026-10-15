@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { geoKeyProse, geoMarkProse, type UndrawnRow } from "@/lib/prose";
+import { SEPARATOR } from "@/lib/citation";
+import { geoClusterProse, geoKeyProse, geoMarkProse, type UndrawnRow } from "@/lib/prose";
 
 // THE SHARED GEOGRAPHY COMPONENT. One picture, two frames: a regional crop on a
 // project page and a Europe-wide overview on a sector page. Both are the same
@@ -95,6 +96,42 @@ export interface MapMark {
   x: number;
   y: number;
   labels: { wide: MapLabel; narrow: MapLabel };
+  /** THE OTHER DESTINATION. `href` is the project's own page and is what a crop
+   *  and a country view send a reader to. On the continental overview a marker
+   *  opens the country view instead (brief 16 §2), because the overview's next
+   *  question is "what is this country building" and the answer is a page rather
+   *  than a dot. Both are on the file so the component chooses by the kind of
+   *  picture it is drawing, and neither is composed here. */
+  country_href?: string;
+  /** Whether a cluster marker stands in for this mark on the overview. The mark
+   *  stays in the file — it is what the counts, the legend and the gate are
+   *  computed over — and is not drawn. */
+  clustered?: boolean;
+}
+
+/** A GROUP OF DRAWN SITES WITHIN `radius_km` OF EACH OTHER, standing in for its
+ *  members on the continental overview. Neutral ink and a count, by ruling: four
+ *  sites at one place are rarely all in one status, and a marker taking the fill
+ *  of whichever sorted first would assert a state for the other three. */
+export interface MapCluster {
+  key: string;
+  country: string;
+  x: number;
+  y: number;
+  count: number;
+  projects: string[];
+  sites: { id: string; site: string; status: string }[];
+  href: string;
+}
+
+/** The legend under the overview: every country holding a drawn site, what it
+ *  holds, and the link to its own view. */
+export interface MapCountryTotal {
+  iso: string;
+  text: string;
+  sites: number;
+  projects: number;
+  href: string;
 }
 
 export interface MapCountry {
@@ -116,7 +153,10 @@ export interface MapCoordinates {
 
 export interface MapDoc {
   id: string;
-  kind: "project" | "sector";
+  /** THREE KINDS OF PICTURE, one component. `project` is a regional crop,
+   *  `sector` the fixed continental overview, and `country` — brief 16 §3 — one
+   *  country's own frame with every one of its dots drawn unclustered. */
+  kind: "project" | "sector" | "country";
   subject: string;
   canvas: { width: number; height: number };
   mark_geometry: { r: number; store_scale: number; ring_scale: number };
@@ -131,6 +171,27 @@ export interface MapDoc {
   /** Crop only: the subject's status, so the key can name the one case the two
    *  fill lines do not cover. */
   subject_status?: string;
+  /** Overview only: the clustering sources/build_maps.py applied, and the
+   *  markers it produced. Absent on a crop and on a country view, neither of
+   *  which clusters anything. */
+  clusters?: { radius_km: number; groups: MapCluster[]; singles: number; clustered_sites: number };
+  /** Overview only: the country legend. */
+  country_totals?: MapCountryTotal[];
+  /** Country view only. */
+  country?: string;
+  sector?: string;
+  /** WHAT THE GROUND IS DRAWN FROM, and when the copy on file was taken. The
+   *  second half of the as-of stamp: `as_of` dates the marks, this dates the
+   *  land under them, and neither is the build's own date. Read from
+   *  data/geo/SOURCE.json by build_maps.py — see basemap() there. */
+  basemap?: {
+    title: string;
+    publisher: string;
+    version: string;
+    retrieved_date: string;
+    licence: string;
+    url: string;
+  };
 }
 
 /** Running, in the sense the mark uses: a filled mark is a thing that is doing
@@ -156,6 +217,34 @@ function shape(mark: MapMark, g: Geometry) {
     return <polygon points={points} {...common} />;
   }
   return <circle cx={mark.x} cy={mark.y} r={g.r} {...common} />;
+}
+
+/** A CLUSTER MARKER. One ring in neutral ink with the count inside it, drawn at
+ *  the radius a mark would be drawn at plus the room the digits need.
+ *
+ *  NO STATUS, BY RULING (brief 16 §1). It is the one mark on this picture that
+ *  is not told apart by shape and fill, and that is the honest reading: it
+ *  stands for several sites whose statuses differ, so it takes none of them. A
+ *  reader who wants the statuses presses it and gets them one row each.
+ *
+ *  THE COUNT IS IN THE MONOSPACE FACE, like every other count on this site; the
+ *  class carries that and the stylesheet does the rest. */
+function clusterMarker(cluster: MapCluster, g: Geometry) {
+  const r = g.r * 1.9;
+  return (
+    <>
+      <circle
+        cx={cluster.x}
+        cy={cluster.y}
+        r={r}
+        className="geo-cluster"
+        vectorEffect="non-scaling-stroke"
+      />
+      <text x={cluster.x} y={cluster.y + r * 0.37} textAnchor="middle" className="geo-cluster-count">
+        {cluster.count}
+      </text>
+    </>
+  );
 }
 
 /** ONE MARK'S LABEL, AT ONE BREAKPOINT. Every number here was computed by
@@ -285,6 +374,22 @@ export default function LocationMap({
       }
     : undefined;
 
+  /** WHERE A MARK GOES. On the continental overview, the country view: the
+   *  question the overview is asked next is "what is this country building",
+   *  and brief 16 §2 answers it with a page rather than with one of the dots in
+   *  it. On a crop and on a country view the mark is the project and opens it.
+   *  Both links are on the file; nothing is composed here. */
+  const target = (mark: MapMark) =>
+    doc.kind === "sector" ? (mark.country_href ?? mark.href) : mark.href;
+
+  /** A country's reviewed name, from the names already placed on this frame.
+   *  Falls back to the code only where the frame draws no label for it, which
+   *  on an overview cannot happen: it names every country holding a site. */
+  const countryText = (iso: string) =>
+    doc.countries.find((c) => c.iso === iso)?.text ??
+    doc.country_totals?.find((t) => t.iso === iso)?.text ??
+    iso;
+
   return (
     <figure
       className={`geo geo-${doc.kind}`}
@@ -317,8 +422,13 @@ export default function LocationMap({
         {doc.marks.map((mark) => (
           <Link
             key={`${mark.id}::${mark.site}`}
-            href={mark.href}
+            href={target(mark)}
             className={`geo-link geo-rel-${mark.relation}`}
+            // A MARK A CLUSTER MARKER STANDS FOR IS NOT DRAWN TWICE. It stays in
+            // the file because every count, the legend and the gate are computed
+            // over the marks; what it loses is the ink, to the marker that is
+            // already at its place.
+            hidden={mark.clustered === true}
           >
             <title>
               {geoMarkProse({
@@ -342,7 +452,41 @@ export default function LocationMap({
             {label(mark, "narrow")}
           </Link>
         ))}
+        {/* THE CLUSTERS, DRAWN LAST so a marker is never under a label it is
+            standing beside. Each one opens the country view, which is where its
+            members are listed; the title says what it is, because a numbered
+            ring is the one mark on this picture a reader cannot read off the
+            key. */}
+        {(doc.clusters?.groups ?? []).map((cluster) => (
+          <Link key={cluster.key} href={cluster.href} className="geo-link geo-cluster-link">
+            <title>
+              {geoClusterProse({
+                count: cluster.count,
+                projects: cluster.projects.length,
+                country: countryText(cluster.country),
+                radiusKm: doc.clusters?.radius_km ?? 0,
+              })}
+            </title>
+            {clusterMarker(cluster, g)}
+          </Link>
+        ))}
       </svg>
+
+      {/* THE COUNTRY LEGEND — brief 16 §2. Every country holding a drawn site,
+          what it holds, and a link to its own view, which is the same
+          destination the markers above have. On the overview only: a crop and a
+          country view are already one place, and a legend of one row would be
+          the heading said again in smaller type. */}
+      {(doc.country_totals ?? []).length > 0 ? (
+        <nav className="geo-countries" aria-label="By country">
+          {(doc.country_totals ?? []).map((t) => (
+            <Link key={t.iso} href={t.href} className="geo-country-row">
+              <span className="geo-country-name">{t.text}</span>
+              <span className="geo-country-count">{t.sites}</span>
+            </Link>
+          ))}
+        </nav>
+      ) : null}
 
       <div className="geo-key">
         {geoKeyProse({ hasStore, subject }).map((item) => (
@@ -360,7 +504,27 @@ export default function LocationMap({
             <span className="geo-site">{c.site}</span>
           </p>
         ))}
-        <p className="geo-asof">as of {doc.as_of}</p>
+        {/* THE STAMP, BOTH HALVES. `as_of` is the newest dateline over the rows
+            this frame draws — the industry's currency, which moves every week —
+            and the second clause is the basemap's, which is a release read on a
+            stated day and does not move until somebody fetches another one. A
+            picture has two ages and a reader is owed both; neither is the
+            build's own date, which is what "every figure carries its as-of
+            date" has always meant here. There is no staleness label and there
+            is not going to be one: the ruling of 22 August 2026 is to show the
+            date and let the reader judge it. */}
+        <p className="geo-asof">
+          as of {doc.as_of}
+          {doc.basemap ? (
+            <span className="geo-ground">
+              {SEPARATOR}ground{" "}
+              <a href={doc.basemap.url} target="_blank" rel="noreferrer">
+                {doc.basemap.title}
+              </a>
+              {`, read ${doc.basemap.retrieved_date}`}
+            </span>
+          ) : null}
+        </p>
       </div>
     </figure>
   );

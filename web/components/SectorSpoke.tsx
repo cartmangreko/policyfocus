@@ -10,6 +10,7 @@ import { atPrecision } from "@/lib/dates";
 import { sectorDependencies, sectorPolicyRows, sectorProjectRows, sectorSupportRows } from "@/lib/hub";
 import { supportFact } from "@/lib/opportunity";
 import { getRecordsForSector, recordHref } from "@/lib/records";
+import { sectorLabel } from "@/lib/sectorSections";
 import { sectorCompanies, spokeTitle, type SpokeId } from "@/lib/spokes";
 import {
   STATUS_LABEL,
@@ -27,6 +28,7 @@ import {
   projectHref,
   type MaterialFlow,
   type Parameter,
+  type Project,
 } from "@/lib/transition";
 import type { SectorSlug } from "@/lib/types";
 
@@ -119,14 +121,36 @@ function MaterialList({
 }
 
 function ProjectsSpoke({ slug }: { slug: SectorSlug }) {
-  const rows = sectorProjectRows(slug);
-  const params = getParameters();
   return (
     <>
       <p className="tmap-sub">
         Sorted by last status change, the same order the hub&apos;s block is the top of. Every
         change carries its source.
       </p>
+      <ProjectTable rows={sectorProjectRows(slug)} />
+    </>
+  );
+}
+
+/** THE PROJECT REGISTER'S TABLE, over whatever rows the caller hands it.
+ *
+ *  Extracted from ProjectsSpoke on 12 October 2026 so the country view (brief
+ *  16 §3) renders the same eight columns over its own country's rows. A second
+ *  table would have drifted on the first column anybody added, and the two
+ *  pages are answering the same question over different populations — which is
+ *  a filter, not a different list.
+ *
+ *  IT TAKES ROWS AND NOT A SLUG, deliberately: the hub's block, the spoke and
+ *  the country view each decide their own population, and a table that filtered
+ *  for itself would be a third place deciding what is on it.
+ *
+ *  THE SCROLL CONTAINER IS PART OF THE TABLE. Eight columns do not fit a phone,
+ *  and the one thing that must not happen is the PAGE scrolling sideways — see
+ *  web/app/globals.css, .tprojects-scroll. */
+export function ProjectTable({ rows }: { rows: Project[] }) {
+  const params = getParameters();
+  return (
+    <>
       <div className="tprojects-scroll">
         <table className="tprojects">
           <thead>
@@ -453,10 +477,15 @@ function CompaniesSpoke({ slug }: { slug: SectorSlug }) {
   const byId = new Map(sectorProjectRows(slug).map((p) => [p.id, p]));
   return (
     <>
+      {/* `register` and `rows` were both in this paragraph, on every sector's
+          companies spoke, and both are on the lists in
+          sources/display_vocabulary.py — one for positioning and one because it
+          is the pipeline's own word. The fact is unchanged: the list is derived
+          from the tracked projects and the names do not open anything. */}
       <p className="tmap-sub">
-        Computed from the project register, not curated: a company is here because it holds a
-        tracked project, and the count beside it is that project list. A company is not a node
-        kind on this platform yet, so this page is a list of rows rather than a set of pages.
+        Computed from the tracked projects, not curated: a company is here because it holds
+        one, and the count beside it is that project list. A company is not a node kind on
+        this platform yet, so these names are a list rather than a set of pages.
       </p>
       <ul className="tcompanies">
         {rows.map((c) => (
@@ -523,7 +552,10 @@ function ConnectionsSpoke({ slug }: { slug: SectorSlug }) {
             <TransitionDiagram
               diagram={diagram}
               sources={nodeSources}
-              pageUrl={`eufabric.eu/sectors/${slug}/connections`}
+              // THE CAPTION ON A DOWNLOADED DIAGRAM, which travels away from
+              // the site and has to name an address that answers. www, like
+              // every other absolute internal URL here: the bare host 301s.
+              pageUrl={`www.eufabric.eu/sectors/${slug}/connections`}
             />
           </div>
           <figure className="tdiagram-static">
@@ -605,7 +637,7 @@ export default function SectorSpoke({ slug, spoke }: { slug: SectorSlug; spoke: 
         <Crumbs
           trail={[
             { label: "Sectors", href: "/sectors" },
-            { label: name, href: `/sectors/${slug}` },
+            { label: sectorLabel(slug), href: `/sectors/${slug}` },
             { label: spokeTitle(slug, spoke) },
           ]}
         />
@@ -618,7 +650,7 @@ export default function SectorSpoke({ slug, spoke }: { slug: SectorSlug; spoke: 
           <Body slug={slug} />
         </section>
         <nav className="tmap-footer" aria-label="Back to the sector">
-          <Link href={`/sectors/${slug}`}>← {name}</Link>
+          <Link href={`/sectors/${slug}`}>← {sectorLabel(slug)}</Link>
         </nav>
       </div>
     </main>

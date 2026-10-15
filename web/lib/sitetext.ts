@@ -100,6 +100,19 @@ interface ProseDoc {
     status: ProseStatus;
     reviewed?: string | null;
     sectors: Record<string, { short: string; phrase: string }>;
+    /** THE SLUGS NO INSTANCE CLAIMS — `clean` and `ccs`. An entry either names
+     *  the `instance` whose slots it borrows, or carries slots of its own; see
+     *  getSectorSlots below and the _comment in data/prose.json. */
+    sector_slots?: Record<
+      string,
+      {
+        instance?: string;
+        short?: string;
+        phrase?: string;
+        status?: ProseStatus;
+        reviewed?: string | null;
+      }
+    >;
   };
   /** The fixed section sequence and the H1/H2 templates that head it — brief 5
    *  §2. The array's order is the render order and the nav order both, and
@@ -114,6 +127,16 @@ interface ProseDoc {
      *  nothing else today. Stored here so the no-free-text rule has no
      *  exception to be widened later. */
     unnumbered: { id: string; h2: string; why?: string }[];
+  };
+  /** The country view's heading — brief 16 §3. One template, three slots:
+   *  {short}/{phrase} from the sector and {country} from country_names, so the
+   *  heading and the name on the paper are one reviewed wording. Rendered by
+   *  getCountryH1 below, which does NOT withhold a draft: a heading has no
+   *  computed fallback, same as a name slot. */
+  country_pages?: {
+    status: ProseStatus;
+    reviewed?: string | null;
+    h1: string;
   };
   /** The Opportunity section's wording — brief 5 §4. Sub-headings, the lead
    *  sentence templates the Python builder fills, and the support-fact and
@@ -293,6 +316,62 @@ export function getSectorNames(ecosystem: string): { short: string; phrase: stri
   return row;
 }
 
+/** The name slots for a SECTOR SLUG that no ecosystem instance reaches, or null
+ *  where the slug is not one of them.
+ *
+ *  WHY THIS EXISTS. `sector_names.sectors` is keyed on ecosystem instance, and
+ *  that is right: chemicals spans two FIGARO slugs and batteries covers part of
+ *  one. It cannot answer for a slug that renders the hub and that no instance
+ *  claims by a sector edge, and since 12 October 2026 there are two —
+ *  hydrogen's rows sit under `clean` while the hydrogen instance deliberately
+ *  carries no sector edge, and CO2 transport and storage is not an ecosystem at
+ *  all (eufabric-page-specifications.md §4.2).
+ *
+ *  AN ENTRY NAMING AN INSTANCE DUPLICATES NOTHING: it resolves to that
+ *  instance's slots, so hydrogen's wording is stored once. An entry with slots
+ *  of its own is the ccs case. Both shapes are checked in
+ *  sources/check_h2_templates.py, which refuses an entry carrying both and an
+ *  entry carrying neither.
+ *
+ *  A DRAFT SLOT RENDERS NOTHING, like every other prose block here. It used to
+ *  render — the argument was that a name slot has no computed fallback and a page
+ *  headed with a hole in it is worse than a page headed with unreviewed wording
+ *  — and George ruled against it on 15 October 2026: nothing marked draft reaches
+ *  a surface, and a heading that needs one gets a COMPUTED fallback instead,
+ *  which is tier 1 of the three-tier rule and needs no review. See
+ *  computedSectorNames in lib/sectorSections.ts for where the fallback comes
+ *  from. The status is still carried so the draft is listed for review —
+ *  sources/check_sector_schema.py prints it on every run. */
+export function getSectorSlots(slug: string): { short: string; phrase: string } | null {
+  const block = readProse().sector_names;
+  const row = block.sector_slots?.[slug];
+  if (!row) return null;
+  // An entry pointing at an instance borrows that instance's slots, and those
+  // live in the `sector_names` block proper, which is approved. The entry itself
+  // carries no status in that shape and nothing is withheld.
+  if (row.instance) return getSectorNames(row.instance);
+  // ITS OWN SLOTS, AND ONLY IF SOMEBODY HAS READ THEM. An entry with no status
+  // is treated as the block's, exactly as sector_orientation resolves one.
+  if (!isReviewed(row.status ?? block.status)) return null;
+  if (!row.short?.trim() || !row.phrase?.trim()) {
+    throw new Error(
+      `sector_names.sector_slots["${slug}"] is approved, names no instance and has ` +
+        `no filled short and phrase of its own, so the sector has no subject for ` +
+        `its headings`,
+    );
+  }
+  return { short: row.short, phrase: row.phrase };
+}
+
+/** Which sector slots are still drafts, for the reviewer's list. Nothing on a
+ *  page reads this; sources/check_sector_schema.py prints it. */
+export function draftSectorSlots(): string[] {
+  const block = readProse().sector_names;
+  return Object.entries(block.sector_slots ?? {})
+    .filter(([, row]) => row.status !== undefined && !isReviewed(row.status))
+    .map(([slug]) => slug);
+}
+
 /** The section sequence, in order. The array is the specification: a section
  *  renders where this says it renders, or the gate fails. */
 export function getSectionSpecs(): { id: string; nav: string; h2: string }[] {
@@ -325,6 +404,45 @@ export function renderHeading(template: string, names: { short: string; phrase: 
 /** The page's H1. One template for every sector, `short` capitalised into it. */
 export function getSectorH1(names: { short: string; phrase: string }): string {
   return renderHeading(readProse().sector_sections.h1, names);
+}
+
+/** THE COUNTRY VIEW'S REVIEWED H1, filled — or null while the block is a draft.
+ *  Three slots rather than the heading renderer's two, which is the whole reason
+ *  this has its own function: the country is not a property of the sector and a
+ *  sector-only renderer would have had to be widened to let one in.
+ *
+ *  NULL IS NOT AN ERROR. The page renders the computed heading in
+ *  lib/prose.ts countryH1Prose instead — tier 1, no review needed — which is the
+ *  same arrangement transition_notes has had since it was written. It used to
+ *  render the draft on the argument that a heading has no computed form; George
+ *  ruled on 15 October 2026 that nothing marked draft reaches a surface, so the
+ *  computed form was written. `countryPagesAreDraft()` lists it for review. */
+export function getCountryH1(
+  names: { short: string; phrase: string },
+  country: string,
+): string | null {
+  const block = readProse().country_pages;
+  if (!block || !isReviewed(block.status)) return null;
+  const slots: Record<string, string> = { ...names, country };
+  return block.h1.replace(/\{([A-Za-z_]+)\}/g, (_, slot: string, at: number) => {
+    const key = slot.toLowerCase();
+    const value = slots[key];
+    if (value === undefined) {
+      throw new Error(
+        `country heading template "${block.h1}" has slot {${slot}}, and the only ` +
+          `slots it takes are {short}, {phrase} and {country}`,
+      );
+    }
+    const capital = at === 0 || slot[0] === slot[0].toUpperCase();
+    return capital ? value.charAt(0).toUpperCase() + value.slice(1) : value;
+  });
+}
+
+/** Whether the country heading is still a draft. Nothing on a page reads this;
+ *  sources/check_sector_schema.py prints it with the other outstanding drafts. */
+export function countryPagesAreDraft(): boolean {
+  const block = readProse().country_pages;
+  return !block || !isReviewed(block.status);
 }
 
 /** An unnumbered heading — Sources — by section id. Throws for an id the block

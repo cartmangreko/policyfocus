@@ -14,10 +14,12 @@ import {
   getParameters,
   getProjects,
   getTechnologies,
+  getTechnology,
   lastChange,
   materialFlows,
   measureHref,
   projectHref,
+  TECHNOLOGY_HUB,
   type Bottleneck,
   type Parameter,
   type Project,
@@ -218,6 +220,22 @@ export function projectsBlock(slug: string): HubBlock {
 
 // ----------------------------------------------------------------- depends --
 
+/** Technology ids said in the reader's words, with placeholders dropped. The
+ *  same function the projects spoke has (components/SectorSpoke.tsx), for the
+ *  same reason and against the same rule: an id is not a name, and
+ *  `ccs-capture-unspecified` is not a technology. An id with no node behind it
+ *  is kept as the id rather than dropped — that is a data fault and should look
+ *  like one, where a silent omission would look like a shorter list. */
+function technologyNames(ids: string[]): string[] {
+  const out: string[] = [];
+  for (const id of ids) {
+    const t = getTechnology(id);
+    if (t?.placeholder) continue;
+    out.push(t?.name ?? id);
+  }
+  return out;
+}
+
 /** One quantified fact about a constraint, or the line naming what it rests
  *  on. A constraint that is not quantified says so — see the section this
  *  replaces, which printed "Not quantified yet." under the same rows. */
@@ -262,12 +280,27 @@ export function sectorDependencies(slug: string): HubItem[] {
     const fact = t.readiness
       ? `${t.readiness.level}${t.readiness.note ? ` — ${t.readiness.note}` : ""}`
       : deps.length > 0
-        ? `depends on ${deps.join(", ")}`
+        // A DEPENDENCY IS NAMED, NOT KEYED. This printed the raw technology ids
+        // off the row — "depends on co2-transport-storage" — which is the site
+        // telling a reader what its own identifiers look like. It prints what
+        // each one is CALLED now, and a placeholder is dropped rather than
+        // named: `ccs-capture-unspecified` records that an owner has not stated
+        // how the CO2 is to be captured, and a reader meeting the id would read
+        // it as a thing somebody is building. Ruled 14 September 2026 for the
+        // project table and applied here on 12 October 2026, which is the whole
+        // of brief 17 §D.1 — the same fault in a second place.
+        ? `depends on ${technologyNames(deps).join(", ")}`
         : t.description.split(". ")[0];
+    // WHERE A DEPENDENCY ROW POINTS. Its own anchor on this sector's
+    // technologies spoke, unless the technology is a layer with a hub of its
+    // own — CO2 transport and storage, and renewable hydrogen supply — in which
+    // case the dataset is the better answer to "what does this depend on" than
+    // the paragraph about it. See TECHNOLOGY_HUB.
+    const hub = TECHNOLOGY_HUB[t.id];
     push({
       key: `technology:${t.id}`,
       name: t.name,
-      href: `/sectors/${slug}/technologies#technology-${t.id}`,
+      href: hub && hub !== slug ? `/sectors/${hub}` : `/sectors/${slug}/technologies#technology-${t.id}`,
       kind: "technology",
       fact,
       date: t.readiness?.date ?? null,
@@ -380,11 +413,17 @@ export function policiesBlock(slug: string): HubBlock {
     (imp?.built_from.parameters ?? []).map((id) => params.get(id)?.date_of_value ?? null),
   );
 
+  // THE THIRD BRANCH IS A SECTOR WITH NO RANKING, and it used to read "0
+  // tracked measures, in register order: no importance basis is computed for
+  // this sector" — a count of zero standing in for a measurement nobody has
+  // made, and the word `register` on an audience surface, which is on the brand
+  // list. Both went unseen because only ranked sectors rendered this page until
+  // 12 October 2026 and because the vocabulary gate did not read web/lib.
   const framing = imp
     ? inView.length === 0
       ? `No EU measure in this sector's view${stamp(date)}`
       : `${inView.length} of ${plural(all.length, "tracked measure")} are in this sector's view, ordered by what they cost or grant it${stamp(date)}`
-    : `${plural(all.length, "tracked measure")}, in register order: no importance basis is computed for this sector${stamp(date)}`;
+    : `No EU measure has been ranked against this sector: what it is under has not been priced, and nothing here orders it${stamp(date)}`;
 
   return {
     id: "policies",

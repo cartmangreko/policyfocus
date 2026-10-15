@@ -30,3 +30,31 @@ export function getProjectMap(id: string): MapDoc | undefined {
 export function getSectorMap(slug: string): MapDoc | undefined {
   return read(`sector-${slug.replace(/\//g, "__")}`);
 }
+
+/** One country's frame within one sector — brief 16 §3. The slug is flattened
+ *  the same way the overview's is, so the file name is a file name and not a
+ *  directory nobody meant to create. Undefined where that country holds no
+ *  drawn site, which is also how the route decides the page does not exist. */
+export function getCountryMap(slug: string, iso: string): MapDoc | undefined {
+  return read(`sector-${slug.replace(/\//g, "__")}-${iso}`);
+}
+
+/** Every (sector, country) pair that has a frame, read off the built files
+ *  rather than recomputed from the rows.
+ *
+ *  THE BUILT FILES ARE THE AUTHORITY on which country views exist, and that is
+ *  the same discipline every other route on this layer follows: the geometry is
+ *  computed once in Python, and a second answer derived in TypeScript is a
+ *  second answer. A page enumerated here with no frame behind it would be a
+ *  route that renders nothing; a frame with no route would be a file nothing
+ *  reads, and sources/check_map_clusters.py fails the build on either. */
+export function countryFrames(): { sector: string; iso: string }[] {
+  if (!fs.existsSync(DIR)) return [];
+  const out: { sector: string; iso: string }[] = [];
+  for (const name of fs.readdirSync(DIR).sort()) {
+    const m = name.match(/^sector-(.+)-([A-Z]{2})\.json$/);
+    if (!m) continue;
+    out.push({ sector: m[1].replace(/__/g, "/"), iso: m[2] });
+  }
+  return out;
+}

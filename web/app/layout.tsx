@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { SITE_ROBOTS } from "@/lib/launch";
+import { SITE_URL } from "@/lib/routes";
 import { datasetJsonLd } from "@/lib/schema";
 import { getMasthead } from "@/lib/sitetext";
 import "./globals.css";
@@ -14,6 +15,19 @@ import "./globals.css";
 // type block in globals.css.
 
 export const metadata: Metadata = {
+  // THE ORIGIN EVERY ABSOLUTE URL IN THIS SITE'S METADATA RESOLVES ON, from the
+  // one constant the sitemap and robots.txt are built from. Set 15 October 2026
+  // with the move to www: Next resolves a relative metadata URL against this,
+  // so without it an OpenGraph or canonical URL would be relative in the markup
+  // and absolute-on-whatever-host wherever a consumer resolved it — which is
+  // the one thing a canonical host is for.
+  //
+  // NO PER-PAGE CANONICAL TAG IS EMITTED TODAY, and this is not that. A
+  // canonical tag is a claim that a page has one address, and the pages here
+  // have exactly one each; what this fixes is which HOST the absolute URLs Next
+  // does generate are built on. If canonicals are added later they resolve here
+  // and need no second constant.
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Eufabric — Intelligence on what Europe builds next",
     template: "%s · Eufabric",
