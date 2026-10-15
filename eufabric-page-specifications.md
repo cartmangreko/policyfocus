@@ -158,10 +158,28 @@ vocabulary are unchanged and bind everything below.
    origin. Pre-launch it says so and skips the comparison — the switch makes
    every page noindex, so the check would fail everything and prove nothing.
 
-   **The canonical origin is the apex, `https://eufabric.eu`.** A sitemap of
-   redirects publishes an address that is not the one that gets indexed, so the
-   host in `web/lib/routes.ts` and the host the edge serves have to point the
-   same way.
+   **The canonical origin is `https://www.eufabric.eu`.** Ruled 14 September
+   2026, recorded here 15 October 2026. A sitemap of redirects publishes an
+   address that is not the one that gets indexed, so the host in
+   `web/lib/routes.ts` and the host the edge serves have to point the same way —
+   and the edge serves www, with the bare host keeping its 301 to it. The
+   reasoning below was right about the mechanism and wrong about which end of
+   the redirect is canonical.
+
+   Superseded 15 October 2026 by the paragraph above: **The canonical origin is
+   the apex, `https://eufabric.eu`.** A sitemap of redirects publishes an
+   address that is not the one that gets indexed, so the host in
+   `web/lib/routes.ts` and the host the edge serves have to point the same way.
+
+   WHY THE SUPERSEDED PARAGRAPH IS STILL HERE. The practice is
+   `sources/scope.md`'s: a ruling is a record of what this platform decided and
+   when, and a record that silently loses its earlier readings cannot be audited.
+   It is never deleted, only superseded in place, with the superseding paragraph
+   above it and the date on the line that says so. This one matters more than
+   most, because the apex was not merely written down — it was asserted by
+   `web/lib/sitemap.test.mts`, which failed any build that moved to www, so a
+   reader finding that assertion in the history needs to know it was the
+   implementation being right about an instruction that had already changed.
 
    **This section is the authority for the route list.** The list in
    `web/lib/launch.ts` predates it and is reviewed against this section; where

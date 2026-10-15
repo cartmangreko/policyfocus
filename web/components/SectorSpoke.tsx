@@ -552,7 +552,10 @@ function ConnectionsSpoke({ slug }: { slug: SectorSlug }) {
             <TransitionDiagram
               diagram={diagram}
               sources={nodeSources}
-              pageUrl={`eufabric.eu/sectors/${slug}/connections`}
+              // THE CAPTION ON A DOWNLOADED DIAGRAM, which travels away from
+              // the site and has to name an address that answers. www, like
+              // every other absolute internal URL here: the bare host 301s.
+              pageUrl={`www.eufabric.eu/sectors/${slug}/connections`}
             />
           </div>
           <figure className="tdiagram-static">

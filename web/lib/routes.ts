@@ -55,13 +55,26 @@
  *  both have to be absolute, and neither is rendered from a request, so there
  *  is nothing to infer it from.
  *
- *  APEX, NOT www. A sitemap is a list of the URLs this site asks to have
- *  indexed, and asking for a URL that answers with a redirect is asking for the
- *  wrong one: the crawler follows it, indexes what it lands on, and the address
- *  we published is not the address in the index. There is one canonical host and
- *  this is it. The redirect at the edge has to point the same way — apex serving
- *  and www redirecting to it — or every URL in the sitemap is a hop. */
-export const SITE_URL = "https://eufabric.eu";
+ *  www, NOT THE APEX. George's ruling of 14 September 2026, applied here 15
+ *  October 2026. The argument this constant used to carry was right about the
+ *  mechanism and wrong about which end of the redirect is canonical: a sitemap
+ *  is a list of the URLs this site asks to have indexed, and asking for one that
+ *  answers with a redirect is asking for the wrong one — the crawler follows it,
+ *  indexes what it lands on, and the address we published is not the address in
+ *  the index. That is exactly why this has to be www: THE EDGE SERVES www AND
+ *  THE BARE HOST 301s TO IT, so the apex was the hop and every URL in the
+ *  sitemap was one.
+ *
+ *  ONE CONSTANT, EVERY ABSOLUTE URL. app/sitemap.ts maps it over the indexable
+ *  list, app/robots.ts builds the Sitemap: line from it, app/layout.tsx hands it
+ *  to `metadataBase` so every absolute URL Next resolves for a page lands on the
+ *  same host, and sources/check_sitemap.py reads this very line out of this file
+ *  to hold the published artefact against it. Changing the host is changing this
+ *  string.
+ *
+ *  See eufabric-page-specifications.md §0.8, where the apex paragraph is
+ *  superseded in place rather than deleted. */
+export const SITE_URL = "https://www.eufabric.eu";
 
 /** Route trees demoted whole. Prefixes rather than paths: every page under one
  *  of these is demoted for the reason its index page is, so the prefix is the
