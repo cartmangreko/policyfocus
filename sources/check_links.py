@@ -33,6 +33,13 @@ WHAT IS AND IS NOT A FAILURE
   bot-hostile publisher   reported, not failed, and listed by name below. A CDN
                           blocking a datacentre IP tells us nothing about
                           whether the page exists.
+  4xx with a recorded
+  `refusal`               reported, not failed. The row records that this
+                          pipeline observed the publisher refusing to serve
+                          the page, on a stated day, with the code it
+                          answered. It accepts only that code, it prints the
+                          date on every run, and it carries no claim that the
+                          document is still there — see OBSERVED_REFUSAL.
   404 inside a section
   that declares itself
   under maintenance       reported, not failed. A publisher whose own section
@@ -230,6 +237,41 @@ def section_in_maintenance(url: str) -> str | None:
 # recovers the appearance of verification and none of it.
 REFUSED_STATE = "refused_declared_reader"
 
+# THE PUBLISHER IS REFUSING TO SERVE THIS, OBSERVED ON A DAY
+# ==========================================================
+# A second recorded state, added 15 October 2026 on George's ruling about the
+# CO2LLECT citation, and it is NOT the one above wearing a different name. The
+# difference is whose word the record is:
+#
+#   refused_declared_reader   A PERSON opened this exact URL on a stated day and
+#                             found the document there. It is a human
+#                             verification, it requires a name, and it is the
+#                             strongest thing this register can say about a page
+#                             it cannot fetch.
+#   refusal                   THIS PIPELINE observed the publisher refusing to
+#                             serve the page on a stated day, and says which code
+#                             it answered with. Nobody has opened it. It is a
+#                             measurement of a request, which is what
+#                             sources/scope.md calls it ("A refusal is a
+#                             measurement of a request, not of a publisher").
+#
+# WHY THE SECOND ONE HAD TO EXIST. The CO2LLECT page answers 404 under a section
+# that redirects to /en/maintenance, and the body was read and cached on
+# 2026-09-14 — the index holds the hash, 82,603 bytes, 6,750 characters of text —
+# but the BODY IS NOT ON FILE: sources/cache/*/ bodies are gitignored by design
+# and only the indexes are tracked. So `dead_since` is not available: the rule of
+# 20 September accepts a removed page on the CACHED COPY, and checks that there
+# are bytes behind the hash precisely so that a missing body cannot be passed off
+# as a held one. What is true here is narrower and is what this records: the page
+# was read once, the publisher is now refusing it, and the citation stands
+# because the sentence it points at was quoted from a document somebody fetched.
+#
+# WHAT IT COSTS AND WHAT IT DOES NOT. It is REPORTED with its date on every run,
+# never silent; it accepts only the code it records, so a 404 that becomes a 500
+# is a new fact and fails; and it carries no claim that the document is still
+# there, which is the whole difference from the state above.
+OBSERVED_REFUSAL = "refusal"
+
 # How old a human verification may get before it is worth saying so. Reported,
 # never failed: a year-old check is not a broken link, it is a check worth
 # repeating, and failing a build over it would push somebody to re-date the field
@@ -246,7 +288,7 @@ def _age_days(date: str) -> int | None:
 
 def urls_in(obj, path="") -> list[tuple[str, str, bool, str | None, dict | None]]:
     """Walk any of the transition files and yield
-    (url, where, archived, snapshot, dead_since, refused).
+    (url, where, archived, snapshot, dead_since, refused, refusal).
     Written as a walk rather than as per-kind knowledge because the URL-bearing
     fields differ per kind and a new one should be checked the day it is added,
     not the day someone remembers to update this function."""
@@ -256,7 +298,8 @@ def urls_in(obj, path="") -> list[tuple[str, str, bool, str | None, dict | None]
         if isinstance(url, str) and url.startswith(("http://", "https://")):
             found.append((url, path, bool(obj.get("archived")), obj.get("snapshot"),
                           obj.get("dead_since"),
-                          obj.get(REFUSED_STATE)))
+                          obj.get(REFUSED_STATE),
+                          obj.get(OBSERVED_REFUSAL)))
         for k, v in obj.items():
             found += urls_in(v, f"{path}.{k}" if path else k)
     elif isinstance(obj, list):
@@ -285,8 +328,12 @@ def main() -> int:
     # source". A 200 with an empty body is NOT covered: `dead_since` says a page was
     # removed, and it cannot say that about a page nobody got.
     on_file: list[tuple[str, str, dict]] = []
+    # url -> (where, the recorded state). The publisher refused to serve this on
+    # a stated day, observed by this pipeline rather than by a person; see
+    # OBSERVED_REFUSAL.
+    refusals: dict[str, tuple[str, dict]] = {}
     for kind in ("technology", "bottleneck", "parameter", "project"):
-        for url, where, is_archived, snapshot, dead_since, refused in urls_in(
+        for url, where, is_archived, snapshot, dead_since, refused, refusal in urls_in(
                 sm.load(kind), kind):
             if dead_since is not None:
                 on_file.append((url, where, dead_since))
@@ -297,6 +344,8 @@ def main() -> int:
             seen.setdefault(url, where)
             if refused is not None:
                 declared[url] = (where, refused)
+            if refusal is not None:
+                refusals[url] = (where, refusal)
 
     if args.offline:
         print(f"check_links: {len(seen)} live URLs, {len(archived)} archived — "
@@ -308,6 +357,12 @@ def main() -> int:
     dead: list[str] = []
     soft: list[str] = []
     refused_ok: list[str] = []
+    # ITS OWN BUCKET, because the heading over it is a different claim. The list
+    # above says a PERSON opened the page and found the document; this says this
+    # pipeline watched the publisher refuse it. Printing them under one heading
+    # would have put "verified by hand" over a URL nobody has opened, which is
+    # the one thing the two-state split exists to prevent.
+    refusal_ok: list[str] = []
 
     def status_of(url: str) -> int:
         """The response code, following redirects. urlopen raises on 4xx/5xx
@@ -364,6 +419,35 @@ def main() -> int:
             elif code >= 500:
                 soft.append(f"{url} — HTTP {code} (after a 429)")
         elif 400 <= code < 500:
+            # A RECORDED REFUSAL IS ASKED FIRST, because it is the row's own
+            # statement and needs no network to read. It accepts only the code it
+            # records: a 404 that becomes a 410 or a 500 is a new fact about the
+            # page and fails.
+            state = refusals.get(url)
+            if state and int(state[1].get("http") or 0) == code:
+                where, rec = state
+                missing = [f for f in ("observed", "by", "note") if not rec.get(f)]
+                if missing:
+                    dead.append(
+                        f"{url} — declares {OBSERVED_REFUSAL} with no "
+                        f"{', '.join(missing)}  ({where}). A refusal is a measurement "
+                        f"of a request, and a measurement with no date and nothing "
+                        f"saying who made it is an excuse rather than a record")
+                else:
+                    age = _age_days(rec["observed"])
+                    stale = (f", OBSERVED {age} DAYS AGO — worth asking again"
+                             if age is not None and age > VERIFICATION_STALE_DAYS else "")
+                    refusal_ok.append(
+                        f"{url}\n      HTTP {code}, observed by {rec['by']} on "
+                        f"{rec['observed']}{stale}\n      {rec['note']}")
+                continue
+            if state:
+                dead.append(
+                    f"{url} — HTTP {code}, and the row records a {OBSERVED_REFUSAL} of "
+                    f"HTTP {state[1].get('http')}. The publisher is answering "
+                    f"differently from the day that was observed, which is a new fact "
+                    f"about the page  ({seen[url]})")
+                continue
             # THE SITE IS ASKED BEFORE THE PAGE IS DECLARED GONE. See
             # site_in_maintenance: a publisher that has taken its whole site
             # down is making a statement about itself, and the 404s underneath
@@ -412,6 +496,15 @@ def main() -> int:
         if url in seen and url not in "".join(refused_ok) and url not in "".join(dead):
             soft.append(f"{url} — declares {REFUSED_STATE} and answered normally; "
                         f"the state can be removed  ({where})")
+    # THE SAME FOR AN OBSERVED REFUSAL, and it is the half that matters most:
+    # this state exists because a section was under maintenance, and the day it
+    # comes back the record is the only thing standing between a citation nobody
+    # has re-read and a green line. Reported so the block comes off.
+    for url, (where, _rec) in sorted(refusals.items()):
+        if url in seen and url not in "".join(refusal_ok) and url not in "".join(dead):
+            soft.append(f"{url} — declares {OBSERVED_REFUSAL} and answered normally; "
+                        f"the page is back, so re-read it and remove the state  "
+                        f"({where})")
 
     print(f"check_links: {len(seen)} live URLs checked, {len(archived)} archived, "
           f"{len(on_file)} read before the publisher removed them and held on the "
@@ -423,6 +516,11 @@ def main() -> int:
         print(f"\npublisher refuses a declared reader ({len(refused_ok)}) — verified by hand, "
               f"not failed:")
         for r in refused_ok:
+            print(f"  {r}")
+    if refusal_ok:
+        print(f"\npublisher refusing a page this register has read ({len(refusal_ok)}) — "
+              f"observed and dated, not failed:")
+        for r in refusal_ok:
             print(f"  {r}")
     if soft:
         print(f"\nreported, not failed ({len(soft)}):")

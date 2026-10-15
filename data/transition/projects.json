@@ -12316,6 +12316,14 @@
      "captured_at": "2026-09-14",
      "archived": false,
      "date_note": "THE DOCUMENT CARRIES NO DATELINE. No schema.org datePublished, no meta published time and no date in the body. Under sources/scope.md, 'A document with no dateline takes date = captured_at, with precision not_after', the date is the day this register read the page and it is an upper bound: the text existed then and nobody here knows when it was written.",
+     "refusal": {
+      "observed": "2026-10-15",
+      "by": "the declared reader, sources/check_links.py",
+      "http": 404,
+      "read_on": "2026-09-14",
+      "cached": "sources/cache/ccs/index.json, sha256 6780956311dd81a2ff58f3346d9bbd4fab6ae64e3bf85b024c82c9f2750d6dc4, 82603 bytes, 6750 chars of text",
+      "note": "READ ONCE, REFUSED NOW, CITATION UNCHANGED. The page was fetched and read on 2026-09-14 for the cement/CCS census and every quote this row takes from it comes from that reading; the cache index records the fetch. It now answers 404 — and so does every other path under co2llect.de/en/, while /en/ itself redirects to /en/maintenance and the German root serves 200. The publisher has put its English section under maintenance rather than removed the page. `dead_since` is deliberately NOT used: the rule of 20 September 2026 accepts a removed page on the cached BODY and checks that there are bytes behind the hash, and the bodies under sources/cache/ are gitignored by design, so there is a hash here and nothing behind it. A refusal is a measurement of a request (sources/scope.md), and this records the measurement with its date rather than claiming a document is held that is not. Ruled by George on 2026-10-15."
+     },
      "source_type": "company"
     }
    ],
